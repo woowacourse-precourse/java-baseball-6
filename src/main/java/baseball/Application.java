@@ -17,5 +17,11 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+        // 사용자가 숫자를 입력할 수 있게 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.print("숫자를 입력해 주세요 : ");
+        String user = new String();
+        user = Console.readLine();
+
     }
 }
