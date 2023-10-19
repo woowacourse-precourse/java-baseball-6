@@ -7,6 +7,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class BallsTest {
+    private final Balls firstBalls = Balls.from(List.of(1, 2, 3));
+    private static final String STRIKE = Hint.STRIKE.value();
+    private static final String BALL = Hint.BALL.value();
+    private static final String NOTHING = Hint.NOTHING.value();
     @Test
     void 중복숫자_테스트() {
         List<Integer> input = List.of(1, 1, 1);
@@ -20,9 +24,18 @@ public class BallsTest {
     }
 
     @Test
-    void 힌트_계산_테스트_3스트라이크() {
-        Balls firstBalls = Balls.from(List.of(1, 2, 3));
-        Balls secondBalls = Balls.from(List.of(1, 2, 3));
-        assertEquals(firstBalls.compare(secondBalls), "3스트라이크");
+    void 힌트_계산_테스트() {
+        assertBallsEquals(Balls.from(List.of(1, 2, 3)), String.format("%d%s", 3, STRIKE));
+        assertBallsEquals(Balls.from(List.of(1, 2, 4)), String.format("%d%s", 2, STRIKE));
+        assertBallsEquals(Balls.from(List.of(1, 4, 5)), String.format("%d%s", 1, STRIKE));
+        assertBallsEquals(Balls.from(List.of(1, 3, 2)), String.format("%d%s %d%s", 2, BALL, 1, STRIKE));
+        assertBallsEquals(Balls.from(List.of(1, 3, 4)), String.format("%d%s %d%s", 1, BALL, 1, STRIKE));
+        assertBallsEquals(Balls.from(List.of(2, 1, 4)), String.format("%d%s", 2, BALL));
+        assertBallsEquals(Balls.from(List.of(2, 5, 4)), String.format("%d%s", 1, BALL));
+        assertBallsEquals(Balls.from(List.of(4, 5, 6)), NOTHING);
+    }
+
+    private void assertBallsEquals(Balls secondBalls, String expected) {
+        assertEquals(firstBalls.compare(secondBalls), expected);
     }
 }
