@@ -8,12 +8,13 @@ import java.util.stream.Collectors;
 
 public class NumberValidation {
 
-    public void validateInputNumber(String inputNumber) {
+    public List<Integer> validateInputNumber(String inputNumber) {
         List<Integer> userNumber = changeToList(inputNumber);
         validateNumberSize(userNumber);
         validateNumberRange(userNumber);
         validateDuplication(userNumber);
 
+        return userNumber;
     }
 
     public List<Integer> changeToList(String inputNumber) {
@@ -24,7 +25,7 @@ public class NumberValidation {
     }
 
     public void validateNumberSize(List<Integer> userNumber) {
-        if (userNumber.size() != 3) {
+        if (userNumber.size() != NumberConstant.INPUT_SIZE) {
             throw new IllegalArgumentException(MessageConstant.VALIDATE_SIZE_MESSAGE);
         }
     }
