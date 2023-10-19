@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static baseball.GlobalExcept.*;
+
 public class Game {
     private final Integer strike;
     private final Integer ball;
@@ -37,32 +39,14 @@ public class Game {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
 
-        if(userInput.length() != MAX_BALL_SIZE){
-            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
-        }
-
-        for(int i=0; i<MAX_BALL_SIZE; i++){
-            if(Character.isAlphabetic(userInput.charAt(i))){
-                throw new IllegalArgumentException("숫자만 입력해주세요.");
-            }
-        }
-
-
-
+        GlobalExcept.checkLength(userInput);
+        GlobalExcept.checkAlphabetic(userInput);
         return userInput;
     }
     public static boolean restart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartInput = Console.readLine();
-        if (restartInput.equals("1")) {
-            return true;
-        }
-        else if (restartInput.equals("2")) {
-            return false;
-        }
-        else {
-            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
-        }
+        return checkRestart(restartInput);
     }
     public String printResult(){
         if (isNothing()) {

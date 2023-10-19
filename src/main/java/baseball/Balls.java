@@ -1,9 +1,8 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -13,7 +12,7 @@ public class Balls {
     private final List<Ball> balls;
 
     public Balls(List<Ball> balls) {
-        checkDuplication(balls);
+        GlobalExcept.checkDuplication(balls);
         this.balls = balls;
     }
 
@@ -38,12 +37,7 @@ public class Balls {
         return new Balls(balls);
     }
 
-    public void checkDuplication(List<Ball> balls){
-        Set<Ball> ballSet = new HashSet<>(balls);
-        if (ballSet.size() != balls.size()) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-        }
-    }
+
     public boolean isContain(Ball ball){
         return this.balls.contains(ball);
     }
