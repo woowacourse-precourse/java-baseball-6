@@ -17,7 +17,7 @@ public final class BallNumbers {
   private static void validateNumbers(final List<Integer> numbers) {
     for (final Integer number : numbers) {
       if (number < 1 || number > 9) {
-        throw new IllegalArgumentException("BallNumber는 1~9 사이의 3자리 수여야 합니다.");
+        throw new IllegalArgumentException("BallNumbers는 1~9 사이의 3자리 수여야 합니다.");
       }
     }
   }
