@@ -13,12 +13,19 @@ public class Computer {
         numbers = getRandomNumbers();
     }
 
-    public void compareInput(String input) {
+    public boolean compareInput(String input) {
         int ballCounts = ballCounts(input);
         int strikeCounts = strikeCounts(input);
         
         String message = getResultsMessage(ballCounts, strikeCounts);
         System.out.println(message);
+
+        if (strikeCounts == 3) {
+            System.out.println(Constants.GAME_FINISH_MESSAGE);
+            return true;
+        }
+
+        return false;
     }
     
     private String getResultsMessage(int ballCounts, int strikeCounts) {
