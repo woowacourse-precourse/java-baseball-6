@@ -32,8 +32,17 @@ public class BaseballGame {
         }
     }
 
+    private void generateRandomNumbers() {
+        if (!randomNumbers.isEmpty()) randomNumbers.clear();
+        while (randomNumbers.size() < DIGIT) {
+            int randomNumber = pickNumberInRange(1, 9);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
+        }
+    }
+
     public void exit() {
         this.running = false;
-        System.out.println("숫자 야구 게임을 종료합니다.");
     }
 }
