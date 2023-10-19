@@ -6,12 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 class GameNumber {
-    List<Integer> numbers;
+    private final List<Integer> numbers;
 
     public GameNumber(List<Integer> numbers) {
+        validate(numbers);
         this.numbers = numbers;
     }
 
+    private void validate(List<Integer> numbers) {
+        List<Integer> compare = new ArrayList<>();
+        for (Integer number: numbers) {
+            if (compare.contains(number)) {
+                throw new IllegalArgumentException();
+            }
+            compare.add(number);
+        }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
 
 
