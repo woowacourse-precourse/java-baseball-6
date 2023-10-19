@@ -9,4 +9,8 @@ public class OutputView {
     public void printInputExpectedNumberMessage(){
         System.out.println(ProgressMessage.INPUT_EXPECTED_NUMBER);
     }
+
+    public void printStatusBallAndStrike(String message){
+        System.out.println(message);
+    }
 }
