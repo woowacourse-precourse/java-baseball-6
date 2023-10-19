@@ -1,7 +1,7 @@
 # Model
 - [x] 볼의 숫자 위치 정보 비교 - BallPosition
 - [x] 볼의 숫자 정보 비교 - BallNumber
-- [ ] 숫자 정보, 위치 정보를 가지고 볼을 비교 - Ball
+- [x] 숫자 정보, 위치 정보를 가지고 볼을 비교 - Ball
 - [ ] 볼을 비교한 결과를 저장해 가장 높은 값(스트라이크> 볼 > 낫띵) 선택 - BallCompareResult
 - [ ] Ball 3개를 가져 볼, 스트라이크 수 계산 - Balls
 - [ ] 게임 결과를 저장 - GameResult
