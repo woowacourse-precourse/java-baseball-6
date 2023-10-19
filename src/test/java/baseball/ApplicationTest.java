@@ -29,7 +29,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 에외_테스트2() {
+    void 예외_테스트2() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("98"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -37,7 +37,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 에외_테스트3() {
+    void 예외_테스트3() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("507"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -45,7 +45,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 에외_테스트4() {
+    void 예외_테스트4() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("223"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -53,7 +53,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 에외_테스트5() {
+    void 예외_테스트5() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("문1자2열"))
                         .isInstanceOf(IllegalArgumentException.class)
