@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-
-    public int[] pickRandomNumber() {
+    private int[] computerNums;
+    public void pickRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() != 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -15,8 +15,12 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
-        return computer.stream()
+        this.computerNums = computer.stream()
                 .mapToInt(Integer::intValue)
                 .toArray();
+    }
+
+    public int[] getComputerNums() {
+        return computerNums;
     }
 }
