@@ -32,7 +32,7 @@ public class Game {
 
     }
     private boolean playGame(){
-        boolean retryCheck; // 재시도 여부 체크
+        boolean retryCheck = false; // 재시도 여부 체크
 
         //컴퓨터의 랜덤 값 생성
         List<Integer> answer = computer.createAnswer();
@@ -52,6 +52,9 @@ public class Game {
             GameResult gameResult = getGameResult(userAnswer, answer);
 
             // 딜러의 결과값 출력
+            if(printResult(gameResult)){
+                printSuccess();
+            }
 
             // 성공 여부 체크 후 return
         }
@@ -73,7 +76,24 @@ public class Game {
             }
         }
 
-        return new GameResult(strike,ball);
+        return new GameResult(strike, ball);
+    }
+
+    private boolean printResult(GameResult gameResult) {
+        if(gameResult.getStrike() == GameConfig.CORRECT_LENGTH ){
+            System.out.println(gameResult.getStrike() + "스트라이크");
+            return true;
+        }else if(gameResult.getStrike() != 0 || gameResult.getBall() != 0){
+            System.out.println(gameResult.getStrike() + "볼 " + gameResult.getBall() + "스트라이크");
+        }else{
+            System.out.println("낫싱");
+        }
+        return false;
+    }
+
+    private void printSuccess(){
+        System.out.println(GameConfig.CORRECT_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
 }
