@@ -16,7 +16,7 @@ public class Application {
         // TODO: 프로그램 구현
         printStartMessage();
 
-        List<Integer> computer = getRandomNumberList();
+        BaseBallNumberGroup computer = new BaseBallNumberGroup(getRandomNumberList());
     }
 
     public static void printStartMessage() {
