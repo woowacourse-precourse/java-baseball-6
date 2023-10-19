@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.computer.domain.Computer;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
@@ -10,6 +11,14 @@ public class Application {
 
         Computer computer = new Computer();
         List<Integer> randomAnswer = computer.createRandomAnswer();
+
+        try {
+            String input = Console.readLine();
+            computer.validateInput(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println("e = " + e);
+        }
+
     }
 
 }

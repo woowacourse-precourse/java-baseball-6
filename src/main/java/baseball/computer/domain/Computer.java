@@ -22,4 +22,25 @@ public class Computer {
         return randomAnswer;
     }
 
+    public void validateInput(String input) {
+
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력받을 수 있습니다.");
+        }
+
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("3자리의 수를 입력해야합니다.");
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (input.indexOf(input.charAt(i)) != i) {
+                throw new IllegalArgumentException("각 자리의 수가 서로 달라야합니다.");
+            }
+        }
+    }
+
+
+
 }
