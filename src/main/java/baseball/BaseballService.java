@@ -4,4 +4,9 @@ public class BaseballService {
     public BaseballService() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+
+    public BaseballScore compareBaseballNumber(BaseballNumber computerNumber, BaseballNumber userNumber) {
+        computerNumber.compareNumber(userNumber);
+
+    }
 }

@@ -8,6 +8,8 @@ public class Application {
         BaseballNumber computerNumber = BaseballNumber.initializeComputerNumber();
         System.out.println("컴퓨터 : " + computerNumber);
         BaseballNumber userNumber = BaseballNumber.initializeUserNumber();
+        BaseballScore baseballScore = baseballService.compareBaseballNumber(computerNumber, userNumber);
+
         System.out.println(userNumber);
         System.out.println("게임 끝");
 
