@@ -26,14 +26,7 @@ public final class InputView {
 
   public GameStatus inputWillReplay() {
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-    final String input = readLine();
-
-    if (!("1".equals(input) || "2".equals(input))) {
-      throw new IllegalArgumentException("1, 2 중 하나를 입력해주세요.");
-    }
-
-    return GameStatus.of(input);
+    return GameStatus.of(readLine());
   }
 
 }
