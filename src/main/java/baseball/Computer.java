@@ -56,5 +56,12 @@ public class Computer {
                 || userNumbers[0].equals(userNumbers[2])) {
             throw new IllegalArgumentException("중복된 숫자를 입력할 수 없습니다.");
         }
+        validateZeroNumber(userNumbers);
+    }
+
+    private static void validateZeroNumber(final String[] userNumbers) {
+        if (userNumbers[0].equals("0") || userNumbers[1].equals("0") || userNumbers[2].equals("0")) {
+            throw new IllegalArgumentException("숫자는 1~9 사이의 숫자만 입력할 수 있습니다.");
+        }
     }
 }

@@ -54,4 +54,14 @@ class ComputerTest {
         assertThatIllegalArgumentException().isThrownBy(() -> computer.addUserNumber(invalidUserNumber))
                 .withMessageContaining("중복된 숫자를 입력할 수 없습니다.");
     }
+
+    @DisplayName("사용자는 0을 입력할 수 없습니다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"120", "012", "890", "150"})
+    void addUserNumber_exception_inputZero(String invalidUserNumber) {
+
+        // given & when & then
+        assertThatIllegalArgumentException().isThrownBy(() -> computer.addUserNumber(invalidUserNumber))
+                .withMessageContaining("숫자는 1~9 사이의 숫자만 입력할 수 있습니다.");
+    }
 }
