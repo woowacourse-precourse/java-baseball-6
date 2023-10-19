@@ -14,6 +14,26 @@ import static baseball.constant.GameConstant.*;
 public class Game {
     List<Integer> randomNumber = new ArrayList<>();
 
+    public void run()  {
+        do {
+            oneGame();
+        } while (restartOrExit());
+    }
+
+    //한 게임
+    private void oneGame() {
+        boolean iterCheck;
+        System.out.println(GAME_START);
+        createRandomNumber();
+        System.out.println(randomNumber);
+        do {
+            String stringNumber = userInput();
+            errorValidate(stringNumber);
+            List<Integer> inputNumber = stringToIntegerList(stringNumber);
+            iterCheck = inputValidate(inputNumber);
+        } while (iterCheck);
+    }
+
     private void createRandomNumber(){
         randomNumber.clear();
         while (randomNumber.size() < RANDOM_NUMBER_SIZE) {
@@ -24,14 +44,14 @@ public class Game {
         }
     }
 
-    private void userInput(){
+    private String userInput()  {
         System.out.print(INPUT_NUMBER);
-        String inputStringNumber = Console.readLine();
+        return Console.readLine();
     }
 
-    private void errorValidate(String stringNumber) throws IllegalAccessException {
+    private void errorValidate(String stringNumber) {
         if (!stringNumber.matches(REGULAR_EXPRESSION_INPUT_NUMBER)) {
-            throw new IllegalAccessException(INPUT_ERROR);
+            throw new IllegalArgumentException(INPUT_ERROR);
         }
     }
 
@@ -53,11 +73,13 @@ public class Game {
         } else if (strike == THREE_STRIKE) {
             printStrike(strike);
             System.out.println();
-            return true;
+            return false;
         }
         printBall(ball);
+        System.out.print(" ");
         printStrike(strike);
-        return false;
+        System.out.println();
+        return true;
     }
 
     private int strikeValidate(List<Integer> number){
@@ -91,31 +113,39 @@ public class Game {
     }
 
     private void printStrike(int strike){
-        System.out.print(strike+STRIKE);
+        if (strike != 0) {
+            System.out.print(strike+STRIKE);
+        }
     }
 
     private void printBall(int ball){
-        System.out.print(ball+BALL);
+        if (ball != 0) {
+            System.out.print(ball+BALL);
+        }
     }
 
     private void gameEnd(){
         System.out.println(GAME_END);
+    }
+
+    private boolean restartOrExit()  {
+        gameEnd();
         System.out.print(RESTART_OR_EXIT);
         String restartOrExit = Console.readLine();
+        return restartOrExitValidate(restartOrExit);
+
     }
 
-    private boolean restartOrExit(String restartOrExit) throws IllegalAccessException {
+    private boolean restartOrExitValidate(String restartOrExit)  {
         if (!restartOrExit.matches(REGULAR_EXPRESSION_RESTART_OR_END_NUMBER)) {
-            throw new IllegalAccessException(INPUT_ERROR);
+            throw new IllegalArgumentException(INPUT_ERROR);
         }
         if (restartOrExit.equals(RESTART_VALUE)) {
-            return false;
-        } else if (restartOrExit.equals(END_VALUE)) {
             return true;
+        } else if (restartOrExit.equals(END_VALUE)) {
+            return false;
         }
-
         return false;
     }
-
-
+    
 }
