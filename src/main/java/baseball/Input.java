@@ -4,10 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
 
-    public static final String RESTART = "1";
-    public static final String EXIT = "2";
-
     public static String guess;
+
+    public static final int GUESS_INPUT_LENGTH = 3;
+    private static final String ZERO = "0";
+
+    private static final String RESTART = "1";
+    private static final String EXIT = "2";
 
     public static void askGuess() {
         guess = Console.readLine();
@@ -21,13 +24,13 @@ public class Input {
     }
 
     private static void validateGuessInput() {
-        if (guess.length() != 3) {
+        if (guess.length() != GUESS_INPUT_LENGTH) {
             throw new IllegalArgumentException(InputErrorMessage.GUESS);
         }
         if (!isNumeric()) {
             throw new IllegalArgumentException(InputErrorMessage.GUESS);
         }
-        if (guess.contains("0")) {
+        if (guess.contains(ZERO)) {
             throw new IllegalArgumentException(InputErrorMessage.GUESS);
         }
         if (isDuplicate()) {
