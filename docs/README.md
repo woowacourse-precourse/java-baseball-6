@@ -19,7 +19,7 @@ List<Integer> makeThreeDifferentNumberList(int min, int max) 범위 내의 서�
 - 유저가 입력한 값에 대한 검증 메서드
 ```java
 void validateThreeNumbers(String input) 유저가 입력한 값에 대한 validate false가 걸리면 Exception 던지기
-void validateNewGameInput(String input) 재시작 / 종료 입력값에 대한 validate, false 걸리면 Exception 던지기
+void validateContinueSign(String input) 재시작 / 종료 입력값에 대한 validate, false 걸리면 Exception 던지기
         
         //잘못된 값이면 false 반환
 boolean duplicationCheck(String input) 중복수 판별 
