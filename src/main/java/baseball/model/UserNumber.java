@@ -22,6 +22,9 @@ public class UserNumber {
         else if(!isThreeDigit(number)){
             throw new IllegalArgumentException("세자리 숫자를 입력해주세요");
         }
+        else if(!isInRange(StringToList(number))){
+            throw new IllegalArgumentException("각자리의 숫자가 1부터 9사이의 숫자로 이루어져야 합니다.");
+        }
     }
 
     private boolean isEmpty(String number) {
@@ -34,6 +37,11 @@ public class UserNumber {
 
     private boolean isThreeDigit(String number) {
         return number.length() == LIST_SIZE;
+    }
+
+    private boolean isInRange(List<Integer> numberList) {
+        return numberList.stream()
+                .allMatch(num -> num>=MINIMUM_NUM_IN_RANGE && num<=MAXIMUM_NUM_IN_RANGE);
     }
 
     private List<Integer> StringToList(String number) {
