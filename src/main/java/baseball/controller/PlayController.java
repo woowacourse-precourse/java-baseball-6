@@ -5,14 +5,15 @@ import baseball.model.GameNumber;
 import java.util.List;
 
 public class PlayController {
-    final Integer MAXIMUM_NUMBER_LENGTH = 3;
+    private final Integer MAXIMUM_NUMBER_LENGTH;
     private GameNumber gameNumber;
 
     GenerateController generateController;
 
-    public PlayController(GenerateController generateController) {
+    public PlayController(GenerateController generateController, Integer length) {
         this.gameNumber = new GameNumber();
         this.generateController = generateController;
+        this.MAXIMUM_NUMBER_LENGTH = length;
     }
 
     public void generateNumber() {
