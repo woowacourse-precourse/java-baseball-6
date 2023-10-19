@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import org.assertj.core.api.CharSequenceAssert;
 
 /**
  * 사용자의 입력을 받는 클래스. 검증과 함께 작동하며, 검증에 실패하는 경우 예외를 발생한다. 예외는 이곳에서만 발생한다. 사용자가 입력하는 값은
@@ -10,4 +9,6 @@ import org.assertj.core.api.CharSequenceAssert;
  * <p>메뉴를 선택하는 경우, 1 또는 2로 제한된다.
  */
 public class PlayerInput {
+    public static final int NEW_GAME = 1;
+    public static final int QUIT_GAME = 2;
 }
