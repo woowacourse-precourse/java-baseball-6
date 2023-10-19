@@ -41,11 +41,15 @@ public class Game {
         }
     }
 
-    private void match(List<Integer> answer, List<Integer> userPick, Result result) {
-
+    private void match(
+            final List<Integer> answer,
+            final List<Integer> userPick,
+            final Result result
+    ) {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             boolean isExist = answer.contains(userPick.get(i));
             boolean isRightOrder = (Objects.equals(answer.get(i), userPick.get(i)));
+//            boolean isRightOrder = answer.get(i) == userPick.get(i);
 
             if (isExist) {
                 if (isRightOrder) result.addStrike();
