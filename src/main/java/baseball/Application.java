@@ -20,6 +20,8 @@ public class Application {
             while(true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 List<Integer> user = getUserNumbers();
+
+                int strike = getStrike(computer, user);
             }
         }
     }
@@ -60,5 +62,22 @@ public class Application {
             }
         }
         return numbers;
+    }
+
+    /**
+     * 위치별 번호가 같은 값의 갯수를 구한다.
+     * @param computer 컴퓨터의 수
+     * @param user 사용자가 입력한 수
+     * @return 같은 번호의 갯수
+     */
+    public static int getStrike(List<Integer> computer, List<Integer> user) {
+        int res = 0;
+
+        for (int i=0; i < 3; i++){
+            if (computer.get(i).equals(user.get(i))){
+                res++;
+            }
+        }
+        return res;
     }
 }
