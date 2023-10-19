@@ -6,6 +6,7 @@
 - [x] 각 자리수가 1~9 사이의 숫자가 아니라면 `IllegalArgumentException` 예외를 발생시킨다.
 <br>
 
+- [ ] 게임 숫자가 음수라면 `IllegalArgumentException` 예외를 발생시킨다.
 - [ ] 게임 숫자가 3자리가 아니라면 `IllegalArgumentException` 예외를 발생시킨다.
 - [ ] 게임 숫자에 중복이 들어가면 `IllegalArgumentException` 예외를 발생시킨다.
 <br>
