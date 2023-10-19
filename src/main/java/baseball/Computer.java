@@ -2,11 +2,15 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
 
-    private List<Integer> numbers;
+    private final List<Integer> numbers = new ArrayList<>();
+
+    public Computer() {
+    }
 
     public List<Integer> pickNumbers() {
         while (numbers.size() < 3) {
