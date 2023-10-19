@@ -8,7 +8,7 @@
     - CreateRandomNumber
   - 메인 루프
     - 전체 게임에 대한 시작 루프
-    - Start
+    - run
       
   - 사용자 입력
     - UserInput
@@ -19,7 +19,7 @@
   - 사용자 입력값에 대한 검증
     - 볼이면 볼 , 스트라이크면 스트라이크 , 낫씽이면 낫씽
     - 잘못된 값이면 IllegalArgumentException
-    - InputValidation
+    - InputCheck
       - Ball
       - Strike
       - Nothing
