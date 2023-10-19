@@ -9,7 +9,7 @@ public class OutputView {
     }
 
     public static void askNumbers() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public static void informGameOver() {
@@ -18,5 +18,9 @@ public class OutputView {
 
     public static void askContinueGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public static void showResult(final String result) {
+        System.out.println(result);
     }
 }
