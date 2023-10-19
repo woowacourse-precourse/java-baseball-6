@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class BallNumbers {
@@ -12,10 +13,19 @@ public class BallNumbers {
 
     private void validate(final List<Integer> numbers) {
         validateSize(numbers);
+        validateDuplicate(numbers);
     }
 
     private void validateSize(final List<Integer> numbers) {
         if (numbers.size() != BALL_NUMBERS_SIZE) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplicate(final List<Integer> numbers) {
+        final HashSet<Integer> uniqueNumbers = new HashSet<>(numbers);
+
+        if (numbers.size() != uniqueNumbers.size()) {
             throw new IllegalArgumentException();
         }
     }
