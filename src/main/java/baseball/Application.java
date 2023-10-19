@@ -120,14 +120,19 @@ public class Application {
         return new GuessResult(ballCount, strikeCount);
     }
 
-
-
-
     static void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         GameNumber computer = pickComputerNumber();
-        GameNumber user = readUserNumber();
-        GuessResult guessResult = createGuessResult(computer, user);
+        boolean isGameProceed = true;
+        while (isGameProceed) {
+            GameNumber user = readUserNumber();
+            GuessResult guessResult = createGuessResult(computer, user);
+
+            if (guessResult.isAllStrike()) {
+                isGameProceed = false;
+            }
+        }
+
     }
 
 
