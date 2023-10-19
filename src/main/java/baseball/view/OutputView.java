@@ -14,7 +14,7 @@ public class OutputView {
     }
 
     public static void printGetInput() {
-        System.out.println(GET_INPUT_MESSAGE);
+        System.out.print(GET_INPUT_MESSAGE);
     }
 
     public static void printResult(boolean isNothing, int ballCount, int strikeCount) {
