@@ -1,2 +1,6 @@
-package baseball;public class NumberGenerator {
+package baseball;
+
+public class NumberGenerator {
+
+
 }
