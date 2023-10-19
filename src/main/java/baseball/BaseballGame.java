@@ -15,7 +15,7 @@ public class BaseballGame {
         do {
             baseballComputer.generateNumber();
             startUserTurn();
-        } while (true);
+        } while (askRestart());
     }
 
     private static void startUserTurn() {
@@ -25,5 +25,18 @@ public class BaseballGame {
             gameResult = baseballComputer.createResult();
             OutputView.printGameResult(GameResultMessageGenerator.createGameResultMessage(gameResult));
         } while (!gameResult.isWin());
+    }
+
+    private static boolean askRestart() {
+        OutputView.printGameOver();
+        String userSelection = InputView.inputRestart();
+        validateUserSelection(userSelection);
+        return userSelection.equals(RESTART);
+    }
+
+    private static void validateUserSelection(final String userSelection) {
+        if (!userSelection.equals(RESTART) && !userSelection.equals(END_GAME)) {
+            throw new IllegalArgumentException("1(재시작) 혹은 2(종료)만 입력해야 합니다.");
+        }
     }
 }
