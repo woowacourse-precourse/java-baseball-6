@@ -1,10 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Application {
-    static final Scanner scanner = new Scanner(System.in);
+    public Application() {
+
+    }
 
     public static void main(String[] args) {
         playGame();
@@ -19,16 +22,19 @@ public class Application {
                 isThreeDigit(number);
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
                 flag = isRestartGame();
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+        } finally {
+            Console.close();
         }
     }
 
     public static String requestNumber() {
         System.out.print("숫자를 입력해 주세요 : ");
-        String input = scanner.nextLine();
+        String input = Console.readLine();
         return input;
     }
 
@@ -46,7 +52,7 @@ public class Application {
 
     private static int readUserInput() {
         try {
-            return Integer.parseInt(scanner.nextLine());
+            return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("입력값이 잘못 되었습니다.");
         }
