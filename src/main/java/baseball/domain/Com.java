@@ -1,8 +1,8 @@
 package baseball.domain;
 
 public class Com {
-    public String numbers;
+    public Numbers numbers;
     public Com(String numbers){
-        this.numbers=numbers;
+        this.numbers=new Numbers(numbers);
     }
 }

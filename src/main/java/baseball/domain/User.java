@@ -1,11 +1,11 @@
 package baseball.domain;
 
 public class User{
-    private final String numbers;
+    private final Numbers numbers;
     private Point point;
 
     public User(String numbers){
-        this.numbers=numbers;
+        this.numbers=new Numbers(numbers);
         this.point=new Point(0,0);
     }
 
@@ -40,11 +40,11 @@ public class User{
     }
 
     private boolean isSamePlace(String number,int index){
-        return this.numbers.indexOf(number)==index;
+        return this.numbers.getNumbers().indexOf(number)==index;
     }
 
     private boolean isExistNumber(String number){
-        return this.numbers.contains(number);
+        return this.numbers.getNumbers().contains(number);
     }
 
     private void refreshPoint(int[] result){
