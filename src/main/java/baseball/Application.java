@@ -30,14 +30,6 @@ public class Application {
         }
     }
 
-    private static int getContinueNum() {
-        int inputNum = Console.readLine().charAt(0) - '0';
-        if (inputNum != 1 && inputNum != 2) {
-            throw new IllegalArgumentException("잘못된 값 입니다");
-        }
-        return inputNum;
-    }
-
     private static void startGame(ArrayList<Integer> player, ArrayList<Integer> computer) {
         while (true) {
             getPlayNum(player);
@@ -119,5 +111,13 @@ public class Application {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
         }
+    }
+
+    private static int getContinueNum() {
+        int inputNum = Console.readLine().charAt(0) - '0';
+        if (inputNum != 1 && inputNum != 2) {
+            throw new IllegalArgumentException("잘못된 값 입니다");
+        }
+        return inputNum;
     }
 }
