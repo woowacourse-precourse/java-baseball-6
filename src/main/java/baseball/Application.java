@@ -22,7 +22,19 @@ public class Application {
                 }
             }
 
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            int[] guess = new int[3];
+            while(true) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String input = Console.readLine();
+                /*
+                * 세자리인지 판단
+                */
+                if(input.length()!=3)
+                    throw new IllegalArgumentException();
 
+
+            }
 
         }
 
