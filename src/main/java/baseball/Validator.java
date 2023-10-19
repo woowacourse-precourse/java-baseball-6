@@ -21,21 +21,21 @@ public class Validator {
 		validateLength(inputValue, 1);
 		validateNumber(inputValue);
 		if (!"12".contains(inputValue)) {
-			throw new IllegalArgumentException("1 과 2만 입력할 수 있습니다.");
+			throw new IllegalArgumentException("1과 2만 입력할 수 있습니다.");
 		}
 		return Integer.parseInt(inputValue);
 	}
 
 	private static void validateLength(String value, int size) {
 		if (value.length() != size) {
-			throw new IllegalArgumentException("3 자리 숫자를 입력해야 합니다.");
+			throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다.");
 		}
 	}
 
 	private static void validateNumber(String value) {
 		for (int i = 0; i < value.length(); i++) {
-			if (value.charAt(i) < '0' || value.charAt(i) > '9') {
-				throw new IllegalArgumentException("숫자가 아닌 값이 포함되어 있습니다.");
+			if (value.charAt(i) < '1' || value.charAt(i) > '9') {
+				throw new IllegalArgumentException("1에서 9까지 서로 다른 임의의 수 3개를 선택해야합니다.");
 			}
 		}
 	}

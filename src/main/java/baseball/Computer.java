@@ -19,10 +19,6 @@ public class Computer {
 		}
 	}
 
-	public boolean isMisMatch(List<Integer> player) {
-		return false;
-	}
-
 	public List<Integer> calculateResult(List<Integer> trial) {
 		int ballCount = 0;
 		int strikeCount = 0;
