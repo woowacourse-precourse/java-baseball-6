@@ -12,6 +12,17 @@
 - 게임 종료 후 restart Or exit 결정할 변수
 - 점수 저장하는 변수 (strike, ball)
 
+### Service
+
+```
+1. MakeComputerRandom : createRandom()
+2. MakeUserAnswer : input()
+3. UserValidation : validation()
+4. Play : playBaseballGame()
+5. PrintResult : result()
+6. Restart : restartOrExit()
+```
+
 ### 메서드 정의
 
 ```
