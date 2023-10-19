@@ -13,32 +13,18 @@ public class BaseballGameProcessorImpl implements BaseballGameProcessor {
     @Override
     public String process(String computerNumber, String inputNumber) {
         Set<Character> box = new HashSet<>();
-        int strikeCount = INIT_NUMBER, ballCount = INIT_NUMBER;
+        Baseball baseball = new Baseball();
         for (int i= INIT_NUMBER; i< computerNumber.length(); i++) {
             box.add(computerNumber.charAt(i));
         }
         for (int i= INIT_NUMBER; i< inputNumber.length(); i++) {
             if (!box.contains(inputNumber.charAt(i))) continue;
             if (computerNumber.charAt(i)== inputNumber.charAt(i)) {
-                strikeCount++;
+                baseball.incrementStrikeCount();
                 continue;
             }
-            ballCount++;
+            baseball.incrementBallCount();
         }
-        return makeResultString(strikeCount, ballCount);
-    }
-
-    private String makeResultString(int strikeCount, int ballCount) {
-        StringBuilder sb = new StringBuilder();
-        if (ballCount != INIT_NUMBER) {
-            sb.append(ballCount + BALL + BLANK);
-        }
-        if (strikeCount != INIT_NUMBER) {
-            sb.append(strikeCount + STRIKE);
-        }
-        if (sb.isEmpty()) {
-            sb.append(NOTHING);
-        }
-        return sb.toString().trim();
+        return baseball.toString();
     }
 }
