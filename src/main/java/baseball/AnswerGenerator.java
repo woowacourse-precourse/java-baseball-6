@@ -1,6 +1,12 @@
 package baseball;
 
+import static baseball.GameClient.BALL_LENGTH;
+import static baseball.GameClient.RANGE_MAXIMUM_VALUE;
+import static baseball.GameClient.RANGE_MINIMUM_VALUE;
+
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -9,4 +15,13 @@ import java.util.List;
  * 사용한다.
  */
 public class AnswerGenerator {
+
+    public static List<Integer> createAnswer() {
+        HashSet<Integer> answerNumbers = new HashSet<>();
+        while (answerNumbers.size() < BALL_LENGTH) {
+            int pickedNumber = Randoms.pickNumberInRange(RANGE_MINIMUM_VALUE, RANGE_MAXIMUM_VALUE);
+            answerNumbers.add(pickedNumber);
+        }
+        return new ArrayList<>(answerNumbers);
+    }
 }
