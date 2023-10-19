@@ -42,14 +42,8 @@ public class Game {
     }
 
     private void validateInput(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("3자리의 숫자를 입력해주세요!");
-        }
-        if (!input.matches("[0-9]+")) {
-            throw new IllegalArgumentException("숫자만 입력해주세요!");
-        }
-        if (input.contains("0")) {
-            throw new IllegalArgumentException("0은 넣으면 안돼요!");
+        if (!input.matches("^[1-9]{3}$")) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요!");
         }
         if (input.chars().distinct().count() != 3) {
             throw new IllegalArgumentException("중복된 숫자는 안돼요!");
