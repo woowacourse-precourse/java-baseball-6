@@ -5,12 +5,12 @@
   - [x] 문제에서 주어진 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 활용
   - [x] 서로 다른 수가 정상적으로 지정되는지 확인
 ## 사용자의 수 지정 기능
-- [ ] 사용자의 수를 지정하는 initializeUserNumber 메서드 구현
-  - [ ] 문제에서 주어진 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
-  - [ ] 잘못된 입력에 대한 IllegalArgumentException 발생 후 애플리케이션 종료
-    - [ ] 서로 같은 숫자를 입력했을 때
-    - [ ] 숫자가 입력되지 않았을때
-    - [ ] 입력 크기가 3이 아닐때
+- [x] 사용자의 수를 지정하는 initializeUserNumber 메서드 구현
+  - [x] 문제에서 주어진 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
+  - [x] 잘못된 입력에 대한 IllegalArgumentException 발생 후 애플리케이션 종료
+    - [x] 서로 같은 숫자를 입력했을 때
+    - [x] 숫자가 입력되지 않았을때
+    - [x] 입력 크기가 3이 아닐때
     - 또 다른 예외 사항은 없는지 생각
 ## 컴퓨터의 수와 사용자의 수 비교
  - [ ] 서로의 수를 비교하는 compareNumber 메서드 구현 
