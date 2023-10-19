@@ -54,7 +54,7 @@
 사용자로부터 입력받는 클래스
 
 - [x] String inputUserNumber() : 사용자 수 입력
-- [ ] String inputRestartValue() : 게임 재시작 여부 입력
+- [x] String inputRestartValue() : 게임 재시작 여부 입력
 
 ### OutputView
 사용자에게 출력하여 보여주는 클래스
