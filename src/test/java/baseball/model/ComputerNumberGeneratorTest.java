@@ -9,12 +9,12 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class CreateComputerNumberTest {
+class ComputerNumberGeneratorTest {
     static List<Integer> computerNumbers;
 
     @BeforeAll
     static void init() {
-        CreateComputerNumber createComputerNumber = new CreateComputerNumber();
+        ComputerNumberGenerator createComputerNumber = new ComputerNumberGenerator();
         createComputerNumber.generateRandomNumbers();
         computerNumbers = createComputerNumber.getComputerNumber();
     }
