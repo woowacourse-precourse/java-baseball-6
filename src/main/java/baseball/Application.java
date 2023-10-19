@@ -8,7 +8,6 @@ public class Application {
 
     private static final String STRING_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
-    private static final int SIZE_RANDOM_NUMBER = 3;
     private static final int MIN_PICK_NUMBER = 1;
     private static final int MAX_PICK_NUMBER = 9;
 
@@ -25,7 +24,7 @@ public class Application {
 
     public static List<Integer> getRandomNumberList() {
         List<Integer> randomNumberList = new ArrayList<>();
-        while (randomNumberList.size() < SIZE_RANDOM_NUMBER) {
+        while (randomNumberList.size() < BaseBallNumberGroup.SIZE_RANDOM_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(MIN_PICK_NUMBER, MAX_PICK_NUMBER);
             if (!randomNumberList.contains(randomNumber)) {
                 randomNumberList.add(randomNumber);

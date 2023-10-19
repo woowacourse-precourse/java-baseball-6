@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class BaseBallNumberGroup {
-    private static final int SIZE_RANDOM_NUMBER = 3;
+    public static final int SIZE_RANDOM_NUMBER = 3;
 
     private final List<Integer> baseBallNumbers;
 
