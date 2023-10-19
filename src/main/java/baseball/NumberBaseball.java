@@ -3,6 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.Arrays.stream;
 
 public class NumberBaseball {
 
@@ -12,10 +16,11 @@ public class NumberBaseball {
     public NumberBaseball() {
         this.generatedNumberFlag = new boolean[10];
         this.answer = new int[3];
+        generateAnswerNumber();
     }
 
     public void generateAnswerNumber() {
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             int number = Randoms.pickNumberInRange(1, 9);
             if(this.generatedNumberFlag[number]) {
                 i--;
@@ -31,8 +36,9 @@ public class NumberBaseball {
         int balls = 0;
         int strikes = 0;
 
-        for(int i = 0; i < 3; i++) {
-            if(Arrays.asList(answer).contains(input[i])) {
+        List<Integer> inputList = Arrays.stream(answer).boxed().collect(Collectors.toList());
+        for (int i = 0; i < 3; i++) {
+            if(inputList.contains(input[i])) {
                 balls++;
             }
             if(answer[i] == input[i]) {
@@ -43,6 +49,4 @@ public class NumberBaseball {
         balls -= strikes;
         return new GuessResult(strikes, balls);
     }
-
-
 }

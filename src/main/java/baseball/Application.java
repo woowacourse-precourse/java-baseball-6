@@ -12,9 +12,9 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while(true) {
             NumberBaseball game = new NumberBaseball();
-            System.out.println("숫자 야구 게임을 시작합니다.");
 
             while(true) {
                 System.out.print("숫자를 입력해 주세요 : ");
@@ -27,9 +27,20 @@ public class Application {
                 System.out.println(getResultMsg(guessResult));
 
                 if(guessResult.strikes() == 3) {
-                    System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
+            }
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restartInput = Console.readLine();
+
+            if(!validateRestartInput(restartInput)) {
+                throw new IllegalArgumentException();
+            }
+
+            if(restartInput.equals("2")) {
+                break;
             }
         }
     }
@@ -41,7 +52,7 @@ public class Application {
 
         String resultMsg = "";
         if(result.balls() > 0) {
-            resultMsg += (result.strikes() + "스트라이크");
+            resultMsg += (result.balls() + "볼");
         }
         if(result.balls() > 0 && result.strikes() > 0) {
             resultMsg += " ";
@@ -77,5 +88,9 @@ public class Application {
             numberFlag[input[i]] = true;
         }
         return false;
+    }
+
+    public static boolean validateRestartInput(String input) {
+        return input.equals("1") || input.equals("2");
     }
 }
