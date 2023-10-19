@@ -10,31 +10,14 @@ import java.util.stream.Collectors;
 
 import static baseball.MessageConstants.*;
 
-/**
- * camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
- * Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
- * 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
- *
- * exam
- * List<Integer> computer = new ArrayList<>();
- * while (computer.size() < 3) {
- *     int randomNumber = Randoms.pickNumberInRange(1, 9);
- *     if (!computer.contains(randomNumber)) {
- *         computer.add(randomNumber);
- *     }
- * }
- */
 public class Application {
+    private static boolean playFlag = true;
     private final int NUMBER_LENGTH = 3;
 
-    public void start(){
-        System.out.println(START_MESSAGE);
+    public void run(){
         //값 저장
         Set<String> computer = initComputer();
-
-        //값 String으로 변환
         String result = computer.stream().collect(Collectors.joining());
-        System.out.println("result = " + result);
 
         while (true){
             //사용자 인풋 받기
@@ -74,20 +57,20 @@ public class Application {
         return isResult(strikeCount, ballCount);
     }
     private Boolean isResult(int strikeCount, int ballCount) {
+        String message = "";
 
-        if (strikeCount == NUMBER_LENGTH){
-            System.out.println(String.format(STRIKE_FORMAT, strikeCount));
-            return true;
-        } else if (strikeCount > 0 && ballCount > 0) {
-            System.out.println(String.format(BALL_AND_STRIKE_FORMAT, ballCount, strikeCount));
+        if (strikeCount > 0 && ballCount > 0) {
+            message = String.format(BALL_AND_STRIKE_FORMAT, ballCount, strikeCount);
         } else if (strikeCount > 0) {
-            System.out.println(String.format(STRIKE_FORMAT, strikeCount));
+            message = String.format(STRIKE_FORMAT, strikeCount);
         } else if (ballCount > 0) {
-            System.out.println(String.format(BALL_FORMAT, ballCount));
+            message = String.format(BALL_FORMAT, ballCount);
         } else {
-            System.out.println(EMPTY_FORMAT);
+            message = EMPTY_FORMAT;
         }
-        return false;
+
+        System.out.println(message);
+        return strikeCount == NUMBER_LENGTH;
     }
     private void inputCheck(String input){
         if (!isNumericAndThreeDigits(input)){
@@ -111,7 +94,6 @@ public class Application {
                 .collect(Collectors.groupingBy(c -> c, Collectors.counting()))
                 .values()
                 .size();
-        System.out.println("length = " + length);
 
         return length == 3 ? true : false;
     }
@@ -119,15 +101,22 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application application = new Application();
-        String playNumber = "1";
-        while (playNumber.equals("1")){
-            application.start();
+        while (playFlag){
+            System.out.println(START_MESSAGE);
+            application.run();
             System.out.println(END_MESSAGE);
-            playNumber = Console.readLine();
-            if (!(playNumber.equals("1") || playNumber.equals("2"))){
-                throw new IllegalArgumentException("입력값 \""+playNumber+"\"는 잘못된 요청 정보입니다.");
-            }
+            application.isPlay(Console.readLine());
         }
 
+    }
+
+    private void isPlay(String playNumber) {
+        switch (playNumber){
+            case "1" -> playFlag = true;
+            case "2" -> playFlag = false;
+            default -> {
+                throw new IllegalArgumentException(String.format("입력값 \"%s\"는 잘못된 요청 정보입니다.", playNumber));
+            }
+        }
     }
 }
