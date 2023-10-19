@@ -22,6 +22,12 @@ public class Validator {
         }
     }
 
+    public void validate1Or2(String str){
+        if(!str.matches("[12]")){
+            throw new IllegalArgumentException("1 또는 2의 숫자만 입력해야 합니다.");
+        }
+    }
+
 
 
 }
