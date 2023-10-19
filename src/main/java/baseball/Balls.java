@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
-    private List<Integer> myInt;
+    private List<Integer> myInt = new ArrayList<>();
 
     public Balls(String str) {
         validString(str);
-        myInt = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             myInt.add(Integer.parseInt(String.valueOf(str.charAt(i))));
         }
@@ -34,7 +33,6 @@ public class Balls {
                 throw new IllegalArgumentException();
             }
         }
-
     }
 
     private boolean isThreeInt(String str) {
@@ -45,6 +43,4 @@ public class Balls {
             return false;
         }
     }
-
-
 }

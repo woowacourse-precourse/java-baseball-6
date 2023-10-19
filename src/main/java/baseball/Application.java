@@ -1,6 +1,6 @@
 package baseball;
 public class Application {
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) {
         BaseBall.run();
     }
 }
