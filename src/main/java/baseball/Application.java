@@ -64,19 +64,23 @@ class BaseballGame{
             }
         }
     }
-    public void startGame(){
-        newBaseballGame();
-        compareNumber();
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    public void restartOrExit(){
         String restartOrExit = Console.readLine();
         if(restartOrExit.equals("1")){
             startGame();
         }else if(restartOrExit.equals("2")){
             System.out.print("게임 종료");
         }else{
-            System.out.println("잘못된 입력");
+            System.out.println("잘못된 입력, 다시 입력하세요.");
+            restartOrExit();
         }
+    }
+    public void startGame(){
+        newBaseballGame();
+        compareNumber();
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        restartOrExit();
     }
 
 }
