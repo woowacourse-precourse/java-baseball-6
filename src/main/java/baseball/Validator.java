@@ -14,18 +14,18 @@ public class Validator {
         return instance;
     }
 
-    public static void validateInput(String input) {
+    public static void validateInput(final String input) {
         validateInputDigit(input);
         validateInputRange(input);
         validateInputContainsZero(input);
     }
 
-    private static void validateInputRange(String input) {
+    private static void validateInputRange(final String input) {
         if (input.length() == Const.NUMBER_LENGTH) return;
         throw new IllegalStateException();
     }
 
-    private static void validateInputDigit(String input) {
+    private static void validateInputDigit(final String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -33,7 +33,7 @@ public class Validator {
         }
     }
 
-    private static void validateInputContainsZero(String input) {
+    private static void validateInputContainsZero(final String input) {
         String[] split = input.split("");
         if (Arrays.asList(split).contains("0")) {
             throw new IllegalStateException();
