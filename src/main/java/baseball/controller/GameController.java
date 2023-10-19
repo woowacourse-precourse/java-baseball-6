@@ -20,12 +20,12 @@ public class GameController {
             String usersGuessString = InputController.scanUsersGuess();
             NumberList userAnswer = Transfer.stringToNumberList(usersGuessString);
 
+            Hint hint = calculateHint(computer.getAnswer(), userAnswer);
+            OutputView.printHintMessage(hint);
             if (computer.getAnswer().equals(userAnswer)) {
                 OutputView.printSuccessAndEndMessage();
                 break;
             }
-            Hint hint = calculateHint(computer.getAnswer(), userAnswer);
-            OutputView.printHintMessage(hint);
         }
     }
 
