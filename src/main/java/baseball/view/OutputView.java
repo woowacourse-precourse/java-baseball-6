@@ -18,4 +18,8 @@ public class OutputView {
 		}
 		System.out.println(String.join(" ", resultMessage));
 	}
+
+	public static void printMessage(String message) {
+		System.out.println(message);
+	}
 }
