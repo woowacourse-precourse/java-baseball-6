@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Computer {
 
-    List<Integer> com = new ArrayList<>();
+    private List<Integer> com = new ArrayList<>();
 
     public void getNumbers() {
         while (com.size() < 3) {
@@ -15,5 +15,9 @@ public class Computer {
                 com.add(randomNumber);
             }
         }
+    }
+
+    public void getClear() {
+        com.clear();
     }
 }
