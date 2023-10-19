@@ -12,7 +12,10 @@
       
   - 사용자 입력
     - UserInput
-    
+      
+  - String to List<Integet> 변환기능
+    - StringToIntegetList
+
   - 사용자 입력값에 대한 검증
     - 볼이면 볼 , 스트라이크면 스트라이크 , 낫씽이면 낫씽
     - 잘못된 값이면 IllegalArgumentException
