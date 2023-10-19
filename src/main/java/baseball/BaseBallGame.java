@@ -15,36 +15,42 @@ public class BaseBallGame {
 
 	private void start() {
 		this.computerNumber = generateRandomNumber();
-
 		System.out.println("숫자 야구 게임을 시작합니다.");
 
 		String judgment = "";
 
-		while (!judgment.equals("3 스트라이크")) {
+		while (!judgment.equals("3스트라이크")) {
 			System.out.print("숫자를 입력해주세요 : ");
 			String myNumber = Console.readLine();
 			validateMyNumber(myNumber);
+
 			judgment = judgeMyNumber(myNumber);
 			System.out.println(judgment);
 		}
-
 	}
 
 	private String judgeMyNumber(String myNumber) {
-		String ball = hasMyNumberBall(myNumber);
-		String strike = hasMyNumberStrike(myNumber);
-		if (ball.length() == 0 && strike.length() == 0) {
+		int strike = 0;
+		int ball = 0;
+		for (int i = 0; i <= 2; i++) {
+			if (myNumber.charAt(i) == computerNumber.charAt(i)) {
+				strike++;
+				continue;
+			}
+			if (computerNumber.contains(Character.toString(myNumber.charAt(i)))) {
+				ball++;
+			}
+		}
+		if (strike == 0 && ball == 0) {
 			return "낫싱";
 		}
-		return (ball + strike).trim();
-	}
-
-	private String hasMyNumberStrike(String myNumber) {
-		return null;
-	}
-
-	private String hasMyNumberBall(String myNumber) {
-		return null;
+		if (strike == 0) {
+			return ball + "볼";
+		}
+		if (ball == 0) {
+			return strike + "스트라이크";
+		}
+		return ball + "볼 " + strike + "스트라이크";
 	}
 
 	// 입력값 유효한지 검증
