@@ -11,13 +11,17 @@ import java.util.stream.Collectors;
 import static baseball.MessageConstants.*;
 
 public class Application {
-    private static boolean playFlag = true;
+    private boolean playFlag = true;
     private final int NUMBER_LENGTH = 3;
 
-    public void run(){
+    public void run() throws IllegalArgumentException{
         //값 저장
         Set<String> computer = initComputer();
-        String result = computer.stream().collect(Collectors.joining());
+        String result = computer
+                .stream()
+                .collect(Collectors.joining());
+
+        System.out.println("result = " + result);
 
         while (true){
             //사용자 인풋 받기
@@ -72,7 +76,7 @@ public class Application {
         System.out.println(message);
         return strikeCount == NUMBER_LENGTH;
     }
-    private void inputCheck(String input){
+    private void inputCheck(String input) throws IllegalArgumentException{
         if (!isNumericAndThreeDigits(input)){
             throw new IllegalArgumentException("사용자의 입력값은 3자리 수이며 1-9까지의 값만 가능합니다.");
         } else if (!hasDuplicateDigits(input)) {
@@ -98,25 +102,25 @@ public class Application {
         return length == 3 ? true : false;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException{
         // TODO: 프로그램 구현
         Application application = new Application();
-        while (playFlag){
+
+        while (application.playFlag){
             System.out.println(START_MESSAGE);
             application.run();
             System.out.println(END_MESSAGE);
-            application.isPlay(Console.readLine());
+            application.isGameActive(Console.readLine());
         }
-
     }
 
-    private void isPlay(String playNumber) {
+    private void isGameActive(String playNumber) throws IllegalArgumentException{
         switch (playNumber){
-            case "1" -> playFlag = true;
-            case "2" -> playFlag = false;
-            default -> {
-                throw new IllegalArgumentException(String.format("입력값 \"%s\"는 잘못된 요청 정보입니다.", playNumber));
-            }
+            case "1" -> this.playFlag = true;
+            case "2" -> this.playFlag = false;
+            default ->
+                    //잘못된 사용자 입력
+                    throw new IllegalArgumentException(String.format("입력값 \"%s\"는 잘못된 요청 정보입니다.", playNumber));
         }
     }
 }
