@@ -33,6 +33,7 @@ public class Application {
 
     private static void startGame() {
         // 게임 시작 멘트 출력
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     private static void printHint(int number) {
