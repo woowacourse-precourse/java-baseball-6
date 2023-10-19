@@ -21,7 +21,7 @@ public class Player {
         }
 
         validatePlayerInput(playerInputBaseballNumber);
-        setPlayerBaseballNumber(playerInputBaseballNumber);
+        playerBaseballNumber = playerInputBaseballNumber;
         return playerInputBaseballNumber;
     }
 
@@ -39,9 +39,5 @@ public class Player {
 
     public List<Integer> getPlayerBaseballNumber() {
         return playerBaseballNumber;
-    }
-
-    private void setPlayerBaseballNumber(List<Integer> playerBaseballNumber) {
-        this.playerBaseballNumber = playerBaseballNumber;
     }
 }
