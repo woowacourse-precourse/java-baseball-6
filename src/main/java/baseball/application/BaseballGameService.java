@@ -35,7 +35,9 @@ public class BaseballGameService {
 
         if (!isGuessNumberPerfect(guessNumber)) {
             getBaseballResult(guessNumber);
+            guessNumber();
         }
+        OutputView.printPerfect();
     }
 
     private boolean isGuessNumberPerfect(String guessNumber) {
@@ -43,6 +45,12 @@ public class BaseballGameService {
     }
 
     private void getBaseballResult(String guessNumber) {
+        if (baseball.isNothing(guessNumber)) {
+            System.out.println("BaseballGameService.getBaseballResult.isNothing");
+            OutputView.printNothing();
+            return;
+        }
+        System.out.println("BaseballGameService.getBaseballResult");
         int ballCount = baseball.countBall(guessNumber);
         int strikeCount = baseball.countStrike(guessNumber);
 

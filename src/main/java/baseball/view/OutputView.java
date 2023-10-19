@@ -36,4 +36,7 @@ public class OutputView {
         System.out.println(RESTART_GAME_MESSAGE.getMessage());
     }
 
+    public static void printPerfect() {
+        System.out.println(PERFECT_MESSAGE.getMessage());
+    }
 }

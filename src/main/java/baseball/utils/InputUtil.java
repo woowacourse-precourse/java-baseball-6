@@ -15,7 +15,7 @@ public class InputUtil {
         System.out.println(REQUIRE_NUMBER_MESSAGE.getMessage());
         String guessNumber = Console.readLine();
         isGuessNumberValid(guessNumber);
-        return Console.readLine();
+        return guessNumber;
     }
 
     private static void isGuessNumberValid(String guessNumber) {
