@@ -6,23 +6,17 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.constant.NumberConstant.*;
+import static baseball.domain.Numbers.*;
 
-public class Opponent {
 
-    private Numbers numbers;
+public class Computer {
 
-    private Opponent() {
+
+    public Numbers createNumbers() {
+        return new Numbers(createNumberList());
     }
 
-    public static Opponent create() {
-        Opponent opponent = new Opponent();
-        opponent.setNumbers(Numbers.create(createNumberList()));
-
-        return opponent;
-    }
-
-    private static List<Integer> createNumberList() {
+    private List<Integer> createNumberList() {
         List<Integer> numberList = new ArrayList<>();
 
         while (numberList.size() < NUMBER_COUNT) {
@@ -36,7 +30,6 @@ public class Opponent {
         return numberList;
     }
 
-    private void setNumbers(Numbers numbers) {
-        this.numbers = numbers;
-    }
+
+
 }
