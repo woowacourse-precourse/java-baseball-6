@@ -7,11 +7,11 @@ public class GameController {
     private static final String RESTART_FLAG = "1";
     private static final String END_FLAG = "2";
     private boolean state;
-    private PlayController playController;
-    private ValidateController validateController;
-    private GenerateController generateController;
-    private GameInput gameInput;
-    private GameOutput gameOutput;
+    PlayController playController;
+    ValidateController validateController;
+    GenerateController generateController;
+    GameInput gameInput;
+    GameOutput gameOutput;
 
     public GameController() {
         this.playController = new PlayController();
@@ -31,4 +31,6 @@ public class GameController {
             state = endOrRestart();
         }
     }
+
+
 }
