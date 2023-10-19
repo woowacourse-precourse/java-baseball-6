@@ -4,7 +4,10 @@ import baseball.domain.Com;
 import baseball.domain.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
@@ -36,5 +39,16 @@ public class GameServiceTest {
 
         //then
         assertThat(user.isThreeStrike()).isTrue();
+    }
+
+    @DisplayName("1번 기능(사용자 값 입력)의 예외처리 기능")
+    @ParameterizedTest
+    @ValueSource(strings={"1234","12","1a2","zxc","ab2","2ab","112","111","344"})
+    void 사용자_입력_기능_예외처리_1번(String values){
+        //given
+        Validation validation=new Validation();
+
+        //when & then
+        asserThat(validation.playUserInput(values)).isFalse();
     }
 }
