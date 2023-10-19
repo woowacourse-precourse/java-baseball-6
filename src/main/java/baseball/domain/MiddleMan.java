@@ -1,6 +1,10 @@
 package baseball.domain;
 
+import baseball.view.Output;
+
 import java.util.List;
+
+import static baseball.view.Output.*;
 
 public class MiddleMan {
     private static final int INIT_BALL_STIRKE = 0;
@@ -15,8 +19,7 @@ public class MiddleMan {
     public boolean isCorrectAnswer(List<Integer> answerNumber, List<Integer> userNumber) {
         computeResult(answerNumber, userNumber);
         if (strike == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            printCorrectAnswer();
             return true;
         } else{
             showResult();
@@ -26,17 +29,17 @@ public class MiddleMan {
 
     private void showResult() {
         if (ball == INIT_BALL_STIRKE && strike == INIT_BALL_STIRKE) {
-            System.out.println("낫싱");
+            printNothing();
             return;
         }
         if (ball != INIT_BALL_STIRKE && strike == INIT_BALL_STIRKE){
-            System.out.println(ball + "볼");
+            printBall(ball);
         }
         if (ball == INIT_BALL_STIRKE && strike != INIT_BALL_STIRKE) {
-            System.out.println(strike +"스트라이크");
+            printStrike(strike);
         }
         if (ball != INIT_BALL_STIRKE && strike != INIT_BALL_STIRKE) {
-            System.out.println(ball + "볼" + " " + strike + "스트라이크");
+            printBallStrike(ball, strike);
         }
     }
 
