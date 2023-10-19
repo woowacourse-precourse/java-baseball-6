@@ -20,7 +20,7 @@ public class BaseBallGame {
         messageService.printStartMessage();
         int ballCount = 0;
         int strikeCount = 0;
-        while (strikeCount != 3){
+        while (strikeCount != NumberConstant.GAME_WIN_NUMBER){
             messageService.printUserInputNumberMessage();
             String inputNumber = userService.inputUserNumber();
             List<Integer> user = validation.validateInputNumber(inputNumber);
