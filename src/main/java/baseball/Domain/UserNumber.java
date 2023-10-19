@@ -3,7 +3,7 @@ package baseball.Domain;
 import java.util.Arrays;
 
 public class UserNumber {
-    private int number;
+    private String number;
 
     private static int NUMBER_RANGE_START = 1;
     private static int NUMBER_RANGE_END = 9;
@@ -11,11 +11,14 @@ public class UserNumber {
     public UserNumber(String number){
         validate(number);
         number = removeSpace(number);
-        this.number = convertStringtoInteger(number);
     }
 
     private String removeSpace(String number){ // 공백 제거
         return number.replaceAll(" ",null);
+    }
+
+    public String getNumber(){
+        return number;
     }
 
     private void validate(String number){
