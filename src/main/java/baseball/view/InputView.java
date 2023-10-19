@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.utills.InputValidation;
+import baseball.utils.InputValidation;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
