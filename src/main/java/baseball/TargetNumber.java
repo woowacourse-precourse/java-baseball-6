@@ -16,4 +16,16 @@ class TargetNumber {
     }
 
     public static TargetNumber generate() { return new TargetNumber(); }
+
+    public boolean[] has(int num, int idx) {
+        boolean[] check = new boolean[2];
+        for (int i = 0; i < 3; i++) {
+            if (number[i] == num) {
+                if (i == idx) check[1] = true;
+                check[0] = true;
+                break;
+            }
+        }
+        return check;
+    }
 }
