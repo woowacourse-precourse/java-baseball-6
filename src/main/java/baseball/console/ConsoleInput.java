@@ -6,14 +6,13 @@ import baseball.util.InputValidation;
 
 public class ConsoleInput {
 	private final InputValidation inputValidation;
-	private final Scanner sc;
 
 	public ConsoleInput() {
 		inputValidation = new InputValidation();
-		sc = new Scanner(System.in);
 	}
 
 	public String getGameInput() {
+		Scanner sc = new Scanner(System.in);
 		String input = sc.nextLine();
 		if (inputValidation.isGameInputValid(input)) {
 			return input;
@@ -22,6 +21,7 @@ public class ConsoleInput {
 	}
 
 	public String getEndInput() {
+		Scanner sc = new Scanner(System.in);
 		String input = sc.nextLine();
 		if (inputValidation.isEndInputValid(input)) {
 			return input;
