@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.Constants.NUMBER_COUNTS;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +19,17 @@ public class UserNumbers {
             .map(Integer::parseInt)
             .toList();
 
-        userNumbers = inputNumbers;
+        validateNumbersSize(inputNumbers);
+        return new UserNumbers(inputNumbers);
+    }
+
+    private static void validateNumbersSize(final List<Integer> inputNumbers) {
+        if (inputNumbers.size() != NUMBER_COUNTS) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public List<Integer> getNumbers() {
+        return new ArrayList<>(userNumbers);
     }
 }
