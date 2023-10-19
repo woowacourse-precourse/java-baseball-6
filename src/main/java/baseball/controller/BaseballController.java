@@ -1,7 +1,10 @@
 package baseball.controller;
 
+import baseball.util.RandomNumbersGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+
+import java.util.List;
 
 public class BaseballController {
 
@@ -15,6 +18,8 @@ public class BaseballController {
 
     public void run() {
         outputView.printStartMessage();
+        List<Integer> computer = RandomNumbersGenerator.generate();
         String guessNumber = inputView.readGuessNumber();
+        System.out.println("computer = " + computer);
     }
 }
