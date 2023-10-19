@@ -13,7 +13,6 @@ public class User {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             userNumber.add(Integer.valueOf(number.charAt(i) - '0'));
         }
-        System.out.println("userNumber = " + userNumber);
     }
 
     private void initUserNumber() {

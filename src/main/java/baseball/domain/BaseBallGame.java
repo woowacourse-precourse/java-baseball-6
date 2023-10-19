@@ -15,7 +15,6 @@ public class BaseBallGame {
 
     public void play() {
         computer.makeAnswerNumber();
-        System.out.println(computer.getAnswerNumber());
         gameStartMessage();
         while (true) {
             user.setUserNumber(inputNumber());
