@@ -18,5 +18,47 @@
       1. 1을 입력하였을 시 1-2부터 재시작
       2. 2를 입력하였을 시 완전히 종료
       3. 그 외의 값 IllegalArgumentException 발생
-      
 
+## class별 기능 구현 목록
+
+### GameController
+게임의 전반적인 흐름을 관리하는 클래스
+
+[ ] void proceedGame() : 게임 진행
+[ ] void showStartMessage() : 게임 시작 메시지 출력
+[ ] void setComputerNumber() : 컴퓨터 수 세팅
+[ ] void setUserNumber() : 사용자 수 세팅
+[ ] void showHint() : 힌트 출력
+[ ] void showEndMessage() : 게임 종료 문구 출력
+
+### HintCalculator
+컴퓨터 수와 사용자 수를 비교하여 스트라이크 수와 볼 수를 저장하는 클래스
+
+[ ] HintCalculator(List <Integer>, List <Integer>) : user, computer 비교 후 ball, strike count 저장
+[ ] boolean isThreeStrike() : 3스트라이크인지 반환
+
+### ComputerNumber
+컴퓨터 수를 저장하는 클래스
+
+[ ] ComputerNumber() : computer 수 랜덤 생성한 뒤 저장
+[ ] List<Integer> getNumber() : 컴퓨터 수 반환
+
+### UserNumber
+사용자 수의 유효성을 검사하고 저장하는 클래스
+
+[ ] UserNumber(String) : 입력받은 값 유효성 검사 후 저장
+[ ] void validate(String) : 유효성 검사
+[ ] List<Integer> getNumber() : 사용자 수 반환
+
+### InputView
+사용자로부터 입력받는 클래스
+
+[ ] String inputUserNumber() : 사용자 수 입력
+[ ] String inputRestartValue() : 게임 재시작 여부 입력
+
+### OutputView
+사용자에게 출력하여 보여주는 클래스
+
+[ ] void printHint(int, int) : 힌트 출력
+[ ] void printStartMessage() : 게임 시작 메시지 출력
+[ ] void printEndMessage() : 게임 종료 메시지 출력
