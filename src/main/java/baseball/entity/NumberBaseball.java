@@ -1,4 +1,4 @@
-package entity;
+package baseball.entity;
 
 import camp.nextstep.edu.missionutils.Randoms;
 

@@ -1,8 +1,8 @@
-package controller;
+package baseball.controller;
 
-import entity.NumberBaseball;
-import view.InputView;
-import view.OutputView;
+import baseball.entity.NumberBaseball;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class BaseballController {
 
