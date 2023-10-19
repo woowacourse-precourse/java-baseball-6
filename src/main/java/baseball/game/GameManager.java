@@ -1,25 +1,23 @@
-package baseball;
+package baseball.game;
 
 public class GameManager {
     private static Game game = null;
-    private static boolean isGameRunning = true;
-    private static boolean isGameEnd = false;
+    private static boolean isGameRunning;
+    private static boolean isGameEnd;
 
     public static class GameIsNullException extends NullPointerException {
     }
 
-    public static void register(Game _game) {
-        game = _game;
-        isGameRunning = true;
-        isGameEnd = false;
-    }
-
-    public static void start() {
-        if (game == null) {
+    public static void start(Game _game) {
+        if (_game == null) {
             throw new GameIsNullException();
         }
+        game = _game;
+
+        notifyGameEnd(false);
         game.awake();
         while (!isGameEnd) {
+            notifyGameRunning(true);
             game.beforeLoop();
             while (isGameRunning) {
                 game.gameLoop();

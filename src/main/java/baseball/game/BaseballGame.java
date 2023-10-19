@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import static baseball.converter.BaseballStateConverter.stringToBaseballState;
 import static baseball.converter.AfterBaseballStateConverter.stringToAfterBaseballState;
@@ -31,6 +31,7 @@ public class BaseballGame implements Game {
         if (result.isGameEnd()) {
             IoHelper.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             GameManager.notifyGameRunning(false);
+            return;
         }
         GameManager.notifyGameRunning(true);
     }
@@ -41,6 +42,7 @@ public class BaseballGame implements Game {
 
         if (afterState == AfterBaseballState.RESTART_GAME) {
             GameManager.notifyGameEnd(false);
+            return;
         }
         GameManager.notifyGameEnd(true);
     }

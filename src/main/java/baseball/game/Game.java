@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 public interface Game {
     void awake();
