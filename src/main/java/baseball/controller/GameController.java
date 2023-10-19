@@ -13,6 +13,10 @@ public class GameController {
         outputView = new OutputView();
     }
 
+    public void start(){
+        outputView.start();
+    }
+
     public void play(String input){
         gameService.setUserbaseballNumber(input);
     }

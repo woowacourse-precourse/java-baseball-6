@@ -11,6 +11,8 @@ public class Application {
         InputView inputView = new InputView();
         GameController gameController = new GameController();
 
+        gameController.start();
+
         gameController.play(inputView.readUserBaseballNumber());
     }
 
