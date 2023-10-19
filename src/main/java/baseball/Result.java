@@ -31,13 +31,13 @@ public class Result {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         if (getBall() == 0 && getStrike() == 0) {
-            sb.append("낫싱");
+            sb.append(Const.NOTHING_MESSAGE);
         } else {
             if (getBall() != 0) {
-                sb.append(getBall()).append("볼 ");
+                sb.append(getBall()).append(Const.BALL_MESSAGE);
             }
             if (getStrike() != 0) {
-                sb.append(getStrike()).append("스트라이크");
+                sb.append(getStrike()).append(Const.STRIKE_MESSAGE);
             }
         }
 
@@ -48,11 +48,16 @@ public class Result {
         System.out.println(this);
 
         if (getStrike() == FINISH_STRIKE_COUNT) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            Output.printMessageWithLine(Const.STRIKE_GAME_FINISH_MESSAGE);
         }
     }
 
     public boolean isEnd() {
         return getStrike() == FINISH_STRIKE_COUNT;
+    }
+
+    public void refresh() {
+        ball = 0;
+        strike = 0;
     }
 }

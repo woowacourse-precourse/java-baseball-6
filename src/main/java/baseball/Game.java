@@ -21,20 +21,18 @@ public class Game {
     }
 
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        Output.printMessageWithLine(GAME_START_MESSAGE);
         while (true) {
 
             List<Integer> answer = pickAnswerNumbers();
             printList(answer);
+            Result result = new Result(0, 0);
+            while (!result.isEnd()) {
+                Output.printMessage(GAME_NUMBER_INPUT_MESSAGE);
 
-            while (true) {
-                System.out.print("숫자를 입력해주세요: ");
                 user.pickNumber();
-
-                Result result = new Result(0, 0);
+                result.refresh();
                 match(answer, user.getNumbers(), result);
-
-                if (result.isEnd()) break;
             }
 
             if (!isGameContinued()) break;
@@ -77,7 +75,7 @@ public class Game {
     }
 
     private boolean isGameContinued() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        Output.printMessageWithLine(GAME_RESTART_MESSAGE);
 
         int command = Integer.parseInt(Console.readLine());
         Validator.validateCommand(command);
