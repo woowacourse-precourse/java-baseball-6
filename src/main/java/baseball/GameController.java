@@ -8,10 +8,12 @@ import baseball.view.OutputView;
 
 public class GameController {
 
+    private InputView inputView;
     private GameNumber gameNumber;
 
-    private GameController() {
-        this.gameNumber=GameNumber.createDefault();
+    public GameController(InputView inputView) {
+        this.inputView = inputView;
+        this.gameNumber = GameNumber.createDefault();
     }
 
     public void startGameUntilUserWant() {
@@ -33,8 +35,8 @@ public class GameController {
         }
         OutputView.informGameOver();
         OutputView.askContinueGame();
-        String userNumberInput=InputView.getUserInput();
-        gameNumber.changeNumber(Integer.parseInt(userNumberInput));
+        String userNumberInput = inputView.getUserInput();
+        gameNumber.changeNumber(userNumberInput);
     }
 
 }
