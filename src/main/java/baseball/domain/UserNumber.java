@@ -20,7 +20,8 @@ public class UserNumber {
     }
 
     private List<Integer> createUserNumber(String input) {
-        return Arrays.stream(input.split("")).map(UserNumber::validateUserInputNumber)
+        return Arrays.stream(input.split(""))
+                .map(UserNumber::validateUserInputNumber)
                 .collect(Collectors.toList());
     }
 
@@ -28,21 +29,18 @@ public class UserNumber {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(
-                    UserNumberError.USER_NUMBER_WRONG_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException(UserNumberError.USER_NUMBER_WRONG_INPUT_ERROR_MESSAGE);
         }
     }
 
     private void validateUserInputLength(List<Integer> userNum) {
         if (userNum.size() != Constant.NUMBER_LENGTH_LIMIT) {
-            throw new IllegalArgumentException(
-                    UserNumberError.USER_NUMBER_WRONG_LENGTH_ERROR_MESSAGE);
+            throw new IllegalArgumentException(UserNumberError.USER_NUMBER_WRONG_LENGTH_ERROR_MESSAGE);
         }
     }
 
     private void validateUserInputRange(List<Integer> userNum) {
-        if (userNum.stream()
-                .anyMatch(num -> Constant.START_NUMBER > num || num > Constant.END_NUMBER)) {
+        if (userNum.stream().anyMatch(num -> Constant.START_NUMBER > num || num > Constant.END_NUMBER)) {
             throw new IllegalArgumentException(UserNumberError.USER_NUMBER_WRONG_RANGE_ERROR_MESSAGE);
         }
     }
