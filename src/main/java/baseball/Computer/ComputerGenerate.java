@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerGenerate {
-    public List<Integer> getTarget(){
+    public List<Integer> getTarget() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {

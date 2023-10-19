@@ -25,11 +25,11 @@ public class GameRule {
     private void gameResult(int ball, int strike) {
         if (strike == 3) {
             printAllStrike();
-            endGame=true;
+            endGame = true;
             return;
         }
 
-        endGame=false;
+        endGame = false;
 
         if (ball == 0 && strike == 0) {
             printNothing();

@@ -53,7 +53,7 @@ public class UserInput {
     }
 
     private void checkOnlyTwoNumber(String input) {
-        if (!input.equals("1") || !input.equals("2")) {
+        if (!(input.equals("1") || input.equals("2"))) {
             throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
     }
