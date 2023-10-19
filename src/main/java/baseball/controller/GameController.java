@@ -14,9 +14,9 @@ public class GameController {
     GameOutput gameOutput;
 
     public GameController() {
-        this.playController = new PlayController();
-        this.validateController = new ValidateController();
         this.generateController = new GenerateController();
+        this.validateController = new ValidateController();
+        this.playController = new PlayController(this.generateController);
         this.gameInput = new GameInput();
         this.gameOutput = new GameOutput();
 
