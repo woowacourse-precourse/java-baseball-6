@@ -19,16 +19,14 @@ public class Application {
         printStart();
         getUserNumbersList();
     }
-    public static void playGame() {
-        printStart();
+    public static void playGameOnce() {
         while(true) {
             List<Integer> computerNumbersList = getComputerNumbersList();
             List<Integer> userNumbersList = getUserNumbersList();
             List<Integer> ballStrikeCount = getBallStrikeCount(computerNumbersList, userNumbersList);
             printBallStrike(ballStrikeCount.get(0), ballStrikeCount.get(1));
-            if (isAnswer(ballStrikeCount.get(1))){
-                printAnswer();
-
+            if (isAnswer(ballStrikeCount.get(1))) {
+                break;
             }
         }
     }
