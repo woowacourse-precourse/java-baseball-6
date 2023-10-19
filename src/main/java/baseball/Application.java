@@ -19,7 +19,9 @@ public class Application {
             String inputRestartString = Console.readLine();
             // TODO: 입력값에 대한 유효성 검증 필요
             int inputRestart = Integer.parseInt(inputRestartString);
-
+            if (inputRestart == 2) {
+                whetherPlay = false;
+            }
         }
 
     }
