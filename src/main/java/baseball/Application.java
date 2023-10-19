@@ -22,6 +22,15 @@ public class Application {
             validateInput(input);
 
             Result result = getResult(computer, input, strikes, balls);
+            printResult(result);
+
+    private static void printResult(Result result) {
+        if (result.balls() == 0 && result.strikes() == 0) System.out.println("낫싱");
+        else if (result.balls() == 0) System.out.println(result.strikes() + "스트라이크");
+        else if (result.strikes() == 0) System.out.println(result.balls() + "볼");
+        else System.out.println(result.balls() + "볼" + " " + result.strikes() + "스트라이크");
+    }
+
     private static void validateInput(String input) {
         if (!input.matches("[1-9]{3}") || hasDuplicateDigits(input)) {
             throw new IllegalArgumentException();
