@@ -6,13 +6,18 @@ public class Controller {
     public static void run() {
         NumberGenerator generator = new NumberGenerator();
 
-        InputView.greetingMsg();
         InputView inputView = new InputView();
         inputView.greetingMsg();
+
         Answer answer = new Answer(generator.createAnswer());
 
         while (command != 2) {
-            Integer response = InputView.inputGuideMsg();
+            try {
+                Integer response = inputView.inputGuideMsg();
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+                break;
+            }
         }
     }
 }
