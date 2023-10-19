@@ -1,6 +1,5 @@
 package baseball.model;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +12,10 @@ public class UserNumber {
     public UserNumber(String number) {
         validate(number);
         this.number = StringToList(number);
+    }
+
+    public List<Integer> getNumber() {
+        return number;
     }
 
     private void validate(String number) {

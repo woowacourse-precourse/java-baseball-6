@@ -53,7 +53,7 @@
 
 - [x] UserNumber(String) : 입력받은 값 유효성 검사 후 저장
 - [x] void validate(String) : 유효성 검사
-- [ ] List<Integer> getNumber() : 사용자 수 반환
+- [x] List<Integer> getNumber() : 사용자 수 반환
 
 ### InputView
 사용자로부터 입력받는 클래스
