@@ -18,8 +18,8 @@ public class Validation {
     }
 
     public void checkRetryInput(String retryInput){
-        Integer retryAnswer = Integer.parseInt(retryInput);
-        if (retryAnswer.equals(1) || retryAnswer.equals(2)) {
+
+        if (retryInput.equals("1") || retryInput.equals("2")) {
             return;
         }
 
