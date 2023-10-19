@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class BaseBallGame {
     private int answerNum;
     private Boolean isPlaying = false;
@@ -9,10 +11,13 @@ public class BaseBallGame {
     }
 
     public void chooseNum(){
+        System.out.print("숫자를 입력해주세요 : ");
+        String userNum = Console.readLine();
+        returnResult(userNum);
     }
 
-    public String returnResult(){
-
+    public String returnResult(String userNum){
+        return "ok";
     }
 
     public void exitGame(){
