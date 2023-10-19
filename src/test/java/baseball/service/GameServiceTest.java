@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
@@ -50,6 +49,6 @@ public class GameServiceTest {
         Validation validation=new Validation();
 
         //when & then
-        assertThat(validation.playUserInput(values)).isFalse();
+        assertThat(validation.gameValue(values)).isFalse();
     }
 }
