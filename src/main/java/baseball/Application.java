@@ -49,7 +49,6 @@ public class Application {
             throw new IllegalArgumentException("올바른 입력 포맷이 아닙니다.");
         }
 
-
         // 3) 중복된 숫자가 들어갔을 경우
         if (a == b || b == c || c == a) {
             throw new IllegalArgumentException("중복된 숫자는 없어야합니다.");
