@@ -1,13 +1,17 @@
 package baseball.domain.ball;
 
-import baseball.util.RandomNumberPicker;
+import baseball.util.NumberPicker;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class AnswerCreator {
 
-  private final RandomNumberPicker numberPicker = new RandomNumberPicker(1, 9);
+  private final NumberPicker numberPicker;
+
+  public AnswerCreator(final NumberPicker numberPicker) {
+    this.numberPicker = numberPicker;
+  }
 
   public BallNumbers create() {
     final Set<Integer> set = new HashSet<>();
