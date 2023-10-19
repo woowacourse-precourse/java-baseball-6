@@ -18,6 +18,33 @@ public class Application {
                 if (userInput.length() != 3) {
                     throw new IllegalArgumentException();
                 }
+
+                int strikeCount = 0, ballCount = 0;
+
+                for (int i = 0; i < 3; i++) {
+                    int number = Character.getNumericValue(userInput.charAt(i));
+                    if (computer.contains(number)) {
+                        if (computer.get(i) == number) {
+                            strikeCount++;
+                        } else {
+                            ballCount++;
+                        }
+                    }
+                }
+
+                if (strikeCount == 0 && ballCount == 0) {
+                    System.out.println("낫싱");
+                } else if (strikeCount == 3) {
+                    System.out.println("3스트라이크");
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                } else if (strikeCount == 0){
+                    System.out.println(ballCount+"볼");
+                } else if (ballCount == 0) {
+                    System.out.println(strikeCount+"스트라이크");
+                } else {
+                    System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+                }
             }
         }
     }
