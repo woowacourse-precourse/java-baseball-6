@@ -28,9 +28,12 @@ public class BallNumber {
         return number < MIN_BALL_NUMBER || number > MAX_BALL_NUMBER;
     }
 
-    public CompareResult compare(final BallNumber player) {
-        if (this.equals(player)) {
+    public CompareResult compare(final BallNumber other) {
+        if (this.equals(other)) {
             return CompareResult.STRIKE;
+        }
+        if (matchNumber(other)) {
+            return CompareResult.BALL;
         }
         return CompareResult.NOTHING;
     }

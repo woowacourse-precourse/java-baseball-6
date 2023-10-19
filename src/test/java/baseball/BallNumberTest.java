@@ -42,4 +42,26 @@ public class BallNumberTest {
         assertThat(computer.compare(player))
                 .isEqualTo(CompareResult.STRIKE);
     }
+
+    @Test
+    @DisplayName("야구 숫자를 비교할 수 있다. - 볼")
+    void testCompareWhenEqualNumberDifferentPosition() {
+        // com(1, 0), player(1, 1)
+        BallNumber computer = new BallNumber(1, 0);
+        BallNumber player = new BallNumber(1, 1);
+        assertThat(computer.compare(player))
+                .isEqualTo(CompareResult.BALL);
+
+        // com(2, 1), player(2, 0)
+        computer = new BallNumber(2, 1);
+        player = new BallNumber(2, 0);
+        assertThat(computer.compare(player))
+                .isEqualTo(CompareResult.BALL);
+
+        // com(5, 2), player(5, 1)
+        computer = new BallNumber(5, 1);
+        player = new BallNumber(5, 2);
+        assertThat(computer.compare(player))
+                .isEqualTo(CompareResult.BALL);
+    }
 }
