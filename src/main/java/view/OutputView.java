@@ -1,2 +1,9 @@
-package view;public class OutputView {
+package view;
+
+public class OutputView {
+
+    public static void printGameStartView() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
 }
