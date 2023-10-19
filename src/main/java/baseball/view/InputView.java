@@ -8,10 +8,10 @@ public class InputView {
     private static final int MAX_NUMERIC_RANGE_VALUE = 9;
     private static final int INPUT_LENGTH = 3;
 
-    public int inputNumber() {
+    public String inputNumber() {
         String input = readLine();
         validateInput(input);
-        return Integer.parseInt(input);
+        return input;
     }
 
     private void validateInput(String input) {
