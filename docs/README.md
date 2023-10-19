@@ -17,3 +17,6 @@
 - utils
     - [ ] 입/출력 도움 함수
     - [ ] 랜덤 생성 함수
+- integration 
+  - Application.main() 작성
+  - 테스트 
