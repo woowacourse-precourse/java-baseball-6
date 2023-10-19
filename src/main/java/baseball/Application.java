@@ -1,31 +1,42 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException {
         // for test
-        for (int i = 0; i < 100; i++) {
-            BaseballNumber computer = new BaseballNumber();
-            System.out.println(Arrays.toString(computer.values));
-        }
+        BaseballNumber input = new BaseballNumber(Console.readLine());
+        System.out.println(Arrays.toString(input.values));
     }
 }
 
 class BaseballNumber {
     int[] values = {1, 1, 1};
 
+    private boolean validateInput(String input) {
+        if (input.length() != 3) return false;
+
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < 3; i++) {
+            if (!Character.isDigit(input.charAt(i))) return false;
+            int value = Character.getNumericValue(input.charAt(i));
+            if (set.contains(value)) return false;
+            set.add(value);
+        }
+        return true;
+    }
+
     public BaseballNumber(String input) {
-        // 사용자의 잘못된 입력을 확인해야 함 (나중에 구현)
+        // 사용자의 잘못된 입력을 확인해야 함
         // 1. input.length()가 정확히 3인지
         // 2. 각 자릿수가 1 ~ 9의 수인지
         // 3. 각 자리의 숫자가 서로 다른 수인지
+        if (!validateInput(input)) throw new IllegalArgumentException();
         for (int i = 0; i < 3; i++) {
-            this.values[i] = input.charAt(i);
+            this.values[i] = Character.getNumericValue(input.charAt(i));
         }
     }
 
