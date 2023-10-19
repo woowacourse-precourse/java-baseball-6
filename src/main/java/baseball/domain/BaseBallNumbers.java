@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class BaseBallNumbers {
 
     private static final int NUMBER_SIZE = 3;
-    private final List<BaseBallNumber> playerNumbers;
+    private final List<BaseBallNumber> numbers;
 
     public static BaseBallNumbers generateNumbers(List<Integer> playerNumbers) {
         return playerNumbers.stream()
@@ -19,34 +19,34 @@ public class BaseBallNumbers {
                 .collect(collectingAndThen(toList(), BaseBallNumbers::new));
     }
 
-    private BaseBallNumbers(List<BaseBallNumber> playerNumbers) {
-        validate(playerNumbers);
-        this.playerNumbers = playerNumbers;
+    private BaseBallNumbers(List<BaseBallNumber> numbers) {
+        validate(numbers);
+        this.numbers = numbers;
     }
 
-    private void validate(List<BaseBallNumber> playerNumbers) {
-        validateSize(playerNumbers);
-        validateDuplicate(playerNumbers);
+    private void validate(List<BaseBallNumber> numbers) {
+        validateSize(numbers);
+        validateDuplicate(numbers);
     }
 
-    private void validateSize(List<BaseBallNumber> playerNumbers) {
-        if (hasOverSize(playerNumbers)) {
+    private void validateSize(List<BaseBallNumber> numbers) {
+        if (hasOverSize(numbers)) {
             throw new IllegalArgumentException(BASEBALL_NUMBER_SIZE_EXCEPTION_MESSAGE);
         }
     }
 
-    private boolean hasOverSize(List<BaseBallNumber> playerNumbers) {
-        return playerNumbers.size() != NUMBER_SIZE;
+    private boolean hasOverSize(List<BaseBallNumber> numbers) {
+        return numbers.size() != NUMBER_SIZE;
     }
 
-    private void validateDuplicate(List<BaseBallNumber> playerNumbers) {
-        if (hasDuplicate(playerNumbers)) {
+    private void validateDuplicate(List<BaseBallNumber> numbers) {
+        if (hasDuplicate(numbers)) {
             throw new IllegalArgumentException(BASEBALL_NUMBER_DUPLICATE_EXCEPTION_MESSAGE);
         }
     }
 
-    private boolean hasDuplicate(List<BaseBallNumber> playerNumbers) {
-        return playerNumbers
+    private boolean hasDuplicate(List<BaseBallNumber> numbers) {
+        return numbers
                 .stream()
                 .distinct()
                 .count() != NUMBER_SIZE;
