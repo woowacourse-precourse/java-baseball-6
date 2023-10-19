@@ -23,8 +23,8 @@ public class Game {
     }
 
     public boolean play(List<Integer> number) {
-        int ballCount = countBall(number);
-        int strikeCount = countStrike(number);
+        int ballCount = Referee.countBall(computer, number);
+        int strikeCount = Referee.countStrike(computer, number);
 
         if (ballCount > 0) {
             System.out.print(ballCount + BALL + " ");
@@ -44,27 +44,4 @@ public class Game {
         }
         return false;
     }
-
-    private int countBall(List<Integer> number) {
-        int count = 0;
-        for (int i = 0; i < number.size(); i++) {
-            for (int j = 0; j < computer.size(); j++) {
-                if (i != j && number.get(i).equals(computer.get(j))) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
-    private int countStrike(List<Integer> number) {
-        int count = 0;
-        for (int i = 0; i < number.size(); i++) {
-            if (number.get(i).equals(computer.get(i))) {
-                count++;
-            }
-        }
-        return count;
-    }
-
 }
