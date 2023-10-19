@@ -17,10 +17,9 @@ public class GameRunner {
         do {
             List<Integer> pick = initRandomNum.pick();
             System.out.println(pick);
-            game.gameSet(validator,gameLogic,pick);
+            game.gameSet(validator,gameLogic,initRandomNum);
             game.play();
-
-            initRandomNum.reset();
+            game.reset();
         } while (game.recheck());
     }
 }
