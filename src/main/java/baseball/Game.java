@@ -49,7 +49,7 @@ public class Game {
             userAnswer = validation.checkUserInput(userInput);
 
             // 딜러의 입력값 컴퓨터 입력값 비교
-            GameResult gameResult = getGameStrike(userAnswer, answer);
+            GameResult gameResult = getGameResult(userAnswer, answer);
 
             // 딜러의 결과값 출력
 
@@ -57,7 +57,7 @@ public class Game {
         }
     }
 
-    public GameResult getGameStrike(List<Integer> userAnswer, List<Integer> answer) {
+    public GameResult getGameResult(List<Integer> userAnswer, List<Integer> answer) {
         Integer ball = 0;
         Integer strike = 0;
 

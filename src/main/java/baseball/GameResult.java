@@ -11,14 +11,6 @@ public class GameResult {
         this.ball = ball;
     }
 
-    public void setStrike(Integer strikeNum) {
-        this.strike = strikeNum;
-    }
-
-    public void setBall(Integer ballNum) {
-        this.ball = ballNum;
-    }
-
     public Integer getStrike() {
         return strike;
     }
