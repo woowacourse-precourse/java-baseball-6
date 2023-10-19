@@ -68,7 +68,7 @@ class UserNumber {
 
 		System.out.print("숫자를 입력해주세요 : ");
 
-		return Console.readLine().split(",");
+		return Console.readLine().split("");
 	}
 
 	void checkInputOnlyNum(String[] inputUserNumber) {
@@ -77,7 +77,7 @@ class UserNumber {
 		for (String eachUserNumber : inputUserNumber) {
 
 			try {
-				Integer.parseInt(eachUserNumber.trim());
+				Integer.parseInt(eachUserNumber);
 			} catch (IllegalArgumentException ill) {
 				errorTest = true;
 			}
@@ -94,7 +94,7 @@ class UserNumber {
 		Set<Integer> userNumber = new HashSet<>();
 
 		for (String eachUserNumber : inputUserNumber) {
-			userNumber.add(Integer.parseInt(eachUserNumber.trim()));
+			userNumber.add(Integer.parseInt(eachUserNumber));
 		}
 
 		return userNumber;
