@@ -8,5 +8,7 @@ public class Application {
 
         Input input = new Input();
         String playerNumber = input.readNumber();
+
+        Player player = new Player(playerNumber);
     }
 }
