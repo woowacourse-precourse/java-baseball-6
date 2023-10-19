@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 사용자의 입력을 받는 클래스. 검증과 함께 작동하며, 검증에 실패하는 경우 예외를 발생한다. 예외는 이곳에서만 발생한다. 사용자가 입력하는 값은
@@ -11,4 +13,17 @@ import camp.nextstep.edu.missionutils.Console;
 public class PlayerInput {
     public static final int NEW_GAME = 1;
     public static final int QUIT_GAME = 2;
+
+    public List<Integer> getPlayerNumbers() {
+        String playerInput = Console.readLine();
+        List<Integer> playerNumbers = new ArrayList<>();
+        for (int index = 0; index < playerInput.length(); index++) {
+            int number = playerInput.charAt(index) - '0';
+            playerNumbers.add(number);
+        }
+        if (!PlayerNumbersInputValidator.validatePlayerNumbers(playerNumbers)) {
+            throw new IllegalArgumentException();
+        }
+        return playerNumbers;
+    }
 }
