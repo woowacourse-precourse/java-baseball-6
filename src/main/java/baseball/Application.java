@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+
     public static void main(String[] args) {
         boolean isFirstGame = true;
         int restart = 1;
@@ -24,7 +25,7 @@ public class Application {
                 throw new IllegalArgumentException("숫자를 입력해주세요.", e);
             }
 
-            if (restart != 1 || restart != 2) {
+            if (restart != 1 && restart != 2) {
                 throw new IllegalArgumentException("1 혹은 2를 입력해주세요.");
             }
         }

@@ -35,11 +35,12 @@ public class BaseballGame {
                 }
             }
 
+            System.out.println(stringBuilder(ball, strike));
+
             if (strike == 3) {
                 break;
             }
 
-            System.out.println(stringBuilder(ball, strike));
         }
     }
 
@@ -59,8 +60,8 @@ public class BaseballGame {
             throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
         }
 
-        if (numberList.size() != 3) {
-            throw new IllegalArgumentException("세 자리의 숫자를 입력해주세요.");
+        if (numberList.size() != 3 || numberList.contains(0)) {
+            throw new IllegalArgumentException("1 ~ 9 사이 3개의 숫자를 입력해주세요.");
         }
 
         return numberList;
