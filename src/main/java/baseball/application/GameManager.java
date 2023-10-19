@@ -2,6 +2,8 @@ package baseball.application;
 
 import baseball.domain.Computer;
 import baseball.domain.GameProcessStatus;
+import baseball.domain.Referee;
+import baseball.domain.RoundResult;
 import baseball.domain.User;
 import baseball.io.InputProcessor;
 import baseball.io.OutputProcessor;
@@ -26,11 +28,20 @@ public class GameManager {
         while (gameProcessStatus.isGameInProgress()) {
             // Baseball 입력
             readUserBaseballs();
+
+            // RoundResult 확인
+            final RoundResult result = checkRoundResult();
         }
     }
 
     private void readUserBaseballs() {
         final List<Integer> balls = InputProcessor.readUserBaseballs();
         user.applyBaseball(balls);
+    }
+
+    private RoundResult checkRoundResult() {
+        final RoundResult result = Referee.judge(computer.getBaseball(), user.getBaseball());
+        OutputProcessor.printGameResult(result);
+        return result;
     }
 }
