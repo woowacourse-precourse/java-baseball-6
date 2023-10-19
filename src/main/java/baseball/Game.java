@@ -13,15 +13,15 @@ public class Game {
 
     private List<Integer> computer;
 
-    public void run() {
-
-    }
-
-    private void init() {
+    public Game() {
         computer = getComputer();
         input = new Input();
         judge = new Judge(computer, input);
         output = new Output(judge);
+    }
+
+    public void run() {
+
     }
 
     private List<Integer> getComputer() {
