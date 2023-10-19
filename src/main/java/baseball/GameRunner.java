@@ -16,12 +16,11 @@ public class GameRunner {
     }
 
     public boolean playRound() {
-        Count count;
         GameMessages.printInputMessage();
 
         person.insert(Console.readLine());
 
-        count = gameScore.calculateScore();
+        Count count = gameScore.calculateScore();
 
         GameMessages.displayScore(count);
 
