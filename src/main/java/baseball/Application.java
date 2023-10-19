@@ -1,6 +1,5 @@
 package baseball;
 
-
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -24,7 +23,7 @@ class Game {
         do {
             game = new Game();
             game.start();
-        } while (restart());
+        } while (game.restart());
     }
 
     private void start() {
@@ -45,6 +44,7 @@ class Game {
     private void guessNumber() {
         String inputNumber;
         do {
+            System.out.print("숫자를 입력해주세요 : ");
             inputNumber = Console.readLine();
             validationNumberCheck(inputNumber);
         } while (!equalToAnswer(inputNumber));
@@ -78,7 +78,12 @@ class Game {
     private static int[] changeToIntegerList(String inputNumber) {
         int[] inputList = new int[answer.size()];
         for (int i = 0; i < RANDOM_NUMBER_SIZE; i++) {
-            inputList[i] = Character.getNumericValue(inputNumber.charAt(i));
+            try {
+                inputList[i] = Character.getNumericValue(inputNumber.charAt(i));
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("숫자가 아닌 문자가 포함되어 있습니다.");
+
+            }
         }
         return inputList;
     }
@@ -99,7 +104,6 @@ class Game {
 
         for (int i = 0; i < RANDOM_NUMBER_SIZE; i++) {
             if (inputNumber[i] != answer.get(i) && answer.contains(inputNumber[i])) {
-                System.out.println(inputNumber[i] + " * " + answer.get(i));
                 ball++;
             }
         }
@@ -109,6 +113,21 @@ class Game {
     private static void printResult(int strike, int ball) {
         printBall(ball);
         printStrike(strike);
+
+        if(isNothing(strike, ball)) {
+            printNothing();
+        }
+    }
+
+    private static boolean isNothing(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private static void printNothing() {
+        System.out.println("낫싱");
     }
 
     private static void printBall(int ball) {
