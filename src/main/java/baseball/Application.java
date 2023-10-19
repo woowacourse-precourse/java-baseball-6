@@ -1,17 +1,22 @@
 package baseball;
 
 
-import camp.nextstep.edu.missionutils.Console;
+import static baseball.GameMessages.*;
 
 public class Application {
     public static void main(String[] args) {
         Person person = new Person();
+        Computer computer = new Computer();
+        Count count = new Count();
+        GameUtils gameUtils = new GameUtils(person, computer, count);
+        GameScore gameScore = new GameScore(person, computer, count);
+        GameRunner gameRunner = new GameRunner(person, gameUtils, gameScore);
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        printStartMessage();
         while (true) {
-            System.out.print("숫자를 입력해주세요 : " );
-            String input = Console.readLine();
-            person.insert(input);
+            if (gameRunner.playRound()) {
+                return;
+            }
         }
     }
 }
