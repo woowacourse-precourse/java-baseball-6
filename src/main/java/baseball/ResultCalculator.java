@@ -10,4 +10,7 @@ public class ResultCalculator {
         computerNumber = newComputerNumber;
     }
 
+    public Result calculateResult(BallNumber comparisonNumber) {
+        return new Result(0,0);
+    }
 }

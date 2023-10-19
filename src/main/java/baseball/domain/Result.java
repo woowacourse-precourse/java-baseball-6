@@ -1,10 +1,10 @@
 package baseball.domain;
 
 public class Result {
-    int numberOfStrikes;
-    int numberOfBalls;
+    public int numberOfStrikes;
+    public int numberOfBalls;
 
-    Result(int newStrikes, int newBalls) {
+    public Result(int newStrikes, int newBalls) {
         numberOfStrikes = newStrikes;
         numberOfBalls = newBalls;
     }
