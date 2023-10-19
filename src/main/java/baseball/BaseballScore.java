@@ -7,10 +7,7 @@ public class BaseballScore {
 
 
     public boolean isAllCorrect() {
-        if (strikeCount == 3) {
-            return true;
-        }
-        return false;
+        return strikeCount == 3;
     }
 
     public BaseballScore(int ballCount, int strikeCount) {
@@ -18,11 +15,8 @@ public class BaseballScore {
         this.strikeCount = strikeCount;
     }
 
-    public static   boolean isBaseballScoreEqual(BaseballScore baseballScore1, BaseballScore baseballScore2) {
-        if (baseballScore1.ballCount == baseballScore2.ballCount && baseballScore1.strikeCount == baseballScore2.strikeCount) {
-            return true;
-        }
-        return false;
+    public static boolean isBaseballScoreEqual(BaseballScore baseballScore1, BaseballScore baseballScore2) {
+        return baseballScore1.ballCount == baseballScore2.ballCount && baseballScore1.strikeCount == baseballScore2.strikeCount;
     }
     public void addBallCount() {
         this.ballCount += 1;
@@ -41,16 +35,6 @@ public class BaseballScore {
     }
 
     public void printBaseballScore() {
-        if (ballCount != 0) {
-           System.out.print(ballCount+"볼 ");
-        }
-        if (strikeCount != 0) {
-            System.out.print(strikeCount + "스트라이크");
-        }
-        if (ballCount == 0 && strikeCount == 0) {
-            System.out.print("낫싱");
-        }
-        System.out.println();
-
+        BaseballPrint.printBallAndStrikeCount(ballCount,strikeCount);
     }
 }

@@ -25,14 +25,14 @@ public class BaseballNumber {
     }
     //테스트를 진행해보기 위한 initializeUserNumberForTest
     public static BaseballNumber initializeUserNumberForTest(String input) {
-        isInputOnlyNumber(input);
+        findExceptionByString(input);
         List<Integer> numberByList=stringToList(input);
         System.out.println(numberByList);
         return new BaseballNumber(numberByList);
     }
 
     public static BaseballNumber initializeUserNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        BaseballPrint.printInputNumberMessage();
         List<Integer> number = new ArrayList<>();
         String input = Console.readLine();
         findExceptionByString(input);

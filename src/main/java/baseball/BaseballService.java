@@ -8,8 +8,7 @@ import java.util.List;
 // 숫자야구게임의 진행을 담당하는 클래스
 public class BaseballService {
     public BaseballService() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
+        BaseballPrint.printStartMessage();
     }
 
     public void startBaseballGame() {
@@ -20,7 +19,7 @@ public class BaseballService {
             BaseballNumber userNumber = BaseballNumber.initializeUserNumber();
             BaseballScore resultScore = compareBaseballNumber(computerNumber, userNumber);
             if (resultScore.isAllCorrect()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                BaseballPrint.printEndMessage();
                 break;
             }
         }
@@ -30,7 +29,7 @@ public class BaseballService {
     }
 
     private boolean isContinueGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        BaseballPrint.printRestartMessage();
         String restartResult = Console.readLine();
         if (!restartResult.equals("1")&& !restartResult.equals("2")) {
             throw new IllegalArgumentException("1, 2 중 하나를 입력해주세요");
