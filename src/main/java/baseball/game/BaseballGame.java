@@ -1,10 +1,24 @@
 package baseball.game;
 
+import baseball.view.OutputView;
+
 public class BaseballGame {
 
-    public void start() {}
+    private OutputView outputView;
 
-    public void process() {}
+    public BaseballGame(OutputView outputView) {
+        this.outputView = outputView;
+    }
 
-    public void checkRestart() {}
+    public void start() {
+        outputView.showStartMessage();
+    }
+
+    public void process() {
+        outputView.showInputNumberMessage();
+    }
+
+    public void checkRestart() {
+        outputView.showOptionMenu();
+    }
 }
