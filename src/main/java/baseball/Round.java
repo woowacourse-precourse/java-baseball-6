@@ -7,15 +7,24 @@ public class Round {
 
     public StrikeAndBall judge(List<Integer> myInt, List<Integer> comInt) {
         for (int i = 0; i < 3; i++) {
-            if (myInt.get(i).equals(comInt.get(i))) {
-                strikeAndBall.strike++;
-                continue;
-            }
-            if (comInt.contains(myInt.get(i))) {
-                strikeAndBall.ball++;
-            }
+            if (strikeCalculate(myInt, comInt, i)) continue;
+            ballCalculate(myInt, comInt, i);
         }
         return strikeAndBall;
+    }
+
+    private boolean strikeCalculate(List<Integer> myInt, List<Integer> comInt, int i) {
+        if (myInt.get(i).equals(comInt.get(i))) {
+            strikeAndBall.strike++;
+            return true;
+        }
+        return false;
+    }
+
+    private void ballCalculate(List<Integer> myInt, List<Integer> comInt, int i) {
+        if (comInt.contains(myInt.get(i))) {
+            strikeAndBall.ball++;
+        }
     }
 
     static class StrikeAndBall {

@@ -3,13 +3,16 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 public class Balls {
     private List<Integer> myInt = new ArrayList<>();
 
     public Balls(String str) {
         validString(str);
         for (int i = 0; i < 3; i++) {
-            myInt.add(Integer.parseInt(String.valueOf(str.charAt(i))));
+            int strInt = parseInt(String.valueOf(str.charAt(i)));
+            myInt.add(strInt);
         }
     }
 
@@ -23,6 +26,10 @@ public class Balls {
         }
         char[] strArray = str.toCharArray();
         int[] check = new int[3];
+        strArrayCheck(str, strArray, check);
+    }
+
+    private static void strArrayCheck(String str, char[] strArray, int[] check) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (str.charAt(i) == strArray[j]) {
@@ -37,7 +44,7 @@ public class Balls {
 
     private boolean isThreeInt(String str) {
         try {
-            Integer.parseInt(str);
+            parseInt(str);
             return true;
         } catch (NumberFormatException e) {
             return false;
