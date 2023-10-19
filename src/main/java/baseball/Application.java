@@ -66,4 +66,10 @@ public class Application {
         }
 
     }
+
+    public static boolean restartOrExit(){//반환값이 1이면 restart
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int input = Integer.parseInt(Console.readLine());
+        return input == 1 ? true: false;
+    }
 }
