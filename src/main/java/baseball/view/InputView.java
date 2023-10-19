@@ -14,7 +14,6 @@ public class InputView {
         GameValidator.validateIsNumber(userInput);
 
         String[] split = userInput.split("");
-        Console.close();
 
         return changeUserInputToInt(split);
     }
@@ -26,8 +25,6 @@ public class InputView {
 
         int decideGameAction = Integer.parseInt(userInput);
         GameValidator.validateIsOneOrTwo(decideGameAction);
-
-        Console.close();
 
         return decideGameAction;
     }

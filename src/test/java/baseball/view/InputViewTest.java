@@ -1,5 +1,6 @@
 package baseball.view;
 
+import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,6 +24,7 @@ class InputViewTest {
 
     @BeforeEach
     void setup() {
+        Console.close();
         inputView = new InputView();
         System.setOut(new PrintStream(outContent));
     }
