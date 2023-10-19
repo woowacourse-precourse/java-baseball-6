@@ -29,3 +29,16 @@
 6. 게임이 종료되었다면 다시 시작할지(1), 종료할지 묻기(2)
    - 다시 시작한다면 2번 로직부터 시작
    - 아니라면 종료
+---
+## 사용 클래스 및 메서드
+### Application 클래스
+  - BaseBallGame 객체 생성 및 초기화
+
+### Array 클래스
+    
+### BaseBallGame 클래스
+
+### GameResult 클래스
+  - addBallCount(): ball 개수 증가
+  - addStrikeCount(): strike 개수 증가
+  - printResult(): 한 게임에 대한 결과값 출력
