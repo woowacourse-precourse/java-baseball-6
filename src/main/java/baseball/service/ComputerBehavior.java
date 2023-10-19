@@ -1,11 +1,11 @@
-package baseball;
+package baseball.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.constant.Constant.*;
+import static constant.Constant.*;
 
 public class ComputerBehavior {
     public List<Integer> generatedNumbers() {

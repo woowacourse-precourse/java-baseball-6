@@ -1,13 +1,16 @@
-package baseball;
+package baseball.service;
 
+import exception.CheckException;
+import baseball.view.Output;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.constant.Constant.*;
+import static constant.Constant.*;
 
 public class UserBehavior {
     private CheckException checkException = new CheckException();
+    private Output output = new Output();
     private final List<Integer> computerNumbers;
     private int strike;
     private int ball;
@@ -23,8 +26,7 @@ public class UserBehavior {
             checkException.checkAll(inputNumbers);
             countResult(inputNumbers);
             while (result()) {
-                System.out.println(FINISH);
-                System.out.println(RESTART_OR_EXIT);
+                output.printFin();
                 return Integer.parseInt(Console.readLine());
             }
             return input();
@@ -36,7 +38,7 @@ public class UserBehavior {
     private String[] setStart() {
         strike = 0;
         ball = 0;
-        System.out.print(INPUT_MENTION);
+        output.printGameStart();
         return Console.readLine().split(SPLIT);
     }
 
@@ -59,23 +61,18 @@ public class UserBehavior {
     }
 
     private boolean result() {
-        if (strike == 3) {
-            System.out.println(strike+ STRIKE);
+        if (strike == LENGTH) {
+            output.printResult(strike+STRIKE);
             return true;
         }
-        if (ball == 0 && strike == 0) {
-            System.out.println(NOTHING);
-            return false;
-        }
-        if (ball == 0) {
-            System.out.println(strike+ STRIKE);
-            return false;
-        }
-        if (strike == 0) {
-            System.out.println(ball+ BALL);
-            return false;
-        }
-        System.out.println(ball+ BALL+strike+ STRIKE);
+        String message = "";
+        if (ball > 0)
+            message += ball+BALL + " ";
+        if (strike > 0)
+            message += strike+STRIKE;
+        if (message.equals(""))
+            message += NOTHING;
+        output.printResult(message);
         return false;
     }
 }

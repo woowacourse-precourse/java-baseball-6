@@ -1,7 +1,10 @@
-package baseball;
+package baseball.controller;
 
 
-import baseball.constant.Constant;
+import baseball.service.ComputerBehavior;
+import baseball.service.UserBehavior;
+import constant.Constant;
+import exception.CheckException;
 
 import java.util.ArrayList;
 import java.util.List;

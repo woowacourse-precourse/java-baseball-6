@@ -1,6 +1,6 @@
-package baseball;
+package exception;
 
-import baseball.constant.Constant;
+import constant.Constant;
 
 public class CheckException {
     public void checkRestart(int isRe) {
