@@ -50,5 +50,6 @@ public class BaseballController {
         if (gameCommand.equals("2")) {
             return;
         }
+        throw new IllegalArgumentException("재시작/종료 명령이 잘못되었습니다.");
     }
 }
