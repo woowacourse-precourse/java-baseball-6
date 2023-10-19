@@ -1,17 +1,14 @@
 package baseball;
 
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.Random;
+import baseball.domain.Player;
+import baseball.domain.PlayerType;
 
 public class Application {
     public static void main(String[] args)  {
 
-        System.out.println(Console.readLine());
-
-//        System.out.println(Randoms.pickUniqueNumbersInRange(0,9,3));
+        Player human = new Player(PlayerType.HUMAN);
+        Player computer = new Player(PlayerType.COMPUTER);
 
     }
 }
