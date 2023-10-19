@@ -14,21 +14,8 @@ public class Application {
             while(true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
-                int[] guess = InputValidator.validateInput(input);
-
-                /*
-                * 스트라이크, 볼 여부를 판단
-                */
-                int[] result = new int[2]; //ball, strike 순서
-                for(int i=0; i<3; i++) {
-                    if(guess[i] == answer.get(i)) result[1]++;
-                    else {
-                        for(int j=0; j<3; j++) {
-                            if(guess[i] == answer.get(j))
-                                result[0]++;
-                        }
-                    }
-                }
+                List<Integer> guess = InputValidator.validateInput(input);
+                int[] result = StrikeBallCalculator.calculate(guess, answer);
 
                 /*
                 * 볼, 스트라이크 판단 여부 출력
