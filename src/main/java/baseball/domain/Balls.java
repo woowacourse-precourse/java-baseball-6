@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Balls {
-    private final int NUMBER_OF_BALLS = 3;
+    private static final int NUMBER_OF_BALLS = 3;
 
     private final List<Integer> balls;
 
