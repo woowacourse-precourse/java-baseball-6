@@ -32,6 +32,15 @@ public class Application {
                 */
                 if(input.length()!=3)
                     throw new IllegalArgumentException();
+                /*
+                * 모두 숫자인지 판단
+                */
+                for(int i=0; i<3; i++) {
+                    char c = input.charAt(i);
+                    if(!Character.isDigit(c))
+                        throw new IllegalArgumentException();
+                    guess[i] = Character.getNumericValue(c);
+                }
 
 
             }
