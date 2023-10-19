@@ -35,6 +35,37 @@ public class BaseBallGame {
         }
     }
 
+    private void startGame() {
+        while (true) {
+            view.printNumberInput();
+            Numbers inputNumbers = new Numbers(enterNumberList());
+
+            Result result = computer.calculateResult(answerNumbers, inputNumbers);
+            view.printResult(result);
+
+            if (result.isFinish()) {
+                break;
+            }
+        }
+    }
+
+    private List<Integer> enterNumberList() {
+        String input = readLine();
+        validateIsNumber(input);
+
+        return Arrays.stream(input.split(""))
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
+
+    }
+
+    private void validateIsNumber(String input) {
+        try {
+            Integer.valueOf(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력가능합니다.");
+        }
+    }
 
     private boolean isContinueGame(String continueGameInput) {
         if (continueGameInput.equals(CONTINUE_GAME_SIG)) {
