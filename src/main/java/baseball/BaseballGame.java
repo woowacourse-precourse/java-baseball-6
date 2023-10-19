@@ -23,4 +23,26 @@ public class BaseballGame {
     private void setAnswer(String number) {
         this.answer = number;
     }
+
+    public int getBallCount(String userInput) {
+        int ballCount = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i != j && userInput.charAt(j) == this.answer.charAt(i)) {
+                    ballCount++;
+                }
+            }
+        }
+        return ballCount;
+    }
+
+    public int getStrikeCount(String userInput) {
+        int strikeCount = 0;
+        for (int i = 0; i < 3; i++) {
+            if (userInput.charAt(i) == this.answer.charAt(i)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
 }
