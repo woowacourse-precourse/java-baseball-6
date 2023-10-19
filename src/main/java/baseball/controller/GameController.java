@@ -1,9 +1,10 @@
-package baseball.Controller;
+package baseball.controller;
 
-import baseball.Model.Computer;
-import baseball.Model.NumberList;
-import baseball.View.InputView;
-import baseball.View.OutputView;
+import baseball.model.Computer;
+import baseball.model.Hint;
+import baseball.model.NumberList;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import baseball.utils.Transfer;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -24,6 +25,9 @@ public class GameController {
                 OutputView.printSuccessMessage();
                 break;
             }
+
+            Hint hint = calculateHint(computer.getAnswer(), userAnswer);
+            OutputView.printHintMessage(hint);
         }
         OutputView.printEndGameMessage();
     }
@@ -37,6 +41,20 @@ public class GameController {
             }
         }
         return new NumberList(answerList);
+    }
+
+    private Hint calculateHint(NumberList answer, NumberList guess) {
+        int ballCount = 0;
+        int strikeCount = 0;
+        for (int i = 0; i < answer.getNumberList().size(); i++) {
+            for (int j = 0; j < guess.getNumberList().size(); j++) {
+                if (answer.getNumberList().get(i) == guess.getNumberList().get(j)) {
+                    if (i == j) ballCount++;
+                    else strikeCount++;
+                }
+            }
+        }
+        return new Hint(ballCount, strikeCount);
     }
 
     private static class InputController {
