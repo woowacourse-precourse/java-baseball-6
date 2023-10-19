@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 
 public class GameServiceTest {
@@ -46,6 +47,14 @@ public class GameServiceTest {
 
         //when & then
         assertThat(validation.gameValue(values)).isFalse();
+    }
+
+    @DisplayName("게임의 값의 예외처리 기능")
+    @ParameterizedTest
+    @ValueSource(strings={"1234","12","1a2","zxc","ab2","2ab","112","111","344"})
+    void 값_예외처리(String numbers){
+        assertThatThrownBy(()->new Numbers(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("컴퓨터의 값을 생성하는 기능")
