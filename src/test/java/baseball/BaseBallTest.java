@@ -33,6 +33,7 @@ public class BaseBallTest {
 
     @Test
     void 게임시작_메시지_출력() {
+        Application.printStartMessage();
         assertThat(output()).contains("숫자 야구 게임을 시작합니다.");
     }
 }
