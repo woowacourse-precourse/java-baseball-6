@@ -1,79 +1,50 @@
 package baseball.controller;
 
-import baseball.domain.Numbers;
 import baseball.domain.Computer;
+import baseball.domain.Player;
 import baseball.domain.Result;
-import baseball.view.Output;
+import baseball.io.Input;
+import baseball.io.Output;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseBallGame {
 
-    private static final String CONTINUE_GAME_SIG = "1";
-    private static final String END_GAME_SIG = "2";
+
+    private Computer computer;
+    private Player player;
 
 
     public void run() {
         Output.printStart();
 
+        boolean restart = Boolean.TRUE;
+
+        while (restart) {
+            computer = Computer.create();
+            player = Player.create();
+
+            startGame();
+
+            Output.printFinish();
+            restart = Input.inputRestartGame();
+        }
+    }
+
+    private void startGame() {
         boolean continueGame = Boolean.TRUE;
 
         while (continueGame) {
-            Computer computer = Computer.create();
-
-            startGame(computer);
-
-            Output.printFinish();
-
-            continueGame = isContinueGame(readLine());
-        }
-    }
-
-    private void startGame(Computer computer) {
-        while (true) {
             Output.printNumberInput();
-            Numbers inputNumbers = Numbers.create(enterNumberList());
+            player.inputNumber();
 
-            Result result = computer.calculateResult(inputNumbers);
+            Result result = computer.calculateResult(player);
             Output.printResult(result);
 
-            if (result.isFinish()) {
-                break;
-            }
+            continueGame = result.isContinue();
         }
     }
 
-    private List<Integer> enterNumberList() {
-        String input = readLine();
-        validateIsNumber(input);
 
-        return Arrays.stream(input.split(""))
-                .map(Integer::valueOf)
-                .collect(Collectors.toList());
 
-    }
-
-    private void validateIsNumber(String input) {
-        try {
-            Integer.valueOf(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력가능합니다.");
-        }
-    }
-
-    private boolean isContinueGame(String continueGameInput) {
-        if (continueGameInput.equals(CONTINUE_GAME_SIG)) {
-            return true;
-        }
-        if (continueGameInput.equals(END_GAME_SIG)) {
-            return false;
-        }
-
-        throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
-    }
 
 }

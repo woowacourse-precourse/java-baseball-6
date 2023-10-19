@@ -15,6 +15,10 @@ public class Result {
         return strike.equals(NUMBER_COUNT);
     }
 
+    public boolean isContinue() {
+        return !strike.equals(NUMBER_COUNT);
+    }
+
     public boolean isNon() {
         return ball.equals(0) && strike.equals(0);
     }
@@ -26,4 +30,6 @@ public class Result {
     public Integer getStrike() {
         return strike;
     }
+
+
 }

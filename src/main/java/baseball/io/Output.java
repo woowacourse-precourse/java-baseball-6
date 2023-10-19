@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.io;
 
 import baseball.domain.Result;
 

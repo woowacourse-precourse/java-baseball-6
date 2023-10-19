@@ -36,9 +36,9 @@ public class Computer {
         return numberList;
     }
 
-    public Result calculateResult(Numbers inputNumbers) {
+    public Result calculateResult(Player player) {
         List<Integer> answerNumberList = answerNumbers.getNumberList();
-        List<Integer> inputNumberList = inputNumbers.getNumberList();
+        List<Integer> inputNumberList = player.getNumberList();
 
         int ball = 0;
         int strike = 0;
