@@ -7,14 +7,13 @@ import java.util.List;
 
 public class Computer {
     public List<Integer> generateRandomNumber() {
-        List<Integer> computeNumber = new ArrayList<>();
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-        while (computeNumber.size() < 3) {
-            if (!computeNumber.contains(randomNumber)) {
-                computeNumber.add(randomNumber);
+        List<Integer> randomNumbers = new ArrayList<>();
+        while (randomNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1,9);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
             }
         }
-        return computeNumber;
+        return randomNumbers;
     }
-
 }
