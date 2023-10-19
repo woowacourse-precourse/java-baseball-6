@@ -46,3 +46,4 @@ while(computer.size()< 3){
 
 - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 사용하여 입력을 받는다.
 - 1이면 `playBall()`호출하고, 2면 `return`을 통해 함수를 종료한다.
+
