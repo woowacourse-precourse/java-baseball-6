@@ -52,13 +52,13 @@ e.g. com = 425
 
 - 같은 수, 같은 자리 => 스트라이크
 
-| com(number, position) | user(number, position) | MatchResult |
-|-----------------------| ---- | ----------- |
-| (1, 0)                | (1, 0) | 스트라이크 |
+| com(number, position) | user(number, position) | CompareResult |
+|-----------------------| ---- |---------------|
+| (1, 0)                | (1, 0) | 스트라이크         |
 
 - 같은 수, 다른 자리 => 볼
 
-| com(number, position) | user(number, position) | MatchResult |
+| com(number, position) | user(number, position) | CompareResult |
 |-----------------------|------------------------|-------------|
 | (1, 0)                | (1, 1)                 | 볼           |
 | (2, 1)                | (2, 0)                 | 볼           |
@@ -66,7 +66,7 @@ e.g. com = 425
 
 - 같은 수가 없는 경우 => 낫싱
 
-| com(number, position) | user(number, position) | MatchResult |
+| com(number, position) | user(number, position) | CompareResult |
 |-----------------------|------------------------|-------------|
 | (1, 0)                | (2, 0)                 | 낫싱          |
 
