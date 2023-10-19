@@ -49,5 +49,5 @@
 
 - [ ] `void init()`
   - 게임에서 사용할 3개의 숫자를 선택
-- [ ] `List<Result> getResult(List<Integer> input)`
-  - 사용자의 입력 값에 대해 `enum Result`의 리스트를 반환한다.
+- [ ] `Result getResult(List<Integer> input)`
+  - 사용자의 입력 값에 대해 `Result` 객체를 반환한다.
