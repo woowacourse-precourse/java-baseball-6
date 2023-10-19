@@ -43,10 +43,9 @@ public class InputValidator {
     private static void validateInputForDuplicates(List<Integer> guess) {
         Set<Integer> set = new HashSet<>();
         for (int number : guess) {
-            set.add(number);
-        }
-        if (set.size() != 3) {
-            throw new IllegalArgumentException("중복된 숫자는 허용되지 않습니다.");
+            if (!set.add(number)) {
+                throw new IllegalArgumentException("중복된 숫자는 허용되지 않습니다.");
+            }
         }
     }
 
