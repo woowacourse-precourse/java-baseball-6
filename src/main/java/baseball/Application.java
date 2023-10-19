@@ -9,20 +9,16 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int play_on =1;
-        List<Integer> computer = new ArrayList<>();
+        int play_on =1; // 0:숫자 입력 후 결과 출력 1:사용자(컴퓨터)값설정 2:시스템종료 3:다시하기
+        Balls goal = new Balls();
 
         while(true){
             if(play_on ==1){
                 // 목표값 설정
-                while(computer.size()>0){
-                    computer.remove(computer.size()-1);
-                }
-                while(computer.size() < 3){
+                goal.remove_balls();
+                while(goal.size < goal.limit_size){
                     int randomNumber = Randoms.pickNumberInRange(1,9);
-                    if (!computer.contains(randomNumber)){
-                        computer.add(randomNumber);
-                    }
+                    goal.add_ball(randomNumber);
                 }
                 play_on=0;
             }
@@ -33,14 +29,14 @@ public class Application {
 
                     int strike = 0;
                     int ball = 0;
-                    int nothing = computer.size();
+                    int nothing = goal.size;
                     int temp = 0;
 
                     while (temp < guess.length()) {
                         int guess_num = Integer.parseInt(String.valueOf(guess.charAt(temp)));
 
-                        if (computer.contains(guess_num)) {
-                            int located_num = computer.get(temp);
+                        if (goal.balls.contains(guess_num)) {
+                            int located_num = goal.balls.get(temp);
                             if (guess_num == located_num) {
                                 strike++;
                             } else ball++;
