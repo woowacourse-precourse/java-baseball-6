@@ -40,6 +40,4 @@ public class OutputView {
     public static void gameOver(){
         System.out.println(GAME_OVER);
     }
-
-
 }

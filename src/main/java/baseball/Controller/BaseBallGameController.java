@@ -17,6 +17,7 @@ public class BaseBallGameController {
         OutputView.startBaseBallGame();
         inputUserNumber();
         setComputerNumber();
+        getCompareUserWithComputer();
     }
 
     public void inputUserNumber(){ // 유저 정보 넣기
@@ -30,5 +31,6 @@ public class BaseBallGameController {
 
     public void getCompareUserWithComputer(){
         compareUserWithComputer = new CompareUserWithComputer(userNumber.getNumber(),computerNumber.getNumber());
+        OutputView.showCompareResult(compareUserWithComputer.getStrikeNum(), compareUserWithComputer.getBallNum());
     }
 }
