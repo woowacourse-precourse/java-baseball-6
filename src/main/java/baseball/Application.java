@@ -103,7 +103,6 @@ public class Application {
         while (true) {
 
             String random_number = make_random();   // 랜덤값 생성
-            System.out.println("추첨번호 : " + random_number);
 
             boolean is_correct = false;
 
