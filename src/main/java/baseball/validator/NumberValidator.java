@@ -5,17 +5,13 @@ import java.util.Set;
 
 public class NumberValidator {
 
-    public static void assertNumberValue(final String input) {
-        if (!isInputValidPositiveNumber(input)) {
-            throw new IllegalArgumentException();
-        }
+    public static void assertInputNumberWithLength(final String input, final int length) {
+        assertDigitLength(input, length);
+        assertNumberValue(input);
+        assertEachNumberUnique(input);
     }
 
-    private static boolean isInputValidPositiveNumber(final String input) {
-        return input.matches("^[1-9]+$");
-    }
-
-    public static void assertDigitLength(final String inputNumber, final int expectedDigitLength) {
+    private static void assertDigitLength(final String inputNumber, final int expectedDigitLength) {
         if (!isStringLengthEqualToExpectedLength(inputNumber, expectedDigitLength)) {
             throw new IllegalArgumentException();
         }
@@ -25,11 +21,26 @@ public class NumberValidator {
         return input.length() == expectedLength;
     }
 
-    public static void assertEachNumberUnique(final String input) {
+    private static void assertNumberValue(final String input) {
+        if (!isInputValidPositiveNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static boolean isInputValidPositiveNumber(final String input) {
+        return input.matches("^[1-9]+$");
+    }
+
+    private static void assertEachNumberUnique(final String input) {
 
         if (!isAllNumberUnique(input)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static boolean isAllNumberUnique(final String inputNumber) {
+
+        return convertInputToSet(inputNumber).size() == inputNumber.length();
     }
 
     private static Set<Character> convertInputToSet(final String input) {
@@ -41,10 +52,5 @@ public class NumberValidator {
         }
 
         return inputSet;
-    }
-
-    private static boolean isAllNumberUnique(final String inputNumber) {
-
-        return convertInputToSet(inputNumber).size() == inputNumber.length();
     }
 }

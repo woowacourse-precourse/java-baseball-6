@@ -14,8 +14,6 @@ public class Application {
         AskView.askNumberInput();
 
         String userInput = Console.readLine();
-        NumberValidator.assertNumberValue(userInput);
-        NumberValidator.assertDigitLength(userInput, PLAY_NUMBER_DIGIT);
-        NumberValidator.assertEachNumberUnique(userInput);
+        NumberValidator.assertInputNumberWithLength(userInput, PLAY_NUMBER_DIGIT);
     }
 }
