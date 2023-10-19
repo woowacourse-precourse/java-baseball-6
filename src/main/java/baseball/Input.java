@@ -10,7 +10,7 @@ public class Input {
     private static final String ZERO = "0";
 
     private static final String RESTART = "1";
-    private static final String EXIT = "2";
+    public static final String EXIT = "2";
 
     public static void askGuess() {
         guess = Console.readLine();
