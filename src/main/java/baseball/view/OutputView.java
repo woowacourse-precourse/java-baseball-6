@@ -1,6 +1,7 @@
 package baseball.view;
 
 public class OutputView {
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String BALL_FORMAT = "%d볼";
     private static final String STRIKE_FORMAT = "%d스트라이크";
     private static final String NOTHING = "낫싱";
@@ -21,6 +22,10 @@ public class OutputView {
             return;
         }
         println(formattedBall(ballCount) + SPACE + formattedStrike(strikeCount));
+    }
+
+    public void printGameStart() {
+        println(GAME_START_MESSAGE);
     }
 
     private String formattedBall(int ballCount) {
