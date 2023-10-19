@@ -16,6 +16,21 @@ public class Balls {
         balls = toBalls(treeDigitNumber);
     }
 
+    private void validate(int number) {
+        if (String.valueOf(number).length() != BALLS_SIZE) {
+            throw new IllegalArgumentException(INVALID_DIGIT_NUMBER_MESSAGE);
+        }
+    }
+
+    private List<Ball> toBalls(int treeDigitNumber) {
+        ArrayList<Ball> balls = new ArrayList<>(BALLS_SIZE);
+        for (String number : String.valueOf(treeDigitNumber).split(SEPARATOR)) {
+            Ball ball = new Ball(Integer.parseInt(number));
+            balls.add(ball);
+        }
+        return Collections.unmodifiableList(balls);
+    }
+
     public int getBallCount(Balls player) {
         List<Ball> playerBalls = player.getBalls();
         int ballCount = 0;
@@ -32,20 +47,5 @@ public class Balls {
 
     public List<Ball> getBalls() {
         return balls;
-    }
-
-    private List<Ball> toBalls(int treeDigitNumber) {
-        ArrayList<Ball> balls = new ArrayList<>(BALLS_SIZE);
-        for (String number : String.valueOf(treeDigitNumber).split(SEPARATOR)) {
-            Ball ball = new Ball(Integer.parseInt(number));
-            balls.add(ball);
-        }
-        return Collections.unmodifiableList(balls);
-    }
-
-    private void validate(int number) {
-        if (String.valueOf(number).length() != BALLS_SIZE) {
-            throw new IllegalArgumentException(INVALID_DIGIT_NUMBER_MESSAGE);
-        }
     }
 }
