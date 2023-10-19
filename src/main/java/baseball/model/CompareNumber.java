@@ -39,9 +39,18 @@ public class CompareNumber {
     }
 
     /**
+     * 새로운 게임이 시작되었을 때, 기존 게임의 결과 초기화
+     */
+    public void resetResult(){
+        strikes = 0;
+        balls = 0;
+    }
+
+    /**
      * 볼, 스트라이크 개수 세기
      */
     public int[] getStrikeBall(String userNumber, String programNumber){
+        resetResult();
         checkStrike(userNumber, programNumber);
         checkBall(userNumber, programNumber);
         updateBall();
