@@ -24,11 +24,23 @@ public class Hint {
     private void updateBall(List<Integer> userNumbers, List<Integer> systemNumbers){
         int count = 0;
 
-        for(int i=0; i<3; i++)
+        for(int i = 0; i < 3; i++)
             if (userNumbers.get(i) != systemNumbers.get(i) && systemNumbers.contains(userNumbers.get(i)))
                 count++;
 
         ballCount = count;
     }
+
+    private void updateStrike(List<Integer> userNumbers, List<Integer> systemNumbers){
+        int count = 0;
+
+        for(int i = 0; i < 3; i++){
+            if (userNumbers.get(i) == systemNumbers.get(i))
+                count++;
+        }
+
+        strikeCount = count;
+    }
+
 
 }
