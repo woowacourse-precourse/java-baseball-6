@@ -27,7 +27,7 @@ public class BaseBallGame {
     //TODO 1. 예외처리
     //TODO 2. 테스트코드 > Scanner로 입력값 받지 못함
     public void run() {
-        while( true ) {
+        do {
             initializeNum();
             System.out.print(OutputMessage.START_GAME);
             List<Integer> answer = setAnswer();
@@ -39,8 +39,7 @@ public class BaseBallGame {
 
             System.out.println(OutputMessage.END_OR_NOT);
 
-            if (askWhetherToEnd()) break;
-        }
+        } while (!askWhetherToEnd());
     }
 
     private static List<Integer> setAnswer() {
