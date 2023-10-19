@@ -13,7 +13,10 @@ public class Application {
         StartView.welcome();
         AskView.askNumberInput();
 
-        int userNumber = Integer.parseInt(Console.readLine());
+        String userInput = Console.readLine();
+        NumberValidator.assertNumberValue(userInput);
+
+        int userNumber = Integer.parseInt(userInput);
         NumberValidator.assertDigitLength(userNumber, PLAY_NUMBER_DIGIT);
     }
 }
