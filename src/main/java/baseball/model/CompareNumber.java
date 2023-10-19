@@ -38,4 +38,14 @@ public class CompareNumber {
         }
     }
 
+    /**
+     * 볼, 스트라이크 개수 세기
+     */
+    public int[] getStrikeBall(String userNumber, String programNumber){
+        checkStrike(userNumber, programNumber);
+        checkBall(userNumber, programNumber);
+        updateBall();
+
+        return new int[]{balls, strikes};
+    }
 }
