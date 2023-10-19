@@ -9,7 +9,6 @@ public class NumberBaseballGame {
     UserInput userInput = new UserInput();
     Computer computer = new Computer();
     Validation validation = new Validation();
-    List<Integer> answer = new ArrayList<>();
 
     public void speaker(String message) {
         System.out.print(message);
@@ -19,8 +18,8 @@ public class NumberBaseballGame {
         boolean gameStatus = true;
         while (gameStatus) {
             speaker(message.startMessage());
-            answer = answerMaker.makeThreeDifferentNumberList(1, 9); // 정답 생성
-            oneRound(); // 하나의 라운드가 끝나면 재시작 여부 묻기
+            computer.setAnswer(answerMaker.makeThreeDifferentNumberList(1, 9)); // 정답 생성 후 컴퓨터에 저장
+            oneRound();
             speaker(message.restartOrStopMessage());
             String startOrStop = userInput.getUserInput();
             validation.validateContinueSign(startOrStop);
@@ -35,7 +34,12 @@ public class NumberBaseballGame {
         while (!threeStrike) {
             speaker(message.requestNumberMessage());
             List<Integer> userNumbers = userInput.makeUserInputToThreeNumbers();
-            speaker(message.scoreMessage());
+            List<Integer> score = computer.countScore(userNumbers);
+            speaker(message.scoreMessage(score));
+            if (score.get(1) == 3) {
+                threeStrike = true;
+            }
         }
+        speaker(message.successMessage());
     }
 }
