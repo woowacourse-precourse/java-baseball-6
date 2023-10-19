@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 public enum GameResult {
     STRIKE("스트라이크"),

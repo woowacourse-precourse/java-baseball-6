@@ -1,6 +1,6 @@
 package baseball.util;
 
-import baseball.GameResult;
+import baseball.model.GameResult;
 
 public class Util {
     public static String appendGameResult(long ballTotal, long strikeTotal) {
