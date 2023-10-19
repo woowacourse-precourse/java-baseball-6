@@ -7,9 +7,23 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) throws IllegalArgumentException {
-        // for test
-        BaseballNumber input = new BaseballNumber(Console.readLine());
-        System.out.println(Arrays.toString(input.values));
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (true) {
+            BaseballNumber computer = new BaseballNumber();
+            while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
+                BaseballNumber input = new BaseballNumber(Console.readLine());
+                BaseballResult result = computer.compareTo(input);
+                result.print();
+                if (result.isCorrect()) break;
+            }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restartCode = Console.readLine();
+            if (restartCode == "1") continue;
+            if (restartCode == "2") break;
+            throw new IllegalArgumentException();
+        }
     }
 }
 
@@ -76,5 +90,9 @@ class BaseballResult {
         if (strike != 0) sj.add(strike + "스트라이크");
         if (ball == 0 && strike == 0) sj.add("낫싱");
         System.out.println(sj);
+    }
+
+    public boolean isCorrect() {
+        return strike == 3;
     }
 }
