@@ -1,6 +1,7 @@
 package baseball;
 
-import java.util.List;
+import static baseball.Judge.ball;
+import static baseball.Judge.strike;
 
 public class Output {
 
@@ -19,27 +20,29 @@ public class Output {
 
     public static void askNumber() {
         System.out.print(ASK_NUMBER);
-        Input.askGuess();
     }
 
-    public static void answer(List<Integer> result) {
-        if (result.get(1) == 3) {
+    public static void answer() {
+        if (strike == 3) {
             System.out.println(ASK_RESTART);
-            Input.askRestart();
             return;
         }
-        if (result.get(0) == 0 && result.get(1) == 0) {
+        if (ball == 0 && strike == 0) {
             System.out.println(NOTHING);
             return;
         }
-        if (result.get(1) == 0) {
-            System.out.println(STRIKE);
+        if (ball == 0) {
+            System.out.printf(STRIKE, strike);
             return;
         }
-        if (result.get(0) == 0) {
-            System.out.println(BALL);
+        if (strike == 0) {
+            System.out.printf(BALL, ball);
             return;
         }
-        System.out.println(BALL_AND_STRIKE);
+        System.out.printf(BALL_AND_STRIKE, ball, strike);
+    }
+
+    public static void askRestart() {
+        System.out.print(ASK_RESTART);
     }
 }

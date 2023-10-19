@@ -8,8 +8,8 @@ import static baseball.Input.guess;
 
 public class Judge {
 
-    private static int ball;
-    private static int strike;
+    public static int ball;
+    public static int strike;
 
     public static List<Integer> of() {
         initialize();
