@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Balls {
     private final int NUMBER_OF_BALLS = 3;
@@ -31,5 +32,40 @@ public class Balls {
 
     private boolean isDuplicated(List<Integer> balls) {
         return balls.stream().distinct().count() != balls.size();
+    }
+
+    public String compare(Balls secondBalls) {
+        int strike = countStrike(secondBalls);
+        int strikesPlusBall = countStrikePlusBall(secondBalls);
+        int ball = strikesPlusBall - strike;
+        return makeString(ball, strike);
+    }
+
+    private int countStrike(Balls secondBalls) {
+        return (int) IntStream.range(0, balls.size())
+                .filter(index -> balls.get(index).equals(secondBalls.balls.get(index)))
+                .count();
+    }
+
+    private int countStrikePlusBall(Balls secondBalls) {
+        return (int) balls.stream()
+                .filter(secondBalls.balls::contains)
+                .count();
+    }
+
+    private String makeString(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            return "낫싱";
+        }
+
+        if (ball != 0 && strike == 0) {
+            return ball + "볼";
+        }
+
+        if (ball == 0 && strike != 0) {
+            return strike + "스트라이크";
+        }
+
+        return ball + "볼 " + strike + "스트라이크";
     }
 }
