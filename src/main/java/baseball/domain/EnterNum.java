@@ -9,8 +9,16 @@ import java.util.stream.Collectors;
 public class EnterNum {
     private List<Integer> number;
 
+    public EnterNum() {
+        this.number = new ArrayList<>();
+    }
+
     public void setNum(String enterNum) {
         this.number = strToList(enterNum);
+    }
+
+    public List<Integer> getNum() {
+        return number;
     }
 
     public void validation() {
@@ -26,7 +34,7 @@ public class EnterNum {
     }
 
     private void checkContainZero() {
-        if (number.contains("0")) {
+        if (number.contains(0)) {
             throw new IllegalArgumentException();
         }
     }
@@ -44,7 +52,6 @@ public class EnterNum {
         for (int i = 0; i < enterNum.length(); i++) {
             temp.add(enterNum.charAt(i) - '0');
         }
-
         return temp;
     }
 }
