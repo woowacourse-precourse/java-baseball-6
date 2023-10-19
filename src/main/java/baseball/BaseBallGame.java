@@ -7,7 +7,13 @@ public class BaseBallGame {
   public void run(){
     BaseBallService baseBallService = new BaseBallService();
     do{
-      baseBallService.exec();
+      try{
+        baseBallService.exec();
+      }catch (IllegalArgumentException e){
+        System.out.println(e.getMessage());
+        System.exit(0);
+      }
+
     }while(isContinue());
   };
   public boolean isContinue(){
