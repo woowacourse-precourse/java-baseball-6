@@ -3,7 +3,7 @@ package baseball.domain;
 import java.util.List;
 
 public class Balls {
-    List<Integer> balls;
+    private final List<Integer> balls;
 
     public Balls(List<Integer> input) {
         validateNotDuplicated(input);
