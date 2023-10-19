@@ -16,7 +16,6 @@ public class BaseBallGame {
     private static final String CONTINUE_GAME_SIG = "1";
     private static final String END_GAME_SIG = "2";
     private final InputView view = new InputView();
-    private final Computer computer = new Computer();
 
 
     public void run() {
@@ -25,9 +24,9 @@ public class BaseBallGame {
         boolean continueGame = Boolean.TRUE;
 
         while (continueGame) {
-            Numbers answerNumbers = Numbers.create(computer.createNumberList());
+            Computer computer = Computer.create();
 
-            startGame(answerNumbers);
+            startGame(computer);
 
             view.printFinish();
 
@@ -35,12 +34,12 @@ public class BaseBallGame {
         }
     }
 
-    private void startGame(Numbers answerNumbers) {
+    private void startGame(Computer computer) {
         while (true) {
             view.printNumberInput();
             Numbers inputNumbers = Numbers.create(enterNumberList());
 
-            Result result = computer.calculateResult(answerNumbers, inputNumbers);
+            Result result = computer.calculateResult(inputNumbers);
             view.printResult(result);
 
             if (result.isFinish()) {

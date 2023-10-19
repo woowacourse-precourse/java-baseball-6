@@ -11,8 +11,19 @@ import static baseball.domain.Numbers.*;
 
 public class Computer {
 
+    private Numbers answerNumbers;
 
-    public List<Integer> createNumberList() {
+    private Computer() {
+    }
+
+    public static Computer create() {
+        Computer computer = new Computer();
+        computer.setAnswerNumbers(Numbers.create(makeRandomNumberList()));
+
+        return computer;
+    }
+
+    private static List<Integer> makeRandomNumberList() {
         List<Integer> numberList = new ArrayList<>();
 
         while (numberList.size() < NUMBER_COUNT) {
@@ -22,11 +33,10 @@ public class Computer {
                 numberList.add(randomNumber);
             }
         }
-
         return numberList;
     }
 
-    public Result calculateResult(Numbers answerNumbers, Numbers inputNumbers) {
+    public Result calculateResult(Numbers inputNumbers) {
         List<Integer> answerNumberList = answerNumbers.getNumberList();
         List<Integer> inputNumberList = inputNumbers.getNumberList();
 
@@ -49,4 +59,7 @@ public class Computer {
         return new Result(ball, strike);
     }
 
+    private void setAnswerNumbers(Numbers answerNumbers) {
+        this.answerNumbers = answerNumbers;
+    }
 }
