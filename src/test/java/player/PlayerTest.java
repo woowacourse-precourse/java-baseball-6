@@ -3,27 +3,34 @@ package player;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
 
-    Player player = new Player();
+    private final Player player = new Player();
 
-    public void provideUserInput(String userInput) {
+    void provideUserInput(String userInput) {
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
     }
 
+    @AfterEach
+    void afterEach() {
+        Console.close();
+    }
+
     @Test
     @DisplayName("플레이어의 입력이 123인지 확인하는 테스트")
-    public void 플레이어_입력_정상_테스트() {
+    void 플레이어_입력_정상_테스트() {
         //given
-        String playerInput = "123";
+        final String playerInput = "123";
         provideUserInput(playerInput);
 
         //when
@@ -35,7 +42,7 @@ public class PlayerTest {
 
     @Test
     @DisplayName("올바르지 않은 입력시 IllegalArgumentException 발생하는지")
-    public void 플레이어_입력_오류_테스트() {
+    void 플레이어_입력_오류_테스트() {
         //given
         final String playerInput = "1234";
         provideUserInput(playerInput);
