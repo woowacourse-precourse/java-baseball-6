@@ -41,6 +41,11 @@ boolean sizeCheck(String input) 지정된 사이즈만큼 들어왔는지 판별
 
 ## Computer 클래스
 - strike, ball 스코어 측정 메서드
+```java
+List<Integer> countScore(List<Integer> userNumbers) strike, ball의 개수를 세어 리스트로 반환
+
+int judgeScore(int number, int index) 숫자와 위치가 맞다면 Strike, 포함만 했다면 ball, 둘 다 아니라면 nothing 반환
+```
 
 ## UserInput 클래스
 - 유저의 String을 입력받는 메서드
