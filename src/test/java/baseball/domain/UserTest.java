@@ -3,6 +3,9 @@ package baseball.domain;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class UserTest {
 
     @Test
@@ -64,5 +67,37 @@ class UserTest {
 
         //when,then
         user.validateIncludedZreo("2333");
+    }
+
+    @Test
+    void 숫자가_아닌_것이_포함된_경우(){
+        //given
+        User user = new User();
+
+        //when,then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.validtaeNumeric("-203");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.validtaeNumeric("-2asd3");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.validtaeNumeric("303");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.validtaeNumeric("em3");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.validtaeNumeric("0.3");
+        });
+    }
+
+    @Test
+    void 숫자만_포함된_경우(){
+        //given
+        User user = new User();
+
+        //when,then
+       Assertions.assertEquals(List.of(2,3,3),user.validtaeNumeric("233"));
     }
 }
