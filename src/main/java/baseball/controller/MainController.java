@@ -13,21 +13,24 @@ public class MainController {
     }
 
     public void startProgram() {
-        boolean whetherRestart = false;
+        boolean isRunning = true;
         do {
             gameController.startGame();
-            whetherRestart = InputController.scanWhetherRestart();
-        } while (whetherRestart);
+            String whetherRestart = InputController.scanWhetherRestart();
+            if(whetherRestart.charAt(0) == END_GAME) {
+                isRunning = false;
+            }
+        } while(isRunning);
     }
 
     private static class InputController {
         private static final String WRONG_INPUT_WHETHER_RESTART_MESSAGE = "1 또는 2를 입력해주세요.";
 
-        public static boolean scanWhetherRestart() {
+        public static String scanWhetherRestart() {
             InputView.printEnterWhetherRestart();
             String inputString = Console.readLine();
             validateWhetherRestart(inputString);
-            return false;
+            return inputString;
         }
 
         private static void validateWhetherRestart(String inputString) {
