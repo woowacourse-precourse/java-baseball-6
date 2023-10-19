@@ -3,8 +3,8 @@ package baseball.domain;
 import static baseball.domain.Numbers.NUMBER_COUNT;
 
 public class Result {
-    private Integer ball;
-    private Integer strike;
+    private final Integer ball;
+    private final Integer strike;
 
     public Result(Integer ball, Integer strike) {
         this.ball = ball;
