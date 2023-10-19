@@ -23,6 +23,15 @@ public class BaseballNumber {
                 "number=" + number +
                 '}';
     }
+    //테스트를 진행해보기 위한 initializeUserNumberForTest
+    public static BaseballNumber initializeUserNumberForTest(String input) {
+        isInputOnlyNumber(input);
+
+        List<Integer> numberByList=stringToList(input);
+        System.out.println(numberByList);
+        return new BaseballNumber(numberByList);
+    }
+
     public static BaseballNumber initializeUserNumber() {
         List<Integer> number = new ArrayList<>();
         String input = Console.readLine();

@@ -67,4 +67,20 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("서로 같은 숫자들은 입력될 수 없습니다.");
     }
 
+    @Test
+    void initializeUserNumber_유효성테스트() {
+        //given
+        String str1 = "123";
+        String str2 = "456";
+        String str3 = "789";
+        //when
+        final Throwable thrown1 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str1));
+        final Throwable thrown2 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str2));
+        final Throwable thrown3 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str3));
+
+        //then
+        assertThat(thrown1).as("initializeComputerNumber_테스트").doesNotThrowAnyException();
+        assertThat(thrown2).as("initializeComputerNumber_테스트").doesNotThrowAnyException();
+        assertThat(thrown3).as("initializeComputerNumber_테스트").doesNotThrowAnyException();
+    }
 }
