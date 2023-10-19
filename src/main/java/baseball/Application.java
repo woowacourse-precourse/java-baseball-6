@@ -58,24 +58,29 @@ public class Application {
                 }
             }
 
-            if (strikeCount == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            StringBuilder result = new StringBuilder();
+
+            if (strikeCount == MAX_LENGTH) {
+                result.append("3스트라이크 3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+                System.out.println(result.toString());
                 if (selectExit())
                     gameProcess();
                 return;
             }
 
             if (ballCount > 0) {
-                System.out.println(ballCount + "볼 ");
+                result.append(ballCount).append("볼 ");
             }
 
             if (strikeCount > 0) {
-                System.out.println(strikeCount + " 스트라이크 ");
+                result.append(strikeCount).append("스트라이크 ");
             }
 
             if (ballCount == 0 && strikeCount == 0) {
-                System.out.println("낫싱");
+                result.append("낫싱");
             }
+
+            System.out.println(result.toString().trim());
         }
     }
 
