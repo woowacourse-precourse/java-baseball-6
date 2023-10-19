@@ -22,6 +22,6 @@ public final class GameResult {
   }
 
   public boolean isClear() {
-    return strikeCount == 3;
+    return strikeCount == BallNumbers.BALL_COUNT;
   }
 }
