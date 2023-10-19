@@ -1,5 +1,7 @@
 package baseball.console;
 
+import baseball.dto.BaseBallResult;
+
 public class ConsoleOutput {
 	public void printInit() {
 		System.out.println(BaseBallConstant.GAME_INIT.getValue());
@@ -9,7 +11,9 @@ public class ConsoleOutput {
 		System.out.print(BaseBallConstant.INPUT_REQ.getValue());
 	}
 
-	public void printResult(int ballCount, int strikeCount) {
+	public void printResult(BaseBallResult result) {
+		int ballCount = result.getBallCount();
+		int strikeCount = result.getStrikeCount();
 		if (ballCount == 0 && strikeCount == 0) {
 			System.out.println(BaseBallConstant.NONE.getValue());
 		} else if (ballCount != 0 && strikeCount == 0) {
