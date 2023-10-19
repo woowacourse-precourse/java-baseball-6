@@ -1,5 +1,7 @@
 package Util;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validator {
@@ -24,6 +26,19 @@ public class Validator {
     }
 
     private static boolean isValidNumberInput(String input) {
-        return NUMBER_PATTERN.matcher(input).matches();
+        if (!NUMBER_PATTERN.matcher(input).matches()) {
+            return false;
+        }
+
+
+        Set<Character> seen = new HashSet<>();
+        for (char digit : input.toCharArray()) {
+            if (!seen.add(digit)) {
+                return false;
+            }
+        }
+
+        return true;
     }
+
 }
