@@ -15,22 +15,43 @@ public class Application {
         while(true) {
             NumberBaseball game = new NumberBaseball();
             System.out.println("숫자 야구 게임을 시작합니다.");
+
             while(true) {
                 System.out.print("숫자를 입력해 주세요 : ");
                 String inputString = Console.readLine();
 
                 int[] userNumber = parseInput(inputString);
 
+                GuessResult guessResult = game.countResult(userNumber);
 
+                System.out.println(getResultMsg(guessResult));
 
-
-
-
+                if(guessResult.strikes() == 3) {
+                    System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
             }
         }
     }
 
+    public static String getResultMsg(GuessResult result) {
+        if(result.balls() == 0 && result.strikes() == 0) {
+            return "낫싱";
+        }
 
+        String resultMsg = "";
+        if(result.balls() > 0) {
+            resultMsg += (result.strikes() + "스트라이크");
+        }
+        if(result.balls() > 0 && result.strikes() > 0) {
+            resultMsg += " ";
+        }
+        if(result.strikes() > 0) {
+            resultMsg += (result.strikes() + "스트라이크");
+        }
+
+        return resultMsg;
+    }
 
     public static int[] parseInput(String inputString) throws IllegalArgumentException {
         if(!inputValidator.matcher(inputString).matches()) {
