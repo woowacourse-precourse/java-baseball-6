@@ -9,7 +9,7 @@ public class OutputView {
         System.out.println(START_GAME_MESSAGE);
     }
     public static void printEndGameMessage() {
-        System.out.println(END_GAME_MESSAGE);
+        System.out.print(END_GAME_MESSAGE);
     }
 
     public static void printSuccessMessage() {
