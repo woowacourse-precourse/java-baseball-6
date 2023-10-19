@@ -46,6 +46,15 @@ public class Application {
                     System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
                 }
             }
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int restart = Integer.parseInt(Console.readLine());
+            if (restart == 1) {
+                continue;
+            }
+            if (restart == 2) {
+                break;
+            }
         }
     }
     private static List<Integer> generateComputerNumbers() {
