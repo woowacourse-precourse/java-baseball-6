@@ -19,10 +19,26 @@ public class Application {
         printStart();
         getUserNumbersList();
     }
+    public static void playGame() {
+        printStart();
+        while(true) {
+            List<Integer> computerNumbersList = getComputerNumbersList();
+            List<Integer> userNumbersList = getUserNumbersList();
+            List<Integer> ballStrikeCount = getBallStrikeCount(computerNumbersList, userNumbersList);
+            printBallStrike(ballStrikeCount.get(0), ballStrikeCount.get(1));
+            if (isAnswer(ballStrikeCount.get(1))){
+                printAnswer();
+
+            }
+        }
+    }
     public static void printStart() {
         System.out.println(START_MESSAGE);
     }
-    public static void printBallStrike(int strikeCount, int ballCount) {
+    public static void printAnswer() {
+        System.out.println(ANSWER_MESSAGE);
+    }
+    public static void printBallStrike(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
             System.out.println(NOTHING_MESSAGE);
             return;
@@ -77,6 +93,11 @@ public class Application {
         }
         return userNumbersList;
     }
+    public static String getMoreGame() {
+        String moreGame = Console.readLine();
+        validateEmptyOrNullOfInputString(moreGame);
+
+    }
     public static void validateUserNumbersString(String userNumbers) {
         validateEmptyOrNullOfInputString(userNumbers);
         if (!userNumbers.matches("[1-9]{"+NUMBERS_LENGTH+"}")) {
@@ -86,6 +107,10 @@ public class Application {
         if (duplicationCheckSet.size() != NUMBERS_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 입력 값에 중복이 있습니다.");
         }
+    }
+    public static void validateMoreGameString(String moreGame) {
+        validateEmptyOrNullOfInputString(moreGame);
+
     }
     public static void validateEmptyOrNullOfInputString(String input) {
         if (input == null || input.isEmpty()) {
