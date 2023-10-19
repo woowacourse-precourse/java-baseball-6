@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Judger {
@@ -16,6 +15,7 @@ public class Judger {
 
     public void compareNumbers(List<Integer> human, List<Integer> computer) {
         int[] strikeIdx = checkStrike(human, computer);
+        checkBall(human, computer, strikeIdx);
     }
 
     private int[] checkStrike(List<Integer> human, List<Integer> computer){
@@ -29,5 +29,14 @@ public class Judger {
         }
 
         return strikeIdx;
+    }
+
+    private void checkBall(List<Integer> human, List<Integer> computer, int[] strikeIdx){
+        for(int i = 0; i < human.size(); i++) {
+            if(strikeIdx[i] == 1) continue;
+            if(computer.contains(human.get(i))) {
+                this.score[1] += 1;
+            }
+        }
     }
 }
