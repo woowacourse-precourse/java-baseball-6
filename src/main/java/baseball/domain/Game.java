@@ -5,7 +5,7 @@ public class Game {
     private BallsGenerator ballsGenerator;
     private Balls standard;
 
-    public Game(RandomBallsGenerator ballsGenerator) {
+    public Game(BallsGenerator ballsGenerator) {
         this.ballsGenerator = ballsGenerator;
     }
 
