@@ -16,7 +16,25 @@ public class Computer {
     public void compareInput(String input) {
         int ballCounts = ballCounts(input);
         int strikeCounts = strikeCounts(input);
-
+        
+        String message = getResultsMessage(ballCounts, strikeCounts);
+        System.out.println(message);
+    }
+    
+    private String getResultsMessage(int ballCounts, int strikeCounts) {
+        if (ballCounts == 0 && strikeCounts == 0) {
+            return Constants.NOTHING_MESSAGE;
+        }
+        StringBuilder sb = new StringBuilder();
+        
+        if (ballCounts != 0) {
+            sb.append(ballCounts).append(Constants.BALL_MESSAGE).append(" ");
+        }
+        if (strikeCounts != 0) {
+            sb.append(strikeCounts).append(Constants.STRIKE_MESSAGE);
+        }
+        
+        return sb.toString();
     }
 
     private int strikeCounts(String input) {
