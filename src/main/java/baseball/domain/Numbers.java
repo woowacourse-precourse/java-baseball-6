@@ -1,0 +1,33 @@
+package baseball.domain;
+
+import baseball.GameConstants;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class Numbers {
+    private final List<Number> numbers;
+
+    public Numbers(String input) {
+        if (!input.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+        }
+
+        List<Number> numbers = Arrays.stream(input.split(""))
+                .map(n -> new Number(Integer.parseInt(n)))
+                .toList();
+
+        if (numbers.stream().distinct().count() < GameConstants.NUMBER_SIZE.getNumber()) {
+            throw new IllegalArgumentException("서로 다른 숫자를 입력해야합니다.");
+        }
+        this.numbers = numbers;
+    }
+
+    public Numbers(List<Number> numbers) {
+        this.numbers = numbers;
+    }
+
+    public boolean hasNumber(Number target) {
+        return numbers.stream().anyMatch(number -> number.equals(target));
+    }
+}
