@@ -21,6 +21,19 @@ public class Application {
                 .noneMatch(playerBalls::contains);
     }
 
+    // 기능: 같은 수가 다른 자리에 있는 볼의 개수 세기
+    private static int getBallCount(List<Integer> computerBalls, List<Integer> playerBalls) {
+        int ballCount = 0;
+        for (int ballPosition = 0; ballPosition < computerBalls.size(); ballPosition++) {
+            int playerBall = playerBalls.get(ballPosition);
+            int computerBall = computerBalls.get(ballPosition);
+            if (computerBalls.contains(playerBall) && playerBall != computerBall) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
     // 기능: 게임 종료 후, 게임 재시작 여부
     private static boolean isNoMoreGame() {
         printRestartGameMessage();
