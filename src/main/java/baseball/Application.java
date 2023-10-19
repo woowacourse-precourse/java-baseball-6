@@ -14,6 +14,9 @@ public class Application {
 		UserNumber.checkInputOnlyNum(inputUserNumber);
 
 		Set<Integer> UserNumberSet = UserNumber.toSetUserNumber(inputUserNumber);
+		UserNumber.checkSizeUserNum(UserNumberSet);
+		UserNumber.checkRangeUserNum(UserNumberSet);
+
 		System.out.println(UserNumberSet);
 
 	}
@@ -35,9 +38,9 @@ public class Application {
 }
 
 class UserNumber {
-	final int COMPUTER_NUMBER_SIZE = 3;
-	final int COMPUTER_MIN_NUMBER = 1;
-	final int COMPUTER_MAX_NUMBER = 9;
+	final int USER_NUMBER_SIZE = 3;
+	final int USER_MIN_NUMBER = 1;
+	final int USER_MAX_NUMBER = 9;
 
 	String[] inputUserNumber() {
 
@@ -76,9 +79,17 @@ class UserNumber {
 		return userNumber;
 	}
 
-	void checkSizeUserNumber(Set<Integer> userNumber) {
-		if(userNumber.size() != 3) {
+	void checkSizeUserNum(Set<Integer> userNumber) {
+		if (userNumber.size() != USER_NUMBER_SIZE) {
 			throw new IllegalArgumentException("중복되지 않는 3자리 숫자만 입력해주세요");
+		}
+	}
+
+	void checkRangeUserNum(Set<Integer> userNumber) {
+		for (Integer eachUserNumber : userNumber) {
+			if (!(USER_MIN_NUMBER <= eachUserNumber && eachUserNumber <= USER_MAX_NUMBER)) {
+				throw new IllegalArgumentException("1~9 사이의 숫자만 입력해주세요");
+			}
 		}
 	}
 
