@@ -19,6 +19,14 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
 
             String input = Console.readLine();
+            validateInput(input);
+
+    private static void validateInput(String input) {
+        if (!input.matches("[1-9]{3}") || hasDuplicateDigits(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static boolean hasDuplicateDigits(String input) {
         return input.chars().distinct().count() < input.length();
     }
