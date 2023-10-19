@@ -19,6 +19,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        Console.readLine();
+        String input = Console.readLine();
+        int player = Integer.parseInt(input);
     }
 }
