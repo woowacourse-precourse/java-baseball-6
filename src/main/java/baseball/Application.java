@@ -7,10 +7,10 @@ import java.util.List;
 
 public class Application {
 
-    public static final int startInclusive = 1;
-    public static final int endInclusive = 9;
+    public static final int START_INCLUSIVE = 1;
+    public static final int END_INCLUSIVE = 9;
 
-    private static final int numLength = 3;
+    private static final int NUM_LENGTH = 3;
 
     public static List<Integer> splitDigitsFromRandomNumber = new ArrayList<>();
 
@@ -59,11 +59,11 @@ public class Application {
     }
 
     public static boolean evaluateByResult(int strikeNumber, int ballNumber, int nothingNumber) {
-        if (strikeNumber == numLength) {
-            System.out.println(numLength + "스트라이크");
+        if (strikeNumber == NUM_LENGTH) {
+            System.out.println(NUM_LENGTH + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
-        } else if (nothingNumber == numLength) {
+        } else if (nothingNumber == NUM_LENGTH) {
             System.out.println("낫싱");
         } else if (strikeNumber != 0 || ballNumber != 0) {
             if (ballNumber != 0) {
@@ -79,9 +79,9 @@ public class Application {
 
     public static void initComputerNumber() {
         splitDigitsFromRandomNumber.clear();
-        while (splitDigitsFromRandomNumber.size() < numLength) {
+        while (splitDigitsFromRandomNumber.size() < NUM_LENGTH) {
             //여기서 IllegalArgumentException 고려해봐야 한다.
-            int randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
+            int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
             if (!splitDigitsFromRandomNumber.contains(randomNumber)) {
                 splitDigitsFromRandomNumber.add(randomNumber);
             }
@@ -96,8 +96,8 @@ public class Application {
     }
 
     private static void validateUserInputLength(String stringDigitsFromUserInput) {
-        if (stringDigitsFromUserInput.length() != numLength) {
-            throw new IllegalArgumentException("숫자의 길이가 " + numLength + "와 다릅니다.");
+        if (stringDigitsFromUserInput.length() != NUM_LENGTH) {
+            throw new IllegalArgumentException("숫자의 길이가 " + NUM_LENGTH + "와 다릅니다.");
         }
     }
 
@@ -109,7 +109,7 @@ public class Application {
                 splitDigitsFromUserInput.add(number);
             }
         }
-        if (splitDigitsFromUserInput.size() != numLength) {
+        if (splitDigitsFromUserInput.size() != NUM_LENGTH) {
             throw new IllegalArgumentException("중복된 숫자 존재");
         }
         return splitDigitsFromUserInput;
