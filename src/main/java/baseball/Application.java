@@ -120,6 +120,21 @@ public class Application {
         return new GuessResult(ballCount, strikeCount);
     }
 
+    static void printGuessResult(GuessResult guessResult) {
+        StringBuilder sb = new StringBuilder();
+        if (guessResult.hasBall()) {
+            sb.append(guessResult.getBallCount()).append("볼 ");
+        }
+        if (guessResult.hasStrike()) {
+            sb.append(guessResult.getStrikeCount()).append("스트라이크");
+        }
+        if (sb.isEmpty()) {
+            sb.append("낫싱");
+        }
+
+        System.out.println(sb.toString());
+    }
+
     static void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         GameNumber computer = pickComputerNumber();
@@ -127,14 +142,13 @@ public class Application {
         while (isGameProceed) {
             GameNumber user = readUserNumber();
             GuessResult guessResult = createGuessResult(computer, user);
-
+            printGuessResult(guessResult);
             if (guessResult.isAllStrike()) {
                 isGameProceed = false;
             }
         }
-
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
