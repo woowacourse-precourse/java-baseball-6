@@ -43,6 +43,17 @@ public class Balls {
         return balls;
     }
 
+    public BallStatus compare(Ball user) {
+        for (Ball ball : balls) {
+            BallStatus ballStatus = ball.compare(user);
+
+            if (ballStatus != BallStatus.NOTHING) {
+                return ballStatus;
+            }
+        }
+        return BallStatus.NOTHING;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

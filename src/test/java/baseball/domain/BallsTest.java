@@ -2,10 +2,15 @@ package baseball.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class BallsTest {
 
@@ -32,5 +37,23 @@ class BallsTest {
         assertThatThrownBy(() -> new Balls(List.of(1, 2, 2)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("공들의 숫자는 중복될 수 없습니다.");
+    }
+
+    @ParameterizedTest
+    @MethodSource("ballAndBallStatus")
+    @DisplayName("컴퓨터의 공들과 플레이어의 공 하나를 비교하여 결과를 알 수 있다.")
+    void compare(Ball user, BallStatus expected) {
+        Balls computers = new Balls(List.of(1, 2, 3));
+        BallStatus actual = computers.compare(user);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> ballAndBallStatus() {
+        return Stream.of(
+                arguments(new Ball(1, 1), BallStatus.STRIKE),
+                arguments(new Ball(1, 3), BallStatus.BALL),
+                arguments(new Ball(4, 1), BallStatus.NOTHING)
+        );
     }
 }
