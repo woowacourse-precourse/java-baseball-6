@@ -48,50 +48,50 @@ public class Application {
 
         throw new IllegalArgumentException();
     }
+
+    public static StringBuilder generateHint(Integer ball, Integer strike){
+        StringBuilder resultStatement = new StringBuilder();
+
+        if (ball > 0)
+            resultStatement.append(ball).append("볼 ");
+        if (strike > 0)
+            resultStatement.append(strike).append("스트라이크");
+
+        if(strike == 0 && ball == 0)
+            resultStatement.append("낫싱");
+
+        return resultStatement;
+    }
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        ArrayList<Integer> userNumber;
+        ArrayList<Integer> userInput;
         ArrayList<Integer> answer;
         int ball;
         int strike;
-        StringBuilder resultStatement;
-
         do {
             answer = generateAnswer();
             System.out.println("숫자 야구 게임을 시작합니다.");
 
-            while (true) {
+            do {
                 ball = 0;
                 strike = 0;
-                resultStatement = new StringBuilder();
 
                 System.out.print("숫자를 입력해주세요 : ");
-                userNumber = guessInputHandler();
+                userInput = guessInputHandler();
+
                 for (int i = 0; i < 3; i++) {
-                    int num = answer.indexOf(userNumber.get(i));
+                    int num = answer.indexOf(userInput.get(i));
                     if (num == i) {
                         strike++;
                     } else if(num != -1){
                         ball++;
                     }
                 }
-                if (ball > 0)
-                    resultStatement.append(ball).append("볼 ");
-                if (strike > 0)
-                    resultStatement.append(strike).append("스트라이크");
 
-                if(strike == 0 && ball == 0)
-                    resultStatement.append("낫싱");
+                System.out.println(generateHint(ball,strike));
+            }while(strike != 3);
 
-                System.out.println(resultStatement);
-
-                if (strike == 3) {
-                    System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    break;
-                }
-            }
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
+            System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         } while (!Objects.equals(restartInputHandler(), "2"));
     }
 }

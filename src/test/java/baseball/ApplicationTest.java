@@ -28,17 +28,17 @@ class ApplicationTest extends NsTest {
         );
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("메롱"))
+                assertThatThrownBy(() -> runException("메롱롱"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1롱"))
+                assertThatThrownBy(() -> runException("12롱"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(""))
+                assertThatThrownBy(() -> runException("\n"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
