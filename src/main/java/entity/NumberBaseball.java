@@ -84,4 +84,8 @@ public class NumberBaseball {
         return countStrike() + countBall() == 0;
     }
 
+    public boolean isPerfect() {
+        return countStrike() == 3;
+    }
+
 }
