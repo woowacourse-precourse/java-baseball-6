@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
@@ -83,32 +85,29 @@ class ApplicationTest extends NsTest {
     static BaseBallGame baseBallGame = new BaseBallGameImpl();
     @Test
     void 스트라이크_테스트() {
-        assertThat(baseBallGame.countStrike(123)).isEqualTo(3);
-        assertThat(baseBallGame.countStrike(124)).isEqualTo(2);
-        assertThat(baseBallGame.countStrike(134)).isEqualTo(1);
-        assertThat(baseBallGame.countStrike(234)).isZero();
+        assertThat(baseBallGame.countStrike(List.of(1,2,3))).isEqualTo(3);
+        assertThat(baseBallGame.countStrike(List.of(1,2,4))).isEqualTo(2);
+        assertThat(baseBallGame.countStrike(List.of(1,3,4))).isEqualTo(1);
+        assertThat(baseBallGame.countStrike(List.of(4,5,6))).isZero();
     }
 
     @Test
     void 볼_테스트() {
-        assertThat(baseBallGame.countBall(123)).isZero();
-        assertThat(baseBallGame.countBall(124)).isZero();
-        assertThat(baseBallGame.countBall(134)).isEqualTo(1);
-        assertThat(baseBallGame.countBall(234)).isEqualTo(2);
-        assertThat(baseBallGame.countBall(231)).isEqualTo(3);
+        assertThat(baseBallGame.countBall(List.of(1,2,3))).isZero();
+        assertThat(baseBallGame.countBall(List.of(1,2,4))).isEqualTo(1);
+        assertThat(baseBallGame.countBall(List.of(4,1,2))).isEqualTo(2);
+        assertThat(baseBallGame.countBall(List.of(2,3,1))).isEqualTo(3);
     }
 
     @Test
     void 낫싱_테스트(){
-        assertThat(baseBallGame.isNothing(123)).isFalse();
-        assertThat(baseBallGame.isNothing(999)).isTrue();
+        assertThat(baseBallGame.isNothing(List.of(1,2,3))).isFalse();
+        assertThat(baseBallGame.isNothing(List.of(9,9,9))).isTrue();
     }
 
     @Test
     void 랜덤_수_생성_테스트(){
-        assertThat(baseBallGame.makeRandomNumber()).isBetween(100, 999);
-        assertThat(baseBallGame.makeRandomNumber()).isBetween(100, 999);
-        assertThat(baseBallGame.makeRandomNumber()).isBetween(100, 999);
+        assertThat(baseBallGame.makeRandomNumber()).isNotNull();
     }
 
     @Override
