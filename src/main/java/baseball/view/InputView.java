@@ -22,5 +22,19 @@ public class InputView {
         System.out.print(NUMBER_INPUT_STRING);
     }
 
+    public void printFinish() {
+        System.out.println(FINISH_INPUT_STRING);
+    }
 
+    public void printResult(Result result) {
+        if (result.isFinish()) {
+            System.out.println(NUMBER_COUNT + STRIKE_STRING);
+            return;
+        }
+        if (result.isNon()) {
+            System.out.println(NON_STRING);
+            return;
+        }
+        System.out.println(result.getBall() + BALL_STRING + " " + result.getStrike() + STRIKE_STRING);
+    }
 }
