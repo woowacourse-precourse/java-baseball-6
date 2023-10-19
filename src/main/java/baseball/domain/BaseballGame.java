@@ -9,6 +9,15 @@ public class BaseballGame {
         this.gameState = GameState.PLAYING;
     }
 
+    public BaseballGame() {
+        initializeData();
+    }
+
+    private void initializeData() {
+        this.computerBalls = new Balls(RandomNumberGenerator.createRandomNumbers());
+        this.gameState = GameState.PLAYING;
+    }
+
     public PlayResult play(Balls userBalls) {
         PlayResult playResult = computerBalls.play(userBalls);
 
@@ -23,7 +32,6 @@ public class BaseballGame {
     }
 
     public void restart() {
-        computerBalls = new Balls(RandomNumberGenerator.createRandomNumbers());
-        gameState = GameState.PLAYING;
+        initializeData();
     }
 }
