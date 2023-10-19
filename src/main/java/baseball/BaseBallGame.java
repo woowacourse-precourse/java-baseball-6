@@ -26,8 +26,8 @@ public class BaseBallGame {
             List<Integer> user = validation.validateInputNumber(inputNumber);
             Result result = comparison(computer, user);
 
-            ballCount = result.ballCount;
-            strikeCount = result.strikeCount;
+            ballCount = result.getBallCount();
+            strikeCount = result.getStrikeCount();
 
             messageService.printComparisonResult(ballCount,strikeCount);
         }
