@@ -1,9 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -11,19 +9,27 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
 	public static void main(String[] args) {
 
-		UserNumber UserNumber = new UserNumber();
-		String[] inputUserNumber = UserNumber.inputUserNumber();
-		UserNumber.checkInputOnlyNum(inputUserNumber);
-
-		Set<Integer> UserNumberSet = UserNumber.toSetUserNumber(inputUserNumber);
-		UserNumber.checkSizeUserNum(UserNumberSet);
-		UserNumber.checkRangeUserNum(UserNumberSet);
-
 		List<Integer> computerNumber = List.of(7, 1, 3);
 
-		int ballNumber = countBall(computerNumber, UserNumberSet);
+		UserNumber UserNumber = new UserNumber();
 
-		System.out.println(ballNumber);
+		int strikeNumber = 0;
+
+		while (strikeNumber != 3) {
+			String[] inputUserNumber = UserNumber.inputUserNumber();
+			UserNumber.checkInputOnlyNum(inputUserNumber);
+
+			List<Integer> UserNumberList = UserNumber.toListUserNumber(inputUserNumber);
+			UserNumber.checkSizeUserNum(UserNumberList);
+			UserNumber.checkRangeUserNum(UserNumberList);
+
+			int ballNumber;
+
+			ballNumber = countBall(computerNumber, UserNumberList);
+			strikeNumber = countStrike(computerNumber, UserNumberList);
+
+			System.out.println((ballNumber - strikeNumber) + "볼 " + strikeNumber + "스트라이크");
+		}
 
 	}
 
@@ -45,7 +51,7 @@ public class Application {
 		return computerNumber;
 	}
 
-	static int countBall(List<Integer> computerNumber, Set<Integer> userNumber) {
+	static int countBall(List<Integer> computerNumber, List<Integer> userNumber) {
 		int ballNumber = 0;
 
 		for (int eachUserNumber : userNumber) {
@@ -55,6 +61,18 @@ public class Application {
 		}
 
 		return ballNumber;
+	}
+
+	static int countStrike(List<Integer> computerNumber, List<Integer> userNumber) {
+		int strikeNumber = 0;
+
+		for (int i = 0; i < userNumber.size(); i++) {
+			if (computerNumber.get(i).equals(userNumber.get(i))) {
+				strikeNumber++;
+			}
+		}
+
+		return strikeNumber;
 	}
 
 }
@@ -89,24 +107,29 @@ class UserNumber {
 		}
 	}
 
-	Set<Integer> toSetUserNumber(String[] inputUserNumber) {
+	List<Integer> toListUserNumber(String[] inputUserNumber) {
 
-		Set<Integer> userNumber = new HashSet<>();
+		List<Integer> userNumber = new ArrayList<>();
 
 		for (String eachUserNumber : inputUserNumber) {
-			userNumber.add(Integer.parseInt(eachUserNumber));
+			int eachUserNumberList = Integer.parseInt(eachUserNumber);
+			if (!userNumber.contains(eachUserNumberList)) {
+				userNumber.add(eachUserNumberList);
+			}
+
 		}
 
 		return userNumber;
 	}
 
-	void checkSizeUserNum(Set<Integer> userNumber) {
+	void checkSizeUserNum(List<Integer> userNumber) {
+
 		if (userNumber.size() != USER_NUMBER_SIZE) {
 			throw new IllegalArgumentException("중복되지 않는 3자리 숫자만 입력해주세요");
 		}
 	}
 
-	void checkRangeUserNum(Set<Integer> userNumber) {
+	void checkRangeUserNum(List<Integer> userNumber) {
 		for (Integer eachUserNumber : userNumber) {
 			if (!(USER_MIN_NUMBER <= eachUserNumber && eachUserNumber <= USER_MAX_NUMBER)) {
 				throw new IllegalArgumentException("1~9 사이의 숫자만 입력해주세요");
