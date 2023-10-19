@@ -1,8 +1,9 @@
 구현할 기능 목록
 
 1. 시작, 종료, 결과 문구 작성 -> Message 클래스 생성 후 static 문자열로 사용 처리
-2. 단순 1 부터 9 까지 3자리 숫자 생성
-3. 서로 다른 수로 이루 어진 숫자의 요구 사항을 충족 하기 위해 중복 체크 로직 구현
+2. 단순 1 부터 9 까지 3자리 숫자 생성 -> camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 사용
+3. 서로 다른 수로 이루 어진 숫자의 요구 사항을 충족 하기 위해 중복 체크 로직 구현 -> RandomNumberUtils 클래스 안에서 duplicateCheck 중복 값 입력 되지 않도록 메소드 별도 추가
+   하여 pickNumberInRange() 사용
 4. 사용자의 값을 입력 받는다. -> amp.nextstep.edu.missionutils.Console의 readLine() 활용 하여 구현
 5. 입력된 값이 3자리 숫자 혹은 숫자가 맞는지 확인
 6. 입력한 수에 대한 볼 결과 로직 생성

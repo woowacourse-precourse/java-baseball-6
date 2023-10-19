@@ -20,7 +20,7 @@ public class Application {
         System.out.println(Message.START_MSG);
 
         // 2. 컴퓨터 숫자 생성
-        List<Integer> computer = RandomNumberUtils.pickUniqueNumbersInRange(START_RANGE, LAST_RANGE, COUNT);
+        List<Integer> computer = RandomNumberUtils.pickNumberInRange(START_RANGE, LAST_RANGE);
 
         System.out.println(Message.INPUT_MSG);
 
