@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -25,5 +26,15 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    public static List<Integer> getUserGuessThreeDigitNumber(){
+
+        List<Integer> user = new ArrayList<>();
+        String userThreeNumbers = Console.readLine();
+        for(int i=0;i<userThreeNumbers.length();i++){
+            user.add(userThreeNumbers.charAt(i)-'0');
+        }
+        return user;
     }
 }
