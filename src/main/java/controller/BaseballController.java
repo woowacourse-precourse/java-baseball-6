@@ -13,8 +13,8 @@ public class BaseballController {
 
     public void getUserNumber() {
         String userInput = InputView.getUserInput();
-        NumberBaseball userNumberBaseball = new NumberBaseball(userInput);
-        userNumberBaseball.isValid();
+        NumberBaseball userNumberBaseball = new NumberBaseball();
+        userNumberBaseball.isValid(userInput);
         printResult(userNumberBaseball);
     }
 

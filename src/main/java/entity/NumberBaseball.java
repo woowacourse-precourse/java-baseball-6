@@ -24,23 +24,23 @@ public class NumberBaseball {
                 .collect(Collectors.joining());
     }
 
-    public void isValid() {
-        if (isNumberLengthThree() && isNumberDuplicate() && isNumber()) {
+    public void isValid(String numbers) {
+        if (isNumberLengthThree(numbers) && isNumberDuplicate(numbers) && isNumber(numbers)) {
             return;
         }
         throw new IllegalStateException();
     }
 
-    private boolean isNumber() {
+    private boolean isNumber(String numbers) {
         return numbers.chars()
                 .allMatch(Character::isDigit);
     }
 
-    private boolean isNumberLengthThree() {
+    private boolean isNumberLengthThree(String numbers) {
         return numbers.length() == 3;
     }
 
-    private boolean isNumberDuplicate() {
+    private boolean isNumberDuplicate(String numbers) {
         char firstNumber = numbers.charAt(0);
         char secondNumber = numbers.charAt(1);
         char thirdNumber = numbers.charAt(2);
@@ -48,7 +48,7 @@ public class NumberBaseball {
         return firstNumber != secondNumber && secondNumber != thirdNumber && firstNumber != thirdNumber;
     }
 
-    public int countStrike() {
+    public int countStrike(String numbers) {
         int result = 0;
         for (int i = 0; i < 3; i++) {
             if (numbers.charAt(i) == randomNumber.charAt(i)) {
@@ -58,7 +58,7 @@ public class NumberBaseball {
         return result;
     }
 
-    public int countBall() {
+    public int countBall(String numbers) {
         int result = 0;
         if (numbers.charAt(0) == randomNumber.charAt(1) || numbers.charAt(0) == randomNumber.charAt(2)) {
             result++;
