@@ -25,8 +25,13 @@ public class NumberBaseballController {
 
     public void readInputNumFromInputView() {
         List<Integer> inputNumList = inputView.readNum();
-        // 여기서 service로 넘겨주고
+        compareInputNumToRandNum(inputNumList);
+    }
+
+    public void compareInputNumToRandNum(List<Integer> inputNumList) {
         numberBaseballService.compareInputNumToRandNum(inputNumList);
+
+        // 결과를 outputView로 전달
     }
 
 
