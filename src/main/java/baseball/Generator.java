@@ -10,7 +10,7 @@ public class Generator {
         List<Integer> answerList = new ArrayList<>();
 
         while (answerList.size() < 3) {
-            int num = Randoms.pickNumberInRange(1, 10);
+            int num = Randoms.pickNumberInRange(1, 9);
 
             if (answerList.contains(num)) {
                 continue;
