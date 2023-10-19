@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BaseBallGame {
 	String computerNumber;
 
@@ -16,14 +19,35 @@ public class BaseBallGame {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 
 		String judgment = "";
+
 		while (!judgment.equals("3 스트라이크")) {
 			System.out.print("숫자를 입력해주세요 : ");
 			String myNumber = Console.readLine();
 			validateMyNumber(myNumber);
+			judgment = judgeMyNumber(myNumber);
+			System.out.println(judgment);
 		}
 
 	}
 
+	private String judgeMyNumber(String myNumber) {
+		String ball = hasMyNumberBall(myNumber);
+		String strike = hasMyNumberStrike(myNumber);
+		if (ball.length() == 0 && strike.length() == 0) {
+			return "낫싱";
+		}
+		return (ball + strike).trim();
+	}
+
+	private String hasMyNumberStrike(String myNumber) {
+		return null;
+	}
+
+	private String hasMyNumberBall(String myNumber) {
+		return null;
+	}
+
+	// 입력값 유효한지 검증
 	private void validateMyNumber(String myNumber) {
 		char[] arr = myNumber.toCharArray();
 		if (arr.length != 3) {
