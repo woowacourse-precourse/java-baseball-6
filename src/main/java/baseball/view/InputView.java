@@ -7,4 +7,9 @@ public class InputView {
         String number = Console.readLine();
         return number;
     }
+
+    public int inputRestartGame() {
+        String restart = Console.readLine();
+        return Integer.parseInt(restart);
+    }
 }
