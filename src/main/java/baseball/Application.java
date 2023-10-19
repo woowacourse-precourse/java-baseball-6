@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.factory.NumberFactory;
 import baseball.validator.NumberValidator;
 import baseball.view.AskView;
 import baseball.view.StartView;
@@ -15,5 +16,7 @@ public class Application {
 
         String userInput = Console.readLine();
         NumberValidator.assertInputNumberWithLength(userInput, PLAY_NUMBER_DIGIT);
+
+        int computerNumber = NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
     }
 }
