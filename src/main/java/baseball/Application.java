@@ -32,6 +32,13 @@ public class Application {
             }
             return false;
         }
+        static int getIndex(int[] arr, int value) {
+            for (int i=0; i<arr.length; i++) {
+                if (arr[i] == value)
+                    return i;
+            }
+            return -1;
+        }
     }
 
 
@@ -122,6 +129,21 @@ public class Application {
                     System.out.println(NOTHING);
             }
             else System.out.println(this.strike + "스트라이크"); // 3스트라이크
+        }
+
+        void compareAnswer(BaseBallGame userAnswer, BaseBallGame computerAnswer) {
+            int num = 0;
+            for (int i=0; i<BaseBallGame.NUMBER_IDX; i++) {
+                num = userAnswer.number[i];
+
+                if (!Array.checkContains(computerAnswer.number, num))
+                    continue;
+                if (i == Array.getIndex(computerAnswer.number, num)) {
+                    addStrikeCount();
+                    continue;
+                }
+                addBallCount();
+            }
         }
     }
 }
