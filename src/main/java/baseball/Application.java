@@ -19,11 +19,20 @@ public class Application {
                     throw new IllegalArgumentException();
                 }
 
+                List<Integer> userNumbers = new ArrayList<>();
+
                 for (int i = 0; i < 3; i++) {
-                    char c = userInput.charAt(i);
-                    if(!Character.isDigit(c) || c == '0') {
+                    char splitedChar = userInput.charAt(i);
+                    if(!Character.isDigit(splitedChar) || splitedChar == '0') {
                         throw new IllegalArgumentException();
                     }
+
+                    int numericChar = Character.getNumericValue(splitedChar);
+                    if (userNumbers.contains(numericChar)) {
+                        throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
+                    }
+
+                    userNumbers.add(numericChar);
                 }
 
                 int strikeCount = 0, ballCount = 0;
