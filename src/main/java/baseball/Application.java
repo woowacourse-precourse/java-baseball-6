@@ -7,6 +7,8 @@ public class Application {
     public static void main(String[] args) {
         System.out.println(GAME_START_MESSAGE);
 
+        BaseballGame baseballGame = new BaseballGame();
+        baseballGame.play();
     }
 
 }
