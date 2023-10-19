@@ -33,13 +33,9 @@ public class RandomController {
         while (true) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-            if (isDifferentNumber(randomNumbers, randomNumber)) {
+            if(!randomNumbers.contains(randomNumber)){
                 return randomNumber;
             }
         }
-    }
-
-    private boolean isDifferentNumber(List<Integer> randomNumbers, int randomNumber) {
-        return !randomNumbers.contains(randomNumber);
     }
 }
