@@ -15,6 +15,12 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    // 기능: 같은 수가 전혀 없으면 낫싱
+    private static boolean isNothing(List<Integer> computerBalls, List<Integer> playerBalls) {
+        return computerBalls.stream()
+                .noneMatch(playerBalls::contains);
+    }
+
     // 기능: 게임 종료 후, 게임 재시작 여부
     private static boolean isNoMoreGame() {
         printRestartGameMessage();
