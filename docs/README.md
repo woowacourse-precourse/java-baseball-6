@@ -38,7 +38,6 @@
 
    컴퓨터의 상태와 행동을 관리하는 클래스
 
-    - 임의의 수 3개를 획득하는 기능
     - 수를 반환하는 기능
 
 
@@ -75,13 +74,20 @@
       - 플레이어가 숫자를 맞추거나 예외가 발생하기 전까지 반복
 
 
-6. Validation.java
+6. NumberGenerator.java
+
+   서로 다른 수를 생성하는 클래스
+
+    - 임의의 수를 생성하는 기능
+
+
+7. Validation.java
 
    사용자 입력에 대한 예외처리를 담당하는 클래스
 
-   - 서로 다른 3자리 수에 대한 예외
-      - 3자리 수가 아니라면 “IllegalArgumentException” 발생
-      - 1~9로 이루어진 수가 아니라면 “IllegalArgumentException” 발생
-      - 수가 중복됐다면 “IllegalArgumentException” 발생
-   - 게임 진행 여부에 대한 예외
-      - 1 또는 2가 아니라면 “IllegalArgumentException” 발생
+    - 서로 다른 3자리 수에 대한 예외
+        - 3자리 수가 아니라면 “IllegalArgumentException” 발생
+        - 1~9로 이루어진 수가 아니라면 “IllegalArgumentException” 발생
+        - 수가 중복됐다면 “IllegalArgumentException” 발생
+    - 게임 진행 여부에 대한 예외
+        - 1 또는 2가 아니라면 “IllegalArgumentException” 발생
