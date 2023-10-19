@@ -1,5 +1,7 @@
 package baseball.Randomgenerator;
 
+import java.util.List;
+
 public interface Randomgenerator {
-    public String getRandom();
+    public List<Integer> getRandom();
 }
