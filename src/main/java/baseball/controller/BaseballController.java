@@ -20,7 +20,6 @@ public class BaseballController {
     private static int RESTART = 1;
     private static int FINISH = 2;
 
-
     private InputView inputView;
     private OutputView outputView;
     private Validator validator;
@@ -31,76 +30,64 @@ public class BaseballController {
         this.validator = new Validator();
     }
 
-    public void run(){
+    public void run() {
 
-        inputView.start();
         boolean isFirstTime = true;
         AnswerNumbers answerNumbers = null;
-        while(true){
 
+        inputView.start();
 
-            if(isFirstTime){
-                answerNumbers = new AnswerNumbers(getAnswerNumbers());
-            }
+        while (true) {
+            answerNumbers = getNewAnswerNumbers(isFirstTime, answerNumbers);
 
             String input = inputView.input();
-
-            validator.validateThreeNumber(input);
-
             List<Integer> inputNumbers = mapToInListInteger(input);
 
+            validator.validateThreeNumber(input);
             validator.validateDuplicate(inputNumbers);
 
             Map<Integer, Integer> result = answerNumbers.getBallNStrkie(inputNumbers);
-
             outputView.printResult(result.get(BALL), result.get(STRIKE));
 
-            if(result.get(STRIKE) == SUCCESS_NUMBER){
+            if (result.get(STRIKE) == SUCCESS_NUMBER) {
                 int finishNum = Integer.parseInt(inputView.finish());
 
-                if(finishNum == RESTART){
+                if (finishNum == RESTART) {
                     isFirstTime = true;
                     continue;
                 }
                 return;
             }
-
             isFirstTime = false;
         }
 
     }
 
-    public List<Integer> getAnswerNumbers(){
+    private AnswerNumbers getNewAnswerNumbers(boolean isFirstTime, AnswerNumbers answerNumbers) {
+        if (isFirstTime) {
+            answerNumbers = new AnswerNumbers(getAnswerNumbers());
+        }
+        return answerNumbers;
+    }
+
+    public List<Integer> getAnswerNumbers() {
         List<Integer> numbers = new ArrayList<>();
+
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
         }
-
-        for(Integer i : numbers){
-            System.out.print(i + " ");
-        }
-
         return numbers;
     }
 
-    public List<Integer> mapToInListInteger(String str){
+    public List<Integer> mapToInListInteger(String str) {
         return Arrays.stream(str.split(""))
                 .mapToInt(x -> Integer.parseInt(x))
                 .boxed()
                 .collect(Collectors.toList());
     }
-
-
-
-
-
-
-
-
-
 
 
 }
