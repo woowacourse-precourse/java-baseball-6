@@ -29,4 +29,8 @@ public class BallNumbers {
             throw new IllegalArgumentException();
         }
     }
+
+    public PlayResult compareAll(final BallNumbers player) {
+        return new PlayResult();
+    }
 }

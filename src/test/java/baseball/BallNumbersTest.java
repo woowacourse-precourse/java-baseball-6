@@ -1,5 +1,6 @@
 package baseball;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -36,5 +37,14 @@ public class BallNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new BallNumbers(List.of(2, 5, 2)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("플레이어와 컴퓨터의 야구 숫자들을 비교할 수 있다. - 낫싱")
+    void testCompareAllWhenNothing() {
+        BallNumbers computer = new BallNumbers(List.of(4, 2, 5));
+        BallNumbers player = new BallNumbers(List.of(7, 8, 9));
+        PlayResult playResult = player.compareAll(computer);
+        assertThat(playResult.isNothing()).isTrue();
     }
 }
