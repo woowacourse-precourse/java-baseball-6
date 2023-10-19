@@ -17,6 +17,11 @@ public class Person {
             inputList.add(inputNum);
         }
     }
+
+    public void clean() {
+        inputList.clear();
+    }
+
     public List<Integer> getInputList() {
         return inputList;
     }
