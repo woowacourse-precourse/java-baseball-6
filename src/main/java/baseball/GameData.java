@@ -10,14 +10,6 @@ public class GameData {
     private Integer ballCnt;
     private Integer gameRepetition;
 
-    public GameData(List<Integer> computerNumbers, List<Integer> playerNumbers, Integer strikeCnt, Integer ballCnt, Integer gameRepetition) {
-        this.computerNumbers = computerNumbers;
-        this.playerNumbers = playerNumbers;
-        this.strikeCnt = strikeCnt;
-        this.ballCnt = ballCnt;
-        this.gameRepetition = gameRepetition;
-    }
-
     public List<Integer> getComputerNumbers() {
         return computerNumbers;
     }
