@@ -42,5 +42,13 @@ public class BaseballController {
                 break;
             }
         }
+        String gameCommand = inputView.readGameCommand();
+        if (gameCommand.equals("1")) {
+            play();
+            return;
+        }
+        if (gameCommand.equals("2")) {
+            return;
+        }
     }
 }
