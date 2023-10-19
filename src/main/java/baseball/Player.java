@@ -15,8 +15,10 @@ public class Player {
         validateNotZero(input);
         validateNumberDigit(input);
         List<Integer> numbers = new ArrayList<>();
-        for (char number : input.toCharArray()) {
-            numbers.add(number - '0');
+        for (char num : input.toCharArray()) {
+            int number = num - '0';
+            validateRedundantNumber(numbers, number);
+            numbers.add(number);
         }
         return numbers;
     }
@@ -29,6 +31,12 @@ public class Player {
 
     private void validateNumberDigit(String input) {
         if(input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateRedundantNumber(List<Integer> numbers, int number) {
+        if(numbers.contains(number)){
             throw new IllegalArgumentException();
         }
     }
