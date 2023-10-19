@@ -6,12 +6,11 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
+    public static boolean successFlag = false;
+
     public static void main(String[] args) {
-
         startGame();
-
         int answerNumber = generateAnswerNumber();
-        boolean successFlag = false;
         while(true) {
             // 성공했을 경우 게임 지속 여부 선택하기
             if (successFlag) {
@@ -25,10 +24,9 @@ public class Application {
                     break;
                 }
             }
-
             // 큰 게임 진행은 아래 두 단계로 구성됨
             int number = inputNumber();
-            printHint(number);
+            printHint(number, answerNumber);
         }
     }
 
@@ -37,8 +35,52 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private static void printHint(int number) {
+    /**
+     * 입력 숫자와 정답 숫자를 비교하여 숫자 야구 힌트를 준다.
+     * @param inputNumber 서로 다른 1~9 숫자로 구성된 세자리 수, 입력 숫자
+     * @param answerNumber 서로 다른 1~9 숫자로 구성된 세자리 수, 정답 숫자
+     */
+    private static void printHint(int inputNumber, int answerNumber) {
         // number에 대한 힌트 출력
+
+        // 3스트라이크
+        if (inputNumber - answerNumber == 0) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            successFlag = true;
+            return;
+        }
+
+        String[] inputArray = String.valueOf(inputNumber).split("");
+        String[] answerArray = String.valueOf(answerNumber).split("");
+        // 스트라이크 개수 세기
+        int strike = 0;
+        for (int idx=0; idx<3; idx++){
+            if (inputArray[idx].equals(answerArray[idx])) {
+                strike++;
+            }
+        }
+
+        // 볼 개수 세기
+        int ball = 0;
+        for (int i=0; i<3; i++){
+            for (int j=0; j<3; j++){
+                if (i == j){
+                    continue;
+                }
+                if (inputArray[i] == answerArray[j]) {
+                    ball++;
+                }
+            }
+        }
+
+        // 결과 출력
+        if (strike == 0 && ball == 0){
+            System.out.println("낫싱");
+            return;
+        }
+        System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+        return;
     }
 
     private static int inputNumber() {
