@@ -30,7 +30,7 @@ public class Referee {
         continueOrFinish();
     }
 
-    public void continueOrFinish() {
+    private void continueOrFinish() {
         Message.printContinueOrFinishMessage();
         String userInput = Console.readLine();
 
