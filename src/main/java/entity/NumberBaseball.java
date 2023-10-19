@@ -64,7 +64,7 @@ public class NumberBaseball {
             result++;
         }
 
-        if (numbers.charAt(1) == randomNumber.charAt(0) || numbers.charAt(0) == randomNumber.charAt(2)) {
+        if (numbers.charAt(1) == randomNumber.charAt(0) || numbers.charAt(1) == randomNumber.charAt(2)) {
             result++;
         }
 
@@ -83,4 +83,7 @@ public class NumberBaseball {
         return countStrike(numbers) == 3;
     }
 
+    public String getRandomNumber() {
+        return randomNumber;
+    }
 }

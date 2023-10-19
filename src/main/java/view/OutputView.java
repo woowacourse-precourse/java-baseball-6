@@ -10,14 +10,15 @@ public class OutputView {
         if (value == 0) {
             return;
         }
-        System.out.println(value + "볼");
+        System.out.print(value + "볼 ");
     }
 
     public static void printStrikeCount(int value) {
         if (value == 0) {
             return;
         }
-        System.out.println(value + "스트라이크");
+        System.out.print(value + "스트라이크");
+        System.out.println();
     }
 
     public static void printNothing() {

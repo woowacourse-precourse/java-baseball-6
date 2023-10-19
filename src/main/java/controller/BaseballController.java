@@ -39,6 +39,7 @@ public class BaseballController {
     private void printResult(NumberBaseball baseball, String userInput) {
         if (baseball.isNothing(userInput)) {
             OutputView.printNothing();
+            return;
         }
 
         int ballCount = baseball.countBall(userInput);
