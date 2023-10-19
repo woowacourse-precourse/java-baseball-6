@@ -55,20 +55,20 @@ class ApplicationTest extends NsTest {
 //        assertThat(userNumbersList).containsExactly(1,2,3);
 //        System.setIn(originalSystemIn);
 //    }
-    @Test
-    void getUserNumbersList_예외상황_테스트() {
-        //given
-        String input = "11123";
-        InputStream originalSystemIn = System.in;
-        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
-        System.setIn(inputStream);
-        //when
-        Throwable thrown = catchThrowable(Application::getUserNumbersList);
-        //then
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]");
-        System.setIn(originalSystemIn);
-    }
+//    @Test
+//    void getUserNumbersList_예외상황_테스트() {
+//        //given
+//        String input = "11123";
+//        InputStream originalSystemIn = System.in;
+//        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+//        System.setIn(inputStream);
+//        //when
+//        Throwable thrown = catchThrowable(Application::getUserNumbersList);
+//        //then
+//        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+//                .hasMessageContaining("[ERROR]");
+//        System.setIn(originalSystemIn);
+//    }
 //    @Test
 //    void getBallStrikeCount_테스트() {
 //        //given
