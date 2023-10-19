@@ -21,10 +21,10 @@ public class MainController {
             gameController.startGame();
 
             String whetherRestart = InputController.scanWhetherRestart();
-            if(whetherRestart.charAt(0) == END_GAME) {
+            if (whetherRestart.charAt(0) == END_GAME) {
                 isRunning = false;
             }
-        } while(isRunning);
+        } while (isRunning);
     }
 
     private static class InputController {
@@ -32,14 +32,14 @@ public class MainController {
 
         public static String scanWhetherRestart() {
             InputView.printEnterWhetherRestart();
-            String inputString = Console.readLine();
-            validateWhetherRestart(inputString);
-            return inputString;
+            String userInput = Console.readLine();
+            validateWhetherRestart(userInput);
+            return userInput;
         }
 
-        private static void validateWhetherRestart(String inputString) {
-            if (inputString.length() != 1) throw new IllegalArgumentException(WRONG_INPUT_WHETHER_RESTART_MESSAGE);
-            else if (inputString.charAt(0) != RESTART && inputString.charAt(0) != END_GAME)
+        private static void validateWhetherRestart(String userInput) {
+            if (userInput.length() != 1) throw new IllegalArgumentException(WRONG_INPUT_WHETHER_RESTART_MESSAGE);
+            if (userInput.charAt(0) != RESTART && userInput.charAt(0) != END_GAME)
                 throw new IllegalArgumentException(WRONG_INPUT_WHETHER_RESTART_MESSAGE);
         }
     }

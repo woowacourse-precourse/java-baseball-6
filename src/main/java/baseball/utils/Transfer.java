@@ -1,6 +1,5 @@
 package baseball.utils;
 
-import baseball.model.Hint;
 import baseball.model.NumberList;
 
 import java.util.ArrayList;

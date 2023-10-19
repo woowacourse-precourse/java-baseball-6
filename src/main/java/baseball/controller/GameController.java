@@ -11,14 +11,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GameController {
     public void startGame() {
         Computer computer = new Computer();
         computer.setAnswer(createRandomTarget());
         while (true) {
-            String userAnswerString = InputController.scanUserAnswer();
-            NumberList userAnswer = Transfer.stringToNumberList(userAnswerString);
+            String usersGuessString = InputController.scanUsersGuess();
+            NumberList userAnswer = Transfer.stringToNumberList(usersGuessString);
 
             if (computer.getAnswer().equals(userAnswer)) {
                 OutputView.printSuccessAndEndMessage();
@@ -46,7 +47,7 @@ public class GameController {
         int strikeCount = 0;
         for (int i = 0; i < answer.getNumberList().size(); i++) {
             for (int j = 0; j < guess.getNumberList().size(); j++) {
-                if (answer.getNumberList().get(i) == guess.getNumberList().get(j)) {
+                if (Objects.equals(answer.getNumberList().get(i), guess.getNumberList().get(j))) {
                     if (i != j) ballCount++;
                     else strikeCount++;
                 }
@@ -59,18 +60,18 @@ public class GameController {
         private static final String WRONG_INPUT_ANSWER = "1~9 사이 수 3자리를 입력해주세요.";
         private static final String WRONG_INPUT_TYPE = "3자리 수를 입력해주세요.";
 
-        public static String scanUserAnswer() {
+        public static String scanUsersGuess() {
             InputView.printEnterNumbers();
-            String inputString = Console.readLine();
-            validateUserAnswer(inputString);
-            return inputString;
+            String userInput = Console.readLine();
+            validateUsersGuess(userInput);
+            return userInput;
         }
 
-        private static void validateUserAnswer(String inputString) {
+        private static void validateUsersGuess(String userInput) {
             boolean isValid = true;
-            if (inputString.length() != 3) isValid = false;
-            for (int i = 0; i < inputString.length(); i++) {
-                int number = inputString.charAt(i) - '0';
+            if (userInput.length() != 3) isValid = false;
+            for (int i = 0; i < userInput.length(); i++) {
+                int number = userInput.charAt(i) - '0';
                 isValid &= (1 <= number && number <= 9);
             }
             if (!isValid) throw new IllegalArgumentException("[ERROR] " + WRONG_INPUT_ANSWER);
