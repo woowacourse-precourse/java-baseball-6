@@ -18,7 +18,7 @@ public class GameServiceTest {
         Com com=new Com("713");//컴퓨터의 값
         User user=new User("123");//사용자의 값
         //when
-        user.compareAndRefresh(com.value);
+        user.compareAndRefresh(com.numbers);
         //then
         assertThat(user.equalsPoint(new Point(1,1))).isTrue();
 
