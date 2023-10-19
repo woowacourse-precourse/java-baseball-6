@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Player {
@@ -17,12 +16,7 @@ public class Player {
     private Set<Integer> checkDuplicated(String numbers){
         return numbers.chars()
                 .mapToObj(Character::getNumericValue)
-                .filter(checkNumberRange())
                 .collect(Collectors.toSet());
-    }
-
-    private Predicate<Integer> checkNumberRange() {
-        return n -> n >= BaseballRole.MIN_BASEBALL_NUMBER.getValue() && n <= BaseballRole.MAX_BASEBALL_NUMBER.getValue();
     }
 
     private void validateNumberSize(Set<Integer> numbers) {
