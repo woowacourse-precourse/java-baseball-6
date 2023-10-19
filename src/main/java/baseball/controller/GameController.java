@@ -14,7 +14,6 @@ import java.util.List;
 
 public class GameController {
     public void startGame() {
-        OutputView.printStartGameMessage();
         Computer computer = new Computer();
         computer.setAnswer(createRandomTarget());
         while (true) {
@@ -22,14 +21,13 @@ public class GameController {
             NumberList userAnswer = Transfer.stringToNumberList(userAnswerString);
 
             if (computer.getAnswer().equals(userAnswer)) {
-                OutputView.printSuccessMessage();
+                OutputView.printSuccessAndEndMessage();
                 break;
             }
 
             Hint hint = calculateHint(computer.getAnswer(), userAnswer);
             OutputView.printHintMessage(hint);
         }
-        OutputView.printEndGameMessage();
     }
 
     public NumberList createRandomTarget() {

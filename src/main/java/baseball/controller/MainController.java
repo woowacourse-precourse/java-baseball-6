@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class MainController {
@@ -14,8 +15,11 @@ public class MainController {
 
     public void startProgram() {
         boolean isRunning = true;
+
+        OutputView.printProgramMessage();
         do {
             gameController.startGame();
+
             String whetherRestart = InputController.scanWhetherRestart();
             if(whetherRestart.charAt(0) == END_GAME) {
                 isRunning = false;
