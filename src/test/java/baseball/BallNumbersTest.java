@@ -13,17 +13,15 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class BallNumbersTest {
 
-    private final BallNumbers computer = new BallNumbers(List.of(4, 2, 5));
-
     @ParameterizedTest
-    @MethodSource("generateInvalidNumbers")
-    @DisplayName("플레이어의 야구 숫자의 개수가 3이 아니면 예외가 발생한다.")
-    void validateSizeWhenCreatePlayerNumbers(final List<Integer> numbers) {
+    @MethodSource("generateInvalidSizedNumbers")
+    @DisplayName("야구 숫자의 개수가 3개가 아니면 예외가 발생한다.")
+    void hasInvalidSize_Then_ExceptionOccurs(final List<Integer> numbers) {
         assertThatThrownBy(() -> new BallNumbers(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    private static Stream<Arguments> generateInvalidNumbers() {
+    private static Stream<Arguments> generateInvalidSizedNumbers() {
         return Stream.of(
                 Arguments.of(List.of()),
                 Arguments.of(List.of(1)),
@@ -33,8 +31,8 @@ public class BallNumbersTest {
     }
 
     @Test
-    @DisplayName("플레이어의 야구 숫자에 중복된 숫자가 있으면 예외가 발생한다.")
-    void validateDuplicateWhenCreatePlayerNumbers() {
+    @DisplayName("중복된 야구 숫자가 있으면 예외가 발생한다.")
+    void existDuplicateNumbers_Then_ExceptionOccurs() {
         assertThatThrownBy(() -> new BallNumbers(List.of(1, 1, 1)))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new BallNumbers(List.of(2, 5, 2)))
@@ -42,26 +40,31 @@ public class BallNumbersTest {
     }
 
     @Test
-    @DisplayName("플레이어와 컴퓨터의 야구 숫자들을 비교할 수 있다. - 낫싱")
-    void testCompareAllWhenNothing() {
+    @DisplayName("같은 숫자가 존재하지 않으면 낫싱이다.")
+    void doesNotExistsSameNumber_Then_Nothing() {
         BallNumbers player = new BallNumbers(List.of(7, 8, 9));
+        BallNumbers computer = new BallNumbers(List.of(4, 2, 5));
         PlayResult playResult = player.compareAll(computer);
         assertThat(playResult.isNothing()).isTrue();
     }
 
-    @Test
-    @DisplayName("플레이어와 컴퓨터의 야구 숫자들을 비교할 수 있다. - 스트라이크")
-    void testCompareAllWhenStrike() {
+    @ParameterizedTest
+    @MethodSource("generateComputerNumbers")
+    @DisplayName("같은 숫자가 같은 자리에 존재하면 스트라이크이다.")
+    void existsSameNumberInSamePosition_Then_Strike(
+            final BallNumbers computerNumbers,
+            final long numberOfStrikes
+    ) {
         BallNumbers player = new BallNumbers(List.of(1, 2, 3));
+        PlayResult playResult = player.compareAll(computerNumbers);
+        assertThat(playResult.getStrikes()).isEqualTo(numberOfStrikes);
+    }
 
-        PlayResult playResult = player.compareAll(computer);
-        assertThat(playResult.getStrikes()).isEqualTo(1L);
-
-        playResult = player.compareAll(new BallNumbers(List.of(4, 2, 3)));
-        assertThat(playResult.getStrikes()).isEqualTo(2L);
-
-        playResult = player.compareAll(new BallNumbers(List.of(1, 2, 3)));
-        assertThat(playResult.getStrikes()).isEqualTo(3L);
-        assertThat(playResult.isAllStrike()).isTrue();
+    private static Stream<Arguments> generateComputerNumbers() {
+        return Stream.of(
+                Arguments.of(new BallNumbers(List.of(4, 2, 5)), 1L),
+                Arguments.of(new BallNumbers(List.of(4, 2, 3)), 2L),
+                Arguments.of(new BallNumbers(List.of(1, 2, 3)), 3L)
+        );
     }
 }
