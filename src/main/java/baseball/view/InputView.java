@@ -2,9 +2,6 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class InputView {
 	public static String readBaseballNumber() {
 		System.out.printf("숫자를 입력해주세요 : ");

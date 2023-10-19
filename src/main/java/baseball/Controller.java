@@ -21,16 +21,28 @@ public class Controller {
 	}
 
 	private void proceed() {
-		Computer computer = new Computer();
+		Computer computer = initGame();
+		proceedGame(computer);
+		endGame();
+	}
+
+	private Computer initGame() {
+		return new Computer();
+	}
+
+	private void proceedGame(Computer computer) {
 		List<Integer> trial;
 		while (true) {
 			trial = validator.validateBaseballNumber(InputView.readBaseballNumber());
 			List<Integer> result = computer.calculateResult(trial);
 			OutputView.printResult(result);
 			if (result.get(1) == 3) {
-				break;
+				return;
 			}
 		}
+	}
+
+	private void endGame() {
 		OutputView.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 	}
 }
