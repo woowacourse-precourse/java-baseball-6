@@ -40,7 +40,7 @@
 ### RandomListMaker
 랜덤 숫자 리스트를 생성하고 반환해주는 클래스
 
-- [ ] List<Integer> generateRandomNumbers() : 1부터 9사이의 숫자중 중복되지 않은 3개의 숫자로 이루어진 리스트를 반환 
+- [x] List<Integer> generateRandomNumbers() : 1부터 9사이의 숫자중 중복되지 않은 3개의 숫자로 이루어진 리스트를 반환 
 
 ### ComputerNumber
 컴퓨터 수를 저장하는 클래스
