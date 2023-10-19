@@ -1,9 +1,6 @@
 package baseball.service;
 
-import baseball.domain.Com;
-import baseball.domain.Game;
-import baseball.domain.User;
-import baseball.domain.Validation;
+import baseball.domain.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -40,7 +37,6 @@ public class GameServiceTest {
         //then
         assertThat(user.isThreeStrike()).isTrue();
     }
-
     @DisplayName("1번 기능(사용자 값 입력)의 예외처리 기능")
     @ParameterizedTest
     @ValueSource(strings={"1234","12","1a2","zxc","ab2","2ab","112","111","344"})
