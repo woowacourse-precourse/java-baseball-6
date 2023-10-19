@@ -13,11 +13,15 @@ public class GameStatus {
         this.ballCnt = ballCount;
     }
 
-    @Override
-    public String toString() {
-        return "GameStatus{" +
-                "strikeCnt=" + strikeCnt +
-                ", ballCnt=" + ballCnt +
-                '}';
+    public boolean isEnd() {
+        return this.strikeCnt == 3;
+    }
+
+    public int getStrikeCnt() {
+        return strikeCnt;
+    }
+
+    public int getBallCnt() {
+        return ballCnt;
     }
 }

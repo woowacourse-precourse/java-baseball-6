@@ -26,5 +26,8 @@ public class GameController {
         GameStatus gameStatus = new GameStatus();
         GameStatus gamestatus = gameService.compareNumber(randomNumber, inputNumber, gameStatus);
         outputView.printGameResult(gamestatus);
+        if (gamestatus.isEnd()) {
+            outputView.printGameEndMessage();
+        }
     }
 }
