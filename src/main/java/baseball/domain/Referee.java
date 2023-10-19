@@ -12,7 +12,9 @@ public class Referee {
             final List<Integer> userBaseballs
     ) {
         final int strikeCount = calculateStrikeCount(computerBaseballs, userBaseballs);
-        return null;
+        final int ballCount = calculateBallCount(computerBaseballs, userBaseballs, strikeCount);
+
+        return new RoundResult(strikeCount, ballCount);
     }
 
     private static int calculateStrikeCount(
@@ -30,5 +32,22 @@ public class Referee {
             final int index
     ) {
         return computerBaseballs.get(index).equals(userBaseballs.get(index));
+    }
+
+    private static int calculateBallCount(
+            final List<Integer> computerBaseballs,
+            final List<Integer> userBaseballs,
+            final int strikeCount
+    ) {
+        return getContainedElementsCount(computerBaseballs, userBaseballs) - strikeCount;
+    }
+
+    private static int getContainedElementsCount(
+            final List<Integer> computerBaseballs,
+            final List<Integer> userBaseballs
+    ) {
+        return (int) userBaseballs.stream()
+                .filter(computerBaseballs::contains)
+                .count();
     }
 }
