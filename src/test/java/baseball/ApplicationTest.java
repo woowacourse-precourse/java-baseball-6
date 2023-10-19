@@ -1,10 +1,13 @@
 package baseball;
 
 import baseball.model.Computer;
+import baseball.util.MessageUtil;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +42,7 @@ class ApplicationTest extends NsTest {
         assertThat(result4).isEqualTo(List.of(3,0));
         assertThat(result5).isEqualTo(List.of(1,1));
     }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(

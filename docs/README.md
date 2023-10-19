@@ -33,9 +33,9 @@
 ### Util
 - [ ] Random한 3자릿 수 생성해주는 Util 구현
     - [ ] 중복 숫자 검사 기능
-- [ ] MesseageUtil
-    - [ ] Enum으로 출력할 메시지 나열
-    - [ ] 출력할 메시지 출력
+- [x] MesseageUtil
+    - [x] Enum으로 출력할 메시지 나열
+    - [x] 출력할 메시지 출력
 
 ### Model
 - [x] Comuputer
@@ -45,9 +45,9 @@
         - [x] ball인지 체크하는 함수 (strike가 아닌 숫자가 ComputerNumber의 존재하는지)
 
 ### View
-- [ ] InputView (InputValidateController에서 유효성 검사)
-    - [ ] 사용자에게 숫자 3개 입력 받는 기능
-    - [ ] 사용자에게 재시작 , 종료 여부 입력 받는 기능
+- [x] InputView (InputValidateController에서 유효성 검사)
+    - [x] 사용자에게 숫자 3개 입력 받는 기능
+    - [x] 사용자에게 재시작 , 종료 여부 입력 받는 기능
 
 - [ ] OutputView
     - [ ] 게임 시작 메시지
