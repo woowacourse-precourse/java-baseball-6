@@ -14,18 +14,17 @@ public class Game {
     private Validation validation;
 
     public void gameStart(){
-        do{
-            System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
-            //컴퓨터 생성
-            computer = new Computer();
+        //컴퓨터 생성
+        computer = new Computer();
 
-            //유저 입장
-            user = new User();
+        //유저 입장
+        user = new User();
 
-            //심판관 입장
-            validation = new Validation();
-        }
+        //심판관 입장
+        validation = new Validation();
+
         while (playGame());
 
     }
