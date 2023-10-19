@@ -46,6 +46,7 @@ public class Application {
                 try
                 {
                     String number = input.nextLine();
+                    doSomething(number);
                     result = gameResult(number);
                 } catch(IllegalArgumentException e)
                 {
@@ -95,11 +96,11 @@ public class Application {
             return 0;
     }
 
-    public static void doSomething(int score) throws IllegalArgumentException
+    public static void doSomething(String something) throws IllegalArgumentException
     {
+        int score = Integer.parseInt(something);
+
         if(score < 100 || score > 999)
-        {
-            throw new IllegalArgumentException("범위를 초과하였습니다.");
-        }
+            throw new IllegalArgumentException("숫자 범위를 초과하였습니다.");
     }
 }
