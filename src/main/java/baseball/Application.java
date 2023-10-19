@@ -7,6 +7,7 @@ import java.util.*;
 
 public class Application {
     static final int NUMBERS_LENGTH = 3;
+    static final String QUIT_GAME = "2";
     static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     static final String GET_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     static final String BALL_MESSAGE = "볼";
@@ -16,8 +17,16 @@ public class Application {
     static final String GET_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        playGames();
+    }
+    public static void playGames() {
         printStart();
-        getUserNumbersList();
+        while(true){
+            playGameOnce();
+            if (getMoreGame().equals(QUIT_GAME)){
+                break;
+            }
+        }
     }
     public static void playGameOnce() {
         while(true) {
@@ -26,6 +35,7 @@ public class Application {
             List<Integer> ballStrikeCount = getBallStrikeCount(computerNumbersList, userNumbersList);
             printBallStrike(ballStrikeCount.get(0), ballStrikeCount.get(1));
             if (isAnswer(ballStrikeCount.get(1))) {
+                printAnswer();
                 break;
             }
         }
