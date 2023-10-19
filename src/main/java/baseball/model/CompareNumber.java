@@ -16,4 +16,14 @@ public class CompareNumber {
         }
     }
 
+    /**
+     * 볼 개수 체크
+     */
+    public void checkBall(String userNumber, String programNumber){
+        for (int i = 0; i < userNumber.length(); i++){
+            if(programNumber.contains(String.valueOf(userNumber.charAt(i)))){
+                balls++;
+            }
+        }
+    }
 }
