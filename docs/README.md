@@ -39,7 +39,7 @@
 
 ### Model
 - [ ] Comuputer
-    - [ ] 랜덤 숫자 3개 저장
+    - [x] 랜덤 숫자 3개 저장할 List
     - [ ] 유저 숫자와 비교해 ball Strike 체크
         - [ ] strike인지 체크하는 함수 (자리와 숫자가 똑같은지 체크, strike면 Continue로 볼체크 x)
         - [ ] ball인지 체크하는 함수 (strike가 아닌 숫자가 ComputerNumber의 존재하는지)
