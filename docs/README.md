@@ -35,3 +35,5 @@
 7. OutputView : 결과 화면을 출력
    1. printResult(int[] result) : 결과값을 받아 화면을 그림
    2. printMessage(String message) : 메세지 출력 (오류)
+   3. printStart() : 시작 메세지 출력
+   4. printGetBall() : 사용자의 입력 유도 메세지 출력

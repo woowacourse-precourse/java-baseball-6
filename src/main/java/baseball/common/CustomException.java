@@ -3,8 +3,8 @@ package baseball.common;
 public class CustomException extends RuntimeException {
     private final ErrorCode errorCode;
 
-    public ErrorCode getErrorCode() {
-        return errorCode;
+    public String getErrorMessage() {
+        return errorCode.getMessage();
     }
 
     public CustomException(ErrorCode errorCode) {

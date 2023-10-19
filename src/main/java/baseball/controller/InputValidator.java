@@ -8,7 +8,7 @@ import baseball.common.Size;
 public class InputValidator {
     int checkOutOfNumber(int input) {
         if (Integer.toString(input).length() != Size.NUMBER.getValue() && input > 0) {
-            throw new CustomException(ErrorCode.INVALID_NUMBER);
+            throw new CustomException(ErrorCode.INVALID_NUMBER.with(Size.NUMBER));
         }
         return checkOutOfRange(input);
     }
@@ -17,7 +17,7 @@ public class InputValidator {
         String num = Integer.toString(input);
         for (int i = 0; i < num.length(); i++) {
             if (!Size.isBetweenSize(Character.getNumericValue(num.charAt(i)))) {
-                throw new CustomException(ErrorCode.INVALID_INT);
+                throw new CustomException(ErrorCode.INVALID_RANGE.with(Size.MIN, Size.MAX));
             }
         }
         return input;
@@ -35,6 +35,6 @@ public class InputValidator {
         if (input.equals(Command.RESTART.getKey()) || input.equals(Command.QUIT.getKey())) {
             return input;
         }
-        throw new CustomException(ErrorCode.INVALID_COMMAND);
+        throw new CustomException(ErrorCode.INVALID_COMMAND.with(Command.RESTART, Command.QUIT));
     }
 }
