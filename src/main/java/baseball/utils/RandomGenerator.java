@@ -1,6 +1,8 @@
 package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RandomGenerator {
 
@@ -8,16 +10,17 @@ public class RandomGenerator {
 	private static final int RANGE_MIN_NUMBER = 1;
 	private static final int RANGE_MAX_NUMBER = 9;
 
-	public int[] generateRandomNumbers() {
-		int[] randomNumbers = new int[NUMBER_LENGTH];
+	public List<Integer> generateRandomNumbers() {
+		List<Integer> randomNumbers = new ArrayList<>(NUMBER_LENGTH);
 
 		for (int i = 0; i < NUMBER_LENGTH; i++) {
-			randomNumbers[i] = generateUniqueRandomNumber(randomNumbers);
+			randomNumbers.add(generateUniqueRandomNumber(randomNumbers));
 		}
 		return randomNumbers;
 	}
 
-	private int generateUniqueRandomNumber(int[] randomNumbers) {
+
+	private int generateUniqueRandomNumber(List<Integer> randomNumbers) {
 		while (true) {
 			int randomNumber = Randoms.pickNumberInRange(RANGE_MIN_NUMBER, RANGE_MAX_NUMBER);
 			if (!isNumberUsed(randomNumbers, randomNumber)) {
@@ -26,7 +29,7 @@ public class RandomGenerator {
 		}
 	}
 
-	private boolean isNumberUsed(int[] randomNumbers, int randomNumber) {
+	private boolean isNumberUsed(List<Integer> randomNumbers, int randomNumber) {
 		for (int number : randomNumbers) {
 			if (number == randomNumber) {
 				return true;
