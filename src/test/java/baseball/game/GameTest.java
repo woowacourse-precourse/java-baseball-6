@@ -21,7 +21,7 @@ class GameTest {
         //given
         Method errorValidate = Game.class.getDeclaredMethod("errorValidate", String.class);
         errorValidate.setAccessible(true);
-        String number1 = "aaa";
+        String number1 = "101";
 
         //then
         //리플렉션에서 메서드 예외 발생시 InvocationTargetException으로 래핑해서 반환

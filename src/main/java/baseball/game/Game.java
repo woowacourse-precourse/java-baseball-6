@@ -1,11 +1,14 @@
 package baseball.game;
 
+import baseball.constant.ErrorConstant;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+import static baseball.constant.ErrorConstant.*;
 import static baseball.constant.GameConstant.*;
 
 public class Game {
@@ -22,13 +25,13 @@ public class Game {
     }
 
     private void userInput(){
-        System.out.printf(INPUT_NUMBER);
+        System.out.print(INPUT_NUMBER);
         String inputStringNumber = Console.readLine();
     }
 
     private void errorValidate(String stringNumber) throws IllegalAccessException {
         if (!stringNumber.matches(REGULAR_EXPRESSION_NUMBER)){
-            throw new IllegalAccessException();
+            throw new IllegalAccessException(INPUT_ERROR);
         }
     }
 
@@ -40,11 +43,60 @@ public class Game {
         return inputNumber;
     }
 
-    private void inputValidate(List<Integer> number){
-
+    private boolean inputValidate(List<Integer> number){
+        int strike = strikeValidate(number);
+        int ball = ballValidate(number);
+        boolean nothing = nothingValidate(strike,ball);
+        if (nothing){
+            printNothing();
+            return true;
+        } else if (strike == THREE_STRIKE){
+            printStrike(strike);
+            System.out.println();
+            return true;
+        }
+        printBall(ball);
+        printStrike(strike);
+        return false;
     }
 
+    private int strikeValidate(List<Integer> number){
+        int count = 0;
+        for (int i = 0; i<INPUT_NUMBER_SIZE; i++){
+            if (number.get(i).equals(randomNumber.get(i))){
+                count+=1;
+                number.set(i,COMPLETE_CHECK_NUM);
+            }
+        }
+        return count;
+    }
 
+    private int ballValidate(List<Integer> number){
+        int count = 0;
+        for (int i = 0; i<INPUT_NUMBER_SIZE; i++){
+            if (randomNumber.contains(number.get(i))){
+                count+=1;
+                number.set(i,COMPLETE_CHECK_NUM);
+            }
+        }
+        return count;
+    }
+
+    private boolean nothingValidate(int strike, int ball){
+        return ball == NOTHING_CHECK_NUM && strike == NOTHING_CHECK_NUM;
+    }
+
+    private void printNothing(){
+        System.out.println(NOTHING);
+    }
+
+    private void printStrike(int strike){
+        System.out.print(strike+STRIKE);
+    }
+
+    private void printBall(int ball){
+        System.out.print(ball+BALL);
+    }
 
 
 }
