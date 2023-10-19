@@ -31,8 +31,8 @@
 - 야구 게임의 전체적인 흐름을 관리하는 로직
     -[x] 야구 게임 시작
       - [x] 게임 시작 문구 출력
-    -[ ] 상대방 숫자 생성하기
-      - [ ] 1부터 9까지 서로 다른 3자리 숫자 생성(BaseballRandomNumberGenerator)
+    -[x] 상대방 숫자 생성하기
+      - [x] 1부터 9까지 서로 다른 3자리 숫자 생성(BaseballRandomNumberGenerator)
     -[ ] 숫자 입력 받기
       - [ ] 숫자 입력 문구 출력
       - [ ] 1부터 9까지 서로 다른 3자리 숫자 입력 받기
@@ -52,9 +52,9 @@
 ### Domain
 #### BaseballRandomNumberGenerator
 - 상대방 숫자를 생성하는 로직
-  - [ ] 상대방 숫자 생성
-    - [ ] 1부터 9까지 서로 다른 3자리 숫자 생성
-    - [ ] Randoms의 pickNumberInRange() 활용
+  - [x] 상대방 숫자 생성
+    - [x] 1부터 9까지 서로 다른 3자리 숫자 생성
+    - [x] Randoms의 pickNumberInRange() 활용
 #### PlayerNumber
 - 플레이어 숫자를 관리하는 로직
   - [ ] 플레이어 숫자 입력 예외 처리
