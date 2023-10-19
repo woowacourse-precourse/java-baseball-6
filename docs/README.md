@@ -4,4 +4,3 @@ function makeRandom_Num()
 function isStrike()
 기능 : 입력한 값이 낫싱, 스트라이크, 볼을 판별
 
-function throwEx
