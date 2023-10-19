@@ -21,4 +21,8 @@ public class BaseBallGame {
 
         return true;
     }
+
+    private boolean isThreeDigit(String input) {
+        return input.length() == 3;
+    }
 }
