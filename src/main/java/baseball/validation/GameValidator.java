@@ -2,7 +2,7 @@ package baseball.validation;
 
 public class GameValidator {
 
-    public void validateIsNumber(String input) {
+    public static void validateIsNumber(String input) {
 
         try {
             Integer.parseInt(input);
@@ -11,14 +11,14 @@ public class GameValidator {
         }
     }
 
-    public void validateIsThreeNumbers(String input) {
+    public static void validateIsThreeNumbers(String[] input) {
 
-        if (input.length() != 3) {
+        if (input.length != 3) {
             throw new IllegalArgumentException("[ERROR] 3자리 숫자만 입력 가능합니다.");
         }
     }
 
-    public void validateIsOneOrTwo(int input) {
+    public static void validateIsOneOrTwo(int input) {
 
         if (input != 1 && input != 2) {
             throw new IllegalArgumentException("[ERROR] 1 또는 2만 입력 가능합니다.");

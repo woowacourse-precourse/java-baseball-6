@@ -28,3 +28,6 @@
     - [x] 숫자만 입력했는지 검증
 - 결과 선택 검증
     - [x] 1 혹은 2가 아닐 경우 검증
+
+### 클래스 관계도
+<img width="797" alt="스크린샷 2023-10-19 오후 7 36 02" src="https://user-images.githubusercontent.com/115435784/276581647-2beebd74-1bde-4ed4-b2e4-b3ff85112cb2.png">

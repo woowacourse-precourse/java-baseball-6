@@ -42,7 +42,7 @@ class GameValidatorTest {
     @DisplayName("입력값의 길이가 3일 경우 예외를 발생시키지 않는다")
     void validatePassIsLengthThreeTest() {
         // given
-        String input = "123";
+        String[] input = {"1", "2", "3"};
 
         // then
         assertThatCode(() -> gameValidator.validateIsThreeNumbers(input))
@@ -53,7 +53,7 @@ class GameValidatorTest {
     @DisplayName("입력값의 길이가 3이 아닐 경우 예외를 발생시킨다.")
     void numbersLengthNotThreeTest() {
         // given
-        String input = "12";
+        String[] input = {"1", "2"};
 
         // then
         assertThatThrownBy(() -> gameValidator.validateIsThreeNumbers(input))
