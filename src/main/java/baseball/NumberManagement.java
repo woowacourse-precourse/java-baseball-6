@@ -12,6 +12,11 @@ public class NumberManagement {
         numberFlag = new boolean[10];
     }
 
+    public void close() {
+        numbers = null;
+        numberFlag = null;
+    }
+
     public void makeNumbers(int idx) {
         if(idx == 3) { return; }
         int number = Randoms.pickNumberInRange(0, 8) + 1;
@@ -23,5 +28,13 @@ public class NumberManagement {
             makeNumbers(idx + 1);
         }
     }
+
+    public void clear() {
+        for(int i = 0; i < 3; i++) {
+            numberFlag[numbers[i]] = false;
+        }
+    }
+
+
 
 }
