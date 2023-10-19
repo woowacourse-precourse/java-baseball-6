@@ -19,7 +19,7 @@ public class ComputerValidation implements Validate {
     }
 
     private boolean notSameElementOfList() {
-        return this.answerList.stream().distinct().count() == 3;
+        return this.answerList.stream().distinct().count() == answerList.size();
     }
 
     private boolean elementsValue1To9OfList() {
