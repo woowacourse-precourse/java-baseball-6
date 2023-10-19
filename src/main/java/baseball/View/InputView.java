@@ -7,6 +7,7 @@ import java.util.Objects;
 public class InputView {
 
     public String inputUserGuess() {
+        System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine().trim();
         try {
             validateUserGuess(userInput);
@@ -18,6 +19,7 @@ public class InputView {
     }
 
     public String inputQuitOrRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine().trim();
         try {
             validateQuitOrRestart(userInput);
