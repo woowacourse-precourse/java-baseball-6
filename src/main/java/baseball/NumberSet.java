@@ -42,4 +42,26 @@ public class NumberSet {
                         && this.digit1 != this.digit3
         );
     }
+
+    public static NumberSet parseFrom(int number) throws IllegalArgumentException {
+        if (number < 100 || number > 999)
+            throw new IllegalArgumentException();
+        return new NumberSet(
+                number / 100,
+                (number / 10) % 10,
+                number % 10
+        );
+    }
+
+    public static NumberSet parseFrom(String string) throws IllegalArgumentException {
+        if (string.length() != 3)
+            throw new IllegalArgumentException();
+        int number;
+        try {
+            number = Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        return NumberSet.parseFrom(number);
+    }
 }
