@@ -1,4 +1,5 @@
 HELP.md
+.gitmessage.txt
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
