@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
+import static baseball.Game.MAX_BALL_SIZE;
+
 public class Balls {
     private final List<Ball> balls;
 
@@ -16,7 +19,7 @@ public class Balls {
 
     public static Balls randomComputerBalls(){
         List<Ball> balls = new ArrayList<>();
-        while(balls.size()<3){
+        while(balls.size()<MAX_BALL_SIZE){
             Ball newBall = new Ball(Randoms.pickNumberInRange(1,9));
             if(!balls.contains(newBall)) {
                 balls.add(newBall);
@@ -41,11 +44,6 @@ public class Balls {
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }
-
-    public boolean isEqual(Balls balls){
-        return this.balls.equals(balls.balls);
-    }
-
     public boolean isContain(Ball ball){
         return this.balls.contains(ball);
     }

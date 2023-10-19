@@ -1,5 +1,4 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
@@ -8,13 +7,7 @@ public class Application {
         Balls computerBalls = Balls.randomComputerBalls();
         while(true){
             Game game = new Game(0,0);
-            System.out.print("숫자를 입력해주세요 : ");
-            // 사용자 입력
-            String userInput = Console.readLine();
-            System.out.println("입력크기 : "+userInput.length());
-            if(userInput.length() != 3){
-                throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
-            }
+            String userInput = game.userInput();
             Balls userBalls = Balls.strToBalls(userInput);
 
             // 결과 출력

@@ -4,6 +4,7 @@ public class Ball {
     private final Integer number;
 
     public Ball(Integer number) {
+        checkRange(number);
         this.number = number;
     }
 
@@ -11,15 +12,10 @@ public class Ball {
         this.number = Character.getNumericValue(c);
     }
 
-    public Integer getNumber() {
-        return number;
-    }
-
-    public boolean checkRange(Integer number) {
+    public void checkRange(Integer number) {
         if(number < 1 || number > 9) {
             throw new IllegalArgumentException("숫자는 1부터 9까지만 가능합니다.");
         }
-        return true;
     }
 
     @Override
@@ -29,7 +25,7 @@ public class Ball {
             ball = (Ball)obj;
 
         } else {
-            throw new IllegalArgumentException(this.getClass().getName() + " 객체 끼리만 비교가 가능합니다.");
+            throw new IllegalArgumentException("같은 객체가 아닙니다.");
         }
         return this.number.equals(ball.number);
     }
