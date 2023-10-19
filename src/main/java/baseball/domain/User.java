@@ -2,8 +2,7 @@ package baseball.domain;
 
 public class User {
     private final String value;
-    public Point point;
-
+    private Point point;
 
     public User(String value){
         this.value=value;
@@ -12,13 +11,12 @@ public class User {
 
     public void compare(String value){
         int[] result={0,0,0};
-        for(int i=0;i<value.length();i++){
-            char word=value.charAt(i);
-            int resultIndex=compareEach(Character.toString(word),i);
-            result[resultIndex]+=1;
+
+        for(String word: value.split("")){
+            result[compareEach(word,value.indexOf(word))]+=1;
         }
 
-        this.point=new Point(result[0],result[1]);
+        refreshPoint(result);
     }
 
     private int compareEach(String word,int index){
@@ -31,6 +29,10 @@ public class User {
         }
 
         return 2;
+    }
+
+    private void refreshPoint(int[] result){
+        this.point=new Point(result[0],result[1]);
     }
 
     public boolean equalsPoint(Point comparePoint){
