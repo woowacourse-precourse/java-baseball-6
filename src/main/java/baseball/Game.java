@@ -6,12 +6,16 @@ import java.util.List;
 public class Game {
 
     private Computer computer;
+    private User user;
 
     public void gameStart(){
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         //컴퓨터 생성
         computer = new Computer();
+
+        //유저 입장
+        user = new User();
 
         while (playGame()) {
 
@@ -28,6 +32,9 @@ public class Game {
         while (true){
             System.out.println("숫자를 입력해주세요 : ");
             // 유저 입력 받기
+            String userInput = user.inputBaseballNumber();
+
+            //심판관 추가 (제대로 입력이 되었는지 체크 해주는 사람)
 
             // 딜러의 입력값 컴퓨터 입력값 비교
 
