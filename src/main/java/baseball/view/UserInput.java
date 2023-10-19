@@ -1,6 +1,5 @@
 package baseball.view;
 
-import baseball.controller.GameController;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
