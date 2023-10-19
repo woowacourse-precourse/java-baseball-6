@@ -7,7 +7,7 @@ public class Round {
 
     public StrikeAndBall judge(List<Integer> myInt, List<Integer> comInt) {
         for (int i = 0; i < 3; i++) {
-            if (myInt.get(i) == comInt.get(i)) {
+            if (myInt.get(i).equals(comInt.get(i))) {
                 strikeAndBall.strike++;
                 continue;
             }
