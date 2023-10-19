@@ -79,12 +79,16 @@ public class Game {
     }
 
     private boolean printResult(GameResult gameResult) {
-        if(gameResult.getStrike() == GameConfig.CORRECT_LENGTH ){
-            System.out.println(gameResult.getStrike() + "스트라이크");
+        if(gameResult.getStrike() == GameConfig.CORRECT_LENGTH ) {
+            System.out.println(GameConfig.CORRECT_LENGTH + "스트라이크");
             return true;
-        }else if(gameResult.getStrike() != 0 || gameResult.getBall() != 0){
-            System.out.println(gameResult.getStrike() + "볼 " + gameResult.getBall() + "스트라이크");
-        }else{
+        }else if(gameResult.getStrike() != 0 && gameResult.getBall() != 0) {
+            System.out.println(gameResult.getBall() + "볼 " + gameResult.getStrike() + "스트라이크");
+        }else if(gameResult.getStrike() != 0 && gameResult.getBall() == 0) {
+            System.out.println(gameResult.getStrike() + "스트라이크");
+        }else if(gameResult.getStrike() == 0 && gameResult.getBall() !=0 ) {
+            System.out.println(gameResult.getBall() + "볼");
+        }else {
             System.out.println("낫싱");
         }
         return false;
