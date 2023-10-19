@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -31,5 +32,25 @@ public class Application {
         }
         return computerNumbersList;
     }
-
+    public static List<Integer> getUserNumbersList() {
+        List<Integer> userNumbersList = new ArrayList<>();
+        System.out.print(GET_NUMBER_MESSAGE);
+        String userNumbersString = Console.readLine();
+        validateUserNumbersString(userNumbersString);
+        for(String userNumberString : userNumbersString.split("")) {
+            userNumbersList.add(Integer.parseInt(userNumberString));
+        }
+        return userNumbersList;
+    }
+    public static void validateUserNumbersString(String userNumbers) {
+        validateEmptyOrNullOfInputString(userNumbers);
+        if (!userNumbers.matches("[1-9]{3}")) {
+            throw new IllegalArgumentException("[ERROR] 입력 값이 1~9 사이 숫자로 이루어진 세자리 숫자가 아닙니다.");
+        }
+    }
+    public static void validateEmptyOrNullOfInputString(String input) {
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 입력 값이 null이거나 비어있습니다.");
+        }
+    }
 }
