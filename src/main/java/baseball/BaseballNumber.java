@@ -13,6 +13,11 @@ public class BaseballNumber {
         this.number = number;
     }
 
+    public static BaseballNumber initializeUserNumber() {
+        
+
+    }
+
     private void findException(List<Integer> number) {
         if (number.size() != 3) {
             throw new IllegalArgumentException("게임을 진행할 수는 항상 3개여야 합니다.");

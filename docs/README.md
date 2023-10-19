@@ -1,9 +1,9 @@
 #  구현 기능 목록 ✔
 
-## 컴퓨터의 수 지정 기능
-- [ ] 컴퓨터의 수를 지정하는 initializeComputerNumber 메서드 구현
-  - [ ] 문제에서 주어진 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 활용
-  - [ ] 서로 다른 수가 정상적으로 지정되는지 확인
+## 컴퓨터의 수 지정 기능 ✔
+- [x] 컴퓨터의 수를 지정하는 initializeComputerNumber 메서드 구현
+  - [x] 문제에서 주어진 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 활용
+  - [x] 서로 다른 수가 정상적으로 지정되는지 확인
 ## 사용자의 수 지정 기능
 - [ ] 사용자의 수를 지정하는 initializeUserNumber 메서드 구현
   - [ ] 문제에서 주어진 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
