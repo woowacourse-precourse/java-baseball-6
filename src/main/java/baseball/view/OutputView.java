@@ -18,7 +18,7 @@ public class OutputView {
      * a볼 b스트라이크 -> "볼 " + "스트라이크"
      */
     public static void printBallWithStrike(){
-        System.out.println("볼 ");
+        System.out.print("볼 ");
     }
 
     public static void printNothing(){
@@ -27,5 +27,9 @@ public class OutputView {
 
     public static void printEnd(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public static void printCnt(int count){
+        System.out.print(count);
     }
 }
