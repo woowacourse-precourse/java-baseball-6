@@ -4,12 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Scanner;
 
+import static baseball.utils.Message.*;
+
 public class InputUtil {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static String getUserInput() {
-        System.out.println("숫자를 입력해주세요 : ");
+    public static String requireGuessNumber() {
+        System.out.println(REQUIRE_NUMBER_MESSAGE.getMessage());
         return Console.readLine();
     }
 
