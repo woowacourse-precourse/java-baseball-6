@@ -59,22 +59,26 @@ public class Game {
     private boolean isCorrect(String input) {
         int strike = 0;
         int ball = 0;
+
         for (int i = 0; i < input.length(); i++) {
-            int idx = answer.indexOf(input.charAt(i));
-            if (idx == i) {
+            if (answer.charAt(i) == input.charAt(i)) {
                 strike++;
-            } else if (idx != -1) {
+            } else if (answer.contains(String.valueOf(input.charAt(i)))) {
                 ball++;
             }
         }
+
         if (strike == 3) {
             System.out.println("3스트라이크");
             return true;
-        } else if (strike == 0 && ball == 0) {
+        }
+
+        if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
         } else {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
+
         return false;
     }
 
