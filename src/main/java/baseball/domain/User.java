@@ -9,8 +9,16 @@ public class User {
     private final List<Integer> userNumber = new ArrayList<>();
 
     public void setUserNumber(String number){
+        initUserNumber();
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             userNumber.add(Integer.valueOf(number.charAt(i) - '0'));
+        }
+        System.out.println("userNumber = " + userNumber);
+    }
+
+    private void initUserNumber() {
+        if (userNumber.size() == NUMBER_LENGTH) {
+            userNumber.clear();
         }
     }
 
