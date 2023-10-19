@@ -3,21 +3,28 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.ui.InputView;
 import baseball.ui.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame {
-
 	private final OutputView outputView;
+	private final InputView inputView;
 
-	public BaseballGame(OutputView outputView) {
+	private static boolean doGame = true;
+
+	public BaseballGame(OutputView outputView, InputView inputView) {
 		this.outputView = outputView;
+		this.inputView = inputView;
 	}
 
 	public void start() {
 		printStartMessage();
 		List<Integer> computer = generateComputerNumber();
 
+		while(doGame) {
+			List<Integer> user = inputView.readNumber();
+		}
 
 	}
 

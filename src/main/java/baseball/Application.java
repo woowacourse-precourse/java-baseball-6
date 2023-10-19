@@ -1,10 +1,14 @@
 package baseball;
 
+import baseball.ui.InputView;
 import baseball.ui.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        BaseballGame game = new BaseballGame(new OutputView());
+        OutputView outputView = new OutputView();
+        InputView inputView = new InputView(outputView);
+        BaseballGame game = new BaseballGame(outputView, inputView);
+
         game.start();
     }
 }
