@@ -71,6 +71,43 @@ public class Application {
             BaseBallGame userAnswer = BaseBallGame.getUserAnswer();
             GameResult gameResult = new GameResult();
 
+            gameResult.compareAnswer(userAnswer, computerAnswer);
+            gameResult.printResult();
+
+            if(gameResult.strike != BaseBallGame.NUMBER_IDX) {
+                BaseBallGame.init(computerAnswer);
+                return;
+            }
+
+            int newComputerAnswer = BaseBallGame.newStart();
+
+            if (newComputerAnswer == 1) {
+                computerAnswer = new BaseBallGame();
+                BaseBallGame.init(computerAnswer);
+            }
+        }
+
+        private static int newStart() {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            String newStartAnswer = readLine();
+            return BaseBallGame.getNewStartAnswer(newStartAnswer);
+        }
+
+        private static int getNewStartAnswer(String newStartAnswer) {
+            int newAnswer;
+
+            try {
+                newAnswer = Integer.parseInt(newStartAnswer);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException();
+            }
+
+            if (newAnswer != 1 && newAnswer != 2)
+                throw new IllegalArgumentException();
+
+            return newAnswer;
         }
 
         private int getNumber() {
