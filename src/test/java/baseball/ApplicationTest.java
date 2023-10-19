@@ -56,14 +56,14 @@ class ApplicationTest extends NsTest {
     @Test
     void getUserNumbersList_예외상황_테스트() {
         //given
-        String input = "abc";
+        String input = "111";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
         //when
         Throwable thrown = catchThrowable(Application::getUserNumbersList);
         //then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 입력 값이 1~9 사이 숫자로 이루어진 세자리 숫자가 아닙니다.");
+                .hasMessageContaining("[ERROR]");
     }
     @Test
     void getStrikeBallCount_테스트() {

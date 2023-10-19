@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
@@ -63,6 +61,11 @@ public class Application {
         validateEmptyOrNullOfInputString(userNumbers);
         if (!userNumbers.matches("[1-9]{3}")) {
             throw new IllegalArgumentException("[ERROR] 입력 값이 1~9 사이 숫자로 이루어진 세자리 숫자가 아닙니다.");
+        }
+        Set<String> duplicationCheckSet = new HashSet<>();
+        duplicationCheckSet.addAll(Arrays.asList(userNumbers.split("")));
+        if (duplicationCheckSet.size() != 3) {
+            throw new IllegalArgumentException("[ERROR] 입력 값에 중복이 있습니다.");
         }
     }
     public static void validateEmptyOrNullOfInputString(String input) {
