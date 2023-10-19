@@ -5,6 +5,12 @@ import java.util.Set;
 
 public class UserNumber {
 
+    public UserNumber(String userNumber){
+        checkIsDigit(userNumber);
+        checkIsThree(userNumber);
+        checkNotDuplicate(userNumber);
+    }
+
     /**
      * 숫자가 아닐 경우 예외 발생
      */
