@@ -4,7 +4,7 @@ import baseball.domain.Result;
 
 import static baseball.domain.Numbers.NUMBER_COUNT;
 
-public class InputView {
+public class Output {
 
     private static final String START_STRING = "숫자 야구 게임을 시작합니다.";
     private static final String NUMBER_INPUT_STRING = "숫자를 입력해주세요 : ";
@@ -14,19 +14,22 @@ public class InputView {
     private static final String BALL_STRING = "볼";
     private static final String NON_STRING = "낫싱";
 
-    public void printStart() {
+    private Output() {
+    }
+
+    public static void printStart() {
         System.out.println(START_STRING);
     }
 
-    public void printNumberInput() {
+    public static void printNumberInput() {
         System.out.print(NUMBER_INPUT_STRING);
     }
 
-    public void printFinish() {
+    public static void printFinish() {
         System.out.println(FINISH_INPUT_STRING);
     }
 
-    public void printResult(Result result) {
+    public static void printResult(Result result) {
         if (result.isFinish()) {
             System.out.println(NUMBER_COUNT + STRIKE_STRING);
             return;

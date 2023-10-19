@@ -3,7 +3,7 @@ package baseball.controller;
 import baseball.domain.Numbers;
 import baseball.domain.Computer;
 import baseball.domain.Result;
-import baseball.view.InputView;
+import baseball.view.Output;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,11 +15,10 @@ public class BaseBallGame {
 
     private static final String CONTINUE_GAME_SIG = "1";
     private static final String END_GAME_SIG = "2";
-    private final InputView view = new InputView();
 
 
     public void run() {
-        view.printStart();
+        Output.printStart();
 
         boolean continueGame = Boolean.TRUE;
 
@@ -28,7 +27,7 @@ public class BaseBallGame {
 
             startGame(computer);
 
-            view.printFinish();
+            Output.printFinish();
 
             continueGame = isContinueGame(readLine());
         }
@@ -36,11 +35,11 @@ public class BaseBallGame {
 
     private void startGame(Computer computer) {
         while (true) {
-            view.printNumberInput();
+            Output.printNumberInput();
             Numbers inputNumbers = Numbers.create(enterNumberList());
 
             Result result = computer.calculateResult(inputNumbers);
-            view.printResult(result);
+            Output.printResult(result);
 
             if (result.isFinish()) {
                 break;
