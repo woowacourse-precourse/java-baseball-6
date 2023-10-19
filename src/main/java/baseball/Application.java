@@ -40,13 +40,13 @@ public class Application {
 
         Boolean isOut = false;
         while(!isOut){
-            isOut = pitching(computer);
+            isOut = pitch(computer);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
     }
 
-    public static boolean pitching(List<Integer> computer){
+    public static boolean pitch(List<Integer> computer){
         System.out.print("숫자를 입력해주세요 : ");
         int strikeCount = 0;
         int ballCount = 0;
