@@ -9,6 +9,7 @@ public class ScoreManager {
     static int BALL;
     static int STRIKE;
     boolean isNothing = true;
+    boolean isAllStrike = false;
 
         //true : 3스트라이크 아님 vs false : 스트라이트임
     public boolean setAndCheckScore(List<Integer> computer, List<Integer> user){ //점수를저장하고, 점수를 출력함
@@ -16,9 +17,9 @@ public class ScoreManager {
         BALL = 0;
         STRIKE = 0;
         setScore(computer,user); //두 숫자를 비교하여 점수를 매긴다
-        //점수를 출력한다.
         System.out.println(BALL);
         System.out.println(STRIKE);
+        checkAllSolve(); //점수를 출력한다.
         return true;
     }
 
@@ -37,6 +38,39 @@ public class ScoreManager {
             STRIKE++;
         }else {
             BALL++;
+        }
+    }
+
+    private void checkAllSolve(){
+        if(BALL ==0 && STRIKE == 0){
+            System.out.println("낫싱");
+        } else{
+            checkBallOrStrike();
+        }
+    }
+    private void checkBallOrStrike(){
+        String str = "";
+        if(BALL>0){
+            str += BALL+"볼"+" ";
+        }
+        if(STRIKE>0) { //!!!!!!!!else if로하면 출력이 안되넨???
+            if(STRIKE == 3){
+                System.out.println("dkssud");
+            }
+            else {
+                str += STRIKE+"스트라이크";
+            }
+        }
+        System.out.println(str);
+    }
+
+    private String printFinalMsg(){
+        if(STRIKE == 3){
+            System.out.println("dkssud");
+            return "ㅡㅇ";
+        }
+        else {
+            return STRIKE+"스트라이크";
         }
     }
 
