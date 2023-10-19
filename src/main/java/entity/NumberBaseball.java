@@ -52,4 +52,32 @@ public class NumberBaseball {
 
         return firstNumber != secondNumber && secondNumber != thirdNumber && firstNumber != thirdNumber;
     }
+
+    public int countStrike() {
+        int result = 0;
+        for (int i = 0; i < 3; i++) {
+            if (numbers.charAt(i) == randomNumber.charAt(i)) {
+                result++;
+            }
+        }
+        return result;
+    }
+
+    public int countBall() {
+        int result = 0;
+        if (numbers.charAt(0) == randomNumber.charAt(1) || numbers.charAt(0) == randomNumber.charAt(2)) {
+            result++;
+        }
+
+        if (numbers.charAt(1) == randomNumber.charAt(0) || numbers.charAt(0) == randomNumber.charAt(2)) {
+            result++;
+        }
+
+        if (numbers.charAt(2) == randomNumber.charAt(0) || numbers.charAt(2) == randomNumber.charAt(1)) {
+            result++;
+        }
+
+        return result;
+    }
+
 }
