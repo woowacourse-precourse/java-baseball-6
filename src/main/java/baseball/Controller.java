@@ -8,23 +8,13 @@ public class Controller {
     private static Integer command = 1;
 
     public static void run() {
-        Controller controller = new Controller();
+        NumberGenerator generator = new NumberGenerator();
 
         InputView.greetingMsg();
-        Answer answer = new Answer(controller.createAnswer());
+        Answer answer = new Answer(generator.createAnswer());
 
         while (command != 2) {
             Integer response = InputView.inputGuideMsg();
         }
-    }
-
-    private List<Integer> createAnswer() {
-        List<Integer> randNums = new ArrayList<>();
-
-        for (int i = 0; i < 3; i++) {
-            randNums.add(Randoms.pickNumberInRange(1, 9));
-        }
-
-        return randNums;
     }
 }
