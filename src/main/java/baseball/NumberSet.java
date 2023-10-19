@@ -34,4 +34,12 @@ public class NumberSet {
     public void setDigit3(int digit3) {
         this.digit3 = digit3;
     }
+
+    public boolean isUnique() {
+        return (
+                this.digit1 != this.digit2
+                        && this.digit2 != this.digit3
+                        && this.digit1 != this.digit3
+        );
+    }
 }
