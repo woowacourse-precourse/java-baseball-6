@@ -44,9 +44,7 @@ public class BaseBallTest {
         List<Integer> expected = List.of(1, 2, 3);
         assertRandomNumberInRangeTest(
                 () -> {
-                    List<Integer> actual;
-                    actual = Application.getRandomNumberList();
-
+                    List<Integer> actual = Application.getRandomNumberList();
                     assertThat(actual).isEqualTo(expected);
                 },
                 1, 2, 3
