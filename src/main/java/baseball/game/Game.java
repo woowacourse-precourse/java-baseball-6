@@ -26,5 +26,21 @@ public class Game {
         String inputNumber = Console.readLine();
     }
 
+    public void errorValidate(String string) throws IllegalAccessException {
+        if (!string.matches(REGULAR_EXPRESSION_NUMBER)){
+            throw new IllegalAccessException();
+        }
+    }
+
+//    private List<Integer> stringToIntegerList(String string){
+//
+//    }
+
+    private void inputValidate(List<Integer> number){
+
+    }
+
+
+
 
 }
