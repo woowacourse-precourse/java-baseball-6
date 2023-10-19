@@ -25,12 +25,12 @@ public class GameController {
     }
 
     public void startGame() {
-        gameOutput.printStartGame(); // 시작 문구를 출력
+        gameOutput.printStartGame();
 
         while (state) {
             playController.generateNumber(); // 컴퓨터 난수 생성
             guessNumber(); // 게임 시작
-            state = endOrRestart(); // 재시작 여부
+            state = endOrRestart();
         }
     }
 
@@ -39,12 +39,17 @@ public class GameController {
 
         while (!success) {
             String input = gameInput.inputNumber();
-            try {
-                    if (validateController.validateInputString(input, MAXIMUM_NUMBER_LENGTH))
-                    success = playController.isSuccess(input);
-            } catch (IllegalArgumentException e) {
-                System.out.println("입력 형식이 잘못되었습니다.");
-            }
+            validateController.validateInputString(input, MAXIMUM_NUMBER_LENGTH)
+            success = playController.isSuccess(input);
         }
+    }
+
+
+
+    public boolean endOrRestart() {
+        String input = gameInput.inputEndOrRestart();
+        validateController.validateInputString(input);
+
+        return userAnswer(input);
     }
 }
