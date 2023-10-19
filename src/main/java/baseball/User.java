@@ -17,7 +17,7 @@ public class User {
     public void setGuessNumber(){
         String numbers = Console.readLine();
         if(numbers.length()!=3){ //입력한 숫자가 3개가 아닐시 IllegalArgumentExpection 발생 후 프로그램 종료
-            throw new IllegalArgumentException("IllegalArgumentException");
+            throw new IllegalArgumentException();
         }
         else{ //숫자3개가 맞다면
             for(int i=0; i< numbers.length();i++){
@@ -26,7 +26,7 @@ public class User {
             }
             HashSet<Integer>checkDuplication = new HashSet<>(guessNumber); //중복된 숫자가 있는지 확인하기 위한 set자료형
             if(checkDuplication.size()!=guessNumber.size()){ //중복된 숫자가 있으면 두 자료형의 크기가 다름
-                throw new IllegalArgumentException("IllegalArgumentException"); //오류 발생
+                throw new IllegalArgumentException(); //오류 발생
             }
         }
     }
