@@ -37,7 +37,6 @@ class ApplicationTest extends NsTest {
 
     // TODO: 만약 입력받은 수가 숫자가 아니라면?
 
-    // TODO: 만약 입력받은 각 자리수중 하나라도 중복된다면?
 
 
 }
