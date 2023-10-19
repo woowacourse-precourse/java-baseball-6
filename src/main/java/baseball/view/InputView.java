@@ -7,4 +7,7 @@ public class InputView {
         return Console.readLine();
     }
 
+    public String retryNumber() {
+        return Console.readLine();
+    }
 }
