@@ -2,15 +2,14 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseBall {
 
-    private int[] computer, user;
+    private List<Integer> computer, user;
+    private int ball, strike;
 
     public boolean start() {
         init();
@@ -27,14 +26,15 @@ public class BaseBall {
                     return false;
                 }
             }
-
             createUserNumber(input);
+
+            check();
         }
     }
 
     private void init() {
-        computer = new int[3];
-        user = new int[3];
+        computer = new ArrayList<>(3);
+        user = new ArrayList<>(3);
 
         createComputerNumber();
     }
@@ -49,13 +49,13 @@ public class BaseBall {
 
         Iterator<Integer> iterator = hashSet.iterator();
         for (int i = 0; i < 3; i++) {
-            computer[i] = iterator.next();
+            computer.add(iterator.next());
         }
     }
 
     private void createUserNumber(String input) {
         for (int i = 0; i < 3; i++) {
-            user[i] = input.charAt(i) - '0';
+            user.add(input.charAt(i) - '0');
         }
     }
 
@@ -73,6 +73,29 @@ public class BaseBall {
         }
 
         return true;
+    }
+
+    private void check() {
+        ball = strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int n = user.get(i);
+
+            // out
+            if (!computer.contains(n)) {
+                continue;
+            }
+
+            int idx = computer.indexOf(n);
+            // ball
+            if (idx != i) {
+                ball++;
+            }
+            // strike
+            else {
+                strike++;
+            }
+        }
     }
 
     private void throwInputError() {
