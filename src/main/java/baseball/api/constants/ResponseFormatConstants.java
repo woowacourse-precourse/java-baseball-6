@@ -1,4 +1,4 @@
-package baseball;
+package baseball.api.constants;
 
 public interface ResponseFormatConstants {
     public static final String STRIKE_FORMAT = "%s스트라이크";

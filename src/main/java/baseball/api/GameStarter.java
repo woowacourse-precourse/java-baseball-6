@@ -1,11 +1,12 @@
-package baseball;
+package baseball.api;
 
-import static baseball.MessageConstants.*;
-import static baseball.ResponseFormatConstants.*;
+import baseball.api.request.RequestChecker;
+
+import static baseball.api.constants.MessageConstants.*;
+import static baseball.api.constants.ResponseFormatConstants.*;
 
 
 public class GameStarter {
-
     private String result;
     private int length;
 

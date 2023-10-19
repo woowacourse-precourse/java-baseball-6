@@ -1,4 +1,6 @@
-package baseball;
+package baseball.api;
+
+import baseball.api.request.RequestChecker;
 
 public class GameHelper {
     public void retryGame() throws IllegalArgumentException{
