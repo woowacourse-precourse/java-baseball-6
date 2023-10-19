@@ -93,6 +93,12 @@ public class Application {
 
     private static int checkNumber(String inputString) {
         int number;
+        // int로 파싱 불가능하면 예외 발생
+        try {
+            number = Integer.parseInt(inputString);
+        } catch (Exception e){
+            throw new IllegalArgumentException();
+        }
         // 사용자 인풋이 3자리가 아니면 예외 발생
         if (inputString.length() != 3) {
             throw new IllegalArgumentException();
@@ -103,12 +109,6 @@ public class Application {
         }
         // 사용자 인풋에 동일 숫자 존재시 예외 발생
         if (isDuplicated(inputString)) {
-            throw new IllegalArgumentException();
-        }
-        // int로 파싱 불가능하면 예외 발생
-        try {
-            number = Integer.parseInt(inputString);
-        } catch (Exception e){
             throw new IllegalArgumentException();
         }
         return number;
