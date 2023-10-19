@@ -16,16 +16,21 @@ public class GameRunner {
     }
 
     public boolean playRound() {
-        GameMessages.printInputMessage();
-
-        person.insert(Console.readLine());
-
-        BallStrikeCount ballStrikeCount = gameScore.calculateScore();
-
+        BallStrikeCount ballStrikeCount = executeRound();
         GameMessages.displayScore(ballStrikeCount);
+        return checkContinueGame(ballStrikeCount);
+    }
 
-        if (isThreeStrike(ballStrikeCount) && handleUserChoice(ballStrikeCount)) {
-            return true;
+    private BallStrikeCount executeRound() {
+        GameMessages.printInputMessage();
+        String input = Console.readLine();
+        person.insert(input);
+        return gameScore.calculateScore();
+    }
+
+    private boolean checkContinueGame(BallStrikeCount ballStrikeCount) {
+        if (isThreeStrike(ballStrikeCount)) {
+            return handleUserChoice(ballStrikeCount);
         }
 
         gameUtils.restartRound(ballStrikeCount);
