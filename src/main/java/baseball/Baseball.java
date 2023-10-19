@@ -29,6 +29,9 @@ public class Baseball {
         if (!validateNumberLength(inputValue)) {
             throw new IllegalArgumentException();
         }
+        if (!validateNumberRange(inputValue)) {
+            throw new IllegalArgumentException();
+        }
 
         generateUserNumber(inputValue);
     }
@@ -64,5 +67,17 @@ public class Baseball {
 
     public boolean validateNumberLength(String inputValue) {
         return inputValue.length() <= 3;
+    }
+
+    public boolean validateNumberRange(String inputValue) {
+        for (int i = 0; i < inputValue.length(); i++) {
+            int userNumber = parseNumber(inputValue.charAt(i));
+
+            if (!(MIN_NUMBER <= userNumber && userNumber <= MAX_NUMBER)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
