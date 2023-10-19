@@ -4,7 +4,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class Application {
@@ -60,7 +59,8 @@ public class Application {
             //스트라이트 판단
             int strikeCnt = 0;
             for(int i=0; i<3 ; i++){
-                if(computer.get(i)==user.get(i)) strikeCnt++;
+                //if(computer.get(i) == user.get(i)) strikeCnt++;
+                if(computer.get(i).equals(user.get(i))) strikeCnt++;
             }
 
             //ball
@@ -70,9 +70,9 @@ public class Application {
             }
 
             if(strikeCnt == 0 && ballCnt == 0) System.out.println("낫싱");
-            else if(strikeCnt == 0) System.out.println(String.format("%d볼",ballCnt-strikeCnt));
-            else if(ballCnt-strikeCnt == 0) System.out.println(String.format("%d스트라이크",strikeCnt));
-            else System.out.println(String.format("%d볼 %d스트라이크",ballCnt-strikeCnt,strikeCnt));
+            else if(strikeCnt == 0) System.out.printf("%d볼%n",ballCnt-strikeCnt);
+            else if(ballCnt-strikeCnt == 0) System.out.printf("%d스트라이크%n",strikeCnt);
+            else System.out.printf("%d볼 %d스트라이크%n",ballCnt-strikeCnt,strikeCnt);
 
             if(strikeCnt==3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
