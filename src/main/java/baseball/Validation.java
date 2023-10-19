@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.config.GameConfig;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,7 +35,7 @@ public class Validation {
     }
 
     private boolean isCheckLength() {
-        if (userInputList.size() == 3) {
+        if (userInputList.size() == GameConfig.CORRECT_LENGTH) {
             return true;
         }
 
@@ -42,7 +44,7 @@ public class Validation {
 
     private boolean isAllCorrectNumber() {
         userInputList.forEach(num -> {
-            if (!(1 <= num && num <= 9)) {
+            if (!(GameConfig.START_NUMBER <= num && num <= GameConfig.END_NUMBER)) {
                 throw new IllegalArgumentException();
             }
         });
@@ -53,7 +55,7 @@ public class Validation {
     private boolean isNotDuplicateNumber() {
         Set<Integer> userInputSet = new HashSet<>(userInputList);
 
-        if (userInputSet.size() == 3) {
+        if (userInputSet.size() == GameConfig.CORRECT_LENGTH) {
             return true;
         }
 
