@@ -6,8 +6,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Referee {
-    Computer computer = new Computer();
-    Player player = new Player();
+    Computer computer;
+    Player player;
 
     public int[] calculateStrikeAndBall(List<Integer> computerBaseballNumber, List<Integer> playerBaseballNumber) {
         int strike = 0;
@@ -28,6 +28,9 @@ public class Referee {
     }
 
     public void playBall() {
+        computer = new Computer();
+        player = new Player();
+
         do {
             System.out.print("숫자를 입력해주세요 : ");
             player.inputPlayerNumber();
@@ -49,7 +52,8 @@ public class Referee {
             }
         } while (!isThreeStrike());
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.print("3개의 숫자를 모두 맞히셨습니다!");
+        System.out.println(" 게임 종료");
         continueOrFinish();
     }
 
