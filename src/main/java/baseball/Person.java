@@ -17,4 +17,7 @@ public class Person {
             inputList.add(inputNum);
         }
     }
+    public List<Integer> getInputList() {
+        return inputList;
+    }
 }
