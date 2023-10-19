@@ -5,41 +5,45 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class InputValidationTest {
-	private InputValidation inputValidation = new InputValidation();
+	private final InputValidation inputValidation;
+
+	private InputValidationTest() {
+		inputValidation = new InputValidation();
+	}
 
 	@Test
 	void gameInputNull() {
-		assertTrue(inputValidation.isGameInputValid(null));
+		assertFalse(inputValidation.isGameInputValid(null));
 	}
 
 	@Test
 	void gameInputShort() {
-		assertTrue(inputValidation.isGameInputValid("12"));
+		assertFalse(inputValidation.isGameInputValid("12"));
 	}
 
 	@Test
 	void gameInputLong() {
-		assertTrue(inputValidation.isGameInputValid("1234"));
+		assertFalse(inputValidation.isGameInputValid("1234"));
 	}
 
 	@Test
 	void gameInputMultiple() {
-		assertTrue(inputValidation.isGameInputValid("121"));
+		assertFalse(inputValidation.isGameInputValid("121"));
 	}
 
 	@Test
 	void gameInputNotNum() {
-		assertTrue(inputValidation.isGameInputValid("a35"));
+		assertFalse(inputValidation.isGameInputValid("a35"));
 	}
 
 	@Test
 	void gameInputOutOfRange() {
-		assertTrue(inputValidation.isGameInputValid("021"));
+		assertFalse(inputValidation.isGameInputValid("021"));
 	}
 
 	@Test
 	void gameInputNegative() {
-		assertTrue(inputValidation.isGameInputValid("-34"));
+		assertFalse(inputValidation.isGameInputValid("-34"));
 	}
 
 	@Test
@@ -49,32 +53,32 @@ class InputValidationTest {
 
 	@Test
 	void endInputNull() {
-		assertTrue(inputValidation.isEndInputValid(null));
+		assertFalse(inputValidation.isEndInputValid(null));
 	}
 
 	@Test
 	void endInputShort() {
-		assertTrue(inputValidation.isEndInputValid(""));
+		assertFalse(inputValidation.isEndInputValid(""));
 	}
 
 	@Test
 	void endInputLong() {
-		assertTrue(inputValidation.isEndInputValid("12"));
+		assertFalse(inputValidation.isEndInputValid("12"));
 	}
 
 	@Test
 	void endInputNotNum() {
-		assertTrue(inputValidation.isEndInputValid("a"));
+		assertFalse(inputValidation.isEndInputValid("a"));
 	}
 
 	@Test
 	void endInputOutOfRange() {
-		assertTrue(inputValidation.isEndInputValid("3"));
+		assertFalse(inputValidation.isEndInputValid("3"));
 	}
 
 	@Test
 	void endInputNegative() {
-		assertTrue(inputValidation.isEndInputValid("-1"));
+		assertFalse(inputValidation.isEndInputValid("-1"));
 	}
 
 	@Test
