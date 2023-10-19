@@ -9,3 +9,8 @@
 -User 클래스 생성, 입력 받은 숫자는 User의 guessNumber라는 arrayList로 저장함.
 -User.setGuessNumber() 메소드를 통해 올바른 입력인지 확인 후 저장
 -만약, 올바른 입력이 아닐 시 IllegalArgumentException 발생 후 종료
+
+3.숫자 야구 게임 진행하기
+
+-Game 클래스 생성
+-Game 클래스에서 전체적인 숫자 야구 진행
