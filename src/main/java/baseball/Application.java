@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
@@ -135,23 +138,16 @@ public class Application {
 
     public static int generateAnswerNumber() {
         // 정답 번호 생성하기 (서로 다른 세 자리의 숫자로 구성)
-        // 생성한 세 자리 양수를 리턴
-        int pickedNumber = 0;
-        while(true) {
-            pickedNumber = pickNumberInRange(111, 999);
-
-            String numberString = String.valueOf(pickedNumber);
-            // 0을 포함하면 다시 뽑기
-            if (numberString.contains("0")){
-                continue;
+        List<Integer> computer = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        while (computer.size() < 3){
+            int pickedNumber = pickNumberInRange(1, 9);
+            if (!computer.contains(pickedNumber)) {
+                computer.add(pickedNumber);
+                sb.append(pickedNumber);
             }
-            if (isDuplicated(numberString)) {
-                continue;
-            }
-            // 다시 뽑기 조건에 해당하지 않는 경우, while문을 벗어난다.
-            break;
         }
-        return pickedNumber;
+        return Integer.parseInt(sb.toString());
     }
 
     private static boolean isDuplicated(String numberString) {
