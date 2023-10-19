@@ -1,19 +1,16 @@
-package referee;
+package hint;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import hint.Hint;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class RefereeTest {
-
-    private final Hint hint = new Hint();
+public class HintTest {
 
     @Test
-    @DisplayName("심판이 strike와 ball개수를 정확히 판별하는지 테스트")
-    void 심판_스트라이크_볼_계산_테스트() {
+    @DisplayName("힌트의 strike와 ball 계산 테스트")
+    void 힌트_스트라이크_볼_계산_테스트() {
         //given
         final List<Integer> computerBaseballNumber = List.of(1, 2, 3);
         final List<Integer> playerBaseballNumber = List.of(1, 4, 3);
