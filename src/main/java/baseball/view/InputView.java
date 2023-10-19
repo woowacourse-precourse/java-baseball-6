@@ -1,12 +1,22 @@
 package baseball.view;
 
+import baseball.utills.InputValidation;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
 	private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
 
-	public void readNumber() {
+	public List<Integer> readNumber() {
 		System.out.print(INPUT_NUMBER);
-		System.out.print(Console.readLine());
+		String input = InputValidation.validate(Console.readLine());
+		return convertStringToInteger(input);
+	}
+	public static List<Integer> convertStringToInteger(String input){
+		return Arrays.stream(input.split(""))
+				.map(Integer::parseInt)
+				.collect(Collectors.toList());
 	}
 }
