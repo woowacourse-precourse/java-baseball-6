@@ -20,7 +20,7 @@ public class Game {
 
     public boolean play(List<Integer> number) {
         int ballCount = countBall(number);
-
+        int strikeCount = countStrike(number);
         return false;
     }
 
@@ -31,6 +31,16 @@ public class Game {
                 if (i != j && number.get(i).equals(computer.get(j))) {
                     count++;
                 }
+            }
+        }
+        return count;
+    }
+
+    private int countStrike(List<Integer> number) {
+        int count = 0;
+        for (int i = 0; i < number.size(); i++) {
+            if (number.get(i).equals(computer.get(i))) {
+                count++;
             }
         }
         return count;
