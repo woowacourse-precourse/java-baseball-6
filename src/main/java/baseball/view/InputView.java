@@ -3,7 +3,13 @@ package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요";
+    private static final String INVALID_INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요";
+    public static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
+
+    public int readPlayerNumber() {
+        print(INPUT_NUMBER_MESSAGE);
+        return readInt();
+    }
 
     private int readInt() {
         return parseInt(readLine());
@@ -18,8 +24,12 @@ public class InputView {
         try {
             parsedNumber = Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INPUT_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(INVALID_INPUT_NUMBER_MESSAGE);
         }
         return parsedNumber;
+    }
+
+    private void print(String message) {
+        System.out.print(message);
     }
 }
