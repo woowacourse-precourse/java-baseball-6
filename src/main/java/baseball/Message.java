@@ -20,8 +20,8 @@ public class Message {
     }
 
     public String scoreMessage(List<Integer> score) {
-        int ball = score.get(0);
-        int strike = score.get(1);
+        final int ball = score.get(0);
+        final int strike = score.get(1);
 
         if (ball == 0 && strike > 0) {
             return (strike + "스트라이크");
