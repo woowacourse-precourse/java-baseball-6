@@ -18,8 +18,8 @@ public class HintCalculator {
         }
     }
 
-    private boolean isStrike(Integer integer, Integer integer1) {
-        return false;
+    private boolean isStrike(Integer userDigit, Integer computerDigit) {
+        return userDigit == computerDigit;
     }
 
     private boolean isBall(Integer integer, Integer integer1) {
