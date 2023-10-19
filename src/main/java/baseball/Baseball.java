@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Baseball {
     private final int MIN_NUMBER = 1;
@@ -26,6 +25,11 @@ public class Baseball {
         System.out.print(NUMBER_INPUT_MESSAGE);
 
         String inputValue = userNumberInput();
+
+        if (!validateNumberLength(inputValue)) {
+            throw new IllegalArgumentException();
+        }
+
         generateUserNumber(inputValue);
     }
 
@@ -49,8 +53,16 @@ public class Baseball {
 
     public void generateUserNumber(String inputValue) {
         for (int i = 0; i < inputValue.length(); i++) {
-            int userNumber = inputValue.charAt(i) - '0';
+            int userNumber = parseNumber(inputValue.charAt(i));
             user.add(userNumber);
         }
+    }
+
+    public int parseNumber(char character) {
+        return character - '0';
+    }
+
+    public boolean validateNumberLength(String inputValue) {
+        return inputValue.length() <= 3;
     }
 }
