@@ -18,3 +18,14 @@
 - printResult(Result)
   - result에 들어있는 ball, strike 개수를 요구사항에 맞춰 출력
     
+<h2>3. MistakeChecker</h2>
+- 입력 예외 처리용 객체
+- MistakeChecker 싱글톤 객체로 작성
+- checkMyNumber(String input)
+  - 게임 중 숫자 입력 예외 체크
+- checkAndMakeList(String input)
+  - 예외 체크 후 사용자 입력 리스트 생성 및 반환
+- checkRestartNumber(String input)
+  - 게임 종료 후 재시작 여부 확인 숫자 입력 예외 체크
+- checkAndMakeNumber(String input)
+  - 예외 체크 후 재시작 여부 확인 숫자 생성 및 반환

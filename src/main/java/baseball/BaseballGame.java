@@ -4,9 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BaseballGame {
 
@@ -15,17 +13,17 @@ public class BaseballGame {
     private BaseballGame() {
     }
 
-    public static void start() {
-        getInstance().play();
-    }
-
     private static BaseballGame getInstance() {
         if (baseballGame == null) {
             baseballGame = new BaseballGame();
         }
         return baseballGame;
     }
-    
+
+    public static void start() {
+        getInstance().play();
+    }
+
     public void play() {
         List<Integer> computerNumber = setComputerNumber();
 
@@ -34,7 +32,6 @@ public class BaseballGame {
             List<Integer> myNumber = setMyNumber();
 
             Result result = compareNumber(computerNumber, myNumber);
-
             printResult(result);
 
             if (result.getStrike() == 3) {
@@ -58,25 +55,7 @@ public class BaseballGame {
     private List<Integer> setMyNumber() {
         System.out.print("숫자를 입력해주세요 : ");
 
-        List<Integer> numberList;
-        try {
-            numberList = Arrays.stream(Console.readLine().split(""))
-                    .map(Integer::parseInt)
-                    .collect(Collectors.toList());
-        } catch (RuntimeException e) {
-            throw new IllegalArgumentException("숫자를 입력해주세요.");
-        }
-
-        List<Integer> distinctList = numberList.stream().distinct().collect(Collectors.toList());
-        if (distinctList.size() != 3) {
-            throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
-        }
-
-        if (numberList.size() != 3 || numberList.contains(0)) {
-            throw new IllegalArgumentException("1 ~ 9 사이 3개의 숫자를 입력해주세요.");
-        }
-
-        return numberList;
+        return MistakeChecker.checkAndMakeList(Console.readLine());
     }
 
     private Result compareNumber(List<Integer> computerNumber, List<Integer> myNumber) {
