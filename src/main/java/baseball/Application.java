@@ -13,8 +13,7 @@ public class Application {
 
     public static void gameProcess() {
         List<Integer> computerNum = getRandomNumber();
-        List<Integer> numbersNum = getUserInput();
-        checkGame(computerNum, numbersNum);
+        checkGame(computerNum);
     }
 
     public static List<Integer> getRandomNumber() {
@@ -44,42 +43,41 @@ public class Application {
         return numbers;
     }
 
-    public static void checkGame(List<Integer> computer, List<Integer> user) {
-        int ballCount = 0;
-        int strikeCount = 0;
+    public static void checkGame(List<Integer> computer) {
+        while (true) {
+            List<Integer> user = getUserInput();
+            int ballCount = 0;
+            int strikeCount = 0;
 
-        for (int i = 0; i < MAX_LENGTH; i++) {
-            if (computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i))) {
-                ballCount++;
+            for (int i = 0; i < MAX_LENGTH; i++) {
+                if (computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i))) {
+                    ballCount++;
+                }
+                if (computer.get(i).equals(user.get(i))) {
+                    strikeCount++;
+                }
             }
-            if (computer.get(i).equals(user.get(i))) {
-                strikeCount++;
+
+            if (strikeCount == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+                if (selectExit())
+                    gameProcess();
+                return;
+            }
+
+            if (ballCount > 0) {
+                System.out.println(ballCount + "볼 ");
+            }
+
+            if (strikeCount > 0) {
+                System.out.println(strikeCount + " 스트라이크 ");
+            }
+
+            if (ballCount == 0 && strikeCount == 0) {
+                System.out.println("낫싱");
             }
         }
-
-        if (strikeCount == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
-            if (selectExit())
-                gameProcess();
-            return;
-        }
-
-        if (ballCount > 0) {
-            System.out.print(ballCount + "볼 ");
-        }
-
-        if (strikeCount > 0) {
-            System.out.println(strikeCount + " 스트라이크 ");
-        }
-
-        if (ballCount == 0 && strikeCount == 0) {
-            System.out.print("낫싱");
-        }
-
-        getUserInput();
     }
-
-
 
     public static boolean selectExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
