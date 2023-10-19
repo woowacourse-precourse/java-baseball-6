@@ -14,5 +14,6 @@ public class GameController {
         System.out.println("숫자를 입력해주세요.");
         String input = Console.readLine();
         List<Integer> userNumbers = service.parseInputToList(input);
+        int[] result = service.compare(computerNumbers, userNumbers);
     }
 }

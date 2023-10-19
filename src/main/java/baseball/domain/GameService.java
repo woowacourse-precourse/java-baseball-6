@@ -30,4 +30,22 @@ public class GameService {
         }
         return userNumbers;
     }
+
+    public int[] compare(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        int[] result = new int[2]; // result[0] == strike, result[1] == ball
+        for(int index = 0; index < MAX_NUMBERS; index++){
+            if(isStrike(computerNumbers, userNumbers, index)) result[0]++;
+            if(isBall(computerNumbers, userNumbers, index)) result[1]++;
+        }
+        return result;
+    }
+
+    private boolean isBall(List<Integer> computerNumbers, List<Integer> userNumbers, int index) {
+        int number = userNumbers.get(index);
+        return computerNumbers.contains(number) && !isStrike(computerNumbers, userNumbers, index);
+    }
+
+    private boolean isStrike(List<Integer> computerNumbers, List<Integer> userNumbers, int index) {
+        return computerNumbers.get(index) ==  userNumbers.get(index);
+    }
 }
