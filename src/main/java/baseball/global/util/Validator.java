@@ -7,23 +7,23 @@ import java.util.stream.Collectors;
 
 public class Validator {
 
-	public static void validateNumberLength(String[] value) {
-		if (value.length != 3) {
+	public static void validateNumbersLength(String[] numbers) {
+		if (numbers.length != 3) {
 			throw new IllegalArgumentException(NUMBER_LENGTH_ERROR_MESSAGE);
 		}
 	}
 
-	public static void validateNumberDuplication(String[] value) {
-		int noneDuplicateNumber = Arrays.stream(value).collect(Collectors.toSet()).size();
+	public static void validateNumbersDuplication(String[] numbers) {
+		int noneDuplicateNumber = Arrays.stream(numbers).collect(Collectors.toSet()).size();
 		if (noneDuplicateNumber != 3) {
 			throw new IllegalArgumentException(NUMBER_DUPLICATION_ERROR_MESSAGE);
 		}
 	}
 
-	public static void validateNumberFormat(String[] value) {
+	public static void validateNumbersFormat(String[] numbers) {
 		try {
-			for (String v : value) {
-				Integer.parseInt(v);
+			for (String number : numbers) {
+				Integer.parseInt(number);
 			}
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException(NUMBER_FORMAT_ERROR_MESSAGE);
