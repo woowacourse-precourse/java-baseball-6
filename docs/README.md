@@ -87,9 +87,9 @@
 
 ### 기능
 #### Computer
-- [ ] compareInput 에서 게임이 끝났는 지 확인하는 메서드 추출
-  - [ ] compareInput 의 반환타입 void 로 변경
-- [ ] getResultsMessage 에서 출력까지 하기 (메서드명도 변경)
+- [X] compareInput 에서 게임이 끝났는 지 확인하는 메서드 추출
+  - [X] compareInput 의 반환타입 void 로 변경
+- [X] getResultsMessage 에서 출력까지 하기 (메서드명도 변경)
 
 #### Player
 - [ ] Input 관련 메서드들 모두 추출

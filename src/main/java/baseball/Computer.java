@@ -8,40 +8,40 @@ import java.util.Set;
 public class Computer {
 
     private final String numbers;
+    private boolean finish;
 
     public Computer() {
         numbers = getRandomNumbers();
+        finish = false;
     }
 
-    public boolean compareInput(String input) {
+    public void compareInput(String input) {
         int ballCounts = ballCounts(input);
         int strikeCounts = strikeCounts(input);
         
-        String message = getResultsMessage(ballCounts, strikeCounts);
-        System.out.println(message);
+        printResultMessage(ballCounts, strikeCounts);
 
         if (strikeCounts == 3) {
             System.out.println(Constants.GAME_FINISH_MESSAGE);
-            return true;
+            finish = true;
         }
-
-        return false;
     }
     
-    private String getResultsMessage(int ballCounts, int strikeCounts) {
+    private void printResultMessage(int ballCounts, int strikeCounts) {
         if (ballCounts == 0 && strikeCounts == 0) {
-            return Constants.NOTHING_MESSAGE;
+            Output.printMessage(Constants.NOTHING_MESSAGE);
+            return;
         }
-        StringBuilder sb = new StringBuilder();
+        StringBuilder message = new StringBuilder();
         
         if (ballCounts != 0) {
-            sb.append(ballCounts).append(Constants.BALL_MESSAGE).append(" ");
+            message.append(ballCounts).append(Constants.BALL_MESSAGE).append(" ");
         }
         if (strikeCounts != 0) {
-            sb.append(strikeCounts).append(Constants.STRIKE_MESSAGE);
+            message.append(strikeCounts).append(Constants.STRIKE_MESSAGE);
         }
-        
-        return sb.toString();
+
+        Output.printMessage(message.toString());
     }
 
     private int strikeCounts(String input) {
@@ -91,5 +91,9 @@ public class Computer {
             sb.append(num);
         }
         return sb.toString();
+    }
+
+    public boolean isFinish() {
+        return finish;
     }
 }
