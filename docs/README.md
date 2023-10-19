@@ -42,9 +42,16 @@ boolean sizeCheck(String input) 지정된 사이즈만큼 들어왔는지 판별
 ## Computer 클래스
 - strike, ball 스코어 측정 메서드
 
-## UserAnswer 클래스
-- 유저가 입력한 String을 validation 후 List<Integer>로 변환하는 메서드
+## UserInput 클래스
+- 유저의 String을 입력받는 메서드
 
+```java
+String getUserInput() 미션의 요구사항대로 Console의 메서드 사용하여 String으로 입력받는 기능 
+```
+- validation 후 List<Integer>로 변환하는 메서드
+```java
+List<Integer> makeUserInputToThreeNumbers() 입력받은 String을 validation 진행 후 integer 리스트로 반환
+```
 
 
 ### 뭘 만들어야 할까?
