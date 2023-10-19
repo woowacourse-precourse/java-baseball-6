@@ -1,9 +1,9 @@
-package Referee;
+package referee;
 
-import Player.Computer;
-import Player.Player;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import player.Computer;
+import player.Player;
 
 public class Referee {
     Computer computer;
@@ -34,7 +34,8 @@ public class Referee {
         do {
             System.out.print("숫자를 입력해주세요 : ");
             player.inputPlayerNumber();
-            int[] score = calculateStrikeAndBall(player.getPlayerBaseballNumber(), computer.getComputerBaseballNumber());
+            int[] score = calculateStrikeAndBall(player.getPlayerBaseballNumber(),
+                    computer.getComputerBaseballNumber());
             int strike = score[0];
             int ball = score[1];
 
@@ -59,7 +60,7 @@ public class Referee {
 
     public void continueOrFinish() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        if(Console.readLine().equals("1")) {
+        if (Console.readLine().equals("1")) {
             playBall();
         }
     }

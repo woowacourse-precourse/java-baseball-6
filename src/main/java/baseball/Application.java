@@ -1,6 +1,6 @@
 package baseball;
 
-import Referee.Referee;
+import referee.Referee;
 
 public class Application {
     public static void main(String[] args) {

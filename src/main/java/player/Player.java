@@ -1,4 +1,4 @@
-package Player;
+package player;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
