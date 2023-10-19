@@ -49,12 +49,10 @@ public class Application {
     }
 
     private static void checkReGameNumber(String reGame) {
-        boolean isNumber = Pattern.matches("^[1-9]$", reGame);
+        boolean isNumber = Pattern.matches("^[1-2]$", reGame);
         if(!isNumber)
             throw new IllegalArgumentException("잘못된 입력입니다. 재시작(1) 또는 종료(2)를 입력해주세요.");
     }
-
-
 
     private static boolean judge(List<Integer> computerNumber, List<Integer> userNumber) {
         JudgeStrike judgeStrike = new JudgeStrike(computerNumber, userNumber);
