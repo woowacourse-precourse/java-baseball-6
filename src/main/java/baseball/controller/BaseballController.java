@@ -50,9 +50,11 @@ public class BaseballController {
             outputView.printResult(result.get(BALL), result.get(STRIKE));
 
             if (result.get(STRIKE) == SUCCESS_NUMBER) {
-                int finishNum = Integer.parseInt(inputView.finish());
+                String inputFinish = inputView.finish();
 
-                if (finishNum == RESTART) {
+                validator.validate1Or2(inputFinish);
+
+                if (Integer.parseInt(inputFinish) == RESTART) {
                     isRestart = true;
                     continue;
                 }
