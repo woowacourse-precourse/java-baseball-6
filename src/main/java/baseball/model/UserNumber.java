@@ -4,11 +4,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class UserNumber {
+    private final String userNumber;
 
     public UserNumber(String userNumber){
         checkIsDigit(userNumber);
         checkIsThree(userNumber);
         checkNotDuplicate(userNumber);
+
+        this.userNumber = userNumber;
+    }
+
+    public String getUserNumber(){
+        return userNumber;
     }
 
     /**
