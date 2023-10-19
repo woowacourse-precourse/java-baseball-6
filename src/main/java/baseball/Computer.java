@@ -6,11 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    /*
-        Computer 가 랜덤한 중복되지 않는
-        세자리의 숫자를 리턴하는 메서드
-     */
-    public static int[] pickRandomNumber() {
+
+    public int[] pickRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() != 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
