@@ -7,11 +7,13 @@ import java.util.List;
 public class PlayController {
     private final Integer MAXIMUM_NUMBER_LENGTH;
     private GameNumber gameNumber;
+    private GameNumber userGameNumber;
 
     GenerateController generateController;
 
     public PlayController(GenerateController generateController, Integer length) {
         this.gameNumber = new GameNumber();
+        this.userGameNumber = new GameNumber();
         this.generateController = generateController;
         this.MAXIMUM_NUMBER_LENGTH = length;
     }
