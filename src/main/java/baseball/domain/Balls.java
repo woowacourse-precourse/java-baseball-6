@@ -12,20 +12,34 @@ public class Balls {
     private final List<Ball> balls;
 
     public Balls(int treeDigitNumber) {
-        validate(treeDigitNumber);
-        balls = toBalls(treeDigitNumber);
+        List<Integer> numbers = toList(treeDigitNumber);
+        validate(numbers);
+        balls = toBalls(numbers);
     }
 
-    private void validate(int number) {
-        if (String.valueOf(number).length() != BALLS_SIZE) {
+    public Balls(List<Integer> numbers) {
+        validate(numbers);
+        balls = toBalls(numbers);
+    }
+
+    private List<Integer> toList(int arg) {
+        List<Integer> list = new ArrayList<>();
+        for (String number : String.valueOf(arg).split(SEPARATOR)) {
+            list.add(Integer.parseInt(number));
+        }
+        return list;
+    }
+
+    private void validate(List<Integer> numbers) {
+        if (numbers.size() != BALLS_SIZE) {
             throw new IllegalArgumentException(INVALID_DIGIT_NUMBER_MESSAGE);
         }
     }
 
-    private List<Ball> toBalls(int treeDigitNumber) {
+    private List<Ball> toBalls(List<Integer> numbers) {
         ArrayList<Ball> balls = new ArrayList<>(BALLS_SIZE);
-        for (String number : String.valueOf(treeDigitNumber).split(SEPARATOR)) {
-            Ball ball = new Ball(Integer.parseInt(number));
+        for (Integer number : numbers) {
+            Ball ball = new Ball(number);
             balls.add(ball);
         }
         return Collections.unmodifiableList(balls);
