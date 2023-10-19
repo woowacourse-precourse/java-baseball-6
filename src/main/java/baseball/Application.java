@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -35,7 +36,7 @@ public class Application {
     	return list;
 	}
 	
-	public static String synagogue_inspection(List<Integer> input,List<Integer> computer) {
+	public static String inspection(List<Integer> input,List<Integer> computer) {
 		
 		String result="";
 		int strike=0,ball=0;
@@ -54,15 +55,14 @@ public class Application {
     public static void main(String[] args) {
     	
     	List<Integer> computer=getRandomNumbers();
-    	String result="";
-    	String more="1";
+    	String result="",more="1";
     	
     	System.out.println("숫자 야구 게임을 시작합니다.");
     	
     	while(!result.equals("3스트라이크")&&more.equals("1")) {
     		System.out.printf("숫자를 입력해주세요 : ");
 	    	int input=0,first_digit=0,second_digit=0,third_digit=0;
-
+	    	
 	    	try {
 	    		input=Integer.parseInt(Console.readLine());
 	    		
@@ -73,14 +73,18 @@ public class Application {
 	    		if(input<100||input>999) {throw new IllegalArgumentException("3자리 숫자만 입력해주세요");}
 	    		else if(first_digit==0||second_digit==0||third_digit==0) {throw new IllegalArgumentException("각 자리 수는 1~9만 가능합니다");}
 	    		else if(first_digit==second_digit||first_digit==third_digit||second_digit==third_digit) {throw new IllegalArgumentException("모든 자리 수는 달라야 합니다");}
-	    	
+	    		//입력값이 숫자가 아닐경우 예외처리
+	    		
 	    	} catch(IllegalArgumentException e) {
+	    		System.out.println(e.getMessage());
+	    		return;
+	    	} catch(NumberFormatException e) {
 	    		System.out.println(e.getMessage());
 	    		return;
 	    	}
 	    	List<Integer> list=gatherDivs(first_digit, second_digit, third_digit);
 	    	
-	    	result=synagogue_inspection(computer, list);
+	    	result=inspection(computer, list);
 	    	
 	    	System.out.println(result);
 	    	
