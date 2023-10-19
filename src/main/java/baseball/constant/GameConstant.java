@@ -1,6 +1,13 @@
 package baseball.constant;
 
 public class GameConstant {
+
+    //난수 설정
+    public static int START_RANGE = 1;
+    public static int LAST_RANGE = 9;
+    public static int RANDOM_NUMBER_SIZE = 3;
+
+
     public static String GAME_START = "숫자 야구 게임을 시작합니다.";
 
     public static String INPUT_NUMBER = "숫자를 입력해주세요 : ";
