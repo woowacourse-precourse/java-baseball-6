@@ -26,7 +26,6 @@ public class BaseballNumber {
     //테스트를 진행해보기 위한 initializeUserNumberForTest
     public static BaseballNumber initializeUserNumberForTest(String input) {
         isInputOnlyNumber(input);
-
         List<Integer> numberByList=stringToList(input);
         System.out.println(numberByList);
         return new BaseballNumber(numberByList);
@@ -36,9 +35,7 @@ public class BaseballNumber {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> number = new ArrayList<>();
         String input = Console.readLine();
-
         isInputOnlyNumber(input);
-
         List<Integer> numberByList=stringToList(input);
         System.out.println(numberByList);
         return new BaseballNumber(numberByList);
@@ -79,15 +76,6 @@ public class BaseballNumber {
         }
     }
 
-    //
-//
-//    @Override
-//    public String toString() {
-//        return "BaseballNumber{" +
-//                "number=" + number +
-//                '}';
-//    }
-    //같은 경우(1, 3, 5)가 반복된다???
     public static BaseballNumber initializeComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -109,7 +97,7 @@ public class BaseballNumber {
         return baseballScore;
     }
 
-    private void compareByIdx(BaseballScore baseballScore, Integer computerNumberByIdx,int idx,List<Integer> userNumberList) {
+    private void compareByIdx(BaseballScore baseballScore, int computerNumberByIdx,int idx,List<Integer> userNumberList) {
         for (int i = 0; i < 3; i++) {
             if (userNumberList.get(i) == computerNumberByIdx && idx == i) {
                 baseballScore.addStrikeCount();

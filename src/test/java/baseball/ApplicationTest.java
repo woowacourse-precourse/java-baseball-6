@@ -100,6 +100,31 @@ class ApplicationTest extends NsTest {
         assertThat(thrown2).as("initializeUserNumber_테스트").isInstanceOf(NumberFormatException.class);
         assertThat(thrown3).as("initializeUserNumber_테스트").isInstanceOf(NumberFormatException.class);
     }
-
+    @Test
+    void compareNumber_테스트() {
+        //given
+        //3스트라이크
+        BaseballNumber computer1 = new BaseballNumber(new ArrayList(Arrays.asList(1, 2, 3)));
+        BaseballNumber user1 = new BaseballNumber(new ArrayList(Arrays.asList(1, 2, 3)));
+        //3스트라이크
+        BaseballNumber computer2 = new BaseballNumber(new ArrayList(Arrays.asList(4, 5, 6)));
+        BaseballNumber user2 = new BaseballNumber(new ArrayList(Arrays.asList(4, 5, 6)));
+        //2볼 1스트라이크
+        BaseballNumber computer3 = new BaseballNumber(new ArrayList(Arrays.asList(4, 5, 6)));
+        BaseballNumber user3 = new BaseballNumber(new ArrayList(Arrays.asList(4, 6, 5)));
+        //2볼 1스트라이크
+        BaseballNumber computer4 = new BaseballNumber(new ArrayList(Arrays.asList(7, 8, 9)));
+        BaseballNumber user4 = new BaseballNumber(new ArrayList(Arrays.asList(8, 7, 9)));
+        //when
+        BaseballScore resultBaseballScore1 = computer1.compareNumber(user1);
+        BaseballScore resultBaseballScore2 = computer2.compareNumber(user2);
+        BaseballScore resultBaseballScore3 = computer3.compareNumber(user3);
+        BaseballScore resultBaseballScore4 = computer4.compareNumber(user4);
+        boolean result1 = BaseballScore.isBaseballScoreEqual(resultBaseballScore1, resultBaseballScore2);
+        boolean result2 = BaseballScore.isBaseballScoreEqual(resultBaseballScore3, resultBaseballScore4);
+        //then
+        assertThat(result1).isEqualTo(true);
+        assertThat(result2).isEqualTo(true);
+    }
 
 }

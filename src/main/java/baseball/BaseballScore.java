@@ -18,6 +18,12 @@ public class BaseballScore {
         this.strikeCount = strikeCount;
     }
 
+    public static   boolean isBaseballScoreEqual(BaseballScore baseballScore1, BaseballScore baseballScore2) {
+        if (baseballScore1.ballCount == baseballScore2.ballCount && baseballScore1.strikeCount == baseballScore2.strikeCount) {
+            return true;
+        }
+        return false;
+    }
     public void addBallCount() {
         this.ballCount += 1;
 
