@@ -16,5 +16,6 @@ public class Application {
         String userInput = Console.readLine();
         NumberValidator.assertNumberValue(userInput);
         NumberValidator.assertDigitLength(userInput, PLAY_NUMBER_DIGIT);
+        NumberValidator.assertEachNumberUnique(userInput);
     }
 }
