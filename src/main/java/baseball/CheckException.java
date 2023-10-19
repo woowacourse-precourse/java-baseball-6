@@ -1,6 +1,11 @@
 package baseball;
 
 public class CheckException {
+    public void checkRestart(int isRe) {
+        if (!(isRe == 1 || isRe == 2))
+            throw new IllegalArgumentException();
+    }
+
     public void checkAll(String[] inputNumbers) {
         checkSize(inputNumbers);
         checkZero(inputNumbers);
