@@ -1,11 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     // 야구 게임 자릿수
-    private static final int COUNT = 3;
+    public static final int COUNT = 3;
     // 시작 범위
     private static final int START_RANGE = 1;
     // 종료 범위
@@ -27,7 +28,16 @@ public class Application {
         System.out.print(Message.INPUT_MSG);
         String inputStr = Console.readLine();
 
-        System.out.println("inputStr = " + inputStr);
+        // 4. 입력 받은 사용자 값 확인
+        List<Integer> user = new ArrayList<>(COUNT);
+        // 5. 입력된 값 - 빈값 / 숫자 / 3자리 숫자 / 중복 확인
+        CheckUtils.userInputCheck(inputStr, COUNT);
+
+        // 체크 정상 처리 된 경우
+        char[] charArray = inputStr.toCharArray();
+        for (char c : charArray) {
+            user.add(Integer.parseInt(c + ""));
+        }
 
 
     }

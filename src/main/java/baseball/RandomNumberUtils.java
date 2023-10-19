@@ -1,12 +1,12 @@
 package baseball;
 
+import static baseball.Application.COUNT;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberUtils {
-
-    private static final int CAPACITY = 3;
 
     /**
      * pickNumberInRange 사용한 랜덤 결과
@@ -26,8 +26,8 @@ public class RandomNumberUtils {
          */
         // 장점 : 범위 체크를 진행 하면 단순 범위의 랜덤 값 하나만 뽑아 낼 수 있어 간단 하다.
         // 단점 : 중복된 값이 나올 수 있다. -> duplicateCheck 메소드를 활용 하여서 중복 숫자의 경우 List 에 add 되지 않도록 처리
-        List<Integer> result = new ArrayList<>(CAPACITY);
-        while (result.size() < CAPACITY) {
+        List<Integer> result = new ArrayList<>(COUNT);
+        while (result.size() < COUNT) {
             int num = Randoms.pickNumberInRange(startInclusive, endInclusive);
             // 중복 숫자 확인
             duplicateCheck(result, num);
@@ -51,8 +51,8 @@ public class RandomNumberUtils {
          */
         // 장점 : 랜덤 범위의 리스트를 주면 해당 리스트 안에서 랜덤한 인덱스에 해당 하는 값을 던저 준다.
         // 단점 : 랜덤 범위의 리스트를 생성 해서 던져 주어야 하며, 해당 메소드 또한 중복을 피할 수 없다. -> duplicateCheck 메소드를 활용 하여서 중복 숫자의 경우 List 에 add 되지 않도록 처리
-        List<Integer> result = new ArrayList<>(CAPACITY);
-        while (result.size() < CAPACITY) {
+        List<Integer> result = new ArrayList<>(COUNT);
+        while (result.size() < COUNT) {
             int num = Randoms.pickNumberInList(numbers);
             // 중복 숫자 확인
             duplicateCheck(result, num);
