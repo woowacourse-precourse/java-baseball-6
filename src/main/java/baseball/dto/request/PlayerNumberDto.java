@@ -10,4 +10,8 @@ public class PlayerNumberDto {
         this.playerNumbers = playerNumbers;
     }
 
+    public List<Integer> getPlayerNumbers() {
+        return playerNumbers;
+    }
+
 }
