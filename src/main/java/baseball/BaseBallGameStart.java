@@ -11,7 +11,9 @@ public class BaseBallGameStart {
         output();
         ComputerNumbers computerNumbers = ComputerNumbers.createRandomNumbers();
         //TODO: 게임을 플레이 하는 로직 구현 할것
-        new BaseBallGamePlay();
+        new BaseBallGamePlay(computerNumbers);
+
+        System.out.println(computerNumbers.getNumbers());
     }
 
     // 출력
