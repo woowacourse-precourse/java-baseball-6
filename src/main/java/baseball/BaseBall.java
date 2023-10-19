@@ -27,7 +27,7 @@ public class BaseBall {
     private static List<Integer> strikeOut(List<Integer> comInt) {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        comInt = restart(Integer.parseInt(readLine()), comInt);
+        comInt = restart(Integer.parseInt(readLine()));
         return comInt;
     }
 
@@ -43,7 +43,7 @@ public class BaseBall {
         return judge;
     }
 
-    private static List<Integer> restart(Integer i, List<Integer> comInt) {
+    private static List<Integer> restart(Integer i) {
         if (i == 1) {
             return makeComInt(new ArrayList<>());
         }
@@ -67,6 +67,12 @@ public class BaseBall {
     private static String judged(Round.StrikeAndBall judge) {
         int ball = judge.getBall();
         int strike = judge.getStrike();
+        String ballStrikeString = getBallStrikeString(ball, strike);
+        if (ballStrikeString != null) return ballStrikeString;
+        return "낫싱";
+    }
+
+    private static String getBallStrikeString(int ball, int strike) {
         if (ball > 0 && strike > 0) {
             return ball + "볼 " + strike + "스트라이크";
         }
@@ -76,6 +82,6 @@ public class BaseBall {
         if (strike > 0) {
             return strike + "스트라이크";
         }
-        return "낫싱";
+        return null;
     }
 }
