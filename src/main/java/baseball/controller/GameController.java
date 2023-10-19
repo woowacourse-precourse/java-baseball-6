@@ -22,4 +22,13 @@ public class GameController {
 
         state = true;
     }
+
+    public void startGame() {
+        while (state) {
+            gameOutput.printStartGame();
+            playController.generateNumber();
+            guessNumber();
+            state = endOrRestart();
+        }
+    }
 }
