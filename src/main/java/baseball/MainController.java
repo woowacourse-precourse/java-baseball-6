@@ -7,24 +7,33 @@ import java.util.List;
 public class MainController {
 
     RandomNumber randomNumber = new RandomNumber();
+    Validator validator = new Validator();
     static List<Integer> COMPUTER_NUM = new ArrayList<>();
     static List<Integer> USER_NUM = new ArrayList<>();
     boolean isRepeat = true;
 
     public void mainController(){
-        COMPUTER_NUM = randomNumber.mainMakeRnadomNumber();
-        //System.out.println(COMPUTER_NUM);
-        repeatInputToOutput();
-        System.out.println(USER_NUM + "문자열");
+        COMPUTER_NUM = randomNumber.mainMakeRnadomNumber(); //컴퓨터 숫자 알아오기
+        System.out.println(printMsg(0)); //"숫자 야구 게임을 시작합니다."
+
+        repeatInputToOutput(); //반복되는 구간
+            System.out.println(COMPUTER_NUM + "컴퓨터");
+            System.out.println(USER_NUM + "사용자");
     }
 
-    private void repeatInputToOutput(){ //반복되는
-        String answer = Console.readLine();
-        USER_NUM = stringToList(answer);
 
-        //숫자받기
-        //유효성검사
-        //저장
+
+
+
+
+
+
+    private void repeatInputToOutput(){ //반복되는
+        System.out.println(printMsg(1)); //"숫자를 입력해주세요 : "
+        String answer = Console.readLine(); //사용자에게 번호 입력받기
+        USER_NUM = stringToList(answer); //list 변환 + 유효검사
+
+
         //대조 검사
 
     }
@@ -36,8 +45,16 @@ public class MainController {
             int num = Integer.parseInt(str);
             resultList.add(num);
         }
+        validator.isVaildNumber(resultList,answer); //숫자 유효검사
 
         return resultList;
+    }
+
+    private String printMsg(int i){
+        String[] mse = {"숫자 야구 게임을 시작합니다.",
+                "숫자를 입력해주세요 : "
+        };
+        return mse[i];
     }
 
 }
