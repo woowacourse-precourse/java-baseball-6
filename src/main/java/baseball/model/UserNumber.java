@@ -1,6 +1,8 @@
 package baseball.model;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserNumber {
     private final static int MINIMUM_NUM_IN_RANGE = 1;
@@ -35,6 +37,9 @@ public class UserNumber {
     }
 
     private List<Integer> StringToList(String number) {
-
+        return number.chars()
+                .map(Character::getNumericValue)
+                .boxed()
+                .collect(Collectors.toList());
     }
 }
