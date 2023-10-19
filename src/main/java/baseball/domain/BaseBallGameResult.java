@@ -29,4 +29,12 @@ public class BaseBallGameResult {
         return Objects.hash(strikeCount, ballCount);
     }
 
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
 }
