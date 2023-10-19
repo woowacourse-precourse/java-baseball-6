@@ -53,12 +53,28 @@ public class Application {
 
         BaseBallGame() {
             int nowRandomNum = 0, nowRandomNumIdx = 0;
+
+            while (nowRandomNumIdx < NUMBER_IDX) {
+                nowRandomNum = this.getNumber();
+                if (!Array.checkContains(number, nowRandomNum)) {
+                    number[nowRandomNumIdx++] = nowRandomNum;
+                }
+            }
+        }
+        BaseBallGame(String str) {
+            for (int i=0; i<NUMBER_IDX; i++) {
+                number[i] = Integer.parseInt(str.charAt(i)+"");
+            }
         }
 
         public static void init(BaseBallGame computerAnswer) {
             BaseBallGame userAnswer = BaseBallGame.getUserAnswer();
             GameResult gameResult = new GameResult();
 
+        }
+
+        private int getNumber() {
+            return pickNumberInRange(START_RANGE, END_RANGE);
         }
 
         private static BaseBallGame getUserAnswer() {
@@ -128,7 +144,9 @@ public class Application {
                 else if(this.ball == 0 && this.strike == 0)
                     System.out.println(NOTHING);
             }
-            else System.out.println(this.strike + "스트라이크"); // 3스트라이크
+            else {
+                System.out.println(this.strike + "스트라이크"); // 3스트라이크
+            }
         }
 
         void compareAnswer(BaseBallGame userAnswer, BaseBallGame computerAnswer) {
