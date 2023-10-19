@@ -1,6 +1,6 @@
 # Model
 - [ ] 볼의 숫자 위치 정보 비교 - BallPosition
-- [ ] 볼의 숫자 정보 비교 - BallNumber
+- [x] 볼의 숫자 정보 비교 - BallNumber
 - [ ] 숫자 정보, 위치 정보를 가지고 볼을 비교 - Ball
 - [ ] Ball 3개를 가져 볼, 스트라이크 수 계산 - Balls
 - [ ] 게임 결과를 저장 - GameResult
