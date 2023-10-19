@@ -47,10 +47,11 @@
      - Input 검증 클래스: InputValidator
      - Output 변환 클래스: GameResult
      - View 관련 메세지를 담은 Enum
-     - Exception Error 메세지를 담은 Enum
+     - Exception Error 메세지를 담화 Enum
    - GameManager: 게임의 시작, 진행, 끝, 재시작 같이 게임 진행을 담당하는 클래스
-   - GameService: 스트라이크, 볼에 관한 게임 로직을 담당하는 클래스
+   - GameService: 도메인(InputValidator, GameResult, BaseballNumbers)을 이용하여 결과를 반환하는 클래스
    - BaseballNumbers: 랜덤 숫자 생성, 숫자에 관한 로직을 담당하는 클래스
+   - GameResult: 스트라이크, 볼을 판단하고 반환하는 클래스
 
 
 - [x] 예외 상황 정리
@@ -60,19 +61,19 @@
         - 게임 재시작/종료시 1, 2가 아닌 다른 숫자를 입력하거나 다른 것을 입력했을 경우
 
 ### ✔️ 구현 기능(TODO)
-- [ ] View
-  - [ ] 게임 시작 문구 출력
-  - [ ] 게임 끝 문구 출력
-  - [ ] 숫자 입력 문구 출력
-  - [ ] 숫자 입력 기능
+- [x] View
+  - [x] 게임 시작 문구 출력
+  - [x] 게임 끝 문구 출력
+  - [x] 숫자 입력 문구 출력
+  - [x] 숫자 입력 기능
 - [ ] GameManger
 - [ ] GameService
 - [ ] BaseballNumbers
-- [ ] InputValidator
-  - [ ] 입력받은 숫자에 대한 유효성 검사 기능
-    - [ ] 3자리 숫자 유효성 검사(문자 x, 0이 들어가 있는지, 3자리가 맞는지, 중복된 숫자는 없는지)
-    - [ ] 게임 종료 숫자 유효성 검사(문자 x, 1 or 2를 제외한 모든 숫자 x, 1자리 숫자가 맞는지)
-- [ ] 에러 메세지 Enum
-- [ ] View 관련 메세지 Enum
+- [x] InputValidator
+  - [x] 입력받은 숫자에 대한 유효성 검사 기능
+    - [x] 3자리 숫자 유효성 검사(문자 x, 0이 들어가 있는지, 3자리가 맞는지, 중복된 숫자는 없는지)
+    - [x] 게임 종료 숫자 유효성 검사(문자 x, 1 or 2를 제외한 모든 숫자 x, 1자리 숫자가 맞는지)
+- [x] 에러 메세지 Enum
+- [x] View 관련 메세지 Enum
 
 
