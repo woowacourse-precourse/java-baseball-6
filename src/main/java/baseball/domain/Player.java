@@ -17,25 +17,47 @@ public class Player {
     }
 
     private List<Integer> initNumberList(PlayerType playerType){
-        switch (playerType){
+        return switch (playerType){
             case HUMAN-> createHumansNumberList();
             case COMPUTER-> createComputersNumberList();
-        }
-        return null;
+        };
+
     }
 
 //    사람의 숫자 셋팅
     private List<Integer> createHumansNumberList(){
         List<Integer> list = new ArrayList<>();
         String numberStr = Console.readLine();
+        int number = verifyEnteredValuesAndReturnForNumber(numberStr);
 
+        return numberToList(number);
+    }
+
+//    사용자가 입력한 값이 숫자이고 3자리인지 확인
+    private int verifyEnteredValuesAndReturnForNumber(String numberStr){
+        if(numberStr.length()!=3){
+           throw new IllegalArgumentException("입력하신 숫자의 형식이 잘못되었습니다");
+        }
+        int number = 0;
+        try {
+            number = Integer.parseInt(numberStr);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다");
+        }
+        return number;
+    }
+
+//    입력받은 숫자를 리스트로 반환
+    private List<Integer> numberToList(int number){
+        List<Integer> list = new ArrayList<Integer>();
+        while(number != 0) {
+            list.add(0,number%10);
+            number/=10;
+        }
         return list;
-    }
+    };
 
-    private boolean verifyEnteredValues(String numberStr){
 
-        return true;
-    }
 
 //    컴퓨터의 숫자 셋팅
     private List<Integer> createComputersNumberList(){
@@ -48,6 +70,8 @@ public class Player {
         }
         return computer;
     }
+
+
 
 
 
