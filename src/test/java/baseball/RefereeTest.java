@@ -17,4 +17,14 @@ class RefereeTest {
 
         assertThat(result).isEqualTo(1);
     }
+
+    @Test
+    public void 같은_수가_같은_자리에_있으면_스트라이크이다() {
+        List<Integer> computer = List.of(1, 2, 3);
+        List<Integer> number = List.of(1, 4, 3);
+
+        int result = Referee.countStrike(computer, number);
+
+        assertThat(result).isEqualTo(2);
+    }
 }
