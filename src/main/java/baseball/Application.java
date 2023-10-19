@@ -41,7 +41,15 @@ public class Application {
                         throw new IllegalArgumentException();
                     guess[i] = Character.getNumericValue(c);
                 }
-
+                /*
+                * 중복 숫자가 있는지 판단
+                */
+                for(int i=0; i<3; i++) {
+                    for(int j=0; j<3; j++) {
+                        if(i!=j && guess[i] == guess[j])
+                            throw new IllegalArgumentException();
+                    }
+                }
 
             }
 
