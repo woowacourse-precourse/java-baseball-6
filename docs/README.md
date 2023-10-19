@@ -45,8 +45,8 @@
 ### ComputerNumber
 컴퓨터 수를 저장하는 클래스
 
-- [ ] ComputerNumber() : computer 수 랜덤 생성한 뒤 저장
-- [ ] List<Integer> getNumber() : 컴퓨터 수 반환
+- [x] ComputerNumber() : computer 수 저장
+- [] List<Integer> getNumber() : 컴퓨터 수 반환
 
 ### UserNumber
 사용자 수의 유효성을 검사하고 저장하는 클래스
