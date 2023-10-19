@@ -7,7 +7,7 @@ import java.util.List;
 public class Balls {
     private static final String INVALID_DIGIT_NUMBER_MESSAGE = "세 자리 숫자를 입력해주세요";
     private static final String SEPARATOR = "";
-    private static final int BALLS_SIZE = 3;
+    public static final int BALLS_SIZE = 3;
 
     private final List<Ball> balls;
 
