@@ -80,7 +80,10 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         if (Console.readLine().equals("1")) {
             return false;
+        } else if (Console.readLine().equals("2")) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요!");
         }
-        return true;
     }
 }
