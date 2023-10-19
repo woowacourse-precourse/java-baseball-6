@@ -1,16 +1,17 @@
 package baseball;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Player {
 
-    private Set<Integer> expectedNumbers;
+    private List<Integer> expectedNumbers;
 
     public void changeExpectedNumbers(String numbers) {
         Set<Integer> notDuplicateNumbers = checkDuplicated(numbers);
         validateNumberSize(notDuplicateNumbers);
-        this.expectedNumbers = notDuplicateNumbers;
+        expectedNumbers.addAll(notDuplicateNumbers);
     }
 
     private Set<Integer> checkDuplicated(String numbers){
