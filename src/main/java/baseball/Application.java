@@ -1,18 +1,18 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.StringJoiner;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
         // for test
-        BaseballNumber t1 = new BaseballNumber("123");
-        BaseballNumber t2 = new BaseballNumber("253");
-        BaseballNumber t3 = new BaseballNumber("789");
-        BaseballNumber t4 = new BaseballNumber("789");
-
-        t1.compareTo(t2).print();
-        t2.compareTo(t3).print();
-        t3.compareTo(t4).print();
+        for (int i = 0; i < 100; i++) {
+            BaseballNumber computer = new BaseballNumber();
+            System.out.println(Arrays.toString(computer.values));
+        }
     }
 }
 
@@ -26,6 +26,17 @@ class BaseballNumber {
         // 3. 각 자리의 숫자가 서로 다른 수인지
         for (int i = 0; i < 3; i++) {
             this.values[i] = input.charAt(i);
+        }
+    }
+
+    public BaseballNumber() {
+        List<Integer> randomValues = new ArrayList<>();
+        while (randomValues.size() < 3) {
+            int randomValue = Randoms.pickNumberInRange(1, 9);
+            if (!randomValues.contains(randomValue)) randomValues.add(randomValue);
+        }
+        for (int i = 0; i < 3; i++) {
+            this.values[i] = randomValues.get(i);
         }
     }
 
