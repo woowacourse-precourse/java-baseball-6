@@ -23,13 +23,29 @@ public class BaseBall {
                 try {
                     throwInputError();
                 } catch (IllegalArgumentException e) {
-                    return false;
+                    return true;
                 }
             }
             createUserNumber(input);
 
             check(); // 결과 계산
             printResult(); // 결과 출력
+
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                input = readLine();
+
+                if (input.equals("2")) {
+                    return true;
+                } else if (!input.equals("1")) {
+                    try {
+                        throwInputError();
+                    } catch (IllegalArgumentException e) {
+                        return true;
+                    }
+                }
+            }
         }
     }
 
