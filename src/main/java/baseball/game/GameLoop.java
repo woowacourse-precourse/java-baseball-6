@@ -1,7 +1,6 @@
 package baseball.game;
 
 import baseball.context.BaseballContext;
-import baseball.game.BaseballGame;
 import baseball.game.dto.Baseball;
 import baseball.game.dto.BaseballMatchResults;
 import baseball.input.Input;
@@ -21,7 +20,8 @@ public class GameLoop {
     public void run() {
         while (baseballContext.isRunning()) {
             String balls = input.nextLine();
-            BaseballMatchResults matchResults = baseballGame.match(Baseball.of(balls), null);
+            BaseballMatchResults matchResults =
+                baseballGame.match(Baseball.of(baseballContext.getAnswer()), Baseball.of(balls));
         }
     }
 }
