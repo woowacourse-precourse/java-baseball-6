@@ -42,4 +42,16 @@ class BallsTest {
                     .isThrownBy(() -> new Balls(not3DigitNumber));
         }
     }
+
+    @DisplayName("Balls 를 받아 볼 개수를 판단할 수 있다")
+    @ParameterizedTest
+    @CsvSource({"123, 456, 0", "123, 123, 0", "123, 111, 2", "123, 231, 3"})
+    void JudgeBallCountIfPresentBalls(int computerNumber, int playerNumber, int expected) {
+        Balls computer = new Balls(computerNumber);
+        Balls player = new Balls(playerNumber);
+
+        int actual = computer.getBallCount(player);
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
