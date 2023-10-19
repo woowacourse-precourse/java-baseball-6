@@ -18,6 +18,6 @@ public class BallNumberTest {
         expacted.add(4);
         expacted.add(2);
         expacted.add(6);
-        assertTrue(ballNumber.ballnumber.equals(expacted));
+        assertTrue(ballNumber.ballNumber.equals(expacted));
     }
 }
