@@ -13,8 +13,8 @@ public class Player {
         List<Integer> playerInputBaseballNumber = new ArrayList<>();
         String[] playerInput = Console.readLine().split("");
 
-        for(int i = 0; i < 3; i++) {
-            playerInputBaseballNumber.add(Integer.parseInt(playerInput[i]));
+        for (String inputNumber : playerInput) {
+            playerInputBaseballNumber.add(Integer.parseInt(inputNumber));
         }
 
         validatePlayerInput(playerInputBaseballNumber);
