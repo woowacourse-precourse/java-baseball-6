@@ -9,6 +9,20 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        while(true){
+            displayGameStartMessage();
+            List<Integer> computer = generateComputerRandomThreeDigitNumber();
+
+            while(true){
+                List<Integer> userNumber = getUserGuessThreeDigitNumber();
+                if(evaluateGuessAndCheckForGameEnd(computer,userNumber)){//3스트라이크인 경우,
+                    break;
+                }
+            }
+            if(restartOrExit()==false){//종료
+                break;
+            }
+        }
 
     }
 
