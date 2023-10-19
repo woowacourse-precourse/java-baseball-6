@@ -14,10 +14,11 @@ public class ComputerController {
 
     private static List<Integer> generateRandomNumber() {
         List<Integer> randomNumberList = new ArrayList<>();
+        int newRandomNumber;
 
         while(randomNumberList.size() < 3) {
 
-            int newRandomNumber = Randoms.pickNumberInRange(1, 9);
+            newRandomNumber = Randoms.pickNumberInRange(1, 9);
 
             if (!randomNumberList.contains(newRandomNumber)) {
                 randomNumberList.add(newRandomNumber);
