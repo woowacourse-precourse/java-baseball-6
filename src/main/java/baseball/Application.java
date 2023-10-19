@@ -5,17 +5,27 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+class GameNumber {
+    List<Integer> numbers;
+
+    public GameNumber(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
+}
+
+
 public class Application {
 
-    static List<Integer> pickRandomNumbers() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+    static GameNumber pickComputerNumber() {
+        List<Integer> computerNumbers = new ArrayList<>();
+        while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
             }
         }
-        return computer;
+        return new GameNumber(computerNumbers);
     }
 
     static int parseInt(String target) {
@@ -36,16 +46,17 @@ public class Application {
         return user;
     }
 
-    static List<Integer> readUserNumbers() {
+    static GameNumber readUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        return convertUserInput(input);
+        List<Integer> userNumbers = convertUserInput(input);
+        return new GameNumber(userNumbers);
     }
 
     static void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computer = pickRandomNumbers();
-        List<Integer> user = readUserNumbers();
+        GameNumber computer = pickComputerNumber();
+        GameNumber user = readUserNumber();
     }
 
 
