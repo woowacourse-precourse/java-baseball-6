@@ -9,7 +9,6 @@ public class Game {
 
     private List<Integer> computer = new ArrayList<>();
 
-
     public Game() {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,6 +16,24 @@ public class Game {
                 computer.add(randomNumber);
             }
         }
+    }
+
+    public boolean play(List<Integer> number) {
+        int ballCount = countBall(number);
+
+        return false;
+    }
+
+    private int countBall(List<Integer> number) {
+        int count = 0;
+        for (int i = 0; i < number.size(); i++) {
+            for (int j = 0; j < computer.size(); j++) {
+                if (i != j && number.get(i).equals(computer.get(j))) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
 }
