@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -7,6 +9,17 @@ import java.util.regex.Pattern;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    }
+
+    // 기능: 게임 종료 후, 게임 재시작 여부
+    private static boolean isNoMoreGame() {
+        printRestartGameMessage();
+        String restartCommand = Console.readLine();
+        validateRestartCommandInput(restartCommand);
+        if (restartCommand.equals("2")) {
+            return true;
+        }
+        return false;
     }
 
     // 기능: 게임 재시작 입력 검증
