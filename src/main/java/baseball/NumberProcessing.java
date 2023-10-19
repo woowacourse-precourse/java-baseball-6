@@ -1,2 +1,4 @@
-package baseball;public class NumberProcessing {
+package baseball;
+
+public class NumberProcessing {
 }
