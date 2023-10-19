@@ -12,6 +12,7 @@ public class OutputView {
 
     public void printCountForBallsAndStrikes(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
             askForNumber();
             return;
         }
