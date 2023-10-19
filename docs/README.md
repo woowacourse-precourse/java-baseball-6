@@ -42,7 +42,7 @@
     - 입력값을 숫자 리스트에 추가
 
 
-- inputOneOrTwo
+- [x] inputOneOrTwo
   - 1 또는 2를 입력받는 메서드
   - 파라미터: 없음
   - 반환: 1일 경우 true, 2일 경우 true
