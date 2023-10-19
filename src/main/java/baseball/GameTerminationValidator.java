@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.BaseballRule.*;
+import static baseball.BaseballConstants.*;
 
 public class GameTerminationValidator implements Validator{
 

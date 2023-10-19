@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.BaseballRule.*;
+import static baseball.BaseballConstants.*;
 
 import java.util.HashSet;
 import java.util.Set;
