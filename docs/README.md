@@ -61,4 +61,4 @@
 
 - [ ] void printHint(int, int) : 힌트 출력
 - [x] void printStartMessage() : 게임 시작 메시지 출력
-- [ ] void printEndMessage() : 게임 종료 메시지 출력
+- [x] void printEndMessage() : 게임 종료 메시지 출력
