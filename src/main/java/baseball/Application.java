@@ -7,7 +7,7 @@ public class Application {
         Balls computerBalls = Balls.randomComputerBalls();
         while(true){
             Game game = new Game(0,0);
-            String userInput = game.userInput();
+            String userInput = Game.userInput();
             Balls userBalls = Balls.strToBalls(userInput);
 
             // 결과 출력
