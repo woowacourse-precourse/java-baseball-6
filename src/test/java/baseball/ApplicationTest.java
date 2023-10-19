@@ -3,12 +3,14 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -39,7 +41,29 @@ class ApplicationTest extends NsTest {
         assertThat(computerNumbersList).hasSize(3).doesNotHaveDuplicates()
                 .allMatch(i -> i > 0 && i < 10);
     }
-
+    @Test
+    void getUserNumbersList_정상작동_테스트() {
+        //given
+        String input = "123";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        //when
+        List<Integer> userNumbersList = Application.getUserNumbersList();
+        //then
+        assertThat(userNumbersList).containsExactly(1,2,3);
+    }
+    @Test
+    void getUserNumbersList_예외상황_테스트() {
+        //given
+        String input = "abc";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        //when
+        Throwable thrown = catchThrowable(Application::getUserNumbersList);
+        //then
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 입력 값이 1~9 사이 숫자로 이루어진 세자리 숫자가 아닙니다.");
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
