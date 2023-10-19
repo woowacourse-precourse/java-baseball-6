@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -40,6 +41,16 @@ class BaseBallNumberTest {
         NumberGenerator randomGenerator = (min, max) -> randomNumber;
 
         assertDoesNotThrow(() -> BaseBallNumber.generateRandomNumber(randomGenerator));
+    }
+
+    @DisplayName("야구 숫자가 같다면 같은 객체로 판단한다")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 9})
+    void 야구_숫자가_같다면_같은_객체로_판단한다(int number) {
+        BaseBallNumber baseBallNumber = BaseBallNumber.generateNumber(number);
+        BaseBallNumber expectedBaseBallNumber = BaseBallNumber.generateNumber(number);
+
+        assertThat(baseBallNumber).isEqualTo(expectedBaseBallNumber);
     }
 
 }
