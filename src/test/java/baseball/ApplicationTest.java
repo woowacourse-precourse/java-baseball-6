@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import hint.Hint;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Arrays;
@@ -14,7 +15,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import player.Player;
-import referee.Referee;
 
 class ApplicationTest extends NsTest {
     private final static InputStream systemIn = System.in;
@@ -84,10 +84,10 @@ class ApplicationTest extends NsTest {
         final List<Integer> computerBaseballNumber = List.of(1, 2, 3);
         final List<Integer> playerBaseballNumber = List.of(1, 4, 3);
         final int[] score = new int[]{2, 0};
-        Referee referee = new Referee();
+        Hint hint = new Hint();
 
         //when
-        int[] result = referee.calculateStrikeAndBall(computerBaseballNumber, playerBaseballNumber);
+        int[] result = hint.calculateStrikeAndBall(computerBaseballNumber, playerBaseballNumber);
 
         //then
         assertThat(result).isEqualTo(score);

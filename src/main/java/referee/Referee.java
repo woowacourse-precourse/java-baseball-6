@@ -1,40 +1,24 @@
 package referee;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
+import hint.Hint;
 import player.Computer;
 import player.Player;
 
 public class Referee {
     Computer computer;
     Player player;
-
-    public int[] calculateStrikeAndBall(List<Integer> computerBaseballNumber, List<Integer> playerBaseballNumber) {
-        int strike = 0;
-        int ball = 0;
-
-        for (int i = 0; i < computerBaseballNumber.size(); i++) {
-            if (computerBaseballNumber.get(i).equals(playerBaseballNumber.get(i))) {
-                strike++;
-                continue;
-            }
-
-            if (computerBaseballNumber.contains(playerBaseballNumber.get(i))) {
-                ball++;
-            }
-        }
-
-        return new int[]{strike, ball};
-    }
+    Hint hint;
 
     public void playBall() {
         computer = new Computer();
         player = new Player();
+        hint = new Hint();
 
         do {
             System.out.print("숫자를 입력해주세요 : ");
             player.inputPlayerNumber();
-            int[] score = calculateStrikeAndBall(player.getPlayerBaseballNumber(),
+            int[] score = hint.calculateStrikeAndBall(player.getPlayerBaseballNumber(),
                     computer.getComputerBaseballNumber());
             int strike = score[0];
             int ball = score[1];
