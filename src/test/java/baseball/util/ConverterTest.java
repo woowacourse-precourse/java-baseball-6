@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class ConverterTest {
 
     @Test
-    void seperateTest () throws Exception {
+    void seperateTest () {
         //given
         String input = "897";
         Converter converter = new Converter(input);

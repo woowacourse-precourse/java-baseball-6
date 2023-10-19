@@ -1,13 +1,13 @@
 package baseball.util;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import baseball.domain.Manager;
 import org.junit.jupiter.api.Test;
 
 class ValidatorTest {
     @Test
-    void isValidSizeTest() throws Exception {
+    void isValidSizeTest() {
         //given
         String input = "4241";
         int size = 3;
@@ -16,15 +16,13 @@ class ValidatorTest {
         Validator validator = new Validator();
 
         //then
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            validator.checkValid(input, size);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> validator.checkValid(input, size));
 
         assertEquals("올바른 자리 수의 값을 입력하세요.", exception.getMessage());
     }
 
     @Test
-    void isIntegerTest() throws Exception {
+    void isIntegerTest() {
         //given
         String inputWithString = "1a2";
         String inputWithZero = "102";
@@ -34,9 +32,8 @@ class ValidatorTest {
         Validator validator = new Validator();
 
         //then
-        IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> {
-            validator.checkValid(inputWithString, size);
-        });
+        IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class,
+                () -> validator.checkValid(inputWithString, size));
 
         assertEquals("1부터 9까지의 수를 입력하세요.", exception1.getMessage());
 
@@ -47,7 +44,7 @@ class ValidatorTest {
     }
 
     @Test
-    void isDuplicateTest() throws Exception {
+    void isDuplicateTest() {
         //given
         String input = "112";
         int size = 3;

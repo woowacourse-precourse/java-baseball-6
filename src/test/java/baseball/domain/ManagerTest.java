@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class ManagerTest {
 
     @Test
-    void getResultTest () throws Exception {
+    void getResultTest () {
         //given
         String input = "1";
 

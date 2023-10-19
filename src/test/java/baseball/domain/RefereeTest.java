@@ -8,12 +8,10 @@ import org.junit.jupiter.api.Test;
 
 class RefereeTest {
     @Test
-    void judgeTest() throws Exception {
+    void judgeTest() {
         //given
         List<Integer> computerNumbers = List.of(1, 9, 2);
         List<Integer> userNumbers = List.of(2, 9, 4);
-        int ball = 1;
-        int strike = 1;
 
         //when
         Referee referee = new Referee(computerNumbers, userNumbers);
