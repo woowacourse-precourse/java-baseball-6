@@ -54,6 +54,7 @@ public class Game {
             // 딜러의 결과값 출력
             if(printResult(gameResult)){
                 printSuccess();
+                inputRetry();
             }
 
             // 성공 여부 체크 후 return
@@ -96,4 +97,8 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    private void inputRetry(){
+        String userInput = user.inputRestartNumber();
+        validation.checkRetryInput(userInput);
+    }
 }
