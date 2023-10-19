@@ -2,13 +2,15 @@ package baseball.domain;
 
 public class Computer {
     
-    private final Baseball baseball;
+    public static final int BASEBALL_NUMBERS_SIZE = 3;
+    
+    private String number;
     
     public Computer(String number) {
-        this.baseball = new Baseball(number);
+        this.number = number;
     }
     
     public String getNumber() {
-        return baseball.getNumber();
+        return number;
     }
 }
