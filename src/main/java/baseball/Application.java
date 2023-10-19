@@ -2,12 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
@@ -15,16 +14,14 @@ public class Application {
     static int[] computer = new int[3];
     static int[] user = new int[3];
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+    public static void main(String[] args) {
         while (!gameOver) {
             gameStart();
 
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
 
-                String input = br.readLine();
+                String input = readLine();
 
                 if (!isValidNumber(input)) {
                     try {
