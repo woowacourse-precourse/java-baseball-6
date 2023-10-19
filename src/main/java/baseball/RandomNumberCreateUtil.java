@@ -11,6 +11,10 @@ public class RandomNumberCreateUtil {
     public static final int MIN_RANDOM_NUMBER = 1;
     public static final int MAX_RANDOM_NUMBER = 9;
 
+    private RandomNumberCreateUtil() {
+        throw new IllegalStateException("RandomNumberCreateUtil class Error");
+    }
+
     public static List<Integer> createBaseballNumbers(){
         List<Integer> baseballNumbers = new ArrayList<>();
         while (baseballNumbers.size() < MAX_BASEBALL_NUMBER_SIZE) {
