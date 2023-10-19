@@ -3,7 +3,7 @@ package baseball.game;
 import baseball.context.BaseballContext;
 
 import baseball.game.dto.Baseball;
-import baseball.game.dto.BaseballMatchResults;
+import baseball.game.dto.BaseballScore;
 import baseball.io.input.Input;
 
 public class GameLoop {
@@ -34,7 +34,7 @@ public class GameLoop {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (baseballContext.isRunning()) {
             String balls = input.nextLine();
-            BaseballMatchResults matchResults =
+            BaseballScore matchResults =
                 baseballGame.match(Baseball.of(baseballContext.getAnswer()), Baseball.of(balls));
             String transformed = baseballContext.transformer(matchResults);
             System.out.println(transformed);

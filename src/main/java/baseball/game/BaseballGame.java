@@ -1,11 +1,11 @@
 package baseball.game;
 
 import baseball.game.dto.Baseball;
-import baseball.game.dto.BaseballMatchResults;
+import baseball.game.dto.BaseballScore;
 
 public class BaseballGame {
 
-    public BaseballMatchResults match(Baseball answerBaseball, Baseball inputBaseBall) {
+    public BaseballScore match(Baseball answerBaseball, Baseball inputBaseBall) {
         int length = answerBaseball.size();
         int ballCount = 0;
         int strikeCount = 0;
@@ -23,6 +23,6 @@ public class BaseballGame {
             }
             ballCount += 1;
         }
-        return BaseballMatchResults.of(ballCount, strikeCount);
+        return BaseballScore.of(ballCount, strikeCount);
     }
 }

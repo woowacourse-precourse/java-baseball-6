@@ -1,14 +1,14 @@
 package baseball.context;
 
-import baseball.game.dto.BaseballMatchResults;
-import baseball.game.transform.BaseballMatchResultsStringTransformer;
+import baseball.game.dto.BaseballScore;
+import baseball.game.transform.BaseballScoreToStringTransformer;
 import baseball.game.transform.Transformer;
 
 public class BaseballContext {
 
     private GameState gameState;
     private final Answer answer;
-    private final Transformer<BaseballMatchResults, String> transformer;
+    private final Transformer<BaseballScore, String> transformer;
 
     public BaseballContext() {
         this(new Answer());
@@ -21,7 +21,7 @@ public class BaseballContext {
     public BaseballContext(GameState initialState, Answer answer) {
         this.gameState = initialState;
         this.answer = answer;
-        this.transformer = new BaseballMatchResultsStringTransformer();
+        this.transformer = new BaseballScoreToStringTransformer();
     }
 
     public void finish() {
@@ -40,7 +40,7 @@ public class BaseballContext {
         answer.regenerateAnswer();
     }
 
-    public String transformer(BaseballMatchResults results) {
+    public String transformer(BaseballScore results) {
         return transformer.transform(results);
     }
 }

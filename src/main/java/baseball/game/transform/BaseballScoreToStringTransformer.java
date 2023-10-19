@@ -1,17 +1,17 @@
 package baseball.game.transform;
 
-import baseball.game.dto.BaseballMatchResults;
+import baseball.game.dto.BaseballScore;
 
-public class BaseballMatchResultsStringTransformer implements Transformer<BaseballMatchResults, String> {
+public class BaseballScoreToStringTransformer implements Transformer<BaseballScore, String> {
 
     @Override
-    public String transform(BaseballMatchResults baseballMatchResults) {
-        if (baseballMatchResults.isEmpty()) {
+    public String transform(BaseballScore baseballScore) {
+        if (baseballScore.isEmpty()) {
             return "낫싱";
         }
         StringBuilder stringBuilder = new StringBuilder();
-        int ballCount = baseballMatchResults.ballCount();
-        int strikeCount = baseballMatchResults.strikeCount();
+        int ballCount = baseballScore.ballCount();
+        int strikeCount = baseballScore.strikeCount();
         boolean isNeedSpace = ballCount > 0;
         if (ballCount > 0) {
             stringBuilder.append(ballCount).append("볼");
