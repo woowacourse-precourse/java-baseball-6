@@ -22,7 +22,7 @@ public class BaseBallGame {
     public void run() {
         view.printStart();
 
-        Boolean continueGame = Boolean.TRUE;
+        boolean continueGame = Boolean.TRUE;
 
         while (continueGame) {
             Numbers answerNumbers = Numbers.create(computer.createNumberList());
