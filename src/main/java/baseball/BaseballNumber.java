@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -8,14 +9,56 @@ import java.util.List;
 //숫자 야구 게임의 컴퓨터의 사용자의 수를 위한 클래스
 public class BaseballNumber {
     private List<Integer> number = new ArrayList<>(3);
-    public BaseballNumber(List<Integer> number){
+
+    public BaseballNumber(List<Integer> number) {
         findException(number);
         this.number = number;
     }
 
-    public static BaseballNumber initializeUserNumber() {
-        
 
+    //지우기
+    @Override
+    public String toString() {
+        return "BaseballNumber{" +
+                "number=" + number +
+                '}';
+    }
+    public static BaseballNumber initializeUserNumber() {
+        List<Integer> number = new ArrayList<>();
+        String input = Console.readLine();
+
+        isInputOnlyNumber(input);
+
+        List<Integer> numberByList=stringToList(input);
+        System.out.println(numberByList);
+        return new BaseballNumber(numberByList);
+    }
+
+    private static List<Integer> stringToList(String input) {
+        int inputToInt = Integer.parseInt(reverseString(input));
+        List<Integer> inputList = new ArrayList<Integer>();
+        while (inputToInt > 0) {
+            inputList.add(inputToInt % 10);
+            inputToInt /= 10;
+        }
+        return inputList;
+    }
+
+    private static String reverseString(String str) {
+        StringBuilder stringBuffer = new StringBuilder(str);
+        String reverseStr = stringBuffer.reverse().toString();
+        return reverseStr;
+    }
+
+    //예외발생시 프로그램이 종료되는지 확인
+    private static boolean isInputOnlyNumber(String input) {
+        try {
+            int inputToInt = Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            System.out.println("입력문자는 숫자만 가능합니다.");
+            return false;
+        }
     }
 
     private void findException(List<Integer> number) {
@@ -26,7 +69,8 @@ public class BaseballNumber {
             throw new IllegalArgumentException("서로 같은 숫자들은 입력될 수 없습니다.");
         }
     }
-//
+
+    //
 //
 //    @Override
 //    public String toString() {
