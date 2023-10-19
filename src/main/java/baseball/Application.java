@@ -15,6 +15,27 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    // 기능: 힌트 얻기
+    private static String getHint(List<Integer> computerBalls, List<Integer> playerBalls) {
+        if (isNothing(computerBalls, playerBalls)) {
+            return "낫싱";
+        }
+        int strikeCount = getStrikeCount(computerBalls, playerBalls);
+        int ballCount = getBallCount(computerBalls, playerBalls);
+        return getResult(ballCount, strikeCount);
+    }
+
+    private static String getResult(int ballCount, int strikeCount) {
+        StringBuilder result = new StringBuilder();
+        if (ballCount > 0) {
+            result.append(String.format("%d볼 ", ballCount));
+        }
+        if (strikeCount > 0) {
+            result.append(String.format("%d스트라이크", strikeCount));
+        }
+        return result.toString().trim();
+    }
+
     // 기능: 같은 수가 전혀 없으면 낫싱
     private static boolean isNothing(List<Integer> computerBalls, List<Integer> playerBalls) {
         return computerBalls.stream()
