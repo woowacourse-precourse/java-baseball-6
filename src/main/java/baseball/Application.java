@@ -101,6 +101,10 @@ public class Application {
         if (inputString.contains("0")) {
             throw new IllegalArgumentException();
         }
+        // 사용자 인풋에 동일 숫자 존재시 예외 발생
+        if (isDuplicated(inputString)) {
+            throw new IllegalArgumentException();
+        }
         // int로 파싱 불가능하면 예외 발생
         try {
             number = Integer.parseInt(inputString);
@@ -135,22 +139,26 @@ public class Application {
             if (numberString.contains("0")){
                 continue;
             }
-            // 중복 숫자가 존재하면 다시 뽑기
-            int[] numberCount = new int[10];
-            boolean stopFlag = false;
-            for (int idx=0; idx<numberString.length(); idx++) {
-                int element = numberString.charAt(idx) - '0';
-                if (++numberCount[element] >= 2) {
-                    stopFlag = true;
-                    break;
-                };
-            }
-            if (stopFlag) {
+            if (isDuplicated(numberString)) {
                 continue;
             }
             // 다시 뽑기 조건에 해당하지 않는 경우, while문을 벗어난다.
             break;
         }
         return pickedNumber;
+    }
+
+    private static boolean isDuplicated(String numberString) {
+        // 중복 숫자가 존재하면 다시 뽑기
+        int[] numberCount = new int[10];
+        boolean stopFlag = false;
+        for (int idx = 0; idx< numberString.length(); idx++) {
+            int element = numberString.charAt(idx) - '0';
+            if (++numberCount[element] >= 2) {
+                stopFlag = true;
+                break;
+            };
+        }
+        return stopFlag;
     }
 }
