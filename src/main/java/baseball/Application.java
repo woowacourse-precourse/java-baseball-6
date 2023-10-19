@@ -15,8 +15,6 @@ public class Application {
 
         String userInput = Console.readLine();
         NumberValidator.assertNumberValue(userInput);
-
-        int userNumber = Integer.parseInt(userInput);
-        NumberValidator.assertDigitLength(userNumber, PLAY_NUMBER_DIGIT);
+        NumberValidator.assertDigitLength(userInput, PLAY_NUMBER_DIGIT);
     }
 }

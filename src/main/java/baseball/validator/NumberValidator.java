@@ -12,14 +12,10 @@ public class NumberValidator {
         return input.matches("^[1-9]+$");
     }
 
-    public static void assertDigitLength(final int inputNumber, final int expectedDigitLength) {
-        if (!isStringLengthEqualToExpectedLength(numberToString(inputNumber), expectedDigitLength)) {
+    public static void assertDigitLength(final String inputNumber, final int expectedDigitLength) {
+        if (!isStringLengthEqualToExpectedLength(inputNumber, expectedDigitLength)) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private static String numberToString(final int number) {
-        return String.valueOf(number);
     }
 
     private static boolean isStringLengthEqualToExpectedLength(final String input, final int expectedLength) {
