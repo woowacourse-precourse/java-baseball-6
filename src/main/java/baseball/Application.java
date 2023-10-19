@@ -4,9 +4,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     static final int DIGIT = 3;
@@ -14,6 +12,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.\n");
         List<Integer> pickedList = selectDigitNumbers(DIGIT);
         String userInput = tryAnswer();
+       checkAnswer(userInput, pickedList);
     }
 
     public static List<Integer> selectDigitNumbers(int digit){
@@ -41,5 +40,36 @@ public class Application {
         boolean isDuplicate = Arrays.stream(userInput.split("")).distinct().count() != userInput.split("").length;
         boolean hasZero = userInput.contains("0");
         if(userInput.length() != 3 || isDuplicate || hasZero) throw new Exception();
+    }
+
+    public static void checkAnswer(String candidate, List<Integer> pickedList) {
+        Map<String, Integer> resultMap = new HashMap<>();
+        int[] parsedIntegerArray = Arrays.stream(candidate.split("")).mapToInt(Integer::parseInt).toArray();
+        for(int i = 0; i < parsedIntegerArray.length; i++){
+            if(pickedList.contains(parsedIntegerArray[i])){
+                if(pickedList.get(i) == parsedIntegerArray[i]){
+                    resultMap.put("strike", resultMap.containsKey("strike")? resultMap.get("strike")+1 : 1);
+                }else{
+                    resultMap.put("ball", resultMap.containsKey("ball")? resultMap.get("ball")+1 : 1);
+                }
+            }else{
+                continue;
+            }
+        }
+        printAnswer(resultMap);
+    }
+    public static void printAnswer(Map map){
+        String strike = "";
+        String ball = "";
+        if(map.isEmpty()){
+            System.out.println("낫싱");
+        }
+        if(map.containsKey("strike")){
+            strike = map.get("strike") + "스트라이크";
+        }
+        if(map.containsKey("ball")){
+            ball = map.get("ball") + "볼";
+        }
+        System.out.println(ball+" "+strike);
     }
 }
