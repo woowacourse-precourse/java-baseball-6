@@ -2,6 +2,7 @@ package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
@@ -23,5 +24,18 @@ public class GameTest {
         Game game = new Game(new RandomBallsGenerator());
         game.end();
         assertEquals(game.getGameState(), GameState.OFF);
+    }
+
+    @Test
+    void 힌트_테스트() {
+        Game game = new Game(new TestGenerator());
+        game.start();
+        assertEquals(game.hint(Balls.from(List.of(1, 2, 3))), String.format("3%s", Hint.STRIKE.value()));
+    }
+    private class TestGenerator implements BallsGenerator {
+        @Override
+        public Balls generateBalls() {
+            return Balls.from(List.of(1, 2, 3));
+        }
     }
 }
