@@ -33,7 +33,7 @@ public class CompareUserWithComputer {
 
     private void countBallNum(){
         for (int i = 0; i < userNumber.length(); i++) {
-            if(computerNumber.contains(String.valueOf(userNumber.charAt(i)))){
+            if(userNumber.charAt(i) != computerNumber.charAt(i) && computerNumber.contains(String.valueOf(userNumber.charAt(i)))){
                 this.ballNum++;
             }
         }
