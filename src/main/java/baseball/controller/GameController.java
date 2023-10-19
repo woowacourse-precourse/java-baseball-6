@@ -52,4 +52,12 @@ public class GameController {
 
         return userAnswer(input);
     }
+
+    public boolean userAnswer(String input) {
+        if (input.equals(RESTART_FLAG)) { // 1
+            return true;
+        } else if (input.equals(END_FLAG)) { // 2
+            return false;
+        }
+    }
 }
