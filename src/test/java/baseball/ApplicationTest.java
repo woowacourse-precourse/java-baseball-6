@@ -30,6 +30,10 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        Application.main(new String[]{});
+        try {
+            Application.main(new String[]{});
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
