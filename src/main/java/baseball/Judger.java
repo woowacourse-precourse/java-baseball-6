@@ -30,6 +30,7 @@ public class Judger {
         else {
             System.out.println(this.score[1] + "볼");
         }
+        checkGameEnd();
     }
 
     private int[] checkStrike(List<Integer> human, List<Integer> computer){
@@ -58,5 +59,10 @@ public class Judger {
         if(this.score[0] == 0 && this.score[1] == 0){
             this.score[2] = 1;
         }
+    }
+
+    private void checkGameEnd() {
+        if(this.score[0] != 3) return;
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
