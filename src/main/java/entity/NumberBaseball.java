@@ -75,12 +75,12 @@ public class NumberBaseball {
         return result;
     }
 
-    public boolean isNothing() {
-        return countStrike() + countBall() == 0;
+    public boolean isNothing(String numbers) {
+        return countStrike(numbers) + countBall(numbers) == 0;
     }
 
-    public boolean isPerfect() {
-        return countStrike() == 3;
+    public boolean isPerfect(String numbers) {
+        return countStrike(numbers) == 3;
     }
 
 }

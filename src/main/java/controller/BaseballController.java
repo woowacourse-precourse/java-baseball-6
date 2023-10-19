@@ -12,19 +12,25 @@ public class BaseballController {
     }
 
     public void getUserNumber() {
-        String userInput = InputView.getUserInput();
         NumberBaseball userNumberBaseball = new NumberBaseball();
-        userNumberBaseball.isValid(userInput);
-        printResult(userNumberBaseball);
+        while (true) {
+            String userInput = InputView.getUserInput();
+            userNumberBaseball.isValid(userInput);
+            if (userNumberBaseball.isPerfect(userInput)) {
+                break;
+            }
+            printResult(userNumberBaseball, userInput);
+
+        }
     }
 
-    private void printResult(NumberBaseball baseball) {
-        if (baseball.isNothing()) {
+    private void printResult(NumberBaseball baseball, String userInput) {
+        if (baseball.isNothing(userInput)) {
             OutputView.printNothing();
         }
 
-        int ballCount = baseball.countBall();
-        int strikeCount = baseball.countStrike();
+        int ballCount = baseball.countBall(userInput);
+        int strikeCount = baseball.countStrike(userInput);
 
         OutputView.printBallCount(ballCount);
         OutputView.printStrikeCount(strikeCount);
