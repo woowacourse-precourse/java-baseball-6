@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,5 +36,12 @@ public class BaseBallTest {
     void 게임시작_메시지_출력() {
         Application.printStartMessage();
         assertThat(output()).contains("숫자 야구 게임을 시작합니다.");
+    }
+
+    @Test
+    void 컴퓨터가_랜덤으로_숫자_생성하기() {
+        List<Integer> expected = List.of(1, 2, 3);
+        List<Integer> actual = List.of(1, 2, 4);
+        assertThat(actual).isEqualTo(expected);
     }
 }
