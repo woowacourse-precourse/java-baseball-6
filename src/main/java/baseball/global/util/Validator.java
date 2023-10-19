@@ -21,10 +21,14 @@ public class Validator {
 	}
 
 	public static void validateNumbersFormat(String[] numbers) {
+		for (String number : numbers) {
+			validateNumberFormat(number);
+		}
+	}
+
+	public static void validateNumberFormat(String number) {
 		try {
-			for (String number : numbers) {
-				Integer.parseInt(number);
-			}
+			Integer.parseInt(number);
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException(NUMBER_FORMAT_ERROR_MESSAGE);
 		}
