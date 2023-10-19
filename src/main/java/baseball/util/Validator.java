@@ -6,13 +6,13 @@ import java.util.List;
 
 public class Validator {
 
-    public Validator(String input, int size) {
+    public void checkValid(String input, int size) {
         isValidSize(input, size);
         isInteger(input);
         isDuplicate(input);
     }
 
-    public void isValidSize(String input, int size) throws IllegalArgumentException{
+    private void isValidSize(String input, int size) throws IllegalArgumentException{
         if (input.length() != size) {
             throw new IllegalArgumentException("올바른 자리 수의 값을 입력하세요.");
         }
