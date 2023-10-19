@@ -2,9 +2,9 @@ package baseball.domain;
 
 import java.util.Objects;
 
+import static baseball.utils.Constants.*;
+
 public class Ball {
-    private static final int MIN_BALL_NUMBER = 1;
-    private static final int MAX_BALL_NUMBER = 9;
     private static final int MIN_POSITION = 1;
     private static final int MAX_POSITION = 3;
 

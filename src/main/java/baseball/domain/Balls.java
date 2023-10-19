@@ -1,13 +1,13 @@
 package baseball.domain;
 
+import baseball.utils.Constants;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
 public class Balls {
-    public static final int BALLS_SIZE = 3;
-
     private final List<Ball> balls;
 
     public Balls(List<Integer> numbers) {
@@ -26,7 +26,7 @@ public class Balls {
     }
 
     private boolean isInvalidSize(List<Integer> numbers) {
-        return numbers.size() != BALLS_SIZE;
+        return numbers.size() != Constants.BALLS_SIZE;
     }
 
     private boolean hasDuplicatedNumber(List<Integer> numbers) {
