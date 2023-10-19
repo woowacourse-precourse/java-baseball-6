@@ -12,5 +12,6 @@ public class MessageConstant {
     public static final String VALIDATE_SIZE_MESSAGE = "크기가 " + NumberConstant.INPUT_SIZE + "이 아닙니다.";
     public static final String VALIDATE_RANGE_MESSAGE =
             NumberConstant.MIN_NUMBER + "에서 " + NumberConstant.MAX_NUMBER + "까지의 숫자만 입력할 수 있습니다,";
+    public static final String VALIDATE_DUPLICATION_MESSAGE = "중복되는 숫자가 있습니다.";
 
 }

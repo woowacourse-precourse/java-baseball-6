@@ -12,6 +12,7 @@ public class NumberValidation {
         List<Integer> userNumber = changeToList(inputNumber);
         validateNumberSize(userNumber);
         validateNumberRange(userNumber);
+        validateDuplication(userNumber);
 
     }
 
@@ -36,6 +37,10 @@ public class NumberValidation {
         }
     }
 
-
+    public void validateDuplication(List<Integer> userNumber){
+        if(userNumber.size() != userNumber.stream().distinct().count()){
+            throw new IllegalArgumentException(MessageConstant.VALIDATE_DUPLICATION_MESSAGE);
+        }
+    }
 
 }
