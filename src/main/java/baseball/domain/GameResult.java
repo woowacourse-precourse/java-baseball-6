@@ -20,4 +20,8 @@ public final class GameResult {
   public int getStrikeCount() {
     return strikeCount;
   }
+
+  public boolean isClear() {
+    return strikeCount == 3;
+  }
 }
