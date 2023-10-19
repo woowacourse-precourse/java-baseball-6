@@ -76,12 +76,9 @@ public class Application {
                         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                         break;
                     }
-                } catch (NumberFormatException e) {
+                }
+                catch (NumberFormatException e) {
                     throw new IllegalArgumentException("숫자를 입력하세요. 예외 강제 발생.");
-                } catch (IllegalArgumentException e) {
-                    System.out.println("에러 메시지 : " + e.getMessage());
-                    e.printStackTrace();
-                    return; // 강제 종료
                 }
             }
             //end
