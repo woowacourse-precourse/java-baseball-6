@@ -65,6 +65,6 @@
 ### OutputView
 사용자에게 출력하여 보여주는 클래스
 
-- [ ] void printHint(int, int) : 힌트 출력
+- [ ] void printHint(List<Integer>) : 힌트 출력
 - [x] void printStartMessage() : 게임 시작 메시지 출력
 - [x] void printEndMessage() : 게임 종료 메시지 출력
