@@ -15,7 +15,7 @@ public class RandomNum {
     public List<Integer> generateNum() {
         num.clear();
         while (num.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
             if (!num.contains(randomNumber)) {
                 num.add(randomNumber);
             }

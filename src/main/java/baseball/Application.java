@@ -1,6 +1,8 @@
 package baseball;
 
 
+import baseball.controller.Restart;
+import baseball.controller.UserNumber;
 import baseball.service.RandomNum;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -13,37 +15,35 @@ import static baseball.service.GuessNum.getHint;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다");
-        RandomNum randomNumGenerator = new RandomNum();
 
-        while (true) {
-            List<Integer> generatedNumbers = randomNumGenerator.generateNum(); // 새로운 숫자 생성
-            System.out.println(generatedNumbers);
+        RandomNum randomNumGenerator = new RandomNum();
+        UserNumber userNumber = new UserNumber();
+        RandomNum randomNum = new RandomNum();
+        Restart restart = new Restart();
+
+        boolean startNum = true;
+
+        while (startNum) {
+            List<Integer> randomNumber = randomNumGenerator.generateNum();
+            List<Integer> userInputNumbers = userNumber.userInputNumbers();
+            System.out.println(randomNumber);
+            System.out.println(userInputNumbers);
 
             while (true) {
-                List<Integer> userInputNumbers = new ArrayList<>();
-                System.out.print("숫자를 입력해주세요 : ");
-                String number = Console.readLine();
-
-                for (char c : number.toCharArray()) {
-                    userInputNumbers.add(Character.getNumericValue(c));
-                }
-
-                if (userInputNumbers.equals(generatedNumbers)) {
+                if (userNumber.equals(randomNum)) {
                     System.out.println("3스트라이크");
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    startNum = restart.Restart();
                     break;
-                } else {
-                    System.out.println(getHint(generatedNumbers, userInputNumbers));
-                    userInputNumbers.clear();
                 }
-            }
-            String stopNum = Console.readLine();
-            if (stopNum.equals("1")) {
-                continue;
-            } else if (stopNum.equals("2")) {
-                break;
+                else{
+                    System.out.println(getHint(randomNumber, userInputNumbers));
+
+                }
             }
         }
+
     }
 }
+
+
+
