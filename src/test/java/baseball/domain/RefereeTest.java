@@ -19,7 +19,8 @@ public class RefereeTest {
             List<Integer> computerBaseballs,
             List<Integer> userBaseballs,
             int strikeCount,
-            int ballCount
+            int ballCount,
+            boolean isClear
     ) {
         // when
         final RoundResult result = Referee.judge(computerBaseballs, userBaseballs);
@@ -27,21 +28,22 @@ public class RefereeTest {
         // then
         assertAll(
                 () -> assertThat(result.strikeCount()).isEqualTo(strikeCount),
-                () -> assertThat(result.ballCount()).isEqualTo(ballCount)
+                () -> assertThat(result.ballCount()).isEqualTo(ballCount),
+                () -> assertThat(result.isClear()).isEqualTo(isClear)
         );
     }
 
     private static Stream<Arguments> eachPossibleCase() {
         return Stream.of(
-                Arguments.of(List.of(1, 2, 3), List.of(4, 5, 6), 0, 0), // nothing
-                Arguments.of(List.of(1, 2, 3), List.of(4, 5, 1), 0, 1), // 1 ball
-                Arguments.of(List.of(1, 2, 3), List.of(2, 1, 5), 0, 2), // 2 ball
-                Arguments.of(List.of(1, 2, 3), List.of(3, 1, 2), 0, 3), // 3 ball
-                Arguments.of(List.of(1, 2, 3), List.of(1, 4, 5), 1, 0), // 1 strike
-                Arguments.of(List.of(1, 2, 3), List.of(1, 2, 5), 2, 0), // 2 strike
-                Arguments.of(List.of(1, 2, 3), List.of(1, 2, 3), 3, 0), // 3 strike (clear)
-                Arguments.of(List.of(1, 2, 3), List.of(1, 3, 5), 1, 1), // 1 strike + 1 ball
-                Arguments.of(List.of(1, 2, 3), List.of(1, 3, 2), 1, 2) // 1 strike + 2 ball
+                Arguments.of(List.of(1, 2, 3), List.of(4, 5, 6), 0, 0, false), // nothing
+                Arguments.of(List.of(1, 2, 3), List.of(4, 5, 1), 0, 1, false), // 1 ball
+                Arguments.of(List.of(1, 2, 3), List.of(2, 1, 5), 0, 2, false), // 2 ball
+                Arguments.of(List.of(1, 2, 3), List.of(3, 1, 2), 0, 3, false), // 3 ball
+                Arguments.of(List.of(1, 2, 3), List.of(1, 4, 5), 1, 0, false), // 1 strike
+                Arguments.of(List.of(1, 2, 3), List.of(1, 2, 5), 2, 0, false), // 2 strike
+                Arguments.of(List.of(1, 2, 3), List.of(1, 2, 3), 3, 0, true), // 3 strike (clear)
+                Arguments.of(List.of(1, 2, 3), List.of(1, 3, 5), 1, 1, false), // 1 strike + 1 ball
+                Arguments.of(List.of(1, 2, 3), List.of(1, 3, 2), 1, 2, false) // 1 strike + 2 ball
         );
     }
 }
