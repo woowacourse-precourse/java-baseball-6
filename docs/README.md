@@ -35,7 +35,7 @@
 컴퓨터 수와 사용자 수를 비교하여 스트라이크 수와 볼 수를 저장하는 클래스
 
 - [x] HintCalculator(List <Integer>, List <Integer>) : user, computer 비교 후 ball, strike count 저장
-- [ ] boolean isThreeStrike() : 3스트라이크인지 반환
+- [x] boolean isThreeStrike() : 3스트라이크인지 반환
 
 ### RandomListMaker
 랜덤 숫자 리스트를 생성하고 반환해주는 클래스

@@ -4,6 +4,7 @@ import java.util.List;
 
 public class HintCalculator {
     private final static int LIST_SIZE = 3;
+    private final static int SUCCESS_STRIKE_COUNT = 3;
     private int strikeCnt = 0;
     private int ballCnt = 0;
 
@@ -16,6 +17,10 @@ public class HintCalculator {
                 ++ballCnt;
             }
         }
+    }
+
+    public boolean isThreeStrike(){
+        return strikeCnt == SUCCESS_STRIKE_COUNT;
     }
 
     private boolean isStrike(Integer userNumber, Integer computerNumber) {
