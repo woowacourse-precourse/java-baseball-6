@@ -49,4 +49,8 @@ public class Balls {
     public boolean isContain(Ball ball){
         return this.balls.contains(ball);
     }
+
+    public Ball get(int index){
+        return this.balls.get(index);
+    }
 }
