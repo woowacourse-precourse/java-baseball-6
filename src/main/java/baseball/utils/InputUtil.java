@@ -8,7 +8,8 @@ import static baseball.utils.Message.*;
 
 public class InputUtil {
 
-    private static final Scanner scanner = new Scanner(System.in);
+    public static final String RESTART_NUMBER = "1";
+    public static final String END_NUMBER = "2";
 
     public static String requireGuessNumber() {
         System.out.println(REQUIRE_NUMBER_MESSAGE.getMessage());
@@ -44,4 +45,17 @@ public class InputUtil {
     }
 
 
+    public static String requireRestartNumber() {
+        String inputNumber = Console.readLine();
+        isRestartNumberValid(inputNumber);
+        return inputNumber;
+    }
+
+    private static void isRestartNumberValid(String inputNumber) {
+        if (inputNumber.equals(RESTART_NUMBER) || inputNumber.equals(END_NUMBER)) {
+            return;
+        }
+
+        throw new IllegalArgumentException();
+    }
 }
