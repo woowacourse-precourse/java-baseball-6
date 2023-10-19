@@ -45,6 +45,8 @@ boolean sizeCheck(String input) 지정된 사이즈만큼 들어왔는지 판별
 List<Integer> countScore(List<Integer> userNumbers) strike, ball의 개수를 세어 리스트로 반환
 
 int judgeScore(int number, int index) 숫자와 위치가 맞다면 Strike, 포함만 했다면 ball, 둘 다 아니라면 nothing 반환
+
+void setAnswer(List<Integer> answer) 생성된 답안을 computer에 저장하는 메서드
 ```
 
 ## UserInput 클래스
