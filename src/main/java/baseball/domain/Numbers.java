@@ -37,7 +37,7 @@ public class Numbers {
     }
 
     private void validateDuplicateNumber(List<Integer> numberList) {
-        if (numberList.size() != new HashSet(numberList).size()) {
+        if (numberList.size() != new HashSet<>(numberList).size()) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
         }
     }
