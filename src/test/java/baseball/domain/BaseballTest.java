@@ -1,0 +1,31 @@
+package baseball.domain;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.List;
+import java.util.stream.Stream;
+
+import static baseball.exception.ExceptionMessage.BallException.BALL_IS_NOT_IN_RANGE;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+public class BaseballTest {
+    @ParameterizedTest
+    @MethodSource("invalidRange")
+    @DisplayName("1..9 범위가 아닌 숫자가 존재할 경우 Baseball은 생성할 수 없다")
+    void throwExceptionByInvalidRange(final List<Integer> balls) {
+        assertThatThrownBy(() -> Baseball.of(balls))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(BALL_IS_NOT_IN_RANGE.message);
+    }
+
+    private static Stream<Arguments> invalidRange() {
+        return Stream.of(
+                Arguments.arguments(List.of(-1, 1, 9)),
+                Arguments.arguments(List.of(0, 1, 9)),
+                Arguments.arguments(List.of(1, 9, 10))
+        );
+    }
+}
