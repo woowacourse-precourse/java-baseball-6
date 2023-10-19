@@ -43,11 +43,11 @@ class BaseballGameTest {
     @DisplayName("플레이어가 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.")
     void isGameEnd() {
         Balls userBalls = new Balls(List.of(3, 4, 5));
-        PlayResult playResult = baseballGame.play(userBalls);
-        assertThat(baseballGame.isGameEnd(playResult)).isFalse();
+        baseballGame.play(userBalls);
+        assertThat(baseballGame.isGameEnd()).isFalse();
 
         userBalls = new Balls(List.of(1, 2, 3));
-        playResult = baseballGame.play(userBalls);
-        assertThat(baseballGame.isGameEnd(playResult)).isTrue();
+        baseballGame.play(userBalls);
+        assertThat(baseballGame.isGameEnd()).isTrue();
     }
 }

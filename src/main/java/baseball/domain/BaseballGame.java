@@ -10,10 +10,15 @@ public class BaseballGame {
     }
 
     public PlayResult play(Balls userBalls) {
-        return computerBalls.play(userBalls);
+        PlayResult playResult = computerBalls.play(userBalls);
+
+        if (playResult.isThreeStrike()) {
+            gameState = GameState.END;
+        }
+        return playResult;
     }
 
-    public boolean isGameEnd(PlayResult playResult) {
-        return playResult.isThreeStrike();
+    public boolean isGameEnd() {
+        return gameState == GameState.END;
     }
 }
