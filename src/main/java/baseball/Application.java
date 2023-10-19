@@ -9,11 +9,18 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = readLine();
-        List<Integer> number = convertIntegerList(input);
-        validateThreeNums(number);
-        validateUnduplicated(number);
+        Game game = new Game();
+
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = readLine();
+            List<Integer> number = convertIntegerList(input);
+            validateThreeNums(number);
+            validateUnduplicated(number);
+
+            boolean isAnswer = game.play(number);
+            if (isAnswer) break;
+        }
     }
 
     private static List<Integer> convertIntegerList(String number) {
