@@ -11,6 +11,7 @@ import java.util.List;
 public class RandomBallsGenerator implements BallsGenerator {
     public final List<Integer> balls = new ArrayList<>();
 
+    @Override
     public Balls generateBalls() {
         while (balls.size() < NUMBER_OF_BALLS) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
