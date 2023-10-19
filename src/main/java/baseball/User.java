@@ -1,6 +1,8 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class User {
@@ -12,8 +14,15 @@ public class User {
         this.gameStatus = true;
     }
 
+    public void getNumbersFromUser() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        validateNumbersFromUser(input);
+        this.numbers = convertStringToIntList(input);
+    }
+
     public void validateNumbersFromUser(String input) {
-        if(input.length() != 3) {
+        if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
         try {
@@ -21,7 +30,8 @@ public class User {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
-        if(input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
+        if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(
+                2)) {
             throw new IllegalArgumentException();
         }
     }
