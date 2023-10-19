@@ -1,9 +1,10 @@
 package baseball.model;
 
+import static baseball.Constants.NUMBER_COUNTS;
+
 public class GuessResult {
 
     private static final int INITIAL_ZERO_COUNT = 0;
-    private static final int END_STRIKE_COUNT = 3;
     private static final String NOTHING_RESULT = "낫싱";
     private static final String BALL_RESULT = "볼";
     private static final String STRIKE_RESULT = "스트라이크";
@@ -40,6 +41,6 @@ public class GuessResult {
     }
 
     public boolean isGameEnd() {
-        return strikeCount == END_STRIKE_COUNT;
+        return strikeCount == NUMBER_COUNTS;
     }
 }
