@@ -9,6 +9,20 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    // 기능: 게임 재시작 입력 검증
+    private static void validateRestartCommandInput(String restartCommand) {
+        validateLength(restartCommand, 1);
+        validateNumeric(restartCommand);
+        validateOneOrTwo(restartCommand);
+    }
+
+    // 기능: 1 또는 2만 입력해야 한다
+    private static void validateOneOrTwo(String input) {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("1 또는 2만 입력해야 합니다.");
+        }
+    }
+
     // 기능: 사용자 공 입력 검증
     private static void validatePlayerBallInput(String number) {
         validateLength(number, 3);
