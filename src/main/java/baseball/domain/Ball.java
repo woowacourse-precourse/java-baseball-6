@@ -3,9 +3,9 @@ package baseball.domain;
 import java.util.Objects;
 
 public class Ball {
-    public static final String INVALID_NUMBER_MESSAGE = "1에서 9사이의 숫자를 입력해주세요";
-    public static final int LOWER_LIMIT = 1;
-    public static final int UPPER_LIMIT = 9;
+    private static final String INVALID_NUMBER_MESSAGE = "1에서 9사이의 숫자를 입력해주세요";
+    private static final int LOWER_LIMIT = 1;
+    private static final int UPPER_LIMIT = 9;
 
     private final int number;
 

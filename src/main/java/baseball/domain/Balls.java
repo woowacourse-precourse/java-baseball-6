@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Balls {
-    public static final String INVALID_DIGIT_NUMBER_MESSAGE = "세 자리 숫자를 입력해주세요";
-    public static final String SEPARATOR = "";
-    public static final int BALLS_SIZE = 3;
+    private static final String INVALID_DIGIT_NUMBER_MESSAGE = "세 자리 숫자를 입력해주세요";
+    private static final String SEPARATOR = "";
+    private static final int BALLS_SIZE = 3;
 
     private final List<Ball> balls;
 
