@@ -1,18 +1,20 @@
 package baseball.Game;
 
+import java.util.List;
+
 public interface BaseBallGame {
 
     void initGame();
 
-    void playGame(Integer userAnswer, Integer computerAnswer);
+    void playGame();
 
-    Integer makeRandomNumber();
+    List<Integer> makeRandomNumber();
 
-    Integer countStrike(Integer answer);
+    Integer countStrike(List<Integer> answer);
 
-    Integer countBall(Integer answer);
+    Integer countBall(List<Integer> answer);
 
-    Boolean isNothing(Integer answer);
+    Boolean isNothing(List<Integer> answer);
 
     void printResult(Integer strike, Integer ball);
 
