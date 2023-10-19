@@ -29,8 +29,8 @@ public class Application {
         }
     }
     public static void playGameOnce() {
+        List<Integer> computerNumbersList = getComputerNumbersList();
         while(true) {
-            List<Integer> computerNumbersList = getComputerNumbersList();
             List<Integer> userNumbersList = getUserNumbersList();
             List<Integer> ballStrikeCount = getBallStrikeCount(computerNumbersList, userNumbersList);
             printBallStrike(ballStrikeCount.get(0), ballStrikeCount.get(1));
