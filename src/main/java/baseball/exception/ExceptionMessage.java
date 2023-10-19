@@ -13,4 +13,15 @@ public interface ExceptionMessage {
             this.message = message;
         }
     }
+
+    enum GameProcessCommandException {
+        INVALID_COMMAND("재시작[1] / 종료[2] 중 하나를 입력해주세요."),
+        ;
+
+        public final String message;
+
+        GameProcessCommandException(final String message) {
+            this.message = message;
+        }
+    }
 }
