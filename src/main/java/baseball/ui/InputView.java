@@ -16,12 +16,8 @@ public class InputView {
 	private final static String SEPARATOR = "";
 
 
-	public List<Integer> readNumber() {
-		outputView.printNumberInputMessage();
-		String inputValue = Console.readLine();
-		String[] inputNumbers = inputValue.split(SEPARATOR);
-
-		validatePlayerNumber(inputNumbers);
+	public List<Integer> readPlayerNumber() {
+		String[] inputNumbers = readNumber();
 
 		List<Integer> numbers = new ArrayList<>();
 		for (String number : inputNumbers) {
@@ -29,6 +25,15 @@ public class InputView {
 		}
 
 		return numbers;
+	}
+
+	private String[] readNumber() {
+		outputView.printNumberInputMessage();
+		String inputValue = Console.readLine();
+		String[] inputNumbers = inputValue.split(SEPARATOR);
+
+		validatePlayerNumber(inputNumbers);
+		return inputNumbers;
 	}
 
 	private static void validatePlayerNumber(String[] inputNumbers) {
@@ -41,9 +46,13 @@ public class InputView {
 		outputView.printRestartSelectMessage();
 		String selectOption = Console.readLine();
 
-		Validator.validateNumberFormat(selectOption);
-		Validator.validateSelectOptionType(selectOption);
+		validateRestartOrNotValue(selectOption);
 		return selectOption;
 
+	}
+
+	private static void validateRestartOrNotValue(String selectOption) {
+		Validator.validateNumberFormat(selectOption);
+		Validator.validateSelectOptionType(selectOption);
 	}
 }

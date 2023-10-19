@@ -26,8 +26,12 @@ public class BaseballGame {
 		printStartMessage();
 		computer = generateComputerNumber();
 
+		playGame();
+	}
+
+	private void playGame() {
 		while (true) {
-			user = inputView.readNumber();
+			user = inputView.readPlayerNumber();
 			GameResult result = play(computer, user);
 
 			if (result.getStrikeCount() == THREE_STRIKE) {
@@ -42,7 +46,6 @@ public class BaseballGame {
 			}
 			outputView.printGameResultMessage(result);
 		}
-
 	}
 
 	private GameResult play(List<Integer> computer, List<Integer> user) {
