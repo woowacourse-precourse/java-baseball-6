@@ -14,7 +14,7 @@ public class Balls {
         this.balls = balls;
     }
 
-    public Balls randomComputerBalls(){
+    public static Balls randomComputerBalls(){
         List<Ball> balls = new ArrayList<>();
         while(balls.size()<3){
             Ball newBall = new Ball(Randoms.pickNumberInRange(1,9));
@@ -25,7 +25,7 @@ public class Balls {
         return new Balls(balls);
     }
 
-    public Balls strToBalls(String str){
+    public static Balls strToBalls(String str){
         List<Ball> balls = new ArrayList<>();
         char[] charList = str.toCharArray();
 

@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Game {
     private final Integer strike;
     private final Integer ball;
@@ -26,6 +28,19 @@ public class Game {
         return new Game(strike, ball);
     }
 
+    public static boolean restart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartInput = Console.readLine();
+        if (restartInput.equals("1")) {
+            return true;
+        }
+        else if (restartInput.equals("2")) {
+            return false;
+        }
+        else {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+        }
+    }
     public String printResult(){
         if (isNothing()) {
             return "낫싱";
