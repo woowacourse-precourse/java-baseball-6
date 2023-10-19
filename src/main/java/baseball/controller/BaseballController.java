@@ -32,13 +32,13 @@ public class BaseballController {
 
     public void run() {
 
-        boolean isFirstTime = true;
+        boolean isRestart = true;
         AnswerNumbers answerNumbers = null;
 
         inputView.start();
 
         while (true) {
-            answerNumbers = getNewAnswerNumbers(isFirstTime, answerNumbers);
+            answerNumbers = getNewAnswerNumbers(isRestart, answerNumbers);
 
             String input = inputView.input();
             List<Integer> inputNumbers = mapToInListInteger(input);
@@ -53,12 +53,12 @@ public class BaseballController {
                 int finishNum = Integer.parseInt(inputView.finish());
 
                 if (finishNum == RESTART) {
-                    isFirstTime = true;
+                    isRestart = true;
                     continue;
                 }
                 return;
             }
-            isFirstTime = false;
+            isRestart = false;
         }
 
     }
