@@ -4,11 +4,9 @@ import baseball.validator.BaseballValidator;
 
 import java.util.List;
 
-//컴퓨터가 가지고 있는 3개의 랜덤 수
-//검증자를 상속받아 클래스 내부에서 검증
-public class Computer extends BaseballValidator {
+public class User extends BaseballValidator {
     List<Integer> baseball;
-    public Computer(List<Integer> baseball){
+    public User(List<Integer> baseball){
         if(validator(baseball)){
             this.baseball=baseball;
         }
