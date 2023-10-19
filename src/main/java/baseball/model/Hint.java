@@ -7,8 +7,6 @@ public class Hint {
     public Hint() {
     }
 
-    ;
-
     public Hint(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;

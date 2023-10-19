@@ -3,12 +3,11 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.Hint;
 import baseball.model.NumberList;
+import baseball.utils.Transfer;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import baseball.utils.Transfer;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -25,7 +24,6 @@ public class GameController {
                 OutputView.printSuccessAndEndMessage();
                 break;
             }
-
             Hint hint = calculateHint(computer.getAnswer(), userAnswer);
             OutputView.printHintMessage(hint);
         }
@@ -48,8 +46,11 @@ public class GameController {
         for (int i = 0; i < answer.getNumberList().size(); i++) {
             for (int j = 0; j < guess.getNumberList().size(); j++) {
                 if (Objects.equals(answer.getNumberList().get(i), guess.getNumberList().get(j))) {
-                    if (i != j) ballCount++;
-                    else strikeCount++;
+                    if (i != j) {
+                        ballCount++;
+                    } else {
+                        strikeCount++;
+                    }
                 }
             }
         }
@@ -69,12 +70,16 @@ public class GameController {
 
         private static void validateUsersGuess(String userInput) {
             boolean isValid = true;
-            if (userInput.length() != 3) isValid = false;
+            if (userInput.length() != 3) {
+                isValid = false;
+            }
             for (int i = 0; i < userInput.length(); i++) {
                 int number = userInput.charAt(i) - '0';
                 isValid &= (1 <= number && number <= 9);
             }
-            if (!isValid) throw new IllegalArgumentException("[ERROR] " + WRONG_INPUT_ANSWER);
+            if (!isValid) {
+                throw new IllegalArgumentException("[ERROR] " + WRONG_INPUT_ANSWER);
+            }
         }
     }
 }

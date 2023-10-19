@@ -9,9 +9,10 @@ public class NumberList {
     public NumberList() {
         numberList = new ArrayList<>();
     }
-    public NumberList(List<Integer> numberList){
+
+    public NumberList(List<Integer> numberList) {
         this.numberList = numberList;
-    };
+    }
 
     public List<Integer> getNumberList() {
         return numberList;
@@ -23,7 +24,7 @@ public class NumberList {
 
     public boolean equals(NumberList a) {
         boolean isEqual = true;
-        for(int i = 0; i< numberList.size(); i++) {
+        for (int i = 0; i < numberList.size(); i++) {
             isEqual &= (numberList.get(i).equals(a.numberList.get(i)));
         }
         return isEqual;

@@ -38,9 +38,12 @@ public class MainController {
         }
 
         private static void validateWhetherRestart(String userInput) {
-            if (userInput.length() != 1) throw new IllegalArgumentException(WRONG_INPUT_WHETHER_RESTART_MESSAGE);
-            if (userInput.charAt(0) != RESTART && userInput.charAt(0) != END_GAME)
+            if (userInput.length() != 1) {
                 throw new IllegalArgumentException(WRONG_INPUT_WHETHER_RESTART_MESSAGE);
+            }
+            if (userInput.charAt(0) != RESTART && userInput.charAt(0) != END_GAME) {
+                throw new IllegalArgumentException(WRONG_INPUT_WHETHER_RESTART_MESSAGE);
+            }
         }
     }
 }
