@@ -7,6 +7,9 @@ import java.util.List;
 
 public class Game {
 
+    public static boolean isGameOver = false;
+
+    private Game game;
     private Input input;
     private Judge judge;
     private Output output;
@@ -20,7 +23,14 @@ public class Game {
         output = new Output(judge);
     }
 
-    public void run() {
+    public static void run() {
+        Output.start();
+        while (!isGameOver) {
+            new Game().start();
+        }
+    }
+
+    private void start() {
 
     }
 
