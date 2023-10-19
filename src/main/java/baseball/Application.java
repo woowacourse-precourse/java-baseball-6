@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Application {
 
@@ -40,7 +42,9 @@ public class Application {
             while (game) {
                 System.out.print(INPUT_START);
                 String inputNum = Console.readLine();
+                onlyNumCheck(inputNum);
 
+                lengthCheck(inputNum);
 
                 int inputNumInt = Integer.parseInt(inputNum);
 
@@ -53,6 +57,7 @@ public class Application {
 
                 ArrayList<Integer> userInputArray = new ArrayList<Integer>(Arrays.asList(a, b, c));
 
+                duplicationCheck(userInputArray);
 
                 for (int i = 0; i < 3; i++) {
                     if (!computerArray.contains(userInputArray.get(i))) {
@@ -87,6 +92,29 @@ public class Application {
             }
         }
     }
+
+    private static void onlyNumCheck(String inputNum) {
+        final Pattern compile = Pattern.compile("[0-9]+");
+        final Matcher matcher = compile.matcher(inputNum);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
+    }
+
+    private static void lengthCheck(String inputNum) {
+        if (inputNum.length() > 3) {
+            throw new IllegalArgumentException("길이가 4글자 이상 입니다.");
+        }
+    }
+
+    private static void duplicationCheck(ArrayList<Integer> userInputArray) {
+        for (int num : userInputArray) {
+            List<Integer> errorCheck = new ArrayList<Integer>();
+            if (!errorCheck.contains(num)) {
+                errorCheck.add(num);
+            } else {
+                throw new IllegalArgumentException("중복된 숫자 발생");
+            }
         }
     }
 }
