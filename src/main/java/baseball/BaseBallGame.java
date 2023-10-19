@@ -36,12 +36,13 @@ public class BaseBallGame {
             System.out.println(answer);
 
             checkAnswer(answer);
-            Scanner sc = new Scanner(System.in);
+
             System.out.println(
                     """
                         \n3개의 숫자를 모두 맞히셨습니다! 게임 종료
                         게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.""");
 
+            Scanner sc = new Scanner(System.in);
             if (sc.nextInt() == 2)
                 break;
         }
@@ -51,14 +52,7 @@ public class BaseBallGame {
         while ( true ) {
             System.out.print("\n숫자를 입력해주세요 : ");
 
-            Scanner sc = new Scanner(System.in);
-            String st = sc.next();
-            String[] arr = st.split("");
-
-            List<Integer> input = new ArrayList<>();
-            for (int i = 0; i < 3; i++) {
-                input.add(Integer.parseInt(arr[i]));
-            }
+            List<Integer> input = getInput();
 
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
@@ -83,6 +77,18 @@ public class BaseBallGame {
                 break;
 
         }
+    }
+
+    private static List<Integer> getInput() {
+        Scanner sc = new Scanner(System.in);
+        String st = sc.next();
+        String[] arr = st.split("");
+
+        List<Integer> input = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            input.add(Integer.parseInt(arr[i]));
+        }
+        return input;
     }
 
     private static List<Integer> setAnswer() {
