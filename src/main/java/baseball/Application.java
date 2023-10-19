@@ -32,14 +32,14 @@ public class Application {
         //컴퓨터가 서로 다른 3개의 숫자 생성
 
 //        computerNumber = new ArrayList<>();
-        String computerNumber = "";
+        StringBuilder computerNumber = new StringBuilder();
         for(int i=0; i<3; i++) {
 //            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            computerNumber += String.valueOf(Randoms.pickNumberInRange(1, 9));
+            computerNumber.append(String.valueOf(Randoms.pickNumberInRange(1, 9)));
 //            computerNumber.add(randomNumber);
         }
 
-        return computerNumber;
+        return computerNumber.toString();
     }
 
     public static String PlayerSelectNumber() {
@@ -54,5 +54,7 @@ public class Application {
 //        }
     }
 
+    public static void CompareNumber(String computerNumber, String playerNumber) {
 
+    }
 }
