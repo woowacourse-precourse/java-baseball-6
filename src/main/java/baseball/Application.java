@@ -14,12 +14,29 @@ public class Application {
 
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1,9);
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
         String input = Console.readLine();
-        int player = Integer.parseInt(input);
+        char[] player = input.toCharArray();
+
+        int strike = 0, ball = 0;
+        String nothing = "낫싱";
+        for (int i = 0; i < 3; i++) {
+            int playerNum = Character.getNumericValue(player[i]);
+            if (computer.get(i) == playerNum) {
+                strike++;
+            } else if (computer.contains(playerNum)) {
+                ball++;
+            }
+        }
+        if (strike != 0 || ball != 0) {
+            System.out.println(strike + "스트라이크, " + ball + "볼");
+        } else {
+            System.out.println(nothing);
+        }
+        System.out.println(computer);
     }
 }
