@@ -31,7 +31,7 @@ public class User {
         }
     }
 
-    public void clearGuessNumber(){
+    public void clearGuessNumber(){ //guessNumber를 초기화하는 메소드
         this.guessNumber.clear();
     }
 }
