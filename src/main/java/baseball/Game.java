@@ -100,9 +100,9 @@ public class Game {
 
     private boolean inputRetry() {
         String userInput = user.inputRestartNumber();
-        if(userInput.equals("1")) {
+        if(userInput.equals(GameConfig.RETRY_NUMBER)) {
             return true;   //재시도
-        }else if(userInput.equals("2")) {
+        }else if(userInput.equals(GameConfig.EXIT_NUMBER)) {
             return false;  //종료
         }else{
             throw new IllegalArgumentException();
