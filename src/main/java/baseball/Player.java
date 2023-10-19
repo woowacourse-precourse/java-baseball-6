@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +9,7 @@ public class Player {
     /*
         플레이어의 숫자를 입력 받는 메서드
      */
-    public int[] pickPlayerNums() {
+    public int[] inputPlayerNums() {
         String inputNum = Console.readLine();
         isValidNumber(inputNum);
         return getNumArray(inputNum);
