@@ -8,6 +8,17 @@ String restartOrStopMessage() 재시작 / 종료 선택 문구 반환
 String scoreMessage(int ball, int strike) 볼 / 스트라이크 현재 스코어 문구 반환
 ```
 
+## NumberBaseballGame 클래스
+- 출력 메서드
+```java
+void speaker() 입력받은 메세지 출력
+```
+- 게임 진행 메서드
+```java
+void play() 종료를 입력받기 전까지 계속 게임을 진행하는 메서드
+void oneRound() play 메서드 내부에서 3스트라이크가 될 때까지 진행하는 하나의 라운드
+```
+
 ## AnswerMaker 클래스
 - 난수 생성 메서드
 ```java
