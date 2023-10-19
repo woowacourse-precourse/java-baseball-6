@@ -13,7 +13,7 @@ public class InputView {
     }
 
     public int readGameCommand() {
-        print(INPUT_GAME_COMMAND_MESSAGE);
+        println(INPUT_GAME_COMMAND_MESSAGE);
         return readInt();
     }
 
@@ -37,5 +37,9 @@ public class InputView {
 
     private void print(String message) {
         System.out.print(message);
+    }
+
+    private void println(String message) {
+        System.out.println(message);
     }
 }
