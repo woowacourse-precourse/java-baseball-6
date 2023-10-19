@@ -10,5 +10,6 @@ public class Application {
         BaseballController baseballController = new BaseballController();
         baseballController.startBaseball();
         baseballController.getUserNumber();
+        baseballController.startBaseball();
     }
 }

@@ -9,9 +9,10 @@ public class NumberBaseball {
     }
 
     public void isValid() {
-        if (!(isNumberLengthThree() || isNumberDuplicate() || isNumber())) {
-            throw new IllegalStateException();
+        if (isNumberLengthThree() && isNumberDuplicate() && isNumber()) {
+            return;
         }
+        throw new IllegalStateException();
     }
 
     private boolean isNumber() {
@@ -28,6 +29,6 @@ public class NumberBaseball {
         char secondNumber = numbers.charAt(1);
         char thirdNumber = numbers.charAt(2);
 
-        return firstNumber == secondNumber || secondNumber == thirdNumber || firstNumber == thirdNumber;
+        return firstNumber != secondNumber && secondNumber != thirdNumber && firstNumber != thirdNumber;
     }
 }
