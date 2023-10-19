@@ -40,7 +40,7 @@ public class UserInput {
             throw new IllegalArgumentException("1자리를 입력해야 합니다.");
         }
 
-        int inputNum = input.charAt(0);
+        int inputNum = input.charAt(0) - '0';
         if (inputNum != 1 && inputNum != 2) {
             throw new IllegalArgumentException("1 또는 2 만 입력해야 합니다.");
         }
