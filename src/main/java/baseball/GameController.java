@@ -12,7 +12,7 @@ public class GameController {
     private InputView inputView;
     private GameNumber gameNumber;
 
-    public GameController(InputView inputView) {
+    public GameController(final InputView inputView) {
         this.inputView = inputView;
         this.gameNumber = GameNumber.createDefault();
     }
