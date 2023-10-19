@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 import static baseball.Const.NUMBER_LENGTH;
+import static baseball.Validator.*;
 
 public class Application {
 
@@ -27,7 +28,7 @@ public class Application {
                 System.out.print("숫자를 입력해주세요: ");
                 String input = Console.readLine();
 
-                Validator.validateInput(input);
+                validateInput(input);
                 
                 String[] split = input.split("");
                 Map<Integer, Integer> userIndex = new HashMap<>();
