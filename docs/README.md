@@ -8,6 +8,7 @@ int inputNumber()
 
 int checkNumber(int num)  
 : 숫자 검증하기  
+: 올바르지 않으면 IllegalArgumentException  
 : return num  
  
 void printHint(int num)  
@@ -15,4 +16,13 @@ void printHint(int num)
 
 int generateAnswerNumber()  
 : 정답 번호 생성하기 (서로 다른 세 자리의 숫자로 구성)   
-: return 생성한 세자리 양수  
+: return 생성한 세자리 양수 
+
+int getOptionNumber(String num)  
+: 사용자 입력으로부터 옵션 선택 번호 검증  
+: 올바르지 않으면 IllegalArgumentException  
+: return num  
+
+boolean isContinue(int option):
+: option값 유효성 검증 후
+: return option이 1이면 true, 2이면 false
