@@ -32,7 +32,16 @@ public class AnswerNumbers {
         }
     }
 
+    public int getStrike(List<Integer> inputNumbers){
+        int cnt = 0;
 
+        for(int i=0; i< VALID_NUMBER_SIZE; i++){
+            if(answerNumbers.get(i) == inputNumbers.get(i)){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
 
 
 
