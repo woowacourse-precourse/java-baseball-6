@@ -43,7 +43,7 @@ public class Numbers {
     }
 
     public List<Integer> getNumberList() {
-        return numberList;
+        return new ArrayList<>(numberList);
     }
 
 }
