@@ -38,4 +38,18 @@ public class Ball {
         Ball ball = (Ball) o;
         return digit == ball.digit && value == ball.value;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(digit, value);
+    }
+
+    // TestCode
+    public int getDigit() {
+        return digit;
+    }
+
+    public int getValue() {
+        return value;
+    }
 }

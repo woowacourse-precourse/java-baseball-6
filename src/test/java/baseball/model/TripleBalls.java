@@ -33,4 +33,8 @@ public class TripleBalls {
     public List<Ball> getTripleBalls() {
         return new ArrayList<>(tripleBalls);
     }
+
+    public boolean hasThreeStrikes(TripleBalls registeredComputer) {
+        return compareTripleBalls(registeredComputer).equals("3스트라이크");
+    }
 }

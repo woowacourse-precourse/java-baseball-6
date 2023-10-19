@@ -1,7 +1,4 @@
-package baseball;
-
-import baseball.util.Constants;
-import baseball.util.Util;
+package baseball.util;
 
 import java.util.List;
 

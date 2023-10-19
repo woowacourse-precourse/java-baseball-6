@@ -1,6 +1,6 @@
-package baseball;
+package baseball.model;
 
-import baseball.model.TripleBalls;
+import baseball.util.InputNumberValidator;
 import baseball.util.Util;
 
 public class Player {
@@ -11,7 +11,13 @@ public class Player {
         this.playerTripleBalls = Util.convertToTripleBalls(inputNumbers);
     }
 
+    public boolean hasSameBalls(TripleBalls registeredComputer) {
+        return playerTripleBalls.hasThreeStrikes(registeredComputer);
+    }
+
     public TripleBalls getPlayerTripleBalls() {
         return playerTripleBalls;
     }
+
+
 }
