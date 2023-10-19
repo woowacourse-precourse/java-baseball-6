@@ -10,11 +10,11 @@ import java.util.Set;
 public class Human {
     private List<Integer> numbers;
 
-    public List<Integer> numbers() {
+    public List<Integer> getNumbers() {
         return this.numbers;
     }
 
-    public void getNumbers() {
+    public void setNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String numString = Console.readLine();
         List<Integer> numbers = Arrays.stream(numString.split("")).map(Integer::parseInt).toList();

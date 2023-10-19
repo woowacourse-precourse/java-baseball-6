@@ -7,13 +7,13 @@ public class Application {
         Human human = new Human();
         Computer computer = new Computer();
 
-        computer.getNumbers();
+        computer.setNumbers();
 
         do {
             judger.startGame();
-            human.getNumbers();
+            human.setNumbers();
 
-            judger.compareNumbers(human.numbers(), computer.numbers());
+            judger.compareNumbers(human.getNumbers(), computer.getNumbers());
         } while (true);
     }
 }
