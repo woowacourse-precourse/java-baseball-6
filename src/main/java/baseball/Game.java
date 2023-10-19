@@ -6,7 +6,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 import static baseball.Const.NUMBER_LENGTH;
-import static baseball.Validator.validateInput;
 
 public class Game {
 
@@ -25,7 +24,8 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
 
-            List<Integer> answer = Randoms.pickUniqueNumbersInRange(1, 9, NUMBER_LENGTH);
+            List<Integer> answer = pickAnswerNumbers();
+            printList(answer);
 
             while (true) {
                 System.out.print("숫자를 입력해주세요: ");
@@ -58,6 +58,23 @@ public class Game {
         }
 
         result.printResult();
+    }
+
+    private <T> void printList(List<T> list) {
+        list.forEach(System.out::println);
+        System.out.println();
+    }
+
+    private List<Integer> pickAnswerNumbers() {
+        List<Integer> answer = new ArrayList<>();
+        Set<Integer> numbers = new HashSet<>();
+        while (answer.size() < 3) {
+            int number = Randoms.pickNumberInRange(1, 9);
+            if (numbers.contains(number)) continue;
+            answer.add(number);
+            numbers.add(number);
+        }
+        return answer;
     }
 
     private boolean isGameContinued() {
