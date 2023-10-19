@@ -13,6 +13,8 @@ public class BaseballGame {
 
         List<Integer> otherNumbers = numberGenerator.generateNumbers();
 
+        GameResult gameResult = new GameResult();
+
     }
 
     public BaseballGame(NumberGenerator numberGenerator) {
