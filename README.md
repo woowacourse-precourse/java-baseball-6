@@ -36,6 +36,13 @@ BUILD SUCCESSFUL in 0s
 
 ## 🚀 기능 요구 사항
 
+- 컴퓨터
+    - [x] 랜덤의 3자리 숫자
+      - [x] 중복 검사
+
+- 사용자
+  - [ ]
+
 기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
 
 - 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트를 얻고, 그 힌트를 이용해서 먼저 상대방(컴퓨터)의 수를 맞추면 승리한다.
@@ -125,7 +132,8 @@ BUILD SUCCESSFUL in 0s
 
 #### 사용 예시
 
-```java
+```` java
+
 List<Integer> computer = new ArrayList<>();
 while (computer.size() < 3) {
     int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -133,7 +141,8 @@ while (computer.size() < 3) {
         computer.add(randomNumber);
     }
 }
-```
+
+````
 
 ---
 
