@@ -7,7 +7,7 @@ import java.util.List;
 public class Computer {
 
     private final List<Integer> computerBaseballNumber;
-    private final static int MAX_LENGTH = 3;
+    private static final int MAX_LENGTH = 3;
 
     public Computer() {
         this.computerBaseballNumber = generateComputerRandomNumber();

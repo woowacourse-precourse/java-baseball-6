@@ -11,8 +11,8 @@ public class Referee {
     private Computer computer;
     private Player player;
     private Hint hint;
-    private final static String START = "1";
-    private final static String END = "2";
+    private static final String START = "1";
+    private static final String END = "2";
 
     public void playBall() {
         computer = new Computer();
@@ -24,7 +24,7 @@ public class Referee {
             player.inputPlayerNumber();
             List<Integer> playerBaseballNumber = player.getPlayerBaseballNumber();
             List<Integer> computerBaseballNumber = computer.getComputerBaseballNumber();
-            int[] score = hint.calculateStrikeAndBall(playerBaseballNumber, computerBaseballNumber);
+            int[] score = Hint.calculateStrikeAndBall(playerBaseballNumber, computerBaseballNumber);
             Message.printHintMessage(score);
         } while (!isThreeStrike());
 
@@ -35,7 +35,7 @@ public class Referee {
     public void continueOrFinish() {
         Message.printContinueOrFinishMessage();
         String userInput = Console.readLine();
-        
+
         if (userInput.equals(START)) {
             playBall();
         }
