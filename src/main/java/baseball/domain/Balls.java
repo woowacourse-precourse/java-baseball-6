@@ -55,17 +55,17 @@ public class Balls {
 
     private String makeString(int ball, int strike) {
         if (ball == 0 && strike == 0) {
-            return "낫싱";
+            return Hint.NOTHING.value();
         }
 
         if (ball != 0 && strike == 0) {
-            return ball + "볼";
+            return String.format("%d%s", ball, Hint.BALL.value());
         }
 
         if (ball == 0 && strike != 0) {
-            return strike + "스트라이크";
+            return String.format("%d%s", strike, Hint.STRIKE.value());
         }
 
-        return ball + "볼 " + strike + "스트라이크";
+        return String.format("%d%s %d%s", ball, Hint.BALL.value(), strike, Hint.STRIKE.value());
     }
 }
