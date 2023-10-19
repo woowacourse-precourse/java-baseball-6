@@ -1,7 +1,6 @@
 package baseball.view;
 
-
-import baseball.constant.Constant;
+import baseball.constant.errorMessage.UserInputNumberError;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -20,7 +19,7 @@ public class InputView {
 
 	private static void validateBlankInputGameNumber(String input) {
 		if (input == null || input.isBlank()) {
-			throw new IllegalArgumentException("공백 입력 예외 발생 테스트");
+			throw new IllegalArgumentException(UserInputNumberError.USER_INPUT_BLANK_ERROR_MESSAGE);
 		}
 	}
 
@@ -33,7 +32,7 @@ public class InputView {
 
 	private static void validateWrongGameRestartInput(String input) {
 		if (!input.equals(GAME_RESTART_NUMBER) && !input.equals(GAME_END_NUMBER)) {
-			throw new IllegalArgumentException("잘못된 재시작 입력 예외 발생 테스트");
+			throw new IllegalArgumentException(UserInputNumberError.USER_RESTART_INPUT_ERROR_MESSAGE);
 		}
 	}
 
