@@ -1,8 +1,12 @@
 package baseball.controller;
 
+import baseball.domain.BaseballGame;
 import baseball.domain.Computer;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class BaseballGameController {
 
@@ -13,10 +17,11 @@ public class BaseballGameController {
 
 
     public void gameStart(){
+        String userNumber;
+
         InputView.printInputNumberMessage();
-        InputView.getInputNumber();
-        computer = new Computer();
-        System.out.println(computer.randomComputerNumber());
+        userNumber = InputView.getInputNumber();
+        BaseballGame baseballGame = new BaseballGame();
 
 
 
