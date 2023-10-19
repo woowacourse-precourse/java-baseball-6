@@ -14,6 +14,7 @@ public class UserNumber {
 	public UserNumber(String input) {
 		List<Integer> userNumberList = createUserNumber(input);
 		validateUserInputLength(userNumberList);
+		validateUserInputRange(userNumberList);
 		this.userNumber = userNumberList;
 	}
 
@@ -36,6 +37,13 @@ public class UserNumber {
 		if (userNum.size() != Constant.NUMBER_LENGTH_LIMIT) {
 			throw new IllegalArgumentException(
 					UserNumberError.USER_NUMBER_WRONG_LENGTH_ERROR_MESSAGE);
+		}
+	}
+
+	private void validateUserInputRange(List<Integer> userNum) {
+		if (userNum.stream().anyMatch(num -> Constant.START_NUMBER > num || num > Constant.END_NUMBER)) {
+			throw new IllegalArgumentException(
+					UserNumberError.USER_NUMBER_WRONG_RANGE_ERROR_MESSAGE);
 		}
 	}
 }
