@@ -10,6 +10,10 @@ import java.util.Set;
 public class Human {
     private List<Integer> numbers;
 
+    public List<Integer> numbers() {
+        return this.numbers;
+    }
+
     public void getNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String numString = Console.readLine();

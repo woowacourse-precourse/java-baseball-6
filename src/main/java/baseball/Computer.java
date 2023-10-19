@@ -7,6 +7,11 @@ import java.util.List;
 
 public class Computer {
     private List<Integer> numbers;
+
+    public List<Integer> numbers() {
+        return this.numbers;
+    }
+
     public void getNumbers () {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {

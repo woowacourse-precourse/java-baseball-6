@@ -10,6 +10,8 @@ public class Application {
             human.getNumbers();
             Computer computer = new Computer();
             computer.getNumbers();
+
+            judger.compareNumbers(human.numbers(), computer.numbers());
         } while (true);
     }
 }
