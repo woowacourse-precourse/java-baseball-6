@@ -1,11 +1,11 @@
 package baseball.domain;
 
+import static baseball.utils.Constants.NUMBER_OF_BALLS;
+
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class Balls {
-    private static final int NUMBER_OF_BALLS = 3;
-
     private final List<Integer> balls;
 
     private Balls(List<Integer> input) {
