@@ -1,4 +1,4 @@
-package baseball.User;
+package baseball.User.Input;
 
 import camp.nextstep.edu.missionutils.Console;
 

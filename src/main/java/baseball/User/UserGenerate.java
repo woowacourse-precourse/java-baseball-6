@@ -1,5 +1,7 @@
 package baseball.User;
 
+import baseball.User.Input.UserInput;
+
 import java.util.ArrayList;
 import java.util.List;
 
