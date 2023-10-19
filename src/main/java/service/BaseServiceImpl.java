@@ -1,13 +1,14 @@
 package service;
 
 import domain.Baseball;
-import repository.BaseRepository;
+import repository.InputRepository;
+import repository.InputRepositoryImpl;
 
-import static constant.BaseConst.RESTART;
+import static constant.BaseConst.*;
 
 public class BaseServiceImpl implements BaseService{
 
-    private final BaseRepository baseRepository = new BaseRepository();
+    private final InputRepository inputRepository = new InputRepositoryImpl();
 
     /**
      * 게임 기능
@@ -15,11 +16,14 @@ public class BaseServiceImpl implements BaseService{
     @Override
     public void game() {
         Baseball number = new Baseball(); // 랜덤번호 생성
+
         boolean flag = false;
         while (!flag) {
-            String myNumber = baseRepository.getMyNumber();
+            String myNumber = inputRepository.getMyNumber();
             number.setMyNumber(myNumber);
-            flag = number.confirmNumber();
+            int[] result = number.confirmNumber();
+            number.printMessage(result);
+            flag = result[STRIKE] == COMPLETE;
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
@@ -30,7 +34,7 @@ public class BaseServiceImpl implements BaseService{
      */
     @Override
     public boolean isRestart() {
-        String restartSelect = baseRepository.getRestartSelect();
+        String restartSelect = inputRepository.getRestartSelect();
         return Integer.parseInt(restartSelect) == RESTART;
     }
 
