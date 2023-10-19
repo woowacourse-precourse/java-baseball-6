@@ -45,4 +45,8 @@ public class BaseballGame {
         }
         return strikeCount;
     }
+
+    public void generate() {
+        setAnswer(generateNumber());
+    }
 }
