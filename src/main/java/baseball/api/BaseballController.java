@@ -1,7 +1,7 @@
-package baseball.controller;
+package baseball.api;
 
 import baseball.entity.NumberBaseball;
-import baseball.view.InputView;
+import baseball.utils.InputUtil;
 import baseball.view.OutputView;
 
 public class BaseballController {
@@ -14,7 +14,7 @@ public class BaseballController {
     public void getUserNumber() {
         NumberBaseball userNumberBaseball = new NumberBaseball();
         while (true) {
-            String userInput = InputView.getUserInput();
+            String userInput = InputUtil.getUserInput();
             userNumberBaseball.isValid(userInput);
             printResult(userNumberBaseball, userInput);
             if (userNumberBaseball.isPerfect(userInput)) {
@@ -22,7 +22,7 @@ public class BaseballController {
             }
         }
         OutputView.printEndGame();
-        String restartNumber = InputView.getUserInput();
+        String restartNumber = InputUtil.getUserInput();
         checkRestartNumberValidation(restartNumber);
         if (restartNumber.equals("1")) {
             getUserNumber();

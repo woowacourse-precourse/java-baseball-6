@@ -1,10 +1,10 @@
-package baseball.view;
+package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Scanner;
 
-public class InputView {
+public class InputUtil {
 
     private static final Scanner scanner = new Scanner(System.in);
 
