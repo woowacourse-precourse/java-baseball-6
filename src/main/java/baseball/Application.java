@@ -13,6 +13,7 @@ public class Application {
         String input = readLine();
         List<Integer> number = convertIntegerList(input);
         validateThreeNums(number);
+        validateUnduplicated(number);
     }
 
     private static List<Integer> convertIntegerList(String number) {
@@ -31,4 +32,11 @@ public class Application {
             throw new IllegalArgumentException("3개의 숫자를 입력해주세요");
         }
     }
+
+    private static void validateUnduplicated(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("서로 다른 숫자들을 입력해주세요");
+        }
+    }
+
 }
