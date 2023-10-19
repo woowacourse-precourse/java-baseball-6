@@ -11,11 +11,19 @@ public class BaseballScore {
         this.strikeCount = strikeCount;
     }
 
-    private void addBallCount(int number) {
-        this.ballCount += number;
+    public void addBallCount() {
+        this.ballCount += 1;
 
     }
-    private void addStrikeCount(int number) {
-        this.strikeCount += number;
+    public void addStrikeCount() {
+        this.strikeCount += 1;
+    }
+
+    @Override
+    public String toString() {
+        return "BaseballScore{" +
+                "ballCount=" + ballCount +
+                ", strikeCount=" + strikeCount +
+                '}';
     }
 }

@@ -100,16 +100,21 @@ public class BaseballNumber {
 
     public BaseballScore compareNumber(BaseballNumber userNumber) {
         BaseballScore baseballScore = new BaseballScore(0, 0);
-        List<Integer> ComputerNumberList = this.number;
+        List<Integer> computerNumberList = this.number;
         List<Integer> UserNumberList = userNumber.number;
-        for (Integer computerNumberByIdx : ComputerNumberList) {
-            compareByIdx(baseballScore,computerNumberByIdx, UserNumberList);
+        for (int i = 0; i < 3; i++) {
+            compareByIdx(baseballScore,computerNumberList.get(i),i , UserNumberList);
         }
+        return baseballScore;
     }
 
-    private void compareByIdx(BaseballScore baseballScore, Integer computerNumberByIdx, List<Integer> userNumberList) {
+    private void compareByIdx(BaseballScore baseballScore, Integer computerNumberByIdx,int idx,List<Integer> userNumberList) {
         for (int i = 0; i < 3; i++) {
-
+            if (userNumberList.get(i) == computerNumberByIdx && idx == i) {
+                baseballScore.addStrikeCount();
+            } else if (userNumberList.get(i) == computerNumberByIdx && idx != i) {
+                baseballScore.addBallCount();
+            }
         }
     }
 }

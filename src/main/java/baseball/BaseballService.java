@@ -6,7 +6,7 @@ public class BaseballService {
     }
 
     public BaseballScore compareBaseballNumber(BaseballNumber computerNumber, BaseballNumber userNumber) {
-        computerNumber.compareNumber(userNumber);
+        return computerNumber.compareNumber(userNumber);
 
     }
 }
