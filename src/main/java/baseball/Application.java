@@ -50,7 +50,7 @@ public class Application {
         int[] number = new int[NUMBER_IDX];
 
         BaseBallGame() {
-            int nowRandomNum = 0, nowRandomNumIdx = 0;
+            int nowRandomNum, nowRandomNumIdx = 0;
 
             while (nowRandomNumIdx < NUMBER_IDX) {
                 nowRandomNum = this.getNumber();
@@ -174,10 +174,11 @@ public class Application {
                     System.out.println(this.ball + BALL + " " + this.strike + STRIKE);
                 if (this.ball != 0)
                     System.out.println(this.ball + BALL);
-                else if(this.ball == 0 && this.strike > 0)
+                else if (this.ball == 0 && this.strike > 0)
                     System.out.println(this.strike + STRIKE);
-                else if(this.ball == 0 && this.strike == 0)
+                else if (this.ball == 0 && this.strike == 0)
                     System.out.println(NOTHING);
+
             }
             else {
                 System.out.println(this.strike + "스트라이크"); // 3스트라이크
