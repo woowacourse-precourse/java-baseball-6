@@ -80,4 +80,8 @@ public class NumberBaseball {
         return result;
     }
 
+    public boolean isNothing() {
+        return countStrike() + countBall() == 0;
+    }
+
 }
