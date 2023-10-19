@@ -1,10 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -17,21 +13,20 @@ public class Application {
                 isFirstGame = false;
             }
 
-            BaseballGame baseBallGame = new BaseballGame();
-
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
-
-            baseBallGame.play(computer);
+            BaseballGame baseballGame = new BaseballGame();
+            baseballGame.play();
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            restart = Integer.valueOf(Console.readLine());
+            try {
+                restart = Integer.valueOf(Console.readLine());
+            } catch (RuntimeException e) {
+                throw new IllegalArgumentException("숫자를 입력해주세요.", e);
+            }
+
+            if (restart != 1 || restart != 2) {
+                throw new IllegalArgumentException("1 혹은 2를 입력해주세요.");
+            }
         }
     }
 }
