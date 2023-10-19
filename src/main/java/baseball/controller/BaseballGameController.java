@@ -12,6 +12,8 @@ public class BaseballGameController {
 
     public void gameStart(){
         InputView.printInputNumberMessage();
+        InputView.getInputNumber();
+
 
 
     }
