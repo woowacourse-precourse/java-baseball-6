@@ -4,6 +4,9 @@ public class Display {
     public void printStartText(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+    private void printEndText(){
+        System.out.println("숫자 야구 게임을 종료합니다.");
+    }
     public int[] getUserInput(){
         System.out.print("숫자를 입력해주세요 : ");
         String trimedUserInput = Console.readLine().trim();
@@ -20,6 +23,21 @@ public class Display {
             result[i] = userInputs[i] - '0';
         }
         return result;
+    }
+    public boolean getRestartInput(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String trimRestartInput = Console.readLine().trim();
+        validateOneOrTwo(trimRestartInput);
+        if(trimRestartInput.equals("1")){
+            return true;
+        }
+        printEndText();
+        return false;
+    }
+    private void validateOneOrTwo(String input){
+        if(!(input.equals("1") || input.equals("2"))){
+            throw new IllegalArgumentException("1 혹은 2를 입력하세요.");
+        }
     }
     private void validateUserInputSize(String input){
         if(input.length() != 3){

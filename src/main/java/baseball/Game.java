@@ -7,6 +7,14 @@ public class Game {
         display.printStartText();
     }
     public void playGame(){
-        int[] userInputs = display.getUserInput();
+        boolean restartFlag = true;
+        while(restartFlag) {
+            int[] userInputs = display.getUserInput();
+            boolean gameOver = true;
+            if(gameOver){
+                restartFlag = display.getRestartInput();
+            }
+        }
+
     }
 }
