@@ -2,13 +2,16 @@ package baseball.api;
 
 import baseball.api.request.RequestChecker;
 
+import java.util.stream.IntStream;
+
 import static baseball.api.constants.MessageConstants.*;
 import static baseball.api.constants.ResponseFormatConstants.*;
 
 
 public class GameStarter {
-    private String result;
+    private final String result;
     private int length;
+    private Count count;
 
     public GameStarter(String result, int length) {
         this.result = result;
@@ -17,10 +20,15 @@ public class GameStarter {
 
     public GameHelper run() throws IllegalArgumentException{
         while (true){
-            //사용자 인풋 받기
             System.out.print(PLAY_MESSAGE);
             String input = RequestChecker.gameRequest();
-            if(isResult(input,result)){
+
+            count = new Count();
+            IntStream.range(0, length)
+                    .forEach(i -> processGuessDigit(input, result, i));
+            hintMessage();
+
+            if(isResult()){
                 System.out.println(COMPLETE_MESSAGE);
                 System.out.println(END_MESSAGE);
                 return new GameHelper();
@@ -28,23 +36,26 @@ public class GameStarter {
         }
     }
 
-    private Boolean isResult(String input, String result){
-        int strikeCount = 0;
-        int ballCount = 0;
-        for (int i=0; i<length; i++){
-            if (input.charAt(i) == result.charAt(i)){
-                strikeCount++;
-            } else {
-                String c = String.valueOf(input.charAt(i));
-                boolean contains = result.contains(c);
-                if (contains) {
-                    ballCount++;
-                }
+    private void processGuessDigit(String input, String result, int index){
+        char inputChar = input.charAt(index);
+        char resultChar = result.charAt(index);
+
+        if(inputChar == resultChar) {
+            count.incrementStrikeCount();
+        } else {
+            boolean contains = result.contains(String.valueOf(inputChar));
+            if (contains) {
+                count.incrementBallCount();
             }
         }
-        return isResult(strikeCount, ballCount);
     }
-    private Boolean isResult(int strikeCount, int ballCount) {
+    private Boolean isResult() {
+        return count.getStrikeCount() == length;
+    }
+
+    private void hintMessage() {
+        int strikeCount = count.getStrikeCount();
+        int ballCount = count.getBallCount();
         String message = "";
 
         if (strikeCount > 0 && ballCount > 0) {
@@ -58,6 +69,5 @@ public class GameStarter {
         }
 
         System.out.println(message);
-        return strikeCount == length;
     }
 }
