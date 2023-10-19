@@ -18,20 +18,18 @@ public class AnswerNumbers {
         this.numbers = numbers;
     }
 
-    public void validateSize(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != VALID_NUMBER_SIZE) {
             throw new IllegalArgumentException("숫자는 3개만 가능합니다.");
         }
     }
 
-    public void validateDuplicate(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> nonDuplicateNumbers = new HashSet<>(numbers);
 
-        if(nonDuplicateNumbers.size() != VALID_NUMBER_SIZE){
+        if (nonDuplicateNumbers.size() != VALID_NUMBER_SIZE) {
             throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
         }
     }
-
-
 
 }
