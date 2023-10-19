@@ -35,6 +35,32 @@ public class NumberManagement {
         }
     }
 
+    public boolean numberCheck(int[] numbers) {
+        int ball = 0;
+        int strike = 0;
+        for(int i = 0; i < 3; i++) {
+            if(this.numbers[i] == numbers[i]) {
+                strike++;
+            }else if(numberFlag[numbers[i]]) {
+                ball++;
+            }
+        }
+        printMessage(ball,strike);
+        return strike == 3;
+    }
 
+    private void printMessage(int ball, int strike) {
+        String message = "";
+        if(ball > 0) {
+            message += ball + "볼 ";
+        }
+        if(strike > 0) {
+            message += strike + "스트라이크";
+        }
+        if(ball == 0 && strike == 0) {
+            message = "낫싱";
+        }
+        System.out.println(message);
+    }
 
 }
