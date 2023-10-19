@@ -11,10 +11,10 @@ public class Computer {
     private final List<Integer> computerNumbers;
 
     public Computer(int start, int end, int size) {
-        computerNumbers = generateUniqueNumbers(start, end, size);
+        computerNumbers = generateComputerNumbers(start, end, size);
     }
 
-    private List<Integer> generateUniqueNumbers(int start, int end, int size) {
+    private List<Integer> generateComputerNumbers(int start, int end, int size) {
         Set<Integer> uniqueNumbers = new LinkedHashSet<>();
         while (uniqueNumbers.size() < size) {
             int randomNumber = Randoms.pickNumberInRange(start, end);
