@@ -10,9 +10,22 @@ public class Application {
     static final int DIGIT = 3;
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.\n");
-        List<Integer> pickedList = selectDigitNumbers(DIGIT);
+        playGame(DIGIT);
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        if(Console.readLine().equals("1")){
+            playGame(DIGIT);
+        }else if(Console.readLine().equals("2")){
+            System.out.println("게임 종료\n");
+        }
+    }
+    public static void playGame(int digit){
+        List<Integer> pickedList = selectDigitNumbers(digit);
+
         String userInput = tryAnswer();
-       checkAnswer(userInput, pickedList);
+        while (!checkAnswer(userInput, pickedList)){
+            userInput = tryAnswer();
+        }
     }
 
     public static List<Integer> selectDigitNumbers(int digit){
@@ -42,7 +55,7 @@ public class Application {
         if(userInput.length() != 3 || isDuplicate || hasZero) throw new Exception();
     }
 
-    public static void checkAnswer(String candidate, List<Integer> pickedList) {
+    public static boolean checkAnswer(String candidate, List<Integer> pickedList) {
         Map<String, Integer> resultMap = new HashMap<>();
         int[] parsedIntegerArray = Arrays.stream(candidate.split("")).mapToInt(Integer::parseInt).toArray();
         for(int i = 0; i < parsedIntegerArray.length; i++){
@@ -52,13 +65,12 @@ public class Application {
                 }else{
                     resultMap.put("ball", resultMap.containsKey("ball")? resultMap.get("ball")+1 : 1);
                 }
-            }else{
-                continue;
             }
         }
         printAnswer(resultMap);
+        return resultMap.containsKey("strike") && resultMap.get("strike") == 3;
     }
-    public static void printAnswer(Map map){
+    public static void printAnswer(Map<String, Integer> map){
         String strike = "";
         String ball = "";
         if(map.isEmpty()){
