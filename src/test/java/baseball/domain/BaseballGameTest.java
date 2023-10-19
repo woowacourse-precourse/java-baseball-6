@@ -50,4 +50,15 @@ class BaseballGameTest {
         baseballGame.play(userBalls);
         assertThat(baseballGame.isGameEnd()).isTrue();
     }
+
+    @Test
+    @DisplayName("게임을 다시 시작할 수 있다.")
+    void restart() {
+        Balls userBalls = new Balls(List.of(1, 2, 3));
+        baseballGame.play(userBalls);
+        assertThat(baseballGame.isGameEnd()).isTrue();
+
+        baseballGame.restart();
+        assertThat(baseballGame.isGameEnd()).isFalse();
+    }
 }

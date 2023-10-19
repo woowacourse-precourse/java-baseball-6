@@ -1,7 +1,7 @@
 package baseball.domain;
 
 public class BaseballGame {
-    private final Balls computerBalls;
+    private Balls computerBalls;
     private GameState gameState;
 
     public BaseballGame(Balls computerBalls) {
@@ -20,5 +20,10 @@ public class BaseballGame {
 
     public boolean isGameEnd() {
         return gameState == GameState.END;
+    }
+
+    public void restart() {
+        computerBalls = new Balls(RandomNumberGenerator.createRandomNumbers());
+        gameState = GameState.PLAYING;
     }
 }
