@@ -16,6 +16,7 @@ public class Application {
             human.setNumbers();
 
             judger.compareNumbers(human.getNumbers(), computer.getNumbers());
+            judger.displayScoreboard();
         } while (true);
     }
 }

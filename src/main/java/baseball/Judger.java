@@ -14,7 +14,6 @@ public class Judger {
         int[] strikeIdx = checkStrike(human, computer);
         checkBall(human, computer, strikeIdx);
         checkNothing();
-        displayScoreboard();
     }
 
     public void displayScoreboard() {
