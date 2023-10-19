@@ -5,7 +5,12 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import Player.Player;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayInputStream;
+import java.util.Arrays;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -33,5 +38,18 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
+    @Test
+    @DisplayName("플레이어의 입력이 123인지 확인하는 테스트")
+    public void 플레이어_입력_정상_테스트() {
+        //given
+        String playerInput = "123";
+        Player player = new Player();
+        System.setIn(new ByteArrayInputStream(playerInput.getBytes()));
 
+        //when
+        List<Integer> playerBaseballNumber = player.inputPlayerNumber();
+
+        //then
+        assertThat(playerBaseballNumber).isEqualTo(Arrays.asList(1, 2, 3));
+    }
 }
