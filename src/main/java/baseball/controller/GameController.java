@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.service.GameService;
-import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
@@ -18,6 +17,10 @@ public class GameController {
     }
 
     public void play(String input){
-        gameService.setUserbaseballNumber(input);
+        gameService.setUserBaseballNumber(input);
+    }
+
+    public boolean restart(String input){
+        return gameService.restart(input);
     }
 }
