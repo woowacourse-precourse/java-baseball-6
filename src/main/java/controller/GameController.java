@@ -1,6 +1,10 @@
 package controller;
 
+import model.GameNumber;
+import view.InputView;
 import view.OutputView;
+
+import java.util.List;
 
 /**
  * packageName    : controller
@@ -16,12 +20,30 @@ import view.OutputView;
 public class GameController {
 
     OutputView outputView = new OutputView();
+    GameNumber gameNumber = new GameNumber();
+    ComputerController computer = new ComputerController();
+    InputView inputView = new InputView();
+    ValidationController validation = new ValidationController();
 
     public void proceedGame(){
         boolean gameState = true;
 
         while(gameState){
             outputView.printGameStart();
+            computer.startGame(gameNumber);
+            messagePrint();
         }
+    }
+
+    private void messagePrint(){
+        boolean answer = false;
+        while(!answer){
+            validationPlayer();
+        }
+    }
+
+    private void validationPlayer(){
+        gameNumber.setPlayerInput(inputView.inputNumber());
+        List<Integer> playerNumbers = validation.validate(gameNumber.getPlayerInput());
     }
 }
