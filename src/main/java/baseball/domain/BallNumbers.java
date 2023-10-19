@@ -1,8 +1,10 @@
 package baseball.domain;
 
 import java.util.List;
+import java.util.Objects;
 
 public final class BallNumbers {
+
   private final List<Integer> numbers;
 
   private BallNumbers(final List<Integer> numbers) {
@@ -20,5 +22,21 @@ public final class BallNumbers {
         throw new IllegalArgumentException("BallNumbers는 1~9 사이의 3자리 수여야 합니다.");
       }
     }
+  }
+
+  public boolean comparesAt(
+      final int index,
+      final BallNumbers other
+  ) {
+    return Objects.equals(numbers.get(index), other.numbers.get(index));
+  }
+
+  public boolean containsAt(
+      final int index,
+      final BallNumbers other
+  ) {
+    return numbers
+        .stream()
+        .anyMatch(other.numbers::contains);
   }
 }
