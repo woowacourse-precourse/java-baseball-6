@@ -42,6 +42,8 @@ public class GameController {
             validateController.validateInputString(input, MAXIMUM_NUMBER_LENGTH);
             success = playController.isSuccess(input);
         }
+
+        gameOutput.printEndGame();
     }
 
 
