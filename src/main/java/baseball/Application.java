@@ -11,6 +11,8 @@ public class Application {
 
 		UserNumber UserNumber = new UserNumber();
 		String[] inputUserNumber = UserNumber.inputUserNumber();
+		UserNumber.checkInputOnlyNum(inputUserNumber);
+
 		Set<Integer> UserNumberSet = UserNumber.toSetUserNumber(inputUserNumber);
 		System.out.println(UserNumberSet);
 
@@ -33,10 +35,34 @@ public class Application {
 }
 
 class UserNumber {
+	final int COMPUTER_NUMBER_SIZE = 3;
+	final int COMPUTER_MIN_NUMBER = 1;
+	final int COMPUTER_MAX_NUMBER = 9;
+
 	String[] inputUserNumber() {
+
 		System.out.print("숫자를 입력해주세요 : ");
 
 		return Console.readLine().split(",");
+	}
+
+	void checkInputOnlyNum(String[] inputUserNumber) {
+		boolean errorTest = false;
+
+		for (int i = 0; i < inputUserNumber.length; i++) {
+			String eachUserNumber = inputUserNumber[i].trim();
+
+			try {
+				Integer.parseInt(eachUserNumber);
+			} catch (IllegalArgumentException ill) {
+				errorTest = true;
+			}
+
+			if (errorTest) {
+				throw new IllegalArgumentException("숫자만 입력해주세요");
+			}
+
+		}
 	}
 
 	Set<Integer> toSetUserNumber(String[] inputUserNumber) {
