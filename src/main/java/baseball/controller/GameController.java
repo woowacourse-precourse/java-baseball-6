@@ -17,7 +17,7 @@ public class GameController {
     public GameController() {
         this.generateController = new GenerateController();
         this.validateController = new ValidateController();
-        this.playController = new PlayController(this.generateController, MAXIMUM_NUMBER_LENGTH);
+        this.playController = new PlayController(this.generateController, this.validateController, this.MAXIMUM_NUMBER_LENGTH);
         this.gameInput = new GameInput();
         this.gameOutput = new GameOutput();
 
