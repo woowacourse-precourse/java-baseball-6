@@ -4,6 +4,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GamePresenter {
+    public void validateNumbers(String numbers) {
+        if (!isValidNumeric(numbers)) {
+            throw new IllegalArgumentException("잘못된 형식입니다.");
+        }
+        if (!isValidLength(numbers)) {
+            throw new IllegalArgumentException("자릿수가 올바르지 않습니다.");
+        }
+        if (!isDuplicate(numbers)) {
+            throw new IllegalArgumentException("중복된 수가 존재합니다.");
+        }
+    }
+
     private boolean isValidNumeric(String numbers) {
         return numbers.matches("^[1-9]+$");
     }
