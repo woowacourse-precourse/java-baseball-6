@@ -13,7 +13,7 @@ public class GameException {
             throw new IllegalArgumentException(PLAYER_INPUT_NUMBER_LENGTH_ERROR_MESSAGE);
     }
 
-    public void playerNumberRangeException(String inputPlayerNumber) throws IllegalArgumentException {
+    public void playerNumberTypeException(String inputPlayerNumber) throws IllegalArgumentException {
         if (!NUMBER_DIGIT_MATCH.matcher(inputPlayerNumber).matches())
             throw new IllegalArgumentException(PLAYER_INPUT_NUMBER_RANGE_ERROR_MESSAGE);
     }
