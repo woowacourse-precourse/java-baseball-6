@@ -15,7 +15,7 @@ public class Application {
             System.out.println(game.printResult());
 
             if (game.isThreeStrike()) {
-                if(!game.restart()){
+                if(!Game.restart()){
                     break;
                 }
                 else{

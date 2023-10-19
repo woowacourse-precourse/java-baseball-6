@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Objects;
-
 public class Game {
     private final Integer strike;
     private final Integer ball;
