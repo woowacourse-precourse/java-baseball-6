@@ -50,6 +50,8 @@ public class Game {
             }
         }
     }
+
+    // 해당 게임에서 다시 할건지 물어보는게 맞는 것 같다.
     public boolean recheck() {
         String replayInput = input.replayInput();
         if (validator.reValid(replayInput)) {
@@ -66,9 +68,5 @@ public class Game {
 
     public boolean winCheck(GameResult gameResult){
         return gameResult.getStrike() == 3 && gameResult.getBall() == 0;
-    }
-
-    public void reset() {
-        initRandomNum.reset();
     }
 }
