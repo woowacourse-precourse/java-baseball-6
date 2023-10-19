@@ -17,7 +17,7 @@ public class Count {
         strikeCount++;
     }
 
-    public void initialize() {
+    public void clean() {
         ballCount = 0;
         strikeCount = 0;
     }
