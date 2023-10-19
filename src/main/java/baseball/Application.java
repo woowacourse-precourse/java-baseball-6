@@ -136,7 +136,6 @@ public class Application {
     }
 
     static void play() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         GameNumber computer = pickComputerNumber();
         boolean isGameProceed = true;
         while (isGameProceed) {
@@ -150,8 +149,31 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    static int readReplayInput() {
+        String input = Console.readLine();
+        return parseInt(input);
+    }
+
+    static boolean checkShouldReplay() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int replay = readReplayInput();
+
+        if (replay != 1 && replay != 2) {
+            throw new IllegalArgumentException();
+        }
+        return replay == 1;
+    }
+
+    static void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean shouldPlay = true;
+        while (shouldPlay) {
+            play();
+            shouldPlay = checkShouldReplay();
+        }
+    }
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        play();
+        startGame();
     }
 }
