@@ -33,7 +33,7 @@ public class BaseballController {
         if (restartNumber.equals("1") || restartNumber.equals("2")) {
             return;
         }
-        throw new IllegalStateException();
+        throw new IllegalArgumentException();
     }
 
     private void printResult(NumberBaseball baseball, String userInput) {

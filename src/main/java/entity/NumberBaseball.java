@@ -28,7 +28,7 @@ public class NumberBaseball {
         if (isNumberLengthThree(numbers) && isNumberDuplicate(numbers) && isNumber(numbers)) {
             return;
         }
-        throw new IllegalStateException();
+        throw new IllegalArgumentException();
     }
 
     private boolean isNumber(String numbers) {
