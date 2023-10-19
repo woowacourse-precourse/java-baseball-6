@@ -6,8 +6,9 @@ import java.util.List;
 
 
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
         boolean gameRunning = true;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -61,7 +62,7 @@ public class Application {
                 System.out.println("낫싱");
             } else {
                 if (ball > 0) {
-                    System.out.print(ball + "볼 ");
+                    System.out.print(ball + "볼");
                 }
                 if (strike > 0) {
                     System.out.print(strike + "스트라이크");
@@ -79,8 +80,16 @@ public class Application {
                 }
                 else {
                     gameRunning = true;
+                    computer.clear();
+                    while (computer.size() < 3) {
+                        int randomNumber = Randoms.pickNumberInRange(1, 9);
+                        if (!computer.contains(randomNumber)) {
+                            computer.add(randomNumber);
+                        }
+                    }
                 }
             }
+
         }
     }
 }
