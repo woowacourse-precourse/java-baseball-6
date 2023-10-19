@@ -16,6 +16,7 @@ public class OutputView {
 
     /**
      * 야구 게임 결과 출력
+     * 구현해야함!!
      */
     public void gameResult() {
         // 볼 스트라이크
