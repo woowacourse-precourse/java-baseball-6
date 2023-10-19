@@ -33,11 +33,11 @@ public class Application {
                 if(input.length()!=3)
                     throw new IllegalArgumentException();
                 /*
-                * 모두 숫자인지 판단
+                * 모두 1 ~ 9 사이 숫자인지 판단
                 */
                 for(int i=0; i<3; i++) {
                     char c = input.charAt(i);
-                    if(!Character.isDigit(c))
+                    if(!Character.isDigit(c) || Character.getNumericValue(c) == 0)
                         throw new IllegalArgumentException();
                     guess[i] = Character.getNumericValue(c);
                 }
@@ -69,6 +69,9 @@ public class Application {
                 */
                 if (result[0] == 0 && result[1] == 0)
                     System.out.println("낫싱");
+                else {
+
+                }
 
                 if(result[1] == 3) {
                     System.out.println("3스트라이크");
@@ -79,9 +82,9 @@ public class Application {
                     * 게임 재시작 및 종료
                     */
                     String game = Console.readLine();
-                    if(game == "1")
+                    if(game.equals("1"))
                         break;
-                    if(game == "2")
+                    if(game.equals("2"))
                         return;
                 }
 
@@ -90,7 +93,8 @@ public class Application {
                     output += result[0] + "볼 ";
                 if (result[1] > 0)
                     output += result[1] + "스트라이크";
-                System.out.println(output);
+                if(output.length() != 0)
+                    System.out.println(output);
 
             }
 
