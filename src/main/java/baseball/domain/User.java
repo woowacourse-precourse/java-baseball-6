@@ -27,6 +27,9 @@ public class User {
             throw new IllegalArgumentException();
     }
 
-
+    public void validateIncludedZreo(String input){
+        if(input.contains("0"))
+            throw new IllegalArgumentException();
+    }
 
 }
