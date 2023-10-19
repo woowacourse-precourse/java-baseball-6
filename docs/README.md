@@ -1,5 +1,12 @@
 ## Message 클래스
 - 출력 메서드
+```java
+String startMessage() 게임 시작 문구 반환
+String requestNumberMessage() 숫자 입력 메시지 문구 반환
+String successMessage() 3스트라이크 성공 문구 반환
+String restartOrStopMessage() 재시작 / 종료 선택 문구 반환
+String scoreMessage(int ball, int strike) 볼 / 스트라이크 현재 스코어 문구 반환
+```
 
 ## AnswerMaker 클래스
 - 난수 생성 메서드
