@@ -25,7 +25,7 @@ public class BaseballGame {
         }
         return baseballGame;
     }
-
+    
     public void play() {
         List<Integer> computerNumber = setComputerNumber();
 
@@ -35,11 +35,9 @@ public class BaseballGame {
 
             Result result = compareNumber(computerNumber, myNumber);
 
-            int ball = result.getBall();
-            int strike = result.getStrike();
-            printResult(ball, strike);
+            printResult(result);
 
-            if (strike == 3) {
+            if (result.getStrike() == 3) {
                 playing = false;
             }
         }
@@ -97,7 +95,10 @@ public class BaseballGame {
         return new Result(ball, strike);
     }
 
-    private void printResult(int ball, int strike) {
+    private void printResult(Result result) {
+        int ball = result.getBall();
+        int strike = result.getStrike();
+
         StringBuilder sb = new StringBuilder();
 
         if (ball == 0 && strike == 0) {
