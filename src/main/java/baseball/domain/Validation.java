@@ -10,4 +10,8 @@ public class Validation {
 
         return input.length()==3 && input.matches(regex) && uniqueInput.size()==3;
     }
+
+    public boolean continueValue(String input){
+        return input.equals("1") || input.equals("2");
+    }
 }
