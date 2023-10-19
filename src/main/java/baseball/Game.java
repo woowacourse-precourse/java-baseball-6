@@ -10,6 +10,11 @@ public class Game {
     Game(){
     }
 
+    public void initGame(){ //게임 상태 초기화
+        this.computer = new Computer();
+        this.user = new User();
+    }
+
     public void printStartMessage(){ //게임 시작 문구 출력
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
