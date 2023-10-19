@@ -11,22 +11,22 @@ ex:) 123(o), 356(o), 161(x)
 <br>
 
 ##### 🚫 예외 처리
-- [] 생성된 수에서 중복된 수가 있을 경우 ``NumberDuplicateException``
-- [] 생성된 수가 3자리 수를 초과할 경우 ``NumberSizeException``
-- [] 1 ~ 9 범위가 아닌 수가 있을 경우 ``NumberRangeException``
+- [x] 생성된 수에서 중복된 수가 있을 경우 ``NumberDuplicateException``
+- [x] 생성된 수가 3자리 수를 초과할 경우 ``NumberSizeException``
+- [x] 1 ~ 9 범위가 아닌 수가 있을 경우 ``NumberRangeException``
 
 ---
 ### 📌 플레이어 게임 숫자 입력
-- [] 1부터 9까지의 수 중 서로 다른 수로 이뤄진 3자리의 수를 입력한다.
-- [] 사용자가 입력하는 값은 ``camp.nextstep.edu.missionutils.Console``의 ``readLine()``을 활용한다.
+- [x] 1부터 9까지의 수 중 서로 다른 수로 이뤄진 3자리의 수를 입력한다.
+- [x] 사용자가 입력하는 값은 ``camp.nextstep.edu.missionutils.Console``의 ``readLine()``을 활용한다.
 
 <br>
 
 ##### 🚫 예외 처리
-- [] 중복되는 수를 입력했을 경우 ``NumberDuplicateException`` 
-- [] 3자리를 초과해 입력할 경우 ``NumberSizeException``
-- [] 1 ~ 9 범위의 수를 입력하지 않았을 경우 ``NumberRangeException``
-- [] 숫자가 아닌 값을 입력했을 경우 ``NumberFormatException``
+- [x] 중복되는 수를 입력했을 경우 ``NumberDuplicateException`` 
+- [x] 3자리를 초과해 입력할 경우 ``NumberSizeException``
+- [x] 1 ~ 9 범위의 수를 입력하지 않았을 경우 ``NumberRangeException``
+- [x] 숫자가 아닌 값을 입력했을 경우 ``NumberFormatException``
 
 ---
 ### 📌 숫자 야구 게임 진행
