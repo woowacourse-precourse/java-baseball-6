@@ -12,8 +12,7 @@
 1. 게임 설정, 진행과 관련된 Enum 생성
    1. Size : 볼의 범위, 자리수 등 설정
    2. Command : 게임 재시작 시 입력받는 커맨드 설정
-   3. CustomException : 입력에 문제가 있을때 발생할 예외 설정
-   4. ErrorCode : 예외의 종류 구분용 코드
+   3. Message : 화면 출력용 메세지
 2. InputValidator : 입력 값을 검증
    1. checkOutOfRange(int input) : 볼 범위를 벗어나는지 검증 후 반환
    2. isInteger(String input) : 숫자인지 검증 후 반환

@@ -1,22 +1,23 @@
 package baseball.service;
 
 import baseball.common.Command;
-import baseball.common.CustomException;
 import baseball.common.Size;
 import baseball.controller.InputController;
 import baseball.entity.Ball;
+import baseball.view.OutputView;
 
 public class BallService {
     private Ball ball;
     private OutputView outputView;
     private InputController inputController;
+    private BallGenerator ballGenerator;
     private boolean running;
 
     public void init() {
-        BallGenerator ballGenerator = new BallGenerator();
-        this.ball = new Ball(ballGenerator.createBall());
-        this.inputController = new InputController();
-        this.outputView = new OutputView();
+        ballGenerator = new BallGenerator();
+        ball = new Ball(ballGenerator.createBall());
+        inputController = new InputController();
+        outputView = new OutputView();
         running = true;
         outputView.printStart();
     }
@@ -27,35 +28,20 @@ public class BallService {
         }
     }
 
-    private boolean restartSequence() {
+    private void restartSequence() {
         outputView.printRestart();
-        return getCommand().equals(Command.RESTART.getKey());
+        running = inputController.getCommand().equals(Command.RESTART.getKey());
+        if (running) {
+            ball = new Ball(ballGenerator.createBall());
+        }
     }
 
     private void mainSequence() {
         outputView.printGetBall();
-        int[] score = ball.compareBall(getBall());
+        int[] score = ball.compareBall(inputController.getBall());
         outputView.printResult(score);
         if (score[1] == Size.NUMBER.getValue()) {
-            running = restartSequence();
-        }
-    }
-
-    private String getCommand() {
-        try {
-            return inputController.getCommand();
-        } catch (CustomException e) {
-            outputView.printMessage(e.getErrorMessage());
-            return getCommand();
-        }
-    }
-
-    private int getBall() {
-        try {
-            return inputController.getBall();
-        } catch (CustomException e) {
-            outputView.printMessage(e.getErrorMessage());
-            return getBall();
+            restartSequence();
         }
     }
 }
