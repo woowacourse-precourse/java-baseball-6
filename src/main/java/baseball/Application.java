@@ -9,9 +9,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
 	public static void main(String[] args) {
 
-		UserNumber userNumber = new UserNumber();
-		String inputUserNumber = userNumber.inputUserNumber();
-		System.out.println(inputUserNumber);
+		UserNumber UserNumber = new UserNumber();
+		String[] inputUserNumber = UserNumber.inputUserNumber();
+		Set<Integer> UserNumberSet = UserNumber.toSetUserNumber(inputUserNumber);
+		System.out.println(UserNumberSet);
 
 	}
 
@@ -32,9 +33,21 @@ public class Application {
 }
 
 class UserNumber {
-	String inputUserNumber() {
+	String[] inputUserNumber() {
 		System.out.print("숫자를 입력해주세요 : ");
-		return Console.readLine();
+
+		return Console.readLine().split(",");
+	}
+
+	Set<Integer> toSetUserNumber(String[] inputUserNumber) {
+
+		Set<Integer> UserNumber = new HashSet<>();
+
+		for (String eachUserNumber : inputUserNumber) {
+			UserNumber.add(Integer.parseInt(eachUserNumber.trim()));
+		}
+
+		return UserNumber;
 	}
 
 }
