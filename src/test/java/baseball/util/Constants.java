@@ -9,7 +9,7 @@ public class Constants {
     public static final String EMPTY_INPUT_SUFFIX_MESSAGE = "아무것도 입력하지 않았습니다";
     public static final String WRONG_LENGTH_SUFFIX_MESSAGE = "3개의 수로 입력하지 않았습니다";
     public static final String WRONG_CHARACTER_SUFFIX_MESSAGE = "숫자가 아닌 문자를 입력했습니다";
-
+    public static final String DUPLICATED_NUMBER_SUFFIX_MESSAGE = "중복된 수가 존재합니다.";
 
     public static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     public static final String NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 :";
