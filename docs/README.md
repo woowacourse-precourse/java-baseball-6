@@ -11,7 +11,7 @@ String scoreMessage(int ball, int strike) 볼 / 스트라이크 현재 스코어
 ## NumberBaseballGame 클래스
 - 출력 메서드
 ```java
-void speaker() 입력받은 메세지 출력
+void speaker(String message) 입력받은 메세지 출력
 ```
 - 게임 진행 메서드
 ```java
