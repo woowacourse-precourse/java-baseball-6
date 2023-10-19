@@ -27,20 +27,23 @@ public class GameStarter {
             System.out.println(START_MESSAGE);
         }
         while (true){
-            System.out.print(PLAY_MESSAGE);
-            String input = RequestChecker.gameRequest();
-
-            count = new Count();
-            IntStream.range(0, length)
-                    .forEach(i -> processGuessDigit(input, result, i));
-            hintMessage();
-
+            respondToUserGuess();
             if(isResult()){
                 System.out.println(COMPLETE_MESSAGE);
                 System.out.println(END_MESSAGE);
                 return gameHelper;
             }
         }
+    }
+
+    private void respondToUserGuess() {
+        System.out.print(PLAY_MESSAGE);
+        String input = RequestChecker.gameRequest();
+
+        count = new Count();
+        IntStream.range(0, length)
+                .forEach(i -> processGuessDigit(input, result, i));
+        hintMessage();
     }
 
     private void processGuessDigit(String input, String result, int index){
@@ -56,10 +59,6 @@ public class GameStarter {
             }
         }
     }
-    private Boolean isResult() {
-        return count.getStrikeCount() == length;
-    }
-
     private void hintMessage() {
         int strikeCount = count.getStrikeCount();
         int ballCount = count.getBallCount();
@@ -76,5 +75,9 @@ public class GameStarter {
         }
 
         System.out.println(message);
+    }
+
+    private Boolean isResult() {
+        return count.getStrikeCount() == length;
     }
 }

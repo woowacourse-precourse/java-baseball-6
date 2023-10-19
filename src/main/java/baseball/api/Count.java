@@ -14,7 +14,6 @@ public class Count {
     public int getStrikeCount() {
         return strikeCount;
     }
-
     public int getBallCount() {
         return ballCount;
     }
