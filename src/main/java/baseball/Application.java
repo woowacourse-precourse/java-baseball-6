@@ -9,9 +9,12 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
+        int strikes; // 스트라이크 개수
+        int balls; // 볼 개수
 
-//        System.out.println("숫자 야구 게임을 시작합니다.");
-//        System.out.print("숫자를 입력해주세요 : ");
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.print("숫자를 입력해주세요 : ");
 //        String str = Console.readLine();
 //        String[] strings = str.split("");
 //
@@ -19,12 +22,12 @@ public class Application {
 //
 //        }
 
-        List<Integer> computer = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            computer.add(Randoms.pickNumberInRange(1, 9));
-        }
-
-        System.out.println("컴퓨터 숫자 : "+computer);
+//        List<Integer> computer = new ArrayList<>();
+//        for (int i = 0; i < 3; i++) {
+//            computer.add(Randoms.pickNumberInRange(1, 9));
+//        }
+//
+//        System.out.println("컴퓨터 숫자 : "+computer);
 
 //        System.out.println("입력한 숫자: " + str);
     }
