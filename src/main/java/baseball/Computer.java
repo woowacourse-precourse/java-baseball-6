@@ -10,6 +10,10 @@ public class Computer {
         threeNumbers.add(num);
     }
 
+    public boolean contains(int num){
+        return threeNumbers.contains(num);
+    }
+
     @Override
     public String toString() {
         return "Computer{" +
