@@ -10,7 +10,7 @@ import java.util.List;
  * 사용자의 입력을 검증하는 클래스.
  * <p>단순한 입력 검증이 목표이며, 검증 성공 여부만을 알려준다. 추가적인 예외 발생 등은 PlayerInput에서 처리한다.
  */
-public class PlayerNumbersInputValidator {
+public class NumbersInputValidator {
 
     public static boolean validatePlayerNumbers(List<Integer> playerNumbers) {
         return validateNumberCount(playerNumbers) &&
@@ -31,7 +31,7 @@ public class PlayerNumbersInputValidator {
 
     private static boolean validateNumbersInRange(List<Integer> numbers) {
         return numbers.stream()
-                .allMatch(PlayerNumbersInputValidator::validateNumberInRange);
+                .allMatch(NumbersInputValidator::validateNumberInRange);
     }
 
     private static boolean validateNumberInRange(Integer number) {

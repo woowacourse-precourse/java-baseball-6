@@ -21,7 +21,7 @@ public class PlayerInput {
             int number = playerInput.charAt(index) - '0';
             playerNumbers.add(number);
         }
-        if (!PlayerNumbersInputValidator.validatePlayerNumbers(playerNumbers)) {
+        if (!NumbersInputValidator.validatePlayerNumbers(playerNumbers)) {
             throw new IllegalArgumentException();
         }
         return playerNumbers;
@@ -29,7 +29,7 @@ public class PlayerInput {
 
     public int getMenuNumber() {
         String playerInput = Console.readLine();
-        if (!PlayerMenuInputValidator.validateMenuString(playerInput)) {
+        if (!MenuInputValidator.validateMenuString(playerInput)) {
             throw new IllegalArgumentException();
         }
         return Integer.parseInt(playerInput);
