@@ -3,7 +3,9 @@ package hint;
 import java.util.List;
 
 public class Hint {
-    public int[] calculateStrikeAndBall(List<Integer> computerBaseballNumber, List<Integer> playerBaseballNumber) {
+    public static int[] calculateStrikeAndBall(
+            List<Integer> computerBaseballNumber, List<Integer> playerBaseballNumber) {
+        
         int strike = 0;
         int ball = 0;
 

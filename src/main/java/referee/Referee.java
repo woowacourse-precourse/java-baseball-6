@@ -2,14 +2,15 @@ package referee;
 
 import camp.nextstep.edu.missionutils.Console;
 import hint.Hint;
+import java.util.List;
 import message.Message;
 import player.Computer;
 import player.Player;
 
 public class Referee {
-    Computer computer;
-    Player player;
-    Hint hint;
+    private Computer computer;
+    private Player player;
+    private Hint hint;
     private final static String START = "1";
     private final static String END = "2";
 
@@ -21,8 +22,9 @@ public class Referee {
         do {
             Message.printIntegerInputFromUserMessage();
             player.inputPlayerNumber();
-            int[] score = hint.calculateStrikeAndBall(player.getPlayerBaseballNumber(),
-                    computer.getComputerBaseballNumber());
+            List<Integer> playerBaseballNumber = player.getPlayerBaseballNumber();
+            List<Integer> computerBaseballNumber = computer.getComputerBaseballNumber();
+            int[] score = hint.calculateStrikeAndBall(playerBaseballNumber, computerBaseballNumber);
             Message.printHintMessage(score);
         } while (!isThreeStrike());
 
@@ -33,6 +35,7 @@ public class Referee {
     public void continueOrFinish() {
         Message.printContinueOrFinishMessage();
         String userInput = Console.readLine();
+        
         if (userInput.equals(START)) {
             playBall();
         }
@@ -44,6 +47,4 @@ public class Referee {
     private boolean isThreeStrike() {
         return player.getPlayerBaseballNumber().equals(computer.getComputerBaseballNumber());
     }
-
-
 }
