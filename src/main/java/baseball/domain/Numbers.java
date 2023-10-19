@@ -34,4 +34,21 @@ public class Numbers {
     public boolean hasNumber(Number target) {
         return numbers.stream().anyMatch(number -> number.equals(target));
     }
+
+    public boolean checkSamePosition(int index, Number target) {
+        return (hasNumber(target)) && numbers.get(index).equals(target);
+    }
+
+    public GameResult compareWith(Numbers target) {
+        GameResult gameResult = new GameResult();
+
+        for (int i = 0; i < GameConstants.NUMBER_SIZE.getNumber(); i++) {
+            if (target.checkSamePosition(i, numbers.get(i))) {
+                gameResult.strike();
+            } else if (target.hasNumber(numbers.get(i))) {
+                gameResult.ball();
+            }
+        }
+        return gameResult;
+    }
 }

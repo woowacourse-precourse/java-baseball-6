@@ -1,7 +1,7 @@
 package baseball.controller;
 
+    import baseball.application.NumberGenerator;
 import baseball.domain.GameResult;
-import baseball.application.NumberGenerator;
 import baseball.domain.Numbers;
 import baseball.view.InputView;
 
@@ -14,8 +14,7 @@ public class BaseballGame {
 
         Numbers otherNumbers = numberGenerator.generateNumbers();
 
-        GameResult gameResult = new GameResult();
-
+        GameResult gameResult = numbers.compareWith(otherNumbers);
     }
 
     public BaseballGame(NumberGenerator numberGenerator) {
