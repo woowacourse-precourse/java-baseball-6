@@ -15,8 +15,8 @@ public class BaseBallGame {
     }
     private void startNewGame() {
         List<Integer> computerNumbers = generateComputerNumber();
-        String temp  = InputView.readPlayerNumber();
-        System.out.println(temp);
+        String[] input = InputView.readPlayerNumber();
+
     }
     private List<Integer> generateComputerNumber(){
         List<Integer> computer = new ArrayList<>();
