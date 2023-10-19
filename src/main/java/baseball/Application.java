@@ -37,10 +37,15 @@ public class Application {
 
     private static String changeResultToText(int[] result) {
         StringBuffer buffer = new StringBuffer();
-        if (result[0] != 0)
-            buffer.append(result[0] + "볼 ");
-        if (result[1] != 0)
-            buffer.append(result[1] + "스트라이크");
+        if (result[0] == 0 && result[0] == 0)
+            buffer.append("낫싱");
+        else {
+            if (result[0] != 0)
+                buffer.append(result[0] + "볼 ");
+
+            if (result[1] != 0)
+                buffer.append(result[1] + "스트라이크");
+        }
         return buffer.toString();
     }
 
