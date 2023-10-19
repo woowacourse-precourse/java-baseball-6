@@ -43,7 +43,8 @@ public class Application {
         return comNums;
     }
 
-    public static void main(String[] args) {
+    // 게임 초기화
+    static void onStarting() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         // 게임 진행 여부
@@ -51,49 +52,59 @@ public class Application {
 
         // 게임 시작
         while(onStart) {
-            int[] comNums = generateComNums();      // 컴퓨터 숫자
-            boolean onPlaying = true;              // 본게임 진행 여부
+            onStart = onPlayingGame(onStart);
+        }
+    }
 
-            // 본게임 시작
-            while(onPlaying) {
-                System.out.print("숫자를 입력해주세요 : ");
-                String temp = Console.readLine();
+    // 본 게임 시작
+    static boolean onPlayingGame(boolean onStart) {
+        int[] comNums = generateComNums();      // 컴퓨터 숫자
+        boolean onPlaying = true;              // 본게임 진행 여부
 
-                int[] inputArr = strToArr(temp);
+        while(onPlaying) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputNums = Console.readLine();
 
-                int strike = 0;
-                int ball = 0;
+            int[] inputArr = strToArr(inputNums);       // 배열 변환
 
-                for (int i = 0; i < comNums.length; i++) {
-                    if(comNums[i] == inputArr[i]) {
-                        strike++;
-                    }else if (checkContains(comNums, inputArr[i])) {
-                        ball++;
-                    }
-                }
+            // 결과값
+            int strike = 0;
+            int ball = 0;
 
-                // 결과 출력
-                System.out.println((ball > 0 ? ball + "볼" : "") +
-                        (ball > 0 && strike > 0 ? " " : "") +
-                        (strike > 0? strike + "스트라이크" : ""));
-
-                // 게임 종료 체크
-                if (strike == 3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
-                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    int inputStr = Integer.parseInt(Console.readLine());
-                    if (inputStr == 1) {
-                        onStart = true;
-                    }else if (inputStr == 2) {
-                        onStart = false;
-                    }else {
-                        throw new IllegalArgumentException();
-                    }
-                    onPlaying = false;
-                }else if(strike + ball == 0){
-                    System.out.println("낫싱");
+            // 스트라이크, 볼 체크
+            for (int i = 0; i < comNums.length; i++) {
+                if(comNums[i] == inputArr[i]) {
+                    strike++;
+                }else if (checkContains(comNums, inputArr[i])) {
+                    ball++;
                 }
             }
+
+            // 결과 출력
+            System.out.println((ball > 0 ? ball + "볼" : "") +
+                    (ball > 0 && strike > 0 ? " " : "") +
+                    (strike > 0? strike + "스트라이크" : ""));
+
+            // 게임 종료 체크
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                        "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int inputStr = Integer.parseInt(Console.readLine());
+                if (inputStr == 1) {
+                    onStart = true;
+                }else if (inputStr == 2) {
+                    onStart = false;
+                }else {
+                    throw new IllegalArgumentException();
+                }
+                onPlaying = false;
+            }else if(strike + ball == 0){
+                System.out.println("낫싱");
+            }
         }
+        return onStart;
+    }
+    public static void main(String[] args) {
+        onStarting();
     }
 }
