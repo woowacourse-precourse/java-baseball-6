@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public class Validator {
 
     private static final Validator instance = new Validator();
@@ -11,32 +14,28 @@ public class Validator {
         return instance;
     }
 
-    public static boolean isValidNumber(String input) {
-        String[] digits = input.split("");
-        Character ch = '1';
-
-        return false;
-    }
-
     public static void validateInput(String input) {
-        if (!validateInputDigit(input)) {
-            throw new IllegalStateException();
-        }
-
-        if (!validateInputRange(input)) {
-            throw new IllegalStateException();
-        }
+        validateInputDigit(input);
+        validateInputRange(input);
+        validateInputContainsZero(input);
     }
 
-    private static boolean validateInputRange(String input) {
-        return input.length() == Const.NUMBER_LENGTH;
+    private static void validateInputRange(String input) {
+        if (input.length() == Const.NUMBER_LENGTH) return;
+        throw new IllegalStateException();
     }
 
-    private static boolean validateInputDigit(String input) {
+    private static void validateInputDigit(String input) {
         try {
             Integer.parseInt(input);
-            return true;
         } catch (NumberFormatException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    private static void validateInputContainsZero(String input) {
+        String[] split = input.split("");
+        if (Arrays.asList(split).contains("0")) {
             throw new IllegalStateException();
         }
     }
