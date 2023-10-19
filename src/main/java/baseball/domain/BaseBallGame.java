@@ -11,11 +11,12 @@ public class BaseBallGame {
 
     public void run() {
         OutputView.printStartMessage();
+        startNewGame();
     }
     private void startNewGame() {
         List<Integer> computerNumbers = generateComputerNumber();
-        InputView.readPlayerNumber();
-
+        String temp  = InputView.readPlayerNumber();
+        System.out.println(temp);
     }
     private List<Integer> generateComputerNumber(){
         List<Integer> computer = new ArrayList<>();
