@@ -23,7 +23,7 @@ public class Ball {
         return Objects.hash(ballNum, position);
     }
 
-    public BallStatus play(Ball ball) {
+    public BallStatus match(Ball ball) {
         if (this.equals(ball)) {
             return BallStatus.STRIKE;
         }
