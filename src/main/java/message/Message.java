@@ -1,5 +1,7 @@
 package message;
 
+import utils.BaseballRules;
+
 public class Message {
 
     private static final String BALL = "볼";
@@ -31,33 +33,17 @@ public class Message {
         int strike = score[0];
         int ball = score[1];
 
-        if (hasStrikeAndBall(strike, ball)) {
+        if (BaseballRules.hasStrikeAndBall(strike, ball)) {
             System.out.println(ball + BALL + " " + strike + STRIKE);
         }
-        if (hasStrikeButNoBall(strike, ball)) {
+        if (BaseballRules.hasStrikeButNoBall(strike, ball)) {
             System.out.println(strike + STRIKE);
         }
-        if (hasBallButNoStrike(strike, ball)) {
+        if (BaseballRules.hasBallButNoStrike(strike, ball)) {
             System.out.println(ball + BALL);
         }
-        if (noStrikeAndBall(strike, ball)) {
+        if (BaseballRules.noStrikeAndBall(strike, ball)) {
             System.out.println(NOTHING);
         }
-    }
-
-    private static boolean hasStrikeAndBall(int strike, int ball) {
-        return strike > 0 && ball > 0;
-    }
-
-    private static boolean hasStrikeButNoBall(int strike, int ball) {
-        return strike > 0 && ball == 0;
-    }
-
-    private static boolean hasBallButNoStrike(int strike, int ball) {
-        return ball > 0 && strike == 0;
-    }
-
-    private static boolean noStrikeAndBall(int strike, int ball) {
-        return strike == 0 && ball == 0;
     }
 }
