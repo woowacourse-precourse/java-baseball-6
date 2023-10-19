@@ -1,0 +1,14 @@
+## 구현할 기능 목록
+- 입력
+  - [ ] camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+  - [ ] 서로 다른 3자리의 수 입력받기
+  - [ ] 게임이 끝난 경우 재시작/종료를 구분하는 1과 2중 하나의 수 입력받기
+  - [ ] 잘못 된 값 입력하면 IllegalArgumentException 예외 발생시키고 어플리케이션 종료하기
+- 출력 
+  - [ ] 시작, 입력 프롬프트 출력
+  - [ ] 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시
+  - [ ] 게임 종료 출력
+- 컴퓨터 클래스 생성하기
+  - [ ] 생성 될 때 숫자 랜덤으로 생각하기  
+    - [ ] camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용하기
+  - [ ] 입력 값과 생각한 숫자 같은지 확인하는 메서드 만들기
