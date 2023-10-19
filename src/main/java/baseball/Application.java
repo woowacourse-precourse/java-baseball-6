@@ -68,7 +68,7 @@ public class Application {
                 if (i == j){
                     continue;
                 }
-                if (inputArray[i] == answerArray[j]) {
+                if (inputArray[i].equals(answerArray[j])) {
                     ball++;
                 }
             }
