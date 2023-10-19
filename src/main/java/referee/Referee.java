@@ -10,14 +10,12 @@ import player.Player;
 public class Referee {
     private Computer computer;
     private Player player;
-    private Hint hint;
     private static final String START = "1";
     private static final String END = "2";
 
     public void playBall() {
         computer = new Computer();
         player = new Player();
-        hint = new Hint();
 
         do {
             Message.printIntegerInputFromUserMessage();
