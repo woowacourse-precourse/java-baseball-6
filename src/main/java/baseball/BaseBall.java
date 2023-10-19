@@ -12,5 +12,15 @@ public class BaseBall {
         computerNumbers = computerBehavior.generatedNumbers();
         UserBehavior userBehavior = new UserBehavior(computerNumbers);
         int isRe = userBehavior.input();
+        restart(isRe);
+    }
+
+    public void restart(int isRe) {
+        if (isRe == 1) {
+            computerNumbers = computerBehavior.generatedNumbers();
+            UserBehavior userBehavior = new UserBehavior(computerNumbers);
+            isRe = userBehavior.input();
+            restart(isRe);
+        }
     }
 }
