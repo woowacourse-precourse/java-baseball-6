@@ -49,7 +49,7 @@ public class GameController {
         for (int i = 0; i < answer.getNumberList().size(); i++) {
             for (int j = 0; j < guess.getNumberList().size(); j++) {
                 if (answer.getNumberList().get(i) == guess.getNumberList().get(j)) {
-                    if (i == j) ballCount++;
+                    if (i != j) ballCount++;
                     else strikeCount++;
                 }
             }
