@@ -5,7 +5,7 @@ package baseball.domain;
  * number == 고유 숫자
  */
 public class Ball {
-    private Integer number;
+    private final Integer number;
 
     public Ball(Integer number) {
         this.number = number;

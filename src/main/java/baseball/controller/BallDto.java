@@ -1,7 +1,7 @@
 package baseball.controller;
 
 public class BallDto {
-    private Integer number;
+    private final Integer number;
 
     public BallDto(Integer number) {
         this.number = number;

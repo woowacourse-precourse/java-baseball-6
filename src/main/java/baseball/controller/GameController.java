@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class GameController {
-    private Set<BallDto> computer = new LinkedHashSet<>();
+    private final Set<BallDto> computer = new LinkedHashSet<>();
 
     public void start(){
         while (computer.size() < 3){
