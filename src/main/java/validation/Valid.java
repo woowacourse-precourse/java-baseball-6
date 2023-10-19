@@ -3,18 +3,15 @@ package validation;
 import java.util.HashSet;
 import java.util.Set;
 
-import static constant.BaseConst.EXIT;
-import static constant.BaseConst.RESTART;
-
 public class Valid {
 
 
     public void myNumberValid(String number) {
-        Set<Character> set = new HashSet<>();
 
         if (number.matches("[^1-9]")) throw new IllegalArgumentException("문자와 0은 사용할 수 없음");
         if (number.length() != 3) throw new IllegalArgumentException("3개의 숫자를 입력할 수 있음");
 
+        Set<Character> set = new HashSet<>();
         for (int i = 0; i < number.length(); i++) {
             if (!set.add(number.charAt(i))) {
                 throw new IllegalArgumentException("중복된 숫자는 사용할 수 없음");
