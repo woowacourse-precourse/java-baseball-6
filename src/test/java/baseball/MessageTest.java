@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.Message.BALL_MSG;
 import static baseball.Message.END_MSG;
+import static baseball.Message.INPUT_MSG;
 import static baseball.Message.NON_MSG;
 import static baseball.Message.REGAME_MSG;
 import static baseball.Message.START_MSG;
@@ -20,6 +21,7 @@ class MessageTest {
         assertThat(NON_MSG).isEqualTo("낫싱");
         assertThat(BALL_MSG).isEqualTo("볼");
         assertThat(STRIKE_MSG).isEqualTo("스트라이크");
+        assertThat(INPUT_MSG).isEqualTo("숫자를 입력해주세요 : ");
 
     }
 
