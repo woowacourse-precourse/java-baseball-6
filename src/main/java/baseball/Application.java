@@ -72,6 +72,7 @@ public class Application {
                 }
 
                 if (strike == 3) {
+                    System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                             "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     int inputStr = Integer.parseInt(Console.readLine());
@@ -84,7 +85,7 @@ public class Application {
                     }
                     onPlaying2 = false;
                 }else if ((strike > 0 && strike < 3) || (ball > 0 && ball <= 3)){
-                    System.out.println((strike > 0? strike + "스트라이크" : "") + (ball > 0 ? ball + "볼" : ""));
+                    System.out.println((ball > 0 ? ball + "볼" : "") + (ball > 0 && strike > 0 ? " " : "") + (strike > 0? strike + "스트라이크" : ""));
                 }else {
                     System.out.println("낫싱");
                 }
