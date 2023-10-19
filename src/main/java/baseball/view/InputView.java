@@ -11,8 +11,11 @@ public class InputView {
 
 	public List<Integer> readNumber() {
 		System.out.print(INPUT_NUMBER);
-		String input = InputValidation.validate(Console.readLine());
+		String input = InputValidation.validate(inputNumber());
 		return convertStringToInteger(input);
+	}
+	public static String inputNumber(){
+		return Console.readLine();
 	}
 	public static List<Integer> convertStringToInteger(String input){
 		return Arrays.stream(input.split(""))
