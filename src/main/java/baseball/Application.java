@@ -15,6 +15,15 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    // 기능: 힌트가 3스트라이크면 게임 종료
+    private static boolean isGameEnd(String hint) {
+        if (hint.equals("3스트라이크")) {
+            printGameEndMessage();
+            return true;
+        }
+        return false;
+    }
+
     // 기능: 힌트 얻기
     private static String getHint(List<Integer> computerBalls, List<Integer> playerBalls) {
         if (isNothing(computerBalls, playerBalls)) {
