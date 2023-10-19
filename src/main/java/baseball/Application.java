@@ -20,12 +20,14 @@ public class Application {
     }
 
     static void readUserNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
 
     }
 
     static void play() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = pickRandomNumbers();
         readUserNumbers();
     }
