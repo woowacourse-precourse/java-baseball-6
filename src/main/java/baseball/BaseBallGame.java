@@ -20,15 +20,14 @@ public class BaseBallGame {
     }
 
     public void initializeNum() {
-        this.numOfBall = 0;
-        this.numOfStrike = 0;
+        numOfBall = 0;
+        numOfStrike = 0;
     }
 
     //TODO 1. 예외처리
     //TODO 2. 테스트코드 > Scanner로 입력값 받지 못함
     public void run() {
         do {
-            initializeNum();
             System.out.print(OutputMessage.START_GAME);
             List<Integer> answer = setAnswer();
 
@@ -89,13 +88,20 @@ public class BaseBallGame {
     }
 
     private boolean getResult() {
-        if (numOfBall + numOfStrike == 0)
+        if (numOfBall==0 && numOfStrike==0)
             System.out.print("낫싱");
-        if (!(numOfBall==0))
-            System.out.printf("%d볼 ", numOfBall);
-        if (!(numOfStrike==0))
-            System.out.printf("%d스트라이크", numOfStrike);
-        return numOfStrike == 3;
+        else {
+            if (!(numOfBall==0)) System.out.printf("%d볼 ", numOfBall);
+            if (!(numOfStrike==0)) System.out.printf("%d스트라이크", numOfStrike);
+        }
+
+        if (numOfStrike == 3) {
+            initializeNum();
+            return true;
+        }
+
+        initializeNum();
+        return false;
     }
 
     private static boolean askWhetherToEnd() {
