@@ -1,10 +1,14 @@
 package baseball;
 
+import java.util.Objects;
+
 public class Ball {
 
     private static final int UNDER_RANGE = 1;
+    private final int number;
 
-    public Ball(int i) {
+    public Ball(int number) {
+        this.number = number;
 
     }
 
@@ -18,7 +22,24 @@ public class Ball {
         return number >= UNDER_RANGE;
     }
 
-//    private static final String NUMBER_FORMAT = "\\d+";
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Ball ball = (Ball) o;
+        return number == ball.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
+    }
+
+    //    private static final String NUMBER_FORMAT = "\\d+";
 //    private static final String NUMBER_FORMAT_EXCEPTION_MESSAGE = "올바른 숫자를 입력해주세요.";
 
 
