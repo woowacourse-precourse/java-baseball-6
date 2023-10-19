@@ -15,13 +15,13 @@ public class BaseBallNumber {
     }
 
     private void validate(int number) {
-        if (!isRightRange(number)) {
+        if (isNotRightRange(number)) {
             throw new IllegalArgumentException(NUMBER_RANGE_EXCEPTION_MESSAGE);
         }
     }
 
-    private boolean isRightRange(int number) {
-        return number >= MIN_NUMBER && number <= MAX_NUMBER;
+    private boolean isNotRightRange(int number) {
+        return number < MIN_NUMBER || number > MAX_NUMBER;
     }
 
     public static BaseBallNumber from(int number) {
