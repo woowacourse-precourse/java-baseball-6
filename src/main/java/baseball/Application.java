@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     public static void main(String[] args) {
@@ -83,6 +84,31 @@ public class Application {
     public static int generateAnswerNumber() {
         // 정답 번호 생성하기 (서로 다른 세 자리의 숫자로 구성)
         // 생성한 세 자리 양수를 리턴
-        return 0;
+        int pickedNumber = 0;
+        while(true) {
+            pickedNumber = pickNumberInRange(111, 999);
+
+            String numberString = String.valueOf(pickedNumber);
+            // 0을 포함하면 다시 뽑기
+            if (numberString.contains("0")){
+                continue;
+            }
+            // 중복 숫자가 존재하면 다시 뽑기
+            int[] numberCount = new int[10];
+            boolean stopFlag = false;
+            for (int idx=0; idx<numberString.length(); idx++) {
+                int element = numberString.charAt(idx) - '0';
+                if (++numberCount[element] >= 2) {
+                    stopFlag = true;
+                    break;
+                };
+            }
+            if (stopFlag) {
+                continue;
+            }
+            // 다시 뽑기 조건에 해당하지 않는 경우, while문을 벗어난다.
+            break;
+        }
+        return pickedNumber;
     }
 }
