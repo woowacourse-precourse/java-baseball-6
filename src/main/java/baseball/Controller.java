@@ -21,20 +21,20 @@ public class Controller {
 	}
 
 	private void proceed() {
-		Computer computer = initGame();
-		proceedGame(computer);
-		endGame();
+		GameData gameData = new GameData();
+		initGame(gameData);         // 게임 초기화
+		proceedGame(gameData);      // 게임 진행
+		endGame();                  // 게임 종료
 	}
 
-	private Computer initGame() {
-		return new Computer();
+	private void initGame(GameData gameData) {
+		gameData.initComputer();
 	}
 
-	private void proceedGame(Computer computer) {
-		List<Integer> trial;
+	private void proceedGame(GameData gameData) {
 		while (true) {
-			trial = validator.validateBaseballNumber(InputView.readBaseballNumber());
-			List<Integer> result = computer.calculateResult(trial);
+			List<Integer> trial = validator.validateBaseballNumber(InputView.readBaseballNumber());
+			List<Integer> result = gameData.calculateResult(trial);
 			OutputView.printResult(result);
 			if (result.get(1) == 3) {
 				return;
