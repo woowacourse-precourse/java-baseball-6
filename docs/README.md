@@ -13,6 +13,7 @@
 ### Controller
 
 - ComputerController
+- RandomController
     - 컴퓨터는 서로 다른 세자리의 숫자를 생성한다.
 - GameController
     - 컴퓨터가 생성한 숫자와 사용자가 입력한 숫자를 비교한다.
