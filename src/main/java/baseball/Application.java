@@ -172,7 +172,7 @@ public class Application {
             if(this.strike != 3) {
                 if (this.ball > 0 && this.strike > 0)
                     System.out.println(this.ball + BALL + " " + this.strike + STRIKE);
-                if (this.ball != 0)
+                else if (this.ball != 0 && this.strike == 0)
                     System.out.println(this.ball + BALL);
                 else if (this.ball == 0 && this.strike > 0)
                     System.out.println(this.strike + STRIKE);
