@@ -15,9 +15,10 @@
    3. CustomException : 입력에 문제가 있을때 발생할 예외 설정
    4. ErrorCode : 예외의 종류 구분용 코드
 2. InputValidator : 입력 값을 검증
-   1. checkOutOfRange(int input) : 볼 범위를 벗어나는지 검증
-   2. isInteger(String input) : 숫자인지 검증
-   3. checkCommand(String input) : 게임 재시작 커맨드 검증
+   1. checkOutOfRange(int input) : 볼 범위를 벗어나는지 검증 후 반환
+   2. isInteger(String input) : 숫자인지 검증 후 반환
+   3. checkCommand(String input) : 게임 재시작 커맨드 검증 후 반환
+   4. checkOutOfNumber(int input) : 볼의 개수가 맞는지 검증 후 반환
 3. InputController : 사용자의 입력을 받음
    1. getBall() : 볼을 입력받고 입력값 반환
    2. getCommand() : 커맨드를 입력받고 반환

@@ -14,4 +14,8 @@ public enum Size {
     public int getValue() {
         return value;
     }
+
+    public static boolean isBetweenSize(int num) {
+        return num >= MIN.value && num <= MAX.value;
+    }
 }

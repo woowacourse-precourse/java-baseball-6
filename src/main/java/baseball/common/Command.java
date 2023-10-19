@@ -1,16 +1,16 @@
 package baseball.common;
 
 public enum Command {
-    RESTART(1),
-    QUIT(2);
+    RESTART("1"),
+    QUIT("2");
 
-    private final int key;
+    private final String key;
 
-    Command(int key) {
+    Command(String key) {
         this.key = key;
     }
 
-    public int getKey() {
+    public String getKey() {
         return key;
     }
 }
