@@ -1,8 +1,10 @@
 package baseball.Input;
 
+import java.util.List;
+
 public interface InputAnswer {
 
-    Integer inputAnswer();
+    List<Integer> inputAnswer();
 
     void integrateValidation(String input);
 

@@ -2,15 +2,18 @@ package baseball.Input;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class InputAnswerImpl implements InputAnswer {
 
 
 
     @Override
-    public Integer inputAnswer() throws IllegalArgumentException{
+    public List<Integer> inputAnswer() throws IllegalArgumentException{
         String input = Console.readLine();
         integrateValidation(input);
-        return Integer.parseInt(input);
+        return List.of(Integer.parseInt(input));
     }
 
     @Override
