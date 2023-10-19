@@ -1,10 +1,7 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.HashMap;
-import java.util.Map;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseBallGame {
 	String computerNumber;
@@ -27,6 +24,20 @@ public class BaseBallGame {
 			judgment = judgeMyNumber(myNumber);
 			System.out.println(judgment);
 		}
+
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+		String input = Console.readLine();
+
+		if (input.equals("1")) {
+			start();
+			return;
+		}
+		if (input.equals("2")) {
+			return;
+		}
+		throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. 프로그램이 종료됩니다.");
 	}
 
 	private String judgeMyNumber(String myNumber) {
