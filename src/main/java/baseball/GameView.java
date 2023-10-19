@@ -29,5 +29,18 @@ public class GameView {
 		System.out.println(guessResult);
 	}
 
+	public void printCorrectMessage(){
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+	}
+
+	//0 혹은 1이 아니면 예외
+	public String getRetry(){
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		String retry = Console.readLine();
+		return retry;
+	}
+
+
+
 
 }

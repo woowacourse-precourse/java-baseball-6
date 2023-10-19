@@ -17,7 +17,7 @@ public class GameController {
 		boolean isRetry = true;
 		while(isRetry){
 			runGame();
-
+			isRetry = askRetry();
 		}
 	}
 
@@ -29,6 +29,18 @@ public class GameController {
 		while(!gameModel.getIsCorrect()){
 			handleGuess(computerNumber);
 		}
+	}
+
+	private boolean askRetry(){
+		String retry = gameView.getRetry();
+		boolean retryResult = false;
+		if(retry.equals("1")){
+			retryResult = true;
+		}
+		if(retry.equals("2")){
+			retryResult = false;
+		}
+		return retryResult;
 	}
 
 
@@ -78,6 +90,7 @@ public class GameController {
 
 		if(numberOfStrike == 3){
 			gameModel.setIsCorrect(true);
+			gameView.printCorrectMessage();
 		}
 
 	}
