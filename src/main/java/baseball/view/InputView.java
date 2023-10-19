@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     public String readBaseballNumber(){
-        MessageUtil.INPUT_BASEBALL_NUMBER_MESSAGE.messagePrintln();
+        MessageUtil.INPUT_BASEBALL_NUMBER_MESSAGE.messagePrint();
         String inputNumber = Console.readLine();
         System.out.println(inputNumber);
         return inputNumber;
