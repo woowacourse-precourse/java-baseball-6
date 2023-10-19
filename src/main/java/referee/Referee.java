@@ -6,6 +6,7 @@ import java.util.List;
 import message.Message;
 import player.Computer;
 import player.Player;
+import utils.BaseballRules;
 
 public class Referee {
     private Computer computer;
@@ -24,7 +25,7 @@ public class Referee {
             List<Integer> computerBaseballNumber = computer.getComputerBaseballNumber();
             int[] score = Hint.calculateStrikeAndBall(playerBaseballNumber, computerBaseballNumber);
             Message.printHintMessage(score);
-        } while (!isThreeStrike());
+        } while (!BaseballRules.isThreeStrike(player.getPlayerBaseballNumber(), computer.getComputerBaseballNumber()));
 
         Message.printThreeStrikeMessage();
         continueOrFinish();
@@ -40,9 +41,5 @@ public class Referee {
         if (userInput.equals(END)) {
             Message.printEndGameMessage();
         }
-    }
-
-    private boolean isThreeStrike() {
-        return player.getPlayerBaseballNumber().equals(computer.getComputerBaseballNumber());
     }
 }
