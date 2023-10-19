@@ -32,8 +32,8 @@ public class Application {
                 }
 
                 System.out.println(countMessage.toString());
-                if(strikeCount == 3){
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                if(strikeCount == BaseballGame.BASEBALL_DIGIT){
+                    System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", BaseballGame.BASEBALL_DIGIT);
                     isDone = true;
                 }
             }
