@@ -11,15 +11,15 @@ public class BaseballGameProcessorImpl implements BaseballGameProcessor {
     private static final int INIT_NUMBER = 0;
 
     @Override
-    public String process(String o1, String o2) {
+    public String process(String computerNumber, String inputNumber) {
         Set<Character> box = new HashSet<>();
         int strikeCount = INIT_NUMBER, ballCount = INIT_NUMBER;
-        for (int i= INIT_NUMBER; i<o1.length(); i++) {
-            box.add(o1.charAt(i));
+        for (int i= INIT_NUMBER; i< computerNumber.length(); i++) {
+            box.add(computerNumber.charAt(i));
         }
-        for (int i= INIT_NUMBER; i<o2.length(); i++) {
-            if (!box.contains(o2.charAt(i))) continue;
-            if (o1.charAt(i)==o2.charAt(i)) {
+        for (int i= INIT_NUMBER; i< inputNumber.length(); i++) {
+            if (!box.contains(inputNumber.charAt(i))) continue;
+            if (computerNumber.charAt(i)== inputNumber.charAt(i)) {
                 strikeCount++;
                 continue;
             }

@@ -2,6 +2,6 @@ package baseball;
 
 public interface BaseballGameProcessor {
 
-    String process(String o1, String o2);
+    String process(String computerNumber, String inputNumber);
 
 }
