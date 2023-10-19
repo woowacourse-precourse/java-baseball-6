@@ -16,7 +16,7 @@ public class InputProcessor {
         System.out.print("숫자를 입력해주세요 : ");
 
         final String userInput = Console.readLine();
-        BASEBALL_INPUT_VALIDATOR.validateInputHasSpace(userInput);
+        BASEBALL_INPUT_VALIDATOR.validate(userInput);
 
         return convertBaseballs(userInput);
     }
