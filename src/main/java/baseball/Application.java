@@ -5,5 +5,7 @@ public class Application {
         // TODO: 프로그램 구현
         Judger judger = new Judger();
         judger.startGame();
+        Human human = new Human();
+        human.getNumbers();
     }
 }
