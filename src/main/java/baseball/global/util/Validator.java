@@ -33,4 +33,10 @@ public class Validator {
 			throw new IllegalArgumentException(NUMBER_FORMAT_ERROR_MESSAGE);
 		}
 	}
+
+	public static void validateSelectOptionType(String option) {
+		if(!option.equals("1") && !option.equals("2")) {
+			throw new IllegalArgumentException(NUMBER_FORMAT_ERROR_MESSAGE);
+		}
+	}
 }

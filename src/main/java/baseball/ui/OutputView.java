@@ -2,6 +2,8 @@ package baseball.ui;
 
 import static baseball.global.constant.GameMessage.*;
 
+import baseball.domain.GameResult;
+
 public class OutputView {
 
 	public void printGameStartMessage() {
@@ -12,12 +14,20 @@ public class OutputView {
 		System.out.print(NUMBER_INPUT_MESSAGE);
 	}
 
-	public void printGameResultMessage(int ballCount, int strikeCount) {
+	public void printGameResultMessage(GameResult result) {
+		int ballCount = result.getBallCount();
+		int strikeCount = result.getStrikeCount();
+
 		if(ballCount == 0 && strikeCount == 0) {
 			System.out.println("낫싱");
 		} else if(ballCount > 0 || strikeCount > 0) {
 			System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
 		}
+	}
+
+	public void printRestartSelectMessage() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
 	}
 
 	public void printGameFinishMessage() {

@@ -18,9 +18,9 @@ public class InputView {
 		String inputValue = Console.readLine();
 		String[] inputNumbers = inputValue.split("");
 
-		Validator.validateNumberLength(inputNumbers);
-		Validator.validateNumberDuplication(inputNumbers);
-		Validator.validateNumberFormat(inputNumbers);
+		Validator.validateNumbersFormat(inputNumbers);
+		Validator.validateNumbersLength(inputNumbers);
+		Validator.validateNumbersDuplication(inputNumbers);
 
 		List<Integer> numbers = new ArrayList<>();
 		for (String number : inputNumbers) {
@@ -28,5 +28,15 @@ public class InputView {
 		}
 
 		return numbers;
+	}
+
+	public String readRestartOrNot() {
+		outputView.printRestartSelectMessage();
+		String selectOption = Console.readLine();
+
+		Validator.validateNumberFormat(selectOption);
+		Validator.validateSelectOptionType(selectOption);
+		return selectOption;
+
 	}
 }

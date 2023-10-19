@@ -1,10 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import baseball.domain.GameResult;
 import baseball.ui.InputView;
 import baseball.ui.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -13,7 +12,8 @@ public class BaseballGame {
 	private final OutputView outputView;
 	private final InputView inputView;
 
-	private static boolean doGame = true;
+	private static List<Integer> computer;
+	private static List<Integer> user;
 
 	public BaseballGame(OutputView outputView, InputView inputView) {
 		this.outputView = outputView;
@@ -22,50 +22,45 @@ public class BaseballGame {
 
 	public void start() {
 		printStartMessage();
-		List<Integer> computer = generateComputerNumber();
+		computer = generateComputerNumber();
 
-		while(doGame) {
-			Map<String, Integer> gameResult = play(computer);
+		while (true) {
+			user = inputView.readNumber();
+			GameResult result = play(computer, user);
 
-			int ballCount = gameResult.get("볼");
-			int strikeCount = gameResult.get("스트라이크");
-
-			if(strikeCount == 3) {
+			if (result.getStrikeCount() == 3) {
 				outputView.printGameFinishMessage();
-				// TODO: 재시작 여부 입력받기 기능
+				String option = inputView.readRestartOrNot();
+				if (option.equals("1")) {
+					computer = generateComputerNumber();
+					continue;
+				} else if (option.equals("2")) {
+					break;
+				}
+			}
+			outputView.printGameResultMessage(result);
+		}
+
+	}
+
+	private GameResult play(List<Integer> computer, List<Integer> user) {
+		int strikeCount = 0;
+		int ballCount = 0;
+
+		for (int i = 0; i < 3; i++) {
+			int userNumber = user.get(i);
+			int computerNumber = computer.get(i);
+
+			if (userNumber == computerNumber) {
+				strikeCount++;
 				continue;
 			}
-			outputView.printGameResultMessage(ballCount, strikeCount);
-
-		}
-
-	}
-
-	private Map<String, Integer> play(List<Integer> computer) {
-		Map<String, Integer> gameResult = initGameResult();
-		List<Integer> user = inputView.readNumber();
-
-		for(int i  = 0; i < 3; i++) {
-			int userNumber = user.get(i);
-
 			if (computer.contains(userNumber)) {
-				if(computer.get(i) == userNumber) {
-					gameResult.put("스트라이크", gameResult.get("스트라이크")+1);
-					continue;
-				}
-				gameResult.put("볼", gameResult.get("볼")+1);
+				ballCount++;
 			}
 		}
 
-		return gameResult;
-	}
-
-	private Map<String, Integer> initGameResult() {
-		Map<String, Integer> gameResult = new HashMap<>();
-		gameResult.put("볼", 0);
-		gameResult.put("스트라이크", 0);
-
-		return gameResult;
+		return new GameResult(strikeCount, ballCount);
 	}
 
 	private List<Integer> generateComputerNumber() {
