@@ -10,16 +10,21 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try {
-            List<Integer> answer = generateRandomNum();
-            while (true) {
-                System.out.println("숫자 야구 게임을 시작합니다.");
-                System.out.print("숫자를 입력해주세요 : ");
-                String inputNum = Console.readLine();
-                System.out.println("inputNum = " + inputNum);
-            }
+            runGame();
         }
         catch (IllegalArgumentException e) {
             return ;
+        }
+    }
+
+    public static void runGame() {
+        List<Integer> answer = generateRandomNum();
+        while (true) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputString = Console.readLine();
+            List<Integer> inputNum = convertStringToList(inputString);
+            System.out.println("inputNum = " + inputNum);
         }
     }
 
@@ -34,7 +39,7 @@ public class Application {
         return answer;
     }
 
-    public static ArrayList<Integer> convertStringToList(String inputString) {
+    public static List<Integer> convertStringToList(String inputString) {
         List<Integer> inputList = new ArrayList<>();
         for (int i = 0; i < inputString.length(); i++) {
             char c = inputString.charAt(i);
@@ -45,9 +50,10 @@ public class Application {
                 throw new IllegalArgumentException("잘못된 입력입니다.");
             }
         }
+        return inputList;
     }
 
-//    public static void checkInputNum(String inputNum) {
+//    public static void isAnswer(String inputNum) {
 //
 //    }
 //    public static boolean isStrike() {
