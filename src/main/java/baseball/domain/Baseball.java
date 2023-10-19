@@ -8,9 +8,9 @@ import static baseball.exception.ExceptionMessage.BaseballException.INVALID_BALL
 import static baseball.exception.ExceptionMessage.BaseballException.SPECIFIC_BALL_IS_NOT_IN_RANGE;
 
 public class Baseball {
-    private static final int TOTAL_COUNT = 3;
-    private static final int MIN_VALUE = 1;
-    private static final int MAX_VALUE = 9;
+    public static final int TOTAL_COUNT = 3;
+    public static final int MIN_VALUE = 1;
+    public static final int MAX_VALUE = 9;
 
     private final List<Integer> balls;
 
