@@ -23,6 +23,8 @@ while (computer.size() < 3) {
 2. (사람) : String 입력 - Console.readLine() 사용
 3. 조건 문을 통해서 출력값 나타내기 - System.out.println()
 4. 예외 처리하기 - IllegalArgumentException
+5. 시작 문구   : while 사용
+6. 재시작/종료  : 1(새로 시작) 2 (종료) * System.exit()를 호출하지 않는다. -> break, continue 사용
 
 <br>
 
