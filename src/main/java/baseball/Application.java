@@ -15,7 +15,6 @@ public class Application {
     public static List<Integer> splitDigitsFromRandomNumber = new ArrayList<>();
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         initComputerNumber();
     public static void initComputerNumber() {
@@ -27,5 +26,32 @@ public class Application {
                 splitDigitsFromRandomNumber.add(randomNumber);
             }
         }
+    }
+
+    public static List<Integer> inputUserNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String stringDigitsFromUserInput = Console.readLine();
+        validateUserInputLength(stringDigitsFromUserInput);
+        return splitDigits(stringDigitsFromUserInput);
+    }
+
+    private static void validateUserInputLength(String stringDigitsFromUserInput) {
+        if (stringDigitsFromUserInput.length() != numLength) {
+            throw new IllegalArgumentException("숫자의 길이가 " + numLength + "와 다릅니다.");
+        }
+    }
+
+    private static List<Integer> splitDigits(String stringDigitsFromUserInput) {
+        List<Integer> splitDigitsFromUserInput = new ArrayList<>();
+        for (int i = 0; i < stringDigitsFromUserInput.length(); i++) {
+            int number = Character.getNumericValue(stringDigitsFromUserInput.charAt(i));
+            if (!splitDigitsFromUserInput.contains(number)) {
+                splitDigitsFromUserInput.add(number);
+            }
+        }
+        if (splitDigitsFromUserInput.size() != numLength) {
+            throw new IllegalArgumentException("중복된 숫자 존재");
+        }
+        return splitDigitsFromUserInput;
     }
 }
