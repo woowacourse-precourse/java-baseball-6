@@ -34,7 +34,7 @@ public class OutputView {
             sb.append(NOTHING);
         }
 
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 
     public static void gameOver(){
