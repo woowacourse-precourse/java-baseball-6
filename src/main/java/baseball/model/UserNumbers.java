@@ -8,6 +8,8 @@ import java.util.List;
 
 public class UserNumbers {
 
+    private static final String NUMBERS_SPLITTER = "";
+
     private List<Integer> userNumbers;
 
     private UserNumbers(final List<Integer> userNumbers) {
@@ -15,7 +17,7 @@ public class UserNumbers {
     }
 
     public static UserNumbers of(String numbers) {
-        List<Integer> inputNumbers = Arrays.stream(numbers.split(""))
+        List<Integer> inputNumbers = Arrays.stream(numbers.split(NUMBERS_SPLITTER))
             .map(Integer::parseInt)
             .toList();
 
