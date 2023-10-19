@@ -1,3 +1,20 @@
+## Message 클래스
+- 출력 메서드
+
+## AnswerMaker 클래스
+- 난수 생성 메서드
+
+## Validation 클래스
+- 유저가 입력한 값에 대한 검증 메서드
+
+## Computer 클래스
+- strike, ball 스코어 측정 메서드
+
+## UserAnswer 클래스
+- 유저가 입력한 String을 validation 후 List<Integer>로 변환하는 메서드
+
+
+
 ### 뭘 만들어야 할까?
 
 1. 입력 Validation
