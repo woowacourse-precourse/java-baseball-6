@@ -11,7 +11,7 @@ public class BaseballNumber {
     private List<Integer> number = new ArrayList<>(3);
 
     public BaseballNumber(List<Integer> number) {
-        findException(number);
+        findExceptionByList(number);
         this.number = number;
     }
 
@@ -35,7 +35,7 @@ public class BaseballNumber {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> number = new ArrayList<>();
         String input = Console.readLine();
-        isInputOnlyNumber(input);
+        findExceptionByString(input);
         List<Integer> numberByList=stringToList(input);
         System.out.println(numberByList);
         return new BaseballNumber(numberByList);
@@ -53,24 +53,23 @@ public class BaseballNumber {
 
     private static String reverseString(String str) {
         StringBuilder stringBuffer = new StringBuilder(str);
-        String reverseStr = stringBuffer.reverse().toString();
-        return reverseStr;
+        return stringBuffer.reverse().toString();
     }
 
+
     //예외발생시 프로그램이 종료되는지 확인
-    private static boolean isInputOnlyNumber(String input) {
+    private static void findExceptionByString(String input) {
         try {
             int inputToInt = Integer.parseInt(input);
             if (inputToInt <= 0) {
                 throw new IllegalArgumentException("0 또는 음수는 입력될 수 없습니다");
             }
-            return true;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("자연수를 제외한 문제는 입력할 수 없습니다.");
         }
     }
 
-    private void findException(List<Integer> number) {
+    private void findExceptionByList(List<Integer> number) {
         if (number.size() != 3) {
             throw new IllegalArgumentException("게임을 진행할 수는 항상 3개여야 합니다.");
         }

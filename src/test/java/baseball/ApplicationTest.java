@@ -96,9 +96,9 @@ class ApplicationTest extends NsTest {
         final Throwable thrown3 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str3));
 
         //then
-        assertThat(thrown1).as("initializeUserNumber_테스트").isInstanceOf(NumberFormatException.class);
-        assertThat(thrown2).as("initializeUserNumber_테스트").isInstanceOf(NumberFormatException.class);
-        assertThat(thrown3).as("initializeUserNumber_테스트").isInstanceOf(NumberFormatException.class);
+        assertThat(thrown1).as("initializeUserNumber_테스트").isInstanceOf(IllegalArgumentException.class);
+        assertThat(thrown2).as("initializeUserNumber_테스트").isInstanceOf(IllegalArgumentException.class);
+        assertThat(thrown3).as("initializeUserNumber_테스트").isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void compareNumber_테스트() {
