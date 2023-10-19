@@ -38,4 +38,44 @@ class BaseballGameTest {
         return digitList;
     }
 
+    @Test
+    void testCheckBallCount() {
+        List<Integer> randomThreeDigits = new ArrayList<>();
+        List<Integer> inputDigits = new ArrayList<>();
+
+        randomThreeDigits.add(1);
+        randomThreeDigits.add(2);
+        randomThreeDigits.add(5);
+
+        inputDigits.add(1);
+        inputDigits.add(2);
+        inputDigits.add(4);
+
+        BallCount ballCount = checkBallCount(randomThreeDigits, inputDigits);
+
+        Assertions.assertEquals(ballCount.getStrike(), 2);
+    }
+
+    private BallCount checkBallCount(List<Integer> randomThreeDigits, List<Integer> inputDigits){
+        int strike = 0;
+        int ball = 0;
+        BallCount ballCount = new BallCount();
+
+        for(int i = 0; i < randomThreeDigits.size(); i++){
+            if(Objects.equals(randomThreeDigits.get(i), inputDigits.get(i))){
+                strike ++;
+                continue;
+            }
+
+            if(randomThreeDigits.contains(inputDigits.get(i))){
+                ball ++;
+            }
+        }
+
+        ballCount.setStrike(strike);
+        ballCount.setBall(ball);
+
+        return ballCount;
+    }
+
 }
