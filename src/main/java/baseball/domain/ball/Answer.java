@@ -2,7 +2,6 @@ package baseball.domain.ball;
 
 import baseball.domain.dto.GuessResult;
 import java.util.List;
-import java.util.Objects;
 
 public final class Answer extends BallNumbers {
 
@@ -24,7 +23,8 @@ public final class Answer extends BallNumbers {
   private int getStrikeCount(final Guess guess) {
     int strikeCount = 0;
     for (int i = 0; i < BALL_COUNT; i++) {
-      if (isStrikeAt(i, guess)) {
+      final boolean isStrike = ballNumbers.get(i).equals(guess.get(i));
+      if (isStrike) {
         strikeCount++;
       }
     }
@@ -34,37 +34,13 @@ public final class Answer extends BallNumbers {
   private int getBallCount(final Guess guess) {
     int ballCount = 0;
     for (int i = 0; i < BALL_COUNT; i++) {
-      if (isBallAt(i, guess)) {
+      final boolean isNotStrike = !ballNumbers.get(i).equals(guess.get(i));
+      final boolean isBall = ballNumbers.contains(guess.get(i));
+      if (isNotStrike && isBall) {
         ballCount++;
       }
     }
     return ballCount;
-  }
-
-  private boolean isStrikeAt(
-      final int index,
-      final Guess guess
-  ) {
-    final int answerNumber = get(index).number();
-    final int guessNumber = guess.get(index).number();
-
-    return Objects.equals(answerNumber, guessNumber);
-  }
-
-  private boolean isBallAt(
-      final int index,
-      final Guess guess
-  ) {
-    return
-        !isStrikeAt(index, guess) &&
-            ballNumbers
-                .stream()
-                .anyMatch(n ->
-                    Objects.equals(
-                        n.number(),
-                        guess.get(index).number()
-                    )
-                );
   }
 
 
