@@ -8,22 +8,22 @@ public class HintCalculator {
     private int ballCnt = 0;
 
 
-    public HintCalculator(List<Integer> userNumber, List<Integer> computerNumber) {
+    public HintCalculator(List<Integer> userList, List<Integer> computerList) {
         for (int i = 0; i < LIST_SIZE; ++i) {
-            if (isStrike(userNumber.get(i), computerNumber.get(i))) {
+            if (isStrike(userList.get(i), computerList.get(i))) {
                 ++strikeCnt;
-            } else if (isBall(userNumber.get(i), computerNumber.get(i))) {
+            } else if (isBall(userList.get(i), computerList)) {
                 ++ballCnt;
             }
         }
     }
 
-    private boolean isStrike(Integer userDigit, Integer computerDigit) {
-        return userDigit == computerDigit;
+    private boolean isStrike(Integer userNumber, Integer computerNumber) {
+        return userNumber == computerNumber;
     }
 
-    private boolean isBall(Integer integer, Integer integer1) {
-        return false;
+    private boolean isBall(Integer integer, List<Integer> computerList) {
+
     }
 
 }
