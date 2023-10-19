@@ -17,7 +17,7 @@ public class Controller {
 		OutputView.printMessage("숫자 야구 게임을 시작합니다.");
 		do {
 			proceed();
-		} while (validator.validatedRestart(InputView.readRestart()) == 1);
+		} while (isRestartGame());
 	}
 
 	private void proceed() {
@@ -36,13 +36,21 @@ public class Controller {
 			List<Integer> trial = validator.validateBaseballNumber(InputView.readBaseballNumber());
 			List<Integer> result = gameData.calculateResult(trial);
 			OutputView.printResult(result);
-			if (result.get(1) == 3) {
+			if (isThreeStrike(result)) {
 				return;
 			}
 		}
 	}
 
+	private boolean isThreeStrike(List<Integer> result) {
+		return result.get(1) == 3;
+	}
+
 	private void endGame() {
 		OutputView.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+	}
+
+	private boolean isRestartGame() {
+		return validator.validatedRestart(InputView.readRestart()) == 1;
 	}
 }
