@@ -20,7 +20,24 @@ public class Application {
             }
         }
 
-        String inputNumber = readLine();
+        String inputString = readLine();
+
+        List<Integer> inputNumber = new ArrayList<>();
+        if(inputString.length() != 3){
+            throw new IllegalArgumentException();
+        }
+        for(int i=0;i<3;i++){
+            try{
+                int number = Integer.parseInt(inputString.substring(i,i+1));
+                if(inputNumber.contains(number)){
+                    throw new IllegalArgumentException();
+                }
+                inputNumber.add(number);
+            }
+            catch (NumberFormatException e){
+                throw new IllegalArgumentException();
+            }
+        }
 
     }
 }
