@@ -9,8 +9,8 @@ public class UserNumber {
     private static int NUMBER_RANGE_END = 9;
 
     public UserNumber(String number){
-        number = removeSpace(number);
         validate(number);
+        number = removeSpace(number);
         this.number = convertStringtoInteger(number);
     }
 
@@ -19,6 +19,7 @@ public class UserNumber {
     }
 
     private void validate(String number){
+
         if(isEmpty(number)){ // 수가 비어있는 경우
             throw new IllegalArgumentException("1~9까지의 서로 다른 3자리 수를 입력 해야 합니다.");
         }

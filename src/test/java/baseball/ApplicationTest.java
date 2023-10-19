@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.Domain.UserNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +28,42 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 예외_테스트1_빈문자열_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트2_숫자1개_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+
+    @Test
+    void 예외_테스트3_숫자2개_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 예외_테스트3_숫자가아닌문자_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("aaa"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
 
 
