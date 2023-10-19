@@ -45,7 +45,6 @@ public class UserNumber {
     }
 
     private boolean isDigit(String number){
-
         String[] arr = number.split("");
         return Arrays.stream(arr).allMatch(value -> Character.isDigit(value.charAt(0)));
     }
