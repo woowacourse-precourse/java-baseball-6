@@ -40,6 +40,7 @@ public class BaseBallGame {
 		throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. 프로그램이 종료됩니다.");
 	}
 
+	// 스트라이크, 볼 판정
 	private String judgeMyNumber(String myNumber) {
 		int strike = 0;
 		int ball = 0;
