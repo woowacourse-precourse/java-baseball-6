@@ -17,7 +17,7 @@
     - [X] 숫자 형식이 입력인지 검증
     - [X] 잘못된 입력일 경우 `IllegalArgumentException`을 발생시킨 후 종료
 - 플레이어는 게임을 재시작할지 종료할지에 대한 `1(재시작) | 2(종료)` 중 하나를 입력한다
-    - [ ] 잘못된 입력일 경우 `IllegalArgumentException`을 발생시킨 후 종료
+    - [X] 잘못된 입력일 경우 `IllegalArgumentException`을 발생시킨 후 종료
 
 ### 출력
 
