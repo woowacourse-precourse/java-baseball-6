@@ -3,13 +3,19 @@ package baseball.context;
 public class BaseballContext {
 
     private GameState gameState;
+    private final Answer answer;
 
     public BaseballContext() {
-        this(GameState.RUNNING);
+        this(new Answer());
     }
 
-    public BaseballContext(GameState initialState) {
+    public BaseballContext(Answer answer) {
+        this(GameState.RUNNING, answer);
+    }
+
+    public BaseballContext(GameState initialState, Answer answer) {
         this.gameState = initialState;
+        this.answer = answer;
     }
 
     public void finish() {
@@ -18,5 +24,13 @@ public class BaseballContext {
 
     public boolean isRunning() {
         return this.gameState == GameState.RUNNING;
+    }
+
+    public String getAnswer() {
+        return answer.getAnswer();
+    }
+
+    public void regenerateAnswer() {
+        answer.regenerateAnswer();
     }
 }
