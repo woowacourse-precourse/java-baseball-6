@@ -52,4 +52,10 @@ public class Validator {
             set.add(input.charAt(i));
         }
     }
+
+    public static void validateCommand(int command) {
+        if (command != 1 && command != 2) {
+            throw new IllegalStateException("게임 완료 명령은 1, 2만 입력될 수 있습니다.");
+        }
+    }
 }

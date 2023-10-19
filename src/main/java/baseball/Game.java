@@ -25,7 +25,7 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
 
-            List<Integer> answer = Randoms.pickUniqueNumbersInRange(1, 9, NUMBER_LENGTH);;
+            List<Integer> answer = Randoms.pickUniqueNumbersInRange(1, 9, NUMBER_LENGTH);
 
             while (true) {
                 System.out.print("숫자를 입력해주세요: ");
@@ -34,24 +34,10 @@ public class Game {
                 Result result = new Result(0, 0);
                 match(answer, user.getNumbers(), result);
 
-                if (result.getStrike() == 3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    break;
-                }
+                if (result.isEnd()) break;
             }
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-            // TODO: 커맨드 입력부 모듈화
-            int command = Integer.parseInt(Console.readLine());
-
-            if (command == 1) {
-                continue;
-            } else if (command == 2) {
-                break;
-            } else {
-                throw new IllegalStateException();
-            }
-
+            if (!isGameContinued()) break;
         }
     }
 
@@ -59,7 +45,7 @@ public class Game {
 
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             boolean isExist = answer.contains(userPick.get(i));
-            boolean isRightOrder = (answer.get(i) == userPick.get(i));
+            boolean isRightOrder = (Objects.equals(answer.get(i), userPick.get(i)));
 
             if (isExist) {
                 if (isRightOrder) result.addStrike();
@@ -68,6 +54,15 @@ public class Game {
         }
 
         result.printResult();
+    }
+
+    private boolean isGameContinued() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+
+        int command = Integer.parseInt(Console.readLine());
+        Validator.validateCommand(command);
+
+        return command == 1;
     }
 
     public static class Result {
@@ -114,6 +109,15 @@ public class Game {
 
         public void printResult() {
             System.out.println(this);
+
+
+            if (getStrike() == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+        }
+
+        public boolean isEnd() {
+            return getStrike() == 3;
         }
     }
 }
