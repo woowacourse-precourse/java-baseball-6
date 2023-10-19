@@ -10,7 +10,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-
     }
 
     public static void displayGameStartMessage()  {
@@ -39,7 +38,7 @@ public class Application {
         return user;
     }
 
-    public static void checkGuessResult(List<Integer> user,List<Integer> computer){
+    public static boolean evaluateGuessAndCheckForGameEnd(List<Integer> user,List<Integer> computer){
 
         int strike=0;
         int ball =0;
@@ -52,12 +51,15 @@ public class Application {
             }
         }
 
-        if(ball>0 && strike >0){
-            System.out.println(ball+"볼 "+strike+"스트라이크");
-        } else if(ball ==0 &&strike == 3){
+
+        if(ball ==0 &&strike == 3){
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다.! 게임 종료");
-        } else if (ball == 0 && strike > 0 &&strike <3) {
+            return true;
+        }
+        else if(ball>0 && strike >0){
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+        }  else if (ball == 0 && strike > 0 &&strike <3) {
             System.out.println(strike+"스트라이크");
         }else if (ball > 0 && strike == 0) {
             System.out.println(ball + "볼");
@@ -65,6 +67,7 @@ public class Application {
             System.out.println("낫싱");
         }
 
+        return false;
     }
 
     public static boolean restartOrExit(){//반환값이 1이면 restart
