@@ -12,12 +12,8 @@ public class StrikeBallCalculator {
         for (int i = 0; i < 3; i++) {
             if (guess.get(i).equals(answer.get(i))) {
                 result[1]++; // 스트라이크 증가
-            } else {
-                for (int j = 0; j < 3; j++) {
-                    if (i != j && guess.get(i).equals(answer.get(j))) {
-                        result[0]++; // 볼 증가
-                    }
-                }
+            } else if (guess.contains(answer.get(i))) {
+                result[0]++; // 볼 증가
             }
         }
 
