@@ -6,10 +6,11 @@ public class Application {
 
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final int GAME_FINISH = 2;
 
     public static void main(String[] args) {
         System.out.println(GAME_START_MESSAGE);
-
+        
         boolean whetherPlay = true;
         while (whetherPlay) {
             BaseballGame baseballGame = new BaseballGame();
@@ -19,7 +20,7 @@ public class Application {
             String inputRestartString = Console.readLine();
             // TODO: 입력값에 대한 유효성 검증 필요
             int inputRestart = Integer.parseInt(inputRestartString);
-            if (inputRestart == 2) {
+            if (inputRestart == GAME_FINISH) {
                 whetherPlay = false;
             }
         }
