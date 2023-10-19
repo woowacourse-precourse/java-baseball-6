@@ -9,6 +9,9 @@ import java.util.Scanner;
 public class BaseBallGame {
 
     private static BaseBallGame baseBallGame;
+    public int numOfBall = 0;
+    public int numOfStrike = 0;
+
     public static BaseBallGame getInstance() {
         if (baseBallGame == null) {
             baseBallGame = new BaseBallGame();
@@ -16,17 +19,15 @@ public class BaseBallGame {
         return baseBallGame;
     }
 
+    //TODO 1. 예외처리
+    //TODO 2. 테스트코드 > Scanner로 입력값 받지 못함
     public void run() {
-        //TODO 1. 예외처리
-        //TODO 2. 테스트코드 > Scanner로 입력값 받지 못함
-
         while( true ) {
             System.out.print("숫자 야구 게임을 시작합니다.");
             List<Integer> answer = setAnswer();
-//            System.out.println(answer);
+            System.out.println(answer);
 
             while ( true ) {
-
                 System.out.print("\n숫자를 입력해주세요 : ");
 
                 Scanner sc = new Scanner(System.in);
@@ -37,9 +38,6 @@ public class BaseBallGame {
                 for (int i = 0; i < 3; i++) {
                     input.add(Integer.parseInt(arr[i]));
                 }
-
-                int numOfStrike = 0;
-                int numOfBall = 0;
 
                 for (int i = 0; i < 3; i++) {
                     for (int j = 0; j < 3; j++) {
