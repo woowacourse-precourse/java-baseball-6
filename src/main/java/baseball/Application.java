@@ -11,7 +11,6 @@ public class Application {
 
         while (flag) {
             List<Integer> answer = Generator.createAnswer();
-            System.out.println(answer);
             boolean gameFlag = true;
 
             while (gameFlag) {
