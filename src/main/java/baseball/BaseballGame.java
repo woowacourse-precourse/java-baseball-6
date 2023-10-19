@@ -9,7 +9,7 @@ import java.util.Objects;
 public class BaseballGame{
     private final List<Integer> computer = new ArrayList<>();
     private boolean isError = false;
-    public void newBaseballGame(){
+    public void newGame(){
         computer.clear();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -93,7 +93,7 @@ public class BaseballGame{
         }
     }
     public void startGame(){
-        newBaseballGame();
+        newGame();
         compareNumber();
         if(!isError){
             System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
