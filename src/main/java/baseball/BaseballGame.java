@@ -25,25 +25,37 @@ public class BaseballGame {
 		List<Integer> computer = generateComputerNumber();
 
 		while(doGame) {
-			Map<String, Integer> gameResult = new HashMap<>();
-			gameResult.put("볼", 0);
-			gameResult.put("스트라이크", 0);
+			Map<String, Integer> gameResult = play(computer);
 
-			List<Integer> user = inputView.readNumber();
+		}
 
-			for(int i  = 0; i < 3; i++) {
-				int userNumber = user.get(i);
+	}
 
-				if (computer.contains(userNumber)) {
-					if(computer.get(i) == userNumber) {
-						gameResult.put("스트라이크", gameResult.get("스트라이크")+1);
-						continue;
-					}
-					gameResult.put("볼", gameResult.get("볼")+1);
+	private Map<String, Integer> play(List<Integer> computer) {
+		Map<String, Integer> gameResult = initGameResult();
+		List<Integer> user = inputView.readNumber();
+
+		for(int i  = 0; i < 3; i++) {
+			int userNumber = user.get(i);
+
+			if (computer.contains(userNumber)) {
+				if(computer.get(i) == userNumber) {
+					gameResult.put("스트라이크", gameResult.get("스트라이크")+1);
+					continue;
 				}
+				gameResult.put("볼", gameResult.get("볼")+1);
 			}
 		}
 
+		return gameResult;
+	}
+
+	private Map<String, Integer> initGameResult() {
+		Map<String, Integer> gameResult = new HashMap<>();
+		gameResult.put("볼", 0);
+		gameResult.put("스트라이크", 0);
+
+		return gameResult;
 	}
 
 	private List<Integer> generateComputerNumber() {
