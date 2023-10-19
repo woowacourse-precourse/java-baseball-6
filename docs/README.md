@@ -18,8 +18,7 @@
     - Integer strike
     - Integer ball
     - final Integer MAX_COUNT = 3
-    - userInput() : 사용자로부터 3개의 숫자를 입력받아 String으로 반환
     - result(Balls, Balls) : 사용자의 입력값과 컴퓨터의 랜덤값을 비교하여 결과를 반환
-    - isContinue() : 사용자로부터 게임을 계속할지 입력받아 boolean으로 반환
-    - play() : 게임을 실행
+    - printResult() : 결과를 출력
+    - ball과 strike에 대한 조건 함수
 
