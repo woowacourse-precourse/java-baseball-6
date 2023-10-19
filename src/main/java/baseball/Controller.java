@@ -1,8 +1,8 @@
 package baseball;
 
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
@@ -13,7 +13,8 @@ public class Controller {
 		while (true) {
 			trial = InputView.readBaseballNumber();
 			List<Integer> result = computer.calculateResult(trial);
-			if (result.get(2) == 3) {
+			OutputView.printResult(result);
+			if (result.get(1) == 3) {
 				break;
 			}
 		}
