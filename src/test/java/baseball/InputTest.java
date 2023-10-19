@@ -1,7 +1,8 @@
 package baseball;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.ByteArrayInputStream;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class InputTest {
@@ -11,6 +12,6 @@ public class InputTest {
         String input = "123";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
-        Assertions.assertThat(InputView.inputGuideMsg()).isEqualTo(123);
+        assertThat(InputView.inputGuideMsg()).isEqualTo(123);
     }
 }
