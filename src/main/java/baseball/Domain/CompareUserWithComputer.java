@@ -10,6 +10,9 @@ public class CompareUserWithComputer {
     public CompareUserWithComputer(String userNumber, String computerNumber){
         this.userNumber = userNumber;
         this.computerNumber = computerNumber;
+
+        countStrikeNum();
+        countBallNum();
     }
 
     public int getStrikeNum(){

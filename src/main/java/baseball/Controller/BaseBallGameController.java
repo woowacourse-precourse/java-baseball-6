@@ -13,14 +13,16 @@ public class BaseBallGameController {
 
     private CompareUserWithComputer compareUserWithComputer;
 
-    private boolean isFinishedGame = false;
+    private boolean isFinishedGame = true;
     private boolean isRestartedGame = false;
 
     public void gameStart(){
 
-        OutputView.startBaseBallGame();
+        while(isFinishedGame){
 
-        while(true){
+            if(isRestartedGame || userNumber == null){
+                OutputView.startBaseBallGame();
+            }
 
             inputUserNumber();
 
@@ -33,10 +35,6 @@ public class BaseBallGameController {
 
             if(isThreeStrike(compareUserWithComputer.getStrikeNum())){
                 GameOver();
-            }
-
-            if(isFinishedGame){
-                break;
             }
         }
 
@@ -68,11 +66,11 @@ public class BaseBallGameController {
         OutputView.gameOver();
         String value = InputView.inputGameOverOrRestart();
         if("1".equals(value)){
-            isFinishedGame = true;
+            isRestartedGame = true;
         }
 
         if("2".equals(value)){
-            isRestartedGame = true;
+            isFinishedGame = false;
         }
     }
 }

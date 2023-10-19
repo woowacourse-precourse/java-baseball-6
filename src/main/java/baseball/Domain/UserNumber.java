@@ -10,7 +10,7 @@ public class UserNumber {
 
     public UserNumber(String number){
         validate(number);
-        number = removeSpace(number);
+        this.number = removeSpace(number);
     }
 
     private String removeSpace(String number){ // 공백 제거
