@@ -18,7 +18,7 @@ public class GameServiceTest {
         Com com=new Com("713");//컴퓨터의 값
         User user=new User("123");//사용자의 값
         //when
-        user.compare(com.value);
+        user.compareAndRefresh(com.value);
         //then
         assertThat(user.equalsPoint(new Point(1,1))).isTrue();
 
@@ -32,7 +32,7 @@ public class GameServiceTest {
         User user=new User(value);
 
         //when
-        user.compare(value);
+        user.compareAndRefresh(value);
 
         //then
         assertThat(user.isThreeStrike()).isTrue();

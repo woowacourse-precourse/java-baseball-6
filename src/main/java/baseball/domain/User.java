@@ -9,11 +9,11 @@ public class User {
         this.point=new Point(0,0);
     }
 
-    public void compare(String value){
+    public void compareAndRefresh(String numbers){
         int[] result={0,0,0};
 
-        for(String word: value.split("")){
-            result[compareEach(word,value.indexOf(word))]+=1;
+        for(String number: split(numbers)){
+            addResult(result,compareEach(number,number.indexOf(number)));
         }
 
         refreshPoint(result);
@@ -29,6 +29,14 @@ public class User {
         }
 
         return 2;
+    }
+
+    private String[] split(String numbers){
+        return numbers.split("");
+    }
+
+    private void addResult(int[] result,int resultIndex){
+        result[resultIndex]+=1;
     }
 
     private void refreshPoint(int[] result){
