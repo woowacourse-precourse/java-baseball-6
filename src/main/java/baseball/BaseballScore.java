@@ -6,6 +6,13 @@ public class BaseballScore {
 
 
 
+    public boolean isAllCorrect() {
+        if (strikeCount == 3) {
+            return true;
+        }
+        return false;
+    }
+
     public BaseballScore(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
@@ -25,5 +32,19 @@ public class BaseballScore {
                 "ballCount=" + ballCount +
                 ", strikeCount=" + strikeCount +
                 '}';
+    }
+
+    public void printBaseballScore() {
+        if (ballCount != 0) {
+           System.out.print(ballCount+"볼 ");
+        }
+        if (strikeCount != 0) {
+            System.out.print(strikeCount + "스트라이크");
+        }
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println();
+
     }
 }

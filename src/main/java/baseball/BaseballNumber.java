@@ -33,6 +33,7 @@ public class BaseballNumber {
     }
 
     public static BaseballNumber initializeUserNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         List<Integer> number = new ArrayList<>();
         String input = Console.readLine();
 
