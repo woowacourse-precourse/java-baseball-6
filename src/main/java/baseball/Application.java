@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
 
     // 시작문구를 출력하는 기능
@@ -7,8 +9,15 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
+    // 사용자의 숫자입력을 알리는 기능
     public void printUserInput() {
         System.out.println("숫자를 입력해주세요 : ");
+    }
+
+    public String numberInput() {
+        String input_number = Console.readLine();
+
+        return input_number;
     }
 
     public static void main(String[] args) {
