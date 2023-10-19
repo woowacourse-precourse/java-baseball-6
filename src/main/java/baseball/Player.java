@@ -8,6 +8,7 @@ public class Player {
     public List<Integer> readNumber() {
         String read = Console.readLine().strip();
         validateCount(read);
+        validateIsNumeric(read);
 
         List<Integer> numbers = new ArrayList<>();
         for (char c: read.toCharArray()) {
@@ -19,6 +20,14 @@ public class Player {
     private void validateCount(String numbers) {
         if (numbers.length() != 3) {
             throw new IllegalArgumentException("3개의 숫자만 입력해야 합니다.");
+        }
+    }
+
+    private void validateIsNumeric(String read) {
+        for (char c: read.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException("숫자만 입력해야 합니다.");
+            }
         }
     }
 }
