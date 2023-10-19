@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Computer {
 	private List<Integer> answer;
@@ -20,5 +21,21 @@ public class Computer {
 
 	public boolean isMisMatch(List<Integer> player) {
 		return false;
+	}
+
+	public List<Integer> calculateResult(List<Integer> trial) {
+		int ballCount = 0;
+		int strikeCount = 0;
+		for (int i = 0; i < 3; i++) {
+			Integer current = trial.get(i);
+			if (answer.contains(current)) {
+				if (Objects.equals(answer.get(i), current)) {
+					strikeCount++;
+					continue;
+				}
+				ballCount++;
+			}
+		}
+		return List.of(ballCount, strikeCount);
 	}
 }
