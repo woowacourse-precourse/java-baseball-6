@@ -16,7 +16,7 @@ public class Balls {
         if(!balls.contains(new_ball)){
             this.balls.add(new_ball);
             this.size = this.balls.size();
-            System.out.println("[ball number] >>>>"+ new_ball);
+//            System.out.println("[ball number] >>>>"+ new_ball);
         }
     }
 
@@ -26,12 +26,6 @@ public class Balls {
         }
         this.size=0;
     }
-// get_index 로 대체 가능할 듯
-//    public boolean is_contain(Integer ball){
-//        if(balls.contains(ball)){
-//            return true;
-//        } else return false;
-//    }
 
     public int get_index(int target){
         try{
