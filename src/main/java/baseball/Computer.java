@@ -13,6 +13,42 @@ public class Computer {
         numbers = getRandomNumbers();
     }
 
+    public void compareInput(String input) {
+        int ballCounts = ballCounts(input);
+        int strikeCounts = strikeCounts(input);
+
+    }
+
+    private int strikeCounts(String input) {
+        int count = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            if (numbers.charAt(i) == input.charAt(i)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private int ballCounts(String input) {
+        int count = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            if (isBall(i, input)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private boolean isBall(int index, String input) {
+        char number = input.charAt(index);
+        String numberString = String.valueOf(number);
+        return numbers.charAt(index) != number && numbers.contains(numberString);
+    }
+
     private String getRandomNumbers() {
         Set<Integer> set = new HashSet<>();
 
