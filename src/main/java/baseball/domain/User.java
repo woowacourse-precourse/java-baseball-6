@@ -6,15 +6,15 @@ import java.util.List;
 
 public class User {
     private static final int NUMBER_LENGTH = 3;
-    private final List<Integer> numbers = new ArrayList<>();
+    private final List<Integer> userNumber = new ArrayList<>();
 
     public void setUserNumber(String number){
         for (int i = 0; i < NUMBER_LENGTH; i++) {
-            numbers.add(Integer.valueOf(number.charAt(i) - '0'));
+            userNumber.add(Integer.valueOf(number.charAt(i) - '0'));
         }
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public List<Integer> getUserNumber() {
+        return userNumber;
     }
 }
