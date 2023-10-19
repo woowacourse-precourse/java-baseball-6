@@ -1,15 +1,17 @@
 package baseball;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Validator {
     private Pattern pattern;
     private Matcher matcher;
-    private int[] intArray;
+    private List<Integer> intArray;
 
-    public int[] validateAndGetIntArray (String str) throws IllegalArgumentException {
+    public List<Integer> validateAndGetIntArray (String str) throws IllegalArgumentException {
         if(!isNumber(str)) throw new IllegalArgumentException("숫자만 입력하세요");
         if(!isThreeDigits(str)) throw new IllegalArgumentException("세 자리 숫자가 아닙니다");
         if(!isUniqueSetOfNumbers(str)) throw new IllegalArgumentException("중복된 숫자가 있습니다");
@@ -32,11 +34,11 @@ public class Validator {
     }
 
     private boolean isUniqueSetOfNumbers(String str) {
-        int[] numbers = parseNumbers(str);
+        List<Integer> numbers = parseNumbers(str);
 
-        int first = numbers[0];
-        int second = numbers[1];
-        int third = numbers[2];
+        int first = numbers.get(0);
+        int second = numbers.get(1);
+        int third = numbers.get(2);
 
         if (first == second) return false;
         else if (first == third) return false;
@@ -46,9 +48,9 @@ public class Validator {
         return true;
     }
 
-    private int[] parseNumbers(String str) {
+    private List<Integer> parseNumbers(String str) {
         return Arrays.stream(str.split(""))
-                .mapToInt(Integer::parseInt)
-                .toArray();
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
