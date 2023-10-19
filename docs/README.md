@@ -19,3 +19,6 @@
     - [ ] 정답인 경우 종료 또는 재시작 옵션을 검사한다.
     - [ ] 잘못된 입력하면 IllegalArgumentException을 발생시키고 에플리케이션을 종료시킨다.
 
+## 플로우 차트
+![flow chart](./asset/java-baseball-6-flowchart.jpg)
+
