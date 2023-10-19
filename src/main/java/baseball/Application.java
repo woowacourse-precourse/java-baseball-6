@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -21,6 +22,22 @@ public class Application {
     }
     public static void printStart() {
         System.out.println(START_MESSAGE);
+    }
+    public static List<Integer> getStrikeBallCount(List<Integer> computerNumbersList, List<Integer> userNumbersList) {
+        int strikeCount = 0;
+        int ballCount = 0;
+        for (int i = 0; i < computerNumbersList.size(); i++) {
+            int computerNumber = computerNumbersList.get(i);
+            int userNumber = userNumbersList.get(i);
+            if (computerNumber == userNumber) {
+                strikeCount++;
+                continue;
+            }
+            if (computerNumbersList.contains(userNumber)){
+                ballCount++;
+            }
+        }
+        return Arrays.asList(strikeCount, ballCount);
     }
     public static List<Integer> getComputerNumbersList() {
         List<Integer> computerNumbersList = new ArrayList<>();
