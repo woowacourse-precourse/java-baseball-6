@@ -66,4 +66,16 @@ public class GameServiceTest {
         //then
         assertThat(validation.gameValue(comValue)).isTrue();
     }
+
+    @DisplayName("5번 기능(재시작여부 값 입력)의 예외처리 기능")
+    @ParameterizedTest
+    @ValueSource(strings={"12","231","4532","D","c","ab","c6","4a","zxs"})
+    void 사용자_입력_기능_예외처리_5번(String values){
+        //given
+        Validation validation=new Validation();
+
+        //when & then
+        assertThat(validation.continueValue(values)).isFalse();
+    }
+
 }
