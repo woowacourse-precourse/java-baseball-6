@@ -26,7 +26,17 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+
     }
+
+    @Test
+    void 숫자_길이_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Test
     void 숫자만_들어가는지_테스트() {
@@ -40,13 +50,6 @@ class ApplicationTest extends NsTest {
     void 숫자_중복_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("232"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    void 입력_안할시_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(""))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

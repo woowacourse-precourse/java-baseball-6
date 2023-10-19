@@ -42,6 +42,9 @@ public class Application {
                 System.out.print(INPUT_START);
                 String inputNum = Console.readLine();
 
+                if (inputNum == "") {
+                    throw new IllegalArgumentException("아무것도 입력을 하지 않았습니다.");
+                }
                 onlyNumCheck(inputNum);
                 lengthCheck(inputNum);
 
@@ -101,7 +104,7 @@ public class Application {
     }
 
     private static void lengthCheck(String inputNum) {
-        if (inputNum.length() > 3) {
+        if (inputNum.length() > 3 || inputNum.length() < 3) {
             throw new IllegalArgumentException("길이가 4글자 이상 입니다.");
         }
     }
