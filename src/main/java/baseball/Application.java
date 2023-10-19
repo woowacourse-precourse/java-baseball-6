@@ -12,7 +12,7 @@ public class Application {
         BaseBallGame.init(computerAnswer);
     }
 
-    class Array() {
+    class Array {
         static char[] getStringToChar(String str) {
             char[] charArr = new char[str.length()];
             for (int i=0; i<str.length(); i++){
@@ -42,12 +42,10 @@ public class Application {
     }
 
 
-    static class BaseBallGame() {
+    static class BaseBallGame {
         private static final int START_RANGE = 1;
         private static final int END_RANGE = 9;
         static final int NUMBER_IDX = 3;
-        private static final int NEW_GAME = 1;
-        private static final int QUIT_GAME = 2;
 
         int[] number = new int[NUMBER_IDX];
 
@@ -115,7 +113,7 @@ public class Application {
         }
 
         private static BaseBallGame getUserAnswer() {
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             String userInput = readLine();
             BaseBallGame.checkInput(userInput);
 
@@ -156,7 +154,7 @@ public class Application {
         }
     }
 
-    static class GameResult() {
+    static class GameResult {
         int ball = 0, strike = 0;
 
         private static final String BALL = "볼";
