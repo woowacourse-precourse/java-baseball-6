@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class BaseBallGameResult {
 
+    private static final int GAME_END_STRIKE_COUNT = 3;
     private final int strikeCount;
     private final int ballCount;
 
@@ -27,6 +28,10 @@ public class BaseBallGameResult {
     @Override
     public int hashCode() {
         return Objects.hash(strikeCount, ballCount);
+    }
+
+    public boolean isGameEnd() {
+        return strikeCount == GAME_END_STRIKE_COUNT;
     }
 
     public int getStrikeCount() {

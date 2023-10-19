@@ -56,6 +56,7 @@ public class BaseBallNumbers {
 
     public static BaseBallNumbers generateRandomNumbers(NumberGenerator numberGenerator) {
         return Stream.generate(() -> BaseBallNumber.generateRandomNumber(numberGenerator))
+                .distinct()
                 .limit(NUMBER_SIZE)
                 .collect(collectingAndThen(toList(), BaseBallNumbers::new));
     }

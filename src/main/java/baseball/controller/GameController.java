@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.BaseBallGame;
 import baseball.domain.BaseBallGameResult;
 import baseball.domain.BaseBallNumbers;
 import baseball.domain.NumberGenerator;
@@ -22,11 +23,15 @@ public class GameController {
 
     public void run() {
         outputView.printGameStart();
-        PlayerNumberDto playerNumberDto = inputView.scanPlayerNumbers();
-        BaseBallNumbers playerNumbers = BaseBallNumbers.generateNumbers(playerNumberDto.getPlayerNumbers());
+
         BaseBallNumbers computerNumbers = BaseBallNumbers.generateRandomNumbers(numberGenerator);
-        BaseBallGameResult baseBallGameResult = computerNumbers.calculateResult(playerNumbers);
-        outputView.printGameResult(new GameResultDto(baseBallGameResult));
+        BaseBallGame game = BaseBallGame.init(computerNumbers);
+        while (game.isNotOver()) {
+            PlayerNumberDto playerNumberDto = inputView.scanPlayerNumbers();
+            BaseBallNumbers playerNumbers = BaseBallNumbers.generateNumbers(playerNumberDto.getPlayerNumbers());
+            BaseBallGameResult baseBallGameResult = game.calculateResult(playerNumbers);
+            outputView.printGameResult(new GameResultDto(baseBallGameResult));
+        }
 
     }
 
