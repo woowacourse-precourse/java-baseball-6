@@ -17,4 +17,11 @@ public class GameTest {
         game.start();
         assertEquals(game.getGameState(), GameState.ON);
     }
+
+    @Test
+    void 게임_종료() {
+        Game game = new Game(new RandomBallsGenerator());
+        game.end();
+        assertEquals(game.getGameState(), GameState.OFF);
+    }
 }
