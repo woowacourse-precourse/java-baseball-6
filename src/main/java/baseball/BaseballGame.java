@@ -6,15 +6,28 @@ import java.util.StringTokenizer;
 
 public class BaseballGame {
 
+    private NumberManagement computer;
+
     BaseballGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        computer = new NumberManagement();
     }
 
-    private void run() {
-        // 랜덤수 생성
+    private void close() {
+        computer.close();
+    }
 
-        // 숫자 입력후 예외처리
-        // 정상적인 입력인 경우 정답이라면 true, 아니면 false
+    public void run() {
+        computer.clear();
+        computer.makeNumbers(0);
+        while(true) {
+            int[] inputNumbers = getNumber();
+            if(answerCheck(inputNumbers)) {
+                break;
+            }
+        }
+        if(regame()) { run(); }
+        close();
     }
 
     private int[] getNumber() {
@@ -30,6 +43,12 @@ public class BaseballGame {
     private boolean answerCheck(int[] numbers) {
 
         return true;
+    }
+
+    private boolean regame() {
+        System.out.println("게임을 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        return input.equals("1");
     }
 
     private void varlidateInput(String input) {
