@@ -1,6 +1,7 @@
 package baseball.utils;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -9,7 +10,7 @@ public class InputValidation {
 	private static final String WRONG_INPUT_LENGTH_MESSAGE = "세 자리만 입력 가능합니다.";
 	private static final String WRONG_INPUT_RANGE_MESSAGE = "1~9 사이의 숫자만 입력 가능합니다.";
 	private static final String WRONG_INPUT_DUPLICATE_MESSAGE = "서로 다른 세자리 숫자만 입력 가능합니다.";
-	public static String validate(String inputNumber){
+	public static List<Integer> validate(String inputNumber){
 		if(!hasExactLength(inputNumber)){
 			throw new IllegalArgumentException(WRONG_INPUT_LENGTH_MESSAGE);
 		}
@@ -19,7 +20,7 @@ public class InputValidation {
 		if(!hasExactDuplicate(inputNumber)){
 			throw new IllegalArgumentException(WRONG_INPUT_DUPLICATE_MESSAGE);
 		}
-		return inputNumber;
+		return convertStringToInteger(inputNumber);
 	}
 
 	public static boolean hasExactLength(String inputNumber) {
@@ -33,5 +34,10 @@ public class InputValidation {
 		Set<String> setNumbers = Arrays.stream(inputNumbers).collect(Collectors.toSet());
 
 		return setNumbers.size() == NUMBER_LENGTH;
+	}
+	public static List<Integer> convertStringToInteger(String input){
+		return Arrays.stream(input.split(""))
+			.map(Integer::parseInt)
+			.collect(Collectors.toList());
 	}
 }
