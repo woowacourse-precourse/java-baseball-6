@@ -10,6 +10,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
+
     }
 
     public static void displayGameStartMessage()  {
@@ -36,5 +37,33 @@ public class Application {
             user.add(userThreeNumbers.charAt(i)-'0');
         }
         return user;
+    }
+
+    public static void checkGuessResult(List<Integer> user,List<Integer> computer){
+
+        int strike=0;
+        int ball =0;
+        for(int i=0;i<3;i++){
+            if(user.get(i)==computer.get(i)){
+                strike++;
+            }
+            else if(user.get(i)!=computer.get(i) && computer.contains(user.get(i))){
+                ball++;
+            }
+        }
+
+        if(ball>0 && strike >0){
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+        } else if(ball ==0 &&strike == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다.! 게임 종료");
+        } else if (ball == 0 && strike > 0 &&strike <3) {
+            System.out.println(strike+"스트라이크");
+        }else if (ball > 0 && strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        }
+
     }
 }
