@@ -16,4 +16,13 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자만 입력 가능합니다.");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"11", "22", "12", "a", "!"})
+    @DisplayName("게임 재시작/종료 여부에 대한 입력이 1 또는 2가 아니라면 예외가 발생한다.")
+    void validateRestartOptionNumber(String input) {
+        assertThatThrownBy(() -> Validator.validateRestartOptionNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("게임 재시작/종료 여부에 대한 입력은 1 또는 2로만 가능합니다.");
+    }
 }
