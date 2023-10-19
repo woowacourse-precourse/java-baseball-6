@@ -1,4 +1,7 @@
-package baseball.domain;
+package baseball.domain.game;
+
+import baseball.domain.ball.BallNumbers;
+import baseball.domain.dto.GameResult;
 
 public final class BaseballGame {
 

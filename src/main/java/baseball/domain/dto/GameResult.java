@@ -1,4 +1,6 @@
-package baseball.domain;
+package baseball.domain.dto;
+
+import baseball.domain.ball.BallNumbers;
 
 public record GameResult(
     int ballCount,

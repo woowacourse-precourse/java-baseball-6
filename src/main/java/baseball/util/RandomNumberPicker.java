@@ -2,7 +2,7 @@ package baseball.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public final class RandomNumberPicker {
+public final class RandomNumberPicker implements NumberPicker {
 
   private final int startInclusive;
   private final int endInclusive;

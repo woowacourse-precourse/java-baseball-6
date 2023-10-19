@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.controller.GameController;
-import baseball.domain.AnswerCreator;
+import baseball.domain.ball.AnswerCreator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

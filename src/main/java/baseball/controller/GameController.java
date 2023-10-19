@@ -1,9 +1,9 @@
 package baseball.controller;
 
-import baseball.domain.AnswerCreator;
-import baseball.domain.BallNumbers;
-import baseball.domain.BaseballGame;
-import baseball.domain.GameResult;
+import baseball.domain.ball.AnswerCreator;
+import baseball.domain.ball.BallNumbers;
+import baseball.domain.dto.GameResult;
+import baseball.domain.game.BaseballGame;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

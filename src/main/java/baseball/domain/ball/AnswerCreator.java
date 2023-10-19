@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.ball;
 
 import baseball.util.RandomNumberPicker;
 import java.util.ArrayList;
