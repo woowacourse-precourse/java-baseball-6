@@ -22,4 +22,12 @@ public class GameService {
     private boolean isNotDuplicated(int randomNumber) {
         return !numbers.contains(randomNumber);
     }
+
+    public List<Integer> parseInputToList(String input) {
+        List<Integer> userNumbers = new ArrayList<>();
+        for (int i = 0; i < MAX_NUMBERS; i++) {
+            userNumbers.add(Character.getNumericValue(input.charAt(i)));
+        }
+        return userNumbers;
+    }
 }
