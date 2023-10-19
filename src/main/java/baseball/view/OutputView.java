@@ -14,4 +14,8 @@ public class OutputView {
         System.out.println(strike + "스트라이크");
     }
 
+    public void printNothing(){
+        System.out.println("낫싱");
+    }
+
 }
