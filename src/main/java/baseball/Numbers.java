@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Numbers {
 
@@ -12,5 +13,32 @@ public class Numbers {
 
     public static Numbers from(final List<Integer> numbers) {
         return new Numbers(numbers);
+    }
+
+    public List<Integer> createCompareResult(final Numbers userNumbers) {
+        int strikeCount = calculateStrikeCount(userNumbers);
+        int ballCount = calculateBallCount(userNumbers);
+        return List.of(strikeCount, ballCount);
+    }
+
+    private int calculateStrikeCount(final Numbers userNumbers) {
+        int count = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (Objects.equals(numbers.get(i), userNumbers.numbers.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private int calculateBallCount(final Numbers userNumbers) {
+        int count = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (!Objects.equals(userNumbers.numbers.get(i), numbers.get(i))
+                    && numbers.contains(userNumbers.numbers.get(i))) {
+                count++;
+            }
+        }
+        return count;
     }
 }
