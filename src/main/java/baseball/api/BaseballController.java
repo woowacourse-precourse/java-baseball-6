@@ -1,7 +1,7 @@
 package baseball.api;
 
 import baseball.application.BaseballGameService;
-import baseball.entity.NumberBaseball;
+import baseball.entity.Baseball;
 import baseball.utils.InputUtil;
 import baseball.view.OutputView;
 
@@ -15,7 +15,7 @@ public class BaseballController {
     }
 
     public void getUserNumber() {
-        NumberBaseball userNumberBaseball = new NumberBaseball();
+        Baseball userNumberBaseball = new Baseball();
         while (true) {
             String userInput = InputUtil.requireGuessNumber();
             userNumberBaseball.isValid(userInput);
@@ -39,7 +39,7 @@ public class BaseballController {
         throw new IllegalArgumentException();
     }
 
-    private void printResult(NumberBaseball baseball, String userInput) {
+    private void printResult(Baseball baseball, String userInput) {
         if (baseball.isNothing(userInput)) {
             OutputView.printNothing();
             return;
