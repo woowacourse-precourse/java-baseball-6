@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.GameStatus;
 import baseball.domain.RandomNumber;
+import baseball.domain.RetryCommand;
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -10,9 +11,10 @@ import java.util.List;
 
 public class GameController {
 
-    private InputView inputView;
-    private OutputView outputView;
-    private GameService gameService;
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final GameService gameService;
+    private GameStatus gameStatus = new GameStatus();
 
     public GameController(InputView inputView, OutputView outputView, GameService gameService) {
         this.inputView = inputView;
@@ -22,12 +24,19 @@ public class GameController {
 
     public void playGame() {
         RandomNumber randomNumber = new RandomNumber();
-        List<Integer> inputNumber = inputView.getInputNumber();
-        GameStatus gameStatus = new GameStatus();
-        GameStatus gamestatus = gameService.compareNumber(randomNumber, inputNumber, gameStatus);
-        outputView.printGameResult(gamestatus);
-        if (gamestatus.isEnd()) {
-            outputView.printGameEndMessage();
+        System.out.println(randomNumber.toString());
+        while (!gameStatus.isEnd()) {
+            List<Integer> inputNumber = inputView.getInputNumber();
+            GameStatus gamestatus = gameService.compareNumber(randomNumber, inputNumber, gameStatus);
+            outputView.printGameResult(gamestatus);
+            if (gamestatus.isEnd()) {
+                outputView.printGameEndMessage();
+                RetryCommand command = inputView.getCommand();
+                if (command.isRetry()) {
+                    randomNumber = new RandomNumber();
+                    gamestatus.reset();
+                }
+            }
         }
     }
 }

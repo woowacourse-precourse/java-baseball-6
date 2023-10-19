@@ -24,4 +24,9 @@ public class GameStatus {
     public int getBallCnt() {
         return ballCnt;
     }
+
+    public void reset() {
+        strikeCnt = 0;
+        ballCnt = 0;
+    }
 }

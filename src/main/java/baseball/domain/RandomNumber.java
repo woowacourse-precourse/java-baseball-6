@@ -26,15 +26,17 @@ public class RandomNumber {
         return computer;
     }
 
-    public List<Integer> getRandomNumber() {
-        return randomNumber;
-    }
-
     public boolean isStrike(Integer inputNumber, int index) {
         return this.randomNumber.get(index).equals(inputNumber);
     }
 
     public boolean isBall(Integer inputNumber, int index) {
         return this.randomNumber.contains(inputNumber) && !this.randomNumber.get(index).equals(inputNumber);
+    }
+
+    @Override
+    public String toString() {
+        System.out.println(this.randomNumber);
+        return "g";
     }
 }
