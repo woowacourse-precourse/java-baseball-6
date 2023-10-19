@@ -14,7 +14,8 @@ public class User {
 
     public void compare(String value){
         for(int i=0;i<value.length();i++){
-            compareEach(Character.toString(value.charAt(i)),i);
+            char word=value.charAt(i);
+            compareEach(Character.toString(word),i);
         }
     }
 
