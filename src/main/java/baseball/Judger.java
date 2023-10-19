@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,7 +31,6 @@ public class Judger {
         else {
             System.out.println(this.score[1] + "볼");
         }
-        checkGameEnd();
     }
 
     private int[] checkStrike(List<Integer> human, List<Integer> computer){
@@ -60,8 +61,14 @@ public class Judger {
         }
     }
 
-    private void checkGameEnd() {
-        if(this.score[0] != 3) return;
+    public boolean checkGameEnd() {
+        if(this.score[0] != 3) return false;
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        return true;
+    }
+
+    public int promptForGameExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Integer.parseInt(Console.readLine());
     }
 }

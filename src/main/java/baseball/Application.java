@@ -10,6 +10,8 @@ public class Application {
 
         computer.setNumbers();
 
+        int endFlag = 0;
+
         do {
             Judger judger = new Judger();
 
@@ -17,6 +19,16 @@ public class Application {
 
             judger.compareNumbers(human.getNumbers(), computer.getNumbers());
             judger.displayScoreboard();
-        } while (true);
+
+
+            if(judger.checkGameEnd()) {
+                endFlag = judger.promptForGameExit();
+            }
+
+            if(endFlag == 1) {
+                computer.setNumbers();
+                endFlag = 0;
+            }
+        } while (endFlag != 2);
     }
 }
