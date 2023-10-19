@@ -23,6 +23,13 @@ public class GameNumber {
     }
 
     public void changeNumber(final String number) {
+        validateNumber(number);
         gameNumber = number;
+    }
+
+    private void validateNumber(final String number) {
+        if (!number.equals(CONTINUE_NUMBER) && !number.equals(END_NUMBER)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
