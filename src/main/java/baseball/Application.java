@@ -39,6 +39,7 @@ public class Application {
         try {
             return Arrays.stream(number.split(""))
                     .map(Integer::parseInt)
+                    .filter(n -> n != 0)
                     .toList();
         }
         catch (NumberFormatException e) {
@@ -48,7 +49,7 @@ public class Application {
 
     private static void validateThreeNums(List<Integer> number) {
         if (number.size() != 3) {
-            throw new IllegalArgumentException("3개의 숫자를 입력해주세요");
+            throw new IllegalArgumentException("1부터 9까지 3개의 숫자를 입력해주세요");
         }
     }
 
