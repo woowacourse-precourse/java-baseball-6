@@ -1,6 +1,7 @@
 package baseball.service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class ScoreCalculator {
@@ -16,6 +17,12 @@ public class ScoreCalculator {
     public Integer calculateStrike() {
         return (int) IntStream.range(0, computer.size())
                 .filter(idx -> computer.get(idx).equals(player.get(idx)))
+                .count();
+    }
+
+    public Integer calculateBall() {
+        return (int) IntStream.range(0, computer.size())
+                .filter(idx -> computer.contains(player.get(idx)) && !Objects.equals(computer.get(idx), player.get(idx)))
                 .count();
     }
 }
