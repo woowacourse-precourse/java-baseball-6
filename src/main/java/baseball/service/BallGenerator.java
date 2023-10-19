@@ -7,8 +7,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class BallGenerator {
     public int createBall() {
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < Size.NUMBER.getValue(); i++) {
-            result.append(Randoms.pickNumberInRange(Size.MIN.getValue(), Size.MAX.getValue()));
+        while (result.length() < Size.NUMBER.getValue()) {
+            int add = Randoms.pickNumberInRange(Size.MIN.getValue(), Size.MAX.getValue());
+            if (!result.toString().contains(Integer.toString(add))) {
+                result.append(add);
+            }
         }
         return Integer.parseInt(result.toString());
     }

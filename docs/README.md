@@ -25,7 +25,7 @@
 4. BallGenerator : 정답인 3자리 수를 생성
    1. createBall() : 정답 볼을 생성
 5. Ball : 게임 진행동안 볼 내용을 저장하고 비교하는 엔티티
-   1. compareBall(int ball) : 정답과 입력 볼을 비교 후 결과 반환
+   1. compareBall(int input) : 정답과 입력 볼을 비교 후 결과 반환
 6. BallService : 게임 진행을 담당
    1. init() : 게임 시작 설정 로직
    2. start() : 게임 시작 로직
@@ -33,5 +33,5 @@
    4. restartSequence() : 게임이 끝났을 때 재시작 로직
    5. occurException() : 예외가 발생하면 메세지 출력
 7. OutputView : 결과 화면을 출력
-   1. printResult(int ball, int strike) : 결과값을 받아 화면을 그림
+   1. printResult(int[] result) : 결과값을 받아 화면을 그림
    2. printMessage(String message) : 메세지 출력 (오류)
