@@ -6,9 +6,15 @@ import java.util.List;
 
 public class BaseBallGameStart {
 
+    private static final int how_many_balls = 3;
+
     public BaseBallGameStart() {
         output();
         ComputerNumbers computerNumbers = ComputerNumbers.createRandomNumbers();
+        gamePlay(computerNumbers);
+    }
+
+    private void gamePlay(ComputerNumbers computerNumbers) {
         new BaseBallGamePlay(computerNumbers);
     }
 
@@ -25,7 +31,7 @@ public class BaseBallGameStart {
 
         public static ComputerNumbers createRandomNumbers() {
             List<Integer> computerNumbers = new ArrayList<>();
-            while (computerNumbers.size() < 3) {
+            while (computerNumbers.size() < how_many_balls) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
                 if (!computerNumbers.contains(randomNumber)) {
                     computerNumbers.add(randomNumber);
