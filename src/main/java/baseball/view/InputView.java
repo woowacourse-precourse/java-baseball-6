@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import static baseball.GameConstants.*;
 
 public class InputView {
 
@@ -26,11 +27,11 @@ public class InputView {
 
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
 
-        if (uniqueNumbers.size() != 3) {
+        if (uniqueNumbers.size() != NUMBER_SIZE.getNumber()) {
             throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해주세요.");
         }
 
-        if (numbers.stream().anyMatch(number -> number < 1 || number > 9)) {
+        if (numbers.stream().anyMatch(number -> number < MIN_NUMBER.getNumber() || number > MAX_NUMBER.getNumber())) {
             throw new IllegalArgumentException("각 자릿수는 1~9 사이의 숫자만 가능합니다.");
         }
         return numbers;
