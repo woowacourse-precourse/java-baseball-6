@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
@@ -22,7 +23,11 @@ public class Application {
         // 2. 컴퓨터 숫자 생성
         List<Integer> computer = RandomNumberUtils.pickNumberInRange(START_RANGE, LAST_RANGE);
 
-        System.out.println(Message.INPUT_MSG);
+        // 3. 사용자의 입력 값 받기
+        System.out.print(Message.INPUT_MSG);
+        String inputStr = Console.readLine();
+
+        System.out.println("inputStr = " + inputStr);
 
 
     }
