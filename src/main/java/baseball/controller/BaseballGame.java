@@ -1,10 +1,9 @@
-package baseball;
+package baseball.controller;
 
-import baseball.domain.Number;
+import baseball.domain.GameResult;
+import baseball.application.NumberGenerator;
 import baseball.domain.Numbers;
 import baseball.view.InputView;
-
-import java.util.List;
 
 public class BaseballGame {
 

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.application;
 
 import baseball.domain.Number;
 import baseball.domain.Numbers;
@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.GameConstants.*;
+import static baseball.controller.GameConstants.*;
 
 public class RandomNumberGenerator implements NumberGenerator {
 

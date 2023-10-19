@@ -1,5 +1,6 @@
-package baseball;
+package baseball.application;
 
+import baseball.application.NumberGenerator;
 import baseball.domain.Number;
 import baseball.domain.Numbers;
 import org.junit.jupiter.api.Assertions;

@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.GameConstants;
+import baseball.controller.GameConstants;
 
 public record Number(
         int number

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.application;
 
 import baseball.domain.Numbers;
 
