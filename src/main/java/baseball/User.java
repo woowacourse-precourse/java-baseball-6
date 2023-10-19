@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -24,4 +25,14 @@ public class User {
             throw new IllegalArgumentException();
         }
     }
+
+    public List<Integer> convertStringToIntList(String input) {
+        List<Integer> numberList = new ArrayList<>();
+        String[] split = input.split("");
+        for (String number : split) {
+            numberList.add(Integer.parseInt(number));
+        }
+        return numberList;
+    }
+
 }
