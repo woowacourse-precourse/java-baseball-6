@@ -23,4 +23,18 @@ public class GameServiceTest {
         assertThat(user.ball).isEqualTo(1);
 
     }
+
+    @DisplayName("3 스트라이크 여부 확인 테스트")
+    @Test
+    void ThreeStrikeTest(){
+        String value="123";
+        //given
+        User user=new User(value);
+
+        //when
+        user.compare(value);
+
+        //then
+        assertThat(user.isThreeStrike()).isTrue();
+    }
 }
