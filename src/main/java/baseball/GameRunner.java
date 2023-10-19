@@ -1,7 +1,5 @@
 package baseball;
 
-import static baseball.GameConstants.*;
-
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameRunner {
@@ -17,7 +15,7 @@ public class GameRunner {
 
     public boolean playRound() {
         BallStrikeCount ballStrikeCount = executeRound();
-        GameMessages.displayScore(ballStrikeCount);
+        determineMessage(ballStrikeCount);
         return checkContinueGame(ballStrikeCount);
     }
 
@@ -29,13 +27,28 @@ public class GameRunner {
         return gameScore.calculateScore();
     }
 
-    private void validateInput(String input) {
-        if (!input.matches("\\d+")) {
-            throw new IllegalArgumentException(NOT_NUMBER);
+    private void determineMessage(BallStrikeCount ballStrikeCount) {
+        int ball = ballStrikeCount.getBallCount();
+        int strike = ballStrikeCount.getStrikeCount();
+
+        if (strike > 0 && ball > 0) {
+            GameMessages.printBallStrike(ball, strike);
         }
 
-        if (input.length() > 3) {
-            throw new IllegalArgumentException(NOT_VALID_LENGTH);
+        if (0 < strike && strike < 3 && ball < 1) {
+            GameMessages.printStrike(strike);
+        }
+
+        if (ball > 0 && strike < 1) {
+            GameMessages.printBall(ball);
+        }
+
+        if (strike == 0 && ball == 0) {
+            GameMessages.printNothing();
+        }
+
+        if (strike == 3) {
+            GameMessages.printThreeStrike();
         }
     }
 
@@ -50,17 +63,28 @@ public class GameRunner {
 
     private boolean handleUserChoice(BallStrikeCount ballStrikeCount) {
         int choice = Integer.parseInt(Console.readLine());
-        if (choice == RESTART_GAME) {
+        if (choice == GameConstants.RESTART_GAME) {
             gameUtils.restartGame(ballStrikeCount);
             return false;
         }
-        if (choice == END_GAME) {
+        if (choice == GameConstants.END_GAME) {
             return true;
         }
         return false;
     }
 
     private boolean isThreeStrike(BallStrikeCount ballStrikeCount) {
-        return ballStrikeCount.getStrikeCount() == THREE_STRIKE;
+        return ballStrikeCount.getStrikeCount() == GameConstants.THREE_STRIKE;
     }
+
+    private void validateInput(String input) {
+        if (!input.matches("\\d+")) {
+            throw new IllegalArgumentException(GameConstants.NOT_NUMBER);
+        }
+
+        if (input.length() > 3) {
+            throw new IllegalArgumentException(GameConstants.NOT_VALID_LENGTH);
+        }
+    }
+
 }
