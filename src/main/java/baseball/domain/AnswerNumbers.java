@@ -2,9 +2,7 @@ package baseball.domain;
 
 import baseball.constant.NumberConstant;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static baseball.constant.NumberConstant.*;
 
@@ -30,6 +28,14 @@ public class AnswerNumbers {
         if (nonDuplicateNumbers.size() != VALID_NUMBER_SIZE) {
             throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
         }
+    }
+
+    public Map<Integer, Integer> getBallNStrkie(List<Integer> inputNumbers){
+        Map<Integer, Integer> result = new HashMap<>();
+
+        result.put(BALL, getBall(inputNumbers));
+        result.put(STRIKE, getStrike(inputNumbers));
+        return result;
     }
 
     public int getStrike(List<Integer> inputNumbers){
@@ -62,6 +68,5 @@ public class AnswerNumbers {
         }
         return cnt;
     }
-
 
 }
