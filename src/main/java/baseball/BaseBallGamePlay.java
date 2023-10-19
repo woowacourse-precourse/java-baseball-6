@@ -8,18 +8,19 @@ import java.util.List;
 public class BaseBallGamePlay {
     //TODO: 게임진행
 
-    public BaseBallGamePlay(ComputerNumbers computerNumbers){
+    public BaseBallGamePlay(ComputerNumbers computerNumbers) {
         play(computerNumbers);
     }
 
     private void play(ComputerNumbers computerNumbers) {
-        output();
-        String playerBall = input();
-        checkInput(playerBall);
-        PlayerNumbers playerNumbers = new PlayerNumbers(playerBall);
-        checkStrike(playerNumbers, computerNumbers);
-
-        System.out.println(playerNumbers.getPlayerNumbers());
+        boolean gamePlaying = true;
+        while (gamePlaying) {
+            output();
+            String playerBall = input();
+            checkInput(playerBall);
+            PlayerNumbers playerNumbers = new PlayerNumbers(playerBall);
+            gamePlaying = checkStrike(playerNumbers, computerNumbers);
+        }
     }
 
     private void output() {
@@ -46,6 +47,32 @@ public class BaseBallGamePlay {
         }
     }
 
+    private boolean checkStrike(PlayerNumbers playerNumbers, ComputerNumbers computerNumbers) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < playerNumbers.getPlayerNumbers().size(); i++) {
+            if (playerNumbers.getPlayerNumbers().get(i) == computerNumbers.getNumbers().get(i)) {
+                strike++;
+                continue;
+            }
+            for (int j = 0; j < playerNumbers.getPlayerNumbers().size(); j++) {
+                if (playerNumbers.getPlayerNumbers().get(i) == computerNumbers.getNumbers().get(j)) {
+                    ball++;
+                    continue;
+                }
+            }
+        }
+
+        if (strike + ball != 0) {
+            System.out.println(strike + "스트라이크 " + ball + "볼");
+        } else {
+            System.out.println("낫싱");
+        }
+
+        return strike != 3;
+    }
+
     static class PlayerNumbers {
         List<Integer> playerNumbers = new ArrayList<>();
 
@@ -59,31 +86,6 @@ public class BaseBallGamePlay {
 
         public List<Integer> getPlayerNumbers() {
             return playerNumbers;
-        }
-    }
-
-    private void checkStrike(PlayerNumbers playerNumbers, ComputerNumbers computerNumbers){
-        int strike = 0;
-        int ball = 0;
-
-        for(int i = 0; i < playerNumbers.getPlayerNumbers().size(); i++){
-            if(playerNumbers.getPlayerNumbers().get(i) == computerNumbers.getNumbers().get(i)){
-                strike++;
-                continue;
-            }
-            for(int j = 0; j < playerNumbers.getPlayerNumbers().size(); j++){
-                if(playerNumbers.getPlayerNumbers().get(i) == computerNumbers.getNumbers().get(j)){
-                    ball++;
-                    continue;
-                }
-            }
-        }
-
-        if(strike+ball != 0){
-            System.out.println(strike + "스트라이크 " + ball + "볼");
-        }
-        else{
-            System.out.println("낫싱");
         }
     }
 }
