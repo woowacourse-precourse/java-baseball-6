@@ -1,15 +1,20 @@
 package baseball.controller;
 
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballController {
-    final OutputView outputView;
 
-    public BaseballController(OutputView outputView) {
+    private final InputView inputView;
+    private final OutputView outputView;
+
+    public BaseballController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
         this.outputView = outputView;
     }
 
     public void run() {
         outputView.printStartMessage();
+        String guessNumber = inputView.readGuessNumber();
     }
 }
