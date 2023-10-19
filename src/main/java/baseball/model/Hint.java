@@ -4,7 +4,10 @@ public class Hint {
     int ballCount;
     int strikeCount;
 
-    public Hint() {};
+    public Hint() {
+    }
+
+    ;
 
     public Hint(int ballCount, int strikeCount) {
         this.ballCount = ballCount;

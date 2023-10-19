@@ -14,6 +14,7 @@ public class OutputView {
     public static void printStartGameMessage() {
         System.out.println(START_GAME_MESSAGE);
     }
+
     public static void printEndGameMessage() {
         System.out.print(END_GAME_MESSAGE);
     }
@@ -23,16 +24,13 @@ public class OutputView {
     }
 
     public static void printHintMessage(Hint hint) {
-        if(hint.getBallCount() == 0 && hint.getStrikeCount() == 0) {
+        if (hint.getBallCount() == 0 && hint.getStrikeCount() == 0) {
             printNothingMessage();
-        }
-        else if(hint.getBallCount() == 0) {
+        } else if (hint.getBallCount() == 0) {
             printStrikeMessage(hint.getStrikeCount());
-        }
-        else if(hint.getStrikeCount() == 0) {
+        } else if (hint.getStrikeCount() == 0) {
             printBallMessage(hint.getBallCount());
-        }
-        else {
+        } else {
             printBallStrikeMessage(hint.getBallCount(), hint.getStrikeCount());
         }
     }
@@ -40,6 +38,7 @@ public class OutputView {
     public static void printNothingMessage() {
         System.out.println(NOTHING_MESSAGE);
     }
+
     public static void printBallMessage(Integer ballCount) {
         System.out.println(ballCount.toString() + BALL_MESSAGE);
     }

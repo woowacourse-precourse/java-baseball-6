@@ -1,6 +1,6 @@
-package baseball.Controller;
+package baseball.controller;
 
-import baseball.View.InputView;
+import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class MainController {
@@ -17,7 +17,7 @@ public class MainController {
         do {
             gameController.startGame();
             whetherRestart = InputController.scanWhetherRestart();
-        } while(whetherRestart);
+        } while (whetherRestart);
     }
 
     private static class InputController {

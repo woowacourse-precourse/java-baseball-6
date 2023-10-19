@@ -17,11 +17,11 @@ public class GameController {
         OutputView.printStartGameMessage();
         Computer computer = new Computer();
         computer.setAnswer(createRandomTarget());
-        while(true) {
+        while (true) {
             String userAnswerString = InputController.scanUserAnswer();
             NumberList userAnswer = Transfer.stringToNumberList(userAnswerString);
 
-            if(computer.getAnswer().equals(userAnswer)) {
+            if (computer.getAnswer().equals(userAnswer)) {
                 OutputView.printSuccessMessage();
                 break;
             }
@@ -34,9 +34,9 @@ public class GameController {
 
     public NumberList createRandomTarget() {
         List<Integer> answerList = new ArrayList<>();
-        while(answerList.size() < 3) {
+        while (answerList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!answerList.contains(randomNumber)) {
+            if (!answerList.contains(randomNumber)) {
                 answerList.add(randomNumber);
             }
         }
@@ -60,6 +60,7 @@ public class GameController {
     private static class InputController {
         private static final String WRONG_INPUT_ANSWER = "1~9 사이 수 3자리를 입력해주세요.";
         private static final String WRONG_INPUT_TYPE = "3자리 수를 입력해주세요.";
+
         public static String scanUserAnswer() {
             InputView.printEnterNumbers();
             String inputString = Console.readLine();
@@ -69,12 +70,12 @@ public class GameController {
 
         private static void validateUserAnswer(String inputString) {
             boolean isValid = true;
-            if(inputString.length() != 3) isValid = false;
-            for(int i=0; i<inputString.length(); i++) {
-                int number = inputString.charAt(i)-'0';
+            if (inputString.length() != 3) isValid = false;
+            for (int i = 0; i < inputString.length(); i++) {
+                int number = inputString.charAt(i) - '0';
                 isValid &= (1 <= number && number <= 9);
             }
-            if(!isValid) throw new IllegalArgumentException("[ERROR] " + WRONG_INPUT_ANSWER);
+            if (!isValid) throw new IllegalArgumentException("[ERROR] " + WRONG_INPUT_ANSWER);
         }
     }
 }
