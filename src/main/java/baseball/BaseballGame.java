@@ -11,6 +11,7 @@ public class BaseballGame {
         OutputView.printGameStart();
         do {
             baseballComputer.generateNumber();
+            baseballComputer.addUserNumber(InputView.inputUserNumber());
         } while (true);
     }
 }
