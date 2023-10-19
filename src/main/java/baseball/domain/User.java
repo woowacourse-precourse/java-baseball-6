@@ -22,4 +22,11 @@ public class User {
             throw new IllegalArgumentException();
     }
 
+    public void validateDuplicated(String input){
+        if (input.length() != input.chars().distinct().count())
+            throw new IllegalArgumentException();
+    }
+
+
+
 }

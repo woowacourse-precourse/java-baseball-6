@@ -26,5 +26,24 @@ class UserTest {
 
     }
 
+    @Test
+    void 입력에_중복_값이_있는_경우(){
+        //given
+        User user = new User();
+
+        //when,then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.validateDuplicated("233");
+        });
+    }
+
+    @Test
+    void 입력에_중복_값이_없는_경우(){
+        //given
+        User user = new User();
+
+        //when,then
+        user.validateDuplicated("1234567890");
+    }
 
 }
