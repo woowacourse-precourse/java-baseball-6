@@ -61,9 +61,12 @@ public class BaseballNumber {
     private static boolean isInputOnlyNumber(String input) {
         try {
             int inputToInt = Integer.parseInt(input);
+            if (inputToInt <= 0) {
+                throw new IllegalArgumentException("0 또는 음수는 입력될 수 없습니다");
+            }
             return true;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 제외한 문자를 입력될 수 없습니다.");
+            throw new IllegalArgumentException("자연수를 제외한 문제는 입력할 수 없습니다.");
         }
     }
 
