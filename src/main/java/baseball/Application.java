@@ -15,6 +15,14 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    // 기능: 게임을 최초로 시작한다
+    private static void initialGameStart() {
+        while (true) {
+            progressGame();
+            if (isNoMoreGame()) break;
+        }
+    }
+
     // 기능: 게임 순서에 맞게 게임을 진행한다
     private static void progressGame() {
         List<Integer> computerBalls = createComputerBalls();
