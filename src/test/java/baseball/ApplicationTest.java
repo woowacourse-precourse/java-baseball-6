@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import Player.Player;
+import Referee.Referee;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
 import java.util.Arrays;
@@ -65,5 +66,21 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(player::inputPlayerNumber)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리의 숫자만 입력가능합니다.");
+    }
+
+    @Test
+    @DisplayName("심판이 strike와 ball개수를 정확히 판별하는지 테스트")
+    public void 심판_스트라이크_볼_계산_테스트() {
+        //given
+        final List<Integer> computerBaseballNumber = List.of(1, 2, 3);
+        final List<Integer> playerBaseballNumber = List.of(1, 4, 3);
+        final int[] score = new int[]{2, 0};
+        Referee referee = new Referee();
+
+        //when
+        int[] result = referee.calculateStrikeAndBall(computerBaseballNumber, playerBaseballNumber);
+
+        //then
+        assertThat(result).isEqualTo(score);
     }
 }
