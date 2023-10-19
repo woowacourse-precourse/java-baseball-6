@@ -11,7 +11,7 @@ public class BaseBallGameStart {
         output();
         ComputerNumbers computerNumbers = ComputerNumbers.createRandomNumbers();
         //TODO: 게임을 플레이 하는 로직 구현 할것
-        System.out.println(computerNumbers.getNumbers());
+        new BaseBallGamePlay();
     }
 
     // 출력
@@ -20,7 +20,7 @@ public class BaseBallGameStart {
     }
 
     // 컴퓨터의 숫자를 생성
-    static class ComputerNumbers {
+    public static class ComputerNumbers {
         private final List<Integer> numbers;
 
         private ComputerNumbers(List<Integer> numbers) {
