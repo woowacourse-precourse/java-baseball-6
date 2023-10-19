@@ -21,6 +21,7 @@ public class Application {
             String input = Console.readLine();
             validateInput(input);
 
+            Result result = getResult(computer, input, strikes, balls);
     private static void validateInput(String input) {
         if (!input.matches("[1-9]{3}") || hasDuplicateDigits(input)) {
             throw new IllegalArgumentException();
@@ -30,6 +31,29 @@ public class Application {
     private static boolean hasDuplicateDigits(String input) {
         return input.chars().distinct().count() < input.length();
     }
+
+    private static Result getResult(List<Integer> computer, String input, int strikes, int balls) {
+        char[] inputChars = input.toCharArray();
+
+        for (int i = 0; i < computer.size(); i++) {
+            for (int j = 0; j < input.length(); j++) {
+                if (computer.get(i) == Character.getNumericValue(inputChars[j])) {
+                    if (i == j) {
+                        strikes++;
+                    } else {
+                        balls++;
+                    }
+                    break;
+                }
+            }
+        }
+        return new Result(balls, strikes);
+
+    }
+
+    private record Result(int balls, int strikes) {
+    }
+
     private static List<Integer> getComputerPicks() {
         List<Integer> computer = new ArrayList<>();
 
