@@ -28,14 +28,11 @@ public final class InputView {
 
     final String input = readLine();
 
-    if ("1".equals(input)) {
-      return true;
-    }
-    if ("2".equals(input)) {
-      return false;
+    if (!("1".equals(input) || "2".equals(input))) {
+      throw new IllegalArgumentException("1, 2 중 하나를 입력해주세요.");
     }
 
-    throw new IllegalArgumentException("1, 2 중 하나를 입력해주세요.");
+    return "1".equals(input);
   }
 
 }
