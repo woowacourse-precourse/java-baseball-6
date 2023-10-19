@@ -116,15 +116,21 @@ public class Application {
 
 
     private static boolean isContinue(int option) {
-        // option값 유효성 검증 후,
-        // option이 1이면 true, 2이면 false 리턴
-        return true;
+        if (option == 1) {
+            return true;
+        }
+        if (option == 2) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 
+    // 사용자 입력 문자열로부터 옵션 선택 번호 검증
     private static int getOptionNumber(String inputString) {
-        // 사용자 입력 문자열로부터 옵션 선택 번호 검증
-        // 올바르지 않으면 IllegalArgumentException
-        return 0;
+        if(!inputString.equals("1") && !inputString.equals("2")){
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(inputString);
     }
 
     public static int generateAnswerNumber() {
