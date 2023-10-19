@@ -1,10 +1,9 @@
 package baseball.controller;
 
-import baseball.service.BaseballService;
-
+import baseball.service.ComputerService;
 public class BaseballController {
     
-    private final BaseballService baseballService = new BaseballService();
+    private final ComputerService computerService = new ComputerService();
 
     public void startGame() {
         initGame();
@@ -12,7 +11,7 @@ public class BaseballController {
     
     private void initGame() {
         printStartGame();
-        baseballService.initComputer();
+        computerService.initComputer();
     }
     
     private void printStartGame() {

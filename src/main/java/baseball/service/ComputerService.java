@@ -6,7 +6,7 @@ import baseball.repository.ComputerRepository;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashSet;
 
-public class BaseballService {
+public class ComputerService {
     
     private static final int BASEBALL_MIN_NUMBER = 1;
     private static final int BASEBALL_MAX_NUMBER = 9;
