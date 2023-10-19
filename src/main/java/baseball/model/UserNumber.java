@@ -11,10 +11,16 @@ public class UserNumber {
     }
 
     private void validate(String number) {
+        if(isEmpty(number)){
+            throw new IllegalArgumentException("숫자를 입력해주세요");
+        }
+    }
 
+    private boolean isEmpty(String number) {
+        return number == null || number.isBlank();
     }
 
     private List<Integer> StringToList(String number) {
-    }
 
+    }
 }
