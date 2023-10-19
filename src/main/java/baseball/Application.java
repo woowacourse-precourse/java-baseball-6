@@ -3,7 +3,7 @@ package baseball;
 import baseball.context.BaseballContext;
 import baseball.game.BaseballGame;
 import baseball.game.GameLoop;
-import baseball.input.Input;
+import baseball.io.Input;
 import baseball.validation.InputValidator;
 
 public class Application {

@@ -1,4 +1,4 @@
-package baseball.input;
+package baseball.io;
 
 import java.util.Scanner;
 
