@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -35,6 +36,16 @@ public class Computer {
         Set<Integer> duplicateNumbers = new HashSet<>(computer);
         if (duplicateNumbers.size() != COMPUTER_NUMBERS_SIZE) {
             throw new IllegalArgumentException("컴퓨터가 선택한 숫자는 중복될 수 없습니다.");
+        }
+    }
+
+    private void validateIsNumber(List<Integer> computer) {
+        String pattern = "^[0-9]*$";
+        boolean containsNonNumber = computer.stream()
+                .map(val -> !Pattern.matches(pattern, val.toString()))
+                .anyMatch(Boolean::booleanValue);
+        if (containsNonNumber) {
+            throw new IllegalArgumentException("숫자들만 선택할 수 있습니다.");
         }
     }
 }
