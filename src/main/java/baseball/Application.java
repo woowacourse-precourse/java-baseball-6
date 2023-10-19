@@ -36,6 +36,26 @@ public class Application {
 
         return evaluateByResult(strikeNumber, ballNumber, nothingNumber);
     }
+
+    public static boolean evaluateByResult(int strikeNumber, int ballNumber, int nothingNumber) {
+        if (strikeNumber == numLength) {
+            System.out.println(numLength + "스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        } else if (nothingNumber == numLength) {
+            System.out.println("낫싱");
+        } else if (strikeNumber != 0 || ballNumber != 0) {
+            if (ballNumber != 0) {
+                System.out.print(ballNumber + "볼 ");
+            }
+            if (strikeNumber != 0) {
+                System.out.println(strikeNumber + "스트라이크");
+            }
+            System.out.println();
+        }
+        return false;
+    }
+
     public static void initComputerNumber() {
         splitDigitsFromRandomNumber.clear();
         while (splitDigitsFromRandomNumber.size() < numLength) {
