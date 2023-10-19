@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.global.constant.BaseballConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,13 +30,13 @@ public class BaseballGame {
 			user = inputView.readNumber();
 			GameResult result = play(computer, user);
 
-			if (result.getStrikeCount() == 3) {
+			if (result.getStrikeCount() == THREE_STRIKE) {
 				outputView.printGameFinishMessage();
 				String option = inputView.readRestartOrNot();
-				if (option.equals("1")) {
+				if (option.equals(SIGN_RESTART)) {
 					computer = generateComputerNumber();
 					continue;
-				} else if (option.equals("2")) {
+				} else if (option.equals(SIGN_STOP)) {
 					break;
 				}
 			}
@@ -47,7 +49,7 @@ public class BaseballGame {
 		int strikeCount = 0;
 		int ballCount = 0;
 
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < PLAY_AMOUNT; i++) {
 			int userNumber = user.get(i);
 			int computerNumber = computer.get(i);
 
@@ -65,7 +67,7 @@ public class BaseballGame {
 
 	private List<Integer> generateComputerNumber() {
 		List<Integer> computer = new ArrayList<>();
-		while (computer.size() < 3) {
+		while (computer.size() < PLAY_AMOUNT) {
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
 			if (!computer.contains(randomNumber)) {
 				computer.add(randomNumber);

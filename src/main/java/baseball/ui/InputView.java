@@ -13,10 +13,13 @@ public class InputView {
 		this.outputView = outputView;
 	}
 
+	private final static String SEPARATOR = "";
+
+
 	public List<Integer> readNumber() {
 		outputView.printNumberInputMessage();
 		String inputValue = Console.readLine();
-		String[] inputNumbers = inputValue.split("");
+		String[] inputNumbers = inputValue.split(SEPARATOR);
 
 		Validator.validateNumbersFormat(inputNumbers);
 		Validator.validateNumbersLength(inputNumbers);
