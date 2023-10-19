@@ -1,20 +1,19 @@
 package baseball;
 
-import static baseball.Application.LIST_SIZE;
+import static baseball.GameConstants.LIST_SIZE;
 
 import java.util.List;
 
 
-
-public class BaseballScore {
+public class GameScore {
     private final Person person;
     private final Computer computer;
     private final Count count;
 
-    public BaseballScore(Person person, Computer computer) {
+    public GameScore(Person person, Computer computer, Count count) {
         this.person = person;
         this.computer = computer;
-        count = new Count();
+        this.count = count;
     }
 
     public Count count() {
