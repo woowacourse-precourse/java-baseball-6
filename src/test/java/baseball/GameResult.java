@@ -3,7 +3,7 @@ package baseball;
 public enum GameResult {
     STRIKE("스트라이크"),
     BALL("볼"),
-    NOTHING("NOTHING");
+    NOTHING("낫싱");
 
     private String resultMessage;
 

@@ -14,7 +14,7 @@ public class Ball {
             return GameResult.STRIKE;
         }
 
-        if (isSameDigit(computerBall)) {
+        if (isSameValue(computerBall)) {
             return GameResult.BALL;
         }
 

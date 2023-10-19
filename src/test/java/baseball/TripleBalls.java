@@ -1,16 +1,36 @@
 package baseball;
 
+import baseball.util.Util;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrippleBalls {
-    private final List<Ball> trippleBalls;
+public class TripleBalls {
+    private final List<Ball> tripleBalls;
 
-    public TrippleBalls(List<Ball> trippleBalls) {
-        this.trippleBalls = trippleBalls;
+    public TripleBalls(List<Ball> tripleBalls) {
+        this.tripleBalls = tripleBalls;
     }
 
-    public List<Ball> getTrippleBalls() {
-        return new ArrayList<>(trippleBalls);
+    public String compareTripleBalls(TripleBalls otherTripleBalls) {
+        long strikeTotal = 0;
+        long ballTotal = 0;
+
+        for (Ball otherOneBall : otherTripleBalls.tripleBalls) {
+            strikeTotal += getResult(GameResult.STRIKE, otherOneBall);
+            ballTotal += getResult(GameResult.BALL, otherOneBall);
+        }
+
+        return Util.appendGameResult(ballTotal, strikeTotal);
+    }
+
+    private long getResult(GameResult resultType, Ball otherOneBall) {
+        return tripleBalls.stream()
+                .filter(oneBall -> resultType == oneBall.compare(otherOneBall))
+                .count();
+    }
+
+    public List<Ball> getTripleBalls() {
+        return new ArrayList<>(tripleBalls);
     }
 }

@@ -24,7 +24,7 @@ public class BallTest {
     @Test
     void 같은_숫자_다른_자리_BALL_판정() {
         Ball playerBall = new Ball(1, 1);
-        Ball computerBall = new Ball(1, 2);
+        Ball computerBall = new Ball(2, 1);
 
         GameResult result = game.compareBalls(playerBall, computerBall);
 

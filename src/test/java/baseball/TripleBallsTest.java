@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-public class ExtendedBallTest {
+public class TripleBallsTest {
     private Game game;
     private TripleBalls computerTripleBalls;
     private TripleBalls userTripleBalls;
@@ -33,7 +33,7 @@ public class ExtendedBallTest {
                 new Ball(2, 2), new Ball(3, 3)));
 
         String gameResult = game.checkTripleBalls(computerTripleBalls, userTripleBalls);
-        Assertions.assertThat(gameResult).isEqualTo("1볼2스트라이크");
+        Assertions.assertThat(gameResult).isEqualTo("1볼 2스트라이크");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class ExtendedBallTest {
                 new Ball(5, 2), new Ball(5, 3)));
 
         String gameResult = game.checkTripleBalls(computerTripleBalls, userTripleBalls);
-        Assertions.assertThat(gameResult).isEqualTo("2볼1스트라이크");
+        Assertions.assertThat(gameResult).isEqualTo("2볼 1스트라이크");
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ExtendedBallTest {
                 new Ball(5, 2), new Ball(6, 3)));
 
         String gameResult = game.checkTripleBalls(computerTripleBalls, userTripleBalls);
-        Assertions.assertThat(gameResult).isEqualTo("3볼");
+        Assertions.assertThat(gameResult).isEqualTo("3볼 ");
     }
 
     @Test
@@ -60,9 +60,16 @@ public class ExtendedBallTest {
                 new Ball(2, 6), new Ball(3, 9)));
 
         String gameResult = game.checkTripleBalls(computerTripleBalls, userTripleBalls);
-        Assertions.assertThat(gameResult).isEqualTo("1볼");
+        Assertions.assertThat(gameResult).isEqualTo("1볼 ");
     }
 
+    @Test
+    void Ball_3개인_경우_낫싱() {
+        userTripleBalls = new TripleBalls(Arrays.asList(new Ball(1, 10),
+                new Ball(2, 6), new Ball(3, 9)));
 
+        String gameResult = game.checkTripleBalls(computerTripleBalls, userTripleBalls);
+        Assertions.assertThat(gameResult).isEqualTo("낫싱");
+    }
 
 }
