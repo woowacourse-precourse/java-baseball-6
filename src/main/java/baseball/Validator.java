@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import static baseball.Const.*;
+
 public class Validator {
 
     private static final Validator instance = new Validator();
@@ -24,7 +26,7 @@ public class Validator {
     }
 
     private static void validateInputRange(final String input) {
-        if (input.length() == Const.NUMBER_LENGTH) return;
+        if (input.length() == NUMBER_LENGTH) return;
         throw new IllegalArgumentException("세개의 숫자만 입력받을 수 있습니다.");
     }
 
@@ -54,7 +56,7 @@ public class Validator {
     }
 
     public static void validateCommand(int command) {
-        if (command != 1 && command != 2) {
+        if (command != RESTART_COMMAND && command != FINISH_COMMAND) {
             throw new IllegalArgumentException("게임 완료 명령은 1, 2만 입력될 수 있습니다.");
         }
     }

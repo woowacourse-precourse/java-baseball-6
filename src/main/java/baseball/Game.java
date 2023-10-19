@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-import static baseball.Const.NUMBER_LENGTH;
+import static baseball.Const.*;
 
 public class Game {
 
@@ -49,7 +49,6 @@ public class Game {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             boolean isExist = answer.contains(userPick.get(i));
             boolean isRightOrder = (Objects.equals(answer.get(i), userPick.get(i)));
-//            boolean isRightOrder = answer.get(i) == userPick.get(i);
 
             if (isExist) {
                 if (isRightOrder) result.addStrike();
@@ -69,7 +68,7 @@ public class Game {
         List<Integer> answer = new ArrayList<>();
         Set<Integer> numbers = new HashSet<>();
         while (answer.size() < 3) {
-            int number = Randoms.pickNumberInRange(1, 9);
+            int number = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
             if (numbers.contains(number)) continue;
             answer.add(number);
             numbers.add(number);
@@ -132,13 +131,13 @@ public class Game {
             System.out.println(this);
 
 
-            if (getStrike() == 3) {
+            if (getStrike() == FINISH_STRIKE_COUNT) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }
         }
 
         public boolean isEnd() {
-            return getStrike() == 3;
+            return getStrike() == FINISH_STRIKE_COUNT;
         }
     }
 }
