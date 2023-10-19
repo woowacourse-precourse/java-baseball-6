@@ -1,4 +1,4 @@
-package resource;
+package baseball.resource;
 
 public final class GameValue {
 
