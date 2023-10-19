@@ -17,44 +17,44 @@
 
 # MVC패턴에 따른 구현해야 할 기능 목록
 ## 🧑 Model
-### ./Model/NumberList
+### ./model/NumberList
 야구게임에 사용할 3개의 숫자 데이터를 저장할 용도의 모델
 ex) 컴퓨터의 정답, 사람의 게싱 값
 * [x] 두 NumberList 객체 간 3개의 수를 비교할 때 사용할 equals 메소드 구현
 
-### ./Model/Computer
+### ./model/Computer
 
 
 ## 🔎 View
-### ./View/InputView
+### ./view/InputView
 * [x] 사용자로부터 3자리 정수를 입력받는 화면 출력
 * [x] 게임 재시작 혹은 종료를 위한 정수를 입력받는 화면 출력
 
-### ./View/OutputView
+### ./view/OutputView
 * [x] 숫자 야구 프로그램 시작 화면 출력
 * [ ] 힌트 결과 출력 화면 출력
 * [x] 프로그램 종료 화면 출력
 
 
 ## 🎮 Controller
-### ./Controller/MainController
+### ./controller/MainController
 전체 프로그램의 흐름을 제어하는 컨트롤러
 * [x] GameController를 통해 게임 진행
 * [x] 게임 재시작/종료 여부 입력받아 처리
 
-### ./Controller/MainController.InputController (MainController의 inner class)
+### ./controller/MainController.InputController (MainController의 inner class)
 MainController 내에서 사용자 입력을 받는 부분에 대한 로직을 처리하는 컨트롤러
 * [x] 사용자로부터 게임 재시작 여부 입력 받기 + 예외 처리
 
 
-### ./Controller/GameController
+### ./controller/GameController
 야구 게임 진행을 제어하는 컨트롤러
 * [x] 게임 시작 화면 출력
 * [x] 컴퓨터로부터 정답인 3자리 숫자 랜덤으로 생성
 * [ ] 사용자로부터 guessing 정보를 받아 힌트 결과 생성 및 출력
 * [x] 게임 종료 화면 출력
 
-### ./Controller/GameController.InputController (GameController의 inner class)
+### ./controller/GameController.InputController (GameController의 inner class)
 GameController 내에서 사용자 입력을 받는 부분에 대한 로직을 처리하는 컨트롤러
 * [ ] 사용자로부터 3자리 수 입력 받기 + 예외 처리
 
