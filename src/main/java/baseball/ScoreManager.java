@@ -1,10 +1,15 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
+
 import java.util.ArrayList;
 import java.util.List;
 public class ScoreManager {
     //점수를 올리는 메서드
     //점수를 호가인하는 메서드
+
+    //MainController mainController = new MainController(); 왜 이걸 치면 안되지?
 
     static int BALL;
     static int STRIKE;
@@ -20,7 +25,8 @@ public class ScoreManager {
         System.out.println(BALL);
         System.out.println(STRIKE);
         checkAllSolve(); //점수를 출력한다.
-        return true;
+
+        return isAllStrike;
     }
 
     private void setScore(List<Integer> computer, List<Integer> user){ //두 숫자를 비교하여 점수를 매긴다
@@ -55,7 +61,8 @@ public class ScoreManager {
         }
         if(STRIKE>0) { //!!!!!!!!else if로하면 출력이 안되넨???
             if(STRIKE == 3){
-                System.out.println("dkssud");
+                printFinalMsg();
+                isAllStrike = true;
             }
             else {
                 str += STRIKE+"스트라이크";
@@ -64,14 +71,9 @@ public class ScoreManager {
         System.out.println(str);
     }
 
-    private String printFinalMsg(){
-        if(STRIKE == 3){
-            System.out.println("dkssud");
-            return "ㅡㅇ";
-        }
-        else {
-            return STRIKE+"스트라이크";
-        }
+    private void printFinalMsg() {
+        System.out.println(STRIKE+"스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
 

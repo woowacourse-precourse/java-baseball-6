@@ -11,17 +11,16 @@ public class MainController {
     ScoreManager scoreManager = new ScoreManager();
     static List<Integer> COMPUTER_NUM = new ArrayList<>();
     static List<Integer> USER_NUM = new ArrayList<>();
-    boolean isRepeat = true;
+    //boolean isNotRepeat = false;
 
     public void mainController(){
         COMPUTER_NUM = randomNumber.mainMakeRnadomNumber(); //컴퓨터 숫자 알아오기
         System.out.println(printMsg(0)); //"숫자 야구 게임을 시작합니다."
 
-        while (isRepeat) {
-            repeatInputToOutput(); //반복되는 구간
-            System.out.println(COMPUTER_NUM + "컴퓨터");
-            //System.out.println(USER_NUM + "사용자");
-        }
+
+        repeatInputToOutput(); //반복되는 구간
+        System.out.println(COMPUTER_NUM + "컴퓨터");
+
     }
 
 
@@ -32,10 +31,19 @@ public class MainController {
 
 
     private void repeatInputToOutput(){ //반복되는
-        System.out.print(printMsg(1)); //"숫자를 입력해주세요 : " println이 아니고 print로 출력
-        String answer = Console.readLine(); //사용자에게 번호 입력받기
-        USER_NUM = stringToList(answer); //list 변환 + 유효검사
-        isRepeat = scoreManager.setAndCheckScore(COMPUTER_NUM, USER_NUM);
+        System.out.println(COMPUTER_NUM + "컴퓨터");
+
+
+        boolean isNotRepeat = false;
+        while (!isNotRepeat){
+            System.out.print(printMsg(1)); //"숫자를 입력해주세요 : " println이 아니고 print로 출력
+            String answer = Console.readLine(); //사용자에게 번호 입력받기
+            USER_NUM = stringToList(answer); //list 변환 + 유효검사
+            isNotRepeat = scoreManager.setAndCheckScore(COMPUTER_NUM, USER_NUM);
+        }
+
+        //만약 all스트라이크 = 멈춤
+        //아님 => 꼐속
 
         //대조 검사
 
