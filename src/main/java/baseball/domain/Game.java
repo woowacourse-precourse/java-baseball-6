@@ -21,4 +21,8 @@ public class Game {
     public void end() {
         gameState = GameState.OFF;
     }
+
+    public String hint(Balls balls) {
+        return standard.compare(balls);
+    }
 }
