@@ -5,10 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class BaseballGame {
     private String answer;
 
-    BaseballGame() {
-        setAnswer(generateNumber());
-    }
-
     private String generateNumber() {
         StringBuilder number = new StringBuilder();
         while (number.length() < 3) {
