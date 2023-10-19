@@ -13,4 +13,8 @@ public final class InputConverter {
                 .collect(toList());
     }
 
+    public static int convertToInt(String input) {
+        return Integer.parseInt(input);
+    }
+
 }

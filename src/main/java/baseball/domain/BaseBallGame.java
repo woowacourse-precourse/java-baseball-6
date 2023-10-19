@@ -11,6 +11,7 @@ public class BaseBallGame {
     }
 
     public static BaseBallGame init(BaseBallNumbers computerNumbers) {
+        System.out.println(computerNumbers);
         return new BaseBallGame(false, computerNumbers);
     }
 
@@ -20,7 +21,7 @@ public class BaseBallGame {
         return baseBallGameResult;
     }
 
-    public boolean isNotOver() {
+    public boolean isNotEnd() {
         return !isGameEnd;
     }
 

@@ -61,6 +61,13 @@ public class BaseBallNumbers {
                 .collect(collectingAndThen(toList(), BaseBallNumbers::new));
     }
 
+    @Override
+    public String toString() {
+        return "BaseBallNumbers{" +
+                "numbers=" + numbers +
+                '}';
+    }
+
     public BaseBallGameResult calculateResult(BaseBallNumbers playerNumbers) {
         int strikeCount = calculateStrikeCount(playerNumbers);
         int ballCount = calculateBallCount(playerNumbers, strikeCount);

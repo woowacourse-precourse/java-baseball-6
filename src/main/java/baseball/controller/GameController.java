@@ -3,7 +3,9 @@ package baseball.controller;
 import baseball.domain.BaseBallGame;
 import baseball.domain.BaseBallGameResult;
 import baseball.domain.BaseBallNumbers;
+import baseball.domain.GameRestartStatus;
 import baseball.domain.NumberGenerator;
+import baseball.dto.request.GameRestartDto;
 import baseball.dto.request.PlayerNumberDto;
 import baseball.dto.response.GameResultDto;
 import baseball.view.InputView;
@@ -22,17 +24,44 @@ public class GameController {
     }
 
     public void run() {
+        printGameStartMessage();
+        playingGame();
+    }
+
+    private void printGameStartMessage() {
         outputView.printGameStart();
+    }
 
-        BaseBallNumbers computerNumbers = BaseBallNumbers.generateRandomNumbers(numberGenerator);
-        BaseBallGame game = BaseBallGame.init(computerNumbers);
-        while (game.isNotOver()) {
-            PlayerNumberDto playerNumberDto = inputView.scanPlayerNumbers();
-            BaseBallNumbers playerNumbers = BaseBallNumbers.generateNumbers(playerNumberDto.getPlayerNumbers());
-            BaseBallGameResult baseBallGameResult = game.calculateResult(playerNumbers);
-            outputView.printGameResult(new GameResultDto(baseBallGameResult));
+    private void playingGame() {
+        BaseBallGame game = initBaseBallGame();
+        while (game.isNotEnd()) {
+            BaseBallNumbers playerNumbers = scanPlayerBaseBallNumbers();
+            printGameResult(game, playerNumbers);
         }
+        GameRestartStatus gameRestartStatus = scanGameReStartStatus();
+        if (gameRestartStatus.isRestart()) {
+            playingGame();
+        }
+    }
 
+    private void printGameResult(BaseBallGame game, BaseBallNumbers playerNumbers) {
+        BaseBallGameResult baseBallGameResult = game.calculateResult(playerNumbers);
+        outputView.printGameResult(new GameResultDto(baseBallGameResult));
+    }
+
+    private BaseBallGame initBaseBallGame() {
+        BaseBallNumbers computerNumbers = BaseBallNumbers.generateRandomNumbers(numberGenerator);
+        return BaseBallGame.init(computerNumbers);
+    }
+
+    private BaseBallNumbers scanPlayerBaseBallNumbers() {
+        PlayerNumberDto playerNumberDto = inputView.scanPlayerNumbers();
+        return BaseBallNumbers.generateNumbers(playerNumberDto.getPlayerNumbers());
+    }
+
+    private GameRestartStatus scanGameReStartStatus() {
+        GameRestartDto gameRestartDto = inputView.scanGameRestart();
+        return GameRestartStatus.from(gameRestartDto.getGameRestartNumber());
     }
 
 }

@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public final class InputValidator {
 
     private static final Pattern NUMBER_FORMAT = Pattern.compile("[0-9]+");
+    private static final Pattern ONE_COUNT_NUMBER_FORMAT = Pattern.compile("[0-9]{1}");
     private static final String BLANK_EXCEPTION_MESSAGE = "공백은 입력할 수 없습니다.";
     private static final String FORMAT_EXCEPTION_MESSAGE = "형식에 맞지 않습니다.";
 
@@ -39,6 +40,12 @@ public final class InputValidator {
      */
     private static boolean isRightFormat(Pattern pattern, String input) {
         return pattern.matcher(input).matches();
+    }
+
+    public static void validateOneCountNumberFormat(String input) {
+        if (!isRightFormat(ONE_COUNT_NUMBER_FORMAT, input)) {
+            throw new IllegalArgumentException(FORMAT_EXCEPTION_MESSAGE);
+        }
     }
 
 }

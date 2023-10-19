@@ -8,7 +8,6 @@ public class BaseBallNumber {
 
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
-
     private final int number;
 
     private BaseBallNumber(int number) {
@@ -33,6 +32,13 @@ public class BaseBallNumber {
 
     public static BaseBallNumber generateNumber(int number) {
         return new BaseBallNumber(number);
+    }
+
+    @Override
+    public String toString() {
+        return "BaseBallNumber{" +
+                "number=" + number +
+                '}';
     }
 
     @Override
