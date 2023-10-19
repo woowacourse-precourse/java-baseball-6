@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.console.BaseBallConstant;
 import baseball.console.ConsoleInput;
 import baseball.console.ConsoleOutput;
 import baseball.dto.BaseBallResult;
@@ -21,6 +22,20 @@ public class BaseBallController {
 			randomNumber.append(digit);
 		}
 		return randomNumber.toString();
+	}
+
+	public boolean playGame() {
+		consoleOutput.printInit();
+		while (true) {
+			consoleOutput.printReq();
+			String input = consoleInput.getGameInput();
+			BaseBallResult result = getResult(input);
+			if (result.getStrikeCount() == PICK_COUNT) {
+				consoleOutput.printEnd();
+				return consoleInput.getEndInput().equals(BaseBallConstant.RESTART.getValue());
+			}
+			consoleOutput.printResult(result);
+		}
 	}
 
 	private BaseBallResult getResult(String input) {
