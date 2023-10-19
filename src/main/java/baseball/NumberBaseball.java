@@ -1,13 +1,13 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
-import camp.nextstep.edu.missionutils.*;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.Arrays;
 
 public class NumberBaseball {
 
-    int[] answer;
-    boolean[] generatedNumberFlag;
+    private int[] answer;
+    private boolean[] generatedNumberFlag;
 
     public NumberBaseball() {
         this.generatedNumberFlag = new boolean[10];
@@ -26,5 +26,23 @@ public class NumberBaseball {
         }
     }
 
-    
+
+    public GuessResult countResult(int[] input) {
+        int balls = 0;
+        int strikes = 0;
+
+        for(int i = 0; i < 3; i++) {
+            if(Arrays.asList(answer).contains(input[i])) {
+                balls++;
+            }
+            if(answer[i] == input[i]) {
+                strikes++;
+            }
+        }
+
+        balls -= strikes;
+        return new GuessResult(strikes, balls);
+    }
+
+
 }
