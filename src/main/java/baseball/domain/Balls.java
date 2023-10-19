@@ -16,6 +16,20 @@ public class Balls {
         balls = toBalls(treeDigitNumber);
     }
 
+    public int getBallCount(Balls player) {
+        List<Ball> playerBalls = player.getBalls();
+        int ballCount = 0;
+        for (int i = 0; i < balls.size(); i++) {
+            if (balls.get(i).equals(playerBalls.get(i))) {
+                continue;
+            }
+            if (balls.contains(playerBalls.get(i))) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
     public List<Ball> getBalls() {
         return balls;
     }
