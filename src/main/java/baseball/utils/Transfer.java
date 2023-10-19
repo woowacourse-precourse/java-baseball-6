@@ -2,15 +2,17 @@ package baseball.utils;
 
 import baseball.Model.NumberList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Transfer {
-    public static NumberList stringToNumberList(String answerString) {
-        NumberList answer = new NumberList();
-        for(int i=0; i<answerString.length(); i++) {
-            int number = answerString.charAt(i) - '0';
-            answer.putNumber(number);
-        }
-        return answer;
+    public static NumberList stringToNumberList(String numberString) {
+        List<Integer> numberList = new ArrayList<>() {{
+            for (int i = 0; i < numberString.length(); i++) {
+                int number = numberString.charAt(i) - '0';
+                add(number);
+            }
+        }};
+        return new NumberList(numberList);
     }
 }
