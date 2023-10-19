@@ -18,7 +18,7 @@ public class GameController {
         computer.setAnswer(createRandomTarget());
         while(true) {
             String userAnswerString = InputController.scanUserAnswer();
-            // TO DO: 유저 인풋과 정답 비교해서 결과 출력
+            NumberList userAnswer = Transfer.stringToNumberList(userAnswerString);
         }
         OutputView.printEndGameMessage();
     }
