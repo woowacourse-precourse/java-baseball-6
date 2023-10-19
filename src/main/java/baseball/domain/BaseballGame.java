@@ -9,7 +9,9 @@ public final class BaseballGame {
   }
 
   public GameResult play(final BallNumbers guess) {
-    // TODO: answer와 guess 비교 후 결과 생성 및 반환
-    return null;
+    final int ballCount = answer.getBallCount(guess);
+    final int strikeCount = answer.getStrikeCount(guess);
+
+    return new GameResult(ballCount, strikeCount);
   }
 }
