@@ -3,6 +3,8 @@ package baseball.domain;
 import java.util.List;
 
 public class Balls {
+    private final int NUMBER_OF_BALLS = 3;
+
     private final List<Integer> balls;
 
     private Balls(List<Integer> input) {
@@ -22,8 +24,8 @@ public class Balls {
     }
 
     private void validateLength(List<Integer> input) {
-        if (input.size() != 3) {
-            throw new IllegalArgumentException("3개의 숫자를 입력하세요.");
+        if (input.size() != NUMBER_OF_BALLS) {
+            throw new IllegalArgumentException(NUMBER_OF_BALLS + "개의 숫자를 입력하세요.");
         }
     }
 
