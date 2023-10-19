@@ -31,23 +31,24 @@ public class Application {
 		 * System.exit()호출하지 않음
 		 */
 
-		// computer가 생성한 3개의 수
+		// computer가 생성한 3개의 랜덤 수
 		List<Integer> computer = getComNum();
-
-		System.out.println("테스트를 위한 정답 표시 : " + computer);
+		//List<Integer> computer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+		//System.out.println("테스트를 위한 정답 표시 : " + computer);
 		String do_or_not = ""; // 재시작/종료 여부
 
 		while (true) {
 
 			// 다시하기의 경우, 새로운 수 받기
 			if (do_or_not.equals("1")) {
+				//computer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
 				computer = getComNum();
 				do_or_not = "";
 			}
 
 			// 사용자 입력받기
 			String userInput = Console.readLine();
-			System.out.println(userInput);
+			//System.out.println(userInput);
 
 			// 올바르지 않은 입력 예외처리
 			try {
@@ -102,5 +103,4 @@ public class Application {
 		}
 		System.out.println("게임 종료");
 	}
-
 }
