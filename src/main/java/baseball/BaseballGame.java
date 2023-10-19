@@ -27,6 +27,16 @@ public class BaseballGame {
 		while(doGame) {
 			Map<String, Integer> gameResult = play(computer);
 
+			int ballCount = gameResult.get("볼");
+			int strikeCount = gameResult.get("스트라이크");
+
+			if(strikeCount == 3) {
+				outputView.printGameFinishMessage();
+				// TODO: 재시작 여부 입력받기 기능
+				continue;
+			}
+			outputView.printGameResultMessage(ballCount, strikeCount);
+
 		}
 
 	}
