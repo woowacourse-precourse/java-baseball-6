@@ -12,9 +12,15 @@ public class GameOutput {
     }
 
     public void printResult(Integer ballCount, Integer strikeCount) {
-        if (ballCount > 0) System.out.print(RESULT_BALL);
-        if (strikeCount > 0) System.out.print(RESULT_STRIKE);
-        if (ballCount == 0 && strikeCount == 0) System.out.print(RESULT_NON_MATCHED);
+        if (ballCount > 0) {
+            System.out.print(String.format(RESULT_BALL, ballCount));
+        }
+        if (strikeCount > 0) {
+            System.out.print(String.format(RESULT_STRIKE, strikeCount));
+        }
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.print(RESULT_NON_MATCHED);
+        }
 
         System.out.println();
     }
