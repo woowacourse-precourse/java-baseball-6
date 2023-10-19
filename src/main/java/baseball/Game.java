@@ -57,7 +57,7 @@ public class Game {
         }
     }
 
-    public GameResult getGameResult(List<Integer> userAnswer, List<Integer> answer) {
+    private GameResult getGameResult(List<Integer> userAnswer, List<Integer> answer) {
         Integer ball = 0;
         Integer strike = 0;
 
