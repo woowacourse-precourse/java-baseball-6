@@ -25,11 +25,11 @@ public class Player {
     private void validatePlayerInput(List<Integer> playerInput) {
         Set<Integer> playerBaseballNumberSet = new HashSet<>(playerInput);
 
-        if(playerInput.size() > 3) {
+        if (playerInput.size() > 3) {
             throw new IllegalArgumentException("3자리의 숫자만 입력가능합니다.");
         }
 
-        if(playerBaseballNumberSet.size() < 3) {
+        if (playerBaseballNumberSet.size() < 3) {
             throw new IllegalArgumentException("중복된 숫자는 입력 불가능합니다.");
         }
     }
