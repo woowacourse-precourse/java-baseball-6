@@ -4,11 +4,23 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class Validation {
-    public boolean gameValue(String input){
-        String regex="[0-9]+";
-        HashSet<String> uniqueInput=new HashSet<>(Arrays.asList(input.split("")));
+    public boolean gameValue(String numbers){
+        return isCorrectSize(numbers) && isConsistofNumbers(numbers)
+                && isNotDuplicate(numbers);
+    }
 
-        return input.length()==3 && input.matches(regex) && uniqueInput.size()==3;
+    private boolean isCorrectSize(String numbers){
+        return numbers.length()==3;
+    }
+
+    private boolean isConsistofNumbers(String numbers){
+        return numbers.matches("[0-9]+");
+    }
+
+    private boolean isNotDuplicate(String numbers){
+        HashSet<String> uniqueNumbers=new HashSet<>(Arrays.asList(numbers.split("")));
+
+        return uniqueNumbers.size()==3;
     }
 
     public boolean continueValue(String input){
