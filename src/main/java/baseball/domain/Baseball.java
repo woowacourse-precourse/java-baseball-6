@@ -2,7 +2,7 @@ package baseball.domain;
 
 import java.util.List;
 
-import static baseball.exception.ExceptionMessage.BallException.BALL_IS_NOT_IN_RANGE;
+import static baseball.exception.ExceptionMessage.BaseballException.SPECIFIC_BALL_IS_NOT_IN_RANGE;
 
 public class Baseball {
     private static final int MIN_VALUE = 1;
@@ -22,7 +22,7 @@ public class Baseball {
 
     private static void validateBallRange(final List<Integer> balls) {
         if (hasOutOfRange(balls)) {
-            throw new IllegalArgumentException(BALL_IS_NOT_IN_RANGE.message);
+            throw new IllegalArgumentException(SPECIFIC_BALL_IS_NOT_IN_RANGE.message);
         }
     }
 

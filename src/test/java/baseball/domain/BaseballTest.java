@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static baseball.exception.ExceptionMessage.BallException.BALL_IS_NOT_IN_RANGE;
+import static baseball.exception.ExceptionMessage.BaseballException.SPECIFIC_BALL_IS_NOT_IN_RANGE;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BaseballTest {
@@ -18,7 +18,7 @@ public class BaseballTest {
     void throwExceptionByInvalidRange(final List<Integer> balls) {
         assertThatThrownBy(() -> Baseball.of(balls))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(BALL_IS_NOT_IN_RANGE.message);
+                .hasMessage(SPECIFIC_BALL_IS_NOT_IN_RANGE.message);
     }
 
     private static Stream<Arguments> invalidRange() {
