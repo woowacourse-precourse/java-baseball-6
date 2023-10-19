@@ -7,6 +7,8 @@ import java.util.List;
 public class UserInput {
 
     public static List<Integer> inputList() {
+        System.out.print("숫자를 입력해주세요 : ");
+
         String input = Console.readLine();
         int inputLen = input.length();
 
@@ -32,6 +34,9 @@ public class UserInput {
     }
 
     public static boolean inputOneOrTwo() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        Printing.closing();
+
         String input = Console.readLine();
 
         int inputLen = input.length();

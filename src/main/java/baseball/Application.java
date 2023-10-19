@@ -14,7 +14,6 @@ public class Application {
             boolean gameFlag = true;
 
             while (gameFlag) {
-                System.out.print("숫자를 입력해주세요 : ");
                 List<Integer> input = UserInput.inputList();
 
                 int strike = Calculator.countStrike(input, answer);
@@ -27,9 +26,6 @@ public class Application {
                 }
             }
 
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
-            Printing.closing();
             flag = UserInput.inputOneOrTwo();
         }
     }
