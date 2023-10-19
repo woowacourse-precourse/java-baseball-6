@@ -24,22 +24,30 @@ public class Judge {
 
     private static void count() {
         for (int i = 0; i < GUESS_INPUT_LENGTH; i++) {
-            for (int j = 0; j < GUESS_INPUT_LENGTH; j++) {
-                countStrike(i, j);
-                countBall(i, j);
+            addIfBall(i);
+            addIfStrike(i);
+        }
+    }
+
+    private static void addIfBall(int i) {
+        for (int j = 0; j < GUESS_INPUT_LENGTH; j++) {
+            if (isBall(i, j)) {
+                ball++;
             }
         }
     }
 
-    private static void countBall(int i, int j) {
-        if (i != j && computer.charAt(i) == guess.charAt(j)) {
-            ball++;
+    private static void addIfStrike(int i) {
+        if (isStrike(i)) {
+            strike++;
         }
     }
 
-    private static void countStrike(int i, int j) {
-        if (i == j && computer.charAt(i) == guess.charAt(j)) {
-            strike++;
-        }
+    private static boolean isBall(int i, int j) {
+        return i != j && computer.charAt(i) == guess.charAt(j);
+    }
+
+    private static boolean isStrike(int i) {
+        return computer.charAt(i) == guess.charAt(i);
     }
 }
