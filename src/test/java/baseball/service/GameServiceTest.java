@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.domain.Com;
+import baseball.domain.Game;
 import baseball.domain.User;
 import baseball.domain.Validation;
 import org.junit.jupiter.api.DisplayName;
