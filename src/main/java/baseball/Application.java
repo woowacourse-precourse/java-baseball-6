@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -18,8 +19,15 @@ public class Application {
         return computer;
     }
 
+    static void readUserNumbers() {
+        String input = Console.readLine();
+
+
+    }
+
     static void play() {
         List<Integer> computer = pickRandomNumbers();
+        readUserNumbers();
     }
 
 
