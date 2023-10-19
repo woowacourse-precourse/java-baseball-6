@@ -87,7 +87,7 @@
   - Application은 이를 기준으로 게임 진행 지속 여부를 결정한다.
 
 ### Application
-- [ ] `while`문을 통해 `BaseBall`클래스의 게임 진행 메서드를 실행한다.
+- [x] `while`문을 통해 `BaseBall`클래스의 게임 진행 메서드를 실행한다.
   - 이 재시작여부(boolean)가 위의 while문의 종료조건이다.
   - true라면 재시작하고 false라면 while문을 종료시키고 전체 게임을 종료한다. 
 
