@@ -1,10 +1,13 @@
-package baseball;
+package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import constant.BaseConst;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static constant.BaseConst.COMPLETE;
 
 public class Baseball {
 
@@ -23,30 +26,12 @@ public class Baseball {
     }
 
     public void setMyNumber(String number) {
-        numberValidation(number);
         this.myNumber = Arrays.stream(number.split("")).mapToInt(x -> Integer.parseInt(x)).toArray();
-    }
-
-    private void numberValidation(String number) {
-        try {
-            Integer.parseInt(number);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("문자는 사용할 수 없음");
-        }
-        if (number.length() != 3) throw new IllegalArgumentException("3개의 숫자를 입력할 수 있음");
-        if (number.contains("0")) throw new IllegalArgumentException("0은 사용할 수 없음");
-        
-        for (int i = 0; i < number.length()-1; i++) {
-            for (int j = i + 1; j < number.length(); j++) {
-                 if (number.charAt(i) == number.charAt(j)){
-                     throw new IllegalArgumentException("중복된 숫자는 사용할 수 없음");
-                 }
-            }
-        }
     }
 
     public boolean confirmNumber() {
         int[] result = new int[2]; // result[0] : 스트라이크, result[1] : 볼
+
         for (int i = 0; i < baseNumber.size(); i++) {
 
             if (myNumber[i] == baseNumber.get(i)) { // 같은 인덱스에 위치하면 스트라이크++
@@ -57,7 +42,7 @@ public class Baseball {
 
         }
         System.out.println(printMessage(result));
-        return result[0] == 3;
+        return result[0] == COMPLETE;
     }
 
     private String printMessage(int[] result) {
