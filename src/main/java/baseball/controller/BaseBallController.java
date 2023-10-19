@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.console.ConsoleInput;
 import baseball.console.ConsoleOutput;
+import baseball.dto.BaseBallResult;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseBallController {
@@ -20,5 +21,19 @@ public class BaseBallController {
 			randomNumber.append(digit);
 		}
 		return randomNumber.toString();
+	}
+
+	private BaseBallResult getResult(String input) {
+		int ballCount = 0, strikeCount = 0;
+		for (int i = 0; i < targetNumber.length(); i++) {
+			char targetDigit = targetNumber.charAt(i);
+			char inputDigit = input.charAt(i);
+			if (targetDigit == inputDigit) {
+				strikeCount++;
+			} else if (targetNumber.contains(String.valueOf(inputDigit))) {
+				ballCount++;
+			}
+		}
+		return new BaseBallResult(ballCount, strikeCount);
 	}
 }
