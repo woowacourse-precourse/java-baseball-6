@@ -20,4 +20,4 @@
     - [ ]  `System.exit()` 호출하지 않고 프로그램 종료
 
 - 과제 진행 요구 사항
-    - [ ]  `docs/README.md`에 구현할 기능 목록 정리
+    - [x]  `docs/README.md`에 구현할 기능 목록 정리
