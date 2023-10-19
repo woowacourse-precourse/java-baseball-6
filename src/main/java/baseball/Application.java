@@ -11,34 +11,11 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true) {
             List<Integer> answer = AnswerGenerator.generateAnswer();
-
-            int[] guess = new int[3];
             while(true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
-                /*
-                * 세자리인지 판단
-                */
-                if(input.length()!=3)
-                    throw new IllegalArgumentException();
-                /*
-                * 모두 1 ~ 9 사이 숫자인지 판단
-                */
-                for(int i=0; i<3; i++) {
-                    char c = input.charAt(i);
-                    if(!Character.isDigit(c) || Character.getNumericValue(c) == 0)
-                        throw new IllegalArgumentException();
-                    guess[i] = Character.getNumericValue(c);
-                }
-                /*
-                * 중복 숫자가 있는지 판단
-                */
-                for(int i=0; i<3; i++) {
-                    for(int j=0; j<3; j++) {
-                        if(i!=j && guess[i] == guess[j])
-                            throw new IllegalArgumentException();
-                    }
-                }
+                int[] guess = InputValidator.validateInput(input);
+
                 /*
                 * 스트라이크, 볼 여부를 판단
                 */
