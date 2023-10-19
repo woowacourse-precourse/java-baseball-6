@@ -17,6 +17,25 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         initComputerNumber();
+    public static boolean compareUserInputByComputerNumber(List<Integer> splitDigitsFromUserInput) {
+        int strikeNumber = 0;
+        int ballNumber = 0;
+        int nothingNumber = 0;
+        int trackIdx = 0;
+
+        for (Integer userDigit : splitDigitsFromUserInput) {
+            if (userDigit.equals(splitDigitsFromRandomNumber.get(trackIdx))) {
+                strikeNumber++;
+            } else if (splitDigitsFromRandomNumber.contains(userDigit)) {
+                ballNumber++;
+            } else {
+                nothingNumber++;
+            }
+            trackIdx++;
+        }
+
+        return evaluateByResult(strikeNumber, ballNumber, nothingNumber);
+    }
     public static void initComputerNumber() {
         splitDigitsFromRandomNumber.clear();
         while (splitDigitsFromRandomNumber.size() < numLength) {
