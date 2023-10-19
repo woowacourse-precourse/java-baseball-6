@@ -1,6 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayInputStream;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -9,6 +12,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    @Test
+    @DisplayName("공백 없이 입력받기")
+    void inputTest() {
+        ByteArrayInputStream testInput = new ByteArrayInputStream("123".getBytes());
+        System.setIn(testInput);
+        String[] input = Console.readLine().split("");
+        assertThat(input).containsExactly("1", "2", "3");
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
