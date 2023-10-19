@@ -34,6 +34,10 @@ public class Player {
         }
     }
 
+    public List<Integer> getPlayerBaseballNumber() {
+        return playerBaseballNumber;
+    }
+
     private void setPlayerBaseballNumber(List<Integer> playerBaseballNumber) {
         this.playerBaseballNumber = playerBaseballNumber;
     }

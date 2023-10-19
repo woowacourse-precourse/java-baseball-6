@@ -23,4 +23,7 @@ public class Computer {
         return computerBaseballNumber;
     }
 
+    public List<Integer> getComputerBaseballNumber() {
+        return computerBaseballNumber;
+    }
 }
