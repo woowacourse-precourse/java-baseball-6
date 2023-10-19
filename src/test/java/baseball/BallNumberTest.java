@@ -20,10 +20,26 @@ public class BallNumberTest {
 
     @Test
     @DisplayName("야구 숫자를 비교할 수 있다. - 낫싱")
-    void testCompareWhenNoEqualNumbers() {
+    void testCompareWhenNoEqualNumber() {
         BallNumber computer = new BallNumber(1, 0);
         BallNumber player = new BallNumber(2, 0);
         assertThat(computer.compare(player))
                 .isEqualTo(CompareResult.NOTHING);
+    }
+
+    @Test
+    @DisplayName("야구 숫자를 비교할 수 있다. - 스트라이크")
+    void testCompareWhenEqualNumberSamePosition() {
+        // (1, 0)
+        BallNumber computer = new BallNumber(1, 0);
+        BallNumber player = new BallNumber(1, 0);
+        assertThat(computer.compare(player))
+                .isEqualTo(CompareResult.STRIKE);
+
+        // (5, 2)
+        computer = new BallNumber(5, 2);
+        player = new BallNumber(5, 2);
+        assertThat(computer.compare(player))
+                .isEqualTo(CompareResult.STRIKE);
     }
 }
