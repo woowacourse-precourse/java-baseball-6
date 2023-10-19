@@ -13,23 +13,26 @@ public class User {
     }
 
     public void setUserBasebsallNumber(String input){
-//        userBaseballNumber = validateInput(input);
+        userBaseballNumber = validateInput(input);
     }
 
-//    private List<Integer> validateInput(String input) {
-//    }
+    private List<Integer> validateInput(String input) {
+        validateDuplicated(input);
+        validateLength(input);
+        return validtaeNumeric(input);
+    }
 
-    public void validateLength(String input){
+    private void validateLength(String input){
         if(input.length() != 3)
             throw new IllegalArgumentException();
     }
 
-    public void validateDuplicated(String input){
+    private void validateDuplicated(String input){
         if (input.length() != input.chars().distinct().count())
             throw new IllegalArgumentException();
     }
 
-    public List<Integer> validtaeNumeric(String input){
+    private List<Integer> validtaeNumeric(String input){
         final String REGEX = "[1-9]+";
         if(input.matches(REGEX)){
             return Arrays.stream(input.split(""))
