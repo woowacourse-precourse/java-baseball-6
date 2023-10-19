@@ -3,6 +3,9 @@ package baseball.model;
 import java.util.List;
 
 public class UserNumber {
+    private final static int MINIMUM_NUM_IN_RANGE = 1;
+    private final static int MAXIMUM_NUM_IN_RANGE = 9;
+    private final static int LIST_SIZE = 3;
     private final List<Integer> number;
 
     public UserNumber(String number) {
@@ -14,6 +17,9 @@ public class UserNumber {
         if(isEmpty(number)|| !isDigit(number)){
             throw new IllegalArgumentException("숫자를 입력해주세요");
         }
+        else if(!isThreeDigit(number)){
+            throw new IllegalArgumentException("세자리 숫자를 입력해주세요");
+        }
     }
 
     private boolean isEmpty(String number) {
@@ -22,6 +28,10 @@ public class UserNumber {
 
     private boolean isDigit(String number) {
         return number.chars().allMatch(Character::isDigit);
+    }
+
+    private boolean isThreeDigit(String number) {
+        return number.length() == LIST_SIZE;
     }
 
     private List<Integer> StringToList(String number) {
