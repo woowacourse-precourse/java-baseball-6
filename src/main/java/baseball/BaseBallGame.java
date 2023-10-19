@@ -55,16 +55,11 @@ public class BaseBallGame {
     }
 
     private void checkAnswer(List<Integer> answer) {
-        while ( true ) {
+        do {
             System.out.print(OutputMessage.ENTER_NUMBER);
-
             List<Integer> input = getInput();
-
             compareAnswerToInput(answer, input);
-
-            if (getResult()) break;
-
-        }
+        } while (!getResult());
     }
 
     private static List<Integer> getInput() {
