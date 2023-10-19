@@ -39,7 +39,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트_범위보다_큰_정수가_입력() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1000"))
+                assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -47,7 +47,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트_범위보다_작은_정수가_입력() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("99"))
+                assertThatThrownBy(() -> runException("98"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
