@@ -12,11 +12,7 @@ public class UserNumbers {
         this.userNumbers = userNumbers;
     }
 
-    public static UserNumbers createDefault() {
-        return new UserNumbers(new ArrayList<>());
-    }
-
-    public void changeNumbers(final String numbers) {
+    public static UserNumbers of(String numbers) {
         List<Integer> inputNumbers = Arrays.stream(numbers.split(""))
             .map(Integer::parseInt)
             .toList();
