@@ -6,5 +6,6 @@ public class GameController {
     public void startGame() {
         OutputView.printStartGameMessage();
         // TO DO: 게임 진행
+        OutputView.printEndGameMessage();
     }
 }
