@@ -1,7 +1,6 @@
 package baseball.application;
 
 import baseball.entity.Baseball;
-import baseball.utils.InputUtil;
 import baseball.view.OutputView;
 
 import static baseball.utils.InputUtil.*;
@@ -46,11 +45,10 @@ public class BaseballGameService {
 
     private void getBaseballResult(String guessNumber) {
         if (baseball.isNothing(guessNumber)) {
-            System.out.println("BaseballGameService.getBaseballResult.isNothing");
             OutputView.printNothing();
             return;
         }
-        System.out.println("BaseballGameService.getBaseballResult");
+
         int ballCount = baseball.countBall(guessNumber);
         int strikeCount = baseball.countStrike(guessNumber);
 

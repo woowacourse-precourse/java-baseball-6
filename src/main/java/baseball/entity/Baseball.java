@@ -24,30 +24,6 @@ public class Baseball {
                 .collect(Collectors.joining());
     }
 
-    public void isValid(String numbers) {
-        if (isNumberLengthThree(numbers) && isNumberDuplicate(numbers) && isNumber(numbers)) {
-            return;
-        }
-        throw new IllegalArgumentException();
-    }
-
-    private boolean isNumber(String numbers) {
-        return numbers.chars()
-                .allMatch(Character::isDigit);
-    }
-
-    private boolean isNumberLengthThree(String numbers) {
-        return numbers.length() == 3;
-    }
-
-    private boolean isNumberDuplicate(String numbers) {
-        char firstNumber = numbers.charAt(0);
-        char secondNumber = numbers.charAt(1);
-        char thirdNumber = numbers.charAt(2);
-
-        return firstNumber != secondNumber && secondNumber != thirdNumber && firstNumber != thirdNumber;
-    }
-
     public int countStrike(String numbers) {
         int result = 0;
         for (int i = 0; i < 3; i++) {
@@ -81,9 +57,5 @@ public class Baseball {
 
     public boolean isPerfect(String numbers) {
         return countStrike(numbers) == 3;
-    }
-
-    public String getRandomNumber() {
-        return randomNumber;
     }
 }
