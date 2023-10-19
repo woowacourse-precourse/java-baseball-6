@@ -42,10 +42,15 @@ public class BaseBallGame {
                         \n3개의 숫자를 모두 맞히셨습니다! 게임 종료
                         게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.""");
 
-            Scanner sc = new Scanner(System.in);
-            if (sc.nextInt() == 2)
-                break;
+            if (askWhetherToEnd()) break;
         }
+    }
+
+    private static boolean askWhetherToEnd() {
+        Scanner sc = new Scanner(System.in);
+        if (sc.nextInt() == 2)
+            return true;
+        return false;
     }
 
     private void checkAnswer(List<Integer> answer) {
