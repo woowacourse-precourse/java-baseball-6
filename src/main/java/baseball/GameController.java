@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.model.GameNumber;
+import baseball.model.GuessResult;
 import baseball.model.Opponent;
 import baseball.model.UserNumbers;
 import baseball.view.InputView;
@@ -18,20 +19,22 @@ public class GameController {
 
     public void startGameUntilUserWant() {
         OutputView.showStartDescription();
-        while(gameNumber.canContinueGame()){
+        while (gameNumber.canContinueGame()) {
             playGame();
         }
     }
 
     private void playGame() {
-        Opponent opponent=new Opponent();
-        UserNumbers userNumbers=new UserNumbers();
-        while(!opponent.isUserCorrect(userNumbers)){
+        Opponent opponent = Opponent.createOpponent();
+        while (true) {
             OutputView.askNumbers();
-            String userNumbersInput=InputView.getUserInput();
-            userNumbers.changeNumbers(Integer.parseInt(userNumbersInput));
-            opponent.calculateResult(userNumbers);
-            OutputView.showResult();
+            String userNumbersInput = inputView.getUserInput();
+            UserNumbers userNumbers = UserNumbers.of(userNumbersInput);
+            GuessResult result = opponent.calculateResult(userNumbers);
+            OutputView.showResult(result.getResult());
+            if (result.isGameEnd()) {
+                break;
+            }
         }
         OutputView.informGameOver();
         OutputView.askContinueGame();
