@@ -11,12 +11,17 @@ public class Computer {
     private List<Integer> answerNumber = new ArrayList<>();
 
     public void makeAnswerNumber() {
+        initAnswerNumber();
         while (answerNumber.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
             if (!answerNumber.contains(randomNumber)) {
                 answerNumber.add(randomNumber);
             }
         }
+    }
+
+    private void initAnswerNumber() {
+        answerNumber.clear();
     }
 
     public List<Integer> getAnswerNumber() {
