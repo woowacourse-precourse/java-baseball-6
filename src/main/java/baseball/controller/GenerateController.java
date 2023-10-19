@@ -21,6 +21,20 @@ public class GenerateController {
     }
 
     private Integer getRandomNumber() {
-        return Randoms.pickNumberInRange(1, 9);
+        return Randoms.pickNumberInRange(1, 9); // 1 ~ 9
+    }
+
+    public List<Integer> stringToIntegerList(String number) {
+        List<Integer> result = new ArrayList<>();
+
+        for (String numberAtOne : number.split("")) {
+            Integer parsedNumberAtOne = Integer.parseInt(numberAtOne);
+
+            if (!result.contains(parsedNumberAtOne)) {
+                result.add(parsedNumberAtOne);
+            }
+        }
+
+        return result;
     }
 }
