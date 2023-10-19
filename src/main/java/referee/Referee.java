@@ -2,6 +2,7 @@ package referee;
 
 import camp.nextstep.edu.missionutils.Console;
 import hint.Hint;
+import message.Message;
 import player.Computer;
 import player.Player;
 
@@ -9,6 +10,8 @@ public class Referee {
     Computer computer;
     Player player;
     Hint hint;
+    private final static String START = "1";
+    private final static String END = "2";
 
     public void playBall() {
         computer = new Computer();
@@ -16,36 +19,25 @@ public class Referee {
         hint = new Hint();
 
         do {
-            System.out.print("숫자를 입력해주세요 : ");
+            Message.printIntegerInputFromUserMessage();
             player.inputPlayerNumber();
             int[] score = hint.calculateStrikeAndBall(player.getPlayerBaseballNumber(),
                     computer.getComputerBaseballNumber());
-            int strike = score[0];
-            int ball = score[1];
-
-            if (hasStrikeAndBall(strike, ball)) {
-                System.out.println(ball + "볼" + " " + strike + "스트라이크");
-            }
-            if (hasStrikeButNoBall(strike, ball)) {
-                System.out.println(strike + "스트라이크");
-            }
-            if (hasBallButNoStrike(strike, ball)) {
-                System.out.println(ball + "볼");
-            }
-            if (noStrikeAndBall(strike, ball)) {
-                System.out.println("낫싱");
-            }
+            Message.printHintMessage(score);
         } while (!isThreeStrike());
 
-        System.out.print("3개의 숫자를 모두 맞히셨습니다!");
-        System.out.println(" 게임 종료");
+        Message.printThreeStrikeMessage();
         continueOrFinish();
     }
 
     public void continueOrFinish() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        if (Console.readLine().equals("1")) {
+        Message.printContinueOrFinishMessage();
+        String userInput = Console.readLine();
+        if (userInput.equals(START)) {
             playBall();
+        }
+        if (userInput.equals(END)) {
+            Message.printEndGameMessage();
         }
     }
 
@@ -53,20 +45,5 @@ public class Referee {
         return player.getPlayerBaseballNumber().equals(computer.getComputerBaseballNumber());
     }
 
-    private boolean hasStrikeAndBall(int strike, int ball) {
-        return strike > 0 && ball > 0;
-    }
-
-    private boolean hasStrikeButNoBall(int strike, int ball) {
-        return strike > 0 && ball == 0;
-    }
-
-    private boolean hasBallButNoStrike(int strike, int ball) {
-        return ball > 0 && strike == 0;
-    }
-
-    private boolean noStrikeAndBall(int strike, int ball) {
-        return strike == 0 && ball == 0;
-    }
 
 }
