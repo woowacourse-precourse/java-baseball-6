@@ -3,10 +3,15 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 	public static void main(String[] args) {
+
+		UserNumber userNumber = new UserNumber();
+		String inputUserNumber = userNumber.inputUserNumber();
+		System.out.println(inputUserNumber);
 
 	}
 
@@ -24,4 +29,12 @@ public class Application {
 
 		return computerNumber;
 	}
+}
+
+class UserNumber {
+	String inputUserNumber() {
+		System.out.print("숫자를 입력해주세요 : ");
+		return Console.readLine();
+	}
+
 }
