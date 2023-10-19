@@ -74,7 +74,7 @@
 
 ### ConsoleOutput
 - 출력을 담당하는 클래스이다.
-- [ ] `ConsoleConstant`를 활용하여 `System.out.println()`을 통해 출력을 한다.
+- [x] `ConsoleConstant`를 활용하여 `System.out.println()`을 통해 출력을 한다.
 
 ### BaseBall
 - 메인 로직을 담당하는 클래스로, 게임 진행에 필요한 주요 메서드들이 담긴다.
