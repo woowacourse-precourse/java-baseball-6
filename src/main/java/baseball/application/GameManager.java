@@ -1,6 +1,7 @@
 package baseball.application;
 
 import baseball.domain.Computer;
+import baseball.domain.GameProcessDecider;
 import baseball.domain.GameProcessStatus;
 import baseball.domain.Referee;
 import baseball.domain.RoundResult;
@@ -31,6 +32,9 @@ public class GameManager {
 
             // RoundResult 확인
             final RoundResult result = checkRoundResult();
+
+            // 게임 클리어 확인
+            checkGameClear(result);
         }
     }
 
@@ -43,5 +47,25 @@ public class GameManager {
         final RoundResult result = Referee.judge(computer.getBaseball(), user.getBaseball());
         OutputProcessor.printGameResult(result);
         return result;
+    }
+
+    private void checkGameClear(final RoundResult result) {
+        if (result.isClear()) {
+            OutputProcessor.printGameClear();
+            determineGameProcess();
+        }
+    }
+
+    private void determineGameProcess() {
+        final int restartCommand = InputProcessor.readUserRestartCommand();
+        final GameProcessDecider gameProcessDecider = GameProcessDecider.getDecider(restartCommand);
+
+        if (gameProcessDecider.isRestart()) {
+            computer.reset();
+            gameProcessStatus = GameProcessStatus.GAME_RESTART;
+            return;
+        }
+
+        gameProcessStatus = GameProcessStatus.GAME_TERMINATE;
     }
 }

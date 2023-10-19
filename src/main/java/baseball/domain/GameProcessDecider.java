@@ -21,4 +21,8 @@ public enum GameProcessDecider {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(INVALID_COMMAND.message));
     }
+
+    public boolean isRestart() {
+        return this == GAME_RESTART;
+    }
 }
