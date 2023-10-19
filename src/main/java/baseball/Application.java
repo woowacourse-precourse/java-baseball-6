@@ -9,32 +9,31 @@ import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         String restart = "1";
-
-
 
         while (restart.equals("1")) {
             int ball = 0;
             int str = 0;
             List<Integer> com = new ArrayList<>();
+
             while (com.size() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
                 if (!com.contains(randomNumber)) {
                     com.add(randomNumber);
                 }
             }
-            while (!(str ==3)) {
+
+            while (!(str == 3)) {
                 ball = 0;
                 str = 0;
                 List<Integer> user = new ArrayList<>();
 
-                System.out.print("숫자를 입력해주세요 : ");
+                System.out.print("숫자를 입력해주세요: ");
                 String s = Console.readLine();
 
-                if (s.length()>3){
+                if (s.length() > 3) {
                     throw new IllegalArgumentException();
                 }
 
@@ -45,8 +44,6 @@ public class Application {
                     }
                     user.add((int) s.charAt(x) - 48);
                 }
-                System.out.println("user = " + user);
-                System.out.println("com = " + com);
 
                 for (int i = 0; i < 3; i++) {
                     if (Objects.equals(user.get(i), com.get(i))) {
@@ -57,13 +54,13 @@ public class Application {
                     }
                 }
 
-                if(str==0 && ball==0){
+                if (str == 0 && ball == 0) {
                     System.out.println("낫싱");
-                } else if (str>0 && ball==0) {
-                    System.out.println(str +"스트라이크");
-                } else if (str==0 && ball>0) {
-                    System.out.println(ball+"볼");
-                }else if(str>0 && ball>0){
+                } else if (str > 0 && ball == 0) {
+                    System.out.println(str + "스트라이크");
+                } else if (str == 0 && ball > 0) {
+                    System.out.println(ball + "볼");
+                } else if (str > 0 && ball > 0) {
                     System.out.println(ball + "볼 " + str + "스트라이크");
                 }
 
@@ -71,14 +68,14 @@ public class Application {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 }
+            }
 
-                }
             restart = Console.readLine();
             if (Objects.equals(restart, "1")) {
-                continue;
-            }else if (Objects.equals(restart, "2")){
+
+            } else if (Objects.equals(restart, "2")) {
                 break;
-            }else {
+            } else {
                 throw new IllegalArgumentException();
             }
         }
