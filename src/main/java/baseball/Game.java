@@ -52,11 +52,11 @@ public class Game {
             if(printResult(gameResult)){
                 printSuccess();
                 retryCheck = inputRetry();
+                break;
             }
-
-            // 성공 여부 체크 후 return
-            return retryCheck;
         }
+        // 성공 여부 체크 후 return
+        return retryCheck;
     }
 
     private GameResult getGameResult(List<Character> userAnswer, List<Character> answer) {
