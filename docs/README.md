@@ -2,8 +2,6 @@
 
 ### 구현할 기능 목록
 
-- 입력 예외
-    - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생 시키고 앱을 종료
 - 컴퓨터
     - 1~9까지 서로 다른 임의의 수 3개를 랜덤으로 생성
         - `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용
@@ -22,8 +20,13 @@
 
 - 사용자
     - 사용자 입력
-        - 1~9까지 서로 다른 수로 이루어진 3자리만 입력 가능
+        - 게임중
+            - 1~9까지 서로 다른 수로 이루어진 3자리만 입력 가능
+        - 게임끝
+            - 1 또는 2만 입력 가능
         - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
+        - 입력 예외
+            - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생 시키고 앱을 종료
     - 야구 로직
         - 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트
 - 게임
