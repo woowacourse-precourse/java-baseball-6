@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.service.ComputerService;
+import baseball.service.MessageService;
 import baseball.service.PlayerService;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -8,6 +9,7 @@ public class BaseballController {
     
     private final ComputerService computerService = new ComputerService();
     private final PlayerService playerService = new PlayerService();
+    private final MessageService messageService = new MessageService();
 
     public void startGame() {
         initGame();
@@ -15,13 +17,13 @@ public class BaseballController {
     }
     
     private void initGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        messageService.startGame();
         computerService.initComputer();
     }
     
     private String getNumberFromPlayer() {
     
-        System.out.print("숫자를 입력해주세요 : ");
+        messageService.inputPlayerNumber();
         String number = Console.readLine();
         
         playerService.validate(number);
