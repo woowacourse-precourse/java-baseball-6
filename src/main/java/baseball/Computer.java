@@ -8,7 +8,7 @@ public class Computer {
     final int STRIKE = 2;
     List<Integer> answer;
 
-    List<Integer> countScore(List<Integer> userNumbers) {
+    public List<Integer> countScore(List<Integer> userNumbers) {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < userNumbers.size(); i++) {
@@ -23,7 +23,7 @@ public class Computer {
         return List.of(ball, strike);
     }
 
-    int judgeScore(int number, int index) {
+    public int judgeScore(int number, int index) {
         if (answer.get(index) == number) {
             return (STRIKE);
         }
@@ -32,4 +32,6 @@ public class Computer {
         }
         return (NOTHING);
     }
+
+
 }

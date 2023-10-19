@@ -7,11 +7,11 @@ import java.util.List;
 
 public class UserInput {
     Validation validation = new Validation();
-    String getUserInput() {
+    public String getUserInput() {
         return Console.readLine();
     }
 
-    List<Integer> makeUserInputToThreeNumbers() {
+    public List<Integer> makeUserInputToThreeNumbers() {
         List<Integer> result = new ArrayList<>();
         String trimmedInput = getUserInput().strip();
 

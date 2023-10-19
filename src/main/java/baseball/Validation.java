@@ -7,7 +7,7 @@ public class Validation {
     final char restart = '1';
     final char end = '2';
 
-    void validateThreeNumbers(String input) {
+    public void validateThreeNumbers(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3개의 숫자만 입력해주세요.");
         }

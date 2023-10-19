@@ -1,23 +1,23 @@
 package baseball;
 
 public class Message {
-    String startMessage() {
+    public String startMessage() {
         return ("숫자 야구 게임을 시작합니다.");
     }
 
-    String requestNumberMessage() {
+    public String requestNumberMessage() {
         return ("숫자를 입력해주세요 : ");
     }
 
-    String successMessage() {
+    public String successMessage() {
         return ("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    String restartOrStopMessage() {
+    public String restartOrStopMessage() {
         return ("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    String scoreMessage(int ball, int strike) {
+    public String scoreMessage(int ball, int strike) {
         if (ball == 0 && strike > 0) {
             return (strike + "스트라이크");
         }
