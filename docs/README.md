@@ -45,16 +45,16 @@
 
 # 🛠️ 기능 목록
 
-### ConsoleConstant
+### BaseBallConstant
 - 출력에 필요한 상수들을 담은 Enum 클래스이다.
-- [ ] GAME_INIT : `숫자 야구 게임을 시작합니다.`
-- [ ] INPUT_REQ : `숫자를 입력해주세요 : `
-- [ ] BALL : `볼`
-- [ ] STRIKE : `스트라이크`
-- [ ] SUCCESS : `3개의 숫자를 모두 맞히셨습니다! 게임 종료`
-- [ ] GAME_END : `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.`
-- [ ] RESTART : `1`
-- [ ] FINISH : `2`
+- [x] GAME_INIT : `숫자 야구 게임을 시작합니다.`
+- [x] INPUT_REQ : `숫자를 입력해주세요 : `
+- [x] BALL : `볼`
+- [x] STRIKE : `스트라이크`
+- [x] SUCCESS : `3개의 숫자를 모두 맞히셨습니다! 게임 종료`
+- [x] GAME_END : `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.`
+- [x] RESTART : `1`
+- [x] FINISH : `2`
 
 ### InputValidation
 - 입력의 유효성을 판단하는 클래스이다.
