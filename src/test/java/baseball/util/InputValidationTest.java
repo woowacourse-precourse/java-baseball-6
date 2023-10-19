@@ -46,4 +46,39 @@ class InputValidationTest {
 	void gameInputValid() {
 		assertTrue(inputValidation.isGameInputValid("123"));
 	}
+
+	@Test
+	void endInputNull() {
+		assertTrue(inputValidation.isEndInputValid(null));
+	}
+
+	@Test
+	void endInputShort() {
+		assertTrue(inputValidation.isEndInputValid(""));
+	}
+
+	@Test
+	void endInputLong() {
+		assertTrue(inputValidation.isEndInputValid("12"));
+	}
+
+	@Test
+	void endInputNotNum() {
+		assertTrue(inputValidation.isEndInputValid("a"));
+	}
+
+	@Test
+	void endInputOutOfRange() {
+		assertTrue(inputValidation.isEndInputValid("3"));
+	}
+
+	@Test
+	void endInputNegative() {
+		assertTrue(inputValidation.isEndInputValid("-1"));
+	}
+
+	@Test
+	void endInputValid() {
+		assertTrue(inputValidation.isEndInputValid("1"));
+	}
 }
