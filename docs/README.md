@@ -10,6 +10,7 @@
 - [ ]  ‘서로 다른’ 3개의 숫자 입력받기
     - [ ] 서로 다른 3자리 수가 아니면 `IllegalArgumentException` 발생
     - [ ] 서로 3자리 수 보다 더 많거나 적으면 `IllegalArgumentException` 발생
+    - [ ] 숫자가 아니면 `IllegalArgumentException` 발생
    
 
 - [ ]  입력값의 각 자리에 따라 힌트 정하기
