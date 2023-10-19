@@ -24,6 +24,24 @@ public class Application {
             Result result = getResult(computer, input, strikes, balls);
             printResult(result);
 
+            computer = checkThreeStrikes(result, computer);
+            if (computer == null) break;
+        }
+    }
+
+    private static List<Integer> checkThreeStrikes(Result result, List<Integer> computer) {
+        if (result.strikes() == computer.size()) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String oneOrTwo = Console.readLine();
+
+            if (!oneOrTwo.matches("[1-2]")) throw new IllegalArgumentException();
+
+            return oneOrTwo.equals("1") ? getComputerPicks() : null;
+        }
+        return computer;
+    }
+
     private static void printResult(Result result) {
         if (result.balls() == 0 && result.strikes() == 0) System.out.println("낫싱");
         else if (result.balls() == 0) System.out.println(result.strikes() + "스트라이크");
