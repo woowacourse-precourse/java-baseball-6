@@ -7,6 +7,7 @@ public class Balls {
 
     private Balls(List<Integer> input) {
         validateNotDuplicated(input);
+        validateLength(input);
         this.balls = input;
     }
 
@@ -17,6 +18,12 @@ public class Balls {
     private void validateNotDuplicated(List<Integer> balls) {
         if (isDuplicated(balls)) {
             throw new IllegalArgumentException("서로 다른 숫자를 입력하세요.");
+        }
+    }
+
+    private void validateLength(List<Integer> input) {
+        if (input.size() != 3) {
+            throw new IllegalArgumentException("3개의 숫자를 입력하세요.");
         }
     }
 
