@@ -14,21 +14,19 @@ public class Game {
     private Validation validation;
 
     public void gameStart(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        do{
+            System.out.println("숫자 야구 게임을 시작합니다.");
 
-        //컴퓨터 생성
-        computer = new Computer();
+            //컴퓨터 생성
+            computer = new Computer();
 
-        //유저 입장
-        user = new User();
+            //유저 입장
+            user = new User();
 
-        //심판관 입장
-        validation = new Validation();
-
-        while (playGame()) {
-
+            //심판관 입장
+            validation = new Validation();
         }
-
+        while (playGame());
 
     }
     private boolean playGame(){
@@ -54,10 +52,11 @@ public class Game {
             // 딜러의 결과값 출력
             if(printResult(gameResult)){
                 printSuccess();
-                inputRetry();
+                retryCheck = inputRetry();
             }
 
             // 성공 여부 체크 후 return
+            return retryCheck;
         }
     }
 
@@ -97,8 +96,14 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    private void inputRetry(){
+    private boolean inputRetry(){
         String userInput = user.inputRestartNumber();
-        validation.checkRetryInput(userInput);
+        if(userInput.equals("1")){
+            return true;
+        }else if(userInput.equals("2")){
+            return false;
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 }

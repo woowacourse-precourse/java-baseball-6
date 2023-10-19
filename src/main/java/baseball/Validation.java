@@ -17,16 +17,6 @@ public class Validation {
         return userInputList;
     }
 
-    public void checkRetryInput(String retryInput){
-
-        if (retryInput.equals("1") || retryInput.equals("2")) {
-            return;
-        }
-
-        throw new IllegalArgumentException();
-    }
-
-
     private void ConvertUserInputToList(String userInput) {
         this.userInputList = new ArrayList<>();
 
