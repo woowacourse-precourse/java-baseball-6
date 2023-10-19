@@ -54,8 +54,9 @@ public class Application {
         if (ballCount != 0) {
             System.out.print(ballCount+BALL_MESSAGE);
             if (strikeCount != 0) {
-                System.out.println(" "+strikeCount+STRIKE_MESSAGE);
+                System.out.print(" "+strikeCount+STRIKE_MESSAGE);
             }
+            System.out.println();
             return;
         }
         System.out.println(strikeCount+STRIKE_MESSAGE);
