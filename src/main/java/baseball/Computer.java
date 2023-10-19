@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 public class Computer {
 
     private static final int COUNT_TO_GENERATE = 3;
+    private static final int STRIKE_INDEX = 0;
+    private static final int BALL_INDEX = 1;
 
     private Numbers computerNumbers;
     private Numbers userNumbers;
@@ -18,6 +20,11 @@ public class Computer {
 
     public void addUserNumber(final String inputUserNumber) {
         this.userNumbers = convertToNumbers(inputUserNumber);
+    }
+
+    public GameResult createResult() {
+        List<Integer> compareResults = computerNumbers.createCompareResult(userNumbers);
+        return new GameResult(compareResults.get(STRIKE_INDEX), compareResults.get(BALL_INDEX));
     }
 
     private Numbers convertToNumbers(final String inputUserNumber) {
