@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 
 public class Game {
@@ -35,9 +37,23 @@ public class Game {
             } else{ //둘 다 0인 경우
                 System.out.println("낫싱");
             }
+            this.user.clearGuessNumber(); //사용자가 새로운 숫자를 입력할 때마다 기존에 저장되어 있던 숫자 초기화
         }
     }
 
+    public boolean isRestart(){ //게임 재시작 여부
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        String s = Console.readLine();
+        int selection = Integer.parseInt(s); //게임 재시작 여부를 저장
+        if(selection==1){ //재시작하면 true
+            return true;
+        }
+        else if(selection==2){ //종료를 선택하면 false return;
+            return false;
+        }
+        throw new IllegalArgumentException(); //만약 사용자가 1,2가 아닌 값을 입력했을 시 IllegalArgumentException 에러 발생
+
+    }
     private int[] checkNumber(){ //컴퓨터의 숫자와 플레이어가 입력한 숫자를 비교하여 스트라이크와 볼의 개수를 리턴하는 메소드
          int [] strikeAndBall = {0,0}; // 0번째 인덱스: 스트라이크, 1번째 인덱스: 볼
 
