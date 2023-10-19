@@ -13,8 +13,8 @@ public class ValidationTest {
     public void 입력값_변환_체크(){
         Validation validation = new Validation();
         String input = "123";
-        List<Integer> answer = new ArrayList<>(Arrays.asList(1,2,3));
-        List<Integer> inputList = validation.checkUserInput(input);
+        List<Character> answer = new ArrayList<>(Arrays.asList('1','2','3'));
+        List<Character> inputList = validation.checkUserInput(input);
 
         assertThat(answer).isEqualTo(inputList);
     }

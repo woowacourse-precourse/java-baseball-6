@@ -35,8 +35,8 @@ public class Game {
         boolean retryCheck = false; // 재시도 여부 체크
 
         //컴퓨터의 랜덤 값 생성
-        List<Integer> answer = computer.createAnswer();
-        List<Integer> userAnswer = new ArrayList<>();
+        List<Character> answer = computer.createAnswer();
+        List<Character> userAnswer = new ArrayList<>();
 
         while (true){
             //유저 입력 초기화
@@ -61,7 +61,7 @@ public class Game {
         }
     }
 
-    private GameResult getGameResult(List<Integer> userAnswer, List<Integer> answer) {
+    private GameResult getGameResult(List<Character> userAnswer, List<Character> answer) {
         Integer ball = 0;
         Integer strike = 0;
 

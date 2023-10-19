@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Set;
 
 public class Validation {
-    private List<Integer> userInputList;
+    private List<Character> userInputList;
 
-    public List<Integer> checkUserInput(String userInput) {
+    public List<Character> checkUserInput(String userInput) {
 
         ConvertUserInputToList(userInput);
         isAllCheck();
@@ -31,8 +31,7 @@ public class Validation {
         this.userInputList = new ArrayList<>();
 
         for (int i = 0; i < userInput.length(); i++) {
-            Character num = userInput.charAt(i);
-            this.userInputList.add(Character.getNumericValue(num));
+            this.userInputList.add(userInput.charAt(i));
         }
     }
 
@@ -63,7 +62,7 @@ public class Validation {
     }
 
     private boolean isNotDuplicateNumber() {
-        Set<Integer> userInputSet = new HashSet<>(userInputList);
+        Set<Character> userInputSet = new HashSet<>(userInputList);
 
         if (userInputSet.size() == GameConfig.CORRECT_LENGTH) {
             return true;
