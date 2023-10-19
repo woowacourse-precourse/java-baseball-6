@@ -10,4 +10,8 @@ public class BaseballGame {
     public PlayResult play(Balls userBalls) {
         return computerBalls.play(userBalls);
     }
+
+    public boolean isGameEnd(PlayResult playResult) {
+        return playResult.isThreeStrike();
+    }
 }

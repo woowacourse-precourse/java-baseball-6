@@ -1,6 +1,8 @@
 package baseball.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,14 +14,18 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.*;
 
 class BaseballGameTest {
+    private BaseballGame baseballGame;
+
+    @BeforeEach
+    void setUp() {
+        Balls computerBalls = new Balls(List.of(1, 2, 3));
+        baseballGame = new BaseballGame(computerBalls);
+    }
 
     @ParameterizedTest
     @MethodSource("ballsAndPlayResult")
     @DisplayName("컴퓨터의 숫자와 플레이어의 숫자를 통해 숫자 야구 게임을 진행하여 결과를 알 수 있다.")
     void play(Balls userBalls, PlayResult expected) {
-        Balls computerBalls = new Balls(List.of(1, 2, 3));
-        BaseballGame baseballGame = new BaseballGame(computerBalls);
-
         PlayResult actual = baseballGame.play(userBalls);
 
         assertThat(actual).isEqualTo(expected);
@@ -31,5 +37,17 @@ class BaseballGameTest {
                 arguments(new Balls(List.of(1, 4, 2)), new PlayResult(1, 1)),
                 arguments(new Balls(List.of(4, 5, 6)), new PlayResult(0, 0))
         );
+    }
+
+    @Test
+    @DisplayName("플레이어가 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.")
+    void isGameEnd() {
+        Balls userBalls = new Balls(List.of(3, 4, 5));
+        PlayResult playResult = baseballGame.play(userBalls);
+        assertThat(baseballGame.isGameEnd(playResult)).isFalse();
+
+        userBalls = new Balls(List.of(1, 2, 3));
+        playResult = baseballGame.play(userBalls);
+        assertThat(baseballGame.isGameEnd(playResult)).isTrue();
     }
 }

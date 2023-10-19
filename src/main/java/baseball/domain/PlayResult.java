@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class PlayResult {
     private static final int INITIAL_COUNT = 0;
+    private static final int THREE = 3;
 
     private int strike;
     private int ball;
@@ -25,6 +26,10 @@ public class PlayResult {
         if (ballStatus == BallStatus.BALL) {
             ball++;
         }
+    }
+
+    public boolean isThreeStrike() {
+        return strike == THREE;
     }
 
     @Override
