@@ -27,4 +27,8 @@ public class User {
         }
     }
 
+    public boolean isThreeStrike(){
+        return this.strike==3;
+    }
+
 }
