@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallGamePlay {
-    //TODO: 게임진행
 
     public BaseBallGamePlay(ComputerNumbers computerNumbers) {
         play(computerNumbers);
@@ -33,12 +32,10 @@ public class BaseBallGamePlay {
 
     private void checkInput(String inputPlayerBall) {
 
-        // 3자리 수가 아니면 에러발생
         if (inputPlayerBall.length() != 3) {
             throw new IllegalArgumentException();
         }
 
-        // 현재 문자가 숫자인지 확인 아니면 에러발생
         for (int i = 0; i < inputPlayerBall.length(); i++) {
             char currentChar = inputPlayerBall.charAt(i);
             if (!Character.isDigit(currentChar)) {
@@ -77,7 +74,6 @@ public class BaseBallGamePlay {
         List<Integer> playerNumbers = new ArrayList<>();
 
         public PlayerNumbers(String playerBalls) {
-            // 변환
             for (int i = 0; i < playerBalls.length(); i++) {
                 char currentChar = playerBalls.charAt(i);
                 playerNumbers.add(currentChar - '0');
