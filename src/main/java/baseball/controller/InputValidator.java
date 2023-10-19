@@ -7,7 +7,7 @@ import baseball.common.Size;
 
 public class InputValidator {
     int checkOutOfNumber(int input) {
-        if (Integer.toString(input).length() != Size.NUMBER.getValue()) {
+        if (Integer.toString(input).length() != Size.NUMBER.getValue() && input > 0) {
             throw new CustomException(ErrorCode.INVALID_NUMBER);
         }
         return checkOutOfRange(input);
