@@ -11,7 +11,7 @@ class ComputerTest {
 
     @Test
     void testGenerateComputerNumbers() {
-        Computer computer = new Computer(1, 9, 3);
+        Computer computer = new Computer(3);
 
         List<Integer> computerNumbers = computer.getComputerNumbers();
 
