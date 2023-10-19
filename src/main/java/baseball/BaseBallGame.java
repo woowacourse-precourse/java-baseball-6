@@ -12,6 +12,7 @@ public class BaseBallGame {
 
 	private void start() {
 		this.computerNumber = generateRandomNumber();
+		System.out.println("숫자 야구 게임을 시작합니다.");
 	}
 
 	// 1에서 9까지 서로 다른 임의의 수 3개를 선택하여 문자열로 출력합니다.
