@@ -3,7 +3,7 @@
 - [ ] 게임 숫자 입력 값이 숫자가 아니라면 `IllegalArgumentException` 예외를 발생시킨다.
 <br>
 
-- [ ] 게임 숫자가 1~9 사이의 숫자가 아니라면 `IllegalArgumentException` 예외를 발생시킨다.
+- [x] 각 자리수가 1~9 사이의 숫자가 아니라면 `IllegalArgumentException` 예외를 발생시킨다.
 <br>
 
 - [ ] 게임 숫자가 3자리가 아니라면 `IllegalArgumentException` 예외를 발생시킨다.
