@@ -1,10 +1,7 @@
 package baseball;
 
 import baseball.controller.GameController;
-import baseball.domain.User;
-import baseball.service.GameService;
 import baseball.view.InputView;
-import baseball.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
@@ -13,7 +10,13 @@ public class Application {
 
         gameController.start();
 
-        gameController.play(inputView.readUserBaseballNumber());
+        while(true){
+            gameController.play(inputView.readUserBaseballNumber());
+
+            if(!gameController.restart(inputView.readUserRestartStatus()))
+                break;
+        }
+
     }
 
 }
