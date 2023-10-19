@@ -12,12 +12,12 @@ public class GameResult {
 
 
     public GameResult(List<Integer> computer, List<Integer> player) {
-        this.computer = computer;
-        this.player = player;
-        calculate();
+        calculate(computer, player);
     }
 
-    private void calculate() {
+    public void calculate(List<Integer> computer, List<Integer> player) {
+        this.computer = computer;
+        this.player = player;
         calculateBallCount();
         calculateStrikeCount();
     }
@@ -38,5 +38,13 @@ public class GameResult {
                 ball += 1;
             }
         }
+    }
+
+    private int getBallCount() {
+        return ball;
+    }
+
+    private int getStrikeCount() {
+        return strike;
     }
 }
