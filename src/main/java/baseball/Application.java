@@ -18,9 +18,10 @@ public class Application {
                 if (userInput.length() != 3) {
                     throw new IllegalArgumentException();
                 }
+
                 for (int i = 0; i < 3; i++) {
                     char c = userInput.charAt(i);
-                    if(!Character.isDigit(c)) {
+                    if(!Character.isDigit(c) || c == '0') {
                         throw new IllegalArgumentException();
                     }
                 }
