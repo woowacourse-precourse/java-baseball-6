@@ -38,6 +38,18 @@ public class Application {
                     System.out.println("낫싱");
                 }
             }
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restart = Console.readLine();
+
+            if (restart.equals("2")){
+                Console.close();
+                break;
+            }
+
+            if (!restart.equals("1")){
+                throw new IllegalArgumentException();
+            }
         }
     }
 
