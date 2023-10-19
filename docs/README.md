@@ -18,5 +18,5 @@
     - [v] 인터페이스의 구체적인 Baseball 구현체 만들기
     - [v] 게임을 관리하는 GameManager 만들기  
 - integration 
-  - Application.main() 작성
-  - 테스트 
+  - [v] Application.main() 작성
+  - [v] 테스트 통과 
