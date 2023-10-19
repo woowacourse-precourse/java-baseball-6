@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 public class NumberBaseball {
 
-    private final String numbers;
     private final String randomNumber = generateRandomNumber();
 
     private String generateRandomNumber() {
@@ -23,10 +22,6 @@ public class NumberBaseball {
         return computer.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
-    }
-
-    public NumberBaseball(String numbers) {
-        this.numbers = numbers;
     }
 
     public void isValid() {

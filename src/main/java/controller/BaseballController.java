@@ -8,6 +8,7 @@ public class BaseballController {
 
     public void startBaseball() {
         OutputView.printGameStartView();
+        getUserNumber();
     }
 
     public void getUserNumber() {
