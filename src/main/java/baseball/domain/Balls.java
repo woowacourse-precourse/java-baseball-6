@@ -43,6 +43,17 @@ public class Balls {
         return balls;
     }
 
+    public PlayResult play(Balls balls) {
+        PlayResult playResult = new PlayResult();
+
+        for (Ball ball : this.balls) {
+            BallStatus ballStatus = balls.compare(ball);
+            playResult.record(ballStatus);
+        }
+
+        return playResult;
+    }
+
     public BallStatus compare(Ball user) {
         for (Ball ball : balls) {
             BallStatus ballStatus = ball.compare(user);
