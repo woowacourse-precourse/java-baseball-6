@@ -1,7 +1,7 @@
 ### 입/출력
 - [ ] 게임 시작 문구 출력
 - [ ] 서로 다른 3자리의 수 입력
-- [ ] 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
+  - [ ] 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
   - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
 - [ ] 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시
   - [ ] 하나도 맞추지 못한 경우 ex. `낫싱`
@@ -13,4 +13,6 @@
 ### 기능
 - [ ] 임의의 3자리 숫자를 생성하는 메서드
     - 임의의 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()` 활용
+    - [ ] 임의의 3자리 숫자를 생성하는 클래스 생성
+    - [ ] 다른 클래스에서 이 클래스의 객체를 사용할 때 값을 볼 수 있는 메서 만들기
 - [ ] 사용자가 입력한 숫자에 대해서 볼의 개수와 스트라이크의 개수를 구하는 메서드
