@@ -25,7 +25,7 @@ public class Application {
         System.out.println("selectNumber = " + selectNumber);
         //2. 출력문 구성
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (strikeCount != 3) {
+        while (true) {
             ballCount = 0;
             strikeCount = 0;
 
@@ -45,12 +45,12 @@ public class Application {
 
                     //0입력시 => 예외 발생
                     if (Integer.parseInt(strArr[i]) == 0)
-                        throw new IllegalArgumentException("1~9 사이의 숫자를 입력하세요");
+                        throw new IllegalArgumentException("1~9 사이의 숫자를 입력하세요.");
                     intArr[i] = Integer.parseInt(strArr[i]);
                     //같은 숫자를 입력했을 때 => 예외발생
                     for (int j = i + 1; j < 3; j++)
                         if (intArr[i] == Integer.parseInt(strArr[j]))
-                            throw new IllegalArgumentException("서로 다른 숫자를 입력하세요");
+                            throw new IllegalArgumentException("서로 다른 숫자를 입력하세요.");
 
                 }
 
@@ -59,9 +59,9 @@ public class Application {
                 throw new IllegalArgumentException("숫자만 입력하세요.");
             }
 
-            for (int i : intArr) {
-                System.out.println("i = " + i);
-            }
+//            for (int i : intArr) {
+//                System.out.println("i = " + i);
+//            }
             //4. 규칙에 따라 출력
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
@@ -74,12 +74,38 @@ public class Application {
             }
             if (ballCount != 0) {
                 System.out.print(ballCount + "볼 ");
-            } else if (strikeCount != 0) {
+            }
+            if (strikeCount != 0) {
                 System.out.print(strikeCount + "스트라이크");
-
-            } else
+            }
+            if(ballCount + strikeCount ==0)
                 System.out.print("낫싱");
             System.out.println();
+            if(strikeCount ==3){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                inputNumber = Console.readLine();
+                try {
+                    if (Integer.parseInt(inputNumber) != 1 && Integer.parseInt(inputNumber) != 2)
+                        throw new IllegalArgumentException("1과 2중에 입력하세요.");
+                }catch (NumberFormatException ex){
+                    throw new IllegalArgumentException("숫자만 입력하세요.");
+                }
+
+                if(Integer.parseInt(inputNumber) == 1){
+                    selectNumber.clear();
+                    while (selectNumber.size() != 3) {
+                        int randomNumber = Randoms.pickNumberInRange(1, 9);
+                        if (!selectNumber.contains(randomNumber)) {
+                            selectNumber.add(randomNumber);
+                        }
+                    }
+                    System.out.println("selectNumber = " + selectNumber);
+                }
+                else {
+                    break;
+                }
+            }
 
         }
     }
