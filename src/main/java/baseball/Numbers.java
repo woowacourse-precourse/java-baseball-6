@@ -24,7 +24,7 @@ public class Numbers {
     private int calculateStrikeCount(final Numbers userNumbers) {
         int count = 0;
         for (int i = 0; i < numbers.size(); i++) {
-            if (Objects.equals(numbers.get(i), userNumbers.numbers.get(i))) {
+            if (isSameNumber(numbers.get(i), userNumbers.numbers.get(i))) {
                 count++;
             }
         }
@@ -34,11 +34,15 @@ public class Numbers {
     private int calculateBallCount(final Numbers userNumbers) {
         int count = 0;
         for (int i = 0; i < numbers.size(); i++) {
-            if (!Objects.equals(userNumbers.numbers.get(i), numbers.get(i))
+            if (!isSameNumber(numbers.get(i), userNumbers.numbers.get(i))
                     && numbers.contains(userNumbers.numbers.get(i))) {
                 count++;
             }
         }
         return count;
+    }
+
+    private boolean isSameNumber(final int computerNumber, final int userNumber) {
+        return Objects.equals(computerNumber, userNumber);
     }
 }
