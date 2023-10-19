@@ -17,4 +17,8 @@ public class Computer {
 			}
 		}
 	}
+
+	public boolean isMisMatch(List<Integer> player) {
+		return false;
+	}
 }
