@@ -22,8 +22,8 @@ public class HintCalculator {
         return userNumber == computerNumber;
     }
 
-    private boolean isBall(Integer integer, List<Integer> computerList) {
-
+    private boolean isBall(Integer userNumber, List<Integer> computerList) {
+        return computerList.contains(userNumber);
     }
 
 }
