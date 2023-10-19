@@ -18,9 +18,9 @@ public class Application {
                 System.out.println("inputNum = " + inputNum);
             }
         }
-        catch (IllegalArgumentException e) {
-            return ;
-        }
+//        catch (IllegalArgumentException e) {
+//            return ;
+//        }
     }
 
     public static List<Integer> generateRandomNum() {
@@ -34,18 +34,18 @@ public class Application {
         return answer;
     }
 
-//    public static ArrayList<Integer> convertStringToList(String inputString) {
-//        List<Integer> inputList = new ArrayList<>();
-//        for (int i = 0; i < inputString.length(); i++) {
-//            char c = inputString.charAt(i);
-//            if (Character.isDigit(c)) {
-//                int digitValue = Character.getNumericValue(c);
-//                inputList.add(digitValue);
-//            } else {
-//                throw new IllegalArgumentException("잘못된 입력입니다.");
-//            }
-//        }
-//    }
+    public static ArrayList<Integer> convertStringToList(String inputString) {
+        List<Integer> inputList = new ArrayList<>();
+        for (int i = 0; i < inputString.length(); i++) {
+            char c = inputString.charAt(i);
+            if (Character.isDigit(c)) {
+                int digitValue = Character.getNumericValue(c);
+                inputList.add(digitValue);
+            } else {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
+        }
+    }
 
 //    public static void checkInputNum(String inputNum) {
 //
