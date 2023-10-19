@@ -27,4 +27,10 @@ public class Player {
     }
 
 
+    public long compareBallCount(List<Integer> baseballNumbers) {
+        return expectedNumbers.stream()
+                .filter(baseballNumbers::contains)
+                .count();
+    }
+
 }
