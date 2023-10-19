@@ -95,8 +95,8 @@ public class Application {
     }
     public static String getMoreGame() {
         String moreGame = Console.readLine();
-        validateEmptyOrNullOfInputString(moreGame);
-
+        validateMoreGameString(moreGame);
+        return moreGame;
     }
     public static void validateUserNumbersString(String userNumbers) {
         validateEmptyOrNullOfInputString(userNumbers);
@@ -110,7 +110,8 @@ public class Application {
     }
     public static void validateMoreGameString(String moreGame) {
         validateEmptyOrNullOfInputString(moreGame);
-
+        if (!moreGame.matches("[12]"))
+            throw new IllegalArgumentException("[ERROR] 입력 값이 1 또는 2가 아닙니다.");
     }
     public static void validateEmptyOrNullOfInputString(String input) {
         if (input == null || input.isEmpty()) {
