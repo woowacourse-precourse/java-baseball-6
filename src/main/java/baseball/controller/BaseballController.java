@@ -73,7 +73,7 @@ public class BaseballController {
     public List<Integer> getAnswerNumbers() {
         List<Integer> numbers = new ArrayList<>();
 
-        while (numbers.size() < 3) {
+        while (numbers.size() < VALID_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
