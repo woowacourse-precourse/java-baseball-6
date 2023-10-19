@@ -13,6 +13,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class BallNumbersTest {
 
+    private final BallNumbers computer = new BallNumbers(List.of(4, 2, 5));
+
     @ParameterizedTest
     @MethodSource("generateInvalidNumbers")
     @DisplayName("플레이어의 야구 숫자의 개수가 3이 아니면 예외가 발생한다.")
@@ -42,9 +44,24 @@ public class BallNumbersTest {
     @Test
     @DisplayName("플레이어와 컴퓨터의 야구 숫자들을 비교할 수 있다. - 낫싱")
     void testCompareAllWhenNothing() {
-        BallNumbers computer = new BallNumbers(List.of(4, 2, 5));
         BallNumbers player = new BallNumbers(List.of(7, 8, 9));
         PlayResult playResult = player.compareAll(computer);
         assertThat(playResult.isNothing()).isTrue();
+    }
+
+    @Test
+    @DisplayName("플레이어와 컴퓨터의 야구 숫자들을 비교할 수 있다. - 스트라이크")
+    void testCompareAllWhenStrike() {
+        BallNumbers player = new BallNumbers(List.of(1, 2, 3));
+
+        PlayResult playResult = player.compareAll(computer);
+        assertThat(playResult.getStrikes()).isEqualTo(1L);
+
+        playResult = player.compareAll(new BallNumbers(List.of(4, 2, 3)));
+        assertThat(playResult.getStrikes()).isEqualTo(2L);
+
+        playResult = player.compareAll(new BallNumbers(List.of(1, 2, 3)));
+        assertThat(playResult.getStrikes()).isEqualTo(3L);
+        assertThat(playResult.isAllStrike()).isTrue();
     }
 }

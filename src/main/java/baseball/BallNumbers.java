@@ -1,14 +1,28 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BallNumbers {
 
     public static final int BALL_NUMBERS_SIZE = 3;
 
+    private final List<BallNumber> ballNumbers;
+
     public BallNumbers(final List<Integer> numbers) {
         validate(numbers);
+        ballNumbers = mapBallNumbers(numbers);
+    }
+
+    private List<BallNumber> mapBallNumbers(final List<Integer> numbers) {
+        final List<BallNumber> ballNumbers = new ArrayList<>();
+
+        for (int i = 0; i < BALL_NUMBERS_SIZE; i++) {
+            ballNumbers.add(new BallNumber(numbers.get(i), i));
+        }
+        return ballNumbers;
     }
 
     private void validate(final List<Integer> numbers) {
@@ -30,7 +44,21 @@ public class BallNumbers {
         }
     }
 
-    public PlayResult compareAll(final BallNumbers player) {
-        return new PlayResult();
+    public PlayResult compareAll(final BallNumbers other) {
+        return new PlayResult(mapCompareResults(other));
+    }
+
+    private List<CompareResult> mapCompareResults(final BallNumbers other) {
+        return ballNumbers.stream()
+                .map(other::compare)
+                .collect(Collectors.toList());
+    }
+
+    private CompareResult compare(final BallNumber other) {
+        return ballNumbers.stream()
+                .map(ballNumber -> ballNumber.compare(other))
+                .filter(result -> !result.isNothing())
+                .findFirst()
+                .orElse(CompareResult.NOTHING);
     }
 }
