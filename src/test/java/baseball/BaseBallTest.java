@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BaseBallTest {
@@ -41,7 +42,14 @@ public class BaseBallTest {
     @Test
     void 컴퓨터가_랜덤으로_숫자_생성하기() {
         List<Integer> expected = List.of(1, 2, 3);
-        List<Integer> actual = List.of(1, 2, 4);
-        assertThat(actual).isEqualTo(expected);
+        assertRandomNumberInRangeTest(
+                () -> {
+                    List<Integer> actual;
+                    actual = Application.getRandomNumberList();
+
+                    assertThat(actual).isEqualTo(expected);
+                },
+                1, 2, 3
+        );
     }
 }
