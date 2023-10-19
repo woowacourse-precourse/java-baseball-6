@@ -16,6 +16,7 @@ public class Balls {
         if(!balls.contains(new_ball)){
             this.balls.add(new_ball);
             this.size = this.balls.size();
+            System.out.println("[ball number] >>>>"+ new_ball);
         }
     }
 
@@ -33,8 +34,13 @@ public class Balls {
 //    }
 
     public int get_index(int target){
-        if(balls.contains(target)){
-            return balls.indexOf(target);
-        } else return -1;
+        try{
+            if(balls.contains(target)){
+                return balls.indexOf(target);
+            } else return -1;
+        }catch (IndexOutOfBoundsException e){
+            throw new IllegalArgumentException();
+        }
+
     }
 }

@@ -3,9 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -26,40 +23,23 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 try{
                     String guess = Console.readLine();
+                    Guess user_try = new Guess(guess);
 
-                    int strike = 0;
-                    int ball = 0;
-                    int nothing = goal.size;
-                    int temp = 0; //locate 를 알 수 있게 하는 역할
+                    int locate = 0; //locate 를 알 수 있게 하는 역할
+                    while(locate < goal.size){
+                        int ball = user_try.get_ball(locate);
+                        int goal_index = goal.get_index(ball);
 
-                    while (temp < guess.length()) {
-                        int guess_num = Integer.parseInt(String.valueOf(guess.charAt(temp)));
+                        if(goal_index>=0){
+                            if(goal_index == locate){
+                                user_try.strike++;
+                            } else user_try.ball++;
+                        }else user_try.nothing--;
+                        locate++;
+                    }
 
-                        if (goal.balls.contains(guess_num)) {
-                            int located_num = goal.balls.get(temp);
-                            if (guess_num == located_num) {
-                                strike++;
-                            } else ball++;
-                        } else nothing--;
-                        temp+=1;
-                    }
-                    if (nothing != 0) {
-                        if (strike == 3) {
-                            play_mode = 3;
-                        }
-                        if (ball == 0) {
-                            System.out.println(strike + "스트라이크");
-                        }
-                        if (strike == 0) {
-                            System.out.println(ball + "볼");
-                        }
-                        if (strike * ball > 0) {
-                            System.out.println(ball + "볼 " + strike + "스트라이크");
-                        }
-                    }
-                    if(nothing ==0){
-                        System.out.println("낫싱");
-                    }
+
+                    play_mode= user_try.get_result(play_mode);
                 } catch (IllegalArgumentException e) {
                     throw e;
                 } catch (IndexOutOfBoundsException e){

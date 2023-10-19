@@ -8,14 +8,40 @@ public class Guess extends Balls{
         this.ball=0;
     }
 
-    public void add_ball(String new_balls){
+    Guess(String new_balls){
+        this.strike=0;
+        this.ball=0;
         int locate=0;
 
-        while(locate < this.size){
+        while(locate < new_balls.length()){
             char new_ball = new_balls.charAt(locate);
-            add_ball(new_ball - '0');
+            this.add_ball(new_ball - '0');
             locate++;
         }
         this.nothing=this.size;
+    }
+
+    public int get_ball(int locate){
+        return this.balls.get(locate);
+    }
+
+    public int get_result(int play_mode){
+        if(nothing==0) {
+            System.out.println("낫싱");
+            return play_mode=0;
+        }
+        if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+            if(strike ==3){
+                return play_mode=3;
+            }
+            return play_mode=0;
+        }
+        if (strike == 0) {
+            System.out.println(ball + "볼");
+            return play_mode=0;
+        }
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+        return play_mode=0;
     }
 }
