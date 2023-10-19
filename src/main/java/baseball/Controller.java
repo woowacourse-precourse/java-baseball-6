@@ -6,18 +6,25 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class Controller {
+
+	private Validator validator;
+
+	public Controller(Validator validator) {
+		this.validator = validator;
+	}
+
 	public void run() {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 		do {
 			proceed();
-		} while (InputView.readRestart() == 1);
+		} while (validator.validatedRestart(InputView.readRestart()) == 1);
 	}
 
 	private void proceed() {
 		Computer computer = new Computer();
 		List<Integer> trial;
 		while (true) {
-			trial = InputView.readBaseballNumber();
+			trial = validator.validateBaseballNumber(InputView.readBaseballNumber());
 			List<Integer> result = computer.calculateResult(trial);
 			OutputView.printResult(result);
 			if (result.get(1) == 3) {
