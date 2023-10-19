@@ -11,5 +11,5 @@ public class InputController {
     public String getCommand() {
         InputValidator validator = new InputValidator();
         return validator.checkCommand(Console.readLine());
-    } 
+    }
 }
