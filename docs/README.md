@@ -38,11 +38,11 @@
     - [ ] 출력할 메시지 출력
 
 ### Model
-- [ ] Comuputer
+- [x] Comuputer
     - [x] 랜덤 숫자 3개 저장할 List
-    - [ ] 유저 숫자와 비교해 ball Strike 체크
-        - [ ] strike인지 체크하는 함수 (자리와 숫자가 똑같은지 체크, strike면 Continue로 볼체크 x)
-        - [ ] ball인지 체크하는 함수 (strike가 아닌 숫자가 ComputerNumber의 존재하는지)
+    - [x] 유저 숫자와 비교해 ball Strike 체크
+        - [x] strike인지 체크하는 함수 (자리와 숫자가 똑같은지 체크, strike면 Continue로 볼체크 x)
+        - [x] ball인지 체크하는 함수 (strike가 아닌 숫자가 ComputerNumber의 존재하는지)
 
 ### View
 - [ ] InputView (InputValidateController에서 유효성 검사)
