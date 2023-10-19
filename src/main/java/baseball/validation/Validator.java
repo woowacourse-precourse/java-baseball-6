@@ -2,10 +2,10 @@ package baseball.validation;
 
 public class Validator {
 
-    public boolean isThreeNumber(String str){
+    public void validateThreeNumber(String str){
         if(str.matches("[1-9]{3}")){
-            return true;
+            throw new IllegalArgumentException("3자리의 숫자로 이루어진 문자가 아닙니다.");
         }
-        return false;
     }
+
 }
