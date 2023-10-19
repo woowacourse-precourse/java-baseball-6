@@ -58,16 +58,20 @@ public class Application {
                 }
             }
 
+            String result = "";
             if (ball == 0 && strike == 0) {
                 System.out.println("낫싱");
             } else {
                 if (ball > 0) {
-                    System.out.print(ball + "볼");
+                    result = String.format("%d볼", ball);
                 }
                 if (strike > 0) {
-                    System.out.print(strike + "스트라이크");
+                    result = String.format("%d스트라이크", strike);
                 }
-                System.out.println();
+                if (ball > 0 && strike > 0) {
+                    result = String.format("%d볼 %d스트라이크", ball, strike);
+                }
+                System.out.println(result);
             }
 
             if (strike == 3) {
