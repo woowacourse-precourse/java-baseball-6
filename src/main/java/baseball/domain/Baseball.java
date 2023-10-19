@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 import static baseball.exception.ExceptionMessage.BaseballException.EACH_BALL_MUST_BE_UNIQUE;
@@ -51,5 +52,9 @@ public class Baseball {
         return balls.stream()
                 .distinct()
                 .count() != TOTAL_COUNT;
+    }
+
+    public List<Integer> getBalls() {
+        return Collections.unmodifiableList(balls);
     }
 }
