@@ -8,10 +8,19 @@ public class OutputView {
         System.out.println("숫자를 입력해주세요 : ");
     }
 
-    public static void printMiniResult(Integer strikeCnt, Integer ballCnt) {
+    public static void printBallAndStrikeResult(Integer strikeCnt, Integer ballCnt) {
         System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
+    }
+
+    public static void printBallOnlyResult(Integer ballCnt) {
         System.out.println(ballCnt + "볼 ");
+    }
+
+    public static void printStrikeOnlyResult(Integer strikeCnt) {
         System.out.println(strikeCnt + "스트라이크");
+    }
+
+    public static void printNothingResult() {
         System.out.println("낫싱");
     }
 
