@@ -13,17 +13,19 @@ public class User {
     }
 
     public void compare(String value){
-        for(int i=0;i<this.value.length();i++){
-            String userNum=Character.toString(this.value.charAt(i));
+        for(int i=0;i<value.length();i++){
+            compareEach(Character.toString(value.charAt(i)),i);
+        }
+    }
 
-            if(value.contains(userNum)){
-                if(value.indexOf(userNum)==i){
-                    this.strike+=1;
-                }
-                else{
-                    this.ball+=1;
-                }
-            }
+    private void compareEach(String word,int index){
+        if(this.value.indexOf(word)==index){
+            this.strike+=1;
+            return;
+        }
+
+        if(this.value.contains(word)){
+            this.ball+=1;
         }
     }
 
