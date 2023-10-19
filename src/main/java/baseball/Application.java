@@ -16,7 +16,7 @@ public class Application {
                 String userInput = Console.readLine();
 
                 if (userInput.length() != 3) {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException("세 자리의 숫자를 입력해주세요.");
                 }
 
                 List<Integer> userNumbers = new ArrayList<>();
@@ -24,7 +24,7 @@ public class Application {
                 for (int i = 0; i < 3; i++) {
                     char splitedChar = userInput.charAt(i);
                     if(!Character.isDigit(splitedChar) || splitedChar == '0') {
-                        throw new IllegalArgumentException();
+                        throw new IllegalArgumentException("1-9 사이의 숫자만 입력해주세요.");
                     }
 
                     int numericChar = Character.getNumericValue(splitedChar);
@@ -65,8 +65,8 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int restart = Integer.parseInt(Console.readLine());
-            if (restart == 1) {
-                continue;
+            if (restart != 1 && restart != 2) {
+                throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
             }
             if (restart == 2) {
                 break;
