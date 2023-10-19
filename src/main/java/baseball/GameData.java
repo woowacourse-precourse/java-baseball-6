@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
 
 public class GameData {
@@ -8,7 +10,7 @@ public class GameData {
     private List<Integer> playerNumbers;
     private Integer strikeCnt;
     private Integer ballCnt;
-    private Integer gameRepetition;
+    private Integer gameRepetition = 1;
 
     public List<Integer> getComputerNumbers() {
         return computerNumbers;
@@ -48,5 +50,16 @@ public class GameData {
 
     public void setGameRepetition(Integer gameRepetition) {
         this.gameRepetition = gameRepetition;
+    }
+
+    public List<Integer> generateComNums(List<Integer> computer) {
+        computer = this.getComputerNumbers();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 }
