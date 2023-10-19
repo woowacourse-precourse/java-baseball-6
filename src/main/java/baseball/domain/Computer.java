@@ -10,14 +10,14 @@ public class Computer {
 
     private final List<Integer> computerNumbers;
 
-    public Computer(int start, int end, int size) {
-        computerNumbers = generateComputerNumbers(start, end, size);
+    public Computer(int size) {
+        computerNumbers = generateComputerNumbers(size);
     }
 
-    private List<Integer> generateComputerNumbers(int start, int end, int size) {
+    private List<Integer> generateComputerNumbers(int size) {
         Set<Integer> uniqueNumbers = new LinkedHashSet<>();
         while (uniqueNumbers.size() < size) {
-            int randomNumber = Randoms.pickNumberInRange(start, end);
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
             uniqueNumbers.add(randomNumber);
         }
         return new ArrayList<>(uniqueNumbers);
