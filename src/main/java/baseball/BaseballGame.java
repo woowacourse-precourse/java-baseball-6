@@ -3,10 +3,10 @@ package baseball;
 public class BaseballGame {
 
     public void play() {
-        WinningNumber winningNumber = new WinningNumber();
+        WinningNumbers winningNumbers = new WinningNumbers();
 
         while (true) {
-            BaseballNumber baseballNumber = new BaseballNumber();
+            BaseballNumbers baseballNumbers = new BaseballNumbers();
 
         }
     }
