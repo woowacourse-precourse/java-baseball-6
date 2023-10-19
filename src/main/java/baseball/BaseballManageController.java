@@ -1,7 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballManageController {
@@ -54,5 +56,33 @@ public class BaseballManageController {
         this.gameData.setGameRepetition(gameRepetition);
     }
 
+    public List<Integer> playerNumsInput() {
+        String playerStringNumsInput = Console.readLine();
+        List<Integer> playerNumsTemp = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            int numericValue = Character.getNumericValue(playerStringNumsInput.charAt(i));
+            playerNumsTemp.add(numericValue);
+        }
+        return playerNumsTemp;
+    }
 
+    public Integer countStrike(List<Integer> computer, List<Integer> player) {
+        int strikeCnt = 0;
+        for (int i = 0; i < 3; i++) {
+            if (player.get(i).equals(computer.get(i))) {
+                strikeCnt++;
+            }
+        }
+        return strikeCnt;
+    }
+
+    public Integer countBall(List<Integer> computer, List<Integer> player) {
+        int ballCnt = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computer.contains(player.get(i)) && !player.get(i).equals(computer.get(i))) {
+                ballCnt++;
+            }
+        }
+        return ballCnt;
+    }
 }
