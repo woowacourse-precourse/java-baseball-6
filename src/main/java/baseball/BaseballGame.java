@@ -8,6 +8,8 @@ public class BaseballGame {
         while (true) {
             BaseballNumbers baseballNumbers = new BaseballNumbers();
 
+            BallCount ballCount = winningNumbers.ballCounting(baseballNumbers);
+
         }
     }
 

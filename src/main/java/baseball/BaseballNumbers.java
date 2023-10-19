@@ -16,4 +16,7 @@ public class BaseballNumbers {
                 .toList();
     }
 
+    public List<Integer> getNumbers() {
+        return baseballNumbers;
+    }
 }
