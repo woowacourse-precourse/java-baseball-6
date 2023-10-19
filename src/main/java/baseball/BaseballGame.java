@@ -10,14 +10,24 @@ import java.util.stream.Collectors;
 
 public class BaseballGame {
 
-    public void play() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+    private static BaseballGame baseballGame;
+
+    private BaseballGame() {
+    }
+
+    public static void start() {
+        getInstance().play();
+    }
+
+    private static BaseballGame getInstance() {
+        if (baseballGame == null) {
+            baseballGame = new BaseballGame();
         }
+        return baseballGame;
+    }
+
+    public void play() {
+        List<Integer> computer = setComputerNumber();
 
         while (true) {
             int strike = 0;
@@ -40,8 +50,19 @@ public class BaseballGame {
             if (strike == 3) {
                 break;
             }
-
         }
+    }
+
+    private List<Integer> setComputerNumber() {
+        List<Integer> computer = new ArrayList<>(3);
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+
+        return computer;
     }
 
     private List<Integer> getNumberList() {
