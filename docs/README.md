@@ -24,6 +24,9 @@ ex) 컴퓨터의 정답, 사람의 게싱 값
 
 ### ./model/Computer
 
+### ./model/Hint
+볼, 스트라이크 개수 정보를 저장하기 위한 모델
+
 
 ## 🔎 View
 ### ./view/InputView
@@ -62,3 +65,4 @@ GameController 내에서 사용자 입력을 받는 부분에 대한 로직을 �
 ### ./utils/Transfer
 임의의 타입을 원하는 타입으로 변경해주는 메소드들을 모아놓을 공간
 * [x] 3개의 숫자가 담긴 String을 NumberList 객체로 변환해주는 메소드 구현
+* [ ] Hint객체를 힌트 메세지로 변환해주는 기능 구현
