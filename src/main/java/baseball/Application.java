@@ -17,5 +17,15 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+
+        System.out.println("숫자를 입력해주세요 : ");
+        List<Integer> player = new ArrayList<>();
+        String playerInput = Console.readLine();
+
+        for (int i = 0; i < playerInput.length(); i++) {
+            char c = playerInput.charAt(i);
+            int number = Integer.parseInt(String.valueOf(c));
+            player.add(number);
+        }
     }
 }
