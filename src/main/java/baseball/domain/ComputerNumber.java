@@ -7,14 +7,14 @@ import java.util.List;
 
 public class ComputerNumber {
 
-    private final List<Integer> computer;
+    private final List<Integer> computer = new ArrayList<>();
     private int randomNumber;
 
     public ComputerNumber() {
-        this.computer = new ArrayList<>();
+        createComputerNumbers();
     }
 
-    public void createComputerNumbers() {
+    private void createComputerNumbers() {
         while (computer.size() < 3) {
             addComputerNumber();
         }

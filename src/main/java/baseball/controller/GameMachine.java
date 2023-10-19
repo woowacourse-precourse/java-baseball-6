@@ -4,14 +4,13 @@ import baseball.domain.ComputerNumber;
 
 public class GameMachine {
 
-    private final ComputerNumber computerNumber;
+    private final ComputerNumber computerNumber = new ComputerNumber();
 
-    public GameMachine(ComputerNumber computerNumber) {
-        this.computerNumber = computerNumber;
+    public GameMachine() {
+
     }
 
     public void start() {
-        computerNumber.createComputerNumbers();
 
     }
 }
