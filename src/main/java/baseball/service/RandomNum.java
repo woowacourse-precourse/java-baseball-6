@@ -9,12 +9,17 @@ public class RandomNum {
 
     private final static int startInclusive = 1;
     private final static int endInclusive = 9;
-    private final static int count = 3;
 
     List<Integer> num = new ArrayList<>();
 
-    public List<Integer> generateNum(){
-        num = Randoms.pickUniqueNumbersInRange(startInclusive,endInclusive,count);
+    public List<Integer> generateNum() {
+        num.clear();
+        while (num.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!num.contains(randomNumber)) {
+                num.add(randomNumber);
+            }
+        }
         return num;
     }
 }
