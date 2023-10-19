@@ -19,10 +19,16 @@ public class BaseBallGame {
         return baseBallGame;
     }
 
+    public void initializeNum() {
+        this.numOfBall = 0;
+        this.numOfStrike = 0;
+    }
+
     //TODO 1. 예외처리
     //TODO 2. 테스트코드 > Scanner로 입력값 받지 못함
     public void run() {
         while( true ) {
+            initializeNum();
             System.out.print("숫자 야구 게임을 시작합니다.");
             List<Integer> answer = setAnswer();
             System.out.println(answer);
