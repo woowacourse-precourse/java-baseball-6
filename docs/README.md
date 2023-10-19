@@ -3,6 +3,10 @@
 
 ## AnswerMaker 클래스
 - 난수 생성 메서드
+```java
+int makeNumbers(int min, int max) min, max 사이의 숫자 반환
+List<Integer> makeThreeDifferentNumberList(int min, int max) 범위 내의 서로 다른 세 숫자를 리스트로 반환
+```
 
 ## Validation 클래스
 - 유저가 입력한 값에 대한 검증 메서드
