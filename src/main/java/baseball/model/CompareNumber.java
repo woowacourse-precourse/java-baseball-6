@@ -57,4 +57,11 @@ public class CompareNumber {
 
         return new int[]{balls, strikes};
     }
+
+    /**
+     * 스트라이크가 3개면 true반환
+     */
+    public boolean isThreeStrike(){
+        return strikes == 3;
+    }
 }
