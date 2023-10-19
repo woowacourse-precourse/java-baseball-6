@@ -1,6 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -17,24 +19,44 @@ public class Application {
 		UserNumber.checkSizeUserNum(UserNumberSet);
 		UserNumber.checkRangeUserNum(UserNumberSet);
 
-		System.out.println(UserNumberSet);
+		List<Integer> computerNumber = List.of(7, 1, 3);
+
+		int ballNumber = countBall(computerNumber, UserNumberSet);
+
+		System.out.println(ballNumber);
 
 	}
 
 	//1~9 사이의 서로 다른 3자리로 이루어진 컴퓨터 숫자를 생성하는 메서드
-	static Set<Integer> createComputerNumber() {
-		Set<Integer> computerNumber = new HashSet<>();
+	static List<Integer> createComputerNumber() {
+		List<Integer> computerNumber = new ArrayList<>();
 		final int COMPUTER_NUMBER_SIZE = 3;
 		final int COMPUTER_MIN_NUMBER = 1;
 		final int COMPUTER_MAX_NUMBER = 9;
 
 		while (computerNumber.size() < COMPUTER_NUMBER_SIZE) {
 			int randomNumber = Randoms.pickNumberInRange(COMPUTER_MIN_NUMBER, COMPUTER_MAX_NUMBER);
-			computerNumber.add(randomNumber);
+
+			if (!computerNumber.contains(randomNumber)) {
+				computerNumber.add(randomNumber);
+			}
 		}
 
 		return computerNumber;
 	}
+
+	static int countBall(List<Integer> computerNumber, Set<Integer> userNumber) {
+		int ballNumber = 0;
+
+		for (int eachUserNumber : userNumber) {
+			if (computerNumber.contains(eachUserNumber)) {
+				ballNumber++;
+			}
+		}
+
+		return ballNumber;
+	}
+
 }
 
 class UserNumber {
@@ -52,11 +74,10 @@ class UserNumber {
 	void checkInputOnlyNum(String[] inputUserNumber) {
 		boolean errorTest = false;
 
-		for (int i = 0; i < inputUserNumber.length; i++) {
-			String eachUserNumber = inputUserNumber[i].trim();
+		for (String eachUserNumber : inputUserNumber) {
 
 			try {
-				Integer.parseInt(eachUserNumber);
+				Integer.parseInt(eachUserNumber.trim());
 			} catch (IllegalArgumentException ill) {
 				errorTest = true;
 			}
