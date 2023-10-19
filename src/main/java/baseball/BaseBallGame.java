@@ -14,16 +14,7 @@ public class BaseBallGame {
 		this.computerNumber = generateRandomNumber();
 		System.out.println("숫자 야구 게임을 시작합니다.");
 
-		String judgment = "";
-
-		while (!judgment.equals("3스트라이크")) {
-			System.out.print("숫자를 입력해주세요 : ");
-			String myNumber = Console.readLine();
-			validateMyNumber(myNumber);
-
-			judgment = judgeMyNumber(myNumber);
-			System.out.println(judgment);
-		}
+		guessTheNumbers();
 
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -38,6 +29,20 @@ public class BaseBallGame {
 			return;
 		}
 		throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. 프로그램이 종료됩니다.");
+	}
+
+	// 숫자 맞히는 과정 분리
+	private void guessTheNumbers() {
+		String judgment = "";
+
+		while (!judgment.equals("3스트라이크")) {
+			System.out.print("숫자를 입력해주세요 : ");
+			String myNumber = Console.readLine();
+			validateMyNumber(myNumber);
+
+			judgment = judgeMyNumber(myNumber);
+			System.out.println(judgment);
+		}
 	}
 
 	// 스트라이크, 볼 판정
