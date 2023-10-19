@@ -35,4 +35,8 @@ public class RandomNumbers {
                 .distinct()
                 .collect(Collectors.toList());
     }
+
+    public List<Number> getRandomNumbers() {
+        return randomNumbers;
+    }
 }

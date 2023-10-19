@@ -7,4 +7,6 @@ public class Computer {
     public Computer(RandomNumbers randomNumbers) {
         this.randomNumbers = randomNumbers;
     }
+
+
 }
