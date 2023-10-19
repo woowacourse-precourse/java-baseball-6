@@ -6,11 +6,19 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-
 class Game {
     public static final int MIN_RANDOM_NUMBER = 1;
     public static final int MAX_RANDOM_NUMBER = 9;
     public static final int RANDOM_NUMBER_SIZE = 3;
+
+    public static String INPUT_STRING = "숫자를 입력해주세요 : ";
+    public static String WRONG_INPUT_SIZE = "입력 문자열의 길이가 3이 아닙니다.";
+    public static String WRONG_INPUT_TYPE = "숫자가 아닌 문자가 포함되어 있습니다.";
+    public static String NOTHING = "낫싱";
+    public static String END_GAME_STRING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static String RESTART_STRING = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static String WRONG_INPUT_STRING = "restart() error";
+
     static List<Integer> answer = new ArrayList<>();
 
     Game() {
@@ -44,7 +52,7 @@ class Game {
     private void guessNumber() {
         String inputNumber;
         do {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(INPUT_STRING);
             inputNumber = Console.readLine();
             validationNumberCheck(inputNumber);
         } while (!equalToAnswer(inputNumber));
@@ -52,12 +60,12 @@ class Game {
 
     private void validationNumberCheck(String inputString) {
         if (inputString.length() != 3) {
-            throw new IllegalArgumentException("입력 문자열의 길이가 3이 아닙니다.");
+            throw new IllegalArgumentException(WRONG_INPUT_SIZE);
         }
 
         for (char c : inputString.toCharArray()) {
             if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException("숫자가 아닌 문자가 포함되어 있습니다.");
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -81,8 +89,7 @@ class Game {
             try {
                 inputList[i] = Character.getNumericValue(inputNumber.charAt(i));
             } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException("숫자가 아닌 문자가 포함되어 있습니다.");
-
+                throw new IllegalArgumentException(WRONG_INPUT_TYPE);
             }
         }
         return inputList;
@@ -113,7 +120,7 @@ class Game {
     private static void printResult(int strike, int ball) {
         printBall(ball);
         printStrike(strike);
-
+        System.out.println();
         if(isNothing(strike, ball)) {
             printNothing();
         }
@@ -127,7 +134,7 @@ class Game {
     }
 
     private static void printNothing() {
-        System.out.println("낫싱");
+        System.out.println(NOTHING);
     }
 
     private static void printBall(int ball) {
@@ -138,7 +145,7 @@ class Game {
 
     private static void printStrike(int strike) {
         if (strike > 0) {
-            System.out.println(strike + "스트라이크");
+            System.out.print(strike + "스트라이크");
         }
         if (strike == 3) {
             endGame();
@@ -146,22 +153,19 @@ class Game {
     }
 
     private static void endGame() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(END_GAME_STRING);
     }
 
     private boolean restart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(RESTART_STRING);
 
         String input = Console.readLine();
         if (input.equals("1")) {
-            System.out.println("게임을 다시 시작합니다.");
             return true;
         } else if (input.equals("2")) {
-            System.out.println("게임을 종료합니다.");
             return false;
         } else {
-            System.out.println("잘못된 입력입니다. 1 또는 2를 입력하세요.");
-            return restart();
+            throw new IllegalArgumentException(WRONG_INPUT_STRING);
         }
 
     }
