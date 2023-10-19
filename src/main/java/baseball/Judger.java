@@ -16,6 +16,7 @@ public class Judger {
                 result.set(0, result.get(0) + 1);
             }
         }
+        System.out.println(result);
     }
 
     private boolean isStrike(int human, int computer){
