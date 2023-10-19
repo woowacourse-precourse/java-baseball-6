@@ -13,11 +13,16 @@ public class RandomNumberGenerator {
         List<Integer> randomNumbers = new ArrayList<>();
 
         while (randomNumbers.size() < BALLS_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_BALL_NUMBER, MAX_BALL_NUMBER);
+            int randomNumber = createRandomNumber();
+
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
             }
         }
         return randomNumbers;
+    }
+
+    private static int createRandomNumber() {
+        return Randoms.pickNumberInRange(MIN_BALL_NUMBER, MAX_BALL_NUMBER);
     }
 }
