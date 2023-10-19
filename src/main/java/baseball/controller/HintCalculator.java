@@ -23,6 +23,10 @@ public class HintCalculator {
         return strikeCnt == SUCCESS_STRIKE_COUNT;
     }
 
+    public List<Integer> getStrikeAndBallCount(){
+        return List.of(strikeCnt, ballCnt);
+    }
+
     private boolean isStrike(Integer userNumber, Integer computerNumber) {
         return userNumber == computerNumber;
     }
