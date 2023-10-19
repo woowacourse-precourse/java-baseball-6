@@ -1,20 +1,23 @@
 package baseball.api;
 
+import baseball.application.BaseballGameService;
 import baseball.entity.NumberBaseball;
 import baseball.utils.InputUtil;
 import baseball.view.OutputView;
 
 public class BaseballController {
 
+    BaseballGameService baseballGameService = new BaseballGameService();
+
     public void startBaseball() {
         OutputView.printGameStartView();
-        getUserNumber();
+        baseballGameService.startGame();
     }
 
     public void getUserNumber() {
         NumberBaseball userNumberBaseball = new NumberBaseball();
         while (true) {
-            String userInput = InputUtil.getUserInput();
+            String userInput = InputUtil.requireGuessNumber();
             userNumberBaseball.isValid(userInput);
             printResult(userNumberBaseball, userInput);
             if (userNumberBaseball.isPerfect(userInput)) {
@@ -22,7 +25,7 @@ public class BaseballController {
             }
         }
         OutputView.printEndGame();
-        String restartNumber = InputUtil.getUserInput();
+        String restartNumber = InputUtil.requireGuessNumber();
         checkRestartNumberValidation(restartNumber);
         if (restartNumber.equals("1")) {
             getUserNumber();
