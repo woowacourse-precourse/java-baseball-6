@@ -22,6 +22,7 @@ public class Application {
                 List<Integer> user = getUserNumbers();
 
                 int strike = getStrike(computer, user);
+                int ball = getBall(computer, user);
             }
         }
     }
@@ -66,15 +67,32 @@ public class Application {
 
     /**
      * 위치별 번호가 같은 값의 갯수를 구한다.
-     * @param computer 컴퓨터의 수
-     * @param user 사용자가 입력한 수
-     * @return 같은 번호의 갯수
+     * @param computer 컴퓨터의 번호
+     * @param user 사용자가 입력한 번호
+     * @return 컴퓨터와 사용자의 번호 간의 스트라이크 갯수
      */
     public static int getStrike(List<Integer> computer, List<Integer> user) {
         int res = 0;
 
         for (int i=0; i < 3; i++){
             if (computer.get(i).equals(user.get(i))){
+                res++;
+            }
+        }
+        return res;
+    }
+
+    /**
+     * 위치별로 번호는 다르지만 사용자가 입력한 번호가 컴퓨터의 번호 안에 존재하는 값의 갯수를 구한다.
+     * @param computer 컴퓨터의 번호
+     * @param user 사용자가 입력한 번호
+     * @return 컴퓨터와 사용자의 번호 간의 볼 갯수
+     */
+    public static int getBall(List<Integer> computer, List<Integer> user) {
+        int res = 0;
+
+        for (int i=0; i < 3; i++){
+            if (!computer.get(i).equals(user.get(i)) && computer.contains(user.get(i))){
                 res++;
             }
         }
