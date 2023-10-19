@@ -1,5 +1,6 @@
 package baseball.Controller;
 
+import baseball.Domain.CompareUserWithComputer;
 import baseball.Domain.ComputerNumber;
 import baseball.Domain.UserNumber;
 import baseball.View.InputView;
@@ -9,6 +10,8 @@ public class BaseBallGameController {
 
     private UserNumber userNumber;
     private ComputerNumber computerNumber;
+
+    private CompareUserWithComputer compareUserWithComputer;
 
     public void gameStart(){
         OutputView.startBaseBallGame();
@@ -23,5 +26,9 @@ public class BaseBallGameController {
 
     public void setComputerNumber(){
         computerNumber = new ComputerNumber();
+    }
+
+    public void getCompareUserWithComputer(){
+        compareUserWithComputer = new CompareUserWithComputer(userNumber.getNumber(),computerNumber.getNumber());
     }
 }
