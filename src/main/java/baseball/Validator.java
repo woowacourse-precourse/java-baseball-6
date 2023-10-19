@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 public class Validator {
 
@@ -18,6 +20,7 @@ public class Validator {
         validateInputDigit(input);
         validateInputRange(input);
         validateInputContainsZero(input);
+        validateDuplicateNumber(input);
     }
 
     private static void validateInputRange(final String input) {
@@ -37,6 +40,16 @@ public class Validator {
         String[] split = input.split("");
         if (Arrays.asList(split).contains("0")) {
             throw new IllegalStateException();
+        }
+    }
+
+    private static void validateDuplicateNumber(final String input) {
+        Set<Character> set = new HashSet<>();
+        for (int i = 0; i < input.length(); i++) {
+            if (set.contains(input.charAt(i))) {
+                throw new IllegalStateException();
+            }
+            set.add(input.charAt(i));
         }
     }
 }

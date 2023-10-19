@@ -41,6 +41,7 @@ public class Game {
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            // TODO: 커맨드 입력부 모듈화
             int command = Integer.parseInt(Console.readLine());
 
             if (command == 1) {
