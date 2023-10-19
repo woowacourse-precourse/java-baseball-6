@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class GamePresenter {
     private boolean isValidNumeric(String numbers) {
-        return numbers.matches("^[0-9]+$");
+        return numbers.matches("^[1-9]+$");
     }
 
     private boolean isValidLength(String numbers) {
