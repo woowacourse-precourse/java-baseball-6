@@ -13,13 +13,13 @@ public final class AnswerCreator {
     this.numberPicker = numberPicker;
   }
 
-  public BallNumbers create() {
+  public Answer create() {
     final Set<Integer> set = new HashSet<>();
 
     while (set.size() < BallNumbers.BALL_COUNT) {
       set.add(numberPicker.pick());
     }
 
-    return BallNumbers.of(new ArrayList<>(set));
+    return Answer.of(new ArrayList<>(set));
   }
 }

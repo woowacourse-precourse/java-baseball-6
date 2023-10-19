@@ -2,24 +2,19 @@ package baseball.domain.ball;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public final class BallNumbers {
+public abstract class BallNumbers {
 
   public static final int BALL_COUNT = 3;
 
-  private final List<BallNumber> ballNumbers;
+  protected final List<BallNumber> ballNumbers;
 
-  private BallNumbers(final List<BallNumber> ballNumbers) {
-    this.ballNumbers = ballNumbers;
-  }
-
-  public static BallNumbers of(final List<Integer> numbers) {
+  protected BallNumbers(final List<Integer> numbers) {
     validateNumbersCount(numbers);
-    return new BallNumbers(intoBallNumbers(numbers));
+    this.ballNumbers = intoBallNumberList(numbers);
   }
 
-  private static List<BallNumber> intoBallNumbers(final List<Integer> numbers) {
+  private static List<BallNumber> intoBallNumberList(final List<Integer> numbers) {
     final List<BallNumber> ballNumbers = new ArrayList<>();
 
     for (final Integer number : numbers) {
@@ -34,49 +29,7 @@ public final class BallNumbers {
     }
   }
 
-  public int getStrikeCount(final BallNumbers other) {
-    int strikeCount = 0;
-    for (int i = 0; i < BALL_COUNT; i++) {
-      if (isStrikeAt(i, other)) {
-        strikeCount++;
-      }
-    }
-    return strikeCount;
-  }
-
-  public int getBallCount(final BallNumbers other) {
-    int ballCount = 0;
-    for (int i = 0; i < BALL_COUNT; i++) {
-      if (isBallAt(i, other)) {
-        ballCount++;
-      }
-    }
-    return ballCount;
-  }
-
-  private boolean isStrikeAt(
-      final int index,
-      final BallNumbers other
-  ) {
-    final int answerNumber = ballNumbers.get(index).number();
-    final int guessNumber = other.ballNumbers.get(index).number();
-
-    return Objects.equals(answerNumber, guessNumber);
-  }
-
-  private boolean isBallAt(
-      final int index,
-      final BallNumbers other
-  ) {
-    return
-        !isStrikeAt(index, other) &&
-            ballNumbers
-                .stream()
-                .anyMatch(n ->
-                    Objects.equals(
-                        n.number(),
-                        other.ballNumbers.get(index).number()
-                    )
-                );
+  protected BallNumber get(final int index) {
+    return ballNumbers.get(index);
   }
 }
