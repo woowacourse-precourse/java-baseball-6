@@ -1,15 +1,17 @@
-package baseball.utils;
+package baseball.context;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Randoms {
+import camp.nextstep.edu.missionutils.Randoms;
+
+public class AnswerGenerator {
 
     public static String generateBaseballNumbers() {
         Map<Integer, Boolean> checkPoints = new HashMap<>();
         StringBuilder stringBuilder = new StringBuilder();
         do {
-            int random = rangeBy(1, 9);
+            int random = Randoms.pickNumberInRange(1, 9);
             if (checkPoints.containsKey(random)) {
                 continue;
             }
@@ -17,9 +19,5 @@ public class Randoms {
             stringBuilder.append(random);
         } while (stringBuilder.length() < 3);
         return stringBuilder.toString();
-    }
-
-    public static int rangeBy(int min, int max) {
-        return (int) (Math.random() * max) + min;
     }
 }

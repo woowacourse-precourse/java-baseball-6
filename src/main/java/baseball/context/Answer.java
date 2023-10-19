@@ -1,13 +1,11 @@
 package baseball.context;
 
-import baseball.utils.Randoms;
-
 public class Answer {
 
     private String answer;
 
     public Answer() {
-        this(Randoms.generateBaseballNumbers());
+        this(AnswerGenerator.generateBaseballNumbers());
     }
 
     public Answer(String initialAnswer) {
@@ -19,6 +17,6 @@ public class Answer {
     }
 
     public void regenerateAnswer() {
-        this.answer = Randoms.generateBaseballNumbers();
+        this.answer = AnswerGenerator.generateBaseballNumbers();
     }
 }
