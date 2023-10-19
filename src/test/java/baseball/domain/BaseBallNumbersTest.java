@@ -3,7 +3,9 @@ package baseball.domain;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -47,11 +49,38 @@ class BaseBallNumbersTest {
         assertDoesNotThrow(() -> BaseBallNumbers.generateNumbers(noDuplicateNumbers));
     }
 
+    @DisplayName("랜덤으로 야구 숫자 목록을 생성하는데 사이즈에 벗어나지 않는 경우에는 객체 생성에 성공한다")
+    @Test
+    void 랜덤으로_야구_숫자_목록을_생성하는데_사이즈에_벗어나지_않는_경우에는_객체_생성에_성공한다() {
+        NumberGenerator numberGenerator = new SequentialNumberGenerator(List.of(1, 2, 3));
+
+        assertDoesNotThrow(() -> BaseBallNumbers.generateRandomNumbers(numberGenerator));
+    }
+
     private static Stream<Arguments> provideOverSizeIntegers() {
         return Stream.of(
                 Arguments.of(List.of(1, 2)),
                 Arguments.of(List.of(1, 2, 3, 4))
         );
+    }
+
+    private static class SequentialNumberGenerator implements NumberGenerator {
+
+        private static final String NO_MORE_NUMBER_EXCEPTION_MESSAGE = "더 이상 숫자를 생성할 수 없습니다.";
+        private final Queue<Integer> numbers;
+
+        public SequentialNumberGenerator(List<Integer> initialNumbers) {
+            this.numbers = new LinkedList<>(initialNumbers);
+        }
+
+        @Override
+        public int generate(int min, int max) {
+            if (numbers.isEmpty()) {
+                throw new IllegalStateException(NO_MORE_NUMBER_EXCEPTION_MESSAGE);
+            }
+            return numbers.poll();
+        }
+
     }
 
 }
