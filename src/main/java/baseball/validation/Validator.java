@@ -9,7 +9,7 @@ import static baseball.constant.NumberConstant.VALID_NUMBER_SIZE;
 public class Validator {
 
     public void validateThreeNumber(String str){
-        if(str.matches("[1-9]{3}")){
+        if(!str.matches("[1-9]{3}")){
             throw new IllegalArgumentException("3자리의 숫자로 이루어진 문자가 아닙니다.");
         }
     }
@@ -21,5 +21,7 @@ public class Validator {
             throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
         }
     }
+
+
 
 }
