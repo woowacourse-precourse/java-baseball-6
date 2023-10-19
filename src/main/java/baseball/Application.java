@@ -22,17 +22,28 @@ public class Application {
     public static void printStart() {
         System.out.println(START_MESSAGE);
     }
-    public static void printResult(int strikeCount, int ballCount) {
-        if (ballCount == 0) {
-
+    public static void printBallStrike(int strikeCount, int ballCount) {
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println(NOTHING_MESSAGE);
+            return;
         }
+        if (ballCount != 0) {
+            System.out.print(ballCount+BALL_MESSAGE);
+            if (strikeCount != 0) {
+                System.out.println(" "+strikeCount+STRIKE_MESSAGE);
+            }
+            return;
+        }
+        System.out.println(strikeCount+STRIKE_MESSAGE);
     }
-//    public static boolean isAnswer(int strikeCount) {
-//        if (strikeCount == NUMBERS_LENGTH)
-//    }
-    public static List<Integer> getStrikeBallCount(List<Integer> computerNumbersList, List<Integer> userNumbersList) {
-        int strikeCount = 0;
+    public static boolean isAnswer(int strikeCount) {
+        if (strikeCount == NUMBERS_LENGTH)
+            return true;
+        return false;
+    }
+    public static List<Integer> getBallStrikeCount(List<Integer> computerNumbersList, List<Integer> userNumbersList) {
         int ballCount = 0;
+        int strikeCount = 0;
         for (int i = 0; i < computerNumbersList.size(); i++) {
             int computerNumber = computerNumbersList.get(i);
             int userNumber = userNumbersList.get(i);
@@ -44,7 +55,7 @@ public class Application {
                 ballCount++;
             }
         }
-        return Arrays.asList(strikeCount, ballCount);
+        return Arrays.asList(ballCount, strikeCount);
     }
     public static List<Integer> getComputerNumbersList() {
         List<Integer> computerNumbersList = new ArrayList<>();

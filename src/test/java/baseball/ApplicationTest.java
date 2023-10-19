@@ -66,12 +66,12 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("[ERROR]");
     }
     @Test
-    void getStrikeBallCount_테스트() {
+    void getBallStrikeCount_테스트() {
         //given
         List<Integer> computerNumbersList = Arrays.asList(1,2,3);
         List<Integer> userNumbersList = Arrays.asList(4,5,6);
         //when
-        List<Integer> strikeBallCount = Application.getStrikeBallCount(computerNumbersList, userNumbersList);
+        List<Integer> strikeBallCount = Application.getBallStrikeCount(computerNumbersList, userNumbersList);
         //then
         assertThat(strikeBallCount).containsExactly(0,0);
     }
