@@ -22,7 +22,18 @@ public class Application {
       while(restart.equals("1")){
         //컴퓨터 숫자 뽑기
         for(int i=0;i<3;i++){
-          comArr.add(Randoms.pickNumberInRange(1,9));
+          int pickedNum=Randoms.pickNumberInRange(1,9);
+          boolean isPicked=false;
+          for(int j=0;j<i;j++){
+            if(pickedNum==comArr.get(j))
+                isPicked=true;
+          }
+          if(isPicked){
+            i--;
+            continue;
+          }
+          comArr.add(pickedNum);
+          
         }
         //System.out.print("컴퓨터의 숫자 :"+comArr);
 
@@ -53,7 +64,7 @@ public class Application {
           }
           else{
             if (ballCnt>0)
-              System.out.print(ballCnt + "볼");
+              System.out.print(ballCnt + "볼 ");
             if(strikeCnt>0)
               System.out.print(strikeCnt + "스트라이크");
           }
