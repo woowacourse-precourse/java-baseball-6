@@ -18,7 +18,7 @@
         - [ ] 숫가가 아니라면 Illegal Exception, 종료
 
 #### <span style="background-color:#E8D595">2. 컴퓨터
-  - [ ] 랜덤한 숫자를 만든다. 
+  - [ ] 랜덤한 서로다른 3자리 숫자를 만든다. 
     - [ ] camp.nextstep.edu.missionutils.Randoms 을 사용한다.
 
 #### <span style="background-color:#E8D595">3. 출력
