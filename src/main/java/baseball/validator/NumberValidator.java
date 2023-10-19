@@ -32,19 +32,16 @@ public class NumberValidator {
     }
 
     private static void assertEachNumberUnique(final String input) {
-
         if (!isAllNumberUnique(input)) {
             throw new IllegalArgumentException();
         }
     }
 
     private static boolean isAllNumberUnique(final String inputNumber) {
-
         return convertInputToSet(inputNumber).size() == inputNumber.length();
     }
 
     private static Set<Character> convertInputToSet(final String input) {
-
         HashSet<Character> inputSet = new HashSet<>();
 
         for (char character : input.toCharArray()) {
