@@ -7,6 +7,9 @@ public class Display {
     private void printEndText(){
         System.out.println("숫자 야구 게임을 종료합니다.");
     }
+    public void printGameOverText(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
     public int[] getUserInput(){
         System.out.print("숫자를 입력해주세요 : ");
         String trimedUserInput = Console.readLine().trim();

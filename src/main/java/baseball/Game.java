@@ -12,6 +12,7 @@ public class Game {
             int[] userInputs = display.getUserInput();
             boolean gameOver = true;
             if(gameOver){
+                display.printGameOverText();
                 restartFlag = display.getRestartInput();
             }
         }
