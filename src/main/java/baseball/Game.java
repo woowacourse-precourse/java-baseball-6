@@ -2,24 +2,20 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Game {
 
     public static boolean isGameOver = false;
 
-    private Game game;
     private Input input;
     private Judge judge;
     private Output output;
 
-    private List<Integer> computer;
+    private final String computerNumber;
 
     public Game() {
-        computer = getComputer();
+        computerNumber = getComputerNumber();
         input = new Input();
-        judge = new Judge(computer, input);
+        judge = new Judge(computerNumber);
         output = new Output(judge);
     }
 
@@ -34,14 +30,14 @@ public class Game {
 
     }
 
-    private List<Integer> getComputer() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+    private String getComputerNumber() {
+        StringBuilder computer = new StringBuilder();
+        while (computer.length() < 3) {
+            String randomNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
+            if (!computer.toString().contains(randomNumber)) {
+                computer.append(randomNumber);
             }
         }
-        return computer;
+        return computer.toString();
     }
 }
