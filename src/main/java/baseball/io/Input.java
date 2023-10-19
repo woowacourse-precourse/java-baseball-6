@@ -10,6 +10,9 @@ public class Input {
     private static final String CONTINUE_GAME_SIG = "1";
     private static final String END_GAME_SIG = "2";
 
+    private Input() {
+    }
+
     public static boolean inputRestartGame() {
         String continueGameInput = readLine();
 
