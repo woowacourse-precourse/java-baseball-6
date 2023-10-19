@@ -24,19 +24,19 @@ public class UserNumber {
     private void validate(String number){
 
         if(isEmpty(number)){ // 수가 비어있는 경우
-            throw new IllegalArgumentException("1~9까지의 서로 다른 3자리 수를 입력 해야 합니다.");
+            throw new IllegalArgumentException();
         }
 
         if(!isSizeThree(number)){ // 3자리 수가 아닌 경우
-            throw new IllegalArgumentException("서로 다른 3자리 숫자를 입력 해야 합니다.");
+            throw new IllegalArgumentException();
         }
 
         if(!isDigit(number)){ // 각 자리가 숫자가 아닌경우
-            throw new IllegalArgumentException("서로 다른 3자리 숫자를 입력 해야 합니다.");
+            throw new IllegalArgumentException();
         }
 
         if(!isBetweenOneAndNine(number)){ // 각 자리의 수가 1~9 값이 아닌 경우
-            throw new IllegalArgumentException("1~9 사이의 숫자를 입력 해야 합니다.");
+            throw new IllegalArgumentException();
         }
     }
 
