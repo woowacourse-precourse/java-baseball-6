@@ -16,10 +16,7 @@ public class GameNumber {
     }
 
     public boolean canContinueGame() {
-        if (gameNumber.equals(CONTINUE_NUMBER)) {
-            return true;
-        }
-        return false;
+        return gameNumber.equals(CONTINUE_NUMBER);
     }
 
     public void changeNumber(final String number) {
