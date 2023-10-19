@@ -10,10 +10,6 @@ public class Judger {
         this.score = new int[3];
     }
 
-    public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
     public void compareNumbers(List<Integer> human, List<Integer> computer) {
         int[] strikeIdx = checkStrike(human, computer);
         checkBall(human, computer, strikeIdx);
