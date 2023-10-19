@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -63,6 +64,16 @@ class ApplicationTest extends NsTest {
         //then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 입력 값이 1~9 사이 숫자로 이루어진 세자리 숫자가 아닙니다.");
+    }
+    @Test
+    void getStrikeBallCount_테스트() {
+        //given
+        List<Integer> computerNumbersList = Arrays.asList(1,2,3);
+        List<Integer> userNumbersList = Arrays.asList(4,5,6);
+        //when
+        List<Integer> strikeBallCount = Application.getStrikeBallCount(computerNumbersList, userNumbersList);
+        //then
+        assertThat(strikeBallCount).containsExactly(0,0);
     }
     @Override
     public void runMain() {
