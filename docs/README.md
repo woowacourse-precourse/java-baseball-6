@@ -67,9 +67,9 @@
 
 ### ConsoleInput
 - 입력을 담당하는 클래스이다.
-- [ ] `BufferedReader`를 통해 입력을 받는다.
-- [ ] try-catch를 통해 `InputValidation`으로 유효성을 판단한다. 
-- [ ] 유효하지 않은 입력의 경우 `IllegalArgumentException`를 발생시킨다.
+- [x] `Scanner`를 통해 입력을 받는다.
+- [x] try-catch를 통해 `InputValidation`으로 유효성을 판단한다. 
+- [x] 유효하지 않은 입력의 경우 `IllegalArgumentException`를 발생시킨다.
   - RuntimeException의 하위클래스이므로 exception 발생 시 게임은 그대로 종료되어야 한다.
 
 ### ConsoleOutput
