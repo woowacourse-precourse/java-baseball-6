@@ -4,7 +4,9 @@ import baseball.constant.NumberConstant;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static baseball.constant.NumberConstant.*;
 
@@ -24,6 +26,15 @@ public class BaseballController {
         }
         return numbers;
     }
+
+    public List<Integer> mapToInListInteger(String str){
+        return Arrays.stream(str.split(""))
+                .mapToInt(x -> Integer.parseInt(x))
+                .boxed()
+                .collect(Collectors.toList());
+    }
+
+
 
 
 
