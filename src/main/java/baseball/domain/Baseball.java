@@ -3,12 +3,13 @@ package baseball.domain;
 import java.util.List;
 
 import static baseball.exception.ExceptionMessage.BaseballException.EACH_BALL_MUST_BE_UNIQUE;
+import static baseball.exception.ExceptionMessage.BaseballException.INVALID_BALL_COUNT;
 import static baseball.exception.ExceptionMessage.BaseballException.SPECIFIC_BALL_IS_NOT_IN_RANGE;
 
 public class Baseball {
+    private static final int TOTAL_COUNT = 3;
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 9;
-    private static final int TOTAL_SIZE = 3;
 
     private final List<Integer> balls;
 
@@ -17,9 +18,16 @@ public class Baseball {
     }
 
     public static Baseball of(final List<Integer> balls) {
+        validateTotalCount(balls);
         validateBallRange(balls);
         validateBallIsDuplicate(balls);
         return new Baseball(balls);
+    }
+
+    private static void validateTotalCount(final List<Integer> balls) {
+        if (balls.size() != TOTAL_COUNT) {
+            throw new IllegalArgumentException(INVALID_BALL_COUNT.message);
+        }
     }
 
     private static void validateBallRange(final List<Integer> balls) {
@@ -42,6 +50,6 @@ public class Baseball {
     private static boolean hasDuplicateBall(final List<Integer> balls) {
         return balls.stream()
                 .distinct()
-                .count() != TOTAL_SIZE;
+                .count() != TOTAL_COUNT;
     }
 }
