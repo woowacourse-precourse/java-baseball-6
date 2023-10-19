@@ -1,5 +1,7 @@
 package baseball.model;
 
+import java.util.Objects;
+
 public class Ball {
     private final int digit;
     private final int value;
@@ -27,5 +29,13 @@ public class Ball {
 
     private boolean isSameDigit(Ball computerBall) {
         return digit == computerBall.digit;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ball ball = (Ball) o;
+        return digit == ball.digit && value == ball.value;
     }
 }

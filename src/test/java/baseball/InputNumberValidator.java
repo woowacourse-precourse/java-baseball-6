@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.util.Constants;
+import baseball.util.Util;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,9 +37,7 @@ public class InputNumberValidator {
     }
 
     private void hasDuplicatedNumber() {
-        List<Character> convertedCharList = validationTarget.chars()
-                .mapToObj(c -> (char) c)
-                .collect(Collectors.toList());
+        List<Character> convertedCharList = Util.convertStringToCharList(validationTarget);
 
         if (convertedCharList.size() != convertedCharList.stream().distinct().count()) {
             throw new IllegalArgumentException(Constants.ERROR_PREFIX_MESSAGE + Constants.DUPLICATED_NUMBER_SUFFIX_MESSAGE);

@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.model.Ball;
+import baseball.model.TripleBalls;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -37,4 +39,15 @@ public class PlayerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복된");
     }
+
+    @Test
+    void 입력된_숫자_TripleBalls_변환_확인() {
+        Player player = new Player("123");
+        TripleBalls playerTripleBalls = player.getPlayerTripleBalls();
+
+        Assertions.assertThat(playerTripleBalls.getTripleBalls()).containsExactly(new Ball(1, 1),
+                new Ball(2, 2), new Ball(3, 3));
+    }
+
+
 }
