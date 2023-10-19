@@ -10,7 +10,7 @@ public class BaseBallGame {
     private final MessageService messageService = new MessageService();
     private final UserService userService = new UserService();
 
-    public void startGame(){
+    public void startGame() {
         List<Integer> computer = computerService.createNumber();
         messageService.printStartMessage();
         messageService.printUserInputNumberMessage();
