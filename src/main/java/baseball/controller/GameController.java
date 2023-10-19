@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.CompareNumber;
 import baseball.model.ProgramNumber;
+import baseball.model.ResetGameNumber;
 import baseball.model.UserNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -70,5 +71,10 @@ public class GameController {
         printBallStrike(count);
         printStrike(count);
         printNothing(count);
+    }
+
+    public boolean isReset(){
+        ResetGameNumber resetGameNumber = new ResetGameNumber(InputView.resetNumber());
+        return resetGameNumber.getResetNumber().equals("1");
     }
 }
