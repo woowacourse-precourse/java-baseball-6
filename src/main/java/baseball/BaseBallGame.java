@@ -29,7 +29,7 @@ public class BaseBallGame {
             ballCount = result.ballCount;
             strikeCount = result.strikeCount;
 
-
+            messageService.printComparisonResult(ballCount,strikeCount);
         }
 
     }
