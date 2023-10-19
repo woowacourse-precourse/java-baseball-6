@@ -52,4 +52,18 @@ class ApplicationTest extends NsTest {
         //then
         assertThat(playerBaseballNumber).isEqualTo(Arrays.asList(1, 2, 3));
     }
+
+    @Test
+    @DisplayName("올바르지 않은 입력시 IllegalArgumentException 발생하는지")
+    public void 플레이어_입력_오류_테스트() {
+        //given
+        final String playerInput = "1234";
+        final Player player = new Player();
+        System.setIn(new ByteArrayInputStream(playerInput.getBytes()));
+
+        //when, then
+        assertThatThrownBy(player::inputPlayerNumber)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("3자리의 숫자만 입력가능합니다.");
+    }
 }
