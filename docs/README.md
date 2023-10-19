@@ -52,7 +52,7 @@
 사용자 수의 유효성을 검사하고 저장하는 클래스
 
 - [x] UserNumber(String) : 입력받은 값 유효성 검사 후 저장
-- [ ] void validate(String) : 유효성 검사
+- [x] void validate(String) : 유효성 검사
 - [ ] List<Integer> getNumber() : 사용자 수 반환
 
 ### InputView

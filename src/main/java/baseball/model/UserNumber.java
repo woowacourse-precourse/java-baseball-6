@@ -25,6 +25,9 @@ public class UserNumber {
         else if(!isInRange(StringToList(number))){
             throw new IllegalArgumentException("각자리의 숫자가 1부터 9사이의 숫자로 이루어져야 합니다.");
         }
+        else if(!isDistinct(StringToList(number))){
+            throw new IllegalArgumentException("중복된 숫자가 존재하지 않아야 합니다.");
+        }
     }
 
     private boolean isEmpty(String number) {
@@ -42,6 +45,12 @@ public class UserNumber {
     private boolean isInRange(List<Integer> numberList) {
         return numberList.stream()
                 .allMatch(num -> num>=MINIMUM_NUM_IN_RANGE && num<=MAXIMUM_NUM_IN_RANGE);
+    }
+
+    private boolean isDistinct(List<Integer> numberList) {
+        return numberList.stream()
+                .distinct()
+                .count() == LIST_SIZE;
     }
 
     private List<Integer> StringToList(String number) {
