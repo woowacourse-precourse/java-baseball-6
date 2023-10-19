@@ -92,4 +92,6 @@
 - [X] getResultsMessage 에서 출력까지 하기 (메서드명도 변경)
 
 #### Player
-- [ ] Input 관련 메서드들 모두 추출
+- [X] Input 관련 메서드들 모두 추출
+- [X] reset 메서드를 활용하여, 세팅 및 초기화
+- [X] loop 조건 변경
