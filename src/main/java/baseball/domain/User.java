@@ -19,12 +19,12 @@ public class User {
         refreshPoint(result);
     }
 
-    private int compareEach(String word,int index){
-        if(this.value.indexOf(word)==index){
+    private int compareEach(String number,int index){
+        if(isSamePlace(number,index)){
             return 0;
         }
 
-        if(this.value.contains(word)){
+        if(isExistNumber(number)){
             return 1;
         }
 
@@ -37,6 +37,14 @@ public class User {
 
     private void addResult(int[] result,int resultIndex){
         result[resultIndex]+=1;
+    }
+
+    private boolean isSamePlace(String number,int index){
+        return this.value.indexOf(number)==index;
+    }
+
+    private boolean isExistNumber(String number){
+        return this.value.contains(number);
     }
 
     private void refreshPoint(int[] result){
