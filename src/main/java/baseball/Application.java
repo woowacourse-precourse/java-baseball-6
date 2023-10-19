@@ -15,6 +15,18 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    // 기능: 게임 순서에 맞게 게임을 진행한다
+    private static void progressGame() {
+        List<Integer> computerBalls = createComputerBalls();
+        while (true) {
+            printNumberInputMessage();
+            List<Integer> playerBalls = createPlayerBalls();
+            String hint = getHint(computerBalls, playerBalls);
+            printHint(hint);
+            if (isGameEnd(hint)) break;
+        }
+    }
+
     // 기능: 힌트가 3스트라이크면 게임 종료
     private static boolean isGameEnd(String hint) {
         if (hint.equals("3스트라이크")) {
