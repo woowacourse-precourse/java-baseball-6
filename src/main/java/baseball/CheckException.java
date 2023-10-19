@@ -1,8 +1,10 @@
 package baseball;
 
+import baseball.constant.Constant;
+
 public class CheckException {
     public void checkRestart(int isRe) {
-        if (!(isRe == 1 || isRe == 2))
+        if (!(isRe == Constant.RESTART || isRe == Constant.EXIT))
             throw new IllegalArgumentException();
     }
 
@@ -13,7 +15,7 @@ public class CheckException {
     }
 
     private void checkSize(String[] inputNumbers) {
-        if (inputNumbers.length > 3)
+        if (inputNumbers.length > Constant.LENGTH)
             throw new IllegalArgumentException();
     }
 

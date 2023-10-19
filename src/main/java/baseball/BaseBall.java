@@ -1,6 +1,8 @@
 package baseball;
 
 
+import baseball.constant.Constant;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,7 @@ public class BaseBall {
     private ComputerBehavior computerBehavior = new ComputerBehavior();
     private List<Integer> computerNumbers = new ArrayList<>();
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Constant.START);
         computerNumbers = computerBehavior.generatedNumbers();
         UserBehavior userBehavior = new UserBehavior(computerNumbers);
         int isRe = userBehavior.input();

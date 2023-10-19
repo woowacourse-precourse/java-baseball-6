@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import static baseball.constant.Constant.*;
+
 public class UserBehavior {
     private CheckException checkException = new CheckException();
     private final List<Integer> computerNumbers;
@@ -21,8 +23,8 @@ public class UserBehavior {
             checkException.checkAll(inputNumbers);
             countResult(inputNumbers);
             while (result()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                System.out.println(FINISH);
+                System.out.println(RESTART_OR_EXIT);
                 return Integer.parseInt(Console.readLine());
             }
             return input();
@@ -34,8 +36,8 @@ public class UserBehavior {
     private String[] setStart() {
         strike = 0;
         ball = 0;
-        System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine().split("");
+        System.out.print(INPUT_MENTION);
+        return Console.readLine().split(SPLIT);
     }
 
     private void countResult(String[] inputNumbers) {
@@ -58,22 +60,22 @@ public class UserBehavior {
 
     private boolean result() {
         if (strike == 3) {
-            System.out.println(strike+"스트라이크");
+            System.out.println(strike+ STRIKE);
             return true;
         }
         if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING);
             return false;
         }
         if (ball == 0) {
-            System.out.println(strike+"스트라이크");
+            System.out.println(strike+ STRIKE);
             return false;
         }
         if (strike == 0) {
-            System.out.println(ball+"볼");
+            System.out.println(ball+ BALL);
             return false;
         }
-        System.out.println(ball+"볼 "+strike+"스트라이크");
+        System.out.println(ball+ BALL+strike+ STRIKE);
         return false;
     }
 }
