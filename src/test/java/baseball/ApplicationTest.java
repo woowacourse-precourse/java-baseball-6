@@ -56,7 +56,7 @@ class ApplicationTest extends NsTest {
     @Test
     void getUserNumbersList_예외상황_테스트() {
         //given
-        String input = "111";
+        String input = "11123";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
         //when

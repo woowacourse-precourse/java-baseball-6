@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
+    static final int NUMBERS_LENGTH = 3;
     static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     static final String GET_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     static final String BALL_MESSAGE = "볼";
@@ -21,6 +22,14 @@ public class Application {
     public static void printStart() {
         System.out.println(START_MESSAGE);
     }
+    public static void printResult(int strikeCount, int ballCount) {
+        if (ballCount == 0) {
+
+        }
+    }
+//    public static boolean isAnswer(int strikeCount) {
+//        if (strikeCount == NUMBERS_LENGTH)
+//    }
     public static List<Integer> getStrikeBallCount(List<Integer> computerNumbersList, List<Integer> userNumbersList) {
         int strikeCount = 0;
         int ballCount = 0;
@@ -39,7 +48,7 @@ public class Application {
     }
     public static List<Integer> getComputerNumbersList() {
         List<Integer> computerNumbersList = new ArrayList<>();
-        while (computerNumbersList.size() < 3) {
+        while (computerNumbersList.size() < NUMBERS_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbersList.contains(randomNumber)) {
                 computerNumbersList.add(randomNumber);
@@ -59,12 +68,11 @@ public class Application {
     }
     public static void validateUserNumbersString(String userNumbers) {
         validateEmptyOrNullOfInputString(userNumbers);
-        if (!userNumbers.matches("[1-9]{3}")) {
+        if (!userNumbers.matches("[1-9]{"+NUMBERS_LENGTH+"}")) {
             throw new IllegalArgumentException("[ERROR] 입력 값이 1~9 사이 숫자로 이루어진 세자리 숫자가 아닙니다.");
         }
-        Set<String> duplicationCheckSet = new HashSet<>();
-        duplicationCheckSet.addAll(Arrays.asList(userNumbers.split("")));
-        if (duplicationCheckSet.size() != 3) {
+        Set<String> duplicationCheckSet = new HashSet<>(Arrays.asList(userNumbers.split("")));
+        if (duplicationCheckSet.size() != NUMBERS_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 입력 값에 중복이 있습니다.");
         }
     }
