@@ -63,6 +63,8 @@ public class Application {
     	String result="";
     	String more="1";
     	
+    	System.out.println("숫자 야구 게임을 시작합니다.");
+    	
     	while(!result.equals("3스트라이크")&&more.equals("1")) {
 	    	int input=Integer.parseInt(Console.readLine());
 	    	int first_digit=input/100;
