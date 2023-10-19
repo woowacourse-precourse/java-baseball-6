@@ -30,6 +30,16 @@ public class User {
         return numberList;
     }
 
+    private boolean validation(String userInput,String regexp){
+        Pattern pattern = Pattern.compile(regexp);
+        Matcher matcher = pattern.matcher(userInput);
+        return matcher.matches();
+    }
+
+    private boolean isDuplicateNumber(int number){
+        return this.numberList.contains(number);
+    }
+
     public List<Integer> getUserNumbers() {
         return this.userNumbers;
     }
