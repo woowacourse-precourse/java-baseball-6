@@ -11,13 +11,27 @@ public class RandomGenerator {
 	public int[] generateRandomNumbers() {
 		int[] randomNumbers = new int[NUMBER_LENGTH];
 
-		for(int i = 0; i < NUMBER_LENGTH; i++) {
-			randomNumbers[i] = generateRandomNumber();
+		for (int i = 0; i < NUMBER_LENGTH; i++) {
+			randomNumbers[i] = generateUniqueRandomNumber(randomNumbers);
 		}
 		return randomNumbers;
 	}
 
-	private int generateRandomNumber() {
-		return Randoms.pickNumberInRange(RANGE_MIN_NUMBER, RANGE_MAX_NUMBER);
+	private int generateUniqueRandomNumber(int[] randomNumbers) {
+		while (true) {
+			int randomNumber = Randoms.pickNumberInRange(RANGE_MIN_NUMBER, RANGE_MAX_NUMBER);
+			if (!isNumberUsed(randomNumbers, randomNumber)) {
+				return randomNumber;
+			}
+		}
+	}
+
+	private boolean isNumberUsed(int[] randomNumbers, int randomNumber) {
+		for (int number : randomNumbers) {
+			if (number == randomNumber) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
