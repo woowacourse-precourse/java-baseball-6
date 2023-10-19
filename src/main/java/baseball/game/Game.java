@@ -1,11 +1,11 @@
 package baseball.game;
 
-import baseball.Input;
-import baseball.Output;
-import baseball.Utils;
-import baseball.game.validator.GameLogic;
-import baseball.game.validator.GameResult;
-import baseball.game.validator.ValueValidator;
+import baseball.config.GameLogic;
+import baseball.config.InitRandomNum;
+import baseball.utils.Input;
+import baseball.utils.Output;
+import baseball.utils.Utils;
+import baseball.config.validator.ValueValidator;
 
 import java.util.List;
 
@@ -18,10 +18,10 @@ public class Game {
     private final Output output;
     private final Utils utils;
 
-    public Game() {
-        this.input = new Input();
-        this.output = new Output();
-        this.utils = new Utils();
+    public Game(final Input input, final Output output, final Utils utils) {
+        this.input = input;
+        this.output = output;
+        this.utils = utils;
     }
 
     public void gameSet(ValueValidator validator, GameLogic gameLogic, InitRandomNum initRandomNum) {
@@ -34,12 +34,15 @@ public class Game {
         while (true){
             // 입력받고
             String userInput = input.input();
-
             // 유효값 검증
             if (validator.valid(userInput)) {
+                // 리스트로 바꾸고
                 List<Integer> playerList = utils.toList(userInput);
+                // 스트라이크 볼 비교
                 GameResult gameResult = gameLogic.logic(playerList, answer);
+                // 비교 값 출력
                 output.result(gameResult);
+                // 만약에 이겼으면 승리 출력하고 끝
                 if (winCheck(gameResult)) {
                     output.success();
                     return;
@@ -47,7 +50,6 @@ public class Game {
             }
         }
     }
-
     public boolean recheck() {
         String replayInput = input.replayInput();
         if (validator.reValid(replayInput)) {

@@ -1,4 +1,4 @@
-package baseball.game.validator;
+package baseball.config.validator;
 
 import java.util.HashSet;
 import java.util.List;

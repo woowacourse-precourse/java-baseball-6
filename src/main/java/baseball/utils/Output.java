@@ -1,6 +1,6 @@
-package baseball;
+package baseball.utils;
 
-import baseball.game.validator.GameResult;
+import baseball.game.GameResult;
 
 public class Output {
     public void success() {
@@ -17,5 +17,9 @@ public class Output {
             System.out.print("낫싱");
         }
         System.out.println();
+    }
+
+    public void start() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 }

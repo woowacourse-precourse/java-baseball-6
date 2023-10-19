@@ -1,4 +1,4 @@
-package baseball.game.validator;
+package baseball.game;
 
 public class GameResult {
     private final int ball;

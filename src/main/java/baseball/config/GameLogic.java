@@ -1,4 +1,6 @@
-package baseball.game.validator;
+package baseball.config;
+
+import baseball.game.GameResult;
 
 import java.util.List;
 

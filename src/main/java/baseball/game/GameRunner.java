@@ -1,23 +1,32 @@
 package baseball.game;
 
-import baseball.game.validator.GameLogic;
-import baseball.game.validator.ValueValidator;
-
-import java.util.List;
+import baseball.config.GameLogic;
+import baseball.config.InitRandomNum;
+import baseball.config.validator.ValueValidator;
+import baseball.utils.Input;
+import baseball.utils.Output;
+import baseball.utils.Utils;
 
 public class GameRunner {
-    // 검증기와 랜덤 생성기는 게임이 바뀌어도 계속 사용하기에 싱글톤으로 사용
     private final ValueValidator validator = new ValueValidator();
     private final InitRandomNum initRandomNum = new InitRandomNum();
     private final GameLogic gameLogic = new GameLogic();
+    private final Input input;
+    private final Output output;
+    private final Utils utils;
+
+    public GameRunner() {
+        this.input = new Input();
+        this.output = new Output();
+        this.utils = new Utils();
+    }
+
     public void run(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        Game game = new Game();
-        // 일단 한판 하고 recheck 통해 다시 수행
+        output.start();
+        Game game = new Game(input,output,utils);
+        game.gameSet(validator,gameLogic,initRandomNum);
+        // 일단 한판 하고 reset하고 recheck 통해 다시 수행
         do {
-            List<Integer> pick = initRandomNum.pick();
-            System.out.println(pick);
-            game.gameSet(validator,gameLogic,initRandomNum);
             game.play();
             game.reset();
         } while (game.recheck());
