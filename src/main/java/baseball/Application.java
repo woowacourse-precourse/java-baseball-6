@@ -9,20 +9,20 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int play_on =1; // 0:숫자 입력 후 결과 출력 1:사용자(컴퓨터)값설정 2:시스템종료 3:다시하기
+        int play_mode =1; // 0:숫자 입력 후 결과 출력 1:사용자(컴퓨터)값설정 2:시스템종료 3:다시하기
         Balls goal = new Balls();
 
         while(true){
-            if(play_on ==1){
+            if(play_mode ==1){
                 // 목표값 설정
                 goal.remove_balls();
                 while(goal.size < goal.limit_size){
                     int randomNumber = Randoms.pickNumberInRange(1,9);
                     goal.add_ball(randomNumber);
                 }
-                play_on=0;
+                play_mode=0;
             }
-            if(play_on ==0) {
+            if(play_mode ==0) {
                 System.out.print("숫자를 입력해주세요 : ");
                 try{
                     String guess = Console.readLine();
@@ -45,7 +45,7 @@ public class Application {
                     }
                     if (nothing != 0) {
                         if (strike == 3) {
-                            play_on = 3;
+                            play_mode = 3;
                         }
                         if (ball == 0) {
                             System.out.println(strike + "스트라이크");
@@ -66,13 +66,13 @@ public class Application {
                     throw new IllegalArgumentException();
                 }
             }
-            if(play_on==3){
+            if(play_mode==3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 int user_input = Integer.parseInt(Console.readLine());
-                play_on = user_input;
+                play_mode = user_input;
             }
-            if(play_on==2){
+            if(play_mode==2){
                 break;
             }
 
