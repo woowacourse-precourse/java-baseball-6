@@ -13,7 +13,7 @@
     - @Override toString() : balls를 String으로 변환하여 반환
     - isEqual(Balls) : balls와 매개변수로 받은 Balls의 숫자가 모두 같은지 확인
     - isContain(Ball) : balls에 매개변수로 받은 Ball이 있는지 확인
-
+    - get(int) : balls의 index에 해당하는 Ball을 반환
 ## Game Class
     - Integer strike
     - Integer ball
