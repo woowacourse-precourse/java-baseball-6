@@ -12,6 +12,7 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String input = readLine();
         List<Integer> number = convertIntegerList(input);
+        validateThreeNums(number);
     }
 
     private static List<Integer> convertIntegerList(String number) {
@@ -22,6 +23,12 @@ public class Application {
         }
         catch (NumberFormatException e) {
             throw new IllegalArgumentException("문자가 아닌 숫자를 입력해주세요");
+        }
+    }
+
+    private static void validateThreeNums(List<Integer> number) {
+        if (number.size() != 3) {
+            throw new IllegalArgumentException("3개의 숫자를 입력해주세요");
         }
     }
 }
