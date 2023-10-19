@@ -36,9 +36,13 @@ public class Application {
             printBallStrike(ballStrikeCount.get(0), ballStrikeCount.get(1));
             if (isAnswer(ballStrikeCount.get(1))) {
                 printAnswer();
+                printGetRestart();
                 break;
             }
         }
+    }
+    public static void printGetRestart() {
+        System.out.println(GET_RESTART_MESSAGE);
     }
     public static void printStart() {
         System.out.println(START_MESSAGE);
