@@ -17,4 +17,8 @@ public class Game {
         standard = ballsGenerator.generateBalls();
         gameState = GameState.ON;
     }
+
+    public void end() {
+        gameState = GameState.OFF;
+    }
 }
