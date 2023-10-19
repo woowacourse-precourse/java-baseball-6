@@ -29,11 +29,6 @@ public class User {
             throw new IllegalArgumentException();
     }
 
-    public void validateIncludedZreo(String input){
-        if(input.contains("0"))
-            throw new IllegalArgumentException();
-    }
-
     public List<Integer> validtaeNumeric(String input){
         final String REGEX = "[1-9]+";
         if(input.matches(REGEX)){

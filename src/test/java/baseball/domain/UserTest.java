@@ -49,25 +49,25 @@ class UserTest {
         user.validateDuplicated("1234567890");
     }
 
-    @Test
-    void 입력에_0이_포함된_경우(){
-        //given
-        User user = new User();
-
-        //when,then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.validateIncludedZreo("203");
-        });
-    }
-
-    @Test
-    void 입력에_0이_포함되지_않은_경우(){
-        //given
-        User user = new User();
-
-        //when,then
-        user.validateIncludedZreo("2333");
-    }
+//    @Test
+//    void 입력에_0이_포함된_경우(){
+//        //given
+//        User user = new User();
+//
+//        //when,then
+//        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+//            user.validateIncludedZreo("203");
+//        });
+//    }
+//
+//    @Test
+//    void 입력에_0이_포함되지_않은_경우(){
+//        //given
+//        User user = new User();
+//
+//        //when,then
+//        user.validateIncludedZreo("2333");
+//    }
 
     @Test
     void 숫자가_아닌_것이_포함된_경우(){
