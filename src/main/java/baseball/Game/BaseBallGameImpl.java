@@ -36,11 +36,6 @@ public class BaseBallGameImpl implements BaseBallGame {
         return null;
     }
 
-    @Override
-    public Boolean isNothing(List<Integer> answer) {
-        return null;
-    }
-
 
     @Override
     public void printResult(Integer strike, Integer ball) {
