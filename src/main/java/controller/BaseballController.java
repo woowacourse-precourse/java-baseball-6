@@ -16,11 +16,15 @@ public class BaseballController {
         while (true) {
             String userInput = InputView.getUserInput();
             userNumberBaseball.isValid(userInput);
+            printResult(userNumberBaseball, userInput);
             if (userNumberBaseball.isPerfect(userInput)) {
                 break;
             }
-            printResult(userNumberBaseball, userInput);
-
+        }
+        OutputView.printEndGame();
+        String restartNumber = InputView.getUserInput();
+        if (restartNumber.equals("1")) {
+            getUserNumber();
         }
     }
 
