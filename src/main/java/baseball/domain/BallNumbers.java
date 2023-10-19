@@ -5,11 +5,9 @@ import java.util.Objects;
 
 public final class BallNumbers {
 
-  private static final int BALL_COUNT = 3;
+  public static final int BALL_COUNT = 3;
 
   private final List<Integer> numbers;
-
-  private final int index = 0;
 
   private BallNumbers(final List<Integer> numbers) {
     this.numbers = numbers;
