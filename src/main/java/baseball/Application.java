@@ -20,6 +20,16 @@ public class Application {
         return input_number;
     }
 
+    public int[] stringToIntArray(String input) {
+        int[] intArray = new int[input.length()];
+        for (int i = 0; i < input.length(); i++) {
+            char digitChar = input.charAt(i);
+            int digit = Character.getNumericValue(digitChar);
+            intArray[i] = digit;
+        }
+        return intArray;
+    }
+
     public static void main(String[] args) {
 
 

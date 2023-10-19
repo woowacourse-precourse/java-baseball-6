@@ -1,14 +1,17 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
+
+    Application application = new Application();
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -26,6 +29,17 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 입력값_형변환_테스트() {
+        String input_number = "123";
+        int[] expected_result = {1,2,3};
+
+        int[] real_result = application.stringToIntArray(input_number);
+
+        Assertions.assertArrayEquals(expected_result, real_result);
+
     }
 
     @Override
