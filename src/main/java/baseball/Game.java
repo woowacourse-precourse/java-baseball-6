@@ -7,6 +7,6 @@ public class Game {
         display.printStartText();
     }
     public void playGame(){
-        String userInput = display.getUserInput();
+        int[] userInputs = display.getUserInput();
     }
 }
