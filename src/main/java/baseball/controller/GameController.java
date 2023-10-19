@@ -6,7 +6,7 @@ import baseball.model.UserNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-public class gameController {
+public class GameController {
     CompareNumber compareNumber = new CompareNumber();
     ProgramNumber program = new ProgramNumber();
     private UserNumber user;
