@@ -23,6 +23,7 @@ ex) 컴퓨터의 정답, 사람의 게싱 값
 * [x] 두 NumberList 객체 간 3개의 수를 비교할 때 사용할 equals 메소드 구현
 
 ### ./model/Computer
+* [x] 컴퓨터로부터 정답인 3자리 숫자 랜덤으로 생성
 
 ### ./model/Hint
 볼, 스트라이크 개수 정보를 저장하기 위한 모델
@@ -53,8 +54,7 @@ MainController 내에서 사용자 입력을 받는 부분에 대한 로직을 �
 ### ./controller/GameController
 야구 게임 진행을 제어하는 컨트롤러
 * [x] 게임 시작 화면 출력
-* [x] 컴퓨터로부터 정답인 3자리 숫자 랜덤으로 생성
-* [ ] 사용자로부터 guessing 정보를 받아 힌트 결과 생성 및 출력
+* [ ] 사용자로부터 guessing 정보를 받아 컴퓨터의 정답과 비교 후, 힌트 결과 생성 및 출력
 * [x] 게임 종료 화면 출력
 
 ### ./controller/GameController.InputController (GameController의 inner class)
@@ -64,5 +64,5 @@ GameController 내에서 사용자 입력을 받는 부분에 대한 로직을 �
 ## 기타 유틸
 ### ./utils/Transfer
 임의의 타입을 원하는 타입으로 변경해주는 메소드들을 모아놓을 공간
-* [x] 3개의 숫자가 담긴 String을 NumberList 객체로 변환해주는 메소드 구현
+* [x] 3개의 숫자가 담긴 String을 NumberList 객체로 변환해주는 기능 구현
 * [ ] Hint객체를 힌트 메세지로 변환해주는 기능 구현
