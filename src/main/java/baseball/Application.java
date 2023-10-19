@@ -34,18 +34,19 @@ public class Application {
         String result = computer.stream().collect(Collectors.joining());
         System.out.println("result = " + result);
 
-        //사용자 인풋 받기
-        System.out.print(BaseballConstants.PLAY_MESSAGE);
-        String input = Console.readLine();
-        if(!isNumericAndThreeDigits(input)){
-            throw new IllegalArgumentException("사용자의 입력값은 3자리 수이며 1-9까지의 값만 가능합니다.");
-        }
+        while (true){
+            //사용자 인풋 받기
+            System.out.print(BaseballConstants.PLAY_MESSAGE);
+            String input = Console.readLine();
+            if(!isNumericAndThreeDigits(input)){
+                throw new IllegalArgumentException("사용자의 입력값은 3자리 수이며 1-9까지의 값만 가능합니다.");
+            }
 
-        if(isResult(input,result)){
-            System.out.println();
+            if(isResult(input,result)){
+                System.out.println(BaseballConstants.COMPLETE_MESSAGE);
+                break;
+            }
         }
-        //값체크
-        System.out.println("정답인가요?"+result.equals(input));
     }
 
     private Set<String> initComputer() {
@@ -71,10 +72,19 @@ public class Application {
                 }
             }
         }
-        System.out.println("strikeCount = " + strikeCount);
-        System.out.println("ballCount = " + ballCount);
-
-        return true;
+        if (strikeCount == NUMBER_LENGTH){
+            System.out.println(String.format(BaseballConstants.STRIKE_FORMAT, strikeCount));
+            return true;
+        } else if (strikeCount > 0 && ballCount > 0) {
+            System.out.println(String.format(BaseballConstants.BALL_AND_STRIKE_FORMAT, ballCount, strikeCount));
+        } else if (strikeCount > 0) {
+            System.out.println(String.format(BaseballConstants.STRIKE_FORMAT, strikeCount));
+        } else if (ballCount > 0) {
+            System.out.println(String.format(BaseballConstants.BALL_FORMAT, ballCount));
+        } else {
+            System.out.println(BaseballConstants.EMPTY_FORMAT);
+        }
+        return false;
     }
 
     //서로 다른 수 체크하기
@@ -88,7 +98,15 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application application = new Application();
-        application.start();
+        String playNumber = "1";
+        while (playNumber.equals("1")){
+            application.start();
+            System.out.println(BaseballConstants.END_MESSAGE);
+            playNumber = Console.readLine();
+            if (!(playNumber.equals("1") || playNumber.equals("2"))){
+                throw new IllegalArgumentException("입력값 \""+playNumber+"\"는 잘못된 요청 정보입니다.");
+            }
+        }
 
     }
 }
