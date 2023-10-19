@@ -18,15 +18,21 @@ public class Validator {
         return false;
     }
 
-    public static boolean validateInput(String input) {
-        return validateInputRange(input) && validateInputDigit(input);
+    public static void validateInput(String input) {
+        if (!validateInputDigit(input)) {
+            throw new IllegalStateException();
+        }
+
+        if (!validateInputRange(input)) {
+            throw new IllegalStateException();
+        }
     }
 
-    public static boolean validateInputRange(String input) {
+    private static boolean validateInputRange(String input) {
         return input.length() == Const.NUMBER_LENGTH;
     }
 
-    public static boolean validateInputDigit(String input) {
+    private static boolean validateInputDigit(String input) {
         try {
             Integer.parseInt(input);
             return true;

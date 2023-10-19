@@ -26,6 +26,9 @@ public class Application {
 
                 System.out.print("숫자를 입력해주세요: ");
                 String input = Console.readLine();
+
+                Validator.validateInput(input);
+                
                 String[] split = input.split("");
                 Map<Integer, Integer> userIndex = new HashMap<>();
                 List<Integer> userInput = Arrays.stream(split)
