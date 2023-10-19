@@ -18,33 +18,26 @@ public class Application {
     public static final String NOTHING = "낫싱";
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";
+
     public static void main(String[] args) {
 
         Boolean restart = true;
         Boolean game = true;
 
+        Computer computer = new Computer();
+
         System.out.println(GAME_START);
 
         while (restart) {
 
-            List<Integer> computer = new ArrayList<Integer>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
+            ArrayList<Integer> computerNumber = computer.getRandomNumber();
 
-            ArrayList<Integer> computerArray = new ArrayList<Integer>(computer);
             game = true;
 
             while (game) {
                 System.out.print(INPUT_START);
                 String inputNum = Console.readLine();
 
-                if (inputNum == "") {
-                    throw new IllegalArgumentException("아무것도 입력을 하지 않았습니다.");
-                }
                 onlyNumCheck(inputNum);
                 lengthCheck(inputNum);
 
@@ -62,10 +55,10 @@ public class Application {
                 duplicationCheck(userInputArray);
 
                 for (int i = 0; i < 3; i++) {
-                    if (!computerArray.contains(userInputArray.get(i))) {
+                    if (!computerNumber.contains(userInputArray.get(i))) {
                         // 숫자가 존재 하지 않으면 낫씽
                         nothing += 1;
-                    } else if (computerArray.get(i) == userInputArray.get(i)) {
+                    } else if (computerNumber.get(i) == userInputArray.get(i)) {
                         // 숫자가 존재하고 위치가 같으면 strike
                         strike += 1;
                     }
