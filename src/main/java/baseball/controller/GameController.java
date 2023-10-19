@@ -54,7 +54,7 @@ public class GameController {
     }
 
     public void printStrike(int[] count){
-        if (count[0] == 0 & count[1] == 0) {
+        if (count[0] == 0 & count[1] != 0) {
             OutputView.printCnt(count[1]);
             OutputView.printStrike();
         }
