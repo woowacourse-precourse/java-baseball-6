@@ -9,8 +9,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class InputViewTest {
@@ -40,7 +41,7 @@ class InputViewTest {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         // when
-        int[] result = inputView.userInputNumber();
+        List<Integer> result = inputView.userInputNumber();
 
         //then
         assertAll(
