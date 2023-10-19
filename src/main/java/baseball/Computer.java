@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Computer {
 
-    public List<Character> createAnswer(){
+    public List<Character> createAnswer() {
         //처음 답 만들 때 새로 초기화 해야함
         List<Character> answer = new ArrayList<>();
 

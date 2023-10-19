@@ -13,7 +13,7 @@ public class Game {
 
     private Validation validation;
 
-    public void gameStart(){
+    public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         //컴퓨터 생성
@@ -28,14 +28,14 @@ public class Game {
         while (playGame());
 
     }
-    private boolean playGame(){
+    private boolean playGame() {
         boolean retryCheck = false; // 재시도 여부 체크
 
         //컴퓨터의 랜덤 값 생성
         List<Character> answer = computer.createAnswer();
         List<Character> userAnswer = new ArrayList<>();
 
-        while (true){
+        while (true) {
             //유저 입력 초기화
             userAnswer.clear();
             System.out.println("숫자를 입력해주세요 : ");
@@ -49,14 +49,13 @@ public class Game {
             GameResult gameResult = getGameResult(userAnswer, answer);
 
             // 딜러의 결과값 출력
-            if(printResult(gameResult)){
+            if(printResult(gameResult)) {
                 printSuccess();
                 retryCheck = inputRetry();
-                break;
+                // 성공 여부 체크 후 return
+                return retryCheck;
             }
         }
-        // 성공 여부 체크 후 return
-        return retryCheck;
     }
 
     private GameResult getGameResult(List<Character> userAnswer, List<Character> answer) {
@@ -79,32 +78,32 @@ public class Game {
     }
 
     private boolean printResult(GameResult gameResult) {
-        if(gameResult.getStrike() == GameConfig.CORRECT_LENGTH ) {
+        if(gameResult.getStrike() == GameConfig.CORRECT_LENGTH ) {  //정답일 때
             System.out.println(GameConfig.CORRECT_LENGTH + "스트라이크");
             return true;
-        }else if(gameResult.getStrike() != 0 && gameResult.getBall() != 0) {
+        }else if(gameResult.getStrike() != 0 && gameResult.getBall() != 0) {  //볼,스트라이크 둘 다 있을 때
             System.out.println(gameResult.getBall() + "볼 " + gameResult.getStrike() + "스트라이크");
-        }else if(gameResult.getStrike() != 0 && gameResult.getBall() == 0) {
+        }else if(gameResult.getStrike() != 0 && gameResult.getBall() == 0) {  //스트라이크만 있을 때
             System.out.println(gameResult.getStrike() + "스트라이크");
-        }else if(gameResult.getStrike() == 0 && gameResult.getBall() !=0 ) {
+        }else if(gameResult.getStrike() == 0 && gameResult.getBall() !=0 ) {  //볼만 있을 때
             System.out.println(gameResult.getBall() + "볼");
-        }else {
+        }else {                                                               //아무것도 없을 때
             System.out.println("낫싱");
         }
         return false;
     }
 
-    private void printSuccess(){
+    private void printSuccess() {
         System.out.println(GameConfig.CORRECT_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    private boolean inputRetry(){
+    private boolean inputRetry() {
         String userInput = user.inputRestartNumber();
-        if(userInput.equals("1")){
-            return true;
-        }else if(userInput.equals("2")){
-            return false;
+        if(userInput.equals("1")) {
+            return true;   //재시도
+        }else if(userInput.equals("2")) {
+            return false;  //종료
         }else{
             throw new IllegalArgumentException();
         }

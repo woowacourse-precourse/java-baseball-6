@@ -10,7 +10,7 @@ import java.util.List;
 public class ValidationTest {
 
     @Test
-    public void 입력값_변환_체크(){
+    public void 입력값_변환_체크() {
         Validation validation = new Validation();
         String input = "123";
         List<Character> answer = new ArrayList<>(Arrays.asList('1','2','3'));
@@ -20,7 +20,7 @@ public class ValidationTest {
     }
 
     @Test
-    public void 입력값길이_예외_체크(){
+    public void 입력값길이_예외_체크() {
         Validation validation = new Validation();
         String input = "1234";
 
@@ -28,7 +28,7 @@ public class ValidationTest {
     }
 
     @Test
-    public void 입력값중복_예외_체크(){
+    public void 입력값중복_예외_체크() {
         Validation validation = new Validation();
         String input = "122";
 
@@ -36,7 +36,7 @@ public class ValidationTest {
     }
 
     @Test
-    public void 입력값범위_예외_체크(){
+    public void 입력값범위_예외_체크() {
         Validation validation = new Validation();
         String input = "120";
 
