@@ -5,12 +5,12 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-        Printing.opening();
+        View.opening();
         boolean flag = true;
 
         while (flag) {
             game();
-
+            View.closing();
             flag = UserInput.inputOneOrTwo();
         }
     }
@@ -20,12 +20,13 @@ public class Application {
         boolean gameFlag = true;
 
         while (gameFlag) {
+            View.inputting();
             List<Integer> input = UserInput.inputList();
 
             int strike = Calculator.countStrike(input, answer);
             int ball = Calculator.countBall(input, answer);
 
-            Printing.showResult(strike, ball);
+            View.showResult(strike, ball);
 
             if (strike == 3) {
                 gameFlag = false;
