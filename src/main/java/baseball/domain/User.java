@@ -23,12 +23,12 @@ public class User {
 
     }
 
-    private void convertCharToInteger(String baseBallNumberStr) {
+    private void convertCharToInteger(String baseBallString) {
         ArrayList<Integer> baseballNumbers = new ArrayList<>();
 
-        for (char baseballNumber : baseBallNumberStr.toCharArray())
-            if (Character.isDigit(baseballNumber) && Character.getNumericValue(baseballNumber) != 0)
-                baseballNumbers.add(Character.getNumericValue(baseballNumber));
+        for (char baseballChar : baseBallString.toCharArray())
+            if (Character.isDigit(baseballChar) && Character.getNumericValue(baseballChar) != 0)
+                baseballNumbers.add(Character.getNumericValue(baseballChar));
 
         if (baseballNumbers.size() != 3)
             throw new IllegalArgumentException();
