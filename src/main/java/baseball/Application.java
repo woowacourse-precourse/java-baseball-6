@@ -8,6 +8,8 @@ public class Application {
             judger.startGame();
             Human human = new Human();
             human.getNumbers();
+            Computer computer = new Computer();
+            computer.getNumbers();
         } while (true);
     }
 }
