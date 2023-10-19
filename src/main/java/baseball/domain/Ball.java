@@ -34,6 +34,16 @@ public class Ball {
         }
     }
 
+    public BallStatus compare(Ball ball) {
+        if (this.equals(ball)) {
+            return BallStatus.STRIKE;
+        }
+        if (this.ballNumber == ball.ballNumber) {
+            return BallStatus.BALL;
+        }
+        return BallStatus.NOTHING;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
