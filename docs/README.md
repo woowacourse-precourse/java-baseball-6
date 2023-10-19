@@ -34,7 +34,7 @@
     -[x] 상대방 숫자 생성하기
       - [x] 1부터 9까지 서로 다른 3자리 숫자 생성(BaseballRandomNumberGenerator)
     -[ ] 숫자 입력 받기
-      - [ ] 숫자 입력 문구 출력
+      - [x] 숫자 입력 문구 출력
       - [ ] 1부터 9까지 서로 다른 3자리 숫자 입력 받기
       - [ ] 아닐 경우 숫자 예외 처리 (PlayerNumber)
     -[ ] 결과 비교 하기
@@ -80,8 +80,8 @@
 ### View 
 #### InputView 
 - 플레이어에게 입력받을 데이터 처리하는 로직
-- [ ] 숫자 입력 문구 출력 및 숫자 입력 받기
-  - [ ] Console의 readLine()을 활용
+- [x] 숫자 입력 문구 출력 및 숫자 입력 받기
+  - [x] Console의 readLine()을 활용
 -[ ] 게임 재시작 문구 출력 및 재시작 여부 입력 받기
   - [ ] Console의 readLine()을 활용
 #### OutputView
@@ -97,7 +97,7 @@
 #### BaseballGameMessage
 - 게임에서 사용할 메시지 관리하는 클래스
 - [x] 게임 시작 문구
-- [ ] 숫자 입력 문구
+- [x] 숫자 입력 문구
 - [ ] 게임 종료 문구
 - [ ] 게임 재시작 문구
 #### ValidationErrorMessage
