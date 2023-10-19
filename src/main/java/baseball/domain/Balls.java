@@ -5,9 +5,13 @@ import java.util.List;
 public class Balls {
     private final List<Integer> balls;
 
-    public Balls(List<Integer> input) {
+    private Balls(List<Integer> input) {
         validateNotDuplicated(input);
         this.balls = input;
+    }
+
+    public static Balls from(List<Integer> input) {
+        return new Balls(input);
     }
 
     private void validateNotDuplicated(List<Integer> balls) {
@@ -18,9 +22,5 @@ public class Balls {
 
     private boolean isDuplicated(List<Integer> balls) {
         return balls.stream().distinct().count() != balls.size();
-    }
-
-    public static Balls from(List<Integer> input) {
-        return new Balls(input);
     }
 }
