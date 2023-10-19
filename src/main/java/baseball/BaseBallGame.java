@@ -54,18 +54,7 @@ public class BaseBallGame {
 
             List<Integer> input = getInput();
 
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if(answer.get(i).equals(input.get(j)))
-                        if(i==j) {
-                            numOfStrike++;
-                            break;
-                        } else {
-                            numOfBall++;
-                            break;
-                        }
-                }
-            }
+            compareAnswerToInput(answer, input);
 
             if (numOfBall + numOfStrike == 0)
                 System.out.print("낫싱");
@@ -76,6 +65,21 @@ public class BaseBallGame {
             if (numOfStrike == 3)
                 break;
 
+        }
+    }
+
+    private void compareAnswerToInput(List<Integer> answer, List<Integer> input) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if(answer.get(i).equals(input.get(j)))
+                    if(i==j) {
+                        numOfStrike++;
+                        break;
+                    } else {
+                        numOfBall++;
+                        break;
+                    }
+            }
         }
     }
 
