@@ -1,6 +1,8 @@
 package baseball.service;
 
+import baseball.common.Command;
 import baseball.common.CustomException;
+import baseball.common.Size;
 import baseball.controller.InputController;
 import baseball.entity.Ball;
 
@@ -23,23 +25,37 @@ public class BallService {
         while (running) {
             mainSequence();
         }
-        restartSequence();
     }
 
-    private void restartSequence() {
-
+    private boolean restartSequence() {
+        outputView.printRestart();
+        return getCommand().equals(Command.RESTART.getKey());
     }
 
     private void mainSequence() {
         outputView.printGetBall();
-        inputController.getBall();
+        int[] score = ball.compareBall(getBall());
+        outputView.printResult(score);
+        if (score[1] == Size.NUMBER.getValue()) {
+            running = restartSequence();
+        }
+    }
+
+    private String getCommand() {
+        try {
+            return inputController.getCommand();
+        } catch (CustomException e) {
+            outputView.printMessage(e.getErrorMessage());
+            return getCommand();
+        }
     }
 
     private int getBall() {
         try {
             return inputController.getBall();
         } catch (CustomException e) {
-            outputView.printMessage();
+            outputView.printMessage(e.getErrorMessage());
+            return getBall();
         }
     }
 }

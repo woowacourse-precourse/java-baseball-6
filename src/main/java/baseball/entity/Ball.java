@@ -4,44 +4,36 @@ import baseball.common.Size;
 
 public class Ball {
     private final String answer;
-    private int ball;
-    private int strike;
-    private String hit;
 
     public Ball(int answer) {
         this.answer = Integer.toString(answer);
-        ball = 0;
-        strike = 0;
-        hit = "";
-    }
-
-    private void reset(int input) {
-        hit = Integer.toString(input);
-        ball = 0;
-        strike = 0;
     }
 
     public int[] compareBall(int input) {
-        reset(input);
+        int ball = 0;
+        int strike = 0;
+
+        String hit = Integer.toString(input);
         for (int i = 0; i < Size.NUMBER.getValue(); i++) {
-            checkStrike(i);
-            checkBall(i);
+            strike += checkStrike(i, hit);
+            ball += checkBall(i, hit);
         }
         return new int[]{ball, strike};
     }
 
-    private void checkBall(int index) {
+    private int checkBall(int index, String hit) {
         for (int i = 0; i < Size.NUMBER.getValue(); i++) {
             if (i != index && answer.charAt(i) == hit.charAt(index)) {
-                ball++;
-                break;
+                return 1;
             }
         }
+        return 0;
     }
 
-    private void checkStrike(int i) {
+    private int checkStrike(int i, String hit) {
         if (answer.charAt(i) == hit.charAt(i)) {
-            strike++;
+            return 1;
         }
+        return 0;
     }
 }

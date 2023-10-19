@@ -37,3 +37,4 @@
    2. printMessage(String message) : 메세지 출력 (오류)
    3. printStart() : 시작 메세지 출력
    4. printGetBall() : 사용자의 입력 유도 메세지 출력
+   5. printRestart() : 재시작 메세지 출력
