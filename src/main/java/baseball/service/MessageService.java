@@ -8,6 +8,8 @@ public class MessageService {
     }
 
     public void printUserInputNumberMessage() {
-        System.out.println(MessageConstant.INPUT_MESSAGE);
+        System.out.print(MessageConstant.INPUT_MESSAGE);
     }
+
+
 }
