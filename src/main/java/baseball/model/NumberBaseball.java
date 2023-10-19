@@ -13,6 +13,10 @@ public class NumberBaseball {
         generateComputerNum();
     }
 
+    public List<Integer> getComputerNum() {
+        return computerNum;
+    }
+
     private void generateComputerNum() {
         while(computerNum.size() < 3) {
             int randNumber = Randoms.pickNumberInRange(1, 9);
