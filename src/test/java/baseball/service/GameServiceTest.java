@@ -23,8 +23,7 @@ public class GameServiceTest {
         //when
         user.compare(com.value);
         //then
-        assertThat(user.strike).isEqualTo(1);
-        assertThat(user.ball).isEqualTo(1);
+        assertThat(user.equalsPoint(new Point(1,1))).isTrue();
 
     }
 
