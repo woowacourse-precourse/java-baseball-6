@@ -1,0 +1,26 @@
+## 🗂 미션 - Baseball 기능 목록
+
+###  📚 기능 목록
+
+- [ ] 컴퓨터의 숫자 생성 기능
+- [ ] 숫자 입력 기능
+  - [ ] 유저의 숫자 값 입력 기능
+  - [ ] ⚠️ 입력 값이 숫자인지 검증
+  - [ ] ⚠️ 입력 값의 크기가 3인지 검증
+- [ ] 숫자 비교 기능 구현
+  - [ ] 같은 수가 같은 자리에 있으면 스트라이크 +1
+  - [ ] 같은 수가 다른 자리에 있으면 볼 +1
+  - [ ] 같은 수가 전혀 없으면 낫싱 출력
+- [ ] 게임 종료 OR 재시작 입력 기능
+  - [ ] 1 입력 시, 재시작
+  - [ ] 2 입력 시, 종료
+  - [ ] ⚠️ 입력값이 1 OR 2인지 검증
+
+###  ☑️ 체크리스트
+
+- [ ] 브랜치를 생성 후 변경하였는가
+- [ ] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console API`를 사용하여 구현했는가
+- [ ] `Random` 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하였는가
+- [ ] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`를 입력했는가
+- [ ] `JDK 17` 버전에서 실행 가능해야 하는가
+- [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료
