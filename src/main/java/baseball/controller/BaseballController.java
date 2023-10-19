@@ -67,5 +67,23 @@ public class BaseballController {
         return result[STRIKE] == MAX_HIT;
     }
 
+    public void run() {
+        outputView.startGame();
+        computer = new Computer();
+        boolean retry = true;
+        while(retry) {
+            user = userNumber();
+            resultCalculator();
+            outputView.printBuilder(hint());
+            if(isFinish()) {
+                outputView.finishGame();
+                outputView.retry();
+                retry = user.isRetry(inputView.retryNumber());
+                if(retry) {
+                    computer = new Computer();
+                }
+            }
 
+        }
+    }
 }
