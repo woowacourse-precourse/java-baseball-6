@@ -12,7 +12,7 @@ import static baseball.constant.ErrorConstant.*;
 import static baseball.constant.GameConstant.*;
 
 public class Game {
-    List<Integer> randomNumber = new ArrayList<>();
+    private final List<Integer> randomNumber = new ArrayList<>();
 
     public void run()  {
         do {
@@ -30,10 +30,11 @@ public class Game {
             String stringNumber = userInput();
             errorValidate(stringNumber);
             List<Integer> inputNumber = stringToIntegerList(stringNumber);
-            iterCheck = inputValidate(inputNumber);
+            iterCheck = inputCheck(inputNumber);
         } while (iterCheck);
     }
 
+    //난수 생성
     private void createRandomNumber(){
         randomNumber.clear();
         while (randomNumber.size() < RANDOM_NUMBER_SIZE) {
@@ -44,17 +45,20 @@ public class Game {
         }
     }
 
+    //유저 입력
     private String userInput()  {
         System.out.print(INPUT_NUMBER);
         return Console.readLine();
     }
 
+    //입력값 에러 체킹
     private void errorValidate(String stringNumber) {
         if (!stringNumber.matches(REGULAR_EXPRESSION_INPUT_NUMBER)) {
-            throw new IllegalArgumentException(INPUT_ERROR);
+            throw new IllegalArgumentException(INCORRECT_ERROR);
         }
     }
 
+    //String -> List<Integer>
     private List<Integer> stringToIntegerList(String stringNumber)  {
         List<Integer> inputNumber = new ArrayList<>();
         for(char charNumber : stringNumber.toCharArray()) {
@@ -63,10 +67,11 @@ public class Game {
         return inputNumber;
     }
 
-    private boolean inputValidate(List<Integer> number){
-        int strike = strikeValidate(number);
-        int ball = ballValidate(number);
-        boolean nothing = nothingValidate(strike,ball);
+    //입력값과 정해진 난수와 비교하여 볼 , 스트라이크 , 낫싱 결정
+    private boolean inputCheck(List<Integer> number){
+        int strike = strikeCheck(number);
+        int ball = ballCheck(number);
+        boolean nothing = nothingCheck(strike,ball);
         if (nothing) {
             printNothing();
             return true;
@@ -82,7 +87,8 @@ public class Game {
         return true;
     }
 
-    private int strikeValidate(List<Integer> number){
+    //입력값과 난수를 비교하여 스트라이크 결정
+    private int strikeCheck(List<Integer> number){
         int count = 0;
         for (int i = 0; i<INPUT_NUMBER_SIZE; i++) {
             if (number.get(i).equals(randomNumber.get(i))) {
@@ -93,7 +99,8 @@ public class Game {
         return count;
     }
 
-    private int ballValidate(List<Integer> number){
+    //입력값과 난수를 비교하여 볼 결정
+    private int ballCheck(List<Integer> number){
         int count = 0;
         for (int i = 0; i<INPUT_NUMBER_SIZE; i++) {
             if (randomNumber.contains(number.get(i))) {
@@ -104,42 +111,47 @@ public class Game {
         return count;
     }
 
-    private boolean nothingValidate(int strike, int ball){
+    //입력값과 난수를 비교하여 낫싱 결정
+    private boolean nothingCheck(int strike, int ball){
         return ball == NOTHING_CHECK_NUM && strike == NOTHING_CHECK_NUM;
     }
 
+    //낫싱 프린트
     private void printNothing(){
         System.out.println(NOTHING);
     }
 
+    //스트라이크 프린트
     private void printStrike(int strike){
         if (strike != 0) {
             System.out.print(strike+STRIKE);
         }
     }
 
+    //볼 프린트
     private void printBall(int ball){
         if (ball != 0) {
             System.out.print(ball+BALL);
         }
     }
 
+    //게임 끝 프린트
     private void gameEnd(){
         System.out.println(GAME_END);
     }
 
+    //게임이 끝나고 입력값에 따라서 재시작할지(1) , 게임을 종료할지(2) 결정
     private boolean restartOrExit()  {
         gameEnd();
         System.out.print(RESTART_OR_EXIT);
         String restartOrExit = Console.readLine();
-        return restartOrExitValidate(restartOrExit);
+        restartOrExitValueValidate(restartOrExit);
+        return restartOrExitCheck(restartOrExit);
 
     }
 
-    private boolean restartOrExitValidate(String restartOrExit)  {
-        if (!restartOrExit.matches(REGULAR_EXPRESSION_RESTART_OR_END_NUMBER)) {
-            throw new IllegalArgumentException(INPUT_ERROR);
-        }
+    //입력값이 올바른지 , 재시작인지 , 종료인지를 확인
+    private boolean restartOrExitCheck(String restartOrExit)  {
         if (restartOrExit.equals(RESTART_VALUE)) {
             return true;
         } else if (restartOrExit.equals(END_VALUE)) {
@@ -147,5 +159,11 @@ public class Game {
         }
         return false;
     }
-    
+
+    private void restartOrExitValueValidate(String restartOrExit) {
+        if (!restartOrExit.matches(REGULAR_EXPRESSION_RESTART_OR_END_NUMBER)) {
+            throw new IllegalArgumentException(INCORRECT_ERROR);
+        }
+    }
+
 }
