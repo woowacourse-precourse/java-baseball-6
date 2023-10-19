@@ -96,15 +96,11 @@ public class BaseBallGame {
             System.out.printf("%d볼 ", numOfBall);
         if (!(numOfStrike==0))
             System.out.printf("%d스트라이크", numOfStrike);
-        if (numOfStrike == 3)
-            return true;
-        return false;
+        return numOfStrike == 3;
     }
 
     private static boolean askWhetherToEnd() {
         Scanner sc = new Scanner(System.in);
-        if (sc.nextInt() == 2)
-            return true;
-        return false;
+        return sc.nextInt() == 2;
     }
 }
