@@ -67,9 +67,12 @@ public class Application {
 		
 		for (char nxtPick : userPick.toCharArray()) {
 			
+			
 			if (!Character.isDigit(nxtPick)) throw new IllegalArgumentException("숫자 이외의 문자가 포함되어 있습니다.");
 			
 			int cvt = nxtPick - '0';
+			
+			if (user.contains(cvt)) throw new IllegalArgumentException("동일한 숫자는 입력할 수 없습니다.");
 			
 			if (cvt == 0) throw new IllegalArgumentException("0은 숫자 야구 게임이 포함되지 않습니다.");
 			
