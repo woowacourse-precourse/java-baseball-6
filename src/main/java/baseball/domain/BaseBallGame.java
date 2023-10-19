@@ -22,5 +22,8 @@ public class BaseBallGame {
                 break;
             }
         }
+        if (user.isRestart(inpuRestartNumber())) {
+            play();
+        }
     }
 }
