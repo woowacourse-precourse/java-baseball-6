@@ -21,9 +21,7 @@ public class InputView {
 		String inputValue = Console.readLine();
 		String[] inputNumbers = inputValue.split(SEPARATOR);
 
-		Validator.validateNumbersFormat(inputNumbers);
-		Validator.validateNumbersLength(inputNumbers);
-		Validator.validateNumbersDuplication(inputNumbers);
+		validatePlayerNumber(inputNumbers);
 
 		List<Integer> numbers = new ArrayList<>();
 		for (String number : inputNumbers) {
@@ -31,6 +29,12 @@ public class InputView {
 		}
 
 		return numbers;
+	}
+
+	private static void validatePlayerNumber(String[] inputNumbers) {
+		Validator.validateNumbersFormat(inputNumbers);
+		Validator.validateNumbersLength(inputNumbers);
+		Validator.validateNumbersDuplication(inputNumbers);
 	}
 
 	public String readRestartOrNot() {
