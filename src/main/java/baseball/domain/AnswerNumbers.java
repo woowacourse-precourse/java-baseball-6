@@ -43,7 +43,25 @@ public class AnswerNumbers {
         return cnt;
     }
 
+    public int getBall(List<Integer> inputNumbers){
+        int cnt = 0;
 
+        for(int i=0; i<VALID_NUMBER_SIZE; i++){
+            for(int j=0; j<VALID_NUMBER_SIZE; j++){
+                int answerNum = answerNumbers.get(i);
+                int inputNum = inputNumbers.get(j);
+                cnt = getCnt(cnt, i, j, answerNum, inputNum);
+            }
+        }
+        return cnt;
+    }
+
+    private static int getCnt(int cnt, int i, int j, int answerNum, int inputNum) {
+        if(i != j && (answerNum == inputNum)){
+            cnt++;
+        }
+        return cnt;
+    }
 
 
 }
