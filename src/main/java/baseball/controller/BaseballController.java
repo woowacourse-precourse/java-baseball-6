@@ -63,5 +63,9 @@ public class BaseballController {
         }
         return false;
     }
+    private boolean isFinish() {
+        return result[STRIKE] == MAX_HIT;
+    }
+
 
 }
