@@ -18,6 +18,12 @@ public class Application {
                 if (userInput.length() != 3) {
                     throw new IllegalArgumentException();
                 }
+                for (int i = 0; i < 3; i++) {
+                    char c = userInput.charAt(i);
+                    if(!Character.isDigit(c)) {
+                        throw new IllegalArgumentException();
+                    }
+                }
 
                 int strikeCount = 0, ballCount = 0;
 
