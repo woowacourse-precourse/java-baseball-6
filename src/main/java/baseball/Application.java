@@ -21,6 +21,19 @@ public class Application {
                 .noneMatch(playerBalls::contains);
     }
 
+    // 기능: 같은 수가 같은 자리에 있는 스트라이크의 개수 세기
+    private static int getStrikeCount(List<Integer> computerBalls, List<Integer> playerBalls) {
+        int strikeCount = 0;
+        for (int ballPosition = 0; ballPosition < computerBalls.size(); ballPosition++) {
+            int playerBall = playerBalls.get(ballPosition);
+            int computerBall = computerBalls.get(ballPosition);
+            if (computerBalls.contains(playerBall) && playerBall == computerBall) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
     // 기능: 같은 수가 다른 자리에 있는 볼의 개수 세기
     private static int getBallCount(List<Integer> computerBalls, List<Integer> playerBalls) {
         int ballCount = 0;
