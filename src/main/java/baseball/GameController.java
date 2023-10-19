@@ -63,11 +63,8 @@ public class GameController {
 	}
 
 	private void handleGuess(List<Integer> computerNumber){
-		//*삭제예정
-		System.out.println(gameModel.getComputerNumber());
 		String userGuess = gameView.getUserGuess();
 		List<Integer> userGuessNumbers = convertStringToList(userGuess);
-		System.out.println(userGuessNumbers);
 
 		int numberOfStrike = 0;
 		int numberOfBall = 0;
@@ -84,8 +81,6 @@ public class GameController {
 				numberOfBall++;
 			}
 		}
-		System.out.println(numberOfBall);
-		System.out.println(numberOfStrike);
 		gameView.printGuessResult(numberOfStrike, numberOfBall);
 
 		if(numberOfStrike == 3){

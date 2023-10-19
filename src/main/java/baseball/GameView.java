@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
@@ -7,12 +10,31 @@ public class GameView {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 	}
 
-	//* 서로 다른 숫자 3자리가 아니면 Exception
-	//* 숫자가 아니면 Exception 발생시키기
 	public String getUserGuess(){
 		System.out.print("숫자를 입력해주세요 : ");
 		String userNumber = Console.readLine();
+		validateUserGuess(userNumber);
 		return userNumber;
+	}
+
+	private void validateUserGuess(String userNumber){
+		boolean isOnlyNumber = userNumber.matches("\\d+");
+		boolean isRightSize = userNumber.length() == 3;
+
+		if(!isOnlyNumber || !isRightSize){
+			throw new IllegalArgumentException("[ERROR] 3자리 수를 입력해주세요");
+		}
+
+		List<Character> uniqueDigits = new ArrayList<>();
+		for(char c : userNumber.toCharArray()){
+			if(uniqueDigits.contains(c)){
+				throw new IllegalArgumentException("[ERROR] 서로 다른 3자리 숫자를 입력해주세요");
+			}
+			if (!uniqueDigits.contains(c)) {
+				uniqueDigits.add(c);
+			}
+		}
+
 	}
 
 	public void printGuessResult(int numberOfStrike, int numberOfBall){
@@ -37,7 +59,15 @@ public class GameView {
 	public String getRetry(){
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		String retry = Console.readLine();
+		validateRetryInput(retry);
 		return retry;
+	}
+
+	private void validateRetryInput(String retry){
+		boolean isOneOrTwo = retry.equals("1") || retry.equals("2");
+		if(!isOneOrTwo){
+			throw new IllegalArgumentException("[ERROR] 1 혹은 2로 입력해주세요");
+		}
 	}
 
 
