@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class Message {
     public String startMessage() {
         return ("숫자 야구 게임을 시작합니다.");
@@ -17,7 +19,10 @@ public class Message {
         return ("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public String scoreMessage(int ball, int strike) {
+    public String scoreMessage(List<Integer> score) {
+        int ball = score.get(0);
+        int strike = score.get(1);
+
         if (ball == 0 && strike > 0) {
             return (strike + "스트라이크");
         }
