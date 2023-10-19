@@ -35,8 +35,16 @@
   - BaseBallGame 객체 생성 및 초기화
 
 ### Array 클래스
+  - getStringtoChar(): readLine으로 받은 문자열을 char형으로 변경
+  - checkContains(): 숫자끼리 비교
     
 ### BaseBallGame 클래스
+  - init(): BaseBallGame 객체 생성, GameResult 객체 생성
+  - getUserAnswer(): readLine을 사용해 사용자의 입력값 읽어오기
+  - checkInput(): 잘못된 값인지 체크
+    - checkLen(): 길이가 3인지 체크
+    - checkEqual(): 3자리 수에 동일한 숫자가 포함되어 있는지 체크
+    - checkNum(): 숫자가 입력받았는지 체크
 
 ### GameResult 클래스
   - addBallCount(): ball 개수 증가
