@@ -11,7 +11,7 @@ public class BaseballController {
         createAnswer();
     }
 
-    private int createAnswer() {
+    protected int createAnswer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
