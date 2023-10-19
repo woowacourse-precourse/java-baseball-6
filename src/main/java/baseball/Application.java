@@ -18,21 +18,22 @@ public class Application {
       ArrayList<Integer> userArr = new ArrayList<Integer>(3);
       
       String restart = "1";
+      System.out.println("숫자 야구 게임을 시작합니다.");
       while(restart.equals("1")){
         //컴퓨터 숫자 뽑기
         for(int i=0;i<3;i++){
           comArr.add(Randoms.pickNumberInRange(1,9));
         }
-        System.out.print("컴퓨터의 숫자 :"+comArr);
+        //System.out.print("컴퓨터의 숫자 :"+comArr);
 
     
         while(true){
-          userArr.clear();
+          System.out.print("숫자를 입력해주세요 : ");
           String input = Console.readLine();
           for(int i=0;i<3;i++){
             userArr.add(input.charAt(i)-'0');
           }
-          System.out.print(userArr);
+          //System.out.print(userArr);
 
           int strikeCnt=0, ballCnt=0;
 
@@ -47,15 +48,25 @@ public class Application {
               }
             }
           }
-          System.out.println(strikeCnt + "strike"+ballCnt+"ball");
+          if(strikeCnt==0 && ballCnt==0){
+            System.out.print("낫싱");
+          }
+          else{
+            if (ballCnt>0)
+              System.out.print(ballCnt + "볼");
+            if(strikeCnt>0)
+              System.out.print(strikeCnt + "스트라이크");
+          }
+          System.out.println();
+          userArr.clear();
           if(strikeCnt==3){
             System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             restart = Console.readLine();
             if(restart.equals("1")){
-              System.out.print("다시 ㄱㄱ");
+//              System.out.print("다시 ㄱㄱ");
             }
             else if(restart.equals("2")){
-              System.out.print("다시 ㄱㄱ안해요");
+//              System.out.print("다시 ㄱㄱ안해요");
             }
             comArr.clear();
             userArr.clear();
