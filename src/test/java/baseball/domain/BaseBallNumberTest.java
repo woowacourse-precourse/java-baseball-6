@@ -12,7 +12,7 @@ class BaseBallNumberTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 10})
     void 야구_숫자_범위에_벗어난_경우에는_객체_생성에_실패한다(int baseballNumber) {
-        assertThatThrownBy(() -> BaseBallNumber.from(baseballNumber))
+        assertThatThrownBy(() -> BaseBallNumber.generateNumber(baseballNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -20,7 +20,7 @@ class BaseBallNumberTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 9})
     void 야구_숫자_범위에_맞는_값은_객체_생성에_성공한다(int baseballNumber) {
-        assertDoesNotThrow(() -> BaseBallNumber.from(baseballNumber));
+        assertDoesNotThrow(() -> BaseBallNumber.generateNumber(baseballNumber));
     }
 
 }

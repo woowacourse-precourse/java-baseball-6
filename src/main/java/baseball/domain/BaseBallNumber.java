@@ -26,7 +26,12 @@ public class BaseBallNumber {
         return number < MIN_NUMBER || number > MAX_NUMBER;
     }
 
-    public static BaseBallNumber from(int number) {
+    public static BaseBallNumber generateRandomNumber(NumberGenerator numberGenerator) {
+        int randomNumber = numberGenerator.generate(MIN_NUMBER, MAX_NUMBER);
+        return new BaseBallNumber(randomNumber);
+    }
+
+    public static BaseBallNumber generateNumber(int number) {
         return new BaseBallNumber(number);
     }
 

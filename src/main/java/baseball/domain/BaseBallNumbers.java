@@ -6,15 +6,16 @@ import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class BaseBallNumbers {
 
     private static final int NUMBER_SIZE = 3;
     private final List<BaseBallNumber> playerNumbers;
 
-    public static BaseBallNumbers from(List<Integer> playerNumbers) {
+    public static BaseBallNumbers generateNumbers(List<Integer> playerNumbers) {
         return playerNumbers.stream()
-                .map(BaseBallNumber::from)
+                .map(BaseBallNumber::generateNumber)
                 .collect(collectingAndThen(toList(), BaseBallNumbers::new));
     }
 
@@ -34,14 +35,14 @@ public class BaseBallNumbers {
         }
     }
 
+    private boolean hasOverSize(List<BaseBallNumber> playerNumbers) {
+        return playerNumbers.size() != NUMBER_SIZE;
+    }
+
     private void validateDuplicate(List<BaseBallNumber> playerNumbers) {
         if (hasDuplicate(playerNumbers)) {
             throw new IllegalArgumentException(BASEBALL_NUMBER_DUPLICATE_EXCEPTION_MESSAGE);
         }
-    }
-
-    private boolean hasOverSize(List<BaseBallNumber> playerNumbers) {
-        return playerNumbers.size() != NUMBER_SIZE;
     }
 
     private boolean hasDuplicate(List<BaseBallNumber> playerNumbers) {
@@ -49,6 +50,12 @@ public class BaseBallNumbers {
                 .stream()
                 .distinct()
                 .count() != NUMBER_SIZE;
+    }
+
+    public static BaseBallNumbers generateRandomNumbers(NumberGenerator numberGenerator) {
+        return Stream.generate(() -> BaseBallNumber.generateRandomNumber(numberGenerator))
+                .limit(NUMBER_SIZE)
+                .collect(collectingAndThen(toList(), BaseBallNumbers::new));
     }
 
 }
