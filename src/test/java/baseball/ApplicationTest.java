@@ -79,8 +79,27 @@ class ApplicationTest extends NsTest {
         final Throwable thrown3 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str3));
 
         //then
-        assertThat(thrown1).as("initializeComputerNumber_테스트").doesNotThrowAnyException();
-        assertThat(thrown2).as("initializeComputerNumber_테스트").doesNotThrowAnyException();
-        assertThat(thrown3).as("initializeComputerNumber_테스트").doesNotThrowAnyException();
+        assertThat(thrown1).as("initializeUserNumber_테스트").doesNotThrowAnyException();
+        assertThat(thrown2).as("initializeUserNumber_테스트").doesNotThrowAnyException();
+        assertThat(thrown3).as("initializeUserNumber_테스트").doesNotThrowAnyException();
     }
+
+    @Test
+    void 사용자_입력이_숫자가_아닐때() {
+        //given
+        String str1 = "asdf";
+        String str2 = "qwer";
+        String str3 = "zxcv";
+        //when
+        final Throwable thrown1 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str1));
+        final Throwable thrown2 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str2));
+        final Throwable thrown3 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str3));
+
+        //then
+        assertThat(thrown1).as("initializeUserNumber_테스트").isInstanceOf(NumberFormatException.class);
+        assertThat(thrown2).as("initializeUserNumber_테스트").isInstanceOf(NumberFormatException.class);
+        assertThat(thrown3).as("initializeUserNumber_테스트").isInstanceOf(NumberFormatException.class);
+    }
+
+
 }
