@@ -32,7 +32,7 @@ public class MainController {
 
         private static void validateWhetherRestart(String inputString) {
             if (inputString.length() != 1) throw new IllegalArgumentException(WRONG_INPUT_WHETHER_RESTART_MESSAGE);
-            else if (inputString.charAt(0) != RESTART || inputString.charAt(0) != END_GAME)
+            else if (inputString.charAt(0) != RESTART && inputString.charAt(0) != END_GAME)
                 throw new IllegalArgumentException(WRONG_INPUT_WHETHER_RESTART_MESSAGE);
         }
     }
