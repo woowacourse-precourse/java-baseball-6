@@ -3,6 +3,9 @@ package baseball;
 public class BaseBallGameUI {
 
     // 숫자 야구 게임을 시작합니다.
+    public void startBaseballGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
     // 숫자를 입력해주세요 : readLine()
     // 결과 출력
         // 오답이면 오답 결과 출력
