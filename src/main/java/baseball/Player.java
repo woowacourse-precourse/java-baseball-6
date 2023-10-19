@@ -4,7 +4,8 @@ public class Player {
 
     private Computer computer;
 
-    public Player() {}
+    public Player() {
+    }
 
     public void start() {
         play();

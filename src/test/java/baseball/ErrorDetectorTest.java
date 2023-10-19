@@ -28,6 +28,7 @@ class ErrorDetectorTest {
                 () -> ErrorDetector.throwIfOptionInputInvalid("av")
         );
     }
+
     @Test
     void 옵션입력이잘못되었을경우() {
         Assertions.assertThrows(
