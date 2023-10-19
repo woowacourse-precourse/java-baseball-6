@@ -45,6 +45,17 @@ public class Balls {
         return ballCount;
     }
 
+    public int getStrikeCount(Balls player) {
+        List<Ball> playerBalls = player.getBalls();
+        int strikeCount = 0;
+        for (int i = 0; i < balls.size(); i++) {
+            if (balls.get(i).equals(playerBalls.get(i))) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
     public List<Ball> getBalls() {
         return balls;
     }
