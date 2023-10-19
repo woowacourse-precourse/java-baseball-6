@@ -1,21 +1,58 @@
 package baseball;
 
+
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+import java.util.List;
+
 class Game {
-    // 동작 순서
-    // 1. 게임이 시작하고, 컴퓨터가 임의의 수를 선택한다.
-    public void gameStart() {
-
+    List<Integer> answer = new ArrayList<>();
+    Game() {
+        answer = makeRandomNumber();
     }
 
-    // 2. 입력을 통해 컴퓨터의 수를 맞춘다.
+    public static void set() {
+        Game game;
+        do {
+            game = new Game();
+            game.start();
+        } while(game.restart());
+    }
+
+    public void start() {
+        guessNumber();
+    }
+
+    public List<Integer> makeRandomNumber() {
+        List<Integer> number = new ArrayList<>();
+        while (number.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!number.contains(randomNumber)) {
+                number.add(randomNumber);
+            }
+        }
+        return number;
+    }
+
     public void guessNumber() {
-
+        String inputNumber;
+        do {
+            inputNumber = Console.readLine();
+            // 에러 처리 필요
+        } while(checkInputNumber(inputNumber));
     }
-    // 3. 모두 맞히면 게임이 종료된다.
+
+    public static boolean checkInputNumber(String inputNumber) {
+
+        return false;
+    }
+
     public void endGame() {
 
     }
-    // 4. 다시 시작할건지 완전 종료할건지 선택한다.
+
     public boolean restart() {
         return false;
     }
@@ -26,6 +63,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Game game = new Game();
-        game.gameStart();
+        game.set();
     }
 }
