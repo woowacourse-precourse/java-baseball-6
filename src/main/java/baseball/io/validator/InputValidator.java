@@ -6,7 +6,7 @@ import static baseball.exception.ExceptionMessage.InputException.INPUT_MUST_NOT_
 public abstract class InputValidator {
     abstract void validate(final String userInput);
 
-    public void validateInputHasSpace(final String userInput) {
+    void validateInputHasSpace(final String userInput) {
         if (hasSpace(userInput)) {
             throw new IllegalArgumentException(INPUT_MUST_NOT_CONTAINS_SPACE.message);
         }
@@ -17,7 +17,7 @@ public abstract class InputValidator {
                 .anyMatch(Character::isWhitespace);
     }
 
-    public void validateInputIsNumeric(final String userInput) {
+    void validateInputIsNumeric(final String userInput) {
         try {
             Integer.parseInt(userInput);
         } catch (NumberFormatException exception) {
