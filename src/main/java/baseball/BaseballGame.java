@@ -2,11 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.StringTokenizer;
-
 public class BaseballGame {
 
-    private NumberManagement computer;
+    private final NumberManagement computer;
 
     BaseballGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -34,15 +32,20 @@ public class BaseballGame {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         varlidateInput(input);
-        StringTokenizer st = new StringTokenizer(input," ");
         int[] numbers = new int[3];
-        for(int i = 0; i < 3; i++) { numbers[i] = Integer.parseInt(st.nextToken()); }
+        char[] inputArr = input.toCharArray();
+        for(int i = 0; i < 3; i++) {
+            numbers[i] = inputArr[i] - '0';
+        }
         return numbers;
     }
 
     private boolean answerCheck(int[] numbers) {
-
-        return true;
+        boolean flag = computer.numberCheck(numbers);
+        if(flag) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+        return flag;
     }
 
     private boolean regame() {
@@ -68,6 +71,7 @@ public class BaseballGame {
             }
             numberFlag[number] = true;
         }
+        System.out.println("유효성 체크 완료!");
     }
 
 }
