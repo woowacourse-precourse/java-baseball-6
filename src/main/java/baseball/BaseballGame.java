@@ -27,8 +27,21 @@ public class BaseballGame {
     public void run() {
         init();
         while (running) {
-            System.out.println("It starts running.");
-            exit();
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = readLine();
+            List<Integer> userInputAsIntArray = validator.validateAndGetIntArray(userInput);
+            found = comparator.compare(randomNumbers, userInputAsIntArray);
+
+            if (found) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                exit();
+            }
+        }
+        if (found) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int userInput = Integer.parseInt(readLine());
+            if (userInput == 2) return;
+            run();
         }
     }
 
