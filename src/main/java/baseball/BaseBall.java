@@ -28,7 +28,8 @@ public class BaseBall {
             }
             createUserNumber(input);
 
-            check();
+            check(); // 결과 계산
+            printResult(); // 결과 출력
         }
     }
 
@@ -87,15 +88,28 @@ public class BaseBall {
             }
 
             int idx = computer.indexOf(n);
-            // ball
             if (idx != i) {
                 ball++;
-            }
-            // strike
-            else {
+            } else {
                 strike++;
             }
         }
+    }
+
+    private void printResult() {
+        StringBuilder sb = new StringBuilder();
+
+        if (ball > 0 && strike > 0) {
+            sb.append(ball).append("볼").append(' ').append(strike).append("스트라이크");
+        } else if (ball > 0) {
+            sb.append(ball).append("볼");
+        } else if (strike > 0) {
+            sb.append(strike).append("스트라이크");
+        } else {
+            sb.append("낫싱");
+        }
+
+        System.out.println(sb);
     }
 
     private void throwInputError() {
