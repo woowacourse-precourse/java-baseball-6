@@ -6,6 +6,9 @@ import static baseball.Input.NUMBER_LENGTH;
 
 public class Judge {
 
+    private static final int CORRECT_STRIKE_COUNT = 3;
+    private static final int NOTHING_COUNT = 0;
+
     private final String computer;
     private String userNumber;
 
@@ -16,16 +19,16 @@ public class Judge {
         this.computer = computer;
     }
 
-    public List<Integer> of(final String guess) {
+    public JudgeStatus of(final String guess) {
         init(guess);
         count();
-        return List.of(ball, strike);
+        return getStatus();
     }
 
     private void init(final String guess) {
         this.userNumber = guess;
-        ball = 0;
-        strike = 0;
+        this.ball = 0;
+        this.strike = 0;
     }
 
     private void count() {
@@ -33,6 +36,16 @@ public class Judge {
             addIfBall(i);
             addIfStrike(i);
         }
+    }
+
+    private JudgeStatus getStatus() {
+        if (isCorrect()) {
+            return JudgeStatus.CORRECT;
+        }
+        if (isNothing()) {
+            return JudgeStatus.NOTHING;
+        }
+        return JudgeStatus.INCORRECT;
     }
 
     private void addIfBall(int i) {
@@ -55,5 +68,21 @@ public class Judge {
 
     private boolean isStrike(int i) {
         return computer.charAt(i) == userNumber.charAt(i);
+    }
+
+    private boolean isCorrect() {
+        return strike == CORRECT_STRIKE_COUNT;
+    }
+
+    private boolean isNothing() {
+        return ball == NOTHING_COUNT && strike == NOTHING_COUNT;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
     }
 }
