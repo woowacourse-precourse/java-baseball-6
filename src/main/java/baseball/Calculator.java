@@ -8,7 +8,7 @@ public class Calculator {
         int count = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (input.get(0).equals(answer.get(0))) {
+            if (input.get(i).equals(answer.get(i))) {
                 count++;
             }
         }
