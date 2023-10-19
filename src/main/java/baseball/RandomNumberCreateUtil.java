@@ -6,19 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberCreateUtil {
-
-    public static final int MAX_BASEBALL_NUMBER_SIZE = 3;
-    public static final int MIN_RANDOM_NUMBER = 1;
-    public static final int MAX_RANDOM_NUMBER = 9;
-
     private RandomNumberCreateUtil() {
         throw new IllegalStateException("RandomNumberCreateUtil class Error");
     }
 
     public static List<Integer> createBaseballNumbers(){
         List<Integer> baseballNumbers = new ArrayList<>();
-        while (baseballNumbers.size() < MAX_BASEBALL_NUMBER_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+        while (baseballNumbers.size() < BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue()) {
+            int randomNumber = Randoms.pickNumberInRange(BaseballRole.MIN_BASEBALL_NUMBER.getValue()
+                    , BaseballRole.MAX_BASEBALL_NUMBER.getValue());
             if (!baseballNumbers.contains(randomNumber)) {
                 baseballNumbers.add(randomNumber);
             }

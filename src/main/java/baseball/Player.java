@@ -4,12 +4,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static baseball.RandomNumberCreateUtil.MAX_BASEBALL_NUMBER_SIZE;
-
 public class Player {
-
-    private static final int MIN_BASEBALL_NUMBER = 1;
-    private static final int MAX_BASEBALL_NUMBER = 9;
 
     private Set<Integer> expectedNumbers;
 
@@ -27,11 +22,11 @@ public class Player {
     }
 
     private Predicate<Integer> checkNumberRange() {
-        return n -> n >= MIN_BASEBALL_NUMBER && n <= MAX_BASEBALL_NUMBER;
+        return n -> n >= BaseballRole.MIN_BASEBALL_NUMBER.getValue() && n <= BaseballRole.MAX_BASEBALL_NUMBER.getValue();
     }
 
     private void validateNumberSize(Set<Integer> numbers) {
-        if (numbers.size() != MAX_BASEBALL_NUMBER_SIZE){
+        if (numbers.size() != BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue()){
             throw new IllegalArgumentException(ErrorMessage.INPUT_ONE_TO_NINE_DIFFERENT_THREE_NUMBERS.getMessage());
         }
     }
