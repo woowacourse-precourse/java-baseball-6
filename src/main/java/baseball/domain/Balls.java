@@ -28,7 +28,6 @@ public class Balls {
 
     public List<BallStatus> play(List<Integer> userBallNumbers) {
         List<Ball> userBalls = mapToBalls(userBallNumbers);
-
         List<BallStatus> ballStatuses = userBalls.stream()
                 .map(userBall -> this.match(userBall))
                 .collect(Collectors.toList());
