@@ -27,28 +27,20 @@ public class BaseballGame {
     }
 
     public void play() {
-        List<Integer> computer = setComputerNumber();
+        List<Integer> computerNumber = setComputerNumber();
 
-        while (true) {
-            int strike = 0;
-            int ball = 0;
+        boolean playing = true;
+        while (playing) {
+            List<Integer> myNumber = setMyNumber();
 
-            System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> myNumber = getNumberList();
+            Result result = compareNumber(computerNumber, myNumber);
 
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if (computer.get(i) == myNumber.get(j)) {
-                        if (i == j) strike++;
-                        else ball++;
-                    }
-                }
-            }
-
-            System.out.println(stringBuilder(ball, strike));
+            int ball = result.getBall();
+            int strike = result.getStrike();
+            printResult(ball, strike);
 
             if (strike == 3) {
-                break;
+                playing = false;
             }
         }
     }
@@ -65,9 +57,10 @@ public class BaseballGame {
         return computer;
     }
 
-    private List<Integer> getNumberList() {
-        List<Integer> numberList;
+    private List<Integer> setMyNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
 
+        List<Integer> numberList;
         try {
             numberList = Arrays.stream(Console.readLine().split(""))
                     .map(Integer::parseInt)
@@ -88,7 +81,23 @@ public class BaseballGame {
         return numberList;
     }
 
-    private StringBuilder stringBuilder(int ball, int strike) {
+    private Result compareNumber(List<Integer> computerNumber, List<Integer> myNumber) {
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (computerNumber.get(i) == myNumber.get(j)) {
+                    if (i == j) strike++;
+                    else ball++;
+                }
+            }
+        }
+
+        return new Result(ball, strike);
+    }
+
+    private void printResult(int ball, int strike) {
         StringBuilder sb = new StringBuilder();
 
         if (ball == 0 && strike == 0) {
@@ -101,6 +110,25 @@ public class BaseballGame {
             sb.append(strike + "스트라이크");
         }
 
-        return sb;
+        System.out.println(sb);
+    }
+
+    static class Result {
+
+        private int ball;
+        private int strike;
+
+        public Result(int ball, int strike) {
+            this.ball = ball;
+            this.strike = strike;
+        }
+
+        public int getBall() {
+            return ball;
+        }
+
+        public int getStrike() {
+            return strike;
+        }
     }
 }
