@@ -5,14 +5,12 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputAnswerImpl implements InputAnswer {
 
 
-    private static Integer answer;
 
     @Override
-    public void inputAnswer() throws IllegalArgumentException{
+    public Integer inputAnswer() throws IllegalArgumentException{
         String input = Console.readLine();
         integrateValidation(input);
-        answer = Integer.parseInt(input);
-
+        return Integer.parseInt(input);
     }
 
     @Override

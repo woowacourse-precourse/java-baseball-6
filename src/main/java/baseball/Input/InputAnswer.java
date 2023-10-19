@@ -2,7 +2,7 @@ package baseball.Input;
 
 public interface InputAnswer {
 
-    void inputAnswer();
+    Integer inputAnswer();
 
     void integrateValidation(String input);
 
