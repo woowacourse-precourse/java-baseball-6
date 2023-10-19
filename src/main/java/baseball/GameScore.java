@@ -14,8 +14,8 @@ public class GameScore {
         this.computer = computer;
     }
 
-    public Count calculateScore() {
-        Count count = new Count();
+    public BallStrikeCount calculateScore() {
+        BallStrikeCount ballStrikeCount = new BallStrikeCount();
         List<Integer> personList = person.getInputList();
         List<Integer> computerList = computer.getRandomList();
 
@@ -24,12 +24,12 @@ public class GameScore {
 
             if (computerList.contains(personNum)) {
                 if (computerList.indexOf(personNum) == i) {
-                    count.increaseStrike();
+                    ballStrikeCount.increaseStrike();
                     continue;
                 }
-                count.increaseBall();
+                ballStrikeCount.increaseBall();
             }
         }
-        return count;
+        return ballStrikeCount;
     }
 }

@@ -10,9 +10,9 @@ public class GameMessages {
     }
 
     //TODO [HJ]이게 여기 위치하는 것이 맞을까? 출력이랑 값 판별의 분리가 까다로워서 냅둠
-    public static void displayScore(Count count) {
-        int ball = count.getBallCount();
-        int strike = count.getStrikeCount();
+    public static void displayScore(BallStrikeCount ballStrikeCount) {
+        int ball = ballStrikeCount.getBallCount();
+        int strike = ballStrikeCount.getStrikeCount();
 
         if (strike > 0 && ball > 0) {
             System.out.println(ball + "볼" + " " + strike + "스트라이크");

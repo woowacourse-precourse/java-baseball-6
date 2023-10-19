@@ -1,10 +1,10 @@
 package baseball;
 
-public class Count {
+public class BallStrikeCount {
     private int ballCount;
     private int strikeCount;
 
-    public Count() {
+    public BallStrikeCount() {
         ballCount = 0;
         strikeCount = 0;
     }

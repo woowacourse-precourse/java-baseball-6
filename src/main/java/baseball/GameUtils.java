@@ -11,13 +11,13 @@ public class GameUtils {
         this.computer = computer;
     }
 
-    public void restartRound(Count count) {
-        count.clean();
+    public void restartRound(BallStrikeCount ballStrikeCount) {
+        ballStrikeCount.clean();
         person.clean();
     }
 
-    public void restartGame(Count count) {
-        count.clean();
+    public void restartGame(BallStrikeCount ballStrikeCount) {
+        ballStrikeCount.clean();
         person.clean();
         computer.clearAndInitialize();
     }

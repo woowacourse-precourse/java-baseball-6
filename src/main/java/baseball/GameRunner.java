@@ -20,22 +20,22 @@ public class GameRunner {
 
         person.insert(Console.readLine());
 
-        Count count = gameScore.calculateScore();
+        BallStrikeCount ballStrikeCount = gameScore.calculateScore();
 
-        GameMessages.displayScore(count);
+        GameMessages.displayScore(ballStrikeCount);
 
-        if (isThreeStrike(count) && handleUserChoice(count)) {
+        if (isThreeStrike(ballStrikeCount) && handleUserChoice(ballStrikeCount)) {
             return true;
         }
 
-        gameUtils.restartRound(count);
+        gameUtils.restartRound(ballStrikeCount);
         return false;
     }
 
-    private boolean handleUserChoice(Count count) {
+    private boolean handleUserChoice(BallStrikeCount ballStrikeCount) {
         int choice = Integer.parseInt(Console.readLine());
         if (choice == RESTART_GAME) {
-            gameUtils.restartGame(count);
+            gameUtils.restartGame(ballStrikeCount);
             return false;
         }
         if (choice == END_GAME) {
@@ -44,7 +44,7 @@ public class GameRunner {
         return false;
     }
 
-    private boolean isThreeStrike(Count count) {
-        return count.getStrikeCount() == THREE_STRIKE;
+    private boolean isThreeStrike(BallStrikeCount ballStrikeCount) {
+        return ballStrikeCount.getStrikeCount() == THREE_STRIKE;
     }
 }
