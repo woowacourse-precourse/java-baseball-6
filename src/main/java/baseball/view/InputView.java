@@ -22,4 +22,19 @@ public final class InputView {
   private String readLine() {
     return Console.readLine().trim();
   }
+
+  public boolean inputWillExit() {
+    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+    final String input = readLine();
+
+    if ("1".equals(input)) {
+      return true;
+    }
+    if ("2".equals(input)) {
+      return false;
+    }
+
+    throw new IllegalArgumentException("1, 2 중 하나를 입력해주세요.");
+  }
 }
