@@ -25,6 +25,12 @@ public class UserBehavior {
         check(1, second);
         int third = Integer.parseInt(inputNumber.substring(2, 3));
         check(2, third);
+
+        while (result()) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
+        input();
     }
 
     public void check(int index, int number) {
@@ -35,5 +41,25 @@ public class UserBehavior {
         if (computerNumbers.contains(number)) {
             ball++;
         }
+    }
+    public boolean result() {
+        if (strike == 3) {
+            System.out.println(strike+"스트라이크");
+            return true;
+        }
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+            return false;
+        }
+        if (ball == 0) {
+            System.out.println(strike+"스트라이크");
+            return false;
+        }
+        if (strike == 0) {
+            System.out.println(ball+"볼");
+            return false;
+        }
+        System.out.println(ball+"볼 "+strike+"스트라이크");
+        return false;
     }
 }
