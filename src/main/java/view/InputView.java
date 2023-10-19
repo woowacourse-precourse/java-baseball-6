@@ -36,7 +36,7 @@ public class InputView {
      */
     public int inputRetryNumber() {
         String number = readLine();
-        exceptionModel.checkRetryNumber(number);
+        exceptionModel.checkRetry(number);
         return Integer.parseInt(number);
     }
 

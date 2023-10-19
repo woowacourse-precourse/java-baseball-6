@@ -22,7 +22,7 @@ public class ExceptionModel {
     /**
      *  재시작/종료를 구분하는 숫자 유효성 검사
      */
-    public void checkRetryNumber(String input) {
+    public void checkRetry(String input) {
         checkNumberType(input);
         checkOneNumber(input);
         checkRetryNumber(input);
@@ -35,8 +35,8 @@ public class ExceptionModel {
         String[] numbers = input.split("");
         String regex = "[1-9]+";
 
-        for (int i = 0; i < numbers.length; i++) {
-            if (!Pattern.matches(regex, numbers[i])) {
+        for (String number : numbers) {
+            if (!Pattern.matches(regex, number)) {
                 throw new IllegalArgumentException(IS_NUMBER);
             }
         }
@@ -82,8 +82,9 @@ public class ExceptionModel {
     /**
      * 1과 2중 하나를 입력했는지 확인
      */
-    private void checkRetryNumber(int input) {
-        if (input != NumberData.RESTART_NUMBER && input != NumberData.FINISH_NUMBER) {
+    private void checkRetryNumber(String input) {
+        int num = Integer.parseInt(input);
+        if (num != BaseballData.RESTART_NUMBER && num != BaseballData.FINISH_NUMBER) {
             throw new IllegalArgumentException(RETRY_NUMBER);
         }
     }

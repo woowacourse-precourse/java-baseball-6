@@ -6,8 +6,9 @@ import view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-import static model.NumberData.*;
+import static model.BaseballData.*;
 
 
 public class BaseballGame {
@@ -39,8 +40,37 @@ public class BaseballGame {
 
     public String gameResult() {
         StringBuilder result = new StringBuilder();
-
+        int ball = isBall();
+        int strike = isStrike();
+        if (strike == 3) {
+            result.append(strike).append(STRIKE);
+        } else if (strike ==0&&ball==0){
+            result.append(NOTHING);
+        } else {
+            if (ball != 0)
+                result.append(ball).append(BALL).append(" ");
+            else
+                result.append(strike).append(STRIKE);
+        }
         return result.toString();
+    }
+
+    public int isBall() {
+        int count= 0;
+        for (int i = 0; i < 3; i++) {
+            if (!Objects.equals(computerNumber.get(i), myNumber.get(i)) && computerNumber.contains(myNumber.get(i)))
+                count++;
+        }
+        return count;
+    }
+
+    public int isStrike() {
+        int count= 0;
+        for (int i = 0; i < 3; i++) {
+            if (Objects.equals(computerNumber.get(i), myNumber.get(i)))
+                count++;
+        }
+        return count;
     }
 
     public void gameRestart(int restart) {
