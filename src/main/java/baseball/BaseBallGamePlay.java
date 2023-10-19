@@ -14,6 +14,7 @@ public class BaseBallGamePlay {
     private void play() {
         output();
         String playerBall = input();
+        checkInput(playerBall);
         PlayerNumbers playerNumbers = new PlayerNumbers(playerBall);
 
         System.out.println(playerNumbers.getPlayerNumbers());
@@ -24,41 +25,40 @@ public class BaseBallGamePlay {
     }
 
     private String input() {
-        String inputPlayerBall = Console.readLine();
+        return Console.readLine();
+    }
 
-        // 입력값이 3자리가 아닐 경우 에러발생
+    private void checkInput(String inputPlayerBall) {
+
+        // 3자리 수가 아니면 에러발생
         if (inputPlayerBall.length() != 3) {
             throw new IllegalArgumentException();
         }
 
-        return inputPlayerBall;
-
+        // 현재 문자가 숫자인지 확인 아니면 에러발생
+        for (int i = 0; i < inputPlayerBall.length(); i++) {
+            char currentChar = inputPlayerBall.charAt(i);
+            if (!Character.isDigit(currentChar)) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     static class PlayerNumbers {
         List<Integer> playerNumbers = new ArrayList<>();
 
         public PlayerNumbers(String playerBalls) {
-
             // 변환
             for (int i = 0; i < playerBalls.length(); i++) {
                 char currentChar = playerBalls.charAt(i);
-
-                // 현재 문자가 숫자인지 확인 아니면 에러발생
-                if (Character.isDigit(currentChar)) {
-                    playerNumbers.add(currentChar - '0');
-                    continue;
-                }
-                throw new IllegalArgumentException();
+                playerNumbers.add(currentChar - '0');
             }
         }
 
         public List<Integer> getPlayerNumbers() {
             return playerNumbers;
         }
-
     }
-
 }
 
 
