@@ -24,8 +24,19 @@ public class GameRunner {
     private BallStrikeCount executeRound() {
         GameMessages.printInputMessage();
         String input = Console.readLine();
+        validateInput(input);
         person.insert(input);
         return gameScore.calculateScore();
+    }
+
+    private void validateInput(String input) {
+        if (!input.matches("\\d+")) {
+            throw new IllegalArgumentException(NOT_NUMBER);
+        }
+
+        if (input.length() > 3) {
+            throw new IllegalArgumentException(NOT_VALID_LENGTH);
+        }
     }
 
     private boolean checkContinueGame(BallStrikeCount ballStrikeCount) {
