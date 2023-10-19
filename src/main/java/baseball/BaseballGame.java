@@ -29,8 +29,8 @@ public class BaseballGame {
         while (running) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = readLine();
-            List<Integer> userInputAsIntArray = validator.validateAndGetIntArray(userInput);
-            found = comparator.compare(randomNumbers, userInputAsIntArray);
+            List<Integer> threeDigitNumbers = validator.validateAndParseGuessedNumbers(userInput);
+            found = comparator.compare(randomNumbers, threeDigitNumbers);
 
             if (found) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
