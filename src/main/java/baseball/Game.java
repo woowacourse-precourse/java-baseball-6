@@ -16,7 +16,7 @@ public class Game {
         computerNumber = getComputerNumber();
         input = new Input();
         judge = new Judge(computerNumber);
-        output = new Output();
+        output = new Output(judge);
     }
 
     public static void run() {

@@ -12,7 +12,7 @@ public class Input {
     private static final String RESTART = "1";
     public static final String EXIT = "2";
 
-    public String askGuess() {
+    public String askUserNumber() {
         userNumber = Console.readLine();
         validateGuessInput();
         return userNumber;

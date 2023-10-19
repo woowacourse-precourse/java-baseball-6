@@ -11,35 +11,56 @@ public class Output {
     private static final String ASK_RESTART =
             "3개의 숫자를 모두 맞히셨습니다! 게임 종료%n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    private int ball;
+    private int strike;
+
+    public Output(Judge judge) {
+        this.ball = judge.getBall();
+        this.strike = judge.getStrike();
+    }
     public static void start() {
         System.out.println(START);
     }
 
-    public static void askNumber() {
+    public void askNumber() {
         System.out.print(ASK_NUMBER);
     }
 
-    public static void answer() {
-        if (strike == 3) {
-            System.out.println(ASK_RESTART);
-            return;
-        }
-        if (ball == 0 && strike == 0) {
-            System.out.println(NOTHING);
-            return;
-        }
-        if (ball == 0) {
-            System.out.printf(STRIKE, strike);
-            return;
-        }
-        if (strike == 0) {
-            System.out.printf(BALL, ball);
-            return;
-        }
-        System.out.printf(BALL_AND_STRIKE, ball, strike);
+    public void printResult(JudgeStatus status) {
+        printIfBall();
+        printIfStrike();
+        printIfBallAndStrike();
+        printIfNothing(status);
+        printIfCorrect(status);
     }
 
-    public static void askRestart() {
-        System.out.print(ASK_RESTART);
+    private void printIfBall() {
+        if (strike == 0) {
+            System.out.printf(BALL, ball);
+        }
+    }
+
+    private void printIfStrike() {
+        if (ball == 0) {
+            System.out.printf(STRIKE, strike);
+        }
+    }
+
+    private void printIfBallAndStrike() {
+        if (ball != 0 && strike != 0) {
+            System.out.printf(BALL_AND_STRIKE, ball, strike);
+        }
+    }
+
+    private void printIfCorrect(JudgeStatus status) {
+        if (status.equals(JudgeStatus.CORRECT)) {
+            System.out.println(ASK_RESTART);
+        }
+    }
+
+    private void printIfNothing(JudgeStatus status) {
+        if (status.equals(JudgeStatus.NOTHING)) {
+            System.out.println(NOTHING);
+        }
     }
 }
