@@ -5,7 +5,6 @@ import baseball.domain.Computer;
 import baseball.domain.Result;
 import baseball.view.InputView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +17,6 @@ public class BaseBallGame {
     private static final String END_GAME_SIG = "2";
     private final InputView view = new InputView();
     private final Computer computer = new Computer();
-    private Numbers answerNumbers;
 
 
     public void run() {
@@ -27,19 +25,20 @@ public class BaseBallGame {
         Boolean continueGame = Boolean.TRUE;
 
         while (continueGame) {
-            answerNumbers = new Numbers(computer.createNumberList());
+            Numbers answerNumbers = Numbers.create(computer.createNumberList());
 
-            startGame();
+            startGame(answerNumbers);
 
             view.printFinish();
+
             continueGame = isContinueGame(readLine());
         }
     }
 
-    private void startGame() {
+    private void startGame(Numbers answerNumbers) {
         while (true) {
             view.printNumberInput();
-            Numbers inputNumbers = new Numbers(enterNumberList());
+            Numbers inputNumbers = Numbers.create(enterNumberList());
 
             Result result = computer.calculateResult(answerNumbers, inputNumbers);
             view.printResult(result);
