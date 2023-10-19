@@ -9,4 +9,8 @@ public class Constants {
     public static final String NOTHING_MESSAGE = "낫싱";
     public static final String GAME_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String RESTART_OR_FINISH_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+    public static final String INVALID_INPUT_ONLY_INTEGER_ERROR_MESSAGE = "숫자만 입력하세요";
+    public static final String INVALID_NUMBERS_INPUT_LENGTH_ERROR_MESSAGE = "숫자의 길이는 3이어야 합니다.";
+    public static final String INVALID_OPTION_INPUT_ERROR_MESSAGE = "1 (계속) 혹은 2 (종료) 만 입력하셔야 합니다.";
 }
