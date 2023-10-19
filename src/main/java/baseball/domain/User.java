@@ -44,5 +44,9 @@ public class User {
         return this.userNumbers;
     }
 
-
+    public boolean isRetry(String retryNumber) {
+        if(validation(retryNumber,STRING_REGEXP)) throw new IllegalArgumentException(Validation.INVALID_NOT_NUMBER);
+        if(!validation(retryNumber,RETRY_REGEXP)) throw new IllegalArgumentException(Validation.INVALID_RETRY_NUMBER);
+        return retryNumber.equals(RETRY);
+    }
 }
