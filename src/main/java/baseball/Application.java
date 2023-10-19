@@ -30,7 +30,7 @@ public class Application {
                     int strike = 0;
                     int ball = 0;
                     int nothing = goal.size;
-                    int temp = 0;
+                    int temp = 0; //locate 를 알 수 있게 하는 역할
 
                     while (temp < guess.length()) {
                         int guess_num = Integer.parseInt(String.valueOf(guess.charAt(temp)));
