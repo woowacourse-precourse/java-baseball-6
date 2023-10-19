@@ -1,5 +1,5 @@
 package baseball;
 
-public class IllegalArgumentException extends Exception{
+public class IllegalArgumentException extends RuntimeException{
     IllegalArgumentException(){}
 }

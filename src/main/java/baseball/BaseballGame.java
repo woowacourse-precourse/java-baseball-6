@@ -9,7 +9,7 @@ import java.util.Objects;
 public class BaseballGame{
     private final List<Integer> computer = new ArrayList<>();
     private boolean isError = false;
-    public void newGame(){
+    private void newGame(){
         computer.clear();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -18,7 +18,7 @@ public class BaseballGame{
             }
         }
     }
-    public List<Integer> readPlayerNumber(){
+    private List<Integer> readPlayerNumber(){
         String playerNumberInString = Console.readLine();
         List<Integer> player = new ArrayList<>();
         rightInput(playerNumberInString);
@@ -30,29 +30,31 @@ public class BaseballGame{
         }
         return player;
     }
-    public void rightInput(String playerNumberInString) {
-        try{
-            if (playerNumberInString.length()!=3
-                    ||playerNumberInString.charAt(0)
+    private void rightInput(String playerNumberInString){
+        if(playerNumberInString.length()!=3){
+            isError = true;
+        }
+        if (playerNumberInString.length()==3){
+            if(playerNumberInString.charAt(0)
                     ==playerNumberInString.charAt(1)
                     ||playerNumberInString.charAt(1)
                     ==playerNumberInString.charAt(2)
                     ||playerNumberInString.charAt(0)
-                    ==playerNumberInString.charAt(2)){
-                throw new IllegalArgumentException();
+                    ==playerNumberInString.charAt(2)) {
+                isError = true;
             }
             for(int i = 0; i<3;i++){
                 if(!Character.isDigit(playerNumberInString.charAt(i))){
-                    throw new IllegalArgumentException();
+                    isError = true;
                 }
             }
-        }catch(IllegalArgumentException illegalArgumentException){
-            System.out.println("Illegal Argument Exception");
-            isError = true;
+        }
+        if (isError){
+            throw new IllegalArgumentException();
         }
 
     }
-    public void compareNumber(){
+    private void compareNumber() {
         int strike = 0;
         while(strike != 3){
             System.out.print("\n숫자를 입력해주세요 : ");
@@ -81,7 +83,7 @@ public class BaseballGame{
             }
         }
     }
-    public void restartOrExit(){
+    private void restartOrExit(){
         String restartOrExit = Console.readLine();
         if(restartOrExit.equals("1")){
             startGame();
@@ -92,7 +94,8 @@ public class BaseballGame{
             restartOrExit();
         }
     }
-    public void startGame(){
+
+    public void startGame() {
         newGame();
         compareNumber();
         if(!isError){
