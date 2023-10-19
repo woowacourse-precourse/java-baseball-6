@@ -30,6 +30,27 @@ public class Computer {
         return numberList;
     }
 
+    public Result calculateResult(Numbers answerNumbers, Numbers inputNumbers) {
+        List<Integer> answerNumberList = answerNumbers.getNumberList();
+        List<Integer> inputNumberList = inputNumbers.getNumberList();
 
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < NUMBER_COUNT; i++) {
+            Integer number = inputNumberList.get(i);
+
+            if (answerNumberList.get(i).equals(number)) {
+                strike += 1;
+                continue;
+            }
+
+            if (answerNumberList.contains(number)) {
+                ball += 1;
+            }
+        }
+
+        return new Result(ball, strike);
+    }
 
 }
