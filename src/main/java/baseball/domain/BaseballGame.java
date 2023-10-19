@@ -7,7 +7,6 @@ public class BaseballGame {
 
     Computer computer;
 
-
     public List<Integer> createComputerNumber(){
         List<Integer> computerNumber;
         computer = new Computer();

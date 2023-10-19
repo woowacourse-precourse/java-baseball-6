@@ -10,7 +10,6 @@ import java.util.StringTokenizer;
 
 public class BaseballGameController {
 
-    Computer computer;
     public BaseballGameController(){
         OutputView.printGameInitMessage();
     }
@@ -22,6 +21,7 @@ public class BaseballGameController {
         InputView.printInputNumberMessage();
         userNumber = InputView.getInputNumber();
         BaseballGame baseballGame = new BaseballGame();
+
 
 
 
