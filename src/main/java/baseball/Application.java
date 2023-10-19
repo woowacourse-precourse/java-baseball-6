@@ -67,13 +67,19 @@ class UserNumber {
 
 	Set<Integer> toSetUserNumber(String[] inputUserNumber) {
 
-		Set<Integer> UserNumber = new HashSet<>();
+		Set<Integer> userNumber = new HashSet<>();
 
 		for (String eachUserNumber : inputUserNumber) {
-			UserNumber.add(Integer.parseInt(eachUserNumber.trim()));
+			userNumber.add(Integer.parseInt(eachUserNumber.trim()));
 		}
 
-		return UserNumber;
+		return userNumber;
+	}
+
+	void checkSizeUserNumber(Set<Integer> userNumber) {
+		if(userNumber.size() != 3) {
+			throw new IllegalArgumentException("중복되지 않는 3자리 숫자만 입력해주세요");
+		}
 	}
 
 }
