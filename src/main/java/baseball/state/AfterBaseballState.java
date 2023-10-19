@@ -1,6 +1,6 @@
 package baseball.state;
 
-public enum BaseballEndState {
-    END_GAME,
+public enum AfterBaseballState {
     RESTART_GAME,
+    END_GAME,
 }

@@ -1,10 +1,10 @@
 package baseball.state;
 
-public class BaseballResultState {
+public class BaseballResult {
     private final int MAX_MATCH = 3;
     private final int ball;
     private final int strike;
-    public BaseballResultState(int _ball, int _strike) {
+    public BaseballResult(int _ball, int _strike) {
         if (_ball < 0 || _strike < 0 || _ball + _strike > MAX_MATCH) {
             throw new IllegalArgumentException();
         }
