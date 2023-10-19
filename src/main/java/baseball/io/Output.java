@@ -10,8 +10,18 @@ public class Output {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public void printHint(String result) {
-        System.out.println(result);
+    public void printHint(int[] result) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (result[0] != 0) {
+            stringBuilder.append(result[0]).append("볼 ");
+        }
+        if (result[1] != 0) {
+            stringBuilder.append(result[1]).append("스트라이크 ");
+        }
+        if (stringBuilder.isEmpty()) {
+            stringBuilder.append("낫싱");
+        }
+        System.out.println(stringBuilder);
     }
 
     public void printFinishOrRestart() {
