@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -28,7 +29,17 @@ public class Application {
     public static String tryAnswer(){
         System.out.println("세개의 숫자를 입력해주세요. : ");
         String userInput = Console.readLine();
-        System.out.println(userInput);
+        try {
+            validateInput(userInput);
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
         return userInput;
+    }
+    public static void validateInput(String userInput) throws Exception {
+        // 3자리 수가 아니거나, 숫자가 아니거나, 동일한 수가 있으면 에러
+        boolean isDuplicate = Arrays.stream(userInput.split("")).distinct().count() != userInput.split("").length;
+        boolean hasZero = userInput.contains("0");
+        if(userInput.length() != 3 || isDuplicate || hasZero) throw new Exception();
     }
 }
