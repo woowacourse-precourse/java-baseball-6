@@ -15,7 +15,12 @@ public enum Size {
         return value;
     }
 
-    public static boolean isBetweenSize(int num) {
+    public static boolean isInRange(int num) {
         return num >= MIN.value && num <= MAX.value;
+    }
+
+    public static boolean isInSize(int num) {
+        return num >= (int) Math.pow(10, NUMBER.getValue()-1) &&
+                num < (int) Math.pow(10, NUMBER.getValue());
     }
 }

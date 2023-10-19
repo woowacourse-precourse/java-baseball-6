@@ -5,20 +5,19 @@ import baseball.common.Size;
 
 public class InputValidator {
     int checkOutOfNumber(int input) {
-        if (Integer.toString(input).length() != Size.NUMBER.getValue() && input > 0) {
-            throw new IllegalArgumentException();
+        if (Size.isInSize(input)) {
+            return checkOutOfRange(Integer.toString(input));
         }
-        return checkOutOfRange(input);
+        throw new IllegalArgumentException();
     }
 
-    int checkOutOfRange(int input) {
-        String num = Integer.toString(input);
-        for (int i = 0; i < num.length(); i++) {
-            if (!Size.isBetweenSize(Character.getNumericValue(num.charAt(i)))) {
+    int checkOutOfRange(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!Size.isInRange(Character.getNumericValue(input.charAt(i)))) {
                 throw new IllegalArgumentException();
             }
         }
-        return input;
+        return Integer.parseInt(input);
     }
 
     int isInteger(String input) {
