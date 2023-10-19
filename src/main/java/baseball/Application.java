@@ -35,20 +35,20 @@ public class Application {
     }
 
 
-    class BaseBallGame() {
+    static class BaseBallGame() {
         private static final int START_RANGE = 1;
         private static final int END_RANGE = 9;
         static final int NUMBER_IDX = 3;
         private static final int NEW_GAME = 1;
         private static final int QUIT_GAME = 2;
 
-        int[] computer = new int[NUMBER_IDX];
+        int[] number = new int[NUMBER_IDX];
 
         BaseBallGame() {
             int nowRandomNum = 0, nowRandomNumIdx = 0;
         }
 
-        public static void init(BaseBallGame rightAnswer) {
+        public static void init(BaseBallGame computerAnswer) {
             BaseBallGame userAnswer = BaseBallGame.getUserAnswer();
             GameResult gameResult = new GameResult();
 
@@ -96,7 +96,7 @@ public class Application {
         }
     }
 
-    class GameResult() {
+    static class GameResult() {
         int ball = 0, strike = 0;
 
         private static final String BALL = "볼";
