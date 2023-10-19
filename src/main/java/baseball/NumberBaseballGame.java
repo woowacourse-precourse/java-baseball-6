@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class NumberBaseballGame {
@@ -13,9 +14,7 @@ public class NumberBaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.\n");
         computer = generateRandomNumbers();
         boolean isContinue = true;
-        while (isContinue) {
-            playGame();
-        }
+        playGame();
     }
 
     private void playGame() {
@@ -39,7 +38,7 @@ public class NumberBaseballGame {
         System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
 
-        validateUserInput(inputString); // 예외처리 미구현
+        validateUserInput(inputString);
 
         return inputString.chars()
                 .map(Character::getNumericValue)
@@ -48,7 +47,12 @@ public class NumberBaseballGame {
     }
 
     // 예외처리 미구현
-    private boolean validateUserInput(String inputString) {
+    private boolean validateUserInput(String inputString) throws IllegalArgumentException {
+        String userInputRegex = "^[1-9]{3}$";
+        if (!Pattern.matches("^[0-9]{3}$", inputString)) {
+            System.out.println("잘못된 숫자 입력입니다: " + inputString);
+            throw new IllegalArgumentException("잘못된 숫자 입력입니다: " + inputString);
+        }
         return true;
     }
 }
