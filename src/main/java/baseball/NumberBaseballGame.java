@@ -7,6 +7,8 @@ public class NumberBaseballGame {
     AnswerMaker answerMaker = new AnswerMaker();
     Message message = new Message();
     UserInput userInput = new UserInput();
+    Computer computer = new Computer();
+    Validation validation = new Validation();
     List<Integer> answer = new ArrayList<>();
 
     public void speaker(String message) {
@@ -21,6 +23,10 @@ public class NumberBaseballGame {
             oneRound(); // 하나의 라운드가 끝나면 재시작 여부 묻기
             speaker(message.restartOrStopMessage());
             String startOrStop = userInput.getUserInput();
+            validation.validateContinueSign(startOrStop);
+            if (startOrStop.charAt(0) == '2') {
+                gameStatus = false;
+            }
         }
     }
 
