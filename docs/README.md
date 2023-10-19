@@ -23,9 +23,9 @@
 
 ###  ☑️ 체크리스트
 
-- [ ] 브랜치를 생성 후 변경하였는가
-- [ ] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console API`를 사용하여 구현했는가
-- [ ] `Random` 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하였는가
-- [ ] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`를 입력했는가
-- [ ] `JDK 17` 버전에서 실행 가능해야 하는가
-- [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료
+- [x] 브랜치를 생성 후 변경하였는가
+- [x] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console API`를 사용하여 구현했는가
+- [x] `Random` 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하였는가
+- [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`를 입력했는가
+- [x] `JDK 17` 버전에서 실행 가능해야 하는가
+- [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료
