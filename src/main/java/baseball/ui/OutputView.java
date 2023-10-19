@@ -15,14 +15,7 @@ public class OutputView {
 	}
 
 	public void printGameResultMessage(GameResult result) {
-		int ballCount = result.getBallCount();
-		int strikeCount = result.getStrikeCount();
-
-		if(ballCount == 0 && strikeCount == 0) {
-			System.out.println("낫싱");
-		} else if(ballCount > 0 || strikeCount > 0) {
-			System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
-		}
+		System.out.println(result.resultToString());
 	}
 
 	public void printRestartSelectMessage() {

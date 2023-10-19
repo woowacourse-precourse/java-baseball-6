@@ -2,20 +2,15 @@ package baseball.domain;
 
 import static baseball.global.constant.BaseballConstant.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import baseball.domain.GameResult;
 import baseball.ui.InputView;
 import baseball.ui.OutputView;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame {
 	private final OutputView outputView;
 	private final InputView inputView;
 
-	private static List<Integer> computer;
-	private static List<Integer> user;
+	private static Computer computer = new Computer();
+	private static Player player;
 
 	public BaseballGame(OutputView outputView, InputView inputView) {
 		this.outputView = outputView;
@@ -24,21 +19,21 @@ public class BaseballGame {
 
 	public void start() {
 		printStartMessage();
-		computer = generateComputerNumber();
+		computer.generate();
 
 		playGame();
 	}
 
 	private void playGame() {
 		while (true) {
-			user = inputView.readPlayerNumber();
-			GameResult result = play(computer, user);
+			player = new Player(inputView.readPlayerNumber());
+			GameResult result = play(computer, player);
 
 			if (result.getStrikeCount() == THREE_STRIKE) {
 				outputView.printGameFinishMessage();
 				String option = inputView.readRestartOrNot();
 				if (option.equals(SIGN_RESTART)) {
-					computer = generateComputerNumber();
+					computer.generate();
 					continue;
 				} else if (option.equals(SIGN_STOP)) {
 					break;
@@ -48,36 +43,23 @@ public class BaseballGame {
 		}
 	}
 
-	private GameResult play(List<Integer> computer, List<Integer> user) {
-		int strikeCount = 0;
-		int ballCount = 0;
+	private GameResult play(Computer computer, Player player) {
+		GameResult result = new GameResult();
 
-		for (int i = 0; i < PLAY_AMOUNT; i++) {
-			int userNumber = user.get(i);
-			int computerNumber = computer.get(i);
+		for (int idx = 0; idx < PLAY_AMOUNT; idx++) {
+			int playerNumber = player.getNumberOf(idx);
+			int computerNumber = computer.getNumberOf(idx);
 
-			if (userNumber == computerNumber) {
-				strikeCount++;
+			if (playerNumber == computerNumber) {
+				result.addStrikeCount();
 				continue;
 			}
-			if (computer.contains(userNumber)) {
-				ballCount++;
+			if (computer.contains(playerNumber)) {
+				result.addBallCount();
 			}
 		}
 
-		return new GameResult(strikeCount, ballCount);
-	}
-
-	private List<Integer> generateComputerNumber() {
-		List<Integer> computer = new ArrayList<>();
-		while (computer.size() < PLAY_AMOUNT) {
-			int randomNumber = Randoms.pickNumberInRange(1, 9);
-			if (!computer.contains(randomNumber)) {
-				computer.add(randomNumber);
-			}
-		}
-
-		return computer;
+		return result;
 	}
 
 	private void printStartMessage() {
