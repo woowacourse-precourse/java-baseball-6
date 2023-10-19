@@ -9,7 +9,7 @@ import static baseball.PlayerInput.QUIT_GAME;
  */
 public class PlayerMenuInputValidator {
 
-    public boolean validateMenu(int menuNumber) {
+    public static boolean validateMenu(int menuNumber) {
         return menuNumber == NEW_GAME ||
                 menuNumber == QUIT_GAME;
     }

@@ -12,29 +12,29 @@ import java.util.List;
  */
 public class PlayerNumbersInputValidator {
 
-    public boolean validatePlayerNumbers(List<Integer> playerNumbers) {
+    public static boolean validatePlayerNumbers(List<Integer> playerNumbers) {
         return validateNumberCount(playerNumbers) &&
                 validateDistinctNumbers(playerNumbers) &&
                 validateNumbersInRange(playerNumbers);
     }
 
-    private boolean validateNumberCount(List<Integer> numbers) {
+    private static boolean validateNumberCount(List<Integer> numbers) {
         return numbers.size() == BALL_LENGTH;
     }
 
-    private boolean validateDistinctNumbers(List<Integer> numbers) {
+    private static boolean validateDistinctNumbers(List<Integer> numbers) {
         long distinctNumberCount = numbers.stream()
                 .distinct()
                 .count();
         return distinctNumberCount == numbers.size();
     }
 
-    private boolean validateNumbersInRange(List<Integer> numbers) {
+    private static boolean validateNumbersInRange(List<Integer> numbers) {
         return numbers.stream()
-                .allMatch(this::validateNumberInRange);
+                .allMatch(PlayerNumbersInputValidator::validateNumberInRange);
     }
 
-    private boolean validateNumberInRange(Integer number) {
+    private static boolean validateNumberInRange(Integer number) {
         return RANGE_MINIMUM_VALUE <= number && number <= RANGE_MAXIMUM_VALUE;
     }
 }
