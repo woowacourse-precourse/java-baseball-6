@@ -11,8 +11,9 @@ ex:) 123(o), 356(o), 161(x)
 <br>
 
 ##### 🚫 예외 처리
-- [] 생성된 수가 3자리 수를 초과할 경우 ``ExceedNumberLimitException``
-- [] 생성된 수에서 중복된 수가 있을 경우 ``DuplicateNumberException``
+- [] 생성된 수에서 중복된 수가 있을 경우 ``NumberDuplicateException``
+- [] 생성된 수가 3자리 수를 초과할 경우 ``NumberSizeException``
+- [] 1 ~ 9 범위가 아닌 수가 있을 경우 ``NumberRangeException``
 
 ---
 ### 📌 플레이어 게임 숫자 입력
@@ -22,8 +23,9 @@ ex:) 123(o), 356(o), 161(x)
 <br>
 
 ##### 🚫 예외 처리
-- [] 중복되는 수를 입력했을 경우 ``IllegalArgumentException`` 
-- [] 3자리를 초과해 입력할 경우 ``IllegalArgumentException``
+- [] 중복되는 수를 입력했을 경우 ``NumberDuplicateException`` 
+- [] 3자리를 초과해 입력할 경우 ``NumberSizeException``
+- [] 1 ~ 9 범위의 수를 입력하지 않았을 경우 ``NumberRangeException``
 - [] 숫자가 아닌 값을 입력했을 경우 ``NumberFormatException``
 
 ---
