@@ -14,7 +14,7 @@ public class BaseballController {
 
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getAnswerNumbers(){
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
@@ -24,6 +24,12 @@ public class BaseballController {
         }
         return numbers;
     }
+
+
+
+
+
+
 
 
 
