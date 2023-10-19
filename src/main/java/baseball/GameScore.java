@@ -8,15 +8,14 @@ import java.util.List;
 public class GameScore {
     private final Person person;
     private final Computer computer;
-    private final Count count;
 
-    public GameScore(Person person, Computer computer, Count count) {
+    public GameScore(Person person, Computer computer) {
         this.person = person;
         this.computer = computer;
-        this.count = count;
     }
 
-    public Count count() {
+    public Count calculateScore() {
+        Count count = new Count();
         List<Integer> personList = person.getInputList();
         List<Integer> computerList = computer.getRandomList();
 

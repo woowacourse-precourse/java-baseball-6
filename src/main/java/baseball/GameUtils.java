@@ -5,20 +5,18 @@ public class GameUtils {
 
     private final Person person;
     private final Computer computer;
-    private final Count count;
 
-    public GameUtils(Person person, Computer computer, Count count) {
+    public GameUtils(Person person, Computer computer) {
         this.person = person;
         this.computer = computer;
-        this.count = count;
     }
 
-    public void restartRound() {
+    public void restartRound(Count count) {
         count.clean();
         person.clean();
     }
 
-    public void restartGame() {
+    public void restartGame(Count count) {
         count.clean();
         person.clean();
         computer.clearAndInitialize();

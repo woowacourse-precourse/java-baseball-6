@@ -7,9 +7,8 @@ public class Application {
     public static void main(String[] args) {
         Person person = new Person();
         Computer computer = new Computer();
-        Count count = new Count();
-        GameUtils gameUtils = new GameUtils(person, computer, count);
-        GameScore gameScore = new GameScore(person, computer, count);
+        GameUtils gameUtils = new GameUtils(person, computer);
+        GameScore gameScore = new GameScore(person, computer);
         GameRunner gameRunner = new GameRunner(person, gameUtils, gameScore);
 
         printStartMessage();

@@ -21,22 +21,22 @@ public class GameRunner {
 
         person.insert(Console.readLine());
 
-        count = gameScore.count();
+        count = gameScore.calculateScore();
 
         GameMessages.displayScore(count);
 
-        if (isThreeStrike(count) && handleUserChoice()) {
+        if (isThreeStrike(count) && handleUserChoice(count)) {
             return true;
         }
 
-        gameUtils.restartRound();
+        gameUtils.restartRound(count);
         return false;
     }
 
-    private boolean handleUserChoice() {
+    private boolean handleUserChoice(Count count) {
         int choice = Integer.parseInt(Console.readLine());
         if (choice == RESTART_GAME) {
-            gameUtils.restartGame();
+            gameUtils.restartGame(count);
             return false;
         }
         if (choice == END_GAME) {
