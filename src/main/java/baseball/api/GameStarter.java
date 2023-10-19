@@ -12,13 +12,20 @@ public class GameStarter {
     private final String result;
     private int length;
     private Count count;
+    private GameHelper gameHelper;
+    private boolean retryFlag;
 
-    public GameStarter(String result, int length) {
+    public GameStarter(String result, boolean retryFlag, GameHelper gameHelper) {
         this.result = result;
-        this.length = length;
+        this.length = result.length();
+        this.retryFlag = retryFlag;
+        this.gameHelper = gameHelper;
     }
 
     public GameHelper run() throws IllegalArgumentException{
+        if (!retryFlag){
+            System.out.println(START_MESSAGE);
+        }
         while (true){
             System.out.print(PLAY_MESSAGE);
             String input = RequestChecker.gameRequest();
@@ -31,7 +38,7 @@ public class GameStarter {
             if(isResult()){
                 System.out.println(COMPLETE_MESSAGE);
                 System.out.println(END_MESSAGE);
-                return new GameHelper();
+                return gameHelper;
             }
         }
     }
