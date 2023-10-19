@@ -30,14 +30,14 @@ public class Game {
     }
 
     private void errorValidate(String stringNumber) throws IllegalAccessException {
-        if (!stringNumber.matches(REGULAR_EXPRESSION_NUMBER)){
+        if (!stringNumber.matches(REGULAR_EXPRESSION_INPUT_NUMBER)) {
             throw new IllegalAccessException(INPUT_ERROR);
         }
     }
 
     private List<Integer> stringToIntegerList(String stringNumber)  {
         List<Integer> inputNumber = new ArrayList<>();
-        for(char charNumber : stringNumber.toCharArray()){
+        for(char charNumber : stringNumber.toCharArray()) {
             inputNumber.add(Character.getNumericValue(charNumber));
         }
         return inputNumber;
@@ -47,10 +47,10 @@ public class Game {
         int strike = strikeValidate(number);
         int ball = ballValidate(number);
         boolean nothing = nothingValidate(strike,ball);
-        if (nothing){
+        if (nothing) {
             printNothing();
             return true;
-        } else if (strike == THREE_STRIKE){
+        } else if (strike == THREE_STRIKE) {
             printStrike(strike);
             System.out.println();
             return true;
@@ -62,8 +62,8 @@ public class Game {
 
     private int strikeValidate(List<Integer> number){
         int count = 0;
-        for (int i = 0; i<INPUT_NUMBER_SIZE; i++){
-            if (number.get(i).equals(randomNumber.get(i))){
+        for (int i = 0; i<INPUT_NUMBER_SIZE; i++) {
+            if (number.get(i).equals(randomNumber.get(i))) {
                 count+=1;
                 number.set(i,COMPLETE_CHECK_NUM);
             }
@@ -73,8 +73,8 @@ public class Game {
 
     private int ballValidate(List<Integer> number){
         int count = 0;
-        for (int i = 0; i<INPUT_NUMBER_SIZE; i++){
-            if (randomNumber.contains(number.get(i))){
+        for (int i = 0; i<INPUT_NUMBER_SIZE; i++) {
+            if (randomNumber.contains(number.get(i))) {
                 count+=1;
                 number.set(i,COMPLETE_CHECK_NUM);
             }
@@ -96,6 +96,25 @@ public class Game {
 
     private void printBall(int ball){
         System.out.print(ball+BALL);
+    }
+
+    private void gameEnd(){
+        System.out.println(GAME_END);
+        System.out.print(RESTART_OR_EXIT);
+        String restartOrExit = Console.readLine();
+    }
+
+    private boolean restartOrExit(String restartOrExit) throws IllegalAccessException {
+        if (!restartOrExit.matches(REGULAR_EXPRESSION_RESTART_OR_END_NUMBER)) {
+            throw new IllegalAccessException(INPUT_ERROR);
+        }
+        if (restartOrExit.equals(RESTART_VALUE)) {
+            return false;
+        } else if (restartOrExit.equals(END_VALUE)) {
+            return true;
+        }
+
+        return false;
     }
 
 
