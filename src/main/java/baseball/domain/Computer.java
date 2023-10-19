@@ -12,11 +12,7 @@ import static baseball.domain.Numbers.*;
 public class Computer {
 
 
-    public Numbers createNumbers() {
-        return new Numbers(createNumberList());
-    }
-
-    private List<Integer> createNumberList() {
+    public List<Integer> createNumberList() {
         List<Integer> numberList = new ArrayList<>();
 
         while (numberList.size() < NUMBER_COUNT) {
