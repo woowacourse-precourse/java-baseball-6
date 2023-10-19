@@ -19,6 +19,9 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
 
             String input = Console.readLine();
+    private static boolean hasDuplicateDigits(String input) {
+        return input.chars().distinct().count() < input.length();
+    }
     private static List<Integer> getComputerPicks() {
         List<Integer> computer = new ArrayList<>();
 
