@@ -39,10 +39,10 @@
   - 사용자의 입력을 `List` 형태로 반환
     - 서로 다른 3개의 숫자
   - **throws** : 잘못된 입력의 경우 `IllegalArgumentException`
-- [ ] `int inputMenu()`
-  - 사용자의 입력을 정수로 반환
-    - 재시작 : 1
-    - 종료 : 2
+- [ ] `boolean restart()`
+  - 재시작 여부를 입력받아 `boolean`으로 반환
+    - 재시작 : 1 -> `true`
+    - 종료 : 2 -> `false`
   - **throws** : 잘못된 입력의 경우 `IllegalArgumentException`
 
 ### Computer
