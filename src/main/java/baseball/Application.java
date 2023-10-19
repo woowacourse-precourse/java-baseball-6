@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,14 +30,24 @@ public class Application {
                 int strike = 0;
 
                 System.out.print("숫자를 입력해주세요 : ");
-                Scanner num = new Scanner(System.in);
-                String str = num.next();
-                System.out.println("str = " + str);
+                int inputNum;
+                try {
+                    Scanner num = new Scanner(System.in);
+                    inputNum = num.nextInt();
+                } catch (InputMismatchException e) {
+                    throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+                }
+
+                int[] intArray = new int[3];
+                for (int i = 2; i >= 0; i--) {
+                    intArray[i] = inputNum % 10;
+                    inputNum = inputNum / 10;
+                }
                 for (int i = 0; i < 3; i++) {
-                    int c = Integer.valueOf(str.charAt(i)) - 48;
-                    System.out.println("c = " + c);
-                    if (computer.contains(c)) {
-                        if (computer.get(i) == c) {
+
+//                    System.out.println("c = " + intArray[i]);
+                    if (computer.contains(intArray[i])) {
+                        if (computer.get(i) == intArray[i]) {
                             //위치가 같으면
                             strike++;
                         }
