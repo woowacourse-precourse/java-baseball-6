@@ -12,4 +12,11 @@ class PlayerTest {
         Assertions.assertThatThrownBy(() -> new Player("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("플레이어 수에 같은 숫자가 있을 경우 예외가 발생한다.")
+    @Test
+    void makePlayerUniqueEx() {
+        Assertions.assertThatThrownBy(() -> new Player("333"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
