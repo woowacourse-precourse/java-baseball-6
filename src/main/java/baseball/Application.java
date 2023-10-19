@@ -3,8 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -20,6 +22,16 @@ public class Application {
             return true;
         }
         return false;
+    }
+
+    // 기능: 사용자의 공을 입력 받고 생성한다
+    private static List<Integer> createPlayerBalls() {
+        String number = Console.readLine();
+        validatePlayerBallInput(number);
+        return number
+                .chars()
+                .mapToObj(Character::getNumericValue)
+                .collect(Collectors.toList());
     }
 
     // 기능: 게임 재시작 입력 검증
