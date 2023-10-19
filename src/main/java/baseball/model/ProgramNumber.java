@@ -26,7 +26,7 @@ public class ProgramNumber {
     //세자리 자연수 획득
     public void setProgramNumber(){
         //중복을 피하기 위해 HashSet 사용
-        Set<String> programNumberSet = new HashSet<>();
+        Set<String> programNumberSet = new HashSet<>(3);
         while (programNumberSet.size() < 3){
             programNumberSet.add(getOneNumber());
         }
