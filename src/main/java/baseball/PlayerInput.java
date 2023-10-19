@@ -26,4 +26,12 @@ public class PlayerInput {
         }
         return playerNumbers;
     }
+
+    public int getMenuNumber() {
+        String playerInput = Console.readLine();
+        if (!PlayerMenuInputValidator.validateMenuString(playerInput)) {
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(playerInput);
+    }
 }
