@@ -23,6 +23,10 @@ int getOptionNumber(String num)
 : 올바르지 않으면 IllegalArgumentException  
 : return num  
 
-boolean isContinue(int option):
+boolean isContinue(int option)
 : option값 유효성 검증 후
 : return option이 1이면 true, 2이면 false
+
+boolean isDuplicated(String numberString)  
+: 중복 숫자가 존재하는지 검증  
+: return 중복 존재시 true  
