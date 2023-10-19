@@ -23,9 +23,17 @@ public class BaseballController {
         }
         OutputView.printEndGame();
         String restartNumber = InputView.getUserInput();
+        checkRestartNumberValidation(restartNumber);
         if (restartNumber.equals("1")) {
             getUserNumber();
         }
+    }
+
+    private void checkRestartNumberValidation(String restartNumber) {
+        if (restartNumber.equals("1") || restartNumber.equals("2")) {
+            return;
+        }
+        throw new IllegalStateException();
     }
 
     private void printResult(NumberBaseball baseball, String userInput) {
