@@ -24,15 +24,15 @@ public class Baseball {
         return baseball.size();
     }
 
-    public static Baseball of(Character... baseballs) {
-        return new Baseball(Arrays.asList(baseballs));
-    }
-
-    public static Baseball of(String inputValue) {
+    public static Baseball of(char... baseballs) {
         final List<Character> characters = new ArrayList<>();
-        for (char ch : inputValue.toCharArray()) {
+        for (char ch : baseballs) {
             characters.add(ch);
         }
         return new Baseball(characters);
+    }
+
+    public static Baseball of(String inputValue) {
+        return of(inputValue.toCharArray());
     }
 }
