@@ -51,4 +51,18 @@ public class GameServiceTest {
         //when & then
         assertThat(validation.gameValue(values)).isFalse();
     }
+
+    @DisplayName("컴퓨터의 값을 생성하는 기능")
+    @Test
+    void 컴퓨터_값_생성_기능(){
+        //given
+        Game game=new Game();
+        Validation validation=new Validation();
+
+        //when
+        String comValue=game.generateComValue();
+
+        //then
+        assertThat(validation.gameValue(comValue)).isTrue();
+    }
 }
