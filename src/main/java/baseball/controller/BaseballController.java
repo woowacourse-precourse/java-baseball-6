@@ -3,6 +3,8 @@ package baseball.controller;
 import baseball.service.ScoreCalculator;
 import baseball.util.Converter;
 import baseball.util.RandomNumbersGenerator;
+import baseball.validator.NumbersValidation;
+import baseball.validator.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -11,6 +13,7 @@ import java.util.List;
 public class BaseballController {
 
     private ScoreCalculator calculator;
+    private Validator validator = new NumbersValidation(); //TODO: DI로 구성해보기
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -31,7 +34,7 @@ public class BaseballController {
         System.out.println("computer = " + computer);
 
         while (true) {
-            String guessNumber = inputView.readGuessNumber();
+            String guessNumber = readGuessNumber();
             List<Integer> player = Converter.convertList(guessNumber);
             this.calculator = new ScoreCalculator(computer, player);
             int strike = calculator.calculateStrike();
@@ -51,5 +54,11 @@ public class BaseballController {
             return;
         }
         throw new IllegalArgumentException("재시작/종료 명령이 잘못되었습니다.");
+    }
+
+    private String readGuessNumber() {
+        String value = inputView.readGuessNumber();
+        validator.validate(value);
+        return value;
     }
 }
