@@ -23,7 +23,8 @@ public class GameController {
             computer.add(new BallDto(ball.getNumber()));
         }
         output.printGameStart();
-        input.inputUserNumber();
+        String number = input.inputUserNumber();
+        gameProcess(number);
     }
 
     public void gameProcess(String number) {
