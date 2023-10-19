@@ -1,11 +1,15 @@
 package baseball.controller;
 
+import baseball.Answer;
+import baseball.BaseballGame;
 import baseball.view.OutputView;
 public class BaseballGameController {
     OutputView outputView;
+    BaseballGame baseballGame;
 
     public BaseballGameController() {
         this.outputView = new OutputView();
+        this.baseballGame = new BaseballGame();
     }
 
     /*
@@ -13,5 +17,6 @@ public class BaseballGameController {
     * */
     public void startGame() {
         outputView.readStartMessage();
+        Answer answer = baseballGame.answerGenerate();
     }
 }
