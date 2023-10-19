@@ -15,6 +15,7 @@ public class UserNumber {
 		List<Integer> userNumberList = createUserNumber(input);
 		validateUserInputLength(userNumberList);
 		validateUserInputRange(userNumberList);
+		validateUserInputDuplicate(userNumberList);
 		this.userNumber = userNumberList;
 	}
 
@@ -44,6 +45,13 @@ public class UserNumber {
 		if (userNum.stream().anyMatch(num -> Constant.START_NUMBER > num || num > Constant.END_NUMBER)) {
 			throw new IllegalArgumentException(
 					UserNumberError.USER_NUMBER_WRONG_RANGE_ERROR_MESSAGE);
+		}
+	}
+
+	private void validateUserInputDuplicate(List<Integer> userNum) {
+		if (userNum.stream().distinct().count() != Constant.NUMBER_LENGTH_LIMIT) {
+			throw new IllegalArgumentException(
+					UserNumberError.USER_NUMBER_DUPLICATE_ERROR_MESSAGE);
 		}
 	}
 }
