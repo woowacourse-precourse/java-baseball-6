@@ -53,9 +53,9 @@
 # 구현 체크리스트
 
 ### Computer
-- [ ] 중복없는 랜덤한 수 생성메서드
-    - [ ] `camp.nextstep.edu.missionutils.Randoms` 사용
-- [ ] 플레이어의 입력과 비교하는 메서드
+- [X] 중복없는 랜덤한 수 생성메서드
+    - [X] `camp.nextstep.edu.missionutils.Randoms` 사용
+- [X] 플레이어의 입력과 비교하는 메서드
 - [ ] 게임 종료 메서드
 
 ### Player
