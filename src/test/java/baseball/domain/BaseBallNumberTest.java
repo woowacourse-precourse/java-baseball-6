@@ -23,4 +23,23 @@ class BaseBallNumberTest {
         assertDoesNotThrow(() -> BaseBallNumber.generateNumber(baseballNumber));
     }
 
+    @DisplayName("랜덤한 숫자가 들어올 때 야구 숫자 범위에 벗어나는 경우는 객체 생성에 실패한다")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 10})
+    void 랜덤한_숫자가_들어올_때_야구_숫자_범위에_벗어나는_경우는_객체_생성에_실패한다(int randomNumber) {
+        NumberGenerator randomGenerator = (min, max) -> randomNumber;
+
+        assertThatThrownBy(() -> BaseBallNumber.generateRandomNumber(randomGenerator))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("랜덤한 숫자가 들어올 때 야구 숫자 범위에 맞는 경우는 객체 생성에 성공한다")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 9})
+    void 랜덤한_숫자가_들어올_때_야구_숫자_범위에_맞는_경우는_객체_생성에_성공한다(int randomNumber) {
+        NumberGenerator randomGenerator = (min, max) -> randomNumber;
+
+        assertDoesNotThrow(() -> BaseBallNumber.generateRandomNumber(randomGenerator));
+    }
+
 }
