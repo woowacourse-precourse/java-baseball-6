@@ -10,6 +10,7 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         BaseballGame baseballGame = new BaseballGame();
+        baseballGame.startGame();
     }
 }
 
@@ -35,8 +36,15 @@ class BaseballGame{
         return player;
     }
     public boolean rightInput(String playerNumberInString){
-        boolean rightInput = true;
-        return rightInput;
+        if (playerNumberInString.length()!=3){
+            return false;
+        }
+        try{
+            Integer.parseInt(playerNumberInString);
+            return true;
+        }catch(NumberFormatException ex){
+            return false;
+        }
     }
     public void compareNumber(){
         int strike = 0;
