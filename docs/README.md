@@ -20,49 +20,52 @@
     - 재시작 시 2번부터 다시 반복
 
 ## 구현 사항 정리
+
 ### Error
--[] InputValidate (유효하지 않을 시 IllegalArgumentException)
-    -[]GameInputValidate
-        -[] 숫자가 3자리인지 검사 기능
-        -[] 중복된 숫자가 있는지 검사 기능
-        -[] 숫자 외에 입력값이 들어온지 검사 기능
-    -[]RetryInputValidate
-        -[] 1,2 외의 값이 들어오는지 검사 기능
+- [ ] InputValidate (유효하지 않을 시 IllegalArgumentException)
+    - [ ] GameInputValidate
+        - [ ] 숫자가 3자리인지 검사 기능
+        - [ ] 중복된 숫자가 있는지 검사 기능
+        - [ ] 숫자 외에 입력값이 들어온지 검사 기능
+    - [ ] RetryInputValidate
+        - [ ] 1,2 외의 값이 들어오는지 검사 기능
 
 ### Util
--[] Random한 3자릿 수 생성해주는 Util 구현
-    -[] 중복 숫자 검사 기능
--[] MesseageUtil
-    -[] Enum으로 출력할 메시지 나열
-    -[] 출력할 메시지 출력
+- [ ] Random한 3자릿 수 생성해주는 Util 구현
+    - [ ] 중복 숫자 검사 기능
+- [ ] MesseageUtil
+    - [ ] Enum으로 출력할 메시지 나열
+    - [ ] 출력할 메시지 출력
 
 ### Model
--[] Comuputer
-    -[] 랜덤 숫자 3개 저장
+- [ ] Comuputer
+    - [ ] 랜덤 숫자 3개 저장
+    - [ ] 유저 숫자와 비교해 ball Strike 체크
+        - [ ] strike인지 체크하는 함수 (자리와 숫자가 똑같은지 체크, strike면 Continue로 볼체크 x)
+        - [ ] ball인지 체크하는 함수 (strike가 아닌 숫자가 ComputerNumber의 존재하는지)
 
 ### View
--[] InputView (InputValidateController에서 유효성 검사)
-    -[] 사용자에게 숫자 3개 입력 받는 기능
-    -[] 사용자에게 재시작 , 종료 여부 입력 받는 기능
+- [ ] InputView (InputValidateController에서 유효성 검사)
+    - [ ] 사용자에게 숫자 3개 입력 받는 기능
+    - [ ] 사용자에게 재시작 , 종료 여부 입력 받는 기능
 
--[] OutputView
-    -[] 게임 시작 메시지
-    -[] 
-    -[] 입력 받는 숫자의 힌트 제공
-    -[] 모두 맞출 시 게임 종료
+- [ ] OutputView
+    - [ ] 게임 시작 메시지
+    - [ ] 입력 받는 숫자의 힌트 제공
+    - [ ] 모두 맞출 시 게임 종료
 
 ### Controller
--[] GameController
-    -[] Comuputer Model 생성
-        -[] RandomUtil로 생성한 숫자 저장
-    -[] 게임 시작
-        -[] 게임 시작 메시지 출력 (OutputView 사용)
-        -[] 사용자에게 숫자 입력 받기 (InputView 사용)
-    -[] 입력 값과 Comuputer에 저장된 숫자 값 비교후 힌트 제공 (OutputView 사용)
-        -[] 자리와 수가 같으면 스트라이크
-        -[] 수는 같으나 자리가 다르면 볼
-        -[] 위 2가지 모두 해당 없을 시 낫싱
-        -[] 3스트라이크 시 게임 종료
-    -[] 게임 종료
-        -[] 종료 메시지 출력
-        -[] 재시작 , 종료 여부 입력 받기 (InputView 사용)
+- [ ] GameController
+    - [ ] Comuputer Model 생성
+        - [ ] RandomUtil로 생성한 숫자 저장
+    - [ ] 게임 시작
+        - [ ] 게임 시작 메시지 출력 (OutputView 사용)
+        - [ ] 사용자에게 숫자 입력 받기 (InputView 사용)
+    - [ ] 입력 값과 Comuputer에 저장된 숫자 값 비교후 힌트 제공 (OutputView 사용)
+        - [ ] 입력 값을 Computer Model에서 비교 후 Strike 수 , Ball 수 List 배열 받기
+        - [ ] 배열에 Strike , Ball 모두 0이 아니면 볼, 스트라이크 모두 출력
+        - [ ] 둘 중 하나만 존재하면 하나만 출력
+        - [ ] 3스트라이크면 게임 종료
+    - [ ] 게임 종료
+        - [ ] 종료 메시지 출력
+        - [ ] 재시작 , 종료 여부 입력 받기 (InputView 사용)
