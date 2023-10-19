@@ -5,10 +5,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class BaseballController {
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        createAnswer();
+        play();
+    }
+
+    private void play() {
+        Integer answer = createAnswer();
+        System.out.println("숫자를 입력해주세요 : ");
+        Integer userInput = Integer.parseInt(readLine());
     }
 
     protected int createAnswer() {
