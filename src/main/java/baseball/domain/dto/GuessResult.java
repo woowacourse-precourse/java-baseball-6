@@ -2,12 +2,12 @@ package baseball.domain.dto;
 
 import baseball.domain.ball.BallNumbers;
 
-public record GameResult(
+public record GuessResult(
     int ballCount,
     int strikeCount
 ) {
 
-  public boolean isClear() {
+  public boolean isThreeStrike() {
     return strikeCount == BallNumbers.BALL_COUNT;
   }
 

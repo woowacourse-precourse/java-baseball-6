@@ -2,8 +2,9 @@ package baseball.controller;
 
 import baseball.domain.ball.Answer;
 import baseball.domain.ball.AnswerCreator;
+import baseball.domain.ball.GameStatus;
 import baseball.domain.ball.Guess;
-import baseball.domain.dto.GameResult;
+import baseball.domain.dto.GuessResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -25,21 +26,22 @@ public final class GameController {
 
   public void run() {
     final Answer answer = answerCreator.create();
-    final boolean willReplay = guessRecursive(answer);
+    final GameStatus status = play(answer);
 
-    if (willReplay) {
+    if (GameStatus.REPLAY == status) {
       run();
     }
   }
 
-  private boolean guessRecursive(final Answer answer) {
-    final Guess guess = Guess.of(inputView.inputBallNumbers());
-    final GameResult result = answer.guess(guess);
+  private GameStatus play(final Answer answer) {
+    final GuessResult result = answer.guess(
+        Guess.of(inputView.inputBallNumbers())
+    );
 
     outputView.printResult(result);
 
-    if (!result.isClear()) {
-      return guessRecursive(answer);
+    if (!result.isThreeStrike()) {
+      return play(answer);
     }
     return inputView.inputWillReplay();
   }

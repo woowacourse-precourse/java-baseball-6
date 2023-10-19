@@ -1,6 +1,6 @@
 package baseball.domain.ball;
 
-import baseball.domain.dto.GameResult;
+import baseball.domain.dto.GuessResult;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,8 +14,8 @@ public final class Answer extends BallNumbers {
     return new Answer(numbers);
   }
 
-  public GameResult guess(final Guess guess) {
-    return new GameResult(
+  public GuessResult guess(final Guess guess) {
+    return new GuessResult(
         getBallCount(guess),
         getStrikeCount(guess)
     );
