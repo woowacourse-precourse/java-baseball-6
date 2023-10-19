@@ -54,4 +54,16 @@ class BallsTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @DisplayName("Balls 를 받아 스트라이크 개수를 판단할 수 있다")
+    @ParameterizedTest
+    @CsvSource({"123, 456, 0", "123, 123, 3", "123, 111, 1", "123, 231, 0"})
+    void JudgeStrikeCountIfPresentBalls(int computerNumber, int playerNumber, int expected) {
+        Balls computer = new Balls(computerNumber);
+        Balls player = new Balls(playerNumber);
+
+        int actual = computer.getStrikeCount(player);
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
