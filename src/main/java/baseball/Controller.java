@@ -7,6 +7,8 @@ public class Controller {
         NumberGenerator generator = new NumberGenerator();
 
         InputView.greetingMsg();
+        InputView inputView = new InputView();
+        inputView.greetingMsg();
         Answer answer = new Answer(generator.createAnswer());
 
         while (command != 2) {
