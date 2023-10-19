@@ -37,13 +37,12 @@ public class Application {
 
             ArrayList<Integer> computerArray = new ArrayList<Integer>(computer);
             game = true;
-            System.out.println("컴퓨터 입력" + computerArray);
 
             while (game) {
                 System.out.print(INPUT_START);
                 String inputNum = Console.readLine();
-                onlyNumCheck(inputNum);
 
+                onlyNumCheck(inputNum);
                 lengthCheck(inputNum);
 
                 int inputNumInt = Integer.parseInt(inputNum);
@@ -108,8 +107,8 @@ public class Application {
     }
 
     private static void duplicationCheck(ArrayList<Integer> userInputArray) {
+        List<Integer> errorCheck = new ArrayList<Integer>();
         for (int num : userInputArray) {
-            List<Integer> errorCheck = new ArrayList<Integer>();
             if (!errorCheck.contains(num)) {
                 errorCheck.add(num);
             } else {
