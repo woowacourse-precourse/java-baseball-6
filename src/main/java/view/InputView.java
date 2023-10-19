@@ -1,5 +1,7 @@
 package view;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -8,7 +10,7 @@ public class InputView {
 
     public static String getUserInput() {
         System.out.println("숫자를 입력해주세요 : ");
-        return scanner.next();
+        return Console.readLine();
     }
 
 }
