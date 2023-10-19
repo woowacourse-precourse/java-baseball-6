@@ -10,4 +10,11 @@ public class GameTest {
         Game game = new Game();
         assertEquals(game.getGameState(), GameState.READY);
     }
+
+    @Test
+    void 게임_시작() {
+        Game game = new Game();
+        game.start();
+        assertEquals(game.getGameState(), GameState.ON);
+    }
 }
