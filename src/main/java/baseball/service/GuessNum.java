@@ -7,7 +7,7 @@ public class GuessNum {
         int result = 0;
 
         for(int i = 0; i< generatedNumbers.size(); i++){
-            if(generatedNumbers.contains(userInputNumbers)){
+            if(userInputNumbers.contains(generatedNumbers.get(i))){
                 result++;
             }
         }
@@ -38,6 +38,6 @@ public class GuessNum {
         else if(ball==0){
             return strike + "스트라이크";
         }
-        return ball + "볼" + strike + "스트라이크";
+        return ball + "볼 " + strike + "스트라이크";
     }
 }
