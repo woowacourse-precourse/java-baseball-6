@@ -11,13 +11,18 @@ public class Game {
 
     public String generateComValue(){
         Set<String> computer=new HashSet<>();
+        generate(computer);
 
-        while(computer.size()<3){
-            int randomNumber= Randoms.pickNumberInRange(1,9);
-            computer.add(Integer.toString(randomNumber));
-        }
+        return toString(computer);
+    }
 
+    private String toString(Set<String> computer){
         return String.join("",new ArrayList<>(computer));
+    }
 
+    private void generate(Set<String> computer){
+        while(computer.size()<3){
+            computer.add(Integer.toString(Randoms.pickNumberInRange(1,9)));
+        }
     }
 }
