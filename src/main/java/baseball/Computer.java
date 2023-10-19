@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Computer {
 
-    private List<Integer> com = new ArrayList<>();
+    private final List<Integer> com = new ArrayList<>();
 
     public void getNumbers() {
         while (com.size() < 3) {
