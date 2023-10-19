@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.GameNumber;
+import baseball.view.GameOutput;
 
 import java.util.List;
 
@@ -14,13 +15,15 @@ public class PlayController {
 
     GenerateController generateController;
     ValidateController validateController;
+    GameOutput gameOutput;
 
-    public PlayController(GenerateController generateController, ValidateController validateController, Integer length) {
+    public PlayController(Integer length) {
         this.gameNumber = new GameNumber();
         this.userGameNumber = new GameNumber();
 
-        this.generateController = generateController;
-        this.validateController = validateController;
+        this.generateController = new GenerateController();
+        this.validateController = new ValidateController();
+        this.gameOutput = new GameOutput();
 
         this.MAXIMUM_NUMBER_LENGTH = length;
     }
@@ -37,6 +40,10 @@ public class PlayController {
         userGameNumber.setNumber(stringToIntegerList);
 
         matchingBallAndStrike();
+
+        gameOutput.printResult(ballCount, strikeCount);
+
+        if (strikeCount == MAXIMUM_NUMBER_LENGTH) return true;
 
         return false;
     }

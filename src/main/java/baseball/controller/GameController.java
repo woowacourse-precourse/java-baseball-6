@@ -17,7 +17,7 @@ public class GameController {
     public GameController() {
         this.generateController = new GenerateController();
         this.validateController = new ValidateController();
-        this.playController = new PlayController(this.generateController, this.validateController, this.MAXIMUM_NUMBER_LENGTH);
+        this.playController = new PlayController(this.MAXIMUM_NUMBER_LENGTH);
         this.gameInput = new GameInput();
         this.gameOutput = new GameOutput();
 
@@ -39,7 +39,7 @@ public class GameController {
 
         while (!success) {
             String input = gameInput.inputNumber();
-            validateController.validateInputString(input, MAXIMUM_NUMBER_LENGTH)
+            validateController.validateInputString(input, MAXIMUM_NUMBER_LENGTH);
             success = playController.isSuccess(input);
         }
     }
@@ -59,5 +59,7 @@ public class GameController {
         } else if (input.equals(END_FLAG)) { // 2
             return false;
         }
+
+        throw new IllegalArgumentException("처리되지 않은 에러입니다.");
     }
 }
