@@ -43,10 +43,17 @@ public class Application {
     }
 
     private static String askReplayOrExit() {
-        // 사용자에게 숫자를 입력받아 return
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String choice = Console.readLine();
+        isValidUserChoice(choice);
 
-        // 1과 2가 아닌 다른 수를 입력할 경우 애플리케이션은 종료
+        return choice;
+    }
 
-        return null;
+    public static void isValidUserChoice(String choice){
+        // 1과 2가 아닌 다른 수를 입력할 경우
+        if (!choice.equals("1") && !choice.equals("2")){
+            throw new IllegalArgumentException("1 또는 2를 입력하지 않았습니다. 게임이 종료됩니다.");
+        }
     }
 }
