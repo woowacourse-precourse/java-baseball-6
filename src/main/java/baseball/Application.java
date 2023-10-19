@@ -10,18 +10,7 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true) {
-            /*
-            * 정답 생성
-            * 중복되지 않은 세개의 숫자
-            * 1 ~ 9 범위에 해당되는 숫자
-            */
-            List<Integer> answer = new ArrayList<>();
-            while (answer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!answer.contains(randomNumber)) {
-                    answer.add(randomNumber);
-                }
-            }
+            List<Integer> answer = AnswerGenerator.generateAnswer();
 
             int[] guess = new int[3];
             while(true) {
