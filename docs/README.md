@@ -2,7 +2,7 @@
 ## 사용자 (Human)
 - [x] 서로 다른 3개의 숫자를 입력 받는다.
 - [x] 입력받은 사용자의 수를 검증한다.
-- [ ] 잘못된 수의 경우, IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
+- [x] 잘못된 수의 경우, IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
 
 ## 상대방 (Computer)
 - [ ] 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다.
