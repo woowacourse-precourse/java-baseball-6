@@ -19,6 +19,11 @@ public class GameController {
         while(true) {
             String userAnswerString = InputController.scanUserAnswer();
             NumberList userAnswer = Transfer.stringToNumberList(userAnswerString);
+
+            if(computer.getAnswer().equals(userAnswer)) {
+                OutputView.printSuccessMessage();
+                break;
+            }
         }
         OutputView.printEndGameMessage();
     }
