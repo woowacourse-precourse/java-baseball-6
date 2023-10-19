@@ -9,6 +9,7 @@ import player.Player;
 import utils.BaseballRules;
 
 public class Referee {
+    
     private Computer computer;
     private Player player;
     private static final String START = "1";

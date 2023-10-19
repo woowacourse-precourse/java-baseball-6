@@ -3,6 +3,7 @@ package utils;
 import java.util.List;
 
 public class BaseballRules {
+    
     public static boolean isThreeStrike(List<Integer> playerBaseballNumber, List<Integer> computgerBaseballNumber) {
         return playerBaseballNumber.equals(computgerBaseballNumber);
     }
