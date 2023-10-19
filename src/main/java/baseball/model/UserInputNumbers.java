@@ -26,7 +26,10 @@ public class UserInputNumbers {
     public int countStrikes(RandomNumbers randomNumbers) {
         List<Number> randomNumberList = randomNumbers.getRandomNumbers();
         for (int i = 0; i < INPUT_NUMBER_LENGTH; i++) {
-            if (randomNumberList.get(i) == userInputNumbers.get(i)) {
+            Number userInputNumber = userInputNumbers.get(i);
+            Number randomNumber = randomNumberList.get(i);
+
+            if (userInputNumber.equals(randomNumber)) {
                 strikeCount += 1;
             }
         }
