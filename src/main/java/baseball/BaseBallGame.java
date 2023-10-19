@@ -21,17 +21,8 @@ public class BaseBallGame {
         //TODO 2. 테스트코드 > Scanner로 입력값 받지 못함
 
         while( true ) {
-
             System.out.print("숫자 야구 게임을 시작합니다.");
-
-            List<Integer> answer = new ArrayList<>();
-            while (answer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!answer.contains(randomNumber)) {
-                    answer.add(randomNumber);
-                }
-            }
-
+            List<Integer> answer = setAnswer();
 //            System.out.println(answer);
 
             while ( true ) {
@@ -82,5 +73,16 @@ public class BaseBallGame {
             if (sc.nextInt() == 2)
                 break;
         }
+    }
+
+    private static List<Integer> setAnswer() {
+        List<Integer> answer = new ArrayList<>();
+        while (answer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
+            }
+        }
+        return answer;
     }
 }
