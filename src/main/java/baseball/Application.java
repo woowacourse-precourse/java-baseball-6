@@ -18,9 +18,9 @@ public class Application {
                 System.out.println("inputNum = " + inputNum);
             }
         }
-//        catch (IllegalArgumentException e) {
-//            return ;
-//        }
+        catch (IllegalArgumentException e) {
+            return ;
+        }
     }
 
     public static List<Integer> generateRandomNum() {
