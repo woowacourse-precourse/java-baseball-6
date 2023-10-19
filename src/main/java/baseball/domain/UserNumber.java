@@ -11,7 +11,8 @@ public class UserNumber {
 	private final List<Integer> userNumber;
 
 	public UserNumber(String input) {
-		this.userNumber = createUserNumber(input);
+		List<Integer> userNumberList = createUserNumber(input);
+		this.userNumber = userNumberList;
 	}
 
 	private List<Integer> createUserNumber(String input) {
