@@ -38,6 +38,17 @@ public class BaseballController {
         }
     }
 
+    private StringBuilder hint() {
+        StringBuilder sb = new StringBuilder();
+        if(result[NOTHING] == MAX_HIT) {
+            outputView.nothing(sb);
+            return sb;
+        }
+        if(result[BALL] > NO_HIT) outputView.ball(result[BALL],sb);
+        if(result[STRIKE] > NO_HIT) outputView.strike(result[STRIKE],sb);
+        return sb;
+    }
+
     private boolean isCoincide(int computerNumber, int userNumber) {
         if(computerNumber == userNumber) {
             result[STRIKE]++;
