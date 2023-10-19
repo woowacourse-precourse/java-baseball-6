@@ -39,10 +39,18 @@ public class Player {
 
     private String readBallInput() {
         System.out.println(Constants.INPUT_MESSAGE);
-        return Console.readLine();
+        String input = Console.readLine();
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        return input;
     }
 
     private String readOptionInput() {
-        return Console.readLine();
+        String input = Console.readLine();
+        if (input.equals("1") || input.equals("2")) {
+            return input;
+        }
+        throw new IllegalArgumentException();
     }
 }
