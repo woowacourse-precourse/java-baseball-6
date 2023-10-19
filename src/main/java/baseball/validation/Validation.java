@@ -34,7 +34,6 @@ public class Validation {
             numbers.add(input.charAt(i));
         }
         List<Character> newNumbers = numbers.stream().distinct().toList();
-        System.out.println("newNumbers = " + newNumbers);
         if (newNumbers.size() == INPUT_LENGTH) {
             return true;
         }
