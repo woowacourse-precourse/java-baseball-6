@@ -31,43 +31,11 @@ public class BaseBallGame {
             initializeNum();
             System.out.print("숫자 야구 게임을 시작합니다.");
             List<Integer> answer = setAnswer();
+
+            // 정답 확인용 임시 코드
             System.out.println(answer);
 
-            while ( true ) {
-                System.out.print("\n숫자를 입력해주세요 : ");
-
-                Scanner sc = new Scanner(System.in);
-                String st = sc.next();
-                String[] arr = st.split("");
-
-                List<Integer> input = new ArrayList<>();
-                for (int i = 0; i < 3; i++) {
-                    input.add(Integer.parseInt(arr[i]));
-                }
-
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        if(answer.get(i).equals(input.get(j)))
-                            if(i==j) {
-                                numOfStrike++;
-                                break;
-                            } else {
-                                numOfBall++;
-                                break;
-                            }
-                    }
-                }
-
-                if (numOfBall + numOfStrike == 0)
-                    System.out.print("낫싱");
-                if (!(numOfBall==0))
-                    System.out.printf("%d볼 ", numOfBall);
-                if (!(numOfStrike==0))
-                    System.out.printf("%d스트라이크", numOfStrike);
-                if (numOfStrike == 3)
-                    break;
-
-            }
+            checkAnswer(answer);
             Scanner sc = new Scanner(System.in);
             System.out.println(
                     """
@@ -76,6 +44,44 @@ public class BaseBallGame {
 
             if (sc.nextInt() == 2)
                 break;
+        }
+    }
+
+    private void checkAnswer(List<Integer> answer) {
+        while ( true ) {
+            System.out.print("\n숫자를 입력해주세요 : ");
+
+            Scanner sc = new Scanner(System.in);
+            String st = sc.next();
+            String[] arr = st.split("");
+
+            List<Integer> input = new ArrayList<>();
+            for (int i = 0; i < 3; i++) {
+                input.add(Integer.parseInt(arr[i]));
+            }
+
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if(answer.get(i).equals(input.get(j)))
+                        if(i==j) {
+                            numOfStrike++;
+                            break;
+                        } else {
+                            numOfBall++;
+                            break;
+                        }
+                }
+            }
+
+            if (numOfBall + numOfStrike == 0)
+                System.out.print("낫싱");
+            if (!(numOfBall==0))
+                System.out.printf("%d볼 ", numOfBall);
+            if (!(numOfStrike==0))
+                System.out.printf("%d스트라이크", numOfStrike);
+            if (numOfStrike == 3)
+                break;
+
         }
     }
 
