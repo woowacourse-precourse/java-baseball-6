@@ -64,4 +64,27 @@ public class NumberSet {
         }
         return NumberSet.parseFrom(number);
     }
+
+    public static int getStrikes(NumberSet a, NumberSet b) {
+        int strikes = 0;
+        strikes += a.getDigit1() == b.getDigit1() ? 1 : 0;
+        strikes += a.getDigit2() == b.getDigit2() ? 1 : 0;
+        strikes += a.getDigit3() == b.getDigit3() ? 1 : 0;
+        return strikes;
+    }
+
+    public static int getBalls(NumberSet a, NumberSet b) {
+        int balls = 0;
+        balls += a.getDigit1() == b.getDigit2() || a.getDigit1() == b.getDigit3() ? 1 : 0;
+        balls += a.getDigit2() == b.getDigit1() || a.getDigit2() == b.getDigit3() ? 1 : 0;
+        balls += a.getDigit3() == b.getDigit1() || a.getDigit3() == b.getDigit2() ? 1 : 0;
+        return balls;
+    }
+
+    public static GuessResult compare(NumberSet a, NumberSet b) {
+        return new GuessResult(
+                getStrikes(a, b),
+                getBalls(a, b)
+        );
+    }
 }
