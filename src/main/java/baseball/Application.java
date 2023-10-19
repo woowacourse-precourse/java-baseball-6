@@ -17,6 +17,27 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         initComputerNumber();
+
+        while (true) {
+            List<Integer> splitDigitsFromUserInput = inputUserNumber();
+            boolean resultByCompare = compareUserInputByComputerNumber(splitDigitsFromUserInput);
+            if (resultByCompare) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String isContinueByUserInput = Console.readLine();
+                if (isContinueByUserInput.equals("1")) {
+                    initComputerNumber();
+                } else if (isContinueByUserInput.equals("2")) {
+                    break;
+                } else {
+                    throw new IllegalArgumentException(
+                            "잘못된 값을 입력했습니다" + " you input = " + isContinueByUserInput);
+                }
+            }
+        }
+
+    }
+
+
     public static boolean compareUserInputByComputerNumber(List<Integer> splitDigitsFromUserInput) {
         int strikeNumber = 0;
         int ballNumber = 0;
