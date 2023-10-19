@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
+    private static final int COMPUTER_NUMBERS_SIZE = 3;
     private final List<Integer> computer;
 
     public Computer(List<Integer> computer) {
@@ -18,6 +19,12 @@ public class Computer {
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
+        }
+    }
+
+    private void validateSize(List<Integer> computer){
+        if (computer.size() != COMPUTER_NUMBERS_SIZE) {
+            throw new IllegalArgumentException("컴퓨터는 3가지 숫자만 받아야 합니다.");
         }
     }
 }
