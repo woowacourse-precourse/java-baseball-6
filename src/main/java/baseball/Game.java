@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.config.GameConfig;
+
 import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +49,31 @@ public class Game {
             userAnswer = validation.checkUserInput(userInput);
 
             // 딜러의 입력값 컴퓨터 입력값 비교
+            GameResult gameResult = getGameStrike(userAnswer, answer);
 
             // 딜러의 결과값 출력
 
             // 성공 여부 체크 후 return
         }
     }
+
+    public GameResult getGameStrike(List<Integer> userAnswer, List<Integer> answer) {
+        Integer ball = 0;
+        Integer strike = 0;
+
+        for (int i = 0; i < GameConfig.CORRECT_LENGTH; i++) {
+            if (userAnswer.get(i) == answer.get(i)) {
+                strike++;
+            }
+        }
+
+        for (int i = 0; i < GameConfig.CORRECT_LENGTH; i++) {
+            if (answer.contains(userAnswer.get(i)) && answer.get(i) != userAnswer.get(i)) {
+                ball++;
+            }
+        }
+
+        return new GameResult(strike,ball);
+    }
+
 }

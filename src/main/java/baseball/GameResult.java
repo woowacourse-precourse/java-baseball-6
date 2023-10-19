@@ -6,6 +6,11 @@ public class GameResult {
 
     private Integer ball;
 
+    GameResult(Integer strike, Integer ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
+
     public void setStrike(Integer strikeNum) {
         this.strike = strikeNum;
     }
