@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.Com;
 import baseball.domain.User;
+import baseball.domain.Validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -49,6 +50,6 @@ public class GameServiceTest {
         Validation validation=new Validation();
 
         //when & then
-        asserThat(validation.playUserInput(values)).isFalse();
+        assertThat(validation.playUserInput(values)).isFalse();
     }
 }
