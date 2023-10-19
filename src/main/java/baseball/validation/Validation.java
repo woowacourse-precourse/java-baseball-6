@@ -5,8 +5,16 @@ import java.util.List;
 
 public class Validation {
     private static final int INPUT_LENGTH = 3;
+    private static final int RESTART_INPUT_LENGTH = 1;
     public static void valiInputNumber(String input) {
         if (isNumber(input) && isLengthThree(input) && isNotDuplicated(input) && isNotContainZero(input)) {
+            return;
+        }
+        throw new IllegalArgumentException();
+    }
+
+    public static void valiRestartInput(String restartInput) {
+        if (isNumber(restartInput) && isLengthOne(restartInput) && isOneOrTwo(restartInput)) {
             return;
         }
         throw new IllegalArgumentException();
@@ -42,6 +50,21 @@ public class Validation {
 
     private static boolean isNotContainZero(String input) {
         if (!input.contains("0")) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isLengthOne(String restartInput) {
+        if (restartInput.length() == RESTART_INPUT_LENGTH) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isOneOrTwo(String restartInput) {
+        int restartNumber = Integer.parseInt(restartInput);
+        if ((restartNumber == 1) || (restartNumber == 2)){
             return true;
         }
         return false;
