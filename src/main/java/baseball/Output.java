@@ -1,8 +1,5 @@
 package baseball;
 
-import static baseball.Judge.ball;
-import static baseball.Judge.strike;
-
 public class Output {
 
     private static final String START = "숫자 야구 게임을 시작합니다.";
