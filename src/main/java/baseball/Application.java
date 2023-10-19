@@ -11,17 +11,22 @@ enum Status {
 class game {
 
     private static final int NUM_LENGTH = 3;
-    private static Status user_status = Status.START;
+    private static Status user_status;
     private static String user_num;
     private static String com_num;
 
     public static void run() {
+        init_status();
         while (check_status(user_status)) {
             input_num();
             check_input();
             print_result(play_game());
             end_routine();
         }
+    }
+
+    private static void init_status() {
+        user_status = Status.START;
     }
 
     private static void print_result(String result) {
