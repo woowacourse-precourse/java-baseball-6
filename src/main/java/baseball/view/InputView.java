@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class InputView {
     public String inputNumbers() {
-        String input = readLine();
+        String input = readLine().trim();
 
         validateInputLength(input);
         validateInputNumber(input);
@@ -30,7 +30,7 @@ public class InputView {
 
     private void validateInputNumber(final String input) {
         long count = Arrays.stream(input.split(""))
-                .filter(i -> i.charAt(0) < 80 || i.charAt(0) > 89)
+                .filter(i -> i.charAt(0) < '1' || i.charAt(0) > '9')
                 .count();
 
         if (count > 0) {
