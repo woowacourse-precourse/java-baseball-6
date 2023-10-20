@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import baseball.userInterface.MessageViewer;
+import baseball.models.Score;
 import java.util.List;
 
 public class NumberBaseBall {
@@ -10,6 +11,8 @@ public class NumberBaseBall {
     InputValidator inputValidator;
     List<Integer> computer;
     MessageViewer messageViewer;
+    Score score;
+
     public void init(){
         randomNumberGenerator = new RandomNumberGenerator();
         numberChecker = new NumberChecker();
@@ -26,11 +29,9 @@ public class NumberBaseBall {
             System.out.println(computer.get(0) + " " + computer.get(1) + " " + computer.get(2));
             List<Integer> user = inputValidator.validateUserAnswer(Console.readLine());
             System.out.println(user.get(0) + " " + user.get(1) + " " + user.get(2));
-            int[] results = numberChecker.checkNumber(user, computer);
-            int ballCounts = results[0];
-            int strikeCounts = results[1];
-            messageViewer.printResultMsg(ballCounts, strikeCounts);
-            if(strikeCounts == 3){
+            score = numberChecker.checkNumber(user, computer);
+            messageViewer.printResultMsg(score.ballCount, score.strikeCount);
+            if(score.strikeCount == 3){
                 messageViewer.printGameEndMsg();
                 messageViewer.printRestartMsg();
                 int restart = inputValidator.validateRestartInput(Console.readLine());
