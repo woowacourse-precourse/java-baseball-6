@@ -28,10 +28,13 @@ public class Game {
 
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
+
         List<Integer> userNumbers = new ArrayList<>();
-        for(int i = 0; i < 3; i++) {
-            userNumbers.add(userInput.charAt(i) - '0');
-        }
+        int num = Integer.parseInt(userInput);
+
+        userNumbers.add(num / 100);
+        userNumbers.add((num % 100) / 10);
+        userNumbers.add((num % 100) % 10);
 
         Util.validateUserNumbers(userNumbers);
 
