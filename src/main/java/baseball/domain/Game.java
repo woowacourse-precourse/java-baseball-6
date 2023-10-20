@@ -12,11 +12,19 @@ public class Game {
         OutPutView.printStartMessage();
         do {
             init();
+            gameStart();
         } while(restart());
     }
 
     private void init() {
         this.systemNumber = new Numbers(SystemNumbersManager.createSystemNumbers());
+    }
+
+    private void gameStart() {
+        do {
+            Numbers player = InputView.inputNumber();
+        } while (false);
+        OutPutView.printEndMessage();
     }
 
     public boolean restart() {
