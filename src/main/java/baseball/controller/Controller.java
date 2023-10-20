@@ -31,7 +31,7 @@ public class Controller {
         while (true) {
             Balls balls = insertNumberAndMakeBalls();
             String hint = service.hint(balls);
-            System.out.println(hint);
+            outputView.printHint(hint);
 
             if (isAllStrike(hint)) {
                 end();
@@ -49,7 +49,7 @@ public class Controller {
             play();
         }
         if (command == Command.FINISH) {
-            System.out.println("게임 종료");
+            outputView.printGameOver();
         }
     }
 
