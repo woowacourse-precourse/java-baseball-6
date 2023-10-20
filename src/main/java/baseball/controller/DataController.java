@@ -13,10 +13,14 @@ public class DataController {
     private static final int BALL_MAX_SIZE = 3;
     private static final String EMPTY_STRING = "";
 
+    private DataValidator dataValidator;
+
+    public DataController() {
+        dataValidator = new DataValidator();
+    }
+
     private List<String> readValues() {
         String value = readLine();
-
-        DataValidator dataValidator = new DataValidator();
         dataValidator.validateInputNumber(value);
 
         return List.of(value.split(EMPTY_STRING));
