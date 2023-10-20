@@ -23,8 +23,8 @@ public class BaseBallGame {
             List<String> inputString = InputView.readPlayerNumber();
             List<Integer> inputInteger = Converter.convertToNumericList(inputString);
             Result result = new Result(computerNumbers,inputInteger);
-            System.out.println(result.resultToString());
-             continueSign = isContinue(result);
+            OutputView.printResult(result.resultToString());
+            continueSign = isContinue(result);
         }
     }
     private List<Integer> generateComputerNumber(){
