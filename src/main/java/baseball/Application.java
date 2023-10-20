@@ -26,7 +26,7 @@ public class Application {
             diplayUserInput();
             try {
                 userNumber = inputUserNumber();
-                String hint = inferHint(computerNumber, userNumber);
+                String hint = inferHint();
                 System.out.println(hint);
 
                 if (isAnswer(hint)) {
@@ -42,6 +42,14 @@ public class Application {
 //                System.exit(1); -> 프로그램 종료 시 System.exit()를 호출하지 않는다.
             }
         }
+    }
+
+    private static String getUserNumber() {
+        return userNumber;
+    }
+
+    private static ArrayList<Integer> getComputerNumber() {
+        return computerNumber;
     }
 
     private static void diplayUserInput() {
@@ -106,9 +114,9 @@ public class Application {
         return computerNumber;
     }
 
-    private static String inferHint(List<Integer> computerNumber, String userNumber) {
-        int strike = countingStrike(computerNumber, userNumber);
-        int ball = countingBall(computerNumber, userNumber);
+    private static String inferHint() {
+        int strike = countingStrike();
+        int ball = countingBall();
         return getResult(strike, ball);
     }
 
@@ -131,23 +139,22 @@ public class Application {
         };
     }
 
-
-    private static int countingStrike(List<Integer> computerNumber, String userNumber) {
+    private static int countingStrike() {
         int result = 0;
         for (int i = 0; i < 3; i++) {
-            int currentUserNumber =  userNumber.charAt(i) - 48;
-            int currentComputerNumber = computerNumber.get(i);
+            int currentUserNumber = getUserNumber().charAt(i) - 48;
+            int currentComputerNumber = getComputerNumber().get(i);
             if (currentUserNumber == currentComputerNumber) result++;
         }
         return result;
     }
 
-    private static int countingBall(List<Integer> computerNumber, String userNumber) {
+    private static int countingBall() {
         int result = 0;
         for (int i = 0; i < 3; i++) {
-            int currentUserNumber = userNumber.charAt(i) - 48;
-            int currentComputerNumber = computerNumber.get(i);
-            if (currentUserNumber != currentComputerNumber && computerNumber.contains(currentUserNumber)) result++;
+            int currentUserNumber = getUserNumber().charAt(i) - 48;
+            int currentComputerNumber = getComputerNumber().get(i);
+            if (currentUserNumber != currentComputerNumber && getComputerNumber().contains(currentUserNumber)) result++;
         }
         return result;
     }
