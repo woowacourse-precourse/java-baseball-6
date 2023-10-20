@@ -27,9 +27,7 @@ public class Controller {
 
     private void play() {
         while (true) {
-            outputView.printInsertNumbers();
-            List<Integer> input = inputView.insertNumbers();
-            Balls balls = Balls.from(input);
+            Balls balls = insertNumberAndMakeBalls();
 
             String hint = service.hint(balls);
             System.out.println(hint);
@@ -50,5 +48,11 @@ public class Controller {
                 }
             }
         }
+    }
+
+    private Balls insertNumberAndMakeBalls() {
+        outputView.printInsertNumbers();
+        List<Integer> input = inputView.insertNumbers();
+        return Balls.from(input);
     }
 }
