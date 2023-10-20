@@ -73,4 +73,13 @@ public class BaseballGameService {
 
         return new Result(strike, ball);
     }
+
+    public Boolean playNextRound(String playerInput) {
+        isNumber(playerInput);
+
+        return switch (EndOption.findBySelection(playerInput)) {
+            case NEXT_ROUND -> true;
+            case END -> false;
+        };
+    }
 }

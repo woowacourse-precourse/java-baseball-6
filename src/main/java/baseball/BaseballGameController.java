@@ -18,6 +18,10 @@ public class BaseballGameController {
             Number computerNumber = baseballGameService.getComputerNumber();
 
             playSet(computerNumber);
+
+            if (!baseballGameService.playNextRound(ConsoleIO.readEndOption())) {
+                break;
+            }
         }
     }
 
@@ -37,7 +41,7 @@ public class BaseballGameController {
             }
 
             String resultMessage = "";
-            
+
             if (ball == 0 && strike == 0) {
                 resultMessage = "낫싱";
             } else if (ball == 0 && strike > 0) {
