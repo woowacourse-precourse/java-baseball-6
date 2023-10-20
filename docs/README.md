@@ -18,7 +18,7 @@
 ### View
 - GameView
   - [x] 게임 시작 공지를 출력하는 기능
-  - [ ] 사용자의 숫자를 입력받는 기능
+  - [x] 사용자의 숫자를 입력받는 기능
     - `camp.nextstep.edu.missionutils.Console`의 `readLine()` 활용
     - 입력에 문제가 없는지 검증
       - 글자 길이가 3인지 검증
@@ -47,7 +47,7 @@
 
 ### Utility
 - InputDataExceptionHandler
-  - [ ] 입력받은 사용자 숫자를 검증하는 기능
+  - [x] 입력받은 사용자 숫자를 검증하는 기능
   - [ ] 입력받은 재시작 여부를 검증하는 기능
 ---
 
