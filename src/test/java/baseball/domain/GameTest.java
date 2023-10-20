@@ -45,10 +45,4 @@ public class GameTest {
         game.start();
         assertEquals(game.hint(Balls.from(List.of(1, 2, 3))), String.format("3%s", Hint.STRIKE.value()));
     }
-    private class TestGenerator implements BallsGenerator {
-        @Override
-        public Balls generateBalls() {
-            return Balls.from(List.of(1, 2, 3));
-        }
-    }
 }
