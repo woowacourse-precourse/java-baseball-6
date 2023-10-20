@@ -20,13 +20,15 @@ public class GameResult {
     @Override
     public String toString() {
         if (ball == 0 && strike == 0) return "낫싱\n";
-        String str = "";
+        StringBuilder str = new StringBuilder();
         if (ball != 0) {
-            str += (ball + "볼");
-            if (strike != 0) str += " ";
-            else str += "\n";
+            str.append(ball).append("볼");
         }
-        if (strike != 0) str += (strike + "스트라이크\n");
-        return str;
+        if (strike != 0) {
+            if (ball != 0) str.append(" ");
+            str.append(strike).append("스트라이크");
+        }
+        str.append("\n");
+        return str.toString();
     }
 }
