@@ -44,8 +44,13 @@ public class Game {
     public String getNum(){
         System.out.print("\n숫자를 입력해주세요 : ");
         String answer = Console.readLine();
-
+        illegalArgumentException(answer);
         return answer;
+    }
+    public void illegalArgumentException(String answer) {
+        if(answer.length()!=3 || !answer.matches("\\d+")){
+            throw new IllegalArgumentException();
+        }
     }
 
 }
