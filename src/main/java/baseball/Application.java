@@ -1,6 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 class Game {
     public int answer;
@@ -72,6 +75,7 @@ class Game {
 
 public class Application {
     static boolean askRestart() {
+        // TODO: add inputString validation
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputString = Console.readLine();
         return inputString.equals("1");
