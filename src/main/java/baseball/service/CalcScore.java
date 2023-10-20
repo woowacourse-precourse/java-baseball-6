@@ -1,7 +1,5 @@
 package baseball.service;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class CalcScore {
@@ -12,17 +10,14 @@ public class CalcScore {
 
     public CalcScore(List<Integer> com, String user){
         this.com = com;
-        Collections.sort(com);
         this.user = user.toCharArray();
-        Arrays.sort(this.user);
-
         compareNumbers();
     }
 
     private void compareNumbers(){
         sameNum=0;
         for(int i=0;i<3;i++){
-            if(com.contains(user[i]))
+            if(com.contains(Character.getNumericValue(user[i])))
                 sameNum++;
         }
     }
@@ -32,10 +27,9 @@ public class CalcScore {
     }
     public int calcStrike(){
         for(int i=0;i<3;i++){
-            if(com.get(i) ==user[i])
+            if(com.get(i) ==Character.getNumericValue(user[i]))
                 strikeNum++;
         }
         return strikeNum;
     }
-
 }
