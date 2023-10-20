@@ -87,11 +87,11 @@
 
    사용자 입력에 대한 예외처리를 담당하는 클래스
 
-   - 서로 다른 3자리 수에 대한 예외
+   - 서로 다른 3자리 수에 대한 예외처리 기능
       - 3자리 수가 아니라면 “IllegalArgumentException” 발생
       - 1~9로 이루어진 수가 아니라면 “IllegalArgumentException” 발생
       - 수가 중복됐다면 “IllegalArgumentException” 발생
-   - 게임 진행 여부에 대한 예외
+   - 게임 진행 여부에 대한 예외처리 기능
       - 1 또는 2가 아니라면 “IllegalArgumentException” 발생
 
 
