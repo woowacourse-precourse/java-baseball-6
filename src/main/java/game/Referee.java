@@ -2,6 +2,7 @@ package game;
 
 import client.Ball;
 import constants.NumberConstants;
+import java.util.function.Function;
 
 public class Referee {
 
@@ -19,13 +20,16 @@ public class Referee {
     private static int countBall() {
         int count = 0;
         for (int i = 0; i < NumberConstants.MAX_BALL_SIZE; i++) {
-            count = increaseIfBall(i, count);
+            count = increaseIf(
+                    Referee::isBall,
+                    i, count
+            );
         }
         return count;
     }
 
-    private static int increaseIfBall(int i, int count) {
-        if (isBall(i)) {
+    private static int increaseIf(Function<Integer, Boolean> func, int i, int count) {
+        if (func.apply(i)) {
             count += 1;
         }
         return count;
@@ -39,14 +43,10 @@ public class Referee {
     private static int countStrike() {
         int count = 0;
         for (int i = 0; i < NumberConstants.MAX_BALL_SIZE; i++) {
-            count = increaseIfStrike(i, count);
-        }
-        return count;
-    }
-
-    private static int increaseIfStrike(int i, int count) {
-        if (isStrike(i)) {
-            count += 1;
+            count = increaseIf(
+                    Referee::isStrike,
+                    i, count
+            );
         }
         return count;
     }
