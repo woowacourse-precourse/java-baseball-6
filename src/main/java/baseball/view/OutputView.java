@@ -4,6 +4,7 @@ import baseball.domain.GameResult;
 
 public class OutputView {
 
+    private final String LINE_CHANGE = "\n";
     private final String GAME_START = "숫자 야구 게임을 시작합니다.";
     private final String NOTHING = "낫싱";
     private final String BALL = "%d볼";
@@ -18,14 +19,14 @@ public class OutputView {
             System.out.println(NOTHING);
         }
         if (result.hasBall() && result.hasStrike()) {
-            System.out.printf(BALL+" "+STRIKE,result.getBall(),result.getStrike());
+            System.out.printf(BALL+" "+STRIKE+LINE_CHANGE,result.getBall(),result.getStrike());
             return;
         }
         if (result.hasBall()) {
-            System.out.printf(BALL,result.getBall());
+            System.out.printf(BALL+LINE_CHANGE,result.getBall());
         }
         if (result.hasStrike()) {
-            System.out.printf(STRIKE,result.getStrike());
+            System.out.printf(STRIKE+LINE_CHANGE,result.getStrike());
         }
     }
 
