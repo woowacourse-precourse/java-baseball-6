@@ -19,6 +19,6 @@ public class User {
     }
 
     public Integer getRestartChoice(String userInput){
-        return Integer.parseInt(getUserInput());
+        return Integer.parseInt(userInput);
     }
 }

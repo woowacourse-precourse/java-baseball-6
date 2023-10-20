@@ -35,6 +35,6 @@ class ExceptionHandlerTest {
     @Test
     @DisplayName("1,2가 아니면 예외")
     void checkIsRightChoice() {
-        Assertions.assertThrows(IllegalArgumentException.class,()-> exceptionHandler.checkIsRightChoice("8"));
+        Assertions.assertThrows(IllegalArgumentException.class,()-> exceptionHandler.checkIsRightChoice(8));
     }
 }
