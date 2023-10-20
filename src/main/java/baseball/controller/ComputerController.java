@@ -21,4 +21,8 @@ public class ComputerController {
         }
         computer.setNumbers(numbers);
     }
+
+    public void calculate(List<Integer> userNumbers){
+        computer.calculate(userNumbers);
+    }
 }

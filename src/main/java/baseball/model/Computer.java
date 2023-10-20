@@ -44,4 +44,18 @@ public class Computer {
                 ", strike=" + strike +
                 '}';
     }
+
+    public void calculate(List<Integer> userNumbers) {
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                if(this.numbers.get(i) == userNumbers.get(j)) {
+                    if(i == j) {
+                        this.strike += 1;
+                    } else {
+                        this.ball += 1;
+                    }
+                }
+            }
+        }
+    }
 }
