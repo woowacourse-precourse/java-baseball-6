@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class InputValidator {
     private static final String REGEX = "^[0-9]+$";
-    private static final String COMMA = ",";
+    private static final String ELEMENT = "";
     private static final int COUNT_OF_NUMBER = 3;
 
     public void validateNumber(String number) {
@@ -21,7 +21,7 @@ public class InputValidator {
     }
 
     private void validateNumberHasDuplicate(String number) {
-        if(number.length() != Arrays.stream(number.split(COMMA)).distinct().count()){
+        if(number.length() != Arrays.stream(number.split(ELEMENT)).distinct().count()){
             throw new IllegalArgumentException(ExceptionMessage.HAS_DUPLICATE.toString());
         }
     }
