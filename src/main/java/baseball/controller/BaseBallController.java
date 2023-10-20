@@ -33,6 +33,7 @@ public class BaseBallController {
         if (baseBallGame.isStrikeMax(gameResult.getStrike())) {
             OutputView.printGameEnd();
             restartNum = InputView.inputRestart();
+            InputValidation.validateRestartNum(restartNum);
             checkRestartNum(restartNum);
         }
         return restartNum;
