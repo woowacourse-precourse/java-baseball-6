@@ -4,10 +4,13 @@ public enum Menu {
     CONTINUE("1"),
     DONE("2");
 
-    Menu(String value) {
+    private final String value;
+
+    Menu(final String value) {
+        this.value = value;
     }
 
-    public static boolean restart(String value) {
-        return valueOf(value) == CONTINUE;
+    public static boolean restart(final String value) {
+        return CONTINUE.value.equals(value);
     }
 }
