@@ -33,7 +33,7 @@ public class BaseBallGameController {
 
             getCompareUserWithComputer();
 
-            if(isThreeStrike(compareUserWithComputer.getStrikeNum())){
+            if(isThreeStrike()){
                 GameOver();
             }
         }
@@ -54,8 +54,8 @@ public class BaseBallGameController {
         OutputView.showCompareResult(compareUserWithComputer.getStrikeNum(), compareUserWithComputer.getBallNum());
     }
 
-    public boolean isThreeStrike(int strikeNum){
-        return strikeNum == 3;
+    public boolean isThreeStrike(){
+        return compareUserWithComputer.getStrikeNum() == 3;
     }
 
     public void GameOver(){
