@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 
 public class BallsTest {
 
-    private final Ball ball1 = new Ball(1, 1);
-    private final Ball ball2 = new Ball(2, 2);
-    private final Ball ball3 = new Ball(3, 3);
-    private final Ball ballOnlyNumberSame1 = new Ball(3, 1);
-    private final Ball ballDifferent1 = new Ball(4, 1);
-    private final Ball ballDifferent2 = new Ball(5, 2);
-    private final Ball ballDifferent3 = new Ball(6, 3);
+    private final Ball ball1 = new Ball(1, 0);
+    private final Ball ball2 = new Ball(2, 1);
+    private final Ball ball3 = new Ball(3, 2);
+    private final Ball ballOnlyNumberSame1 = new Ball(3, 0);
+    private final Ball ballDifferent1 = new Ball(4, 0);
+    private final Ball ballDifferent2 = new Ball(5, 1);
+    private final Ball ballDifferent3 = new Ball(6, 2);
 
     @Test
     @DisplayName("숫자, 위치가 동일한 Ball 을 Balls 와 비교하면 스트라이크가 나온다")

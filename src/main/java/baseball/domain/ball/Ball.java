@@ -12,14 +12,28 @@ public class Ball {
     }
 
     public BallResult compareBall(Ball ball) {
-        boolean numResult = ballNumber.isSame(ball.ballNumber);
-        boolean positionResult = ballPosition.isSamePosition(ball.ballPosition);
-        if (numResult && positionResult) {
+        if (this.equals(ball)) {
             return BallResult.STRIKE;
         }
-        if (numResult) {
+        if (this.checkNumberSame(ball)) {
             return BallResult.BALL;
         }
         return BallResult.NOTHING;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Ball ball) {
+            return checkNumberSame(ball) && checkPositionSame(ball);
+        }
+        return false;
+    }
+
+    private boolean checkNumberSame(Ball ball) {
+        return this.ballNumber.isSame(ball.ballNumber);
+    }
+
+    private boolean checkPositionSame(Ball ball) {
+        return this.ballPosition.isSamePosition(ball.ballPosition);
     }
 }
