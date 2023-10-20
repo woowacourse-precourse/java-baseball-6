@@ -45,4 +45,25 @@ public class ValidException {
             throw new IllegalArgumentException(ValidConstants.MSG_ONLY_INPUT_NUM_TYPE());
         }
     }
+
+    /**
+     * 양수 입력을 위한 예외 처리.
+     *
+     * @param num
+     */
+    public static void isValidPositiveInt(String num) {
+        if (Integer.valueOf(num) > 0) {
+            return;
+        }
+        throw new IllegalArgumentException(ValidConstants.MSG_INPUT_POSITIVE_NUM());
+    }
+
+    /**
+     * 숫자입력에 대한 기본적인 예외처리
+     * 숫자타입, 양수검사
+     */
+    public static void isValidBasicNumException(String inputStr) {
+        ValidException.isValidNumVerification(inputStr); // 입력 받은 문자열이 숫자로 변환 가능한지 확인
+        ValidException.isValidPositiveInt(inputStr); // 입력 받은 문자열이 양수로 인지 확인
+    }
 }
