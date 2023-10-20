@@ -6,11 +6,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Inputter {
 
-    private Inputter inputter;
+    private static Inputter inputter;
 
     private Inputter() {}
 
-    public Inputter getInputter() {
+    public static Inputter getInputter() {
         if (inputter == null) {
             inputter = new Inputter();
         }

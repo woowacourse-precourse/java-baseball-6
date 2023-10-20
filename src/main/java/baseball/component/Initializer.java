@@ -7,9 +7,9 @@ public class Initializer {
 
     private Initializer() {}
 
-    private Initializer initializer;
+    private static Initializer initializer;
 
-    public Initializer getInitializer() {
+    public static Initializer getInitializer() {
         if (initializer == null) {
             initializer = new Initializer();
         }
