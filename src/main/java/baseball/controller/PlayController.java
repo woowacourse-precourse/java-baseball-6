@@ -7,10 +7,6 @@ import baseball.view.GameOutput;
 import java.util.List;
 
 public class PlayController {
-    private Integer ballCount;
-    private Integer strikeCount;
-
-
     GenerateController generateController;
     ValidateController validateController;
     GameOutput gameOutput;
@@ -42,16 +38,19 @@ public class PlayController {
 
         matchingBallAndStrike();
 
+        Integer ballCount = gameState.getBallCount();
+        Integer strikeCount = gameState.getStrikeCount();
         gameOutput.printResult(ballCount, strikeCount);
 
-        if (strikeCount == gameState.getMaximumNumberLength()) return true;
+        if (strikeCount == gameState.getMaximumNumberLength()) {
+            return true;
+        }
 
         return false;
     }
 
     private void matchingBallAndStrike() {
-        ballCount = 0;
-        strikeCount = 0;
+        gameState.initCount();
 
         List<Integer> computerNumbers = gameNumber.getNumber();
         List<Integer> userNumbers = userGameNumber.getNumber();
@@ -60,8 +59,8 @@ public class PlayController {
             Integer userIdx = userNumbers.indexOf(currentNumber);
             Integer computerIdx = computerNumbers.indexOf(currentNumber);
 
-            if (userIdx == computerIdx) ++strikeCount;
-            else if (computerIdx != -1) ++ballCount;
+            if (userIdx == computerIdx) gameState.increaseStrikeCount();
+            else if (computerIdx != -1) gameState.increaseBallCount();
         }
     }
 }
