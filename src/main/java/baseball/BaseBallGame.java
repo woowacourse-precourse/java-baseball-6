@@ -18,6 +18,8 @@ public class BaseBallGame {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String PLAYER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_END_MESSAGE = RANDOM_NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 " + GAME_RESTART_STATE +
+            ", 종료하려면 " + GAME_END_STATE + "를 입력하세요.";
 
     public void gameStart() {
         boolean progress = true;
@@ -45,6 +47,7 @@ public class BaseBallGame {
     }
 
     private boolean isRestart() {
+        printRestartQuestionMessage();
         String inputState = Console.readLine();
 
         if(inputState.equals(GAME_RESTART_STATE)){
@@ -56,6 +59,10 @@ public class BaseBallGame {
         }
 
         throw new IllegalArgumentException();
+    }
+
+    private void printRestartQuestionMessage() {
+        System.out.println(GAME_RESTART_MESSAGE);
     }
 
     private void printEndMessage() {
@@ -147,7 +154,7 @@ public class BaseBallGame {
     }
 
     private void printPlayerInputMessage() {
-        System.out.println(PLAYER_INPUT_MESSAGE);
+        System.out.print(PLAYER_INPUT_MESSAGE);
     }
 
     private void printStartMessage() {
