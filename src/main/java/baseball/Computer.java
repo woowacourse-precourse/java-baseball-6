@@ -8,7 +8,7 @@ public class Computer {
     private final int STRIKE = 2;
     List<Integer> answer;
 
-    public List<Integer> countScore(List<Integer> userNumbers) {
+    public List<Integer> countScore(List<Integer> answer, List<Integer> userNumbers) {
         int ball = 0;
         int strike = 0;
 
