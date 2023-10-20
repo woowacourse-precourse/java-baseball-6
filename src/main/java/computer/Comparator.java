@@ -30,15 +30,17 @@ public class Comparator {
             if(computerNumber.contains(userNumber.get(current))){
                 ball++;
                 current++;
+                continue;
             }
+            current++;
         }
         store(strike,ball);
     }
 
     private void receiveBalls(Balls computer,Balls user){
 
-        this.computerNumber=computer.getBalls();
-        //computer.getBalls().stream().forEach(x->this.computerNumber.add(x));
+        //this.computerNumber=computer.getBalls();
+        computer.getBalls().stream().forEach(n->this.computerNumber.add(n));
         //this.userNumber=user.getBalls();
         user.getBalls().stream().forEach(n->this.userNumber.add(n));
     }
