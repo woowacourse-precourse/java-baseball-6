@@ -45,7 +45,7 @@ public class BaseBallController {
 
         while (isContinueGame) {
             Numbers numbers = stringToNumbers(baseBallView.numbersInputView());
-            baseBallService.humanNumberChange(numbers);
+            baseBallService.playerNumberChange(numbers);
 
             Result result = baseBallService.calculateResult();
             baseBallView.resultGameView(result);
