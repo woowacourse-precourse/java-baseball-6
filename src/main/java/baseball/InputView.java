@@ -13,4 +13,11 @@ public class InputView {
         inputValidator.validateNumeric(number);
         player.changeExpectedNumbers(number);
     }
+
+    public int inputRestartMessage(){
+        outputView.printRestartMessage();
+        String number = Console.readLine();
+        inputValidator.validateNumeric(number);
+        return Integer.parseInt(number);
+    }
 }
