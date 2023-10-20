@@ -1,10 +1,13 @@
 package baseball.controller;
 
 import baseball.model.ComputerNumber;
+import baseball.model.UserNumber;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
     private static ComputerNumber computerNumber;
+    private static UserNumber userNumber;
 
     public static void proceedGame() {
         showStartMessage();
@@ -39,6 +42,11 @@ public class GameController {
     }
 
     private static void setUserNumber() {
+        userNumber = new UserNumber(getUserNumber());
+    }
+
+    private static String getUserNumber() {
+        return InputView.inputUserNumber();
     }
 
     private static void setComputerNumber() {
