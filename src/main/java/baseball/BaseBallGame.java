@@ -18,13 +18,20 @@ public class BaseBallGame {
     private static final String PLAYER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
     public void gameStart() {
-        List<Integer> computerNumbers;
-        List<Integer> playerNumbers;
         printStartMessage();
 
         while(true) {
-            computerNumbers = getRandomNumber();
+            progress();
+        }
+    }
+
+    public void progress() {
+        List<Integer> computerNumbers = getRandomNumber();
+        List<Integer> playerNumbers;
+
+        while(true) {
             playerNumbers = getPlayerNumber();
+
         }
     }
 
