@@ -43,13 +43,4 @@ public class Ball {
     public int hashCode() {
         return Objects.hash(digit, value);
     }
-
-    // TestCode
-    public int getDigit() {
-        return digit;
-    }
-
-    public int getValue() {
-        return value;
-    }
 }

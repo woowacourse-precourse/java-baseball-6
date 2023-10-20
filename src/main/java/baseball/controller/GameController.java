@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.Game;
 import baseball.model.Player;
 import baseball.model.TripleBalls;
+import baseball.util.Constants;
 import baseball.util.Util;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -12,11 +13,11 @@ public class GameController {
     private TripleBalls registeredComputer;
 
     public GameController() {
-        InputView.displayGameStart();
         init();
     }
 
     private void init() {
+        InputView.displayGameStart();
         registeringPlayer = registerPlayer();
         startGame();
     }
@@ -47,7 +48,7 @@ public class GameController {
 
     private void finishOrRestartGame(String inputGameRestart) {
         InputController.hasWrongInput(inputGameRestart);
-        if (inputGameRestart.equals("1")) {
+        if (Util.hasSameInput(inputGameRestart, Constants.GAME_RESTART_NUMBER)) {
             init();
         }
         finishGame();

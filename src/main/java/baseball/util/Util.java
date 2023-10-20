@@ -40,10 +40,10 @@ public class Util {
     }
 
     public static TripleBalls generateComputerTripleBalls() {
-        return convertToTripleBalls(convertNumbersToString(generateRandomNumbers()));
+        return convertStringToTripleBalls(convertNumbersToString(generateRandomNumbers()));
     }
 
-    public static TripleBalls convertToTripleBalls(String inputNumbers) {
+    public static TripleBalls convertStringToTripleBalls(String inputNumbers) {
         List<Ball> convertedBalls = new ArrayList<>();
         int digit = 1;
 
@@ -53,13 +53,6 @@ public class Util {
         }
 
         return new TripleBalls(convertedBalls);
-    }
-
-    private static String convertNumbersToString(List<Integer> numbers) {
-        StringBuilder stringBuilder = new StringBuilder();
-        numbers.stream()
-                .forEach(num -> stringBuilder.append(num));
-        return stringBuilder.toString();
     }
 
     public static List<Integer> generateRandomNumbers() {
@@ -72,5 +65,16 @@ public class Util {
             }
         }
         return computerGeneratedNumbers;
+    }
+
+    public static boolean hasSameInput(String src, String input) {
+        return src.equals(input);
+    }
+
+    private static String convertNumbersToString(List<Integer> numbers) {
+        StringBuilder stringBuilder = new StringBuilder();
+        numbers.stream()
+                .forEach(num -> stringBuilder.append(num));
+        return stringBuilder.toString();
     }
 }

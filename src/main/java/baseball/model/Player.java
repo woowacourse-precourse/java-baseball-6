@@ -8,7 +8,7 @@ public class Player {
 
     public Player(String inputNumbers) {
         new InputNumberValidator(inputNumbers);
-        this.playerTripleBalls = Util.convertToTripleBalls(inputNumbers);
+        this.playerTripleBalls = Util.convertStringToTripleBalls(inputNumbers);
     }
 
     public boolean hasSameBalls(TripleBalls registeredComputer) {
