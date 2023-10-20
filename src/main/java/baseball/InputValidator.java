@@ -19,20 +19,20 @@ public class InputValidator {
 
     public void validateUserAnswerLength(String userInput){
         if (userInput.length() != 3)
-            throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
+            throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
     }
 
     public void validateIsUserAnswerDigit(String userInput){
         for (int i = 0; i < 3; i++) {
             if (!Character.isDigit(userInput.charAt(i)))
-                throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
+                throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
         }
     }
 
     public void validateUserAnswerDigitRange(List<Integer> userAnwserList){
         for (int i = 0; i < 3; i++) {
             if (userAnwserList.get(i) < 1 || userAnwserList.get(i) > 9)
-                throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
+                throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
         }
     }
 
@@ -42,7 +42,7 @@ public class InputValidator {
             digitSet.add(userAnserList.get(i));
         }
         if (digitSet.size() != userAnserList.size())
-            throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
+            throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
     }
 
     public int validateRestartInput(String userInput){
