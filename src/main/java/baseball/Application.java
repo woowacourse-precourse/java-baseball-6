@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
 
@@ -86,6 +88,31 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
+    // 사용자 입력값에 대한 예외처리
+    public void exceptionUserInput(int[] input_number) {
+        if (input_number.length != 3) {
+            throw new IllegalArgumentException("입력한 숫자의 길이는 3자리이어야 합니다.");
+        }
+
+        if (hasDuplicates(input_number)) {
+            throw new IllegalArgumentException("입력한 숫자에 중복된 숫자가 있습니다.");
+        }
+    }
+
+    public static boolean hasDuplicates(int[] numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>();
+
+        for (Integer number : numbers) {
+            // 만약 이미 Set에 있는 숫자라면 중복이 있다고 판단하고 true를 반환합니다.
+            if (!uniqueNumbers.add(number)) {
+                return true;
+            }
+        }
+        return false; // 중복된 숫자가 없으면 false 반환
+    }
+
+
 
     public static void main(String[] args) {
 

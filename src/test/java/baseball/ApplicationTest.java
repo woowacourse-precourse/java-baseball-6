@@ -53,6 +53,24 @@ class ApplicationTest extends NsTest {
         org.assertj.core.api.Assertions.assertThat(strike_ball.equals(expected_strike_ball));
     }
 
+    @Test
+    void 입력값_자릿수_예외처리_테스트() {
+        int[] input_number = {1,2,3,4};
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            application.exceptionUserInput(input_number);
+        });
+    }
+
+    @Test
+    void 입력값_중복_예외처리_테스트() {
+        int[] input_number = {1,3,3};
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            application.exceptionUserInput(input_number);
+        });
+    }
+
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
