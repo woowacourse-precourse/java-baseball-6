@@ -12,7 +12,6 @@ public class BaseballGame {
         return computerNumber;
     }
 
-
     public String compareTwoNumbers(String userNumber, List<Integer>computerNumber){
 
         int strikeCount=0;

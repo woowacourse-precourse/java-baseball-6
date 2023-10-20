@@ -18,7 +18,6 @@ public class BaseballGameController {
         OutputView.printGameInitMessage();
     }
 
-
     public void gameStart(){
         String userNumber;
         baseballGameService = new BaseballGameService();
@@ -28,22 +27,7 @@ public class BaseballGameController {
             userNumber = InputView.readUserNumberInput();
             validateUserNumber(userNumber);
             String [] results = baseballGameService.run(userNumber);
-
-            if(!results[0].equals("0") && results[1].equals("0")){
-                OutputView.printOnlyBallCountMessage(results[0]);
-            }
-
-            if(results[0].equals("0") && !results[1].equals("0")){
-                OutputView.printOnlyStrikeCountMessage(results[1]);
-            }
-
-            if(!results[0].equals("0") && !results[1].equals("0")){
-                OutputView.printBallAndStrikeCountMessage(results[0],results[1]);
-            }
-
-            if(results[0].equals("0") && results[1].equals("0")){
-                OutputView.printNothingMessage();
-            }
+            new OutputView(results);
 
             if(results[1].equals("3")){
                 OutputView.printAnswerMessage();
