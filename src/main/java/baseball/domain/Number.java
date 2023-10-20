@@ -1,9 +1,14 @@
 package baseball.domain;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Number {
+
+    public void validateNumber(List<Integer> number) {
+        validateNumberSize(number);
+        validateDuplicateNumber(number);
+        validateNumberLength(number);
+    }
 
     public void validateNumberSize(List<Integer> number) {
         if(number.size() != 3) {
