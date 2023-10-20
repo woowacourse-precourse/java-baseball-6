@@ -1,7 +1,6 @@
 package baseball.component;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Inputer {
@@ -14,6 +13,14 @@ public class Inputer {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+        validate(input);
         return input;
+    }
+
+    private void validate(List<Integer> numbers) {
+        Set<Integer> validateSet = new HashSet<>(numbers);
+        if (validateSet.size() != 3 || numbers.size() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 }
