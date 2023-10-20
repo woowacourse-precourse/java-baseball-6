@@ -26,6 +26,21 @@ class TargetNumberTest {
     }
 
     @Test
+    @DisplayName("has 메서드 작동 확인")
     void has() {
+        TargetNumber targetNumber = TargetNumber.generate(3, 5, 7);
+
+        assertTrue(targetNumber.has(3, 0)[0]);
+        assertTrue(targetNumber.has(5, 1)[0]);
+        assertTrue(targetNumber.has(7, 2)[0]);
+
+        assertFalse(targetNumber.has(3, 1)[1]);
+        assertFalse(targetNumber.has(5, 2)[1]);
+        assertFalse(targetNumber.has(7, 0)[1]);
+
+        assertFalse(targetNumber.has(3, -1)[0]);
+        assertFalse(targetNumber.has(3, -1)[1]);
+
+        assertFalse(targetNumber.has(100, 0)[0]);
     }
 }
