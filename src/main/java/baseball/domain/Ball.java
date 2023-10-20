@@ -15,10 +15,14 @@ public class Ball {
         if (this.equals(ball)) {
             return BallStatus.STRIKE;
         }
-        if (this.ballNumber.equals(ball.ballNumber)) {
+        if (ball.isMatchBallNumber(ballNumber)) {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
+    }
+
+    private boolean isMatchBallNumber(BallNumber ballNumber) {
+        return this.ballNumber.equals(ballNumber);
     }
 
     @Override
