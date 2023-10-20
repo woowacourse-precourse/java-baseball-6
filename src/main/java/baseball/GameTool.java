@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameTool {
-
+    /*
+     * 랜덤 숫자 생성 메소드
+     */
     public List<Integer> generatedRandomNumbers(int n) {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < n) {
@@ -57,6 +59,11 @@ public class GameTool {
      * 힌트 결과 출력
      */
     public void printHint(int strike, int ball, boolean nothing) {
-
+        if (ball != 0)
+            System.out.println(ball+"볼 ");
+        if (strike != 0)
+            System.out.print(strike+"스트라이크");
+        if (nothing == true)
+            System.out.println("낫싱");
     }
 }
