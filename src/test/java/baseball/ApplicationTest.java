@@ -40,7 +40,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_중복_숫자() {
+    void 예외_테스트_중복_숫자_1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("112"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -56,7 +56,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_잘못된_자릿수() {
+    void 예외_테스트_중복_숫자_3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("242"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_잘못된_자릿수_두자리() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("12"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -64,9 +72,25 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_잘못된_형식() {
+    void 예외_테스트_잘못된_자릿수_한자리() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_잘못된_구분_띄어쓰기() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1 2 3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_잘못된_구분_쉼표() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1,2,3"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
