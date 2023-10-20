@@ -28,4 +28,12 @@ public class Baseball {
             throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION_MSG);
         }
     }
+
+    public void checkDigitInRange(List<Integer> inputList) {
+        for (int number : inputList) {
+            if (number < MAXIMUM_RANGE_NUMBER || number > MINIMUM_RANGE_NUMBER) {
+                throw new IllegalArgumentException(NUMBER_RANGE_EXCEPTION_MSG);
+            }
+        }
+    }
 }
