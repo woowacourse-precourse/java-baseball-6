@@ -1,6 +1,5 @@
 package baseball.application;
 
-import baseball.application.NumberGenerator;
 import baseball.domain.Number;
 import baseball.domain.Numbers;
 import org.junit.jupiter.api.Assertions;
@@ -10,7 +9,8 @@ import java.util.List;
 
 public class NumberGeneratorTest {
 
-    private final NumberGenerator testNumberGenerator = () -> new Numbers(List.of(new Number(1), new Number(2), new Number(3)));
+    private final NumberGenerator testNumberGenerator =
+            () -> new Numbers(List.of(new Number(1), new Number(2), new Number(3)));
 
     @Test
     public void 상대편의_숫자를_생성한다() {
