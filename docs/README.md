@@ -25,8 +25,8 @@
 게임의 전반적인 흐름을 관리하는 클래스
 
 - [ ] void proceedGame() : 게임 진행
-- [ ] void showStartMessage() : 게임 시작 메시지 출력
-- [ ] void setComputerNumber() : 컴퓨터 수 세팅
+- [x] void showStartMessage() : 게임 시작 메시지 출력
+- [x] void setComputerNumber() : 컴퓨터 수 세팅
 - [ ] void setUserNumber() : 사용자 수 세팅
 - [ ] void showHint() : 힌트 출력
 - [ ] void showEndMessage() : 게임 종료 문구 출력

@@ -1,6 +1,10 @@
 package baseball.controller;
 
+import baseball.model.ComputerNumber;
+import baseball.view.OutputView;
+
 public class GameController {
+    private static ComputerNumber computerNumber;
 
     public static void proceedGame() {
         showStartMessage();
@@ -38,8 +42,10 @@ public class GameController {
     }
 
     private static void setComputerNumber() {
+        computerNumber = new ComputerNumber();
     }
 
     private static void showStartMessage() {
+        OutputView.printStartMessage();
     }
 }
