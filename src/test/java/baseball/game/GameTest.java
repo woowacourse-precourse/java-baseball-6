@@ -1,15 +1,15 @@
 package baseball.game;
 
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 
 class GameTest {
@@ -25,12 +25,11 @@ class GameTest {
         String number2 = "121";
         String number3 = "211";
 
-
         //then
         //리플렉션에서 메서드 예외 발생시 InvocationTargetException으로 래핑해서 반환
-        assertThrows(InvocationTargetException.class,()->errorValidate.invoke(game,number1));
-        assertThrows(InvocationTargetException.class,()->errorValidate.invoke(game,number2));
-        assertThrows(InvocationTargetException.class,()->errorValidate.invoke(game,number3));
+        assertThrows(InvocationTargetException.class, () -> errorValidate.invoke(game, number1));
+        assertThrows(InvocationTargetException.class, () -> errorValidate.invoke(game, number2));
+        assertThrows(InvocationTargetException.class, () -> errorValidate.invoke(game, number3));
     }
 
     @Test
@@ -45,14 +44,14 @@ class GameTest {
         list.add(3);
 
         //when
-        List<Integer> invoke = (List<Integer>)stringToIntegerList.invoke(game, number);
+        List<Integer> invoke = (List<Integer>) stringToIntegerList.invoke(game, number);
 
         //then
-        assertEquals(invoke,list);
+        assertEquals(invoke, list);
     }
 
     @Test
-    void inputCheckTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException{
+    void inputCheckTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
         game.randomNumber.add(7);
         game.randomNumber.add(5);
@@ -76,10 +75,9 @@ class GameTest {
         list3.add(6);
 
         //when
-        boolean invoke1 = (boolean)inputCheck.invoke(game, list1);
-        boolean invoke2 = (boolean)inputCheck.invoke(game, list2);
-        boolean invoke3 = (boolean)inputCheck.invoke(game, list3);
-
+        boolean invoke1 = (boolean) inputCheck.invoke(game, list1);
+        boolean invoke2 = (boolean) inputCheck.invoke(game, list2);
+        boolean invoke3 = (boolean) inputCheck.invoke(game, list3);
 
         //then
         assertFalse(invoke1);
@@ -97,12 +95,12 @@ class GameTest {
         String error = "3"; //error
 
         //when
-        boolean invoke1 = (boolean)restartOrExitCheck.invoke(game, restart);
-        boolean invoke2 = (boolean)restartOrExitCheck.invoke(game, exit);
+        boolean invoke1 = (boolean) restartOrExitCheck.invoke(game, restart);
+        boolean invoke2 = (boolean) restartOrExitCheck.invoke(game, exit);
 
         assertTrue(invoke1);
         assertFalse(invoke2);
-        assertThrows(InvocationTargetException.class , ()->restartOrExitCheck.invoke(game,error));
+        assertThrows(InvocationTargetException.class, () -> restartOrExitCheck.invoke(game, error));
 
 
     }
