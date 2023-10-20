@@ -12,14 +12,15 @@ public class GameController {
     private final GameView gameView;
     private final GameService gameService;
 
-    GameController() {
+    public GameController() {
         gameView = new GameView();
         gameService = new GameServiceImpl();
     }
 
     public void run() {
         gameView.printStartMessage();
-        while(gameService.getQuit()) {
+        while(!gameService.getQuit()) {
+            gameService.gameStart();
             playGame();
             endProcess();
         }
@@ -27,7 +28,6 @@ public class GameController {
 
     private void playGame() {
         while(!gameService.isGameSet()) {
-            gameService.gameStart();
             gameView.printInputNumbersMessage();
             String input = Console.readLine();
             int[] ballStrike = gameService.checkCount(input);
