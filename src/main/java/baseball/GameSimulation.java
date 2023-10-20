@@ -9,8 +9,8 @@ import java.util.List;
 
 public class GameSimulation {
 
-    private Integer StrikeCount;
-    private Integer BallCount;
+    private Integer strikeCount;
+    private Integer ballCount;
     private List<Integer> computer;
     private List<Integer> user;
 
@@ -28,7 +28,7 @@ public class GameSimulation {
         }
     }
 
-    // 유저의 번호를 받아서 저장하는 메소드
+    // 사용자의 번호를 받아서 저장하는 메소드
     public List<Integer> userInit(String userInput){
         String[] array=userInput.split("");
         List<Integer> userNumber=new ArrayList<>();
@@ -52,6 +52,33 @@ public class GameSimulation {
             }
         }
     }
+
+    // 게임 플레이 콘솔
+    public void gamePlay(){
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput=Console.readLine();
+        this.user=userInit(userInput);
+        judgeUser();
+        compareNumber();
+        // 스트라이크, 볼 관련 판단 출력
+    }
+
+    // 컴퓨터와 사용자의 숫자 비교 메서드
+    public String compareNumber(){
+        if (ballCount!=0 && strikeCount!=0){
+            return (ballCount+"볼"+strikeCount+"스트라이크");
+
+        }
+        if (ballCount != 0){
+            return (ballCount+"볼");
+        }
+        if (strikeCount != 0){
+            return (strikeCount+"스트라이크");
+        }
+        return ("낫싱");
+    }
+
+
 
 
 
