@@ -44,11 +44,25 @@ public class BaseBallGame {
 //        return false;
 //    }
 
+    private int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        int ballCount = 0;
+
+        for(int i = 0; i < RANDOM_NUMBER_LENGTH; i++) {
+            int playerNumber = playerNumbers.get(i);
+
+            if (!computerNumbers.get(i).equals(playerNumber) && computerNumbers.contains(playerNumber)) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
+    }
+
     private int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int strikeCount = 0;
 
         for(int i = 0; i < RANDOM_NUMBER_LENGTH; i++) {
-            if(computerNumbers.get(i) == playerNumbers.get(i)) {
+            if(computerNumbers.get(i).equals(playerNumbers.get(i))) {
                 strikeCount++;
             }
         }
