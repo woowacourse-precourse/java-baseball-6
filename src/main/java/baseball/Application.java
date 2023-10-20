@@ -11,6 +11,7 @@ public class Application {
     private static String userNumbers;
     private static Integer strike;
     private static Integer ball;
+    private static boolean isAllCorrect;
     public static void main(String[] args) {
         // 시작
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -23,14 +24,17 @@ public class Application {
             // 컴퓨터 수 생성
             generateComputerNumbers();
 
-            // 사용자 수 입력
-            getUserInputNumber();
+            do {
+                // 사용자 수 입력
+                getUserInputNumber();
 
-            // 정답 확인
-            boolean isAllCorrect = checkAnswer(userNumbers);
+                // 정답 확인
+                isAllCorrect = checkAnswer(userNumbers);
 
-            // 결과 출력
-            printResult(isAllCorrect);
+                // 결과 출력
+                printResult(isAllCorrect);
+
+            }while(!isAllCorrect);
         }
     }
 
