@@ -17,16 +17,14 @@ public class GameManager {
 
         while(true) {
             BaseballGameNoticeUtil.noticeAgainOrExit();
-            String againOrExit = againOrExit();
 
-            if (againOrExit.equals("2")) break;
+            if (requireAgainOrExit().equals("2")) break;
             baseBall.baseBallRun();
         }
-
     }
 
     /* 재시작 또는 종료 값 입력 */
-    public String againOrExit() {
+    public String requireAgainOrExit() {
         return Console.readLine();
     }
 }
