@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    private static final String ERROR_MESSAGE_INTEGER_ONLY = "정수만 입력 가능합니다.";
+    private static final String ERROR_MESSAGE_INTEGER_ONLY = "[ERROR] 정수만 입력 가능합니다.";
 
     private InputView() {
     }
