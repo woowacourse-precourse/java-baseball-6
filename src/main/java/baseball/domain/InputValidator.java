@@ -3,23 +3,21 @@ package baseball.domain;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.InputConstant.*;
 import static baseball.exception.ExceptionMessage.*;
 
 public class InputValidator {
 
-    private final int VALID_LENGTH = 3;
-    private final int VALID_END_LENGTH = 1;
-
     public int validEndNumber(String input) {
         validateIncludeChar(input);
-        validateInvalidLength(input, VALID_END_LENGTH);
+        validateInvalidLength(input, VALID_END_INPUT_LENGTH.getNum());
         int endNum = validateNumberRange(input);
 
         return endNum;
     }
 
     public List<Integer> validateInputNumbers(String input) {
-        validateInvalidLength(input, VALID_LENGTH);
+        validateInvalidLength(input, VALID_NUMBERS_LENGTH.getNum());
         validateIncludeChar(input);
         List<Integer> inputNumbers = validateNumber(input);
 
@@ -54,14 +52,14 @@ public class InputValidator {
                 .filter(num -> num >= 1 && num <= 9)
                 .count();
 
-        if (count != VALID_LENGTH) {
+        if (count != inputNumbers.size()) {
             throw new IllegalArgumentException(INVALID_RANGE_OUT_NUMBER_ERROR.getErrorMsg());
         }
     }
 
     private int validateNumberRange(String input) {
         int endNum = Integer.valueOf(input);
-        if (endNum != 1 && endNum != 2) {
+        if (endNum != NEW_GAME.getNum() && endNum != END_GAME.getNum()) {
             throw new IllegalArgumentException(INVALID_END_INPUT_NUMBER_ERROR.getErrorMsg());
         }
 

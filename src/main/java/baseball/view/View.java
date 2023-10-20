@@ -10,7 +10,7 @@ public class View {
         System.out.println(START_MESSAGE.getMessage());
     }
 
-    public String inputNumber() {
+    public String playInputNumbers() {
         System.out.print(INPUT_NUMBERS_MESSAGE.getMessage());
 
         return Console.readLine();
@@ -20,8 +20,8 @@ public class View {
         System.out.println(result);
     }
 
-    public String endGame() {
-        System.out.println(END_MESSAGE.getMessage() + "\n" + INPUT_END_NUMBER);
+    public String endGameAndRestartInputNumber() {
+        System.out.println(END_MESSAGE.getMessage() + "\n" + INPUT_END_NUMBER.getMessage());
 
         return Console.readLine();
     }
