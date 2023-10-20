@@ -1,11 +1,32 @@
 package baseball;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Randoms;
 //import baseball.IsMatch;
 
 public class RunGame {
-    static int[] answer = {2, 3, 4};
+    static int[] answer = new int[3];
     static int[] keyNum = new int[3];
+
+    public void createRandomNumbers() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        int idx = 0;
+        for (int a: computer) {
+            System.out.println(a);
+            answer[idx] = a;
+            idx += 1;
+        }
+
+    }
+
+
 
     // 시작지점 inputNumbers, returnResult 두개 실행
     public static void run(){
@@ -13,8 +34,10 @@ public class RunGame {
         RunGame finishGame = new RunGame();
         RunGame inputNumbers = new RunGame();
         RunGame returnResult = new RunGame();
-        startGame.startGame();
+        RunGame createRandomNumbers = new RunGame();
 
+        startGame.startGame();
+        createRandomNumbers.createRandomNumbers();
         while(true){
             boolean alert = inputNumbers.inputNumbers();
             if (!alert) break;
@@ -39,10 +62,10 @@ public class RunGame {
 
     // 숫자 입력받아 int 배열으로 전환하는 과정
     public boolean inputNumbers(){
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요 : ");
         Scanner input = new Scanner(System.in);
         int num = input.nextInt();
-        System.out.println(num);
+//        System.out.println(num);
         int j = 100;
         for (int i = 0; i < 3; i++) {
             if (i == 0 && num/j == 0) return false;
