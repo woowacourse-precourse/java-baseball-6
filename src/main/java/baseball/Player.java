@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.util.InputUtil;
+
 public class Player {
 
     private final InputUtil inputUtil = new InputUtil();
