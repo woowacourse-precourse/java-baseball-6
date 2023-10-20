@@ -120,4 +120,8 @@ public class Console {
         String resultMessage = BaseBallGameMessage.makeResultString(strike, ball);
         System.out.println(resultMessage);
     }
+
+    public static void printGameOver() {
+        System.out.println(GAME_OVER);
+    }
 }
