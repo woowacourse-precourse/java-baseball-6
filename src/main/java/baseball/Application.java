@@ -1,9 +1,5 @@
 package baseball;
-
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.Arrays;
-
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -25,7 +21,6 @@ public class Application {
             // 3스트라이크 라면 게임을 종료할지, 새로 시작할 지 결정 한다.
             if (result[1] == 3)
                 command = selectRestartOrEndGame(computer);
-
         }
     }
 
@@ -41,14 +36,16 @@ public class Application {
 
     private static String changeResultToText(int[] result) {
         StringBuffer buffer = new StringBuffer();
-        if (result[0] == 0 && result[1] == 0)
+        if (result[0] == 0 && result[1] == 0) {
             buffer.append("낫싱");
-        else {
-            if (result[0] != 0)
+        } else {
+            if (result[0] != 0) {
                 buffer.append(result[0] + "볼 ");
+            }
 
-            if (result[1] != 0)
+            if (result[1] != 0) {
                 buffer.append(result[1] + "스트라이크");
+            }
         }
         return buffer.toString();
     }
@@ -58,9 +55,9 @@ public class Application {
         int[] result = new int[2];
         for (int i = 0; i < 3; i++) {
             // 같은 자리에 있따면 스트라이크
-            if (playerNum[i] == computerNum[i])
+            if (playerNum[i] == computerNum[i]) {
                 result[1]++;
-            else if (isBall(playerNum[i], computerNum)) {
+            } else if (isBall(playerNum[i], computerNum)) {
                 result[0]++;
             }
         }

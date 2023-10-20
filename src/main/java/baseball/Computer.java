@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Computer {
     private int[] computerNums;
+
     public void pickRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() != 3) {

@@ -14,6 +14,7 @@ public class Player {
         isValidNumber(inputNum);
         return getNumArray(inputNum);
     }
+
     private int[] getNumArray(String num) {
         int[] numArray = new int[num.length()];
         for (int i = 0; i < 3; i++) {
@@ -21,16 +22,19 @@ public class Player {
         }
         return numArray;
     }
+
     /*
         플레이어의 입력에 대한 유효성을 검사한다.
      */
     private void isValidNumber(String num) {
         // 길이가 3이 아니면 IllegalArgumentException 발생 시킨다.
-        if (num.length() != 3)
+        if (num.length() != 3) {
             throw new IllegalArgumentException();
+        }
         // 중복된 수가 존재 해도 IllegalArgumentException 발생
-        if (isDuplicateNumber(num))
+        if (isDuplicateNumber(num)) {
             throw new IllegalArgumentException();
+        }
     }
 
     // 중복된 숫자를 확인하기 위해
@@ -39,8 +43,9 @@ public class Player {
     private boolean isDuplicateNumber(String num) {
         Map<Character, Integer> countNumMap = getPlayerNumCountingMap(num);
         for (Character inPlayerNum : countNumMap.keySet()) {
-            if (countNumMap.get(inPlayerNum) != 1)
+            if (countNumMap.get(inPlayerNum) != 1) {
                 return true;
+            }
         }
         return false;
     }
