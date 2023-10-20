@@ -25,15 +25,15 @@ public class NumberBaseballGame {
     private void runGameLoop() {
         boolean userWin = false;
         while (!userWin) {
-            List<Integer> user = userNumberInput();
-            if (isUserWin(user)) {
+            List<Integer> userNumber = userNumberInput();
+            if (isUserWin(userNumber, computerNumber)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 userWin = true;
             }
         }
     }
 
-    private List<Integer> generateRandomNumbers() {
+    public List<Integer> generateRandomNumbers() {
         List<Integer> generatedNumbers = new ArrayList<>(MAX_NUMBER_LENGTH);
         while (generatedNumbers.size() < MAX_NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -55,15 +55,15 @@ public class NumberBaseballGame {
                 .collect(Collectors.toList());
     }
 
-    private void validateInput(String inputString) throws IllegalArgumentException {
+    public void validateInput(String inputString) throws IllegalArgumentException {
         if (!Pattern.matches(INPUT_REGEX, inputString)) {
             throw new IllegalArgumentException("[ERROR] 잘못된 숫자 입력입니다: " + inputString);
         }
     }
 
-    private boolean isUserWin(List<Integer> user) {
-        int ball = countBall(user);
-        int strike = countStrike(user);
+    public boolean isUserWin(List<Integer> userNumber, List<Integer> computerNumber) {
+        int ball = countBall(userNumber, computerNumber);
+        int strike = countStrike(userNumber, computerNumber);
         ball -= strike;
         printLoopResult(ball, strike);
         return strike == MAX_NUMBER_LENGTH;
@@ -82,7 +82,7 @@ public class NumberBaseballGame {
         System.out.println();
     }
 
-    private int countBall(List<Integer> user) {
+    public int countBall(List<Integer> user, List<Integer> computerNumber) {
         int ball = 0;
         for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
             if (computerNumber.contains(user.get(i))) {
@@ -92,7 +92,7 @@ public class NumberBaseballGame {
         return ball;
     }
 
-    private int countStrike(List<Integer> user) {
+    public int countStrike(List<Integer> user, List<Integer> computerNumber) {
         int strike = 0;
         for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
             if (computerNumber.get(i).equals(user.get(i))) {
@@ -109,7 +109,7 @@ public class NumberBaseballGame {
         return inputContinue.equals("1");
     }
 
-    private void validateContinueInput(String inputContinue) {
+    public void validateContinueInput(String inputContinue) throws IllegalArgumentException {
         if (!inputContinue.equals("1") && !inputContinue.equals("2")) {
             throw new IllegalArgumentException("[ERROR] 1 또는 2 를 입력하세요.");
         }
