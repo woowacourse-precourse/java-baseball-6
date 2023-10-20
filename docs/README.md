@@ -13,6 +13,10 @@
 - [x] 입력한 Balls 를 갖는 Player - Player
 - [x] Computer 와 Player 가 Extends 하는 abstract class - Playable 
 - [x] 게임 제시작 여부를 저장 맟 판단하는 트리거 - RetryTrigger
+- ### 추가사항
+- [ ] Balls 생성 시 입력 숫자가 세자리 수가 아니면 IllegalArgumentException 발생시키기 - Balls
+- [ ] 3스트라이크 게임 종료 여부 파악하기 - GameResult
+
 # View
 - [x] 숫자 입력하기 - InputView
 - [x] 게임 결과 출력하기 - OutputView
