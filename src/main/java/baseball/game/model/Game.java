@@ -1,14 +1,14 @@
-package baseball.computer.domain;
+package baseball.game.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
+public class Game {
 
     private List<Integer> randomAnswer;
 
-    public Computer() {
+    public Game() {
         this.randomAnswer = new ArrayList<>();
     }
 

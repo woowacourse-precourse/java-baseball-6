@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.computer.domain.Computer;
+import baseball.game.model.Game;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -12,13 +12,13 @@ public class Application {
 
             System.out.println("숫자 야구 게임을 시작합니다.");
 
-            Computer computer = new Computer();
-            List<Integer> randomAnswer = computer.createRandomAnswer();
+            Game game = new Game();
+            List<Integer> randomAnswer = game.createRandomAnswer();
 
             while (true) {
                 String input = Console.readLine();
-                computer.validateInput(input);
-                String hint = computer.getHint(input);
+                game.validateInput(input);
+                String hint = game.getHint(input);
                 System.out.println(hint);
                 if (hint.equals("3스트라이크")) {
 
