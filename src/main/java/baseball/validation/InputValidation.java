@@ -11,7 +11,7 @@ public class InputValidation {
     /**
      * 사용자의 숫자 입력값이 자연수로만 이루어져 있는지 검증한다.
      */
-    public static void validateNaturalNumber(String input) {
+    public void validateNaturalNumber(String input) {
         Pattern pattern = Pattern.compile("^[0-9]+$");
         Matcher matcher = pattern.matcher(input);
 
