@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private List<Integer> randomComputerPickNum = new ArrayList<>();
+    protected List<Integer> randomComputerPickNum = new ArrayList<>();
 
     public void randomComputerPick() {
         while (randomComputerPickNum.size() < 3) {
@@ -15,4 +15,9 @@ public class Computer {
             }
         }
     }
+
+    public List<Integer> getRandomCumputerPickNum() {
+        return randomComputerPickNum;
+    }
+
 }

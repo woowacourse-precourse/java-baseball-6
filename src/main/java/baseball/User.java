@@ -3,7 +3,7 @@ package baseball;
 import java.util.HashSet;
 
 public class User {
-    private String userSelectNum;
+    protected String userSelectNum;
 
     public void userSelect() {
         System.out.println("숫자를 입력해주세요");
@@ -23,4 +23,9 @@ public class User {
             }
         }
     }
+
+    public String getUserSelectNum() {
+        return userSelectNum;
+    }
+
 }
