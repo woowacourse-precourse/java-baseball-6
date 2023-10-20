@@ -1,6 +1,8 @@
 package baseball.model;
 
 import static baseball.config.Config.NUMBER_LENGTH;
+import static baseball.validator.NumberValidator.validateNumber;
+import static baseball.validator.NumberValidator.validateNumberLength;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static java.util.stream.Collectors.joining;
 
@@ -19,6 +21,7 @@ public class Number {
 
     /**
      * Static Factory Method - 랜덤 숫자 생성
+     *
      * @param numberLength
      */
     public static Number generateRandomNumber(final int numberLength) {
@@ -27,47 +30,26 @@ public class Number {
         return new Number(number);
     }
 
+    /**
+     * Static Factory Method - 사용자 숫자 입력
+     */
     public static Number inputPlayerNumber() {
         String number = InputView.requestUserNumber();
         return new Number(number);
+    }
+
+    public int countBallCount(final Number coumputerNumber) {
+        return 1;
+    }
+
+    public int countStrikeCount(final Number computerNumber) {
+        return 1;
     }
 
     private static String convertIntegerListToString(List<Integer> pickedInteger) {
         return pickedInteger.stream()
             .map(Object::toString)
             .collect(joining(""));
-    }
 
-    private void validateNumber(final String number) {
-        if (number.isEmpty()) {
-            throw new IllegalArgumentException("number cannot be empty");
-        }
-        if (!isValidNumber(number)) {
-            throw new IllegalArgumentException("number cannot contain any letters");
-        }
-        if (!isUniqueNumber(number)) {
-            throw new IllegalArgumentException("number cannot contain duplicated numbers");
-        }
-    }
-
-    private void validateNumberLength(final String number, final int numLength) {
-        if (!isValidLength(number, numLength)) {
-            throw new IllegalArgumentException(
-                "number Length is different from the system setting");
-        }
-    }
-
-    private boolean isValidLength(final String number, int numLength) {
-        return number.length() == numLength;
-    }
-
-    private boolean isValidNumber(final String number) {
-        return number
-            .chars()
-            .allMatch(c -> Character.isDigit(c) && c >= '1' && c <= '9');
-    }
-
-    private boolean isUniqueNumber(final String number) {
-        return number.chars().distinct().count() == number.length();
     }
 }

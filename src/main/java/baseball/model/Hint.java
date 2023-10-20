@@ -1,7 +1,6 @@
 package baseball.model;
 
 import static baseball.config.Config.NUMBER_LENGTH;
-import static java.lang.String.valueOf;
 
 import baseball.view.OutputView;
 
@@ -10,14 +9,9 @@ public class Hint {
     private int ballCount;
     private int strikeCount;
 
-    public void reset() {
-        this.strikeCount = 0;
-        this.ballCount = 0;
-    }
-
-    public void updateHint(final String playerNumber, final String computerNumber) {
-        countStrikeCount(playerNumber, computerNumber);
-        countBallCount(playerNumber, computerNumber);
+    public void updateHint(final Number playerNumber, final Number computerNumber) {
+        this.ballCount = playerNumber.countBallCount(computerNumber);
+        this.strikeCount = playerNumber.countStrikeCount(computerNumber);
     }
 
     public boolean checkClear() {
@@ -35,24 +29,5 @@ public class Hint {
             OutputView.printStrike(strikeCount);
         }
         OutputView.printEmptyLine();
-    }
-
-    private void countStrikeCount(final String playerNumber, final String computerNumber) {
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
-            if (playerNumber.charAt(i) == computerNumber.charAt(i)) {
-                this.strikeCount++;
-            }
-        }
-    }
-
-    private void countBallCount(final String playerNumber, final String computerNumber) {
-        for (int i = 0; i < playerNumber.length(); i++) {
-            char playerDigit = playerNumber.charAt(i);
-            char computerDigit = computerNumber.charAt(i);
-
-            if (playerDigit != computerDigit && computerNumber.contains(valueOf(playerDigit))) {
-                this.ballCount++;
-            }
-        }
     }
 }
