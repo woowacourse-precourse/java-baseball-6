@@ -69,6 +69,7 @@
    - 게임 결과 출력 기능
       - 스트라이크 출력
       - 볼 출력
+      - 볼 + 스트라이크 출력
       - 낫싱 출력
    - 게임 종료 문구 출력 기능
    - 게임 진행 여부 입력 기능
@@ -91,7 +92,7 @@
       - 3자리 수가 아니라면 “IllegalArgumentException” 발생
       - 1~9로 이루어진 수가 아니라면 “IllegalArgumentException” 발생
       - 수가 중복됐다면 “IllegalArgumentException” 발생
-   - 게임 진행 여부에 대한 예외처리 기능
+   - 게임 진행 여부에 대한 예외처리 기정
       - 1 또는 2가 아니라면 “IllegalArgumentException” 발생
 
 
