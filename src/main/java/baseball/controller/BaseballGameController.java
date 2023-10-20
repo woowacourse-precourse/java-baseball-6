@@ -1,8 +1,11 @@
 package baseball.controller;
 
+import baseball.util.RandomNumberGenerator;
 import baseball.util.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+
+import java.util.List;
 
 public class BaseballGameController {
     public void startBaseballGame() {
@@ -24,5 +27,10 @@ public class BaseballGameController {
     private void checkUserNumberValidate(String userInputNumber) {
         InputValidator inputValidator = new InputValidator();
         inputValidator.checkInputValidation(userInputNumber);
+    }
+
+    private List<Integer> createRandomNumber() {
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        return randomNumberGenerator.createRandomNumber();
     }
 }
