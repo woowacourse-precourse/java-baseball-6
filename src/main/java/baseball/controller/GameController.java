@@ -27,7 +27,8 @@ public class GameController {
 		gameData.setComputerNumbers(randomGenerator.generateRandomNumbers());
 		while(isGameStatus) {
 			gameData.setInputString(inputView.readNumber());
-			List<Integer> validateResult = InputValidation.validate(gameData.getInputString());
+			List<Integer> validateResult =
+				InputValidation.validateAndConvertInputToIntegerList(gameData.getInputString());
 			gameData.setPlayerNumbers(validateResult);
 			isGameStatus = !compareNumber();
 			outputView.printResult(gameData.getStrikeCount(), gameData.getBallCount());

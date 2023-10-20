@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class InputValidation {
 
-	public static List<Integer> validate(String inputNumber){
+	public static List<Integer> validateAndConvertInputToIntegerList(String inputNumber){
 		if(!hasExactLength(inputNumber)){
 			throw new IllegalArgumentException(WRONG_INPUT_LENGTH_MESSAGE);
 		}
@@ -42,4 +42,5 @@ public class InputValidation {
 			.map(Integer::parseInt)
 			.collect(Collectors.toList());
 	}
+
 }
