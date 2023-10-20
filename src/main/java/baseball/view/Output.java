@@ -6,15 +6,15 @@ import java.util.List;
 
 public class Output {
 
-    public static void Start_Message() {
+    public static void Run_Message() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void Input_Message() {
+    public static void Start_Message() {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public static void Output_Message(List<Integer> answerList, String UserInput) {
+    public static void Count_Message(List<Integer> answerList, String UserInput) {
         int ball = BallCount.Ball(answerList, UserInput);
         int strike = BallCount.Strike(answerList, UserInput);
         String output = "";
@@ -30,7 +30,11 @@ public class Output {
         System.out.println(output);
     }
 
-    public static void Output_Message_end() {
+    public static void Count_Message_end() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public static void Restart_Message() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }

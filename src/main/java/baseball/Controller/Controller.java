@@ -11,22 +11,36 @@ import java.util.List;
 public class Controller {
 
     public static String userInput;
-    public static List<Integer> answer;
     public static int strikeCount;
 
     public static void run() {
-        Output.Start_Message();
-        answer = RandomGenerate.ComputerNumber();
-        while (strikeCount != 3) {
-            Game();
-        }
-        Output.Output_Message_end();
+        Output.Run_Message();
+        start();
     }
 
-    public static void Game() {
-        Output.Input_Message();
+    public static void start() {
+        List<Integer> answer = RandomGenerate.ComputerNumber();
+        System.out.println(answer);
+        while (strikeCount != 3) {
+            Game(answer);
+        }
+        Output.Count_Message_end();
+        Restart();
+    }
+
+    public static void Game(List<Integer> answer) {
+        Output.Start_Message();
         userInput = Input.UserInputNumber();
         strikeCount = BallCount.Strike(answer, userInput);
-        Output.Output_Message(answer, userInput);
+        Output.Count_Message(answer, userInput);
+    }
+
+    public static void Restart() {
+        Output.Restart_Message();
+        String userRestart = Input.UserInputRestart();
+        if (userRestart.equals("1")) {
+            strikeCount = 0;
+            start();
+        }
     }
 }
