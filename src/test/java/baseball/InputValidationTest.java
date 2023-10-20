@@ -60,5 +60,16 @@ class InputValidationTest {
                 .hasMessage("3개의 숫자만을 입력해주시기 바랍니다.");
     }
 
-
+    @DisplayName("유저 input 안에 중복 값이 있는 경우의 테스트")
+    @Test
+    void duplicatedNumberInUserInputTest() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String duplicatedNumber = "119";
+        //then
+        assertThatThrownBy(() -> inputValidation.validateUserInput(duplicatedNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자를 중복하지 않고 입력해주시기 바랍니다.");
+    }
 }
