@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,9 +16,12 @@ public class BaseballGame {
 
     public void play() {
         List<Integer> userNumber;
+        GameStart();
         System.out.print("숫자를 입력해주세요: ");
         String userInput = Console.readLine();
         changeNumber(userInput);
+        userNumber = changeIntegerList(userInput);
+
 
     }
 
@@ -27,6 +31,21 @@ public class BaseballGame {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("유효한 숫자가 아닙니다.");
         }
+    }
+
+    public List<Integer> changeIntegerList(String userInput){
+        String[] strList = userInput.split("");
+        List<Integer> userNumber = new ArrayList<>();
+
+        for(String digitStr : strList) {
+            try{
+                int digit = Integer.parseInt(digitStr);
+                userNumber.add(digit);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("유효한 숫자가 아닙니다.");
+            }
+        }
+        return userNumber;
     }
 
 }
