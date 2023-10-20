@@ -1,14 +1,13 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class GameManager {
-
+    // TODO: 객체 직접 생성 제거하도록 리팩터링 해야함
     private Validator validator = new Validator();
-    private BaseballCreator baseballCreator = new BaseballCreator();
+    private BaseballCreator baseballCreator = new BaseballCreator(new RandomNumberGenerator());
     private Judgement judgment = new Judgement();
+    private Input input = new ConsoleInput();
 
     // 기능: 게임을 최초로 시작한다
     public void initialGameStart() {
@@ -24,7 +23,7 @@ public class GameManager {
         List<Integer> computerBalls = baseballCreator.createComputerBalls();
         while (true) {
             Output.printNumberInputMessage();
-            List<Integer> playerBalls = baseballCreator.createPlayerBalls();
+            List<Integer> playerBalls = baseballCreator.createPlayerBalls(input.readLine());
             String hint = judgment.getHint(computerBalls, playerBalls);
             Output.printHint(hint);
             if (isGameEnd(hint)) break;
@@ -43,7 +42,7 @@ public class GameManager {
     // 기능: 게임 종료 후, 게임 재시작 여부
     private boolean isNoMoreGame() {
         Output.printRestartGameMessage();
-        String restartCommand = Console.readLine();
+        String restartCommand = input.readLine();
         validator.validateRestartCommandInput(restartCommand);
         if (restartCommand.equals("2")) {
             return true;
