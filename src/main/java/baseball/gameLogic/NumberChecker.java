@@ -1,4 +1,4 @@
-package baseball;
+package baseball.gameLogic;
 
 import baseball.models.Score;
 import java.util.List;

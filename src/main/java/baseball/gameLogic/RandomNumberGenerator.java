@@ -1,4 +1,4 @@
-package baseball;
+package baseball.gameLogic;
 
 import camp.nextstep.edu.missionutils.Randoms;
 

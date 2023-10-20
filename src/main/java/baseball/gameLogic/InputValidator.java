@@ -1,4 +1,4 @@
-package baseball;
+package baseball.gameLogic;
 
 import java.util.ArrayList;
 import java.util.HashSet;
