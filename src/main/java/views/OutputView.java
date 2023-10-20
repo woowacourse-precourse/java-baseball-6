@@ -20,4 +20,12 @@ public class OutputView {
 		}
 		System.out.println(strikeCount + "스트라이크 " + ballCount + "볼");
 	}
+
+	public void printEnd() {
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+	}
+
+	public void gameOver() {
+		System.out.println("게임 종료");
+	}
 }

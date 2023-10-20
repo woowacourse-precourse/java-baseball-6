@@ -17,6 +17,7 @@ public class Game {
 		int ballCount = checkBall(input, answer) - strikeCount;
 		outputView.printCheckResult(strikeCount, ballCount);
 		if (strikeCount == 3) {
+			outputView.printEnd();
 			isAnswer = true;
 		}
 		return isAnswer;

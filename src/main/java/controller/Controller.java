@@ -27,5 +27,16 @@ public class Controller {
 				break;
 			}
 		}
+		restartOrNot();
+	}
+
+	private void restartOrNot() {
+		String opinion = inputView.inputOpinion();
+		if (opinion.equals("1")) {
+			playGame();
+		}
+		if (opinion.equals("2")) {
+			outputView.gameOver();
+		}
 	}
 }
