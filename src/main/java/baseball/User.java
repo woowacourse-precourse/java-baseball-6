@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private boolean isContinueGame = true;
-
     public List<Integer> getNumbers(){
         String input = Console.readLine();
 
@@ -17,12 +15,18 @@ public class User {
             numbers.add(number);
         }
 
-        Exception exception = new Exception();
-        exception.validateNumbers(numbers);
+        Exception.validateNumbers(numbers);
         return numbers;
     }
 
-    public boolean getIsContinueGame(){
-        return isContinueGame;
+    public boolean continueGame(){
+        String input = Console.readLine();
+
+        Exception.validateOption(input);
+
+        if(input.equals("1")){
+            return true;
+        }
+        return false;
     }
 }
