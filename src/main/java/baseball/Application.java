@@ -69,6 +69,10 @@ public class Application {
             BaseBallNumberGroup user = new BaseBallNumberGroup(getNumberListFromUserInput(userInput));
             BaseBallResult baseBallResult = new BaseBallResult(computer, user);
             baseBallResult.print();
+
+            if (baseBallResult.isAllStrike()) {
+                gameState = GameState.END;
+            }
         }
     }
 

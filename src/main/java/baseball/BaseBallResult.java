@@ -97,4 +97,8 @@ public class BaseBallResult {
     private void printNewLine() {
         System.out.println();
     }
+
+    public boolean isAllStrike() {
+        return strike == GameConstants.SIZE_RANDOM_NUMBER;
+    }
 }
