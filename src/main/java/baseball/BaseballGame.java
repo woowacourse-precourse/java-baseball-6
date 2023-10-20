@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.io.Output;
+
 public class BaseballGame {
 
     public void play() {
@@ -10,12 +12,10 @@ public class BaseballGame {
 
             BallCount ballCount = winningNumbers.ballCounting(baseballNumbers);
 
-            // TODO: 인터페이스 경계 분리
-            System.out.println(ballCount);
+            Output.consoleLine(ballCount);
             if (ballCount.isFullCount()) break;
         }
-        // TODO: 인터페이스 경계 분리
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        Output.consoleLine("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
 }

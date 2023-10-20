@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.io.Input;
+import baseball.io.Output;
 import java.util.Objects;
 import java.util.Set;
 
@@ -14,15 +15,14 @@ public class Application {
     private static final Set<String> INPUT_RESTARTS = Set.of(GAME_RESTART, GAME_FINISH);
 
     public static void main(String[] args) {
-        System.out.println(GAME_START_MESSAGE);
-        
+        Output.consoleLine(GAME_START_MESSAGE);
+
         boolean whetherPlay = true;
         while (whetherPlay) {
             BaseballGame baseballGame = new BaseballGame();
             baseballGame.play();
 
-            // TODO: 인터페이스 경계 분리
-            System.out.println(GAME_RESTART_MESSAGE);
+            Output.consoleLine(GAME_RESTART_MESSAGE);
             String inputRestart = Input.consoleLine();
 
             if (!INPUT_RESTARTS.contains(inputRestart)) {
