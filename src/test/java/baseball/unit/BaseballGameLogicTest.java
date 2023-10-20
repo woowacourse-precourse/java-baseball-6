@@ -1,4 +1,4 @@
-package baseball.unittest;
+package baseball.unit;
 
 import org.junit.jupiter.api.Test;
 
