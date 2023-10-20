@@ -16,8 +16,11 @@ public class BaseBallGame {
     }
     private void startNewGame() {
         List<Integer> computerNumbers = generateComputerNumber();
+        System.out.println(computerNumbers.toString());
         List<String> inputString = InputView.readPlayerNumber();
         List<Integer> inputInteger = Converter.convertToNumericList(inputString);
+        Result result = new Result(computerNumbers,inputInteger);
+        System.out.println(result.toString());
 
     }
     private List<Integer> generateComputerNumber(){
