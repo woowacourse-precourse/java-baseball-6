@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,36 +12,45 @@ public class BaseballService {
         BaseballPrint.printStartMessage();
     }
 
-    public void startBaseballGame() {
-        //static을 활용해서 숫자를 받아오는 것과 클래스를 생성한뒤 불러오는 방법중 더 나은 것은?
-        BaseballNumber computerNumber = BaseballNumber.initializeComputerNumber();
-        System.out.println(computerNumber);
+    public void playBaseballGame() {
+        BaseballNumber computerNumber = initializeComputerNumber();
         while (true) {
-            BaseballNumber userNumber = BaseballNumber.initializeUserNumber();
+            BaseballNumber userNumber = initializeUserNumber();
             BaseballScore resultScore = compareBaseballNumber(computerNumber, userNumber);
-            if (resultScore.isAllCorrect()) {
+            if (resultScore.isStrikeThree()) {
                 BaseballPrint.printEndMessage();
                 break;
             }
         }
         if (isContinueGame()) {
-            startBaseballGame();
+            playBaseballGame();
         }
+    }
+    public  BaseballNumber initializeComputerNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return new BaseballNumber(computer);
     }
 
     private boolean isContinueGame() {
         BaseballPrint.printRestartMessage();
         String restartResult = Console.readLine();
-        if (!restartResult.equals("1")&& !restartResult.equals("2")) {
-            throw new IllegalArgumentException("1, 2 중 하나를 입력해주세요");
-        }
+        Util.validateStringIsOneOrTwo(restartResult);
         return restartResult.equals("1");
     }
 
     public BaseballScore compareBaseballNumber(BaseballNumber computerNumber, BaseballNumber userNumber) {
-        BaseballScore baseballScore = computerNumber.compareNumber(userNumber);
+        BaseballScore baseballScore = BaseballNumber.compareNumber(computerNumber,userNumber);
         baseballScore.printBaseballScore();
         return baseballScore;
     }
-
+    public BaseballNumber initializeUserNumber() {
+        BaseballPrint.printInputNumberMessage();
+        return new BaseballNumber(Console.readLine());
+    }
 }
