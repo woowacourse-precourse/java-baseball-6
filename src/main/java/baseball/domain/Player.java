@@ -52,10 +52,6 @@ public class Player {
     }
 
     public boolean isEqualToAnswerNumbers() {
-        if (strikeCount == 3) {
-            return true;
-        }
-
-        return false;
+        return strikeCount == 3;
     }
 }
