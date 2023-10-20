@@ -1,6 +1,7 @@
 package baseball.model;
 
 import static baseball.Constants.NUMBER_COUNTS;
+import static baseball.fixture.UserNumbersFixture.createUserNumbersByString;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.IntStream;
@@ -24,7 +25,7 @@ class UserNumbersTest {
 
         // when & then
         assertThrows(IllegalArgumentException.class, () ->
-            UserNumbers.of(numberString.toString()));
+            createUserNumbersByString(numberString.toString()));
     }
 
     @Test
@@ -35,6 +36,6 @@ class UserNumbersTest {
 
         // when & then
         assertThrows(IllegalArgumentException.class, () ->
-            UserNumbers.of(duplicatedNumbers));
+            createUserNumbersByString(duplicatedNumbers));
     }
 }
