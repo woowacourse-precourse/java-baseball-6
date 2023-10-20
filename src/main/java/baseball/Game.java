@@ -17,6 +17,7 @@ public class Game {
             do{
                 int[] userInputs = display.getUserInput();
                 int[] judgeResult = computer.judge(userInputs);
+                display.printJudgeResult(judgeResult);
                 gameOver = (judgeResult[1] == 3);
             }
             while(!gameOver);
