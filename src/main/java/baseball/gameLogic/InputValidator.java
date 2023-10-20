@@ -7,7 +7,7 @@ import java.util.List;
 import static baseball.models.Constants.*;
 
 /*
- 주어진 입력이 올바른지 검증하는 클래스, 서로 다른 3자리수, 재시작/종료를 구분하는 수 모두 검사한다.
+ 주어진 입력이 올바른지 검증하는 클래스, 서로 다른 3자리 자연수, 재시작/종료를 구분하는 수 모두 검사한다.
  */
 
 public class InputValidator {
