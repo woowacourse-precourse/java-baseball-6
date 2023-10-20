@@ -11,6 +11,14 @@ import java.util.Set;
 public class Application {
 
     private static final int SIZE = 3;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+    private static final int BALL_INDEX = 0;
+    private static final int STRIKE_INDEX = 1;
+    private static final String RESTART_FLAG = "1";
+
+
+
 
     // 시작문구를 출력하는 기능
     public void printGameStart() {
@@ -43,8 +51,8 @@ public class Application {
     // 컴퓨터가 임의의 수 3자리를 생성하는 기능
     public List<Integer> randomNumber() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
@@ -60,9 +68,9 @@ public class Application {
             for (int comp_index=0; comp_index<SIZE; comp_index++) {
                 if (input_number[input_index] == computer_number.get(comp_index)) {
                     if(input_index == comp_index) {
-                        strike_ball[1] += 1;
+                        strike_ball[STRIKE_INDEX] += 1;
                     } else {
-                        strike_ball[0] += 1;
+                        strike_ball[BALL_INDEX] += 1;
                     }
                 }
             }
@@ -72,16 +80,16 @@ public class Application {
 
     // 힌트를 출력하는 기능
     public void printStrikeBall(int[] strike_ball) {
-        if (strike_ball[0] != 0 && strike_ball[1] == 0) { // 볼만 있는 경우
-            System.out.println(strike_ball[0] + "볼");}
+        if (strike_ball[BALL_INDEX] != 0 && strike_ball[STRIKE_INDEX] == 0) { // 볼만 있는 경우
+            System.out.println(strike_ball[BALL_INDEX] + "볼");}
 
-        if(strike_ball[0] == 0 && strike_ball[1] != 0) { // 스트라이크만 있는 경우
-            System.out.println(strike_ball[1] + "스트라이크");}
+        if(strike_ball[BALL_INDEX] == 0 && strike_ball[STRIKE_INDEX] != 0) { // 스트라이크만 있는 경우
+            System.out.println(strike_ball[STRIKE_INDEX] + "스트라이크");}
 
-        if(strike_ball[0] == 0 && strike_ball[1] == 0) { // 하나도 없는 경우
+        if(strike_ball[BALL_INDEX] == 0 && strike_ball[STRIKE_INDEX] == 0) { // 하나도 없는 경우
             System.out.println("낫싱");}
 
-        System.out.println(strike_ball[0] + "볼 " + strike_ball[1] + "스트라이크"); // 스트라이크 볼 둘다 있는 경우
+        System.out.println(strike_ball[BALL_INDEX] + "볼 " + strike_ball[STRIKE_INDEX] + "스트라이크"); // 스트라이크 볼 둘다 있는 경우
     }
 
     // 정답을 맞췄을 때 재시작의 여부를 묻는 기능
@@ -93,8 +101,8 @@ public class Application {
 
     // 사용자 입력값에 대한 예외처리
     public void exceptionUserInput(int[] input_number) {
-        if (input_number.length != 3) {
-            throw new IllegalArgumentException("입력한 숫자의 길이는 3자리이어야 합니다.");
+        if (input_number.length != SIZE) {
+            throw new IllegalArgumentException("입력한 숫자의 길이는 " + SIZE + "자리이어야 합니다.");
         }
 
         if (hasDuplicates(input_number)) {
@@ -129,10 +137,10 @@ public class Application {
             int[] strike_ball = A.checkStrikeAndBall(int_input_number, computer_number);
             A.printStrikeBall(strike_ball);
 
-            if(strike_ball[1] == 3) {
+            if(strike_ball[STRIKE_INDEX] == SIZE) {
                 A.printGameRestart();
                 String restart_number = A.numberInput();
-                if(restart_number.equals("1")) {
+                if(restart_number.equals(RESTART_FLAG)) {
                     computer_number = A.randomNumber();
                 } else {
                     break;
