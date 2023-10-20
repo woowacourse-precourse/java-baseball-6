@@ -2,6 +2,7 @@ package domain;
 
 import java.util.List;
 import util.validator.BallDuplicateValidator;
+import util.validator.BallSizeValidator;
 
 public class Balls {
 
@@ -10,7 +11,9 @@ public class Balls {
 
     public Balls(List<Ball> balls) {
         BallDuplicateValidator ballDuplicateValidator = BallDuplicateValidator.getInstance();
+        BallSizeValidator ballSizeValidator = BallSizeValidator.getInstance();
         ballDuplicateValidator.validate(balls);
+        ballSizeValidator.validate(balls);
         this.balls = balls;
     }
 }
