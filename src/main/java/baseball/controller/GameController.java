@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.GameModel;
+import baseball.util.GameInputValid;
 import baseball.view.GameView;
 
 public class GameController {
@@ -14,9 +15,17 @@ public class GameController {
     }
 
     public void runGame() {
-
+        GameInputValid userInputValid = new GameInputValid();
         view.showStartMessage();
-        String userInput = view.getUserInput();
 
+        while (true) {
+            String userInput = view.getUserInput();
+            try {
+                userInputValid.inputValid(userInput);
+            } catch (IllegalArgumentException exception) {
+                throw new IllegalArgumentException();
+            }
+
+        }
     }
 }
