@@ -1,19 +1,12 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumbers {
 
-    private final List<Integer> numbers = new ArrayList<>();
+    private final List<Integer> numbers;
 
-    public ComputerNumbers(NumberGenerator numberGenerator, int digitNumber) {
-        while (numbers.size() < digitNumber) {
-            int generatedNumber = numberGenerator.generate();
-            if (this.numbers.contains(generatedNumber)) {
-                continue;
-            }
-            numbers.add(generatedNumber);
-        }
+    public ComputerNumbers(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 }
