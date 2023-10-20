@@ -12,4 +12,12 @@ public class GameResult {
     public boolean isClear() {
         return strike == 3;
     }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
 }
