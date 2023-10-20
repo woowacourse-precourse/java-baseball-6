@@ -1,15 +1,15 @@
 package baseball.model;
 
-import java.util.List;
+import java.util.Scanner;
 
 public class UserNumber {
-    private List<Integer> inputNumber;
+    private final String inputNumber;
 
-    public UserNumber(List<Integer> inputNumber) {
-        this.inputNumber = inputNumber;
+    public UserNumber() {
+        this.inputNumber = String.valueOf(new Scanner(System.in));
     }
 
-    /*public List<Integer> getInputNumber() {
+    public String getInputNumber() {
         return this.inputNumber;
-    }*/
+    }
 }
