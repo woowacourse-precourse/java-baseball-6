@@ -17,7 +17,7 @@ public class Application {
 
         boolean playAgain = true;
 
-        while(playAgain) {
+        while (playAgain) {
             // 컴퓨터 숫자 랜덤 생성
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
@@ -28,14 +28,14 @@ public class Application {
                 }
             }
 
-            int s=0, b=0;
-            while(true) {
-                if(s==3) {
+            int s = 0, b = 0;
+            while (true) {
+                if (s == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 } else {
-                    s=0;
-                    b=0;
+                    s = 0;
+                    b = 0;
                 }
                 List<Integer> user = new ArrayList<>();
 
@@ -48,13 +48,13 @@ public class Application {
                     throw new IllegalArgumentException(e);
                 }
 
-                if(isNumber(inputStr)) {
+                if (isNumber(inputStr)) {
                     int inputInt = Integer.parseInt(inputStr);
-                    if(inputInt >= 100 && inputInt <= 999) {
+                    if (inputInt >= 100 && inputInt <= 999) {
                         while (user.size() < 3) {
                             // 세 자리 수의 각 자리 숫자를 추출
                             int digit = inputInt % 10;
-                            if(user.contains(digit)) throw new IllegalArgumentException();
+                            if (user.contains(digit)) throw new IllegalArgumentException();
                             user.add(0, digit);
                             inputInt /= 10;
                         }
@@ -63,15 +63,16 @@ public class Application {
 
 
                 // 컴퓨터의 수와 사용자의 수 비교
-                for(int i=0;i<3;i++) {
-                    if(computer.get(i) == user.get(i)) s+=1;
-                    else if (computer.contains(user.get(i))) b+=1;
+                for (int i = 0; i < 3; i++) {
+                    if (computer.contains(user.get(i))) {
+                        if (computer.get(i) == user.get(i)) s += 1;
+                    } else b += 1;
                 }
 
-                if(s==0 && b==0) System.out.println("낫싱");
-                else if(s!=0 && b!=0) System.out.println(b+"볼 " +s+"스트라이크");
-                else if(s!=0 && b==0) System.out.println(s+"스트라이크");
-                else if(s==0 && b!=0) System.out.println(b+"볼");
+                if (s == 0 && b == 0) System.out.println("낫싱");
+                else if (s != 0 && b != 0) System.out.println(b + "볼 " + s + "스트라이크");
+                else if (s != 0 && b == 0) System.out.println(s + "스트라이크");
+                else if (s == 0 && b != 0) System.out.println(b + "볼");
                 else System.out.println("낫싱");
 
             }
@@ -94,7 +95,7 @@ public class Application {
 
     // 입력받은 값이 숫자인지 확인
     public static boolean isNumber(String str) {
-        if(str == null) return false;
+        if (str == null) return false;
         try {
             Integer.parseInt(str);
             return true;
