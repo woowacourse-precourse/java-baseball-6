@@ -19,13 +19,14 @@ class ComputerTest {
     void judgeScore() {
     }
 
-    @DisplayName("컴퓨터가 정답을 저장하고 있는지 테스트")
+    @DisplayName("볼 판별 기능 테스트")
     @Test
-    void saveAnswer() {
+    void judgeBall() {
         //given
-        List<Integer> answer = List.of(4,5,6);
+        List<Integer> answer = List.of(3,9,6);
         //when
-        computer.setAnswer(answer);
+        int result = computer.judgeScore(answer, 3,1);
         //then
+        assertThat(result).isEqualTo(computer.BALL);
     }
 }
