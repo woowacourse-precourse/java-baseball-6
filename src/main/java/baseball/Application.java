@@ -24,45 +24,15 @@ public class Application {
     private static void game(RandomNum num) {
         Integer[] counting={0,0}; //0:볼 ,1:스트라이크
         while (counting[1]!=3) { //3스트라이크가 아니라면 계속 실행
-            String s = readLine(); //사용자 입력받음
-            List<Integer> input = input(s); //사용자 입력 유효한지 확인 및 데이터 변환
+            InputNum input = new InputNum(); //사용자 입력담을 wrapper class
 
-            counting = counting(num,input);
+            counting = input.compare(num);
 
             Integer ball = counting[0];
             Integer strike = counting[1];
 
             print(ball,strike);
         }
-    }
-
-    static List<Integer> input(String s) {
-        if (s.length()!=3) throw new IllegalArgumentException();
-
-        List<Integer> input = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            Integer num = s.charAt(i) - '0';
-            if(num<1 || num>9) throw new IllegalArgumentException(); //입력한 단어가 1~9사이의 숫자가 아니라면 에러
-            if(input.contains(num)) throw new IllegalArgumentException(); //숫자를 중복해서 입력할 경우 에러
-
-            input.add(num);
-        }
-
-        return input;
-    }
-
-    static Integer[] counting(RandomNum num,List<Integer> input) {
-        Integer[] counting = {0, 0}; // 0:볼 ,1:스트라이크
-
-        for (int i = 0; i < 3; i++) {
-            int answerNum = num.getNum(i);
-            int inputNum = input.get(i);
-
-            if(answerNum==inputNum) counting[1]++; //스트라이크
-            if(input.contains(answerNum) && answerNum!=inputNum) counting[0]++; //볼
-        }
-
-        return counting;
     }
 
     static void print(Integer ball, Integer strike) {
