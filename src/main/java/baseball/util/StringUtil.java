@@ -24,4 +24,9 @@ public class StringUtil {
         var charStreamIntMapping = charStream.map(Character::getNumericValue);
         return charStreamIntMapping.collect(toList());
     }
+
+    public static boolean isDigitString(String s) {
+        var chars = s.chars();
+        return chars.allMatch(Character::isDigit);
+    }
 }

@@ -8,7 +8,7 @@ import baseball.util.StringUtil;
 public class BaseballStateConverter {
 
     private static boolean isValidBaseballStateString(String s) {
-        if (s.length() != MAX_MATCH || !s.chars().allMatch(Character::isDigit)) {
+        if (s.length() != MAX_MATCH || !StringUtil.isDigitString(s)) {
             return false;
         }
 
