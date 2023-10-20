@@ -5,43 +5,49 @@ package baseball.service;
  */
 public class UserValidation {
     public int validation(String userInputString) {
-
-        // 입력된 값이 서로 다른 값인지 검증
-        char first = userInputString.charAt(0);
-        char second = userInputString.charAt(1);
-        char third = userInputString.charAt(2);
-
-        if ((first != second) && (first != third) && (second != third)) {
-            int userInput;
-            // 숫자가 입력됐는지 검증
-
-            try {
-                userInput = Integer.parseInt(userInputString);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException();
-            }
-
-            // 100~999 사이 숫자인지 검증
-            if (!(userInput > 99 && userInput < 1000)) {
-                throw new IllegalArgumentException();
-            }
-            return userInput;
+        // 입력 길이 검증
+        if (userInputString.length() != 3) {
+            throw new IllegalArgumentException("Fail : 세자리 숫자를 입력해주세요.");
         }
 
-        throw new IllegalArgumentException();
+        // 중복 문자 검증
+        if (!hasAllUniqueCharacters(userInputString)) {
+            throw new IllegalArgumentException("Fail : 중복된 숫자를 입력하셨습니다.");
+        }
+
+        // 숫자 변환 및 범위 검증
+        int userInput = parseAndValidateNumber(userInputString);
+
+        return userInput;
     }
 
+    private boolean hasAllUniqueCharacters(String str) {
+        return str.chars().distinct().count() == str.length();
+    }
+
+    private int parseAndValidateNumber(String str) {
+        try {
+            int number = Integer.parseInt(str);
+            if (number < 100 || number > 999) {
+                throw new IllegalArgumentException("Fail : 3 자리 숫자를 입력해주세요.");
+            }
+            return number;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Fail : 1~9 사이 숫자를 입력해주세요");
+        }
+    }
+
+
     public int restartValid(String restart) {
-        int userRestart;
         // 숫자가 아니거나 1 or 2가 아니라면 IllegalArgumentException()
         try {
-            userRestart = Integer.parseInt(restart);
-            if (userRestart != 1 && userRestart != 2) {
-                throw new IllegalArgumentException();
+            int userRestart = Integer.parseInt(restart);
+
+            if (userRestart == 1 || userRestart == 2) {
+                return userRestart;
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
         }
-        return userRestart;
+        throw new IllegalArgumentException("Fail : '1 또는 2' 입력해주세요.");
     }
 }
