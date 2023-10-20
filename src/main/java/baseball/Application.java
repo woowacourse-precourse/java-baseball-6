@@ -21,73 +21,84 @@ public class Application {
     // 종료 범위
     private static final int LAST_RANGE = 9;
 
+    // 게임 진행 여부
+    private static boolean gameState;
+
     // 컴퓨터 3자리 숫자
     private static List<Integer> computer = null;
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    // 사용자 3자리 숫자
+    private static List<Integer> user = null;
 
-        // 1. 시작 메시지 호출
+    // 결과 맵
+    private static Map<String, Integer> result = null;
+
+    public static void main(String[] args) throws IllegalArgumentException {
+        gameStart();
+    }
+
+    private static void gameStart() {
+        // 시작 메시지 호출
         System.out.println(Message.START_MSG);
+        gameState = true;
 
-        // 2. 컴퓨터 숫자 생성
-        List<Integer> computer = RandomNumberUtils.pickNumberInRange(START_RANGE, LAST_RANGE);
-
-        for (Integer i : computer) {
-            System.out.println("i = " + i);
+        while (gameState) {
+            // 컴퓨터 숫자 생성
+            computer = RandomNumberUtils.pickNumberInRange(START_RANGE, LAST_RANGE);
+            // 사용자 입력 및 결과 초기화
+            init();
+            // 게임 동작
+            process();
         }
+    }
 
-        // 3. 사용자의 입력 값 받기
+    private static void process() {
+        while (!success()) {
+            // 사용자 입력 및 결과 초기화
+            init();
+
+            // 사용자 입력 값 받기
+            String inputStr = getUserInput();
+
+            // 입력 받은 사용자 값 리스트 등록
+            StringToUserList(inputStr);
+
+            // 야구 게임 결과
+            result = baseballCount(computer, user);
+
+            // 결과 메시지 출력
+            outputMessage();
+        }
+    }
+
+    private static void init() {
+        // 사용자 리스트 초기화
+        user = new ArrayList<>(COUNT);
+
+        // 결과 초기화
+        result = new HashMap<>();
+        result.put(BaseBall.STRIKE, 0);
+        result.put(BaseBall.BALL, 0);
+        result.put(BaseBall.NOTHING, 0);
+    }
+
+    private static String getUserInput() {
         System.out.print(INPUT_MSG);
         String inputStr = Console.readLine();
-
-        // 4. 입력 받은 사용자 값 확인
+        // 입력값 검증
         // 입력된 값 - 빈값 / 숫자 / 3자리 숫자 / 중복 확인
         CheckUtils.userInputCheck(inputStr, COUNT);
+        return inputStr;
+    }
 
-        // 체크 정상 처리 된 경우
-        List<Integer> user = new ArrayList<>(COUNT);
+    private static void StringToUserList(String inputStr) {
         char[] charArray = inputStr.toCharArray();
         for (char c : charArray) {
             user.add(Integer.parseInt(c + ""));
         }
-
-        // 5. 야구 게임 결과 체크
-        Map<String, Integer> result = baseballCount(computer, user);
-
-        // 6. 결과 해석 및 게임 종료 여부 체크
-        if (result.get(BaseBall.STRIKE) == COUNT) {
-            System.out.println(END_MSG);
-            System.out.print(REGAME_MSG);
-            if (Console.readLine().equals("1")) {
-                System.out.println("재게임");
-            } else {
-                return;
-            }
-        } else if (result.get(BaseBall.NOTHING) == COUNT) {
-            System.out.println(NON_MSG);
-            // 다시 사용자 입력 받기
-        } else {
-            StringBuilder sb = new StringBuilder();
-            int ball = result.get(BaseBall.BALL);
-            int strike = result.get(BaseBall.STRIKE);
-            if (ball != 0) {
-                sb.append(ball + BALL_MSG + " ");
-            }
-            if (strike != 0) {
-                sb.append(strike + STRIKE_MSG);
-            }
-            System.out.println(sb.toString());
-        }
-
     }
 
     private static Map<String, Integer> baseballCount(List<Integer> computer, List<Integer> user) {
-        Map<String, Integer> result = new HashMap<>();
-        result.put(BaseBall.STRIKE, 0);
-        result.put(BaseBall.BALL, 0);
-        result.put(BaseBall.NOTHING, 0);
-
         for (int i = 0; i < computer.size(); i++) {
             int computerValue = computer.get(i);
             int userValue = user.get(i);
@@ -102,5 +113,33 @@ public class Application {
         return result;
     }
 
+    private static boolean success() {
+        if (result.get(BaseBall.STRIKE) == COUNT) {
+            System.out.println(END_MSG);
+            System.out.print(REGAME_MSG);
+            if (!Console.readLine().equals("1")) {
+                gameState = false;
+            }
+            return true;
+        }
+        return false;
+    }
 
+    private static void outputMessage() {
+        StringBuilder sb = new StringBuilder();
+        int ball = result.get(BaseBall.BALL);
+        int strike = result.get(BaseBall.STRIKE);
+        if (ball != 0) {
+            sb.append(ball + BALL_MSG + " ");
+        }
+        if (strike != 0) {
+            sb.append(strike + STRIKE_MSG);
+        }
+
+        if (sb.isEmpty()) {
+            System.out.println(NON_MSG);
+        } else {
+            System.out.println(sb.toString());
+        }
+    }
 }
