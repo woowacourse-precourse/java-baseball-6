@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class NumberBaseballGame {
-    private static final int NUMBER_LENGTH = 3;
-    List<Integer> computer = new ArrayList<>(3);
+    private static final int MAX_NUMBER_LENGTH = 3;
+    List<Integer> computer = new ArrayList<>(MAX_NUMBER_LENGTH);
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.\n");
@@ -34,7 +34,7 @@ public class NumberBaseballGame {
 
     private List<Integer> generateRandomNumbers() {
         List<Integer> generatedNumbers = new ArrayList<>();
-        while (generatedNumbers.size() < 3) {
+        while (generatedNumbers.size() < MAX_NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!generatedNumbers.contains(randomNumber)) {
                 generatedNumbers.add(randomNumber);
@@ -59,7 +59,7 @@ public class NumberBaseballGame {
     // 예외처리 미구현
     private boolean validateUserInput(String inputString) throws IllegalArgumentException {
         String userInputRegex = "^[1-9]{3}$";
-        if (!Pattern.matches("^[0-9]{3}$", inputString)) {
+        if (!Pattern.matches(userInputRegex, inputString)) {
             System.out.println("잘못된 숫자 입력입니다: " + inputString);
             throw new IllegalArgumentException("잘못된 숫자 입력입니다: " + inputString);
         }
@@ -80,12 +80,12 @@ public class NumberBaseballGame {
             System.out.print("낫싱");
         }
         System.out.println();
-        return strike == 3;
+        return strike == MAX_NUMBER_LENGTH;
     }
 
     private int countBall(List<Integer> user) {
         int ball = 0;
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
+        for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
             if (computer.contains(user.get(i))) {
                 ball++;
             }
@@ -95,7 +95,7 @@ public class NumberBaseballGame {
 
     private int countStrike(List<Integer> user) {
         int strike = 0;
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
+        for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
             if (computer.get(i).equals(user.get(i))) {
                 strike++;
             }
