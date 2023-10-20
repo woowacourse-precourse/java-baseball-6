@@ -8,6 +8,8 @@ import java.util.Objects;
 
 public class BaseballGame{
     private final List<Integer> computer = new ArrayList<>();
+    private int strike;
+    private int ball;
     private void newGame(){
         computer.clear();
         while (computer.size() < 3) {
@@ -45,12 +47,26 @@ public class BaseballGame{
         }
         return player;
     }
+    private void clearStrikeAndBall(){
+        strike = 0;
+        ball = 0;
+    }
+    public void printResult(){
+        if(ball !=0){
+            System.out.print(ball +"볼 ");
+        }
+        if(strike !=0){
+            System.out.print(strike +"스트라이크");
+        }
+        if(ball ==0&& strike ==0){
+            System.out.print("낫싱");
+        }
+    }
     private void compareNumber() {
-        int strike = 0;
+        clearStrikeAndBall();
         while(strike != 3){
             List<Integer> player = readPlayerNumber();
-            strike = 0;
-            int ball = 0;
+            clearStrikeAndBall();
             for(int i = 0; i<3;i++){
                 if(Objects.equals(computer.get(i), player.get(i))){
                     strike++;
@@ -59,15 +75,7 @@ public class BaseballGame{
                     ball++;
                 }
             }
-            if(ball !=0){
-                System.out.print(ball +"볼 ");
-            }
-            if(strike !=0){
-                System.out.print(strike +"스트라이크");
-            }
-            if(ball ==0&& strike ==0){
-                System.out.print("낫싱");
-            }
+            printResult();
         }
     }
     private void restartOrExit(){
