@@ -14,7 +14,7 @@ public class ExceptionModel {
     static final String RETRY_NUMBER = "[ERROR] 1 또는 2를 입력하세요.";
 
     /**
-     *  야구공 유효성 검사
+     * 야구공 유효성 검사
      */
     public void checkBaseBall(String input) {
         checkNumberType(input);
@@ -23,7 +23,7 @@ public class ExceptionModel {
     }
 
     /**
-     *  재시작/종료를 구분하는 숫자 유효성 검사
+     * 재시작/종료를 구분하는 숫자 유효성 검사
      */
     public void checkRetry(String input) {
         checkNumberType(input);

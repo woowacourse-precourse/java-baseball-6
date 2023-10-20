@@ -9,6 +9,7 @@ import java.util.List;
 
 public class InputView {
     ExceptionModel exceptionModel = new ExceptionModel();
+
     /**
      * 야구볼 서로 다른 3자리의 수 입력받기
      */
@@ -21,7 +22,7 @@ public class InputView {
     /**
      * 입력받은 문자열을 정수형 리스트로 변환
      */
-    private List<Integer> changeInteger (String input){
+    private List<Integer> changeInteger(String input) {
         String[] str = input.split("");
         List<Integer> numbers = new ArrayList<>();
         for (String s :

@@ -16,7 +16,6 @@ public class RunGame {
         BaseballGame.computerNumber = baseballNumber.makeBaseballNumber();
         BaseballGame.myNumber = new ArrayList<>();
         BaseballGame.finish = true;
-        System.out.println(BaseballGame.computerNumber);
         outputView.gameStart();
 
         while (BaseballGame.finish) { // 게임이 끝날때까지 반복
@@ -29,7 +28,6 @@ public class RunGame {
         outputView.restartGame();
 
         int restart = inputView.inputRetryNumber();
-        if(baseballGame.gameRestart(restart))
-            playBaseballGame();
+        if (baseballGame.gameRestart(restart)) playBaseballGame();
     }
 }

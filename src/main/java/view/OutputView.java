@@ -31,7 +31,7 @@ public class OutputView {
         // 볼 스트라이크
         if (strike == SUCCESS) {
             result.append(strike).append(STRIKE);
-        } else if (strike == FAIL && ball== FAIL) {
+        } else if (strike == FAIL && ball == FAIL) {
             result.append(NOTHING);
         } else {
             if (ball > FAIL)
