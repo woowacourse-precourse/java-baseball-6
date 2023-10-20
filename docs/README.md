@@ -38,7 +38,7 @@
         - [ ] `1`인 경우: 새로운 `Computer`를 생성하여 정답을 초기화하고, `InputView`의 `baseballNumber()` 호출.
         - [ ] `2`인 경우: 애플리케이션 종료.
 - `OutputView`
-    - [ ] `startGame()`: 최초 시작시 `"숫자 야구 게임을 시작합니다."`를 출력.
+    - [x] `startGame()`: 최초 시작시 `"숫자 야구 게임을 시작합니다."`를 출력.
     - [ ] `endGame()`: 매 게임시 3자리 숫자를 모두 맞추면 `"3개의 숫자를 모두 맞히셨습니다! 게임종료"`를 출력.
         - [ ] `InputView`의 `continueOrExit()` 메서드 호출.
     - [ ] `matchResult()`: `Computer`의 `match()` 메서드에서 `"볼"`, `"스트라이크"`를 넘겨받아서 결과를 출력.
