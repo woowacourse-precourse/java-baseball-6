@@ -38,6 +38,7 @@ public class GameLoop {
         GameLifeCycle gameLifeCycle = baseballContext.getGameLifeCycle();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (gameLifeCycle.isRunning()) {
+            System.out.print("숫자를 입력해주세요 : ");
             String balls = validationInput.nextLine();
             BaseballScore matchResults =
                 baseballGame.match(Baseball.of(baseballContext.getAnswer()), Baseball.of(balls));
