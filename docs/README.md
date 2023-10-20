@@ -24,7 +24,7 @@
 ### GameController
 게임의 전반적인 흐름을 관리하는 클래스
 
-- [ ] void proceedGame() : 게임 진행
+- [x] void proceedGame() : 게임 진행
 - [x] void showStartMessage() : 게임 시작 메시지 출력
 - [x] void setComputerNumber() : 컴퓨터 수 세팅
 - [x] void setUserNumber() : 사용자 수 세팅
