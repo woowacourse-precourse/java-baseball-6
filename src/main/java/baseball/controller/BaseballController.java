@@ -57,7 +57,9 @@ public class BaseballController {
         if (calculator.getStrike() != BaseballConstant.THREE_STRIKE) {
             playGame(randomNumbers);
         }
-        restartYn();
+        if (calculator.getStrike() == BaseballConstant.THREE_STRIKE) {
+            restartYn();
+        }
     }
 
     private void restartYn(){
