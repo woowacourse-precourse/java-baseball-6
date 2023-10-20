@@ -9,18 +9,19 @@ import static baseball.Validator.validateInput;
 
 public class User {
 
-    private List<Integer> numbers;
+    private GameNumber number;
 
     public void pickNumber() {
         String input = Console.readLine();
         validateInput(input);
-        numbers = Arrays.stream(input.split(""))
+        List<Integer> numberPick = Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .toList();
+        number = new GameNumber(numberPick);
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public GameNumber getNumber() {
+        return number;
     }
 
 }

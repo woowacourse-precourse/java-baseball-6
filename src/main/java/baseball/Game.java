@@ -24,45 +24,19 @@ public class Game {
         Output.printMessageWithLine(GAME_START_MESSAGE);
         while (true) {
 
-            List<Integer> answer = pickAnswerNumbers();
-            printList(answer);
-            Result result = new Result(0, 0);
-            while (!result.isEnd()) {
+            GameNumber answer = new GameNumber(createNumbers());
+            while (true) {
                 Output.printMessage(GAME_NUMBER_INPUT_MESSAGE);
-
                 user.pickNumber();
-                result.refresh();
-                match(answer, user.getNumbers(), result);
+                Result result = answer.match(user.getNumber());
+                result.printResult();
+                if (result.isEnd()) break;
             }
-
             if (!isGameContinued()) break;
         }
     }
 
-    private void match(
-            final List<Integer> answer,
-            final List<Integer> userPick,
-            final Result result
-    ) {
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
-            boolean isExist = answer.contains(userPick.get(i));
-            boolean isRightOrder = (Objects.equals(answer.get(i), userPick.get(i)));
-
-            if (isExist) {
-                if (isRightOrder) result.addStrike();
-                else result.addBall();
-            }
-        }
-
-        result.printResult();
-    }
-
-    private <T> void printList(List<T> list) {
-        list.forEach(System.out::println);
-        System.out.println();
-    }
-
-    private List<Integer> pickAnswerNumbers() {
+    private List<Integer> createNumbers() {
         List<Integer> answer = new ArrayList<>();
         Set<Integer> numbers = new HashSet<>();
         while (answer.size() < 3) {

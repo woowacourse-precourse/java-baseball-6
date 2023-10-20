@@ -20,14 +20,7 @@ public class Validator {
 
     public static void validateInput(final String input) {
         validateInputDigit(input);
-        validateInputRange(input);
-        validateInputContainsZero(input);
-        validateDuplicateNumber(input);
-    }
 
-    private static void validateInputRange(final String input) {
-        if (input.length() == NUMBER_LENGTH) return;
-        throw new IllegalArgumentException("세개의 숫자만 입력받을 수 있습니다.");
     }
 
     private static void validateInputDigit(final String input) {
@@ -38,22 +31,6 @@ public class Validator {
         }
     }
 
-    private static void validateInputContainsZero(final String input) {
-        String[] split = input.split("");
-        if (Arrays.asList(split).contains("0")) {
-            throw new IllegalArgumentException("입력에 0이 포함되었습니다.");
-        }
-    }
-
-    private static void validateDuplicateNumber(final String input) {
-        Set<Character> set = new HashSet<>();
-        for (int i = 0; i < input.length(); i++) {
-            if (set.contains(input.charAt(i))) {
-                throw new IllegalArgumentException("중복된 숫자가 입력되었습니다.");
-            }
-            set.add(input.charAt(i));
-        }
-    }
 
     public static void validateCommand(int command) {
         if (command != RESTART_COMMAND && command != FINISH_COMMAND) {
