@@ -17,6 +17,15 @@
     - [x] 입력 값 검증 후 올바르지 않을경우 예외 발생
     - [x] 사용자 입력값에 따라 재시작 또는 완전한 종료
 
+### 추가로 할 일 목록
+
+- [ ] 변수명 다듬기
+- [x] 매직 넘버 상수로 변환
+- [ ] 테스트 코드 작성
+- [ ] 필요없는 로직 개선
+- [ ] 메소드 분리
+- [ ] 클래스 분리
+
 ## 주의점
 
 - [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 준수
