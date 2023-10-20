@@ -11,7 +11,7 @@ public enum Constant {
 	public static final String WRONG_INPUT_LENGTH_MESSAGE = "세 자리만 입력 가능합니다.";
 	public static final String WRONG_INPUT_RANGE_MESSAGE = "1~9 사이의 숫자만 입력 가능합니다.";
 	public static final String WRONG_INPUT_DUPLICATE_MESSAGE = "서로 다른 세자리 숫자만 입력 가능합니다.";
-
+	public static final String WRONG_INPUT_RESTART_MESSAGE = "1 또는 2만 입력 가능합니다.";
 	public static final int NUMBER_LENGTH = 3;
 	public static final int RANGE_MIN_NUMBER = 1;
 	public static final int RANGE_MAX_NUMBER = 9;
