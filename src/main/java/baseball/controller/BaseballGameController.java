@@ -60,13 +60,6 @@ public class BaseballGameController {
 
         }while(RestartFlag);
 
-
-
-
-
     }
-
-
-
 
 }
