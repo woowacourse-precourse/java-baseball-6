@@ -102,6 +102,5 @@ public class Application {
         while (result == 1) {
             result = game();
         }
-        return;
     }
 }
