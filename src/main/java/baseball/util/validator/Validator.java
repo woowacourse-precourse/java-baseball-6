@@ -1,9 +1,10 @@
-package baseball.util;
+package baseball.util.validator;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class Validator {
+    private static final int LIMIT_NUMBER = 3;
     public static boolean validate(final int[] numbers){
         checkDuplicate(numbers);
         checkSize(numbers);
@@ -20,7 +21,7 @@ public class Validator {
     }
 
     private static void checkSize(final int[] numbers) {
-        if(numbers.length>3){
+        if(numbers.length!=LIMIT_NUMBER){
             throw new IllegalArgumentException("세 자리 숫자를 입력 해주세요.");
         }
     }

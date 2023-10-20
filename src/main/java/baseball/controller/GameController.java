@@ -1,7 +1,7 @@
 package baseball.controller;
 
-import baseball.service.BaseballGame;
-import baseball.service.GameInterface;
+import baseball.service.game.BaseballGame;
+import baseball.service.game.GameInterface;
 
 public class GameController {
     private final GameInterface gameInterface;
