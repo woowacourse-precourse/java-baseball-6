@@ -17,7 +17,7 @@ public class Application {
 
             exitFlag = askExit();
         }
-        System.out.println("프로그램을 종료합니다.");
+        System.out.println("게임을 종료합니다.");
     }
 
     public static boolean askExit() {
