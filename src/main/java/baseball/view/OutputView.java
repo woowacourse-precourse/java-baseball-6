@@ -21,7 +21,7 @@ public class OutputView {
         int ball = result.get(1);
 
         if (strike == 3) {
-            System.out.println(THREE_STRIKE_AND_END_GAME_MESSAGE);
+            System.out.println("3스트라이크\n" + THREE_STRIKE_AND_END_GAME_MESSAGE);
             return;
         }
 
