@@ -9,13 +9,18 @@ public class Application {
     public static void main(String[] args) {
         List<Integer> computerNums;
         List<Integer> userNums;
+        List<Integer> userResult;
+        boolean gameResult = false;
+
+
 
         computerNums = choiceComputerNums();
         printComputerNums(computerNums);
-        userResult = calculateResult(computerNums, userNums);
-
 
         userNums = inputUserNums();
+        userResult = calculateResult(computerNums, userNums);
+        gameResult = displayResult(userResult);
+
 
     }
 
