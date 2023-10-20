@@ -34,18 +34,18 @@ public class Player {
 
         boolean onTurn = true;
         while(onTurn) {
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             String inputStr = Console.readLine();
             setAnswer(inputStr);
             Result result = computer.checkAnswer(input);
+            result.print();
 
             if(result.isCorrect(input.getLength())) {
                 onTurn = false;
                 continue;
             }
-
-            result.print();
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
+        System.out.println("게임 종료");
     }
 }
