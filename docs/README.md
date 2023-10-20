@@ -29,7 +29,12 @@
   - 3개의 번호는 1~9 사이의 숫자이며, 서로 달라야 한다는 규칙을 지키며 만들어진다.
   - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
   - return 타입은 정수형 리스트인 List<Integer> 이다. 
-
+- CorrectNumberLength 메소드
+  - 컴퓨터가 생성하는 난수 리스트의 길이가 3인지 확인한다.
+  - return 타입은 boolean 이다.
+- duplicationNumber 메소드
+  - 컴퓨터가 생성하는 난수 리스트의 숫자들이 중복되는지 확인한다. 
+  - return 타입은 boolean 이다.
 ### BaseballGameService
 사용자 입력과 컴퓨터의 랜덤값을 비교한 결과를 제공한다.
 - allStrike 멤버변수
