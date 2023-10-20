@@ -4,7 +4,6 @@ import baseball.controller.InputController;
 import baseball.model.Ball;
 import baseball.model.Player;
 import baseball.model.TripleBalls;
-import baseball.util.Util;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 import org.assertj.core.api.Assertions;

@@ -1,9 +1,5 @@
 package baseball.model;
 
-import baseball.model.Ball;
-import baseball.model.GameResult;
-import baseball.model.TripleBalls;
-
 public class Game {
     public GameResult compareBalls(Ball playerBall, Ball computerBall) {
         return playerBall.compare(computerBall);

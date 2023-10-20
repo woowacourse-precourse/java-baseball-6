@@ -1,14 +1,9 @@
 package baseball;
 
-import baseball.view.InputView;
-import camp.nextstep.edu.missionutils.Console;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import java.io.*;
+import java.io.*; // 자동 완성 관련 해제하는 방법 알아보기
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
