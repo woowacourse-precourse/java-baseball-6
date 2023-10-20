@@ -12,7 +12,7 @@ import java.util.Set;
 public class PlayerNumber {
     private final List<Integer> numbers;
     private static final int NUMBERS_SIZE = 3;
-    
+
     private PlayerNumber(List<Integer> numbers) {
         this.numbers = numbers;
     }
