@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NumberBaseball {
     // 더 좋은 변수명 생각해보기
@@ -13,8 +14,23 @@ public class NumberBaseball {
         generateComputerNum();
     }
 
-    public List<Integer> getComputerNum() {
+    public List<Integer> getComputerNumToList() {
         return computerNum;
+    }
+
+    public int getComputerNumToInt() {
+        return modifyListToInt();
+    }
+
+    private int modifyListToInt() {
+        String compNumStr = "";
+        List<String> stringList = computerNum.stream().map(i -> i.toString()).collect(Collectors.toList());
+        for (String s : stringList) {
+            compNumStr+=s;
+        }
+        Integer intNum = Integer.parseInt(compNumStr);
+        System.out.println("intNum = " + intNum);
+        return Integer.parseInt(compNumStr);
     }
 
     private void generateComputerNum() {
