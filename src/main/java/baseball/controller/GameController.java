@@ -25,7 +25,9 @@ public class GameController {
 
     private void gameEndOrRestart() {
         outputView.gameSuccess();
+        String input = inputView.endOrRestartInput();
     }
+
 
     private void gamePlay() {
         String inputNumbers = inputView.inputNumbers();
