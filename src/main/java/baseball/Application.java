@@ -37,10 +37,16 @@ public class Application {
 
         for(int i=0; i<3; i++){
             for(int j=0; j<3; j++){
-                if (computerNumber.get(i).equals(userGuess.get(i)))//same number exist
-                    if(i==j)
+                if (computerNumber.get(i).equals(userGuess.get(j))) {//same number exist
+                    if (i == j) {
                         strike++;
-                    else ball++;
+                        break;
+                    } else {
+                        ball++;
+                        break;
+                    }
+
+                }
             }
         }
         return new int[]{strike,ball};
