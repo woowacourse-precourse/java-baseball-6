@@ -15,6 +15,9 @@ public class Computer {
         pickedMap = new boolean[10];
         answer = new int[3];
 
+        for(int i = 0; i < 10; ++i)
+            pickedMap[i] = false;
+
         for(int i = 0; i < 3; ++i) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!pickedMap[randomNumber]) {
