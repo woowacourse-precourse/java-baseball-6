@@ -27,6 +27,8 @@ public class Application {
                 printMessage(Message.INPUT_NUMBER_PROMPT);
                 String inputValue = Console.readLine();
 
+                validateInput(inputValue);
+
                 strikeCount = 0;
                 ballCount = 0;
 
@@ -47,6 +49,12 @@ public class Application {
             }
             askIfContinue();
         } while (isGameToBeContinued);
+    }
+
+    private static void validateInput(String inputValue) {
+        if (!inputValue.matches("^[0-9]{3}$")) {
+            throw new IllegalArgumentException("숫자 세 자리만 입력해주세요.");
+        }
     }
 
     private static List<Integer> getRandomIntegers() {
