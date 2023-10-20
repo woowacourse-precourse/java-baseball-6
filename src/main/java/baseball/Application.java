@@ -29,7 +29,16 @@ public class Application {
             System.out.println(gameString); // 진행상황 표시
 
             if (gameString.equals("3스트라이크")) {
-                //이후 게임이 다시 시작할 것 인지 말것인지 구현
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+                String gameChoiceNum = Console.readLine();
+
+                if (gameChoiceNum.equals("1"))
+                    gameChoice = true;
+                else if (gameChoiceNum.equals("2"))
+                    gameChoice = false;
+                //else를 사용하지않고 잘못 섰을시 예외처리 하기
             }
         }
 
