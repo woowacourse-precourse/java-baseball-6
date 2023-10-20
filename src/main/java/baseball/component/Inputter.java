@@ -17,6 +17,15 @@ public class Inputter {
         return inputter;
     }
 
+    public boolean restart() {
+        String sign = Console.readLine();
+        switch (sign) {
+            case "1" : return true;
+            case "2" : return false;
+            default  : throw new IllegalArgumentException();
+        }
+    }
+
     public List<Integer> input() {
         String input;
 
