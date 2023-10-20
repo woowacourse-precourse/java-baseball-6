@@ -42,14 +42,13 @@ public class Application {
         while(true) {
             List<Integer> user = getUserNumbers();
 
-
             int strike = getStrike(computer, user);
             int ball = getBall(computer, user);
 
             if (strike == NUMBER_LENGTH) {
                 System.out.println(strike + STRIKE_MESSAGE);
                 System.out.println(GAME_OVER_MESSAGE);
-                return;
+                break;
             } else if (strike > 0 && ball > 0) {
                 System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
             } else if (strike > 0 && ball == 0) {
