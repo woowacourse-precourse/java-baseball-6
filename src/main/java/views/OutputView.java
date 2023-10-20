@@ -4,8 +4,7 @@ public class OutputView {
 	public OutputView() {
 
 	}
-
-	public void printIntro() {
+	public static void printIntro() {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 	}
 
@@ -26,7 +25,7 @@ public class OutputView {
 			System.out.println(strikeCount + "스트라이크");
 			return;
 		}
-		System.out.println(strikeCount + "스트라이크 " + ballCount + "볼");
+		System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
 	}
 
 	public void printEnd() {

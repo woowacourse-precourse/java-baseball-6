@@ -10,10 +10,10 @@ public class AnswerCreator {
 
 	public int createAnswer() {
 		int answerNumber = 0;
-		int multiplyNumber = 1;
+		int multiplyNumber = 100;
 		for (int i = 0; i < 3; i++) {
 			answerNumber += Randoms.pickNumberInRange(1, 9)*multiplyNumber;
-			multiplyNumber *= 10;
+			multiplyNumber /= 10;
 		}
 		if (!validator.checkDuplication(answerNumber)) {
 			answerNumber = createAnswer();

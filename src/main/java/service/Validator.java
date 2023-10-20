@@ -4,6 +4,17 @@ public class Validator {
 	public Validator() {
 
 	}
+	public boolean checkNumber (int inputNumber) {
+		String input = Integer.toString(inputNumber);
+		boolean isNatural = true;
+		for (int i = 0; i < 3; i++) {
+			if (input.charAt(i) == '0') {
+				isNatural = false;
+				break;
+			}
+		}
+		return isNatural;
+	}
 	public boolean checkDigit(int inputNumber) {
 		boolean isCorrectDigit = false;
 		if (inputNumber < 1000 && inputNumber > 99) {

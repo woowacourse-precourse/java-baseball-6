@@ -21,12 +21,9 @@ public class Controller {
 	}
 
 	public void playGame() {
-		outputView.printIntro();
-		// int answerNumber = answerCreator.createAnswer();
-		int answerNumber = 135;
+		int answerNumber = answerCreator.createAnswer();
 		while (true) {
 			int inputNumber = inputView.getInputNumber();
-
 			if (game.getGameResult(inputNumber, answerNumber)) {
 				break;
 			}
