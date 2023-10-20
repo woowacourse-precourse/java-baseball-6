@@ -5,11 +5,11 @@ import java.util.List;
 
 public class BaseballGame {
 
-    Computer computer;
+
 
     public List<Integer> createComputerNumber(){
         List<Integer> computerNumber;
-        computer = new Computer();
+        Computer computer = new Computer();
         computerNumber = computer.randomComputerNumber();
         return computerNumber;
     }
@@ -33,6 +33,17 @@ public class BaseballGame {
         String result = strikeCount+","+ballCount;
         System.out.println(result);
         return result;
+
+    }
+
+    public String[] splitCountResult(String result){
+
+        String[] results  = result.split(",");
+
+        System.out.println(results[0]);
+        System.out.println(results[1]);
+
+        return results;
 
     }
 

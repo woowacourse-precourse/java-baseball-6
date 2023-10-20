@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.BaseballGame;
 import baseball.domain.Computer;
+import baseball.service.BaseballGameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -9,6 +10,8 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class BaseballGameController {
+
+    BaseballGameService baseballGameService;
 
     public BaseballGameController(){
         OutputView.printGameInitMessage();
@@ -20,7 +23,10 @@ public class BaseballGameController {
 
         InputView.printInputNumberMessage();
         userNumber = InputView.getInputNumber();
-        BaseballGame baseballGame = new BaseballGame();
+        baseballGameService = new BaseballGameService();
+        String [] results = baseballGameService.run(userNumber);
+
+
 
 
 
