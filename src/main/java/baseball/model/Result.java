@@ -4,21 +4,18 @@ import static baseball.config.Config.NUMBER_LENGTH;
 
 import baseball.view.OutputView;
 
-public class Hint {
+public class Result {
 
     private int ballCount;
     private int strikeCount;
 
-    protected Hint() {
-    }
-
-    public void update(final Number playerNumber, final Number computerNumber) {
+    private Result(final Number playerNumber, final Number computerNumber) {
         ballCount = playerNumber.countBallCount(computerNumber);
         strikeCount = playerNumber.countStrikeCount(computerNumber);
     }
 
-    public boolean checkClear() {
-        return strikeCount == NUMBER_LENGTH;
+    public static Result create(final Number playerNumber, final Number computerNumber) {
+        return new Result(playerNumber, computerNumber);
     }
 
     public void print() {
@@ -32,5 +29,9 @@ public class Hint {
             OutputView.printStrike(strikeCount);
         }
         OutputView.printEmptyLine();
+    }
+
+    public boolean checkGameOver() {
+        return strikeCount == NUMBER_LENGTH;
     }
 }

@@ -2,7 +2,7 @@ package baseball.controller;
 
 import static baseball.config.Config.NUMBER_LENGTH;
 
-import baseball.model.Hint;
+import baseball.model.Result;
 import baseball.model.Number;
 import baseball.view.InputView;
 import java.util.Objects;
@@ -10,8 +10,7 @@ import java.util.Objects;
 public class Game {
 
     private Number computerNumber;
-    private Number playerNumber;
-    private Hint hint;
+    private Result result;
 
     public void start() {
         do {
@@ -22,9 +21,9 @@ public class Game {
 
     private void play() {
         do {
-            playerNumber = Number.inputPlayerNumber();
-            hint.update(playerNumber, computerNumber);
-            hint.print();
-        } while (!hint.checkClear());
+            Number playerNumber = Number.inputPlayerNumber();
+            result = Result.create(playerNumber, computerNumber);
+            result.print();
+        } while (!result.checkGameOver());
     }
 }
