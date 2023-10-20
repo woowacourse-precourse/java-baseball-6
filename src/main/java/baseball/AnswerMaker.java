@@ -10,7 +10,8 @@ import java.util.Set;
 public class AnswerMaker {
 
     //정답을 AnswerMaker에서 갖고 있는게 나을까.. computer에서 갖고 있는게 낭르까...
-    private List<Integer> answer;
+    private final List<Integer> answer;
+
     public int makeNumbers(int min, int max) {
         return (Randoms.pickNumberInRange(min, max));
     }

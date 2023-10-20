@@ -17,6 +17,7 @@ public class NumberBaseballGame {
             speaker(message.startMessage() + '\n');
 //            computer.setAnswer(answerMaker.makeThreeDifferentNumberList(1, 9)); // 정답 생성 후 컴퓨터에 저장
             AnswerMaker answerMaker = new AnswerMaker(1, 9);
+            System.out.println("answer ?" + answerMaker.getAnswer());
             oneRound(answerMaker.getAnswer());
             speaker(message.restartOrStopMessage());
             String startOrStop = userInput.getUserInput();
