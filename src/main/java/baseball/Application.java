@@ -43,7 +43,6 @@ public class Application {
                 int resumeNumber = Integer.parseInt(resumeInput);
                 if (resumeNumber == END) {
                     playWant = false;
-                    break;
                 }
             }
         }
