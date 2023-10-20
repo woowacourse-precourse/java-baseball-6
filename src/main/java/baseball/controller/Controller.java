@@ -1,7 +1,10 @@
 package baseball.controller;
 
+import static baseball.utils.Constants.NUMBER_OF_BALLS;
+
 import baseball.domain.Balls;
 import baseball.domain.Game;
+import baseball.domain.Hint;
 import baseball.domain.RandomBallsGenerator;
 import baseball.service.Service;
 import baseball.view.Command;
@@ -26,11 +29,10 @@ public class Controller {
 
     private void play() {
         Balls balls = insertNumberAndMakeBalls();
-
         String hint = service.hint(balls);
         System.out.println(hint);
 
-        if (hint.equals("3스트라이크")) {
+        if (String.format("%d%s", NUMBER_OF_BALLS, Hint.STRIKE.value()).equals(hint)) {
             service.endGame();
             end();
         } else {
