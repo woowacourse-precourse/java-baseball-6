@@ -6,14 +6,23 @@ public class Application {
 
         boolean endToggle = true;
 
+        final int numOfNumbers = 3;
+
         ComputerNumbers computerNumbers = new ComputerNumbers();
 
         RandomPickNumbers randomPickNumbers = new RandomPickNumbers(computerNumbers);
 
-        randomPickNumbers.randomPick(3);
+        randomPickNumbers.randomPick(numOfNumbers);
+
+        PlayerNumbers playerNumbers = new PlayerNumbers();
+
+        ReadPlayerNumberService readPlayerNumberService = new ReadPlayerNumberService(playerNumbers);
+
+        readPlayerNumberService.readPlayerNumber(numOfNumbers);
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println(computerNumbers.getComputer());
+        System.out.println(computerNumbers.getList());
+        System.out.println(playerNumbers.getList());
 
     }
 

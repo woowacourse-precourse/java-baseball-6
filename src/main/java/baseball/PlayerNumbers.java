@@ -3,26 +3,26 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerNumbers implements NumbersObjects {
-    private List<Integer> computer = new ArrayList<>();
+public class PlayerNumbers implements NumbersObjects {
+    private List<Integer> player = new ArrayList<>();
 
     public void add(int number) {
-        computer.add(number);
+        player.add(number);
     }
 
     public void deleteAll() {
-        computer.clear();
+        player.clear();
     }
 
     public int size() {
-        return computer.size();
+        return player.size();
     }
 
     public boolean contains(int number) {
-        return computer.contains(number);
+        return player.contains(number);
     }
 
     public List<Integer> getList() {
-        return computer;
+        return player;
     }
 }
