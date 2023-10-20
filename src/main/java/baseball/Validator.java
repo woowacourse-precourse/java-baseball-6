@@ -22,7 +22,6 @@ public class Validator {
             throw new IllegalArgumentException(WORNG_ISNUMDUPICATION_MSG);
         } else if (!isNumOnly(strNum)) {
             throw new IllegalArgumentException(WORNG_ISNUMONLY_MSG);
-
         }
     }
 
