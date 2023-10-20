@@ -11,12 +11,7 @@ public class Application {
     public static void main(String[] args) {
         // 컴퓨터가 번호를 3개 세팅한다.
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
+        setRandomNumberToComputer(computer);
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
@@ -34,14 +29,10 @@ public class Application {
             }
 
             // 입력받은 숫자와 컴퓨터의 숫자를 비교한다.
-            for (int i = 0; i < inputNumberStr.length(); i++) {
-                int number = Character.getNumericValue(inputNumberStr.charAt(i));
-                if (computer.get(i) == number) { // 스트라이크
-                    strike += 1;
-                } else if (computer.get(i) != number && computer.contains(number)) { // 볼
-                    ball += 1;
-                }
-            }
+            Score score = getCompareResultWithInputNumberAndComputerNumber(
+                    inputNumberStr, computer);
+            ball = score.getBall();
+            strike = score.getStrike();
 
             // 비교 결과를 출력한다.
             if (strike == 3) {
@@ -57,12 +48,7 @@ public class Application {
                 if (Integer.parseInt(input) == 1) {
                     // 컴퓨터 번호 리셋
                     computer = new ArrayList<>();
-                    while (computer.size() < 3) {
-                        int randomNumber = Randoms.pickNumberInRange(1, 9);
-                        if (!computer.contains(randomNumber)) {
-                            computer.add(randomNumber);
-                        }
-                    }
+                    setRandomNumberToComputer(computer);
                 }
 
                 if (Integer.parseInt(input) == 2) {
@@ -81,6 +67,28 @@ public class Application {
                 }
             }
         }
+    }
 
+    private static Score getCompareResultWithInputNumberAndComputerNumber(String inputNumberStr,
+                                                                          List<Integer> computer) {
+        Score score = new Score();
+        for (int i = 0; i < inputNumberStr.length(); i++) {
+            int inputNumberAt = Character.getNumericValue(inputNumberStr.charAt(i));
+            if (computer.get(i) == inputNumberAt) {
+                score.increaseStrikeCount();
+            } else if (computer.contains(inputNumberAt)) {
+                score.increaseBallCount();
+            }
+        }
+        return score;
+    }
+
+    private static void setRandomNumberToComputer(List<Integer> computer) {
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
     }
 }
