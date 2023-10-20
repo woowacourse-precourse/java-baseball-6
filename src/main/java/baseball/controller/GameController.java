@@ -24,12 +24,16 @@ public class GameController {
 
     public void run() {
         GameNumber computerNumber = setGame();
-
+        GameNumber userNumber = getUserNumber();
     }
 
     private GameNumber setGame() {
         outputView.printStartMessage();
         List<Integer> generatedNumber = NumberGenerator.generateNumber(NUMBER_LENGTH);
         return new GameNumber(generatedNumber);
+    }
+
+    private GameNumber getUserNumber() {
+        return inputView.getUserNumber();
     }
 }
