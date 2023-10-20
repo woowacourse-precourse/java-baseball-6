@@ -17,7 +17,7 @@ public class Baseball {
                 break;
             }
             Integer ballCount = getBallCount(answerNumber, userNumber);
-            if (ballCount == 0 || strikeCount == 0) {
+            if (ballCount == 0 && strikeCount == 0) {
                 System.out.println("낫싱" );
                 continue;
             }
