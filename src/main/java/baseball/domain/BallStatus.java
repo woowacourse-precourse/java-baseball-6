@@ -2,7 +2,7 @@ package baseball.domain;
 
 public enum BallStatus {
 
-    STRIKE(),
-    BALL(),
-    NOTHING()
+    STRIKE,
+    BALL,
+    NOTHING
 }
