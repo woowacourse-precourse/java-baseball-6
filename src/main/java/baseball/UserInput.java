@@ -13,11 +13,11 @@ public class UserInput {
 
     public List<Integer> makeUserInputToThreeNumbers() {
         List<Integer> result = new ArrayList<>();
-        String trimmedInput = getUserInput().strip();
+        String removedSpace = getUserInput().replace(" ", "");
 
-        validation.validateThreeNumbers(trimmedInput);
-        for (int i = 0; i < trimmedInput.length(); i++) {
-            result.add(trimmedInput.charAt(i) - '0');
+        validation.validateThreeNumbers(removedSpace);
+        for (int i = 0; i < removedSpace.length(); i++) {
+            result.add(removedSpace.charAt(i) - '0');
         }
         return new ArrayList<>(result);
     }
