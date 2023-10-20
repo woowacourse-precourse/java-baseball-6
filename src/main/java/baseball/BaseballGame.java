@@ -20,15 +20,24 @@ public class BaseballGame {
     public void startGame(){
         System.out.println(START_MSG);
 
-        while(user.getIsContinueGame()){
+        while(true){
             //(1) 컴퓨터 : 1에서 9까지 서로 다른 임의의 수 3개 생성
             List<Integer> computerNumbs = computer.getNumbers();
 
             //(2) 사용자가 추측하는 3개의 수 입력 받기
-            while(!result.getIsAnswer()){
+            while(true){
                 System.out.print(INPUT_NUMBERS_MSG);
                 List<Integer> userNumbs = user.getNumbers();
                 result.compare(computerNumbs, userNumbs);
+                if(result.findAnswer()){
+                    break;
+                }
+            }
+
+            //(3) 게임 재실행 여부 입력 받기
+            System.out.println(END_MSG);
+            if(!user.continueGame()){
+                break;
             }
         }
     }
