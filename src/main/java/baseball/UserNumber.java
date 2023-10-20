@@ -1,18 +1,19 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class UserNumber {
-    private String userNumber;
 
-    public UserNumber() {
+    private static final int MAX_NUMBER_LENGTH = 3;
+    private final String userNumber;
 
-    }
-
-    public void setUserNumber(String userNumber){
-        validateLength(userNumber);
-        validateNumber(userNumber);
-        validateDuplication(userNumber);
-        this.userNumber = userNumber;
+    public UserNumber(String number) {
+        validateLength(number);
+        validateNumber(number);
+        validateDuplication(number);
+        this.userNumber = number;
     }
 
     public String getUserNumber() {
@@ -31,14 +32,17 @@ public class UserNumber {
         }
     }
 
-    public void validateDuplication(String userNumber){
-        for(int i = 0; i < userNumber.length(); i++){
-            for(int j = i+1; j < userNumber.length(); j++){
-                if(userNumber.charAt(i) == userNumber.charAt(j)){
-                    throw new IllegalArgumentException("숫자가 중복될 순 없습니다.");
-                }
-            }
+    public void validateDuplication(String number){
+        Set<Character> validateNumber = new HashSet<>();
+
+        for(int i = 0; i < MAX_NUMBER_LENGTH; i++){
+            validateNumber.add(number.charAt(i));
         }
+
+        if(validateNumber.size() != 3){
+            throw new IllegalArgumentException("숫자가 중복될 수 없습니다.");
+        }
+
     }
 
 
