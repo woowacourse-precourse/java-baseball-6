@@ -37,6 +37,7 @@ public class GameController {
     }
 
     private static boolean checkSuccess() {
+        return hintCalculator.isThreeStrike();
     }
 
     private static void showHint() {
