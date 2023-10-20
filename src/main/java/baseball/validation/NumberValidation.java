@@ -33,7 +33,7 @@ public class NumberValidation {
     public void validateNumberRange(List<Integer> userNumber) {
         for (int i = 0; i < userNumber.size(); i++) {
             if (userNumber.get(i) < NumberConstant.MIN_NUMBER || userNumber.get(i) > NumberConstant.MAX_NUMBER) {
-                throw new IllegalArgumentException(MessageConstant.VALIDATE_SIZE_MESSAGE);
+                throw new IllegalArgumentException(MessageConstant.VALIDATE_RANGE_MESSAGE);
             }
         }
     }
