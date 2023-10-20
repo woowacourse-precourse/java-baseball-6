@@ -32,13 +32,17 @@ public class GameController {
 
     public void inputPlayerRetryNumber() {
         int retryNumber = inputView.inputPlayerRetryNumber();
-        if (retryNumber != 1 && retryNumber != 2) {
-            gameException.playerRetryNumberMissMatchException();
-        }
+        validateInputPlayerRetryNumber(retryNumber);
 
         if (retryNumber == 1) {
             gameService.clearComputerRandomNumber();
             play();
+        }
+    }
+
+    private void validateInputPlayerRetryNumber(int retryNumber) {
+        if (retryNumber != 1 && retryNumber != 2) {
+            gameException.playerRetryNumberMissMatchException();
         }
     }
 }
