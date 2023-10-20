@@ -14,9 +14,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class PlayerTest {
+public class UserTest {
 
-    private final Player player = new Player();
+    private final User player = new User();
 
     void provideUserInput(String userInput) {
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
@@ -36,8 +36,8 @@ public class PlayerTest {
         provideUserInput(playerInput);
 
         //when
-        player.inputPlayerNumber();
-        List<Integer> playerBaseballNumber = player.getPlayerBaseballNumber();
+        player.inputBaseballNumber();
+        List<Integer> playerBaseballNumber = player.getBaseballNumber();
 
                 //then
         assertThat(playerBaseballNumber).isEqualTo(Arrays.asList(1, 2, 3));
@@ -51,7 +51,7 @@ public class PlayerTest {
         provideUserInput(playerInput);
 
         //when, then
-        assertThatThrownBy(player::inputPlayerNumber)
+        assertThatThrownBy(player::inputBaseballNumber)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리의 숫자만 입력가능합니다.");
     }
@@ -65,7 +65,7 @@ public class PlayerTest {
         provideUserInput(playerInput);
 
         //when, then
-        assertThatThrownBy(player::inputPlayerNumber)
+        assertThatThrownBy(player::inputBaseballNumber)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자만 입력 가능합니다.");
     }

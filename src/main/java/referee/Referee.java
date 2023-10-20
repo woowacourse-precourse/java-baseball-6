@@ -6,22 +6,22 @@ import static constant.NumberConstant.START;
 import camp.nextstep.edu.missionutils.Console;
 import message.Message;
 import player.Computer;
-import player.Player;
+import player.User;
 import score.Score;
 import utils.BaseballRules;
 
 public class Referee {
 
     private final Computer computer = new Computer();
-    private final Player player = new Player();
+    private final User user = new User();
     private final Score score = new Score();
 
     public void playBall() {
-        computer.generateComputerRandomNumber();
+        computer.inputBaseballNumber();
 
         do {
             baseballFlow();
-        } while (!BaseballRules.isThreeStrike(player.getPlayerBaseballNumber(), computer.getComputerBaseballNumber()));
+        } while (!BaseballRules.isThreeStrike(user.getBaseballNumber(), computer.getBaseballNumber()));
 
         Message.printThreeStrikeMessage();
         continueOrFinish();
@@ -30,8 +30,8 @@ public class Referee {
     private void baseballFlow() {
         Message.printIntegerInputFromUserMessage();
         score.clearStrikeAndBall();
-        player.inputPlayerNumber();
-        score.setStrikeAndBall(player.getPlayerBaseballNumber(), computer.getComputerBaseballNumber());
+        user.inputBaseballNumber();
+        score.setStrikeAndBall(user.getBaseballNumber(), computer.getBaseballNumber());
         Message.printHintMessage(score);
     }
 

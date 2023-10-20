@@ -3,9 +3,9 @@ package utils;
 import java.util.List;
 
 public class BaseballRules {
-    
-    public static boolean isThreeStrike(List<Integer> playerBaseballNumber, List<Integer> computgerBaseballNumber) {
-        return playerBaseballNumber.equals(computgerBaseballNumber);
+
+    public static boolean isThreeStrike(List<Integer> playerBaseballNumber, List<Integer> computerBaseballNumber) {
+        return playerBaseballNumber.equals(computerBaseballNumber);
     }
 
     public static boolean hasStrikeAndBall(int strike, int ball) {

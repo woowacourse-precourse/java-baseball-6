@@ -1,7 +1,9 @@
 package player;
 
 import static constant.NumberConstant.MAX_LENGTH;
-import static constant.StringConstant.*;
+import static constant.StringConstant.NO_DUPLICATE_NUMBER_MESSAGE;
+import static constant.StringConstant.ONLY_NUMBER_MESSAGE;
+import static constant.StringConstant.ONLY_THREE_NUMBER_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -9,11 +11,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Player {
+public class User extends BaseballPlayer {
 
-    private List<Integer> playerBaseballNumber = new ArrayList<>();
-
-    public void inputPlayerNumber() {
+    @Override
+    public void inputBaseballNumber() {
         List<Integer> playerInputBaseballNumber = new ArrayList<>();
         String[] playerInput = Console.readLine().split("");
 
@@ -22,7 +23,7 @@ public class Player {
         }
 
         validatePlayerInput(playerInputBaseballNumber);
-        playerBaseballNumber = playerInputBaseballNumber;
+        super.baseballNumber = playerInputBaseballNumber;
     }
 
     private void validatePlayerInput(List<Integer> playerInput) {
@@ -43,9 +44,5 @@ public class Player {
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(ONLY_NUMBER_MESSAGE);
         }
-    }
-
-    public List<Integer> getPlayerBaseballNumber() {
-        return playerBaseballNumber;
     }
 }
