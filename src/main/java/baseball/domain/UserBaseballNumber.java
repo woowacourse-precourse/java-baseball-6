@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static baseball.handler.ErrorHandler.DUPLICATE_NUMBER;
 import static baseball.handler.ErrorHandler.INVALID_COUNT;
@@ -34,7 +35,9 @@ public class UserBaseballNumber {
         }
     }
 
-    public List<String> getUserValues() {
-        return List.copyOf(userValues);
+    public List<Integer> getUserValues() {
+        return userValues.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
