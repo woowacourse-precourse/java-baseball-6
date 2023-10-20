@@ -4,6 +4,7 @@ import static baseball.Constants.NUMBER_COUNTS;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class UserNumbers {
@@ -22,7 +23,15 @@ public class UserNumbers {
             .toList();
 
         validateNumbersSize(inputNumbers);
+        validateDuplicate(inputNumbers);
         return new UserNumbers(inputNumbers);
+    }
+
+    private static void validateDuplicate(final List<Integer> inputNumbers) {
+        int numbersSize = new HashSet<>(inputNumbers).size();
+        if (inputNumbers.size() > numbersSize) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void validateNumbersSize(final List<Integer> inputNumbers) {
