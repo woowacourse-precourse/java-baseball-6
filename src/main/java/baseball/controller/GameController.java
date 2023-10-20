@@ -35,8 +35,7 @@ public class GameController {
             if (isStrikeEqualToGoal(strike)) {
                 EndView.end(PLAY_NUMBER_DIGIT);
                 AskView.askResume(RESTART, END);
-                String resumeInput = receiveResumeNumber();
-                int resumeNumber = StringInputConverter.convertStringToInt(resumeInput);
+                int resumeNumber = InputController.receiveResumeNumberWithOption(RESTART, END);
                 if (isUserWantMoreGame(resumeNumber)) {
                     computerNumber = selectNewNumber();
                 }

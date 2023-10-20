@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.converter.StringInputConverter;
 import baseball.validator.NumberValidator;
+import baseball.validator.ResumeValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputController {
@@ -21,5 +22,16 @@ public class InputController {
 
     private static void assertNumberValueWithLength(final String inputNumber, final int expectedLength) {
         NumberValidator.assertInputNumberWithLength(inputNumber, expectedLength);
+    }
+
+    public static int receiveResumeNumberWithOption(final int restart, final int end) {
+        String resumeInput = Console.readLine();
+        assertResumeValue(resumeInput, restart, end);
+
+        return StringInputConverter.convertStringToInt(resumeInput);
+    }
+
+    private static void assertResumeValue(final String resume, final int restart, final int end) {
+        ResumeValidator.assertResumeInput(resume, restart, end);
     }
 }
