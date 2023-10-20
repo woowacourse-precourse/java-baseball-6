@@ -34,7 +34,7 @@ public class GameController {
         }
 
         displayResult(game);
-        OutputView.displayThreeStrikes();
+        OutputView.displayGameEnd();
         finishOrRestartGame(InputView.inputRestartOrFinish());
     }
 

@@ -3,7 +3,7 @@ package baseball.view;
 import baseball.util.Constants;
 
 public class OutputView {
-    public static void displayThreeStrikes() {
+    public static void displayGameEnd() {
         System.out.println(Constants.GAME_END_MESSAGE);
     }
 

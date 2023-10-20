@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Util {
-
     public static final int THREE_BALLS = 3;
     public static final int VALUE_START_INCLUSIVE = 1;
     public static final int VALUE_END_INCLUSIVE = 9;

@@ -25,6 +25,10 @@ public class TripleBalls {
         return Util.appendGameResult(ballTotal, strikeTotal);
     }
 
+    public boolean hasThreeStrikes(TripleBalls registeredComputer) {
+        return compareTripleBalls(registeredComputer).equals(Constants.THREE_STRIKE_MESSAGE);
+    }
+
     private long getResult(GameResult resultType, Ball otherOneBall) {
         return tripleBalls.stream()
                 .filter(oneBall -> resultType == oneBall.compare(otherOneBall))
@@ -33,9 +37,5 @@ public class TripleBalls {
 
     public List<Ball> getTripleBalls() {
         return new ArrayList<>(tripleBalls);
-    }
-
-    public boolean hasThreeStrikes(TripleBalls registeredComputer) {
-        return compareTripleBalls(registeredComputer).equals(Constants.THREE_STRIKE_MESSAGE);
     }
 }
