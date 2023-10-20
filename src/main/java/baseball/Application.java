@@ -1,7 +1,21 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.*;
+
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        List<Integer> computerNums;
+
+        computerNums = choiceComputerNums();
+
+    }
+
+    private static List<Integer> choiceComputerNums() {
+        List<Integer> computerNums;
+        computerNums = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        return computerNums;
     }
 }
+
