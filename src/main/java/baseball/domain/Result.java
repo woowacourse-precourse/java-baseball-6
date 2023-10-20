@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.system.SystemConstant;
+
 public class Result {
     public int numberOfStrikes;
     public int numberOfBalls;
@@ -10,7 +12,10 @@ public class Result {
     }
 
     public boolean isNothing() {
-        return (numberOfBalls == 0 && numberOfStrikes == 0);
+        return numberOfBalls == 0 && numberOfStrikes == 0;
     }
 
+    public boolean StrikesAllOfBalls() {
+        return numberOfStrikes == SystemConstant.MAXIMUM_DIGIT;
+    }
 }
