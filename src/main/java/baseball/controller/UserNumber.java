@@ -8,14 +8,22 @@ import java.util.List;
 
 public class UserNumber {
     public List<Integer> userInputNumbers() {
+
         System.out.print("숫자를 입력해주세요 : ");
+
         List<Integer> userInputNumbers = new ArrayList<>();
         String number = Console.readLine();
 
         for (char c : number.toCharArray()) {
             userInputNumbers.add(Character.getNumericValue(c));
         }
+
+        if (userInputNumbers.size()!=3) {
+            throw new IllegalArgumentException();
+
+        }
         return userInputNumbers;
-    }
+
+        }
 
 }
