@@ -16,7 +16,7 @@ class Game {
         while(true) {
             int query = this.askQuery();
             int[] result = this.judge(query);
-            System.out.println(result[0] + "스트라이크 " + result[1] + "볼");
+            this.printResult(result);
             if (result[0] == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
@@ -69,6 +69,18 @@ class Game {
         }
 
         return result;
+    }
+
+    void printResult(int[] result) {
+        if (result[0] > 0 && result[1] > 0) {
+            System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
+        } else if (result[0] > 0) {
+            System.out.println(result[0] + "스트라이크");
+        } else if (result[1] > 0) {
+            System.out.println(result[1] + "볼");
+        } else {
+            System.out.println("낫싱");
+        }
     }
 }
 
