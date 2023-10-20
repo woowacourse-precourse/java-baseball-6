@@ -8,7 +8,7 @@ public class Computer {
 
     private final List<Integer> com = new ArrayList<>();
 
-    public void getNumbers() {
+    public void getIntArray() {
         while (com.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!com.contains(randomNumber)) {
@@ -17,7 +17,7 @@ public class Computer {
         }
     }
 
-    public void getClear() {
+    public void clearList() {
         com.clear();
     }
 
