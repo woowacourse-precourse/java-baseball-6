@@ -33,9 +33,11 @@ public class ValidException {
         throw new IllegalArgumentException(ValidConstants.MSG_INPUT_LENGTH_ONLY_THREE());
     }
 
-    // TODO: 10/20/23
-    // 숫자을 입력받을때 문자 입력 안되게 한다.
-    // 숫자 검증
+    /**
+     * 숫자 타입으로 입력 예외처리
+     *
+     * @param str
+     */
     public static void isValidNumVerification(String str) {
         try {
             Integer.parseInt(str);
