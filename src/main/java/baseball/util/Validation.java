@@ -13,6 +13,22 @@ public class Validation {
     private void checkRightNumber(String number) {
         validateIsNumber(number);
         validateIsRightLength(number);
+        validateInSameNumber(number);
+    }
+
+    private void validateInSameNumber(String number) {
+        for(int i=0; i<INPUT_LENGTH; i++){
+            for(int j=0; j<INPUT_LENGTH; j++){
+                findDuplicateNumber(number, i, j);
+            }
+        }
+    }
+
+    private static void findDuplicateNumber(String number, int i, int j) {
+        if(i != j){
+            if(number.charAt(i) == number.charAt(j))
+                throw new IllegalArgumentException("서로 다른 숫자가 와야 합니다! ");
+        }
     }
 
     private void validateIsNumber(String number) {
