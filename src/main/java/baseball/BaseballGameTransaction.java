@@ -9,6 +9,7 @@ public class BaseballGameTransaction {
 
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String MUST_INPUT_RESTARTS_MESSAGE = "1 또는 2를 입력해야 합니다.";
 
     private static final String GAME_RESTART = "1";
     private static final String GAME_FINISH = "2";
@@ -26,7 +27,7 @@ public class BaseballGameTransaction {
             String inputRestart = Input.consoleLine();
 
             if (!INPUT_RESTARTS.contains(inputRestart)) {
-                throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
+                throw new IllegalArgumentException(MUST_INPUT_RESTARTS_MESSAGE);
             }
 
             if (Objects.equals(inputRestart, GAME_FINISH)) {

@@ -9,12 +9,13 @@ import java.util.stream.Stream;
 
 public class WinningNumbers {
 
+    public static final int MAX_SIZE = 3;
     List<Integer> winningNumbers;
 
     public WinningNumbers() {
         this.winningNumbers = Stream.generate(Randoms::getSingleNumber)
                 .distinct()
-                .limit(3)
+                .limit(MAX_SIZE)
                 .collect(Collectors.toList());
     }
 
