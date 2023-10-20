@@ -15,6 +15,7 @@ public class Controller {
     public static final int SIZE = 3;
     private int ball;
     private int strike;
+    private String retryMessage;
     List<Integer> computerNumbers;
     List<Integer> userNumbers;
     OutputView outputView = new OutputView();
@@ -23,7 +24,7 @@ public class Controller {
     Referee referee;
 
     public void run() {
-        resetGame();
+        initComputerNumbers();
         generateComputerNumbers();
         while (true) {
             String input = requestUserInput();
@@ -33,14 +34,14 @@ public class Controller {
             requestJudge(computerNumbers, userNumbers);
             requestResult(ball, strike);
             if (strike == 3) {
-                String retryMessage = requestRetryMessage();
-                if (retryMessage.equals("1")) {
-                    initGame();
-                    generateComputerNumbers();
-                }
-                if (retryMessage.equals("2")) {
-                    break;
-                }
+                retryMessage = requestRetryMessage();
+            }
+            if (strike == 3 && retryMessage.equals("1")) {
+                initGame();
+                generateComputerNumbers();
+            }
+            if (strike == 3 && retryMessage.equals("2")) {
+                break;
             }
         }
     }
@@ -51,7 +52,7 @@ public class Controller {
         referee = new Referee();
     }
 
-    public void resetGame() {
+    public void initComputerNumbers() {
         computerNumbers = new ArrayList<>();
     }
 
