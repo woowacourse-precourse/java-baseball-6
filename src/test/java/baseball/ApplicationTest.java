@@ -107,7 +107,7 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("유저의 랜덤 입력 숫자와, 컴퓨터의 랜덤 숫자중 같은 것의 갯수를 구한다.")
     @ParameterizedTest
-    @CsvSource({"1,2,3,3"})
+    @CsvSource({"1,2,3,3", "1,2,4,2", "1,4,5,1", "1,3,4,2", "3,1,4,2", "4,1,3,2", "4,3,1,2", "4,5,1,1", "4,1,5,1", "3,2,1,3", "4,5,6,0"})
     public void getSameNumber2ComputerTest(int num1, int num2, int num3, int expectCntSameNum) throws Exception {
         // given
         List<Integer> computerList = new ArrayList<>(List.of(1, 2, 3));
@@ -118,5 +118,19 @@ class ApplicationTest extends NsTest {
 
         // then
         assertThat(result).isEqualTo(expectCntSameNum);
+    }
+
+    @DisplayName("유저의 입력한 숫자중 특정한 index의 값의 숫자와 컴퓨터의 저장된 3개의 숫자중 특정 index에 숫자가 같은지 확인한다.")
+    @ParameterizedTest
+    @CsvSource({"0,1,true", "1,2,true", "2,3,true", "0,4,false", "1,4,false", "2,4,false"})
+    public void isSamePlaceNumUserAndComputerTest(int placeIndexOfUser, int numIndexPlaceOfUser, boolean expectResult) throws Exception {
+        // given
+        List<Integer> computerList = new ArrayList<>(List.of(1, 2, 3));
+
+        // when
+        boolean result = gameStandard.isSamePlaceNumUserAndComputer(computerList, placeIndexOfUser, numIndexPlaceOfUser);
+
+        // then
+        assertThat(result).isEqualTo(expectResult);
     }
 }
