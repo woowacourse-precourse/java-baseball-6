@@ -42,4 +42,12 @@ class InputViewTest {
                 isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("서로 다른 숫자를 입력해 주세요.");
     }
+
+    @ParameterizedTest
+    @DisplayName("모든 유효성 성공 테스트")
+    @ValueSource(strings = {"123", "456", "789", "245", "386"})
+    void validInputsTest(String input) {
+        Assertions.assertThatCode(() -> Validation.isValidInput(input))
+                .doesNotThrowAnyException();
+    }
 }
