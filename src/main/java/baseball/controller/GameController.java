@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.Ball;
 import baseball.exception.BallException;
+import baseball.exception.ReGameException;
 import baseball.service.GameService;
 import baseball.view.GameOutput;
 import baseball.view.UserInput;
@@ -18,6 +19,7 @@ public class GameController {
     private final UserInput input = new UserInput();
     private final BallException ballException = new BallException();
     private final GameService gameService = new GameService();
+    private final ReGameException reGameException = new ReGameException();
 
     public void start(){
         createComputerBall();
@@ -41,7 +43,7 @@ public class GameController {
         int strikeResult = gameService.strikeResult(computer, user);
         int ballResult = gameService.ballResult(computer, user);
 
-        if (strikeResult == 3) gameRegameRequest();
+        if (strikeResult == 3) gameReGameRequest();
 
         if (strikeResult != 3){
             output.printGameResult(strikeResult, ballResult);
@@ -49,9 +51,11 @@ public class GameController {
         }
     }
 
-    public void gameRegameRequest(){
+    public void gameReGameRequest(){
         output.printGameEnd();
         String request = input.inputGameRequest();
+        reGameException.validation(request);
+
         int result = request.charAt(0) - '0';
 
         if (result == 1) gameRestart();
