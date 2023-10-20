@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.constant.ErrorMessage;
 import baseball.util.Converter;
 
 import java.util.List;
@@ -62,24 +63,24 @@ public class GameNumber {
     private void validateValue(String value) {
         try {
             if (Integer.parseInt(value) < 0) {
-                throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
+                throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
         }
     }
 
     private void validateLength(List<Integer> gameNumber) {
         if (!NUMBER_SIZE.getValue().equals(Set.copyOf(gameNumber).size())
                 || !NUMBER_SIZE.getValue().equals(gameNumber.size())) {
-            throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
         }
     }
 
     private void validateRange(List<Integer> gameNumber) {
         if (!gameNumber.stream().allMatch(number -> MIN_NUMBER.getValue() <= number
                 && number <= MAX_NUMBER.getValue())) {
-            throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
         }
     }
 }
