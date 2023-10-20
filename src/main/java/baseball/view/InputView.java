@@ -14,5 +14,4 @@ public class InputView {
         String inputValue = Console.readLine();
         return inputValue;
     }
-
 }
