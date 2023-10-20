@@ -72,6 +72,7 @@ public class Judge {
         int cntStrike = 0;
         int valueIndexOfUserList;
         boolean isSamePlaceIndexUserAndCom;
+        
         int sizeUserList = userList.size();
         for (int indexUserList = 0; indexUserList < sizeUserList; indexUserList++) {
             valueIndexOfUserList = userList.get(indexUserList); // index의 UserList의 값
