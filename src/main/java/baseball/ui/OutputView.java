@@ -1,7 +1,9 @@
 package baseball.ui;
 
+import static baseball.global.constant.GameMessage.GAME_FINISH_MESSAGE;
 import static baseball.global.constant.GameMessage.GAME_START_MESSAGE;
 import static baseball.global.constant.GameMessage.NUMBER_INPUT_MESSAGE;
+import static baseball.global.constant.GameMessage.RESTART_SELECT_MESSAGE;
 
 import baseball.domain.GameResult;
 
@@ -20,13 +22,12 @@ public class OutputView {
     }
 
     public void printRestartSelectMessage() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(RESTART_SELECT_MESSAGE);
 
     }
 
     public void printGameFinishMessage() {
-        System.out.println("3스트라이크");
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(GAME_FINISH_MESSAGE);
     }
 
 
