@@ -8,22 +8,27 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> computerNumbers = randomNums();
+        boolean playAgain = true;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println(computerNumbers);
+        while (playAgain) {
+            List<Integer> computerNumbers = randomNums();
 
-        while (true) {
-            List<Integer> userNumbers = inputNums();
-            List<Integer> result = compareNumbers(computerNumbers, userNumbers);
+            System.out.println("숫자 야구 게임을 시작합니다.");
 
-            if (result.get(0) == 3) {
-                System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            } else {
-                System.out.println(resultToString(result));
+            while (true) {
+                List<Integer> userNumbers = inputNums();
+                List<Integer> result = compareNumbers(computerNumbers, userNumbers);
+
+                if (result.get(0) == 3) {
+                    System.out.println("3스트라이크");
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                } else {
+                    System.out.println(resultToString(result));
+                }
             }
+
+            playAgain = restartOrEnd();
         }
     }
 
@@ -39,10 +44,11 @@ public class Application {
     }
 
     private static List<Integer> inputNums() {
+
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
 
         String[] inputNumberArray = inputNumber.split("");
-
         List<Integer> numbers = new ArrayList<>();
 
         try {
@@ -103,4 +109,22 @@ public class Application {
         }
     }
 
+    private static boolean restartOrEnd() {
+        System.out.println("게임을 재시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        while (true) {
+            try {
+                int i = Integer.parseInt(Console.readLine());
+                if (i == 1) {
+                    return true;
+                } else if (i == 2) {
+                    return false;
+                } else {
+                    throw new IllegalArgumentException("1 또는 2를 입력하지 않았습니다.");
+                }
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("숫자가 아닌 문자를 입력했습니다.");
+            }
+        }
+    }
 }
