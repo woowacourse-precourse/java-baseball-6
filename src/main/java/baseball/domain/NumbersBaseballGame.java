@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.util.InputValueValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -26,7 +27,7 @@ public class NumbersBaseballGame {
     private boolean isContinueGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputContinueFlag = Console.readLine();
-        // inputValidator.checkInputContinueFlag(inputContinueFlag);
+        InputValueValidator.checkValidInputContinueFlag(inputContinueFlag);
         int continueFlag = convertFromInputContinueFlagToContinueFlag(inputContinueFlag);
         return continueFlag == 1;
     }
@@ -37,7 +38,7 @@ public class NumbersBaseballGame {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String inputAnswer = Console.readLine();
-            // inputValidator.checkInputAnswer(inputRestartFlag);
+            InputValueValidator.checkValidInputAnswer(inputAnswer, numberOfDigitsInAnswer);
             Numbers userAnswer = convertFromInputAnswerToNumbers(inputAnswer);
             computerPlayer.judgeUserAnswer(userAnswer);
             if (computerPlayer.isThreeStrike()) {
