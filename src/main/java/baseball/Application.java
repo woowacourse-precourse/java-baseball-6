@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class Application {
         }
 
         // 사용자 숫자 입력
-        System.out.println(USER_INPUT_MESSAGE);
+        System.out.print(USER_INPUT_MESSAGE);
+        String userNumber = Console.readLine();
     }
 }
