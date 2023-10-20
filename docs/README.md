@@ -1,7 +1,20 @@
-//구현할 기능//
+## 구현할 기능
+___
+일단 진행방식은 MVC기반으로 코드를 진행할 예정이다.
 
+### MVC 기반의 기능
+1. Model
+   * PlayNumber
 
-//문제 정리//
+2. View
+   * OutputView
+   * Inputview
+3. Controller
+   * GamePlayController
+
+<br><br>
+## 문제 정리
+___
 1. 게임 시작
    * 컴퓨터가 1~9까지 서로 다른 임의의 수 3개를 선택 => 난수 생성
 
