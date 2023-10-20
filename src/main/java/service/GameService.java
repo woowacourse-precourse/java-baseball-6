@@ -2,10 +2,10 @@ package service;
 
 public interface GameService {
 
-    public void gameStart();
-    public void restartOrQuit(String order);
-    public int[] checkCount(String numbers);
-    public boolean isGameSet();
+    void gameStart();
+    void restartOrQuit(String order);
+    int[] checkCount(String numbers);
+    boolean isGameSet();
 
-    public boolean getQuit();
+    boolean getQuit();
 }
