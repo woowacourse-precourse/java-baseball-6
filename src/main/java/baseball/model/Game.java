@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -8,7 +8,7 @@ import java.util.List;
 public class Game {
     List<Integer> computer = new ArrayList<>();
 
-    Game(int size, int start, int end){
+    public Game(int size, int start, int end){
         while(computer.size() != size){
             int num = Randoms.pickNumberInRange(start, end);
             if(!computer.contains(num)){

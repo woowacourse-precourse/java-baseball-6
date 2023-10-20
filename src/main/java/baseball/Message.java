@@ -1,2 +1,5 @@
-package baseball;public class Message {
+package baseball;
+
+public class Message {
+
 }
