@@ -15,6 +15,7 @@ public class InputController {
     private void validate(String input) {
         checkIsNum(input);
         checkLength(input);
+        checkAllDiffer(input);
     }
     private void checkIsNum(String input){
         try {
@@ -30,4 +31,9 @@ public class InputController {
         }
     }
 
+    private void checkAllDiffer(String input) {
+        if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
