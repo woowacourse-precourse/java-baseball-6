@@ -23,6 +23,6 @@ public class BallCounts {
 
     @Override
     public String toString() {
-        return ball + ", " + strike;
+        return CountsMessage.toMessage(ball, strike);
     }
 }
