@@ -10,4 +10,17 @@ public class Referee {
         }
         return strikes;
     }
+
+    public static int calculateBall(String userInput, String targetNumber) {
+        int balls = 0;
+        for (int i = 0; i < userInput.length(); i++) {
+            char userChar = userInput.charAt(i);
+            for (int j = 0; j < targetNumber.length(); j++) {
+                if (userChar == targetNumber.charAt(j) && i != j) {
+                    balls++;
+                }
+            }
+        }
+        return balls;
+    }
 }
