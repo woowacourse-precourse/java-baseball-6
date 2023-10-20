@@ -2,7 +2,7 @@
 
 - [ ] GameController
   - [x] 싱글톤 패턴
-  - [ ] 게임 시작
+  - [x] 게임 시작
   - [ ] 게임 진행
      
 - [ ] GameService
