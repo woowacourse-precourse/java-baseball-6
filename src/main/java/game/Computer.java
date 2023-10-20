@@ -1,5 +1,6 @@
-package baseball;
+package game;
 
+import baseball.Output;
 import camp.nextstep.edu.missionutils.Randoms;
 import constants.MessageConstants;
 import constants.NumberConstants;
