@@ -54,18 +54,30 @@ public class Balls {
     }
 
     private String makeString(int ball, int strike) {
-        if (ball == 0 && strike == 0) {
+        if (bothAreZero(ball, strike)) {
             return Hint.NOTHING.value();
         }
 
-        if (ball != 0 && strike == 0) {
+        if (onlyBall(ball, strike)) {
             return String.format("%d%s", ball, Hint.BALL.value());
         }
 
-        if (ball == 0 && strike != 0) {
+        if (onlyStrike(ball, strike)) {
             return String.format("%d%s", strike, Hint.STRIKE.value());
         }
 
         return String.format("%d%s %d%s", ball, Hint.BALL.value(), strike, Hint.STRIKE.value());
+    }
+
+    private static boolean bothAreZero(int ball, int strike) {
+        return ball == 0 && strike == 0;
+    }
+
+    private static boolean onlyBall(int ball, int strike) {
+        return ball != 0 && strike == 0;
+    }
+
+    private static boolean onlyStrike(int ball, int strike) {
+        return ball == 0 && strike != 0;
     }
 }
