@@ -6,6 +6,9 @@ public class OutputView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
+    private OutputView() {
+    }
+
     public static void printBallCountResult(int countOfBall, int countOfStrike) {
         if (countOfBall == 0 && countOfStrike == 0) {
             System.out.println("낫싱");
