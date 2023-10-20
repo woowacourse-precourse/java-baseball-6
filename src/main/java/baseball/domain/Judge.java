@@ -29,13 +29,13 @@ public class Judge {
         int cntStrike = 0; // strike의 갯수
         int cntBall = 0; // ball의 갯수
 
-        // 1. computerList 중에 userList와 같은 것이 몇개인지 구한다. - 숫자가 같은 갯수
+        // 1. 숫자가 같은 갯수 - computerList 중에 userList와 같은 것이 몇개인지 구한다.
         cntTotalSameUserAndComputer = getSameTotalNumberAndComputer(computerList, userList);
 
-        // 2. userList의 각각의 숫자와 computerList 중에 같은 것이 몇개인지 구한다 - 스트라이크 갯수
+        // 2. 스트라이크 갯수 - userList의 각각의 숫자와 computerList 중에 같은 것이 몇개인지 구한다
         cntStrike = getCntStrike(computerList, userList);
 
-        // 3. 숫자가 같은 갯수 - 스트라이크 갯수 는 볼의 갯수이다. - 볼의 갯수
+        // 3. 볼의 갯수 - 숫자가 같은 갯수 - 스트라이크 갯수 는 볼의 갯수이다.
         cntBall = getCntBall(cntTotalSameUserAndComputer, cntStrike);
 
         // 4. 숫자가 같은 갯수가 없다면 "낫싱"
