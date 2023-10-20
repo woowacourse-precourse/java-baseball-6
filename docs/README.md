@@ -21,4 +21,34 @@
   - [x] 1, 2 둘 중 입력 받기
   - [x] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
 
-# 객체지향적으로 바꾸기
+# MVC 패턴 적용하기
+## Model
+### HumanModel
+- [ ] 사용자의 숫자 배열을 저장한다.
+
+### ComputerModel
+- [ ] 컴퓨터의 숫자를 저장한다.
+
+### GameModel
+- [ ] 게임의 스코어를 저장한다.
+- [ ] 게임의 상태(진행중, 멈춤)를 저장한다.
+
+## View
+### InputView
+- [ ] 서로 다른 수(1~9)의 숫자 배열 입력 받기
+- [ ] 1, 2 숫자 중 입력 받기
+
+### OutputView
+- [ ] 게임 시작 문구 출력
+- [ ] 게임 스코어 출력
+- [ ] 게임 종료/재시작 문구 출력
+
+## Controller
+### HumanController
+- [ ] 사용자의 숫자 배열을 초기화 한다.
+
+### ComputerController
+- [ ] 컴퓨터의 숫자 배열을 초기화 한다.
+
+### GameController
+- [ ] 게임의 스코어를 초기화 한다.
