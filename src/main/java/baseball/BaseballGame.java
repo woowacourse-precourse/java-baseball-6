@@ -2,7 +2,9 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Test;
+import camp.nextstep.edu.missionutils.Console;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BaseballGame {
 
@@ -36,6 +38,29 @@ public class BaseballGame {
 			if (!success) {
 				printStrikeAndBall(computerNumber, playerNumber);
 			}
+
+			if (success) {
+				restartOrEnd();
+			}
+		}
+	}
+
+	private void restartOrEnd() {
+		System.out.println(SUCCESS_MESSAGE);
+		System.out.println(RESTART_OR_END_MESSAGE);
+		String playerInputNumber = Console.readLine();
+		validateNumber(playerInputNumber);
+		if (playerInputNumber.equals('1')) {
+			computer.setRandomNumber();
+		}
+	}
+
+	public static void validateNumber(String input) {
+		Pattern pattern = Pattern.compile("^[12]$");
+		Matcher matcher = pattern.matcher(input);
+
+		if (!matcher.matches()) {
+			throw new IllegalArgumentException(input + "은(는) 유효하지 않은 입력입니다.");
 		}
 	}
 
