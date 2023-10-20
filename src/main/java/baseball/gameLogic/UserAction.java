@@ -17,4 +17,8 @@ public class UserAction {
         user.mind = inputValidator.validateRestartInput(Console.readLine());
     }
 
+    public List<Integer> getNumberList(){
+        return user.numberList;
+    }
+
 }

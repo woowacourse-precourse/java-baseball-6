@@ -9,4 +9,8 @@ public class ComputerAction {
     public void generateNumber(){
         computer.numberList = computer.randomNumberGenerator.generateRandomNumber();
     }
+
+    public List<Integer> getNumberList(){
+        return computer.numberList;
+    }
 }
