@@ -40,7 +40,6 @@ public class Validator {
         for (int numberIdx = 0; numberIdx < input.length(); numberIdx++) {
             uniqueNums.add(input.charAt(numberIdx));
         }
-        System.out.println(uniqueNums);
         if (uniqueNums.size() != 3) {
             throw new IllegalArgumentException("서로 다른 숫자만 입력해야 합니다.");
         }
