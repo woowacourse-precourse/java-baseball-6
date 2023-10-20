@@ -12,7 +12,7 @@ import static baseball.constant.ErrorConstant.*;
 import static baseball.constant.GameConstant.*;
 
 public class Game {
-    private final List<Integer> randomNumber = new ArrayList<>();
+    List<Integer> randomNumber = new ArrayList<>();
 
     public void run()  {
         do {
@@ -81,7 +81,6 @@ public class Game {
             return false;
         }
         printBall(ball);
-        System.out.print(" ");
         printStrike(strike);
         System.out.println();
         return true;
@@ -132,6 +131,7 @@ public class Game {
     private void printBall(int ball){
         if (ball != 0) {
             System.out.print(ball+BALL);
+            System.out.print(" ");
         }
     }
 
@@ -143,7 +143,7 @@ public class Game {
     //게임이 끝나고 입력값에 따라서 재시작할지(1) , 게임을 종료할지(2) 결정
     private boolean restartOrExit()  {
         gameEnd();
-        System.out.print(RESTART_OR_EXIT);
+        System.out.println(RESTART_OR_EXIT);
         String restartOrExit = Console.readLine();
         restartOrExitValueValidate(restartOrExit);
         return restartOrExitCheck(restartOrExit);

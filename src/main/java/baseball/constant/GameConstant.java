@@ -7,8 +7,7 @@ public class GameConstant {
     public static int LAST_RANGE = 9;
     public static int RANDOM_NUMBER_SIZE = 3;
 
-    //Validate 정규 표현식
-    public static String REGULAR_EXPRESSION_INPUT_NUMBER = "^[1-9]{3}";
+    public static String REGULAR_EXPRESSION_INPUT_NUMBER = "^(?!.*(\\d).*\\1)[1-9]{3}$";
     public static String REGULAR_EXPRESSION_RESTART_OR_END_NUMBER = "^[1-2]{1}";
 
 
