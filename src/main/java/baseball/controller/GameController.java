@@ -3,7 +3,7 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.Hint;
 import baseball.model.NumberList;
-import baseball.utils.Transfer;
+import baseball.utils.Convert;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -18,7 +18,7 @@ public class GameController {
         computer.setAnswer(createRandomTarget());
         while (true) {
             String usersGuessString = InputController.scanUsersGuess();
-            NumberList userAnswer = Transfer.stringToNumberList(usersGuessString);
+            NumberList userAnswer = Convert.stringToNumberList(usersGuessString);
 
             Hint hint = calculateHint(computer.getAnswer(), userAnswer);
             OutputView.printHintMessage(hint);
@@ -59,7 +59,6 @@ public class GameController {
 
     private static class InputController {
         private static final String WRONG_INPUT_ANSWER = "1~9 사이 수 3자리를 입력해주세요.";
-        private static final String WRONG_INPUT_TYPE = "3자리 수를 입력해주세요.";
 
         public static String scanUsersGuess() {
             InputView.printEnterNumbers();

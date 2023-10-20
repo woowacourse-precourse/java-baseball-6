@@ -1,11 +1,10 @@
 package baseball.utils;
 
 import baseball.model.NumberList;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Transfer {
+public class Convert {
     public static NumberList stringToNumberList(String numberString) {
         List<Integer> numberList = new ArrayList<>() {{
             for (int i = 0; i < numberString.length(); i++) {
