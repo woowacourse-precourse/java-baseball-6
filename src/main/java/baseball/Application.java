@@ -27,8 +27,32 @@ public class Application {
 
         while (true) {
             ArrayList<Integer> responseArray = getUserInput();
-            // TODO : 계산로직 출력로직 재시작여부로직 구현
+            int[] result = calculateResult(responseArray, computer);
+            // TODO : 출력로직 재시작여부로직 구현
         }
+    }
+
+    private static int[] calculateResult(ArrayList<Integer> responseArray,
+            ArrayList<Integer> computer) {
+        int[] result = new int[2];
+
+        //strike check
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i) == responseArray.get(i)) {
+                result[0]++;
+            }
+        }
+        //ball check
+        for (int i = 0; i < responseArray.size(); i++) {
+            if (computer.contains(responseArray.get(i))) {
+                if (computer.get(i) != responseArray.get(i)) {
+                    result[1]++;
+                }
+            }
+        }
+
+        return result;
+
     }
 
     private static ArrayList<Integer> getUserInput() {
