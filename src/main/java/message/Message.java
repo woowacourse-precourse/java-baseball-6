@@ -1,5 +1,6 @@
 package message;
 
+import score.Score;
 import utils.BaseballRules;
 
 public class Message {
@@ -29,9 +30,9 @@ public class Message {
         System.out.println(END_GAME);
     }
 
-    public static void printHintMessage(int[] score) {
-        int strike = score[0];
-        int ball = score[1];
+    public static void printHintMessage(Score score) {
+        int strike = score.getStrike();
+        int ball = score.getBall();
 
         if (BaseballRules.hasStrikeAndBall(strike, ball)) {
             System.out.println(ball + BALL + " " + strike + STRIKE);

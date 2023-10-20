@@ -1,30 +1,29 @@
 package referee;
 
 import camp.nextstep.edu.missionutils.Console;
-import hint.Hint;
-import java.util.List;
 import message.Message;
 import player.Computer;
 import player.Player;
+import score.Score;
 import utils.BaseballRules;
 
 public class Referee {
-    
-    private Computer computer;
-    private Player player;
+
+    private final Computer computer = new Computer();
+    private final Player player = new Player();
+    private final Score score = new Score();
+
     private static final String START = "1";
     private static final String END = "2";
 
     public void playBall() {
-        computer = new Computer();
-        player = new Player();
+        computer.generateComputerRandomNumber();
 
         do {
             Message.printIntegerInputFromUserMessage();
+            score.clearStrikeAndBall();
             player.inputPlayerNumber();
-            List<Integer> playerBaseballNumber = player.getPlayerBaseballNumber();
-            List<Integer> computerBaseballNumber = computer.getComputerBaseballNumber();
-            int[] score = Hint.calculateStrikeAndBall(playerBaseballNumber, computerBaseballNumber);
+            score.setStrikeAndBall(player.getPlayerBaseballNumber(), computer.getComputerBaseballNumber());
             Message.printHintMessage(score);
         } while (!BaseballRules.isThreeStrike(player.getPlayerBaseballNumber(), computer.getComputerBaseballNumber()));
 

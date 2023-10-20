@@ -6,14 +6,14 @@ import java.util.List;
 
 public class Computer {
 
-    private final List<Integer> computerBaseballNumber;
+    private List<Integer> computerBaseballNumber;
     private static final int MAX_LENGTH = 3;
 
     public Computer() {
-        this.computerBaseballNumber = generateComputerRandomNumber();
+
     }
 
-    private List<Integer> generateComputerRandomNumber() {
+    public void generateComputerRandomNumber() {
         List<Integer> computerBaseballNumber = new ArrayList<>();
         while (computerBaseballNumber.size() < MAX_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -21,7 +21,7 @@ public class Computer {
                 computerBaseballNumber.add(randomNumber);
             }
         }
-        return computerBaseballNumber;
+        this.computerBaseballNumber = computerBaseballNumber;
     }
 
     public List<Integer> getComputerBaseballNumber() {
