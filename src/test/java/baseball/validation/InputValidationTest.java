@@ -81,4 +81,19 @@ class InputValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("재입력 값은 1 또는 2여야 합니다.");
     }
+
+    @Test
+    @DisplayName("입력된 값이 null인지 테스트")
+    void validateNullTest() {
+        // given
+        InputValidation inputValidation = new InputValidation();
+
+        // when
+        String nullValue = null;
+
+        // then
+        assertThatThrownBy(() -> inputValidation.validateNull(nullValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력값은 null일 수 없습니다.");
+    }
 }
