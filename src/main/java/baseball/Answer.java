@@ -11,4 +11,29 @@ public class Answer {
     }
 
     // 검증 로직
+
+    public GameScore calcScore(List<Integer> input) {
+        GameScore score = new GameScore(0, 0);
+        for (int answerIdx = 0; answerIdx < 3; answerIdx++) {
+            preCompare(input, score, answerIdx);
+        }
+
+        return score;
+    }
+
+    private void preCompare(List<Integer> input, GameScore score, int answerIdx) {
+        for (int inputIdx = 0; inputIdx < 3; inputIdx++) {
+            compareNumber(input, score, answerIdx, inputIdx);
+        }
+    }
+
+    private void compareNumber(List<Integer> input, GameScore score, int answerIdx, int inputIdx) {
+        if (answer.get(answerIdx) == input.get(inputIdx) && answerIdx == inputIdx) {
+            score.updateStrike();
+        }
+
+        if (answer.get(answerIdx) == input.get(inputIdx) && answerIdx != inputIdx) {
+            score.updateBall();
+        }
+    }
 }
