@@ -7,8 +7,6 @@ public class Application {
         try {
             Game game = new Game();
             game.startGame();
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
         }finally {
             Console.close();
         }
