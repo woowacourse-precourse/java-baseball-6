@@ -19,4 +19,17 @@ public class BallCounter {
     public static void countStrike() {
         ballCounter.replace(STRIKE, ballCounter.get(STRIKE) + 1);
     }
+
+    public static int getCountOfBall() {
+        return ballCounter.get(BALL);
+    }
+
+    public static int getCountOfStrike() {
+        return ballCounter.get(STRIKE);
+    }
+
+    public static void reset() {
+        ballCounter.replace(BALL, 0);
+        ballCounter.replace(STRIKE, 0);
+    }
 }
