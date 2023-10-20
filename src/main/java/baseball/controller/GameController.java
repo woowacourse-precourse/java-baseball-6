@@ -49,6 +49,8 @@ public class GameController {
         }
 
         outputView.printEndMessage();
+
+        askRestartGame();
     }
 
     public List<Integer> getRandomNumbers() {
@@ -129,5 +131,12 @@ public class GameController {
         }
 
         return NULL_MESSAGE;
+    }
+
+    public void askRestartGame() {
+        String answer = inputView.askPlayerGameRestart();
+        if (answer.equals("1")) {
+            startGame();
+        }
     }
 }
