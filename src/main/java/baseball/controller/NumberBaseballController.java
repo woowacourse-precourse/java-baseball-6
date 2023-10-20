@@ -20,8 +20,7 @@ public class NumberBaseballController {
         outputView.printStartMessage();
         while (restartNum != 2) {
             playGame();
-            restartNum = inputView.printRestartNumber();
-            validator.isOneOrTow(restartNum);
+            restartNum = getRestartNumber();
         }
     }
 
@@ -31,15 +30,32 @@ public class NumberBaseballController {
         List<Integer> userNumbers;
 
         do {
-            userNumbers = chageIntToList(inputView.printInputNumber());
-            validator.isThreeDigit(userNumbers);
-            validator.isNotInSameNumber(userNumbers);
-
+            userNumbers = getUserNumbers();
             ballCnt = countBallNumber(userNumbers, computerNumbers);
             strikeCnt = countStrikeNumber(userNumbers, computerNumbers);
-            outputView.printResult(ballCnt, strikeCnt);
-        } while (strikeCnt != 3);
 
+            outputView.printResult(ballCnt, strikeCnt);
+        } while (!isCorrect(strikeCnt));
+    }
+
+    public boolean isCorrect(int strikeCnt) {
+        return strikeCnt == 3;
+    }
+
+    public List<Integer> getUserNumbers() {
+        int userNumber = inputView.printInputNumber();
+        List<Integer> userNumbers = chageIntToList(userNumber);
+
+        validator.isThreeDigit(userNumbers);
+        validator.isNotInSameNumber(userNumbers);
+
+        return userNumbers;
+    }
+
+    public int getRestartNumber() {
+        int restartNum = inputView.printRestartNumber();
+        validator.isOneOrTwo(restartNum);
+        return restartNum;
     }
 
     public int countBallNumber(List<Integer> userNumbers, List<Integer> computerNumbers) {

@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Validator {
 
@@ -20,7 +19,7 @@ public class Validator {
     }
 
     // 재시작/종료 입력값 검증
-    public void isOneOrTow(int restartNumber) {
+    public void isOneOrTwo(int restartNumber) {
         if ( (restartNumber != 1) && (restartNumber != 2) )
             throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
