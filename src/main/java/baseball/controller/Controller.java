@@ -13,8 +13,7 @@ import java.util.List;
 public class Controller {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-    private final Game game = new Game(new RandomBallsGenerator());
-    private final Service service = new Service(game);
+    private final Service service = new Service(new Game(new RandomBallsGenerator()));
 
     public void execute() {
         start();
@@ -23,7 +22,7 @@ public class Controller {
 
     private void start() {
         outputView.printGameStart();
-        game.start();
+        service.startGame();
     }
 
     private void play() {
@@ -32,18 +31,18 @@ public class Controller {
             List<Integer> input = inputView.insertNumbers();
             Balls balls = Balls.from(input);
 
-            String hint = game.hint(balls);
+            String hint = service.hint(balls);
             System.out.println(hint);
 
             if (hint.equals("3스트라이크")) {
-                game.end();
+                service.endGame();
             }
 
-            if (game.getGameState() == GameState.OFF) {
+            if (service.getGameState() == GameState.OFF) {
                 outputView.printInsertCommand();
                 Command command = inputView.insertCommand();
                 if (command == Command.RESTART) {
-                    game.restart();
+                    service.restartGame();
                 }
                 if (command == Command.FINISH) {
                     System.out.println("게임 종료");
