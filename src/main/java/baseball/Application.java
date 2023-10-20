@@ -88,4 +88,29 @@ public class Application {
         }
         return computerNumArray;
     }
+
+    public String judgeBaseball(int[] computer, List<Integer> user) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < computer.length; i++) {
+            for (int j = 0; j < user.size(); j++) {
+                if (computer[i] == user.get(j) && i == j) {
+                    strike++;
+                }
+                if (computer[i] == user.get(j) && i != j) {
+                    ball++;
+                }
+            }
+        }
+
+        if (strike == 0 && ball == 0)
+            return "낫싱";
+        else if (strike == 0)
+            return ball + "볼";
+        else if (ball == 0)
+            return strike + "스트라이크";
+        return ball + "볼 " + strike + "스트라이크";
+
+    }
 }
