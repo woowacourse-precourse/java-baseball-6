@@ -9,6 +9,9 @@ import java.util.List;
 public class Application {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String BALL_MESSAGE = "볼";
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String NOTHING_MESSAGE = "낫싱";
     private static final List<Integer> computerNumbers = new ArrayList<>();
     private static final List<Integer> userNumbers = new ArrayList<>();
     public static void main(String[] args) {
@@ -50,6 +53,22 @@ public class Application {
                 strike++;
             } else if (computerNumbers.contains(currentUserNumber)) {
                 ball++;
+            }
+        }
+
+        if (strike == 0) {
+            if (ball == 0) {
+                System.out.println(NOTHING_MESSAGE);
+            } else {
+                System.out.println(ball + BALL_MESSAGE);
+            }
+        } else {
+            if (ball == 0) {
+                System.out.println(strike + STRIKE_MESSAGE);
+            } else {
+                System.out.println(ball + BALL_MESSAGE);
+                System.out.print(" ");
+                System.out.print(strike + STRIKE_MESSAGE);
             }
         }
     }
