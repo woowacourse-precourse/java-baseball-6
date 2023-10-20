@@ -12,7 +12,7 @@ public class BaseballService {
                 cnt+=1;
             }
         }
-        if(cnt==0){
+        if(cnt==3){
             player.flag = true;
         }
         return cnt;
