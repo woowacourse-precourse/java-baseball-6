@@ -1,26 +1,34 @@
 package baseball;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Baseball {
 
     private Map<Integer, Integer> dict;
 
     public Baseball(String numbers) {
-
-        if(numbers.length() != 3) throw new IllegalArgumentException();
+        List<Integer> list = new ArrayList<>();
         for(char c : numbers.toCharArray()) {
             if(!Character.isDigit(c)) throw new IllegalArgumentException();
-            if(c == '0') throw new IllegalArgumentException();
+            list.add(Character.getNumericValue(c));
+        }
+        build(list);
+    }
+
+    public Baseball(List<Integer> numbers) {
+        build(numbers);
+    }
+
+    private void build(List<Integer> numbers) {
+        if(numbers.size() != 3) throw new IllegalArgumentException();
+        for(Integer n : numbers) {
+            if(n == 0) throw new IllegalArgumentException();
         }
 
         dict = new HashMap<>();
         for(int i=0;i<3;i++) {
-            Integer n = Character.getNumericValue(numbers.charAt(i));
-            dict.put(n, i);
+            dict.put(numbers.get(i), i);
         }
-
     }
 
     public BaseballScore compare(Baseball baseball) {
