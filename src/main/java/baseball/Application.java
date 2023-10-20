@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
+    static final int MIN_NUMBER = 1;
+    static final int MAX_NUMBER = 9;
     static final int NUMBERS_LENGTH = 3;
     static final String MORE_GAME = "1";
     static final String QUIT_GAME = "2";
@@ -90,7 +92,7 @@ public class Application {
     public static List<Integer> getComputerNumbersList() {
         List<Integer> computerNumbersList = new ArrayList<>();
         while (computerNumbersList.size() < NUMBERS_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!computerNumbersList.contains(randomNumber)) {
                 computerNumbersList.add(randomNumber);
             }
