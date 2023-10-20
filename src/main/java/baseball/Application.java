@@ -21,14 +21,14 @@ public class Application {
     }
 
     private static void startGame() {
-        // 숫자 야구 게임 시작
+        List<Integer> computerNum = createComputerNumber();
+        String result = null;
+        do{
+            System.out.print("숫자를 입력해주세요 : ");
+            String playerNum = Console.readLine();
 
-        // 사용자에게 입력 받기
-
-        // 입력받은 숫자에 대한 결과 출력
-
-        // 사용자가 3개의 숫자를 모두 맞힌 경우 게임 종료
-
+        }while (!result.equals("3스트라이크"));
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static List<Integer> createComputerNumber() {
