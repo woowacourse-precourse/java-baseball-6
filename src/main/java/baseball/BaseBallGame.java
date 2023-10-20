@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.constant.NumberConstant;
+import baseball.domain.ChoiceNumber;
 import baseball.domain.Result;
 import baseball.service.ComputerService;
 import baseball.service.MessageService;
@@ -15,13 +16,13 @@ public class BaseBallGame {
     private final NumberValidation validation = new NumberValidation();
 
     public void startGame() {
-        int restartNumber = 0;
-        while(restartNumber != NumberConstant.GAME_END_NUMBER){
+        ChoiceNumber choiceNumber = new ChoiceNumber();
+        while (choiceNumber.getNumber() != NumberConstant.GAME_END_NUMBER) {
             List<Integer> computer = computerService.createNumber();
             messageService.printStartMessage();
             int ballCount = 0;
             int strikeCount = 0;
-            while (strikeCount != NumberConstant.GAME_WIN_NUMBER){
+            while (strikeCount != NumberConstant.GAME_WIN_NUMBER) {
                 messageService.printUserInputNumberMessage();
                 String inputNumber = userService.inputUserNumber();
                 List<Integer> user = validation.validateInputNumber(inputNumber);
@@ -30,11 +31,11 @@ public class BaseBallGame {
                 ballCount = result.getBallCount();
                 strikeCount = result.getStrikeCount();
 
-                messageService.printComparisonResult(ballCount,strikeCount);
+                messageService.printComparisonResult(ballCount, strikeCount);
             }
             messageService.printWinMessage();
             messageService.printGameRestartOrGameEndMessage();
-            restartNumber = InputRestartOrEnd();
+            choiceNumber = InputRestartOrEnd();
         }
     }
 
@@ -49,16 +50,16 @@ public class BaseBallGame {
                 strikeCount++;
                 continue;
             }
-            if (computer.contains(userNumber)){
+            if (computer.contains(userNumber)) {
                 ballCount++;
             }
         }
-        return new Result(ballCount,strikeCount);
+        return new Result(ballCount, strikeCount);
     }
 
-    public int InputRestartOrEnd(){
-        int inputNumber =  Integer.parseInt(userService.inputUserNumber());
-        validation.validateInputChoice(inputNumber);
-        return inputNumber;
+    public ChoiceNumber InputRestartOrEnd() {
+        int restartNumber = Integer.parseInt(userService.inputUserNumber());
+        validation.validateInputChoice(restartNumber);
+        return new ChoiceNumber(restartNumber);
     }
 }
