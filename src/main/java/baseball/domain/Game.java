@@ -5,18 +5,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Game {
-    public Numbers computer;
-    public Numbers user;
+    private final Numbers computer;
+    private Numbers user;
 
     public Game(){
         generateComputerNumbers();
+
+        this.computer=new Numbers(generateComputerNumbers());
     }
 
-    private void generateComputerNumbers(){
+    private String generateComputerNumbers(){
         Set<String> computer=new HashSet<>();
         generate(computer);
 
-        this.computer=new Numbers(toString(computer));
+        return toString(computer);
     }
 
     public int[] inputAndCompare(String input){
