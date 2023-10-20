@@ -3,7 +3,9 @@ package baseball;
 import baseball.domain.Judge;
 import baseball.domain.NumbersGenerate;
 import baseball.string.MyConstants;
+import baseball.string.ValidConstants;
 import baseball.utill.Utill;
+import baseball.utill.ValidException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,14 +53,15 @@ public class Application {
         // 3. 숫자를 입력받는다.
         inputInt = Utill.inputIntNum();
 
-        // 4. 입력 받는 숫자가 1이면 true
-        if (Utill.isSameInteger(inputInt, WANT_AGAIN_GAME)) {
-            return false;
-        } else if (Utill.isSameInteger(inputInt, NOT_AGAIN_GAME)) {
+        ValidException.isValidOnlyInputOneTwo(inputInt); // 1과 2가 아니면 예외처리
+
+        // 4. 입력 받는 숫자가 2이면 true - STOP
+        if (Utill.isSameInteger(inputInt, NOT_AGAIN_GAME)) {
             return true;
-        } else { // TODO: 10/20/23 예외! 1과 2을 제외한 숫자는 예외
-            throw new IllegalArgumentException("1과 2만 입력해주세요.");
         }
+
+        // 5. 입력 받는 수자가 1이면 - start
+        return false;
     }
 
     /**
