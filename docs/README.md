@@ -67,7 +67,11 @@
   - [x] 숫자 입력 문구 출력
   - [x] 숫자 입력 기능
 - [ ] GameManger
-- [ ] GameService
+- [x] GameService
+  - [x] GameResult를 이용 결과를 반환하는 기능
+  - [x] 3스트라이크로 게임을 이겼는지 판단하는 기능
+  - [x] InputValidator를 이용해서 숫자를 검증하고, 게임을 재시작 할지 반환하는 기능
+  - [x] BaseballNumbers로 숫자를 생성하는 기능
 - [x] BaseballNumbers
   - [x] 랜덤 숫자 생성 기능
 - [x] GameResult
