@@ -28,9 +28,14 @@ public class Answer {
     }
 
     public static void validate(final String input) {
-        validateNumString(input);
-        validateAnswerLength(input);
-        validateAnswerUnique(input);
+        try {
+            validateNumString(input);
+            validateAnswerLength(input);
+            validateAnswerUnique(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            throw e;
+        }
     }
 
     private String createUniqueDigits() {
@@ -42,7 +47,9 @@ public class Answer {
     }
 
     private static void validateNumString(final String num) {
-        if(!num.matches("//d+")) throw new IllegalArgumentException("입력 형식이 올바르지 않습니다");
+        for (char ch : num.toCharArray()) {
+            if(!num.matches("//d+")) throw new IllegalArgumentException("숫자를 입력해 주세요");
+        }
     }
 
     private static void validateAnswerUnique(final String input) {
