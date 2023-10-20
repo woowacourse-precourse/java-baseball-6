@@ -11,6 +11,7 @@ public class BallsConvertor {
     private static final int HUNDRED = 100;
     private static final int TEN = 10;
     private static final int ONE = 1;
+    private static final String SAME_NUMBER_MESSAGE = "입력 숫자는 서로 다른 세자리 수 이어야 합니다.";
 
     public static List<Ball> convertNumberToBalls(int number) {
         List<Ball> balls = new ArrayList<>();
@@ -27,6 +28,13 @@ public class BallsConvertor {
             cutNumbers.add(number / i);
             number %= i;
         }
+        validateDuplicate(cutNumbers);
         return cutNumbers;
+    }
+
+    private static void validateDuplicate(List<Integer> numbers) {
+        if (numbers.stream().distinct().toList().size() != 3) {
+            throw new IllegalArgumentException(SAME_NUMBER_MESSAGE);
+        }
     }
 }
