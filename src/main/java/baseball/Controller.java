@@ -13,9 +13,8 @@ import java.util.List;
 public class Controller {
 
     public static final int SIZE = 3;
-    private int ball;
-    private int strike;
-    private String retryMessage;
+    public static final String RETRY = "1";
+    private String inputData;
     List<Integer> computerNumbers;
     List<Integer> userNumbers;
     OutputView outputView = new OutputView();
@@ -24,50 +23,41 @@ public class Controller {
     Referee referee;
 
     public void run() {
+        init();
+        play();
+        end();
+    }
+
+    public void init() {
         initComputerNumbers();
         generateComputerNumbers();
-        do {
-            String input = requestUserInputData();
+    }
+
+    public void play() {
+        int strike = 0;
+        while (strike != 3) {
             initGame();
-            checkInputData(input);
-            generateUserNumbers(input);
+            requestUserInputData();
+            checkInputData();
+            generateUserNumbers();
             requestJudge(computerNumbers, userNumbers);
-            requestResult(ball, strike);
-            if (strike == 3) {
-                retryMessage = requestRetryMessage();
-            }
-            if (strike == 3 && retryMessage.equals("1")) {
-                initGame();
-                generateComputerNumbers();
-            }
-        } while (strike != 3 || !retryMessage.equals("2"));
+            strike = referee.getStrike();
+            requestResult(referee.getBall(), strike);
+        }
     }
 
-    public void initGame() {
-        userNumbers = new ArrayList<>();
-        validator = new Validator();
-        referee = new Referee();
+    public void end() {
+        OutputView.printEndMessage();
+        InputView.printRetryMessage();
+        String message = Console.readLine();
+        System.out.println(message);
+        if (message.equals(RETRY)) {
+            run();
+        }
     }
 
-    public void initComputerNumbers() {
+    private void initComputerNumbers() {
         computerNumbers = new ArrayList<>();
-    }
-
-    private String requestUserInputData() {
-        InputView.requestInputData();
-        String input = Console.readLine();
-        System.out.print(input);
-        System.out.println();
-        return input;
-    }
-
-    private void checkInputData(String input) {
-        validator.checkValid(input, SIZE);
-    }
-
-    private void generateUserNumbers(String input) {
-        converter = new Converter(input);
-        userNumbers = converter.getSeperatedNumbers();
     }
 
     private void generateComputerNumbers() {
@@ -75,19 +65,33 @@ public class Controller {
         computerNumbers = computer.getComputerNumbers();
     }
 
+
+    private void initGame() {
+        userNumbers = new ArrayList<>();
+        validator = new Validator();
+        referee = new Referee();
+    }
+
+    private void requestUserInputData() {
+        InputView.requestInputData();
+        inputData = Console.readLine();
+        System.out.println(inputData);
+    }
+
+    private void checkInputData() {
+        validator.checkValid(inputData, SIZE);
+    }
+
+    private void generateUserNumbers() {
+        converter = new Converter(inputData);
+        userNumbers = converter.getSeperatedNumbers();
+    }
+
     private void requestJudge(List<Integer> computerNumbers, List<Integer> userNumbers) {
         referee.judge(computerNumbers, userNumbers);
-        ball = referee.getBall();
-        strike = referee.getStrike();
     }
 
     private void requestResult(int ball, int strike) {
         outputView.printJudgement(ball, strike);
-    }
-
-    private String requestRetryMessage() {
-        OutputView.printEndMessage();
-        InputView.printRetryMessage();
-        return Console.readLine();
     }
 }
