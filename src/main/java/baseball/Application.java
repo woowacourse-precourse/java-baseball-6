@@ -39,6 +39,5 @@ public class Application {
         if(player.size() != 3){
             throw new IllegalArgumentException("중복 숫자가 존재함");
         }
-        System.out.println(player.toString());
     }
 }
