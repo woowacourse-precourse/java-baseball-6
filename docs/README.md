@@ -41,18 +41,17 @@
     - [ ] `startGame()`: 최초 시작시 `"숫자 야구 게임을 시작합니다."`를 출력.
     - [ ] `endGame()`: 매 게임시 3자리 숫자를 모두 맞추면 `"3개의 숫자를 모두 맞히셨습니다! 게임종료"`를 출력.
         - [ ] `InputView`의 `continueOrExit()` 메서드 호출.
+    - [ ] `matchResult()`: `Computer`의 `match()` 메서드에서 `"볼"`, `"스트라이크"`를 넘겨받아서 결과를 출력.
+        - [ ] `"3스트라이크"`가 아니라면 `"n볼"`, `"n스트라이크"`, `"낫싱"` 출력 후 `InputView`의 `baseBallNumber()` 호출.
+        - [ ] `"3스트라이크"`라면 `"3스트라이크"` 출력 후 `endGame()` 호출.
 - `InputValidator`: 사용자가 잘못된 값을 입력시 `IllegalArgumentException` 발생시킨 후 애플리케이션 종료.
     - [x] `validateBaseBallNumber()`: `InputView`의 `baseBallNumber()`에서 입력받은 숫자가 1~9 범위의 서로다른 3자리 숫자인지 검증.
     - [x] `validateContinueOrExitNumber()`: `InputView`의 `continueOrExit()`에서 입력받은 숫자가 1 또는 2의 한자리 숫자인지 검증.
 - `Computer`
     - [ ] `match()`: 컴퓨터가 가지고 있는 정답 3자리 수와 사용자가 입력한 3자리 수를 비교.
-        - [ ] 다른 자리 같은 수의 경우 `"n볼"`.
-        - [ ] 같은 자리 같은 수의 경우 `"n스트라이크"`.
-            - [ ] `볼`, `스트라이크`가 둘 다 존재하는 경우 `n볼` `n스트라이크` 순으로 출력.
-        - [ ] 하나도 맞지 않은 경우 `"낫싱"`.
-        - [ ] `"3스트라이크"` 가 아닌 경우 `InputView`의 `baseBallNumber()`을 호출.
-        - [ ] 같은 자리 같은 수가 3개인 경우 `"3스트라이크"`
-            - [ ] `OutputView`의 `endGame()`을 호출.
+        - [ ] 다른 자리 같은 수의 경우 `"볼"` 증가.
+        - [ ] 같은 자리 같은 수의 경우 `"스트라이크"` 증가.
+        - [ ] 모든 숫자를 비교 후 `"볼"`, `"스트라이크"`를 `OutputView`의 `matchResult()` 메서드 매개변수로 넘겨서 호출.
 - `AnswerGenerator`
     - [ ] `List<Integer>` 타입을 반환하는 `generate()` 메서드 정의
 - `RandomAnswerGenerator`: `AnswerGenerator` 구현
