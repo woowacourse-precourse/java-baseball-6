@@ -34,13 +34,13 @@ public class Controller {
             outputView.printHint(hint);
 
             if (isAllStrike(hint)) {
-                end();
+                endProcess();
                 break;
             }
         }
     }
 
-    private void end() {
+    private void endProcess() {
         service.endGame();
         outputView.printInsertCommand();
         Command command = inputView.insertCommand();
