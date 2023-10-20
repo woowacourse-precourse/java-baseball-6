@@ -137,6 +137,11 @@ public class BaseballManageController {
                 }
             }
         }
+
+        //0 포함 여부 확인
+        if(input.contains("0")) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void playerInputTypeCheck(String input) throws IllegalArgumentException{
