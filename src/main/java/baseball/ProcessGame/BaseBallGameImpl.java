@@ -9,7 +9,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.EndGame.EndProcessImpl.isEnd;
 
 public class BaseBallGameImpl implements BaseBallGame {
 
@@ -25,11 +24,15 @@ public class BaseBallGameImpl implements BaseBallGame {
 
     @Override
     public void playGame() {
-        System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> userAnswer = inputAnswer.inputAnswer();
-        Integer strike = countStrike(userAnswer);
-        Integer ball = countBall(userAnswer);
-        gameResult(strike, ball);
+        Boolean keepGoing = true;
+        while (keepGoing) {
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> userAnswer = inputAnswer.inputAnswer();
+            Integer strike = countStrike(userAnswer);
+            Integer ball = countBall(userAnswer);
+            keepGoing = gameResult(strike, ball);
+        }
+        endProcess.userChoice();
     }
 
     @Override
@@ -66,20 +69,18 @@ public class BaseBallGameImpl implements BaseBallGame {
 
 
     @Override
-    public void gameResult(Integer strike, Integer ball) {
+    public Boolean gameResult(Integer strike, Integer ball) {
         if (strike == 0 && ball == 0)
             System.out.println("낫싱");
         else if (strike == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            endProcess.userChoice();
+            return Boolean.FALSE;
         } else{
             if (ball > 0) System.out.print(ball + "볼" + " ");
             if (strike > 0) System.out.print(strike + "스트라이크");
             System.out.println();
         }
-        if (!isEnd)
-            playGame();
-
+        return Boolean.TRUE;
     }
 }

@@ -7,7 +7,6 @@ import camp.nextstep.edu.missionutils.Console;
 public class EndProcessImpl implements EndProcess {
 
     private static BaseBallGame baseBallGame = new BaseBallGameImpl();
-    public static Boolean isEnd = false;
 
     @Override
     public void userChoice() {
@@ -23,13 +22,13 @@ public class EndProcessImpl implements EndProcess {
 
     @Override
     public void ValidateUserChoice(String userChoice) {
-        if (userChoice.equals("1")) {
-            baseBallGame.initGame();
-            return;
-        } else if (userChoice.equals("2")) {
-            isEnd = true;
-            return;
+        try {
+            if (userChoice.equals("1"))
+                baseBallGame.initGame();
+            else if (userChoice.equals("2"))
+                System.out.println("게임을 종료합니다.");
+        } catch (Exception e) {
+            throw new IllegalStateException("1 또는 2를 입력해주세요.");
         }
-        throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
     }
 }
