@@ -11,7 +11,7 @@ public class BaseBallService {
 
         int checkStrike = 0;
         int checkBall = 0;
-        final String NOTHING = "낫띵";
+        final String NOTHING = "낫싱";
 
         for (int i = 0; i < computerInputArray.length; i++) {
             if (computerInputArray[i] == userInputArray[i]) {

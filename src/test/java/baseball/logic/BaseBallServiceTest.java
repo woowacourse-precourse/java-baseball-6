@@ -45,6 +45,20 @@ class BaseBallServiceTest {
         assertTrue(result.contains(expectedBall + "볼"));
     }
 
+    @DisplayName("컴퓨터와 사용자의 숫자가 전부 다를 경우 낫싱 확인 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {183, 891, 345})
+    void confirmNothingTest(int userInput) {
+        // given
+        int computerInput = 206;
+
+        // when
+        String result = baseBallService.getGameResult(computerInput, userInput);
+
+        // then
+        assertTrue(result.equals("낫싱"));
+    }
+
     @DisplayName("3자리 미만 혹은 초과 정수가 입력되었을 경우 IllegalArgumentException 발생")
     @ParameterizedTest
     @ValueSource(ints = {1, 12, 3542, 6523562})
