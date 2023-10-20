@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.constant.JudgementMessage;
+
 public class Judgement {
     private final int numOfBall;
     private final int numOfStrike;
@@ -14,15 +16,15 @@ public class Judgement {
     }
 
     public void sayBallAndStrike(int numberOfDigitsInAnswer) {
-        String message = String.format("%d볼 %d스트라이크", numOfBall, numOfStrike);
+        String message = String.format(JudgementMessage.BALL_AND_STRIKE.getMessage(), numOfBall, numOfStrike);
         if (numOfBall == 0 && numOfStrike == 0) {
-            message = "낫싱";
+            message = JudgementMessage.NOTHING.getMessage();
         } else if (numOfBall == 0 && numOfStrike > 0 && numOfStrike < numberOfDigitsInAnswer) {
-            message = String.format("%d스트라이크", numOfStrike);
+            message = String.format(JudgementMessage.ONLY_STRIKE.getMessage(), numOfStrike);
         } else if (numOfBall > 0 && numOfStrike == 0) {
-            message = String.format("%d볼", numOfBall);
+            message = String.format(JudgementMessage.ONLY_BALL.getMessage(), numOfBall);
         } else if (numOfBall == 0 && numOfStrike == numberOfDigitsInAnswer) {
-            message = String.format("%d스트라이크", numberOfDigitsInAnswer);
+            message = String.format(JudgementMessage.ONLY_STRIKE.getMessage(), numberOfDigitsInAnswer);
         }
         System.out.println(message);
     }

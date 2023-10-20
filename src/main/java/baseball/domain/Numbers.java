@@ -1,15 +1,32 @@
 package baseball.domain;
 
+import baseball.constant.ErrorMessage;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Numbers {
     private final List<Integer> numbers;
 
     public Numbers(int numberOfDigitsInAnswer, List<Integer> numbers) {
-        if (numbers.size() != numberOfDigitsInAnswer) {
-            throw new IllegalArgumentException("Error: numbers 의 자리수가 올바르지 않습니다.");
-        }
+        checkNumberOfDigits(numberOfDigitsInAnswer, numbers);
+        checkDuplicateNumber(numbers);
         this.numbers = numbers;
+    }
+
+    private void checkNumberOfDigits(int numberOfDigits, List<Integer> numbers) {
+        if (numberOfDigits != numbers.size()) {
+            throw new IllegalArgumentException(String.format(ErrorMessage.INVALID_DIGITS_AT_MAKING_NUMBERS.getMessage(),
+                    numberOfDigits));
+        }
+    }
+
+    private void checkDuplicateNumber(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (uniqueNumbers.size() != numbers.size()) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER_AT_MAKING_NUMBERS.getMessage());
+        }
     }
 
     public int calcNumOfBall(Numbers otherNumbers) {

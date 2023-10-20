@@ -16,7 +16,9 @@ public class ComputerPlayer {
         List<Integer> pickedNumbers = new LinkedList<>();
         while (pickedNumbers.size() < numberOfDigitsInAnswer) {
             int number = Randoms.pickNumberInRange(1, 9);
-            pickedNumbers.add(number);
+            if (!pickedNumbers.contains(number)) {
+                pickedNumbers.add(number);
+            }
         }
         this.numbers = new Numbers(numberOfDigitsInAnswer, pickedNumbers);
     }
