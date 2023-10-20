@@ -22,13 +22,10 @@ public class Application {
         boolean isFinish = false;
 
         while (!isFinish) {
-            System.out.print("숫자를 입력해주세요 : ");
             String input = getInput(InputType.FIND);
-
             isFinish = checkFinish(input, computerNum);
         }
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         boolean isRestart = askRestart();
         if (isRestart) {
             return false;
@@ -41,8 +38,10 @@ public class Application {
         String input = Console.readLine().strip();
 
         if (type == InputType.FIND) {
+            System.out.print("숫자를 입력해주세요 : ");
             checkFindInput(input);
         } else {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             checkRestartInput(input);
         }
 
@@ -161,15 +160,7 @@ public class Application {
     }
 
     private static boolean hasSameNumber(char c1, char c2, char c3) {
-        if (c1==c2) {
-            return true;
-        }
-
-        if (c2==c3) {
-            return true;
-        }
-
-        if (c3==c1) {
+        if (c1==c2 || c2==c3 || c3==c1) {
             return true;
         }
 
