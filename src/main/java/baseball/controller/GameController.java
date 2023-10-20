@@ -26,22 +26,27 @@ public class GameController {
     PlayerNumber playerNumber = new PlayerNumber();
 
     public void startGame() {
+        boolean continueGame = true;
+
         outputView.printStartMessage();
         computerNumber.setComputerNumbers(getRandomNumbers());
 
-        String playerNumberStr = inputView.inputPlayerNumber();
-        playerNumber.setPlayerNumbers(convertPlayerNumberToList(playerNumberStr));
+        while(continueGame) {
+            String playerNumberStr = inputView.inputPlayerNumber();
+            playerNumber.setPlayerNumbers(convertPlayerNumberToList(playerNumberStr));
 
-        initStrikeAndBall();
-        List<Integer> player = playerNumber.getPlayerNumbers();
-        List<Integer> computer = computerNumber.getComputerNumbers();
-        if (isPlayerSameAsComputer(player, computer)) {
-            strike = 3;
-        } else {
-            calculateHint(player, computer);
+            initStrikeAndBall();
+            List<Integer> player = playerNumber.getPlayerNumbers();
+            List<Integer> computer = computerNumber.getComputerNumbers();
+            if (isPlayerSameAsComputer(player, computer)) {
+                strike = 3;
+                continueGame = false;
+            } else {
+                calculateHint(player, computer);
+            }
+
+            printHint();
         }
-
-        printHint();
     }
 
     public List<Integer> getRandomNumbers() {
