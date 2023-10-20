@@ -50,11 +50,11 @@ public class GameController {
     }
 
     private static boolean quit(String restartValue) {
-        return false;
+        return restartValue.equals("2");
     }
 
     private static boolean restart(String restartValue) {
-        return false;
+        return restartValue.equals("1");
     }
 
     private static boolean checkSuccess() {
