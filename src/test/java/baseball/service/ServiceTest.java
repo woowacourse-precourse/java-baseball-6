@@ -53,4 +53,17 @@ public class ServiceTest {
         //then
         assertEquals(service.getGameState(), GameState.OFF);
     }
+
+    @Test
+    void restart_test() {
+        //given
+        Game game = new Game(new RandomBallsGenerator());
+        Service service = new Service(game);
+
+        //when
+        service.restartGame();
+
+        //then
+        assertEquals(service.getGameState(), GameState.ON);
+    }
 }
