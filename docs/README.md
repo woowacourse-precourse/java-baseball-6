@@ -30,7 +30,7 @@
 
 ### 기능 목록
 - `InputView`
-    - [ ] `baseBallNumber()`: `"숫자를 입력해주세요 : "`를 출력하고 `Console.readLine()`으로 3자리 숫자를 입력 받음.
+    - [x] `baseBallNumber()`: `"숫자를 입력해주세요 : "`를 출력하고 `Console.readLine()`으로 3자리 숫자를 입력 받음.
     - [ ] `continueOrExit()`: `"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."`를 출력하고 `1` 또는 `2` 숫자를 입력 받음.
         - [ ] `1`인 경우: 새로운 `Computer`를 생성하여 정답을 초기화하고, `InputView`의 `baseballNumber()` 호출.
         - [ ] `2`인 경우: 애플리케이션 종료.
