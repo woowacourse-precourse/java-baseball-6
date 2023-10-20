@@ -9,8 +9,12 @@ public class BaseballGame {
 
     private static final int START_RANGE_NUMBER = 1;
     private static final int END_RANGE_NUMBER = 9;
-    private final List<Integer> numbers = new ArrayList<>();
-    
+    private List<Integer> numbers = new ArrayList<>();
+
+    public BaseballGame(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
     public void init() {
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(START_RANGE_NUMBER,END_RANGE_NUMBER);
