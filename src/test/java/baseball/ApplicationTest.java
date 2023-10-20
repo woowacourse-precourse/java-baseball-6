@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -31,6 +32,7 @@ class ApplicationTest extends NsTest {
     @AfterEach
     void teardown() {
         System.setIn(originalSystemIn);
+        Console.close();
     }
     @Test
     void 게임종료_후_재시작() {
@@ -71,6 +73,17 @@ class ApplicationTest extends NsTest {
         assertThat(userNumbersList).containsExactly(1,2,3);
     }
     @Test
+    void getUserNumbersList_정상작동_테스트2() {
+        //given
+        String input = "294";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        //when
+        List<Integer> userNumbersList = Application.getUserNumbersList();
+        //then
+        assertThat(userNumbersList).containsExactly(2,9,4);
+    }
+    @Test
     void getUserNumbersList_예외상황_테스트() {
         //given
         String input = "11123";
@@ -81,7 +94,6 @@ class ApplicationTest extends NsTest {
         //then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]");
-        Console.close(); // 이걸 넣으니 전체 테스트를 실행시 발생한 java.util.NoSuchElementException : No line found 문제 해결
     }
 
     @Test
