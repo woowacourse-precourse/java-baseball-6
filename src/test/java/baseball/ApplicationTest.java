@@ -38,45 +38,53 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
     @Test
     void initializeComputerNumber_유효성테스트() {
         //given
+        BaseballService baseballService = new BaseballService();
         //when
-        final Throwable thrown = catchThrowable(()->BaseballNumber.initializeComputerNumber());
+
+        Throwable thrown = catchThrowable(() -> baseballService.initializeComputerNumber());
         //then
         assertThat(thrown).as("initializeComputerNumber_테스트").doesNotThrowAnyException();
     }
+
     @Test
     void 숫자의_개수가_3개이상_입력_예외() {
+
         //given
-        List<Integer> testList = new ArrayList(Arrays.asList(1, 2, 3, 4));
+        String input = "1234";
+
         //when
         //then
-        assertThatThrownBy(() -> new BaseballNumber(testList))
+        assertThatThrownBy(() -> new BaseballNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("게임을 진행할 수는 항상 3개여야 합니다.");
+                .hasMessageContaining("입력의 길이는 3이어야합니다.");
     }
+
     @Test
     void 중복된_숫자가_들어왔을때_예외() {
         //given
-        List<Integer> testList = new ArrayList(Arrays.asList(2, 2, 3));
+        String input = "484";
         //when
         //then
-        assertThatThrownBy(() -> new BaseballNumber(testList))
+        assertThatThrownBy(() -> new BaseballNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("서로 같은 숫자들은 입력될 수 없습니다.");
+                .hasMessageContaining("모든 입력된 값은 달라야합니다.");
     }
 
     @Test
     void initializeUserNumber_유효성테스트() {
+        //initializeUserNumber메서드의 주기능이되는 BaseballNumber의 생성자를 테스트
         //given
         String str1 = "123";
         String str2 = "456";
         String str3 = "789";
         //when
-        final Throwable thrown1 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str1));
-        final Throwable thrown2 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str2));
-        final Throwable thrown3 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str3));
+        final Throwable thrown1 = catchThrowable(() -> new BaseballNumber(str1));
+        final Throwable thrown2 = catchThrowable(() -> new BaseballNumber(str2));
+        final Throwable thrown3 = catchThrowable(() -> new BaseballNumber(str3));
 
         //then
         assertThat(thrown1).as("initializeUserNumber_테스트").doesNotThrowAnyException();
@@ -91,35 +99,36 @@ class ApplicationTest extends NsTest {
         String str2 = "qwer";
         String str3 = "zxcv";
         //when
-        final Throwable thrown1 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str1));
-        final Throwable thrown2 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str2));
-        final Throwable thrown3 = catchThrowable(()->BaseballNumber.initializeUserNumberForTest(str3));
+        final Throwable thrown1 = catchThrowable(() -> new BaseballNumber(str1));
+        final Throwable thrown2 = catchThrowable(() -> new BaseballNumber(str2));
+        final Throwable thrown3 = catchThrowable(() -> new BaseballNumber(str3));
 
         //then
         assertThat(thrown1).as("initializeUserNumber_테스트").isInstanceOf(IllegalArgumentException.class);
         assertThat(thrown2).as("initializeUserNumber_테스트").isInstanceOf(IllegalArgumentException.class);
         assertThat(thrown3).as("initializeUserNumber_테스트").isInstanceOf(IllegalArgumentException.class);
     }
+
     @Test
     void compareNumber_테스트() {
         //given
         //3스트라이크
-        BaseballNumber computer1 = new BaseballNumber(new ArrayList(Arrays.asList(1, 2, 3)));
-        BaseballNumber user1 = new BaseballNumber(new ArrayList(Arrays.asList(1, 2, 3)));
+        BaseballNumber computer1 = new BaseballNumber("123");
+        BaseballNumber user1 = new BaseballNumber("123");
         //3스트라이크
-        BaseballNumber computer2 = new BaseballNumber(new ArrayList(Arrays.asList(4, 5, 6)));
-        BaseballNumber user2 = new BaseballNumber(new ArrayList(Arrays.asList(4, 5, 6)));
+        BaseballNumber computer2 = new BaseballNumber("123");
+        BaseballNumber user2 = new BaseballNumber("123");
         //2볼 1스트라이크
-        BaseballNumber computer3 = new BaseballNumber(new ArrayList(Arrays.asList(4, 5, 6)));
-        BaseballNumber user3 = new BaseballNumber(new ArrayList(Arrays.asList(4, 6, 5)));
+        BaseballNumber computer3 = new BaseballNumber("456");
+        BaseballNumber user3 = new BaseballNumber("465");
         //2볼 1스트라이크
-        BaseballNumber computer4 = new BaseballNumber(new ArrayList(Arrays.asList(7, 8, 9)));
-        BaseballNumber user4 = new BaseballNumber(new ArrayList(Arrays.asList(8, 7, 9)));
+        BaseballNumber computer4 = new BaseballNumber("789");
+        BaseballNumber user4 = new BaseballNumber("879");
         //when
-        BaseballScore resultBaseballScore1 = computer1.compareNumber(user1);
-        BaseballScore resultBaseballScore2 = computer2.compareNumber(user2);
-        BaseballScore resultBaseballScore3 = computer3.compareNumber(user3);
-        BaseballScore resultBaseballScore4 = computer4.compareNumber(user4);
+        BaseballScore resultBaseballScore1 = BaseballNumber.compareNumber(computer1, user1);
+        BaseballScore resultBaseballScore2 = BaseballNumber.compareNumber(computer2, user2);
+        BaseballScore resultBaseballScore3 = BaseballNumber.compareNumber(computer3, user3);
+        BaseballScore resultBaseballScore4 = BaseballNumber.compareNumber(computer4, user4);
         boolean result1 = BaseballScore.isBaseballScoreEqual(resultBaseballScore1, resultBaseballScore2);
         boolean result2 = BaseballScore.isBaseballScoreEqual(resultBaseballScore3, resultBaseballScore4);
         //then
