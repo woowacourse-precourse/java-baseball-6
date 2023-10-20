@@ -11,9 +11,7 @@ public class PlayerNumbers {
 
     private List<Integer> numbers;
 
-    public PlayerNumbers() {
-        System.out.print(GameMessage.INPUT_NUMBER_MESSAGE);
-        String inputNumber = Console.readLine();
+    public PlayerNumbers(String inputNumber) {
         InputValidation.isNull(inputNumber);
         InputValidation.isNumber(inputNumber);
         InputValidation.isThreeLetter(inputNumber);
