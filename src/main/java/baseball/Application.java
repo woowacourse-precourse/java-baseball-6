@@ -12,6 +12,12 @@ public class Application {
         // 시작
         System.out.println("숫자 야구 게임을 시작합니다.");
         GameStatus gameStatus = GameStatus.START;
+
+        while(gameStatus == GameStatus.START){
+            // 초기화
+            init();
+
+        }
     }
 
     public enum GameStatus{
@@ -20,4 +26,9 @@ public class Application {
         END
     }
 
+    public static void init(){
+        Arrays.fill(orderOfNumbers, 0);
+        computerNumbers.clear();
+        userNumbers = "";
+    }
 }
