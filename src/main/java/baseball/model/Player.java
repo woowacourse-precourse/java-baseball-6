@@ -10,6 +10,6 @@ public class Player {
     }
 
     public List<Integer> getNumbers() {
-        return this.numbers;
+        return numbers;
     }
 }

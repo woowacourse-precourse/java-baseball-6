@@ -9,7 +9,17 @@ public class Computer {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers() {
-        return this.numbers;
+    public boolean isSameNumberAndDigit(int number, int digit) {
+        if (number == numbers.get(digit)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isExistNumberOf(int number) {
+        if (numbers.contains(number)) {
+            return true;
+        }
+        return false;
     }
 }
