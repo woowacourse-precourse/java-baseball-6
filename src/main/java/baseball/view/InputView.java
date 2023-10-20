@@ -3,12 +3,17 @@ package baseball.view;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class InputView {
     public String inputNumbers() {
         String input = readLine().trim();
 
         validateInputLength(input);
+        validateNumberDuplication(input);
         validateInputNumber(input);
 
         return input;
@@ -35,6 +40,20 @@ public class InputView {
 
         if (count > 0) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
+    }
+
+    private void validateNumberDuplication(final String input) {
+        Set<String> hashSet = new HashSet<>();
+
+        List<String> inputList = Arrays.stream(input.split("")).collect(Collectors.toList());
+
+        for (String string : inputList) {
+            hashSet.add(string);
+        }
+
+        if (hashSet.size() != 3) {
+            throw new IllegalArgumentException("중복되지 않는 3자리 숫자만 입력가능합니다.");
         }
     }
 
