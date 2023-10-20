@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.resource.GameMessage;
 import baseball.validator.InputValidation;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -11,6 +12,7 @@ public class PlayerNumbers {
     private List<Integer> numbers;
 
     public PlayerNumbers() {
+        System.out.print(GameMessage.INPUT_NUMBER_MESSAGE);
         String inputNumber = Console.readLine();
         InputValidation.isNull(inputNumber);
         InputValidation.isNumber(inputNumber);
