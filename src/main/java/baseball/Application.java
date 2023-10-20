@@ -93,10 +93,21 @@ public class Application {
         int ballCount = 0;
         for (int i = 0; i < userNumbersList.size(); i++) {
             int userNumber = userNumbersList.get(i);
-            if (userNumber != computerNumbersList.get(i) && computerNumbersList.contains(userNumber))
+            int computerNumber = computerNumbersList.get(i);
+            if (userNumber != computerNumber && computerNumbersList.contains(userNumber))
                 ballCount++;
         }
         return ballCount;
+    }
+    public static int getStrikeCount(List<Integer> computerNumbersList, List<Integer> userNumbersList) {
+        int strikeCount = 0;
+        for (int i = 0; i < userNumbersList.size(); i++) {
+            int userNumber = userNumbersList.get(i);
+            int computerNumber = computerNumbersList.get(i);
+            if (userNumber == computerNumber)
+                strikeCount++;
+        }
+        return strikeCount;
     }
     public static List<Integer> getComputerNumbersList() {
         List<Integer> computerNumbersList = new ArrayList<>();
