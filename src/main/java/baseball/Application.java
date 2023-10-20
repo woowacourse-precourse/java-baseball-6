@@ -9,6 +9,5 @@ public class Application {
         computer.generateRandomNum();
         UserInput userInput = new UserInput();
         userInput.promptUserInput();
-        System.out.println(userInput.getUserNum());
     }
 }
