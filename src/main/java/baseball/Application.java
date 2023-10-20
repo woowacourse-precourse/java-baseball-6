@@ -63,6 +63,8 @@ public class Application {
             printNumberInputMessage();
             String userInput = Console.readLine();
             validateGameSceneUserInput(userInput);
+
+            BaseBallNumberGroup user = new BaseBallNumberGroup(getNumberListFromUserInput(userInput));
         }
     }
 
@@ -82,6 +84,15 @@ public class Application {
 
     public static boolean isUserInputLengthSizeRandomNumber(String userInput) {
         return userInput.length() == GameConstants.SIZE_RANDOM_NUMBER;
+    }
+
+    public static List<Integer> getNumberListFromUserInput(String userInput) {
+        List<Integer> numberList = new ArrayList<>();
+        for (char oneLetter : userInput.toCharArray()) {
+            int number = Integer.parseInt(String.valueOf(oneLetter));
+            numberList.add(number);
+        }
+        return numberList;
     }
 
     public static void handleEndScene() {
