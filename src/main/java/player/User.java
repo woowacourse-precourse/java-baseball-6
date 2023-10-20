@@ -19,28 +19,32 @@ public class User extends BaseballPlayer {
         String[] playerInput = Console.readLine().split("");
 
         for (String inputNumber : playerInput) {
-            addBaseballNumberFromPlayerInput(playerInputBaseballNumber, inputNumber);
+            validateNumericInput(inputNumber);
+            playerInputBaseballNumber.add(Integer.parseInt(inputNumber));
         }
 
-        validatePlayerInput(playerInputBaseballNumber);
+        validateMaxLength(playerInputBaseballNumber);
+        validateDuplicateNumber(playerInputBaseballNumber);
         super.baseballNumber = playerInputBaseballNumber;
     }
 
-    private void validatePlayerInput(List<Integer> playerInput) {
-        Set<Integer> playerBaseballNumberSet = new HashSet<>(playerInput);
-
+    private void validateMaxLength(List<Integer> playerInput) {
         if (playerInput.size() > MAX_LENGTH) {
             throw new IllegalArgumentException(ONLY_THREE_NUMBER_MESSAGE);
         }
+    }
+
+    private void validateDuplicateNumber(List<Integer> playerInput) {
+        Set<Integer> playerBaseballNumberSet = new HashSet<>(playerInput);
 
         if (playerBaseballNumberSet.size() < MAX_LENGTH) {
             throw new IllegalArgumentException(NO_DUPLICATE_NUMBER_MESSAGE);
         }
     }
 
-    private void addBaseballNumberFromPlayerInput(List<Integer> playerInputBaseballNumber, String playerInput) {
+    private void validateNumericInput(String playerInput) {
         try {
-            playerInputBaseballNumber.add(Integer.parseInt(playerInput));
+            Double.parseDouble(playerInput);
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(ONLY_NUMBER_MESSAGE);
         }
