@@ -2,7 +2,6 @@ package baseball.domain.player;
 
 
 import baseball.domain.number.Numbers;
-import java.util.List;
 
 public class Player {
 
@@ -24,10 +23,6 @@ public class Player {
 
     public Numbers getNumbers() {
         return Numbers.create(numbers.getNumberList());
-    }
-
-    public List<Integer> getNumberList() {
-        return numbers.getNumberList();
     }
 
 }

@@ -50,8 +50,4 @@ public class Computer {
         return player.getNumbers();
     }
 
-    public List<Integer> getNumberList() {
-        return player.getNumberList();
-    }
-
 }
