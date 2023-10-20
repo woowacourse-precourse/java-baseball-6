@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Number {
+
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final int CNT_NUMBER = 3;
@@ -30,6 +31,14 @@ public class Number {
         }
 
         this.number = number;
+    }
+
+    public void userNumberGenerator(String inputNumber) {
+        List<Integer> userNumber = new ArrayList<>();
+        for(Character c : inputNumber.toCharArray())
+            userNumber.add(c - '0');
+
+        this.number = userNumber;
     }
 
 
