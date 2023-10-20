@@ -19,6 +19,35 @@ public class ComputerService {
         return number;
     }
     
+    public int countStrikes(String computer, String player) {
+        int count = 0;
+    
+        for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
+            char targetNumber = player.charAt(i);
+            
+            if (targetNumber == computer.charAt(i)) {
+                count += 1;
+            }
+        }
+        
+        return count;
+    }
+    
+    public int countBalls(String computer, String player) {
+        int count = 0;
+    
+        for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
+            char targetNumber = player.charAt(i);
+            int findIndex = computer.indexOf(targetNumber);
+            
+            if (findIndex > 0 && findIndex != i) {
+                count += 1;
+            }
+        }
+        
+        return count;
+    }
+    
     private String makeComputerNumber() {
         LinkedHashSet<String> result = new LinkedHashSet<>();
     
