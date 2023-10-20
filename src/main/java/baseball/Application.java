@@ -29,13 +29,14 @@ class ComputerNumbers {
 
         for (int i = 0; i < 3; i++) {
             int number = userNumbers.get(i);
-            if (numbers.contains(number)) {
-                if (numbers.get(i) == number) {
-                    strikes++;
-                } else {
-                    balls++;
-                }
+            if (!numbers.contains(number)) {
+                continue;
             }
+            if (numbers.get(i) == number) {
+                strikes++;
+                continue;
+            }
+            balls++;
         }
         return new int[]{strikes, balls};
     }
