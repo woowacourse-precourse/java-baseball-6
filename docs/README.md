@@ -10,9 +10,8 @@
   - [x] toString 구현
   - [x] GoalValue.compare() 구현
   - [ ] equals 구현
-- [ ] Computer 구현
 - [x] GoalValue 리팩토링
   - [x] UniqueNumberString 으로 변경
   - [x] RuleSet 도입 
-- [ ] Shell 구현
-- [ ] main() 구현
+- [x] Shell 구현
+- [x] main() 구현

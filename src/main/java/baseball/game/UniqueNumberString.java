@@ -15,21 +15,29 @@ public class UniqueNumberString {
 
     public static UniqueNumberString createRandom(RuleSet ruleSet) {
         StringBuilder sb = new StringBuilder();
-        for (int num : Randoms.pickUniqueNumbersInRange(1, 9, ruleSet.getNumLen())) {
+        boolean[] isUsed = new boolean[10];
+        while (sb.length() < ruleSet.getNumLen()) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (isUsed[num]) {
+                continue;
+            }
             sb.append(num);
+            isUsed[num] = true;
         }
 
-        return new UniqueNumberString(sb.toString(), ruleSet);
+        return create(sb.toString(), ruleSet);
     }
 
     private static void validate(String value, RuleSet ruleSet) {
-        boolean isNumberMatchesLength = Pattern.matches("^[1-9]{" + ruleSet.getNumLen() + "}$", value);
-        if (!isNumberMatchesLength) {
+        if (value.length() != ruleSet.getNumLen()) {
             throw new IllegalArgumentException("길이가 " + ruleSet.getNumLen() + "이어야 합니다.");
+        }
+        if (!Pattern.matches("^[1-9]*$", value)) {
+            throw new IllegalArgumentException("숫자가 아닌 문자가 섞여있습니다.");
         }
 
         HashSet<Character> duplicateDetectorSet = new HashSet<>();
-        for (int i = 0; i < value.length(); i++) {
+        for (int i = 0; i < ruleSet.getNumLen(); i++) {
             char num = value.charAt(i);
             if (duplicateDetectorSet.contains(num)) {
                 throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
