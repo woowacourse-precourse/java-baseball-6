@@ -15,19 +15,19 @@ public class NumberBaseballGame {
         boolean gameStatus = true;
         while (gameStatus) {
             speaker(message.startMessage() + '\n');
-//            computer.setAnswer(answerMaker.makeThreeDifferentNumberList(1, 9)); // 정답 생성 후 컴퓨터에 저장
-            AnswerMaker answerMaker = new AnswerMaker(1, 9);
+            AnswerMaker answerMaker = new AnswerMaker(1, 9); // 각 라운드당 하나의 정답을 생성하기
             System.out.println("answer ?" + answerMaker.getAnswer());
             oneRound(answerMaker.getAnswer());
             speaker(message.restartOrStopMessage());
-            String startOrStop = userInput.getUserInput();
-            userInput.validateContinueSign(startOrStop);
-            if (startOrStop.charAt(0) == '2') {
-                gameStatus = false;
-            }
+            gameStatus = restartOrStop();
         }
     }
 
+    public boolean restartOrStop() {
+        String startOrStop = userInput.getUserInput();
+        userInput.validateContinueSign(startOrStop);
+        return startOrStop.charAt(0) != '2';
+    }
     public void oneRound(List<Integer> answer) {
         boolean threeStrike = false;
         while (!threeStrike) {
