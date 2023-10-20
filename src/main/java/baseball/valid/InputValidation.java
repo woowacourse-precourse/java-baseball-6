@@ -21,7 +21,7 @@ public class InputValidation {
     }
 
     private static void validateAllDifferentNumAndSize(String input){
-        if(input.chars().count() == 3  && input.chars().distinct().count() != 3){
+        if(input.chars().count() != 3 || input.chars().distinct().count() != 3){
             throw new IllegalArgumentException();
         }
     }
