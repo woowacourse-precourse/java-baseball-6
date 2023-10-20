@@ -56,6 +56,9 @@
 ### SystemConstant
 -[x] 시스템 상수를 저장하는 기능
 
+### SystemException
+-[ ] 예외 문구(상수)를 저장하는 기능
+
 
 <br>
 
