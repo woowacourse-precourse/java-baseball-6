@@ -13,5 +13,5 @@
 - 컴퓨터 클래스 생성하기
   - [x] 생성하면 서로 다른 3자리의 수 입력받기
     - [x] camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용하기
-  - [ ] 입력 값과 생각한 숫자 같은지 확인하는 메서드 만들기
+  - [x] 입력 값과 생각한 숫자 같은지 확인하는 메서드 만들기
 

@@ -17,7 +17,7 @@ public class Computer {
             }
         }
     }
-    public void compareNumber(List<Integer> inputNumbers) {
+    public boolean compareNumber(List<Integer> inputNumbers) {
         int strike = 0;
         int ball = 0;
 
@@ -31,8 +31,9 @@ public class Computer {
                 ball += 1;
             }
         }
-        System.out.println("ball = " + ball);
-        System.out.println("strike = " + strike);
+
+        printHandler.baseballPrint(ball, strike);
+        return (strike == 3);
     }
 
     public String toString() {
