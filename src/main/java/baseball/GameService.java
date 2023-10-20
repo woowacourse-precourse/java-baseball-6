@@ -18,6 +18,8 @@ public class GameService {
     private final int NUM_START = 1;
     private final int NUM_END = 9;
 
+    private final int RETRY = 1;
+    private final int END = 2;
     private Game game;
     private User user = new User();
     private List<Integer> computer = new ArrayList<>();
@@ -36,18 +38,30 @@ public class GameService {
         int strikeCount = 0;
 
         while(strikeCount != NUM_SIZE){
-            int[] score = checkScore(user.getUserNum(NUM_SIZE));
+            int[] score = checkScore(getUserNum());
             message.printScore(score[0],score[1]);
             strikeCount = score[0];
         }
+        stopGame();
     }
 
     public void stopGame(){
-
+        message.printEndMessage(NUM_SIZE);
+        retryGame();
     }
 
     public void retryGame(){
+        int answer = Integer.parseInt(Console.readLine());
+        message.printRetryMessage(answer);
+        if(answer == RETRY){
+            startGame();
+        }
+    }
 
+    public int[] getUserNum(){
+        String userNum = Console.readLine();
+        message.printAskMessage(userNum);
+        return user.parseUserNum(userNum, NUM_SIZE);
     }
 
     public int[] checkScore(int[] user){

@@ -3,7 +3,6 @@ package baseball.model;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
-    public int[] getUserNum(int size){ return parseUserNum(Console.readLine(), size); }
 
     public int[] parseUserNum(String userNum, int size){
 
