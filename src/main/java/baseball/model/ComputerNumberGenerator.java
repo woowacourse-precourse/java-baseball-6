@@ -16,7 +16,7 @@ public class ComputerNumberGenerator {
         return computerNumber;
     }
 
-    public void generateRandomNumbers() {
+    private void generateRandomNumbers() {
         List<Integer> numbers = new ArrayList<>(3);
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -26,5 +26,9 @@ public class ComputerNumberGenerator {
             numbers.add(randomNumber);
         }
         this.computerNumber = numbers;
+    }
+
+    public void reset() {
+        generateRandomNumbers();
     }
 }
