@@ -5,21 +5,16 @@ import java.util.List;
 public class Compare {
     Computer com = new Computer();
     List<Integer> computer = com.getComputerNumbers();
-    UserNumber user = new UserNumber();
-    List<Integer> userNumber = user.getUserNumbers();
 
     int strike = 0;
     int ball = 0;
 
-    public void compareNumbers() {
-        for(int i=0; i<userNumber.size(); i++) {
+    public void compareNumbers(List<Integer> userNumber) {
+        for(int i=0; i<computer.size(); i++) {
             if (userNumber.get(i) == computer.get(i))
                 strike++;
             else if (userNumber.contains(computer.get(i)))
                 ball++;
-            else
-               System.out.println("낫싱");
-               break;
         }
 
         if (strike == 3) {
