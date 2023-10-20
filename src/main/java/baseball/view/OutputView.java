@@ -11,4 +11,8 @@ public class OutputView {
     public void printEndMessage() {
         System.out.println(endMessage);
     }
+
+    public void printHint(String hintMessage){
+        System.out.println(hintMessage);
+    }
 }

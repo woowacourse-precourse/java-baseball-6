@@ -37,7 +37,7 @@
 - [x] HintCalculator(List <Integer>, List <Integer>) : user, computer 비교 후 ball, strike count 저장
 - [x] boolean isThreeStrike() : 3스트라이크인지 반환
 - [x] List<Integer> getStrikeAndBallCount() : 스트라이크, 볼 개수 담은 리스트 반환
-- [ ] String getHintString() : 힌트 메시지 생성 후 반환
+- [x] String getHintString() : 힌트 메시지 생성 후 반환
 
 ### RandomListMaker
 랜덤 숫자 리스트를 생성하고 반환해주는 클래스
@@ -66,6 +66,6 @@
 ### OutputView
 사용자에게 출력하여 보여주는 클래스
 
-- [ ] void printHint(String) : 힌트 출력
+- [x] void printHint(String) : 힌트 출력
 - [x] void printStartMessage() : 게임 시작 메시지 출력
 - [x] void printEndMessage() : 게임 종료 메시지 출력

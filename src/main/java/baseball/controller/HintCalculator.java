@@ -5,6 +5,10 @@ import java.util.List;
 public class HintCalculator {
     private final static int LIST_SIZE = 3;
     private final static int SUCCESS_STRIKE_COUNT = 3;
+    private final static String strikeString = "스트라이크";
+    private final static String ballString = "볼";
+    private final static String nothingString = "낫싱";
+    private final static String spaceString = " ";
     private int strikeCnt = 0;
     private int ballCnt = 0;
 
@@ -23,8 +27,22 @@ public class HintCalculator {
         return strikeCnt == SUCCESS_STRIKE_COUNT;
     }
 
-    public List<Integer> getStrikeAndBallCount(){
-        return List.of(strikeCnt, ballCnt);
+    public String getHintString(){
+        if(strikeCnt == 0 && ballCnt == 0){
+            return nothingString;
+        }
+        String hintString = "";
+        if (ballCnt != 0) {
+            hintString+=ballCnt+ballString;
+            if(strikeCnt != 0){
+               hintString+=spaceString;
+            }
+        }
+        if(strikeCnt!=0){
+            hintString+=strikeCnt;
+            hintString+=strikeString;
+        }
+        return hintString;
     }
 
     private boolean isStrike(Integer userNumber, Integer computerNumber) {
