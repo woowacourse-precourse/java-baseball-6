@@ -26,9 +26,7 @@ public class GameController {
         while (playWant) {
             askUserNumberInput();
 
-            String userInput = receivePlayNumber();
-
-            int userNumber = StringInputConverter.convertStringToInt(userInput);
+            int userNumber = InputController.receiveUserNumberWidthLength(PLAY_NUMBER_DIGIT);
 
             int ball = Umpire.countBall(computerNumber, userNumber);
             int strike = Umpire.countStrike(computerNumber, userNumber);
