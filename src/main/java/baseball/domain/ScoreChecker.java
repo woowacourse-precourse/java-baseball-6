@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.constants.BaseballConstant;
 import baseball.view.OutputView;
 
 public class ScoreChecker {
@@ -8,21 +9,21 @@ public class ScoreChecker {
         int ball = calculator.getBall();
         int strike = calculator.getStrike();
 
-        if (nothing == 1) {
+        if (nothing == BaseballConstant.ONE_SCORE) {
             outputView.printNothing();
         }
-        if (ball > 0 && strike == 0) {
+        if (ball > BaseballConstant.ZERO_SCORE && strike == BaseballConstant.ZERO_SCORE) {
             outputView.printBall(ball);
             outputView.printBlank();
         }
-        if (strike > 0 && ball == 0) {
+        if (strike > BaseballConstant.ZERO_SCORE && ball == BaseballConstant.ZERO_SCORE) {
             outputView.printStrike(strike);
         }
-        if (ball > 0 && strike > 0) {
+        if (ball > BaseballConstant.ZERO_SCORE && strike > BaseballConstant.ZERO_SCORE) {
             outputView.printBall(ball);
             outputView.printStrike(strike);
         }
-        if (strike == 3) {
+        if (strike == BaseballConstant.THREE_STRIKE) {
             outputView.printGameEnd();
         }
     }

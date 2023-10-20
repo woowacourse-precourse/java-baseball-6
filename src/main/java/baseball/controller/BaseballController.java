@@ -1,6 +1,8 @@
 package baseball.controller;
 
+import baseball.constants.BaseballConstant;
 import baseball.domain.BaseballRandomNumberGenerator;
+import baseball.domain.GameRestartChecker;
 import baseball.domain.PlayerNumber;
 import baseball.domain.ScoreCalculator;
 import baseball.domain.ScoreChecker;
@@ -40,16 +42,15 @@ public class BaseballController {
     }
 
     private void checkGameOver(List<Integer> randomNumbers, ScoreCalculator calculator) {
-        if (calculator.getStrike() != 3) {
+        if (calculator.getStrike() != BaseballConstant.THREE_STRIKE) {
             playGame(randomNumbers);
         }
         restartYn();
     }
 
     private void restartYn(){
-        inputView.getGameRestartYn();
-
+        String gameRestartYn = inputView.getGameRestartYn();
+        GameRestartChecker checker = new GameRestartChecker();
+        checker.updateRestart_yn(gameRestartYn);
     }
-
-
 }
