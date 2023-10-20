@@ -12,15 +12,9 @@ public class BallEqualsTest {
 
     @BeforeEach
     void setup() {
-        BallValue ballValue1 = new BallValue(1);
-        BallValue ballValue2 = new BallValue(2);
-
-        BallIndex ballIndex1 = new BallIndex(1);
-        BallIndex ballIndex2 = new BallIndex(2);
-
-        ball1 = new Ball(ballValue1, ballIndex1);
-        ball2 = new Ball(ballValue1, ballIndex1);
-        ball3 = new Ball(ballValue2, ballIndex2);
+        ball1 = new Ball(1, 1);
+        ball2 = new Ball(1, 1);
+        ball3 = new Ball(2, 2);
     }
 
     @Test
