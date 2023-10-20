@@ -135,8 +135,10 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userChoice = Console.readLine();
 
-        if(!userChoice.matches("[1-2]{1}"))
+        if(!userChoice.matches("[1-2]{1}")) {
+            System.out.println("잘못된 입력값입니다. 프로그램을 종료합니다.");
             throw new IllegalArgumentException();
+        }
 
         if(userChoice.equals("1"))
             return GameStatus.START;
