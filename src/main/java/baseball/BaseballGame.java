@@ -26,11 +26,10 @@ public class BaseballGame {
 
             //(2) 사용자가 추측하는 3개의 수 입력 받기
             while(!result.getIsAnswer()){
-                System.out.println(INPUT_NUMBERS_MSG);
+                System.out.print(INPUT_NUMBERS_MSG);
                 List<Integer> userNumbs = user.getNumbers();
-
+                result.compare(computerNumbs, userNumbs);
             }
-
         }
     }
 }
