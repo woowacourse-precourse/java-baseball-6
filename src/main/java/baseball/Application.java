@@ -12,7 +12,7 @@ public class Application {
         InputManager inputManager = new InputManager();
 
         List<Integer> randBaseballNumber = gameManager.createRandNumber();
-        String userBaseballNumber = inputManager.getBaseballNumberFromUser(gameManager, inputManager);
+        String userBaseballNumber = inputManager.getBaseballNumberFromUser(inputManager);
 
 
     }

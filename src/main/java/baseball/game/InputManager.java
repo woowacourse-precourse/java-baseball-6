@@ -2,6 +2,7 @@ package baseball.game;
 
 import baseball.GameManager;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class InputManager {
@@ -18,16 +19,24 @@ public class InputManager {
         return sc.next();
     }
 
-    public String getBaseballNumberFromUser(GameManager gameManager, InputManager inputManager) {
+    public String getBaseballNumberFromUser(InputManager inputManager) {
         String userBaseballNumber = "";
         while (true) {
             inputManager.printInfoMessage();
             userBaseballNumber = inputManager.requestInput();
-            boolean isOk = gameManager.validateUserBaseballNumber(userBaseballNumber);
+            boolean isOk = validateUserBaseballNumber(userBaseballNumber);
             if (isOk) {
                 break;
             }
         }
         return userBaseballNumber;
+    }
+
+    public boolean validateUserBaseballNumber(String userBaseballNumber) {
+        HashSet<Character> validateNumberList = new HashSet<>();
+        for (int i = 0; i < userBaseballNumber.length(); i++) {
+            validateNumberList.add(userBaseballNumber.charAt(i));
+        }
+        return validateNumberList.size() == 3;
     }
 }
