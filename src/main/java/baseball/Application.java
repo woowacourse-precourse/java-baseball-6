@@ -2,14 +2,13 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     private final static int BALL = 0;
     private final static int STRIKE = 1;
-    private final static int COMPUTER_NUM_SIZE = 3;
+    private final static int BASEBALL_NUM_SIZE = 3;
     private static List<Integer> computerNum = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -29,7 +28,7 @@ public class Application {
      */
     private static void makeComputerNum() {
         computerNum.clear();
-        while (computerNum.size() < COMPUTER_NUM_SIZE) {
+        while (computerNum.size() < BASEBALL_NUM_SIZE) {
             int num = Randoms.pickNumberInRange(1, 9);
             if (!computerNum.contains(num)) {
                 computerNum.add(num);
@@ -46,6 +45,10 @@ public class Application {
         while (!gameString.equals("3스트라이크")) {
             System.out.println("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
+
+            if (userInput.length() > BASEBALL_NUM_SIZE)
+                throw new IllegalArgumentException("3자리 이상 입력 오류");
+
             // 콜 카운트를 checkBallCount 메소드를 통하여 산출해 낸 다음 PrintBallCount를 통하여 적절한 String 으로 변환한다.
             gameString = printBallCount(checkBallCount(userInput));
             System.out.println(gameString);
@@ -60,7 +63,7 @@ public class Application {
         int totalCount = 0;
         int strikeCount = 0;
 
-        for (int i = 0; i < COMPUTER_NUM_SIZE; i++) {
+        for (int i = 0; i < BASEBALL_NUM_SIZE; i++) {
             if (userInput.contains(computerNum.get(i).toString())) {
                 totalCount++;
             }
