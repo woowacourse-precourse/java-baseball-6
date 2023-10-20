@@ -35,13 +35,6 @@ public class BaseBallNumber {
     }
 
     @Override
-    public String toString() {
-        return "BaseBallNumber{" +
-                "number=" + number +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

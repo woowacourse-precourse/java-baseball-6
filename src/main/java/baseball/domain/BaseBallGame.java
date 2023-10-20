@@ -11,7 +11,6 @@ public class BaseBallGame {
     }
 
     public static BaseBallGame init(BaseBallNumbers computerNumbers) {
-        System.out.println(computerNumbers);
         return new BaseBallGame(false, computerNumbers);
     }
 
