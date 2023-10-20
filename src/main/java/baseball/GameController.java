@@ -37,6 +37,7 @@ public class GameController {
         }
 
         if (retryNumber == 1) {
+            gameService.clearComputerRandomNumber();
             play();
         }
     }
