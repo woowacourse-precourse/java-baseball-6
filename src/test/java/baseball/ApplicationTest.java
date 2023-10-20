@@ -1,10 +1,14 @@
 package baseball;
 
 import baseball.model.Computer;
+import baseball.util.BaseballNumberGenerator;
+import baseball.util.BaseballRandomNumberGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -38,6 +42,20 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 컴퓨터_랜덤_생성된_숫자_사이즈_중복_테스트(){
+        //given
+        BaseballNumberGenerator baseballNumberGenerator = new BaseballRandomNumberGenerator();
+        //when
+        final List<Integer> case1 = baseballNumberGenerator.generate();
+        final Set<Integer> case1Set = new HashSet<>(case1);
+
+        //then
+        assertThat(case1.contains(0)).isEqualTo(false);
+        assertThat(case1.size() == 3).isEqualTo(true);
+        assertThat(case1.size() == case1Set.size()).isEqualTo(true);
+
+    }
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -60,4 +78,5 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
 }

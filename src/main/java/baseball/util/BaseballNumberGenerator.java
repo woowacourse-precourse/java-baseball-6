@@ -1,5 +1,8 @@
 package baseball.util;
+
+import java.util.List;
+
 @FunctionalInterface
 public interface BaseballNumberGenerator {
-    int generate();
+    List<Integer> generate();
 }
