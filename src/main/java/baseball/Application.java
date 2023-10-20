@@ -14,6 +14,11 @@ public class Application {
             }
         }
     }
+    static String receiveUserNum(){
+        String userNum;
+        userNum = Console.readLine();
+        return userNum;
+    }
     public static void main(String[] args) {
         System.out.println("Start Number Baseball Game!");
 
@@ -21,6 +26,8 @@ public class Application {
         String personNum;
 
         createComputerNum(computerNum);
+        personNum = receiveUserNum();
+
 
     }
 }
