@@ -12,17 +12,13 @@ public class Application {
     private static Integer LENGTH = 3;
 
     private enum RESULT_CODE {
-        STRIKE(0, "스트라이크"), BALL(1, "볼"), MISS(2, "낫싱");
+        BALL(0, "볼"), STRIKE(1, "스트라이크"), MISS(2, "낫싱");
         private int value;
         private String title;
 
         RESULT_CODE(int value, String title) {
             this.value = value;
             this.title = title;
-        }
-
-        public String getTitle() {
-            return this.title;
         }
     }
 
@@ -39,6 +35,7 @@ public class Application {
             List<Integer> user = convert(input, LENGTH);
 
             int[] result = compare(computer, user);
+            printResult(result);
 
             if (result[0] == LENGTH) {
                 break;
@@ -85,16 +82,28 @@ public class Application {
         for (int i = 0; i < computer.size(); i++) {
             if (computer.get(i) == user.get(i)) {
                 result[RESULT_CODE.STRIKE.value]++;
-            } else if (miss.indexOf(user.get(i)) > -1) {
-                result[RESULT_CODE.BALL.value]++;
-                miss.remove(user.get(i));
             } else {
-                miss.add(user.get(i));
+                if(computer.indexOf(user.get(i)) > -1) result[RESULT_CODE.BALL.value]++;
+                else miss.add(user.get(i));
             }
         }
 
         result[RESULT_CODE.MISS.value] = miss.size();
         return result;
     }
-}
 
+    private static void printResult(int[] result) {
+        List<String> print = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            if (result[i] > 0) {
+                if(RESULT_CODE.BALL.value == i) print.add(result[i] + RESULT_CODE.BALL.title);
+                else if(RESULT_CODE.STRIKE.value == i) print.add(result[i] + RESULT_CODE.STRIKE.title);
+            }
+        }
+
+        if (print.size() < 1) {
+            print.add("낫싱");
+        }
+        System.out.println(String.join(" ", print));
+    }
+}
