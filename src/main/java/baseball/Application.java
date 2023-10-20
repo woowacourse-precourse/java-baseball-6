@@ -5,12 +5,15 @@ import baseball.validator.NumberValidator;
 import baseball.view.AskView;
 import baseball.view.EndView;
 import baseball.view.ResultView;
+import baseball.view.ResumeView;
 import baseball.view.StartView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
     private static final int PLAY_NUMBER_DIGIT = 3;
+    private static final int RESTART = 1;
+    private static final int END = 2;
 
     public static void main(String[] args) {
         StartView.welcome();
@@ -29,6 +32,7 @@ public class Application {
 
         if (strike == PLAY_NUMBER_DIGIT) {
             EndView.end(PLAY_NUMBER_DIGIT);
+            ResumeView.resume(RESTART, END);
         }
     }
 }
