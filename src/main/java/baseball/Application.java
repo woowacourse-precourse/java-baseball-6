@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    private final static int BALL = 0;
-    private final static int STRIKE = 1;
-    private final static int BASEBALL_NUM_SIZE = 3;
-    private static List<Integer> computerNum = new ArrayList<>();
+    private static final int BALL = 0;
+    private static final int STRIKE = 1;
+    private static final int BASEBALL_NUM_SIZE = 3;
+    private static List<Integer> COMPUTER_NUM = new ArrayList<>();
 
     public static void main(String[] args) {
         gameStart();
@@ -28,11 +28,11 @@ public class Application {
      * 컴퓨터의 3자리 숫자를 만드는 메소드
      */
     private static void makeComputerNum() {
-        computerNum.clear();
-        while (computerNum.size() < BASEBALL_NUM_SIZE) {
+        COMPUTER_NUM.clear();
+        while (COMPUTER_NUM.size() < BASEBALL_NUM_SIZE) {
             int num = Randoms.pickNumberInRange(1, 9);
-            if (!computerNum.contains(num)) {
-                computerNum.add(num);
+            if (!COMPUTER_NUM.contains(num)) {
+                COMPUTER_NUM.add(num);
             }
         }
     }
@@ -47,10 +47,9 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
 
-            if (userInput.length() != BASEBALL_NUM_SIZE)
-                throw new IllegalArgumentException("입력 자릿 수 오류");
+            isValidLength(userInput);
 
-            // 콜 카운트를 checkBallCount 메소드를 통하여 산출해 낸 다음 PrintBallCount를 통하여 적절한 String 으로 변환한다.
+            //볼 카운트를 checkBallCount 메소드를 통하여 산출해 낸 다음 PrintBallCount를 통하여 적절한 String 으로 변환한다.
             gameString = printBallCount(checkBallCount(userInput));
             System.out.println(gameString);
         }
@@ -66,10 +65,10 @@ public class Application {
         int ballCount = 0;
 
         for (int i = 0; i < BASEBALL_NUM_SIZE; i++) {
-            if (userInput.contains(computerNum.get(i).toString())) {
+            if (userInput.contains(COMPUTER_NUM.get(i).toString())) {
                 totalCount++;
             }
-            if (Character.getNumericValue(userInput.charAt(i)) == computerNum.get(i)) {
+            if (Character.getNumericValue(userInput.charAt(i)) == COMPUTER_NUM.get(i)) {
                 strikeCount++;
             }
         }
@@ -108,6 +107,14 @@ public class Application {
             return false;
         //else를 사용하지않고 잘못 입력시 예외처리 하기
         throw new IllegalArgumentException("1과 2중에 입력하셔야 합니다. ");
+    }
+
+    /**
+     * 입력한 수의 길이가 일치하는지 판별해주는 메소드
+     */
+    public static void isValidLength(String inputNum){
+        if(inputNum.length() != BASEBALL_NUM_SIZE)
+            throw new IllegalArgumentException("입력 자릿 수 오류");
     }
 
 }
