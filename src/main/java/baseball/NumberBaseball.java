@@ -12,14 +12,41 @@ public class NumberBaseball {
 
     private int[] answer;
     private boolean[] generatedNumberFlag;
+    private GuessResult curState;
 
     public NumberBaseball() {
         this.generatedNumberFlag = new boolean[10];
         this.answer = new int[3];
+        this.curState = new GuessResult(0, 0);
         generateAnswerNumber();
     }
 
-    public void generateAnswerNumber() {
+    public boolean isEnd() {
+        return curState.strikes() == 3 && curState.balls() == 0;
+    }
+
+    public String getResultMsg(int[] input) {
+        countResult(input);
+
+        if(curState.balls() == 0 && curState.strikes() == 0) {
+            return "낫싱";
+        }
+
+        String resultMsg = "";
+        if(curState.balls() > 0) {
+            resultMsg += (curState.balls() + "볼");
+        }
+        if(curState.balls() > 0 && curState.strikes() > 0) {
+            resultMsg += " ";
+        }
+        if(curState.strikes() > 0) {
+            resultMsg += (curState.strikes() + "스트라이크");
+        }
+
+        return resultMsg;
+    }
+
+    private void generateAnswerNumber() {
         for (int i = 0; i < 3; i++) {
             int number = Randoms.pickNumberInRange(1, 9);
             if(this.generatedNumberFlag[number]) {
@@ -31,8 +58,7 @@ public class NumberBaseball {
         }
     }
 
-
-    public GuessResult countResult(int[] input) {
+    private void countResult(int[] input) {
         int balls = 0;
         int strikes = 0;
 
@@ -47,6 +73,6 @@ public class NumberBaseball {
         }
 
         balls -= strikes;
-        return new GuessResult(strikes, balls);
+        this.curState = new GuessResult(strikes, balls);
     }
 }
