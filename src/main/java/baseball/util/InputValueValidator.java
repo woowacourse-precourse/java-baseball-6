@@ -1,5 +1,7 @@
 package baseball.util;
 
+import baseball.constant.ContinueFlag;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -58,9 +60,9 @@ public class InputValueValidator {
     }
 
     private static void checkCorrectContinueFlag(String inputValue) {
-        if (!inputValue.equals(String.valueOf(ContinueFlag.CONTINUE)) && !inputValue.equals(
-                String.valueOf(ContinueFlag.DONE))) {
-            String message = String.format("Error: %d or %d 만 입력 가능합니다.", ContinueFlag.CONTINUE, ContinueFlag.DONE);
+        if (!inputValue.equals(String.valueOf(ContinueFlag.CONTINUE.getValue())) && !inputValue.equals(
+                String.valueOf(ContinueFlag.DONE.getValue()))) {
+            String message = String.format("Error: %d or %d 만 입력 가능합니다.", ContinueFlag.CONTINUE.getValue(), ContinueFlag.DONE.getValue());
             throw new IllegalArgumentException(message);
         }
     }
