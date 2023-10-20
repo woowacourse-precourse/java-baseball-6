@@ -24,10 +24,6 @@ public class ReplayableGameSystemConsoleView implements ReplayableGameSystemView
     }
 
     private boolean parseInput(String input) {
-        if (input.equals(RESTART)) {
-            return true;
-        }
-
-        return false;
+        return input.equals(RESTART);
     }
 }
