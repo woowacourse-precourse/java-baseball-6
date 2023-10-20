@@ -1,17 +1,13 @@
 package baseball.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameNumbers {
     private static final int GAME_NUMBERS_SIZE = 3;
-    private final List<Integer> numbers = new ArrayList<>(GAME_NUMBERS_SIZE);
+    private final List<Integer> numbers;
 
     public GameNumbers(List<Integer> list) {
-        for (int i = 0; i < GAME_NUMBERS_SIZE; i++) {
-            Integer num = list.get(i);
-            numbers.add(num);
-        }
+        numbers = list;
     }
 
     @Override
