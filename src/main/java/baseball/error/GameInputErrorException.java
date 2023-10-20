@@ -34,13 +34,14 @@ public class GameInputErrorException implements ErrorException{
         return checkNumber.length() == VALID_NUMBER_LENGTH;
     }
     private static boolean checkNumberRangeValidate(String checkNumber){
+
         for(char c : checkNumber.toCharArray()){
-            int cToInt = (int) c;
+            int cToInt = Character.getNumericValue(c);
             if (VALID_NUMBER_MIN_RANGE > cToInt || VALID_NUMBER_MAX_RANGE < cToInt){
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     private static boolean hasDuplicateNumber(String checkNumber) {
