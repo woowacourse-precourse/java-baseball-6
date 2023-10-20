@@ -1,11 +1,11 @@
 # 🗒️ 기능 목록
 
-- [ ] 컴퓨터가 1 ~ 9 까지의 임의의 숫자 3개를 생성한다. NumbersGenerate#createRandomNumList()
+- [x] 컴퓨터가 1 ~ 9 까지의 임의의 숫자 3개를 생성한다. NumbersGenerate#createRandomNumList()
 
 - [ ] 사용자가 입력한 3개의 숫자와 컴퓨터가 생성한 3개의 숫자가 맞는지 검사한다.  Judge#baseballGameInspection();
 
-  - [ ] 컴퓨터가 임의로 생성한 3가지의 숫자중 유저의 숫자 3개중 몇개가 같은지 알수 있다 GameStandard#getSameNumber2Computer
-  - [ ] 컴퓨터가 임의로 생성한 3가지의 숫자중 유저의 원하는 자릿수의 숫자가 컴퓨터의 해당 자릿수의 숫자가 동일한지 확인한다. GameStandard#isSamePlaceNumUserAndComputer
+  - [x] 컴퓨터가 임의로 생성한 3가지의 숫자중 유저의 숫자 3개중 몇개가 같은지 알수 있다 GameStandard#getSameNumber2Computer
+  - [x] 컴퓨터가 임의로 생성한 3가지의 숫자중 유저의 원하는 자릿수의 숫자가 컴퓨터의 해당 자릿수의 숫자가 동일한지 확인한다. GameStandard#isSamePlaceNumUserAndComputer
 
   심판자의 게임 관찰에대한 결과 Judge#baseballGameInspection();
 
