@@ -8,6 +8,7 @@ import static baseball.constant.Hint.BALL;
 import static baseball.constant.Hint.BLANK;
 import static baseball.constant.Hint.NOT_THING;
 import static baseball.constant.Hint.STRIKE;
+import static baseball.constant.NumberConstants.OUT_COUNT;
 
 public class Score {
 
@@ -18,7 +19,7 @@ public class Score {
     }
 
     public Boolean isStrikeOut() {
-        return score.get(STRIKE).equals(3);
+        return score.get(STRIKE).equals(OUT_COUNT.getValue());
     }
 
     @Override
