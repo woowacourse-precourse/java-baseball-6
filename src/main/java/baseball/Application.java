@@ -9,7 +9,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        PrintResult.START.printMessage();
 
         String choiceOfUser = "1";
         while (choiceOfUser.equals("1")) {
@@ -24,7 +24,7 @@ public class Application {
 
             boolean isAnswer = false;
             while (!isAnswer) {
-                System.out.print("숫자를 입력해주세요 : ");
+                PrintResult.WRITE.printMessage();
                 String input = Console.readLine();
 
                 if (!input.matches("[1-9]{3}")) {
@@ -59,19 +59,24 @@ public class Application {
     private static boolean printResult(int ball, int strike) {
 
         if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
-        } else if (strike == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            return true;
-        } else if (strike == 0) {
-            System.out.println(ball + "볼");
-        } else if (ball == 0) {
-            System.out.println(strike + "스트라이크");
-        } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            PrintResult.NOTHING.printMessage();
+            return false;
         }
+        if (strike == 3) {
+            PrintResult.STRIKE.printMessage(strike);
+            PrintResult.CORRECT.printMessage();
+            PrintResult.NEXT.printMessage();
+            return true;
+        }
+        if (ball == 0) {
+            PrintResult.STRIKE.printMessage(strike);
+            return false;
+        }
+        if (strike == 0) {
+            PrintResult.BALL.printMessage(ball);
+            return false;
+        }
+        PrintResult.BOTH.printMessage(ball, strike);
         return false;
     }
 }
