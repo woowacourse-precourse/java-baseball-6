@@ -5,7 +5,6 @@ public class Player {
 
     public Player(){}
 
-    public void query() {
-        
-    }
+    public int getTryCount() {return tryCount;}
+    public void setTryCount(int tryCount) {this.tryCount = tryCount;}
 }
