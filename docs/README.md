@@ -1,8 +1,8 @@
 # 구현할 기능 목록 정리
 
 - 체크리스트
-    - [x]  git clone & Checkout branch
-    - [x]  자바 버전 17로 변경
+    - [x]  ~~git clone & Checkout branch~~
+    - [x]  ~~자바 버전 17로 변경~~
 
 - 기능 요구 사항
     - [ ]  게임 시작 문구 출력
@@ -20,4 +20,4 @@
     - [ ]  `System.exit()` 호출하지 않고 프로그램 종료
 
 - 과제 진행 요구 사항
-    - [x]  `docs/README.md`에 구현할 기능 목록 정리
+    - [x]  ~~`docs/README.md`에 구현할 기능 목록 정리~~
