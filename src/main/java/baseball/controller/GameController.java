@@ -23,7 +23,6 @@ public class GameController {
 	public void gameStart() {
 		boolean isGameStatus = true;
 		outputView.printGameStart();
-		gameData.incBallCount();
 		gameData.setComputerNumbers(randomGenerator.generateRandomNumbers());
 		while(isGameStatus) {
 			gameData.setInputString(inputView.readNumber());
