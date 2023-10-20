@@ -11,5 +11,7 @@ public class BaseballGameController {
         ConsoleIO.printStartMessage();
 
         Number computerNumber = baseballGameService.getComputerNumber();
+
+        Number playerNumber = baseballGameService.getPlayerNumber(ConsoleIO.readPlayerNumber());
     }
 }
