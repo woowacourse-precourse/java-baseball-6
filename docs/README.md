@@ -13,6 +13,10 @@
 - 요구사항 : 서로 다른 세자리수, 숫자만 가능
 - 요구사항에 만족하지 않으면 `IllegalArgumentException`을 발생시킨다
 
+### 숫자 외의 문자 검증 후 값을 넣어주는 `addBaseballNumberFromPlayerInput()`
+
+- Double로 변환 후 예외 발생하면 `IllegalArgumentException` 반환
+
 ## Computer
 
 ### 컴퓨터의 랜덤한 숫자를 생성해주는 `generateComputerRandomNumber()`
@@ -21,34 +25,30 @@
 
 ```java
 List<Integer> computer=new ArrayList<>();
-        while(computer.size()< 3){
-        int randomNumber=Randoms.pickNumberInRange(1,9);
-        if(!computer.contains(randomNumber)){
+while(computer.size()< 3){
+    int randomNumber=Randoms.pickNumberInRange(1,9);
+    if(!computer.contains(randomNumber)){
         computer.add(randomNumber);
-        }
-        }
+    }
+}
 ```
 
 - 위 코드에서 저장된 computer의 값을 Computer의 값으로 설정
 
-## Hint
+## Score
 
-### 플레이어의 숫자와 컴퓨터의 숫자를 받아서 힌트를 반환하는 기능 `calculateStrikeAndBall()`
+### playerNumber와 computerNumber를 받아서 strike, ball을 세팅해주는 `setStrikeAndBall()`
 
-- `int strike = 0`, `int ball = 0`을 메서드 안에 선언 후
-- 컴퓨터의 숫자와 플레이어의 숫자가 자리수와 값이 같은 경우 -> `strike++`
-- 컴퓨터의 숫자와 플레이어의 숫자가 자리수는 다르지만 값은 같은 경우 -> `ball++`
-- 컴퓨터의 숫자와 플레이어의 숫자가 전혀 다른경우 -> `strike = 0, ball = 0`일 경우에 `낫싱`
+- 자리와 값이 같으면 멤버변수 strike++
+- 자리는 다르지만 같은 값이 포함되어 있으면 ball++
+
+### 매 계산마다 strike, ball을 0으로 초기화 해주는 `clearStrikeAndBall()`
 
 ## Referee
 
 ### 위 흐름을 반복하는 기능 `playBall()`
 
-- `whlie`문을 사용해서 컴퓨터의 숫자와 플레이어의 숫자가 같을 때까지 플레이어의 입력 반복
-
-### 플레이어의 번호와 컴퓨터의 번호가 일치하는지 판별하는 함수 `isThreeStrike()`
-
-- 컴퓨터의 숫자와 플레이어의 숫자가 같은지 판별
+- `do - whlie`문을 사용해서 컴퓨터의 숫자와 플레이어의 숫자가 같을 때까지 플레이어의 입력 반복
 
 ### 계속 진행할 것인지, 프로그램을 끝낼 것인지 물어보는 기능 `continueOrFinish()`
 
@@ -57,13 +57,9 @@ List<Integer> computer=new ArrayList<>();
 
 ## Message
 
-### `calculateStrikeAndBall()` 의 반환값을 받아서 힌트를 출력하는 printHintMessage()
+### `calculateStrikeAndBall()` 의 반환값을 받아서 힌트를 출력하는 `printHintMessage()`
 
-- 아래 함수를 통해 적절한 힌트를 출력한다.
-    - 스트라이크, 볼 둘다 존재 경우를 판별하는 `hasStrikeAndBall()`
-    - 스트라이크는 있지만, 볼은 없는 경우를 판별하는 `hasStrikeButNoBall()`
-    - 스트라이크가 없지만, 볼은 있는 경우를 판별하는 `hasBallButNoStrike()`
-    - 스트라이크, 볼 둘 다 없는 경우를 판별하는 `noStrikeAndBall()`
+- `BaseballRules`의 스태틱 함수를 통해 적절한 힌트를 출력한다.
 
 ### 사용자의 입력을 받는 메세지를 출력하는 `printIntegerInputFromUserMessage()`
 
@@ -72,3 +68,15 @@ List<Integer> computer=new ArrayList<>();
 ### 3스트라이크 일 때 메세지 출력하는 `printThreeStrikeMessage()`
 
 ### 게임 종료 시 메세지 출력하는 `printEndGameMessage()`
+
+### 잘못된 입력시 출력되는 `printErrorMessage()`
+
+## BaseballRules
+
+### 스트라이크, 볼 둘다 존재 경우를 판별하는 `hasStrikeAndBall()`
+
+### 스트라이크는 있지만, 볼은 없는 경우를 판별하는 `hasStrikeButNoBall()`
+
+### 스트라이크가 없지만, 볼은 있는 경우를 판별하는 `hasBallButNoStrike()`
+
+### 스트라이크, 볼 둘 다 없는 경우를 판별하는 `noStrikeAndBall()`
