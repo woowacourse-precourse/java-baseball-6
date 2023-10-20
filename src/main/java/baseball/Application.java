@@ -5,5 +5,6 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.print("가나다라마바사");
         System.out.print("테스트2");
+        System.out.print("테스트3");
     }
 }
