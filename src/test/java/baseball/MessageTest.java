@@ -53,7 +53,16 @@ class MessageTest {
         assertThat(requestRetryOrEndMessage).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    @DisplayName("게임 결과 볼과 스트라이크가 존재하지 않을 경우의 테스트")
     @Test
-    void result() {
+    void nothingResultTest() {
+        //given
+        Message message = new Message();
+        //when
+        final int ball = 0;
+        final int strike = 0;
+        final String nothingResult = message.result(0, 0);
+        //then
+        assertThat(nothingResult).isEqualTo("낫싱");
     }
 }
