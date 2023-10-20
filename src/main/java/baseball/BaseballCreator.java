@@ -11,8 +11,7 @@ public class BaseballCreator {
     private Validator validator = new Validator();
 
     // 기능: 사용자의 공을 입력 받고 생성한다
-    public List<Integer> createPlayerBalls() {
-        String number = Console.readLine();
+    public List<Integer> createPlayerBalls(String number) {
         validator.validatePlayerBallInput(number);
         return number
                 .chars()
