@@ -1,27 +1,25 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
 
-    private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    private static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     private static List<Integer> computer;
     private static List<Integer> user;
-    private static int strike = 0;
-    private static int ball = 0;
+    private static int strike;
+    private static int ball;
 
     public static void main(String[] args) {
         try {
-            boolean successFlag;
             boolean continueFlag = true;
             startBaseballGame();
             while (continueFlag) {
-                successFlag = false;
+                boolean successFlag = false;
                 createComputerNumber();
                 while (!successFlag) {
                     inputUserNumber();
@@ -30,17 +28,13 @@ public class Application {
                 }
                 continueFlag = inputContinueOrExit();
             }
-            bw.close();
-        } catch (IOException e1) {
-            System.err.println("입출력 오류: " + e1.getMessage());
-        } catch (IllegalArgumentException e2) {
-            System.err.println("잘못된 입력: " + e2.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.err.println("잘못된 값 입력: " + e.getMessage());
         }
     }
 
-    public static void startBaseballGame() throws IOException{
-        bw.write("숫자 야구 게임을 시작합니다.\n");
-        bw.flush();
+    public static void startBaseballGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public static void createComputerNumber() {
@@ -53,10 +47,9 @@ public class Application {
         }
     }
 
-    public static void inputUserNumber() throws IOException {
-        bw.write("숫자를 입력해주세요 : ");
-        bw.flush();
-        String inputNumber = br.readLine();
+    public static void inputUserNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputNumber = Console.readLine();
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException("세 자리가 아닙니다.");
         }
@@ -96,30 +89,27 @@ public class Application {
         }
     }
 
-    public static boolean printResult() throws IOException {
+    public static boolean printResult() {
         boolean successFlag = false;
         String message;
         if (strike == 3) {
             successFlag = true;
-            message = String.format("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         } else if (strike == 0 && ball == 0) {
-            message = String.format("낫싱\n");
+            System.out.println("낫싱");
         } else if (strike == 0) {
-            message = String.format("%d볼\n", ball);
+            System.out.println(ball + "볼");
         } else if (ball == 0) {
-            message = String.format("%d스트라이크\n", strike);
+            System.out.println(strike + "스트라이크");
         } else {
-            message = String.format("%d볼 %d스트라이크\n", ball, strike);
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
-        bw.write(message);
-        bw.flush();
         return successFlag;
     }
 
-    public static boolean inputContinueOrExit() throws IOException {
-        bw.write("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-        bw.flush();
-        String inputNumber = br.readLine();
+    public static boolean inputContinueOrExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputNumber = Console.readLine();
         if (!inputNumber.equals("1") && !inputNumber.equals("2")) {
             throw new IllegalArgumentException("1 또는 2가 아닙니다.");
         }
