@@ -26,8 +26,8 @@ public class Controller {
     public void run() {
         initComputerNumbers();
         generateComputerNumbers();
-        while (true) {
-            String input = requestUserInput();
+        do {
+            String input = requestUserInputData();
             initGame();
             checkInputData(input);
             generateUserNumbers(input);
@@ -40,10 +40,7 @@ public class Controller {
                 initGame();
                 generateComputerNumbers();
             }
-            if (strike == 3 && retryMessage.equals("2")) {
-                break;
-            }
-        }
+        } while (strike != 3 || !retryMessage.equals("2"));
     }
 
     public void initGame() {
@@ -56,7 +53,7 @@ public class Controller {
         computerNumbers = new ArrayList<>();
     }
 
-    private String requestUserInput() {
+    private String requestUserInputData() {
         InputView.requestInputData();
         String input = Console.readLine();
         System.out.print(input);
