@@ -18,9 +18,12 @@ public class BaseballGameController {
     private static PlayerService playerService = new PlayerService();
     private static List<Integer> player;
 
+    private static CompareNumber compareNumber = new CompareNumber();
+
     public static void gameStart() {
         View.printStart();
         playerInput();
+        compareNumber.checkNothing(computer, player);
     }
 
     public static void playerInput() {
