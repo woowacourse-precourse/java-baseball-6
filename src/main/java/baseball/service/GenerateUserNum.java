@@ -1,12 +1,10 @@
-package baseball.controller;
+package baseball.service;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class UserNumber {
+public class GenerateUserNum {
 
     public List<Integer> userInputNumbers() {
 
@@ -28,3 +26,4 @@ public class UserNumber {
         return userInputNumbers;
     }
 }
+

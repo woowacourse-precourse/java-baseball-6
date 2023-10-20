@@ -1,11 +1,10 @@
 package baseball.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomNum {
+public class GenerateRandomNum {
 
     private final static int startInclusive = 1;
     private final static int endInclusive = 9;
@@ -23,3 +22,4 @@ public class RandomNum {
         return num;
     }
 }
+
