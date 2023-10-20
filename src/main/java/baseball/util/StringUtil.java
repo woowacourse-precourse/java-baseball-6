@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class StringUtils {
+public class StringUtil {
     public static Set<Character> stringToSetOfChar(String s) {
         var chars = s.chars();
         var objChars = chars.mapToObj(c -> (char) c);

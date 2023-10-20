@@ -3,7 +3,7 @@ package baseball.converter;
 import static baseball.constant.BaseballConstants.MAX_MATCH;
 
 import baseball.state.BaseballState;
-import baseball.util.StringUtils;
+import baseball.util.StringUtil;
 import java.util.List;
 
 public class BaseballStateConverter {
@@ -13,13 +13,13 @@ public class BaseballStateConverter {
             return false;
         }
 
-        var setOfChar = StringUtils.stringToSetOfChar(s);
+        var setOfChar = StringUtil.stringToSetOfChar(s);
         return setOfChar.size() == MAX_MATCH;
     }
 
     public static BaseballState stringToBaseballState(String s) throws IllegalArgumentException {
         if (isValidBaseballStateString(s)) {
-            List<Integer> state = StringUtils.digitStringToListOfInt(s);
+            List<Integer> state = StringUtil.digitStringToListOfInt(s);
             return new BaseballState(state);
         }
         throw new IllegalArgumentException();

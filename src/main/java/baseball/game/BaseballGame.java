@@ -1,10 +1,10 @@
 package baseball.game;
 
 import static baseball.constant.BaseballConstants.MAX_MATCH;
-import static baseball.constant.BaseballString.GAME_START_MESSAGE;
-import static baseball.constant.BaseballString.INPUT_NUMBER_MESSAGE;
-import static baseball.constant.BaseballString.INPUT_RESTART_MESSAGE;
-import static baseball.constant.BaseballString.STRIKE_ALL_MESSAGE;
+import static baseball.constant.BaseballStrings.GAME_START_MESSAGE;
+import static baseball.constant.BaseballStrings.INPUT_NUMBER_MESSAGE;
+import static baseball.constant.BaseballStrings.INPUT_RESTART_MESSAGE;
+import static baseball.constant.BaseballStrings.STRIKE_ALL_MESSAGE;
 import static baseball.converter.AfterBaseballStateConverter.stringToAfterBaseballState;
 import static baseball.converter.BaseballStateConverter.stringToBaseballState;
 
