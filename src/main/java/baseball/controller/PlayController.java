@@ -26,13 +26,13 @@ public class PlayController {
     }
 
     public void generateNumber() {
-        List<Integer> generatedNumber = generateController.createRandomNumber(gameState.getMaximumNumberLength());
+        List<Integer> generatedNumber = generateController.createRandomNumber(GameState.MAXIMUM_NUMBER_LENGTH);
         gameNumber.setNumber(generatedNumber);
     }
 
     public boolean isSuccess(String input) {
         List<Integer> stringToIntegerList = generateController.stringToIntegerList(input); // 입력 변환 : String -> List<Integer>
-        validateController.validateInputIntegerList(stringToIntegerList, gameState.getMaximumNumberLength()); // 입력 검사
+        validateController.validateInputIntegerList(stringToIntegerList, GameState.MAXIMUM_NUMBER_LENGTH); // 입력 검사
 
         userGameNumber.setNumber(stringToIntegerList);
 

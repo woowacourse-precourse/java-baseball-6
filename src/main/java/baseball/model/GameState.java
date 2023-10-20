@@ -3,9 +3,9 @@ package baseball.model;
 public class GameState {
 
     /* static */
-    private static final String RESTART_FLAG = "1";
-    private static final String END_FLAG = "2";
-    private static final Integer MAXIMUM_NUMBER_LENGTH = 3;
+    public static final String RESTART_FLAG = "1";
+    public static final String END_FLAG = "2";
+    public static final Integer MAXIMUM_NUMBER_LENGTH = 3;
 
     /* instance */
     private boolean state; // 게임 상태 (진행 / 종료)
