@@ -21,16 +21,32 @@ public class Application {
     public static void GameStart() {
 
         String computerNumber = ComputerSelectNumber();
-
+        System.out.println("컴퓨터 숫자 : " + computerNumber);
         while(true) {
             String playerNumber = PlayerSelectNumber();
             CompareNumber(computerNumber, playerNumber);
+
 
             if(strike==3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
+
+        if(Restart().equals("1")) {
+            GameStart();
+        } else {
+            System.out.println("게임이 종료되었습니다.");
+            return;
+        }
+    }
+
+    public static String Restart() {
+        System.out.println("게임을 새로 시작려면 1, 종료하려면 2를 입력하세요.");
+
+        String SelectNumber = Console.readLine();
+
+        return SelectNumber;
     }
 
     public static String ComputerSelectNumber() {
@@ -60,23 +76,21 @@ public class Application {
     }
 
     public static void CompareNumber(String computerNumber, String playerNumber) {
-        int strike = 0;
-        int ball = 0;
+        strike = 0;
+        ball = 0;
 
         for(int i=0; i<3; i++) {
             if (playerNumber.charAt(i) == computerNumber.charAt(i)) {
                 strike++;
-                continue;
             } else if (computerNumber.contains(String.valueOf(playerNumber.charAt(i)))) {
                 ball++;
-                continue;
             }
         }
 
-        System.out.println(printResult());
+        System.out.println(PrintResult());
     }
 
-    public static String printResult() {
+    public static String PrintResult() {
         if(ball == 0 && strike == 0) {
             return "낫싱";
         }
