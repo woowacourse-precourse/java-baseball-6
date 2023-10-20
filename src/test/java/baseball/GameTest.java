@@ -44,4 +44,19 @@ class GameTest {
         assertThat(INVALID_LENGTH_INPUT.getMsg()).isEqualTo(exception.getMessage());
     }
 
+    @Test
+    @DisplayName("잘못된 입력_숫자 대신 문자인 경우")
+    void validationInputTest4() {
+        Game game =new Game();
+        IllegalArgumentException exception =assertThrows(
+            IllegalArgumentException.class, ()->game.getIntegerInput("12a"));
+        IllegalArgumentException exception2 =assertThrows(
+            IllegalArgumentException.class, ()->game.getIntegerInput("1.5"));
+        IllegalArgumentException exception3 =assertThrows(
+            IllegalArgumentException.class, ()->game.getIntegerInput("pen"));
+
+        assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception.getMessage());
+        assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception2.getMessage());
+        assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception3.getMessage());
+    }
 }
