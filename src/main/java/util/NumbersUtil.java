@@ -7,7 +7,9 @@ public class NumbersUtil {
     private final int[] numbers;
     private final boolean[] numberFlag;
 
-    NumbersUtil() {
+    private boolean gameSet;
+
+    public NumbersUtil() {
         numbers = new int[3];
         numberFlag = new boolean[10];
     }
@@ -43,7 +45,10 @@ public class NumbersUtil {
                 ballStrike[0]++;
             }
         }
+        if(ballStrike[1] == 3) { gameSet = true; }
         return ballStrike;
     }
+
+    public boolean getGameSet() { return gameSet; }
 
 }
