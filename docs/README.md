@@ -31,6 +31,7 @@
 - [x] void showHint() : 힌트 출력
 - [x] void showEndMessage() : 게임 종료 문구 출력
 - [x] boolean checkSuccess() : 게임 성공 여부 확인
+- [ ] boolean checkRestart() : 게임 재시작 여부 확인
 
 ### HintCalculator
 컴퓨터 수와 사용자 수를 비교하여 스트라이크 수와 볼 수를 저장하는 클래스
