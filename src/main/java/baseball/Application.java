@@ -12,14 +12,15 @@ public class Application {
         boolean start = true;
         ComputerController computerController = new ComputerController();
         UserController userController = new UserController();
+        GameView.gameStart();
 
         // 게임 시작
         while(start) {
-            GameView.gameStart();
+            // 랜덤한 컴퓨터 숫자 생성
             computerController.setNumbers();
-
+            // 정답일 때까지 반복
             while(!computerController.isCorrect()) {
-                // 문자열을 정수형 List로 변환하는 과정
+                // 문자열 -> 정수형 List
                 userController.setNumbers(
                         GameView.userInput()
                                 .chars()
@@ -28,6 +29,7 @@ public class Application {
                                 .collect(Collectors.toList())
                 );
 
+                // 사용자 입력 -> 계산 -> 결과
                 computerController.calculate(userController.getNumbers());
                 GameView.gameResult(computerController.getBall(), computerController.getStrike());
             }
