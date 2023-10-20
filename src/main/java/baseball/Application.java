@@ -44,17 +44,12 @@ public class Application {
 
         if (!isThreeLength(inputNumbers)) {
             throw new IllegalArgumentException("3자리의 수를 입력해주세요.");
-        }
-
-        for (int i = 0; i < inputNumbers.length(); i++) {
-            if (!isBetween1and9(inputNumbers.charAt(i))) {
-                throw new IllegalArgumentException("1~9로 이루어진 3자리의 수를 입력해주세요.");
-            }
-        }
-
-        if (!isEachDigitDuplicated(inputNumbers)) {
+        } else if (!isEachDigitBetween1and9(inputNumbers)) {
+            throw new IllegalArgumentException("1~9로 이루어진 3자리의 수를 입력해주세요.");
+        } else if (!isEachDigitDuplicated(inputNumbers)) {
             throw new IllegalArgumentException("서로 다른 3개의 숫자로 이루어진 수를 입력해주세요.");
         }
+
         return convertStringToIntList(inputNumbers);
     }
 
@@ -64,6 +59,15 @@ public class Application {
 
     public static boolean isBetween1and9(final char inputDigit) {
         return inputDigit >= '1' && inputDigit <= '9';
+    }
+
+    public static boolean isEachDigitBetween1and9(final String inputDigits) {
+        for (int i = 0; i < inputDigits.length(); i++) {
+            if (!isBetween1and9(inputDigits.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static boolean isEachDigitDuplicated(final String inputDigits) {
