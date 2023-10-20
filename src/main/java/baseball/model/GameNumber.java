@@ -44,6 +44,17 @@ public class GameNumber {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof GameNumber number)) {
+            return false;
+        }
+        return gameNumber.equals(number.gameNumber);
+    }
+
+    @Override
     public String toString() {
         return gameNumber.toString();
     }
