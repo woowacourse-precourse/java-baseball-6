@@ -26,7 +26,7 @@ public class BaseBallGame implements Game {
             printUserInputNumber(Arrays.toString(userNumber.toArray()));
 
             BaseBallGameResult result = computer.calculate(userNumber);
-
+            printGameResult(result);
 
 
         }

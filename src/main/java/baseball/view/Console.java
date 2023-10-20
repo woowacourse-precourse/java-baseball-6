@@ -1,10 +1,11 @@
 package baseball.view;
 
 
+import baseball.game.BaseBallGameMessage;
+import baseball.game.BaseBallGameResult;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static baseball.game.BaseBallGameMessage.*;
@@ -107,5 +108,13 @@ public class Console {
 
     public static void printUserInputNumber(String userNumber){
         System.out.println(userNumber);
+    }
+
+    public static void printGameResult(BaseBallGameResult result){
+        int strike = result.getStrike();
+        int ball = result.getBall();
+
+        String resultMessage = BaseBallGameMessage.makeResultString(strike, ball);
+        System.out.println(resultMessage);
     }
 }

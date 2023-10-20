@@ -12,4 +12,12 @@ public class BaseBallGameResult {
     public static BaseBallGameResult create(int strike, int ball){
         return new BaseBallGameResult(strike, ball);
     }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
 }
