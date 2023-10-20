@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    public List<Integer> randomNumbers;
+    private final List<Integer> randomNumbers;
 
     /**
      * 입력한 크기에 맞추어 랜덤 숫자 배열을 생성한다.
@@ -24,5 +24,10 @@ public class Computer {
         this.randomNumbers = randomNumbers;
     }
 
-
+    /**
+     * @return 컴퓨터의 랜덤 숫자를 반환한다.
+     */
+    public List<Integer> getRandomNumbers() {
+        return randomNumbers;
+    }
 }

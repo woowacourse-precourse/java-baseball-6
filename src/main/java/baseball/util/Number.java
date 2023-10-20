@@ -7,12 +7,11 @@ public class Number {
      * @param input 사용자에게 입력받은 데이터를 받는다.
      * @return 정수일 경우 true, 정수가 아닐 경우 false를 반환한다.
      */
-    public static boolean validationNumber(String input) {
+    public static void validationNumber(String input) {
         try {
             Integer.parseInt(input);
-            return true;
         } catch (Exception e) {
-            return false;
+            throw new IllegalArgumentException();
         }
     }
 }
