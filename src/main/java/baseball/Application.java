@@ -1,42 +1,52 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         OutputView view = new OutputView();
-        GameData gameData = new GameData();
+        GameData gameData = init();
         BaseballManageController controller = new BaseballManageController(gameData, view);
 
         do {
-            gameData = init();
-
             view.printStart();
-            view.printRequirePlayerInput();
+            controller.generateComNums();
+            System.out.println("computer is " + controller.getComputerNumbers());
 
-            gameData.setPlayerNumbers(controller.playerNumsInput());
-            controller.countBall(gameData.getComputerNumbers(), gameData.getPlayerNumbers());
-            controller.countStrike(gameData.getComputerNumbers(), gameData.getPlayerNumbers());
+            do {
+                gameData = init();
 
+                view.printRequirePlayerInput();
+                controller.setPlayerNumbers(controller.playerNumsInput());
 
+                System.out.println(controller.getPlayerNumbers());
+                controller.countBall(controller.getComputerNumbers(), controller.getPlayerNumbers());
+                controller.countStrike(controller.getComputerNumbers(), controller.getPlayerNumbers());
 
+                controller.printResult(controller.getBallCnt(), controller.getStrikeCnt());
 
+            } while (controller.getStrikeCnt() != 3);
 
+                view.printEndgame();
+                view.printAskRestart();
+                controller.restartInput();
 
-        } while (gameData.getGameRepetition() == 1);
+            if (controller.getGameRepetition().equals("2")) {
+                break;
+            }
+
+        } while (controller.getGameRepetition().equals("1"));
 
     }
 
     private static GameData init() {
         GameData gameData = new GameData();
 
-        gameData.setGameRepetition(1);
+        gameData.setGameRepetition("1");
         gameData.setStrikeCnt(0);
         gameData.setBallCnt(0);
         gameData.setComputerNumbers(new ArrayList<>());
-        gameData.generateComNums(gameData.getComputerNumbers());
 
         return gameData;
     }
