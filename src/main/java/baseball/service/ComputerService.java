@@ -8,7 +8,7 @@ import java.util.List;
 public class ComputerService {
     public List<Integer> createNumber() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < NumberConstant.INPUT_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(NumberConstant.MIN_NUMBER, NumberConstant.MAX_NUMBER);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
