@@ -17,6 +17,7 @@ public class Baseball {
 
     //한 게임 플레이
     private void playOneGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         int answer = generateRandomNum();
 
         while(true) {
@@ -49,6 +50,7 @@ public class Baseball {
 
     //플레이어 입력 받기
     private int getUserInput() {
+        System.out.print("숫자를 입력해주세요 : ");
         int inputNum = 0;
         try {
             inputNum = Integer.parseInt(Console.readLine());
@@ -115,6 +117,16 @@ public class Baseball {
 
     //게임 재시작 여부 처리
     private boolean doRestartOrNot() {
-        return false;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputStr = Console.readLine();
+
+        switch (inputStr) {
+            case "1":
+                return true;
+            case "2":
+                return false;
+            default:
+                throw new IllegalArgumentException("잘못된 input입니다.");
+        }
     }
 }
