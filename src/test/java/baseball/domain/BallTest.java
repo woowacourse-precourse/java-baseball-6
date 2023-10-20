@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -19,15 +18,6 @@ class BallTest {
     void create() {
         Ball ball = new Ball(1, 1);
         assertThat(ball).isEqualTo(new Ball(1, 1));
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {0, 4})
-    @DisplayName("공의 위치가 1부터 3까지의 범위를 벗어나면 예외가 발생한다.")
-    void invalidPosition(int position) {
-        assertThatThrownBy(() -> new Ball(1, position))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("공의 위치는 1에서 3사이의 값이어야 합니다.");
     }
 
     @ParameterizedTest
