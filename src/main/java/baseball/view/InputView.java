@@ -8,6 +8,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
+    private static final String ERROR_MESSAGE_INTEGER_ONLY = "정수만 입력 가능합니다.";
+
     public static List<Integer> readNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         try {
@@ -16,7 +18,7 @@ public class InputView {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("정수만 입력 가능합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE_INTEGER_ONLY);
         }
     }
 
@@ -25,7 +27,7 @@ public class InputView {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("정수만 입력 가능합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE_INTEGER_ONLY);
         }
     }
 }
