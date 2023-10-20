@@ -9,6 +9,5 @@ public class Application {
             playGame.play();
             game_start = CheckRestart.check();
         }
-        System.out.println();
     }
 }

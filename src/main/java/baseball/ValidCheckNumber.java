@@ -1,33 +1,26 @@
 package baseball;
 
+import java.util.Collections;
+import java.util.List;
+
 public class ValidCheckNumber {
-    public static void duplicationAndZeroCheck(int num){
-        boolean check = true;
-        int[] arr = new int[10];
-        for (int i=0; i<3; i++){
-            arr[num%10]+=1;
-            if (num%10==0){
-                check = false;
-            }
-            num/=10;
-        }
-        for (int i : arr){
-            if (i > 1) {
-                check = false;
-                break;
-            }
-        }
-        if(!check){
-            throw new IllegalStateException();
+    public static void zeroCheck(List<Integer> player){
+        if (player.contains(0)){
+            throw new IllegalArgumentException();
         }
     }
-    public static int validCheckPlayer(String s){
+    public static void duplicationCheck(List<Integer> player){
+        if (Collections.frequency(player, player.get(0))>1
+                || Collections.frequency(player, player.get(1))>1){
+            throw new IllegalArgumentException();
+        }
+    }
+    public static void validCheckPlayer(String s){
         try{
             int i = Integer.parseInt(s);
             if (i>987 || i<123){
                 throw new IllegalArgumentException();
             }
-            return i;
         }catch (NumberFormatException e){
             throw new IllegalArgumentException();
         }

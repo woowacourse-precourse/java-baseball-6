@@ -4,20 +4,19 @@ import java.util.List;
 
 public class CompareNumber {
     public static int[] checkNumber(List<Integer> computer, List<Integer> player){
-        int[] strike_ball = new int[2];
-
-        for(int i = 0; i<3; i++){
-            for (int j = 0; j<3; j++){
-                if (player.get(i).equals(computer.get(j))){
-                    if (i==j){
-                        strike_ball[0]+=1;
-                        break;
-                    }
-                    strike_ball[1]+=1;
-                    break;
-                }
+        int strike = 0;
+        int ball = 0;
+        int playerNumber;
+        for (int i = 0; i<3; i++){
+            playerNumber = player.get(i);
+            if (computer.get(i).equals(playerNumber)){
+                strike+=1;
+                continue;
+            }
+            if (computer.contains(playerNumber)){
+                ball+=1;
             }
         }
-        return strike_ball;
+        return new int[]{strike,ball};
     }
 }
