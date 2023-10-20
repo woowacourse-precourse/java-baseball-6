@@ -12,21 +12,16 @@ public class Application {
         int countStrike = 0, countBall = 0;
         boolean isCorrect = false, isContinue = false;
 
-        // TODO: 랜덤값 생성하기 - 3개의 다른 수
         generateRandomNumbers(pickNumbers);
-
-        // TODO: 문구 출력
         printStartState();
 
-        // TODO : 반복문 내에서
         while (true){
             countBall = 0;
             countStrike = 0;
 
-            // TODO: 입력
             getUserNumbers(num);
 
-            // TODO: 프로그램 구현
+
             for (int i = 0; i < 3; i++) {
                 // 개수
                 if (pickNumbers.contains(num[i])) {
@@ -39,7 +34,6 @@ public class Application {
                 }
             }
 
-            // TODO: 출력
             isCorrect = getResult(countBall, countStrike);
 
             if (isCorrect) {
@@ -67,19 +61,22 @@ public class Application {
     }
 
     private static void printEndState() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     private static boolean getResult(int countBall, int countStrike) {
-        if (countBall != 0)
-            System.out.print(countBall +"볼 ");
-        if (countStrike != 0)
-            System.out.println(countStrike +"스트라이크");
-        else System.out.println();
-
         if (countBall == 0 && countStrike == 0)
             System.out.println("낫싱");
+        else {
+            if (countBall != 0){
+                System.out.print(countBall +"볼 ");
+            }
+            if (countStrike != 0)
+                System.out.println(countStrike +"스트라이크");
+            else System.out.println();
+        }
+
         if (countStrike == 3) return true;
         else return false;
     }
@@ -87,7 +84,14 @@ public class Application {
     private static void getUserNumbers(int[] num) {
         System.out.print("숫자를 입력해주세요 : ");
         String snum = Console.readLine();
+        if (snum.length() != 3) {
+            throw new IllegalArgumentException();
+        }
         for (int i = 0 ; i < 3 ; i++) {
+
+            if (snum.charAt(i) < '1' || snum.charAt(i) > '9'){
+                throw new IllegalArgumentException();
+            }
             num[i] = snum.charAt(i)-'0';
         }
     }
