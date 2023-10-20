@@ -18,7 +18,8 @@ public class BaseballController {
         while (true){
             CheckBallAndStrike checkBallAndStrike = new CheckBallAndStrike();
             while (checkBallAndStrike.isThreeStrike()){
-                inputView.inputExpectedNumber(player);
+                String expectedNumber = inputView.inputExpectedNumber();
+                player.changeExpectedNumbers(expectedNumber);
                 checkBallAndStrike.updateBallAndStrike(player);
                 outputView.printStatusBallAndStrike(checkBallAndStrike.statusBallAndStrike());
             }
