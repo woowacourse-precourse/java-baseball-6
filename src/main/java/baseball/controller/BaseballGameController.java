@@ -4,8 +4,6 @@ import baseball.constant.Constant;
 import baseball.view.InputView;
 
 public class BaseballGameController {
-
-
     public BaseballGameController() {
     }
 

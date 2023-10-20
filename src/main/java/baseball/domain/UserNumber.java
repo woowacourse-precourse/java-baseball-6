@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserNumber {
-
     private final List<Integer> userNumber;
 
     public UserNumber(String input) {
