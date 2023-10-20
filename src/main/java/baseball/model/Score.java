@@ -11,6 +11,11 @@ public class Score {
 		this.strike = 0;
 	}
 
+	public void resetScore() {
+		this.ball = 0;
+		this.strike = 0;
+	}
+
 	public void countScore(List<Integer> userNumber, List<Integer> computerNumber) {
 		for (int i = 0; i < 3; i++) {
 
