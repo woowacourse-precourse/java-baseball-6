@@ -2,7 +2,7 @@ package baseball.utils;
 
 import java.util.List;
 
-public class Validation {
+public class Validator {
     private static final int NUMBER_DIGIT = 3;
     private static final int START_INCLUSIVE_NUMBER = 1;
     private static final int END_INCLUSIVE_NUMBER = 9;
@@ -37,9 +37,8 @@ public class Validation {
         }
     }
 
-    public static void verifyGameProgressInput(String input) {
-        int convertedInput = Integer.parseInt(input);
-        if (!(convertedInput == GAME_REFRESH_INPUT || convertedInput == GAME_FINISH_NUMBER)) {
+    public static void verifyGameProgressInput(int input) {
+        if (!(input == GAME_REFRESH_INPUT || input == GAME_FINISH_NUMBER)) {
             throw new IllegalArgumentException(INCORRECT_GAME_PROGRESS_INPUT);
         }
     }

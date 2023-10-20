@@ -83,7 +83,7 @@
       - String to List\<Integer>
 
 
-7. Validation.java
+7. Validator.java
 
    사용자 입력에 대한 예외처리를 담당하는 클래스
 
