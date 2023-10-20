@@ -13,9 +13,9 @@ class GameNumberTest {
 
     @Test
     @DisplayName("게임 넘버가 1일 때 게임을 지속할 수 있다고 알려준다")
-    void when_game_number_1_can_contin트ue_game() {
+    void when_game_number_1_can_continue_game() {
         // given
-        GameNumber gameNumber = GameNumber.createDefault();
+        GameContinueNumber gameNumber = GameContinueNumber.createDefault();
 
         // when
         boolean canContinueGame = gameNumber.canContinueGame();
@@ -28,7 +28,7 @@ class GameNumberTest {
     @DisplayName("게임 넘버가 2일 때 게임을 지속할 수 없다고 알려준다.")
     void when_game_number_2_can_not_continue_game() {
         // given
-        GameNumber gameNumber = GameNumber.createDefault();
+        GameContinueNumber gameNumber = GameContinueNumber.createDefault();
 
         // when
         gameNumber.changeNumber(END_NUMBER);
@@ -41,7 +41,7 @@ class GameNumberTest {
     @DisplayName("지정된 입력 외 다른 입력이 들어오면 예외가 발생한다.")
     void when_() {
         // given
-        GameNumber gameNumber = GameNumber.createDefault();
+        GameContinueNumber gameNumber = GameContinueNumber.createDefault();
 
         // when & then
         assertThrows(IllegalArgumentException.class, () ->
