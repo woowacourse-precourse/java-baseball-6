@@ -10,28 +10,31 @@ import java.util.Objects;
 import java.util.SimpleTimeZone;
 
 public class Baseball {
-    List<Integer> randomNumbers = new ArrayList<>();
+    List<Integer> computerNumbers = new ArrayList<>();
+
 
     public List<Integer> generateRandomNumber() {
-        while (randomNumbers.size() < 3) {
+        while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumbers.contains(randomNumber)) {
-                randomNumbers.add(randomNumber);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
             }
         }
-        return randomNumbers;
+        return computerNumbers;
     }
 
-    public Map<String, Integer> findStrike(List<Integer> randomNumbers, List<Integer> userInput) {
+    public int findStrike(List<Integer> computerNumbers, List<Integer> userInput) {
         int strikeCount = 0;
         for (int i = 0; i < userInput.size(); i++) {
-            if (Objects.equals(randomNumbers.get(i), userInput.get(i))) {
+            int currentcomputerNumbers = computerNumbers.get(i);
+            int currentUserNumber = userInput.get(i);
+
+            if (currentcomputerNumbers == currentUserNumber) {
                 strikeCount++;
             }
-        }
 
-        Map<String, Integer> result = new HashMap<>();
-        result.put("strike", strikeCount);
-        return result;
+        }
+        return strikeCount;
     }
+
 }
