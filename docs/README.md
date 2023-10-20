@@ -2,8 +2,21 @@
 
 ## 게임 시작 문구 출력
 
-## 숫자 입력 문구와 함께 입력 받기
+## 숫자 입력 안내 문구와 함께 입력 받기
 
 - camp.nextstep.edu.missionutils.Console의 readLine()을 활용
 - 입력된 숫자가 서로 다른 3자리 수인지 확인
 - 서로 다른 3자리 수 외의 입력은 IllegalArgumentException 발생시킨 후 종료
+- 게임이 끝날 때까지 반복
+
+
+## 숫자(정답) 생성
+
+- 1부터 9까지 서로 다른 수로 이루어진 3자리 수
+- camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
+- 리스트에 저장된 숫자를 3자리 숫자로 변환
+
+## 정답과 입력한 값이 일치하는지 비교하는 기능
+
+- 어떻게 비교할 것인가?
+
