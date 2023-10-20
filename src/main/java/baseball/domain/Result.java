@@ -35,4 +35,11 @@ public class Result {
     public boolean isNothing(){
         return strike==0 && ball==0;
     }
+
+    public String getResult(){
+        if (isNothing()){
+            return "낫싱";
+        }
+        return ball+"볼 "+strike+"스트라이크";
+    }
 }
