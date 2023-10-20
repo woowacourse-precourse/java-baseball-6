@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Application.COUNT;
+import static baseball.Message.COUNT;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
