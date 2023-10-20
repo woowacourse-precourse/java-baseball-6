@@ -7,6 +7,7 @@ public class Validation {
 
     private static final String SAME_NUMBER_EXCEPTION_MESSAGE = "같은 숫자를 입력할 수 없습니다.";
     private static final String NON_NUMERIC_EXCEPTION_MESSAGE = "숫자만 입력할 수 있습니다.";
+    private static final String NUMBER_OF_NUMBERS_EXCEPTION_MESSAGE = "입력한 숫자는 3자리여야 합니다.";
 
     public static void validateSameNumber(String numbers) {
         List<Character> checkList = new ArrayList<>();
@@ -22,6 +23,12 @@ public class Validation {
     public static void validateThatInputIsNumeric(String numbers) {
         if (!isNumeric(numbers)) {
             throw new IllegalArgumentException(NON_NUMERIC_EXCEPTION_MESSAGE);
+        }
+    }
+
+    public static void validateNumberOfNumbers(String numbers) {
+        if (numbers.length() != Constants.NUMBER_OF_NUMBERS) {
+            throw new IllegalArgumentException(NUMBER_OF_NUMBERS_EXCEPTION_MESSAGE);
         }
     }
 
