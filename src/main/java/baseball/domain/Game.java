@@ -18,6 +18,10 @@ public class Game {
         gameState = GameState.ON;
     }
 
+    public void restart() {
+        start();
+    }
+
     public void end() {
         gameState = GameState.OFF;
     }
