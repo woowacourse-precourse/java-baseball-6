@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,5 +18,16 @@ public class BaseballGame {
             GameStatus status = BaseballUmpire.judge(botNumbers, integers);
             gameStatus = status;
         } while (gameStatus == GameStatus.CONTINUE);
+        restartGame();
+    }
+
+    private void restartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals("1")) {
+            start();
+        } else if (input.equals("2")) {
+            System.out.println("게임을 종료합니다.");
+        }
     }
 }
