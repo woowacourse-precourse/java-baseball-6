@@ -7,8 +7,8 @@ public class BaseballController {
     private final Player player;
 
     public BaseballController(Player player) {
-        this.inputView = new InputView();
         this.outputView = new OutputView();
+        this.inputView = new InputView(outputView);
         this.player = player;
     }
 

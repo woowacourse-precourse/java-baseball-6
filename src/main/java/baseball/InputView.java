@@ -4,8 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    private final InputValidator inputValidator = new InputValidator();
-    private final OutputView outputView = new OutputView();
+    private final InputValidator inputValidator;
+    private final OutputView outputView;
+
+    public InputView(OutputView outputView) {
+        this.inputValidator =  new InputValidator();
+        this.outputView = outputView;
+    }
 
     public String inputExpectedNumber(){
         outputView.printInputExpectedNumberMessage();
