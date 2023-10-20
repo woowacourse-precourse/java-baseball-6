@@ -24,7 +24,7 @@ public class GameController {
         StartView.welcome();
 
         while (playWant) {
-            AskView.askNumberInput();
+            askUserNumberInput();
 
             String userInput = receivePlayNumber();
 
@@ -48,6 +48,10 @@ public class GameController {
                 }
             }
         }
+    }
+
+    private static void askUserNumberInput() {
+        AskView.askNumberInput();
     }
 
     private static String receivePlayNumber() {
