@@ -24,7 +24,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @Disabled
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))

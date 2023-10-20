@@ -18,7 +18,8 @@ class baseballGame{
     private final static String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private final static String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final static String ASK_CONTINUE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private final static String REQUIRE_NUMBER = "숫자를 입력해주세요";
+    private final static String REQUIRE_NUMBER = "숫자를 입력해주세요 : ";
+    private final static String DECLARE_GAME_END = "게임 종료";
     private final static int INPUT_LENGTH = 3;
     private final static int STRIKE_FOR_ENDGAME = 3;
 
@@ -52,11 +53,11 @@ class baseballGame{
 
     private static boolean validatePlayerNumber(List<Integer> input){ // 플레이어가 입력한 값이 옳은지 검증하는 메서드
         if (input.size() != INPUT_LENGTH) {
-            return true; // 입력된 숫자가 3자리가 아닐 경우에 false 반환
+            return true; // 입력된 숫자가 3자리가 아닐 경우에 true 반환 --> 오류를 발생시키기 위함
         }
 
-        if (input.get(1) == input.get(2) || input.get(1) == input.get(3) || input.get(3) == input.get(2)){
-            return true; // 입력된 값에 중복된 숫자가 있을 경우 false 반환
+        if (input.get(0) == input.get(1) || input.get(0) == input.get(2) || input.get(1) == input.get(2)){
+            return true; // 입력된 값에 중복된 숫자가 있을 경우 true 반환 --> 오류를 발생시키기 위함
         }
 
         return false;
@@ -103,30 +104,36 @@ class baseballGame{
         return "낫싱 아님";
     }
 
-    private static boolean playGameAgain(){ // 게임을 다시 시작하는지 물어보는 메서드 1이 입력되면 다시시작(true) 2가 입력되면 종료(false)
-        String gameContinue;
+    private static boolean playGameAgain() {
         boolean check = true;
-        gameContinue = camp.nextstep.edu.missionutils.Console.readLine();
-        if (gameContinue == "1"){
-            check = true;
-        }
-        if (gameContinue == "2"){
-            check = false;
+
+        while (true) {
+            String gameContinue = camp.nextstep.edu.missionutils.Console.readLine();
+            if (gameContinue.equals("1")) {
+                check = true;
+                break;
+            } else if (gameContinue.equals("2")) {
+                check = false;
+                break;
+            } else {
+                System.out.println("1 또는 2를 입력하세요.");
+            }
         }
         return check;
     }
 
+
     public static void playGame(){
-        int balls = 0;
-        int strikes = 0;
+        int balls;
+        int strikes;
         String nothing;
         boolean gameAgainCheck = true;
 
         System.out.println(START_MESSAGE);
-        List<Integer> playerGameNumber= getPlayerNumber();
         List<Integer> cpuGameNumber = getCpuRandomNumber();
 
         while(gameAgainCheck){ // gameAgainCheck 가 false가 되년 경우엔 게임 종료
+            List<Integer> playerGameNumber= getPlayerNumber();
             strikes = checkStrike(playerGameNumber,cpuGameNumber);
             balls = checkBall(playerGameNumber,cpuGameNumber);
             nothing = checkNothing(playerGameNumber,cpuGameNumber);
@@ -141,12 +148,19 @@ class baseballGame{
                 System.out.println(balls + "볼");
             }
             if (strikes != 0 && balls != 0){ // 볼과 스트라이크 모두 있는 경우
-                System.out.println(balls + "볼" + strikes + "스트라이크");
+                System.out.println(balls + "볼 " + strikes + "스트라이크");
             }
             if (checkEndGame(strikes)){ // 게임이 끝났는지 안끝났는지 확인함. strikes = 3 이면 진입
                 System.out.println(END_MESSAGE);
+                System.out.println(ASK_CONTINUE);
                 gameAgainCheck = playGameAgain(); // 게임을 다시 시작할지 말지 물어봄 1이면 true, 2면 false
+                if (gameAgainCheck == false){
+                    break;
+                }
+                cpuGameNumber = getCpuRandomNumber();
             }
         }
+        System.out.println(DECLARE_GAME_END);
     }
 }
+
