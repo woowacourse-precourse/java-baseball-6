@@ -15,7 +15,7 @@ public class Console {
 
     private static final IllegalArgumentException ILLEGAL_ARGUMENT_EXCEPTION = new IllegalArgumentException();
     private static final String NUMBER_REGEX = "[1-9]+";
-    private static final List<String> RESTART_OR_TERMINATE = List.of("1", "2");
+    private static final List<String> RESTART_OR_TERMINATE_OPTION = List.of("1", "2");
 
     public static List<Integer> input3DigitRandomNumber() {
         List<Integer> computer = new ArrayList<>();
@@ -32,7 +32,6 @@ public class Console {
 
     private static String readLine() {
         String inputString = camp.nextstep.edu.missionutils.Console.readLine();
-
         validateInputNotNull(inputString);
         validateInputIsNumber(inputString);
 
@@ -95,7 +94,7 @@ public class Console {
     }
 
     private static void validateRestartOrTerminate(String inputString) {
-        if (!RESTART_OR_TERMINATE.contains(inputString)) {
+        if (!RESTART_OR_TERMINATE_OPTION.contains(inputString)) {
             throw ILLEGAL_ARGUMENT_EXCEPTION;
         }
     }
@@ -123,5 +122,9 @@ public class Console {
 
     public static void printGameOver() {
         System.out.println(GAME_OVER);
+    }
+
+    public static void printRestartOrTerminate() {
+        System.out.println(RESTART_OR_TERMINATE);
     }
 }

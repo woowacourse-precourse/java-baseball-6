@@ -25,6 +25,10 @@ public class User {
         return Console.input3DigitNumber();
     }
 
+    public static String inputRestartOrTerminate() {
+        return Console.inputRestartOrTerminate();
+    }
+
     private static void validateMachineExistence() {
         if (machine == null) {
             throw new IllegalArgumentException();
