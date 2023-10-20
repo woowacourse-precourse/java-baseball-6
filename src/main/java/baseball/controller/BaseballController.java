@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.Command;
 import baseball.model.GameNumber;
 import baseball.service.ScoreCalculator;
 import baseball.util.Converter;
@@ -30,7 +31,6 @@ public class BaseballController {
         GameNumber computer = new GameNumber(RandomNumbersGenerator.generate());
         //TODO: 디버깅 용 출력문 지우기
         System.out.println("computer = " + computer);
-
         while (true) {
             GameNumber player = new GameNumber(readGuessNumber());
             int strike = calculator.calculateStrike(computer, player);
@@ -41,22 +41,29 @@ public class BaseballController {
                 break;
             }
         }
-        String gameCommand = inputView.readGameCommand();
-        if (gameCommand.equals("1")) {
+        if (isRestart()) {
             play();
-            return;
         }
-        if (gameCommand.equals("2")) {
-            return;
+    }
+
+    private Boolean isRestart() {
+        String value = inputView.readGameCommand();
+        if (Command.RESTART.getValue().equals(value)) {
+            return true;
         }
-        throw new IllegalArgumentException("재시작/종료 명령이 잘못되었습니다.");
+        if (Command.QUIT.getValue().equals(value)) {
+            return false;
+        }
+        throw new IllegalArgumentException("잘못된 재시작/종료 입력입니다.");
     }
 
     // TODO: 과연 여기에 검증로직이 있는게 맞는지 고민해보기
     private List<Integer> readGuessNumber() {
         String value = inputView.readGuessNumber();
         try {
-            Integer.parseInt(value);
+            if (Integer.parseInt(value) < 0) {
+                throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
+            }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
         }
