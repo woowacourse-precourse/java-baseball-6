@@ -19,4 +19,8 @@ public class User {
     public void clearList() {
         user.clear();
     }
+
+    public List<Integer> getList() {
+        return user;
+    }
 }
