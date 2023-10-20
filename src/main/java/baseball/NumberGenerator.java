@@ -6,14 +6,14 @@ import java.util.List;
 
 public class NumberGenerator {
 
-    public List<Integer> createAnswer() {
+    public Answer createAnswer() {
         List<Integer> answer = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
             isAnswerHasDuplicatedValue(answer, Randoms.pickNumberInRange(1, 9));
         }
 
-        return answer;
+        return new Answer(answer);
     }
 
     private void isAnswerHasDuplicatedValue(List<Integer> answer, int randNum) {
