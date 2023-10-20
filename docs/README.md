@@ -21,8 +21,11 @@
 
 - [ ] 역할에 맞는 로직 분리
     - [ ] model
-    - [ ] view
-        - [ ] InputView
-        - [ ] OutPutView
-    - [ ] controller
-        - [ ] GameController
+        - [ ] GameNumber 상속 클래스 만들기
+            - [ ] ComputerGameNumber
+            - [ ] UserGameNumber
+    - [x] view
+        - [x] InputView
+        - [x] OutPutView
+    - [x] controller
+        - [x] GameController
