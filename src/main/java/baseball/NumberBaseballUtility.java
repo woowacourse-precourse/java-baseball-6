@@ -35,4 +35,13 @@ public class NumberBaseballUtility {
         }
         return true;
     }
+
+    public static List<Integer> convertStringToNumberList(String input) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < input.length(); i++) {
+            list.add(Character.getNumericValue(input.charAt(i)));
+        }
+        return list;
+    }
+
 }
