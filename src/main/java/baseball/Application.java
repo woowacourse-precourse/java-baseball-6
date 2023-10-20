@@ -9,6 +9,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import static baseball.Application.IS_TEST;
 import static java.lang.Integer.parseInt;
 
 class Baseball {
@@ -94,16 +95,6 @@ class Baseball {
         }
     }
 
-
-}
-
-
-public class Application {
-
-    private static final boolean IS_TEST = true;        // 정답 출력 여부 설정, 제출 시에는 false
-
-
-
     public static String makeRandomNum() {
         String com = "";
         // to method
@@ -117,45 +108,60 @@ public class Application {
         return com;
     }
 
+    int startGame(int end) {
+        // 한 게임당 초기화
+        String com = makeRandomNum();
+        boolean isFinish = false;
+
+
+        if (IS_TEST) {
+            System.out.println("answer: " + com);
+        }
+        // 게임 시작
+        // while (게임 진행되는 동안)
+        while (!isFinish) {
+            clear();
+            // 입력
+            System.out.print("숫자를 입력해주세요 : ");
+            String num = Console.readLine();
+            inputException(num);
+
+            count(num, com);
+
+            // 종료할 지 말지
+            boolean ischeck = check();
+
+            if (ischeck) {
+                end = restartException();
+                if (end == 1) {
+                    isFinish = true;
+                } else if (end == 2) {
+                    break;
+                }
+            }
+
+        }
+        return end;
+    }
+
+
+}
+
+
+public class Application {
+
+    public static final boolean IS_TEST = true;        // 정답 출력 여부 설정, 제출 시에는 false
+
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int end = 1;
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean isFinish = false;
+        Baseball b = new Baseball();
         // 게임 진행
         while (end == 1) {
-
-            // 한 게임당 초기화
-            String com = makeRandomNum();
-            isFinish = false;
-            Baseball b = new Baseball();
-
-            if (IS_TEST) {
-                System.out.println("answer: " + com);
-            }
-            // 게임 시작
-            // while (게임 진행되는 동안)
-            while (!isFinish) {
-                b.clear();
-                // 입력
-                System.out.print("숫자를 입력해주세요 : ");
-                String num = Console.readLine();
-                b.inputException(num);
-
-                b.count(num, com);
-
-                // 종료할 지 말지
-                boolean ischeck = b.check();
-
-                if (ischeck) {
-                    end = b.restartException();
-                    if (end == 1 || end == 2) {
-                        isFinish = true;
-                    }
-                }
-
-            }
-
+            end = b.startGame(end);
         }
 
     }
