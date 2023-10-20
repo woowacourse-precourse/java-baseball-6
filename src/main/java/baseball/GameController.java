@@ -25,7 +25,7 @@ public class GameController {
     }
 
     private void playGame() {
-        Opponent opponent = Opponent.createOpponent();
+        Opponent opponent = Opponent.createDefaultOpponent();
         while (true) {
             OutputView.askNumbers();
             String userNumbersInput = inputView.getUserInput();

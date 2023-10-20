@@ -16,7 +16,7 @@ public class UserNumbers {
         this.userNumbers = userNumbers;
     }
 
-    public static UserNumbers of(String numbers) {
+    public static UserNumbers of(final String numbers) {
         List<Integer> inputNumbers = Arrays.stream(numbers.split(NUMBERS_SPLITTER))
             .map(Integer::parseInt)
             .toList();

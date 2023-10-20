@@ -1,18 +1,12 @@
 package baseball.model;
 
-import static baseball.Constants.MAX_NUM;
-import static baseball.Constants.MIN_NUM;
-import static baseball.Constants.NUMBER_COUNTS;
-
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Opponent {
 
     private static final int FIRST_INDEX = 0;
     private static final int NUMBER_NOT_FOUND = -1;
-
 
     private final List<Integer> numbers;
 
@@ -20,15 +14,13 @@ public class Opponent {
         this.numbers = numbers;
     }
 
-    public static Opponent createOpponent() {
-        List<Integer> pickedNumbers = new ArrayList<>();
-        while (pickedNumbers.size() < NUMBER_COUNTS) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
-            if (!pickedNumbers.contains(randomNumber)) {
-                pickedNumbers.add(randomNumber);
-            }
-        }
-        return new Opponent(pickedNumbers);
+    public static Opponent createDefaultOpponent() {
+        NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        return new Opponent(randomNumberGenerator.generateNumbers());
+    }
+
+    public static Opponent createOpponentWithGenerator(NumberGenerator generator) {
+        return new Opponent(generator.generateNumbers());
     }
 
     public GuessResult calculateResult(final UserNumbers userNumbers) {
