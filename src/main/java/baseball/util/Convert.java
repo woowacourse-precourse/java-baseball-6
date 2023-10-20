@@ -13,4 +13,8 @@ public class Convert {
         }
         return userNumber;
     }
+
+    public static int convertStringToInteger(String input) {
+        return Integer.parseInt(input);
+    }
 }
