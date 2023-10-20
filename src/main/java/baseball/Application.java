@@ -24,25 +24,21 @@ public class Application {
     }
     public static void playGames() {
         printStart();
-        while(true){
+        do {
             playGameOnce();
-            if (getMoreGame().equals(QUIT_GAME)){
-                break;
-            }
-        }
+            printAnswer();
+        } while(getMoreGame().equals(MORE_GAME));
     }
     public static void playGameOnce() {
         List<Integer> computerNumbersList = getComputerNumbersList();
-        while(true) {
+        int ballCount;
+        int strikeCount;
+        do {
             List<Integer> userNumbersList = getUserNumbersList();
-            int ballCount = getBallCount(computerNumbersList, userNumbersList);
-            int strikeCount = getStrikeCount(computerNumbersList, userNumbersList);
+            ballCount = getBallCount(computerNumbersList, userNumbersList);
+            strikeCount = getStrikeCount(computerNumbersList, userNumbersList);
             printBallStrike(ballCount, strikeCount);
-            if (isAnswer(strikeCount)) {
-                printAnswer();
-                break;
-            }
-        }
+        } while(!isAnswer(strikeCount));
     }
     public static void printStart() {
         System.out.println(START_MESSAGE);
