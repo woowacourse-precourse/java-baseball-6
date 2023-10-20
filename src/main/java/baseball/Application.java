@@ -17,6 +17,9 @@ package baseball;
 public class Application {
     public void checkUserInputException(int[] user) {
         try {
+            if (!(user.length == 3))
+                throw new IllegalArgumentException("올바르지 않은 숫자의 입력입니다. ");
+
             for (int i = 0; i < user.length; i++) {
                 for (int j = 0; j < user.length; j++) {
                     if (i == j)
@@ -42,4 +45,5 @@ public class Application {
             return;
         }
     }
+
 }
