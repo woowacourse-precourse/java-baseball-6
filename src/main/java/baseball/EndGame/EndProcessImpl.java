@@ -15,8 +15,6 @@ public class EndProcessImpl implements EndProcess {
             ValidateUserChoice(Console.readLine());
         } catch (IllegalArgumentException e) {
             throw e;
-        } finally {
-            Console.close();
         }
     }
 
