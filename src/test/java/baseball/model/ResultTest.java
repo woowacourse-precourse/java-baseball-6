@@ -17,4 +17,12 @@ public class ResultTest {
 
         assertThat(result1.equals(result2)).isTrue();
     }
+
+    @DisplayName("낫싱 확인 기능")
+    @Test
+    void 낫싱_확인(){
+        Result nothing=new Result(new Numbers("123"),new Numbers("456"));
+
+        assertThat(nothing.isNothing()).isTrue();
+    }
 }
