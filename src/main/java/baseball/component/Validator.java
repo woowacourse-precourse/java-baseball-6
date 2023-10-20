@@ -8,6 +8,18 @@ public class Validator {
     private List<Integer> target;
     private final int NUMBER_SIZE = 3;
 
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public boolean getNoting() {
+        return noting;
+    }
+
     public Validator(List<Integer> target) {
         strike = 0;
         ball = 0;
