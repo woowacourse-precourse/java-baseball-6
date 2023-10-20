@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Generator {
 
-    public static final int LIST_LEN = 3;
-    public static final int MIN_NUM = 1;
-    public static final int MAX_NUM = 9;
+    private static final int LIST_LEN = 3;
+    private static final int MIN_NUM = 1;
+    private static final int MAX_NUM = 9;
 
     public static List<Integer> createAnswer() {
         List<Integer> answerList = new ArrayList<>();
