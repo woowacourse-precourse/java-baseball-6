@@ -16,12 +16,4 @@ public class BallResult {
     public int getBall() {
         return ball;
     }
-
-    @Override
-    public String toString() {
-        return "BallResult{" +
-                "ball=" + ball +
-                ", strike=" + strike +
-                '}';
-    }
 }
