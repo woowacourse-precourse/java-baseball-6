@@ -1,4 +1,4 @@
-package baseball;
+package baseball.system;
 
 public class SystemConstant {
     final static public int MAXIMUM_DIGIT = 3;

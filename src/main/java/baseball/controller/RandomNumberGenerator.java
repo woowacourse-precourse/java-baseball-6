@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.SystemConstant;
+import baseball.system.SystemConstant;
 import baseball.domain.BallNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 
