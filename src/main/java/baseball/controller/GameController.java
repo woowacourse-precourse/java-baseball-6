@@ -18,9 +18,6 @@ public class GameController {
 
     private void init() {
         registeringPlayer = registerPlayer();
-        if (registeringPlayer == null) {
-            return;
-        }
         startGame();
     }
 
@@ -36,6 +33,7 @@ public class GameController {
             registeringPlayer = registerPlayer();
         }
 
+        displayResult(game);
         OutputView.displayThreeStrikes();
         finishOrRestartGame(InputView.inputRestartOrFinish());
     }
