@@ -66,8 +66,8 @@ public class Application {
         user = new ArrayList<>();
         for(int i = 0; i < 3; i++) {
             char digit = inputNumber.charAt(i);
-            if (!(digit >= '0' && digit <= '9')) {
-                throw new IllegalArgumentException("숫자가 아닙니다.");
+            if (!(digit >= '1' && digit <= '9')) {
+                throw new IllegalArgumentException("올바른 숫자가 아닙니다.");
             }
             int number = digit - '0';
             user.add(number);
