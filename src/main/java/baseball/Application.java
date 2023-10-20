@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 class Game {
     public int answer;
     Game(int answer) {
@@ -8,6 +10,12 @@ class Game {
 
     void run() {
         // TODO: implement
+    }
+
+    int askQuery() {
+        // TODO: Add Query Validation
+        int query = Integer.parseInt(Console.readLine());
+        return query;
     }
 }
 
