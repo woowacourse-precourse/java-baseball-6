@@ -12,17 +12,16 @@ public class Rules {
         this.strikes = 0;
     }
 
-    public void countBallAndStrikes(Computer com, List<Integer> player) {
+    public void countBallAndStrikes(List<Integer> com, List<Integer> user) {
         initBallsAndStrikes(0, 0);
-        for (Integer val : player) {
-            int index = com.isInList(val);
-            if (index < 0) {
+        for (Integer val : user) {
+            if (com.indexOf(val) < 0) {
                 continue;
             }
-            if (index == player.indexOf(val)) {
+            if (com.indexOf(val) == user.indexOf(val)) {
                 this.strikes++;
             }
-            if (index != player.indexOf(val)) {
+            if (com.indexOf(val) != user.indexOf(val)) {
                 this.ball++;
             }
         }
@@ -42,6 +41,6 @@ public class Rules {
     }
 
     public boolean isThreeStrikes() {
-        return strikes == 3 && ball == 0;
+        return strikes == 3;
     }
 }
