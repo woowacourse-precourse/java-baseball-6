@@ -82,14 +82,14 @@
 
 ### `BaseballNumber`
 숫자 야구 게임에 필요한 숫자 한 개에 대한 클래스 이다.
-- [ ] 입력받은 숫자가 0~9의 범위에 있지 않다면  `IllegalArgumentException`을 발생한다.
+- [X] 입력받은 숫자가 0~9의 범위에 있지 않다면  `IllegalArgumentException`을 발생한다.
 
 <br>
 
 ### `BaseballNumbers`
 숫자 야구 게임에 필요한 `BaseballNumber`세 개를 담은 컬렉션이다.
-- [ ] 입력받은 문자열로 `BaseballNumber` 세 개를 생성한 후 집합에 추가한다.
-- [ ] 입력받은 문자열이 3개가 아니거나 중복이 있다면 `IllegalArgumentException`을 발생한다.
+- [X] 입력받은 문자열로 `BaseballNumber` 세 개를 생성한 후 집합에 추가한다.
+- [X] 입력받은 문자열이 3개가 아니거나 중복이 있다면 `IllegalArgumentException`을 발생한다.
 
 <br>
 
