@@ -13,7 +13,7 @@ ___
           -> InputNumber를 숫자로 변환
           <br><br>
 
-        * InputNumber --> 플레이어가 String 타입으로 입력
+        * InputNumber --> 플레이어가 String 타입으로 입력함(띄어쓰기 있을 경우 대비하여 띄어쓰기 제거)
 
 
 2. View
