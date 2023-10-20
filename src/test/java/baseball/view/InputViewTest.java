@@ -15,4 +15,13 @@ class InputViewTest {
                 isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("값을 입력해 주세요.");
     }
+
+    @ParameterizedTest
+    @DisplayName("세 자리 숫자 입력 미준수 예외 테스트")
+    @ValueSource(strings = {"", "1", "12", "1234", "abc99"})
+    void invalidInputsTest2(String input) {
+        Assertions.assertThatThrownBy(() -> Validation.isLengthThree(input)).
+                isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("세 자리 숫자를 입력해 주세요.");
+    }
 }
