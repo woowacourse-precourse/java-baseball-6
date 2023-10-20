@@ -8,14 +8,12 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        String gameRepeat = "";
+        String gameRepeat = "1";
         do{
             ComputerGame game = new ComputerGame();
             game.gameStart();
-            //4) 게임 맞추면 진행 여부 묻기
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             gameRepeat = Console.readLine();
-
         }while(gameRepeat.equals("1"));
     }
 }
@@ -25,26 +23,20 @@ class ComputerGame{
     String comAnswer;
     String userAnswer;
 
-    Application main = new Application();
-
     ComputerGame(){
-        //1) 컴퓨터 랜덤 난수 생성 - 최초1번.
         comAnswer = computerRandomNum();
         System.out.println(comAnswer);
-
-        gameStart();
     }
     //게임 진행 반복 - 정답 맞출 때까지
     public void gameStart(){
         boolean success = false;
         do{
             UserInput input = new UserInput();
-            success = getHint(input.userAnswer, comAnswer);
-
+            userAnswer = input.userAnswer;
+            success = getHint(userAnswer, comAnswer);
         }while(!success);
 
     }
-
     //컴퓨터 랜덤 숫자 생성 함수
     static String computerRandomNum(){
         //중복 없이 3개의 숫자로 구성
@@ -89,21 +81,20 @@ class ComputerGame{
         System.out.println(result);
 
         if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
         return false;
     }
 }
 
-class UserInput{ //입력값 다루는 전용 객체
+class UserInput{
     String userAnswer;
-
     UserInput(){
-        //2) 사용자 입력값 예외처리
+        System.out.print("숫자를 입력해주세요 : ");
         userAnswer = Console.readLine();
         chkInputException(userAnswer);
     }
-
     //사용자 입력값에 대한 예외처리
     static void chkInputException(String answer) throws IllegalArgumentException {
         //1) 길이3 아닌 경우
