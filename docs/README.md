@@ -48,7 +48,7 @@
 ### Utility
 - InputDataExceptionHandler
   - [x] 입력받은 사용자 숫자를 검증하는 기능
-  - [ ] 입력받은 재시작 여부를 검증하는 기능
+  - [x] 입력받은 재시작 여부를 검증하는 기능
 ---
 
 ### Main

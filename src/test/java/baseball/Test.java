@@ -40,5 +40,7 @@ public class Test {
         // 결과 테스트
         GameView.gameResult(computerController.getBall(), computerController.getStrike());
 
+        // validator 테스트
+        GameView.reGame();
     }
 }

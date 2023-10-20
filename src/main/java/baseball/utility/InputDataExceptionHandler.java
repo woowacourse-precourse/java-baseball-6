@@ -20,4 +20,10 @@ public class InputDataExceptionHandler {
             }
         }
     }
+
+    public static void validateReGame(String continued) {
+        if (!(continued.equals("1") || continued.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
