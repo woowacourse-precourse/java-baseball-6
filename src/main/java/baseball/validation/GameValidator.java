@@ -2,6 +2,9 @@ package baseball.validation;
 
 public class GameValidator {
 
+    private GameValidator() {
+    }
+
     public static void validateIsNumber(String input) {
 
         try {

@@ -1,12 +1,12 @@
 package baseball.controller;
 
+import baseball.model.CompareResult;
 import baseball.service.GameProgress;
 import baseball.service.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 import java.util.List;
-import java.util.Map;
 
 public class GameController {
 
@@ -14,10 +14,11 @@ public class GameController {
     private final OutputView outputView;
     private final GameProgress gameProgress;
     private final RandomNumberGenerator randomNumberGenerator;
-    private final String STRIKE = "strike";
-    private final String BALL = "ball";
+    private static final int INITIALIZE_NUMBER = 0;
 
-    public GameController(InputView inputView, OutputView outputView, GameProgress gameProgress, RandomNumberGenerator randomNumberGenerator) {
+    public GameController(InputView inputView, OutputView outputView,
+                          GameProgress gameProgress,
+                          RandomNumberGenerator randomNumberGenerator) {
 
         this.inputView = inputView;
         this.outputView = outputView;
@@ -26,26 +27,44 @@ public class GameController {
     }
 
     public void startGame() {
-        boolean continueGame = true;
 
         outputView.printStartGame();
 
-        while (continueGame) {
-            List<Integer> computerNumbers = randomNumberGenerator.generateRandomNumber();
-            System.out.println(computerNumbers);
-            Map<String, Integer> compareNumbers = Map.of(STRIKE, 0, BALL, 0);
+        do {
+            playSingleRound();
+        } while (isContinueGame());
+    }
 
-            while (!gameProgress.isEndGame(compareNumbers)) {
+    private void playSingleRound() {
 
-                outputView.printInputNumber();
-                List<Integer> userInputNumber = inputView.userInputNumber();
-                compareNumbers = gameProgress.compareNumbers(computerNumbers, userInputNumber);
-                outputView.printGameProgress(compareNumbers.get(STRIKE), compareNumbers.get(BALL));
-            }
+        List<Integer> computerNumbers = randomNumberGenerator.generateRandomNumber();
+        CompareResult compareNumbers = initCompareNumbers();
 
-            outputView.printDecideGame();
-            outputView.printRestartGame();
-            continueGame = gameProgress.decideGameRestart(inputView.decideGameActionInput());
+        while (!gameProgress.isEndGame(compareNumbers)) {
+            compareNumbers = playAndCompare(computerNumbers);
         }
+
+        outputView.printDecideGame();
+    }
+
+
+    private CompareResult initCompareNumbers() {
+
+        return new CompareResult(INITIALIZE_NUMBER, INITIALIZE_NUMBER);
+    }
+
+    private CompareResult playAndCompare(List<Integer> computerNumbers) {
+
+        outputView.printInputNumber();
+        List<Integer> userInputNumber = inputView.userInputNumber();
+        CompareResult compareResult = gameProgress.compareNumbers(computerNumbers, userInputNumber);
+        outputView.printGameProgress(compareResult.strikes(), compareResult.balls());
+        return compareResult;
+    }
+
+    private boolean isContinueGame() {
+
+        outputView.printRestartGame();
+        return gameProgress.decideGameRestart(inputView.decideGameActionInput());
     }
 }

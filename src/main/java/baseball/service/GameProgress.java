@@ -1,14 +1,16 @@
 package baseball.service;
 
+import baseball.model.CompareResult;
+
 import java.util.List;
-import java.util.Map;
 
 public class GameProgress {
 
-    private static final String STRIKE = "strike";
-    private static final String BALL = "ball";
+    private static final int TOTAL_NUMBER_COUNT = 3;
+    private static final int RESTART_NUMBER = 1;
 
-    public Map<String, Integer> compareNumbers(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    public CompareResult compareNumbers(List<Integer> computerNumbers, List<Integer> userNumbers) {
+
         int strikes = 0;
         int balls = 0;
 
@@ -22,17 +24,17 @@ public class GameProgress {
             }
         }
 
-        return Map.of(STRIKE, strikes, BALL, balls);
+        return new CompareResult(strikes, balls);
     }
 
-    public boolean isEndGame(Map<String, Integer> result) {
+    public boolean isEndGame(CompareResult compareResult) {
 
-        return result.get(STRIKE) == 3;
+        return compareResult.strikes() == TOTAL_NUMBER_COUNT;
     }
 
     public boolean decideGameRestart(int userNumber) {
 
-        return userNumber == 1;
+        return userNumber == RESTART_NUMBER;
     }
 
     private boolean isStrike(List<Integer> computerNumbers, List<Integer> userNumbers, int index) {

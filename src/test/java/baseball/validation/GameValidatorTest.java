@@ -1,19 +1,11 @@
 package baseball.validation;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 class GameValidatorTest {
-
-    private GameValidator gameValidator;
-
-    @BeforeEach
-    void setUp() {
-        gameValidator = new GameValidator();
-    }
 
     @Test
     @DisplayName("입력값이 숫자일 경우 예외를 발생시키지 않는다")
@@ -22,7 +14,7 @@ class GameValidatorTest {
         String input = "123";
 
         // then
-        assertThatCode(() -> gameValidator.validateIsNumber(input))
+        assertThatCode(() -> GameValidator.validateIsNumber(input))
                 .doesNotThrowAnyException();
     }
 
@@ -33,7 +25,7 @@ class GameValidatorTest {
         String input = "abc";
 
         // then
-        assertThatThrownBy(() -> gameValidator.validateIsNumber(input))
+        assertThatThrownBy(() -> GameValidator.validateIsNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 숫자만 입력 가능합니다.");
     }
@@ -45,7 +37,7 @@ class GameValidatorTest {
         String[] input = {"1", "2", "3"};
 
         // then
-        assertThatCode(() -> gameValidator.validateIsThreeNumbers(input))
+        assertThatCode(() -> GameValidator.validateIsThreeNumbers(input))
                 .doesNotThrowAnyException();
     }
 
@@ -56,7 +48,7 @@ class GameValidatorTest {
         String[] input = {"1", "2"};
 
         // then
-        assertThatThrownBy(() -> gameValidator.validateIsThreeNumbers(input))
+        assertThatThrownBy(() -> GameValidator.validateIsThreeNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 3자리 숫자만 입력 가능합니다.");
     }
@@ -68,7 +60,7 @@ class GameValidatorTest {
         int input = 1;
 
         // then
-        assertThatCode(() -> gameValidator.validateIsOneOrTwo(input))
+        assertThatCode(() -> GameValidator.validateIsOneOrTwo(input))
                 .doesNotThrowAnyException();
     }
 
@@ -79,7 +71,7 @@ class GameValidatorTest {
         int input = 3;
 
         // then
-        assertThatThrownBy(() -> gameValidator.validateIsOneOrTwo(input))
+        assertThatThrownBy(() -> GameValidator.validateIsOneOrTwo(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 1 또는 2만 입력 가능합니다.");
     }

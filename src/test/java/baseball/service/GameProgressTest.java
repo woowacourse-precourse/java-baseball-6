@@ -1,12 +1,12 @@
 package baseball.service;
 
+import baseball.model.CompareResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -29,12 +29,12 @@ public class GameProgressTest {
         List<Integer> userNumbers = Arrays.asList(1, 3, 2);
 
         // when
-        Map<String, Integer> result = gameProgress.compareNumbers(computerNumbers, userNumbers);
+        CompareResult result = gameProgress.compareNumbers(computerNumbers, userNumbers);
 
         // then
         assertAll(
-                () -> assertThat(result.get("strike")).isEqualTo(1),
-                () -> assertThat(result.get("ball")).isEqualTo(2)
+                () -> assertThat(result.strikes()).isEqualTo(1),
+                () -> assertThat(result.balls()).isEqualTo(2)
         );
     }
 
@@ -42,10 +42,10 @@ public class GameProgressTest {
     @DisplayName("3 스트라이크일 경우 게임 종료를 반환한다")
     void isEndGameTest() {
         // given
-        Map<String, Integer> result = Map.of("strike", 3, "ball", 0);
+        CompareResult compareResult = new CompareResult(3, 0);
 
         // when
-        boolean isEndGame = gameProgress.isEndGame(result);
+        boolean isEndGame = gameProgress.isEndGame(compareResult);
 
         // then
         assertThat(isEndGame).isTrue();
@@ -55,10 +55,10 @@ public class GameProgressTest {
     @DisplayName("3 스트라이크가 아닐 경우 게임을 계속 진행한다.")
     void isEndGameFalseTest() {
         // given
-        Map<String, Integer> result = Map.of("strike", 2, "ball", 0);
+        CompareResult compareResult = new CompareResult(2, 0);
 
         // when
-        boolean isEndGame = gameProgress.isEndGame(result);
+        boolean isEndGame = gameProgress.isEndGame(compareResult);
 
         // then
         assertThat(isEndGame).isFalse();
