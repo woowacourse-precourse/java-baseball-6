@@ -5,13 +5,13 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-        View.opening();
+        OutputView.opening();
         boolean flag = true;
 
         while (flag) {
             game();
-            View.closing();
-            flag = UserInput.inputOneOrTwo();
+            OutputView.closing();
+            flag = InputView.inputOneOrTwo();
         }
     }
 
@@ -20,13 +20,12 @@ public class Application {
         boolean gameFlag = true;
 
         while (gameFlag) {
-            View.inputting();
-            List<Integer> input = UserInput.inputList();
+            List<Integer> input = InputView.inputList();
 
             int strike = Calculator.countStrike(input, answer);
             int ball = Calculator.countBall(input, answer);
 
-            View.showResult(strike, ball);
+            OutputView.showResult(strike, ball);
 
             gameFlag = Calculator.isNotOver(strike);
         }

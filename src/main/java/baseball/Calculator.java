@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Calculator {
 
-    private static int STRIKE_NUMBER = 3;
-    private static int LIST_TO = 3;
-    private static int LIST_FROM = 0;
-    private static int COUNTER_ZERO = 0;
+    private static final int STRIKE_NUMBER = 3;
+    private static final int LIST_TO = 3;
+    private static final int LIST_FROM = 0;
+    private static final int COUNTER_ZERO = 0;
 
     public static boolean isNotOver(int strike) {
         return strike != STRIKE_NUMBER;

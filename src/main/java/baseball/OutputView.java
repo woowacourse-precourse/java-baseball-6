@@ -1,6 +1,6 @@
 package baseball;
 
-public class View {
+public class OutputView {
 
     public static void opening() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -11,9 +11,6 @@ public class View {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static void inputting() {
-        System.out.print("숫자를 입력해주세요 : ");
-    }
 
     public static void showResult(int strike, int ball) {
         if (strike == 0 && ball == 0) {
