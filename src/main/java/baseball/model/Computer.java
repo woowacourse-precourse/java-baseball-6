@@ -31,4 +31,8 @@ public class Computer {
     public boolean isEnd() {
         return this.status.isEnd();
     }
+
+    public boolean isAllCorrect() {
+        return this.status.isAllCorrect();
+    }
 }

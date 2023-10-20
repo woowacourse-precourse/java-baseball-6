@@ -25,10 +25,14 @@ public class BaseballGame {
     public void play() {
         do {
             player.getPlayerInput();
-        } // while (!isAllCorrect());
+        } while (!isAllCorrect());
     }
 
     public boolean isEnd() {
         return this.computer.isEnd();
+    }
+
+    public boolean isAllCorrect() {
+        return this.computer.isAllCorrect();
     }
 }
