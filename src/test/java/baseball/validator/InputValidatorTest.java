@@ -40,4 +40,25 @@ class InputValidatorTest {
         Throwable thrown = catchThrowable(() -> InputValidator.validateGuess(userInput));
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 재시작검증_1을입력한경우_재시작() {
+        String userInput = "1";
+        int result = InputValidator.validateRestart(userInput);
+        assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    void 재시작검증_2를입력한경우_종료() {
+        String userInput = "2";
+        int result = InputValidator.validateRestart(userInput);
+        assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    void 재시작검증_잘못된입력의경우_예외발생() {
+        String userInput = "3";
+        Throwable thrown = catchThrowable(() -> InputValidator.validateRestart(userInput));
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+    }
 }
