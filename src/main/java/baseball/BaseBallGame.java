@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallGame {
-    ArrayList<Integer> answerNum = new ArrayList<>();
-    ArrayList<Integer> userNum = new ArrayList<>();
+    private ArrayList<Integer> answerNum = new ArrayList<>();
+    private ArrayList<Integer> userNum = new ArrayList<>();
 
-    private Boolean isPlaying = false;
+    private GameState state = GameState.NOT_START;
 
     public void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -33,7 +33,7 @@ public class BaseBallGame {
         }
     }
 
-    public void returnResult(){
+    public String returnResult(){
 
     }
 
