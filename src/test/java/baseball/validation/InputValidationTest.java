@@ -31,4 +31,19 @@ class InputValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력된 문자열은 자연수로만 이루어져야 합니다.");
     }
+
+    @Test
+    @DisplayName("입력된 문자열의 길이가 4이상인지 테스트")
+    void isLengthAtLeastFourTest() {
+        // given
+        InputValidation inputValidation = new InputValidation();
+
+        // when
+        String stringWithFourOrMore = "1234";
+
+        // then
+        assertThatThrownBy(() -> inputValidation.isLengthAtLeastFour(stringWithFourOrMore))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력값은 3 이하여야 합니다.");
+    }
 }
