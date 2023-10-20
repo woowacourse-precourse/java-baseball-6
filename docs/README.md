@@ -24,24 +24,27 @@
 
 처음엔 코딩테스트 문제 풀듯이 주먹구구식으로 구현하려고 하였으나,
 스파게티 코드가 되는 것을 보고 다시 만들기로 하였다.  
-MVC 패턴을 활용하여 숫자야구를 진행하기로 결정했다.
+MVC 패턴을 참고하여 숫자야구를 진행하기로 결정했다.
 
 # 구현 객체
 
-## GameController
+## Application
 뷰와 서비스를 활용하여 게임을 진행하는 객체
 
 ## GameView
 입출력을 담당하는 객체
 
 ## GameService
-게임 부분을 담당하는 객체
+게임의 로직 부분을 담당하는 객체
+
+### Baseball getRandomBaseball()
+랜덤한 정보를 가진 자료구조를 반환하는 메소드.
 
 ## Baseball
 숫자야구 정보를 담는 자료구조.
 
-### BaseballScore compare(Baseball baseball)
-두 자료구조의 정보를 비교하여 점수를 반환하는 메소드.
+### BaseballScore compare(Baseball)
+다른 숫자야구 자료와 비교 후 점수를 반환하는 메소드.
 
 ## BaseballScore
 볼/스트라이크 정보를 가지는 자료구조.
