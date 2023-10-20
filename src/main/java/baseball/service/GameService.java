@@ -2,13 +2,14 @@ package baseball.service;
 
 import static baseball.properties.Properties.*;
 
-import baseball.properties.Properties;
+import baseball.model.GameResult;
 
+import baseball.properties.Properties;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class GameService {
 
@@ -21,7 +22,7 @@ public class GameService {
     public List<Integer> parseInput(String userInputString) {
         List<Integer> result = new ArrayList<>();
         Set<Integer> duplicateCheckSet = new HashSet<>();
-        checkLength(userInputString);
+        checkLength(userInputString,GAME_SIZE);
         for (String input : userInputString.split("")) {
             Integer converted = converIntegerOrThorwIllegalException(input);
             if (DIGIT_START <= converted && converted > DIGIT_END) {
@@ -36,6 +37,34 @@ public class GameService {
         return result;
     }
 
+    public GameResult calculateGameResult(List<Integer> userInputNumbers) {
+        int ballcount = countBall(gameRandomNumbers,userInputNumbers);
+        int strikeCount = 0;
+
+        if (ballcount == 0) {
+            return new GameResult(ballcount,strikeCount);
+        }
+        strikeCount = countStrike(gameRandomNumbers,userInputNumbers);
+        ballcount -= strikeCount;
+        return new GameResult(ballcount,strikeCount);
+    }
+
+    private int countStrike(List<Integer> gameRandomNumbers, List<Integer> userInputNumbers) {
+        int count = 0;
+        for (int i = 0; i < GAME_SIZE; i++) {
+            if (gameRandomNumbers.get(i).equals(userInputNumbers.get(i))) {
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    private int countBall(List<Integer> comNumbers, List<Integer> userNumbers) {
+        int totalSize = comNumbers.size() + userNumbers.size();
+        int differentBallCount = (int)Stream.concat(comNumbers.stream(),userNumbers.stream()).distinct().count();
+        return totalSize - differentBallCount;
+    }
+
     private Integer converIntegerOrThorwIllegalException(String input) {
         try {
             return Integer.parseInt(input);
@@ -44,10 +73,10 @@ public class GameService {
         }
     }
 
-    private void checkLength(String userInputString) {
-        if (userInputString.length() != GAME_SIZE) {
-            throw new IllegalArgumentException(String.format("입력받은 사용자 문자의 길이 = %d , GAME SIZE %d",
-                    userInputString.length(), GAME_SIZE));
+    private void checkLength(String userInputString,int targetSize) {
+        if (userInputString.length() != targetSize) {
+            throw new IllegalArgumentException(String.format("입력받은 사용자 문자의 길이 = %d , 제한길이 %d",
+                    userInputString.length(), targetSize));
         }
     }
 }

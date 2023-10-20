@@ -2,6 +2,7 @@ package baseball.controller;
 
 import static baseball.properties.Properties.*;
 
+import baseball.model.GameResult;
 import java.util.List;
 
 import baseball.service.GameService;
@@ -27,5 +28,9 @@ public class GameController {
         View.gameInput();
         String userInputString = Console.readLine();
         List<Integer> userInpuNumbers = gameService.parseInput(userInputString);
+    }
+
+    public void makeResult(List<Integer> userInputNumbers) {
+        GameResult gameResult = gameService.calculateGameResult(userInputNumbers);
     }
 }
