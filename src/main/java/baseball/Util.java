@@ -26,7 +26,7 @@ public class Util {
 
         for(int i = 0; i < answerNumbers.size(); i++) {
             for(int j = 0; j < userNumbers.size(); j++) {
-                if(i == j && answerNumbers.get(i) == userNumbers.get(j)) {
+                if((i == j) && (answerNumbers.get(i) == userNumbers.get(j))) {
                     strike++;
                     continue;
                 }
