@@ -31,9 +31,9 @@ public class Game {
 	
 	private void getInputNum() {
 		System.out.print(Constants.INPUT_MSG);
-		String str = Console.readLine();
+		String input_str = Console.readLine();
 		
-		isRightLength(str);
+		isRightLength(input_str);
 	}
 	
 	private void isRightLength(String str) { //입력된 값이 3자리 수인지
@@ -47,6 +47,8 @@ public class Game {
 		String tmp = "^[1-9]*$";
 		if(Pattern.matches(tmp, str) != true)
 			throw new IllegalArgumentException(Constants.WRONG_INPUT_ERROR);
+		
+		isNotDuplicate(str);
 	}
 	
 	private void isNotDuplicate(String str) { //중복되는 수가 있는지
@@ -54,6 +56,14 @@ public class Game {
 			int firstInd = str.indexOf(str.charAt(i));
 			if(firstInd != i)
 				throw new IllegalArgumentException(Constants.WRONG_INPUT_ERROR);
+		}
+		setInputNum(str);
+	}
+	
+	private void setInputNum(String str){ //입력값 타입 변경
+		for(int j = 0; j < str.length(); j++) {
+			int tmp = Character.getNumericValue(str.charAt(j));
+			inputNum.add(tmp);
 		}
 	}
 }
