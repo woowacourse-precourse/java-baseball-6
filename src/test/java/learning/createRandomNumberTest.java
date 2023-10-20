@@ -1,11 +1,11 @@
 package learning;
 
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class createRandomNumberTest {
 
@@ -26,10 +26,11 @@ public class createRandomNumberTest {
 
     boolean isThreeDifferentNumbers(List<Integer> numbers) {
         int[] countOf = new int[10];
-        for (Integer n: numbers) {
+        for (Integer n : numbers) {
             countOf[n] += 1;
-            if (countOf[n] > 1)
+            if (countOf[n] > 1) {
                 return false;
+            }
         }
         return true;
     }
