@@ -1,9 +1,8 @@
 package baseball.controller;
 
-import baseball.system.SystemConstant;
 import baseball.domain.BallNumber;
 import baseball.domain.Result;
-
+import baseball.system.SystemConstant;
 import java.util.stream.IntStream;
 
 public class ResultCalculator {
@@ -19,17 +18,17 @@ public class ResultCalculator {
                         isStrike(comparisonNumber.getBallNumberByDigit(i), i))
                 .count();
         int newBalls = (int) comparisonNumber.ballNumber.stream()
-                .filter(this::isBall)
-                .count();
+                .filter(this::ballInThisArea)
+                .count() - newStrikes;
 
-        return new Result(newStrikes,newBalls);
+        return new Result(newStrikes, newBalls);
     }
 
-    private boolean isStrike (int eachNumber, int digit) {
+    private boolean isStrike(int eachNumber, int digit) {
         return NumberComparator.isEqual(eachNumber, computerNumber.getBallNumberByDigit(digit));
     }
 
-    private boolean isBall (int eachNumber) {
+    private boolean ballInThisArea(int eachNumber) {
         return computerNumber.ballNumber.contains(eachNumber);
     }
 }
