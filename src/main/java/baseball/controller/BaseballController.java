@@ -1,11 +1,15 @@
 package baseball.controller;
 
+import baseball.constant.Hint;
 import baseball.model.Command;
 import baseball.model.GameNumber;
+import baseball.model.Score;
 import baseball.service.ScoreCalculator;
 import baseball.util.RandomNumbersGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+
+import java.util.Map;
 
 public class BaseballController {
 
@@ -30,15 +34,20 @@ public class BaseballController {
         System.out.println("computer = " + computer);
         while (true) {
             GameNumber player = new GameNumber(inputView.readGuessNumber());
-            int strike = calculator.calculateStrike(computer, player);
-            int ball = calculator.calculateBall(computer, player);
-            outputView.printResult(strike, ball);
-            if (strike == 3) {
+            Score score = calculateScore(computer, player);
+            outputView.printResult(score);
+            if (score.isStrikeOut()) {
                 outputView.printGameEndMessage();
                 break;
             }
         }
         restart();
+    }
+
+    private Score calculateScore(GameNumber computer, GameNumber player) {
+        int strike = calculator.calculateStrike(computer, player);
+        int ball = calculator.calculateBall(computer, player);
+        return new Score(Map.of(Hint.STRIKE, strike, Hint.BALL, ball));
     }
 
     private void restart() {
