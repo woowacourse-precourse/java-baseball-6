@@ -9,11 +9,6 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         GameManager gameManager = new GameManager();
-        InputManager inputManager = new InputManager();
-        
-        List<Integer> randBaseballNumber = gameManager.createRandNumber();
-        String userBaseballNumber = inputManager.getBaseballNumberFromUser(inputManager);
-        String hint = gameManager.calculateHint(randBaseballNumber, userBaseballNumber);
-        System.out.println(hint);
+        gameManager.playGame();
     }
 }

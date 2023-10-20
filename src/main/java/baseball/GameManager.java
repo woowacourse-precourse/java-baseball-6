@@ -35,4 +35,12 @@ public class GameManager {
         }
         return String.format("%s 스트라이크 %s 볼", strike, ball);
     }
+
+    public void playGame() {
+        InputManager inputManager = new InputManager();
+
+        List<Integer> randBaseballNumber = createRandNumber();
+        String userBaseballNumber = inputManager.getBaseballNumberFromUser(inputManager);
+        String hint = calculateHint(randBaseballNumber, userBaseballNumber);
+    }
 }
