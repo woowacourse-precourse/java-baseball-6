@@ -1,9 +1,9 @@
 package baseball.controller;
 
-import static baseball.common.Constants.GAME_INPUT_REQUEST_MESSAGE;
-import static baseball.common.Constants.PROGRAM_START_MESSAGE;
+import static baseball.common.Constants.*;
 import static baseball.domain.Baseball.createAnswer;
 import static baseball.view.OutputView.printInfo;
+import static baseball.view.OutputView.printResult;
 
 import baseball.domain.Baseball;
 import baseball.domain.Result;
@@ -20,8 +20,15 @@ public class BaseballController {
         printInfo(PROGRAM_START_MESSAGE);
         Baseball gameAnswer = createAnswer();
 
-        printInfo(GAME_INPUT_REQUEST_MESSAGE);
-        Baseball guess = baseballService.input();
-        Result result = baseballService.compare(guess, gameAnswer);
+        while (true) {
+            printInfo(GAME_INPUT_REQUEST_MESSAGE);
+            Baseball guess = baseballService.input();
+            Result result = baseballService.compare(guess, gameAnswer);
+            printResult(result);
+            if (result.getStrikeCount() == DIGIT_COUNT) {
+                printInfo(GAME_CLEAR_MESSAGE);
+                break;
+            }
+        }
     }
 }
