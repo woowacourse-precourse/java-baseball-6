@@ -15,23 +15,27 @@ public class BaseBallGame {
     private final NumberValidation validation = new NumberValidation();
 
     public void startGame() {
+        int restartNumber = 0;
+        while(restartNumber != NumberConstant.GAME_END_NUMBER){
+            List<Integer> computer = computerService.createNumber();
+            messageService.printStartMessage();
+            int ballCount = 0;
+            int strikeCount = 0;
+            while (strikeCount != NumberConstant.GAME_WIN_NUMBER){
+                messageService.printUserInputNumberMessage();
+                String inputNumber = userService.inputUserNumber();
+                List<Integer> user = validation.validateInputNumber(inputNumber);
+                Result result = comparison(computer, user);
 
-        List<Integer> computer = computerService.createNumber();
-        messageService.printStartMessage();
-        int ballCount = 0;
-        int strikeCount = 0;
-        while (strikeCount != NumberConstant.GAME_WIN_NUMBER){
-            messageService.printUserInputNumberMessage();
-            String inputNumber = userService.inputUserNumber();
-            List<Integer> user = validation.validateInputNumber(inputNumber);
-            Result result = comparison(computer, user);
+                ballCount = result.getBallCount();
+                strikeCount = result.getStrikeCount();
 
-            ballCount = result.getBallCount();
-            strikeCount = result.getStrikeCount();
-
-            messageService.printComparisonResult(ballCount,strikeCount);
+                messageService.printComparisonResult(ballCount,strikeCount);
+            }
+            messageService.printWinMessage();
+            messageService.printGameRestartOrGameEndMessage();
+            restartNumber = InputRestartOrEnd();
         }
-
     }
 
     public Result comparison(List<Integer> computer, List<Integer> user) {
@@ -52,4 +56,8 @@ public class BaseBallGame {
         return new Result(ballCount,strikeCount);
     }
 
+    public int InputRestartOrEnd(){
+        int inputNumber =  Integer.parseInt(userService.inputUserNumber());
+        return inputNumber;
+    }
 }
