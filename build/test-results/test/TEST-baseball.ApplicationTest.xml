@@ -1,45 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="baseball.ApplicationTest" tests="2" skipped="0" failures="2" errors="0" timestamp="2023-10-19T16:08:43" hostname="DESKTOP-FDF636C" time="0.718">
+<testsuite name="baseball.ApplicationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-10-20T15:52:20" hostname="DESKTOP-FDF636C" time="0.789">
   <properties/>
-  <testcase name="게임종료_후_재시작()" classname="baseball.ApplicationTest" time="0.662">
-    <failure message="java.lang.StringIndexOutOfBoundsException: String index out of range: 1" type="java.lang.StringIndexOutOfBoundsException">java.lang.StringIndexOutOfBoundsException: String index out of range: 1
-	at java.lang.StringLatin1.charAt(StringLatin1.java:48)
-	at java.lang.String.charAt(String.java:1513)
-	at baseball.Application.check(Application.java:51)
-	at baseball.Application.main(Application.java:26)
-	at baseball.ApplicationTest.runMain(ApplicationTest.java:33)
-	at camp.nextstep.edu.missionutils.test.NsTest.run(NsTest.java:37)
-	at baseball.ApplicationTest.lambda$게임종료_후_재시작$0(ApplicationTest.java:16)
-	at camp.nextstep.edu.missionutils.test.Assertions.lambda$assertRandomTest$4(Assertions.java:89)
-	at org.junit.jupiter.api.AssertTimeout.lambda$assertTimeoutPreemptively$2(AssertTimeout.java:102)
-	at org.junit.jupiter.api.AssertTimeout.lambda$assertTimeoutPreemptively$4(AssertTimeout.java:138)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.lang.Thread.run(Thread.java:833)
-</failure>
-  </testcase>
-  <testcase name="예외_테스트()" classname="baseball.ApplicationTest" time="0.055">
-    <failure message="java.lang.AssertionError: &#13;&#10;Expecting code to raise a throwable." type="java.lang.AssertionError">java.lang.AssertionError: 
-Expecting code to raise a throwable.
-	at baseball.ApplicationTest.lambda$예외_테스트$2(ApplicationTest.java:26)
-	at org.junit.jupiter.api.AssertTimeout.lambda$assertTimeoutPreemptively$2(AssertTimeout.java:102)
-	at org.junit.jupiter.api.AssertTimeout.lambda$assertTimeoutPreemptively$4(AssertTimeout.java:138)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.lang.Thread.run(Thread.java:833)
-</failure>
-  </testcase>
+  <testcase name="게임종료_후_재시작()" classname="baseball.ApplicationTest" time="0.783"/>
+  <testcase name="예외_테스트()" classname="baseball.ApplicationTest" time="0.005"/>
   <system-out><![CDATA[숫자 야구 게임을 시작합니다.
+숫자를 입력해주세요 : 
+낫싱
+숫자를 입력해주세요 : 
+3스트라이크
+3개의 숫자를 모두 맞히셨습니다! 게임 종료
+게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
+숫자 야구 게임을 시작합니다.
 숫자를 입력해주세요 : 
 1볼 1스트라이크
 숫자를 입력해주세요 : 
-1볼 0스트라이크
-숫자를 입력해주세요 :
+3스트라이크
+3개의 숫자를 모두 맞히셨습니다! 게임 종료
+게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
 숫자 야구 게임을 시작합니다.
-숫자를 입력해주세요 : 
-낫싱
 숫자를 입력해주세요 :
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
