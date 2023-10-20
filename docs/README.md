@@ -13,12 +13,13 @@
     - `Balls` 를 입력받아 볼 개수를 반환한다.
   - [x] 스트라이크 개수를 판단하는 기능
     - `Balls` 를 입력받아 스트라이크 개수를 반환한다.
-- GameResult
+- GameStatus
   - [x] 게임 결과를 반환하는 기능
     - 볼, 스트라이크 개수를 입력받아 `GameResult`를 반환한다.
-- GameStatus
+    - `GameCommand`를 입력받아 `GameResult`를 반환한다.
+- GameCommand
   - [x] 재시작/종료를 반환하는 기능
-    - 숫자를 입력받아 `GameStatus`를 반환한다.
+    - 숫자를 입력받아 `GameCommand`를 반환한다.
 
 ## Input
 

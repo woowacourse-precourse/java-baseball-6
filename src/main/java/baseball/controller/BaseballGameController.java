@@ -2,8 +2,8 @@ package baseball.controller;
 
 import baseball.domain.Ball;
 import baseball.domain.Balls;
-import baseball.domain.GameResult;
 import baseball.domain.GameStatus;
+import baseball.domain.GameCommand;
 import baseball.utils.NumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -16,30 +16,23 @@ public class BaseballGameController {
     public BaseballGameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-
     }
 
     public void run() {
+        GameStatus gameStatus = GameStatus.RUN;
         outputView.printGameStart();
 
-        GameStatus gameStatus = GameStatus.RESTART;
-        while (gameStatus != GameStatus.EXIT) {
+        while (gameStatus.isNotEnd()) {
             Balls computer = createComputer();
 
-            GameResult gameResult = GameResult.CONTINUE;
-            while (gameResult != GameResult.END) {
-                Balls player = createPlayer();
-                gameResult = getGameResult(computer, player);
+            while (gameStatus.isNotClear()) {
+                gameStatus = play(computer);
             }
 
             outputView.printGameEnd();
-            gameStatus = getGameStatus();
+            GameCommand gameCommand = getGameCommand();
+            gameStatus = GameStatus.from(gameCommand);
         }
-    }
-
-    private Balls createPlayer() {
-        int playerNumber = inputView.readPlayerNumber();
-        return new Balls(playerNumber);
     }
 
     private static Balls createComputer() {
@@ -48,19 +41,21 @@ public class BaseballGameController {
         return new Balls(generatedNumbers);
     }
 
-    private GameResult getGameResult(Balls computer, Balls player) {
-        GameResult gameResult;
+    private GameStatus play(Balls computer) {
+        Balls player = createPlayer();
         int ballCount = computer.getBallCount(player);
         int strikeCount = computer.getStrikeCount(player);
         outputView.printBallAndStrike(ballCount, strikeCount);
-        gameResult = GameResult.from(strikeCount);
-        return gameResult;
+        return GameStatus.from(strikeCount);
     }
 
-    private GameStatus getGameStatus() {
-        GameStatus gameStatus;
+    private Balls createPlayer() {
+        int playerNumber = inputView.readPlayerNumber();
+        return new Balls(playerNumber);
+    }
+
+    private GameCommand getGameCommand() {
         int command = inputView.readGameCommand();
-        gameStatus = GameStatus.from(command);
-        return gameStatus;
+        return GameCommand.from(command);
     }
 }

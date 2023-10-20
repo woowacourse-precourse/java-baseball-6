@@ -7,11 +7,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class GameStatusTest {
-    @DisplayName("command 를 입력받아 게임 상태를 반환한다")
+    @DisplayName("스트라이크 개수로 게임 결과를 반환한다")
     @ParameterizedTest
-    @CsvSource({"1, RESTART", "2, EXIT"})
-    void GetGameStatusFromCommand(int command, GameStatus expected) {
-        GameStatus actual = GameStatus.from(command);
+    @CsvSource({"0, RUN", "3, CLEAR"})
+    void GetGameResultFromStrikeCount(int strikeCount, GameStatus expected) {
+        GameStatus actual = GameStatus.from(strikeCount);
 
         assertThat(actual).isEqualTo(expected);
     }
