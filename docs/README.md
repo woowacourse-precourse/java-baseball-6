@@ -14,10 +14,10 @@
 - [x] Computer 와 Player 가 Extends 하는 abstract class - Playable 
 - [x] 게임 제시작 여부를 저장 맟 판단하는 트리거 - RetryTrigger
 # View
-- [ ] 숫자 입력하기 - InputView
-- [ ] 게임 결과 출력하기 - OutputView
-- [ ] 3 스트라이크시 게임 종료 문구 출력하기 - OutputView
-- [ ] 게임 새로 시작 여부 입력하기 - InputView
+- [x] 숫자 입력하기 - InputView
+- [x] 게임 결과 출력하기 - OutputView
+- [x] 3 스트라이크시 게임 종료 문구 출력하기 - OutputView
+- [x] 게임 새로 시작 여부 입력하기 - InputView
 
 # Controller
 - [ ] 3 스트라이크 전 까지 숫자 입력, 결과 출력 반복하기
