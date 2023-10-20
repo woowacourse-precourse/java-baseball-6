@@ -27,6 +27,13 @@ public class GameController {
         Validator.isValidNumbers(inputNumbers);
         GameResult result = gameService.getResult(inputNumbers);
         outputView.outputResult(result);
+        if (!isSuccess(result)) {
+            gamePlay();
+        }
+    }
+
+    private boolean isSuccess(GameResult result) {
+        return result.getStrike() == 3;
     }
 
     private void gameInit() {
