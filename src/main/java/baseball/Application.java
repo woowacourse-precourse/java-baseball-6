@@ -18,7 +18,7 @@ public class Application {
         // 게임 진행. 문제를 맞춰도 다시 시작 가능.
         while(endSign == 1) {
             // 랜덤 숫자 생성.
-            // 구현 필요.
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
 
             // 숫자 맞추기 게임 시작
             while(!isCorrect) {
