@@ -40,6 +40,16 @@ public class Controller {
         }
     }
 
+    private Balls insertNumberAndMakeBalls() {
+        outputView.printInsertNumbers();
+        List<Integer> input = inputView.insertNumbers();
+        return Balls.from(input);
+    }
+
+    private static boolean isAllStrike(String hint) {
+        return String.format("%d%s", NUMBER_OF_BALLS, Hint.STRIKE.value()).equals(hint);
+    }
+
     private void endProcess() {
         service.endGame();
         outputView.printInsertCommand();
@@ -53,17 +63,6 @@ public class Controller {
             play();
             return;
         }
-
         outputView.printGameOver();
-    }
-
-    private Balls insertNumberAndMakeBalls() {
-        outputView.printInsertNumbers();
-        List<Integer> input = inputView.insertNumbers();
-        return Balls.from(input);
-    }
-
-    private static boolean isAllStrike(String hint) {
-        return String.format("%d%s", NUMBER_OF_BALLS, Hint.STRIKE.value()).equals(hint);
     }
 }
