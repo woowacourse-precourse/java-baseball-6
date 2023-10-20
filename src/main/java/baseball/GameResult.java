@@ -1,8 +1,8 @@
 package baseball;
 
 public class GameResult {
-    int ball;
-    int strike;
+    private int ball;
+    private int strike;
     public GameResult(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
@@ -26,7 +26,7 @@ public class GameResult {
         }
     }
 
-    public boolean isStrike() {
+    public boolean isThreeStrike() {
         if (strike != 3) {
             return false;
         }
