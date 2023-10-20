@@ -11,10 +11,10 @@ public class PlayController {
     ValidateController validateController;
     GameOutput gameOutput;
     GameState gameState;
-    private GameNumber gameNumber;
-    private GameNumber userGameNumber;
+    GameNumber gameNumber;
+    GameNumber userGameNumber;
 
-    public PlayController(Integer length) {
+    public PlayController() {
         this.gameNumber = new GameNumber();
         this.userGameNumber = new GameNumber();
 
@@ -42,11 +42,7 @@ public class PlayController {
         Integer strikeCount = gameState.getStrikeCount();
         gameOutput.printResult(ballCount, strikeCount);
 
-        if (strikeCount == gameState.getMaximumNumberLength()) {
-            return true;
-        }
-
-        return false;
+        return strikeCount.equals(gameState.getMaximumNumberLength()); // 자릿수와 스트라이크의 수가 같다면 종료
     }
 
     private void matchingBallAndStrike() {
@@ -56,8 +52,8 @@ public class PlayController {
         List<Integer> userNumbers = userGameNumber.getNumber();
 
         for (Integer currentNumber : userNumbers) {
-            Integer userIdx = userNumbers.indexOf(currentNumber);
-            Integer computerIdx = computerNumbers.indexOf(currentNumber);
+            int userIdx = userNumbers.indexOf(currentNumber);
+            int computerIdx = computerNumbers.indexOf(currentNumber);
 
             if (userIdx == computerIdx) gameState.increaseStrikeCount();
             else if (computerIdx != -1) gameState.increaseBallCount();
