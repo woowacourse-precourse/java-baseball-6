@@ -16,8 +16,8 @@ public class Validator {
     /**
      * Validate input whether it follows the rule specified above.
      * If input isn't valid, throws an exception.
+     * If the input doesn't follow the rule, IllegalArgumentException is thrown.
      * @param input of the user to validate.
-     * @throws IllegalStateException if the input doesn't follow the rule, this exception is thrown.
      */
     public void validate(String input) {
         Pattern pattern = Pattern.compile("[1-9][1-9][1-9]");
