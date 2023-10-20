@@ -5,12 +5,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
         Game game = new Game();
         game.computer();
         game.user();
+        Hint hint = new Hint();
+        hint.score(game.answer, game.computer_answer);
     }
 }
 
@@ -49,5 +52,26 @@ class Game{
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("게임 종료");
         }
+    }
+}
+
+class Hint{
+    int ball, strike;
+
+    void score(List<Integer>user, List<Integer>computer){
+        ball = 0;
+        strike = 0;
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(Objects.equals(user.get(i), computer.get(j))){
+                    if(i == j){
+                        strike++;
+                    } else{
+                        ball++;
+                    }
+                }
+            }
+        }
+        System.out.println(strike + "스트라이크 " + ball + "볼");
     }
 }
