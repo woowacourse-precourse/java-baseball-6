@@ -27,7 +27,7 @@ public class Application {
 
         //1. 선택
         List<Integer> selectNumber = new ArrayList<>();
-        selectThreeNumber(selectNumber);
+        Application.selectThreeNumber(selectNumber);
 
         System.out.println("selectNumber = " + selectNumber);
         //2. 출력문 구성
@@ -106,7 +106,7 @@ public class Application {
 
                 if (Integer.parseInt(inputNumber) == 1) {
                     selectNumber.clear();
-                    selectThreeNumber(selectNumber);
+                    Application.selectThreeNumber(selectNumber);
                     System.out.println("selectNumber = " + selectNumber);
                 } else {
                     break;
