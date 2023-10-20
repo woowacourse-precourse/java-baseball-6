@@ -12,8 +12,6 @@ public class Application {
         List<Integer> userResult;
         boolean gameResult = false;
 
-
-
         computerNums = choiceComputerNums();
         printComputerNums(computerNums);
 
@@ -21,6 +19,9 @@ public class Application {
         userResult = calculateResult(computerNums, userNums);
         gameResult = displayResult(userResult);
 
+        if (gameResult) {
+            finishGame();
+        }
 
     }
 
@@ -84,6 +85,41 @@ public class Application {
         return false;
     }
 
+    // 스트라이크와 볼 결과 출력
+    public static boolean displayResult(List<Integer> userResult) {
+        int strike = userResult.get(0);
+        int ball = userResult.get(1);
 
+        if (strike == 3) {
+            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            return true;
+        }
+
+        if (ball > 0) {
+            System.out.print(ball + "볼 ");
+        }
+        if (strike > 0) {
+            System.out.print(strike + "스트라이크");
+        }
+        if (strike == 0 && ball == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println();
+        return false;
+    }
+    public static void finishGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals("1")){}
+        else if (input.equals("2")) {
+            closeSetting();
+        } else {
+            throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+    }
+
+    private static void closeSetting() {
+        Console.close();
+        System.exit(0);
+    }
 }
-
