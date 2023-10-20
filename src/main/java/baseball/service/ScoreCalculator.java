@@ -14,14 +14,22 @@ public class ScoreCalculator {
 
     public Integer calculateStrike(GameNumber computer, GameNumber player) {
         return (int) IntStream.range(0, NUMBER_SIZE.getValue())
-                .filter(idx -> computer.get(idx).equals(player.get(idx)))
+                .filter(idx -> isStrike(computer, player, idx))
                 .count();
     }
 
     public Integer calculateBall(GameNumber computer, GameNumber player) {
         return (int) IntStream.range(0, NUMBER_SIZE.getValue())
-                .filter(idx -> computer.contains(player.get(idx))
-                        && !Objects.equals(computer.get(idx), player.get(idx)))
+                .filter(idx -> isBall(computer, player, idx))
                 .count();
+    }
+
+    private boolean isStrike(GameNumber computer, GameNumber player, int idx) {
+        return computer.get(idx).equals(player.get(idx));
+    }
+
+    private boolean isBall(GameNumber computer, GameNumber player, int idx) {
+        return computer.contains(player.get(idx))
+                && !Objects.equals(computer.get(idx), player.get(idx));
     }
 }
