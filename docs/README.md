@@ -54,3 +54,4 @@ public class Application {
 ```
   - 꼭 이러한 패턴이어야 하는 이유는 뭘까? Application이라는 이름보다 '게임'이란 걸 수행한다는 걸 명확하게 하기 위함일 수도 있지만, 이 앱이 '어떤 게임에 관한 것'이라는 건 이미 패키지명 수준에서 충분히 설명되지 않나?
   - 지금 상황을 예로 들면, java-baseball 패키지의 Application은 java-baseball 앱이라는 걸 이미 직관적으로 표현하고 있는게 아닐까?
+  - java.util.Objects#equals()를 여러번 사용하는 코드가 있어서, Objects를 static import 하려고 했는데 안된다. 이유가 뭘까?
