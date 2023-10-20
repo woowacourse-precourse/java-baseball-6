@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.utill.Converter;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -16,13 +17,9 @@ public class InputView {
     }
     public static List<String> readPlayerNumber(){
         System.out.print(INPUT_MESSAGE);
-
         String[] input = Console.readLine().split(SEPARATOR);
-
         List<String> inputList = Arrays.asList(input);
-
         validation(inputList);
-
         return  inputList;
     }
     private static void validation(List<String> input){
@@ -56,5 +53,8 @@ public class InputView {
         if(list.size() != INPUT_LENGTH){
             throw new IllegalArgumentException();
         }
+    }
+    public static String readEndSign(){
+        return Console.readLine();
     }
 }

@@ -13,7 +13,12 @@ public class BaseBallGame {
 
     public void run() {
         OutputView.printStartMessage();
-        startNewGame();
+        boolean endSign = true;
+        while(endSign){
+            startNewGame();
+            endSign = isEnd(InputView.readEndSign());
+        }
+
     }
     private void startNewGame() {
         List<Integer> computerNumbers = generateComputerNumber();
@@ -40,5 +45,14 @@ public class BaseBallGame {
     }
     private boolean isContinue(Result result){
         return result.getStrikeCount() != 3;
+    }
+    private boolean isEnd(String sign){
+        if(sign.equals("1")){
+            return true;
+        }
+        if(sign.equals("2")){
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 }
