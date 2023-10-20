@@ -8,6 +8,9 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Application {
+    static String userNumber;
+    static ArrayList<Integer> computerNumber;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -17,12 +20,12 @@ public class Application {
     private static void playBaseBallGame() {
         displayStartGame();
 
-        ArrayList<Integer> computerNumber = makeRandomComputerNumber();
+        computerNumber = makeRandomComputerNumber();
 
         while (true) {
             diplayUserInput();
             try {
-                String userNumber = getUserNumber();
+                userNumber = inputUserNumber();
                 String hint = inferHint(computerNumber, userNumber);
                 System.out.println(hint);
 
@@ -59,7 +62,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    private static String getUserNumber() {
+    private static String inputUserNumber() {
         // 사용자에게 3자리 숫자 입력받기
         String userNumber = Console.readLine();
 
@@ -113,21 +116,26 @@ public class Application {
         if (isNothing(strike, ball)) {
             return "낫싱";
         }
-        return getBallResult(ball) + getStrikeResult(strike);
+        String strikeResult = getGameResult("스트라이크", strike);
+        String ballResult = getGameResult("볼", ball);
+        return ballResult + strikeResult;
     }
 
-    private static String getStrikeResult(int strike) {
-        return strike > 0 ? String.format("%d 스트라이크", strike) : "";
+    private static String getGameResult(String type, int count) {
+        if (count <= 0) return "";
+
+        return switch (type) {
+            case "스트라이크" -> String.format("%d 스트라이크", count);
+            case "볼" -> String.format("%d 볼 ", count);
+            default -> throw new IllegalArgumentException("Invalid type");
+        };
     }
 
-    private static String getBallResult(int ball) {
-        return ball > 0 ? String.format("%d 볼 ", ball) : "";
-    }
 
     private static int countingStrike(List<Integer> computerNumber, String userNumber) {
         int result = 0;
         for (int i = 0; i < 3; i++) {
-            int currentUserNumber = userNumber.charAt(i) - 48;
+            int currentUserNumber =  userNumber.charAt(i) - 48;
             int currentComputerNumber = computerNumber.get(i);
             if (currentUserNumber == currentComputerNumber) result++;
         }
