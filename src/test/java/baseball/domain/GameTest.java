@@ -27,6 +27,19 @@ public class GameTest {
     }
 
     @Test
+    void 게임_재시작() {
+        //given
+        Game game = new Game(new RandomBallsGenerator());
+        game.end();
+
+        //when
+        game.restart();
+
+        //then
+        assertEquals(game.getGameState(), GameState.ON);
+    }
+
+    @Test
     void 힌트_테스트() {
         Game game = new Game(new TestGenerator());
         game.start();
