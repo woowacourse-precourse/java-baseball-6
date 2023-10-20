@@ -2,6 +2,7 @@ package baseball.view;
 
 import static baseball.model.Constant.MESSAGE_BALL;
 import static baseball.model.Constant.MESSAGE_GAME_END;
+import static baseball.model.Constant.MESSAGE_GAME_RESTART;
 import static baseball.model.Constant.MESSAGE_GAME_START;
 import static baseball.model.Constant.MESSAGE_INPUT_NUMBER;
 import static baseball.model.Constant.MESSAGE_NOTHING;
@@ -13,6 +14,9 @@ public class OutputView {
 
 	public void printGameStart() {
 		System.out.println(MESSAGE_GAME_START.getMessage());
+	}
+	public static void printRestart() {
+		System.out.println(MESSAGE_GAME_RESTART.getMessage());
 	}
 	public void printGameEnd() {
 		System.out.println(MESSAGE_GAME_END.getMessage());
