@@ -41,7 +41,7 @@ public class Player {
 
 //  해당 메소드는 게임 중 입력값을 검증할 때도 필요 할 수 있으니 public으로 선언
     public boolean verifyInputValue(String numberStr){
-        return isThreeDigits(numberStr) && isNumbers(numberStr);
+        return isThreeDigits(numberStr) && isNumbers(numberStr) && isDuplicate(numberStr);
     }
 
 //    사용자가 입력한 값이 3자리 수인지 검증
@@ -56,20 +56,13 @@ public class Player {
                 .count() == 0;
     }
 
-
-////    사용자가 입력한 값이 정상적인 입력값인지 검증 (숫자이고 3자리인지, 중복된 수는 없는지 확인)
-//    private int verifyEnteredValuesAndReturnForNumber(String numberStr){
-//        if(numberStr.length()!=3){
-//           throw new IllegalArgumentException("입력하신 숫자의 형식이 잘못되었습니다");
-//        }
-//        int number = 0;
-//        try {
-//            number = Integer.parseInt(numberStr);
-//        } catch (NumberFormatException e) {
-//            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다");
-//        }
-//        return number;
-//    }
+//    중복된 값이 있는지 검증
+    private boolean isDuplicate(String numberStr){
+        int length = numberStr.length();
+        return numberStr.chars()
+                .distinct()
+                .count() == length;
+    }
 
 //    입력받은 숫자를 리스트로 반환
     private List<Integer> numberToList(int number){
