@@ -1,8 +1,8 @@
 package baseball;
 
-import static baseball.Input.NUMBER_LENGTH;
+import static baseball.Game.NUMBER_LENGTH;
 
-public class Judge {
+class Judge {
 
     private static final int CORRECT_STRIKE_COUNT = 3;
     private static final int NOTHING_COUNT = 0;
@@ -13,11 +13,11 @@ public class Judge {
     private int ball;
     private int strike;
 
-    public Judge(String computerNumber) {
+    Judge(String computerNumber) {
         this.computerNumber = computerNumber;
     }
 
-    public JudgeResult of(String userNumber) {
+    JudgeResult of(String userNumber) {
         init(userNumber);
         count();
         return new JudgeResult(ball, strike, getStatus());

@@ -2,33 +2,34 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Game {
+import static baseball.JudgeStatus.CORRECT;
+import static baseball.JudgeStatus.NOTHING;
+
+class Game {
+
+    static final int NUMBER_LENGTH = 3;
 
     private final Input input;
     private final Judge judge;
     private final Output output;
 
-    public Game() {
+    Game() {
         String computerNumber = getComputerNumber();
         input = new Input();
         judge = new Judge(computerNumber);
         output = new Output();
     }
 
-    public boolean start() {
-        boolean isCorrect = false;
-        while (!isCorrect) {
-            output.askNumber();
+    GameStatus start() {
+        JudgeStatus status = NOTHING;
+        while (!status.equals(CORRECT)) {
+            output.askUserNumber();
             String userNumber = input.askUserNumber();
             JudgeResult result = judge.of(userNumber);
             output.printResult(result);
-            isCorrect = isCorrect(result);
+            status = result.getStatus();
         }
         return input.askGameOver();
-    }
-
-    private boolean isCorrect(JudgeResult result) {
-        return result.getStatus() == JudgeStatus.CORRECT;
     }
 
     private String getComputerNumber() {

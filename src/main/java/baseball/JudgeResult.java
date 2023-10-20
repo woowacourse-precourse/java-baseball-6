@@ -1,26 +1,26 @@
 package baseball;
 
-public class JudgeResult {
+class JudgeResult {
 
     private final int ball;
     private final int strike;
     private final JudgeStatus status;
 
-    public JudgeResult(int ball, int strike, JudgeStatus status) {
+    JudgeResult(int ball, int strike, JudgeStatus status) {
         this.ball = ball;
         this.strike = strike;
         this.status = status;
     }
 
-    public int getBall() {
+    int getBall() {
         return ball;
     }
 
-    public int getStrike() {
+    int getStrike() {
         return strike;
     }
 
-    public JudgeStatus getStatus() {
+    JudgeStatus getStatus() {
         return status;
     }
 }

@@ -2,26 +2,26 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Input {
+import static baseball.Game.NUMBER_LENGTH;
+import static baseball.GameStatus.GAME_OVER;
+import static baseball.GameStatus.START;
+
+class Input {
 
     private String userNumber;
 
-    public static final int NUMBER_LENGTH = 3;
     private static final String ZERO = "0";
 
-    private static final String RESTART = "1";
-    public static final String GAME_OVER = "2";
-
-    public String askUserNumber() {
+    String askUserNumber() {
         userNumber = Console.readLine();
         validateGuessInput();
         return userNumber;
     }
 
-    public boolean askGameOver() {
+    GameStatus askGameOver() {
         String input = Console.readLine();
         validateRestartInput(input);
-        return input.equals(GAME_OVER);
+        return getGameStatus(input);
     }
 
     private void validateGuessInput() {
@@ -40,9 +40,16 @@ public class Input {
     }
 
     private void validateRestartInput(String input) {
-        if (!(input.equals(RESTART) || input.equals(GAME_OVER))) {
-            throw new IllegalArgumentException(InputErrorMessage.RESTART);
+        if (!(isStart(input) || isGameOver(input))) {
+            throw new IllegalArgumentException(InputErrorMessage.START);
         }
+    }
+
+    private GameStatus getGameStatus(String input) {
+        if (isStart(input)) {
+            return START;
+        }
+        return GAME_OVER;
     }
 
     private boolean isNumeric() {
@@ -58,5 +65,13 @@ public class Input {
         return userNumber.charAt(0) == userNumber.charAt(1)
                 || userNumber.charAt(0) == userNumber.charAt(2)
                 || userNumber.charAt(1) == userNumber.charAt(2);
+    }
+
+    private boolean isStart(String input) {
+        return input.equals(START.value);
+    }
+
+    private boolean isGameOver(String input) {
+        return input.equals(GAME_OVER.value);
     }
 }
