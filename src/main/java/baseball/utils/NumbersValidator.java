@@ -12,6 +12,7 @@ public class NumbersValidator {
 
     /**
      * 문자열이 숫자형태인지 판별
+     *
      * @return true : 숫자 X, false : 숫자
      */
     public static boolean isNotInteger(String input) {

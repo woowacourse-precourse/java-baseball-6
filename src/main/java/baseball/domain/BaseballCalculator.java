@@ -31,7 +31,7 @@ public class BaseballCalculator {
         return new ArrayList<>(Arrays.asList(countOfStrike, countOfBall));
     }
 
-    public int countStrike(List<Integer> inputList, List<Integer> computerNumbers){
+    public int countStrike(List<Integer> inputList, List<Integer> computerNumbers) {
         int countOfStrike = 0;
         for (int i = 0; i < inputList.size(); i++) {
             if (inputList.get(i).equals(computerNumbers.get(i))) {

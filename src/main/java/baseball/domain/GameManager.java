@@ -15,10 +15,12 @@ public class GameManager {
         BaseballGameNoticeUtil.noticeStartGame();
         baseBall.baseBallRun();
 
-        while(true) {
+        while (true) {
             BaseballGameNoticeUtil.noticeAgainOrExit();
 
-            if (requireAgainOrExit().equals("2")) break;
+            if (requireAgainOrExit().equals("2")) {
+                break;
+            }
             baseBall.baseBallRun();
         }
     }
