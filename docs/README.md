@@ -151,6 +151,6 @@
     - Computer 내부에 있던 ballCounts, strikeCounts 의 Wrapper
 - [X] Referee
     - Ball 을 받았을 때, 몇 볼, 몇 스트라이크인 지 판단
-- [ ] BallCountMessage
+- [X] BallCountMessage
     - Ball 을 받았을 때, 현재 볼카운트를 메시지로 변환
     

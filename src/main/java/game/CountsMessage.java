@@ -28,6 +28,9 @@ public class CountsMessage {
     }
 
     private static void buildStrikeMessage(int strike) {
+        if (isZero(strike)) {
+            return;
+        }
         if (!messageBuilder.isEmpty()) {
             messageBuilder.append(StringConstants.BLANK);
         }
