@@ -1,6 +1,8 @@
 package baseball.Controller;
 
+import baseball.view.Input;
 import baseball.view.Output;
+
 import baseball.model.RandomGenerate;
 
 public class Controller {
@@ -12,6 +14,6 @@ public class Controller {
 
     public static void Game() {
         Output.Input_Message();
-        System.out.println(RandomGenerate.ComputerNumber());
+        Input.UserInputNumber();
     }
 }
