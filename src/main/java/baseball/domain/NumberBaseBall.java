@@ -33,9 +33,9 @@ public class NumberBaseBall {
         if(ball == 0 && strike == 0) return NOTHING;
 
         String result = "";
-        if(ball > 0) result = ball + BALL;
+        if(ball > 0) result = ball + BALL + " ";
         if(strike > 0) result += strike + STRIKE;
 
-        return result;
+        return result.trim();
     }
 }
