@@ -2,6 +2,6 @@ package baseball.handler;
 
 public interface InputHandler {
 
-    public String inputValue();
+    public String inputUserValue();
     public int inputGameResult();
 }
