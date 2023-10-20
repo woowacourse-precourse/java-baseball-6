@@ -28,6 +28,9 @@ public class Application {
 
             // 정답 확인
             boolean isAllCorrect = checkAnswer(userNumbers);
+
+            // 결과 출력
+            printResult(isAllCorrect);
         }
     }
 
@@ -95,5 +98,30 @@ public class Application {
             return true;
 
         return false;
+    }
+
+    public static void printResult(boolean isAllCorrect){
+        if(isAllCorrect) {
+            System.out.printf("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
+
+        if(ball.equals(0) && strike.equals(0)) {
+            System.out.printf("낫싱\n");
+            return;
+        }
+
+        if(!ball.equals(0) && strike.equals(0)){
+            System.out.println(ball + "볼\n");
+            return;
+        }
+
+        if(ball.equals(0) && !strike.equals(0)){
+            System.out.println(strike + "스트라이크\n");
+            return;
+        }
+
+        System.out.println(ball + "볼 " + strike + "스트라이크\n");
+
     }
 }
