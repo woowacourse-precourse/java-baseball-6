@@ -3,20 +3,20 @@ package baseball;
 import baseball.io.Randoms;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class WinningNumbers {
 
     public static final int MAX_SIZE = 3;
+
     List<Integer> winningNumbers;
 
     public WinningNumbers() {
         this.winningNumbers = Stream.generate(Randoms::getSingleNumber)
                 .distinct()
                 .limit(MAX_SIZE)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public BallCount ballCounting(BaseballNumbers baseballNumbers) {
