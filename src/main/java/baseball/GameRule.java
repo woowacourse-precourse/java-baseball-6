@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constants.validLength;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,7 +28,7 @@ public class GameRule {
 
     public  static  int countStrike(String computeNumber, String userNumber){
         int cntS = 0;
-        for(int i=0; i < Application.validLength; i++){
+        for(int i=0; i < validLength; i++){
             if(computeNumber.charAt(i) == userNumber.charAt(i)){
                 cntS++;
             }

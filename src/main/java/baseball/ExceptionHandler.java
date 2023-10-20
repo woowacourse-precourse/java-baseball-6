@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constants.validLength;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,11 +16,13 @@ public class ExceptionHandler {
         return true;
     }
     public static boolean isValidLength(String str){
-        return str.length() == Application.validLength;
+        return str.length() == validLength;
     }
     public static boolean isValidNumber(String str) {
-        // 3자리가 1~9로 이루어졌는지 확인
-        if(!str.matches("^[1-9]{3}$")){
+        // validLength 자리가 1~9로 이루어졌는지 확인
+        String pattern = "^[1-9]{%d}$";
+        String regex = String.format(pattern, validLength);
+        if (!str.matches(regex)) {
             return false;
         }
         // 중복된 숫자 있는지 확인
