@@ -18,6 +18,7 @@ public class Balls {
         this.balls=balls;
     }
 
+
     private void validateDuplication(List<Integer> balls){
         Set<Integer> nonDuplicatedNumber= new HashSet<>();
         Stream<Integer> stream=balls.stream();
