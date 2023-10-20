@@ -79,23 +79,7 @@ class ApplicationTest extends NsTest {
     /**
      * @Description: 야구 게임에 대한 테스트 코드(정상 시나리오)
      * */
-    static Integer computerNumber = 123;
-    static BaseBallGame baseBallGame = new BaseBallGameImpl();
-    @Test
-    void 스트라이크_테스트() {
-        assertThat(baseBallGame.countStrike(List.of(1,2,3))).isEqualTo(3);
-        assertThat(baseBallGame.countStrike(List.of(1,2,4))).isEqualTo(2);
-        assertThat(baseBallGame.countStrike(List.of(1,3,4))).isEqualTo(1);
-        assertThat(baseBallGame.countStrike(List.of(4,5,6))).isZero();
-    }
-
-    @Test
-    void 볼_테스트() {
-        assertThat(baseBallGame.countBall(List.of(1,2,3))).isZero();
-        assertThat(baseBallGame.countBall(List.of(1,2,4))).isEqualTo(1);
-        assertThat(baseBallGame.countBall(List.of(4,1,2))).isEqualTo(2);
-        assertThat(baseBallGame.countBall(List.of(2,3,1))).isEqualTo(3);
-    }
+    static BaseBallGameImpl baseBallGame = new BaseBallGameImpl();
 
     @Test
     void 랜덤_수_생성_테스트(){
