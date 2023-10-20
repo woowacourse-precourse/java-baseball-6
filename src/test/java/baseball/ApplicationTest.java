@@ -100,11 +100,13 @@ class ApplicationTest extends NsTest {
     void getBallStrikeCount_테스트() {
         //given
         List<Integer> computerNumbersList = Arrays.asList(1,2,3);
-        List<Integer> userNumbersList = Arrays.asList(4,5,6);
+        List<Integer> userNumbersList = Arrays.asList(1,3,9);
         //when
-        List<Integer> strikeBallCount = Application.getBallStrikeCount(computerNumbersList, userNumbersList);
+        int ballCount = Application.getBallCount(computerNumbersList, userNumbersList);
+        int strikeCount = Application.getStrikeCount(computerNumbersList, userNumbersList);
         //then
-        assertThat(strikeBallCount).containsExactly(0,0);
+        assertThat(ballCount).isEqualTo(1);
+        assertThat(strikeCount).isEqualTo(1);
     }
     @Override
     public void runMain() {

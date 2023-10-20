@@ -35,9 +35,10 @@ public class Application {
         List<Integer> computerNumbersList = getComputerNumbersList();
         while(true) {
             List<Integer> userNumbersList = getUserNumbersList();
-            List<Integer> ballStrikeCount = getBallStrikeCount(computerNumbersList, userNumbersList);
-            printBallStrike(ballStrikeCount.get(0), ballStrikeCount.get(1));
-            if (isAnswer(ballStrikeCount.get(1))) {
+            int ballCount = getBallCount(computerNumbersList, userNumbersList);
+            int strikeCount = getStrikeCount(computerNumbersList, userNumbersList);
+            printBallStrike(ballCount, strikeCount);
+            if (isAnswer(strikeCount)) {
                 printAnswer();
                 printGetRestart();
                 break;
@@ -72,22 +73,6 @@ public class Application {
         if (strikeCount == NUMBERS_LENGTH)
             return true;
         return false;
-    }
-    public static List<Integer> getBallStrikeCount(List<Integer> computerNumbersList, List<Integer> userNumbersList) {
-        int ballCount = 0;
-        int strikeCount = 0;
-        for (int i = 0; i < computerNumbersList.size(); i++) {
-            int computerNumber = computerNumbersList.get(i);
-            int userNumber = userNumbersList.get(i);
-            if (computerNumber == userNumber) {
-                strikeCount++;
-                continue;
-            }
-            if (computerNumbersList.contains(userNumber)){
-                ballCount++;
-            }
-        }
-        return Arrays.asList(ballCount, strikeCount);
     }
     public static int getBallCount(List<Integer> computerNumbersList, List<Integer> userNumbersList) {
         int ballCount = 0;
