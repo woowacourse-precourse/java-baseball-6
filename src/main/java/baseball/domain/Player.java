@@ -34,4 +34,12 @@ public class Player {
 
         ballCount -= strikeCount;
     }
+
+    public boolean isEqualToAnswerNumbers() {
+        if (strikeCount == 3) {
+            return true;
+        }
+
+        return false;
+    }
 }
