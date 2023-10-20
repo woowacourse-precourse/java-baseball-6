@@ -9,39 +9,82 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         while(true) {
-            List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+            List<Integer> randomNumber = generateUniqueNumbers();
 
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String inputNumber = Console.readLine();
                 List<Integer> answer = parseInput(inputNumber);
-                break;
+                if (isSameAnswerAndRandomNumber(randomNumber, answer)) {
+                    break;
+                }
             }
-
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String choice = Console.readLine();
             if (choice.equals("2")) {
+                Console.close();
                 break;
             }
         }
     }
 
+    private static List<Integer> generateUniqueNumbers() {
+        List<Integer> uniqueNumbers = new ArrayList<>();
+        int min = 1;
+        int max = 9;
 
+        while (uniqueNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(min, max);
+            if (!uniqueNumbers.contains(randomNumber)) {
+                uniqueNumbers.add(randomNumber);
+            }
+        }
+        return uniqueNumbers;
+    }
 
     private static List<Integer> parseInput(String input) {
         validInput(input);
-        List<Integer> parse = new ArrayList<>();
-        input.split("");
-        return parse;
+        return input.chars()
+                .mapToObj(Character::getNumericValue)
+                .toList();
     }
 
-    private static int checkAnswer(List<Integer> randomNumber, List<Integer> answer) {
+    private static boolean isSameAnswerAndRandomNumber(List<Integer> randomNumber, List<Integer> answer) {
+        int strikes = 0;
+        int balls = 0;
 
-        return 1;
+        for (int i = 0; i < randomNumber.size(); i++) {
+            if (randomNumber.get(i).equals(answer.get(i))) {
+                strikes++;
+            } else if (answer.contains(randomNumber.get(i))) {
+                balls++;
+            }
+        }
+
+        if (strikes > 0 || balls > 0) {
+            System.out.println(ballsAndStrikesFormatted(strikes, balls));
+        } else {
+            System.out.println("낫싱");
+        }
+
+        if (strikes == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
+    private static String ballsAndStrikesFormatted(int strikes, int balls) {
+        StringBuilder sb = new StringBuilder();
+        if (balls > 0) {
+            sb.append(balls).append("볼 ");
+        }
+        if (strikes > 0) {
+            sb.append(strikes).append("스트라이크");
+        }
+        return sb.toString().trim();
     }
 
     private static void validInput(String input) {
