@@ -1,5 +1,7 @@
 package baseball.game;
 
+import baseball.utils.Assertions;
+
 public class GameManager {
     private static Game game = null;
     private static boolean isGameRunning;
@@ -9,9 +11,7 @@ public class GameManager {
     }
 
     private static void inGameLoop() {
-        if (game == null) {
-            throw new GameIsNullException();
-        }
+        Assertions.assertNotNull(game);
 
         isGameRunning = true;
 
@@ -23,9 +23,7 @@ public class GameManager {
     }
 
     public static void start(Game _game) {
-        if (_game == null) {
-            throw new GameIsNullException();
-        }
+        Assertions.assertNotNull(_game);
         game = _game;
 
         isGameManagerRunning = true;

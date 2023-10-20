@@ -1,13 +1,17 @@
 package baseball.state;
 
+import baseball.utils.Assertions;
+
 public class BaseballResult {
     private final int MAX_MATCH = 3;
     private final int ball;
     private final int strike;
+
     public BaseballResult(int _ball, int _strike) {
-        if (_ball < 0 || _strike < 0 || _ball + _strike > MAX_MATCH) {
-            throw new IllegalArgumentException();
-        }
+        Assertions.assertInRange(_ball, 0, MAX_MATCH);
+        Assertions.assertInRange(_strike, 0, MAX_MATCH);
+        Assertions.assertInRange(_ball + _strike, 0, MAX_MATCH);
+        
         ball = _ball;
         strike = _strike;
     }
@@ -15,6 +19,7 @@ public class BaseballResult {
     public boolean isGameEnd() {
         return strike == MAX_MATCH;
     }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();

@@ -1,5 +1,6 @@
 package baseball.state;
 
+import baseball.utils.Assertions;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,9 +17,7 @@ public class BaseballState {
         Arrays.fill(indexMapping, -1);
         for (int i = 0; i < state.size(); i++) {
             int value = state.get(i);
-            if (value < 0 || value >= indexMapping.length) {
-                throw new IndexOutOfBoundsException();
-            }
+            Assertions.assertInRange(value, 0, indexMapping.length);
             indexMapping[value] = i;
         }
     }
@@ -30,6 +29,7 @@ public class BaseballState {
     public BaseballResult diff(BaseballState other) {
         int ball = 0;
         int strike = 0;
+        
         final var otherState = other.get();
         for (int i = 0; i < otherState.size(); i++) {
             final int otherValue = otherState.get(i);

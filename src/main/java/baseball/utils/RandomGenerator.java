@@ -6,10 +6,7 @@ import java.util.List;
 
 public class RandomGenerator {
     public static List<Integer> generateUniqueRandomListOf(int size) {
-        if (size < 0 || size > 9){
-            throw new IllegalArgumentException();
-        }
-
+        Assertions.assertInRange(size, 0, 8);
         final List<Integer> ret = new ArrayList<>();
         while (ret.size() < size) {
             var rnd = Randoms.pickNumberInRange(1, 9);
