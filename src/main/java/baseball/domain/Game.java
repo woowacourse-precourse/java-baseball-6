@@ -6,7 +6,6 @@ import java.util.*;
 
 public class Game {
     private final Numbers computer;
-    private Numbers user;
 
     public Game(){
         generateComputerNumbers();
@@ -21,16 +20,7 @@ public class Game {
         return toString(computer);
     }
 
-    public int[] inputAndCompare(String input){
-        inputUserNumbers(input);
-        return compare();
-    }
-
-    private void inputUserNumbers(String input){
-        this.user=new Numbers(input);
-    }
-
-    private int[] compare(){
+    public int[] compare(Numbers user){
         int[] result={0,0};
 
         for(String number:user.splitNumbers()){
