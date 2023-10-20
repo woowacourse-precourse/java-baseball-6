@@ -16,7 +16,7 @@ public class NumberValidator {
         }
     }
 
-    public static boolean needsMoreNumbers(int size) {
+    public static boolean isBelowRequiredLength(int size) {
         return size < LENGTH;
     }
 
