@@ -1,10 +1,13 @@
 package baseball.domain;
 
-import java.util.List;
-
 public class TestGenerator implements BallsGenerator {
+    private final Balls balls;
+    public TestGenerator(Balls balls) {
+        this.balls = balls;
+    }
+
     @Override
     public Balls generateBalls() {
-        return Balls.from(List.of(1, 2, 3));
+        return balls;
     }
 }

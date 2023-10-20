@@ -41,7 +41,8 @@ public class GameTest {
 
     @Test
     void 힌트_테스트() {
-        Game game = new Game(new TestGenerator());
+        TestGenerator testGenerator = new TestGenerator(Balls.from(List.of(1, 2, 3)));
+        Game game = new Game(testGenerator);
         game.start();
         assertEquals(game.hint(Balls.from(List.of(1, 2, 3))), String.format("3%s", Hint.STRIKE.value()));
     }
