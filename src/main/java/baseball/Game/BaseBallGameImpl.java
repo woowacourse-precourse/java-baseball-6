@@ -20,7 +20,7 @@ public class BaseBallGameImpl implements BaseBallGame {
 
     @Override
     public void playGame() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         List<Integer> userAnswer = inputAnswer.inputAnswer();
         Integer strike = countStrike(userAnswer);
         Integer ball = countBall(userAnswer);
@@ -72,6 +72,5 @@ public class BaseBallGameImpl implements BaseBallGame {
             if (strike > 0) System.out.println(strike + "스트라이크");
         }
         playGame();
-
     }
 }
