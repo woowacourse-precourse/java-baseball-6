@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.utill.Converter;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -15,7 +16,8 @@ public class BaseBallGame {
     }
     private void startNewGame() {
         List<Integer> computerNumbers = generateComputerNumber();
-        List<String> input = InputView.readPlayerNumber();
+        List<String> inputString = InputView.readPlayerNumber();
+        List<Integer> inputInteger = Converter.convertToNumericList(inputString);
 
     }
     private List<Integer> generateComputerNumber(){
