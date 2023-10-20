@@ -18,7 +18,14 @@ public class BaseballGame {
 
         do {
             computer.createRandomNumbers();
+            play();
         } while (!isEnd());
+    }
+
+    public void play() {
+        do {
+            player.getPlayerInput();
+        } // while (!isAllCorrect());
     }
 
     public boolean isEnd() {
