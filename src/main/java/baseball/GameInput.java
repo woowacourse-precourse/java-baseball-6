@@ -17,8 +17,8 @@ public class GameInput {
     private List<Integer> intStringToList(String numberString) {
         int numberInt = Integer.parseInt(numberString);
         List<Integer> intList = new ArrayList<Integer>();
-        for (int i = 0; i < 3; i++) {
-            intList.add(i, numberInt % 10);
+        while (numberInt > 0) {
+            intList.add(0, numberInt % 10);
             numberInt /= 10;
         }
         return intList;
