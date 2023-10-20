@@ -11,8 +11,15 @@ public class GameStandard {
      * @return
      */
     public int getSameNumber2Computer(List<Integer> computerList, List<Integer> userList) {
+        int cntSameNum = 0; // 유저의 숫자가 computerList에 포함한 갯수
 
-        return 0;
+        for (Integer numOfUser : userList) {
+            if (computerList.contains(numOfUser)) { // computerList에 유저가 입력한 값이 포함되어 있으면
+                cntSameNum = cntSameNum + 1; // 같은 숫자가 있을때 conunter + 1
+            }
+        }
+
+        return cntSameNum;
     }
 
     /**
