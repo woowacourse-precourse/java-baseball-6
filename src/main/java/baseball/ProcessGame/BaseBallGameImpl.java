@@ -1,5 +1,7 @@
 package baseball.ProcessGame;
 
+import baseball.EndGame.EndProcess;
+import baseball.EndGame.EndProcessImpl;
 import baseball.Input.InputAnswer;
 import baseball.Input.InputAnswerImpl;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -10,6 +12,7 @@ import java.util.List;
 public class BaseBallGameImpl implements BaseBallGame {
 
     private static InputAnswer inputAnswer = new InputAnswerImpl();
+    private static EndProcess endProcess = new EndProcessImpl();
     private List<Integer> computerNumber;
 
     @Override
@@ -66,7 +69,7 @@ public class BaseBallGameImpl implements BaseBallGame {
             System.out.println("낫싱");
         else if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            //TODO : 재시작 혹은 게임 종료
+            endProcess.userChoice();
         } else{
             if (ball > 0) System.out.print(ball + "볼" + " ");
             if (strike > 0) System.out.println(strike + "스트라이크");
