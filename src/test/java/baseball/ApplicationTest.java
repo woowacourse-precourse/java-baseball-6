@@ -49,27 +49,27 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-//    @Test
-//    void getComputerNumbersList_테스트() {
-//        //given
-//        //when
-//        List<Integer> computerNumbersList = Application.getComputerNumbersList();
-//        System.out.println(computerNumbersList);
-//        //then
-//        assertThat(computerNumbersList).hasSize(3).doesNotHaveDuplicates()
-//                .allMatch(i -> i > 0 && i < 10);
-//    }
-//    @Test
-//    void getUserNumbersList_정상작동_테스트() {
-//        //given
-//        String input = "123";
-//        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
-//        System.setIn(inputStream);
-//        //when
-//        List<Integer> userNumbersList = Application.getUserNumbersList();
-//        //then
-//        assertThat(userNumbersList).containsExactly(1,2,3);
-//    }
+    @Test
+    void getComputerNumbersList_테스트() {
+        //given
+        //when
+        List<Integer> computerNumbersList = Application.getComputerNumbersList();
+        System.out.println(computerNumbersList);
+        //then
+        assertThat(computerNumbersList).hasSize(3).doesNotHaveDuplicates()
+                .allMatch(i -> i > 0 && i < 10);
+    }
+    @Test
+    void getUserNumbersList_정상작동_테스트() {
+        //given
+        String input = "123";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        //when
+        List<Integer> userNumbersList = Application.getUserNumbersList();
+        //then
+        assertThat(userNumbersList).containsExactly(1,2,3);
+    }
     @Test
     void getUserNumbersList_예외상황_테스트() {
         //given
@@ -83,17 +83,17 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("[ERROR]");
         Console.close(); // 이걸 넣으니 전체 테스트를 실행시 발생한 java.util.NoSuchElementException : No line found 문제 해결
     }
-    
-//    @Test
-//    void getBallStrikeCount_테스트() {
-//        //given
-//        List<Integer> computerNumbersList = Arrays.asList(1,2,3);
-//        List<Integer> userNumbersList = Arrays.asList(4,5,6);
-//        //when
-//        List<Integer> strikeBallCount = Application.getBallStrikeCount(computerNumbersList, userNumbersList);
-//        //then
-//        assertThat(strikeBallCount).containsExactly(0,0);
-//    }
+
+    @Test
+    void getBallStrikeCount_테스트() {
+        //given
+        List<Integer> computerNumbersList = Arrays.asList(1,2,3);
+        List<Integer> userNumbersList = Arrays.asList(4,5,6);
+        //when
+        List<Integer> strikeBallCount = Application.getBallStrikeCount(computerNumbersList, userNumbersList);
+        //then
+        assertThat(strikeBallCount).containsExactly(0,0);
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
