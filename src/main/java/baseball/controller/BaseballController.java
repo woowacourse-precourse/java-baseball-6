@@ -65,8 +65,8 @@ public class BaseballController {
 
     }
 
-    private AnswerNumbers getNewAnswerNumbers(boolean isFirstTime, AnswerNumbers answerNumbers) {
-        if (isFirstTime) {
+    private AnswerNumbers getNewAnswerNumbers(boolean isRestart, AnswerNumbers answerNumbers) {
+        if (isRestart) {
             answerNumbers = new AnswerNumbers(getAnswerNumbers());
         }
         return answerNumbers;

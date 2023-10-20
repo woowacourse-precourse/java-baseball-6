@@ -8,8 +8,8 @@ import static baseball.constant.NumberConstant.VALID_NUMBER_SIZE;
 
 public class Validator {
 
-    public void validateThreeNumber(String str){
-        if(!str.matches("[1-9]{3}")){
+    public void validateThreeNumber(String str) {
+        if (!str.matches("[1-9]{3}")) {
             throw new IllegalArgumentException("3자리의 숫자로 이루어진 문자가 아닙니다.");
         }
     }
@@ -22,12 +22,10 @@ public class Validator {
         }
     }
 
-    public void validate1Or2(String str){
-        if(!str.matches("[12]")){
+    public void validate1Or2(String str) {
+        if (!str.matches("[12]")) {
             throw new IllegalArgumentException("1 또는 2의 숫자만 입력해야 합니다.");
         }
     }
-
-
 
 }

@@ -8,5 +8,6 @@ public class NumberConstant {
     public static final int NOTHING = 0;
     public static final int BALL = 1;
     public static final int STRIKE = 2;
+    public static final int SUCCESS_NUMBER = 3;
 
 }

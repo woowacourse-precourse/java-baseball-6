@@ -30,7 +30,7 @@ public class AnswerNumbers {
         }
     }
 
-    public Map<Integer, Integer> getBallNStrkie(List<Integer> inputNumbers){
+    public Map<Integer, Integer> getBallNStrkie(List<Integer> inputNumbers) {
         Map<Integer, Integer> result = new HashMap<>();
 
         result.put(BALL, getBall(inputNumbers));
@@ -38,22 +38,22 @@ public class AnswerNumbers {
         return result;
     }
 
-    public int getStrike(List<Integer> inputNumbers){
+    public int getStrike(List<Integer> inputNumbers) {
         int cnt = 0;
 
-        for(int i=0; i< VALID_NUMBER_SIZE; i++){
-            if(answerNumbers.get(i) == inputNumbers.get(i)){
+        for (int i = 0; i < VALID_NUMBER_SIZE; i++) {
+            if (answerNumbers.get(i) == inputNumbers.get(i)) {
                 cnt++;
             }
         }
         return cnt;
     }
 
-    public int getBall(List<Integer> inputNumbers){
+    public int getBall(List<Integer> inputNumbers) {
         int cnt = 0;
 
-        for(int i=0; i<VALID_NUMBER_SIZE; i++){
-            for(int j=0; j<VALID_NUMBER_SIZE; j++){
+        for (int i = 0; i < VALID_NUMBER_SIZE; i++) {
+            for (int j = 0; j < VALID_NUMBER_SIZE; j++) {
                 int answerNum = answerNumbers.get(i);
                 int inputNum = inputNumbers.get(j);
                 cnt = getCnt(cnt, i, j, answerNum, inputNum);
@@ -63,7 +63,7 @@ public class AnswerNumbers {
     }
 
     private static int getCnt(int cnt, int i, int j, int answerNum, int inputNum) {
-        if(i != j && (answerNum == inputNum)){
+        if (i != j && (answerNum == inputNum)) {
             cnt++;
         }
         return cnt;
