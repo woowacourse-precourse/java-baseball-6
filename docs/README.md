@@ -44,11 +44,7 @@
 - [x] 게임 종료 문구 출력
 
 ## Controller
-### HumanController
-- [ ] 사용자의 숫자 배열을 초기화 한다.
-
-### ComputerController
-- [ ] 컴퓨터의 숫자 배열을 초기화 한다.
-
 ### GameController
+- [x] 사용자의 숫자 배열을 초기화 한다.
+- [ ] 컴퓨터의 숫자 배열을 초기화 한다.
 - [ ] 게임의 스코어를 초기화 한다.
