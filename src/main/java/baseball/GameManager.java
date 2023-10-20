@@ -9,12 +9,18 @@ public class GameManager {
     public void play() {
         do {
             List<Integer> computerNumbers = NumberGenerator.generateDefaultSizeComputerNumber();
-            // TODO : 사용자 입력 받기
+            List<Integer> userInputNumbers;
 
-            // TODO : 입력으로 게임 진행
-
-            // TODO : 결과 출력하기
+            do {
+                String userInput = Console.readLine();
+                userInputNumbers = Parser.parse(userInput);
+            } while (calculateGameResult(computerNumbers, userInputNumbers));
         } while (isContinue());
+    }
+
+    private boolean calculateGameResult(List<Integer> computerNumbers, List<Integer> userInputNumbers) {
+        // TODO : 게임 결과 계산
+        return false;
     }
 
     private boolean isContinue() {
