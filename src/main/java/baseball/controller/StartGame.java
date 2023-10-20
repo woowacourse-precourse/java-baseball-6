@@ -7,10 +7,17 @@ import java.util.List;
 
 public class StartGame {
 
-    GenerateRandomNum generateRandomNum = new GenerateRandomNum();
-    GenerateUserNum generateUserNum = new GenerateUserNum();
-    RestartGame restartGame = new RestartGame();
-    GuessNum guessNum = new GuessNum();
+    private GenerateRandomNum generateRandomNum;
+    private GenerateUserNum generateUserNum;
+    private RestartGame restartGame;
+    private GuessNum guessNum;
+
+    public StartGame(GenerateRandomNum generateRandomNum, GenerateUserNum generateUserNum, RestartGame restartGame, GuessNum guessNum){
+        this.generateRandomNum = generateRandomNum;
+        this.generateUserNum = generateUserNum;
+        this.restartGame = restartGame;
+        this.guessNum = guessNum;
+    }
 
 
     public void start() {
