@@ -15,9 +15,22 @@ public class Application {
         while(true){ //running game
             List<Integer> userGuess = getUserInput();
             int[] result = checkResult(computerNumber,userGuess);
+            printResult(result);
         }
 
     }
+
+    private static void printResult(int[] result) {
+        if(result[0]==0&&result[1]==0)
+            System.out.print("낫싱");
+        if(result[0]>0)
+            System.out.print(result[0]+"볼 ");
+        if(result[1]>0)
+            System.out.print(result[1]+"스트라이크 ");
+        System.out.println();
+        return ;
+    }
+
     //check&return the number of strike and ball
     private static int[] checkResult(List<Integer> computerNumber, List<Integer> userGuess) {
         int strike=0, ball=0;
