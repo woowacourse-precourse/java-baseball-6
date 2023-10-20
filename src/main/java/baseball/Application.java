@@ -21,4 +21,9 @@ public class Application {
                 .map(String::valueOf)
                 .collect(Collectors.toList());
     }
+
+    public static void startGame() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String number = Console.readLine();
+    }
 }
