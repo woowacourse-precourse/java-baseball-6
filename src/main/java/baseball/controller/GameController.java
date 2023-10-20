@@ -23,7 +23,7 @@ public class GameController {
         program = new ProgramNumber();
         do{
             user = new UserNumber(InputView.inputUserNumber());
-            printAll(getResultList());
+            OutputView.printScoreMessage(getResultList()[0],getResultList()[1]);
         } while(!isEnd());
     }
 
@@ -37,42 +37,6 @@ public class GameController {
 
     public int[] getResultList(){
         return compareNumber.getStrikeBall(user.getUserNumber(), program.getProgramNumber());
-    }
-
-    public void printBallStrike(int[] count){
-        if (count[0] != 0 & count[1] != 0) { //볼, 스트라이크 모두 있다면
-            OutputView.printCnt(count[0]);
-            OutputView.printBallWithStrike();
-            OutputView.printCnt(count[1]);
-            OutputView.printStrike();
-        }
-    }
-
-    public void printBall(int[] count){
-        if (count[0] != 0 & count[1] == 0) {
-            OutputView.printCnt(count[0]);
-            OutputView.printBall();
-        }
-    }
-
-    public void printStrike(int[] count){
-        if (count[0] == 0 & count[1] != 0) {
-            OutputView.printCnt(count[1]);
-            OutputView.printStrike();
-        }
-    }
-
-    public void printNothing(int[] count){
-        if (count[0] == 0 & count[1] == 0) {
-            OutputView.printNothing();
-        }
-    }
-
-    public void printAll(int[] count){
-        printBall(count);
-        printBallStrike(count);
-        printStrike(count);
-        printNothing(count);
     }
 
     public boolean isReset(){
