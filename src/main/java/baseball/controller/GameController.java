@@ -1,14 +1,11 @@
 package baseball.controller;
 
 import baseball.Umpire;
-import baseball.converter.StringInputConverter;
 import baseball.factory.NumberFactory;
-import baseball.validator.ResumeValidator;
 import baseball.view.AskView;
 import baseball.view.EndView;
 import baseball.view.ResultView;
 import baseball.view.StartView;
-import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
 
@@ -52,17 +49,6 @@ public class GameController {
 
     private static boolean isStrikeEqualToGoal(final int strike) {
         return strike == PLAY_NUMBER_DIGIT;
-    }
-
-    private static String receiveResumeNumber() {
-        String resumeInput = Console.readLine();
-        assertResumeValue(resumeInput);
-
-        return resumeInput;
-    }
-
-    private static void assertResumeValue(final String resume) {
-        ResumeValidator.assertResumeInput(resume, RESTART, END);
     }
 
     private static boolean isUserWantMoreGame(final int resumeNumber) {
