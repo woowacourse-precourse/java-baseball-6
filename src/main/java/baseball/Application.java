@@ -78,7 +78,21 @@ public class Application {
 
             if (userNumber.equals(computerNumber.stream().map(String::valueOf).collect(Collectors.joining()))) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int exitCommand = Integer.parseInt(Console.readLine());
+                if (exitCommand == 2) {
+                    break;
+                } else {
+                    computerNumber = new ArrayList<>();
+                    while (computerNumber.size() < 3) {
+                        int randomNumber = Randoms.pickNumberInRange(1, 9);
+                        if (!computerNumber.contains(randomNumber)) {
+                            computerNumber.add(randomNumber);
+                        }
+                    }
+                    System.out.println("computerNumber = " + computerNumber);
+
+                }
             }
         }
     }
