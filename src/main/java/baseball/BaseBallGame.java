@@ -25,14 +25,27 @@ public class BaseBallGame {
         }
     }
 
-    public void progress() {
+    private void progress() {
         List<Integer> computerNumbers = getRandomNumber();
         List<Integer> playerNumbers;
 
-        while(true) {
+        boolean isCorrect = false;
+        while(!isCorrect) {
             playerNumbers = getPlayerNumber();
-
+//            isCorrect = compareNumber(computerNumbers, playerNumbers);
         }
+    }
+
+//    private boolean compareNumber(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+//        if(isCorrect(computerNumbers, playerNumbers)) {
+//            return true;
+//        }
+//
+//        return false;
+//    }
+
+    private boolean isCorrect(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        return computerNumbers.equals(playerNumbers);
     }
 
     private List<Integer> getPlayerNumber() {
