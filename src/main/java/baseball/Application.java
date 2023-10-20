@@ -7,22 +7,34 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        final String[] computerNumbers = new String[3];
+        String[] computerNumbers;
         String[] playerNumbers;
         boolean isAnswer = false;
 
-        // [기능 1] 컴퓨터가 1 - 9 서로 다른 임의의 수 3개 선택하는 기능
-        for (int i = 0; i < 3; i++) {
-            computerNumbers[i] = String.valueOf(Randoms.pickNumberInRange(1, 9));
-        }
-
+        computerNumbers = getThreeRandomNumbers();
         // [기능 4] 1 - 3 과정을 계속 반복하고 컴퓨터가 선택한 숫자 3개를 모두 맞히면 게임이 종료되는 기능
         while(!isAnswer) {
             playerNumbers = getValidatedInput();
             isAnswer = playGame(computerNumbers, playerNumbers);
 
             // [기능 5] 게임 종료 후 플레이어가 게임을 다시 시작하거나 완전히 종료시킬 수 있는 기능 (1: 재시작, 2: 종료)
+            if(isAnswer){
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                if(Console.readLine().equals("1")){
+                    isAnswer = false;
+                    computerNumbers = getThreeRandomNumbers();
+                }
+            }
         }
+    }
+
+    // [기능 1] 컴퓨터가 1 - 9 서로 다른 임의의 수 3개 선택하는 기능
+    private static String[] getThreeRandomNumbers(){
+        String[] threeRandomNums = new String[3];
+        for (int i = 0; i < 3; i++) {
+            threeRandomNums[i] = String.valueOf(Randoms.pickNumberInRange(1, 9));
+        }
+        return threeRandomNums;
     }
 
     // [기능 2] 플레이어에게 컴퓨터가 생각한 서로 다른 3개의 숫자를 입력받는 기능
