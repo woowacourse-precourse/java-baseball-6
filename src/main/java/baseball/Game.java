@@ -19,7 +19,7 @@ public class Game {
         // log
         System.out.println("플레이어: " + playerNumber);
 
-
+        
     }
 
 
