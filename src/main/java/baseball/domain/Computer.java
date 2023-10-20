@@ -16,12 +16,23 @@ public class Computer implements Player {
     private Computer() {
     }
 
-    public Computer create() {
+    public static Computer create() {
         return new Computer();
     }
 
-    public void resetNumbers() {
-        this.numbers = makeRandomNumbers();
+    @Override
+    public Numbers getNumbers() {
+        return numbers;
+    }
+
+    @Override
+    public void changeNumbers(Numbers numbers) {
+        this.numbers = numbers;
+    }
+
+    @Override
+    public void reset() {
+        changeNumbers(makeRandomNumbers());
     }
 
     private static Numbers makeRandomNumbers() {
@@ -40,10 +51,5 @@ public class Computer implements Player {
 
     private static boolean isNotFull(List<Integer> numberList) {
         return numberList.size() < NUMBER_COUNT;
-    }
-
-    @Override
-    public Numbers getNumbers() {
-        return numbers;
     }
 }

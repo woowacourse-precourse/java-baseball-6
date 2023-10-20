@@ -6,4 +6,7 @@ public interface Player {
 
     public Numbers getNumbers();
 
+    public void changeNumbers(Numbers numbers);
+    public void reset();
+
 }
