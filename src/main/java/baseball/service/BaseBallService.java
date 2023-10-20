@@ -11,55 +11,44 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class BaseBallService {
-    private Player computer;
-    private Player human;
+    private Computer computer;
+    private Player player;
 
     private BaseBallService() {
     }
 
     public static BaseBallService create() {
-        BaseBallService baseBallService = new BaseBallService();
-        baseBallService.setComputer(Computer.create());
-        baseBallService.setHuman(Player.create());
-
-        return baseBallService;
+        return new BaseBallService();
     }
 
 
     public void resetComputer() {
-        computer.reset();
+        computer = Computer.create();
     }
 
-    public void humanNumberChange(Numbers numbers) {
-        human.changeNumbers(numbers);
-    }
-
-    private void setComputer(Computer computer) {
-        this.computer = computer;
-    }
-
-    private void setHuman(Player player) {
-        this.human = player;
+    public void playerNumberChange(Numbers numbers) {
+        player = Player.create(numbers);
     }
 
 
     public Result calculateResult() {
-        List<Integer> inputNumberList = human.getNumberList();
-        List<Integer> answerNumberList = computer.getNumberList();
+        Numbers inputNumbers = player.getNumbers();
+        Numbers answerNumbers = computer.getNumbers();
 
-        return Result.create(calculateBall(inputNumberList, answerNumberList), calculateStrike(inputNumberList, answerNumberList));
+        return Result.create(calculateBall(inputNumbers, answerNumbers), calculateStrike(inputNumbers, answerNumbers));
     }
 
-    private Integer calculateBall(List<Integer> inputNumberList, List<Integer> answerNumberList) {
+    private Integer calculateBall(Numbers inputNumbers, Numbers answerNumbers) {
 
         return (int) IntStream.rangeClosed(MIN_INDEX, MAX_INDEX)
-                .filter(idx -> isBall(inputNumberList, answerNumberList, idx))
+                .filter(idx -> isBall(inputNumbers, answerNumbers, idx))
                 .count();
 
     }
 
-    private static boolean isBall(List<Integer> inputNumberList, List<Integer> answerNumberList,
-            int idx) {
+    private static boolean isBall(Numbers inputNumbers, Numbers answerNumbers, int idx) {
+        List<Integer> inputNumberList = inputNumbers.getNumberList();
+        List<Integer> answerNumberList = answerNumbers.getNumberList();
 
         Integer inputNumber = inputNumberList.get(idx);
 
@@ -67,7 +56,9 @@ public class BaseBallService {
                 && !inputNumber.equals(answerNumberList.get(idx));
     }
 
-    private Integer calculateStrike(List<Integer> inputNumberList, List<Integer> answerNumberList) {
+    private Integer calculateStrike(Numbers inputNumbers, Numbers answerNumbers) {
+        List<Integer> inputNumberList = inputNumbers.getNumberList();
+        List<Integer> answerNumberList = answerNumbers.getNumberList();
 
         return (int) IntStream.rangeClosed(MIN_INDEX, MAX_INDEX)
                 .filter(idx -> inputNumberList.get(idx).equals(answerNumberList.get(idx)))
