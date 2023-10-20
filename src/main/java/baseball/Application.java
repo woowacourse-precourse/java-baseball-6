@@ -5,9 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Computer computer = new Computer();
-        computer.generateRandomNum();
-        UserInput userInput = new UserInput();
-        userInput.promptUserInput();
+        GameController gameController = new GameController();
+        System.out.println("숫자 야구 게임을 시작합니다");
+        gameController.proceedGame();
     }
 }

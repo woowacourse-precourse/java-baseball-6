@@ -19,7 +19,7 @@ public class UserInput {
         return List.copyOf(userNum);
     }
     public void promptUserInput() {
-        System.out.println("Enter 3 integer");
+        System.out.print("숫자를 입력해주세요 : ");
         String string = Console.readLine();
         gameInputValidator(string);
         userNum = stringToInt(string);
