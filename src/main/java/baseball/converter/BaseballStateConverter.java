@@ -1,7 +1,7 @@
 package baseball.converter;
 
 import baseball.state.BaseballState;
-import baseball.utils.StringUtils;
+import baseball.util.StringUtils;
 import java.util.List;
 
 public class BaseballStateConverter {

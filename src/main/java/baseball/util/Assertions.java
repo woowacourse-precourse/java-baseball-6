@@ -1,4 +1,4 @@
-package baseball.utils;
+package baseball.util;
 
 public class Assertions {
     public static <E extends Comparable<? super E>>

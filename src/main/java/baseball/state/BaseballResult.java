@@ -1,6 +1,6 @@
 package baseball.state;
 
-import baseball.utils.Assertions;
+import baseball.util.Assertions;
 
 public class BaseballResult {
     private final int MAX_MATCH = 3;
@@ -11,7 +11,7 @@ public class BaseballResult {
         Assertions.assertInRange(_ball, 0, MAX_MATCH);
         Assertions.assertInRange(_strike, 0, MAX_MATCH);
         Assertions.assertInRange(_ball + _strike, 0, MAX_MATCH);
-        
+
         ball = _ball;
         strike = _strike;
     }

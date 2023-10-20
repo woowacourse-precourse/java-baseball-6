@@ -6,8 +6,8 @@ import static baseball.converter.BaseballStateConverter.stringToBaseballState;
 import baseball.state.AfterBaseballState;
 import baseball.state.BaseballResult;
 import baseball.state.BaseballState;
-import baseball.utils.IoHelper;
-import baseball.utils.RandomGenerator;
+import baseball.util.IoHelper;
+import baseball.util.RandomGenerator;
 import java.util.List;
 
 public class BaseballGame implements Game {

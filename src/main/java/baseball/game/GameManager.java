@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.utils.Assertions;
+import baseball.util.Assertions;
 
 public class GameManager {
     private static Game game = null;
