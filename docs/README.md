@@ -24,6 +24,10 @@
 ### 사용자 입력 받기
 
 - 사용자에게 **3자리의 정수**를 입력받음
+- 유효하지 않은 입력일 시 예외처리(IllegalArgumentException) 발생
+  - 유효하지 않은 입력
+    - 숫자가 아닌 문자
+    - 3자리의 정수를 나타내는 것이 아닌 문자열
 
 ### 검증
 
@@ -45,18 +49,37 @@
 - 서로 다른 3자리의 수 생성 -> 중복된 수가 없도록 관리 필요
 - `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
 - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용할 것
-- 메소드 정의
-  - `setAnswer`
-  - `generateRandomNumbers(digitCount :int)`
-    - 랜덤한 `digitCount`자리의 수 생성
-    - `digitCount :int` : 생성할 수의 길이
-    - return : `List<Integer>`
-  - `isValidNumber(oldNum :int, newNum :int)`
+- 변수/메소드 정의
+  - `DIGIT_COUNT`
+    - 게임 정답의 자릿수
+    - 명세 상의 자릿수인 3으로 설정
+    - 자료형 : `static final int`
+  - `generateRandomNumber(start :int, stop :int)`
+    <!-- 231020 : 숫자 생성 -> 검증 후 3자리 수를 만들도록 하는 것이 역할 상으로 더 맞다고 판단 -->
+    - 랜덤한 수 생성
+    - `start` 이상 `stop`이하 구간의 랜덤한 수 생성
+    - return : `int`
+  - `isValidNumber(oldNum :List, newNum :int)`
+    <!-- 231020 : `List`의 `contains` 내장 함수를 사용하는 것이 더 효율적일 것으로 예상되어 int -> List로 변경 -->
     - `oldNum` : 이미 사용 중인 번호(블랙리스트)
-    - `newNum` : 
-
+    - `newNum` : 새로 생성된 번호
+    - return : `boolean`
+  - `setAnswer()`
+    - 정답 번호 생성
+    - 랜덤 수 생성 -> 검증 과정을 거친 값을 DIGIT_COUNT 자릿수만큼 생성
+    - return : `List<Integer>`
+  
 
 ### 사용자 입력 받기
 
 - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용할 것
-- 메소드명 : requestUserInput
+- 변수/메소드 정의
+  - `requestUserInput()`
+    - 사용자의 입력을 받는 메소드
+    - return : `String`
+  - `isValidInput(input :String)`
+    - 사용자의 입력이 유효한지 검증하는 메소드
+    - 유효하지 않은 입력일 경우 `IllegalArgumentException`발생 후 종료
+    - `input` : 사용자가 입력한 문자열
+    - return : `boolean`
+    - throws : `IllegalArgumentException`
