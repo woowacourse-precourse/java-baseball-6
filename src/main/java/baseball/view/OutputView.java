@@ -1,11 +1,15 @@
 package baseball.view;
 
 public class OutputView {
-    public void gameStartMessage() {
+    public static void gameStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void printBallStrike(Integer ball, Integer strike) {
+    public void userInputMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    public static void printBallStrike(Integer ball, Integer strike) {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         }
