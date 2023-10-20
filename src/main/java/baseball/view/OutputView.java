@@ -29,13 +29,13 @@ public class OutputView {
 			System.out.println(MESSAGE_NOTHING.getMessage());
 			return;
 		}
-		if(strike > 0){
-			System.out.print(
-				MessageFormat.format("{0}{1}", strike, MESSAGE_STRIKE.getMessage()));
-		}
 		if(ball > 0){
 			System.out.print(
-				MessageFormat.format(" {0}{1}", ball, MESSAGE_BALL.getMessage()));
+				MessageFormat.format("{0}{1}", ball, MESSAGE_BALL.getMessage()));
+		}
+		if(strike > 0){
+			System.out.print(
+				MessageFormat.format(" {0}{1}", strike, MESSAGE_STRIKE.getMessage()));
 		}
 		System.out.println();
 	}
