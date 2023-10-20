@@ -15,6 +15,19 @@ public class InputHandler {
         return threeNumList;
     }
 
+    public boolean choiceEndOrReInput(){
+        String choice = Console.readLine();
+        while (true){
+            if (choice.equals("1")){
+                return false;
+            } else if (choice.equals("2")) {
+                return true;
+            } else {
+                System.out.println("다시 입력하세요");
+            }
+        }
+    }
+
     private void isValidNumber(String str) {
         if (str.length() != 3) {
             throw new IllegalArgumentException("입력한 값이 3자리가 아닙니다");
@@ -25,8 +38,9 @@ public class InputHandler {
         if (StringManipulator.hasDuplicates(str)){
             throw new IllegalArgumentException("중복된 숫자를 입력하였습니다.");
         }
-
     }
+
+
 
 
 }
