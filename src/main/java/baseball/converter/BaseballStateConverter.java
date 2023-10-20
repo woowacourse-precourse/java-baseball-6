@@ -8,7 +8,10 @@ import baseball.util.StringUtil;
 public class BaseballStateConverter {
 
     private static boolean isValidBaseballStateString(String s) {
-        if (s.length() != MAX_MATCH || !StringUtil.isDigitString(s)) {
+        if (s.length() != MAX_MATCH) {
+            return false;
+        }
+        if (!StringUtil.isDigitString(s)) {
             return false;
         }
 
@@ -18,8 +21,8 @@ public class BaseballStateConverter {
 
     public static BaseballState stringToBaseballState(String s) throws IllegalArgumentException {
         if (isValidBaseballStateString(s)) {
-            var state = StringUtil.digitStringToListOfInt(s);
-            return new BaseballState(state);
+            var rawStateList = StringUtil.digitStringToListOfInt(s);
+            return new BaseballState(rawStateList);
         }
         throw new IllegalArgumentException();
     }
