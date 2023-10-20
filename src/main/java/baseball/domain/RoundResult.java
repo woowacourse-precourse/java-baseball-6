@@ -10,7 +10,7 @@ public record RoundResult(int ballCount, int strikeCount) {
         return strikeCount != 0;
     }
 
-    public boolean isWin() {
+    public boolean isEnd() {
         return strikeCount == 3;
     }
 }

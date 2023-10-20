@@ -11,15 +11,13 @@ public class NumberBaseballGame {
 
     static void gameStart() {
         ComputerNumbers computerNumbers = new ComputerNumbers();
-        boolean isGameProceed = true;
-        while (isGameProceed) {
+        boolean isGameEnd = false;
+        while (!isGameEnd) {
             UserNumbers userNumbers = InputView.readUserNumber();
             Round round = new Round(computerNumbers, userNumbers);
             RoundResult roundResult = round.calculateRoundResult();
             OutputView.printRoundResult(roundResult);
-            if (roundResult.isWin()) {
-                isGameProceed = false;
-            }
+            isGameEnd = roundResult.isEnd();
         }
     }
 
