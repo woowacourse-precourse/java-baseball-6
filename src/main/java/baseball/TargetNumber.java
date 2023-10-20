@@ -18,7 +18,7 @@ class TargetNumber {
      */
     public static TargetNumber generate(int a, int b, int c) {
         if (isValidNumber(a) && isValidNumber(b) && isValidNumber(c)) return new TargetNumber(a, b, c);
-        return new TargetNumber(0, 0, 0);
+        return new TargetNumber();
     }
 
     /*
