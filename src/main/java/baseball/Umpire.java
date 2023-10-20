@@ -9,8 +9,8 @@ public class Umpire {
 
     public static int countStrike(final int originNumber, final int testNumber) {
         int count = 0;
-        String[] origin = StringInputConverter.convertStringToArray(convertNumberToString(originNumber));
-        String[] test = StringInputConverter.convertStringToArray(convertNumberToString(testNumber));
+        String[] origin = StringInputConverter.convertToArray(convertNumberToString(originNumber));
+        String[] test = StringInputConverter.convertToArray(convertNumberToString(testNumber));
 
         for (int i = 0; i < origin.length; i++) {
             if (isBothSame(origin[i], test[i])) {
@@ -30,8 +30,8 @@ public class Umpire {
     }
 
     public static int countBall(final int originNumber, final int testNumber) {
-        String[] origin = StringInputConverter.convertStringToArray(convertNumberToString(originNumber));
-        String[] test = StringInputConverter.convertStringToArray(convertNumberToString(testNumber));
+        String[] origin = StringInputConverter.convertToArray(convertNumberToString(originNumber));
+        String[] test = StringInputConverter.convertToArray(convertNumberToString(testNumber));
 
         boolean[] onlyOrigin = new boolean[origin.length];
         boolean[] onlyTest = new boolean[test.length];
