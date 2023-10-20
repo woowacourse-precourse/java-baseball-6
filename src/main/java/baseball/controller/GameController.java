@@ -36,6 +36,13 @@ public class GameController {
                 guessNumberList.add(Character.getNumericValue(c));
             }
             player.compareToAnswerNumbers(opponent, guessNumberList);
+
+            if (checkNumbersEqualToAnswer(player)) {
+            }
         }
+    }
+
+    private boolean checkNumbersEqualToAnswer(Player player) {
+        return player.isEqualToAnswerNumbers();
     }
 }
