@@ -74,12 +74,14 @@ public class Application {
 
     // 사용자가 입력한 값에서 2개 이상 중복되는 숫자가 있는 경우
     private static void hasRepeatedDigitNumber(String playerNum){
-        List<Integer> player = new ArrayList<>();
+        List<String> player = new ArrayList<>();
         for(int i = 0; i < COMPUTER_NUM_SIZE; i++){
-            if (player.contains(playerNum.indexOf(i))) {
+            String playerIndex = String.valueOf(playerNum.charAt(i));
+
+            if (player.contains(playerIndex)) {
                 throw new IllegalArgumentException("서로 다른 3자리의 수가 아닙니다. 게임이 종료됩니다.");
             }
-            player.add(playerNum.indexOf(i));
+            player.add(playerIndex);
         }
     }
 
