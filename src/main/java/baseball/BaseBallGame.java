@@ -77,14 +77,10 @@ public class BaseBallGame {
         return true;
     }
 
-    private boolean isUniqueDigits(String input) {
-        for (int i = 0; i < input.length(); i++) {
-            if(input.indexOf(input.charAt(i)) != i) {
-                return false;
-            }
-        }
+    private boolean isUniqueDigits(List<Integer> numbers) {
+        Set<Integer> deduplicatedNumbers = new HashSet<>(numbers);
 
-        return true;
+        return deduplicatedNumbers.size() == numbers.size();
     }
 
     private boolean isThreeDigit(String input) {
