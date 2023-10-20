@@ -10,6 +10,7 @@ public class Application {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final List<Integer> computerNumber = new ArrayList<>();
+    private static final List<Integer> userNumber = new ArrayList<>();
     public static void main(String[] args) {
         // 게임 시작 메시지 출력
         System.out.println(GAME_START_MESSAGE);
@@ -24,12 +25,18 @@ public class Application {
 
         // 사용자 숫자 입력
         System.out.print(USER_INPUT_MESSAGE);
-        String userNumber = Console.readLine();
+        String userInput = Console.readLine();
 
         // 사용자 숫자 검증
         // 정규식을 사용한 검증
-        if (!userNumber.matches("[1-9]{3}")) {
+        if (!userInput.matches("[1-9]{3}")) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+
+        // 사용자 숫자(문자열)를 List<Integer> 타입으로 변경
+        for (char c : userInput.toCharArray()) {
+            int number = Character.getNumericValue(c);
+            userNumber.add(number);
         }
     }
 }
