@@ -12,17 +12,17 @@ public class NumberBaseBall {
     InputValidator inputValidator;
     MessageViewer messageViewer;
     Score score;
-    UserAction user;
-    ComputerAction computer;
+    UserAction userAction;
+    ComputerAction computerAction;
 
     public void init(){
         numberChecker = new NumberChecker();
         inputValidator = new InputValidator();
         messageViewer = new MessageViewer();
-        computer = new ComputerAction();
-        user = new UserAction();
+        computerAction = new ComputerAction();
+        userAction = new UserAction();
 
-        computer.generateNumber();
+        computerAction.generateNumber();
     }
 
     public void run(){
@@ -32,9 +32,8 @@ public class NumberBaseBall {
 
         while (mind == WANNA_KEEP_PLAYING){
             messageViewer.printInputRequestMsg();
-            System.out.println(computer.numberList.get(0) + "" + computer.numberList.get(1) + "" + computer.numberList.get(2));
-            user.inputAnswer(inputValidator);
-            score = numberChecker.checkNumber(user.numberList, computer.numberList);
+            userAction.inputAnswer(inputValidator);
+            score = numberChecker.checkNumber(userAction.user.numberList, computerAction.computer.numberList);
             messageViewer.printResultMsg(score.ballCount, score.strikeCount);
 
             mind = checkKeepGoing(score.strikeCount);
@@ -44,10 +43,10 @@ public class NumberBaseBall {
     public int checkKeepGoing(int strikeCount){
         if (strikeCount == MAX_STRIKES) {
             messageViewer.printGameEndMsg();
-            user.inputRestartFactor(inputValidator);
-            regenerateNumber(user.mind);
+            userAction.inputRestartFactor(inputValidator);
+            regenerateNumber(userAction.user.mind);
 
-            return user.mind;
+            return userAction.user.mind;
         }
 
         return WANNA_KEEP_PLAYING;
@@ -55,6 +54,6 @@ public class NumberBaseBall {
 
     public void regenerateNumber(int mind){
         if (mind == WANNA_KEEP_PLAYING)
-            computer.generateNumber();
+            computerAction.generateNumber();
     }
 }
