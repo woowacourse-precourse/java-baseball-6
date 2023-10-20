@@ -1,14 +1,14 @@
 package baseball;
 
 public class Computer {
-    private final Ball ball;
+    private BallArray ballArray;
 
-    public Computer() {
-        this.ball = new Ball();
+    public void setRandomBallArray() {
+        ballArray = BaseballBallFactory.createRanDomBall();
     }
 
-    public BallResult getUserBallResult(Ball userBall) {
-        return ball.compareWith(userBall);
+    public BallResult getUserBallResult(BallArray userBallArr) {
+        return ballArray.compareWith(userBallArr);
     }
 
 }
