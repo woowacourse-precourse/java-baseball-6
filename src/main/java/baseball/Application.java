@@ -8,6 +8,8 @@ package baseball;
 
 import java.util.Random;
 import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import static java.lang.Integer.parseInt;
 
@@ -30,14 +32,14 @@ public class Application {
             isFinish = false;
 
             while (com.length() < 3) {
-                int r = rand.nextInt(9) + 1;
+                int r = Randoms.pickNumberInRange(1,9);
                 String sr = Integer.toString(r);
                 if (!com.contains(sr)) {     //리스트에 포함되지 않는다면 추가하고 실행
                     com = com + sr;
                 }
             }
             //@@@@ 삭제해야 하는 코드
-            //System.out.println("answer: "+com);
+            System.out.println("answer: "+com);
             // 게임 시작
 
             // while (게임 진행되는 동안)
@@ -90,7 +92,6 @@ public class Application {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     end = sc.nextInt();
-                    String one = "1";
                     // TODO: 잘못된 값 입력됬는지 확인!
                     try {
                         if (!(end == 1 || end == 2)) {
