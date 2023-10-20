@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    public List<Integer> MakeNewNumber(){
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+    public List<Integer> makeNewNumber(){
+        List<Integer> newNumber = new ArrayList<>();
+        while (newNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!newNumber.contains(randomNumber)) {
+                newNumber.add(randomNumber);
             }
         }
-        return computer;
+        return newNumber;
     }
 }
