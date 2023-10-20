@@ -35,4 +35,5 @@ public class Validator {
         return Pattern.matches(REGEXP_PATTERN_MIN_TO_MAX, inputNumber);
     }
 
+    public boolean isOneOrTwo(String inputNumber) { return inputNumber.equals("1") || inputNumber.equals("2"); }
 }
