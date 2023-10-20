@@ -21,7 +21,10 @@ public class GameNumber {
 
     public GameNumber(String value) {
         validValue(value);
-        this.gameNumber = Converter.convertList(value);
+        List<Integer> gameNumber = Converter.convertList(value);
+        validLength(gameNumber);
+        validRange(gameNumber);
+        this.gameNumber = gameNumber;
     }
 
     public static GameNumber of(List<Integer> number) {
