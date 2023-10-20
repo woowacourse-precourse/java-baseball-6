@@ -17,7 +17,9 @@ public class GameCore {
 
     public void game() {
         boolean flag = true;
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (flag) {
+            initGame();
             doGame();
             flag = inputter.restart();
         }
@@ -50,6 +52,6 @@ public class GameCore {
     }
 
     private void initGame() {
-        validator.setTarget(initializer.initGame());
+        validator.setTarget(initializer.getNewNumbers());
     }
 }
