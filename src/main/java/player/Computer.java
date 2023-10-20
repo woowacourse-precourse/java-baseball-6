@@ -6,12 +6,8 @@ import java.util.List;
 
 public class Computer {
 
-    private List<Integer> computerBaseballNumber;
+    private List<Integer> computerBaseballNumber = new ArrayList<>();
     private static final int MAX_LENGTH = 3;
-
-    public Computer() {
-
-    }
 
     public void generateComputerRandomNumber() {
         List<Integer> computerBaseballNumber = new ArrayList<>();

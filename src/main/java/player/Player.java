@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Player {
 
-    private List<Integer> playerBaseballNumber;
+    private List<Integer> playerBaseballNumber = new ArrayList<>();
     private static final int MAX_LENGTH = 3;
     private static final String ONLY_THREE_NUMBER_MESSAGE = "3자리의 숫자만 입력가능합니다.";
     private static final String ONLY_NUMBER_MESSAGE = "숫자만 입력 가능합니다.";
