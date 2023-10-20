@@ -9,25 +9,30 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        boolean isAnswer = false;
-        while (!isAnswer) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
+        String choiceOfUser = "1";
+        while (choiceOfUser.equals("1")) {
 
-            if (!input.matches("[1-9]{3}")) {
-                throw new IllegalArgumentException();
+            List<Integer> computer = new ArrayList<>();
+            while (computer.size() < 3) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!computer.contains(randomNumber)) {
+                    computer.add(randomNumber);
+                }
             }
-            isAnswer = compare(computer, input);
+
+            boolean isAnswer = false;
+            while (!isAnswer) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String input = Console.readLine();
+
+                if (!input.matches("[1-9]{3}")) {
+                    throw new IllegalArgumentException();
+                }
+                isAnswer = compare(computer, input);
+            }
+            choiceOfUser = Console.readLine();
         }
     }
 
