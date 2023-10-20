@@ -27,4 +27,10 @@ public class GameController {
         }
     }
 
+    public boolean isContinue(String input){
+        validateOption(input);
+
+        return input.equals("1");
+    }
+
 }
