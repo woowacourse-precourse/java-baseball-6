@@ -72,7 +72,7 @@ public class FunctionTest {
         assertEquals(new GameResult(1, 2), gameResult3);
 
         List<Integer> userInputList4 = List.of(4, 0, 9);
-        GameResult gameResult4 = Application.playGame(answerList, userInputList3);
-        assertEquals(new GameResult(3, 0), gameResult3);
+        GameResult gameResult4 = Application.playGame(answerList, userInputList4);
+        assertEquals(new GameResult(3, 0), gameResult4);
     }
 }
