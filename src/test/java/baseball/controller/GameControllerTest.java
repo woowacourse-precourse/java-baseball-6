@@ -9,9 +9,27 @@ import static org.assertj.core.api.Assertions.*;
 class GameControllerTest {
 
     @Test
+    void 컴퓨터측_볼_생성(){
+        GameController controller = new GameController();
+        controller.createComputerBall();
+        Set<BallDto> computer = controller.getComputer();
+        assertThat(computer.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 컴퓨터측_볼_검증(){
+        GameController controller = new GameController();
+        controller.createComputerBall();
+        Set<BallDto> computer = controller.getComputer();
+        for (BallDto ballDto : computer) {
+            assertThat(ballDto.getNumber()).isNotNull();
+        }
+    }
+
+    @Test
     void 유저측_볼_생성(){
         GameController controller = new GameController();
-        controller.gameProcess("251");
+        controller.createUserBall("251");
         Set<BallDto> user = controller.getUser();
 
         assertThat(user.size()).isEqualTo(3);
@@ -20,7 +38,7 @@ class GameControllerTest {
     @Test
     void 유저측_볼_내용_검증(){
         GameController controller = new GameController();
-        controller.gameProcess("251");
+        controller.createUserBall("251");
         for (BallDto ballDto : controller.getUser()) {
             assertThat(ballDto.getNumber()).isNotNull();
         }

@@ -28,7 +28,7 @@ public class GameController {
         createUserBall(number);
     }
 
-    private void createComputerBall() {
+    public void createComputerBall() {
         computer = new LinkedHashSet<>();
         while (computer.size() < 3){
             Ball ball = new Ball(Randoms.pickNumberInRange(1, 9));
@@ -36,7 +36,7 @@ public class GameController {
         }
     }
 
-    private void createUserBall(String number){
+    public void createUserBall(String number){
         Set<BallDto> userBall = new LinkedHashSet<>();
         char[] charArray = number.toCharArray();
         for (char num : charArray) {
@@ -44,6 +44,10 @@ public class GameController {
             userBall.add(new BallDto(ball.getNumber()));
         }
         this.user = userBall;
+    }
+
+    public Set<BallDto> getComputer() {
+        return computer;
     }
 
     public Set<BallDto> getUser() {
