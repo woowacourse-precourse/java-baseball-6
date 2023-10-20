@@ -10,8 +10,6 @@ public class BaseballValidator {
     private static final Integer START_BASEBALL = 1;
     private static final Integer END_BASEBALL = 9;
 
-    private static final String GAP ="";
-
     private static final String SIZE_EXCEPTION ="3개의 숫자를 입력해야 합니다.";
     private static final String DUPLICATE_EXCEPTION ="중복된 숫자를 입력할 수 없습니다.";
     private static final String RANGE_EXCEPTION ="1부터 9까지의 숫자만 입력할 수 있습니다.";

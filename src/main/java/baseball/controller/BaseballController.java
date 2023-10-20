@@ -23,7 +23,7 @@ public class BaseballController {
         User user= new User(true);
         Computer computer = new Computer();
         do{
-            gameStart(baseball,user,computer);
+            gameStart(user,computer);
             retryGame(baseball);
         }
         while(baseball.isState());
@@ -34,15 +34,15 @@ public class BaseballController {
     }
 
 
-    private static void gameStart(Baseball baseball, User user, Computer computer) {
+    private static void gameStart( User user, Computer computer) {
         do{
             settingComputer(computer,user);
-            playBall(user,computer,baseball);
+            playBall(user,computer);
         }
         while(user.retry());
     }
 
-    private static void playBall(User user, Computer computer,Baseball baseball) {
+    private static void playBall(User user, Computer computer) {
         BallCount ballCount = new BallCount(true);
         do{
             user.setBaseball(inputNumber());
