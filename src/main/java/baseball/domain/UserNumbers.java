@@ -3,12 +3,15 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public record GameNumber(List<Integer> numbers) {
-    public GameNumber {
+public final class UserNumbers {
+    private final List<Integer> numbers;
+
+    public UserNumbers(List<Integer> numbers) {
         validate(numbers);
+        this.numbers = numbers;
     }
 
-    private void validateSize() {
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 3) {
             throw new IllegalArgumentException();
         }
@@ -21,7 +24,7 @@ public record GameNumber(List<Integer> numbers) {
     }
 
     private void validate(List<Integer> numbers) {
-        validateSize();
+        validateSize(numbers);
         List<Integer> compare = new ArrayList<>();
         for (Integer number : numbers) {
             validateNumber(compare, number);
@@ -29,4 +32,8 @@ public record GameNumber(List<Integer> numbers) {
         }
     }
 
+
+    public int get(int i) {
+        return numbers.get(i);
+    }
 }
