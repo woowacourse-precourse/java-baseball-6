@@ -23,6 +23,9 @@ public class UserInput {
         for (int i = 0; i < removeSpace.length(); i++) {
             result.add(removeSpace.charAt(i) - '0'); // 아 뭔가 이거도 별론데... stream 쓰자 습..
         }
+        for (Character c : removeSpace) {
+
+        }
         return new ArrayList<>(result);
     }
 
