@@ -24,6 +24,7 @@ ___
 
 * InputView
     * Player 숫자를 입력
+    * 게임 종료 시 재시작 여부 묻기
 
 3. Controller
     * GamePlayController

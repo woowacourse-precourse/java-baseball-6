@@ -1,28 +1,20 @@
 package baseball.View;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
     private static final String inputNumberMsg = "숫자를 입력해주세요 : ";
     private static final String afterGameMsg = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 
-    public String enterAnswer() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String answer = br.readLine();
-        return answer;
-    }
-
-    public void enterAskNumber() throws IOException {
+    public String enterAskNumber() {
         System.out.println(inputNumberMsg);
-        enterAnswer();
+        return Console.readLine();
     }
 
-    public void enterAskRestart() throws IOException {
+    public String enterAskRestart() {
         System.out.println(afterGameMsg);
-        enterAnswer();
+        return Console.readLine();
     }
 }
