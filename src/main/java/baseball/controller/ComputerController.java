@@ -25,4 +25,17 @@ public class ComputerController {
     public void calculate(List<Integer> userNumbers){
         computer.calculate(userNumbers);
     }
+
+    public List<Integer> getNumbers() {
+        return computer.getNumbers();
+    }
+
+    public int getBall() {
+        return computer.getBall();
+    }
+
+    public int getStrike() {
+        return computer.getStrike();
+    }
+
 }

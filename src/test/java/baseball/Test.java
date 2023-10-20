@@ -1,6 +1,8 @@
 package baseball;
 
+import baseball.controller.ComputerController;
 import baseball.controller.UserController;
+import baseball.model.Computer;
 import baseball.utility.InputDataExceptionHandler;
 import baseball.view.GameView;
 import camp.nextstep.edu.missionutils.Console;
@@ -27,5 +29,13 @@ public class Test {
                         .collect(Collectors.toList())
         );
         System.out.println(userController.getNumbers());
+
+        // Test용 사용자 숫자 확인하기
+        ComputerController computerController = new ComputerController();
+        computerController.setNumbers();
+        System.out.println(computerController.getNumbers());
+        computerController.calculate(userController.getNumbers());
+        System.out.println(computerController.getBall() + ", " + computerController.getStrike());
+
     }
 }
