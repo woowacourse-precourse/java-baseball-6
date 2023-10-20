@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-import net.bytebuddy.pool.TypePool;
 
 public class Application {
     static String comAnswer;
@@ -10,31 +9,18 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        //1) 컴퓨터 랜덤 난수 생성
-        comAnswer = computerRandomNum();
-        System.out.println(comAnswer);
-        //2) 사용자 입력값 예외처리
-        userAnswer = Console.readLine();
-        chkInputException(userAnswer);
-        //3) 사용자 입력값에 대한 힌트 제공
-        if(getHint(userAnswer, comAnswer)){
-            System.out.println("정답입니다.");
-        }
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        String gameRepeat = "";
+        do{
+            ComputerGame game = new ComputerGame();
+            game.gameStart();
+            //4) 게임 맞추면 진행 여부 묻기
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            gameRepeat = Console.readLine();
 
+        }while(gameRepeat.equals("1"));
     }
 
-    //컴퓨터 랜덤 숫자 생성 함수
-    static String computerRandomNum(){
-        //중복 없이 3개의 숫자로 구성
-        String num = "";
-        while(num.length() <3){
-            String tmp = String.valueOf(Randoms.pickNumberInRange(1, 9));
-            if(!num.contains(tmp)){
-                num+=tmp;
-            }
-        }
-        return num;
-    }
 
     //사용자 입력값에 대한 예외처리
     static void chkInputException(String useAnswer) throws IllegalArgumentException{
@@ -93,5 +79,44 @@ public class Application {
         }
         return false;
     }
+}
 
+//게임에 대한 전체 진행 로직
+class ComputerGame{
+    String comAnswer;
+    String userAnswer;
+    Application main = new Application();
+
+    ComputerGame(){
+        //1) 컴퓨터 랜덤 난수 생성 - 최초1번.
+        comAnswer = computerRandomNum();
+        System.out.println(comAnswer);
+
+        gameStart();
+    }
+    //게임 진행 반복 - 정답 맞출 때까지
+    public void gameStart(){
+        boolean success = false;
+        do{
+            //2) 사용자 입력값 예외처리
+            userAnswer = Console.readLine();
+            main.chkInputException(userAnswer);
+            //3) 사용자 입력값에 대한 힌트 제공
+            success = main.getHint(userAnswer, comAnswer);
+        }while(!success);
+
+    }
+
+    //컴퓨터 랜덤 숫자 생성 함수
+    static String computerRandomNum(){
+        //중복 없이 3개의 숫자로 구성
+        String num = "";
+        while(num.length() <3){
+            String tmp = String.valueOf(Randoms.pickNumberInRange(1, 9));
+            if(!num.contains(tmp)){
+                num+=tmp;
+            }
+        }
+        return num;
+    }
 }
