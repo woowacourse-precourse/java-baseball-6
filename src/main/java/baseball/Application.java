@@ -55,6 +55,7 @@ public class Application {
     }
 
     public static void handleGameScene() {
+        BaseBallNumberGroup computer = new BaseBallNumberGroup(getRandomNumberList());
     }
 
     public static void handleEndScene() {
