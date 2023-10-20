@@ -20,6 +20,10 @@ public enum GameMessages {
 		return message;
 	}
 
+	public static void printInputMsg() {
+		System.out.print(INPUT_NUMBER.getMessage());
+	}
+
 	public static void printStartMsg() {
 		System.out.println(GAME_START.getMessage());
 	}

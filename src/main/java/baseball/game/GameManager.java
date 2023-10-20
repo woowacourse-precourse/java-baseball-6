@@ -2,10 +2,10 @@ package baseball.game;
 
 import static baseball.game.GameMessages.BALL;
 import static baseball.game.GameMessages.BALL_STRIKE;
-import static baseball.game.GameMessages.INPUT_NUMBER;
 import static baseball.game.GameMessages.NOTHING;
 import static baseball.game.GameMessages.STRIKE;
 import static baseball.game.GameMessages.printEndMsg;
+import static baseball.game.GameMessages.printInputMsg;
 import static baseball.game.GameMessages.printStartMsg;
 import static baseball.game.RandomNumberGenerator.generateRandomNumber;
 
@@ -35,9 +35,11 @@ public class GameManager {
 		boolean isAnswer = false;
 
 		while (!isAnswer) {
-			System.out.print(INPUT_NUMBER.getMessage());
+			printInputMsg();
+
 			setUserNumbers();
-			System.out.println(giveHint(user.getBalls(), answer.getBalls()));
+
+			printHint(giveHint(user.getBalls(), answer.getBalls()));
 			isAnswer = isGameEndedWith3Strikes();
 		}
 
@@ -54,6 +56,10 @@ public class GameManager {
 
 	public void setUserNumbers() {
 		user.setBalls(userInput.getNumbers());
+	}
+
+	private void printHint(String hint) {
+		System.out.println(hint);
 	}
 
 	public String giveHint(List<Integer> player, List<Integer> answer) {
