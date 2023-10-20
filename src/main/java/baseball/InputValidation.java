@@ -10,19 +10,32 @@ public class InputValidation {
         String trimmed = input.replace(" ", "");
         validateLength(trimmed);
         validateOnlyDigit(trimmed);
+        validateContainZero(trimmed);
+
+        return (convertStrToIntegerList(trimmed));
     }
 
+    // 길이에 대한 검증
     public void validateLength(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3개의 숫자만 입력해주세요.");
         }
     }
 
+    // 숫자로만 이루어져있는지 검증
     public void validateOnlyDigit(String input) {
         if (!input.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException("숫자만 입력해 주세요.");
         }
     }
+
+    // 0을 포함했는지 검증
+    public void validateContainZero(String input) {
+        if (input.contains("0")) {
+            throw new IllegalArgumentException("1 ~ 9 사이의 숫자만 입력해주세요.");
+        }
+    }
+    // 중복수에 대한 검증
 
     /*
     * 드디어 stream 써보는군아~~
