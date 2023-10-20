@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class Judgment {
+public class Judgement {
     // 기능: 힌트 얻기
     public String getHint(List<Integer> computerBalls, List<Integer> playerBalls) {
         if (isNothing(computerBalls, playerBalls)) {

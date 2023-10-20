@@ -8,7 +8,7 @@ public class GameManager {
 
     private Validator validator = new Validator();
     private BaseballCreator baseballCreator = new BaseballCreator();
-    private Judgment judgment = new Judgment();
+    private Judgement judgment = new Judgement();
 
     // 기능: 게임을 최초로 시작한다
     public void initialGameStart() {
