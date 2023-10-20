@@ -1,26 +1,9 @@
 package baseball.domain;
 
+import baseball.domain.number.Numbers;
 
-import baseball.io.Input;
-import java.util.List;
+public interface Player {
 
-public class Player {
+    public Numbers getNumbers();
 
-    private Numbers numbers;
-
-    private Player() {
-    }
-
-    public static Player create() {
-
-        return new Player();
-    }
-
-    public void inputNumber() {
-        this.numbers = Numbers.create(Input.inputNumberList());
-    }
-
-    public List<Integer> getNumberList() {
-        return numbers.getNumberList();
-    }
 }
