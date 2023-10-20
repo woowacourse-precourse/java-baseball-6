@@ -13,7 +13,7 @@ public class Player {
 
     private List<Integer> playerBaseballNumber = new ArrayList<>();
 
-    public List<Integer> inputPlayerNumber() {
+    public void inputPlayerNumber() {
         List<Integer> playerInputBaseballNumber = new ArrayList<>();
         String[] playerInput = Console.readLine().split("");
 
@@ -23,7 +23,6 @@ public class Player {
 
         validatePlayerInput(playerInputBaseballNumber);
         playerBaseballNumber = playerInputBaseballNumber;
-        return playerInputBaseballNumber;
     }
 
     private void validatePlayerInput(List<Integer> playerInput) {

@@ -36,9 +36,10 @@ public class PlayerTest {
         provideUserInput(playerInput);
 
         //when
-        List<Integer> playerBaseballNumber = player.inputPlayerNumber();
+        player.inputPlayerNumber();
+        List<Integer> playerBaseballNumber = player.getPlayerBaseballNumber();
 
-        //then
+                //then
         assertThat(playerBaseballNumber).isEqualTo(Arrays.asList(1, 2, 3));
     }
 
