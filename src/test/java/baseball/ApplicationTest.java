@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.RandomNumGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +27,12 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 컴퓨터_랜덤값_생성(){
+        RandomNumGenerator randomNumGenerator = new RandomNumGenerator();
+        randomNumGenerator.generateRandomNumbers();
     }
 
     @Override
