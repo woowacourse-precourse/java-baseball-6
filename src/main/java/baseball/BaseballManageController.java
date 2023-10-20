@@ -123,40 +123,40 @@ public class BaseballManageController {
         view.printAskRestart();
     }
 
-    public void playerNumsInputCheck(String input) throws IllegalArgumentException{
+    public void playerNumsInputCheck(String playerInput) throws IllegalArgumentException{
 
         //입력 자리수 확인
-        if(input.length() != 3) {
+        if(playerInput.length() != 3) {
             throw new IllegalArgumentException();
         }
         //입력 숫자 중복 여부 확인
         for(int i = 0; i < 3; i++) {
             for(int j = i + 1; j < 3; j++) {
-                if(input.charAt(i) == input.charAt(j)) {
+                if(playerInput.charAt(i) == playerInput.charAt(j)) {
                     throw new IllegalArgumentException();
                 }
             }
         }
 
         //0 포함 여부 확인
-        if(input.contains("0")) {
+        if(playerInput.contains("0")) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void playerInputTypeCheck(String input) throws IllegalArgumentException{
+    public void playerInputTypeCheck(String playerInput) throws IllegalArgumentException{
 
         try {
-            Double.parseDouble(input);
+            Double.parseDouble(playerInput);
         } catch(NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void RestartInputCheck(String input) throws IllegalArgumentException{
+    public void RestartInputCheck(String restartInput) throws IllegalArgumentException{
 
-        List<String> restartInputs = List.of("1", "2");
-        if(!restartInputs.contains(input)) {
+        List<String> restartInputList = List.of("1", "2");
+        if(!restartInputList.contains(restartInput)) {
             throw new IllegalArgumentException();
         }
     }
