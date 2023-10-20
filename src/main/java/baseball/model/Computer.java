@@ -9,4 +9,8 @@ public class Computer {
     public Computer(List<Integer> numbers) {
         this.numbers = numbers;
     }
+
+    public boolean hasNumber(int number) {
+        return numbers.contains(number);
+    }
 }
