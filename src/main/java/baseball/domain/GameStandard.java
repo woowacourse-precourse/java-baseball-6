@@ -31,7 +31,7 @@ public class GameStandard {
      * @return 만약에 List의 index의 숫자가 numIndexPlaceOfUser와 동일하다면 true
      */
     public boolean isSamePlaceNumUserAndComputer(List<Integer> computerList, int placeIndexOfUser, int numIndexPlaceOfUser) {
-
-        return true;
+        int numPlaceIndexOfComputer = computerList.get(placeIndexOfUser);
+        return numPlaceIndexOfComputer == numIndexPlaceOfUser;
     }
 }
