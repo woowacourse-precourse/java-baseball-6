@@ -21,9 +21,9 @@
 
 - [ ] 역할에 맞는 로직 분리
     - [ ] model
-        - [ ] GameNumber 상속 클래스 만들기
-            - [ ] ComputerGameNumber
-            - [ ] UserGameNumber
+        - [x] GameNumber 분리
+            - [x] ComputerNumbers
+            - [x] UserNumbers
     - [x] view
         - [x] InputView
         - [x] OutPutView
