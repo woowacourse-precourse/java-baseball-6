@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PlayerNumber {
     private List<Integer> playerNumbers = new ArrayList<>();
@@ -63,7 +64,9 @@ public class PlayerNumber {
     }
 
     private static List<Integer> convertNumbers(String playerNumbers) {
-        return Arrays.asList(Integer.valueOf(playerNumbers));
+        return Arrays.stream(playerNumbers.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
 
