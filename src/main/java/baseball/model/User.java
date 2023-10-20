@@ -15,7 +15,6 @@ public class User {
         this.numbers = numbers;
     }
 
-
     @Override
     public String toString() {
         return "User{" +
