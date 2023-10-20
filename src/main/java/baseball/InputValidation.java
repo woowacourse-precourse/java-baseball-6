@@ -14,6 +14,7 @@ public class InputValidation {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3개의 숫자만을 입력해주시기 바랍니다.");
         }
+        validateInputNumber(input);
     }
 
     private void validateInputNumber(String input) {

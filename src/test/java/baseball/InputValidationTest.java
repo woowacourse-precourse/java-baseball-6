@@ -59,4 +59,6 @@ class InputValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3개의 숫자만을 입력해주시기 바랍니다.");
     }
+
+
 }
