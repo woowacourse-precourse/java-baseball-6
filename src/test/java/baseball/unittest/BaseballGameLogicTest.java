@@ -116,17 +116,23 @@ public class BaseballGameLogicTest {
 
         for (int i = 0; i < input.length; i++) {
             // 변수 할당
-            boolean ballCheck = computer.contains(input[i]);
-            boolean strikeCheck = computer.get(i) == input[i];
 
-            if (ballCheck && strikeCheck) {
+            if (isStrike(computer,input,i) && isBall(computer,input[i])) {
                 strikeCount++;
-            }else if (ballCheck) {
+            }else if (isBall(computer,input[i])) {
                 ballCount++;
             }
         }
 
         return new Result(ballCount, strikeCount);
+    }
+
+    private static boolean isStrike(List<Integer> computer, int[] input, int index) {
+        return computer.get(index) == input[index];
+    }
+
+    private static boolean isBall(List<Integer> computer, int number) {
+        return computer.contains(number);
     }
 
     // 결과 DTO를 하나 만들자
