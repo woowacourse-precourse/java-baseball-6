@@ -14,4 +14,12 @@ public class Baseball {
             throw new IllegalArgumentException(BLANK_EXCEPTION_MSG);
         }
     }
+
+    public void checkInputOfDigit(String input) {
+        for (char c : input.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException(NON_DIGIT_EXCEPTION_MSG);
+            }
+        }
+    }
 }
