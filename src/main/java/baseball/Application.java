@@ -51,10 +51,15 @@ public class Application {
         //컴퓨터가 서로 다른 3개의 숫자 생성
 
 //        computerNumber = new ArrayList<>();
-        StringBuilder computerNumber = new StringBuilder();
+        String computerNumber = "";
         for(int i=0; i<3; i++) {
-//            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            computerNumber.append(Randoms.pickNumberInRange(1, 9));
+          String SelectNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
+
+          if(computerNumber.contains(SelectNumber)) {
+              i--;
+              continue;
+          }
+            computerNumber += SelectNumber;
 //            computerNumber.add(randomNumber);
         }
 
