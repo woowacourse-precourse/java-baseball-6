@@ -35,7 +35,7 @@ public class BaseballController {
         while (true) {
             GameNumber player = new GameNumber(inputView.readGuessNumber());
             Score score = calculateScore(computer, player);
-            outputView.printResult(score);
+            outputView.printScore(score);
             if (score.isStrikeOut()) {
                 outputView.printGameEndMessage();
                 break;
