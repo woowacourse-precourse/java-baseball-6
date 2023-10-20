@@ -15,7 +15,6 @@ public class Application {
         do {
             // 1. 랜덤하게 숫자 1~9 로 이루어진 3자리 숫자 생성
             computer.setRandomNums();
-            System.out.println("computer.getNumbers() = " + computer.getNumbers());
 
             boolean gameOver = false;
             while (!gameOver) {
