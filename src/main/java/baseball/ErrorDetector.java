@@ -1,12 +1,14 @@
 package baseball;
 
 import constants.MessageConstants;
+import constants.NumberConstants;
+import constants.StringConstants;
 
 public class ErrorDetector {
 
     public static void throwIfNumbersInputInvalid(String numbers) {
         throwIfContainsNonNumber(numbers);
-        if (numbers.length() != 3) {
+        if (numbers.length() != NumberConstants.MAX_BALL_SIZE) {
             Output.printErrorMessage(MessageConstants.INVALID_NUMBERS_INPUT_LENGTH_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
@@ -14,8 +16,7 @@ public class ErrorDetector {
 
     public static void throwIfOptionInputInvalid(String option) {
         throwIfContainsNonNumber(option);
-        int op = Integer.parseInt(option);
-        if (op != 1 && op != 2) {
+        if (!option.equals(StringConstants.CONTINUE) && !option.equals(StringConstants.FINISH)) {
             Output.printErrorMessage(MessageConstants.INVALID_OPTION_INPUT_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }

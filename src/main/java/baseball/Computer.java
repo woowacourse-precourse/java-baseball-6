@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import constants.MessageConstants;
+import constants.NumberConstants;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,23 +22,23 @@ public class Computer {
 
         printResultMessage(ballCounts, strikeCounts);
 
-        if (strikeCounts == 3) {
+        if (strikeCounts == NumberConstants.MAX_STRIKE) {
             System.out.println(MessageConstants.GAME_FINISH_MESSAGE);
             finish = true;
         }
     }
 
     private void printResultMessage(int ballCounts, int strikeCounts) {
-        if (ballCounts == 0 && strikeCounts == 0) {
+        if (ballCounts == NumberConstants.ZERO && strikeCounts == NumberConstants.ZERO) {
             Output.printMessage(MessageConstants.NOTHING_MESSAGE);
             return;
         }
         StringBuilder message = new StringBuilder();
 
-        if (ballCounts != 0) {
+        if (ballCounts != NumberConstants.ZERO) {
             message.append(ballCounts).append(MessageConstants.BALL_MESSAGE).append(" ");
         }
-        if (strikeCounts != 0) {
+        if (strikeCounts != NumberConstants.ZERO) {
             message.append(strikeCounts).append(MessageConstants.STRIKE_MESSAGE);
         }
 
@@ -77,8 +78,8 @@ public class Computer {
     private String getRandomNumbers() {
         Set<Integer> set = new HashSet<>();
 
-        while (set.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (set.size() < NumberConstants.MAX_BALL_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(NumberConstants.MIN_NUMBER, NumberConstants.MAX_NUMBER);
             set.add(randomNumber);
         }
 

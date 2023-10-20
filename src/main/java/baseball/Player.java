@@ -1,5 +1,7 @@
 package baseball;
 
+import constants.StringConstants;
+
 public class Player {
 
     private Computer computer;
@@ -26,7 +28,7 @@ public class Player {
 
     private void playAgain() {
         String option = readOptionInput();
-        if (option.equals("1")) {
+        if (option.equals(StringConstants.CONTINUE)) {
             start();
         }
     }
