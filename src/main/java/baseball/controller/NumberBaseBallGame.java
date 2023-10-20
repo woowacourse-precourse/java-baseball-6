@@ -1,7 +1,8 @@
 package baseball.controller;
 
 import baseball.Computer;
-import baseball.UserInput;
+import baseball.input.AfterGameInput;
+import baseball.input.UserInput;
 
 import java.util.List;
 
@@ -9,12 +10,21 @@ public class NumberBaseBallGame {
 
     Computer computer = new Computer();
     UserInput user = new UserInput();
+    AfterGameInput afterGameInput = new AfterGameInput();
     private int ball = 0;
     private int strike = 0;
 
-    public void startGame(){
+    public void game(){
+        int gameOver = 1;
+        while(gameOver == 1){
+            gameOver = startGame();
+        }
+    }
+
+    public int startGame(){
         //정답 생성
-        List<Integer> answer = makeGame();
+        List<Integer> answer = computer.makeNewNumber();
+        System.out.println("answer = " + answer);
 
         //user가 정답을 맞출때까지 user 입력, 볼,스트라이크 출력 반복
         while(strike != 3){
@@ -28,14 +38,12 @@ public class NumberBaseBallGame {
             printBallAndStrike(ball, strike);
         }
 
-        // TODO : 스트라이크가 3이 나오면 user에게 재시작, 종료 입력 받기
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
+        //볼, 스트라이크 초기화
+        resetBallAndStrike();
 
-
-    }
-
-    public List<Integer> makeGame(){
-        return computer.makeNewNumber();
+        return afterGameInput.getAfterGameInput();
     }
 
     private int getStrike(List<Integer> answer, List<Integer> userInput) {
@@ -57,6 +65,11 @@ public class NumberBaseBallGame {
             System.out.print("낫싱");
         }
         System.out.println();
+    }
+
+    private void resetBallAndStrike() {
+        ball=0;
+        strike=0;
     }
 
 }
