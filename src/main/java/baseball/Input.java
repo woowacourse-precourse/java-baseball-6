@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Input {
 
     public void numberSuggestion() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         Console.readLine();
     }
 
