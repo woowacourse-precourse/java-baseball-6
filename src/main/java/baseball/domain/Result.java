@@ -1,10 +1,10 @@
 package baseball.domain;
 
 public class Result {
-    private Integer ballCount;
-    private Integer strikeCount;
+    private int ballCount;
+    private int strikeCount;
 
-    public Result(Integer ballCount, Integer strikeCount) {
+    public Result(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }

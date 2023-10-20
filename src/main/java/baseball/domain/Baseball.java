@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Baseball {
     private List<Integer> digits;
 
-    public Baseball(Integer inputNumber) {
+    public Baseball(int inputNumber) {
         digits = new ArrayList<>(3);
         digits.set(0, inputNumber / 100);
         digits.set(1, (inputNumber / 10) % 10);
