@@ -25,6 +25,13 @@ public class Result {
         return false;
     }
 
+    public boolean isExistBall() {
+        if (ball > LIMIT_COUNT) {
+            return true;
+        }
+        return false;
+    }
+
     public int getStrike() {
         return strike;
     }
