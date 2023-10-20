@@ -47,6 +47,8 @@ public class GameController {
 
             printHint();
         }
+
+        outputView.printEndMessage();
     }
 
     public List<Integer> getRandomNumbers() {
