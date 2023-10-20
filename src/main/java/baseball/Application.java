@@ -15,7 +15,6 @@ public class Application {
             System.out.println("computer is " + controller.getComputerNumbers());
 
             do {
-                gameData = init();
 
                 controller.printRequirePlayerInput();
                 controller.setPlayerNumbers(controller.playerNumsInput());
