@@ -12,4 +12,7 @@ public class OutputView {
         return instance;
     }
 
+    public static void printExceptionMessage(String message) {
+        System.out.println(ERROR_MESSAGE_FORMAT + message);
+    }
 }

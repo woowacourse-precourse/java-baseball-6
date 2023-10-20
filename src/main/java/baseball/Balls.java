@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Balls {
 
+    private static final int BALL_COUNT = 3;
     private final List<Ball> balls;
 
     public Balls(List<Ball> ballList) {
@@ -28,7 +29,7 @@ public class Balls {
     }
 
     private boolean hasThreeDigits(List<Ball> ballList) {
-        return ballList.size() == 3;
+        return ballList.size() == BALL_COUNT;
     }
 
     private boolean hasDuplicatesInList(List<Ball> ballList) {
@@ -36,7 +37,7 @@ public class Balls {
             .distinct()
             .count();
 
-        return uniqueBallCount < 3;
+        return uniqueBallCount < BALL_COUNT;
     }
 
     public int getStrikeCount(Balls answerBalls) {
