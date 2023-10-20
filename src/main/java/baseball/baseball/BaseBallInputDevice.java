@@ -8,7 +8,7 @@ public class BaseBallInputDevice {
 
   private static final int INPUT_SIZE = 3;
 
-  public List<Integer> input() {
+  public List<Integer> startInput() {
     List<Integer> inputNumbers = new ArrayList<>();
 
     String inputStr = Console.readLine();
