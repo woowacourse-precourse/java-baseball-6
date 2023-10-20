@@ -65,10 +65,11 @@ public class Baseball {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < 3; ++i) {
-            if (integerList.contains(inputNumber.indexOf(i))) {
+            char c = inputNumber.charAt(i);
+            if (integerList.contains(Character.getNumericValue(c))) {
                 throw new IllegalArgumentException();
             }
-            integerList.add(inputNumber.indexOf(i));
+            integerList.add(Character.getNumericValue(c));
         }
 
         return integerList;
