@@ -1,7 +1,5 @@
 package baseball.view.console;
 
-import baseball.domain.GameResult;
-
 public class OutputView {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.\n";
     private static final String INPUT_BALLS_MESSAGE = "숫자를 입력해주세요 : ";
@@ -24,9 +22,9 @@ public class OutputView {
         displayMessage(INPUT_GAME_RESTART_MESSAGE);
     }
 
-/*    public void hintsMessage(GameResult message) {
-        displayMessage(message);
-    }*/
+    public void resultMessage(String message) {
+        displayMessage(message + "\n");
+    }
 
 
     private void displayMessage(String message) {
