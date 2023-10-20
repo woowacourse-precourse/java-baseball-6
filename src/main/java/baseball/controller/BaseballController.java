@@ -18,7 +18,7 @@ public class BaseballController {
         Baseball gameAnswer = createAnswer();
 
         System.out.print("숫자를 입력해주세요 : ");
-        Baseball userGuess = baseballService.input();
-        Result result = baseballService.compare(userGuess, gameAnswer);
+        Baseball guess = baseballService.input();
+        Result result = baseballService.compare(guess, gameAnswer);
     }
 }

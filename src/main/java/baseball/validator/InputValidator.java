@@ -5,27 +5,26 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class InputValidator {
-    public static int validateGuess(String input) {
-        int intInput;
-        intInput = Integer.parseInt(input);
-        checkRange(intInput);
-        checkIsSameDigit(intInput);
-        return intInput;
+    public static int validateGuess(String userInput) {
+        int intUserInput = Integer.parseInt(userInput);
+        checkRange(intUserInput);
+        checkIsSameDigit(intUserInput);
+        return intUserInput;
     }
 
-    private static void checkRange(int intInput) {
-        if (intInput < 100 || intInput >= 999) {
+    private static void checkRange(int intUserInput) {
+        if (intUserInput < 100 || intUserInput >= 999) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void checkIsSameDigit(int intInput) {
-        int hundreds = intInput / 100;
-        int tens = (intInput / 10) % 10;
-        int ones = intInput % 10;
+    private static void checkIsSameDigit(int intUserInput) {
+        int hundreds = intUserInput / 100;
+        int tens = (intUserInput / 10) % 10;
+        int ones = intUserInput % 10;
 
-        Set<Integer> inputDigits = new HashSet<>(Arrays.asList(hundreds, tens, ones));
-        if (inputDigits.contains(0) || inputDigits.size() != 3) {
+        Set<Integer> userInputDigits = new HashSet<>(Arrays.asList(hundreds, tens, ones));
+        if (userInputDigits.contains(0) || userInputDigits.size() != 3) {
             throw new IllegalArgumentException();
         }
     }

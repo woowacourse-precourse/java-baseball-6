@@ -7,11 +7,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Baseball {
     private List<Integer> digits;
 
-    public Baseball(int inputNumber) {
+    public Baseball(int number) {
         digits = new ArrayList<>(3);
-        digits.add(inputNumber / 100);
-        digits.add((inputNumber / 10) % 10);
-        digits.add(inputNumber % 10);
+        digits.add(number / 100);
+        digits.add((number / 10) % 10);
+        digits.add(number % 10);
     }
 
     private Baseball(List<Integer> computer) {

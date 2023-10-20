@@ -11,8 +11,8 @@ import baseball.domain.Result;
 public class BaseballService {
     public Baseball input() {
         int userInput = validateGuess(readLine());
-        Baseball userGuess = new Baseball(userInput);
-        return userGuess;
+        Baseball guess = new Baseball(userInput);
+        return guess;
     }
     public Result compare(Baseball guess, Baseball answer) {
         int ballCount = 0;
