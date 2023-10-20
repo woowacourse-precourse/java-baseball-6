@@ -42,11 +42,11 @@ public class Controller {
     }
 
     private boolean isThreeStrike(List<Integer> result) {
-        return result.get(1) == 3;
+        return result.get(1) == GameOption.BASEBALL_SIZE;
     }
 
     private void endGame() {
-        OutputView.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        OutputView.printMessage(GameOption.BASEBALL_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private boolean isRestartGame() {
