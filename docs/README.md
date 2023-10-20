@@ -29,7 +29,8 @@
 - `Computer`: `AnswerGenerator`를 구현한 클래스에게서 생성된 숫자를 받아서 정답으로 저장하고, 사용자의 입력값과 비교.
 - `AnswerGenerator`: 3자리 수를 반환하는 메서드가 정의된 인터페이스.
 - `RandomAnswerGenerator`: 1~9 범위의 서로다른 3자리의 무작위 숫자를 정답으로 생성하여 반환.
-- `FixedAnswerGenerator`: 무작위가 아닌 고정된 값으로 테스트하기 위해 만든 숫자 생성기. 
+- `FixedAnswerGenerator`: 무작위가 아닌 고정된 값으로 테스트하기 위해 만든 숫자 생성기.
+- `Score`: `"볼"`, `"스트라이크"`를 저장.
 
 ### 기능 목록
 - `InputView`
@@ -58,3 +59,5 @@
     - [ ] `Randoms.pickNumberInRange()` 메서드를 사용하여 `List<Integer>` 타입 반환.
 - `FixedAnswerGenerator`: `AnswerGenerator` 구현
     - [ ] `generate()` 메서드를 구현하고, 오버라이딩하여 `String` 타입을 매개변수로 3자리 숫자를 생성하여 `List<Integer>` 타입 반환.
+- `Score`
+    - [ ] `toString()` 메서드를 오버라이딩하여 `"n볼"`, `"n스트라이크"`, `"낫싱"` `"3스트라이크"` 출력. 
