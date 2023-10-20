@@ -55,11 +55,8 @@ public class BaseBallGameController {
     }
 
     public boolean isThreeStrike(int strikeNum){
-        if(strikeNum == 3){
-            return true;
-        }
 
-        return false;
+        return strikeNum == 3;
     }
 
     public void GameOver(){
