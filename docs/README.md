@@ -5,8 +5,8 @@
 ### 정답 입력 기능
 - `convertStringToNumberList` 메서드
   - 사용자로부터 서로 다른 3자리 수 입력받아 각각의 자리 숫자를 저장한 리스트 반환
-- `isUniqueThreeDigitNumber` 메서드
-  - 문자열을 인수로 받아 중복없는 3자리 숫자라면 true, 아니라면 false 반환
+- `isValidInput` 메서드
+  - 사용자의 입력을 인수로 받아 올바른 정답 형식인지 검사, 유효하다면 true 아니라면 false 반환
     - 입력값이 숫자가 아니라면 false 반환
     - 입력값에 중복이 있다면 false 반환
     - 입력값이 3자리가 아니라면 false 반환

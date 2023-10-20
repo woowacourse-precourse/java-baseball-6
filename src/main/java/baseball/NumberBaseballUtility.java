@@ -19,7 +19,7 @@ public class NumberBaseballUtility {
         return answer;
     }
 
-    public static boolean isUniqueThreeDigitNumber(String input) {
+    public static boolean isValidInput(String input) {
         if (input.length() != 3) {
             return false;
         }
