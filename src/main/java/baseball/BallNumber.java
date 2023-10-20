@@ -4,28 +4,13 @@ import java.util.Objects;
 
 public class BallNumber {
 
-    public static final int MIN_BALL_NUMBER = 1;
-
-    public static final int MAX_BALL_NUMBER = 9;
-
-    private final int number;
+    private final Number number;
 
     private final int position;
 
     public BallNumber(final int number, final int position) {
-        validate(number);
-        this.number = number;
+        this.number = Number.of(number);
         this.position = position;
-    }
-
-    private void validate(final int number) {
-        if (isOutOfBound(number)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private boolean isOutOfBound(final int number) {
-        return number < MIN_BALL_NUMBER || number > MAX_BALL_NUMBER;
     }
 
     public CompareResult compare(final BallNumber other) {
@@ -51,7 +36,7 @@ public class BallNumber {
     }
 
     private boolean matchNumber(final BallNumber other) {
-        return this.number == other.number;
+        return this.number.equals(other.number);
     }
 
     private boolean matchPosition(final BallNumber other) {
