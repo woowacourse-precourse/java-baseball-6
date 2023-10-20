@@ -31,6 +31,7 @@ public class Baseball {
             System.out.println(outputString);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료" );
+        restartGame();
     }
 
     public List<Integer> generateNumber() {
