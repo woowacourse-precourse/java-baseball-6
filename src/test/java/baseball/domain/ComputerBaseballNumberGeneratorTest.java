@@ -1,13 +1,13 @@
 package baseball.domain;
 
-import baseball.infra.BaseballNumberGeneratorImpl;
+import baseball.infra.ComputerBaseballNumberGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class BaseballNumberGeneratorTest {
+public class ComputerBaseballNumberGeneratorTest {
 
-    private BaseballNumberGenerator baseballNumberGenerator = new BaseballNumberGeneratorImpl();
+    private BaseballNumberGenerator baseballNumberGenerator = new ComputerBaseballNumberGenerator();
 
     @Test
     @DisplayName("중복되지 않은 숫자 3자리 수 생성하는 지 테스트")

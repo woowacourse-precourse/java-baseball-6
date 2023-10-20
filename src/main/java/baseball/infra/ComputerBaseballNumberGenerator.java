@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseballNumberGeneratorImpl implements BaseballNumberGenerator {
+public class ComputerBaseballNumberGenerator implements BaseballNumberGenerator {
     @Override
     public List<Integer> generateBaseballNumber(int length) {
         List<Integer> baseballNumber = new ArrayList<>();
