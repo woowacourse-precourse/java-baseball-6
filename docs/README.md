@@ -3,7 +3,7 @@
 - `generateAnswer` 메서드
   - 서로 다른 1~9 값 3개를 저장한 숫자 리스트 반환
 ### 정답 입력 기능
-- `inputPlayerAnswer` 메서드
+- `convertStringToNumberList` 메서드
   - 사용자로부터 서로 다른 3자리 수 입력받아 각각의 자리 숫자를 저장한 리스트 반환
 - `isUniqueThreeDigitNumber` 메서드
   - 문자열을 인수로 받아 중복없는 3자리 숫자라면 true, 아니라면 false 반환
