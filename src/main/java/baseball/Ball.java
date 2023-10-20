@@ -2,18 +2,18 @@ package baseball;
 
 import java.util.Objects;
 
-public class BallNumber {
+public class Ball {
 
     private final Number number;
 
     private final int position;
 
-    public BallNumber(final int number, final int position) {
+    public Ball(final int number, final int position) {
         this.number = Number.of(number);
         this.position = position;
     }
 
-    public CompareResult compare(final BallNumber other) {
+    public CompareResult compare(final Ball other) {
         if (this.equals(other)) {
             return CompareResult.STRIKE;
         }
@@ -31,15 +31,15 @@ public class BallNumber {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        final BallNumber other = (BallNumber) o;
+        final Ball other = (Ball) o;
         return matchNumber(other) && matchPosition(other);
     }
 
-    private boolean matchNumber(final BallNumber other) {
+    private boolean matchNumber(final Ball other) {
         return this.number.equals(other.number);
     }
 
-    private boolean matchPosition(final BallNumber other) {
+    private boolean matchPosition(final Ball other) {
         return this.position == other.position;
     }
 

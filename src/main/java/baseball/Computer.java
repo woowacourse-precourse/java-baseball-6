@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Computer {
 
-    private final BallNumbers numbers;
+    private final Balls balls;
 
     public Computer(final List<Integer> numbers) {
-        this.numbers = new BallNumbers(numbers);
+        this.balls = new Balls(numbers);
     }
 
-    public PlayResult compute(final BallNumbers playerNumbers) {
-        return numbers.compareAll(playerNumbers);
+    public PlayResult compute(final Balls playerBalls) {
+        return balls.compareAll(playerBalls);
     }
 }

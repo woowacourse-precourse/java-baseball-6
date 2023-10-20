@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Player {
 
-    private final BallNumbers numbers;
+    private final Balls balls;
 
-    public Player(final List<Integer> numbers) {
-        this.numbers = new BallNumbers(numbers);
+    public Player(final List<Integer> balls) {
+        this.balls = new Balls(balls);
     }
 
     public PlayResult play(final Computer computer) {
-        return computer.compute(numbers);
+        return computer.compute(balls);
     }
 }
