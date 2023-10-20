@@ -15,14 +15,6 @@ public class Numbers {
         return numbers.split("");
     }
 
-    public boolean isSamePlace(String number,int index){
-        return numbers.indexOf(number)==index;
-    }
-
-    public boolean isExistNumber(String number){
-        return numbers.contains(number);
-    }
-
     public int index(String number){
         return numbers.indexOf(number);
     }

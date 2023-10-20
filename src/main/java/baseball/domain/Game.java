@@ -20,34 +20,8 @@ public class Game {
         return toString(computer);
     }
 
-    public int[] compare(Numbers user){
-        int[] result={0,0};
-
-        for(String number:user.splitNumbers()){
-            addResult(result,compareEach(number,user.index(number)));
-        }
-
-        return result;
-    }
-
-    private void addResult(int[] result,int resultIndex){
-        if(resultIndex==-1){
-            return;
-        }
-
-        result[resultIndex]+=1;
-    }
-
-    private int compareEach(String number,int index){
-        if(computer.isSamePlace(number,index)){
-            return 0;
-        }
-
-        if(computer.isExistNumber(number)){
-            return 1;
-        }
-
-        return -1;
+    public Result calculateResult(Numbers user){
+        return new Result(computer,user);
     }
 
     private String toString(Set<String> computer){
