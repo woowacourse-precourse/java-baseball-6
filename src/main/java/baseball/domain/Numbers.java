@@ -2,7 +2,6 @@ package baseball.domain;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
 public class Numbers {
     private final int numberOfDigitsInAnswer;
@@ -34,43 +33,41 @@ public class Numbers {
         return numbers.size();
     }
 
-    public int getByIndex(int index) {
-        return numbers.get(index);
+    public int getNumberOfDigitsInAnswer() {
+        return numberOfDigitsInAnswer;
     }
 
-    public int getIndexByNumber(int number) {
+    private int getIndexByNumber(int number) {
         return numbers.indexOf(number);
+    }
+
+    public int calcNumOfBall(Numbers otherNumbers) {
+        int numOfBall = 0;
+        for (int i = 0; i < otherNumbers.len(); i++) {
+            int numberOfComputerNumbers = numbers.get(i);
+            int indexOfUserAnswer = otherNumbers.getIndexByNumber(numberOfComputerNumbers);
+            if (indexOfUserAnswer != -1 && indexOfUserAnswer != i) {
+                numOfBall += 1;
+            }
+        }
+        return numOfBall;
+    }
+
+    public int calcNumOfStrike(Numbers otherNumbers) {
+        int numOfStrike = 0;
+        for (int i = 0; i < otherNumbers.len(); i++) {
+            int numberOfComputerNumbers = numbers.get(i);
+            int indexOfUserAnswer = otherNumbers.getIndexByNumber(numberOfComputerNumbers);
+            if (indexOfUserAnswer != -1 && indexOfUserAnswer == i) {
+                numOfStrike += 1;
+            }
+        }
+        return numOfStrike;
     }
 
 
     @Override
     public String toString() {
-        return "Numbers{" +
-                "numbers=" + numbers +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Numbers numbers1 = (Numbers) o;
-
-        if (numberOfDigitsInAnswer != numbers1.numberOfDigitsInAnswer) {
-            return false;
-        }
-        return Objects.equals(numbers, numbers1.numbers);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = numberOfDigitsInAnswer;
-        result = 31 * result + (numbers != null ? numbers.hashCode() : 0);
-        return result;
+        return "Numbers{" + "numbers=" + numbers + '}';
     }
 }

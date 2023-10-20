@@ -9,22 +9,20 @@ public class Judgement {
         this.numOfStrike = numOfStrike;
     }
 
-    public boolean isThreeStrike() {
-        return numOfStrike == 3;
+    public boolean isCorrectAnswer(int numberOfDigitsInAnswer) {
+        return numOfStrike == numberOfDigitsInAnswer;
     }
 
-    public boolean isNothing() {
-        return numOfBall == 0 && numOfStrike == 0;
-    }
-
-    public void sayBallAndStrike() {
-        String message = "";
-        if (numOfBall == 0 && numOfStrike > 0) {
+    public void sayBallAndStrike(int numberOfDigitsInAnswer) {
+        String message = String.format("%d볼 %d스트라이크", numOfBall, numOfStrike);
+        if (numOfBall == 0 && numOfStrike == 0) {
+            message = "낫싱";
+        } else if (numOfBall == 0 && numOfStrike > 0 && numOfStrike < numberOfDigitsInAnswer) {
             message = String.format("%d스트라이크", numOfStrike);
         } else if (numOfBall > 0 && numOfStrike == 0) {
             message = String.format("%d볼", numOfBall);
-        } else {
-            message = String.format("%d볼 %d스트라이크", numOfBall, numOfStrike);
+        } else if (numOfBall == 0 && numOfStrike == numberOfDigitsInAnswer) {
+            message = String.format("%d스트라이크", numberOfDigitsInAnswer);
         }
         System.out.println(message);
     }

@@ -19,39 +19,16 @@ public class ComputerPlayer {
     }
 
     public void judgeUserAnswer(Numbers userAnswer) {
-        int numOfBall = 0;
-        int numOfStrike = 0;
-        for (int i = 0; i < userAnswer.len(); i++) {
-            int numberOfComputerNumbers = numbers.getByIndex(i); // 5
-            int indexOfUserAnswer = userAnswer.getIndexByNumber(numberOfComputerNumbers);
-            if (indexOfUserAnswer != -1) {
-                if (indexOfUserAnswer == i) {
-                    numOfStrike += 1;
-                } else {
-                    numOfBall += 1;
-                }
-            }
-        }
+        int numOfBall = numbers.calcNumOfBall(userAnswer);
+        int numOfStrike = numbers.calcNumOfStrike(userAnswer);
         this.judgement = new Judgement(numOfBall, numOfStrike);
     }
 
-    public boolean isThreeStrike() {
-        return judgement.isThreeStrike();
+    public boolean isCorrectAnswer() {
+        return judgement.isCorrectAnswer(numbers.getNumberOfDigitsInAnswer());
     }
 
-    public boolean isNothing() {
-        return judgement.isNothing();
-    }
-
-    public void sayBallAndStrike() {
-        this.judgement.sayBallAndStrike();
-    }
-
-    public void sayThreeStrike() {
-        System.out.println("3스트라이크");
-    }
-
-    public void sayNothing() {
-        System.out.println("낫싱");
+    public void sayJudgement() {
+        this.judgement.sayBallAndStrike(numbers.getNumberOfDigitsInAnswer());
     }
 }
