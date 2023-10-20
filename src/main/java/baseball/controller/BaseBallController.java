@@ -3,41 +3,36 @@ package baseball.controller;
 import static baseball.converter.BaseBallConverter.stringToNumbers;
 import static baseball.converter.BaseBallConverter.stringToOverallGameStatus;
 
-import baseball.domain.Computer;
-import baseball.domain.Numbers;
-import baseball.domain.Player;
+import baseball.domain.number.Numbers;
 import baseball.domain.Result;
 import baseball.enums.OverallGameStatus;
+import baseball.service.BaseBallService;
 import baseball.view.BaseBallView;
-import baseball.view.ConsolePrint;
 
 
 public class BaseBallController {
 
-    private BaseBallView baseBallView;
-    private Computer computer;
-    private Player player;
+    private static BaseBallView baseBallView;
+    private static BaseBallService baseBallService;
 
 
-
-    public void run() {
+    public static void run() {
         init();
         startMainGame();
     }
 
-    private void init() {
+    private static void init() {
         baseBallView = BaseBallView.create();
-        computer = Computer.create();
-        player = Player.create();
+        baseBallService = BaseBallService.create();
     }
 
-    private void startMainGame() {
+    private static void startMainGame() {
         baseBallView.startGameView();
 
         OverallGameStatus overallGameStatus = OverallGameStatus.CONTINUE;
 
         while (overallGameStatus.isContinue()) {
-            computer.resetNumbers();
+            baseBallService.resetComputer();
 
             startSubGame();
 
@@ -45,17 +40,17 @@ public class BaseBallController {
         }
     }
 
-    private void startSubGame() {
-        boolean isFinishGame = Boolean.TRUE;
+    private static void startSubGame() {
+        boolean isContinueGame = Boolean.TRUE;
 
-        while (isFinishGame) {
+        while (isContinueGame) {
             Numbers numbers = stringToNumbers(baseBallView.numbersInputView());
-            player.changeNumbers(numbers);
+            baseBallService.humanNumberChange(numbers);
 
-            Result result = computer.calculateResult(player);
-            ConsolePrint.printResult(result);
+            Result result = baseBallService.calculateResult();
+            baseBallView.resultGameView(result);
 
-            isFinishGame = result.isContinue();
+            isContinueGame = result.isContinue();
         }
     }
 
