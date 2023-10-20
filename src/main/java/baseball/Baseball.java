@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Baseball {
     public void startGame() {
@@ -50,5 +51,13 @@ public class Baseball {
         return integerList;
     }
 
-
+    public Integer getStrikeCount(List<Integer> answerNumber, List<Integer> userNumber) {
+        Integer strikeCount = 0;
+        for (int i = 0; i < 3; ++i) {
+            if (Objects.equals(answerNumber.get(i), userNumber.get(i))) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
 }
