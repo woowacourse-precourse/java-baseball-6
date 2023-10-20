@@ -25,4 +25,27 @@ public class BaseballGame {
         return computerNumbers;
     }
 
+    public String playRound(List<Integer> userNumbers) {
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computerNumbers.get(i).equals(userNumbers.get(i))) {
+                strikes++;
+            } else if (computerNumbers.contains(userNumbers.get(i))) {
+                balls++;
+            }
+        }
+
+        if (strikes > 0 && balls > 0) {
+            return balls + "볼 " + strikes + "스트라이크";
+        } else if (strikes > 0) {
+            return strikes + "스트라이크";
+        } else if (balls > 0) {
+            return balls + "볼";
+        } else {
+            return "낫싱";
+        }
+    }
+
 }
