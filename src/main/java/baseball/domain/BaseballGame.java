@@ -11,6 +11,9 @@ public class BaseballGame {
     private static final int END_RANGE_NUMBER = 9;
     private List<Integer> numbers = new ArrayList<>();
 
+    public BaseballGame() {
+    }
+
     public BaseballGame(List<Integer> numbers) {
         this.numbers = numbers;
     }
@@ -22,6 +25,7 @@ public class BaseballGame {
                 numbers.add(randomNumber);
             }
         }
+        System.out.println("컴퓨터 숫자 : " + numbers.toString());
     }
 
     public GameResult compare(String inputNumbers) {
@@ -45,6 +49,5 @@ public class BaseballGame {
 
     public void resetNumbers() {
         numbers.clear();
-        init();
     }
 }
