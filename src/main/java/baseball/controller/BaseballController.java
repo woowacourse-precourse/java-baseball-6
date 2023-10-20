@@ -1,10 +1,9 @@
 package baseball.controller;
 
+import baseball.model.GameNumber;
 import baseball.service.ScoreCalculator;
 import baseball.util.Converter;
 import baseball.util.RandomNumbersGenerator;
-import baseball.validator.NumbersValidation;
-import baseball.validator.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -12,13 +11,12 @@ import java.util.List;
 
 public class BaseballController {
 
-    private ScoreCalculator calculator;
-    private Validator validator = new NumbersValidation(); //TODO: DI로 구성해보기
-
+    private final ScoreCalculator calculator;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public BaseballController(InputView inputView, OutputView outputView) {
+    public BaseballController(ScoreCalculator calculator, InputView inputView, OutputView outputView) {
+        this.calculator = calculator;
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -29,16 +27,14 @@ public class BaseballController {
     }
 
     private void play() {
-        List<Integer> computer = RandomNumbersGenerator.generate();
+        GameNumber computer = new GameNumber(RandomNumbersGenerator.generate());
         //TODO: 디버깅 용 출력문 지우기
         System.out.println("computer = " + computer);
 
         while (true) {
-            String guessNumber = readGuessNumber();
-            List<Integer> player = Converter.convertList(guessNumber);
-            this.calculator = new ScoreCalculator(computer, player);
-            int strike = calculator.calculateStrike();
-            int ball = calculator.calculateBall();
+            GameNumber player = new GameNumber(readGuessNumber());
+            int strike = calculator.calculateStrike(computer, player);
+            int ball = calculator.calculateBall(computer, player);
             outputView.printResult(strike, ball);
             if (strike == 3) {
                 outputView.printGameEndMessage();
@@ -56,9 +52,14 @@ public class BaseballController {
         throw new IllegalArgumentException("재시작/종료 명령이 잘못되었습니다.");
     }
 
-    private String readGuessNumber() {
+    // TODO: 과연 여기에 검증로직이 있는게 맞는지 고민해보기
+    private List<Integer> readGuessNumber() {
         String value = inputView.readGuessNumber();
-        validator.validate(value);
-        return value;
+        try {
+            Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
+        }
+        return Converter.convertList(value);
     }
 }
