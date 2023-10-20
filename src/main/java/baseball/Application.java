@@ -57,7 +57,7 @@ public class Application {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (arr[i] == temp[j]) { // char -> int
+                if (arr[i] == temp[j]) {
                     if (i == j) strike++;
                     else ball++;
                 }
