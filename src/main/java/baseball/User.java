@@ -6,11 +6,19 @@ import java.util.List;
 
 public class User {
 
-    List<Integer> numbers;
-    boolean gameStatus;
+    private List<Integer> numbers;
+    private boolean gameStatus;
 
     public User() {
         this.gameStatus = true;
+    }
+
+    public boolean getGameStatus() {
+        return this.gameStatus;
+    }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 
     public void getNumbersFromUser() {
