@@ -24,4 +24,13 @@ class InputViewTest {
                 isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("세 자리 숫자를 입력해 주세요.");
     }
+
+    @ParameterizedTest
+    @DisplayName("1부터 9까지 숫자외 입력 예외 테스트")
+    @ValueSource(strings = {"-132", "000", "!@$", "pg9", "909", "007", "-23"})
+    void invalidInputsTest3(String input) {
+        Assertions.assertThatThrownBy(() -> Validation.isInRange(input)).
+                isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1부터 9까지의 숫자만 입력 가능 합니다.");
+    }
 }
