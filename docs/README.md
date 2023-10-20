@@ -36,11 +36,11 @@
   - [x] 틀리면 `IllegalArgumentException`를 발생하고 애플리케이션 종료.
 ---
 ## 게임 초기화 기능
-- [ ] 랜덤 넘버 생성
-  - [ ] `camp.nextstep.edu.missionutils.Randoms.pickNumberInRange()`를 통해 3가지 난수 생성
-    - [ ] 난수를 생성할 때마다 중복이 있는지 검사 
-      - [ ] 중복이라면 다시 생성
-  - [ ] 생성된 난수 3가지를 저장
+- [x] 랜덤 넘버 생성
+  - [x] `camp.nextstep.edu.missionutils.Randoms.pickNumberInRange()`를 통해 3가지 난수 생성
+    - [x] 난수를 생성할 때마다 중복이 있는지 검사 
+      - [x] 중복이라면 다시 생성
+  - [x] 생성된 난수 3가지를 저장
 ---
 ## 판정 기능
 - [ ] 볼, 스트라이크 판정
