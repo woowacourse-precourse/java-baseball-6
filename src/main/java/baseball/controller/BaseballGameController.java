@@ -23,8 +23,6 @@ public class BaseballGameController {
 
     private void checkUserNumberValidate(String userInputNumber) {
         InputValidator inputValidator = new InputValidator();
-        inputValidator.checkDuplication(userInputNumber);
-        inputValidator.checkRangeOfNumber(userInputNumber);
-        inputValidator.checkIsNumber(userInputNumber);
+        inputValidator.checkInputValidation(userInputNumber);
     }
 }

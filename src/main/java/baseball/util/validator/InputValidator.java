@@ -3,7 +3,13 @@ package baseball.util.validator;
 import java.util.HashSet;
 
 public class InputValidator {
-    public void checkDuplication(String inputNumber) {
+    public void checkInputValidation(String inputNumber) {
+        checkDuplication(inputNumber);
+        checkRangeOfNumber(inputNumber);
+        checkIsNumber(inputNumber);
+    }
+
+    private void checkDuplication(String inputNumber) {
         HashSet<Character> set = new HashSet<>();
         for (char alpha : inputNumber.toCharArray()) {
             set.add(alpha);
@@ -13,7 +19,7 @@ public class InputValidator {
         }
     }
 
-    public void checkRangeOfNumber(String inputNumber) {
+    private void checkRangeOfNumber(String inputNumber) {
         for (char alpha : inputNumber.toCharArray()) {
             if (alpha - '0' < 1 || alpha - '0' > 9) {
                 throw new IllegalArgumentException();
@@ -21,7 +27,7 @@ public class InputValidator {
         }
     }
 
-    public void checkIsNumber(String inputNumber) {
+    private void checkIsNumber(String inputNumber) {
         for (char alpha : inputNumber.toCharArray()) {
             if (!Character.isDigit(alpha)) {
                 throw new IllegalArgumentException();
