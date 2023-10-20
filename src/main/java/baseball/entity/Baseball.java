@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Baseball {
 
@@ -25,26 +26,21 @@ public class Baseball {
     }
 
     public int countStrike(String numbers) {
-        int result = 0;
-        for (int i = 0; i < 3; i++) {
-            if (numbers.charAt(i) == randomNumber.charAt(i)) {
-                result++;
-            }
-        }
-        return result;
+        return (int) IntStream.range(0, numbers.length())
+                .filter(i -> numbers.charAt(i) == randomNumber.charAt(i))
+                .count();
     }
 
     public int countBall(String numbers) {
         int result = 0;
-        if (numbers.charAt(0) == randomNumber.charAt(1) || numbers.charAt(0) == randomNumber.charAt(2)) {
-            result++;
-        }
 
-        if (numbers.charAt(1) == randomNumber.charAt(0) || numbers.charAt(1) == randomNumber.charAt(2)) {
-            result++;
-        }
-
-        if (numbers.charAt(2) == randomNumber.charAt(0) || numbers.charAt(2) == randomNumber.charAt(1)) {
+        if (numbers.charAt(0) == randomNumber.charAt(1) ||
+                numbers.charAt(0) == randomNumber.charAt(2) ||
+                numbers.charAt(1) == randomNumber.charAt(0) ||
+                numbers.charAt(1) == randomNumber.charAt(2) ||
+                numbers.charAt(2) == randomNumber.charAt(0) ||
+                numbers.charAt(2) == randomNumber.charAt(1)
+        ) {
             result++;
         }
 
