@@ -24,6 +24,7 @@ public class BaseBall {
     }
 
     public void run() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         createComputerNumber();
 
         while (true) {
@@ -57,7 +58,6 @@ public class BaseBall {
 
                 for (int i = 0; i < LENGTH; i++) {
                     int cur = inputNumber.charAt(i) - '0';
-
                     if (computer.get(i) == cur) {
                         strike++;
                     } else if (computer.contains(cur)) {
@@ -119,7 +119,6 @@ public class BaseBall {
 
     private void createComputerNumber() {
         computer = new ArrayList<>();
-
         while (computer.size() < LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
