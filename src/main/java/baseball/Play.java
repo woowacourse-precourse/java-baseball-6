@@ -28,6 +28,9 @@ public class Play {
     public void restartOrFinishGame() {
         while (true) {
             getInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            if (Integer.parseInt(input) > 2 || Integer.parseInt(input) < 1) {
+                throw new IllegalArgumentException("Invalid input: " + input);
+            }
             if (input.equals("1")) {
                 com.clearList();
                 com.getIntArray();
@@ -45,6 +48,9 @@ public class Play {
         while (true) {
             // 사용자 입력
             getInput("숫자를 입력해주세요 : ");
+            if (input.length() != 3) {
+                throw new IllegalArgumentException("Invalid input: " + input);
+            }
             user.getIntArray(input);
             // 스트라이크, 볼 개수 구하기
             rules.countBallAndStrikes(com.getList(), user.getList());
