@@ -14,12 +14,17 @@ class InputValidationTest {
         InputValidation inputValidation = new InputValidation();
 
         // when
-        String invalidNaturalNumber = "12z";
+        String invalidNaturalNumber1 = "12z";
+        String invalidNaturalNumber2 = "120";
         String emptyString = "";
         String blankSpaceString = "   ";
 
         // then
-        assertThatThrownBy(() -> inputValidation.validateNaturalNumber(invalidNaturalNumber))
+        assertThatThrownBy(() -> inputValidation.validateNaturalNumber(invalidNaturalNumber1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력된 문자열은 자연수로만 이루어져야 합니다.");
+
+        assertThatThrownBy(() -> inputValidation.validateNaturalNumber(invalidNaturalNumber2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력된 문자열은 자연수로만 이루어져야 합니다.");
 
