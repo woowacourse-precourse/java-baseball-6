@@ -5,7 +5,7 @@ import static java.util.stream.Collectors.joining;
 
 import java.util.List;
 
-public class Computer {
+public class ComputerNumber {
 
     public String pickTargetNumber(int numLength) {
         List<Integer> pickedInteger = pickUniqueNumbersInRange(1, 9, numLength);

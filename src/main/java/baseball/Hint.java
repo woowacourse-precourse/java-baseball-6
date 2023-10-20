@@ -4,23 +4,34 @@ import static baseball.Config.NUMBER_LENGTH;
 
 public class Hint {
 
-    public int getStrikeCount() {
-        return strikeCount;
-    }
-
-    public int getBallCount() {
-        return ballCount;
-    }
-
-    private int strikeCount;
     private int ballCount;
+    private int strikeCount;
 
-    public Hint updateHint(final String playerNumber, final String computerNumber) {
-        this.ballCount = 0;
+    public void reset() {
         this.strikeCount = 0;
-        countBallCount(playerNumber, computerNumber);
+        this.ballCount = 0;
+    }
+
+    public void updateHint(final String playerNumber, final String computerNumber) {
         countStrikeCount(playerNumber, computerNumber);
-        return this;
+        countBallCount(playerNumber, computerNumber);
+    }
+
+    public boolean checkClear(){
+        return strikeCount == NUMBER_LENGTH;
+    }
+
+    public void printHint() {
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.print("낫싱");
+        }
+        if (ballCount > 0) {
+            System.out.print(ballCount + "볼 ");
+        }
+        if (strikeCount > 0) {
+            System.out.print(strikeCount + "스트라이크");
+        }
+        System.out.println();
     }
 
     private void countStrikeCount(final String playerNumber, final String computerNumber) {
