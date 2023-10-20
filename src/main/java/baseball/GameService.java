@@ -68,6 +68,10 @@ public class GameService {
         return computer.size();
     }
 
+    public void clearComputerRandomNumber() {
+        computer.clear();
+    }
+
     public void printStrikeBallCount() {
         outPutView.printStrikeBallCountMessage(getStrikeCount(), getBallCount());
     }
