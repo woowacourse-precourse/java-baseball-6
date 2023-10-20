@@ -25,7 +25,14 @@ public class BaseballGame {
     }
 
     private void printResult(GameResult result) {
-
+        String toString = "";
+        if (result.getBallCount() > 0) {
+            toString += result.getBallCount() + "볼";
+        }
+        if (result.getStrikeCount() > 0) {
+            toString += result.getStrikeCount() + "스트라이크";
+        }
+        System.out.println(toString);
     }
 
     private boolean replay() {
