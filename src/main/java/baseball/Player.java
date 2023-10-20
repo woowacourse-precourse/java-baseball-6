@@ -11,6 +11,10 @@ public class Player {
         this.playerNumbers = generatePlayerNumbers(input);
     }
 
+    public List<Integer> getPlayerNumbers() {
+        return playerNumbers;
+    }
+
     private List<Integer> generatePlayerNumbers(String input) {
         validateNotZero(input);
         validateNumberDigit(input);

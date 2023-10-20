@@ -12,6 +12,14 @@ public class Hint {
         countStrikeAndBall(computerNumbers, playerNumbers);
     }
 
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
     private void countStrikeAndBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         for(int i=0; i<NUMBER_SIZE; i++) {
             if(playerNumbers.get(i).equals(computerNumbers.get(i))) {
