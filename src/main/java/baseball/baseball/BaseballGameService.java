@@ -2,7 +2,6 @@ package baseball.baseball;
 
 import baseball.game.turn.TurnBasedGameService;
 import baseball.game.turn.TurnInput;
-import baseball.game.turn.TurnResult;
 
 public class BaseballGameService implements TurnBasedGameService {
 
@@ -19,7 +18,7 @@ public class BaseballGameService implements TurnBasedGameService {
     }
 
     @Override
-    public TurnResult playTurn(TurnInput turnInput) {
+    public BaseballGameTurnResult playTurn(TurnInput turnInput) {
         BaseballGameTurnInput baseballGameTurnInput = (BaseballGameTurnInput) turnInput;
         return baseballGameTurnInput.calculateResult(answer);
     }
