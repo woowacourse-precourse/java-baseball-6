@@ -23,9 +23,9 @@ public class StartTextTest {
     @DisplayName("게임이 시작되면 '숫자 야구 게임을 시작합니다.' 라는 문구가 출력되어야한다.")
     void startTest(){
         //given
-        OutputStartText os = new OutputStartText();
+        StartText os = new StartText();
         //when
-        os.startGame();
+        os.printStartText();
         //then
         Assertions.assertEquals("숫자 야구 게임을 시작합니다.\n", outputMessage.toString());
     }
