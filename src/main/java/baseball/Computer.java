@@ -13,6 +13,7 @@ public class Computer {
 	}
 
 	public void setRandomNumber() {
+		randomNumber.clear();
 		while (randomNumber.size() < 3) {
 			int number = Randoms.pickNumberInRange(RANDOM_NUMBER_MINIMUM, RANDOM_NUMBER_MAXIMUM);
 			if (!randomNumber.contains(number)) {
