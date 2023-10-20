@@ -13,4 +13,8 @@ public class OutputView {
     public void printStatusBallAndStrike(String message){
         System.out.println(message);
     }
+
+    public void printClearBaseBallGame(){
+        System.out.println(ProgressMessage.CLEAR_BASEBALL_GAME);
+    }
 }
