@@ -13,6 +13,8 @@
   -[ ] 스트라이크가 나올 때까지 계속 반복해서 입력 받는 기능
 -[ ] 게임이 종료되면 게임을 다시 시작하거나 완전히 종료시키는 기능
 -[ ] 사용자가 잘못된 입력을 할 경우 `IllegalArgumentException`을 발생시키는 기능
+  - [x] 숫자가 아닌 다른 문자열을 입력한 경우
+  - [ ] 자릿수가 일치하지 않는 경우
 
 ## 객체 도메인
 * InputView
@@ -33,7 +35,6 @@
 * GamePlayer
   * List<Integer> threeNumbers
   * void inputThreeNumberString(String inputtedString)
-  * void validateInput(String inputString)
   * List<Integer> getThreeNumbers()
 * Computer(상대방)
   * List<Integer> threeNumbers
@@ -48,3 +49,6 @@
   * int getBallCount()
   * int getStrikeCount()
   * boolean isAllStrike()
+* Validator
+  * int parseValidatedInt(String str)
+  * void validateCiphers(int value, int ciphers)
