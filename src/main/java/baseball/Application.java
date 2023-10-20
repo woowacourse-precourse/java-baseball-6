@@ -66,7 +66,19 @@ public class Application {
         return strike_ball;
     }
 
+    // 힌트를 출력하는 기능
+    public void printStrikeBall(int[] strike_ball) {
+        if (strike_ball[0] != 0 && strike_ball[1] == 0) { // 볼만 있는 경우
+            System.out.println(strike_ball[0] + "볼");}
 
+        if(strike_ball[0] == 0 && strike_ball[1] != 0) { // 스트라이크만 있는 경우
+            System.out.println(strike_ball[1] + "스트라이크");}
+
+        if(strike_ball[0] == 0 && strike_ball[1] == 0) { // 하나도 없는 경우
+            System.out.println("낫싱");}
+
+        System.out.println(strike_ball[0] + "볼 " + strike_ball[1] + "스트라이크"); // 스트라이크 볼 둘다 있는 경우
+    }
 
     public static void main(String[] args) {
 
