@@ -50,7 +50,7 @@
 
 ✅ `startGame()`
 
-⬜ `inputNumbers()`
+✅ `inputNumbers()`
 
 ⬜ `returnResult()`
 
@@ -70,5 +70,3 @@
 ```
 
 - src > test 디렉토리는 건드는 부분 아님 : 구현한 코드를 테스트 하기위함.. 코드 다 끝나고 돌려보기
-
-
