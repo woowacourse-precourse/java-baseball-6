@@ -13,4 +13,8 @@ public class GameService {
     public void numbersInit() {
         gameNumbers.init();
     }
+
+    public void getResult(String inputNumbers) {
+
+    }
 }
