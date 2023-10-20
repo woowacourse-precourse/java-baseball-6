@@ -12,6 +12,10 @@ public enum Command {
         this.value = value;
     }
 
+    final String getValue() {
+        return value;
+    }
+
     public static Command findByString(String string) {
         return Arrays.stream(Command.values())
                 .filter(command -> command.value.equals(string))
