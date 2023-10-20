@@ -1,6 +1,6 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.io.Input;
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,8 +23,7 @@ public class Application {
 
             // TODO: 인터페이스 경계 분리
             System.out.println(GAME_RESTART_MESSAGE);
-            // TODO: 외부 라이브러리 의존성 제거
-            String inputRestart = Console.readLine();
+            String inputRestart = Input.consoleLine();
 
             if (!INPUT_RESTARTS.contains(inputRestart)) {
                 throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");

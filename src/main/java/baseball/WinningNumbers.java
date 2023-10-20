@@ -1,6 +1,6 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.io.Randoms;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -12,8 +12,7 @@ public class WinningNumbers {
     List<Integer> winningNumbers;
 
     public WinningNumbers() {
-        // TODO: 외부 라이브러리 의존성 제거
-        this.winningNumbers = Stream.generate(() -> Randoms.pickNumberInRange(1, 9))
+        this.winningNumbers = Stream.generate(Randoms::getSingleNumber)
                 .distinct()
                 .limit(3)
                 .collect(Collectors.toList());
