@@ -41,7 +41,7 @@ class BaseBallNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("중복이 없는 야구 숫자를 객체 생성에 성공한다")
+    @DisplayName("중복이 없는 야구 숫자는 객체 생성에 성공한다")
     @Test
     void 중복이_없는_야구_숫자를_객체_생성에_성공한다() {
         List<Integer> noDuplicateNumbers = List.of(1, 2, 3);
