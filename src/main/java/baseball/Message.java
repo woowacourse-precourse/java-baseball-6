@@ -10,4 +10,8 @@ public class Message {
     public static final String BALL_MSG = "볼";
     public static final String STRIKE_MSG = "스트라이크";
     public static final String NON_MSG = "낫싱";
+
+    public static final String STRIKE = "STRIKE";
+    public static final String BALL = "BALL";
+    public static final String NOTHING = "NOTHING";
 }

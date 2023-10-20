@@ -1,10 +1,13 @@
 package baseball;
 
+import static baseball.Message.BALL;
 import static baseball.Message.BALL_MSG;
 import static baseball.Message.END_MSG;
 import static baseball.Message.INPUT_MSG;
 import static baseball.Message.NON_MSG;
+import static baseball.Message.NOTHING;
 import static baseball.Message.REGAME_MSG;
+import static baseball.Message.STRIKE;
 import static baseball.Message.STRIKE_MSG;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -77,9 +80,9 @@ public class Application {
 
         // 결과 초기화
         result = new HashMap<>();
-        result.put(BaseBall.STRIKE, 0);
-        result.put(BaseBall.BALL, 0);
-        result.put(BaseBall.NOTHING, 0);
+        result.put(STRIKE, 0);
+        result.put(BALL, 0);
+        result.put(NOTHING, 0);
     }
 
     private static String getUserInput() {
@@ -103,18 +106,18 @@ public class Application {
             int computerValue = computer.get(i);
             int userValue = user.get(i);
             if (computerValue == userValue) {
-                result.put(BaseBall.STRIKE, result.get(BaseBall.STRIKE) + 1);
+                result.put(STRIKE, result.get(STRIKE) + 1);
             } else if (user.contains(computerValue)) {
-                result.put(BaseBall.BALL, result.get(BaseBall.BALL) + 1);
+                result.put(BALL, result.get(BALL) + 1);
             } else {
-                result.put(BaseBall.NOTHING, result.get(BaseBall.NOTHING) + 1);
+                result.put(NOTHING, result.get(NOTHING) + 1);
             }
         }
         return result;
     }
 
     private static boolean success() {
-        if (result.get(BaseBall.STRIKE) == COUNT) {
+        if (result.get(STRIKE) == COUNT) {
             System.out.println(END_MSG);
             System.out.print(REGAME_MSG);
             if (!Console.readLine().equals("1")) {
@@ -127,8 +130,8 @@ public class Application {
 
     private static void outputMessage() {
         StringBuilder sb = new StringBuilder();
-        int ball = result.get(BaseBall.BALL);
-        int strike = result.get(BaseBall.STRIKE);
+        int ball = result.get(BALL);
+        int strike = result.get(STRIKE);
         if (ball != 0) {
             sb.append(ball + BALL_MSG + " ");
         }
