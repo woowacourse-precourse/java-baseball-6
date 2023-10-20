@@ -15,10 +15,21 @@ public class NumbersGenerate {
         List<Integer> ranNumTreeList = new ArrayList<>();
         while (ranNumTreeList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!ranNumTreeList.contains(randomNumber)) {
+            if (!isContainList(ranNumTreeList, randomNumber)) {
                 ranNumTreeList.add(randomNumber);
             }
         }
         return ranNumTreeList;
+    }
+
+    /**
+     * List에 Target 숫자가 포함되어있는지 확인
+     *
+     * @param ranNumTreeList
+     * @param randomNumber
+     * @return
+     */
+    private boolean isContainList(List<Integer> ranNumTreeList, int randomNumber) {
+        return ranNumTreeList.contains(randomNumber);
     }
 }
