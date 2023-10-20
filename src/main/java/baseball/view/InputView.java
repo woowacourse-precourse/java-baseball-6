@@ -19,4 +19,13 @@ public class InputView {
             throw new IllegalArgumentException("정수만 입력 가능합니다.");
         }
     }
+
+    public static int readChoiceOfGameStatus(int restartNumber, int quitNumber) {
+        System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.%n", restartNumber, quitNumber);
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException("정수만 입력 가능합니다.");
+        }
+    }
 }
