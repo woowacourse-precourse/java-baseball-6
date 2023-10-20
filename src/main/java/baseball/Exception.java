@@ -10,7 +10,7 @@ public class Exception {
     private static final String OPTION_EXCEPTION_MSG = "재실행을 하려면 1을, 종료하려면 2를 입력해주세요.";
 
     //사용자가 입력한 3개의 수에 대한 입력 처리
-    public void validateNumbers(List<Integer> input){
+    public static void validateNumbers(List<Integer> input){
         if(input.size() != 3){
             throw new IllegalArgumentException(LENGTH_EXCEPTION_MSG);
         }else {
@@ -18,6 +18,13 @@ public class Exception {
             if(removeDuplicate.size() != 3){
                 throw new IllegalArgumentException(DUPLICATE_EXCEPTION_MSG);
             }
+        }
+    }
+
+    //사용자가 입력한 게임 재실행 여부에 대한 입력 처리
+    public static void validateOption(String input){
+        if(input.equals(1) || input.equals(2)){
+            throw new IllegalArgumentException(OPTION_EXCEPTION_MSG);
         }
     }
 
