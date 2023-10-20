@@ -10,13 +10,13 @@ import java.util.stream.IntStream;
 public class BaseballNumber {
 
     static final String NOT_VALID_LENGTH_MESSAGE = "3자리 숫자를 입력 하셔야 합니다";
-    static final String BELOW_RANGE_MESSAGE = "1보다 큰 숫자를 입력 하셔야 합니다";
-    static final String OVER_RANGE_MESSAGE = "9보다 작은 숫자를 입력 하셔야 합니다";
+    static final String BELOW_RANGE_MESSAGE = "1 이상의 숫자를 입력 하셔야 합니다";
+    static final String OVER_RANGE_MESSAGE = "9 이하의 숫자를 입력 하셔야 합니다";
     static final String NOT_UNIQUE_MESSAGE = "중복 되지 않은 숫자를 입력 하셔야 합니다";
 
     private final List<Integer> numbers;
 
-    BaseballNumber(List<Integer> numbers) {
+    public BaseballNumber(List<Integer> numbers) {
         this.numbers = numbers;
         validate();
     }
