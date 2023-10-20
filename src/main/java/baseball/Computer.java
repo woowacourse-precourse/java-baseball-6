@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import constants.MessageConstants;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,23 +22,23 @@ public class Computer {
         printResultMessage(ballCounts, strikeCounts);
 
         if (strikeCounts == 3) {
-            System.out.println(Constants.GAME_FINISH_MESSAGE);
+            System.out.println(MessageConstants.GAME_FINISH_MESSAGE);
             finish = true;
         }
     }
 
     private void printResultMessage(int ballCounts, int strikeCounts) {
         if (ballCounts == 0 && strikeCounts == 0) {
-            Output.printMessage(Constants.NOTHING_MESSAGE);
+            Output.printMessage(MessageConstants.NOTHING_MESSAGE);
             return;
         }
         StringBuilder message = new StringBuilder();
 
         if (ballCounts != 0) {
-            message.append(ballCounts).append(Constants.BALL_MESSAGE).append(" ");
+            message.append(ballCounts).append(MessageConstants.BALL_MESSAGE).append(" ");
         }
         if (strikeCounts != 0) {
-            message.append(strikeCounts).append(Constants.STRIKE_MESSAGE);
+            message.append(strikeCounts).append(MessageConstants.STRIKE_MESSAGE);
         }
 
         Output.printMessage(message.toString());

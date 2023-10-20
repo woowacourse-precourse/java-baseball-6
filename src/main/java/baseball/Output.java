@@ -1,5 +1,7 @@
 package baseball;
 
+import constants.MessageConstants;
+
 public class Output {
 
     public static void printMessage(String message) {
@@ -7,6 +9,6 @@ public class Output {
     }
 
     public static void printErrorMessage(String message) {
-        System.out.println(Constants.ERROR_MESSAGE + message);
+        System.out.println(MessageConstants.ERROR_MESSAGE + message);
     }
 }
