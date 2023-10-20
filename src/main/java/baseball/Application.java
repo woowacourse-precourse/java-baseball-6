@@ -19,9 +19,10 @@ public class Application {
 
     // 사용자의 숫자입력을 알리는 기능
     public void printUserInput() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
+    // 사용자의 숫자입력을 받는 기능
     public String numberInput() {
         String input_number = Console.readLine();
 
@@ -39,6 +40,7 @@ public class Application {
         return intArray;
     }
 
+    // 컴퓨터가 생성한 임의의 수 3자리
     public List<Integer> randomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -100,6 +102,7 @@ public class Application {
         }
     }
 
+    // 입력한 값내에 중복된 숫자가 있는지 확인
     public static boolean hasDuplicates(int[] numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>();
 
@@ -112,10 +115,29 @@ public class Application {
         return false; // 중복된 숫자가 없으면 false 반환
     }
 
-
-
     public static void main(String[] args) {
+        Application A = new Application();
 
+        A.printGameStart();
+        List<Integer> computer_number = A.randomNumber();
+        while (true) {
+            A.printUserInput();
+            String str_input_number = A.numberInput();
+            int[] int_input_number = A.stringToIntArray(str_input_number);
+            A.exceptionUserInput(int_input_number);
 
+            int[] strike_ball = A.checkStrikeAndBall(int_input_number, computer_number);
+            A.printStrikeBall(strike_ball);
+
+            if(strike_ball[1] == 3) {
+                A.printGameRestart();
+                String restart_number = A.numberInput();
+                if(restart_number.equals("1")) {
+                    computer_number = A.randomNumber();
+                } else {
+                    break;
+                }
+            }
+        }
     }
 }
