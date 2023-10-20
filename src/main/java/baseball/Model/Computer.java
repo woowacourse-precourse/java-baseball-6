@@ -1,5 +1,7 @@
 package baseball.Model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,14 +17,17 @@ public class Computer {
     }
 
     private void generateRandomThreeDigitNumber() {
-        List<Integer> allNumbers = new ArrayList<Integer>();
-
-        for (int i = MIN_NUMBER_RANGE; i <= MAX_NUMBER_RANGE; i++) {
-            allNumbers.add(i);
+        numbers = new ArrayList<Integer>();
+        while (numbers.size() < THREE_DIGIT) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
+            addUniqueRandomNumber(randomNumber);
         }
+    }
 
-        Collections.shuffle(allNumbers);
-        this.numbers = new ArrayList<Integer>(allNumbers.subList(0, THREE_DIGIT));
+    private void addUniqueRandomNumber(int randomNumber) {
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber);
+        }
     }
 
     public List<Integer> getNumbers() {
