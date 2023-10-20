@@ -49,11 +49,11 @@ public abstract class InputUtil {
 
     public static String requireRestartNumber() {
         String inputNumber = Console.readLine();
-        isRestartNumberValid(inputNumber);
+        checkRestartNumberValid(inputNumber);
         return inputNumber;
     }
 
-    private static void isRestartNumberValid(String inputNumber) {
+    private static void checkRestartNumberValid(String inputNumber) {
         if (inputNumber.equals(RESTART_NUMBER) || inputNumber.equals(END_NUMBER)) {
             return;
         }
