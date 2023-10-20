@@ -93,19 +93,18 @@ __RandomNumberGenerator__
 
 __Comparator__
 - [x] countStrikes
-    * 위치가 같지 않으면서 숫자는 포함되어 있다면 스트라이크+1하고 모델에 다시 저장
+    * 위치가 같지 않으면서 숫자는 포함되어 있다면 스트라이크+1하고 스트라이크 숫자 반환
 - [x] countBalls
-    * 위치가 같으면서 숫자도 같다면 볼+1하고 모델에 다시 저장
+    * 위치가 같으면서 숫자도 같다면 볼+1하고 볼 숫자 반환
 - [x] isNothing
     * computerNumber와 playerInput가 하나도 안겹치면 낫싱true
 - [x] isEndGame
     * computerNumber와 playerInput가 모두 일치하면 true
 
 __PlayerInputController__
-- [ ] removeBlanks
-  * 공백을 없애고 숫자 한자리씩 리스트에 저장
-- [ ] handlePlayerInput
-  * deleteBlank에서 넘어온 리스트를 validatePlayerInput에 넣고 모델에 입력
+- [x] handlePlayerInput
+  * 사용자 입력의 공백을 제거
+  * validatePlayerInput에 넣고 Arraylist를 생성한 후 값을 넣고 반환
 
   
 __MainController__
