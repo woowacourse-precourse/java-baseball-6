@@ -66,7 +66,7 @@ public class BaseballGame implements GameInterface{
 
     private static void isValidNum(int decision) {
         if(isNotOne(decision) && isNotTwo(decision)){
-            throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT.toString());
+            throw new IllegalArgumentException(ErrorMessage.WRONG_DECISION.toString());
         }
     }
 
