@@ -7,7 +7,7 @@ import java.util.List;
 public class BaseBall {
 
   private static final int MAX_BALL_SIZE = 3;
-  private static final int RANGE_FIREST_NUMBER = 1;
+  private static final int RANGE_FIRST_NUMBER = 1;
   private static final int RANGE_LAST_NUMBER = 9;
   private final List<Integer> ballNumbers;
 
@@ -23,7 +23,7 @@ public class BaseBall {
     List<Integer> ballNumbers = new ArrayList<>();
 
     while (ballNumbers.size() < MAX_BALL_SIZE) {
-      int randomNumber = Randoms.pickNumberInRange(RANGE_FIREST_NUMBER, RANGE_LAST_NUMBER);
+      int randomNumber = Randoms.pickNumberInRange(RANGE_FIRST_NUMBER, RANGE_LAST_NUMBER);
       addBallNumber(ballNumbers, randomNumber);
     }
 
