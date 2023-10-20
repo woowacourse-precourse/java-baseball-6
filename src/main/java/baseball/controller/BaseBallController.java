@@ -20,16 +20,27 @@ public class BaseBallController {
         while (restartNum.equals("1")) {
             String inputUserNum = InputView.inputUserNum();
             InputValidation.validateInputNum(inputUserNum);
+
             List<Integer> integers = userNum.buildUserNum(inputUserNum);
             GameResult gameResult = baseBallGame.compareNumList(integers);
+
             OutputView.printBallAndStrike(gameResult.getBall(), gameResult.getStrike());
-            if (baseBallGame.isStrikeMax(gameResult.getStrike())) {
-                OutputView.printGameEnd();
-                restartNum = InputView.inputRestart();
-                if(restartNum.equals("1")){
-                    baseBallGame.buildNewComputerList();
-                }
-            }
+            restartNum = checkMaxStrike(restartNum, gameResult);
+        }
+    }
+
+    private String checkMaxStrike(String restartNum, GameResult gameResult) {
+        if (baseBallGame.isStrikeMax(gameResult.getStrike())) {
+            OutputView.printGameEnd();
+            restartNum = InputView.inputRestart();
+            checkRestartNum(restartNum);
+        }
+        return restartNum;
+    }
+
+    private void checkRestartNum(String restartNum) {
+        if(restartNum.equals("1")){
+            baseBallGame.buildNewComputerList();
         }
     }
 }
