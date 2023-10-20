@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.Constant.END_NUMBER;
-import static baseball.Constant.MAX_NUMBER_LENGTH;
+import static baseball.Constant.MY_NUMBER_INPUT_LENGTH;
 
 public class BaseballGame {
 
@@ -53,8 +53,8 @@ public class BaseballGame {
     }
 
     private List<Integer> setComputerNumber() {
-        List<Integer> computer = new ArrayList<>(MAX_NUMBER_LENGTH);
-        while (computer.size() < MAX_NUMBER_LENGTH) {
+        List<Integer> computer = new ArrayList<>(MY_NUMBER_INPUT_LENGTH);
+        while (computer.size() < MY_NUMBER_INPUT_LENGTH) {
             checkDuplicationAndSetNumber(computer, Randoms.pickNumberInRange(1, 9));
         }
 
@@ -77,8 +77,8 @@ public class BaseballGame {
         int ball = 0;
         int strike = 0;
 
-        for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
-            for (int j = 0; j < MAX_NUMBER_LENGTH; j++) {
+        for (int i = 0; i < MY_NUMBER_INPUT_LENGTH; i++) {
+            for (int j = 0; j < MY_NUMBER_INPUT_LENGTH; j++) {
                 if (computerNumber.get(i) == myNumber.get(j)) {
                     if (i == j) strike++;
                     else ball++;
@@ -109,7 +109,7 @@ public class BaseballGame {
     }
 
     private boolean isMyNumberCorrect(Result result) {
-        if (result.getStrike() == MAX_NUMBER_LENGTH) {
+        if (result.getStrike() == MY_NUMBER_INPUT_LENGTH) {
             return true;
         }
         return false;

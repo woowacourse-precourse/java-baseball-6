@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static baseball.Constant.RESTART_NUMBER;
 import static baseball.Constant.END_NUMBER;
-import static baseball.Constant.MAX_NUMBER_LENGTH;
-
+import static baseball.Constant.MY_NUMBER_INPUT_LENGTH;
+import static baseball.Constant.RESTART_NUMBER;
+import static baseball.Constant.RESTART_OR_END_INPUT_LENGTH;
 
 public class InputChecker {
 
@@ -37,7 +37,7 @@ public class InputChecker {
     }
 
     public void checkMyNumber(String input) {
-        if (input.length() != MAX_NUMBER_LENGTH) {
+        if (input.length() != MY_NUMBER_INPUT_LENGTH) {
             throw new IllegalArgumentException();
         }
 
@@ -53,7 +53,7 @@ public class InputChecker {
     }
 
     public void checkRestartNumber(String input) {
-        if (input.length() != 1) {
+        if (input.length() != RESTART_OR_END_INPUT_LENGTH) {
             throw new IllegalArgumentException();
         }
 

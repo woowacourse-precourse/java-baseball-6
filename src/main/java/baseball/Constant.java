@@ -6,5 +6,7 @@ public class Constant {
 
     public static final int END_NUMBER = 2;
 
-    public static final int MAX_NUMBER_LENGTH = 3;
+    public static final int RESTART_OR_END_INPUT_LENGTH = 1;
+
+    public static final int MY_NUMBER_INPUT_LENGTH = 3;
 }

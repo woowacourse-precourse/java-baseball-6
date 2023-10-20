@@ -26,7 +26,8 @@
 - 상수 전용 클래스
 - RESTART_NUMBER: 1
 - END_NUMBER: 2
-- MAX_NUMBER_LENGTH : 게임 진행 시 숫자 길이(3)
+- RESTART_OR_END_INPUT_LENGTH: 게임 완료 후 재시작 or 게임 종료 여부 결정 시 입력 숫자 길이(1)
+- MY_NUMBER_INPUT_LENGTH : 게임 진행 시 숫자 길이(3)
 
 <h2>4. InputChecker</h2>
 - 입력 예외 처리용 객체
