@@ -9,6 +9,7 @@ import java.util.List;
 public class PlayResult {
 
     public static final int RESULT_SIZE = 3;
+
     private final EnumMap<CompareResult, Long> countByResult;
 
     public PlayResult(final List<CompareResult> compareResults) {
@@ -33,11 +34,11 @@ public class PlayResult {
         return getCountOf(CompareResult.STRIKE);
     }
 
-    private long getCountOf(CompareResult compareResult) {
-        return countByResult.getOrDefault(compareResult, 0L);
+    public long getBalls() {
+        return getCountOf(CompareResult.BALL);
     }
 
-    public boolean isAllStrike() {
-        return getStrikes() == RESULT_SIZE;
+    private long getCountOf(final CompareResult compareResult) {
+        return countByResult.getOrDefault(compareResult, 0L);
     }
 }

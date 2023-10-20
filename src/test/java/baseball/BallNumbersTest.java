@@ -60,6 +60,18 @@ public class BallNumbersTest {
         assertThat(playResult.getStrikes()).isEqualTo(numberOfStrikes);
     }
 
+    @ParameterizedTest
+    @MethodSource("generateComputerNumbers")
+    @DisplayName("같은 숫자가 다른 자리에 존재하면 볼이다.")
+    void existsSameNumberInSamePosition_Then_Ball(
+            final BallNumbers computerNumbers,
+            final long numberOfStrikes
+    ) {
+        BallNumbers player = new BallNumbers(List.of(3, 1, 2));
+        PlayResult playResult = player.compareAll(computerNumbers);
+        assertThat(playResult.getBalls()).isEqualTo(numberOfStrikes);
+    }
+
     private static Stream<Arguments> generateComputerNumbers() {
         return Stream.of(
                 Arguments.of(new BallNumbers(List.of(4, 2, 5)), 1L),
