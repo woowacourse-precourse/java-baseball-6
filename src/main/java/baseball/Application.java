@@ -20,11 +20,29 @@ class Game{
 
     void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        computer();
-        user();
-        Hint hint = new Hint();
-        hint.score(answer, computer_answer);
-        hint.result();
+        boolean check = false;
+
+        while (!check) {
+            computer_answer.clear();
+            computer();
+
+            while (true) {
+                answer.clear();
+                user();
+                Hint hint = new Hint();
+                hint.score(answer, computer_answer);
+                if (hint.result()) {
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    int choice = Integer.parseInt(Console.readLine());
+                    if (choice == 1) {
+                        break; // 내부 루프 종료하여 새로운 게임 시작
+                    } else if (choice == 2) {
+                        check = true; // 외부 루프 종료하여 게임 종료
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     void computer(){
@@ -80,7 +98,7 @@ class Hint{
         }
     }
 
-    void result(){
+    boolean result(){
         if(this.ball == 0 && this.strike == 0){
             System.out.println("낫싱");
         }
@@ -91,10 +109,12 @@ class Hint{
             System.out.println(strike+"스트라이크");
             if(strike == 3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return true;
             }
         }
         else if(ball > 0 && strike > 0){
             System.out.println(ball+"볼 "+strike+"스트라이크");
         }
+        return false;
     }
 }
