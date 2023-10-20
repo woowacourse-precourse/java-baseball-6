@@ -89,4 +89,17 @@ class InputValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만을 입력해주시기 바랍니다.");
     }
+
+    @DisplayName("유저 input 안에 '0'이 들어가 있는 경우의 테스트")
+    @Test
+    void zeroNumberInUserInputTest() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String zeroNumber = "140";
+        //then
+        assertThatThrownBy(() -> inputValidation.validateUserInput(zeroNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1 ~ 9 사이의 숫자만을 입력해주시기 바랍니다.");
+    }
 }
