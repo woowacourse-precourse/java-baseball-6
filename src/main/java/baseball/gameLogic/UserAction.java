@@ -25,4 +25,8 @@ public class UserAction {
         return user.numberList;
     }
 
+    public int getMind(){
+        return user.mind;
+    }
+
 }
