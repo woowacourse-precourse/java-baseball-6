@@ -29,7 +29,28 @@ public class Application {
             ArrayList<Integer> responseArray = getUserInput();
             int[] result = calculateResult(responseArray, computer);
             printResult(result);
-            // TODO : 재시작여부로직 구현
+            if (result[0] == 3) {
+                again = isAgain();
+                break;
+            }
+        }
+        return again;
+    }
+
+    private static boolean isAgain() {
+        try {
+            System.out.println("3개의 숫자 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String tryAgain = Console.readLine();
+            if (tryAgain.equals("1")) {
+                return true;
+            } else if (tryAgain.equals("2")) {
+                return false;
+            } else {
+                throw new IllegalArgumentException();
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
         }
     }
 
