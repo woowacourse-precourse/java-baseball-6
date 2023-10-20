@@ -4,8 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    static String comAnswer;
-    static String userAnswer;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -20,71 +18,13 @@ public class Application {
 
         }while(gameRepeat.equals("1"));
     }
-
-
-    //사용자 입력값에 대한 예외처리
-    static void chkInputException(String useAnswer) throws IllegalArgumentException{
-        //1) 길이3 아닌 경우
-        if(userAnswer.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-        //2) 입력값 각 숫자 범위가 1-9 외 구성인 경우
-        for(int i=0; i<3; i++){
-            int num = Character.getNumericValue(userAnswer.charAt(i));
-            if(num < 1 || num > 9) throw new IllegalArgumentException();
-        }
-        //3) 입력값 중복된 경우-서로 다른 수가 아닌 경우
-        String tmp = "";
-        for(int i=0; i<3; i++){
-            String num = String.valueOf(userAnswer.charAt(i));
-            if(tmp.contains(num)){
-                throw new IllegalArgumentException();
-            }
-            tmp += num;
-        }
-    }
-
-    //사용자 입력값에 대한 힌트 제공
-    static boolean getHint(String userAnswer, String computerAnswer){
-        String result = "";
-        int ball = 0;
-        int strike = 0;
-
-        for(int i=0; i<3; i++){
-            String cur = String.valueOf(userAnswer.charAt(i));
-            if(computerAnswer.contains(cur)){
-                ball++;
-            }
-        }
-        for(int i=0; i<3; i++){
-            if(computerAnswer.indexOf(userAnswer.charAt(i)) == i){
-                strike++;
-            }
-        }
-        ball -= strike;
-
-        if(ball > 0){
-            result += String.valueOf(ball)+"볼 ";
-        }
-        if(strike > 0){
-            result += String.valueOf(strike) + "스트라이크 ";
-        }
-        if(ball == 0 && strike == 0){
-            result = "낫싱";
-        }
-        System.out.println(result);
-
-        if(strike == 3){
-            return true;
-        }
-        return false;
-    }
 }
 
 //게임에 대한 전체 진행 로직
 class ComputerGame{
     String comAnswer;
     String userAnswer;
+
     Application main = new Application();
 
     ComputerGame(){
@@ -98,11 +38,9 @@ class ComputerGame{
     public void gameStart(){
         boolean success = false;
         do{
-            //2) 사용자 입력값 예외처리
-            userAnswer = Console.readLine();
-            main.chkInputException(userAnswer);
-            //3) 사용자 입력값에 대한 힌트 제공
-            success = main.getHint(userAnswer, comAnswer);
+            UserInput input = new UserInput();
+            success = getHint(input.userAnswer, comAnswer);
+
         }while(!success);
 
     }
@@ -118,5 +56,73 @@ class ComputerGame{
             }
         }
         return num;
+    }
+
+    //사용자 입력값에 대한 힌트 제공
+    static boolean getHint(String userAnswer, String computerAnswer) {
+        String result = "";
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+            String cur = String.valueOf(userAnswer.charAt(i));
+            if (computerAnswer.contains(cur)) {
+                ball++;
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            if (computerAnswer.indexOf(userAnswer.charAt(i)) == i) {
+                strike++;
+            }
+        }
+        ball -= strike;
+
+        if (ball > 0) {
+            result += String.valueOf(ball) + "볼 ";
+        }
+        if (strike > 0) {
+            result += String.valueOf(strike) + "스트라이크 ";
+        }
+        if (ball == 0 && strike == 0) {
+            result = "낫싱";
+        }
+        System.out.println(result);
+
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
+}
+
+class UserInput{ //입력값 다루는 전용 객체
+    String userAnswer;
+
+    UserInput(){
+        //2) 사용자 입력값 예외처리
+        userAnswer = Console.readLine();
+        chkInputException(userAnswer);
+    }
+
+    //사용자 입력값에 대한 예외처리
+    static void chkInputException(String answer) throws IllegalArgumentException {
+        //1) 길이3 아닌 경우
+        if (answer.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        //2) 입력값 각 숫자 범위가 1-9 외 구성인 경우
+        for (int i = 0; i < 3; i++) {
+            int num = Character.getNumericValue(answer.charAt(i));
+            if (num < 1 || num > 9) throw new IllegalArgumentException();
+        }
+        //3) 입력값 중복된 경우-서로 다른 수가 아닌 경우
+        String tmp = "";
+        for (int i = 0; i < 3; i++) {
+            String num = String.valueOf(answer.charAt(i));
+            if (tmp.contains(num)) {
+                throw new IllegalArgumentException();
+            }
+            tmp += num;
+        }
     }
 }
