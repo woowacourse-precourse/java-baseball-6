@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class GameManager {
     private static GameManager gameManager;
@@ -62,20 +63,25 @@ public class GameManager {
         List<Integer> answerNumber = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             char answerChar = answer.charAt(i);
-            validateAnswerChar(answerChar);
-
-            answerNumber.add((int) answer.charAt(i) - 48);
+            validateAnswerCharRange(answerChar);
+            validateNumberDuplicated(answerChar, answerNumber);
+            answerNumber.add((int) answerChar - 48);
         }
         return answerNumber;
     }
 
-    private void validateAnswerChar(char c) {
+    private void validateAnswerCharRange(char c) {
         if (c < 49 || c > 57)
             throw new IllegalArgumentException();
     }
 
     private void validateAnswerLength(String answer) {
         if (answer.length() != 3)
+            throw new IllegalArgumentException();
+    }
+
+    private void validateNumberDuplicated(char answerChar, List<Integer> answerNumber) {
+        if (answerNumber.stream().anyMatch(n -> answerChar - 48 == n))
             throw new IllegalArgumentException();
     }
 
