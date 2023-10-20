@@ -10,7 +10,7 @@ public class Computer {
     public static final int THREE_DIGIT = 3;
     private List<Integer> numbers;
 
-    public Computer(List<Integer> numbers) {
+    public Computer() {
         generateRandomThreeDigitNumber();
     }
 
@@ -21,7 +21,11 @@ public class Computer {
             allNumbers.add(i);
         }
 
-        Collections.shuffle(numbers);
+        Collections.shuffle(allNumbers);
         this.numbers = new ArrayList<Integer>(allNumbers.subList(0, THREE_DIGIT));
+    }
+
+    public List<Integer> getNumbers() {
+        return new ArrayList<Integer> (numbers);
     }
 }
