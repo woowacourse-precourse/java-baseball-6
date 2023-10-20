@@ -3,6 +3,7 @@ package baseball.domain.ball;
 import baseball.domain.result.BallResult;
 import baseball.domain.result.GameResult;
 import baseball.domain.util.BallsConvertor;
+import baseball.domain.util.RandomBallGenerator;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Balls {
     public Balls(int number) {
         balls = BallsConvertor.convertNumberToBalls(number);
     }
+    public Balls() { balls = RandomBallGenerator.makeBalls(); }
 
     public GameResult compareWithBalls(Balls otherBalls) {
         GameResult gameResult = new GameResult();
