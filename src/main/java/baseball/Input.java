@@ -25,6 +25,8 @@ public class Input {
     private void checkInputtedNumber(String inputtedNumber) {
             checkNumbersDigit(inputtedNumber);
             checkNumbersDuplicate(inputtedNumber);
+            checkNumbersIncludeZero(inputtedNumber);
+            checkNumbersIncludeNotNumber(inputtedNumber);
     }
 
     private void checkNumbersDigit(String inputtedNumber) {
@@ -40,6 +42,27 @@ public class Input {
                 throw new IllegalArgumentException();
             }
             stringForCheckingDuplicate.append(number);
+        }
+    }
+
+    private void checkNumbersIncludeZero(String inputtedNumber) {
+        if(inputtedNumber.contains("0")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkNumbersIncludeNotNumber(String inputtedNumber) {
+        if(isNumeric(inputtedNumber) == false) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 
