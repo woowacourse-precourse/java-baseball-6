@@ -37,20 +37,9 @@ public class ComputerGame{
     //사용자 입력값에 대한 힌트 제공
     static boolean getHint(String userAnswer, String computerAnswer) {
         String result = "";
-        int ball = 0;
-        int strike = 0;
 
-        for (int i = 0; i < 3; i++) {
-            String cur = String.valueOf(userAnswer.charAt(i));
-            if (computerAnswer.contains(cur)) {
-                ball++;
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            if (computerAnswer.indexOf(userAnswer.charAt(i)) == i) {
-                strike++;
-            }
-        }
+        int ball = ballCnt(userAnswer, computerAnswer);
+        int strike = strikeCnt(userAnswer, computerAnswer);
         ball -= strike;
 
         if (ball > 0) {
@@ -70,4 +59,27 @@ public class ComputerGame{
         }
         return false;
     }
+
+    //볼 카운팅
+    static int ballCnt(String userAnswer, String comAnswer){
+        int cnt = 0;
+        for (int i = 0; i < 3; i++) {
+            String cur = String.valueOf(userAnswer.charAt(i));
+            if (comAnswer.contains(cur)) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+    //스트라이크 카운팅
+    static int strikeCnt(String userAnswer, String comAnswer){
+        int cnt = 0;
+        for (int i = 0; i < 3; i++) {
+            if (comAnswer.indexOf(userAnswer.charAt(i)) == i) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
 }

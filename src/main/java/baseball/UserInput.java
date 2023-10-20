@@ -6,8 +6,9 @@ public class UserInput{
     String userAnswer;
     UserInput(){
         System.out.print("숫자를 입력해주세요 : ");
-        userAnswer = Console.readLine();
-        chkInputException(userAnswer);
+        String tmp = Console.readLine();
+        chkInputException(tmp);
+        userAnswer= tmp;
     }
     //사용자 입력값에 대한 예외처리
     static void chkInputException(String answer) throws IllegalArgumentException {
