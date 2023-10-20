@@ -15,4 +15,8 @@ public class Player {
     public int getPlayerNumber(int index) {
         return playerNumberStore.get(index);
     }
+
+    public void clearPlayerNumberStore() {
+        playerNumberStore.clear();
+    }
 }
