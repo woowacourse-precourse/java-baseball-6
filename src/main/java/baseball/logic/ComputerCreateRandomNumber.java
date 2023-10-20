@@ -12,46 +12,13 @@ public class ComputerCreateRandomNumber {
 
     // 컴퓨터의 랜덤한 숫자 생성
     public List<Integer> createRandomNumber() {
-        List<Integer> availableNumbers = createNumberLists();
-
-//        return createRandomNumberByPickNumbers(availableNumbers);
-        return availableNumbers;
-    }
-
-    // Randoms.pickNumberInRange()을 이용하여 랜덤 인덱스 선택 후, 세 자리 수 생성
-    private int createRandomNumberByPickNumbers(List<Integer> availableNumbers) {
-        int createdNumber = 0;
-
-        for (int i = 0; i < NUMBER_COUNT; i++) {
-            int selectedIdx = Randoms.pickNumberInRange(0, availableNumbers.size()-1);
-
-            Integer selectedNumber = availableNumbers.remove(selectedIdx);
-
-            createdNumber = createdNumber * 10 + selectedNumber;
-        }
-
-        return createdNumber;
-    }
-
-    // 사용 가능한 9자리 숫자 리스트 생성
-//    private List<Integer> createNumberLists() {
-//        List<Integer> availableNumbers = new ArrayList<>();
-//
-//        for (int i = MIN_NUMBER; i <= MAX_NUMBER; i++) {
-//            availableNumbers.add(i);
-//        }
-//
-//        return availableNumbers;
-//    }
-
-    private List<Integer> createNumberLists() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+        List<Integer> computerInput = new ArrayList<>();
+        while (computerInput.size() < NUMBER_COUNT) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            if (!computerInput.contains(randomNumber)) {
+                computerInput.add(randomNumber);
             }
         }
-        return computer;
+        return computerInput;
     }
 }
