@@ -16,14 +16,20 @@ public class playGame {
             }
         }
     }
-
+    public static void start(){
+        playGame game;
+        do{
+            game=new playGame();
+            game.turn();
+        }while(game.restart());
+    }
     private void turn(){
         String inputString;
         do {
             System.out.print("숫자를 입력해주세요 :");
             inputString = Console.readLine();
             checkInputString(inputString);
-        }while(checkGameResult(inputString)==true);
+        }while(checkGameResult(inputString)==false);
     }
 
     private void checkInputString(String inputString)
