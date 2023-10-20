@@ -26,7 +26,10 @@
 - `InputView`: 사용자의 입력을 받는 메세지 출력.
 - `OutputView`: 사용자의 입력에 따른 응답 메세지 출력.
 - `InputValidator`: 사용자가 입력한 숫자가 `InputView`의 조건에 맞게 입력했는지 검증.
-- `Computer`: 1~9 범위의 서로다른 3자리 숫자를 정답으로 생성하고 사용자의 입력값과 비교.
+- `Computer`: `AnswerGenerator`를 구현한 클래스에게서 생성된 숫자를 받아서 정답으로 저장하고, 사용자의 입력값과 비교.
+- `AnswerGenerator`: 3자리 수를 반환하는 메서드가 정의된 인터페이스.
+- `RandomAnswerGenerator`: 1~9 범위의 서로다른 3자리의 무작위 숫자를 정답으로 생성하여 반환.
+- `FixedAnswerGenerator`: 무작위가 아닌 고정된 값으로 테스트하기 위해 만든 숫자 생성기. 
 
 ### 기능 목록
 - `InputView`
@@ -50,3 +53,9 @@
         - [ ] `"3스트라이크"` 가 아닌 경우 `InputView`의 `baseBallNumber()`을 호출.
         - [ ] 같은 자리 같은 수가 3개인 경우 `"3스트라이크"`
             - [ ] `OutputView`의 `endGame()`을 호출.
+- `AnswerGenerator`
+    - [ ] `List<Integer>` 타입을 반환하는 `generate()` 메서드 정의
+- `RandomAnswerGenerator`: `AnswerGenerator` 구현
+    - [ ] `Randoms.pickNumberInRange()` 메서드를 사용하여 `List<Integer>` 타입 반환.
+- `FixedAnswerGenerator`: `AnswerGenerator` 구현
+    - [ ] `generate()` 메서드를 구현하고, 오버라이딩하여 `String` 타입을 매개변수로 3자리 숫자를 생성하여 `List<Integer>` 타입 반환.
