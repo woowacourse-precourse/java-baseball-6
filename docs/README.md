@@ -68,7 +68,12 @@
   - [x] 숫자 입력 기능
 - [ ] GameManger
 - [ ] GameService
-- [ ] BaseballNumbers
+- [x] BaseballNumbers
+  - [x] 랜덤 숫자 생성 기능
+- [x] GameResult
+  - [x] 스트라이크, 볼 판단하는 기능
+  - [x] 문자열로 결과 반환하는 기능
+  - [x] 3스트라이크로 게임이 끝났는지 판단하는 기능
 - [x] InputValidator
   - [x] 입력받은 숫자에 대한 유효성 검사 기능
     - [x] 3자리 숫자 유효성 검사(문자 x, 0이 들어가 있는지, 3자리가 맞는지, 중복된 숫자는 없는지)
