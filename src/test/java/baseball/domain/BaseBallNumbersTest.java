@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -16,7 +15,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class BaseBallNumbersTest {
 
-    @DisplayName("야구 숫자 목록 사이즈에 벗어나는 경우에는 객체 생성 실패한다")
     @ParameterizedTest
     @MethodSource("provideOverSizeIntegers")
     void 야구_숫자_목록_사이즈에_벗어나는_경우에는_객체_생성_실패한다(List<Integer> overSizeIntegers) {
@@ -24,7 +22,6 @@ class BaseBallNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("야구 숫자 목록 사이즈에 벗어나지 않는 경우에는 객체 생성에 성공한다")
     @Test
     void 야구_숫자_목록_사이즈에_벗어나지_않는_경우에는_객체_생성에_성공한다() {
         List<Integer> rightSizeIntegers = List.of(1, 2, 3);
@@ -32,7 +29,6 @@ class BaseBallNumbersTest {
         assertDoesNotThrow(() -> BaseBallNumbers.generateNumbers(rightSizeIntegers));
     }
 
-    @DisplayName("중복이 있는 야구 숫자는 객체 생성에 실패한다")
     @Test
     void 중복이_있는_야구_숫자는_객체_생성에_실패한다() {
         List<Integer> duplicateNumbers = List.of(1, 1, 2);
@@ -41,7 +37,6 @@ class BaseBallNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("중복이 없는 야구 숫자는 객체 생성에 성공한다")
     @Test
     void 중복이_없는_야구_숫자를_객체_생성에_성공한다() {
         List<Integer> noDuplicateNumbers = List.of(1, 2, 3);
@@ -49,7 +44,6 @@ class BaseBallNumbersTest {
         assertDoesNotThrow(() -> BaseBallNumbers.generateNumbers(noDuplicateNumbers));
     }
 
-    @DisplayName("랜덤으로 야구 숫자 목록을 생성하는데 사이즈에 벗어나지 않는 경우에는 객체 생성에 성공한다")
     @Test
     void 랜덤으로_야구_숫자_목록을_생성하는데_사이즈에_벗어나지_않는_경우에는_객체_생성에_성공한다() {
         NumberGenerator numberGenerator = new SequentialNumberGenerator(List.of(1, 2, 3));
@@ -57,7 +51,6 @@ class BaseBallNumbersTest {
         assertDoesNotThrow(() -> BaseBallNumbers.generateRandomNumbers(numberGenerator));
     }
 
-    @DisplayName("야구 숫자 목록에 따라서 결과를 계산한다")
     @ParameterizedTest
     @MethodSource("providePlayerBaseBallNumbersAndResult")
     void 야구_숫자_목록에_따라서_결과를_계산한다(List<Integer> playerNumbers, BaseBallGameResult expectedResult) {
