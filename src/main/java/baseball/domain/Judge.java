@@ -1,11 +1,12 @@
 package baseball.domain;
 
+import baseball.string.MyConstants;
 import baseball.utill.Utill;
 
 import java.util.List;
 
 public class Judge {
-    private static final Integer NOT_THING_RESULT = 0;
+    public final static int NOT_THING_RESULT = 0;
     GameStandard gameStandard;
 
     public Judge() {
@@ -45,20 +46,20 @@ public class Judge {
 
         // 4. 숫자가 같은 갯수가 없다면 "낫싱"
         if (Utill.isSameInteger(cntTotalSameUserAndComputer, NOT_THING_RESULT)) {
-            return "낫싱";
+            return MyConstants.MSG_NOT_THING();
         }
 
         // 5. 볼이 없다면 "3스트라이크"
         if (Utill.isSameInteger(cntBall, NOT_THING_RESULT)) {
-            return cntStrike + "스트라이크";
+            return MyConstants.MSG_ONLY_STRIKE(cntStrike);
         }
 
         // 6. 볼만 있다면
         if (Utill.isSameInteger(cntStrike, NOT_THING_RESULT)) {
-            return cntBall + "볼";
+            return MyConstants.MSG_ONLY_BALL(cntBall);
         }
 
         // 7. 볼과 스트라이크이 있다면 "1볼 1스트라이크"
-        return cntBall + "볼 " + cntStrike + "스트라이크";
+        return MyConstants.MSG_BALL_STRIKE(cntBall, cntStrike);
     }
 }
