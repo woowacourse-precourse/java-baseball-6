@@ -1,9 +1,11 @@
 package baseball.service;
 
+import baseball.dto.JudgeDTO;
+
 import java.util.List;
 
 public interface GameService {
 
-    boolean process(List<Integer> numbers, int[] inputNumbers);
+    JudgeDTO process(List<Integer> numbers, int[] inputNumbers);
 
 }

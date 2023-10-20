@@ -1,10 +1,10 @@
 package baseball.service;
 
-import baseball.view.View;
+import baseball.dto.JudgeDTO;
 
 import java.util.List;
 
-public class GameServiceImpl implements GamsService {
+public class GameServiceImpl implements GameService {
 
     private static final String STRIKE_STATUS_MESSAGE = "스트라이크";
     private static final String BALL_STATUS_MESSAGE = "볼 ";
@@ -15,24 +15,25 @@ public class GameServiceImpl implements GamsService {
     private static final int BALL = 1;
     private static final int NOTHING = 2;
 
-    // idx 0 => 스트라이크, idx 1 => 볼, idx 2 => 아예 빗나감
-    private int[] referee;
-    private boolean flag;
+    private static final GameService INSTANCE = new GameServiceImpl();
+    private GameServiceImpl() { }
+    public static GameService getInstance() {
+        return INSTANCE;
+    }
 
     @Override
-    public boolean process(List<Integer> numbers, int[] inputNumbers) {
-        flag = false;
-        judge(numbers, inputNumbers);
-        return flag;
+    public JudgeDTO process(List<Integer> numbers, int[] inputNumbers) {
+        boolean flag = false;
+        return judge(numbers, inputNumbers, flag);
     }
 
-    private void judge(List<Integer> numbers, int[] inputNumbers) {
-        referee = new int[CAPACITY];
-        checkStatus(numbers, inputNumbers);
-        buildStatusMessage();
+    private JudgeDTO judge(List<Integer> numbers, int[] inputNumbers, boolean flag) {
+        int[] referee = new int[CAPACITY];
+        checkStatus(numbers, inputNumbers, referee);
+        return buildStatusAndMessage(referee, flag);
     }
 
-    private void checkStatus(List<Integer> numbers, int[] inputNumbers) {
+    private void checkStatus(List<Integer> numbers, int[] inputNumbers, int[] referee) {
         for (int i = 0; i < numbers.size(); i++) {
             int currentTarget = inputNumbers[i];
             if (numbers.get(i) == currentTarget) {
@@ -44,25 +45,27 @@ public class GameServiceImpl implements GamsService {
         }
     }
 
-    private void buildStatusMessage() {
+    private JudgeDTO buildStatusAndMessage(int[] referee, boolean flag) {
         StringBuilder builder = new StringBuilder();
-        if (referee[NOTHING] == CAPACITY) View.printMessage(NOTHING_STATUS_MESSAGE);
+        if (referee[NOTHING] == CAPACITY) builder.append(NOTHING_STATUS_MESSAGE);
         else {
             if (referee[BALL] != 0)
                 builder.append(referee[BALL] + BALL_STATUS_MESSAGE);
 
             if (referee[STRIKE] != 0) {
                 builder.append(referee[STRIKE] + STRIKE_STATUS_MESSAGE);
-                allStrikeCheck();
+                flag = allStrikeCheck(referee);
             }
         }
-        View.printMessage(builder.toString());
+
+        return new JudgeDTO(flag, builder.toString());
     }
 
-    private void allStrikeCheck() {
+    private boolean allStrikeCheck(int[] referee) {
         if (referee[STRIKE] == CAPACITY) {
-            flag = true;
+            return true;
         }
+        return false;
     }
 
 }
