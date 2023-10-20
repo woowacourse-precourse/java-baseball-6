@@ -3,9 +3,9 @@ package baseball;
 import java.util.List;
 
 public class Computer {
-    final int NOTHING = 0;
-    final int BALL = 1;
-    final int STRIKE = 2;
+    private final int NOTHING = 0;
+    private final int BALL = 1;
+    private final int STRIKE = 2;
     List<Integer> answer;
 
     public List<Integer> countScore(List<Integer> userNumbers) {
