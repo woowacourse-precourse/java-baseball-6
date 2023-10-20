@@ -1,11 +1,6 @@
 package baseball;
 
 
-import baseball.ver3.ComputerV3;
-import baseball.ver3.GameEntities;
-import baseball.ver3.GameManager;
-import baseball.ver3.PlayerV3;
-
 import java.util.List;
 
 public class Application {
