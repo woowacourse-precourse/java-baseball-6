@@ -18,6 +18,13 @@ public class Validator {
         validateLength(number, 3);
         validateNumeric(number);
         validateUnique(number);
+        validateNoneZero(number);
+    }
+
+    private void validateNoneZero(String input) {
+        if (input.contains("0")) {
+            throw new IllegalArgumentException("1~9 숫자만 허용됩니다. 0이 포함 되었는지 확인하세요.");
+        }
     }
 
     // 기능: 1 또는 2만 입력해야 한다
@@ -33,6 +40,7 @@ public class Validator {
         for (int numberIdx = 0; numberIdx < input.length(); numberIdx++) {
             uniqueNums.add(input.charAt(numberIdx));
         }
+        System.out.println(uniqueNums);
         if (uniqueNums.size() != 3) {
             throw new IllegalArgumentException("서로 다른 숫자만 입력해야 합니다.");
         }
