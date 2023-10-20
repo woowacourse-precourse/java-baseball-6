@@ -1,14 +1,12 @@
 package baseball.controller;
 
 import baseball.model.GameNumber;
+import baseball.model.GameState;
 import baseball.view.GameOutput;
 
 import java.util.List;
 
 public class PlayController {
-    private final Integer MAXIMUM_NUMBER_LENGTH;
-    private GameNumber gameNumber;
-    private GameNumber userGameNumber;
     private Integer ballCount;
     private Integer strikeCount;
 
@@ -16,6 +14,9 @@ public class PlayController {
     GenerateController generateController;
     ValidateController validateController;
     GameOutput gameOutput;
+    GameState gameState;
+    private GameNumber gameNumber;
+    private GameNumber userGameNumber;
 
     public PlayController(Integer length) {
         this.gameNumber = new GameNumber();
@@ -25,17 +26,17 @@ public class PlayController {
         this.validateController = new ValidateController();
         this.gameOutput = new GameOutput();
 
-        this.MAXIMUM_NUMBER_LENGTH = length;
+        this.gameState = new GameState();
     }
 
     public void generateNumber() {
-        List<Integer> generatedNumber = generateController.createRandomNumber(MAXIMUM_NUMBER_LENGTH);
+        List<Integer> generatedNumber = generateController.createRandomNumber(gameState.getMaximumNumberLength());
         gameNumber.setNumber(generatedNumber);
     }
 
     public boolean isSuccess(String input) {
         List<Integer> stringToIntegerList = generateController.stringToIntegerList(input);
-        validateController.validateInputIntegerList(stringToIntegerList, MAXIMUM_NUMBER_LENGTH);
+        validateController.validateInputIntegerList(stringToIntegerList, gameState.getMaximumNumberLength());
 
         userGameNumber.setNumber(stringToIntegerList);
 
@@ -43,7 +44,7 @@ public class PlayController {
 
         gameOutput.printResult(ballCount, strikeCount);
 
-        if (strikeCount == MAXIMUM_NUMBER_LENGTH) return true;
+        if (strikeCount == gameState.getMaximumNumberLength()) return true;
 
         return false;
     }

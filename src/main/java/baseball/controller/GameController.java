@@ -1,46 +1,53 @@
 package baseball.controller;
 
+import baseball.model.GameState;
 import baseball.view.GameInput;
 import baseball.view.GameOutput;
 
 public class GameController {
-    private static final String RESTART_FLAG = "1";
-    private static final String END_FLAG = "2";
-    private final Integer MAXIMUM_NUMBER_LENGTH = 3;
-    private boolean state;
+
+    /* Controller */
     PlayController playController;
     ValidateController validateController;
     GenerateController generateController;
+
+    /* View */
     GameInput gameInput;
     GameOutput gameOutput;
 
+    /* Model */
+    GameState gameState;
+
     public GameController() {
-        this.generateController = new GenerateController();
-        this.validateController = new ValidateController();
-        this.playController = new PlayController(this.MAXIMUM_NUMBER_LENGTH);
         this.gameInput = new GameInput();
         this.gameOutput = new GameOutput();
-
-        state = true;
+        this.gameState = new GameState();
+        this.generateController = new GenerateController();
+        this.validateController = new ValidateController();
+        this.playController = new PlayController(gameState.getMaximumNumberLength());
     }
 
     public void startGame() {
         gameOutput.printStartGame();
+        boolean statePool;
 
-        while (state) {
+        while (gameState.getState()) {
             playController.generateNumber(); // 컴퓨터 난수 생성
             guessNumber(); // 게임 시작
-            state = endOrRestart();
+            statePool = endOrRestart();
+            gameState.setState(statePool);
         }
     }
 
     private void guessNumber() { // 본 게임 로직
-        boolean success = false; //  정답을 맞췄는지 여부
+        boolean successPool;
 
-        while (!success) {
+        while (!gameState.getSuccess()) {
             String input = gameInput.inputNumber();
-            validateController.validateInputString(input, MAXIMUM_NUMBER_LENGTH);
-            success = playController.isSuccess(input);
+            Integer maximumNumberLength = gameState.getMaximumNumberLength();
+            validateController.validateInputString(input, maximumNumberLength);
+            successPool = playController.isSuccess(input);
+            gameState.setSuccess(successPool);
         }
 
         gameOutput.printEndGame();
@@ -56,9 +63,9 @@ public class GameController {
     }
 
     private boolean userAnswer(String input) {
-        if (input.equals(RESTART_FLAG)) { // 1
+        if (input.equals(gameState.getRestartFlag())) { // 1
             return true;
-        } else if (input.equals(END_FLAG)) { // 2
+        } else if (input.equals(gameState.getEndFlag())) { // 2
             return false;
         }
 
