@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 public class ConvertTest {
 
     @Test
-    @DisplayName("")
+    @DisplayName("String을 List<Integer>로 변환하는 기능을 테스트한다.")
     void testConvertStringToIntegerList() {
         String input = "123";
 
