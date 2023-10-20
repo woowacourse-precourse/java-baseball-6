@@ -50,10 +50,10 @@ public class BaseballGame {
 		System.out.println(RESTART_OR_END_MESSAGE);
 		String playerInputNumber = Console.readLine();
 		validateNumber(playerInputNumber);
-		if (playerInputNumber.equals('1')) {
+		if (playerInputNumber.equals("1")) {
 			computer.setRandomNumber();
 		}
-		if (playerInputNumber.equals('2')) {
+		if (playerInputNumber.equals("2")) {
 			this.quit = true;
 		}
 	}
