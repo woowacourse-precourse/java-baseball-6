@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomBallGenerator {
-    protected static final int ZERO = 0;
-    protected static final int SIZE_OF_NUMBER = 3;
+    public static final int ZERO = 0;
+    public static final int SIZE_OF_NUMBER = 3;
     private static final int SMALLEST_NUMBER = 1;
     private static final int LARGEST_NUMBER = 9;
 

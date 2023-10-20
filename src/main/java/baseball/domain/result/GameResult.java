@@ -25,10 +25,11 @@ public class GameResult {
     }
 
     public String getResult() {
-        String result = resultNumbers.stream().map(ResultNum::getResult)
-                        .filter(Optional::isPresent)
-                        .map(Optional::get)
-                        .collect(Collectors.joining(DELIMITER));
+        String result = resultNumbers.stream()
+                .map(ResultNum::getResult)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.joining(DELIMITER));
         if (result.isEmpty()) {
             result = NOTHING;
         }

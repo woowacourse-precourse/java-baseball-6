@@ -1,5 +1,7 @@
 package baseball.domain.ball;
 
+import baseball.domain.ball.ballcomponent.BallNumber;
+import baseball.domain.ball.ballcomponent.BallPosition;
 import baseball.domain.result.BallResult;
 
 public class Ball {
@@ -30,7 +32,7 @@ public class Ball {
     }
 
     private boolean checkNumberSame(Ball ball) {
-        return this.ballNumber.isSame(ball.ballNumber);
+        return this.ballNumber.isSameNumber(ball.ballNumber);
     }
 
     private boolean checkPositionSame(Ball ball) {

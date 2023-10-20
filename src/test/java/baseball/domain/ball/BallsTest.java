@@ -81,7 +81,7 @@ public class BallsTest {
     @Test
     @DisplayName("세자리 숫자로 Balls 생성시 예외 발생 하지 않는다. 경계값 테스트")
     void exceptionTest_3() {
-        new Balls(100);
-        new Balls(999);
+        new Balls(123);
+        new Balls(987);
     }
 }

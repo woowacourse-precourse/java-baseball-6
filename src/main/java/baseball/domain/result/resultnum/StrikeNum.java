@@ -4,33 +4,34 @@ import baseball.domain.result.BallResult;
 
 import java.util.Optional;
 
+import static baseball.domain.result.resultnum.BallNum.ONE;
+import static baseball.domain.util.RandomBallGenerator.SIZE_OF_NUMBER;
+import static baseball.domain.util.RandomBallGenerator.ZERO;
+
 public class StrikeNum implements ResultNum {
+    private static final String STRIKE = "스트라이크";
     private final int strikeNum;
 
     public StrikeNum() {
-        this.strikeNum = 0;
+        this.strikeNum = ZERO;
     }
 
     public StrikeNum(int ballNum) {
         this.strikeNum = ballNum;
     }
 
-    public boolean isThreeStrike() {
-        return strikeNum == 3;
-    }
-
     @Override
     public ResultNum update(BallResult ballResult) {
         if (ballResult.isStrike()) {
-            return new StrikeNum(strikeNum + 1);
+            return new StrikeNum(strikeNum + ONE);
         }
         return this;
     }
 
     @Override
     public Optional<String> getResult() {
-        if (strikeNum != 0) {
-            return Optional.of(strikeNum + "스트라이크");
+        if (strikeNum != ZERO) {
+            return Optional.of(strikeNum + STRIKE);
         }
         return Optional.empty();
     }

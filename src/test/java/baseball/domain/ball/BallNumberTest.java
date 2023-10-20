@@ -1,5 +1,6 @@
 package baseball.domain.ball;
 
+import baseball.domain.ball.ballcomponent.BallNumber;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,7 @@ public class BallNumberTest {
     void ballNumberTest1() {
         BallNumber ballNumber_1 = new BallNumber(7);
         BallNumber ballNumber_2 = new BallNumber(7);
-        Assertions.assertThat(ballNumber_1.isSame(ballNumber_2)).isTrue();
+        Assertions.assertThat(ballNumber_1.isSameNumber(ballNumber_2)).isTrue();
     }
 
     @Test
@@ -19,6 +20,6 @@ public class BallNumberTest {
     void ballNumberTest2() {
         BallNumber ballNumber_1 = new BallNumber(7);
         BallNumber ballNumber_2 = new BallNumber(8);
-        Assertions.assertThat(ballNumber_1.isSame(ballNumber_2)).isFalse();
+        Assertions.assertThat(ballNumber_1.isSameNumber(ballNumber_2)).isFalse();
     }
 }
