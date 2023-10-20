@@ -37,28 +37,31 @@ public class Application {
                 if (!input.matches(INPUT_FORMAT)) {
                     throw new IllegalArgumentException();
                 }
-                isAnswer = compare(computer, input);
+                List<Integer> user = new ArrayList<>();
+                for (String splitInput : input.split("")) {
+                    user.add(Integer.parseInt(splitInput));
+                }
+                isAnswer = compare(computer, user);
             }
             choiceOfUser = Console.readLine();
         }
     }
 
-    private static boolean compare(List<Integer> computer, String input) {
+    private static boolean compare(List<Integer> computer, List<Integer> user) {
 
         int ball = 0;
         int strike = 0;
 
-        for (int i = 0; i < NUMBER_SIZE; i++) {
-            String computerNumber = Integer.toString(computer.get(i));
-            if (!input.contains(computerNumber)) {
+        for (int computerIndex = 0; computerIndex < 3; computerIndex++) {
+            Integer computerNumber = computer.get(computerIndex);
+            if (!user.contains(computerNumber)) {
                 continue;
             }
-            int indexOfInput = input.indexOf(computerNumber);
-            if (indexOfInput == i) {
+            if (user.indexOf(computerNumber) == computerIndex) {
                 strike += 1;
-            } else {
-                ball += 1;
+                continue;
             }
+            ball += 1;
         }
         return printResult(ball, strike);
     }
