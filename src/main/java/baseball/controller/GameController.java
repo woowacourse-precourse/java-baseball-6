@@ -1,9 +1,6 @@
 package baseball.controller;
 
-import baseball.model.Computer;
-import baseball.model.Judgement;
-import baseball.model.NumberGenerator;
-import baseball.model.Player;
+import baseball.service.GameService;
 import baseball.view.Input;
 import baseball.view.Output;
 
@@ -11,20 +8,16 @@ public class GameController {
 
     private final Input input = new Input();
     private final Output output = new Output();
+    private final GameService gameService = new GameService();
 
     public void play() {
         output.showStartMessage();
+        gameService.init();
+
         output.showInputMessage();
+        gameService.makePlayer(input.readNumber());
 
-        String playerNumber = input.readNumber();
-        Player player = new Player(playerNumber);
-
-        NumberGenerator numberGenerator = new NumberGenerator();
-        Computer computer = new Computer(numberGenerator.createComputerNumbers());
-
-        Judgement judgement = new Judgement();
-        judgement.judge(computer, player);
-
-        output.showGameResult(judgement);
+        gameService.judge();
+        output.showGameResult(gameService.getJudgement());
     }
 }
