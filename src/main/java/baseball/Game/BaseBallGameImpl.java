@@ -20,19 +20,11 @@ public class BaseBallGameImpl implements BaseBallGame {
 
     @Override
     public void playGame() {
-        while (true){
-            System.out.println("숫자를 입력해주세요 : ");
-            List<Integer> userAnswer = inputAnswer.inputAnswer();
-            Integer strike = countStrike(userAnswer);
-            Integer ball = countBall(userAnswer);
-            if (strike == 0 && ball ==0)
-                System.out.println("낫싱");
-            else if (strike == 3) {
-                //TODO : 재시작 혹은 게임 종료
-                break;
-            } else
-                printResult(strike, ball);
-        }
+        System.out.println("숫자를 입력해주세요 : ");
+        List<Integer> userAnswer = inputAnswer.inputAnswer();
+        Integer strike = countStrike(userAnswer);
+        Integer ball = countBall(userAnswer);
+        gameResult(strike, ball);
     }
 
     @Override
@@ -69,7 +61,17 @@ public class BaseBallGameImpl implements BaseBallGame {
 
 
     @Override
-    public void printResult(Integer strike, Integer ball) {
-        System.out.println(ball + "볼 " + strike + "스트라이크");
+    public void gameResult(Integer strike, Integer ball) {
+        if (strike == 0 && ball == 0)
+            System.out.println("낫싱");
+        else if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            //TODO : 재시작 혹은 게임 종료
+        } else{
+            if (ball > 0) System.out.print(ball + "볼" + " ");
+            if (strike > 0) System.out.println(strike + "스트라이크");
+        }
+        playGame();
+
     }
 }

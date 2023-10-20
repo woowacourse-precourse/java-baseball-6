@@ -14,6 +14,6 @@ public interface BaseBallGame {
 
     Integer countBall(List<Integer> answer);
 
-    void printResult(Integer strike, Integer ball);
+    void gameResult(Integer strike, Integer ball);
 
 }
