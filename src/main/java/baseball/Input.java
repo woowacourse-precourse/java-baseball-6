@@ -26,7 +26,7 @@ public class Input {
     }
 
     private void checkNumbersDigit(String inputtedNumber) {
-        if(inputtedNumber.length() != 3) {
+        if(inputtedNumber.length() != BaseballGame.gameNumberDigits) {
             throw new IllegalArgumentException();
         }
     }
@@ -43,7 +43,7 @@ public class Input {
 
     private void convertStringNumberToIntegerList(String inputtedNumber) {
         ArrayList<Integer> tempNumbers = new ArrayList<>();
-        for(int numbersIndex=0; numbersIndex<3; numbersIndex++) {
+        for(int numbersIndex=0; numbersIndex<inputtedNumber.length(); numbersIndex++) {
             char digitChar = inputtedNumber.charAt(numbersIndex);
             int digitNumber = Character.getNumericValue(digitChar);
             tempNumbers.add(digitNumber);

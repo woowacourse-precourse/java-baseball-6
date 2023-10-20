@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class BaseballGame {
+    public static final int gameNumberDigits = 3;
     private static final Output output = new Output();
     private static final Input input = new Input();
     private final ArrayList<Integer> targetNumbers = new ArrayList<>();
@@ -13,14 +14,14 @@ public class BaseballGame {
 
     public void playBaseballGame() {
         setTargetNumbers();
-        while(strike!=3) {
+        while(strike!= gameNumberDigits) {
             countStrikeAndBall(input.inputUserNumbers());
         }
         restartGame();
     }
 
     private void setTargetNumbers() {
-        while(targetNumbers.size() < 3) {
+        while(targetNumbers.size() < gameNumberDigits) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!targetNumbers.contains(randomNumber)) {
                 targetNumbers.add(randomNumber);
@@ -41,7 +42,7 @@ public class BaseballGame {
     }
 
     private void countStrike(ArrayList<Integer> userNumbers) {
-        for(int numbersIndex=0; numbersIndex<3; numbersIndex++) {
+        for(int numbersIndex = 0; numbersIndex< gameNumberDigits; numbersIndex++) {
             if(userNumbers.get(numbersIndex).equals(targetNumbers.get(numbersIndex))) {
                 strike++;
             }
@@ -49,7 +50,7 @@ public class BaseballGame {
     }
 
     private void countBall(ArrayList<Integer> userNumbers) {
-        for(int numbersIndex=0; numbersIndex<3; numbersIndex++) {
+        for(int numbersIndex = 0; numbersIndex< gameNumberDigits; numbersIndex++) {
             if(targetNumbers.contains(userNumbers.get(numbersIndex)) &
                     !targetNumbers.get(numbersIndex).equals(userNumbers.get(numbersIndex))) {
                 ball++;
@@ -58,7 +59,7 @@ public class BaseballGame {
     }
 
     private void restartGame() {
-        resetTargetNumbers();
+        resetGameElementForRestartGame();
         output.printSelectRestartMessage();
         String restartOption = inputRestartOption();
         if(restartOption.equals("1")) {
@@ -66,8 +67,9 @@ public class BaseballGame {
         }
     }
 
-    private void resetTargetNumbers() {
+    private void resetGameElementForRestartGame() {
         targetNumbers.clear();
+        resetStrikeAndBall();
     }
 
     private String inputRestartOption() {
