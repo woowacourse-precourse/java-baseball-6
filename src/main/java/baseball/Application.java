@@ -9,6 +9,7 @@ import java.util.List;
 public class Application {
     private final static int BALL = 0;
     private final static int STRIKE = 1;
+
     public static void main(String[] args) {
         gameStart();
     }
@@ -18,19 +19,20 @@ public class Application {
         String gameString = "";
 
         makeComputerNum(computerNum);
+        System.out.println(computerNum);
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (gameChoice) {
+        while (!gameString.equals("3스트라이크")) {
+
             System.out.println("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
 
-            gameString = printBallCount(checkBall(userInput, computerNum));
+            gameString = printBallCount(checkBallCount(userInput, computerNum));
             System.out.println(gameString);
-
-            if (gameString.equals("3스트라이크")) {
-                gameChoice = checkRestartGame();
-            }
         }
+
+        if(checkRestartGame())
+            gameStart();
     }
     /**
      * 컴퓨터의 3자리 숫자를 만드는 메소드
@@ -61,7 +63,10 @@ public class Application {
         throw new IllegalArgumentException("1과 2중에 입력하셔야 합니다. ");
     }
 
-    private static List<Integer> checkBall(String userInput, List<Integer> computerNum) {
+    /**
+     * ballCount와 StrikeCount를 체크해서 List형태로 반환해준다.
+     */
+    private static List<Integer> checkBallCount(String userInput, List<Integer> computerNum) {
         List<Integer> listBS = new ArrayList<>();
         int totalCount = 0;
         int strikeCount = 0;
@@ -79,6 +84,9 @@ public class Application {
         return listBS;
     }
 
+    /**
+     * BALL Count 와 STRIKE Count를 문자열로 변환하여 출력하여줌
+     */
     private static String printBallCount(List<Integer> listBS){
         String returnString = "";
         if(listBS.get(BALL) != 0)
