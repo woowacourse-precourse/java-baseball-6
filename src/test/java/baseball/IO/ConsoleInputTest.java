@@ -1,14 +1,10 @@
 package baseball.IO;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ConsoleInputTest {
-
-
-
     @Test
     void 입력_받기(){
 
