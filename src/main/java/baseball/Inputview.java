@@ -14,6 +14,10 @@ public class Inputview {
         System.out.print("숫자를 입력해주세요: ");
         String inputString = Console.readLine();
 
+        if (inputString.length() != 3) {
+            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+        }
+
         List<Integer> numberList = new ArrayList<>();
 
         for (int i = 0; i < inputString.length(); i++) {
