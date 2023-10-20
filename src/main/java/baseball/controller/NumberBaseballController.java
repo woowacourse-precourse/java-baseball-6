@@ -24,12 +24,12 @@ public class NumberBaseballController {
     }
 
     public void readInputNumFromInputView() {
-        List<Integer> inputNumList = inputView.readNum();
+        int inputNumList = inputView.readNum();
         compareInputNumToRandNum(inputNumList);
     }
 
-    public void compareInputNumToRandNum(List<Integer> inputNumList) {
-        numberBaseballService.compareInputNumToRandNum(inputNumList);
+    public void compareInputNumToRandNum(int inputNum) {
+        numberBaseballService.compareInputNumToRandNum(inputNum);
 
         // 결과를 outputView로 전달
     }

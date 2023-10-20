@@ -10,7 +10,7 @@ public class NumberBaseballService {
     public NumberBaseballService(NumberBaseball numberBaseball) {
         this.numberBaseball = numberBaseball;
     }
-    public void compareInputNumToRandNum(List<Integer> inputNum) {
+    public void compareInputNumToRandNum(int inputNum) {
 
     }
 }

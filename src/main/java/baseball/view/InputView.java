@@ -13,14 +13,9 @@ public class InputView {
     }
 
     // 숫자를 입력받는 메서드
-    public List<Integer> readNum() {
+    public int readNum() {
         System.out.print("숫자를 입력해주세요 : ");
-        String inputNum = Console.readLine();
-        List<Integer> inputNumList = Arrays.stream(inputNum.split(""))
-                .mapToInt(Integer::parseInt)
-                .boxed().toList();
-
-        return inputNumList;
+        return Integer.parseInt(Console.readLine());
     }
 
 
