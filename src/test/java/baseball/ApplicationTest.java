@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
