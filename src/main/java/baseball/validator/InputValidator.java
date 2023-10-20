@@ -3,6 +3,8 @@ package baseball.validator;
 import static baseball.common.Constants.DIGIT_COUNT;
 import static baseball.common.Constants.MAXIMUM_INPUT_NUMBER;
 import static baseball.common.Constants.MINIMUM_INPUT_NUMBER;
+import static baseball.common.Constants.WANT_TO_RESTART;
+import static baseball.common.Constants.WANT_TO_STOP;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -13,6 +15,14 @@ public class InputValidator {
         int intUserInput = Integer.parseInt(userInput);
         checkRange(intUserInput);
         checkIsSameDigit(intUserInput);
+        return intUserInput;
+    }
+
+    public static int validateRestart(String userInput) {
+        int intUserInput = Integer.parseInt(userInput);
+        if (intUserInput != WANT_TO_RESTART && intUserInput != WANT_TO_STOP) {
+            throw new IllegalArgumentException();
+        }
         return intUserInput;
     }
 

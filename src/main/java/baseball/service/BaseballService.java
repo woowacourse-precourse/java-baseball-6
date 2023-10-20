@@ -10,7 +10,7 @@ import baseball.domain.Baseball;
 import baseball.domain.Result;
 
 public class BaseballService {
-    public Baseball input() {
+    public Baseball inputAnswer() {
         int userInput = validateGuess(readLine());
         Baseball guess = new Baseball(userInput);
         return guess;
