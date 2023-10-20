@@ -16,7 +16,7 @@ public class Balls {
 
     public boolean containsBall(Ball otherBall) {
         for (Ball ball : balls) {
-            if (ball.getNumber().equals(otherBall.getNumber())) {
+            if (ball.number().equals(otherBall.number())) {
                 return true;
             }
         }
@@ -38,7 +38,7 @@ public class Balls {
         }
 
         for (Ball ball : balls) {
-            if (ball.getNumber() == null || ball.getNumber() < MIN_BALL || ball.getNumber() > MAX_BALL) {
+            if (ball.number() == null || ball.number() < MIN_BALL || ball.number() > MAX_BALL) {
                 throwIllegalArgumentException();
             }
         }
@@ -53,7 +53,7 @@ public class Balls {
     private void validateDuplicates(List<Ball> balls) {
         Set<Integer> set = new HashSet<>();
         for (Ball ball : balls) {
-            if (!set.add(ball.getNumber())) {
+            if (!set.add(ball.number())) {
                 throwIllegalArgumentException();
             }
         }

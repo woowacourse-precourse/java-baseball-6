@@ -33,7 +33,7 @@ public class GameLogicService {
     }
 
     private boolean isStrike(int index, Balls computerBalls, Balls playerBalls) {
-        return computerBalls.getBall(index).getNumber().equals(playerBalls.getBall(index).getNumber());
+        return computerBalls.getBall(index).number().equals(playerBalls.getBall(index).number());
     }
 
     private int countBalls(Balls computerBalls, Balls playerBalls) {
