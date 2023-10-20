@@ -20,7 +20,7 @@ public class GameController {
         StartView.welcome();
 
         while (playWant) {
-            askUserNumberInput();
+            AskController.askNumberInput();
 
             int userNumber = InputController.receiveUserNumberWidthLength(PLAY_NUMBER_DIGIT);
 
@@ -41,10 +41,6 @@ public class GameController {
                 }
             }
         }
-    }
-
-    private static void askUserNumberInput() {
-        AskView.askNumberInput();
     }
 
     private static boolean isStrikeEqualToGoal(final int strike) {
