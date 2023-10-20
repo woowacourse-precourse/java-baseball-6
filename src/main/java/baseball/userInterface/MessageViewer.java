@@ -20,7 +20,8 @@ public class MessageViewer {
             resultMsg.append("낫싱");
 
         else if (ballCount > 0 && strikeCount > 0)
-            resultMsg.append(ballCount).append("볼 ").append(strikeCount).append("스트라이크");
+            resultMsg.append(ballCount).append("볼 ")
+                    .append(strikeCount).append("스트라이크");
 
         else if (ballCount > 0)
             resultMsg.append(ballCount).append("볼");

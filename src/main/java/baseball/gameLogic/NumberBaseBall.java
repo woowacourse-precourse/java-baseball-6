@@ -1,9 +1,8 @@
 package baseball.gameLogic;
 
-import baseball.gameLogic.*;
-import camp.nextstep.edu.missionutils.Console;
 import baseball.userInterface.MessageViewer;
 import baseball.models.Score;
+
 import static baseball.models.Constants.*;
 
 /*
