@@ -23,66 +23,69 @@ public class Application {
 
         System.out.println(computer);
 
+        while (true) {
+            List<Integer> my = new ArrayList<>();
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputNumbers = readLine();
 
-
-        List<Integer> my = new ArrayList<>();
-        System.out.print("숫자를 입력해주세요 : ");
-        String inputNumbers = readLine();
-
-        if (inputNumbers.length() != 3){
-            throw new IllegalArgumentException("입력한 숫자 길이가 맞지 않습니다.");
-        }
-
-        for (int i = 0; i < inputNumbers.length(); i++){
-            try {
-                int number = Character.getNumericValue(inputNumbers.charAt(i));
-                my.add(number);
-            } catch (Exception e) {
-                throw new IllegalArgumentException("입력한 문자가 숫자가 아닙니다.");
+            if (inputNumbers.length() != 3){
+                throw new IllegalArgumentException("입력한 숫자 길이가 맞지 않습니다.");
             }
 
-        }
+            for (int i = 0; i < inputNumbers.length(); i++){
+                try {
+                    int number = Character.getNumericValue(inputNumbers.charAt(i));
+                    my.add(number);
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("입력한 문자가 숫자가 아닙니다.");
+                }
 
-        int strike = 0;
-        int ball = 0;
+            }
 
-        for (int i = 0; i < 3; i++) {
-            int myNumber = my.get(i);
+            int strike = 0;
+            int ball = 0;
 
-            for (int j = 0; j < 3; j++) {
-                int computerNumber = computer.get(j);
-                if (myNumber == computerNumber) {
-                    if (i == j) {
-                        strike++;
-                    } else {
-                        ball++;
+            for (int i = 0; i < 3; i++) {
+                int myNumber = my.get(i);
+
+                for (int j = 0; j < 3; j++) {
+                    int computerNumber = computer.get(j);
+                    if (myNumber == computerNumber) {
+                        if (i == j) {
+                            strike++;
+                        } else {
+                            ball++;
+                        }
+
+                        break;
                     }
-
-                    break;
                 }
             }
-        }
 
-        if (strike == 0 && ball == 0){
-            System.out.println("낫싱");
-        } else {
-
-            if (strike == 0){
-                System.out.println(ball + "볼 ");
-
-            } else if (ball == 0 && strike != 3){
-                System.out.println(strike + "스트라이크");
-
+            if (strike == 0 && ball == 0){
+                System.out.println("낫싱");
             } else {
-                if (strike == 3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+                if (strike == 0){
+                    System.out.println(ball + "볼 ");
+
+                } else if (ball == 0 && strike != 3){
+                    System.out.println(strike + "스트라이크");
 
                 } else {
-                    System.out.println(ball + "볼 " + strike + "스트라이크");
-                }
-            }
+                    if (strike == 3) {
+                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                        break;
 
+                    } else {
+                        System.out.println(ball + "볼 " + strike + "스트라이크");
+                    }
+                }
+
+            }
         }
+
+
 
     }
 }
