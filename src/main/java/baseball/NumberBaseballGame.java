@@ -33,7 +33,7 @@ public class NumberBaseballGame {
         }
     }
 
-    public List<Integer> generateRandomNumbers() {
+    private List<Integer> generateRandomNumbers() {
         List<Integer> generatedNumbers = new ArrayList<>(MAX_NUMBER_LENGTH);
         while (generatedNumbers.size() < MAX_NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -55,13 +55,13 @@ public class NumberBaseballGame {
                 .collect(Collectors.toList());
     }
 
-    public void validateInput(String inputString) throws IllegalArgumentException {
+    void validateInput(String inputString) throws IllegalArgumentException {
         if (!Pattern.matches(INPUT_REGEX, inputString)) {
             throw new IllegalArgumentException("[ERROR] 잘못된 숫자 입력입니다: " + inputString);
         }
     }
 
-    public boolean isUserWin(List<Integer> userNumber, List<Integer> computerNumber) {
+    boolean isUserWin(List<Integer> userNumber, List<Integer> computerNumber) {
         int ball = countBall(userNumber, computerNumber);
         int strike = countStrike(userNumber, computerNumber);
         ball -= strike;
@@ -82,7 +82,7 @@ public class NumberBaseballGame {
         System.out.println();
     }
 
-    public int countBall(List<Integer> user, List<Integer> computerNumber) {
+    int countBall(List<Integer> user, List<Integer> computerNumber) {
         int ball = 0;
         for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
             if (computerNumber.contains(user.get(i))) {
@@ -92,7 +92,7 @@ public class NumberBaseballGame {
         return ball;
     }
 
-    public int countStrike(List<Integer> user, List<Integer> computerNumber) {
+    int countStrike(List<Integer> user, List<Integer> computerNumber) {
         int strike = 0;
         for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
             if (computerNumber.get(i).equals(user.get(i))) {
@@ -109,7 +109,7 @@ public class NumberBaseballGame {
         return inputContinue.equals("1");
     }
 
-    public void validateContinueInput(String inputContinue) throws IllegalArgumentException {
+    void validateContinueInput(String inputContinue) throws IllegalArgumentException {
         if (!inputContinue.equals("1") && !inputContinue.equals("2")) {
             throw new IllegalArgumentException("[ERROR] 1 또는 2 를 입력하세요.");
         }
