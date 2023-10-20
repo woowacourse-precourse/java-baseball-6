@@ -6,22 +6,21 @@
 
 package baseball;
 
-import java.util.Random;
-import java.util.Scanner;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import static java.lang.Integer.parseInt;
 
 public class Application {
+
+    private static final boolean IS_TEST = true;        // 정답 출력 여부 설정, 제출 시에는 false
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
         // 초기화
 
         int end = 1;
-
-
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean isFinish = false;
         // 게임 진행
@@ -30,6 +29,7 @@ public class Application {
             String com = "";
             isFinish = false;
 
+            // to method
             while (com.length() < 3) {
                 int r = Randoms.pickNumberInRange(1,9);
                 String sr = Integer.toString(r);
@@ -37,10 +37,13 @@ public class Application {
                     com = com + sr;
                 }
             }
-            //@@@@ 삭제해야 하는 코드
-//            System.out.println("answer: "+com);
+
+            if (IS_TEST){
+                System.out.println("answer: "+com);
+            }
             // 게임 시작
 
+            // to method -> return을 end로 해서 계속 반복하거나 아니거나, input
             // while (게임 진행되는 동안)
             while (!isFinish) {
                 int strike = 0;
@@ -70,6 +73,7 @@ public class Application {
 
                 // 잘못된 입력 3: 숫자가 아닌 경우
                 // 비교
+                // to method: input - (num, com), output - (strike, ball)
                 for (int i = 0; i < 3; i++) {
                     for (int j = 0; j < 3; j++) {
                         if (num.charAt(i) == com.charAt(j)) {
