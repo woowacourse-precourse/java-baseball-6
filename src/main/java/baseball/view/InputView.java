@@ -8,4 +8,8 @@ public class InputView {
         System.out.print(BaseballGameMessage.NUMBER_INPUT_MESSAGE);
         return Console.readLine();
     }
+    public String getGameRestartYn(){
+        System.out.println(BaseballGameMessage.GAME_RESTART_YN_MESSAGE);
+        return Console.readLine();
+    }
 }
