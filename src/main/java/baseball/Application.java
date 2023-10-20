@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
@@ -10,10 +13,40 @@ public class Application {
             Computer computer = new Computer();
             computer.createAnswer();
 
-            String guessData = readLine();
-            if (!validateGuess(guessData)) {
-                throw new IllegalArgumentException();
+            while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String guessData = readLine();
+                if (!validateGuess(guessData)) {
+                    throw new IllegalArgumentException();
+                }
+
+                List<Integer> guess = new ArrayList<>();
+                for (int i = 0; i < 3; i++) {
+                    guess.add(Integer.parseInt(guessData.substring(i, i+1)));
+                }
+
+                List<Integer> result = computer.getResultOfGuess(guess);
+                if (result.get(0) == 0) {
+                    if (result.get(1) == 0) {
+                        System.out.println("낫싱");
+                    } else {
+                        System.out.printf("%d볼\n", result.get(1));
+                    }
+                } else {
+                    if (result.get(1) == 0) {
+                        System.out.printf("%d스트라이크\n", result.get(0));
+                    } else {
+                        System.out.printf("%d볼 %d스트라이크\n", result.get(1), result.get(0));
+                    }
+                }
+
+                if (result.get(0) == 3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
             }
+
+
         }
     }
 
