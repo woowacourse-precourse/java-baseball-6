@@ -2,7 +2,7 @@ package baseball.view;
 
 public class OutputView {
     private static final String START_GAME = "숫자 야구 겡임을 시작합니다.";
-    private static final String INPUT_NUMBER = "숫자를 입력해주세요.";
+    private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
     private static final String BALL = "볼 ";
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
