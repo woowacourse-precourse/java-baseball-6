@@ -19,6 +19,14 @@ class GameNumbersValidationTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ValueSource(strings = {"122", "111"})
+    @ParameterizedTest
+    void checkDuplicateNumbers(String number) {
+        List<Integer> numbers = toNumbers(number);
+        assertThatThrownBy(() -> GameNumbersValidation.validate(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     private List<Integer> toNumbers(String number) {
         NumberValidation.validate(number);
         return Arrays.stream(number.split("")).map(Integer::parseInt).collect(Collectors.toList());
