@@ -7,7 +7,7 @@ import baseball.domain.Result;
 import java.util.stream.IntStream;
 
 public class ResultCalculator {
-    public BallNumber computerNumber;
+    BallNumber computerNumber;
 
     public ResultCalculator(BallNumber newComputerNumber) {
         computerNumber = newComputerNumber;

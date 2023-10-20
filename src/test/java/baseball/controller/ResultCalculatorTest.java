@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 import baseball.controller.ResultCalculator;
 import baseball.domain.BallNumber;
