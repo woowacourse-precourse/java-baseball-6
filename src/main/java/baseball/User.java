@@ -10,6 +10,8 @@ import java.util.Set;
 public class User {
     private List<Integer> userNumber;
 
+    private static final int THREE_NUMBER = 3;
+
     public List<Integer> getUserNumber() {
         return userNumber;
     }
@@ -22,8 +24,7 @@ public class User {
                 userNumber.add(Integer.parseInt(Character.toString(number.charAt(i))));
             }
         } catch (NumberFormatException e) {
-            System.out.println("서로 다른 세자리 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("서로 다른 세자리 숫자를 입력하세요.");
         }
         validate(userNumber);
     }
@@ -37,15 +38,13 @@ public class User {
     public void checkDuplication(List<Integer> userNumber) {
         Set<Integer> userNumber1 = new HashSet<>(userNumber);
         if (userNumber.size() != userNumber1.size()) {
-            System.out.println("서로 다른 세자리 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("서로 다른 세자리 숫자를 입력하세요.");
         }
     }
 
     public void checkLength(List<Integer> userNumber) {
-        if (userNumber.size() != 3) {
-            System.out.println("서로 다른 세자리 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
+        if (userNumber.size() != THREE_NUMBER) {
+            throw new IllegalArgumentException("서로 다른 세자리 숫자를 입력하세요.");
         }
     }
 
