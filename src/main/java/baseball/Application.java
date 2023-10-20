@@ -37,6 +37,7 @@ public class Application {
             }catch (IllegalArgumentException e){
                 return;
             }
+            result = matchPlayerNum(computerNum, playerNum);
 
         }while (!result.equals("3스트라이크"));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -80,6 +81,36 @@ public class Application {
             }
             player.add(playerNum.indexOf(i));
         }
+    }
+
+    private static String matchPlayerNum(List<String> computerNum, String playerNum) {
+        String result = "";
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for(int i = 0; i < COMPUTER_NUM_SIZE; i++){
+            String computerIndex = computerNum.get(i);
+            String playerIndex = String.valueOf(playerNum.charAt(i));
+
+            if(computerIndex.equals(playerIndex)){    // 스트라이크
+                strikeCount += 1;
+            }
+            else if (computerNum.contains(playerIndex)) {    // 볼
+                ballCount += 1;
+            }
+        }
+
+        if (ballCount > 0){
+            result += (result + ballCount + "볼 ");
+        }
+        if (strikeCount > 0){
+            result += (result + strikeCount + "스트라이크");
+        }
+        if (ballCount == 0 && strikeCount == 0){
+            result = "낫싱";
+        }
+
+        return result.trim();
     }
 
     private static String askReplayOrExit() {
