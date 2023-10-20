@@ -20,7 +20,25 @@ public class Application {
 
         return computer;
     }
+    public static boolean check_user_input(String userInput){
+        // 아무것도 입력 하지 않음
+        if (userInput == null) {
+            return false;
+        }
+        // user_input 길이를 확인 (3자리)
+        if(userInput.length()!=3){
+            return false;
+        }
+        // user_input이 모두 숫자 인지 확인
+        for (char ch : userInput.toCharArray()) {
+            if (!Character.isDigit(ch)) {
+                return false;
+            }
+        }
 
+        return true;
+    }
+    
     public static void main(String[] args) {
 
         // 중복 없는 3자리 수 만들기
@@ -33,5 +51,9 @@ public class Application {
         System.out.println();
         System.out.println("사용자 입력: " + userInput);
 
+        if (!check_user_input(userInput)){
+            // TODO : IllegalArgumentException 발생 후 종료
+            System.out.println("입력 잘못 했네!");
+        }
     }
 }
