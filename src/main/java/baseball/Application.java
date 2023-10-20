@@ -100,4 +100,16 @@ public class Application {
         }
         return skrikes;
     }
+
+    public static int countBall(final List<Integer> computerNumbers, final List<Integer> playerGuessNumbers) {
+        int balls = 0;
+
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            if (!computerNumbers.get(i).equals(playerGuessNumbers.get(i))
+                    && computerNumbers.contains(playerGuessNumbers.get(i))) {
+                balls++;
+            }
+        }
+        return balls;
+    }
 }
