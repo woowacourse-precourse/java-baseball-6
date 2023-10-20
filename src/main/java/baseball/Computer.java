@@ -7,7 +7,7 @@ import java.util.List;
 public class Computer {
     private List<Integer> computerNumbers = new ArrayList<>();
 
-    public Computer() { // 랜덤숫자 3개 부여
+    public void setRandomNumbers() { // 랜덤숫자 3개 부여
         while(computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!computerNumbers.contains(randomNumber)) {
