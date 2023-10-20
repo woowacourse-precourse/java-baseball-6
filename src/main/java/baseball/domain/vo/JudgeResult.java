@@ -1,38 +1,35 @@
 package baseball.domain.vo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.StringJoiner;
 
 public record JudgeResult(
         int strike,
         int ball
 ) {
-    public boolean isNothing() {
-        return strike == 0 && ball == 0;
-    }
-
     public boolean isThreeStrike() {
         return strike == 3;
     }
 
     @Override
     public String toString() {
-        if(isNothing()) {
+        if (isNothing()) {
             return "낫싱";
         }
 
-        List<String> result = new ArrayList<>();
+        StringJoiner sj = new StringJoiner(" ");
 
-        if(ball > 0) {
-            result.add(ball + "볼");
+        if (ball > 0) {
+            sj.add(ball + "볼");
         }
 
-        if(strike > 0) {
-            result.add(strike + "스트라이크");
+        if (strike > 0) {
+            sj.add(strike + "스트라이크");
         }
 
-        return result.stream()
-                .reduce((a, b) -> a + " " + b)
-                .orElseThrow(IllegalStateException::new);
+        return sj.toString();
+    }
+
+    private boolean isNothing() {
+        return strike == 0 && ball == 0;
     }
 }
