@@ -22,4 +22,12 @@ class NumberValidationTest {
         assertThatThrownBy(() -> NumberValidation.validate(negativeNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void checkRealNumber() {
+        String realNumber = "12.3";
+
+        assertThatThrownBy(() -> NumberValidation.validate(realNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
