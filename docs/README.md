@@ -3,5 +3,13 @@
   - PrintMessage 클래스를 통해 출력문 사용
 - [x] 랜덤으로 값 입력받기(camp.nextstep.edu.missionutils 패키지활용)
   - initRandomNumber() 메서드를 통해 랜덤한 3개의 값을 answerNumberList에 초기화
-- [ ] 입력받은 값을 볼인지 스트라이크인지 판단하는 checkGameScore()메서드 구현
+- [x] 입력받은 값 ArrayList화
+- [ ] 입력받은 값이 볼인지 스트라이크인지 판단하는 checkGameScore()메서드 구현
+- [ ] startGame()메서드 세부 로직 처리
 - [ ] 예외값 처리
+  - 야구숫자
+    - 같은값
+    - 0
+    - 3자리 초과
+    - 3자리 미만
+  - while문 command의 1,2가 아닌 다른 값

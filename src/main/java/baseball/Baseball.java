@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class Baseball {
 
     private final PrintMessage printMessage = new PrintMessage();
-    private ArrayList<Integer> answerNumberList;
 
     public void run(){
         printMessage.gameStartMessage();
@@ -17,12 +16,23 @@ public class Baseball {
 
     public void startGame(){
         int commandNumber;
+        ArrayList<Integer> inputNumberList;
         do {
-            initRandomNumber();
+            ArrayList<Integer> answerNumberList = initRandomNumberList();
+
+            /**
+             * 디버깅용 상대정답 코드
+             */
+            System.out.print("정답 : ");
             for( int num : answerNumberList){
-                System.out.println(num);
+                System.out.print(num + " ");
             }
-            printMessage.inputNumberMessage();
+            System.out.println();
+
+            getNumberInputList();
+            inputNumberList = getNumberInputList();
+            
+//            checkGameScore(answerNumberList, inputNumberList);
             printMessage.gameResult(1, 1);
             printMessage.inputNumberMessage();
             printMessage.gameResult(0, 3);
@@ -31,9 +41,9 @@ public class Baseball {
         }while (commandNumber == 1);
     }
 
-    public void initRandomNumber(){
+    public ArrayList<Integer> initRandomNumberList(){
 
-        answerNumberList = new ArrayList<>();
+        ArrayList<Integer> answerNumberList = new ArrayList<>();
         answerNumberList.add(Randoms.pickNumberInRange(1, 9));
         boolean equalPrevNumber = false;
 
@@ -54,5 +64,25 @@ public class Baseball {
             }
 
         }
+
+        return answerNumberList;
     }
+
+    public ArrayList<Integer> getNumberInputList(){
+        printMessage.inputNumberMessage();
+        String inputData = Console.readLine();
+        ArrayList<Integer> inputNumberList = new ArrayList<>();
+        for(int i = 0; i < inputData.length(); i++) {
+            inputNumberList.add(Integer.valueOf(inputData.charAt(i)));
+        }
+        return inputNumberList;
+    }
+
+    public void checkGameScore(ArrayList<Integer> answerNumberList, int[] b){
+
+    }
+
+
+
+
 }
