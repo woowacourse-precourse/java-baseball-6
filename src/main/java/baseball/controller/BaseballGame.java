@@ -7,8 +7,9 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGame {
-    private ComputerNumber computerNumber;
-    private CalcScore calcScore;
+    private final ComputerNumber computerNumber;
+    private int ball =0 ;
+    private int strike =0;
 
     public BaseballGame(){
         computerNumber = new ComputerNumber();
@@ -17,17 +18,37 @@ public class BaseballGame {
 
     public void start(){
         OutputView.printStart();
-        playGame();
+        System.out.println(computerNumber.getComputer());
+        do{
+            playGame();
+            printScore();
+        }while(!isFinished());
 
     }
     public void playGame(){
         UserNumber userNumber = new UserNumber(InputView.inputNumber());
         String input = userNumber.getUserNumber();
 
-        calcScore = new CalcScore(computerNumber.getComputer(), input);
-        int strike = calcScore.calcStrike();
-        int ball = calcScore.calcBall();
+        CalcScore calcScore = new CalcScore(computerNumber.getComputer(), input);
+        strike = calcScore.calcStrike();
+        ball = calcScore.calcBall();
 
+    }
 
+    public void printScore(){
+        if(strike == 3)
+            OutputView.printStrike(strike);
+        else if(strike == 0 && ball ==0)
+            OutputView.printNothing();
+        else if(strike!=0 && ball == 0)
+            OutputView.printStrike(strike);
+        else if(strike == 0)
+            OutputView.printBall(ball);
+        else
+            OutputView.printBallAndStrike(ball, strike);
+    }
+
+    public boolean isFinished(){
+        return strike == 3;
     }
 }
