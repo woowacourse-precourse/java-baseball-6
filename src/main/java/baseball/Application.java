@@ -121,7 +121,7 @@ public class Application {
     public static void validateMoreGameString(String moreGame) {
         validateEmptyOrNullOfInputString(moreGame);
         if (!moreGame.equals(MORE_GAME) && !moreGame.equals(QUIT_GAME))
-            throw new IllegalArgumentException("[ERROR] 입력 값이 1 또는 2가 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 입력 값이 "+MORE_GAME+" 또는 "+QUIT_GAME+" 가 아닙니다.");
     }
     public static void validateEmptyOrNullOfInputString(String str) {
         if (str == null || str.isEmpty()) {
