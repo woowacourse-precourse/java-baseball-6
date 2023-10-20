@@ -19,7 +19,7 @@ public class Application {
 
             // 정답을 맞추면 아래 문구 출력 및 게임 지속 여부 받기
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            String inputNum = printMsgAndReadNum("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", 1);
+            String inputNum = printMsgAndReadNum("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", 1, false, true);
             if(inputNum.equals("2")) break;
         }
 
@@ -28,7 +28,7 @@ public class Application {
 
     private static void startNumberBaseBallGame(String computerNum) {
         while (true) {
-            String userSelectNum = printMsgAndReadNum("숫자를 입력해주세요 : ", 3);
+            String userSelectNum = printMsgAndReadNum("숫자를 입력해주세요 : ", 3, true, false);
 
             // 스트라이크와 볼의 개수를 파악하기 위한 정수형 변수 선언
             int strikeCnt = 0;
@@ -77,12 +77,25 @@ public class Application {
         return computer;
     }
 
-    private static String printMsgAndReadNum(String msg, int len) {
-        System.out.println(msg);
+    private static String printMsgAndReadNum(String msg, int len, boolean isSameCheck, boolean isEnter) {
+        System.out.print(msg + (isEnter ? "\n" : ""));
         String userGameSelectNum = Console.readLine();
+
         // 입력받은 숫자가 글자 수가 다르거나 숫자 이외의 문자가 섞여있다면 에러
         if(!(userGameSelectNum.matches(NUM_REG) && userGameSelectNum.length() == len)) throw new IllegalArgumentException();
+
+        // 같은 숫자가 입력되어 있는지 확인 후 같다면 에러를 던질 수 있도록 구현
+        if(isSameCheck) sameNumCheck(userGameSelectNum);
+
         return userGameSelectNum;
+    }
+
+    public static void sameNumCheck(String userGameSelectNum) {
+        for (int i = 0; i < userGameSelectNum.length(); i++) {
+            String nowNum = String.valueOf(userGameSelectNum.charAt(i));
+            int cutNumLen = userGameSelectNum.replace(nowNum, "").length();
+            if(cutNumLen != 2) throw new IllegalArgumentException();
+        }
     }
 
 }
