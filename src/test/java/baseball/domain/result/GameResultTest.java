@@ -13,7 +13,7 @@ public class GameResultTest {
         gameResult.update(BallResult.STRIKE);
         gameResult.update(BallResult.STRIKE);
         gameResult.update(BallResult.BALL);
-        Assertions.assertThat(gameResult.getResult()).isEqualTo("2 스트라이크 1 볼");
+        Assertions.assertThat(gameResult.getResult()).isEqualTo("1볼 2스트라이크");
     }
 
     @Test
@@ -23,7 +23,7 @@ public class GameResultTest {
         gameResult.update(BallResult.STRIKE);
         gameResult.update(BallResult.BALL);
         gameResult.update(BallResult.NOTHING);
-        Assertions.assertThat(gameResult.getResult()).isEqualTo("1 스트라이크 1 볼");
+        Assertions.assertThat(gameResult.getResult()).isEqualTo("1볼 1스트라이크");
     }
 
     @Test
@@ -33,7 +33,7 @@ public class GameResultTest {
         gameResult.update(BallResult.BALL);
         gameResult.update(BallResult.NOTHING);
         gameResult.update(BallResult.NOTHING);
-        Assertions.assertThat(gameResult.getResult()).isEqualTo("1 볼");
+        Assertions.assertThat(gameResult.getResult()).isEqualTo("1볼");
     }
 
     @Test
@@ -43,7 +43,7 @@ public class GameResultTest {
         gameResult.update(BallResult.STRIKE);
         gameResult.update(BallResult.STRIKE);
         gameResult.update(BallResult.STRIKE);
-        Assertions.assertThat(gameResult.getResult()).isEqualTo("3 스트라이크");
+        Assertions.assertThat(gameResult.getResult()).isEqualTo("3스트라이크");
     }
 
     @Test
@@ -53,6 +53,26 @@ public class GameResultTest {
         gameResult.update(BallResult.NOTHING);
         gameResult.update(BallResult.NOTHING);
         gameResult.update(BallResult.NOTHING);
-        Assertions.assertThat(gameResult.getResult()).isEqualTo("낫띵");
+        Assertions.assertThat(gameResult.getResult()).isEqualTo("낫싱");
+    }
+
+    @Test
+    @DisplayName("3스트라이크 경우 GameResult 의 isGameEnd 메서드가 true 를 반환한다 ")
+    void isGameEndTest_1() {
+        GameResult gameResult = new GameResult();
+        gameResult.update(BallResult.STRIKE);
+        gameResult.update(BallResult.STRIKE);
+        gameResult.update(BallResult.STRIKE);
+        Assertions.assertThat(gameResult.isGameEnd()).isTrue();
+    }
+
+    @Test
+    @DisplayName("3스트라이크가 아닌경우 GameResult 의 isGameEnd 메서드가 false 를 반환한다 ")
+    void isGameEndTest_2() {
+        GameResult gameResult = new GameResult();
+        gameResult.update(BallResult.STRIKE);
+        gameResult.update(BallResult.STRIKE);
+        gameResult.update(BallResult.BALL);
+        Assertions.assertThat(gameResult.isGameEnd()).isFalse();
     }
 }

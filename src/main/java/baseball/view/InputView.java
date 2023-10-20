@@ -8,7 +8,7 @@ public class InputView {
     private static final String NOT_NUMBER_MESSAGE = "숫자 입력이 필요합니다.";
 
     public static int inputNumber() {
-        System.out.println(NUMBER_INPUT_MESSAGE);
+        System.out.print(NUMBER_INPUT_MESSAGE);
         String input = Console.readLine();
         try {
             return Integer.parseInt(input);

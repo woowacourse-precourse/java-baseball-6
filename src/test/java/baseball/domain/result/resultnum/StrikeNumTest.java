@@ -22,7 +22,7 @@ class StrikeNumTest {
     void ballNumTest2() {
         StrikeNum strikeNum = new StrikeNum();
         ResultNum updatedStrikeNum = strikeNum.update(BallResult.STRIKE);
-        Assertions.assertThat(updatedStrikeNum.getResult()).isEqualTo(Optional.of("1 스트라이크"));
+        Assertions.assertThat(updatedStrikeNum.getResult()).isEqualTo(Optional.of("1스트라이크"));
     }
 
     @Test

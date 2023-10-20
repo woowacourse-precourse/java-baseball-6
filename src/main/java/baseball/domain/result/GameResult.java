@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 
 public class GameResult {
     private static final String DELIMITER = " ";
-    private static final String NOTHING = "낫띵";
+    private static final String NOTHING = "낫싱";
     private final List<ResultNum> resultNumbers;
 
     public GameResult() {
         resultNumbers = new ArrayList<>();
-        resultNumbers.add(new StrikeNum());
         resultNumbers.add(new BallNum());
+        resultNumbers.add(new StrikeNum());
     }
 
     public void update(BallResult ballResult) {

@@ -26,7 +26,7 @@ public class StrikeNum implements ResultNum {
     @Override
     public Optional<String> getResult() {
         if (strikeNum != 0) {
-            return Optional.of(strikeNum + " 스트라이크");
+            return Optional.of(strikeNum + "스트라이크");
         }
         return Optional.empty();
     }

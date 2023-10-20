@@ -39,7 +39,7 @@ public class BallsTest {
     void ballsTestWithBalls_1() {
         Balls balls2 = new Balls(123);
         GameResult gameResult = balls.compareWithBalls(balls2);
-        Assertions.assertThat(gameResult.getResult()).isEqualTo("3 스트라이크");
+        Assertions.assertThat(gameResult.getResult()).isEqualTo("3스트라이크");
     }
 
     @Test
@@ -47,7 +47,7 @@ public class BallsTest {
     void ballsTestWithBalls_2() {
         Balls ballsToCompare = new Balls(325);
         GameResult gameResult = balls.compareWithBalls(ballsToCompare);
-        Assertions.assertThat(gameResult.getResult()).isEqualTo("1 스트라이크 1 볼");
+        Assertions.assertThat(gameResult.getResult()).isEqualTo("1볼 1스트라이크");
     }
 
     @Test
@@ -55,7 +55,7 @@ public class BallsTest {
     void ballsTestWithBalls_3() {
         Balls ballsToCompare = new Balls(345);
         GameResult gameResult = balls.compareWithBalls(ballsToCompare);
-        Assertions.assertThat(gameResult.getResult()).isEqualTo("1 볼");
+        Assertions.assertThat(gameResult.getResult()).isEqualTo("1볼");
     }
 
     @Test
@@ -63,6 +63,6 @@ public class BallsTest {
     void ballsTestWithBalls_4() {
         Balls ballsToCompare = new Balls(456);
         GameResult gameResult = balls.compareWithBalls(ballsToCompare);
-        Assertions.assertThat(gameResult.getResult()).isEqualTo("낫띵");
+        Assertions.assertThat(gameResult.getResult()).isEqualTo("낫싱");
     }
 }

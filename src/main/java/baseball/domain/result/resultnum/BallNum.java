@@ -26,7 +26,7 @@ public class BallNum implements ResultNum {
     @Override
     public Optional<String> getResult() {
         if (ballNum != 0) {
-            return Optional.of(ballNum + " 볼");
+            return Optional.of(ballNum + "볼");
         }
         return Optional.empty();
     }

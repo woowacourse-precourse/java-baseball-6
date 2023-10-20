@@ -14,7 +14,7 @@ class BallNumTest {
     void ballNumTest1() {
         BallNum ballNum = new BallNum();
         ResultNum updatedBallNum = ballNum.update(BallResult.BALL);
-        Assertions.assertThat(updatedBallNum.getResult()).isEqualTo(Optional.of("1 볼"));
+        Assertions.assertThat(updatedBallNum.getResult()).isEqualTo(Optional.of("1볼"));
     }
 
     @Test
