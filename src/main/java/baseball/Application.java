@@ -11,9 +11,24 @@ import camp.nextstep.edu.missionutils.Console;
 
 import static java.lang.Integer.parseInt;
 
+
+
 public class Application {
 
     private static final boolean IS_TEST = true;        // 정답 출력 여부 설정, 제출 시에는 false
+
+    public static String makeRandomNum(){
+        String com = "";
+        // to method
+        while (com.length() < 3) {
+            int r = Randoms.pickNumberInRange(1, 9);
+            String sr = Integer.toString(r);
+            if (!com.contains(sr)) {     //리스트에 포함되지 않는다면 추가하고 실행
+                com = com + sr;
+            }
+        }
+        return com;
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -26,17 +41,9 @@ public class Application {
         // 게임 진행
         while (end == 1) {
             // 한 게임당 초기화
-            String com = "";
+            String com = makeRandomNum();
             isFinish = false;
 
-            // to method
-            while (com.length() < 3) {
-                int r = Randoms.pickNumberInRange(1,9);
-                String sr = Integer.toString(r);
-                if (!com.contains(sr)) {     //리스트에 포함되지 않는다면 추가하고 실행
-                    com = com + sr;
-                }
-            }
 
             if (IS_TEST){
                 System.out.println("answer: "+com);
@@ -88,6 +95,8 @@ public class Application {
 
                 // 결과
                 // 정답: 일단 나가기
+
+                // to method: input (strike, ball), output (isFinish)
                 if (strike == 3) {
                     System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
