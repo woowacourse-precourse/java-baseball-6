@@ -2,8 +2,6 @@ package baseball.domain;
 
 import java.util.Objects;
 
-import static baseball.utils.Constants.*;
-
 public class Ball {
     private static final int MIN_POSITION = 1;
     private static final int MAX_POSITION = 3;
@@ -18,14 +16,7 @@ public class Ball {
     }
 
     private void validateBall(int ballNumber, int position) {
-        validateBallNumber(ballNumber);
         validatePosition(position);
-    }
-
-    private void validateBallNumber(int ballNumber) {
-        if (ballNumber < MIN_BALL_NUMBER || ballNumber > MAX_BALL_NUMBER) {
-            throw new IllegalArgumentException("공의 숫자는 1에서 9사이의 값이어야 합니다.");
-        }
     }
 
     private void validatePosition(int position) {
