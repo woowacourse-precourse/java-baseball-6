@@ -11,7 +11,7 @@ public class Application {
     	System.out.print("서로 다른 세자리 수를 입력하세요 >> ");
     	System.out.print("서로 다른 세자리 수를 입력하세요 >> ");
     	System.out.print("서로 다른 세자리 수를 입력하세요 >> ");
-    	System.out.print("서로 다른 세자리 수를 입력하세요 >> ");
+    	
     	Scanner sc = new Scanner(System.in);
     	
     	ArrayList<Integer> availableDigits = new ArrayList<>();
