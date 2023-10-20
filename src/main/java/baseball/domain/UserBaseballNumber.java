@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,5 +31,9 @@ public class UserBaseballNumber {
         if (userValues.size() != uniqueValues.size()) {
             throw DUPLICATE_NUMBER.getException();
         }
+    }
+
+    public List<String> getUserValues() {
+        return Collections.unmodifiableList(userValues);
     }
 }
