@@ -34,4 +34,9 @@ public class StrikeNum implements ResultNum {
         }
         return Optional.empty();
     }
+
+    @Override
+    public boolean isGameEnd() {
+        return strikeNum == SIZE_OF_NUMBER;
+    }
 }

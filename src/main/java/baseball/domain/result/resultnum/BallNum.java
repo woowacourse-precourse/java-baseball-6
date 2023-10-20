@@ -30,4 +30,9 @@ public class BallNum implements ResultNum {
         }
         return Optional.empty();
     }
+
+    @Override
+    public boolean isGameEnd() {
+        return ballNum == ZERO;
+    }
 }

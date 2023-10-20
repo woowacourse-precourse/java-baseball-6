@@ -36,7 +36,9 @@ public class GameResult {
     }
 
     public boolean isGameEnd() {
-        StrikeNum strikeNum = (StrikeNum) resultNumbers.get(1);
-        return strikeNum.isThreeStrike();
+        return resultNumbers.stream()
+                .map(ResultNum::isGameEnd)
+                .reduce((result1, result2) -> result1 && result2)
+                .orElse(false);
     }
 }

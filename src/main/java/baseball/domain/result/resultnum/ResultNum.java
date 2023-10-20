@@ -8,4 +8,6 @@ public interface ResultNum {
     ResultNum update(BallResult ballResult);
 
     Optional<String> getResult();
+
+    boolean isGameEnd();
 }
