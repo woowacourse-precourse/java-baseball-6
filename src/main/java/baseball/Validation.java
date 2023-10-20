@@ -26,7 +26,7 @@ public class Validation {
             throw new IllegalArgumentException("중복된 수는 입력할 수 없습니다");
         }
     }
-    public void validateContinueSign(String input) {
+    public void validateSign(String input) {
         if (input.length() != 1) {
             throw new IllegalArgumentException("1 혹은 2만 입력해 주세요.");
         }

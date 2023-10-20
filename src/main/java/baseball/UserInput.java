@@ -23,6 +23,6 @@ public class UserInput {
     }
 
     public void validateContinueSign(String input) {
-        validation.validateContinueSign(input);
+        validation.validateSign(input);
     }
 }
