@@ -4,10 +4,13 @@ public class GameController {
     GameService gameService = new GameService();
     GameException gameException = new GameException();
     InputView inputView = new InputView();
+    OutPutView outPutView = new OutPutView();
 
     public void play() {
         settingComputerRandomNumbers();
         playBaseBallGameLoop();
+        printBaseBallGameEndMessage();
+        printRetryInputNumberMessage();
         inputPlayerRetryNumber();
     }
 
@@ -17,6 +20,14 @@ public class GameController {
 
     public void playBaseBallGameLoop() {
         gameService.playBaseBallGameLoop();
+    }
+
+    public void printBaseBallGameEndMessage() {
+        outPutView.printBaseBallGameEndMessage();
+    }
+
+    public void printRetryInputNumberMessage() {
+        outPutView.printRetryInputNumberMessage();
     }
 
     public void inputPlayerRetryNumber() {
