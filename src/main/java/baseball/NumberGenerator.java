@@ -7,12 +7,18 @@ import java.util.List;
 public class NumberGenerator {
 
     public List<Integer> createAnswer() {
-        List<Integer> randNums = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            randNums.add(Randoms.pickNumberInRange(1, 9));
+            isAnswerHasDuplicatedValue(answer, Randoms.pickNumberInRange(1, 9));
         }
 
-        return randNums;
+        return answer;
+    }
+
+    private void isAnswerHasDuplicatedValue(List<Integer> answer, int randNum) {
+        if (!answer.contains(randNum)) {
+            answer.add(randNum);
+        }
     }
 }
