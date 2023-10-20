@@ -31,9 +31,8 @@ public class GameController {
     }
 
     private void play() {
-        String inputNumber = InputView.number();
         gameService.initGame();
-        GameResult gameResult  = gameService.compare(inputNumber);
+        GameResult gameResult  = gameService.compare(InputView.number());
         OutputView.result(gameResult);
     }
 

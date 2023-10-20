@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.domain.Game;
+import baseball.domain.GameNumber;
 import baseball.dto.GameResult;
 
 public class GameService {
@@ -21,7 +22,11 @@ public class GameService {
         game = new Game();
     }
 
-    public GameResult compare(String inputNumber) {
-        return null;
+    public GameResult compare(String input) {
+        GameNumber inputNumber = new GameNumber(input);
+        int strike = game.countStrike(inputNumber);
+        int ball = game.countBall(inputNumber);
+
+        return new GameResult(strike, ball);
     }
 }
