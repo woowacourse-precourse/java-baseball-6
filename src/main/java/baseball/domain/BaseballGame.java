@@ -5,8 +5,6 @@ import java.util.List;
 
 public class BaseballGame {
 
-
-
     public List<Integer> createComputerNumber(){
         List<Integer> computerNumber;
         Computer computer = new Computer();

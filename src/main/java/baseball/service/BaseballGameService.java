@@ -6,12 +6,18 @@ import java.util.List;
 
 public class BaseballGameService {
 
+    List<Integer> computerNumber;
+    BaseballGame baseballGame = new BaseballGame();
+
+    public BaseballGameService(){
+        computerNumber = baseballGame.createComputerNumber();
+        System.out.println(computerNumber);
+    }
+
+
 
     public String [] run(String userNumber){
         String result;
-
-        BaseballGame baseballGame = new BaseballGame();
-        List<Integer> computerNumber =  baseballGame.createComputerNumber();
 
         result = baseballGame.compareTwoNumbers(userNumber,computerNumber);
 
