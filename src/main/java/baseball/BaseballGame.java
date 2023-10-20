@@ -26,7 +26,6 @@ public class BaseballGame {
                 targetNumbers.add(randomNumber);
             }
         }
-        System.out.println(targetNumbers);
     }
 
     private void countStrikeAndBall(ArrayList<Integer> userNumbers) {
@@ -51,7 +50,7 @@ public class BaseballGame {
 
     private void countBall(ArrayList<Integer> userNumbers) {
         for(int numbersIndex = 0; numbersIndex< gameNumberDigits; numbersIndex++) {
-            if(targetNumbers.contains(userNumbers.get(numbersIndex)) &
+            if(targetNumbers.contains(userNumbers.get(numbersIndex)) &&
                     !targetNumbers.get(numbersIndex).equals(userNumbers.get(numbersIndex))) {
                 ball++;
             }

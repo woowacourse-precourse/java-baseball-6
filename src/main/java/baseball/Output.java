@@ -14,13 +14,14 @@ public class Output {
     }
 
     private String chooseStrikeBallMessage(int strike, int ball) {
-        if(strike==0 & ball==0) {
+        if(strike==0 && ball==0) {
             return "낫싱";
         }
         if(strike==3) {
-            return strike + "스트라이크\n" + strike + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            return String.format("%d스트라이크\n %d개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                    BaseballGame.gameNumberDigits, BaseballGame.gameNumberDigits);
         }
-        return (ball + "볼 " + strike +"스트라이크");
+        return String.format("%d볼 %d스트라이크",ball,strike);
     }
 
     public void printSelectRestartMessage() {
