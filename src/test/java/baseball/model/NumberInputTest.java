@@ -1,11 +1,13 @@
 package baseball.model;
 
-import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static baseball.model.enums.NumberInputErrorMessage.DUPLICATE_NUMBER;
 import static baseball.model.enums.NumberInputErrorMessage.INVALID_CHARACTER;
 import static baseball.model.enums.NumberInputErrorMessage.INVALID_LENGTH;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import org.junit.jupiter.api.Test;
+import java.util.List;
 
 class NumberInputTest {
 
@@ -84,4 +86,18 @@ class NumberInputTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_LENGTH.getMessage());
     }
+
+    @Test
+    void parseInputToIntegerList_정상적인_경우() {
+        // given
+        String input = "123";
+        NumberInput numberInput = new NumberInput(input);
+
+        // when
+        List<Integer> list = numberInput.parseInputToIntegerList();
+
+        // then
+        assertThat(list).isEqualTo(List.of(1, 2, 3));
+    }
+
 }
