@@ -21,13 +21,7 @@ public class Application {
         String choiceOfUser = INPUT_RESTART;
         while (choiceOfUser.equals(INPUT_RESTART)) {
 
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < NUMBER_SIZE) {
-                int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
+            List<Integer> computer = makeRandomNumber();
 
             boolean isAnswer = false;
             while (!isAnswer) {
@@ -45,6 +39,17 @@ public class Application {
             }
             choiceOfUser = Console.readLine();
         }
+    }
+
+    private static List<Integer> makeRandomNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 
     private static boolean compare(List<Integer> computer, List<Integer> user) {
