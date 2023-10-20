@@ -12,6 +12,7 @@ public class WinningNumbers {
     List<Integer> winningNumbers;
 
     public WinningNumbers() {
+        // TODO : 외부 라이브러리 의존성 제거
         this.winningNumbers = Stream.generate(() -> Randoms.pickNumberInRange(1, 9))
                 .distinct()
                 .limit(3)
