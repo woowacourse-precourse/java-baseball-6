@@ -17,29 +17,32 @@ public class Rules {
         for (Integer val : user) {
             int c_idx = com.indexOf(val);
             int u_idx = user.indexOf(val);
-            if (!com.contains(val)) {
+            if (c_idx < 0) {
                 continue;
             }
-            if (c_idx >= 0 && c_idx == u_idx) {
+
+            if (val.equals(com.get(c_idx)) && c_idx == u_idx) {
                 this.strikes++;
             }
-            if (c_idx >= 0 && c_idx == u_idx) {
+            if (val.equals(com.get(c_idx)) && c_idx != u_idx) {
                 this.ball++;
             }
         }
     }
 
     public void printBallAndStrikes() {
-        if (ball > 0) {
-            System.out.print(ball + "볼 ");
+        if (ball > 0 && strikes == 0) {
+            System.out.println(ball + "볼");
         }
-        if (strikes > 0) {
-            System.out.print(strikes + "스트라이크");
+        if (ball == 0 && strikes > 0) {
+            System.out.println(strikes + "스트라이크");
+        }
+        if (ball > 0 && strikes > 0) {
+            System.out.println(ball + "볼 " + strikes + "스트라이크");
         }
         if (ball == 0 && strikes == 0) {
-            System.out.print("낫싱");
+            System.out.println("낫싱");
         }
-        System.out.println();
     }
 
     public boolean isThreeStrikes() {
