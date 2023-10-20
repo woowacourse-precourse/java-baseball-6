@@ -4,10 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
 
-    public String inputNumber(final int numLength) {
+    public String inputNumber(final int numberLength) {
+        System.out.print("숫자를 입력해주세요 : ");
         String number = Console.readLine();
         validateNumber(number);
-        validateNumberLength(number, numLength);
+        validateNumberLength(number, numberLength);
         return number;
     }
 
@@ -22,11 +23,12 @@ public class Player {
 
     private void validateNumberLength(final String number, final int numLength) {
         if (!isValidLength(number, numLength)) {
-            throw new IllegalArgumentException("number Length is different from the system setting");
+            throw new IllegalArgumentException(
+                "number Length is different from the system setting");
         }
     }
 
-    private static boolean isValidLength(final String number, int numLength) {
+    private boolean isValidLength(final String number, int numLength) {
         return number.length() == numLength;
     }
 
