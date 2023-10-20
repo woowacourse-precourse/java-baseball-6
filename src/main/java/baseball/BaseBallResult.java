@@ -3,6 +3,11 @@ package baseball;
 import java.util.ListIterator;
 
 public class BaseBallResult {
+    private final String STRING_BALL_PREFIX = "볼";
+    private final String STRING_STRIKE_PREFIX = "스트라이크";
+    private final String STRING_SPLIT = " ";
+    private final String STRING_NOTHING = "낫싱";
+
     private int ball = 0;
     private int strike = 0;
 
@@ -56,5 +61,40 @@ public class BaseBallResult {
             strike++;
         }
     }
+
+    public void print() {
+        printBallWhenBallExist();
+        printSplitWhenBallAndStrikeExist();
+        printStrikeWhenStrikeExist();
+        printNothingWhenBothBallAndStrikeNotExist();
+        printNewLine();
+    }
+
+    private void printBallWhenBallExist() {
+        if (ball > 0) {
+            System.out.print(ball + STRING_BALL_PREFIX);
+        }
+    }
+
+    private void printSplitWhenBallAndStrikeExist() {
+        if (ball > 0 && strike > 0) {
+            System.out.print(STRING_SPLIT);
+        }
+    }
+
+    private void printStrikeWhenStrikeExist() {
+        if (strike > 0) {
+            System.out.print(strike + STRING_STRIKE_PREFIX);
+        }
+    }
+
+    private void printNothingWhenBothBallAndStrikeNotExist() {
+        if (ball == 0 && strike == 0) {
+            System.out.print(STRING_NOTHING);
+        }
+    }
+
+    private void printNewLine() {
+        System.out.println();
     }
 }

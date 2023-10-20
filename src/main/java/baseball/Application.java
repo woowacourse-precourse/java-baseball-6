@@ -65,6 +65,8 @@ public class Application {
             validateGameSceneUserInput(userInput);
 
             BaseBallNumberGroup user = new BaseBallNumberGroup(getNumberListFromUserInput(userInput));
+            BaseBallResult baseBallResult = new BaseBallResult(computer, user);
+            baseBallResult.print();
         }
     }
 
