@@ -26,6 +26,7 @@ public class BaseBallGame {
             OutputView.printResult(result.resultToString());
             continueSign = isContinue(result);
         }
+        OutputView.printEndMessage();
     }
     private List<Integer> generateComputerNumber(){
         List<Integer> computer = new ArrayList<>();
