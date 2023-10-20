@@ -49,7 +49,7 @@
 - [x]  볼: 숫자만 맞는 것, 스트라이크: 숫자도 맞고 자리도 맞고
 - [ ]  [https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/jav](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/javㅁ)a  자바 스타일 가이드
     - [x]  테스트 위한 output 관리하는 변수(상수) 생성
-    - [ ]  메소드로 바꾸기
+    - [x]  메소드로 바꾸기
         
         > https://myeonguni.tistory.com/1596
         > 
@@ -65,11 +65,21 @@
         > - run();
         > - runFast();
         > - getBackground();
-        - strike, ball 2 개의 output을 갖고 싶을 때: 이 변수들을 관리하는 클래스를 만들고 이 안에서 strike, ball을 써먹는 메소드를 만든 후 객체명.변수 해서 가져오기
+        - [x]  strike, ball 2 개의 output을 갖고 싶을 때: 이 변수들을 관리하는 클래스를 만들고 이 안에서 strike, ball을 써먹는 메소드를 만든 후 객체명.변수 해서 가져오기
             - 반복문이 새로 실행되면 strike, ball을 초기화 하는 함수
             - strike ball을 알려주는 함수 (getter인가)
             - 문자열을 비교해 strike, ball을 count 하는 함수
             - 적절한 메시지를 출력하거나 에러를 발생시키는 함수
+        - [x]  랜덤 수 만드는 메소드
+        - [x]  예외 처리 하는 함수
+            - 두 가지로 할 일을 쪼개야 됨
+                1. ischeck면 함수에서 1, 2 입력받고
+                2. 예외 처리하고 1, 2 return (잘못된 입력은 예외 처리를 하고 종료하게 되니까)
+        - [x]  게임 실행 함수
+        - [ ]  메소드 내 강한 결합? 많이 엮여 있는 개념 풀기
+            - [ ]  모두 Application java 파일 안의 Baseball 클래스 안에 집어넣었는데 먼저 자바 클래스 분리하기
+            - [ ]  startGame 메소드 2가지로 분리하기 - 게임이 실질적으로 실행되는 부분은 따로 만들기
+            
     - [ ]  새로 생성한 메소드 설명 적기
     - [ ]  변수 이름 변경
         
@@ -117,13 +127,12 @@
     - `1 2 3`
     - `123  `
     - `   123`
+- [ ]  연속된 숫자가 들어온다면?
+    - `111`
 
 ## 확인
 
-- [x]  제출 전 테스트 가이드 사용
-    
-   ![image](https://github.com/muyaaho/java-baseball-6/assets/76798969/f54db7b7-32a4-45c9-af7e-2d1263ebbb73)
-
+- [ ]  제출 전 테스트 가이드 사용
 - [x]  요구 사항에 명시된 출력 값이 나왔는지 확인
 - [ ]  커밋 메시지는 `소문자: 영어 내용` 으로 작성
 - [ ]  [미션 제출 방법](https://github.com/muyaaho/java-baseball-6#-%EB%AF%B8%EC%85%98-%EC%A0%9C%EC%B6%9C-%EB%B0%A9%EB%B2%95) 확인해서 제출, pull & request, 사이트 제출
