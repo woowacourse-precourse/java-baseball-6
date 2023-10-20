@@ -2,11 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomPickNumbers {
+public class RandomPickNumberService {
 
     private ComputerNumbers computerNumbers;
 
-    public RandomPickNumbers(ComputerNumbers computerNumbers) {
+    public RandomPickNumberService(ComputerNumbers computerNumbers) {
         this.computerNumbers = computerNumbers;
     }
 

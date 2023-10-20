@@ -10,7 +10,7 @@ public class Application {
 
         ComputerNumbers computerNumbers = new ComputerNumbers();
 
-        RandomPickNumbers randomPickNumbers = new RandomPickNumbers(computerNumbers);
+        RandomPickNumberService randomPickNumbers = new RandomPickNumberService(computerNumbers);
 
         randomPickNumbers.randomPick(numOfNumbers);
 
