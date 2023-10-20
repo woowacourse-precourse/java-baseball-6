@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class Calculator {
+public class Game {
 
     private static final int LIST_LEN = 3;
 
@@ -14,6 +14,7 @@ public class Calculator {
         int count = 0;
 
         for (int idx = 0; idx < LIST_LEN; idx++) {
+
             if (input.get(idx).equals(answer.get(idx))) {
                 count++;
             }
