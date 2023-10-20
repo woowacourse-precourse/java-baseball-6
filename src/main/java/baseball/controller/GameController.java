@@ -20,6 +20,11 @@ public class GameController {
     public void run() {
         gameInit();
         gamePlay();
+        gameEndOrRestart();
+    }
+
+    private void gameEndOrRestart() {
+        outputView.gameSuccess();
     }
 
     private void gamePlay() {

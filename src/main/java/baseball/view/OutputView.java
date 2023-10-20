@@ -8,6 +8,8 @@ public class OutputView {
     private final String NOTHING = "낫싱";
     private final String BALL = "%d볼";
     private final String STRIKE = "%d스트라이크";
+    private final String GAME_SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
     public void gameStart() {
         System.out.println(GAME_START);
     }
@@ -25,5 +27,9 @@ public class OutputView {
         if (result.hasStrike()) {
             System.out.printf(STRIKE,result.getStrike());
         }
+    }
+
+    public void gameSuccess() {
+        System.out.println(GAME_SUCCESS);
     }
 }
