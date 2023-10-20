@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import camp.nextstep.edu.missionutils.Randoms;
-
+import camp.nextstep.edu.missionutils.Console;
 public class Application {
 
     private static Integer[] orderOfNumbers = new Integer[10];
@@ -20,6 +20,9 @@ public class Application {
 
             // 컴퓨터 수 생성
             generateComputerNumbers();
+
+            // 사용자 수 입력
+            getUserInputNumber();
         }
     }
 
@@ -49,6 +52,15 @@ public class Application {
         }
     }
 
+    public static void getUserInputNumber(){
+        System.out.println("숫자를 입력해주세요 : ");
+        userNumbers = Console.readLine();
+
+        if(!isValidUserNumber(userNumbers)) {
+            System.out.println("잘못된 입력값입니다. 프로그램을 종료합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
 
     public static boolean isValidUserNumber(String number){
         if(number.matches("[1-9]{3}"))
