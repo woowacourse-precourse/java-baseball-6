@@ -3,27 +3,24 @@ package baseball;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import java.io.*; // 자동 완성 관련 해제하는 방법 알아보기
+import java.io.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class IOTest {
-    // Input, Output 확인하기
-    private PrintStream standardOut;
-    private OutputStream captor;
+    private final ByteArrayOutputStream captor = new ByteArrayOutputStream();
 
     @BeforeEach
     void init() {
-        standardOut = System.out;
-        captor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(captor));
     }
 
     @AfterEach
     void printOutput() {
-        System.setOut(standardOut);
+        System.setOut(System.out);
         System.out.println(output());
+        captor.reset();
     }
 
     protected static InputStream generateMultipleInputsStream(String input, String result) {
