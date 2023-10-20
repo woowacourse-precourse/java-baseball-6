@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.domain.GameService;
-import baseball.utill.Parser;
-import baseball.utill.Validator;
+import baseball.util.Parser;
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class GameController {
         computerNumbers.clear();
     }
 
-    public void start() {
+    public void play() {
         System.out.println(MSG_START);
         while (playing) {
             if (computerNumbers.isEmpty()) computerNumbers = service.generateNumbers();
