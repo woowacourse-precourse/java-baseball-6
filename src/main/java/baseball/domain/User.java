@@ -9,14 +9,8 @@ import java.util.List;
  */
 public class User {
     private final List<Integer> userValue;
-    private int selectEnd;
     int strike = 0;
     int ball = 0;
-
-    public User(List<Integer> userValue, int selectEnd) {
-        this.userValue = userValue;
-        this.selectEnd = selectEnd;
-    }
 
     public User(List<Integer> userValue) {
         this.userValue = userValue;
@@ -26,16 +20,8 @@ public class User {
         return new User(userValue);
     }
 
-    public static User createUser(List<Integer> userValue, int selectEnd) {
-        return new User(userValue, selectEnd);
-    }
-
     public List<Integer> getUserValue() {
         return userValue;
-    }
-
-    public int getSelectEnd() {
-        return selectEnd;
     }
 
     public int getStrike() {
