@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Utils.stringToInt;
+
 public class UserInput {
     private List<Integer> userNum;
 
@@ -17,13 +19,12 @@ public class UserInput {
     }
     public void promptUserInput() {
         System.out.println("Enter 3 integer");
-        String s = Console.readLine();
-        stringToInt(s);
-    }
-    public void stringToInt(String string) {
-        char[] tmp = string.toCharArray();
-        for(char c: tmp) {
-            userNum.add(Character.getNumericValue(c));
+        try {
+            String s = Console.readLine();
+            //s validator
+            userNum = stringToInt(s);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Please.. sir, this is Wendy's");
         }
     }
 }

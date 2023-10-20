@@ -8,7 +8,7 @@ public class Application {
         Computer computer = new Computer();
         computer.generateRandomNum();
         UserInput userInput = new UserInput();
-        userInput.storeUserInput();
+        userInput.promptUserInput();
         System.out.println(userInput.getUserNum());
     }
 }
