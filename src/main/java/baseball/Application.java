@@ -12,11 +12,13 @@ public class Application {
         Player player = new Player();
 
         // 1. 랜덤하게 숫자 1~9 로 이루어진 3자리 숫자 생성
-        computer.setRandomNumber();
-        List<Integer> computerNum = computer.getNumbers();
+        computer.setRandomNums();
+        System.out.println("computer.getNumbers() = " + computer.getNumbers());
 
         // 2. 숫자 입력
-        player.inputNumbers();
-        List<Integer> playerNum = player.getNumbers();
+        player.inputNums();
+
+        // 3. 숫자 비교
+        computer.compareNums(player);
     }
 }

@@ -14,10 +14,10 @@ public class Player {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return new ArrayList<>(numbers);
     }
 
-    public void inputNumbers(){
+    public void inputNums(){
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
