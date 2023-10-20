@@ -13,9 +13,12 @@ public class Application {
         // TODO: 프로그램 구현
         String inputNumber;
         Integer[] intArr = new Integer[3];
-        int strikeCount = 0, ballCount = 0;
+        int strikeCount = 0;
+        int ballCount = 0;
+
         //1. 선택
         List<Integer> selectNumber = new ArrayList<>();
+
         while (selectNumber.size() != 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!selectNumber.contains(randomNumber)) {
