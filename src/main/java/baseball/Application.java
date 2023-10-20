@@ -9,7 +9,16 @@ class Game {
     }
 
     void run() {
-        // TODO: implement
+        // TODO: print as spec format
+        while(true) {
+            int query = this.askQuery();
+            int[] result = this.judge(query);
+            System.out.println(result[0] + "스트라이크 " + result[1] + "볼");
+            if (result[0] == 3) {
+                System.out.println("게임 종료");
+                break;
+            }
+        }
     }
 
     int askQuery() {
