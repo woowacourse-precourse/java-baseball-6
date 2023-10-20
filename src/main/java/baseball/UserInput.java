@@ -21,4 +21,8 @@ public class UserInput {
         }
         return new ArrayList<>(result);
     }
+
+    public void validateContinueSign(String input) {
+        validation.validateContinueSign(input);
+    }
 }

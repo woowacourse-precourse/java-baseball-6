@@ -8,7 +8,6 @@ public class NumberBaseballGame {
     Message message = new Message();
     UserInput userInput = new UserInput();
     Computer computer = new Computer();
-    Validation validation = new Validation();
 
     public void speaker(String message) {
         System.out.print(message);
@@ -22,7 +21,7 @@ public class NumberBaseballGame {
             oneRound();
             speaker(message.restartOrStopMessage());
             String startOrStop = userInput.getUserInput();
-            validation.validateContinueSign(startOrStop);
+            userInput.validateContinueSign(startOrStop);
             if (startOrStop.charAt(0) == '2') {
                 gameStatus = false;
             }
