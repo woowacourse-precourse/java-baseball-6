@@ -23,7 +23,7 @@ public class BaseballGameTest {
     }
     @Test
     void 사용자_숫자_중복_테스트(){
-        List<String> input = List.of("1","1","1");
+        List<Integer> input = List.of(1,1,1);
         assertThatThrownBy(()->InputException.duplicateException(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -35,7 +35,7 @@ public class BaseballGameTest {
     }
     @Test
     void 사용자_숫자_범위_테스트(){
-        List<String> input = List.of("1","0","9");
+        List<Integer> input = List.of(1,0,9);
         assertThatThrownBy(()->InputException.outOfRangeException(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
