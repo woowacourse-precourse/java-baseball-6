@@ -46,4 +46,17 @@ class InputValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3개의 숫자만을 입력해주시기 바랍니다.");
     }
+
+    @DisplayName("유저 input의 길이가 3 미만인 경우의 테스트")
+    @Test
+    void lessLengthUserInputTest() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String lessLengthUserInput = "79";
+        //then
+        assertThatThrownBy(() -> inputValidation.validateUserInput(lessLengthUserInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("3개의 숫자만을 입력해주시기 바랍니다.");
+    }
 }
