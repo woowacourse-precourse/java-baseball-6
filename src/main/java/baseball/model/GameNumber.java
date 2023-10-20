@@ -40,16 +40,16 @@ public class GameNumber {
         return gameNumber.get(index);
     }
 
-    public boolean contains(Object o) {
-        return gameNumber.contains((Integer) o);
+    public boolean contains(Object target) {
+        return gameNumber.contains((Integer) target);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object target) {
+        if (this == target) {
             return true;
         }
-        if (!(obj instanceof GameNumber number)) {
+        if (!(target instanceof GameNumber number)) {
             return false;
         }
         return gameNumber.equals(number.gameNumber);
