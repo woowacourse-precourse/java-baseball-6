@@ -15,6 +15,10 @@ public class OutputView {
         System.out.print(INPUT_NUMBER_MESSAGE);
     }
 
+    public void printCompareResult(String compareResult) {
+        System.out.println(compareResult);
+    }
+
     public void printGameOverAndContinueMessage() {
         System.out.println(GAME_OVER_MESSAGE);
         System.out.println(GAME_CONTINUE_MESSAGE);
