@@ -18,7 +18,7 @@ public class Application {
             String input = Console.readLine();
             user.getIntArray(input);
             // 스트라이크, 볼 개수 구하기
-            rules.countBallAndStrikes(com, user.getList());
+            rules.countBallAndStrikes(com.getList(), user.getList());
             // 결과 출력
             if (!rules.isThreeStrikes()) {
                 rules.printBallAndStrikes();
