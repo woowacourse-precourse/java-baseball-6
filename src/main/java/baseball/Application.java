@@ -15,6 +15,31 @@ package baseball;
 
 
 public class Application {
+    public void checkUserInputException(int[] user) {
+        try {
+            for (int i = 0; i < user.length; i++) {
+                for (int j = 0; j < user.length; j++) {
+                    if (i == j)
+                        continue;
+                    if (user[i] == user[j]) {
+                        throw new IllegalArgumentException("올바르지 않은 숫자의 입력입니다. " + user[j]);
+                    }
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            System.err.println("IllegalArgumentException 발생: " + e.getMessage());
+            return;
+        }
+    }
 
-
+    public void checkUserRegameException(int num) {
+        try {
+            if (!(num == 1 || num == 2)) {
+                throw new IllegalArgumentException("번호를 다시 확인해주세요: " + num);
+            }
+        } catch (IllegalArgumentException e) {
+            System.err.println("IllegalArgumentException 발생: " + e.getMessage());
+            return;
+        }
+    }
 }
