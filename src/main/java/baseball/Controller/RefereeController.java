@@ -16,8 +16,23 @@ public class RefereeController {
     private int[] getQueryDecoding(String queryString) {
         int asciiZero = 48;
         int[] query = new int[3];
-        for(int i = 0; i < queryString.length(); ++i)
-            query[i] = queryString.charAt(i) - asciiZero;
+
+        try{
+            // query의 입력 길이가 3이 아닌 경우의 예외
+            if(queryString.length() != 3)
+                throw new IllegalArgumentException();
+            
+            for(int i = 0; i < queryString.length(); ++i) {
+                query[i] = queryString.charAt(i) - asciiZero;
+                // query의 입력 값이 1~9의 수가 아닌 경우의 예외
+                if(query[i] < 1 || query[i] > 9)
+                    throw new IllegalArgumentException();
+            }
+        }
+        catch(IllegalArgumentException e){
+            System.out.println(referee.getExceptionMassage());
+        }
+
         return query;
     }
 
