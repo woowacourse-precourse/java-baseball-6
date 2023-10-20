@@ -2,7 +2,7 @@ package baseball.domain;
 
 public class Game {
     private GameState gameState = GameState.READY;
-    private BallsGenerator ballsGenerator;
+    private final BallsGenerator ballsGenerator;
     private Balls standard;
 
     public Game(BallsGenerator ballsGenerator) {
