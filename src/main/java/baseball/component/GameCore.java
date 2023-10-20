@@ -29,13 +29,14 @@ public class GameCore {
         boolean flag = true;
         while (flag) {
             validator.validate(inputter.input());
-            if (validator.getStrike() == GeneralNumbers.NUMBER_SIZE.getCode()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                flag = false;
-            } else if (validator.getNoting()) {
+            if (validator.getNoting()) {
                 System.out.println("낫싱");
             } else {
                 System.out.println(getFormatedString(validator.getStrike(), validator.getBall()));
+                if (validator.getStrike() == GeneralNumbers.NUMBER_SIZE.getCode()) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    flag = false;
+                }
             }
         }
     }
