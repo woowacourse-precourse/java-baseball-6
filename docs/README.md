@@ -1,4 +1,41 @@
 # 💻 기능 목록 정리
+**(interface) 숫자 야구 게임**
+- 게임에 필요한 정보를 준비한다.
+- 3자리의 숫자를 입력 받아 결과를 반환한다.
+    - 자리와 숫자 2가지가 맞은 경우 스트라이크로 카운트 한다.
+    - 숫자는 맞지만 자리가 틀린 경우 볼로 카운트 한다.
+    - 자리와 숫자 모두 틀린 경우는 낫싱으로 처리한다.
+
+**싱글 숫자 야구 게임 implement 숫자 야구 게임**
+- 생성시 상대 플레이어를 초기화 한다
+- override 상대 플레이어에 부터 3자리 수를 만들어 게임을 준비한다.
+- override 라운드를 진행시켜 입력 받은 3자리의 숫자에 따라 결과를 반환한다.
+    - 자리와 숫자 2가지가 맞은 경우 스트라이크로 카운트 한다.
+    - 숫자는 맞지만 자리가 틀린 경우 볼로 카운트 한다.
+    - 자리와 숫자 모두 틀린 경우는 낫싱으로 처리한다.
+- 입력 받은 3자리 숫자가 3자리가 맞는지 검증한다.
+- 입력 받은 3자리 숫자에 문자는 없는지 검증한다.
+- 입력 받은 3자리 숫자에 중복이 없는지 검증한다.
+
+**(interface) 상대 플레이어**
+- 게임에 필요한 3자리 숫자를 생성한다.
+- 생성된 3자리 숫자와 입력받은 값을 비교한다.
+
+**컴퓨터 implement 상대 플레이어**
+- 생성시 숫자를 생성할 생성기를 초기화 한다.
+- override 게임의 필요한 3자리 숫자를 생성기를 통해 생성한다.
+- override 생성된 숫자와 입력받은 값을 비교한다.
+    - 자리와 숫자 2가지가 맞은 경우 스트라이크로 카운트 한다.
+    - 숫자는 맞지만 자리가 틀린 경우 볼로 카운트 한다.
+    - 자리와 숫자 모두 틀린 경우는 낫싱으로 처리한다.
+
+**(interface) 플레이어**
+- 입력을 요청받으면 입력을 받는다.
+- 출력을 요청 받으면 출력을 한다.
+
+**싱글 플레이어 콘솔 implement 플레이어**
+- override 입력을 요청 받으면 입력 콘솔에 입력을 요청한다.
+- override 출력을 요청 받으면 출력 콘솔에 출력을 요청한다.
 
 
 ## 📝기능 목록 정의 과정
@@ -33,9 +70,9 @@
 > 2. 문제 해결 과정에서 역할의 소통 정리
 ```mermaid
 sequenceDiagram
+    participant player as 플레이어
     participant app as Applicatoin
     participant game as 숫자 야구 게임
-    participant player as 플레이어
     participant other as 상대 플레이어
 
 
@@ -43,12 +80,13 @@ sequenceDiagram
     game ->>+ other: 게임 숫자 입력
     other -->>- game: 숫자 반환
     loop is 3 strike
-    app ->>+ game: 라운드 진행
-    game ->>+ player: 입력 값 요청
-    player -->>- game: 입력 값 반환
+    app ->>+ player: 입력 값 요청
+    player -->>- app: 입력 값 반환
+    app ->>+ game: 숫자 3자리 입력
     game ->>+ other: 입력값 확인 요청
     other -->>- game: 입력값 확인 반환
     game -->>- app: 결과 값
+    app -->> player: 결과 값
     end
     app ->> app: 게임 종료
 ```
@@ -57,11 +95,13 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
+    participant input as Input Console
+    participant output as Output Console
+    participant singlePlayer as 싱글 플레이어 콘솔
+    participant player as <interface><br>플레이어
     participant app as Applicatoin
     participant game as <interface><br>숫자 야구 게임
     participant singleGame as 싱글 숫자 야구 게임
-    participant player as <interface><br>플레이어
-    participant singlePlayer as 싱글 플레이어
     participant other as <interface><br>상대 플레이어
     participant com as 컴퓨터
 
@@ -72,16 +112,61 @@ sequenceDiagram
     other->>+ com: override<br>게임 숫자 입력
     com -->>- singleGame: 게임 숫자 반환
     loop is 3 strike
-        app ->>+ game: 라운드 진행
-        game->>+singleGame: override<br>입력값 요청
-        singleGame ->>+ player: 입력 값 요청
-        player -->>- game: 입력 값 반환
-        game-->>+singleGame: override<br> 입력값 확인 요청
+        app ->>+ player: 입력 값 요청
+        player ->>+ singlePlayer: override<br> 입력값 요청
+        singlePlayer ->>+ input: 입력값 요청
+        input -->>- app: 입력 값 반환
+        app ->>+ game: 숫자 3자리 입력
+        game->>+singleGame: override<br>3자리 숫자 입력
         singleGame ->>+ other: 입력값 확인 요청
-        other -->>- game: 입력값 확인 반환
+        other ->>+ com: override<br> 입력값 확인 요청
+        com -->>- game: 입력값 확인 반환
         game -->>- app: 결과 값
+        app -->> player: 결과 값
+        player -->> singlePlayer: 결과 값
+        singlePlayer -->> output: 결과 값
     end
     app ->> app: 게임 종료
 ```
+---
+> 4. 기능 목록 정의
+
+**(interface) 숫자 야구 게임**
+- 게임에 필요한 정보를 준비한다.
+- 3자리의 숫자를 입력 받아 결과를 반환한다.
+    - 자리와 숫자 2가지가 맞은 경우 스트라이크로 카운트 한다.
+    - 숫자는 맞지만 자리가 틀린 경우 볼로 카운트 한다.
+    - 자리와 숫자 모두 틀린 경우는 낫싱으로 처리한다.
+
+**싱글 숫자 야구 게임 implement 숫자 야구 게임**
+- 생성시 상대 플레이어를 초기화 한다
+- override 상대 플레이어에 부터 3자리 수를 만들어 게임을 준비한다.
+- override 라운드를 진행시켜 입력 받은 3자리의 숫자에 따라 결과를 반환한다.
+    - 자리와 숫자 2가지가 맞은 경우 스트라이크로 카운트 한다.
+    - 숫자는 맞지만 자리가 틀린 경우 볼로 카운트 한다.
+    - 자리와 숫자 모두 틀린 경우는 낫싱으로 처리한다.
+- 입력 받은 3자리 숫자가 3자리가 맞는지 검증한다.
+- 입력 받은 3자리 숫자에 문자는 없는지 검증한다.
+- 입력 받은 3자리 숫자에 중복이 없는지 검증한다.
+
+**(interface) 상대 플레이어**
+- 게임에 필요한 3자리 숫자를 생성한다.
+- 생성된 3자리 숫자와 입력받은 값을 비교한다.
+
+**컴퓨터 implement 상대 플레이어**
+- 생성시 숫자를 생성할 생성기를 초기화 한다.
+- override 게임의 필요한 3자리 숫자를 생성기를 통해 생성한다.
+- override 생성된 숫자와 입력받은 값을 비교한다.
+    - 자리와 숫자 2가지가 맞은 경우 스트라이크로 카운트 한다.
+    - 숫자는 맞지만 자리가 틀린 경우 볼로 카운트 한다.
+    - 자리와 숫자 모두 틀린 경우는 낫싱으로 처리한다.
+
+**(interface) 플레이어**
+- 입력을 요청받으면 입력을 받는다.
+- 출력을 요청 받으면 출력을 한다.
+
+**싱글 플레이어 콘솔 implement 플레이어**
+- override 입력을 요청 받으면 입력 콘솔에 입력을 요청한다.
+- override 출력을 요청 받으면 출력 콘솔에 출력을 요청한다.
 
 
