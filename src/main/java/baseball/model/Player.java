@@ -13,4 +13,8 @@ public class Player {
     public boolean getFlag() {
         return this.flag;
     }
+
+    public ArrayList<Integer> getPlayer() {
+        return this.player;
+    }
 }
