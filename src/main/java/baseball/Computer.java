@@ -1,29 +1,43 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Computer {
-    private int answer;
+    private Answer correctAnswer;
 
     public Computer() {
-        this.answer = generateAnswer();
+        this.correctAnswer = new Answer();
     }
 
     public void updateAnswer() {
-        this.answer = generateAnswer();
+        this.correctAnswer = new Answer();
     }
 
-    private Integer generateAnswer() {
-        List<Integer> numList = Randoms.pickUniqueNumbersInRange(0, 9, 3);
-        if(numList.get(0) == 0) {
-            Collections.swap(numList, 0, 1);
-        }
-        String numString = numList.stream().map(String::valueOf).collect(Collectors.joining());
+    public Result checkAnswer(Answer input) {
+        int strike = countStrike(input);
+        int ball = countSameNum(input) - strike;
 
-        System.out.println(Integer.parseInt(numString));
-        return Integer.parseInt(numString);
+        return new Result(strike, ball);
+    }
+
+    private int countStrike(Answer input) {
+        int strikeCount = 0;
+        String answerStr = this.correctAnswer.getValue();
+        String inputStr = input.getValue();
+
+        for (int i = 0; i < answerStr.length(); i++) {
+            if (answerStr.charAt(i) == inputStr.charAt(i)) strikeCount++;
+        }
+
+        return strikeCount;
+    }
+
+    private int countSameNum(Answer input) {
+        int sameNumCount = 0;
+        char[] answerDigits = this.correctAnswer.getValue().toCharArray();
+
+        for (char digit : answerDigits) {
+            if (input.getValue().contains(String.valueOf(digit))) sameNumCount++;
+        }
+
+        return sameNumCount;
     }
 }
