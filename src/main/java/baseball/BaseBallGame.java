@@ -16,12 +16,12 @@ public class BaseBallGame {
 
     public void startGame() {
         int restartNumber = 0;
-        while (restartNumber != NumberConstant.GAME_END_NUMBER) {
+        while(restartNumber != NumberConstant.GAME_END_NUMBER){
             List<Integer> computer = computerService.createNumber();
             messageService.printStartMessage();
             int ballCount = 0;
             int strikeCount = 0;
-            while (strikeCount != NumberConstant.GAME_WIN_NUMBER) {
+            while (strikeCount != NumberConstant.GAME_WIN_NUMBER){
                 messageService.printUserInputNumberMessage();
                 String inputNumber = userService.inputUserNumber();
                 List<Integer> user = validation.validateInputNumber(inputNumber);
@@ -30,7 +30,7 @@ public class BaseBallGame {
                 ballCount = result.getBallCount();
                 strikeCount = result.getStrikeCount();
 
-                messageService.printComparisonResult(ballCount, strikeCount);
+                messageService.printComparisonResult(ballCount,strikeCount);
             }
             messageService.printWinMessage();
             messageService.printGameRestartOrGameEndMessage();
@@ -49,15 +49,15 @@ public class BaseBallGame {
                 strikeCount++;
                 continue;
             }
-            if (computer.contains(userNumber)) {
+            if (computer.contains(userNumber)){
                 ballCount++;
             }
         }
-        return new Result(ballCount, strikeCount);
+        return new Result(ballCount,strikeCount);
     }
 
-    public int InputRestartOrEnd() {
-        int inputNumber = Integer.parseInt(userService.inputUserNumber());
+    public int InputRestartOrEnd(){
+        int inputNumber =  Integer.parseInt(userService.inputUserNumber());
         validation.validateInputChoice(inputNumber);
         return inputNumber;
     }

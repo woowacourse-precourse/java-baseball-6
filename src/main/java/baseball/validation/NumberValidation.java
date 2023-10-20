@@ -45,7 +45,7 @@ public class NumberValidation {
     }
 
     public void validateInputChoice(int inputNumber) {
-        if (inputNumber != NumberConstant.RESTART_NUMBER || inputNumber != NumberConstant.GAME_END_NUMBER) {
+        if (inputNumber != NumberConstant.RESTART_NUMBER && inputNumber != NumberConstant.GAME_END_NUMBER) {
             throw new IllegalArgumentException(MessageConstant.VALIDATE_INPUT_CHOICE_MESSAGE);
         }
     }
