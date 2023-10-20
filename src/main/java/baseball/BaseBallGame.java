@@ -1,10 +1,14 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BaseBallGame {
     private static final int MIN_RANDOM_NUMBER = 1;
@@ -14,11 +18,33 @@ public class BaseBallGame {
     private static final String PLAYER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
     public void gameStart() {
+        List<Integer> computerNumbers;
+        List<Integer> playerNumbers;
         printStartMessage();
 
         while(true) {
-
+            computerNumbers = getRandomNumber();
+//            playerNumbers = getPlayerNumber();
         }
+    }
+
+//    private List<Integer> getPlayerNumber() {
+//        printPlayerInputMessage();
+//        return inputPlayerNumber();
+//    }
+
+//    private List<Integer> inputPlayerNumber() {
+//        String input = Console.readLine();
+//    }
+
+    private List<Integer> parseToNumberList(String convertValue) {
+        if(!isNumeric(convertValue)) {
+            throw new IllegalArgumentException();
+        }
+
+        return Arrays.stream(convertValue.split(""))
+                .mapToInt(Integer::parseInt)
+                .boxed().collect(Collectors.toList());
     }
 
     private void printPlayerInputMessage() {
@@ -39,10 +65,6 @@ public class BaseBallGame {
         }
 
         return computerNumber.stream().toList();
-    }
-
-    private boolean isInvalidInput(String input) {
-        return isNumeric(input) && isUniqueDigits(input) && isThreeDigit(input);
     }
 
     private boolean isNumeric(String input) {
