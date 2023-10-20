@@ -6,7 +6,7 @@ import baseball.game.transform.Transformer;
 
 public class BaseballContext {
 
-    private GameState gameState;
+    private final GameLifeCycle gameLifeCycle;
     private final Answer answer;
     private final Transformer<BaseballScore, String> transformer;
 
@@ -15,21 +15,17 @@ public class BaseballContext {
     }
 
     public BaseballContext(Answer answer) {
-        this(GameState.RUNNING, answer);
+        this(new GameLifeCycle(GameState.RUNNING), answer);
     }
 
-    public BaseballContext(GameState initialState, Answer answer) {
-        this.gameState = initialState;
+    public BaseballContext(GameLifeCycle initialState, Answer answer) {
+        this.gameLifeCycle = initialState;
         this.answer = answer;
         this.transformer = new BaseballScoreToStringTransformer();
     }
 
-    public void finish() {
-        this.gameState = GameState.FINISH;
-    }
-
-    public boolean isRunning() {
-        return this.gameState == GameState.RUNNING;
+    public GameLifeCycle getGameLifeCycle() {
+        return gameLifeCycle;
     }
 
     public String getAnswer() {

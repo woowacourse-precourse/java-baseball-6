@@ -2,6 +2,7 @@ package baseball.game;
 
 import baseball.context.BaseballContext;
 
+import baseball.context.GameLifeCycle;
 import baseball.game.dto.Baseball;
 import baseball.game.dto.BaseballScore;
 import baseball.io.input.Input;
@@ -29,13 +30,14 @@ public class GameLoop {
             baseballContext.regenerateAnswer();
             return;
         }
-        baseballContext.finish();
+        baseballContext.getGameLifeCycle().finish();
     }
 
     public void run() {
         Input validationInput = new ValidationInput(input, new InputValidator());
+        GameLifeCycle gameLifeCycle = baseballContext.getGameLifeCycle();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (baseballContext.isRunning()) {
+        while (gameLifeCycle.isRunning()) {
             String balls = validationInput.nextLine();
             BaseballScore matchResults =
                 baseballGame.match(Baseball.of(baseballContext.getAnswer()), Baseball.of(balls));
