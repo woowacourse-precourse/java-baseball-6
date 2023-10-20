@@ -3,6 +3,8 @@ package baseball;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -32,5 +34,24 @@ public class FunctionTest {
         List<Integer> answerList = Application.makeRandomAnswer();
 
         assertEquals(answerList.stream().distinct().count(), answerList.size());
+    }
+
+    @Test
+    void 사용자의_올바른_입력이_잘_받아져야_한다() {
+        String input1 = "123";
+        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
+        System.setIn(in1);
+
+        List<Integer> userInputList1 = Application.getUserTrialInput();
+
+        assertEquals(List.of(1, 2, 3), userInputList1);
+
+        String input2 = "608";
+        InputStream in2 = new ByteArrayInputStream(input2.getBytes());
+        System.setIn(in2);
+
+        List<Integer> userInputList2 = Application.getUserTrialInput();
+
+        assertEquals(List.of(6, 0, 8), userInputList2);
     }
 }
