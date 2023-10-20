@@ -10,7 +10,7 @@ import static baseball.game.BaseBallGameMessage.*;
 
 public class Console {
 
-    private static final Exception ILLEGAL_ARGUMENT_EXCEPTION = new IllegalArgumentException();
+    private static final IllegalArgumentException ILLEGAL_ARGUMENT_EXCEPTION = new IllegalArgumentException();
     private static final String NUMBER_REGEX = "[1-9]+";
     private static final List<String> RESTART_OR_TERMINATE = List.of("1", "2");
 
@@ -25,7 +25,7 @@ public class Console {
         return computer;
     }
 
-    private static String readLine() throws Exception {
+    private static String readLine() {
         String inputString = camp.nextstep.edu.missionutils.Console.readLine();
 
         validateInputNotNull(inputString);
@@ -34,7 +34,7 @@ public class Console {
         return inputString;
     }
 
-    public static String input3DigitNumber() throws Exception {
+    public static String input3DigitNumber() {
         String inputString = readLine();
 
         validateInput3DigitNumber(inputString);
@@ -43,7 +43,7 @@ public class Console {
         return inputString;
     }
 
-    public static String inputRestartOrTerminate() throws Exception {
+    public static String inputRestartOrTerminate() {
 
         String inputString = readLine();
 
@@ -52,27 +52,27 @@ public class Console {
         return inputString;
     }
 
-    private static void validateInputNotNull(String inputString) throws Exception {
+    private static void validateInputNotNull(String inputString) {
         if (inputString == null) {
-            throw ILLEGAL_ARGUMENT_EXCEPTION;
+            throw new IllegalArgumentException();
         }
     }
 
-    private static void validateInputIsNumber(String inputString) throws Exception {
+    private static void validateInputIsNumber(String inputString) {
 
         if (!inputString.matches(NUMBER_REGEX)) {
             throw ILLEGAL_ARGUMENT_EXCEPTION;
         }
     }
 
-    private static void validateInput3DigitNumber(String inputString) throws Exception {
+    private static void validateInput3DigitNumber(String inputString) {
 
         if (inputString.length() != 3) {
             throw ILLEGAL_ARGUMENT_EXCEPTION;
         }
     }
 
-    private static void validateInputNotDuplicate(String inputString) throws Exception {
+    private static void validateInputNotDuplicate(String inputString) {
         int[] appearance = new int[10];
 
         for (char inputChar : inputString.toCharArray()) {
@@ -87,7 +87,7 @@ public class Console {
 
     }
 
-    private static void validateRestartOrTerminate(String inputString) throws Exception {
+    private static void validateRestartOrTerminate(String inputString) {
         if (!RESTART_OR_TERMINATE.contains(inputString)) {
             throw ILLEGAL_ARGUMENT_EXCEPTION;
         }
