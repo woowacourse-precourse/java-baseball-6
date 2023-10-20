@@ -37,6 +37,6 @@ public class InputManager {
         for (int i = 0; i < userBaseballNumber.length(); i++) {
             validateNumberList.add(userBaseballNumber.charAt(i));
         }
-        return validateNumberList.size() == 3;
+        return validateNumberList.size() == 3 && userBaseballNumber.length() == 3;
     }
 }
