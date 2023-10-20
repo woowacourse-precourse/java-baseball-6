@@ -1,5 +1,8 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
@@ -8,18 +11,28 @@ public class GameService {
     GameException exception = new GameException();
     StrikeBallCount strikeBallCount = new StrikeBallCount();
     Player player = new Player();
-    Computer computer = new Computer();
+    List<Integer> computer = new ArrayList<>();
 
-    public void playBaseBallGame(){
+    public void playBaseBallGame() {
+        player.clearPlayerNumberStore();
+        strikeBallCount.settingStrikeBallCount();
         player.settingPlayerNumber(inputPlayerNumber());
-        computer.settingComputerRandomNumbers();
-        computerNumberComparePlayerInputNumber(player, computer.computer);
-        printStrikeBallCount();
+        computerNumberComparePlayerInputNumber(player, computer);
     }
+
     public int[] inputPlayerNumber() {
         outPutView.printRequestInputNumberMessage();
         String inputPlayerNumber = inputView.inputPlayerNumber();
         return toIntArray(inputPlayerNumber);
+    }
+
+    public void settingComputerRandomNumbers() {
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
     }
 
     public void computerNumberComparePlayerInputNumber(Player player, List<Integer> computer) {
@@ -40,6 +53,10 @@ public class GameService {
 
     public int getBallCount() {
         return strikeBallCount.getBall();
+    }
+
+    public int getComputerRandomNumberSize() {
+        return computer.size();
     }
 
     public void printStrikeBallCount() {
