@@ -55,7 +55,7 @@ public class Baseball {
     }
 
     public List<Integer> inputUserNumber() {
-        System.out.println("숫자를 입력해주세요 : " );
+        System.out.print("숫자를 입력해주세요 : " );
         String inputNumber = Console.readLine();
         List<Integer> integerList = new ArrayList<>();
         if (inputNumber.length() != 3) {
