@@ -13,6 +13,8 @@ public class GameController {
     private static final int NUMBER_LENGTH = 3;
     private static final char ZERO_CHAR = '0';
 
+    private int strike;
+    private int ball;
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
     ComputerNumber computerNumber = new ComputerNumber();
@@ -24,6 +26,10 @@ public class GameController {
 
         String playerNumberStr = inputView.inputPlayerNumber();
         playerNumber.setPlayerNumbers(convertPlayerNumberToList(playerNumberStr));
+
+        if (isPlayerSameAsComputer(playerNumber.getPlayerNumbers(), computerNumber.getComputerNumbers())) {
+            strike = 3;
+        }
     }
 
     public List<Integer> getRandomNumbers() {
@@ -46,5 +52,15 @@ public class GameController {
         }
 
         return player;
+    }
+
+    public boolean isPlayerSameAsComputer(List<Integer> player, List<Integer> computer) {
+        for (int index = 0; index < NUMBER_LENGTH; index++) {
+            if (!player.get(index).equals(computer.get(index))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
