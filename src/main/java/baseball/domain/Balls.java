@@ -12,7 +12,7 @@ public class Balls {
 
     public Balls(List<Integer> numbers) {
         validateBalls(numbers);
-        this.balls = mapBall(numbers);
+        this.balls = generateBalls(numbers);
     }
 
     private void validateBalls(List<Integer> numbers) {
@@ -33,7 +33,7 @@ public class Balls {
         return numbers.size() != new HashSet<>(numbers).size();
     }
 
-    private List<Ball> mapBall(List<Integer> numbers) {
+    private List<Ball> generateBalls(List<Integer> numbers) {
         List<Ball> balls = new ArrayList<>();
 
         for (int index = 0; index < numbers.size(); index++) {
