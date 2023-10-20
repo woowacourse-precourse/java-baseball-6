@@ -10,6 +10,7 @@ public class Application {
 
 //    public static List<Integer> computerNumber;
 //    public static List<Integer> playerNumber;
+    public static int strike, ball;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다");
@@ -24,8 +25,9 @@ public class Application {
         while(true) {
             String playerNumber = PlayerSelectNumber();
             CompareNumber(computerNumber, playerNumber);
-        }
 
+
+        }
     }
 
     public static String ComputerSelectNumber() {
@@ -35,7 +37,7 @@ public class Application {
         StringBuilder computerNumber = new StringBuilder();
         for(int i=0; i<3; i++) {
 //            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            computerNumber.append(String.valueOf(Randoms.pickNumberInRange(1, 9)));
+            computerNumber.append(Randoms.pickNumberInRange(1, 9));
 //            computerNumber.add(randomNumber);
         }
 
@@ -55,6 +57,17 @@ public class Application {
     }
 
     public static void CompareNumber(String computerNumber, String playerNumber) {
+        int strike = 0;
+        int ball = 0;
 
+        for(int i=0; i<3; i++) {
+            if (playerNumber.charAt(i) == computerNumber.charAt(i)) {
+                strike++;
+                continue;
+            } else if (computerNumber.contains(String.valueOf(playerNumber.charAt(i)))) {
+                ball++;
+                continue;
+            }
+        }
     }
 }
