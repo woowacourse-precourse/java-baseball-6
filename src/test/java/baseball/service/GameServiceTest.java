@@ -55,4 +55,16 @@ public class GameServiceTest {
 
         Assertions.assertThat(compareResult).isEqualTo("3볼");
     }
+
+    @Test
+    @DisplayName("컴퓨터 숫자와 사용자 숫자를 비교하여, 1스트라이크가 나오는 케이스를 테스트한다.")
+    void testOneStrikeCase() {
+        List<Integer> computerNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(1, 4, 5);
+
+        GameService gameService = new GameService();
+        String compareResult = gameService.getCompareResult(computerNumber, userNumber);
+
+        Assertions.assertThat(compareResult).isEqualTo("1스트라이크");
+    }
 }
