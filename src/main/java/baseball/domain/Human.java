@@ -2,6 +2,7 @@ package baseball.domain;
 
 
 import baseball.domain.number.Numbers;
+import java.util.List;
 
 public class Human implements Player {
 
@@ -17,6 +18,11 @@ public class Human implements Player {
     @Override
     public Numbers getNumbers() {
         return numbers;
+    }
+
+    @Override
+    public List<Integer> getNumberList() {
+        return numbers.getNumberList();
     }
 
     @Override

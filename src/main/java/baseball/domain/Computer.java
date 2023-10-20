@@ -26,6 +26,11 @@ public class Computer implements Player {
     }
 
     @Override
+    public List<Integer> getNumberList() {
+        return numbers.getNumberList();
+    }
+
+    @Override
     public void changeNumbers(Numbers numbers) {
         this.numbers = numbers;
     }
