@@ -1,5 +1,6 @@
 package baseball.View;
 
+import baseball.Util.Validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,15 +14,15 @@ public class InputViewTest {
     public void isNullTest() {
         Throwable exception = assertThrows(IllegalArgumentException.class,
                 () -> InputView.validateInput(null));
-        assertEquals(InputView.NULL_OR_EMPTY_MESSAGE, exception.getMessage());
+        assertEquals(Validator.NULL_OR_EMPTY_MESSAGE, exception.getMessage());
     }
 
     @Test
     @DisplayName("빈 문자열 유효성검사 테스트")
     public void isEmptyTest() {
         Throwable exception = assertThrows(IllegalArgumentException.class,
-                () -> InputView.validateInput(InputView.EMPTY));
-        assertEquals(InputView.NULL_OR_EMPTY_MESSAGE, exception.getMessage());
+                () -> InputView.validateInput(Validator.EMPTY));
+        assertEquals(Validator.NULL_OR_EMPTY_MESSAGE, exception.getMessage());
     }
 
     @Test
@@ -29,7 +30,7 @@ public class InputViewTest {
     public void isThreeDigitNumberTest() {
         Throwable exception = assertThrows(IllegalArgumentException.class,
                 () -> InputView.validateInput("2222"));
-        assertEquals(InputView.NOT_THREE_DIGIT_NUMBER_MESSAGE, exception.getMessage());
+        assertEquals(Validator.NOT_THREE_DIGIT_NUMBER_MESSAGE, exception.getMessage());
     }
 
     @Test
@@ -37,6 +38,6 @@ public class InputViewTest {
     public void isUniqueNumberTest() {
         Throwable exception = assertThrows(IllegalArgumentException.class,
                 () -> InputView.validateInput("222"));
-        assertEquals(InputView.NOT_UNIQUE_NUMBER_MESSAGE, exception.getMessage());
+        assertEquals(Validator.NOT_UNIQUE_NUMBER_MESSAGE, exception.getMessage());
     }
 }
