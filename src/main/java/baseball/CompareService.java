@@ -43,10 +43,9 @@ public class CompareService {
     // 결과값 세팅하는 로직
     private void setResult() {
         if(strike == 0 && ball == 0) result += "낫싱";
-        else {
-            result += (ball + "볼 ");
-            if(strike != 0) result += (strike + "스트라이크!");
-        }
+        else if(strike != 0 && ball == 0) result += (strike + "스트라이크");
+        else if(strike == 0 && ball != 0) result += (ball + "볼");
+        else result += (ball + "볼 " + strike + "스트라이크");
     }
 
 }
