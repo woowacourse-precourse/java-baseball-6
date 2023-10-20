@@ -63,4 +63,8 @@ public class NumberBaseballUtility {
         }
         return ball;
     }
+
+    public static boolean isValidChoice(String input) {
+        return (input.equals("1") || input.equals("2"));
+    }
 }
