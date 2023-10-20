@@ -3,15 +3,18 @@ package controller;
 import service.AnswerCreator;
 import service.Game;
 import views.InputView;
+import views.OutputView;
 
 public class Controller {
 	private final AnswerCreator answerCreator;
 	private final InputView inputView;
 	private final Game game;
+	private final OutputView outputView;
 	public Controller() {
 		this.answerCreator = new AnswerCreator();
 		this.inputView = new InputView();
-		this.game = new Game();
+		this.outputView = new OutputView();
+		this.game = new Game(outputView);
 	}
 
 	public void playGame() {

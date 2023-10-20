@@ -1,8 +1,11 @@
 package service;
 
-public class Game {
-	public Game() {
+import views.OutputView;
 
+public class Game {
+	private final OutputView outputView;
+	public Game(OutputView outputView) {
+		this.outputView = outputView;
 	}
 
 	public boolean getGameResult(int inputNumber, int answerNumber) {
@@ -12,9 +15,9 @@ public class Game {
 
 		int strikeCount = checkStrike(input, answer);
 		int ballCount = checkBall(input, answer) - strikeCount;
-		//결과 출력 부분
+		outputView.printCheckResult(strikeCount, ballCount);
 		if (strikeCount == 3) {
-			isAnswer = true;W
+			isAnswer = true;
 		}
 		return isAnswer;
 	}
