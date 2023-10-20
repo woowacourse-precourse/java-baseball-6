@@ -55,6 +55,7 @@ public class GameController {
     private void checkForRestartOrShutDown(Player player) {
         String inputString = inputView.readRestartOrShutDown();
         int restartCheckNum = Integer.parseInt(inputString);
+        validateRestartCheckNum(restartCheckNum);
 
         if (restartCheckNum == GAME_END) {
             return;
@@ -62,6 +63,12 @@ public class GameController {
 
         if (restartCheckNum == RESTART) {
             repeatGuessingAnswerNumbers(player, new Opponent());
+        }
+    }
+
+    private void validateRestartCheckNum(int restartCheckNum) {
+        if (!(restartCheckNum == 1 || restartCheckNum == 2)) {
+            throw new IllegalArgumentException();
         }
     }
 }

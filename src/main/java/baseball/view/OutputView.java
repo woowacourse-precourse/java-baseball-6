@@ -17,7 +17,7 @@ public class OutputView {
         }
 
         if (strikeCount > 0) {
-            System.out.println(strikeCount + "스트라이크");
+            System.out.print(strikeCount + "스트라이크");
         }
 
         if (ballCount == 0 && strikeCount == 0) {
