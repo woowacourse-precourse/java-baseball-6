@@ -23,13 +23,13 @@ public class Application {
             }
             int computerNumber = 100 * computer.get(0) + 10 * computer.get(1) + computer.get(2);
             String computerNumberStr = Integer.toString(computerNumber);
-            System.out.println(computerNumberStr);
 
-            // 숫자 입력 - 정답과 비교 - 힌트 출력 반복
+            // (숫자 입력 - 정답과 비교 - 힌트 출력) 반복
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String userNumberStr = readLine();
 
+                // 3개 숫자 모두 같으면 바로 종료
                 if (computerNumberStr.equals(userNumberStr)) {
                     System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -38,7 +38,7 @@ public class Application {
                 // 입력 오류 없는지 확인
                 boolean noInputError = noInputError(userNumberStr);
                 if (noInputError) {
-                    // 오류 없다면(true) 별도 출력 없이 다음 코드 진행
+                    // 오류 없다면(true) IllegalArgumentException 발생 없이 다음 코드 진행
                 }
 
                 int strike = 0;
@@ -69,12 +69,11 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String decisionGame = readLine();
             if (decisionGame.equals("2")) {
-                System.out.println("게임을 종료합니다.");
-                startGame = false;
+                startGame = false; // 게임 종료
             } else if (decisionGame.equals("1")) {
-                System.out.println("게임을 재시작합니다.");
+                // 게임 재시작
             } else {
-                throw new IllegalArgumentException("입력 오류: 1 또는 2를 입력하세요.");
+                throw new IllegalArgumentException(); // 1 or 2 외의 입력값
             }
         }
     }
@@ -84,18 +83,18 @@ public class Application {
         try {
             Integer.parseInt(userNumberStr);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력 오류: 숫자가 아닙니다.");
+            throw new IllegalArgumentException();
         }
         // 3자리가 아닐때
         if (userNumberStr.length() != 3) {
-            throw new IllegalArgumentException("입력 오류: 3자리 숫자가 아닙니다.");
+            throw new IllegalArgumentException();
         }
         // 같은 숫자가 있을 때
         char digit1 = userNumberStr.charAt(0);
         char digit2 = userNumberStr.charAt(1);
         char digit3 = userNumberStr.charAt(2);
         if (digit1 == digit2 || digit1 == digit3 || digit2 == digit3) {
-            throw new IllegalArgumentException("입력 오류: 서로 다른 3자리 숫자가 아닙니다.");
+            throw new IllegalArgumentException();
         }
         return true;
     }
