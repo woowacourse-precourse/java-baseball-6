@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,4 +20,35 @@ public class Baseball {
         }
         return numberList;
     }
+
+    public boolean isNumeric(String strNum) {
+        try {
+            Integer number = Integer.parseInt(strNum);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public List<Integer> inputUserNumber() {
+        System.out.println("숫자를 입력해주세요 : " );
+        String inputNumber = Console.readLine();
+        List<Integer> integerList = new ArrayList<>();
+        if (inputNumber.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        if (!isNumeric(inputNumber)) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < 3; ++i) {
+            if (integerList.contains(inputNumber.indexOf(i))) {
+                throw new IllegalArgumentException();
+            }
+            integerList.add(inputNumber.indexOf(i));
+        }
+
+        return integerList;
+    }
+
+
 }
