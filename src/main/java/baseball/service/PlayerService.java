@@ -22,7 +22,7 @@ public class PlayerService {
         for (int i = 0; i < number.length(); i++) {
             char c = number.charAt(i);
             if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException("숫자가 아닙니다.");
+                throw new IllegalArgumentException("숫자를 입력해주세요.");
             }
         }
     }
@@ -39,7 +39,7 @@ public class PlayerService {
             char c = number.charAt(i);
             int targetNumber = Character.getNumericValue(c);
             if (targetNumber <= 0 || targetNumber > 9) {
-                throw new IllegalArgumentException("한 자리 자연수만 입력할 수 있습니다");
+                throw new IllegalArgumentException("숫자 입력 범위를 벗어났습니다.");
             }
         }
     }
