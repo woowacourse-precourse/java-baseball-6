@@ -15,11 +15,11 @@ public class Application {
         while (!flag) {
             System.out.println("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            flag = inputVerify(input);
+            flag = verifyInput(input);
         }
         return select();
     }
-    private static boolean inputVerify(String input){
+    private static boolean verifyInput(String input){
         if (input.contains("0")) {
             throw new IllegalArgumentException();
         }
