@@ -3,11 +3,11 @@ package baseball.view.console;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    public static String requestPlayerGuess() {
+    public String requestPlayerGuess() {
         return Console.readLine();
     }
 
-    public static String requestRestartChoice() {
+    public String requestRestartChoice() {
         return Console.readLine();
     }
 }
