@@ -49,12 +49,13 @@ public class BaseballGameController {
                 OutputView.printAnswerMessage();
                 OutputView.printRestartGameMessage();
 
-                String Input = InputView.readRestartNumberInput();
+                String input = InputView.readRestartNumberInput();
+                validateRestartNumber(input);
 
-                if(Input.equals("1")){
+                if(input.equals("1")){
                     baseballGameService = new BaseballGameService();
                 }
-                if(Input.equals("2")){
+                if(input.equals("2")){
                     RestartFlag = false;
                 }
             }
@@ -78,7 +79,10 @@ public class BaseballGameController {
                 }
             }
         }
+    }
 
+    public void validateRestartNumber(String input){
+        if(!input.equals("1")&&!input.equals("2")) throw new IllegalArgumentException();
 
     }
 
