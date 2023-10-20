@@ -10,12 +10,31 @@
 | RQ-006 | Game 재시작 예외 검출 | Player가 재시작 여부를 답했을 경우 1 또는 2가 아닌 경우 예외를 발생합니다. | 10/20 | 장기환 | 0.0.1 |
 
 
-# Player 연관 클래스
+# 클래스
 
 ```mermaid
 classDiagram
+    GameController -- Game
+    GameController -- GameTerminalView
+
+    Game -- PlayerController
+    Game -- RefereeController
+    Game -- Computer
+
     PlayerController -- Player
     PlayerController -- PlayerTerminalView
+
+    RefereeController -- Referee
+    RefereeController -- RefereeTerminalView
+
+    class Computer{
+        -int[] answer
+        -boolean[] pickedMap
+        +Computer()
+        -makeAnswer()
+        +getAnswer()
+        +getPickedMap()
+    }
 
     class Player{
         -int tryCount
@@ -37,5 +56,39 @@ classDiagram
         +answer()
     }
 
+    class Referee {
+        -String exceptionMassage
+        +String getExceptionMassage()
+    }
+    class RefereeTerminalView {
+        +displayException()
+        +displayJudge()
+    }
+    class RefereeController {
+        -Referee referee;
+        -RefereeTerminalView refereeView;
+        +RefereeController()
+        -getQueryDecoding()
+        +judge()
+    }
 
+    class Game {
+        -PlayerController playerController;
+        -RefereeController refereeController;
+        -Computer computer;
+        +Game()
+        +getPlayerController()
+        +getRefereeController()
+        +getComputer()
+    }
+    class GameTerminalView {
+        +display()
+    }
+    class GameController {
+        -Game game;
+        -GameTerminalView gameView;
+        +GameController()
+        -isReStart()
+        +start()
+    }
 ```
