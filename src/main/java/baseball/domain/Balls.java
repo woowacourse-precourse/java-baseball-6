@@ -58,15 +58,12 @@ public class Balls {
         return playResult;
     }
 
-    public BallStatus compare(Ball user) {
-        for (Ball ball : balls) {
-            BallStatus ballStatus = ball.compare(user);
-
-            if (ballStatus != BallStatus.NOTHING) {
-                return ballStatus;
-            }
-        }
-        return BallStatus.NOTHING;
+    public BallStatus compare(Ball ball) {
+        return balls.stream()
+                .map(ball::compare)
+                .filter(BallStatus::isNotNothing)
+                .findFirst()
+                .orElse(BallStatus.NOTHING);
     }
 
     @Override
