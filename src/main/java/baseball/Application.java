@@ -7,12 +7,13 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> computerNumbers;
-        List<Integer> playerGuessNumbers;
-
         displayGameStartMessage();
-        computerNumbers = generateComputerNumbers();
-        playerGuessNumbers = getPlayerGuessNumbers();
+        playGame();
+    }
+
+    public static void playGame() {
+        List<Integer> computerNumbers = generateComputerNumbers();
+        List<Integer> playerGuessNumbers = getPlayerGuessNumbers();
 
         System.out.println(computerNumbers);
         System.out.println(playerGuessNumbers);
