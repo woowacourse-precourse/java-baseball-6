@@ -1,6 +1,6 @@
 package baseball.error;
 
 public interface ErrorException {
-    void checkUserInputValidate(String message);
+    void checkUserInputValidate(String checkNumber);
 
 }
