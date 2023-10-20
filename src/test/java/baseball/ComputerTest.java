@@ -79,7 +79,7 @@ class ComputerTest {
         //when
         int result = computer.judgeScore(answer, number, index);
         //then
-        assertThat(result).isEqualTo(computer.BALL);
+        assertThat(result).isEqualTo(1);
     }
 
 
@@ -93,7 +93,7 @@ class ComputerTest {
         //when
         int result = computer.judgeScore(answer, number, index);
         //then
-        assertThat(result).isEqualTo(computer.STRIKE);
+        assertThat(result).isEqualTo(2);
     }
 
 
@@ -107,6 +107,6 @@ class ComputerTest {
         //when
         int result = computer.judgeScore(answer, number, index);
         //then
-        assertThat(result).isEqualTo(computer.NOTHING);
+        assertThat(result).isEqualTo(0);
     }
 }
