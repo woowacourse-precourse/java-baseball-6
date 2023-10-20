@@ -66,6 +66,11 @@ public class NumberBaseballGame {
         int ball = countBall(user);
         int strike = countStrike(user);
         ball -= strike;
+        printLoopResult(ball, strike);
+        return strike == MAX_NUMBER_LENGTH;
+    }
+
+    private void printLoopResult(int ball, int strike) {
         if (ball > 0) {
             System.out.print(ball + "볼 ");
         }
@@ -76,7 +81,6 @@ public class NumberBaseballGame {
             System.out.print("낫싱");
         }
         System.out.println();
-        return strike == MAX_NUMBER_LENGTH;
     }
 
     private int countBall(List<Integer> user) {
