@@ -13,7 +13,7 @@ public class Application {
         while (!isGameOver) {
             System.out.print("숫자를 입력해주세요: ");
             String in = Console.readLine();
-            if (baseBallService.isValidInput(in))
+            if (!baseBallService.isValidInput(in))
                 throw new IllegalArgumentException();
             if (answer.equals(in)) {
                 System.out.println("3스트라이크");
