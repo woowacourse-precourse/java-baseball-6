@@ -15,6 +15,7 @@ public class Application {
     class Array {
         static char[] getStringToChar(String str) {
             char[] charArr = new char[str.length()];
+
             for (int i=0; i<str.length(); i++){
                 charArr[i] = str.charAt(i);
             }
@@ -22,20 +23,25 @@ public class Application {
         }
         static boolean checkContains(char[] arr, char num) {
             for (int value : arr) {
-                if (value == num) return true;
+                if (value == num) { //동일한 값 존재
+                    return true;
+                }
             }
             return false;
         }
         static boolean checkContains(int[] arr, int num) {
             for (int value : arr) {
-                if (value == num) return true;
+                if (value == num) {
+                    return true;
+                }
             }
             return false;
         }
         static int getIndex(int[] arr, int value) {
             for (int i=0; i<arr.length; i++) {
-                if (arr[i] == value)
+                if (arr[i] == value) {
                     return i;
+                }
             }
             return -1;
         }
@@ -54,9 +60,11 @@ public class Application {
 
             while (nowRandomNumIdx < NUMBER_IDX) {
                 nowRandomNum = this.getNumber();
+                
                 if (!Array.checkContains(number, nowRandomNum)) {
                     number[nowRandomNumIdx++] = nowRandomNum;
                 }
+
             }
         }
         BaseBallGame(String str) {
@@ -65,15 +73,15 @@ public class Application {
             }
         }
 
-        public static void init(BaseBallGame computerAnswer) {
-            BaseBallGame userAnswer = BaseBallGame.getUserAnswer();
+        public static void init (BaseBallGame computerAnswer) {
+            BaseBallGame userAnswer = getUserAnswer();
             GameResult gameResult = new GameResult();
 
             gameResult.compareAnswer(userAnswer, computerAnswer);
             gameResult.printResult();
 
-            if(gameResult.strike != BaseBallGame.NUMBER_IDX) {
-                BaseBallGame.init(computerAnswer);
+            if(gameResult.strike_count != NUMBER_IDX) {
+                init(computerAnswer);
                 return;
             }
 
@@ -81,7 +89,7 @@ public class Application {
 
             if (newComputerAnswer == 1) {
                 computerAnswer = new BaseBallGame();
-                BaseBallGame.init(computerAnswer);
+                init(computerAnswer);
             }
         }
 
@@ -90,7 +98,7 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             String newStartAnswer = readLine();
-            return BaseBallGame.getNewStartAnswer(newStartAnswer);
+            return getNewStartAnswer(newStartAnswer);
         }
 
         private static int getNewStartAnswer(String newStartAnswer) {
@@ -102,8 +110,9 @@ public class Application {
                 throw new IllegalArgumentException();
             }
 
-            if (newAnswer != 1 && newAnswer != 2)
+            if (newAnswer != 1 && newAnswer != 2) {
                 throw new IllegalArgumentException();
+            }
 
             return newAnswer;
         }
@@ -115,30 +124,32 @@ public class Application {
         private static BaseBallGame getUserAnswer() {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = readLine();
-            BaseBallGame.checkInput(userInput);
+            checkInput(userInput);
 
             return new BaseBallGame(userInput);
         }
 
         private static void checkInput(String str) { //IllegalException
-            if (!BaseBallGame.checkLen(str))
+            if (!checkLen(str)) {
                 throw new IllegalArgumentException();
-            if (!BaseBallGame.checkEqual(str))
+            } if (!checkEqual(str)) {
                 throw new IllegalArgumentException();
-            if (!BaseBallGame.checkNum(str))
+            } if (!checkNum(str)) {
                 throw new IllegalArgumentException();
+            }
         }
 
         static boolean checkLen(String str) {
-            return str.length() == BaseBallGame.NUMBER_IDX;
+            return str.length() == NUMBER_IDX;
         }
         static boolean checkEqual(String str) {
             char[] equalNum = new char[str.length()];
             char[] word = Array.getStringToChar(str);
 
             for(int i=0; i<str.length(); i++) {
-                if(Array.checkContains(equalNum, word[i]))
+                if(Array.checkContains(equalNum, word[i])) {
                     return false;
+                }
                 equalNum[i] = word[i];
             }
             return true;
@@ -155,43 +166,45 @@ public class Application {
     }
 
     static class GameResult {
-        int ball = 0, strike = 0;
+        int ball_count = 0, strike_count = 0;
 
-        private static final String BALL = "볼";
-        private static final String STRIKE = "스트라이크";
-        private static final String NOTHING = "낫싱";
+        private static final String ball = "볼";
+        private static final String strike = "스트라이크";
+        private static final String nothing = "낫싱";
 
         private void addBallCount() {
-            this.ball++;
+            this.ball_count++;
         }
         private void addStrikeCount() {
-            this.strike++;
+            this.strike_count++;
         }
 
         void printResult() {
-            if(this.strike != 3) {
-                if (this.ball > 0 && this.strike > 0)
-                    System.out.println(this.ball + BALL + " " + this.strike + STRIKE);
-                else if (this.ball != 0 && this.strike == 0)
-                    System.out.println(this.ball + BALL);
-                else if (this.ball == 0 && this.strike > 0)
-                    System.out.println(this.strike + STRIKE);
-                else if (this.ball == 0 && this.strike == 0)
-                    System.out.println(NOTHING);
-
-            }
-            else {
-                System.out.println(this.strike + "스트라이크"); // 3스트라이크
+            if(this.strike_count != 3) {
+                if (this.ball_count > 0 && this.strike_count > 0) {
+                    System.out.println(this.ball_count + ball + " " + this.strike_count + strike);
+                } else if (this.ball_count != 0 && this.strike_count == 0) {
+                    System.out.println(this.ball_count + ball);
+                } else if (this.ball_count == 0 && this.strike_count > 0) {
+                    System.out.println(this.strike_count + strike);
+                } else if (this.ball_count == 0 && this.strike_count == 0) {
+                    System.out.println(nothing);
+                }
+            } else {
+                System.out.println(this.strike_count + "스트라이크"); // 3스트라이크
             }
         }
 
         void compareAnswer(BaseBallGame userAnswer, BaseBallGame computerAnswer) {
-            int num = 0;
+            int num;
+
             for (int i=0; i<BaseBallGame.NUMBER_IDX; i++) {
                 num = userAnswer.number[i];
 
-                if (!Array.checkContains(computerAnswer.number, num))
+                if (!Array.checkContains(computerAnswer.number, num)) {
                     continue;
+                }
+
                 if (i == Array.getIndex(computerAnswer.number, num)) {
                     addStrikeCount();
                     continue;
