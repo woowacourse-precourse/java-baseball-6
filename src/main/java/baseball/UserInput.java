@@ -5,7 +5,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class UserInput {
-    public List<Integer> getInputFromUser(){
+    public List<Integer> getUserInput(){
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
 
