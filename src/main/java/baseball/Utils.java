@@ -1,12 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Utils {
 
-
+    Exceptions exceptions = new Exceptions();
 
     public List<Integer> makeBaseball(){
         List<Integer> computer = new ArrayList<>();
@@ -16,7 +17,7 @@ public class Utils {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer); // 테스트용으로 정답 출력 추후 삭제
+        System.out.println(computer);
         return computer;
     }
 
@@ -72,6 +73,14 @@ public class Utils {
             System.out.println("낫싱");
         }
     }
+
+//    public String inputNumber(){
+//        String num = Console.readLine();
+//        exceptions.isInvalidNumberDuplication(num);
+//        exceptions.isInvalidNumberLength(num);
+//        return num;
+//    }
+
 
 
 }

@@ -15,6 +15,8 @@ public class Baseball {
         while (units.getStrike() != 3) {
             System.out.print("숫자를 입력해주세요 : ");
             String inputNum = Console.readLine();
+            exception.isInvalidNumberDuplication(inputNum);
+            exception.isInvalidNumberLength(inputNum);
             playBall(computer, inputNum, units);
             result(units);
         }
@@ -26,9 +28,9 @@ public class Baseball {
 
     public boolean restartBall(String input){
         exception.isInvalidNumberRestart(input);
-        if (input == "1"){
+        if (input.equals("1")){
             run();
-        }else if (input == "2") {
+        }else if (input.equals("2")) {
             return true;
         }
         return false;
