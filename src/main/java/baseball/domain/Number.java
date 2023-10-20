@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Number {
 
@@ -16,6 +17,14 @@ public class Number {
 
         if (!isValid) {
             throw new IllegalArgumentException("숫자는 1에서 9 사이여야 합니다.");
+        }
+    }
+
+    public void validateDuplicateNumber(List<Integer> number) {
+        List<Integer> numberStorage = number.stream().distinct().toList();
+
+        if(numberStorage.size() != 3) {
+            throw new IllegalArgumentException("중복 숫자는 허용하지 않습니다.");
         }
     }
 
