@@ -14,12 +14,16 @@ public class RandomBallsGenerator implements BallsGenerator {
     @Override
     public Balls generateBalls() {
         balls.clear();
+        addBalls();
+        return Balls.from(balls);
+    }
+
+    private void addBalls() {
         while (balls.size() < NUMBER_OF_BALLS) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!balls.contains(randomNumber)) {
                 balls.add(randomNumber);
             }
         }
-        return Balls.from(balls);
     }
 }
