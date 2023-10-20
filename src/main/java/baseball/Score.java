@@ -15,14 +15,6 @@ public class Score {
         return ball;
     }
 
-    public void setStrike(int strike) {
-        this.strike = strike;
-    }
-
-    public void setBall(int ball) {
-        this.ball = ball;
-    }
-
     public static Score getScore(List<Integer> answerNumbers, List<Integer> userNumbers) {
 
         Score score = new Score();
