@@ -6,6 +6,7 @@ import baseball.game.BaseBallGameResult;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static baseball.game.BaseBallGameMessage.*;
@@ -44,7 +45,9 @@ public class Console {
         validateInput3DigitNumber(inputString);
         validateInputNotDuplicate(inputString);
 
-        return List.of(Integer.parseInt(inputString));
+        return Arrays.stream(inputString.split(""))
+                .map(Integer::parseInt)
+                .toList();
     }
 
     public static String inputRestartOrTerminate() {
