@@ -3,6 +3,7 @@ package baseball.computer;
 import static baseball.validator.NumberValidator.MAX_VALUE;
 import static baseball.validator.NumberValidator.MIN_VALUE;
 import static baseball.validator.NumberValidator.isBelowRequiredLength;
+import static baseball.validator.NumberValidator.validateDuplicateNumber;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashSet;
@@ -18,6 +19,7 @@ public class RandomComputerNumberGenerator {
 
         while (isBelowRequiredLength(numbers.size())) {
             int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+            validateDuplicateNumber(randomNumber);
             numbers.add(new Number(randomNumber));
         }
     }
