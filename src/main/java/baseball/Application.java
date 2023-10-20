@@ -17,6 +17,11 @@ public class Application {
 
     private static final String STRING_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
+    private static final String STRING_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+            + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String STRING_START_INPUT = "1";
+    private static final String STRING_EXIT_INPUT = "2";
+
     public static void main(String[] args) {
         initialize();
         while (!gameState.isInExit()) {
@@ -104,6 +109,20 @@ public class Application {
     }
 
     public static void handleEndScene() {
+        System.out.println(STRING_END_MESSAGE);
+
+        String userInput;
+        while (gameState.isInEnd()) {
+            userInput = Console.readLine();
+            handleEndSceneInput(userInput);
+        }
+    }
+
+    public static void handleEndSceneInput(String userInput) {
+        switch (userInput) {
+            case STRING_START_INPUT -> gameState = GameState.GAME;
+            case STRING_EXIT_INPUT -> gameState = GameState.EXIT;
+        }
     }
 
     private static void handleExitScene() {
