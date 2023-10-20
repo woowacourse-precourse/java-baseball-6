@@ -48,6 +48,12 @@ public class NumberValidator {
         return resultSet;
     }
 
+    public static void validateRequiredLength(String input) {
+        if (input.length() != LENGTH) {
+            throw new IllegalArgumentException(input + "의 길이는 " + LENGTH + "이어야 합니다.");
+        }
+    }
+
     public static boolean isBelowRequiredLength(int size) {
         return size < LENGTH;
     }
