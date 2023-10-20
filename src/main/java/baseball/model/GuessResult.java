@@ -20,22 +20,6 @@ public class GuessResult {
         this.ballCount++;
     }
 
-    public String getResult() {
-        if (isNothing()) {
-            return NOTHING_RESULT;
-        }
-
-        if (ballCount == INITIAL_ZERO_COUNT) {
-            return strikeCount + STRIKE_RESULT;
-        }
-
-        if (strikeCount == INITIAL_ZERO_COUNT) {
-            return ballCount + BALL_RESULT;
-        }
-
-        return ballCount + BALL_RESULT + " " + strikeCount + STRIKE_RESULT;
-    }
-
     public int getBallCount() {
         return ballCount;
     }

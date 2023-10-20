@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import static baseball.controller.mapper.GuessResultMapper.resultToString;
+
 import baseball.controller.dto.UserNumbersDto;
 import baseball.model.GameContinueNumber;
 import baseball.model.GuessResult;
@@ -34,7 +36,7 @@ public class GameController {
             UserNumbers userNumbers = numbersRequest.toUserNumbers();
 
             GuessResult result = opponent.calculateResult(userNumbers);
-            OutputView.showResult(result.getResult());
+            OutputView.showResult(resultToString(result));
             if (result.isGameEnd()) {
                 break;
             }
