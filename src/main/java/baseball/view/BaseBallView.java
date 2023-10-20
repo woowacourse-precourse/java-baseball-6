@@ -2,6 +2,8 @@ package baseball.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.domain.Result;
+
 
 public class BaseBallView {
 
@@ -17,14 +19,19 @@ public class BaseBallView {
         ConsolePrint.printStart();
     }
 
-    public String continueInputView() {
-        ConsolePrint.printFinish();
+    public void resultGameView(Result result) {
+        ConsolePrint.printResult(result);
+    }
+
+
+    public String numbersInputView() {
+        ConsolePrint.printNumberInput();
 
         return readLine();
     }
 
-    public String numbersInputView() {
-        ConsolePrint.printNumberInput();
+    public String continueInputView() {
+        ConsolePrint.printFinish();
 
         return readLine();
     }
