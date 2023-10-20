@@ -1,4 +1,6 @@
 package baseball;
+import controller.selectComputerNum;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
@@ -6,10 +8,13 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true) {
-            System.out.println("숫자를 입력해주세요 : ");
-            char[] selectUser = readLine().toCharArray();
+            selectComputerNum selectComputer = new selectComputerNum();//create Object
+            selectComputer.randomlySelectComputerNum();//computer randomly select number
 
-            User user = new User(selectUser);
+            System.out.println("숫자를 입력해주세요 : ");//input
+            char[] selectUser = readLine().toCharArray();//user select number
+
+            User user = new User(selectUser);//create Object
         }
     }
 
