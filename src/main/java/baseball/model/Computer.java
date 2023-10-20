@@ -1,7 +1,5 @@
 package baseball.model;
 
-import baseball.util.MessageUtil;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
