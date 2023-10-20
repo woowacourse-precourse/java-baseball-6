@@ -1,12 +1,13 @@
 package baseball.controller;
 
-import static baseball.properties.Properties.DIGIT_END;
-import static baseball.properties.Properties.DIGIT_START;
-import static baseball.properties.Properties.GAME_SIZE;
+import static baseball.properties.Properties.*;
+
+import java.util.List;
 
 import baseball.service.GameService;
 import baseball.utils.RandomUtils;
 import baseball.view.View;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
@@ -17,15 +18,14 @@ public class GameController {
         initGame();
     }
 
-
     public void initGame() {
         this.gameService = new GameService(RandomUtils.getRandomNumbers(GAME_SIZE, DIGIT_START, DIGIT_END));
-        //getUserInput();
+        getUserInput();
     }
 
     public void getUserInput() {
         View.gameInput();
         String userInputString = Console.readLine();
+        List<Integer> userInpuNumbers = gameService.parseInput(userInputString);
     }
-
 }
