@@ -105,4 +105,14 @@ class UtilTest {
         Assertions.assertEquals(9, integerList.get(2));
         Assertions.assertEquals(3, integerList.size());
     }
+
+    @Test
+    void validateExitCodeTest() {
+
+        //given, when
+        String input = "0";
+
+        //then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Util.validateExitCode(input));
+    }
 }
