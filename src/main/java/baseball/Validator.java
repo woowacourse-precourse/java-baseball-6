@@ -2,8 +2,19 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
+import static baseball.Constant.*;
 
 public class Validator {
+
+    public static void checkEndOrRestart(String command){
+        List<String> commandList;
+        commandList = List.of(RESTART_GAME, STOP_GAME);
+        if(!commandList.contains(command)){
+            throw new IllegalArgumentException();
+        }
+    }
 
     public static void checkNumberLength(String number) {
         // 입력받은 값의 길이가 3이 아닐 경우
