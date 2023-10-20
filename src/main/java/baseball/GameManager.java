@@ -29,6 +29,7 @@ public class GameManager {
     public boolean isEnd() {
         if (!gameService.endOrRestartGame(view.endGameAndRestartInputNumber())) {
             gameService.generateNumber();
+
             return false;
         }
 

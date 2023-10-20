@@ -15,8 +15,11 @@ public class GameResult {
         this.ball = 0;
 
         for (int i = 0; i < userInputNumbers.size(); i++) {
-            if (baseballNumbers.get(i) == userInputNumbers.get(i)) this.strike++;
-            else if (baseballNumbers.contains(userInputNumbers.get(i))) this.ball++;
+            if (baseballNumbers.get(i) == userInputNumbers.get(i)) {
+                this.strike++;
+            } else if (baseballNumbers.contains(userInputNumbers.get(i))) {
+                this.ball++;
+            }
         }
     }
 

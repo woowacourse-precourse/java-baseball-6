@@ -59,6 +59,7 @@ public class InputValidator {
 
     private int validateNumberRange(String input) {
         int endNum = Integer.valueOf(input);
+
         if (endNum != NEW_GAME.getNum() && endNum != END_GAME.getNum()) {
             throw new IllegalArgumentException(INVALID_END_INPUT_NUMBER_ERROR.getErrorMsg());
         }

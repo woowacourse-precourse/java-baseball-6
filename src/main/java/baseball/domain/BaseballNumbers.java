@@ -23,7 +23,10 @@ public class BaseballNumbers {
 
         while (numbers.size() < 3) {
             int num = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(num)) numbers.add(num);
+
+            if (!numbers.contains(num)) {
+                numbers.add(num);
+            }
         }
 
         return Collections.unmodifiableList(numbers);

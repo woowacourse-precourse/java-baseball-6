@@ -15,7 +15,7 @@ public class Application {
             gameManager.play();
 
             if (gameManager.isWin()) {
-                if(gameManager.isEnd()) break;
+                if (gameManager.isEnd()) break;
             }
         }
     }

@@ -6,7 +6,7 @@ import baseball.domain.InputValidator;
 
 import java.util.List;
 
-import static baseball.InputConstant.*;
+import static baseball.InputConstant.END_GAME;
 
 public class GameService {
 
