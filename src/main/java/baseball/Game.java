@@ -16,13 +16,13 @@ public class Game {
     }
 
     void run(){
-        while (true){
+        int continueDecision = 1;
+        while (continueDecision==1){
             System.out.println("숫자 야구 게임을 시작합니다");
             ArrayList<Integer> computerAnswer = settingNewGame();
             start(computerAnswer);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            if(player.getContinueDecision()==2)
-                break;
+            continueDecision = player.getContinueDecision();
         }
     }
 
