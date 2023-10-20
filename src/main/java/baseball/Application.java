@@ -9,6 +9,7 @@ public class Application {
         List<Integer> computerNums;
 
         computerNums = choiceComputerNums();
+        //commit test
 
     }
 
