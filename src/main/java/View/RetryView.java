@@ -6,6 +6,10 @@ public class RetryView {
 
     private RetryView(){};
 
+    public static RetryView getInstance(){
+        return retryview;
+    }
+
     public void RetryPrint(){
         System.out.println(Message.GAME_END_RETRY.message);
     }
