@@ -9,7 +9,7 @@ public class Computer {
     private static final int LENGTH_RANDOMNUMBERS = 3;
     private List<Integer> randomNumbers;
 
-    public List<Integer> getRandomNumbers() {
+    public Computer() {
         randomNumbers = new ArrayList<>();
 
         while (randomNumbers.size() < LENGTH_RANDOMNUMBERS) {
@@ -19,10 +19,9 @@ public class Computer {
                 randomNumbers.add(randomNumber);
             }
         }
-
-        return randomNumbers;
     }
 
-
-
+    public List<Integer> getRandomNumbers() {
+        return randomNumbers;
+    }
 }
