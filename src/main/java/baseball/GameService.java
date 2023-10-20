@@ -16,14 +16,22 @@ public class GameService {
 
     public void computerNumberComparePlayerInputNumber(Player player, List<Integer> computer) {
         for (int i = 0; i < computer.size(); i++) {
-            if(computer.get(i) == player.getPlayerNumber(i)){
+            if (computer.get(i) == player.getPlayerNumber(i)) {
                 strikeBallCount.plusStringCount();
                 continue;
             }
-            if(computer.contains(player.getPlayerNumber(i))){
+            if (computer.contains(player.getPlayerNumber(i))) {
                 strikeBallCount.plusBallCount();
             }
         }
+    }
+
+    public int getStrikeCount() {
+        return strikeBallCount.getStrike();
+    }
+
+    public int getBallCount() {
+        return strikeBallCount.getBall();
     }
 
     private int[] toIntArray(String inputPlayerNumber) {
