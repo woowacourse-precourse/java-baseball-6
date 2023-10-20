@@ -24,7 +24,7 @@ public class GameController {
         this.gameState = new GameState();
         this.generateController = new GenerateController();
         this.validateController = new ValidateController();
-        this.playController = new PlayController(gameState.getMaximumNumberLength());
+        this.playController = new PlayController();
     }
 
     public void startGame() {
