@@ -28,4 +28,5 @@
 - `printAskMessage()` : "숫자를 입력하세요 :" 
 - `printStartMessage()` : 시작 메세지 출력
 - `printEndMessage()` : 종료 메세지 출력
+- `printRetryMessage()` : 다시시작 메세지 출력
 

@@ -5,15 +5,14 @@ import baseball.model.User;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GameService {
     //TODO
-    // - setGame() 게임에 대한 기본 정보를 세팅하는 메소드
-    // - startGame() 게임을 시작시키는 메소드
     // - stopGame() 게임을 종료시키는 메소드
     // - retryGame() 게임을 재시작하는 메소드
+    // - checkScore()
+    //
 
     private final int NUM_SIZE = 3;
     private final int NUM_START = 1;
@@ -22,18 +21,25 @@ public class GameService {
     private Game game;
     private User user = new User();
     private List<Integer> computer = new ArrayList<>();
+    private Message message = new Message();
+
     public void setGame(){
         game = new Game(NUM_SIZE,NUM_START,NUM_END);
         computer = game.getComputer();
     }
 
     public void startGame(){
+        message.printStartMessage();
         setGame();
 
         //숫자, 자리 둘다 맞으면 strike, 숫자만 맞으면 ball
-        int strikeCount = 0, ballCount = 0;
+        int strikeCount = 0;
 
-
+        while(strikeCount != NUM_SIZE){
+            int[] score = checkScore(user.getUserNum(NUM_SIZE));
+            message.printScore(score[0],score[1]);
+            strikeCount = score[0];
+        }
     }
 
     public void stopGame(){
@@ -44,4 +50,13 @@ public class GameService {
 
     }
 
+    public int[] checkScore(int[] user){
+        int[] score = new int[2];
+        for(int i=0;i<user.length;i++){
+            if(!computer.contains(user[i])) continue;
+            if(computer.indexOf(user[i]) == i) score[0]++;
+            else score[1]++;
+        }
+        return score;
+    }
 }
