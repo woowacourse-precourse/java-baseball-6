@@ -20,7 +20,7 @@ public class InputValidation {
     }
     public void coinValidation(int coin) {
         try {
-            if (coin != 1 && coin != 2) throw new IllegalArgumentException("3자리 수를 입력해야합니다.");
+            if (coin != 1 && coin != 2) throw new IllegalArgumentException("1또는 2를 입력하세요.");
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
