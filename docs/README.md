@@ -31,27 +31,36 @@
 
    플레이어의 상태와 행동을 관리하는 클래스
 
-    - 수를 반환하는 기능
+   - 수를 반환하는 기능
 
 
 2. Computer.java
 
    컴퓨터의 상태와 행동을 관리하는 클래스
 
-    - 수를 반환하는 기능
+   - 같은 숫자가 같은 자리에 있는지 여부를 반환하는 기능
+   - 숫자가 컴퓨터의 수에 포함되는지의 여부를 반환하는 기능
 
 
 3. Comparator.java
 
    두 수를 비교하는 클래스
 
-   - 두 수를 비교하는 기능
+   - 두 수 비교 후 결과 객체를 반환하는 기능
+
+
+4. Result.java
+
+   게임 결과에 대한 상태와 행동을 관리하는 클래스
+
    - 게임 종료 여부를 반환하는 기능
    - 스트라이크 횟수를 반환하는 기능
    - 볼 횟수를 반환하는 기능
+   - 스트라이크 존재 여부를 반환하는 기능
+   - 볼 존재 여부를 반환하는 기능
 
 
-4. ConsoleView.java
+5. ConsoleView.java
 
    입력과 출력을 담당하는 클래스
 
@@ -66,7 +75,7 @@
    - 게임 종료 여부 입력 기능
 
 
-5. GameController.java
+6. GameController.java
 
    게임 제어를 담당하는 클래스
 
@@ -76,20 +85,22 @@
       - 플레이어가 숫자를 맞추거나 예외가 발생하기 전까지 반복
 
 
-6. NumberGenerator.java
+7. NumberProvider.java
 
-   서로 다른 수를 생성하는 클래스
+   수에 대한 기능을 제공하는 클래스
 
-    - 임의의 수를 생성하는 기능
+   - 임의의 수를 생성하는 기능
+   - 숫자 타입을 변환하는 기능
+      - List\<String> to List\<Integer>
 
 
-7. Validation.java
+8. Validation.java
 
    사용자 입력에 대한 예외처리를 담당하는 클래스
 
-    - 서로 다른 3자리 수에 대한 예외
-        - 3자리 수가 아니라면 “IllegalArgumentException” 발생
-        - 1~9로 이루어진 수가 아니라면 “IllegalArgumentException” 발생
-        - 수가 중복됐다면 “IllegalArgumentException” 발생
-    - 게임 진행 여부에 대한 예외
-        - 1 또는 2가 아니라면 “IllegalArgumentException” 발생
+   - 서로 다른 3자리 수에 대한 예외
+      - 3자리 수가 아니라면 “IllegalArgumentException” 발생
+      - 1~9로 이루어진 수가 아니라면 “IllegalArgumentException” 발생
+      - 수가 중복됐다면 “IllegalArgumentException” 발생
+   - 게임 진행 여부에 대한 예외
+      - 1 또는 2가 아니라면 “IllegalArgumentException” 발생
