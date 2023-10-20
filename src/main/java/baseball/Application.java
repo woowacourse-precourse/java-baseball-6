@@ -15,8 +15,7 @@ public class Application {
         this.compare = new Compare();
     }
 
-    public void run(String... inputs) {
-        int inputIndex = 0;
+    public void run() {
         boolean restartGame = true;
 
         while (restartGame) {
@@ -38,7 +37,7 @@ public class Application {
                         correctGuess = true;
                     }
                 } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("숫자를 입력해주세요.");
+                    throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
                 }
             }
 
@@ -48,10 +47,13 @@ public class Application {
             if (againGame == 2) {
                 restartGame = false;
             }
+            else if (againGame != 1) {
+                throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+            }
         }
     }
 
-    public static void main(String[] args) { // main method will be used in actual application run
-        new Application().run(args);
+    public static void main(String[] args) {
+        new Application().run();
     }
 }

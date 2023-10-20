@@ -2,6 +2,7 @@ package baseball.logic;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -75,5 +76,21 @@ class CompareTest {
 
         // then
         assertEquals("3자리의 양의 정수를 입력해야 됩니다. 사용자의 입력 : " + userInput, illegalArgumentException.getMessage());
+    }
+
+    @DisplayName("사용자가 중복된 숫자가 입력했을 경우 IllegalArgumentException 발생")
+    @Test
+    void confirmInputDuplicatedNumbers() {
+        // given
+        List<Integer> computerInput = List.of(4, 2, 5);
+        String userInput = "112";
+
+        // when
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            compare.getGameResult(computerInput, userInput);
+        });
+
+        // then
+        assertEquals("서로 다른 양의 정수 3자리가 입력되어야 합니다. 사용자의 입력 : " + userInput, illegalArgumentException.getMessage());
     }
 }
