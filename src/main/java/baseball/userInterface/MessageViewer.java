@@ -15,6 +15,7 @@ public class MessageViewer {
 
     public void printResultMsg(int ballCount, int strikeCount) {
         StringBuilder resultMsg = new StringBuilder();
+
         if (ballCount == 0 && strikeCount == 0)
             resultMsg.append("낫싱");
 
