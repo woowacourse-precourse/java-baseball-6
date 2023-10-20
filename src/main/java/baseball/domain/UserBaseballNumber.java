@@ -10,6 +10,7 @@ import static baseball.handler.ErrorHandler.INVALID_COUNT;
 
 public class UserBaseballNumber {
 
+    private static final int VALID_VALUES_LENGTH = 3;
     private List<String> userValues;
 
     public UserBaseballNumber(List<String> userValues) {
@@ -20,7 +21,7 @@ public class UserBaseballNumber {
     }
 
     private void validate(List<String> userValues) {
-        if (userValues.size() != 3) {
+        if (userValues.size() != VALID_VALUES_LENGTH) {
             throw INVALID_COUNT.getException();
         }
     }
