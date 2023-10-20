@@ -1,24 +1,26 @@
 package baseball.controller;
 
-import baseball.domain.BaseballNumber;
-import baseball.domain.GameData;
+import baseball.domain.gamedata.BaseballNumber;
+import baseball.domain.gamedata.GameData;
 import baseball.domain.GameResult;
 import baseball.model.Model;
 import baseball.model.ModelConst;
 import baseball.service.GameService;
 import baseball.view.GameView;
-import java.util.HashMap;
 
 public class NumberBaseballGameController implements GameController {
 
     private final GameService gameService;
     private final GameView view;
+    private final Model model;
 
     private boolean gameContinue;
 
-    public NumberBaseballGameController(GameService gameService, GameView view) {
+    public NumberBaseballGameController(final GameService gameService, final GameView view,
+            final Model model) {
         this.gameService = gameService;
         this.view = view;
+        this.model = model;
         this.gameContinue = true;
     }
 
@@ -41,36 +43,36 @@ public class NumberBaseballGameController implements GameController {
 
     private GameResult performMainContent() {
         view.printAnnouncementForInputAnswer();
-        Model model = receiveUserInput();
 
-        String inputData = getInputData(model);
+        String inputData = receiveUserInput();
 
-        GameData baseballNumber = new BaseballNumber(inputData);
+        GameData baseballNumber = BaseballNumber.of(inputData);
         return gameService.calculateResult(baseballNumber);
     }
 
-    private void printResult(GameResult result) {
-        Model model = new Model(new HashMap<>());
+    private void printResult(final GameResult result) {
         model.setAttribute(ModelConst.RESULT, result);
-        view.printGameResult(model);
+        view.printGameResult();
     }
 
-    private void updateValueOfGameContinue(GameResult result) {
-        if (result.missionComplete()) {
-            view.printAnnouncementForRestart();
-            Model model = view.conveyUserInput();
-            gameContinue = Menu.restart(
-                    getInputData(model)
-            );
+    private void updateValueOfGameContinue(final GameResult result) {
+        if (!result.isCompleted()) {
+            return;
+        }
 
+        view.printAnnouncementForRestart();
+        gameContinue = Menu.restart(receiveUserInput());
+        if (gameContinue) {
+            gameService.init();
         }
     }
 
-    private Model receiveUserInput() {
-        return view.conveyUserInput();
+    private String receiveUserInput() {
+        view.conveyUserInput();
+        return getInputData();
     }
 
-    private String getInputData(Model model) {
+    private String getInputData() {
         return (String) model.getAttribute(ModelConst.INPUT_DATA)
                 .orElseThrow(IllegalArgumentException::new);
     }
