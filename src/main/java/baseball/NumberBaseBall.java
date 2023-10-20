@@ -33,7 +33,7 @@ public class NumberBaseBall {
         while (mind == WANNA_KEEP_PLAYING){
             messageViewer.printInputRequestMsg();
             userAction.inputAnswer(inputValidator);
-            score = numberChecker.checkNumber(userAction.user.numberList, computerAction.computer.numberList);
+            score = numberChecker.checkNumber(userAction.getNumberList(), computerAction.getNumberList());
             messageViewer.printResultMsg(score.ballCount, score.strikeCount);
 
             mind = checkKeepGoing(score.strikeCount);
