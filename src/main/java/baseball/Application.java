@@ -41,6 +41,9 @@ public class Application {
                 String resumeInput = Console.readLine();
                 ResumeValidator.assertResumeInput(resumeInput, RESTART, END);
                 int resumeNumber = Integer.parseInt(resumeInput);
+                if (resumeNumber == RESTART) {
+                    computerNumber = NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
+                }
                 if (resumeNumber == END) {
                     playWant = false;
                 }
