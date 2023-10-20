@@ -7,6 +7,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,5 +103,20 @@ class ApplicationTest extends NsTest {
 
         // then
         assertThat(hintResult).containsAll(hints);
+    }
+
+    @DisplayName("유저의 랜덤 입력 숫자와, 컴퓨터의 랜덤 숫자중 같은 것의 갯수를 구한다.")
+    @ParameterizedTest
+    @CsvSource({"1,2,3,3"})
+    public void getSameNumber2ComputerTest(int num1, int num2, int num3, int expectCntSameNum) throws Exception {
+        // given
+        List<Integer> computerList = new ArrayList<>(List.of(1, 2, 3));
+        List<Integer> userList = new ArrayList<>(List.of(num1, num2, num3));
+
+        // when
+        int result = gameStandard.getSameNumber2Computer(computerList, userList);
+
+        // then
+        assertThat(result).isEqualTo(expectCntSameNum);
     }
 }
