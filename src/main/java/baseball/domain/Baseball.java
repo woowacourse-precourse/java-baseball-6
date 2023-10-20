@@ -39,8 +39,7 @@ public class Baseball {
 
     @Override
     public String toString() {
-        return "Baseball{" +
-                "number=" + number +
-                '}';
+        return "Baseball{" + "number=" + number + '}';
     }
+
 }

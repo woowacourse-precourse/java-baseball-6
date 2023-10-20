@@ -10,7 +10,7 @@ public class Computer {
 
     private static final int CAPACITY = 3;
 
-    private List<Baseball> baseballs = new ArrayList<>();
+    private final List<Baseball> baseballs = new ArrayList<>();
 
     public List<Baseball> generateBaseball() {
         if (!baseballs.isEmpty()) baseballs.clear();
@@ -25,7 +25,8 @@ public class Computer {
     }
 
     private boolean isDuplicatedBaseball(Baseball baseball) {
-        if (this.baseballs.contains(baseball)) return true;
+        if (this.baseballs.contains(baseball))
+            return true;
         return false;
     }
 
