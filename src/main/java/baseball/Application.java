@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -23,7 +25,7 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String input = getInput(InputType.FIND);
 
-            isFinish = compare(input, computerNum);
+            isFinish = checkFinish(input, computerNum);
         }
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -59,10 +61,44 @@ public class Application {
         return false;
     }
 
-    private static boolean compare(String input, String computerNum) {
+    private static boolean checkFinish(String input, String computerNum) {
+        Map<String, Integer> cnt = compare(input, computerNum);
+
+        if (cnt.get("strike") == 3) {
+            printFinish();
+            return true;
+        }
+
+        printResult(cnt);
+        System.out.println(computerNum); //TODO 확인용, 나중에 삭제
+        return false;
+    }
+
+    private static void printResult(Map<String, Integer> cnt) {
+        StringBuilder sb = new StringBuilder();
+        if (cnt.get("ball")==0 && cnt.get("strike")==0) {
+            sb.append("낫싱");
+        } else {
+            if (cnt.get("ball")!=0) {
+                sb.append(cnt.get("ball") + "볼 ");
+            }
+
+            if (cnt.get("strike")!=0) {
+                sb.append(cnt.get("strike") + "스트라이크");
+            }
+        }
+
+        System.out.println(sb);
+    }
+
+    private static void printFinish() {
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private static Map<String, Integer> compare(String input, String computerNum) {
         int strikeCnt = 0;
         int ballCnt = 0;
-        StringBuilder sb = new StringBuilder();
 
         for (int i=0; i<input.length(); i++) {
             for (int j=0; j<computerNum.length(); j++) {
@@ -76,29 +112,11 @@ public class Application {
             }
         }
 
-        if (strikeCnt==3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        Map<String, Integer> map = new HashMap<>();
+        map.put("strike", strikeCnt);
+        map.put("ball", ballCnt);
 
-            return true;
-        } else {
-            if (ballCnt==0 && strikeCnt==0) {
-                sb.append("낫싱");
-            } else {
-                if (ballCnt!=0) {
-                    sb.append(ballCnt + "볼 ");
-                }
-
-                if (strikeCnt!=0) {
-                    sb.append(strikeCnt + "스트라이크");
-                }
-            }
-
-            System.out.println(sb);
-            System.out.println(computerNum);
-        }
-
-        return false;
+        return map;
     }
 
     private static String makeRandomNumber() {
