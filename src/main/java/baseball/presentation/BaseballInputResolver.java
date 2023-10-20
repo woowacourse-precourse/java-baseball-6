@@ -39,5 +39,37 @@ public class BaseballInputResolver {
         }
     }
 
+    public boolean inputIsRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
 
+        validRestartInput(input);
+
+        return GameRestartFlag.isRestart(input);
+    }
+
+    private void validRestartInput(String input) {
+        if (!GameRestartFlag.isValid(input)) {
+            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
+        }
+    }
+
+    private enum GameRestartFlag {
+        RESTART("1"),
+        END("2");
+
+        private final String value;
+
+        GameRestartFlag(String value) {
+            this.value = value;
+        }
+
+        public static boolean isRestart(String input) {
+            return RESTART.value.equals(input);
+        }
+
+        public static boolean isValid(String value) {
+            return RESTART.value.equals(value) || END.value.equals(value);
+        }
+    }
 }
