@@ -33,4 +33,8 @@ public class Balls {
             throw new IllegalArgumentException("3개의 숫자를 입력해야 합니다.");
         }
     }
+
+    public List<Integer> getBalls(){
+        return balls;
+    }
 }
