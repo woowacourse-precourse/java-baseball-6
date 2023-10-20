@@ -27,13 +27,11 @@ public class NumberChecker {
         int ballCount = 0;
         int strikeCount = 0;
         for (int i = 0; i < user.size(); i++) {
-            for (int j = 0; j < computer.size(); j++) {
-                if (i == j && user.get(i).equals(computer.get(j)))
-                    strikeCount += 1;
-                else if (user.get(i).equals(computer.get(j))) {
-                    ballCount += 1;
-                }
-            }
+            if (user.get(i).equals(computer.get(i)))
+                strikeCount++;
+            else if (computer.contains(user.get(i)))
+                ballCount++;
+
         }
         ballAndStrikeCounts[0] = ballCount;
         ballAndStrikeCounts[1] = strikeCount;
