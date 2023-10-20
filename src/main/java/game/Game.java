@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static validation.Constant.*;
+
 import validation.Validation;
 
 public class Game {
@@ -15,23 +16,6 @@ public class Game {
     public Game() {
         answer = makeRandomNumber();
         printAnswer(answer);
-    }
-
-    public static void printAnswer(List<Integer> inputAnswer) {
-        System.out.println("answer : " + inputAnswer);
-    }
-
-    public static void set() {
-        System.out.println(START_STRING);
-        Game game;
-        do {
-            game = new Game();
-            game.start();
-        } while (game.restart());
-    }
-
-    private void start() {
-        inputGuessNumber();
     }
 
     private List<Integer> makeRandomNumber() {
@@ -45,15 +29,32 @@ public class Game {
         return number;
     }
 
-    private void inputGuessNumber() {
+    private static void printAnswer(List<Integer> inputAnswer) {
+        System.out.println("answer : " + inputAnswer);
+    }
+
+    public static void set() {
+        System.out.println(START_STRING);
+        Game game;
+        do {
+            game = new Game();
+            game.start();
+        } while (restart());
+    }
+
+    private void start() {
+        GuessNumber();
+    }
+
+
+    private void GuessNumber() {
         String inputNumber;
         do {
             System.out.print(INPUT_STRING);
             inputNumber = Console.readLine();
-            Validation.validationNumberCheck(inputNumber);
+            Validation.inputValidationCheck(inputNumber);
         } while (!equalToAnswer(inputNumber));
     }
-
 
 
     private static boolean equalToAnswer(String inputNumber) {
@@ -71,18 +72,17 @@ public class Game {
     private static int[] changeToIntegerList(String inputNumber) {
         int[] inputList = new int[NUMBER_SIZE];
         for (int i = 0; i < NUMBER_SIZE; i++) {
-            try {
-                inputList[i] = Character.getNumericValue(inputNumber.charAt(i));
-            } catch (IllegalArgumentException e) {
+            char input = inputNumber.charAt(i);
+            if (!Character.isDigit(input)) {
                 throw new IllegalArgumentException(WRONG_INPUT_TYPE);
             }
+            inputList[i] = Character.getNumericValue(input);
         }
         return inputList;
     }
 
     private static int getStrike(int[] inputNumber) {
         int strike = 0;
-
         for (int i = 0; i < NUMBER_SIZE; i++) {
             if (samePosition(inputNumber[i], answer.get(i))) {
                 strike++;
@@ -100,7 +100,6 @@ public class Game {
 
     private static int getBall(int[] inputNumber) {
         int ball = 0;
-
         for (int i = 0; i < NUMBER_SIZE; i++) {
             if (isInAnswer(inputNumber[i], answer.get(i))) {
                 ball++;
@@ -110,17 +109,17 @@ public class Game {
     }
 
     private static boolean isInAnswer(int ithInput, int ithAnswer) {
-            if (ithInput != ithAnswer && answer.contains(ithInput)) {
-                return true;
-            }
-            return false;
+        if (ithInput != ithAnswer && answer.contains(ithInput)) {
+            return true;
         }
+        return false;
+    }
 
     private static void printResult(int strike, int ball) {
         printBall(ball);
         printStrike(strike);
         System.out.println();
-        if(isNothing(strike, ball)) {
+        if (isNothing(strike, ball)) {
             printNothing();
         }
     }
@@ -157,7 +156,7 @@ public class Game {
         return false;
     }
 
-    private boolean restart() {
+    private static boolean restart() {
         System.out.println(RESTART_STRING);
         int inputNumber = Validation.askRestart();
 

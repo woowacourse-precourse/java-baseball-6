@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import static validation.Constant.*;
 
 public class Validation {
-    public static void validationNumberCheck(String inputString) {
+    public static void inputValidationCheck(String inputString) {
         if (inputString.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException(WRONG_INPUT_SIZE);
         }
