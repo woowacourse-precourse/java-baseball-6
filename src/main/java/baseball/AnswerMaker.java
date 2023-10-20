@@ -16,14 +16,6 @@ public class AnswerMaker {
         return (Randoms.pickNumberInRange(min, max));
     }
 
-    public List<Integer> makeThreeDifferentNumberList(int min, int max) {
-        Set<Integer> numbers = new HashSet<>();
-        while (numbers.size() < 3) {
-            numbers.add(makeNumbers(min, max));
-        }
-        return new ArrayList<>(numbers);
-    }
-
     public AnswerMaker(int min, int max) {
         Set<Integer> numbers = new HashSet<>();
         while (numbers.size() < 3) {
