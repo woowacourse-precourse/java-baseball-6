@@ -13,17 +13,17 @@ public class Judge {
     private int ball;
     private int strike;
 
-    public Judge(final String computerNumber) {
+    public Judge(String computerNumber) {
         this.computerNumber = computerNumber;
     }
 
-    public JudgeResult of(final String userNumber) {
+    public JudgeResult of(String userNumber) {
         init(userNumber);
         count();
         return new JudgeResult(ball, strike, getStatus());
     }
 
-    private void init(final String userNumber) {
+    private void init(String userNumber) {
         this.userNumber = userNumber;
         this.ball = 0;
         this.strike = 0;

@@ -10,7 +10,7 @@ public class Input {
     private static final String ZERO = "0";
 
     private static final String RESTART = "1";
-    public static final String EXIT = "2";
+    public static final String GAME_OVER = "2";
 
     public String askUserNumber() {
         userNumber = Console.readLine();
@@ -18,10 +18,10 @@ public class Input {
         return userNumber;
     }
 
-    public boolean askRestart() {
+    public boolean askGameOver() {
         String input = Console.readLine();
         validateRestartInput(input);
-        return input.equals(RESTART);
+        return input.equals(GAME_OVER);
     }
 
     private void validateGuessInput() {
@@ -40,7 +40,7 @@ public class Input {
     }
 
     private void validateRestartInput(String input) {
-        if (!(input.equals(RESTART) || input.equals(EXIT))) {
+        if (!(input.equals(RESTART) || input.equals(GAME_OVER))) {
             throw new IllegalArgumentException(InputErrorMessage.RESTART);
         }
     }

@@ -4,32 +4,31 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
 
-    public static boolean isGameOver = false;
-
-    private final String computerNumber;
-
-    private Input input;
-    private Judge judge;
-    private Output output;
+    private final Input input;
+    private final Judge judge;
+    private final Output output;
 
     public Game() {
-        computerNumber = getComputerNumber();
+        String computerNumber = getComputerNumber();
         input = new Input();
         judge = new Judge(computerNumber);
         output = new Output();
     }
 
-    public static void run() {
-        Output.start();
-        while (!isGameOver) {
-            new Game().start();
+    public boolean start() {
+        boolean isCorrect = false;
+        while (!isCorrect) {
+            output.askNumber();
+            String userNumber = input.askUserNumber();
+            JudgeResult result = judge.of(userNumber);
+            output.printResult(result);
+            isCorrect = isCorrect(result);
         }
+        return input.askGameOver();
     }
 
-    private void start() {
-        while (true) {
-
-        }
+    private boolean isCorrect(JudgeResult result) {
+        return result.getStatus() == JudgeStatus.CORRECT;
     }
 
     private String getComputerNumber() {

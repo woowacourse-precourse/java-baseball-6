@@ -3,6 +3,10 @@ package baseball;
 public class Application {
 
     public static void main(String[] args) {
-        Game.run();
+        boolean isGameOver = false;
+        Output.start();
+        while (!isGameOver) {
+            isGameOver = new Game().start();
+        }
     }
 }

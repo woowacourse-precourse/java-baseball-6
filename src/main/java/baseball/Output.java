@@ -9,17 +9,11 @@ public class Output {
     private static final String STRIKE = "%d스트라이크%n";
     private static final String BALL_AND_STRIKE = "%d볼 %d스트라이크%n";
     private static final String CORRECT_AND_ASK_RESTART =
-            "3개의 숫자를 모두 맞히셨습니다! 게임 종료%n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+            "3개의 숫자를 모두 맞히셨습니다! 게임 종료%n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.%n";
 
     private int ball;
     private int strike;
     private JudgeStatus status;
-
-    public void setJudgeResult(JudgeResult result) {
-        ball = result.getBall();
-        strike = result.getStrike();
-        status = result.getStatus();
-    }
 
     public static void start() {
         System.out.println(START);
@@ -29,7 +23,8 @@ public class Output {
         System.out.print(ASK_NUMBER);
     }
 
-    public void printResult() {
+    public void printResult(JudgeResult result) {
+        setJudgeResult(result);
         printIfBall();
         printIfStrike();
         printIfBallAndStrike();
@@ -37,14 +32,20 @@ public class Output {
         printIfCorrect();
     }
 
+    private void setJudgeResult(JudgeResult result) {
+        ball = result.getBall();
+        strike = result.getStrike();
+        status = result.getStatus();
+    }
+
     private void printIfBall() {
-        if (strike == 0) {
+        if (ball != 0 && strike == 0) {
             System.out.printf(BALL, ball);
         }
     }
 
     private void printIfStrike() {
-        if (ball == 0) {
+        if (ball == 0 && strike != 0) {
             System.out.printf(STRIKE, strike);
         }
     }
@@ -57,13 +58,13 @@ public class Output {
 
     private void printIfCorrect() {
         if (status.equals(JudgeStatus.CORRECT)) {
-            System.out.println(CORRECT_AND_ASK_RESTART);
+            System.out.printf(CORRECT_AND_ASK_RESTART);
         }
     }
 
     private void printIfNothing() {
         if (status.equals(JudgeStatus.NOTHING)) {
-            System.out.println(NOTHING);
+            System.out.printf(NOTHING);
         }
     }
 }
