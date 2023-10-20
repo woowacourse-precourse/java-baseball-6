@@ -21,28 +21,29 @@ public class Application {
         userNum = Console.readLine();
         return userNum;
     }
-    static String referee(List<Integer> computerNum, String userNum){
-        int strike = 0;
-        int ball = 0;
+    static int[] referee(List<Integer> computerNum, String userNum){
+        int[] cntResult = new int[2];
         for(int i = 0; i < 3; i++){
             if(computerNum.get(i) == userNum.charAt(i)-'0'){
-                strike++;
+                cntResult[0]++;
             } else{
-                ball++;
+                cntResult[1]++;
             }
         }
-        return String.format("%d볼 %d스트라이크",ball,strike);
+        return cntResult;
     }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> computerNum = new ArrayList<>();
-        String userNum, result;
+        String userNum;
+        int[] cntResult;
 
         createComputerNum(computerNum);
         userNum = receiveUserNum();
-        result = referee(computerNum, userNum);
+        cntResult = referee(computerNum, userNum);
 
-        System.out.println(result);
+        System.out.println(cntResult[0]);
+        System.out.println(cntResult[1]);
     }
 }
