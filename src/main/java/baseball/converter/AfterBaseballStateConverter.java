@@ -8,10 +8,10 @@ import baseball.state.AfterBaseballState;
 public class AfterBaseballStateConverter {
 
     public static AfterBaseballState stringToAfterBaseballState(String s) throws IllegalArgumentException {
-        if (s.equals(ENDGAME_INPUT.toString())) {
+        if (ENDGAME_INPUT.equals(s)) {
             return AfterBaseballState.IS_END;
         }
-        if (s.equals(RESTART_INPUT.toString())) {
+        if (RESTART_INPUT.equals(s)) {
             return AfterBaseballState.IS_RESTART;
         }
         throw new IllegalArgumentException();

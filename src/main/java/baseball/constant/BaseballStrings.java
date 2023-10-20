@@ -21,4 +21,8 @@ public enum BaseballStrings {
     public String toString() {
         return message;
     }
+
+    public boolean equals(String s) {
+        return s.equals(message);
+    }
 }

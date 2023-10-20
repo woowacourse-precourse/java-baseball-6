@@ -1,8 +1,10 @@
 package baseball.state;
 
 import static baseball.constant.BaseballConstants.MAX_MATCH;
+import static baseball.constant.BaseballStrings.BALL_MESSAGE;
+import static baseball.constant.BaseballStrings.NOTHING_MESSAGE;
+import static baseball.constant.BaseballStrings.STRIKE_MESSAGE;
 
-import baseball.constant.BaseballStrings;
 import baseball.util.Assertions;
 
 public class BaseballResult {
@@ -27,17 +29,17 @@ public class BaseballResult {
         final var stringBuilder = new StringBuilder();
         if (ball != 0) {
             stringBuilder.append(ball);
-            stringBuilder.append(BaseballStrings.BALL_MESSAGE);
+            stringBuilder.append(BALL_MESSAGE);
         }
         if (ball != 0 && strike != 0) {
             stringBuilder.append(" ");
         }
         if (strike != 0) {
             stringBuilder.append(strike);
-            stringBuilder.append(BaseballStrings.STRIKE_MESSAGE);
+            stringBuilder.append(STRIKE_MESSAGE);
         }
         if (strike == 0 && ball == 0) {
-            stringBuilder.append(BaseballStrings.NOTHING_MESSAGE);
+            stringBuilder.append(NOTHING_MESSAGE);
         }
         return stringBuilder.toString();
     }
