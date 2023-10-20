@@ -1,8 +1,8 @@
 package baseball.logic;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Stack;
+import java.util.Set;
 
 public class Compare {
     public String getGameResult(List<Integer> computerInput, String userInput) {
@@ -57,14 +57,12 @@ public class Compare {
 
     // 서로 다른 양의 정수가 입력 되었는지 확인
     private boolean isValidInputDifferentNumbers(String userInput) {
-        Stack<Integer> checkDuplication = new Stack<>();
+        Set<Character> checkDuplication = new HashSet<>();
 
         for (int i = 0; i < userInput.length(); i++) {
-            if (!checkDuplication.contains(userInput.charAt(i))) {
-                checkDuplication.push((int) userInput.charAt(i));
-            }
+            checkDuplication.add(userInput.charAt(i));
         }
 
-        return checkDuplication.empty();
+        return checkDuplication.size() == userInput.length();
     }
 }
