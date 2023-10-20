@@ -8,8 +8,6 @@ import java.util.List;
 
 public class Application {
 
-    public static List<Integer> computerNumber;
-//    public static List<Integer> playerNumber;
     public static int strike, ball;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -20,10 +18,10 @@ public class Application {
 
     public static void GameStart() {
 
-        computerNumber = ComputerSelectNumber();
+        List<Integer> computerNumber = ComputerSelectNumber();
         System.out.println("컴퓨터 숫자 : " + computerNumber);
         while(true) {
-            String playerNumber = PlayerSelectNumber();
+            List<Integer> playerNumber = PlayerSelectNumber();
             CompareNumber(computerNumber, playerNumber);
 
 
