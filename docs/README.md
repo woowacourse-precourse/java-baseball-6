@@ -52,5 +52,36 @@ sequenceDiagram
     end
     app ->> app: 게임 종료
 ```
+---
+> 3. 문제 해결에 필요한 역할과 책임 정의
+
+```mermaid
+sequenceDiagram
+    participant app as Applicatoin
+    participant game as <interface><br>숫자 야구 게임
+    participant singleGame as 싱글 숫자 야구 게임
+    participant player as <interface><br>플레이어
+    participant singlePlayer as 싱글 플레이어
+    participant other as <interface><br>상대 플레이어
+    participant com as 컴퓨터
+
+
+    app ->>+ game: 게임 정보 세팅
+    game ->>+ singleGame: override 게임정보 세팅
+    singleGame ->>+ other: 게임 숫자 입력
+    other->>+ com: override<br>게임 숫자 입력
+    com -->>- singleGame: 게임 숫자 반환
+    loop is 3 strike
+        app ->>+ game: 라운드 진행
+        game->>+singleGame: override<br>입력값 요청
+        singleGame ->>+ player: 입력 값 요청
+        player -->>- game: 입력 값 반환
+        game-->>+singleGame: override<br> 입력값 확인 요청
+        singleGame ->>+ other: 입력값 확인 요청
+        other -->>- game: 입력값 확인 반환
+        game -->>- app: 결과 값
+    end
+    app ->> app: 게임 종료
+```
 
 
