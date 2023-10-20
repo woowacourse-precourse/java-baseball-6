@@ -5,9 +5,11 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class Game {
-    private Computer computer = new Computer();
-    private User user = new User();
+    private Computer computer;
+    private User user;
     Game(){
+        this.computer = new Computer();
+        this.user = new User();
     }
 
     public void initGame(){ //게임 상태 초기화

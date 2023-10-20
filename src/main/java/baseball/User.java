@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class User {
-    private ArrayList<Integer> guessNumber = new ArrayList<>(); //유저가 선택한 숫자
+    private ArrayList<Integer> guessNumber; //유저가 선택한 숫자
     User(){
+        this.guessNumber=new ArrayList<>();
     }
 
     public ArrayList<Integer> getNumbers() {
