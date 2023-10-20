@@ -62,7 +62,7 @@ class BaseBallServiceTest {
     @DisplayName("3자리 미만 혹은 초과 정수가 입력되었을 경우 IllegalArgumentException 발생")
     @ParameterizedTest
     @ValueSource(ints = {1, 12, 3542, 6523562})
-    void confirmInputString(int userInput) {
+    void confirmInputOverOrUnderThreeNumber(int userInput) {
         // given
         int computerInput = 352;
 
