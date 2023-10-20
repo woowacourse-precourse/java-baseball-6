@@ -40,7 +40,46 @@ public class Application {
 
         }
 
-        System.out.println(my);
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int myNumber = my.get(i);
+
+            for (int j = 0; j < 3; j++) {
+                int computerNumber = computer.get(j);
+                if (myNumber == computerNumber) {
+                    if (i == j) {
+                        strike++;
+                    } else {
+                        ball++;
+                    }
+
+                    break;
+                }
+            }
+        }
+
+        if (strike == 0 && ball == 0){
+            System.out.println("낫싱");
+        } else {
+
+            if (strike == 0){
+                System.out.println(ball + "볼 ");
+
+            } else if (ball == 0 && strike != 3){
+                System.out.println(strike + "스트라이크");
+
+            } else {
+                if (strike == 3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+                } else {
+                    System.out.println(ball + "볼 " + strike + "스트라이크");
+                }
+            }
+
+        }
 
     }
 }
