@@ -28,19 +28,20 @@ public class Controller {
     }
 
     private void play() {
-        Balls balls = insertNumberAndMakeBalls();
-        String hint = service.hint(balls);
-        System.out.println(hint);
+        while (true) {
+            Balls balls = insertNumberAndMakeBalls();
+            String hint = service.hint(balls);
+            System.out.println(hint);
 
-        if (String.format("%d%s", NUMBER_OF_BALLS, Hint.STRIKE.value()).equals(hint)) {
-            service.endGame();
-            end();
-        } else {
-            play();
+            if (String.format("%d%s", NUMBER_OF_BALLS, Hint.STRIKE.value()).equals(hint)) {
+                end();
+                break;
+            }
         }
     }
 
     private void end() {
+        service.endGame();
         outputView.printInsertCommand();
         Command command = inputView.insertCommand();
         if (command == Command.RESTART) {
