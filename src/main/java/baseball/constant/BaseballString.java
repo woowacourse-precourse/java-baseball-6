@@ -5,9 +5,9 @@ public enum BaseballString {
     INPUT_NUMBER_MESSAGE("숫자를 입력해주세요"),
     STRIKE_ALL_MESSAGE("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
     INPUT_RESTART_MESSAGE("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
-    BALL("볼"),
-    STRIKE("스트라이크"),
-    NOTHING("낫싱"),
+    BALL_MESSAGE("볼"),
+    STRIKE_MESSAGE("스트라이크"),
+    NOTHING_MESSAGE("낫싱"),
     RESTART_INPUT("1"),
     ENDGAME_INPUT("2"),
     ;

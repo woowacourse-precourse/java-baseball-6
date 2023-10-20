@@ -27,17 +27,17 @@ public class BaseballResult {
         final StringBuilder sb = new StringBuilder();
         if (ball != 0) {
             sb.append(ball);
-            sb.append(BaseballString.BALL);
+            sb.append(BaseballString.BALL_MESSAGE);
         }
         if (ball != 0 && strike != 0) {
             sb.append(" ");
         }
         if (strike != 0) {
             sb.append(strike);
-            sb.append(BaseballString.STRIKE);
+            sb.append(BaseballString.STRIKE_MESSAGE);
         }
         if (strike == 0 && ball == 0) {
-            sb.append(BaseballString.NOTHING);
+            sb.append(BaseballString.NOTHING_MESSAGE);
         }
         return sb.toString();
     }
