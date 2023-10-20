@@ -1,7 +1,17 @@
 package baseball.controller;
 
+import baseball.model.Computer;
+import baseball.view.OutputView;
+
 public class BaseballGame {
-    public void gameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    private Computer computer;
+
+    public void startGame() {
+        OutputView.startGameMessage();
+        createComputerNumber();
+    }
+
+    private void createComputerNumber() {
+        computer = new Computer();
     }
 }

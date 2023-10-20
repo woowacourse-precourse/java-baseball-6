@@ -1,8 +1,8 @@
 # 구현할 기능 목록
 
 ## 컴퓨터
-- [ ] 컴퓨터는 1에서 9까지의 서로 다른 임의의 수 3개를 선택한다.
-  - [ ] ```camp.nextstep.edu.missionutils.Randoms```의 ```pickNumberInRange()```를 활용한다.
+- [x] 컴퓨터는 1에서 9까지의 서로 다른 임의의 수 3개를 선택한다.
+  - [x] ```camp.nextstep.edu.missionutils.Randoms```의 ```pickNumberInRange()```를 활용한다.
 
 ## 유저
 - [ ] 서로 다른 3개의 숫자를 입력받는다.
