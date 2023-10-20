@@ -8,8 +8,8 @@ import java.util.List;
 
 public class BaseballManageController {
 
-    private GameData gameData;
-    private OutputView view;
+    private final GameData gameData;
+    private final OutputView view;
 
     public BaseballManageController(GameData gameData, OutputView view) {
         this.gameData = gameData;
@@ -36,24 +36,35 @@ public class BaseballManageController {
         return this.gameData.getStrikeCnt();
     }
 
-    public void setStrikeCnt(Integer strikeCnt) {
-        this.gameData.setStrikeCnt(strikeCnt);
-    }
+//    public void setStrikeCnt(Integer strikeCnt) {
+//        this.gameData.setStrikeCnt(strikeCnt);
+//    }
 
     public Integer getBallCnt() {
         return this.gameData.getBallCnt();
     }
 
-    public void setBallCnt(Integer ballCnt) {
+    /*public void setBallCnt(Integer ballCnt) {
         this.gameData.setBallCnt(ballCnt);
-    }
+    }*/
 
-    public Integer getGameRepetition() {
+    public String getGameRepetition() {
         return this.gameData.getGameRepetition();
     }
 
-    public void setGameRepetition(Integer gameRepetition) {
+    public void setGameRepetition(String gameRepetition) {
         this.gameData.setGameRepetition(gameRepetition);
+    }
+
+    public void generateComNums() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        this.gameData.setComputerNumbers(computer);
     }
 
     public List<Integer> playerNumsInput() {
@@ -66,23 +77,46 @@ public class BaseballManageController {
         return playerNumsTemp;
     }
 
-    public Integer countStrike(List<Integer> computer, List<Integer> player) {
+    public void countStrike(List<Integer> computer, List<Integer> player) {
         int strikeCnt = 0;
         for (int i = 0; i < 3; i++) {
             if (player.get(i).equals(computer.get(i))) {
                 strikeCnt++;
             }
         }
-        return strikeCnt;
+        this.gameData.setStrikeCnt(strikeCnt);
+
     }
 
-    public Integer countBall(List<Integer> computer, List<Integer> player) {
+    public void countBall(List<Integer> computer, List<Integer> player) {
         int ballCnt = 0;
         for (int i = 0; i < 3; i++) {
             if (computer.contains(player.get(i)) && !player.get(i).equals(computer.get(i))) {
                 ballCnt++;
             }
         }
-        return ballCnt;
+        this.gameData.setBallCnt(ballCnt);
     }
+
+    public void printResult(Integer ballCnt, Integer strikeCnt) {
+        if (strikeCnt != 0 && ballCnt == 0) {
+            view.printStrikeOnlyResult(strikeCnt);
+        }
+        if (strikeCnt == 0 && ballCnt != 0) {
+            view.printBallOnlyResult(ballCnt);
+        }
+        if (strikeCnt != 0 && ballCnt != 0) {
+            view.printBallAndStrikeResult(strikeCnt, ballCnt);
+        }
+        if (strikeCnt == 0 && ballCnt == 0) {
+            view.printNothingResult();
+        }
+    }
+
+    public void restartInput() {
+
+        String restart = Console.readLine();
+        this.gameData.setGameRepetition(restart);
+    }
+
 }
