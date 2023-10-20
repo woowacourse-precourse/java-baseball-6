@@ -1,8 +1,8 @@
 package baseball;
 
 public class GameResult {
-    private int ball;
-    private int strike;
+    private final int ball;
+    private final int strike;
     public GameResult(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
@@ -22,14 +22,11 @@ public class GameResult {
             System.out.println(ball+"볼 "+strike+"스트라이크");
         }
         if (strike == 3) {
-            System.out.println(strike+"스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(strike+"스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
     public boolean isThreeStrike() {
-        if (strike != 3) {
-            return false;
-        }
-        return true;
+        return strike == 3;
     }
 }
