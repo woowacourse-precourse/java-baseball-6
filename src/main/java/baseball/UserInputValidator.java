@@ -23,7 +23,7 @@ public class UserInputValidator {
     }
 
     private boolean isValid() {
-        return isInputSizeValid() && !isInputDuplicated();
+        return isInputSizeValid() && !isInputDuplicated() && isInputTypeNumber();
     }
 
     private boolean isInputSizeValid() {
@@ -33,5 +33,14 @@ public class UserInputValidator {
     private boolean isInputDuplicated() {
         Set<Character> userInputCharHashSet = new HashSet<>(userInputCharList);
         return userInputCharHashSet.size() != userInputCharList.size();
+    }
+
+    private boolean isInputTypeNumber() {
+        for (Character c : userInputCharList) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
