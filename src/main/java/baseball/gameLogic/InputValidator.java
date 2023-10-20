@@ -13,6 +13,7 @@ public class InputValidator {
         validateIsUserAnswerDigit(userInput);
 
         List<Integer> userAnswerList= toIntList(userInput);
+
         validateUserAnswerDigitRange(userAnswerList);
         validateIsDistinctDigits(userAnswerList);
 
@@ -48,7 +49,7 @@ public class InputValidator {
     }
 
     public int validateRestartInput(String userInput){
-        String restart = Integer.toString(RESTART_NUMBER);
+        String restart = Integer.toString(WANNA_KEEP_PLAYING);
         String end = Integer.toString(END_NUMBER);
         if (!userInput.equals(restart) && !userInput.equals(end))
             throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 1 혹은 2만 입력하십시오. 프로그램을 종료합니다.");
