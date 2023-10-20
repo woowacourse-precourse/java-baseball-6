@@ -20,9 +20,7 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             flag = Console.readLine();
-            if (flag.equals("2")) {
-                break;
-            }
+            if (flag.equals("2")) break;
         }
     }
 }

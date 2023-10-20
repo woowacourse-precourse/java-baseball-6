@@ -7,14 +7,18 @@ public class User {
     private final List<Integer> user = new ArrayList<>();
 
     public User(String number){
-        checkInteger(number);
-        checkDuplicateNumber(number);
-        checkLength(number);
+        validateStringNumber(number);
         generateUser(number);
     }
 
     public List<Integer> getUser() {
         return user;
+    }
+
+    private void validateStringNumber(String number) {
+        checkLength(number);
+        checkInteger(number);
+        checkDuplicateNumber(number);
     }
 
     private void checkLength(String number) {
@@ -26,19 +30,26 @@ public class User {
     private void checkDuplicateNumber(String number) {
         for (String stringNumber : number.split("")) {
             int intNumber = Integer.parseInt(stringNumber);
-            if (user.contains(intNumber)) {
-                throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-            }
+            checkForDuplicate(intNumber);
+        }
+    }
+    private void checkForDuplicate(int intNumber) {
+        if (user.contains(intNumber)) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }
 
     private void checkInteger(String number) {
         for (String stringNumber : number.split("")) {
-            try {
-                int intNumber = Integer.parseInt(stringNumber);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("숫자가 아닌 값이 포함되어 있습니다.");
-            }
+            validateNumber(stringNumber);
+        }
+    }
+
+    private static void validateNumber(String stringNumber) {
+        try {
+            int intNumber = Integer.parseInt(stringNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자가 아닌 값이 포함되어 있습니다.");
         }
     }
 

@@ -14,15 +14,23 @@ public class Computer {
     }
     public void generateRandomNumbers() {
         while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+            addComputerNumber();
+//            addTestComputerNumber();
         }
+    }
+
+    private void addTestComputerNumber() {
         //테스트 용
-//        for (int i = 1; i <= 3; i ++) {
-//            computer.add(i);
-//        }
+        for (int i = 1; i <= 3; i ++) {
+            computer.add(i);
+        }
+    }
+
+    private void addComputerNumber() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber);
+        }
     }
 
     public List<Integer> getComputer() {
