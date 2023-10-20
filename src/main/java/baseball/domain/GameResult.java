@@ -6,7 +6,7 @@ public class GameResult {
 
     private int strike;
     private int ball;
-    private final String NOTHING_STR = "낫씽";
+    private final String NOTHING_STR = "낫싱";
     private final String BALL_STR = "볼";
     private final String STRIKE_STR = "스트라이크";
 
@@ -33,7 +33,7 @@ public class GameResult {
             return strike + STRIKE_STR;
         }
 
-        return strike + STRIKE_STR + " " + ball + BALL_STR;
+        return ball + BALL_STR + " " + strike + STRIKE_STR;
     }
 
     public boolean isWin() {
