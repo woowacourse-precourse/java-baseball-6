@@ -10,20 +10,7 @@ public class Application {
         boolean playing = true;
         while (playing) {
             BaseballGame.start();
-            playing = endCheck();
+            playing = BaseballGame.endCheck();
         }
-    }
-
-    public static boolean endCheck() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        int restart = MistakeChecker.checkAndMakeNumber(Console.readLine());
-
-        if (restart == 1) {
-            return true;
-        }
-
-        return false;
     }
 }

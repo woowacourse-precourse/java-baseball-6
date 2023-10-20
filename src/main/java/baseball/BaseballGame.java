@@ -24,38 +24,49 @@ public class BaseballGame {
         getInstance().play();
     }
 
-    public void play() {
+    public static boolean endCheck() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        int restart = InputChecker.checkAndMakeNumber(Console.readLine());
+
+        if (restart == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void play() {
         List<Integer> computerNumber = setComputerNumber();
 
-        boolean playing = true;
-        while (playing) {
+        Result result = new Result();
+        while (!isMyNumberCorrect(result)) {
             List<Integer> myNumber = setMyNumber();
-
-            Result result = compareNumber(computerNumber, myNumber);
+            result = compareNumber(computerNumber, myNumber);
             printResult(result);
-
-            if (result.getStrike() == 3) {
-                playing = false;
-            }
         }
     }
 
     private List<Integer> setComputerNumber() {
         List<Integer> computer = new ArrayList<>(3);
         while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+            checkDuplicationAndSetNumber(computer, Randoms.pickNumberInRange(1, 9));
         }
 
         return computer;
     }
 
+    private void checkDuplicationAndSetNumber(List<Integer> computer, int randomNumber) {
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber);
+        }
+    }
+
     private List<Integer> setMyNumber() {
         System.out.print("숫자를 입력해주세요 : ");
-
-        return MistakeChecker.checkAndMakeList(Console.readLine());
+        String input = Console.readLine();
+        return InputChecker.checkAndMakeList(input);
     }
 
     private Result compareNumber(List<Integer> computerNumber, List<Integer> myNumber) {
@@ -92,4 +103,13 @@ public class BaseballGame {
 
         System.out.println(sb);
     }
+
+    private boolean isMyNumberCorrect(Result result) {
+        if (result.getStrike() == 3) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

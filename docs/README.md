@@ -4,23 +4,27 @@
    - 게임이 끝난 경우 재시작/종료를 구분하는 숫자 입력 시 예외 발생
 
 <h2>2. BaseballGame</h2>
-- BaseballGame 싱글톤 객체로 작성
+- BaseballGame 싱글톤 객체로 관리
 - play()
   - 실제 숫자 야구 로직 들어 있음
+- endCheck()
+  - 숫자 야구 한판이 끝난 후 재시작할지 종료할 지 판단하는 메서드
 - setComputerNumber()
   - 컴퓨터 숫자 세팅
+  - checkDuplicationAndSetNumber(List<Integer> computer, int randomNumber)
+    - 컴퓨터 숫자 중복 검사 후 세팅 
 - setMyNumber()
   - 내 숫자 세팅
 - compareNumber(List, List)
   - 컴퓨터의 숫자와 내 숫자 비교
-- Result
-  - ball, strike 개수가 들어 있는 객체
 - printResult(Result)
   - result에 들어있는 ball, strike 개수를 요구사항에 맞춰 출력
-    
-<h2>3. MistakeChecker</h2>
+- isMyNumberCorrect(Result result)
+  - result가 3스트라이트면 게임을 종료할 수 있도록 true 반환
+
+<h2>3. InputChecker</h2>
 - 입력 예외 처리용 객체
-- MistakeChecker 싱글톤 객체로 작성
+- InputChecker 싱글톤 객체로 관리
 - checkMyNumber(String input)
   - 게임 중 숫자 입력 예외 체크
 - checkAndMakeList(String input)

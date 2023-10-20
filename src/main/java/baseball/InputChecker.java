@@ -4,18 +4,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MistakeChecker {
+public class InputChecker {
 
-    private static MistakeChecker mistakeChecker;
+    private static InputChecker inputChecker;
 
-    private MistakeChecker() {
+    private InputChecker() {
     }
 
-    private static MistakeChecker getInstance() {
-        if (mistakeChecker == null) {
-            mistakeChecker = new MistakeChecker();
+    private static InputChecker getInstance() {
+        if (inputChecker == null) {
+            inputChecker = new InputChecker();
         }
-        return mistakeChecker;
+        return inputChecker;
     }
 
     public static List<Integer> checkAndMakeList(String input) {
