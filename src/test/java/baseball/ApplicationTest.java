@@ -83,6 +83,7 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("[ERROR]");
         Console.close(); // 이걸 넣으니 전체 테스트를 실행시 발생한 java.util.NoSuchElementException : No line found 문제 해결
     }
+    
 //    @Test
 //    void getBallStrikeCount_테스트() {
 //        //given
