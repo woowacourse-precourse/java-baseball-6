@@ -58,12 +58,12 @@ public class GameController {
         return userInput;
     }
 
-    private static boolean isStrikeEqualToGoal(final int strike) {
-        return strike == PLAY_NUMBER_DIGIT;
-    }
-
     private static void assertNumberValue(final String inputNumber) {
         NumberValidator.assertInputNumberWithLength(inputNumber, PLAY_NUMBER_DIGIT);
+    }
+
+    private static boolean isStrikeEqualToGoal(final int strike) {
+        return strike == PLAY_NUMBER_DIGIT;
     }
 
     private static void assertResumeValue(final String resume) {
