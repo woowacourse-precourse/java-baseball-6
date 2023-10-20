@@ -22,12 +22,12 @@ public class GameService {
     }
 
     public boolean restart(String input){
-        if (input.equals("1"))
+        if (input.equals("1")){
+            this.gameSystem = new GameSystem();
             return true;
+        }
         else if (input.equals("2"))
             return false;
-
-        this.gameSystem = new GameSystem();
 
         throw new IllegalArgumentException();
     }
@@ -35,5 +35,9 @@ public class GameService {
     public List<Integer> calculateBaseBall(){
         hint.calculateBaseBall(user.getUserBasebsallNumber(),gameSystem.getSystemBaseBallNumber());
         return List.of(hint.getBallCount(),hint.getStrikeCount());
+    }
+
+    public boolean isWin(){
+        return hint.isWin();
     }
 }
