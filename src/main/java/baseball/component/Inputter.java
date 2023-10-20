@@ -6,6 +6,17 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Inputter {
 
+    private Inputter inputter;
+
+    private Inputter() {}
+
+    public Inputter getInputter() {
+        if (inputter == null) {
+            inputter = new Inputter();
+        }
+        return inputter;
+    }
+
     public List<Integer> input() {
         String input;
 
