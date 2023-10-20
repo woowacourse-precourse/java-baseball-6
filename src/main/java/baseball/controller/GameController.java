@@ -41,7 +41,7 @@ public class GameController {
                 String resumeInput = receiveResumeNumber();
                 int resumeNumber = StringInputConverter.convertStringToInt(resumeInput);
                 if (isUserWantMoreGame(resumeNumber)) {
-                    computerNumber = NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
+                    computerNumber = selectNewNumber();
                 }
                 if (isUserWantStopGame(resumeNumber)) {
                     playWant = false;
@@ -78,6 +78,10 @@ public class GameController {
 
     private static boolean isUserWantMoreGame(final int resumeNumber) {
         return resumeNumber == RESTART;
+    }
+
+    private static int selectNewNumber() {
+        return NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
     }
 
     private static boolean isUserWantStopGame(final int resumeNumber) {
