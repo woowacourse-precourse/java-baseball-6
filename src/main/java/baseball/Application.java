@@ -21,9 +21,10 @@ public class Application {
         List<Integer> computerList = new ArrayList<>(); // 컴퓨터의 3개의 랜덤 숫자 리스트
         List<Integer> userList = new ArrayList<>(); // 입력을 받는 userList
         Judge judge = new Judge(); // 게임을 판단해주는 판사님.
+        NumbersGenerate numbersGenerate = new NumbersGenerate();
 
         while (true) {
-            computerList = initGame();
+            computerList = initGame(numbersGenerate);
 
             // resultStr 이 3스트라이크 아니면 반복을 한다.
             while (Utill.isNotSameString(resultStr, MyConstants.MSG_GAME_TERMINATION_CONDITION_STR())) {
@@ -38,8 +39,12 @@ public class Application {
         }
     }
 
-    private static List<Integer> initGame() {
-        NumbersGenerate numbersGenerate = new NumbersGenerate();
+    /**
+     * 게임을 초기화 할때 사용을 한다. 힌트의 값과, 컴퓨터의 랜덤 리스트를 초기화한다.
+     *
+     * @return
+     */
+    private static List<Integer> initGame(NumbersGenerate numbersGenerate) {
         resultStr = MyConstants.RESET_STRING(); // 결과 리셋
         return numbersGenerate.createRandomNumList(); // 컴퓨터의 3개의 랜덤 숫자 리스트
     }
