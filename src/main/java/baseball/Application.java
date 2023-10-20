@@ -24,10 +24,6 @@ public class Application {
         gameState = GameState.START;
     }
 
-    public static void printStartMessage() {
-        System.out.println(STRING_START_MESSAGE);
-    }
-
     public static List<Integer> getRandomNumberList() {
         List<Integer> randomNumberList = new ArrayList<>();
         while (randomNumberList.size() < GameConstants.SIZE_RANDOM_NUMBER) {
@@ -52,6 +48,10 @@ public class Application {
     public static void handleStartScene() {
         printStartMessage();
         gameState = GameState.GAME;
+    }
+
+    public static void printStartMessage() {
+        System.out.println(STRING_START_MESSAGE);
     }
 
     public static void handleGameScene() {
