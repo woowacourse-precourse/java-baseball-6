@@ -6,18 +6,20 @@ class TargetNumber {
     private int[] number = new int[3];
 
     private TargetNumber() {
-        boolean[] duplicationCheck = new boolean[10];
-        for (int i = 0; i < 3; i++) {
-            int value = Randoms.pickNumberInRange(1, 9);
-            while (duplicationCheck[value]) value = Randoms.pickNumberInRange(1, 9);
-            duplicationCheck[value] = true;
-            number[i] = value;
-        }
+        number = this.getRandomNumber();
+    }
+    private TargetNumber(int a, int b, int c) {
+        this.number[0] = a;
+        this.number[1] = b;
+        this.number[2] = c;
     }
     /*
     TargetNumber 객체를 생성하는 정적 팩토리 메서드.
      */
-    public static TargetNumber generate() { return new TargetNumber(); }
+    public static TargetNumber generate(int a, int b, int c) {
+        if (a == 0 || b == 0 || c == 0) return new TargetNumber();
+        return new TargetNumber(a, b, c);
+    }
 
     /*
     TargetNumber 객체가
@@ -36,5 +38,17 @@ class TargetNumber {
             }
         }
         return check;
+    }
+
+    public int[] getRandomNumber() {
+        boolean[] duplicationCheck = new boolean[10];
+        int[] answer = new int[3];
+        for (int i = 0; i < 3; i++) {
+            int value = Randoms.pickNumberInRange(1, 9);
+            while (duplicationCheck[value]) value = Randoms.pickNumberInRange(1, 9);
+            duplicationCheck[value] = true;
+            answer[i] = value;
+        }
+        return answer;
     }
 }
