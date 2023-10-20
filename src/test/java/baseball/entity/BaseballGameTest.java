@@ -38,6 +38,17 @@ class BaseballGameTest {
         assertThat(playResult.getStrikeCount()).isEqualTo(0);
     }
 
+    @DisplayName("사용자가 정답을 맞출 경우, 게임은 종료된다.")
+    @Test
+    void end() {
+        BaseballGame baseballGame = BaseballGame.from(simpleBallsGenerator());
+
+        PlayResult playResult = baseballGame.play(Balls.from(List.of(1, 2, 3)));
+
+        assertThat(playResult.getStrikeCount()).isEqualTo(3);
+        assertThat(baseballGame.isEnd()).isTrue();
+    }
+
     private BallsGenerator simpleBallsGenerator() {
         return () -> Balls.from(List.of(1, 2, 3));
     }

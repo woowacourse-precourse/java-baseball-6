@@ -101,6 +101,10 @@ class Balls implements Iterable<Ball> {
                 .orElse(BallStatus.NOTHING);
     }
 
+    public int count() {
+        return this.balls.size();
+    }
+
     @Override
     public Iterator<Ball> iterator() {
         return this.balls.iterator();

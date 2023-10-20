@@ -8,7 +8,7 @@ public class BaseballGame {
     private static final String UNKNOWN_GENERATOR_MESSAGE = "알 수 없는 공 생성기(null)로 객체를 생성할 수 없습니다.";
 
     private final Balls answerBalls;
-    private final BaseballGameStatus status;
+    private BaseballGameStatus status;
 
     private BaseballGame(BallsGenerator ballsGenerator) {
         this.answerBalls = ballsGenerator.generate();
@@ -27,7 +27,21 @@ public class BaseballGame {
     }
 
     public PlayResult play(Balls balls) {
-        return answerBalls.play(balls);
+        PlayResult result = answerBalls.play(balls);
+
+        if (isPlayerWin(result)) {
+            status = BaseballGameStatus.END;
+        }
+
+        return result;
+    }
+
+    private boolean isPlayerWin(PlayResult result) {
+        return result.getStrikeCount() == answerBalls.count();
+    }
+
+    public boolean isEnd() {
+        return status.isEnd();
     }
 
     @Override

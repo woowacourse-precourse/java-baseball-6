@@ -2,5 +2,9 @@ package baseball.entity;
 
 enum BaseballGameStatus {
 
-    PROGRESS
+    PROGRESS, END;
+
+    public boolean isEnd() {
+        return this.equals(END);
+    }
 }
