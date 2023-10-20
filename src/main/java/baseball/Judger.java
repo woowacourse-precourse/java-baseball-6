@@ -18,21 +18,6 @@ public class Judger {
         checkNothing();
     }
 
-    public void displayScoreboard() {
-        if(this.score[2] != 0) {
-            System.out.println("낫싱");
-        }
-        else if(this.score[0] > 0 && this.score[1] > 0) {
-            System.out.println(this.score[1] + "볼 " + this.score[0] + "스트라이크");
-        }
-        else if(this.score[0] > 0) {
-            System.out.println(this.score[0] + "스트라이크");
-        }
-        else {
-            System.out.println(this.score[1] + "볼");
-        }
-    }
-
     private int[] checkStrike(List<Integer> human, List<Integer> computer){
         int[] strikeIdx = new int[3];
 
