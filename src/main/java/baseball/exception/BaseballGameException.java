@@ -26,4 +26,16 @@ public class BaseballGameException {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validRegameNumStrLen(String regameNumStr){
+        if(regameNumStr.length()!=1){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validRegameNumStrIsCorrect(String regameNumStr) {
+        if(!(regameNumStr.equals("1")||regameNumStr.equals("2"))){
+            throw new IllegalArgumentException();
+        }
+    }
 }
