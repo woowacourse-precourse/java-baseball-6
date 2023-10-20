@@ -23,6 +23,6 @@ public class OutputView {
     }
 
     public void printInputInitMessage() {
-        System.out.println(INPUT_MESSAGE);
+        System.out.print(INPUT_MESSAGE);
     }
 }
