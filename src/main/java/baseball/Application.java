@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -24,9 +25,33 @@ public class Application {
         ArrayList<Integer> computer = getRandomInt();
         //System.out.println(computer);
 
-        // TODO : 사용자 입력 및 계산 로직 구현
+        while (true) {
+            ArrayList<Integer> responseArray = getUserInput();
+            // TODO : 계산로직 출력로직 재시작여부로직 구현
+        }
+    }
 
-        return again;
+    private static ArrayList<Integer> getUserInput() {
+        ArrayList<Integer> userGuess = new ArrayList<>();
+        try {
+            System.out.print("숫자를 입력해주세요 : ");
+            String response = Console.readLine();
+            if (response.length() != 3) {
+                throw new IllegalArgumentException();
+            }
+
+            for (char digit : response.toCharArray()) {
+                int digitInt = Integer.parseInt(String.valueOf(digit));
+                if (userGuess.contains(digitInt)) {
+                    throw new IllegalArgumentException();
+                }
+                userGuess.add(digitInt);
+            }
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+        return userGuess;
     }
 
     private static ArrayList<Integer> getRandomInt() {
