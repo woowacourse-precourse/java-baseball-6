@@ -5,6 +5,7 @@ import static constant.NumberConstant.START;
 
 import camp.nextstep.edu.missionutils.Console;
 import message.Message;
+import player.BaseballPlayer;
 import player.Computer;
 import player.User;
 import score.Score;
@@ -12,8 +13,8 @@ import utils.BaseballRules;
 
 public class Referee {
 
-    private final Computer computer = new Computer();
-    private final User user = new User();
+    private final BaseballPlayer computer = new Computer();
+    private final BaseballPlayer user = new User();
     private final Score score = new Score();
 
     public void playBall() {
