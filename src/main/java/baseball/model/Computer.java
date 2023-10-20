@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.common.GameStatus;
+import baseball.view.Output;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -10,10 +11,10 @@ import java.util.Set;
 
 public class Computer {
     private List<Integer> gameNumbers;
-    private GameStatus gameStatus;
+    private GameStatus status;
 
     public Computer() {
-        this.gameStatus = GameStatus.ONPLAYING;
+        this.status = GameStatus.ONPLAYING;
     }
 
     public void createRandomNumbers() {
@@ -25,5 +26,9 @@ public class Computer {
         }
 
         this.gameNumbers = new ArrayList<>(numbers);
+    }
+
+    public boolean isEnd() {
+        return this.status.isEnd();
     }
 }
