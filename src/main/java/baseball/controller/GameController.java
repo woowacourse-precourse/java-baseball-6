@@ -26,7 +26,7 @@ public class GameController {
             AskView.askNumberInput();
 
             String userInput = Console.readLine();
-            NumberValidator.assertInputNumberWithLength(userInput, PLAY_NUMBER_DIGIT);
+            assertNumberValue(userInput);
 
             int userNumber = Integer.parseInt(userInput);
 
@@ -49,5 +49,9 @@ public class GameController {
                 }
             }
         }
+    }
+    
+    private static void assertNumberValue(final String inputNumber) {
+        NumberValidator.assertInputNumberWithLength(inputNumber, PLAY_NUMBER_DIGIT);
     }
 }
