@@ -22,9 +22,10 @@ public class GameNumber {
     }
 
     public GameNumber(String value) {
-        validateValue(value);
+        validateType(value);
         List<Integer> gameNumber = Converter.convertList(value);
         validateLength(gameNumber);
+        validateRange(gameNumber);
         this.gameNumber = gameNumber;
     }
 
@@ -60,14 +61,10 @@ public class GameNumber {
         return gameNumber.toString();
     }
 
-    private void validateValue(String value) {
+    private void validateType(String value) {
         try {
-            if (!Arrays.stream(value.split(""))
-                    .map(String::valueOf)
-                    .mapToInt(Integer::parseInt)
-                    .allMatch(number -> MIN_NUMBER <= number && number <= MAX_NUMBER)) {
-                throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
-            }
+            Arrays.stream(value.split(""))
+                    .forEach(Integer::parseInt);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
         }
