@@ -2,6 +2,9 @@ package baseball.service;
 
 import static baseball.domain.Computer.BASEBALL_NUMBERS_SIZE;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class PlayerService {
     
     public void validate(String number) {
@@ -28,7 +31,16 @@ public class PlayerService {
     }
     
     private void validateDuplicate(String number) {
-        if (number.length() != BASEBALL_NUMBERS_SIZE) {
+        StringBuilder sb = new StringBuilder();
+        Set<Character> numSet = new HashSet<>();
+        
+        for (char c : number.toCharArray()) {
+            if (numSet.add(c)) {
+                sb.append(c);
+            }
+        }
+        
+        if (number.length() != sb.length()) {
             throw new IllegalArgumentException("입력한 숫자에 중복이 있습니다.");
         }
     }
