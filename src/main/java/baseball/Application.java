@@ -1,8 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
-
 public class Application {
     // 0:숫자 입력 후 결과 출력 1:사용자(컴퓨터)값설정 2:시스템종료 3:다시하기
     static int play_mode = 1;
@@ -10,7 +7,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Play play = new Play();
-
         Balls goal = new Balls();
 
         while (true) {
