@@ -5,14 +5,14 @@ import java.util.ArrayList;
 
 public class Input {
     private static final Output output = new Output();
-    private final ArrayList<Integer> userNumbers = new ArrayList<>();
+    private ArrayList<Integer> userNumbers = new ArrayList<>();
 
     public ArrayList<Integer> inputUserNumbers() {
         userNumbers.clear();
         output.printInputMessage();
         String inputtedNumber = inputStringNumber();
         checkInputtedNumber(inputtedNumber);
-        convertStringToIntegerList(inputtedNumber);
+        convertStringNumberToIntegerList(inputtedNumber);
         return userNumbers;
     }
 
@@ -32,20 +32,22 @@ public class Input {
     }
 
     private void checkNumbersDuplicate(String inputtedNumber) {
-        String stringForCheckingDuplicate = "";
+        StringBuilder stringForCheckingDuplicate = new StringBuilder();
         for (char number : inputtedNumber.toCharArray()) {
-            if(stringForCheckingDuplicate.contains(String.valueOf(number))) {
+            if(stringForCheckingDuplicate.toString().contains(String.valueOf(number))) {
                 throw new IllegalArgumentException();
             }
-            stringForCheckingDuplicate += number;
+            stringForCheckingDuplicate.append(number);
         }
     }
 
-    private void convertStringToIntegerList(String inputtedNumber) {
+    private void convertStringNumberToIntegerList(String inputtedNumber) {
+        ArrayList<Integer> tempNumbers = new ArrayList<>();
         for(int numbersIndex=0; numbersIndex<3; numbersIndex++) {
             char digitChar = inputtedNumber.charAt(numbersIndex);
             int digitNumber = Character.getNumericValue(digitChar);
-            userNumbers.add(digitNumber);
+            tempNumbers.add(digitNumber);
         }
+        userNumbers = tempNumbers;
     }
 }

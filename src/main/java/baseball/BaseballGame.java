@@ -28,16 +28,16 @@ public class BaseballGame {
         }
     }
 
-    private void resetStrikeAndBall() {
-        strike = 0;
-        ball = 0;
-    }
-
     private void countStrikeAndBall(ArrayList<Integer> userNumbers) {
         resetStrikeAndBall();
         countStrike(userNumbers);
         countBall(userNumbers);
         output.printStrikeBallMessage(strike, ball);
+    }
+
+    private void resetStrikeAndBall() {
+        strike = 0;
+        ball = 0;
     }
 
     private void countStrike(ArrayList<Integer> userNumbers) {
