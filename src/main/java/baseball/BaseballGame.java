@@ -9,6 +9,9 @@ public class BaseballGame {
     }
 
     public void run() {
+        Computer computer = new Computer();
+        System.out.println(computer.getNumbers());
+
         exist();
     }
 
