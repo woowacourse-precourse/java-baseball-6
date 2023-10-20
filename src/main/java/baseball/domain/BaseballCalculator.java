@@ -1,19 +1,22 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class BaseballCalculator {
 
-    public List<Integer> calculator(String input, List<Integer> computerNumbers) {
+    public List<Integer> calculate(String input, List<Integer> computerNumbers) {
+        List<Integer> inputList = convertToList(input);
+        return compareToInputList(inputList, computerNumbers);
+    }
+
+    public List<Integer> convertToList(String input) {
         List<Integer> inputList = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             inputList.add(input.charAt(i) - '0');
         }
-        return compareToInputList(inputList, computerNumbers);
+        return inputList;
     }
 
     public List<Integer> compareToInputList(List<Integer> inputList, List<Integer> computerNumbers) {

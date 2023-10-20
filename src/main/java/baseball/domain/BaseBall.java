@@ -37,7 +37,7 @@ public class BaseBall {
         String userInputNumbers = inputBaseballNumbers();
         NumbersValidator.inputValidate(userInputNumbers);
 
-        List<Integer> baseballResult = baseballCalculator.calculator(userInputNumbers, computerNumbers);
+        List<Integer> baseballResult = baseballCalculator.calculate(userInputNumbers, computerNumbers);
         return ResultPrinter.printHint(baseballResult);
     }
 
