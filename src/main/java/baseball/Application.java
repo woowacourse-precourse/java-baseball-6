@@ -18,7 +18,7 @@ public class Application {
             GameView.gameStart();
             computerController.setNumbers();
 
-            while(computerController.isCorrect()) {
+            while(!computerController.isCorrect()) {
                 // 문자열을 정수형 List로 변환하는 과정
                 userController.setNumbers(
                         GameView.userInput()
@@ -28,10 +28,11 @@ public class Application {
                                 .collect(Collectors.toList())
                 );
 
+                computerController.calculate(userController.getNumbers());
                 GameView.gameResult(computerController.getBall(), computerController.getStrike());
             }
-            
-            start = false;
+
+            start = GameView.reGame();
         }
     }
 }
