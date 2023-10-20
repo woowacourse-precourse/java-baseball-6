@@ -3,14 +3,13 @@ package baseball.baseball;
 import baseball.game.turn.TurnResult;
 
 public class BaseballGameTurnResult implements TurnResult {
-    int numStrike;
-    int numBall;
+    private final int numStrike;
+    private final int numBall;
 
     public BaseballGameTurnResult(int numBall, int numStrike) {
         this.numBall = numBall;
         this.numStrike = numStrike;
     }
-
 
     @Override
     public boolean isGameCleared() {

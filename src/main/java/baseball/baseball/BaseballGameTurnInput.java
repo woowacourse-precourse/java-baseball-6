@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BaseballGameTurnInput implements TurnInput {
 
-    private BaseballNumber baseballNumber;
+    private final BaseballNumber baseballNumber;
 
     public BaseballGameTurnInput(String input) {
         valid(input);
