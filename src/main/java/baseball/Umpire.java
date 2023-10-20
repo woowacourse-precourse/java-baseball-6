@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.converter.IntegerInputConverter;
 import baseball.converter.StringInputConverter;
 
 import java.util.Arrays;
@@ -9,8 +10,8 @@ public class Umpire {
 
     public static int countStrike(final int originNumber, final int testNumber) {
         int count = 0;
-        String[] origin = StringInputConverter.convertToArray(convertNumberToString(originNumber));
-        String[] test = StringInputConverter.convertToArray(convertNumberToString(testNumber));
+        String[] origin = StringInputConverter.convertToArray(IntegerInputConverter.convertToString(originNumber));
+        String[] test = StringInputConverter.convertToArray(IntegerInputConverter.convertToString(testNumber));
 
         for (int i = 0; i < origin.length; i++) {
             if (isBothSame(origin[i], test[i])) {
@@ -21,17 +22,13 @@ public class Umpire {
         return count;
     }
 
-    private static String convertNumberToString(final int number) {
-        return String.valueOf(number);
-    }
-
     private static boolean isBothSame(final String origin, final String test) {
         return origin.equals(test);
     }
 
     public static int countBall(final int originNumber, final int testNumber) {
-        String[] origin = StringInputConverter.convertToArray(convertNumberToString(originNumber));
-        String[] test = StringInputConverter.convertToArray(convertNumberToString(testNumber));
+        String[] origin = StringInputConverter.convertToArray(IntegerInputConverter.convertToString(originNumber));
+        String[] test = StringInputConverter.convertToArray(IntegerInputConverter.convertToString(testNumber));
 
         boolean[] onlyOrigin = new boolean[origin.length];
         boolean[] onlyTest = new boolean[test.length];
