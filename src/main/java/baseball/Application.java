@@ -22,10 +22,8 @@ public class Application {
             startBaseballGame();
             while (continueFlag) {
                 successFlag = false;
+                createComputerNumber();
                 while (!successFlag) {
-                    strike = 0;
-                    ball = 0;
-                    createComputerNumber();
                     inputUserNumber();
                     compareNumbers();
                     successFlag = printResult();
@@ -84,6 +82,8 @@ public class Application {
     }
 
     public static void compareNumbers() {
+        strike = 0;
+        ball = 0;
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
                 if (computer.get(i) != user.get(j)) continue;
