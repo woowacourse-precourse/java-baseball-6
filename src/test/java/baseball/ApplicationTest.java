@@ -14,7 +14,7 @@ class ApplicationTest extends NsTest {
 
     @BeforeEach
     void setUp() {
-        BaseballGame.setRunningGame(true);  // 적절한 setter 메서드를 사용하거나 직접 접근하여 값을 설정
+        BaseballGame.setRunningGame(true);
     }
 
     @Test
