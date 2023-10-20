@@ -47,15 +47,22 @@ public class GameController {
             ConsoleView.printGameFinsh();
             return false;
         }
+        if (result.isExistBall() && result.isExistStrike()) {
+            ConsoleView.printBallAndStrikeCount(result.getBall(), result.getStrike());
+            return true;
+        }
+        if (!result.isExistBall() && !result.isExistStrike()) {
+            ConsoleView.printNothing();
+            return true;
+        }
         if (result.isExistBall()) {
             ConsoleView.printBallCount(result.getBall());
         }
         if (result.isExistStrike()) {
             ConsoleView.printStrikeCount(result.getStrike());
         }
-        if (!result.isExistBall() && !result.isExistStrike()) {
-            ConsoleView.printNothing();
-        }
+
+
         return true;
     }
 
