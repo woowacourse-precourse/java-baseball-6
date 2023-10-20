@@ -16,17 +16,28 @@ public class BaseballController {
         outputView.printStartBaseBallGameMessage();
 
         while (true){
-            CheckBallAndStrike checkBallAndStrike = new CheckBallAndStrike();
-            while (checkBallAndStrike.isThreeStrike()){
-                String expectedNumber = inputView.inputExpectedNumber();
-                player.changeExpectedNumbers(expectedNumber);
-                checkBallAndStrike.updateBallAndStrike(player);
-                outputView.printStatusBallAndStrike(checkBallAndStrike.statusBallAndStrike());
-            }
-            outputView.printClearBaseBallGame();
+            startGame();
             int restartMessage = inputView.inputRestartMessage();
             if (BaseballRole.isGameExit(restartMessage)) break;
         }
     }
 
+    private void startGame() {
+        CheckBallAndStrike checkBallAndStrike = new CheckBallAndStrike();
+        while (checkBallAndStrike.isThreeStrike()){
+            requestExpectedNumber();
+            resultExpectedNumber(checkBallAndStrike);
+        }
+        outputView.printClearBaseBallGame();
+    }
+
+    private void requestExpectedNumber() {
+        String expectedNumber = inputView.inputExpectedNumber();
+        player.changeExpectedNumbers(expectedNumber);
+    }
+
+    private void resultExpectedNumber(CheckBallAndStrike checkBallAndStrike) {
+        checkBallAndStrike.updateBallAndStrike(player);
+        outputView.printStatusBallAndStrike(checkBallAndStrike.statusBallAndStrike());
+    }
 }
