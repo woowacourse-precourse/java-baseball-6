@@ -8,7 +8,7 @@ public class Computer {
     public int[] initiate(){
         boolean[] duplicateCheck = new boolean[10];
         for(int i = 0; i < 3; i++){
-            int num = Randoms.pickNumberInRange(1, 10);
+            int num = Randoms.pickNumberInRange(1, 9);
             if(duplicateCheck[num]){
                 i--;
                 continue;
