@@ -55,6 +55,7 @@ public class Application {
         printBallCount(ballCount);
         printStrikeCount(strikeCount);
         printNothing(ballCount, strikeCount);
+        System.out.println();
     }
     public static void printBallCount(int ballCount) {
         if (ballCount != 0) {
@@ -63,12 +64,12 @@ public class Application {
     }
     public static void printStrikeCount(int strikeCount) {
         if (strikeCount != 0) {
-            System.out.println(strikeCount+STRIKE_MESSAGE);
+            System.out.print(strikeCount+STRIKE_MESSAGE);
         }
     }
     public static void printNothing(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0)
-            System.out.println(NOTHING_MESSAGE);
+            System.out.print(NOTHING_MESSAGE);
     }
     public static boolean isAnswer(int strikeCount) {
         return strikeCount == NUMBERS_LENGTH;
