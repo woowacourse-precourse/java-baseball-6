@@ -40,10 +40,10 @@ public class GameController {
                 AskView.askResume(RESTART, END);
                 String resumeInput = receiveResumeNumber();
                 int resumeNumber = StringInputConverter.convertStringToInt(resumeInput);
-                if (resumeNumber == RESTART) {
+                if (isUserWantMoreGame(resumeNumber)) {
                     computerNumber = NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
                 }
-                if (resumeNumber == END) {
+                if (isUserWantStopGame(resumeNumber)) {
                     playWant = false;
                 }
             }
@@ -74,5 +74,13 @@ public class GameController {
 
     private static void assertResumeValue(final String resume) {
         ResumeValidator.assertResumeInput(resume, RESTART, END);
+    }
+
+    private static boolean isUserWantMoreGame(final int resumeNumber) {
+        return resumeNumber == RESTART;
+    }
+
+    private static boolean isUserWantStopGame(final int resumeNumber) {
+        return resumeNumber == END;
     }
 }
