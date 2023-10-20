@@ -60,8 +60,10 @@ public class RefereeController {
         if(strikeCount > 0) {
             sb.append(strikeCount).append("스트라이크 ");
             // 3스트라이크에 대한 종료 flag
-            if(strikeCount == 3)
+            if(strikeCount == 3) {
+                refereeView.displayJudge(sb.toString());
                 return true;
+            }
         }
 
         refereeView.displayJudge(sb.toString());

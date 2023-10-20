@@ -32,6 +32,7 @@ public class GameController {
             
             if(!isReStart())
                 return;
+            game = new Game();
         }
     }
 }

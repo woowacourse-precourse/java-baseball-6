@@ -17,12 +17,11 @@ public class Computer {
 
         for(int i = 0; i < 10; ++i)
             pickedMap[i] = false;
-
-        for(int i = 0; i < 3; ++i) {
+        for(int i = 0; i < 3;) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!pickedMap[randomNumber]) {
                 pickedMap[randomNumber] = true;
-                answer[i] = randomNumber;
+                answer[i++] = randomNumber;
             }
         }
     }
