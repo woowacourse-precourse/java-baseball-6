@@ -40,9 +40,17 @@
 ## 구현할 기능 목록
 
 - 입력
-    - [ ] 서로 다른 3자리의 수를 받는 기능
-    - [ ] 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수를 받는 기능
-    - [ ] `사용자`가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시키는 기능
+    - [x] 임의의 3자리 수를 받는 기능
+      - `Conole.input3DigitRandomNumber()`
+      - `상대방`의 입력을 받을 때 사용
+    - [x] 서로 다른 3자리의 수를 받는 기능
+      - `Console.input3DigitNumber()`
+      - `사용자`의 입력을 받을 때 사용
+    - [x] 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수를 받는 기능
+      - `Console.inputRestartOrTerminate()`
+    - [x] `사용자`가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시키는 기능
+
+
 - 출력
     - [ ] 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시하는 기능
 - 게임
