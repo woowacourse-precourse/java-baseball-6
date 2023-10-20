@@ -1,13 +1,13 @@
 package baseball.domain;
 
+import baseball.utils.BaseballGameNoticeUtil;
 import baseball.utils.NumbersValidator;
+import baseball.utils.RandomNumberCreator;
 import baseball.utils.ResultPrinter;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.domain.RandomNumberCreator.*;
-import static baseball.utils.BaseballGameNoticeUtil.*;
 
 public class BaseBall {
 
@@ -17,16 +17,9 @@ public class BaseBall {
         this.baseballCalculator = baseballCalculator;
     }
 
-    /**
-     * 1. 입력 받기
-     * 1-2. 입력 값 검증
-     * 2. 게임 실행(+ 값 출력)
-     * 3.
-     *
-     */
     public void baseBallRun() {
         // 랜덤 값 생성
-        List<Integer> computerNumbers = makeRandomNumber();
+        List<Integer> computerNumbers = RandomNumberCreator.makeRandomNumber();
         boolean isCorrect = baseBallStart(computerNumbers);
 
         while (!isCorrect) { // 정답 맞출 때 까지 반복
@@ -40,7 +33,7 @@ public class BaseBall {
          * 2. 입력 값 계산기에 전달
          * 3. 계산 값 출력
          */
-        requireInputNumber();
+        BaseballGameNoticeUtil.requireInputNumber();
         String userInputNumbers = inputBaseballNumbers();
         NumbersValidator.inputValidate(userInputNumbers);
 

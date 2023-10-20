@@ -3,8 +3,6 @@ package baseball.domain;
 import baseball.utils.BaseballGameNoticeUtil;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.utils.BaseballGameNoticeUtil.noticeStartGame;
-
 public class GameManager {
 
     private BaseBall baseBall;
@@ -14,7 +12,7 @@ public class GameManager {
     }
 
     public void game() {
-        noticeStartGame();
+        BaseballGameNoticeUtil.noticeStartGame();
         baseBall.baseBallRun();
 
         while(true) {
