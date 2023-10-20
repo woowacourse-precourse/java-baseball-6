@@ -17,7 +17,7 @@ public class RefereeTest extends NsTest {
   void 볼인지_스트라이크인지_판별() {
     // given
     Referee referee = new Referee();
-    List<Integer> givenNumbers = new ArrayList<>(Arrays.asList(5,8,9));
+    List<Integer> givenNumbers = new ArrayList<>(Arrays.asList(5, 8, 9));
     referee.setGivenNumbers(givenNumbers);
     String test = "597";
 
