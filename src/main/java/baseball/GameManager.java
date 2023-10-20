@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.util.Parser;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class GameManager {
 
             do {
                 String userInput = Console.readLine();
-                userInputNumbers = Parser.parse(userInput);
+                userInputNumbers = Parser.parseToIntegerList(userInput);
             } while (calculateGameResult(computerNumbers, userInputNumbers));
         } while (isContinue());
     }
