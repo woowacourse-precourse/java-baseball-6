@@ -12,10 +12,9 @@ class RefereeTest {
         //given
         Ball computer = new Ball("123");
         Ball player = new Ball("234");
-        Referee referee = new Referee(computer, player);
 
         //when
-        BallCounts bc = referee.judge();
+        BallCounts bc = Referee.judge(computer, player);
         String result = bc.toString();
 
         //then
@@ -27,10 +26,9 @@ class RefereeTest {
         //given
         Ball computer = new Ball("123");
         Ball player = new Ball("273");
-        Referee referee = new Referee(computer, player);
 
         //when
-        BallCounts bc = referee.judge();
+        BallCounts bc = Referee.judge(computer, player);
         String result = bc.toString();
 
         //then
@@ -42,10 +40,9 @@ class RefereeTest {
         //given
         Ball computer = new Ball("123");
         Ball player = new Ball("123");
-        Referee referee = new Referee(computer, player);
 
         //when
-        BallCounts bc = referee.judge();
+        BallCounts bc = Referee.judge(computer, player);
         String result = bc.toString();
 
         //then
@@ -57,10 +54,9 @@ class RefereeTest {
         //given
         Ball computer = new Ball("123");
         Ball player = new Ball("124");
-        Referee referee = new Referee(computer, player);
 
         //when
-        BallCounts bc = referee.judge();
+        BallCounts bc = Referee.judge(computer, player);
         String result = bc.toString();
 
         //then
@@ -72,10 +68,9 @@ class RefereeTest {
         //given
         Ball computer = new Ball("123");
         Ball player = new Ball("456");
-        Referee referee = new Referee(computer, player);
 
         //when
-        BallCounts bc = referee.judge();
+        BallCounts bc = Referee.judge(computer, player);
         String result = bc.toString();
 
         //then
