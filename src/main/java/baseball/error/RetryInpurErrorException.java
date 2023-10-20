@@ -2,7 +2,7 @@ package baseball.error;
 
 public class RetryInpurErrorException implements ErrorException{
     @Override
-    public void throwIlleegalArgumentException(String message) {
+    public void checkUserInputValidate(String message) {
         throw new IllegalArgumentException(message);
     }
 }

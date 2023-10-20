@@ -24,9 +24,10 @@
 ### Error
 - [ ] InputErrorException (유효하지 않을 시 IllegalArgumentException)
     - [ ] GameInputErrorException
-        - [ ] 숫자가 3자리인지 검사 기능
-        - [ ] 중복된 숫자가 있는지 검사 기능
+        - [x] 숫자가 3자리인지 검사 기능
+        - [x] 중복된 숫자가 있는지 검사 기능
         - [x] 숫자 외에 입력값이 들어온지 검사 기능
+        - [ ] 각 자리 숫자가 1~9의 값인지 확인
     - [ ] RetryInputErrorException
         - [ ] 1,2 외의 값이 들어오는지 검사 기능
 
