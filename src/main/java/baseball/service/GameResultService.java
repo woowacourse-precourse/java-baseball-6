@@ -13,12 +13,13 @@ public class GameResultService {
         if (gameResult.isNothing()) {
             return NOTHING;
         }
-        if (gameResult.isAllBall()) {
+        else if (gameResult.isOnlyBall()) {
             return gameResult.balls() + BALL;
         }
-        else if (gameResult.isAllStrike()) {
+        else if (gameResult.isOnlyStrike()) {
             return gameResult.strikes() + STRIKE;
         }
+
         return gameResult.toString();
     }
 

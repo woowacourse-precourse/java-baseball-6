@@ -8,11 +8,11 @@ public record GameResult(int balls, int strikes) {
         return balls == 0 && strikes == 0;
     }
 
-    public boolean isAllBall() {
+    public boolean isOnlyBall() {
         return balls > 0 && strikes == 0;
     }
 
-    public boolean isAllStrike() {
+    public boolean isOnlyStrike() {
         return balls == 0 && strikes > 0;
     }
 
