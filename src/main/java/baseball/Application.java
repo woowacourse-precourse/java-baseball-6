@@ -21,49 +21,53 @@ public class Application {
         }
     }
 
-    public static void inputThreeNumber(String inputNumber, String[] strArr, Integer[] intArr) {
+    public static void convertIntNumbers(String userInput, Integer[] userNumbers) {
         try {
-            inputNumber = Console.readLine();
-
-            //입력값의 크기가 3개가 아닐 때 => 예외 발생
-            if (inputNumber.length() != 3) {
-                Application.throwException("3개의 숫자만 입력하세요.");
-            }
-
-            //숫자배열 만들기
-            strArr = inputNumber.split("");
+            String[] userInputChars = userInput.split("");
             for (int i = 0; i < 3; i++) {
 
                 //0입력시 => 예외 발생
-                if (Integer.parseInt(strArr[i]) == 0) {
+                if (Integer.parseInt(userInputChars[i]) == 0) {
                     Application.throwException("1~9 사이의 숫자를 입력하세요.");
                 }
-                intArr[i] = Integer.parseInt(strArr[i]);
+                userNumbers[i] = Integer.parseInt(userInputChars[i]);
                 //같은 숫자를 입력했을 때 => 예외발생
                 for (int j = i + 1; j < 3; j++)
-                    if (intArr[i] == Integer.parseInt(strArr[j])) {
+                    if (userNumbers[i] == Integer.parseInt(userInputChars[j])) {
                         Application.throwException("서로 다른 숫자를 입력하세요.");
                     }
-
             }
-
         } catch (NumberFormatException ex) {
             //문자가 포함될 때 => 예외 발생
             Application.throwException("숫자만 입력하세요.");
         }
     }
 
+    public static void inputThreeNumber(String userInput, Integer[] userNumbers) {
+
+        userInput = Console.readLine();
+
+        //입력값의 크기가 3개가 아닐 때 => 예외 발생
+        if (userInput.length() != 3) {
+            Application.throwException("3개의 숫자만 입력하세요.");
+        }
+        //숫자배열 만들기
+        Application.convertIntNumbers(userInput, userNumbers);
+
+
+    }
+
     public static void throwException(String warning) {
         throw new IllegalArgumentException(warning);
     }
 
-    public static void calculateStrikeAndBall(List<Integer> selectNumber, Integer[] intArr) {
+    public static void calculateStrikeAndBall(List<Integer> selectNumber, Integer[] userNumbers) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (selectNumber.get(i) == intArr[j] && i == j) {
+                if (selectNumber.get(i) == userNumbers[j] && i == j) {
                     strikeCount++;
 //                    System.out.println("strikeCount = " + strikeCount);
-                } else if (selectNumber.get(i) == intArr[j]) {
+                } else if (selectNumber.get(i) == userNumbers[j]) {
                     ballCount++;
 //                    System.out.println("ballCount = " + ballCount);
                 }
@@ -84,20 +88,20 @@ public class Application {
         System.out.println();
     }
 
-    public static boolean restartOrExitGame(int strikeCount, String inputNumber, List<Integer> selectNumber) {
+    public static boolean restartOrExitGame(int strikeCount, String userInput, List<Integer> selectNumber) {
         if (strikeCount == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            inputNumber = Console.readLine();
+            userInput = Console.readLine();
             try {
-                if (Integer.parseInt(inputNumber) != 1 && Integer.parseInt(inputNumber) != 2) {
+                if (Integer.parseInt(userInput) != 1 && Integer.parseInt(userInput) != 2) {
                     Application.throwException("1과 2중에 입력하세요.");
                 }
             } catch (NumberFormatException ex) {
                 Application.throwException("숫자만 입력하세요.");
             }
 
-            if (Integer.parseInt(inputNumber) == 1) {
+            if (Integer.parseInt(userInput) == 1) {
                 selectNumber.clear();
                 Application.selectThreeNumber(selectNumber);
                 System.out.println("selectNumber = " + selectNumber);
@@ -117,13 +121,10 @@ public class Application {
     public static void main(String[] args) {
 
         // TODO: 프로그램 구현
-        String inputNumber = "";
-        Integer[] intArr = new Integer[3];
-
+        String userInput = "";
+        Integer[] userNumbers = new Integer[3];
 
         boolean isGameRunning = true;
-
-        String[] strArr = new String[3];
 
         //1. 선택
         List<Integer> selectNumber = new ArrayList<>();
@@ -137,26 +138,24 @@ public class Application {
 
             System.out.print("숫자를 입력해주세요 : ");
             //3. 사용자 입력값 받기
-            Application.inputThreeNumber(inputNumber, strArr, intArr);
+            Application.inputThreeNumber(userInput, userNumbers);
 
-//            for (int i : intArr) {
+//            for (int i : userNumbers) {
 //                System.out.println("i = " + i);
 //            }
             //4. 규칙에 따라 출력
 
-            Application.calculateStrikeAndBall(selectNumber, intArr);
+            Application.calculateStrikeAndBall(selectNumber, userNumbers);
 //            System.out.println("strikeCount = " + strikeCount);
 //            System.out.println("ballCount = " + ballCount);
             Application.displayResult(ballCount, strikeCount);
 
             //5. 게임 종료 후, 재시작 & 종료 선택
-            isGameRunning = Application.restartOrExitGame(strikeCount, inputNumber, selectNumber);
+            isGameRunning = Application.restartOrExitGame(strikeCount, userInput, selectNumber);
 
 
         }
     }
-
-
 
 
 }
