@@ -44,6 +44,9 @@ public class BallCount {
         this.strike=0;
         this.ball=0;
     }
-
-
+    public void strikeOut(){
+        if(this.strike == THREE_STRIKE_STRIKE && this.ball == THREE_STRIKE_BALL){
+            this.strikeOut= false;
+        }
+    }
 }

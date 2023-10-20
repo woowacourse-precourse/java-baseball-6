@@ -28,6 +28,8 @@ public class BaseballController {
         while(baseball.isState());
         }
 
+
+
     private static void gameStart(Baseball baseball, User user, Computer computer) {
         do{
             settingComputer(computer,user);
@@ -42,6 +44,7 @@ public class BaseballController {
             user.setBaseball(inputNumber());
             ballCount.initBallCount();
             BaseballService.baseballGame(user,computer,ballCount);
+            ballCount.strikeOut();
         }
         while(ballCount.isStrikeOut());
         user.endGame();
