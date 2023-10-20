@@ -41,4 +41,15 @@ public class Util {
         score.setBall(ball);
         return score;
     }
+
+    public static void validateUserNumbers(List<Integer> userNumbers) {
+
+        for(int i = 0; i < userNumbers.size(); i++) {
+            for(int j = i + 1; j < userNumbers.size(); j++) {
+                if(userNumbers.get(i) == userNumbers.get(j)) {
+                    throw new IllegalArgumentException("중복된 값을 입력할 수 없습니다.");
+                }
+            }
+        }
+    }
 }

@@ -33,6 +33,8 @@ public class Game {
             userNumbers.add(userInput.charAt(i) - '0');
         }
 
+        Util.validateUserNumbers(userNumbers);
+
         return userNumbers;
     }
 
