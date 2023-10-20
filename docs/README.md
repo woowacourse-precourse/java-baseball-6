@@ -5,7 +5,7 @@
 - [x] 볼을 비교한 결과를 (스트라이크> 볼 > 낫띵) 우선순위로 비교하기 - BallResult
 - [x] BALL 결과를 저장, 업데이트 하고 String 으로 결과 반환  - BallNum
 - [x] STRIKE 결과를 저장, 업데이트 하고 String 으로 결과 반환 - StrikeNum
-- [ ] Ball 3개를 가져 볼, 스트라이크 수 계산 - Balls
+- [x] Ball 3개를 가져 서로 비교하며 볼, 스트라이크 수 계산 - Balls
 - [x] 게임 결과를 저장 - GameResult
 - [ ] 랜덤한 수를 Balls 로 변환 - BallsGenerator
 - [ ] 특정한 수를 Balls 로 변환 - BallConvertor
