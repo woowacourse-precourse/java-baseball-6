@@ -33,4 +33,17 @@ class InputValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("콤마 없이 오직 숫자만 입력해주시기 바랍니다.");
     }
+
+    @DisplayName("유저 input의 길이가 3을 초과하는 경우의 테스트")
+    @Test
+    void overLengthUserInputTest() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String overLengthUserInput = "1792";
+        //then
+        assertThatThrownBy(() -> inputValidation.validateUserInput(overLengthUserInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("3개의 숫자만을 입력해주시기 바랍니다.");
+    }
 }
