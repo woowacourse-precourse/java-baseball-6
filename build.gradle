@@ -4,7 +4,8 @@ plugins {
 
 group 'woowacourse-projects'
 version '1.0-SNAPSHOT'
-
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
