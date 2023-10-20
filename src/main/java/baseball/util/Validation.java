@@ -1,8 +1,5 @@
 package baseball.util;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Validation {
 
     private static final String NUMBER_REGEX = "^[1-9]$";
@@ -15,6 +12,20 @@ public class Validation {
     }
 
     private boolean isRightNumber(String number) {
-        return number.matches(NUMBER_REGEX) && number.length() == INPUT_LENGTH;
+        return validateIsNumber(number) && validateIsRightLength(number);
     }
+
+    private boolean validateIsNumber(String number) {
+        if(number.matches(NUMBER_REGEX))
+           return true;
+        throw new IllegalArgumentException("숫자로 입력이 되어야 합니다!");
+    }
+
+    private boolean validateIsRightLength(String number) {
+        if(number.length() == INPUT_LENGTH)
+            return true;
+        throw new IllegalArgumentException("입력 숫자의 길이는 3입니다!");
+    }
+
+
 }
