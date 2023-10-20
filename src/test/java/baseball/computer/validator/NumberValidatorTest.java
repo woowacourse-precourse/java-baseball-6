@@ -1,11 +1,13 @@
 package baseball.computer.validator;
 
+import static baseball.validator.NumberValidator.LENGTH;
+import static baseball.validator.NumberValidator.validateAllDigits;
 import static baseball.validator.NumberValidator.validateDuplicateNumber;
+import static baseball.validator.NumberValidator.validateRequiredLength;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.computer.RandomComputerNumberGenerator;
 import baseball.validator.NumberValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -105,7 +107,7 @@ class NumberValidatorTest {
 
         // when
         // then
-        assertThatThrownBy(() -> NumberValidator.validateAllDigits(invalidInput))
+        assertThatThrownBy(() -> validateAllDigits(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(invalidInput + "은 숫자가 아닙니다.");
     }
@@ -118,8 +120,33 @@ class NumberValidatorTest {
 
         // when
         // then
-        assertThatCode(() -> NumberValidator.validateAllDigits(validInput))
+        assertThatCode(() -> validateAllDigits(validInput))
                 .doesNotThrowAnyException();
+    }
+
+    @DisplayName("입력 받는 문자가 3글자이기 때문에 예외가 발생하지 않는다.")
+    @Test
+    void validateRequiredLengthWithThree() {
+        // given
+        String validInput = "123";
+
+        // when
+        // then
+        assertThatCode(() -> validateRequiredLength(validInput))
+                .doesNotThrowAnyException();
+    }
+
+    @DisplayName("입력 받는 문자가 3글자가 아니라면 예외를 발생한다.")
+    @Test
+    void validateRequiredLengthWithNotThree() {
+        // given
+        String invalidInput = "1234";
+
+        // when
+        // then
+        assertThatThrownBy(() -> validateRequiredLength(invalidInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(invalidInput + "의 길이는 " + LENGTH + "이어야 합니다.");
     }
 
 }
