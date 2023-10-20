@@ -18,7 +18,7 @@ public class OutputView {
     }
 
     public void printGameResultMessage(GameResult result) {
-        System.out.println(result.resultToString());
+        System.out.println(result.toString());
     }
 
     public void printRestartSelectMessage() {

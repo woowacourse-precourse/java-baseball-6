@@ -13,7 +13,8 @@ public class GameResult {
     public final static String BALL_AND_STRIKE = "%d볼 %d스트라이크\n";
 
 
-    public String resultToString() {
+    @Override
+    public String toString() {
         String result = "";
         if (ballCount == 0 && strikeCount == 0) {
             result = NOT_THING;
