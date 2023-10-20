@@ -8,5 +8,4 @@ public interface GameService {
     public boolean isGameSet();
 
     public boolean getQuit();
-    public void setQuit(boolean quit);
 }
