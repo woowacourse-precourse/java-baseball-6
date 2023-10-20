@@ -10,6 +10,8 @@ import java.util.List;
 
 public class GameController {
 
+    private final static int RESTART = 1;
+    private final static int GAME_END = 2;
     private InputView inputView;
     private OutputView outputView;
 
@@ -36,13 +38,30 @@ public class GameController {
                 guessNumberList.add(Character.getNumericValue(c));
             }
             player.compareToAnswerNumbers(opponent, guessNumberList);
+            outputView.printHintView(player);
 
             if (checkNumbersEqualToAnswer(player)) {
+                outputView.printGameEndView();
+                checkForRestartOrShutDown(player);
+                break;
             }
         }
     }
 
     private boolean checkNumbersEqualToAnswer(Player player) {
         return player.isEqualToAnswerNumbers();
+    }
+
+    private void checkForRestartOrShutDown(Player player) {
+        String inputString = inputView.readRestartOrShutDown();
+        int restartCheckNum = Integer.parseInt(inputString);
+
+        if (restartCheckNum == GAME_END) {
+            return;
+        }
+
+        if (restartCheckNum == RESTART) {
+            repeatGuessingAnswerNumbers(player, new Opponent());
+        }
     }
 }
