@@ -60,6 +60,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test //입력 값 길이가 3자리 미만인 경우
+    void 예외_테스트6() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
