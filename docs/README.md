@@ -8,7 +8,13 @@ ___
 1. Model
     * PlayNumber
         * computerNumber에 대한 데이터 저장
-        * playerNumber에 대한 데이터 저장
+          <br><br>
+        * playerNumber에 대한 데이터 저장 <br>
+          -> InputNumber를 숫자로 변환
+          <br><br>
+
+        * InputNumber --> 플레이어가 String 타입으로 입력
+
 
 2. View
     * OutputView
