@@ -10,8 +10,8 @@ public class PlayerService {
     public void validate(String number) {
         validateInteger(number);
         validateSize(number);
+        validateRange(number);
         validateDuplicate(number);
-        
     }
     
     private void validateInteger(String number) {
@@ -27,6 +27,16 @@ public class PlayerService {
         if (number.length() != BASEBALL_NUMBERS_SIZE) {
             throw new IllegalArgumentException(String.format(
                     "%d개의 자릿수만 허용됩니다.", BASEBALL_NUMBERS_SIZE));
+        }
+    }
+    
+    private void validateRange(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            char c = number.charAt(i);
+            int targetNumber = Character.getNumericValue(c);
+            if (targetNumber <= 0 || targetNumber > 9) {
+                throw new IllegalArgumentException("한 자리 자연수만 입력할 수 있습니다");
+            }
         }
     }
     
