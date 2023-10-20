@@ -21,7 +21,7 @@ public class Computer {
         com.clear();
     }
 
-    public int isInList(int num) {
-        return com.indexOf(num);
+    public List<Integer> getList() {
+        return com;
     }
 }
