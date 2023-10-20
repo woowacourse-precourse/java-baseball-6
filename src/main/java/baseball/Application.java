@@ -46,7 +46,16 @@ public class Application {
                 }
             }
 
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = readLine();
 
+            if (!validateRetryInput(input)) {
+                throw new IllegalArgumentException();
+            }
+
+            if (input.equals("2")) {
+                break;
+            }
         }
     }
 
@@ -78,5 +87,12 @@ public class Application {
         }
 
         return true;
+    }
+
+    private static boolean validateRetryInput(String input) {
+        if (input.equals("1") || input.equals("2")) {
+            return true;
+        }
+        return false;
     }
 }
