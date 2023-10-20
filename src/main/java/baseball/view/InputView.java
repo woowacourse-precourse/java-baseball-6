@@ -18,5 +18,11 @@ public class InputView {
         }
         return numbers;
     }
+
+    public boolean readContinueGame() {
+        int input = Integer.parseInt(Console.readLine());
+        if (input == 1) return true;
+        return false;
+    }
 }
 

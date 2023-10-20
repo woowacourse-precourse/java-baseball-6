@@ -27,4 +27,8 @@ public class BaseballService {
         return NOTHING;
     }
 
+    public boolean isFinished(GameResult gameResult) {
+        if (gameResult.getStrike() == 3) return true;
+        return false;
+    }
 }

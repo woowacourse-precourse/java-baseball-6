@@ -19,13 +19,14 @@ public class GameResult {
 
     @Override
     public String toString() {
-        if (ball == 0 && strike == 0) return "낫싱";
+        if (ball == 0 && strike == 0) return "낫싱\n";
         String str = "";
         if (ball != 0) {
             str += (ball + "볼");
             if (strike != 0) str += " ";
+            else str += "\n";
         }
-        if (strike != 0) str += (strike + "스트라이크");
+        if (strike != 0) str += (strike + "스트라이크\n");
         return str;
     }
 }

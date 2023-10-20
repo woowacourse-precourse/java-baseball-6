@@ -23,9 +23,22 @@ public class BaseballController {
 
     public void startBaseballGame() {
         outputView.printStartGameMessage();
-        List<Integer> baseballNumbers = baseballNumberGenerator.generateNumbers();
-        List<Integer> inputNumbers = inputView.readThreeInputNumbers();
-        GameResult gameResult = baseballService.getGameResult(baseballNumbers, inputNumbers);
-        outputView.printGameResult(gameResult);
+
+        boolean continueGame = true;
+        while (continueGame) {
+            List<Integer> baseballNumbers = baseballNumberGenerator.generateBaseballNumbers();
+            playSingleGame(baseballNumbers);
+            continueGame = inputView.readContinueGame();
+        }
+    }
+
+    private void playSingleGame(List<Integer> baseballNumbers) {
+        GameResult gameResult;
+        do {
+            List<Integer> inputNumbers = inputView.readThreeInputNumbers();
+            gameResult = baseballService.getGameResult(baseballNumbers, inputNumbers);
+            outputView.printGameResult(gameResult);
+        } while (!baseballService.isFinished(gameResult));
+        outputView.printGameOverMessage();
     }
 }
