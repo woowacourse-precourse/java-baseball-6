@@ -57,7 +57,6 @@ class Game{
                 computer_answer.add(randomNumber);
             }
         }
-        System.out.print(computer_answer);
     }
 
     void user() {
