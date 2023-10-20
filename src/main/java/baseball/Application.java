@@ -129,4 +129,18 @@ public class Application {
         System.out.println(ball + "볼 " + strike + "스트라이크\n");
 
     }
+
+    public static GameStatus getGameRestartChoice(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userChoice = Console.readLine();
+
+        if(!userChoice.matches("[1-2]{1}"))
+            throw new IllegalArgumentException();
+
+        if(userChoice.equals("1"))
+            return GameStatus.START;
+
+
+        return GameStatus.END;
+    }
 }
