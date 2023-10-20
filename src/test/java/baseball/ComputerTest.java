@@ -15,7 +15,7 @@ class ComputerTest {
     @Test
     @DisplayName("중복 되지 않은 랜덤한 3자리 수 확인")
     public void computerTest(){
-        List<Integer> threeDigitNum= computer.makeThreeDigitNum();
+        List<Integer> threeDigitNum= computer.makeComputerNumbers();
 
         Assertions.assertEquals(3, threeDigitNum.size()); //세 자리 수인지
 

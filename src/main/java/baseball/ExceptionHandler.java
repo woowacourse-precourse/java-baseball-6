@@ -2,9 +2,7 @@ package baseball;
 
 public class ExceptionHandler {
 
-    private static final int digit = 3;
-
-    public void checkIsInteger(String userInput){
+    public void isInteger(String userInput){
         try{
             Integer.parseInt(userInput);
         }catch(Exception e){
@@ -17,8 +15,9 @@ public class ExceptionHandler {
             throw new IllegalArgumentException();
     }
 
-    public void checkRightDigit(String userInput){
-        if (userInput.length()!=digit)
+    public void isRightDigit(String userInput){
+        int digit = 3;
+        if (userInput.length()!= digit)
             throw new IllegalArgumentException();
     }
 

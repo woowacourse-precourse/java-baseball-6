@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class ResultMaker {
+public class ResultGenerator {
     public List<Integer> makeResult(List<Integer> userNumbers, List<Integer> computerNumbers) {
         int strike =0;
         int ball =0;

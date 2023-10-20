@@ -16,8 +16,8 @@ class ExceptionHandlerTest {
     @Test
     @DisplayName("숫자가 아니면 예외")
     void checkIsInteger() {
-        Assertions.assertThrows(IllegalArgumentException.class,()-> exceptionHandler.checkIsInteger("1o3"));
-        Assertions.assertThrows(IllegalArgumentException.class,()-> exceptionHandler.checkIsInteger("! +"));
+        Assertions.assertThrows(IllegalArgumentException.class,()-> exceptionHandler.isInteger("1o3"));
+        Assertions.assertThrows(IllegalArgumentException.class,()-> exceptionHandler.isInteger("! +"));
     }
 
     @Test
@@ -29,7 +29,7 @@ class ExceptionHandlerTest {
     @Test
     @DisplayName("3자리 수가 아니면 예외")
     void checkRightDigit() {
-        Assertions.assertThrows(IllegalArgumentException.class,()-> exceptionHandler.checkRightDigit("53"));
+        Assertions.assertThrows(IllegalArgumentException.class,()-> exceptionHandler.isRightDigit("53"));
     }
 
     @Test

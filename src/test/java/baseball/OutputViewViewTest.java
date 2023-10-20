@@ -3,7 +3,7 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class OutputViewTest {
+class OutputViewViewTest {
     OutputView script = new OutputView();
     @Test
     @DisplayName("안내 문구 테스트")

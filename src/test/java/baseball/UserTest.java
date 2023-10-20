@@ -17,8 +17,8 @@ class UserTest {
         User user =mock(User.class);
         String userInput = "123";
         when(user.getUserInput()).thenReturn(userInput); //getUserNumber()을 호출할 때마다 123을 반환 하도록 설정
-        when(user.getNumbers(userInput)).thenCallRealMethod(); //mock 객체에서 실제 구현된 processUserNumber() 호출
-        List<Integer> result = user.getNumbers(userInput); // 안에서 getUserNumber 호출 뒤 가공해서 반환
+        when(user.getUserNumbers(userInput)).thenCallRealMethod(); //mock 객체에서 실제 구현된 processUserNumber() 호출
+        List<Integer> result = user.getUserNumbers(userInput); // 안에서 getUserNumber 호출 뒤 가공해서 반환
         assertEquals(List.of(1,2,3), result);
     }
 
