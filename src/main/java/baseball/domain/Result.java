@@ -42,4 +42,8 @@ public class Result {
         }
         return ball+"볼 "+strike+"스트라이크";
     }
+
+    public boolean isThreeStrike(){
+        return strike==3;
+    }
 }
