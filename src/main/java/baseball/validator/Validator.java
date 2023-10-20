@@ -20,4 +20,11 @@ public class Validator {
             throw new IllegalArgumentException("자릿수가 맞지 않습니다.");
         }
     }
+
+    public void validateInRange(int value, int from, int to) {
+        if (value < from || value > to) {
+            String format = String.format("%d에서 %d 숫자만 입력해주셔야 합니다.", from, to);
+            throw new IllegalArgumentException(format);
+        }
+    }
 }

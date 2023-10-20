@@ -19,7 +19,7 @@
 ## 객체 도메인
 * InputView
   * String inputNumbers()
-  * int inputIfContinue()
+  * String inputIfContinue()
 * OutputView
   * void startMention()
   * void printResult(Result result)
@@ -58,3 +58,4 @@
 * Validator
   * int parseValidatedInt(String str)
   * void validateCiphers(int value, int ciphers)
+  * public void validateInRange(int value, int from, int to)
