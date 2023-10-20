@@ -26,5 +26,3 @@
         - [ ] OutPutView
     - [ ] controller
         - [ ] GameController
-
-

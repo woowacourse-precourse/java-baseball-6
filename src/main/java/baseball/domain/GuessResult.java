@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 public record GuessResult(int ballCount, int strikeCount) {
     public boolean hasBall() {
