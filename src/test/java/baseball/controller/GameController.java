@@ -21,22 +21,27 @@ public class GameController {
         if (registeringPlayer == null) {
             return;
         }
-        startGame(new Game());
+        startGame();
     }
 
-    private void startGame(Game game) {
+    private void startGame() {
         // 맞출때까지 반복해야 한다
         // Computer 도 난수로 생성해야 한다
+        Game game = new Game();
         registeredComputer = Util.generateComputerTripleBalls();
         while (!registeringPlayer.hasSameBalls(registeredComputer)) {
             // refactoring 구간 1
             // 대안) Player 타입의 컴퓨터로 변화 -> game comparePlayers(playerA, playerB)
-            System.out.println(game.checkTripleBalls(registeringPlayer.getPlayerTripleBalls(), registeredComputer));
+            displayResult(game);
             registeringPlayer = registerPlayer();
         }
 
         OutputView.displayThreeStrikes();
         finishOrRestartGame(InputView.inputRestartOrFinish());
+    }
+
+    private void displayResult(Game game) {
+        OutputView.displaySentence(game.checkTripleBalls(registeringPlayer.getPlayerTripleBalls(), registeredComputer));
     }
 
     private Player registerPlayer() {

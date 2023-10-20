@@ -75,4 +75,12 @@ public class TripleBallsTest {
         Assertions.assertThat(gameResult).isEqualTo("낫싱");
     }
 
+    @Test
+    void Three_Strike_hasSameBalls_Return_True() {
+        userTripleBalls = new TripleBalls(Arrays.asList(new Ball(1, 1),
+                new Ball(2, 2), new Ball(3, 3)));
+
+        org.junit.jupiter.api.Assertions.assertTrue(userTripleBalls.hasThreeStrikes(computerTripleBalls));
+    }
+
 }

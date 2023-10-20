@@ -1,9 +1,13 @@
 package baseball;
 
+import baseball.controller.InputController;
+import baseball.model.Ball;
+import baseball.model.Player;
+import baseball.model.TripleBalls;
+import baseball.util.Util;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -60,5 +64,27 @@ public class InputViewTest extends IOTest {
 
         Assertions.assertThat(sentence).isEqualTo(result);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"123"})
+    void generatePlayerBallsFromInput(String ballInput) {
+        Player generatedPlayer = InputController.generatePlayerTripleBalls(ballInput);
+        TripleBalls playerTripleBalls = generatedPlayer.getPlayerTripleBalls();
+
+        Assertions.assertThat(playerTripleBalls.getTripleBalls()).containsExactly(
+                new Ball(1, 1), new Ball(2, 2), new Ball(3, 3)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1"})
+    void restart_Game_When_Choose_One(String restart) {
+        setInUserInput(generateUserInputStream(restart));
+        String restartChoice = InputView.inputRestartOrFinish();
+
+        Assertions.assertThat(restartChoice).isEqualTo("1");
+    }
+
+
 
 }
