@@ -27,12 +27,7 @@ public class Rules {
         }
     }
 
-    public void getResult() {
-        if (strikes == 3) {
-            System.out.println(strikes + "스트라이크");
-            return;
-        }
-
+    public void printBallAndStrikes() {
         if (ball > 0) {
             System.out.print(ball + "볼 ");
         }
@@ -43,5 +38,9 @@ public class Rules {
             System.out.print("낫싱");
         }
         System.out.println();
+    }
+
+    public boolean isThreeStrikes() {
+        return strikes == 3 && ball == 0;
     }
 }

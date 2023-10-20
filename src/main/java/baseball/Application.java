@@ -26,10 +26,13 @@ public class Application {
             // 스트라이크, 볼 개수 구하기
             rules.init(0, 0);
             rules.countBallAndStrikes(com, player);
-            rules.getResult();
             // 결과 출력
-
+            if (!rules.isThreeStrikes()) {
+                rules.printBallAndStrikes();
+                continue;
+            }
             // 게임 재시작 여부 결정
+            System.out.println("3스트라이크");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             input = Console.readLine();
             if (input.equals("1")) {
