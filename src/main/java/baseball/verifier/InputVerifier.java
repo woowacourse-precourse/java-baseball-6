@@ -10,6 +10,14 @@ public class InputVerifier {
         checkDistinct(isBallNumber);
     }
 
+    public void checkGameNumber(String isGameNumber) throws IllegalArgumentException {
+        checkNumeric(isGameNumber);
+        int intGameNumber = Integer.parseInt(isGameNumber);
+        if (intGameNumber != SystemConstant.NEW_GAME && intGameNumber != SystemConstant.END_GAME) {
+            throw new IllegalArgumentException(SystemException.EXCEPTION_GAME_NUMBER);
+        }
+    }
+
     private void checkNumeric(String isNumeric) {
         try {
             Integer.parseInt(isNumeric);
