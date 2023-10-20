@@ -13,12 +13,19 @@ public class BaseballValidator {
     private static final String SIZE_EXCEPTION ="3개의 숫자를 입력해야 합니다.";
     private static final String DUPLICATE_EXCEPTION ="중복된 숫자를 입력할 수 없습니다.";
     private static final String RANGE_EXCEPTION ="1부터 9까지의 숫자만 입력할 수 있습니다.";
-
+    private static final String RETRY_EXCEPTION ="1 또는 2를 입력할 수 있습니다.";
 
 
     protected boolean validator(List<Integer> baseball){
         return sizeValidator(baseball) && duplicateValidator(baseball) && rangeValidator(baseball);
     }
+    protected boolean retryValidator(Integer number){
+        if( number != 1 && number != 2){
+            throw new IllegalArgumentException(RETRY_EXCEPTION);
+        }
+        return true;
+    }
+
     //3개의 숫자인지 검증하는 메소드
     private boolean sizeValidator(List<Integer> baseball) {
         if(baseball.size() != BASEBALL_SIZE){
@@ -42,6 +49,8 @@ public class BaseballValidator {
         }
         return true;
     }
+
+
 
 
 }

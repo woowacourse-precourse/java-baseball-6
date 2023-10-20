@@ -1,6 +1,11 @@
 package baseball.domain;
 
+import baseball.view.OutputView;
+
+import java.util.List;
+
 public class BallCount {
+    private static final Integer BASEBALL_SIZE =3;
     private static final String BALL= "볼 ";
     private static final String STRIKE= "스트라이크";
     private static final Integer STRIKE_NUMBER = 1;
@@ -11,8 +16,6 @@ public class BallCount {
     private static final Integer NOTHING_STRIKE= 0;
     private static final Integer NOTHING_BALL =0;
     private static final String NOTHING_STRING = "낫싱";
-
-
     int strike;
     int ball;
     boolean strikeOut;
@@ -23,8 +26,6 @@ public class BallCount {
     public boolean isStrikeOut() {
         return strikeOut;
     }
-
-
     public String getBallCount(){
         if(this.strike == THREE_STRIKE_STRIKE && this.ball == THREE_STRIKE_BALL){
             return THREE_STRIKE_STRING;
@@ -49,4 +50,21 @@ public class BallCount {
             this.strikeOut= false;
         }
     }
+
+    public void baseballGame(List<Integer> computer, List<Integer>  user) {
+        for(int i = 0 ; i < BASEBALL_SIZE;i++){
+            if(user.get(i) == computer.get(i)){
+                setStrike();
+                continue;
+            }
+            if(computer.contains(user.get(i))){
+                setBall();
+            }
+        }
+        OutputView.nowBallCount(getBallCount()
+        );
+    }
+
+
+
 }

@@ -1,6 +1,8 @@
 package baseball.domain;
 
-public class Baseball {
+import baseball.validator.BaseballValidator;
+
+public class Baseball extends BaseballValidator {
     private static final Integer GAME_RETRY = 1;
     private static final Integer GAME_END = 2;
     boolean state;
@@ -14,6 +16,7 @@ public class Baseball {
     }
 
     public void retryAndEnd(Integer number){
+        retryValidator(number);
         if( number == GAME_RETRY ){
             this.state=true;
         }
@@ -21,7 +24,4 @@ public class Baseball {
             this.state=false;
         }
     }
-
-
-
 }

@@ -29,14 +29,9 @@ public class BaseballController {
         while(baseball.isState());
         }
 
-    private static void retryGame(Baseball baseball) {
-        baseball.retryAndEnd(InputView.retryGame());
-    }
-
-
     private static void gameStart( User user, Computer computer) {
         do{
-            settingComputer(computer,user);
+            computer.createComputerBall();
             playBall(user,computer);
         }
         while(user.retry());
@@ -47,7 +42,7 @@ public class BaseballController {
         do{
             user.setBaseball(inputNumber());
             ballCount.initBallCount();
-            BaseballService.baseballGame(user,computer,ballCount);
+            ballCount.baseballGame(computer.getBaseball(), user.getBaseball());
             ballCount.strikeOut();
         }
         while(ballCount.isStrikeOut());
@@ -55,15 +50,12 @@ public class BaseballController {
         OutputView.endGame();
     }
 
-    //기본 값 설정
-    private static void settingComputer(Computer computer,User user) {
-        computer.setBaseball(createRandomNumber());
-    }
-    //컴퓨터가 생각하고 있는 3개의 수 생성
-    private static List<Integer> createRandomNumber() {
-        return BaseballService.createRandomNumber();
-    }
 
+
+
+    private static void retryGame(Baseball baseball) {
+        baseball.retryAndEnd(InputView.retryGame());
+    }
     //숫자 입력
     public static List<Integer> inputNumber(){
         return InputView.inputNumber();

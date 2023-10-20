@@ -13,6 +13,7 @@ class BaseballValidatorTest extends BaseballValidator{
     private static final String SIZE_EXCEPTION ="3개의 숫자를 입력해야 합니다.";
     private static final String DUPLICATE_EXCEPTION ="중복된 숫자를 입력할 수 없습니다.";
     private static final String RANGE_EXCEPTION ="1부터 9까지의 숫자만 입력할 수 있습니다.";
+    private static final String RETRY_EXCEPTION ="1 또는 2를 입력할 수 있습니다.";
 
     @Test
     void 예외_크기_검증_테스트(){
@@ -43,9 +44,31 @@ class BaseballValidatorTest extends BaseballValidator{
         testListException(list3, RANGE_EXCEPTION);
     }
 
+    @Test
+    void 예외_재시작_입력_테스트(){
+        int i1 = 3;
+        int i2 = 0;
+        int i3 = 8;
+        int i4 = 15;
+        testretryException(i1,RETRY_EXCEPTION);
+        testretryException(i2,RETRY_EXCEPTION);
+        testretryException(i3,RETRY_EXCEPTION);
+        testretryException(i4,RETRY_EXCEPTION);
+
+
+
+    }
+
     private void testListException(List<Integer> list, String message) {
         assertThatThrownBy(() -> validator(list))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
     }
+    private void testretryException(Integer num, String message) {
+        assertThatThrownBy(() -> retryValidator(num))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(message);
+    }
+
+
 }
