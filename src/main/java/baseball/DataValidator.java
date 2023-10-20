@@ -23,7 +23,7 @@ public class DataValidator {
     }
 
     public void continueDecisionValidate(int continueDecision) {
-        if(continueDecision!=1||continueDecision!=2)
+        if(continueDecision!=1&&continueDecision!=2)
             throw new IllegalArgumentException();
     }
 }
