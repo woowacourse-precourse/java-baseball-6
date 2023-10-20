@@ -34,13 +34,11 @@ public class BaseballGameService {
         BaseballJudge baseballJudge = createBaseballJudge();
 
         while(true) {
-            String input = baseballInputResolver.inputBaseballNumber();
+            JudgeResult result = playTurn(baseballJudge);
 
-            JudgeResult judgeResult = baseballJudge.judge(input);
+            baseballView.printJudgeResult(result);
 
-            baseballView.printJudgeResult(judgeResult);
-
-            if(judgeResult.isThreeStrike()) {
+            if(result.isThreeStrike()) {
                 break;
             }
         }
@@ -48,5 +46,11 @@ public class BaseballGameService {
 
     private BaseballJudge createBaseballJudge() {
         return new BaseballJudge(RandomNumberGenerator.generate());
+    }
+
+    private JudgeResult playTurn(BaseballJudge baseballJudge) {
+        String input = baseballInputResolver.inputBaseballNumber();
+
+        return baseballJudge.judge(input);
     }
 }
