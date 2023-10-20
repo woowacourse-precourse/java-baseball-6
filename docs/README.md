@@ -4,6 +4,9 @@
 - [x] 기초 설계 구상
 - [x] GoalValue 및 Test 구현
   - [x] create 및 validate 구현
-- [ ] CompareResult 구현
-  - [ ] toString 구현
+- [x] CompareResult 구현
+  - [x] toString 구현
   - [x] GoalValue.compare() 구현
+- [ ] Computer 구현
+- [ ] Shell 구현
+- [ ] main() 구현

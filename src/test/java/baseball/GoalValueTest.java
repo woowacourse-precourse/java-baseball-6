@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GoalValueTest {
     @Test
-    void 비교시_올바른_결과반환한다() {
+    void compare_정적메서드_비교시_올바른_결과_반환한다() {
         // given
         String[][] cases = {{"123", "321"}, {"123", "123"}, {"123", "231"}, {"123", "456"}};
         int[][] answers = {{2, 1}, {0, 3}, {3, 0}, {0, 0}};
@@ -43,11 +43,29 @@ public class GoalValueTest {
             // then
             if (answers[i]) {
                 assertDoesNotThrow(() -> GoalValue.create(value),
-                        "올바른 값인데 생성하지 못했습니다. : " + cases[i]);
+                        "올바른 값을 생성하지 못했습니다. : " + cases[i]);
             } else {
                 assertThrows(IllegalArgumentException.class, () -> GoalValue.create(value),
-                        "생성되면 안되는 값이 생성되었습니다. : " + cases[i]);
+                        "옳지 않은 값이 생성되었습니다. : " + cases[i]);
             }
+        }
+    }
+
+    @Test
+    void CompareResult_toString_Test() {
+        // given
+        String[][] cases = {{"123", "321"}, {"123", "123"}, {"123", "231"}, {"123", "456"}};
+        String[] answers = {"2볼 1스트라이크", "3스트라이크", "3볼", "낫싱"};
+
+        for (int i = 0; i < cases.length; i++) {
+            // when
+            GoalValue goalValue1 = GoalValue.create(cases[i][0]);
+            GoalValue goalValue2 = GoalValue.create(cases[i][1]);
+
+            CompareResult result = GoalValue.compare(goalValue1, goalValue2);
+
+            // then
+            assertEquals(result.toString(), answers[i]);
         }
     }
 }
