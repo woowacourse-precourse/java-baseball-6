@@ -36,6 +36,7 @@ public class GameStandard {
      */
     public boolean isSamePlaceNumUserAndComputer(List<Integer> computerList, int placeIndexOfUser, int numIndexPlaceOfUser) {
         int numPlaceIndexOfComputer = computerList.get(placeIndexOfUser);
+        
         return Utill.isSameInteger(numPlaceIndexOfComputer, numIndexPlaceOfUser);
     }
 

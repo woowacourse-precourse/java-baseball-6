@@ -15,6 +15,7 @@ public class NumbersGenerate {
      */
     public List<Integer> createRandomNumList() {
         List<Integer> ranNumTreeList = new ArrayList<>();
+        
         while (ranNumTreeList.size() < RAN_NUM_LIST_MAX_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!isContainList(ranNumTreeList, randomNumber)) {
