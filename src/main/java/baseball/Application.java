@@ -8,6 +8,15 @@ import java.util.List;
 
 
 public class Application {
+
+    public static void selectThreeNumber(List<Integer> selectNumber){
+        while (selectNumber.size() != 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!selectNumber.contains(randomNumber)) {
+                selectNumber.add(randomNumber);
+            }
+        }
+    }
     public static void main(String[] args) {
 
         // TODO: 프로그램 구현
@@ -18,13 +27,8 @@ public class Application {
 
         //1. 선택
         List<Integer> selectNumber = new ArrayList<>();
+        selectThreeNumber(selectNumber);
 
-        while (selectNumber.size() != 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!selectNumber.contains(randomNumber)) {
-                selectNumber.add(randomNumber);
-            }
-        }
         System.out.println("selectNumber = " + selectNumber);
         //2. 출력문 구성
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -102,12 +106,7 @@ public class Application {
 
                 if (Integer.parseInt(inputNumber) == 1) {
                     selectNumber.clear();
-                    while (selectNumber.size() != 3) {
-                        int randomNumber = Randoms.pickNumberInRange(1, 9);
-                        if (!selectNumber.contains(randomNumber)) {
-                            selectNumber.add(randomNumber);
-                        }
-                    }
+                    selectThreeNumber(selectNumber);
                     System.out.println("selectNumber = " + selectNumber);
                 } else {
                     break;
