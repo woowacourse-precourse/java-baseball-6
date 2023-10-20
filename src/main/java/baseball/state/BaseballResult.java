@@ -1,5 +1,6 @@
 package baseball.state;
 
+import baseball.constant.BaseballString;
 import baseball.util.Assertions;
 
 public class BaseballResult {
@@ -24,16 +25,18 @@ public class BaseballResult {
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         if (ball != 0) {
-            sb.append((ball + "볼"));
+            sb.append(ball);
+            sb.append(BaseballString.BALL);
         }
         if (ball != 0 && strike != 0) {
             sb.append(" ");
         }
         if (strike != 0) {
-            sb.append(strike + "스트라이크");
+            sb.append(strike);
+            sb.append(BaseballString.STRIKE);
         }
         if (strike == 0 && ball == 0) {
-            sb.append("낫싱");
+            sb.append(BaseballString.NOTHING);
         }
         return sb.toString();
     }

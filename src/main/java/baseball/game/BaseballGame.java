@@ -3,6 +3,7 @@ package baseball.game;
 import static baseball.converter.AfterBaseballStateConverter.stringToAfterBaseballState;
 import static baseball.converter.BaseballStateConverter.stringToBaseballState;
 
+import baseball.constant.BaseballString;
 import baseball.state.AfterBaseballState;
 import baseball.state.BaseballResult;
 import baseball.state.BaseballState;
@@ -14,7 +15,7 @@ public class BaseballGame implements Game {
     BaseballState computer;
 
     public void awake() {
-        IoHelper.println("숫자 야구 게임을 시작합니다.");
+        IoHelper.println(BaseballString.GAME_START_MESSAGE);
     }
 
     public void beforeLoop() {
@@ -24,19 +25,19 @@ public class BaseballGame implements Game {
     }
 
     public void gameLoop() {
-        final String input = IoHelper.promptColon("숫자를 입력해주세요");
+        final String input = IoHelper.promptColon(BaseballString.INPUT_NUMBER_MESSAGE);
         final BaseballState userGuess = stringToBaseballState(input);
         final BaseballResult result = computer.diff(userGuess);
 
         IoHelper.println(result.toString());
         if (result.isGameEnd()) {
-            IoHelper.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            IoHelper.println(BaseballString.STRIKE_ALL_MESSAGE);
             GameManager.notifyEndGame();
         }
     }
 
     public void afterLoop() {
-        final String input = IoHelper.promptln("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        final String input = IoHelper.promptln(BaseballString.INPUT_RESTART_MESSAGE);
         final AfterBaseballState afterState = stringToAfterBaseballState(input);
 
         if (afterState == AfterBaseballState.END_GAME) {
