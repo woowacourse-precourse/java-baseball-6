@@ -48,4 +48,13 @@ public class InputValidation {
             throw new IllegalArgumentException("재입력 값은 1 또는 2여야 합니다.");
         }
     }
+
+    /**
+     * 입력된 값이 null인지 검증한다.
+     */
+    public void validateNull(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("입력값은 null일 수 없습니다.");
+        }
+    }
 }
