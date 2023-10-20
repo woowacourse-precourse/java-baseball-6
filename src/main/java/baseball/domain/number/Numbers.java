@@ -1,14 +1,10 @@
-package baseball.domain;
+package baseball.domain.number;
 
-import baseball.validator.NumberValidator;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Numbers {
 
-    public static final Integer MAX_NUMBER = 9;
-    public static final Integer MIN_NUMBER = 1;
-    public static final Integer NUMBER_COUNT = 3;
     private List<Integer> numberList;
 
     private Numbers() {

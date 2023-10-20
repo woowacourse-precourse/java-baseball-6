@@ -1,8 +1,8 @@
-package baseball.validator;
+package baseball.domain.number;
 
-import static baseball.domain.Numbers.MAX_NUMBER;
-import static baseball.domain.Numbers.MIN_NUMBER;
-import static baseball.domain.Numbers.NUMBER_COUNT;
+import static baseball.domain.number.NumberConstant.MAX_NUMBER;
+import static baseball.domain.number.NumberConstant.MIN_NUMBER;
+import static baseball.domain.number.NumberConstant.NUMBER_COUNT;
 
 import java.util.HashSet;
 import java.util.List;
