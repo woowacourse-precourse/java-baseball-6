@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.Umpire;
 import baseball.converter.StringInputConverter;
 import baseball.factory.NumberFactory;
-import baseball.validator.NumberValidator;
 import baseball.validator.ResumeValidator;
 import baseball.view.AskView;
 import baseball.view.EndView;
@@ -50,17 +49,6 @@ public class GameController {
 
     private static void askUserNumberInput() {
         AskView.askNumberInput();
-    }
-
-    private static String receivePlayNumber() {
-        String userInput = Console.readLine();
-        assertNumberValue(userInput);
-
-        return userInput;
-    }
-
-    private static void assertNumberValue(final String inputNumber) {
-        NumberValidator.assertInputNumberWithLength(inputNumber, PLAY_NUMBER_DIGIT);
     }
 
     private static boolean isStrikeEqualToGoal(final int strike) {
