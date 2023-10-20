@@ -6,27 +6,47 @@ public class Game {
     public Game() {
     }
 
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String ASK_FOR_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String ASK_FOR_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private int strike = 0;
     private int ball = 0;
+    boolean isGameEnded = false;
+    private Number number = new Number();
 
     public void startGame() {
 
-        Number computer = new Number();
-        Number player = new Number();
+        System.out.println(START_MESSAGE);
 
-        resetScore();
-
-        List<Integer> computerNumber = computer.setRandomNumber();
+        List<Integer> computerNumber = number.setRandomNumber();
         // log
         System.out.println("컴퓨터: " + computerNumber);
 
-        List<Integer> playerNumber = player.inputNumber();
-        // log
-        System.out.println("플레이어: " + playerNumber);
+        while (!isGameEnded) {
+            System.out.print(ASK_FOR_NUMBER_MESSAGE);
+            List<Integer> playerNumber = number.inputNumber();
+            // log
+            System.out.println("플레이어: " + playerNumber);
 
-        resetScore();
-        calculateScore(computerNumber, playerNumber);
+            resetScore();
+            calculateScore(computerNumber, playerNumber);
+        }
+    }
 
+    private void endGame() {
+        System.out.println(END_MESSAGE);
+        System.out.println(ASK_FOR_RESTART_MESSAGE);
+
+        String endInput = number.endInput();
+
+        if (endInput.equals("1")) {
+            isGameEnded = false;
+            startGame();
+        } else if (endInput.equals("2")) {
+            // log
+            System.out.println("게임 종료");
+        }
     }
 
     private void calculateScore(List<Integer> computerNumber, List<Integer> playerNumber) {
@@ -39,11 +59,14 @@ public class Game {
             }
         }
 
-        if (strike == 0 && ball == 0) {
+        if (strike == 3) {
+            isGameEnded = true;
+            endGame();
+        } else if (strike == 0 && ball == 0) {
             System.out.println("나싱");
         } else {
-            System.out.println("스트라이크: " + strike);
-            System.out.println("볼: " + ball);
+            System.out.print(ball + "볼" + " ");
+            System.out.println(strike + "스트라이크");
         }
     }
 
@@ -51,5 +74,5 @@ public class Game {
         strike = 0;
         ball = 0;
     }
-    
+
 }

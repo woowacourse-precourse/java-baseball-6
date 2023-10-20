@@ -13,8 +13,6 @@ public class Number {
     }
 
     private Console console;
-    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String ASK_FOR_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final int LENGTH = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
@@ -40,8 +38,6 @@ public class Number {
      */
     public List<Integer> inputNumber() {
 
-        System.out.println(START_MESSAGE);
-        System.out.print(ASK_FOR_NUMBER_MESSAGE);
         String input = console.readLine();
 
         int number = parseInt(input);
@@ -51,6 +47,16 @@ public class Number {
         isNotDuplicated(input);
 
         return getDigit(number);
+    }
+
+    /**
+     * 사용자의 입력을 받아 int 변환하는 함수
+     */
+    public String endInput() {
+
+        String input = console.readLine();
+        isValidEndInput(input);
+        return input;
     }
 
     /**
@@ -79,7 +85,7 @@ public class Number {
             int number = Integer.parseInt(input);
             return number;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 값을 입력했습니다. 3자리 정수를 입력해주세요.");
+            throw new IllegalArgumentException("잘못된 값을 입력했습니다. 정수를 입력해주세요.");
         }
     }
 
@@ -107,8 +113,12 @@ public class Number {
         if (inputs.size() != input.length()) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다. 중복 되지 않는 정수를 입력해주세요.");
         }
-
     }
 
+    private void isValidEndInput(String input) {
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException("잘못된 값을 입력했습니다. 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+    }
 
 }
