@@ -4,11 +4,6 @@ public class BaseballGame {
     private Balls computerBalls;
     private GameState gameState;
 
-    public BaseballGame(Balls computerBalls) {
-        this.computerBalls = computerBalls;
-        this.gameState = GameState.PLAYING;
-    }
-
     public BaseballGame() {
         initializeData();
     }
