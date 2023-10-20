@@ -36,6 +36,9 @@ public class BaseballGame{
             if(!Character.isDigit(playerNumberInString.charAt(i))){
                 throw new IllegalArgumentException();
             }
+            if(playerNumberInString.charAt(i)=='0'){
+                throw new IllegalArgumentException();
+            }
         }
     }
     private void readPlayerNumber(){
