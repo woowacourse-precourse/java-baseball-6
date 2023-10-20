@@ -27,12 +27,10 @@ public class Application {
             // 입력받은 숫자와 컴퓨터의 숫자를 비교한다.
             Score score = getCompareResultWithInputNumberAndComputerNumber(
                     inputNumberStr, computer);
-            int ball = score.getBall();
-            int strike = score.getStrike();
 
             // 비교 결과를 출력한다.
-            if (strike == 3) {
-                System.out.println(String.format("%s스트라이크", strike));
+            if (score.hasWinScore()) {
+                System.out.println(String.format("%s스트라이크", score.getStrike()));
                 System.out.println("3개의 숫자를 모두 맞히셨습니다.! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -52,14 +50,20 @@ public class Application {
                 }
 
             } else {
-                if (strike == 0 && ball == 0) {
+                if (score.isNoScore()) {
                     System.out.println("낫싱");
-                } else if (strike == 0) {
-                    System.out.println(String.format("%s볼", ball));
-                } else if (ball == 0) {
-                    System.out.println(String.format("%s스트라이크", strike));
-                } else {
-                    System.out.println(String.format("%s볼 %s스트라이크", ball, strike));
+                }
+
+                if (score.isOnlyBall()) {
+                    System.out.println(String.format("%s볼", score.getBall()));
+                }
+
+                if (score.isOnlyStrike()) {
+                    System.out.println(String.format("%s스트라이크", score.getStrike()));
+                }
+
+                if(score.isStrikeWithBall()) {
+                    System.out.println(String.format("%s볼 %s스트라이크", score.getBall(), score.getStrike()));
                 }
             }
         }

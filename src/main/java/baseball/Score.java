@@ -25,4 +25,24 @@ public class Score {
     public int getBall() {
         return ball;
     }
+
+    public boolean hasWinScore() {
+        return this.strike == 3;
+    }
+
+    public boolean isNoScore() {
+        return this.strike == 0 && this.ball == 0;
+    }
+
+    public boolean isOnlyBall() {
+        return this.strike == 0 && this.ball != 0;
+    }
+
+    public boolean isOnlyStrike() {
+        return this.strike != 0 && this.ball == 0;
+    }
+
+    public boolean isStrikeWithBall() {
+        return this.strike != 0 && this.ball != 0;
+    }
 }
