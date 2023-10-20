@@ -14,7 +14,11 @@ public class Game {
 
     public Game() {
         answer = makeRandomNumber();
-        System.out.println("answer : " + answer);
+        printAnswer(answer);
+    }
+
+    public static void printAnswer(List<Integer> inputAnswer) {
+        System.out.println("answer : " + inputAnswer);
     }
 
     public static void set() {
@@ -155,16 +159,11 @@ public class Game {
 
     private boolean restart() {
         System.out.println(RESTART_STRING);
+        int inputNumber = Validation.askRestart();
 
-        String input = Console.readLine();
-
-        // validation check
-        if (input.equals(RESTART)) {
+        if (inputNumber == RESTART) {
             return true;
-        } else if (input.equals(QUIT)) {
-            return false;
-        } else {
-            throw new IllegalArgumentException(WRONG_INPUT_STRING);
         }
+        return false;
     }
 }

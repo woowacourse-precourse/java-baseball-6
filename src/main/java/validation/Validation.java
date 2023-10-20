@@ -1,5 +1,7 @@
 package validation;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import static validation.Constant.*;
 
 public class Validation {
@@ -12,5 +14,14 @@ public class Validation {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    public static int askRestart() {
+        int inputNumber = Integer.parseInt(Console.readLine());
+
+        if (inputNumber > QUIT || inputNumber < RESTART) {
+            throw new IllegalArgumentException(WRONG_INPUT_SIZE);
+        }
+        return inputNumber;
     }
 }
