@@ -1,15 +1,19 @@
 package service;
 
+import exception.MyException;
+
 import util.NumbersUtil;
 
 public class GameServiceImpl implements GameService{
 
     private final NumbersUtil numbersUtil;
+    private final MyException exception;
     private boolean quit;
 
 
     public GameServiceImpl() {
         numbersUtil = new NumbersUtil();
+        exception = new MyException();
     }
 
     @Override
@@ -20,12 +24,16 @@ public class GameServiceImpl implements GameService{
 
     @Override
     public void restartOrQuit(String order) {
-
+        exception.varlidateInputOrder(order);
+        if(order.equals("2")) { quit = true; }
     }
 
     @Override
     public int[] checkCount(String numbers) {
-        return null;
+        exception.varlidateInputNumbers(numbers);
+        int[] numberArr = new int[3];
+        for(int i = 0; i < 3; i++) { numberArr[i] = numbers.charAt(i) - '0'; }
+        return numbersUtil.ballCount(numberArr);
     }
 
     @Override
@@ -33,9 +41,6 @@ public class GameServiceImpl implements GameService{
         return numbersUtil.getGameSet();
     }
 
-    public void setQuit(boolean quit) {
-        this.quit = quit;
-    }
 
     public boolean getQuit() { return quit; }
 }
