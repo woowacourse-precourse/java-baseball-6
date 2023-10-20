@@ -6,6 +6,7 @@ import baseball.game.validate.NumberValidation;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -23,6 +24,13 @@ class GameNumbersValidationTest {
     @ParameterizedTest
     void checkDuplicateNumbers(String number) {
         List<Integer> numbers = toNumbers(number);
+        assertThatThrownBy(() -> GameNumbersValidation.validate(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateDigitRange() {
+        List<Integer> numbers = Arrays.asList(0, 1, 9);
         assertThatThrownBy(() -> GameNumbersValidation.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
