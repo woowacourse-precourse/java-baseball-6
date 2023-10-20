@@ -13,11 +13,21 @@ public class InputController {
 
 
     private void validate(String input) {
+        checkIsNum(input);
+        checkLength(input);
+    }
+    private void checkIsNum(String input){
         try {
-            int a = Integer.parseInt(input);
-            System.out.println(a);
+            Integer.parseInt(input);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
     }
+
+    private void checkLength(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
