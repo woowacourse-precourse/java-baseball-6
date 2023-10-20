@@ -23,7 +23,7 @@ public class playGame {
             System.out.print("숫자를 입력해주세요 :");
             inputString = Console.readLine();
             checkInputString(inputString);
-        }while(true);
+        }while(checkGameResult(inputString)==true);
     }
 
     private void checkInputString(String inputString)
@@ -47,6 +47,34 @@ public class playGame {
         }
     }
 
+    private int cntStrike(String inputNumber){
+        int strike_cnt = 0;
+        for (int i = 0; i<answer.length(); i++) {
+            if(inputNumber.charAt(i) == answer.charAt(i)){
+                strike_cnt++;
+            }
+        }
+        return strike_cnt;
+    }
+    private int cntTotal(String inputString){
+        int total_cnt = 0;
+        for (char c : inputString.toCharArray()) {
+            if(answer.contains(c+"")){
+                total_cnt++;
+            }
+        }
+        return total_cnt;
+    }
 
+    private boolean checkGameResult(String inputNumberString){
+        int strike_cnt = cntStrike(inputNumberString);
+        int total_cnt = cntTotal(inputNumberString);
 
+        if(strike_cnt == 3){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
