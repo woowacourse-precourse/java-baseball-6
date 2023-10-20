@@ -37,10 +37,14 @@ public class Balls {
         List<Ball> balls = new ArrayList<>();
 
         for (int index = 0; index < numbers.size(); index++) {
-            balls.add(new Ball(numbers.get(index), index + 1));
+            balls.add(generateBall(numbers, index));
         }
 
         return balls;
+    }
+
+    private Ball generateBall(List<Integer> numbers, int index) {
+        return new Ball(numbers.get(index), index + 1);
     }
 
     public PlayResult play(Balls balls) {
