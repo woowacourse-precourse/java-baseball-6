@@ -2,11 +2,16 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NumberArray {
 
-    private List<Integer> numList = new ArrayList<>();
+    private final List<Integer> numList = new ArrayList<>();
+
+    public List<Integer> getNumList() {
+        return Collections.unmodifiableList(numList);
+    }
 
     public NumberArray() {
         while (numList.size() < 3) {
