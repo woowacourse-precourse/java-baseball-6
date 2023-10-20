@@ -17,7 +17,7 @@
 ## 객체 도메인
 * InputView
   * String inputNumbers()
-  * String inputIfContinue()
+  * int inputIfContinue()
 * OutputView
   * void startMention()
   * void printResult(Result result)
@@ -31,14 +31,14 @@
 * Service
   * Result calculateResult()
 * GamePlayer
-  * String threeNumberString
+  * List<Integer> threeNumbers
   * void inputThreeNumberString(String inputtedString)
   * void validateInput(String inputString)
-  * String getThreeNumberString()
+  * List<Integer> getThreeNumbers()
 * Computer(상대방)
-  * String threeNumberString
-  * void generateThreeNumberString()
-  * String getThreeNumberString()
+  * List<Integer> threeNumbers
+  * void generateThreeNumbers()
+  * List<Integer> getThreeNumbers()
 * Result
   * int ballCount
   * int strikeCount
