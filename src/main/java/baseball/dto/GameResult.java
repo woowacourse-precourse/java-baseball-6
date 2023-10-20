@@ -10,6 +10,6 @@ public class GameResult {
     }
 
     public boolean isClear() {
-        return true;
+        return strike == 3;
     }
 }
