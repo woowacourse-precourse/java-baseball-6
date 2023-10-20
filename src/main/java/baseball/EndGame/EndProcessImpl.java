@@ -19,8 +19,7 @@ public class EndProcessImpl implements EndProcess {
         if (userChoice.equals("1")) {
             baseBallGame.initGame();
             return;
-        }
-        else if (userChoice.equals("2")) {
+        } else if (userChoice.equals("2")) {
             System.out.println("게임을 종료합니다.");
             return;
         }

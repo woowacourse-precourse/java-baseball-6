@@ -5,7 +5,6 @@ import baseball.EndGame.EndProcessImpl;
 import baseball.Input.InputAnswer;
 import baseball.Input.InputAnswerImpl;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,8 +50,9 @@ public class BaseBallGameImpl implements BaseBallGame {
     public Integer countStrike(List<Integer> userAnswer) {
         Integer cnt = 0;
         for (int i = 0; i < 3; i++) {
-            if (computerNumber.get(i).equals(userAnswer.get(i)))
+            if (computerNumber.get(i).equals(userAnswer.get(i))) {
                 cnt++;
+            }
         }
         return cnt;
     }
@@ -61,8 +61,9 @@ public class BaseBallGameImpl implements BaseBallGame {
     public Integer countBall(List<Integer> userAnswer) {
         Integer cnt = 0;
         for (int i = 0; i < 3; i++) {
-            if (computerNumber.contains(userAnswer.get(i)) && !computerNumber.get(i).equals(userAnswer.get(i)))
+            if (computerNumber.contains(userAnswer.get(i)) && !computerNumber.get(i).equals(userAnswer.get(i))) {
                 cnt++;
+            }
         }
         return cnt;
     }
@@ -70,15 +71,19 @@ public class BaseBallGameImpl implements BaseBallGame {
 
     @Override
     public Boolean gameResult(Integer strike, Integer ball) {
-        if (strike == 0 && ball == 0)
+        if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
-        else if (strike == 3) {
+        } else if (strike == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return Boolean.FALSE;
-        } else{
-            if (ball > 0) System.out.print(ball + "볼" + " ");
-            if (strike > 0) System.out.print(strike + "스트라이크");
+        } else {
+            if (ball > 0) {
+                System.out.print(ball + "볼" + " ");
+            }
+            if (strike > 0) {
+                System.out.print(strike + "스트라이크");
+            }
             System.out.println();
         }
         return Boolean.TRUE;
