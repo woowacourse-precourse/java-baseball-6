@@ -31,4 +31,16 @@ public class Baseball {
         }
         return new Baseball(computer.get(0), computer.get(1), computer.get(2));
     }
+
+    public Integer getHundreds() {
+        return hundreds;
+    }
+
+    public Integer getTens() {
+        return tens;
+    }
+
+    public Integer getOnes() {
+        return ones;
+    }
 }
