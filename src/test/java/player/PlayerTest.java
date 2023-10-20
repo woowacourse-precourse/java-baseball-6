@@ -11,6 +11,8 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class PlayerTest {
 
@@ -51,5 +53,19 @@ public class PlayerTest {
         assertThatThrownBy(player::inputPlayerNumber)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리의 숫자만 입력가능합니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"abc", "cav", "svd"})
+    @DisplayName("플레이어가 숫자 외의 문자를 입력했을 때 에러 발생하는지 테스트")
+    void 플레이어_문자_입력_예외_테스트(String input) {
+        //given
+        final String playerInput = input;
+        provideUserInput(playerInput);
+
+        //when, then
+        assertThatThrownBy(player::inputPlayerNumber)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자만 입력 가능합니다.");
     }
 }
