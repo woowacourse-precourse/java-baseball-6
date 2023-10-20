@@ -13,6 +13,8 @@ public class Application {
 
     private static GameState gameState;
 
+    private static final String STRING_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+
     public static void main(String[] args) {
         initialize();
         while (!gameState.isInExit()) {
@@ -56,6 +58,30 @@ public class Application {
 
     public static void handleGameScene() {
         BaseBallNumberGroup computer = new BaseBallNumberGroup(getRandomNumberList());
+
+        while (gameState.isInGame()) {
+            printNumberInputMessage();
+            String userInput = Console.readLine();
+            validateGameSceneUserInput(userInput);
+        }
+    }
+
+    public static void printNumberInputMessage() {
+        System.out.print(STRING_NUMBER_INPUT_MESSAGE);
+    }
+
+    public static void validateGameSceneUserInput(String userInput) {
+        if (!gameState.isInGame()) {
+            throw new IllegalArgumentException("게임 모드가 아닙니다.");
+        }
+
+        if (!isUserInputLengthSizeRandomNumber(userInput)) {
+            throw new IllegalArgumentException("올바르지 않은 입력입니다.");
+        }
+    }
+
+    public static boolean isUserInputLengthSizeRandomNumber(String userInput) {
+        return userInput.length() == GameConstants.SIZE_RANDOM_NUMBER;
     }
 
     public static void handleEndScene() {
