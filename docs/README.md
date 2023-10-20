@@ -71,7 +71,14 @@ String getUserInput() 미션의 요구사항대로 Console의 메서드 사용�
 List<Integer> makeUserInputToThreeNumbers() 입력받은 String을 validation 진행 후 integer 리스트로 반환
 void validateContinueSign(String sign)() 재시작 / 종료 사인에 대한 validation 진행 메서드
 ```
+## InputValidation 클래스
+- 유저의 입력값에 대한 Validation을 한번에 진행하는 클래스
 
+- 필요한 타입으로 반환하는 메서드
+```java
+List<Integer> validateUserNumbers(String input) validation 진행 후 리스트로 반환하는 메서드
+
+```
 
 ### 뭘 만들어야 할까?
 

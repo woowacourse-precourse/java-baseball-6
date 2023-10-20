@@ -7,6 +7,8 @@ public class Validation {
     private final char restart = '1';
     private final char end = '2';
 
+    //뭔가... validation.........별론디.....
+    //여기저기 흩어진 상수들도 별로다 뭔가...
     public void validateThreeNumbers(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3개의 숫자만 입력해주세요.");
