@@ -9,6 +9,11 @@ import java.util.stream.Collectors;
 
 public class BaseballCreator {
     private Validator validator = new Validator();
+    private NumberGenerator numberGenerator;
+
+    public BaseballCreator(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
+    }
 
     // 기능: 사용자의 공을 입력 받고 생성한다
     public List<Integer> createPlayerBalls(String number) {
@@ -23,7 +28,7 @@ public class BaseballCreator {
     public List<Integer> createComputerBalls() {
         List<Integer> computerBalls = new ArrayList<>();
         while (computerBalls.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = numberGenerator.generate();
             if (!computerBalls.contains(randomNumber)) {
                 computerBalls.add(randomNumber);
             }
