@@ -2,11 +2,14 @@ package baseball;
 
 import static baseball.Message.BALL;
 import static baseball.Message.BALL_MSG;
+import static baseball.Message.COUNT;
 import static baseball.Message.END_MSG;
 import static baseball.Message.INPUT_MSG;
+import static baseball.Message.LAST_RANGE;
 import static baseball.Message.NON_MSG;
 import static baseball.Message.NOTHING;
 import static baseball.Message.REGAME_MSG;
+import static baseball.Message.START_RANGE;
 import static baseball.Message.STRIKE;
 import static baseball.Message.STRIKE_MSG;
 
@@ -17,12 +20,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Application {
-    // 야구 게임 자릿수
-    public static final int COUNT = 3;
-    // 시작 범위
-    private static final int START_RANGE = 1;
-    // 종료 범위
-    private static final int LAST_RANGE = 9;
 
     // 게임 진행 여부
     private static boolean gameState;

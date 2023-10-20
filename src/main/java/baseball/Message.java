@@ -14,4 +14,11 @@ public class Message {
     public static final String STRIKE = "STRIKE";
     public static final String BALL = "BALL";
     public static final String NOTHING = "NOTHING";
+
+    // 야구 게임 자릿수
+    public static final int COUNT = 3;
+    // 시작 범위
+    public static final int START_RANGE = 1;
+    // 종료 범위
+    public static final int LAST_RANGE = 9;
 }
