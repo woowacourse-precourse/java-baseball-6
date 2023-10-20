@@ -5,14 +5,13 @@ import baseball.controller.Restart;
 import baseball.controller.UserNumber;
 import baseball.service.GuessNum;
 import baseball.service.RandomNum;
-import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 
-
 public class Application {
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다");
 
@@ -23,13 +22,13 @@ public class Application {
 
         boolean startNum = true;
 
-        while(startNum){
+        while (startNum) {
             List<Integer> generatedNumbers = randomNum.generateNum();
             System.out.println(generatedNumbers);
 
             String result = "";
 
-            while(!result.equals("3스트라이크")) {
+            while (!result.equals("3스트라이크")) {
                 result = guessNum.Confirm(generatedNumbers, userNumber.userInputNumbers());
                 System.out.println(result);
             }
