@@ -5,8 +5,9 @@ import java.util.List;
 public class BaseballGame {
     /**
      * 컴퓨터 숫자와 사용자 입력 숫자를 비교한다.
+     *
      * @param computers 컴퓨터 랜덤 숫자
-     * @param players 사용자 입력 숫자
+     * @param players   사용자 입력 숫자
      */
     public static void compare(List<Integer> computers, List<Integer> players) {
         int strike = 0;
@@ -29,8 +30,9 @@ public class BaseballGame {
 
     /**
      * 비교한 결과를 출력한다.
+     *
      * @param strike 스크라이크의 개수
-     * @param ball 볼의 개수
+     * @param ball   볼의 개수
      */
     public static void printCompare(int strike, int ball) {
         if (strike == 0 && ball == 0) {
