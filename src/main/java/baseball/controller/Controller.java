@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.domain.Balls;
 import baseball.domain.Game;
-import baseball.domain.GameState;
 import baseball.domain.RandomBallsGenerator;
 import baseball.service.Service;
 import baseball.view.Command;
@@ -26,27 +25,28 @@ public class Controller {
     }
 
     private void play() {
-        while (true) {
-            Balls balls = insertNumberAndMakeBalls();
+        Balls balls = insertNumberAndMakeBalls();
 
-            String hint = service.hint(balls);
-            System.out.println(hint);
+        String hint = service.hint(balls);
+        System.out.println(hint);
 
-            if (hint.equals("3스트라이크")) {
-                service.endGame();
-            }
+        if (hint.equals("3스트라이크")) {
+            service.endGame();
+            end();
+        } else {
+            play();
+        }
+    }
 
-            if (service.getGameState() == GameState.OFF) {
-                outputView.printInsertCommand();
-                Command command = inputView.insertCommand();
-                if (command == Command.RESTART) {
-                    service.restartGame();
-                }
-                if (command == Command.FINISH) {
-                    System.out.println("게임 종료");
-                    break;
-                }
-            }
+    private void end() {
+        outputView.printInsertCommand();
+        Command command = inputView.insertCommand();
+        if (command == Command.RESTART) {
+            service.restartGame();
+            play();
+        }
+        if (command == Command.FINISH) {
+            System.out.println("게임 종료");
         }
     }
 
