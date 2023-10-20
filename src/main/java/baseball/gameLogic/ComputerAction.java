@@ -4,6 +4,10 @@ import baseball.models.Computer;
 
 import java.util.List;
 
+/*
+  Computer의 행동들을 수행하는 클래스
+*/
+
 public class ComputerAction {
     public Computer computer = new Computer();
     public void generateNumber(){

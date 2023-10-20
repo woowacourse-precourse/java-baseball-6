@@ -6,6 +6,9 @@ import baseball.userInterface.MessageViewer;
 import baseball.models.Score;
 import static baseball.models.Constants.*;
 
+/*
+  게임 구동을 담당하는 메인 클래스
+*/
 
 public class NumberBaseBall {
     NumberChecker numberChecker;
@@ -34,7 +37,10 @@ public class NumberBaseBall {
             messageViewer.printInputRequestMsg();
             userAction.inputAnswer(inputValidator);
             score = numberChecker.checkNumber(userAction.getNumberList(), computerAction.getNumberList());
-            messageViewer.printResultMsg(score.ballCount, score.strikeCount);
+
+            int ballCount = score.ballCount;
+            int strikeCount = score.strikeCount;
+            messageViewer.printResultMsg(ballCount, strikeCount);
 
             mind = checkKeepGoing(score.strikeCount);
         }

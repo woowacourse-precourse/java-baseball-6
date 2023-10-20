@@ -1,5 +1,9 @@
 package baseball.userInterface;
 
+/*
+ 화면 출력을 담당하는 클래스
+ */
+
 public class MessageViewer {
     public void printStartMsg(){
         System.out.println("숫자 야구 게임을 시작합니다.");

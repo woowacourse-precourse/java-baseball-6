@@ -5,6 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 import baseball.models.User;
 
+/*
+ User의 행동들을 수행하는 클래스
+ */
+
 public class UserAction {
     public User user = new User();
 
