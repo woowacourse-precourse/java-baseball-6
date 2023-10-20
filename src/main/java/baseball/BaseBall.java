@@ -1,18 +1,15 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class BaseBall {
     private final int LENGTH;
     private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    private List<Integer> computer;
     private Map<String, Integer> map;
 
     public BaseBall(int length) {
@@ -25,7 +22,9 @@ public class BaseBall {
 
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        createComputerNumber();
+
+        Computer computer = new Computer(new ArrayList<>());
+        computer.createComputerNumber(LENGTH);
 
         while (true) {
             int strike = 0;
@@ -114,16 +113,6 @@ public class BaseBall {
             }
         } catch (IOException e) {
             throw new IllegalArgumentException();
-        }
-    }
-
-    private void createComputerNumber() {
-        computer = new ArrayList<>();
-        while (computer.size() < LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
         }
     }
 }
