@@ -9,11 +9,9 @@ import static baseball.converter.AfterBaseballStateConverter.stringToAfterBaseba
 import static baseball.converter.BaseballStateConverter.stringToBaseballState;
 
 import baseball.state.AfterBaseballState;
-import baseball.state.BaseballResult;
 import baseball.state.BaseballState;
 import baseball.util.IoHelper;
 import baseball.util.RandomGenerator;
-import java.util.List;
 
 public class BaseballGame implements Game {
     BaseballState computer;
@@ -23,15 +21,14 @@ public class BaseballGame implements Game {
     }
 
     public void beforeLoop() {
-        final List<Integer> randoms = RandomGenerator.generateUniqueRandomDigitList(MAX_MATCH);
-
-        computer = new BaseballState(randoms);
+        final var randomDigitList = RandomGenerator.generateUniqueRandomDigitList(MAX_MATCH);
+        computer = new BaseballState(randomDigitList);
     }
 
     public void gameLoop() {
-        final String input = IoHelper.promptColon(INPUT_NUMBER_MESSAGE);
-        final BaseballState userGuess = stringToBaseballState(input);
-        final BaseballResult result = computer.diff(userGuess);
+        final var input = IoHelper.promptColon(INPUT_NUMBER_MESSAGE);
+        final var userGuess = stringToBaseballState(input);
+        final var result = computer.diff(userGuess);
 
         IoHelper.println(result.toString());
         if (result.isGameEnd()) {
@@ -41,8 +38,8 @@ public class BaseballGame implements Game {
     }
 
     public void afterLoop() {
-        final String input = IoHelper.promptln(INPUT_RESTART_MESSAGE);
-        final AfterBaseballState afterState = stringToAfterBaseballState(input);
+        final var input = IoHelper.promptln(INPUT_RESTART_MESSAGE);
+        final var afterState = stringToAfterBaseballState(input);
 
         if (afterState == AfterBaseballState.END_GAME) {
             GameManager.notifyEndGameManager();

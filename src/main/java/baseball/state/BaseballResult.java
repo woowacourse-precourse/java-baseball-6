@@ -24,21 +24,21 @@ public class BaseballResult {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final var stringBuilder = new StringBuilder();
         if (ball != 0) {
-            sb.append(ball);
-            sb.append(BaseballStrings.BALL_MESSAGE);
+            stringBuilder.append(ball);
+            stringBuilder.append(BaseballStrings.BALL_MESSAGE);
         }
         if (ball != 0 && strike != 0) {
-            sb.append(" ");
+            stringBuilder.append(" ");
         }
         if (strike != 0) {
-            sb.append(strike);
-            sb.append(BaseballStrings.STRIKE_MESSAGE);
+            stringBuilder.append(strike);
+            stringBuilder.append(BaseballStrings.STRIKE_MESSAGE);
         }
         if (strike == 0 && ball == 0) {
-            sb.append(BaseballStrings.NOTHING_MESSAGE);
+            stringBuilder.append(BaseballStrings.NOTHING_MESSAGE);
         }
-        return sb.toString();
+        return stringBuilder.toString();
     }
 }

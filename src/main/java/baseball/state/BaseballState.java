@@ -19,7 +19,7 @@ public class BaseballState {
         Arrays.fill(indexMapping, -1);
 
         for (int i = 0; i < state.size(); i++) {
-            int value = state.get(i);
+            var value = state.get(i);
             Assertions.assertInRange(value, 0, indexMapping.length);
             indexMapping[value] = i;
         }
@@ -30,12 +30,12 @@ public class BaseballState {
     }
 
     public BaseballResult diff(BaseballState other) {
-        int ball = 0;
-        int strike = 0;
+        var ball = 0;
+        var strike = 0;
 
         final var otherState = other.get();
         for (int i = 0; i < otherState.size(); i++) {
-            final int otherValue = otherState.get(i);
+            final var otherValue = otherState.get(i);
 
             strike += BooleanUtil.booleanToInt(indexMapping[otherValue] == i);
             ball += BooleanUtil.booleanToInt(indexMapping[otherValue] != i && indexMapping[otherValue] != -1);
