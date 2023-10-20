@@ -9,6 +9,9 @@ public class BallCounter {
 
     private static final Map<PitchResult, Integer> ballCounter = new HashMap<>();
 
+    private BallCounter() {
+    }
+
     public static void countBall() {
         ballCounter.put(BALL, ballCounter.getOrDefault(BALL, 0) + 1);
     }
