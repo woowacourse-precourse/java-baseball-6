@@ -5,64 +5,74 @@ import java.util.List;
 import java.util.Set;
 
 public class Compare {
+    private static final String STRIKE = "스트라이크";
+    private static final String BALL = "볼";
+    private static final String NOTHING = "낫싱";
+
     public String getGameResult(List<Integer> computerInput, String userInput) {
-        if (!isValidInputThreeNumber(userInput)){
+        validateUserInput(userInput);
+
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int i = 0; i < computerInput.size(); i++) {
+            if (isStrike(computerInput.get(i), userInput.charAt(i))) {
+                strikeCount++;
+            } else if (isBall(computerInput.get(i), userInput)) {
+                ballCount++;
+            }
+        }
+
+        return generateResultMessage(strikeCount, ballCount);
+    }
+
+    private void validateUserInput(String userInput) {
+        if (!isThreeDigitNumber(userInput)) {
             throw new IllegalArgumentException("3자리의 양의 정수를 입력해야 됩니다. 사용자의 입력 : " + userInput);
         }
 
-        if (!isValidInputDifferentNumbers(userInput)) {
+        if (!hasDistinctDigits(userInput)) {
             throw new IllegalArgumentException("서로 다른 양의 정수 3자리가 입력되어야 합니다. 사용자의 입력 : " + userInput);
         }
+    }
 
-        int checkStrike = 0;
-        int checkBall = 0;
-        final String NOTHING = "낫싱";
+    // 스트라이크 확인
+    private boolean isStrike(int computerDigit, char userDigit) {
+        return computerDigit == Character.getNumericValue(userDigit);
+    }
 
-        for (int i = 0; i < computerInput.size(); i++) {
-            int computerNumber = computerInput.get(i);
-            int userNumber = Integer.parseInt(String.valueOf(userInput.charAt(i)));
+    // 볼 확인
+    private boolean isBall(int computerDigit, String userDigits) {
+        return userDigits.contains(String.valueOf(computerDigit));
+    }
 
-            if (computerNumber == userNumber) {
-                checkStrike += 1;
-            } else {
-                for (int j = 0; j < computerInput.size(); j++) {
-                    if (computerNumber == Integer.parseInt(String.valueOf(userInput.charAt(j)))) {
-                        checkBall += 1;
-                    }
-                }
-            }
-        }
-        String strikeResult = checkStrike + "스트라이크";
-        String ballResult = checkBall + "볼";
-
-        if (checkStrike == 0 && checkBall == 0) {
+    // 사용자의 입력값 스트라이크, 볼, 낫싱 판정
+    private String generateResultMessage(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount == 0) {
             return NOTHING;
         }
-
-        if (checkStrike == 0) {
-            return ballResult;
+        if (strikeCount == 0) {
+            return ballCount + BALL;
         }
-
-        if (checkBall == 0) {
-            return strikeResult;
+        if (ballCount == 0) {
+            return strikeCount + STRIKE;
         }
-
-        return ballResult + " " + strikeResult;
+        return ballCount + BALL + " " + strikeCount + STRIKE;
     }
 
     // 3자리의 정수인지 확인
-    private boolean isValidInputThreeNumber(String userInput) {
+    private boolean isThreeDigitNumber(String userInput) {
         return userInput.matches("\\d{3}");
     }
 
-    // 서로 다른 양의 정수가 입력 되었는지 확인
-    private boolean isValidInputDifferentNumbers(String userInput) {
-        Set<Character> checkDuplication = new HashSet<>();
+    // 서로 다른 숫자가 입력 되었는지 확인
+    private boolean hasDistinctDigits(String userInput) {
+        Set<Character> digits = new HashSet<>();
 
-        for (int i = 0; i < userInput.length(); i++) {
-            checkDuplication.add(userInput.charAt(i));
+        for (char ch : userInput.toCharArray()) {
+            digits.add(ch);
         }
 
-        return checkDuplication.size() == userInput.length();
+        return digits.size() == userInput.length();
     }
 }
