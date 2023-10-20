@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BaseBallGame {
 
-    private final List<Integer> computerList;
+    private List<Integer> computerList;
     private final int MAX_STRIKE = 3;
 
     public BaseBallGame() {
@@ -29,5 +29,10 @@ public class BaseBallGame {
 
     public boolean isStrikeMax(int strikeCount){
         return strikeCount == MAX_STRIKE;
+    }
+
+    public void buildNewComputerList(){
+        ComputerNum computerNum = new ComputerNum();
+        computerList = computerNum.buildComputerNum();
     }
 }
