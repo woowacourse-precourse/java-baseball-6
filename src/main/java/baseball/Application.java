@@ -26,15 +26,45 @@ public class Application {
         }
     }
 
+    static int[] checkAnswer(int[] exist, int[] input) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 1; i <= 3; i++) {
+            int here = input[i - 1];
+            int index = exist[here];
+            if (index == i) {
+                strike++;
+            } else if (index != 0) {
+                ball++;
+            }
+        }
+        return new int[] {strike, ball};
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> numbers = new ArrayList<>();
         for (int i = 1; i <= 9; i++) {
             numbers.add(i);
         }
-        int answer1 = numbers.remove(Randoms.pickNumberInRange(0, 8));
-        int answer2 = numbers.remove(Randoms.pickNumberInRange(0, 7));
-        int answer3 = numbers.remove(Randoms.pickNumberInRange(0, 6));
-        int[] num = readNumber();
+        int[] answer = new int[3];
+        int[] exist = new int[9];
+        for (int i = 1; i <= 3; i++) {
+            int hereNum = numbers.remove(Randoms.pickNumberInRange(0, 8 - i));
+            answer[i-1] = hereNum;
+            exist[hereNum] = i;
+        }
+        System.out.printf("*** 정답: %s ***\n", Arrays.toString(answer));
+        int[] userInput = readNumber();
+        int[] result = checkAnswer(exist, userInput);
+        if (result[1] > 0) {
+            System.out.printf("%d볼 ", result[1]);
+        }
+        if (result[0] > 0) {
+            System.out.printf("%d스트라이크\n", result[0]);
+        }
+        if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+        }
     }
 }
