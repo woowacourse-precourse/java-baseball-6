@@ -30,7 +30,7 @@ public class Application {
         }
         return true;
     }
-    public static boolean isAllowLength(String str){
+    public static boolean isValidLength(String str){
         return str.length() == allowableLength;
     }
     public static boolean isValidNumber(String str) {
@@ -65,11 +65,13 @@ public class Application {
             userNumberHS.add(u);
         }
 
-        for(char c : computeNumberHS){
-            if(userNumberHS.contains(c))
-                cntBS++;
-        }
-        return cntBS;
+//        for(char c : computeNumberHS){
+//            if(userNumberHS.contains(c))
+//                cntBS++;
+//        }
+        // 교집합 생성
+        computeNumberHS.retainAll(userNumberHS);
+        return computeNumberHS.size();
     }
 
     public  static  int countStrike(String computeNumber, String userNumber){
@@ -106,12 +108,13 @@ public class Application {
             String userNumber = Console.readLine();
 //            System.out.print(userNumber);
 
-            if(!isAllDigit(userNumber) || !isAllowLength(userNumber) || !isValidNumber(userNumber)){
+            if(!isAllDigit(userNumber) || !isValidLength(userNumber) || !isValidNumber(userNumber)){
                 throw new IllegalArgumentException();
             }
 
             int cntBS = countBallAndStrike(computeNumber, userNumber);
             int cntS = countStrike(computeNumber, userNumber);
+            int cntB = cntBS - cntS;
 
             System.out.printf("cntB %d cntS %d".formatted(cntBS, cntS));
             System.out.println();
@@ -131,7 +134,7 @@ public class Application {
             }
             else {
                 System.out.print("힌트: ");
-                System.out.println(hintProvider(cntBS-cntS, cntS));
+                System.out.println(hintProvider(cntB, cntS));
             }
         }
         System.out.println("게임이 종료되었습니다.");
