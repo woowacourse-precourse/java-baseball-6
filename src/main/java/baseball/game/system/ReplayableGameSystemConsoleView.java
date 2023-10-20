@@ -28,10 +28,6 @@ public class ReplayableGameSystemConsoleView implements ReplayableGameSystemView
             return true;
         }
 
-        if (input.equals(EXIT)) {
-            return false;
-        }
-
-        throw new IllegalArgumentException();
+        return false;
     }
 }
