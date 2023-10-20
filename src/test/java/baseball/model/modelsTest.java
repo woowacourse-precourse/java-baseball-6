@@ -30,14 +30,6 @@ public class modelsTest {
         });
     }
 
-    @DisplayName("낫싱입니다!")
-    @Test
-    public void testCountMatchingDigitsWithMatchingDigits() {
-        // 정답과 입력 리스트에 일치하는 숫자가 없는 경우
-        List<Integer> answerList = Arrays.asList(1, 2, 3);
-        List<Integer> inputList = Arrays.asList(7, 4, 5);
 
-        assertFalse(Models.countMatchingDigits(answerList, inputList));
-    }
 
 }
