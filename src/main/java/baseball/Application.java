@@ -89,4 +89,15 @@ public class Application {
         }
         return outputIntegerList;
     }
+
+    public static int countStrike(final List<Integer> computerNumbers, final List<Integer> playerGuessNumbers) {
+        int skrikes = 0;
+
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            if (computerNumbers.get(i).equals(playerGuessNumbers.get(i))) {
+                skrikes++;
+            }
+        }
+        return skrikes;
+    }
 }
