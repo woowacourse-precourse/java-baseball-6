@@ -18,7 +18,16 @@ public class Application {
         // 게임 진행. 문제를 맞춰도 다시 시작 가능.
         while(endSign == 1) {
             // 랜덤 숫자 생성.
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int[] randomNumberArray = new int[3];
+            boolean[] checkArray = new boolean[9];
+            for(int i=0; i<randomNumberArray.length; i++) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                while(checkArray[randomNumber-1]) {
+                    randomNumber = Randoms.pickNumberInRange(1, 9);
+                }
+                checkArray[randomNumber-1] = true;
+                randomNumberArray[i] = randomNumber;
+            }
 
             // 숫자 맞추기 게임 시작
             while(!isCorrect) {
