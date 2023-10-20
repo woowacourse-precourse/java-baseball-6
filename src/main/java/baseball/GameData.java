@@ -10,7 +10,7 @@ public class GameData {
     private List<Integer> playerNumbers;
     private Integer strikeCnt;
     private Integer ballCnt;
-    private Integer gameRepetition = 1;
+    private String gameRepetition = "1";
 
     public List<Integer> getComputerNumbers() {
         return computerNumbers;
@@ -44,22 +44,13 @@ public class GameData {
         this.ballCnt = ballCnt;
     }
 
-    public Integer getGameRepetition() {
+    public String getGameRepetition() {
         return gameRepetition;
     }
 
-    public void setGameRepetition(Integer gameRepetition) {
+    public void setGameRepetition(String gameRepetition) {
         this.gameRepetition = gameRepetition;
     }
 
-    public List<Integer> generateComNums(List<Integer> computer) {
-        computer = this.getComputerNumbers();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
+
 }
