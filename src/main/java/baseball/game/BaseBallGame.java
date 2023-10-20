@@ -1,5 +1,7 @@
 package baseball.game;
 
+import baseball.User;
+
 import static baseball.view.Console.*;
 
 
@@ -17,6 +19,7 @@ public class BaseBallGame implements Game {
 
         while (true) {
             printUserInputMessage();
+            String userNumber = User.input3DigitNumber();
 
         }
 

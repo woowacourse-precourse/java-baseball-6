@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.view.Console;
+
 public class User {
 
     private static Machine machine;
@@ -15,6 +17,10 @@ public class User {
 
         machine.playGame();
 
+    }
+
+    public static String input3DigitNumber() {
+        return Console.input3DigitNumber();
     }
 
     private static void validateMachineExistence() {
