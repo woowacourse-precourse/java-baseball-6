@@ -1,8 +1,11 @@
 package baseball.servcie;
 
+import baseball.domain.User;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -11,6 +14,14 @@ public class BaseballGameService {
     private final int NO_HIT = 0;
     private final int ALL_STRIKE = 3;
 
+    public void checkRestart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String checkString = Console.readLine();
+
+        if (!Arrays.asList("1", "2").contains(checkString))
+            throw new IllegalArgumentException();
+
+    }
 
     public List<Integer> initComputerBaseBallNumber() {
         List<Integer> computerNumberList = new ArrayList<>();
@@ -32,6 +43,14 @@ public class BaseballGameService {
         printResult(strike, ball);
 
         return (strike == ALL_STRIKE);
+    }
+
+    private static List<Integer> userReadNumber() {
+        User user = new User();
+        user.readBaseballNumber();
+        user.validateBaseballNumber(user.getBaseballNumberList());
+        List<Integer> userNumberList = user.convertCharToInteger(user.getBaseballNumberList());
+        return userNumberList;
     }
 
     private static int calculateStrike(List<Integer> userNumber, List<Integer> computerNumber) {
