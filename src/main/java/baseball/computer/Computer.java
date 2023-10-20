@@ -16,6 +16,10 @@ public class Computer {
         this.gameNumbers = generateNumbers();
     }
 
+    public Computer(List<Integer> gameNumbers) {
+        this.gameNumbers = gameNumbers;
+    }
+
     public void changeNumbers() {
         this.gameNumbers = generateNumbers();
     }

@@ -2,6 +2,8 @@ package baseball.rule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.computer.Computer;
+import baseball.domain.number.GameNumber;
 import baseball.domain.result.Result;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +19,7 @@ class BaseballGameRuleTest {
     void check(List<Integer> userNumbers, List<Integer> computerNumbers, Integer strike, Integer ball) {
         Rule rule = new BaseballGameRule();
 
-        Result result = rule.check(userNumbers, computerNumbers);
+        Result result = rule.check(new GameNumber(userNumbers), new Computer(computerNumbers));
 
         assertThat(result.getStrike()).isEqualTo(strike);
         assertThat(result.getBall()).isEqualTo(ball);
