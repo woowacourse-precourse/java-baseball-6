@@ -16,4 +16,11 @@ public class InputView {
         System.out.println();
         return Convert.convertStringToIntegerList(input);
     }
+
+    public int inputRestartOrExitNumber() {
+        String input = readLine();
+        System.out.println();
+        return Convert.convertStringToInteger(input);
+    }
+
 }
