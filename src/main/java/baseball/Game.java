@@ -16,6 +16,7 @@ public class Game {
         do{
             initGame();
             playTurn();
+            System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }while ();
 
     }
@@ -33,7 +34,7 @@ public class Game {
         do{
             answer = getNum();
             changeIntArray(answer);
-        }while ();
+        }while (checkResult()!=3);
     }
     public void changeIntArray(String answer) {
         answerNum.clear();
@@ -51,6 +52,41 @@ public class Game {
         if(answer.length()!=3 || !answer.matches("\\d+")){
             throw new IllegalArgumentException();
         }
+    }
+
+    public int checkResult(){
+
+        int strike=0;
+        int ball=0;
+
+        for(int i = 0; i<3;i++){
+
+            int num =answerNum.get(i);
+
+            if(randomNum.get(i)==num){
+                strike++;
+            } else if (randomNum.contains(num)) {
+                ball++;
+            }
+
+        }
+
+        printCheckResult(ball, strike);
+        return strike;
+    }
+
+    public void printCheckResult(int ball, int strike) {
+
+        if(ball !=0){
+            System.out.print(ball +"볼 ");
+        }
+        if(strike !=0){
+            System.out.print(strike + "스트라이크");
+        }
+        if(strike ==0 && ball ==0){
+            System.out.print("낫싱");
+        }
+
     }
 
 }
