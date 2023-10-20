@@ -4,8 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import static constant.BaseConst.*;
 
 public class Baseball {
 
@@ -13,7 +12,7 @@ public class Baseball {
 
     public Baseball() {
         List<Integer> temp = new ArrayList<>();
-        while (temp.size() < 3){
+        while (temp.size() < MAX_LENGTH){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!temp.contains(randomNumber)){
                 temp.add(randomNumber);

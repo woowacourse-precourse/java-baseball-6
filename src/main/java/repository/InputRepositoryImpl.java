@@ -10,13 +10,11 @@ public class InputRepositoryImpl implements InputRepository {
 
     @Override
     public String getMyNumber() {
-        return template.execute("숫자를 입력해주세요 : ",
-                str -> valid.myNumberValid(str));
+        return template.execute("숫자를 입력해주세요 : ", text -> valid.myNumberValid(text));
     }
 
     @Override
     public String getRestartSelect() {
-        return template.execute("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.",
-                str -> valid.restartValid(str));
+        return template.execute("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", text -> valid.restartValid(text));
     }
 }
