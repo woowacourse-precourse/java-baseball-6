@@ -2,37 +2,55 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        boolean isFinish = false;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        String computerNum = makeRandomNumber();
 
-        while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine().strip();
-            checkInput(input);
-
-            boolean isFinish = compare(input, computerNum);
-
-            if (isFinish) {
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                boolean isRestart = askRestart();
-                if (isRestart) {
-                    computerNum = makeRandomNumber();
-                } else {
-                    break;
-                }
-            }
+        while (!isFinish) {
+            isFinish = startGame();
         }
     }
 
+    private static boolean startGame() {
+        String computerNum = makeRandomNumber();
+        boolean isFinish = false;
+
+        while (!isFinish) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = getInput(InputType.FIND);
+
+            isFinish = compare(input, computerNum);
+        }
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        boolean isRestart = askRestart();
+        if (isRestart) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private static String getInput(InputType type) {
+        String input = Console.readLine().strip();
+
+        if (type == InputType.FIND) {
+            checkFindInput(input);
+        } else {
+            checkRestartInput(input);
+        }
+
+        return input;
+    }
+
+    private enum InputType { FIND, RESTART }
+
     private static boolean askRestart() {
-        String restartInput = Console.readLine().strip();
-        checkRestartInput(restartInput);
+        String restartInput = getInput(InputType.RESTART);
 
         if (restartInput.equals("1")) {
             return true;
@@ -107,7 +125,7 @@ public class Application {
         }
     }
 
-    private static void checkInput(String input) {
+    private static void checkFindInput(String input) {
         //세 글자인지 확인
         if (input.length() != 3) {
             throw new IllegalArgumentException("세 글자가 아닙니다");
