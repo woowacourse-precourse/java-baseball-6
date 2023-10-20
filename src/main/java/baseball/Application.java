@@ -126,4 +126,30 @@ public class Application {
         return false;
     }
 
+    public void Game() {
+        List<Integer> user = new ArrayList<>();
+        boolean again = true;
+
+        while (again) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            int[] computer = computerRandom();
+            exceptionFlag = false;
+            while (true) {
+                System.out.print("숫자를 입력해주세요:");
+                user = userInput();
+                if (exceptionFlag == true) {
+                    return;
+                }
+                String judgement = judgeBaseball(computer, user);
+                System.out.println(judgement);
+
+                if (judgement.equals("3스트라이크")) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    again = playAgain();
+                    break;
+                }
+            }
+
+        }
+    }
 }
