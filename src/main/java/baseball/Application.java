@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.status.ErrorCode.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -85,17 +87,17 @@ class Game {
      */
     private void validationInput(String[] input) {
         if (input.length != 3) {
-            throw new IllegalArgumentException("입력하신 숫자가 3자리 수가 아닙니다.");
+            throw new IllegalArgumentException(INVALID_LENGTH_INPUT.getMsg());
         }
 
         for (String s : input) {
             if (!s.matches("^[1-9]$")) {
-                throw new IllegalArgumentException("입력하신 숫자가 1 ~ 9에 해당하지 않습니다.");
+                throw new IllegalArgumentException(INVALID_FORMAT_INPUT.getMsg());
             }
         }
 
         if (Arrays.stream(input).distinct().count() != 3) {
-            throw new IllegalArgumentException("입력하신 숫자 중 중복되는 값이 존재합니다.");
+            throw new IllegalArgumentException(INVALID_DISTINCT_INPUT.getMsg());
         }
     }
 }
