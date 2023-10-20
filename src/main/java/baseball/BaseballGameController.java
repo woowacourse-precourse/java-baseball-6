@@ -29,8 +29,15 @@ public class BaseballGameController {
             int ball = result.getBall();
             int strike = result.getStrike();
 
-            String resultMessage = "";
+            if (ball == 0 && strike == 3) {
+                ConsoleIO.printResultMessage("3스트라이크");
+                ConsoleIO.printEndMessage();
 
+                break;
+            }
+
+            String resultMessage = "";
+            
             if (ball == 0 && strike == 0) {
                 resultMessage = "낫싱";
             } else if (ball == 0 && strike > 0) {
