@@ -16,7 +16,7 @@ public class InputValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"123", "456"})
     void validateBaseBallNumberSuccessTest(String input) {
-        assertThatCode(() -> InputValidator.validate(input))
+        assertThatCode(() -> InputValidator.validateBaseBallNumber(input))
                 .doesNotThrowAnyException();
     }
 
@@ -24,7 +24,7 @@ public class InputValidatorTest {
     @ParameterizedTest
     @MethodSource("provideValidateBaseBallNumberFailTestArgument")
     void validateBaseBallNumberFailTest(String input, String message) {
-        assertThatCode(() -> InputValidator.validate(input))
+        assertThatCode(() -> InputValidator.validateBaseBallNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
     }
@@ -38,4 +38,13 @@ public class InputValidatorTest {
                 arguments("abc", "입력값은 1~9 범위의 숫자만 가능합니다.")
         );
     }
+
+    @DisplayName("사용자가 입력한 값이 1 또는 2 의 한자리 숫자면 에러가 발생하지 않는다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2"})
+    void validateContinueOrExitNumberTest(String input) {
+        assertThatCode(() -> InputValidator.)
+    }
+
+    @DisplayName("사용자가 입력한 값이 1 또는 2 의 한자리 숫자가 아니라면 IllegalArgumentException 에러가 발생한다.")
 }

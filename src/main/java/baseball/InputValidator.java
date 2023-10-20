@@ -10,7 +10,7 @@ public class InputValidator {
     public static final String INPUT_NUMBER_RANGE_EXCEPTION_MESSAGE = "입력값은 1~9 범위의 숫자만 가능합니다.";
     public static final String INPUT_NUMBER_DUPLICATED_EXCEPTION_MESSAGE = "입력값은 중복되지 않는 서로 다른 숫자만 가능합니다.";
 
-    public static String validate(String input) {
+    public static String validateBaseBallNumber(String input) {
         validInputLength(input);
         validIsNumber(input);
         validIsDuplicated(input);
