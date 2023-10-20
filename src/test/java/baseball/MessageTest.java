@@ -21,6 +21,12 @@ class MessageTest {
 
         //then
         Assertions.assertEquals(START, Message.START.getMessage());
+        Assertions.assertEquals(INPUT, Message.INPUT.getMessage());
+        Assertions.assertEquals(EXIT, Message.EXIT.getMessage());
+        Assertions.assertEquals(CHOICE, Message.CHOICE.getMessage());
+        Assertions.assertEquals(BALL, Message.BALL.getMessage());
+        Assertions.assertEquals(NOTHING, Message.NOTHING.getMessage());
+        Assertions.assertEquals(STRIKE, Message.STRIKE.getMessage());
     }
 
 }
