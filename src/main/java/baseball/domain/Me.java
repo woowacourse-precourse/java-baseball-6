@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Me {
@@ -12,6 +11,7 @@ public class Me {
     }
 
     public List<Integer> guessAnswer(int numberLength) {
-        return Collections.emptyList();
+        List<Integer> guessNumberList = inputOutputHandler.inputUniqueNumbers(numberLength);
+        return guessNumberList;
     }
 }
