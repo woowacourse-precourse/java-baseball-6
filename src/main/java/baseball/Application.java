@@ -8,8 +8,8 @@ public class Application {
 
     private static final String STRING_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
-    private static final int MIN_PICK_NUMBER = 1;
-    private static final int MAX_PICK_NUMBER = 9;
+    private static final int START_INCLUSIVE_NUMBER = 1;
+    private static final int END_INCLUSIVE_NUMBER = 9;
 
     private static GameState gameState;
 
@@ -31,7 +31,7 @@ public class Application {
     public static List<Integer> getRandomNumberList() {
         List<Integer> randomNumberList = new ArrayList<>();
         while (randomNumberList.size() < GameConstants.SIZE_RANDOM_NUMBER) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_PICK_NUMBER, MAX_PICK_NUMBER);
+            int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE_NUMBER, END_INCLUSIVE_NUMBER);
             if (!randomNumberList.contains(randomNumber)) {
                 randomNumberList.add(randomNumber);
             }
