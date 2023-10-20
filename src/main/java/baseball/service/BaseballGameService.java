@@ -7,16 +7,13 @@ import baseball.presentation.BaseballInputResolver;
 import baseball.presentation.BaseballView;
 
 public class BaseballGameService {
-    private final RandomNumberGenerator randomNumberGenerator;
     private final BaseballView baseballView;
     private final BaseballInputResolver baseballInputResolver;
 
     public BaseballGameService(
-            RandomNumberGenerator randomNumberGenerator,
             BaseballView baseballView,
             BaseballInputResolver baseballInputResolver
     ) {
-        this.randomNumberGenerator = randomNumberGenerator;
         this.baseballView = baseballView;
         this.baseballInputResolver = baseballInputResolver;
     }
@@ -50,6 +47,6 @@ public class BaseballGameService {
     }
 
     private BaseballJudge createBaseballJudge() {
-        return new BaseballJudge(randomNumberGenerator.generate());
+        return new BaseballJudge(RandomNumberGenerator.generate());
     }
 }

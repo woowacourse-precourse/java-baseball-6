@@ -10,7 +10,7 @@ public class RandomNumberGenerator {
     private static final int MAX_NUMBER = 9;
     private static final int NUMBER_LENGTH = 3;
 
-    public String generate() {
+    public static String generate() {
         List<Integer> pickedNumbers = new ArrayList<>(NUMBER_LENGTH);
 
         while(pickedNumbers.size() < NUMBER_LENGTH) {
@@ -24,16 +24,19 @@ public class RandomNumberGenerator {
         return joinToString(pickedNumbers);
     }
 
-    private int pickRandomNumber() {
+    private static int pickRandomNumber() {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 
-    private String joinToString(List<Integer> numbers) {
+    private static String joinToString(List<Integer> numbers) {
         StringBuilder sb = new StringBuilder();
         for (int number : numbers) {
             sb.append(number);
         }
 
         return sb.toString();
+    }
+
+    private RandomNumberGenerator() {
     }
 }

@@ -12,11 +12,8 @@ class RandomNumberGeneratorTest {
     @DisplayName("RandomNumberGenerator는 3자리 숫자를 생성한다.")
     @Test
     void generate_3length_number_test() {
-        // given
-        RandomNumberGenerator generator = new RandomNumberGenerator();
-
         // when
-        String number = generator.generate();
+        String number = RandomNumberGenerator.generate();
         System.out.println("number = " + number);
 
         // then
@@ -28,11 +25,8 @@ class RandomNumberGeneratorTest {
     @DisplayName("RandomNumberGenerator는 모든 자리의 숫자가 다르다")
     @Test
     void generate_different_each_digit_test() {
-        // given
-        RandomNumberGenerator generator = new RandomNumberGenerator();
-
         // when
-        String number = generator.generate();
+        String number = RandomNumberGenerator.generate();
 
         // then
         Set<Character> characters = new HashSet<>();
