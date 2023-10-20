@@ -1,6 +1,8 @@
 package baseball.service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ValidCheckService {
@@ -47,6 +49,14 @@ public class ValidCheckService {
         }
         return true;
     }
+    public List<Integer> stringToIntegerList(String input) {
+        isValidNumber(input);
+        List<Integer> integerList = new ArrayList<>();
+        for (String s : input.split("")) {
+            integerList.add(Integer.parseInt(s));
+        }
+        return integerList;
+    }
 
 
     public static void validExitNumber(String input){
@@ -55,4 +65,5 @@ public class ValidCheckService {
         }
         throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
+
 }
