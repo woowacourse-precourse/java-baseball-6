@@ -6,7 +6,10 @@ import baseball.domain.PlayerNumber;
 
 public class InputView {
 
-    public PlayerNumber inputPlayerNumber() {
+    private InputView() {
+    }
+
+    public static PlayerNumber inputPlayerNumber() {
         String number = readLine();
         PlayerNumber playerNumber = new PlayerNumber(number);
         return playerNumber;

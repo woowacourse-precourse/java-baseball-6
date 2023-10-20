@@ -9,7 +9,10 @@ import java.util.Set;
 
 public class ComputerNumberService {
 
-    public ComputerNumber generateComputerNumber() {
+    private ComputerNumberService() {
+    }
+
+    public static ComputerNumber generateComputerNumber() {
         Set<Integer> numbers = new HashSet<>();
         while (numbers.size() < GameValue.NUMBER_SIZE.getValue()) {
             int number = pickNumberInRange(GameValue.MIN_RANGE.getValue(), GameValue.MAX_RANGE.getValue());
