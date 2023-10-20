@@ -15,7 +15,7 @@ public class Result {
         init();
         for(int i=0; i<3; i++){
             if(computerNumbs.get(i).equals(userNumbs.get(i))){ //strike 판별
-                computerNumbs.set(i, 0);
+                userNumbs.set(i, 0);
                 strikeCount++;
             }
             if(userNumbs.contains(computerNumbs.get(i))){ //ball 판별
