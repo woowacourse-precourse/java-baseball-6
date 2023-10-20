@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.constant.BaseballConstant;
+import baseball.constants.BaseballConstant;
 import baseball.messages.ValidationErrorMessage;
 
 import java.util.ArrayList;

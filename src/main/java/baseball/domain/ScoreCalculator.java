@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.constant.BaseballConstant;
+import baseball.constants.BaseballConstant;
 
 import java.util.List;
 
