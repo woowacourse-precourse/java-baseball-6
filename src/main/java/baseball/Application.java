@@ -7,16 +7,31 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+        boolean stateReplayGame = true;
+
         displayGameStartMessage();
-        playGame();
+
+        while (stateReplayGame) {
+            stateReplayGame = playGame();
+        }
     }
 
-    public static void playGame() {
+    public static boolean playGame() {
+        boolean stateRepeatGuess = true;
         List<Integer> computerNumbers = generateComputerNumbers();
-        List<Integer> playerGuessNumbers = getPlayerGuessNumbers();
 
-        System.out.println(computerNumbers);
-        System.out.println(playerGuessNumbers);
+        while (stateRepeatGuess) {
+            List<Integer> playerGuessNumbers = getPlayerGuessNumbers();
+            int strikes = countStrike(computerNumbers, playerGuessNumbers);
+            int balls = countBall(computerNumbers, playerGuessNumbers);
+
+            System.out.println(balls + " " + strikes);
+
+            if (strikes == 3) {
+                stateRepeatGuess = false;
+            }
+        }
+        return false;
     }
 
     public static void displayGameStartMessage() {
