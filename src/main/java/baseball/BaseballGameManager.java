@@ -75,7 +75,10 @@ public class BaseballGameManager {
             throw new IllegalArgumentException("세 자리의 숫자가 아닙니다.");
         }
 
-        int[] numArr = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
+        int[] numArr = Stream.of(String.valueOf(num)
+                .split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
 
         if (numArr[0] == numArr[1] || numArr[0] == numArr[2] || numArr[1] == numArr[2]) {
             throw new IllegalArgumentException("서로 다른 세 자리의 숫자가 아닙니다.");

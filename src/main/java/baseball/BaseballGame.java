@@ -14,8 +14,14 @@ public class BaseballGame {
             return new BaseballGameResult(3, 0);
         }
 
-        int[] correctNumArr = Stream.of(String.valueOf(computerNum).split("")).mapToInt(Integer::parseInt).toArray();
-        int[] inputNumArr = Stream.of(String.valueOf(inputNum).split("")).mapToInt(Integer::parseInt).toArray();
+        int[] correctNumArr = Stream.of(String.valueOf(computerNum)
+                .split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        int[] inputNumArr = Stream.of(String.valueOf(inputNum)
+                .split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
         int ball = 0;
         int strike = 0;
 
