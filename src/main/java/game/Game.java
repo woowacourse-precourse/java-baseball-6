@@ -1,4 +1,4 @@
-package baseball;
+package game;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static validation.Validation.*;
+import static validation.Constant.*;
 
 public class Game {
     static List<Integer> answer = new ArrayList<>();
@@ -16,7 +16,7 @@ public class Game {
         System.out.println("answer : " + answer);
     }
 
-    public void set() {
+    public static void set() {
         System.out.println(START_STRING);
         Game game;
         do {
