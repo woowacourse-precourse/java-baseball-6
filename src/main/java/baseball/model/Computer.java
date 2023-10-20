@@ -14,16 +14,10 @@ public class Computer {
     private final List<Integer> computer;
 
     public Computer(List<Integer> computer) {
+        validateSize(computer);
+        validateDuplicate(computer);
+        validateIsNumber(computer);
         this.computer = computer;
-    }
-
-    public void generateRandom() {
-        while(computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
     }
 
     private void validateSize(List<Integer> computer){
