@@ -1,7 +1,7 @@
 package players;
 
 import exceptions.InvalidNumberException;
-import java.util.List;
+import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +15,25 @@ public class ComputerPlayerTest {
         int[] randomNumber = computer.createNumber();
         // then
         Assertions.assertDoesNotThrow(() -> validateNumber(randomNumber));
+    }
+
+    @Test
+    void highRevolutionTest() {
+        for(int i = 0; i < 100; i++) {
+            // given
+            ComputerPlayer computer = new ComputerPlayer();
+            // when
+            int[] randomNumber = computer.createNumber();
+            // then
+            try {
+                validateNumber(randomNumber);
+            } catch (InvalidNumberException e) {
+                System.out.print("\033[34m");
+                Arrays.stream(randomNumber).forEach((n) -> System.out.print(n + " "));
+                System.out.print("\033[0m");
+                Assertions.fail();
+            }
+        }
     }
 
     void validateNumber(int[] number) throws InvalidNumberException {
