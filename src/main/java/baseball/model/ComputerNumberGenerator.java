@@ -8,6 +8,10 @@ public class ComputerNumberGenerator {
 
     private List<Integer> computerNumber;
 
+    public ComputerNumberGenerator() {
+        generateRandomNumbers();
+    }
+
     public List<Integer> getComputerNumber() {
         return computerNumber;
     }

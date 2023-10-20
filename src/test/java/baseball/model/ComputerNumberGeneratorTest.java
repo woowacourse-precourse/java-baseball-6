@@ -7,15 +7,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Test;
 
+@DisplayNameGeneration(ReplaceUnderscores.class)
 class ComputerNumberGeneratorTest {
     static List<Integer> computerNumbers;
 
     @BeforeAll
     static void init() {
         ComputerNumberGenerator createComputerNumber = new ComputerNumberGenerator();
-        createComputerNumber.generateRandomNumbers();
         computerNumbers = createComputerNumber.getComputerNumber();
     }
 

@@ -1,11 +1,11 @@
-package baseball.model;
+package baseball.utils;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class ToList {
+public class StringToIntegerList {
 
-    static List<Integer> toIntegerList(String userInput) {
+    public static List<Integer> toIntegerList(String userInput) {
         return Arrays.stream(userInput.split("")).map(Integer::parseInt).toList();
     }
 }
