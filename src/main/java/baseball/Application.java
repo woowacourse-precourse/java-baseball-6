@@ -7,6 +7,7 @@ import java.util.*;
 
 public class Application {
     static final int NUMBERS_LENGTH = 3;
+    static final String MORE_GAME = "1";
     static final String QUIT_GAME = "2";
     static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     static final String GET_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
@@ -113,22 +114,33 @@ public class Application {
     }
     public static void validateUserNumbersString(String userNumbers) {
         validateEmptyOrNullOfInputString(userNumbers);
-        if (!userNumbers.matches("[1-9]{"+NUMBERS_LENGTH+"}")) {
-            throw new IllegalArgumentException("[ERROR] 입력 값이 1~9 사이 숫자로 이루어진 세자리 숫자가 아닙니다.");
-        }
-        Set<String> duplicationCheckSet = new HashSet<>(Arrays.asList(userNumbers.split("")));
-        if (duplicationCheckSet.size() != NUMBERS_LENGTH) {
-            throw new IllegalArgumentException("[ERROR] 입력 값에 중복이 있습니다.");
-        }
+        validateStringLength(userNumbers, NUMBERS_LENGTH);
+        validateStringDistinct(userNumbers);
+        validateStringDigit(userNumbers);
     }
     public static void validateMoreGameString(String moreGame) {
         validateEmptyOrNullOfInputString(moreGame);
-        if (!moreGame.matches("[12]"))
+        if (!moreGame.equals(MORE_GAME) && !moreGame.equals(QUIT_GAME))
             throw new IllegalArgumentException("[ERROR] 입력 값이 1 또는 2가 아닙니다.");
     }
-    public static void validateEmptyOrNullOfInputString(String input) {
-        if (input == null || input.isEmpty()) {
+    public static void validateEmptyOrNullOfInputString(String str) {
+        if (str == null || str.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 입력 값이 null이거나 비어있습니다.");
+        }
+    }
+    public static void validateStringLength(String str, int length) {
+        if (str.length() != length)
+            throw new IllegalArgumentException("[ERROR] 입력 값의 길이가 "+length+"(이)가 아닙니다.");
+    }
+    public static void validateStringDistinct(String str) {
+        Set<String> inputSet = new HashSet<>(Arrays.asList(str.split("")));
+        if (str.length() != inputSet.size())
+            throw new IllegalArgumentException("[ERROR] 입력 값에 중복이 있습니다.");
+    }
+    public static void validateStringDigit(String str) {
+        for (char ch : str.toCharArray()) {
+            if (!Character.isDigit(ch))
+                throw new IllegalArgumentException("[ERROR] 입력 값이 숫자로만 이루어져 있지 않습니다.");
         }
     }
 }
