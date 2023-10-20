@@ -27,6 +27,18 @@ public class NumberValidator {
         }
     }
 
+    public static void validateAllDigits(String input) {
+        for (char c : input.toCharArray()) {
+            validateEachDigit(input, c);
+        }
+    }
+
+    private static void validateEachDigit(String input, char c) {
+        if (!Character.isDigit(c)) {
+            throw new IllegalArgumentException(input + "은 숫자가 아닙니다.");
+        }
+    }
+
     private static Set<Character> convertStringToSet(String numberString) {
         Set<Character> resultSet = new HashSet<>();
         for (char c : numberString.toCharArray()) {
