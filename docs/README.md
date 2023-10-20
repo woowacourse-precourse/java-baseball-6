@@ -41,7 +41,7 @@
     - 수를 반환하는 기능
 
 
-3. Comperator.java
+3. Comparator.java
 
    두 수를 비교하는 클래스
 
