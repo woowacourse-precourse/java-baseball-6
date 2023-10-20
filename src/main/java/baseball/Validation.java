@@ -4,8 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Validation {
-    final char restart = '1';
-    final char end = '2';
+    private final char restart = '1';
+    private final char end = '2';
 
     public void validateThreeNumbers(String input) {
         if (input.length() != 3) {
