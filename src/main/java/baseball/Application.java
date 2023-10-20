@@ -1,6 +1,11 @@
 package baseball;
 
+import static baseball.Message.BALL_MSG;
+import static baseball.Message.END_MSG;
 import static baseball.Message.INPUT_MSG;
+import static baseball.Message.NON_MSG;
+import static baseball.Message.REGAME_MSG;
+import static baseball.Message.STRIKE_MSG;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -50,6 +55,30 @@ public class Application {
         // 5. 야구 게임 결과 체크
         Map<String, Integer> result = baseballCount(computer, user);
 
+        // 6. 결과 해석 및 게임 종료 여부 체크
+        if (result.get(BaseBall.STRIKE) == COUNT) {
+            System.out.println(END_MSG);
+            System.out.print(REGAME_MSG);
+            if (Console.readLine().equals("1")) {
+                System.out.println("재게임");
+            } else {
+                return;
+            }
+        } else if (result.get(BaseBall.NOTHING) == COUNT) {
+            System.out.println(NON_MSG);
+            // 다시 사용자 입력 받기
+        } else {
+            StringBuilder sb = new StringBuilder();
+            int ball = result.get(BaseBall.BALL);
+            int strike = result.get(BaseBall.STRIKE);
+            if (ball != 0) {
+                sb.append(ball + BALL_MSG + " ");
+            }
+            if (strike != 0) {
+                sb.append(strike + STRIKE_MSG);
+            }
+            System.out.println(sb.toString());
+        }
 
     }
 
