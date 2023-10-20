@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashSet;
 
 public class GameService {
     private static int[] setting() {
@@ -31,9 +32,10 @@ public class GameService {
     private static Boolean game(int[] computer) {
         int strike = 0, ball = 0;
         System.out.print("숫자를 입력 해 주세요 : ");
-        String guess = Console.readLine();
+        char[] guess = Console.readLine().toCharArray();
+        checkException(guess);
         for (int i = 0; i < 3; i++) {
-            int userNum = Character.getNumericValue(guess.charAt(i));
+            int userNum = Character.getNumericValue(guess[i]);
             if (computer[userNum] == i + 1) {
                 strike += 1;
             } else if (computer[userNum] != 0) {
@@ -42,6 +44,19 @@ public class GameService {
         }
         printResult(strike, ball);
         return strike == 3;
+    }
+
+    private static void checkException(char[] guess) {
+        if (guess.length != 3) {
+            throw new IllegalArgumentException();
+        }
+        HashSet<Character> check = new HashSet<>();
+        for (Character c : guess) {
+            if (check.contains(c)) {
+                throw new IllegalArgumentException();
+            }
+            check.add(c);
+        }
     }
 
     private static void printResult(int strike, int ball) {
