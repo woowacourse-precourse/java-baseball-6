@@ -11,6 +11,7 @@ public class BaseBallGame {
     private static final int MAX_RANDOM_NUMBER = 9;
     private static final int RANDOM_NUMBER_LENGTH = 3;
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String PLAYER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
     public void gameStart() {
         printStartMessage();
@@ -18,6 +19,10 @@ public class BaseBallGame {
         while(true) {
 
         }
+    }
+
+    private void printPlayerInputMessage() {
+        System.out.println(PLAYER_INPUT_MESSAGE);
     }
 
     private void printStartMessage() {
