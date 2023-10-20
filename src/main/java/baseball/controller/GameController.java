@@ -31,6 +31,7 @@ public class GameController {
     }
 
     private static void showEndMessage() {
+        OutputView.printEndMessage();
     }
 
     private static boolean checkRestart() {
