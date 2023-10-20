@@ -6,10 +6,13 @@ public class Game {
 
     private final Player player;
     private final Computer computer;
+    private Score score;
+    private final GameProcessor gameProcessor;
 
     public Game() {
         this.player = new Player();
         this.computer = new Computer();
+        this.gameProcessor = new GameProcessor();
     }
 
     void run(){
@@ -27,11 +30,14 @@ public class Game {
         return computer.getComputerAnswer();
     }
     void start(ArrayList<Integer> computerAnswer){
-       while (score.getStrike!=3){
+        score = new Score();
+       while (score.getStrike()!=3){
            System.out.println("숫자를 입력해주세요 : ");
-           ArrayList<Integer> playerAnswer=player.getNewAnswer();
-           gameProcessor.updateScore(playerAnswer,computerAnswer);
-           gameProcessor.printScore();
+           ArrayList<Integer> playerAnswer=player.getPlayerAnswer();
+           int[] result = gameProcessor.getCompareTwoAnswerResult(playerAnswer,computerAnswer);
+           score.setBall(result[0]);
+           score.setStrike(result[1]);
+           gameProcessor.printScore(score);
        }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
