@@ -73,4 +73,8 @@ public class GameService {
         return "";
     }
 
+    public boolean isThreeStrikes(int[] result){
+        return result[0] == 3;
+    }
+
 }
