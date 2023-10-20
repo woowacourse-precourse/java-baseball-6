@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GoalValueTest {
     @Test
@@ -67,5 +68,22 @@ public class GoalValueTest {
             // then
             assertEquals(result.toString(), answers[i]);
         }
+    }
+
+    @Test
+    void createRandom_Test(){
+        // given
+        int equalCount = 0;
+        int equalLimit = 5;
+
+        // when
+        for (int i = 0; i < 100; i++) {
+            GoalValue value1 = GoalValue.createRandom();
+            GoalValue value2 = GoalValue.createRandom();
+
+            if (value1.equals(value2)) equalCount++;
+        }
+
+        assertTrue(equalCount < equalLimit);
     }
 }

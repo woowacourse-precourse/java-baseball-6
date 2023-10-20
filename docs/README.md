@@ -4,9 +4,15 @@
 - [x] 기초 설계 구상
 - [x] GoalValue 및 Test 구현
   - [x] create 및 validate 구현
+  - [x] createRandom 구현
+  - [ ] equals 구현
 - [x] CompareResult 구현
   - [x] toString 구현
   - [x] GoalValue.compare() 구현
+  - [ ] equals 구현
 - [ ] Computer 구현
+- [ ] GoalValue 리팩토링
+  - [ ] ThreeUniqueNumber 으로 변경
+  - [ ] 내부필드 String -> List<Integer>로 변경
 - [ ] Shell 구현
 - [ ] main() 구현
