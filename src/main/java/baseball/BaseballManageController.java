@@ -54,6 +54,8 @@ public class BaseballManageController {
 
     public List<Integer> playerNumsInput() {
         String playerStringNumsInput = Console.readLine();
+        this.playerNumsInputCheck(playerStringNumsInput);
+        this.playerInputTypeCheck(playerStringNumsInput);
         List<Integer> playerNumsTemp = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int numericValue = Character.getNumericValue(playerStringNumsInput.charAt(i));
@@ -101,6 +103,7 @@ public class BaseballManageController {
     public void restartInput() {
 
         String restart = Console.readLine();
+        this.RestartInputCheck(restart);
         this.gameData.setGameRepetition(restart);
     }
 
@@ -120,4 +123,27 @@ public class BaseballManageController {
         view.printAskRestart();
     }
 
+    public void playerNumsInputCheck(String input) throws IllegalArgumentException{
+
+        if(input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void playerInputTypeCheck(String input) throws IllegalArgumentException{
+
+        try {
+            Double.parseDouble(input);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void RestartInputCheck(String input) throws IllegalArgumentException{
+
+        List<String> restartInputs = List.of("1", "2");
+        if(!restartInputs.contains(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
