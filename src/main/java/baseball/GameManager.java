@@ -20,14 +20,25 @@ public class GameManager {
             System.out.print("숫자를 입력해주세요 : ");
             String answer = Console.readLine();
 
+            List<Integer> answerNumber = answerStringToNumber(answer);
             break;
         }
     }
 
     private List<Integer> answerStringToNumber(String answer) {
         validateAnswerLength(answer);
+        List<Integer> answerNumber = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            char answerChar = answer.charAt(i);
+            validateAnswerChar(answerChar);
+            answerNumber.add((int) answer.charAt(i));
+        }
+        return answerNumber;
+    }
 
-        return new ArrayList<>();
+    private void validateAnswerChar(char c) {
+        if (c < 49 || c > 57)
+            throw new IllegalArgumentException();
     }
 
     private void validateAnswerLength(String answer) {
