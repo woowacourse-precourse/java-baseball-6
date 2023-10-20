@@ -1,8 +1,7 @@
 package baseball.view;
 
+import baseball.constant.Number;
 import baseball.model.Score;
-
-import static baseball.constant.NumberConstants.OUT_COUNT;
 
 public class OutputView {
 
@@ -19,7 +18,7 @@ public class OutputView {
     }
 
     public void printGameEndMessage() {
-        System.out.printf(RESULT_MESSAGE, OUT_COUNT);
+        System.out.printf(RESULT_MESSAGE, Number.OUT_COUNT);
         System.out.println(GAME_END_MESSAGE);
     }
 }

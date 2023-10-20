@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.constant.Hint;
+import baseball.constant.Number;
 
 import java.util.Map;
 
@@ -8,7 +9,6 @@ import static baseball.constant.Hint.BALL;
 import static baseball.constant.Hint.BLANK;
 import static baseball.constant.Hint.NOT_THING;
 import static baseball.constant.Hint.STRIKE;
-import static baseball.constant.NumberConstants.OUT_COUNT;
 
 public class Score {
 
@@ -22,7 +22,7 @@ public class Score {
         if (score == null) {
             return false;
         }
-        return score.get(STRIKE).equals(OUT_COUNT);
+        return score.get(STRIKE).equals(Number.OUT_COUNT);
     }
 
     @Override

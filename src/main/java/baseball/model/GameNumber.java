@@ -1,15 +1,12 @@
 package baseball.model;
 
 import baseball.constant.ErrorMessage;
+import baseball.constant.Number;
 import baseball.util.Converter;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-
-import static baseball.constant.NumberConstants.MAX_NUMBER;
-import static baseball.constant.NumberConstants.MIN_NUMBER;
-import static baseball.constant.NumberConstants.NUMBER_SIZE;
 
 public class GameNumber {
 
@@ -71,15 +68,15 @@ public class GameNumber {
     }
 
     private void validateLength(List<Integer> gameNumber) {
-        if (!NUMBER_SIZE.equals(Set.copyOf(gameNumber).size())
-                || !NUMBER_SIZE.equals(gameNumber.size())) {
+        if (!Number.SIZE.equals(Set.copyOf(gameNumber).size())
+                || !Number.SIZE.equals(gameNumber.size())) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
         }
     }
 
     private void validateRange(List<Integer> gameNumber) {
-        if (!gameNumber.stream().allMatch(number -> MIN_NUMBER <= number
-                && number <= MAX_NUMBER)) {
+        if (!gameNumber.stream().allMatch(number -> Number.MIN <= number
+                && number <= Number.MAX)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
         }
     }

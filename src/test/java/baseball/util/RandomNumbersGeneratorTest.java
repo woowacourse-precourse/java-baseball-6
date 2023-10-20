@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Set;
 
-import static baseball.constant.NumberConstants.MAX_NUMBER;
-import static baseball.constant.NumberConstants.MIN_NUMBER;
-import static baseball.constant.NumberConstants.NUMBER_SIZE;
+import static baseball.constant.Number.MAX;
+import static baseball.constant.Number.MIN;
+import static baseball.constant.Number.SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RandomNumbersGeneratorTest {
@@ -18,13 +18,13 @@ class RandomNumbersGeneratorTest {
     void checkUniqueRandomNumbers() {
         List<Integer> computer = RandomNumbersGenerator.generate();
         assertThat(Set.copyOf(computer).size()).isEqualTo(computer.size())
-                .isEqualTo(NUMBER_SIZE);
+                .isEqualTo(SIZE);
     }
 
     @Test
     @DisplayName("올바른 범위의 숫자 생성 테스트")
     void checkValidRangeNumbers() {
         List<Integer> computer = RandomNumbersGenerator.generate();
-        assertThat(computer).allMatch(number -> MIN_NUMBER <= number && number <= MAX_NUMBER);
+        assertThat(computer).allMatch(number -> MIN <= number && number <= MAX);
     }
 }
