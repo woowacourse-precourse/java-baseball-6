@@ -21,7 +21,7 @@ public class Computer {
         int strike = 0;
         int ball = 0;
 
-        for (int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             int oneNum = threeNumbers.get(i);
             int inputNum = inputNumbers.get(i);
 

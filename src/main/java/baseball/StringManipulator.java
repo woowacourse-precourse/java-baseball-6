@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Set;
 
 public class StringManipulator {
-    public static List<Integer> strToArrayList(String input){
+    public static List<Integer> strToArrayList(String input) {
         List<Integer> threeNumList = new ArrayList<>();
 
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < 3; i++) {
             char digitChar = input.charAt(i);
             int digit = Character.getNumericValue(digitChar);
             threeNumList.add(digit);
