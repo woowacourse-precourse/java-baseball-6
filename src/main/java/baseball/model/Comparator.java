@@ -48,4 +48,8 @@ public class Comparator {
     public int getStrike() {
         return strike;
     }
+
+    public int getBall() {
+        return ball;
+    }
 }
