@@ -4,6 +4,7 @@ import baseball.domain.Numbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -35,5 +36,13 @@ public class GameControllerTest {
         //when&then
         assertThatThrownBy(()->controller.validateOption(input))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력값에 따라 게임 재시작여부를 결정하는 기능")
+    @ParameterizedTest
+    @CsvSource(value = {"1:true","2:false"},delimiter = ':')
+    void 재시작_기능(String input,boolean expected){
+        GameController controller=new GameController();
+        assertThat(controller.isContinue(input)).isEqualTo(expected);
     }
 }
