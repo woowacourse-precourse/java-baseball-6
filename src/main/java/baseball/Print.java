@@ -19,6 +19,10 @@ public class Print {
         if(ball == 0 && strike == 0) printNothing();
     }
 
+    public static void printGameWin() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     private static void printBallAndStrike(int ball, int strike) {
         System.out.println(ball + "볼 " + strike + "스트라이크");
     }

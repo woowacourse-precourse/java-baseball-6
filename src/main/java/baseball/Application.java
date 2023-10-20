@@ -17,6 +17,8 @@ public class Application {
             Print.printHint(hint);
             threeStrike = isThreeStrike(hint.getStrike());
         } while(!threeStrike);
+
+        Print.printGameWin();
     }
 
     private static boolean isThreeStrike(int strike) {
