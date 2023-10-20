@@ -1,14 +1,19 @@
 package baseball.service;
 
+import baseball.domain.Score;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class GameService {
 
+    ValidCheckService validCheckService = new ValidCheckService();
+
     //컴퓨터 숫자 생성
-    public static List<Integer> generateRandomNumber(int length) {
+    public  List<Integer> generateRandomNumber(int length) {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < length) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -42,6 +47,21 @@ public class GameService {
         int ball = same - strike;
         return ball;
     }
+    public List<Integer> getUserNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = readLine();
+        validCheckService.isValidNumber(userInput);
+        return validCheckService.stringToIntegerList(userInput);
+    }
+
+    public void countOnPlay(List<Integer> computer, List<Integer> user, Score score, int same) {
+        int strike = countStrike(computer, user);
+        int ball = countBall(same, strike);
+        score.setScore(strike, ball);
+    }
+
+
+
 
 
 

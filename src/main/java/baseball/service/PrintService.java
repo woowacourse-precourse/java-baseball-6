@@ -1,5 +1,7 @@
 package baseball.service;
 
+import baseball.domain.Score;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class PrintService {
@@ -26,6 +28,10 @@ public class PrintService {
         }
 
     }
+    public void showResult(Score score) {
+        printGameResult(score.getStrike(), score.getBall());
+    }
+
     public boolean printAfterFinish(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = readLine();
