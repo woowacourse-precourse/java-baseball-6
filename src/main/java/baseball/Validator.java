@@ -38,13 +38,18 @@ public class Validator {
 
     private static void validateNumber(String value) {
         for (int i = 0; i < value.length(); i++) {
-            if (value.charAt(i) < BASEBALL_START_NUMBER + '0' || value.charAt(i) > BASEBALL_END_NUMBER + '0') {
+            char currentChar = value.charAt(i);
+            if (isOutOfRange(currentChar)) {
                 throw new IllegalArgumentException(
                         BASEBALL_START_NUMBER + "에서 " +
                                 BASEBALL_END_NUMBER + "까지 서로 다른 임의의 수 " +
                                 BASEBALL_SIZE + "개를 선택해야합니다.");
             }
         }
+    }
+
+    private static boolean isOutOfRange(char currentChar) {
+        return currentChar < BASEBALL_START_NUMBER + '0' || currentChar > BASEBALL_END_NUMBER + '0';
     }
 
     private static void validateSameNumber(List<Integer> value) {
