@@ -33,9 +33,12 @@ public class Test {
         // Test용 사용자 숫자 확인하기
         ComputerController computerController = new ComputerController();
         computerController.setNumbers();
-        System.out.println(computerController.getNumbers());
+        //System.out.println(computerController.getNumbers());
         computerController.calculate(userController.getNumbers());
         System.out.println(computerController.getBall() + ", " + computerController.getStrike());
+
+        // 결과 테스트
+        GameView.gameResult(computerController.getBall(), computerController.getStrike());
 
     }
 }

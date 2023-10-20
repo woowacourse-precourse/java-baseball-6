@@ -26,6 +26,8 @@ public class Application {
                             .collect(Collectors.toList())
             );
 
+            GameView.gameResult(computerController.getBall(), computerController.getStrike());
+
             start = false;
         }
     }
