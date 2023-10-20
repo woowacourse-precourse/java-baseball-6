@@ -21,8 +21,8 @@
 
 ## 📕 Balls
 
-- [ ] `Ball`들을 갖는 class
-    - [ ] `List<Ball>`만을 가지는 일급 컬렉션
+- [x] `Ball`들을 갖는 class
+    - [x] `List<Ball>`만을 가지는 일급 컬렉션
         - [ ] `Ball`들의 개수 검증
         - [ ] `Ball`들의 값 중복 검증
 
