@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class BaseballGame{
     private final List<Integer> computer = new ArrayList<>();
-    private boolean isError = false;
     private void newGame(){
         computer.clear();
         while (computer.size() < 3) {
@@ -18,50 +17,38 @@ public class BaseballGame{
             }
         }
     }
+    private void rightInput(String playerNumberInString){
+        if (playerNumberInString.length()!=3) {
+            throw new IllegalArgumentException();
+        }
+        if (playerNumberInString.charAt(0)
+                == playerNumberInString.charAt(1)
+                || playerNumberInString.charAt(1)
+                == playerNumberInString.charAt(2)
+                || playerNumberInString.charAt(0)
+                == playerNumberInString.charAt(2)) {
+            throw new IllegalArgumentException();
+        }
+        for(int i = 0; i<3;i++){
+            if(!Character.isDigit(playerNumberInString.charAt(i))){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
     private List<Integer> readPlayerNumber(){
+        System.out.print("\n숫자를 입력해주세요 : ");
         String playerNumberInString = Console.readLine();
         List<Integer> player = new ArrayList<>();
         rightInput(playerNumberInString);
         while(player.size()<3){
-            if(isError){
-                break;
-            }
             player.add(playerNumberInString.charAt(player.size())-'0');
         }
         return player;
     }
-    private void rightInput(String playerNumberInString){
-        if(playerNumberInString.length()!=3){
-            isError = true;
-        }
-        if (playerNumberInString.length()==3){
-            if(playerNumberInString.charAt(0)
-                    ==playerNumberInString.charAt(1)
-                    ||playerNumberInString.charAt(1)
-                    ==playerNumberInString.charAt(2)
-                    ||playerNumberInString.charAt(0)
-                    ==playerNumberInString.charAt(2)) {
-                isError = true;
-            }
-            for(int i = 0; i<3;i++){
-                if(!Character.isDigit(playerNumberInString.charAt(i))){
-                    isError = true;
-                }
-            }
-        }
-        if (isError){
-            throw new IllegalArgumentException();
-        }
-
-    }
     private void compareNumber() {
         int strike = 0;
         while(strike != 3){
-            System.out.print("\n숫자를 입력해주세요 : ");
             List<Integer> player = readPlayerNumber();
-            if(isError){
-                break;
-            }
             strike = 0;
             int ball = 0;
             for(int i = 0; i<3;i++){
@@ -94,14 +81,11 @@ public class BaseballGame{
             restartOrExit();
         }
     }
-
     public void startGame() {
         newGame();
         compareNumber();
-        if(!isError){
-            System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            restartOrExit();
-        }
+        System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        restartOrExit();
     }
 }
