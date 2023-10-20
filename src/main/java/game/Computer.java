@@ -1,5 +1,6 @@
 package game;
 
+import baseball.Output;
 import client.Ball;
 
 public class Computer {
@@ -12,8 +13,13 @@ public class Computer {
         ballCounts = new BallCounts();
     }
 
-    public void judge(Ball playerBall) {
-        ballCounts = Referee.judge(ball, playerBall);
+    public void catchBall(Ball playerBall) {
+        ballCounts = judge(playerBall);
+        Output.printMessage(ballCounts.toString());
+    }
+
+    public BallCounts judge(Ball playerBall) {
+        return Referee.judge(ball, playerBall);
     }
 
     private String getRandomNumbers() {
