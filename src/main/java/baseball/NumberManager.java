@@ -23,34 +23,38 @@ public class NumberManager {
         return number;
     }
 
-    public List<Integer> receiveNumber() throws IOException{
-        String number = br.readLine();
-        if(!isVaildNumber(number)){
-            throw new IllegalArgumentException();
+    public List<Integer> receiveNumber() {
+        String number = "";
+        try {
+            number = br.readLine();
+            isVaildNumber(number);
+            return convertToList(number); 
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("입력을 읽을 수 없습니다.");
         }
-        return convertToList(number);
     }
 
-    public boolean isVaildNumber(String number){
-        if(number.length()!=LENGTH)
-            return false;
-        if(number.contains("0"))
-            return false;
-        for(int i=0;i<3;i++){
-            if(number.charAt(i)<'1' || number.charAt(i)>'9')
-                return false;
+    public void isVaildNumber(String number) {
+        if (number.length() != LENGTH)
+            throw new IllegalArgumentException("숫자의 길이를 위반하였습니다.");
+        if (number.contains("0"))
+            throw new IllegalArgumentException("0이 포함되었습니다.");
+        if (number.charAt(0)==number.charAt(1) || number.charAt(0)==number.charAt(2) || number.charAt(1)==number.charAt(2)){
+            throw new IllegalArgumentException("같은 수가 포함 되어 있습니다.");
         }
-        return true;
-
+        for (int i = 0; i < 3; i++) {
+            if (number.charAt(i) < '1' || number.charAt(i) > '9')
+                throw new IllegalArgumentException("1~9 이외의 숫자가 포함되었습니다.");
+        }
     }
 
-    public List<Integer> convertToList(String number){
+    public List<Integer> convertToList(String number) {
         List<Integer> numberList = new ArrayList<Integer>();
-        for(int i=0;i<number.length();i++){
-            numberList.add(number.charAt(0)-'0');
+        for (int i = 0; i < number.length(); i++) {
+            numberList.add(number.charAt(i) - '0');
         }
         return numberList;
     }
 
-    
 }
