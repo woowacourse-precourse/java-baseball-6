@@ -25,24 +25,36 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        // TODO: 1부터 9까지 서로 다른 수로 이루어진 3자리의 수 생성
-        List<Integer> computer = generateRandomNumber(LENGTH);
-
-        // TODO: 입력값에 따라 처리
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            // TODO: 1부터 9까지 서로 다른 수로 이루어진 3자리의 수 생성
+            List<Integer> computer = generateRandomNumber(LENGTH);
+
+            // TODO: 입력값에 따라 처리
+            while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String input = readLine();
+                List<Integer> user = convert(input, LENGTH);
+
+                int[] result = compare(computer, user);
+                printResult(result);
+
+                if (result[RESULT_CODE.STRIKE.value] == LENGTH) {
+                    break;
+                }
+            }
+
+            // TODO: 게임 종료
+            System.out.println(LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = readLine();
-            List<Integer> user = convert(input, LENGTH);
-
-            int[] result = compare(computer, user);
-            printResult(result);
-
-            if (result[0] == LENGTH) {
+            if (input.equals("1")) {
+                continue;
+            } else if (input.equals("2")) {
                 break;
+            } else {
+                throw new IllegalArgumentException();
             }
         }
-
-        // TODO: 게임 종료
     }
 
     private static List<Integer> generateRandomNumber(Integer length) {
@@ -66,7 +78,11 @@ public class Application {
         for (int i = 0; i < string.length(); i++) {
             try {
                 Integer temp = Integer.parseInt(String.valueOf(string.charAt(i)));
-                result.add(temp);
+                if (result.indexOf(temp) > -1) {
+                    throw new IllegalArgumentException();
+                } else {
+                    result.add(temp);
+                }
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException();
             }
@@ -83,8 +99,11 @@ public class Application {
             if (computer.get(i) == user.get(i)) {
                 result[RESULT_CODE.STRIKE.value]++;
             } else {
-                if(computer.indexOf(user.get(i)) > -1) result[RESULT_CODE.BALL.value]++;
-                else miss.add(user.get(i));
+                if (computer.indexOf(user.get(i)) > -1) {
+                    result[RESULT_CODE.BALL.value]++;
+                } else {
+                    miss.add(user.get(i));
+                }
             }
         }
 
@@ -96,8 +115,11 @@ public class Application {
         List<String> print = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
             if (result[i] > 0) {
-                if(RESULT_CODE.BALL.value == i) print.add(result[i] + RESULT_CODE.BALL.title);
-                else if(RESULT_CODE.STRIKE.value == i) print.add(result[i] + RESULT_CODE.STRIKE.title);
+                if (RESULT_CODE.BALL.value == i) {
+                    print.add(result[i] + RESULT_CODE.BALL.title);
+                } else if (RESULT_CODE.STRIKE.value == i) {
+                    print.add(result[i] + RESULT_CODE.STRIKE.title);
+                }
             }
         }
 
