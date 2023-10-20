@@ -31,9 +31,9 @@ class Game {
         int[] result = {0, 0};
 
         int[] queryDigit = {
-                this.answer % 10,
-                (this.answer / 10) % 10,
-                (this.answer / 100) % 10};
+                query % 10,
+                (query / 10) % 10,
+                (query / 100) % 10};
         int[] answerDigit = {
                 this.answer % 10,
                 (this.answer / 10) % 10,
