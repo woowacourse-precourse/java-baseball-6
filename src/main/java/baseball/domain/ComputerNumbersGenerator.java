@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ComputerNumbersGenerator {
 
-    public ComputerNumbers generate(NumberGenerator numberGenerator, int digitNumber) {
+    public static ComputerNumbers generate(NumberGenerator numberGenerator, int digitNumber) {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < digitNumber) {
             int generatedNumber = numberGenerator.generate();
