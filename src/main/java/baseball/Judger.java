@@ -45,15 +45,4 @@ public class Judger {
             this.score[2] = 1;
         }
     }
-
-    public boolean checkGameEnd() {
-        if(this.score[0] != 3) return false;
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        return true;
-    }
-
-    public int promptForGameExit() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return 1;
-    }
 }

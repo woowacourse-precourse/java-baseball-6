@@ -41,7 +41,7 @@
 ### OutputView
 - [x] 게임 시작 문구 출력
 - [x] 게임 스코어 출력
-- [ ] 게임 종료/재시작 문구 출력
+- [x] 게임 종료 문구 출력
 
 ## Controller
 ### HumanController

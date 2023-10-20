@@ -18,10 +18,6 @@ public class Application {
 
             judger.compareNumbers(human.getNumbers(), computer.getNumbers());
 
-            if(judger.checkGameEnd()) {
-                endFlag = judger.promptForGameExit();
-            }
-
             if(endFlag == 1) {
                 computer.setNumbers();
                 endFlag = 0;
