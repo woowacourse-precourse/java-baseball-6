@@ -1,5 +1,7 @@
-package baseball.domain;
+package baseball.infra;
 
+import baseball.domain.BaseballNumber;
+import baseball.domain.BaseballNumberGenerator;
 import baseball.infra.ComputerBaseballNumberGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
