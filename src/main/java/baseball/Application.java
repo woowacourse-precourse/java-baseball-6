@@ -19,7 +19,7 @@ public class Application {
 
         do{
             System.out.print("숫자를 입력해주세요 : ");
-            String q = Console.readLine();
+            String userNum = Console.readLine();
         }while(game);
 
     }

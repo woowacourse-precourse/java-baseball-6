@@ -3,7 +3,6 @@ package baseball.distinguishnumber;
 import java.util.List;
 
 public class distinguishNum implements Distinguish{
-    final private int digit = 3;
 
     @Override
     public String distinguish(List<Integer> answer, List<Integer> user){
