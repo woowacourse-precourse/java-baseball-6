@@ -15,6 +15,7 @@ public class BaseballGame {
         while (gameInfo.getStrike() < 3) {
             String userInput = gameController.getUserInput();
             gameService.countStrikeOrBall(gameInfo, userInput);
+            gameController.checkStrikeOrBall(gameInfo.getBall(), gameInfo.getStrike());
         }
     }
 }
