@@ -5,7 +5,7 @@ public class OutputView {
     private static final String INPUT_BALLS_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
     private static final String INPUT_GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
-
+    private static final String LINE = "\n";
     public void gameStartMessage() {
         displayMessage(GAME_START_MESSAGE);
     }
@@ -23,9 +23,8 @@ public class OutputView {
     }
 
     public void resultMessage(String message) {
-        displayMessage(message + "\n");
+        displayMessage(message + LINE);
     }
-
 
     private void displayMessage(String message) {
         System.out.print(message);
