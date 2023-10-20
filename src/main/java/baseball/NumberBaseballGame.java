@@ -24,10 +24,11 @@ public class NumberBaseballGame {
     }
 
     public boolean restartOrStop() {
-        String startOrStop = userInput.getUserInput();
-        userInput.validateContinueSign(startOrStop);
-        return startOrStop.charAt(0) != '2';
+        String sign = userInput.getUserInput();
+        userInput.validateContinueSign(sign);
+        return (sign.charAt(0) != '2');
     }
+
     public void oneRound(List<Integer> answer) {
         boolean threeStrike = false;
         while (!threeStrike) {
