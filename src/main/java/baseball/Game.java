@@ -7,6 +7,7 @@ public class Game {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
     private InputValue inputValue = new InputValue();
+    private OutputValue outputValue = new OutputValue();
     private List<Integer> computerNumber;
     private List<Integer> userNumber;
 
@@ -34,7 +35,8 @@ public class Game {
             resetScore();
             calculateScore();
 
-            return;
+            outputValue.resultMessage(strike, ball);
+
         }
     }
 
@@ -50,14 +52,15 @@ public class Game {
     private void calculateScore() {
         for(int i = 0; i < 3; i++) {
             int selectNumber = userNumber.get(i);
-            if(computerNumber.get(i) == selectNumber){
+            if(computerNumber.get(i) == selectNumber) {
                 strike++;
                 continue;
             }
 
-            if(computerNumber.contains(selectNumber)){
+            if(computerNumber.contains(selectNumber)) {
                 ball++;
             }
         }
     }
+
 }
