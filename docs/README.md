@@ -36,16 +36,16 @@ ___
 - [x] 추출 한 3개의 수를 컴퓨터에게 할당
 - [x] "숫자를 입력해주세요 : " 라는 문구를 출력
 - [x] 줄 바꿈 없이 플레이어로부터 숫자 3개 입력
-    - [ ] 예외) 입력받은 숫자의 개수가 3보다 많거나 적은 경우 IllegalArgumentException 발생
-    - [ ] 예외) 입력 값에 숫자가 아닌 값이 포함되어 있는 경우 IllegalArgumentException 발생
-    - [ ] 예외) 입력 값에 중복된 숫자가 들어올 경우 IllegalArgumentException 발생
+    - [x] 예외) 입력받은 숫자의 개수가 3보다 많거나 적은 경우 IllegalArgumentException 발생
+    - [x] 예외) 입력 값에 숫자가 아닌 값이 포함되어 있는 경우 IllegalArgumentException 발생
+    - [x] 예외) 입력 값에 중복된 숫자가 들어올 경우 IllegalArgumentException 발생
 - [x] 입력받은 숫자와 컴퓨터에게 할당된 숫자를 비교하고 상황에 맞게 결과를 출력
     - [x] 입력받은 수와 컴퓨터에게 할당된 숫자의 위치와 숫자가 동일 : STRIKE
     - [x] 입력받은 수와 컴퓨터에게 할당된 숫자의 위치는 다르지만 숫자가 동일 : BALL
     - [x] 입력받은 수와 컴퓨터에게 할당된 숫자의 위치와 숫자가 모두 다를 경우 : NOTHING
 - [ ] 위의 세 가지 기능이 3개의 숫자를 다 맞추기 전까지 반복되도록 설계
-- [ ] 3개의 숫자를 모두 맞췄을 경우 "3개의 숫자를 모두 맞히셨습니다! 게임 종료 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 라는 문구를 출력
-- [ ] 1번을 눌렀을 때 게임 재시작, 2번을 눌렀을 때는 게임 종료
-    - [ ] 예외) 1번 2번 이외의 숫자가 입력될 경우 IllegalArgumentException 발생
-    - [ ] 예외) 입력된 값의 길이가 1을 넘길 경우 IllegalArgumentException 발생
-    - [ ] 예외) 입력된 값이 숫자가 아닐 경우 IllegalArgumentException 발생
+- [x] 3개의 숫자를 모두 맞췄을 경우 "3개의 숫자를 모두 맞히셨습니다! 게임 종료 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 라는 문구를 출력
+- [x] 1번을 눌렀을 때 게임 재시작, 2번을 눌렀을 때는 게임 종료
+    - [x] 예외) 1번 2번 이외의 숫자가 입력될 경우 IllegalArgumentException 발생
+    - [x] 예외) 입력된 값의 길이가 1을 넘길 경우 IllegalArgumentException 발생
+    - [x] 예외) 입력된 값이 숫자가 아닐 경우 IllegalArgumentException 발생
