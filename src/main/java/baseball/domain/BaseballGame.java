@@ -23,13 +23,13 @@ public class BaseballGame {
         PlayResult playResult = computerBalls.play(userBalls);
 
         if (playResult.isThreeStrike()) {
-            gameState = GameState.END;
+            gameState = gameState.end();
         }
         return playResult;
     }
 
     public boolean isGameEnd() {
-        return gameState == GameState.END;
+        return gameState.isEnd();
     }
 
     public void restart() {
