@@ -11,15 +11,14 @@ public class User {
         return readLine();
     }
 
-    public List<Integer> getNumbers() {
-        String userInput = getUserInput();
+    public List<Integer> getNumbers(String userInput) {
         List<Integer> numbers = new ArrayList<>();
         for(char c : userInput.toCharArray())
             numbers.add(Character.getNumericValue(c));
         return numbers;
     }
 
-    public Integer getRestartChoice(){
+    public Integer getRestartChoice(String userInput){
         return Integer.parseInt(getUserInput());
     }
 }
