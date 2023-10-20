@@ -32,6 +32,9 @@ public class BaseballGame {
         if (result.getStrikeCount() > 0) {
             toString += result.getStrikeCount() + "스트라이크";
         }
+        if (result.getBallCount() == 0 && result.getStrikeCount() == 0) {
+            toString += "낫싱";
+        }
         System.out.println(toString);
     }
 
