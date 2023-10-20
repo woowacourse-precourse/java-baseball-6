@@ -19,7 +19,7 @@ public class Player {
         strikeCount = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (answerNumbers.get(i) == guessNumbers.get(i)) {
+            if (answerNumbers.get(i).equals(guessNumbers.get(i))) {
                 strikeCount++;
             }
         }
@@ -33,6 +33,22 @@ public class Player {
         }
 
         ballCount -= strikeCount;
+    }
+
+    private void validateGuessNumbers(List<Integer> guessNumbers) {
+        if (guessNumbers.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        if (guessNumbers.contains(0)) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < guessNumbers.size() - 2; i++) {
+            if (guessNumbers.get(i).equals(guessNumbers.get(i + 1))) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     public boolean isEqualToAnswerNumbers() {
