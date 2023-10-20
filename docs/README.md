@@ -16,6 +16,7 @@
     - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
     - 숫자가 아닌 경우 : `IllegalArgumentException` 발생 후 애플리케이션 종료
     - 세 자리 수가 아닌 경우 : `IllegalArgumentException` 발생 후 애플리케이션 종료
+    - 1이상 9이하의 숫자로만 이루어지지 않은 경우 : `IllegalArgumentException` 발생 후 애플리케이션 종료
     - 서로 다른 수가 아닌 경우 : `IllegalArgumentException` 발생 후 애플리케이션 종료
 - 각 자리 수를 나누어 리스트에 저장
 
