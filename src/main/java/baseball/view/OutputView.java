@@ -4,7 +4,9 @@ import baseball.utils.Message;
 
 import static baseball.utils.Message.*;
 
-public class OutputView {
+public abstract class OutputView {
+
+    private OutputView() {}
 
     public static void printGameStartView() {
         System.out.println(START_GAME_MESSAGE.getMessage());
