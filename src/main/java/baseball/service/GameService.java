@@ -18,4 +18,8 @@ public class GameService {
     public GameResult getResult(String inputNumbers) {
         return baseballGame.compare(inputNumbers);
     }
+
+    public void restart() {
+
+    }
 }

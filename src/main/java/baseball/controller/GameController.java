@@ -27,6 +27,14 @@ public class GameController {
         outputView.gameSuccess();
         String option = inputView.endOrRestartInput();
         Validator.isValidGameOption(option);
+        if (isRestart(option)) {
+            gameService.restart();
+            run();
+        }
+    }
+
+    private boolean isRestart(String option) {
+        return option.equals("1");
     }
 
 
