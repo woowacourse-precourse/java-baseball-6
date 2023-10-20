@@ -33,15 +33,22 @@ public class GameController {
     }
 
     private void playingGame() {
-        BaseBallGame game = initBaseBallGame();
+        do {
+            BaseBallGame game = initBaseBallGame();
+            playSingleGameUntilEnd(game);
+        } while (isRestartGame());
+    }
+
+    private void playSingleGameUntilEnd(BaseBallGame game) {
         while (game.isNotEnd()) {
             BaseBallNumbers playerNumbers = scanPlayerBaseBallNumbers();
             printGameResult(game, playerNumbers);
         }
-        GameRestartStatus gameRestartStatus = scanGameReStartStatus();
-        if (gameRestartStatus.isRestart()) {
-            playingGame();
-        }
+    }
+
+    private BaseBallNumbers scanPlayerBaseBallNumbers() {
+        PlayerNumberDto playerNumberDto = inputView.scanPlayerNumbers();
+        return BaseBallNumbers.generateNumbers(playerNumberDto.getPlayerNumbers());
     }
 
     private void printGameResult(BaseBallGame game, BaseBallNumbers playerNumbers) {
@@ -54,9 +61,9 @@ public class GameController {
         return BaseBallGame.init(computerNumbers);
     }
 
-    private BaseBallNumbers scanPlayerBaseBallNumbers() {
-        PlayerNumberDto playerNumberDto = inputView.scanPlayerNumbers();
-        return BaseBallNumbers.generateNumbers(playerNumberDto.getPlayerNumbers());
+    private boolean isRestartGame() {
+        GameRestartStatus gameRestartStatus = scanGameReStartStatus();
+        return gameRestartStatus.isRestart();
     }
 
     private GameRestartStatus scanGameReStartStatus() {

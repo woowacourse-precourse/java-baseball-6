@@ -5,7 +5,6 @@ import baseball.domain.BaseBallGameResult;
 public class GameResultDto {
 
     private final int strikeCount;
-
     private final int ballCount;
 
     public GameResultDto(BaseBallGameResult baseBallGameResult) {

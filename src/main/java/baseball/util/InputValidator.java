@@ -22,8 +22,7 @@ public final class InputValidator {
     }
 
     /**
-     * 공백 및 빈 문자열 체크
-     * 주로 사용자 입력으로 부터의 검증이기에 빈문자열 혹은 공백 위주로 검증
+     * 공백 및 빈 문자열 체크 주로 사용자 입력으로 부터의 검증이기에 빈문자열 혹은 공백 위주로 검증
      */
     private static boolean isBlank(String input) {
         return input.isBlank();

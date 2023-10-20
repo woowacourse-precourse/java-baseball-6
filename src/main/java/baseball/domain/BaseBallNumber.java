@@ -36,8 +36,12 @@ public class BaseBallNumber {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         BaseBallNumber that = (BaseBallNumber) o;
         return number == that.number;
     }
