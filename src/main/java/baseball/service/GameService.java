@@ -18,4 +18,8 @@ public class GameService {
         this.computer = new Baseball(numberGenerator.generate());
         this.player = new Baseball();
     }
+
+    public boolean isStrike() {
+        return this.computer.equals(player);
+    }
 }
