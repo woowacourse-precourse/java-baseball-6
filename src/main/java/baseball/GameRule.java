@@ -3,9 +3,7 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-import baseball.Application;
-
-public class Rule {
+public class GameRule {
     public static int countBallAndStrike(String computeNumber, String userNumber){
 
         char[] computeNumberArray = computeNumber.toCharArray();

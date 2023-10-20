@@ -3,8 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import baseball.Rule;
-
 import java.util.*;
 
 public class Application {
@@ -68,8 +66,8 @@ public class Application {
                 throw new IllegalArgumentException();
             }
 
-            int cntBS = Rule.countBallAndStrike(computeNumber, userNumber);
-            int cntS = Rule.countStrike(computeNumber, userNumber);
+            int cntBS = GameRule.countBallAndStrike(computeNumber, userNumber);
+            int cntS = GameRule.countStrike(computeNumber, userNumber);
             int cntB = cntBS - cntS;
 
             System.out.printf("cntB %d cntS %d".formatted(cntBS, cntS));
@@ -90,7 +88,7 @@ public class Application {
             }
             else {
                 System.out.print("힌트: ");
-                System.out.println(Rule.hintProvider(cntB, cntS));
+                System.out.println(GameRule.hintProvider(cntB, cntS));
             }
         }
         System.out.println("게임이 종료되었습니다.");
