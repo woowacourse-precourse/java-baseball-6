@@ -5,7 +5,6 @@ import baseball.api.request.RequestChecker;
 import java.util.stream.IntStream;
 
 import static baseball.api.constants.MessageConstants.*;
-import static baseball.api.constants.ResponseFormatConstants.*;
 
 
 public class GameStarter {
@@ -27,7 +26,9 @@ public class GameStarter {
             System.out.println(START_MESSAGE);
         }
         while (true){
+            System.out.print(PLAY_MESSAGE);
             respondToUserGuess();
+
             if(isResult()){
                 System.out.println(COMPLETE_MESSAGE);
                 System.out.println(END_MESSAGE);
@@ -37,13 +38,12 @@ public class GameStarter {
     }
 
     private void respondToUserGuess() {
-        System.out.print(PLAY_MESSAGE);
         String input = RequestChecker.gameRequest();
 
         count = new Count();
         IntStream.range(0, length)
                 .forEach(i -> processGuessDigit(input, result, i));
-        hintMessage();
+        Computer.hintMessage(count.getStrikeCount(), count.getBallCount());
     }
 
     private void processGuessDigit(String input, String result, int index){
@@ -58,23 +58,6 @@ public class GameStarter {
                 count.incrementBallCount();
             }
         }
-    }
-    private void hintMessage() {
-        int strikeCount = count.getStrikeCount();
-        int ballCount = count.getBallCount();
-        String message = "";
-
-        if (strikeCount > 0 && ballCount > 0) {
-            message = String.format(BALL_AND_STRIKE_FORMAT, ballCount, strikeCount);
-        } else if (strikeCount > 0) {
-            message = String.format(STRIKE_FORMAT, strikeCount);
-        } else if (ballCount > 0) {
-            message = String.format(BALL_FORMAT, ballCount);
-        } else {
-            message = EMPTY_FORMAT;
-        }
-
-        System.out.println(message);
     }
 
     private Boolean isResult() {

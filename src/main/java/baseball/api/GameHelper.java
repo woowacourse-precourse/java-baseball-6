@@ -3,18 +3,22 @@ package baseball.api;
 import baseball.api.request.RequestChecker;
 
 public class GameHelper {
+
     public GameStarter startGame(){
         return new GameStarter(Computer.getResult(), false, this);
     }
+
     public void retryGame() throws IllegalArgumentException{
         String request = RequestChecker.retryRequest();
         if(isRetryGame(request)){
             reStartGame().run().retryGame();
         }
     }
+
     public GameStarter reStartGame(){
         return new GameStarter(Computer.getResult(), true, this);
     }
+
     private boolean isRetryGame(String playNumber) throws IllegalArgumentException{
         switch (playNumber){
             case "1" -> {return true;}
