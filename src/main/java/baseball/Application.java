@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 
-
 public class Application {
 
     public static void main(String[] args) {
@@ -18,7 +17,6 @@ public class Application {
             }
         }
     }
-
     private static boolean playGame() {
         boolean again = false;
 
@@ -36,7 +34,6 @@ public class Application {
         }
         return again;
     }
-
     private static boolean isAgain() {
         try {
             System.out.println("3개의 숫자 모두 맞히셨습니다! 게임 종료");
@@ -53,7 +50,6 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
-
     private static int[] calculateResult(ArrayList<Integer> responseArray,
             ArrayList<Integer> computer) {
         int[] result = new int[2];
@@ -76,7 +72,6 @@ public class Application {
         return result;
 
     }
-
     private static void printResult(int[] result) {
         if (result[0] > 0 && result[1] > 0) {
             System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
@@ -88,8 +83,6 @@ public class Application {
             System.out.println("낫싱");
         }
     }
-
-
     private static ArrayList<Integer> getUserInput() {
         ArrayList<Integer> userGuess = new ArrayList<>();
         try {
@@ -112,7 +105,6 @@ public class Application {
         }
         return userGuess;
     }
-
     private static ArrayList<Integer> getRandomInt() {
         ArrayList<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
