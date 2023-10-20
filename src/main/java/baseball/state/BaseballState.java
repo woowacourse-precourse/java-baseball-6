@@ -1,6 +1,7 @@
 package baseball.state;
 
 import baseball.util.Assertions;
+import baseball.util.BooleanUtil;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,12 +36,10 @@ public class BaseballState {
         final var otherState = other.get();
         for (int i = 0; i < otherState.size(); i++) {
             final int otherValue = otherState.get(i);
-            if (indexMapping[otherValue] == i) {
-                strike++;
-            }
-            if (indexMapping[otherValue] != i && indexMapping[otherValue] != -1) {
-                ball++;
-            }
+
+            strike += BooleanUtil.booleanToInt(indexMapping[otherValue] == i);
+            ball += BooleanUtil.booleanToInt(indexMapping[otherValue] != i && indexMapping[otherValue] != -1);
+
         }
         return new BaseballResult(ball, strike);
     }

@@ -23,7 +23,7 @@ public class BaseballGame implements Game {
     }
 
     public void beforeLoop() {
-        final List<Integer> randoms = RandomGenerator.generateUniqueRandomListOf(MAX_MATCH);
+        final List<Integer> randoms = RandomGenerator.generateUniqueRandomDigitList(MAX_MATCH);
 
         computer = new BaseballState(randoms);
     }

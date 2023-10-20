@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomGenerator {
-    public static List<Integer> generateUniqueRandomListOf(int size) {
-        Assertions.assertInRange(size, 0, 8);
+    public static List<Integer> generateUniqueRandomDigitList(int size) {
+        Assertions.assertInRange(size, 1, 9);
         final List<Integer> ret = new ArrayList<>();
         while (ret.size() < size) {
-            var rnd = Randoms.pickNumberInRange(1, 9);
-            if (!ret.contains(rnd)) {
-                ret.add(rnd);
-            }
+            final int pick = Randoms.pickNumberInRange(1, 9);
+            CollectionUtil.addIfNotExist(ret, pick);
         }
         return ret;
     }
