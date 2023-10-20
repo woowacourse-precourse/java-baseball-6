@@ -20,7 +20,6 @@ public class Application {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
                 if (!computer.contains(randomNumber)) {
                     computer.add(randomNumber);
-                    System.out.print(randomNumber);
                 }
             }
 
