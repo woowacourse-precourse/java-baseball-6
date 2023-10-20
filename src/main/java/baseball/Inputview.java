@@ -25,4 +25,10 @@ public class Inputview {
         return numberList;
     }
 
+    public static String reStart() {
+        System.out.println("게임을 새로 시작할면 1, 종료하려면 2를 입력하세요.");
+        String inputString = Console.readLine();
+        return inputString;
+    }
+
 }
