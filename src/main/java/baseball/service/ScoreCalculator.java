@@ -2,7 +2,6 @@ package baseball.service;
 
 import baseball.model.GameNumber;
 
-import java.util.Objects;
 import java.util.stream.IntStream;
 
 import static baseball.constant.NumberConstants.NUMBER_SIZE;
@@ -29,7 +28,6 @@ public class ScoreCalculator {
     }
 
     private boolean isBall(GameNumber computer, GameNumber player, int idx) {
-        return computer.contains(player.get(idx))
-                && !Objects.equals(computer.get(idx), player.get(idx));
+        return computer.contains(player.get(idx)) && !isStrike(computer, player, idx);
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Converter {
+
     private Converter() {
     }
 
@@ -14,6 +15,5 @@ public class Converter {
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .collect(Collectors.toList());
-
     }
 }

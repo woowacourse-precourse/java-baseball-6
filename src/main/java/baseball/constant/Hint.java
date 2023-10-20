@@ -1,6 +1,7 @@
 package baseball.constant;
 
 public enum Hint {
+
     STRIKE("스트라이크"),
     BALL("볼"),
     NOT_THING("낫싱"),

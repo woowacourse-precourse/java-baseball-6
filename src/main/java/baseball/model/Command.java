@@ -3,6 +3,7 @@ package baseball.model;
 import java.util.Arrays;
 
 public enum Command {
+
     RESTART("1"),
     QUIT("2");
 

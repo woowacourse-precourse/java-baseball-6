@@ -10,7 +10,6 @@ public class OutputView {
     private static final String RESULT_MESSAGE = "%d개의 숫자를 모두 맞히셨습니다! ";
     private static final String GAME_END_MESSAGE = "게임 종료";
 
-
     public void printStartMessage() {
         System.out.println(START_MESSAGE);
     }

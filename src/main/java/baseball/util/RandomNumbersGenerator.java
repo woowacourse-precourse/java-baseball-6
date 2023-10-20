@@ -17,8 +17,7 @@ public class RandomNumbersGenerator {
     public static List<Integer> generate() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < NUMBER_SIZE.getValue()) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER.getValue(),
-                    MAX_NUMBER.getValue());
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER.getValue(), MAX_NUMBER.getValue());
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
