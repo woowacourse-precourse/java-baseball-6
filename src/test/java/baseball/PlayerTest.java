@@ -9,42 +9,38 @@ public class PlayerTest {
     private static Player player;
 
     @BeforeAll
-    public static void setup(){
-        player = new Player();
-    }
+    public static void setup(){ player = new Player(); }
 
     @Test
-    public void testNullBall(){
+    public void testNullNumber(){
         assertThrows(IllegalArgumentException.class, () -> {
-            player.inputBall(null);
+            player.inputNumbers(null);
         });
     }
 
     @Test
-    public void testLongBall(){
+    public void testLongNumber(){
         assertThrows(IllegalArgumentException.class, () -> {
-            player.inputBall("1234");
+            player.inputNumbers("1234");
         });
     }
 
     @Test
-    public void testZeroBall(){
+    public void testZeroNumber(){
         assertThrows(IllegalArgumentException.class, () -> {
-            player.inputBall("102");
+            player.inputNumbers("102");
         });
     }
 
     @Test
-    public void testDuplicateBall(){
+    public void testDuplicateNumber(){
         assertThrows(IllegalArgumentException.class, () -> {
-            player.inputBall("112");
+            player.inputNumbers("112");
         });
     }
 
     @Test
-    public void testValidBall(){
-        assertEquals("123", player.inputBall("123"));
-    }
+    public void testValidNumber(){ assertEquals("123", player.inputNumbers("123")); }
 
     @Test
     public void testNullFlag(){

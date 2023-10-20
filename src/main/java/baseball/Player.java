@@ -5,16 +5,16 @@ import java.util.Set;
 
 public class Player {
 
-    private static final int BALL_LENGTH = 3;
-    private static final String FOUL_BALL = "0";
+    private static final int NUMBER_LENGTH = 3;
+    private static final String INVALID_NUMBER = "0";
     private static final String RESTART_FLAG = "1";
     private static final String EXIT_FLAG = "2";
 
-    public String inputBall(String input){
-        String balls = getPlayerInput(input);
-        isInputNull(balls);
-        checkBallValidation(balls);
-        return balls;
+    public String inputNumbers(String input){
+        String numbers = getPlayerInput(input);
+        isInputNull(numbers);
+        checkBallValidation(numbers);
+        return numbers;
     }
 
     public boolean conformGameRestart(String input){
@@ -35,18 +35,18 @@ public class Player {
         }
     }
 
-    private void checkBallValidation(String balls){
-        if (balls.length() != BALL_LENGTH || balls.contains(FOUL_BALL) || hasDuplicateBalls(balls)){
+    private void checkBallValidation(String numbers){
+        if (numbers.length() != NUMBER_LENGTH || numbers.contains(INVALID_NUMBER) || hasDuplicateNumber(numbers)){
             throw new IllegalArgumentException();
         }
     }
 
-    private boolean hasDuplicateBalls(String balls) {
-        Set<Character> ballSet = new HashSet<>();
-        for (char ball : balls.toCharArray()) {
-            ballSet.add(ball);
+    private boolean hasDuplicateNumber(String numbers) {
+        Set<Character> numberSet = new HashSet<>();
+        for (char number : numbers.toCharArray()) {
+            numberSet.add(number);
         }
-        return balls.length() != ballSet.size();
+        return numbers.length() != numberSet.size();
     }
 
     private void checkFlagValidation(String flag){
