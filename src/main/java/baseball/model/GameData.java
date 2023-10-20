@@ -8,7 +8,7 @@ public class GameData {
 	private List<Integer> computerNumbers;
 	private int strikeCount;
 	private int ballCount;
-	public void initBaseBall() {
+	public void initCount() {
 		strikeCount = 0;
 		ballCount = 0;
 	}
