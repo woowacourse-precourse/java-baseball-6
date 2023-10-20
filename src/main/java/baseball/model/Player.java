@@ -26,7 +26,7 @@ public class Player {
 
     private void validateSize(List<Integer> player) {
         if (player.size() != PLAYER_NUMBERS_SIZE) {
-            throw new IllegalArgumentException("플레이어는 3개의 숫자만 선택할 수 있습니다.");
+            throw new IllegalArgumentException("플레이어는 2개 미만이나 4개 이상의 숫자를 가질 수 없습니다.");
         }
     }
 
