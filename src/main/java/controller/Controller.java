@@ -7,7 +7,7 @@ import views.InputView;
 import views.OutputView;
 
 public class Controller {
-	privat final Validator validator;
+	private final Validator validator;
 	private final AnswerCreator answerCreator;
 	private final InputView inputView;
 	private final Game game;

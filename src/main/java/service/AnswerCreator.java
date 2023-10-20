@@ -18,7 +18,6 @@ public class AnswerCreator {
 		if (!validator.checkDuplication(answerNumber)) {
 			answerNumber = createAnswer();
 		}
-		System.out.println(answerNumber);
 		return answerNumber;
 	}
 
