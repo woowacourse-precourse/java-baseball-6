@@ -15,7 +15,7 @@ public class Validator {
         this.target = target;
     }
 
-    private void getStrike(List<Integer> numbers) {
+    private void calculateStrike(List<Integer> numbers) {
         int strike = 0;
         for (int i = 0 ; i < NUMBER_SIZE ; i++) {
             if (numbers.get(i) == target.get(i)) {
