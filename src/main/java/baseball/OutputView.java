@@ -17,4 +17,8 @@ public class OutputView {
     public void printClearBaseBallGame(){
         System.out.println(ProgressMessage.CLEAR_BASEBALL_GAME);
     }
+
+    public void printRestartMessage(){
+        System.out.println(ProgressMessage.INPUT_RESTART_MESSAGE);
+    }
 }
