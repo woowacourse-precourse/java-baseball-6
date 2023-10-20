@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -23,10 +24,21 @@ public class Application {
 
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
-                String input = readLine();
-                List<Integer> query = Arrays.stream(input.split(""))
-                        .map(Integer::parseInt)
-                        .toList();
+                List<Integer> query;
+                try {
+                    String input = readLine();
+                    if (input.length() != 3) {
+                        throw new IllegalArgumentException();
+                    }
+                    query = Arrays.stream(input.split(""))
+                            .map(Integer::parseInt)
+                            .toList();
+                    if (new HashSet<>(query).size() != 3) {
+                        throw new IllegalArgumentException();
+                    }
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException();
+                }
 
                 int strike = 0, ball = 0;
                 for (int i = 0; i < 3; i++) {
