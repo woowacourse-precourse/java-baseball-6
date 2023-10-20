@@ -22,4 +22,10 @@ public class Baseball {
             }
         }
     }
+
+    public void checkListLengthThree(List<Integer> input) {
+        if (input.size() != INPUT_LENGTH) {
+            throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION_MSG);
+        }
+    }
 }
