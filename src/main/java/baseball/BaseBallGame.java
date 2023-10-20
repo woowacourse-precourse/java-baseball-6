@@ -8,35 +8,54 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class BaseBallGame {
     private static final int MIN_RANDOM_NUMBER = 1;
     private static final int MAX_RANDOM_NUMBER = 9;
     private static final int RANDOM_NUMBER_LENGTH = 3;
+    private static final String GAME_RESTART_STATE = "1";
+    private static final String GAME_END_STATE = "2";
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String PLAYER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_END_MESSAGE = RANDOM_NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public void gameStart() {
+        boolean progress = true;
+
         printStartMessage();
 
-        while(true) {
+        while(progress) {
             progress();
+
+            progress = isRestart();
         }
     }
 
     private void progress() {
+        boolean isCorrect = false;
         List<Integer> computerNumbers = getRandomNumber();
         List<Integer> playerNumbers;
 
-        boolean isCorrect = false;
         while(!isCorrect) {
             playerNumbers = getPlayerNumber();
             isCorrect = compareNumber(computerNumbers, playerNumbers);
         }
 
         printEndMessage();
+    }
+
+    private boolean isRestart() {
+        String inputState = Console.readLine();
+
+        if(inputState.equals(GAME_RESTART_STATE)){
+            return true;
+        }
+
+        if (inputState.equals(GAME_END_STATE)) {
+            return false;
+        }
+
+        throw new IllegalArgumentException();
     }
 
     private void printEndMessage() {
