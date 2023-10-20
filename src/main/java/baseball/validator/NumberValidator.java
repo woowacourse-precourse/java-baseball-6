@@ -1,4 +1,4 @@
-package baseball.computer.validator;
+package baseball.validator;
 
 public class NumberValidator {
 
@@ -14,5 +14,12 @@ public class NumberValidator {
             throw new IllegalArgumentException("숫자는 " + MIN_VALUE + "에서 " + MAX_VALUE + "까지여야 합니다.");
         }
     }
+
+    /**
+     * (예외 처리) 1부터 9까지 숫자로 구성 (0 불가능)
+     * (예외 처리) 입력 값은 3자리의 숫자 (양의 정수)
+     * (예외 처리) 0 이하의 정수 불가능 (양의 정수니)
+     * (예외 처리) 각 숫자는 중복 불가능 (겹칠 수 없음)
+     */
 
 }

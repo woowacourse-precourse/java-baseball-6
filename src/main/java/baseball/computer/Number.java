@@ -1,6 +1,6 @@
 package baseball.computer;
 
-import static baseball.computer.validator.NumberValidator.validateNaturalNumber;
+import static baseball.validator.NumberValidator.validateNaturalNumber;
 
 public class Number {
 
