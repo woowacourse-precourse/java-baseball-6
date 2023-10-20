@@ -53,9 +53,11 @@ public class Application {
 			// 올바르지 않은 입력 예외처리
 			try {
 				int a = Integer.parseInt(userInput); // 숫자로 변환해보기
-				if (userInput.length() != 3) // 3자리가 아닌 경우
+				if (userInput.length() != 3) { // 3자리가 아닌 경우
 					throw new IllegalArgumentException("잘못된 사용자 입력입니다.");
+				}
 			} catch (IllegalArgumentException e) {
+				System.out.println("잘못된 사용자 입력입니다.");
 				throw new IllegalArgumentException("잘못된 사용자 입력입니다.");
 			}
 
