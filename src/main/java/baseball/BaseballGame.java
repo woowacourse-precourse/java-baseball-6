@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class BaseballGame {
+
 	private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 	private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 	private static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -18,6 +19,7 @@ public class BaseballGame {
 
 	public BaseballGame() {
 	}
+
 	public void run() {
 		System.out.println(START_MESSAGE);
 		computer.setRandomNumber();
@@ -75,14 +77,14 @@ public class BaseballGame {
 	}
 
 	private int calculateStrikes(List<Integer> computerNumber, List<Integer> playerNumber) {
-		int strikes = 0;
+		int strike = 0;
 
 		for (int i = 0; i < computerNumber.size(); i++) {
 			if (computerNumber.get(i).equals(playerNumber.get(i))) {
-				strikes++;
+				strike++;
 			}
 		}
 
-		return strikes;
+		return strike;
 	}
 }
