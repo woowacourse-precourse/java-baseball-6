@@ -20,15 +20,19 @@ public class Referee {
         computer.generateComputerRandomNumber();
 
         do {
-            Message.printIntegerInputFromUserMessage();
-            score.clearStrikeAndBall();
-            player.inputPlayerNumber();
-            score.setStrikeAndBall(player.getPlayerBaseballNumber(), computer.getComputerBaseballNumber());
-            Message.printHintMessage(score);
+            baseballFlow();
         } while (!BaseballRules.isThreeStrike(player.getPlayerBaseballNumber(), computer.getComputerBaseballNumber()));
 
         Message.printThreeStrikeMessage();
         continueOrFinish();
+    }
+
+    private void baseballFlow() {
+        Message.printIntegerInputFromUserMessage();
+        score.clearStrikeAndBall();
+        player.inputPlayerNumber();
+        score.setStrikeAndBall(player.getPlayerBaseballNumber(), computer.getComputerBaseballNumber());
+        Message.printHintMessage(score);
     }
 
     private void continueOrFinish() {
