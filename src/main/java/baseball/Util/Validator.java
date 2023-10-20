@@ -11,7 +11,7 @@ public class Validator {
     public static final String NULL_OR_EMPTY_MESSAGE = "값을 입력해주세요";
     public static final String NOT_THREE_DIGIT_NUMBER_MESSAGE = "세자리 숫자를 입력해주세요";
     public static final String NOT_UNIQUE_NUMBER_MESSAGE = "중복된 숫자가 있습니다.";
-    
+
     public static void isNullOrEmpty(String input) {
         if (input == null || input.equals(EMPTY)) {
             throw new IllegalArgumentException(NULL_OR_EMPTY_MESSAGE);
