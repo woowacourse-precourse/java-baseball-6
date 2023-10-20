@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
     public List<Integer> readNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         String read = Console.readLine().strip();
         validateCount(read);
         validateIsNumeric(read);

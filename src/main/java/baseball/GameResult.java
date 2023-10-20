@@ -40,11 +40,11 @@ public class GameResult {
         }
     }
 
-    private int getBallCount() {
+    public int getBallCount() {
         return ball;
     }
 
-    private int getStrikeCount() {
+    public int getStrikeCount() {
         return strike;
     }
 }
