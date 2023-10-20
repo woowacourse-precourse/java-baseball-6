@@ -7,16 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
-        // 컴퓨터 랜덤 배열
+    public void computerSet() {
         List<Integer> computer = new ArrayList<>();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-
 
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -25,8 +22,10 @@ public class Application {
                 System.out.println(computer);
             }
         }
+    }
 
-        while (true) try {
+    public void game() {
+        while (true) {
             int[] insertNum;
             int j;/*
             System.out.println(computer.size() + "랜덤 컴퓨터 길이");*/
@@ -63,7 +62,7 @@ public class Application {
 
             // i는 컴퓨터랜덤값만큼 (3번) 돈다 -> 게임의 목적이 컴퓨터의 랜덤값 3자리를 전부 맞추는거니까 3번만 돎
             // 실질적인 게임 로직 스타트
-            for (int i = 0; i < computer.size(); i++) {
+            for (int i = 0; i < 3; i++) {
                 for (int k = 0; k < insertNum.length; k++) {
                     if (computer.get(i) == insertNum[k] && i == k) {
                         strike++;
@@ -86,7 +85,7 @@ public class Application {
 
 
             } else if (ball != 0 && strike != 0) {
-                System.out.println(ball + "볼 "  + strike + "스트라이크");
+                System.out.println(ball + "볼 " + strike + "스트라이크");
             } else if (ball == 0 && strike != 0) {
                 System.out.println(strike + "스트라이크");
             } else if (ball != 0) {
@@ -94,9 +93,14 @@ public class Application {
             } else {
                 System.out.println("낫싱");
             }
-        } catch (IllegalArgumentException ILAE) {
-            break;
         }
+
+    }
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+
+
     }
 }
 
