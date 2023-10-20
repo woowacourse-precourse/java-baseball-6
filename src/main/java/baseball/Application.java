@@ -80,6 +80,13 @@ public class Application {
         System.out.println(strike_ball[0] + "볼 " + strike_ball[1] + "스트라이크"); // 스트라이크 볼 둘다 있는 경우
     }
 
+    // 정답을 맞췄을 때 재시작의 여부를 묻는 기능
+    public void printGameRestart() {
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
     public static void main(String[] args) {
 
 
