@@ -9,6 +9,28 @@ import java.util.Objects;
 public class Baseball {
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다." );
+        List<Integer> answerNumber = generateNumber();
+        while (true) {
+            List<Integer> userNumber = inputUserNumber();
+            Integer strikeCount = getStrikeCount(answerNumber, userNumber);
+            if (strikeCount == 3) {
+                break;
+            }
+            Integer ballCount = getBallCount(answerNumber, userNumber);
+            if (ballCount == 0 || strikeCount == 0) {
+                System.out.println("낫싱" );
+                continue;
+            }
+            StringBuilder outputString = new StringBuilder();
+            if (ballCount > 0) {
+                outputString.append(ballCount).append("볼 " );
+            }
+            if (strikeCount > 0) {
+                outputString.append(strikeCount).append("스트라이크" );
+            }
+            System.out.println(outputString);
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료" );
     }
 
     public List<Integer> generateNumber() {
