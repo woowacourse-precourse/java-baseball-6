@@ -7,7 +7,7 @@ import java.util.List;
 public class User {
     private List<Integer> userNumbers = new ArrayList<>();
 
-    public List<Integer> enterNumbers(){
+    public List<Integer> enterNumbers(){ // 숫자3개 입력
         userNumbers.clear();
         String console = Console.readLine(); // console => 이름 바꾸기
         for (int i = 0; i < console.length(); i++) {
@@ -15,7 +15,7 @@ public class User {
         }
         return userNumbers;
     }
-    public List<Integer> getUserNumbers() {
+    public List<Integer> getUserNumbers() { // int형 리스트 반환
         return this.userNumbers;
     }
 }
