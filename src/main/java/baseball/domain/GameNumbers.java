@@ -4,6 +4,7 @@ import java.util.List;
 
 public class GameNumbers {
     private static final int LENGTH = 3;
+    private static final String VALID_NUMBER_LENGTH = String.format("^\\d{%d}$", LENGTH);
 
     private List<GameNumber> gameNumbers;
 
@@ -12,19 +13,12 @@ public class GameNumbers {
     }
 
     private void validate(String gameNumbers) {
-        validateIsNegative(gameNumbers);
-        validateLength(gameNumbers);
+        validateNumberLength(gameNumbers);
     }
 
-    private void validateIsNegative(String gameNumbers) {
-        if (Integer.parseInt(gameNumbers) < 0) {
-            throw new IllegalArgumentException("Error : 게임 숫자는 음수일 수 없습니다.");
-        }
-    }
-
-    private void validateLength(String gameNumbers) {
-        if (gameNumbers.length() != LENGTH) {
-            throw new IllegalArgumentException(String.format("Error : 게임 숫자는 %d 자리 수이어야 합니다.", LENGTH));
+    private void validateNumberLength(String gameNumbers) {
+        if (!gameNumbers.matches(VALID_NUMBER_LENGTH)) {
+            throw new IllegalArgumentException("Error : 게임 숫자는 3개의 수로 이루어져야 합니다.");
         }
     }
 }
