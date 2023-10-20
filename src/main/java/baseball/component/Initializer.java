@@ -16,12 +16,7 @@ public class Initializer {
         return initializer;
     }
 
-    public List<Integer> initGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        return getNewNumbers();
-    }
-
-    private List<Integer> getNewNumbers() {
+    public List<Integer> getNewNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
             int tmp = Randoms.pickNumberInRange(1, 9);
