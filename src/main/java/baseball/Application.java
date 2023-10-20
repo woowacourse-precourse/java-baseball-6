@@ -5,7 +5,6 @@ import baseball.validator.NumberValidator;
 import baseball.view.AskView;
 import baseball.view.EndView;
 import baseball.view.ResultView;
-import baseball.view.ResumeView;
 import baseball.view.StartView;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -32,7 +31,7 @@ public class Application {
 
         if (strike == PLAY_NUMBER_DIGIT) {
             EndView.end(PLAY_NUMBER_DIGIT);
-            ResumeView.resume(RESTART, END);
+            AskView.askResume(RESTART, END);
         }
     }
 }
