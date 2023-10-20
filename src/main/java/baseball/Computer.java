@@ -17,6 +17,23 @@ public class Computer {
             }
         }
     }
+    public void compareNumber(List<Integer> inputNumbers) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++){
+            int oneNum = threeNumbers.get(i);
+            int inputNum = inputNumbers.get(i);
+
+            if (oneNum == inputNum) {
+               strike += 1;
+            } else if (threeNumbers.contains(inputNum)) {
+                ball += 1;
+            }
+        }
+        System.out.println("ball = " + ball);
+        System.out.println("strike = " + strike);
+    }
 
     public String toString() {
         return "Computer{" +
