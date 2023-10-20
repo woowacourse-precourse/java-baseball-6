@@ -20,5 +20,11 @@ public class BaseballController {
     private void start() {
         outputView.printStartGame();
         goalNumber = baseballService.createGoalNumber();
+
+        String inputString = inputView.getInputNumber();
+        if (inputString.length() != 3) {
+            throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
+        }
+        StringConvertUtil.stringToIntList(inputString);
     }
 }
