@@ -14,6 +14,7 @@ public class Baseball {
             List<Integer> userNumber = inputUserNumber();
             Integer strikeCount = getStrikeCount(answerNumber, userNumber);
             if (strikeCount == 3) {
+                System.out.println("3스트라이크" );
                 break;
             }
             Integer ballCount = getBallCount(answerNumber, userNumber);
