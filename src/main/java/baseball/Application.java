@@ -89,7 +89,7 @@ public class Application {
         if (listBS.get(STRIKE) != 0)
             returnString += listBS.get(STRIKE) + "스트라이크";
         if (listBS.get(BALL) == 0 && listBS.get(STRIKE) == 0)
-            returnString = "낫씽";
+            returnString = "낫싱";
         return returnString;
     }
 
