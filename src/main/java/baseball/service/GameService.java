@@ -20,6 +20,6 @@ public class GameService {
     }
 
     public void restart() {
-
+        baseballGame.resetNumbers();
     }
 }

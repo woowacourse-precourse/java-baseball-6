@@ -42,4 +42,9 @@ public class BaseballGame {
     private int toInt(String str) {
         return Integer.parseInt(str);
     }
+
+    public void resetNumbers() {
+        numbers.clear();
+        init();
+    }
 }
