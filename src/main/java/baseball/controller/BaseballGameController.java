@@ -11,8 +11,8 @@ import java.util.StringTokenizer;
 
 public class BaseballGameController {
 
-    BaseballGameService baseballGameService;
-    Boolean RestartFlag=true;
+    private BaseballGameService baseballGameService;
+    private Boolean RestartFlag=true;
 
     public BaseballGameController(){
         OutputView.printGameInitMessage();
@@ -25,7 +25,10 @@ public class BaseballGameController {
 
         do{
             InputView.printInputNumberMessage();
+
             userNumber = InputView.readUserNumberInput();
+
+
             String [] results = baseballGameService.run(userNumber);
 
             if(!results[0].equals("0") && results[1].equals("0")){
