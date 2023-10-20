@@ -24,6 +24,9 @@
         - [x] GameNumber 분리
             - [x] ComputerNumbers
             - [x] UserNumbers
+        - [ ] GuessResult
+            - [ ] GuessResult를 Round로 변경
+            - [ ] RoundResult 추가
     - [x] view
         - [x] InputView
         - [x] OutPutView
