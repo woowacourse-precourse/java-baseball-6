@@ -55,19 +55,23 @@ public class Application {
         System.out.println(ANSWER_MESSAGE);
     }
     public static void printBallStrike(int ballCount, int strikeCount) {
-        if (ballCount == 0 && strikeCount == 0) {
-            System.out.println(NOTHING_MESSAGE);
-            return;
-        }
+        printBallCount(ballCount);
+        printStrikeCount(strikeCount);
+        printNothing(ballCount, strikeCount);
+    }
+    public static void printBallCount(int ballCount) {
         if (ballCount != 0) {
-            System.out.print(ballCount+BALL_MESSAGE);
-            if (strikeCount != 0) {
-                System.out.print(" "+strikeCount+STRIKE_MESSAGE);
-            }
-            System.out.println();
-            return;
+            System.out.print(ballCount+BALL_MESSAGE+" ");
         }
-        System.out.println(strikeCount+STRIKE_MESSAGE);
+    }
+    public static void printStrikeCount(int strikeCount) {
+        if (strikeCount != 0) {
+            System.out.println(strikeCount+STRIKE_MESSAGE);
+        }
+    }
+    public static void printNothing(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0)
+            System.out.println(NOTHING_MESSAGE);
     }
     public static boolean isAnswer(int strikeCount) {
         if (strikeCount == NUMBERS_LENGTH)
