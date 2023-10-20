@@ -40,4 +40,22 @@ class GameServiceTest {
         Assertions.assertThat(0).isEqualTo(gameService.getStrikeCount());
         Assertions.assertThat(0).isEqualTo(gameService.getBallCount());
     }
+
+    @Test
+    void 정수_배열_변환_테스트(){
+        String inputPlayerNumber = "123";
+        int[] output = {1, 2, 3};
+        int[] result = gameService.toIntArray(inputPlayerNumber);
+
+        Assertions.assertThat(output).isEqualTo(result);
+    }
+
+    @Test
+    void 정수_변환_테스트(){
+        char number = '5';
+        int output = 5;
+        int result = gameService.toInt(number);
+
+        Assertions.assertThat(output).isEqualTo(result);
+    }
 }
