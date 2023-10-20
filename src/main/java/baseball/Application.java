@@ -13,18 +13,18 @@ public class Application {
         //random number generation for computer
         List<Integer> computerNumber = generateComputerNumber();
         while(true){ //running game
-            List<Integer> unserGuess = getUserInput();
-            int[] result = checkResult(computerNumber,unserGuess);
+            List<Integer> userGuess = getUserInput();
+            int[] result = checkResult(computerNumber,userGuess);
         }
 
     }
     //check&return the number of strike and ball
-    private static int[] checkResult(List<Integer> computerNumber, List<Integer> unserGuess) {
+    private static int[] checkResult(List<Integer> computerNumber, List<Integer> userGuess) {
         int strike=0, ball=0;
 
         for(int i=0; i<3; i++){
             for(int j=0; j<3; j++){
-                if (computerNumber.get(i).equals(unserGuess.get(i)))//same number exist
+                if (computerNumber.get(i).equals(userGuess.get(i)))//same number exist
                     if(i==j)
                         strike++;
                     else ball++;
