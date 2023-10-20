@@ -19,11 +19,11 @@ public class GameController {
     public void start(){
         createComputerBall();
         output.printGameStart();
-        String number = input.inputUserNumber();
-        gameProcess(number);
+        gameProcess();
     }
 
-    public void gameProcess(String number) {
+    public void gameProcess() {
+        String number = input.inputUserNumber();
         ballException.validation(number);
         createUserBall(number);
     }
