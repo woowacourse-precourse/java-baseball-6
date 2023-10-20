@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -52,5 +54,23 @@ public class BaseballGameService {
         if (inputNumSet.size() != 3) {
             throw new IllegalArgumentException("1부터 9까지의 서로 다른 수로 이루어진 세 자리 숫자만 입력이 가능합니다.");
         }
+    }
+
+    public Result umpire(Number computerNumber, Number playerNumber) {
+        int strike = 0;
+        int ball = 0;
+
+        List<Integer> computerDigitList = computerNumber.getDigitList();
+        List<Integer> playerDigitList = playerNumber.getDigitList();
+
+        for (int i = 0; i < 3; i++) {
+            if (Objects.equals(computerDigitList.get(i), playerDigitList.get(i))) {
+                strike++;
+            } else if (computerDigitList.contains(playerDigitList.get(i))) {
+                ball++;
+            }
+        }
+
+        return new Result(strike, ball);
     }
 }

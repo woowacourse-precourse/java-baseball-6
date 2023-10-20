@@ -12,4 +12,9 @@ public class ConsoleIO {
 
         return Console.readLine();
     }
+
+    public static void printResultMessage(String resultMessage) {
+        System.out.println(resultMessage);
+    }
+
 }

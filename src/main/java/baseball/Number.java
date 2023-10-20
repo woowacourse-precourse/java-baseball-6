@@ -14,4 +14,8 @@ public class Number {
     public Number(String input) {
         digitList = Stream.of(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
+
+    public List<Integer> getDigitList() {
+        return digitList;
+    }
 }
