@@ -2,12 +2,59 @@ package baseball.game;
 
 import static baseball.game.GameMessages.BALL;
 import static baseball.game.GameMessages.BALL_STRIKE;
+import static baseball.game.GameMessages.INPUT_NUMBER;
 import static baseball.game.GameMessages.NOTHING;
 import static baseball.game.GameMessages.STRIKE;
+import static baseball.game.GameMessages.printEndMsg;
+import static baseball.game.GameMessages.printStartMsg;
+import static baseball.game.RandomNumberGenerator.generateRandomNumber;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager {
+
+	private final Balls answer = new Balls(new ArrayList<>());
+	private final Balls user = new Balls(new ArrayList<>());
+	private final UserInput userInput = new UserInput();
+
+	public void start() {
+		printStartMsg();
+
+		boolean gameEnd = true;
+		while (gameEnd) {
+			setAnswerNumbers();
+
+			playGameRound();
+
+			gameEnd = userInput.askToPlayAgain();
+		}
+	}
+
+	private void playGameRound() {
+		boolean isAnswer = false;
+
+		while (!isAnswer) {
+			System.out.print(INPUT_NUMBER.getMessage());
+			setUserNumbers();
+			System.out.println(giveHint(user.getBalls(), answer.getBalls()));
+			isAnswer = isGameEndedWith3Strikes();
+		}
+
+		printEndMsg();
+	}
+
+	private boolean isGameEndedWith3Strikes() {
+		return countStrike(user.getBalls(), answer.getBalls()) == 3;
+	}
+
+	private void setAnswerNumbers() {
+		answer.setBalls(generateRandomNumber());
+	}
+
+	public void setUserNumbers() {
+		user.setBalls(userInput.getNumbers());
+	}
 
 	public String giveHint(List<Integer> player, List<Integer> answer) {
 		int balls = countBall(player, answer);
