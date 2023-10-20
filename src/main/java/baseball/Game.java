@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Optional;
+import java.util.StringJoiner;
 import java.util.stream.IntStream;
 
 public class Game {
@@ -8,6 +10,7 @@ public class Game {
   private static final int NUMBER_LENGTH = 3;
   private static final String STRIKE = "스트라이크";
   private static final String BALL = "볼";
+  private static final String NOTHING = "낫싱";
   private final RandomNumber computer = new RandomNumber();
   private final UserNumber user = new UserNumber();
 
@@ -17,6 +20,7 @@ public class Game {
 
   public void play() {
     int randomNumber = computer.getRandomNumber();
+    System.out.println(randomNumber);
 
     while (true) {
       var input = Console.readLine();
@@ -46,7 +50,37 @@ public class Game {
   }
 
   private String formatResult(int strike, int ball) {
-    return String.format("%d%s %d%s", ball, BALL, strike, STRIKE);
+    if (isNothing(strike, ball)) {
+      return NOTHING;
+    }
+
+    StringJoiner result = new StringJoiner(" ");
+    formatBall(ball).ifPresent(result::add);
+    formatStrike(strike).ifPresent(result::add);
+
+    return result.toString();
+  }
+
+  private boolean isNothing(int strike, int ball) {
+    return isZero(strike) && isZero(ball);
+  }
+
+  private boolean isZero(int number) {
+    return Optional.of(number)
+        .filter(n -> n == 0)
+        .isPresent();
+  }
+
+  private Optional<String> formatBall(int ball) {
+    return Optional.of(ball)
+        .filter(b -> b > 0)
+        .map(b -> b + BALL);
+  }
+
+  private Optional<String> formatStrike(int strike) {
+    return Optional.of(strike)
+        .filter(s -> s > 0)
+        .map(s -> s + STRIKE);
   }
 
   public int getStrikeCount(String randomNumber, String userNumber) {
