@@ -5,20 +5,17 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Baseball {
-    private Integer hundreds;
-    private Integer tens;
-    private Integer ones;
+    private List<Integer> digits;
 
     public Baseball(Integer inputNumber) {
-        hundreds = inputNumber / 100;
-        tens = (inputNumber / 10) % 10;
-        ones = inputNumber % 10;
+        digits = new ArrayList<>(3);
+        digits.set(0, inputNumber / 100);
+        digits.set(1, (inputNumber / 10) % 10);
+        digits.set(2, inputNumber % 10);
     }
 
-    private Baseball(Integer hundreds, Integer tens, Integer ones) {
-        this.hundreds = hundreds;
-        this.tens = tens;
-        this.ones = ones;
+    private Baseball(List<Integer> computer) {
+        digits = new ArrayList<>(computer);
     }
 
     public static Baseball createAnswer() {
@@ -29,18 +26,10 @@ public class Baseball {
                 computer.add(randomNumber);
             }
         }
-        return new Baseball(computer.get(0), computer.get(1), computer.get(2));
+        return new Baseball(computer);
     }
 
-    public Integer getHundreds() {
-        return hundreds;
-    }
-
-    public Integer getTens() {
-        return tens;
-    }
-
-    public Integer getOnes() {
-        return ones;
+    public List<Integer> getDigits() {
+        return digits;
     }
 }

@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import java.util.List;
+import java.util.Objects;
+
 import static baseball.domain.Baseball.createAnswer;
 import static baseball.validator.InputValidator.validateGuess;
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -18,48 +21,27 @@ public class Game {
     }
 
     public Result compareWithAnswer(Baseball guess) {
-        Integer ballCount = countBall(guess, answer);
-        Integer strikeCount = countStrike(guess, answer);
+        Integer ballCount = 0;
+        Integer strikeCount = 0;
+        List<Integer> guessDigits = guess.getDigits();
+        List<Integer> answerDigits = answer.getDigits();
+
+        for (int index = 0; index < 3; index++) {
+            if (isStrike(guessDigits, answerDigits, index)) {
+                strikeCount++;
+            }
+            if (isBall(guessDigits, answerDigits, index)) {
+                ballCount++;
+            }
+        }
         return new Result(ballCount, strikeCount);
     }
 
-    private Integer countBall(Baseball guess, Baseball answer) {
-        Integer count = 0;
-        Integer guessHundreds = guess.getHundreds();
-        Integer answerHundreds = answer.getHundreds();
-        Integer guessTens = guess.getTens();
-        Integer answerTens = answer.getTens();
-        Integer guessOnes = guess.getOnes();
-        Integer answerOnes = answer.getOnes();
-        if (guessHundreds.equals(answerTens) || guessHundreds.equals(answerOnes)) {
-            count++;
-        }
-        if (guessTens.equals(answerHundreds) || guessTens.equals(answerOnes)) {
-            count++;
-        }
-        if (guessOnes.equals(answerHundreds) || guessOnes.equals(answerTens)) {
-            count++;
-        }
-        return count;
+    private boolean isStrike(List<Integer> guessDigits, List<Integer> answerDigits, int index) {
+        return Objects.equals(guessDigits.get(index), answerDigits.get(index));
     }
 
-    private Integer countStrike(Baseball guess, Baseball answer) {
-        Integer count = 0;
-        Integer guessHundreds = guess.getHundreds();
-        Integer answerHundreds = answer.getHundreds();
-        Integer guessTens = guess.getTens();
-        Integer answerTens = answer.getTens();
-        Integer guessOnes = guess.getOnes();
-        Integer answerOnes = answer.getOnes();
-        if (guessHundreds.equals(answerHundreds)) {
-            count++;
-        }
-        if (guessTens.equals(answerTens)) {
-            count++;
-        }
-        if (guessOnes.equals(answerOnes)) {
-            count++;
-        }
-        return count;
+    private boolean isBall(List<Integer> guessDigits, List<Integer> answerDigits, int index) {
+        return answerDigits.contains(guessDigits.get(index)) && !isStrike(guessDigits, answerDigits, index);
     }
 }
