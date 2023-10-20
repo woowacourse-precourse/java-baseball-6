@@ -7,10 +7,10 @@
     - [x] 1 ~ 9까지 서로 다른 숫자로 이루어져 있다.
 
 
-- [ ] ResultType : 결과 타입을 가진다.
-    - [ ] STRIKE를 가진다.
-    - [ ] BALL을 가진다.
-    - [ ] NOTHING을 가진다.
+- [x] ResultType : 결과 타입을 가진다.
+    - [x] STRIKE를 가진다.
+    - [x] BALL을 가진다.
+    - [x] NOTHING을 가진다.
 
 
 - [ ] Referee: 사용자가 입력한 답을 판독한다.
