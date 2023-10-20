@@ -9,34 +9,6 @@ public class Application {
     public static final int validLength = 3;
     private static final boolean playingGame = true;
 
-    public static boolean isAllDigit(String str){
-        // 모두 숫자인지 확인
-        for (char c : str.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                return false;
-            }
-        }
-        return true;
-    }
-    public static boolean isValidLength(String str){
-        return str.length() == validLength;
-    }
-    public static boolean isValidNumber(String str) {
-        // 1~9로 이루어졌는지 확인
-        if(!str.matches("^[1-9]{3}$")){
-            return false;
-        }
-        // 중복된 숫자 있는지 확인
-        Set<Character> set = new HashSet<>();
-        for (char ch : str.toCharArray()) {
-            if (set.contains(ch)) {
-                return false;
-            }
-            set.add(ch);
-        }
-        return true;
-    }
-
     public static void main(String[] args){
         // Randoms.pickNumberInRange(시작, 끝) - 시작 이상, 끝 이하
         // int computeNumber = Randoms.pickNumberInRange(111, 999) -> "게임종료_후_재시작" 에러 발생
@@ -49,8 +21,14 @@ public class Application {
             String userNumber = Console.readLine();
 //            System.out.print(userNumber);
 
-            if(!isAllDigit(userNumber) || !isValidLength(userNumber) || !isValidNumber(userNumber)){
-                throw new IllegalArgumentException();
+            if(!ExceptionHandler.isAllDigit(userNumber)){
+                throw new IllegalArgumentException("숫자가 아닌 입력이 들어왔습니다.");
+            }
+            if(!ExceptionHandler.isValidLength(userNumber)){
+                throw new IllegalArgumentException("3자리를 초과한 숫자가 입력으로 들어왔습니다.");
+            }
+            if(!ExceptionHandler.isValidNumber(userNumber)){
+                throw new IllegalArgumentException("0이 포함되거나 중복된 숫자가 입력으로 들어왔습니다.");
             }
 
             int cntBS = GameRule.countBallAndStrike(computeNumber, userNumber);
