@@ -14,6 +14,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다");
 
         GameStart();
+
     }
 
     public static void GameStart() {
@@ -50,7 +51,16 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
 
         while(computer.size()<3) {
-            computer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+            try{
+                int randomNumber = Randoms.pickNumberInRange(9, 1);
+
+                if(!computer.contains(randomNumber)) {
+                    computer.add(randomNumber);
+                }
+            } catch(IllegalArgumentException e) {
+                throw new IllegalArgumentException();
+            }
+
         }
         return computer;
     }
