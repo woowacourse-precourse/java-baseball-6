@@ -6,28 +6,13 @@ import java.util.List;
 
 public class Balls {
     private static final String INVALID_DIGIT_NUMBER_MESSAGE = "세 자리 숫자를 입력해주세요";
-    private static final String SEPARATOR = "";
     public static final int BALLS_SIZE = 3;
 
     private final List<Ball> balls;
 
-    public Balls(int treeDigitNumber) {
-        List<Integer> numbers = toList(treeDigitNumber);
-        validate(numbers);
-        balls = toBalls(numbers);
-    }
-
     public Balls(List<Integer> numbers) {
         validate(numbers);
         balls = toBalls(numbers);
-    }
-
-    private List<Integer> toList(int arg) {
-        List<Integer> list = new ArrayList<>();
-        for (String number : String.valueOf(arg).split(SEPARATOR)) {
-            list.add(Integer.parseInt(number));
-        }
-        return list;
     }
 
     private void validate(List<Integer> numbers) {

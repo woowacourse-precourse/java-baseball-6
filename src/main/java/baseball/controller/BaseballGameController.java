@@ -4,6 +4,7 @@ import baseball.domain.Ball;
 import baseball.domain.Balls;
 import baseball.domain.GameStatus;
 import baseball.domain.GameCommand;
+import baseball.utils.Converter;
 import baseball.utils.NumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -51,7 +52,8 @@ public class BaseballGameController {
 
     private Balls createPlayer() {
         int playerNumber = inputView.readPlayerNumber();
-        return new Balls(playerNumber);
+        List<Integer> numbers = Converter.convertIntToList(playerNumber);
+        return new Balls(numbers);
     }
 
     private GameCommand getGameCommand() {

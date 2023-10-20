@@ -34,6 +34,9 @@
 
 ## Utils
 
+- Converter
+  - [x] int를 List<Integer>로 변환하는 기능
+
 - NumberGenerator
   - [x] 중복되지 않는 랜덤한 숫자를 생성하는 기능
     - 숫자의 범위와 자릿수를 입력받아 랜덤한 숫자를 반환한다.
