@@ -17,7 +17,8 @@ public class Application {
         RestartGame restartGame = new RestartGame();
         GuessNum guessNum = new GuessNum();
 
-        StartGame startGame = new StartGame(generateRandomNum, generateUserNum, restartGame, guessNum);
+        StartGame startGame = new StartGame(generateRandomNum, generateUserNum, restartGame,
+                guessNum);
         startGame.start();
     }
 }

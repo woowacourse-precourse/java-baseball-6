@@ -12,7 +12,8 @@ public class StartGame {
     private RestartGame restartGame;
     private GuessNum guessNum;
 
-    public StartGame(GenerateRandomNum generateRandomNum, GenerateUserNum generateUserNum, RestartGame restartGame, GuessNum guessNum){
+    public StartGame(GenerateRandomNum generateRandomNum, GenerateUserNum generateUserNum,
+            RestartGame restartGame, GuessNum guessNum) {
         this.generateRandomNum = generateRandomNum;
         this.generateUserNum = generateUserNum;
         this.restartGame = restartGame;
@@ -26,7 +27,6 @@ public class StartGame {
         while (startNum) {
 
             List<Integer> generatedNumbers = generateRandomNum.generateNum();
-            System.out.println(generatedNumbers);
 
             String result = "";
 
