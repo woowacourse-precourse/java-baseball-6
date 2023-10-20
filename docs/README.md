@@ -29,3 +29,6 @@
   - 게임 종료 후 재시작 여부 확인 숫자 입력 예외 체크
 - checkAndMakeNumber(String input)
   - 예외 체크 후 재시작 여부 확인 숫자 생성 및 반환
+
+<h2>4. Result</h2>
+- ball, strike 변수를 위한 DTO
