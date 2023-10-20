@@ -40,7 +40,7 @@ public class BallsTest {
     }
 
     @Test
-    @DisplayName("같은 숫자가 존재하지 않으면 낫싱이다.")
+    @DisplayName("비교 결과가 낫싱인지 판별할 수 있다.")
     void doesNotExistsSameNumber_Then_Nothing() {
         Balls player = new Balls(List.of(7, 8, 9));
         Balls computer = new Balls(List.of(4, 2, 5));
@@ -50,7 +50,7 @@ public class BallsTest {
 
     @ParameterizedTest
     @MethodSource("generateComputerNumbers")
-    @DisplayName("같은 숫자가 같은 자리에 존재하면 스트라이크이다.")
+    @DisplayName("비교 결과에서 스트라이크의 개수를 구할 수 있다.")
     void existsSameNumberInSamePosition_Then_Strike(
             final Balls computerNumbers,
             final long numberOfStrikes
@@ -62,7 +62,7 @@ public class BallsTest {
 
     @ParameterizedTest
     @MethodSource("generateComputerNumbers")
-    @DisplayName("같은 숫자가 다른 자리에 존재하면 볼이다.")
+    @DisplayName("비교 결과에서 볼의 개수를 구할 수 있다.")
     void existsSameNumberInSamePosition_Then_Ball(
             final Balls computerNumbers,
             final long numberOfStrikes
