@@ -10,7 +10,7 @@ public class Application {
         Rules rules = new Rules();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        com.getNumbers();
+        com.getIntArray();
 
         while (true) {
             // 사용자 입력
@@ -30,8 +30,8 @@ public class Application {
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
             input = Console.readLine();
             if (input.equals("1")) {
-                com.getClear();
-                com.getNumbers();
+                com.clearList();
+                com.getIntArray();
             }
             if (input.equals("2")) {
                 break;
