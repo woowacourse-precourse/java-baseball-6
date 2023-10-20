@@ -1,10 +1,10 @@
 package baseball.game;
 
-public class CompareResult {
+public class MatchResult {
     private final int ball;
     private final int strike;
 
-    protected CompareResult(int ball, int strike) {
+    protected MatchResult(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
     }

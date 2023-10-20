@@ -1,7 +1,8 @@
 package baseball;
 
-import baseball.game.CompareResult;
-import baseball.game.GoalValue;
+import baseball.game.MatchResult;
+import baseball.game.RuleSet;
+import baseball.game.UniqueNumberString;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -9,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class GoalValueTest {
+public class UniqueNumberStringTest {
     @Test
     void compare_정적메서드_비교시_올바른_결과_반환한다() {
         // given
@@ -18,10 +19,10 @@ public class GoalValueTest {
 
         for (int i = 0; i < cases.length; i++) {
             // when
-            GoalValue goalValue1 = GoalValue.create(cases[i][0]);
-            GoalValue goalValue2 = GoalValue.create(cases[i][1]);
+            UniqueNumberString numberString1 = UniqueNumberString.create(cases[i][0], RuleSet.BASIC);
+            UniqueNumberString numberString2 = UniqueNumberString.create(cases[i][1], RuleSet.BASIC);
 
-            CompareResult result = GoalValue.compare(goalValue1, goalValue2);
+            MatchResult result = UniqueNumberString.match(numberString1, numberString2);
 
             // then
             assertEquals(result.getBall(), answers[i][0],
@@ -43,10 +44,11 @@ public class GoalValueTest {
 
             // then
             if (answers[i]) {
-                assertDoesNotThrow(() -> GoalValue.create(value),
+                assertDoesNotThrow(() -> UniqueNumberString.create(value, RuleSet.BASIC),
                         "올바른 값을 생성하지 못했습니다. : " + cases[i]);
             } else {
-                assertThrows(IllegalArgumentException.class, () -> GoalValue.create(value),
+                assertThrows(IllegalArgumentException.class,
+                        () -> UniqueNumberString.create(value, RuleSet.BASIC),
                         "옳지 않은 값이 생성되었습니다. : " + cases[i]);
             }
         }
@@ -60,10 +62,10 @@ public class GoalValueTest {
 
         for (int i = 0; i < cases.length; i++) {
             // when
-            GoalValue goalValue1 = GoalValue.create(cases[i][0]);
-            GoalValue goalValue2 = GoalValue.create(cases[i][1]);
+            UniqueNumberString numberString1 = UniqueNumberString.create(cases[i][0], RuleSet.BASIC);
+            UniqueNumberString numberString2 = UniqueNumberString.create(cases[i][1], RuleSet.BASIC);
 
-            CompareResult result = GoalValue.compare(goalValue1, goalValue2);
+            MatchResult result = UniqueNumberString.match(numberString1, numberString2);
 
             // then
             assertEquals(result.toString(), answers[i]);
@@ -71,17 +73,19 @@ public class GoalValueTest {
     }
 
     @Test
-    void createRandom_Test(){
+    void createRandom_Test() {
         // given
         int equalCount = 0;
         int equalLimit = 5;
 
         // when
         for (int i = 0; i < 100; i++) {
-            GoalValue value1 = GoalValue.createRandom();
-            GoalValue value2 = GoalValue.createRandom();
+            UniqueNumberString numberString1 = UniqueNumberString.createRandom(RuleSet.BASIC);
+            UniqueNumberString numberString2 = UniqueNumberString.createRandom(RuleSet.BASIC);
 
-            if (value1.equals(value2)) equalCount++;
+            if (numberString1.equals(numberString2)) {
+                equalCount++;
+            }
         }
 
         assertTrue(equalCount < equalLimit);
