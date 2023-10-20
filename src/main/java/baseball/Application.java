@@ -74,9 +74,7 @@ public class Application {
             System.out.println(NOTHING_MESSAGE);
     }
     public static boolean isAnswer(int strikeCount) {
-        if (strikeCount == NUMBERS_LENGTH)
-            return true;
-        return false;
+        return strikeCount == NUMBERS_LENGTH;
     }
     public static int getBallCount(List<Integer> computerNumbersList, List<Integer> userNumbersList) {
         int ballCount = 0;
