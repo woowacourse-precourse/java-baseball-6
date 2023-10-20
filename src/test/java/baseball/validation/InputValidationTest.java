@@ -46,4 +46,19 @@ class InputValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력값은 3 이하여야 합니다.");
     }
+
+    @Test
+    @DisplayName("입력된 문자열의 정수들이 서로 다른지 테스트")
+    void validateUniqueIntegers() {
+        // given
+        InputValidation inputValidation = new InputValidation();
+
+        // when
+        String duplicateIntegers = "777";
+
+        // then
+        assertThatThrownBy(() -> inputValidation.validateUniqueIntegers(duplicateIntegers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력값은 서로 다른 정수여야 합니다.");
+    }
 }
