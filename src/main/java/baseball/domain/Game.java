@@ -1,35 +1,19 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import static baseball.domain.Baseball.createAnswer;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
-    Integer answer;
+    Baseball answer;
 
     public Game() {
         answer = createAnswer();
     }
 
-    protected int createAnswer() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        StringBuilder answerStream = new StringBuilder();
-        computer.forEach(answerStream::append);
-        return Integer.parseInt(answerStream.toString());
-    }
-
     public void start() {
         System.out.println("숫자를 입력해주세요 : ");
         Integer userInput = validate(readLine());
+        Baseball guessNumber = new Baseball(userInput);
     }
 
     private int validate(String input) {
