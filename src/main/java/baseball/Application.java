@@ -20,8 +20,9 @@ public class Application {
         while(!isAnswer) {
             playerNumbers = getValidatedInput();
             isAnswer = playGame(computerNumbers, playerNumbers);
+
+            // [기능 5] 게임 종료 후 플레이어가 게임을 다시 시작하거나 완전히 종료시킬 수 있는 기능 (1: 재시작, 2: 종료)
         }
-        // [기능 5] 게임 종료 후 플레이어가 게임을 다시 시작하거나 완전히 종료시킬 수 있는 기능 (1: 재시작, 2: 종료)
     }
 
     // [기능 2] 플레이어에게 컴퓨터가 생각한 서로 다른 3개의 숫자를 입력받는 기능
@@ -49,7 +50,37 @@ public class Application {
 
     // [기능 3] 컴퓨터가 플레이어가 입력한 숫자에 대한 숫자야구 게임 결과를 출력하는 기능
     private static boolean playGame(String[] computerNumbers, String[] playerNumbers){
-        
-        return false;
+        // ex) CN: 123
+        int ball = 0;
+        int strike = 0;
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(computerNumbers[i].equals(playerNumbers[j])){
+                    if(i == j){
+                        strike++;
+                    }else{
+                        ball++;
+                    }
+                }
+            }
+        }
+        if(ball == 0 && strike == 0){
+            System.out.println("낫싱");
+            return false;
+        }else if(strike == 0) {
+            System.out.println(ball + "볼");
+            return false;
+        }else if(ball == 0){
+            System.out.println(strike + "스트라이크");
+            if(strike == 3){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+            return false;
+        }
     }
 }
