@@ -6,41 +6,42 @@ public class GameManager {
 
     public void run() {
 
-        boolean isWon = doGameAndGetGameResult();
+        doGameAndGetGameResult();
 
-        if (isWon) {
-            if(askReplayGame()){
-                run();
-            }
+        if (askReplayGame()) {
+            run();
         }
 
     }
 
-    private boolean doGameAndGetGameResult() {
+    private void doGameAndGetGameResult() {
 
         printGameStartMessage();
 
-        Game game = new Game();
+        doGame(new Computer());
+    }
+
+    private void doGame(Computer computer) {
 
         while (true) {
-            boolean gameResult = getGameResult(game, userInputReceive());
-            System.out.println();
-            if (gameResult){
-                printPlayerWinMessage();
 
+            int userInput = userInputReceive();
+
+            printGameResult(computer, userInput);
+
+            if (isPlayerWin(computer, userInput)) {
+                printPlayerWinMessage();
                 break;
             }
         }
-
-        return true;
     }
 
-    public boolean askReplayGame(){
+    private boolean askReplayGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         int parsedInt = Utils.parseIntWithTypeCheck(Console.readLine());
 
-        if (parsedInt >= 3 || parsedInt < 1){
+        if (parsedInt >= 3 || parsedInt < 1) {
             throw new IllegalArgumentException();
         }
 
@@ -51,20 +52,23 @@ public class GameManager {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private boolean getGameResult(Game game, int userInput) {
+    private void printGameResult(Computer computer, int userInput) {
 
-        if (game.isNothing(userInput)) {
+        if (computer.isNothing(userInput)) {
             System.out.println("낫싱");
-            return false;
+            return;
         }
 
-        int ballCount = game.getBallCount(userInput);
-        int strikeCount = game.getStrikeCount(userInput);
+        int ballCount = computer.getBallCount(userInput);
+        int strikeCount = computer.getStrikeCount(userInput);
 
         printBallResult(ballCount, strikeCount);
         printStrikeCount(strikeCount);
+        System.out.println();
+    }
 
-        return strikeCount == 3;
+    private boolean isPlayerWin(Computer computer, int userInput) {
+        return computer.isPlayerWin(userInput);
     }
 
     private void printStrikeCount(int strikeCount) {
@@ -96,13 +100,12 @@ public class GameManager {
         int parsedInt = Utils.parseIntWithTypeCheck(rawInput);
 
         if (!(parsedInt >= 100) || !(parsedInt <= 999)) {
-                throw new IllegalArgumentException();
-            }
+            throw new IllegalArgumentException();
+        }
 
 
         return parsedInt;
     }
-
 
 
     private void printInputDemandMessage() {

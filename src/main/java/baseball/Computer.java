@@ -12,7 +12,6 @@ public class Computer {
         while (true) {
 
             generateAnswer();
-            System.out.println("new game 생성 : " + this.firstPositionAnswer + "" + this.secondPositionAnswer + "" + this.thirdPositionAnswer);
 
             boolean isCanUse = isCanUseThisAnswer();
 
