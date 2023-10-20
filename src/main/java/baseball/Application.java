@@ -38,7 +38,6 @@ public class Application {
         } else {
             System.out.println("게임이 종료되었습니다.");
         }
-        return;
     }
 
     public static String Restart() {
@@ -51,15 +50,15 @@ public class Application {
         //컴퓨터가 서로 다른 3개의 숫자 생성
 
 //        computerNumber = new ArrayList<>();
-        String computerNumber = "";
+        StringBuilder computerNumber = new StringBuilder();
         for(int i=0; i<3; i++) {
           String SelectNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
 
-          if(computerNumber.contains(SelectNumber)) {
+          if(computerNumber.toString().contains(SelectNumber)) {
               i--;
               continue;
           }
-            computerNumber += SelectNumber;
+            computerNumber.append(SelectNumber);
 //            computerNumber.add(randomNumber);
         }
 
