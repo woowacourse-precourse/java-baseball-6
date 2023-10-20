@@ -66,7 +66,7 @@ public class Application {
     }
 
     public static void getUserInputNumber(){
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         userNumbers = Console.readLine();
 
         if(!isValidUserNumber(userNumbers)) {
@@ -107,27 +107,27 @@ public class Application {
 
     public static void printResult(boolean isAllCorrect){
         if(isAllCorrect) {
-            System.out.println("3스트라이크\n");
-            System.out.printf("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return;
         }
 
         if(ball.equals(0) && strike.equals(0)) {
-            System.out.printf("낫싱\n");
+            System.out.println("낫싱");
             return;
         }
 
         if(!ball.equals(0) && strike.equals(0)){
-            System.out.println(ball + "볼\n");
+            System.out.println(ball + "볼");
             return;
         }
 
         if(ball.equals(0) && !strike.equals(0)){
-            System.out.println(strike + "스트라이크\n");
+            System.out.println(strike + "스트라이크");
             return;
         }
 
-        System.out.println(ball + "볼 " + strike + "스트라이크\n");
+        System.out.println(ball + "볼 " + strike + "스트라이크");
 
     }
 
