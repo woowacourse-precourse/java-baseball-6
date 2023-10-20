@@ -1,5 +1,7 @@
 package baseball.game;
 
+import static baseball.view.Console.*;
+
 
 public class BaseBallGame implements Game {
 
@@ -10,7 +12,7 @@ public class BaseBallGame implements Game {
 
     @Override
     public void play() {
-
+        printGameStart();
         computer.createRandomNumber();
 
 
