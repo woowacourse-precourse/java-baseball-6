@@ -19,6 +19,8 @@ public class Application {
         }   System.out.println(computer);   //난수확인값
 
         // 입력값 메소드 =======================================================================
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.print("숫자 세자리를 입력하세요 : ");
         String user = Console.readLine(); // 사용자가 입력할 3자리 Console.readLine()
         int[] arr = new int[user.length()];
         for( int i = 0; i < user.length(); i++ ) {
