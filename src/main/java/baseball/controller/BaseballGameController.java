@@ -21,10 +21,9 @@ public class BaseballGameController {
 
     public void gameStart(){
         String userNumber;
+        baseballGameService = new BaseballGameService();
 
         do{
-            baseballGameService = new BaseballGameService();
-
             InputView.printInputNumberMessage();
             userNumber = InputView.readUserNumberInput();
             String [] results = baseballGameService.run(userNumber);
@@ -48,10 +47,15 @@ public class BaseballGameController {
             if(results[1].equals("3")){
                 OutputView.printAnswerMessage();
                 OutputView.printRestartGameMessage();
-                if(InputView.readRestartNumberInput().equals("2")){
+
+                String Input = InputView.readRestartNumberInput();
+
+                if(Input.equals("1")){
+                    baseballGameService = new BaseballGameService();
+                }
+                if(Input.equals("2")){
                     RestartFlag = false;
                 }
-
             }
 
         }while(RestartFlag);
