@@ -1,9 +1,9 @@
 package message;
 
 import static constant.StringConstant.*;
+import static utils.BaseballRules.*;
 
 import score.Score;
-import utils.BaseballRules;
 
 public class Message {
 
@@ -28,16 +28,16 @@ public class Message {
         int strike = score.getStrike();
         int ball = score.getBall();
 
-        if (BaseballRules.hasStrikeAndBall(strike, ball)) {
+        if (hasStrikeAndBall(strike, ball)) {
             System.out.println(ball + BALL + " " + strike + STRIKE);
         }
-        if (BaseballRules.hasStrikeButNoBall(strike, ball)) {
+        if (hasStrikeButNoBall(strike, ball)) {
             System.out.println(strike + STRIKE);
         }
-        if (BaseballRules.hasBallButNoStrike(strike, ball)) {
+        if (hasBallButNoStrike(strike, ball)) {
             System.out.println(ball + BALL);
         }
-        if (BaseballRules.noStrikeAndBall(strike, ball)) {
+        if (noStrikeAndBall(strike, ball)) {
             System.out.println(NOTHING);
         }
     }
