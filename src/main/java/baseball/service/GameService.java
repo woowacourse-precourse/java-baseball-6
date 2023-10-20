@@ -1,17 +1,17 @@
 package baseball.service;
 
-import baseball.domain.GameNumbers;
+import baseball.domain.BaseballGame;
 
 public class GameService {
 
-    private final GameNumbers gameNumbers;
+    private final BaseballGame baseballGame;
 
-    public GameService(GameNumbers gameNumbers) {
-        this.gameNumbers = gameNumbers;
+    public GameService(BaseballGame baseballGame) {
+        this.baseballGame = baseballGame;
     }
 
     public void numbersInit() {
-        gameNumbers.init();
+        baseballGame.init();
     }
 
     public void getResult(String inputNumbers) {

@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameNumbers {
+public class BaseballGame {
 
     private static final int START_RANGE_NUMBER = 1;
     private static final int END_RANGE_NUMBER = 9;
