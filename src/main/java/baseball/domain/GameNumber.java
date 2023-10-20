@@ -26,27 +26,27 @@ public class GameNumber {
 
     private void checkLength(List<Integer> number) {
         if (number.size() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("3자리 숫자를 입력해 주세요.");
         }
     }
 
     private void checkDuplicate(List<Integer> number) {
         Set<Integer> set = new HashSet<>(number);
         if (set.size() != number.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복 되지 않는 숫자를 입력해 주세요.");
         }
     }
 
     private void checkZero(List<Integer> number) {
         if (number.contains(0)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("0은 포함할 수 없습니다.");
         }
     }
 
     private void checkNegative(List<Integer> number) {
         for (Integer i : number) {
             if (i < 0) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("음수는 포함할 수 없습니다.");
             }
         }
     }
