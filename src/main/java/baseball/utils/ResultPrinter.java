@@ -32,7 +32,7 @@ public class ResultPrinter {
             strikeAndBall += String.format("%d볼 ", countOfBall);
         }
         if (countOfStrike != 0) {
-            strikeAndBall += String.format("%d스트라이크 ", countOfStrike);
+            strikeAndBall += String.format("%d스트라이크", countOfStrike);
         }
 
         System.out.println(strikeAndBall);
