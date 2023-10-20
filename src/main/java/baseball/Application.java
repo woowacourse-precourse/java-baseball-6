@@ -21,8 +21,9 @@ public class Application {
             BaseballGame baseballGame = new BaseballGame();
             baseballGame.play();
 
+            // TODO: 인터페이스 경계 분리
             System.out.println(GAME_RESTART_MESSAGE);
-            // TODO : 외부 라이브러리 의존성 제거
+            // TODO: 외부 라이브러리 의존성 제거
             String inputRestart = Console.readLine();
 
             if (!INPUT_RESTARTS.contains(inputRestart)) {

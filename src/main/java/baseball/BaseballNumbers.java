@@ -9,7 +9,7 @@ public class BaseballNumbers {
     List<Integer> baseballNumbers;
 
     public BaseballNumbers() {
-        // TODO : 인터페이스 경계 분리
+        // TODO: 인터페이스 경계 분리
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumbersString = Console.readLine();
 
