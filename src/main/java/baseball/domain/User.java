@@ -27,10 +27,14 @@ public class User {
             if (Character.isDigit(baseballChar) && Character.getNumericValue(baseballChar) != 0)
                 baseballNumbers.add(Character.getNumericValue(baseballChar));
 
-        if (baseballNumbers.size() != 3)
-            throw new IllegalArgumentException();
+        checkBaseballNumberSize(baseballNumbers);
 
         return baseballNumbers;
+    }
+
+    public void checkBaseballNumberSize(ArrayList<Integer> baseballNumbers) {
+        if (baseballNumbers.size() != 3)
+            throw new IllegalArgumentException();
     }
 
     public void validateBaseballNumber(String baseBallNumberStr) {
