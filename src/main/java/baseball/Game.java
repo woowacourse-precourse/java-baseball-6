@@ -1,17 +1,15 @@
 package baseball;
 
 import static baseball.Message.BALL;
-import static baseball.Message.BALL_MSG;
 import static baseball.Message.COUNT;
 import static baseball.Message.END_MSG;
 import static baseball.Message.INPUT_MSG;
 import static baseball.Message.LAST_RANGE;
-import static baseball.Message.NON_MSG;
 import static baseball.Message.NOTHING;
 import static baseball.Message.REGAME_MSG;
+import static baseball.Message.START_MSG;
 import static baseball.Message.START_RANGE;
 import static baseball.Message.STRIKE;
-import static baseball.Message.STRIKE_MSG;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -34,7 +32,7 @@ public class Game {
 
     public static void gameStart() {
         // 시작 메시지 호출
-        System.out.println(Message.START_MSG);
+        PrintMessage.println(START_MSG);
         gameState = true;
 
         while (gameState) {
@@ -62,7 +60,7 @@ public class Game {
             baseballCount(computer, user);
 
             // 결과 메시지 출력
-            outputMessage();
+            PrintMessage.outputMessage(result.get(BALL), result.get(STRIKE));
         }
     }
 
@@ -78,7 +76,7 @@ public class Game {
     }
 
     private static String getUserInput() {
-        System.out.print(INPUT_MSG);
+        PrintMessage.print(INPUT_MSG);
         String inputStr = Console.readLine();
         // 입력값 검증
         // 입력된 값 - 빈값 / 숫자 / 3자리 숫자 / 중복 확인
@@ -113,8 +111,8 @@ public class Game {
 
     private static boolean success() {
         if (result.get(STRIKE) == COUNT) {
-            System.out.println(END_MSG);
-            System.out.print(REGAME_MSG);
+            PrintMessage.println(END_MSG);
+            PrintMessage.print(REGAME_MSG);
             if (!Console.readLine().equals("1")) {
                 gameState = false;
             }
@@ -122,23 +120,4 @@ public class Game {
         }
         return false;
     }
-
-    private static void outputMessage() {
-        StringBuilder sb = new StringBuilder();
-        int ball = result.get(BALL);
-        int strike = result.get(STRIKE);
-        if (ball != 0) {
-            sb.append(ball + BALL_MSG + " ");
-        }
-        if (strike != 0) {
-            sb.append(strike + STRIKE_MSG);
-        }
-
-        if (sb.isEmpty()) {
-            System.out.println(NON_MSG);
-        } else {
-            System.out.println(sb.toString());
-        }
-    }
-
 }
