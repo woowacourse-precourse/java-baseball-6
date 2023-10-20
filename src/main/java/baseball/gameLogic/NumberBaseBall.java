@@ -1,4 +1,4 @@
-package baseball;
+package baseball.gameLogic;
 
 import baseball.gameLogic.*;
 import camp.nextstep.edu.missionutils.Console;
