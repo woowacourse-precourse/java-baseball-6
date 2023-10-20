@@ -19,4 +19,16 @@ class ComputerTest {
         assertThat(result1).isTrue();
         assertThat(result2).isFalse();
     }
+
+    @DisplayName("같은 수가 같은 위치에 있을 경우 참, 다른 위치에 있을 경우 거짓을 반환한다.")
+    @Test
+    void isSameIndex() {
+        Computer computer = new Computer(List.of(1, 2, 3));
+
+        boolean result1 = computer.isSameIndex(1, 0);
+        boolean result2 = computer.isSameIndex(1, 1);
+
+        assertThat(result1).isTrue();
+        assertThat(result2).isFalse();
+    }
 }
