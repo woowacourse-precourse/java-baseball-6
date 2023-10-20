@@ -36,6 +36,19 @@ public class BaseballController {
         ScoreChecker checker = new ScoreChecker();
         checker.checkScore(outputView, calculator);
 
+        checkGameOver(randomNumbers, calculator);
+    }
+
+    private void checkGameOver(List<Integer> randomNumbers, ScoreCalculator calculator) {
+        if (calculator.getStrike() != 3) {
+            playGame(randomNumbers);
+        }
+        restartYn();
+    }
+
+    private void restartYn(){
+        inputView.getGameRestartYn();
+
     }
 
 

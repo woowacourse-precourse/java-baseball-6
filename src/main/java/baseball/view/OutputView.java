@@ -21,6 +21,6 @@ public class OutputView {
         System.out.println();
     }
     public void printGameEnd(){
-        System.out.println(BaseballGameMessage.GAME_END_MESSAGE);
+        System.out.println(BaseballGameMessage.GAME_OVER_MESSAGE);
     }
 }
