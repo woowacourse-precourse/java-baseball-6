@@ -33,6 +33,14 @@ public class BaseballGame {
     }
 
     public void restart() {
+        validateGameState();
+
         initializeData();
+    }
+
+    private void validateGameState() {
+        if (gameState.isPlaying()) {
+            throw new IllegalArgumentException("게임이 종료되지 않은 상태에서 게임을 다시 시작할 수 없습니다.");
+        }
     }
 }

@@ -65,4 +65,14 @@ class BaseballGameTest {
         baseballGame.restart();
         assertThat(baseballGame.isGameEnd()).isFalse();
     }
+
+    @Test
+    @DisplayName("게임이 종료되지 않은 상태에서 게임을 다시 시작하려 하면 예외가 발생한다.")
+    void impossibleToRestart() {
+        assertThat(baseballGame.isGameEnd()).isFalse();
+
+        assertThatThrownBy(() -> baseballGame.restart())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("게임이 종료되지 않은 상태에서 게임을 다시 시작할 수 없습니다.");
+    }
 }

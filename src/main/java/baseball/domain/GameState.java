@@ -10,4 +10,8 @@ public enum GameState {
     public boolean isEnd() {
         return this == END;
     }
+
+    public boolean isPlaying() {
+        return this == PLAYING;
+    }
 }
