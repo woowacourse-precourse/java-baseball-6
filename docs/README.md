@@ -46,3 +46,8 @@
 ### ✔ 숫자 야구 게임 실행 기능
 - 구현 로직에 맞게 숫자 야구 게임을 실행한다
   - **gameStart**
+
+---
+## 클래스 다이어그램
+
+![baseball](https://github.com/study-hub-inu/study-hub-server/assets/97587573/6b29b23d-abb9-45bf-8c58-102781e3d8f4)
