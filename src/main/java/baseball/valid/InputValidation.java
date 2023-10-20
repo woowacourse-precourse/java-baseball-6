@@ -32,4 +32,11 @@ public class InputValidation {
         }
     }
 
+    public static void validateRestartNum(String input){
+        if(!input.equals("1") && !input.equals("2")){
+            throw new IllegalArgumentException();
+        }
+
+    }
+
 }
