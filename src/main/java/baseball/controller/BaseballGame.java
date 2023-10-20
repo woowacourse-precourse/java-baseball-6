@@ -1,22 +1,38 @@
 package baseball.controller;
 
-    import baseball.application.NumberGenerator;
+import baseball.application.NumberGenerator;
 import baseball.domain.GameResult;
 import baseball.domain.Numbers;
 import baseball.view.InputView;
+import baseball.view.ResultView;
 
 public class BaseballGame {
 
     private final NumberGenerator numberGenerator;
 
     public void gameStart() {
-        Numbers numbers = InputView.readUserNumbers();
+        do {
+            Numbers otherNumbers = numberGenerator.generateNumbers();
 
-        Numbers otherNumbers = numberGenerator.generateNumbers();
+            while (true) {
+                Numbers numbers = InputView.readUserNumbers();
 
-        GameResult gameResult = numbers.compareWith(otherNumbers);
+                GameResult gameResult = numbers.compareWith(otherNumbers);
+
+                ResultView.showResult(gameResult);
+
+                if (gameResult.isStrikeOut()) {
+                    break;
+                }
+            }
+        }
+        while (checkRestart());
     }
 
+    private boolean checkRestart() {
+        return InputView.readContinueOrExit();
+    }
+    
     public BaseballGame(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
     }
