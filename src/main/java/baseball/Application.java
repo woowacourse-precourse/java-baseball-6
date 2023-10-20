@@ -6,21 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
     public static void main(String[] args) {
-        // 1. 첫 콘솔 출력을 하는 시작 출력부
-        // 2. 입력을 받는 입력부
-        // 3. 입력을 검증하는 검증부
-        // 4. 3의 결과를 출력해주는 입력검증 출력부
-        // 5. 게임이 종료 되었을 때 출력을 해주는 게임 종료 출력부
-        // 6. 게임을 다시 시작할지 여부를 확인하는 재시작 입력부
+        /*
+        1. 초기 출력을 하는 초기 출력
+        2. 초기화를 진행 하는 초기화부
+            1. 숫자를 초기화한다.
+                * 이 때 서로 다른 3자리의 숫자를 설정한다.
+        2. 기타 변수를 초기화
+        3. 입력을 받는 입력부
+            1. 1~9 사이의 서로 다른 숫자 3개가 오는지 확인을 해준다.
+            2. 아니라면 입력을 다시 받는다.
+        4. 입력을 계산해 주는 계산부
+            1. 올바른 입력을 계산해 주는 결과 계산 메서드
+            2. 계산 결과를 출력해 주는 메서드
+        5. 게임 지속 여부를 확인 하는 사후처리부
+            1. 숫자 1, 2가 오는지 확인해 준다.
+            2. 아니라면 입력을 다시 받는다.
+        6. 게임종료
+        * */
 
-
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
+        // 모두 인터페이스 단위로 분리한다.
     }
 }
