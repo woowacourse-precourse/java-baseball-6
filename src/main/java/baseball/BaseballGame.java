@@ -12,31 +12,9 @@ import static model.BaseballData.*;
 
 
 public class BaseballGame {
-    BaseballNumber baseballNumber = new BaseballNumber();
-    InputView inputView = new InputView();
-    OutputView outputView = new OutputView();
     static List<Integer> computerNumber;
     static List<Integer> myNumber;
     static boolean finish = true;
-
-    public void playBaseballGame() {
-        computerNumber = baseballNumber.makeBaseballNumber();
-        myNumber = new ArrayList<>();
-        outputView.gameStart();
-
-        while (finish) { // 게임이 끝날때까지 반복
-            outputView.gameNumer();
-            myNumber = inputView.inputBaseBall();
-            System.out.println(gameResult());
-        }
-
-        outputView.gameFinish();
-        outputView.restartGame();
-
-        int restart = inputView.inputRetryNumber();
-        gameRestart(restart);
-    }
-
 
     public String gameResult() {
         StringBuilder result = new StringBuilder();
@@ -44,6 +22,7 @@ public class BaseballGame {
         int strike = isStrike();
         if (strike == 3) {
             result.append(strike).append(STRIKE);
+            finish = false;
         } else if (strike ==0&&ball==0){
             result.append(NOTHING);
         } else {
@@ -73,9 +52,7 @@ public class BaseballGame {
         return count;
     }
 
-    public void gameRestart(int restart) {
-        if (restart == RESTART_NUMBER) {
-            playBaseballGame();
-        }
+    public boolean gameRestart(int restart) {
+        return restart == RESTART_NUMBER;
     }
 }

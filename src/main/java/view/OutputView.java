@@ -17,7 +17,7 @@ public class OutputView {
      * 야구 숫자 입력받기
      */
     public void gameNumer() {
-        System.out.println(START_GAME);
+        System.out.print(INPUT_BALL);
     }
 
     /**

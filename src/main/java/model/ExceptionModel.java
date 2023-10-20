@@ -55,7 +55,7 @@ public class ExceptionModel {
      * 숫자를 3개 입력했는지 확인
      */
     private void checkThreeNumber(String input) {
-        if (input.length() != 3) {
+        if (input.split("").length != 3) {
             throw new IllegalArgumentException(THREE_NUMBER);
         }
     }
