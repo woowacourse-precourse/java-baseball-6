@@ -2,9 +2,9 @@ package baseball;
 
 import baseball.Controller.GameController;
 import baseball.Model.BaseBallGame;
+import baseball.Model.NumberGenerator;
 import baseball.View.GameView;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +15,8 @@ public class Application {
     private static List<Integer> COMPUTER_NUM = new ArrayList<>();
 
     public static void main(String[] args) {
-        BaseBallGame baseBallGame = new BaseBallGame();
+        NumberGenerator numberGenerator = new NumberGenerator();
+        BaseBallGame baseBallGame = new BaseBallGame(numberGenerator);
         GameView gameView = new GameView();
         GameController gameController = new GameController(baseBallGame, gameView);
 
