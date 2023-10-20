@@ -1,14 +1,14 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-import com.sun.tools.javac.Main;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Application {
 
+    //랜덤값 생성 및 사용자 입력 받음
     void baseball() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -42,6 +42,7 @@ public class Application {
         }
     }
 
+    //스트라이크, 볼 처리
     boolean ballCount(int strike, int ball) {
         if (strike == 3) {
             System.out.println("3스트라이크");
@@ -55,6 +56,7 @@ public class Application {
         return false;
     }
 
+    //사용자의 잘못된 입력 -> IllegalArgumentException 처리
     void exceptionHandler(String user) {
         if (user.length() != 3) {
             throw new IllegalArgumentException();
