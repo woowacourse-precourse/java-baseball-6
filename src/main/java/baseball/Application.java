@@ -89,6 +89,15 @@ public class Application {
         }
         return Arrays.asList(ballCount, strikeCount);
     }
+    public static int getBallCount(List<Integer> computerNumbersList, List<Integer> userNumbersList) {
+        int ballCount = 0;
+        for (int i = 0; i < userNumbersList.size(); i++) {
+            int userNumber = userNumbersList.get(i);
+            if (userNumber != computerNumbersList.get(i) && computerNumbersList.contains(userNumber))
+                ballCount++;
+        }
+        return ballCount;
+    }
     public static List<Integer> getComputerNumbersList() {
         List<Integer> computerNumbersList = new ArrayList<>();
         while (computerNumbersList.size() < NUMBERS_LENGTH) {
