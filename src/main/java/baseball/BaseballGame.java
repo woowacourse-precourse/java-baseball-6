@@ -8,7 +8,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class BaseballGame {
     private boolean running;
-    private boolean found;
+    private boolean isThreeStrike;
     private List<Integer> randomNumbers = new ArrayList<>();
     private Validator validator = new Validator();
     private Comparator comparator = new Comparator();
@@ -17,7 +17,6 @@ public class BaseballGame {
     private void init() {
         generateRandomNumbers();
         this.running = true;
-        this.found = false;
     }
 
     public BaseballGame() {
@@ -27,17 +26,28 @@ public class BaseballGame {
     public void run() {
         init();
         while (running) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String userInput = readLine();
-            List<Integer> threeDigitNumbers = validator.validateAndParseGuessedNumbers(userInput);
-            found = comparator.compare(randomNumbers, threeDigitNumbers);
-
-            if (found) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                exit();
-            }
+            String userInput = getUserInput();
+            List<Integer> guessedNumbers = validator.validateAndParseGuessedNumbers(userInput);
+            isThreeStrike = comparator.compare(randomNumbers, guessedNumbers);
+            checkThreeStrike();
         }
-        if (found) {
+        askRerunOrExit();
+    }
+
+    private static String getUserInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return readLine();
+    }
+
+    private void checkThreeStrike() {
+        if (isThreeStrike) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            exit();
+        }
+    }
+
+    private void askRerunOrExit() {
+        if (isThreeStrike) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int userInput = Integer.parseInt(readLine());
             if (userInput == 2) return;

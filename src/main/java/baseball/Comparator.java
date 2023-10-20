@@ -14,13 +14,13 @@ public class Comparator {
         this.isStrike = new boolean[digit];
     }
 
-    public boolean compare(List<Integer> generatedNumbers, List<Integer> userInput) {
+    public boolean compare(List<Integer> generatedNumbers, List<Integer> guessedNumbers) {
         int digit = generatedNumbers.size();
         init(digit);
 
         // check strike position
         for (int i = 0; i < digit; i++) {
-            if (generatedNumbers.get(i) == userInput.get(i)) {
+            if (generatedNumbers.get(i) == guessedNumbers.get(i)) {
                 strikeCount++;
                 isStrike[i] = true;
             }
@@ -29,7 +29,7 @@ public class Comparator {
         for (int i = 0; i < digit; i++) {
             for (int j = 0; j < digit; j++) {
                 if (isStrike[i] || isStrike[j]) continue;
-                if (generatedNumbers.get(i) == userInput.get(j)) ballCount++;
+                if (generatedNumbers.get(i) == guessedNumbers.get(j)) ballCount++;
             }
         }
 
