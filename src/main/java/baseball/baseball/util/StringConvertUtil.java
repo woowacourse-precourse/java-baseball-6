@@ -12,10 +12,12 @@ public class StringConvertUtil {
         for (int i = 0; i < length; i++) {
             char digit = inputString.charAt(i);
 
-            if (Character.isDigit(digit)) {
-                int num = Character.getNumericValue(digit);
-                integerList.add(num);
+            if (!Character.isDigit(digit)) {
+                throw new IllegalArgumentException("숫자만 입력 가능합니다.");
             }
+
+            int num = Character.getNumericValue(digit);
+            integerList.add(num);
         }
 
         return integerList;
