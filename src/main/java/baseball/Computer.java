@@ -20,7 +20,11 @@ public class Computer {
         }
     }
 
-    public void getNumbers() {
-        numbers.forEach(System.out::println);
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
+    public int get(int index) {
+        return numbers.get(index);
     }
 }
