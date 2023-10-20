@@ -40,19 +40,16 @@ public class Application {
             printBallStrike(ballCount, strikeCount);
             if (isAnswer(strikeCount)) {
                 printAnswer();
-                printGetRestart();
                 break;
             }
         }
-    }
-    public static void printGetRestart() {
-        System.out.println(GET_RESTART_MESSAGE);
     }
     public static void printStart() {
         System.out.println(START_MESSAGE);
     }
     public static void printAnswer() {
         System.out.println(ANSWER_MESSAGE);
+        System.out.println(GET_RESTART_MESSAGE);
     }
     public static void printBallStrike(int ballCount, int strikeCount) {
         printBallCount(ballCount);
