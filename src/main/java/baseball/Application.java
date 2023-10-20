@@ -7,7 +7,9 @@ import baseball.utill.Utill;
 import baseball.utill.ValidException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     private static final int INPUT_NUM_SIZE = 3;
@@ -100,11 +102,8 @@ public class Application {
      */
     private static void addNumber2InputList(List<Integer> inputList, String numInputOfUser) {
         String[] inputStrArr;
-        inputStrArr = numInputOfUser.split("");
-
-        for (String s : inputStrArr) {
-            int numParseInt = Integer.valueOf(s);
-            inputList.add(numParseInt);
-        }
+        
+        inputStrArr = Utill.getSplitStrArr(numInputOfUser);
+        Utill.makeListFromArr(inputList, inputStrArr);
     }
 }

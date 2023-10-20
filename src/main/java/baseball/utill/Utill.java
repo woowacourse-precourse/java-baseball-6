@@ -1,5 +1,7 @@
 package baseball.utill;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Utill {
@@ -59,6 +61,29 @@ public class Utill {
         int resultInt = Integer.parseInt(inputStr);
 
         return resultInt;
+    }
+
+    /**
+     * 배열을 list로 변환한다.
+     *
+     * @param list
+     * @param array
+     */
+    public static void makeListFromArr(List<Integer> list, String[] array) {
+        for (String s : array) {
+            int numParseInt = Integer.valueOf(s);
+            list.add(numParseInt);
+        }
+    }
+
+    /**
+     * 문자열을 split해서 배열로 반환
+     *
+     * @param numInputOfUser
+     * @return
+     */
+    public static String[] getSplitStrArr(String numInputOfUser) {
+        return numInputOfUser.split("");
     }
 
 }
