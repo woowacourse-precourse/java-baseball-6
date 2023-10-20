@@ -7,6 +7,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         Computer computer = new Computer();
@@ -15,9 +16,12 @@ public class Application {
         try {
             String input = Console.readLine();
             computer.validateInput(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println("e = " + e);
+            System.out.println(computer.getHint(input));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+        Console.close();
 
     }
 

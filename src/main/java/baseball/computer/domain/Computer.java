@@ -41,6 +41,54 @@ public class Computer {
         }
     }
 
+    public String getHint(String input) {
+        List<Integer> inputList = stringToIntegerList(input);
+
+        // find StrikeCount and ballCount
+        Integer strikeCount = 0;
+        Integer ballCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            Integer number = inputList.get(i);
+
+            if (isStrike(number, i)) strikeCount++;
+            else if (isBall(number, i)) ballCount++;
+        }
+
+        return createHint(strikeCount, ballCount);
+    }
 
 
+    private List<Integer> stringToIntegerList(String str) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            list.add(str.charAt(i) - 48);
+        }
+        return list;
+    }
+
+    private Boolean isStrike(Integer number, int index) {
+        return number.equals(randomAnswer.get(index));
+    }
+
+    private Boolean isBall(Integer number, int index) {
+        return randomAnswer.contains(number) && (!number.equals(randomAnswer.get(index)));
+    }
+
+    private String createHint(Integer strikeCount, Integer ballCount) {
+        StringBuilder sb = new StringBuilder();
+
+        if (ballCount != 0) {
+            sb.append(ballCount).append("볼 ");
+        }
+        if (strikeCount != 0) {
+            sb.append(strikeCount).append("스트라이크");
+        }
+
+        if (ballCount == 0 && strikeCount == 0) {
+            sb.append("낫싱");
+        }
+
+        return sb.toString();
+    }
 }
