@@ -9,6 +9,8 @@ public class Application {
     private static Integer[] orderOfNumbers = new Integer[10];
     private static List<Integer> computerNumbers = new ArrayList<>();
     private static String userNumbers;
+    private static Integer strike;
+    private static Integer ball;
     public static void main(String[] args) {
         // 시작
         System.out.println("숫자 야구 게임을 시작합니다.");
