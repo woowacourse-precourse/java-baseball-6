@@ -1,5 +1,6 @@
-package baseball;
+package client;
 
+import baseball.Input;
 import constants.StringConstants;
 import game.Computer;
 
