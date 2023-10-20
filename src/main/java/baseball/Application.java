@@ -17,15 +17,16 @@ public class Application {
         do {
             try{
                 startGame();
-            }catch (IllegalArgumentException e){
                 flag = askReplayOrExit();
+            }catch (IllegalArgumentException e){
+                throw new IllegalArgumentException(e);
             }
         }while(flag.equals("1"));  // 1을 입력하면 게임 새로 시작
     }
 
     private static void startGame() {
         List<String> computerNum = createComputerNumber();
-        String result = null;
+        String result;
         String playerNum;
         do{
             System.out.print("숫자를 입력해주세요 : ");
@@ -35,9 +36,10 @@ public class Application {
                 isThreeDigitNumber(playerNum);
                 hasRepeatedDigitNumber(playerNum);
             }catch (IllegalArgumentException e){
-                return;
+                throw new IllegalArgumentException(e);
             }
             result = matchPlayerNum(computerNum, playerNum);
+            System.out.println(result);
 
         }while (!result.equals("3스트라이크"));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
