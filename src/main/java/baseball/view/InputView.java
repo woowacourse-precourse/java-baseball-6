@@ -4,8 +4,6 @@ import baseball.validation.ValidateDuplicatedNumber;
 import baseball.validation.ValidateNumberFormat;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
-
 public class InputView {
     private static final String NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
