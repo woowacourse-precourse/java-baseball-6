@@ -3,8 +3,11 @@ package baseball.controller;
 import baseball.domain.Numbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class GameControllerTest {
 
@@ -20,5 +23,17 @@ public class GameControllerTest {
 
         //then
         assertThat(numbers.splitNumbers()).isEqualTo(input.split(""));
+    }
+
+    @DisplayName("재시작여부 입력값의 validate 기능")
+    @ParameterizedTest
+    @ValueSource(strings={"11","21","1a","a1","a","4","0"})
+    void 재시작_입력값_validate(String input){
+        //given
+        GameController controller=new GameController();
+
+        //when&then
+        assertThatThrownBy(()->controller.validateOption(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
