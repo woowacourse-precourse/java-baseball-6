@@ -2,6 +2,9 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class ComputerPlayer {
     private Numbers numbers;
     private Judgement judgement;
@@ -10,12 +13,12 @@ public class ComputerPlayer {
     }
 
     public void makeAnswer(int numberOfDigitsInAnswer) {
-        Numbers numbers = new Numbers(numberOfDigitsInAnswer);
-        while (!numbers.isComplete()) {
+        List<Integer> pickedNumbers = new LinkedList<>();
+        while (pickedNumbers.size() < numberOfDigitsInAnswer) {
             int number = Randoms.pickNumberInRange(1, 9);
-            numbers.appendNumber(number);
+            pickedNumbers.add(number);
         }
-        this.numbers = numbers;
+        this.numbers = new Numbers(numberOfDigitsInAnswer, pickedNumbers);
     }
 
     public void judgeUserAnswer(Numbers userAnswer) {
@@ -24,11 +27,11 @@ public class ComputerPlayer {
         this.judgement = new Judgement(numOfBall, numOfStrike);
     }
 
-    public boolean isCorrectAnswer() {
-        return judgement.isCorrectAnswer(numbers.getNumberOfDigitsInAnswer());
+    public boolean isCorrectAnswer(int numberOfDigitsInAnswer) {
+        return judgement.isCorrectAnswer(numberOfDigitsInAnswer);
     }
 
-    public void sayJudgement() {
-        this.judgement.sayBallAndStrike(numbers.getNumberOfDigitsInAnswer());
+    public void sayJudgement(int numberOfDigitsInAnswer) {
+        this.judgement.sayBallAndStrike(numberOfDigitsInAnswer);
     }
 }

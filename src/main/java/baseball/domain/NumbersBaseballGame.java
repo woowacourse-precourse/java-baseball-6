@@ -37,13 +37,13 @@ public class NumbersBaseballGame {
             System.out.print("숫자를 입력해주세요 : ");
             Numbers userAnswer = getNumbers();
             computerPlayer.judgeUserAnswer(userAnswer);
-            computerPlayer.sayJudgement();
-        } while (!isCorrectAnswer());
+            computerPlayer.sayJudgement(numberOfDigitsInAnswer);
+        } while (!isCorrectAnswer(numberOfDigitsInAnswer));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private boolean isCorrectAnswer() {
-        return computerPlayer.isCorrectAnswer();
+    private boolean isCorrectAnswer(int numberOfDigitsInAnswer) {
+        return computerPlayer.isCorrectAnswer(numberOfDigitsInAnswer);
     }
 
     private Numbers getNumbers() {
@@ -53,7 +53,8 @@ public class NumbersBaseballGame {
     }
 
     private Numbers convertFromInputAnswerToNumbers(String inputValue) {
-        return new Numbers(numberOfDigitsInAnswer, Arrays.stream(inputValue.split("")).map(Integer::parseInt).collect(Collectors.toList()));
+        return new Numbers(numberOfDigitsInAnswer,
+                Arrays.stream(inputValue.split("")).map(Integer::parseInt).collect(Collectors.toList()));
     }
 
     private int getContinueFlag() {

@@ -1,45 +1,25 @@
 package baseball.domain;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class Numbers {
-    private final int numberOfDigitsInAnswer;
     private final List<Integer> numbers;
 
-    public Numbers(int numberOfDigitsInAnswer) {
-        this.numberOfDigitsInAnswer = numberOfDigitsInAnswer;
-        this.numbers = new LinkedList<>();
-    }
-
     public Numbers(int numberOfDigitsInAnswer, List<Integer> numbers) {
-        this.numberOfDigitsInAnswer = numberOfDigitsInAnswer;
-        this.numbers = numbers;
-    }
-
-    public boolean isComplete() {
-        return numbers.size() == numberOfDigitsInAnswer;
-    }
-
-    public void appendNumber(int number) {
-        if (numbers.size() < numberOfDigitsInAnswer) {
-            if (!numbers.contains(number)) {
-                numbers.add(number);
-            }
+        if (numbers.size() != numberOfDigitsInAnswer) {
+            throw new IllegalArgumentException("Error: numbers 의 자리수가 올바르지 않습니다.");
         }
-    }
-
-    public int len() {
-        return numbers.size();
-    }
-
-    public int getNumberOfDigitsInAnswer() {
-        return numberOfDigitsInAnswer;
+        this.numbers = numbers;
     }
 
     private int getIndexByNumber(int number) {
         return numbers.indexOf(number);
     }
+
+    private int len() {
+        return numbers.size();
+    }
+
 
     public int calcNumOfBall(Numbers otherNumbers) {
         int numOfBall = 0;
@@ -65,9 +45,10 @@ public class Numbers {
         return numOfStrike;
     }
 
-
     @Override
     public String toString() {
-        return "Numbers{" + "numbers=" + numbers + '}';
+        return "Numbers{" +
+                "numbers=" + numbers +
+                '}';
     }
 }
