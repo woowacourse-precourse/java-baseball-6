@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
@@ -39,7 +41,16 @@ class ApplicationTest extends NsTest {
         int[] real_result = application.stringToIntArray(input_number);
 
         Assertions.assertArrayEquals(expected_result, real_result);
+    }
 
+    @Test
+    void 볼_스트라이크_여부확인_테스트() {
+        int[] input_number = {1, 2, 3};
+        List<Integer> computer_number = List.of(1, 2, 3);
+        int[] expected_strike_ball = {1, 1};
+
+        int[] strike_ball = application.checkStrikeAndBall(input_number, computer_number);
+        org.assertj.core.api.Assertions.assertThat(strike_ball.equals(expected_strike_ball));
     }
 
     @Override
