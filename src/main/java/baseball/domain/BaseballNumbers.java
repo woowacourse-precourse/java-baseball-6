@@ -3,6 +3,7 @@ package baseball.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BaseballNumbers {
@@ -25,6 +26,6 @@ public class BaseballNumbers {
             if (!numbers.contains(num)) numbers.add(num);
         }
 
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
 }
