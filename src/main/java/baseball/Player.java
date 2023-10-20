@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Player {
@@ -14,7 +15,9 @@ public class Player {
     }
 
     public List<Integer> getNumbers() {
-        return new ArrayList<>(numbers);
+        List<Integer> copyList = new ArrayList<>(numbers);
+        copyList = Collections.unmodifiableList(copyList);
+        return copyList;
     }
 
     public void inputNums(){
