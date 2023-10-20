@@ -8,20 +8,21 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class NumberBaseballGame {
+    List<Integer> computerNumber;
+    private static final String INPUT_REGEX = "^[1-9]{3}$";
     private static final int MAX_NUMBER_LENGTH = 3;
-    List<Integer> computer = new ArrayList<>(MAX_NUMBER_LENGTH);
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.\n");
-        boolean isContinue = true;
-        while (isContinue) {
-            computer = generateRandomNumbers();
-            playGame();
-            isContinue = getUserContinueInput();
+        boolean gameContinuation = true;
+        while (gameContinuation) {
+            computerNumber = generateRandomNumbers();
+            runGameLoop();
+            gameContinuation = getContinueInput();
         }
     }
 
-    private void playGame() {
+    private void runGameLoop() {
         boolean userWin = false;
         while (!userWin) {
             List<Integer> user = userNumberInput();
@@ -33,7 +34,7 @@ public class NumberBaseballGame {
     }
 
     private List<Integer> generateRandomNumbers() {
-        List<Integer> generatedNumbers = new ArrayList<>();
+        List<Integer> generatedNumbers = new ArrayList<>(MAX_NUMBER_LENGTH);
         while (generatedNumbers.size() < MAX_NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!generatedNumbers.contains(randomNumber)) {
@@ -47,8 +48,7 @@ public class NumberBaseballGame {
     private List<Integer> userNumberInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
-
-        validateUserInput(inputString);
+        validateInput(inputString);
 
         return inputString.chars()
                 .map(Character::getNumericValue)
@@ -56,10 +56,8 @@ public class NumberBaseballGame {
                 .collect(Collectors.toList());
     }
 
-    // 예외처리 미구현
-    private boolean validateUserInput(String inputString) throws IllegalArgumentException {
-        String userInputRegex = "^[1-9]{3}$";
-        if (!Pattern.matches(userInputRegex, inputString)) {
+    private boolean validateInput(String inputString) throws IllegalArgumentException {
+        if (!Pattern.matches(INPUT_REGEX, inputString)) {
             System.out.println("잘못된 숫자 입력입니다: " + inputString);
             throw new IllegalArgumentException("잘못된 숫자 입력입니다: " + inputString);
         }
@@ -86,7 +84,7 @@ public class NumberBaseballGame {
     private int countBall(List<Integer> user) {
         int ball = 0;
         for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
-            if (computer.contains(user.get(i))) {
+            if (computerNumber.contains(user.get(i))) {
                 ball++;
             }
         }
@@ -96,22 +94,22 @@ public class NumberBaseballGame {
     private int countStrike(List<Integer> user) {
         int strike = 0;
         for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
-            if (computer.get(i).equals(user.get(i))) {
+            if (computerNumber.get(i).equals(user.get(i))) {
                 strike++;
             }
         }
         return strike;
     }
 
-    private boolean getUserContinueInput() {
+    private boolean getContinueInput() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputContinue = Console.readLine();
-        validateUserContinueInput(inputContinue);
+        validateContinueInput(inputContinue);
         return inputContinue.equals("1");
     }
 
-    private void validateUserContinueInput(String inputContinueS) {
-        if (!inputContinueS.equals("1") && !inputContinueS.equals("2")) {
+    private void validateContinueInput(String inputContinue) {
+        if (!inputContinue.equals("1") && !inputContinue.equals("2")) {
             throw new IllegalArgumentException("[ERROR] 1 또는 2 를 입력하세요.");
         }
     }
