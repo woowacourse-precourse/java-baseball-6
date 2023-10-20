@@ -3,6 +3,9 @@ package baseball.model;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static baseball.model.enums.NumberInputErrorMessage.DUPLICATE_NUMBER;
+import static baseball.model.enums.NumberInputErrorMessage.INVALID_CHARACTER;
+import static baseball.model.enums.NumberInputErrorMessage.INVALID_LENGTH;
 
 class NumberInputTest {
 
@@ -26,7 +29,8 @@ class NumberInputTest {
 
         // then
         assertThatThrownBy(() -> new NumberInput(input))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_LENGTH.getMessage());
     }
 
     @Test
@@ -38,7 +42,8 @@ class NumberInputTest {
 
         // then
         assertThatThrownBy(() -> new NumberInput(input))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_CHARACTER.getMessage());
     }
 
     @Test
@@ -50,7 +55,8 @@ class NumberInputTest {
 
         // then
         assertThatThrownBy(() -> new NumberInput(input))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_CHARACTER.getMessage());
     }
 
     @Test
@@ -62,7 +68,8 @@ class NumberInputTest {
 
         // then
         assertThatThrownBy(() -> new NumberInput(input))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(DUPLICATE_NUMBER.getMessage());
     }
 
     @Test
@@ -74,6 +81,7 @@ class NumberInputTest {
 
         // then
         assertThatThrownBy(() -> new NumberInput(input))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_LENGTH.getMessage());
     }
 }
