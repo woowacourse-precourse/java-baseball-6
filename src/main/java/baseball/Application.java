@@ -25,5 +25,11 @@ public class Application {
         // 사용자 숫자 입력
         System.out.print(USER_INPUT_MESSAGE);
         String userNumber = Console.readLine();
+
+        // 사용자 숫자 검증
+        // 정규식을 사용한 검증
+        if (!userNumber.matches("[1-9]{3}")) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
     }
 }
