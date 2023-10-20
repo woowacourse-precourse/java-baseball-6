@@ -20,7 +20,7 @@ public class BaseBallGame implements Game {
         while (true) {
             printUserInputMessage();
             String userNumber = User.input3DigitNumber();
-
+            printUserInputNumber(userNumber);
         }
 
     }

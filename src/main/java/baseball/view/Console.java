@@ -102,6 +102,10 @@ public class Console {
     }
 
     public static void printUserInputMessage(){
-        System.out.println(INPUT_NUMBER);
+        System.out.print(INPUT_NUMBER);
+    }
+
+    public static void printUserInputNumber(String userNumber){
+        System.out.println(userNumber);
     }
 }
