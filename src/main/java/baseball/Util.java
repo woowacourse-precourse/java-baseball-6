@@ -26,9 +26,9 @@ public class Util {
         validateStringDuplicate(string);
     }
 
-    private static void validateStringOnlyNumbers(String string) {
+    public static void validateStringOnlyNumbers(String input) {
 
-        for (char c : string.toCharArray()) {
+        for (char c : input.toCharArray()) {
             if(!Character.isDigit(c)) {
                 throw new IllegalArgumentException("숫자만 입력해야 합니다.");
             }
@@ -38,28 +38,28 @@ public class Util {
         }
     }
 
-    private static void validateStringLength(String string, int length) {
+    public static void validateStringLength(String input, int length) {
 
-        if(string.length() != length) {
+        if(input.length() != length) {
             throw new IllegalArgumentException(length + "개의 수를 입력해야 합니다.");
         }
     }
 
-    private static void validateStringDuplicate(String string) {
+    public static void validateStringDuplicate(String input) {
 
-        for(int i = 0; i < string.length(); i++) {
-            for(int j = i + 1; j < string.length(); j++) {
-                if(string.charAt(i) == string.charAt(j)) {
+        for(int i = 0; i < input.length(); i++) {
+            for(int j = i + 1; j < input.length(); j++) {
+                if(input.charAt(i) == input.charAt(j)) {
                     throw new IllegalArgumentException("중복된 수를 입력할 수 없습니다.");
                 }
             }
         }
     }
 
-    public static List<Integer> stringToIntegerList(String string) {
+    public static List<Integer> stringToIntegerList(String input) {
 
         List<Integer> integerList = new ArrayList<>();
-        for(String s : string.split("")) {
+        for(String s : input.split("")) {
             integerList.add(Integer.parseInt(s));
         }
 
