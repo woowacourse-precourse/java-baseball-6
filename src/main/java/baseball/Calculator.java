@@ -4,20 +4,17 @@ import java.util.List;
 
 public class Calculator {
 
-    private static final int STRIKE_NUMBER = 3;
-    private static final int LIST_TO = 3;
-    private static final int LIST_FROM = 0;
-    private static final int COUNTER_ZERO = 0;
+    private static final int LIST_LEN = 3;
 
     public static boolean isNotOver(int strike) {
-        return strike != STRIKE_NUMBER;
+        return strike != LIST_LEN;
     }
 
     public static int countStrike(List<Integer> input, List<Integer> answer) {
-        int count = COUNTER_ZERO;
+        int count = 0;
 
-        for (int i = LIST_FROM; i < LIST_TO; i++) {
-            if (input.get(i).equals(answer.get(i))) {
+        for (int idx = 0; idx < LIST_LEN; idx++) {
+            if (input.get(idx).equals(answer.get(idx))) {
                 count++;
             }
         }
@@ -26,13 +23,13 @@ public class Calculator {
     }
 
     public static int countBall(List<Integer> input, List<Integer> answer) {
-        int count = COUNTER_ZERO;
+        int count = 0;
 
-        for (int i = LIST_FROM; i < LIST_TO; i++) {
-            if (!answer.contains(input.get(i))) {
+        for (int idx = 0; idx < LIST_LEN; idx++) {
+            if (!answer.contains(input.get(idx))) {
                 continue;
             }
-            if (input.get(i).equals(answer.get(i))) {
+            if (input.get(idx).equals(answer.get(idx))) {
                 continue;
             }
 
