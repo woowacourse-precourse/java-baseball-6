@@ -2,8 +2,17 @@ package baseball.component;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Inputer {
+
+    public List<Integer> input() {
+        String input;
+
+        System.out.print("숫자를 입력해주세요 : ");
+        input = Console.readLine();
+        return convertToDigit(input);
+    }
 
     private List<Integer> convertToDigit(String s) {
         List<Integer> input;
