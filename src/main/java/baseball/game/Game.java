@@ -1,11 +1,11 @@
 package baseball.game;
 
-import baseball.config.GameLogic;
-import baseball.config.InitRandomNum;
-import baseball.utils.Input;
-import baseball.utils.Output;
-import baseball.utils.Utils;
-import baseball.config.validator.ValueValidator;
+import baseball.core.GameLogic;
+import baseball.core.InitRandomNum;
+import baseball.game.io.Input;
+import baseball.game.io.Output;
+import baseball.utils.NumberParser;
+import baseball.core.validator.ValueValidator;
 
 import java.util.List;
 
@@ -16,28 +16,28 @@ public class Game {
     private InitRandomNum initRandomNum;
     private final Input input;
     private final Output output;
-    private final Utils utils;
+    private final NumberParser numberParser;
 
-    public Game(final Input input, final Output output, final Utils utils) {
+    public Game(final Input input, final Output output, final NumberParser numberParser) {
         this.input = input;
         this.output = output;
-        this.utils = utils;
+        this.numberParser = numberParser;
     }
 
     public void gameSet(ValueValidator validator, GameLogic gameLogic, InitRandomNum initRandomNum) {
         this.validator = validator;
         this.gameLogic = gameLogic;
         this.initRandomNum = initRandomNum;
-        this.answer = initRandomNum.pick();
     }
     public void play() {
+        answer = initRandomNum.createRandomValue();
         while (true){
             // 입력받고
             String userInput = input.input();
             // 유효값 검증
             if (validator.valid(userInput)) {
                 // 리스트로 바꾸고
-                List<Integer> playerList = utils.toList(userInput);
+                List<Integer> playerList = numberParser.toList(userInput);
                 // 스트라이크 볼 비교
                 GameResult gameResult = gameLogic.logic(playerList, answer);
                 // 비교 값 출력
@@ -50,22 +50,17 @@ public class Game {
             }
         }
     }
-
     // 해당 게임에서 다시 할건지 물어보는게 맞는 것 같다.
     public boolean recheck() {
         String replayInput = input.replayInput();
         if (validator.reValid(replayInput)) {
             // 숫자로 변환 후에 리플레이 할건지 확인
             int number = Integer.parseInt(replayInput);
-
-            if (number == 1) {
-                return true;
-            } else return number != 2;
+            return number == 1;
         } else{
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
-
     public boolean winCheck(GameResult gameResult){
         return gameResult.getStrike() == 3 && gameResult.getBall() == 0;
     }

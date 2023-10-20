@@ -1,41 +1,34 @@
-package baseball.config;
+package baseball.core;
 
 import baseball.game.GameResult;
 
 import java.util.List;
 
 public class GameLogic {
-    private int ball = 0;
-    private int strike = 0;
     public GameResult logic(List<Integer> player, List<Integer> ans) {
-        reset();
-        ballCount(player,ans);
-        strikeCount(player,ans);
-        adjustCount();
+        int ball = ballCount(player, ans);
+        int strike = strikeCount(player, ans);
+        ball = ball - strike;
         return new GameResult(ball, strike);
     }
 
-    private void adjustCount() {
-        ball = ball - strike;
-    }
-
-    public void ballCount(List<Integer> player, List<Integer> ans){
+    public int ballCount(List<Integer> player, List<Integer> ans){
+        int ball = 0;
         for (Integer playerNum : player) {
             if (ans.contains(playerNum)) {
                 ball++;
             }
         }
+        return ball;
     }
 
-    public void strikeCount(List<Integer> player, List<Integer> ans){
+    public int strikeCount(List<Integer> player, List<Integer> ans){
+        int strike = 0;
         for (Integer playerNum : player) {
             if (ans.indexOf(playerNum) == player.indexOf(playerNum)) {
                 strike ++;
             }
         }
-    }
-    public void reset(){
-        ball = 0;
-        strike = 0;
+        return strike;
     }
 }

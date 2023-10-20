@@ -1,4 +1,4 @@
-package baseball.utils;
+package baseball.game.io;
 
 import java.util.Scanner;
 
