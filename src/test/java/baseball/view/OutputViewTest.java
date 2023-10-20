@@ -39,4 +39,17 @@ class OutputViewTest {
         String expectedOutput = "숫자 야구 게임을 시작합니다.\n";
         assertThat(outContent.toString()).isEqualTo(expectedOutput);
     }
+
+    @DisplayName("게임 한판 당 결과 메시지를 출력한다.")
+    @Test
+    void printResult() {
+        // given
+
+        // when
+        outputView.printResult(1,2);
+
+        // then
+        String expectedOutput = "1볼 2스트라이크\n";
+        assertThat(outContent.toString()).isEqualTo(expectedOutput);
+    }
 }
