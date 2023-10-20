@@ -10,4 +10,10 @@ public class BaseballGameException {
             throw e;
         }
     }
+
+    public void validPlayerNumLenCount(String playerNumStr) {
+        if(playerNumStr.length()!=3){
+            throw new IllegalArgumentException();
+        }
+    }
 }
