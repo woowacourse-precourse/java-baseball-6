@@ -12,8 +12,8 @@ import java.util.List;
 
 public class BaseBallGameImpl implements BaseBallGame {
 
-    private static InputAnswer inputAnswer = new InputAnswerImpl();
-    private static EndProcess endProcess = new EndProcessImpl();
+    private static final InputAnswer inputAnswer = new InputAnswerImpl();
+    private static final EndProcess endProcess = new EndProcessImpl();
     private List<Integer> computerNumber;
 
     @Override

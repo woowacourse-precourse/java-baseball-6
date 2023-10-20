@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class EndProcessImpl implements EndProcess {
 
-    private static BaseBallGame baseBallGame = new BaseBallGameImpl();
+    private static final BaseBallGame baseBallGame = new BaseBallGameImpl();
 
     @Override
     public void userChoice() {
