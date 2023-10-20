@@ -5,19 +5,22 @@ import java.util.List;
 public class BaseBallGame {
 
     GameInput input;
+    GameService service;
 
     public BaseBallGame() {
         input = new GameInput();
+        service = new GameService();
     }
 
     public void playGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> userGuessNumber;
-        // Test
-        userGuessNumber = input.UserInputGuessNumber();
-        for (int i : userGuessNumber) {
+        List<Integer> randomNumber;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        randomNumber = service.makeRandomNumberList();
+        //TEST
+        for (int i : randomNumber) {
             System.out.println(i);
         }
-        // Test End
+        //TEST END
     }
 }
