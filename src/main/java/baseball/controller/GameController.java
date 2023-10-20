@@ -48,7 +48,7 @@ public class GameController {
             Balls playerBalls = getPlayerBalls(); // 플레이어 입력
             GameResult gameResult = compareBalls(game, playerBalls); // 컴퓨터와 플레이어 공 비교
             outputView.resultMessage(gameResultService.showResult(gameResult)); // 비교 결과 출력
-            game = gameLogicService.updateGameStatusOnStrike(game, gameResult); // 플레이어가 맞췄으면 게임 종료
+            game = gameLogicService.updateGameStatusOnThreeStrike(game, gameResult); // 플레이어가 맞췄으면 게임 종료
         }
     }
 
