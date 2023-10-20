@@ -24,12 +24,13 @@ public class Application {
     }
 
     private static void startGame() {
-        List<Integer> computerNum = createComputerNumber();
+        List<String> computerNum = createComputerNumber();
         String result = null;
+        String playerNum;
         do{
             System.out.print("숫자를 입력해주세요 : ");
             try {
-                String playerNum = Console.readLine();
+                playerNum = Console.readLine();
                 isNonDigit(playerNum);
                 isThreeDigitNumber(playerNum);
                 hasRepeatedDigitNumber(playerNum);
@@ -41,10 +42,12 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private static List<Integer> createComputerNumber() {
-        List<Integer> computer = new ArrayList<>();
+    private static List<String> createComputerNumber() {
+        List<String> computer = new ArrayList<>();
         while (computer.size() < COMPUTER_NUM_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+            int randNum = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+            String randomNumber = String.valueOf(randNum);
+
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
