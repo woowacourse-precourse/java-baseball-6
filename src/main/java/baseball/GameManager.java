@@ -103,6 +103,13 @@ public class GameManager {
             throw new IllegalArgumentException();
         }
 
+        int firstPosition = (parsedInt / 100) % 100;
+        int secondPosition = (parsedInt / 10) % 10;
+        int thirdPosition = parsedInt % 10;
+
+        if (firstPosition == secondPosition || firstPosition == thirdPosition || secondPosition == thirdPosition) {
+            throw new IllegalArgumentException();
+        }
 
         return parsedInt;
     }
