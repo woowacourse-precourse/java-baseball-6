@@ -24,27 +24,7 @@ public class Application {
             List<Integer> computer = getRandomNumbers();
 
             // 사용자가 번호 맞추기 시작
-            while(true) {
-                List<Integer> user = getUserNumbers();
-
-
-                int strike = getStrike(computer, user);
-                int ball = getBall(computer, user);
-
-                if (strike == NUMBER_LENGTH) {
-                    System.out.println(strike + STRIKE_MESSAGE);
-                    System.out.println(GAME_OVER_MESSAGE);
-                    break;
-                } else if (strike > 0 && ball > 0) {
-                    System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
-                } else if (strike > 0 && ball == 0) {
-                    System.out.println(strike + STRIKE_MESSAGE);
-                } else if (strike == 0 && ball > 0){
-                    System.out.println(ball + BALL_MESSAGE);
-                } else if (strike == 0 && ball == 0) {
-                    System.out.println(NOTHING_MESSAGE);
-                }
-            }
+            playGame(computer);
 
             String restart = getUserInput(RESTART_MESSAGE);
 
@@ -55,6 +35,34 @@ public class Application {
 
             if (!restart.equals("1")){
                 throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    /**
+     * 게임 시작
+     * @param computer 컴퓨터의 번호
+     */
+    public static void playGame(List<Integer> computer) {
+        while(true) {
+            List<Integer> user = getUserNumbers();
+
+
+            int strike = getStrike(computer, user);
+            int ball = getBall(computer, user);
+
+            if (strike == NUMBER_LENGTH) {
+                System.out.println(strike + STRIKE_MESSAGE);
+                System.out.println(GAME_OVER_MESSAGE);
+                return;
+            } else if (strike > 0 && ball > 0) {
+                System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
+            } else if (strike > 0 && ball == 0) {
+                System.out.println(strike + STRIKE_MESSAGE);
+            } else if (strike == 0 && ball > 0){
+                System.out.println(ball + BALL_MESSAGE);
+            } else if (strike == 0 && ball == 0) {
+                System.out.println(NOTHING_MESSAGE);
             }
         }
     }
