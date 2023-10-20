@@ -59,7 +59,12 @@ public class BaseBallGameImpl implements BaseBallGame {
 
     @Override
     public Integer countBall(List<Integer> answer) {
-        return null;
+        Integer cnt = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computerNumber.contains(answer.get(i)) && !computerNumber.get(i).equals(answer.get(i)))
+                cnt++;
+        }
+        return cnt;
     }
 
 
