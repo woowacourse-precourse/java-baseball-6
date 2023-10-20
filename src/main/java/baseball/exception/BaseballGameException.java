@@ -7,13 +7,15 @@ public class BaseballGameException {
         try{
             Integer.parseInt(playerNumStr);
         } catch (IllegalArgumentException e){
+            System.out.println("\n[Error] 세 자리 자연수를 입력하세요.");
             throw e;
         }
     }
 
     public void validPlayerNumLenCount(String playerNumStr) {
-        if(playerNumStr.length()!=3){
-            throw new IllegalArgumentException();
+        if(playerNumStr.length() !=3){
+            System.out.println("\n[Error] 세 자리 수를 입력하세요.");
+            throw new IllegalArgumentException("");
         }
     }
 
@@ -23,19 +25,22 @@ public class BaseballGameException {
             set.add(playerNumStr.charAt(i));
         }
         if(set.size()!=3){
-            throw new IllegalArgumentException();
+            System.out.println("\n[Error] 서로 다른 숫자로 이루어진 숫자를 입력하세요.");
+            throw new IllegalArgumentException("");
         }
     }
 
     public void validRegameNumStrLen(String regameNumStr){
         if(regameNumStr.length()!=1){
-            throw new IllegalArgumentException();
+            System.out.println("[Error] 1 또는 2를 입력하세요.");
+            throw new IllegalArgumentException("");
         }
     }
 
     public void validRegameNumStrIsCorrect(String regameNumStr) {
         if(!(regameNumStr.equals("1")||regameNumStr.equals("2"))){
-            throw new IllegalArgumentException();
+            System.out.println("[Error] 1 또는 2를 입력하세요.");
+            throw new IllegalArgumentException("");
         }
     }
 }
