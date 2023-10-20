@@ -9,6 +9,9 @@
 ### RandomNumberGenerator
 - [x] 1 이상 9 이하 임의의 수 하나를 생성한다.
 
+### BallCounter
+- [x] 컴퓨의 수와 플레이어의 수를 비교한 결과를 통해 볼, 스트라이크를 센다.
+
 ### ComputerNumbers
 - [ ] 플레이어의 수를 체크한다.
   - 같은 수가 같은 자리에 있으면 스트라이크 
