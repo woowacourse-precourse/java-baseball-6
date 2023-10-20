@@ -25,4 +25,24 @@ class ValidationTest {
         assertThatThrownBy(() -> Validation.validateThatInputIsNumeric(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    public void 입력한_숫자_개수가_3개가_넘으면_예외_발생() throws Exception {
+        //given
+        String inputNumber = "1234";
+
+        //then
+        assertThatThrownBy(() -> Validation.validateNumberOfNumbers(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void 입력한_숫자_개수가_3개보다_적으면_예외_발생() throws Exception {
+        //given
+        String inputNumber = "34";
+
+        //then
+        assertThatThrownBy(() -> Validation.validateNumberOfNumbers(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
