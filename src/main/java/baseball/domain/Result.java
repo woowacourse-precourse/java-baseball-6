@@ -8,4 +8,9 @@ public class Result {
         numberOfStrikes = newStrikes;
         numberOfBalls = newBalls;
     }
+
+    public boolean isNothing() {
+        return (numberOfBalls == 0 && numberOfStrikes == 0);
+    }
+
 }
