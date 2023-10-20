@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Answer {
 
@@ -28,11 +29,11 @@ public class Answer {
     }
 
     private void compareNumber(List<Integer> input, GameScore score, int answerIdx, int inputIdx) {
-        if (answer.get(answerIdx) == input.get(inputIdx) && answerIdx == inputIdx) {
+        if (Objects.equals(answer.get(answerIdx), input.get(inputIdx)) && answerIdx == inputIdx) {
             score.updateStrike();
         }
 
-        if (answer.get(answerIdx) == input.get(inputIdx) && answerIdx != inputIdx) {
+        if (Objects.equals(answer.get(answerIdx), input.get(inputIdx)) && answerIdx != inputIdx) {
             score.updateBall();
         }
     }

@@ -22,7 +22,7 @@ public class GameScore {
     }
 
     public List<Integer> getResult() {
-        return new ArrayList<Integer>() {{
+        return new ArrayList<>() {{
             add(strike);
             add(ball);
         }};
