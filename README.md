@@ -30,6 +30,13 @@
 
 ### ReplayableGameSystem 클래스
 
+```java
+public interface GameSystem {
+
+    void run();
+}
+```
+
 `GameSystem`은 `run()` 인터페이스만을 가지고 있다. 이 인터페이스의 책임은 **게임을 자신만의 방식으로 구동**하는 것이다.
 
 만약 게임을 한번만 진행하고 종료하는 게임 시스템을 구현하려면 다음과 같이 간단히 구현할 수 있다.
@@ -38,6 +45,10 @@
 public class PlayOnceGameSystem implements GameSystem {
 
     private final Game game;
+
+    public PlayOnceGameSystem(Game game) {
+        this.game = game;
+    }
 
     public void run() {
         game.init();
