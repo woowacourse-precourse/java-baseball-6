@@ -24,20 +24,23 @@ public class MainController {
 
     public void run() {
         outputView.printStartMessage();
-        BaseballGame baseballGame = new BaseballGame();
+
+        start(new BaseballGame());
+    }
+
+    private void start(BaseballGame baseballGame) {
         play(baseballGame);
+
+        outputView.printEndMessage();
+        decideToRestartOrNot(baseballGame);
     }
 
     private void play(BaseballGame baseballGame) {
         while (canPlay(baseballGame)) {
-            Balls userBalls = initializeUserBalls();
-            PlayResult playResult = baseballGame.play(userBalls);
+            PlayResult playResult = baseballGame.play(initializeUserBalls());
 
-            outputView.printResult(playResult.getBall(), playResult.getStrike());
+            showPlayResult(playResult);
         }
-
-        outputView.printEndMessage();
-        decideToRestartOrNot(baseballGame);
     }
 
     private boolean canPlay(BaseballGame baseballGame) {
@@ -45,8 +48,7 @@ public class MainController {
     }
 
     private Balls initializeUserBalls() {
-        String inputBallNumbers = inputView.inputBallNumbers();
-        List<Integer> numbers = convertToIntegerList(inputBallNumbers);
+        List<Integer> numbers = convertToIntegerList(inputView.inputBallNumbers());
 
         return new Balls(numbers);
     }
@@ -57,12 +59,20 @@ public class MainController {
                 .collect(Collectors.toList());
     }
 
+    private void showPlayResult(PlayResult playResult) {
+        outputView.printResult(playResult.getBall(), playResult.getStrike());
+    }
+
     private void decideToRestartOrNot(BaseballGame baseballGame) {
         int restartOptionNumber = inputView.inputRestartOptionNumber();
 
-        if (restartOptionNumber == RESTART_NUMBER) {
+        if (canRestart(restartOptionNumber)) {
             baseballGame.restart();
-            play(baseballGame);
+            start(baseballGame);
         }
+    }
+
+    private boolean canRestart(int restartOptionNumber) {
+        return restartOptionNumber == RESTART_NUMBER;
     }
 }
