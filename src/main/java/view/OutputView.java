@@ -1,5 +1,8 @@
 package view;
 
+import static model.BaseballData.*;
+import static model.BaseballData.STRIKE;
+
 public class OutputView {
     static final String START_GAME = "숫자 야구 게임을 시작합니다.";
     static final String INPUT_BALL = "숫자를 입력해주세요 : ";
@@ -22,10 +25,21 @@ public class OutputView {
 
     /**
      * 야구 게임 결과 출력
-     * 구현해야함!!
      */
-    public void gameResult() {
+    public static void gameResult(int strike, int ball) {
+        StringBuilder result = new StringBuilder();
         // 볼 스트라이크
+        if (strike == SUCCESS) {
+            result.append(strike).append(STRIKE).append("\n");
+        } else if (strike == FAIL && ball== FAIL) {
+            result.append(NOTHING).append("\n");
+        } else {
+            if (ball > FAIL)
+                result.append(ball).append(BALL).append(" ");
+            if (strike > FAIL)
+                result.append(strike).append(STRIKE);
+        }
+        System.out.println(result);
     }
 
     /**

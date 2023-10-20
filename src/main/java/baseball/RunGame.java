@@ -21,7 +21,7 @@ public class RunGame {
         while (BaseballGame.finish) { // 게임이 끝날때까지 반복
             outputView.gameNumer();
             BaseballGame.myNumber = inputView.inputBaseBall();
-            System.out.println(baseballGame.gameResult());
+            baseballGame.gameResult();
         }
 
         outputView.gameFinish();

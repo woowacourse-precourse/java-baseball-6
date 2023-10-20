@@ -9,34 +9,24 @@ import java.util.List;
 import java.util.Objects;
 
 import static model.BaseballData.*;
-
+import static view.OutputView.*;
 
 public class BaseballGame {
     static List<Integer> computerNumber;
     static List<Integer> myNumber;
     static boolean finish = true;
+    static int ball;
+    static int strike;
 
-    public String gameResult() {
-        StringBuilder result = new StringBuilder();
-        int ball = isBall();
-        int strike = isStrike();
-        if (strike == 3) {
-            result.append(strike).append(STRIKE);
-            finish = false;
-        } else if (strike ==0&&ball==0){
-            result.append(NOTHING);
-        } else {
-            if (ball != 0)
-                result.append(ball).append(BALL).append(" ");
-            else
-                result.append(strike).append(STRIKE);
-        }
-        return result.toString();
+    public void gameResult() {
+        ball = isBall();
+        strike = isStrike();
+        OutputView.gameResult(strike,ball);
     }
 
     public int isBall() {
         int count= 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < SUCCESS; i++) {
             if (!Objects.equals(computerNumber.get(i), myNumber.get(i)) && computerNumber.contains(myNumber.get(i)))
                 count++;
         }
@@ -45,10 +35,12 @@ public class BaseballGame {
 
     public int isStrike() {
         int count= 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < SUCCESS; i++) {
             if (Objects.equals(computerNumber.get(i), myNumber.get(i)))
                 count++;
         }
+        if (count == SUCCESS)
+            finish = false;
         return count;
     }
 
