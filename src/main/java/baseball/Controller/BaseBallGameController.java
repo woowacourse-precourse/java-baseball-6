@@ -13,12 +13,12 @@ public class BaseBallGameController {
 
     private CompareUserWithComputer compareUserWithComputer;
 
-    private boolean isFinishedGame = true;
+    private boolean isFinishedGame = false;
     private boolean isRestartedGame = false;
 
     public void gameStart(){
 
-        while(isFinishedGame){
+        while(!isFinishedGame){
 
             if(isRestartedGame || userNumber == null){
                 OutputView.startBaseBallGame();
@@ -55,7 +55,6 @@ public class BaseBallGameController {
     }
 
     public boolean isThreeStrike(int strikeNum){
-
         return strikeNum == 3;
     }
 
@@ -67,7 +66,7 @@ public class BaseBallGameController {
         }
 
         if("2".equals(value)){
-            isFinishedGame = false;
+            isFinishedGame = true;
         }
     }
 }
