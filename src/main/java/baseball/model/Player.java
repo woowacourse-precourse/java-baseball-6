@@ -38,4 +38,8 @@ public class Player {
                 .map(Integer::parseInt)
                 .toList();
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }

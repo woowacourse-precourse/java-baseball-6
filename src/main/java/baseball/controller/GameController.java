@@ -1,10 +1,13 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.Judgement;
 import baseball.model.NumberGenerator;
 import baseball.model.Player;
+import baseball.model.Result;
 import baseball.view.Input;
 import baseball.view.Output;
+import java.util.Map;
 
 public class GameController {
 
@@ -20,5 +23,8 @@ public class GameController {
 
         NumberGenerator numberGenerator = new NumberGenerator();
         Computer computer = new Computer(numberGenerator.createComputerNumbers());
+
+        Judgement judgement = new Judgement();
+        Map<Result, Integer> gameResult = judgement.judge(computer, player);
     }
 }
