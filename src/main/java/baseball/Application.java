@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,14 +10,6 @@ import java.util.regex.Pattern;
 
 public class Application {
 
-    public static final String GAME_START = "숫자 야구 게임을 시작합니다.";
-    public static final String INPUT_START = "숫자를 입력 해주세요 : ";
-    public static final String GAME_FINISH = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public static final String NOTHING = "낫싱";
-    public static final String STRIKE = "스트라이크";
-    public static final String BALL = "볼";
-
     public static void main(String[] args) {
 
         Boolean restart = true;
@@ -26,7 +17,7 @@ public class Application {
 
         Computer computer = new Computer();
 
-        System.out.println(GAME_START);
+        System.out.println(Alert.GAME_START);
 
         while (restart) {
 
@@ -35,7 +26,7 @@ public class Application {
             game = true;
 
             while (game) {
-                System.out.print(INPUT_START);
+                System.out.print(Alert.INPUT_START);
                 String inputNum = Console.readLine();
 
                 onlyNumCheck(inputNum);
@@ -69,20 +60,20 @@ public class Application {
                 if (nothing != 3) {
                     if (strike == 3) {
                         game = false;
-                        System.out.println(strike + STRIKE);
-                        System.out.println(GAME_FINISH);
-                        System.out.println(RESTART);
+                        System.out.println(strike + Alert.STRIKE);
+                        System.out.println(Alert.GAME_FINISH);
+                        System.out.println(Alert.RESTART);
                         String IsReGame = Console.readLine();
                         restart = (Integer.parseInt(IsReGame) == 1) ? true : false;
                     } else if (ball > 0 && strike == 0) {
-                        System.out.println(ball + BALL);
+                        System.out.println(ball + Alert.BALL);
                     } else if (ball == 0 && strike > 0) {
-                        System.out.println(strike + STRIKE);
+                        System.out.println(strike + Alert.STRIKE);
                     } else if (strike > 0 && ball > 0) {
-                        System.out.println(ball + BALL + " " + strike + STRIKE);
+                        System.out.println(ball + Alert.BALL + " " + strike + Alert.STRIKE);
                     }
                 } else {
-                    System.out.println(NOTHING);
+                    System.out.println(Alert.NOTHING);
                 }
             }
         }
