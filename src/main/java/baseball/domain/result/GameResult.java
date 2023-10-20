@@ -34,4 +34,9 @@ public class GameResult {
         }
         return result;
     }
+
+    public boolean isGameEnd() {
+        StrikeNum strikeNum = (StrikeNum) resultNumbers.get(1);
+        return strikeNum.isThreeStrike();
+    }
 }

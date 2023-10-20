@@ -65,4 +65,23 @@ public class BallsTest {
         GameResult gameResult = balls.compareWithBalls(ballsToCompare);
         Assertions.assertThat(gameResult.getResult()).isEqualTo("낫싱");
     }
+
+    @Test
+    @DisplayName("두자리 숫자로 Balls 생성시 예외 발생")
+    void exceptionTest_1() {
+        Assertions.assertThatThrownBy(() -> new Balls(99)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("네자리 숫자로 Balls 생성시 예외 발생")
+    void exceptionTest_2() {
+        Assertions.assertThatThrownBy(() -> new Balls(1000)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("세자리 숫자로 Balls 생성시 예외 발생 하지 않는다. 경계값 테스트")
+    void exceptionTest_3() {
+        new Balls(100);
+        new Balls(999);
+    }
 }

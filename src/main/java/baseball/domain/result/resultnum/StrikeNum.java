@@ -15,6 +15,10 @@ public class StrikeNum implements ResultNum {
         this.strikeNum = ballNum;
     }
 
+    public boolean isThreeStrike() {
+        return strikeNum == 3;
+    }
+
     @Override
     public ResultNum update(BallResult ballResult) {
         if (ballResult.isStrike()) {
