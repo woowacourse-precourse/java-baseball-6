@@ -14,25 +14,29 @@ public class BaseballGame {
         do {
             Numbers otherNumbers = numberGenerator.generateNumbers();
 
-            while (true) {
-                Numbers numbers = InputView.readUserNumbers();
-
-                GameResult gameResult = numbers.compareWith(otherNumbers);
-
-                ResultView.showResult(gameResult);
-
-                if (gameResult.isStrikeOut()) {
-                    break;
-                }
-            }
+            playRound(otherNumbers);
         }
         while (checkRestart());
+    }
+
+    private static void playRound(Numbers otherNumbers) {
+        while (true) {
+            Numbers numbers = InputView.readUserNumbers();
+
+            GameResult gameResult = numbers.compareWith(otherNumbers);
+
+            ResultView.showResult(gameResult);
+
+            if (gameResult.isStrikeOut()) {
+                break;
+            }
+        }
     }
 
     private boolean checkRestart() {
         return InputView.readContinueOrExit();
     }
-    
+
     public BaseballGame(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
     }
