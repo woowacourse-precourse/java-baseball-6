@@ -32,8 +32,11 @@ public class GameController {
 
     private void play() {
         gameService.initGame();
-        GameResult gameResult  = gameService.compare(InputView.number());
-        OutputView.result(gameResult);
+        GameResult gameResult;
+        do {
+            gameResult  = gameService.compare(InputView.number());
+            OutputView.result(gameResult);
+        } while (!gameResult.isClear());
     }
 
     private boolean shouldRestart() {
