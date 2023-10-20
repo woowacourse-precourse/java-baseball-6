@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.game.InputManager;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -17,5 +18,21 @@ public class GameManager {
             }
         }
         return randNumbers;
+    }
+    public String calculateHint(List<Integer> randBaseballNumber, String userBaseballNumber) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < randBaseballNumber.size(); i++) {
+            if (randBaseballNumber.get(i).equals(Integer.valueOf(userBaseballNumber.charAt(i)))) {
+                strike++;
+                continue;
+            }
+
+            if (randBaseballNumber.contains(Integer.valueOf(userBaseballNumber.charAt(i)))) {
+                ball++;
+            }
+        }
+        return String.format("%s 스트라이크 %s 볼", strike, ball);
     }
 }
