@@ -10,16 +10,21 @@ import java.util.Objects;
 public class Application {
     public static void main(String[] args) {
         Game game = new Game();
-        game.computer();
-        game.user();
-        Hint hint = new Hint();
-        hint.score(game.answer, game.computer_answer);
+        game.start();
     }
 }
 
 class Game{
     List<Integer> computer_answer = new ArrayList<>();
     List<Integer> answer = new ArrayList<>();
+
+    void start(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        computer();
+        user();
+        Hint hint = new Hint();
+        hint.score(answer, computer_answer);
+    }
 
     void computer(){
         while (computer_answer.size() < 3) {
