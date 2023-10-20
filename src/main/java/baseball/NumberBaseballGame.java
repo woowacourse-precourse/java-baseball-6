@@ -1,5 +1,11 @@
 package baseball;
 
+import static baseball.BaseballGameView.printLoopResult;
+import static baseball.BaseballGameView.showGameContinueInputMessage;
+import static baseball.BaseballGameView.showNumberInputMessage;
+import static baseball.BaseballGameView.showStartMessage;
+import static baseball.BaseballGameView.showWinMessage;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -7,13 +13,14 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+
 public class NumberBaseballGame {
     List<Integer> computerNumber;
     private static final String INPUT_REGEX = "^[1-9]{3}$";
     private static final int MAX_NUMBER_LENGTH = 3;
 
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.\n");
+        showStartMessage();
         boolean gameContinuation = true;
         while (gameContinuation) {
             computerNumber = generateRandomNumbers();
@@ -27,7 +34,7 @@ public class NumberBaseballGame {
         while (!userWin) {
             List<Integer> userNumber = userNumberInput();
             if (isUserWin(userNumber, computerNumber)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                showWinMessage();
                 userWin = true;
             }
         }
@@ -45,7 +52,7 @@ public class NumberBaseballGame {
     }
 
     private List<Integer> userNumberInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+        showNumberInputMessage();
         String inputString = Console.readLine();
         validateInput(inputString);
 
@@ -69,19 +76,6 @@ public class NumberBaseballGame {
         return strike == MAX_NUMBER_LENGTH;
     }
 
-    private void printLoopResult(int ball, int strike) {
-        if (ball > 0) {
-            System.out.print(ball + "볼 ");
-        }
-        if (strike > 0) {
-            System.out.print(strike + "스트라이크");
-        }
-        if (ball == 0 && strike == 0) {
-            System.out.print("낫싱");
-        }
-        System.out.println();
-    }
-
     int countBall(List<Integer> user, List<Integer> computerNumber) {
         int ball = 0;
         for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
@@ -103,7 +97,7 @@ public class NumberBaseballGame {
     }
 
     private boolean getContinueInput() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        showGameContinueInputMessage();
         String inputContinue = Console.readLine();
         validateContinueInput(inputContinue);
         return inputContinue.equals("1");
