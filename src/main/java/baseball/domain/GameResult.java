@@ -20,4 +20,16 @@ public class GameResult {
     public int getBall() {
         return ball;
     }
+
+    public boolean isNothing() {
+        return strike == 0 && ball == 0;
+    }
+
+    public boolean hasBall() {
+        return ball != 0;
+    }
+
+    public boolean hasStrike() {
+        return strike != 0;
+    }
 }
