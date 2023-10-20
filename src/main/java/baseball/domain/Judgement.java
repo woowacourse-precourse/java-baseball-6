@@ -1,8 +1,8 @@
 package baseball.domain;
 
 public class Judgement {
-    private int numOfBall;
-    private int numOfStrike;
+    private final int numOfBall;
+    private final int numOfStrike;
 
     public Judgement(int numOfBall, int numOfStrike) {
         this.numOfBall = numOfBall;

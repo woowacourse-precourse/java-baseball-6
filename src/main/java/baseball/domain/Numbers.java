@@ -12,20 +12,11 @@ public class Numbers {
         this.numbers = numbers;
     }
 
-    private int getIndexByNumber(int number) {
-        return numbers.indexOf(number);
-    }
-
-    private int len() {
-        return numbers.size();
-    }
-
-
     public int calcNumOfBall(Numbers otherNumbers) {
         int numOfBall = 0;
-        for (int i = 0; i < otherNumbers.len(); i++) {
+        for (int i = 0; i < otherNumbers.numbers.size(); i++) {
             int numberOfComputerNumbers = numbers.get(i);
-            int indexOfUserAnswer = otherNumbers.getIndexByNumber(numberOfComputerNumbers);
+            int indexOfUserAnswer = otherNumbers.numbers.indexOf(numberOfComputerNumbers);
             if (indexOfUserAnswer != -1 && indexOfUserAnswer != i) {
                 numOfBall += 1;
             }
@@ -35,9 +26,9 @@ public class Numbers {
 
     public int calcNumOfStrike(Numbers otherNumbers) {
         int numOfStrike = 0;
-        for (int i = 0; i < otherNumbers.len(); i++) {
+        for (int i = 0; i < otherNumbers.numbers.size(); i++) {
             int numberOfComputerNumbers = numbers.get(i);
-            int indexOfUserAnswer = otherNumbers.getIndexByNumber(numberOfComputerNumbers);
+            int indexOfUserAnswer = otherNumbers.numbers.indexOf(numberOfComputerNumbers);
             if (indexOfUserAnswer != -1 && indexOfUserAnswer == i) {
                 numOfStrike += 1;
             }
