@@ -29,7 +29,7 @@ public class Application {
     static List<Integer> convertUserInput(String input) {
         List<Integer> user = new ArrayList<>();
         String[] numbers = input.split("");
-        for (String element: numbers) {
+        for (String element : numbers) {
             int number = parseInt(element);
             user.add(number);
         }
