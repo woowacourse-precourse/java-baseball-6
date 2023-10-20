@@ -11,14 +11,21 @@ public class Application {
     public static void main(String[] args) {
         boolean reGame = true;
         while (reGame) {
-            Computer computer = new Computer(3);
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            boolean correct = false; // 정답 여부
-
-            while (!correct) { // 정답을 맞출 때 까지 반복한다.
-                correct = guessTheAnswer(computer);
-            }
+            runGame();
             reGame = reGame();
+        }
+    }
+
+    /**
+     * 게임을 시작한다. 게임 진입점
+     */
+    private static void runGame() {
+        Computer computer = new Computer(3);
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean correct = false; // 정답 여부
+
+        while (!correct) { // 정답을 맞출 때 까지 반복한다.
+            correct = guessTheAnswer(computer);
         }
     }
 
