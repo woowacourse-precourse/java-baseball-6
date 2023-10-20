@@ -26,19 +26,24 @@ public class Opponent {
     public GuessResult calculateResult(final UserNumbers userNumbers) {
         GuessResult result = new GuessResult();
         List<Integer> guessedNumbers = userNumbers.getNumbers();
-        for (int index = FIRST_INDEX; index < guessedNumbers.size(); index++) {
-            int numberIndex = numbers.indexOf(guessedNumbers.get(index));
-            if (numberIndex == NUMBER_NOT_FOUND) {
-                continue;
-            }
+        IntStream
+            .range(FIRST_INDEX, guessedNumbers.size())
+            .forEach(index -> {
+                int numberIndex = numbers.indexOf(guessedNumbers.get(index));
+                handleResult(numberIndex, index, result);
+            });
 
-            if (numberIndex == index) {
-                result.addStrikeCount();
-                continue;
-            }
-
-            result.addBallCount();
-        }
         return result;
+    }
+
+    private void handleResult(final int numberIndex, final int index, final GuessResult result) {
+        if (numberIndex == NUMBER_NOT_FOUND) {
+            return;
+        }
+        if (numberIndex == index) {
+            result.addStrikeCount();
+            return;
+        }
+        result.addBallCount();
     }
 }
