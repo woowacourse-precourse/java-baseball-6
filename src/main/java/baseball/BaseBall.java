@@ -10,7 +10,6 @@ import java.util.Map;
 public class BaseBall {
     private final int LENGTH;
     private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    private Map<String, Integer> map;
 
     public BaseBall(int length) {
         this.LENGTH = length;
@@ -27,36 +26,13 @@ public class BaseBall {
         computer.createComputerNumber(LENGTH);
 
         while (true) {
-            int strike = 0;
-            int ball = 0;
-            map = new HashMap<>();
-
             try {
-                String inputNumber = br.readLine();
-
-                if (inputNumber == null) {
-                    throw new IllegalArgumentException();
-                }
-
-                if (inputNumber.length() != LENGTH) {
-                    throw new IllegalArgumentException();
-                }
+                int strike = 0;
+                int ball = 0;
+                String number = inputNumber();
 
                 for (int i = 0; i < LENGTH; i++) {
-                    char cur = inputNumber.charAt(i);
-                    if (cur < '1' || cur > '9') {
-                        throw new IllegalArgumentException();
-                    } else {
-                        if (map.containsKey(String.valueOf(cur))) {
-                            throw new IllegalArgumentException();
-                        } else {
-                            map.put(String.valueOf(cur), 1);
-                        }
-                    }
-                }
-
-                for (int i = 0; i < LENGTH; i++) {
-                    int cur = inputNumber.charAt(i) - '0';
+                    int cur = number.charAt(i) - '0';
                     if (computer.get(i) == cur) {
                         strike++;
                     } else if (computer.contains(cur)) {
@@ -90,20 +66,51 @@ public class BaseBall {
         }
     }
 
+    private String inputNumber() throws IOException {
+        String number = br.readLine();
+        validateInputNumber(number);
+        return number;
+    }
+
+    private void validateInputNumber(String number) {
+        Map<String, Integer> map = new HashMap<>();
+
+        if (number == null) {
+            throw new IllegalArgumentException();
+        }
+
+        if (number.length() != LENGTH) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < LENGTH; i++) {
+            char cur = number.charAt(i);
+            if (cur < '1' || cur > '9') {
+                throw new IllegalArgumentException();
+            } else {
+                if (map.containsKey(String.valueOf(cur))) {
+                    throw new IllegalArgumentException();
+                } else {
+                    map.put(String.valueOf(cur), 1);
+                }
+            }
+        }
+    }
+
     public boolean isTerminate() {
         try {
-            String inputNumber = br.readLine();
+            String number = br.readLine();
 
-            if (inputNumber == null) {
+            if (number == null) {
                 throw new IllegalArgumentException();
             }
 
-            if (inputNumber.length() != 1) {
+            if (number.length() != 1) {
                 throw new IllegalArgumentException();
             }
 
-            if (inputNumber.charAt(0)  == '1' || inputNumber.charAt(0) == '2') {
-                if (inputNumber.charAt(0) - '0' == 2) {
+            if (number.charAt(0)  == '1' || number.charAt(0) == '2') {
+                if (number.charAt(0) - '0' == 2) {
                     return true;
                 } else {
                     return false;
