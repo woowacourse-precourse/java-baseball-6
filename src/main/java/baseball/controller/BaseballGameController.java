@@ -42,6 +42,10 @@ public class BaseballGameController {
             OutputView.printNothingMessage();
         }
 
+        if(results[1].equals("3")){
+            OutputView.printAnswerMessage();
+        }
+
 
 
 
