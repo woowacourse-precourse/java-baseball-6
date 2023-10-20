@@ -17,10 +17,13 @@ classDiagram
     }
     class Computer{
         -int[] answer
+        -boolean[] pickedMap
         -makeAnser()
         +getAnser()
+        +getPickedMap()
     }
     class Referee {
+        -getQueryDecoding()
         +judge()    
     }
 ```
