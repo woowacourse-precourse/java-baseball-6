@@ -12,55 +12,56 @@ public class Number {
     public Number() {
     }
 
-    private Console console;
-    private static final int LENGTH = 3;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
+    private static final int NUMBER_LENGTH = 3;
+    private static final String END_INPUT1 = "1";
+    private static final String END_INPUT2 = "2";
 
     /**
-     * 컴퓨터가 랜덤 3자리 숫자를 생성하는 메서드
+     * 랜덤 숫자를 생성하는 메서드
      */
-    public List<Integer> setRandomNumber() {
+    public List<Integer> generateRandomNumber() {
 
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        List<Integer> randomNumbers = new ArrayList<>();
+
+        while (randomNumbers.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!(computer.contains(randomNumber))) {
-                computer.add(randomNumber);
+            if (!(randomNumbers.contains(randomNumber))) {
+                randomNumbers.add(randomNumber);
             }
         }
 
-        return computer;
+        return randomNumbers;
+    }
+
+    private String readInput() {
+        return Console.readLine();
     }
 
     /**
-     * 사용자의 입력을 받아 list<integer>로 변환하는 함수
+     * 사용자의 입력을 list<integer>로 변환하는 메서드
      */
     public List<Integer> inputNumber() {
 
-        String input = console.readLine();
-
+        String input = readInput();
         int number = parseInt(input);
-
-        isValidLength(input);
-        isValidRange(input);
-        isNotDuplicated(input);
+        validateInput(input);
 
         return getDigit(number);
     }
 
     /**
-     * 사용자의 입력을 받아 int 변환하는 함수
+     * 사용자의 입력을 검증 후 String으로 반환하는 메서드
      */
-    public String endInput() {
+    public String inputEndNumber() {
 
-        String input = console.readLine();
-        isValidEndInput(input);
+        String input = readInput();
+        validateEndInput(input);
+
         return input;
     }
 
     /**
-     * int -> list<integer> 변환 함수
+     * int -> list<integer> 변환 메서드
      */
     private List<Integer> getDigit(int number) {
 
@@ -78,31 +79,30 @@ public class Number {
     }
 
     /**
-     * string -> int 변환 함수
+     * string -> int 변환 메서드
      */
     private int parseInt(String input) {
         try {
-            int number = Integer.parseInt(input);
-            return number;
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다. 정수를 입력해주세요.");
         }
     }
 
-    private void isValidLength(String input) {
-        if (input.length() != LENGTH) {
+    private void validateLength(String input) {
+        if (input.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException("잘못된 길이의 값을 입력했습니다. 3자리 정수를 입력해주세요.");
         }
 
     }
 
-    private void isValidRange(String input) {
+    private void validateRange(String input) {
         if (input.contains("0")) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다. 0을 포함하지 않는 3자리 정수를 입력해주세요.");
         }
     }
 
-    private void isNotDuplicated(String input) {
+    private void validateNoDuplication(String input) {
 
         Set<Character> inputs = new HashSet<>();
 
@@ -115,8 +115,14 @@ public class Number {
         }
     }
 
-    private void isValidEndInput(String input) {
-        if (!(input.equals("1") || input.equals("2"))) {
+    private void validateInput(String input) {
+        validateLength(input);
+        validateRange(input);
+        validateNoDuplication(input);
+    }
+
+    private void validateEndInput(String input) {
+        if (!(input.equals(END_INPUT1) || input.equals(END_INPUT2))) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다. 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
     }
