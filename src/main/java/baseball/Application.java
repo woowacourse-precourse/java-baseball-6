@@ -14,6 +14,8 @@ package baseball;
 //    - (다른 자리, 다른 숫자)*3 = 낫싱
 
 
+import java.util.Scanner;
+
 public class Application {
     public void checkUserInputException(int[] user) {
         try {
@@ -45,5 +47,21 @@ public class Application {
             return;
         }
     }
+
+    public int[] userInput() {
+        Scanner sc = new Scanner(System.in);
+        int userInput = sc.nextInt();
+        int[] userNumArray = new int[3];
+        String userNumber = String.valueOf(userInput);
+
+        for(int i =0; i<userNumber.length();i++){
+            char userNum = userNumber.charAt(i);
+            int userIntNum = Character.getNumericValue(userNum);
+            userNumArray[i] = userIntNum;
+        }
+        checkUserInputException(userNumArray);
+        return userNumArray;
+    }
+
 
 }
