@@ -25,4 +25,22 @@ public class Digit {
     public static Digit from(int value) {
         return new Digit(value);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Digit digit = (Digit) o;
+        return value == digit.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return value;
+    }
 }
