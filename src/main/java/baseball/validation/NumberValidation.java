@@ -38,9 +38,15 @@ public class NumberValidation {
         }
     }
 
-    public void validateDuplication(List<Integer> userNumber){
-        if(userNumber.size() != userNumber.stream().distinct().count()){
+    public void validateDuplication(List<Integer> userNumber) {
+        if (userNumber.size() != userNumber.stream().distinct().count()) {
             throw new IllegalArgumentException(MessageConstant.VALIDATE_DUPLICATION_MESSAGE);
+        }
+    }
+
+    public void validateInputChoice(int inputNumber) {
+        if (inputNumber != NumberConstant.RESTART_NUMBER || inputNumber != NumberConstant.GAME_END_NUMBER) {
+            throw new IllegalArgumentException(MessageConstant.VALIDATE_INPUT_CHOICE_MESSAGE);
         }
     }
 
