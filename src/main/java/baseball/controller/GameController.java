@@ -35,7 +35,7 @@ public class GameController {
 
             ResultView.printResult(ball, strike);
 
-            if (strike == PLAY_NUMBER_DIGIT) {
+            if (isStrikeEqualToGoal(strike)) {
                 EndView.end(PLAY_NUMBER_DIGIT);
                 AskView.askResume(RESTART, END);
                 String resumeInput = Console.readLine();
@@ -49,6 +49,10 @@ public class GameController {
                 }
             }
         }
+    }
+
+    private static boolean isStrikeEqualToGoal(final int strike) {
+        return strike == PLAY_NUMBER_DIGIT;
     }
 
     private static void assertNumberValue(final String inputNumber) {
