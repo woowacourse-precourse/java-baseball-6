@@ -5,6 +5,10 @@
     Integer[] orderOfNumbers : 숫자 순서를 담을 배열 
     List<Integer> computerNumbers : 컴퓨터 수를 저장할 List
     String userNumbers : 사용자 수를 저장할 String
+    Interger strike : 스트라이크 수를 저장할 Integer
+    Integer ball : 볼 수를 저장할 Integer
+
+<br/>
 
 #### 시작
 * '숫자 야구 게임을 시작합니다.'을 출력한다.
@@ -35,6 +39,7 @@
 <br/>
 
 #### 정답 확인
+* strike, ball 값을 0으로 초기화한다.
 * 사용자가 입력한 수의 왼쪽에서부터 하나 씩 정답 여부를 확인한다.
 * 현재 확인하고 있는 숫자를 index로 사용해서 배열에 들어있는 값을 확인한다.
 * 배열에 0이 아닌 값이 들어있으면서 순서도 일치한다면 스트라이크, 순서는 일치하지 않는다면 볼로 판단하고 각 변수의 값을 증가시킨다.
