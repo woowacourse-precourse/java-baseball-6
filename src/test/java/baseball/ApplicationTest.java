@@ -48,6 +48,30 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_한자리수_입력_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_문자타입_입력_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("asd"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_음수_입력_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
