@@ -2,22 +2,18 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class NumberGenerator {
+    private final int RANDOM_NUMBER_SIZE = 3;
+
     public List<Integer> generateNumber(){
-        List<Integer> numbers = new ArrayList<>();
-
-        while(numbers.size() < 3){
-            int randomNum = Randoms.pickNumberInRange(1, 9);
-
-            if(numbers.contains(randomNum)) continue;
-
-            numbers.add(randomNum);
-        }
-
-        return numbers;
+        return Stream
+                .generate(() -> Randoms.pickNumberInRange(1, 9))
+                .distinct()
+                .limit(RANDOM_NUMBER_SIZE)
+                .toList();
     }
 
 }
