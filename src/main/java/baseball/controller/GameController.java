@@ -65,7 +65,7 @@ public class GameController {
             }
         }
 
-        gameModel.setStrike(strike);
+        humanModel.setStrike(strike);
 
         return strikeIdx;
     }
@@ -79,13 +79,12 @@ public class GameController {
             }
         }
 
-        gameModel.setBall(ball);
+        humanModel.setBall(ball);
     }
 
     private void checkNothing() {
-        if(gameModel.getBall() == 0 && gameModel.getStrike() == 0){
-            gameModel.setNothing(1);
+        if(humanModel.getBall() == 0 && humanModel.getStrike() == 0){
+            humanModel.setNothing(1);
         }
     }
-
 }
