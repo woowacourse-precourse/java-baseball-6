@@ -19,10 +19,6 @@ public class Application {
             // 사용자 숫자
             final String inputNumberStr = Console.readLine();
 
-            // 스트라이크, 볼 카운트 변수
-            int strike = 0;
-            int ball = 0;
-
             // 입력을 제대로 못받을 경우 예외 던진다. ( 현재는 무조건 3글자만 )
             if (inputNumberStr.length() != 3) {
                 throw new IllegalArgumentException("잘못된 입력값 입니다.(입력:3자리 숫자)");
@@ -31,8 +27,8 @@ public class Application {
             // 입력받은 숫자와 컴퓨터의 숫자를 비교한다.
             Score score = getCompareResultWithInputNumberAndComputerNumber(
                     inputNumberStr, computer);
-            ball = score.getBall();
-            strike = score.getStrike();
+            int ball = score.getBall();
+            int strike = score.getStrike();
 
             // 비교 결과를 출력한다.
             if (strike == 3) {
