@@ -22,7 +22,7 @@
 ## 구현 사항 정리
 
 ### Error
-- [ ] InputValidate (유효하지 않을 시 IllegalArgumentException)
+- [ ] InputErrorException (유효하지 않을 시 IllegalArgumentException)
     - [ ] GameInputValidate
         - [ ] 숫자가 3자리인지 검사 기능
         - [ ] 중복된 숫자가 있는지 검사 기능
