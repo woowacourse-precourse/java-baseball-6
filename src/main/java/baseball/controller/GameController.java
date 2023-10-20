@@ -12,10 +12,17 @@ public class GameController {
     ProgramNumber program = new ProgramNumber();
     private UserNumber user;
 
+    public void run(){
+        OutputView.printStart();
+        do{
+            start();
+        } while (isReset());
+    }
+
 
     public void start(){
         do{
-            checkUserNumber();
+            user = new UserNumber(InputView.inputUserNumber());
             printAll(getResultList());
         } while(!isEnd());
     }
@@ -30,11 +37,6 @@ public class GameController {
 
     public int[] getResultList(){
         return compareNumber.getStrikeBall(user.getUserNumber(), program.getProgramNumber());
-    }
-
-    public void checkUserNumber(){
-        //생성자에서 숫자 검증
-        user = new UserNumber(InputView.inputUserNumber());
     }
 
     public void printBallStrike(int[] count){
