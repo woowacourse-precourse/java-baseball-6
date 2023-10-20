@@ -2,10 +2,10 @@ package baseball.gameLogic;
 
 import java.util.List;
 
-public class Computer {
+public class ComputerAction {
     public List<Integer> numberList;
-
-    public void generateNumber(RandomNumberGenerator randomNumberGenerator){
+    RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+    public void generateNumber(){
         numberList = randomNumberGenerator.generateRandomNumber();
     }
 }

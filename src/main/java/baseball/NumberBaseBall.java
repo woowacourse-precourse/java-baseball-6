@@ -1,57 +1,61 @@
 package baseball;
 
-import baseball.gameLogic.InputValidator;
-import baseball.gameLogic.NumberChecker;
-import baseball.gameLogic.RandomNumberGenerator;
-import baseball.gameLogic.User;
+import baseball.gameLogic.*;
 import camp.nextstep.edu.missionutils.Console;
 import baseball.userInterface.MessageViewer;
 import baseball.models.Score;
 import static baseball.models.Constants.*;
 
-import java.util.List;
-
 
 public class NumberBaseBall {
-    RandomNumberGenerator randomNumberGenerator;
     NumberChecker numberChecker;
     InputValidator inputValidator;
-    List<Integer> computer;
     MessageViewer messageViewer;
     Score score;
-    User user;
+    UserAction user;
+    ComputerAction computer;
 
     public void init(){
-        randomNumberGenerator = new RandomNumberGenerator();
         numberChecker = new NumberChecker();
         inputValidator = new InputValidator();
-        computer = randomNumberGenerator.generateRandomNumber();
         messageViewer = new MessageViewer();
-        user = new User();
+        computer = new ComputerAction();
+        user = new UserAction();
 
+        computer.generateNumber();
     }
 
     public void run(){
-        boolean keepGoing = true;
-        messageViewer.printStartMsg();
-        while (keepGoing){
-            messageViewer.printInputRequestMsg();
-            System.out.println(computer.get(0) + " " + computer.get(1) + " " + computer.get(2));
-//            List<Integer> user = inputValidator.validateUserAnswer(Console.readLine());
-            user.inputAnswer(inputValidator);
-            System.out.println(user.numberList.get(0) + " " + user.numberList.get(1) + " " + user.numberList.get(2));
-            score = numberChecker.checkNumber(user.numberList, computer);
-            messageViewer.printResultMsg(score.ballCount, score.strikeCount);
-            if(score.strikeCount == MAX_STRIKES){
-                messageViewer.printGameEndMsg();
-                messageViewer.printRestartMsg();
-                int restart = inputValidator.validateRestartInput(Console.readLine());
-                if (restart == RESTART_NUMBER)
-                    computer = randomNumberGenerator.generateRandomNumber();
-                else if (restart == END_NUMBER)
-                    keepGoing = false;
+        int mind = WANNA_KEEP_PLAYING;
 
-            }
+        messageViewer.printStartMsg();
+
+        while (mind == WANNA_KEEP_PLAYING){
+            messageViewer.printInputRequestMsg();
+            System.out.println(computer.numberList.get(0) + "" + computer.numberList.get(1) + "" + computer.numberList.get(2));
+            user.inputAnswer(inputValidator);
+            score = numberChecker.checkNumber(user.numberList, computer.numberList);
+            messageViewer.printResultMsg(score.ballCount, score.strikeCount);
+
+            mind = checkKeepGoing(score.strikeCount);
         }
+    }
+
+    public int checkKeepGoing(int strikeCount){
+        if (strikeCount == MAX_STRIKES) {
+            messageViewer.printGameEndMsg();
+            messageViewer.printRestartMsg();
+            user.inputRestartFactor(inputValidator);
+            regenerateNumber(user.mind);
+
+            return user.mind;
+        }
+
+        return WANNA_KEEP_PLAYING;
+    }
+
+    public void regenerateNumber(int mind){
+        if (mind == WANNA_KEEP_PLAYING)
+            computer.generateNumber();
     }
 }
