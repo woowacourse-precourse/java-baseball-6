@@ -26,11 +26,10 @@ public class Application {
             boolean isAnswer = false;
             while (!isAnswer) {
                 PrintResult.WRITE.printMessage();
-                String input = Console.readLine();
 
-                if (!input.matches(INPUT_FORMAT)) {
-                    throw new IllegalArgumentException();
-                }
+                String input = Console.readLine();
+                validateInput(input);
+
                 List<Integer> user = new ArrayList<>();
                 for (String splitInput : input.split("")) {
                     user.add(Integer.parseInt(splitInput));
@@ -38,6 +37,21 @@ public class Application {
                 isAnswer = compare(computer, user);
             }
             choiceOfUser = Console.readLine();
+        }
+    }
+
+    private static void validateInput(String input) {
+        if (!input.matches(INPUT_FORMAT)) {
+            throw new IllegalArgumentException();
+        }
+        if (input.charAt(0) == input.charAt(1)) {
+            throw new IllegalArgumentException();
+        }
+        if (input.charAt(1) == input.charAt(2)) {
+            throw new IllegalArgumentException();
+        }
+        if (input.charAt(2) == input.charAt(0)) {
+            throw new IllegalArgumentException();
         }
     }
 
