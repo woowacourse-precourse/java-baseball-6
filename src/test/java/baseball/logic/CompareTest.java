@@ -79,11 +79,11 @@ class CompareTest {
     }
 
     @DisplayName("사용자가 중복된 숫자가 입력했을 경우 IllegalArgumentException 발생")
-    @Test
-    void confirmInputDuplicatedNumbers() {
+    @ParameterizedTest
+    @ValueSource(strings = {"112", "223", "445", "787", "131", "828"})
+    void confirmInputDuplicatedNumbers(String userInput) {
         // given
         List<Integer> computerInput = List.of(4, 2, 5);
-        String userInput = "112";
 
         // when
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
