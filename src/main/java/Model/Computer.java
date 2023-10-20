@@ -22,4 +22,9 @@ public class Computer {
     private static String randomNumberCreate(){
         return Integer.toString(Randoms.pickNumberInRange(1,9));
     }
+
+    public String getComputerNumber(){
+
+        return computerNumber;
+    }
 }
