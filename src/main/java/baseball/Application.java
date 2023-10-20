@@ -76,7 +76,7 @@ public class Application {
     }
 
     public static boolean isValidUserNumber(String number){
-        if(number.matches("[1-9]{3}"))
+        if(number.matches("(?!.*(.).*\\1)[1-9]{3}"))
             return true;
 
         return false;
