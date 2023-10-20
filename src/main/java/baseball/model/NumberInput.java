@@ -4,7 +4,7 @@ import static baseball.model.enums.NumberInputErrorMessage.DUPLICATE_NUMBER;
 import static baseball.model.enums.NumberInputErrorMessage.INVALID_CHARACTER;
 import static baseball.model.enums.NumberInputErrorMessage.INVALID_LENGTH;
 
-import baseball.model.enums.NumberInputErrorMessage;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -48,5 +48,15 @@ public class NumberInput extends PlayerInput {
         if (set.size() != VALID_INPUT_LENGTH) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
         }
+    }
+
+    public List<Integer> parseInputToIntegerList() {
+        List<Integer> list = new ArrayList<>(3);
+        String[] split = input.split("");
+        for (int i = 0; i < VALID_INPUT_LENGTH; i++) {
+            Integer num = Integer.parseInt(split[i]);
+            list.add(num);
+        }
+        return list;
     }
 }
