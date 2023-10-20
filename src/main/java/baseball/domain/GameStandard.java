@@ -38,6 +38,13 @@ public class GameStandard {
     }
 
 
+    /**
+     * List에 Target 숫자가 포함되어있는지 확인
+     *
+     * @param computerList
+     * @param numOfUser
+     * @return
+     */
     private boolean isContainList(List<Integer> computerList, Integer numOfUser) {
         return computerList.contains(numOfUser);
     }
