@@ -46,9 +46,32 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 입력값_중복_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("112"))
-                        .isInstanceOf(IllegalArgumentException.class)
+        assertSimpleTest(
+                () ->
+                        assertThatThrownBy(() -> runException("112"))
+                                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 게임종료_후_재시작_입력값_숫자_범위_예외_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("135", "3"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 게임종료_후_재시작_입력값_포맷_예외_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("135", "a"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5
         );
     }
 
