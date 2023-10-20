@@ -58,4 +58,34 @@ class JudgeResultTest {
         // then
         assertThat(judgeResult.isThreeStrike()).isFalse();
     }
+
+    @DisplayName("toString 메소드는 스트라이크와 볼의 개수를 반환한다")
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1, 0, 1스트라이크",
+            "0, 1, 1볼",
+            "1, 2, 2볼 1스트라이크",
+            "3, 0, 3스트라이크"
+    })
+    void toString_test(int strike, int ball, String expected) {
+        // when
+        JudgeResult judgeResult = new JudgeResult(strike, ball);
+
+        // then
+        assertThat(judgeResult).hasToString(expected);
+    }
+
+    @DisplayName("toString 메소드는 스트라이크와 볼이 모두 0일 때 '낫싱'을 반환한다.")
+    @Test
+    void nothing_toString_test() {
+        // given
+        int strike = 0;
+        int ball = 0;
+
+        // when
+        JudgeResult judgeResult = new JudgeResult(strike, ball);
+
+        // then
+        assertThat(judgeResult).hasToString("낫싱");
+    }
 }
