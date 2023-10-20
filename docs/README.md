@@ -1,5 +1,5 @@
 설계
-
+1회차
 프로그램 흐름도
 
 1. 시작
@@ -37,3 +37,43 @@ camp.nextstep.edu.missionutils 모듈 사용
    -> baseball 클래스에 MakeHint 이용
 6. Hint 출력
 7. if 문을 이용해 3 strike 시 종료 .
+
+---------------------------------------
+2회차
+
+2차 작업 중 생각난 할 것들
+
+1. application 에서 모두 담당하려하지말고 game을 만드는 새로운 클래스를 만들자.
+2. compareNumber로 [strike , ball, miss] 를 반환했는데 miss가 필요없다.
+3. compareNumber에서 MakeHint를 호출해서 string을 반환하자.
+4. input 처리도 따로 클래스를 만들자.
+
+controller(Game)
+
+1. 이전 Application의 기능.
+2. main 에서 계속해서 호출하여 게임을 실행하도록 만들자.
+
+model(Input)
+Input은 예외를 발생시킨다.
+camp.nextstep.edu.missionutils.Console의
+readLine()은 String을 반환하는데 이를 int값으로 변환 시켜야한다.
+
+주요기능
+
+1. 게임 도중 3자리 수를 받는 input
+   -> input이 3자리수인가?, 모두 숫자인가? , 서로 다른가?를 판별
+   -> 모든 질문에 통과한다면 int를 반환, 만약 실수한다면 각각 예외를 발생시켜야함.
+
+2. 게임이 끝난 후 exit code를 받는 input
+   -> input이 1자리수인가?, 모두 숫자인가? , 1혹은 2인가?를 판별
+   -> 모든 질문에 통과한다면 int를 반환, 만약 실수한다면 각각 예외를 발생시켜야함.
+
+부족한 점
+-> 자바를 안다룬지 너무 오래되어서 static class로 구현할 만한 것들을 class로 구현함.
+-> 충분히 더 작은 단위로 함수를 쪼갤수 있음. 한 함수 함수 하나가 너무 큰 단위로 이루어짐.
+
+추후
+클래스, 함수 나누기, test 추가하는 것 필요.
+
+
+
