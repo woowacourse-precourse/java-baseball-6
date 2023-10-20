@@ -138,9 +138,19 @@ public class BaseBallGame {
     }
 
     private void validateInput(List<Integer> input) {
-        if(!isUniqueDigits(input) || !isValidLength(input)) {
+        if(!isUniqueDigits(input) || !isValidLength(input) || !isValidRange(input)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private boolean isValidRange(List<Integer> numbers) {
+        for(Integer number : numbers) {
+            if(number < MIN_RANDOM_NUMBER || number > MAX_RANDOM_NUMBER) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private List<Integer> parseToNumberList(String convertValue) {
