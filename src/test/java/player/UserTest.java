@@ -39,7 +39,7 @@ public class UserTest {
         player.inputBaseballNumber();
         List<Integer> playerBaseballNumber = player.getBaseballNumber();
 
-                //then
+        //then
         assertThat(playerBaseballNumber).isEqualTo(Arrays.asList(1, 2, 3));
     }
 
