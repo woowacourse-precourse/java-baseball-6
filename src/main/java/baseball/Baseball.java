@@ -60,4 +60,16 @@ public class Baseball {
         }
         return strikeCount;
     }
+
+    public Integer getBallCount(List<Integer> answerNumber, List<Integer> userNumber) {
+        Integer ballCount = 0;
+        for (int i = 0; i < 3; ++i) {
+            Integer number = userNumber.get(i);
+            if (answerNumber.contains(number)) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
 }
