@@ -5,63 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-class GameNumber {
-    private final List<Integer> numbers;
-
-    public GameNumber(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
-    }
-
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 3) {
-            throw new IllegalArgumentException();
-        }
-        List<Integer> compare = new ArrayList<>();
-        for (Integer number: numbers) {
-            if (compare.contains(number)) {
-                throw new IllegalArgumentException();
-            }
-            compare.add(number);
-        }
-    }
-
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-}
-
-class GuessResult {
-    private final int ballCount;
-    private final int strikeCount;
-
-    public GuessResult(int ballCount, int strikeCount) {
-        this.ballCount = ballCount;
-        this.strikeCount = strikeCount;
-    }
-
-    public int getBallCount() {
-        return ballCount;
-    }
-
-    public int getStrikeCount() {
-        return strikeCount;
-    }
-
-    public boolean hasBall() {
-        return ballCount > 0;
-    }
-
-    public boolean hasStrike() {
-        return strikeCount > 0;
-    }
-
-    public boolean isAllStrike() {
-        return strikeCount == 3;
-    }
-}
-
-
 public class Application {
 
     static GameNumber pickComputerNumber() {
@@ -103,8 +46,8 @@ public class Application {
     static GuessResult createGuessResult(GameNumber computer, GameNumber user) {
         int ballCount = 0;
         int strikeCount = 0;
-        List<Integer> userNumbers = user.getNumbers();
-        List<Integer> computerNumbers = computer.getNumbers();
+        List<Integer> userNumbers = user.numbers();
+        List<Integer> computerNumbers = computer.numbers();
 
         for (int i = 0; i < 3; i++) {
             int userNumber = userNumbers.get(i);
@@ -126,10 +69,10 @@ public class Application {
     static void printGuessResult(GuessResult guessResult) {
         StringBuilder sb = new StringBuilder();
         if (guessResult.hasBall()) {
-            sb.append(guessResult.getBallCount()).append("볼 ");
+            sb.append(guessResult.ballCount()).append("볼 ");
         }
         if (guessResult.hasStrike()) {
-            sb.append(guessResult.getStrikeCount()).append("스트라이크");
+            sb.append(guessResult.strikeCount()).append("스트라이크");
         }
         if (sb.isEmpty()) {
             sb.append("낫싱");
