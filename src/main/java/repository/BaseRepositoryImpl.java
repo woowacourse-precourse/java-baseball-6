@@ -16,7 +16,8 @@ public class BaseRepositoryImpl implements BaseRepository {
      */
     @Override
     public List<Integer> getMyNumber(String myNumber) {
-        return Arrays.stream(myNumber.split("")).mapToInt(x -> Integer.parseInt(x)).boxed().collect(Collectors.toList());
+        String[] split = myNumber.split("");
+        return Arrays.stream(split).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     /**
@@ -52,8 +53,13 @@ public class BaseRepositoryImpl implements BaseRepository {
         }
 
         StringBuffer sb = new StringBuffer();
-        if (result[BALL] != 0) sb.append(result[BALL]).append("볼 ");
-        if (result[STRIKE] != 0) sb.append(result[STRIKE]).append("스트라이크");
+        if (result[BALL] != 0) {
+            sb.append(result[BALL]).append("볼 ");
+        }
+        if (result[STRIKE] != 0) {
+            sb.append(result[STRIKE]).append("스트라이크");
+        }
+
         System.out.println(sb.toString().trim());
 
     }
