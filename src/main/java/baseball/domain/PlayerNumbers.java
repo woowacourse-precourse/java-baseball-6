@@ -3,7 +3,7 @@ package baseball.domain;
 import java.util.HashSet;
 import java.util.List;
 
-public class PlayerNumbers {
+public final class PlayerNumbers {
     private final List<Integer> numbers;
 
     public PlayerNumbers(List<Integer> numbers) {
