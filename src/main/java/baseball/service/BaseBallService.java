@@ -1,11 +1,15 @@
 package baseball.service;
 
+import static baseball.domain.number.NumberConstant.MAX_INDEX;
+import static baseball.domain.number.NumberConstant.MIN_INDEX;
+
 import baseball.domain.Computer;
 import baseball.domain.Human;
 import baseball.domain.Player;
 import baseball.domain.Result;
 import baseball.domain.number.Numbers;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class BaseBallService {
     private Player computer;
@@ -27,7 +31,7 @@ public class BaseBallService {
         computer.reset();
     }
 
-    public void playerNumberChange(Numbers numbers) {
+    public void humanNumberChange(Numbers numbers) {
         human.changeNumbers(numbers);
     }
 
@@ -41,32 +45,24 @@ public class BaseBallService {
 
 
     public Result calculateResult() {
-        return getResult(human.getNumbers(), computer.getNumbers());
+        List<Integer> inputNumberList = human.getNumbers().getNumberList();
+        List<Integer> answerNumberList = computer.getNumbers().getNumberList();
+
+        return Result.create(calculateBall(inputNumberList, answerNumberList), calculateStrike(inputNumberList, answerNumberList));
     }
 
-    private static Result getResult(Numbers inputNumbers, Numbers answerNumbers) {
-        List<Integer> inputNumberList = inputNumbers.getNumberList();
-        List<Integer> answerNumberList = answerNumbers.getNumberList();
+    private Integer calculateBall(List<Integer> inputNumberList, List<Integer> answerNumberList) {
 
-        int numberCount = answerNumberList.size();
-
-        int ball = 0;
-        int strike = 0;
-
-        for (int i = 0; i < numberCount; i++) {
-            Integer inputNumber = inputNumberList.get(i);
-            Integer answerNumber = answerNumberList.get(i);
-
-            if (inputNumber == answerNumber) {
-                strike += 1;
-                continue;
-            }
-
-            if (answerNumberList.contains(inputNumber)) {
-                ball += 1;
-            }
-        }
-
-        return Result.create(ball, strike);
+        return (int) inputNumberList.stream()
+                .filter(answerNumberList::contains)
+                .count();
     }
+
+    private Integer calculateStrike(List<Integer> inputNumberList, List<Integer> answerNumberList) {
+
+        return (int) IntStream.rangeClosed(MIN_INDEX, MAX_INDEX)
+                .filter(idx -> inputNumberList.get(idx).equals(answerNumberList.get(idx)))
+                .count();
+    }
+
 }
