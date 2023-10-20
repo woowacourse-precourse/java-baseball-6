@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static validation.Constant.*;
+import validation.Validation;
 
 public class Game {
     static List<Integer> answer = new ArrayList<>();
 
-    Game() {
+    public Game() {
         answer = makeRandomNumber();
         System.out.println("answer : " + answer);
     }
@@ -26,12 +27,12 @@ public class Game {
     }
 
     private void start() {
-        guessNumber();
+        inputGuessNumber();
     }
 
     private List<Integer> makeRandomNumber() {
         List<Integer> number = new ArrayList<>();
-        while (number.size() < RANDOM_NUMBER_SIZE) {
+        while (number.size() < NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
             if (!number.contains(randomNumber)) {
                 number.add(randomNumber);
@@ -40,26 +41,16 @@ public class Game {
         return number;
     }
 
-    private void guessNumber() {
+    private void inputGuessNumber() {
         String inputNumber;
         do {
             System.out.print(INPUT_STRING);
             inputNumber = Console.readLine();
-            validationNumberCheck(inputNumber);
+            Validation.validationNumberCheck(inputNumber);
         } while (!equalToAnswer(inputNumber));
     }
 
-    private void validationNumberCheck(String inputString) {
-        if (inputString.length() != 3) {
-            throw new IllegalArgumentException(WRONG_INPUT_SIZE);
-        }
 
-        for (char c : inputString.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException();
-            }
-        }
-    }
 
     private static boolean equalToAnswer(String inputNumber) {
         int[] intInputNumber = changeToIntegerList(inputNumber);
@@ -67,8 +58,7 @@ public class Game {
         int ball = getBall(intInputNumber);
 
         printResult(strike, ball);
-
-        if (strike == 3) {
+        if (endGame(strike)) {
             return true;
         }
         return false;
@@ -76,7 +66,7 @@ public class Game {
 
     private static int[] changeToIntegerList(String inputNumber) {
         int[] inputList = new int[answer.size()];
-        for (int i = 0; i < RANDOM_NUMBER_SIZE; i++) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
             try {
                 inputList[i] = Character.getNumericValue(inputNumber.charAt(i));
             } catch (IllegalArgumentException e) {
@@ -89,7 +79,7 @@ public class Game {
     private static int getStrike(int[] inputNumber) {
         int strike = 0;
 
-        for (int i = 0; i < RANDOM_NUMBER_SIZE; i++) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
             if (inputNumber[i] == answer.get(i)) {
                 strike++;
             }
@@ -100,7 +90,7 @@ public class Game {
     private static int getBall(int[] inputNumber) {
         int ball = 0;
 
-        for (int i = 0; i < RANDOM_NUMBER_SIZE; i++) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
             if (inputNumber[i] != answer.get(i) && answer.contains(inputNumber[i])) {
                 ball++;
             }
@@ -130,34 +120,37 @@ public class Game {
 
     private static void printBall(int ball) {
         if (ball > 0) {
-            System.out.print(ball + "볼 ");
+            System.out.print(ball + BALL);
         }
     }
 
     private static void printStrike(int strike) {
         if (strike > 0) {
-            System.out.print(strike + "스트라이크");
+            System.out.print(strike + STRIKE);
         }
-        if (strike == 3) {
-            endGame();
-        }
+        endGame(strike);
     }
 
-    private static void endGame() {
-        System.out.println(END_GAME_STRING);
+    private static boolean endGame(int strike) {
+        if (strike == STRIKE_SUCCESS) {
+            System.out.println(END_GAME_STRING);
+            return true;
+        }
+        return false;
     }
 
     private boolean restart() {
         System.out.println(RESTART_STRING);
 
         String input = Console.readLine();
-        if (input.equals("1")) {
+
+        // validation check
+        if (input.equals(RESTART)) {
             return true;
-        } else if (input.equals("2")) {
+        } else if (input.equals(QUIT)) {
             return false;
         } else {
             throw new IllegalArgumentException(WRONG_INPUT_STRING);
         }
-
     }
 }

@@ -1,9 +1,15 @@
 package validation;
 
 public class Constant {
-    public static final int MIN_RANDOM_NUMBER = 1;
-    public static final int MAX_RANDOM_NUMBER = 9;
-    public static final int RANDOM_NUMBER_SIZE = 3;
+    public static int MIN_RANDOM_NUMBER = 1;
+    public static int MAX_RANDOM_NUMBER = 9;
+    public static int NUMBER_SIZE = 3;
+    public static int STRIKE_SUCCESS = 3;
+
+    public static String STRIKE = "스트라이크";
+    public static String BALL = "볼 ";
+    public static String RESTART = "1";
+    public static String QUIT = "2";
 
     public static String START_STRING = "숫자 야구 게임을 시작합니다.";
     public static String INPUT_STRING = "숫자를 입력해주세요 : ";
