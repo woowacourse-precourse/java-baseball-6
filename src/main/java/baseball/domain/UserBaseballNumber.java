@@ -34,6 +34,6 @@ public class UserBaseballNumber {
     }
 
     public List<String> getUserValues() {
-        return Collections.unmodifiableList(userValues);
+        return List.copyOf(userValues);
     }
 }
