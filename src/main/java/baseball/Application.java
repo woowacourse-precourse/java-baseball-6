@@ -11,11 +11,17 @@ public class Application {
     private static final int MIN_PICK_NUMBER = 1;
     private static final int MAX_PICK_NUMBER = 9;
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        printStartMessage();
+    private static GameState gameState;
 
-        BaseBallNumberGroup computer = new BaseBallNumberGroup(getRandomNumberList());
+    public static void main(String[] args) {
+        initialize();
+        while (!gameState.isInExit()) {
+            handleSceneByGameState();
+        }
+    }
+
+    public static void initialize() {
+        gameState = GameState.START;
     }
 
     public static void printStartMessage() {
@@ -31,5 +37,28 @@ public class Application {
             }
         }
         return randomNumberList;
+    }
+
+    public static void handleSceneByGameState() {
+        switch (gameState) {
+            case START -> handleStartScene();
+            case GAME -> handleGameScene();
+            case END -> handleEndScene();
+            case EXIT -> handleExitScene();
+            default -> throw new IllegalArgumentException("올바르지 않은 입력입니다.");
+        }
+    }
+
+    public static void handleStartScene() {
+    }
+
+    public static void handleGameScene() {
+    }
+
+    public static void handleEndScene() {
+    }
+
+    private static void handleExitScene() {
+        // Empty
     }
 }
