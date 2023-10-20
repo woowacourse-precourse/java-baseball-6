@@ -6,13 +6,13 @@ import java.util.List;
 
 public class InputAnswerImpl implements InputAnswer {
 
-
-
     @Override
     public List<Integer> inputAnswer() throws IllegalArgumentException{
         String input = Console.readLine();
         integrateValidation(input);
-        return List.of(Integer.parseInt(input));
+        return List.of(Integer.parseInt(String.valueOf(input.charAt(0))),
+                Integer.parseInt(String.valueOf(input.charAt(1))),
+                Integer.parseInt(String.valueOf(input.charAt(2))));
     }
 
     @Override
