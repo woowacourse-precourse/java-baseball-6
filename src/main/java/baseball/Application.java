@@ -16,25 +16,36 @@ public class Application {
     private static final int END = 2;
 
     public static void main(String[] args) {
-        StartView.welcome();
-        AskView.askNumberInput();
 
-        String userInput = Console.readLine();
-        NumberValidator.assertInputNumberWithLength(userInput, PLAY_NUMBER_DIGIT);
-
+        boolean playWant = true;
         int computerNumber = NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
-        int userNumber = Integer.parseInt(userInput);
 
-        int ball = Umpire.countBall(computerNumber, userNumber);
-        int strike = Umpire.countStrike(computerNumber, userNumber);
+        StartView.welcome();
 
-        ResultView.printResult(ball, strike);
+        while (playWant) {
+            AskView.askNumberInput();
 
-        if (strike == PLAY_NUMBER_DIGIT) {
-            EndView.end(PLAY_NUMBER_DIGIT);
-            AskView.askResume(RESTART, END);
-            String resumeInput = Console.readLine();
-            ResumeValidator.assertResumeInput(resumeInput, RESTART, END);
+            String userInput = Console.readLine();
+            NumberValidator.assertInputNumberWithLength(userInput, PLAY_NUMBER_DIGIT);
+
+            int userNumber = Integer.parseInt(userInput);
+
+            int ball = Umpire.countBall(computerNumber, userNumber);
+            int strike = Umpire.countStrike(computerNumber, userNumber);
+
+            ResultView.printResult(ball, strike);
+
+            if (strike == PLAY_NUMBER_DIGIT) {
+                EndView.end(PLAY_NUMBER_DIGIT);
+                AskView.askResume(RESTART, END);
+                String resumeInput = Console.readLine();
+                ResumeValidator.assertResumeInput(resumeInput, RESTART, END);
+                int resumeNumber = Integer.parseInt(resumeInput);
+                if (resumeNumber == END) {
+                    playWant = false;
+                    break;
+                }
+            }
         }
     }
 }
