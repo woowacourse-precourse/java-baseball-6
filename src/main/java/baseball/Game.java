@@ -8,7 +8,7 @@ public class Game {
     Computer computer = new Computer();
 
     public void startGame(){
-        boolean restart = false;
+        boolean restart;
         System.out.println("숫자 야구 게임을 시작합니다.");
         do{
             computer.init();
@@ -16,8 +16,6 @@ public class Game {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             restart = player.restart();
         }while(restart);
-        //TODO : 종료하기 전 Console.close() 호출
-
     }
     public void play(){
         Result result;

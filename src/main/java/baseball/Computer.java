@@ -28,11 +28,6 @@ public class Computer {
      * @return 사용자의 입력과 answer를 비교한 결과 리스트
      */
     public Result getResult(List<Integer> input){
-
-        if(input.size() != 3){
-            throw new IllegalArgumentException("사용자의 입력 숫자는 정확히 3개여야 합니다.");
-        }
-
         Result result = new Result();
         for (int i = 0; i < 3; i++) {
             int number = input.get(i);
