@@ -3,12 +3,29 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    Computer instance1 = Computer.getInstance();
+
+    @Test
+    void testSingletonComputer(){
+        Computer instance2 = Computer.getInstance();
+        assertThat(instance1.equals(instance2));
+    }
+
+    @Test
+    void testMakeAnswer(){
+        List<Integer> answer= instance1.makeNewAnswer();
+        assertThat(answer.equals(3));
+    }
+
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
