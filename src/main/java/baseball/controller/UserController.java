@@ -12,4 +12,7 @@ public class UserController {
     public void setNumbers(List<Integer> numbers) {
         user.setNumbers(numbers);
     }
+    public List<Integer> getNumbers() {
+        return user.getNumbers();
+    }
 }
