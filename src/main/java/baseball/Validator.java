@@ -1,6 +1,7 @@
 package baseball;
 
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,7 +9,6 @@ public class Validator {
 
     public Map<Integer, Integer> validateAndParseGuessedNumbers(String str) throws IllegalArgumentException {
         if(!isThreeDigitNumber(str)) throw new IllegalArgumentException("세 자리 숫자가 아닙니다");
-
         Map<Integer, Integer> guessedNumbers = parseNumbers(str);
         if(!isUniqueSetOfNumbers(guessedNumbers)) throw new IllegalArgumentException("중복된 숫자가 있습니다");
 
