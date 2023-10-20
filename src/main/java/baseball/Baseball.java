@@ -9,9 +9,13 @@ public class Baseball {
     private int strikeCount;
 
 
-    public Baseball() {
+    private Baseball() {
         this.ballCount = INIT_COUNT;
         this.strikeCount = INIT_COUNT;
+    }
+
+    public static Baseball getInstance() {
+        return new Baseball();
     }
 
     public void incrementBallCount() {

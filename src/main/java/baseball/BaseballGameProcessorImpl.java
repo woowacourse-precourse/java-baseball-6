@@ -13,7 +13,7 @@ public class BaseballGameProcessorImpl implements BaseballGameProcessor {
     @Override
     public String process(String computerNumber, String inputNumber) {
         Set<Character> box = new HashSet<>();
-        Baseball baseball = new Baseball();
+        Baseball baseball = Baseball.getInstance();
         for (int i= INIT_NUMBER; i< computerNumber.length(); i++) {
             box.add(computerNumber.charAt(i));
         }
