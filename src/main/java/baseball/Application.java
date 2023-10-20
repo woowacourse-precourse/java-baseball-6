@@ -37,16 +37,14 @@ public class Application {
             GameStart();
         } else {
             System.out.println("게임이 종료되었습니다.");
-            return;
         }
+        return;
     }
 
     public static String Restart() {
         System.out.println("게임을 새로 시작려면 1, 종료하려면 2를 입력하세요.");
 
-        String SelectNumber = Console.readLine();
-
-        return SelectNumber;
+        return Console.readLine();
     }
 
     public static String ComputerSelectNumber() {
