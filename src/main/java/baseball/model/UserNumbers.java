@@ -3,13 +3,10 @@ package baseball.model;
 import static baseball.Constants.NUMBER_COUNTS;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
 public class UserNumbers {
-
-    private static final String NUMBERS_SPLITTER = "";
 
     private List<Integer> userNumbers;
 
@@ -17,14 +14,10 @@ public class UserNumbers {
         this.userNumbers = userNumbers;
     }
 
-    public static UserNumbers of(final String numbers) {
-        List<Integer> inputNumbers = Arrays.stream(numbers.split(NUMBERS_SPLITTER))
-            .map(Integer::parseInt)
-            .toList();
-
-        validateNumbersSize(inputNumbers);
-        validateDuplicate(inputNumbers);
-        return new UserNumbers(inputNumbers);
+    public static UserNumbers createUserNumbers(final List<Integer> numbers) {
+        validateNumbersSize(numbers);
+        validateDuplicate(numbers);
+        return new UserNumbers(numbers);
     }
 
     private static void validateDuplicate(final List<Integer> inputNumbers) {

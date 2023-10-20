@@ -30,7 +30,9 @@ public class GameController {
         while (true) {
             OutputView.askNumbers();
             String userNumbersInput = inputView.getUserInput();
-            UserNumbers userNumbers = UserNumbers.of(userNumbersInput);
+            UserNumbersDto numbersRequest = new UserNumbersDto(userNumbersInput);
+            UserNumbers userNumbers = numbersRequest.toUserNumbers();
+
             GuessResult result = opponent.calculateResult(userNumbers);
             OutputView.showResult(result.getResult());
             if (result.isGameEnd()) {
@@ -42,5 +44,4 @@ public class GameController {
         String userNumberInput = inputView.getUserInput();
         gameNumber.changeNumber(userNumberInput);
     }
-
 }
