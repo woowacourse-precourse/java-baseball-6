@@ -11,6 +11,7 @@ public class Input {
         String userNumberInput = Console.readLine();
         UserInputValidator.validateIsNumberAndRange(userNumberInput);
         UserInputValidator.validateLength(userNumberInput);
+        UserInputValidator.validateDuplicate(userNumberInput);
 
         return Arrays.stream(userNumberInput.split("")).map(Integer::parseInt).toList();
     }
