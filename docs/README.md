@@ -30,6 +30,7 @@
         - [x] 각 자리 숫자가 1~9의 값인지 확인
     - [ ] RetryInputErrorException
         - [ ] 1,2 외의 값이 들어오는지 검사 기능
+        - [ ] 입력 값 숫자인지 확인
 
 ### Util
 - [x] Random한 3자릿 수 생성해주는 Util 구현

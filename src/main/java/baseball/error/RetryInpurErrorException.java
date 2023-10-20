@@ -5,4 +5,5 @@ public class RetryInpurErrorException implements ErrorException{
     public void checkUserInputValidate(String message) {
         throw new IllegalArgumentException(message);
     }
+    
 }
