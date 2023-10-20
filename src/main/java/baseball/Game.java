@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -8,11 +7,10 @@ public class Game {
 
     public void play() {
 
-        List<Integer> answerNumbers = Util.getRandomNumber();
-        System.out.println(answerNumbers.toString());
+        List<Integer> answerNumbers = Util.getRandomNumber(3);
 
         while(true) {
-            List<Integer> userNumbers = getUserNumbers();
+            List<Integer> userNumbers = askUserNumbers();
 
             Score score = Util.getScore(answerNumbers, userNumbers);
 
@@ -24,19 +22,14 @@ public class Game {
         }
     }
 
-    public List<Integer> getUserNumbers() {
+    public List<Integer> askUserNumbers() {
 
         System.out.print("숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
+        String userString = Console.readLine();
 
-        List<Integer> userNumbers = new ArrayList<>();
-        int num = Integer.parseInt(userInput);
+        Util.validateUserString(userString);
 
-        userNumbers.add(num / 100);
-        userNumbers.add((num % 100) / 10);
-        userNumbers.add((num % 100) % 10);
-
-        Util.validateUserNumbers(userNumbers);
+        List<Integer> userNumbers = Util.stringToIntegerList(userString);
 
         return userNumbers;
     }
