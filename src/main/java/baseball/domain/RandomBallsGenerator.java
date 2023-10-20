@@ -13,6 +13,7 @@ public class RandomBallsGenerator implements BallsGenerator {
 
     @Override
     public Balls generateBalls() {
+        balls.clear();
         while (balls.size() < NUMBER_OF_BALLS) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!balls.contains(randomNumber)) {
