@@ -10,14 +10,14 @@ public class Application {
         BaseballManageController controller = new BaseballManageController(gameData, view);
 
         do {
-            view.printStart();
+            controller.printStart();
             controller.generateComNums();
             System.out.println("computer is " + controller.getComputerNumbers());
 
             do {
                 gameData = init();
 
-                view.printRequirePlayerInput();
+                controller.printRequirePlayerInput();
                 controller.setPlayerNumbers(controller.playerNumsInput());
 
                 System.out.println(controller.getPlayerNumbers());
@@ -28,8 +28,8 @@ public class Application {
 
             } while (controller.getStrikeCnt() != 3);
 
-                view.printEndgame();
-                view.printAskRestart();
+                controller.printEndgame();
+                controller.printAskRestart();
                 controller.restartInput();
 
             if (controller.getGameRepetition().equals("2")) {
