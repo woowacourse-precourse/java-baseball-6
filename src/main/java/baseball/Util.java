@@ -55,6 +55,9 @@ public class Util {
             if(!Character.isDigit(c)) {
                 throw new IllegalArgumentException("숫자만 입력해야 합니다.");
             }
+            if(c == '0') {
+                throw new IllegalArgumentException("1~9 사이의 값을 입력해야 합니다.");
+            }
         }
     }
 
