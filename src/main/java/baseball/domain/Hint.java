@@ -11,7 +11,7 @@ public enum Hint {
         this.string = string;
     }
 
-    String value() {
+    public String value() {
         return string;
     }
 }
