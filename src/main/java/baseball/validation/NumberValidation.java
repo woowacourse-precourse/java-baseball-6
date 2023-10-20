@@ -1,6 +1,6 @@
 package baseball.validation;
 
-import baseball.model.Constant;
+import baseball.utils.Constant;
 import java.util.List;
 
 public class NumberValidation {

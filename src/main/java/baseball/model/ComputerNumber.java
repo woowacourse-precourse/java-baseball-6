@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.utils.Constant;
 import baseball.validation.NumberValidation;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;

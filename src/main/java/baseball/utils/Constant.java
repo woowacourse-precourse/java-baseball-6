@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.utils;
 
 public class Constant {
     public static final int LENGTH = 3;
