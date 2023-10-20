@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.domain.BaseballGame;
+import baseball.domain.GameResult;
 
 public class GameService {
 
@@ -14,7 +15,7 @@ public class GameService {
         baseballGame.init();
     }
 
-    public void getResult(String inputNumbers) {
-
+    public GameResult getResult(String inputNumbers) {
+        return baseballGame.compare(inputNumbers);
     }
 }

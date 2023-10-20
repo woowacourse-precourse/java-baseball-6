@@ -19,4 +19,23 @@ public class BaseballGame {
             }
         }
     }
+
+    public GameResult compare(String inputNumbers) {
+        String[] splitInputNumbers = inputNumbers.split("");
+        GameResult result = new GameResult();
+        for (int i = 0; i < 3; i++) {
+            if (numbers.get(i) == toInt(splitInputNumbers[i])) {
+                result.strike();
+                continue;
+            }
+            if (numbers.contains(toInt(splitInputNumbers[i]))) {
+                result.ball();
+            }
+        }
+        return result;
+    }
+
+    private int toInt(String str) {
+        return Integer.parseInt(str);
+    }
 }
