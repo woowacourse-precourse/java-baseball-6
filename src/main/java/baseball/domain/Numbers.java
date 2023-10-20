@@ -1,7 +1,7 @@
 package baseball.domain;
 
+import baseball.validator.NumberValidator;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class Numbers {
@@ -24,30 +24,11 @@ public class Numbers {
     }
 
     private static void validateNumberList(List<Integer> numberList) {
-        validateNumberSize(numberList);
-        validateNumberRange(numberList);
-        validateDuplicateNumber(numberList);
+        NumberValidator.validateNumberSize(numberList);
+        NumberValidator.validateNumberRange(numberList);
+        NumberValidator.validateDuplicateNumber(numberList);
     }
 
-    private static void validateNumberSize(List<Integer> numberList) {
-        if (numberList.size() != NUMBER_COUNT) {
-            throw new IllegalArgumentException("[ERROR] 숫자 수량이 잘못되었습니다.");
-        }
-    }
-
-    private static void validateNumberRange(List<Integer> numberList) {
-        for (Integer number : numberList) {
-            if (number < MIN_NUMBER || number > MAX_NUMBER) {
-                throw new IllegalArgumentException("[ERROR] 범위가 잘못되었습니다.");
-            }
-        }
-    }
-
-    private static void validateDuplicateNumber(List<Integer> numberList) {
-        if (numberList.size() != new HashSet<>(numberList).size()) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
-        }
-    }
 
     public List<Integer> getNumberList() {
         return new ArrayList<>(numberList);
