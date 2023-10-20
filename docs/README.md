@@ -7,7 +7,7 @@
 - [x] STRIKE 결과를 저장, 업데이트 하고 String 으로 결과 반환 - StrikeNum
 - [x] Ball 3개를 가져 서로 비교하며 볼, 스트라이크 수 계산 - Balls
 - [x] 게임 결과를 저장 - GameResult
-- [ ] 랜덤한 수를 생성 - NumberGenerator
+- [x] 랜덤한 볼을 생성 - RandomBallGenerator
 - [x] 숫자를 Balls 로 변환 - BallConvertor
 - [ ] 랜덤한 Balls 를 갖는 컴퓨터 - Computer
 - [ ] 입력한 Balls 를 갖는 Player - Player
