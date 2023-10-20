@@ -55,11 +55,10 @@ public class NumberBaseballGame {
                 .collect(Collectors.toList());
     }
 
-    private boolean validateInput(String inputString) throws IllegalArgumentException {
+    private void validateInput(String inputString) throws IllegalArgumentException {
         if (!Pattern.matches(INPUT_REGEX, inputString)) {
             throw new IllegalArgumentException("[ERROR] 잘못된 숫자 입력입니다: " + inputString);
         }
-        return true;
     }
 
     private boolean isUserWin(List<Integer> user) {
