@@ -64,7 +64,7 @@ public class Application {
             StringToUserList(inputStr);
 
             // 야구 게임 결과
-            result = baseballCount(computer, user);
+            baseballCount(computer, user);
 
             // 결과 메시지 출력
             outputMessage();
@@ -98,19 +98,22 @@ public class Application {
         }
     }
 
-    private static Map<String, Integer> baseballCount(List<Integer> computer, List<Integer> user) {
+    private static void baseballCount(List<Integer> computer, List<Integer> user) {
         for (int i = 0; i < computer.size(); i++) {
             int computerValue = computer.get(i);
             int userValue = user.get(i);
-            if (computerValue == userValue) {
-                result.put(STRIKE, result.get(STRIKE) + 1);
-            } else if (user.contains(computerValue)) {
-                result.put(BALL, result.get(BALL) + 1);
-            } else {
-                result.put(NOTHING, result.get(NOTHING) + 1);
-            }
+            addMapResult(user, computerValue, userValue);
         }
-        return result;
+    }
+
+    private static void addMapResult(List<Integer> user, int computerValue, int userValue) {
+        if (computerValue == userValue) {
+            result.put(STRIKE, result.get(STRIKE) + 1);
+        } else if (user.contains(computerValue)) {
+            result.put(BALL, result.get(BALL) + 1);
+        } else {
+            result.put(NOTHING, result.get(NOTHING) + 1);
+        }
     }
 
     private static boolean success() {
