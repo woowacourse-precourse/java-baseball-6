@@ -9,10 +9,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class NumberBaseballService {
-    private final NumberBaseball numberBaseball;
+    private NumberBaseball numberBaseball;
 
-    public NumberBaseballService(NumberBaseball numberBaseball) {
-        this.numberBaseball = numberBaseball;
+    public NumberBaseballService() {
+        numberBaseball = new NumberBaseball();
+    }
+
+    public void newGame() {
+        numberBaseball = new NumberBaseball();
     }
 
     public boolean isSameNum(int inputNum) {
