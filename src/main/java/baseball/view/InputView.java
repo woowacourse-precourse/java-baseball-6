@@ -1,7 +1,6 @@
 package baseball.view;
 
 import java.util.List;
-
 import baseball.dto.request.GameRestartDto;
 import baseball.dto.request.PlayerNumberDto;
 import baseball.util.InputConverter;
@@ -44,7 +43,7 @@ public class InputView {
 
     private void validateGameRestart(String rawGameRestart) {
         InputValidator.validateBlank(rawGameRestart);
-        InputValidator.validateOneCountNumberFormat(rawGameRestart);
+        InputValidator.validateOneDigitNumber(rawGameRestart);
     }
 
     private static class LazyHolder {
