@@ -13,17 +13,25 @@ public class Application {
     public static void main(String[] args) {
         gameStart();
     }
+
     private static void gameStart() {
-        boolean gameChoice = true;
         List<Integer> computerNum = new ArrayList<>();
-        String gameString = "";
 
         makeComputerNum(computerNum);
-        System.out.println(computerNum);
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (!gameString.equals("3스트라이크")) {
+        playingGame(computerNum);
 
+        if (checkRestartGame())
+            gameStart();
+    }
+
+    /**
+     * 게임을 실제로 플레이하는 구간 숫자를 계속 추측함.
+     */
+    private static void playingGame(List<Integer> computerNum){
+        String gameString = "";
+        while (!gameString.equals("3스트라이크")) {
             System.out.println("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
 
@@ -31,8 +39,6 @@ public class Application {
             System.out.println(gameString);
         }
 
-        if(checkRestartGame())
-            gameStart();
     }
     /**
      * 컴퓨터의 3자리 숫자를 만드는 메소드
@@ -79,7 +85,7 @@ public class Application {
                 strikeCount++;
             }
         }
-        listBS.add(totalCount-strikeCount);
+        listBS.add(totalCount - strikeCount);
         listBS.add(strikeCount);
         return listBS;
     }
@@ -87,14 +93,15 @@ public class Application {
     /**
      * BALL Count 와 STRIKE Count를 문자열로 변환하여 출력하여줌
      */
-    private static String printBallCount(List<Integer> listBS){
+    private static String printBallCount(List<Integer> listBS) {
         String returnString = "";
-        if(listBS.get(BALL) != 0)
-            returnString = listBS.get(BALL)+"볼 ";
+        if (listBS.get(BALL) != 0)
+            returnString = listBS.get(BALL) + "볼 ";
         if (listBS.get(STRIKE) != 0)
-            returnString += listBS.get(STRIKE)+"스트라이크";
-        if(listBS.get(BALL)==0 && listBS.get(STRIKE)==0)
+            returnString += listBS.get(STRIKE) + "스트라이크";
+        if (listBS.get(BALL) == 0 && listBS.get(STRIKE) == 0)
             returnString = "낫씽";
         return returnString;
     }
+
 }
