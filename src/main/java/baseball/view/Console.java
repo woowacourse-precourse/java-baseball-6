@@ -15,7 +15,7 @@ public class Console {
     private static final String NUMBER_REGEX = "[1-9]+";
     private static final List<String> RESTART_OR_TERMINATE = List.of("1", "2");
 
-    public static String input3DigitRandomNumber() {
+    public static List<Integer> input3DigitRandomNumber() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -25,7 +25,7 @@ public class Console {
             }
         }
 
-        return Arrays.toString(computer.toArray());
+        return computer;
     }
 
     private static String readLine() {
@@ -37,13 +37,13 @@ public class Console {
         return inputString;
     }
 
-    public static String input3DigitNumber() {
+    public static List<Integer> input3DigitNumber() {
         String inputString = readLine();
 
         validateInput3DigitNumber(inputString);
         validateInputNotDuplicate(inputString);
 
-        return inputString;
+        return List.of(Integer.parseInt(inputString));
     }
 
     public static String inputRestartOrTerminate() {

@@ -2,6 +2,8 @@ package baseball;
 
 import baseball.view.Console;
 
+import java.util.List;
+
 public class User {
 
     private static Machine machine;
@@ -19,7 +21,7 @@ public class User {
 
     }
 
-    public static String input3DigitNumber() {
+    public static List<Integer> input3DigitNumber() {
         return Console.input3DigitNumber();
     }
 

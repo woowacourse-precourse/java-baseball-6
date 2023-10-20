@@ -2,23 +2,23 @@ package baseball.game;
 
 import baseball.view.Console;
 
+import java.util.List;
+import java.util.stream.IntStream;
+
 
 public class Computer {
 
-    private static String computerNumber;
-    private boolean assigned = false;
+    private static List<Integer> computerNumber;
 
-    public Computer(){
+
+    public Computer() {
 
     }
 
     public void createRandomNumber() {
-        if (assigned) {
-            return;
-        }
 
         computerNumber = Console.input3DigitRandomNumber();
-        assigned = true;
+
     }
 
     public String getNumber() {
