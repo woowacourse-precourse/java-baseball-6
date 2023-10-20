@@ -16,6 +16,7 @@ public class BaseBallGame {
     private static final int RANDOM_NUMBER_LENGTH = 3;
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String PLAYER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String GAME_END_MESSAGE = RANDOM_NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public void gameStart() {
         printStartMessage();
@@ -34,6 +35,12 @@ public class BaseBallGame {
             playerNumbers = getPlayerNumber();
             isCorrect = compareNumber(computerNumbers, playerNumbers);
         }
+
+        printEndMessage();
+    }
+
+    private void printEndMessage() {
+        System.out.println(GAME_END_MESSAGE);
     }
 
     private boolean compareNumber(List<Integer> computerNumbers, List<Integer> playerNumbers) {
