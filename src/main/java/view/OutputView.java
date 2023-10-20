@@ -30,9 +30,9 @@ public class OutputView {
         StringBuilder result = new StringBuilder();
         // 볼 스트라이크
         if (strike == SUCCESS) {
-            result.append(strike).append(STRIKE).append("\n");
+            result.append(strike).append(STRIKE);
         } else if (strike == FAIL && ball== FAIL) {
-            result.append(NOTHING).append("\n");
+            result.append(NOTHING);
         } else {
             if (ball > FAIL)
                 result.append(ball).append(BALL).append(" ");
