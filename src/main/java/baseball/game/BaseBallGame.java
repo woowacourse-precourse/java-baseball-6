@@ -15,6 +15,10 @@ public class BaseBallGame implements Game {
         printGameStart();
         computer.createRandomNumber();
 
+        while (true) {
+            printUserInputMessage();
+
+        }
 
     }
 }

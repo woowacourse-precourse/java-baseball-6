@@ -97,4 +97,8 @@ public class Console {
     public static void printGameStart(){
         System.out.println(GAME_START);
     }
+
+    public static void printUserInputMessage(){
+        System.out.println(INPUT_NUMBER);
+    }
 }
