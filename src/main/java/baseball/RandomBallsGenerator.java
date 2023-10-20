@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RandomBallsGenerator implements BallsGenerator {
 
-    private static final int BALL_COUNT = 4;
+    private static final int BALL_COUNT = 3;
 
     @Override
     public List<Ball> generate(NumberGenerator numberGenerator) {
