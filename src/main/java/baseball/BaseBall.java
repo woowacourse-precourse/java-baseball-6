@@ -12,7 +12,7 @@ public class BaseBall {
     private int ball, strike;
 
     public boolean start() {
-        init();
+        createComputerNumber();
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
@@ -45,18 +45,14 @@ public class BaseBall {
                         return true;
                     }
                 }
+
+                createComputerNumber();
             }
         }
     }
 
-    private void init() {
-        computer = new ArrayList<>(3);
-        user = new ArrayList<>(3);
-
-        createComputerNumber();
-    }
-
     private void createComputerNumber() {
+        computer = new ArrayList<>();
         Set<Integer> hashSet = new HashSet<>();
 
         while (hashSet.size() < 3) {
@@ -71,6 +67,7 @@ public class BaseBall {
     }
 
     private void createUserNumber(String input) {
+        user = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             user.add(input.charAt(i) - '0');
         }
