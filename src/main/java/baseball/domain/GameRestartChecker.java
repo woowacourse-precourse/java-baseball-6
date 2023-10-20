@@ -4,14 +4,14 @@ import baseball.constants.BaseballConstant;
 import baseball.messages.ValidationErrorMessage;
 
 public class GameRestartChecker {
-    private int restart_yn;
-    public int getRestart_yn() {
-        return restart_yn;
+    private int restartYn;
+    public int getRestartYn() {
+        return restartYn;
     }
 
-    public void updateRestart_yn(String restart_yn) {
-        validate(restart_yn);
-        this.restart_yn = convertor(restart_yn);
+    public void updateRestartYn(String restartYn) {
+        validate(restartYn);
+        this.restartYn = convertor(restartYn);
     }
     private void validate(String restart_yn) {
         try {

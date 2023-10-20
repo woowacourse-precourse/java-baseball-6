@@ -51,6 +51,13 @@ public class BaseballController {
     private void restartYn(){
         String gameRestartYn = inputView.getGameRestartYn();
         GameRestartChecker checker = new GameRestartChecker();
-        checker.updateRestart_yn(gameRestartYn);
+        checker.updateRestartYn(gameRestartYn);
+        restartGame(checker);
+    }
+
+    private void restartGame(GameRestartChecker checker) {
+        if (checker.getRestartYn() == BaseballConstant.RESTART_YES) {
+            setUpRandomNumber();
+        }
     }
 }
