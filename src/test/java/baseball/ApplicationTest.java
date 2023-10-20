@@ -33,10 +33,4 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-    // TODO: 만약 입력받은 수가 3자리 수가 아니라면?
-
-    // TODO: 만약 입력받은 수가 숫자가 아니라면?
-
-
-
 }
