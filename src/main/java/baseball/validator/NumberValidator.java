@@ -37,6 +37,6 @@ public class NumberValidator {
     }
 
     private static boolean isAllNumberUnique(final String inputNumber) {
-        return StringInputConverter.convertToCharSet(inputNumber).size() == inputNumber.length();
+        return StringInputConverter.toCharSet(inputNumber).size() == inputNumber.length();
     }
 }

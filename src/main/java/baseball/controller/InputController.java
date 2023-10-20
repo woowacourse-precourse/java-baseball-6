@@ -10,7 +10,7 @@ public class InputController {
     public static int receiveUserNumberWidthLength(final int length) {
         String userInput = receivePlayNumberWithLength(length);
 
-        return StringInputConverter.convertToInt(userInput);
+        return StringInputConverter.toInt(userInput);
     }
 
     private static String receivePlayNumberWithLength(final int length) {
@@ -28,7 +28,7 @@ public class InputController {
         String resumeInput = Console.readLine();
         assertResumeValue(resumeInput, restart, end);
 
-        return StringInputConverter.convertToInt(resumeInput);
+        return StringInputConverter.toInt(resumeInput);
     }
 
     private static void assertResumeValue(final String resume, final int restart, final int end) {

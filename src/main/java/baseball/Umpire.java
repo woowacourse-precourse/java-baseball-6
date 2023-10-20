@@ -10,8 +10,8 @@ import java.util.stream.IntStream;
 public class Umpire {
 
     public static int countStrike(final int originNumber, final int testNumber) {
-        String[] origin = StringInputConverter.convertToArray(IntegerInputConverter.convertToString(originNumber));
-        String[] test = StringInputConverter.convertToArray(IntegerInputConverter.convertToString(testNumber));
+        String[] origin = StringInputConverter.toArray(IntegerInputConverter.convertToString(originNumber));
+        String[] test = StringInputConverter.toArray(IntegerInputConverter.convertToString(testNumber));
 
         return (int) IntStream.range(0, origin.length)
                 .filter(i -> isBothSame(origin[i], test[i]))
@@ -23,8 +23,8 @@ public class Umpire {
     }
 
     public static int countBall(final int originNumber, final int testNumber) {
-        String[] origin = StringInputConverter.convertToArray(IntegerInputConverter.convertToString(originNumber));
-        String[] test = StringInputConverter.convertToArray(IntegerInputConverter.convertToString(testNumber));
+        String[] origin = StringInputConverter.toArray(IntegerInputConverter.convertToString(originNumber));
+        String[] test = StringInputConverter.toArray(IntegerInputConverter.convertToString(testNumber));
 
         boolean[] onlyOrigin = new boolean[origin.length];
         boolean[] onlyTest = new boolean[test.length];

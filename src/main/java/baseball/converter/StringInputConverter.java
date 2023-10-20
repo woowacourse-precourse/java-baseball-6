@@ -5,15 +5,15 @@ import java.util.Set;
 
 public class StringInputConverter {
 
-    public static int convertToInt(final String input) {
+    public static int toInt(final String input) {
         return Integer.parseInt(input);
     }
 
-    public static String[] convertToArray(final String input) {
+    public static String[] toArray(final String input) {
         return input.split("");
     }
 
-    public static Set<Character> convertToCharSet(final String input) {
+    public static Set<Character> toCharSet(final String input) {
         HashSet<Character> inputSet = new HashSet<>();
 
         for (char character : input.toCharArray()) {
