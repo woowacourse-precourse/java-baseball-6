@@ -29,8 +29,8 @@ public class BaseballGame {
 
     private void playGame() {
         while (true) {
-            player = new Player(inputView.readPlayerNumber());
-            GameResult result = play(computer, player);
+            player = Player.of(inputView.readPlayerNumber());
+            GameResult result = play();
 
             if (result.getStrikeCount() == THREE_STRIKE) {
                 outputView.printGameFinishMessage();
@@ -46,20 +46,14 @@ public class BaseballGame {
         }
     }
 
-    private GameResult play(Computer computer, Player player) {
+    private GameResult play() {
         GameResult result = new GameResult();
 
         for (int idx = 0; idx < PLAY_AMOUNT; idx++) {
             int playerNumber = player.getNumberOf(idx);
             int computerNumber = computer.getNumberOf(idx);
 
-            if (playerNumber == computerNumber) {
-                result.addStrikeCount();
-                continue;
-            }
-            if (computer.contains(playerNumber)) {
-                result.addBallCount();
-            }
+            result.updateResult(playerNumber, computerNumber, computer);
         }
 
         return result;

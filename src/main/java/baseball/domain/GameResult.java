@@ -24,6 +24,15 @@ public class GameResult {
         return result;
     }
 
+    public void updateResult(int playerNumber, int computerNumber, Computer computer) {
+        if (playerNumber == computerNumber) {
+            this.addStrikeCount();
+            return;
+        }
+        if (computer.contains(playerNumber)) {
+            this.addBallCount();
+        }
+    }
 
     public int getStrikeCount() {
         return strikeCount;
