@@ -12,15 +12,14 @@ public class Number {
     public Number() {
     }
 
-    private Console console;
     private static final int LENGTH = 3;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
+    private static String END_INPUT1 = "1";
+    private static String END_INPUT2 = "2";
 
     /**
      * 컴퓨터가 랜덤 3자리 숫자를 생성하는 메서드
      */
-    public List<Integer> setRandomNumber() {
+    public List<Integer> generateRandomNumber() {
 
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -38,7 +37,7 @@ public class Number {
      */
     public List<Integer> inputNumber() {
 
-        String input = console.readLine();
+        String input = Console.readLine();
 
         int number = parseInt(input);
 
@@ -54,7 +53,7 @@ public class Number {
      */
     public String endInput() {
 
-        String input = console.readLine();
+        String input = Console.readLine();
         isValidEndInput(input);
         return input;
     }
@@ -116,7 +115,7 @@ public class Number {
     }
 
     private void isValidEndInput(String input) {
-        if (!(input.equals("1") || input.equals("2"))) {
+        if (!(input.equals(END_INPUT1) || input.equals(END_INPUT2))) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다. 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
     }

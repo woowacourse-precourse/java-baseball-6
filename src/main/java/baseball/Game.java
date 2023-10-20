@@ -12,14 +12,19 @@ public class Game {
     private static final String ASK_FOR_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private int strike = 0;
     private int ball = 0;
-    boolean isGameEnded = false;
+    private boolean isGameEnded = false;
+    private static final String STRIKE_MASSAGE = "스트라이크";
+    private static final String BALL_MASSAGE = "볼";
+    private static final String NOTHING_MASSAGE = "낫싱";
+    private static final int MAX_STRIKES = 3;
+
     private Number number = new Number();
 
     public void startGame() {
 
         System.out.println(START_MESSAGE);
 
-        List<Integer> computerNumber = number.setRandomNumber();
+        List<Integer> computerNumber = number.generateRandomNumber();
         // log
         System.out.println("컴퓨터: " + computerNumber);
 
@@ -36,15 +41,17 @@ public class Game {
 
     private void endGame() {
         System.out.println(END_MESSAGE);
-        System.out.println(ASK_FOR_RESTART_MESSAGE);
+        askForRestart();
+    }
 
+    private void askForRestart() {
+        System.out.println(ASK_FOR_RESTART_MESSAGE);
         String endInput = number.endInput();
 
         if (endInput.equals("1")) {
-            isGameEnded = false;
+            resetGame();
             startGame();
         } else if (endInput.equals("2")) {
-            // log
             System.out.println("게임 종료");
         }
     }
@@ -60,19 +67,24 @@ public class Game {
         }
 
         if (strike == 3) {
+            System.out.println(MAX_STRIKES + STRIKE_MASSAGE);
             isGameEnded = true;
             endGame();
         } else if (strike == 0 && ball == 0) {
-            System.out.println("나싱");
+            System.out.println(NOTHING_MASSAGE);
         } else {
-            System.out.print(ball + "볼" + " ");
-            System.out.println(strike + "스트라이크");
+            System.out.print(ball + BALL_MASSAGE + " ");
+            System.out.println(strike + STRIKE_MASSAGE);
         }
     }
 
     private void resetScore() {
         strike = 0;
         ball = 0;
+    }
+
+    private void resetGame() {
+        isGameEnded = false;
     }
 
 }
