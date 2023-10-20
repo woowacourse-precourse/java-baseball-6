@@ -9,9 +9,9 @@ public class Baseball {
 
     public Baseball(int inputNumber) {
         digits = new ArrayList<>(3);
-        digits.set(0, inputNumber / 100);
-        digits.set(1, (inputNumber / 10) % 10);
-        digits.set(2, inputNumber % 10);
+        digits.add(inputNumber / 100);
+        digits.add((inputNumber / 10) % 10);
+        digits.add(inputNumber % 10);
     }
 
     private Baseball(List<Integer> computer) {
