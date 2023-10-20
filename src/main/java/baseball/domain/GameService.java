@@ -23,8 +23,6 @@ public class GameService {
         return !numbers.contains(randomNumber);
     }
 
-
-
     public int[] compare(List<Integer> computerNumbers, List<Integer> userNumbers) {
         int[] result = new int[2]; // result[0] == strike, result[1] == ball
         for(int index = 0; index < MAX_NUMBERS; index++){

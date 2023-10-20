@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.domain.GameService;
 import baseball.utill.Parser;
-import baseball.utill.Validation;
+import baseball.utill.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class GameController {
 
     GameService service = new GameService();
     Parser parser = new Parser();
-    Validation validation = new Validation();
+    Validator validator = new Validator();
     List<Integer> computerNumbers = new ArrayList<>();
 
     private static final String RESTART = "1";
@@ -28,7 +28,7 @@ public class GameController {
             System.out.println("숫자를 입력해주세요.");
             String input = Console.readLine();
             List<Integer> userNumbers = parser.parseInputToList(input);
-            if (validation.isInvalid(userNumbers)) throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
+            if (validator.isInvalid(userNumbers)) throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
             int[] result = service.compare(computerNumbers, userNumbers);
             service.printResult(result);
             if(service.isThreeStrikes(result)){

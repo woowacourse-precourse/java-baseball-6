@@ -2,7 +2,7 @@ package baseball.utill;
 
 import java.util.List;
 
-public class Validation {
+public class Validator {
     public boolean isInvalid(List<Integer> userNumbers) {
         return isNotNumber(userNumbers) || isNotThreeDigits(userNumbers) || hasDuplicatedNumbers(userNumbers);
     }
