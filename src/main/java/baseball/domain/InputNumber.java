@@ -9,4 +9,8 @@ public class InputNumber {
     public InputNumber(List<Integer> inputNumber) {
         this.inputNumber = inputNumber;
     }
+
+    public Integer getNumberAtIndex(int index) {
+        return inputNumber.get(index);
+    }
 }

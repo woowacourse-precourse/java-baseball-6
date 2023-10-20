@@ -1,13 +1,12 @@
 package baseball.controller;
 
 import baseball.domain.GameStatus;
+import baseball.domain.InputNumber;
 import baseball.domain.RandomNumber;
 import baseball.domain.RetryCommand;
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.List;
 
 public class GameController {
 
@@ -24,9 +23,8 @@ public class GameController {
 
     public void playGame() {
         RandomNumber randomNumber = new RandomNumber();
-        System.out.println(randomNumber.toString());
         while (!gameStatus.isEnd()) {
-            List<Integer> inputNumber = inputView.getInputNumber();
+            InputNumber inputNumber = inputView.getInputNumber();
             GameStatus gamestatus = gameService.compareNumber(randomNumber, inputNumber, gameStatus);
             outputView.printGameResult(gamestatus);
             if (gamestatus.isEnd()) {

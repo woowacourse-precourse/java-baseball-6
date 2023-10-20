@@ -26,17 +26,19 @@ public class RandomNumber {
         return computer;
     }
 
-    public boolean isStrike(Integer inputNumber, int index) {
-        return this.randomNumber.get(index).equals(inputNumber);
+    public boolean numberExistsInList(Integer numberAtIndex) {
+        return randomNumber.contains(numberAtIndex);
     }
 
-    public boolean isBall(Integer inputNumber, int index) {
-        return this.randomNumber.contains(inputNumber) && !this.randomNumber.get(index).equals(inputNumber);
+    public Integer getNumberAtIndex(int index) {
+        return randomNumber.get(index);
     }
 
-    @Override
-    public String toString() {
-        System.out.println(this.randomNumber);
-        return "g";
+    public boolean isNotSameNumberAtIndex(Integer numberAtIndex, int index) {
+        return !randomNumber.get(index).equals(numberAtIndex);
+    }
+
+    public boolean isSameNumberAtIndex(Integer numberAtIndex, int index) {
+        return randomNumber.get(index).equals(numberAtIndex);
     }
 }
