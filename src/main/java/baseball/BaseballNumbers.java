@@ -1,7 +1,7 @@
 package baseball;
 
+import baseball.io.Input;
 import baseball.io.Output;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseballNumbers {
@@ -11,7 +11,7 @@ public class BaseballNumbers {
 
     public BaseballNumbers() {
         Output.console("숫자를 입력해주세요 : ");
-        String inputNumbersString = Console.readLine();
+        String inputNumbersString = Input.consoleLine();
 
         if (inputNumbersString.length() != MAX_LENGTH_OF_NUMBERS) {
             throw new IllegalArgumentException("야구숫자는 세 자리여야 합니다.");
