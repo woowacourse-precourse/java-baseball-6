@@ -9,6 +9,10 @@ public class InputValidator {
         return true;
     }
 
+    public static boolean isValidUserRetryGameInput(String input) {
+        return input.equals("1") || input.equals("2");
+    }
+
     private static boolean isDuplicated(String input) {
         for(int i = 0; i < input.length() - 1; i++) {
             for(int j = i + 1; j < input.length(); j++) {
