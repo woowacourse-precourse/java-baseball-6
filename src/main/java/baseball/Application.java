@@ -7,14 +7,11 @@ import baseball.utill.Utill;
 import baseball.utill.ValidException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Application {
     private static final int INPUT_NUM_SIZE = 3;
     private static final int NOT_AGAIN_GAME = 2;
-    private static final int WANT_AGAIN_GAME = 1;
     private static final int RESET_NUM = 0;
     static String hintOfJudge; // 결과를 담는 문자열
 

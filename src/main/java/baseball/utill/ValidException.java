@@ -1,6 +1,5 @@
 package baseball.utill;
 
-import baseball.string.MyConstants;
 import baseball.string.ValidConstants;
 
 public class ValidException {
