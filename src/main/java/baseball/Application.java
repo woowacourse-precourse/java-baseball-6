@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Application {
 
-//    public static List<Integer> computerNumber;
+    public static List<Integer> computerNumber;
 //    public static List<Integer> playerNumber;
     public static int strike, ball;
     public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class Application {
 
     public static void GameStart() {
 
-        String computerNumber = ComputerSelectNumber();
+        computerNumber = ComputerSelectNumber();
         System.out.println("컴퓨터 숫자 : " + computerNumber);
         while(true) {
             String playerNumber = PlayerSelectNumber();
@@ -46,23 +46,18 @@ public class Application {
         return Console.readLine();
     }
 
-    public static String ComputerSelectNumber() {
+    public static List<Integer> ComputerSelectNumber() {
         //컴퓨터가 서로 다른 3개의 숫자 생성
 
-//        computerNumber = new ArrayList<>();
-        StringBuilder computerNumber = new StringBuilder();
-        for(int i=0; i<3; i++) {
-          String SelectNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
+        List<Integer> computer = new ArrayList<>();
 
-          if(computerNumber.toString().contains(SelectNumber)) {
-              i--;
-              continue;
-          }
-            computerNumber.append(SelectNumber);
-//            computerNumber.add(randomNumber);
+        while(computer.size()<3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if(!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
         }
-
-        return computerNumber.toString();
+        return computer;
     }
 
     public static String PlayerSelectNumber() {
