@@ -1,6 +1,6 @@
 package baseball.service;
 
-import static baseball.domain.Computer.BASEBALL_NUMBERS_SIZE;
+import static baseball.controller.BaseballController.BASEBALL_NUMBERS_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

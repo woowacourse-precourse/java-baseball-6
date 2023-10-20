@@ -1,6 +1,6 @@
 package baseball.service;
 
-import static baseball.domain.Computer.BASEBALL_NUMBERS_SIZE;
+import static baseball.controller.BaseballController.BASEBALL_NUMBERS_SIZE;
 
 import java.util.HashSet;
 import java.util.Set;
