@@ -5,7 +5,9 @@ public class BallCounts {
     private int ball;
     private int strike;
 
-    public BallCounts() {
+    public BallCounts(int ball, int strike) {
+        this.ball = ball;
+        this.strike = strike;
     }
 
     @Override

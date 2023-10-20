@@ -142,11 +142,12 @@
 
 ### 추가할 클래스 정리
 
-- [ ] Ball
+- [X] Ball
     - Player 의 입력을 소유하고있는 Wrapper
+    - Computer 의 numbers 또한 이로 대체
 - [ ] BallCounts
     - Computer 내부에 있던 ballCounts, strikeCounts 의 Wrapper
-- [ ] Referee
+- [X] Referee
     - Ball 을 받았을 때, 몇 볼, 몇 스트라이크인 지 판단
 - [ ] BallCountMessage
     - Ball 을 받았을 때, 현재 볼카운트를 메시지로 변환
