@@ -20,6 +20,11 @@ public class GameService {
         return computerNumber;
     }
 
+    public String getCompareResult(List<Integer> computerNumber, List<Integer> userNumber) {
+        Map<String, Integer> ballAndStrikeCount = getBallAndStrikeCount(computerNumber, userNumber);
+        return getResultMessage(ballAndStrikeCount);
+    }
+
     private Map<String, Integer> getBallAndStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
         Map<String, Integer> ballAndStrikeCount = new HashMap<>();
         ballAndStrikeCount.put("ballCount", 0);
