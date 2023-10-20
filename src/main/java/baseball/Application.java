@@ -22,25 +22,42 @@ public class Application {
             num -= (num/j)*j;
             j /= 10;
         }
-        for (int i = 0; i < 3; i++) {
-            System.out.print(answer[i]);
-            System.out.println(keyNum[i]);
-        }
+
         return true;
     }
 
-//    public String returnResult(int[] numbers){
-//
-//    }
+    public boolean returnResult(){
+        Application finishGame = new Application();
+        int isSame = 0;
+        for (int i = 0; i < 3; i++) {
+            if (answer[i] == keyNum[i]) { isSame += 1; }
+        }
+        if (isSame == 3) {
+            finishGame.finishGame();
+            return true;
+        }
+        else {
+            System.out.println("낫싱");
+            return false;
+        }
+    }
+
+    public void finishGame() {
+        System.out.println("3스트라이크");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
 
     public static void main(String[] args) {
         Application startGame = new Application();
         Application inputNumbers = new Application();
+        Application returnResult = new Application();
         startGame.startGame();
 
         while(true){
             boolean alert = inputNumbers.inputNumbers();
             if (!alert) break;
+            boolean isEnd = returnResult.returnResult();
+            if (isEnd) break;
         }
 
     }

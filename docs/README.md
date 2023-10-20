@@ -4,27 +4,35 @@
 
 2. `int[] keyNum` : 사용자가 추측해서 입력한 숫자를 저장
 
-# 2. 기능목록
+<br>
 
-#### startGame()
+# 2-1. 우선순위 1 기능목록
+
+#### ✅ startGame()
 
 - 게임 시작 알림, `숫자 야구 게임을 시작합니다` 출력
 
-#### inputNumbers()
+#### ✅ inputNumbers()
 
 - `숫자를 입력해주세요 :` 출력
 
 - 값을 입력받고(scanner 사용) `keyNum` 변수에 값 저장
 
-#### returnResult()
+- `keyNum`에서 인덱스 0자리의 값이 0이면 (값이 없다는 뜻) 종료 (IllegalArgumentException 발생)
+
+#### ⬜ returnResult()
 
 - `keyNum` `answer` 배열을 순회/비교함
 
-- `keyNum`에서 인덱스 0자리의 값이 0이면 (값이 없다는 뜻) 종료 (IllegalArgumentException 발생)
-
 - 위 경우 제외하고는 while으로 계속 돌아야됨
 
-#### finishGame()
+- 볼인경우
+
+- 스트라이크인경우
+
+- 낫싱인경우
+
+#### ⬜ finishGame()
 
 - `3개의 숫자를 모두 맞히셨습니다! 게임 종료` 문구 출력
 
@@ -36,6 +44,8 @@
   
   - 2의 경우 : main 종료
 
+<br>
+
 ### 출력 문구 정리
 
 | 상황    | 문구                              |
@@ -46,15 +56,13 @@
 | 게임종료  | 3개의 숫자를 모두 맞히셨습니다! 게임 종료        |
 |       | 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. |
 
-# 3. 기능구현 진행 체크리스트
+<br>
 
-✅ `startGame()`
+# 2-2. 우선순위 2 기능목록
 
-✅ `inputNumbers()`
+추가해야될 듯
 
-⬜ `returnResult()`
-
-⬜ `finishGame()`
+<br>
 
 #### 커밋규칙 & 주의사항
 
