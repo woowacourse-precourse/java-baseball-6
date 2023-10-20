@@ -6,7 +6,7 @@ public class Validator {
 
         char[] inputCharArray = inputValue.toCharArray();
 
-        return isNumbers(inputCharArray);
+        return isNumbers(inputCharArray) && isThreeLength(inputCharArray);
     }
 
     private boolean isNumbers(char[] inputCharArray) {
@@ -18,6 +18,12 @@ public class Validator {
         }
 
         return true;
+    }
+
+    private boolean isThreeLength(char[] inputCharArray) {
+
+        return inputCharArray.length == 3;
+
     }
 
 }
