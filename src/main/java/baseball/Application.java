@@ -3,8 +3,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -17,9 +21,48 @@ public class Application {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
-                //System.out.println(randomNumber + " ");
+                System.out.println(randomNumber);
             }
         }
 
+        List<Integer> user = new ArrayList<>();
+
+        System.out.print("숫자를 입력해주세요 : ");
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        String inputStr;
+        try {
+            inputStr = input.readLine();
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
+        }
+
+        if(isNumber(inputStr)) {
+            int inputInt = Integer.parseInt(inputStr);
+            if(inputInt >= 100 && inputInt <= 999) {
+                while (user.size() < 3) {
+                    // 세 자리 수의 각 자리 숫자를 추출
+                    int digit = inputInt % 10;
+                    if(user.contains(digit)) throw new IllegalArgumentException();
+                    user.add(0, digit);
+                    inputInt /= 10;
+                }
+            } else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+        for (int digit : user) {
+            System.out.println(digit);
+        }
+
+    }
+
+    // 입력받은 값이 숫자인지 확인
+    public static boolean isNumber(String str) {
+        if(str == null) return false;
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
