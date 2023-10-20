@@ -10,8 +10,11 @@ public class InputView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public List<Integer> inputGuideMsg() throws IllegalArgumentException {
+    public void inputGuideMsg() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    public List<Integer> inputByConsole() {
         String input = Console.readLine();
 
         userInputValidation(input);

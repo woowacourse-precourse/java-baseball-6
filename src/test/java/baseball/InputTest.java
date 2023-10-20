@@ -17,11 +17,11 @@ public class InputTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThat(inputView.inputGuideMsg()).isEqualTo(new ArrayList<>(){{
+        assertThat(inputView.inputByConsole()).isEqualTo(new ArrayList<>(){{
             add(1);
             add(2);
             add(3);
         }});
-        assertThrows(IllegalArgumentException.class, () -> inputView.inputGuideMsg());
+        assertThrows(IllegalArgumentException.class, () -> inputView.inputByConsole());
     }
 }
