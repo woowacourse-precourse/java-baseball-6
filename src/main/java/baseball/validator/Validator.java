@@ -23,6 +23,7 @@ public class Validator {
 
     public void validateInRange(int value, int from, int to) {
         if (value < from || value > to) {
+            System.out.println("value = " + value);
             String format = String.format("%d에서 %d 숫자만 입력해주셔야 합니다.", from, to);
             throw new IllegalArgumentException(format);
         }
