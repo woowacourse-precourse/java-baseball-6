@@ -22,21 +22,21 @@ public class Application {
 
 			List<Integer> computerNumber = createComputerNumber();
 
-			UserNumber UserNumber = new UserNumber();
+			UserNumber userNumber = new UserNumber();
 
 			int strikeNumber = 0;
 			int ballNumber;
 
 			while (strikeNumber != computerNumber.size()) {
-				String[] inputUserNumber = UserNumber.inputUserNumber();
-				UserNumber.checkInputOnlyNum(inputUserNumber);
+				String[] inputUserNumber = userNumber.inputUserNumber();
+				userNumber.checkInputOnlyNum(inputUserNumber);
 
-				List<Integer> UserNumberList = UserNumber.toListUserNumber(inputUserNumber);
-				UserNumber.checkSizeUserNum(UserNumberList);
-				UserNumber.checkRangeUserNum(UserNumberList);
+				List<Integer> userNumberList = userNumber.toListUserNumber(inputUserNumber);
+				userNumber.checkSizeUserNum(userNumberList);
+				userNumber.checkRangeUserNum(userNumberList);
 
-				ballNumber = countBall(computerNumber, UserNumberList);
-				strikeNumber = countStrike(computerNumber, UserNumberList);
+				ballNumber = countBall(computerNumber, userNumberList);
+				strikeNumber = countStrike(computerNumber, userNumberList);
 
 				printStrike(ballNumber, strikeNumber);
 			}
@@ -45,9 +45,8 @@ public class Application {
 			System.out.println("게임을 새로 시작하려면 " + RESTART_SIGH + ", 종료하려면 " + END_SIGN + "를 입력하세요.");
 			controlSign = Console.readLine().trim();
 
-			if (!(controlSign.equals(RESTART_SIGH) || controlSign.equals(END_SIGN))) {
-				throw new IllegalArgumentException(RESTART_SIGH + "이나 " + END_SIGN + "만 입력해주세요");
-			}
+			checkControlSign(controlSign);
+
 		}
 	}
 
@@ -105,6 +104,15 @@ public class Application {
 			System.out.println((ballNumber - StrikeNumber) + "볼 " + StrikeNumber + "스트라이크");
 		}
 
+	}
+
+	static void checkControlSign(String controlSign) {
+		final String END_SIGN = "2";
+		final String RESTART_SIGH = "1";
+
+		if (!(controlSign.equals(RESTART_SIGH) || controlSign.equals(END_SIGN))) {
+			throw new IllegalArgumentException(RESTART_SIGH + "이나 " + END_SIGN + "만 입력해주세요");
+		}
 	}
 
 }
