@@ -1,9 +1,9 @@
 package baseball.api;
 
-import baseball.api.constants.ResponseFormatConstants;
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Collection;
 import java.util.List;
@@ -15,7 +15,9 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ComputerTest {
-    private ByteArrayOutputStream outputStreamCaptor;
+
+    private PrintStream standardOut;
+    private ByteArrayOutputStream captor;
 
     @Test
     @DisplayName("1-9까지의 수를 3개 얻을 수 있다.")
@@ -62,10 +64,11 @@ class ComputerTest {
                     int strikeCount = 1;
                     int ballCount = 1;
                     String result = String.format(BALL_AND_STRIKE_FORMAT, ballCount, strikeCount);
-                    setUp();
+                    init();
                     //when
                     Computer.hintMessage(strikeCount,ballCount);
                     //then
+                    printOutput();
                     assertThat(getOutput().trim()).isEqualTo(result);
                 }),
                 DynamicTest.dynamicTest("하나도 없는 경우", () -> {
@@ -73,10 +76,11 @@ class ComputerTest {
                     int strikeCount = 0;
                     int ballCount = 0;
                     String result = String.format(EMPTY_FORMAT);
-                    setUp();
+                    init();
                     //when
                     Computer.hintMessage(strikeCount,ballCount);
                     //then
+                    printOutput();
                     assertThat(getOutput().trim()).isEqualTo(result);
                 }),
                 DynamicTest.dynamicTest("3개의 숫자를 모두 맞힐 경우", () -> {
@@ -84,22 +88,29 @@ class ComputerTest {
                     int strikeCount = 3;
                     int ballCount = 0;
                     String result = String.format(STRIKE_FORMAT, strikeCount);
-                    setUp();
+                    init();
                     //when
                     Computer.hintMessage(strikeCount,ballCount);
                     //then
+                    printOutput();
                     assertThat(getOutput().trim()).isEqualTo(result);
                 })
         );
     }
-    private void setUp() {
-        outputStreamCaptor = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStreamCaptor));
+    private void init() {
+        standardOut = System.out; //표준 스트림 초기화
+        captor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(captor));
+    }
+
+    private void printOutput() {
+        System.setOut(standardOut); // 표준 스트림 할당
+        System.out.println(getOutput()); // 원하는 내용이 잘 나왔는지 문자열 디코딩 바이트를 가져와 출력
     }
 
     private String getOutput() {
-        // ByteArrayOutputStream의 toString은 기본 문자집합을 사용하여 버퍼의 내용을 문자열 디코딩 바이트로 변환해줍니다.
-        return outputStreamCaptor.toString();
+        // 기본 문자집합을 사용하여 버퍼의 내용을 문자열 디코딩 바이트로 변환
+        return captor.toString().trim();
     }
 
 }
