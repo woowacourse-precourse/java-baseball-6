@@ -21,7 +21,7 @@ class GameServiceTest {
     }
 
     @Test
-    void 볼_카운트_증가_테스트(){
+    void 볼_카운트_증가_테스트() {
         player.settingPlayerNumber(new int[]{3, 1, 2});
         List<Integer> computer = Arrays.asList(1, 2, 5);
 
@@ -31,7 +31,7 @@ class GameServiceTest {
     }
 
     @Test
-    void 낫싱_테스트(){
+    void 낫싱_테스트() {
         player.settingPlayerNumber(new int[]{4, 5, 6});
         List<Integer> computer = Arrays.asList(1, 2, 3);
 
@@ -42,7 +42,15 @@ class GameServiceTest {
     }
 
     @Test
-    void 정수_배열_변환_테스트(){
+    void 컴퓨터_랜덤_숫자_길이_테스트() {
+        gameService.settingComputerRandomNumbers();
+        int size = gameService.getComputerRandomNumberSize();
+
+        Assertions.assertThat(3).isEqualTo(size);
+    }
+
+    @Test
+    void 정수_배열_변환_테스트() {
         String inputPlayerNumber = "123";
         int[] output = {1, 2, 3};
         int[] result = gameService.toIntArray(inputPlayerNumber);
@@ -51,7 +59,7 @@ class GameServiceTest {
     }
 
     @Test
-    void 정수_변환_테스트(){
+    void 정수_변환_테스트() {
         char number = '5';
         int output = 5;
         int result = gameService.toInt(number);
