@@ -32,7 +32,7 @@ public class BaseballNumbers {
                 .toList();
     }
 
-    public List<Integer> getNumbers() {
+    public List<Integer> get() {
         return baseballNumbers;
     }
 }

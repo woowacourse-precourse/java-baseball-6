@@ -19,12 +19,12 @@ public class WinningNumbers {
     }
 
     public BallCount ballCounting(BaseballNumbers baseballNumbers) {
-        long countOfOnlyContains = baseballNumbers.getNumbers().stream()
+        long countOfOnlyContains = baseballNumbers.get().stream()
                 .filter(winningNumbers::contains)
                 .count();
         long countOfExactMatches = IntStream.range(0, 3)
                 .filter(i -> Objects.equals(
-                        winningNumbers.get(i), baseballNumbers.getNumbers().get(i)))
+                        winningNumbers.get(i), baseballNumbers.get().get(i)))
                 .count();
         long countOfBall = countOfOnlyContains - countOfExactMatches;
         long countOfStrike = countOfExactMatches;
