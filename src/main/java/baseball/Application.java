@@ -70,8 +70,8 @@ public class Application {
         return inputNumbers.length() == 3;
     }
 
-    public static boolean isBetween1and9(final char inputNumber) {
-        return inputNumber >= '1' && inputNumber <= '9';
+    public static boolean isBetween1and9(final char inputDigit) {
+        return inputDigit >= '1' && inputDigit <= '9';
     }
 
     public static List<Integer> convertStringToIntList(final String inputString) {
