@@ -2,12 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import org.junit.jupiter.api.Test;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
@@ -23,7 +20,7 @@ public class Application {
     }
 
     public static class Problem {
-        private ArrayList<Integer> computer = new ArrayList<>();
+        private final ArrayList<Integer> computer = new ArrayList<>();
 
         public void creatNumber() {
             computer.clear();
