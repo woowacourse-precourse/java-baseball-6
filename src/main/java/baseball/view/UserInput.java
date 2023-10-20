@@ -1,6 +1,8 @@
 package baseball.view;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -13,8 +15,8 @@ public class UserInput {
         this.userInput = inputString;
     }
 
-    public String getUserInput() {
-        return userInput;
+    public List<Integer> userInputToIntegerList() {
+        return Arrays.stream(userInput.split("")).map(Integer::parseInt).toList();
     }
 
     private boolean hasLengthOfThree(String userInput) {
