@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
+import baseball.game.GameManager;
 import baseball.input.ConsoleInputReader;
 import baseball.input.DuplicateNumberValidator;
 import baseball.input.NumberContainZeroValidator;
@@ -49,24 +50,8 @@ public class Application {
          * 5. 출력 방식이 바뀐다면?
          */
 
-        ConsoleInputReader consoleInputReader = new ConsoleInputReader();
-        Integer userInput = consoleInputReader.readNumber();
-
-        NumberRangeValidator numberRangeValidator = new NumberRangeValidator();
-        numberRangeValidator.validate(userInput);
-
-        DuplicateNumberValidator duplicateNumberValidator = new DuplicateNumberValidator();
-        duplicateNumberValidator.validate(userInput);
-
-        NumberContainZeroValidator numberContainZeroValidator = new NumberContainZeroValidator();
-        numberContainZeroValidator.validate(userInput);
-
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        int randomNumber = randomNumberGenerator.generateNumber();
-
-        numberRangeValidator.validate(randomNumber);
-        duplicateNumberValidator.validate(randomNumber);
-        numberContainZeroValidator.validate(randomNumber);
+        GameManager gameManager = new GameManager();
+        gameManager.start();
 
     }
 
