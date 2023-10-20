@@ -2,6 +2,7 @@ package baseball.view;
 
 import static baseball.view.Messages.GAME_OVER_MESSAGE;
 import static baseball.view.Messages.GAME_START_MESSAGE;
+import static baseball.view.Messages.INSERT_NUMBER_MESSAGE;
 
 public class OutputView {
     public void printGameStart() {
@@ -14,5 +15,9 @@ public class OutputView {
 
     public void printGameOver() {
         System.out.println(GAME_OVER_MESSAGE);
+    }
+
+    public void printInsertNumbers() {
+        System.out.println(INSERT_NUMBER_MESSAGE);
     }
 }
