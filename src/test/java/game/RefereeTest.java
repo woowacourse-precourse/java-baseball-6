@@ -18,7 +18,7 @@ class RefereeTest {
         String result = bc.toString();
 
         //then
-        assertThat(result).isEqualTo("2, 0");
+        assertThat(result).isEqualTo("2볼");
     }
 
     @Test
@@ -32,7 +32,7 @@ class RefereeTest {
         String result = bc.toString();
 
         //then
-        assertThat(result).isEqualTo("1, 1");
+        assertThat(result).isEqualTo("1볼 1스트라이크");
     }
 
     @Test
@@ -46,7 +46,7 @@ class RefereeTest {
         String result = bc.toString();
 
         //then
-        assertThat(result).isEqualTo("0, 3");
+        assertThat(result).isEqualTo("3스트라이크");
     }
 
     @Test
@@ -60,7 +60,7 @@ class RefereeTest {
         String result = bc.toString();
 
         //then
-        assertThat(result).isEqualTo("0, 2");
+        assertThat(result).isEqualTo("2스트라이크");
     }
 
     @Test
@@ -74,6 +74,6 @@ class RefereeTest {
         String result = bc.toString();
 
         //then
-        assertThat(result).isEqualTo("0, 0");
+        assertThat(result).isEqualTo("낫싱");
     }
 }
