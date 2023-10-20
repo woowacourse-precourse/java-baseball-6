@@ -26,4 +26,9 @@ public class InputView {
                 .boxed()
                 .toList();
     }
+
+    public Command insertCommand() {
+        String input = Console.readLine();
+        return Command.findByString(input);
+    }
 }
