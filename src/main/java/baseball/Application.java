@@ -41,8 +41,7 @@ public class Application {
 				printStrike(ballNumber, strikeNumber);
 			}
 
-			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-			System.out.println("게임을 새로 시작하려면 " + RESTART_SIGH + ", 종료하려면 " + END_SIGN + "를 입력하세요.");
+			printInputControlSign();
 			controlSign = Console.readLine().trim();
 
 			checkControlSign(controlSign);
@@ -104,6 +103,15 @@ public class Application {
 			System.out.println((ballNumber - StrikeNumber) + "볼 " + StrikeNumber + "스트라이크");
 		}
 
+	}
+
+	static void printInputControlSign() {
+		final String END_SIGN = "2";
+		final String RESTART_SIGH = "1";
+		final int COMPUTER_NUMBER_SIZE = 3;
+
+		System.out.println(COMPUTER_NUMBER_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println("게임을 새로 시작하려면 " + RESTART_SIGH + ", 종료하려면 " + END_SIGN + "를 입력하세요.");
 	}
 
 	static void checkControlSign(String controlSign) {
