@@ -23,9 +23,13 @@ public class Player {
     private void play() {
         reset();
         while (!computer.isFinish()) {
-            Ball ball = new Ball(readBallInput());
-            computer.judge(ball);
+            pitchBall();
         }
+    }
+
+    private void pitchBall() {
+        Ball ball = new Ball(readBallInput());
+        computer.catchBall(ball);
     }
 
     private void playAgain() {
