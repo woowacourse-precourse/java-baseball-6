@@ -31,14 +31,8 @@ public class InputView {
         String inputValue = Console.readLine();
         String[] inputNumbers = inputValue.split(SEPARATOR);
 
-        validatePlayerNumber(inputNumbers);
+        Validator.validatePlayerNumber(inputNumbers);
         return inputNumbers;
-    }
-
-    private static void validatePlayerNumber(String[] inputNumbers) {
-        Validator.validateNumbersFormat(inputNumbers);
-        Validator.validateNumbersLength(inputNumbers);
-        Validator.validateNumbersDuplication(inputNumbers);
     }
 
     public String readRestartOrNot() {

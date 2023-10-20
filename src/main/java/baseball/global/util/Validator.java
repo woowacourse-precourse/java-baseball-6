@@ -12,20 +12,26 @@ import java.util.stream.Collectors;
 
 public class Validator {
 
-    public static void validateNumbersLength(String[] numbers) {
+    public static void validatePlayerNumber(String[] inputNumbers) {
+        Validator.validateNumbersFormat(inputNumbers);
+        Validator.validateNumbersLength(inputNumbers);
+        Validator.validateNumbersDuplication(inputNumbers);
+    }
+
+    private static void validateNumbersLength(String[] numbers) {
         if (numbers.length != PLAY_AMOUNT) {
             throw new IllegalArgumentException(NUMBER_LENGTH_ERROR_MESSAGE);
         }
     }
 
-    public static void validateNumbersDuplication(String[] numbers) {
+    private static void validateNumbersDuplication(String[] numbers) {
         int noneDuplicateNumber = Arrays.stream(numbers).collect(Collectors.toSet()).size();
         if (noneDuplicateNumber != PLAY_AMOUNT) {
             throw new IllegalArgumentException(NUMBER_DUPLICATION_ERROR_MESSAGE);
         }
     }
 
-    public static void validateNumbersFormat(String[] numbers) {
+    private static void validateNumbersFormat(String[] numbers) {
         for (String number : numbers) {
             validateNumberFormat(number);
         }
