@@ -10,6 +10,17 @@ public class GameNumber {
     private final List<Integer> numbers;
 
     public GameNumber(String input) {
+        validate(input);
         this.numbers = null;
+    }
+
+    private void validate(String input) {
+        validateLength(input);
+    }
+
+    private void validateLength(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 }
