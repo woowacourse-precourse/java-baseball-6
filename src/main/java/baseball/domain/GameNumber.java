@@ -3,6 +3,7 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GameNumber {
     private static final int NUMBER_LENGTH = 3;
@@ -13,6 +14,10 @@ public class GameNumber {
     public GameNumber(String input) {
         validate(input);
         numbers = toNumbers(input);
+    }
+
+    public GameNumber(Set<Integer> numbers) {
+        this.numbers = new ArrayList<>(numbers);
     }
 
     private void validate(String input) {
