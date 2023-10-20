@@ -27,6 +27,35 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 예외_테스트_중복되는_숫자가_있는지() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("113"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_테스트_문자가있는지1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1ㅁ3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_문자가있는지2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1 3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_테스트_문자가있는지3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1a3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
