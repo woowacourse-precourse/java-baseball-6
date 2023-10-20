@@ -16,18 +16,33 @@ public class Application {
     }
     static String receiveUserNum(){
         String userNum;
+
+        System.out.print("숫자를 입력해주세요 : ");
         userNum = Console.readLine();
         return userNum;
     }
+    static String referee(List<Integer> computerNum, String userNum){
+        int strike = 0;
+        int ball = 0;
+        for(int i = 0; i < 3; i++){
+            if(computerNum.get(i) == userNum.charAt(i)-'0'){
+                strike++;
+            } else{
+                ball++;
+            }
+        }
+        return String.format("%d볼 %d스트라이크",ball,strike);
+    }
     public static void main(String[] args) {
-        System.out.println("Start Number Baseball Game!");
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> computerNum = new ArrayList<>();
-        String personNum;
+        String userNum, result;
 
         createComputerNum(computerNum);
-        personNum = receiveUserNum();
+        userNum = receiveUserNum();
+        result = referee(computerNum, userNum);
 
-
+        System.out.println(result);
     }
 }
