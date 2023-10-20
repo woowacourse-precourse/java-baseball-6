@@ -42,7 +42,7 @@ public class NumberBaseBall {
             int strikeCount = score.strikeCount;
             messageViewer.printResultMsg(ballCount, strikeCount);
 
-            mind = checkKeepGoing(score.strikeCount);
+            mind = checkKeepGoing(strikeCount);
         }
     }
 
