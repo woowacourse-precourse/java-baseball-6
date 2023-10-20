@@ -3,6 +3,7 @@ package baseball.entity;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -32,19 +33,15 @@ public class Baseball {
     }
 
     public int countBall(String numbers) {
-        int result = 0;
+        return (int) IntStream.range(0, numbers.length())
+                .filter(i -> isBall(numbers, i))
+                .count();
+    }
 
-        if (numbers.charAt(0) == randomNumber.charAt(1) ||
-                numbers.charAt(0) == randomNumber.charAt(2) ||
-                numbers.charAt(1) == randomNumber.charAt(0) ||
-                numbers.charAt(1) == randomNumber.charAt(2) ||
-                numbers.charAt(2) == randomNumber.charAt(0) ||
-                numbers.charAt(2) == randomNumber.charAt(1)
-        ) {
-            result++;
-        }
-
-        return result;
+    private boolean isBall(String numbers, int position) {
+        int[] checkPositions = {(position + 1) % 3, (position + 2) % 3};
+        return Arrays.stream(checkPositions)
+                .anyMatch(pos -> numbers.charAt(position) == randomNumber.charAt(pos));
     }
 
     public boolean isNothing(String numbers) {
