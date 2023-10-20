@@ -12,15 +12,6 @@ public class Game {
         this.user = new User();
     }
 
-    public void initGame(){ //게임 상태 초기화
-        this.computer = new Computer();
-        this.user = new User();
-    }
-
-    public void printStartMessage(){ //게임 시작 문구 출력
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
     public void startGame(){ //숫자 야구 게임을 시작하는 메소드
         this.computer.setNumbers(); //컴퓨터의 숫자 정하기
         while(true){ //종료 조건 : 3스트라이크
