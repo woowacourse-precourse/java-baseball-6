@@ -19,11 +19,11 @@ public class PlayResult {
     }
 
     public void record(BallStatus ballStatus) {
-        if (ballStatus == BallStatus.STRIKE) {
+        if (ballStatus.isStrike()) {
             strike++;
             return;
         }
-        if (ballStatus == BallStatus.BALL) {
+        if (ballStatus.isBall()) {
             ball++;
         }
     }
