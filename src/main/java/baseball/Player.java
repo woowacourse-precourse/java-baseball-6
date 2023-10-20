@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class Player {
+
     private final DataValidator dataValidator;
 
     public Player() {
@@ -12,13 +13,13 @@ public class Player {
     }
 
     public ArrayList<Integer> getPlayerAnswer() {
-        String[] stringValue  = Console.readLine().split("");
+        String[] stringValue = Console.readLine().split("");
         ArrayList<Integer> playerAnswer = new ArrayList<>();
         try {
-            for(String s : stringValue){
+            for (String s : stringValue) {
                 playerAnswer.add(Integer.parseInt(s));
             }
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
 

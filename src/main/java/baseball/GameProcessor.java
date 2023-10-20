@@ -5,16 +5,19 @@ import java.util.ArrayList;
 public class GameProcessor {
 
 
-    public int[] getCompareTwoAnswerResult(ArrayList<Integer> playerAnswer, ArrayList<Integer> computerAnswer) {
+    public int[] getCompareTwoAnswerResult(ArrayList<Integer> playerAnswer,
+            ArrayList<Integer> computerAnswer) {
         int[] result = new int[2];
         int playerOrder = 0;
-        for(Integer playerValue : playerAnswer){
+        for (Integer playerValue : playerAnswer) {
             int computerOrder = 0;
-            for(Integer computerValue : computerAnswer){
-                if(playerValue==computerValue&&playerOrder==computerOrder)
+            for (Integer computerValue : computerAnswer) {
+                if (playerValue == computerValue && playerOrder == computerOrder) {
                     result[1]++;
-                if(playerValue==computerValue&&playerOrder!=computerOrder)
+                }
+                if (playerValue == computerValue && playerOrder != computerOrder) {
                     result[0]++;
+                }
                 computerOrder++;
             }
             playerOrder++;
@@ -22,15 +25,20 @@ public class GameProcessor {
 
         return result;
     }
+
     public void printScore(Score score) {
-        if(score.getBall()>0&&score.getStrike()>0)
-            System.out.println(score.getBall()+"볼 "+score.getStrike()+"스트라이크");
-        if(score.getBall()>0&&score.getStrike()==0)
-            System.out.println(score.getBall()+"볼");
-        if(score.getBall()==0&&score.getStrike()>0)
-            System.out.println(score.getStrike()+"스트라이크");
-        if(score.getBall()==0&&score.getStrike()==0)
+        if (score.getBall() > 0 && score.getStrike() > 0) {
+            System.out.println(score.getBall() + "볼 " + score.getStrike() + "스트라이크");
+        }
+        if (score.getBall() > 0 && score.getStrike() == 0) {
+            System.out.println(score.getBall() + "볼");
+        }
+        if (score.getBall() == 0 && score.getStrike() > 0) {
+            System.out.println(score.getStrike() + "스트라이크");
+        }
+        if (score.getBall() == 0 && score.getStrike() == 0) {
             System.out.println("낫싱");
+        }
     }
 
 

@@ -1,6 +1,7 @@
 package baseball;
 
 public class Score {
+
     private int strike;
     private int ball;
 
