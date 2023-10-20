@@ -12,6 +12,11 @@ import java.util.List;
 public class GameController {
     private static final int NUMBER_LENGTH = 3;
     private static final char ZERO_CHAR = '0';
+    private static final String SPACE_MESSAGE = " ";
+    private static final String NULL_MESSAGE = "";
+    private static final String BALL_MESSAGE = "볼";
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String NOTHING_MESSAGE = "낫싱";
 
     private int strike;
     private int ball;
@@ -35,6 +40,8 @@ public class GameController {
         } else {
             calculateHint(player, computer);
         }
+
+        printHint();
     }
 
     public List<Integer> getRandomNumbers() {
@@ -85,5 +92,35 @@ public class GameController {
                 ball++;
             }
         }
+    }
+
+    public void printHint() {
+        String hintMessage = "";
+
+        hintMessage += getBallMessage();
+        hintMessage += getStrikeMessage();
+
+        if (hintMessage.equals("")) {
+            outputView.printHindMessage(NOTHING_MESSAGE);
+            return;
+        }
+
+        outputView.printHindMessage(hintMessage);
+    }
+
+    public String getBallMessage() {
+        if (ball > 0) {
+            return ball + BALL_MESSAGE + SPACE_MESSAGE;
+        }
+
+        return NULL_MESSAGE;
+    }
+
+    public String getStrikeMessage() {
+        if (strike > 0) {
+            return strike + STRIKE_MESSAGE;
+        }
+
+        return NULL_MESSAGE;
     }
 }
