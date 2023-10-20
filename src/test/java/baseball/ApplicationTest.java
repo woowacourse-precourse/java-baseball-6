@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.List;
 
@@ -10,10 +12,11 @@ import static baseball.Application.BaseBallGame;
 import static baseball.Application.main;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
+    private final InputStream standardIn = System.in;
+
     @Test
     void makeBaseBallGameObject() {
         BaseBallGame baseBallGame = new BaseBallGame();
@@ -35,6 +38,36 @@ class ApplicationTest extends NsTest {
                     .isLessThanOrEqualTo(9);
         }
         assertThat(computerNumbersSet).hasSameSizeAs(computerNumbers);
+    }
+
+    @Test
+    void 유저가_잘못된_수_입력시_IllegalException발생() {
+        // given
+        System.setIn(new ByteArrayInputStream("12*".getBytes()));
+        BaseBallGame baseBallGame = new BaseBallGame();
+
+        // when
+        Throwable thrown = catchThrowable(() -> baseBallGame.playGame());
+        System.setIn(standardIn);
+
+        // then
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("잘못된 수가 입력되었습니다.");
+    }
+
+    @Test
+    void 유저가_적적한_수_입력시_성공() {
+        // given
+        System.setIn(new ByteArrayInputStream("124".getBytes()));
+        BaseBallGame baseBallGame = new BaseBallGame();
+
+        // when
+        baseBallGame.playGame();
+        List<Integer> userNumbers = baseBallGame.getUserNumbers();
+        System.setIn(standardIn);
+
+        // then
+        assertThat(userNumbers).usingRecursiveComparison().isEqualTo(List.of(1, 2, 4));
     }
 
     @Test
