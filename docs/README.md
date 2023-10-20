@@ -1,6 +1,6 @@
 ## 구현할 기능 목록
 - 입력
-  - [ ] camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+  - [x] camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
   - [ ] 서로 다른 3자리의 수 입력받기
     - [ ] camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용하기
   - [ ] 게임이 끝난 경우 재시작/종료를 구분하는 1과 2중 하나의 수 입력받기
