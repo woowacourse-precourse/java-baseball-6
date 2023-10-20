@@ -15,9 +15,9 @@ public class OutputView {
             printBall(ball);
         } else if (strike > 0 && ball > 0) {
             printStrikeAndBall(strike, ball);
+        } else if (strike == 0 && ball == 0) {
+            printNothing();
         }
-
-        printNothing();
     }
 
     private void printStrike(int strike) {
