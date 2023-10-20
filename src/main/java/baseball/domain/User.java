@@ -3,7 +3,7 @@ package baseball.domain;
 import baseball.validator.BaseballValidator;
 import java.util.List;
 
-public class User extends BaseballValidator {
+public class User  {
     List<Integer> baseball;
     boolean playGame;
 
@@ -16,8 +16,8 @@ public class User extends BaseballValidator {
     }
 
     public void setBaseball(List<Integer> baseball) {
-        if(validator(baseball)){
-            this.baseball=baseball;
+        if (BaseballValidator.validator(baseball)) {
+            this.baseball = baseball;
         }
     }
 

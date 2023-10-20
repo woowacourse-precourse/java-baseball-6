@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer extends BaseballValidator {
+public class Computer {
     private static final Integer RANDOM_START = 1;
     private static final Integer RANDOM_END = 9;
     private static final Integer RANDOM_SIZE = 3;
@@ -13,7 +13,6 @@ public class Computer extends BaseballValidator {
     List<Integer> baseball;
     public Computer (){};
     public void setBaseball(List<Integer> baseball) {
-        validator(baseball);
         this.baseball = baseball;
     }
 
@@ -29,7 +28,8 @@ public class Computer extends BaseballValidator {
                 computer.add(randomNumber);
             }
         }
-        validator(computer);
-        this.baseball=computer;
+        if (BaseballValidator.validator(computer)) {
+            this.baseball = computer;
+        }
     }
 }
