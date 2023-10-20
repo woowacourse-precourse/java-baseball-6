@@ -13,4 +13,13 @@ public class GameStatus {
     public boolean isNotThreeStrike() {
         return strikeCount != 3;
     }
+
+    public void updateCount(Judgement judgement) {
+        if (judgement == Judgement.STRIKE) {
+            this.strikeCount++;
+        }
+        if (judgement == Judgement.BALL) {
+            this.ballCount++;
+        }
+    }
 }

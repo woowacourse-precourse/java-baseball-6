@@ -1,10 +1,12 @@
 package baseball.service;
 
+import baseball.domain.GameNumber;
 import baseball.domain.GameStatus;
+import baseball.domain.Judgement;
 
 public class GameService {
 
-    private GameStatus gameStatus;
+    private final GameStatus gameStatus;
 
     private GameService() {
         this.gameStatus = new GameStatus();
@@ -12,6 +14,20 @@ public class GameService {
 
     public static GameService startNewGame() {
         return new GameService();
+    }
+
+    public void compareNumber(GameNumber computerNumber, GameNumber userNumber) {
+        for (int index = 0; index < 3; index++) {
+            Judgement judgement = checkNumber(computerNumber, userNumber, index);
+            gameStatus.updateCount(judgement);
+        }
+    }
+
+    private static Judgement checkNumber(GameNumber answerNumber, GameNumber userNumber, int index) {
+        int indexNumber = userNumber.getNumberOfIndex(index);
+        boolean isContain = answerNumber.isContain(indexNumber);
+        boolean isInPlace = answerNumber.isInPlace(index, indexNumber);
+        return Judgement.judge(isContain, isInPlace);
     }
 
     public boolean isNotDone() {

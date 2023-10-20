@@ -20,6 +20,18 @@ public class GameNumber {
         checkNegative(number);
     }
 
+    public int getNumberOfIndex(int index) {
+        return this.number.get(index);
+    }
+
+    public boolean isContain(int indexNumber) {
+        return this.number.contains(indexNumber);
+    }
+
+    public boolean isInPlace(int index, int indexNumber) {
+        return this.number.get(index).equals(indexNumber);
+    }
+
     public List<Integer> getNumber() {
         return number;
     }

@@ -26,6 +26,7 @@ public class GameController {
         GameNumber computerNumber = setGame();
         while (gameService.isNotDone()) {
             GameNumber userNumber = getUserNumber();
+            gameService.compareNumber(computerNumber, userNumber);
         }
 
     }
