@@ -13,6 +13,10 @@ public class User {
         generateUser(number);
     }
 
+    public List<Integer> getUser() {
+        return user;
+    }
+
     private void checkLength(String number) {
         if (number.length() != 3) {
             throw new IllegalArgumentException("길이가 3이 아닙니다.");

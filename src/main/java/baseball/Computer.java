@@ -19,5 +19,13 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
+        //테스트 용
+//        for (int i = 1; i <= 3; i ++) {
+//            computer.add(i);
+//        }
+    }
+
+    public List<Integer> getComputer() {
+        return computer;
     }
 }
