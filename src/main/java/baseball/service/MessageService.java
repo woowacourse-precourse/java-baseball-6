@@ -18,7 +18,7 @@ public class MessageService {
             System.out.println(MessageConstant.NOTHING);
         }
         if (ballCount > 0 && strikeCount > 0) {
-            System.out.println(ballCount + MessageConstant.BALL + strikeCount + MessageConstant.STRIKE);
+            System.out.println(ballCount + MessageConstant.BALL +" "+ strikeCount + MessageConstant.STRIKE);
         }
         if (ballCount > 0 && strikeCount == 0) {
             System.out.println(ballCount + MessageConstant.BALL);
@@ -35,5 +35,4 @@ public class MessageService {
     public void printGameRestartOrGameEndMessage() {
         System.out.println(MessageConstant.RESTART_OR_END_MESSAGE);
     }
-
 }
