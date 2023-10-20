@@ -16,7 +16,7 @@ public class Balls {
         if(!balls.contains(new_ball)){
             this.balls.add(new_ball);
             this.size = this.balls.size();
-//            System.out.println("[ball number] >>>>"+ new_ball);
+            System.out.println("[ball number] >>>>"+ new_ball);
         }
     }
 

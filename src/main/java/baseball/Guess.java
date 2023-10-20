@@ -20,33 +20,33 @@ public class Guess extends Balls {
         return this.balls.get(locate);
     }
 
-    public int add_strike() {
-        return this.strike++;
+    public int add_score(String value){
+        if(value =="strike"){
+            return this.strike++;
+        }
+        if(value=="ball"){
+            return this.ball++;
+        }
+        if(value=="nothing"){
+            return this.nothing--;
+        }
+        else{
+            throw new IllegalArgumentException("재판정이 필요합니다.");
+        }
     }
 
-    public int add_ball() {
-        return this.ball++;
-    }
-
-    public int there_noting() {
-        return this.nothing--;
-    }
-
-    public boolean is_nothing(){
-        if(this.nothing==0){
-            return true;
-        } else return false;
-    }
-
-    public boolean is_zero_ball(){
-        if(this.ball==0){
-            return true;
-        }else return false;
-    }
-
-    public boolean is_zero_strike(){
-        if(this.strike==0){
-            return true;
-        }else return false;
+    public int the_number_of(String value){
+        if(value =="nothing"){
+            return this.nothing;
+        }
+        if(value=="strike"){
+            return this.strike;
+        }
+        if(value=="ball"){
+            return this.ball;
+        }
+        else {
+            throw new IllegalArgumentException("해당하는 속성이 없습니다.");
+        }
     }
 }

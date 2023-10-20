@@ -25,7 +25,7 @@ public class Play {
             }
             return user_ball;
         } catch (IndexOutOfBoundsException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("유효하지 않은 데이터입니다.");
         }
     }
 
@@ -40,38 +40,42 @@ public class Play {
 
             if (goal_index >= 0) {
                 if (goal_index == locate) {
-                    user_ball.strike++;
-                } else user_ball.ball++;
+                    user_ball.add_score("strike");
+                }
+                if(goal_index != locate){
+                    user_ball.add_score("ball");
+                }
             }
-            if (goal_index==-1){
-                user_ball.nothing--;
+            if (goal_index == -1) {
+                user_ball.add_score("nothing");
             }
-
             locate++;
         }
         return get_result(user_ball);
     }
 
-    public int get_result(Guess user_ball){
-        if(user_ball.nothing==0) {
+    public int get_result(Guess user_ball) {
+        if (user_ball.the_number_of("nothing") == 0) {
             System.out.println("낫싱");
             return 0;
         }
-        if (user_ball.ball == 0) {
-            System.out.println(user_ball.strike + "스트라이크");
-            if(user_ball.strike ==3){
+        int strike = user_ball.the_number_of("strike");
+        int ball = user_ball.the_number_of("ball");
+
+        if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+            if (strike == 3) {
                 return 3;
             }
             return 0;
         }
-        if (user_ball.strike == 0) {
-            System.out.println(user_ball.ball + "볼");
+        if (strike == 0) {
+            System.out.println(ball + "볼");
             return 0;
         }
-        System.out.println(user_ball.ball + "볼 " + user_ball.strike + "스트라이크");
+        System.out.println(ball + "볼 " + strike + "스트라이크");
         return 0;
     }
-
 
 
     public int end_balls() {
