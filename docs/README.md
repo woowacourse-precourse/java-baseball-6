@@ -32,12 +32,13 @@
 
 - model: 숫자 야구에 필요한 데이터 저장 부분
     - Player: 플레이어의 숫자 저장, 게임 진행 의사
-    - Computer: 초기 난수 생성
-    - Hint: 스트라이크, 볼 낫싱 정보 저장
-    - NumberValidator: 숫자의 유효성 검사
-    - NumberCompare: 두 숫자를 비교하여 정답인지 확인
+    - Computer: 초기 난수 생성, 저장
+
 - view: 사용자로부터 숫자를 입력 받고, 이에 대한 출력을 나타내는 부분
     - InputView: 플레이어로부터 입력 받는 기능 구현
     - OutputView: 게임을 시작, 종료, 재시작 등의 메시지 출력 기능 구현
+  
 - controller: 게임이 실제 진행되는 부분
     - BaseballGame: 모델과 뷰를 이어줌
+    - NumberValidator: 숫자의 유효성 검사
+    - NumberCompare: 두 숫자를 비교하여 정답인지 확인
