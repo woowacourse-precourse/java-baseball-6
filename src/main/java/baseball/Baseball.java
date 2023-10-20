@@ -10,6 +10,8 @@ public class Baseball {
 
     //전체 게임 플레이
     public void play() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         do {
             playOneGame();
         } while (doRestartOrNot());
@@ -17,7 +19,6 @@ public class Baseball {
 
     //한 게임 플레이
     private void playOneGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         int answer = generateRandomNum();
 
         while(true) {
@@ -42,7 +43,7 @@ public class Baseball {
         }
 
         for(int i = 0; i < 3; i++) {
-            result += numList.get(i) * (Math.pow(10, i));
+            result += numList.get(i) * (Math.pow(10, 2 - i));
         }
 
         return result;
@@ -58,7 +59,7 @@ public class Baseball {
             throw new IllegalArgumentException("잘못된 input type입니다.");
         }
 
-        if (inputNum < 100 && inputNum >= 1000) {
+        if (inputNum < 100 || inputNum >= 1000) {
             throw new IllegalArgumentException("세자리 수를 입력해주세요.");
         }
 
@@ -95,11 +96,12 @@ public class Baseball {
             System.out.println("낫싱");
         } else {
             if (ballCount != 0) {
-                System.out.println(ballCount + "볼 ");
+                System.out.print(ballCount + "볼 ");
             }
             if (strikeCount != 0) {
-                System.out.println(strikeCount + "스트라이크");
+                System.out.print(strikeCount + "스트라이크");
             }
+            System.out.println("");
         }
 
         return false;
