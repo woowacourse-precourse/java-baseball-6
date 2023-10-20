@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static baseball.domain.Ball.*;
 
@@ -36,18 +37,14 @@ public class GameSetupService {
     }
 
     private List<Ball> createComputerBalls(List<Integer> ballNumbers) {
-        List<Ball> balls = new ArrayList<>();
-        for (Integer ballNumber : ballNumbers) {
-            balls.add(new Ball(ballNumber));
-        }
-        return balls;
+        return ballNumbers.stream()
+                .map(Ball::new)
+                .collect(Collectors.toList());
     }
 
     private List<Ball> createPlayerBalls(String playerGuess) {
-        List<Ball> balls = new ArrayList<>();
-        for (char ballNumber : playerGuess.toCharArray()) {
-            balls.add(new Ball(ballNumber - '0'));
-        }
-        return balls;
+        return playerGuess.chars()
+                .mapToObj(ballNumber -> new Ball(Character.getNumericValue(ballNumber)))
+                .collect(Collectors.toList());
     }
 }
