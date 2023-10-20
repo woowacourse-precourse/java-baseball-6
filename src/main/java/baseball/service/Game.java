@@ -6,16 +6,21 @@ import baseball.view.InputView;
 import java.util.ArrayList;
 
 public class Game {
+    private boolean endOrNot = true;
     public Game(){
-        startGame();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while(endOrNot) {
+            startGame();
+            exitGame();
+        }
+        System.out.println("게임 종료!");
     }
 
     public void startGame(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
         while(true) {
             User user = new User();
             System.out.print("숫자를 입력해주세요 : ");
-            ArrayList<Integer> numbers = parsingInputNumber(InputView.InputNumber());
+            ArrayList<Integer> numbers = parsingInputNumber(InputView.Input());
         }
     }
 
@@ -40,4 +45,10 @@ public class Game {
         return parsingNumber;
     }
 
+    public void exitGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        if(InputView.Input().equals("2")){
+            this.endOrNot = false;
+        }
+    }
 }
