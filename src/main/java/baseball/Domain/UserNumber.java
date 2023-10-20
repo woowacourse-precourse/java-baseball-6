@@ -59,8 +59,4 @@ public class UserNumber {
     private boolean isSizeThree(String number){
         return number.length() == 3;
     }
-
-    private Integer convertStringtoInteger(String number){
-        return Integer.parseInt(number);
-    }
 }
