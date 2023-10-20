@@ -14,6 +14,10 @@ public class PlayerService {
         validateDuplicate(number);
     }
     
+    public void validateOption(String number) {
+        validateInteger(number);
+    }
+    
     private void validateInteger(String number) {
         for (int i = 0; i < number.length(); i++) {
             char c = number.charAt(i);

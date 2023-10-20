@@ -14,9 +14,29 @@ public class BaseballController {
     private final MessageService messageService = new MessageService();
     
     public void startGame() {
-        // TODO: 게임 재시작 및 종료
-        initGame();
-        playGame();
+        boolean continueGame = true;
+        
+        while (continueGame) {
+            initGame();
+            playGame();
+            continueGame = askToContinue();
+        }
+    }
+    
+    private boolean askToContinue() {
+        String number = Console.readLine();
+        
+        playerService.validateOption(number);
+        
+        switch (Integer.parseInt(number)) {
+            case 1 -> {
+                return true;
+            }
+            case 2 -> {
+                return false;
+            }
+            default -> throw new IllegalArgumentException("잘못된 선택입니다.");
+        }
     }
     
     private void initGame() {
@@ -25,6 +45,7 @@ public class BaseballController {
     
     private void playGame() {
         String computer = getComputerNumber();
+        System.out.println("computer = " + computer);
         
         int balls, strikes = 0;
         
@@ -36,7 +57,7 @@ public class BaseballController {
             
             messageService.printGameResult(balls, strikes);
         }
-    
+        
         messageService.announceThreeStrikes();
     }
     
