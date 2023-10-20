@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.HashSet;
 
 public class GameService {
 
@@ -20,7 +19,7 @@ public class GameService {
         int strike = 0, ball = 0;
         System.out.print("숫자를 입력 해 주세요 : ");
         char[] guess = Console.readLine().toCharArray();
-        checkException(guess);
+        Exception.checkException(guess);
         for (int i = 0; i < 3; i++) {
             int userNum = Character.getNumericValue(guess[i]);
             if (computer[userNum] == i + 1) {
@@ -31,19 +30,6 @@ public class GameService {
         }
         printResult(strike, ball);
         return strike == 3;
-    }
-
-    private static void checkException(char[] guess) {
-        if (guess.length != 3) {
-            throw new IllegalArgumentException();
-        }
-        HashSet<Character> check = new HashSet<>();
-        for (Character c : guess) {
-            if (check.contains(c)) {
-                throw new IllegalArgumentException();
-            }
-            check.add(c);
-        }
     }
 
     private static void printResult(int strike, int ball) {
