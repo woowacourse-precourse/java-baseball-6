@@ -32,24 +32,28 @@ public class Game {
 
     private int[] compare(){
         int[] result={0,0};
-        int index=0;
 
         for(String number:user.splitNumbers()){
-            int resultIndex=compareEach(number,index++);
-
-            if(resultIndex!=-1){
-                result[resultIndex]+=1;
-            }
+            addResult(result,compareEach(number,user.index(number)));
         }
 
         return result;
+    }
+
+    private void addResult(int[] result,int resultIndex){
+        if(resultIndex==-1){
+            return;
+        }
+
+        result[resultIndex]+=1;
     }
 
     private int compareEach(String number,int index){
         if(computer.isSamePlace(number,index)){
             return 0;
         }
-        else if(computer.isExistNumber(number)){
+
+        if(computer.isExistNumber(number)){
             return 1;
         }
 

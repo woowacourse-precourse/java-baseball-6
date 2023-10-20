@@ -43,4 +43,8 @@ public class Numbers {
     public boolean isExistNumber(String number){
         return numbers.contains(number);
     }
+
+    public int index(String number){
+        return numbers.indexOf(number);
+    }
 }
