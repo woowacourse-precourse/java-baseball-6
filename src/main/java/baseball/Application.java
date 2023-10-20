@@ -19,7 +19,6 @@ public class Application {
 
         // 초기화
 
-        Random rand = new Random();
         int end = 1;
 
 
@@ -39,18 +38,16 @@ public class Application {
                 }
             }
             //@@@@ 삭제해야 하는 코드
-            System.out.println("answer: "+com);
+//            System.out.println("answer: "+com);
             // 게임 시작
 
             // while (게임 진행되는 동안)
             while (!isFinish) {
                 int strike = 0;
                 int ball = 0;
-                int canInt = 0;
                 // 입력
                 System.out.print("숫자를 입력해주세요 : ");
-                Scanner sc = new Scanner(System.in);
-                String num = sc.nextLine();
+                String num = Console.readLine();
                 // TODO: 이상한 입력 체크
                 try {
                     //0이 들어올 경우
@@ -63,7 +60,7 @@ public class Application {
                     }
 
                     // 숫자가 아닌 경우
-                    canInt = parseInt(num);
+                    int canInt = parseInt(num);
                 }
                 catch(Exception e){
                     throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
@@ -91,9 +88,14 @@ public class Application {
                     System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    end = sc.nextInt();
+                    String s_end = Console.readLine();
+
                     // TODO: 잘못된 값 입력됬는지 확인!
                     try {
+                        // 정수로 입력되지 않았을 때
+                        end = parseInt(s_end);
+
+                        // 1과 2가 아닐 때
                         if (!(end == 1 || end == 2)) {
                             throw new Exception();
                         }
