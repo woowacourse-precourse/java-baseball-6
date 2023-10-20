@@ -97,4 +97,29 @@ class NumberValidatorTest {
                 .doesNotThrowAnyException();
     }
 
+    @DisplayName("3자리 문자 중 숫자 외의 값을 넣으면 예외가 발생한다.")
+    @Test
+    void validateAllDigitsWithString() {
+        // given
+        String invalidInput = "12a";
+
+        // when
+        // then
+        assertThatThrownBy(() -> NumberValidator.validateAllDigits(invalidInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(invalidInput + "은 숫자가 아닙니다.");
+    }
+
+    @DisplayName("3자리 문자 중 숫자만을 넣었으므로 예외가 발생하지 않는다.")
+    @Test
+    void validateAllDigitsWithOnlyDigit() {
+        // given
+        String validInput = "489";
+
+        // when
+        // then
+        assertThatCode(() -> NumberValidator.validateAllDigits(validInput))
+                .doesNotThrowAnyException();
+    }
+
 }
