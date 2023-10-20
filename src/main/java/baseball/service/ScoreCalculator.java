@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
+import static baseball.constant.NumberConstants.NUMBER_SIZE;
+
 public class ScoreCalculator {
 
     private final List<Integer> computer;
@@ -15,7 +17,7 @@ public class ScoreCalculator {
     }
 
     public Integer calculateStrike() {
-        return (int) IntStream.range(0, computer.size())
+        return (int) IntStream.range(0, NUMBER_SIZE.getValue())
                 .filter(idx -> computer.get(idx).equals(player.get(idx)))
                 .count();
     }
