@@ -1,7 +1,9 @@
 package baseball.domain;
 
+import baseball.dto.ComparisonResult;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Number {
 
@@ -47,6 +49,36 @@ public class Number {
 
     private static int unicodeToInt(int unicode) {
         return unicode - '0';
+    }
+
+    public ComparisonResult compare(Number target) {
+        int strike = countStrike(target);
+        int ball = countBall(target);
+        boolean isRight = strike == NUMBER_LENGTH;
+
+        return new ComparisonResult(strike, ball, isRight);
+    }
+
+    private int countStrike(Number target) {
+        return (int) IntStream.range(0, NUMBER_LENGTH)
+                .filter(index -> target.getDigit(index).equals(getDigit(index)))
+                .count();
+    }
+
+    private int countBall(Number target) {
+        return (int) IntStream.range(0, NUMBER_LENGTH)
+                .filter(targetIndex -> isBallCount(target.getDigit(targetIndex), targetIndex))
+                .count();
+    }
+
+    private boolean isBallCount(Digit target, int exclusiveIndex) {
+        return IntStream.range(0, NUMBER_LENGTH)
+                .filter(index -> index != exclusiveIndex)
+                .anyMatch(index -> getDigit(index).equals(target));
+    }
+
+    private Digit getDigit(int index) {
+        return digits.get(index);
     }
 
     @Override

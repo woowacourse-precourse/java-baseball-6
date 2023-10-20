@@ -43,6 +43,47 @@ class NumberTest {
     }
 
     @Nested
+    @DisplayName("숫자 비교 테스트")
+    class ComparisonTest {
+
+        @ParameterizedTest(name = "{0}과 {1}을 비교하여 나온 결과 : {2}")
+        @CsvSource({"123,456,0", "123,453,1", "123,153,2", "123,123,3"})
+        @DisplayName("같은 위치의 같은 숫자 개수를 알 수 있다")
+        void strikeTest(int value1, int value2, int expected) {
+            Number number1 = Number.from(value1);
+            Number number2 = Number.from(value2);
+
+            int actual = number1.compare(number2).strike();
+
+            assertThat(actual).isEqualTo(expected);
+        }
+
+        @ParameterizedTest(name = "{0}과 {1}을 비교하여 나온 결과 : {2}")
+        @CsvSource({"123,456,0", "123,345,1", "123,512,2", "123,231,3"})
+        @DisplayName("같은 위치의 다른 숫자 개수를 알 수 있다")
+        void ballTest(int value1, int value2, int expected) {
+            Number number1 = Number.from(value1);
+            Number number2 = Number.from(value2);
+
+            int actual = number1.compare(number2).ball();
+
+            assertThat(actual).isEqualTo(expected);
+        }
+
+        @ParameterizedTest(name = "{0}과 {1}을 비교하여 나온 결과 : {2}")
+        @CsvSource({"123,231,false", "123,124,false", "123,123,true"})
+        @DisplayName("두 숫자의 일치 여부를 알 수 있다")
+        void isRightTest(int value1, int value2, boolean expected) {
+            Number number1 = Number.from(value1);
+            Number number2 = Number.from(value2);
+
+            boolean actual = number1.compare(number2).isRight();
+
+            assertThat(actual).isEqualTo(expected);
+        }
+    }
+
+    @Nested
     @DisplayName("동치성 테스트")
     class EqualityTest {
 
