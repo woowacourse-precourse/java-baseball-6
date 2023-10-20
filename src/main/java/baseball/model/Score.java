@@ -24,4 +24,12 @@ public class Score {
 			}
 		}
 	}
+
+	public int getBall() {
+		return ball;
+	}
+
+	public int getStrike() {
+		return strike;
+	}
 }
