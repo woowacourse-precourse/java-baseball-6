@@ -19,7 +19,7 @@ public class BaseballGameService {
         String result;
 
 
-        result = baseballGame.compareTwoNumbers(userNumber,computerNumber);
+        result = baseballGame.compareTwoNumbers(userNumber);
 
         String [] results = baseballGame.splitCountResult(result);
 

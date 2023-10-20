@@ -5,14 +5,15 @@ import java.util.List;
 
 public class BaseballGame {
 
+    private  List<Integer> computerNumber;
+
     public List<Integer> createComputerNumber(){
-        List<Integer> computerNumber;
         Computer computer = new Computer();
         computerNumber = computer.randomComputerNumber();
         return computerNumber;
     }
 
-    public String compareTwoNumbers(String userNumber, List<Integer>computerNumber){
+    public String compareTwoNumbers(String userNumber){
 
         int strikeCount=0;
         int ballCount=0;
