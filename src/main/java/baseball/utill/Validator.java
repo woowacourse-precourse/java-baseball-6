@@ -7,6 +7,10 @@ public class Validator {
         return isNotNumber(userNumbers) || isNotThreeDigits(userNumbers) || hasDuplicatedNumbers(userNumbers);
     }
 
+    public boolean isInvalid(String restartInput) {
+        return !restartInput.equals("1") && !restartInput.equals("2");
+    }
+
     private boolean isNotThreeDigits(List<Integer> userNumbers){
         return userNumbers.size() != 3;
     }

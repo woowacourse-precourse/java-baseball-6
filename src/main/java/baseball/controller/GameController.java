@@ -26,6 +26,7 @@ public class GameController {
         while (true) {
             if (computerNumbers.isEmpty()) computerNumbers = service.generateNumbers();
             System.out.println("숫자를 입력해주세요.");
+            System.out.println("치트: " + computerNumbers.get(0) + computerNumbers.get(1) + computerNumbers.get(2));
             String input = Console.readLine();
             List<Integer> userNumbers = parser.parseInputToList(input);
             if (validator.isInvalid(userNumbers)) throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
@@ -35,6 +36,7 @@ public class GameController {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String restartInput = Console.readLine();
+                if(validator.isInvalid(restartInput)) throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
                 if(restartInput.equals(RESTART)) init();
                 if(restartInput.equals(EXIT)) return;
             }
