@@ -38,24 +38,21 @@ public class BaseballController {
                 break;
             }
         }
-        if (Boolean.TRUE.equals(isRestart())) {
+        restart();
+    }
+
+    private void restart() {
+        Command command = readGameCommand();
+        if (Command.QUIT.equals(command)) {
+            return;
+        }
+        if (Command.RESTART.equals(command)) {
             play();
         }
     }
 
-    private Boolean isRestart() {
-        Command command = readGameCommand();
-        if (Command.RESTART.equals(command)) {
-            return true;
-        }
-        if (Command.QUIT.equals(command)) {
-            return false;
-        }
-        return null;
-    }
-
     private Command readGameCommand() {
         String value = inputView.readGameCommand();
-        return Command.getCommand(value);
+        return Command.fromValue(value);
     }
 }

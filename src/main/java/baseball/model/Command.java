@@ -1,5 +1,7 @@
 package baseball.model;
 
+import java.util.Arrays;
+
 public enum Command {
     RESTART("1"),
     QUIT("2");
@@ -10,18 +12,11 @@ public enum Command {
         this.value = value;
     }
 
-    public String getValue() {
-        return this.value;
-    }
-
-    // TODO: 과연 정말 괜찮은 메서드인지 고민해보기
-    public static Command getCommand(String value) {
-        for (Command command : Command.values()) {
-            if (command.getValue().equals(value)) {
-                return command;
-            }
-        }
-        throw new IllegalArgumentException("잘못된 재시작/종료 입력입니다.");
+    public static Command fromValue(String value) {
+        return Arrays.stream(Command.values())
+                .filter(command -> command.value.equals(value))
+                .findAny()
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     @Override
