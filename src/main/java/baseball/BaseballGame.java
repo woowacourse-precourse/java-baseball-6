@@ -40,29 +40,48 @@ public class BaseballGame {
         }
     }
 
-    //값이 List에 포함되있는지 확인하는 함수
-    private static boolean contains(List<Integer> Numbers, int value) {
-        return Numbers.stream()
-                .anyMatch(number ->
-                        number.equals(value));
+    //값이 List에 포함되있는지 확인하는 메서드
+    private static boolean contains(List<Integer> numbers, int value) {
+        return numbers.stream()
+                .anyMatch(number -> number.equals(value));
     }
 
-    //ball 개수 세기
-    private static int countBall(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    //컴퓨터숫자와 사용자숫자가 일치하면 1, 아니면 0 반환하는 메서드
+    private static int correct(int computerNumber, int userNumber) {
+        if (computerNumber == userNumber) {
+            return 1;
+        }
+        return 0;
+    }
+
+    //contains 개수 세는 메서드
+    private static int countContains(List<Integer> computerNumbers, List<Integer> userNumbers) {
         return Optional.of(userNumbers.stream()
-                .filter(userNumber ->
-                        contains(computerNumbers, userNumber))
+                .filter(userNumber -> contains(computerNumbers, userNumber))
                 .count()).orElse(0L).intValue();
     }
 
-    //strike 개수 세기
+    private static int countStrike(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        int count = 0;
+        for (int i=0;i<BASEBALL_NUMBER_SIZE;i++) {
+            count += correct(computerNumbers.get(i), userNumbers.get(i));
+        }
+        return count;
+    }
+
+    private static int countBall(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        return countContains(computerNumbers, userNumbers) - countStrike(computerNumbers, userNumbers);
+    }
 
     //게임 결과 출력하기
     public static void gameScore() {
         List<Integer> computerNumbers = createComputerNumbers();
+        System.out.println(computerNumbers);
         List<Integer> userNumbers = createUserNumbers();
         int countBall = countBall(computerNumbers, userNumbers);
-        System.out.println(computerNumbers);
+        int countStrike = countStrike(computerNumbers, userNumbers);
+
         System.out.println(countBall);
+        System.out.println(countStrike);
     }
 }
