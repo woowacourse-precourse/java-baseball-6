@@ -35,6 +35,26 @@ public class GameController {
     }
 
     private static boolean checkRestart() {
+        String restartValue = getRestartValue();
+        if(restart(restartValue)){
+            return true;
+        }
+        else if(quit(restartValue)){
+            return false;
+        }
+        throw new IllegalArgumentException("1과 2중에 입력해야 합니다.");
+    }
+
+    private static String getRestartValue() {
+        return InputView.inputRestartValue();
+    }
+
+    private static boolean quit(String restartValue) {
+        return false;
+    }
+
+    private static boolean restart(String restartValue) {
+        return false;
     }
 
     private static boolean checkSuccess() {
