@@ -18,8 +18,8 @@ public class Inputter {
     }
 
     public boolean restart() {
-        String sign = Console.readLine();
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String sign = Console.readLine();
         switch (sign) {
             case "1" : return true;
             case "2" : return false;
