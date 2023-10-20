@@ -2,7 +2,7 @@ package baseball.constant;
 
 public class MessageConstant {
     public static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    public static final String INPUT_MESSAGE = "숫자를 입력해주세요 :";
+    public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     public static final String NOTHING = "낫싱";
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";
