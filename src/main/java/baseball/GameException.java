@@ -24,4 +24,8 @@ public class GameException {
                 throw new IllegalArgumentException(PLAYER_INPUT_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
     }
+
+    public void playerRetryNumberMissMatchException() throws IllegalArgumentException {
+        throw new IllegalArgumentException(PLAYER_INPUT_RETRY_NUMBER_ERROR_MESSAGE);
+    }
 }
