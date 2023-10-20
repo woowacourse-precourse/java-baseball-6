@@ -36,4 +36,14 @@ public class Baseball {
             }
         }
     }
+
+    public void checkDuplicateInList(List<Integer> inputList) {
+        HashSet<Integer> uniqueNumbers = new HashSet<>();
+
+        for (Integer number : uniqueNumbers) {
+            if (!uniqueNumbers.add(number)) {
+                throw new IllegalArgumentException(NUMBER_DUPLICATE_EXCEPTION_MSG);
+            }
+        }
+    }
 }
