@@ -1,14 +1,16 @@
 package baseball;
 
+import baseball.generator.NumberGenerator;
 import baseball.handler.UserInputHandler;
 
 public class Game {
 
     private final UserInputHandler userInputHandler = new UserInputHandler();
+    private final NumberGenerator numberGenerator = new NumberGenerator();
     private boolean isCorrect = false;
 
     public void play() {
-        String computerNumber = "425";
+        String computerNumber = numberGenerator.generateRandomNumber();
         while (!isCorrect) {
             String userInputNumber = userInputHandler.askUserInputNumber();
             isCorrect = getCorrect(userInputNumber, computerNumber);
