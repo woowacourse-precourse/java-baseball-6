@@ -1,15 +1,17 @@
 package baseball.utils;
 
+import static baseball.model.Constant.NUMBER_LENGTH;
+import static baseball.model.Constant.WRONG_INPUT_DUPLICATE_MESSAGE;
+import static baseball.model.Constant.WRONG_INPUT_LENGTH_MESSAGE;
+import static baseball.model.Constant.WRONG_INPUT_RANGE_MESSAGE;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class InputValidation {
-	private static final int NUMBER_LENGTH = 3;
-	private static final String WRONG_INPUT_LENGTH_MESSAGE = "세 자리만 입력 가능합니다.";
-	private static final String WRONG_INPUT_RANGE_MESSAGE = "1~9 사이의 숫자만 입력 가능합니다.";
-	private static final String WRONG_INPUT_DUPLICATE_MESSAGE = "서로 다른 세자리 숫자만 입력 가능합니다.";
+
 	public static List<Integer> validate(String inputNumber){
 		if(!hasExactLength(inputNumber)){
 			throw new IllegalArgumentException(WRONG_INPUT_LENGTH_MESSAGE);

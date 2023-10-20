@@ -1,14 +1,16 @@
 package baseball.utils;
 
+import static baseball.model.Constant.NUMBER_LENGTH;
+import static baseball.model.Constant.RANGE_MAX_NUMBER;
+import static baseball.model.Constant.RANGE_MIN_NUMBER;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RandomGenerator {
 
-	private static final int NUMBER_LENGTH = 3;
-	private static final int RANGE_MIN_NUMBER = 1;
-	private static final int RANGE_MAX_NUMBER = 9;
+
 
 	public List<Integer> generateRandomNumbers() {
 		List<Integer> randomNumbers = new ArrayList<>(NUMBER_LENGTH);
