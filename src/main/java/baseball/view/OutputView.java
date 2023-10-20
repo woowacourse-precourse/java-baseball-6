@@ -9,4 +9,8 @@ public class OutputView {
     public static void start() {
         System.out.println(START_MESSAGE);
     }
+
+    public static void clear() {
+        System.out.println(CLEAR_MESSAGE);
+    }
 }
