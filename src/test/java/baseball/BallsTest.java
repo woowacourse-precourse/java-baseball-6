@@ -79,4 +79,12 @@ public class BallsTest {
                 Arguments.of(new Balls(List.of(1, 2, 3)), 3L)
         );
     }
+
+    @Test
+    @DisplayName("비교 결과가 모두 스트라이크인지 판별할 수 있다.")
+    void isAllSameNumber_Then_AllStrike() {
+        Balls player = new Balls(List.of(3, 1, 2));
+        PlayResult playResult = player.compareAll(new Balls(List.of(3, 1, 2)));
+        assertThat(playResult.isAllStrike()).isTrue();
+    }
 }

@@ -30,6 +30,10 @@ public class PlayResult {
         return getCountOf(CompareResult.NOTHING) == RESULT_SIZE;
     }
 
+    public boolean isAllStrike() {
+        return getCountOf(CompareResult.STRIKE) == RESULT_SIZE;
+    }
+
     public long getStrikes() {
         return getCountOf(CompareResult.STRIKE);
     }
