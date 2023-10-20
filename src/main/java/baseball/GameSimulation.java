@@ -18,7 +18,7 @@ public class GameSimulation {
         init();
     }
 
-    // 컴퓨터의 번호를 설정하는 함수
+    // 컴퓨터의 랜덤 숫자를 설정하는 메소드
     void init(){
         while (computer.size()<3){
             int randomNumber= Randoms.pickNumberInRange(1,9);
@@ -27,5 +27,17 @@ public class GameSimulation {
             }
         }
     }
+
+    // 유저의 번호를 받아서 저장하는 메소드
+    public List<Integer> userInit(String userInput){
+        String[] array=userInput.split("");
+        List<Integer> userNumber=new ArrayList<>();
+        for (int i = 0; i < userInput.length(); i++){
+            userNumber.add(Integer.valueOf(array[i]));
+        }
+        return userNumber;
+    }
+
+
 
 }
