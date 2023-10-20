@@ -51,6 +51,10 @@ public class GameController {
 
     public void gameRegameRequest(){
         output.printGameEnd();
+        String request = input.inputGameRequest();
+        int result = request.charAt(0) - '0';
+
+        if (result == 1) gameRestart();
     }
 
     public void createComputerBall() {
