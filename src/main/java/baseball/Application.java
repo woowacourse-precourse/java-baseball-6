@@ -26,7 +26,7 @@ public class Application {
 
     private static void gameStart() {
 
-        makeComputerNum();
+//        makeComputerNum();
         playingGame();
 
         if (checkRestartGame())
@@ -34,17 +34,17 @@ public class Application {
     }
 
     /**
-     * 컴퓨터의 3자리 숫자를 만드는 메소드
+     * 컴퓨터의 3자리 숫자를 만드는 메소드 [기능분리]
      */
-    private static void makeComputerNum() {
-        COMPUTER_NUM.clear();
-        while (COMPUTER_NUM.size() < BASEBALL_NUM_SIZE) {
-            int num = Randoms.pickNumberInRange(1, 9);
-            if (!COMPUTER_NUM.contains(num)) {
-                COMPUTER_NUM.add(num);
-            }
-        }
-    }
+//    private static void makeComputerNum() {
+//        COMPUTER_NUM.clear();
+//        while (COMPUTER_NUM.size() < BASEBALL_NUM_SIZE) {
+//            int num = Randoms.pickNumberInRange(1, 9);
+//            if (!COMPUTER_NUM.contains(num)) {
+//                COMPUTER_NUM.add(num);
+//            }
+//        }
+//    }
 
     /**
      * 게임을 실제로 플레이하는 구간 숫자를 계속 추측함.
