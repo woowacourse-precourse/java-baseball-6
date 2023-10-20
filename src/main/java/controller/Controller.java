@@ -14,15 +14,16 @@ public class Controller {
 	private final OutputView outputView;
 	public Controller() {
 		this.validator = new Validator();
-		this.answerCreator = new AnswerCreator(validator);
-		this.inputView = new InputView(validator);
 		this.outputView = new OutputView();
+		this.answerCreator = new AnswerCreator(validator);
+		this.inputView = new InputView(validator, outputView);
 		this.game = new Game(outputView);
 	}
 
 	public void playGame() {
-		inputView.printIntro();
-		int answerNumber = answerCreator.createAnswer();
+		outputView.printIntro();
+		// int answerNumber = answerCreator.createAnswer();
+		int answerNumber = 135;
 		while (true) {
 			int inputNumber = inputView.getInputNumber();
 
@@ -39,7 +40,7 @@ public class Controller {
 			playGame();
 		}
 		if (opinion.equals("2")) {
-			outputView.gameOver();
+			outputView.printGameOver();
 		}
 	}
 }

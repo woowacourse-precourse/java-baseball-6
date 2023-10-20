@@ -7,7 +7,9 @@ public class Game {
 	public Game(OutputView outputView) {
 		this.outputView = outputView;
 	}
-
+	public void printIntro() {
+		System.out.println("숫자 야구 게임을 시작합니다.");
+	}
 	public boolean getGameResult(int inputNumber, int answerNumber) {
 		boolean isAnswer = false;
 		String input = Integer.toString(inputNumber);
