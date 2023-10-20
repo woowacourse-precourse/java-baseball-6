@@ -17,4 +17,8 @@ public class OutputView {
         }
         System.out.printf("%d볼 %d스트라이크%n", result.getBallCount(), result.getStrikeCount());
     }
+
+    public void gameOverMention() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
