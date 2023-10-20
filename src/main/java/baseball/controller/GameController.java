@@ -12,22 +12,22 @@ public class GameController {
     private ProgramNumber program;
     private UserNumber user;
 
-    public void run(){
+    public void run() {
         OutputView.printStart();
-        do{
+        do {
             start();
         } while (isReset());
     }
 
-    public void start(){
+    public void start() {
         program = new ProgramNumber();
-        do{
+        do {
             user = new UserNumber(InputView.inputUserNumber());
-            OutputView.printScoreMessage(getResultList()[0],getResultList()[1]);
-        } while(!isEnd());
+            OutputView.printScoreMessage(getResultList()[0], getResultList()[1]);
+        } while (!isEnd());
     }
 
-    public boolean isEnd(){
+    public boolean isEnd() {
         if (compareNumber.isThreeStrike()) {
             OutputView.printEnd();
             return true;
@@ -35,11 +35,11 @@ public class GameController {
         return false;
     }
 
-    public int[] getResultList(){
+    public int[] getResultList() {
         return compareNumber.getStrikeBall(user.getUserNumber(), program.getProgramNumber());
     }
 
-    public boolean isReset(){
+    public boolean isReset() {
         ResetGameNumber resetGameNumber = new ResetGameNumber(InputView.resetNumber());
         return resetGameNumber.getResetNumber().equals("1");
     }

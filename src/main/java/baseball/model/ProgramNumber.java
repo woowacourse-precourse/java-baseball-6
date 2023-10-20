@@ -8,7 +8,7 @@ public class ProgramNumber {
     private String programNumber;
 
     //생성된 프로그램 숫자 반환
-    public String getProgramNumber(){
+    public String getProgramNumber() {
         return programNumber;
     }
 
@@ -18,18 +18,18 @@ public class ProgramNumber {
     }
 
     //1 ~ 9 범위 내의 랜덤한 숫자 하나 획득
-    private String getOneNumber(){
+    private String getOneNumber() {
         return Integer.toString(Randoms.pickNumberInRange(1, 9));
     }
 
     //세자리 자연수 획득
-    private void setProgramNumber(){
+    private void setProgramNumber() {
         //중복을 피하기 위해 HashSet 사용
         Set<String> programNumberSet = new LinkedHashSet<>(3);
-        while (programNumberSet.size() < 3){
+        while (programNumberSet.size() < 3) {
             programNumberSet.add(getOneNumber());
         }
 
-        programNumber = String.join("",programNumberSet);
+        programNumber = String.join("", programNumberSet);
     }
 }
