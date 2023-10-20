@@ -7,10 +7,10 @@
 - [ ] 3자리 정수를 입력받고 playerNumbers로 저장
   - [x] 숫자를 입력해주세요 메시지 출력
   - [x] 수를 입력받고 playerNumbers로 저장
-  - [ ] 입력받은 값의 길이가 3인지 검사
-  - [ ] 입력받은 값이 정수인지 검사
-  - [ ] 입력받은 정수의 각 자리가 서로 다른지 검사
-  - [ ] 유효한 입력이 아닌 경우 IllegalArgumentException 발생
+  - [x] 입력받은 값의 길이가 3인지 검사
+  - [x] 입력받은 값이 정수인지 검사
+  - [x] 입력받은 정수의 각 자리가 서로 다른지 검사
+  - [x] 유효한 입력이 아닌 경우 IllegalArgumentException 발생
   - [ ] 정답을 맞출 때까지 반복
 - [ ] computerNumber와 playerNumber 비교
   - [ ] 스트라이크 개수 구하기
