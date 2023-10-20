@@ -6,7 +6,9 @@ import baseball.domain.Game;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static baseball.domain.Ball.*;
@@ -26,15 +28,13 @@ public class GameSetupService {
     }
 
     private List<Integer> generateRandomBallNumbers() {
-        List<Integer> ballNumbers = new ArrayList<>();
+        Set<Integer> ballNumbers = new HashSet<>();
         while (ballNumbers.size() < BALL_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_BALL, MAX_BALL);
-            if (!ballNumbers.contains(randomNumber)) {
-                ballNumbers.add(randomNumber);
-            }
+            ballNumbers.add(Randoms.pickNumberInRange(MIN_BALL, MAX_BALL));
         }
-        return ballNumbers;
+        return new ArrayList<>(ballNumbers);
     }
+
 
     private List<Ball> createComputerBalls(List<Integer> ballNumbers) {
         return ballNumbers.stream()
