@@ -1,6 +1,8 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -15,6 +17,7 @@ public class Player {
         for (char c: read.toCharArray()) {
             numbers.add(Character.getNumericValue(c));
         }
+        validateUniqueNumbers(numbers);
         return numbers;
     }
 
@@ -34,6 +37,14 @@ public class Player {
         for (char c: read.toCharArray()) {
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException("숫자만 입력해야 합니다.");
+            }
+        }
+    }
+
+    private void validateUniqueNumbers(List<Integer> numbers) {
+        for (int num : numbers) {
+            if (Collections.frequency(numbers, num) != 1) {
+                throw new IllegalArgumentException("숫자 3개가 서로 달라야 합니다.");
             }
         }
     }
