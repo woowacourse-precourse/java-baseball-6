@@ -88,8 +88,8 @@ public class Application {
 
     public static boolean restartOrExit(){//반환값이 1이면 restart
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int input = Integer.parseInt(Console.readLine());
-        return input == 1 ? true: false;
+        String choice = Console.readLine();
+        return validateRestartOrExitChoice(choice);
     }
 
     public static void validateUserThreeNumbers(String userThreeNumbers){
@@ -109,4 +109,15 @@ public class Application {
             user.add(char_num-'0');
         }
     }
+
+    public static boolean validateRestartOrExitChoice(String choice){//재시작, 종료 외의 예외처리
+
+        if(choice.equals("1"))
+            return true;
+        else if(choice.equals("2"))
+            return false;
+        throw new IllegalArgumentException("1 또는 2를 입력하지 않았습니다.");
+    }
+
+
 }
