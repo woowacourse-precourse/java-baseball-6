@@ -18,4 +18,10 @@ public class PrintMessage {
     public static void allStrikeResultMessage(Result result){
         System.out.printf("%d스트라이크\n", result.getStrikeCount());
     }
+    public static void ballAndStrikeMessage(Result result){
+        System.out.printf("%d볼 %d스트라이크\n",result.getBallCount(),result.getStrikeCount());
+    }
+    public static void nothingCheckMessage(Result result){
+        System.out.println("낫싱");
+    }
 }
