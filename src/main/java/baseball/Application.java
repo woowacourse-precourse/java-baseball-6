@@ -28,7 +28,8 @@ public class Application {
         while (true) {
             ArrayList<Integer> responseArray = getUserInput();
             int[] result = calculateResult(responseArray, computer);
-            // TODO : 출력로직 재시작여부로직 구현
+            printResult(result);
+            // TODO : 재시작여부로직 구현
         }
     }
 
@@ -54,6 +55,19 @@ public class Application {
         return result;
 
     }
+
+    private static void printResult(int[] result) {
+        if (result[0] > 0 && result[1] > 0) {
+            System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
+        } else if (result[0] == 0 && result[1] > 0) {
+            System.out.println(result[1] + "볼");
+        } else if (result[0] > 0 && result[1] == 0) {
+            System.out.println(result[0] + "스트라이크");
+        } else if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+        }
+    }
+
 
     private static ArrayList<Integer> getUserInput() {
         ArrayList<Integer> userGuess = new ArrayList<>();
