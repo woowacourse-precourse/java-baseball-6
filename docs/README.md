@@ -20,16 +20,16 @@
 ### ✅ 프로그래밍 요구사항
 - [ ] Java 코드 컨벤션 준수해서 리팩토링
 > **`돌다리도 두들겨보자!` 제출 전 확인 리스트 🪨👊🏻**
-> - [ ] JDK 17를 사용한다.
-> - [ ] Application의 main()에서 시작하도록 설계했다.
-> - [ ] build.gradle 파일을 변경하지 않았다.
-> - [ ] 외부 라이브러리 사용하지 않았다.
-> - [ ] System.exit() 사용하지 않았다.
-> - [ ] ApplicationTest의 모든 테스트가 성공한다.
-> - [ ] 패키지 이름을 수정하거나 이동하지 않았다.
-> - [ ] camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현했다.
->   - [ ] camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()
->   - [ ] camp.nextstep.edu.missionutils.Console의 readLine()
+> [ ] JDK 17를 사용한다.
+> [ ] Application의 main()에서 시작하도록 설계했다.
+> [ ] build.gradle 파일을 변경하지 않았다.
+> [ ] 외부 라이브러리 사용하지 않았다.
+> [ ] System.exit() 사용하지 않았다.
+> [ ] ApplicationTest의 모든 테스트가 성공한다.
+> [ ] 패키지 이름을 수정하거나 이동하지 않았다.
+> [ ] camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현했다.
+>   [ ] camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()
+>   [ ] camp.nextstep.edu.missionutils.Console의 readLine()
  
 
 ### ✅ 과제 진행 요구사항
