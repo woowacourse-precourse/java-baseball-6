@@ -48,14 +48,14 @@ public class GameController {
 
 
 
-    public boolean endOrRestart() {
+    private boolean endOrRestart() {
         String input = gameInput.inputEndOrRestart();
         validateController.validateInputString(input);
 
         return userAnswer(input);
     }
 
-    public boolean userAnswer(String input) {
+    private boolean userAnswer(String input) {
         if (input.equals(RESTART_FLAG)) { // 1
             return true;
         } else if (input.equals(END_FLAG)) { // 2
