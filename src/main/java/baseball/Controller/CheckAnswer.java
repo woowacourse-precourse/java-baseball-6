@@ -36,25 +36,26 @@ public class CheckAnswer {
         List<Integer> computerNumber = playNumber.getComputerNumber();
 
         compareNumber(playerNumber, computerNumber);
-        boolean ck = triStrike();
-        return ck;
+        boolean check = triStrike();
+        return check;
 
     }
 
-    public void compareNumber(List<Integer> playerNumber, List<Integer> computerNumber) {
+    public String compareNumber(List<Integer> playerNumber, List<Integer> computerNumber) {
         initCount();
         checkAns(playerNumber, computerNumber);
-        hint();
+        String Hint = hint();
+        return Hint;
     }
 
-    private void hint() {
+    private String hint() {
         String hintMsg = "";
 
         hintMsg += ballMsg();
         hintMsg += strikeMsg();
         hintMsg += nothingMsg();
 
-        System.out.println(hintMsg);
+        return hintMsg;
     }
 
     private String nothingMsg() {
