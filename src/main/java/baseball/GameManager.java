@@ -1,14 +1,12 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class GameManager {
 
     public void run() {
 
         doGameAndGetGameResult();
 
-        if (askReplayGame()) {
+        if (InputUtils.askReplayGame()) {
             run();
         }
 
@@ -25,31 +23,15 @@ public class GameManager {
 
         while (true) {
 
-            int userInput = userInputReceive();
+            int userInput = InputUtils.userInputReceive();
 
             printGameResult(computer, userInput);
 
-            if (isPlayerWin(computer, userInput)) {
-                printPlayerWinMessage();
+            if (computer.isPlayerWin(userInput)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
-    }
-
-    private boolean askReplayGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        int parsedInt = Utils.parseIntWithTypeCheck(Console.readLine());
-
-        if (parsedInt >= 3 || parsedInt < 1) {
-            throw new IllegalArgumentException();
-        }
-
-        return parsedInt == 1;
-    }
-
-    private void printPlayerWinMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private void printGameResult(Computer computer, int userInput) {
@@ -65,10 +47,6 @@ public class GameManager {
         printBallResult(ballCount, strikeCount);
         printStrikeCount(strikeCount);
         System.out.println();
-    }
-
-    private boolean isPlayerWin(Computer computer, int userInput) {
-        return computer.isPlayerWin(userInput);
     }
 
     private void printStrikeCount(int strikeCount) {
@@ -87,36 +65,6 @@ public class GameManager {
             }
             System.out.print(ballCount + "볼");
         }
-    }
-
-    private int userInputReceive() {
-        printInputDemandMessage();
-
-        return rawInputToCheckedInput(Console.readLine());
-    }
-
-    private int rawInputToCheckedInput(String rawInput) {
-
-        int parsedInt = Utils.parseIntWithTypeCheck(rawInput);
-
-        if (!(parsedInt >= 100) || !(parsedInt <= 999)) {
-            throw new IllegalArgumentException();
-        }
-
-        int firstPosition = (parsedInt / 100) % 100;
-        int secondPosition = (parsedInt / 10) % 10;
-        int thirdPosition = parsedInt % 10;
-
-        if (firstPosition == secondPosition || firstPosition == thirdPosition || secondPosition == thirdPosition) {
-            throw new IllegalArgumentException();
-        }
-
-        return parsedInt;
-    }
-
-
-    private void printInputDemandMessage() {
-        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private void printGameStartMessage() {

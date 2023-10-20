@@ -1,6 +1,6 @@
 package baseball;
 
-public class Utils {
+public class ValidateUtils {
 
     public static int parseIntWithTypeCheck(String rawInput) {
         int parsedInt;
