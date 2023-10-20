@@ -19,7 +19,10 @@ public class BaseballGame {
             printResult(currentResult);
 
             if (currentResult.getStrikeCount() == 3 && replay()) {
-
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                if (player.askRestart() == 2) {
+                    break;
+                }
             }
         }
     }

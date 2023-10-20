@@ -18,6 +18,12 @@ public class Player {
         return numbers;
     }
 
+    public int askRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String read = Console.readLine();
+        return Integer.parseInt(read);
+    }
+
     private void validateCount(String numbers) {
         if (numbers.length() != 3) {
             throw new IllegalArgumentException("3개의 숫자만 입력해야 합니다.");
