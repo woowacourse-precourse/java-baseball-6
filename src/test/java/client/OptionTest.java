@@ -59,4 +59,20 @@ class OptionTest {
         //then
         assertThat(option).isEqualTo(Option.FINISH);
     }
+
+    @Test
+    @DisplayName("enum 내부 메소드를 활용하여, 상태 확인하기")
+    void enumTest05() {
+        // given
+        String continueStatus = "1";
+        String finishStatus = "2";
+
+        //when
+        boolean mustBeFalse = Option.findByStatus(continueStatus).isFinish();
+        boolean mustBeTrue = Option.findByStatus(finishStatus).isFinish();
+
+        //then
+        assertThat(mustBeFalse).isEqualTo(false);
+        assertThat(mustBeTrue).isEqualTo(true);
+    }
 }

@@ -21,4 +21,8 @@ public enum Option {
                 .findAny()
                 .orElse(Option.ERROR);
     }
+
+    public boolean isFinish() {
+        return this == FINISH;
+    }
 }
