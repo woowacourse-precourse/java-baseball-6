@@ -7,7 +7,11 @@ import java.util.List;
 
 public class Computer {
 
-    List<Integer> randomNumbers;
+    private List<Integer> randomNumbers;
+
+    public List<Integer> getRandomNumbers() {
+        return this.randomNumbers;
+    }
 
     void generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
