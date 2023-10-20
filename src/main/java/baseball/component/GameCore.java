@@ -15,4 +15,8 @@ public class GameCore {
         this.validator = validator;
     }
 
+    private void initGame() {
+        validator.setTarget(initializer.initGame());
+    }
+
 }
