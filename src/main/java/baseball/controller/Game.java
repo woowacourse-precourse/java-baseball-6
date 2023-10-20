@@ -11,6 +11,7 @@ public class Game {
 
     private Number computerNumber;
     private Number playerNumber;
+    private Hint hint;
 
     public void start() {
         do {
@@ -20,11 +21,10 @@ public class Game {
     }
 
     private void play() {
-        Hint hint = new Hint();
         do {
             playerNumber = Number.inputPlayerNumber();
-            hint.updateHint(playerNumber, computerNumber);
-            hint.printHint();
+            hint.update(playerNumber, computerNumber);
+            hint.print();
         } while (!hint.checkClear());
     }
 }
