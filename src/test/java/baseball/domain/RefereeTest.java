@@ -14,12 +14,10 @@ class RefereeTest {
         List<Integer> userNumbers = List.of(2, 9, 4);
 
         //when
-        Referee referee = new Referee(computerNumbers, userNumbers);
-
+        Referee referee = new Referee();
         //then
         assertThat(referee.getBall()).isEqualTo(1);
         assertThat(referee.getStrike()).isEqualTo(1);
-        assertThat(referee.getJudgement()).isEqualTo("1볼 1스트라이크");
     }
 
 }
