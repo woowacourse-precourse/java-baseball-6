@@ -1,8 +1,6 @@
 package baseball.model;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Player {
@@ -16,6 +14,10 @@ public class Player {
         validateDuplicate(player);
         validateIsNumber(player);
         this.player = player;
+    }
+
+    public List<Integer> getPlayer() {
+        return Collections.unmodifiableList(player);
     }
 
     private void validateCheckZero(List<Integer> player) {
@@ -40,8 +42,8 @@ public class Player {
     private void validateIsNumber(List<Integer> player) {
         String pattern = "^[0-9]*$";
         boolean containsNonNumber = player.stream()
-                .map(val -> Pattern.matches(pattern, val.toString()))
-                .anyMatch(Boolean::booleanValue);
+                .map(val -> val.toString())
+                .anyMatch(s -> !s.matches(pattern));
         if (containsNonNumber) {
             throw new IllegalArgumentException("플레이어는 숫자 이외의 값을 선택할 수 없습니다.");
         }
