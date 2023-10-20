@@ -50,9 +50,11 @@ public class NumberBaseBall {
         if (strikeCount == MAX_STRIKES) {
             messageViewer.printGameEndMsg();
             userAction.inputRestartFactor(inputValidator);
-            regenerateNumber(userAction.user.mind);
 
-            return userAction.user.mind;
+            int mind = userAction.getMind();
+            regenerateNumber(mind);
+
+            return mind;
         }
 
         return WANNA_KEEP_PLAYING;
