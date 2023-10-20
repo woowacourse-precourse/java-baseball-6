@@ -37,19 +37,6 @@ AnswerMaker(int min, int max) 생성자 호출 시 makeNumber를 사용해 난�
 List<Integer> getAnswer()
 ```
 
-## Validation 클래스
-- 유저가 입력한 값에 대한 검증 메서드
-```java
-void validateThreeNumbers(String input) 유저가 입력한 값에 대한 validate false가 걸리면 Exception 던지기
-void validateContinueSign(String input) 재시작 / 종료 입력값에 대한 validate, false 걸리면 Exception 던지기
-        
-        //잘못된 값이면 false 반환
-boolean duplicationCheck(String input) 중복수 판별 
-boolean onlyDigitCheck(String input) 숫자만 적혀있는지 판별
-boolean inRangeCheck(String input) 1 ~ 9 사이의 수인지 판별
-boolean sizeCheck(String input) 지정된 사이즈만큼 들어왔는지 판별
-```
-
 ## Computer 클래스
 - strike, ball 스코어 측정 메서드
 ```java
@@ -61,24 +48,27 @@ int judgeScore(List<Integer> answer, int number, int index) 숫자와 위치를 
 
 ```
 
-## UserInput 클래스
-- 유저의 String을 입력받는 메서드
-```java
-String getUserInput() 미션의 요구사항대로 Console의 메서드 사용하여 String으로 입력받는 기능 
-```
-- validation 후 원하는 타입으로 값을 변환하는 메서드
-```java
-List<Integer> makeUserInputToThreeNumbers() 입력받은 String을 validation 진행 후 integer 리스트로 반환
-void validateContinueSign(String sign)() 재시작 / 종료 사인에 대한 validation 진행 메서드
-```
 ## InputValidation 클래스
-- 유저의 입력값에 대한 Validation을 한번에 진행하는 클래스
+- validation을 userInput값에 대해서만 진행하고, 기존에 작성한 함수도 확장성이 떨어진다고 생각해 UserInput을 위한 valid로 기능 통일..
 
-- 필요한 타입으로 반환하는 메서드
+- 유저의 입력값에 대한 Validation을 한번에 진행하는 메서드
 ```java
-List<Integer> validateUserNumbers(String input) validation 진행 후 리스트로 반환하는 메서드
+List<Integer> validateUserNumbers(String input) 전체 validation을 진행하는 메서드
 
 ```
+- 문자열을 리스트로 반환하는 메서드
+```java
+List<Integer> convertStrToList(String input) String -> List<Integer> 변환하여 반환
+```
+- validation 메서드들
+```java
+void duplicationCheck(String input) 중복수 판별 
+void onlyDigitCheck(String input) 숫자만 적혀있는지 판별
+void inRangeCheck(String input) 1 ~ 9 사이의 수인지 판별
+void sizeCheck(String input) 지정된 사이즈만큼 들어왔는지 판별
+
+```
+
 
 ### 뭘 만들어야 할까?
 
