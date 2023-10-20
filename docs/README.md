@@ -1,6 +1,6 @@
 # 구현할 기능 목록
 
-### BaseBallGame
+## BaseBallGame
 
 gameStart() 게임 시작
 
