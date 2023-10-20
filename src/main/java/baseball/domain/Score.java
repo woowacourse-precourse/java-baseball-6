@@ -3,6 +3,7 @@ package baseball.domain;
 import java.util.List;
 
 public class Score {
+
     private int strike;
     private int ball;
 

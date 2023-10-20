@@ -11,7 +11,7 @@ public class View {
 
     public void mainView() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        controller.init();
+        controller.generateRandomValue();
 
         while (!quitGame) {
             System.out.println("숫자를 입력해주세요: ");
@@ -45,7 +45,7 @@ public class View {
         String restart = Console.readLine();
 
         if (restart.equals("1")) {
-            controller.init();
+            controller.generateRandomValue();
         } else if (restart.equals("2")) {
             quitGame = true;
         }
