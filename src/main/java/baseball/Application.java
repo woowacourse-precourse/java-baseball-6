@@ -10,11 +10,12 @@ public class Application {
             if(input_arr[i]==com_arr[i]) check_cnt++;
         }
 
-        if (check_cnt==0)
+        if (check_cnt==0) {
             System.out.println("낫싱");
+            return false;
+        }
 
         System.out.println(check_cnt+"스트라이크");
-
         return check_cnt == 3;
     }
     public static void main(String[] args) {
