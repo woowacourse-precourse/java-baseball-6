@@ -6,18 +6,18 @@ public class OutputView {
     }
 
     // TODO: 더 깔끔한 코드 고민해보기
-    public void displayScoreboard(int[] score) {
-        if(score[2] != 0) {
+    public void displayScoreboard(int strike, int ball, int nothing) {
+        if(nothing != 0) {
             System.out.println("낫싱");
         }
-        else if(score[0] > 0 && score[1] > 0) {
-            System.out.println(score[1] + "볼 " + score[0] + "스트라이크");
+        else if(strike > 0 && ball > 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
-        else if(score[0] > 0) {
-            System.out.println(score[0] + "스트라이크");
+        else if(strike > 0) {
+            System.out.println(strike + "스트라이크");
         }
         else {
-            System.out.println(score[1] + "볼");
+            System.out.println(ball + "볼");
         }
     }
 
