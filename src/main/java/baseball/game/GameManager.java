@@ -8,6 +8,20 @@ public class GameManager {
     public static class GameIsNullException extends NullPointerException {
     }
 
+    private static void inGameLoop() {
+        if (game == null) {
+            throw new GameIsNullException();
+        }
+
+        notifyGameRunning(true);
+
+        game.beforeLoop();
+        while (isGameRunning) {
+            game.gameLoop();
+        }
+        game.afterLoop();
+    }
+
     public static void start(Game _game) {
         if (_game == null) {
             throw new GameIsNullException();
@@ -17,12 +31,7 @@ public class GameManager {
         notifyGameEnd(false);
         game.awake();
         while (!isGameEnd) {
-            notifyGameRunning(true);
-            game.beforeLoop();
-            while (isGameRunning) {
-                game.gameLoop();
-            }
-            game.afterLoop();
+            inGameLoop();
         }
         game.cleanup();
     }
