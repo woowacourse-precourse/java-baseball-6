@@ -29,18 +29,7 @@ public class BaseballGameService {
         int strike = calculateStrike(userNumber, computerNumber);
         int ball = calculateBall(userNumber, computerNumber);
 
-        if (strike == NO_HIT && ball == NO_HIT)
-            System.out.println("낫싱");
-
-        if (ball > NO_HIT)
-            System.out.println(ball + "볼 ");
-
-        if (strike > NO_HIT)
-            System.out.println(strike + "스트라이크 ");
-
-        if (strike == ALL_STRIKE) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
+        printResult(strike, ball);
 
         return (strike == ALL_STRIKE);
     }
@@ -56,6 +45,21 @@ public class BaseballGameService {
                 .filter(index -> computerNumber.contains(userNumber.get(index))
                         && !computerNumber.get(index).equals(userNumber.get(index)))
                 .count();
+    }
+
+    private void printResult(int strike, int ball) {
+        if (strike == NO_HIT && ball == NO_HIT)
+            System.out.println("낫싱");
+
+        if (ball > NO_HIT)
+            System.out.println(ball + "볼 ");
+
+        if (strike > NO_HIT)
+            System.out.println(strike + "스트라이크 ");
+
+        if (strike == ALL_STRIKE) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 
 }
