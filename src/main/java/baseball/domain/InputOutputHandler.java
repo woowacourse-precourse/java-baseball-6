@@ -9,6 +9,10 @@ public class InputOutputHandler {
         return Collections.emptyList();
     }
 
+    public int inputNumber() {
+        return -1;
+    }
+
     public void printText(String text) {
 
     }
