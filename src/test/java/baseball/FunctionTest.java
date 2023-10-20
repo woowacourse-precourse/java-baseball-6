@@ -19,7 +19,7 @@ public class FunctionTest {
     void 정답_리스트의_크기는_3이어야_한다() {
         List<Integer> answerList = Application.makeRandomAnswer();
 
-        assertEquals(answerList.size(), 3);
+        assertEquals(3, answerList.size());
     }
 
     @Test
@@ -33,7 +33,7 @@ public class FunctionTest {
     void 정답_리스트의_모든_숫자는_중복되지_않아야_한다() {
         List<Integer> answerList = Application.makeRandomAnswer();
 
-        assertEquals(answerList.stream().distinct().count(), answerList.size());
+        assertEquals(answerList.size(), answerList.stream().distinct().count());
     }
 
     @Test
