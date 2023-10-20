@@ -22,7 +22,16 @@ public class GameProcessor {
 
         return result;
     }
-
+    public void printScore(Score score) {
+        if(score.getBall()>0&&score.getStrike()>0)
+            System.out.println(score.getBall()+"볼 "+score.getStrike()+"스트라이크");
+        if(score.getBall()>0&&score.getStrike()==0)
+            System.out.println(score.getBall()+"볼");
+        if(score.getBall()==0&&score.getStrike()>0)
+            System.out.println(score.getStrike()+"스트라이크");
+        if(score.getBall()==0&&score.getStrike()==0)
+            System.out.println("낫싱");
+    }
 
 
 }
