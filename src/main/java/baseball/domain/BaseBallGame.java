@@ -10,6 +10,7 @@ import java.util.List;
 public class BaseBallGame {
 
 
+
     public void run() {
         OutputView.printStartMessage();
         startNewGame();
@@ -17,11 +18,14 @@ public class BaseBallGame {
     private void startNewGame() {
         List<Integer> computerNumbers = generateComputerNumber();
         System.out.println(computerNumbers.toString());
-        List<String> inputString = InputView.readPlayerNumber();
-        List<Integer> inputInteger = Converter.convertToNumericList(inputString);
-        Result result = new Result(computerNumbers,inputInteger);
-        System.out.println(result.resultToString());
-
+        boolean continueSign = true;
+        while(continueSign){
+            List<String> inputString = InputView.readPlayerNumber();
+            List<Integer> inputInteger = Converter.convertToNumericList(inputString);
+            Result result = new Result(computerNumbers,inputInteger);
+            System.out.println(result.resultToString());
+             continueSign = isContinue(result);
+        }
     }
     private List<Integer> generateComputerNumber(){
         List<Integer> computer = new ArrayList<>();
@@ -32,5 +36,8 @@ public class BaseBallGame {
             }
         }
         return computer;
+    }
+    private boolean isContinue(Result result){
+        return result.getStrikeCount() != 3;
     }
 }
