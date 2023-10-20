@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.computer.RandomComputerNumberGenerator;
 import baseball.validator.NumberValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,6 +47,28 @@ class NumberValidatorTest {
         assertThatThrownBy(() -> NumberValidator.validateNaturalNumber(invalidNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자는 " + 1 + "에서 " + 9 + "까지여야 합니다.");
+    }
+
+    @DisplayName("경계인 3이라면 False를 반환한다.")
+    @Test
+    void isBelowRequiredLength() {
+        // given
+        int invalidNumber = 3;
+
+        // when
+        // then
+        assertThat(NumberValidator.isBelowRequiredLength(invalidNumber)).isFalse();
+    }
+
+    @DisplayName("경계인 3보다 작다면 True를 반환한다.")
+    @Test
+    void isBelowRequiredLengthWithTwo() {
+        // given
+        int invalidNumber = 2;
+
+        // when
+        // then
+        assertThat(NumberValidator.isBelowRequiredLength(invalidNumber)).isTrue();
     }
 
 }
