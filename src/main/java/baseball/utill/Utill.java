@@ -41,6 +41,7 @@ public class Utill {
     public static String inputNum() {
         String result = readLine();
 
+        ValidException.isValidNumVerification(result); // 입력 받은 문자열이 숫자로 변환 가능한지 확인
         ValidException.isValidLength(result); // 입력 받는 문자열이 3이 아니면 예외처리.
 
         return result;
@@ -52,7 +53,12 @@ public class Utill {
      * @return
      */
     public static int inputIntNum() {
-        int resultInt = Integer.parseInt(readLine());
+        String inputStr = readLine();
+
+        ValidException.isValidNumVerification(inputStr); // 입력 받은 문자열이 숫자로 변환 가능한지 확인
+
+        int resultInt = Integer.parseInt(inputStr);
+
         return resultInt;
     }
 

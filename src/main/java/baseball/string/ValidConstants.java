@@ -16,4 +16,8 @@ public class ValidConstants {
     public static String MSG_INPUT_ONLY_ONE_TWO() {
         return "1과 2만 입력해주세요.";
     }
+
+    public static String MSG_ONLY_INPUT_NUM_TYPE() {
+        return "숫자만 입력가능 합니다.";
+    }
 }

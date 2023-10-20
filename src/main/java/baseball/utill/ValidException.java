@@ -32,4 +32,15 @@ public class ValidException {
         }
         throw new IllegalArgumentException(ValidConstants.MSG_INPUT_LENGTH_ONLY_THREE());
     }
+
+    // TODO: 10/20/23
+    // 숫자을 입력받을때 문자 입력 안되게 한다.
+    // 숫자 검증
+    public static void isValidNumVerification(String str) {
+        try {
+            Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ValidConstants.MSG_ONLY_INPUT_NUM_TYPE());
+        }
+    }
 }
