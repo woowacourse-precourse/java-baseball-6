@@ -19,7 +19,7 @@ public class BaseballPrint extends BaseballScore{
                 System.out.print(" ");
             }
         }
-        if (strikeCount != 0) {
+        if (strikeCount > 0) {
             System.out.print(strikeCount + "스트라이크");
         }
         if (ballCount == 0 && strikeCount == 0) {
