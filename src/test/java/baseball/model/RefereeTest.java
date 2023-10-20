@@ -58,4 +58,56 @@ class RefereeTest {
         //then
         Assertions.assertEquals(strikeNumbers, 3);
     }
+
+    @Test
+    public void 제로_볼_테스트() {
+        //given
+        String randomNumbers = "123";
+        String inputNumbers = "456";
+
+        //when
+        int ballNumbers = referee.calculateBallNumbers(randomNumbers, inputNumbers);
+
+        //then
+        Assertions.assertEquals(ballNumbers, 0);
+    }
+
+    @Test
+    public void 원_볼_테스트() {
+        //given
+        String randomNumbers = "123";
+        String inputNumbers = "634";
+
+        //when
+        int ballNumbers = referee.calculateBallNumbers(randomNumbers, inputNumbers);
+
+        //then
+        Assertions.assertEquals(ballNumbers, 1);
+    }
+
+    @Test
+    public void 투_볼_테스트() {
+        //given
+        String randomNumbers = "123";
+        String inputNumbers = "632";
+
+        //when
+        int ballNumbers = referee.calculateBallNumbers(randomNumbers, inputNumbers);
+
+        //then
+        Assertions.assertEquals(ballNumbers, 2);
+    }
+
+    @Test
+    public void 쓰리_볼_테스트() {
+        //given
+        String randomNumbers = "123";
+        String inputNumbers = "231";
+
+        //when
+        int ballNumbers = referee.calculateBallNumbers(randomNumbers, inputNumbers);
+
+        //then
+        Assertions.assertEquals(ballNumbers, 3);
+    }
 }
