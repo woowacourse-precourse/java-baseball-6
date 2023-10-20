@@ -3,7 +3,7 @@ package baseball.game;
 public class GameManager {
     private static Game game = null;
     private static boolean isGameRunning;
-    private static boolean isGameEnd;
+    private static boolean isGameManagerRunning;
 
     public static class GameIsNullException extends NullPointerException {
     }
@@ -13,7 +13,7 @@ public class GameManager {
             throw new GameIsNullException();
         }
 
-        notifyGameRunning(true);
+        isGameRunning = true;
 
         game.beforeLoop();
         while (isGameRunning) {
@@ -28,19 +28,20 @@ public class GameManager {
         }
         game = _game;
 
-        notifyGameEnd(false);
+        isGameManagerRunning = true;
+
         game.awake();
-        while (!isGameEnd) {
+        while (isGameManagerRunning) {
             inGameLoop();
         }
         game.cleanup();
     }
 
-    public static void notifyGameEnd(boolean status) {
-        isGameEnd = status;
+    public static void notifyEndGameManager() {
+        isGameManagerRunning = false;
     }
 
-    public static void notifyGameRunning(boolean status) {
-        isGameRunning = status;
+    public static void notifyEndGame() {
+        isGameRunning = false;
     }
 }
