@@ -3,6 +3,7 @@ package baseball.model;
 import baseball.constant.ErrorMessage;
 import baseball.util.Converter;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -24,7 +25,6 @@ public class GameNumber {
         validateValue(value);
         List<Integer> gameNumber = Converter.convertList(value);
         validateLength(gameNumber);
-        validateRange(gameNumber);
         this.gameNumber = gameNumber;
     }
 
@@ -62,7 +62,10 @@ public class GameNumber {
 
     private void validateValue(String value) {
         try {
-            if (Integer.parseInt(value) < 0) {
+            if (!Arrays.stream(value.split(""))
+                    .map(String::valueOf)
+                    .mapToInt(Integer::parseInt)
+                    .allMatch(number -> MIN_NUMBER.getValue() <= number && number <= MAX_NUMBER.getValue())) {
                 throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
             }
         } catch (NumberFormatException e) {

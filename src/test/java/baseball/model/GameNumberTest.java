@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.constant.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -18,7 +19,9 @@ class GameNumberTest {
     @ParameterizedTest(name = "{index} {displayName} message={0}")
     @ValueSource(strings = {"1234", "5567", "-123", "ball", "wt6", "-0", "", "603", "999999999999999999999"})
     void checkInvalidValue(String value) {
-        assertThatThrownBy(() -> new GameNumber(value)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new GameNumber(value))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_GAME_NUMBER);
     }
 
     @DisplayName("올바른 값 입력 확인 문자열 타입")
