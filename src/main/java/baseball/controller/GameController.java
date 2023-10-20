@@ -32,6 +32,7 @@ public class GameController {
         boolean statePool;
 
         while (gameState.getState()) {
+            gameState.setSuccess(false);
             playController.generateNumber(); // 컴퓨터 난수 생성
             guessNumber(); // 게임 시작
             statePool = endOrRestart();
@@ -43,10 +44,10 @@ public class GameController {
         boolean successPool;
 
         while (!gameState.getSuccess()) {
-            String input = gameInput.inputNumber();
+            String input = gameInput.inputNumber(); // 유저 입력
             Integer maximumNumberLength = gameState.getMaximumNumberLength();
-            validateController.validateInputString(input, maximumNumberLength);
-            successPool = playController.isSuccess(input);
+            validateController.validateInputString(input, maximumNumberLength); // 입력 검사
+            successPool = playController.isSuccess(input); // 정답 검사
             gameState.setSuccess(successPool);
         }
 

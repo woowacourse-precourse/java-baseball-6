@@ -35,8 +35,8 @@ public class PlayController {
     }
 
     public boolean isSuccess(String input) {
-        List<Integer> stringToIntegerList = generateController.stringToIntegerList(input);
-        validateController.validateInputIntegerList(stringToIntegerList, gameState.getMaximumNumberLength());
+        List<Integer> stringToIntegerList = generateController.stringToIntegerList(input); // 입력 변환 : String -> List<Integer>
+        validateController.validateInputIntegerList(stringToIntegerList, gameState.getMaximumNumberLength()); // 입력 검사
 
         userGameNumber.setNumber(stringToIntegerList);
 
