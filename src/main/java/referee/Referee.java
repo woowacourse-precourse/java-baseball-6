@@ -1,5 +1,8 @@
 package referee;
 
+import static constant.NumberConstant.END;
+import static constant.NumberConstant.START;
+
 import camp.nextstep.edu.missionutils.Console;
 import message.Message;
 import player.Computer;
@@ -12,9 +15,6 @@ public class Referee {
     private final Computer computer = new Computer();
     private final Player player = new Player();
     private final Score score = new Score();
-
-    private static final String START = "1";
-    private static final String END = "2";
 
     public void playBall() {
         computer.generateComputerRandomNumber();
@@ -35,11 +35,16 @@ public class Referee {
         Message.printContinueOrFinishMessage();
         String userInput = Console.readLine();
 
-        if (userInput.equals(START)) {
+        if (Integer.parseInt(userInput) == START) {
             playBall();
+            return;
         }
-        if (userInput.equals(END)) {
+        if (Integer.parseInt(userInput) == END) {
             Message.printEndGameMessage();
+            return;
         }
+
+        Message.printErrorMessage();
+        continueOrFinish();
     }
 }

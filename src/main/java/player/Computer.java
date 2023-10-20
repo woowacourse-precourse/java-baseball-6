@@ -1,5 +1,7 @@
 package player;
 
+import static constant.NumberConstant.MAX_LENGTH;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +9,6 @@ import java.util.List;
 public class Computer {
 
     private List<Integer> computerBaseballNumber = new ArrayList<>();
-    private static final int MAX_LENGTH = 3;
 
     public void generateComputerRandomNumber() {
         List<Integer> computerBaseballNumber = new ArrayList<>();

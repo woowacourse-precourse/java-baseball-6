@@ -1,5 +1,8 @@
 package player;
 
+import static constant.NumberConstant.MAX_LENGTH;
+import static constant.StringConstant.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,10 +12,6 @@ import java.util.Set;
 public class Player {
 
     private List<Integer> playerBaseballNumber = new ArrayList<>();
-    private static final int MAX_LENGTH = 3;
-    private static final String ONLY_THREE_NUMBER_MESSAGE = "3자리의 숫자만 입력가능합니다.";
-    private static final String ONLY_NUMBER_MESSAGE = "숫자만 입력 가능합니다.";
-    private static final String NO_DUPLICATE_NUMBER_MESSAGE = "중복된 숫자는 입력 불가능합니다.";
 
     public List<Integer> inputPlayerNumber() {
         List<Integer> playerInputBaseballNumber = new ArrayList<>();
