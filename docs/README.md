@@ -40,8 +40,8 @@
     - inputGameResult 메서드의 추상화
   - [ ] OutputHandler
     - view Package의 ConsoleOutput의 확장성과 변경 용이성을 위한 인터페이스
-    - printGameResult 메서드의 추상화
     - printGameStart 메서드의 추상화
+    - printGameResult 메서드의 추상화
   - [ ] ErrorHandler
     - Enum 클래스를 활용하여 프로그램에서 발생하는 에러 코드들을 관리하는 클래스
     - ErrorMessage와 함께 IllegalArgumentException 예외를 발생시키는 getException 메서드
@@ -60,8 +60,8 @@
     - 게임 종료 후 다음 게임의 상태를 결정하는 inputGameResult 메서드 구현
   - [ ] ConsoleOutput
     - 출력을 담당하는 클래스
-    - 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시하고 하나도 없는 경우 낫싱, 3개의 숫자를 모두 맞힐 경우 3개의 숫자를 모두 맞히셨습니다! 게임 종료를 보여주는 printGameResult 메서드 구현
     - 게임 시작 문구를 출력하는 printGameStart 메서드 구현
+    - 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시하고 하나도 없는 경우 낫싱, 3개의 숫자를 모두 맞힐 경우 3개의 숫자를 모두 맞히셨습니다! 게임 종료를 보여주는 printGameResult 메서드 구현
 
 # :bookmark_tabs: 문제 해결 과정
 
