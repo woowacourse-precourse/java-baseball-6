@@ -6,5 +6,7 @@ public class GameInputErrorException implements ErrorException{
         throw new IllegalArgumentException(message);
     }
 
-    private
+    private boolean isNumeric(String checkNumber) {
+        return checkNumber.matches("-?\\d+(\\.\\d+)?");
+    }
 }
