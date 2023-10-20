@@ -24,6 +24,10 @@ public class GameInfo {
         return strike;
     }
 
+    public int getBall() {
+        return ball;
+    }
+
     public List<Integer> getRandomNumbers() {
         return randomNumbers;
     }
