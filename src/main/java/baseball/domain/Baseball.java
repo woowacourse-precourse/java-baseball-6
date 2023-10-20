@@ -1,23 +1,21 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Baseball {
-
     Integer hundreds;
     Integer tens;
     Integer ones;
 
-    public Baseball(int inputNumber) {
+    public Baseball(Integer inputNumber) {
         hundreds = inputNumber / 100;
         tens = (inputNumber / 10) % 10;
         ones = inputNumber % 10;
     }
 
-    private Baseball(int hundreds, int tens, int ones) {
+    private Baseball(Integer hundreds, Integer tens, Integer ones) {
         this.hundreds = hundreds;
         this.tens = tens;
         this.ones = ones;
