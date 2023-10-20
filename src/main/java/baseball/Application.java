@@ -2,7 +2,12 @@ package baseball;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
-import baseball.service.*;
+import baseball.service.MakeComputerRandom;
+import baseball.service.MakeUserAnswer;
+import baseball.service.Play;
+import baseball.service.PrintResult;
+import baseball.service.Restart;
+import baseball.service.UserValidation;
 
 public class Application {
     private final MakeComputerRandom makeComputerRandom;
@@ -10,7 +15,8 @@ public class Application {
     private final Play play;
     private final PrintResult printResult;
 
-    public Application(MakeComputerRandom makeComputerRandom, MakeUserAnswer makeUserAnswer, Play play, PrintResult printResult) {
+    public Application(MakeComputerRandom makeComputerRandom, MakeUserAnswer makeUserAnswer, Play play,
+                       PrintResult printResult) {
         this.makeComputerRandom = makeComputerRandom;
         this.makeUserAnswer = makeUserAnswer;
         this.play = play;
@@ -45,9 +51,8 @@ public class Application {
                 case 2:
                     isCheck = false;
                     break;
-                case 3:
+                default:
                     result = getResult(computer);
-                    break;
             }
         }
     }
