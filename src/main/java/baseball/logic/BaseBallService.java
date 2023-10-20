@@ -2,6 +2,10 @@ package baseball.logic;
 
 public class BaseBallService {
     public String getGameResult(int computerInput, int userInput) {
+        if (!isValidInputThreeNumber(userInput)){
+            throw new IllegalArgumentException("3자리의 정수를 입력해야 됩니다. 사용자의 입력 : " + userInput);
+        }
+
         int[] computerInputArray = convertToArray(computerInput);
         int[] userInputArray = convertToArray(userInput);
 
@@ -39,6 +43,13 @@ public class BaseBallService {
         return ballResult + " " + strikeResult;
     }
 
+    // 3자리의 정수인지 확인
+    private boolean isValidInputThreeNumber(int userInput) {
+        String userInputToString = String.valueOf(userInput);
+        return userInputToString.matches("\\d{3}");
+    }
+
+    // 인트형 배열로 변환
     private int[] convertToArray(int number) {
         String numberString = String.valueOf(number);
         int[] array = new int[numberString.length()];

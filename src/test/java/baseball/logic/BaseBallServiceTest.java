@@ -4,8 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BaseBallServiceTest {
 
@@ -42,5 +43,21 @@ class BaseBallServiceTest {
 
         // then
         assertTrue(result.contains(expectedBall + "볼"));
+    }
+
+    @DisplayName("3자리 미만 혹은 초과 정수가 입력되었을 경우 IllegalArgumentException 발생")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 12, 3542, 6523562})
+    void confirmInputString(int userInput) {
+        // given
+        int computerInput = 352;
+
+        // when
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            baseBallService.getGameResult(computerInput, userInput);
+        });
+
+        // then
+        assertEquals("3자리의 정수를 입력해야 됩니다. 사용자의 입력 : " + userInput, illegalArgumentException.getMessage());
     }
 }
