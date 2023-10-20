@@ -1,6 +1,6 @@
 package baseball.converter;
 
-import baseball.domain.Numbers;
+import baseball.domain.number.Numbers;
 import baseball.enums.OverallGameStatus;
 import java.util.Arrays;
 import java.util.stream.Collectors;
