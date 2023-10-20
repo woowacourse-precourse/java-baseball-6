@@ -20,10 +20,12 @@ public class GameSimulation {
 
     // 컴퓨터의 랜덤 숫자를 설정하는 메소드
     void init(){
-        while (computer.size()<3){
+        computer=new ArrayList<>();
+        for (int i = 0; i < 3;){
             int randomNumber= Randoms.pickNumberInRange(1,9);
             if (!computer.contains(randomNumber)){
                 computer.add(randomNumber);
+                i++;
             }
         }
     }
@@ -60,26 +62,56 @@ public class GameSimulation {
         this.user=userInit(userInput);
         judgeUser();
         compareNumber();
-        // 스트라이크, 볼 관련 판단 출력
+        System.out.println(compareNumberResult());
     }
 
-    // 컴퓨터와 사용자의 숫자 비교 메서드
-    public String compareNumber(){
-        if (ballCount!=0 && strikeCount!=0){
-            return (ballCount+"볼"+strikeCount+"스트라이크");
-
+    public void compareNumber(){
+        this.strikeCount = 0;
+        this.ballCount = 0;
+        for (int i = 0; i < user.size(); i++){
+            if (computer.indexOf(user.get(i))==i){
+                strikeCount++;
+                continue;
+            }
+            if (computer.contains(user.get(i))){
+                ballCount++;
+            }
         }
-        if (ballCount != 0){
+    }
+
+    // 컴퓨터와 사용자의 비교 결과 출력
+    public String compareNumberResult(){
+        if (ballCount!=0 && strikeCount!=0){
+            return (ballCount+"볼 "+ strikeCount +"스트라이크");
+        }
+        if (ballCount != 0 && strikeCount==0){
             return (ballCount+"볼");
         }
-        if (strikeCount != 0){
+        if (strikeCount != 0 && ballCount==0){
             return (strikeCount+"스트라이크");
         }
         return ("낫싱");
     }
 
+    // 게임이 종료 조건을 만족하는지 알아보는 메소드
+    public boolean gameEnd(){
+        if (strikeCount!=null && strikeCount==3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String res=Console.readLine();
 
-
-
-
+            if (res.equals("1")){
+                init();
+                return true;
+            }
+            if (res.equals("2")) {
+                return false;
+            }
+            else {
+                throw new IllegalArgumentException("올바른 숫자를 입력하세요.");
+            }
+        }
+        return true;
+    }
 }
+
