@@ -64,5 +64,22 @@ public class BaseballGameController {
     }
     public void validateUserNumber(String userNumber){
         if(userNumber.length()!=3) throw new IllegalArgumentException();
+
+        for(int i = 0 ; i < userNumber.length(); i++){
+            if(userNumber.charAt(i)-'0'<1||userNumber.charAt(i)-'0'>9){
+                throw new IllegalArgumentException();
+            }
+        }
+
     }
+
+
+
+
+
+
+
+
+
+
 }
