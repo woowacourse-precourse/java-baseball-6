@@ -65,6 +65,8 @@ public class Validator {
     private void isNoting() {
         if (ball == 0 && strike == 0) {
             noting = true;
+        } else {
+            noting = false;
         }
     }
 }
