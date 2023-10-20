@@ -30,11 +30,29 @@ public class Application {
         return userInputList;
     }
 
+    public static GameResult playGame(List<Integer> computer, List<Integer> userInput) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(userInput.get(i))) {
+                strike++;
+            } else if (computer.contains(userInput.get(i))) {
+                ball++;
+            }
+        }
+
+        return new GameResult(strike, ball);
+    }
+
     public static void main(String[] args) {
         List<Integer> answerList = makeRandomAnswer();
-        List<Integer> userInputList = getUserTrialInput();
-
         System.out.println(answerList);
+
+        List<Integer> userInputList = getUserTrialInput();
         System.out.println(userInputList);
+
+        GameResult gameResult = playGame(answerList, userInputList);
+        System.out.println(gameResult);
     }
 }
