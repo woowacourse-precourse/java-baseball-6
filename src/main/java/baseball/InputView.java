@@ -7,7 +7,7 @@ public class InputView {
 
     public String inputPlayerNumber() {
         String inputPlayerNumber = Console.readLine();
-        inputPlayerNumberException(inputPlayerNumber);
+        validatePlayerNumber(inputPlayerNumber);
         return inputPlayerNumber;
     }
 
@@ -15,8 +15,16 @@ public class InputView {
         return Integer.parseInt(Console.readLine());
     }
 
-    private void inputPlayerNumberException(String inputPlayerNumber) {
+    private void validatePlayerNumber(String inputPlayerNumber) {
+        validatePlayerNumberLength(inputPlayerNumber);
+        validatePlayerNumberType(inputPlayerNumber);
+    }
+
+    private void validatePlayerNumberLength(String inputPlayerNumber) {
         exception.playerNumberLengthException(inputPlayerNumber);
+    }
+
+    private void validatePlayerNumberType(String inputPlayerNumber) {
         exception.playerNumberTypeException(inputPlayerNumber);
     }
 }
