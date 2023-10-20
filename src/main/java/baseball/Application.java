@@ -10,9 +10,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean playAgain = true;
-
-        while (playAgain) {
+        while (true) {
             List<Integer> computerNumbers = RandNum();
 
             boolean gameWon = false;
@@ -36,12 +34,11 @@ public class Application {
                 choice = Integer.parseInt(Console.readLine());
             } catch (NumberFormatException e) {
                 System.out.println("잘못된 입력입니다. 게임을 종료합니다.");
-                playAgain = false;
                 continue;
             }
 
             if (choice == 2) {
-                playAgain = false;
+                return; // 프로그램 종료
             }
         }
     }
@@ -83,12 +80,16 @@ public class Application {
                 balls++;
             }
         }
-        return new int[] { balls, strikes };
+        return new int[]{balls, strikes};
     }
 
     private static void displayResult(int[] result) {
         if (result[0] == 0 && result[1] == 0) {
             System.out.println("낫싱");
+        } else if (result[0] == 0) {
+            System.out.println(result[1] + "스트라이크");
+        } else if (result[1] == 0) {
+            System.out.println(result[0] + "볼");
         } else {
             System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
         }
