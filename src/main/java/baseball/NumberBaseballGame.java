@@ -9,8 +9,6 @@ public class NumberBaseballGame {
     private List<Integer> goalNum = new ArrayList<>();  // 목표 숫자(정답)
 
     public NumberBaseballGame() {
-        goalNum.clear();
-
         // 랜덤 숫자 생성
         while (goalNum.size() < 3) {
             int randNum = Randoms.pickNumberInRange(1, 9);

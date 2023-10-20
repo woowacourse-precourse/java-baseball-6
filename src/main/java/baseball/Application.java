@@ -55,7 +55,6 @@ public class Application {
                 String exitNum = Console.readLine();
                 if (Objects.equals(exitNum, "1")) {
                     // 게임 재생성
-                    game = null;
                     game = new NumberBaseballGame();
                 } else if (Objects.equals(exitNum, "2")) {
                     // 게임 종료
