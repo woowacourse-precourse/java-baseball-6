@@ -47,9 +47,9 @@ public class GameController {
     }
 
     private void finishOrRestartGame(String inputGameRestart) {
+        InputController.hasWrongInput(inputGameRestart);
         if (inputGameRestart.equals("1")) {
             init();
-            return;
         }
         finishGame();
     }
