@@ -3,6 +3,8 @@ package baseball.controller;
 import baseball.service.GameService;
 import baseball.view.OutputView;
 
+import java.util.List;
+
 public class GameController {
     private final GameService gameService;
     private final OutputView outputView;
@@ -18,6 +20,10 @@ public class GameController {
 
     public void play(String input){
         gameService.setUserBaseballNumber(input);
+
+        List<Integer> result = gameService.calculateBaseBall();
+
+        outputView.printHint(result.get(0), result.get(1));
     }
 
     public boolean restart(String input){

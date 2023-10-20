@@ -21,6 +21,11 @@ public class Hint {
             return false;
     }
 
+    public void calculateBaseBall(List<Integer> userNumbers, List<Integer> systemNumbers){
+        updateBall(userNumbers, systemNumbers);
+        updateStrike(userNumbers, systemNumbers);
+    }
+
     private void updateBall(List<Integer> userNumbers, List<Integer> systemNumbers){
         int count = 0;
 
