@@ -7,7 +7,6 @@ public class Validation {
         if (inputString.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException(WRONG_INPUT_SIZE);
         }
-
         for (char c : inputString.toCharArray()) {
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException();

@@ -65,7 +65,7 @@ public class Game {
     }
 
     private static int[] changeToIntegerList(String inputNumber) {
-        int[] inputList = new int[answer.size()];
+        int[] inputList = new int[NUMBER_SIZE];
         for (int i = 0; i < NUMBER_SIZE; i++) {
             try {
                 inputList[i] = Character.getNumericValue(inputNumber.charAt(i));
@@ -80,23 +80,37 @@ public class Game {
         int strike = 0;
 
         for (int i = 0; i < NUMBER_SIZE; i++) {
-            if (inputNumber[i] == answer.get(i)) {
+            if (samePosition(inputNumber[i], answer.get(i))) {
                 strike++;
             }
         }
         return strike;
     }
 
+    private static boolean samePosition(int ithInput, int ithAnswer) {
+        if (ithInput == ithAnswer) {
+            return true;
+        }
+        return false;
+    }
+
     private static int getBall(int[] inputNumber) {
         int ball = 0;
 
         for (int i = 0; i < NUMBER_SIZE; i++) {
-            if (inputNumber[i] != answer.get(i) && answer.contains(inputNumber[i])) {
+            if (isInAnswer(inputNumber[i], answer.get(i))) {
                 ball++;
             }
         }
         return ball;
     }
+
+    private static boolean isInAnswer(int ithInput, int ithAnswer) {
+            if (ithInput != ithAnswer && answer.contains(ithInput)) {
+                return true;
+            }
+            return false;
+        }
 
     private static void printResult(int strike, int ball) {
         printBall(ball);
