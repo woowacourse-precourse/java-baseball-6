@@ -1,11 +1,47 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class GameManager {
 
-    private final static String  GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    public void run() {
+        printGameStartMessage();
 
-    public static void printGameStartMessage() {
-        System.out.println(GAME_START_MESSAGE);
+        Game game = new Game();
+
+        int userInput = userInputReceive();
+
+    }
+
+    public int userInputReceive() {
+        printInputDemandMessage();
+
+        return rawInputToCheckedInput(Console.readLine());
+    }
+
+    public int rawInputToCheckedInput(String rawInput) {
+        int parsedInt ;
+
+        try{
+            parsedInt = Integer.parseInt(rawInput);
+
+            if (!(parsedInt >= 100) || !(parsedInt <= 999)){
+                throw new IllegalArgumentException();
+            }
+
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+
+        return parsedInt;
+    }
+
+    public void printInputDemandMessage() {
+        System.out.println("숫자를 입력해주세요 : ");
+    }
+
+    private void printGameStartMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
 }
