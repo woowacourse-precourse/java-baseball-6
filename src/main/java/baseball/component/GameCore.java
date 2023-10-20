@@ -15,6 +15,14 @@ public class GameCore {
         this.validator = validator;
     }
 
+    public void game() {
+        boolean flag = true;
+        while (flag) {
+            doGame();
+            flag = inputter.restart();
+        }
+    }
+
     private void doGame() {
         boolean flag = true;
         while (flag) {
