@@ -7,7 +7,7 @@ import java.util.List;
 public class Application {
     public static int Gamestart(){ //게임이 시작되면 컴퓨터가 랜덤으로 세 가지의 수를 리스트에 저장
         System.out.println("숫자야구 게임을 시작합니다.");
-        List<Integer> Correct = new ArrayList<>();
+        ArrayList<Integer> Correct = new ArrayList<>();
         while (Correct.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!Correct.contains(randomNumber)) {
@@ -15,12 +15,13 @@ public class Application {
             }
         }
         System.out.println(Correct); //정답 출력(체킹용)
-        Check((ArrayList) Correct); //정답이 되는 수를 가지고 Check함수로 이동
+        Check(Correct);//정답이 되는 수를 가지고 Check함수로 이동
         return 0;
     }
+    //사용자에게 숫자를 입력받아 숫자야구 규칙에 맞게 적용
     private static int Check(ArrayList<Integer> Correct){
         System.out.println("숫자를 입력해주세요");
-        int UserInput = UserInput();
+        int UserInput = UserInput(); //입력예외처리를 위한 함수
         List<Integer> UserList = Numbersplit(UserInput);
         int Strike = 0;
         int Ball = 0;
@@ -34,6 +35,7 @@ public class Application {
                 }
             }
         }
+        //점수에 따른 출력
         if (Strike==3) return restart();
         if (Strike ==0 &&Ball!=0) System.out.println(Ball+"볼");
         if (Strike!=0&& Ball == 0) System.out.println(Strike+"스트라이크");
@@ -41,6 +43,7 @@ public class Application {
         if (Strike==0 && Ball==0) System.out.println("낫싱");
         return Check(Correct);
     }
+    //입력받은 숫자 3자리를 각각 리스트 하나씩 넣는 함수
     private  static List<Integer> Numbersplit(int UserInput){
         List<Integer>UserList = new ArrayList<>();
         while (UserInput >0 ) {
@@ -50,6 +53,7 @@ public class Application {
         }
         return UserList;
     }
+    //사용자의 입력을 받을 때 유효성 확인을 하는 함수
     private static int UserInput(){
         String UserInput = Console.readLine();
         try {
@@ -58,6 +62,7 @@ public class Application {
             throw new IllegalArgumentException("유효하지 않은 수입니다.", ex);
         }
     }
+    //게임 종료
     private static int restart(){
         System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료\n");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
