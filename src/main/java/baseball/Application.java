@@ -10,7 +10,16 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try {
-            runGame();
+            while (true) {
+                runGame();
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+//                String input = Console.readLine();
+//                if (input.charAt(0) == '1')
+//                    continue ;
+//                else if (input.charAt(0) == '2')
+//                    break ;
+            }
+
         }
         catch (IllegalArgumentException e) {
             return ;
@@ -20,12 +29,15 @@ public class Application {
     public static void runGame() {
         List<Integer> answer = generateRandomNum();
         System.out.println("answer = " + answer);
-        while (true) {
+        boolean isFinished = false;
+        while (!isFinished) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             System.out.print("숫자를 입력해주세요 : ");
             String inputString = Console.readLine();
             List<Integer> inputNum = convertStringToList(inputString);
-            countBallAndStrike(inputNum, answer);
+            int strike = countBallAndStrike(inputNum, answer);
+            if (isAnswer(strike))
+                break;
         }
     }
 
@@ -53,14 +65,15 @@ public class Application {
         return inputList;
     }
 
-//    public static void isAnswer(List<Integer> inputNum, List<Integer> answer) {
-//
-//    }
-//    public static int countStrike(List<Integer> inputNum, List<Integer> answer) {
-//
-//    }
+    public static boolean isAnswer(int strike) {
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
 
-    public static void countBallAndStrike(List<Integer> inputNum, List<Integer> answer) {
+    public static int countBallAndStrike(List<Integer> inputNum, List<Integer> answer) {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < inputNum.size(); i++) {
@@ -77,5 +90,6 @@ public class Application {
             System.out.println(ball + "볼");
         else if (strike > 0)
             System.out.println(strike + "스트라이크");
+        return strike;
     }
 }
