@@ -21,7 +21,7 @@ public class Baseball {
 
         while(true) {
             int input = getUserInput();
-            boolean isCorrect = getResult(input);
+            boolean isCorrect = getResult(input, answer);
 
             if(isCorrect)
                 break;
@@ -60,11 +60,9 @@ public class Baseball {
             throw new IllegalArgumentException("세자리 수를 입력해주세요.");
         }
 
-        int hundred = inputNum / 100;
-        int ten = (inputNum % 100) / 10;
-        int one = inputNum % 10;
+        List<Integer> inputDigitArr = getDigitArray(inputNum);
 
-        if(hundred == ten || ten == one || one == hundred) {
+        if(inputDigitArr.get(0) == inputDigitArr.get(1) || inputDigitArr.get(1) == inputDigitArr.get(2) || inputDigitArr.get(2) == inputDigitArr.get(0)) {
             throw new IllegalArgumentException("서로 다른 세자리 수를 입력해주세요.");
         }
 
@@ -72,8 +70,47 @@ public class Baseball {
     }
 
     //입력에 대한 결과 출력
-    private boolean getResult(int input) {
-        return true;
+    private boolean getResult(int input, int answer) {
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        List<Integer> inputDigitArr = getDigitArray(input);
+        List<Integer> answerDigitArr = getDigitArray(answer);
+
+        for(int index = 0; index < 3; index++) {
+            if (inputDigitArr.get(index) == answerDigitArr.get(index)) {
+                strikeCount++;
+            } else if (answerDigitArr.contains(inputDigitArr.get(index))) {
+                ballCount++;
+            }
+        }
+
+        if(strikeCount == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        } else if (strikeCount == 0 && ballCount == 0) {
+            System.out.println("낫싱");
+        } else {
+            if (ballCount != 0) {
+                System.out.println(ballCount + "볼 ");
+            }
+            if (strikeCount != 0) {
+                System.out.println(strikeCount + "스트라이크");
+            }
+        }
+
+        return false;
+    }
+
+    private List<Integer> getDigitArray(int input) {
+        List<Integer> result = new ArrayList<>();
+
+        result.add(input / 100);
+        result.add((input % 100) / 10);
+        result.add(input % 10);
+
+        return result;
     }
 
     //게임 재시작 여부 처리
