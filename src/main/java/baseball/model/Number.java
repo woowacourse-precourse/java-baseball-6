@@ -1,15 +1,41 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Console;
+import static baseball.config.Config.NUMBER_LENGTH;
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import static java.util.stream.Collectors.joining;
 
-public class PlayerNumber {
+import baseball.view.InputView;
+import java.util.List;
 
-    public String inputNumber(final int numberLength) {
-        System.out.print("숫자를 입력해주세요 : ");
-        String number = Console.readLine();
+public class Number {
+
+    private String number;
+
+    private Number(String number) {
         validateNumber(number);
-        validateNumberLength(number, numberLength);
-        return number;
+        validateNumberLength(number, NUMBER_LENGTH);
+        this.number = number;
+    }
+
+    /**
+     * Static Factory Method - 랜덤 숫자 생성
+     * @param numberLength
+     */
+    public static Number generateRandomNumber(final int numberLength) {
+        List<Integer> pickedInteger = pickUniqueNumbersInRange(1, 9, numberLength);
+        String number = convertIntegerListToString(pickedInteger);
+        return new Number(number);
+    }
+
+    public static Number inputPlayerNumber() {
+        String number = InputView.requestUserNumber();
+        return new Number(number);
+    }
+
+    private static String convertIntegerListToString(List<Integer> pickedInteger) {
+        return pickedInteger.stream()
+            .map(Object::toString)
+            .collect(joining(""));
     }
 
     private void validateNumber(final String number) {
