@@ -10,8 +10,14 @@ public class Application {
     //랜덤 숫자 list 삽입 함수
     public static List<Integer> random_pick(){
         Set<Integer> set_answer = new HashSet<>();
+        //1~9까지의 랜덤 숫자 3개 Set에 삽입
+        while(set_answer.size() != 3){
+            int random = Randoms.pickNumberInRange(1, 9);
+            set_answer.add(random);
+        }
+        //Set에 담긴 정답 숫자 list에 삽입
         List<Integer> answer = new ArrayList<>(set_answer);
-    return answer;
+        return answer;
     }
     //메인 숫자야구 함수
     public static void main(String[] args) {
