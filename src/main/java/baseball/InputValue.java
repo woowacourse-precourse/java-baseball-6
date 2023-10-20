@@ -2,9 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class InputValue {
 
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
