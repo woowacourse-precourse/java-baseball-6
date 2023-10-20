@@ -19,14 +19,14 @@
 
 ### 역할에 맞는 분리를 위한 리팩토링 정리
 
-- [ ] 역할에 맞는 로직 분리
-    - [ ] model
+- [x] 역할에 맞는 로직 분리
+    - [x] model
         - [x] GameNumber 분리
             - [x] ComputerNumbers
             - [x] UserNumbers
-        - [ ] GuessResult
-            - [ ] GuessResult를 Round로 변경
-            - [ ] RoundResult 추가
+        - [x] GuessResult
+            - [x] GuessResult를 Round로 변경
+            - [x] RoundResult 추가
     - [x] view
         - [x] InputView
         - [x] OutPutView
