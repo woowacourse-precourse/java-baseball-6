@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Answer {
-    private static final int numberLength = 3;
+    private int numberLength;
     private String answer;
-    public Answer () {
+    public Answer (int numberLength) {
+        this.numberLength = numberLength;
         this.answer = setRandomNumber();
     }
 
