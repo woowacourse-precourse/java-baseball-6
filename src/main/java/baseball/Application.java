@@ -13,14 +13,13 @@ public class Application {
 
     public static void main(String[] args) {
         printMessage(Message.START_MESSAGE);
+        playGame();
+        Console.close();
+    }
+
+    private static void playGame() {
         do {
-            List<Integer> pickedIntegers = new ArrayList<>();
-            while (pickedIntegers.size() < 3) {
-                int pickedInteger = Randoms.pickNumberInRange(1, 9);
-                if (!pickedIntegers.contains(pickedInteger)) {
-                    pickedIntegers.add(pickedInteger);
-                }
-            }
+            List<Integer> pickedIntegers = getRandomIntegers();
 
             int strikeCount = 0;
             int ballCount;
@@ -48,16 +47,23 @@ public class Application {
             }
             askIfContinue();
         } while (isGameToBeContinued);
-        Console.close();
     }
 
-    private static void printMessage(Message message) {
-        System.out.println(message.getMessage());
+    private static List<Integer> getRandomIntegers() {
+        List<Integer> pickedIntegers = new ArrayList<>();
+        while (pickedIntegers.size() < 3) {
+            int pickedInteger = Randoms.pickNumberInRange(1, 9);
+            if (!pickedIntegers.contains(pickedInteger)) {
+                pickedIntegers.add(pickedInteger);
+            }
+        }
+
+        return pickedIntegers;
     }
 
     private static void printScoreBoardMessage(int strikeCount, int ballCount) {
         if (strikeCount + ballCount == 0) {
-            System.out.println(Message.NOTHING.getMessage());
+            printMessage(Message.NOTHING);
             return;
         }
 
@@ -65,18 +71,21 @@ public class Application {
         String strikeMessage = (strikeCount != 0) ? strikeCount + Message.STRIKE.getMessage() : "";
 
         System.out.println((ballMessage + " " + strikeMessage).trim());
-
     }
 
     private static void printIfStrikeOut(int strikeCount) {
         if (strikeCount == 3) {
-            System.out.println(Message.END_MESSAGE.getMessage());
+            printMessage(Message.END_MESSAGE);
         }
     }
 
     private static void askIfContinue() {
-        System.out.println(Message.GAME_END_PROMPT.getMessage());
+        printMessage(Message.GAME_END_PROMPT);
 
         isGameToBeContinued = !Console.readLine().equals(GameOverSignal.FINISH.getNumber());
+    }
+
+    private static void printMessage(Message message) {
+        System.out.println(message.getMessage());
     }
 }
