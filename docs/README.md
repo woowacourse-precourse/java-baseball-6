@@ -29,7 +29,7 @@
   * void willContinue()
   * void exit()
 * Service
-  * Result calculateResult()
+  * Result calculateResult(String inputtedNumbers)
 * GamePlayer
   * List<Integer> threeNumbers
   * void inputThreeNumberString(String inputtedString)
