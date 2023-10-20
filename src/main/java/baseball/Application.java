@@ -8,29 +8,47 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 	public static void main(String[] args) {
+		restartOrEndGame();
+	}
 
-		List<Integer> computerNumber = List.of(7, 1, 3);
+	static void restartOrEndGame() {
 
-		UserNumber UserNumber = new UserNumber();
+		final String END_SIGN = "2";
+		final String RESTART_SIGH = "1";
 
-		int strikeNumber = 0;
+		String controlSign = "";
 
-		while (strikeNumber != 3) {
-			String[] inputUserNumber = UserNumber.inputUserNumber();
-			UserNumber.checkInputOnlyNum(inputUserNumber);
+		while (!controlSign.equals(END_SIGN)) {
 
-			List<Integer> UserNumberList = UserNumber.toListUserNumber(inputUserNumber);
-			UserNumber.checkSizeUserNum(UserNumberList);
-			UserNumber.checkRangeUserNum(UserNumberList);
+			List<Integer> computerNumber = createComputerNumber();
 
+			UserNumber UserNumber = new UserNumber();
+
+			int strikeNumber = 0;
 			int ballNumber;
 
-			ballNumber = countBall(computerNumber, UserNumberList);
-			strikeNumber = countStrike(computerNumber, UserNumberList);
+			while (strikeNumber != computerNumber.size()) {
+				String[] inputUserNumber = UserNumber.inputUserNumber();
+				UserNumber.checkInputOnlyNum(inputUserNumber);
 
-			printStrike(ballNumber, strikeNumber);
+				List<Integer> UserNumberList = UserNumber.toListUserNumber(inputUserNumber);
+				UserNumber.checkSizeUserNum(UserNumberList);
+				UserNumber.checkRangeUserNum(UserNumberList);
+
+				ballNumber = countBall(computerNumber, UserNumberList);
+				strikeNumber = countStrike(computerNumber, UserNumberList);
+
+				printStrike(ballNumber, strikeNumber);
+			}
+
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			System.out.println("게임을 새로 시작하려면 " + RESTART_SIGH + ", 종료하려면 " + END_SIGN + "를 입력하세요.");
+			controlSign = Console.readLine().trim();
+
+			if (!(controlSign.equals(RESTART_SIGH) || controlSign.equals(END_SIGN))) {
+				throw new IllegalArgumentException(RESTART_SIGH + "이나 " + END_SIGN + "만 입력해주세요");
+			}
 		}
-
 	}
 
 	//1~9 사이의 서로 다른 3자리로 이루어진 컴퓨터 숫자를 생성하는 메서드
@@ -77,13 +95,13 @@ public class Application {
 
 	static void printStrike(int ballNumber, int StrikeNumber) {
 
-		if(ballNumber == 0) {
+		if (ballNumber == 0) {
 			System.out.println("낫싱");
-		}else if (StrikeNumber == 0) {
+		} else if (StrikeNumber == 0) {
 			System.out.println(ballNumber + "볼");
-		}else if (StrikeNumber == ballNumber) {
+		} else if (StrikeNumber == ballNumber) {
 			System.out.println(StrikeNumber + "스트라이크");
-		}else if(StrikeNumber < ballNumber){
+		} else if (StrikeNumber < ballNumber) {
 			System.out.println((ballNumber - StrikeNumber) + "볼 " + StrikeNumber + "스트라이크");
 		}
 
