@@ -15,11 +15,11 @@ public class NumberList {
     public NumberList() {
         this.numbers = generateComputerNumber();
     }
-    public boolean contains(int number) {
+    public boolean contains(final int number) {
         return numbers.contains(number);
     }
 
-    public int get(int index) {
+    public int get(final int index) {
         return numbers.get(index);
     }
 
@@ -29,14 +29,22 @@ public class NumberList {
 
     private List<Integer> generateComputerNumber(){
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < LIMIT_NUMBER) {
-            addNums(computer);
-        }
+        addIterating(computer);
         return computer;
     }
 
-    private static void addNums(List<Integer> computer) {
+    private void addIterating(final List<Integer> computer) {
+        while (computer.size() < LIMIT_NUMBER) {
+            addNums(computer);
+        }
+    }
+
+    private void addNums(final List<Integer> computer) {
         int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+        isContained(computer, randomNumber);
+    }
+
+    private void isContained(final List<Integer> computer, final int randomNumber) {
         if (!computer.contains(randomNumber)) {
             computer.add(randomNumber);
         }

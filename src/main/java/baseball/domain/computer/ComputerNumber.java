@@ -9,11 +9,11 @@ public class ComputerNumber {
         this.numberList = new NumberList();
     }
 
-    public boolean containsNumber(int number) {
+    public boolean containsNumber(final int number) {
         return numberList.contains(number);
     }
 
-    public int getNumberAt(int index) {
+    public int getNumberAt(final int index) {
         return numberList.get(index);
     }
 

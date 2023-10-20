@@ -1,49 +1,57 @@
-package baseball.domain.output;
+package baseball.service.output;
 
 import baseball.dto.Result;
 import baseball.util.message.PrintMessage;
 
 public class OutPutView implements Output{
     private static final int TARGET_NUMBER = 3;
-    private static final int ZERO_NUMBER = 3;
+    private static final int ZERO_NUMBER = 0;
 
     @Override
-    public void execute(Result result) {
+    public void execute(final Result result) {
+        ballAndStrikeCheck(result);
         allBallCheck(result);
         allStrikeCheck(result);
         nothingCheck(result);
+
     }
 
-    private void nothingCheck(Result result) {
-        if(!isStrike(result)&&!isBall(result)){
-            System.out.println("낫싱");
+    private void ballAndStrikeCheck(final Result result) {
+        if(isStrike(result)&&isBall(result)){
+            PrintMessage.ballAndStrikeMessage(result);
         }
     }
 
-    private static void allStrikeCheck(Result result) {
+    private void nothingCheck(final Result result) {
+        if(!isStrike(result)&&!isBall(result)){
+            PrintMessage.nothingCheckMessage(result);
+        }
+    }
+
+    private void allStrikeCheck(final Result result) {
         if(isStrike(result)&&!isBall(result)){
             PrintMessage.allStrikeResultMessage(result);
             isPlayerWin(result);
         }
     }
 
-    private static void isPlayerWin(Result result) {
+    private void isPlayerWin(final Result result) {
         if(result.getStrikeCount()==TARGET_NUMBER){
             PrintMessage.congratulationMessage();
         }
     }
 
-    private static void allBallCheck(Result result) {
+    private void allBallCheck(final Result result) {
         if(!isStrike(result) && isBall(result)){
             PrintMessage.allBallResultMessage(result);
         }
     }
 
-    private static boolean isBall(Result result) {
+    private boolean isBall(final Result result) {
         return result.getBallCount() != ZERO_NUMBER;
     }
 
-    private static boolean isStrike(Result result) {
+    private boolean isStrike(final Result result) {
         return result.getStrikeCount() != ZERO_NUMBER;
     }
 }
