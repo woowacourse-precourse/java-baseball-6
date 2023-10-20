@@ -5,6 +5,13 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validation {
+    public static String isValidInput(String input) {
+        isEmpty(input);
+        isLengthThree(input);
+        isInRange(input);
+        isDuplicate(input);
+        return input;
+    }
 
     public static void isEmpty(String input) {
         if (input.trim().isEmpty()) {
