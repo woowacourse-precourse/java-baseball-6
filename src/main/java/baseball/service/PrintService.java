@@ -28,16 +28,13 @@ public class PrintService {
     }
     public boolean printAfterFinish(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userInput = readLine();
+        String input = readLine();
         //유효한 숫자인지 검증하는 로직 필요
-
-        if (userInput.equals("2")) {
+        ValidCheckService.validExitNumber(input);
+        if (input.equals("2")) {
             return true;
         }
         return false;
     }
-
-
-
 
 }
