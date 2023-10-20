@@ -1,4 +1,4 @@
-체package baseball.controller;
+package baseball.controller;
 
 import baseball.model.GameNumber;
 import baseball.model.GuessResult;
