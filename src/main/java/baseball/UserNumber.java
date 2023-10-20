@@ -5,16 +5,14 @@ public class UserNumber {
     private String userNumber;
 
     public UserNumber() {
-        String userNumber = setUserNumber();
+
+    }
+
+    public void setUserNumber(String userNumber){
         validateLength(userNumber);
         validateNumber(userNumber);
         validateDuplication(userNumber);
         this.userNumber = userNumber;
-    }
-
-    public String setUserNumber(){
-        String input = Console.readLine();
-        return input;
     }
 
     public String getUserNumber() {
@@ -29,7 +27,7 @@ public class UserNumber {
 
     public void validateNumber(String userNumber){
         if(!userNumber.matches("^[1-9]*$")){
-           throw new IllegalArgumentException("1 ~ 9 까지의 숫자를 입력 해주세요.");
+            throw new IllegalArgumentException("1 ~ 9 까지의 숫자를 입력 해주세요.");
         }
     }
 

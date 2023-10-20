@@ -2,28 +2,44 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-    public void run(){
-        printInsert();
-        UserNumber userNumber = new UserNumber();
-        ComputerNumber computerNumber = new ComputerNumber();
-        NumberCompare comparator = new NumberCompare();
 
-        while (true){
-            System.out.println(userNumber.getUserNumber());
-            String userNumber1 = userNumber.setUserNumber();
-            boolean check = comparator.PrintHint(userNumber, computerNumber);
+    private int first_start = 0;
 
+    public void run() {
 
-            if(check){
-                win();
-            }
-
+        if(first_start == 0){
+            printStartMessage();
+            first_start++;
         }
 
+        ComputerNumber computerNumber = new ComputerNumber();
+        UserNumber userNumber = new UserNumber();
+        NumberCompare numberCompare = new NumberCompare();
+
+        while (true){
+
+            userNumber.setUserNumber(input());
+            boolean isWin = numberCompare.PrintHint(userNumber, computerNumber);
+
+            if(isWin){
+                printWinMessage();
+                int i = Integer.parseInt(Console.readLine());
+                if(i == 1){
+                    run();
+                }
+                break;
+            }
+        }
     }
 
-    public void printInsert(){
+
+    public void printStartMessage(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public String input(){
+        System.out.print("숫자를 입력해주세요 : ");
+        return Console.readLine();
     }
 
     public void printWinMessage(){
@@ -31,8 +47,11 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    public int IsRestart(){
+        return Integer.parseInt(Console.readLine());
+    }
+
     public void win(){
-        printWinMessage();
         int input = Integer.parseInt(Console.readLine());
         if(input != 1){
             return;
