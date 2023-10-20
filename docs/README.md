@@ -13,10 +13,10 @@
   - [x] 유저가 입력한 숫자 3개중 컴퓨터에 같은 수가 같은 자리에있으면 스트라이크
   - [x] 같은 수가 전혀 없으면 낫싱이다.
   
-- [ ] 게임 진행 하기 Application#main
+- [x] 게임 진행 하기 Application#main
 
-  - [ ] 유저의 입력을 받는 메서드 구현 Application#inputRanNumOfUser()
-  - [ ] 게임 진행 상황에 대한 메서드 구현 Application#isProceedGame()
+  - [x] 유저의 입력을 받는 메서드 구현 Application#inputRanNumOfUser()
+  - [x] 게임 진행 상황에 대한 메서드 구현 Application#isProceedGame()
 
 
 
