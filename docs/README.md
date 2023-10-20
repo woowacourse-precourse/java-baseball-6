@@ -119,18 +119,35 @@
 
 # 객체지향 생활체조 적용하기
 
-- [ ] 들여쓰기 최대 하나로 제한하기
-    - [ ] Computer.strikeCounts
-    - [ ] Computer.ballCounts
-- [ ] else 사용하지 않기
-- [ ] 모든 원시값과 문자열 Wrapping 하기
-    - [ ] Computer 에서 ball, strike 고민해보기
-    - [ ] Player 에서 인풋 부분
-- [X] 일급 콜렉션 사용하기
-    - [X] Computer.getRandomNumbers() 추출
-- [ ] 한 줄에 점 하나만 찍기
-- [ ] 줄여쓰지 않기
-- [ ] 엔티티 작게 유지하기
-    - [ ] 패키지 나누기
-- [ ] 3개 이상의 인스턴스 변수를 가진 클래스 만들지 않기
-- [ ] getter/setter/properties 사용하지 않기
+### 들여쓰기 최대 하나로 제한하기
+
+- [ ] Computer.strikeCounts
+- [ ] Computer.ballCounts
+
+### 모든 원시값과 문자열 Wrapping 하기
+
+- [ ] Player 에서 인풋 부분
+    - [ ] Ball 이라는 클래스를 만들고
+    - [ ] Ball 을 Computer 에 전달
+
+### 일급 콜렉션 사용하기
+
+- [X] Computer.getRandomNumbers() 추출
+
+### 엔티티 작게 유지하기
+
+- [ ] 패키지 나누기
+- [ ] 기능들 추출하기
+    - [ ] Computer 내부의 볼카운트 로직 추출
+
+### 추가할 클래스 정리
+
+- [ ] Ball
+    - Player 의 입력을 소유하고있는 Wrapper
+- [ ] BallCounts
+    - Computer 내부에 있던 ballCounts, strikeCounts 의 Wrapper
+- [ ] Referee
+    - Ball 을 받았을 때, 몇 볼, 몇 스트라이크인 지 판단
+- [ ] BallCountMessage
+    - Ball 을 받았을 때, 현재 볼카운트를 메시지로 변환
+    
