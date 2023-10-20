@@ -36,6 +36,14 @@ public class GuessResult {
         return ballCount + BALL_RESULT + " " + strikeCount + STRIKE_RESULT;
     }
 
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
     public boolean isNothing() {
         return strikeCount == INITIAL_ZERO_COUNT && ballCount == INITIAL_ZERO_COUNT;
     }
