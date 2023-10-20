@@ -4,6 +4,7 @@ import baseball.config.GameConfig;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class Baseball {
 
@@ -26,6 +27,12 @@ public class Baseball {
     public int countSameNumbers(Baseball compare) {
         return (int) compare.numbers.stream()
                 .filter(number -> numbers.contains(number))
+                .count();
+    }
+
+    public int countSameNumbersByIndex(Baseball compare) {
+        return (int) IntStream.range(0, numbers.size())
+                .filter(index -> numbers.get(index).equals(compare.numbers.get(index)))
                 .count();
     }
 
