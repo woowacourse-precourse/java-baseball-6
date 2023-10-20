@@ -5,6 +5,17 @@ import java.util.*;
 
 public class Initializer {
 
+    private Initializer() {}
+
+    private Initializer initializer;
+
+    public Initializer getInitializer() {
+        if (initializer == null) {
+            initializer = new Initializer();
+        }
+        return initializer;
+    }
+
     public List<Integer> initGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         return getNewNumbers();
