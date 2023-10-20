@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -35,5 +36,14 @@ public class ResultTest {
         Result result=new Result(new Numbers("123"),new Numbers(numbers));
 
         assertThat(result.getResult()).isEqualTo(expected);
+    }
+
+    @DisplayName("3스트라이크 확인 기능")
+    @ParameterizedTest
+    @ValueSource(strings={"123","234","135","974","245"})
+    void 쓰리스트라이크_확인(String numbers){
+        Result result=new Result(new Numbers(numbers),new Numbers(numbers));
+
+        assertThat(result.isThreeStrike()).isTrue();
     }
 }
