@@ -26,6 +26,8 @@ public class GameResultTest {
         gameResult.strike();
 
         Assertions.assertTrue(gameResult.hasBall());
+        Assertions.assertTrue(gameResult.hasStrike());
+
         Assertions.assertFalse(gameResult.isStrikeOut());
     }
 
@@ -34,6 +36,7 @@ public class GameResultTest {
         GameResult gameResult = new GameResult();
 
         Assertions.assertFalse(gameResult.hasBall());
+        Assertions.assertFalse(gameResult.hasStrike());
         Assertions.assertFalse(gameResult.isStrikeOut());
     }
 }

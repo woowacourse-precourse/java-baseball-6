@@ -30,4 +30,8 @@ public class GameResult {
     public boolean hasBall() {
         return ballCount != 0;
     }
+
+    public boolean hasStrike() {
+        return strikeCount != 0;
+    }
 }
