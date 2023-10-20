@@ -7,28 +7,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private final static int BALL = 0;
+    private final static int STRIKE = 1;
     public static void main(String[] args) {
         gameStart();
     }
-    private static void gameStart(){
+    private static void gameStart() {
         boolean gameChoice = true;
         List<Integer> computerNum = new ArrayList<>();
         String gameString = "";
 
         makeComputerNum(computerNum);
-
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (gameChoice) {
             System.out.println("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
 
-            gameString = checkBall(userInput, computerNum);
+            gameString = printBallCount(checkBall(userInput, computerNum));
+            System.out.println(gameString);
 
-            System.out.println(gameString); // 진행상황 표시
-
-            if (gameString.equals("3스트라이크"))
+            if (gameString.equals("3스트라이크")) {
                 gameChoice = checkRestartGame();
+            }
         }
     }
     /**
@@ -42,6 +43,7 @@ public class Application {
             }
         }
     }
+
     /**
      * 게임이 끝난 후 사용자에게 다시 시작할 것인지 물어보는 메소드
      */
@@ -58,11 +60,11 @@ public class Application {
         //else를 사용하지않고 잘못 입력시 예외처리 하기
         throw new IllegalArgumentException("1과 2중에 입력하셔야 합니다. ");
     }
-    private static String checkBall(String userInput, List<Integer> computerNum) {
+
+    private static List<Integer> checkBall(String userInput, List<Integer> computerNum) {
+        List<Integer> listBS = new ArrayList<>();
         int totalCount = 0;
         int strikeCount = 0;
-        int ballCount = 0;
-        String returnString = "";
 
         for (int i = 0; i < computerNum.size(); i++) {
             if (userInput.contains(computerNum.get(i).toString())) {
@@ -72,31 +74,19 @@ public class Application {
                 strikeCount++;
             }
         }
+        listBS.add(totalCount-strikeCount);
+        listBS.add(strikeCount);
+        return listBS;
+    }
 
-        ballCount = totalCount - strikeCount;
-
-        switch (totalCount) {
-            case 0:
-                returnString = "낫싱";
-                break;
-            case 1:
-            case 2:
-                if (strikeCount != 0)
-                    returnString = ballCount + "볼 " + strikeCount + "스트라이크";
-                else if (strikeCount == 0)
-                    returnString = ballCount + "볼";
-                break;
-            case 3:
-                if (strikeCount == 3)
-                    returnString = strikeCount + "스트라이크";
-                else if (strikeCount == 1 || strikeCount == 2)
-                    returnString = ballCount + "볼 " + strikeCount + "스트라이크";
-                else if (strikeCount == 0)
-                    returnString = ballCount + "볼";
-                break;
-            default:
-                break;
-        }
+    private static String printBallCount(List<Integer> listBS){
+        String returnString = "";
+        if(listBS.get(BALL) != 0)
+            returnString = listBS.get(BALL)+"볼 ";
+        if (listBS.get(STRIKE) != 0)
+            returnString += listBS.get(STRIKE)+"스트라이크";
+        if(listBS.get(BALL)==0 && listBS.get(STRIKE)==0)
+            returnString = "낫씽";
         return returnString;
     }
 }
