@@ -1,7 +1,7 @@
 package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ProgramNumber {
@@ -25,7 +25,7 @@ public class ProgramNumber {
     //세자리 자연수 획득
     private void setProgramNumber(){
         //중복을 피하기 위해 HashSet 사용
-        Set<String> programNumberSet = new HashSet<>(3);
+        Set<String> programNumberSet = new LinkedHashSet<>(3);
         while (programNumberSet.size() < 3){
             programNumberSet.add(getOneNumber());
         }
