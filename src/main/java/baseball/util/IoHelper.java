@@ -1,10 +1,14 @@
 package baseball.util;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.io.PrintStream;
 
 public class IoHelper {
+    private static final PrintStream outputStream = System.out;
+
     public static void print(Object message) {
-        System.out.print(message.toString());
+        var messageString = message.toString();
+        outputStream.print(messageString);
     }
 
     public static void println(Object message) {

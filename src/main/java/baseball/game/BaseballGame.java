@@ -28,8 +28,8 @@ public class BaseballGame implements Game {
         final var input = IoHelper.promptColon(INPUT_NUMBER_MESSAGE);
         final var userGuess = stringToBaseballState(input);
         final var result = computer.diff(userGuess);
-
-        IoHelper.println(result.toString());
+        final var resultString = result.toString();
+        IoHelper.println(resultString);
         if (result.isGameEnd()) {
             IoHelper.println(STRIKE_ALL_MESSAGE);
             GameManager.notifyEndGame();
