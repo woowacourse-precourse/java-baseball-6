@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.GameNumber;
+import baseball.service.GameService;
 import baseball.service.NumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -13,15 +14,17 @@ public class GameController {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private GameService gameService;
 
     public GameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.gameService = GameService.startNewGame();
     }
 
     public void run() {
         GameNumber computerNumber = setGame();
-        System.out.println(computerNumber.getNumber());
+
     }
 
     private GameNumber setGame() {
