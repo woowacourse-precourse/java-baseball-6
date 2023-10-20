@@ -6,9 +6,11 @@ public class Ball {
 
     private static final int UNDER_RANGE = 1;
     private final int number;
+    private final int position;
 
-    public Ball(int number) {
+    public Ball(int position, int number) {
         this.number = number;
+        this.position = position;
 
     }
 
@@ -31,15 +33,15 @@ public class Ball {
             return false;
         }
         Ball ball = (Ball) o;
-        return number == ball.number;
+        return number == ball.number && position == ball.position;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number);
+        return Objects.hash(number, position);
     }
 
-    //    private static final String NUMBER_FORMAT = "\\d+";
+//    private static final String NUMBER_FORMAT = "\\d+";
 //    private static final String NUMBER_FORMAT_EXCEPTION_MESSAGE = "올바른 숫자를 입력해주세요.";
 
 
