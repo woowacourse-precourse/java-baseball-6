@@ -7,15 +7,16 @@ import java.util.List;
 import java.util.Objects;
 
 public class BaseballGame{
-    private final List<Integer> computer = new ArrayList<>();
+    private final List<Integer> computerNumber = new ArrayList<>();
+    private final List<Integer> playerNumber = new ArrayList<>();
     private int strike;
     private int ball;
     private void newGame(){
-        computer.clear();
-        while (computer.size() < 3) {
+        computerNumber.clear();
+        while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
             }
         }
     }
@@ -37,15 +38,14 @@ public class BaseballGame{
             }
         }
     }
-    private List<Integer> readPlayerNumber(){
+    private void readPlayerNumber(){
+        playerNumber.clear();
         System.out.print("\n숫자를 입력해주세요 : ");
         String playerNumberInString = Console.readLine();
-        List<Integer> player = new ArrayList<>();
         rightInput(playerNumberInString);
-        while(player.size()<3){
-            player.add(playerNumberInString.charAt(player.size())-'0');
+        while(playerNumber.size()<3){
+            playerNumber.add(playerNumberInString.charAt(playerNumber.size())-'0');
         }
-        return player;
     }
     private void clearStrikeAndBall(){
         strike = 0;
@@ -62,19 +62,22 @@ public class BaseballGame{
             System.out.print("낫싱");
         }
     }
-    private void compareNumber() {
+    private void compareNumber(){
+        for(int i = 0; i<3;i++){
+            if(Objects.equals(computerNumber.get(i), playerNumber.get(i))){
+                strike++;
+            }else if (Objects.equals(playerNumber.get(i),computerNumber.get((i+1)%3))
+                    ||Objects.equals(playerNumber.get(i),computerNumber.get((i+2)%3))){
+                ball++;
+            }
+        }
+    }
+    private void gameProcess() {
         clearStrikeAndBall();
         while(strike != 3){
-            List<Integer> player = readPlayerNumber();
             clearStrikeAndBall();
-            for(int i = 0; i<3;i++){
-                if(Objects.equals(computer.get(i), player.get(i))){
-                    strike++;
-                }else if (Objects.equals(player.get(i),computer.get((i+1)%3))
-                        ||Objects.equals(player.get(i),computer.get((i+2)%3))){
-                    ball++;
-                }
-            }
+            readPlayerNumber();
+            compareNumber();
             printResult();
         }
     }
@@ -91,7 +94,7 @@ public class BaseballGame{
     }
     public void startGame() {
         newGame();
-        compareNumber();
+        gameProcess();
         System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         restartOrExit();
