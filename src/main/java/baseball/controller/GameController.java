@@ -19,8 +19,11 @@ public class GameController {
 
     public void playball() {
         String nowComNumber = getComputerNumber();
+        while(true){
+            outputView.printInputInitMessage();
+            String userNumber = getUserNumber();
 
-        String userNumber = getUserNumber();
+        }
 
 
     }
