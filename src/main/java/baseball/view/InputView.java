@@ -10,4 +10,9 @@ public class InputView {
         System.out.print(NUMBER_INPUT_MESSAGE);
         return Console.readLine();
     }
+
+    public static String restart() {
+        System.out.println(RESTART_INPUT_MESSAGE);
+        return Console.readLine();
+    }
 }
