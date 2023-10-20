@@ -8,20 +8,7 @@ import java.util.*;
 public class Application {
     public static final int validLength = 3;
     private static final boolean playingGame = true;
-    public static String creatNumber(){
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Integer num : computer) {
-            stringBuilder.append(num);
-        }
-        return stringBuilder.toString();
-    }
+
     public static boolean isAllDigit(String str){
         // 모두 숫자인지 확인
         for (char c : str.toCharArray()) {
@@ -53,7 +40,7 @@ public class Application {
     public static void main(String[] args){
         // Randoms.pickNumberInRange(시작, 끝) - 시작 이상, 끝 이하
         // int computeNumber = Randoms.pickNumberInRange(111, 999) -> "게임종료_후_재시작" 에러 발생
-        String computeNumber = creatNumber();
+        String computeNumber = BaseBall.creatNumber();
         System.out.println(computeNumber);
         System.out.println("숫자 야구 게임을 시작합니다.");
         // Console.readLine()은 String을 입력으로 받음.
@@ -82,7 +69,7 @@ public class Application {
                     break;
                 }
                 else {
-                    computeNumber = creatNumber();
+                    computeNumber = BaseBall.creatNumber();
                     System.out.println(computeNumber);
                 }
             }
