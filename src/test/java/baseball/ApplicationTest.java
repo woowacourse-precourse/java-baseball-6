@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.error.ErrorException;
 import baseball.error.GameInputErrorException;
+import baseball.error.RetryInpurErrorException;
 import baseball.model.Computer;
 import baseball.util.BaseballNumberGenerator;
 import baseball.util.BaseballRandomNumberGenerator;
@@ -91,6 +92,32 @@ class ApplicationTest extends NsTest {
         assertThat(throwable2).isInstanceOf(IllegalArgumentException.class).hasMessage(IS_NOT_THREE_DIGITS_MESSAGE);
         assertThat(throwable3).isInstanceOf(IllegalArgumentException.class).hasMessage(IS_NOT_VALID_RANGE_MESSAGE);
         assertThat(throwable4).isInstanceOf(IllegalArgumentException.class).hasMessage(EXIST_DUPLICATE_NUMBER);
+    }
+
+    @Test
+    void 게임_끝난_경우_재시작_종료_입력_값_유효한_지_검사_테스트(){
+        //given
+        ErrorException errorException = new RetryInpurErrorException();
+        final String IS_NOT_NUMERIC_MESSAGE = "숫자만 입력이 가능합니다. 애플리케이션을 종료합니다.";
+        final String IS_NOT_ONE_OR_TWO_MESSAGE = "1이나 2만 입력이 가능합니다. 애플리케이션을 종료합니다.";
+        final String case1 = "1";
+        final String case2 = "2";
+        final String case3 = "123";
+        final String case4 = "x";
+
+        //when
+        errorException.checkUserInputValidate(case1);
+        errorException.checkUserInputValidate(case2);
+        Throwable throwable1 = catchThrowable(() -> {
+            errorException.checkUserInputValidate(case3);
+        });
+        Throwable throwable2 = catchThrowable(() -> {
+            errorException.checkUserInputValidate(case4);
+        });
+
+        //then
+        assertThat(throwable1).isInstanceOf(IllegalArgumentException.class).hasMessage(IS_NOT_ONE_OR_TWO_MESSAGE);
+        assertThat(throwable2).isInstanceOf(IllegalArgumentException.class).hasMessage(IS_NOT_NUMERIC_MESSAGE);
     }
     @Test
     void 게임종료_후_재시작() {
