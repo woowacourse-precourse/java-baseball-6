@@ -50,6 +50,8 @@ public class Application {
     }
 
     public static void handleStartScene() {
+        printStartMessage();
+        gameState = GameState.GAME;
     }
 
     public static void handleGameScene() {
