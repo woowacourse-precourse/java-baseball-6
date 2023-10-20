@@ -59,3 +59,7 @@
   * int parseValidatedInt(String str)
   * void validateCiphers(int value, int ciphers)
   * public void validateInRange(int value, int from, int to)
+* ContinueAnswer
+  * int answer
+  * void createAnswer(String answerString)
+  * int getAnswer()
