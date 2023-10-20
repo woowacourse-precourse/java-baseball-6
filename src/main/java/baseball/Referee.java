@@ -10,7 +10,6 @@ public class Referee {
   int strike;
 
   public Referee() {
-
   }
 
   public void startGameMessage() {
