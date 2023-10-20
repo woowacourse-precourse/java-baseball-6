@@ -9,4 +9,12 @@ public class Judgement {
         strike = player.countSameIndex(computer);
         ball = player.countSameNumber(computer) - strike;
     }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
 }

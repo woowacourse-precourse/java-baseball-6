@@ -24,5 +24,7 @@ public class GameController {
 
         Judgement judgement = new Judgement();
         judgement.judge(computer, player);
+
+        output.showGameResult(judgement);
     }
 }
