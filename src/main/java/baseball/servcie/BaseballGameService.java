@@ -82,17 +82,18 @@ public class BaseballGameService {
 
     private void printResult(int strike, int ball) {
         if (strike == NO_HIT && ball == NO_HIT)
-            System.out.println("낫싱");
+            System.out.print("낫싱");
 
         if (ball > NO_HIT)
-            System.out.println(ball + "볼 ");
+            System.out.print(ball + "볼 ");
 
         if (strike > NO_HIT)
-            System.out.println(strike + "스트라이크 ");
+            System.out.print(strike + "스트라이크 ");
 
         if (strike == ALL_STRIKE) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
+        System.out.println();
     }
 
 }
