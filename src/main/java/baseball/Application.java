@@ -2,6 +2,15 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        UserInterface userInterface = new UserInterface();
+
+        userInterface.startMessage();
+        while(true) {
+            Game game = new Game();
+            game.game();
+            if(game.getRetryCheckNumber() == 2) {
+                break;
+            }
+        }
     }
 }
