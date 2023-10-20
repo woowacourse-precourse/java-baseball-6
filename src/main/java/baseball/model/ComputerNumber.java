@@ -16,6 +16,10 @@ public class ComputerNumber {
 		return computerNumber;
 	}
 
+	public void resetComputerNumber(){
+		this.computerNumber = computerNumber();
+	}
+
 	private List<Integer> computerNumber() {
 		List<Integer> computer = new ArrayList<>();
 		while (computer.size() < 3) {
