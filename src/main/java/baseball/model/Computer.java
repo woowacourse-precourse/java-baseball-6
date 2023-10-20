@@ -36,8 +36,8 @@ public class Computer {
     private void validateIsNumber(List<Integer> computer) {
         String pattern = "^[0-9]*$";
         boolean containsNonNumber = computer.stream()
-                .map(val -> !Pattern.matches(pattern, val.toString()))
-                .anyMatch(Boolean::booleanValue);
+                .map(val -> Pattern.matches(pattern, val.toString()))
+                .anyMatch(matchResult -> !matchResult);
         if (containsNonNumber) {
             throw new IllegalArgumentException("숫자들만 선택할 수 있습니다.");
         }
