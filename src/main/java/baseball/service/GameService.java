@@ -28,9 +28,7 @@ public class GameService {
             userList.add(userNum);
             if (computerNum.equals(userNum)) strike += 1;
         }
-
         computerList.retainAll(userList);
-
         return computerList.size() - strike;
     }
 }
