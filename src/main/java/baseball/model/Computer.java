@@ -13,11 +13,15 @@ public class Computer {
             String randomNumber = String.valueOf(
                     Randoms.pickNumberInRange(Constants.START_NUMBER, Constants.END_NUMBER));
 
-            if (!isSameNumber(randomNumber)) {
-                randomNumbers += randomNumber;
-            }
+            addIfNotSame(randomNumber);
         }
         return randomNumbers;
+    }
+
+    private void addIfNotSame(String randomNumber) {
+        if (!isSameNumber(randomNumber)) {
+            randomNumbers += randomNumber;
+        }
     }
 
     private boolean isSameNumber(String randomNumber) {
