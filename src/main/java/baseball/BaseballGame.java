@@ -5,9 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class BaseballGame {
-    private final Output output = new Output();
-
-    private final ArrayList<Integer> userNumbers = new ArrayList<>();
+    private static final Output output = new Output();
+    private static final Input input = new Input();
     private final ArrayList<Integer> targetNumbers = new ArrayList<>();
     private int strike;
     private int ball;
@@ -15,8 +14,7 @@ public class BaseballGame {
     public void playBaseballGame() {
         setTargetNumbers();
         while(strike!=3) {
-            inputUserNumbers();
-            countStrikeAndBall();
+            countStrikeAndBall(input.inputUserNumbers());
         }
         restartGame();
     }
@@ -28,7 +26,6 @@ public class BaseballGame {
                 targetNumbers.add(randomNumber);
             }
         }
-        System.out.println(targetNumbers);
     }
 
     private void resetStrikeAndBall() {
@@ -36,49 +33,8 @@ public class BaseballGame {
         ball = 0;
     }
 
-    private void inputUserNumbers() {
-        userNumbers.clear();
+    private void countStrikeAndBall(ArrayList<Integer> userNumbers) {
         resetStrikeAndBall();
-        output.printInputMessage();
-        String inputtedNumber = inputStringNumber();
-        checkInputtedNumber(inputtedNumber);
-        convertStringToIntegerList(inputtedNumber);
-    }
-
-    private String inputStringNumber() {
-        return Console.readLine();
-    }
-
-    private void checkInputtedNumber(String inputtedNumber) {
-        checkNumbersDigit(inputtedNumber);
-        checkNumbersDuplicate(inputtedNumber);
-    }
-
-    private void checkNumbersDigit(String inputtedNumber) {
-        if(inputtedNumber.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void checkNumbersDuplicate(String inputtedNumber) {
-        String stringForCheckingDuplicate = "";
-        for (char number : inputtedNumber.toCharArray()) {
-            if(stringForCheckingDuplicate.contains(String.valueOf(number))) {
-                throw new IllegalArgumentException();
-            }
-            stringForCheckingDuplicate += number;
-        }
-    }
-
-    private void convertStringToIntegerList(String inputtedNumber) {
-        for(int numbersIndex=0; numbersIndex<3; numbersIndex++) {
-            char digitChar = inputtedNumber.charAt(numbersIndex);
-            int digitNumber = Character.getNumericValue(digitChar);
-            userNumbers.add(digitNumber);
-        }
-    }
-
-    private void countStrikeAndBall() {
         countStrike(userNumbers);
         countBall(userNumbers);
         output.printStrikeBallMessage(strike, ball);
@@ -102,7 +58,7 @@ public class BaseballGame {
     }
 
     private void restartGame() {
-        resetAllGameElement();
+        resetTargetNumbers();
         output.printSelectRestartMessage();
         String restartOption = inputRestartOption();
         if(restartOption.equals("1")) {
@@ -110,11 +66,8 @@ public class BaseballGame {
         }
     }
 
-    private void resetAllGameElement() {
+    private void resetTargetNumbers() {
         targetNumbers.clear();
-        userNumbers.clear();
-        strike=0;
-        ball=0;
     }
 
     private String inputRestartOption() {
