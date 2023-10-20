@@ -32,6 +32,7 @@ class GameServiceTest {
     @Test
     void 컴퓨터의_숫자_새로_초기화() {
         gameService.restart();
+        gameService.numbersInit();
         GameResult result = gameService.getResult("136");
         assertThat(result.getStrike()).isNotEqualTo(3);
     }
