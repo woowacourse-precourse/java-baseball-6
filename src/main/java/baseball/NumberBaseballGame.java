@@ -13,11 +13,11 @@ public class NumberBaseballGame {
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.\n");
-        computer = generateRandomNumbers();
         boolean isContinue = true;
         while (isContinue) {
+            computer = generateRandomNumbers();
             playGame();
-            // isContinue = getUserContinueInput();
+            isContinue = getUserContinueInput();
         }
     }
 
@@ -101,5 +101,18 @@ public class NumberBaseballGame {
             }
         }
         return strike;
+    }
+
+    private boolean getUserContinueInput() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputContinue = Console.readLine();
+        validateUserContinueInput(inputContinue);
+        return inputContinue.equals("1");
+    }
+
+    private void validateUserContinueInput(String inputContinueS) {
+        if (!inputContinueS.equals("1") && !inputContinueS.equals("2")) {
+            throw new IllegalArgumentException("[ERROR] 1 또는 2 를 입력하세요.");
+        }
     }
 }
