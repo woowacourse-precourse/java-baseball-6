@@ -34,4 +34,10 @@ class UserInputValidatorTest {
         UserInputValidator userInputValidator = new UserInputValidator("1a2");
         assertThrows(IllegalArgumentException.class, userInputValidator::checkValid);
     }
+
+    @Test
+    void 입력_범위_초과_오류() {
+        UserInputValidator userInputValidator = new UserInputValidator("012");
+        assertThrows(IllegalArgumentException.class, userInputValidator::checkValid);
+    }
 }
