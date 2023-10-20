@@ -12,6 +12,7 @@ public class ReplayableGameSystem implements GameSystem {
         this.game = game;
     }
 
+    @Override
     public void run() {
         boolean replay = true;
         while (replay) {
@@ -20,5 +21,4 @@ public class ReplayableGameSystem implements GameSystem {
             replay = systemView.requestReplayInput();
         }
     }
-
 }
