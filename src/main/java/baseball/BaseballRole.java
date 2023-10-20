@@ -17,7 +17,10 @@ public enum BaseballRole {
         return value;
     }
 
-
+    public static boolean isGameExit(int value){
+        validateRestartMessage(value);
+        return value == GAME_EXIT.value;
+    }
 
     private static void validateRestartMessage(int value){
         if(value != GAME_RESTART.value && value != GAME_EXIT.value){
