@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameScore {
 
     private int strike;
@@ -16,5 +19,12 @@ public class GameScore {
 
     public void updateBall() {
         ball++;
+    }
+
+    public List<Integer> getResult() {
+        return new ArrayList<Integer>() {{
+            add(strike);
+            add(ball);
+        }};
     }
 }
