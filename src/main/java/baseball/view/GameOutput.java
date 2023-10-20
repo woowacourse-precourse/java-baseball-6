@@ -15,10 +15,16 @@ public class GameOutput {
         if (strike != 0 && ball == 0) printStrikeResult();
 
         if (strike == 0 && ball != 0) printBallResult();
+
+        if (strike == 0 && ball == 0) printNothing();
     }
 
     public void printGameStart(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public void printNothing(){
+        System.out.println("낫싱");
     }
 
     public void printBallResult(){
