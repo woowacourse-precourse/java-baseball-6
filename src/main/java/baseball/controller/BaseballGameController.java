@@ -1,7 +1,10 @@
 package baseball.controller;
 
+import baseball.service.BaseballGameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+
+import java.util.HashMap;
 
 public class BaseballGameController {
     private static final String PLAY_GAME_STATUS = "playing";
@@ -12,28 +15,44 @@ public class BaseballGameController {
 
     private static String gameStatus;
 
+    BaseballGameService baseballGameService = new BaseballGameService();
+
     public void run() {
-        gameStatus =PLAY_GAME_STATUS;
+        gameStatus = PLAY_GAME_STATUS;
         gameStart();
-        while (gameStatus.equals(PLAY_GAME_STATUS)){
+        while (gameStatus.equals(PLAY_GAME_STATUS)) {
+            baseballGameService.createComputer();
+            gameInit();
             gamePlay();
             gameEnd();
             restartOrEnd();
         }
     }
-    public void gameStart(){
+
+    public void gameStart() {
         OutputView.gameStartOutput();
     }
-    public void gamePlay(){
-        String myNum = InputView.inputNum();
 
+    public void gameInit() {
+        baseballGameService.initUserResult();
     }
-    public void gameEnd(){
+
+    public void gamePlay() {
+        while (baseballGameService.StrikeCount() != 3) {
+            String playerNum = InputView.inputNum();
+            gameInit();
+            HashMap<String, Integer> result = baseballGameService.judgeResult(playerNum);
+            OutputView.gameResult(result.get("STRIKE"), result.get("BALL"));
+        }
+    }
+
+    public void gameEnd() {
         OutputView.gameEndOutput();
     }
-    public void restartOrEnd(){
+
+    public void restartOrEnd() {
         int restartNum = InputView.restart();
-        if(restartNum == END_NUM){
+        if (restartNum == END_NUM) {
             gameStatus = END_GAME_STATUS;
         }
     }
