@@ -7,16 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+    private static final int NUMBER_SIZE = 3;
+    private static final String INPUT_RESTART = "1";
+    private static final String INPUT_FORMAT = "[1-9]{3}";
+
     public static void main(String[] args) {
 
         PrintResult.START.printMessage();
 
-        String choiceOfUser = "1";
-        while (choiceOfUser.equals("1")) {
+        String choiceOfUser = INPUT_RESTART;
+        while (choiceOfUser.equals(INPUT_RESTART)) {
 
             List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
+            while (computer.size() < NUMBER_SIZE) {
+                int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
                 if (!computer.contains(randomNumber)) {
                     computer.add(randomNumber);
                 }
@@ -27,7 +34,7 @@ public class Application {
                 PrintResult.WRITE.printMessage();
                 String input = Console.readLine();
 
-                if (!input.matches("[1-9]{3}")) {
+                if (!input.matches(INPUT_FORMAT)) {
                     throw new IllegalArgumentException();
                 }
                 isAnswer = compare(computer, input);
@@ -41,7 +48,7 @@ public class Application {
         int ball = 0;
         int strike = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
             String computerNumber = Integer.toString(computer.get(i));
             if (!input.contains(computerNumber)) {
                 continue;
@@ -62,7 +69,7 @@ public class Application {
             PrintResult.NOTHING.printMessage();
             return false;
         }
-        if (strike == 3) {
+        if (strike == NUMBER_SIZE) {
             PrintResult.STRIKE.printMessage(strike);
             PrintResult.CORRECT.printMessage();
             PrintResult.NEXT.printMessage();
