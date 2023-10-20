@@ -8,11 +8,11 @@ import java.util.List;
 
 public class Application{
 
-    private static List<Integer> computer = new ArrayList<>();
+    private static List<Integer> computerNumber = new ArrayList<>();
 
     public static void main(String[] args){
         startGame();
-        computer = createComputerRandomNumber();
+        computerNumber = createComputerRandomNumber();
         playGame();
 
     }
