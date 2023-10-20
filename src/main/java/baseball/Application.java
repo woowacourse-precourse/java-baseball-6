@@ -56,7 +56,7 @@ public class Application {
                     }
                 }
             }
-
+//
 //            System.out.println("strike : " + strike);
 //            System.out.println("ball : " + ball);
             if (strike == 0 && ball == 0) {
