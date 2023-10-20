@@ -14,7 +14,7 @@ public class Display {
         System.out.print("숫자를 입력해주세요 : ");
         return getSplitedUserInput(Console.readLine());
     }
-    private int[] getSplitedUserInput(String input){
+    public int[] getSplitedUserInput(String input){
         int[] result = new int[3];
         String trimInput = input.trim();
         validateUserInputSize(trimInput);
@@ -32,7 +32,7 @@ public class Display {
         boolean oneOrTwo = getOneOrTwo(Console.readLine());
         return oneOrTwo;
     }
-    private boolean getOneOrTwo(String input){
+    public boolean getOneOrTwo(String input){
         String trimInput = input.trim();
         validateOneOrTwo(trimInput);
         if(trimInput.equals("1")){
