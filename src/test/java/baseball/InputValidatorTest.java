@@ -42,9 +42,26 @@ public class InputValidatorTest {
     @DisplayName("사용자가 입력한 값이 1 또는 2 의 한자리 숫자면 에러가 발생하지 않는다.")
     @ParameterizedTest
     @ValueSource(strings = {"1", "2"})
-    void validateContinueOrExitNumberTest(String input) {
-        assertThatCode(() -> InputValidator.)
+    void validateContinueOrExitNumberSuccessTest(String input) {
+        assertThatCode(() -> InputValidator.validateContinueOrExitNumber(input))
+                .doesNotThrowAnyException();
     }
 
     @DisplayName("사용자가 입력한 값이 1 또는 2 의 한자리 숫자가 아니라면 IllegalArgumentException 에러가 발생한다.")
+    @ParameterizedTest
+    @MethodSource("provideValidateContinueOrExitNumberTestArgument")
+    void validateContinueOrExitNumberFailTest(String input, String message) {
+        assertThatCode(() -> InputValidator.validateContinueOrExitNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(message);
+    }
+
+    static Stream<Arguments> provideValidateContinueOrExitNumberTestArgument() {
+        return Stream.of(
+                arguments("", "입력값은 한 자리 수만 입력 가능합니다."),
+                arguments("123", "입력값은 한 자리 수만 입력 가능합니다."),
+                arguments("asdf", "입력값은 한 자리 수만 입력 가능합니다."),
+                arguments("3", "입력값은 1 또는 2 만 가능합니다.")
+        );
+    }
 }
