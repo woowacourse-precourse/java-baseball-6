@@ -3,10 +3,7 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.lang.annotation.Documented;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MessageTest {
 
@@ -64,5 +61,18 @@ class MessageTest {
         final String nothingResult = message.result(0, 0);
         //then
         assertThat(nothingResult).isEqualTo("낫싱");
+    }
+
+    @DisplayName("게임 결과 오직 볼만 존재할 경우의 테스트")
+    @Test
+    void onlyBallResultTest() {
+        //given
+        Message message = new Message();
+        //when
+        final int ball = 2;
+        final int strike = 0;
+        final String onlyBallResult = message.result(2, 0);
+        //then
+        assertThat(onlyBallResult).isEqualTo(ball + "볼");
     }
 }
