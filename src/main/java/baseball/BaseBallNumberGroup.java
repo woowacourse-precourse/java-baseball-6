@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 public class BaseBallNumberGroup {
-    public static final int SIZE_RANDOM_NUMBER = 3;
 
     private final List<Integer> baseBallNumbers;
 
@@ -16,14 +15,14 @@ public class BaseBallNumberGroup {
     }
 
     private void validateSize(List<Integer> baseBallNumbers) {
-        if (baseBallNumbers.size() != SIZE_RANDOM_NUMBER) {
+        if (baseBallNumbers.size() != GameConstants.SIZE_RANDOM_NUMBER) {
             throw new IllegalArgumentException("숫자 야구 개수는 3개만 가능합니다.");
         }
     }
 
     private void validateDuplicate(List<Integer> baseBallNumbers) {
         Set<Integer> nonDuplicateNumbers = new HashSet<>(baseBallNumbers);
-        if (nonDuplicateNumbers.size() != SIZE_RANDOM_NUMBER) {
+        if (nonDuplicateNumbers.size() != GameConstants.SIZE_RANDOM_NUMBER) {
             throw new IllegalArgumentException("숫자 야구는 서로 중복될 수 없습니다.");
         }
     }

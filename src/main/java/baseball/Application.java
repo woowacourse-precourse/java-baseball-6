@@ -30,7 +30,7 @@ public class Application {
 
     public static List<Integer> getRandomNumberList() {
         List<Integer> randomNumberList = new ArrayList<>();
-        while (randomNumberList.size() < BaseBallNumberGroup.SIZE_RANDOM_NUMBER) {
+        while (randomNumberList.size() < GameConstants.SIZE_RANDOM_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(MIN_PICK_NUMBER, MAX_PICK_NUMBER);
             if (!randomNumberList.contains(randomNumber)) {
                 randomNumberList.add(randomNumber);
