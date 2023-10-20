@@ -1,6 +1,6 @@
 package baseball.logic;
 
-public class BaseBallService {
+public class Compare {
     public String getGameResult(int computerInput, int userInput) {
         if (!isValidInputThreeNumber(userInput)){
             throw new IllegalArgumentException("3자리의 정수를 입력해야 됩니다. 사용자의 입력 : " + userInput);

@@ -8,13 +8,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BaseBallServiceTest {
+class CompareTest {
 
-    private BaseBallService baseBallService;
+    private Compare compare;
 
     @BeforeEach
     void setUp() {
-        baseBallService = new BaseBallService();
+        compare = new Compare();
     }
 
     @DisplayName("같은 수가 같은 자리에 있을 때 스트라이크 확인 테스트")
@@ -25,7 +25,7 @@ class BaseBallServiceTest {
         int computerInput = 425;
 
         // when
-        String result = baseBallService.getGameResult(computerInput, userInput);
+        String result = compare.getGameResult(computerInput, userInput);
 
         // then
         assertTrue(result.contains(expectedStrikes + "스트라이크"));
@@ -39,7 +39,7 @@ class BaseBallServiceTest {
         int computerInput = 135;
 
         // when
-        String result = baseBallService.getGameResult(computerInput, userInput);
+        String result = compare.getGameResult(computerInput, userInput);
 
         // then
         assertTrue(result.contains(expectedBall + "볼"));
@@ -53,7 +53,7 @@ class BaseBallServiceTest {
         int computerInput = 206;
 
         // when
-        String result = baseBallService.getGameResult(computerInput, userInput);
+        String result = compare.getGameResult(computerInput, userInput);
 
         // then
         assertTrue(result.equals("낫싱"));
@@ -68,7 +68,7 @@ class BaseBallServiceTest {
 
         // when
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
-            baseBallService.getGameResult(computerInput, userInput);
+            compare.getGameResult(computerInput, userInput);
         });
 
         // then
