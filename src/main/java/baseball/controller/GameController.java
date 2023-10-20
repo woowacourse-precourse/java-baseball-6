@@ -40,7 +40,7 @@ public class GameController {
                 AskView.askResume(RESTART, END);
                 String resumeInput = Console.readLine();
                 assertResumeValue(resumeInput);
-                int resumeNumber = StringInputConverter.convertStringToInt(userInput);
+                int resumeNumber = StringInputConverter.convertStringToInt(resumeInput);
                 if (resumeNumber == RESTART) {
                     computerNumber = NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
                 }
