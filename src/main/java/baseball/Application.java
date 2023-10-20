@@ -71,14 +71,14 @@ public class Application {
         return playerNumber;
     }
 
-    public static void CompareNumber(String computerNumber, String playerNumber) {
+    public static void CompareNumber(List<Integer> computerNumber, List<Integer> playerNumber) {
         strike = 0;
         ball = 0;
 
         for(int i=0; i<3; i++) {
-            if (playerNumber.charAt(i) == computerNumber.charAt(i)) {
+            if (playerNumber.get(i) == computerNumber.get(i)) {
                 strike++;
-            } else if (computerNumber.contains(String.valueOf(playerNumber.charAt(i)))) {
+            } else if (computerNumber.contains(playerNumber.get(i))) {
                 ball++;
             }
         }
