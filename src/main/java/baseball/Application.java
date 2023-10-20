@@ -20,14 +20,10 @@ public class Application {
     }
 
     public static List<Integer> generateComputerNumbers() {
-        List<Integer> computerNumbers;
-
-        computerNumbers = new ArrayList<>();
+        List<Integer> computerNumbers = new ArrayList<>();
 
         while (computerNumbers.size() < 3) {
-            int randomNumber;
-
-            randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
 
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
@@ -71,11 +67,9 @@ public class Application {
     }
 
     public static boolean isEachDigitDuplicated(final String inputDigits) {
-        String[] digitArray;
-        Set<String> digitSet;
+        String[] digitArray = inputDigits.split("");
+        Set<String> digitSet = new HashSet<>(Arrays.asList(digitArray));
 
-        digitArray = inputDigits.split("");
-        digitSet = new HashSet<>(Arrays.asList(digitArray));
         return digitSet.size() == digitArray.length;
     }
 
