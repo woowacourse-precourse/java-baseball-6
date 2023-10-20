@@ -53,4 +53,14 @@ public class NumberBaseballUtility {
         }
         return strike;
     }
+
+    public static int calculateBall(List<Integer> answer, List<Integer> player) {
+        int ball = 0;
+        for (int i : player) {
+            if (answer.contains(i)) {
+                ball++;
+            }
+        }
+        return ball;
+    }
 }
