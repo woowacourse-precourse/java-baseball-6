@@ -1,11 +1,14 @@
 package baseball;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
+import baseball.Rule;
 
 import java.util.*;
 
 public class Application {
-    public static final int allowableLength = 3;
+    public static final int validLength = 3;
     private static final boolean playingGame = true;
     public static String creatNumber(){
         List<Integer> computer = new ArrayList<>();
@@ -31,7 +34,7 @@ public class Application {
         return true;
     }
     public static boolean isValidLength(String str){
-        return str.length() == allowableLength;
+        return str.length() == validLength;
     }
     public static boolean isValidNumber(String str) {
         // 1~9로 이루어졌는지 확인
@@ -49,53 +52,6 @@ public class Application {
         return true;
     }
 
-    public static int countBallAndStrike(String computeNumber, String userNumber){
-        int cntBS = 0;
-
-        char[] computeNumberArray = computeNumber.toCharArray();
-        char[] userNumberArray = userNumber.toCharArray();
-
-        Set<Character> computeNumberHS = new HashSet<>();
-        Set<Character> userNumberHS = new HashSet<>();
-
-        for (char c : computeNumberArray) {
-            computeNumberHS.add(c);
-        }
-        for (char u : userNumberArray) {
-            userNumberHS.add(u);
-        }
-
-//        for(char c : computeNumberHS){
-//            if(userNumberHS.contains(c))
-//                cntBS++;
-//        }
-        // 교집합 생성
-        computeNumberHS.retainAll(userNumberHS);
-        return computeNumberHS.size();
-    }
-
-    public  static  int countStrike(String computeNumber, String userNumber){
-        int cntS = 0;
-        for(int i=0; i < allowableLength; i++){
-            if(computeNumber.charAt(i) == userNumber.charAt(i)){
-                cntS++;
-            }
-        }
-        return cntS;
-    }
-
-    public static String hintProvider(int cntB, int cntS){
-        if(cntB == 0 && cntS == 0){
-            return "낫싱";
-        }
-        if(cntB == 0){
-            return "%d스트라이크".formatted(cntS);
-        }
-        if(cntS == 0){
-            return  "%d볼".formatted(cntB);
-        }
-        return "%d볼 %d스트라이크".formatted(cntB, cntS);
-    }
     public static void main(String[] args){
         // Randoms.pickNumberInRange(시작, 끝) - 시작 이상, 끝 이하
         // int computeNumber = Randoms.pickNumberInRange(111, 999) -> "게임종료_후_재시작" 에러 발생
@@ -112,8 +68,8 @@ public class Application {
                 throw new IllegalArgumentException();
             }
 
-            int cntBS = countBallAndStrike(computeNumber, userNumber);
-            int cntS = countStrike(computeNumber, userNumber);
+            int cntBS = Rule.countBallAndStrike(computeNumber, userNumber);
+            int cntS = Rule.countStrike(computeNumber, userNumber);
             int cntB = cntBS - cntS;
 
             System.out.printf("cntB %d cntS %d".formatted(cntBS, cntS));
@@ -134,7 +90,7 @@ public class Application {
             }
             else {
                 System.out.print("힌트: ");
-                System.out.println(hintProvider(cntB, cntS));
+                System.out.println(Rule.hintProvider(cntB, cntS));
             }
         }
         System.out.println("게임이 종료되었습니다.");
