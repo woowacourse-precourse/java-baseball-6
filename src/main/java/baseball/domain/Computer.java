@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Computer {
 
-    public List<Integer> randomComputerNumber(){
+    public List<Integer> randomComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
 
         while (computerNumber.size() < 3) {
@@ -18,11 +18,6 @@ public class Computer {
         }
         return computerNumber;
     }
-
-
-
-
-
 
 
 }

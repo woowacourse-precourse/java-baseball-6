@@ -9,31 +9,21 @@ public class BaseballGameService {
     List<Integer> computerNumber;
     BaseballGame baseballGame = new BaseballGame();
 
-    public BaseballGameService(){
+    public BaseballGameService() {
         computerNumber = baseballGame.createComputerNumber();
         System.out.println(computerNumber);
     }
 
 
-    public String [] run(String userNumber){
+    public String[] run(String userNumber) {
         String result;
-
 
         result = baseballGame.compareTwoNumbers(userNumber);
 
-        String [] results = baseballGame.splitCountResult(result);
+        String[] results = baseballGame.splitCountResult(result);
 
         return results;
     }
-
-
-
-
-
-
-
-
-
 
 
 }
