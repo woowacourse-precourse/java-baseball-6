@@ -6,11 +6,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Constant.END_NUMBER;
+import static baseball.Constant.MAX_NUMBER_LENGTH;
+
 public class BaseballGame {
-
-    private static final int END_NUMBER = 2;
-
-    private static final int MAX_NUMBER_LENGTH = 3;
 
     private static BaseballGame baseballGame;
 

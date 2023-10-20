@@ -22,7 +22,13 @@
 - isMyNumberCorrect(Result result)
   - result가 3스트라이트면 게임을 종료할 수 있도록 true 반환
 
-<h2>3. InputChecker</h2>
+<h2>3. Constant </h2>
+- 상수 전용 클래스
+- RESTART_NUMBER: 1
+- END_NUMBER: 2
+- MAX_NUMBER_LENGTH : 게임 진행 시 숫자 길이(3)
+
+<h2>4. InputChecker</h2>
 - 입력 예외 처리용 객체
 - InputChecker 싱글톤 객체로 관리
 - checkMyNumber(String input)
@@ -34,5 +40,5 @@
 - checkAndMakeNumber(String input)
   - 예외 체크 후 재시작 여부 확인 숫자 생성 및 반환
 
-<h2>4. Result</h2>
+<h2>5. Result</h2>
 - ball, strike 변수를 위한 DTO

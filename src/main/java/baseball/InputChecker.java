@@ -4,7 +4,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.Constant.RESTART_NUMBER;
+import static baseball.Constant.END_NUMBER;
+import static baseball.Constant.MAX_NUMBER_LENGTH;
+
+
 public class InputChecker {
+
+    private static final int ASCII_CODE_ONE = 49;
+    private static final int ASCII_CODE_NINE = 57;
 
     private static InputChecker inputChecker;
 
@@ -29,7 +37,7 @@ public class InputChecker {
     }
 
     public void checkMyNumber(String input) {
-        if (input.length() != 3) {
+        if (input.length() != MAX_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
 
@@ -38,7 +46,9 @@ public class InputChecker {
         }
 
         for (char c : input.toCharArray()) {
-            if (c < 49 || c > 57) throw new IllegalArgumentException();
+            if (c < ASCII_CODE_ONE || c > ASCII_CODE_NINE) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
@@ -54,7 +64,7 @@ public class InputChecker {
             throw new IllegalArgumentException();
         }
 
-        if (num != 1 && num != 2) {
+        if (num != RESTART_NUMBER && num != END_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
