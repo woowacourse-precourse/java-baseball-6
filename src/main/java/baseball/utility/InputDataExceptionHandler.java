@@ -1,10 +1,11 @@
 package baseball.utility;
 
 public class InputDataExceptionHandler {
+    final static int ALLOWABLE_LENGTH = 3;
     public static void validateNumbers(String inputNumbers) {
         int numbersLength = inputNumbers.length();
 
-        if(numbersLength != 3) {
+        if(numbersLength != ALLOWABLE_LENGTH) {
             throw new IllegalArgumentException();
         }
 
