@@ -28,12 +28,16 @@ public class BaseballController {
     private void start() {
         List<Integer> comNumber = comNumberGenerateService.generateComNumber();
         System.out.println(comNumber);
-        String input = InputView.requestUserNumber();
-        int[] userNumber = userNumberGenerateService.generateUserNumber(input);
-        Map<String, Integer> resultGame = ballStrikeCheckService.resultBallStrike(userNumber, comNumber);
-        BALL = resultGame.get("BALL");
-        STRIKE = resultGame.get("STRIKE");
-        resultGame();
+        do {
+            String input = InputView.requestUserNumber();
+            int[] userNumber = userNumberGenerateService.generateUserNumber(input);
+            Map<String, Integer> resultGame = ballStrikeCheckService.resultBallStrike(userNumber, comNumber);
+            BALL = resultGame.get("BALL");
+            STRIKE = resultGame.get("STRIKE");
+            resultGame();
+
+        } while (STRIKE != 3);
+
 
     }
 
@@ -53,18 +57,11 @@ public class BaseballController {
     }
 
     private boolean isEnd() {
-        boolean result = false;
-        if (STRIKE == 3) {
-            OutputView.endGame();
-            result = isStopGame();
-        }
-        return result;
-    }
-
-    private boolean isStopGame() {
+        OutputView.endGame();
         String result = InputView.requestRestartGame();
+        if (result.equals("1")) return false;
         if (result.equals("2")) return true;
-        return false;
+        throw new IllegalArgumentException();
     }
 
 }
