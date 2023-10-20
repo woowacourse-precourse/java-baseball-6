@@ -2,6 +2,8 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        CreatingAnswer answerMachine = new CreatingAnswer();
+        int randomAnswer = answerMachine.getRandomNumber();
+        System.out.println(randomAnswer);
     }
 }
