@@ -1,27 +1,28 @@
 package baseball.domain;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class GameNumber {
     private static final int NUMBER_LENGTH = 3;
-    private static final int MIN = 1;
-    private static final int MAX = 9;
     private static final String ZERO = "0";
 
     private final List<Integer> numbers;
 
     public GameNumber(String input) {
         validate(input);
-        this.numbers = null;
+        numbers = toNumbers(input);
     }
 
     private void validate(String input) {
         validateLength(input);
         validateValidNumber(input);
+        validateDuplication(input);
     }
 
     private void validateLength(String input) {
-        if (input.length() != 3) {
+        if (input.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
@@ -43,5 +44,28 @@ public class GameNumber {
         if (input.contains(ZERO)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void validateDuplication(String input) {
+        List<Character> list = new ArrayList<>();
+        for (char ch :input.toCharArray()){
+            list.add(ch);
+        }
+
+        if (list.size() != new HashSet<>(list).size()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private List<Integer> toNumbers(String input) {
+        List<Integer> numbers = new ArrayList<>();
+        for (char number : input.toCharArray()) {
+            numbers.add(Character.getNumericValue(number));
+        }
+        return numbers;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
