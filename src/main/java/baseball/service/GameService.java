@@ -24,19 +24,19 @@ public class GameService {
         return computerNumber;
     }
 
-    public int sameCount(List<Integer> computer,List<Integer> player){
+    public int sameCount(List<Integer> computer, List<Integer> user){
         int same = 0;
-        for(int i = 0; i< player.size(); i++){
-            if(computer.contains(player.get(i))){
+        for(int i = 0; i< user.size(); i++){
+            if(computer.contains(user.get(i))){
                 same ++;
             }
         }
         return same;
     }
-    public int countStrike(List<Integer> computer, List<Integer> player){
+    public int countStrike(List<Integer> computer, List<Integer> user){
         int strike = 0;
-        for(int i = 0; i < player.size(); i++){
-            if(computer.get(i).equals(player.get(i))){
+        for(int i = 0; i < user.size(); i++){
+            if(computer.get(i).equals(user.get(i))){
                 strike ++;
             }
         }
@@ -59,10 +59,5 @@ public class GameService {
         int ball = countBall(same, strike);
         score.setScore(strike, ball);
     }
-
-
-
-
-
 
 }

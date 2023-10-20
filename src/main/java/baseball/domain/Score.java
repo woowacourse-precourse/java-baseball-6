@@ -18,8 +18,4 @@ public class Score {
         this.ball = ball;
     }
 
-//    public Score(int strike, int ball) {
-//        this.strike = strike;
-//        this.ball = ball;
-//    }
 }

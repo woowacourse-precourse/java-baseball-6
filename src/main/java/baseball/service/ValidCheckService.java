@@ -13,14 +13,6 @@ public class ValidCheckService {
         }
         throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
-
-//    public boolean isNumberDigit(String input) {
-//        for (int i = 0; i < input.length(); i++) {
-//            isNumberNaturalDigit(input);
-//        }
-//        return true;
-//    }
-
     public boolean isNumberNaturalDigit(String input) {
         for(char c : input.toCharArray()){
             if(!Character.isDigit(c) || c == '0'){

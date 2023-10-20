@@ -13,11 +13,12 @@ public class PlayBall {
     public void play(){
         printService.printBeforeStart();
         List<Integer> computer = gameService.generateRandomNumber(3);
+        System.out.println("computer = " + computer);
         Score score = new Score();
         while (score.getStrike() != 3){
             List<Integer> user = gameService.getUserNumber();
             int same = gameService.sameCount(computer, user);
-            gameService.countOnPlay(computer, user, score, same );
+            gameService.countOnPlay(computer, user, score, same);
             printService.showResult(score);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
