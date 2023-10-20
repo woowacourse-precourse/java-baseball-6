@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Util {
+
+    public static final int THREE_BALLS = 3;
+    public static final int VALUE_START_INCLUSIVE = 1;
+    public static final int VALUE_END_INCLUSIVE = 9;
+
     public static String appendGameResult(long ballTotal, long strikeTotal) {
         StringBuilder gameResultBuilder = new StringBuilder();
 
@@ -61,8 +66,8 @@ public class Util {
     public static List<Integer> generateRandomNumbers() {
         List<Integer> computerGeneratedNumbers = new ArrayList<>();
 
-        while (computerGeneratedNumbers.size() != 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9); // Verifiaction 적용한 구간
+        while (computerGeneratedNumbers.size() != THREE_BALLS) {
+            int randomNumber = Randoms.pickNumberInRange(VALUE_START_INCLUSIVE, VALUE_END_INCLUSIVE); // Verifiaction 적용한 구간
             if (!computerGeneratedNumbers.contains(randomNumber)) {
                 computerGeneratedNumbers.add(randomNumber);
             }

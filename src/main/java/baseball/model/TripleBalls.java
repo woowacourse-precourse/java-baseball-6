@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.util.Constants;
 import baseball.util.Util;
 
 import java.util.ArrayList;
@@ -35,6 +36,6 @@ public class TripleBalls {
     }
 
     public boolean hasThreeStrikes(TripleBalls registeredComputer) {
-        return compareTripleBalls(registeredComputer).equals("3스트라이크");
+        return compareTripleBalls(registeredComputer).equals(Constants.THREE_STRIKE_MESSAGE);
     }
 }
