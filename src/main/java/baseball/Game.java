@@ -17,7 +17,7 @@ public class Game {
             initGame();
             playTurn();
             System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }while ();
+        }while (restartGame());
 
     }
     public void initGame(){
@@ -87,6 +87,19 @@ public class Game {
             System.out.print("낫싱");
         }
 
+    }
+
+    public boolean restartGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." );
+        String s = Console.readLine();
+
+        if(s.equals("1")){
+            return true;
+        } else if (s.equals("2")) {
+            return false;
+        }else {
+            throw new IllegalStateException();
+        }
     }
 
 }
