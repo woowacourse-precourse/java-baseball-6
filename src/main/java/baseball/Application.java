@@ -19,6 +19,10 @@ public class Application {
         } while(!threeStrike);
 
         Print.printGameWin();
+        Print.printGameRestartOrQuit();
+        String input = Console.readLine();
+        GameRestartOrQuit gameRestartOrQuit = new GameRestartOrQuit(input);
+
     }
 
     private static boolean isThreeStrike(int strike) {
