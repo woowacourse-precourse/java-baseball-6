@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Constants.NUM_DIGITS;
+import static baseball.Constants.SIZE_OF_DIGITS;
 
 public class UserInputValidator {
     public void checkValid(String userInput) {
@@ -13,7 +13,7 @@ public class UserInputValidator {
     }
 
     private boolean isInputSizeValid(String input) {
-        return input.length() == NUM_DIGITS.getValue();
+        return input.length() == SIZE_OF_DIGITS.getValue();
     }
 
     private boolean isInputDuplicated(String input) {

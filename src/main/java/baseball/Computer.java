@@ -11,10 +11,10 @@ public class Computer {
 
     public void generateRandomNumbers() {
         List<Integer> randomGeneratedNumberList = new ArrayList<>();
-        while (randomGeneratedNumberList.size() < NUM_DIGITS.getValue()) {
+        while (randomGeneratedNumberList.size() < SIZE_OF_DIGITS.getValue()) {
             int randomNumber = Randoms.pickNumberInRange(
-                    RANDOM_NUMBER_LOWER_BOUND.getValue(),
-                    RANDOM_NUMBER_UPPER_BOUND.getValue()
+                    NUMBER_LOWER_BOUND.getValue(),
+                    NUMBER_UPPER_BOUND.getValue()
             );
             if (!randomGeneratedNumberList.contains(randomNumber)) {
                 randomGeneratedNumberList.add(randomNumber);

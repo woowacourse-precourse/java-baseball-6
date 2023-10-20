@@ -1,9 +1,9 @@
 package baseball;
 
 public enum Constants {
-    RANDOM_NUMBER_LOWER_BOUND(1),
-    RANDOM_NUMBER_UPPER_BOUND(9),
-    NUM_DIGITS(3);
+    NUMBER_LOWER_BOUND(1),
+    NUMBER_UPPER_BOUND(9),
+    SIZE_OF_DIGITS(3);
 
     private final int value;
 
