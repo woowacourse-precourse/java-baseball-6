@@ -5,8 +5,7 @@
 
 - Me
 - Opponent
-- BaseBall
-- InputOut
+- NumberBaseBall
 - InputOutputHandler
 - RandomNumberPicker
 
