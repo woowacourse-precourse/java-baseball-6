@@ -30,12 +30,12 @@ public class OutputView {
             System.out.println(NOTHING);
             return;
         }
-        StringBuilder hint = new StringBuilder();
+        String hint = "";
         if (ball > 0) {
-            hint.append(ball + BALL);
+            hint += ball + BALL;
         }
         if (strike > 0) {
-            hint.append(strike + STRIKE);
+            hint += strike + STRIKE;
         }
         System.out.println(hint);
     }
