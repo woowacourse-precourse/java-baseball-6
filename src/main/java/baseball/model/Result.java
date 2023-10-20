@@ -16,4 +16,8 @@ public class Result {
         }
         return false;
     }
+
+    public int getStrike() {
+        return strike;
+    }
 }
