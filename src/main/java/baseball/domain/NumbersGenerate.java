@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumbersGenerate {
+    private final static int RAN_NUM_LIST_MAX_SIZE = 3;
+
     /**
      * 3개의 랜덤 숫자의 리스트를 반환한다.
      *
@@ -13,7 +15,7 @@ public class NumbersGenerate {
      */
     public List<Integer> createRandomNumList() {
         List<Integer> ranNumTreeList = new ArrayList<>();
-        while (ranNumTreeList.size() < 3) {
+        while (ranNumTreeList.size() < RAN_NUM_LIST_MAX_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!isContainList(ranNumTreeList, randomNumber)) {
                 ranNumTreeList.add(randomNumber);
