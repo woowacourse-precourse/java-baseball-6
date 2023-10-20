@@ -94,7 +94,7 @@ public class Console {
     }
 
 
-    public void printGameStart(){
-        System.out.println(START_GAME.getMessage());
+    public static void printGameStart(){
+        System.out.println(GAME_START);
     }
 }
