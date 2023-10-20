@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.Validation;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,24 +33,12 @@ public class Generator {
         for (int idx = 0; idx < inputLen; idx++) {
             int inputNum = input.charAt(idx) - '0';
 
-            validateNumber(inputNum);
-            validateDuplication(inputList, inputNum);
+            Validation.validateNumber(inputNum);
+            Validation.validateDuplication(inputList, inputNum);
 
             inputList.add(inputNum);
         }
 
         return inputList;
-    }
-
-    private static void validateDuplication(List<Integer> inputList, int inputNum) {
-        if (inputList.contains(inputNum)) {
-            throw new IllegalArgumentException("중복되지 않는 숫자를 입력해야 합니다.");
-        }
-    }
-
-    private static void validateNumber(int inputNum) {
-        if (inputNum < MIN_NUM || inputNum > MAX_NUM) {
-            throw new IllegalArgumentException("1 ~ 9 범위의 숫자만 입력해야 합니다.");
-        }
     }
 }

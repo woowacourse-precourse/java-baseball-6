@@ -1,10 +1,13 @@
 package baseball;
 
+import baseball.controller.Validation;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
 
     private static final int LIST_LEN = 3;
+    private static final int ONE_OR_TWO_LEN = 1;
 
     public static void main(String[] args) {
         OutputView.showOpening();
@@ -12,8 +15,16 @@ public class Application {
 
         while (running) {
             run();
+
             OutputView.showClosing();
-            running = InputView.askOneOrTwo();
+            InputView.askOneOrTwo();
+
+            String input = Console.readLine();
+            Validation.validateInputLength(input, ONE_OR_TWO_LEN);
+            int inputNum = input.charAt(0) - '0';
+            Validation.validateOneOrTwo(inputNum);
+
+            running = (inputNum == 1);
         }
     }
 
@@ -22,7 +33,11 @@ public class Application {
         boolean playing = true;
 
         while (playing) {
-            String input = InputView.askNumber(LIST_LEN);
+            InputView.askNumber();
+
+            String input = Console.readLine();
+            Validation.validateInputLength(input, LIST_LEN);
+
             List<Integer> inputList = Generator.generateInputList(input);
 
             int strike = Game.countStrike(inputList, answer);
