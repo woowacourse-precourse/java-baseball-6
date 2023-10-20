@@ -54,16 +54,18 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        APP: while (true) {
+        while (true) {
             List<Integer> numbers = new ArrayList<>();
-            for (int i = 1; i <= 9; i++) {
-                numbers.add(i);
+            while (numbers.size() < 3) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!numbers.contains(randomNumber)) {
+                    numbers.add(randomNumber);
+                }
             }
-            int[] answer = new int[3];
+            int[] answer = numbers.stream().mapToInt(i -> i).toArray();
             int[] exist = new int[9];
             for (int i = 1; i <= 3; i++) {
-                int hereNum = numbers.remove(Randoms.pickNumberInRange(0, 8 - i));
-                answer[i - 1] = hereNum;
+                int hereNum = answer[i - 1];
                 exist[hereNum - 1] = i;
             }
             // System.out.printf("*** 정답: %s ***\n", Arrays.toString(answer));
