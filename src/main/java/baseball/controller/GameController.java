@@ -17,11 +17,7 @@ public class GameController {
     private final BallException ballException = new BallException();
 
     public void start(){
-        computer = new LinkedHashSet<>();
-        while (computer.size() < 3){
-            Ball ball = new Ball(Randoms.pickNumberInRange(1, 9));
-            computer.add(new BallDto(ball.getNumber()));
-        }
+        createComputerBall();
         output.printGameStart();
         String number = input.inputUserNumber();
         gameProcess(number);
@@ -32,6 +28,14 @@ public class GameController {
         createUserBall(number);
     }
 
+    private void createComputerBall() {
+        computer = new LinkedHashSet<>();
+        while (computer.size() < 3){
+            Ball ball = new Ball(Randoms.pickNumberInRange(1, 9));
+            computer.add(new BallDto(ball.getNumber()));
+        }
+    }
+
     private void createUserBall(String number){
         Set<BallDto> userBall = new LinkedHashSet<>();
         char[] charArray = number.toCharArray();
@@ -40,10 +44,6 @@ public class GameController {
             userBall.add(new BallDto(ball.getNumber()));
         }
         this.user = userBall;
-    }
-
-    public Set<BallDto> getComputer() {
-        return computer;
     }
 
     public Set<BallDto> getUser() {
