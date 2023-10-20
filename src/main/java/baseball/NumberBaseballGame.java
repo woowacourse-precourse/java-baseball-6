@@ -8,8 +8,9 @@ public class NumberBaseballGame {
 
     public void start() {
         List<Integer> answer = NumberBaseballUtility.generateAnswer();
-        int strike = 0;
-        int ball = 0;
+        int strike;
+        int ball;
+        strike = 0;
         while (strike != 3) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
