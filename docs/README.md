@@ -3,9 +3,13 @@
 - [ ] 사용자로부터 수 입력받는 readNum() 메서드 작성
 ## 출력
 - [ ] 사용자의 입력에 따른 출력 printGameResult() 메서드 작성
+- [ ] 사용자가 정답을 맞췄을때 출력 printEndGame() 메서드 작성
+- [ ] 게임이 완전히 종료됐을 때 출력 endOfGame() 메서드 작성
 ## 로직
 - [ ] 컴퓨터의 랜덤 수를 생성하기 위해 generateRandNum() 메서드 작성
-- [ ] 사용자의 입력값과 컴퓨터의 랜덤수를 비교하는 compareInputNumToRandNum() 메서드 작성
+- [ ] 스트라이크와 볼의 개수를 구하는 countStrikeAndBall() 메서드 작성
+- [ ] 게임이 재시작 됐을 때 새 NumberBaseball 인스턴스 생성하는 newGame() 메서드 작성
+- [ ] 컴퓨터의 수와 입력 값이 같은지 비교하는 isSameNum() 메서드 작성
 
 # 2. 예외 처리
 - [ ] 입력 숫자가 서로 다르지 않은 경우 ex) 222
