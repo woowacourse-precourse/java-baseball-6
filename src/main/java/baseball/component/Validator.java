@@ -38,7 +38,7 @@ public class Validator {
 
     private void calculateStrike(List<Integer> numbers) {
         int strike = 0;
-        for (int i = 0 ; i < NUMBER_SIZE ; i++) {
+        for (int i = 0 ; i < GeneralNumbers.NUMBER_SIZE.getCode() ; i++) {
             if (numbers.get(i) == target.get(i)) {
                 strike++;
             }

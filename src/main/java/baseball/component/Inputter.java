@@ -39,7 +39,8 @@ public class Inputter {
 
     private void validate(List<Integer> numbers) {
         Set<Integer> validateSet = new HashSet<>(numbers);
-        if (validateSet.size() != 3 || numbers.size() != 3) {
+        if (validateSet.size() != GeneralNumbers.NUMBER_SIZE.getCode()
+                    || numbers.size() != GeneralNumbers.NUMBER_SIZE.getCode()) {
             throw new IllegalArgumentException();
         }
     }
