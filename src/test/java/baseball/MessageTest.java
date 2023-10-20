@@ -75,4 +75,17 @@ class MessageTest {
         //then
         assertThat(onlyBallResult).isEqualTo(ball + "볼");
     }
+
+    @DisplayName("게임 결과 오직 스트라이크만 존재할 경우의 테스트")
+    @Test
+    void onlyStrikeResultTest() {
+        //given
+        Message message = new Message();
+        //when
+        final int ball = 0;
+        final int strike = 3;
+        final String onlyStrikeResult = message.result(0, 3);
+        //then
+        assertThat(onlyStrikeResult).isEqualTo(strike + "스트라이크");
+    }
 }
