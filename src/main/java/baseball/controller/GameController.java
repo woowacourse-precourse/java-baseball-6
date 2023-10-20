@@ -9,7 +9,7 @@ import baseball.view.OutputView;
 
 public class GameController {
     CompareNumber compareNumber = new CompareNumber();
-    ProgramNumber program = new ProgramNumber();
+    private ProgramNumber program;
     private UserNumber user;
 
     public void run(){
@@ -19,8 +19,8 @@ public class GameController {
         } while (isReset());
     }
 
-
     public void start(){
+        program = new ProgramNumber();
         do{
             user = new UserNumber(InputView.inputUserNumber());
             printAll(getResultList());
