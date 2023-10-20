@@ -9,9 +9,15 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballController {
     
-    private final ComputerService computerService = new ComputerService();
-    private final PlayerService playerService = new PlayerService();
-    private final MessageService messageService = new MessageService();
+    private final ComputerService computerService;
+    private final PlayerService playerService;
+    private final MessageService messageService;
+    
+    public BaseballController() {
+        this.computerService = new ComputerService();
+        this.playerService = new PlayerService();
+        this.messageService = new MessageService();
+    }
     
     public void startGame() {
         boolean continueGame = true;
