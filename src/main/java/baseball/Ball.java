@@ -24,6 +24,14 @@ public class Ball {
         return number >= UNDER_RANGE;
     }
 
+    public boolean isSameNumber(Ball playerBall) {
+        return playerBall.isNumber(number);
+    }
+
+    private boolean isNumber(int inputNumber) {
+        return inputNumber == number;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -43,7 +51,6 @@ public class Ball {
 
 //    private static final String NUMBER_FORMAT = "\\d+";
 //    private static final String NUMBER_FORMAT_EXCEPTION_MESSAGE = "올바른 숫자를 입력해주세요.";
-
 
 //    public void validateForm(String rawNumber) {
 //        if (!isNumber(rawNumber)) {

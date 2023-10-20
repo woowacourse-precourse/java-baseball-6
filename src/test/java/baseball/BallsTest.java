@@ -59,4 +59,24 @@ public class BallsTest {
         Balls otherBalls = new Balls(new Ball(1,3), new Ball(2,2), new Ball(3,1));
         assertThat(balls.getStrikeCount(otherBalls)).isEqualTo(1);
     }
+
+    @Test
+    void 정답은_123_입력숫자는_451일때_ball_1를_반환한다() {
+        Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
+        Balls otherBalls = new Balls(new Ball(1,4), new Ball(2,5), new Ball(3,1));
+        assertThat(balls.getBallCount(otherBalls)).isEqualTo(1);
+    }
+    @Test
+    void 정답은_123_입력숫자는_231일때_ball_3를_반환한다() {
+        Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
+        Balls otherBalls = new Balls(new Ball(1,2), new Ball(2,3), new Ball(3,1));
+        assertThat(balls.getBallCount(otherBalls)).isEqualTo(3);
+    }
+    @Test
+    void 정답은_123_입력숫자는_135일때_strike_1_ball_1를_반환한다() {
+        Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
+        Balls otherBalls = new Balls(new Ball(1,1), new Ball(2,3), new Ball(3,5));
+        assertThat(balls.getStrikeCount(otherBalls)).isEqualTo(1);
+        assertThat(balls.getBallCount(otherBalls)).isEqualTo(1);
+    }
 }

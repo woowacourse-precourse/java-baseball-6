@@ -1,5 +1,5 @@
 package baseball;
 
 public enum TryResult {
-    STRIKE
+    BALL, NOTHING, STRIKE
 }

@@ -41,23 +41,42 @@ public class Balls {
 
     public int getStrikeCount(Balls answerBalls) {
         return (int) balls.stream()
-            .map(ball -> getTryResult(ball, answerBalls))
+            .map(playerBall -> getTryResult(playerBall, answerBalls))
             .filter(tryResult -> tryResult == TryResult.STRIKE)
             .count();
     }
 
-    private TryResult getTryResult(Ball ball, Balls answerBalls) {
-        if (isStrike(ball, answerBalls)) {
+    public int getBallCount(Balls answerBalls) {
+        return (int) balls.stream()
+            .map(playerBall -> getTryResult(playerBall, answerBalls))
+            .filter(tryResult -> tryResult == TryResult.BALL)
+            .count();
+    }
+
+    private TryResult getTryResult(Ball playerBall, Balls answerBalls) {
+        if (isStrike(playerBall, answerBalls)) {
             return TryResult.STRIKE;
         }
-        return null;
+        if (isBall(playerBall, answerBalls)) {
+            return TryResult.BALL;
+        }
+        return TryResult.NOTHING;
     }
 
-    private boolean isStrike(Ball ball, Balls answerBalls) {
-        return answerBalls.contains(ball);
+    private boolean isBall(Ball playerBall, Balls answerBalls) {
+        return answerBalls.containsNumber(playerBall);
     }
 
-    private boolean contains(Ball ball) {
-        return balls.contains(ball);
+    private boolean containsNumber(Ball playerBall) {
+        return balls.stream()
+            .anyMatch(answerBall -> answerBall.isSameNumber(playerBall));
+    }
+
+    private boolean isStrike(Ball playerBall, Balls answerBalls) {
+        return answerBalls.contains(playerBall);
+    }
+
+    private boolean contains(Ball playerBall) {
+        return balls.contains(playerBall);
     }
 }
