@@ -3,8 +3,7 @@ package baseball.validators;
 public class NumberValidator {
 
 	public void isValidPlayGame(String input) {
-		if (!isNotBlankOrNull(input) || !isStringOfLength3(input) ||
-			!isNumeric(input) || !hasDuplicateNumbers(input)) {
+		if (!isNotBlankOrNull(input) || !isStringOfLength3(input) || !isNumeric(input) || !hasDuplicateNumbers(input)) {
 			throw new IllegalArgumentException();
 		}
 	}

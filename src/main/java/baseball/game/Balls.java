@@ -3,6 +3,7 @@ package baseball.game;
 import java.util.List;
 
 public class Balls {
+
 	private List<Integer> balls;
 
 	public Balls(List<Integer> balls) {
