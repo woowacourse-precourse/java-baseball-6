@@ -15,6 +15,7 @@ public class BaseballFunction {
                 computer.add(randomNumber);
             }
         }
+        System.out.println(computer);
         return computer;
     }
 
@@ -23,6 +24,7 @@ public class BaseballFunction {
         int input = Integer.parseInt(Console.readLine());
         if (input>=1000){
             System.out.println("error");
+            throw new IllegalArgumentException();
         }
         player.add(input/100);
         player.add((input%100)/10);
@@ -31,10 +33,31 @@ public class BaseballFunction {
         return player;
     }
 
+    public static void compare(List<Integer> computer, List<Integer> player){
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            boolean isStrike = computer.get(i).equals(player.get(i));
+            boolean isBall = !isStrike & computer.contains(player.get(i));
+
+            if (isStrike) strike++;
+            if(isBall) ball++;
+        }
+
+        if (strike == 3){
+            System.out.println("strike");
+        }
+        else{
+            System.out.println("regame");
+        }
+        System.out.println(strike+" "+ball);
+
+    }
+
 
 
     public static void main(String[] args) {
-        System.out.println(genNum());
-        System.out.println(getNum());
+        compare(genNum(),getNum());
     }
 }
