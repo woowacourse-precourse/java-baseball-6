@@ -47,9 +47,29 @@ public class Game {
                     myAnswer.add(intAtIndex);
                 }
             }
-            // todo
-
+            int[] hintArr = new int[3];
+            hint(myAnswer, hintArr);
         }while(!RESULT);
+
+    }
+    private void hint(List<Integer> List, int[] hintArr){ // 볼, 스트라이크, 낫싱 횟수 배열에 넣어주는 함수
+        if(List.size() != answer.size()){
+            throw new IllegalArgumentException(WRONG_INPUT_LENGTH_ERROR);
+        }
+        for (int i = 0; i < List.size(); i++){
+            if(List.get(i).equals(answer.get(i))){
+                hintArr[1]++; // strike
+//                System.out.println("hint[1] : " + hintArr[1]);
+            }
+            else if(answer.contains(List.get(i))){
+                hintArr[0]++; // ball
+//                System.out.println("hint[0] : " + hintArr[0]);
+            }
+            else{
+                hintArr[2]++; // nothing
+//                System.out.println("hint[2] : " + hintArr[2]);
+            }
+        }
 
     }
 
