@@ -12,6 +12,7 @@
     ```
 
 ## 2. 플레이어 요청을 처리하는 클래스
+- 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
 - 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력
 - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
     ```text
@@ -25,6 +26,7 @@
     ```
 
 ## 3. 게임 진행을 담당하는 클래스
+- Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()
 - 사용자가 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 맞추면 게임이 종료되고 아니라면 반복된다.
 
 ## 4. 게임에 반복을 담당하는 클래스
