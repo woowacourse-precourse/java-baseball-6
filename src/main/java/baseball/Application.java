@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.Game.BaseBallGame;
-import baseball.Game.BaseBallGameImpl;
+import baseball.ProcessGame.BaseBallGame;
+import baseball.ProcessGame.BaseBallGameImpl;
 
 import static java.lang.System.*;
 

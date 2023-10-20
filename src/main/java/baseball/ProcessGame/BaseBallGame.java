@@ -1,4 +1,4 @@
-package baseball.Game;
+package baseball.ProcessGame;
 
 import java.util.List;
 
