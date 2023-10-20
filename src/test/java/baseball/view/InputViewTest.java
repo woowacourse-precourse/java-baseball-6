@@ -33,4 +33,13 @@ class InputViewTest {
                 isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1부터 9까지의 숫자만 입력 가능 합니다.");
     }
+
+    @ParameterizedTest
+    @DisplayName("중복된 숫자 입력 예외 테스트")
+    @ValueSource(strings = {"113", "155", "383", "999", "464"})
+    void invalidInputsTest4(String input) {
+        Assertions.assertThatThrownBy(() -> Validation.isDuplicate(input)).
+                isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("서로 다른 숫자를 입력해 주세요.");
+    }
 }
