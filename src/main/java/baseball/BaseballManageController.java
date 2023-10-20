@@ -125,8 +125,17 @@ public class BaseballManageController {
 
     public void playerNumsInputCheck(String input) throws IllegalArgumentException{
 
+        //입력 자리수 확인
         if(input.length() != 3) {
             throw new IllegalArgumentException();
+        }
+        //입력 숫자 중복 여부 확인
+        for(int i = 0; i < 3; i++) {
+            for(int j = i + 1; j < 3; j++) {
+                if(input.charAt(i) == input.charAt(j)) {
+                    throw new IllegalArgumentException();
+                }
+            }
         }
     }
 
