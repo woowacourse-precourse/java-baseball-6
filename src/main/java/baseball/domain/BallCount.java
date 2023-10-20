@@ -9,7 +9,7 @@ public class BallCount {
     private static final String THREE_STRIKE_STRING = "3스트라이크";
 
     private static final Integer NOTHING_STRIKE= 0;
-    private static final Integer NOTHING_BALL =3;
+    private static final Integer NOTHING_BALL =0;
     private static final String NOTHING_STRING = "낫싱";
 
 

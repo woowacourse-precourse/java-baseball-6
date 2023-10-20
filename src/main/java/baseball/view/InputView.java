@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.domain.Baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
@@ -18,7 +19,9 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
-  
 
-
+    public static Integer retryGame() {
+        System.out.println(GAME_RESTART_AND_EXIT);
+        return Integer.parseInt(Console.readLine());
+    }
 }

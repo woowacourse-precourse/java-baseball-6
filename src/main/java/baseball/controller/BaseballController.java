@@ -24,10 +24,14 @@ public class BaseballController {
         Computer computer = new Computer();
         do{
             gameStart(baseball,user,computer);
+            retryGame(baseball);
         }
         while(baseball.isState());
         }
 
+    private static void retryGame(Baseball baseball) {
+        baseball.retryAndEnd(InputView.retryGame());
+    }
 
 
     private static void gameStart(Baseball baseball, User user, Computer computer) {
@@ -48,6 +52,7 @@ public class BaseballController {
         }
         while(ballCount.isStrikeOut());
         user.endGame();
+        OutputView.endGame();
     }
 
     //기본 값 설정

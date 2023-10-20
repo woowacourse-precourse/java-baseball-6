@@ -3,9 +3,6 @@ package baseball.domain;
 public class Baseball {
     private static final Integer GAME_RETRY = 1;
     private static final Integer GAME_END = 2;
-
-
-
     boolean state;
 
     public Baseball(boolean state){
@@ -16,6 +13,14 @@ public class Baseball {
         return state;
     }
 
+    public void retryAndEnd(Integer number){
+        if( number == GAME_RETRY ){
+            this.state=true;
+        }
+        if ( number == GAME_END){
+            this.state=false;
+        }
+    }
 
 
 
