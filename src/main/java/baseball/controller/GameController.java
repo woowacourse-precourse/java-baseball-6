@@ -25,8 +25,7 @@ public class GameController {
         while (playWant) {
             AskView.askNumberInput();
 
-            String userInput = Console.readLine();
-            assertNumberValue(userInput);
+            String userInput = receivePlayNumber();
 
             int userNumber = Integer.parseInt(userInput);
 
@@ -49,6 +48,13 @@ public class GameController {
                 }
             }
         }
+    }
+
+    private static String receivePlayNumber() {
+        String userInput = Console.readLine();
+        assertNumberValue(userInput);
+
+        return userInput;
     }
 
     private static boolean isStrikeEqualToGoal(final int strike) {
