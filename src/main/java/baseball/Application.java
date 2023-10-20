@@ -3,13 +3,15 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 	private static String user = ""; // 사용자가 입력한 값을 받음.
-
+	// 게임 시작
 	public static void runGame() {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -20,6 +22,40 @@ public class Application {
 		}
 	}
 
+	// 게임 진행
+	public static void play() {
+		List<Integer> computer = randomNumberInit();
+
+		while (true) {
+			System.out.print("숫자를 입력해주세요 : ");
+
+			user = Console.readLine();
+
+			int inputLength = user.length();
+			// 잘못된 입력 처리
+			if (inputLength != 3) throw new IllegalArgumentException();
+			
+			Set<Integer> set = new HashSet<Integer>();
+			for(int i = 0 ; i < inputLength ; i++) {
+				// 1~9 사이 수가 아니라면
+				if(user.charAt(i) < '1' || user.charAt(i) > '9') {
+					throw new IllegalArgumentException();
+				}
+				// 중복 검사를 위한 set 설정. 1~9 사이를 확인해서 integer를 보장 받을 수 있음
+				set.add(user.charAt(i) - '0');
+			}
+			// 중복 검사
+			if(set.size() != 3) throw new IllegalArgumentException();
+			
+			int[] scores = compare(computer, user);
+
+			showResults(scores[0], scores[1]);
+
+			if (isThreeStrike(scores[0])) break;
+			
+		}
+	}
+	
 	// 랜덤 3자리 번호 생성
 	public static List<Integer> randomNumberInit() {
 		List<Integer> computer = new ArrayList<>();
@@ -30,27 +66,6 @@ public class Application {
 		}
 
 		return computer;
-	}
-
-	// 게임 시작
-	public static void play() {
-		List<Integer> computer = randomNumberInit();
-
-		while (true) {
-			System.out.print("숫자를 입력해주세요 : ");
-
-			user = Console.readLine();
-
-			// 잘못된 입력 처리
-			if (user.length() != 3) throw new IllegalArgumentException();
-
-			int[] scores = compare(computer, user);
-
-			showResults(scores[0], scores[1]);
-
-			if (isThreeStrike(scores[0])) break;
-			
-		}
 	}
 
 	/* *
@@ -113,7 +128,6 @@ public class Application {
 			System.out.println("게임을 종료합니다");
 			return true;
 		} else {
-			// TODO : 예외 상황 논의.
 			throw new IllegalArgumentException();
 		}
 	}
