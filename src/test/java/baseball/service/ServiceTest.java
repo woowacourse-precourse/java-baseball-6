@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import baseball.domain.Balls;
 import baseball.domain.Game;
+import baseball.domain.GameState;
 import baseball.domain.Hint;
 import baseball.domain.RandomBallsGenerator;
 import baseball.domain.TestGenerator;
@@ -11,6 +12,18 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class ServiceTest {
+    @Test
+    void start_test() {
+        //given
+        Game game = new Game(new RandomBallsGenerator());
+        Service service = new Service(game);
+
+        //when
+        service.startGame();
+
+        //then
+        assertEquals(service.getGameState(), GameState.ON);
+    }
     @Test
     void hint_test() {
         //given
