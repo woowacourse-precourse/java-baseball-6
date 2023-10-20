@@ -44,7 +44,6 @@ public class NumberBaseBall {
     public int checkKeepGoing(int strikeCount){
         if (strikeCount == MAX_STRIKES) {
             messageViewer.printGameEndMsg();
-            messageViewer.printRestartMsg();
             user.inputRestartFactor(inputValidator);
             regenerateNumber(user.mind);
 
