@@ -19,9 +19,10 @@ public class MainController {
     public void mainController(){
         finishGame = false;
 
+        System.out.println(printMsg(0)); //"숫자 야구 게임을 시작합니다."
         while (!finishGame){
             COMPUTER_NUM = randomNumber.mainMakeRnadomNumber(); //컴퓨터 숫자 알아오기
-            System.out.println(printMsg(0)); //"숫자 야구 게임을 시작합니다."
+            //System.out.println(printMsg(0)); //"숫자 야구 게임을 시작합니다."
 
             //System.out.println(COMPUTER_NUM + "새로운컴퓨터");
             repeatInputToOutput(); //반복되는 구간
@@ -43,10 +44,12 @@ public class MainController {
         if(number==1){ //게임 다시
             System.out.println("게임을 다시 합니다");
             finishGame = false;
-        }
-        if(number ==2){ //게임 종료
+        } else if(number ==2){ //게임 종료
             System.out.println("게임을 종료합니다");
             finishGame = true;
+        }
+        else {
+            throw new IllegalArgumentException("1또는 2를 입력해주세요.");
         }
         /*
         String answer = Console.readLine();
