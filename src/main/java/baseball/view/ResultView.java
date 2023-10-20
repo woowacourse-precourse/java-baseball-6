@@ -26,7 +26,7 @@ public class ResultView {
     }
 
     private static boolean isOnlyLeftNotZero(final int leftNumber, final int rightNumber) {
-        return leftNumber == 0 && rightNumber != 0;
+        return leftNumber != 0 && rightNumber == 0;
     }
 
     private static void printStrike(final int strike) {
