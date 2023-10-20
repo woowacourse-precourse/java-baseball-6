@@ -24,6 +24,7 @@ public class ServiceTest {
         //then
         assertEquals(service.getGameState(), GameState.ON);
     }
+
     @Test
     void hint_test() {
         //given
@@ -38,5 +39,18 @@ public class ServiceTest {
 
         //then
         assertEquals(hint, String.format("%d%s", 3, Hint.STRIKE.value()));
+    }
+
+    @Test
+    void end_test() {
+        //given
+        Game game = new Game(new RandomBallsGenerator());
+        Service service = new Service(game);
+
+        //when
+        service.endGame();
+
+        //then
+        assertEquals(service.getGameState(), GameState.OFF);
     }
 }
