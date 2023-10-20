@@ -24,7 +24,10 @@ public class GameController {
 
     public void run() {
         GameNumber computerNumber = setGame();
-        GameNumber userNumber = getUserNumber();
+        while (gameService.isNotDone()) {
+            GameNumber userNumber = getUserNumber();
+        }
+
     }
 
     private GameNumber setGame() {

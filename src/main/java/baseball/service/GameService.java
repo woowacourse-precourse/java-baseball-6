@@ -13,4 +13,8 @@ public class GameService {
     public static GameService startNewGame() {
         return new GameService();
     }
+
+    public boolean isNotDone() {
+        return gameStatus.isNotThreeStrike();
+    }
 }
