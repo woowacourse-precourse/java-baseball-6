@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.utill.Utill;
+
 import java.util.List;
 
 public class GameStandard {
@@ -34,7 +36,7 @@ public class GameStandard {
      */
     public boolean isSamePlaceNumUserAndComputer(List<Integer> computerList, int placeIndexOfUser, int numIndexPlaceOfUser) {
         int numPlaceIndexOfComputer = computerList.get(placeIndexOfUser);
-        return numPlaceIndexOfComputer == numIndexPlaceOfUser;
+        return Utill.isSameInteger(numPlaceIndexOfComputer, numIndexPlaceOfUser);
     }
 
 
