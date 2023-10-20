@@ -1,7 +1,7 @@
 package controller;
 import camp.nextstep.edu.missionutils.Randoms;
 
-public final class selectComputerNum {
+public final class SelectComputerNum {
     private final char[] selectComputers = new char[3];
 
     public void randomlySelectComputerNum() {
