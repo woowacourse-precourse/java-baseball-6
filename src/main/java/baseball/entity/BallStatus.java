@@ -12,6 +12,10 @@ enum BallStatus {
         return this.equals(STRIKE);
     }
 
+    public boolean isHint() {
+        return isBall() || isStrike();
+    }
+
     public boolean isNothing() {
         return this.equals(NOTHING);
     }

@@ -56,4 +56,105 @@ class BallsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3개의 숫자를 선택해주세요.");
     }
+
+    @DisplayName("공 목록에 하나의 공이 들어왔을 때, 같은 자리에 같은 숫자인 경우 스트라이크이다.")
+    @Test
+    void strike() {
+        Balls answerBalls = Balls.from(List.of(1, 2, 3));
+        Ball ball = Ball.of(3, 3);
+
+        BallStatus result = answerBalls.evaluateOne(ball);
+
+        assertThat(result.isStrike()).isTrue();
+    }
+
+    @DisplayName("공 목록에 하나의 공이 들어왔을 때, 같은 숫자지만 다른 위치인 경우 볼이다.")
+    @Test
+    void ball() {
+        Balls answerBalls = Balls.from(List.of(1, 2, 3));
+        Ball ball = Ball.of(3, 2);
+
+        BallStatus result = answerBalls.evaluateOne(ball);
+
+        assertThat(result.isBall()).isTrue();
+    }
+
+    @DisplayName("공 목록에 하나의 공이 들어왔을 때, 아무 공과도 같지 않은 경우 낫싱이다.")
+    @Test
+    void nothing() {
+        Balls answerBalls = Balls.from(List.of(1, 2, 3));
+        Ball ball = Ball.of(5, 2);
+
+        BallStatus result = answerBalls.evaluateOne(ball);
+
+        assertThat(result.isNothing()).isTrue();
+    }
+
+    @DisplayName("공 목록에 알 수 없는 공(null)이 들어왔을 때, 비교할 수 없다.")
+    @Test
+    void evaluateOneWithNull() {
+        Balls answerBalls = Balls.from(List.of(1, 2, 3));
+
+        assertThatThrownBy(() -> answerBalls.evaluateOne(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("알 수 없는 공(null)과는 비교할 수 없습니다.");
+    }
+
+    @DisplayName("공 목록과 공 목록을 비교 - 1스트라이크 2볼")
+    @Test
+    void oneStrikeTwoBall() {
+        Balls answerBalls = Balls.from(List.of(1, 2, 3));
+        Balls balls = Balls.from(List.of(1, 3, 2));
+
+        PlayResult result = answerBalls.play(balls);
+
+        assertThat(result.getStrikeCount()).isEqualTo(1);
+        assertThat(result.getBallCount()).isEqualTo(2);
+    }
+
+    @DisplayName("공 목록과 공 목록을 비교 - 3스트라이크")
+    @Test
+    void threeStrike() {
+        Balls answerBalls = Balls.from(List.of(1, 2, 3));
+        Balls balls = Balls.from(List.of(1, 2, 3));
+
+        PlayResult result = answerBalls.play(balls);
+
+        assertThat(result.getStrikeCount()).isEqualTo(3);
+        assertThat(result.getBallCount()).isEqualTo(0);
+    }
+
+    @DisplayName("공 목록과 공 목록을 비교 - 3볼")
+    @Test
+    void threeBall() {
+        Balls answerBalls = Balls.from(List.of(1, 2, 3));
+        Balls balls = Balls.from(List.of(3, 1, 2));
+
+        PlayResult result = answerBalls.play(balls);
+
+        assertThat(result.getStrikeCount()).isEqualTo(0);
+        assertThat(result.getBallCount()).isEqualTo(3);
+    }
+
+    @DisplayName("공 목록과 공 목록을 비교 - 낫싱")
+    @Test
+    void nothingBalls() {
+        Balls answerBalls = Balls.from(List.of(1, 2, 3));
+        Balls balls = Balls.from(List.of(4, 9, 8));
+
+        PlayResult result = answerBalls.play(balls);
+
+        assertThat(result.getStrikeCount()).isEqualTo(0);
+        assertThat(result.getBallCount()).isEqualTo(0);
+    }
+
+    @DisplayName("공 목록과 알 수 없는 공 목록(null)이 들어왔을 때, 비교할 수 없다.")
+    @Test
+    void playWithNull() {
+        Balls answerBalls = Balls.from(List.of(1, 2, 3));
+
+        assertThatThrownBy(() -> answerBalls.play(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("알 수 없는 공 목록(null)과 비교할 수 없습니다.");
+    }
 }
