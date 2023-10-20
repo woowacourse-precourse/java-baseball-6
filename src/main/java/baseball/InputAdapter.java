@@ -12,12 +12,12 @@ public class InputAdapter {
     /**
      * Read a series of 3 numbers of user input in the game loop.
      * If the input doesn't pass the check of the validator, then IllegalArgumentException is thrown.
-     * @return the user input intact.
+     * @return the user input got contained in CommonNumbers instance.
      */
-    public String readNumber() {
+    public Numbers readNumber() {
         String line = Console.readLine();
         this.validator.validate(line);
-        return line;
+        return new CommonNumbers(line);
     }
 
     /**
