@@ -101,5 +101,4 @@ public class Application {
             if(cutNumLen != 2) throw new IllegalArgumentException();
         }
     }
-
 }
