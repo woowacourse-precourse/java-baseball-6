@@ -20,7 +20,7 @@ public class Application {
      * 게임을 시작한다. 게임 진입점
      */
     private static void runGame() {
-        Computer computer = new Computer(3);
+        Computer computer = new Computer();
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean correct = false; // 정답 여부
 

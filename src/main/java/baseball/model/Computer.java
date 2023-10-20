@@ -9,12 +9,10 @@ public class Computer {
 
     /**
      * 입력한 크기에 맞추어 랜덤 숫자 배열을 생성한다.
-     *
-     * @param size
      */
-    public Computer(int size) {
+    public Computer() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < size) {
+        while (randomNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
