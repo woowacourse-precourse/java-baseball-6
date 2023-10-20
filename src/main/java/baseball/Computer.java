@@ -16,7 +16,7 @@ public class Computer {
         }
     }
 
-    public List<Integer> getRandomCumputerPickNum() {
+    public List<Integer> getRandomComputerPickNum() {
         return randomComputerPickNum;
     }
 
