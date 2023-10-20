@@ -19,6 +19,9 @@ public class Player {
         if (!isValidNumber(number)) {
             throw new IllegalArgumentException("number cannot contain any letters");
         }
+        if (!isUniqueNumber(number)) {
+            throw new IllegalArgumentException("number cannot contain duplicated numbers");
+        }
     }
 
     private void validateNumberLength(final String number, final int numLength) {
@@ -36,5 +39,9 @@ public class Player {
         return number
             .chars()
             .allMatch(c -> Character.isDigit(c) && c >= '1' && c <= '9');
+    }
+
+    private boolean isUniqueNumber(final String number) {
+        return number.chars().distinct().count() == number.length();
     }
 }
