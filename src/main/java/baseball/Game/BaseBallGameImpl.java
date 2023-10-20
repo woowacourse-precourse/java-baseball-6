@@ -48,20 +48,20 @@ public class BaseBallGameImpl implements BaseBallGame {
     }
 
     @Override
-    public Integer countStrike(List<Integer> answer) {
+    public Integer countStrike(List<Integer> userAnswer) {
         Integer cnt = 0;
         for (int i = 0; i < 3; i++) {
-            if (computerNumber.get(i).equals(answer.get(i)))
+            if (computerNumber.get(i).equals(userAnswer.get(i)))
                 cnt++;
         }
         return cnt;
     }
 
     @Override
-    public Integer countBall(List<Integer> answer) {
+    public Integer countBall(List<Integer> userAnswer) {
         Integer cnt = 0;
         for (int i = 0; i < 3; i++) {
-            if (computerNumber.contains(answer.get(i)) && !computerNumber.get(i).equals(answer.get(i)))
+            if (computerNumber.contains(userAnswer.get(i)) && !computerNumber.get(i).equals(userAnswer.get(i)))
                 cnt++;
         }
         return cnt;
