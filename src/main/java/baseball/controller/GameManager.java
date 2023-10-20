@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.BallNumber;
-import baseball.system.SystemException;
+import baseball.domain.Result;
 import baseball.verifier.InputVerifier;
 import baseball.view.InputHandler;
 
@@ -11,9 +11,11 @@ public class GameManager {
     GameManager() {
         computerNumber = RandomNumberGenerator.generate();
     }
+
     private void playRound() {
         BallNumber playerNumber = returnPlayerNumber();
-
+        ResultCalculator resultCalculator = new ResultCalculator(computerNumber);
+        Result roundResult = resultCalculator.calculateResult(playerNumber);
     }
 
     private BallNumber returnPlayerNumber() {

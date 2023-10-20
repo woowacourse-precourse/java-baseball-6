@@ -21,4 +21,9 @@ public class OutputHandler {
         }
         System.out.println(stringForPrint);
     }
+
+    public static void printAllStrike() {
+        System.out.println("3스트라이크\n"
+                + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
