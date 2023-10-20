@@ -13,4 +13,8 @@ public class Computer {
     public boolean hasNumber(int number) {
         return numbers.contains(number);
     }
+
+    public boolean isSameIndex(int number, int index) {
+        return numbers.indexOf(number) == index;
+    }
 }
