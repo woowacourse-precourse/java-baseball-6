@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.ProcessGame.BaseBallGame;
 import baseball.ProcessGame.BaseBallGameImpl;
+import camp.nextstep.edu.missionutils.Console;
 
 import static java.lang.System.*;
 
@@ -18,6 +19,8 @@ public class Application {
         } catch (IllegalArgumentException e) {
             out.println(e.getMessage());
             throw e;
+        } finally {
+            Console.close();
         }
     }
 }

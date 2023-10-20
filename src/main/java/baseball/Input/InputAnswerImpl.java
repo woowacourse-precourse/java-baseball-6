@@ -9,7 +9,6 @@ public class InputAnswerImpl implements InputAnswer {
     @Override
     public List<Integer> inputAnswer() throws IllegalArgumentException{
         String input = Console.readLine();
-        Console.close();
         integrateValidation(input);
         return List.of(Integer.parseInt(String.valueOf(input.charAt(0))),
                 Integer.parseInt(String.valueOf(input.charAt(1))),
