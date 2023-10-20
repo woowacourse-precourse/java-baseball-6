@@ -9,23 +9,43 @@ public class MainController {
     RandomNumber randomNumber = new RandomNumber();
     Validator validator = new Validator();
     ScoreManager scoreManager = new ScoreManager();
+
     static List<Integer> COMPUTER_NUM = new ArrayList<>();
     static List<Integer> USER_NUM = new ArrayList<>();
+
     //boolean isNotRepeat = false;
+    boolean finishGame;
 
     public void mainController(){
-        COMPUTER_NUM = randomNumber.mainMakeRnadomNumber(); //컴퓨터 숫자 알아오기
-        System.out.println(printMsg(0)); //"숫자 야구 게임을 시작합니다."
+        finishGame = false;
 
+        while (!finishGame){
+            COMPUTER_NUM = randomNumber.mainMakeRnadomNumber(); //컴퓨터 숫자 알아오기
+            System.out.println(printMsg(0)); //"숫자 야구 게임을 시작합니다."
 
-        repeatInputToOutput(); //반복되는 구간
-        System.out.println(COMPUTER_NUM + "컴퓨터");
+            //System.out.println(COMPUTER_NUM + "새로운컴퓨터");
+            repeatInputToOutput(); //반복되는 구간
+            //System.out.println(COMPUTER_NUM + "이전컴퓨터");
+
+        }
+
 
     }
 
 
 
+    private void finishGame(){
+        String answer = Console.readLine();
+        int number = Integer.parseInt(answer);
+        if(number == 2){
+            finishGame = true;
+            throw new IllegalArgumentException();
+        } else if (number==1) {
+            //COMPUTER_NUM = new ArrayList<>(); // 새로운 컴퓨터 숫자 생성
+            //USER_NUM = new ArrayList<>(); // 사용자 숫자 초기화
 
+        }
+    }
 
 
 
@@ -39,7 +59,10 @@ public class MainController {
             System.out.print(printMsg(1)); //"숫자를 입력해주세요 : " println이 아니고 print로 출력
             String answer = Console.readLine(); //사용자에게 번호 입력받기
             USER_NUM = stringToList(answer); //list 변환 + 유효검사
-            isNotRepeat = scoreManager.setAndCheckScore(COMPUTER_NUM, USER_NUM);
+            isNotRepeat = scoreManager.setAndCheckScore(COMPUTER_NUM, USER_NUM); //true면 몀춤
+            if(isNotRepeat){
+                finishGame();
+            }
         }
 
         //만약 all스트라이크 = 멈춤

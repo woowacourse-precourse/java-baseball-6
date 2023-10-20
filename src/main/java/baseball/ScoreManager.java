@@ -22,8 +22,6 @@ public class ScoreManager {
         BALL = 0;
         STRIKE = 0;
         setScore(computer,user); //두 숫자를 비교하여 점수를 매긴다
-        System.out.println(BALL);
-        System.out.println(STRIKE);
         checkAllSolve(); //점수를 출력한다.
 
         return isAllStrike;
@@ -74,6 +72,7 @@ public class ScoreManager {
     private void printFinalMsg() {
         System.out.println(STRIKE+"스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
 
