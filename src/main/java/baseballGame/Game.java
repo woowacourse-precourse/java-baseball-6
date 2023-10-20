@@ -36,7 +36,6 @@ public class Game {
             System.out.print(INPUT_NUMBER);
             String inputString = Console.readLine();
 
-            // 입력한 3자리 문자열(사실 숫자) 하나씩 순회하면서 myAnswer 배열에 추가해줌
             for (int i = 0; i < inputString.length(); i++) {
                 if(inputString.charAt(i) < '0' || inputString.charAt(i) > '9'){
                     throw new IllegalArgumentException(WRONG_INPUT_TYPE);
