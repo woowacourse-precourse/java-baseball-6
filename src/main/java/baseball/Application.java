@@ -14,6 +14,7 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String player = Console.readLine();
+            // 사용자의 값 입력
             List<Integer> intArray = new ArrayList<>();
             String[] temp = player.split("");
             for (String str : temp) {
@@ -21,6 +22,7 @@ public class Application {
                     intArray.add(Integer.parseInt(str));
                 }
             }
+            // 스트라이크, 볼 개수 구하기
             int ball = 0;
             int strike = 0;
             for (Integer val : intArray) {
@@ -34,6 +36,7 @@ public class Application {
                     ball++;
                 }
             }
+            // 결과 출력
             if (strike != 3) {
                 if (ball > 0) {
                     System.out.print(ball + "볼 ");
@@ -48,6 +51,7 @@ public class Application {
                 continue;
             }
             System.out.println(strike + "스트라이크");
+            // 게임 재시작 여부 결정
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             player = Console.readLine();
             if (player.equals("1")) {
