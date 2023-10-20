@@ -9,14 +9,27 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> answer = random3();
-        List<Integer> playerInput = new ArrayList<>();
         do {
-            playerInput = player3();
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            List<Integer> answer = random3();
+            List<Integer> playerInput = new ArrayList<>();
+            printAnswer(answer); //이후 삭제
+            do {
+                playerInput = player3();
+                System.out.println(printResult(answer, playerInput));
+            }
+            while (!answer.equals(playerInput));
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
-        while (!answer.equals(playerInput));
+        while (Console.readLine().equals("1"));
+    }
 
+    public static void printAnswer(List<Integer> answer) {
+        for (int i : answer) {
+            System.out.print(i);
+        }
+        System.out.println();
     }
 
     public static List<Integer> random3() {
@@ -35,5 +48,32 @@ public class Application {
         List<String> inputstr = Arrays.asList(Console.readLine().split(""));
         List<Integer> input = inputstr.stream().map(s -> Integer.parseInt(s)).toList();
         return input;
+    }
+
+    public static String printResult(List<Integer> answer, List<Integer> input) {
+        String str = "";
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (input.contains(answer.get(i))) {
+                if (input.get(i).equals(answer.get(i))) {
+                    strike += 1;
+                } else {
+                    ball += 1;
+                }
+            }
+        }
+
+        if (ball + strike == 0) {
+            return "낫싱";
+        }
+        if (ball > 0) {
+            str = str.concat(ball + "볼 ");
+        }
+        if (strike > 0) {
+            str = str.concat(strike + "스트라이크 ");
+        }
+        return str;
     }
 }
