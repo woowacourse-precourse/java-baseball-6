@@ -22,6 +22,7 @@ public class InputView {
     }
 
     public boolean inputGameAction() {
+        outputView.printGameSuccessMessage();
         outputView.printGameActionMessage();
         String gameActionAnswer = readLine();
         if ("1".equals(gameActionAnswer)) {
