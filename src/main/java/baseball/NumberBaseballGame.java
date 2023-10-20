@@ -41,7 +41,6 @@ public class NumberBaseballGame {
                 generatedNumbers.add(randomNumber);
             }
         }
-        System.out.println(generatedNumbers);
         return generatedNumbers;
     }
 
@@ -58,8 +57,7 @@ public class NumberBaseballGame {
 
     private boolean validateInput(String inputString) throws IllegalArgumentException {
         if (!Pattern.matches(INPUT_REGEX, inputString)) {
-            System.out.println("잘못된 숫자 입력입니다: " + inputString);
-            throw new IllegalArgumentException("잘못된 숫자 입력입니다: " + inputString);
+            throw new IllegalArgumentException("[ERROR] 잘못된 숫자 입력입니다: " + inputString);
         }
         return true;
     }
