@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.Umpire;
 import baseball.factory.NumberFactory;
-import baseball.view.AskView;
 import baseball.view.EndView;
 import baseball.view.ResultView;
 import baseball.view.StartView;
