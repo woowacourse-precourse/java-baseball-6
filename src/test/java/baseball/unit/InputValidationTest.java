@@ -27,11 +27,16 @@ public class InputValidationTest {
     private static boolean checkDuplicate(int[] numbers) {
         Set<Integer> set = new HashSet<>();
         for(int num: numbers){
-            if(!set.add(num)){
-                return false;
-            }
+            if (isAlreadyIn(num, set)) return false;
         }
         return true;
+    }
+
+    private static boolean isAlreadyIn(int num, Set<Integer> set) {
+        if(!set.add(num)){
+            return true;
+        }
+        return false;
     }
 
     private static void checkSize(String nums) {
