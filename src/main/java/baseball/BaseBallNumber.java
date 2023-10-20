@@ -32,6 +32,16 @@ public class BaseBallNumber {
         return count;
     }
 
+    public int countBall(BaseBallNumber guess) {
+        int count = 0;
+        for (int i = 0; i < rule.getGoalNumberLength(); i++) {
+            if (this.numbers.contains(guess.numbers.get(i)) && this.numbers.get(i) != guess.numbers.get(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     private void validateInput(String input) throws InvalidNumberException {
         validateSize(input);
         validateRange(input);
