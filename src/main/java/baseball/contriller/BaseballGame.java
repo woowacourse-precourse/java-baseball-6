@@ -6,21 +6,23 @@ import static baseball.view.OutputView.userInputMessage;
 
 import baseball.model.ComputerNumber;
 import baseball.model.UserNumber;
+import java.util.List;
 
 
 public class BaseballGame {
     private UserNumber userNumber;
-    private ComputerNumber computerNumber;
+    private List<Integer> computerNumber;
 
     /*public BaseballGame() {
         this.computerNumber = new ComputerNumber();
     }*/
 
     public void gameStart() {
-        this.computerNumber = new ComputerNumber();
+        this.computerNumber = ComputerNumber.makeComputerNumber();
         gameStartMessage();
         userInputMessage();
         this.userNumber = new UserNumber(userInput());
     }
 
+    public static
 }
