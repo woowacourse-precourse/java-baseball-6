@@ -1,18 +1,18 @@
 package baseball.model;
 
-public class GameNumber {
+public class GameContinueNumber {
 
     private static final String CONTINUE_NUMBER = "1";
     private static final String END_NUMBER = "2";
 
     private String gameNumber;
 
-    private GameNumber(String gameNumber) {
+    private GameContinueNumber(String gameNumber) {
         this.gameNumber = gameNumber;
     }
 
-    public static GameNumber createDefault() {
-        return new GameNumber(CONTINUE_NUMBER);
+    public static GameContinueNumber createDefault() {
+        return new GameContinueNumber(CONTINUE_NUMBER);
     }
 
     public boolean canContinueGame() {

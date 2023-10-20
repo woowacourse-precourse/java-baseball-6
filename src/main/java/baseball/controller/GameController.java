@@ -1,6 +1,7 @@
 package baseball.controller;
 
-import baseball.model.GameNumber;
+import baseball.controller.dto.UserNumbersDto;
+import baseball.model.GameContinueNumber;
 import baseball.model.GuessResult;
 import baseball.model.Opponent;
 import baseball.model.UserNumbers;
@@ -10,11 +11,11 @@ import baseball.view.OutputView;
 public class GameController {
 
     private InputView inputView;
-    private GameNumber gameNumber;
+    private GameContinueNumber gameNumber;
 
     public GameController(final InputView inputView) {
         this.inputView = inputView;
-        this.gameNumber = GameNumber.createDefault();
+        this.gameNumber = GameContinueNumber.createDefault();
     }
 
     public void startGameUntilUserWant() {
