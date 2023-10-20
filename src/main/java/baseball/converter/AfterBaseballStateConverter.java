@@ -1,20 +1,18 @@
 package baseball.converter;
 
-import baseball.constant.BaseballStrings;
+import static baseball.constant.BaseballStrings.ENDGAME_INPUT;
+import static baseball.constant.BaseballStrings.RESTART_INPUT;
+
 import baseball.state.AfterBaseballState;
 
 public class AfterBaseballStateConverter {
-    private static boolean isValidAfterBaseballStateString(String s) {
-        // TODO: 아랫녀석과 어떻게 합쳐야하는지 생각해보기
-        return true;
-    }
 
     public static AfterBaseballState stringToAfterBaseballState(String s) throws IllegalArgumentException {
-        if (s.equals(BaseballStrings.RESTART_INPUT.toString())) {
-            return AfterBaseballState.RESTART_GAME;
+        if (s.equals(ENDGAME_INPUT.toString())) {
+            return AfterBaseballState.IS_END;
         }
-        if (s.equals(BaseballStrings.ENDGAME_INPUT.toString())) {
-            return AfterBaseballState.END_GAME;
+        if (s.equals(RESTART_INPUT.toString())) {
+            return AfterBaseballState.IS_RESTART;
         }
         throw new IllegalArgumentException();
     }

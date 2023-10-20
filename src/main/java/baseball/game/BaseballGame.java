@@ -8,7 +8,6 @@ import static baseball.constant.BaseballStrings.STRIKE_ALL_MESSAGE;
 import static baseball.converter.AfterBaseballStateConverter.stringToAfterBaseballState;
 import static baseball.converter.BaseballStateConverter.stringToBaseballState;
 
-import baseball.state.AfterBaseballState;
 import baseball.state.BaseballState;
 import baseball.util.IoHelper;
 import baseball.util.RandomGenerator;
@@ -41,7 +40,7 @@ public class BaseballGame implements Game {
         final var input = IoHelper.promptln(INPUT_RESTART_MESSAGE);
         final var afterState = stringToAfterBaseballState(input);
 
-        if (afterState == AfterBaseballState.END_GAME) {
+        if (afterState.isEnd()) {
             GameManager.notifyEndGameManager();
         }
     }
