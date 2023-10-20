@@ -19,12 +19,13 @@ public class Game {
         this.computer=new Numbers(toString(computer));
     }
 
-    public void inputUserNumbers(String input){
-        this.user=new Numbers(input);
+    public int[] inputAndCompare(String input){
+        inputUserNumbers(input);
+        return compare();
     }
 
-    public int[] play(){
-        return compare();
+    private void inputUserNumbers(String input){
+        this.user=new Numbers(input);
     }
 
     private int[] compare(){

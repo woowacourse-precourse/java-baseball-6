@@ -92,10 +92,9 @@ public class GameServiceTest {
     void game_통합_과정(String input){
         //given
         Game game=new Game();
-        game.inputUserNumbers(input);
 
         //when
-        int [] gameResult=game.play();
+        int [] gameResult=game.inputAndCompare(input);
 
         //then
         for(int result :gameResult){
