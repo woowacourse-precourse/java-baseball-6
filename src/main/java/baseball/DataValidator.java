@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class DataValidator {
-    public void playerValueValidation(ArrayList<Integer> playerValue) { // 플레이어 입력값 검증
+    public void playerAnswerValidation(ArrayList<Integer> playerValue) { // 플레이어 입력값 검증
         if(playerValue.size()!=3||playerValue.contains(0)||duplicationCheck(playerValue)==false) {
             throw new IllegalArgumentException();
         }
@@ -20,5 +20,10 @@ public class DataValidator {
             return false;
 
         return true;
+    }
+
+    public void continueDecisionValidate(int continueDecision) {
+        if(continueDecision!=1||continueDecision!=2)
+            throw new IllegalArgumentException();
     }
 }
