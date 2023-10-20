@@ -13,7 +13,7 @@ public class BaseballGameService {
         baseball = new Baseball();
         guessNumber();
 
-        if (checkRestartGame()) {
+        if (isRestartGame()) {
             reStartGame();
         }
     }
@@ -22,7 +22,7 @@ public class BaseballGameService {
         startGame();
     }
 
-    private boolean checkRestartGame() {
+    private boolean isRestartGame() {
         OutputView.printEndGame();
         OutputView.printRestartGame();
         String number = requireRestartNumber();
