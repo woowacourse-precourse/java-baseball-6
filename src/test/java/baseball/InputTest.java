@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 public class InputTest {
@@ -16,7 +17,11 @@ public class InputTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThat(inputView.inputGuideMsg()).isEqualTo(123);
+        assertThat(inputView.inputGuideMsg()).isEqualTo(new ArrayList<>(){{
+            add(1);
+            add(2);
+            add(3);
+        }});
         assertThrows(IllegalArgumentException.class, () -> inputView.inputGuideMsg());
     }
 }
