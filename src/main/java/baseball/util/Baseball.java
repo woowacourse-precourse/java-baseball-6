@@ -15,7 +15,7 @@ public class Baseball {
      */
     private final List<Integer> user;
     private int bool = 0;
-    private int strike = 3;
+    private int strike = 0;
 
     /**
      * 게임에 필요한 정보를 입력받는다.
@@ -31,11 +31,20 @@ public class Baseball {
     /**
      * 게임을 진행한다.
      *
-     * @return
+     * @return 정답: true, 오답: false
      */
     public boolean play() {
+        for (int i = 0; i < 3; i++) {
+            int search = computer.indexOf(user.get(i));
+            if (search == i) {
+                strike++;
+            } else if (search != -1) {
+                bool++;
+            }
+        }
+
         commentPrint(bool, strike);
-        return strike == 3 ? true : false;
+        return strike == 3;
     }
 
     /**
