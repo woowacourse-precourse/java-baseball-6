@@ -1,5 +1,9 @@
 package baseball.view;
 
+import static baseball.common.Constants.BALL;
+import static baseball.common.Constants.NOTHING;
+import static baseball.common.Constants.STRIKE;
+
 import baseball.domain.Result;
 
 public class OutputView {
@@ -13,7 +17,7 @@ public class OutputView {
         addStrikeResult(result, sb);
 
         if (sb.length() == 0) {
-            sb.append("낫싱");
+            sb.append(NOTHING);
         }
 
         printInfo(sb.append('\n').toString());
@@ -23,7 +27,7 @@ public class OutputView {
     private static void addBallResult(Result result, StringBuilder sb) {
         int ballCount = result.getBallCount();
         if (ballCount != 0) {
-            sb.append(ballCount).append("볼");
+            sb.append(ballCount).append(BALL);
         }
     }
 
@@ -34,7 +38,7 @@ public class OutputView {
             sb.append(" ");
         }
         if (strikeCount != 0) {
-            sb.append(strikeCount).append("스트라이크");
+            sb.append(strikeCount).append(STRIKE);
         }
     }
 }

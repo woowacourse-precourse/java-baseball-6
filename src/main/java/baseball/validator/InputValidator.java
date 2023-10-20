@@ -1,5 +1,9 @@
 package baseball.validator;
 
+import static baseball.common.Constants.DIGIT_COUNT;
+import static baseball.common.Constants.MAXIMUM_INPUT_NUMBER;
+import static baseball.common.Constants.MINIMUM_INPUT_NUMBER;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +17,7 @@ public class InputValidator {
     }
 
     private static void checkRange(int intUserInput) {
-        if (intUserInput < 100 || intUserInput >= 999) {
+        if (intUserInput < MINIMUM_INPUT_NUMBER || intUserInput >= MAXIMUM_INPUT_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
@@ -24,7 +28,7 @@ public class InputValidator {
         int ones = intUserInput % 10;
 
         Set<Integer> userInputDigits = new HashSet<>(Arrays.asList(hundreds, tens, ones));
-        if (userInputDigits.contains(0) || userInputDigits.size() != 3) {
+        if (userInputDigits.contains(0) || userInputDigits.size() != DIGIT_COUNT) {
             throw new IllegalArgumentException();
         }
     }

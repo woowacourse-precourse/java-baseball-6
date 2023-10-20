@@ -1,5 +1,6 @@
 package baseball.service;
 
+import static baseball.common.Constants.DIGIT_COUNT;
 import static baseball.validator.InputValidator.validateGuess;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -21,7 +22,7 @@ public class BaseballService {
         List<Integer> guessDigits = guess.getDigits();
         List<Integer> answerDigits = answer.getDigits();
 
-        for (int index = 0; index < 3; index++) {
+        for (int index = 0; index < DIGIT_COUNT; index++) {
             if (isStrike(guessDigits, answerDigits, index)) {
                 strikeCount++;
             }
