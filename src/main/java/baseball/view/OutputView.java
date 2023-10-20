@@ -8,7 +8,7 @@ public class OutputView {
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
     private static final String EMPTY = " ";
-    private static final String CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String CLEAR_MESSAGE = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static void start() {
         System.out.println(START_MESSAGE);
@@ -22,6 +22,9 @@ public class OutputView {
         if (gameResult.isNothing()) {
             return NOTHING;
         }
+        if (gameResult.isClear()) {
+            return CLEAR_MESSAGE;
+        }
         if (gameResult.isStrikeOnly()) {
             return gameResult.strike() + STRIKE;
         }
@@ -29,9 +32,5 @@ public class OutputView {
             return gameResult.ball() + BALL;
         }
         return gameResult.ball() + BALL + EMPTY + gameResult.strike() + STRIKE;
-    }
-
-    public static void clear() {
-        System.out.println(CLEAR_MESSAGE);
     }
 }
