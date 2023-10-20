@@ -1,7 +1,8 @@
 package client;
 
 import baseball.Input;
-import constants.StringConstants;
+import baseball.Output;
+import constants.MessageConstants;
 import game.Computer;
 
 public class Player {
@@ -12,8 +13,10 @@ public class Player {
     }
 
     public void start() {
-        play();
-        playAgain();
+        do {
+            play();
+            Output.printMessage(MessageConstants.GAME_FINISH_MESSAGE);
+        } while (playAgain());
     }
 
     private void reset() {
@@ -28,22 +31,20 @@ public class Player {
     }
 
     private void pitchBall() {
-        Ball ball = new Ball(readBallInput());
+        Ball ball = readBallInput();
         computer.catchBall(ball);
     }
 
-    private void playAgain() {
-        String option = readOptionInput();
-        if (option.equals(StringConstants.CONTINUE)) {
-            start();
-        }
+    private boolean playAgain() {
+        Option option = readOptionInput();
+        return !option.isFinish();
     }
 
-    private String readBallInput() {
-        return Input.readNumbers();
+    private Ball readBallInput() {
+        return new Ball(Input.readNumbers());
     }
 
-    private String readOptionInput() {
-        return Input.readOption();
+    private Option readOptionInput() {
+        return Option.findByStatus(Input.readOption());
     }
 }
