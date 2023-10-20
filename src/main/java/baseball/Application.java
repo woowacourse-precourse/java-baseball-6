@@ -10,5 +10,8 @@ public class Application {
         String playerNumber = input.readNumber();
 
         Player player = new Player(playerNumber);
+
+        NumberGenerator numberGenerator = new NumberGenerator();
+        Computer computer = new Computer(numberGenerator.createComputerNumbers());
     }
 }
