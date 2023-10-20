@@ -18,12 +18,4 @@ public class GameManager {
         }
         return randNumbers;
     }
-
-    public boolean validateUserBaseballNumber(String userBaseballNumber) {
-        HashSet<Character> validateNumberList = new HashSet<>();
-        for (int i = 0; i < userBaseballNumber.length(); i++) {
-            validateNumberList.add(userBaseballNumber.charAt(i));
-        }
-        return validateNumberList.size() == 3;
-    }
 }
