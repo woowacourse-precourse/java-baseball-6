@@ -20,13 +20,21 @@ void speaker(String message) 입력받은 메세지 출력
 ```java
 void play() 종료를 입력받기 전까지 계속 게임을 진행하는 메서드
 void oneRound() play 메서드 내부에서 3스트라이크가 될 때까지 진행하는 하나의 라운드
+boolean restartOrStop() 하나의 라운드 종료 후 재시작 / 종료를 묻는 메서드
 ```
 
 ## AnswerMaker 클래스
 - 난수 생성 메서드
 ```java
-int makeNumbers(int min, int max) min, max 사이의 숫자 반환
-List<Integer> makeThreeDifferentNumberList(int min, int max) 범위 내의 서로 다른 세 숫자를 리스트로 반환
+int makeNumber(int min, int max) min, max 사이의 하나의 숫자 반환
+```
+- 리스트로 난수 생성 후 저장 메서드
+```java
+AnswerMaker(int min, int max) 생성자 호출 시 makeNumber를 사용해 난수 생성후 정답을 리스트로 만들어 저장
+```
+- 저장된 정답을 호출하는 메서드
+```java
+List<Integer> getAnswer()
 ```
 
 ## Validation 클래스
@@ -45,22 +53,23 @@ boolean sizeCheck(String input) 지정된 사이즈만큼 들어왔는지 판별
 ## Computer 클래스
 - strike, ball 스코어 측정 메서드
 ```java
-List<Integer> countScore(List<Integer> userNumbers) strike, ball의 개수를 세어 리스트로 반환
+List<Integer> countScore(List<Integer> answer, List<Integer> userNumbers) 정답과 유저의 답안을 비교해 strike, ball의 개수를 세어 리스트로 반환
 
-int judgeScore(int number, int index) 숫자와 위치가 맞다면 Strike, 포함만 했다면 ball, 둘 다 아니라면 nothing 반환
+int judgeScore(List<Integer> answer, int number, int index) 숫자와 위치를 비교해 BALL, STRIKE, NOTHING 셋중 하나 반환
 
-void setAnswer(List<Integer> answer) 생성된 답안을 computer에 저장하는 메서드
+//먼가... judgeScore를 위해 countScore에서부터 answer를 받아오는게 좀 그런가..
+
 ```
 
 ## UserInput 클래스
 - 유저의 String을 입력받는 메서드
-
 ```java
 String getUserInput() 미션의 요구사항대로 Console의 메서드 사용하여 String으로 입력받는 기능 
 ```
-- validation 후 List<Integer>로 변환하는 메서드
+- validation 후 원하는 타입으로 값을 변환하는 메서드
 ```java
 List<Integer> makeUserInputToThreeNumbers() 입력받은 String을 validation 진행 후 integer 리스트로 반환
+void validateContinueSign(String sign)() 재시작 / 종료 사인에 대한 validation 진행 메서드
 ```
 
 
