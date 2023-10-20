@@ -36,6 +36,10 @@ public class UserNumber {
     boolean isValidType = Pattern.matches(REGEX, input);
     System.out.println(CHECK_TYPE + isValidType);
 
+    if ("1".equals(input.trim()) || "2".equals(input.trim())) {
+      return; // Skip validation for game control commands
+    }
+    
     if (!(isValidLength && isValidType)) {
       throw new IllegalArgumentException();
     }

@@ -47,5 +47,12 @@ class GameTest {
   void returnstrikeandball() {
     assertEquals("2볼 1스트라이크", game.publicCalculateResult("123", "132"));
   }
+
+  @Test
+  void returnball() {
+    assertEquals("1볼", game.publicCalculateResult("123", "356"));
+  }
+
+
 }
 
