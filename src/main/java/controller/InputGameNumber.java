@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputGameNumber {
-    private int number = 3;
+    private final int number = 3;
     public List<Integer> inputNum(){
         String tmp = Console.readLine();
         List<Integer> userNum = new ArrayList<>();
