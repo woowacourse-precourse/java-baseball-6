@@ -83,7 +83,7 @@ public class Application {
         initStrikeAndBall();
 
         for(int i=0; i<number.length(); i++){
-            Integer curNumber = Integer.valueOf(number.charAt(i));
+            Integer curNumber = Integer.valueOf(number.charAt(i) - '0');
             Integer order =orderOfNumbers[curNumber];
             if(!order.equals(0) && order.equals(i+1))
                 strike++;
