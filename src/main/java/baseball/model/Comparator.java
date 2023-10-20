@@ -44,4 +44,8 @@ public class Comparator {
         }
         return false;
     }
+
+    public int getStrike() {
+        return strike;
+    }
 }
