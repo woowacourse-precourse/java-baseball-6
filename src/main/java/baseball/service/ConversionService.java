@@ -1,6 +1,8 @@
 package baseball.service;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ConversionService {
 
@@ -13,5 +15,11 @@ public class ConversionService {
             sb.append(number);
         }
         return sb.toString();
+    }
+
+    public static List<Integer> stringToListOfInteger(String number) {
+        return number.chars()
+                .mapToObj(Character::getNumericValue)
+                .collect(Collectors.toList());
     }
 }
