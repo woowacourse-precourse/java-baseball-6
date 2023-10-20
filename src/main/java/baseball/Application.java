@@ -2,6 +2,7 @@ package baseball;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 
@@ -17,6 +18,8 @@ public class Application {
             // 초기화
             init();
 
+            // 컴퓨터 수 생성
+            generateComputerNumbers();
         }
     }
 
@@ -30,5 +33,19 @@ public class Application {
         Arrays.fill(orderOfNumbers, 0);
         computerNumbers.clear();
         userNumbers = "";
+    }
+
+    public static void generateComputerNumbers(){
+        int orderCnt = 1;
+
+        while(computerNumbers.size() < 3){
+
+            int randomNumber = Randoms.pickNumberInRange(1,9);
+
+            if(!computerNumbers.contains(randomNumber)){
+                computerNumbers.add(randomNumber);
+                orderOfNumbers[randomNumber] = orderCnt++;
+            }
+        }
     }
 }
