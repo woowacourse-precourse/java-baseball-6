@@ -12,9 +12,9 @@ public class Application {
             selectComputer.randomlySelectComputerNum();//computer randomly select number
 
             System.out.println("숫자를 입력해주세요 : ");//input
-            char[] selectUser = readLine().toCharArray();//user select number
+            char[] selectUsers = readLine().toCharArray();//user select number
 
-            User user = new User(selectUser);//create Object
+            SelectUserNum user = new SelectUserNum(selectUsers);//create Object
         }
     }
 
