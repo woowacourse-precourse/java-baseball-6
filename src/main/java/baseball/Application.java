@@ -8,11 +8,15 @@ public class Application {
 
         PrintGuide printGuide = new PrintGuide();
         NumberMaker numberMaker = new NumberMaker();
+        InputManager inputManager = new InputManager();
 
         printGuide.printGameStart();
 
         List<Integer> randomNumbers = numberMaker.makeRandomNumbers();
         System.out.println(randomNumbers);
+
+        String guessNumbers = inputManager.getGuessNumbers();
+
 
 
     }
