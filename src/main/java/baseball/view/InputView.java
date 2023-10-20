@@ -12,6 +12,10 @@ public class InputView {
 		OutputView.printInputNumber();
 		return Console.readLine();
 	}
+	public String readRestart() {
+		OutputView.printRestart();
+		return Console.readLine();
+	}
 
 
 }
