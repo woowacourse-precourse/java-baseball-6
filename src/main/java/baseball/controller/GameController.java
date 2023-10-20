@@ -39,7 +39,7 @@ public class GameController {
                 EndView.end(PLAY_NUMBER_DIGIT);
                 AskView.askResume(RESTART, END);
                 String resumeInput = Console.readLine();
-                ResumeValidator.assertResumeInput(resumeInput, RESTART, END);
+                assertResumeValue(resumeInput);
                 int resumeNumber = Integer.parseInt(resumeInput);
                 if (resumeNumber == RESTART) {
                     computerNumber = NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
@@ -50,8 +50,12 @@ public class GameController {
             }
         }
     }
-    
+
     private static void assertNumberValue(final String inputNumber) {
         NumberValidator.assertInputNumberWithLength(inputNumber, PLAY_NUMBER_DIGIT);
+    }
+
+    private static void assertResumeValue(final String resume) {
+        ResumeValidator.assertResumeInput(resume, RESTART, END);
     }
 }
