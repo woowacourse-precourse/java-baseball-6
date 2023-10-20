@@ -7,11 +7,11 @@ import java.util.stream.Stream;
 
 public final class ComputerGenerator {
 
-    public static final int COMPUTER_NUMBER_SIZE = 3;
+    private static final int COMPUTER_NUMBER_SIZE = 3;
 
-    public static final int MIN_NUMBER = 1;
+    private static final int MIN_NUMBER = 1;
 
-    public static final int MAX_NUMBER = 9;
+    private static final int MAX_NUMBER = 9;
 
     public static Computer generate() {
         return new Computer(generateNumbers());

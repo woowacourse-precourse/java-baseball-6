@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Balls {
 
-    public static final int BALL_NUMBERS_SIZE = 3;
+    private static final int BALL_NUMBERS_SIZE = 3;
 
     private final List<Ball> balls;
 

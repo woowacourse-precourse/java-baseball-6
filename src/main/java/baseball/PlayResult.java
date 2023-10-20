@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PlayResult {
 
-    public static final int RESULT_SIZE = 3;
+    private static final int RESULT_SIZE = 3;
 
     private final EnumMap<CompareResult, Long> countByResult;
 
