@@ -26,7 +26,7 @@ public class TripleBalls {
     }
 
     public boolean hasThreeStrikes(TripleBalls registeredComputer) {
-        return compareTripleBalls(registeredComputer).equals(Constants.THREE_STRIKE_MESSAGE);
+        return Util.hasSameInput(compareTripleBalls(registeredComputer), Constants.THREE_STRIKE_MESSAGE);
     }
 
     private long getResult(GameResult resultType, Ball otherOneBall) {
