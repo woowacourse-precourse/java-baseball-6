@@ -2,11 +2,10 @@ package baseball.domain;
 
 public record ReplayCommand(int number) {
     public ReplayCommand {
-        validate();
-
+        validate(number);
     }
 
-    private void validate() {
+    private void validate(int number) {
         if (number != 1 && number != 2) {
             throw new IllegalArgumentException();
         }
