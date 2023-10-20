@@ -22,15 +22,15 @@ public class RefereeTest {
     }
 
     @Test
-    @DisplayName("볼판정 테스트")
+    @DisplayName("판정 테스트")
     public void ballJudgeTest() {
         user = new Numbers(List.of(1,2,3));
-        computer = new Numbers(List.of(3,1,2));
+        computer = new Numbers(List.of(1,3,4));
         referee.judge(user, computer);
         Map<String,Integer> judgement = referee.getJudgement();
 
-        assertThat(judgement.get("ball")).isEqualTo(3);
-        assertThat(judgement.get("strike")).isEqualTo(0);
+        assertThat(judgement.get("ball")).isEqualTo(1);
+        assertThat(judgement.get("strike")).isEqualTo(1);
     }
 
     @Test
