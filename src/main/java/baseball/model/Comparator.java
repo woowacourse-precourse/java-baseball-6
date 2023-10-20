@@ -5,6 +5,7 @@ import java.util.List;
 public class Comparator {
     private static final int START_INDEX = 0;
     private static final int END_INDEX = 2;
+    private static final int GAME_FINISH_COUNT = 3;
     private int strike;
     private int ball;
     private Player player;
@@ -35,5 +36,12 @@ public class Comparator {
         if (computer.getNumbers().contains(playerNumber)) {
             ball++;
         }
+    }
+
+    public boolean isFinishGame() {
+        if (strike == GAME_FINISH_COUNT) {
+            return true;
+        }
+        return false;
     }
 }
