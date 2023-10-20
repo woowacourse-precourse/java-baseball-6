@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.dto.GameResult;
+
 public class OutputView {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String STRIKE = "스트라이크";
@@ -8,6 +10,10 @@ public class OutputView {
 
     public static void start() {
         System.out.println(START_MESSAGE);
+    }
+
+    public static void result(GameResult gameResult) {
+
     }
 
     public static void clear() {
