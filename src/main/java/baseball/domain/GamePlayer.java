@@ -5,8 +5,9 @@ import baseball.validator.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.domain.Const.FIXED_THREE_CIPHERS;
+
 public class GamePlayer {
-    public static final int FIXED_THREE_CIPHERS = 3;
     private final Validator validator = new Validator();
     private final List<Integer> threeNumbers = new ArrayList<>();
 
