@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BaseBallGame {
     private ArrayList<Integer> answerNum = new ArrayList<>();
@@ -40,13 +41,20 @@ public class BaseBallGame {
         if(strikeNum != 0)
             msg += strikeNum + "스트라이크";
         if(strikeNum == 3)
-            state = GameState.END;
+            state = GameState.CORRECT;
 
         return msg;
     }
 
     public void exitGame(){
-
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if(Objects.equals(input, "1")){
+            state = GameState.PLAYING;
+        }else if(Objects.equals(input, "2")){
+            state = GameState.END;
+        }
     }
 
     private void generateNum(){
