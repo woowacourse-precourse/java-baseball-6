@@ -16,6 +16,7 @@ public class Application {
     }
 
     private static void gameStart() {
+
         makeComputerNum();
         playingGame();
 
@@ -46,8 +47,8 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
 
-            if (userInput.length() > BASEBALL_NUM_SIZE)
-                throw new IllegalArgumentException("3자리 이상 입력 오류");
+            if (userInput.length() != BASEBALL_NUM_SIZE)
+                throw new IllegalArgumentException("입력 자릿 수 오류");
 
             // 콜 카운트를 checkBallCount 메소드를 통하여 산출해 낸 다음 PrintBallCount를 통하여 적절한 String 으로 변환한다.
             gameString = printBallCount(checkBallCount(userInput));
@@ -62,6 +63,7 @@ public class Application {
         List<Integer> listBS = new ArrayList<>();
         int totalCount = 0;
         int strikeCount = 0;
+        int ballCount = 0;
 
         for (int i = 0; i < BASEBALL_NUM_SIZE; i++) {
             if (userInput.contains(computerNum.get(i).toString())) {
@@ -71,7 +73,8 @@ public class Application {
                 strikeCount++;
             }
         }
-        listBS.add(totalCount - strikeCount);
+        ballCount = totalCount - strikeCount;
+        listBS.add(ballCount);
         listBS.add(strikeCount);
         return listBS;
     }
