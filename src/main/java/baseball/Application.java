@@ -1,8 +1,10 @@
 package baseball;
 
+import cotroller.GameController;
+
 public class Application {
     public static void main(String[] args) {
-        BaseballGame game = new BaseballGame();
+        GameController game = new GameController();
         game.run();
     }
 }
