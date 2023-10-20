@@ -24,18 +24,29 @@ public class BaseBallGame {
 
         while(true) {
             computerNumbers = getRandomNumber();
-//            playerNumbers = getPlayerNumber();
+            playerNumbers = getPlayerNumber();
         }
     }
 
-//    private List<Integer> getPlayerNumber() {
-//        printPlayerInputMessage();
-//        return inputPlayerNumber();
-//    }
+    private List<Integer> getPlayerNumber() {
+        printPlayerInputMessage();
+        return inputPlayerNumber();
+    }
 
-//    private List<Integer> inputPlayerNumber() {
-//        String input = Console.readLine();
-//    }
+    private List<Integer> inputPlayerNumber() {
+        String playerInput = Console.readLine();
+        List<Integer> playerNumbers = parseToNumberList(playerInput);
+
+        validateInput(playerNumbers);
+
+        return playerNumbers;
+    }
+
+    private void validateInput(List<Integer> input) {
+        if(!isUniqueDigits(input) || !isValidLength(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
 
     private List<Integer> parseToNumberList(String convertValue) {
         if(!isNumeric(convertValue)) {
