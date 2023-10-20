@@ -54,4 +54,25 @@ public class FunctionTest {
 
         assertEquals(List.of(6, 0, 8), userInputList2);
     }
+
+    @Test
+    void 사용자의_입력과_정답을_비교하여_결과를_반환한다() {
+        List<Integer> answerList = List.of(4, 0, 9);
+
+        List<Integer> userInputList1 = List.of(1, 2, 3);
+        GameResult gameResult1 = Application.playGame(answerList, userInputList1);
+        assertEquals(new GameResult(0, 0), gameResult1);
+
+        List<Integer> userInputList2 = List.of(6, 0, 8);
+        GameResult gameResult2 = Application.playGame(answerList, userInputList2);
+        assertEquals(new GameResult(1, 0), gameResult2);
+
+        List<Integer> userInputList3 = List.of(0, 4, 9);
+        GameResult gameResult3 = Application.playGame(answerList, userInputList3);
+        assertEquals(new GameResult(1, 2), gameResult3);
+
+        List<Integer> userInputList4 = List.of(4, 0, 9);
+        GameResult gameResult4 = Application.playGame(answerList, userInputList3);
+        assertEquals(new GameResult(3, 0), gameResult3);
+    }
 }
