@@ -10,6 +10,10 @@ public class Judgement {
         ball = player.countSameNumber(computer) - strike;
     }
 
+    public boolean isAllStrike() {
+        return strike == 3;
+    }
+
     public int getBall() {
         return ball;
     }

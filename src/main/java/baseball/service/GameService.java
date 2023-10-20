@@ -17,6 +17,10 @@ public class GameService {
         computer = new Computer(numberGenerator.createComputerNumbers());
     }
 
+    public boolean isGameOver() {
+        return judgement.isAllStrike();
+    }
+
     public void makePlayer(String inputNumber) {
         player = new Player(inputNumber);
     }

@@ -14,10 +14,12 @@ public class GameController {
         output.showStartMessage();
         gameService.init();
 
-        output.showInputMessage();
-        gameService.makePlayer(input.readNumber());
+        while (!gameService.isGameOver()) {
+            output.showInputMessage();
+            gameService.makePlayer(input.readNumber());
 
-        gameService.judge();
-        output.showGameResult(gameService.getJudgement());
+            gameService.judge();
+            output.showGameResult(gameService.getJudgement());
+        }
     }
 }
