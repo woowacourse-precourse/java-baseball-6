@@ -7,17 +7,14 @@ import java.util.Map;
 
 public class BallCounter {
 
-    private static final Map<PitchResult, Integer> ballCounter = new HashMap<>() {{
-        put(BALL, 0);
-        put(STRIKE, 0);
-    }};
+    private static final Map<PitchResult, Integer> ballCounter = new HashMap<>();
 
     public static void countBall() {
-        ballCounter.replace(BALL, ballCounter.get(BALL) + 1);
+        ballCounter.put(BALL, ballCounter.getOrDefault(BALL, 0) + 1);
     }
 
     public static void countStrike() {
-        ballCounter.replace(STRIKE, ballCounter.get(STRIKE) + 1);
+        ballCounter.put(STRIKE, ballCounter.getOrDefault(STRIKE, 0) + 1);
     }
 
     public static int getCountOfBall() {
