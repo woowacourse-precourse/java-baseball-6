@@ -17,6 +17,17 @@ public class GameStateDto {
         this.strike=this.strike+1;
     }
 
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public boolean isRestart() {
+        return restart;
+    }
 
     public void addBall(){
         this.ball=this.ball+1;
