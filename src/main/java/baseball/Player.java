@@ -18,6 +18,7 @@ public class Player {
     }
 
     public void inputNums(){
+        numbers = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
@@ -37,7 +38,7 @@ public class Player {
                 }
                 this.numbers.add(digit);
             }
-        } catch (NumberFormatException e){  // 숫자가 아닌 이상한 값일 경값
+        } catch (NumberFormatException e){  // 숫자가 아닌 이상한 값일 경우
             throw new IllegalArgumentException("not number");
         }
     }
