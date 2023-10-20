@@ -17,6 +17,9 @@ public class BaseballService {
         // 같은 숫자가 있는지 비교
         matchedNumbers = matchNumbers(correctNumbers, inputNumbersList);
 
+        // 이전 결과 초기화
+        result = List.of(0, 0);
+
         // 같은 숫자가 있다면 위치 비교
         if (!matchedNumbers.isEmpty()) {
             result = matchPosition(matchedNumbers, correctNumbers, inputNumbersList);
