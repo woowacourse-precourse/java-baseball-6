@@ -30,6 +30,7 @@ public class Application {
             }
         } catch (IllegalArgumentException e) {
             System.err.println("잘못된 값 입력: " + e.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 
