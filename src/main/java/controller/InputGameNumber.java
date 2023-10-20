@@ -6,11 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputGameNumber {
-    private final int number = 3;
     public List<Integer> inputNum(){
         String tmp = Console.readLine();
         List<Integer> userNum = new ArrayList<>();
-        for(int i=0; i<number; i++){
+        for(int i=0; i<tmp.length(); i++){
             userNum.add(Character.getNumericValue(tmp.charAt(i)));
         }
         return userNum;
