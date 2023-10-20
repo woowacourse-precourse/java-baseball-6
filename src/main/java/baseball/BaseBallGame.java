@@ -36,13 +36,29 @@ public class BaseBallGame {
         }
     }
 
-//    private boolean compareNumber(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-//        if(isCorrect(computerNumbers, playerNumbers)) {
-//            return true;
-//        }
-//
-//        return false;
-//    }
+    private boolean compareNumber(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        int strikeCount = getStrikeCount(computerNumbers, playerNumbers);
+        int ballCount = getBallCount(computerNumbers, playerNumbers);
+
+        printHint(strikeCount, ballCount);
+
+        return strikeCount == RANDOM_NUMBER_LENGTH;
+    }
+
+    private void printHint(int strikeCount, int ballCount) {
+        StringBuilder sb = new StringBuilder();
+
+        if(ballCount > 0) {
+            sb.append(ballCount).append("볼");
+            sb.append(" ");
+        }
+
+        if(strikeCount > 0) {
+            sb.append(strikeCount).append("스트라이크");
+        }
+
+        System.out.println(sb);
+    }
 
     private int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int ballCount = 0;
