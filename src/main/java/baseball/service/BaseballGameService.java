@@ -15,9 +15,9 @@ public class BaseballGameService {
     }
 
 
-
     public String [] run(String userNumber){
         String result;
+
 
         result = baseballGame.compareTwoNumbers(userNumber,computerNumber);
 
@@ -25,6 +25,10 @@ public class BaseballGameService {
 
         return results;
     }
+
+
+
+
 
 
 

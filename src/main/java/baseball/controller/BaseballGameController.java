@@ -25,10 +25,8 @@ public class BaseballGameController {
 
         do{
             InputView.printInputNumberMessage();
-
             userNumber = InputView.readUserNumberInput();
-
-
+            validateUserNumber(userNumber);
             String [] results = baseballGameService.run(userNumber);
 
             if(!results[0].equals("0") && results[1].equals("0")){
@@ -64,5 +62,7 @@ public class BaseballGameController {
         }while(RestartFlag);
 
     }
-
+    public void validateUserNumber(String userNumber){
+        if(userNumber.length()!=3) throw new IllegalArgumentException();
+    }
 }
