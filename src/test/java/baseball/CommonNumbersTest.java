@@ -1,10 +1,9 @@
 package baseball;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class CommonNumbersTest {
 
@@ -27,14 +26,14 @@ public class CommonNumbersTest {
         for (String testCase : testCases) {
             Numbers num = new CommonNumbers(testCase);
             int e = expected[i];
-            assertEquals(e % 10, num.thirdNumber());
-            assertEquals(e % 100 / 10, num.secondNumber());
-            assertEquals(e / 100, num.firstNumber());
+            Assertions.assertEquals(e % 10, num.thirdNumber());
+            Assertions.assertEquals(e % 100 / 10, num.secondNumber());
+            Assertions.assertEquals(e / 100, num.firstNumber());
             List<Integer> l = num.allNumbers();
-            assertEquals(e % 10, l.get(2));
-            assertEquals(e % 100 / 10, l.get(1));
-            assertEquals(e / 100, l.get(0));
-            assertEquals(testCase, num.toString());
+            Assertions.assertEquals(e % 10, l.get(2));
+            Assertions.assertEquals(e % 100 / 10, l.get(1));
+            Assertions.assertEquals(e / 100, l.get(0));
+            Assertions.assertEquals(testCase, num.toString());
             i++;
         }
     }

@@ -1,9 +1,8 @@
 package baseball;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ValidatorTest {
     private Validator validator;
@@ -27,7 +26,7 @@ public class ValidatorTest {
 
     private void failTest(String[] testCases) {
         for (String testCase : testCases) {
-            assertThrows(IllegalArgumentException.class, () -> validator.validate(testCase));
+            Assertions.assertThrows(IllegalArgumentException.class, () -> validator.validate(testCase));
         }
     }
 
@@ -88,7 +87,7 @@ public class ValidatorTest {
         };
 
         for (String testCase : testCases) {
-            assertDoesNotThrow(() -> validator.validate(testCase));
+            Assertions.assertDoesNotThrow(() -> validator.validate(testCase));
         }
     }
 }
