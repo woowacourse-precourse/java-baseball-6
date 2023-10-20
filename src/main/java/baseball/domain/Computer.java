@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Computer {
     private static final int LENGTH_RANDOMNUMBERS = 3;
-    private List<Integer> randomNumbers;
+    private final List<Integer> randomNumbers;
 
     public Computer() {
         randomNumbers = new ArrayList<>();
