@@ -17,47 +17,47 @@ class OutputViewTest {
     private final PrintStream originalOut = System.out;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         System.setOut(new PrintStream(outContent));
         outputView = new OutputView();
     }
 
     @AfterEach
-    public void restoreStreams() {
+    void restoreStreams() {
         System.setOut(originalOut);
     }
 
     @Test
     @DisplayName("printStartGame() 메서드는 숫자 야구 게임을 시작한다는 문구 출력한다.")
-    public void testPrintStartGame() {
+    void testPrintStartGame() {
 
         // when
         outputView.printStartGame();
 
         // then
-        assertThat(outContent.toString()).isEqualTo("숫자 야구 게임을 시작합니다.\n");
+        assertThat(outContent.toString()).hasToString("숫자 야구 게임을 시작합니다.\n");
     }
 
     @Test
     @DisplayName("printInputNumber() 메서드는 숫자를 입력해주세요 문구 출력한다.")
-    public void testPrintInputNumber() {
+    void testPrintInputNumber() {
 
         // when
         outputView.printInputNumber();
 
         // then
-        assertThat(outContent.toString()).isEqualTo("숫자를 입력해주세요 : ");
+        assertThat(outContent.toString()).hasToString("숫자를 입력해주세요 : ");
     }
 
     @Test
     @DisplayName("1볼, 2스트라이크 시 '1볼 2스트라이크'를 출력한다")
-    public void testPrintGameProgress() {
+    void testPrintGameProgress() {
 
         // when
         outputView.printGameProgress(2, 1);
 
         // then
-        assertThat(outContent.toString()).isEqualTo("1볼 2스트라이크\n");
+        assertThat(outContent.toString()).hasToString("1볼 2스트라이크\n");
     }
 
     @Test
@@ -68,7 +68,7 @@ class OutputViewTest {
         outputView.printGameProgress(3, 0);
 
         // then
-        assertThat(outContent.toString()).isEqualTo("3스트라이크\n");
+        assertThat(outContent.toString()).hasToString("3스트라이크\n");
     }
 
     @Test
@@ -79,28 +79,28 @@ class OutputViewTest {
         outputView.printGameProgress(0, 0);
 
         // then
-        assertThat(outContent.toString()).isEqualTo("낫싱\n");
+        assertThat(outContent.toString()).hasToString("낫싱\n");
     }
 
     @Test
     @DisplayName("printDecideGame() 메서드는 3개의 숫자를 모두 맞히셨습니다! 게임 종료 문구 출력한다.")
-    public void testPrintDecideGame() {
+    void testPrintDecideGame() {
 
         // when
         outputView.printDecideGame();
 
         // then
-        assertThat(outContent.toString()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        assertThat(outContent.toString()).hasToString("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 
     @Test
     @DisplayName("printRestartGame() 메서드는 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요 문구 출력한다.")
-    public void testPrintRestartGame() {
+    void testPrintRestartGame() {
 
         // when
         outputView.printRestartGame();
 
         // then
-        assertThat(outContent.toString()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        assertThat(outContent.toString()).hasToString("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
     }
 }

@@ -31,6 +31,30 @@ class GameValidatorTest {
     }
 
     @Test
+    @DisplayName("입력값에 공백이 있을 경우 예외를 발생시킨다.")
+    void blankThrowTest() {
+        // given
+        String input = "1 3";
+
+        // then
+        assertThatThrownBy(() -> GameValidator.validateIsNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 숫자만 입력 가능합니다.");
+    }
+
+    @Test
+    @DisplayName("입력값에 특수문자가 있을 경우 예외를 발생시킨다.")
+    void specialLettersThrowTest() {
+        // given
+        String input = "!13";
+
+        // then
+        assertThatThrownBy(() -> GameValidator.validateIsNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 숫자만 입력 가능합니다.");
+    }
+
+    @Test
     @DisplayName("입력값의 길이가 3일 경우 예외를 발생시키지 않는다")
     void validatePassIsLengthThreeTest() {
         // given
