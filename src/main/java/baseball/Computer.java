@@ -20,4 +20,8 @@ public class Computer {
     public void getClear() {
         com.clear();
     }
+
+    public int isInList(int num) {
+        return com.indexOf(num);
+    }
 }
