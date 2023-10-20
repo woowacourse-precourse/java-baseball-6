@@ -47,6 +47,7 @@ public class Application {
 
         List<Integer> user = new ArrayList<>();
         String userThreeNumbers = Console.readLine();
+        validateUserThreeNumbers(userThreeNumbers);
         for(int i=0;i<userThreeNumbers.length();i++){
             user.add(userThreeNumbers.charAt(i)-'0');
         }
@@ -89,5 +90,23 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int input = Integer.parseInt(Console.readLine());
         return input == 1 ? true: false;
+    }
+
+    public static void validateUserThreeNumbers(String userThreeNumbers){
+        List<Integer> user = new ArrayList<>();
+
+        if(userThreeNumbers.length()!=3)//3개 미만, 또는 초과해서 입력된 경우에 대한 예외처리
+            throw new IllegalArgumentException("3개의 수를 입력하지 않았습니다.");
+
+        for(int i=0;i<userThreeNumbers.length();i++){
+            char char_num = userThreeNumbers.charAt(i);
+
+            if(user.contains(char_num-'0'))//중복 된 값에 대한 예외처리
+                throw new IllegalArgumentException("중복된 수를 입력하였습니다.");
+            if(char_num<'1' || char_num>'9'){//1~9가 아닌 값에 대한 예외처리
+                throw new IllegalArgumentException("1~9사이 수가 아닌 값을 입력하였습니다.");
+            }
+            user.add(char_num-'0');
+        }
     }
 }
