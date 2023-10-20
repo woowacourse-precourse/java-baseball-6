@@ -23,6 +23,16 @@ public class ComputerPlayer {
         return this.number;
     }
 
+    public int countStrike(String guess) {
+        int strikeCount = 0;
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if (guess.charAt(i) - '0' == this.number[i]) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
     private boolean alreadyPicked(int n) {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (this.number[i] == n) {
