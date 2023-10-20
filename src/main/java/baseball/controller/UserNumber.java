@@ -14,16 +14,16 @@ public class UserNumber {
         List<Integer> userInputNumbers = new ArrayList<>();
         String number = Console.readLine();
 
+        if (number.length()!= 3) {
+            throw new IllegalArgumentException();
+        }
+
         for (char c : number.toCharArray()) {
+            if (!Character.isDigit(c)){
+                throw new IllegalArgumentException();
+            }
             userInputNumbers.add(Character.getNumericValue(c));
         }
-
-        if (userInputNumbers.size()!=3) {
-            throw new IllegalArgumentException();
-
-        }
         return userInputNumbers;
-
         }
-
 }
