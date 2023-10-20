@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.Hint;
 import baseball.model.NumberList;
+import baseball.model.User;
 import baseball.utils.Convert;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -15,21 +16,26 @@ import java.util.Objects;
 public class GameController {
     public void startGame() {
         Computer computer = new Computer();
-        computer.setAnswer(createRandomTarget());
-        while (true) {
-            String usersGuessString = InputController.scanUsersGuess();
-            NumberList userAnswer = Convert.stringToNumberList(usersGuessString);
+        User user = new User();
 
-            Hint hint = calculateHint(computer.getAnswer(), userAnswer);
-            OutputView.printHintMessage(hint);
-            if (computer.getAnswer().equals(userAnswer)) {
+        createRandomAnswer(computer);
+        while (true) {
+            guessing(user);
+            OutputView.printHintMessage(calculateHint(computer.getAnswer(), user.getGuess()));
+            if (computer.getAnswer().equals(user.getGuess())) {
                 OutputView.printSuccessAndEndMessage();
                 break;
             }
         }
     }
 
-    public NumberList createRandomTarget() {
+    private void guessing(User user) {
+        String guessString = InputController.scanUsersGuess();
+        NumberList guess = Convert.stringToNumberList(guessString);
+        user.setGuess(guess);
+    }
+
+    public void createRandomAnswer(Computer computer) {
         List<Integer> answerList = new ArrayList<>();
         while (answerList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -37,7 +43,7 @@ public class GameController {
                 answerList.add(randomNumber);
             }
         }
-        return new NumberList(answerList);
+        computer.setAnswer(new NumberList(answerList));
     }
 
     private Hint calculateHint(NumberList answer, NumberList guess) {
