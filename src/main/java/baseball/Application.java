@@ -18,8 +18,8 @@ public class Application {
 
             // 사용자가 번호 맞추기 시작
             while(true) {
-                System.out.print("숫자를 입력해주세요 : ");
                 List<Integer> user = getUserNumbers();
+
 
                 int strike = getStrike(computer, user);
                 int ball = getBall(computer, user);
@@ -39,8 +39,7 @@ public class Application {
                 }
             }
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String restart = Console.readLine();
+            String restart = getUserInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. \n");
 
             if (restart.equals("2")){
                 Console.close();
@@ -75,7 +74,7 @@ public class Application {
     public static List<Integer> getUserNumbers() {
         List<Integer> numbers = new ArrayList<>();
 
-        String input = Console.readLine();
+        String input = getUserInput("숫자를 입력해주세요 : ");
         if (input.length() > 3){
             throw new IllegalArgumentException();
         }
@@ -123,5 +122,14 @@ public class Application {
             }
         }
         return res;
+    }
+
+    /**
+     * 사용자 입력 받기
+     * @return 문자열 입력값
+     */
+    public static String getUserInput(String message) {
+        System.out.print(message);
+        return Console.readLine();
     }
 }
