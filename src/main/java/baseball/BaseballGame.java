@@ -26,7 +26,6 @@ public class BaseballGame {
 		System.out.println(START_MESSAGE);
 		computer.setRandomNumber();
 		while (!quit) {
-			System.out.println(computer.getRandomNumber());
 			System.out.print(INPUT_MESSAGE);
 			player.setNumber();
 
