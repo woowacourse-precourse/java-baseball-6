@@ -12,7 +12,8 @@ public class Application {
     private static final int MAX_NUMBER = 9;
     private static final int NUMBER_SIZE = 3;
     private static final String INPUT_RESTART = "1";
-    private static final String INPUT_FORMAT = "[1-9]{3}";
+    private static final String INPUT_NUMBER_FORMAT = "[1-9]{3}";
+    private static final String INPUT_CHOICE_FORMAT = "[1|2]";
 
     public static void main(String[] args) {
 
@@ -35,6 +36,7 @@ public class Application {
                 isAnswer = compare(computer, user);
             }
             choiceOfUser = Console.readLine();
+            validateInputChoice(choiceOfUser);
         }
     }
 
@@ -47,7 +49,7 @@ public class Application {
     }
 
     private static void validateInputNumber(String input) {
-        if (!input.matches(INPUT_FORMAT)) {
+        if (!input.matches(INPUT_NUMBER_FORMAT)) {
             throw new IllegalArgumentException();
         }
         if (input.charAt(0) == input.charAt(1)) {
@@ -57,6 +59,12 @@ public class Application {
             throw new IllegalArgumentException();
         }
         if (input.charAt(2) == input.charAt(0)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateInputChoice(String choice) {
+        if (!choice.matches(INPUT_CHOICE_FORMAT)) {
             throw new IllegalArgumentException();
         }
     }
