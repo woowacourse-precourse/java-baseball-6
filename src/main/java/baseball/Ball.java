@@ -48,17 +48,4 @@ public class Ball {
     public int hashCode() {
         return Objects.hash(number, position);
     }
-
-//    private static final String NUMBER_FORMAT = "\\d+";
-//    private static final String NUMBER_FORMAT_EXCEPTION_MESSAGE = "올바른 숫자를 입력해주세요.";
-
-//    public void validateForm(String rawNumber) {
-//        if (!isNumber(rawNumber)) {
-//            throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION_MESSAGE);
-//        };
-//    }
-//
-//    private boolean isNumber(String rawNumber) {
-//        return rawNumber.matches(NUMBER_FORMAT);
-//    }
 }

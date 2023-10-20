@@ -80,4 +80,8 @@ public class Balls {
     private boolean contains(Ball playerBall) {
         return balls.contains(playerBall);
     }
+
+    public static Balls from(List<Ball> balls) {
+        return new Balls(balls);
+    }
 }

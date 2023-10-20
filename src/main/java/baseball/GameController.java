@@ -4,9 +4,16 @@ import java.util.List;
 
 public class GameController {
 
-    public void run() {
+    public void start() {
+        run();
+
+
+    }
+
+    private void run() {
+        OutputView.printStart();
         Balls answerBalls = generateAnswerBalls();
-        Balls playerBalls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
+        Balls playerBalls = InputView.scanBalls();
         int strikeCount = playerBalls.getStrikeCount(answerBalls);
         int ballCount = playerBalls.getBallCount(answerBalls);
     }
