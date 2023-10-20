@@ -18,4 +18,16 @@ public class Computer {
         }
         return randomNumbers;
     }
+    public int[] judge(int[] input){
+        int[] judgeResult = new int[2];
+        for(int user = 0; user < 3; user++){
+            for(int com = 0; com < 3; com++){
+                if(input[user] == randomNumbers[com]){
+                    if(user == com) judgeResult[1]++;
+                    else judgeResult[0]++;
+                }
+            }
+        }
+        return judgeResult;
+    }
 }
