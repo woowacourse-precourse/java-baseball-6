@@ -15,7 +15,12 @@ public class Converter {
         return integerList;
     }
     private static int convertToNumeric(String number){
-        return Integer.parseInt(number);
+
+        try{
+            return Integer.parseInt(number);
+        }catch (NumberFormatException e){
+            throw  new IllegalArgumentException();
+        }
     }
 
 }

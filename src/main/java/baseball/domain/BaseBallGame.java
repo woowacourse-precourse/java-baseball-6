@@ -9,8 +9,6 @@ import java.util.List;
 
 public class BaseBallGame {
 
-
-
     public void run() {
         OutputView.printStartMessage();
         boolean endSign = true;
@@ -22,7 +20,6 @@ public class BaseBallGame {
     }
     private void startNewGame() {
         List<Integer> computerNumbers = generateComputerNumber();
-        System.out.println(computerNumbers.toString());
         boolean continueSign = true;
         while(continueSign){
             List<String> inputString = InputView.readPlayerNumber();
@@ -44,6 +41,7 @@ public class BaseBallGame {
         return computer;
     }
     private boolean isContinue(Result result){
+
         return result.getStrikeCount() != 3;
     }
     private boolean isEnd(String sign){

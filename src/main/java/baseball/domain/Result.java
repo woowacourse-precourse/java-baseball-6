@@ -37,6 +37,7 @@ public class Result {
         return String.format(BALL_MESSAGE+STRIKE_MESSAGE,ballCount,strikeCount);
     }
     public int getStrikeCount(){
+
         return this.strikeCount;
     }
 
