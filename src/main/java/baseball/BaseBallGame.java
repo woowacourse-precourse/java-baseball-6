@@ -32,7 +32,7 @@ public class BaseBallGame {
         boolean isCorrect = false;
         while(!isCorrect) {
             playerNumbers = getPlayerNumber();
-//            isCorrect = compareNumber(computerNumbers, playerNumbers);
+            isCorrect = compareNumber(computerNumbers, playerNumbers);
         }
     }
 
@@ -84,10 +84,6 @@ public class BaseBallGame {
         }
 
         return strikeCount;
-    }
-
-    private boolean isCorrect(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        return computerNumbers.equals(playerNumbers);
     }
 
     private List<Integer> getPlayerNumber() {
