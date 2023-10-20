@@ -86,6 +86,10 @@ public class Application {
 
         // 같은 숫자가 입력되어 있는지 확인 후 같다면 에러를 던질 수 있도록 구현
         if(isSameCheck) sameNumCheck(userGameSelectNum);
+        else if(
+            !(userGameSelectNum.equals("1")
+            || userGameSelectNum.equals("2"))
+        ) throw new IllegalArgumentException();
 
         return userGameSelectNum;
     }
