@@ -23,12 +23,48 @@ public class Application {
     private static void startGame() {
         List<Integer> computerNum = createComputerNumber();
         String result = null;
+        int playerNum;
+
         do{
             System.out.print("숫자를 입력해주세요 : ");
-            String playerNum = Console.readLine();
-
+            try {
+                playerNum = isNonDigit(Console.readLine());
+                isThreeDigitNumber(Integer.toString(playerNum));
+                hasRepeatedDigitNumber(Integer.toString(playerNum));
+            }catch (IllegalArgumentException e){
+                return;
+            }
         }while (!result.equals("3스트라이크"));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    // 사용자가 입력한 값이 숫자인지 확인한다.
+    private static int isNonDigit(String playerStringNum){
+        int playerIntNum;
+        try {
+            playerIntNum = Integer.parseInt(playerStringNum);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력하신 값이 숫자가 아닙니다. 게임이 종료됩니다.");
+        }
+        return playerIntNum;
+    }
+
+    // 사용자가 입력한 값이 3자리 숫자인지 확인한다.
+    private static void isThreeDigitNumber(String playerNum){
+        if (playerNum.length() != 3){
+            throw new IllegalArgumentException("숫자가 3자리가 아닙니다. 게임이 종료됩니다.");
+        }
+    }
+
+    // 사용자가 입력한 값에서 2개 이상 중복되는 숫자가 있는 경우
+    private static void hasRepeatedDigitNumber(String playerNum){
+        List<Integer> player = new ArrayList<>();
+        for(int i = 0; i < COMPUTER_NUM_SIZE; i++){
+            if (player.contains(playerNum.indexOf(i))) {
+                throw new IllegalArgumentException("서로 다른 3자리의 수가 아닙니다. 게임이 종료됩니다.");
+            }
+            player.add(playerNum.indexOf(i));
+        }
     }
 
     private static List<Integer> createComputerNumber() {
