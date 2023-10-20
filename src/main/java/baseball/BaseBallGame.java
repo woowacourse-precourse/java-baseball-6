@@ -27,6 +27,9 @@ public class BaseBallGame implements Game{
         String select = Console.readLine();
         return;
     }
+    private String matchFormat(String value){
+        return String.format("%03d", Integer.parseInt(value));
+    }
     private String matchFormat(int value){
         return String.format("%03d", value);
     }
