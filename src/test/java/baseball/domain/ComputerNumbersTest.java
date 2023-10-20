@@ -21,7 +21,7 @@ class ComputerNumbersTest {
     @DisplayName("같은 숫자가 같은 자리에 있으면 스트라이크의 개수가 1 증가하고, 같은 숫자가 다른 자리에 있으면 볼의 개수가 1 증가한다.")
     @ParameterizedTest
     @MethodSource("parametersForTest")
-    void ㅇ(List<Integer> computerNumberList, List<Integer> playerNumberList, int countOfBall, int countOfStrike) {
+    void checkPlayerNumbers_Success(List<Integer> computerNumberList, List<Integer> playerNumberList, int countOfBall, int countOfStrike) {
         // given
         ComputerNumbers computerNumbers = new ComputerNumbers(computerNumberList);
 
