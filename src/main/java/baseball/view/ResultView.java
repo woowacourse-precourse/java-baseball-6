@@ -12,6 +12,9 @@ public class ResultView {
         if (isOnlyLeftNotZero(ball, strike)) {
             printBall(ball);
         }
+        if (isBothZero(ball, strike)){
+            printNothing();
+        }
     }
 
     private static boolean isBothNotZero(final int ball, final int strike) {
@@ -32,5 +35,13 @@ public class ResultView {
 
     private static void printBall(final int ball) {
         System.out.println(ball + "볼");
+    }
+
+    private static boolean isBothZero(final int ball, final int strike) {
+        return ball == 0 && strike == 0;
+    }
+
+    private static void printNothing() {
+        System.out.println("낫싱");
     }
 }
