@@ -58,4 +58,19 @@ public class Computer {
             }
         }
     }
+
+    public boolean isCorrect() {
+        if(this.strike == 3) {
+            resetScore();
+            return true;
+        } else {
+            resetScore();
+            return false;
+        }
+    }
+
+    public void resetScore() {
+        this.ball = 0;
+        this.strike = 0;
+    }
 }

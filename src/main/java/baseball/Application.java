@@ -17,17 +17,20 @@ public class Application {
         while(start) {
             GameView.gameStart();
             computerController.setNumbers();
-            // 문자열을 정수형 List로 변환하는 과정
-            userController.setNumbers(
-                    GameView.userInput()
-                            .chars()
-                            .map(num -> num - '0')
-                            .boxed()
-                            .collect(Collectors.toList())
-            );
 
-            GameView.gameResult(computerController.getBall(), computerController.getStrike());
+            while(computerController.isCorrect()) {
+                // 문자열을 정수형 List로 변환하는 과정
+                userController.setNumbers(
+                        GameView.userInput()
+                                .chars()
+                                .map(num -> num - '0')
+                                .boxed()
+                                .collect(Collectors.toList())
+                );
 
+                GameView.gameResult(computerController.getBall(), computerController.getStrike());
+            }
+            
             start = false;
         }
     }

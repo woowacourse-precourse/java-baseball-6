@@ -38,4 +38,7 @@ public class ComputerController {
         return computer.getStrike();
     }
 
+    public boolean isCorrect() {
+        return computer.isCorrect();
+    }
 }
