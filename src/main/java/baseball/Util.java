@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Util {
 
-    public List<Integer> getRandomNumber() {
+    public static List<Integer> getRandomNumber() {
 
         List<Integer> numbers = new ArrayList<>();
         while(numbers.size() < 3) {
@@ -19,7 +19,7 @@ public class Util {
         return numbers;
     }
 
-    public Score getScore(List<Integer> answerNumbers, List<Integer> userNumbers) {
+    public static Score getScore(List<Integer> answerNumbers, List<Integer> userNumbers) {
 
         Score score = new Score();
         int strike = 0;

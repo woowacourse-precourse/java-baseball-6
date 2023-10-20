@@ -8,14 +8,13 @@ public class Game {
 
     public void play() {
 
-        Util util = new Util();
-        List<Integer> answerNumbers = util.getRandomNumber();
+        List<Integer> answerNumbers = Util.getRandomNumber();
         System.out.println(answerNumbers.toString());
 
         while(true) {
             List<Integer> userNumbers = getUserNumbers();
 
-            Score score = util.getScore(answerNumbers, userNumbers);
+            Score score = Util.getScore(answerNumbers, userNumbers);
 
             printScore(score);
 
