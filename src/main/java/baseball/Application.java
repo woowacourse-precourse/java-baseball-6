@@ -48,6 +48,11 @@ public class Application {
         return numbersGenerate.createRandomNumList(); // 컴퓨터의 3개의 랜덤 숫자 리스트
     }
 
+    /**
+     * 3스트라이크가 되면 게임 진행을 위한 절차를 호출하는 메서드.
+     *
+     * @return
+     */
     private static boolean isNotProceedGame() {
         int inputInt = RESET_NUM;
 
