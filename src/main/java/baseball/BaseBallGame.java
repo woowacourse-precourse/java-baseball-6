@@ -14,6 +14,7 @@ public class BaseBallGame {
 
     public void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+        state = GameState.PLAYING;
 
         while (answerNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -34,7 +35,19 @@ public class BaseBallGame {
     }
 
     public String returnResult(){
+        String msg = "";
 
+        int ballNum = Calculater.getBall(answerNum, userNum);
+        int strikeNum = Calculater.getStrike(answerNum, userNum);
+
+        if(ballNum != 0)
+            msg += ballNum + "볼 ";
+        if(strikeNum != 0)
+            msg += strikeNum + "스트라이크";
+        if(strikeNum == 3)
+            state = GameState.END;
+
+        return msg;
     }
 
     public void exitGame(){
