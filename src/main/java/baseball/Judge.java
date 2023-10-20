@@ -43,7 +43,7 @@ public class Judge {
         if (isNothing()) {
             return JudgeStatus.NOTHING;
         }
-        return JudgeStatus.INCORRECT;
+        return JudgeStatus.PARTIAL_CORRECT;
     }
 
     private void addIfBall(int i) {

@@ -1,5 +1,5 @@
 package baseball;
 
 public enum JudgeStatus {
-    CORRECT, INCORRECT, NOTHING
+    CORRECT, PARTIAL_CORRECT, NOTHING
 }
