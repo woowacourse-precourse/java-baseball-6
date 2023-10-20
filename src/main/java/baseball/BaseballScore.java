@@ -6,7 +6,7 @@ public class BaseballScore {
 
 
 
-    public boolean isAllCorrect() {
+    public boolean isStrikeThree() {
         return strikeCount == 3;
     }
 
@@ -18,20 +18,12 @@ public class BaseballScore {
     public static boolean isBaseballScoreEqual(BaseballScore baseballScore1, BaseballScore baseballScore2) {
         return baseballScore1.ballCount == baseballScore2.ballCount && baseballScore1.strikeCount == baseballScore2.strikeCount;
     }
-    public void addBallCount() {
-        this.ballCount += 1;
+    public void addBallCount(int count) {
+        this.ballCount += count;
 
     }
-    public void addStrikeCount() {
-        this.strikeCount += 1;
-    }
-
-    @Override
-    public String toString() {
-        return "BaseballScore{" +
-                "ballCount=" + ballCount +
-                ", strikeCount=" + strikeCount +
-                '}';
+    public void addStrikeCount(int count) {
+        this.strikeCount += count;
     }
 
     public void printBaseballScore() {
