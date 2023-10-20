@@ -69,7 +69,7 @@ public class playGame {
     private boolean checkGameResult(String inputNumberString){
         int strike_cnt = cntStrike(inputNumberString);
         int total_cnt = cntTotal(inputNumberString);
-
+        printResult(strike_cnt, total_cnt);
         if(strike_cnt == 3){
             return true;
         }
@@ -77,4 +77,24 @@ public class playGame {
             return false;
         }
     }
+
+    private void printResult(int strike_cnt, int total_cnt){
+        int ball_cnt= total_cnt- strike_cnt;
+        if(total_cnt==0){
+            System.out.println("낫싱");
+        }
+        else{
+            if(ball_cnt!=0){
+                System.out.print(ball_cnt+"볼");
+            }
+            if(strike_cnt!=0){
+                System.out.print(strike_cnt+"스트라이크");
+            }
+            System.out.println();
+        }
+        if(strike_cnt==3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
 }
