@@ -22,7 +22,6 @@ public class Player {
             input /= 10;
         }
         Collections.reverse(inputs);
-        System.out.println(inputs);
         return inputs;
     }
 

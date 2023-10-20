@@ -5,11 +5,11 @@ import java.util.List;
 public class BaseballGame {
     /**
      * 컴퓨터 숫자와 사용자 입력 숫자를 비교한다.
-     *
-     * @param computers 컴퓨터 랜덤 숫자
-     * @param players   사용자 입력 숫자
+     * @param computers 컴퓨터가 정한 랜덤 숫자
+     * @param players  사용자가 입력한 숫자
+     * @return 정답인지 알기 위해 스트라이크값 반환
      */
-    public static void compare(List<Integer> computers, List<Integer> players) {
+    public static int compare(List<Integer> computers, List<Integer> players) {
         int strike = 0;
         int duplicateCount = 0;
         int ball;
@@ -26,6 +26,7 @@ public class BaseballGame {
 
         ball = duplicateCount - strike;
         printCompare(strike, ball);
+        return strike;
     }
 
     /**
@@ -46,4 +47,5 @@ public class BaseballGame {
         }
         System.out.println("");
     }
+
 }

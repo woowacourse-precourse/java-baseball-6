@@ -11,13 +11,13 @@ public class Computer {
      * @return 서로 다른 3개의 숫자를 list에 담아 반환
      */
     public static List<Integer> generateRandomDigits(){
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        List<Integer> computers = new ArrayList<>();
+        while (computers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!computers.contains(randomNumber)) {
+                computers.add(randomNumber);
             }
         }
-        return computer;
+        return computers;
     }
 }
