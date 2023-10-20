@@ -10,12 +10,19 @@ public class Application {
     public static void main(String[] args) {
         List<Integer> computerNumbers = randomNums();
 
-        List<Integer> userNumbers = inputNums();
-
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.println(computerNumbers);
-        System.out.println(userNumbers);
 
+        while (true) {
+            List<Integer> userNumbers = inputNums();
+            List<Integer> result = compareNumbers(computerNumbers, userNumbers);
+
+            if (result.get(0) == 3) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
     private static List<Integer> randomNums(){
@@ -51,7 +58,6 @@ public class Application {
                 } else {
                     numbers.add(number);
                 }
-
             }
         } catch (NumberFormatException e1) {
             throw new IllegalArgumentException("숫자가 아닌 문자를 입력했습니다.");
@@ -60,6 +66,24 @@ public class Application {
         }
 
         return numbers;
+    }
+
+    private static List<Integer> compareNumbers(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int computerNumber = computerNumbers.get(i);
+            int userNumber = userNumbers.get(i);
+
+            if (computerNumber == userNumber) {
+                strike++;
+            } else if (userNumbers.contains(computerNumber)) {
+                ball++;
+            }
+        }
+
+        return List.of(strike, ball);
     }
 
 }
