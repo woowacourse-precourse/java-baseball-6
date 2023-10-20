@@ -14,9 +14,14 @@ public class Player {
     public ArrayList<Integer> getPlayerAnswer() {
         String[] stringValue  = Console.readLine().split("");
         ArrayList<Integer> playerAnswer = new ArrayList<>();
-        for(String s : stringValue){
-            playerAnswer.add(Integer.parseInt(s));
+        try {
+            for(String s : stringValue){
+                playerAnswer.add(Integer.parseInt(s));
+            }
+        }catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
         }
+
         dataValidator.playerAnswerValidation(playerAnswer);
         return playerAnswer;
     }
