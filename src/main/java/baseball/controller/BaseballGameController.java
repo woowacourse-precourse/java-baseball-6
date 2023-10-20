@@ -44,6 +44,7 @@ public class BaseballGameController {
 
         if(results[1].equals("3")){
             OutputView.printAnswerMessage();
+            OutputView.printRestartGameMessage();
         }
 
 
