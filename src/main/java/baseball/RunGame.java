@@ -5,7 +5,6 @@ import view.InputView;
 import view.OutputView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RunGame {
     BaseballNumber baseballNumber = new BaseballNumber();

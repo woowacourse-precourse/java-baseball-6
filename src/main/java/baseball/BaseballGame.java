@@ -1,15 +1,8 @@
 package baseball;
 
-import model.BaseballNumber;
-import view.InputView;
 import view.OutputView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
+import java.util.*;
 import static model.BaseballData.*;
-import static view.OutputView.*;
 
 public class BaseballGame {
     static List<Integer> computerNumber;

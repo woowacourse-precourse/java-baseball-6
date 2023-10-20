@@ -2,9 +2,12 @@ package model;
 
 import java.util.*;
 import java.util.regex.Pattern;
+
+import static model.BaseballData.*;
+
 public class ExceptionModel {
     static final String IS_NUMBER = "[ERROR] 숫자를 입력하세요.";
-//    static final String NUMBER_VALID = "[ERROR] 1 ~ 9 사이의 숫자를 입력하세요.";
+    static final String NUMBER_VALID = "[ERROR] 1 ~ 9 사이의 숫자를 입력하세요.";
     static final String THREE_NUMBER = "[ERROR] 숫자를 3개 입력하세요.";
     static final String OTHER_NUMBER = "[ERROR] 서로 다른 숫자 3개를 입력하세요.";
     static final String ONE_NUMBER = "[ERROR] 숫자를 1개 입력하세요.";
@@ -39,17 +42,19 @@ public class ExceptionModel {
             if (!Pattern.matches(regex, number)) {
                 throw new IllegalArgumentException(IS_NUMBER);
             }
+            int num = Integer.parseInt(number);
+            checkNumberRange(num);
         }
     }
 
-//    /**
-//     * 1에서 9 사이의 숫자인지 확인
-//     */
-//    private void checkNumberRange(int input) {
-//        if (input < NumberData.MIN_NUMBER || input > NumberData.MAX_NUMBER) {
-//            throw new IllegalArgumentException(NUMBER_VALID);
-//        }
-//    }
+    /**
+     * 1에서 9 사이의 숫자인지 확인
+     */
+    private void checkNumberRange(int input) {
+        if (input < MIN_NUMBER || input > MAX_NUMBER) {
+            throw new IllegalArgumentException(NUMBER_VALID);
+        }
+    }
 
     /**
      * 숫자를 3개 입력했는지 확인
