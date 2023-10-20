@@ -19,4 +19,10 @@ public class InputValidation {
             throw new IllegalArgumentException("입력된 문자열은 자연수로만 이루어져야 합니다.");
         }
     }
+
+    public void isLengthAtLeastFour(String input) {
+        if (input.length() >= 4) {
+            throw new IllegalArgumentException("입력값은 3 이하여야 합니다.");
+        }
+    }
 }
