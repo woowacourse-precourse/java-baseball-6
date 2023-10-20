@@ -39,11 +39,9 @@ public class Utill {
      * @return
      */
     public static String inputNum() {
-        String result = readLine();
+        String result = String.valueOf(inputIntNum());
 
-        ValidException.isValidBasicNumException(result); // 숫자입력에 대한 기본적인 예외처리
         ValidException.isValidLength(result); // 입력 받는 문자열이 3이 아니면 예외처리.
-
 
         return result;
     }
