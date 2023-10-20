@@ -1,11 +1,8 @@
 package game;
 
 import baseball.Output;
-import camp.nextstep.edu.missionutils.Randoms;
 import constants.MessageConstants;
 import constants.NumberConstants;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Computer {
 
@@ -77,22 +74,7 @@ public class Computer {
     }
 
     private String getRandomNumbers() {
-        Set<Integer> set = new HashSet<>();
-
-        while (set.size() < NumberConstants.MAX_BALL_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(NumberConstants.MIN_NUMBER, NumberConstants.MAX_NUMBER);
-            set.add(randomNumber);
-        }
-
-        return setToString(set);
-    }
-
-    private String setToString(Set<Integer> set) {
-        StringBuilder sb = new StringBuilder();
-        for (int num : set) {
-            sb.append(num);
-        }
-        return sb.toString();
+        return RandomNumbersGenerator.getRandomNumbers();
     }
 
     public boolean isFinish() {

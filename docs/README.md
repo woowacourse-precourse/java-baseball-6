@@ -126,8 +126,8 @@
 - [ ] 모든 원시값과 문자열 Wrapping 하기
     - [ ] Computer 에서 ball, strike 고민해보기
     - [ ] Player 에서 인풋 부분
-- [ ] 일급 콜렉션 사용하기
-    - [ ] Computer.getRandomNumbers() 추출
+- [X] 일급 콜렉션 사용하기
+    - [X] Computer.getRandomNumbers() 추출
 - [ ] 한 줄에 점 하나만 찍기
 - [ ] 줄여쓰지 않기
 - [ ] 엔티티 작게 유지하기
