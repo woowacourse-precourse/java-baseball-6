@@ -15,10 +15,12 @@ public class NumberValidator {
     }
 
     public static void validateNumberRange(List<Integer> numberList) {
-        numberList.stream()
-                .filter(NumberValidator::isInvalidRange)
-                .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 범위가 잘못되었습니다."));
+        boolean isInvalid = numberList.stream()
+                .anyMatch(NumberValidator::isInvalidRange);
+
+        if (isInvalid) {
+            throw new IllegalArgumentException("[ERROR] 범위가 잘못되었습니다.");
+        }
     }
 
     private static boolean isInvalidRange(Integer number) {
