@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.model.Computer;
+import baseball.model.Number;
 import baseball.model.User;
 import baseball.util.Baseball;
 import camp.nextstep.edu.missionutils.Console;
@@ -8,15 +9,17 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
 
     public static void main(String[] args) {
-        Computer computer = new Computer(3);
-        System.out.println(computer.getRandomNumbers());
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean correct = false; // 정답 여부
+        boolean reGame = true;
+        while (reGame) {
+            Computer computer = new Computer(3);
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            boolean correct = false; // 정답 여부
 
-        while (!correct) { // 정답을 맞출 때 까지 반복한다.
-            correct = guessTheAnswer(computer);
+            while (!correct) { // 정답을 맞출 때 까지 반복한다.
+                correct = guessTheAnswer(computer);
+            }
+            reGame = reGame();
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     /**
@@ -41,5 +44,15 @@ public class Application {
         boolean result = baseball.play(); // 경기를 진행한다.
 
         return result ? true : false;
+    }
+
+    private static boolean reGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Number number = new Number(Console.readLine());
+        if (number.getNumber() < 0 || number.getNumber() > 2) {
+            throw new IllegalArgumentException();
+        }
+
+        return number.getNumber() == 1;
     }
 }
