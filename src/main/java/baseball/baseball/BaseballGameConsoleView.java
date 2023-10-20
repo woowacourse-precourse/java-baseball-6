@@ -15,6 +15,22 @@ public class BaseballGameConsoleView implements TurnBasedGameView {
     private static final String STRIKE_UNIT = "스트라이크";
     private static final String NOTHING = "낫싱";
 
+    private static void printNumStrike(int numStrike) {
+        System.out.printf("%d%s", numStrike, STRIKE_UNIT);
+    }
+
+    private static void printNumBall(int numBall) {
+        System.out.printf("%d%s ", numBall, BALL_UNIT);
+    }
+
+    private static void printNewLine() {
+        System.out.println();
+    }
+
+    private static void printNothing() {
+        System.out.print(NOTHING);
+    }
+
     @Override
     public void printStart() {
         System.out.println(START_MESSAGE);
@@ -39,18 +55,19 @@ public class BaseballGameConsoleView implements TurnBasedGameView {
         int numStrike = baseballGameTurnResult.getNumStrike();
 
         if (numBall == 0 && numStrike == 0) {
-            System.out.println(NOTHING);
+            printNothing();
+            printNewLine();
             return;
         }
 
         if (numBall != 0) {
-            System.out.printf("%d%s ", numBall, BALL_UNIT);
+            printNumBall(numBall);
         }
 
         if (numStrike != 0) {
-            System.out.printf("%d%s", numStrike, STRIKE_UNIT);
+            printNumStrike(numStrike);
         }
 
-        System.out.println();
+        printNewLine();
     }
 }
