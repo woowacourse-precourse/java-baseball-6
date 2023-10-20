@@ -14,13 +14,18 @@ public class BaseballController {
 
     public void run(){
         outputView.printStartBaseBallGameMessage();
-        CheckBallAndStrike checkBallAndStrike = new CheckBallAndStrike();
-        while (checkBallAndStrike.isThreeStrike()){
-            inputView.inputExpectedNumber(player);
-            checkBallAndStrike.updateBallAndStrike(player);
-            outputView.printStatusBallAndStrike(checkBallAndStrike.statusBallAndStrike());
+
+        while (true){
+            CheckBallAndStrike checkBallAndStrike = new CheckBallAndStrike();
+            while (checkBallAndStrike.isThreeStrike()){
+                inputView.inputExpectedNumber(player);
+                checkBallAndStrike.updateBallAndStrike(player);
+                outputView.printStatusBallAndStrike(checkBallAndStrike.statusBallAndStrike());
+            }
+            outputView.printClearBaseBallGame();
+            int restartMessage = inputView.inputRestartMessage();
+            if (BaseballRole.isGameExit(restartMessage)) break;
         }
-        outputView.printClearBaseBallGame();
     }
 
 }
