@@ -92,6 +92,8 @@
 ### Constant
 #### BaseballConstant
 - 게임에서 사용할 상수를 관리하는 클래스
+#### ScoreConstant
+- 게임 결과에 사용할 상수를 관리하는 클래스
 
 ### Message
 #### BaseballGameMessage
