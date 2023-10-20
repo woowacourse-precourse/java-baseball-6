@@ -72,4 +72,21 @@ class InputValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자를 중복하지 않고 입력해주시기 바랍니다.");
     }
+
+    @DisplayName("유저 input 안에 숫자가 아닌 문자가 들어가 있는 경우의 테스트")
+    @Test
+    void notDigitCharacterInUserInputTest() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String alphabetCharacterInput = "1c9";
+        final String koreanCharacterInput = "2ㅍ1";
+        //then
+        assertThatThrownBy(() -> inputValidation.validateUserInput(alphabetCharacterInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자만을 입력해주시기 바랍니다.");
+        assertThatThrownBy(() -> inputValidation.validateUserInput(koreanCharacterInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자만을 입력해주시기 바랍니다.");
+    }
 }
