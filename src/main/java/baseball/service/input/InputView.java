@@ -1,4 +1,4 @@
-package baseball.domain.input;
+package baseball.service.input;
 
 import baseball.util.message.PrintMessage;
 import baseball.util.validator.Validator;

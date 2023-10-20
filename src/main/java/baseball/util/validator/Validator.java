@@ -12,13 +12,13 @@ public class Validator {
         checkZero(numbers);
     }
 
-    private static void checkZero(int[] numbers) {
+    private static void checkZero(final int[] numbers) {
         for(int num: numbers){
             isZeroNum(num);
         }
     }
 
-    private static void isZeroNum(int num) {
+    private static void isZeroNum(final int num) {
         if(num == ZERO_NUMBER){
             throw new IllegalArgumentException(ValidateMessage.ZERO_NUMBER_INPUT_ERROR.toString());
         }
@@ -31,7 +31,7 @@ public class Validator {
         }
     }
 
-    private static void isDuplicateNum(int num, Set<Integer> set) {
+    private static void isDuplicateNum(final int num, final Set<Integer> set) {
         if(!set.add(num)){
             throw new IllegalArgumentException(ValidateMessage.DUPLICATE_ERROR.toString());
         }

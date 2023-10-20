@@ -1,4 +1,4 @@
-package baseball.domain.input;
+package baseball.service.input;
 
 public interface Input {
     int[] execute();

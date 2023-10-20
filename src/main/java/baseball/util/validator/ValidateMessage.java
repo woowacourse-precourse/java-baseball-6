@@ -6,7 +6,7 @@ public enum ValidateMessage {
     NOT_CORRECT_INPUT_SIZE("세 자리 숫자를 입력 해주세요.");
 
     private final String errorMessage;
-    private ValidateMessage(String message) {
+    private ValidateMessage(final String message) {
         this.errorMessage = message;
     }
 
