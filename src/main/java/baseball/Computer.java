@@ -2,12 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Game {
+public class Computer {
     private final int firstPositionAnswer;
     private final int secondPositionAnswer;
     private final int thirdPositionAnswer;
 
-    public Game() {
+    public Computer() {
         firstPositionAnswer = Randoms.pickNumberInRange(1, 9);
         secondPositionAnswer = Randoms.pickNumberInRange(1, 9);
         thirdPositionAnswer = Randoms.pickNumberInRange(1, 9);
@@ -56,6 +56,10 @@ public class Game {
 
     public boolean isNothing(int userInput) {
         return getBallCount(userInput) + getStrikeCount(userInput) == 0;
+    }
+
+    public boolean isPlayerWin(int userInput){
+        return getStrikeCount(userInput) == 3;
     }
 
 }
