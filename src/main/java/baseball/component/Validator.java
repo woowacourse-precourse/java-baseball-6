@@ -30,6 +30,12 @@ public class Validator {
         this.target = target;
     }
 
+    public void validate(List<Integer> numbers) {
+        calculateStrike(numbers);
+        calculateBall(numbers);
+        isNoting();
+    }
+
     private void calculateStrike(List<Integer> numbers) {
         int strike = 0;
         for (int i = 0 ; i < NUMBER_SIZE ; i++) {
