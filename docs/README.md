@@ -34,6 +34,7 @@
   * void initComputer()
   * private void initData(String inputtedNumbers)
   * Result calculateResult()
+  * ContinueAnswer generateContinueAnswer(String answerString)
 * GamePlayer
   * List<Integer> threeNumbers
   * void initThreeNumbers(String inputtedNumbers)

@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.domain.Computer;
+import baseball.domain.ContinueAnswer;
 import baseball.domain.GamePlayer;
 import baseball.domain.Result;
 
@@ -14,6 +15,7 @@ public class Service {
     private final GamePlayer gamePlayer = new GamePlayer();
     private final Computer computer = new Computer();
     private final Result result = new Result();
+    private final ContinueAnswer continueAnswer = new ContinueAnswer();
 
     public void initComputer() {
         computer.generateThreeNumbers();
@@ -34,5 +36,10 @@ public class Service {
             else if(computerNumbers.contains(gamePlayerNumbers.get(i))) result.addBall();
         }
         return result;
+    }
+
+    public ContinueAnswer generateContinueAnswer(String answerString) {
+        continueAnswer.createAnswer(answerString);
+        return continueAnswer;
     }
 }
