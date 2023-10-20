@@ -17,7 +17,9 @@
 
 ## InputView
 
-- 숫자 입력받기 []
+- 숫자 입력받기 [o]
+    - 숫자만 들어왔는지 검증 [o]
+    - 공백 검증 [o]
 - 게임 재시작 입력받기 []
 
 ## RamdomBallNumberGenerator
