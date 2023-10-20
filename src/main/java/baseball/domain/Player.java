@@ -1,21 +1,28 @@
-package baseball.service;
+package baseball.domain;
 
 import static baseball.controller.BaseballController.BASEBALL_NUMBERS_SIZE;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class PlayerService {
+public class Player {
     
-    public void validate(String number) {
+    private final String number;
+    
+    public Player(String number) {
+        validate(number);
+        this.number = number;
+    }
+    
+    public String getNumber() {
+        return number;
+    }
+    
+    private void validate(String number) {
         validateInteger(number);
         validateSize(number);
         validateRange(number);
         validateDuplicate(number);
-    }
-    
-    public void validateOption(String number) {
-        validateInteger(number);
     }
     
     private void validateInteger(String number) {

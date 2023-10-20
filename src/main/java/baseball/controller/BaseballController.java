@@ -1,8 +1,8 @@
 package baseball.controller;
 
+import baseball.domain.Player;
 import baseball.service.ComputerService;
 import baseball.service.MessageService;
-import baseball.service.PlayerService;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballController {
@@ -12,12 +12,10 @@ public class BaseballController {
     public static final int BASEBALL_NUMBERS_SIZE = 3;
     
     private final ComputerService computerService;
-    private final PlayerService playerService;
     private final MessageService messageService;
     
     public BaseballController() {
         this.computerService = new ComputerService();
-        this.playerService = new PlayerService();
         this.messageService = new MessageService();
     }
     
@@ -33,9 +31,6 @@ public class BaseballController {
     
     private boolean askToContinue() {
         String number = Console.readLine();
-        
-        playerService.validateOption(number);
-        
         return selectOption(number);
     }
     
@@ -49,10 +44,6 @@ public class BaseballController {
             }
             default -> throw new IllegalArgumentException("잘못된 선택입니다.");
         }
-    }
-    
-    private void initGame() {
-        messageService.startGame();
     }
     
     private void playGame() {
@@ -75,13 +66,16 @@ public class BaseballController {
     private String getPlayerNumber() {
         messageService.inputPlayerNumber();
         String number = Console.readLine();
-        
-        playerService.validate(number);
-        
-        return number;
+    
+        Player player = new Player(number);
+        return player.getNumber();
     }
     
     private String getComputerNumber() {
         return computerService.initComputer();
+    }
+    
+    private void initGame() {
+        messageService.startGame();
     }
 }
