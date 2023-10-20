@@ -104,4 +104,20 @@ public class BaseballManageController {
         this.gameData.setGameRepetition(restart);
     }
 
+    public void printStart() {
+        view.printStart();
+    }
+
+    public void printRequirePlayerInput() {
+        view.printRequirePlayerInput();
+    }
+
+    public void printEndgame() {
+        view.printEndgame();
+    }
+
+    public void printAskRestart() {
+        view.printAskRestart();
+    }
+
 }
