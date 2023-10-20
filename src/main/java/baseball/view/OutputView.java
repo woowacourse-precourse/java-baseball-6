@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.GuessResult;
+import baseball.domain.RoundResult;
 
 public class OutputView {
 
@@ -18,17 +18,17 @@ public class OutputView {
         System.out.println(GAME_END_MESSAGE);
     }
 
-    public static void printGuessResult(GuessResult guessResult) {
+    public static void printRoundResult(RoundResult roundResult) {
         StringBuilder sb = new StringBuilder();
-        if (guessResult.hasBall()) {
-            sb.append(guessResult.ballCount()).append(BALL_MESSAGE);
+        if (roundResult.hasBall()) {
+            sb.append(roundResult.ballCount()).append(BALL_MESSAGE);
         }
-        if (guessResult.hasStrike()) {
-            sb.append(guessResult.strikeCount()).append(STRIKE_MESSAGE);
+        if (roundResult.hasStrike()) {
+            sb.append(roundResult.strikeCount()).append(STRIKE_MESSAGE);
         }
         if (sb.isEmpty()) {
             sb.append(NOTHING_CORRECT_MESSAGE);
         }
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 }

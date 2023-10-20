@@ -1,7 +1,7 @@
 package baseball.view;
 
-import baseball.domain.GameNumber;
 import baseball.domain.ReplayCommand;
+import baseball.domain.UserNumbers;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +28,10 @@ public class InputView {
         return user;
     }
 
-    public static GameNumber readUserNumber() {
-        System.out.println(NUMBER_INPUT_MESSAGE);
+    public static UserNumbers readUserNumber() {
+        System.out.print(NUMBER_INPUT_MESSAGE);
         String input = Console.readLine();
-        return new GameNumber(convertUserInput(input));
+        return new UserNumbers(convertUserInput(input));
     }
 
     public static boolean readShouldReplay() {
