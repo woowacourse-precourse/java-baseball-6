@@ -1,5 +1,6 @@
 package baseball.validation;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +24,19 @@ public class InputValidation {
     public void isLengthAtLeastFour(String input) {
         if (input.length() >= 4) {
             throw new IllegalArgumentException("입력값은 3 이하여야 합니다.");
+        }
+    }
+
+    public void validateUniqueIntegers(String input) {
+        String[] integers = input.split("");
+        int integerCount = integers.length;
+        long distinctIntegerCount = Arrays.stream(integers)
+                .mapToInt(Integer::parseInt)
+                .distinct()
+                .count();
+
+        if (distinctIntegerCount != integerCount) {
+            throw new IllegalArgumentException("입력값은 서로 다른 정수여야 합니다.");
         }
     }
 }
