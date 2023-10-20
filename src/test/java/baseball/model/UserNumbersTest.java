@@ -2,7 +2,7 @@ package baseball.model;
 
 import static baseball.Constants.NUMBER_COUNTS;
 import static baseball.fixture.UserNumbersFixture.createUserNumbersByString;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
