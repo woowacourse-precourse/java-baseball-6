@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.Controller.GameController;
+import baseball.Model.BaseBallGame;
+import baseball.View.GameView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -12,7 +15,13 @@ public class Application {
     private static List<Integer> COMPUTER_NUM = new ArrayList<>();
 
     public static void main(String[] args) {
-        gameStart();
+        BaseBallGame baseBallGame = new BaseBallGame();
+        GameView gameView = new GameView();
+        GameController gameController = new GameController(baseBallGame, gameView);
+
+        gameController.startGame();
+
+        gameStart(); // 곧 삭제될 코드
     }
 
     private static void gameStart() {
