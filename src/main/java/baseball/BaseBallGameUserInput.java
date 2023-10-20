@@ -12,7 +12,7 @@ public class BaseBallGameUserInput implements UserInput<List<Integer>> {
     private static final String INPUT_FORMAT = "숫자를 입력해주세요 :";
     @Override
     public List<Integer> input(Integer inputSize) {
-        System.out.println(INPUT_FORMAT);
+        System.out.print(INPUT_FORMAT);
         final String inputString = Console.readLine();
         final List<Character> inputCharacterList = inputString.chars()
             .mapToObj(c -> (char) c)
