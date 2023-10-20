@@ -58,8 +58,10 @@ public class InputValueValidator {
     }
 
     private static void checkCorrectContinueFlag(String inputValue) {
-        if (!inputValue.equals("1") && !inputValue.equals("2")) {
-            throw new IllegalArgumentException("Error: 1 or 2 만 입력 가능합니다.");
+        if (!inputValue.equals(String.valueOf(ContinueFlag.CONTINUE)) && !inputValue.equals(
+                String.valueOf(ContinueFlag.DONE))) {
+            String message = String.format("Error: %d or %d 만 입력 가능합니다.", ContinueFlag.CONTINUE, ContinueFlag.DONE);
+            throw new IllegalArgumentException(message);
         }
     }
 }
