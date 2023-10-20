@@ -7,12 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static final int NUMBER_LENGTH = 3;
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. \n";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String BALL_MESSAGE = "볼";
+    private static final String NOTHING_MESSAGE = "낫싱";
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
         // 프로그램 시작
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
+        System.out.println(GAME_START_MESSAGE);
         while(true) {
             List<Integer> computer = getRandomNumbers();
 
@@ -24,22 +31,22 @@ public class Application {
                 int strike = getStrike(computer, user);
                 int ball = getBall(computer, user);
 
-                if (strike == 3) {
-                    System.out.println("3스트라이크");
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                if (strike == NUMBER_LENGTH) {
+                    System.out.println(strike + STRIKE_MESSAGE);
+                    System.out.println(GAME_OVER_MESSAGE);
                     break;
                 } else if (strike > 0 && ball > 0) {
-                    System.out.println(ball + "볼 " + strike + "스트라이크");
+                    System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
                 } else if (strike > 0 && ball == 0) {
-                    System.out.println(strike + "스트라이크");
+                    System.out.println(strike + STRIKE_MESSAGE);
                 } else if (strike == 0 && ball > 0){
-                    System.out.println(ball + "볼");
+                    System.out.println(ball + BALL_MESSAGE);
                 } else if (strike == 0 && ball == 0) {
-                    System.out.println("낫싱");
+                    System.out.println(NOTHING_MESSAGE);
                 }
             }
 
-            String restart = getUserInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. \n");
+            String restart = getUserInput(RESTART_MESSAGE);
 
             if (restart.equals("2")){
                 Console.close();
@@ -58,7 +65,7 @@ public class Application {
      */
     public static List<Integer> getRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3){
+        while (numbers.size() < NUMBER_LENGTH){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!numbers.contains(randomNumber)){
                 numbers.add(randomNumber);
@@ -74,8 +81,8 @@ public class Application {
     public static List<Integer> getUserNumbers() {
         List<Integer> numbers = new ArrayList<>();
 
-        String input = getUserInput("숫자를 입력해주세요 : ");
-        if (input.length() > 3){
+        String input = getUserInput(INPUT_MESSAGE);
+        if (input.length() > NUMBER_LENGTH){
             throw new IllegalArgumentException();
         }
 
@@ -99,7 +106,7 @@ public class Application {
     public static int getStrike(List<Integer> computer, List<Integer> user) {
         int res = 0;
 
-        for (int i=0; i < 3; i++){
+        for (int i=0; i < NUMBER_LENGTH; i++){
             if (computer.get(i).equals(user.get(i))){
                 res++;
             }
@@ -116,7 +123,7 @@ public class Application {
     public static int getBall(List<Integer> computer, List<Integer> user) {
         int res = 0;
 
-        for (int i=0; i < 3; i++){
+        for (int i=0; i < NUMBER_LENGTH; i++){
             if (!computer.get(i).equals(user.get(i)) && computer.contains(user.get(i))){
                 res++;
             }
