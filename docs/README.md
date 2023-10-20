@@ -93,6 +93,13 @@
 
 <br>
 
+### `RestartFlag`
+게임 재시작 여부를 확인하는 입력값을 답은 클래스 이다.
+- [ ] 게임 재시작, 종료 여부를 알려준다.
+- [ ] 입력값이 1, 2가 아닌 경우 `IllegalArgumentException`을 발생한다.
+
+<br>
+
 ### `Computer`
 `컴퓨터`에 해당하는 클래스로, 사용자가 맞춰야 하는 임의의 수 세 개를 담고 있다.
 - [ ] 임의의 `BaseballNumbers` 를 생성한다.
@@ -116,5 +123,13 @@
 ### `Comparator`
 `사용자`와 `컴퓨터`의 `BaseballNumbers`를 비교하는 클래스 이다.
 - [ ] 비교 결과를 `CompareResult`에 담아 반환한다.
+
+<br>
+
+### `StringConverter`
+`사용자`가 입력한 문자열을 정수로 변환해주는 클래스이다.
+- [ ] 문자열을 `int`로 변환하여 반환한다.
+- [ ] 문자열을 `int []`로 변환하여 반환한다. 
+- [ ] 입력받은 문자열이 정수로 변환이 불가능한 경우 `IllegalArgumentException`을 발생한다.
 
 <br>
