@@ -44,4 +44,13 @@ public class NumberBaseballUtility {
         return list;
     }
 
+    public static int calculateStrike(List<Integer> answer, List<Integer> player) {
+        int strike = 0;
+        for (int i = 0; i < answer.size(); i++) {
+            if (answer.get(i).equals(player.get(i))) {
+                strike++;
+            }
+        }
+        return strike;
+    }
 }
