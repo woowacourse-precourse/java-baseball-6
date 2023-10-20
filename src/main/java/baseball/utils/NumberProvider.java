@@ -3,7 +3,9 @@ package baseball.utils;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NumberProvider {
     private static final int NUMBER_COUNT = 3;
@@ -23,5 +25,11 @@ public class NumberProvider {
         if (!numbers.contains(number)) {
             numbers.add(number);
         }
+    }
+
+    public static List<Integer> convertFrom(String numbers) {
+        return Arrays.stream(numbers.split(""))
+                .map(e -> Integer.parseInt(e))
+                .collect(Collectors.toList());
     }
 }

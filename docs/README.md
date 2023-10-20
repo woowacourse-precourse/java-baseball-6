@@ -80,7 +80,7 @@
 
    - 임의의 수를 생성하는 기능
    - 숫자 타입을 변환하는 기능
-      - List\<String> to List\<Integer>
+      - String to List\<Integer>
 
 
 7. Validation.java
