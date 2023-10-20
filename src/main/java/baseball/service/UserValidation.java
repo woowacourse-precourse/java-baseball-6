@@ -4,7 +4,7 @@ package baseball.service;
  * 3. validate() : 사용자의 잘못된 값을 입력했는지 validation
  */
 public class UserValidation {
-    public int validate(String userInputString) {
+    public int validation(String userInputString) {
 
         // 입력된 값이 서로 다른 값인지 검증
         char first = userInputString.charAt(0);
