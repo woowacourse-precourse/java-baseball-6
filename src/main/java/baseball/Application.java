@@ -19,8 +19,10 @@ import java.util.Scanner;
 public class Application {
     public void checkUserInputException(int[] user) {
         try {
-            if (!(user.length == 3))
-                throw new IllegalArgumentException("올바르지 않은 숫자의 입력입니다. ");
+            for (int num : user) {
+                if (num > 10)
+                    throw new IllegalArgumentException("올바르지 않은 숫자의 입력입니다. " + num);
+            }
 
             for (int i = 0; i < user.length; i++) {
                 for (int j = 0; j < user.length; j++) {
@@ -54,7 +56,7 @@ public class Application {
         int[] userNumArray = new int[3];
         String userNumber = String.valueOf(userInput);
 
-        for(int i =0; i<userNumber.length();i++){
+        for (int i = 0; i < userNumber.length(); i++) {
             char userNum = userNumber.charAt(i);
             int userIntNum = Character.getNumericValue(userNum);
             userNumArray[i] = userIntNum;
