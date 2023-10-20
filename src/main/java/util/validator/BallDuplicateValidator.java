@@ -10,7 +10,7 @@ public class BallDuplicateValidator {
 
     private static BallDuplicateValidator ballDuplicateValidator;
 
-    private final int NUMBER_SIZE = 3;
+    private final int NUMBERS_SIZE = 3;
 
     private final String ERR_MSG = "중복된 숫자가 존재합니다.";
 
@@ -30,7 +30,7 @@ public class BallDuplicateValidator {
                 .map(Ball::getBallNumber)
                 .map(BallNumber::getBallNumber)
                 .collect(Collectors.toSet());
-        if (ballsSet.size() != 3) {
+        if (ballsSet.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException(ERR_MSG);
         }
         return true;
