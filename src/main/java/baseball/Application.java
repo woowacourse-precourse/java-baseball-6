@@ -40,24 +40,24 @@ public class Application {
     }
 
     public static List<Integer> inputPlayerNumbers() {
-        String input;
+        String inputNumber;
         List<Integer> playerNumbers;
         Set<Integer> playerNumbersSet;
 
         System.out.print("숫자를 입력해주세요 : ");
-        input = Console.readLine();
+        inputNumber = Console.readLine();
 
-        if (input.length() != 3) {
+        if (!isThreeLength(inputNumber)) {
             throw new IllegalArgumentException("3자리의 수를 입력해주세요.");
         }
 
         playerNumbers = new ArrayList<>();
 
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) < '1' || input.charAt(i) > '9') {
+        for (int i = 0; i < inputNumber.length(); i++) {
+            if (inputNumber.charAt(i) < '1' || inputNumber.charAt(i) > '9') {
                 throw new IllegalArgumentException("1~9로 이루어진 3자리의 수를 입력해주세요.");
             }
-            playerNumbers.add(input.charAt(i) - '0');
+            playerNumbers.add(inputNumber.charAt(i) - '0');
         }
 
         playerNumbersSet = new HashSet<>(playerNumbers);
@@ -66,5 +66,9 @@ public class Application {
             throw new IllegalArgumentException("서로 다른 3개의 숫자로 이루어진 수를 입력해주세요.");
         }
         return playerNumbers;
+    }
+
+    public static boolean isThreeLength(final String inputNumber) {
+        return inputNumber.length() == 3;
     }
 }
