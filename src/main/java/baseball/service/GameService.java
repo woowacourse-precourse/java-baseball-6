@@ -34,4 +34,21 @@ public class GameService {
         }
         return ballAndStrikeCount;
     }
+
+    private String getResultMessage(Map<String, Integer> ballAndStrikeCount) {
+        String resultMessage = new String();
+        if (ballAndStrikeCount.get("ballCount") == 0 && ballAndStrikeCount.get("strikeCount") == 0) {
+            resultMessage = "낫싱";
+        }
+        if (ballAndStrikeCount.get("ballCount") == 0 && ballAndStrikeCount.get("strikeCount") != 0) {
+            resultMessage = ballAndStrikeCount.get("strikeCount") + "스트라이크";
+        }
+        if (ballAndStrikeCount.get("ballCount") != 0 && ballAndStrikeCount.get("strikeCount") == 0) {
+            resultMessage = ballAndStrikeCount.get("ballCount") + "볼";
+        }
+        if (ballAndStrikeCount.get("ballCount") != 0 && ballAndStrikeCount.get("strikeCount") != 0) {
+            resultMessage = ballAndStrikeCount.get("ballCount") + "볼 " + ballAndStrikeCount.get("strikeCount") + "스트라이크";
+        }
+        return resultMessage;
+    }
 }
