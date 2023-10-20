@@ -10,15 +10,19 @@ public class Computer {
 
     private List<Integer> numbers;
 
+    private Computer(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
 
-    public void generate() {
-        numbers = new ArrayList<>();
+    public static Computer generate() {
+        List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < PLAY_AMOUNT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
         }
+        return new Computer(numbers);
     }
 
     public int getNumberOf(int index) {

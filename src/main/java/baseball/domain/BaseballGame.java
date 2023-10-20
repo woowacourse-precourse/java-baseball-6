@@ -12,7 +12,7 @@ public class BaseballGame {
     private final OutputView outputView;
     private final InputView inputView;
 
-    private static Computer computer = new Computer();
+    private static Computer computer;
     private static Player player;
 
     public BaseballGame(OutputView outputView, InputView inputView) {
@@ -22,7 +22,7 @@ public class BaseballGame {
 
     public void start() {
         printStartMessage();
-        computer.generate();
+        computer = Computer.generate();
 
         playGame();
     }
@@ -36,7 +36,7 @@ public class BaseballGame {
                 outputView.printGameFinishMessage();
                 String option = inputView.readRestartOrNot();
                 if (option.equals(SIGN_RESTART)) {
-                    computer.generate();
+                    computer = Computer.generate();
                     continue;
                 } else if (option.equals(SIGN_STOP)) {
                     break;
