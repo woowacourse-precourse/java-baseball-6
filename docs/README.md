@@ -1,3 +1,6 @@
+## 코드 진행
+https://velog.velcdn.com/images/sohyun9527/post/79fd5c2f-9344-44c8-8ab6-d0ae32ea9ae8/image.jpg
+
 ## Message 클래스
 - 출력 메서드
 ```java
