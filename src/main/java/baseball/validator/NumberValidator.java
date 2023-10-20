@@ -1,7 +1,6 @@
 package baseball.validator;
 
-import java.util.HashSet;
-import java.util.Set;
+import baseball.converter.StringInputConverter;
 
 public class NumberValidator {
 
@@ -38,16 +37,6 @@ public class NumberValidator {
     }
 
     private static boolean isAllNumberUnique(final String inputNumber) {
-        return convertInputToSet(inputNumber).size() == inputNumber.length();
-    }
-
-    private static Set<Character> convertInputToSet(final String input) {
-        HashSet<Character> inputSet = new HashSet<>();
-
-        for (char character : input.toCharArray()) {
-            inputSet.add(character);
-        }
-
-        return inputSet;
+        return StringInputConverter.convertToCharSet(inputNumber).size() == inputNumber.length();
     }
 }
