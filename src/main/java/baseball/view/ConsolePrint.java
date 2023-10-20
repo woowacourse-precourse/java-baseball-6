@@ -1,10 +1,9 @@
-package baseball.io;
+package baseball.view;
 
 import baseball.domain.Result;
 
-import static baseball.domain.Numbers.NUMBER_COUNT;
 
-public class Output {
+public class ConsolePrint {
 
     private static final String START_STRING = "숫자 야구 게임을 시작합니다.";
     private static final String NUMBER_INPUT_STRING = "숫자를 입력해주세요 : ";
@@ -14,7 +13,7 @@ public class Output {
     private static final String BALL_STRING = "볼";
     private static final String NON_STRING = "낫싱";
 
-    private Output() {
+    private ConsolePrint() {
     }
 
     public static void printStart() {
@@ -31,13 +30,21 @@ public class Output {
 
     public static void printResult(Result result) {
         if (result.isFinish()) {
-            System.out.println(NUMBER_COUNT + STRIKE_STRING);
+            System.out.println(getNoBallString(result));
             return;
         }
         if (result.isNon()) {
             System.out.println(NON_STRING);
             return;
         }
-        System.out.println(result.getBall() + BALL_STRING + " " + result.getStrike() + STRIKE_STRING);
+        System.out.println(getBallStrikeString(result));
+    }
+
+    private static String getBallStrikeString(Result result) {
+        return result.getBall() + BALL_STRING + " " + result.getStrike() + STRIKE_STRING;
+    }
+
+    private static String getNoBallString(Result result) {
+        return result.getStrike() + STRIKE_STRING;
     }
 }
