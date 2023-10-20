@@ -35,10 +35,4 @@ public class Computer {
         printHandler.baseballPrint(ball, strike);
         return (strike == 3);
     }
-
-    public String toString() {
-        return "Computer{" +
-                "threeNumbers=" + threeNumbers +
-                '}';
-    }
 }
