@@ -29,16 +29,28 @@ public class BaseballController {
     }
 
     private void playGame(List<Integer> randomNumbers) {
-        PlayerNumber playerNumber = new PlayerNumber();
-        playerNumber.updatePlayerNumbers(inputView.getPlayerNumber());
+        PlayerNumber playerNumber = updatePlayerNumber();
+        ScoreCalculator calculator = calculateScore(randomNumbers, playerNumber);
+        printScoreResult(calculator);
+        checkGameOver(randomNumbers, calculator);
+    }
 
-        ScoreCalculator calculator = new ScoreCalculator();
-        calculator.calculate(randomNumbers, playerNumber.getPlayerNumbers());
-
+    private void printScoreResult(ScoreCalculator calculator) {
         ScoreChecker checker = new ScoreChecker();
         checker.checkScore(outputView, calculator);
+    }
 
-        checkGameOver(randomNumbers, calculator);
+    private static ScoreCalculator calculateScore(List<Integer> randomNumbers,
+            PlayerNumber playerNumber) {
+        ScoreCalculator calculator = new ScoreCalculator();
+        calculator.calculate(randomNumbers, playerNumber.getPlayerNumbers());
+        return calculator;
+    }
+
+    private PlayerNumber updatePlayerNumber() {
+        PlayerNumber playerNumber = new PlayerNumber();
+        playerNumber.updatePlayerNumbers(inputView.getPlayerNumber());
+        return playerNumber;
     }
 
     private void checkGameOver(List<Integer> randomNumbers, ScoreCalculator calculator) {
