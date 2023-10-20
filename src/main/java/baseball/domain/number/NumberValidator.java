@@ -33,4 +33,7 @@ public class NumberValidator {
         }
     }
 
+    private NumberValidator() {
+    }
+
 }

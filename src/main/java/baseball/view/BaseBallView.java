@@ -2,7 +2,7 @@ package baseball.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import baseball.domain.Result;
+import baseball.domain.result.Result;
 
 
 public class BaseBallView {

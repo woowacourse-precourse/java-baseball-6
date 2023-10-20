@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.Result;
+import baseball.domain.result.Result;
 
 
 public class ConsolePrint {

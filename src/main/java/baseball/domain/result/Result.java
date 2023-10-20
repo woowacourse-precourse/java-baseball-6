@@ -1,14 +1,14 @@
-package baseball.domain;
+package baseball.domain.result;
 
 import static baseball.domain.number.NumberConstant.NUMBER_COUNT;
+import static baseball.domain.result.ResultContant.BALL_STRING;
+import static baseball.domain.result.ResultContant.NON_STRING;
+import static baseball.domain.result.ResultContant.STRIKE_STRING;
 
 public class Result {
     private Integer ball;
     private Integer strike;
 
-    private static final String STRIKE_STRING = "스트라이크";
-    private static final String BALL_STRING = "볼";
-    private static final String NON_STRING = "낫싱";
 
     private Result() {
     }

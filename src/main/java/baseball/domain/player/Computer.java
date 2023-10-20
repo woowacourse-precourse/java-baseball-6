@@ -10,35 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Computer implements Player {
-    private Numbers numbers;
+public class Computer {
+    private  Player player;
 
     private Computer() {
     }
 
     public static Computer create() {
-        return new Computer();
+        Computer computer = new Computer();
+        computer.setPlayer(Player.create(makeRandomNumbers()));
+
+        return computer;
     }
 
-    @Override
-    public Numbers getNumbers() {
-        return numbers;
+    private void setPlayer(Player player) {
+        this.player = player;
     }
 
-    @Override
-    public List<Integer> getNumberList() {
-        return numbers.getNumberList();
-    }
-
-    @Override
-    public void changeNumbers(Numbers numbers) {
-        this.numbers = numbers;
-    }
-
-    @Override
-    public void reset() {
-        changeNumbers(makeRandomNumbers());
-    }
 
     private static Numbers makeRandomNumbers() {
         List<Integer> numberList = new ArrayList<>();
@@ -57,4 +45,13 @@ public class Computer implements Player {
     private static boolean isNotFull(List<Integer> numberList) {
         return numberList.size() < NUMBER_COUNT;
     }
+
+    public Numbers getNumbers() {
+        return player.getNumbers();
+    }
+
+    public List<Integer> getNumberList() {
+        return player.getNumberList();
+    }
+
 }

@@ -4,9 +4,8 @@ import static baseball.domain.number.NumberConstant.MAX_INDEX;
 import static baseball.domain.number.NumberConstant.MIN_INDEX;
 
 import baseball.domain.player.Computer;
-import baseball.domain.player.Human;
 import baseball.domain.player.Player;
-import baseball.domain.Result;
+import baseball.domain.result.Result;
 import baseball.domain.number.Numbers;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -21,7 +20,7 @@ public class BaseBallService {
     public static BaseBallService create() {
         BaseBallService baseBallService = new BaseBallService();
         baseBallService.setComputer(Computer.create());
-        baseBallService.setHuman(Human.create());
+        baseBallService.setHuman(Player.create());
 
         return baseBallService;
     }
@@ -39,8 +38,8 @@ public class BaseBallService {
         this.computer = computer;
     }
 
-    private void setHuman(Human human) {
-        this.human = human;
+    private void setHuman(Player player) {
+        this.human = player;
     }
 
 

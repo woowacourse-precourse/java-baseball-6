@@ -4,7 +4,7 @@ import static baseball.converter.BaseBallConverter.stringToNumbers;
 import static baseball.converter.BaseBallConverter.stringToOverallGameStatus;
 
 import baseball.domain.number.Numbers;
-import baseball.domain.Result;
+import baseball.domain.result.Result;
 import baseball.enums.OverallGameStatus;
 import baseball.service.BaseBallService;
 import baseball.view.BaseBallView;
