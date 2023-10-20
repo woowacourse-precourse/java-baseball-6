@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.GameNumber;
 import baseball.domain.GuessResult;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,37 +44,22 @@ public class NumberBaseBallController {
         return new GuessResult(ballCount, strikeCount);
     }
 
-    static void printGuessResult(GuessResult guessResult) {
-        StringBuilder sb = new StringBuilder();
-        if (guessResult.hasBall()) {
-            sb.append(guessResult.ballCount()).append("볼 ");
-        }
-        if (guessResult.hasStrike()) {
-            sb.append(guessResult.strikeCount()).append("스트라이크");
-        }
-        if (sb.isEmpty()) {
-            sb.append("낫싱");
-        }
-
-        System.out.println(sb.toString());
-    }
-
     static void play() {
         GameNumber computer = pickComputerNumber();
         boolean isGameProceed = true;
         while (isGameProceed) {
             GameNumber user = InputView.readUserNumber();
             GuessResult guessResult = createGuessResult(computer, user);
-            printGuessResult(guessResult);
+            OutputView.printGuessResult(guessResult);
             if (guessResult.isAllStrike()) {
                 isGameProceed = false;
             }
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        OutputView.printEndMessage();
     }
 
     public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        OutputView.printStartMessage();
         boolean shouldPlay = true;
         while (shouldPlay) {
             play();
