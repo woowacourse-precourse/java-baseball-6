@@ -75,23 +75,21 @@ __OutputView__
 
 ## Controller
 __Validator__
-- [ ] validateDuplicateNumbers (컴퓨터 난수 생성을 검증)
-  1) 파라미터로 들어온 값이 computerNumber에 중복되지 않는지 검증
 
 
-- [ ] validatePlayerInput (플레이어의 입력을 검증)
+- [x] validatePlayerInput (플레이어의 입력을 검증)
    1) 숫자인지 검증
    3) 숫자가 3개인지 검증
    4) 숫자가 서로 중복되지 않는지 검증
 
 
-- [ ] validateEndInput (게임종료 후 1,2입력 검증)
+- [x] validateEndInput (게임종료 후 1,2입력 검증)
   1) 1혹은 2인지 검증
 
 __RandomNumberGenerator__
 - [ ] generateNumbers (중복되지 않는 3개의 난수 생성)
   1) 1-9범위의 숫자를 랜덤으로 생성
-  2) validateDuplicateNumbers로 중복되지 않는지 검증한 뒤 computerNumber에 추가
+  2) 중복되지 않는지 검증한 뒤 computerNumber에 추가
 
 __Comparator__
 - [ ] countStrikes
