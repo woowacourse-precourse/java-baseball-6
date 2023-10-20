@@ -9,7 +9,7 @@ public class Computer {
 
     public Computer() {
         ball = new Ball(getRandomNumbers());
-        ballCounts = new BallCounts(0, 0);
+        ballCounts = new BallCounts();
     }
 
     public void judge(Ball playerBall) {

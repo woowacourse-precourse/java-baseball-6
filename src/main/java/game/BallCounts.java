@@ -4,8 +4,8 @@ import constants.NumberConstants;
 
 public class BallCounts {
 
-    private int ball;
-    private int strike;
+    private final int ball;
+    private final int strike;
 
     public BallCounts() {
         this.ball = 0;
