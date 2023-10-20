@@ -1,10 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -16,7 +18,7 @@ public class Application {
         while (playAgain) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = randomNum();
-            //System.out.println("answer : " + computer);   //정답
+            System.out.println("answer : " + computer);   //정답
 
             while (true) {
                 int[] answer = checkNum();
@@ -65,10 +67,10 @@ public class Application {
     }
 
     public static int[] checkNum() {
-        Scanner scanner = new Scanner(System.in);
         int[] answer = new int[3];
         System.out.print("숫자를 입력해주세요 : ");
-        int inputNum = scanner.nextInt();
+        String inputN = Console.readLine();
+        int inputNum = Integer.parseInt(inputN);
 
         answer[0] = inputNum / 100;
         answer[1] = (inputNum / 10) % 10;
@@ -84,9 +86,8 @@ public class Application {
     }
 
     public static boolean playAgainFunc(){
-        Scanner scanner = new Scanner(System.in);
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int replay = scanner.nextInt();
-        return replay == 1;
+        String replay = Console.readLine();
+        return "1".equals(replay);
     }
 }
