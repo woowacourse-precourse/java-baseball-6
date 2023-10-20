@@ -10,8 +10,11 @@ public class Util {
     public List<Integer> getRandomNumber() {
 
         List<Integer> numbers = new ArrayList<>();
-        for(int i = 0; i < 3; i++) {
-            numbers.add(Randoms.pickNumberInRange(1, 9));
+        while(numbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if(!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
         }
         return numbers;
     }
