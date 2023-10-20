@@ -17,4 +17,15 @@ public class playGame {
         }
     }
 
+    private void turn(){
+        String inputString;
+        do {
+            System.out.print("숫자를 입력해주세요 :");
+            inputString = Console.readLine();
+            checkInputString(inputString);
+        }while(true);
+    }
+
+  
+
 }
