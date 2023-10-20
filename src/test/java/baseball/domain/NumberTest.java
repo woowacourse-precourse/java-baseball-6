@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 
 class NumberTest {
 
@@ -42,6 +43,17 @@ class NumberTest {
         //when, then
         assertThatThrownBy(() -> number.validateNumberLength(numberList))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("정상 숫자가 들어올 경우 예외가 발생하지않는다.")
+    @Test
+    void validateNumber() {
+        // given
+        List<Integer> numberList = List.of(1,2,3);
+
+        //when, then
+        assertThatCode(() -> number.validateNumber(numberList))
+                .doesNotThrowAnyException();
     }
 
 }
