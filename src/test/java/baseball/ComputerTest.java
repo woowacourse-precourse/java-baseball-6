@@ -3,7 +3,10 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
+import java.util.List;
+import java.util.function.Function;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,6 +15,24 @@ import org.junit.jupiter.params.provider.ValueSource;
 class ComputerTest {
 
     Computer computer = new Computer();
+
+    @DisplayName("컴퓨터 숫자와 사용자의 숫자를 비교하여 결과를 생성할 수 있습니다.")
+    @Test
+    void createResult_after_generateNumber() {
+        // given
+        Function<Integer, List<Integer>> dummyGenerator = (Integer dummyNumber) -> List.of(1, 2, 3);
+        computer.generateNumber(dummyGenerator);
+
+        // when
+        computer.addUserNumber("321");
+        GameResult result = computer.createResult();
+
+        // then
+        assertAll(
+                () -> assertThat(result.getStrike()).isEqualTo(1),
+                () -> assertThat(result.getBall()).isEqualTo(2)
+        );
+    }
 
     @DisplayName("사용자는 숫자를 입력할 수 있습니다.")
     @Test

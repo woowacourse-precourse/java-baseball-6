@@ -1,4 +1,6 @@
-package baseball;
+package baseball.generator;
+
+import baseball.GameResult;
 
 public class GameResultMessageGenerator {
 

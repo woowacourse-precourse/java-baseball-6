@@ -1,7 +1,5 @@
 package baseball.view;
 
-import baseball.GameResult;
-
 public class OutputView {
 
     public static void printGameStart() {

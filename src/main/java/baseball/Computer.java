@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Computer {
@@ -13,8 +14,8 @@ public class Computer {
     private Numbers computerNumbers;
     private Numbers userNumbers;
 
-    public void generateNumber() {
-        List<Integer> randomNumbers = RandomNumberGenerator.generateRandomNumbers(COUNT_TO_GENERATE);
+    public void generateNumber(final Function<Integer, List<Integer>> computerNumberGenerator) {
+        List<Integer> randomNumbers = computerNumberGenerator.apply(COUNT_TO_GENERATE);
         computerNumbers = Numbers.from(randomNumbers);
     }
 
@@ -36,6 +37,7 @@ public class Computer {
         return Numbers.from(userNumbers);
     }
 
+    // TODO 별도의 validater로 분리해야 할까?
     private void validate(final String inputUserNumber) {
         validateLength(inputUserNumber);
         validateInteger(inputUserNumber);

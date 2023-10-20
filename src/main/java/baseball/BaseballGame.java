@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.generator.GameResultMessageGenerator;
+import baseball.generator.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -13,8 +15,9 @@ public class BaseballGame {
     public static void startGame() {
         OutputView.printGameStart();
         do {
-            baseballComputer.generateNumber();
+            baseballComputer.generateNumber(RandomNumberGenerator::generateRandomNumbers);
             startUserTurn();
+            OutputView.printGameOver();
         } while (askRestart());
     }
 
@@ -28,7 +31,6 @@ public class BaseballGame {
     }
 
     private static boolean askRestart() {
-        OutputView.printGameOver();
         String userSelection = InputView.inputRestart();
         validateUserSelection(userSelection);
         return userSelection.equals(RESTART);
