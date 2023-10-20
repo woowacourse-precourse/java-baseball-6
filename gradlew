@@ -40,7 +40,7 @@
 #   Important for patching:
 #
 #   (2) This script targets any POSIX shell, so it avoids extensions provided
-#       by Bash, Ksh, etc; in particular arrays are avoided.
+#       by Bash, Ksh, etc; in particular arr are avoided.
 #
 #       The "traditional" practice of packing multiple parameters into a
 #       space-separated string is a well documented source of bugs and security
@@ -225,7 +225,7 @@ fi
 #   readarray ARGS < <( xargs -n1 <<<"$var" ) &&
 #   set -- "${ARGS[@]}" "$@"
 #
-# but POSIX shell has neither arrays nor command substitution, so instead we
+# but POSIX shell has neither arr nor command substitution, so instead we
 # post-process each arg (as a line of input to sed) to backslash-escape any
 # character that might be a shell metacharacter, then use eval to reverse
 # that process (while maintaining the separation between arguments), and wrap
