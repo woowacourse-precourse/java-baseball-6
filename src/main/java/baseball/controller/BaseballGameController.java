@@ -2,13 +2,16 @@ package baseball.controller;
 
 import baseball.Answer;
 import baseball.BaseballGame;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 public class BaseballGameController {
     OutputView outputView;
+    InputView inputView;
     BaseballGame baseballGame;
 
     public BaseballGameController() {
         this.outputView = new OutputView();
+        this.inputView = new InputView();
         this.baseballGame = new BaseballGame();
     }
 
@@ -18,5 +21,7 @@ public class BaseballGameController {
     public void startGame() {
         outputView.readStartMessage();
         Answer answer = baseballGame.answerGenerate();
+        inputView.inputNumber();
     }
+
 }
