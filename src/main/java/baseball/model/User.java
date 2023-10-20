@@ -1,6 +1,5 @@
 package baseball.model;
 
-import baseball.util.Number;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,10 +16,10 @@ public class User {
      * @param input
      */
     public User(String input) {
-        Number.validationNumber(input); // 입력값 숫자 여부 확인
+        Number inNumber = new Number(input); // 입력값 숫자 여부 확인
         validationLength(input); // 입력 값의 길이가 3인지 확인
 
-        int number = Integer.parseInt(input); // 입력받은 값을 숫자로 변환한다.
+        int number = inNumber.getNumber(); // 입력 받은 숫자를 가져온다.
         for (int i = 0; i < input.length(); i++) { // 리스트에 숫자 한 자리씩 저장한다.
             numbers.add(number % 10);
             number /= 10; // 한 자리씩 덜어낸다.
