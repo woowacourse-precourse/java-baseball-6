@@ -12,7 +12,6 @@ class Game {
     }
 
     void run() {
-        // TODO: print as spec format
         while(true) {
             int query = this.askQuery();
             int[] result = this.judge(query);
@@ -25,10 +24,23 @@ class Game {
     }
 
     int askQuery() {
-        // TODO: Add Query Validation
         System.out.print("숫자를 입력해주세요 : ");
-        int query = Integer.parseInt(Console.readLine());
-        return query;
+        String queryString = Console.readLine();
+        try {
+            int query = Integer.parseInt(queryString);
+            if (query > 999 || query < 123)
+                throw new Exception();
+            int[] queryDigit = {
+                    query % 10,
+                    (query / 10) % 10,
+                    (query / 100) % 10};
+            if (queryDigit[0] == queryDigit[1] || queryDigit[1] == queryDigit[2] ||
+                    queryDigit[0] == queryDigit[2])
+                throw new Exception();
+            return query;
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     int[] judge(int query) {
