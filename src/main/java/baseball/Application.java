@@ -64,6 +64,7 @@ class Game{
             throw new IllegalArgumentException("숫자가 아닙니다.");
         }
     }
+
     private void validateInput(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
