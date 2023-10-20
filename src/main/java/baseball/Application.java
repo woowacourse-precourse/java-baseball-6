@@ -1,8 +1,6 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.Scanner;
-
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
@@ -17,11 +15,11 @@ public class Application {
             randomNumbers[i] = randomNumber;
         }
 
-        Scanner scan = new Scanner(System.in);
+
 
         for (int i = 0; i < 3; i++) {
             System.out.println("1 ~ 9 사이의 숫자를 입력하세요");
-            int playerNumber = scan.nextInt();
+            int playerNumber = Integer.parseInt(Console.readLine());
             playerNumbers[i] = playerNumber;
         }
     }
