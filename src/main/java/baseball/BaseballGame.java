@@ -17,5 +17,6 @@ public class BaseballGame {
             gameService.countStrikeOrBall(gameInfo, userInput);
             gameController.checkStrikeOrBall(gameInfo.getBall(), gameInfo.getStrike());
         }
+        gameController.controlRestartOrExit();
     }
 }

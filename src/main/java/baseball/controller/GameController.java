@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.BaseballGame;
 import camp.nextstep.edu.missionutils.Console;
 
 /**
@@ -9,6 +10,15 @@ public class GameController {
 
     public String getUserInput() {
         return Console.readLine();
+    }
+
+    public void controlRestartOrExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int input = Integer.parseInt(Console.readLine());
+        if (input == 1) {
+            BaseballGame baseballGame = new BaseballGame();
+            baseballGame.run();
+        }
     }
 
     public void checkStrikeOrBall(int ballCount, int strikeCount) {
