@@ -1,5 +1,7 @@
 package baseball.domain.baseballnumber;
 
+import java.util.Objects;
+
 public class BaseballNumber {
 
     private static final int MIN_VALUE = 1;
@@ -32,11 +34,16 @@ public class BaseballNumber {
         if (this == object) {
             return true;
         }
-        if (! (object instanceof BaseballNumber)) {
+        if (!(object instanceof BaseballNumber)) {
             return false;
         }
 
         BaseballNumber baseballNumber = (BaseballNumber) object;
         return value == baseballNumber.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
