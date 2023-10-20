@@ -7,7 +7,15 @@ public class GameService {
     InputView inputView = new InputView();
     GameException exception = new GameException();
     StrikeBallCount strikeBallCount = new StrikeBallCount();
+    Player player = new Player();
+    Computer computer = new Computer();
 
+    public void playBaseBallGame(){
+        player.settingPlayerNumber(inputPlayerNumber());
+        computer.settingComputerRandomNumbers();
+        computerNumberComparePlayerInputNumber(player, computer.computer);
+        printStrikeBallCount();
+    }
     public int[] inputPlayerNumber() {
         outPutView.printRequestInputNumberMessage();
         String inputPlayerNumber = inputView.inputPlayerNumber();
