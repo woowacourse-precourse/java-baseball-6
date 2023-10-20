@@ -33,7 +33,6 @@ public class NumberBaseballGame {
         boolean threeStrike = false;
         while (!threeStrike) {
             speaker(message.requestNumberMessage());
-            System.out.println(computer.getAnswer());
             List<Integer> userNumbers = userInput.makeUserInputToThreeNumbers();
             List<Integer> score = computer.countScore(userNumbers);
             speaker(message.scoreMessage(score) + '\n');
