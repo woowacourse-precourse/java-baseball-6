@@ -9,18 +9,15 @@ import java.util.List;
 public class Application {
     private final static int BALL = 0;
     private final static int STRIKE = 1;
+    private static List<Integer> computerNum = new ArrayList<>();
 
     public static void main(String[] args) {
         gameStart();
     }
 
     private static void gameStart() {
-        List<Integer> computerNum = new ArrayList<>();
-
-        makeComputerNum(computerNum);
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
-        playingGame(computerNum);
+        makeComputerNum();
+        playingGame();
 
         if (checkRestartGame())
             gameStart();
@@ -29,21 +26,24 @@ public class Application {
     /**
      * 게임을 실제로 플레이하는 구간 숫자를 계속 추측함.
      */
-    private static void playingGame(List<Integer> computerNum){
+    private static void playingGame(){
         String gameString = "";
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (!gameString.equals("3스트라이크")) {
             System.out.println("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
 
-            gameString = printBallCount(checkBallCount(userInput, computerNum));
+            gameString = printBallCount(checkBallCount(userInput));
             System.out.println(gameString);
         }
-
     }
+
     /**
      * 컴퓨터의 3자리 숫자를 만드는 메소드
      */
-    private static void makeComputerNum(List<Integer> computerNum) {
+    private static void makeComputerNum() {
+        computerNum.clear();
+
         while (computerNum.size() < 3) {
             int num = Randoms.pickNumberInRange(1, 9);
             if (!computerNum.contains(num)) {
@@ -72,7 +72,7 @@ public class Application {
     /**
      * ballCount와 StrikeCount를 체크해서 List형태로 반환해준다.
      */
-    private static List<Integer> checkBallCount(String userInput, List<Integer> computerNum) {
+    private static List<Integer> checkBallCount(String userInput) {
         List<Integer> listBS = new ArrayList<>();
         int totalCount = 0;
         int strikeCount = 0;
