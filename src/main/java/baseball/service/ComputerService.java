@@ -13,9 +13,10 @@ public class ComputerService {
     
     private final ComputerRepository computerRepository = new ComputerRepository();
     
-    public void initComputer() {
+    public String initComputer() {
         String number = makeComputerNumber();
         saveComputerNumber(number);
+        return number;
     }
     
     private String makeComputerNumber() {

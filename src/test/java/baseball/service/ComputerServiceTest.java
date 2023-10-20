@@ -14,9 +14,8 @@ class ComputerServiceTest {
     @Test
     @DisplayName("상대방(컴퓨터) 3자리 숫자 생성 확인")
     void createComputerNumber() {
-        
-        computerService.initComputer();
-        String computerNumber = computerService.getComputerNumber();
+    
+        String computerNumber = computerService.initComputer();
         int computerNumberLength = computerNumber.length();
         
         assertThat(computerNumberLength).isEqualTo(3);
@@ -25,9 +24,8 @@ class ComputerServiceTest {
     @Test
     @DisplayName("상대방(컴퓨터) 3자리 숫자 중복 확인")
     void validateComputerNumber() {
-        
-        computerService.initComputer();
-        String computerNumber = computerService.getComputerNumber();
+    
+        String computerNumber = computerService.initComputer();
         
         assertEquals(BASEBALL_NUMBERS_SIZE, computerNumber.length());
     }
