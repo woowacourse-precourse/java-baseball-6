@@ -8,17 +8,18 @@ import static baseball.exception.ExceptionMessage.*;
 public class InputValidator {
 
     private final int VALID_LENGTH = 3;
+    private final int VALID_END_LENGTH = 1;
 
     public int validEndNumber(String input) {
         validateIncludeChar(input);
-        validateInvalidLength(input);
+        validateInvalidLength(input, VALID_END_LENGTH);
         int endNum = validateNumberRange(input);
 
         return endNum;
     }
 
     public List<Integer> validateInputNumbers(String input) {
-        validateInvalidLength(input);
+        validateInvalidLength(input, VALID_LENGTH);
         validateIncludeChar(input);
         List<Integer> inputNumbers = validateNumber(input);
 
@@ -31,8 +32,8 @@ public class InputValidator {
         }
     }
 
-    private void validateInvalidLength(String input) {
-        if (input.length() != VALID_LENGTH) {
+    private void validateInvalidLength(String input, int length) {
+        if (input.length() != length) {
             throw new IllegalArgumentException(INVALID_INPUT_LENGTH_ERROR.getErrorMsg());
         }
     }
@@ -49,11 +50,13 @@ public class InputValidator {
     }
 
     private void validateNumberRange(List<Integer> inputNumbers) {
-        inputNumbers.stream()
-                .filter(num -> num >= 1 || num <= 9)
-                .findAny().ifPresent(i -> {
-                    throw new IllegalArgumentException(INVALID_RANGE_OUT_NUMBER_ERROR.getErrorMsg());
-                });
+        long count = inputNumbers.stream()
+                .filter(num -> num >= 1 && num <= 9)
+                .count();
+
+        if (count != VALID_LENGTH) {
+            throw new IllegalArgumentException(INVALID_RANGE_OUT_NUMBER_ERROR.getErrorMsg());
+        }
     }
 
     private int validateNumberRange(String input) {
