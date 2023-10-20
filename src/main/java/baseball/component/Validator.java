@@ -24,4 +24,17 @@ public class Validator {
         }
         this.strike = strike;
     }
+
+    /**
+     * 스트라이크 갯수를 이용하여 볼의 갯수를 계산하므로 스트라이크 계산 메서드를 선 호출 해야 함.
+     */
+    private void calculateBall(List<Integer> numbers) {
+        int ball = 0;
+        for (int i = 0 ; i < NUMBER_SIZE ; i++) {
+            if (target.contains(numbers.get(i))) {
+                ball++;
+            }
+        }
+        this.ball = ball - strike;
+    }
 }
