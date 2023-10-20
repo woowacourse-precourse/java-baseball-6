@@ -1,6 +1,6 @@
 package controller;
 
-import Service.AnswerCreator;
+import service.AnswerCreator;
 import views.InputView;
 
 public class Controller {

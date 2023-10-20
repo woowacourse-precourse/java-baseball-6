@@ -1,6 +1,6 @@
 package views;
 
-import Service.Validator;
+import service.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
