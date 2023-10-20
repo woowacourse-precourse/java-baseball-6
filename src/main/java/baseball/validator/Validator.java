@@ -50,7 +50,7 @@ public class Validator {
     }
 
     public static void isValidGameOption(String input) {
-        if (input.equals("1") || input.equals("2")) {
+        if (!(input.equals("1") || input.equals("2"))) {
             throw new IllegalArgumentException("게임 재시작은 1,종료는 2를 입력하세요. 잘못된 값이 입력되었습니다.");
         }
     }

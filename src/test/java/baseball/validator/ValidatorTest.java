@@ -9,6 +9,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidatorTest {
 
     @Test
+    void 재시작_종료_옵션_검증() {
+        // 입력값이 1 또는 2가 아닌 경우
+        assertThatThrownBy(() -> Validator.isValidGameOption("3")).isInstanceOf(IllegalArgumentException.class);
+
+        // 정상적인 입력값인 경우
+        assertDoesNotThrow(() -> Validator.isValidGameOption("1"));
+        assertDoesNotThrow(() -> Validator.isValidGameOption("2"));
+    }
+    @Test
     void 사용자에게_입력받은_값_검증() {
         // length가 3이 아닌 경우
         assertThatThrownBy(() -> Validator.isValidNumbers("1244")).isInstanceOf(IllegalArgumentException.class);
