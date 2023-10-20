@@ -16,6 +16,44 @@ public class Application {
             String input = Console.readLine().strip();
             checkInput(input);
 
+            compare(input, computerNum);
+        }
+    }
+
+    private static void compare(String input, String computerNum) {
+        int strikeCnt = 0;
+        int ballCnt = 0;
+        StringBuilder sb = new StringBuilder();
+
+        for (int i=0; i<input.length(); i++) {
+            for (int j=0; j<computerNum.length(); j++) {
+                if (input.charAt(i) == computerNum.charAt(j)) {
+                    if (i == j) {
+                        strikeCnt++;
+                    } else {
+                        ballCnt++;
+                    }
+                }
+            }
+        }
+
+        if (strikeCnt==3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } else {
+            if (ballCnt==0 && strikeCnt==0) {
+                sb.append("낫싱");
+            } else {
+                if (ballCnt!=0) {
+                    sb.append(ballCnt + "볼 ");
+                }
+
+                if (strikeCnt!=0) {
+                    sb.append(strikeCnt + "스트라이크");
+                }
+            }
+
+            System.out.println(sb);
             System.out.println(computerNum);
         }
     }
