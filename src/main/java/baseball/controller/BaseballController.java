@@ -20,5 +20,7 @@ public class BaseballController {
     public void startBaseballGame() {
         outputView.printStartGameMessage();
         List<Integer> numbers = baseballNumberGenerator.generateNumbers();
+        List<Integer> inputNumbers = inputView.readThreeInputNumbers();
+        System.out.println("inputNumbers = " + inputNumbers);
     }
 }
