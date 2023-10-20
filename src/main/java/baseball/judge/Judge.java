@@ -41,14 +41,14 @@ public class Judge {
             return "3스트라이크";
         }
 
-        if (strikes > 0) {
-            result += strikes + "스트라이크";
-        }
         if (balls > 0) {
+            result += balls + "볼";
+        }
+        if (strikes > 0) {
             if (!result.isEmpty()) {
                 result += " ";
             }
-            result += balls + "볼";
+            result += strikes + "스트라이크";
         }
         if (strikes == 0 && balls == 0) {
             result = "낫싱";
