@@ -20,50 +20,63 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test //입력 값이 3자리 초과 경우
-    void 예외_테스트1() {
+    @Test
+    void 입력_길이_예외_테스트() {
+
+        //입력 값이 3자리 초과인 경우
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+
+        //입력 값이 1자리인 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        //입력 값이 2자리인 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
-    @Test //입력 값에 문자가 포함된 경우
-    void 예외_테스트2() {
+    @Test
+    void 숫자_입력_예외_테스트() {
+        //입력 값에 문자가 포함된 경우
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("a12"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
-    }
 
-    @Test // 입력 값 음수인 경우
-    void 예외_테스트3() {
+        //개행 문자 입력시
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("-123"))
+                assertThatThrownBy(() -> runException("\n"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
-    @Test // 입력 값에 0 포함인 경우
-    void 예외_테스트4() {
+    @Test
+    void 숫자_입력_범위_예외_테스트() {
+        // 입력 값 음수인 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("-123"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        // 입력 값 0이 포함되는 경우
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("202"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
-    @Test //입력 값에 중복이 있는 경우
-    void 예외_테스트5() {
+    @Test
+    void 입력_중복_숫자_예외_테스트() {
+        //입력 값에 중복이 있는 경우
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("112"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test //입력 값 길이가 3자리 미만인 경우
-    void 예외_테스트6() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
