@@ -88,7 +88,7 @@ public class Baseball {
         Integer ballCount = 0;
         for (int i = 0; i < 3; ++i) {
             Integer number = userNumber.get(i);
-            if (answerNumber.contains(number)) {
+            if (answerNumber.contains(number) && !answerNumber.get(i).equals(number)) {
                 ballCount++;
             }
         }
