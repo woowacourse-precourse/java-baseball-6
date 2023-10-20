@@ -24,7 +24,20 @@ public class ResultCalculator {
         } else if (strikes == 0 && balls == 0) {
             return "낫싱";
         } else {
-            return balls + "볼 " + strikes + "스트라이크";
+            return generateResultString(balls, strikes);
         }
+    }
+
+    private String generateResultString(int balls, int strikes) {
+        StringBuilder result = new StringBuilder();
+
+        if (balls > 0) {
+            result.append(balls).append("볼 ");
+        }
+        if (strikes > 0) {
+            result.append(strikes).append("스트라이크");
+        }
+
+        return result.toString().trim();
     }
 }
