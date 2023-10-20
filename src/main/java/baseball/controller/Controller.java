@@ -44,13 +44,17 @@ public class Controller {
         service.endGame();
         outputView.printInsertCommand();
         Command command = inputView.insertCommand();
+        actByCommand(command);
+    }
+
+    private void actByCommand(Command command) {
         if (command == Command.RESTART) {
             service.restartGame();
             play();
+            return;
         }
-        if (command == Command.FINISH) {
-            outputView.printGameOver();
-        }
+
+        outputView.printGameOver();
     }
 
     private Balls insertNumberAndMakeBalls() {
