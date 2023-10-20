@@ -12,9 +12,9 @@
   -[ ] 게임 플레이어가 입력하는 숫자에 따라서 위의 결과를 출력하는 기능이 호출되는 **협력 관계**
   -[ ] 스트라이크가 나올 때까지 계속 반복해서 입력 받는 기능
 -[ ] 게임이 종료되면 게임을 다시 시작하거나 완전히 종료시키는 기능
--[ ] 사용자가 잘못된 입력을 할 경우 `IllegalArgumentException`을 발생시키는 기능
+-[x] 사용자가 잘못된 입력을 할 경우 `IllegalArgumentException`을 발생시키는 기능
   - [x] 숫자가 아닌 다른 문자열을 입력한 경우
-  - [ ] 자릿수가 일치하지 않는 경우
+  - [x] 자릿수가 일치하지 않는 경우
 
 ## 객체 도메인
 * InputView
@@ -31,16 +31,21 @@
   * void willContinue()
   * void exit()
 * Service
-  * Result calculateResult(String inputtedNumbers)
+  * void initData(String inputtedNumbers)
+  * private void initResult()
+  * Result calculateResult()
 * GamePlayer
   * List<Integer> threeNumbers
-  * void inputThreeNumberString(String inputtedString)
+  * void initThreeNumbers(String inputtedNumbers)
+  * private void inputThreeNumberString(String inputtedString)
+  * private void flush()
   * List<Integer> getThreeNumbers()
 * Computer(상대방)
   * List<Integer> threeNumbers
   * void generateThreeNumbers()
   * List<Integer> getThreeNumbers()
 * Result
+  * initResult() 
   * int ballCount
   * int strikeCount
   * void addBall()

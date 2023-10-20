@@ -11,7 +11,12 @@ public class GamePlayer {
     private final Validator validator = new Validator();
     private final List<Integer> threeNumbers = new ArrayList<>();
 
-    public void inputThreeNumbersString(String inputtedNumbers) {
+    public void initThreeNumbers(String inputtedNumbers) {
+        if (threeNumbers.size() > 0) flushNumbers();
+        inputThreeNumbersString(inputtedNumbers);
+    }
+
+    private void inputThreeNumbersString(String inputtedNumbers) {
         // 정수로 변환 검증
         int parsedValidatedInt = validator.parseValidatedInt(inputtedNumbers);
         // 세자리 수가 맞는지 검증
@@ -23,6 +28,10 @@ public class GamePlayer {
             parsedValidatedInt = parsedValidatedInt % divisionBy;
             threeNumbers.add(parsedDigit);
         }
+    }
+
+    private void flushNumbers() {
+        threeNumbers.clear();
     }
 
     public List<Integer> getThreeNumbers() {
