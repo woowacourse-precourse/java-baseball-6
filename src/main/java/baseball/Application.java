@@ -24,7 +24,6 @@ public class Application {
                 }
             }
             // 스트라이크, 볼 개수 구하기
-            rules.init(0, 0);
             rules.countBallAndStrikes(com, player);
             // 결과 출력
             if (!rules.isThreeStrikes()) {

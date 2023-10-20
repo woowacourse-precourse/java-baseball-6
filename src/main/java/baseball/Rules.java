@@ -7,12 +7,13 @@ public class Rules {
     private int ball;
     private int strikes;
 
-    public void init(int num1, int num2) {
+    private void initBallsAndStrikes(int num1, int num2) {
         this.ball = 0;
         this.strikes = 0;
     }
 
     public void countBallAndStrikes(Computer com, List<Integer> player) {
+        initBallsAndStrikes(0, 0);
         for (Integer val : player) {
             int index = com.isInList(val);
             if (index < 0) {
