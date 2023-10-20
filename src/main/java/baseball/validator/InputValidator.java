@@ -28,17 +28,17 @@ public class InputValidator {
     //입력 값이 특정 길이 값이 아니거나 숫자로만 이루어지지 않은 경우 검사
     public void validateInput(String input, int limit) {
         if (!isEqualLengthLimit(input, limit)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력값의 길이는 "+limit+"이어야 합니다.");
         }
         if (!isContainOnlyDigit(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 값은 1~9 사이의 값이어야 합니다.");
         }
     }
 
     //입력 값이 1이거나 2인지 검사
     private void validateExitInput(String input) {
        if(!(input.equals("1")||input.equals("2"))){
-           throw new IllegalArgumentException();
+           throw new IllegalArgumentException("입력 값은 1또는 2어야 합니다.");
        }
     }
 
@@ -52,7 +52,7 @@ public class InputValidator {
         boolean hasDuplicate = input.stream().distinct().count() < input.size();
 
         if (hasDuplicate) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 값은 서로 다른 1~9 사이의 값이어야 합니다.");
         }
     }
 
