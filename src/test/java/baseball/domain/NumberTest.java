@@ -22,4 +22,14 @@ class NumberTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("숫자가 중복될 경우 예외가 발생한다.")
+    @Test
+    void validateDuplicateNumber() {
+        // given
+        List<Integer> numberList = List.of(1,1,2);
+        //when, then
+        assertThatThrownBy(() -> number.validateDuplicateNumber(numberList))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
