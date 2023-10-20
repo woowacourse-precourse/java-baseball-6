@@ -1,28 +1,15 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 
 public class GameService {
-    private static int[] setting() {
-        int order = 1;
-        int[] computer = new int[10];
-        while (order < 4) {
-            int randomNum = Randoms.pickNumberInRange(1, 9);
-            if (computer[randomNum] == 0) {
-                computer[randomNum] = order;
-                order += 1;
-            }
-        }
-        return computer;
-    }
 
     public static void run() {
-        int[] computer = setting();
+        Computer computer = new Computer();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
-            if (game(computer)) {
+            if (game(computer.getGoal())) {
                 break;
             }
         }
