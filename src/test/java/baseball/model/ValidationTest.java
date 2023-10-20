@@ -11,8 +11,18 @@ class ValidationTest {
         //given
         String inputNumber = "144";
 
-        //when
+        //then
         assertThatThrownBy(() -> Validation.validateSameNumber(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void 입력한_문자열에_문자가_포함되어_있으면_예외_발생() {
+        //given
+        String inputNumber = "14j";
+
+        //then
+        assertThatThrownBy(() -> Validation.validateThatInputIsNumeric(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
