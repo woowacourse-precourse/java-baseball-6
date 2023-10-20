@@ -12,13 +12,13 @@ public class Display {
     }
     public int[] getUserInput(){
         System.out.print("숫자를 입력해주세요 : ");
-        String trimedUserInput = Console.readLine().trim();
-        return splitUserInput(trimedUserInput);
+        return getSplitedUserInput(Console.readLine());
     }
-    public int[] splitUserInput(String input){
+    private int[] getSplitedUserInput(String input){
         int[] result = new int[3];
-        validateUserInputSize(input);
-        char[] userInputs = input.toCharArray();
+        String trimInput = input.trim();
+        validateUserInputSize(trimInput);
+        char[] userInputs = trimInput.toCharArray();
         boolean[] numberCheckArray = new boolean[10];
         for(int i = 0; i < 3; i++){
             validateIsNumber(userInputs[i]);
@@ -29,9 +29,13 @@ public class Display {
     }
     public boolean getRestartInput(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String trimRestartInput = Console.readLine().trim();
-        validateOneOrTwo(trimRestartInput);
-        if(trimRestartInput.equals("1")){
+        boolean oneOrTwo = getOneOrTwo(Console.readLine());
+        return oneOrTwo;
+    }
+    private boolean getOneOrTwo(String input){
+        String trimInput = input.trim();
+        validateOneOrTwo(trimInput);
+        if(trimInput.equals("1")){
             return true;
         }
         printEndText();
