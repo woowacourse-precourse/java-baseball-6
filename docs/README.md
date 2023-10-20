@@ -23,9 +23,9 @@
             - [ ] 해당 자리 숫자가 정답 숫자에 있고, 인덱스가 다르다 -> BALL
             - [ ] 위 2개의 일치하지 않는다. -> NOTHING
 
-    - [ ] ResultType List를 해석해서 판독 결과를 반환한다.
-        - [ ] STRIKE와 BALL이 하나도 없으면 그냥 NOTHING을 반환한다.
-        - [ ] STRIKE와 BALL이 하나라도 있다면 그 개수만큼 반환한다.
+    - [x] HintType List를 해석해서 판독 결과를 반환한다.
+        - [x] STRIKE와 BALL이 하나도 없으면 그냥 NOTHING을 반환한다.
+        - [x] STRIKE와 BALL이 하나라도 있다면 그 개수만큼 반환한다.
 
 
 - [x] PlayerNumber : 플레이어가 입력한 숫자

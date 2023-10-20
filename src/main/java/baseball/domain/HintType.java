@@ -1,5 +1,5 @@
 package baseball.domain;
 
-public enum ResultType {
+public enum HintType {
     STRIKE, BALL, NOTHING;
 }
