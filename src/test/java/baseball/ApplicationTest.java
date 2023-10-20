@@ -19,7 +19,7 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
-
+git
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
