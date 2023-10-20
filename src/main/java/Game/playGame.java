@@ -97,4 +97,17 @@ public class playGame {
         }
     }
 
+    private boolean restart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputString = Console.readLine();
+        if(inputString.equals("1")){
+            return true;
+        }
+        else if(inputString.equals("2")){
+            return false;
+        }
+        else{
+            throw new IllegalArgumentException("잘못된 입력을 입력하셨습니다.");
+        }
+    }
 }
