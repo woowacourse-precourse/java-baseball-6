@@ -5,6 +5,10 @@ import java.util.StringJoiner;
 
 public class OutputView {
 
+    private static final String PLAY_RESULT_DELIMITER = " ";
+
+    private static final String STRIKE_DELIMITER = "\n";
+
     public static void printGameStartMessage() {
         System.out.println(ConsoleMessage.GAME_START.message);
     }
@@ -14,31 +18,33 @@ public class OutputView {
     }
 
     private static String formatPlayResult(final PlayResult result) {
+
         if (result.isNothing()) {
             return ConsoleMessage.RESULT_NOTHING.message;
         }
-        final StringJoiner sj = new StringJoiner(" ");
-        sj.add(formatBall(result));
-        sj.add(formatStrike(result));
-        return sj.toString()
+        final StringJoiner messages = new StringJoiner(PLAY_RESULT_DELIMITER);
+        messages.add(formatBall(result));
+        messages.add(formatStrike(result));
+        return messages.toString()
                 .strip();
     }
 
-    private static CharSequence formatBall(final PlayResult result) {
+    private static String formatBall(final PlayResult result) {
         return formatCountOf(Format.BALL, result.getBalls());
     }
 
     private static String formatStrike(final PlayResult result) {
-        final StringJoiner sj = new StringJoiner("\n");
-        sj.add(formatCountOf(Format.STRIKE, result.getStrikes()));
+        final StringJoiner messages = new StringJoiner(STRIKE_DELIMITER);
+        messages.add(formatCountOf(Format.STRIKE, result.getStrikes()));
 
         if (result.isAllStrike()) {
-            sj.add(ConsoleMessage.RESULT_ALL_STRIKE.message);
+            messages.add(ConsoleMessage.RESULT_ALL_STRIKE.message);
         }
-        return sj.toString();
+        return messages.toString();
     }
 
     private static String formatCountOf(final Format format, final long count) {
+
         if (count == 0L) {
             return "";
         }
@@ -55,7 +61,7 @@ public class OutputView {
             this.format = format;
         }
 
-        public String toMessage(Object... args) {
+        public String toMessage(final Object... args) {
             return String.format(format, args);
         }
     }
