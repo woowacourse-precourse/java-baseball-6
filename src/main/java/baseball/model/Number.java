@@ -13,6 +13,10 @@ public class Number {
 
     private String number;
 
+    protected Number() {
+
+    }
+
     private Number(String number) {
         validateNumber(number);
         validateNumberLength(number, NUMBER_LENGTH);

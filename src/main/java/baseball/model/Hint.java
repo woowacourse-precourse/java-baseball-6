@@ -9,16 +9,19 @@ public class Hint {
     private int ballCount;
     private int strikeCount;
 
-    public void updateHint(final Number playerNumber, final Number computerNumber) {
-        this.ballCount = playerNumber.countBallCount(computerNumber);
-        this.strikeCount = playerNumber.countStrikeCount(computerNumber);
+    protected Hint() {
+    }
+
+    public void update(final Number playerNumber, final Number computerNumber) {
+        ballCount = playerNumber.countBallCount(computerNumber);
+        strikeCount = playerNumber.countStrikeCount(computerNumber);
     }
 
     public boolean checkClear() {
         return strikeCount == NUMBER_LENGTH;
     }
 
-    public void printHint() {
+    public void print() {
         if (strikeCount == 0 && ballCount == 0) {
             OutputView.printNothing();
         }
