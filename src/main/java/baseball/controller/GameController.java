@@ -19,7 +19,7 @@ public class GameController {
 
     public static void play() {
         boolean playWant = true;
-        int computerNumber = NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
+        int computerNumber = selectNewNumber();
 
         StartView.welcome();
 
