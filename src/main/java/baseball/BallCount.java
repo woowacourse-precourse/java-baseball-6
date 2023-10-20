@@ -29,4 +29,5 @@ public record BallCount(long strike, long ball) {
         }
         return result;
     }
+
 }
