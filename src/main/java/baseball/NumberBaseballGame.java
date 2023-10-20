@@ -17,7 +17,7 @@ public class NumberBaseballGame {
     public void play() {
         boolean gameStatus = true;
         while (gameStatus) {
-            speaker(message.startMessage());
+            speaker(message.startMessage() + '\n');
             computer.setAnswer(answerMaker.makeThreeDifferentNumberList(1, 9)); // 정답 생성 후 컴퓨터에 저장
             oneRound();
             speaker(message.restartOrStopMessage());
@@ -33,13 +33,14 @@ public class NumberBaseballGame {
         boolean threeStrike = false;
         while (!threeStrike) {
             speaker(message.requestNumberMessage());
+            System.out.println(computer.getAnswer());
             List<Integer> userNumbers = userInput.makeUserInputToThreeNumbers();
             List<Integer> score = computer.countScore(userNumbers);
-            speaker(message.scoreMessage(score));
+            speaker(message.scoreMessage(score) + '\n');
             if (score.get(1) == 3) {
                 threeStrike = true;
             }
         }
-        speaker(message.successMessage());
+        speaker(message.successMessage() + '\n');
     }
 }
