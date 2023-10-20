@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import camp.nextstep.edu.missionutils.Console;
 
-public class Inputer {
+public class Inputter {
 
     public List<Integer> input() {
         String input;
