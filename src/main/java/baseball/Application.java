@@ -3,7 +3,6 @@ package baseball;
 import baseball.domain.Judge;
 import baseball.domain.NumbersGenerate;
 import baseball.string.MyConstants;
-import baseball.string.ValidConstants;
 import baseball.utill.Utill;
 import baseball.utill.ValidException;
 
@@ -15,7 +14,7 @@ public class Application {
     private static final int NOT_AGAIN_GAME = 2;
     private static final int WANT_AGAIN_GAME = 1;
     private static final int RESET_NUM = 0;
-    static String resultStr; // 결과를 담는 문자열
+    static String hintOfJudge; // 결과를 담는 문자열
 
     public static void main(String[] args) {
         List<Integer> computerList = new ArrayList<>(); // 컴퓨터의 3개의 랜덤 숫자 리스트
@@ -26,11 +25,11 @@ public class Application {
         while (true) {
             computerList = initGame(numbersGenerate);
 
-            // resultStr 이 3스트라이크 아니면 반복을 한다.
-            while (Utill.isNotSameString(resultStr, MyConstants.MSG_GAME_TERMINATION_CONDITION_STR())) {
+            // resultStr 이 "3스트라이크" 아니면 반복을 한다.
+            while (Utill.isNotSameString(hintOfJudge, MyConstants.MSG_GAME_TERMINATION_CONDITION_STR())) {
                 userList = inputRanNumOfUser(); // 1. 유저의 입력을 받아서 userList을 얻는다.
-                resultStr = judge.baseballGameInspection(computerList, userList); // 2. judge의 힌트를 얻는다.
-                System.out.println(resultStr); // 3. 힌트를 출력한다.
+                hintOfJudge = judge.baseballGameInspection(computerList, userList); // 2. judge의 힌트를 얻는다.
+                System.out.println(hintOfJudge); // 3. 힌트를 출력한다.
             }
 
             if (isNotProceedGame()) { // 4.게임의 종료 상황을 알려주고, 4.1 숫자 2을 누르면 게임 종료 진행
@@ -45,7 +44,7 @@ public class Application {
      * @return
      */
     private static List<Integer> initGame(NumbersGenerate numbersGenerate) {
-        resultStr = MyConstants.RESET_STRING(); // 결과 리셋
+        hintOfJudge = MyConstants.RESET_STRING(); // 결과 리셋
         return numbersGenerate.createRandomNumList(); // 컴퓨터의 3개의 랜덤 숫자 리스트
     }
 
@@ -83,13 +82,24 @@ public class Application {
         String numInputOfUser = Utill.inputNum(); // 2. 숫자 입력을 받는다.
 
         // 3. 입력을 받은 문자렬을 split을 한다음 inputList에 추가를 한다. => [ 1, 2, 3]
+        addNumber2InputList(inputList, numInputOfUser);
+
+        return inputList;
+    }
+
+    /**
+     * 입력 받은 문자열 "123"을 InputList에 1, 2, 3 을 추가한다.
+     *
+     * @param inputList      입력받는 문자열을 추가한 리스트 {1, 2, 3}
+     * @param numInputOfUser 입력받는 문자열 "123"
+     */
+    private static void addNumber2InputList(List<Integer> inputList, String numInputOfUser) {
+        String[] inputStrArr;
         inputStrArr = numInputOfUser.split("");
 
         for (String s : inputStrArr) {
             int numParseInt = Integer.valueOf(s);
             inputList.add(numParseInt);
         }
-
-        return inputList;
     }
 }
