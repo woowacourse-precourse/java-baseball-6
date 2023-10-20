@@ -40,7 +40,7 @@ public class Application {
         return intArray;
     }
 
-    // 컴퓨터가 생성한 임의의 수 3자리
+    // 컴퓨터가 임의의 수 3자리를 생성하는 기능
     public List<Integer> randomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
