@@ -1,12 +1,10 @@
 package baseball.model;
 
-import java.util.Scanner;
-
 public class UserNumber {
-    private final String inputNumber;
+    private String inputNumber;
 
-    public UserNumber() {
-        this.inputNumber = String.valueOf(new Scanner(System.in));
+    public UserNumber(String inputNumber) {
+        this.inputNumber = inputNumber;
     }
 
     public String getInputNumber() {
