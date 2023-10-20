@@ -1,5 +1,9 @@
 package baseball;
 
+import static baseball.GameOption.BASEBALL_END_NUMBER;
+import static baseball.GameOption.BASEBALL_SIZE;
+import static baseball.GameOption.BASEBALL_START_NUMBER;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,8 +38,11 @@ public class Validator {
 
     private static void validateNumber(String value) {
         for (int i = 0; i < value.length(); i++) {
-            if (value.charAt(i) < '1' || value.charAt(i) > '9') {
-                throw new IllegalArgumentException("1에서 9까지 서로 다른 임의의 수 3개를 선택해야합니다.");
+            if (value.charAt(i) < BASEBALL_START_NUMBER + '0' || value.charAt(i) > BASEBALL_END_NUMBER + '0') {
+                throw new IllegalArgumentException(
+                        BASEBALL_START_NUMBER + "에서 " +
+                                BASEBALL_END_NUMBER + "까지 서로 다른 임의의 수 " +
+                                BASEBALL_SIZE + "개를 선택해야합니다.");
             }
         }
     }

@@ -1,5 +1,8 @@
 package baseball;
 
+import static baseball.GameOption.BASEBALL_END_NUMBER;
+import static baseball.GameOption.BASEBALL_START_NUMBER;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +14,7 @@ public class Computer {
     public Computer() {
         answer = new ArrayList<>();
         while (answer.size() < GameOption.BASEBALL_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(BASEBALL_START_NUMBER, BASEBALL_END_NUMBER);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }
