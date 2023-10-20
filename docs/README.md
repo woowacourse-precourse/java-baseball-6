@@ -121,14 +121,16 @@
 
 ### 들여쓰기 최대 하나로 제한하기
 
-- [ ] Computer.strikeCounts
-- [ ] Computer.ballCounts
+- [X] Computer.strikeCounts
+- [X] Computer.ballCounts
+    - 두 경우 모두 BallCounts 라는 클래스를 만들어 해결했다.
 
 ### 모든 원시값과 문자열 Wrapping 하기
 
-- [ ] Player 에서 인풋 부분
-    - [ ] Ball 이라는 클래스를 만들고
-    - [ ] Ball 을 Computer 에 전달
+- [X] Player 에서 인풋 부분
+    - [X] Ball 이라는 클래스를 만들고
+    - [X] Ball 을 Computer 에 전달
+    - [ ] option 도 마찬가지고 Option 이라는 클래스 만들기
 
 ### 일급 콜렉션 사용하기
 
@@ -138,14 +140,14 @@
 
 - [ ] 패키지 나누기
 - [ ] 기능들 추출하기
-    - [ ] Computer 내부의 볼카운트 로직 추출
+    - [X] Computer 내부의 볼카운트 로직 추출
 
 ### 추가할 클래스 정리
 
 - [X] Ball
     - Player 의 입력을 소유하고있는 Wrapper
     - Computer 의 numbers 또한 이로 대체
-- [ ] BallCounts
+- [X] BallCounts
     - Computer 내부에 있던 ballCounts, strikeCounts 의 Wrapper
 - [X] Referee
     - Ball 을 받았을 때, 몇 볼, 몇 스트라이크인 지 판단
