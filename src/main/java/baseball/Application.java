@@ -1,7 +1,19 @@
 package baseball;
 
+import java.util.List;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        PrintGuide printGuide = new PrintGuide();
+        NumberMaker numberMaker = new NumberMaker();
+
+        printGuide.printGameStart();
+
+        List<Integer> randomNumbers = numberMaker.makeRandomNumbers();
+        System.out.println(randomNumbers);
+
+
     }
 }
