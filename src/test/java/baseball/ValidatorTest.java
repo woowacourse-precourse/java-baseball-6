@@ -38,4 +38,15 @@ public class ValidatorTest {
     void 숫자_자리수를_미만으로_입력한_경우() {
         assertThat(validator.isValidNumber("12")).isFalse();
     }
+
+    @Test
+    void 클리어_후_숫자가_아닌_값을_입력한_경우() {
+        assertThat(validator.isOneOrTwo("a")).isFalse();
+    }
+
+    @Test
+    void 클리어_후_범위가_아닌_값을_입력한_경우() {
+        assertThat(validator.isOneOrTwo("3")).isFalse();
+    }
+
 }
