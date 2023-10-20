@@ -18,8 +18,12 @@ class BaseballGameTest {
 
     @BeforeEach
     void setUp() {
-        Balls computerBalls = new Balls(List.of(1, 2, 3));
-        baseballGame = new BaseballGame(computerBalls);
+        baseballGame = new BaseballGame() {
+            @Override
+            protected List<Integer> createRandomNumbers() {
+                return List.of(1, 2, 3);
+            }
+        };
     }
 
     @ParameterizedTest
