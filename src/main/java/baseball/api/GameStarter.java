@@ -28,7 +28,7 @@ public class GameStarter {
         while (true){
             System.out.print(PLAY_MESSAGE);
             respondToUserGuess();
-
+            Computer.hintMessage(count.getStrikeCount(), count.getBallCount());
             if(isResult()){
                 System.out.println(COMPLETE_MESSAGE);
                 System.out.println(END_MESSAGE);
@@ -43,7 +43,6 @@ public class GameStarter {
         count = new Count();
         IntStream.range(0, length)
                 .forEach(i -> processGuessDigit(input, result, i));
-        Computer.hintMessage(count.getStrikeCount(), count.getBallCount());
     }
 
     private void processGuessDigit(String input, String result, int index){
