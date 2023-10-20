@@ -22,13 +22,13 @@ public class InputView {
 	}
 
 	public void inputDigitValidate(String inputValue) {
-		Validator.validateDigitFormat(inputValue);
+		Validator.validateNumberFormat(inputValue);
 		Validator.validateOutOfLength(inputValue);
 		Validator.validateDuplicatedNumber(inputValue);
 	}
 
 	public void inputCommandValidate(String inputValue) {
-		Validator.validateDigitFormat(inputValue);
+		Validator.validateNumberFormat(inputValue);
 		Validator.validateContinueCommand(inputValue);
 	}
 }

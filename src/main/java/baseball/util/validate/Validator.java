@@ -11,7 +11,7 @@ public class Validator {
 	private static final Pattern DIGIT_PATTERN = Pattern.compile("^[1-9]*$");
 	private static final int LENGTH = 3;
 
-	public static void validateDigitFormat(String inputValue) {
+	public static void validateNumberFormat(String inputValue) {
 		if (!DIGIT_PATTERN.matcher(inputValue).matches()) {
 			throw new IllegalArgumentException(ErrorMessage.INPUT_LETTER_ERROR.getMessage());
 		}
