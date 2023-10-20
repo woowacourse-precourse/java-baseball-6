@@ -61,4 +61,19 @@ class InputValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력값은 서로 다른 정수여야 합니다.");
     }
+
+    @Test
+    @DisplayName("재입력된 값이 1 또는 2인지 테스트")
+    void validateOneOrTwoTest() {
+        // given
+        InputValidation inputValidation = new InputValidation();
+
+        // when
+        int incorrectRetryValue = 77;
+
+        // then
+        assertThatThrownBy(() -> inputValidation.validateOneOrTwo(incorrectRetryValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("재입력 값은 1 또는 2여야 합니다.");
+    }
 }
