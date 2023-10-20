@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -10,9 +11,30 @@ public class Player {
     private List<Integer> expectedNumbers;
 
     public void changeExpectedNumbers(String numbers) {
-        Set<Integer> notDuplicateNumbers = checkDuplicated(numbers);
-        validateNumberSize(notDuplicateNumbers);
-        expectedNumbers.addAll(notDuplicateNumbers);
+        initExpectedNumbers();
+        validateExpectedNumbers(numbers);
+        expectedNumbers = getExpectedNumbers(numbers);
+    }
+
+    private void initExpectedNumbers() {
+        expectedNumbers = new ArrayList<>();
+    }
+
+    private void validateExpectedNumbers(String numbers){
+        validateNumberSize(numbers);
+        validateDuplicateNumber(numbers);
+    }
+
+    private void validateNumberSize(String numbers) {
+        if (numbers.length() != BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue()){
+            throw new IllegalArgumentException(ErrorMessage.INPUT_ONE_TO_NINE_DIFFERENT_THREE_NUMBERS.getMessage());
+        }
+    }
+
+    private void validateDuplicateNumber(String numbers) {
+        if (checkDuplicated(numbers).size() != BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue()){
+            throw new IllegalArgumentException(ErrorMessage.INPUT_ONE_TO_NINE_DIFFERENT_THREE_NUMBERS.getMessage());
+        }
     }
 
     private Set<Integer> checkDuplicated(String numbers){
@@ -21,12 +43,13 @@ public class Player {
                 .collect(Collectors.toSet());
     }
 
-    private void validateNumberSize(Set<Integer> numbers) {
-        if (numbers.size() != BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue()){
-            throw new IllegalArgumentException(ErrorMessage.INPUT_ONE_TO_NINE_DIFFERENT_THREE_NUMBERS.getMessage());
-        }
+    private List<Integer> getExpectedNumbers(String numbers) {
+        return numbers.chars()
+                .filter(Character::isDigit)
+                .map(Character::getNumericValue)
+                .boxed()
+                .toList();
     }
-
 
     public long compareBallCount(List<Integer> baseballNumbers) {
         return expectedNumbers.stream()
