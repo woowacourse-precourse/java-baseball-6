@@ -12,6 +12,8 @@ public class Application {
 
         computerNums = choiceComputerNums();
         printComputerNums(computerNums);
+        userResult = calculateResult(computerNums, userNums);
+
 
         userNums = inputUserNums();
 
@@ -49,6 +51,34 @@ public class Application {
         Nums.add(number % 10);
         return Nums;
     }
+
+    public static List<Integer> calculateResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        List<Integer> result = new ArrayList<>();
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (userNumbers.get(i).equals(computerNumbers.get(i))) {
+                strike++;
+            } else if (contains(userNumbers.get(i), computerNumbers)) {
+                ball++;
+            }
+        }
+
+        result.add(strike);
+        result.add(ball);
+        return result;
+    }
+
+    private static boolean contains(int number, List<Integer> nums) {
+        for (int i : nums) {
+            if (i == number) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 }
 
