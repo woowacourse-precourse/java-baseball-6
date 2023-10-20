@@ -2,46 +2,37 @@ package util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+
 public class NumbersUtil {
 
-    private final int[] numbers;
-    private final boolean[] numberFlag;
+    private final ArrayList<Integer> numbers;
 
     private boolean gameSet;
 
     public NumbersUtil() {
-        numbers = new int[3];
-        numberFlag = new boolean[10];
+        numbers = new ArrayList<>();
     }
 
     public void clear() {
-        for(int i = 0; i < 3; i++) {
-            numberFlag[numbers[i]] = false;
-        }
+        gameSet = false;
+        numbers.clear();
     }
 
     public void setNumbers() {
-        setNumbers(0);
-    }
-
-    private void setNumbers(int idx) {
-        if(idx == 3) { return; }
-        int number = Randoms.pickNumberInRange(0, 8) + 1;
-        if(numberFlag[number]) {
-            setNumbers(idx);
-        } else {
-            numberFlag[number] = true;
-            numbers[idx] = number;
-            setNumbers(idx + 1);
+        while (numbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
         }
     }
-
     public int[] ballCount(int[] numbers) {
         int[] ballStrike = new int[2];
         for(int i = 0; i < 3; i++) {
-            if(this.numbers[i] == numbers[i]) {
+            if(this.numbers.get(i) == numbers[i]) {
                 ballStrike[1]++;
-            }else if(numberFlag[numbers[i]]) {
+            }else if(this.numbers.contains(numbers[i])) {
                 ballStrike[0]++;
             }
         }
@@ -50,5 +41,4 @@ public class NumbersUtil {
     }
 
     public boolean getGameSet() { return gameSet; }
-
 }
