@@ -3,7 +3,7 @@ package baseball.domain;
 import java.util.List;
 
 public final class AnswerNumbers {
-    private static final int NUMBER_SIZE = 3;
+    static final int NUMBER_SIZE = 3;
 
     private final List<Integer> answerNumbers;
 
