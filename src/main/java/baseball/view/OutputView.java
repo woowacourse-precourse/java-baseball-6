@@ -8,13 +8,16 @@ public class OutputView {
 
     private OutputView() {
     }
-    public static void printStartMessage(){
-        System.out.println(START_MESSAGE );
+
+    public static void printStartMessage() {
+        System.out.println(START_MESSAGE);
     }
-    public static void printResult(String result){
+
+    public static void printResult(String result) {
         System.out.println(result);
     }
-    public static void printEndMessage(){
+
+    public static void printEndMessage() {
         System.out.println(END_MESSAGE);
     }
 
