@@ -9,13 +9,19 @@ public class Hint {
     private int ball = 0;
 
     public Hint(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        countStrike(computerNumbers, playerNumbers);
+        countStrikeAndBall(computerNumbers, playerNumbers);
     }
 
-    private void countStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    private void countStrikeAndBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         for(int i=0; i<NUMBER_SIZE; i++) {
-            if(playerNumbers.get(i).equals(computerNumbers.get(i)))
+            if(playerNumbers.get(i).equals(computerNumbers.get(i))) {
                 strike++;
+                continue;
+            }
+
+           if(computerNumbers.contains(playerNumbers.get(i))) {
+               ball++;
+            }
         }
     }
 }
