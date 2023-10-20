@@ -34,7 +34,7 @@ public class GameControllerTest {
         GameController controller=new GameController();
 
         //when&then
-        assertThatThrownBy(()->controller.validateOption(input))
+        assertThatThrownBy(()->controller.isContinue(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

@@ -9,8 +9,13 @@ public class GameController {
     public Numbers convertToNumbers(String values){
         return new Numbers(values);
     }
+    public boolean isContinue(String input){
+        validateOption(input);
 
-    public void validateOption(String input){
+        return input.equals("1");
+    }
+
+    private void validateOption(String input){
         validateSize(input);
         validateType(input);
     }
@@ -26,11 +31,4 @@ public class GameController {
             throw new IllegalArgumentException("값은 1 또는 2이어야 합니다.");
         }
     }
-
-    public boolean isContinue(String input){
-        validateOption(input);
-
-        return input.equals("1");
-    }
-
 }
