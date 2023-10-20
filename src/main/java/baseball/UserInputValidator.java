@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Constants.SIZE_OF_DIGITS;
+import static baseball.Constants.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class UserInputValidator {
     }
 
     private boolean isValid() {
-        return isInputSizeValid() && !isInputDuplicated() && isInputTypeNumber();
+        return isInputSizeValid() && !isInputDuplicated() && isInputDigitValid();
     }
 
     private boolean isInputSizeValid() {
@@ -35,12 +35,17 @@ public class UserInputValidator {
         return userInputCharHashSet.size() != userInputCharList.size();
     }
 
-    private boolean isInputTypeNumber() {
+    private boolean isInputDigitValid() {
         for (Character c : userInputCharList) {
-            if (!Character.isDigit(c)) {
+            if (!(Character.isDigit(c) && isInputInRange(c))) {
                 return false;
             }
         }
         return true;
+    }
+
+    private boolean isInputInRange(Character c) {
+        int number = Character.getNumericValue(c);
+        return NUMBER_LOWER_BOUND.getValue() <= number && number <= NUMBER_UPPER_BOUND.getValue();
     }
 }
