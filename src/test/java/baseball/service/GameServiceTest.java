@@ -5,6 +5,7 @@ import baseball.domain.GameResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.*;
@@ -14,7 +15,7 @@ class GameServiceTest {
     GameService gameService;
     @BeforeEach
     void beforeEach() {
-        BaseballGame baseballGame = new BaseballGame(Arrays.asList(1,3,6));
+        BaseballGame baseballGame = new BaseballGame(new ArrayList<>(Arrays.asList(1, 3, 6)));
         gameService = new GameService(baseballGame);
     }
     @Test
@@ -26,6 +27,13 @@ class GameServiceTest {
         GameResult result2 = gameService.getResult("136");
         assertThat(result2.getStrike()).isEqualTo(3);
         assertThat(result2.getBall()).isEqualTo(0);
+    }
+
+    @Test
+    void 컴퓨터의_숫자_새로_초기화() {
+        gameService.restart();
+        GameResult result = gameService.getResult("136");
+        assertThat(result.getStrike()).isNotEqualTo(3);
     }
 
 }
