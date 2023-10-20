@@ -34,7 +34,11 @@ public class GameService {
         return strikeBallCount.getBall();
     }
 
-    private int[] toIntArray(String inputPlayerNumber) {
+    public void printStrikeBallCount() {
+        outPutView.printStrikeBallCountMessage(getStrikeCount(), getBallCount());
+    }
+
+    public int[] toIntArray(String inputPlayerNumber) {
         int[] playerNumbers = new int[inputPlayerNumber.length()];
         for (int i = 0; i < inputPlayerNumber.length(); i++) {
             char storeNumber = inputPlayerNumber.charAt(i);
