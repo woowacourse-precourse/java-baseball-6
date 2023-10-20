@@ -26,15 +26,6 @@ public class Result {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Result{" +
-            "strikeCount=" + strikeCount +
-            ", ballCount=" + ballCount +
-            '}';
-    }
-
-
     public String resultToString(){
         if(ballCount == 0 && strikeCount == 0) {
             return NOTHING_MESSAGE;
