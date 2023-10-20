@@ -2,11 +2,10 @@ package baseball.game;
 
 import baseball.view.Console;
 
-import java.util.List;
 
 public class Computer {
 
-    private List<Integer> numbers;
+    private static String computerNumber;
     private boolean assigned = false;
 
     public Computer(){
@@ -18,11 +17,11 @@ public class Computer {
             return;
         }
 
-        numbers = Console.input3DigitRandomNumber();
+        computerNumber = Console.input3DigitRandomNumber();
         assigned = true;
     }
 
-    public List<Integer> getNumber() {
-        return numbers;
+    public String getNumber() {
+        return computerNumber;
     }
 }
