@@ -12,6 +12,10 @@ public class InputView {
         return Console.readLine();
     }
 
+    public static String readRestartNumberInput(){
+        return Console.readLine();
+    }
+
 
 
 
