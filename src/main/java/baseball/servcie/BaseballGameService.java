@@ -14,13 +14,27 @@ public class BaseballGameService {
     private final int NO_HIT = 0;
     private final int ALL_STRIKE = 3;
 
+    public void playGame(){
+        List<Integer> computerBaseBallNumber = initComputerBaseBallNumber();
+
+        boolean check = false;
+
+        while(!check) {
+            List<Integer> userNumberList = userReadNumber();
+
+            check = compareNumber(userNumberList, computerBaseBallNumber);
+        }
+
+    }
+
     public void checkRestart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String checkString = Console.readLine();
 
         if (!Arrays.asList("1", "2").contains(checkString))
             throw new IllegalArgumentException();
-
+        if(checkString.equals("1"))
+            playGame();
     }
 
     public List<Integer> initComputerBaseBallNumber() {
