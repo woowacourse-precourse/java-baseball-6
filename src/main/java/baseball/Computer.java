@@ -12,7 +12,7 @@ public class Computer {
     public static Computer getComputerWithRandomAnswer(){
         Computer computer = new Computer();
         computer.generateAnswer();
-        return new Computer();
+        return computer;
     }
 
     private Computer() {
