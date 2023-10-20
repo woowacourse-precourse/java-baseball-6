@@ -10,6 +10,6 @@ public class Controller {
         GameCompare gameCompare = new GameCompare();
         gameCompare.compareBall(randomNum, inputNum);
         gameCompare.compareStrike(randomNum, inputNum);
-        
+        OutputView.showResult(gameCompare.getball(),gameCompare.getstrike());
     }
 }
