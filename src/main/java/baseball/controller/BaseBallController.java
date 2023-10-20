@@ -14,8 +14,6 @@ import baseball.view.ConsolePrint;
 
 public class BaseBallController {
 
-
-    private OverallGameStatus overallGameStatus;
     private BaseBallView baseBallView;
     private Computer computer;
     private Player player;
@@ -28,14 +26,16 @@ public class BaseBallController {
     }
 
     private void init() {
-        baseBallView.startGameView();
-        overallGameStatus = OverallGameStatus.CONTINUE;
         baseBallView = BaseBallView.create();
         computer = Computer.create();
         player = Player.create();
     }
 
     private void startMainGame() {
+        baseBallView.startGameView();
+
+        OverallGameStatus overallGameStatus = OverallGameStatus.CONTINUE;
+
         while (overallGameStatus.isContinue()) {
             computer.resetNumbers();
 
