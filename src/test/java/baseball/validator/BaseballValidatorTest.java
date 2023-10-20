@@ -1,13 +1,8 @@
 package baseball.validator;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
-
 
 class BaseballValidatorTest extends BaseballValidator{
     private static final String SIZE_EXCEPTION ="3개의 숫자를 입력해야 합니다.";
@@ -50,10 +45,10 @@ class BaseballValidatorTest extends BaseballValidator{
         int i2 = 0;
         int i3 = 8;
         int i4 = 15;
-        testretryException(i1,RETRY_EXCEPTION);
-        testretryException(i2,RETRY_EXCEPTION);
-        testretryException(i3,RETRY_EXCEPTION);
-        testretryException(i4,RETRY_EXCEPTION);
+        testRetryException(i1,RETRY_EXCEPTION);
+        testRetryException(i2,RETRY_EXCEPTION);
+        testRetryException(i3,RETRY_EXCEPTION);
+        testRetryException(i4,RETRY_EXCEPTION);
 
 
 
@@ -64,11 +59,9 @@ class BaseballValidatorTest extends BaseballValidator{
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
     }
-    private void testretryException(Integer num, String message) {
+    private void testRetryException(Integer num, String message) {
         assertThatThrownBy(() -> retryValidator(num))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
     }
-
-
 }

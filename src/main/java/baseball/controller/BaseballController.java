@@ -4,16 +4,11 @@ import baseball.domain.BallCount;
 import baseball.domain.Baseball;
 import baseball.domain.Computer;
 import baseball.domain.User;
-import baseball.service.BaseballService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
 import java.util.List;
 
 public class BaseballController {
-
-
-
     public static void run(){
         start();
     }
@@ -23,24 +18,24 @@ public class BaseballController {
         User user= new User(true);
         Computer computer = new Computer();
         do{
-            gameStart(user,computer);
-            retryGame(baseball);
+            gameStartRequest(user,computer);
+            whetherRetryGame(baseball);
         }
         while(baseball.isState());
         }
 
-    private static void gameStart( User user, Computer computer) {
+    private static void gameStartRequest( User user, Computer computer) {
         do{
             computer.createComputerBall();
-            playBall(user,computer);
+            playBaseball(user,computer);
         }
         while(user.retry());
     }
 
-    private static void playBall(User user, Computer computer) {
+    private static void playBaseball(User user, Computer computer) {
         BallCount ballCount = new BallCount(true);
         do{
-            user.setBaseball(inputNumber());
+            user.setBaseball(inputUserNumber());
             ballCount.initBallCount();
             ballCount.baseballGame(computer.getBaseball(), user.getBaseball());
             ballCount.strikeOut();
@@ -49,15 +44,11 @@ public class BaseballController {
         user.endGame();
         OutputView.endGame();
     }
-
-
-
-
-    private static void retryGame(Baseball baseball) {
+    private static void whetherRetryGame(Baseball baseball) {
         baseball.retryAndEnd(InputView.retryGame());
     }
-    //숫자 입력
-    public static List<Integer> inputNumber(){
+
+    public static List<Integer> inputUserNumber(){
         return InputView.inputNumber();
     }
 }

@@ -2,12 +2,9 @@ package baseball.domain;
 
 import baseball.validator.BaseballValidator;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
-//컴퓨터가 가지고 있는 3개의 랜덤 수
-//검증자를 상속받아 클래스 내부에서 검증
 public class Computer extends BaseballValidator {
     private static final Integer RANDOM_START = 1;
     private static final Integer RANDOM_END = 9;
@@ -20,11 +17,9 @@ public class Computer extends BaseballValidator {
         this.baseball = baseball;
     }
 
-
     public List<Integer> getBaseball() {
         return baseball;
     }
-
 
     public void createComputerBall(){
         List<Integer> computer = new ArrayList<>();

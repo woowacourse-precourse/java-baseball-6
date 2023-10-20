@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.view.OutputView;
-
 import java.util.List;
 
 public class BallCount {
@@ -22,18 +21,8 @@ public class BallCount {
     public BallCount(boolean strikeOut){
         this.strikeOut= strikeOut;
     }
-
     public boolean isStrikeOut() {
         return strikeOut;
-    }
-    public String getBallCount(){
-        if(this.strike == THREE_STRIKE_STRIKE && this.ball == THREE_STRIKE_BALL){
-            return THREE_STRIKE_STRING;
-        }
-        if(this.strike == NOTHING_STRIKE && this.ball == NOTHING_BALL){
-            return NOTHING_STRING;
-        }
-        return this.ball + BALL + this.strike + STRIKE;
     }
     public void setStrike(){
         this.strike += STRIKE_NUMBER;
@@ -44,6 +33,15 @@ public class BallCount {
     public void initBallCount(){
         this.strike=0;
         this.ball=0;
+    }
+    public String getBallCount(){
+        if(this.strike == THREE_STRIKE_STRIKE && this.ball == THREE_STRIKE_BALL){
+            return THREE_STRIKE_STRING;
+        }
+        if(this.strike == NOTHING_STRIKE && this.ball == NOTHING_BALL){
+            return NOTHING_STRING;
+        }
+        return this.ball + BALL + this.strike + STRIKE;
     }
     public void strikeOut(){
         if(this.strike == THREE_STRIKE_STRIKE && this.ball == THREE_STRIKE_BALL){
@@ -64,7 +62,4 @@ public class BallCount {
         OutputView.nowBallCount(getBallCount()
         );
     }
-
-
-
 }

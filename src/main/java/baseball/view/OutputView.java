@@ -7,8 +7,9 @@ public class OutputView {
     public static void startGame(){
         System.out.println(GAME_START);
     }
-    public static void endGame(){System.out.println(GAME_EXIT_MESSAGE);};
-
+    public static void endGame(){
+        System.out.println(GAME_EXIT_MESSAGE);
+    };
     public static void nowBallCount(String ballCount){
         System.out.println(ballCount);
     }
