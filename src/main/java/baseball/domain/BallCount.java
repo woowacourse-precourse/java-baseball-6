@@ -4,6 +4,11 @@ public class BallCount {
     private int ball;
     private int strike;
 
+    public BallCount(int ball, int strike) {
+        this.ball = ball;
+        this.strike = strike;
+    }
+
     public String comment() {
         StringBuilder stringBuilder = new StringBuilder();
         if(this.ball > 0) {
