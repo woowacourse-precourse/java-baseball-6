@@ -11,8 +11,6 @@ public class BaseRepositoryImpl implements BaseRepository {
 
     /**
      * 사용자가 입력한 번호를 List<Integer>로 반환
-     * @param myNumber
-     * @return List<Integer> myNumber
      */
     @Override
     public List<Integer> getMyNumber(String myNumber) {
@@ -22,9 +20,6 @@ public class BaseRepositoryImpl implements BaseRepository {
 
     /**
      * 스트라이크, 볼 집계
-     * @param baseNumber
-     * @param myNumber
-     * @return int[] result
      */
     @Override
     public int[] confirmNumber(List<Integer> baseNumber, List<Integer> myNumber) {
