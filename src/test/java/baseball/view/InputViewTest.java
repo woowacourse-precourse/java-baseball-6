@@ -27,4 +27,14 @@ public class InputViewTest {
         assertThat(view.inputNumbers()).isEqualTo(input);
     }
 
+    @DisplayName("사용자 게임 재시작 여부 입력 기능")
+    @Test
+    void 사용자_재시작_입력_테스트(){
+        String input="1";
+        InputStream in=new ByteArrayInputStream((input).getBytes());
+        System.setIn(in);
+
+        assertThat(view.inputContinue()).isEqualTo(input);
+    }
+
 }
