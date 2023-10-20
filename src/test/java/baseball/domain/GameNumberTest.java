@@ -55,7 +55,7 @@ class GameNumberTest {
     }
 
     @Test
-    @DisplayName("숫자가 아닌 입력으로 생성 시 예외")
+    @DisplayName("중복이 있는 입력으로 생성 시 예외")
     void createdByDuplicatedInput() {
         String input = "112";
 
