@@ -3,19 +3,19 @@ package baseball.domain;
 import java.util.Objects;
 
 public class Ball {
-    private final int ballNumber;
-    private final int position;
+    private final BallNumber ballNumber;
+    private final Position position;
 
     public Ball(int ballNumber, int position) {
-        this.ballNumber = ballNumber;
-        this.position = position;
+        this.ballNumber = new BallNumber(ballNumber);
+        this.position = new Position(position);
     }
 
     public BallStatus compare(Ball ball) {
         if (this.equals(ball)) {
             return BallStatus.STRIKE;
         }
-        if (this.ballNumber == ball.ballNumber) {
+        if (this.ballNumber.equals(ball.ballNumber)) {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
@@ -26,7 +26,7 @@ public class Ball {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ball ball = (Ball) o;
-        return ballNumber == ball.ballNumber && position == ball.position;
+        return Objects.equals(ballNumber, ball.ballNumber) && Objects.equals(position, ball.position);
     }
 
     @Override
