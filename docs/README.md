@@ -1,0 +1,29 @@
+## 필요한 기능 in baseballGame Class
+
+- 전역변수
+- cpuRandomNumber()
+    - CPU 랜덤숫자 3자리 정수 반환하는 메서드. List<Interger>
+- getPlayerNumber()
+    - 플레이어에게 3자리 정수 입력받아서 반환하는 메서드. List<Interger>
+- checkPlayerNumber()
+    - 플레이어가 입력한 값이 제대로 된 값인지 확인하는 메서드. boolean
+    - 잘못의 예)
+        - 숫자 이외의 값인지?
+        - 중복된 값인지?
+        - 4자리 이상을 입력했는지?
+- checkEndGame()
+    - 3 strike를 입력받으면 게임을 종료시키는 메서드 boolean
+    - 그 이외가 입력되면 playingGame 메서드를 다시 실행시킴
+- checkStrike(List<Integer>,List<Intrger>)
+    - 두 리스트를 비교해서 스트라이크의 갯수를 반환하는 메서드
+    - 반환형 int
+- checkNothing(List<Integer>,List<Intrger>)
+    - 두 리스트를 비교해서 볼의 갯수를 반환하는 메서드
+    - 반환형 String
+- checkBalls(List<Integer>,List<Intrger>)
+    - 두 리스트를 비교해서 낫싱인지 아닌지 체크하는 ㅔㅁ서드
+    - 반환형 int
+- playGameAgain(int)
+    - 게임을 다시 시작할지 말지 물어보는 메서드
+- playGame()
+    - 실제 게임이 이루어지는 메서드
