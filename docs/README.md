@@ -20,12 +20,12 @@
 - [x] 컴퓨터에게 랜덤 숫자3개를 주는 기능.
   - [x] `camp.nextstep.edu.missionutils.Randoms`에 있는 `pickNumberInRange()`를 활용한다.
 - 숫자를 입력받을 때 구현해야할 목록들
-  - [ ] 3개의 숫자들로 이루어져 있는가
-  - [ ] 서로다른 숫자인가
-    - [ ] 위 두 조건중 하나라도 틀리면 `IllegalArgumentException`을 발생시키고 애플리케이션 종료되도록 한다.
-  - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
-- [ ] 입력받은 숫자와 컴퓨터 숫자와 비교하는 기능
-  - [ ] 스트라이크 개수를 증가하는 기능
-  - [ ] 볼 개수를 증가하는 기능
-  - [ ] 낫싱인지 판단하는 기능
-- [ ] 게임을 재개할지 종료할지 판단하는 기능
+  - [x] 3개의 숫자들로 이루어져 있는가
+  - [x] 서로다른 숫자인가
+    - [x] 위 두 조건중 하나라도 틀리면 `IllegalArgumentException`을 발생시키고 애플리케이션 종료되도록 한다.
+  - [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
+- [x] 입력받은 숫자와 컴퓨터 숫자와 비교하는 기능
+  - [x] 스트라이크 개수를 증가하는 기능
+  - [x] 볼 개수를 증가하는 기능
+  - [x] 스트라이크와 볼의 정보로 입력한 결과를 출력해주는 기능
+- [x] 게임을 재개할지 종료할지 판단하는 기능
