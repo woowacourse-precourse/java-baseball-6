@@ -10,11 +10,12 @@ public class Computer {
     private int thirdPositionAnswer;
 
     public static Computer getComputerWithRandomAnswer(){
+        Computer computer = new Computer();
+        computer.generateAnswer();
         return new Computer();
     }
 
     private Computer() {
-        generateAnswer();
     }
 
     private void generateAnswer() {
