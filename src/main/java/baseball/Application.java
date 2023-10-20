@@ -11,9 +11,9 @@ public class Application {
         GameManager gameManager = new GameManager();
         InputManager inputManager = new InputManager();
 
-        List<Integer> randNumber = gameManager.createRandNumber();
+        List<Integer> randBaseballNumber = gameManager.createRandNumber();
+        String userBaseballNumber = inputManager.getBaseballNumberFromUser(gameManager, inputManager);
 
-        inputManager.printInfoMessage();
-        String userBaseballNumber = inputManager.requestInput();
+
     }
 }
