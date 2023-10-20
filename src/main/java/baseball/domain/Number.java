@@ -48,4 +48,22 @@ public class Number {
     private static int unicodeToInt(int unicode) {
         return unicode - '0';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Number number = (Number) o;
+        return digits.equals(number.digits);
+    }
+
+    @Override
+    public int hashCode() {
+        return digits.hashCode();
+    }
 }
