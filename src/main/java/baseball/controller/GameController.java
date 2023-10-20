@@ -38,8 +38,7 @@ public class GameController {
             if (isStrikeEqualToGoal(strike)) {
                 EndView.end(PLAY_NUMBER_DIGIT);
                 AskView.askResume(RESTART, END);
-                String resumeInput = Console.readLine();
-                assertResumeValue(resumeInput);
+                String resumeInput = receiveResumeNumber();
                 int resumeNumber = StringInputConverter.convertStringToInt(resumeInput);
                 if (resumeNumber == RESTART) {
                     computerNumber = NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
@@ -64,6 +63,13 @@ public class GameController {
 
     private static boolean isStrikeEqualToGoal(final int strike) {
         return strike == PLAY_NUMBER_DIGIT;
+    }
+
+    private static String receiveResumeNumber() {
+        String resumeInput = Console.readLine();
+        assertResumeValue(resumeInput);
+
+        return resumeInput;
     }
 
     private static void assertResumeValue(final String resume) {
