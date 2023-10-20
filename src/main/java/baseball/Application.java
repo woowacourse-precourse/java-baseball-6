@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class Game {
@@ -11,7 +12,8 @@ class Game {
         List<Integer> computerNum = setComputerNum();
         List<Integer> inputNum = new ArrayList<>();
         while (!inputNum.equals(computerNum)) {
-            inputNum = setInput();
+            String input = setInput();
+            inputNum = getIntegerInput(input);
         }
         replay();
     }
@@ -50,18 +52,51 @@ class Game {
     }
 
     /**
-     * 공백 없이 입력받기
+     * 서로 다른 3자리 수 공백 없이 입력받기
      *
-     * @return 입력 수
+     * @return 입력 값
      */
-    private List<Integer> setInput() {
+    private String setInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        String[] input = Console.readLine().split("");
+        return Console.readLine();
+    }
+
+    /**
+     * 입력 받은 문자열을 Integer 리스트로 변환
+     *
+     * @param input 입력 값
+     * @return 숫자로 변환된 입력 수
+     */
+    public List<Integer> getIntegerInput(String input) {
+        String[] inputArr = input.split("");
+        validationInput(inputArr);
+
         List<Integer> inputNum = new ArrayList<>();
-        for (int i = 0; i < 3; i++){
-            inputNum.add(Integer.parseInt(input[i]));
+        for (int i = 0; i < 3; i++) {
+            inputNum.add(Integer.parseInt(inputArr[i]));
         }
         return inputNum;
+    }
+
+    /**
+     * 입력 값 유효성 체크
+     *
+     * @param input 입력 값
+     */
+    private void validationInput(String[] input) {
+        if (input.length != 3) {
+            throw new IllegalArgumentException("입력하신 숫자가 3자리 수가 아닙니다.");
+        }
+
+        for (String s : input) {
+            if (!s.matches("^[1-9]$")) {
+                throw new IllegalArgumentException("입력하신 숫자가 1 ~ 9에 해당하지 않습니다.");
+            }
+        }
+
+        if (Arrays.stream(input).distinct().count() != 3) {
+            throw new IllegalArgumentException("입력하신 숫자 중 중복되는 값이 존재합니다.");
+        }
     }
 }
 
