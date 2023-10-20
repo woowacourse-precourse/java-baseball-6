@@ -1,9 +1,9 @@
 package baseball;
 
-import baseball.view.OutputHandler;
+import baseball.controller.SystemManager;
 
 public class Application {
     public static void main(String[] args) {
-        OutputHandler.theGameStart();
+        SystemManager.firstGame();
     }
 }
