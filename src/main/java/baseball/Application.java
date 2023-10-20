@@ -26,30 +26,39 @@ public class Application {
     private static void startGame() {
         List<Integer> computerNum = createComputerNumber();
         String result = null;
-        int playerNum;
-
         do{
             System.out.print("숫자를 입력해주세요 : ");
             try {
-                playerNum = isNonDigit(Console.readLine());
-                isThreeDigitNumber(Integer.toString(playerNum));
-                hasRepeatedDigitNumber(Integer.toString(playerNum));
+                String playerNum = Console.readLine();
+                isNonDigit(playerNum);
+                isThreeDigitNumber(playerNum);
+                hasRepeatedDigitNumber(playerNum);
             }catch (IllegalArgumentException e){
                 return;
             }
+
         }while (!result.equals("3스트라이크"));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    private static List<Integer> createComputerNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < COMPUTER_NUM_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
+
     // 사용자가 입력한 값이 숫자인지 확인한다.
-    private static int isNonDigit(String playerStringNum){
-        int playerIntNum;
+    private static void isNonDigit(String playerNum){
         try {
-            playerIntNum = Integer.parseInt(playerStringNum);
+            Integer.parseInt(playerNum);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("입력하신 값이 숫자가 아닙니다. 게임이 종료됩니다.");
         }
-        return playerIntNum;
     }
 
     // 사용자가 입력한 값이 3자리 숫자인지 확인한다.
@@ -68,17 +77,6 @@ public class Application {
             }
             player.add(playerNum.indexOf(i));
         }
-    }
-
-    private static List<Integer> createComputerNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < COMPUTER_NUM_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
     }
 
     private static String askReplayOrExit() {
