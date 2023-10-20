@@ -1,16 +1,16 @@
 # 구현할 기능 목록
 
 ### 구현
-- [ ]  게임 시작시, 문구 출력
+- [X]  게임 시작시, 문구 출력
 
 
-- [ ]  1에서 9까지 서로 다른 임의의 3자리 수 생성
+- [X]  1에서 9까지 서로 다른 임의의 3자리 수 생성
 
 
-- [ ]  ‘서로 다른’ 3개의 숫자 입력받기
-    - [ ] 서로 다른 3자리 수가 아니면 `IllegalArgumentException` 발생
-    - [ ] 서로 3자리 수 보다 더 많거나 적으면 `IllegalArgumentException` 발생
-    - [ ] 숫자가 아니면 `IllegalArgumentException` 발생
+- [X]  ‘서로 다른’ 3개의 숫자 입력받기
+    - [X] 서로 다른 3자리 수가 아니면 `IllegalArgumentException` 발생
+    - [X] 서로 3자리 수 보다 더 많거나 적으면 `IllegalArgumentException` 발생
+    - [X] 숫자가 아니면 `IllegalArgumentException` 발생
    
 
 - [ ]  입력값의 각 자리에 따라 힌트 정하기
