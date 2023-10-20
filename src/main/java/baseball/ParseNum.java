@@ -2,10 +2,6 @@ package baseball;
 
 public class ParseNum {
     public static int[] parseInput(String input) {
-        if (input.equals("낫싱") || input.equals("3스트라이크")) {
-            throw new IllegalArgumentException("올바른 숫자를 입력해 주세요.");
-        }
-
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리의 수를 입력해 주세요.");
         }
@@ -22,4 +18,3 @@ public class ParseNum {
         return parsedNum;
     }
 }
-
