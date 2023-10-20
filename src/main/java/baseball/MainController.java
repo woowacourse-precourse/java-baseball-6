@@ -34,7 +34,21 @@ public class MainController {
 
 
 
-    private void finishGame(){
+    private void isFinishGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String answer = Console.readLine();
+        int number = Integer.parseInt(answer);
+        System.out.println(number);
+
+        if(number==1){ //게임 다시
+            System.out.println("게임을 다시 합니다");
+            finishGame = false;
+        }
+        if(number ==2){ //게임 종료
+            System.out.println("게임을 종료합니다");
+            finishGame = true;
+        }
+        /*
         String answer = Console.readLine();
         int number = Integer.parseInt(answer);
         if(number == 2){
@@ -45,6 +59,8 @@ public class MainController {
             //USER_NUM = new ArrayList<>(); // 사용자 숫자 초기화
 
         }
+        */
+
     }
 
 
@@ -60,8 +76,11 @@ public class MainController {
             String answer = Console.readLine(); //사용자에게 번호 입력받기
             USER_NUM = stringToList(answer); //list 변환 + 유효검사
             isNotRepeat = scoreManager.setAndCheckScore(COMPUTER_NUM, USER_NUM); //true면 몀춤
-            if(isNotRepeat){
-                finishGame();
+
+
+            System.out.println(isNotRepeat);
+            if(isNotRepeat){ //isNotRepeat가 true가 되자마자 빠져나오지는 않는다.
+                isFinishGame();
             }
         }
 

@@ -14,15 +14,18 @@ public class ScoreManager {
     static int BALL;
     static int STRIKE;
     boolean isNothing = true;
-    boolean isAllStrike = false;
+    boolean isAllStrike;
 
         //true : 3스트라이크 아님 vs false : 스트라이트임
     public boolean setAndCheckScore(List<Integer> computer, List<Integer> user){ //점수를저장하고, 점수를 출력함
         //만약 3스트라이크면 최종 출력을 한다.
         BALL = 0;
         STRIKE = 0;
+        isAllStrike = false; //얘를 초기화를 했어야해!!!!!!!!
+
         setScore(computer,user); //두 숫자를 비교하여 점수를 매긴다
         checkAllSolve(); //점수를 출력한다.
+        System.out.println(isAllStrike);
 
         return isAllStrike;
     }
@@ -33,19 +36,19 @@ public class ScoreManager {
         }
     }
     private void setBallOrStrike(List<Integer> computer, List<Integer> user, Integer userNum){
-        if(computer.contains(userNum)){
-            setStrike(computer,user,userNum);
+        if(computer.contains(userNum)){ //만약 user의 숫자가 computer숫자에 들어있으면
+            setStrike(computer,user,userNum); //ball또는 strike
         }
     }
     private void setStrike(List<Integer> computer, List<Integer> user, Integer userNum){;
-        if(computer.indexOf(userNum) == user.indexOf(userNum)){
-            STRIKE++;
-        }else {
-            BALL++;
+        if(computer.indexOf(userNum) == user.indexOf(userNum)){ //만약 같은 숫자가 index도 같으면
+            STRIKE++; //=> strike
+        }else { //index번호가 다르면 (숫자만 같으면)
+            BALL++;  //=>ball
         }
     }
 
-    private void checkAllSolve(){
+    private void checkAllSolve(){ //3스트라이크인지 확인
         if(BALL ==0 && STRIKE == 0){
             System.out.println("낫싱");
         } else{
@@ -71,8 +74,8 @@ public class ScoreManager {
 
     private void printFinalMsg() {
         System.out.println(STRIKE+"스트라이크");
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료"); //print로 출력
+        //System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
 
