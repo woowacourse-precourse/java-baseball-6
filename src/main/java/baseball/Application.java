@@ -60,16 +60,17 @@ public class Application {
         return computer;
     }
 
-    public static String PlayerSelectNumber() {
-//        playerNumber = new ArrayList<>();
+    public static List<Integer> PlayerSelectNumber() {
+        List<Integer> playerNumber = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
 
-//        String playerInputNumber = Console.readLine();
-        return Console.readLine();
+        String player = Console.readLine();
 
-//        for(int i=0; i<playerInputNumber.length(); i++) {
-//            playerNumber.add(playerInputNumber.charAt(i) - '0');
-//        }
+        for(int i=0; i<player.length(); i++) {
+            playerNumber.add(player.charAt(i) - '0');
+        }
+
+        return playerNumber;
     }
 
     public static void CompareNumber(String computerNumber, String playerNumber) {
