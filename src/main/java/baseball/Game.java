@@ -33,22 +33,20 @@ public class Game {
     public static void gameStart() {
         // 시작 메시지 호출
         PrintMessage.println(START_MSG);
-        gameState = true;
 
-        while (gameState) {
-            // 컴퓨터 숫자 생성
-            computer = RandomNumberUtils.pickNumberInRange(START_RANGE, LAST_RANGE);
+        // 게임 start 시 1회는 무조건 진행되야 함으로 while 보단 do while 사용
+        do {
             // 사용자 입력 및 결과 초기화
             init();
             // 게임 동작
             process();
-        }
+        } while (gameState);
     }
 
     private static void process() {
         while (!success()) {
             // 사용자 입력 및 결과 초기화
-            init();
+            reset();
 
             // 사용자 입력 값 받기
             String inputStr = getUserInput();
@@ -65,11 +63,29 @@ public class Game {
     }
 
     private static void init() {
+        // 게임 상태 초기화
+        gameState = true;
+
+        // 컴푸터 리스트 초기화
+        // 컴퓨터 숫자 생성
+        computer = RandomNumberUtils.pickNumberInRange(START_RANGE, LAST_RANGE);
+
         // 사용자 리스트 초기화
         user = new ArrayList<>(COUNT);
 
         // 결과 초기화
         result = new HashMap<>();
+        result.put(STRIKE, 0);
+        result.put(BALL, 0);
+        result.put(NOTHING, 0);
+    }
+
+    private static void reset() {
+        // 사용자 리스트 초기화
+        user.clear();
+
+        // 결과 초기화
+        result.clear();
         result.put(STRIKE, 0);
         result.put(BALL, 0);
         result.put(NOTHING, 0);
