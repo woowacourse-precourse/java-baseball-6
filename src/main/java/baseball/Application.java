@@ -28,9 +28,7 @@ public class Application {
 
             View.showResult(strike, ball);
 
-            if (strike == 3) {
-                gameFlag = false;
-            }
+            gameFlag = Calculator.isNotOver(strike);
         }
     }
 }
