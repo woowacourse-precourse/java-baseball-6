@@ -16,7 +16,7 @@ public class GameManager {
 
         printGameStartMessage();
 
-        doGame(new Computer());
+        doGame(Computer.getComputerWithRandomAnswer());
     }
 
     private void doGame(Computer computer) {

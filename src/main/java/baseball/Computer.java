@@ -2,38 +2,33 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.*;
+
 public class Computer {
     private int firstPositionAnswer;
     private int secondPositionAnswer;
     private int thirdPositionAnswer;
 
-    public Computer() {
-
-        while (true) {
-
-            generateAnswer();
-
-            boolean isCanUse = isCanUseThisAnswer();
-
-            if (isCanUse) {
-                break;
-            }
-        }
-
+    public static Computer getComputerWithRandomAnswer(){
+        return new Computer();
     }
 
-    private boolean isCanUseThisAnswer() {
-        return !(
-                this.firstPositionAnswer == this.secondPositionAnswer ||
-                this.firstPositionAnswer == this.thirdPositionAnswer ||
-                this.secondPositionAnswer == this.thirdPositionAnswer
-        );
+    private Computer() {
+        generateAnswer();
     }
 
     private void generateAnswer() {
-        this.firstPositionAnswer = Randoms.pickNumberInRange(1, 9);
-        this.secondPositionAnswer = Randoms.pickNumberInRange(1, 9);
-        this.thirdPositionAnswer = Randoms.pickNumberInRange(1, 9);
+
+        HashSet<Integer> answers = new HashSet<>();
+
+        while (answers.size() < 3) {
+            answers.add(Randoms.pickNumberInRange(1, 9));
+        }
+
+        Iterator<Integer> iterator = answers.iterator();
+        this.firstPositionAnswer = iterator.next();
+        this.secondPositionAnswer = iterator.next();
+        this.thirdPositionAnswer = iterator.next();
     }
 
     public int getBallCount(int userInput) {
