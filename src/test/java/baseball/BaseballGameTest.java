@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.CompareNumbers;
 import baseball.domain.Computer;
 import baseball.exception.InputException;
 import org.junit.jupiter.api.Test;
@@ -38,5 +39,13 @@ public class BaseballGameTest {
         List<Integer> input = List.of(1,0,9);
         assertThatThrownBy(()->InputException.outOfRangeException(input))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    void 숫자_비교_테스트(){
+        List<Integer> computer = List.of(1,2,9);
+        List<Integer> player = List.of(7,4,6);
+        CompareNumbers test = new CompareNumbers(computer, player);
+
+        assertThat(test.generateResult()).isEqualTo("낫싱");
     }
 }
