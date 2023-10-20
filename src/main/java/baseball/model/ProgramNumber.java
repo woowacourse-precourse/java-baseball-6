@@ -18,7 +18,7 @@ public class ProgramNumber {
     }
 
     //1 ~ 9 범위 내의 랜덤한 숫자 하나 획득
-    private static String getOneNumber(){
+    private String getOneNumber(){
         return Integer.toString(Randoms.pickNumberInRange(1, 9));
     }
 
