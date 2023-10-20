@@ -18,7 +18,7 @@
 ## 고려 사항
 
 ### 라이브러리
--[x] 사용자가 입력하는 값에 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 사용
+- [x] 사용자가 입력하는 값에 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 사용
 - [x] 컴퓨터의 숫자 생성에 `camp.nextstep.edu.missionutils.Random`의 `pickNumberInRange()`를 사용
 
 ### 자바 코드 컨벤션 준수
@@ -29,7 +29,7 @@
 - 
 
 ### 예외 처리
--[x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생
+- [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생
 
 ## 개인 목표
 - 읽기 쉬운 변수명과 메서드명 사용
