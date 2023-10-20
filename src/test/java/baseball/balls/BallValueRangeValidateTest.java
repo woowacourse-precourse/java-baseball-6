@@ -3,60 +3,60 @@ package baseball.balls;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class BallIndexRangeValidateTest {
+public class BallValueRangeValidateTest {
 
-    private final int MIN_INDEX = 0;
-    private final int MAX_INDEX = Balls.BALL_COUNT - 1;
+    private final int MIN_VALUE = BallValue.BALL_MIN_VALUE;
+    private final int MAX_VALUE = BallValue.BALL_MAX_VALUE;
 
     @Test
-    void 인덱스_최소값_허용() {
+    void 값_최소값_허용() {
         // given
-        int index = MIN_INDEX;
+        int value = MIN_VALUE;
 
         // when
 
         // then
         Assertions.assertDoesNotThrow(() -> {
-            new BallIndex(index);
+            new BallValue(value);
         });
     }
 
     @Test
-    void 인덱스_최대값_허용() {
+    void 값_최대값_허용() {
         // given
-        int index = MAX_INDEX;
+        int value = MAX_VALUE;
 
         // when
 
         // then
         Assertions.assertDoesNotThrow(() -> {
-            new BallIndex(index);
+            new BallValue(value);
         });
     }
 
     @Test
-    void 인덱스_최소값_미만_불허() {
+    void 값_최소값_미만_불허() {
         // given
-        int index = MIN_INDEX - 1;
+        int value = MIN_VALUE - 1;
 
         // when
 
         // then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new BallIndex(index);
+            new BallValue(value);
         });
     }
 
     @Test
-    void 인덱스_최대값_초과_불허() {
+    void 값_최대값_초과_불허() {
         // given
-        int index = MAX_INDEX + 1;
+        int value = MAX_VALUE + 1;
 
         // when
 
         // then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new BallIndex(index);
+            new BallValue(value);
         });
     }
 
