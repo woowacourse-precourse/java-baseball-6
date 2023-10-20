@@ -43,8 +43,10 @@ public class GameController {
 
         if (strikeResult == 3) gameRegameRequest();
 
-        output.printGameResult(strikeResult, ballResult);
-        gameProcess();
+        if (strikeResult != 3){
+            output.printGameResult(strikeResult, ballResult);
+            gameProcess();
+        }
     }
 
     public void gameRegameRequest(){

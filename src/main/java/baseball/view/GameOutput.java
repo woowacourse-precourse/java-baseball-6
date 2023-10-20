@@ -30,7 +30,7 @@ public class GameOutput {
     }
 
     public void printStrikeAndBallResult(){
-        System.out.println(String.format("%d%s %d%s", ball, BALL, strike, STRIKE));
+        System.out.printf(String.format("%d%s %d%s%n", ball, BALL, strike, STRIKE));
     }
 
     public void printGameEnd(){

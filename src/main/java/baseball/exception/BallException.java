@@ -5,7 +5,6 @@ import java.util.Set;
 
 public class BallException {
     private final int BALL_SIZE = 3;
-    private Set<Character> set = new HashSet<>();
 
     public void validation(String number){
         notNumberValidation(number);
@@ -29,6 +28,7 @@ public class BallException {
     }
 
     private void numberDuplicateValidation(String number){
+        Set<Character> set = new HashSet<>();
         char[] charArray = number.toCharArray();
         for (char num : charArray) {
             set.add(num);
