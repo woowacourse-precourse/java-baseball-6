@@ -19,6 +19,41 @@ public class BaseBall {
     return this.ballNumbers;
   }
 
+  public int getStrikeCount(List<Integer> targetBallNumbers) {
+    int strikeCount = 0;
+    int ballCount = 0;
+
+    for (int i = 0; i < MAX_BALL_SIZE; i++) {
+      Integer ballNumber = this.ballNumbers.get(i);
+      Integer targetBallNumber = targetBallNumbers.get(i);
+
+      if (ballNumber.equals(targetBallNumber)) { // 스트라이크 인경우
+        strikeCount++;
+        continue;
+      }
+
+      if (this.ballNumbers.contains(targetBallNumber)) { // 볼 인경우
+        ballCount++;
+      }
+    }
+
+    printResult(ballCount, strikeCount);
+
+    return strikeCount;
+  }
+
+  private void printResult(int ballCount, int strikeCount) {
+    if (ballCount == 0 && strikeCount == 0) {
+      System.out.println("낫싱");
+    } else if (ballCount == 0) {
+      System.out.println(strikeCount + "스트라이크");
+    } else if (strikeCount == 0) {
+      System.out.println(ballCount + "볼");
+    } else {
+      System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+    }
+  }
+
   private List<Integer> generatedRandomBallNumbers() {
     List<Integer> ballNumbers = new ArrayList<>();
 
