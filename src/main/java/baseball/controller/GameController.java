@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.GameNumber;
+import baseball.domain.GameStatus;
 import baseball.service.GameService;
 import baseball.service.NumberGenerator;
 import baseball.view.InputView;
@@ -25,8 +26,10 @@ public class GameController {
     public void run() {
         GameNumber computerNumber = setGame();
         while (gameService.isNotDone()) {
+            gameService.resetStatus();
             GameNumber userNumber = getUserNumber();
-            gameService.compareNumber(computerNumber, userNumber);
+            GameStatus gameStatus = gameService.compareNumber(computerNumber, userNumber);
+            outputView.printRoundResult(gameStatus);
         }
 
     }

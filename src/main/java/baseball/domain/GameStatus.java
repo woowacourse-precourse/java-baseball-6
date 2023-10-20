@@ -22,4 +22,17 @@ public class GameStatus {
             this.ballCount++;
         }
     }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public void reset() {
+        this.ballCount = 0;
+        this.strikeCount = 0;
+    }
 }

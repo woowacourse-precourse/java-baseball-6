@@ -16,11 +16,12 @@ public class GameService {
         return new GameService();
     }
 
-    public void compareNumber(GameNumber computerNumber, GameNumber userNumber) {
+    public GameStatus compareNumber(GameNumber computerNumber, GameNumber userNumber) {
         for (int index = 0; index < 3; index++) {
             Judgement judgement = checkNumber(computerNumber, userNumber, index);
             gameStatus.updateCount(judgement);
         }
+        return gameStatus;
     }
 
     private static Judgement checkNumber(GameNumber answerNumber, GameNumber userNumber, int index) {
@@ -32,5 +33,9 @@ public class GameService {
 
     public boolean isNotDone() {
         return gameStatus.isNotThreeStrike();
+    }
+
+    public void resetStatus() {
+        gameStatus.reset();
     }
 }
