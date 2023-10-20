@@ -43,4 +43,9 @@ public class Digit {
     public int hashCode() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Digit{value=%d}", value);
+    }
 }
