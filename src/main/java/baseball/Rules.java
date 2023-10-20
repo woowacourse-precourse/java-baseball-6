@@ -7,15 +7,15 @@ public class Rules {
     private int ball;
     private int strikes;
 
-    private void initBallsAndStrikes(int num1, int num2) {
+    private void initBallsAndStrikes() {
         this.ball = 0;
         this.strikes = 0;
     }
 
     public void countBallAndStrikes(List<Integer> com, List<Integer> user) {
-        initBallsAndStrikes(0, 0);
+        initBallsAndStrikes();
         for (Integer val : user) {
-            if (com.indexOf(val) < 0) {
+            if (!com.contains(val)) {
                 continue;
             }
             if (com.indexOf(val) == user.indexOf(val)) {
@@ -28,16 +28,18 @@ public class Rules {
     }
 
     public void printBallAndStrikes() {
-        if (ball > 0) {
-            System.out.print(ball + "볼 ");
+        if (ball > 0 && strikes == 0) {
+            System.out.println(ball + "볼");
         }
-        if (strikes > 0) {
-            System.out.print(strikes + "스트라이크");
+        if (ball == 0 && strikes > 0) {
+            System.out.println(strikes + "스트라이크");
+        }
+        if (ball > 0 && strikes > 0) {
+            System.out.println(ball + "볼 " + strikes + "스트라이크");
         }
         if (ball == 0 && strikes == 0) {
-            System.out.print("낫싱");
+            System.out.println("낫싱");
         }
-        System.out.println();
     }
 
     public boolean isThreeStrikes() {
