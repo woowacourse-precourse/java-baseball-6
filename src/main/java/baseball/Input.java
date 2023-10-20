@@ -16,15 +16,10 @@ public class Input {
     }
 
     private String inputStringNumber() {
-        try {
             output.printInputMessage();
             String inputtedNumber =  Console.readLine();
             checkInputtedNumber(inputtedNumber);
             return inputtedNumber;
-        } catch (IllegalArgumentException e) {
-            System.out.printf("%d자리의 중복 되지 않는 적절한 수를 입력해주세요.\n", gameNumberDigits);
-            return inputStringNumber();
-        }
     }
 
     private void checkInputtedNumber(String inputtedNumber) {
@@ -59,15 +54,10 @@ public class Input {
     }
 
     public String inputRestartOption() {
-        try{
             output.printSelectRestartMessage();
             String inputtedOption = Console.readLine();
             checkAppropriateOption(inputtedOption);
             return inputtedOption;
-        } catch (IllegalArgumentException e) {
-            System.out.println("1 또는 2를 입력해주세요.");
-            return inputRestartOption();
-        }
     }
 
     private void checkAppropriateOption(String inputtedOption) {
