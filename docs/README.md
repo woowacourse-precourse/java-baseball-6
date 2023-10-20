@@ -9,14 +9,13 @@ ifSuccess() 정답을 맞췄는지 확인
 makeNewAnswerIfRestart() 게임 재시작시 새로운 문제 생성
 
 
-
-### Computer
+## Computer
 
 makeAnswer() 정답 생성
 
 
 
-### User
+## User
 
 guessAnswer() 정답 시도
 
@@ -32,7 +31,7 @@ checkDuplicated() 중복된 숫자는 없는지
 
 
 
-### AnswerChecker
+## AnswerChecker
 
 checkAnswer() 정답이 맞는지 확인
 
