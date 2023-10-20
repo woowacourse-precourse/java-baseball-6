@@ -83,7 +83,7 @@ public class BaseBallGame {
         return deduplicatedNumbers.size() == numbers.size();
     }
 
-    private boolean isThreeDigit(String input) {
-        return input.length() == 3;
+    private boolean isValidLength(List<Integer> numbers) {
+        return numbers.size() == RANDOM_NUMBER_LENGTH;
     }
 }
