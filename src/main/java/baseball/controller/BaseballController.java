@@ -41,21 +41,27 @@ public class BaseballController {
                 break;
             }
         }
-        if (isRestart()) {
+        if (Boolean.TRUE.equals(isRestart())) {
             play();
         }
     }
 
     private Boolean isRestart() {
-        String value = inputView.readGameCommand();
-        if (Command.RESTART.getValue().equals(value)) {
+        Command command = readGameCommand();
+        if (Command.RESTART.equals(command)) {
             return true;
         }
-        if (Command.QUIT.getValue().equals(value)) {
+        if (Command.QUIT.equals(command)) {
             return false;
         }
-        throw new IllegalArgumentException("잘못된 재시작/종료 입력입니다.");
+        return null;
     }
+
+    private Command readGameCommand() {
+        String value = inputView.readGameCommand();
+        return Command.getCommand(value);
+    }
+
 
     // TODO: 과연 여기에 검증로직이 있는게 맞는지 고민해보기
     private List<Integer> readGuessNumber() {
