@@ -8,11 +8,14 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         List<Integer> computerNumbers;
-        List<Integer> playerNumbers;
+        List<Integer> playerGuessNumbers;
 
         displayGameStartMessage();
         computerNumbers = generateComputerNumbers();
-        playerNumbers = inputPlayerNumbers();
+        playerGuessNumbers = getPlayerGuessNumbers();
+
+        System.out.println(computerNumbers);
+        System.out.println(playerGuessNumbers);
     }
 
     public static void displayGameStartMessage() {
@@ -32,12 +35,18 @@ public class Application {
         return computerNumbers;
     }
 
-    public static List<Integer> inputPlayerNumbers() {
-        String inputNumbers;
+    public static List<Integer> getPlayerGuessNumbers() {
+        String playerGuess = getPlayerGuess();
+        validatePlayerGuess(playerGuess);
+        return convertStringToIntList(playerGuess);
+    }
 
+    public static String getPlayerGuess() {
         System.out.print("숫자를 입력해주세요 : ");
-        inputNumbers = Console.readLine();
+        return Console.readLine();
+    }
 
+    public static void validatePlayerGuess(final String inputNumbers) {
         if (!isThreeLength(inputNumbers)) {
             throw new IllegalArgumentException("3자리의 수를 입력해주세요.");
         } else if (!isEachDigitBetween1and9(inputNumbers)) {
@@ -45,21 +54,19 @@ public class Application {
         } else if (!isEachDigitDuplicated(inputNumbers)) {
             throw new IllegalArgumentException("서로 다른 3개의 숫자로 이루어진 수를 입력해주세요.");
         }
-
-        return convertStringToIntList(inputNumbers);
     }
 
-    public static boolean isThreeLength(final String inputNumbers) {
-        return inputNumbers.length() == 3;
+    public static boolean isThreeLength(final String inputString) {
+        return inputString.length() == 3;
     }
 
-    public static boolean isBetween1and9(final char inputDigit) {
-        return inputDigit >= '1' && inputDigit <= '9';
+    public static boolean isBetween1and9(final char inputChar) {
+        return inputChar >= '1' && inputChar <= '9';
     }
 
-    public static boolean isEachDigitBetween1and9(final String inputDigits) {
-        for (int i = 0; i < inputDigits.length(); i++) {
-            if (!isBetween1and9(inputDigits.charAt(i))) {
+    public static boolean isEachDigitBetween1and9(final String inputString) {
+        for (int i = 0; i < inputString.length(); i++) {
+            if (!isBetween1and9(inputString.charAt(i))) {
                 return false;
             }
         }
@@ -74,11 +81,11 @@ public class Application {
     }
 
     public static List<Integer> convertStringToIntList(final String inputString) {
-        List<Integer> outputList = new ArrayList<>();
+        List<Integer> outputIntegerList = new ArrayList<>();
 
         for (int i = 0; i < inputString.length(); i++) {
-            outputList.add(inputString.charAt(i) - '0');
+            outputIntegerList.add(inputString.charAt(i) - '0');
         }
-        return outputList;
+        return outputIntegerList;
     }
 }
