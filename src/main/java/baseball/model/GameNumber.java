@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.util.Converter;
+
 import java.util.List;
 import java.util.Set;
 
@@ -15,6 +17,11 @@ public class GameNumber {
         validLength(gameNumber);
         validRange(gameNumber);
         this.gameNumber = gameNumber;
+    }
+
+    public GameNumber(String value) {
+        validValue(value);
+        this.gameNumber = Converter.convertList(value);
     }
 
     public static GameNumber of(List<Integer> number) {
@@ -36,6 +43,16 @@ public class GameNumber {
     @Override
     public String toString() {
         return gameNumber.toString();
+    }
+
+    private void validValue(String value) {
+        try {
+            if (Integer.parseInt(value) < 0) {
+                throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
+        }
     }
 
     private void validLength(List<Integer> gameNumber) {

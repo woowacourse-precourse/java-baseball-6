@@ -3,12 +3,9 @@ package baseball.controller;
 import baseball.model.Command;
 import baseball.model.GameNumber;
 import baseball.service.ScoreCalculator;
-import baseball.util.Converter;
 import baseball.util.RandomNumbersGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.List;
 
 public class BaseballController {
 
@@ -32,7 +29,7 @@ public class BaseballController {
         //TODO: 디버깅 용 출력문 지우기
         System.out.println("computer = " + computer);
         while (true) {
-            GameNumber player = new GameNumber(readGuessNumber());
+            GameNumber player = new GameNumber(inputView.readGuessNumber());
             int strike = calculator.calculateStrike(computer, player);
             int ball = calculator.calculateBall(computer, player);
             outputView.printResult(strike, ball);
@@ -60,19 +57,5 @@ public class BaseballController {
     private Command readGameCommand() {
         String value = inputView.readGameCommand();
         return Command.getCommand(value);
-    }
-
-
-    // TODO: 과연 여기에 검증로직이 있는게 맞는지 고민해보기
-    private List<Integer> readGuessNumber() {
-        String value = inputView.readGuessNumber();
-        try {
-            if (Integer.parseInt(value) < 0) {
-                throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
-            }
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
-        }
-        return Converter.convertList(value);
     }
 }
