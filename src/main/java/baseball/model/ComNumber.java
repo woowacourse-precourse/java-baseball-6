@@ -1,14 +1,15 @@
-package baseball;
+package baseball.model;
+
+import baseball.service.ComNumberGenerateService;
 
 import java.util.List;
 
 public class ComNumber {
 
     private final List<Integer> NUMBER;
-    private final ComNumberService comNumberService = new ComNumberService();
 
-    public ComNumber() {
-        NUMBER = comNumberService.generateComNumber();
+    public ComNumber(List<Integer> number) {
+        this.NUMBER = number;
     }
 
     public List<Integer> getNumber() {

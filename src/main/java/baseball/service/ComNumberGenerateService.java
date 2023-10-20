@@ -1,16 +1,17 @@
-package baseball;
+package baseball.service;
 
+import baseball.model.ComNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComNumberService {
+public class ComNumberGenerateService {
     public List<Integer> generateComNumber() {
-        List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
-            addRandomNumber(computerNumber);
+        List<Integer> number = new ArrayList<>();
+        while (number.size() < 3) {
+            addRandomNumber(number);
         }
-        return computerNumber;
+        return new ComNumber(number).getNumber();
     }
 
     private void addRandomNumber(List<Integer> computerNumber) {
