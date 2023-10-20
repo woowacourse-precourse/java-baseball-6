@@ -19,6 +19,10 @@ public class Service {
         game.end();
     }
 
+    public void restartGame() {
+        game.restart();
+    }
+
     public String hint(Balls input) {
         return game.hint(input);
     }
