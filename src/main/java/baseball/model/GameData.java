@@ -8,6 +8,10 @@ public class GameData {
 	private List<Integer> computerNumbers;
 	private int strikeCount;
 	private int ballCount;
+	public void initBaseBall() {
+		strikeCount = 0;
+		ballCount = 0;
+	}
 	public void setInputString(String inputString) {
 		this.inputString = inputString;
 	}
@@ -31,15 +35,15 @@ public class GameData {
 		return ballCount;
 	}
 
-	public void setBallCount(int ballCount) {
-		this.ballCount = ballCount;
+	public void incBallCount() {
+		ballCount += 1;
 	}
 
 	public int getStrikeCount() {
 		return strikeCount;
 	}
 
-	public void setStrikeCount(int strikeCount) {
-		this.strikeCount = strikeCount;
+	public void incStrikeCount() {
+		strikeCount += 1;
 	}
 }
