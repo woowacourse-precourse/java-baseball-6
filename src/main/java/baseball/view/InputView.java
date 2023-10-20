@@ -12,6 +12,7 @@ public class InputView {
     private static final int INPUT_LENGTH = 3;
     private static final String SEPARATOR  = "";
 
+    private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private InputView(){
     }
@@ -55,6 +56,7 @@ public class InputView {
         }
     }
     public static String readEndSign(){
+        System.out.println(RESTART_MESSAGE);
         return Console.readLine();
     }
 }
