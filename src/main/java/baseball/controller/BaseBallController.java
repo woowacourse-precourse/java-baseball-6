@@ -46,16 +46,16 @@ public class BaseBallController {
     }
 
     private void startSubGame() {
-        boolean continueGame = Boolean.TRUE;
+        boolean isFinishGame = Boolean.TRUE;
 
-        while (continueGame) {
+        while (isFinishGame) {
             Numbers numbers = stringToNumbers(baseBallView.numbersInputView());
             player.changeNumbers(numbers);
 
             Result result = computer.calculateResult(player);
             ConsolePrint.printResult(result);
 
-            continueGame = result.isContinue();
+            isFinishGame = result.isContinue();
         }
     }
 
