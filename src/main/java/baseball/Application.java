@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ public class Application {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> answer = random3();
             List<Integer> playerInput = new ArrayList<>();
-            printAnswer(answer); //이후 삭제
+            //printAnswer(answer); //이후 삭제
             do {
                 playerInput = player3();
                 System.out.println(printResult(answer, playerInput));
@@ -47,7 +49,21 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         List<String> inputstr = Arrays.asList(Console.readLine().split(""));
         List<Integer> input = inputstr.stream().map(s -> Integer.parseInt(s)).toList();
+
+        if (exceptions(input)) {
+            throw new IllegalArgumentException("허용되지 않은 입력값입니다");
+        }
         return input;
+    }
+
+    public static boolean exceptions(List<Integer> input) {
+        if (input.size() != 3) {
+            return true;
+        }
+        if (input.size() != input.stream().distinct().count()) {
+            return true;
+        }
+        return false;
     }
 
     public static String printResult(List<Integer> answer, List<Integer> input) {
