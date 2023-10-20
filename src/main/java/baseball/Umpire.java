@@ -5,21 +5,17 @@ import baseball.converter.StringInputConverter;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.stream.IntStream;
 
 public class Umpire {
 
     public static int countStrike(final int originNumber, final int testNumber) {
-        int count = 0;
         String[] origin = StringInputConverter.convertToArray(IntegerInputConverter.convertToString(originNumber));
         String[] test = StringInputConverter.convertToArray(IntegerInputConverter.convertToString(testNumber));
 
-        for (int i = 0; i < origin.length; i++) {
-            if (isBothSame(origin[i], test[i])) {
-                count++;
-            }
-        }
-
-        return count;
+        return (int) IntStream.range(0, origin.length)
+                .filter(i -> isBothSame(origin[i], test[i]))
+                .count();
     }
 
     private static boolean isBothSame(final String origin, final String test) {
