@@ -22,5 +22,6 @@ public class Constants{
    public static final String INPUT_TERMINATE_STR  = "2";
    
    //에러
-   
+   public static final String WRONG_LENGTH_ERROR  = "잘못된 길이의 입력입니다.";
+   public static final String WRONG_INPUT_ERROR  = "잘못된 입력입니다.";
 }
