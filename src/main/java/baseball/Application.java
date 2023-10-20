@@ -8,11 +8,10 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Application application = new Application();
         Baseball baseball = new Baseball();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
-            baseball.baseball();
+            baseball.playBaseball();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String play = Console.readLine();
             if (play.equals("1")) {
