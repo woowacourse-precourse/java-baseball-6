@@ -33,7 +33,7 @@ public class Controller {
             String hint = service.hint(balls);
             System.out.println(hint);
 
-            if (String.format("%d%s", NUMBER_OF_BALLS, Hint.STRIKE.value()).equals(hint)) {
+            if (isAllStrike(hint)) {
                 end();
                 break;
             }
@@ -57,5 +57,9 @@ public class Controller {
         outputView.printInsertNumbers();
         List<Integer> input = inputView.insertNumbers();
         return Balls.from(input);
+    }
+
+    private static boolean isAllStrike(String hint) {
+        return String.format("%d%s", NUMBER_OF_BALLS, Hint.STRIKE.value()).equals(hint);
     }
 }
