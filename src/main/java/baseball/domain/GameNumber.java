@@ -8,16 +8,25 @@ public record GameNumber(List<Integer> numbers) {
         validate(numbers);
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateSize() {
         if (numbers.size() != 3) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void validateNumber(List<Integer> compare, int number) {
+        if (compare.contains(number)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validate(List<Integer> numbers) {
+        validateSize();
         List<Integer> compare = new ArrayList<>();
         for (Integer number : numbers) {
-            if (compare.contains(number)) {
-                throw new IllegalArgumentException();
-            }
+            validateNumber(compare, number);
             compare.add(number);
         }
     }
+
 }

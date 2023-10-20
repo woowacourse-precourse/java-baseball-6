@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.domain.GameNumber;
 import baseball.domain.GuessResult;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,31 +18,6 @@ public class NumberBaseBallController {
             }
         }
         return new GameNumber(computerNumbers);
-    }
-
-    static int parseInt(String target) {
-        try {
-            return Integer.parseInt(target);
-        } catch (Exception e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
-    }
-
-    static List<Integer> convertUserInput(String input) {
-        List<Integer> user = new ArrayList<>();
-        String[] numbers = input.split("");
-        for (String element : numbers) {
-            int number = parseInt(element);
-            user.add(number);
-        }
-        return user;
-    }
-
-    static GameNumber readUserNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-        List<Integer> userNumbers = convertUserInput(input);
-        return new GameNumber(userNumbers);
     }
 
     static GuessResult createGuessResult(GameNumber computer, GameNumber user) {
@@ -87,7 +62,7 @@ public class NumberBaseBallController {
         GameNumber computer = pickComputerNumber();
         boolean isGameProceed = true;
         while (isGameProceed) {
-            GameNumber user = readUserNumber();
+            GameNumber user = InputView.readUserNumber();
             GuessResult guessResult = createGuessResult(computer, user);
             printGuessResult(guessResult);
             if (guessResult.isAllStrike()) {
@@ -97,27 +72,12 @@ public class NumberBaseBallController {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    static int readReplayInput() {
-        String input = Console.readLine();
-        return parseInt(input);
-    }
-
-    static boolean checkShouldReplay() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int replay = readReplayInput();
-
-        if (replay != 1 && replay != 2) {
-            throw new IllegalArgumentException();
-        }
-        return replay == 1;
-    }
-
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean shouldPlay = true;
         while (shouldPlay) {
             play();
-            shouldPlay = checkShouldReplay();
+            shouldPlay = InputView.readShouldReplay();
         }
     }
 
