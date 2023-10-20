@@ -13,8 +13,12 @@ public class Application {
         while(true){
             gameController.play(inputView.readUserBaseballNumber());
 
+            if(!gameController.isWin())
+                continue;
+
             if(!gameController.restart(inputView.readUserRestartStatus()))
                 break;
+
         }
 
     }

@@ -29,4 +29,12 @@ public class GameController {
     public boolean restart(String input){
         return gameService.restart(input);
     }
+
+    public boolean isWin(){
+        if (gameService.isWin()) {
+            outputView.printWin();
+            return true;
+        }
+        return false;
+    }
 }
