@@ -4,6 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Initializer {
+
+    public List<Integer> initGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        return getNewNumbers();
+    }
+
     private List<Integer> getNewNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
