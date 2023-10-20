@@ -7,6 +7,8 @@ public class Score {
     private Integer ball;
 
     public Score() {
+        this.strike = 0;
+        this.ball = 0;
     }
 
     public void setStrikeAndBall(List<Integer> computerBaseballNumber, List<Integer> playerBaseballNumber) {
