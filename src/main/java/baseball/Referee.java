@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Referee {
-    public static List<Integer> result = new ArrayList<>();
     public static Boolean gameSwitch = true;
 
     public static void setGameSwitch(Boolean gameSwitch) {
@@ -12,6 +11,7 @@ public class Referee {
     }
 
     public List<Integer> decideResult(List<Integer> computerBall, List<Integer> playerBall) {
+        List<Integer> result = new ArrayList<>();
         // 값 조회할 때 리스트 vs 배열 vs 맵 중 뭐가 가장 빠를까?
         int ballCount = 0;
         int strikeCount = 0;
@@ -34,5 +34,4 @@ public class Referee {
 
         return result;
     }
-
 }
