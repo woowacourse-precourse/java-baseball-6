@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.util.NumberGenerator;
 import baseball.util.Parser;
 import camp.nextstep.edu.missionutils.Console;
 
