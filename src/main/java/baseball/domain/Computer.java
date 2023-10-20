@@ -13,6 +13,13 @@ import java.util.List;
 public class Computer implements Player {
     private Numbers numbers;
 
+    private Computer() {
+    }
+
+    public Computer create() {
+        return new Computer();
+    }
+
     public void resetNumbers() {
         this.numbers = makeRandomNumbers();
     }
