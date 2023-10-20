@@ -28,6 +28,12 @@ ___
 
 3. Controller
     * GamePlayController
+        * camp.nextstep.edu.missionutils에서 제공하는 Randoms API 사용<br>
+          : Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
+
+        * 정답 판단하기 및 힌트제공
+          : 1. 정답과 비교하기
+          : 2. 틀렸을 경우 힌트제공
 
 <br><br>
 
