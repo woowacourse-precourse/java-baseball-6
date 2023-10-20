@@ -1,0 +1,9 @@
+## TODOS
+- [x] java version 확인
+- [x] 코드컨벤션 검토 및 제공된 xml 적용
+- [x] 기초 설계 구상
+- [x] GoalValue 및 Test 구현
+  - [x] create 및 validate 구현
+- [ ] CompareResult 구현
+  - [ ] toString 구현
+  - [ ] GoalValue.compare() 구현
