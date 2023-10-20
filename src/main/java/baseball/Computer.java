@@ -7,7 +7,7 @@ import java.util.List;
 public class Computer {
 	private final static int RANDOM_NUMBER_MINIMUM = 1;
 	private final static int RANDOM_NUMBER_MAXIMUM = 9;
-	public  List<Integer> randomNumber = new ArrayList<>();
+	private List<Integer> randomNumber = new ArrayList<>();
 
 	public Computer() {
 	}
@@ -19,5 +19,9 @@ public class Computer {
 				randomNumber.add(number);
 			}
 		}
+	}
+
+	public List<Integer> getRandomNumber() {
+		return randomNumber;
 	}
 }
