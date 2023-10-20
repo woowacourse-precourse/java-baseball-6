@@ -33,7 +33,7 @@
 
 ### Controller
 - Computer Controller
-  - [ ] 1부터 9까지 중 무작위의 숫자 3개를 저장하는 기능을 사용
+  - [x] 1부터 9까지 중 무작위의 숫자 3개를 저장하는 기능을 사용
     - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
     - 우아한 테크 코스의 사용 예시를 그대로 사용.
   - [ ] 컴퓨터와 사용자의 게임 결과를 계산하는 기능을 사용
@@ -47,7 +47,7 @@
 
 ### Utility
 - InputDataExceptionHandler
-  - [x] 입력받은 사용자 숫자를 검증하는 기능
+  - [ ] 입력받은 사용자 숫자를 검증하는 기능
   - [ ] 입력받은 재시작 여부를 검증하는 기능
 ---
 
