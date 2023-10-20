@@ -17,7 +17,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         GameStatus gameStatus = GameStatus.START;
 
-        while(gameStatus == GameStatus.START){
+        do{
             // 초기화
             init();
 
@@ -35,7 +35,8 @@ public class Application {
                 printResult(isAllCorrect);
 
             }while(!isAllCorrect);
-        }
+
+        }while(getGameRestartChoice().equals(GameStatus.START));
     }
 
     public enum GameStatus{
