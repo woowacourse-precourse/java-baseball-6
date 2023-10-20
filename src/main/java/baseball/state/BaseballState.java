@@ -19,14 +19,17 @@ public class BaseballState {
     }
 
     public BaseballMatchResult match(BaseballState other) {
-        final var matcher = new BaseballMatcher(this);
+        final var matcher = new BaseballMatchHelper(this);
         var ball = 0;
         var strike = 0;
 
         for (int i = 0; i < MAX_MATCH; i++) {
             final var value = other.nth(i);
-            strike += BooleanUtil.booleanToInt(matcher.checkStrike(i, value));
-            ball += BooleanUtil.booleanToInt(matcher.checkBall(i, value));
+            final var isStrike = matcher.checkStrike(i, value);
+            final var isBall = matcher.checkBall(i, value);
+
+            strike += BooleanUtil.booleanToInt(isStrike);
+            ball += BooleanUtil.booleanToInt(isBall);
 
         }
         return new BaseballMatchResult(ball, strike);
