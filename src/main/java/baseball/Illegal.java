@@ -34,6 +34,10 @@ public class Illegal {
 				}
 			}
 		}
+		int tmp=sepNum[0];
+		sepNum[0]=sepNum[2];
+		sepNum[2]=tmp;
+		
 		return sepNum;
 	}
 }
