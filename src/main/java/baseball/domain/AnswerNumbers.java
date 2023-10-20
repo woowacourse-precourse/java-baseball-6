@@ -15,7 +15,7 @@ public final class AnswerNumbers {
         this.answerNumbers = answerNumbers;
     }
 
-    public static AnswerNumbers createAnswerNumbers(AnswerNumberGenerator numberGenerator) {
+    public static AnswerNumbers createAnswerNumbers(NumberGenerator numberGenerator) {
         List<Integer> generateNumbers = numberGenerator.generate(NUMBER_SIZE);
         return new AnswerNumbers(generateNumbers);
     }

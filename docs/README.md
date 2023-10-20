@@ -2,22 +2,23 @@
 
 ## 도메인 기능 명세성
 
+- [x] NumberGenerator : 숫자를 생성하는 인터페이스
+    - [x] List<Integer> generate(int size)를 구현해야함
 - [x] AnswerNumberGenerator : 정답 숫자를 생성한다.
     - [x] n개의 숫자를 중복이 없을때까지 생성
     - [x] 1 ~ 9까지 서로 다른 숫자로 이루어져 있다.
 
 
-- [x] ResultType : 결과 타입을 가진다.
+- [x] HintType : 결과 타입을 가진다.
     - [x] STRIKE를 가진다.
     - [x] BALL을 가진다.
     - [x] NOTHING을 가진다.
 
 
 - [ ] Referee: 사용자가 입력한 답을 판독한다.
-    - [ ] ResultType의 리스트를 가진다.
-    - [ ] 생성자 주입을 통해 정답 숫자를 가지게 한다.
-    - [ ] 사용자의 입력을 한 인덱스씩 정답 숫자와 비교하여 ResultType List에 넣는다.
-        - [ ] PlyaerNumber를 매개변수로 가진다.
+    - [x] 생성자 주입을 통해 정답 숫자를 가지게 한다.
+    - [ ] 사용자의 입력을 한 인덱스씩 정답 숫자와 비교하여 HintType List에 넣는다.
+        - [ ] PlayerNumber 를 매개변수로 가진다.
             - [ ] 해당 자리 숫자가 정답 숫자에 있고, 인덱스도 같다 -> STRIKE
             - [ ] 해당 자리 숫자가 정답 숫자에 있고, 인덱스가 다르다 -> BALL
             - [ ] 위 2개의 일치하지 않는다. -> NOTHING

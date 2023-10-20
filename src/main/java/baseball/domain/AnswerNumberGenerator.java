@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public final class AnswerNumberGenerator {
+public final class AnswerNumberGenerator implements NumberGenerator {
     private static final int NUMBER_LOWER_BOUND = 1;
     private static final int NUMBER_UPPER_BOUND = 9;
 
