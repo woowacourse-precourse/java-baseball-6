@@ -1,26 +1,28 @@
 package baseball;
 
+import baseball.models.Score;
 import java.util.List;
 
+
 public class NumberChecker {
-    public int[] checkNumber(List<Integer> user, List<Integer> computer){
-        return countBallAndStrike(user, computer);
+    public Score checkNumber(List<Integer> user, List<Integer> computer){
+        int strikeCount = 0;
+        int ballCount = 0;
+        for (int i = 0; i < user.size(); i++) {
+            if (isStrike(user.get(i), computer.get(i)))
+                strikeCount++;
+            else if (isBall(computer, user.get(i)))
+                ballCount++;
+        }
+        return new Score(ballCount, strikeCount);
     }
 
-    public int[] countBallAndStrike(List<Integer> user, List<Integer> computer){
-        int[] ballAndStrikeCounts = new int[2];
-        int ballCount = 0;
-        int strikeCount = 0;
-        for (int i = 0; i < user.size(); i++) {
-            if (user.get(i).equals(computer.get(i)))
-                strikeCount++;
-            else if (computer.contains(user.get(i)))
-                ballCount++;
+    public boolean isStrike(int userDigit, int computerDigit){
+        return userDigit == computerDigit;
+    }
 
-        }
-        ballAndStrikeCounts[0] = ballCount;
-        ballAndStrikeCounts[1] = strikeCount;
-        return ballAndStrikeCounts;
+    public boolean isBall(List<Integer> computer, int userDigit){
+        return computer.contains(userDigit);
     }
 
 }
