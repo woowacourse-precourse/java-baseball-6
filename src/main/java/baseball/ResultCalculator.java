@@ -24,11 +24,11 @@ public class ResultCalculator {
         return new Result(newStrikes,newBalls);
     }
 
-    boolean isStrike (int eachNumber, int digit) {
+    private boolean isStrike (int eachNumber, int digit) {
         return NumberComparator.isEqual(eachNumber, computerNumber.getBallNumberByDigit(digit));
     }
 
-    boolean isBall (int eachNumber) {
+    private boolean isBall (int eachNumber) {
         return computerNumber.ballNumber.contains(eachNumber);
     }
 }
