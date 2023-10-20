@@ -1,26 +1,27 @@
 package baseball.converter;
 
+import static baseball.constant.BaseballConstants.MAX_MATCH;
+
 import baseball.state.BaseballState;
 import baseball.util.StringUtils;
 import java.util.List;
 
 public class BaseballStateConverter {
-    public static BaseballState stringToBaseballState(String s) throws IllegalArgumentException {
-        if (s.length() != 3) {
-            throw new IllegalArgumentException();
-        }
 
-        if (!s.chars().allMatch(Character::isDigit)) {
-            throw new IllegalArgumentException();
+    private static boolean isValidBaseballStateString(String s) {
+        if (s.length() != MAX_MATCH || !s.chars().allMatch(Character::isDigit)) {
+            return false;
         }
 
         var setOfChar = StringUtils.stringToSetOfChar(s);
-        if (setOfChar.size() != 3) {
-            throw new IllegalArgumentException();
+        return setOfChar.size() == MAX_MATCH;
+    }
+
+    public static BaseballState stringToBaseballState(String s) throws IllegalArgumentException {
+        if (isValidBaseballStateString(s)) {
+            List<Integer> state = StringUtils.digitStringToListOfInt(s);
+            return new BaseballState(state);
         }
-
-        List<Integer> state = StringUtils.digitStringToListOfInt(s);
-
-        return new BaseballState(state);
+        throw new IllegalArgumentException();
     }
 }

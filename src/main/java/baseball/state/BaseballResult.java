@@ -1,10 +1,11 @@
 package baseball.state;
 
+import static baseball.constant.BaseballConstants.MAX_MATCH;
+
 import baseball.constant.BaseballString;
 import baseball.util.Assertions;
 
 public class BaseballResult {
-    private final int MAX_MATCH = 3;
     private final int ball;
     private final int strike;
 
