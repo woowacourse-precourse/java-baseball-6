@@ -5,29 +5,23 @@ import java.util.Set;
 
 public class Validator {
     public static boolean validate(int[] numbers){
-        if(checkDuplicate(numbers)){
-            throw new IllegalArgumentException("중복된 숫자를 입력 하지 마세요.");
-        }
-        if(checkSize(numbers)){
-            throw new IllegalArgumentException("세 자리 숫자를 입력 해주세요.");
-        }
+        checkDuplicate(numbers);
+        checkSize(numbers);
         return true;
     }
 
-    private static boolean checkDuplicate(int[] numbers) {
+    private static void checkDuplicate(int[] numbers) {
         Set<Integer> set = new HashSet<>();
         for(int num: numbers){
             if(!set.add(num)){
-                return true;
+                throw new IllegalArgumentException("중복된 숫자를 입력 하지 마세요.");
             }
         }
-        return false;
     }
 
-    private static boolean checkSize(int[] numbers) {
+    private static void checkSize(int[] numbers) {
         if(numbers.length>3){
-            return true;
+            throw new IllegalArgumentException("세 자리 숫자를 입력 해주세요.");
         }
-        return false;
     }
 }
