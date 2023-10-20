@@ -28,7 +28,7 @@ public class BaseballGame {
             }
         }
 
-        String result = strikeCount+","+ballCount;
+        String result = ballCount+","+strikeCount;
 
         return result;
 
