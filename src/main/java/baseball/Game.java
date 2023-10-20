@@ -1,22 +1,22 @@
 package baseball;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Game {
-    public Game() {
-    }
 
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String ASK_FOR_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String ASK_FOR_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private int strike = 0;
-    private int ball = 0;
-    private boolean isGameEnded = false;
     private static final String STRIKE_MASSAGE = "스트라이크";
     private static final String BALL_MASSAGE = "볼";
     private static final String NOTHING_MASSAGE = "낫싱";
     private static final int MAX_STRIKES = 3;
+
+    private boolean isGameEnded = false;
+    private int strike = 0;
+    private int ball = 0;
 
     private Number number = new Number();
 
@@ -46,10 +46,10 @@ public class Game {
 
     private void askForRestart() {
         System.out.println(ASK_FOR_RESTART_MESSAGE);
-        String endInput = number.endInput();
+        String endInput = number.inputEndNumber();
 
         if (endInput.equals("1")) {
-            resetGame();
+            restartGame();
             startGame();
         } else if (endInput.equals("2")) {
             System.out.println("게임 종료");
@@ -59,15 +59,20 @@ public class Game {
     private void calculateScore(List<Integer> computerNumber, List<Integer> playerNumber) {
 
         for (int i = 0; i < computerNumber.size(); i++) {
-            if (computerNumber.get(i) == playerNumber.get(i)) {
+            if (Objects.equals(computerNumber.get(i), playerNumber.get(i))) {
                 strike++;
             } else if (computerNumber.contains(playerNumber.get(i))) {
                 ball++;
             }
         }
 
-        if (strike == 3) {
-            System.out.println(MAX_STRIKES + STRIKE_MASSAGE);
+        displayScore();
+    }
+
+    private void displayScore() {
+
+        if (strike == MAX_STRIKES) {
+            System.out.println(strike + STRIKE_MASSAGE);
             isGameEnded = true;
             endGame();
         } else if (strike == 0 && ball == 0) {
@@ -83,7 +88,7 @@ public class Game {
         ball = 0;
     }
 
-    private void resetGame() {
+    private void restartGame() {
         isGameEnded = false;
     }
 
