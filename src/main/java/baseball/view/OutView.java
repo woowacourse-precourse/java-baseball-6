@@ -12,19 +12,7 @@ public class OutView {
     }
 
     public static void ballScoringResultsPrint(BallResult ballResult) {
-        System.out.println(ballResult.toString());
-        int b = ballResult.getBall();
-        int s = ballResult.getStrike();
-
-        if (b == 0 && s == 0) {
-            System.out.println("낫싱");
-        } else if (b > 0 && s > 0) {
-            System.out.printf("%d볼 %d스트라이크\n",b,s);
-        } else if (b == 0 && s > 0) {
-            System.out.printf("%d스트라이크\n",s);
-        } else if (b > 0 && s == 0) {
-            System.out.printf("%d볼\n",b);
-        }
+        System.out.println(convertBallResultToString(ballResult));
     }
 
     public static void endGamePrint() {
@@ -33,5 +21,19 @@ public class OutView {
 
     public static void restartGamePrint() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    private static String convertBallResultToString(BallResult ballResult) {
+        if (ballResult.getBall() == 0 && ballResult.getStrike() == 0) {
+            return "낫싱";
+        }
+        StringBuilder result = new StringBuilder();
+        if (ballResult.getBall() > 0) {
+            result.append(ballResult.getBall()).append("볼 ");
+        }
+        if (ballResult.getStrike() > 0) {
+            result.append(ballResult.getStrike()).append("스트라이크");
+        }
+        return result.toString();
     }
 }
