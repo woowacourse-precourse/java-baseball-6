@@ -51,15 +51,13 @@ public class Application {
             throw new IllegalArgumentException("3자리의 수를 입력해주세요.");
         }
 
-        playerNumbers = new ArrayList<>();
-
         for (int i = 0; i < inputNumbers.length(); i++) {
             if (!isBetween1and9(inputNumbers.charAt(i))) {
                 throw new IllegalArgumentException("1~9로 이루어진 3자리의 수를 입력해주세요.");
             }
-            playerNumbers.add(inputNumbers.charAt(i) - '0');
         }
 
+        playerNumbers = convertStringToIntList(inputNumbers);
         playerNumbersSet = new HashSet<>(playerNumbers);
 
         if (playerNumbersSet.size() != 3) {
@@ -74,5 +72,14 @@ public class Application {
 
     public static boolean isBetween1and9(final char inputNumber) {
         return inputNumber >= '1' && inputNumber <= '9';
+    }
+
+    public static List<Integer> convertStringToIntList(final String inputString) {
+        List<Integer> outputList = new ArrayList<>();
+
+        for (int i = 0; i < inputString.length(); i++) {
+            outputList.add(inputString.charAt(i) - '0');
+        }
+        return outputList;
     }
 }
