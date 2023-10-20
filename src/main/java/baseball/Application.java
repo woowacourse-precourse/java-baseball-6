@@ -3,10 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -41,8 +38,6 @@ public class Application {
 
     public static List<Integer> inputPlayerNumbers() {
         String inputNumbers;
-        List<Integer> playerNumbers;
-        Set<Integer> playerNumbersSet;
 
         System.out.print("숫자를 입력해주세요 : ");
         inputNumbers = Console.readLine();
@@ -57,13 +52,10 @@ public class Application {
             }
         }
 
-        playerNumbers = convertStringToIntList(inputNumbers);
-        playerNumbersSet = new HashSet<>(playerNumbers);
-
-        if (playerNumbersSet.size() != 3) {
+        if (!isEachDigitDuplicated(inputNumbers)) {
             throw new IllegalArgumentException("서로 다른 3개의 숫자로 이루어진 수를 입력해주세요.");
         }
-        return playerNumbers;
+        return convertStringToIntList(inputNumbers);
     }
 
     public static boolean isThreeLength(final String inputNumbers) {
@@ -72,6 +64,15 @@ public class Application {
 
     public static boolean isBetween1and9(final char inputDigit) {
         return inputDigit >= '1' && inputDigit <= '9';
+    }
+
+    public static boolean isEachDigitDuplicated(final String inputDigits) {
+        String[] digitArray;
+        Set<String> digitSet;
+
+        digitArray = inputDigits.split("");
+        digitSet = new HashSet<>(Arrays.asList(digitArray));
+        return digitSet.size() == digitArray.length;
     }
 
     public static List<Integer> convertStringToIntList(final String inputString) {
