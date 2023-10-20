@@ -26,4 +26,11 @@ public class InputVerifierTest {
         InputVerifier inputVerifier = new InputVerifier();
         assertThrows(IllegalArgumentException.class, () -> inputVerifier.checkBallNumber("155"));
     }
+
+    @DisplayName("1, 2 이외의 값을 받았을 때 예외처리 하는지 테스트")
+    @Test
+    void throwNotGameNumber() {
+        InputVerifier inputVerifier = new InputVerifier();
+        assertThrows(IllegalArgumentException.class, () -> inputVerifier.checkGameNumber("456"));
+    }
 }
