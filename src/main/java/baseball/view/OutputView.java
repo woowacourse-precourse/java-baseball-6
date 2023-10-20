@@ -5,12 +5,12 @@ public class OutputView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void printHint(int ballCount,int strikeCount) {
+    public void printHint(int ballCount, int strikeCount) {
         String hint = "";
         if (ballCount > 0)
-            hint += Integer.toString(ballCount) + "볼 " ;
+            hint += ballCount + "볼 ";
         if (strikeCount > 0)
-            hint += Integer.toString(strikeCount) + "스트라이크";
+            hint += strikeCount + "스트라이크";
         if (hint.length() == 0)
             System.out.print("낫싱");
 

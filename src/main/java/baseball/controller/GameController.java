@@ -14,11 +14,11 @@ public class GameController {
         outputView = new OutputView();
     }
 
-    public void start(){
+    public void start() {
         outputView.start();
     }
 
-    public void play(String input){
+    public void play(String input) {
         gameService.setUserBaseballNumber(input);
 
         List<Integer> result = gameService.calculateBaseBall();
@@ -26,11 +26,11 @@ public class GameController {
         outputView.printHint(result.get(0), result.get(1));
     }
 
-    public boolean restart(String input){
+    public boolean restart(String input) {
         return gameService.restart(input);
     }
 
-    public boolean isWin(){
+    public boolean isWin() {
         if (gameService.isWin()) {
             outputView.printWin();
             return true;

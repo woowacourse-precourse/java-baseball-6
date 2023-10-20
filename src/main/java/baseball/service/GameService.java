@@ -8,8 +8,8 @@ import java.util.List;
 
 public class GameService {
     private final User user;
-    private GameSystem gameSystem;
     private final Hint hint;
+    private GameSystem gameSystem;
 
     public GameService() {
         user = new User();
@@ -17,27 +17,26 @@ public class GameService {
         hint = new Hint();
     }
 
-    public void setUserBaseballNumber(String input){
+    public void setUserBaseballNumber(String input) {
         user.setUserBasebsallNumber(input);
     }
 
-    public boolean restart(String input){
-        if (input.equals("1")){
+    public boolean restart(String input) {
+        if (input.equals("1")) {
             this.gameSystem = new GameSystem();
             return true;
-        }
-        else if (input.equals("2"))
+        } else if (input.equals("2"))
             return false;
 
         throw new IllegalArgumentException();
     }
 
-    public List<Integer> calculateBaseBall(){
-        hint.calculateBaseBall(user.getUserBasebsallNumber(),gameSystem.getSystemBaseBallNumber());
-        return List.of(hint.getBallCount(),hint.getStrikeCount());
+    public List<Integer> calculateBaseBall() {
+        hint.calculateBaseBall(user.getUserBasebsallNumber(), gameSystem.getSystemBaseBallNumber());
+        return List.of(hint.getBallCount(), hint.getStrikeCount());
     }
 
-    public boolean isWin(){
+    public boolean isWin() {
         return hint.isWin();
     }
 }

@@ -12,11 +12,11 @@ public class GameSystem {
         this.systemBaseBallNumber = initBaseBallNumber();
     }
 
-    public List<Integer> getSystemBaseBallNumber(){
+    public List<Integer> getSystemBaseBallNumber() {
         return systemBaseBallNumber;
     }
 
-    private List<Integer> initBaseBallNumber(){
+    private List<Integer> initBaseBallNumber() {
         List<Integer> number = new ArrayList<>();
 
         while (number.size() < 3) {
