@@ -13,6 +13,21 @@ public class Player {
 	public Player() {
 	}
 
+	public void setNumber() {
+		playerNumber.clear();
+		String number = Console.readLine();
+		isValidNumber(number);
+		for (int i = 0; i < number.length(); i++) {
+			char charDigit = number.charAt(i);
+			int digit = Character.getNumericValue(charDigit);
+			playerNumber.add(digit);
+		}
+	}
+
+	public List<Integer> getNumber() {
+		return this.playerNumber;
+	}
+
 	private void isValidNumber(String number) {
 		Matcher matcher = pattern.matcher(number);
 		if (!matcher.matches()) {
