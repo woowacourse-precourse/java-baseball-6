@@ -6,8 +6,11 @@ public class Game {
 
     private InputValue inputValue = new InputValue();
     private OutputValue outputValue = new OutputValue();
+
     private List<Integer> computerNumber;
     private List<Integer> userNumber;
+    private Number computer;
+    private Number user;
 
     private boolean exit = false;
     private int strike = 0;
@@ -17,11 +20,11 @@ public class Game {
 
     public void gameStart() {
 
-        Number computer = new Number();
+        computer = new Number();
         computer.randomNumberGenerator();
         computerNumber = computer.getNumber();
 
-        Number user = new Number();
+        user = new Number();
 
         outputValue.startMessage();
 
@@ -34,6 +37,8 @@ public class Game {
             calculateScore();
 
             outputValue.resultMessage(strike, ball);
+
+            clearCheck();
 
         }
     }
@@ -53,6 +58,17 @@ public class Game {
 
             if(computerNumber.contains(selectNumber)) {
                 ball++;
+            }
+        }
+    }
+
+    private void clearCheck() {
+        if(strike == 3) {
+            if(inputValue.restartCheck()) {
+                computer.randomNumberGenerator();
+                computerNumber = computer.getNumber();
+            } else {
+                exit = true;
             }
         }
     }
