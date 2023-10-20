@@ -70,16 +70,17 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         int inputNum = scanner.nextInt();
 
-        if(inputNum <100 || inputNum > 999){
-            System.out.println("error");
-        }
-
         answer[0] = inputNum / 100;
         answer[1] = (inputNum / 10) % 10;
         answer[2] = inputNum % 10;
 
-        return answer;
+        if(inputNum < 100 || inputNum > 999){
+            throw new IllegalArgumentException("중복된 수를 갖지 않는 3자리 수를 입력해주세요.");
+        } else if(answer[0]==answer[1] || answer[1]==answer[2] || answer[2]==answer[0]){
+            throw new IllegalArgumentException("중복된 수를 갖지 않는 3자리 수를 입력해주세요.");
+        }
 
+        return answer;
     }
 
     public static boolean playAgainFunc(){
