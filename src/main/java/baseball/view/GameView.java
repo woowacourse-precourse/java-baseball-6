@@ -12,7 +12,7 @@ public class GameView {
         user.showStartMessage();
     }
 
-    public int getUserInput() {
+    public String getUserInput() {
         return user.getUserInput();
     }
 }

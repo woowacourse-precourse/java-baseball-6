@@ -13,9 +13,9 @@ public class User {
         System.out.println(STARTING_MESSAGE.getContent());
     }
 
-    public int getUserInput() {
+    public String getUserInput() {
         System.out.print(USER_INPUT_MESSAGE.getContent());
-        return sc.nextInt();
+        return sc.nextLine();
     }
 
 }

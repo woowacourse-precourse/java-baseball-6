@@ -16,7 +16,7 @@ public class GameController {
     public void runGame() {
 
         view.showStartMessage();
-        int userInput = view.getUserInput();
+        String userInput = view.getUserInput();
 
     }
 }

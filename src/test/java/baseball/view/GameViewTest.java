@@ -34,12 +34,12 @@ public class GameViewTest {
     @Test
     public void inputUserNumber() {
         //given
-        when(user.getUserInput()).thenReturn(123);
+        when(user.getUserInput()).thenReturn("123");
 
         //when
-        int userInput = view.getUserInput();
+        String userInput = view.getUserInput();
 
         verify(user).getUserInput();
-        assertEquals(123, userInput);
+        assertEquals("123", userInput);
     }
 }
