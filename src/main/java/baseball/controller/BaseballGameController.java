@@ -71,6 +71,15 @@ public class BaseballGameController {
             }
         }
 
+        for(int i = 0 ; i < 3; i++){
+            for(int j = i+1; j< 3;j ++){
+                if(userNumber.charAt(i)==userNumber.charAt(j)){
+                    throw new IllegalArgumentException();
+                }
+            }
+        }
+
+
     }
 
 
