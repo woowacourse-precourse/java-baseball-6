@@ -1,6 +1,6 @@
 package baseball.io.input;
 
-import baseball.validation.Validation;
+import baseball.io.input.validation.Validation;
 
 public class ValidationInput implements Input {
 

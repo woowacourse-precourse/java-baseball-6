@@ -7,7 +7,7 @@ import baseball.game.dto.Baseball;
 import baseball.game.dto.BaseballScore;
 import baseball.io.input.Input;
 import baseball.io.input.ValidationInput;
-import baseball.io.input.InputValidator;
+import baseball.io.input.validation.InputValidator;
 
 public class GameLoop {
 
