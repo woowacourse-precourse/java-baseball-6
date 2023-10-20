@@ -46,8 +46,7 @@ public class Computer {
         return numberList.size() < NUMBER_COUNT;
     }
 
-    public Numbers getNumbers() {
-        return player.getNumbers();
+    public Player getPlayer() {
+        return Player.create(player.getNumbers());
     }
-
 }

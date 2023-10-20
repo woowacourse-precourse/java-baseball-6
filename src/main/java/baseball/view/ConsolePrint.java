@@ -1,8 +1,5 @@
 package baseball.view;
 
-import baseball.domain.result.Result;
-
-
 public class ConsolePrint {
 
     private static final String START_STRING = "숫자 야구 게임을 시작합니다.";
@@ -25,7 +22,7 @@ public class ConsolePrint {
         System.out.println(FINISH_INPUT_STRING);
     }
 
-    public static void printResult(Result result) {
+    public static void printResult(String result) {
         System.out.println(result);
     }
 }

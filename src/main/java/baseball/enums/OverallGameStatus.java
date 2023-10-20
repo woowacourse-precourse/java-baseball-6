@@ -22,14 +22,10 @@ public enum OverallGameStatus {
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR] 잘못된 입력입니다."));
     }
 
-    public boolean isEqualInputString(String inputString) {
-        return getInputString().equals(inputString);
+    private boolean isEqualInputString(String inputString) {
+        return this.inputString.equals(inputString);
     }
 
-
-    public String getInputString() {
-        return inputString;
-    }
 
     public boolean isContinue() {
         return isContinue;
