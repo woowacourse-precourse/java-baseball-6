@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.game.BaseBallGameMessage.*;
+
 public class Console {
 
     private static final Exception ILLEGAL_ARGUMENT_EXCEPTION = new IllegalArgumentException();
@@ -91,4 +93,8 @@ public class Console {
         }
     }
 
+
+    public void printGameStart(){
+        System.out.println(START_GAME.getMessage());
+    }
 }
