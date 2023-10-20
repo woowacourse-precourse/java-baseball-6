@@ -13,6 +13,15 @@ public class GameService {
     Player player = new Player();
     List<Integer> computer = new ArrayList<>();
 
+    public void playBaseBallGameLoop() {
+        int strike = 0;
+        while (strike < 3) {
+            playBaseBallGame();
+            printStrikeBallCount();
+            strike = strikeBallCount.getStrike();
+        }
+    }
+
     public void playBaseBallGame() {
         player.clearPlayerNumberStore();
         strikeBallCount.settingStrikeBallCount();
