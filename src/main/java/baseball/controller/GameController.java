@@ -8,6 +8,7 @@ import baseball.view.OutputView;
 public class GameController {
     private static ComputerNumber computerNumber;
     private static UserNumber userNumber;
+    private static HintCalculator hintCalculator;
 
     public static void proceedGame() {
         showStartMessage();
@@ -39,6 +40,12 @@ public class GameController {
     }
 
     private static void showHint() {
+        hintCalculator = new HintCalculator(userNumber.getNumber(), computerNumber.getNumber());
+        OutputView.printHint(getHintMessage());
+    }
+
+    private static String getHintMessage() {
+        return hintCalculator.getHintString();
     }
 
     private static void setUserNumber() {
