@@ -16,12 +16,7 @@ public class BaseBallGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
         state = GameState.PLAYING;
 
-        while (answerNum.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answerNum.contains(randomNumber)) {
-                answerNum.add(randomNumber);
-            }
-        }
+        generateNum();
     }
 
     public void chooseNum(){
@@ -55,6 +50,12 @@ public class BaseBallGame {
     }
 
     private void generateNum(){
-
+        answerNum.clear();
+        while (answerNum.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answerNum.contains(randomNumber)) {
+                answerNum.add(randomNumber);
+            }
+        }
     }
 }
