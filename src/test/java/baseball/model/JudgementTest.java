@@ -1,11 +1,8 @@
 package baseball.model;
 
-import static baseball.model.Result.BALL;
-import static baseball.model.Result.STRIKE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,11 +13,11 @@ class JudgementTest {
     void judge() {
         Computer computer = new Computer(List.of(1, 2, 3));
         Player player = new Player("132");
+
         Judgement judgement = new Judgement();
+        judgement.judge(computer, player);
 
-        Map<Result, Integer> gameResult = judgement.judge(computer, player);
-
-        assertThat(gameResult).containsEntry(STRIKE, 1);
-        assertThat(gameResult).containsEntry(BALL, 2);
+        assertThat(judgement.getStrike()).isEqualTo(1);
+        assertThat(judgement.getBall()).isEqualTo(2);
     }
 }

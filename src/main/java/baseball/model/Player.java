@@ -39,7 +39,15 @@ public class Player {
                 .toList();
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public int countSameNumber(Computer computer) {
+        return (int) numbers.stream()
+                .filter(computer::hasNumber)
+                .count();
+    }
+
+    public int countSameIndex(Computer computer) {
+        return (int) numbers.stream()
+                .filter(number -> computer.isSameIndex(number, numbers.indexOf(number)))
+                .count();
     }
 }
