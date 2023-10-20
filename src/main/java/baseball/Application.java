@@ -12,9 +12,15 @@ public class Application {
         // TODO: 프로그램 구현
         //1) 컴퓨터 랜덤 난수 생성
         comAnswer = computerRandomNum();
+        System.out.println(comAnswer);
         //2) 사용자 입력값 예외처리
         userAnswer = Console.readLine();
         chkInputException(userAnswer);
+        //3) 사용자 입력값에 대한 힌트 제공
+        if(getHint(userAnswer, comAnswer)){
+            System.out.println("정답입니다.");
+        }
+
     }
 
     //컴퓨터 랜덤 숫자 생성 함수
@@ -50,6 +56,42 @@ public class Application {
             }
             tmp += num;
         }
+    }
+
+    //사용자 입력값에 대한 힌트 제공
+    static boolean getHint(String userAnswer, String computerAnswer){
+        String result = "";
+        int ball = 0;
+        int strike = 0;
+
+        for(int i=0; i<3; i++){
+            String cur = String.valueOf(userAnswer.charAt(i));
+            if(computerAnswer.contains(cur)){
+                ball++;
+            }
+        }
+        for(int i=0; i<3; i++){
+            if(computerAnswer.indexOf(userAnswer.charAt(i)) == i){
+                strike++;
+            }
+        }
+        ball -= strike;
+
+        if(ball > 0){
+            result += String.valueOf(ball)+"볼 ";
+        }
+        if(strike > 0){
+            result += String.valueOf(strike) + "스트라이크 ";
+        }
+        if(ball == 0 && strike == 0){
+            result = "낫싱";
+        }
+        System.out.println(result);
+
+        if(strike == 3){
+            return true;
+        }
+        return false;
     }
 
 }
