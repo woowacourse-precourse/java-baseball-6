@@ -14,8 +14,7 @@ public class Application {
         do {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> answer = random3();
-            List<Integer> playerInput = new ArrayList<>();
-            //printAnswer(answer); //이후 삭제
+            List<Integer> playerInput;
             do {
                 playerInput = player3();
                 System.out.println(printResult(answer, playerInput));
@@ -25,18 +24,13 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             isGameContinue = Console.readLine();
-            if (isGameContinue != "1" || isGameContinue != "2") {
+            if (!isGameContinue.equals("1") && !isGameContinue.equals("2")) {
                 throw new IllegalArgumentException("허용되지 않은 입력입니다.");
             }
         }
-        while (isGameContinue == "1");
-    }
+        while (isGameContinue.equals("1"));
 
-    public static void printAnswer(List<Integer> answer) {
-        for (int i : answer) {
-            System.out.print(i);
-        }
-        System.out.println();
+        System.out.println("게임 종료");
     }
 
     public static List<Integer> random3() {
