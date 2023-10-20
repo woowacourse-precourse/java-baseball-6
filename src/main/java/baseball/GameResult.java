@@ -16,4 +16,19 @@ public class GameResult {
     public int getBall() {
         return ball;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        if (ball > 0) {
+            result.append(ball).append("볼");
+        }
+
+        if (strike > 0) {
+            result.append(strike).append("스트라이크");
+        }
+
+        return result.toString().trim();
+    }
 }
