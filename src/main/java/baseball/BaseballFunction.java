@@ -1,9 +1,7 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class BaseballFunction {
@@ -23,7 +21,6 @@ public class BaseballFunction {
         List<Integer> player = new ArrayList<>();
         int input = Integer.parseInt(Console.readLine());
         if (input>=1000){
-            System.out.println("error");
             throw new IllegalArgumentException();
         }
         player.add(input/100);
@@ -33,7 +30,7 @@ public class BaseballFunction {
         return player;
     }
 
-    public static void compare(List<Integer> computer, List<Integer> player){
+    public static Score compare(List<Integer> computer, List<Integer> player){
         int strike = 0;
         int ball = 0;
 
@@ -44,20 +41,26 @@ public class BaseballFunction {
             if (isStrike) strike++;
             if(isBall) ball++;
         }
-
-        if (strike == 3){
-            System.out.println("strike");
-        }
-        else{
-            System.out.println("regame");
-        }
-        System.out.println(strike+" "+ball);
-
+        return new Score(strike, ball);
     }
 
-
-
+    public static void printScore(Score score){
+        boolean isNotiong = score.strike == 0 & score.ball == 0;
+        if (isNotiong){
+            System.out.println("낫싱");
+            return;
+        }if (score.ball != 0 & score.strike != 0){
+            System.out.println(score.ball+"볼 "+score.strike+"스트라이크");
+            return;
+        }if (score.strike == 0){
+            System.out.println(score.ball+"볼");
+            return;
+        }if (score.ball == 0){
+            System.out.println(score.strike+"스트라이크");
+            return;
+        }
+    }
     public static void main(String[] args) {
-        compare(genNum(),getNum());
+        printScore(compare(genNum(),getNum()));
     }
 }
