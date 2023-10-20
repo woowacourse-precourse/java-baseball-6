@@ -59,4 +59,28 @@ class GameTest {
         assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception2.getMessage());
         assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception3.getMessage());
     }
+
+    @Test
+    @DisplayName("잘못된 입력_1 ~ 9에 해당하지 않는 경우")
+    void validationInputTest5() {
+        Game game =new Game();
+        IllegalArgumentException exception =assertThrows(
+            IllegalArgumentException.class, ()->game.getIntegerInput("120"));
+
+        assertThat(INVALID_FORMAT_INPUT.getMsg()).isEqualTo(exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("잘못된 입력_중복된 숫자가 존재하는 경우")
+    void validationInputTest6() {
+        Game game =new Game();
+        IllegalArgumentException exception =assertThrows(
+            IllegalArgumentException.class, ()->game.getIntegerInput("151"));
+        IllegalArgumentException exception2 =assertThrows(
+            IllegalArgumentException.class, ()->game.getIntegerInput("133"));
+
+        assertThat(INVALID_DISTINCT_INPUT.getMsg()).isEqualTo(exception.getMessage());
+        assertThat(INVALID_DISTINCT_INPUT.getMsg()).isEqualTo(exception2.getMessage());
+    }
+
 }
