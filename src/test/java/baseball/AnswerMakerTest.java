@@ -31,4 +31,13 @@ class AnswerMakerTest {
             }
         }
     }
+
+    @Test
+    void 세_개의_숫자_테스트() {
+        for (int i = 0; i < 100; i++) {
+            List<Integer> testList = answerMaker.makeThreeDifferentNumberList(1, 9);
+            assertEquals(3, testList.size());
+        }
+
+    }
 }
