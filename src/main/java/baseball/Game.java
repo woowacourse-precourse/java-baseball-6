@@ -12,7 +12,7 @@ public class Game {
         while(true) {
             List<Integer> userNumbers = askUserNumbers();
 
-            Score score = Util.getScore(answerNumbers, userNumbers);
+            Score score = Score.getScore(answerNumbers, userNumbers);
 
             printScore(score);
 
