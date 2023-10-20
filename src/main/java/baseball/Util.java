@@ -19,11 +19,11 @@ public class Util {
         return numbers;
     }
 
-    public static void validateUserString(String string) {
+    public static void validateUserString(String input) {
 
-        validateStringOnlyNumbers(string);
-        validateStringLength(string, 3);
-        validateStringDuplicate(string);
+        validateStringOnlyNumbers(input);
+        validateStringLength(input, 3);
+        validateStringDuplicate(input);
     }
 
     public static void validateStringOnlyNumbers(String input) {
