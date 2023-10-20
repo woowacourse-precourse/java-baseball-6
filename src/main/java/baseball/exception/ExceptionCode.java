@@ -8,7 +8,7 @@ public enum ExceptionCode {
     private final String code;
     private final String description;
 
-    ExceptionCode(String code, String description) {
+    ExceptionCode(final String code, final String description) {
         this.code = code;
         this.description = description;
     }

@@ -10,12 +10,12 @@ public class NumberBaseballGameService implements GameService {
     private final BaseballNumberMaker baseballNumberMaker;
     private BaseballNumber target;
 
-    public NumberBaseballGameService(BaseballNumberMaker baseballNumberMaker) {
+    public NumberBaseballGameService(final BaseballNumberMaker baseballNumberMaker) {
         this.baseballNumberMaker = baseballNumberMaker;
     }
 
     @Override
-    public GameResult calculateResult(GameData data) {
+    public GameResult calculateResult(final GameData data) {
         validateType(data);
         return target.calculateResult((BaseballNumber) data);
     }
@@ -25,7 +25,7 @@ public class NumberBaseballGameService implements GameService {
         this.target = baseballNumberMaker.make();
     }
 
-    private static void validateType(GameData data) {
+    private static void validateType(final GameData data) {
         if (!(data instanceof BaseballNumber)) {
             throw new IllegalArgumentException();
         }
