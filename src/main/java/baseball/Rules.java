@@ -23,7 +23,7 @@ public class Rules {
             if (c_idx >= 0 && c_idx == u_idx) {
                 this.strikes++;
             }
-            if (c_idx >= 0 && c_idx == u_idx) {
+            if (c_idx >= 0 && c_idx != u_idx) {
                 this.ball++;
             }
         }
