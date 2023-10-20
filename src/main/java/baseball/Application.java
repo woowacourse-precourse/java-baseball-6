@@ -12,13 +12,9 @@ public class Application {
         boolean gameChoice = true;
         List<Integer> computerNum = new ArrayList<>();
         String gameString = "";
-        // 컴퓨터 숫자를 생성함. 차후 메소드로 분리
-        while (computerNum.size() < 3) {
-            int num = Randoms.pickNumberInRange(1, 9);
-            if (!computerNum.contains(num)) {
-                computerNum.add(num);
-            }
-        }
+
+        makeComputerNum(computerNum);
+
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (gameChoice) {
@@ -28,23 +24,38 @@ public class Application {
 
             System.out.println(gameString); // 진행상황 표시
 
-            if (gameString.equals("3스트라이크")) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-                String gameChoiceNum = Console.readLine();
-
-                if (gameChoiceNum.equals("1"))
-                    gameChoice = true;
-                else if (gameChoiceNum.equals("2"))
-                    gameChoice = false;
-                //else를 사용하지않고 잘못 섰을시 예외처리 하기
+            if (gameString.equals("3스트라이크"))
+                gameChoice = checkRestartGame();
+        }
+    }
+    /**
+     * 컴퓨터의 3자리 숫자를 만드는 메소드
+     */
+    private static void makeComputerNum(List<Integer> computerNum) {
+        while (computerNum.size() < 3) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (!computerNum.contains(num)) {
+                computerNum.add(num);
             }
         }
-
     }
+    /**
+     * 게임이 끝난 후 사용자에게 다시 시작할 것인지 물어보는 메소드
+     */
+    public static boolean checkRestartGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-    static String check(String userInput, List<Integer> ComputerNum) {
+        String gameChoiceNum = Console.readLine();
+
+        if (gameChoiceNum.equals("1"))
+            return true;
+        else if (gameChoiceNum.equals("2"))
+            return false;
+        //else를 사용하지않고 잘못 입력시 예외처리 하기
+        throw new IllegalArgumentException("1과 2중에 입력하셔야 합니다. ");
+    }
+    private static String check(String userInput, List<Integer> ComputerNum) {
         int totalCount = 0;
         int strikeCount = 0;
         int ballCount = 0;
