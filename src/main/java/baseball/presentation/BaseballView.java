@@ -28,4 +28,8 @@ public class BaseballView {
 
         return sb.toString();
     }
+
+    public void printGameEndMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
