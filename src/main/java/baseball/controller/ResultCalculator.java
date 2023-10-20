@@ -1,14 +1,15 @@
-package baseball;
+package baseball.controller;
 
+import baseball.SystemConstant;
 import baseball.domain.BallNumber;
 import baseball.domain.Result;
 
 import java.util.stream.IntStream;
 
 public class ResultCalculator {
-    BallNumber computerNumber;
+    public BallNumber computerNumber;
 
-    ResultCalculator(BallNumber newComputerNumber) {
+    public ResultCalculator(BallNumber newComputerNumber) {
         computerNumber = newComputerNumber;
     }
 

@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.ResultCalculator;
 import baseball.domain.BallNumber;
 import baseball.domain.Result;
 import org.junit.jupiter.api.DisplayName;

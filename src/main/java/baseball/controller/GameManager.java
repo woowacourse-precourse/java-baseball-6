@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 import baseball.domain.BallNumber;
 
