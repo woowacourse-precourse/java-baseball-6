@@ -4,13 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Validator {
-    public static boolean validate(int[] numbers){
+    public static boolean validate(final int[] numbers){
         checkDuplicate(numbers);
         checkSize(numbers);
         return true;
     }
 
-    private static void checkDuplicate(int[] numbers) {
+    private static void checkDuplicate(final int[] numbers) {
         Set<Integer> set = new HashSet<>();
         for(int num: numbers){
             if(!set.add(num)){
@@ -19,7 +19,7 @@ public class Validator {
         }
     }
 
-    private static void checkSize(int[] numbers) {
+    private static void checkSize(final int[] numbers) {
         if(numbers.length>3){
             throw new IllegalArgumentException("세 자리 숫자를 입력 해주세요.");
         }
