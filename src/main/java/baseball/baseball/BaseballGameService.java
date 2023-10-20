@@ -20,6 +20,10 @@ public class BaseballGameService implements TurnBasedGameService {
     @Override
     public BaseballGameTurnResult playTurn(TurnInput turnInput) {
         BaseballGameTurnInput baseballGameTurnInput = (BaseballGameTurnInput) turnInput;
-        return baseballGameTurnInput.calculateResult(answer);
+        return baseballGameTurnInput.calculateResult(this);
+    }
+
+    public BaseballNumber getAnswer() {
+        return answer;
     }
 }
