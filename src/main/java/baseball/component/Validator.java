@@ -20,10 +20,13 @@ public class Validator {
         return noting;
     }
 
-    public Validator(List<Integer> target) {
+    public Validator() {
         strike = 0;
         ball = 0;
         noting = false;
+    }
+
+    public void setTarget(List<Integer> target) {
         this.target = target;
     }
 
