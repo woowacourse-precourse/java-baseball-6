@@ -20,11 +20,33 @@ public class Game {
             answer.add(randomNumber);
         }
     }
+
     public static void run(){
         Game game; // game 객체 생성
+        do {
+            RESULT = false;
+            game = new Game();
+        }while(game.restart());
     }
 
-
+    private boolean restart() {
+        System.out.println(GAME_RESTART);
+        String restartString = Console.readLine();
+        int restartNum = 0;
+        // string을 정수로 바꿈.
+        try {
+            restartNum = Integer.parseInt(restartString);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        if (restartNum == 1) {
+            GAME_RESTART_BOOL = true;
+        } else if (restartNum == 2) {
+            GAME_RESTART_BOOL = false;
+        } else {
+            throw new IllegalArgumentException(WRONG_INPUT_ERROR);
+        }
+        return GAME_RESTART_BOOL;
+    }
 }
-
 
