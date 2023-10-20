@@ -27,8 +27,13 @@ public class GameController {
         String playerNumberStr = inputView.inputPlayerNumber();
         playerNumber.setPlayerNumbers(convertPlayerNumberToList(playerNumberStr));
 
-        if (isPlayerSameAsComputer(playerNumber.getPlayerNumbers(), computerNumber.getComputerNumbers())) {
+        initStrikeAndBall();
+        List<Integer> player = playerNumber.getPlayerNumbers();
+        List<Integer> computer = computerNumber.getComputerNumbers();
+        if (isPlayerSameAsComputer(player, computer)) {
             strike = 3;
+        } else {
+            calculateHint(player, computer);
         }
     }
 
@@ -54,6 +59,11 @@ public class GameController {
         return player;
     }
 
+    public void initStrikeAndBall() {
+        strike = 0;
+        ball = 0;
+    }
+
     public boolean isPlayerSameAsComputer(List<Integer> player, List<Integer> computer) {
         for (int index = 0; index < NUMBER_LENGTH; index++) {
             if (!player.get(index).equals(computer.get(index))) {
@@ -62,5 +72,18 @@ public class GameController {
         }
 
         return true;
+    }
+
+    public void calculateHint(List<Integer> player, List<Integer> computer) {
+        for (int index = 0; index < NUMBER_LENGTH; index++) {
+            if (player.get(index).equals(computer.get(index))) {
+                strike++;
+                continue;
+            }
+
+            if (computer.contains(player.get(index))) {
+                ball++;
+            }
+        }
     }
 }
