@@ -70,8 +70,8 @@ public class GameNumber {
     }
 
     private void validLength(List<Integer> gameNumber) {
-        if (!NUMBER_SIZE.getValue().equals(Set.copyOf(gameNumber).size()) ||
-                !NUMBER_SIZE.getValue().equals(gameNumber.size())) {
+        if (!NUMBER_SIZE.getValue().equals(Set.copyOf(gameNumber).size())
+                || !NUMBER_SIZE.getValue().equals(gameNumber.size())) {
             throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
         }
     }

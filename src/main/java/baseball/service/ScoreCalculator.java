@@ -20,7 +20,8 @@ public class ScoreCalculator {
 
     public Integer calculateBall(GameNumber computer, GameNumber player) {
         return (int) IntStream.range(0, NUMBER_SIZE.getValue())
-                .filter(idx -> computer.contains(player.get(idx)) && !Objects.equals(computer.get(idx), player.get(idx)))
+                .filter(idx -> computer.contains(player.get(idx))
+                        && !Objects.equals(computer.get(idx), player.get(idx)))
                 .count();
     }
 }
