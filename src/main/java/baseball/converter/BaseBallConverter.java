@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 public class BaseBallConverter {
 
+    private BaseBallConverter() {
+    }
 
     public static Numbers stringToNumbers(String numberString) {
         validateIsNumber(numberString);

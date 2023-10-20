@@ -15,6 +15,8 @@ public class BaseBallController {
     private static BaseBallView baseBallView;
     private static BaseBallService baseBallService;
 
+    private BaseBallController() {
+    }
 
     public static void run() {
         init();
