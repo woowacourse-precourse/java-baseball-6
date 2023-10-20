@@ -28,4 +28,7 @@ public class ComputerNumber {
         return randomNumbs.stream().distinct().count() == Constant.NUMBER_LENGTH_LIMIT;
     }
 
+    public List<Integer> getComputerNumber() {
+        return Collections.unmodifiableList(createRandomNumber());
+    }
 }
