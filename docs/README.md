@@ -66,7 +66,11 @@
   - [x] 게임 끝 문구 출력
   - [x] 숫자 입력 문구 출력
   - [x] 숫자 입력 기능
-- [ ] GameManger
+- [x] GameManger
+  - [x] 게임 시작
+  - [x] 게임 플레이
+  - [x] 정답을 맞추고 게임을 이겼는지 확인
+  - [x] 게임 재시작
 - [x] GameService
   - [x] GameResult를 이용 결과를 반환하는 기능
   - [x] 3스트라이크로 게임을 이겼는지 판단하는 기능
@@ -84,5 +88,7 @@
     - [x] 게임 종료 숫자 유효성 검사(문자 x, 1 or 2를 제외한 모든 숫자 x, 1자리 숫자가 맞는지)
 - [x] 에러 메세지 Enum
 - [x] View 관련 메세지 Enum
+- [x] Application(main)
+  - [x] controller를 이용해 게임 요청
 
 
