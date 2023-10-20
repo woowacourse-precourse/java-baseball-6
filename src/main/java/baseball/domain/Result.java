@@ -11,6 +11,14 @@ public class Result {
         this.strikeCount = strikeCount;
     }
 
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

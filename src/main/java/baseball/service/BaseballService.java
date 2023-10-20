@@ -14,6 +14,7 @@ public class BaseballService {
         Baseball guess = new Baseball(userInput);
         return guess;
     }
+
     public Result compare(Baseball guess, Baseball answer) {
         int ballCount = 0;
         int strikeCount = 0;
