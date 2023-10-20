@@ -1,4 +1,6 @@
-package baseball;
+package baseball.controller;
+
+import baseball.service.GameService;
 
 public class GameController {
     //TODO
