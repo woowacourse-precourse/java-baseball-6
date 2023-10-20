@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.model.Game;
-import baseball.model.User;
+import baseball.domain.Game;
+import baseball.domain.User;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -38,9 +38,9 @@ public class GameService {
         int strikeCount = 0;
 
         while(strikeCount != NUM_SIZE){
-            int[] score = checkScore(getUserNum());
-            message.printScore(score[0],score[1]);
-            strikeCount = score[0];
+            BaseballScore score = checkCount(getUserNum());
+            message.printScore(score.strikeCount, score.ballCount);
+            strikeCount = score.strikeCount;
         }
         stopGame();
     }
@@ -64,13 +64,22 @@ public class GameService {
         return user.parseUserNum(userNum, NUM_SIZE);
     }
 
-    public int[] checkScore(int[] user){
-        int[] score = new int[2];
+    public BaseballScore checkCount(int[] user){
+        int ballCount = 0, strikeCount = 0;
         for(int i=0;i<user.length;i++){
             if(!computer.contains(user[i])) continue;
-            if(computer.indexOf(user[i]) == i) score[0]++;
-            else score[1]++;
+            if(computer.indexOf(user[i]) == i) strikeCount++;
+            else ballCount++;
         }
-        return score;
+        return new BaseballScore(ballCount, strikeCount);
+    }
+
+    private class BaseballScore{
+        int ballCount;
+        int strikeCount;
+        public BaseballScore(int ballCount, int strikeCount){
+            this.ballCount = ballCount;
+            this.strikeCount = strikeCount;
+        }
     }
 }
