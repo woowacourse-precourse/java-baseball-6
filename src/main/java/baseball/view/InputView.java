@@ -17,18 +17,19 @@ public class InputView {
         return input;
     }
 
+    public static String inputGameRestartMessage() {
+        String input = getInput();
+        validateWrongGameRestartInput(input);
+        validateBlankInputGameNumber(input);
+        return input;
+    }
+
     private static void validateBlankInputGameNumber(String input) {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException(UserInputNumberError.USER_INPUT_BLANK_ERROR_MESSAGE);
         }
     }
 
-
-    public static String inputGameRestartMessage() {
-        String input = getInput();
-        validateWrongGameRestartInput(input);
-        return input;
-    }
 
     private static void validateWrongGameRestartInput(String input) {
         if (!input.equals(GAME_RESTART_NUMBER) && !input.equals(GAME_END_NUMBER)) {
