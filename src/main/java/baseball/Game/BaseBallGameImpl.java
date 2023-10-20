@@ -20,6 +20,18 @@ public class BaseBallGameImpl implements BaseBallGame {
 
     @Override
     public void playGame() {
+        while (true){
+            List<Integer> userAnswer = inputAnswer.inputAnswer();
+            Integer strike = countStrike(userAnswer);
+            Integer ball = countBall(userAnswer);
+            if (strike == 0 && ball ==0)
+                System.out.println("낫싱");
+            else if (strike == 3) {
+                //TODO : 재시작 혹은 게임 종료
+                break;
+            } else
+                printResult(strike, ball);
+        }
     }
 
     @Override

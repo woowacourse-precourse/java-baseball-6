@@ -3,14 +3,12 @@ package baseball;
 import baseball.Game.BaseBallGame;
 import baseball.Game.BaseBallGameImpl;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -97,12 +95,6 @@ class ApplicationTest extends NsTest {
         assertThat(baseBallGame.countBall(List.of(1,2,4))).isEqualTo(1);
         assertThat(baseBallGame.countBall(List.of(4,1,2))).isEqualTo(2);
         assertThat(baseBallGame.countBall(List.of(2,3,1))).isEqualTo(3);
-    }
-
-    @Test
-    void 낫싱_테스트(){
-        assertThat(baseBallGame.isNothing(List.of(1,2,3))).isFalse();
-        assertThat(baseBallGame.isNothing(List.of(9,9,9))).isTrue();
     }
 
     @Test
