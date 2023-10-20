@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Application {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final List<Integer> computerNumber = new ArrayList<>();
     public static void main(String[] args) {
         // 게임 시작 메시지 출력
@@ -19,5 +20,8 @@ public class Application {
                 computerNumber.add(randomNumber);
             }
         }
+
+        // 사용자 숫자 입력
+        System.out.println(USER_INPUT_MESSAGE);
     }
 }
