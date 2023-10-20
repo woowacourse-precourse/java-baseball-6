@@ -25,23 +25,4 @@ public class Guess extends Balls{
         return this.balls.get(locate);
     }
 
-    public int get_result(){
-        if(nothing==0) {
-            System.out.println("낫싱");
-            return 0;
-        }
-        if (ball == 0) {
-            System.out.println(strike + "스트라이크");
-            if(strike ==3){
-                return 3;
-            }
-            return 0;
-        }
-        if (strike == 0) {
-            System.out.println(ball + "볼");
-            return 0;
-        }
-        System.out.println(ball + "볼 " + strike + "스트라이크");
-        return 0;
-    }
 }

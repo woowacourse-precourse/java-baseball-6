@@ -30,6 +30,7 @@ public class Play {
     }
 
     public int check_balls(Balls goal, Guess user_ball) {
+        // 사용자 추측값 검증하기
         int locate = 0;
         while (locate < goal.size) {
             // 입력값 중 target ball 설정
@@ -41,12 +42,37 @@ public class Play {
                 if (goal_index == locate) {
                     user_ball.strike++;
                 } else user_ball.ball++;
-            } else user_ball.nothing--;
+            }
+            if (goal_index==-1){
+                user_ball.nothing--;
+            }
 
             locate++;
         }
-        return user_ball.get_result();
+        return get_result(user_ball);
     }
+
+    public int get_result(Guess user_ball){
+        if(user_ball.nothing==0) {
+            System.out.println("낫싱");
+            return 0;
+        }
+        if (user_ball.ball == 0) {
+            System.out.println(user_ball.strike + "스트라이크");
+            if(user_ball.strike ==3){
+                return 3;
+            }
+            return 0;
+        }
+        if (user_ball.strike == 0) {
+            System.out.println(user_ball.ball + "볼");
+            return 0;
+        }
+        System.out.println(user_ball.ball + "볼 " + user_ball.strike + "스트라이크");
+        return 0;
+    }
+
+
 
     public int end_balls() {
         // 사용자 숫자야구 성공
