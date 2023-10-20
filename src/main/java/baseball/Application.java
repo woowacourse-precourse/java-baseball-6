@@ -29,15 +29,17 @@ class Game{
             while (true) {
                 answer.clear();
                 user();
+
                 Hint hint = new Hint();
                 hint.score(answer, computer_answer);
+
                 if (hint.result()) {
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     int choice = Integer.parseInt(Console.readLine());
                     if (choice == 1) {
-                        break; // 내부 루프 종료하여 새로운 게임 시작
+                        break;
                     } else if (choice == 2) {
-                        check = true; // 외부 루프 종료하여 게임 종료
+                        check = true;
                         break;
                     }
                 }
@@ -69,7 +71,6 @@ class Game{
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
         }
-
         for (int i = 0; i < input.length(); i++) {
             int num = input.charAt(i) - '0';
             if (num < 1 || num > 9) {
@@ -89,6 +90,7 @@ class Hint{
     void score(List<Integer>user, List<Integer>computer){
         ball = 0;
         strike = 0;
+
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 if(Objects.equals(user.get(i), computer.get(j))){
