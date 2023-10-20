@@ -6,11 +6,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Computer {
+public class Computer extends Numbers{
     public static final int MIN_NUMBER_RANGE = 1;
     public static final int MAX_NUMBER_RANGE = 9;
     public static final int THREE_DIGIT = 3;
-    private List<Integer> numbers;
 
     public Computer() {
         generateRandomThreeDigitNumber();
@@ -30,7 +29,4 @@ public class Computer {
         }
     }
 
-    public List<Integer> getNumbers() {
-        return new ArrayList<Integer> (numbers);
-    }
 }
