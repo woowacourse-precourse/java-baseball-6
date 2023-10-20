@@ -3,7 +3,6 @@ package baseball;
 import java.util.List;
 
 public class NumberBaseballGame {
-    AnswerMaker answerMaker = new AnswerMaker();
     Message message = new Message();
     UserInput userInput = new UserInput();
     Computer computer = new Computer();
@@ -16,7 +15,8 @@ public class NumberBaseballGame {
         boolean gameStatus = true;
         while (gameStatus) {
             speaker(message.startMessage() + '\n');
-            computer.setAnswer(answerMaker.makeThreeDifferentNumberList(1, 9)); // 정답 생성 후 컴퓨터에 저장
+//            computer.setAnswer(answerMaker.makeThreeDifferentNumberList(1, 9)); // 정답 생성 후 컴퓨터에 저장
+            AnswerMaker answerMaker = new AnswerMaker(1, 9);
             oneRound();
             speaker(message.restartOrStopMessage());
             String startOrStop = userInput.getUserInput();

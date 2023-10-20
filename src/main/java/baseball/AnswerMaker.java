@@ -23,8 +23,12 @@ public class AnswerMaker {
         return new ArrayList<>(numbers);
     }
 
-    public void makeAnswer() {
-        answer = makeThreeDifferentNumberList(1, 9);
+    public AnswerMaker(int min, int max) {
+        Set<Integer> numbers = new HashSet<>();
+        while (numbers.size() < 3) {
+            numbers.add(makeNumbers(min, max));
+        }
+        this.answer = new ArrayList<>(numbers);
     }
 
     public List<Integer> getAnswer() {
