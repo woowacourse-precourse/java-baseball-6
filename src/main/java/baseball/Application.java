@@ -64,8 +64,9 @@ public class Application {
         }
     }
     public static void printNothing(int ballCount, int strikeCount) {
-        if (ballCount == 0 && strikeCount == 0)
+        if (ballCount == 0 && strikeCount == 0) {
             System.out.print(NOTHING_MESSAGE);
+        }
     }
     public static boolean isAnswer(int strikeCount) {
         return strikeCount == NUMBERS_LENGTH;
@@ -75,8 +76,9 @@ public class Application {
         for (int i = 0; i < userNumbersList.size(); i++) {
             int userNumber = userNumbersList.get(i);
             int computerNumber = computerNumbersList.get(i);
-            if (userNumber != computerNumber && computerNumbersList.contains(userNumber))
+            if (userNumber != computerNumber && computerNumbersList.contains(userNumber)) {
                 ballCount++;
+            }
         }
         return ballCount;
     }
@@ -85,8 +87,9 @@ public class Application {
         for (int i = 0; i < userNumbersList.size(); i++) {
             int userNumber = userNumbersList.get(i);
             int computerNumber = computerNumbersList.get(i);
-            if (userNumber == computerNumber)
+            if (userNumber == computerNumber) {
                 strikeCount++;
+            }
         }
         return strikeCount;
     }
@@ -123,8 +126,9 @@ public class Application {
     }
     public static void validateMoreGameString(String moreGame) {
         validateEmptyOrNullOfInputString(moreGame);
-        if (!moreGame.equals(MORE_GAME) && !moreGame.equals(QUIT_GAME))
-            throw new IllegalArgumentException("[ERROR] 입력 값이 "+MORE_GAME+" 또는 "+QUIT_GAME+" 가 아닙니다.");
+        if (!moreGame.equals(MORE_GAME) && !moreGame.equals(QUIT_GAME)) {
+            throw new IllegalArgumentException("[ERROR] 입력 값이 " + MORE_GAME + " 또는 " + QUIT_GAME + " 가 아닙니다.");
+        }
     }
     public static void validateEmptyOrNullOfInputString(String str) {
         if (str == null || str.isEmpty()) {
@@ -132,18 +136,21 @@ public class Application {
         }
     }
     public static void validateStringLength(String str, int length) {
-        if (str.length() != length)
-            throw new IllegalArgumentException("[ERROR] 입력 값의 길이가 "+length+"(이)가 아닙니다.");
+        if (str.length() != length) {
+            throw new IllegalArgumentException("[ERROR] 입력 값의 길이가 " + length + "(이)가 아닙니다.");
+        }
     }
     public static void validateStringDistinct(String str) {
         Set<String> inputSet = new HashSet<>(Arrays.asList(str.split("")));
-        if (str.length() != inputSet.size())
+        if (str.length() != inputSet.size()) {
             throw new IllegalArgumentException("[ERROR] 입력 값에 중복이 있습니다.");
+        }
     }
     public static void validateStringDigit(String str) {
         for (char ch : str.toCharArray()) {
-            if (!Character.isDigit(ch))
+            if (!Character.isDigit(ch)) {
                 throw new IllegalArgumentException("[ERROR] 입력 값이 숫자로만 이루어져 있지 않습니다.");
+            }
         }
     }
 }
