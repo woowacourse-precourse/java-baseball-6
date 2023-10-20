@@ -18,6 +18,4 @@ public class Player {
     public TripleBalls getPlayerTripleBalls() {
         return playerTripleBalls;
     }
-
-
 }

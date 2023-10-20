@@ -12,7 +12,6 @@ public class IOTest {
     // Input, Output 확인하기
     private PrintStream standardOut;
     private OutputStream captor;
-    private InputStream userInputStream;
 
     @BeforeEach
     void init() {
@@ -27,10 +26,6 @@ public class IOTest {
         System.out.println(output());
     }
 
-    protected String output() {
-        return captor.toString();
-    }
-
     protected static InputStream generateMultipleInputsStream(String input, String result) {
         List<InputStream> inputStreams = Arrays.asList(
                 generateUserInputStream(input),
@@ -42,12 +37,15 @@ public class IOTest {
         return new ByteArrayInputStream(userInput.getBytes());
     }
 
-    protected static void setInUserInput(InputStream userInputStream) {
-        System.setIn(userInputStream);
-    }
-
     protected static String generateMultipleInputString(String... values) {
         return String.join("\n", values);
     }
 
+    protected static void setInUserInput(InputStream userInputStream) {
+        System.setIn(userInputStream);
+    }
+
+    protected String output() {
+        return captor.toString();
+    }
 }

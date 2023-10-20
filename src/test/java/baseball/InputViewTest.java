@@ -83,7 +83,4 @@ public class InputViewTest extends IOTest {
 
         Assertions.assertThat(restartChoice).isEqualTo("1");
     }
-
-
-
 }
