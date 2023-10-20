@@ -8,57 +8,35 @@ public class Application {
 
     public static void main(String[] args) {
         Computer com = new Computer();
+        Rules rules = new Rules();
         System.out.println("숫자 야구 게임을 시작합니다.");
         com.getNumbers();
 
         while (true) {
+            // 사용자 입력
             System.out.print("숫자를 입력해주세요 : ");
-            String player = Console.readLine();
-            // 사용자의 값 입력
-            List<Integer> intArray = new ArrayList<>();
-            String[] temp = player.split("");
+            String input = Console.readLine();
+            List<Integer> player = new ArrayList<>();
+            String[] temp = input.split("");
             for (String str : temp) {
-                if (!intArray.contains(Integer.parseInt(str))) {
-                    intArray.add(Integer.parseInt(str));
+                if (!player.contains(Integer.parseInt(str))) {
+                    player.add(Integer.parseInt(str));
                 }
             }
             // 스트라이크, 볼 개수 구하기
-            int ball = 0;
-            int strike = 0;
-            for (Integer val : intArray) {
-                int index = com.isInList(val);
-                if (index < 0) {
-                    continue;
-                }
-                if (index == intArray.indexOf(val)) {
-                    strike++;
-                } else {
-                    ball++;
-                }
-            }
+            rules.init(0, 0);
+            rules.countBallAndStrikes(com, player);
+            rules.getResult();
             // 결과 출력
-            if (strike != 3) {
-                if (ball > 0) {
-                    System.out.print(ball + "볼 ");
-                }
-                if (strike > 0) {
-                    System.out.print(strike + "스트라이크");
-                }
-                if (ball == 0 && strike == 0) {
-                    System.out.print("낫싱");
-                }
-                System.out.println();
-                continue;
-            }
-            System.out.println(strike + "스트라이크");
+
             // 게임 재시작 여부 결정
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            player = Console.readLine();
-            if (player.equals("1")) {
+            input = Console.readLine();
+            if (input.equals("1")) {
                 com.getClear();
                 com.getNumbers();
             }
-            if (player.equals("2")) {
+            if (input.equals("2")) {
                 break;
             }
         }
