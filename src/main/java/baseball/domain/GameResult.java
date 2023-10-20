@@ -8,4 +8,8 @@ public record GameResult(
     public boolean isCompleted() {
         return strike == BaseballNumberMaker.COUNT;
     }
+
+    public boolean isNothing() {
+        return strike + ball == 0;
+    }
 }
