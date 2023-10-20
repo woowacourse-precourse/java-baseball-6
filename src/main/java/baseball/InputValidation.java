@@ -13,9 +13,15 @@ public class InputValidation {
         }
     }
 
+    /*
+    * 드디어 stream 써보는군아~~
+    * 타입 변환할 때, for문을 돌면서 작업할 때. 공부하던거 드디어 쓴당!!
+    * 머가 더 가독성 좋을까??
+    * */
     public List<Integer> convertStrToIntegerList(String input) {
-        return Arrays.stream(input.split(""))
-                .map(Integer::parseInt).collect(Collectors.toList());
+        return input.chars()
+                .mapToObj(Character::getNumericValue)
+                .collect(Collectors.toList());
     }
 
     public void validateSign(String input) {
