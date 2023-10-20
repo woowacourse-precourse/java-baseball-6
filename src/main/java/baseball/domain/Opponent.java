@@ -1,16 +1,17 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Opponent {
 
-    private ArrayList<Integer> answerNumbers;
+    private List<Integer> answerNumbers;
 
     public Opponent() {
         answerNumbers = new ArrayList<>();
     }
 
-    public ArrayList<Integer> getAnswerNumbers() {
+    public List<Integer> getAnswerNumbers() {
         return answerNumbers;
     }
 }
