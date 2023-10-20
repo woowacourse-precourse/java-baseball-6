@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -48,7 +49,26 @@ public class Baseball {
 
     //플레이어 입력 받기
     private int getUserInput() {
-        return 0;
+        int inputNum = 0;
+        try {
+            inputNum = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 input type입니다.");
+        }
+
+        if (inputNum < 100 && inputNum >= 1000) {
+            throw new IllegalArgumentException("세자리 수를 입력해주세요.");
+        }
+
+        int hundred = inputNum / 100;
+        int ten = (inputNum % 100) / 10;
+        int one = inputNum % 10;
+
+        if(hundred == ten || ten == one || one == hundred) {
+            throw new IllegalArgumentException("서로 다른 세자리 수를 입력해주세요.");
+        }
+
+        return inputNum;
     }
 
     //입력에 대한 결과 출력
