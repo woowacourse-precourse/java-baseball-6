@@ -44,6 +44,15 @@ public class GameManager {
         System.out.println(NEXT_GAME_OR_NOT_MESSAGE);
         String nextGameString = Console.readLine();
 
-        return Integer.parseInt(nextGameString) == EXIT_GAME;
+        int nextGameState = Integer.parseInt(nextGameString);
+        validateState(nextGameState);
+
+        return nextGameState == EXIT_GAME;
+    }
+
+    private void validateState(final int nextGameState) {
+        if (nextGameState != RESTART_GAME && nextGameState != EXIT_GAME) {
+            throw new IllegalArgumentException(NEXT_GAME_STATE_EXCEPTION);
+        }
     }
 }
