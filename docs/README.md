@@ -114,3 +114,23 @@
 - [X] Input 관련 메서드들 모두 추출
 - [X] reset 메서드를 활용하여, 세팅 및 초기화
 - [X] loop 조건 변경
+
+---
+
+# 객체지향 생활체조 적용하기
+
+- [ ] 들여쓰기 최대 하나로 제한하기
+    - [ ] Computer.strikeCounts
+    - [ ] Computer.ballCounts
+- [ ] else 사용하지 않기
+- [ ] 모든 원시값과 문자열 Wrapping 하기
+    - [ ] Computer 에서 ball, strike 고민해보기
+    - [ ] Player 에서 인풋 부분
+- [ ] 일급 콜렉션 사용하기
+    - [ ] Computer.getRandomNumbers() 추출
+- [ ] 한 줄에 점 하나만 찍기
+- [ ] 줄여쓰지 않기
+- [ ] 엔티티 작게 유지하기
+    - [ ] 패키지 나누기
+- [ ] 3개 이상의 인스턴스 변수를 가진 클래스 만들지 않기
+- [ ] getter/setter/properties 사용하지 않기
