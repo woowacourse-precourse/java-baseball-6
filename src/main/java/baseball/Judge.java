@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.List;
-
 import static baseball.Input.NUMBER_LENGTH;
 
 public class Judge {
@@ -9,24 +7,24 @@ public class Judge {
     private static final int CORRECT_STRIKE_COUNT = 3;
     private static final int NOTHING_COUNT = 0;
 
-    private final String computer;
+    private final String computerNumber;
     private String userNumber;
 
     private int ball;
     private int strike;
 
-    public Judge(final String computer) {
-        this.computer = computer;
+    public Judge(final String computerNumber) {
+        this.computerNumber = computerNumber;
     }
 
-    public JudgeStatus of(final String guess) {
-        init(guess);
+    public JudgeResult of(final String userNumber) {
+        init(userNumber);
         count();
-        return getStatus();
+        return new JudgeResult(ball, strike, getStatus());
     }
 
-    private void init(final String guess) {
-        this.userNumber = guess;
+    private void init(final String userNumber) {
+        this.userNumber = userNumber;
         this.ball = 0;
         this.strike = 0;
     }
@@ -63,11 +61,11 @@ public class Judge {
     }
 
     private boolean isBall(int i, int j) {
-        return i != j && computer.charAt(i) == userNumber.charAt(j);
+        return i != j && computerNumber.charAt(i) == userNumber.charAt(j);
     }
 
     private boolean isStrike(int i) {
-        return computer.charAt(i) == userNumber.charAt(i);
+        return computerNumber.charAt(i) == userNumber.charAt(i);
     }
 
     private boolean isCorrect() {
@@ -76,13 +74,5 @@ public class Judge {
 
     private boolean isNothing() {
         return ball == NOTHING_COUNT && strike == NOTHING_COUNT;
-    }
-
-    public int getBall() {
-        return ball;
-    }
-
-    public int getStrike() {
-        return strike;
     }
 }

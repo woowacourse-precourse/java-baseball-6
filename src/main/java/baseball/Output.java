@@ -13,11 +13,14 @@ public class Output {
 
     private int ball;
     private int strike;
+    private JudgeStatus status;
 
-    public Output(Judge judge) {
-        this.ball = judge.getBall();
-        this.strike = judge.getStrike();
+    public void setJudgeResult(JudgeResult result) {
+        ball = result.getBall();
+        strike = result.getStrike();
+        status = result.getStatus();
     }
+
     public static void start() {
         System.out.println(START);
     }
@@ -26,12 +29,12 @@ public class Output {
         System.out.print(ASK_NUMBER);
     }
 
-    public void printResult(JudgeStatus status) {
+    public void printResult() {
         printIfBall();
         printIfStrike();
         printIfBallAndStrike();
-        printIfNothing(status);
-        printIfCorrect(status);
+        printIfNothing();
+        printIfCorrect();
     }
 
     private void printIfBall() {
@@ -52,13 +55,13 @@ public class Output {
         }
     }
 
-    private void printIfCorrect(JudgeStatus status) {
+    private void printIfCorrect() {
         if (status.equals(JudgeStatus.CORRECT)) {
             System.out.println(CORRECT_AND_ASK_RESTART);
         }
     }
 
-    private void printIfNothing(JudgeStatus status) {
+    private void printIfNothing() {
         if (status.equals(JudgeStatus.NOTHING)) {
             System.out.println(NOTHING);
         }

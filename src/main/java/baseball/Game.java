@@ -6,17 +6,17 @@ public class Game {
 
     public static boolean isGameOver = false;
 
+    private final String computerNumber;
+
     private Input input;
     private Judge judge;
     private Output output;
-
-    private final String computerNumber;
 
     public Game() {
         computerNumber = getComputerNumber();
         input = new Input();
         judge = new Judge(computerNumber);
-        output = new Output(judge);
+        output = new Output();
     }
 
     public static void run() {
@@ -27,7 +27,9 @@ public class Game {
     }
 
     private void start() {
+        while (true) {
 
+        }
     }
 
     private String getComputerNumber() {
