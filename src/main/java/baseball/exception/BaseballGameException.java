@@ -16,4 +16,14 @@ public class BaseballGameException {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validPlayerNumIsDuplicate(String playerNumStr) {
+        HashSet<Character> set = new HashSet<>();
+        for(int i=0;i<3;i++) {
+            set.add(playerNumStr.charAt(i));
+        }
+        if(set.size()!=3){
+            throw new IllegalArgumentException();
+        }
+    }
 }
