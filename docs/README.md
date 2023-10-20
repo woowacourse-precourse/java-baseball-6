@@ -1,9 +1,9 @@
 ## 구현 기능 목록
 
-- [ ] GameController
+- [x] GameController
   - [x] 싱글톤 패턴
   - [x] 게임 시작
-  - [ ] 게임 진행
+  - [x] 게임 진행
      
 - [ ] GameService
   - [x] 싱글톤 패턴
