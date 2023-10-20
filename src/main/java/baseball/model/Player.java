@@ -3,6 +3,7 @@ package baseball.model;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class Player {
 
@@ -12,6 +13,8 @@ public class Player {
     public Player(List<Integer> player) {
         validateCheckZero(player);
         validateSize(player);
+        validateDuplicate(player);
+        validateIsNumber(player);
         this.player = player;
     }
 
@@ -30,7 +33,17 @@ public class Player {
     private void validateDuplicate(List<Integer> player) {
         Set<Integer> duplicateNumbers = new HashSet<>(player);
         if (duplicateNumbers.size() != PLAYER_NUMBERS_SIZE) {
-            throw new IllegalArgumentException("컴퓨터는 중복된 숫자를 가질 수 없습니다.");
+            throw new IllegalArgumentException("플레이어는 중복된 숫자를 가질 수 없습니다.");
+        }
+    }
+
+    private void validateIsNumber(List<Integer> player) {
+        String pattern = "^[0-9]*$";
+        boolean containsNonNumber = player.stream()
+                .map(val -> !Pattern.matches(pattern, val.toString()))
+                .anyMatch(Boolean::booleanValue);
+        if (containsNonNumber) {
+            throw new IllegalArgumentException("플레이어는 숫자 이외의 값을 선택할 수 없습니다.");
         }
     }
 }
