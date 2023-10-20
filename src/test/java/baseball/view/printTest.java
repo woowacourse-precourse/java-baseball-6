@@ -12,8 +12,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class printTest {
 
+    /**
+     * System.out.println()의 출력을 재지정하여 ByteArrayOutputStream에 저장하도록 설정
+     * 해당 스트림에서 문자열을 가져와 예상되는 결과와 비교
+     */
+
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
+    private final PrintStream systemOut = System.out;
 
     @BeforeEach
     public void setUpStreams() {
@@ -22,7 +27,7 @@ class printTest {
 
     @AfterEach
     public void restoreStreams() {
-        System.setOut(originalOut);
+        System.setOut(systemOut);
     }
 
     @DisplayName("게임 시작 문구 출력 테스트")
