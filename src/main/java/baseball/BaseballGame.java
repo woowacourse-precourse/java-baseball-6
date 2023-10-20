@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
@@ -27,6 +26,7 @@ public class BaseballGame {
                 targetNumbers.add(randomNumber);
             }
         }
+        System.out.println(targetNumbers);
     }
 
     private void countStrikeAndBall(ArrayList<Integer> userNumbers) {
@@ -60,8 +60,7 @@ public class BaseballGame {
 
     private void restartGame() {
         resetGameElementForRestartGame();
-        output.printSelectRestartMessage();
-        String restartOption = inputRestartOption();
+        String restartOption = input.inputRestartOption();
         if(restartOption.equals("1")) {
             playBaseballGame();
         }
@@ -70,9 +69,5 @@ public class BaseballGame {
     private void resetGameElementForRestartGame() {
         targetNumbers.clear();
         resetStrikeAndBall();
-    }
-
-    private String inputRestartOption() {
-        return Console.readLine();
     }
 }

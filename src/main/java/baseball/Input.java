@@ -50,4 +50,17 @@ public class Input {
         }
         userNumbers = tempNumbers;
     }
+
+    public String inputRestartOption() {
+        output.printSelectRestartMessage();
+        String inputtedOption = Console.readLine();
+        checkAppropriateOption(inputtedOption);
+        return inputtedOption;
+    }
+
+    private void checkAppropriateOption(String inputtedOption) {
+        if(!(inputtedOption.equals("1") | inputtedOption.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
