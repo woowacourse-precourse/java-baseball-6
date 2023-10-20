@@ -8,9 +8,7 @@ public class Application {
     private static int ball=0;// 같은 숫자가 있기만 해도 ++
     private static int strike=0;// 같은 숫자가 있고, 위치도 같으면 ++
     public static void main(String[] args) {
-        // TODO: 2023-10-20 오후 3:27 게임 시작 - 랜덤 세자리수 생성
         System.out.println("숫자 야구 게임을 시작합니다.");
-        // TODO: 2023-10-20 오후 3:22 입력 - 세자리 수 입력받기
         throwBalls();
     }
 
@@ -36,10 +34,8 @@ public class Application {
             strike=0;
             ball=0;
 
-            // TODO: 2023-10-20 오후 3:42 입력값과 비교 - 정답이 나올 때까지 반복 비교
             calcResult(inputLine);
 
-            // TODO: 2023-10-20 오후 4:10 입력값과 정답 비교 후 결과 출력
             printResult();
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
