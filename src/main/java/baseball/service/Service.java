@@ -15,6 +15,10 @@ public class Service {
         game.start();
     }
 
+    public void endGame() {
+        game.end();
+    }
+
     public String hint(Balls input) {
         return game.hint(input);
     }
