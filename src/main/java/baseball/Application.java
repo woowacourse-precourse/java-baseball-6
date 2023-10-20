@@ -2,15 +2,14 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-    public static void startGame(){
+    public static void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        User user = new User();
 
         while(true) {
             System.out.println("숫자를 입력해주세요 : ");
-            String input = readLine();
+            char[] selectUser = readLine().toCharArray();
 
-            user.selectUserNum(input);
+            User user = new User(selectUser);
         }
     }
 
