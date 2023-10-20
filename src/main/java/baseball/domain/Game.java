@@ -5,7 +5,7 @@ import static baseball.validator.InputValidator.validateGuess;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
-    Baseball answer;
+    private Baseball answer;
 
     public Game() {
         answer = createAnswer();
@@ -16,4 +16,6 @@ public class Game {
         Integer userInput = validateGuess(readLine());
         Baseball userGuess = new Baseball(userInput);
     }
+
+
 }

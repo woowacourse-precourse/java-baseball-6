@@ -5,9 +5,9 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Baseball {
-    Integer hundreds;
-    Integer tens;
-    Integer ones;
+    private Integer hundreds;
+    private Integer tens;
+    private Integer ones;
 
     public Baseball(Integer inputNumber) {
         hundreds = inputNumber / 100;
