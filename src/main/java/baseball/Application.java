@@ -51,10 +51,25 @@ public class Application {
 
         public static List<Integer> inputUserNums () {
             List<Integer> userNums;
+
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
+
             userNums = splitNum(Integer.parseInt(input));
+
             // 서로 다른 3개의 숫자가 아닌 예외 상황 구현
+            if (userNums.size() != 3) {
+                // 3개일 경우
+                throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
+            }
+            if (userNums.stream().noneMatch(num -> num >= '1' && num <= '9')) {
+                // 숫자일 경우
+                throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
+            }
+            if (userNums.stream().distinct().count() != userNums.size()) {
+                // 서로 다른 경우
+                throw new IllegalArgumentException("입력받은 값이 서로 다른 3개의 숫자가 아닙니다.");
+            }
 
             return userNums;
         }
@@ -119,6 +134,7 @@ public class Application {
         public static void finishGame () {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = Console.readLine();
+
             if (input.equals("1")) {
             } else if (input.equals("2")) {
                 closeSetting();
