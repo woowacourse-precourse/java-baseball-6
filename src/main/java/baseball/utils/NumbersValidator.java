@@ -1,7 +1,7 @@
 package baseball.utils;
 
 public class NumbersValidator {
-    /**
+    /*
      * 사용자 입력 값의 유효성 검사
      */
     public static void inputValidate(String input) {
@@ -10,7 +10,7 @@ public class NumbersValidator {
         }
     }
 
-    /**
+    /*
      * 문자열이 숫자형태인지 판별
      *
      * @return true : 숫자 X, false : 숫자

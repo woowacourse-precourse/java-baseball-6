@@ -2,7 +2,7 @@ package baseball.utils;
 
 import java.util.List;
 
-/**
+/*
  * true면 게임 종료, false면 숫자 입력 창으로 돌아가기
  */
 public class ResultPrinter {
