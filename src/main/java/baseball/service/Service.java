@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.Balls;
 import baseball.domain.Game;
+import baseball.domain.GameState;
 
 public class Service {
     private final Game game;
@@ -16,5 +17,9 @@ public class Service {
 
     public String hint(Balls input) {
         return game.hint(input);
+    }
+
+    public GameState getGameState() {
+        return game.getGameState();
     }
 }
