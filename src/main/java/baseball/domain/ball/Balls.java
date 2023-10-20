@@ -2,18 +2,15 @@ package baseball.domain.ball;
 
 import baseball.domain.result.BallResult;
 import baseball.domain.result.GameResult;
+import baseball.domain.util.BallsConvertor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
     private final List<Ball> balls;
 
-    public Balls(Ball ball1, Ball ball2, Ball ball3) {
-        this.balls = new ArrayList<>();
-        balls.add(ball1);
-        balls.add(ball2);
-        balls.add(ball3);
+    public Balls(int number) {
+        balls = BallsConvertor.convertNumberToBalls(number);
     }
 
     public GameResult compareWithBalls(Balls otherBalls) {

@@ -11,7 +11,7 @@ class BallResultTest {
     void ballResultCompareTest1() {
         BallResult ballResult1 = BallResult.STRIKE;
         BallResult ballResult2 = BallResult.BALL;
-        Assertions.assertThat(ballResult1.compareTo(ballResult2)).isEqualTo(1);
+        Assertions.assertThat(ballResult1.compare(ballResult2)).isEqualTo(1);
     }
 
     @Test
@@ -19,7 +19,7 @@ class BallResultTest {
     void ballResultCompareTest2() {
         BallResult ballResult1 = BallResult.NOTHING;
         BallResult ballResult2 = BallResult.STRIKE;
-        Assertions.assertThat(ballResult1.compareTo(ballResult2)).isEqualTo(-1);
+        Assertions.assertThat(ballResult1.compare(ballResult2)).isEqualTo(-1);
     }
 
     @Test
@@ -27,6 +27,6 @@ class BallResultTest {
     void ballResultCompareTest3() {
         BallResult ballResult1 = BallResult.BALL;
         BallResult ballResult2 = BallResult.BALL;
-        Assertions.assertThat(ballResult1.compareTo(ballResult2)).isEqualTo(0);
+        Assertions.assertThat(ballResult1.compare(ballResult2)).isEqualTo(0);
     }
 }
