@@ -29,3 +29,28 @@
 [숫자 야구 게임]
 <br>
 상대 플레이어가 생각한 3개의 숫자를 플레이어가 모두 맞추면 게임이 종료된다.
+---
+> 2. 문제 해결 과정에서 역할의 소통 정리
+```mermaid
+sequenceDiagram
+    participant app as Applicatoin
+    participant game as 숫자 야구 게임
+    participant player as 플레이어
+    participant other as 상대 플레이어
+
+
+    app ->>+ game: 게임 정보 세팅
+    game ->>+ other: 게임 숫자 입력
+    other -->>- game: 숫자 반환
+    loop is 3 strike
+    app ->>+ game: 라운드 진행
+    game ->>+ player: 입력 값 요청
+    player -->>- game: 입력 값 반환
+    game ->>+ other: 입력값 확인 요청
+    other -->>- game: 입력값 확인 반환
+    game -->>- app: 결과 값
+    end
+    app ->> app: 게임 종료
+```
+
+
