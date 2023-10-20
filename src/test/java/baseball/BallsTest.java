@@ -47,5 +47,16 @@ public class BallsTest {
         assertThat(ball.equals(otherBall)).isTrue();
     }
 
-
+    @Test
+    void 정답은_123_입력숫자는_123일때_strike_3를_반환한다() {
+        Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
+        Balls otherBalls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
+        assertThat(balls.getStrikeCount(otherBalls)).isEqualTo(3);
+    }
+    @Test
+    void 정답은_123_입력숫자는_321일때_strike_1를_반환한다() {
+        Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
+        Balls otherBalls = new Balls(new Ball(1,3), new Ball(2,2), new Ball(3,1));
+        assertThat(balls.getStrikeCount(otherBalls)).isEqualTo(1);
+    }
 }

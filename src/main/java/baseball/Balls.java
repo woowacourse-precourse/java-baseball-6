@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Balls {
@@ -8,6 +9,10 @@ public class Balls {
 
     public Balls(List<Ball> ballList) {
         this.balls = ballList;
+    }
+
+    public Balls(Ball... ballValues) {
+        balls = Arrays.asList(ballValues);
     }
 
     public void validateSize(List<Ball> ballList) {
@@ -32,5 +37,27 @@ public class Balls {
             .count();
 
         return uniqueBallCount < 3;
+    }
+
+    public int getStrikeCount(Balls answerBalls) {
+        return (int) balls.stream()
+            .map(ball -> getTryResult(ball, answerBalls))
+            .filter(tryResult -> tryResult == TryResult.STRIKE)
+            .count();
+    }
+
+    private TryResult getTryResult(Ball ball, Balls answerBalls) {
+        if (isStrike(ball, answerBalls)) {
+            return TryResult.STRIKE;
+        }
+        return null;
+    }
+
+    private boolean isStrike(Ball ball, Balls answerBalls) {
+        return answerBalls.contains(ball);
+    }
+
+    private boolean contains(Ball ball) {
+        return balls.contains(ball);
     }
 }
