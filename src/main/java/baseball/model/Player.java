@@ -40,7 +40,7 @@ public class Player {
     private void validateIsNumber(List<Integer> player) {
         String pattern = "^[0-9]*$";
         boolean containsNonNumber = player.stream()
-                .map(val -> !Pattern.matches(pattern, val.toString()))
+                .map(val -> Pattern.matches(pattern, val.toString()))
                 .anyMatch(Boolean::booleanValue);
         if (containsNonNumber) {
             throw new IllegalArgumentException("플레이어는 숫자 이외의 값을 선택할 수 없습니다.");
