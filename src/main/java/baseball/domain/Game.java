@@ -2,6 +2,7 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Game {
@@ -23,7 +24,21 @@ public class Game {
     }
 
     public int countStrike(GameNumber inputNumber) {
-        return 0;
+        int strike = 0;
+        List<Integer> inputNumberList = inputNumber.getNumbers();
+        List<Integer> answerNumberList = answerNumber.getNumbers();
+
+        for (int idx = 0; idx < inputNumberList.size(); idx++) {
+            strike += isStrike(inputNumberList.get(idx), answerNumberList.get(idx));
+        }
+        return strike;
+    }
+
+    private int isStrike(int number1, int number2) {
+        if (number1 != number2) {
+            return 0;
+        }
+        return 1;
     }
 
     public int countBall(GameNumber inputNumber) {
