@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.config.GameConfig;
+
 public class GameResult {
 
     private final int ballCount;
@@ -28,5 +30,13 @@ public class GameResult {
 
     public static GameResult ballsAndStrikes(int ballCount, int strikeCount) {
         return new GameResult(ballCount, strikeCount);
+    }
+
+    public boolean isAllStrike() {
+        return strikeCount == GameConfig.BASEBALL_LENGTH;
+    }
+
+    public boolean isNothing() {
+        return ballCount == 0 && strikeCount == 0;
     }
 }
