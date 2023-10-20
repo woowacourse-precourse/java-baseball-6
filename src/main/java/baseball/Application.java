@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,6 +17,12 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            sb.append(Randoms.pickNumberInRange(1, 9));
+        }
+        String answer = sb.toString();
+
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
             // 데이터 검증
@@ -22,7 +30,7 @@ public class Application {
             if(!INPUT_PATTERN.matcher(input).matches()){
                 throw new IllegalArgumentException("입력은 3자리 숫자만 가능해요");
             }
-            String answer = String.valueOf(Randoms.pickNumberInRange(100, 999));
+
             System.out.println(getHint(input,answer));
             // 정답을 맞춘경우
             if(input.equals(answer)){
@@ -35,6 +43,11 @@ public class Application {
                 if("2".equals(quitInput)){
                     break;
                 }
+                StringBuilder sb2 = new StringBuilder();
+                for (int i = 0; i < 3; i++) {
+                    sb2.append(Randoms.pickNumberInRange(1, 9));
+                }
+                answer = sb2.toString();
             }
         }
     }
