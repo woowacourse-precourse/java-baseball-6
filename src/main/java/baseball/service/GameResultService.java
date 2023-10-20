@@ -14,10 +14,10 @@ public class GameResultService {
             return NOTHING;
         }
         if (gameResult.isAllBall()) {
-            return gameResult.getBalls() + BALL;
+            return gameResult.balls() + BALL;
         }
         else if (gameResult.isAllStrike()) {
-            return gameResult.getStrikes() + STRIKE;
+            return gameResult.strikes() + STRIKE;
         }
         return gameResult.toString();
     }

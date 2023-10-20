@@ -16,7 +16,7 @@ public class GameLogicService {
     }
 
     public Game updateGameStatusOnStrike(Game game, GameResult gameResult) {
-        if (gameResult.getStrikes() == BALL_SIZE) {
+        if (gameResult.isThreeStrike()) {
             game.setGameFinished(true);
         }
         return game;
