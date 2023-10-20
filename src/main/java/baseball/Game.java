@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
-
 public class Game {
     private final TargetNumber targetNumber = TargetNumber.generate(0, 0, 0);
 
