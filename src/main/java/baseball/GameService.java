@@ -37,7 +37,7 @@ public class GameService {
 
     public void computerNumberComparePlayerInputNumber(Player player, List<Integer> computer) {
         for (int i = 0; i < computer.size(); i++) {
-            if (computer.get(i) == player.getPlayerNumber(i)) {
+            if (computer.get(i).equals(player.getPlayerNumber(i))) {
                 strikeBallCount.plusStringCount();
                 continue;
             }
