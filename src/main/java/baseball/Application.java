@@ -79,8 +79,21 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
-            Game game = new Game(123);
+            // Create random answer
+            List<Integer> randomList = new ArrayList<>();
+            while (randomList.size() < 3) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!randomList.contains(randomNumber)) {
+                    randomList.add(randomNumber);
+                }
+            }
+            int randomInt = randomList.get(0) * 100 + randomList.get(1) * 10 + randomList.get(2);
+
+            // Run game
+            Game game = new Game(randomInt);
             game.run();
+
+            // Ask and restart or break.
             if (!askRestart())
                 break;
         }
