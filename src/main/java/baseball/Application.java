@@ -13,12 +13,18 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             List<Integer> computerNumbers = selectComputerNumbers();
-            List<Integer> userNumbers = inputUserNumbers();
-            System.out.println(computerNumbers);
-            System.out.println(userNumbers);
+//            System.out.println(computerNumbers);
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            break;
+            while (true) {
+                List<Integer> userNumbers = inputUserNumbers();
+//                System.out.println(userNumbers);
+
+                break;
+            }
+
+            if (selectUserExit()) {
+                break;
+            }
         }
     }
 
@@ -46,5 +52,17 @@ public class Application {
             userNumbers.add(number);
         }
         return userNumbers;
+    }
+
+    private static boolean selectUserExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+
+        if (userInput.equals("2")) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
