@@ -25,7 +25,8 @@ public class GameController {
 
     private void gameEndOrRestart() {
         outputView.gameSuccess();
-        String input = inputView.endOrRestartInput();
+        String option = inputView.endOrRestartInput();
+        Validator.isValidGameOption(option);
     }
 
 
