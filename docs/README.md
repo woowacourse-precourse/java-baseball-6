@@ -6,4 +6,4 @@
   - [x] create 및 validate 구현
 - [ ] CompareResult 구현
   - [ ] toString 구현
-  - [ ] GoalValue.compare() 구현
+  - [x] GoalValue.compare() 구현
