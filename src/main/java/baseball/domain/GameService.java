@@ -23,13 +23,7 @@ public class GameService {
         return !numbers.contains(randomNumber);
     }
 
-    public List<Integer> parseInputToList(String input) {
-        List<Integer> userNumbers = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            userNumbers.add(Character.getNumericValue(input.charAt(i)));
-        }
-        return userNumbers;
-    }
+
 
     public int[] compare(List<Integer> computerNumbers, List<Integer> userNumbers) {
         int[] result = new int[2]; // result[0] == strike, result[1] == ball
