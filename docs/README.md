@@ -1,6 +1,11 @@
 # **구현해야할 기능 목록**
 <br/>
 
+#### 변수 선언
+    Integer[] orderOfNumbers : 숫자 순서를 담을 배열 
+    List<Integer> computerNumbers : 컴퓨터 수를 저장할 List
+    String userNumbers : 사용자 수를 저장할 String
+
 #### 시작
 * '숫자 야구 게임을 시작합니다.'을 출력한다.
 * 게임 진행여부를 나타내는 GameStatus enum 변수를 선언하고, START(1)로 초기화한다.
@@ -8,9 +13,9 @@
 <br/>
 
 #### 초기화
-* 크기가 10 인 배열을 선언하고 0으로 초기화 한다.
-* 컴퓨터 수를 저장할 List를 선언한다.
-* 사용자 수를 저장할 String을 선언한다.
+* orderOfNumbers의 모든 원소를 0으로 초기화한다.
+* computerNumbers를 clear()를 통해 초기화한다.
+* userNumbers을 빈 문자열로 초기화한다.
 
 <br/>
 
