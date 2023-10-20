@@ -18,5 +18,17 @@ public class InputValidator {
         }
         return numberList;
     }
-    
+
+    public void validateRange(List<Integer> numberList) {
+        boolean isRange = true;
+        for (int i = 0; i < 3; i++) {
+            int number = numberList.get(i);
+            if (number < 1 || number > 9) {
+                isRange = false;
+            }
+        }
+        if (!isRange) {
+            throw new IllegalArgumentException("입력 값의 범위(1~9)를 확인하세요.");
+        }
+    }
 }
