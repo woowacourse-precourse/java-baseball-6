@@ -1,6 +1,8 @@
 package baseball;
 import java.util.Scanner;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {// 게임 구동이 가능해야한다. 최대한 간단하게 적어보자.
 
     public static void main(String[] args) {
@@ -41,6 +43,25 @@ class arrayList { //배열적으로 받아서 처리할 수 있는 모든 함수
 
 
 class Game{ //game을 시작할 떄 필요한 class들은 이곳에 적는다.
+    private static final int NEW_GAME = 1;
+    private static final int QUIT_GAME = 2;
+
+    int[]number=new int[3]; //number는 내가 입력한 숫자.
+
+    public Game(String userInput) {
+        for(int i=0;i<3;i++){
+            number[i]=Integer.parseInt(userInput.charAt(i)+"");
+        }
+    }
+
+    private static Game get(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        String userInput = readLine();
+        return new Game(userInput);
+    }
+
+
+
 
 
 
@@ -48,26 +69,7 @@ class Game{ //game을 시작할 떄 필요한 class들은 이곳에 적는다.
 }
 
 class Hint{
-    int ball,strike;
-    private static final String BALL = "볼";
-    private static final String STRIKE= "스트라이크";
-    private static final String NOTHING="낫싱";
 
-    @Override
-    public String toString() { //결과값 반환을 위해
-        return "ball: "+this.ball+", strike: "+this.strike;
-    }
-
-    private void BALLCOUNT(){
-        this.ball++;
-    }
-    private void STRIKECOUNT(){
-        this.strike++;
-    }
-
-    void Compare(){
-
-    }
 
 
 
