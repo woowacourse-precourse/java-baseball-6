@@ -1,14 +1,20 @@
 package baseball.domain;
 
-import static baseball.domain.Numbers.NUMBER_COUNT;
+import static baseball.domain.number.NumberConstant.NUMBER_COUNT;
 
 public class Result {
-    private final Integer ball;
-    private final Integer strike;
+    private Integer ball;
+    private Integer strike;
 
-    public Result(Integer ball, Integer strike) {
-        this.ball = ball;
-        this.strike = strike;
+    private Result() {
+    }
+
+    public static Result create(Integer ball, Integer strike) {
+        Result result = new Result();
+        result.setBall(ball);
+        result.setStrike(strike);
+
+        return result;
     }
 
     public boolean isFinish() {
@@ -31,5 +37,11 @@ public class Result {
         return strike;
     }
 
+    private void setBall(Integer ball) {
+        this.ball = ball;
+    }
 
+    private void setStrike(Integer strike) {
+        this.strike = strike;
+    }
 }
