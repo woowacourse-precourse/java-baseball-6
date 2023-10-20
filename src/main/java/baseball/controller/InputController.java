@@ -10,8 +10,6 @@ public class InputController {
         validate(inputString);
         return inputString;
     }
-
-
     private void validate(String input) {
         checkIsNum(input);
         checkLength(input);
