@@ -14,16 +14,16 @@ public class GameNumber {
     private final List<Integer> gameNumber;
 
     public GameNumber(List<Integer> gameNumber) {
-        validLength(gameNumber);
-        validRange(gameNumber);
+        validateLength(gameNumber);
+        validateRange(gameNumber);
         this.gameNumber = gameNumber;
     }
 
     public GameNumber(String value) {
-        validValue(value);
+        validateValue(value);
         List<Integer> gameNumber = Converter.convertList(value);
-        validLength(gameNumber);
-        validRange(gameNumber);
+        validateLength(gameNumber);
+        validateRange(gameNumber);
         this.gameNumber = gameNumber;
     }
 
@@ -59,7 +59,7 @@ public class GameNumber {
         return gameNumber.toString();
     }
 
-    private void validValue(String value) {
+    private void validateValue(String value) {
         try {
             if (Integer.parseInt(value) < 0) {
                 throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
@@ -69,14 +69,14 @@ public class GameNumber {
         }
     }
 
-    private void validLength(List<Integer> gameNumber) {
+    private void validateLength(List<Integer> gameNumber) {
         if (!NUMBER_SIZE.getValue().equals(Set.copyOf(gameNumber).size())
                 || !NUMBER_SIZE.getValue().equals(gameNumber.size())) {
             throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
         }
     }
 
-    private void validRange(List<Integer> gameNumber) {
+    private void validateRange(List<Integer> gameNumber) {
         if (!gameNumber.stream().allMatch(number -> MIN_NUMBER.getValue() <= number
                 && number <= MAX_NUMBER.getValue())) {
             throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
