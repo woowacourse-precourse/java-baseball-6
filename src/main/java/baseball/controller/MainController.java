@@ -16,7 +16,7 @@ public class MainController {
     public void startProgram() {
         boolean isRunning = true;
 
-        OutputView.printProgramMessage();
+        OutputView.printStartProgramMessage();
         do {
             gameController.startGame();
 

@@ -10,7 +10,7 @@ public class OutputView {
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String SPACE = " ";
 
-    public static void printProgramMessage() {
+    public static void printStartProgramMessage() {
         System.out.println(START_PROGRAM_MESSAGE);
     }
 
