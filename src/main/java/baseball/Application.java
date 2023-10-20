@@ -5,12 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        String isGameContinue = "2";
+
         do {
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> answer = random3();
@@ -23,8 +23,13 @@ public class Application {
             while (!answer.equals(playerInput));
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            isGameContinue = Console.readLine();
+            if (isGameContinue != "1" || isGameContinue != "2") {
+                throw new IllegalArgumentException("허용되지 않은 입력입니다.");
+            }
         }
-        while (Console.readLine().equals("1"));
+        while (isGameContinue == "1");
     }
 
     public static void printAnswer(List<Integer> answer) {
@@ -51,7 +56,7 @@ public class Application {
         List<Integer> input = inputstr.stream().map(s -> Integer.parseInt(s)).toList();
 
         if (exceptions(input)) {
-            throw new IllegalArgumentException("허용되지 않은 입력값입니다");
+            throw new IllegalArgumentException("허용되지 않은 입력입니다.");
         }
         return input;
     }
