@@ -53,40 +53,48 @@ public class Application {
         }
     }
 
+    //사용자 입력에 따라 strike 와 ball 을 계산해 출력 후 3 strike 인지를 판단해 true or false 로 return 해준다.
     private static boolean checkAnswer(List<Integer> computer, List<Integer> user) {
-        int strike = 0;
-        int ball = 0;
+
+        Baseball baseball = new Baseball();
+
+        validateBaseball(computer, user, baseball);
+
+        baseball.print();
+
+        return baseball.isOut();
+    }
+
+    //사용자 입력에 따라 strike 와 ball 을 계산하는 함수
+    private static void validateBaseball(List<Integer> computer, List<Integer> user, Baseball baseball) {
         int length = user.size();
         for (int i = 0; i < length; i++) {
             if (computer.contains(user.get(i))) {
                 if (computer.get(i) == user.get(i)) {
-                    strike++;
+                    baseball.updateStrike();
                 } else {
-                    ball++;
+                    baseball.updateBall();
                 }
             }
         }
-
-        StringBuilder sb = new StringBuilder();
-        if (ball != 0) sb.append(ball).append("볼 ");
-        if (strike != 0) sb.append(strike).append("스트라이크 ");
-        if(ball==0&&strike==0) sb.append("낫싱");
-        System.out.println(sb);
-
-        if (strike == 3) return true;
-
-        return false;
     }
 
+    //computer List 에 1~9사이의 랜덤한 값을 3개 생성하는 함수
     private static void gameInit(List<Integer> computer) {
         computer.clear();
 
         while (computer.size() < GAME_ING_LIMIT) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = makeRandomNumber();
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
+    }
+
+    //1~9 사이의 랜덤한 정수 반환하는 함수
+    private static int makeRandomNumber() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        return randomNumber;
     }
 
 
