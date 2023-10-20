@@ -87,18 +87,18 @@ __Validator__
   1) 1혹은 2인지 검증
 
 __RandomNumberGenerator__
-- [ ] generateNumbers (중복되지 않는 3개의 난수 생성)
+- [x] generateNumbers (중복되지 않는 3개의 난수 생성)
   1) 1-9범위의 숫자를 랜덤으로 생성
   2) 중복되지 않는지 검증한 뒤 computerNumber에 추가
 
 __Comparator__
-- [ ] countStrikes
+- [x] countStrikes
     * 위치가 같지 않으면서 숫자는 포함되어 있다면 스트라이크+1하고 모델에 다시 저장
-- [ ] countBalls
+- [x] countBalls
     * 위치가 같으면서 숫자도 같다면 볼+1하고 모델에 다시 저장
-- [ ] isNothing
+- [x] isNothing
     * computerNumber와 playerInput가 하나도 안겹치면 낫싱true
-- [ ] isEndGame
+- [x] isEndGame
     * computerNumber와 playerInput가 모두 일치하면 true
 
 __PlayerInputController__
