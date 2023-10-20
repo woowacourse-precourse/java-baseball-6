@@ -1,5 +1,8 @@
 package baseball.model;
 
+import static baseball.util.NumberConstants.LIMIT_NUMBERS_SIZE;
+import static baseball.util.NumberConstants.MAX_RANGE_NUMBER;
+import static baseball.util.NumberConstants.MIN_RANGE_NUMBER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -19,28 +22,28 @@ class ComputerTest {
     @Test
     public void generateRandomNumber() {
         //given
-        int LIMIT_NUMBERS_SIZE = 3;
+        int size = LIMIT_NUMBERS_SIZE.getValue();
 
         //when
         computer.generateRandomNumber();
 
         //then
-        assertEquals(LIMIT_NUMBERS_SIZE, computer.getRandomNumberList().size());
+        assertEquals(size, computer.getRandomNumberList().size());
     }
 
     @DisplayName("랜덤된 3자리 숫자는 각각 1 ~ 9까지의 범위를 가진다.")
     @Test
     public void checkRangeRandomNumber() {
         //given
-        int MIN_RANGE_NUMBER = 1;
-        int MAX_RANGE_NUMBER = 9;
+        int minRangeValue = MIN_RANGE_NUMBER.getValue();
+        int maxRangeValue = MAX_RANGE_NUMBER.getValue();
 
         //when
         computer.generateRandomNumber();
 
         //then
         for (int number : computer.getRandomNumberList()) {
-            assertTrue(number >= MIN_RANGE_NUMBER && number <= MAX_RANGE_NUMBER);
+            assertTrue(number >= minRangeValue && number <= maxRangeValue);
         }
     }
 
