@@ -71,41 +71,54 @@ class UserInput {
     }
 }
 
-public class Application {
-    public static void main(String[] args) {
+class Game {
+    private ComputerNumbers computerNumbers;
+
+    public Game() {
+        this.computerNumbers = new ComputerNumbers();
+    }
+
+    public void start() {
         while (true) {
-            ComputerNumbers computerNumbers = new ComputerNumbers();
             System.out.println("숫자 야구 게임을 시작합니다.");
+
             while (true) {
                 UserInput userInput = new UserInput();
                 int[] result = computerNumbers.compare(userInput.getNumbers());
 
-                int strikeCount = result[0];
-                int ballCount = result[1];
-
-                if (strikeCount == 0 && ballCount == 0) {
-                    System.out.println("낫싱");
-                } else if (strikeCount == 3) {
+                if (result[0] == 3) {
                     System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
-                } else if (strikeCount == 0) {
-                    System.out.println(ballCount + "볼");
-                } else if (ballCount == 0) {
-                    System.out.println(strikeCount + "스트라이크");
-                } else {
-                    System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
                 }
+                printResult(result);
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int restart = Integer.parseInt(Console.readLine());
-            if (restart != 1 && restart != 2) {
-                throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
-            }
             if (restart == 2) {
                 break;
             }
+            if (restart != 1) {
+                System.out.println("1 또는 2만 입력해주세요.");
+                continue;
+            }
+
+            this.computerNumbers = new ComputerNumbers();
         }
+    }
+
+    private void printResult(int[] result) {
+        if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+        } else {
+            System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
+        }
+    }
+}
+
+public class Application {
+    public static void main(String[] args) {
+        new Game().start();
     }
 }
