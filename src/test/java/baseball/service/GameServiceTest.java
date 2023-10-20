@@ -82,4 +82,21 @@ public class GameServiceTest {
         assertThat(validation.continueValue(values)).isFalse();
     }
 
+    @DisplayName("Game클래스를 통한 com과 user의 numbers 비교 기능")
+    @ParameterizedTest
+    @ValueSource(strings={"123","231","532"})
+    void game_통합_과정(String input){
+        //given
+        Game game=new Game();
+
+        //when
+        game.generateComputerNumbers();
+        game.inputUserNumbers(input);
+
+        //then
+        for(int result :game.play()){
+            assertThat(result).isBetween(0,3);
+        }
+    }
+
 }
