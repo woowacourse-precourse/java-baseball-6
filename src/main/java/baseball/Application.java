@@ -19,24 +19,31 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        String input = Console.readLine();
-        char[] player = input.toCharArray();
+        while (true) {
+            String input = Console.readLine();
+            char[] player = input.toCharArray();
+            int strike = 0, ball = 0;
+            String nothing = "낫싱";
 
-        int strike = 0, ball = 0;
-        String nothing = "낫싱";
-        for (int i = 0; i < 3; i++) {
-            int playerNum = Character.getNumericValue(player[i]);
-            if (computer.get(i) == playerNum) {
-                strike++;
-            } else if (computer.contains(playerNum)) {
-                ball++;
+            for (int i = 0; i < 3; i++) {
+                int playerNum = Character.getNumericValue(player[i]);
+                if (computer.get(i) == playerNum) {
+                    strike++;
+                } else if (computer.contains(playerNum)) {
+                    ball++;
+                }
+            }
+            if (strike != 0 || ball != 0) {
+                if (strike == 3 && ball == 0) {
+                    System.out.println(strike + "스트라이크" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    return;
+                }else {
+                    System.out.println(strike + "스트라이크, " + ball + "볼");
+                }
+
+            } else {
+                System.out.println(nothing);
             }
         }
-        if (strike != 0 || ball != 0) {
-            System.out.println(strike + "스트라이크, " + ball + "볼");
-        } else {
-            System.out.println(nothing);
-        }
-        System.out.println(computer);
     }
 }
