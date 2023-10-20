@@ -12,6 +12,7 @@
 - [x] 랜덤한 Balls 를 갖는 컴퓨터 - Computer
 - [x] 입력한 Balls 를 갖는 Player - Player
 - [x] Computer 와 Player 가 Extends 하는 abstract class - Playable 
+- [x] 게임 제시작 여부를 저장 맟 판단하는 트리거 - RetryTrigger
 # View
 - [ ] 숫자 입력하기 - InputView
 - [ ] 게임 결과 출력하기 - OutputView
