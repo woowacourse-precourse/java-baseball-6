@@ -23,6 +23,12 @@ public class Baseball {
         this.numbers = numbers;
     }
 
+    public int countSameNumbers(Baseball compare) {
+        return (int) compare.numbers.stream()
+                .filter(number -> numbers.contains(number))
+                .count();
+    }
+
     private void validateLength(List<Integer> numbers) {
         if (numbers.size() != BASEBALL_LENGTH) {
             throw new IllegalArgumentException(); // TODO 커스텀 예외 만들기
