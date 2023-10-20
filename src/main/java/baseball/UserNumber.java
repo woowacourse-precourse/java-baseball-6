@@ -11,13 +11,13 @@ public class UserNumber {
     public UserNumber() {
         userNumber = new ArrayList<>();
         while (userNumber.size() < 3) {
-            String userNumber = Console.readLine();
-            // try - catch 예외처리 필요
+            String userNum = Console.readLine();
+            int number = Integer.parseInt(userNum);
+            userNumber.add(number);
         }
     }
 
     public List<Integer> getUserNumbers() {
         return userNumber;
     }
-
 }
