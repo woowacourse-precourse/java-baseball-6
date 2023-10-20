@@ -29,6 +29,22 @@ public class GameController {
         do {
             setHumans();
             compareNumbers();
+            outputView.displayScoreboard(
+                    humanModel.getStrike(),
+                    humanModel.getBall(),
+                    humanModel.getNothing()
+            );
+
+            if(humanModel.getStrike() == 3) {
+                outputView.displayGameExit();
+                int input = inputView.inputNumber();
+                if(input == 1) {
+                    setComputers();
+                }
+                if(input == 2) {
+                    gameModel.setRunning(false);
+                }
+            }
         } while (gameModel.isRunning());
     }
     private void setHumans() {
