@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.Umpire;
+import baseball.converter.StringInputConverter;
 import baseball.factory.NumberFactory;
 import baseball.validator.NumberValidator;
 import baseball.validator.ResumeValidator;
@@ -27,7 +28,7 @@ public class GameController {
 
             String userInput = receivePlayNumber();
 
-            int userNumber = Integer.parseInt(userInput);
+            int userNumber = StringInputConverter.convertStringToInt(userInput);
 
             int ball = Umpire.countBall(computerNumber, userNumber);
             int strike = Umpire.countStrike(computerNumber, userNumber);
@@ -39,7 +40,7 @@ public class GameController {
                 AskView.askResume(RESTART, END);
                 String resumeInput = Console.readLine();
                 assertResumeValue(resumeInput);
-                int resumeNumber = Integer.parseInt(resumeInput);
+                int resumeNumber = StringInputConverter.convertStringToInt(userInput);
                 if (resumeNumber == RESTART) {
                     computerNumber = NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
                 }
