@@ -22,6 +22,8 @@
 ### ✔ 사용자 입력 숫자 검증 기능
 - 사용자가 입력한 숫자를 검증해 스트라이크, 볼, 낫싱을 계산한다.
   - **verifyNumber** 메시지 ➡ 사용자 입력 숫자 (List)
+- 사용자가 입력한 숫자를 검증해 3스트라이크가 되어 게임이 종료되었는지 검증한다.
+  - **verifyEnd** 
 
 ### ✔ 사용자 입력 숫자 유효성 검사 기능
 - 사용자가 입력한 숫자가 3개인지 검사한다.
@@ -50,4 +52,4 @@
 ---
 ## 클래스 다이어그램
 
-![baseball](https://github.com/study-hub-inu/study-hub-server/assets/97587573/6b29b23d-abb9-45bf-8c58-102781e3d8f4)
+![baseball](https://github.com/study-hub-inu/study-hub-server/assets/97587573/5fc35926-3c57-455c-9d66-ae1bbecf39a5)
