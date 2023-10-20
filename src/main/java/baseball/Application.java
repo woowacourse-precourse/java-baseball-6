@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.factory.NumberFactory;
 import baseball.validator.NumberValidator;
+import baseball.validator.ResumeValidator;
 import baseball.view.AskView;
 import baseball.view.EndView;
 import baseball.view.ResultView;
@@ -32,6 +33,8 @@ public class Application {
         if (strike == PLAY_NUMBER_DIGIT) {
             EndView.end(PLAY_NUMBER_DIGIT);
             AskView.askResume(RESTART, END);
+            String resumeInput = Console.readLine();
+            ResumeValidator.assertResumeInput(resumeInput, RESTART, END);
         }
     }
 }
