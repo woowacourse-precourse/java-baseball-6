@@ -94,4 +94,25 @@ public class Baseball {
         return ballCount;
     }
 
+    public void restartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." );
+        String inputNumber = Console.readLine();
+        if (!isNumeric(inputNumber)) {
+            throw new IllegalArgumentException();
+        }
+        if (inputNumber.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+        Integer restartNumber = Integer.parseInt(inputNumber);
+        if (restartNumber > 3 || restartNumber <= 0) {
+            throw new IllegalArgumentException();
+        }
+        if (restartNumber == 2) {
+            return;
+        }
+        if (restartNumber == 1) {
+            startGame();
+        }
+    }
+
 }
