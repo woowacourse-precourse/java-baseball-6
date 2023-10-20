@@ -19,6 +19,9 @@ public class Score {
     }
 
     public Boolean isStrikeOut() {
+        if (score == null) {
+            return false;
+        }
         return score.get(STRIKE).equals(OUT_COUNT.getValue());
     }
 

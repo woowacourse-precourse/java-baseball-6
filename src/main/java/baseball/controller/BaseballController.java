@@ -32,16 +32,20 @@ public class BaseballController {
         GameNumber computer = new GameNumber(RandomNumbersGenerator.generate());
         //TODO: 디버깅 용 출력문 지우기
         System.out.println("computer = " + computer);
-        while (true) {
-            GameNumber player = new GameNumber(inputView.readGuessNumber());
-            Score score = calculateScore(computer, player);
-            outputView.printScore(score);
-            if (score.isStrikeOut()) {
-                outputView.printGameEndMessage();
-                break;
-            }
-        }
+        guess(computer);
         restart();
+    }
+
+    //TODO: 재귀 에러 발생하는지 확인
+    private void guess(GameNumber computer) {
+        GameNumber player = new GameNumber(inputView.readGuessNumber());
+        Score score = calculateScore(computer, player);
+        outputView.printScore(score);
+        if (score.isStrikeOut()) {
+            outputView.printGameEndMessage();
+            return;
+        }
+        guess(computer);
     }
 
     private Score calculateScore(GameNumber computer, GameNumber player) {
