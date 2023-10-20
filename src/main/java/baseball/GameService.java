@@ -47,16 +47,18 @@ public class GameService {
     }
 
     private static void printResult(int strike, int ball) {
-        if (strike != 0 && ball != 0) {
-            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
-            return;
-        }
+        StringBuilder sb = new StringBuilder();
         if (ball != 0) {
-            System.out.printf("%d볼\n", ball);
-            return;
+            sb.append(ball).append("볼");
         }
         if (strike != 0) {
-            System.out.printf("%d스트라이크\n", strike);
+            if (sb.length() != 0) {
+                sb.append(" ");
+            }
+            sb.append(strike).append("스트라이크");
+        }
+        if (sb.length() != 0) {
+            System.out.println(sb);
             return;
         }
         System.out.println("낫싱");
