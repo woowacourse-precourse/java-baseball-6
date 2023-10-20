@@ -1,11 +1,12 @@
 package baseball.gameLogic;
 
+import baseball.models.Computer;
+
 import java.util.List;
 
 public class ComputerAction {
-    public List<Integer> numberList;
-    RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+    public Computer computer = new Computer();
     public void generateNumber(){
-        numberList = randomNumberGenerator.generateRandomNumber();
+        computer.numberList = computer.randomNumberGenerator.generateRandomNumber();
     }
 }
