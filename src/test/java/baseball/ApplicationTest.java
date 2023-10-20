@@ -1,7 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+import org.mockito.MockedStatic;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -12,8 +18,20 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.mockStatic;
 
 class ApplicationTest extends NsTest {
+    private InputStream originalSystemIn;
+    @BeforeEach
+    void setup() {
+        originalSystemIn = System.in;
+    }
+    @AfterEach
+    void teardown() {
+        System.setIn(originalSystemIn);
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -24,7 +42,6 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
-
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -46,29 +63,26 @@ class ApplicationTest extends NsTest {
 //    void getUserNumbersList_정상작동_테스트() {
 //        //given
 //        String input = "123";
-//        InputStream originalSystemIn = System.in;
 //        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
 //        System.setIn(inputStream);
 //        //when
 //        List<Integer> userNumbersList = Application.getUserNumbersList();
 //        //then
 //        assertThat(userNumbersList).containsExactly(1,2,3);
-//        System.setIn(originalSystemIn);
 //    }
-//    @Test
-//    void getUserNumbersList_예외상황_테스트() {
-//        //given
-//        String input = "11123";
-//        InputStream originalSystemIn = System.in;
-//        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
-//        System.setIn(inputStream);
-//        //when
-//        Throwable thrown = catchThrowable(Application::getUserNumbersList);
-//        //then
-//        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-//                .hasMessageContaining("[ERROR]");
-//        System.setIn(originalSystemIn);
-//    }
+    @Test
+    void getUserNumbersList_예외상황_테스트() {
+        //given
+        String input = "11123";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        //when
+        Throwable thrown = catchThrowable(Application::getUserNumbersList);
+        //then
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]");
+        Console.close(); // 이걸 넣으니 전체 테스트를 실행시 발생한 java.util.NoSuchElementException : No line found 문제 해결
+    }
 //    @Test
 //    void getBallStrikeCount_테스트() {
 //        //given
