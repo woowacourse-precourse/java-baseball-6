@@ -2,11 +2,11 @@
 
 ---
 ### 📌 컴퓨터 게임 숫자 생성
-- [] 1부터 9까지의 수 중 서로 다른 수로 이뤄진 3자리의 수를 생성한다.
+- [x] 1부터 9까지의 수 중 서로 다른 수로 이뤄진 3자리의 수를 생성한다.
 ```
 ex:) 123(o), 356(o), 161(x)
 ```
-- [] 랜덤한 숫자 추출은 ``camp.nextstep.edu.missionutils.Randoms``의 ``pickNumberInRange()``를 활용한다.
+- [x] 랜덤한 숫자 추출은 ``camp.nextstep.edu.missionutils.Randoms``의 ``pickNumberInRange()``를 활용한다.
 
 <br>
 
