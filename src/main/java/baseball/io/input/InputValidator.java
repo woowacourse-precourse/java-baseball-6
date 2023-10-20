@@ -1,6 +1,8 @@
-package baseball.validation;
+package baseball.io.input;
 
 import java.util.regex.Pattern;
+
+import baseball.validation.Validation;
 
 public class InputValidator implements Validation<String> {
 
