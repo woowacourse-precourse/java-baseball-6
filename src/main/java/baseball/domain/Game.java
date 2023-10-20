@@ -26,22 +26,42 @@ public class Game {
     public int countStrike(GameNumber inputNumber) {
         int strike = 0;
         List<Integer> inputNumberList = inputNumber.getNumbers();
-        List<Integer> answerNumberList = answerNumber.getNumbers();
 
         for (int idx = 0; idx < inputNumberList.size(); idx++) {
-            strike += isStrike(inputNumberList.get(idx), answerNumberList.get(idx));
+            strike += isStrike(inputNumberList, idx);
         }
+
         return strike;
     }
 
-    private int isStrike(int number1, int number2) {
-        if (number1 != number2) {
+    private int isStrike(List<Integer> inputNumberList, int idx) {
+        if (!inputNumberList.get(idx).equals(answerNumber.getNumbers().get(idx))) {
             return 0;
         }
         return 1;
     }
 
     public int countBall(GameNumber inputNumber) {
-        return 0;
+        int ball = 0;
+        List<Integer> inputNumberList = inputNumber.getNumbers();
+
+        for (int idx = 0; idx < inputNumberList.size(); idx++) {
+            ball += isBall(inputNumberList, idx);
+        }
+
+        return ball;
+    }
+
+    private int isBall(List<Integer> inputNumberList, int idx) {
+        if (isStrike(inputNumberList, idx) == 1) {
+            return 0;
+        }
+
+        List<Integer> answerNumberList = answerNumber.getNumbers();
+        if (!answerNumberList.contains(inputNumberList.get(idx))) {
+            return 0;
+        }
+
+        return 1;
     }
 }

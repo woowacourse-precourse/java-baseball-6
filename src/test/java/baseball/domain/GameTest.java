@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class GameTest {
-    static final int MIN = 1;
+    static final int MIN = 0;
     static final int MAX = 3;
 
     @Test
