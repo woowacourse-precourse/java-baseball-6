@@ -39,16 +39,22 @@ public class Player {
         return numberToList(Integer.parseInt(numberStr));
     }
 
-
-    private boolean verifyInputValue(String numberStr){
-        return isThreeDigits(numberStr);
+//  해당 메소드는 게임 중 입력값을 검증할 때도 필요 할 수 있으니 public으로 선언
+    public boolean verifyInputValue(String numberStr){
+        return isThreeDigits(numberStr) && isNumbers(numberStr);
     }
 
-//    사용자가 입력한 수가 3자리 수인지 검증
+//    사용자가 입력한 값이 3자리 수인지 검증
     private boolean isThreeDigits(String numberStr){
         return numberStr.length() == NUMBER_OF_DIGITS;
     }
 
+//    입력한 값이 숫자인지 검증
+    private boolean isNumbers(String numberStr){
+        return numberStr.chars()
+                .filter(i-> i<'1'||i>'9')
+                .count() == 0;
+    }
 
 
 ////    사용자가 입력한 값이 정상적인 입력값인지 검증 (숫자이고 3자리인지, 중복된 수는 없는지 확인)
