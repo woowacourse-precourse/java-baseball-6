@@ -21,6 +21,21 @@ public class OutputView {
     }
 
     public void printGameResult(GameResult gameResult) {
-        System.out.println(gameResult);
+        int ball = gameResult.getBall();
+        int strike = gameResult.getStrike();
+
+        if (ball > 0) {
+            System.out.printf("%d볼 ", ball);
+        }
+
+        if (strike > 0) {
+            System.out.printf("%d스트라이크", strike);
+        }
+
+        if (ball == 0 && strike == 0) {
+            System.out.print("낫싱");
+        }
+        
+        System.out.println();
     }
 }
