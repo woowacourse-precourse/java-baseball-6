@@ -3,8 +3,8 @@ package baseball.domain;
 import java.util.Objects;
 
 public final class GameNumber {
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 9;
     private static final String RANGE_EXCEPTION_MESSAGE =
             String.format("Error : 각 자리수는 %d ~ %d 사이의 숫자여야 합니다.", MIN_NUMBER, MAX_NUMBER);
 
