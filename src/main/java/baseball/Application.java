@@ -21,6 +21,8 @@ public class Application {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
+            } else {
+                System.out.println(resultToString(result));
             }
         }
     }
@@ -84,6 +86,21 @@ public class Application {
         }
 
         return List.of(strike, ball);
+    }
+
+    private static String resultToString(List<Integer> result) {
+
+        if (result.get(0) == 0 && result.get(1) == 0) {
+            return "낫싱";
+        } else {
+            if (result.get(0) == 0) {
+                return result.get(1) + "볼";
+            }else if (result.get(1)==0) {
+                return result.get(0) + "스트라이크";
+            }else {
+                return result.get(0) + "볼 " + result.get(1) + "스트라이크";
+            }
+        }
     }
 
 }
