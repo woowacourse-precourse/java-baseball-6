@@ -49,8 +49,30 @@ public class Game {
             }
             int[] hintArr = new int[3];
             hint(myAnswer, hintArr);
+            printScore(hintArr);
         }while(!RESULT);
 
+    }
+
+    private void printScore(int[] hintArr){
+        if(hintArr[1] == 3){
+            System.out.println(hintArr[1] + STRIKE);
+//            System.out.println(STRIKE);
+            System.out.println(GAME_FINISH);
+            RESULT = true;
+        }
+        else if(hintArr[0] == 0 && hintArr[1] != 0){
+            System.out.println(hintArr[1] + STRIKE);
+        }
+        else if(hintArr[1] == 0 && hintArr[0] != 0){
+            System.out.println(hintArr[0] + BALL);
+        }
+        else if (hintArr[2] == 3) {
+            System.out.println(NOTHING);
+        }
+        else {
+            System.out.println(hintArr[0] + BALL + " " + hintArr[1] + STRIKE);
+        }
     }
     private void hint(List<Integer> List, int[] hintArr){ // 볼, 스트라이크, 낫싱 횟수 배열에 넣어주는 함수
         if(List.size() != answer.size()){
