@@ -1,4 +1,10 @@
-package baseball;
+package baseball.controller;
+
+import baseball.model.Computer;
+import baseball.model.NumberGenerator;
+import baseball.model.Player;
+import baseball.view.Input;
+import baseball.view.Output;
 
 public class GameController {
 
