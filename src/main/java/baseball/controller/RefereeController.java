@@ -12,7 +12,7 @@ public class RefereeController {
     private RefereeController() {
     }
 
-    public static Result umpiredNumbers(Player player, Player opponent) {
+    public static Result umpiredPlayers(Player player, Player opponent) {
         Referee referee = Referee.create();
         Result result = referee.calculateResult(player.getNumbers(), opponent.getNumbers());
 

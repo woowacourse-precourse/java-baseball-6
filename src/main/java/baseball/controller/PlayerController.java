@@ -20,7 +20,7 @@ public class PlayerController {
             Numbers numbers = stringToNumbers(baseBallView.numbersInputView());
             Player player = Player.create(numbers);
 
-            Result result = RefereeController.umpiredNumbers(player, opponent);
+            Result result = RefereeController.umpiredPlayers(player, opponent);
 
             isContinueGame = result.isContinue();
         }
