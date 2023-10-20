@@ -14,56 +14,61 @@ package baseball;
 //    - (다른 자리, 다른 숫자)*3 = 낫싱
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
-    public void checkUserInputException(int[] user) {
-        try {
-            for (int num : user) {
-                if (num > 10)
-                    throw new IllegalArgumentException("올바르지 않은 숫자의 입력입니다. " + num);
-            }
+    static boolean exceptionFlag;
 
-            for (int i = 0; i < user.length; i++) {
-                for (int j = 0; j < user.length; j++) {
+    public void checkUserInputException(List<Integer> user) {
+        try {
+            if (!(user.size() == 3))
+                throw new IllegalArgumentException("숫자 3자리를 입력해주세요. ");
+
+//            for (int num : user) {
+//                if (num > 10)
+//                    throw new IllegalArgumentException("올바르지 않은 숫자의 입력입니다. " + num);
+//            }
+
+            for (int i = 0; i < user.size(); i++) {
+                for (int j = 0; j < user.size(); j++) {
                     if (i == j)
                         continue;
-                    if (user[i] == user[j]) {
-                        throw new IllegalArgumentException("올바르지 않은 숫자의 입력입니다. " + user[j]);
+                    if (user.get(i) == user.get(j)) {
+                        throw new IllegalArgumentException("동일한 숫자가 포함되어있습니다. ");
                     }
                 }
             }
         } catch (IllegalArgumentException e) {
             System.err.println("IllegalArgumentException 발생: " + e.getMessage());
-            return;
+            exceptionFlag = true;
         }
     }
 
     public void checkUserRegameException(int num) {
         try {
             if (!(num == 1 || num == 2)) {
-                throw new IllegalArgumentException("번호를 다시 확인해주세요: " + num);
+                throw new IllegalArgumentException("입력 번호를 다시 확인해주세요: ");
             }
         } catch (IllegalArgumentException e) {
             System.err.println("IllegalArgumentException 발생: " + e.getMessage());
-            return;
+            exceptionFlag = true;
         }
     }
 
-    public int[] userInput() {
+    public List<Integer> userInput() {
         Scanner sc = new Scanner(System.in);
         int userInput = sc.nextInt();
-        int[] userNumArray = new int[3];
+        ArrayList<Integer> userNumArray = new ArrayList<>();
         String userNumber = String.valueOf(userInput);
 
         for (int i = 0; i < userNumber.length(); i++) {
             char userNum = userNumber.charAt(i);
             int userIntNum = Character.getNumericValue(userNum);
-            userNumArray[i] = userIntNum;
+            userNumArray.add(userIntNum);
         }
         checkUserInputException(userNumArray);
         return userNumArray;
     }
-
-
 }
