@@ -20,10 +20,11 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restartCode = Console.readLine();
-            if (restartCode == "1") continue;
-            if (restartCode == "2") break;
+            if (Objects.equals(restartCode, "1")) continue;
+            if (Objects.equals(restartCode, "2")) break;
             throw new IllegalArgumentException();
         }
+        Console.close();
     }
 }
 
@@ -44,10 +45,6 @@ class BaseballNumber {
     }
 
     public BaseballNumber(String input) {
-        // 사용자의 잘못된 입력을 확인해야 함
-        // 1. input.length()가 정확히 3인지
-        // 2. 각 자릿수가 1 ~ 9의 수인지
-        // 3. 각 자리의 숫자가 서로 다른 수인지
         if (!validateInput(input)) throw new IllegalArgumentException();
         for (int i = 0; i < 3; i++) {
             this.values[i] = Character.getNumericValue(input.charAt(i));
