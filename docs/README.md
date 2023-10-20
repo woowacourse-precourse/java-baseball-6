@@ -38,11 +38,12 @@
   * List<Integer> threeNumbers
   * void initThreeNumbers(String inputtedNumbers)
   * private void inputThreeNumberString(String inputtedString)
-  * private void flush()
+  * private void flushNumbers()
   * List<Integer> getThreeNumbers()
 * Computer(상대방)
   * List<Integer> threeNumbers
   * void generateThreeNumbers()
+  * private void flushNumbers()
   * List<Integer> getThreeNumbers()
 * Result
   * initResult() 
