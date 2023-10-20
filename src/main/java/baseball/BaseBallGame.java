@@ -57,6 +57,10 @@ public class BaseBallGame {
             sb.append(strikeCount).append("스트라이크");
         }
 
+        if(ballCount == 0 && strikeCount == 0) {
+            sb.append("낫싱");
+        }
+
         System.out.println(sb);
     }
 
