@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class BallException {
     private final int BALL_SIZE = 3;
-    private final Set<Character> set = new HashSet<>();
+    private Set<Character> set = new HashSet<>();
 
     public void validation(String number){
         notNumberValidation(number);

@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.Ball;
 import baseball.exception.BallException;
+import baseball.service.GameService;
 import baseball.view.GameOutput;
 import baseball.view.UserInput;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -16,6 +17,7 @@ public class GameController {
     private final GameOutput output = new GameOutput();
     private final UserInput input = new UserInput();
     private final BallException ballException = new BallException();
+    private final GameService gameService = new GameService();
 
     public void start(){
         createComputerBall();
@@ -23,10 +25,30 @@ public class GameController {
         gameProcess();
     }
 
+    public void gameRestart(){
+        createComputerBall();
+        gameProcess();
+    }
+
     public void gameProcess() {
         String number = input.inputUserNumber();
         ballException.validation(number);
         createUserBall(number);
+        gameResult();
+    }
+
+    public void gameResult(){
+        int strikeResult = gameService.strikeResult(computer, user);
+        int ballResult = gameService.ballResult(computer, user);
+
+        if (strikeResult == 3) gameRegameRequest();
+
+        output.printGameResult(strikeResult, ballResult);
+        gameProcess();
+    }
+
+    public void gameRegameRequest(){
+        output.printGameEnd();
     }
 
     public void createComputerBall() {
