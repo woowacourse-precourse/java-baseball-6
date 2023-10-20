@@ -9,6 +9,7 @@ import java.util.Set;
 
 public class InputView {
     public List<Integer> inputNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
         String numString = Console.readLine();
         List<Integer> numbers = Arrays.stream(numString.split("")).map(Integer::parseInt).toList();
         validate(numbers);
@@ -16,6 +17,7 @@ public class InputView {
     }
 
     public int inputNumber() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int number = Integer.parseInt(Console.readLine());
         validate(number);
         return number;

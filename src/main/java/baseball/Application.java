@@ -14,8 +14,6 @@ public class Application {
         do {
             Judger judger = new Judger();
 
-            human.setNumbers();
-
             judger.compareNumbers(human.getNumbers(), computer.getNumbers());
 
             if(endFlag == 1) {

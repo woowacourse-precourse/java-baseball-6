@@ -1,7 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class Human {
@@ -11,8 +9,4 @@ public class Human {
         return this.numbers;
     }
 
-    public void setNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
-        this.numbers = numbers;
-    }
 }
