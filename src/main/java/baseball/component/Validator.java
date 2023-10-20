@@ -37,4 +37,10 @@ public class Validator {
         }
         this.ball = ball - strike;
     }
+
+    private void isNoting() {
+        if (ball == 0 && strike == 0) {
+            noting = true;
+        }
+    }
 }
