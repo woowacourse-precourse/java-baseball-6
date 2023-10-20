@@ -28,13 +28,8 @@ public class Balls {
     }
 
     public int get_index(int target){
-        try{
-            if(balls.contains(target)){
-                return balls.indexOf(target);
-            } else return -1;
-        }catch (IndexOutOfBoundsException e){
-            throw new IllegalArgumentException();
-        }
-
+        if(balls.contains(target)){
+            return balls.indexOf(target);
+        } else return -1;
     }
 }
