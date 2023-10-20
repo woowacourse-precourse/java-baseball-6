@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class AnswerCreator {
 	private final Validator validator;
-	public AnswerCreator() {
-		this.validator = new Validator();
+	public AnswerCreator(Validator validator) {
+		this.validator = validator;
 	}
 
 	public int createAnswer() {
