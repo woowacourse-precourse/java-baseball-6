@@ -8,4 +8,9 @@ public class SystemManager {
         OutputHandler.theGameStart();
         gameManager.playRound();
     }
+
+    static public void newGame() {
+        GameManager gameManager = new GameManager();
+        gameManager.playRound();
+    }
 }
