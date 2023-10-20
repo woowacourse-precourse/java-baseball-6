@@ -1,6 +1,10 @@
-package baseball;
+package baseball.controller;
 
-import static baseball.Config.NUMBER_LENGTH;
+import static baseball.config.Config.NUMBER_LENGTH;
+
+import baseball.model.ComputerNumber;
+import baseball.model.Hint;
+import baseball.model.PlayerNumber;
 
 public class Game {
 
@@ -8,7 +12,7 @@ public class Game {
     public void start() {
         String computerNumber, playerNumber;
 
-        Player player = new Player();
+        PlayerNumber player = new PlayerNumber();
         ComputerNumber computer = new ComputerNumber();
         Hint hint = new Hint();
 

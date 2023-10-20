@@ -1,8 +1,8 @@
-package baseball;
+package baseball.model;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Player {
+public class PlayerNumber {
 
     public String inputNumber(final int numberLength) {
         System.out.print("숫자를 입력해주세요 : ");

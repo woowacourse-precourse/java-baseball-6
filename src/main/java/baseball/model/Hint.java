@@ -1,6 +1,6 @@
-package baseball;
+package baseball.model;
 
-import static baseball.Config.NUMBER_LENGTH;
+import static baseball.config.Config.NUMBER_LENGTH;
 
 public class Hint {
 

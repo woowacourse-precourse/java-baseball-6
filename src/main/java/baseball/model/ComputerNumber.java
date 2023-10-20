@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static java.util.stream.Collectors.joining;
