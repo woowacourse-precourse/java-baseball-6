@@ -11,8 +11,8 @@ public class BaseballNumber {
         this.numbers = numbers;
     }
 
-    public int countStrike(BaseballNumber baseballNumber) {
-        List<Integer> otherNumbers = baseballNumber.numbers;
+    public int countStrike(BaseballNumber otherBaseballNumber) {
+        List<Integer> otherNumbers = otherBaseballNumber.numbers;
         int numStrike = 0;
         for (int idx = 0; idx < 3; ++idx) {
             if (Objects.equals(otherNumbers.get(idx), numbers.get(idx))) {
@@ -23,8 +23,8 @@ public class BaseballNumber {
         return numStrike;
     }
 
-    public int countBall(BaseballNumber baseballNumber) {
-        List<Integer> otherNumbers = baseballNumber.numbers;
+    public int countBall(BaseballNumber otherBaseballNumber) {
+        List<Integer> otherNumbers = otherBaseballNumber.numbers;
         int numBall = 0;
         for (int idx = 0; idx < 3; ++idx) {
             int index = otherNumbers.indexOf(numbers.get(idx));
