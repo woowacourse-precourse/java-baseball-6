@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.dto.GameResult;
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -29,7 +30,12 @@ public class GameController {
         } while (shouldRestart());
     }
 
-    private void play() {}
+    private void play() {
+        String inputNumber = InputView.number();
+        gameService.initGame();
+        GameResult gameResult  = gameService.compare(inputNumber);
+        OutputView.result(gameResult);
+    }
 
     private boolean shouldRestart() {
         return InputView.restart().equals(RESTART);

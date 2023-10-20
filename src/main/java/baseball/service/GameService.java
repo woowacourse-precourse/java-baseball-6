@@ -1,5 +1,7 @@
 package baseball.service;
 
+import baseball.dto.GameResult;
+
 public class GameService {
     private static GameService gameService;
 
@@ -10,5 +12,11 @@ public class GameService {
             gameService = new GameService();
         }
         return gameService;
+    }
+
+    public void initGame() {}
+
+    public GameResult compare(String inputNumber) {
+        return null;
     }
 }
