@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
@@ -14,6 +13,8 @@ public class Player {
     }
 
     public void compareToAnswerNumbers(Opponent opponent, List<Integer> guessNumbers) {
+        validateGuessNumbers(guessNumbers);
+
         List<Integer> answerNumbers = opponent.getAnswerNumbers();
         ballCount = 0;
         strikeCount = 0;
@@ -53,5 +54,13 @@ public class Player {
 
     public boolean isEqualToAnswerNumbers() {
         return strikeCount == 3;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
     }
 }
