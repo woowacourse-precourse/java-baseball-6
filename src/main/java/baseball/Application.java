@@ -54,7 +54,7 @@ public class Application {
         playerNumbers = new ArrayList<>();
 
         for (int i = 0; i < inputNumbers.length(); i++) {
-            if (inputNumbers.charAt(i) < '1' || inputNumbers.charAt(i) > '9') {
+            if (!isBetween1and9(inputNumbers.charAt(i))) {
                 throw new IllegalArgumentException("1~9로 이루어진 3자리의 수를 입력해주세요.");
             }
             playerNumbers.add(inputNumbers.charAt(i) - '0');
@@ -70,5 +70,9 @@ public class Application {
 
     public static boolean isThreeLength(final String inputNumbers) {
         return inputNumbers.length() == 3;
+    }
+
+    public static boolean isBetween1and9(final char inputNumber) {
+        return inputNumber >= '1' && inputNumber <= '9';
     }
 }
