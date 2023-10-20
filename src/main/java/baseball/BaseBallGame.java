@@ -10,6 +10,19 @@ public class BaseBallGame {
     private static final int MIN_RANDOM_NUMBER = 1;
     private static final int MAX_RANDOM_NUMBER = 9;
     private static final int RANDOM_NUMBER_LENGTH = 3;
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+
+    public void gameStart() {
+        printStartMessage();
+
+        while(true) {
+
+        }
+    }
+
+    private void printStartMessage() {
+        System.out.println(START_MESSAGE);
+    }
 
     private List<Integer> getRandomNumber() {
         Set<Integer> computerNumber = new HashSet<>();
