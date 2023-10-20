@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+
 public class Game {
     private final TargetNumber targetNumber = TargetNumber.generate(0, 0, 0);
 
@@ -10,9 +12,39 @@ public class Game {
     public static Game generate() { return new Game(); }
 
     public void start() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         do {
+            int[] numbers = userInput();
 
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
         } while (Integer.parseInt(Console.readLine()) == 1);
+    }
+
+    private int[] userInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+
+        String input = Console.readLine();
+        if (!isValidInput(input)) {
+            throw new IllegalArgumentException();
+        }
+
+        int[] numbers = new int[3];
+        for (int i = 0; i < 3; i++) {
+            numbers[i] = (input.charAt(i) - '0');
+        }
+        return numbers;
+    }
+
+    private boolean isValidInput(String input) {
+        if (input.length() != 3) return false;
+
+        boolean[] duplicationCheck = new boolean[10];
+        for (int i = 0; i < 3; i++) {
+            char c = input.charAt(i);
+            if (c < '1' || c > '9' || duplicationCheck[(c - '0')]) return false;
+            duplicationCheck[(c - '0')] = true;
+        }
+
+        return true;
     }
 }

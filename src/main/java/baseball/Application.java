@@ -5,8 +5,12 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다.");
         Game game = Game.generate();
-        game.start();
+        try {
+            game.start();
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 입력입니다. 애플리케이션을 종료합니다.");
+        }
+
     }
 }
