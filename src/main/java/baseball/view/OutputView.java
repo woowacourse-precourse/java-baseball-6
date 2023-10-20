@@ -19,7 +19,7 @@ public class OutputView {
     }
 
     public void printGameEndMessage() {
-        System.out.printf(RESULT_MESSAGE, OUT_COUNT.getValue());
+        System.out.printf(RESULT_MESSAGE, OUT_COUNT);
         System.out.println(GAME_END_MESSAGE);
     }
 }

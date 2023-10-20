@@ -22,7 +22,7 @@ public class Score {
         if (score == null) {
             return false;
         }
-        return score.get(STRIKE).equals(OUT_COUNT.getValue());
+        return score.get(STRIKE).equals(OUT_COUNT);
     }
 
     @Override

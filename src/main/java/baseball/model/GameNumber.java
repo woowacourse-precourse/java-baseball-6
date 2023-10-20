@@ -65,7 +65,7 @@ public class GameNumber {
             if (!Arrays.stream(value.split(""))
                     .map(String::valueOf)
                     .mapToInt(Integer::parseInt)
-                    .allMatch(number -> MIN_NUMBER.getValue() <= number && number <= MAX_NUMBER.getValue())) {
+                    .allMatch(number -> MIN_NUMBER <= number && number <= MAX_NUMBER)) {
                 throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
             }
         } catch (NumberFormatException e) {
@@ -74,15 +74,15 @@ public class GameNumber {
     }
 
     private void validateLength(List<Integer> gameNumber) {
-        if (!NUMBER_SIZE.getValue().equals(Set.copyOf(gameNumber).size())
-                || !NUMBER_SIZE.getValue().equals(gameNumber.size())) {
+        if (!NUMBER_SIZE.equals(Set.copyOf(gameNumber).size())
+                || !NUMBER_SIZE.equals(gameNumber.size())) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
         }
     }
 
     private void validateRange(List<Integer> gameNumber) {
-        if (!gameNumber.stream().allMatch(number -> MIN_NUMBER.getValue() <= number
-                && number <= MAX_NUMBER.getValue())) {
+        if (!gameNumber.stream().allMatch(number -> MIN_NUMBER <= number
+                && number <= MAX_NUMBER)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
         }
     }

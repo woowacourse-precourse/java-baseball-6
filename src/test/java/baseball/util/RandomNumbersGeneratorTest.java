@@ -18,13 +18,13 @@ class RandomNumbersGeneratorTest {
     void checkUniqueRandomNumbers() {
         List<Integer> computer = RandomNumbersGenerator.generate();
         assertThat(Set.copyOf(computer).size()).isEqualTo(computer.size())
-                .isEqualTo(NUMBER_SIZE.getValue());
+                .isEqualTo(NUMBER_SIZE);
     }
 
     @Test
     @DisplayName("올바른 범위의 숫자 생성 테스트")
     void checkValidRangeNumbers() {
         List<Integer> computer = RandomNumbersGenerator.generate();
-        assertThat(computer).allMatch(i -> MIN_NUMBER.getValue() <= i && i <= MAX_NUMBER.getValue());
+        assertThat(computer).allMatch(number -> MIN_NUMBER <= number && number <= MAX_NUMBER);
     }
 }

@@ -12,13 +12,13 @@ public class ScoreCalculator {
     }
 
     public Integer calculateStrike(GameNumber computer, GameNumber player) {
-        return (int) IntStream.range(0, NUMBER_SIZE.getValue())
+        return (int) IntStream.range(0, NUMBER_SIZE)
                 .filter(idx -> isStrike(computer, player, idx))
                 .count();
     }
 
     public Integer calculateBall(GameNumber computer, GameNumber player) {
-        return (int) IntStream.range(0, NUMBER_SIZE.getValue())
+        return (int) IntStream.range(0, NUMBER_SIZE)
                 .filter(idx -> isBall(computer, player, idx))
                 .count();
     }
