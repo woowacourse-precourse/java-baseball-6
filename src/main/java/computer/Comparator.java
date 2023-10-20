@@ -12,11 +12,10 @@ public class Comparator {
     private static final int BALLS_SIZE=3;
     private static final int STRIKE=0;
     private static final int BALL=1;
-    private List<Integer> computerNumber=new ArrayList<>();
-    private List<Integer> userNumber=new ArrayList<>();
-    List<Integer> hint=new ArrayList<>(Arrays.asList(0,0));
-    private int strike;
-    private int ball;
+    public List<Integer> computerNumber=new ArrayList<>();
+    public List<Integer> userNumber=new ArrayList<>();
+    public int strike;
+    public int ball;
 
     public void compare(Balls computer, Balls user){
         receiveBalls(computer,user);
@@ -33,11 +32,13 @@ public class Comparator {
                 current++;
             }
         }
+        store(strike,ball);
     }
 
     private void receiveBalls(Balls computer,Balls user){
 
-        computer.getBalls().stream().forEach(n->this.computerNumber.add(n));
+        this.computerNumber=computer.getBalls();
+        //computer.getBalls().stream().forEach(x->this.computerNumber.add(x));
         //this.userNumber=user.getBalls();
         user.getBalls().stream().forEach(n->this.userNumber.add(n));
     }
@@ -47,9 +48,10 @@ public class Comparator {
         ball=0;
     }
 
-    public List<Integer> getHint(){
-        hint.set(STRIKE,strike);
-        hint.set(BALL,ball);
-        return hint;
+    public void store(int strike,int ball){
+        Hint hint=new Hint();
+        hint.save(strike,ball);
     }
+
+
 }

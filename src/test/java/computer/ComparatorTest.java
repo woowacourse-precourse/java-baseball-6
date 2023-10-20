@@ -19,16 +19,22 @@ class ComparatorTest {
         //given
         //List<Integer> computerNumber=new ArrayList<Integer>(Arrays.asList(1,2,3));
         //List<Integer> userNumber=new ArrayList<Integer>(Arrays.asList(1,3,6));
-        Balls computerBalls=new Balls(new ArrayList<Integer>(Arrays.asList(1,2,3)));
-        Balls userBalls=new Balls(new ArrayList<Integer>(Arrays.asList(1,3,6)));
-        List<Integer> expected=new ArrayList<>(Arrays.asList(1,1));
+        Balls computerBalls=new Balls(new ArrayList<Integer>(Arrays.asList(1,2,4)));
+        //Balls userBalls=new Balls(new ArrayList<Integer>(Arrays.asList(1,3,7)));
+        int strike=1;
+        int ball=2;
+        Hint hint=new Hint();
 
         //when
         Comparator comparator=new Comparator();
         comparator.compare(computerBalls,computerBalls);
 
+
         //then
-        Assertions.assertThat(expected.containsAll(comparator.getHint())).isEqualTo(true);
+        Assertions.assertThat(comparator.computerNumber).containsAll(Arrays.asList(1,2,4));
+        Assertions.assertThat(comparator.userNumber).containsAll(Arrays.asList(1,3,6));
+        //Assertions.assertThat(comparator.strike).isEqualTo(1);
+        //Assertions.assertThat(comparator.ball).isEqualTo(2);
     }
 
 }

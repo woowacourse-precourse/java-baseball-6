@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public class Balls {
 
     private static final Integer BALLS_SIZE=3;
-    private static List<Integer> balls;
+    private List<Integer> balls;
 
     public Balls(List<Integer> balls){
 
