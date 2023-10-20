@@ -8,8 +8,9 @@ import java.util.List;
 
 public class ComputerService {
 
-    public void createComputerList() {
+    public List<Integer> createComputerList() {
         Computer computer = new Computer(generateRandom());
+        return computer.getComputer();
     }
 
     private List<Integer> generateRandom() {

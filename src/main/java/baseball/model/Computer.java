@@ -1,9 +1,6 @@
 package baseball.model;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -18,6 +15,9 @@ public class Computer {
         validateDuplicate(computer);
         validateIsNumber(computer);
         this.computer = computer;
+    }
+    public List<Integer> getComputer() {
+        return Collections.unmodifiableList(computer);
     }
 
     private void validateSize(List<Integer> computer){
