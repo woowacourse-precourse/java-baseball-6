@@ -26,17 +26,12 @@ public class Application {
             // 사용자가 번호 맞추기 시작
             playGame(computer);
 
-            String restart = getUserInput(RESTART_MESSAGE);
-
-            if (restart.equals("2")){
-                Console.close();
+            // 개암 재시작
+            if(!restartGame()) {
                 break;
             }
-
-            if (!restart.equals("1")){
-                throw new IllegalArgumentException();
-            }
         }
+        Console.close();
     }
 
     /**
@@ -65,6 +60,19 @@ public class Application {
                 System.out.println(NOTHING_MESSAGE);
             }
         }
+    }
+
+    /**
+     * 게임 재시작
+     * @return 입력값이 1이면 True 2이면 False
+     */
+    public static boolean restartGame() {
+        String restart = getUserInput(RESTART_MESSAGE);
+
+        if (!(restart.equals("1") || restart.equals("2"))){
+            throw new IllegalArgumentException();
+        }
+        return "1".equals(restart);
     }
 
     /**
