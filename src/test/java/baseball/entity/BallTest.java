@@ -47,7 +47,6 @@ class BallTest {
                 .hasMessage("알 수 없는 공(null)과는 비교할 수 없습니다.");
     }
 
-
     @DisplayName("정답 공과 숫자만 일치하는 경우 볼이다.")
     @Test
     void evaluateBall() {
