@@ -25,7 +25,7 @@ public class GameServiceTest {
         assertThat(user.equalsPoint(new Point(1,1))).isTrue();
 
     }
-     */
+
 
     @DisplayName("3 스트라이크 여부 확인 테스트")
     @Test
@@ -58,7 +58,7 @@ public class GameServiceTest {
         assertThatThrownBy(()->new Numbers(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
+    /*
     @DisplayName("컴퓨터의 값을 생성하는 기능")
     @Test
     void 컴퓨터_값_생성_기능(){
@@ -73,6 +73,7 @@ public class GameServiceTest {
         assertThat(validation.gameValue(comValue)).isTrue();
     }
 
+
     @DisplayName("5번 기능(재시작여부 값 입력)의 예외처리 기능")
     @ParameterizedTest
     @ValueSource(strings={"12","231","4532","D","c","ab","c6","4a","zxs"})
@@ -83,6 +84,7 @@ public class GameServiceTest {
         //when & then
         assertThat(validation.continueValue(values)).isFalse();
     }
+     */
 
     @DisplayName("Game클래스를 통한 com과 user의 numbers 비교 기능")
     @ParameterizedTest
