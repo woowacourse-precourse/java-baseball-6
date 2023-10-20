@@ -8,6 +8,10 @@ import java.util.List;
 
 public class BaseballGame {
 
+    private static final int END_NUMBER = 2;
+
+    private static final int MAX_NUMBER_LENGTH = 3;
+
     private static BaseballGame baseballGame;
 
     private BaseballGame() {
@@ -28,9 +32,9 @@ public class BaseballGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        int restart = InputChecker.checkAndMakeNumber(Console.readLine());
+        int input = InputChecker.checkAndMakeNumber(Console.readLine());
 
-        if (restart == 1) {
+        if (input == END_NUMBER) {
             return true;
         }
 
@@ -43,14 +47,15 @@ public class BaseballGame {
         Result result = new Result();
         while (!isMyNumberCorrect(result)) {
             List<Integer> myNumber = setMyNumber();
+
             result = compareNumber(computerNumber, myNumber);
             printResult(result);
         }
     }
 
     private List<Integer> setComputerNumber() {
-        List<Integer> computer = new ArrayList<>(3);
-        while (computer.size() < 3) {
+        List<Integer> computer = new ArrayList<>(MAX_NUMBER_LENGTH);
+        while (computer.size() < MAX_NUMBER_LENGTH) {
             checkDuplicationAndSetNumber(computer, Randoms.pickNumberInRange(1, 9));
         }
 
@@ -73,8 +78,8 @@ public class BaseballGame {
         int ball = 0;
         int strike = 0;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {
+            for (int j = 0; j < MAX_NUMBER_LENGTH; j++) {
                 if (computerNumber.get(i) == myNumber.get(j)) {
                     if (i == j) strike++;
                     else ball++;
@@ -105,11 +110,9 @@ public class BaseballGame {
     }
 
     private boolean isMyNumberCorrect(Result result) {
-        if (result.getStrike() == 3) {
+        if (result.getStrike() == MAX_NUMBER_LENGTH) {
             return true;
         }
         return false;
     }
-
-
 }

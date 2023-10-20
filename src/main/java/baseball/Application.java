@@ -7,10 +7,10 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        boolean playing = true;
-        while (playing) {
+        boolean end = false;
+        while (!end) {
             BaseballGame.start();
-            playing = BaseballGame.endCheck();
+            end = BaseballGame.endCheck();
         }
     }
 }
