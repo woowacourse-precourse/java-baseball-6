@@ -24,14 +24,17 @@ public class PrintMessage {
 
         if(ball >= 1 && strike >= 1){
             System.out.println(String.format("%d볼 %d스트라이크", ball, strike));
+            return;
         }
 
         if(ball >= 1 && strike == 0){
             System.out.println(String.format("%d볼", ball));
+            return;
         }
 
         if(ball >= 0 && strike >= 1){
             System.out.println(String.format("%d스트라이크", strike));
+            return;
         }
     }
 

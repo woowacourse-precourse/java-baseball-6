@@ -4,7 +4,9 @@
 - [x] 랜덤으로 값 입력받기(camp.nextstep.edu.missionutils 패키지활용)
   - initRandomNumber() 메서드를 통해 랜덤한 3개의 값을 answerNumberList에 초기화
 - [x] 입력받은 값 ArrayList화
-- [ ] 입력받은 값이 볼인지 스트라이크인지 판단하는 checkGameScore()메서드 구현
+  - getNumberInputList() 메서드로 받은 입력값을 ArrayList로 반환
+- [x] 입력받은 값이 볼인지 스트라이크인지 판단하는 checkGameScore()메서드 구현
+  - ArrayList 두개를 받아와 값을 비교 후 처리
 - [ ] startGame()메서드 세부 로직 처리
 - [ ] 예외값 처리
   - 야구숫자

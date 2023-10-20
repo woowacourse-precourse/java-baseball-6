@@ -29,10 +29,11 @@ public class Baseball {
             }
             System.out.println();
 
-            getNumberInputList();
             inputNumberList = getNumberInputList();
-            
-//            checkGameScore(answerNumberList, inputNumberList);
+
+            while(!checkGameScore(answerNumberList, inputNumberList)){
+                inputNumberList = getNumberInputList();
+            }
             printMessage.gameResult(1, 1);
             printMessage.inputNumberMessage();
             printMessage.gameResult(0, 3);
@@ -73,13 +74,37 @@ public class Baseball {
         String inputData = Console.readLine();
         ArrayList<Integer> inputNumberList = new ArrayList<>();
         for(int i = 0; i < inputData.length(); i++) {
-            inputNumberList.add(Integer.valueOf(inputData.charAt(i)));
+            inputNumberList.add(Integer.parseInt(String.valueOf(inputData.charAt(i))));
         }
         return inputNumberList;
     }
 
-    public void checkGameScore(ArrayList<Integer> answerNumberList, int[] b){
+    public boolean checkGameScore(ArrayList<Integer> answerNumberList, ArrayList<Integer> inputNumberList){
+        int num1, num2;
+        int ballCount = 0;
+        int strikeCount = 0;
 
+        for(int i = 0; i < 3; i++){
+            num1 = answerNumberList.get(i);
+            for(int j = 0; j < 3; j++){
+                num2 = inputNumberList.get(j);
+                if(num1 == num2){
+                    if(i == j){
+                        strikeCount++;
+                        continue;
+                    }
+                    ballCount++;
+                }
+            }
+        }
+
+        printMessage.gameResult(ballCount, strikeCount);
+
+        if(strikeCount == 3){
+            return true;
+        }
+
+        return false;
     }
 
 
