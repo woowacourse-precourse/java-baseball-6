@@ -42,6 +42,9 @@ class Game{
                         check = true;
                         break;
                     }
+                    else{
+                        throw new IllegalArgumentException("게임 종료");
+                    }
                 }
             }
         }
@@ -54,6 +57,7 @@ class Game{
                 computer_answer.add(randomNumber);
             }
         }
+        System.out.print(computer_answer);
     }
 
     void user() {
