@@ -74,17 +74,7 @@
    - 게임 진행 여부 입력 기능
 
 
-6. GameController.java
-
-   게임 제어를 담당하는 클래스
-
-   - 게임 시작을 제어하는 기능
-      - 플레이어가 게임을 종료하기 전까지 반복
-   - 숫자를 맞추는 과정을 제어하는 기능
-      - 플레이어가 숫자를 맞추거나 예외가 발생하기 전까지 반복
-
-
-7. NumberProvider.java
+6. NumberProvider.java
 
    수에 대한 기능을 제공하는 클래스
 
@@ -93,7 +83,7 @@
       - List\<String> to List\<Integer>
 
 
-8. Validation.java
+7. Validation.java
 
    사용자 입력에 대한 예외처리를 담당하는 클래스
 
@@ -103,3 +93,13 @@
       - 수가 중복됐다면 “IllegalArgumentException” 발생
    - 게임 진행 여부에 대한 예외
       - 1 또는 2가 아니라면 “IllegalArgumentException” 발생
+
+
+8. GameController.java
+
+   게임 제어를 담당하는 클래스
+
+    - 게임 시작을 제어하는 기능
+        - 플레이어가 게임을 종료하기 전까지 반복
+    - 숫자를 맞추는 과정을 제어하는 기능
+        - 플레이어가 게임을 종료하거나 예외가 발생하기 전까지 반복
