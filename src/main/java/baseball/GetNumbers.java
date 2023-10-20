@@ -28,7 +28,9 @@ public class GetNumbers {
         List<Integer> numbers = new ArrayList<>();
 
         for (char ch : input.toCharArray()) {
-            numbers.add(Character.getNumericValue(ch));
+            if (!numbers.contains(Character.getNumericValue(ch))) {
+                numbers.add(Character.getNumericValue(ch));
+            }
         }
 
         BaseballException.numListSize(numbers, MAX_NUM_LENGTH);
