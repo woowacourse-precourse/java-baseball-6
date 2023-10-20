@@ -6,9 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Game {
+
     public static void play() {
         List<Integer> computerNum = setComputerNum();
-        List<Integer> inputNum = setInput();
+        List<Integer> inputNum = new ArrayList<>();
+        while (!inputNum.equals(computerNum)) {
+            inputNum = setInput();
+        }
     }
 
 
@@ -25,6 +29,9 @@ class Game {
                 computerNum.add(randomNumber);
             }
         }
+        System.out.print(computerNum.get(0));
+        System.out.print(computerNum.get(1));
+        System.out.println(computerNum.get(2));
         return computerNum;
     }
 
@@ -34,6 +41,7 @@ class Game {
      * @return 입력 수
      */
     private static List<Integer> setInput() {
+        System.out.print("숫자를 입력해주세요 : ");
         String[] input = Console.readLine().split("");
         List<Integer> inputNum = new ArrayList<>();
         for (int i = 0; i < 3; i++){
