@@ -53,6 +53,9 @@ public class BaseballGame {
 		if (playerInputNumber.equals('1')) {
 			computer.setRandomNumber();
 		}
+		if (playerInputNumber.equals('2')) {
+			this.quit = true;
+		}
 	}
 
 	public static void validateNumber(String input) {
