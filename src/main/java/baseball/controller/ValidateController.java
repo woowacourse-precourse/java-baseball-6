@@ -17,7 +17,7 @@ public class ValidateController {
         }
     }
 
-    public void validateInputString(String input) throws IllegalArgumentException{
+    public void validateInputString(String input) {
         if (input.length() != 1) { // 길이 검사
             throw new IllegalArgumentException(ValidateMessage.ERROR_INPUT_END_OR_RESTART_LENGTH);
         }
