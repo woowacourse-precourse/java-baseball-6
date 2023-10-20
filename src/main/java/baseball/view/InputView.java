@@ -1,6 +1,9 @@
 package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -11,34 +14,46 @@ public class InputView {
 
     private InputView(){
     }
-    public static String[] readPlayerNumber(){
+    public static List<String> readPlayerNumber(){
         System.out.print(INPUT_MESSAGE);
 
         String[] input = Console.readLine().split(SEPARATOR);
 
-        validation(input);
+        List<String> inputList = Arrays.asList(input);
 
-        return  input;
+        validation(inputList);
+
+        return  inputList;
     }
-    private static void validation(String[] input){
+    private static void validation(List<String> input){
         validationLength(input);
         validationNumeric(input);
+        checkDuplicate(input);
     }
-    private static void validationLength(String[] input){
-        if(input.length != INPUT_LENGTH){
+    private static void validationLength(List<String> input){
+        if(input.size() != INPUT_LENGTH){
             throw new IllegalArgumentException();
         }
     }
 
-    private static void validationNumeric(String[] input){
-        for(int i = 0 ; i < input.length ; i++){
-            isNumeric(input[i]);
+    private static void validationNumeric(List<String> input){
+        for (String string : input) {
+            convertToNumber(string);
         }
     }
-    private static void isNumeric(String s) {
+    private static void convertToNumber(String number) {
         try{
-            Integer.parseInt(s);
+            Integer.parseInt(number);
         }catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+    }
+    private static void checkDuplicate(List<String> input){
+        List<String> list = input
+            .stream()
+            .distinct()
+            .toList();
+        if(list.size() != INPUT_LENGTH){
             throw new IllegalArgumentException();
         }
     }

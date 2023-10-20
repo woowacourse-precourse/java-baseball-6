@@ -15,7 +15,7 @@ public class BaseBallGame {
     }
     private void startNewGame() {
         List<Integer> computerNumbers = generateComputerNumber();
-        String[] input = InputView.readPlayerNumber();
+        List<String> input = InputView.readPlayerNumber();
 
     }
     private List<Integer> generateComputerNumber(){
