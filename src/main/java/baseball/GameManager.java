@@ -17,19 +17,24 @@ public class GameManager {
                 randNumbers.add(randomNumber);
             }
         }
+        System.out.print("randNumber: ");
+        for (Integer randNumber : randNumbers) {
+            System.out.print(randNumber);
+        }
         return randNumbers;
     }
     public String calculateHint(List<Integer> randBaseballNumber, String userBaseballNumber) {
         int strike = 0;
         int ball = 0;
-
+        System.out.println("userBaseballNumber = " + userBaseballNumber);
         for (int i = 0; i < randBaseballNumber.size(); i++) {
-            if (randBaseballNumber.get(i).equals(Integer.valueOf(userBaseballNumber.charAt(i)))) {
+            System.out.println(String.format("test: %s %s", randBaseballNumber.get(i), Integer.valueOf(String.valueOf(userBaseballNumber.charAt(i))) ));
+            if (randBaseballNumber.get(i).equals(Integer.valueOf(String.valueOf(userBaseballNumber.charAt(i))))) {
                 strike++;
                 continue;
             }
 
-            if (randBaseballNumber.contains(Integer.valueOf(userBaseballNumber.charAt(i)))) {
+            if (randBaseballNumber.contains(Integer.valueOf(String.valueOf(userBaseballNumber.charAt(i))))) {
                 ball++;
             }
         }
@@ -40,7 +45,24 @@ public class GameManager {
         InputManager inputManager = new InputManager();
 
         List<Integer> randBaseballNumber = createRandNumber();
-        String userBaseballNumber = inputManager.getBaseballNumberFromUser(inputManager);
-        String hint = calculateHint(randBaseballNumber, userBaseballNumber);
+        while (true) {
+            String userBaseballNumber = inputManager.getBaseballNumberFromUser(inputManager);
+            System.out.println(calculateHint(randBaseballNumber, userBaseballNumber));
+
+            if (isEnd(randBaseballNumber, userBaseballNumber)) {
+                break;
+            }
+        }
     }
+
+    private boolean isEnd(List<Integer> randBaseballNumber, String userBaseballNumber) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Integer integer : randBaseballNumber) {
+            stringBuilder.append(integer);
+        }
+
+        return stringBuilder.toString().equals(userBaseballNumber);
+    }
+
+
 }
