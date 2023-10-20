@@ -1,13 +1,14 @@
 package baseball.controller;
 
-import baseball.model.NumberBaseball;
+import baseball.model.NumberBaseballResult;
 import baseball.service.NumberBaseballService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.List;
-
 public class NumberBaseballController {
+
+    private static final int RE_GAME = 1;
+    private static final int END_GAME = 2;
     private final InputView inputView;
     private final OutputView outputView;
     private final NumberBaseballService numberBaseballService;
@@ -24,14 +25,39 @@ public class NumberBaseballController {
     }
 
     public void readInputNumFromInputView() {
-        int inputNumList = inputView.readNum();
-        compareInputNumToRandNum(inputNumList);
+        createGameResultFromInputNum(inputView.readNum());
     }
 
-    public void compareInputNumToRandNum(int inputNum) {
-        numberBaseballService.compareInputNumToRandNum(inputNum);
+    public void createGameResultFromInputNum(int inputNum) {
+        if(numberBaseballService.isSameNum(inputNum)) {
+            processOfEndGame();
+            return;
+        }
+        NumberBaseballResult gameResult = numberBaseballService.countStrikeAndBall(inputNum);
+        sendGameResultToOutputView(gameResult);
+    }
 
-        // 결과를 outputView로 전달
+    private void loopGame() {
+        readInputNumFromInputView();
+    }
+
+    private void generateNewGame() {
+        numberBaseballService.newGame();
+    }
+
+    private void sendGameResultToOutputView(NumberBaseballResult numberBaseballResult) {
+        outputView.printGameResult(numberBaseballResult);
+        loopGame();
+    }
+
+    private void processOfEndGame() {
+        if(outputView.printEndGame() == RE_GAME) {
+            generateNewGame();
+            readInputNumFromInputView();
+            return;
+        }
+
+        outputView.endOfGame();
     }
 
 
