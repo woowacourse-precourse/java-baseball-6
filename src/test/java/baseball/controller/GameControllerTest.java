@@ -2,7 +2,7 @@ package baseball.controller;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -12,7 +12,7 @@ class GameControllerTest {
     void 컴퓨터측_볼_생성(){
         GameController controller = new GameController();
         controller.createComputerBall();
-        Set<BallDto> computer = controller.getComputer();
+        List<BallDto> computer = controller.getComputer();
         assertThat(computer.size()).isEqualTo(3);
     }
 
@@ -20,7 +20,7 @@ class GameControllerTest {
     void 컴퓨터측_볼_검증(){
         GameController controller = new GameController();
         controller.createComputerBall();
-        Set<BallDto> computer = controller.getComputer();
+        List<BallDto> computer = controller.getComputer();
         for (BallDto ballDto : computer) {
             assertThat(ballDto.getNumber()).isNotNull();
         }
@@ -30,7 +30,7 @@ class GameControllerTest {
     void 유저측_볼_생성(){
         GameController controller = new GameController();
         controller.createUserBall("251");
-        Set<BallDto> user = controller.getUser();
+        List<BallDto> user = controller.getUser();
 
         assertThat(user.size()).isEqualTo(3);
     }
