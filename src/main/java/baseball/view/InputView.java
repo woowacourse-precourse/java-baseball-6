@@ -1,9 +1,9 @@
 package baseball.view;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
     public static String userInput() {
-        return String.valueOf(new Scanner(System.in));
+        return Console.readLine();
     }
 }
