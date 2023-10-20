@@ -28,19 +28,25 @@ public class Application {
                 PrintResult.WRITE.printMessage();
 
                 String input = Console.readLine();
-                validateInput(input);
+                validateInputNumber(input);
 
-                List<Integer> user = new ArrayList<>();
-                for (String splitInput : input.split("")) {
-                    user.add(Integer.parseInt(splitInput));
-                }
+                List<Integer> user = changeStringToList(input);
+
                 isAnswer = compare(computer, user);
             }
             choiceOfUser = Console.readLine();
         }
     }
 
-    private static void validateInput(String input) {
+    private static List<Integer> changeStringToList(String input) {
+        List<Integer> user = new ArrayList<>();
+        for (String splitInput : input.split("")) {
+            user.add(Integer.parseInt(splitInput));
+        }
+        return user;
+    }
+
+    private static void validateInputNumber(String input) {
         if (!input.matches(INPUT_FORMAT)) {
             throw new IllegalArgumentException();
         }
