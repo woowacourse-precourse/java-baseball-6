@@ -7,5 +7,11 @@ class OutputMessage {
     static final String BALL = "%d볼%n";
     static final String STRIKE = "%d스트라이크%n";
     static final String BALL_AND_STRIKE = "%d볼 %d스트라이크%n";
-    static final String CORRECT_AND_ASK_RESTART = "3개의 숫자를 모두 맞히셨습니다! 게임 종료%n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.%n";
+    static final String CORRECT_AND_ASK_RESTART =
+            "3개의 숫자를 모두 맞히셨습니다! 게임 종료%n"
+                    + "게임을 새로 시작하려면 "
+                    + GameStatus.START.value
+                    + ", 종료하려면 "
+                    + GameStatus.GAME_OVER.value
+                    + "를 입력하세요.%n";
 }
