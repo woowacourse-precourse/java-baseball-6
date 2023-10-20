@@ -26,6 +26,10 @@ public class BaseballGame {
                 .orElseThrow(() -> new IllegalArgumentException(UNKNOWN_GENERATOR_MESSAGE));
     }
 
+    public PlayResult play(Balls balls) {
+        return answerBalls.play(balls);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
