@@ -2,6 +2,8 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -45,11 +47,7 @@ class GameUtilTest {
 
     @Test
     void validateDuplicate() {
-        //given
-        List<Integer> integerList = GameUtil.inputParse("113");
-
-        //then
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> GameUtil.validateDuplicate(integerList))
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> GameUtil.validateDuplicate(Arrays.asList(1, 1, 3)))
                 .withMessage("%s", "[중복된 수] 서로 다른 3개의 숫자를 입력해 주세요.");
     }
 }

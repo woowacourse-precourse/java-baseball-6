@@ -1,6 +1,5 @@
 package baseball;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +19,8 @@ public class GameUtil {
             throw new IllegalArgumentException("[형식 오류] 올바르지 않은 숫자 형식입니다.");
         }
 
+        integers.forEach(GameUtil::validateValue);
+        validateDuplicate(integers);
 
         return integers;
     }
@@ -35,5 +36,4 @@ public class GameUtil {
 
         if(size != 3) throw new IllegalArgumentException("[중복된 수] 서로 다른 3개의 숫자를 입력해 주세요.");
     }
-
 }
