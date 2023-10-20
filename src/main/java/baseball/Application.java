@@ -25,6 +25,7 @@ public class Application {
             }
         }
 
+
         List<Integer> user = new ArrayList<>();
 
         System.out.print("숫자를 입력해주세요 : ");
@@ -49,9 +50,21 @@ public class Application {
             } else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
-        for (int digit : user) {
-            System.out.println(digit);
+
+        int s = 0, b = 0;
+
+        for(int i=0;i<3;i++) {
+            if(computer.get(i) == user.get(i)) s+=1;
+            else if (computer.contains(user.get(i))) b+=1;
         }
+
+        if(s==0 && b==0) System.out.println("낫싱");
+        else if(s!=0 && b!=0) System.out.println(b+"볼 " +s+"스트라이크");
+        else if(s!=0 && b==0) System.out.println(s+"스트라이크");
+        else if(s==0 && b!=0) System.out.println(b+"볼");
+        else System.out.println("낫싱");
+
+
 
     }
 
