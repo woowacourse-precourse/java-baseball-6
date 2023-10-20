@@ -26,6 +26,7 @@ public class Util {
             for(int j = 0; j < userNumbers.size(); j++) {
                 if(i == j && answerNumbers.get(i) == userNumbers.get(j)) {
                     strike++;
+                    continue;
                 }
                 if(answerNumbers.get(i) == userNumbers.get(j)) {
                     ball++;
