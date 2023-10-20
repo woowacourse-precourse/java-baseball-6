@@ -56,8 +56,8 @@ public class NumberBaseballUtility {
 
     public static int calculateBall(List<Integer> answer, List<Integer> player) {
         int ball = 0;
-        for (int i : player) {
-            if (answer.contains(i)) {
+        for (int i = 0; i < player.size(); i++) {
+            if (!player.get(i).equals(answer.get(i)) && answer.contains(player.get(i))) {
                 ball++;
             }
         }
