@@ -12,7 +12,7 @@ public class ResultView {
         if (isOnlyLeftNotZero(ball, strike)) {
             printBall(ball);
         }
-        if (isBothZero(ball, strike)){
+        if (isBothZero(ball, strike)) {
             printNothing();
         }
     }
