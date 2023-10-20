@@ -74,6 +74,26 @@ class Baseball {
         }
     }
 
+    int restartException() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String s_end = Console.readLine();
+        // TODO: 잘못된 값 입력됬는지 확인!
+        try {
+            // 정수로 입력되지 않았을 때
+            int end = parseInt(s_end);
+
+            // 1과 2가 아닐 때
+            if (!(end == 1 || end == 2)) {
+                throw new Exception();
+            }
+
+            return end;
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+        }
+    }
+
 
 }
 
@@ -81,7 +101,7 @@ class Baseball {
 public class Application {
 
     private static final boolean IS_TEST = true;        // 정답 출력 여부 설정, 제출 시에는 false
-    static int end = 1;
+
 
 
     public static String makeRandomNum() {
@@ -99,7 +119,7 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
+        int end = 1;
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean isFinish = false;
         // 게임 진행
@@ -128,24 +148,10 @@ public class Application {
                 boolean ischeck = b.check();
 
                 if (ischeck) {
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    String s_end = Console.readLine();
-                    // TODO: 잘못된 값 입력됬는지 확인!
-                    try {
-                        // 정수로 입력되지 않았을 때
-                        end = parseInt(s_end);
-
-                        // 1과 2가 아닐 때
-                        if (!(end == 1 || end == 2)) {
-                            throw new Exception();
-                        }
-
-                    } catch (Exception e) {
-                        throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+                    end = b.restartException();
+                    if (end == 1 || end == 2) {
+                        isFinish = true;
                     }
-
-                    isFinish = true;
-                    // 계속
                 }
 
             }
