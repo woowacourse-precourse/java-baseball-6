@@ -4,6 +4,7 @@ import static baseball.model.Constant.NUMBER_LENGTH;
 import static baseball.model.Constant.WRONG_INPUT_DUPLICATE_MESSAGE;
 import static baseball.model.Constant.WRONG_INPUT_LENGTH_MESSAGE;
 import static baseball.model.Constant.WRONG_INPUT_RANGE_MESSAGE;
+import static baseball.model.Constant.WRONG_INPUT_RESTART_MESSAGE;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +25,12 @@ public class InputValidation {
 		}
 		return convertStringToInteger(inputNumber);
 	}
+	public static String validateRestartInput(String restartInput){
+		if(!hasRestartInput(restartInput)){
+			throw new IllegalArgumentException(WRONG_INPUT_RESTART_MESSAGE);
+		}
+		return restartInput;
+	}
 
 	public static boolean hasExactLength(String inputNumber) {
 		return inputNumber.length() == NUMBER_LENGTH;
@@ -36,6 +43,9 @@ public class InputValidation {
 		Set<String> setNumbers = Arrays.stream(inputNumbers).collect(Collectors.toSet());
 
 		return setNumbers.size() == NUMBER_LENGTH;
+	}
+	public static boolean hasRestartInput(String restartInput) {
+		return restartInput.equals("1") || restartInput.equals("2");
 	}
 	public static List<Integer> convertStringToInteger(String input){
 		return Arrays.stream(input.split(""))

@@ -55,7 +55,9 @@ public class GameController {
 		return gameData.getStrikeCount() == 3;
 	}
 	public boolean isRestart() {
-		String restart = inputView.readRestart();
-		return restart.equals("1");
+		String restartInput = inputView.readRestart();
+		String validatedRestartInput = InputValidation.validateRestartInput(restartInput);
+		return validatedRestartInput.equals("1");
 	}
+
 }
