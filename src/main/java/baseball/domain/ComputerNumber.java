@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.constant.Constant;
-import baseball.constant.errorMessage.UserNumberError;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,7 +11,7 @@ public class ComputerNumber {
 
     private List<Integer> createRandomNumber() {
         List<Integer> randomNumbers = pickRandomNumber();
-        if (validateRandomNumberDuplicate(randomNumbers)) {
+        if (validateRandomNumberDuplicate(randomNumbers) && validateRandomNumberRange(randomNumbers)) {
             return randomNumbers;
         }
         return createRandomNumber();
@@ -26,6 +25,10 @@ public class ComputerNumber {
 
     private boolean validateRandomNumberDuplicate(List<Integer> randomNumbs) {
         return randomNumbs.stream().distinct().count() == Constant.NUMBER_LENGTH_LIMIT;
+    }
+
+    private boolean validateRandomNumberRange(List<Integer> randomNumbs) {
+        return randomNumbs.stream().anyMatch(num -> Constant.START_NUMBER <= num && num <= Constant.END_NUMBER);
     }
 
     public List<Integer> getComputerNumber() {
