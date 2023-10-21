@@ -26,7 +26,16 @@ public class InputView {
         return inputConverter(Integer.parseInt(input));
     }
 
-    private void userInputValidation(String input) throws IllegalArgumentException {
+    public boolean provideRestartDecisionFromUser() {
+        String s = Console.readLine();
+        if (s == "1") {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void userInputValidation(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리의 수를 입력하시오.");
         }
