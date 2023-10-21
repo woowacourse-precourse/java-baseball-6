@@ -35,11 +35,11 @@ public class BaseBall implements Game {
          * 3. 계산 값 출력
          */
         BaseballGameNoticeUtil.requireInputNumber();
-        String userInputNumbers = inputBaseballNumbers();
-        NumbersValidator.inputValidate(userInputNumbers);
+        String inputStringNumbers = inputBaseballNumbers();
+        NumbersValidator.inputValidate(inputStringNumbers);
 
-        List<Integer> baseballResult = baseballCalculator.calculate(userInputNumbers, computerNumbers);
-        return ResultPrinter.printHint(baseballResult);
+        List<Integer> baseballResults = baseballCalculator.calculate(inputStringNumbers, computerNumbers);
+        return ResultPrinter.printHint(baseballResults);
     }
 
     /* 숫자 값 입력 */
