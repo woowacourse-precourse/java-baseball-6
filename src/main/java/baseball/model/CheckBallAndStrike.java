@@ -1,14 +1,17 @@
-package baseball;
+package baseball.model;
+
+import baseball.constants.message.BaseballMessage;
+import baseball.constants.BaseballRole;
+import baseball.util.RandomNumberCreateUtil;
 
 import java.util.List;
 
 public class CheckBallAndStrike {
 
     private static final int NO_COUNT = 0;
-
+    private final List<Integer> baseballNumbers;
     private int ball;
     private int strike;
-    private final List<Integer> baseballNumbers;
 
     public CheckBallAndStrike() {
         this.ball = NO_COUNT;

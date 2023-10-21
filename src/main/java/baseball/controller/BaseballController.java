@@ -1,4 +1,10 @@
-package baseball;
+package baseball.controller;
+
+import baseball.constants.BaseballRole;
+import baseball.model.CheckBallAndStrike;
+import baseball.model.Player;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class BaseballController {
 

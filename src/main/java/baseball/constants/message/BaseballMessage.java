@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constants.message;
 public enum BaseballMessage {
     BALL("볼"),
     STRIKE("스트라이크"),

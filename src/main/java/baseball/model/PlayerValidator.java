@@ -1,4 +1,7 @@
-package baseball;
+package baseball.model;
+
+import baseball.constants.BaseballRole;
+import baseball.constants.message.ErrorMessage;
 
 import java.util.Set;
 import java.util.stream.Collectors;

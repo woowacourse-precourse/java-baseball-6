@@ -1,4 +1,6 @@
-package baseball;
+package baseball.view;
+
+import baseball.constants.message.ErrorMessage;
 
 public class InputValidator {
     private static final String NUMERIC_REGEX = "^[1-9]*$";

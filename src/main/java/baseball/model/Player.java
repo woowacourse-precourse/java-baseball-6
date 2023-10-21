@@ -1,4 +1,6 @@
-package baseball;
+package baseball.model;
+
+import baseball.constants.BaseballRole;
 
 import java.util.ArrayList;
 import java.util.List;

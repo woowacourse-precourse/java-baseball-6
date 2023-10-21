@@ -1,4 +1,7 @@
-package baseball;
+package baseball.view;
+
+import baseball.constants.BaseballRole;
+import baseball.constants.message.ProgressMessage;
 
 public class OutputView {
 

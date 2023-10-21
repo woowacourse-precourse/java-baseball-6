@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constants.message;
 
 public enum ProgressMessage {
     START_BASEBALL_GAME("숫자 야구 게임을 시작합니다."),

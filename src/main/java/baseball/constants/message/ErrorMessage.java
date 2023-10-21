@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constants.message;
 
 public enum ErrorMessage {
     INPUT_NUMERIC_ERROR("1부터 9사이의 숫자를 입력해 주세요"),

@@ -1,4 +1,6 @@
-package baseball;
+package baseball.constants;
+
+import baseball.constants.message.ErrorMessage;
 
 public enum BaseballRole {
     MAX_BASEBALL_NUMBER_SIZE(3),
@@ -14,10 +16,6 @@ public enum BaseballRole {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
     public static boolean isGameExit(int value){
         validateRestartMessage(value);
         return value == GAME_EXIT.value;
@@ -31,5 +29,9 @@ public enum BaseballRole {
 
     private static String getRestartErrorMessage() {
         return String.format(ErrorMessage.INPUT_RESTART_ERROR.getMessage(), GAME_RESTART.value, GAME_RESTART.value);
+    }
+
+    public int getValue() {
+        return value;
     }
 }
