@@ -5,12 +5,11 @@ public class GameInputValid implements UserInputValid {
 
     @Override
     public void inputValid(String input) throws IllegalArgumentException {
-        // 사용자로부터 입력 받은 값이 숫자가 아닌 경우
         compareInputType(input);
     }
 
     private void compareInputType(String input) throws IllegalArgumentException {
-        if (!isNumeric(input)) {
+        if (!isNumeric(input) || !isValidRange(input)) {
             throw new IllegalArgumentException();
         }
     }
@@ -22,5 +21,9 @@ public class GameInputValid implements UserInputValid {
             }
         }
         return true;
+    }
+
+    private boolean isValidRange(String input) {
+        return input.length() == NumberConstants.LIMIT_NUMBERS_SIZE.getValue();
     }
 }
