@@ -2,36 +2,51 @@ package baseball.controller;
 
 import baseball.domain.Balls;
 import baseball.domain.NumberGenerator;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.domain.RoundResult;
+
+import static baseball.view.InputView.RestartOrEnd;
+import static baseball.view.InputView.userInputNumber;
+import static baseball.view.OutputView.printRoundResult;
+import static baseball.view.OutputView.startMessage;
 
 public class BaseballGameController {
 
     private static final NumberGenerator numberGenerator = new NumberGenerator();
 
+    private static final int RESTART = 1;
     private static final int END = 2;
 
+    private Balls targetNumber;
+
     public void run() {
+        startMessage();
+        do {
+            createTargetNumber();
+            playRound();
+        }while(checkRestart());
+    }
 
-        OutputView.startMessage();
+    private void createTargetNumber() {
+        targetNumber = numberGenerator.generate();
+    }
 
-        while (true) {
-            Balls computer = numberGenerator.generate();
-            while (true) {
-                Balls user = InputView.userInputNumber();
+    private void playRound() {
+        RoundResult roundResult;
+        do {
+            roundResult = RoundResult.of(targetNumber, userInputNumber());
+            printRoundResult(roundResult);
+        }while(roundResult.isLose());
+    }
 
-                OutputView.printRoundResult(computer, user);
+    private boolean checkRestart() {
+        int restartResponse = RestartOrEnd();
 
-                if (user.isThreeStrike(computer)) {
-                    break;
-                }
-            }
-
-            int restartResponse = InputView.RestartOrEnd();
-            if (restartResponse == END) {
-                break;
-            }
+        if (restartResponse == END) {
+            return false;
         }
-
+        if (restartResponse == RESTART) {
+            return true;
+        }
+        throw new IllegalArgumentException();
     }
 }

@@ -7,34 +7,38 @@ public class RoundResult {
     private static final String BALL = "볼";
     private static final String SPACE = " ";
     private static final int ZERO = 0;
+    private static final int THREE_STRIKE = 3;
 
-    private final String result;
+    private final int strike;
+    private final int ball;
 
-    protected RoundResult(String result) {
-        this.result = result;
+    protected RoundResult(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
     }
 
-    public static RoundResult of(Balls computer, Balls user) {
-        int numberOfStrike = computer.countStrike(user);
-        int numberOfBall = computer.countBall(user);
+    public static RoundResult of(Balls target, Balls user) {
+        return new RoundResult(target.countStrike(user), target.countBall(user));
+    }
 
-        if (computer.isNothing(user)) {
-            return new RoundResult(NOTHING);
+    public String getResult() {
+        if (strike == ZERO && ball == ZERO) {
+            return NOTHING;
         }
-        if (numberOfBall != ZERO && numberOfStrike != ZERO) {
-            return new RoundResult(numberOfBall + BALL + SPACE + numberOfStrike + STRIKE);
+        if (ball != ZERO && strike != ZERO) {
+            return ball + BALL + SPACE + strike + STRIKE;
         }
-        if (numberOfBall != ZERO) {
-            return new RoundResult(numberOfBall + BALL);
+        if (ball != ZERO) {
+            return ball + BALL;
         }
-        if (numberOfStrike != ZERO) {
-            return new RoundResult(numberOfStrike + STRIKE);
+        if (strike != ZERO) {
+            return strike + STRIKE;
         }
         return null;
     }
 
-    @Override
-    public String toString() {
-        return result;
+
+    public boolean isLose() {
+        return strike != THREE_STRIKE;
     }
 }
