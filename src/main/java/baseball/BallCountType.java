@@ -1,5 +1,8 @@
 package baseball;
 
+/**
+ * 볼카운트에 따른 경우의 수
+ */
 public enum BallCountType {
 
     STRIKEOUT(true, false),

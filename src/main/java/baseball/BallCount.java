@@ -2,6 +2,9 @@ package baseball;
 
 import java.util.List;
 
+/**
+ * 사용자의 예측을 바탕으로 볼카운트를 저장하는 클래스
+ */
 public class BallCount {
 
     private final int strike;
@@ -14,6 +17,9 @@ public class BallCount {
         this.ballCountType = ballCountType;
     }
 
+    /**
+     * 컴퓨터의 값과 사용자의 값을 바탕으로 볼카운트 객체 반환
+     */
     public static BallCount createBallCount(List<Integer> computer, List<Integer> player){
         int s = 0;
         int b = 0;
@@ -32,6 +38,9 @@ public class BallCount {
         return new BallCount(s, b, ballCountType);
     }
 
+    /**
+     * 볼, 스트라이크에 따른 상태 반환
+     */
     private static BallCountType gettBallCountType(int ball, int strike){
         if(isStrikeOut(strike)){
             return BallCountType.STRIKEOUT;

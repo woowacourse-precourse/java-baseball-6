@@ -12,13 +12,12 @@ public class Application {
         while (true) {
             List<Integer> computer = getComputerNumber();
 
-            while(true)
-            {
+            while (true) {
                 List<Integer> player = getPlayerNumber();
 
                 BallCount ballCount = BallCount.createBallCount(computer, player);
 
-                if(ballCount.getBallCountType() == BallCountType.STRIKEOUT){
+                if (ballCount.getBallCountType() == BallCountType.STRIKEOUT){
                     ballCount.printStrikeOut();
                     break;
                 }
@@ -42,6 +41,9 @@ public class Application {
         }
     }
 
+    /**
+     * 중복되지 않는 3개의 임의의 수 반환
+     */
     private static List<Integer> getComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -54,12 +56,15 @@ public class Application {
         return computer;
     }
 
+    /**
+     * 사용자의 예측 숫자 입력
+     */
     private static List<Integer> getPlayerNumber() {
         List<Integer> player = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         final char[] playerInput = Console.readLine().toCharArray();
 
-        if (playerInput.length > 3){
+        if (playerInput.length != 3){
             throw new IllegalArgumentException();
         }
 
