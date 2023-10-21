@@ -16,6 +16,8 @@ public class BaseballGame {
     private static final int DIGIT_MINIMUM = 1;
     private static final int DIGIT_MAXIMUM = 9;
     List<Integer> randomThreeDigits;
+
+    BaseballGameLogic baseballGameLogic = new BaseballGameLogic();
     BaseballGameView baseballGameView = new BaseballGameView();
 
     public BaseballGame() {
@@ -26,59 +28,12 @@ public class BaseballGame {
         boolean isRestart = true;
 
         while (isRestart) {
-            randomThreeDigits = getThreeDigitNonZero();
+            randomThreeDigits = baseballGameLogic.getThreeDigitNonZero();
             baseballGameView.printStartMessage();
             play();
             baseballGameView.printRestartMessage();
             isRestart = askRestart();
         }
-    }
-
-    private List<Integer> getThreeDigitNonZero(){
-        List<Integer> threeDigitNonZero = new ArrayList<>();
-
-        while (threeDigitNonZero.size() < DIGIT_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(DIGIT_MINIMUM, DIGIT_MAXIMUM);
-            if (!threeDigitNonZero.contains(randomNumber)) {
-                threeDigitNonZero.add(randomNumber);
-            }
-        }
-
-        return threeDigitNonZero;
-    }
-
-    private List<Integer> changeStringToDigit(String numberFromPlayer) {
-        ArrayList<Integer> digitList = new ArrayList<>();
-
-        for (int i = 0; i < numberFromPlayer.length(); i++) {
-            char digitChar = numberFromPlayer.charAt(i); // 각 자리의 문자를 가져옴
-            int digit = Character.getNumericValue(digitChar); // 문자를 정수로 변환
-            digitList.add(digit); // 정수를 리스트에 추가
-        }
-
-        return digitList;
-    }
-
-    private BallCount checkBallCount(List<Integer> randomThreeDigits, List<Integer> inputDigits){
-        int strike = 0;
-        int ball = 0;
-        BallCount ballCount = new BallCount();
-
-        for(int i = 0; i < DIGIT_LENGTH; i++){
-            if(Objects.equals(randomThreeDigits.get(i), inputDigits.get(i))){
-                strike ++;
-                continue;
-            }
-
-            if(randomThreeDigits.contains(inputDigits.get(i))){
-                ball ++;
-            }
-        }
-
-        ballCount.setStrike(strike);
-        ballCount.setBall(ball);
-
-        return ballCount;
     }
 
     private void play() {
@@ -88,9 +43,9 @@ public class BaseballGame {
             baseballGameView.printInputGuideMessage();
 
             String threeDigitsInput = getThreeDigitsInput();
-            List<Integer> playerNumbers = changeStringToDigit(threeDigitsInput);
+            List<Integer> playerNumbers = baseballGameLogic.changeStringToDigit(threeDigitsInput);
 
-            BallCount ballCount = checkBallCount(randomThreeDigits, playerNumbers);
+            BallCount ballCount = baseballGameLogic.checkBallCount(randomThreeDigits, playerNumbers);
             baseballGameView.printBallCount(ballCount);
 
             if(ballCount.getStrike() == DIGIT_LENGTH){
