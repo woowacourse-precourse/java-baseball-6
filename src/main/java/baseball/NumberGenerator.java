@@ -14,7 +14,7 @@ public class NumberGenerator {
         List<Integer> answerNumberList = new ArrayList<>();
 
         /* 3자리 숫자 구성될 때 까지 반복 */
-        while(answerNumberList.size() < BALL_SIZE){
+        while(answerNumberList.size() < NUMBER_SIZE){
 
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 

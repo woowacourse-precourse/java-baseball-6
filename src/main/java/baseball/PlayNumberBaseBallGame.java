@@ -27,7 +27,7 @@ public class PlayNumberBaseBallGame {
 
     private static void playGame(List<Integer> answer) {
         initStatus();
-        while(strike < BALL_SIZE){
+        while(strike < NUMBER_SIZE){
             initStatus();
             System.out.println(INPUT_NUMBER);
             compareNumbers(answer, getPlayerAnswer());
@@ -41,14 +41,14 @@ public class PlayNumberBaseBallGame {
         Validator.checkAllException(playerAnswer);
 
         List<Integer> playerAnswerList = new ArrayList<>();
-        for(int i = 0;i < BALL_SIZE; ++i){
+        for(int i = 0; i < NUMBER_SIZE; ++i){
             playerAnswerList.add(playerAnswer.charAt(i) - '0');
         }
         return playerAnswerList;
     }
 
     private static void compareNumbers(List<Integer> answerList, List<Integer> playerAnswer) {
-        for(int i = 0;i < BALL_SIZE; ++i){
+        for(int i = 0; i < NUMBER_SIZE; ++i){
             int currentNumber = playerAnswer.get(i);
             /* 현 상태에 대한 값을  */
             if(!answerList.contains(currentNumber)){
@@ -63,7 +63,7 @@ public class PlayNumberBaseBallGame {
     }
 
     private static void displayResult() {
-        if(strike == BALL_SIZE){
+        if(strike == NUMBER_SIZE){
             System.out.println(FIND_ANSWER);
             return;
         }
