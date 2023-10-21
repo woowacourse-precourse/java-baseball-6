@@ -27,7 +27,7 @@ public class ValidCheckNumber {
     }
     public static void validCheckInt(String s){
         try{
-            int i = Integer.parseInt(s);
+            Integer.parseInt(s);
         }catch (NumberFormatException e){
             throw new IllegalArgumentException();
         }
