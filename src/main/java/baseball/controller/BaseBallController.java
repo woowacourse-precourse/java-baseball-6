@@ -1,5 +1,9 @@
 package baseball.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import baseball.console.BaseBallConstant;
 import baseball.console.ConsoleInput;
 import baseball.console.ConsoleOutput;
@@ -17,11 +21,14 @@ public class BaseBallController {
 	}
 
 	private String generateRandomNumber() {
-		StringBuilder randomNumber = new StringBuilder();
-		for (int digit : Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, PICK_COUNT)) {
-			randomNumber.append(digit);
+		List<Integer> numbers = new ArrayList<>();
+		while (numbers.size() < PICK_COUNT) {
+			int num = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+			if (!numbers.contains(num)) {
+				numbers.add(num);
+			}
 		}
-		return randomNumber.toString();
+		return numbers.stream().map(String::valueOf).collect(Collectors.joining());
 	}
 
 	public boolean playGame() {
