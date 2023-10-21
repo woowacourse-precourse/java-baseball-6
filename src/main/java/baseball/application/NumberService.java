@@ -1,9 +1,11 @@
 package baseball.application;
 
+import baseball.domain.Hint;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class NumberService {
@@ -15,5 +17,16 @@ public class NumberService {
         }
 
         return new ArrayList<>(numberSet);
+    }
+
+    private static void setHint(List<Integer> computerNumber, List<Integer> playerNumber, Hint hint,
+                                int i, int j) {
+        if (Objects.equals(playerNumber.get(i), computerNumber.get(j))) {
+            if (i == j) {
+                hint.increaseStrike();
+            } else {
+                hint.increaseBall();
+            }
+        }
     }
 }
