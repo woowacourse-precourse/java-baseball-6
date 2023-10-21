@@ -6,13 +6,13 @@ public class Game {
     int ballCount;
     int strikeCount;
 
-    ArrayList<Integer>  randomNumber;
+    int[] randomNumber;
 
-    public void setRandomNumber(ArrayList<Integer> randomNumber) {
+    public void setRandomNumber(int[] randomNumber) {
         this.randomNumber = randomNumber;
     }
 
-    public ArrayList<Integer> getRandomNumber() {
+    public int[] getRandomNumber() {
         return this.randomNumber;
     }
 

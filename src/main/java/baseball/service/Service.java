@@ -6,6 +6,7 @@ import baseball.utils.GameUtil;
 import baseball.view.OutPut;
 import baseball.view.UserInPut;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 
@@ -13,14 +14,34 @@ public class Service {
     Game game = new Game();
     User user = new User();
     GameUtil gameUtil = new GameUtil();
-
     OutPut outPut = new OutPut();
-
     UserInPut userInPut = new UserInPut();
 
     public void setGame() {
         game.setCountZero();
-        game.setRandomNumber(gameUtil.ComputerChoiceNumber(3, 1, 9));
+        game.setRandomNumber(ComputerChoiceNumber(3, 1, 9));
+    }
+
+    private int[] ComputerChoiceNumber(int randomNumberLength, int start, int end) {
+        int[] gameRandomNumber = new int[randomNumberLength];
+        int i = 0;
+        while (!isExistNumber(gameRandomNumber)) {
+            int randomNumber = Randoms.pickNumberInRange(start, end);
+            if (gameUtil.validateExistNumber(gameRandomNumber, randomNumber)) {
+                gameRandomNumber[i] = randomNumber;
+                i ++;
+            }
+        }
+        return gameRandomNumber;
+    }
+
+    private boolean isExistNumber(int[] gameRandomNumber) {
+        for (int number : gameRandomNumber) {
+            if (number == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void onGame () {
@@ -30,30 +51,28 @@ public class Service {
             outPut.resultMessage(game.getBallCount(), game.getStrikeCount());
             strike = game.getStrikeCount();
         }
-
     }
 
-    public void startGame() {
+    private void startGame() {
         game.setCountZero();
         UserInPut.choiceNumberMessage();
         String userChoiceNum = Console.readLine();
 
         user.setUserChoiceNumber(userChoiceNum);
         validateUserChoiceNumSize(userChoiceNum);
-        decisionUserChoiceNum(game.getRandomNumber(), userChoiceNum);
+        decisionUserChoiceNum(game.getRandomNumber(), user.getUserChoiceNumber());
     }
 
-
-    public void validateUserChoiceNumSize (String userChoiceNum) {
+    private void validateUserChoiceNumSize (String userChoiceNum) {
         if (userChoiceNum.length() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("옳지 못한 입력입니다");
         }
     }
 
-    public void decisionUserChoiceNum (ArrayList<Integer> randomNumber, String userChoice) {
+    private void decisionUserChoiceNum (int[] randomNumber, String userChoice) {
         for (int i = 0; i < userChoice.length(); i++) {
-            if (randomNumber.contains(userChoice.charAt(i) - '0')) {
-                if ((userChoice.charAt(i)) - '0' == randomNumber.get(i)) {
+            if (!gameUtil.validateExistNumber(randomNumber, userChoice.charAt(i) - '0')) {
+                if ((userChoice.charAt(i)) - '0' == randomNumber[i]) {
                     game.addStrikeCount();
                 } else {
                     game.addBallCount();
@@ -63,14 +82,14 @@ public class Service {
     }
 
     public void gameRestart() {
-        if (isGameContinue()) {
+        while (isGameContinue()) {
+            setGame();
             onGame();
         }
     }
 
-    public boolean isGameContinue() {
+    private boolean isGameContinue() {
         userInPut.startAgainOptionMessage();
         return outPut.isGameContinue();
     }
-
 }

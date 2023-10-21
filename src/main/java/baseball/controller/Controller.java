@@ -2,11 +2,8 @@ package baseball.controller;
 
 import baseball.service.Service;
 import baseball.view.OutPut;
-import baseball.view.UserInPut;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Controller {
-    UserInPut userInPut = new UserInPut();
     Service service = new Service();
     OutPut outPut = new OutPut();
 
@@ -18,7 +15,7 @@ public class Controller {
     }
 
     public void gameStart() {
-        outPut.gameStartMessageView();
+        outPut.gameStartMessage();
         service.setGame();
     }
 
@@ -27,11 +24,10 @@ public class Controller {
     }
 
     public void endGame() {
-        outPut.endGameMessage();
+        outPut.GameOverMessage();
     }
 
     public void gameRestart() {
-        service.setGame();
         service.gameRestart();
     }
 }
