@@ -100,7 +100,7 @@ class Check{
         }
         return false;
     }
-    static boolean RepeatNumber(char[] arr, char number){  // 각 자리 숫자가 중복되지 않도록 체크
+    static boolean RepeatNumber(char[] arr, char number){
         for (int num : arr) {
             if (num == number) { // 중복된 숫자가 있을 경우
                 return true;
