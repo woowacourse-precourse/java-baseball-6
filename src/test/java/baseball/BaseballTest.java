@@ -12,7 +12,7 @@ public class BaseballTest {
     @DisplayName("Baseball 객체가 잘 만들어지는지 확인")
     void BaseballBuildTest() {
         String numbers = "123";
-        Baseball baseball = new Baseball(numbers);
+        org.junit.jupiter.api.Assertions.assertDoesNotThrow(() -> new Baseball(numbers));
     }
 
     @Test
