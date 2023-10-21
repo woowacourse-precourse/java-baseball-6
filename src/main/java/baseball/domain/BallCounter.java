@@ -20,16 +20,20 @@ public class BallCounter {
         ballCounter.put(STRIKE, ballCounter.getOrDefault(STRIKE, 0) + 1);
     }
 
-    public static int getCountOfBall() {
-        return ballCounter.get(BALL);
-    }
-
-    public static int getCountOfStrike() {
-        return ballCounter.get(STRIKE);
+    public static boolean isNotAllStrike(int digitNumber) {
+        return getCountOfStrike() != digitNumber;
     }
 
     public static void reset() {
         ballCounter.replace(BALL, 0);
         ballCounter.replace(STRIKE, 0);
+    }
+
+    public static int getCountOfBall() {
+        return ballCounter.getOrDefault(BALL, 0);
+    }
+
+    public static int getCountOfStrike() {
+        return ballCounter.getOrDefault(STRIKE, 0);
     }
 }
