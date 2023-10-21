@@ -1,8 +1,10 @@
 package baseball.util;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class NumericValidator {
 
@@ -33,5 +35,12 @@ public class NumericValidator {
             }
         }
         return true;
+    }
+
+    public List<Integer> converStringToList(String inputNumber) {
+        int[] intArray = Arrays.stream(inputNumber.split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        return Arrays.stream(intArray).boxed().collect(Collectors.toList());
     }
 }
