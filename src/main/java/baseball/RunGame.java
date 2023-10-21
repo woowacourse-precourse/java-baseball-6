@@ -28,6 +28,11 @@ public class RunGame {
     }
     // 시작지점 inputNumbers, returnResult 두개 실행
     public static void run(){
+        RunGame runningGame = new RunGame();
+        runningGame.runningGame();
+    }
+    // run()에서 게임 시작하는 부분 분리함
+    public void runningGame() {
         RunGame startGame = new RunGame();
         RunGame finishGame = new RunGame();
         RunGame inputNumbers = new RunGame();
@@ -46,7 +51,6 @@ public class RunGame {
             }
         }
     }
-
     // 게임시작 문구 출력 => IsMatch > accurateTest 실행
     public void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
