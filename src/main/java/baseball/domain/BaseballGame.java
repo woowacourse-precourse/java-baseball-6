@@ -2,8 +2,8 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.constants.GameMessage.GET_USER_INPUT;
-import static baseball.constants.GameMessage.START_MESSAGE;
+import static baseball.constants.GameMessage.*;
+import static baseball.constants.GameOption.ANSWER_NUMBER_LENGTH;
 
 public class BaseballGame {
     private Answer answer;
@@ -25,12 +25,23 @@ public class BaseballGame {
             String userInput = getUserInput();
             int[] inputNums = rule.evaluateNumbers(userInput);
             score = answer.calculateScore(inputNums);
-        } while (true);
+        } while (!canFinish(score));
 
     }
 
     private static String getUserInput() {
         System.out.print(GET_USER_INPUT);
         return Console.readLine();
+    }
+
+    private boolean canFinish(int[] score) {
+        int countOfStrikes = score[0];
+
+        if (countOfStrikes == ANSWER_NUMBER_LENGTH.getLength()) {
+            System.out.println(FINISH_MESSAGE);
+            return true;
+        }
+
+        return false;
     }
 }
