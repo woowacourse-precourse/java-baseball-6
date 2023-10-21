@@ -43,9 +43,9 @@ public class BaseballGame {
 		BaseballNumber baseballNumber = baseballCreateService.createBaseballNumber();
 
 		do {
-			outputView.printInputDigitMessage();
+			outputView.printInputNumberMessage();
 
-			int inputDigit = inputView.inputDigit();
+			int inputDigit = inputView.inputNumber();
 			int ballCount = baseballCheckAnswerService.getBallCount(baseballNumber, inputDigit);
 			int StrikeCount = baseballCheckAnswerService.getStrikeCount(baseballNumber, inputDigit);
 

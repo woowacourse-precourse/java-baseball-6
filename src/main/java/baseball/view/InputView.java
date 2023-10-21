@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-	public int inputDigit() {
+	public int inputNumber() {
 		String inputValue = Console.readLine();
 
-		inputDigitValidate(inputValue);
+		inputNumberValidate(inputValue);
 
 		return Integer.parseInt(inputValue);
 	}
@@ -21,7 +21,7 @@ public class InputView {
 		return Integer.parseInt(inputValue);
 	}
 
-	public void inputDigitValidate(String inputValue) {
+	public void inputNumberValidate(String inputValue) {
 		Validator.validateNumberFormat(inputValue);
 		Validator.validateOutOfLength(inputValue);
 		Validator.validateDuplicatedNumber(inputValue);

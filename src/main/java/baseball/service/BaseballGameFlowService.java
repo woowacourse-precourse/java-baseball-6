@@ -4,7 +4,7 @@ import baseball.domain.command.Continue;
 
 public class BaseballGameFlowService {
 
-	private static final int CLEAR_COUNT = 3;
+	private static final int CLEAR_STRIKE_COUNT = 3;
 
 	private boolean isContinue;
 	private boolean isClear;
@@ -28,17 +28,21 @@ public class BaseballGameFlowService {
 	}
 
 	public void checkContinue(int command) {
-		if (Continue.checkContinue(command)) {
+		if (Continue.checkNew(command)) {
 			doContinue();
 		}
 	}
 
 	public void checkClear(int strikeCount) {
-		if (strikeCount == CLEAR_COUNT) {
+		if (isClearContition(strikeCount)) {
 			doClear();
 		}
 	}
-
+	
+	private boolean isClearContition(int strikeCount) {
+		return strikeCount == CLEAR_STRIKE_COUNT;
+	}
+	
 	private void doContinue() {
 		this.isContinue = true;
 	}

@@ -46,7 +46,7 @@ public class ValidatorTest {
 	@DisplayName("문자의 길이가 3인지를 확인한다.")
 	@ValueSource(strings = { "as", "1234" })
 	@ParameterizedTest
-	void checㅏOutOfLength(String str) {
+	void checkOutOfLength(String str) {
 		assertThatThrownBy(() -> Validator.validateOutOfLength(str))
 		    .isInstanceOf(IllegalArgumentException.class)
 				.hasMessageContaining(ErrorMessage.DIGIT_LENGTH_ERROR.getMessage());

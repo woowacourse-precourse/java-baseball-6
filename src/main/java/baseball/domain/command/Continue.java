@@ -12,11 +12,8 @@ public enum Continue {
 		this.command = command;
 	}
 
-	public static boolean checkContinue(int num) {
-		if (num == Continue.NEW.getCommand()) {
-			return true;
-		}
-		return false;
+	public static boolean checkNew(int num) {
+		return num == Continue.NEW.getCommand();
 	}
 
 	public static boolean checkContinueCommand(int num) {

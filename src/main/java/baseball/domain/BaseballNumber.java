@@ -21,15 +21,23 @@ public class BaseballNumber {
 	}
 
 	private void validateOutOfLength(List<Integer> numbers) {
-		if (numbers.size() != LENGTH) {
+		if (isOutOfLength(numbers)) {
 			throw new IllegalArgumentException(ErrorMessage.DIGIT_LENGTH_ERROR.getMessage());
 		}
 	}
 
 	private void validateDuplicatedNumber(List<Integer> numbers) {
-		if (numbers.stream().distinct().count() != numbers.size()) {
+		if (isDuplicatedNumber(numbers)) {
 			throw new IllegalArgumentException(ErrorMessage.NUMBER_DUPLICATE_ERROR.getMessage());
 		}
+	}
+
+	private boolean isOutOfLength(List<Integer> numbers) {
+		return numbers.size() != LENGTH;
+	}
+
+	private boolean isDuplicatedNumber(List<Integer> numbers) {
+		return numbers.stream().distinct().count() != numbers.size();
 	}
 
 	public Integer get(int index) {

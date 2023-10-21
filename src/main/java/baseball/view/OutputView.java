@@ -10,7 +10,7 @@ public class OutputView {
 		System.out.println(ProgressMessage.START.getMessage());
 	}
 
-	public void printInputDigitMessage() {
+	public void printInputNumberMessage() {
 		System.out.printf(ProgressMessage.INPUT_NUMBER.getMessage());
 	}
 
@@ -26,15 +26,13 @@ public class OutputView {
 		StringJoiner joiner = new StringJoiner(" ");
 
 		if (ballCount != 0) {
-			joiner.add(
-					String.format(ProgressMessage.BALL.getMessage(), ballCount)
-					);
+			String message = String.format(ProgressMessage.BALL.getMessage(), ballCount);
+			joiner.add(message);
 		}
 
 		if (StrikeCount != 0) {
-			joiner.add(
-					String.format(ProgressMessage.STRIKE.getMessage(), StrikeCount)
-					);
+			String message = String.format(ProgressMessage.STRIKE.getMessage(), StrikeCount);
+			joiner.add(message);
 		}
 
 		joiner.setEmptyValue(ProgressMessage.NOTHING.getMessage());
