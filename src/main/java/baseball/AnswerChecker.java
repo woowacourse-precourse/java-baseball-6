@@ -17,10 +17,9 @@ public class AnswerChecker {
     public String checkAnswer(List<Integer> answer, List<Integer> myAnswer){
         if(answer.equals(myAnswer)){
             return CORRECT_ANSWER;
-        } else {
+        }
             gameResult = countBallAndStrike(answer, myAnswer);
             return gameResult;
-        }
     }
 
     private String countBallAndStrike(List<Integer> answer, List<Integer> myAnswer){
