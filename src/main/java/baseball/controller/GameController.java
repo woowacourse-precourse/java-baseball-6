@@ -38,7 +38,7 @@ public class GameController {
         while (true) {
             askNumberInput();
 
-            umpire.prepareJudgement(computerNumber, receiveUserNumber());
+            prepareGameJudgementWithComputer(computerNumber);
             printGameJudgement();
 
             if (umpire.isGameEnd()) {
@@ -48,6 +48,10 @@ public class GameController {
         printGameEnd();
         askResumeInput();
         updateResumeNumber();
+    }
+
+    private void prepareGameJudgementWithComputer(int computerNumber) {
+        umpire.prepareJudgement(computerNumber, receiveUserNumber());
     }
 
     private int selectNewNumber() {
