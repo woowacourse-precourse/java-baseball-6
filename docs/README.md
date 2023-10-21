@@ -15,9 +15,10 @@
 ## Service
 
 - ### GameLogic
-    - 컴퓨터 난수 생성
     - ball 갯수 세기
     - strike 갯수 세기
+- ### Generator
+    - 컴퓨터 난수 생성
 - ### GameResult
     - Result 객체를 받아 결과 출력
 - ### Validate
