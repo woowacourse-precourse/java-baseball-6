@@ -90,7 +90,7 @@
     + [x] 중복되는 값이 존재하는지
     + [x] 알맞는 오류 메세지 출력 후 ```IllegalArgumentException```을 발생 시키는지
     + [x] 재시작/종료 여부의 입력에 대한 유효성 검사를 올바르게 하는지
-+ [ ] playerInput 이 playerNumbers로 정상적으로 파싱이 되는지
++ [x] playerInput(문자열) 이 playerNumbers(리스트형태)로 정상적으로 파싱이 되는지
 + [ ] BaseBallController
     + [ ] 스트라이크, 볼의 카운팅 변수를 0으로 초기화하는지
     + [ ] 게임시작 메세지를 사용자에게 출력하는지
