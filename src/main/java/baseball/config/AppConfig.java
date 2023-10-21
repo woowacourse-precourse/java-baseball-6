@@ -1,5 +1,7 @@
 package baseball.config;
 
+import baseball.game.BaseballGames;
+import baseball.game.GameLauncher;
 import baseball.service.MessageGenerateService;
 import baseball.service.RandomCodeService;
 import baseball.service.UserCodeService;
@@ -27,4 +29,11 @@ public class AppConfig {
         return new ValidateJudgeServiceImpl();
     }
 
+    public BaseballGames baseballGames() {
+        return new BaseballGames(validateJudgeService(), userCodeService(), messageGenerateService());
+    }
+
+    public GameLauncher gameLauncher() {
+        return new GameLauncher(baseballGames(), randomCodeService(), validateJudgeService());
+    }
 }

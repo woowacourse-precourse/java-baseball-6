@@ -1,6 +1,5 @@
 package baseball.game;
 
-import baseball.config.AppConfig;
 import baseball.message.GameMessages;
 import baseball.service.MessageGenerateService;
 import baseball.service.UserCodeService;
@@ -12,11 +11,16 @@ import java.util.ArrayList;
 
 public class BaseballGames {
 
-    private static final AppConfig appConfig = new AppConfig();
-    private static final ValidateJudgeService validateJudgeService = appConfig.validateJudgeService();
-    private static final UserCodeService userCodeService = appConfig.userCodeService();
-    private static final MessageGenerateService messageGenerateService = appConfig.messageGenerateService();
+    private final ValidateJudgeService validateJudgeService;
+    private final UserCodeService userCodeService;
+    private final MessageGenerateService messageGenerateService;
 
+    public BaseballGames(ValidateJudgeService validateJudgeService, UserCodeService userCodeService,
+                         MessageGenerateService messageGenerateService) {
+        this.validateJudgeService = validateJudgeService;
+        this.userCodeService = userCodeService;
+        this.messageGenerateService = messageGenerateService;
+    }
 
     public void playBaseball(BaseballCode baseballCode) {
 
