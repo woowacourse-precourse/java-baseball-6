@@ -1,5 +1,6 @@
 package baseball.io;
 
+import baseball.constant.RetryStatus;
 import baseball.domain.AttemptNumbers;
 
 import java.util.Arrays;
@@ -23,5 +24,10 @@ public class InputManager {
 
     private List<Integer> mapToNumbers(final String input) {
         return Arrays.stream(input.split(SPLIT_DELIMITER)).map(Integer::parseInt).toList();
+    }
+
+    public RetryStatus readRetry() {
+        final String input = inputView.readRetry();
+        return RetryStatus.valueOfCommand(Integer.parseInt(input));
     }
 }
