@@ -15,7 +15,7 @@ public final class BaseBallNumbers {
         this.baseballNumbers = numbers;
     }
 
-    public static BaseBallNumbers emptyNumbers() {
+    public static BaseBallNumbers empty() {
         return new BaseBallNumbers(new ArrayList<>());
     }
 
