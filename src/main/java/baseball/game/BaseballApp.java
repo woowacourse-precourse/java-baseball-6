@@ -25,18 +25,21 @@ public class BaseballApp {
     //게임을 진행한다.
     public void startGame() {
 
-        while(true) {
+        boolean power = true;
+        boolean result = false;
+
+        while(power) {
 
             //입력을 받고
             String input = getInput();
 
             //유효한 입력이라면 컴퓨터와 대결하도록
             if(checkInput(input)) {
-                boolean result = computer.compare(transToList(input));
+                result = computer.compare(transToList(input));
+            }
 
-                if(result) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                }
+            if(result) {
+                power = computer.gameWin();
             }
         }
     }
@@ -75,7 +78,6 @@ public class BaseballApp {
             numList.add(nowNum);
             wholeNum -= nowNum * i;
         }
-
         return numList;
     }
 
