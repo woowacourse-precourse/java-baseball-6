@@ -17,7 +17,7 @@ public class BaseBallNumber {
         this.numbers = numbers;
     }
 
-    public void setUserInput(String input) {
+    public void setUserInput(String input) throws InvalidNumberException {
         validateInput(input);
         this.numbers = parseInput(input);
     }
