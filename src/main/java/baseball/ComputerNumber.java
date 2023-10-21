@@ -8,15 +8,19 @@ public class ComputerNumber {
     private String computerNumber;
 
     public ComputerNumber() {
-        SetNumber();
+        SetComputerNumber();
     }
 
-    public void SetNumber(){
-        Set number = new HashSet();
+    public void SetComputerNumber(){
+        this.computerNumber = String.join("", generateNumber());
+    }
+
+    public Set<String> generateNumber(){
+        Set<String> number = new HashSet<String>();
         while (number.size() < 3){
             number.add(String.valueOf(Randoms.pickNumberInRange(1,9)));
         }
-        this.computerNumber = String.join("", number);
+        return number;
     }
 
     public String getComputerNumber(){
