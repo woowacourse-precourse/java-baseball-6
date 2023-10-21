@@ -3,7 +3,7 @@ package baseball.controller;
 import java.util.HashSet;
 import java.util.Set;
 
-public class InputValidator {
+public class NumberValidator {
 
     private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
     private static final char MIN_DIGIT = '1';
@@ -32,5 +32,4 @@ public class InputValidator {
         }
         return false;
     }
-
 }
