@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public class Game {
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             int randomNumber = generateRandomNumber();
+            startGame(randomNumber);
 
         }
     }
@@ -30,5 +32,20 @@ public class Game {
         }
         return randomNumber;
     }
+
+    private void startGame(int randomNumber) {
+        boolean isAnswerCorrect = false;
+        while (!isAnswerCorrect) {
+            String input = Console.readLine();
+            if (!input.matches("\\d{" + NUM_OF_DIGITS + "}")) {
+                throw new IllegalArgumentException();
+            }
+            int inputNumber = Integer.parseInt(input);
+            if (compareNumbers(inputNumber, randomNumber)) { // 숫자 비교 메서드, 3스트라이크이면 true를 return
+                isAnswerCorrect = true;
+            }
+        }
+    }
+
 
 }
