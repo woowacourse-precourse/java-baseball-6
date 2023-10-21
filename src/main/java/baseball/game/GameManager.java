@@ -7,8 +7,8 @@ import static baseball.game.GameMessages.STRIKE;
 import static baseball.game.GameMessages.printEndMsg;
 import static baseball.game.GameMessages.printInputMsg;
 import static baseball.game.GameMessages.printStartMsg;
-import static baseball.game.RandomNumberGenerator.generateRandomNumber;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,5 +97,17 @@ public class GameManager {
 		}
 
 		return strike;
+	}
+
+	private List<Integer> generateRandomNumber() {
+		List<Integer> numbers = new ArrayList<>();
+		while (numbers.size() < 3) {
+			int randomNumber = Randoms.pickNumberInRange(1, 9);
+			if (!numbers.contains(randomNumber)) {
+				numbers.add(randomNumber);
+			}
+		}
+
+		return numbers;
 	}
 }
