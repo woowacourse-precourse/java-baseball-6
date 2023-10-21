@@ -25,12 +25,12 @@ public class InputView {
         String rawBalls = Console.readLine();
         InputValidator.validateBalls(rawBalls);
         List<Integer> rawBallList = InputConvertor.convertBalls(rawBalls);
-        Balls balls = IntStream.range(0, 3)
+        InputValidator.validateBallsCount(rawBallList);
+        return IntStream.range(0, 3)
             .mapToObj(index -> {
                 int position = index + 1;
                 int ballNumber = rawBallList.get(index);
                 return new Ball(position, ballNumber);
             }).collect(collectingAndThen(toList(), Balls::from));
-        return balls;
     }
 }
