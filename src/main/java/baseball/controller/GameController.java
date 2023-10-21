@@ -33,7 +33,7 @@ public class GameController {
         ComputerNumber computerNumber = new ComputerNumber();
         UserNumber userNumber = new UserNumber();
 
-        while(computerNumber.verifyEnd()) {
+        while(!computerNumber.verifyEnd()) {
             userNumber.setNumber(inputView.printInsertNumber());
             computerNumber.verifyNumber(userNumber.getNumber());
             outputView.printResult(computerNumber.getStrike(), computerNumber.getBall());
