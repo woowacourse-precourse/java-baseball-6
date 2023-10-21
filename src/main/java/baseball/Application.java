@@ -37,14 +37,7 @@ public class Application {
                     break;
                 }
             }
-
-            int reStartNumber = ReStart();
-            ExceptionList.validReStartInputNumber(reStartNumber);
-            if(reStartNumber == 1) {
-                GameStart();
-            } else {
-                System.out.println("게임이 종료되었습니다.");
-            }
+            ReStart();
         } catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
