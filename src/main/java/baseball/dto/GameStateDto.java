@@ -5,12 +5,19 @@ public class GameStateDto {
     private int strike;
     private int ball;
 
+    private boolean endGame;
+
     private boolean restart;
+
+    public boolean isEndGame() {
+        return endGame;
+    }
 
     public GameStateDto() {
         this.strike = 0;
         this.ball = 0;
         this.restart = false;
+        this.endGame = false;
     }
 
     public void addStrike(){
@@ -37,4 +44,7 @@ public class GameStateDto {
         this.restart=true;
     }
 
+    public void activateEndGame() {
+        this.endGame=true;
+    }
 }
