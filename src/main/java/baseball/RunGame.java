@@ -4,8 +4,6 @@ import model.BaseballNumber;
 import view.InputView;
 import view.OutputView;
 
-import java.util.ArrayList;
-
 public class RunGame {
     BaseballNumber baseballNumber = new BaseballNumber();
     InputView inputView = new InputView();
@@ -14,7 +12,6 @@ public class RunGame {
 
     public void playBaseballGame() {
         BaseballGame.computerNumber = baseballNumber.makeBaseballNumber();
-        BaseballGame.myNumber = new ArrayList<>();
         BaseballGame.finish = true;
         outputView.gameStart();
 
