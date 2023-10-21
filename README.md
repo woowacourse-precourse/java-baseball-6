@@ -326,7 +326,7 @@ public class FixedBaseballNumberGenerator implements BaseballNumberGenerator {
 
     public FixedBaseballNumberGenerator(List<Integer> fixedNumbers) {
         valid(fixedNumbers);
-        this.fixedNumber = fixedNumber;
+        this.fixedNumbers = fixedNumbers;
     }
 
     public void valid(List<Integer> fixedNumbers) {
