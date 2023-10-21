@@ -1,4 +1,4 @@
-package baseball.contriller;
+package baseball.controller;
 
 import static baseball.view.InputView.userInput;
 import static baseball.view.OutputView.gameStartMessage;
@@ -24,5 +24,5 @@ public class BaseballGame {
         this.userNumber = new UserNumber(userInput());
     }
 
-    public static
+    //public static
 }
