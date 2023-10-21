@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Application {
+    final static int LENGTH_OF_NUMBER = 3;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        final int LENGTH_OF_NUMBER = 3;
 
         // 게임이 종류을 결정하는 변수
         String[] user;
@@ -18,13 +18,7 @@ public class Application {
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
 
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < LENGTH_OF_NUMBER) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
+            List<Integer> computer = getRandomNumber();
 
             while (true) {
                 // 사용자의 입력을 받는 부분
@@ -74,6 +68,15 @@ public class Application {
                 break;
             }
         }
-
+    }
+    static List<Integer> getRandomNumber(){
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < LENGTH_OF_NUMBER) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
+        return numbers;
     }
 }
