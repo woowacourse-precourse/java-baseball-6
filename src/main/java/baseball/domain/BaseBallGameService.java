@@ -43,7 +43,7 @@ public class BaseBallGameService {
         for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
             int userNumber = userInputs.get(i);
             int computerNumberIdx = computerRandomNumbers.indexOf(userNumber);
-            if (computerNumberIdx != i) {
+            if (computerNumberIdx != i && computerNumberIdx != -1) {
                 count++;
             }
         }
