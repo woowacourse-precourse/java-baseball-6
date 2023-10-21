@@ -1,4 +1,4 @@
-package baseball.constant;
+package baseball.service.constant;
 
 public enum NumberConstant {
 	MIN_NUMBER(1),
