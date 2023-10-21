@@ -74,4 +74,13 @@ public class HintCalculatorTest {
         assertThat(hintCalculator.isThreeStrike()).isTrue();
     }
 
+    @DisplayName("userNumber와 computerNumber가 다를 때 게임 실패")
+    @Test
+    void checkFail(){
+        List<Integer> userList = List.of(1, 2, 3);
+        List<Integer> computerList = List.of(4, 2, 3);
+        HintCalculator hintCalculator = new HintCalculator(userList, computerList);
+        assertThat(hintCalculator.isThreeStrike()).isFalse();
+    }
+
 }
