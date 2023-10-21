@@ -1,36 +1,11 @@
 package baseball.controller;
 
-import baseball.util.RandomNumberGenerator;
-import baseball.util.validator.InputValidator;
-import baseball.view.InputView;
-import baseball.view.OutputView;
-
-import java.util.List;
+import baseball.service.BaseballGameService;
 
 public class BaseballGameController {
-    public void startBaseballGame() {
-        printGameStartMessage();
-        getUserNumber();
-    }
+    BaseballGameService baseballGameService = new BaseballGameService();
 
-    private void printGameStartMessage() {
-        OutputView outputView = new OutputView();
-        outputView.printGameStartMessage();
-    }
-
-    private void getUserNumber() {
-        InputView inputView = new InputView();
-        String userNumber = inputView.getUserNumber();
-        checkUserNumberValidate(userNumber);
-    }
-
-    private void checkUserNumberValidate(String userInputNumber) {
-        InputValidator inputValidator = new InputValidator();
-        inputValidator.checkInputValidation(userInputNumber);
-    }
-
-    private List<Integer> createRandomNumber() {
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        return randomNumberGenerator.createRandomNumber();
+    public void gameStart() {
+        baseballGameService.startBaseballGame();
     }
 }
