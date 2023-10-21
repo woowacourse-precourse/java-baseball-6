@@ -13,11 +13,11 @@ public class BaseBallInputDevice {
 
     List<Integer> inputNumbers = new ArrayList<>();
     String inputStr = Console.readLine();
-    validateLength(inputStr);
+    validateStartLength(inputStr);
 
     for (int i = 0; i < INPUT_SIZE; i++) {
       char inputChar = inputStr.charAt(i);
-      validateNumeric(inputChar);
+      validateStartNumber(inputChar);
 
       int inputNumber = Character.getNumericValue(inputChar);
       validateExistsNumber(inputNumber, inputNumbers);
@@ -37,15 +37,15 @@ public class BaseBallInputDevice {
     return Integer.parseInt(inputStr);
   }
 
-  private void validateLength(String inputStr) {
+  private void validateStartLength(String inputStr) {
     if (inputStr.length() > INPUT_SIZE) {
       throw new IllegalArgumentException("3개의 숫자만 입력이 가능합니다.");
     }
   }
 
-  private void validateNumeric(char inputChar) {
+  private void validateStartNumber(char inputChar) {
     if (inputChar < '1' || inputChar > '9') {
-      throw new IllegalArgumentException("숫자만 입력이 가능 합니다.");
+      throw new IllegalArgumentException("1~9까지의 숫자만 입력이 가능 합니다.");
     }
   }
 
