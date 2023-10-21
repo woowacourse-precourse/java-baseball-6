@@ -1,6 +1,7 @@
 package baseball.model;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Player {
@@ -8,11 +9,10 @@ public class Player {
 
     }
 
-    public Hint swingBat(Computer computer, String input) {
+    public Hint swingBat(Computer computer, List<Integer> playerNumbers) {
         Set<Ball> balls = new LinkedHashSet<>();
-        for (String number : input.split("")) {
-            int givensNumber = Integer.parseInt(number);
-            balls.add(new Ball(givensNumber));
+        for (Integer number : playerNumbers) {
+            balls.add(new Ball(number));
         }
         return computer.getHintByPlayer(balls);
     }
