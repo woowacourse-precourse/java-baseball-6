@@ -7,7 +7,7 @@ public class GameNumbers {
     private final List<Integer> numbers;
 
     public GameNumbers(List<Integer> list) {
-        numbers = list;
+        this.numbers = list;
     }
 
     public Integer get(int i) {
