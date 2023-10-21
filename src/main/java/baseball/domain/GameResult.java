@@ -50,4 +50,8 @@ public class GameResult {
             sb.append(String.format(OutputMessage.STRIKE.getMessage(), elements.get(BallStatus.STRIKE)));
         }
     }
+
+    public boolean isThreeStrike() {
+        return (elements.get(BallStatus.STRIKE) == BallConstant.BALL_LENGTH.getValue());
+    }
 }
