@@ -30,25 +30,33 @@ public class Game {
 	}
 	
 	private void getInputNum() {
-		System.out.print(Constants.INPUT_MSG);
-		String input_str = Console.readLine();
+		while(true) {
+			System.out.print(Constants.INPUT_MSG);
+			String input_str = Console.readLine();
+			checkCondition(input_str);
+			inputNum = setInputNum(input_str);
 		
-		isRightLength(input_str);
+			if(checkResult() == true) //3스트라이크, 게임 종료
+				break;
+		}
+		printStrike();
+	}
+	
+	private void checkCondition(String str) {
+		isRightLength(str);
+		isRightDigit(str);
+		isNotDuplicate(str);
 	}
 	
 	private void isRightLength(String str) { //입력된 값이 3자리 수인지
 		if(str.length() != Constants.DIGIT_SIZE)
 			throw new IllegalArgumentException(Constants.WRONG_LENGTH_ERROR);
-		
-		isRightDigit(str);
 	}
 	
 	private void isRightDigit(String str) { //입력된 값이 0을 제외한 정수인지
 		String tmp = "^[1-9]*$";
 		if(Pattern.matches(tmp, str) != true)
 			throw new IllegalArgumentException(Constants.WRONG_INPUT_ERROR);
-		
-		isNotDuplicate(str);
 	}
 	
 	private void isNotDuplicate(String str) { //중복되는 수가 있는지
@@ -57,13 +65,45 @@ public class Game {
 			if(firstInd != i)
 				throw new IllegalArgumentException(Constants.WRONG_INPUT_ERROR);
 		}
-		setInputNum(str);
 	}
 	
-	private void setInputNum(String str){ //입력값 타입 변경
+	private List<Integer> setInputNum(String str){ //입력값 타입 변경
+		List<Integer> tmp = new ArrayList<>();
 		for(int j = 0; j < str.length(); j++) {
-			int tmp = Character.getNumericValue(str.charAt(j));
-			inputNum.add(tmp);
+			int num = Character.getNumericValue(str.charAt(j));
+			tmp.add(num);
 		}
+		
+		return tmp;
+	}
+	
+	//결과
+	private boolean checkResult() {
+		return true;
+	}
+	
+	private void printStrike() { //3스트라이크 결과 출력
+		
+	}
+	
+	private int StrikeOrBall() {
+		int cnt = 0;
+		for(int k = 0; k <Constants.DIGIT_SIZE; k++)
+			if(inputNum.contains(comNum.get(k)) == true)
+				cnt++;
+		
+		return cnt;
+	}
+
+	private int getStrike() {
+		int cnt = 0;
+		for(int k = 0; k <Constants.DIGIT_SIZE; k++) {
+			if(inputNum.contains(comNum.get(k)) == true) {//랜덤 수와 입력값에 중복 존재(스트라이크 or ball)
+				if(inputNum.get(k) == comNum.get(k)) //같은 자리
+					cnt++;
+			}
+		}
+		return cnt;
 	}
 }
+	
