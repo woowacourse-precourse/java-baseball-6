@@ -2,18 +2,18 @@ package View;
 
 public class RetryView {
 
-    private static final RetryView retryview = new RetryView();
+    private static final RetryView INSTANCE = new RetryView();
 
-    private RetryView(){};
-
-    public static RetryView getInstance(){
-        return retryview;
+    private RetryView() {
     }
 
-    public void RetryPrint(){
-        System.out.println(Message.GAME_END_RETRY.message);
+    public static RetryView getInstance() {
+        return INSTANCE;
     }
 
+    public void printRetryMessage() {
+        System.out.println(Message.GAME_END_RETRY.getMessage());
+    }
 
     public enum Message {
         GAME_END_RETRY("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -28,5 +28,4 @@ public class RetryView {
             return message;
         }
     }
-
 }
