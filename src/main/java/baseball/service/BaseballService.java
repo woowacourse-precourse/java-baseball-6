@@ -9,7 +9,7 @@ public class BaseballService {
         for (int i = 0; i<Number.getGameSize(); i++) {
             Integer x = user.get(i);
             Integer y = computer.get(i);
-            if ((x != y) && computer.contains(x)) {
+            if (!(x.equals(y)) && computer.contains(x)) {
                 BallCount++;
             }
         }
