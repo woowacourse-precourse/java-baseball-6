@@ -17,8 +17,11 @@ public class OutputView {
             nothing = false;
             if(i == STRIKE){
                 System.out.print(numberResult.get(i) + "스트라이크");
-                if(checkAnswer(numberResult.get(i)))
+                if(checkAnswer(numberResult.get(i))) {
                     correctAnswer = true;
+                    System.out.println();
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                }
             }else if(i==BALL){
                 System.out.print(numberResult.get(i) + "볼 ");
             }
