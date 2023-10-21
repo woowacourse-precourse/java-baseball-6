@@ -12,17 +12,25 @@ public class OutputHandler {
     }
 
     public static void printStrikesAndBalls(Result forPrint) {
-        if (forPrint.numberOfBalls > 0) {
-            System.out.print(forPrint.numberOfBalls + "볼 ");
-        }
-        if (forPrint.numberOfStrikes > 0) {
-            System.out.print(forPrint.numberOfStrikes + "스트라이크");
-        }
+        printBalls(forPrint.numberOfBalls);
+        printStrikes(forPrint.numberOfStrikes);
         System.out.println();
     }
 
     public static void printAllStrike() {
         System.out.println("3스트라이크\n"
                 + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private static void printBalls(int numberOfBalls) {
+        if (numberOfBalls >= 1) {
+            System.out.println(numberOfBalls + "볼 ");
+        }
+    }
+
+    private static void printStrikes(int numberOfStrikes) {
+        if (numberOfStrikes >= 1) {
+            System.out.print(numberOfStrikes + "스트라이크");
+        }
     }
 }
