@@ -20,4 +20,4 @@
   - [X] 재시작 하려면 1을 입력한다.
   - [X] 완전히 종료하려면 2를 입력한다.
 
-- [ ] 잘못된 값을 입력할 경우 IllegalArgumentException 발생시킨다.
+- [X] 잘못된 값을 입력할 경우 IllegalArgumentException 발생시킨다.

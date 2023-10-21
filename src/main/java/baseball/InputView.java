@@ -11,7 +11,7 @@ public class InputView {
 
     public List<Integer> readNumbers() {
         String number = Console.readLine();
-        validator.validateNumber(number);
+        validator.validatePlayerNumber(number);
         return Arrays.stream(number.split(ELEMENT))
                 .map(Integer::parseInt)
                 .toList();
@@ -19,6 +19,7 @@ public class InputView {
 
     public boolean readReplayNumber() {
         String number = Console.readLine();
+        validator.validateRestartNumber(number);
         return number.equals(RestartStatus.RESTART.toString());
     }
 }
