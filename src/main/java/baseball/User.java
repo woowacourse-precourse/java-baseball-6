@@ -8,6 +8,7 @@ public class User {
 
     private static final String RESTART_INPUT = "1";
     private static final String EXIT_INPUT = "2";
+
     public List<Integer> getNumbersFromUser() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
