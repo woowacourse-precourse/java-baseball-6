@@ -36,13 +36,13 @@ public class Application {
         }
     }
 
-    public static String requestNumber() {
+    private static String requestNumber() {
         System.out.print("숫자를 입력해 주세요 : ");
         String input = Console.readLine();
         return input;
     }
 
-    public static void isThreeDigit(String input) {
+    private static void isThreeDigit(String input) {
         if (!Pattern.matches("^\\d{3}$", input)) {
             throw new IllegalArgumentException("입력값이 잘못 되었습니다.");
         }
