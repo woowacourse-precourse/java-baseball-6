@@ -27,15 +27,15 @@ public class Application {
 
         while (stateRepeatGuess) {
             List<Integer> playerGuessNumbers = getPlayerGuessNumbers();
-            int strikes = countStrike(computerNumbers, playerGuessNumbers);
-            int balls = countBall(computerNumbers, playerGuessNumbers);
+            String resultOfGuess = getResultOfGuess(computerNumbers, playerGuessNumbers);
+            System.out.println(resultOfGuess);
 
-            System.out.println(balls + " " + strikes);
-
-            if (strikes == 3) {
+            if (resultOfGuess.equals("3스트라이크")) {
                 stateRepeatGuess = false;
             }
         }
+
+        // TODO: displayTerminateGame();
     }
 
     public static boolean askReplayGame() {
@@ -139,5 +139,21 @@ public class Application {
             }
         }
         return balls;
+    }
+
+    public static String getResultOfGuess(final List<Integer> computerNumbers,
+                                          final List<Integer> playerGuessNumbers) {
+        int balls = countBall(computerNumbers, playerGuessNumbers);
+        int strikes = countStrike(computerNumbers, playerGuessNumbers);
+
+        if (balls == 0 && strikes == 0) {
+            return "낫싱";
+        } else if (balls == 0) {
+            return strikes + "스트라이크";
+        } else if (strikes == 0) {
+            return balls + "볼";
+        }
+
+        return balls + "볼 " + strikes + "스트라이크";
     }
 }
