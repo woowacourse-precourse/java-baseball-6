@@ -16,7 +16,11 @@ public class BaseballGameCounts {
     }
 
     public void showCounts() {
-
+        if (message.isEmpty()) {
+            System.out.println("낫싱");
+        } else {
+            System.out.println(message);
+        }
     }
 
     public void editMessage(String frag) {
