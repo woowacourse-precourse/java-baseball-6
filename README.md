@@ -16,7 +16,8 @@
    ✦ 같은 수가 다른 자리에 있으면 `볼`<br>
    ✦ 같은 수가 전혀 없으면 `낫싱`<br><br>
 4. 숫자를 모두 맞추면(`3스트라이크`) 게임을 종료한다.<br><br>
-5. 게임을 재시작 혹은 종료한다.
+5. 게임을 재시작 혹은 종료한다.<br><br>
+
 
 ## 🏛️ 프로젝트 패키지 구조
 
@@ -42,4 +43,42 @@
 1. 입력 값의 길이는 3이어야 한다.<br><br>
 2. 파싱한 각 문자는 정수로 변환 가능해야 한다.<br><br>
 3. 각 숫자의 범위는 1부터 9이다.<br><br>
-4. 각 숫자는 서로 다르다.
+4. 각 숫자는 서로 다르다.<br><br>
+
+
+## 📑 로그
+1. **첫 번째 구현 (2023.10.21)** <br><br>
+   ✦ 주요고민사항 <br>
+   1. 프로젝트 구조 <br>
+      스프링의 계층적 설계를 생각하며 프로그램의 구조를 설계하였다. 단순한 프로그램이기에 불필요한 계층이 있지는 않은지 추후 생각해야 한다. 계층 간의 역할 분리를 하여 <b>책임이 최대한 분명하게 구분되도록</b> 노력하였다. 이를테면 처음에는 출력을 Controller에서 하였지만 Application이 가장 상위 계층이기에 모든 출력을 담당하였다. 대신 Controller에서는 입력 값(요청)에 대한 validation을 진행한다. <br><br>
+   2. Indent와 가독성
+      ```java
+      // Application.java 변경 전 코드
+      boolean pass = false;
+      while(!pass) {
+            /* 중략 */
+            if(pass) {
+                /* 중략 */
+                pass = gameController.determineRestarting(command);
+                /* 중략 */
+                if(!pass)
+                  computerCodeId = gameController.gameStart();
+            }
+        }
+      
+      // Application.java 변경 후 코드
+      boolean pass = false;
+      boolean restart = false;
+      while(!pass) {
+            /* 중략 */
+            if(pass) {
+                /* 중략 */
+                restart = gameController.determineRestarting(command);
+            }
+
+            if(restart) {
+                computerCodeId = gameController.gameStart();
+            }
+        }
+      ```
+      indent를 줄이고 게임 통과와 재시작은 다른 기능이기 때문에 다른 boolean 변수에 담았다.(pass와 restart) 변경 전의 경우, 각 코드의 역할을 한 눈에 파악하기 어렵다. 
