@@ -9,8 +9,18 @@ public class Baseball {
     int ball;
     int strike;
     Baseball() {
-
+        this.ball = 0;
+        this.strike = 0;
     }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
     public void resetComputerNumber() {
         computerNumber = new ArrayList<Integer>();
         while(computerNumber.size() < 3) {
@@ -31,5 +41,32 @@ public class Baseball {
             }
             userNumber.add(addNumber);
         }
+    }
+
+    public void checkStrike() {
+        for(int i = 0; i < computerNumber.size(); i++) {
+            if(computerNumber.get(i) == userNumber.get(i)) {
+                strike++;
+            } else {
+                checkBall(userNumber.get(i));
+            }
+        }
+        printResult();
+    }
+
+    void checkBall(int i) {
+        if(computerNumber.contains(i)) {
+            ball++;
+        }
+    }
+
+    void printResult() {
+        if(strike == 0 || ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (strike > 0) System.out.println(strike + "스트라이크 ");
+        if (ball > 0) System.out.println(ball + "볼 ");
+        if (strike > 3) System.out.println("3개의 숫자를 모두 맞추셨습니다!");
     }
 }
