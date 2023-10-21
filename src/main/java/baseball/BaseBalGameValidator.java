@@ -5,10 +5,14 @@ import java.util.Set;
 
 public class BaseBalGameValidator {
     private static final int BASEBALL_SIZE = 3;
+    private static final int END_COMMAND = 1;
+    private static final int RE_GAME_COMMAND = 2;
 
     private static final String NOT_NUMBER_ERROR_MESSAGE = "%s는 숫자가 아닙니다.";
     private static final String DUPLICATE_OR_SIZE_ERROR_MESSAGE = "%s는 세자리 숫자가 아니거나, 값은 값이 존재합니다.";
     private static final String NEGATIVE_VALUE_ERROR_MESSAGE = "%d는 세자리가 각각다른 음수입니다.";
+
+    private static final String NOT_END_COMMAND_ERROR_MESSAGE = "%S는 1이거나 2가 아닙니다.";
 
     public void validBaseBallValue(int baseballValue) {
         checkDuplicateAndSize(baseballValue);
@@ -57,5 +61,15 @@ public class BaseBalGameValidator {
             baseballValue /= 10;
         }
         return duplicateChecker;
+    }
+
+    public void validEndCommand(String command) {
+        checkIsNumber(command, NOT_END_COMMAND_ERROR_MESSAGE);
+        if (isFirstZero(command) || notEndOrReCommand(command))
+            throw new IllegalArgumentException(String.format(NOT_END_COMMAND_ERROR_MESSAGE, command));
+    }
+
+    private boolean notEndOrReCommand(String command) {
+        return !(Integer.parseInt(command) == END_COMMAND || Integer.parseInt(command) == RE_GAME_COMMAND);
     }
 }

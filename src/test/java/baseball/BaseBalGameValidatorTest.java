@@ -10,6 +10,10 @@ class BaseBalGameValidatorTest {
         return new String[]{null, "", " ", "DJ", "dj", "baseball", "야구", "1야구1", "야구가좋아", "★", "11★", "O", "Z", "l", " 123", "12 3", "123 "};
     }
 
+    private static String[] notOneOrTwoSource() {
+        return new String[]{null, "", " ", "DJ", "dj", "baseball", "야구", "1야구1", "야구가좋아", "★", "11★", "O", "Z", "l", " 123", "12 3", "123 "
+                , " 1", " 2", "1 ", "2 ", "01", "02"};
+    }
 
     @ParameterizedTest
     @MethodSource({"notNumberSource"})
@@ -47,4 +51,22 @@ class BaseBalGameValidatorTest {
         Assertions.assertThatCode(() -> new BaseBalGameValidator().validBaseBallValue(baseBallValue))
                 .doesNotThrowAnyException();
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1", "2"
+    })
+    public void 엔드커멘드는_1이거나2이면_예외를_던지지_않는다(String command) {
+        Assertions.assertThatCode(() -> new BaseBalGameValidator().validEndCommand(command))
+                .doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @MethodSource("notOneOrTwoSource")
+    public void 엔드커멘드는_1이거나2아니면_예외를_던지지_않는다(String command) {
+        Assertions.assertThatCode(() -> new BaseBalGameValidator().validEndCommand(command))
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(String.format("%S는 1이거나 2가 아닙니다.", command));
+    }
+
 }

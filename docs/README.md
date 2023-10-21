@@ -16,6 +16,8 @@
         - [x] 그 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
         - [x] 숫자가 아니면,IllegalArgumentException 반환
         - [x] 세자리 음수이면, IllegalArgumentException 반환
+    -[x] 엔드커멘드를 검증한다.
+        -[x] 1이나2가 아니라면, 예외를 반환한다.
 
 -[x] InputReader
     -[x] 값을 읽는다
