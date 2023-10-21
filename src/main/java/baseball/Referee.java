@@ -36,4 +36,8 @@ public class Referee {
         }
         return 0;
     }
+
+    public List<Integer> getAnswerList() {
+        return answerList;
+    }
 }
