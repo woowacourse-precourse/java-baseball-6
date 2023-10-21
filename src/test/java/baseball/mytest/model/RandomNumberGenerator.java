@@ -21,6 +21,10 @@ public class RandomNumberGenerator {
     }
 
     private String convertListToString(List<Integer> randomNumber) {
-        return randomNumber.toString();
+        StringBuilder converted = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            converted.append(randomNumber.get(i));
+        }
+        return converted.toString();
     }
 }
