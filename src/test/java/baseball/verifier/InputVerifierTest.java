@@ -33,4 +33,11 @@ public class InputVerifierTest {
         InputVerifier inputVerifier = new InputVerifier();
         assertThrows(IllegalArgumentException.class, () -> inputVerifier.checkGameNumber("456"));
     }
+
+    @DisplayName("0이 포함되었을 때 예외처리 하는지 테스트")
+    @Test
+    void ifIncludeZero() {
+        InputVerifier inputVerifier = new InputVerifier();
+        assertThrows(IllegalArgumentException.class, () -> inputVerifier.checkBallNumber("507"));
+    }
 }
