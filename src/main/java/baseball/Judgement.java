@@ -3,7 +3,6 @@ package baseball;
 import java.util.List;
 
 public class Judgement {
-    public static final int MAX_DIGITS = 3;
     int balls;
     int strikes;
 
@@ -15,7 +14,7 @@ public class Judgement {
     public void callBallOrStrike(BaseballNumber computerNumber, BaseballNumber userNumber) {
         List<Integer> targetNumbers = computerNumber.numbers();
         List<Integer> userGuess = userNumber.numbers();
-        for (int i = 0; i < MAX_DIGITS; i++) {
+        for (int i = 0; i < Constants.MAX_DIGITS; i++) {
             int digit = userGuess.get(i);
             if (digit == targetNumbers.get(i)) {
                 strikes++;

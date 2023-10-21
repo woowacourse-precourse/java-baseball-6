@@ -48,3 +48,5 @@
     - 결과 메시지 반환
 7. OutputHandler
     - 메시지를 출력
+8. Constants
+    - 공통 상수를 관리
