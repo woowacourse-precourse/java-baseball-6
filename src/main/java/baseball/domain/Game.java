@@ -16,4 +16,17 @@ public class Game {
         }
         return strikes;
     }
+
+    public int countBalls(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int balls = 0;
+        for (int i = 0; i < 3; i++) {
+            int computerDigit = computerNumber.get(i);
+            int playerDigit = playerNumber.get(i);
+
+            if (computerDigit != playerDigit && computerNumber.contains(playerDigit)) {
+                balls++;
+            }
+        }
+        return balls;
+    }
 }
