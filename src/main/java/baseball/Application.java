@@ -1,11 +1,13 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.controller.BaseballGame;
 
 public class Application {
-	public static void main(String[] args) {
-		// TODO: 프로그램 구현
-		Number num = new Number(); //랜덤 숫자매소드 받아오기 위해 생성
+    public static void main(String[] args) {
+        BaseballGame game = new BaseballGame();
+        game.baseballGameStart();
+    }
+		/*Number num = new Number(); //랜덤 숫자매소드 받아오기 위해 생성
 		CompareLogic comp = new CompareLogic(); //숫자야구 로직 처리하기위해 생성
 		boolean game = true; //마지막 
 		while (game) {
@@ -60,5 +62,5 @@ public class Application {
 
 			}
 		}
-	}
+	}*/
 }
