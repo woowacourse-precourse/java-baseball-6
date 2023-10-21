@@ -16,7 +16,11 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = Console.readLine();
-            // TODO : 1, 2 이외의 숫자를 입력 시, 예외 처리
+            // 1, 2 외의 글자 입력시 예외 처리
+            if (!input.matches("^[1-2]{1}$")) {
+                throw new IllegalArgumentException();
+            }
+
             if ("2".equals(input)) {
                 break;
             }
@@ -72,6 +76,7 @@ public class Application {
     }
 
     private static int[] getResult(List<Integer> computer, String input) {
+        // TODO : 가독성을 위해 HASHMAP 사용하기
         int[] result = new int[2]; // [0] : strike, [1] : ball
         for (int i=0; i < input.length(); i++) {
             char numChar = input.charAt(i);
