@@ -1,5 +1,6 @@
 package baseball.results;
 
+import baseball.balls.Balls;
 import baseball.utils.ResultsUtils;
 
 public class Results {
@@ -27,4 +28,9 @@ public class Results {
             ballCount++;
         }
     }
+
+    public boolean isAnswer() {
+        return strikeCount == Balls.BALL_COUNT;
+    }
+
 }
