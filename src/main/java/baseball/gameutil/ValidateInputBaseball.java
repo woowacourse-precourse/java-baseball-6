@@ -6,23 +6,23 @@ public class ValidateInputBaseball implements ValidateInput {
 
     @Override
     public String validateGameInput(String input) {
-        if(!checkLength(input, 3))
-            throw new IllegalArgumentException(ErrorMessage.gameLenError);
+        if(!checkLength(input, Constant.NUMBER_LENGTH))
+            throw new IllegalArgumentException(ErrorMessage.GAME_LEN_ERROR_STRING);
         if(!checkIsAllNumber(input))
-            throw new IllegalArgumentException(ErrorMessage.wrongGameInputError);
-        if(!checkBetween(input, 1, 9))
-            throw new IllegalArgumentException(ErrorMessage.wrongGameInputError);
+            throw new IllegalArgumentException(ErrorMessage.WRONG_GAME_INPUT_ERROR_STRING);
+        if(!checkBetween(input, Constant.NUMBER_MIN, Constant.NUMBER_MAX))
+            throw new IllegalArgumentException(ErrorMessage.WRONG_GAME_INPUT_ERROR_STRING);
         return input;
     }
 
     @Override
     public String validateRerunInput(String input) {
-        if(!checkLength(input, 1))
-            throw new IllegalArgumentException(ErrorMessage.wrongRerunInputError);
+        if(!checkLength(input, Constant.RESTART_MODE_LENGTH))
+            throw new IllegalArgumentException(ErrorMessage.WRONG_RERUN_INPUT_ERROR_STRING);
         if(!checkIsAllNumber(input))
-            throw new IllegalArgumentException(ErrorMessage.wrongRerunInputError);
-        if(!checkBetween(input, 1, 2))
-            throw new IllegalArgumentException(ErrorMessage.wrongRerunInputError);
+            throw new IllegalArgumentException(ErrorMessage.WRONG_RERUN_INPUT_ERROR_STRING);
+        if(!checkBetween(input, Constant.RESTART_MIN, Constant.RESTART_MAX))
+            throw new IllegalArgumentException(ErrorMessage.WRONG_RERUN_INPUT_ERROR_STRING);
         return input;
     }
 

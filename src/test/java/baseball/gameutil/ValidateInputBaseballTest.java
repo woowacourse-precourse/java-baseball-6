@@ -21,7 +21,7 @@ public class ValidateInputBaseballTest {
         );
 
         //then
-        String expected = ErrorMessage.gameLenError;
+        String expected = ErrorMessage.GAME_LEN_ERROR_STRING;
         String actual = exception.getMessage();
         Assertions.assertEquals(expected, actual);
     }
@@ -40,7 +40,7 @@ public class ValidateInputBaseballTest {
         );
 
         //then
-        String expected = ErrorMessage.gameLenError;
+        String expected = ErrorMessage.GAME_LEN_ERROR_STRING;
         String actual = exception.getMessage();
         Assertions.assertEquals(expected, actual);
     }
@@ -59,7 +59,7 @@ public class ValidateInputBaseballTest {
         );
 
         //then
-        String expected = ErrorMessage.wrongGameInputError;
+        String expected = ErrorMessage.WRONG_GAME_INPUT_ERROR_STRING;
         String actual = exception.getMessage();
         Assertions.assertEquals(expected, actual);
     }
@@ -77,7 +77,7 @@ public class ValidateInputBaseballTest {
         );
 
         //then
-        String expected = ErrorMessage.wrongGameInputError;
+        String expected = ErrorMessage.WRONG_GAME_INPUT_ERROR_STRING;
         String actual = exception.getMessage();
         Assertions.assertEquals(expected, actual);
     }
@@ -108,7 +108,7 @@ public class ValidateInputBaseballTest {
         );
 
         //then
-        String expected = ErrorMessage.wrongRerunInputError;
+        String expected = ErrorMessage.WRONG_RERUN_INPUT_ERROR_STRING;
         String actual = exception.getMessage();
         Assertions.assertEquals(expected, actual);
     }
@@ -127,7 +127,7 @@ public class ValidateInputBaseballTest {
         );
 
         //then
-        String expected = ErrorMessage.wrongRerunInputError;
+        String expected = ErrorMessage.WRONG_RERUN_INPUT_ERROR_STRING;
         String actual = exception.getMessage();
         Assertions.assertEquals(expected, actual);
     }
@@ -145,7 +145,7 @@ public class ValidateInputBaseballTest {
         );
 
         //then
-        String expected = ErrorMessage.wrongRerunInputError;
+        String expected = ErrorMessage.WRONG_RERUN_INPUT_ERROR_STRING;
         String actual = exception.getMessage();
         Assertions.assertEquals(expected, actual);
     }
