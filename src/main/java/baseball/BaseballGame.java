@@ -128,11 +128,13 @@ public class BaseballGame {
             System.out.print(ballNumber+"볼 ");
         }
         if(strikeNumber != 0) {
-            System.out.println(strikeNumber+"스트라이크");
+            System.out.print(strikeNumber+"스트라이크");
         }
         if (ballNumber == 0 && strikeNumber == 0) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
+
+        System.out.println();
 
         if(isCompleted()) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
