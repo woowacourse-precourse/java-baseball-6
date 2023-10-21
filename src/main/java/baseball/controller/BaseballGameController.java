@@ -33,7 +33,7 @@ public class BaseballGameController {
         boolean correct = false;
 
         while (!correct) {
-            List<Integer> playerNumbers = player.getPlayerNumbers(InputView.inputNumber());
+            List<Integer> playerNumbers = getPlayerNumbers();
 
             comparator.compare(playerNumbers, computerNumbers);
 
@@ -52,6 +52,10 @@ public class BaseballGameController {
                 OutputView.printStrikeAndBallMessage(comparator.getStrikeCount(), comparator.getBallCount());
             }
         }
+    }
+
+    private List<Integer> getPlayerNumbers() {
+        return player.getPlayerNumbers(InputView.inputNumber());
     }
 
     // 재시작이면 true, 종료이면 false를 반환한다.
