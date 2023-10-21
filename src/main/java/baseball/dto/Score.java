@@ -4,12 +4,9 @@ public class Score {
     private int ballCount;
     private int strikeCount;
 
-    private Score() {
-    }
-
-    private Score(int ballCount, int strikeCount) {
-        this.ballCount = ballCount;
-        this.strikeCount = strikeCount;
+    private Score(ScoreBuilder builder) {
+        this.ballCount = builder.ballCount;
+        this.strikeCount = builder.strikeCount;
     }
 
     public static ScoreBuilder builder() {
@@ -32,7 +29,7 @@ public class Score {
         }
 
         public Score build() {
-            return new Score(ballCount, strikeCount);
+            return new Score(this);
         }
     }
 
