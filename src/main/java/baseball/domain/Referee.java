@@ -10,9 +10,10 @@ public class Referee {
 
     public Referee(List<BallStatus> result) {
         this.BallStatuses = result;
+        judge();
     }
 
-    public void judge() {
+    private void judge() {
         for (BallStatus ballStatus : BallStatuses) {
             if (ballStatus == BallStatus.STRIKE) {
                 strikeNum ++;

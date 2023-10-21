@@ -16,7 +16,6 @@ public class RefereeTest {
         Balls balls = new Balls(computerBallNumbers);
         List<BallStatus> result = balls.play(userBallNumbers);
         Referee referee = new Referee(result);
-        referee.judge();
         assertThat(referee.getStrikeNum()).isEqualTo(1);
         assertThat(referee.getBallNum()).isEqualTo(1);
     }
