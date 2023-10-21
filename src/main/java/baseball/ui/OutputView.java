@@ -10,25 +10,31 @@ import baseball.domain.GameResult;
 public class OutputView {
 
     public void printGameStartMessage() {
-        System.out.println(GAME_START_MESSAGE);
+        println(GAME_START_MESSAGE);
     }
 
     public void printNumberInputMessage() {
-        System.out.print(NUMBER_INPUT_MESSAGE);
+        print(NUMBER_INPUT_MESSAGE);
     }
 
     public void printGameResultMessage(GameResult result) {
-        System.out.println(result.toString());
+        println(result.toString());
     }
 
     public void printRestartSelectMessage() {
-        System.out.println(RESTART_SELECT_MESSAGE);
+        println(RESTART_SELECT_MESSAGE);
 
     }
 
     public void printGameFinishMessage() {
-        System.out.println(GAME_FINISH_MESSAGE);
+        println(GAME_FINISH_MESSAGE);
     }
 
+    private void println(String text) {
+        System.out.println(text);
+    }
 
+    private void print(String text) {
+        System.out.print(text);
+    }
 }
