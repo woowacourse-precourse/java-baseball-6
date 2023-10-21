@@ -19,8 +19,6 @@ public class BaseBallGameMachine {
 
         makeRandomNumbers();
 
-        System.out.println(computerNumbers);
-
         while (flag) {
             List<Integer> userNumbersInput = userInput();
 
@@ -52,21 +50,37 @@ public class BaseBallGameMachine {
     }
 
     public int[] calculation(List<Integer> userInput) {
-        int ball = 0;
-        int strike = 0;
+        int ball = countBall(userInput);
+        int strike = countStrike(userInput);
 
-        for (int i = 0; i < userInput.size(); i++) {
-            if (Objects.equals(userInput.get(i), computerNumbers.get(i))) {
-                strike++;
-            } else if (computerNumbers.contains(userInput.get(i))) {
-                ball++;
-            }
-        }
         if (strike == 3) {
             flag = false;
         }
 
         return new int[]{ball, strike};
+    }
+
+    public int countBall(List<Integer> userInput) {
+        int ball = 0;
+        for (int i = 0; i < userInput.size(); i++) {
+            if (!Objects.equals(userInput.get(i), computerNumbers.get(i)) && computerNumbers.contains(userInput.get(i))) {
+                ball++;
+            }
+        }
+
+        return ball;
+    }
+
+    public int countStrike(List<Integer> userInput) {
+        int strike = 0;
+
+        for (int i = 0; i < userInput.size(); i++) {
+            if (Objects.equals(userInput.get(i), computerNumbers.get(i))) {
+                strike++;
+            }
+        }
+
+        return strike;
     }
 
     public void printHint(int[] calculation) {
