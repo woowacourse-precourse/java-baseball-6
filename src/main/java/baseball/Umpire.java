@@ -36,7 +36,7 @@ public class Umpire {
             result = balls + Constants.BALL + " " + strikes + Constants.STRIKE;
         }
 
-        System.out.println(result);
+        Output.printResult(result);
     }
 
     public boolean isThreeStrike() {

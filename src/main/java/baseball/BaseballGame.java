@@ -1,24 +1,24 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class BaseballGame {
-
     public void start() {
-        System.out.println(Constants.OUTPUT_GAME_START);
+        Output.printGameStart();
         run();
     }
 
-    public void run() {
+    private void run() {
         Computer computer = new Computer();
+
+        // (삭제 예정)
         System.out.println(computer.getNumbers());
 
         while (true) {
-            System.out.print(Constants.INPUT_USER_NUMBER);
-            String inputNumber = Console.readLine();
+            String inputNumber = Input.readUserNumbers();
             // TODO: inputNumber 예외 처리
 
             User user = new User(inputNumber);
+
+            // (삭제 예정)
             System.out.println(user.getNumbers());
 
             Umpire umpire = new Umpire();
@@ -28,13 +28,13 @@ public class BaseballGame {
             }
         }
 
-        System.out.println(Constants.OUTPUT_GAME_END);
+        Output.printGameEnd();
         exist();
     }
 
-    public void exist() {
-        System.out.println(Constants.INPUT_MODE_RESTART_OR_END);
-        int inputMode = Integer.parseInt(Console.readLine());
+    private void exist() {
+        String inputModeStr = Input.readModeRestartOrEnd();
+        int inputMode = Integer.parseInt(inputModeStr);
         // TODO: inputMode 예외 처리
 
         if (inputMode == Constants.MODE_RESTART) {
