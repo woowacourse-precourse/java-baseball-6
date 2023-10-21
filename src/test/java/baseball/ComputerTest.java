@@ -2,15 +2,14 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
-import baseball.model.GenerateRandomNumbers;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class GenerateRandomNumbersTest {
+public class ComputerTest {
     @Test
     public void testGenerateRandomNumbers() {
-        GenerateRandomNumbers generateRandomNumbers = new GenerateRandomNumbers();
-        List<Integer> randomNumbers = generateRandomNumbers.generate();
+        Computer computer = new Computer();
+        List<Integer> randomNumbers = computer.generate();
 
         StringBuilder sb = new StringBuilder();
         for (Integer number : randomNumbers) {

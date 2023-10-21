@@ -1,10 +1,10 @@
-package baseball.model;
+package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenerateRandomNumbers {
+public class Computer {
     public List<Integer> generate() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
