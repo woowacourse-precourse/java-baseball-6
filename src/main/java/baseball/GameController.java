@@ -11,21 +11,20 @@ public class GameController {
     }
 
     public void run() {
-        while (user.getGameStatus()) {
+        while(true) {
             computer.generateRandomNumbers();
-            gameStart();
-        }
-    }
-
-    public void gameStart() {
-        while (true) {
-            user.getNumbersFromUser();
-            if (compareNumbers(user.getNumbers(), computer.getRandomNumbers())) {
-                user.restartGame();
+            if(!gameStart()) {
                 break;
             }
         }
+    }
 
+    public boolean gameStart() {
+        while (true) {
+            if (computer.compareNumbers(user.getNumbersFromUser())) {
+                return user.restartGame();
+            }
+        }
     }
 
 }
