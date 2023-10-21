@@ -32,7 +32,11 @@ public class BaseballApp {
 
             //유효한 입력이라면 컴퓨터와 대결하도록
             if(checkInput(input)) {
-                List<Integer> numList = transToList(input);
+                boolean result = computer.compare(transToList(input));
+
+                if(result) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                }
             }
         }
     }
