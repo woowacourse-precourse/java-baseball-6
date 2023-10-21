@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.util.Constants;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +33,10 @@ public class JudgeResult {
 
     public int getStrikeCount() {
         return judgeResult.get(BallCount.STRIKE);
+    }
+
+    public boolean isGameSuccess() {
+        return judgeResult.getOrDefault(BallCount.STRIKE, 0) == Constants.BALL_LENGTH;
     }
 
 }
