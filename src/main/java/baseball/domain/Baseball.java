@@ -24,6 +24,13 @@ public class Baseball {
         this.numbers = numbers;
     }
 
+    public void setNumbers(List<Integer> numbers) {
+        validateLength(numbers);
+        validateNoBannedNumber(numbers);
+        validateNoDuplicateNumbers(numbers);
+        this.numbers = numbers;
+    }
+
     public int countSameNumbers(Baseball compare) {
         return (int) compare.numbers.stream()
                 .filter(number -> numbers.contains(number))

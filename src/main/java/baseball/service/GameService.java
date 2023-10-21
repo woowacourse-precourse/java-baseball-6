@@ -4,6 +4,7 @@ import baseball.config.GameConfig;
 import baseball.domain.Baseball;
 import baseball.domain.GameResult;
 import baseball.util.NumberGenerator;
+import java.util.List;
 
 public class GameService {
 
@@ -21,6 +22,10 @@ public class GameService {
     public void startGame() {
         this.computer = new Baseball(numberGenerator.generate());
         this.player = new Baseball();
+    }
+
+    public void setPlayerBaseball(List<Integer> numbers) {
+        player.setNumbers(numbers);
     }
 
     public GameResult getGameResult() {
