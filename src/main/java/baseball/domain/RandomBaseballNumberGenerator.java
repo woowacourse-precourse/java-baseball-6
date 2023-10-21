@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RandomBaseballNumberGenerator {
 
-    List<Integer> numbers = new ArrayList<>();
+    private List<Integer> numbers = new ArrayList<>();
 
     public BaseballNumber generate() {
         while (numbers.size() < BASEBALL_NUMBER_LEN) {
