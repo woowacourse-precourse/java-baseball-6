@@ -13,7 +13,7 @@ public class CompareTest {
         Compare compare = new Compare();
 
         // Set computerNumList and getUserNumList for testing
-        List<String> computerNumList = Arrays.asList("1", "2", "3");
+        List<String> computerNumList = Arrays.asList("4", "2", "3");
         List<String> userNumList = Arrays.asList("1", "3", "2");
 
         // Set computer and user objects to use the custom lists
@@ -24,6 +24,6 @@ public class CompareTest {
         int[] result = compare.compareNumber(computerNumList, userNumList);
 
         // Then
-        System.out.println(Arrays.toString(result));
+        System.out.println(Arrays.toString(result)); // [볼, 스트라이크] 갯수 표시
     }
 }
