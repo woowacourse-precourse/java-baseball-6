@@ -9,9 +9,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Ball {
     /* fields */
-    public static final int MINIMUM_NUM = 1;
-    public static final int MAXIMUM_NUM = 9;
-    public static final int MAXIMUM_BALL_SIZE = 3;
+    private static final int MINIMUM_NUM = 1;
+    private static final int MAXIMUM_NUM = 9;
+    private static final int MAXIMUM_BALL_SIZE = 3;
     private List<Integer> ball;
 
     /* functions */
@@ -50,5 +50,8 @@ public class Ball {
             if((userBall.ball.get(i) != this.ball.get(i)) && this.ball.contains(userBall.ball.get(i))) ballCount++;
         }
         return ballCount;
+    }
+    public static int getMaximumBallSize(){
+        return MAXIMUM_BALL_SIZE;
     }
 }
