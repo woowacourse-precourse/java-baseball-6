@@ -1,5 +1,7 @@
 package baseball.util;
 
+import baseball.constant.ValidateException;
+
 public class Validation {
 
     private static final String NUMBER_REGEX = "^[1-9]+$";
@@ -21,13 +23,13 @@ public class Validation {
 
     private static void checkRightRestartNumber(String number) {
         if (!number.matches(RESTART_NUMBER_REGEX)) {
-            throw new IllegalArgumentException("재시작 관련 입력은 1 또는 2의 숫자여야 합니다! ");
+            throw new IllegalArgumentException(ValidateException.RESTART_INPUT_NUMBER_EXCEPTION.getMsg());
         }
     }
 
     private static void validateRestartNumberLength(String number) {
         if (number.length() != RESTART_LENGTH) {
-            throw new IllegalArgumentException("1 또는 2 의 숫자로 한 번만 입력해주세요!");
+            throw new IllegalArgumentException(ValidateException.RESTART_INPUT_NUMBER_LENGTH_EXCEPTION.getMsg());
         }
     }
 
@@ -48,20 +50,20 @@ public class Validation {
     private static void findDuplicateNumber(String number, int i, int j) {
         if (i != j) {
             if (number.charAt(i) == number.charAt(j)) {
-                throw new IllegalArgumentException("서로 다른 숫자가 와야 합니다! ");
+                throw new IllegalArgumentException(ValidateException.DUPLICATE_NUMBER_EXCEPTION.getMsg());
             }
         }
     }
 
     private void validateIsNumber(String number) {
         if (!number.matches(NUMBER_REGEX)) {
-            throw new IllegalArgumentException("숫자로 입력이 되어야 합니다!");
+            throw new IllegalArgumentException(ValidateException.INPUT_NUMBER_EXCEPTION.getMsg());
         }
     }
 
     private void validateIsRightLength(String number) {
         if (number.length() != INPUT_LENGTH) {
-            throw new IllegalArgumentException("입력 숫자의 길이는 3입니다!");
+            throw new IllegalArgumentException(ValidateException.INPUT_NUMBER_LENGTH_EXCEPTION.getMsg());
         }
     }
 
