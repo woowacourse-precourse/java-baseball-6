@@ -13,8 +13,13 @@ public class Computer {
 
     private final List<Integer> numbers;
 
+    // todo 상수값, 인수로 받는 거 고려해보기
     public Computer() {
         this.numbers = getRandomNumbers();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private List<Integer> getRandomNumbers() {
