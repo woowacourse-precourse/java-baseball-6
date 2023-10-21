@@ -23,7 +23,7 @@ public class InputView {
         hasNoDuplicates(input);
     }
 
-    private static void isNumeric(String input) {
+    private void isNumeric(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -31,13 +31,13 @@ public class InputView {
         }
     }
 
-    private static void isTripleDigit(String input) {
+    private void isTripleDigit(String input) {
         if (input.length() != INPUT_LENGTH) {
             throw new IllegalArgumentException("세 자리의 입력값이 아닙니다.");
         }
     }
 
-    private static void isValidDigitRange(String input) {
+    private void isValidDigitRange(String input) {
         for (char eachChar : input.toCharArray()) {
             int eachDigit = Character.getNumericValue(eachChar);
             if (eachDigit < MIN_NUMERIC_RANGE_VALUE || eachDigit > MAX_NUMERIC_RANGE_VALUE) {
@@ -46,7 +46,7 @@ public class InputView {
         }
     }
 
-    private static void hasNoDuplicates(String input) {
+    private void hasNoDuplicates(String input) {
         char[] inputArray = input.toCharArray();
         if (inputArray[0] == inputArray[1] || inputArray[1] == inputArray[2] || inputArray[0] == inputArray[2]) {
             throw new IllegalArgumentException("중복된 값이 존재합니다.");
