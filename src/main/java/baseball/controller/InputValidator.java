@@ -51,7 +51,7 @@ public class InputValidator {
     }
 
     public boolean isValidContinueGameChoice(String playerInput) {
-        if (playerInput == CONTINUE_NUMBER || playerInput == GAME_TERMINATE_NUMBER) {
+        if (playerInput.equals(CONTINUE_NUMBER) || playerInput.equals(GAME_TERMINATE_NUMBER)) {
             return true;
         }
         throw new IllegalArgumentException(WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE);
