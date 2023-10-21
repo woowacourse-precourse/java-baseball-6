@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class NumberCreatorTest extends NsTest {
 
+    // ComputerNumber
     @Test
     void 랜덤으로_중복되지_않는_3개의_수를_반환한다() {
         // given
@@ -43,6 +44,7 @@ class NumberCreatorTest extends NsTest {
         assertThat(computerNumber.get(2)).isLessThan(10);
     }
 
+    // GuessNumber
     @Test
     void 중복된_수는_입력할_수_없습니다() {
         assertThatThrownBy(() -> run("122"))

@@ -52,7 +52,7 @@ public class NumberCreator {
             throw new IllegalArgumentException(GUESS_NUMBER_LENGTH_EXCEPTION);
         }
 
-        if (numbers.contains(0)) {
+        if (numbers.contains(ZERO)) {
             throw new IllegalArgumentException(GUESS_NUMBER_RANGE_EXCEPTION);
         }
 

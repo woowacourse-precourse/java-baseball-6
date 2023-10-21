@@ -20,6 +20,8 @@ public class Application {
             int correctCount = gameManager.playGame(computerNumber, guessNumber);
 
             if (correctCount == SUCCESS_GUESS) {
+                gameManager.printNextGameNotification();
+
                 boolean exitGame = gameManager.getNextGameState();
                 if (exitGame) {
                     break;

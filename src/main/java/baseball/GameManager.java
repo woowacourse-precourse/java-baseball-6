@@ -40,7 +40,6 @@ public class GameManager {
     }
 
     public boolean getNextGameState() {
-        printNextGameMessage();
         String nextGameString = Console.readLine();
 
         int nextGameState = Integer.parseInt(nextGameString);
@@ -49,7 +48,7 @@ public class GameManager {
         return nextGameState == EXIT_GAME;
     }
 
-    private void printNextGameMessage() {
+    public void printNextGameNotification() {
         System.out.println(WIN_THE_GAME_MESSAGE);
         System.out.println(NEXT_GAME_OR_NOT_MESSAGE);
     }
