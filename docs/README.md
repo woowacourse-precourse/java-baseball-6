@@ -30,7 +30,7 @@ public static String readLine() {
 }
 ```
 
-✅ 입력 값으로부터 점수를 계산하는 클래스 
+✅ 입력 값으로부터 점수를 계산하는 클래스
 
 1. Strike 검사 :
     1. 입력
@@ -41,4 +41,4 @@ public static String readLine() {
     1. 입력
     2. 3의 컨버터로 List<Integer> input 로 변환
     3. 2에 의해 생성된 정답도 List<Integer> answer로 변환
-    4. .filter().count()로 동일한 인덱스에 대해 (값이 일치하지 않으면서) && ( 값을 포함하고 있는 ) 갯수를 구해서 리턴한다.
+    4. .filter().count()로 (동일한 인덱스에 대해 값이 일치하지 않으면서) && ( 값을 포함하고 있는 ) 갯수를 구해서 리턴한다.
