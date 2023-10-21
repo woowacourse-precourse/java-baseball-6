@@ -56,9 +56,9 @@
 - ### Service 관련 처리
   - [ ] 스트라이크 볼 관련 처리는 Service에서 진행
 - ### View 관련 처리
-  - [ ] View는 다른 곳의 연산이나 로직에 참여하지 않을 수 있도록 하기! 
+  - [X] View에서는 다른 곳과 격리!! 
   - [ ] 매직 넘버 사용하여 코딩하기
-  - [ ] Controller랑 상호작용하여 Validate에게 위임하여 처리
+  - [X] Controller랑 상호작용하여 Validate에게 위임하여 처리
   - [X] View들은 싱글톤으로 구성! 
 
 
