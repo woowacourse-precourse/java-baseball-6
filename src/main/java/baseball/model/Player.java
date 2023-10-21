@@ -11,4 +11,8 @@ public class Player {
         this.playerNumber = new PlayerNumber(numbers);
     }
 
+    public int getNumberByPosition(int position) {
+        return playerNumber.getNumberByPosition(position);
+    }
+
 }

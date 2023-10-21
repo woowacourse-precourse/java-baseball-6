@@ -32,4 +32,12 @@ public class ComputerNumber {
         return computerNumber.size() != computerNumber.stream().distinct().count();
     }
 
+    public int getNumberByPosition(int position) {
+        return computerNumber.get(position);
+    }
+
+    public boolean hasNumber(int number) {
+        return computerNumber.contains(number);
+    }
+
 }

@@ -1,7 +1,7 @@
 package baseball.model;
 
 public class Computer {
-    ComputerNumber computerNumber;
+    private final ComputerNumber computerNumber;
 
     public Computer() {
         computerNumber = new ComputerNumber();
@@ -13,6 +13,14 @@ public class Computer {
 
     public boolean hasDuplicatedNumber() {
         return computerNumber.hasDuplicatedNumber();
+    }
+
+    public int getNumberByPosition(int position) {
+        return computerNumber.getNumberByPosition(position);
+    }
+
+    public boolean hasNumber(int number) {
+        return computerNumber.hasNumber(number);
     }
 
 }

@@ -18,4 +18,8 @@ public class PlayerNumber {
         return playerNumber;
     }
 
+    public int getNumberByPosition(int position) {
+        return playerNumber.get(position);
+    }
+
 }
