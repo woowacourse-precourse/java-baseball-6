@@ -31,7 +31,20 @@ public class Application {
                 stateRepeatGuess = false;
             }
         }
-        return false;
+        return askReplayGame();
+    }
+
+    public static boolean askReplayGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String answerReplayGame = Console.readLine();
+
+        if (answerReplayGame.equals("1")) {
+            return true;
+        } else if (answerReplayGame.equals("2")) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("1 또는 2를 입력하세요.");
     }
 
     public static void displayGameStartMessage() {
