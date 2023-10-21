@@ -11,9 +11,9 @@ public class InputValidate {
         }
     }
 
-    public void checkNumber(String givenNumber) {
+    public Integer checkNumber(String givenNumber) {
         try {
-            Integer.parseInt(givenNumber);
+            return Integer.parseInt(givenNumber);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("[ERROR]" + givenNumber);
         }

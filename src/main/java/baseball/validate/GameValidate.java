@@ -4,9 +4,13 @@ import java.util.List;
 
 public class GameValidate {
     public void checkGameRestartInput(Integer number) {
-        if (number != 1 || number != 2) {
-            throw new RuntimeException();
+        if (number == 1 ) {
+           return;
         }
+        if (number == 2 ) {
+            return;
+        }
+        throw new RuntimeException();
     }
 
     public void checkPlayerGuessNumbers(List<Integer> numbers) {
