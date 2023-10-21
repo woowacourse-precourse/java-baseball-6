@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
-    public List<Integer> generateNumberList() {
-        List<Integer> numberList = new ArrayList<>();
-        while (numberList.size() < 3) {
+    public List<Integer> generateNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numberList.contains(randomNumber)) {
-                numberList.add(randomNumber);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
         }
-        return numberList;
+        return numbers;
     }
 
 }

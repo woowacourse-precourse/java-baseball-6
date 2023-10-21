@@ -18,9 +18,9 @@ public class OutputHandler {
         System.out.println(GAME_OVER_MESSAGE);
     }
 
-    public void printGameResult(GameResult result) {
-        int ballCount = result.getBallCount();
-        int strikeCount = result.getStrikeCount();
+    public void printGameResult(GameResult gameResult) {
+        int ballCount = gameResult.getBallCount();
+        int strikeCount = gameResult.getStrikeCount();
 
         if(ballCount == 0 && strikeCount == 0) {
             System.out.println(NOTHING);
