@@ -19,7 +19,7 @@ class NumberGeneratorTest {
         NumberGenerator numberGenerator = new NumberGenerator();
         //when
         for (int i = 0; i < 1000 ; i++) {
-            int randomNumber = numberGenerator.generateRandomNumber();
+            final int randomNumber = numberGenerator.generateRandomNumber();
             //then
             System.out.println(randomNumber);
         }
@@ -32,7 +32,7 @@ class NumberGeneratorTest {
         NumberGenerator numberGenerator = new NumberGenerator();
         //when
         for (int i = 0; i < 1000; i++) {
-            List<Integer> randomList = numberGenerator.makeRandomAnswerList();
+            final List<Integer> randomList = numberGenerator.makeRandomAnswerList();
             //then
             System.out.println(randomList);
         }
@@ -44,7 +44,7 @@ class NumberGeneratorTest {
         //given
         NumberGenerator numberGenerator = new NumberGenerator();
         //when
-        int randomNumber = numberGenerator.generateRandomNumber();
+        final int randomNumber = numberGenerator.generateRandomNumber();
         //then
         assertThat(randomNumber).isBetween(1, 9);
     }
@@ -55,7 +55,7 @@ class NumberGeneratorTest {
         //given
         NumberGenerator numberGenerator = new NumberGenerator();
         //when
-        List<Integer> randomNumberList = numberGenerator.makeRandomAnswerList();
+        final List<Integer> randomNumberList = numberGenerator.makeRandomAnswerList();
         //then
         randomNumberList.forEach(randomNumber -> assertThat(randomNumber).isBetween(1, 9));
         assertThat(randomNumberList.size()).isEqualTo(3);
@@ -67,7 +67,7 @@ class NumberGeneratorTest {
         //given
         NumberGenerator numberGenerator = new NumberGenerator();
         //when
-        List<Integer> randomNumberList = numberGenerator.makeRandomAnswerList();
+        final List<Integer> randomNumberList = numberGenerator.makeRandomAnswerList();
         //given
         Set<Integer> integerSet = new HashSet<>(randomNumberList);
         assertThat(integerSet.size()).isEqualTo(3);
