@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.count.Count;
 import baseball.generateRandomNum.GenerateRandomNum;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
@@ -17,8 +18,24 @@ class ApplicationTest extends NsTest {
     void 컴퓨터_랜덤숫자_생성() {
         GenerateRandomNum generateRandomNum = new GenerateRandomNum();
         List<Integer> randomNum = generateRandomNum.generate();
+
         assertThat(3).isEqualTo(randomNum.size());
         System.out.println(randomNum);
+    }
+
+    @Test
+    void 판정_카운트() {
+        Count count = new Count();
+        GenerateRandomNum generateRandomNum = new GenerateRandomNum();
+
+        List<Integer> computer = generateRandomNum.generate();
+        List<Integer> player = generateRandomNum.generate();
+
+        String result = count.count(computer,player);
+
+        System.out.println(computer);
+        System.out.println(player);
+        System.out.println(result);
     }
     @Test
     void 게임종료_후_재시작() {
