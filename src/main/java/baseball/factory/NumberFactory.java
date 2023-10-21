@@ -3,6 +3,8 @@ package baseball.factory;
 import static baseball.Constants.PLAY_NUMBER_DIGIT;
 
 import baseball.converter.BuilderInputConverter;
+import baseball.converter.IntegerInputConverter;
+import baseball.converter.StringInputConverter;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberFactory {
@@ -37,7 +39,7 @@ public class NumberFactory {
     }
 
     private static boolean isInputContainsNumber(final String input, final int number) {
-        return input.contains(String.valueOf(number));
+        return input.contains(IntegerInputConverter.toString(number));
     }
 
     private static void addNumber(final StringBuilder builder, final int number) {
@@ -45,6 +47,6 @@ public class NumberFactory {
     }
 
     private static int convertBuilderToNumber(final StringBuilder builder) {
-        return Integer.parseInt(BuilderInputConverter.toString(builder));
+        return StringInputConverter.toInt(BuilderInputConverter.toString(builder));
     }
 }
