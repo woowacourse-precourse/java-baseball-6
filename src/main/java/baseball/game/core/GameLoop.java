@@ -1,9 +1,7 @@
-package baseball.game;
+package baseball.game.core;
 
-import baseball.context.BaseballContext;
-
-import baseball.context.GameLifeCycle;
-import baseball.context.GameState;
+import baseball.game.Answer;
+import baseball.game.BaseballGame;
 import baseball.game.dto.Baseball;
 import baseball.game.dto.BaseballScore;
 import baseball.io.input.Input;
@@ -12,15 +10,15 @@ import baseball.io.input.validation.InputValidator;
 public class GameLoop {
 
     private final Input input;
-    private final BaseballContext baseballContext;
     private final BaseballGame baseballGame;
+    private final Answer answer;
     private final GameLifeCycle gameLifeCycle;
 
-    public GameLoop(Input input, BaseballContext baseballContext, BaseballGame baseballGame) {
+    GameLoop(Input input, BaseballGame baseballGame, Answer answer) {
         this.input = input;
-        this.baseballContext = baseballContext;
         this.baseballGame = baseballGame;
-        this.gameLifeCycle = baseballContext.getGameLifeCycle();
+        this.answer = answer;
+        this.gameLifeCycle = new GameLifeCycle(GameState.RUNNING);
     }
 
     public void run() {
@@ -28,8 +26,8 @@ public class GameLoop {
         while (gameLifeCycle.isRunning()) {
             System.out.print("숫자를 입력해주세요 : ");
             String balls = input.nextLineWithValidation(InputValidator.singleton());
-            Baseball computerBall = Baseball.of(baseballContext.getAnswer());
             Baseball myBall = Baseball.of(balls);
+            Baseball computerBall = Baseball.of(answer.getAnswer());
 
             BaseballScore matchResults = baseballGame.match(computerBall, myBall);
             System.out.print(matchResults);

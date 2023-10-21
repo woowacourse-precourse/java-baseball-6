@@ -1,4 +1,4 @@
-package baseball.context;
+package baseball.game.core;
 
 public enum GameState {
     RUNNING,
