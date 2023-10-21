@@ -16,6 +16,9 @@ public class Application {
         int n=3;
         int startN=1;
         int endN=9;
+        String strikeText="스트라이크";
+        String ballText="볼";
+        String nothingText="낫싱";
 
         //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
         List<Integer> computerNumList = new ArrayList<>();
