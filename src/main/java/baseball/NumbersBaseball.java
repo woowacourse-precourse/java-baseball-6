@@ -70,12 +70,14 @@ public class NumbersBaseball {
     }
 
     private void generateAnswer() {
+        int[] visited = new int[10];
         int randomNum;
         for (int i = 0; i < 3; i++) {
             randomNum = Randoms.pickNumberInRange(1, 9);
-            while (contains(answer, randomNum)) {
+            while (visited[randomNum] == 1) {
                 randomNum = Randoms.pickNumberInRange(1, 9);
             }
+            visited[randomNum] = 1;
             answer[i] = randomNum;
         }
     }
