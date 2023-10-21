@@ -10,7 +10,15 @@ public class BaseballGame {
     public void run(){
         printGameStart();
         List<Integer> randomNum = initRandomNum();
-        List<Integer> userNum = inputUserNum();
+        List<Integer> userNum;
+        Map<String, Integer> result;
+
+        do {
+            userNum = inputUserNum();
+            result = countStrikeAndBall(userNum, randomNum);
+            printGameResult(result);
+        }while(!isAllStrike(result));
+
     }
 
     private void printGameStart(){
