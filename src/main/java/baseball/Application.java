@@ -9,10 +9,31 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Application {
-    private static final int DIGIT = 3;
-    private static int randomNumber;
+    private final int DIGIT = 3;
+    private final int randomNumber;
+    private boolean resume = true;
 
-    public static int pickRandomNumber() {
+    public Application() {
+        randomNumber = pickRandomNumber();
+    }
+
+    public static void main(String[] args) {
+        (new Application()).run();
+    }
+
+    public void run() {
+        while (resume) {
+            matchingNumberLoop();
+            checkResume();
+        }
+    }
+
+    public void finishGame() {
+        System.out.println("게임 종료");
+        resume = false;
+    }
+
+    public int pickRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < DIGIT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,13 +44,13 @@ public class Application {
 
         int randomNumber = 0;
         for (int i = 0; i < computer.size(); i++) {
-            randomNumber += computer.get(i) * Math.pow(10, DIGIT - i);
+            randomNumber += computer.get(i) * Math.pow(10, DIGIT - (i + 1));
         }
 
         return randomNumber;
     }
 
-    public static int validateInputNumber(String number) throws IllegalArgumentException {
+    public int validateInputNumber(String number) throws IllegalArgumentException {
         Set<Character> player = number.chars()
                 .mapToObj(e -> (char) e).collect(Collectors.toSet());
         if (player.size() != DIGIT) {
@@ -39,7 +60,7 @@ public class Application {
         return Integer.parseInt(number);
     }
 
-    public static int countStrikes(int number) {
+    public int countStrikes(int number) {
         int strike = 0;
         String computer = Integer.toString(randomNumber);
         String player = Integer.toString(number);
@@ -53,7 +74,7 @@ public class Application {
         return strike;
     }
 
-    public static int countBalls(int number) {
+    public int countBalls(int number) {
         Set<Character> computer = Integer.toString(randomNumber).chars()
                 .mapToObj(e -> (char) e).collect(Collectors.toSet());
         Set<Character> player = Integer.toString(number).chars()
@@ -63,13 +84,13 @@ public class Application {
         return computer.size();
     }
 
-    public static void loopMatching() throws IllegalArgumentException {
+    public void matchingNumberLoop() throws IllegalArgumentException {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
+            StringBuilder sb = new StringBuilder();
             System.out.println("숫자를 입력해주세요 : ");
             int number = validateInputNumber(Console.readLine());
 
-            StringBuilder sb = new StringBuilder();
             int strike = countStrikes(number);
             if (strike > 0) {
                 sb.append(strike);
@@ -92,26 +113,14 @@ public class Application {
         }
     }
 
-    public static boolean checkResume() throws IllegalArgumentException {
+    public void checkResume() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
 
         if (input.equals("2")) {
-            System.out.println("게임 종료");
-            return false;
+            finishGame();
         } else if (!input.equals("1")) {
             throw new IllegalArgumentException();
-        }
-
-        return true;
-    }
-
-    public static void main(String[] args) {
-        boolean resume = true;
-        while (resume) {
-            randomNumber = pickRandomNumber();
-            loopMatching();
-            resume= checkResume();
         }
     }
 }
