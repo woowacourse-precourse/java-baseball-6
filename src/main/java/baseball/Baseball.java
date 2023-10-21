@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Baseball {
 
     private final PrintMessage printMessage = new PrintMessage();
+    private final Illegalcheck illegalcheck = new Illegalcheck();
 
     public void run(){
         printMessage.gameStartMessage();
@@ -37,6 +38,8 @@ public class Baseball {
 
             printMessage.endGameCommand();
             commandNumber = Integer.parseInt(Console.readLine());
+
+            illegalcheck.commandCheck(commandNumber);
 
         }while (commandNumber == 1);
     }
@@ -71,6 +74,8 @@ public class Baseball {
     public ArrayList<Integer> getNumberInputList(){
         printMessage.inputNumberMessage();
         String inputData = Console.readLine();
+        illegalcheck.gameNumberFilter(inputData);
+
         ArrayList<Integer> inputNumberList = new ArrayList<>();
         for(int i = 0; i < inputData.length(); i++) {
             inputNumberList.add(Integer.parseInt(String.valueOf(inputData.charAt(i))));
