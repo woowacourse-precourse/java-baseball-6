@@ -19,14 +19,14 @@ public class Result {
     }
 
     public void print() {
-        if (strikeCount == 0 && ballCount == 0) {
+        if (ballCount == 0 && strikeCount == 0) {
             OutputView.printNothing();
-        }
-        if (ballCount > 0) {
-            OutputView.printBall(ballCount);
-        }
-        if (strikeCount > 0) {
-            OutputView.printStrike(strikeCount);
+        } else if (ballCount > 0 && strikeCount > 0) {
+            OutputView.printBallAndStrikeCount(ballCount, strikeCount);
+        } else if (ballCount > 0) {
+            OutputView.printBallCount(ballCount);
+        } else if (strikeCount > 0) {
+            OutputView.printStrikeCount(strikeCount);
         }
         OutputView.printEmptyLine();
     }

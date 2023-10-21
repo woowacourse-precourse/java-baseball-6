@@ -10,6 +10,7 @@ public class InputView {
     }
 
     public static String requestRestartOrExit() {
+        OutputView.printGameOver();
         OutputView.printRequestRestartOrExit();
         return Console.readLine();
     }

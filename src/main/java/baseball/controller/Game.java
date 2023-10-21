@@ -2,14 +2,15 @@ package baseball.controller;
 
 import static baseball.config.Config.NUMBER_LENGTH;
 
-import baseball.model.Result;
 import baseball.model.Number;
+import baseball.model.Result;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.Objects;
 
 public class Game {
-
     private Number computerNumber;
+    private Number playerNumber;
     private Result result;
 
     public void start() {
@@ -20,8 +21,9 @@ public class Game {
     }
 
     private void play() {
+        OutputView.printGameStart();
         do {
-            Number playerNumber = Number.inputPlayerNumber();
+            playerNumber = Number.inputPlayerNumber();
             result = Result.create(playerNumber, computerNumber);
             result.print();
         } while (!result.checkGameOver());

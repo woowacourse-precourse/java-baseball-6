@@ -2,11 +2,12 @@ package baseball.model;
 
 import static baseball.config.Config.NUMBER_LENGTH;
 import static baseball.validator.NumberValidator.validateNumber;
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.joining;
 
 import baseball.view.InputView;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Number {
@@ -19,7 +20,13 @@ public class Number {
     }
 
     public static Number generateRandomNumber(final int numberLength) {
-        List<Integer> pickedInteger = pickUniqueNumbersInRange(1, 9, numberLength);
+        List<Integer> pickedInteger = new ArrayList<>();
+        while (pickedInteger.size() < numberLength) {
+            int number = pickNumberInRange(1, 9);
+            if (!pickedInteger.contains(number)) {
+                pickedInteger.add(number);
+            }
+        }
         String number = convertIntegerListToString(pickedInteger);
         return new Number(number);
     }
@@ -60,15 +67,14 @@ public class Number {
 
     private static String convertIntegerListToString(List<Integer> pickedInteger) {
         return pickedInteger.stream()
-            .map(Object::toString)
-            .collect(joining(""));
-
+                .map(Object::toString)
+                .collect(joining(""));
     }
 
     /**
      * getNumber() 외부 객체에서 값을 꺼내지 못하도록 private로 제한
      */
-    private String getNumber() {
+    public String getNumber() {
         return number;
     }
 }
