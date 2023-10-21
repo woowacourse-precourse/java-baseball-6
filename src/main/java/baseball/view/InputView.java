@@ -5,7 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.view.BaseballConsoleConstants.*;
+import static baseball.exception.BaseballExceptionType.*;
+import static baseball.view.BaseballConsoleConstants.INPUT_NUMBER;
 
 public class InputView {
     public List<Integer> readThreeInputNumbers() {
@@ -14,15 +15,37 @@ public class InputView {
 
         List<Integer> numbers = new ArrayList<>();
         for (String string : strings) {
-            numbers.add(Integer.parseInt(string.trim()));
+            int number = Integer.parseInt(string.trim());
+            validateNumberRange(number);
+            validateNoDuplicate(numbers, number);
+            numbers.add(number);
         }
+        validateNumberCount(numbers);
         return numbers;
     }
 
     public boolean readContinueGame() {
-        int input = Integer.parseInt(Console.readLine());
-        if (input == 1) return true;
+        int gameOption = Integer.parseInt(Console.readLine());
+        if (gameOption == 1) return true;
         return false;
+    }
+
+    public void validateNumberRange(int number) {
+        if (number < 1 || number > 9) {
+            throw new IllegalArgumentException(OUT_OF_RANGE.getMessage());
+        }
+    }
+
+    public void validateNoDuplicate(List<Integer> numbers, int number) {
+        if (numbers.contains(number)) {
+            throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
+        }
+    }
+
+    public void validateNumberCount(List<Integer> numbers) {
+        if (numbers.size() != 3) {
+            throw new IllegalArgumentException(INVALID_NUMBER_COUNT.getMessage());
+        }
     }
 }
 
