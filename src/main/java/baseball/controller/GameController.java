@@ -23,5 +23,6 @@ public class GameController {
         }
 
         output.showGameOver();
+        output.showGameRestartMessage();
     }
 }
