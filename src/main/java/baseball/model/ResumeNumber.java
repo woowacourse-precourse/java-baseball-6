@@ -2,7 +2,7 @@ package baseball.model;
 
 public class ResumeNumber {
 
-    private final int resume;
+    private int resume;
 
     private ResumeNumber(final int resume) {
         this.resume = resume;
@@ -10,5 +10,9 @@ public class ResumeNumber {
 
     public static ResumeNumber from(final int number) {
         return new ResumeNumber(number);
+    }
+
+    public void updateNumber(final int number) {
+        this.resume = number;
     }
 }
