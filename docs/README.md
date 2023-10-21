@@ -52,7 +52,7 @@
       <br>
       <br>
 
-**6️⃣숫자 야구 게임의 재시작 or 종료(Complete Shutdown)**
+**6️⃣ 숫자 야구 게임의 재시작 or 종료(Complete Shutdown)**
 
 - 플레이어의 입력 값에 의해 결정된다.
 - 1을 입력한 경우 -> 게임 재시작(New)
@@ -64,25 +64,16 @@
 
 ## 기능 목록
 
+모든 명명 규칙은 Camel Case에 의해 '첫 단어를 소문자, 그 다음 단어부터 대문자'를 통해 작성되었습니다.
+
 ```🌱 Domain```
 
-- Computer
+- Computer ✔️
     - 컴퓨터(상대방)의 숫자 설정 관련 담당
-- Player
+- Player ✔️
     - 플레이어의 숫자를 설정 관련 담당
       <br>
       <br>
-
-```🌱 Service```
-
-- GameFlowManagementService
-    - 숫자 야구 게임의 흐름 및 다음 게임의 'Replay or Quit' question 담당
-
-- GameNumberCheckService
-    - 컴퓨터와 플레이어의 숫자 비교 담당
-        - '스트라이크, 볼'을 카운트
-          <br>
-          <br>
 
 ```🌱 Controller```
 
@@ -95,6 +86,7 @@
           <br>
 
 ```🌱 Util```
+<br>
 
 - ComputerNumberGenerator
     - 숫자 야구 게임의 컴퓨터(상대방) 랜덤 숫자 생성 담당
@@ -103,6 +95,17 @@
 - StringToArrayList
     - String 숫자의 ArrayList 변환 담당
         - String 형태로 입력되어 들어오는 숫자를 ArrayList 형태로 변환하여 1~9의 숫자를 정확히 파악한다.
+          <br>
+          <br>
+
+```🌱 Service``` ♻️
+
+- GameFlowManagementService
+    - 숫자 야구 게임의 흐름 및 다음 게임의 'Replay or Quit' question 담당
+
+- GameNumberCheckService ✔️
+    - 컴퓨터와 플레이어의 숫자 비교 담당
+        - '스트라이크, 볼'을 카운트
           <br>
           <br>
 
@@ -145,7 +148,7 @@
 
 ```🌱 Exception```
 
-- PlayerInputException
+- PlayerInputException ✔️
     - 숫자 야구 게임을 위해 플레이어가 입력한 값에 대한 예외 처리 담당
         - 숫자의 중복 여부를 체크한다.
         - 숫자가 아닌 입력 및 숫자의 입력 개수를 체크한다.
@@ -155,8 +158,34 @@
           <br>
 
 
-- ReplayOrQuitGameException
+- ReplayOrQuitGameException ✔️
     - 앞선 숫자 야구 게임의 종료 후, Replay or Quit을 위해 플레이어가 입력하는 값에 대한 예외 처리 담당
         - "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."의 답변에서의 예외를 처리한다.
             - 1,2가 아닌 숫자를 입력한 경우 체크
             - 숫자를 여러 개 입력한 경우 체크
+
+---
+
+## 궁금해요
+
+**개발하면서 궁금했던 부분들에 대한 정리**
+<br>
+<br>
+<br>
+
+### 🧐 Util 패키지를 사용해야하는 이유
+
+- 우테코 이전 -> Util의 사용 이유에 대해 고민하지 않고, 코드의 집합소처럼 사용
+- [넌 지금 전혀 util 하고 있지 않아.](https://kong-dev.tistory.com/229)라는 글을 접하여 고민해보게 됨.
+- 숫자 야구 게임에서의 '플레이어가 입력하는 행위와 크게 상관없는 로직'은 무엇일까 고민하는 과정을 거침.
+    - 컴퓨터 자체의 랜덤 숫자 생성 과정
+    - 문자열 형태로 입력받은 숫자를 1개씩 인식할 수 있도록 변환하는 과정
+- 위의 2가지는 어찌보면 상대방 역할은 컴퓨터가 알아서 해야하는 것이기 때문에 다른 기능과 붙여놓을 필요가 없다는 판단을 하게 됨.
+  <br>
+
+### ↕️ 패키지의 순서를 개발한 순서에 맞게 배치하고 싶은데 방법이 없을까?
+
+- IntelliJ IDEA의 패키지 배치 순서는 기본적으로 알파벳의 순서를 통해 결정됨.
+- 그 외에도 흔히 알고 있는 정렬 기준에 따라 숫자와 대소문자, 특수문자 등에 의해 순서가 정렬됨.
+- IntelliJ IDEA 내부의 설정에서 커스터마이징이 가능할 것으로 보이나, 아직은 해결점을 찾지 못함.
+
