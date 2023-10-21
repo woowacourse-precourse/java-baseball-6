@@ -23,31 +23,30 @@ public class BaseballGameController {
     }
 
     private NumberList guessing() {
-        String guessString = InputController.scanUsersGuess();
-        return Convert.stringToNumberList(guessString);
+        return Convert.stringToNumberList(InputController.scanGuess());
     }
 
     public boolean whetherRestart() {
-        Restart restart = new Restart(Integer.parseInt(InputController.scanWhetherRestart()));
+        Restart restart = new Restart(Integer.parseInt(InputController.scanRestart()));
         return restart.whetherRestart();
     }
 
     private static class InputController {
-        public static String scanUsersGuess() {
+        public static String scanGuess() {
             InputView.printEnterGuess();
             String userInput = Console.readLine();
-            validateUsersGuess(userInput);
+            validateGuess(userInput);
             return userInput;
         }
 
-        public static String scanWhetherRestart() {
+        public static String scanRestart() {
             InputView.printEnterRestart();
             String userInput = Console.readLine();
             validateRestart(userInput);
             return userInput;
         }
 
-        private static void validateUsersGuess(String guess) {
+        private static void validateGuess(String guess) {
             Validator.validateNull(guess);
             Validator.validateSize(guess, 3);
         }
