@@ -9,7 +9,7 @@ class UserTest {
     @Test
     void 입력받기() {
         User user = new User();
-        user.setUserInputNumber(); // 123 입력
+        user.setUserInputNumber("123"); // 123 입력
         assertThat(user.userInputNumber).isEqualTo("123");
     }
 
