@@ -12,7 +12,7 @@ public class Computer {
         size = 0;
     }
 
-    public String generate() {
+    public String generateRandom() {
         while (size < 3) {
             String number = createOne(); // 숫자 하나 생성
 
