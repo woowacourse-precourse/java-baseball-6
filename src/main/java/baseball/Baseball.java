@@ -55,7 +55,7 @@ public class Baseball {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         List<Integer> integerList = new ArrayList<>();
-        if (!userInputValidation.isValidRestartNumber(inputNumber)) {
+        if (!userInputValidation.isValidGameNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < 3; ++i) {
@@ -72,7 +72,7 @@ public class Baseball {
     public void restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputNumber = Console.readLine();
-        if (!userInputValidation.isValidGameNumber(inputNumber)) {
+        if (!userInputValidation.isValidRestartNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }
         if (inputNumber.length() != 1) {
