@@ -41,8 +41,15 @@ public class MessageStream {
         System.out.print(restartMessage);
     }
 
-    public static List<Integer> input() {
-        String str = readLine();
+    public static String input() {
+        return readLine();
+    }
+
+    public static List<Integer> predictionInput() {
+        return convertThreeNumericStringToIntegerList(readLine());
+    }
+
+    public static List<Integer> convertThreeNumericStringToIntegerList(String str) {
         return IntStream.range(0, str.length())
                 .map(i -> Integer.parseInt(str.substring(i, i + 1)))
                 .boxed()

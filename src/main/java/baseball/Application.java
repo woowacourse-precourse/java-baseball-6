@@ -16,7 +16,7 @@ public class Application {
     private static void process() {
         while (true) {
             MessageStream.printInputMessage();
-            List<Integer> userInput = MessageStream.input();
+            List<Integer> userInput = MessageStream.predictionInput();
             List<Integer> compareResult = computer.compareWithAnswer(userInput);
             MessageStream.printResultMessage(compareResult.get(1), compareResult.get(0));
             if (compareResult.get(1).equals(3)) {
