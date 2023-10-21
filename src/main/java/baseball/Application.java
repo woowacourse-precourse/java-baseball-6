@@ -10,8 +10,15 @@ public class Application {
     public static void main(String[] args) {
         Computer com = new Computer();
         User user = new User();
+        Compare comp = new Compare();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println(com.computerNumber().toString());
-        System.out.println(user.userNumber().toString());
+        while(true) {
+            List<Integer> comNum = com.computerNumber();
+            System.out.println(comNum.toString());
+            List<Integer> userNum = user.userNumber();
+            System.out.println(userNum.toString());
+            comp.countStirkeOrBall(comNum, userNum);
+        }
+
     }
 }
