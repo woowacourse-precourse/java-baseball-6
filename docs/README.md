@@ -94,3 +94,5 @@
 - BallCountMessage: 볼카운트 결과에 대한 메시지를 가진다
 
 - ResultStatus: 결과의 상태를 가진다
+
+- RetryStatus: 재시도 상태를 가진다
