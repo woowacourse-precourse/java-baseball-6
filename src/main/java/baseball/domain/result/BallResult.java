@@ -1,6 +1,6 @@
 package baseball.domain.result;
 
-public enum BallResult{
+public enum BallResult {
     STRIKE(3), BALL(2), NOTHING(1);
 
     private final int priority;

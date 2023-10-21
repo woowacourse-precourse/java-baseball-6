@@ -2,7 +2,7 @@ package baseball.domain.player;
 
 import baseball.domain.result.GameResult;
 
-public class Computer extends Playable{
+public class Computer extends Playable {
 
     public Computer() {
         super();

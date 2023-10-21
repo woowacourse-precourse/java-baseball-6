@@ -2,15 +2,14 @@ package baseball.domain.util;
 
 import baseball.domain.ball.Ball;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RandomBallGenerator {
     public static final int ZERO = 0;
     public static final int SIZE_OF_NUMBER = 3;
-    private static final int SMALLEST_NUMBER = 1;
-    private static final int LARGEST_NUMBER = 9;
+    public static final int SMALLEST_NUMBER = 1;
+    public static final int LARGEST_NUMBER = 9;
 
     public static List<Ball> makeBalls() {
         List<Ball> balls = new ArrayList<>();
