@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class BaseballGame{
+public class BaseballGame {
     private final List<Integer> computerNumber = new ArrayList<>();
     private final List<Integer> playerNumber = new ArrayList<>();
     private int strike;
     private int ball;
-    private void newGame(){
+
+    private void newGame() {
         computerNumber.clear();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -20,8 +21,9 @@ public class BaseballGame{
             }
         }
     }
-    private void rightInput(String playerNumberInString){
-        if (playerNumberInString.length()!=3) {
+
+    private void rightInput(String playerNumberInString) {
+        if (playerNumberInString.length() != 3) {
             throw new IllegalArgumentException();
         }
         if (playerNumberInString.charAt(0)
@@ -32,69 +34,76 @@ public class BaseballGame{
                 == playerNumberInString.charAt(2)) {
             throw new IllegalArgumentException();
         }
-        for(int i = 0; i<3;i++){
-            if(!Character.isDigit(playerNumberInString.charAt(i))){
+        for (int i = 0; i < 3; i++) {
+            if (!Character.isDigit(playerNumberInString.charAt(i))) {
                 throw new IllegalArgumentException();
             }
-            if(playerNumberInString.charAt(i)=='0'){
+            if (playerNumberInString.charAt(i) == '0') {
                 throw new IllegalArgumentException();
             }
         }
     }
-    private void readPlayerNumber(){
+
+    private void readPlayerNumber() {
         playerNumber.clear();
         System.out.print("\n숫자를 입력해주세요 : ");
         String playerNumberInString = Console.readLine();
         rightInput(playerNumberInString);
-        while(playerNumber.size()<3){
-            playerNumber.add(playerNumberInString.charAt(playerNumber.size())-'0');
+        while (playerNumber.size() < 3) {
+            playerNumber.add(playerNumberInString.charAt(playerNumber.size()) - '0');
         }
     }
-    private void clearStrikeAndBall(){
+
+    private void clearStrikeAndBall() {
         strike = 0;
         ball = 0;
     }
-    public void printResult(){
-        if(ball !=0){
-            System.out.print(ball +"볼 ");
+
+    public void printResult() {
+        if (ball != 0) {
+            System.out.print(ball + "볼 ");
         }
-        if(strike !=0){
-            System.out.print(strike +"스트라이크");
+        if (strike != 0) {
+            System.out.print(strike + "스트라이크");
         }
-        if(ball ==0&& strike ==0){
+        if (ball == 0 && strike == 0) {
             System.out.print("낫싱");
         }
     }
-    private void compareNumber(){
-        for(int i = 0; i<3;i++){
-            if(Objects.equals(computerNumber.get(i), playerNumber.get(i))){
+
+    private void compareNumber() {
+        for (int i = 0; i < 3; i++) {
+            if (Objects.equals(computerNumber.get(i), playerNumber.get(i))) {
                 strike++;
-            }else if (Objects.equals(playerNumber.get(i),computerNumber.get((i+1)%3))
-                    ||Objects.equals(playerNumber.get(i),computerNumber.get((i+2)%3))){
+            } else if (Objects.equals(playerNumber.get(i), computerNumber.get((i + 1) % 3))
+                    || Objects.equals(playerNumber.get(i), computerNumber.get((i + 2) % 3))) {
                 ball++;
             }
         }
     }
+
     private void gameProcess() {
         clearStrikeAndBall();
-        while(strike != 3){
+        while (strike != 3) {
             clearStrikeAndBall();
             readPlayerNumber();
             compareNumber();
             printResult();
         }
     }
-    private void restartOrExit(){
+
+    private void restartOrExit() {
         String restartOrExit = Console.readLine();
-        if(restartOrExit.equals("1")){
+        if (restartOrExit.equals("1")) {
             startGame();
-        }else if(restartOrExit.equals("2")){
+        } else if (restartOrExit.equals("2")) {
             System.out.print("게임 종료");
-        }else{
+        } else {
             System.out.println("잘못된 입력, 다시 입력하세요.");
             restartOrExit();
         }
     }
+
     public void startGame() {
         newGame();
         gameProcess();
