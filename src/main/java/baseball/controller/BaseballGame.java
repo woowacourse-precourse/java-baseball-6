@@ -33,10 +33,9 @@ public class BaseballGame {
             player.setPlayerNumbers(playerInputNumbers);
 
             CheckResult checkResult = computer.checkPlayerNumbers(player.getPlayerNumbers());
+            Output.printResult(checkResult);
             if (isAllCorrect()) {
                 Output.printAllCorrect();
-            } else {
-                Output.printResult(checkResult);
             }
         } while (!isAllCorrect());
     }
