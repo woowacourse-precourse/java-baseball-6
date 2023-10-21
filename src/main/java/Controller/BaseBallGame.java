@@ -3,7 +3,7 @@ package Controller;
 import Model.Computer;
 import Model.Player;
 import Model.Refree;
-import View.GameResult;
+import View.GameInterface;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ public class BaseBallGame {
     public void run() {
         computer.CreateAnswer();
         do {
-            PlayerNumbers = player.InputNumbers();
+            PlayerNumbers=player.GuessNumbers(GameInterface.InputNumbers());
             strike = 0;
             ball = 0;
             for (int i = 0; i < PlayerNumbers.size(); i++) {
@@ -41,9 +41,9 @@ public class BaseBallGame {
             } else if (strike + ball != 0) {
                 isNothing = false;
             }
-            GameResult.PrintResult(strike, ball, isNothing);
-            if (refree.GameClear(strike)) {
-                if (refree.GameRestart()) {
+            GameInterface.PrintResult(strike, ball, isNothing);
+            if (GameInterface.GameClear(strike)) {
+                if (GameInterface.GameRestart()) {
                     this.run();
                 }
                 break;
