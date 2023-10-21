@@ -14,36 +14,41 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class BaseBallController {
 	private final ConsoleInput consoleInput = new ConsoleInput();
 	private final ConsoleOutput consoleOutput = new ConsoleOutput();
-	private final String targetNumber;
+	private String targetNumber;
 
-	public BaseBallController() {
-		this.targetNumber = generateRandomNumber();
-	}
-
-	private String generateRandomNumber() {
-		List<Integer> numbers = new ArrayList<>();
-		while (numbers.size() < NumberConstant.PICK_COUNT.getValue()) {
-			int num = Randoms.pickNumberInRange(NumberConstant.MIN_NUMBER.getValue(),
-				NumberConstant.MAX_NUMBER.getValue());
-			if (!numbers.contains(num)) {
-				numbers.add(num);
+	public void run() {
+		while (true) {
+			playGame();
+			if (consoleInput.getEndInput().equals(BaseBallConstant.FINISH.getValue())) {
+				return;
 			}
 		}
-		return numbers.stream().map(String::valueOf).collect(Collectors.joining());
 	}
 
-	public boolean playGame() {
+	private void playGame() {
 		consoleOutput.printInit();
+		generateTargetNumber();
 		while (true) {
 			consoleOutput.printReq();
-			String input = consoleInput.getGameInput();
-			BaseBallResult result = getResult(input);
+			BaseBallResult result = getResult(consoleInput.getGameInput());
 			if (result.getStrikeCount() == NumberConstant.PICK_COUNT.getValue()) {
 				consoleOutput.printEnd();
-				return consoleInput.getEndInput().equals(BaseBallConstant.RESTART.getValue());
+				return;
 			}
 			consoleOutput.printResult(result);
 		}
+	}
+
+	private void generateTargetNumber() {
+		List<Integer> numbers = new ArrayList<>();
+		while (numbers.size() < NumberConstant.PICK_COUNT.getValue()) {
+			int randomNumber = Randoms.pickNumberInRange(NumberConstant.MIN_NUMBER.getValue(),
+				NumberConstant.MAX_NUMBER.getValue());
+			if (!numbers.contains(randomNumber)) {
+				numbers.add(randomNumber);
+			}
+		}
+		targetNumber = numbers.stream().map(String::valueOf).collect(Collectors.joining());
 	}
 
 	private BaseBallResult getResult(String input) {
