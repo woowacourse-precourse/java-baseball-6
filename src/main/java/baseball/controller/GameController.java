@@ -31,31 +31,32 @@ public class GameController {
     }
 
     public void start(){
-        while(true) {
+        String input="1";
+        outputView.printProgramStartMessage();
+
+        while(isOne(input)) {
             Game game = new Game();
-            outputView.printProgramStartMessage();
 
-            while (true) {//입력과 결과확인
-                String userInput = inputView.inputNumbers();
-                Numbers user = new Numbers(userInput);
-                Result result = game.calculateResult(user);
-
-                outputView.printResult(result.getResult());
-
-                if (result.isThreeStrike()) {
-                    outputView.printFinishGameMessage();
-                    break;
-                }
-            }
+            playGame(game);
 
             //재시작 여부
-            String input = inputView.inputContinue();
+            input = inputView.inputContinue();
             Validator validator = new Validator();
             validator.validateContinue(input);
-
-            if (!isOne(input)) {
-                break;
-            }
         }
+    }
+
+    private void playGame(Game game){
+        Result result=new Result(new Numbers("123"),new Numbers("456"));
+
+        while (!result.isThreeStrike()) {//입력과 결과확인
+            String userInput = inputView.inputNumbers();
+            Numbers user = new Numbers(userInput);
+            result = game.calculateResult(user);
+
+            outputView.printResult(result.getResult());
+        }
+
+        outputView.printFinishGameMessage();
     }
 }
