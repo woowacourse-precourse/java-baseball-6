@@ -13,7 +13,12 @@ public class GameProcess {
 
         int strike = countStrike(player, computer);
         int ball = countBall(player, computer);
-        printGameResult(strike, ball);
+
+        // 3스트라이크가 충족되지 않으면 결과값을 무한으로 출력 중인 상태 => fix 필요
+        while (strike != 3) {
+            printGameResult(strike, ball);
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
         // computer와 player 확인 작업(이후 삭제 예정)
         System.out.println(computer);
