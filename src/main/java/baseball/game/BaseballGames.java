@@ -7,9 +7,9 @@ import baseball.service.impl.MessageGenerateServiceImpl;
 import baseball.service.impl.UserCodeServiceImpl;
 import baseball.service.impl.ValidateJudgeServiceImpl;
 import baseball.vo.BaseballCode;
+import baseball.vo.GameResult;
 import baseball.vo.UserCode;
 import java.util.ArrayList;
-import java.util.List;
 
 public class BaseballGames {
 
@@ -26,8 +26,8 @@ public class BaseballGames {
         while (true) {
             UserCode userCode = userCodeService.makeUserCode(codes);
             validateJudgeService.validateLegalUserCode(userCode);
-            List<Integer> resultList = validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
-            String batResult = messageGenerateService.makeMessage(resultList);
+            GameResult gameResult = validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
+            String batResult = messageGenerateService.makeMessage(gameResult);
             System.out.println(batResult);
             if (batResult.equals("3스트라이크")) {
                 System.out.println(END_COMMENT);

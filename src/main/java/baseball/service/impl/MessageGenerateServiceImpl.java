@@ -1,13 +1,13 @@
 package baseball.service.impl;
 
 import baseball.service.MessageGenerateService;
-import java.util.List;
+import baseball.vo.GameResult;
 
 public class MessageGenerateServiceImpl implements MessageGenerateService {
     @Override
-    public String makeMessage(List<Integer> resultList) {
-        Integer strikeCount = resultList.get(0);
-        Integer ballCount = resultList.get(1);
+    public String makeMessage(GameResult gameResult) {
+        Integer strikeCount = gameResult.getStrikeCount();
+        Integer ballCount = gameResult.getBallCount();
         if (strikeCount.equals(3)) {
             return strikeCount + "스트라이크";
         } else if (ballCount.equals(0) && !strikeCount.equals(0)) {

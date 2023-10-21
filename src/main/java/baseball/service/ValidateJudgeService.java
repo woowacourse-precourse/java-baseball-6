@@ -1,12 +1,12 @@
 package baseball.service;
 
 import baseball.vo.BaseballCode;
+import baseball.vo.GameResult;
 import baseball.vo.UserCode;
-import java.util.List;
 
 public interface ValidateJudgeService {
 
-    List<Integer> validateAndCompareCodes(BaseballCode baseballCode, UserCode userCode);
+    GameResult validateAndCompareCodes(BaseballCode baseballCode, UserCode userCode);
 
     void validateLegalUserCode(UserCode userCode);
 

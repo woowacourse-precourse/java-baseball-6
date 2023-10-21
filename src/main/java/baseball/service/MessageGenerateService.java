@@ -1,8 +1,8 @@
 package baseball.service;
 
-import java.util.List;
+import baseball.vo.GameResult;
 
 public interface MessageGenerateService {
 
-    String makeMessage(List<Integer> resultList);
+    String makeMessage(GameResult gameResult);
 }

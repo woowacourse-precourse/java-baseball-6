@@ -2,31 +2,39 @@ package baseball.service.impl;
 
 import baseball.service.ValidateJudgeService;
 import baseball.vo.BaseballCode;
+import baseball.vo.GameResult;
 import baseball.vo.UserCode;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
 public class ValidateJudgeServiceImpl implements ValidateJudgeService {
 
+    private static final GameResult result = new GameResult(new ArrayList<>());
+
+    private static void validateCode(BaseballCode baseballCode, UserCode userCode, List<Integer> count,
+                                     int userCodeIndex, int baseballCodeIndex) {
+        Integer userCodeElement = userCode.getUserCodeElement(userCodeIndex);
+        Integer baseballCodeElement = baseballCode.getBaseballCodeElement(baseballCodeIndex);
+        if (userCodeIndex != baseballCodeIndex && userCodeElement.equals(baseballCodeElement)) {
+            count.set(1, count.get(1) + 1);
+        } else if (userCodeIndex == baseballCodeIndex && userCodeElement.equals(baseballCodeElement)) {
+            count.set(0, count.get(0) + 1);
+        }
+    }
+
     @Override
-    public List<Integer> validateAndCompareCodes(BaseballCode baseballCode, UserCode userCode) {
-        int strikeCount = 0;
-        int ballCount = 0;
+    public GameResult validateAndCompareCodes(BaseballCode baseballCode, UserCode userCode) {
+        List<Integer> count = Arrays.asList(0, 0);
 
         for (int userCodeIndex = 0; userCodeIndex < userCode.getUserCodeSize(); userCodeIndex++) {
             for (int baseballCodeIndex = 0; baseballCodeIndex < baseballCode.getBaseballCodeSize();
                  baseballCodeIndex++) {
-                Integer userCodeElement = userCode.getUserCodeElement(userCodeIndex);
-                Integer baseballCodeElement = baseballCode.getBaseballCodeElement(baseballCodeIndex);
-                if (userCodeIndex != baseballCodeIndex && userCodeElement.equals(baseballCodeElement)) {
-                    ballCount += 1;
-                } else if (userCodeIndex == baseballCodeIndex && userCodeElement.equals(baseballCodeElement)) {
-                    strikeCount += 1;
-                }
+                validateCode(baseballCode, userCode, count, userCodeIndex, baseballCodeIndex);
             }
         }
-        return Arrays.asList(strikeCount, ballCount);
+        return result.makeNewGameResult(count);
     }
 
     @Override
