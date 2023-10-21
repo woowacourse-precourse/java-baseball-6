@@ -20,7 +20,6 @@ public class Computer {
             }
         }
         number = result;
-        System.out.println(number);
         return result;
     }
 
