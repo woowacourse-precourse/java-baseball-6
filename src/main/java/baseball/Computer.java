@@ -49,4 +49,8 @@ public class Computer {
 
         return List.of(strikeCount, ballCount);
     }
+
+    public List<Integer> getAnswer() {
+        return answer;
+    }
 }
