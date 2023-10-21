@@ -13,7 +13,7 @@ public class GameNumber {
     private final List<Integer> gameNumber;
 
     public GameNumber(List<Integer> gameNumber) {
-        validateLength(gameNumber);
+        validateSize(gameNumber);
         validateRange(gameNumber);
         this.gameNumber = gameNumber;
     }
@@ -21,7 +21,7 @@ public class GameNumber {
     public GameNumber(String value) {
         validateType(value);
         List<Integer> gameNumber = Converter.convertList(value);
-        validateLength(gameNumber);
+        validateSize(gameNumber);
         validateRange(gameNumber);
         this.gameNumber = gameNumber;
     }
@@ -67,7 +67,7 @@ public class GameNumber {
         }
     }
 
-    private void validateLength(List<Integer> gameNumber) {
+    private void validateSize(List<Integer> gameNumber) {
         if (!Number.SIZE.equals(Set.copyOf(gameNumber).size())
                 || !Number.SIZE.equals(gameNumber.size())) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_NUMBER);
