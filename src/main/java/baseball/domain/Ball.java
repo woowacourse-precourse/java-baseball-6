@@ -6,7 +6,7 @@ public class Ball {
     private static final int ZERO_COUNT = 0;
     private static final String NO_BALL_MESSAGE = "";
     private static final String BALL_MESSAGE = "볼";
-    private int ball;
+    private final int ball;
 
     public Ball(int ball) {
         this.ball = ball;

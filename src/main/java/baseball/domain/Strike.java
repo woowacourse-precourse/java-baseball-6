@@ -7,7 +7,7 @@ public class Strike {
     private static final int FULL_COUNT = 3;
     private static final String NO_STRIKE_MESSAGE = "";
     private static final String STRIKE_MESSAGE = "스트라이크";
-    private int strike;
+    private final int strike;
 
     public Strike(int strike) {
         this.strike = strike;

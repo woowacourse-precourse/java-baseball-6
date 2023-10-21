@@ -6,8 +6,8 @@ import java.util.Objects;
 public class Score {
     private static final String NO_BALL_NO_STRIKE_MESSAGE = "낫싱";
     private static final String SPACE = " ";
-    private Ball ball;
-    private Strike strike;
+    private final Ball ball;
+    private final Strike strike;
 
     public Score(int ball, int strike) {
         this.ball = new Ball(ball);
