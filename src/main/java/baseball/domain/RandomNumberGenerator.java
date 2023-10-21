@@ -12,10 +12,10 @@ public class RandomNumberGenerator {
     private static final int MAX_DIGIT = Digit.MAX_VALUE;
     private static final int NUMBER_LENGTH = Number.NUMBER_LENGTH;
 
-    private final Supplier<Integer> randomValue;
+    private final Supplier<Integer> randomValueGenerator;
 
-    RandomNumberGenerator(Supplier<Integer> randomValue) {
-        this.randomValue = Objects.requireNonNull(randomValue);
+    RandomNumberGenerator(Supplier<Integer> randomValueGenerator) {
+        this.randomValueGenerator = Objects.requireNonNull(randomValueGenerator);
     }
 
     public static RandomNumberGenerator create() {
@@ -23,15 +23,14 @@ public class RandomNumberGenerator {
     }
 
     public Number generate() {
-        List<Digit> values = Stream.iterate(generateRandomDigit(), digit -> generateRandomDigit())
-                .distinct().limit(NUMBER_LENGTH)
-                .toList();
+        List<Digit> values = Stream.iterate(generateRandomDigit(), digit -> generateRandomDigit()).distinct()
+                .limit(NUMBER_LENGTH).toList();
 
         return Number.from(values);
     }
 
     private Digit generateRandomDigit() {
-        int value = randomValue.get();
+        int value = randomValueGenerator.get();
         return Digit.from(value);
     }
 
