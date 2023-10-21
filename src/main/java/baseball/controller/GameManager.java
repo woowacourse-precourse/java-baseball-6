@@ -15,7 +15,7 @@ public class GameManager {
     }
 
     void playRound() {
-        BallNumber playerNumber = returnPlayerNumber();
+        BallNumber playerNumber = inputPlayerNumber();
         ResultCalculator resultCalculator = new ResultCalculator(computerNumber);
         Result roundResult = resultCalculator.calculateResult(playerNumber);
         if (roundResult.isStrikesAllOfBalls()) {
@@ -34,15 +34,15 @@ public class GameManager {
         OutputHandler.printStrikesAndBalls(toShow.numberOfStrikes, toShow.numberOfBalls);
     }
 
-    private BallNumber returnPlayerNumber() {
-        String playerNumber = InputHandler.insertBallNum();
+    private BallNumber inputPlayerNumber() {
+        String playerNumber = InputHandler.inputBallNum();
         InputVerifier.checkBallNumber(playerNumber);
         return new BallNumber(playerNumber);
     }
 
     private void choiceNewGameOrGameOver() {
         OutputHandler.printAllStrike();
-        String playerChoice = InputHandler.insertNewGameOrGameOver();
+        String playerChoice = InputHandler.inputNewGameOrGameOver();
         InputVerifier.checkGameNumber(playerChoice);
         if (Integer.parseInt(playerChoice) == SystemConstant.NEW_GAME) {
             SystemManager.newGame();
