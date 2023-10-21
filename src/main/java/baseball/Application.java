@@ -9,6 +9,11 @@ public class Application {
         //"게임 시작 문구" 출력　
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        //공통 변수들 TODO : 추후 static class으로 뺄 수 있다.
+        int n=3;
+        int startN=1;
+        int endN=9;
+
         //사용자는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 입력　
         System.out.print("숫자를 입력해주세요 : ");
         String inputNum = Console.readLine();
