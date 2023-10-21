@@ -25,7 +25,7 @@ public class StringUtils {
     }
 
     public static boolean hasDuplicate(final String value) {
-        return value.length() == Arrays.stream(value.split("")).collect(Collectors.toSet()).size();
+        return value.length() != Arrays.stream(value.split("")).collect(Collectors.toSet()).size();
     }
 
 
