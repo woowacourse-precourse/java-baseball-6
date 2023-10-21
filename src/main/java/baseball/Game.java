@@ -8,18 +8,18 @@ import java.util.*;
 public class Game {
 
     public static void startGame(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true){
-            System.out.println("숫자 야구 게임을 시작합니다.");
             if(!Data.isCreated) {
                 initComputerNumber();
                 Data.isCreated = true;
             }
-            System.out.println(Data.computerNumber); // 디버깅용
+            //System.out.println(Data.computerNumber); // 디버깅용
             setPlayerNumber();
             getResult();
             printHint();
             if(Data.strike == Data.ANSWER_STRIKE){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 if(!restartGame()){
                     break;
                 }
@@ -64,7 +64,7 @@ public class Game {
     }
     static void setPlayerNumber() throws IllegalArgumentException{
         Data.playerNumber = new ArrayList<>();
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String input = playerInput();
         int toIntInput = Integer.parseInt(input);
         while (toIntInput > 0){
