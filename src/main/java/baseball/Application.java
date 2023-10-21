@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class Application {
+    final static String errorMessage = "[error] 올바르지 않은 입력입니다.";
+
     public static void main(String[] args) throws IllegalArgumentException {
-        int try_again = 1;
+        String try_again = "1";
         boolean is_it_correct;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (try_again == 1) {
+        while (try_again.equals("1")) {
             List<Integer> computerNum = new ArrayList<>();
             getComputerNum(computerNum);
             while (true) {
@@ -26,21 +28,18 @@ public class Application {
                     break;
                 }
             }
-            // Check if user wants to play the game again.
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            try_again = Integer.parseInt(Console.readLine());
+            try_again = restartOrNot();
         }
     }
 
     static void checkUserInput(String input) throws IllegalArgumentException {
-        String errorMessage = "[error] 올바르지 않은 입력입니다.";
         // Check the input size is 3.
         if (input.length() != 3) {
             throw new IllegalArgumentException(errorMessage);
         }
         // Check each character is number.
         for (int i = 0; i < input.length(); i++) {
-            if (!(input.charAt(i) >= '0' && input.charAt(i) <= '9')) {
+            if (!(input.charAt(i) >= '1' && input.charAt(i) <= '9')) {
                 throw new IllegalArgumentException(errorMessage);
             }
         }
@@ -98,6 +97,16 @@ public class Application {
             is_it_correct = true;
         }
         return is_it_correct;
+    }
+
+    static String restartOrNot() throws IllegalArgumentException {
+        // Check if user wants to play the game again.
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String try_again = Console.readLine();
+        if (!(try_again.equals("1") || try_again.equals("2"))) {
+            throw new IllegalArgumentException(errorMessage);
+        }
+        return try_again;
     }
 }
 
