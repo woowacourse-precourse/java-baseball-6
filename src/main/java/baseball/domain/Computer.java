@@ -7,7 +7,7 @@ public class Computer {
     private String randomNumber;
     private int size;
 
-    Computer() {
+    public Computer() {
         randomNumber = "";
         size = 0;
     }
