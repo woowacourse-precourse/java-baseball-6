@@ -7,14 +7,14 @@ public class Application {
     private static final String GAME_QUIT = "2";
 
     public static void main(String[] args) {
-        Print.printGameStart();
+        Printer.printGameStart();
 
         boolean gameQuit;
         do {
             runGame();
-            Print.printGameWin();
+            Printer.printGameWin();
 
-            Print.printGameRestartOrQuit();
+            Printer.printGameRestartOrQuit();
             String input = Console.readLine();
             GameRestartOrQuit gameRestartOrQuit = new GameRestartOrQuit(input);
             gameQuit = isGameQuit(gameRestartOrQuit.getRestartOrQuitNumber());
@@ -26,12 +26,12 @@ public class Application {
 
         boolean threeStrike;
         do {
-            Print.printInputNumber();
+            Printer.printInputNumber();
             String input = Console.readLine();
             Player playerNumbers = new Player(input);
 
             Hint hint = new Hint(computerNumbers.getComputer(), playerNumbers.getPlayerNumbers());
-            Print.printHint(hint);
+            Printer.printHint(hint);
             threeStrike = isThreeStrike(hint.getStrike());
         } while(!threeStrike);
     }
