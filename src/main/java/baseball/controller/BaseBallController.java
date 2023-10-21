@@ -75,6 +75,9 @@ public class BaseBallController {
             strikeCount = countStrike();
             OUTPUT_VIEW.printBaseBallHint(makeHintMessage());
         }
+        OUTPUT_VIEW.printGameClearMessage();
+        askRestartGame();
+        ChooseGameRepeatOrQuit();
     }
 
 
@@ -88,5 +91,27 @@ public class BaseBallController {
         }
         return ballCount + BALL + " " + strikeCount + STRIKE;
     }
-    
+
+    private void askRestartGame() {
+        OUTPUT_VIEW.printContinueGameChoicePrompt();
+        PLAYER_INPUT.setPlayerInput(INPUT_VIEW.enterPlayerInput());
+        INPUT_VALIDATOR.isValidContinueGameChoice(PLAYER_INPUT.getPlayerInput());
+    }
+
+    private void restartGame() {
+        initGame();
+        runGame();
+    }
+
+    private void endGame() {
+        OUTPUT_VIEW.printGameEndMessage();
+    }
+
+    private void ChooseGameRepeatOrQuit() {
+        if (PLAYER_INPUT.getPlayerInput().equals("1")) {
+            restartGame();
+        } else if (PLAYER_INPUT.getPlayerInput().equals("2")) {
+            endGame();
+        }
+    }
 }
