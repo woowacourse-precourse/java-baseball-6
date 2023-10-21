@@ -9,7 +9,7 @@ public class RandomUtility {
     private static final int NUMBER_RANGE_MIN = 1;
     private static final int NUMBER_RANGE_MAX = 9;
 
-    public List<Integer> createComputerNumber() {
+    public static List<Integer> createComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while(computer.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_MIN, NUMBER_RANGE_MAX);
