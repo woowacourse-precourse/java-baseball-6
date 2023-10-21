@@ -33,6 +33,7 @@ public class Application{
     private static void playGame(List<Integer> computerNumber){
         List<Integer> userNumber = input();
         int strike = findStrike(computerNumber, userNumber);
+        int ball = findBall(computerNumber,userNumber,strike);
     }
 
     private static List<Integer> input(){
@@ -92,6 +93,21 @@ public class Application{
             }
         }
         return count;
+    }
+
+    private static int findBall(List<Integer> computerNumber, List<Integer> userNumber, int strike){
+        int count = 0;
+        int[] visited = new int[10];
+        for(int i=0;i<3;i++){
+            visited[computerNumber.get(i)]++;
+            visited[userNumber.get(i)]++;
+        }
+        for(int i=1;i<=9;i++){
+            if(visited[i]==2){
+                count++;
+            }
+        }
+        return count-strike;
     }
 
 }
