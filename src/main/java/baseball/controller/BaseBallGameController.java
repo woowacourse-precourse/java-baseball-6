@@ -19,6 +19,15 @@ public class BaseBallGameController {
     }
 
     public void startGame() {
+        while (true) {
+            playSingleGame();
+            if (!decideNextAction()) {
+                break;
+            }
+        }
+    }
+
+    private void playSingleGame() {
         baseballOutputView.printMessage(BaseballGameMessage.START_GAME);
 
         List<Integer> targetNumber = baseBallService.generateRandomNumbers();
@@ -28,19 +37,17 @@ public class BaseBallGameController {
             List<Integer> userInput = baseballInputView.userGuessInput();
             String gameResult = baseBallService.getGameResult(targetNumber, userInput).toString();
             baseballOutputView.printGameResult(gameResult);
+
             if (gameResult.equals("3스트라이크")) {
                 System.out.println(BaseballGameMessage.GAME_OVER);
                 break;
             }
         }
-
-        decideNextAction();
     }
-    private void decideNextAction() {
+
+    private boolean decideNextAction() {
         baseballOutputView.printMessage(BaseballGameMessage.QUIT_OR_START_GAME);
         int userInput = baseballInputView.userProgressInput();
-        if (userInput == 1) {
-            startGame();
-        }
+        return userInput == 1;
     }
 }
