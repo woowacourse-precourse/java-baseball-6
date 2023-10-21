@@ -72,7 +72,7 @@ public class BaseballNumbers {
         return cnt;
     }
 
-    public boolean checkBall(String com, int idx) {
+    private boolean checkBall(String com, int idx) {
         char p = numbers.charAt(idx);
         char c = com.charAt(idx);
         if (c != p && com.contains(String.valueOf(p))) {
@@ -81,7 +81,7 @@ public class BaseballNumbers {
         return false;
     }
 
-    public boolean checkStrike(String com, int idx) {
+    private boolean checkStrike(String com, int idx) {
         char p = numbers.charAt(idx);
         char c = com.charAt(idx);
         if (c == p) {
