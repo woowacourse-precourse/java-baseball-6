@@ -79,4 +79,13 @@ class UserNumberTest {
                 .hasMessage("각자리의 숫자가 1부터 9사이의 숫자로 이루어져야 합니다");
     }
 
+    @DisplayName("사용자 수에 중복된 값 존재하면 에러 발생")
+    @Test
+    void inputDuplicateNumber(){
+        String inputNumber = "122";
+        assertThatThrownBy(() -> new UserNumber(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("중복된 숫자가 존재하지 않아야 합니다");
+    }
+
 }
