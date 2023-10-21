@@ -37,7 +37,7 @@ public class BaseballInfo {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        if (ball != 0 && strike == 0) {
+        if (ball == 0 && strike == 0) {
             return "낫싱";
         }
         if (ball != 0) {
