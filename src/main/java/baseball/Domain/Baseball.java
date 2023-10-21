@@ -1,6 +1,5 @@
 package baseball.Domain;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,15 +7,6 @@ import java.util.Map;
 public class Baseball {
 
     private Map<Integer, Integer> dict;
-
-    public Baseball(String numbers) {
-        List<Integer> list = new ArrayList<>();
-        for(char c : numbers.toCharArray()) {
-            if(!Character.isDigit(c)) throw new IllegalArgumentException();
-            list.add(Character.getNumericValue(c));
-        }
-        build(list);
-    }
 
     public Baseball(List<Integer> numbers) {
         build(numbers);

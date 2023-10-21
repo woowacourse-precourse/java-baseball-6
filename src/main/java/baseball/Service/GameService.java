@@ -4,6 +4,7 @@ import baseball.Domain.Baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class GameService {
@@ -17,7 +18,7 @@ public class GameService {
         return new Baseball(computer.stream().toList());
     }
 
-    public Baseball buildBaseball(String numbers) {
+    public Baseball buildBaseball(List<Integer> numbers) {
         return new Baseball(numbers);
     }
 
