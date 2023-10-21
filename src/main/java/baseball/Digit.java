@@ -14,6 +14,7 @@ class Digit {
 
     Digit(char target) {
         this.digit = target - '0';
+        if(digit < 1 || digit > 9) throw new IllegalArgumentException();
     }
 
     @Override
