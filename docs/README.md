@@ -50,7 +50,7 @@
 ## 📒 ResultsUtils
 
 - [ ] `ResultStatus` 관련 utility class
-    - [ ] 하나의 `Ball`와 하나의 `Balls`에 대한 `ResultStatus`를 판별하여 반환
+    - [x] 하나의 `Ball`와 하나의 `Balls`에 대한 `ResultStatus`를 판별하여 반환
     - [ ] 결과를 `String`으로 반환
         - [ ] `Strike`, `Ball`, `Out` 값을 받아 `String`으로 반환
             - [ ] `n볼`로 가공
