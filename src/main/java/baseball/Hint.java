@@ -19,8 +19,21 @@ public class Hint {
         return strike;
     }
 
-    public int getBall() {
-        return ball;
+    public String getHint() {
+        String hintMessage = "";
+        if (isBallAndStrike(ball, strike)) {
+            hintMessage = ball + Constants.BALL_MESSAGE + strike + Constants.STRIKE_MESSAGE;
+        }
+        if (isBall(ball, strike)) {
+            hintMessage = ball + Constants.BALL_MESSAGE;
+        }
+        if (isStrike(ball, strike)) {
+            hintMessage = strike + Constants.STRIKE_MESSAGE;
+        }
+        if (isNothing(ball, strike)) {
+            hintMessage = Constants.NOTHING_MESSAGE;
+        }
+        return hintMessage;
     }
 
     private void countStrikeAndBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
@@ -30,9 +43,25 @@ public class Hint {
                 continue;
             }
 
-           if (computerNumbers.contains(playerNumbers.get(i))) {
-               ball++;
-           }
+            if (computerNumbers.contains(playerNumbers.get(i))) {
+                ball++;
+            }
         }
+    }
+
+    private boolean isBallAndStrike(int ball, int strike) {
+        return (ball != 0) && (strike != 0);
+    }
+
+    private boolean isBall(int ball, int strike) {
+        return (ball != 0) && (strike == 0);
+    }
+
+    private boolean isStrike(int ball, int strike) {
+        return (ball == 0) && (strike != 0);
+    }
+
+    private boolean isNothing(int ball, int strike) {
+        return (ball == 0) && (strike == 0);
     }
 }
