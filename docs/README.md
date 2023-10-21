@@ -33,7 +33,7 @@
 
 2. InputView
     - [x] 숫자를 입력해주세요 메시지
-    - [] 게임 재시작 혹은 종료 메시지
+    - [x] 게임 재시작 혹은 종료 메시지
 
 ### Controller
 1. baseballController
