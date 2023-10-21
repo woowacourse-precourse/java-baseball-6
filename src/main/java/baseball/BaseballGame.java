@@ -10,12 +10,31 @@ public class BaseballGame {
     }
 
     public void start() {
+        OutputHandler.printGameStart();
         do {
             playGame();
         } while (wantsToRestart());
     }
 
     private void playGame() {
+        BaseballNumber targetNumber = new BaseballNumber(Computer.generateNumbers());
+        do {
+            tryGuess(targetNumber);
+        } while (!is3Strikes());
+    }
+
+    public boolean is3Strikes() {
+        if (judgement.strikes == 3) {
+            OutputHandler.printGameEnd();
+            return true;
+        }
+        return false;
+    }
+
+    private void tryGuess(BaseballNumber targetNumber) {
+        BaseballNumber userGuess = new BaseballNumber(UserInput.inputNumbers());
+        judgement.callBallOrStrike(targetNumber, userGuess);
+        OutputHandler.printHint(judgement);
     }
 
     public boolean wantsToRestart() {
@@ -26,8 +45,7 @@ public class BaseballGame {
         }
         if (input.equals("2")) {
             return false;
-        } else {
-            throw new IllegalArgumentException();
         }
+        throw new IllegalArgumentException();
     }
 }
