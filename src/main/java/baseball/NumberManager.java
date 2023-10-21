@@ -36,7 +36,7 @@ public class NumberManager {
         }
     }
 
-    public void isVaildNumber(String number) {
+    private void isVaildNumber(String number) {
         if (number.length() != LENGTH)
             throw new IllegalArgumentException("숫자의 길이를 위반하였습니다.");
         if (number.contains("0"))
@@ -50,7 +50,7 @@ public class NumberManager {
         }
     }
 
-    public List<Integer> convertToList(String number) {
+    private List<Integer> convertToList(String number) {
         List<Integer> numberList = new ArrayList<Integer>();
         for (int i = 0; i < number.length(); i++) {
             numberList.add(number.charAt(i) - '0');
