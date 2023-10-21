@@ -11,11 +11,7 @@ public class BaseBallGame {
 
     public void play() {
         List<Integer> randomNums = randomNumberPicker.pickRandomNums();
-        System.out.print(randomNums.get(0));
-        System.out.print(randomNums.get(1));
-        System.out.println(randomNums.get(2));
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
             String input_str = Console.readLine();
