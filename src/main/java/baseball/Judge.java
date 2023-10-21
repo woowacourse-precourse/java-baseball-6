@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Judge {
+    int[] computerNumbers = createComputerNumber();
     public int[] createComputerNumber() {
         int[] numbers = new int[3];
         for (int i = 0; i < 3; i++) {
@@ -25,17 +26,17 @@ public class Judge {
         return userInputArr;
     }
 
-    public String playGame(int[] computer, int[] user) {
-        int[] strikeAndBall = calculateStrikeAndBall(computer, user);
+    public String playGame(int[] user) {
+        int[] strikeAndBall = calculateStrikeAndBall(user);
         return checkStrikeAndBall(strikeAndBall);
     }
 
-    private int[] calculateStrikeAndBall(int[] computer, int[] user) {
+    private int[] calculateStrikeAndBall( int[] user) {
         int[] strikeAndBall = new int[2];
         for (int i = 0; i < 3; i++) {
-            if (computer[i] == user[i])
+            if (computerNumbers[i] == user[i])
                 strikeAndBall[1]++; // strikes
-            else if (containsNumber(computer, user[i]))
+            else if (containsNumber(computerNumbers, user[i]))
                 strikeAndBall[0]++; // balls
         }
         return strikeAndBall;
