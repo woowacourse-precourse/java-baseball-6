@@ -68,7 +68,7 @@ public class BaseballGameService {
         return baseballNumbers;
     }
 
-    private void checkValidation(User user, List<Integer> baseballNumbers){
+    public void checkValidation(User user, List<Integer> baseballNumbers){
         baseballGameValidation.validateBaseballNumber(user.getBaseballNumberList());
         baseballGameValidation.checkBaseballNumberSize(baseballNumbers);
     }
