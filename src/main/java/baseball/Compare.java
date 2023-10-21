@@ -3,32 +3,22 @@ package baseball;
 import java.util.List;
 
 public class Compare {
-    Computer com = new Computer();
-    List<Integer> computer = com.getComputerNumbers();
+    public int countBall(List<Integer> computer, List<Integer> userNumber) {
+        int total = 0;
+        for (int i = 0; i < userNumber.size(); i++) {
+            if (userNumber.contains(computer.get(i)))
+                total++;
+        }
+        return total;
+    }
 
-    int strike = 0;
-    int ball = 0;
-
-    public void compareNumbers(List<Integer> userNumber) {
-        for(int i=0; i<computer.size(); i++) {
-            if (userNumber.get(i) == computer.get(i))
+    public int countStrike(List<Integer> computer, List<Integer> userNumber){
+        int strike = 0;
+        for (int i=0; i<userNumber.size(); i++) {
+            if (computer.get(i) == userNumber.get(i)) {
                 strike++;
-            else if (userNumber.contains(computer.get(i)))
-                ball++;
-        }
-
-        if (strike == 3) {
-            System.out.println(strike + "스트라이크");
-        } else {
-            if (strike > 0) {
-                System.out.print(strike + "스트라이크 ");
-            }
-            if (ball > 0) {
-                System.out.print(ball + "볼");
-            }
-            if (strike == 0 && ball == 0) {
-                System.out.println("낫싱");
             }
         }
+        return strike;
     }
 }
