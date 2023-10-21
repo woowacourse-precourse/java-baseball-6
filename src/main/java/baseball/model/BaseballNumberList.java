@@ -34,4 +34,33 @@ public class BaseballNumberList {
         Validator.validateInputDistinct(baseballNumberListString);
         Validator.validateInputDigit(baseballNumberListString);
     }
+
+    public BaseballNumber getBaseballNumber(int index) {
+        return baseballNumberList.get(index);
+    }
+
+    public int getBallCount(BaseballNumberList otherBaseballNumberList) {
+        int ballCount = 0;
+        for (int index = 0; index < BASEBALL_NUMBER_LIST_LENGTH; index++) {
+            BaseballNumber baseballNumber = baseballNumberList.get(index);
+            BaseballNumber otherBaseballNumber = otherBaseballNumberList.getBaseballNumber(index);
+            if (!baseballNumber.equals(otherBaseballNumber) &&
+                    baseballNumberList.contains(otherBaseballNumber)) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
+    public int getStrikeCount(BaseballNumberList otherBaseballNumberList) {
+        int strikeCount = 0;
+        for (int index = 0; index < BASEBALL_NUMBER_LIST_LENGTH; index++) {
+            BaseballNumber baseballNumber = baseballNumberList.get(index);
+            BaseballNumber otherBaseballNumber = otherBaseballNumberList.getBaseballNumber(index);
+            if (baseballNumber.equals(otherBaseballNumber)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
 }
