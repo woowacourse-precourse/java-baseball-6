@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumbersBaseball {
     private int[] answer = new int[3];
+    int[] visited;
 
     public NumbersBaseball() {
     }
@@ -47,22 +48,13 @@ public class NumbersBaseball {
         return inputArr;
     }
 
-    private boolean contains(int[] input, int num) {
-        for (int i = 0; i < 3; i++) {
-            if (input[i] == num) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private BaseballInfo getCompareResultWith(int[] input) {
         BaseballInfo baseballInfo = new BaseballInfo(0, 0);
         for (int i = 0; i < 3; i++) {
             if (answer[i] == input[i]) {
                 baseballInfo.addStrike();
             }
-            if (!(answer[i] == input[i]) && contains(answer, input[i])) {
+            if (!(answer[i] == input[i]) && answer[input[i]] == 1) {
                 baseballInfo.addball();
             }
         }
@@ -70,7 +62,7 @@ public class NumbersBaseball {
     }
 
     private void generateAnswer() {
-        int[] visited = new int[10];
+        visited = new int[10];
         int randomNum;
         for (int i = 0; i < 3; i++) {
             randomNum = Randoms.pickNumberInRange(1, 9);
