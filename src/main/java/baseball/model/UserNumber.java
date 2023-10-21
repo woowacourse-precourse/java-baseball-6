@@ -7,11 +7,13 @@ public class UserNumber {
     private final List<Integer> userNumber;
 
     public UserNumber(List<Integer> userNumber) {
-        validate();
+        validateSize(userNumber);
         this.userNumber = userNumber;
     }
 
-    private void validate() {
-
+    private void validateSize(List<Integer> userNumber) {
+        if (userNumber.size() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 }
