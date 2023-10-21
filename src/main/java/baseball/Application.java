@@ -7,6 +7,7 @@ public class Application {
     // 게임에 사용되는 3자리 숫자 배열 정의
     int[] playerNumbers = new int[3]; // 플레이어
     int[] randomNumbers = new int[3]; // 컴퓨터
+    boolean isGameOver = false;
 
     public static void main(String[] args) {
         Application app = new Application();
