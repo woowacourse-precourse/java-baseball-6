@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomAnswerFactory {
-    public List<Integer> getRandomAnswer(){
+    public Answer getRandomAnswer(){
         List<Integer> randomAnswer = new ArrayList<>();
         while (randomAnswer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -13,6 +13,6 @@ public class RandomAnswerFactory {
                 randomAnswer.add(randomNumber);
             }
         }
-        return randomAnswer;
+        return new Answer(randomAnswer.get(0), randomAnswer.get(1), randomAnswer.get(2));
     }
 }
