@@ -9,6 +9,7 @@ public class Computer {
 
     public Computer(List<Integer> numbers) {
         validateNumberSize(numbers);
+        validateNumberRange(numbers);
         this.numbers = numbers;
     }
 
@@ -16,5 +17,13 @@ public class Computer {
         if(numbers.size() != NUMBERS_SIZE){
             throw new IllegalArgumentException("숫자는 3개를 가져야 합니다");
         }
+    }
+
+    private void validateNumberRange(List<Integer> numbers){
+        numbers.stream()
+                .filter(number -> 1 > number || 9 < number)
+                .findAny()
+                .ifPresent(number ->
+                { throw new IllegalArgumentException("숫자는 1부터 9까지의 수로 이루어져야 합니다");});
     }
 }

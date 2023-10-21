@@ -16,15 +16,30 @@ class ComputerTest {
 
     @DisplayName("컴퓨터는 숫자를 3개만 가질 수 있다")
     @ParameterizedTest
-    @MethodSource("generateData")
+    @MethodSource("inValidSizeData")
     void validateNumberSize(List<Integer> inValidNumbers){
         assertThrows(IllegalArgumentException.class,() -> new Computer(inValidNumbers));
     }
 
-    static Stream<Arguments> generateData() {
+    @DisplayName("컴퓨터는 숫자를 1부터 9까지만 가질 수 있다")
+    @ParameterizedTest
+    @MethodSource("inValidRangeData")
+    void validateNumberRange(List<Integer> inValidNumbers){
+        assertThrows(IllegalArgumentException.class,() -> new Computer(inValidNumbers));
+    }
+
+
+    static Stream<Arguments> inValidSizeData() {
         return Stream.of(
                 Arguments.of(Arrays.asList(1, 2, 3, 4)),
                 Arguments.of(Arrays.asList(1, 2))
+        );
+    }
+    static Stream<Arguments> inValidRangeData() {
+        return Stream.of(
+                Arguments.of(Arrays.asList(-1, 2, 33)),
+                Arguments.of(Arrays.asList(0, 0, 0)),
+                Arguments.of(Arrays.asList(11, 22, 33))
         );
     }
 }
