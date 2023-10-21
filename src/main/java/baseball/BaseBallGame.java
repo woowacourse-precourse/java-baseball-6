@@ -10,12 +10,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BaseBallGame {
-    private static final int MIN_RANDOM_NUMBER = 1;
-    private static final int MAX_RANDOM_NUMBER = 9;
-    private static final int RANDOM_NUMBER_LENGTH = 3;
-    private static final String GAME_RESTART_STATE = "1";
-    private static final String GAME_END_STATE = "2";
-
 
     public void gameStart() {
         boolean progress = true;
@@ -87,16 +81,6 @@ public class BaseBallGame {
 //        }
 //    }
 
-    private boolean isValidRange(List<Integer> numbers) {
-        for(Integer number : numbers) {
-            if(number < MIN_RANDOM_NUMBER || number > MAX_RANDOM_NUMBER) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
     private List<Integer> parseToNumberList(String convertValue) {
 //        if(!isNumeric(convertValue)) {
 //            throw new IllegalArgumentException();
@@ -106,9 +90,4 @@ public class BaseBallGame {
                 .mapToInt(Integer::parseInt)
                 .boxed().collect(Collectors.toList());
     }
-
-
-
-
-
 }

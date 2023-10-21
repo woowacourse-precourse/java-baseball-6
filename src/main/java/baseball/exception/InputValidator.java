@@ -29,4 +29,14 @@ public class InputValidator {
 
         return deduplicatedNumbers.size() == numbers.size();
     }
+
+    public boolean isValidRange(List<Integer> numbers, int min, int max) {
+        for(Integer number : numbers) {
+            if(number < min || number > max) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
