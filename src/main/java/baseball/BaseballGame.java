@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class BaseballGame {
@@ -21,8 +23,7 @@ public class BaseballGame {
         String userInput = Console.readLine();
         changeNumber(userInput);
         userNumber = changeIntegerList(userInput);
-
-
+        numberVaildation(userNumber);
     }
 
     public void changeNumber(String userInput) {
@@ -46,6 +47,14 @@ public class BaseballGame {
             }
         }
         return userNumber;
+    }
+
+    public void numberVaildation(List<Integer> userNumber){
+        for(Integer number : userNumber) {
+            if(number > MAX_NUMBER || number < MIX_NUMBER){
+                throw new IllegalArgumentException("숫자가 범위를 벗어났습니다.");
+            }
+        }
     }
 
 }
