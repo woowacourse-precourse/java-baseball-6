@@ -25,4 +25,16 @@ public final class Numbers {
     private boolean isNotProperSize(final List<Integer> numbers) {
         return numbers.size() != NUMBER_LIST_SIZE;
     }
+
+    public Number getByIndex(final int index) {
+        return numbers.get(index);
+    }
+
+    public boolean contains(final Number number) {
+        return this.numbers.contains(number);
+    }
+
+    public boolean hasSameIndexAndValue(final Number number, final int index) {
+        return getByIndex(index).equals(number);
+    }
 }
