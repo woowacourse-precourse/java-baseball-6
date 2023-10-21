@@ -25,6 +25,7 @@ public class NumberManager {
 
     public List<Integer> receiveNumber() {
         String number = "";
+        System.out.print("숫자를 입력해주세요 : ");
         try {
             number = br.readLine();
             isVaildNumber(number);
