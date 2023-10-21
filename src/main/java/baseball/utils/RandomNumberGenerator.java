@@ -12,6 +12,9 @@ import static baseball.models.Constants.*;
  */
 
 public final class RandomNumberGenerator {
+
+    private RandomNumberGenerator(){
+    }
     public static List<Integer> generateRandomNumberList(){
         List<Integer> randomNumberList = new ArrayList<>();
         while (randomNumberList.size() < ANSWER_LENGTH){

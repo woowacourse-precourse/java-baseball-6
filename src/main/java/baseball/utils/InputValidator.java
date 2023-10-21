@@ -1,4 +1,4 @@
-package baseball.gameLogic;
+package baseball.utils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,6 +11,9 @@ import static baseball.models.Constants.*;
  */
 
 public final class InputValidator {
+
+    private InputValidator(){
+    }
 
     public static List<Integer> validateUserAnswer(String userInput){
         validateUserAnswerLength(userInput);
