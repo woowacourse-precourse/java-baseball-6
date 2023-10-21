@@ -24,7 +24,7 @@ public class OutputHandler {
 
     private static void printBalls(int numberOfBalls) {
         if (numberOfBalls >= 1) {
-            System.out.println(numberOfBalls + "볼 ");
+            System.out.print(numberOfBalls + "볼 ");
         }
     }
 
