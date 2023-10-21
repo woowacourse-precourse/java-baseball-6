@@ -5,12 +5,15 @@ import baseball.util.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGameService {
+    BaseballGameCompareService baseballGameCompareService = new BaseballGameCompareService();
+
     public void startBaseballGame() {
         printGameStartMessage();
-        getUserNumber();
+        baseballGameCompareService.compareUserNumberAndRandomNumber(getUserNumber(), createRandomNumber());
     }
 
     private void printGameStartMessage() {
@@ -18,10 +21,11 @@ public class BaseballGameService {
         outputView.printGameStartMessage();
     }
 
-    private void getUserNumber() {
+    private List<Integer> getUserNumber() {
         InputView inputView = new InputView();
         String userNumber = inputView.getUserNumber();
         checkUserNumberValidate(userNumber);
+        return stringToList(userNumber);
     }
 
     private void checkUserNumberValidate(String userInputNumber) {
@@ -32,5 +36,13 @@ public class BaseballGameService {
     private List<Integer> createRandomNumber() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         return randomNumberGenerator.createRandomNumber();
+    }
+
+    private List<Integer> stringToList(String target) {
+        List<Integer> list = new ArrayList<>();
+        for (char alpha : target.toCharArray()) {
+            list.add(alpha - '0');
+        }
+        return list;
     }
 }
