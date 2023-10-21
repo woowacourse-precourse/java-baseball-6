@@ -151,12 +151,12 @@ public class Application {
     }
 
     private static void printGameResultMessage(Map<PlayResult, Integer> gameResult) {
-        StringBuilder gameResultMessage = generateGameResultMessage(gameResult);
+        String gameResultMessage = generateGameResultMessage(gameResult);
         System.out.println(gameResultMessage);
     }
 
 
-    private static StringBuilder generateGameResultMessage(Map<PlayResult, Integer> gameResult) {
+    private static String generateGameResultMessage(Map<PlayResult, Integer> gameResult) {
         StringBuilder stringBuilder = new StringBuilder();
 
         if (
@@ -164,7 +164,7 @@ public class Application {
             gameResult.get(PlayResult.NOTHING) == 3
         ) {
             stringBuilder.append(PlayResult.NOTHING.getLabel());
-            return stringBuilder;
+            return stringBuilder.toString();
         }
 
         Arrays.sort(gameResult.keySet().toArray());
@@ -173,12 +173,14 @@ public class Application {
             if (playResultIntegerEntry.getKey() == PlayResult.NOTHING) {
                 continue;
             }
+
             stringBuilder
                     .append(playResultIntegerEntry.getValue())
-                    .append(playResultIntegerEntry.getKey().getLabel());
+                    .append(playResultIntegerEntry.getKey().getLabel())
+                    .append(" ");
         }
 
-        return stringBuilder;
+        return stringBuilder.toString().trim();
     }
 
 
