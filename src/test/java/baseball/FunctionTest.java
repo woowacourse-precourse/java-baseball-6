@@ -77,4 +77,25 @@ public class FunctionTest {
         GameResult gameResult4 = Application.playGame(answerList, userInputList4);
         assertEquals(new GameResult(3, 0), gameResult4);
     }
+
+    @Test
+    void 사용자의_올바른_재시작_입력을_받는다() {
+        String input1 = "1";
+        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
+        System.setIn(in1);
+
+        int userInputNumber1 = Application.getUserRestartInput();
+        camp.nextstep.edu.missionutils.Console.close();
+
+        assertEquals(1, userInputNumber1);
+
+        String input2 = "2";
+        InputStream in2 = new ByteArrayInputStream(input2.getBytes());
+        System.setIn(in2);
+
+        int userInputNumber2 = Application.getUserRestartInput();
+        camp.nextstep.edu.missionutils.Console.close();
+
+        assertEquals(2, userInputNumber2);
+    }
 }
