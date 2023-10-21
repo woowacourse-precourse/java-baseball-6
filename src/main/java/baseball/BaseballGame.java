@@ -1,14 +1,55 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import data.ComputerNumber;
 import data.GuessNumber;
+import utility.Input;
+import utility.Printer;
+import utility.ValidityChecker;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseballGame {
+import static utility.Command.*;
 
-    public BaseballGame(){}
+public class BaseballGame {
+    ComputerNumber computerNumber;
+    GuessNumber guessNumber;
+    List<Integer> countResult;
+    int exitCommand = INITIALIZE;
+    List<Integer> chunk;
+
+    static BaseballGame baseballGame = new BaseballGame();
+    private BaseballGame(){}
+    public static BaseballGame getInstance(){
+        return baseballGame;
+    }
+
+    public void run(int[] computerInput) throws IllegalArgumentException{
+        int chunkIndex = 0;
+
+        chunk = Input.sliceToThree(computerInput, chunkIndex);
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        computerNumber = new ComputerNumber(chunk);
+        chunkIndex++;
+
+        while(exitCommand == INITIALIZE || exitCommand == RESTARTED) {
+            if(exitCommand == RESTARTED){
+                chunk = Input.sliceToThree(computerInput, chunkIndex);
+                computerNumber = new ComputerNumber(chunk);
+            }
+
+            System.out.print("숫자를 입력해 주세요 : ");
+            guessNumber = new GuessNumber();
+            Printer.printBaseballNumber(guessNumber);
+            countResult = count(computerNumber, guessNumber);
+            Printer.printResult(countResult);
+            exitCommand = checkRestart(countResult);
+
+            if(exitCommand == EXIT)
+                return;
+        }
+    }
 
     private int countBall(
             final ComputerNumber computer, final int guessNumber, final int computerNumber){
@@ -60,4 +101,18 @@ public class BaseballGame {
         return countList;
     }
 
+    public int checkRestart(final List<Integer> countResult) throws IllegalArgumentException{
+        String prompt;
+        int exitCommand = 0;
+
+        if(countResult.get(1) == 3) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            prompt = Console.readLine();
+            ValidityChecker.validateBaseballNumberType(prompt);
+            exitCommand = Integer.parseInt(prompt);
+            if(exitCommand < 1 || exitCommand > 2)
+                throw new IllegalArgumentException();
+        }
+        return exitCommand;
+    }
 }

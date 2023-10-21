@@ -1,8 +1,5 @@
 package data;
 
-import camp.nextstep.edu.missionutils.Console;
-import utility.BaseballNumberChecker;
-
 import java.util.ArrayList;
 import java.util.List;
 
