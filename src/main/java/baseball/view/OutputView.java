@@ -23,11 +23,11 @@ public class OutputView {
 		System.out.println();
 	}
 
-	private void printStart() {
+	public void printStart() {
 		System.out.println(START_MESSAGE);
 	}
 
-	private void printSuccess() {
+	public void printSuccess() {
 		System.out.println(SUCCESS_STRIKE_MESSAGE);
 		System.out.println(SUCCESS_MESSAGE);
 	}
