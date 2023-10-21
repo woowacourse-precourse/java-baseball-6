@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Parser {
 
-    public List<Integer> convertStringToArrayList(String input) {
+    public static List<Integer> convertStringToArrayList(String input) {
         List<Integer> convertedInput = new ArrayList<Integer>();
         String[] inputElements = input.split("");
         for (String inputElement : inputElements) {
