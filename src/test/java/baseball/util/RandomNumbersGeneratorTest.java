@@ -13,16 +13,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RandomNumbersGeneratorTest {
 
-    @Test
     @DisplayName("중복된 숫자없이 랜덤한 숫자 생성 테스트")
+    @Test
     void checkUniqueRandomNumbers() {
         List<Integer> computer = RandomNumbersGenerator.generate();
         assertThat(Set.copyOf(computer).size()).isEqualTo(computer.size())
                 .isEqualTo(SIZE);
     }
 
-    @Test
     @DisplayName("올바른 범위의 숫자 생성 테스트")
+    @Test
     void checkValidRangeNumbers() {
         List<Integer> computer = RandomNumbersGenerator.generate();
         assertThat(computer).allMatch(number -> MIN <= number && number <= MAX);

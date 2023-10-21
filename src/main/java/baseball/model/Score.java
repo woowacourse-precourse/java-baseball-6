@@ -6,11 +6,13 @@ import baseball.constant.Number;
 import java.util.Map;
 
 import static baseball.constant.Hint.BALL;
-import static baseball.constant.Hint.BLANK;
-import static baseball.constant.Hint.NOT_THING;
 import static baseball.constant.Hint.STRIKE;
 
 public class Score {
+
+    public final String BALL_MESSAGE = "볼 ";
+    public final String NOT_THING = "낫싱";
+    public final String STRIKE_MESSAGE = "스트라이크";
 
     private final Map<Hint, Integer> score;
 
@@ -22,7 +24,7 @@ public class Score {
         if (score == null) {
             return false;
         }
-        return score.get(STRIKE).equals(Number.OUT_COUNT);
+        return score.get(STRIKE).equals(Number.SIZE);
     }
 
     private Boolean hasHint(Hint hint) {
@@ -44,10 +46,10 @@ public class Score {
             builder.append(NOT_THING);
         }
         if (hasHint(BALL)) {
-            builder.append(countHint(BALL)).append(BALL).append(BLANK);
+            builder.append(countHint(BALL)).append(BALL_MESSAGE);
         }
         if (hasHint(STRIKE)) {
-            builder.append(countHint(STRIKE)).append(STRIKE);
+            builder.append(countHint(STRIKE)).append(STRIKE_MESSAGE);
         }
         return builder.toString();
     }

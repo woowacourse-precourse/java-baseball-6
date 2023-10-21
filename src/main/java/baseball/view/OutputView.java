@@ -18,7 +18,7 @@ public class OutputView {
     }
 
     public void printGameEndMessage() {
-        System.out.printf(RESULT_MESSAGE, Number.OUT_COUNT);
+        System.out.printf(RESULT_MESSAGE, Number.SIZE);
         System.out.println(GAME_END_MESSAGE);
     }
 }
