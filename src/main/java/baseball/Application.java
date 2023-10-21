@@ -81,6 +81,10 @@ public class Application {
             }
         }
 
+        //같은 수가 전혀 없으면 낫싱　
+        boolean nothing = false;
+        if (strike==0 && ball==0) nothing=true;
+
     }
 
     //string이 Integer인지 아닌지 판단. TODO: IntegerUtil에 넣기
