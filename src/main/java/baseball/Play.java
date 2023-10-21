@@ -34,6 +34,7 @@ public class Play {
             if (input.equals("1")) {
                 com.clearList();
                 com.getIntArray();
+                user.clearList();
                 runGame();
             }
             if (input.equals("2")) {
