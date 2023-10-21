@@ -5,16 +5,14 @@ import baseball.validation.BaseballGameValidation;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class BaseballGameService {
 
     private final int NO_HIT = 0;
     private final int ALL_STRIKE = 3;
-    private BaseballGameValidation baseballGameValidation;
+    private final BaseballGameValidation baseballGameValidation;
 
     public BaseballGameService() {
         this.baseballGameValidation = new BaseballGameValidation();
@@ -70,8 +68,20 @@ public class BaseballGameService {
         user.readBaseballNumber();
         baseballGameValidation.validateBaseballNumber(user.getBaseballNumberList());
 
-        List<Integer> userNumberList = user.convertCharToInteger(user.getBaseballNumberList());
+        List<Integer> userNumberList = convertCharToInteger(user.getBaseballNumberList());
         return userNumberList;
+    }
+
+    public List<Integer> convertCharToInteger(String baseBallString) {
+        ArrayList<Integer> baseballNumbers = new ArrayList<>();
+
+        for (char baseballChar : baseBallString.toCharArray())
+            if (Character.isDigit(baseballChar) && Character.getNumericValue(baseballChar) != 0)
+                baseballNumbers.add(Character.getNumericValue(baseballChar));
+
+        baseballGameValidation.checkBaseballNumberSize(baseballNumbers);
+
+        return baseballNumbers;
     }
 
     private static int calculateStrike(List<Integer> userNumber, List<Integer> computerNumber) {
