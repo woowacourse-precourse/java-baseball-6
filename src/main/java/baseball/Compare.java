@@ -23,11 +23,11 @@ public class Compare {
         }
         return all;
     }
-    public void compareResult(List<Integer> com, List<Integer> user) {
-        int strike;
-        int ball;
-        strike = countStirke(com, user);
-        ball = countAll(com, user) - strike;
-        System.out.println(ball + ", " + strike);
+    public boolean isAnswer(int strike) {
+        boolean Answer = false;
+        if(strike == 3) {
+            Answer = true;
+        }
+        return Answer;
     }
 }
