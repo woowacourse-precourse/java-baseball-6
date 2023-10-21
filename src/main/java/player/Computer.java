@@ -8,17 +8,17 @@ import java.util.List;
 
 public class Computer implements BaseballNumberInput {
 
-    List<Integer> baseballNumbers = new ArrayList<>();
+    BaseballNumbers baseballNumbers;
 
     @Override
     public void inputBaseballNumbers() {
-        List<Integer> computerBaseballNumber = new ArrayList<>();
+        List<BaseballNumber> computerBaseballNumber = new ArrayList<>();
         while (computerBaseballNumber.size() < MAX_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerBaseballNumber.contains(randomNumber)) {
-                computerBaseballNumber.add(randomNumber);
+            BaseballNumber baseballNumber = new BaseballNumber(Randoms.pickNumberInRange(1, 9));
+            if (!computerBaseballNumber.contains(baseballNumber)) {
+                computerBaseballNumber.add(baseballNumber);
             }
         }
-        baseballNumbers = computerBaseballNumber;
+        baseballNumbers = new BaseballNumbers(computerBaseballNumber);
     }
 }
