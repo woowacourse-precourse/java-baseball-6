@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.Constants;
 import baseball.converter.StringInputConverter;
 import baseball.validator.NumberValidator;
 import baseball.validator.ResumeValidator;
@@ -7,8 +8,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputController {
 
-    public static int receiveUserNumberWidthLength(final int length) {
-        String userInput = receivePlayNumberWithLength(length);
+    public static int receiveUserNumber() {
+        String userInput = receivePlayNumberWithLength(Constants.PLAY_NUMBER_DIGIT);
 
         return StringInputConverter.toInt(userInput);
     }

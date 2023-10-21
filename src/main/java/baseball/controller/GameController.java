@@ -65,7 +65,7 @@ public class GameController {
     }
 
     private static int receiveUserNumber() {
-        return InputController.receiveUserNumberWidthLength(PLAY_NUMBER_DIGIT);
+        return InputController.receiveUserNumber();
     }
 
     private boolean isStrikeEqualToGoal(final int strike) {
