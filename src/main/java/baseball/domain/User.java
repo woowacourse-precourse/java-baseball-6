@@ -3,12 +3,17 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.validation.BaseballGameValidation;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
 
     private String baseBallNumberString;
+    private BaseballGameValidation baseballGameValidation;
 
+    public User() {
+        this.baseballGameValidation = new BaseballGameValidation();
+    }
 
     public String getBaseballNumberList() {
         return baseBallNumberString;
@@ -19,7 +24,6 @@ public class User {
         baseBallNumberString = Console.readLine();
 
     }
-
     public List<Integer> convertCharToInteger(String baseBallString) {
         ArrayList<Integer> baseballNumbers = new ArrayList<>();
 
@@ -27,19 +31,9 @@ public class User {
             if (Character.isDigit(baseballChar) && Character.getNumericValue(baseballChar) != 0)
                 baseballNumbers.add(Character.getNumericValue(baseballChar));
 
-        checkBaseballNumberSize(baseballNumbers);
+        baseballGameValidation.checkBaseballNumberSize(baseballNumbers);
 
         return baseballNumbers;
-    }
-
-    public void checkBaseballNumberSize(ArrayList<Integer> baseballNumbers) {
-        if (baseballNumbers.size() != 3)
-            throw new IllegalArgumentException();
-    }
-
-    public void validateBaseballNumber(String baseBallNumberStr) {
-        if (baseBallNumberStr.chars().distinct().count() != 3)
-            throw new IllegalArgumentException();
     }
 
 

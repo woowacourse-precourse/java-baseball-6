@@ -1,6 +1,7 @@
 package baseball.servcie;
 
 import baseball.domain.User;
+import baseball.validation.BaseballGameValidation;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -13,6 +14,11 @@ public class BaseballGameService {
 
     private final int NO_HIT = 0;
     private final int ALL_STRIKE = 3;
+    private BaseballGameValidation baseballGameValidation;
+
+    public BaseballGameService() {
+        this.baseballGameValidation = new BaseballGameValidation();
+    }
 
     public void playGame(){
         List<Integer> computerBaseBallNumber = initComputerBaseBallNumber();
@@ -31,8 +37,8 @@ public class BaseballGameService {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String checkString = Console.readLine();
 
-        if (!Arrays.asList("1", "2").contains(checkString))
-            throw new IllegalArgumentException();
+        baseballGameValidation.validateString(checkString);
+
         if(checkString.equals("1"))
             playGame();
     }
@@ -59,10 +65,11 @@ public class BaseballGameService {
         return (strike == ALL_STRIKE);
     }
 
-    private static List<Integer> userReadNumber() {
+    public List<Integer> userReadNumber() {
         User user = new User();
         user.readBaseballNumber();
-        user.validateBaseballNumber(user.getBaseballNumberList());
+        baseballGameValidation.validateBaseballNumber(user.getBaseballNumberList());
+
         List<Integer> userNumberList = user.convertCharToInteger(user.getBaseballNumberList());
         return userNumberList;
     }
