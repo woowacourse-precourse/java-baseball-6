@@ -2,13 +2,22 @@ package baseball.console;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+
+import camp.nextstep.edu.missionutils.Console;
 
 class ConsoleInputTest extends IOTest {
 	private final ConsoleInput consoleInput;
 
 	public ConsoleInputTest() {
 		consoleInput = new ConsoleInput();
+	}
+
+	@AfterEach
+	void teardown() {
+		Console.close();
+		System.setIn(System.in);
 	}
 
 	@Test
