@@ -13,7 +13,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 public class BaseballGameController {
@@ -25,7 +24,7 @@ public class BaseballGameController {
         do {
             guessing(user);
             OutputView.printHintMessage(calculateHint(computer.getAnswer(), user.getGuess()));
-        } while (!Objects.equals(computer.getAnswer(), user.getGuess()));
+        } while (!computer.getAnswer().equals(user.getGuess()));
         OutputView.printSuccessAndEndGameMessage();
     }
 
