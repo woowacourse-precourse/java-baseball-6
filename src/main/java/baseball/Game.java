@@ -13,7 +13,18 @@ public class Game {
         int strike = 0;
         int ball = 0;
 
-        String result="NULL";
+        input = new ArrayList<>();
+        input.add(num/100);
+        input.add((num/10)%10);
+        input.add(num%10);
+
+        for(int i=0; i<answer.size(); i++) {
+            if (answer.get(i).equals(input.get(i))) strike++;
+            else if (input.contains(answer.get(i))) ball++;
+        }
+
+
+        String result = "NULL";
         return result;
     }
 
@@ -26,5 +37,4 @@ public class Game {
             }
         }
     }
-
 }
