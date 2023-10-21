@@ -32,10 +32,9 @@ public class ResultCalculator {
     }
 
     private int countBalls(BallNumber comparisonNumber, int numberOfStrikes) {
-        return (int) comparisonNumber.ballNumber
+        return (int) comparisonNumber.ballNumberList
                 .stream()
                 .filter(computerNumber::hasThis)
                 .count() - numberOfStrikes;
     }
-
 }

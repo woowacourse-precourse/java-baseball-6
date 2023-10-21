@@ -16,6 +16,6 @@ public class BallNumberTest {
         expacted.add(4);
         expacted.add(2);
         expacted.add(6);
-        assertEquals(ballNumber.ballNumber, expacted);
+        assertEquals(ballNumber.ballNumberList, expacted);
     }
 }

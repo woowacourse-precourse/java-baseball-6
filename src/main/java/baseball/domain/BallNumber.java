@@ -5,10 +5,10 @@ import static java.util.stream.Collectors.toList;
 import java.util.ArrayList;
 
 public class BallNumber {
-    public ArrayList<Integer> ballNumber = new ArrayList<>();
+    public ArrayList<Integer> ballNumberList = new ArrayList<>();
 
     public BallNumber(String newBallNumber) {
-        ballNumber = (ArrayList<Integer>) newBallNumber
+        ballNumberList = (ArrayList<Integer>) newBallNumber
                 .chars()
                 .map(Character::getNumericValue)
                 .boxed()
@@ -16,14 +16,14 @@ public class BallNumber {
     }
 
     public BallNumber(ArrayList<Integer> newBallNumber) {
-        ballNumber.addAll(newBallNumber);
+        ballNumberList.addAll(newBallNumber);
     }
 
     public int getBallNumberByDigit(int digit) {
-        return ballNumber.get(digit);
+        return ballNumberList.get(digit);
     }
 
     public boolean hasThis(int comparisonNumber) {
-        return ballNumber.contains(comparisonNumber);
+        return ballNumberList.contains(comparisonNumber);
     }
 }
