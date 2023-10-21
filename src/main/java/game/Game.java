@@ -43,11 +43,11 @@ public class Game {
     }
 
     private void start() {
-        GuessNumber();
+        GuessAnswer();
     }
 
 
-    private void GuessNumber() {
+    private void GuessAnswer() {
         String inputNumber;
         do {
             System.out.print(INPUT_STRING);
@@ -73,9 +73,6 @@ public class Game {
         int[] inputList = new int[NUMBER_SIZE];
         for (int i = 0; i < NUMBER_SIZE; i++) {
             char input = inputNumber.charAt(i);
-            if (!Character.isDigit(input)) {
-                throw new IllegalArgumentException(WRONG_INPUT_TYPE);
-            }
             inputList[i] = Character.getNumericValue(input);
         }
         return inputList;
