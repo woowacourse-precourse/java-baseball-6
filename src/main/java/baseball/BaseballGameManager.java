@@ -1,89 +1,88 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.*;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Stream;
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameManager {
-    public static void startGame() {
+    private final int computerNumberCount;
+
+    public BaseballGameManager(int computerNumberCount) {
+        this.computerNumberCount = computerNumberCount;
+    }
+
+    public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         boolean isExistNextGame = true;
         while (isExistNextGame) {
-            int computerNum = generateComputerNum();
-            BaseballGame baseballGame = new BaseballGame(computerNum);
+            int computerNumber = Util.getNonOverlappingNumber(computerNumberCount);
+            BaseballGame baseballGame = new BaseballGame(computerNumber);
             isExistNextGame = startOneGame(baseballGame);
         }
     }
 
-    private static int generateComputerNum() {
-        List<Integer> nums = new LinkedList<>();
+    private boolean startOneGame(BaseballGame baseballGame) {
+        boolean playGame = true;
+        while (playGame) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputString = Console.readLine();
 
-        while (nums.size() < 3) {
-            int tmpNum = Randoms.pickNumberInRange(1, 9);
-            if (!nums.contains(tmpNum)) {
-                nums.add(tmpNum);
-            }
-        }
-
-        return (nums.get(0) * 100) + (nums.get(1) * 10) + (nums.get(2));
-    }
-
-    private static boolean startOneGame(BaseballGame baseballGame) {
-        while (true) {
-            int inputNum = readInputNum();
-
-            BaseballGameResult baseballGameResult = baseballGame.play(inputNum);
+            int inputNumber = validateInputNumber(inputString, computerNumberCount);
+            BaseballGameResult baseballGameResult = baseballGame.play(inputNumber);
 
             System.out.println(baseballGameResult);
-            if (baseballGameResult.isWin()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
+            playGame = !baseballGameResult.isWin(computerNumberCount);
         }
+        System.out.println(computerNumberCount + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-        return hasNextGame();
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String nextGameInputString = Console.readLine();
+
+        return hasNextGame(nextGameInputString);
     }
 
-    private static boolean hasNextGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-
-        if (input.equals("1")) {
+    private boolean hasNextGame(String nextGameInputString) {
+        if (nextGameInputString.equals("1")) {
             return true;
-        } else if (input.equals("2")) {
+        } else if (nextGameInputString.equals("2")) {
             return false;
         } else {
             throw new IllegalArgumentException("1, 2이 아닌 다른 입력입니다.");
         }
     }
 
-    private static int readInputNum() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String line = Console.readLine();
+    private int validateInputNumber(String inputString, int numberCount) {
+        int inputNumber;
 
-        int num;
         try {
-            num = Integer.parseInt(line);
+            inputNumber = Integer.parseInt(inputString);
         } catch (NumberFormatException e1) {
             throw new IllegalArgumentException("숫자가 아닙니다.");
         }
 
-        if (num > 999 || num < 100) {
-            throw new IllegalArgumentException("세 자리의 숫자가 아닙니다.");
+        int maxNumber = 0;
+        int minNumber = (int) Math.pow(10, numberCount - 1);
+        for (int i = 0; i < numberCount; i++) {
+            maxNumber += 9 * Math.pow(10, i);
+        }
+        if (inputNumber > maxNumber || inputNumber < minNumber) {
+            throw new IllegalArgumentException(numberCount + "자리의 숫자가 아닙니다.");
         }
 
-        int[] numArr = Stream.of(String.valueOf(num)
-                .split(""))
-                .mapToInt(Integer::parseInt)
-                .toArray();
-
-        if (numArr[0] == numArr[1] || numArr[0] == numArr[2] || numArr[1] == numArr[2]) {
-            throw new IllegalArgumentException("서로 다른 세 자리의 숫자가 아닙니다.");
+        int[] splitNumberArray = Util.splitAndGetIntArray(inputNumber);
+        for (int number : splitNumberArray) {
+            if (number == 0) {
+                throw new IllegalArgumentException("1~9 숫자만 입력해주세요.");
+            }
         }
 
-        return num;
+        boolean[] duplicateVerificationArray = new boolean[10];
+        for (int number : splitNumberArray) {
+            if (duplicateVerificationArray[number]) {
+                throw new IllegalArgumentException("서로 다른 " + numberCount + "자리의 숫자가 아닙니다.");
+            }
+            duplicateVerificationArray[number] = true;
+        }
+
+        return inputNumber;
     }
 }

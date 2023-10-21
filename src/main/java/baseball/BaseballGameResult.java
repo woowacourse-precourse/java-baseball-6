@@ -9,8 +9,8 @@ public class BaseballGameResult {
         this.ball = ball;
     }
 
-    public boolean isWin() {
-        return strike == 3;
+    public boolean isWin(int computerNumberCount) {
+        return strike == computerNumberCount;
     }
 
     @Override
@@ -21,10 +21,8 @@ public class BaseballGameResult {
             gameResultString.append(ball + "볼");
         }
         if (strike > 0) {
-            if (!gameResultString.isEmpty()) {
-                gameResultString.append(" ");
-            }
-            gameResultString.append(strike + "스트라이크");
+            String header = (!gameResultString.isEmpty()) ? " " : "";
+            gameResultString.append(header + strike + "스트라이크");
         }
         if (gameResultString.isEmpty()) {
             gameResultString.append("낫싱");
