@@ -16,6 +16,13 @@ public class GameController {
     }
 
     public void play() {
-        player = inputView.readNumbers();
+        GameResult gameResult;
+        boolean isNotThreeStrike = true;
+        while (isNotThreeStrike) {
+            player.setNumbers(inputView.readNumbers());
+            compareSystem = new CompareSystem(computer, player);
+            gameResult = compareSystem.compare();
+            outputView.printResult(gameResult);
+        }
     }
 }
