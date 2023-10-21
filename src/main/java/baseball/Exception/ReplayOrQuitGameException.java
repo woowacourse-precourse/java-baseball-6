@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.Exception;
 
 public class ReplayOrQuitGameException {
     private static final String RE_NUMBER_REGEX = "[1-2]";

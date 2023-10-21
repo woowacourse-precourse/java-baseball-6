@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.Exception;
 
 import java.util.HashSet;
 import java.util.Set;
