@@ -8,11 +8,6 @@ public class Application {
         GameScore gameScore = new GameScore(person, computer);
         GameRunner gameRunner = new GameRunner(person, gameUtils, gameScore);
 
-        GameMessages.printStartMessage();
-        while (true) {
-            if (gameRunner.playRound()) {
-                return;
-            }
-        }
+        gameRunner.playGame();
     }
 }
