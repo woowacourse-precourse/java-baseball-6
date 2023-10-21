@@ -9,20 +9,17 @@ public class AnswerChecker {
     private static final int STRIKE_INDEX = 1;
     private static final int ANSWER_SIZE = 3;
 
-    private int strikeCount = 0;
-    private int ballCount = 0;
-
-    private String gameResult = "";
-
     public String checkAnswer(List<Integer> answer, List<Integer> myAnswer){
         if(answer.equals(myAnswer)){
             return CORRECT_ANSWER;
         }
-            gameResult = countBallAndStrike(answer, myAnswer);
+            String gameResult = countBallAndStrike(answer, myAnswer);
             return gameResult;
     }
 
     private String countBallAndStrike(List<Integer> answer, List<Integer> myAnswer){
+        int strikeCount = 0;
+        int ballCount = 0;
         for (int i = 0; i < ANSWER_SIZE; i++) {
             if (answer.get(i).equals(myAnswer.get(i))) {
                 strikeCount++;
@@ -38,12 +35,6 @@ public class AnswerChecker {
         int strikeResult = (int) gameResult.charAt(STRIKE_INDEX) - 48;
 
         gameResultPrint(ballResult, strikeResult);
-        clearBallCountAndStrikeCount();
-    }
-
-    private void clearBallCountAndStrikeCount(){
-        ballCount=0;
-        strikeCount=0;
     }
 
     private void gameResultPrint(int ballResult, int strikeResult){
