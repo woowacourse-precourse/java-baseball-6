@@ -9,6 +9,10 @@ public class BaseBallNumber {
         this.baseballNumber = baseballNumber;
     }
 
+    public Integer getNumberByIndex(int index) {
+        return baseballNumber.get(index);
+    }
+
     public boolean checkStrike(Integer userNumber, int index) {
         Integer answerNumber = baseballNumber.get(index);
         return answerNumber.equals(userNumber);
