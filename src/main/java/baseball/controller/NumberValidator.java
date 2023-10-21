@@ -15,7 +15,7 @@ public class NumberValidator {
     private static final String GAME_TERMINATE_NUMBER = "2";
     private static final String WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE = "재시작/종료 여부는 1 또는 2를 입력해주세요.";
 
-    public boolean isTreeLengthLetter(String playerInput) {
+    public boolean isThreeLengthLetter(String playerInput) {
         return playerInput.length() == BASEBALL_GAME_NUMBER_LENGTH;
     }
 
@@ -40,7 +40,7 @@ public class NumberValidator {
     }
 
     public boolean isValidNumber(String playerInput) {
-        if (!isTreeLengthLetter(playerInput)) {
+        if (!isThreeLengthLetter(playerInput)) {
             throw new IllegalArgumentException(WRONG_LENGTH_THROW_MESSAGE);
         } else if (!isAllDigit(playerInput)) {
             throw new IllegalArgumentException(WRONG_RANGE_THROW_MESSAGE);
