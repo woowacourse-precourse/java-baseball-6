@@ -64,7 +64,7 @@
 - `FixedAnswerGenerator`: `AnswerGenerator` 구현
     - [ ] `generate()` 메서드를 구현하고, 오버라이딩하여 `String` 타입을 매개변수로 3자리 숫자를 생성하여 `Answer` 타입 반환.
 - `Answer`
-    - [ ] 정답과 입력값을 비교하여 `Score`반환.
+    - [x] 정답과 입력값을 비교하여 `Score`반환.
 - `Score`
     - [x] `toString()` 메서드를 오버라이딩하여 `"n볼"`, `"n스트라이크"`, `"낫싱"` `"3스트라이크"` 출력.
     - [x] `isStrikeOut()`: 정답과 입력값을 비교하여 `"3스트라이크"`인지 `boolean` 반환.
