@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.controller.NumberBaseballController;
-import baseball.model.NumberBaseball;
 import baseball.service.NumberBaseballService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
