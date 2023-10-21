@@ -10,23 +10,40 @@ import static baseball.models.Constants.*;
  */
 
 public class NumberChecker {
+    private List<Integer> user;
+    private List<Integer> computer;
+
     public Score checkNumber(List<Integer> user, List<Integer> computer){
-        int strikeCount = 0;
+        this.user = user;
+        this.computer = computer;
+
+        return countBallAndStrike();
+    }
+
+    public Score countBallAndStrike(){
         int ballCount = 0;
-        for (int i = 0; i < ANSWER_LENGTH; i++) {
-            if (isStrike(user.get(i), computer.get(i)))
+        int strikeCount = 0;
+
+        for (int index = 0; index < ANSWER_LENGTH; index++) {
+            if (isStrike(index))
                 strikeCount++;
-            else if (isBall(computer, user.get(i)))
+            else if (isBall(index))
                 ballCount++;
         }
+
         return new Score(ballCount, strikeCount);
     }
 
-    public boolean isStrike(int userDigit, int computerDigit){
+    public boolean isStrike(int index){
+        int userDigit = user.get(index);
+        int computerDigit = computer.get(index);
+
         return userDigit == computerDigit;
     }
 
-    public boolean isBall(List<Integer> computer, int userDigit){
+    public boolean isBall(int index){
+        int userDigit = user.get(index);
+
         return computer.contains(userDigit);
     }
 
