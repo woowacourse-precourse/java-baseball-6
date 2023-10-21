@@ -7,11 +7,11 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("클래스별 기능 테스트")
+@DisplayName("GameResult 클래스 테스트")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-public class ClassTest {
+public class GameResultTest {
     @Test
-    void GameResult_클래스의_toString을_호출한다() {
+    void toString을_호출한다() {
         GameResult result1 = new GameResult(1, 2);
         assertEquals("2볼 1스트라이크", result1.toString());
 
