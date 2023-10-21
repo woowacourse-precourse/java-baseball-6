@@ -7,17 +7,17 @@ public class Player {
 
     private List<Integer> playerNumbers;
 
-    public Player(String input) {
-        this.playerNumbers = generatePlayerNumbers(input);
+    private Player(List<Integer> playerNumbers) {
+        this.playerNumbers = playerNumbers;
     }
 
     public List<Integer> getPlayerNumbers() {
         return playerNumbers;
     }
 
-    private List<Integer> generatePlayerNumbers(String input) {
+    public static Player from(String input) {
         validateNotZero(input);
-        validateNumberDigit(input);
+        validateNumberSize(input);
         List<Integer> numbers = new ArrayList<>();
         for (char num : input.toCharArray()) {
             validateIsNumber(num);
@@ -25,28 +25,28 @@ public class Player {
             validateRedundantNumber(numbers, number);
             numbers.add(number);
         }
-        return numbers;
+        return new Player(numbers);
     }
 
-    private void validateNotZero(String input) {
+    private static void validateNotZero(String input) {
         if (input.contains("0")) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateNumberDigit(String input) {
+    private static void validateNumberSize(String input) {
         if (input.length() != Constants.NUMBERS_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateRedundantNumber(List<Integer> numbers, int number) {
+    private static void validateRedundantNumber(List<Integer> numbers, int number) {
         if (numbers.contains(number)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateIsNumber(char input) {
+    private static void validateIsNumber(char input) {
         if (!Character.isDigit(input)) {
             throw new IllegalArgumentException();
         }
