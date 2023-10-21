@@ -9,7 +9,7 @@ import baseball.view.OutputView;
 
 public class BaseBallController {
 
-    private static final int GAME_END_STRIKE_COUNTS = 3;
+    private final int GAME_END_STRIKE_COUNTS = 3;
 
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();

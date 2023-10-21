@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Number {
 
-    private final int MIN_VALUE = 1;
-    private final int MAX_VALUE = 9;
+    private final int MIN_NUMERIC_VALUE = 1;
+    private final int MAX_NUMERIC_VALUE = 9;
 
     private final int value;
 
@@ -15,8 +15,8 @@ public class Number {
     }
 
     private void validateValueRange(int value) {
-        if (value < MIN_VALUE || value > MAX_VALUE) {
-            throw new IllegalArgumentException("1 에서 9 사이의 값이 아닙니다.");
+        if (value < MIN_NUMERIC_VALUE || value > MAX_NUMERIC_VALUE) {
+            throw new IllegalArgumentException("1에서 9사이의 값이 아닙니다.");
         }
     }
 

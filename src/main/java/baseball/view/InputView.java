@@ -6,9 +6,9 @@ public class InputView {
 
     public static final int NEW_GAME_CODE = 1;
     public static final int END_GAME_CODE = 2;
-    private static final int MIN_NUMERIC_VALUE = 1;
-    private static final int MAX_NUMERIC_VALUE = 9;
-    private static final int INPUT_LENGTH = 3;
+    private final int MIN_NUMERIC_VALUE = 1;
+    private final int MAX_NUMERIC_VALUE = 9;
+    private final int INPUT_LENGTH = 3;
 
     public String inputNumber() {
         String input = readLine();
@@ -41,7 +41,7 @@ public class InputView {
         for (char eachChar : input.toCharArray()) {
             int eachDigit = Character.getNumericValue(eachChar);
             if (eachDigit < MIN_NUMERIC_VALUE || eachDigit > MAX_NUMERIC_VALUE) {
-                throw new IllegalArgumentException("1 에서 9 사이의 값이 아닙니다.");
+                throw new IllegalArgumentException("1에서 9사이의 값이 아닙니다.");
             }
         }
     }
