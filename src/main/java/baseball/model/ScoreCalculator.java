@@ -15,4 +15,8 @@ public class ScoreCalculator {
     private boolean excludeStrike(List<Integer> playerInput, List<Integer> answer, int index) {
         return !playerInput.get(index).equals(answer.get(index));
     }
+
+    private boolean includeBall(List<Integer> playerInput, List<Integer> answer, int index) {
+        return playerInput.contains(answer.get(index));
+    }
 }
