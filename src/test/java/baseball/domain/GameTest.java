@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import baseball.domain.balls.Balls;
 import baseball.domain.balls.RandomBallsGenerator;
+import baseball.domain.game.Game;
+import baseball.domain.game.GameState;
 import baseball.domain.score.Hint;
 import java.util.List;
 import org.junit.jupiter.api.Test;

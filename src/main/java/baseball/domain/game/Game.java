@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.game;
 
 import baseball.domain.balls.Balls;
 import baseball.domain.balls.BallsGenerator;
