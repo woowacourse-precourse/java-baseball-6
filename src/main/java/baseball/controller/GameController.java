@@ -38,8 +38,7 @@ public class GameController {
         while (true) {
             askNumberInput();
 
-            int userNumber = receiveUserNumber();
-            umpire.prepareJudgement(computerNumber, userNumber);
+            umpire.prepareJudgement(computerNumber, receiveUserNumber());
             printGameJudgement();
 
             if (umpire.isGameEnd()) {
