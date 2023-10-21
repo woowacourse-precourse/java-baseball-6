@@ -99,8 +99,8 @@
 
 ## 📒 StringUtils
 
-- [ ] String 관련 utility class
-    - [ ] `String`을 `List<Integer>`로 변환
+- [x] String 관련 utility class
+    - [x] `String`을 `List<Integer>`로 변환
 
 ---
 
