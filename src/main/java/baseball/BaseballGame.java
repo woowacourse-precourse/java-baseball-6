@@ -11,6 +11,7 @@ import java.util.Set;
 public class BaseballGame {
     static final int MAX_NUMBER = 9;
     static final int MIX_NUMBER = 1;
+    static final int NUMBER_SIZE = 3;
 
     public void GameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -25,6 +26,7 @@ public class BaseballGame {
         userNumber = changeIntegerList(userInput);
         numberVaildation(userNumber);
         duplicateValidation(userNumber);
+        sizeVaildation(userNumber);
     }
 
     public void changeNumber(String userInput) {
@@ -63,6 +65,12 @@ public class BaseballGame {
 
         if(numberSet.size() != userNumber.size()){
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
+    }
+
+    public void sizeVaildation(List<Integer> userNumber){
+        if(userNumber.size() != NUMBER_SIZE){
+            throw new IllegalArgumentException("3자리 수가 아닙니다.");
         }
     }
 
