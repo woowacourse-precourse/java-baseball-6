@@ -8,11 +8,18 @@ public class UserNumber {
 
     public UserNumber(List<Integer> userNumber) {
         validateSize(userNumber);
+        validateContainZero(userNumber);
         this.userNumber = userNumber;
     }
 
     private void validateSize(List<Integer> userNumber) {
         if (userNumber.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateContainZero(List<Integer> userNumber) {
+        if (userNumber.contains(0)) {
             throw new IllegalArgumentException();
         }
     }
