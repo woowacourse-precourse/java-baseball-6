@@ -21,10 +21,13 @@ public class User {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("유효한 숫자를 입력하세요.");
         }
-        if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(
-                2)) {
+        if (hasDuplicates(input)) {
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
+    }
+
+    public boolean hasDuplicates(String str) {
+        return str.length() != str.chars().distinct().count();
     }
 
     public List<Integer> convertStringToIntList(String input) {
