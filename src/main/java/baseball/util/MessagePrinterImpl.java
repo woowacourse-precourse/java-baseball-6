@@ -9,7 +9,12 @@ public class MessagePrinterImpl implements MessagePrinter {
         printMessage(GameMessage.START.getMessage());
     }
 
+    @Override
+    public void printBatterRequest() {
+        printMessage(GameMessage.REQUEST_BAT.getMessage());
+    }
+
     private void printMessage(String message) {
-        System.out.println(message);
+        System.out.print(message);
     }
 }
