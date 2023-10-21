@@ -40,6 +40,7 @@ public class InputValidator {
     }
 
     public boolean isValidNumber(String playerInput) {
+        playerInput = playerInput.replaceAll(" ", "");
         if (!isThreeLengthLetter(playerInput)) {
             throw new IllegalArgumentException(WRONG_LENGTH_THROW_MESSAGE);
         } else if (!isAllDigit(playerInput)) {
@@ -51,6 +52,7 @@ public class InputValidator {
     }
 
     public boolean isValidContinueGameChoice(String playerInput) {
+        playerInput = playerInput.replaceAll(" ", "");
         if (playerInput.equals(CONTINUE_NUMBER) || playerInput.equals(GAME_TERMINATE_NUMBER)) {
             return true;
         }
