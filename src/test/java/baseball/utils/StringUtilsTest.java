@@ -18,7 +18,7 @@ class StringUtilsTest {
     @ParameterizedTest
     @MethodSource("containsAllNumericArgs_Success")
     @DisplayName("문자가 모두 숫자로 이루어져 있는지 확인 - 성공 시( 모두 숫자 일 시 ) true 리턴")
-    public void checkTargetNumberContainsAllNumeric_Success(final String value) {
+    public void checkTargetStringContainsAllNumeric_Success(final String value) {
         Assertions.assertTrue(StringUtils.isNumeric(value));
     }
 
@@ -36,7 +36,7 @@ class StringUtilsTest {
     @ParameterizedTest
     @MethodSource("containsAllNumericArgs_Failure")
     @DisplayName("문자가 모두 숫자로 이루어져 있는지 확인 - 실패 시( 문자가 포함되어 있을 때 ) false 리턴")
-    public void checkTargetNumberContainsAllNumeric_Failure(final String value) {
+    public void checkTargetStringContainsAllNumeric_Failure(final String value) {
         Assertions.assertFalse(StringUtils.isNumeric(value));
     }
 
@@ -58,8 +58,8 @@ class StringUtilsTest {
 
     @ParameterizedTest
     @MethodSource("isEqualLength_Success")
-    @DisplayName("내가 입력한 길이와 문자가 같은 길이를 가지는지 테스트 - 성공 시( 길이가 같을 시 ) true 리턴")
-    public void checkTargetNumberEqualLength_Success(final String value, final int len) {
+    @DisplayName("입력한 길이와 문자가 같은 길이를 가지는지 테스트 - 성공 시( 길이가 같을 시 ) true 리턴")
+    public void checkTargetStringEqualLength_Success(final String value, final int len) {
         Assertions.assertTrue(StringUtils.isLengthEqual(value, len));
     }
 
@@ -79,8 +79,8 @@ class StringUtilsTest {
 
     @ParameterizedTest
     @MethodSource("isEqualLength_Failure")
-    @DisplayName("내가 입력한 길이와 문자가 같은 길이를 가지는지 테스트 - 실패 시( 길이가 다를 시 ) false 리턴")
-    public void checkTargetNumberEqualLength_Failure(final String value, final int len) {
+    @DisplayName("입력한 길이와 문자가 같은 길이를 가지는지 테스트 - 실패 시( 길이가 다를 시 ) false 리턴")
+    public void checkTargetStringEqualLength_Failure(final String value, final int len) {
         Assertions.assertFalse(StringUtils.isLengthEqual(value, len));
     }
 
@@ -100,8 +100,8 @@ class StringUtilsTest {
 
     @ParameterizedTest
     @MethodSource("isEqualLength_Exception")
-    @DisplayName("내가 입력한 길이와 문자가 같은 길이를 가지는지 테스트 - 예외 ( 내가 입력한 길이가 음수일 떄 ) IlligalArgumentException")
-    public void checkTargetNumberEqualLength_Exception(final String value, final int len) {
+    @DisplayName("입력한 길이와 문자가 같은 길이를 가지는지 테스트 - 예외 ( 내가 입력한 길이가 음수일 떄 ) IlligalArgumentException")
+    public void checkTargetStringEqualLength_Exception(final String value, final int len) {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> StringUtils.isLengthEqual(value, len));
     }
