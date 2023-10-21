@@ -47,7 +47,7 @@
 ## Controller
 - StateController
   - Field
-    - [ ] 현재 게임 진행 상태(1과 2중 하나)
+    - [x] 현재 게임 진행 상태
   - Method
     - [ ] 게임 재시작/종료 조정
     - [ ] **잘못된 값 입력 시 `IllegalArgumentException` 발생 후 종료**
