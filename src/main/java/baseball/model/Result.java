@@ -13,19 +13,27 @@ public class Result {
         this.ball = ball;
     }
 
+    public int getStrike() {
+        return this.strike;
+    }
+
+    public int getBall() {
+        return this.ball;
+    }
+
     public Result makeResult(List<Integer> computer, List<Integer> user) {
 
-        strike = 0;
-        ball = 0;
+        this.strike = 0;
+        this.ball = 0;
 
         for (int i = 0; i < 3; i++) {
             if (user.indexOf(i) == computer.indexOf(i)) {
-                strike += 1;
+                this.strike += 1;
             } else if (computer.contains(user.indexOf(i))) {
-                ball += 1;
+                this.ball += 1;
             }
         }
 
-        return new Result(strike, ball);
+        return new Result(this.strike, this.ball);
     }
 }
