@@ -34,7 +34,7 @@ public class Play {
 
     private void checkInputHasChar(String input) {
         try {
-            Integer.parseInt(input);
+            int temp = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("This input is not Integer: " + input);
         }
@@ -44,7 +44,7 @@ public class Play {
         checkInputHasChar(input);
         int menuNum = Integer.parseInt(input);
         if (menuNum < 1 || menuNum > 2) {
-            throw new IllegalArgumentException("Invalid Number: " + menuNum);
+            throw new IllegalArgumentException("Invalid Menu Number: " + menuNum);
         }
         return menuNum;
     }
