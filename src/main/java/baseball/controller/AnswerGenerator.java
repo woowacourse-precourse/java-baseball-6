@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class AnswerGenerator {
-    public GameNumbers generateAnser() {
+    public GameNumbers generateAnswer() {
         Set<Integer> set = new HashSet<>(3);
         while (set.size() < GAME_NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
