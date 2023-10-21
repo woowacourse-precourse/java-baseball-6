@@ -1,9 +1,10 @@
-package baseball.game;
+package baseball.input;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 
+import baseball.input.UserInput;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;

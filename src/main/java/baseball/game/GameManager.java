@@ -10,6 +10,8 @@ import static baseball.game.GameMessages.STRIKE;
 import static baseball.util.ConsoleUtil.printMsg;
 import static baseball.util.ConsoleUtil.printMsg_newLine;
 
+import baseball.game.balls.Balls;
+import baseball.input.UserInput;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;

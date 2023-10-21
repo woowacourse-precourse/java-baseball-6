@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.input;
 
 import static baseball.game.GameMessages.PLAY_AGAIN;
 import static baseball.util.ConsoleUtil.printMsg_newLine;
