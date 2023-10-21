@@ -17,13 +17,17 @@ public class NumberGenerator {
 
     public void makeRandomAnswerList() {
         while (answer.size() < 3) {
-            final int randomNumber = Randoms.pickNumberInRange(minNumber, maxNumber);
+            final int randomNumber = generateRandomNumber();
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }
         }
     }
 
+    public int generateRandomNumber() {
+        final int randomNumber = Randoms.pickNumberInRange(minNumber, maxNumber);
+        return randomNumber;
+    }
     public List<Integer> getAnswer() {
         return this.answer;
     }

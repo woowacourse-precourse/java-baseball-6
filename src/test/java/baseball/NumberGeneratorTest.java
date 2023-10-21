@@ -12,7 +12,7 @@ class NumberGeneratorTest {
     void makeRandomInRange() {
         NumberGenerator numberGenerator = new NumberGenerator();
         for (int i = 0; i < 1000 ; i++) {
-
+            numberGenerator.makeRandomAnswerList();
         }
     }
     @Test
