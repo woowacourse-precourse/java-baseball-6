@@ -19,15 +19,7 @@ public class Baseball {
     }
 
     public Result guess(String userInput) throws IllegalArgumentException {
-        validateUserInput(userInput);
-
-        int parsedInput = Integer.parseInt(userInput);
-        LinkedList<Integer> userGuess = new LinkedList<>();
-        while (userGuess.size() < 3) {
-            int i = parsedInput % 10;
-            parsedInput = parsedInput / 10;
-            userGuess.push(i);
-        }
+        List<Integer> userGuess = filterUserInput(userInput);
 
         Result result = new Result();
         for (int i = 0; i < 3; i++) {
@@ -47,7 +39,7 @@ public class Baseball {
         return result;
     }
 
-    private void validateUserInput(String userInput) throws IllegalArgumentException {
+    private List<Integer> filterUserInput(String userInput) throws IllegalArgumentException {
         if (userInput == null) {
             throw new IllegalArgumentException("Null input");
         }
@@ -55,21 +47,23 @@ public class Baseball {
             throw new IllegalArgumentException("Wrong length");
         }
 
+        LinkedList<Integer> userGuess = new LinkedList<>();
         try {
             int parsedInput = Integer.parseInt(userInput);
-            List<Integer> guess = new ArrayList<>();
-
-            while (guess.size() < 3) {
+            while (userGuess.size() < 3) {
                 int i = parsedInput % 10;
                 parsedInput = parsedInput / 10;
-                if (guess.contains(i)) {
+                if (userGuess.contains(i)) {
                     throw new IllegalArgumentException("Duplicated");
                 }
-                guess.add(i);
+                userGuess.push(i);
             }
+
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException("NaN");
         }
+
+        return userGuess;
     }
 
     public static class Result {
