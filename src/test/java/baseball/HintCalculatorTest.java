@@ -65,4 +65,13 @@ public class HintCalculatorTest {
         assertThat(hintString).isEqualTo(expectedHintString);
     }
 
+    @DisplayName("userNumber와 computerNumber가 일치할 때 게임 성공")
+    @Test
+    void checkSuccess(){
+        List<Integer> userList = List.of(1, 2, 3);
+        List<Integer> computerList = List.of(1, 2, 3);
+        HintCalculator hintCalculator = new HintCalculator(userList, computerList);
+        assertThat(hintCalculator.isThreeStrike()).isTrue();
+    }
+
 }
