@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BaseballScore {
 
-    private int ball, strike;
+    private final int ball, strike;
 
     public BaseballScore(int ball, int strike) {
         this.ball = ball; this.strike = strike;
