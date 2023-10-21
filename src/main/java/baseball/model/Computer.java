@@ -8,6 +8,18 @@ import java.util.List;
 public class Computer {
     private List<Integer> computerNumbers;
 
+    public Computer() {
+        setNumbers();
+    }
+
+    public List<Integer> getNumbers() {
+        return computerNumbers;
+    }
+
+    public void setNumbers() {
+        this.computerNumbers = generateRandomNumbers();
+    }
+
     private List<Integer> generateRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
 
