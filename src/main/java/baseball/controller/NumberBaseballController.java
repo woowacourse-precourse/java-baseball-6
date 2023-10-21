@@ -51,7 +51,8 @@ public class NumberBaseballController {
     }
 
     private void processOfEndGame() {
-        if(outputView.printEndGame() == RE_GAME) {
+        outputView.printEndGame();
+        if(inputView.readNumOfReGame() == RE_GAME) {
             generateNewGame();
             readInputNumFromInputView();
             return;
