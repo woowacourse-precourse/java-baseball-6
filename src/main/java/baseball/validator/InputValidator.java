@@ -8,6 +8,13 @@ public class InputValidator {
         return false;
     }
 
+    public static boolean isRestartOrExitValid(String input) {
+        if (isLengthOne(input) && isEqualToOneOrTwo(input)) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean isThreeChar(String input) {
         if (input.length() == 3) {
             return true;
