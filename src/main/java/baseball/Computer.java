@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
 
     public Computer() {
-        makeRandomNumbers();
+        this.numbers = makeRandomNumbers();
     }
 
-    private void makeRandomNumbers() {
+    private List<Integer> makeRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
 
         while (numbers.size() < Constants.NUMBER_COUNT) {
@@ -21,7 +21,7 @@ public class Computer {
             }
         }
 
-        this.numbers = numbers;
+        return numbers;
     }
 
     public List<Integer> getNumbers() {
