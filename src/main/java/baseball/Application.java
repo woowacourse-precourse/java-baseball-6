@@ -19,6 +19,21 @@ public class Application {
     }
 
     /**
+     * 컴퓨터가 랜덤한 3 자리 정수를 생성하는 함수
+     * @return ArrayList[3]
+     */
+    public static List<Integer> createRandomNumbers() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < NUM_OF_DIGITS) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
+
+    /**
      * 사용자가 입력한 숫자를 3 자리로 나눠 배열에 저장하는 함수
      * @param userNumberDigits
      */
@@ -32,20 +47,5 @@ public class Application {
             int index = NUM_OF_DIGITS - 1 - i;
             userNumberDigits[index] = digit;
         }
-    }
-
-    /**
-     * 컴퓨터가 랜덤한 3 자리 정수를 생성하는 함수
-     * @return ArrayList[3]
-     */
-    public static List<Integer> createRandomNumbers() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < NUM_OF_DIGITS) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
     }
 }
