@@ -20,7 +20,7 @@ public record BaseballScore(int ballCount, int strikeCount) {
             return "낫싱";
         }
         StringBuilder stringBuilder = new StringBuilder();
-        boolean isNeedSpace = ballCount > 0;
+        boolean isNeedSpace = ballCount > 0 && strikeCount > 0;
         if (ballCount > 0) {
             stringBuilder.append(ballCount).append("볼");
         }

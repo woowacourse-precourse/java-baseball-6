@@ -5,6 +5,7 @@ import baseball.game.service.BaseballGame;
 import baseball.game.service.dto.Baseball;
 import baseball.game.service.dto.BaseballScore;
 import baseball.io.input.Input;
+import baseball.io.input.validation.InputCommandValidator;
 import baseball.io.input.validation.InputValidator;
 
 public class GameLoop {
@@ -30,15 +31,15 @@ public class GameLoop {
             Baseball computerBall = Baseball.of(answer.getAnswer());
 
             BaseballScore matchResults = baseballGame.match(computerBall, myBall);
-            System.out.print(matchResults);
+            System.out.println(matchResults);
             if (!matchResults.isStrike()) {
                 continue;
             }
 
             GameState promptState = inputWhenStrikes();
-            if (promptState == GameState.FINISH) {
-                gameLifeCycle.finish();
-                break;
+            switch (promptState) {
+                case FINISH -> gameLifeCycle.finish();
+                case RESTART -> answer.regenerateAnswer();
             }
         }
     }
@@ -46,7 +47,7 @@ public class GameLoop {
     private GameState inputWhenStrikes() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String select = input.nextLine();
+        String select = input.nextLineWithValidation(InputCommandValidator.singleton());
 
         if (select.equals("1")) {
             return GameState.RESTART;
