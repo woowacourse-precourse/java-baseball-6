@@ -2,7 +2,7 @@ package baseball.entity;
 
 import java.util.Objects;
 
-class PlayResult {
+public class PlayResult {
 
     private final int ballCount;
     private final int strikeCount;

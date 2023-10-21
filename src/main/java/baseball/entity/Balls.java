@@ -2,9 +2,9 @@ package baseball.entity;
 
 import java.util.*;
 
-class Balls implements Iterable<Ball> {
+public class Balls implements Iterable<Ball> {
 
-    private static final int MAX_BALLS_SIZE = 3;
+    public static final int MAX_BALLS_SIZE = 3;
     private static final String UNKNOWN_NUMBERS_MESSAGE = "알 수 없는 숫자 목록(null)으로 객체를 생성할 수 없습니다.";
     private static final String UNKNOWN_BALLS_MESSAGE = "알 수 없는 공 목록(null)과 비교할 수 없습니다.";
     private static final String NULL_INCLUDED_MESSAGE = "알 수 없는 숫자(null)가 포함되어 있는 목록으로 객체를 생성할 수 없습니다.";
