@@ -11,7 +11,6 @@ public class Converter {
 
     public static List<Integer> convertList(String value) {
         return Arrays.stream(value.split(""))
-                .map(String::valueOf)
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .collect(Collectors.toList());
