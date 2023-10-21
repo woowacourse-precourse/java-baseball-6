@@ -9,7 +9,7 @@ public class Computer {
     private int[] answer = new int[NUMBER_LEN];
 
     public Computer() {
-        boolean[] isUsed = new boolean[MAX_VAL];
+        boolean[] isUsed = new boolean[MAX_VAL + 1];
 
         for (int i = 0; i < NUMBER_LEN; ) {
             int tmp = Randoms.pickNumberInRange(MIN_VAL, MAX_VAL);
