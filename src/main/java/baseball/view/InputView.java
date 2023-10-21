@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import baseball.utils.GameStatusCommand;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
