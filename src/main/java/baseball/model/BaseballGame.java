@@ -3,19 +3,16 @@ package baseball.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.model.BaseballGameResult.SUCCESS;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class BaseballGame {
-    private final List<Integer> computer;
-    private List<Integer> user;
-    private BaseballGameCounts baseballGameCounts;
+    private final List<Integer> computer = new ArrayList<>();
+    private final List<Integer> user = new ArrayList<>();
+    private final BaseballGameCounts baseballGameCounts = BaseballGameCounts.createBaseballGameCounts();
 
-    protected BaseballGame() {
-        this.computer = new ArrayList<>();
-        this.user = new ArrayList<>();
-        this.baseballGameCounts = BaseballGameCounts.createBaseballGameCounts();
-    }
+    protected BaseballGame() {}
 
     public static BaseballGame createBaseballGame() {
         return new BaseballGame();
@@ -34,7 +31,7 @@ public class BaseballGame {
 
             this.showCounts();
 
-            if (this.baseballGameCounts.isWinCondition()) {
+            if (this.baseballGameCounts.isWinCondition() == SUCCESS) {
                 return;
             }
         }
