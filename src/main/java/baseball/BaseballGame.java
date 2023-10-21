@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
@@ -35,9 +36,11 @@ public class BaseballGame {
         while (!isThreeStrike){
             baseballGameView.printInputGuideMessage();
 
-            List<Integer> playerInputNumber = baseballGameLogic.changeStringToDigit(inputThreeDigits());
+            BallCount ballCount = baseballGameLogic.checkBallCount(
+                    randomThreeDigits,
+                    changeStringToDigit(inputThreeDigits())
+            );
 
-            BallCount ballCount = baseballGameLogic.checkBallCount(randomThreeDigits, playerInputNumber);
             baseballGameView.printBallCount(ballCount);
 
             if(ballCount.getStrike() == MAX_STRIKE){
@@ -45,6 +48,18 @@ public class BaseballGame {
                 isThreeStrike = true;
             }
         }
+    }
+
+    private List<Integer> changeStringToDigit(String numberFromPlayer) {
+        ArrayList<Integer> digitList = new ArrayList<>();
+
+        for (int i = 0; i < numberFromPlayer.length(); i++) {
+            char digitChar = numberFromPlayer.charAt(i); // 각 자리의 문자를 가져옴
+            int digit = Character.getNumericValue(digitChar); // 문자를 정수로 변환
+            digitList.add(digit); // 정수를 리스트에 추가
+        }
+
+        return digitList;
     }
 
     private String inputThreeDigits(){

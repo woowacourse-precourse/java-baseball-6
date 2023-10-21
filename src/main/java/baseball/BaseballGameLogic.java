@@ -25,18 +25,6 @@ public class BaseballGameLogic {
         return threeDigitNonZero;
     }
 
-    public List<Integer> changeStringToDigit(String numberFromPlayer) {
-        ArrayList<Integer> digitList = new ArrayList<>();
-
-        for (int i = 0; i < numberFromPlayer.length(); i++) {
-            char digitChar = numberFromPlayer.charAt(i); // 각 자리의 문자를 가져옴
-            int digit = Character.getNumericValue(digitChar); // 문자를 정수로 변환
-            digitList.add(digit); // 정수를 리스트에 추가
-        }
-
-        return digitList;
-    }
-
     public BallCount checkBallCount(List<Integer> randomThreeDigits, List<Integer> playerInputNumber){
         int strike = 0;
         int ball = 0;
