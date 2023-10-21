@@ -10,8 +10,6 @@ public class Player {
     private final List<Integer> proposal;
 
     public Player(String input) {
-        //TODO 예외처리 로직(여기다가 할지 다른데서 할지)
-        PlayerProposalValidator.execute(input);
         this.proposal = List.of(
                 input.charAt(0)-'0',
                 input.charAt(1)-'0',
