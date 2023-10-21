@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class BaseballGame {
     private final Computer computer;
     private final UserInput userInput;
@@ -14,12 +16,24 @@ public class BaseballGame {
     }
 
     public void start() {
-        boolean shouldRestart = false;
         do {
             playGame();
-        } while (shouldRestart);
+        } while (wantsToRestart());
     }
 
     private void playGame() {
+    }
+
+    public boolean wantsToRestart() {
+        outputHandler.printGameRestart();
+        String input = Console.readLine();
+        if (input.equals("1")) {
+            return true;
+        }
+        if (input.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
