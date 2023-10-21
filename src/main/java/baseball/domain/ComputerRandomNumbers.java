@@ -30,5 +30,16 @@ public class ComputerRandomNumbers {
         return numbers;
     }
 
+    public int get(int idx) {
+        return randomNumbers.get(idx);
+    }
+
+    public int indexOf(int value) {
+        return randomNumbers.indexOf(value);
+    }
+
+    public int size() {
+        return randomNumbers.size();
+    }
 
 }
