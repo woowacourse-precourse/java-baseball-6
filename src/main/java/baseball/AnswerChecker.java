@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class AnswerChecker {
-    public Result checkGuess(List<Integer> answer, List<Integer> input) {
+    public GameResult calculateGameResult(List<Integer> answer, List<Integer> input) {
         int strike = 0;
         int ball = 0;
 
@@ -15,6 +15,6 @@ public class AnswerChecker {
             }
         }
 
-        return new Result(strike, ball);
+        return new GameResult(strike, ball);
     }
 }

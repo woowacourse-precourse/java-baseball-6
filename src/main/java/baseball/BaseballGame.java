@@ -6,14 +6,14 @@ import org.junit.platform.commons.util.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class BaseballGame {
     public static final String RESTART_GAME = "1";
     public static final int NUMBER_SIZE = 3;
 
     private final AnswerChecker answerChecker;
     private List<Integer> answer;
 
-    public Game() {
+    public BaseballGame() {
         answerChecker = new AnswerChecker();
     }
 
@@ -29,17 +29,26 @@ public class Game {
         while (true) {
             System.out.println("숫자를 입력해주세요 :");
             input = Console.readLine();
-            validateInput(input);
-            Result result = answerChecker.checkGuess(answer, convertInputToList(input));
-            System.out.println(result.toString());
 
-            if (done(result)) {
-                System.out.printf("%s개의 숫자를 모두 맞히셨습니다! 게임 종료\n", NUMBER_SIZE);
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                input = Console.readLine();
+            validateInput(input);
+
+            GameResult gameResult = answerChecker.calculateGameResult(answer, convertInputToList(input));
+            System.out.println(gameResult.toString());
+
+            if (isComplete(gameResult)) {
+                handleGameCompletion();
                 break;
             }
         }
+    }
+
+    private void handleGameCompletion() {
+        String input;
+
+        System.out.printf("%s개의 숫자를 모두 맞히셨습니다! 게임 종료\n", NUMBER_SIZE);
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        input = Console.readLine();
 
         if (RESTART_GAME.equals(input)) {
             startGame();
@@ -53,6 +62,10 @@ public class Game {
 
         if (input.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException("3글자만 입력할 수 있습니다.");
+        }
+
+        if (!input.matches("\\d+")) {
+            throw new IllegalArgumentException("숫자 이외의 문자가 포함되어 있습니다.");
         }
     }
 
@@ -69,7 +82,7 @@ public class Game {
         answer = NumberGenerator.getRandomNumber(NUMBER_SIZE);
     }
 
-    private boolean done(Result result) {
-        return result.getStrike() == NUMBER_SIZE;
+    private boolean isComplete(GameResult gameResult) {
+        return gameResult.getStrike() == NUMBER_SIZE;
     }
 }

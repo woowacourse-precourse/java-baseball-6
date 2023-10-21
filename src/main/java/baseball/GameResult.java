@@ -1,6 +1,6 @@
 package baseball;
 
-public class Result {
+public class GameResult {
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";
     public static final String NOTHING = "낫싱";
@@ -9,7 +9,7 @@ public class Result {
     private int strike;
     private int ball;
 
-    public Result(int strike, int ball) {
+    public GameResult(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
     }
@@ -20,13 +20,21 @@ public class Result {
 
     @Override
     public String toString() {
-        if (ball > 0 && strike > 0) {
+        if (hasBall() && hasStrike()) {
             return ball + BALL + SPACE + strike + STRIKE;
-        } else if (strike > 0) {
+        } else if (hasStrike()) {
             return strike + STRIKE;
-        } else if (ball > 0) {
+        } else if (hasBall()) {
             return ball + BALL;
         }
         return NOTHING;
+    }
+
+    private boolean hasStrike() {
+        return strike > 0;
+    }
+
+    private boolean hasBall() {
+        return ball > 0;
     }
 }
