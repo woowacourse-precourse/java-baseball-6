@@ -1,6 +1,9 @@
 package baseball.controller;
 
+import static baseball.util.NumberConstants.LIMIT_NUMBERS_SIZE;
+
 import baseball.model.GameModel;
+import baseball.util.CalculationResult;
 import baseball.view.GameView;
 
 public class GameController {
@@ -20,8 +23,11 @@ public class GameController {
             String userInput = view.getUserInput();
             try {
                 model.validateUserInput(userInput);
-                System.out.println("임시 작동 중");
-                break;
+                CalculationResult result = model.checkGameResult(userInput);
+                System.out.println(view.showGameResult(result));
+                if (result.getStrikeCnt() == LIMIT_NUMBERS_SIZE.getValue()) {
+                    break;
+                }
             } catch (IllegalArgumentException exception) {
                 throw new IllegalArgumentException();
             }
