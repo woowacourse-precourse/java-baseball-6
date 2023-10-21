@@ -98,24 +98,15 @@ public class BaseBallGame {
     }
 
     private List<Integer> parseToNumberList(String convertValue) {
-        if(!isNumeric(convertValue)) {
-            throw new IllegalArgumentException();
-        }
+//        if(!isNumeric(convertValue)) {
+//            throw new IllegalArgumentException();
+//        }
 
         return Arrays.stream(convertValue.split(""))
                 .mapToInt(Integer::parseInt)
                 .boxed().collect(Collectors.toList());
     }
 
-    private boolean isNumeric(String input) {
-        for(char c : input.toCharArray()) {
-            if(!Character.isDigit(c)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 
     private boolean isUniqueDigits(List<Integer> numbers) {
         Set<Integer> deduplicatedNumbers = new HashSet<>(numbers);
