@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Constants.ALERT_END_CHOICE;
 import static baseball.Constants.ALERT_INPUT;
 import static baseball.Constants.ALERT_START;
 
@@ -8,7 +9,7 @@ public class Baseball {
     private InputNumbers inputNumbers = new InputNumbers();
     private BallAndStrike ballAndStrike;
     private Result result = Result.DEFAULT;
-
+    private InputChoice inputChoice = new InputChoice();
 
     public void run() {
         start();
@@ -27,6 +28,12 @@ public class Baseball {
         getBallAndStrike();
         getResult();
         writeMention();
+    }
+
+    private void end() {
+        alertEndChoice();
+        readInputChoice();
+        decideEndOrNot();
     }
 
     private void pickAnswerNumbers() {
@@ -57,5 +64,19 @@ public class Baseball {
     private void writeMention() {
         Mention mention = new Mention(result, ballAndStrike);
         System.out.println(mention.getMention());
+    }
+
+    private void alertEndChoice() {
+        System.out.println(ALERT_END_CHOICE);
+    }
+
+    private void readInputChoice() {
+        inputChoice.readInput();
+    }
+
+    private void decideEndOrNot() {
+        if (inputChoice.getInputChoice() == 2) {
+            // 게임 다시 시작
+        }
     }
 }
