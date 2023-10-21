@@ -23,4 +23,8 @@ public class OutputView {
     public void printBallCount(final BallCount ballCount) {
         System.out.println(ballCountFormatter.format(ballCount));
     }
+
+    public void printSuccess() {
+        System.out.println(GameMessage.SUCCESS.toValue());
+    }
 }
