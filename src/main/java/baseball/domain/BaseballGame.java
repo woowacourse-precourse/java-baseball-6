@@ -23,6 +23,8 @@ public class BaseballGame {
     }
 
     private void start() {
+        Answer answer = Answer.createAnswer();
+
         while (true) {
             String userInput = getUserInput();
             int[] inputNums = rule.evaluateNumbers(userInput);
