@@ -6,9 +6,6 @@ import java.util.Map;
 
 public final class OutputView {
 
-    private static final String BALL_TEXT = "볼";
-    private static final String STRIKE_TEXT = "스트라이크";
-    private static final String NOTHING_TEXT = "낫싱";
 
     static {
         System.out.println("숫자 야구 게임을 시작합니다");
@@ -20,13 +17,13 @@ public final class OutputView {
 
     public void displayHint(Map<HintType, Integer> hintMap) {
         if (hintMap.containsKey(HintType.BALL)) {
-            System.out.print(hintMap.get(HintType.BALL) + BALL_TEXT + " ");
+            System.out.print(hintMap.get(HintType.BALL) + HintType.BALL.getName() + " ");
         }
         if (hintMap.containsKey(HintType.STRIKE)) {
-            System.out.print(hintMap.get(HintType.STRIKE) + STRIKE_TEXT + " ");
+            System.out.print(hintMap.get(HintType.STRIKE) + HintType.STRIKE.getName() + " ");
         }
         if (hintMap.containsKey(HintType.NOTHING)) {
-            System.out.print(hintMap.get(NOTHING_TEXT));
+            System.out.print(HintType.NOTHING.getName());
         }
         System.out.println();
     }
