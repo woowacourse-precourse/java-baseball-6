@@ -1,8 +1,5 @@
 package baseball.model;
 
-import baseball.view.InputView;
-
-import java.util.HashSet;
 import java.util.LinkedList;
 
 public class Computer {
