@@ -1,55 +1,36 @@
 package baseball;
 
 import baseball.controller.Game;
-import baseball.controller.Generator;
 import baseball.controller.Validation;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
 
 public class Application {
 
-    private static final int LIST_LEN = 3;
     private static final int ONE_OR_TWO_LEN = 1;
+    private static final int EXIT = 1;
 
     public static void main(String[] args) {
-        OutputView.showOpening();
+        View.showOpening();
         boolean running = true;
 
         while (running) {
-            run();
+            Game.run();
 
-            OutputView.showClosing();
-            InputView.askOneOrTwo();
+            View.showClosing();
+            View.askOneOrTwo();
 
-            String input = Console.readLine();
-            Validation.validateInputLength(input, ONE_OR_TWO_LEN);
-            int inputNum = input.charAt(0) - '0';
-            Validation.validateOneOrTwo(inputNum);
-
-            running = (inputNum == 1);
+            running = checkExit();
         }
     }
 
-    public static void run() {
-        List<Integer> answer = Generator.generateAnswer(LIST_LEN);
-        boolean playing = true;
+    private static boolean checkExit() {
+        String input = Console.readLine();
+        Validation.validateInputLength(input, ONE_OR_TWO_LEN);
+        
+        int inputNum = input.charAt(0) - '0';
+        Validation.validateOneOrTwo(inputNum);
 
-        while (playing) {
-            InputView.askNumber();
-
-            String input = Console.readLine();
-            Validation.validateInputLength(input, LIST_LEN);
-
-            List<Integer> inputList = Generator.generateInputList(input);
-
-            int strike = Game.countStrike(inputList, answer);
-            int ball = Game.countBall(inputList, answer);
-
-            OutputView.showResult(strike, ball);
-
-            playing = Game.isNotOver(strike);
-        }
+        return inputNum == EXIT;
     }
 }
