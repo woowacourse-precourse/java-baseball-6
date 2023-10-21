@@ -19,20 +19,4 @@ public enum GameMessages {
 	public String getMessage() {
 		return message;
 	}
-
-	public static void printInputMsg() {
-		System.out.print(INPUT_NUMBER.getMessage());
-	}
-
-	public static void printStartMsg() {
-		System.out.println(GAME_START.getMessage());
-	}
-
-	public static void printEndMsg() {
-		System.out.println(GAME_OVER.getMessage());
-	}
-
-	public static void printAskToPlayAgain() {
-		System.out.println(PLAY_AGAIN.getMessage());
-	}
 }

@@ -2,11 +2,13 @@ package baseball.game;
 
 import static baseball.game.GameMessages.BALL;
 import static baseball.game.GameMessages.BALL_STRIKE;
+import static baseball.game.GameMessages.GAME_OVER;
+import static baseball.game.GameMessages.GAME_START;
+import static baseball.game.GameMessages.INPUT_NUMBER;
 import static baseball.game.GameMessages.NOTHING;
 import static baseball.game.GameMessages.STRIKE;
-import static baseball.game.GameMessages.printEndMsg;
-import static baseball.game.GameMessages.printInputMsg;
-import static baseball.game.GameMessages.printStartMsg;
+import static baseball.util.ConsoleUtil.printMsg;
+import static baseball.util.ConsoleUtil.printMsg_newLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ public class GameManager {
 	private final UserInput userInput = new UserInput();
 
 	public void start() {
-		printStartMsg();
+		printMsg_newLine(GAME_START.getMessage());
 
 		boolean gameEnd = true;
 		while (gameEnd) {
@@ -35,15 +37,15 @@ public class GameManager {
 		boolean isAnswer = false;
 
 		while (!isAnswer) {
-			printInputMsg();
+			printMsg(INPUT_NUMBER.getMessage());
 
 			setUserNumbers();
 
-			printHint(giveHint(user.getBalls(), answer.getBalls()));
+			printMsg_newLine(giveHint(user.getBalls(), answer.getBalls()));
 			isAnswer = isGameEndedWith3Strikes();
 		}
 
-		printEndMsg();
+		printMsg_newLine(GAME_OVER.getMessage());
 	}
 
 	private boolean isGameEndedWith3Strikes() {
@@ -58,9 +60,6 @@ public class GameManager {
 		user.setBalls(userInput.getNumbers());
 	}
 
-	private void printHint(String hint) {
-		System.out.println(hint);
-	}
 
 	public String giveHint(List<Integer> player, List<Integer> answer) {
 		int balls = countBall(player, answer);

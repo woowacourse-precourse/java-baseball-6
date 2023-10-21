@@ -1,6 +1,7 @@
 package baseball.game;
 
-import static baseball.game.GameMessages.printAskToPlayAgain;
+import static baseball.game.GameMessages.PLAY_AGAIN;
+import static baseball.util.ConsoleUtil.printMsg_newLine;
 
 import baseball.validators.NumberValidator;
 import camp.nextstep.edu.missionutils.Console;
@@ -25,7 +26,7 @@ public class UserInput {
 	}
 
 	public boolean askToPlayAgain() {
-		printAskToPlayAgain();
+		printMsg_newLine(PLAY_AGAIN.getMessage());
 
 		String input = getUserInput();
 
