@@ -30,17 +30,7 @@ public class GameController {
             setHumans();
             compareNumbers();
             outputView.displayScoreboard(humanModel);
-
-            if(humanModel.getStrike() == 3) {
-                outputView.displayGameExit();
-                int input = inputView.inputNumber();
-                if(input == 1) {
-                    setComputers();
-                }
-                if(input == 2) {
-                    gameModel.setRunning(false);
-                }
-            }
+            findAllStrike();
         } while (gameModel.isRunning());
     }
     private void setHumans() {
@@ -97,6 +87,19 @@ public class GameController {
     private void checkNothing() {
         if(humanModel.getBall() == 0 && humanModel.getStrike() == 0){
             humanModel.setNothing(1);
+        }
+    }
+
+    private void findAllStrike() {
+        if(humanModel.getStrike() == 3) {
+            outputView.displayGameExit();
+            int input = inputView.inputNumber();
+            if(input == 1) {
+                setComputers();
+            }
+            if(input == 2) {
+                gameModel.setRunning(false);
+            }
         }
     }
 }
