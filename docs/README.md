@@ -63,12 +63,11 @@
     - [x] Comuputer Model 생성
         - [x] RandomUtil로 생성한 숫자 저장
     - [ ] 게임 시작
-        - [ ] 게임 시작 메시지 출력 (OutputView 사용)
+        - [x] 게임 시작 메시지 출력 (OutputView 사용)
         - [ ] 사용자에게 숫자 입력 받기 (InputView 사용)
     - [ ] 입력 값과 Comuputer에 저장된 숫자 값 비교후 힌트 제공 (OutputView 사용)
         - [ ] 입력 값을 Computer Model에서 비교 후 Strike 수 , Ball 수 List 배열 받기
-        - [ ] 배열에 Strike , Ball 모두 0이 아니면 볼, 스트라이크 모두 출력
-        - [ ] 둘 중 하나만 존재하면 하나만 출력
+        - [x] 비교 결과 받은 ball,strike List를 출력 메시지로 전환 기능
         - [ ] 3스트라이크면 게임 종료
     - [ ] 게임 종료
         - [ ] 종료 메시지 출력

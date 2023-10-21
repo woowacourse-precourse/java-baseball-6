@@ -34,5 +34,5 @@ public class GameController {
         }
         return String.valueOf(ballCount) + BALL_STRING + " " + String.valueOf(ballCount) + STRIKE_STRING;
     }
-
+    
 }
