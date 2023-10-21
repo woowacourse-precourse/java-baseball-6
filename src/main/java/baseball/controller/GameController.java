@@ -1,5 +1,9 @@
 package baseball.controller;
 
+import static baseball.Constants.END;
+import static baseball.Constants.PLAY_NUMBER_DIGIT;
+import static baseball.Constants.RESTART;
+
 import baseball.Umpire;
 import baseball.factory.NumberFactory;
 import baseball.model.ResumeNumber;
@@ -8,10 +12,6 @@ import baseball.view.ResultView;
 import baseball.view.StartView;
 
 public class GameController {
-
-    private static final int PLAY_NUMBER_DIGIT = 3;
-    private static final int RESTART = 1;
-    private static final int END = 2;
 
     private final ResumeNumber resumeNumber;
 
