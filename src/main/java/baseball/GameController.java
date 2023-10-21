@@ -14,8 +14,7 @@ public class GameController {
         OutputView.printStart();
         Balls answerBalls = generateAnswerBalls();
         Balls playerBalls = InputView.scanBalls();
-        int strikeCount = playerBalls.getStrikeCount(answerBalls);
-        int ballCount = playerBalls.getBallCount(answerBalls);
+        List<TryResult> tryResults = playerBalls.getTryResultList(answerBalls);
     }
 
     private Balls generateAnswerBalls() {

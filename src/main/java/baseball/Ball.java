@@ -20,6 +20,16 @@ public class Ball {
         }
     }
 
+    public TryResult getTryResult(Ball playerBall) {
+        if (this.equals(playerBall)) {
+            return TryResult.STRIKE;
+        }
+        if (isSameNumber(playerBall)) {
+            return TryResult.BALL;
+        }
+        return TryResult.NOTHING;
+    }
+
     private boolean isInRange(int number) {
         return number >= UNDER_RANGE;
     }

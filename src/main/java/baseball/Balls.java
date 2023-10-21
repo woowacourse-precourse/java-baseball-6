@@ -2,10 +2,10 @@ package baseball;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Balls {
 
-    private static final int BALL_COUNT = 3;
     private final List<Ball> balls;
 
     public Balls(List<Ball> ballList) {
@@ -16,11 +16,11 @@ public class Balls {
         balls = Arrays.asList(ballValues);
     }
 
-    public void validateSize(List<Ball> ballList) {
-        if (!hasThreeDigits(ballList)) {
-            throw new IllegalArgumentException("3자리의 숫자를 입력해주세요.");
-        }
-    }
+//    public void validateSize(List<Ball> ballList) {
+//        if (!hasThreeDigits(ballList)) {
+//            throw new IllegalArgumentException("3자리의 숫자를 입력해주세요.");
+//        }
+//    }
 
     public void valdateDuplicates(List<Ball> ballList) {
         if (hasDuplicatesInList(ballList)) {
@@ -28,9 +28,9 @@ public class Balls {
         }
     }
 
-    private boolean hasThreeDigits(List<Ball> ballList) {
-        return ballList.size() == BALL_COUNT;
-    }
+//    private boolean hasThreeDigits(List<Ball> ballList) {
+//        return ballList.size() == BALL_COUNT;
+//    }
 
     private boolean hasDuplicatesInList(List<Ball> ballList) {
         int uniqueBallCount = (int) ballList.stream()
@@ -40,45 +40,17 @@ public class Balls {
         return uniqueBallCount < BALL_COUNT;
     }
 
-    public int getStrikeCount(Balls answerBalls) {
-        return (int) balls.stream()
-            .map(playerBall -> getTryResult(playerBall, answerBalls))
-            .filter(tryResult -> tryResult == TryResult.STRIKE)
-            .count();
+    public List<TryResult> getTryResultList(Balls answerBalls) {
+        return balls.stream()   // balls = playerBalls
+            .map(answerBalls::getTryResult)
+            .collect(Collectors.toList());
     }
 
-    public int getBallCount(Balls answerBalls) {
-        return (int) balls.stream()
-            .map(playerBall -> getTryResult(playerBall, answerBalls))
-            .filter(tryResult -> tryResult == TryResult.BALL)
-            .count();
-    }
-
-    private TryResult getTryResult(Ball playerBall, Balls answerBalls) {
-        if (isStrike(playerBall, answerBalls)) {
-            return TryResult.STRIKE;
-        }
-        if (isBall(playerBall, answerBalls)) {
-            return TryResult.BALL;
-        }
-        return TryResult.NOTHING;
-    }
-
-    private boolean isBall(Ball playerBall, Balls answerBalls) {
-        return answerBalls.containsNumber(playerBall);
-    }
-
-    private boolean containsNumber(Ball playerBall) {
-        return balls.stream()
-            .anyMatch(answerBall -> answerBall.isSameNumber(playerBall));
-    }
-
-    private boolean isStrike(Ball playerBall, Balls answerBalls) {
-        return answerBalls.contains(playerBall);
-    }
-
-    private boolean contains(Ball playerBall) {
-        return balls.contains(playerBall);
+    private TryResult getTryResult(Ball playerBall) {
+        return balls.stream()   // balls = answerBalls
+            .map(answerBall -> answerBall.getTryResult(playerBall))
+            .findFirst()
+            .orElse(TryResult.NOTHING);
     }
 
     public static Balls from(List<Ball> balls) {
