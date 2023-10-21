@@ -27,7 +27,6 @@ public class BaseBallGame {
         Computer computer = new Computer();
         List<Integer> numbers = computer.generateNumbers(numberGeneratePolicy, duplicateAllowancePolicy, numberCount);
         while (true) {
-            System.out.println(numbers);
             String number = input.getNumber();
             User user = new User(number);
 
