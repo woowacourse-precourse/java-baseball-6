@@ -28,6 +28,7 @@ public class BaseballGameReferee {
             if(now == inputNumbers.get(i)) {
                if(nowIndex == i) {
                    judgement.addStrike();
+                   continue;
                }
                judgement.addBall();
             }
