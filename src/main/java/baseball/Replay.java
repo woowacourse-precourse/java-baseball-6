@@ -10,7 +10,14 @@ public class Replay {
         // readLine()을 통해 값을 읽는다.
         String input = Console.readLine();
         // equals를 통해 1일경우만 true를 return 한다.
-        return Objects.equals(input, "1");
-//        else throw new IllegalArgumentException();
+        if(Objects.equals(input, "1")){
+            return true;
+        }
+        else if(Objects.equals(input, "2")) {
+            return false;
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
     }
 }
