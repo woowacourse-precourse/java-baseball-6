@@ -104,4 +104,9 @@ public class Number {
     public int hashCode() {
         return digits.hashCode();
     }
+
+    @Override
+    public String toString() {
+        return String.format("Number{digits=%s}", digits);
+    }
 }
