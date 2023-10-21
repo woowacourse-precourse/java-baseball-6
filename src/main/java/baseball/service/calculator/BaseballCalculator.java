@@ -3,9 +3,7 @@ package baseball.service.calculator;
 import baseball.domain.computer.ComputerNumber;
 import baseball.dto.Result;
 
-import java.util.List;
-
-public class BaseballCalculator implements Calculate{
+public class BaseballCalculator implements Calculate {
 
     @Override
     public Result calculateBallAndStrike(final ComputerNumber computer, final int[] input) {
@@ -14,12 +12,12 @@ public class BaseballCalculator implements Calculate{
         return getResult(computer, input, strikeCount, ballCount);
     }
 
-    private Result getResult(final ComputerNumber computer, final int[] input, int strikeCount, int ballCount) {
+    private static Result getResult(final ComputerNumber computer, final int[] input, int strikeCount, int ballCount) {
         for (int i = 0; i < input.length; i++) {
             // 변수 할당 - 더 리팩터링하는데는 한계인 것 같다.
-            if (isStrike(computer, input,i) && isBall(computer, input[i])) {
+            if (isStrike(computer, input, i) && isBall(computer, input[i])) {
                 strikeCount++;
-            }else if (isBall(computer, input[i])) {
+            } else if (isBall(computer, input[i])) {
                 ballCount++;
             }
         }
@@ -27,11 +25,11 @@ public class BaseballCalculator implements Calculate{
     }
 
 
-    private boolean isStrike(final ComputerNumber computer, final int[] input, int index) {
+    private static boolean isStrike(final ComputerNumber computer, final int[] input, int index) {
         return computer.getNumberAt(index) == input[index];
     }
 
-    private boolean isBall(final ComputerNumber computer, final int number) {
+    private static boolean isBall(final ComputerNumber computer, final int number) {
         return computer.containsNumber(number);
     }
 
