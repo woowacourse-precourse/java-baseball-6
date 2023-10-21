@@ -14,7 +14,7 @@ public class InputView {
         return sc.next();
     }
 
-    public static InputStream generateUserInput(String input){
+    public static InputStream generateUserInput(String input) {
         return new ByteArrayInputStream(input.getBytes());
     }
-    }
+}
