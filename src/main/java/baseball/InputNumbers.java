@@ -10,7 +10,12 @@ import java.util.List;
 public class InputNumbers {
 
     private List<Integer> inputNumbers;
+
+    public List<Integer> getInputNumbers() {
+        return this.inputNumbers;
+    }
     
+
     public void readInput() {
         String readLine = Console.readLine();
 

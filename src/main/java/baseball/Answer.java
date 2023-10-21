@@ -16,6 +16,10 @@ public class Answer {
         answer = new ArrayList<>();
     }
 
+    public List<Integer> getAnswer() {
+        return this.answer;
+    }
+
     public List<Integer> pickAnswerNumbers() {
         answer = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, COUNT);
         return answer;
