@@ -1,11 +1,13 @@
+
+
 package Game;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 public class playGame {
-    static String answer = new String();
+    String answer = new String();
 
-    public static void makeNumber(){
+    public String makeNumber(){
         answer="";
         while(answer.length()<3){
             int randomNum= Randoms.pickNumberInRange(1,9);
@@ -18,11 +20,15 @@ public class playGame {
         {
             System.out.print(c);
         }
+
+
+
+        return answer;
     }
     public static void start(){
         playGame game=new playGame();
         do{
-            makeNumber();
+            game.makeNumber();
             game.turn();
             if(game.restart())
             {
@@ -37,7 +43,7 @@ public class playGame {
     private void turn(){
         String inputString;
         do {
-            System.out.print("숫자를 입력해주세요 :");
+            System.out.print("숫자를 입력해주세요 : ");
             inputString = Console.readLine();
             checkInputString(inputString);
         }while(!checkGameResult(inputString));
