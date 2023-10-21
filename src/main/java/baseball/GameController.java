@@ -31,10 +31,8 @@ public class GameController {
     private boolean runGameTurn(Player player, Computer computer) {
         System.out.println(INPUT_NUMBER);
         String playerInput = player.inputNumbers();
-
         String resultString = computer.generateResult(playerInput);
         System.out.println(resultString);
-
         if (resultString.equals(ANSWER_RESULT)) {
             return true;
         }
