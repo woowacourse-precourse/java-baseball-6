@@ -24,7 +24,7 @@ public class BaseBallGame {
     public void play(){
         while(state == GameState.CORRECT){
             chooseNum();
-            System.out.println(returnResult());
+            System.out.println(getResult());
         }
         exitGame();
         if(state == GameState.PLAYING){
@@ -42,7 +42,7 @@ public class BaseBallGame {
         }
     }
 
-    public String returnResult(){
+    public String getResult(){
         String msg = "";
 
         int ballNum = Calculater.getBall(answerNum, userNum);
