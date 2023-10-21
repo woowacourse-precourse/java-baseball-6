@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.manager.NumberManager;
+import baseball.manager.BaseBallNumberManager;
 import baseball.manager.NumberMatcher;
 import baseball.manager.RandomNumberGenerator;
 import baseball.input.BaseBallGameUserInput;
@@ -9,8 +9,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
 
-    private final RandomNumberGenerator<BaseBallNumberCollection> randomNumberGenerator = new NumberManager();
-    private final NumberMatcher<BaseBallNumberCollection> numberMatcher = new NumberManager();
+    private final RandomNumberGenerator<BaseBallNumberCollection> randomNumberGenerator =
+        new BaseBallNumberManager();
+    private final NumberMatcher<BaseBallNumberCollection> numberMatcher = new BaseBallNumberManager();
     private final UserInput<BaseBallNumberCollection> baseBallUserInput = new BaseBallGameUserInput();
     private final Integer baseBallGameSize;
 

@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberManager implements RandomNumberGenerator<BaseBallNumberCollection>, NumberMatcher<BaseBallNumberCollection>{
+public class BaseBallNumberManager implements RandomNumberGenerator<BaseBallNumberCollection>, NumberMatcher<BaseBallNumberCollection>{
     @Override
     public BaseBallNumberCollection generate(final Integer randomNumberSize) {
         final List<Integer> computer = new ArrayList<>();
