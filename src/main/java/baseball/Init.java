@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Init {
-    public static void initialize() {
-        System.out.println(Text.startingText);
+    public static List<Integer> answer = new ArrayList<>();
 
-        List<Integer> answer = generateNumber();
+    public static void initialize() {
+        // 시작 문구 출력
+        System.out.println(Text.startingText);
+        // 서로 다른 숫자로 구성된 3자리 숫자 랜덤 생성
+        answer = generateNumber();
     }
 
     static List<Integer> generateNumber() {
@@ -19,6 +22,7 @@ public class Init {
                     (Variables.randomRangeStart, Variables.randomRangeEnd);
             if (!number.contains(randomInt)) {
                 number.add(randomInt);
+            }
         }
 
         return number;
