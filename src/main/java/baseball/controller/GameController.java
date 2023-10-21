@@ -11,6 +11,7 @@ import java.util.List;
 public class GameController {
 
     public static void playingBaseballGame(GameCondition game_coin){
+        List<Integer> computer_numbers = GenerateRandom.generateRandomNumberByList(3);
         while (game_coin.equals(GameCondition.CONTINUE)){
             OutputView.outputForGameValueInputBefore();
             String user_input_value = InputView.readLineByConsole();
