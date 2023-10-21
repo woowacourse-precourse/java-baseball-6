@@ -6,7 +6,6 @@ import java.util.List;
 public class User {
 
     private final List<Integer> user;
-    private String tokens[];
 
     public User() {
         this.user = new ArrayList<>();
@@ -55,7 +54,7 @@ public class User {
 
     public void setUser(String input) {
         checkInputString(input);
-        tokens = input.split("");
+        String[] tokens = input.split("");
         for (String str : tokens) {
             addNumber(Integer.parseInt(str));
         }
