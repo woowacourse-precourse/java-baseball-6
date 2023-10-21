@@ -1,9 +1,5 @@
 package baseball;
 
-import static baseball.Constants.COUNT;
-import static baseball.Constants.END_INCLUSIVE;
-import static baseball.Constants.START_INCLUSIVE;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +16,12 @@ public class Answer {
         return this.answer;
     }
 
-    public List<Integer> pickAnswerNumbers() {
-        answer = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, COUNT);
-        return answer;
+    public void pickAnswerNumbers() {
+        while (answer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
+            }
+        }
     }
 }

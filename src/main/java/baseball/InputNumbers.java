@@ -1,6 +1,7 @@
 package baseball;
 
-import static baseball.Constants.COUNT;
+
+import static baseball.Constants.NUMBER_LENGTH;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class InputNumbers extends Input {
     }
 
     private boolean isNotValidLength(String readLine) {
-        return readLine.length() != COUNT;
+        return readLine.length() != NUMBER_LENGTH;
     }
 
     private boolean isNotNumber(String readLine) {
