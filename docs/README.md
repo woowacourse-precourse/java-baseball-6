@@ -37,7 +37,5 @@
 
 ### 개선 사항
 
-- [ ] ReplayCommand를 Replay enum 타입으로 변경
-- [ ] 불필요하게 분리된 것으로 생각되는 Round와 RoundResult를 Round로 통합
-- [ ]
-
+- [x] ReplayCommand를 Replay enum 타입으로 변경
+- [x] 불필요하게 분리된 것으로 생각되는 Round와 RoundResult를 Round로 통합
