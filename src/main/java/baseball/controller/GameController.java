@@ -1,5 +1,16 @@
-package baseball;
+package baseball.controller;
 
+import baseball.domain.Ball;
+import baseball.domain.Balls;
+import baseball.domain.BallsGenerator;
+import baseball.domain.GameResult;
+import baseball.domain.GameStatus;
+import baseball.domain.NumberGenerator;
+import baseball.domain.RandomBallsGenerator;
+import baseball.domain.RandomNumberGenerator;
+import baseball.domain.Retry;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.List;
 
 public class GameController {
@@ -38,9 +49,5 @@ public class GameController {
         BallsGenerator randomBallsGenerator = new RandomBallsGenerator();
         List<Ball> answerBalls = randomBallsGenerator.generate(numberGenerator);
         return new Balls(answerBalls);
-    }
-
-    Balls generateAnswerBallsTest() {
-        return generateAnswerBalls();
     }
 }

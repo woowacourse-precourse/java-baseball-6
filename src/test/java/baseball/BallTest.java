@@ -3,6 +3,7 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.domain.Ball;
 import org.junit.jupiter.api.Test;
 
 public class BallTest {

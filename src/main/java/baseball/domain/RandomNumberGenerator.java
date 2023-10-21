@@ -1,9 +1,8 @@
-package baseball;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import org.assertj.core.api.AbstractBooleanArrayAssert;
 
 public class RandomNumberGenerator implements NumberGenerator {
 

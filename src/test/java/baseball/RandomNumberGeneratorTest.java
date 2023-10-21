@@ -2,8 +2,9 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.list;
 
+import baseball.domain.NumberGenerator;
+import baseball.domain.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
 import java.util.HashSet;

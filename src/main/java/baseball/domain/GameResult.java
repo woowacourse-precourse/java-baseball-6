@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class GameResult {
 
     private boolean isThreeStrike() {
         return tryResults.stream()
-            .allMatch(tryResult -> tryResult == TryResult.STRIKE)
+            .allMatch(tryResult -> tryResult == TryResult.STRIKE);
     }
 
     public boolean hasStrike() {
