@@ -8,7 +8,7 @@ public class Controller {
     private final OutputView outputView;
     private final InputView inputView;
 
-    public Controller(OutputView outputView, InputView inputView) {
+    public Controller(final OutputView outputView, final InputView inputView) {
         this.outputView = outputView;
         this.inputView = inputView;
     }
