@@ -91,7 +91,7 @@ class UserNumberTest {
                 .hasMessage("중복된 숫자가 존재하지 않아야 합니다");
     }
 
-    @DisplayName("String 타입을 List<Integer> 타입으로 교체")
+    @DisplayName("String 타입을 List<Integer> 타입으로 교체하는 함수")
     @Test
     void convertStringToIntegerList() throws NoSuchMethodException{
         String stringValue = "123";

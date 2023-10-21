@@ -16,7 +16,7 @@ public class GameController {
         while(restartValue){
             setComputerNumber();
             playGame();
-            restartValue = checkRestart();
+            restartValue = checkRestart(getRestartValue());
         }
     }
 
@@ -34,8 +34,7 @@ public class GameController {
         OutputView.printEndMessage();
     }
 
-    private static boolean checkRestart() {
-        String restartValue = getRestartValue();
+    private static boolean checkRestart(String restartValue) {
         if(restart(restartValue)){
             return true;
         }
