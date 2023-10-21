@@ -20,11 +20,9 @@ public class BaseballNumberList {
 
     public void setBaseballNumberList(String baseballNumberListString) {
         validateBaseballNumberListString(baseballNumberListString);
-        List<BaseballNumber> baseballNumbers = new ArrayList<>();
         for (String baseballNumberString : baseballNumberListString.split(BaseballStringUtils.EMPTY_STRING)) {
-            int baseballNumberInt = Integer.parseInt(baseballNumberString);
-            BaseballNumber baseballNumber = new BaseballNumber(baseballNumberInt);
-            baseballNumbers.add(baseballNumber);
+            int baseballNumber = Integer.parseInt(baseballNumberString);
+            baseballNumberList.add(new BaseballNumber(baseballNumber));
         }
     }
 
