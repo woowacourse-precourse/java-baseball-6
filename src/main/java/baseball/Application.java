@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         boolean stateReplayGame = true;
 
-        displayGameStartMessage();
+        displayStartGame();
 
         while (stateReplayGame) {
             playGame();
@@ -17,7 +17,7 @@ public class Application {
         }
     }
 
-    public static void displayGameStartMessage() {
+    public static void displayStartGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
