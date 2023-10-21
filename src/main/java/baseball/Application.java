@@ -43,7 +43,7 @@ public class Application {
         return compareResult;
     }
 
-    private static void startGame() throws IllegalArgumentException{
+    private static void startGame() {
         List<Integer> answer = makeAnswer();
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -86,15 +86,11 @@ public class Application {
             );
     }
 
-    public static void main(String[] args) {
-        try {
-            boolean restart = true;
-            while (restart) {
-                startGame();
-                restart = restartGame();
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+    public static void main(String[] args) throws IllegalArgumentException {
+        boolean restart = true;
+        while (restart) {
+            startGame();
+            restart = restartGame();
         }
     }
 }
