@@ -12,19 +12,22 @@ public class BaseBallGame {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true){
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             String input_str = scanner.next();
             List<Integer> user_nums = StringToIntegerList.turnToIntList(input_str);
 
+            if(CompareWithAnswer.compareWithAnswer(randomNums,user_nums)){
+                return;
+            }
         }
-
     }
 
-
-
-    public void compareWithAnswer(){
-
+    public boolean isRestart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input_num = scanner.nextLine();
+        if(input_num.equals("1"))
+            return true;
+        else
+            return false;
     }
-
-
 }
