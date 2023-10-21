@@ -1,12 +1,14 @@
 package model.system;
 
-public class GameTerminator implements GameSystem {
+import model.referee.GameScoreboard;
+
+public class GameTerminator {
 
     GameTerminator() {
     }
 
-    @Override
-    public void execute() {
+    public boolean isGameOver(GameScoreboard gameScoreboard) {
+        return false;
     }
 
 }

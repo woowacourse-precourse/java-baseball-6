@@ -1,17 +1,20 @@
 package model.system;
 
-public class GameController implements GameSystem {
+import model.referee.GameScoreboard;
+
+public class GameController {
 
     public GameController() {
     }
 
-    @Override
-    public void execute() {
+    public void run() {
         GameStarter gameStarter = new GameStarter();
         GameTerminator gameTerminator = new GameTerminator();
-
-        gameStarter.execute();
-        gameTerminator.execute();
+        boolean runningGame = true;
+        while (runningGame) {
+            GameScoreboard gameScoreboard = gameStarter.start();
+            runningGame = gameTerminator.isGameOver(gameScoreboard);
+        }
     }
 
 }
