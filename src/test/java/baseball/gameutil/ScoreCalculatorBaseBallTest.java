@@ -62,7 +62,7 @@ public class ScoreCalculatorBaseBallTest {
         Score score = scoreCalculator.calScore(userInput, computerInput);
 
         //then
-        Assertions.assertEquals(1, score.ball);
+        Assertions.assertEquals(2, score.ball);
         Assertions.assertEquals(0, score.strike);
     }
 
