@@ -3,9 +3,24 @@ package baseball.validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputValidationTest {
+
+    @Test
+    @DisplayName("입력값이 정상이면 모든 검증을 통과하는지 테스트")
+    void validateInputNumTest() {
+        // given
+        InputValidation inputValidation = new InputValidation();
+
+        // when
+        String input = "123";
+
+        // then
+        assertThatCode(() -> inputValidation.validateInputNum(input))
+                .doesNotThrowAnyException();
+    }
 
     @Test
     @DisplayName("입력된 문자열이 자연수로 이루어져 있는지 테스트")
