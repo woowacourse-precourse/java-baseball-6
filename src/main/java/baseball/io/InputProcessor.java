@@ -12,6 +12,9 @@ public class InputProcessor {
     private static final ProcessDecisionCommandValidator PROCESS_DECISION_COMMAND_VALIDATOR
             = new ProcessDecisionCommandValidator();
 
+    private InputProcessor() {
+    }
+
     public static List<Integer> readUserBaseballs() {
         System.out.print("숫자를 입력해주세요 : ");
 

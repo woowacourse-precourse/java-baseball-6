@@ -20,7 +20,7 @@ public abstract class InputValidator {
     void validateInputIsNumeric(final String userInput) {
         try {
             Integer.parseInt(userInput);
-        } catch (NumberFormatException exception) {
+        } catch (final NumberFormatException exception) {
             throw new IllegalArgumentException(INPUT_MUST_BE_NUMERIC.message);
         }
     }

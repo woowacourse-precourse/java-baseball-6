@@ -9,6 +9,9 @@ public class OutputProcessor {
     private static final String BALL = "볼";
     private static final String SEPARATOR = " ";
 
+    private OutputProcessor() {
+    }
+
     public static void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -22,17 +25,14 @@ public class OutputProcessor {
             return NOTHING;
         }
 
-        StringBuilder resultFormat = new StringBuilder();
+        final StringBuilder resultFormat = new StringBuilder();
 
         if (hasBallCount(result)) {
-            resultFormat.append(result.ballCount())
-                    .append(BALL);
+            resultFormat.append(result.ballCount()).append(BALL);
         }
 
         if (hasStrikeCount(result)) {
-            resultFormat.append(SEPARATOR)
-                    .append(result.strikeCount())
-                    .append(STRIKE);
+            resultFormat.append(SEPARATOR).append(result.strikeCount()).append(STRIKE);
         }
 
         return resultFormat.toString();

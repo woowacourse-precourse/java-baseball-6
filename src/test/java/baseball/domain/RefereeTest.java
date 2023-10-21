@@ -16,11 +16,11 @@ public class RefereeTest {
     @MethodSource("eachPossibleCase")
     @DisplayName("Referee가 Computer & User 간 숫자 야구 게임 결과(RoundResult)를 도출한다")
     void judge(
-            List<Integer> computerBaseballs,
-            List<Integer> userBaseballs,
-            int strikeCount,
-            int ballCount,
-            boolean isClear
+            final List<Integer> computerBaseballs,
+            final List<Integer> userBaseballs,
+            final int strikeCount,
+            final int ballCount,
+            final boolean isClear
     ) {
         // when
         final RoundResult result = Referee.judge(computerBaseballs, userBaseballs);
