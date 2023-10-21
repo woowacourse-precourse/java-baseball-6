@@ -24,6 +24,7 @@ public class Application {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     judge = Console.readLine();
+                    checkCorrectRestart_Input(judge); //사용자가 1,2 가 아닌 다른 수나 문자를 입력했을 때 예외처리
                     if(judge.equals(GAME_RESTART)) game.createAnswer(); //새로운 답안 생성
                 }
             }
@@ -45,5 +46,10 @@ public class Application {
         }
     }
 
+    private static void checkCorrectRestart_Input(String judge) {
+        if (!judge.equals(GAME_RESTART) && !judge.equals(GAME_END)) {
+            throw new IllegalArgumentException("ERROR: 정답을 맞추신 후, 1 또는 2의 숫자를 입력해주세요.");
+        }
+    }
 
 }
