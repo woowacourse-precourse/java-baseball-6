@@ -26,12 +26,12 @@ public class Computer {
     }
 
     private void addNumber(List<Integer> numbers, int number) {
-        if (!validateRedundantNumber(numbers, number)) {
+        if (!isRedundantNumber(numbers, number)) {
             numbers.add(number);
         }
     }
 
-    private boolean validateRedundantNumber(List<Integer> numbers, int number) {
+    private boolean isRedundantNumber(List<Integer> numbers, int number) {
         return numbers.contains(number);
     }
 }
