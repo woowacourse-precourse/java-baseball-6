@@ -1,11 +1,11 @@
 package baseball.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Balls {
     private static final String INVALID_DIGIT_NUMBER_MESSAGE = "세 자리 숫자를 입력해주세요";
+    public static final int START_POSITION = 0;
     public static final int BALLS_SIZE = 3;
 
     private final List<Ball> balls;
@@ -22,40 +22,35 @@ public class Balls {
     }
 
     private List<Ball> toBalls(List<Integer> numbers) {
-        ArrayList<Ball> balls = new ArrayList<>(BALLS_SIZE);
-        for (Integer number : numbers) {
-            Ball ball = new Ball(number);
-            balls.add(ball);
-        }
-        return Collections.unmodifiableList(balls);
+        return numbers.stream()
+                .map(Ball::new)
+                .toList();
     }
 
     public int getBallCount(Balls player) {
         List<Ball> playerBalls = player.getBalls();
-        int ballCount = 0;
-        for (int i = 0; i < balls.size(); i++) {
-            if (balls.get(i).equals(playerBalls.get(i))) {
-                continue;
-            }
-            if (balls.contains(playerBalls.get(i))) {
-                ballCount++;
-            }
-        }
-        return ballCount;
+        return (int) IntStream.range(START_POSITION, BALLS_SIZE)
+                .filter(position -> !isSameOfPositionAndSameNumber(position, playerBalls.get(position)))
+                .filter(position -> ballsContain(playerBalls.get(position)))
+                .count();
     }
 
     public int getStrikeCount(Balls player) {
         List<Ball> playerBalls = player.getBalls();
-        int strikeCount = 0;
-        for (int i = 0; i < balls.size(); i++) {
-            if (balls.get(i).equals(playerBalls.get(i))) {
-                strikeCount++;
-            }
-        }
-        return strikeCount;
+        return (int) IntStream.range(START_POSITION, BALLS_SIZE)
+                .filter(position -> isSameOfPositionAndSameNumber(position, playerBalls.get(position)))
+                .count();
     }
 
     public List<Ball> getBalls() {
         return balls;
+    }
+
+    private boolean isSameOfPositionAndSameNumber(int position, Ball ball) {
+        return balls.get(position).equals(ball);
+    }
+
+    private boolean ballsContain(Ball ball) {
+        return balls.contains(ball);
     }
 }
