@@ -4,32 +4,31 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    private static final InputView instance = new InputView();
+    private static final InputView INSTANCE = new InputView();
 
-    public static InputView getInstance(){
-        return instance;
+    public static InputView getInstance() {
+        return INSTANCE;
     }
 
-    private InputView(){}
-
-    public String printUserInput(){
-        System.out.print(Message.User_Input.message);
-        String input = Console.readLine();
-        return input;
+    private InputView() {
     }
 
-    private enum Message{
-        User_Input("숫자를 입력해주세요 : ");
+    public String printUserInput() {
+        System.out.print(Message.USER_INPUT.getMessage());
+        return Console.readLine();
+    }
+
+    private enum Message {
+        USER_INPUT("숫자를 입력해주세요 : ");
 
         private String message;
 
-        private Message(String message){
+        Message(String message) {
             this.message = message;
         }
 
-        public String getMessage(){
+        public String getMessage() {
             return message;
         }
-
     }
 }
