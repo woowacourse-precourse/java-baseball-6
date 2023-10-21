@@ -2,12 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Baseball {
-    private final int MIN_NUMBER = 1;
-    private final int MAX_NUMBER = 9;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 9;
+    public static final int NUMBERS_SIZE = 3;
+
     private final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private final String NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private final String STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -17,7 +16,7 @@ public class Baseball {
     private int ball = 0;
 
     private Computer computer = new Computer();
-    private List<Integer> user = new ArrayList<>();
+    private User user = new User();
 
     public Baseball() {
     }
@@ -30,28 +29,28 @@ public class Baseball {
         do {
             play();
             System.out.println(CONTINUE_MESSAGE);
-            choiceNumber = parseNumber(userNumberInput().charAt(0));
+
+            String inputValue = userNumberInput();
+            user.validateRange(inputValue);
+
+            choiceNumber = user.parseNumber(inputValue.charAt(0));
         } while (choiceNumber == 1);
     }
 
     public void play() {
-        computer.generateComputerNumber(MIN_NUMBER, MAX_NUMBER);
+        computer.generateComputerNumber();
 
         while (true) {
             System.out.print(NUMBER_INPUT_MESSAGE);
 
             strike = 0;
             ball = 0;
+
             String inputValue = userNumberInput();
+            user.validateLength(inputValue);
+            user.validateRange(inputValue);
 
-            if (!validateNumberLength(inputValue)) {
-                wrongNumberInput();
-            }
-            if (!validateNumberRange(inputValue)) {
-                wrongNumberInput();
-            }
-
-            generateUserNumber(inputValue);
+            user.generateUserNumber(inputValue);
             checkSameNumber();
             showUserScore();
 
@@ -63,9 +62,9 @@ public class Baseball {
     }
 
     private void checkSameNumber() {
-        for (int i = 0; i < user.size(); i++) {
+        for (int i = 0; i < NUMBERS_SIZE; i++) {
             int computerNumber = computer.getComputerNumber(i);
-            int userNumber = user.get(i);
+            int userNumber = user.getUserNumber(i);
 
             if (computerNumber == userNumber) {
                 strike++;
@@ -77,46 +76,6 @@ public class Baseball {
 
     private String userNumberInput() {
         return Console.readLine();
-    }
-
-    private void generateUserNumber(String inputValue) {
-        if (!user.isEmpty()) {
-            user.clear();
-        }
-
-        for (int i = 0; i < inputValue.length(); i++) {
-            int userNumber = parseNumber(inputValue.charAt(i));
-
-            if (user.contains(userNumber)) {
-                wrongNumberInput();
-            }
-
-            user.add(userNumber);
-        }
-    }
-
-    private int parseNumber(char character) {
-        return character - '0';
-    }
-
-    private boolean validateNumberLength(String inputValue) {
-        return inputValue.length() <= 3;
-    }
-
-    private boolean validateNumberRange(String inputValue) {
-        for (int i = 0; i < inputValue.length(); i++) {
-            int userNumber = parseNumber(inputValue.charAt(i));
-
-            if (!(MIN_NUMBER <= userNumber && userNumber <= MAX_NUMBER)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    private void wrongNumberInput() {
-        throw new IllegalArgumentException();
     }
 
     private void showUserScore() {

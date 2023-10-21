@@ -13,29 +13,29 @@ public class Computer {
         computer = new ArrayList<>();
     }
 
-    public void generateComputerNumber(final int minNumber, final int maxNumber) {
+    public void generateComputerNumber() {
         if (!computer.isEmpty()) {
             computer.clear();
         }
 
         while (computer.size() < 3) {
-            int randomNumber = getRandomNumber(minNumber, maxNumber);
+            int randomNumber = getRandomNumber();
 
-            if (!computer.contains(randomNumber)) {
+            if (!isContainsNumber(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
     }
 
-    private int getRandomNumber(final int minNumber, final int maxNumber) {
-        return Randoms.pickNumberInRange(minNumber, maxNumber);
+    private int getRandomNumber() {
+        return Randoms.pickNumberInRange(Baseball.MIN_NUMBER, Baseball.MAX_NUMBER);
     }
 
     public int getComputerNumber(final int index) {
         return computer.get(index);
     }
 
-    public boolean isContainsNumber(final int userNumber) {
-        return computer.contains(userNumber);
+    public boolean isContainsNumber(final int number) {
+        return computer.contains(number);
     }
 }
