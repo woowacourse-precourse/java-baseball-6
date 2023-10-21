@@ -7,8 +7,10 @@
 - 각종 메시지들은 static final로 선언하여 사용
 - 게임 문구, 에러메시지 포함
 
-```java
+- 현재 스코어를 반환하는 메서드
 
+```java
+String scoreMessage(List<Integer> score)index 0은 ball,index 1은 strike로 설정한 뒤 카운트에 따라 메시지 출력
 ```
 
 ## NumberBaseballGame 클래스

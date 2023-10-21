@@ -23,7 +23,7 @@ class InputValidationTest {
         assertThat(result).isEqualTo(List.of(3, 6, 9));
     }
 
-    @DisplayName("오류 검증 - 지정된 길이가 아니라면 (3개의 숫자만 입력해주세요.) 에러 메시지")
+    @DisplayName("오류 검증 - 지정된 길이가 아니라면 (3개의 숫자를 입력해주세요.) 에러 메시지")
     @Test
     void validateLength() throws Exception {
         String input = "1234";
@@ -36,7 +36,7 @@ class InputValidationTest {
             Throwable originException = e.getCause();
             assertThat(originException)
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("3개의 숫자만 입력해주세요.");
+                    .hasMessage("3개의 숫자를 입력해주세요.");
         }
 
     }

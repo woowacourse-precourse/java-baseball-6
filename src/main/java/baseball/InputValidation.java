@@ -1,11 +1,11 @@
 package baseball;
 
-import static baseball.MessageConstant.CONTROL_SIGN_LENGTH_EXCEPTION_MSG;
-import static baseball.MessageConstant.CONTROL_SIGN_NUMBER_EXCEPTION_MSG;
-import static baseball.MessageConstant.INPUT_CONTAIN_ZERO_EXCEPTION_MSG;
-import static baseball.MessageConstant.INPUT_DUPLICATION_EXCEPTION_MSG;
-import static baseball.MessageConstant.INPUT_LENGTH_EXCEPTION_MSG;
-import static baseball.MessageConstant.INPUT_NOT_ONLY_DIGIT_EXCEPTION_MSG;
+import static baseball.Message.CONTROL_SIGN_LENGTH_EXCEPTION_MSG;
+import static baseball.Message.CONTROL_SIGN_NUMBER_EXCEPTION_MSG;
+import static baseball.Message.INPUT_CONTAIN_ZERO_EXCEPTION_MSG;
+import static baseball.Message.INPUT_DUPLICATION_EXCEPTION_MSG;
+import static baseball.Message.INPUT_LENGTH_EXCEPTION_MSG;
+import static baseball.Message.INPUT_NOT_ONLY_DIGIT_EXCEPTION_MSG;
 
 import java.util.List;
 import java.util.stream.Collectors;

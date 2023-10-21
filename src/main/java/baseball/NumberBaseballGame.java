@@ -1,14 +1,14 @@
 package baseball;
 
-import static baseball.MessageConstant.REQUEST_NUMBER_MESSAGE;
-import static baseball.MessageConstant.RESTART_OR_STOP_MESSAGE;
-import static baseball.MessageConstant.START_MESSAGE;
-import static baseball.MessageConstant.SUCCESS_MESSAGE;
+import static baseball.Message.REQUEST_NUMBER_MESSAGE;
+import static baseball.Message.RESTART_OR_STOP_MESSAGE;
+import static baseball.Message.START_MESSAGE;
+import static baseball.Message.SUCCESS_MESSAGE;
 
 import java.util.List;
 
 public class NumberBaseballGame {
-    MessageConstant messageConstant = new MessageConstant();
+    Message message = new Message();
     Computer computer = new Computer();
     InputValidation inputValidation = new InputValidation();
     UserInput userInput = new UserInput();
@@ -46,7 +46,7 @@ public class NumberBaseballGame {
             List<Integer> ballAndStrikeCount = computer.countScore(answer, userNumbers);
             int strikeCount = ballAndStrikeCount.get(1);
 
-            speaker(messageConstant.scoreMessage(ballAndStrikeCount) + '\n');
+            speaker(message.scoreMessage(ballAndStrikeCount) + '\n');
             if (strikeCount == 3) {
                 threeStrike = true;
             }
