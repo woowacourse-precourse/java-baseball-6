@@ -19,10 +19,7 @@ public class NumberValidator {
     }
 
     public static void validateList(List<Integer> list) {
-        if(!isThreeComponent(list)){
-            throw new IllegalArgumentException("세자리 숫자를 입력해주세요");
-        }
-        else if(!isInRange(list)){
+        if(!isInRange(list)){
             throw new IllegalArgumentException("각자리의 숫자가 1부터 9사이의 숫자로 이루어져야 합니다");
         }
         else if(!isDistinct(list)){
@@ -40,10 +37,6 @@ public class NumberValidator {
 
     private static boolean isThreeDigit(String number) {
         return number.length() == LIST_SIZE;
-    }
-
-    private static boolean isThreeComponent(List<Integer> numberList){
-        return numberList.size() == LIST_SIZE;
     }
 
     private static boolean isInRange(List<Integer> numberList) {
