@@ -29,7 +29,7 @@ public class Result {
     }
 
     public boolean equals(Result result){
-        return strike== result.strike && ball== result.ball;
+        return strike == result.strike && ball == result.ball;
     }
 
     public boolean isNothing(){

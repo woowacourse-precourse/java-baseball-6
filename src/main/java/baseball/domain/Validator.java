@@ -14,6 +14,7 @@ public class Validator {
         validateSize(input,1);
         validateType(input,"[1-2]+");
     }
+
     private void validateSize(String numbers,int size){
         if (numbers.length()!=size){
             throw new IllegalArgumentException("값이 "+size+"자리여야 합니다.");

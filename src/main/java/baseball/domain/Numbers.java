@@ -1,6 +1,5 @@
 package baseball.domain;
 
-
 public class Numbers {
     private final String numbers;
 
