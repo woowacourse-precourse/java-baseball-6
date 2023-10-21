@@ -29,11 +29,7 @@ public class GameController {
         do {
             setHumans();
             compareNumbers();
-            outputView.displayScoreboard(
-                    humanModel.getStrike(),
-                    humanModel.getBall(),
-                    humanModel.getNothing()
-            );
+            outputView.displayScoreboard(humanModel);
 
             if(humanModel.getStrike() == 3) {
                 outputView.displayGameExit();
