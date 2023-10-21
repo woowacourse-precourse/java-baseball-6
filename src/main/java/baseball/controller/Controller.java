@@ -20,8 +20,19 @@ public class Controller {
             Game game = new Game();
             while (game.getStrikes() != 3) {
                 game.compareNumbers(computer.getNumber(), player.getNumber(InputView.inputPlayerNumber()));
+                if (game.getStrikes() > 0 && game.getBalls() > 0) {
+                    System.out.printf("%d볼 %d스트라이크%n", game.getBalls(), game.getStrikes());
+                }
+                if (game.getStrikes() > 0 && game.getBalls() == 0) {
+                    System.out.printf("%d스트라이크%n", game.getStrikes());
+                }
+                if (game.getStrikes() == 0 && game.getBalls() > 0) {
+                    System.out.printf("%d볼%n", game.getBalls());
+                }
+                if (game.getStrikes() == 0 && game.getBalls() == 0) {
+                    System.out.println("낫싱");
+                }
             }
         }
-
     }
 }
