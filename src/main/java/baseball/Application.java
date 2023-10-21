@@ -35,7 +35,7 @@ public class Application {
             }
         }
 
-        // TODO: displayTerminateGame();
+        displayTerminateGame();
     }
 
     public static boolean askReplayGame() {
@@ -155,5 +155,9 @@ public class Application {
         }
 
         return balls + "볼 " + strikes + "스트라이크";
+    }
+
+    public static void displayTerminateGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
