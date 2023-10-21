@@ -22,9 +22,7 @@ public class GameController {
         outputView.printGameStartMessage();
     }
 
-    private static String provideStrikeAndBallCount(List<Integer> ballAndStrikeCount){
-        int ballCount = ballAndStrikeCount.get(LIST_BALL_INDEX);
-        int strikeCount = ballAndStrikeCount.get(LIST_STRIKE_INDEX);
+    private static String provideStrikeAndBallCount(int ballCount, int strikeCount){
         if(ballCount == COUNT_ZERO_VALUE && strikeCount == COUNT_ZERO_VALUE){
             return NOTHING_STRING;
         } else if (ballCount != COUNT_ZERO_VALUE && strikeCount == COUNT_ZERO_VALUE) {
@@ -34,5 +32,14 @@ public class GameController {
         }
         return String.valueOf(ballCount) + BALL_STRING + " " + String.valueOf(ballCount) + STRIKE_STRING;
     }
-    
+
+    private static boolean gameRetry(){
+        outputView.printGameEndMessage();
+        outputView.printGameRetryMessage();
+        String command = inputView.readRetryCommand();
+        if (command.equals("1")){
+            return true;
+        }
+        return false;
+    }
 }
