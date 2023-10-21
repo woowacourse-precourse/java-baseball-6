@@ -11,9 +11,6 @@ public class NumberGenerator {
     private final int maxNumber = 9;
     private final int minNumber = 1;
 
-    public NumberGenerator() {
-    }
-
     public List<Integer> makeRandomAnswerList() {
         List<Integer> answerList = new ArrayList<>();
         while (answerList.size() < 3) {
