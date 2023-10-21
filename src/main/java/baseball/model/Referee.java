@@ -1,26 +1,20 @@
 package baseball.model;
 
+import java.util.stream.IntStream;
+
 public class Referee {
 
     public int calculateStrikeNumbers(String randomNumbers, String inputNumbers) {
-        int strikeNumbers = 0;
-        for (int i = 0; i < Constants.NUMBER_OF_NUMBERS; i++) {
-            if (isSameNumberInSamePlace(randomNumbers.charAt(i), inputNumbers.charAt(i))) {
-                strikeNumbers++;
-            }
-        }
-        return strikeNumbers;
+        return (int) IntStream.range(Constants.ZERO, Constants.NUMBER_OF_NUMBERS)
+                .filter(i -> isSameNumberInSamePlace(randomNumbers.charAt(i), inputNumbers.charAt(i)))
+                .count();
     }
 
     public int calculateBallNumbers(String randomNumbers, String inputNumbers) {
-        int ballNumbers = 0;
-        for (int i = 0; i < Constants.NUMBER_OF_NUMBERS; i++) {
-            if (isRandomNumbersContainInputNumber(randomNumbers, inputNumbers.charAt(i))
-                    && !isSameNumberInSamePlace(randomNumbers.charAt(i), inputNumbers.charAt(i))) {
-                ballNumbers++;
-            }
-        }
-        return ballNumbers;
+        return (int) IntStream.range(Constants.ZERO, Constants.NUMBER_OF_NUMBERS)
+                .filter(i -> isRandomNumbersContainInputNumber(randomNumbers, inputNumbers.charAt(i)))
+                .filter(i -> !isSameNumberInSamePlace(randomNumbers.charAt(i), inputNumbers.charAt(i)))
+                .count();
     }
 
     public boolean isNothing(int strikeNumbers, int ballNumbers) {
@@ -44,12 +38,9 @@ public class Referee {
     }
 
     private boolean isRandomNumbersContainInputNumber(String randomNumbers, char inputNumber) {
-        for (int i = 0; i < Constants.NUMBER_OF_NUMBERS; i++) {
-            if (isSameNumberInSamePlace(randomNumbers.charAt(i), inputNumber)) {
-                return true;
-            }
-        }
-        return false;
+        return randomNumbers.chars()
+                .mapToObj(c -> (char) c)
+                .anyMatch(singleNumber -> isSameNumberInSamePlace(singleNumber, inputNumber));
     }
 
     private boolean isSameNumberInSamePlace(char randomNumber, char inputNumber) {
