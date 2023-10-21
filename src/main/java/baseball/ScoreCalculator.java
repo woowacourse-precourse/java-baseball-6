@@ -25,7 +25,6 @@ public class ScoreCalculator {
             if (randomNumbers.contains(i)) {
                 ball++;
             }
-
         }
 
         ball -= strike;
