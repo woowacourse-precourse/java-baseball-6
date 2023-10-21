@@ -1,6 +1,6 @@
 package baseball.generator;
 
-import baseball.GameResult;
+import baseball.dto.GameResult;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

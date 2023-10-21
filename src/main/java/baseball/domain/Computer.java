@@ -1,5 +1,6 @@
-package baseball;
+package baseball.domain;
 
+import baseball.dto.GameResult;
 import java.util.List;
 import java.util.function.Function;
 

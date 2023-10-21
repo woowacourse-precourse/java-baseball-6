@@ -4,6 +4,8 @@ import baseball.generator.GameResultMessageGenerator;
 import baseball.generator.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import baseball.domain.Computer;
+import baseball.dto.GameResult;
 
 public class BaseballGame {
 

@@ -1,6 +1,6 @@
 package baseball.generator;
 
-import baseball.GameResult;
+import baseball.dto.GameResult;
 
 public class GameResultMessageGenerator {
 

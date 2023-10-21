@@ -1,10 +1,11 @@
-package baseball;
+package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
+import baseball.dto.GameResult;
 import java.util.List;
 import java.util.function.Function;
 import org.junit.jupiter.api.DisplayName;
