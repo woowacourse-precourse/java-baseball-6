@@ -30,7 +30,7 @@ public static String readLine() {
 }
 ```
 
-✅ 입력 값으로부터 점수를 계산하는 클래스
+✅ 입력 값으로부터 점수를 계산하는 클래스 
 
 1. Strike 검사 :
     1. 입력
