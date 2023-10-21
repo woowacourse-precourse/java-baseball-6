@@ -20,11 +20,11 @@ public class BaseballGame {
         BaseballNumber targetNumber = new BaseballNumber(Computer.generateNumbers());
         do {
             tryGuess(targetNumber);
-        } while (!is3Strikes());
+        } while (!isEndOfGame());
     }
 
-    public boolean is3Strikes() {
-        if (judgement.strikes == 3) {
+    public boolean isEndOfGame() {
+        if (judgement.is3Strikes()) {
             OutputHandler.printGameEnd();
             return true;
         }
@@ -34,7 +34,7 @@ public class BaseballGame {
     private void tryGuess(BaseballNumber targetNumber) {
         BaseballNumber userGuess = new BaseballNumber(UserInput.inputNumbers());
         judgement.callBallOrStrike(targetNumber, userGuess);
-        OutputHandler.printHint(judgement);
+        OutputHandler.printMessage(judgement.toString());
     }
 
     public boolean wantsToRestart() {
