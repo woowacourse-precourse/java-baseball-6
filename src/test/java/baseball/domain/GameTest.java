@@ -32,4 +32,18 @@ class GameTest {
         Assertions.assertThat(game.countStrikes(computerNumber, playerNumber)).isEqualTo(expectedStrikes);
     }
 
+    private static Stream<Arguments> provideBallTestCases() {
+        return Stream.of(Arguments.of(List.of(1, 2, 3), List.of(1, 2, 3), 0),
+                Arguments.of(List.of(4, 5, 9), List.of(4, 9, 6), 1),
+                Arguments.of(List.of(9, 8, 3), List.of(3, 2, 9), 2),
+                Arguments.of(List.of(3, 6, 9), List.of(6, 9, 3), 3));
+    }
+
+    @ParameterizedTest
+    @DisplayName("볼 테스트")
+    @MethodSource("provideBallTestCases")
+    public void compareNumbersTest2(List<Integer> computerNumber, List<Integer> playerNumber, int expectedBalls) {
+        Assertions.assertThat(game.countBalls(computerNumber, playerNumber)).isEqualTo(expectedBalls);
+    }
+
 }
