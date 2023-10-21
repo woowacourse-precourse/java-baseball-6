@@ -29,10 +29,7 @@ public class Application {
             List<Integer> playerGuessNumbers = getPlayerGuessNumbers();
             String resultOfGuess = getResultOfGuess(computerNumbers, playerGuessNumbers);
             displayResultOfGuess(resultOfGuess);
-
-            if (resultOfGuess.equals("3스트라이크")) {
-                stateRepeatGuess = false;
-            }
+            stateRepeatGuess = getStateRepeatGuess(resultOfGuess);
         }
 
         displayTerminateGame();
@@ -163,6 +160,10 @@ public class Application {
 
     public static void displayResultOfGuess(final String resultOfGuess) {
         System.out.println(resultOfGuess);
+    }
+
+    public static boolean getStateRepeatGuess(final String resultOfGuess) {
+        return !(resultOfGuess.equals("3스트라이크"));
     }
 
     public static void displayTerminateGame() {
