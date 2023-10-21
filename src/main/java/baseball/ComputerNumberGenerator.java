@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumberGenerator {
-    public static List<Integer> createNewNumber()
+    public List<Integer> createNewNumber()//컴퓨터 숫자 생성기
     {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {  // 컴퓨터의 숫자 선택
@@ -12,7 +12,6 @@ public class ComputerNumberGenerator {
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
-            System.out.println("computer number = " + computer);
         }
         return computer;
     }

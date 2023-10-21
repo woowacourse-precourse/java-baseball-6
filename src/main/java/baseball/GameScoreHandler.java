@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class GameScoreHandler {
-    public static int calculateScore(List<Integer> computer, List<Integer> user){
+    public int calculateScore(List<Integer> computer, List<Integer> user){ // 점수계산기
         int ballCount = 0;
         int strikeCount = 0;
         for (int i = 0; i < 3; i++) {
@@ -18,7 +18,7 @@ public class GameScoreHandler {
         printScore(ballCount, strikeCount);
         return strikeCount;
     }
-    private static void printScore(int ballCount, int strikeCount){
+    private void printScore(int ballCount, int strikeCount){ // 점수 출력기
         if (ballCount > 0 && strikeCount > 0) {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         } else if (ballCount > 0) {
