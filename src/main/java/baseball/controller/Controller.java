@@ -1,5 +1,10 @@
-package baseball;
+package baseball.controller;
 
+import baseball.model.Answer;
+import baseball.model.GameScore;
+import baseball.util.NumberGenerator;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.List;
 
 public class Controller {

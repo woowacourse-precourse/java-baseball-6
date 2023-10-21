@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.model.Answer;
+import baseball.model.GameScore;
+import baseball.util.NumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;

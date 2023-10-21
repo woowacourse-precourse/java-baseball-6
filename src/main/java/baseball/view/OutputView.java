@@ -1,5 +1,6 @@
-package baseball;
+package baseball.view;
 
+import baseball.model.GameScore;
 import java.util.List;
 
 public class OutputView {

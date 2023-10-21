@@ -2,6 +2,9 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.model.GameScore;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
