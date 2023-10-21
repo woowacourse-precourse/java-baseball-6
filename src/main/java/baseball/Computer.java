@@ -2,12 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
 
-    private final List<Character> answerDigits = Arrays.asList('4', '2', '5');
+    private final List<Character> answerDigits = new ArrayList<>();
 
     private static final int INITIAL_COUNT = 0;
     private static final int ANSWER_START = 0;
@@ -26,10 +26,19 @@ public class Computer {
         }
     }
 
-    public String generateResult(List<Character> guessDigits){
-        int totalCount = computeStrikeAndBall(guessDigits);
-        int strikeCount = computeStrike(guessDigits);
-        int ballCount = totalCount - strikeCount;
+    public String generateResult(String playerInput){
+        int totalCount;
+        int strikeCount;
+        int ballCount;
+        List<Character> guessDigits = new ArrayList<>();
+
+        for (char digit : playerInput.toCharArray()) {
+            guessDigits.add(digit);
+        }
+
+        totalCount = computeStrikeAndBall(guessDigits);
+        strikeCount = computeStrike(guessDigits);
+        ballCount = totalCount - strikeCount;
 
         if (totalCount == INITIAL_COUNT){
             return NOTHING;
@@ -45,7 +54,7 @@ public class Computer {
 
     private void generateRandomDigit(){
         int randomIntNumber = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
-        char randomNumber = (char)randomIntNumber;
+        char randomNumber = Integer.toString(randomIntNumber).charAt(0);
         if (!answerDigits.contains(randomNumber)) {
             answerDigits.add(randomNumber);
         }
@@ -69,11 +78,5 @@ public class Computer {
             }
         }
         return strikeCount;
-    }
-
-    // TODO test를 위한 코드니 나중에 삭제
-
-    public List<Character> getAnswerDigits() {
-        return answerDigits;
     }
 }
