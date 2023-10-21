@@ -51,7 +51,7 @@
 
 1. InputValidator
     + [ ] playerInput 유효성 검사
-        + [ ] 세 자리인지 확인
+        + [x] 세 자리인지 확인
         + [ ] 1-9 사이의 정수인지 확인
         + [ ] 중복되는 값이 있는지(= 서로 다른 숫자인지) 확인
         + [ ] 위 경우들에 따른 오류 메세지 출력 후 ```IllegalArgumentException``` 발생 후 종료
