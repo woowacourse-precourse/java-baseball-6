@@ -24,6 +24,7 @@ public class Application {
         String inputValue = readLine();
 
         //사용자가 잘못된 값을 입력한 경우 오류 던지기
+
         //문자열 문자 배열로 변경
         char[] inputNum = inputValue.toCharArray();
         //스트라이크 판단했는지 보는 배열
@@ -37,6 +38,21 @@ public class Application {
                 visitedOfStrike[i] = 1;
             }
         }
+        //볼 판단하는 로직
+        for(int i=0;i<3;i++){
+            for(int j=0; j<3;j++){
+                //만약 이미 스트라이크라고 알려준 것이라면,
+                if (visitedOfStrike[i] == 1){
+                    continue;
+                }
+                //볼이라면
+                if ( i != j && answer.get(i) == Integer.parseInt(String.valueOf(inputNum[j]))){
+                    visitedOfBall[i] = 1;
+                }
+            }
+        }
+
+        //  사용자가 입력한 값이 정답인 경우, 정답임을 알려주고 다시 게임을 진행할지 판단하는 로직
 
         }
 
