@@ -2,6 +2,7 @@ package baseball.view;
 
 import static baseball.view.Messages.BALL;
 import static baseball.view.Messages.GAME_CLEAR_MESSAGE;
+import static baseball.view.Messages.GAME_END_MESSAGE;
 import static baseball.view.Messages.INPUT_NUMBER_MESSAGE;
 import static baseball.view.Messages.INPUT_OPTION_MESSAGE;
 import static baseball.view.Messages.NOTHING;
@@ -33,6 +34,10 @@ public class OutputView {
         showStrike(result);
         showNothing(result);
         System.out.println();
+    }
+
+    public void showEndMessage() {
+        System.out.println(GAME_END_MESSAGE);
     }
 
     private void showBall(Result result) {

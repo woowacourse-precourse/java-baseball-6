@@ -36,15 +36,20 @@ public class BaseballGame {
             Result result = rule.check(inputUserNumber(), computer);
             outputView.showResult(result);
             if (result.isGameClear()) {
-                checkRestart();
-                running = false;
+                running = checkRestart();
             }
         }
+        outputView.showEndMessage();
     }
 
-    private void checkRestart() {
+    private boolean checkRestart() {
         outputView.showOptionMenu();
-        inputUserCommand();
+        Command command = inputUserCommand();
+        if (command.isRestartCommand()) {
+            computer.changeNumbers();
+            return true;
+        }
+        return false;
     }
 
     private Command inputUserCommand() {
