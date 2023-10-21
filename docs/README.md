@@ -54,7 +54,7 @@
 
 - Number (숫자 도메인)
 
-- AnswerNumbers (정답 숫자 일급 컬렉션)
+- Numbers (숫자 일급 컬렉션)
 
 ## 열거형 목록
 

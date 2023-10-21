@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.domain.AnswerNumbers;
+import baseball.domain.Numbers;
 import baseball.repository.DomainRepository;
 import baseball.utils.RandomNumberGenerator;
 
@@ -17,8 +17,7 @@ public class BaseballService {
     }
 
     public void saveRandomNumbers() {
-        final AnswerNumbers answerNumbers =
-                new AnswerNumbers(randomNumberGenerator.generateNumbers());
-        domainRepository.saveAnswerNumbers(answerNumbers);
+        final Numbers numbers = new Numbers(randomNumberGenerator.generateNumbers());
+        domainRepository.saveAnswerNumbers(numbers);
     }
 }
