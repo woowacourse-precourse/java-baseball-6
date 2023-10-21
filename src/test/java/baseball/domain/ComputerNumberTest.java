@@ -4,7 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,6 +29,23 @@ class ComputerNumberTest {
         assertAll(
                 () -> assertEquals(1, strike),
                 () -> assertEquals(2, ball)
+        );
+    }
+
+    @DisplayName("서로 다른 1~9 숫자 세개를 반환한다.")
+    @Test
+    void makeNumber() {
+        // given
+        ComputerNumber computerNumber = new ComputerNumber();
+
+        // when
+        List<Integer> answer = computerNumber.makeNumber();
+        Set<Integer> uniqueNumbers = new HashSet<>(answer);
+
+        // then
+        assertAll(
+                () -> assertEquals(3, uniqueNumbers.size()),
+                () -> uniqueNumbers.forEach(num -> assertTrue(num >= 1 && num <= 9))
         );
     }
 
