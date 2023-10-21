@@ -3,7 +3,8 @@
 ## 기능 목록
 ### 입력
 - 서로 다른 3자리 수 입력받기
-    - 입력값 검증(잘못 입력한 경우 IllegalArgumentException 발생 후 종료)
+- 새로 시작 정보 입력받기 
+- 입력값 검증(잘못 입력한 경우 IllegalArgumentException 발생 후 종료)
 
 ### 출력
 - 숫자 야구 게임을 시작합니다.
