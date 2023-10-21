@@ -7,9 +7,7 @@ public enum OutputConstant {
 	STRIKE("스트라이크"),
 	NONE("낫싱"),
 	SUCCESS("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
-	GAME_END("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
-	RESTART("1"),
-	FINISH("2");
+	GAME_END("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
 	private final String value;
 
