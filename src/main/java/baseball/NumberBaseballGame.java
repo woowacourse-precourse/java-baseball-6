@@ -16,9 +16,7 @@ public class NumberBaseballGame {
         boolean gameStatus = true;
         while (gameStatus) {
             speaker(message.startMessage() + '\n');
-            AnswerMaker answerMaker = new AnswerMaker(1, 9); // 각 라운드당 하나의 정답을 생성하기
-            System.out.println("answer ?" + answerMaker.getAnswer());
-            oneRound(answerMaker.getAnswer());
+            oneRound();
             speaker(message.restartOrStopMessage());
             gameStatus = restartOrStop();
         }
@@ -26,19 +24,25 @@ public class NumberBaseballGame {
 
     public boolean restartOrStop() {
         String sign = userInput.getUserInput();
+
         inputValidation.validateRestartOrStop(sign);
         return (sign.charAt(0) != '2');
     }
 
-    public void oneRound(List<Integer> answer) {
+    public void oneRound() {
+        AnswerMaker answerMaker = new AnswerMaker(1, 9);// 각 라운드당 하나의 정답을 생성하기
         boolean threeStrike = false;
+
         while (!threeStrike) {
             speaker(message.requestNumberMessage());
             String userLine = userInput.getUserInput();
-            List<Integer> userNumbers = inputValidation.convertStrToIntegerList(userLine);
-            List<Integer> score = computer.countScore(answer, userNumbers);
-            speaker(message.scoreMessage(score) + '\n');
-            if (score.get(1) == 3) {
+            List<Integer> userNumbers = inputValidation.validateUserNumbers(userLine);
+            List<Integer> answer = answerMaker.getAnswer();
+            List<Integer> ballAndStrikeCount = computer.countScore(answer, userNumbers);
+            int strikeCount = ballAndStrikeCount.get(1);
+
+            speaker(message.scoreMessage(ballAndStrikeCount) + '\n');
+            if (strikeCount == 3) {
                 threeStrike = true;
             }
         }

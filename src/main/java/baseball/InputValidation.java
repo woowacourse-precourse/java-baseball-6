@@ -1,7 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,6 +7,7 @@ public class InputValidation {
 
     public List<Integer> validateUserNumbers(String input) {
         String trimmed = deleteSpace(input);
+
         validateLength(trimmed);
         validateOnlyDigit(trimmed);
         validateContainZero(trimmed);
@@ -19,6 +18,7 @@ public class InputValidation {
 
     public void validateRestartOrStop(String input) {
         String trimmed = deleteSpace(input);
+
         validateSignLength(trimmed);
         validateSign(trimmed);
     }
