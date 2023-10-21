@@ -51,8 +51,8 @@ public class ComputerController {
 
     private int ballCheck(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         int ballCount = 0;
-        for (int playerNumber : playerNumbers) {
-            if (computerNumbers.contains(playerNumber)) {
+        for (int i = 0; i < 3; i++) {
+            if (playerNumbers.get(i) != computerNumbers.get(i) && computerNumbers.contains(playerNumbers.get(i))) {
                 ballCount++;
             }
         }
@@ -79,6 +79,4 @@ public class ComputerController {
         Collections.reverse(tempList);
         return tempList;
     }
-
-
 }
