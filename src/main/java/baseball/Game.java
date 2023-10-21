@@ -6,19 +6,37 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Game {
     Player user;
     Player computer;
+    GameRestartState gameRestartState;
+
+    public Game() {
+        this.user = new Player();
+        this.computer = new Player();
+        this.gameRestartState = GameRestartState.GAME_CONTINUE;
+    }
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        this.user = new Player();
-        this.computer = new Player();
         initComputerNumbers();
-        while (true) {
-            inputUser();
-            System.out.println(printResult());
+        while (this.gameRestartState != GameRestartState.GAME_STOP) {
+            inProgressGame();
         }
+    }
+
+    public void inProgressGame() {
+        inputUser();
+        String result = printResult();
+        System.out.println(result);
+        System.out.println(computer.getPlayerNumbers());
+
+        if (checkEndGame()) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            questionRestartGame();
+        }
+
     }
 
     public void inputUser() {
@@ -82,19 +100,35 @@ public class Game {
             return "낫싱";
         }
         if (countBall() != 0) {
-            result += countBall() + "볼";
+            result += countBall() + "볼 ";
         }
         if (countStrike() != 0) {
-            result += countStrike() + "스트라이크";
+            result += countStrike() + "스트라이크 ";
         }
         return result;
     }
 
     public boolean checkEndGame() {
+        if (this.user.getPlayerNumbers().size() < 3) {
+            return false;
+        }
         if (countStrike() == 3) {
             return true;
         }
         return false;
     }
+
+    public void questionRestartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+        if (Integer.parseInt(userInput) == 1) { // 게임 다시 시작
+            this.gameRestartState = GameRestartState.GAME_CONTINUE;
+            initComputerNumbers();
+        }
+        if (Integer.parseInt(userInput) == 2) {
+            this.gameRestartState = GameRestartState.GAME_STOP;
+        }
+    }
+
 
 }

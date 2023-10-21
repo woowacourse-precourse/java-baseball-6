@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    List<Integer> playerNumbers = new ArrayList<Integer>();
+    List<Integer> playerNumbers = new ArrayList<Integer>(3);
 
     public void setPlayerNumbers(List<Integer> playerNumbers) {
         this.playerNumbers = playerNumbers;
