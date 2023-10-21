@@ -1,6 +1,5 @@
-package baseball;
+package baseball.controller;
 
-import baseball.controller.GameController;
 import baseball.dto.JudgeDTO;
 
 public class Dispatcher {
