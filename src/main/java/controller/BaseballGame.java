@@ -11,5 +11,7 @@ public class BaseballGame {
         do {
             playOneGame();
         } while(isRestart());
+
+        printCloseApplication();
     }
 }
