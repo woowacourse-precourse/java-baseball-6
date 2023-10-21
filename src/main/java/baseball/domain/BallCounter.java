@@ -13,11 +13,11 @@ public class BallCounter {
     }
 
     public static void countBall() {
-        ballCounter.put(BALL, ballCounter.getOrDefault(BALL, 0) + 1);
+        ballCounter.put(BALL, getCountOfBall() + 1);
     }
 
     public static void countStrike() {
-        ballCounter.put(STRIKE, ballCounter.getOrDefault(STRIKE, 0) + 1);
+        ballCounter.put(STRIKE, getCountOfStrike() + 1);
     }
 
     public static boolean isAllStrike(int digitNumber) {
