@@ -19,11 +19,11 @@ public class Computer {
         while (randomNumbers.size() < LENGTH_RANDOMNUMBERS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-            addRandomNumberToRandomNumbers(randomNumber);
+            addDistinctRandomNumberToRandomNumbers(randomNumber);
         }
     }
 
-    private void addRandomNumberToRandomNumbers(int randomNumber) {
+    private void addDistinctRandomNumberToRandomNumbers(int randomNumber) {
         if (!randomNumbers.contains(randomNumber)) {
             randomNumbers.add(randomNumber);
         }
