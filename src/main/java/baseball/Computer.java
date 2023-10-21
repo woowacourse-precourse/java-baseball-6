@@ -8,7 +8,7 @@ public class Computer {
     }
 
     public void printMsg(String msg) {
-
+        System.out.print(msg);
     }
 
     public void makeAnswer() {
