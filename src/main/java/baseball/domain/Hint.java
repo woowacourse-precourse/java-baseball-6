@@ -10,4 +10,12 @@ public class Hint {
         strike = 0;
         ball = 0;
     }
+
+    public void increaseStrike() {
+        strike++;
+    }
+
+    public void increaseBall() {
+        ball++;
+    }
 }
