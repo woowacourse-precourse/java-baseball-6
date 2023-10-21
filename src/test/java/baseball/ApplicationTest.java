@@ -48,4 +48,12 @@ class ApplicationTest extends NsTest {
             assertThat(e.getMessage()).isEqualTo("1~9 사이의 숫자만 입력 가능합니다.");
         }
     }
+    @Test
+    void 입력_길이_예외_테스트() {
+        try{
+            run("1234");
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage()).isEqualTo("세 자리만 입력 가능합니다.");
+        }
+    }
 }
