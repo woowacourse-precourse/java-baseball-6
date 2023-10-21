@@ -2,25 +2,28 @@ package baseball.validation;
 
 public final class Validation {
     public static void inputValidate(String input) {
-        validateNumberRange(input);
-        validateNumberLength(input);
-        validateNumberDuplicate(input);
+        validatePlayerNumberRange(input);
+        validatePlayerNumberDuplicate(input);
     }
 
-    private static void validateNumberRange(String input) {
+    public static void restartValidate(String input) {
+        validatePlayerRestartNumberRange(input);
+    }
+
+    private static void validatePlayerNumberRange(String input) {
         if (!input.matches("^[1-9]{3}$")) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void validateNumberLength(String input) {
-        if (String.valueOf(input).length() != 3) {
+    private static void validatePlayerNumberDuplicate(String input) {
+        if (input.chars().distinct().count() != input.length()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void validateNumberDuplicate(String input) {
-        if (input.chars().distinct().count() != input.length()) {
+    public static void validatePlayerRestartNumberRange(String input) {
+        if (!input.matches("^[1-2]$")) {
             throw new IllegalArgumentException();
         }
     }
