@@ -3,18 +3,15 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application{
 
-    private static List<Integer> computerNumber = new ArrayList<>();
-
     public static void main(String[] args){
         startGame();
-        computerNumber = createComputerRandomNumber();
-        playGame();
+        List<Integer> computerNumber = createComputerRandomNumber();
+        playGame(computerNumber);
 
     }
 
@@ -33,8 +30,9 @@ public class Application{
         return randomNumbers;
     }
 
-    private static void playGame(){
-        List<Integer>userNumber = input();
+    private static void playGame(List<Integer> computerNumber){
+        List<Integer> userNumber = input();
+        int strike = findStrike(computerNumber, userNumber);
     }
 
     private static List<Integer> input(){
@@ -47,20 +45,20 @@ public class Application{
     }
 
     private static void throwIfInvalidInputString(String inputString){
-        if(isNotThreeDigits(inputString)||isDuplicated(inputString)||isNotInRange(inputString)){
+        if (isNotThreeDigits(inputString) || isDuplicated(inputString) || isNotInRange(inputString)){
             throw new IllegalArgumentException();
         }
     }
 
     private static boolean isNotThreeDigits(String inputString){
-        return inputString.length()!=3;
+        return inputString.length() != 3;
     }
 
     private static boolean isDuplicated(String inputString){
-        int[] visited=new int[10];
-        for(int i=0;i<inputString.length();i++){
-            int number = inputString.charAt(i)-'0';
-            if(visited[number]!=0){
+        int[] visited = new int[10];
+        for (int i = 0; i < inputString.length(); i++){
+            int number = inputString.charAt(i) - '0';
+            if (visited[number] != 0){
                 return true;
             }
             visited[number]++;
@@ -69,9 +67,9 @@ public class Application{
     }
 
     private static boolean isNotInRange(String inputString){
-        for(int i=0;i<inputString.length();i++){
-            int number = inputString.charAt(i)-'0';
-            if(number<1||number>9){
+        for (int i = 0; i < inputString.length(); i++){
+            int number = inputString.charAt(i) - '0';
+            if (number < 1 || number > 9){
                 return true;
             }
         }
@@ -80,10 +78,20 @@ public class Application{
 
     private static List<Integer> stringIntoIntegerList(String inputString){
         List<Integer> integerList = new ArrayList<>();
-        for(int i=0;i<inputString.length();i++){
-            integerList.add(inputString.charAt(i)-'0');
+        for (int i = 0; i < inputString.length(); i++){
+            integerList.add(inputString.charAt(i) - '0');
         }
         return integerList;
+    }
+
+    private static int findStrike(List<Integer> computerNumber, List<Integer> userNumber){
+        int count = 0;
+        for(int i=0;i<3;i++){
+            if(computerNumber.get(i)==userNumber.get(i)){
+                count++;
+            }
+        }
+        return count;
     }
 
 }
