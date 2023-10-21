@@ -99,7 +99,7 @@ public class GameController {
         return InputController.receiveResumeNumber();
     }
 
-    public void clearUmpireMemory() {
+    private void clearUmpireMemory() {
         umpire.resetGame();
     }
 }
