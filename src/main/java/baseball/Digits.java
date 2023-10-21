@@ -22,4 +22,12 @@ final class Digits {
         }
     }
 
+    //TODO : strike점수가 빠져야함
+    int countBall(Digits target) {
+        int ballCount = 0;
+        for (Digit it : target.digits) {
+            if (digits.contains(it)) ballCount++;
+        }
+        return ballCount;
+    }
 }
