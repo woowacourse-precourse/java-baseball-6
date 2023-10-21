@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-public class RandomNumber {
+public class RandomNumberGenerator {
 
     private static final int MIN_DIGIT = Digit.MIN_VALUE;
     private static final int MAX_DIGIT = Digit.MAX_VALUE;
@@ -14,12 +14,12 @@ public class RandomNumber {
 
     private final Supplier<Integer> randomValue;
 
-    RandomNumber(Supplier<Integer> randomValue) {
+    RandomNumberGenerator(Supplier<Integer> randomValue) {
         this.randomValue = Objects.requireNonNull(randomValue);
     }
 
-    public static RandomNumber create() {
-        return new RandomNumber(() -> Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT));
+    public static RandomNumberGenerator create() {
+        return new RandomNumberGenerator(() -> Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT));
     }
 
     public Number generate() {

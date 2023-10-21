@@ -7,24 +7,24 @@ import java.util.function.Supplier;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class RandomNumberTest {
+class RandomNumberGeneratorTest {
 
     @Test
     @DisplayName("랜덤한 숫자를 생성할 수 있다")
     void generateTest() {
-        RandomNumber randomNumber = createRandomNumber(List.of(3,6,9,7,2,1));
-        assertDoesNotThrow(randomNumber::generate);
+        RandomNumberGenerator randomNumberGenerator = createRandomNumber(List.of(3,6,9,7,2,1));
+        assertDoesNotThrow(randomNumberGenerator::generate);
     }
 
     @Test
     @DisplayName("중간에 중복된 수를 제공하더라도 랜덤한 숫자를 생성할 수 있다")
     void generateTest_whenSuppliedOverlappedValue() {
-        RandomNumber randomNumber = createRandomNumber(List.of(3,6,3,6,7));
-        assertDoesNotThrow(randomNumber::generate);
+        RandomNumberGenerator randomNumberGenerator = createRandomNumber(List.of(3,6,3,6,7));
+        assertDoesNotThrow(randomNumberGenerator::generate);
     }
 
-    RandomNumber createRandomNumber(List<Integer> mockData) {
-        return new RandomNumber(new MockIntegerSupplier(mockData));
+    RandomNumberGenerator createRandomNumber(List<Integer> mockData) {
+        return new RandomNumberGenerator(new MockIntegerSupplier(mockData));
     }
 
     private class MockIntegerSupplier implements Supplier<Integer> {

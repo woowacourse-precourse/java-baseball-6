@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.Number;
-import baseball.domain.RandomNumber;
+import baseball.domain.RandomNumberGenerator;
 import baseball.dto.ComparisonResult;
 import baseball.dto.RetryDto;
 import baseball.view.input.InputView;
@@ -11,7 +11,7 @@ public class BaseballController {
 
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-    private final RandomNumber randomNumber = RandomNumber.create();
+    private final RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.create();
 
     public void run() {
         outputView.printStartGame();
@@ -24,7 +24,7 @@ public class BaseballController {
     }
 
     private void playGame() {
-        Number correctAnswer = randomNumber.generate();
+        Number correctAnswer = randomNumberGenerator.generate();
 
         ComparisonResult result;
         do {
