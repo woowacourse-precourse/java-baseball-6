@@ -13,10 +13,7 @@ public class BaseballGame {
         System.out.println(computer.getNumbers());
 
         while (true) {
-            String inputNumber = Input.readUserNumbers();
-            // TODO: inputNumber 예외 처리
-
-            User user = new User(inputNumber);
+            User user = new User();
 
             // (삭제 예정)
             System.out.println(user.getNumbers());
@@ -33,11 +30,8 @@ public class BaseballGame {
     }
 
     private void exist() {
-        String inputModeStr = Input.readModeRestartOrEnd();
-        int inputMode = Integer.parseInt(inputModeStr);
-        // TODO: inputMode 예외 처리
-
-        if (inputMode == Constants.MODE_RESTART) {
+        Mode mode = new Mode();
+        if (mode.isRestart()) {
             run();  // 재시작
         }  // 완전히 종료
     }

@@ -1,14 +1,17 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Computer() {
+        makeRandomNumbers();
+    }
+
+    private void makeRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
 
         while (numbers.size() < Constants.NUMBER_COUNT) {

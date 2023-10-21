@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
 
-    public User(String inputNumber) {
+    public User() {
+        // TODO: 입력된 Numbers 예외 처리
+
+        setNumbers(Input.readUserNumbers());
+    }
+
+    private void setNumbers(String inputNumbers) {
         List<Integer> numbers = new ArrayList<>();
 
-        for (int i = 0; i < inputNumber.length(); i++) {
-            int number = inputNumber.charAt(i) - '0';
+        for (int i = 0; i < inputNumbers.length(); i++) {
+            int number = inputNumbers.charAt(i) - '0';
             numbers.add(number);
         }
 
