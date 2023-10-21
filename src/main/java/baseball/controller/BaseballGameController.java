@@ -3,27 +3,26 @@ package baseball.controller;
 import baseball.model.TargetNumber;
 import baseball.model.StopGameDecisionHelper;
 import baseball.model.GameResult;
-import baseball.view.ConsoleView;
+import baseball.view.ConsoleInputView;
+import baseball.view.ConsoleOutputView;
 
 public class BaseballGameController {
     private static final int BASEBALL_NUMBER_SIZE = 3;
-    private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
-    private static final String REQUEST_INPUT_NUMBER = "숫자를 입력해주세요";
-    private static final String GOOD_GAME = BASEBALL_NUMBER_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private final ConsoleView consoleView;
+    private final ConsoleInputView consoleInputView;
+    private final ConsoleOutputView consoleOutputView;
 
-    public BaseballGameController(ConsoleView consoleView) {
-        this.consoleView = consoleView;
+    public BaseballGameController(ConsoleInputView consoleInputView, ConsoleOutputView consoleOutputView) {
+        this.consoleInputView = consoleInputView;
+        this.consoleOutputView = consoleOutputView;
     }
 
     public void play() {
-        consoleView.alert(GAME_START);
+        consoleOutputView.gameStart();
 
         while (true) {
             matchingNumber(TargetNumber.randomInstance(BASEBALL_NUMBER_SIZE));
-            consoleView.alert(StopGameDecisionHelper.MORE_GAME_TEXT);
-            int wantMoreGame = Integer.parseInt(consoleView.input());
-            if (StopGameDecisionHelper.getDecision(wantMoreGame)) {
+
+            if (isWantStopGame()) {
                 break;
             }
         }
@@ -31,23 +30,33 @@ public class BaseballGameController {
 
     private void matchingNumber(TargetNumber computerNumber) {
         while (true) {
-            consoleView.request(REQUEST_INPUT_NUMBER);
-            String input = consoleView.input();
-            verifyInputNumber(input);
-            GameResult gameResult = computerNumber.calculateGameResult(input);
+            String inputNumber = requestNumber();
+            verifyInputNumber(inputNumber);
+            GameResult gameResult = computerNumber.calculateGameResult(inputNumber);
 
-            consoleView.alert(gameResult.toString());
+            consoleOutputView.writeMessage(gameResult.toString());
 
             if (gameResult.isPerfectGame(BASEBALL_NUMBER_SIZE)) {
-                consoleView.alert(GOOD_GAME);
+                consoleOutputView.goodGame(BASEBALL_NUMBER_SIZE);
                 break;
             }
         }
+    }
+
+    private String requestNumber() {
+        consoleOutputView.requestNumber();
+        return consoleInputView.request();
     }
 
     private void verifyInputNumber(String inputNumberText) {
         if (inputNumberText.length() != BASEBALL_NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private boolean isWantStopGame() {
+        consoleOutputView.moreGame(StopGameDecisionHelper.MORE_NUMBER, StopGameDecisionHelper.END_NUMBER);
+        int inputMoreGameNumber = Integer.parseInt(consoleInputView.request());
+        return StopGameDecisionHelper.getDecision(inputMoreGameNumber);
     }
 }
