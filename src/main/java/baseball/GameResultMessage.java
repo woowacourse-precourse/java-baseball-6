@@ -9,11 +9,9 @@ public class GameResultMessage {
         if (result[0] == 0 && result[1] == 0) {
             message = "낫싱";
         }
-
         if (result[1] == 3) {
             message = "3스트라이크";
         }
-
         if (result[0] > 0) {
             message += result[0] + "볼 ";
         }
