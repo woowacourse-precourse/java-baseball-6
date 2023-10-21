@@ -21,7 +21,6 @@ public class InputView {
 
     public List<Integer> inputByConsole() {
         String input = Console.readLine();
-
         userInputValidation(input);
 
         return inputConverter(Integer.parseInt(input));
