@@ -46,12 +46,9 @@ public class Computer {
 
         for (int i = 0; i < userNumbers.size(); i++) {
             userNumber = userNumbers.get(i);
+            computerNumber = computerNumbers.get(i);
 
-            for (int j = 0; j < computerNumbers.size(); j++) {
-                computerNumber = computerNumbers.get(j);
-
-                if (userNumber == computerNumber && i == j) count++;
-            }
+            if(userNumber==computerNumber) count++;
         }
 
         return count;
