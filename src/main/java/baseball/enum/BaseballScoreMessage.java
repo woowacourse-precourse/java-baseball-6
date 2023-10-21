@@ -10,6 +10,10 @@ public enum BaseballScoreMessage {
 
     BaseballScoreMessage(String message) { this.message = message; }
 
+    public String getMessageWithCount(int count) {
+        return count + this.message;
+    }
+
     @Override
     public String toString() {
         return message;
