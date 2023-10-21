@@ -16,8 +16,9 @@ public class Application {
 
         boolean continueGame = true;
 
-        while (continueGame)
+        while (continueGame) {
             continueGame = playGame();
+        }
     }
 
     public static boolean playGame() {
