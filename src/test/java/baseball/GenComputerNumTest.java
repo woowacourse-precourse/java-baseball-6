@@ -15,10 +15,11 @@ public class GenComputerNumTest {
         GenComputerNum genComputerNum = new GenComputerNum();
 
         // when
-        List<Integer> computerNum = genComputerNum.genComputerNum();
+        List<String> computerNum = genComputerNum.genComputerNum();
 
         // then
         System.out.println(computerNum);
         assertThat(computerNum.size()).isEqualTo(3);
     }
 }
+
