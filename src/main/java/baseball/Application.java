@@ -60,7 +60,7 @@ public class Application {
         return user;
     }
 
-    public static boolean playSingleGameRound(List<Integer> user,List<Integer> computer){//1이면, 게임 종료하기 위한 단계로 간다.
+    public static boolean playSingleGameRound(List<Integer> user,List<Integer> computer){//true이면, 게임 종료하기 위한 단계로 간다.
 
         int numStrikes=0;
         int numBalls =0;
@@ -71,8 +71,8 @@ public class Application {
                 numBalls++;
             }
         }
-
-        return evaluateGuess(numStrikes,numBalls);
+        printGuessResult(numStrikes,numBalls);
+        return numStrikes == NUM_DIGITS;
     }
 
     public static boolean shouldRestartGame(){//반환값이 1이면 restart
@@ -108,7 +108,7 @@ public class Application {
         throw new IllegalArgumentException("1 또는 2를 입력하지 않았습니다.");
     }
 
-    private static boolean evaluateGuess(int numStrikes,int numBalls){
+    private static void printGuessResult(int numStrikes,int numBalls){
 
         String message = "";
         if(numStrikes == NUM_DIGITS){
@@ -124,7 +124,6 @@ public class Application {
             message="낫싱";
         }
         System.out.println(message);
-        return numStrikes ==NUM_DIGITS;
     }
 
 }
