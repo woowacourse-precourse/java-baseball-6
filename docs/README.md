@@ -1,10 +1,10 @@
 # 프리코스 1주차 미션 - ⚾️숫자 야구
 
-## 초기 간이 클래스 다이어그램 고안
+## 간이 클래스 다이어그램 고안
 
 ---
 
-![클래스다이어그램v1.png](images%2F%ED%81%B4%EB%9E%98%EC%8A%A4%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8v1.png)
+![클래스다이어그램v2.png](images%2F%ED%81%B4%EB%9E%98%EC%8A%A4%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8v2.png)
 
 ## ✏️기능목록
 
