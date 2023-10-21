@@ -27,6 +27,10 @@ public class Computer {
         return randomNumber.toString();
     }
 
+    public int getStateStrike() {
+        return stateStrike;
+    }
+
     public void checkNumber(String computerNumber, String playerNumber) {
         String[] computerNumberSplit = computerNumber.split("");
         String[] playerNumberSplit = playerNumber.split("");
