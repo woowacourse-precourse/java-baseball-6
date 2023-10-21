@@ -2,7 +2,7 @@ package baseball.domain;
 
 import java.util.List;
 
-class MyNumber {
+public class MyNumber {
 
     private List<Integer> myNumberList;
     private int strike;
