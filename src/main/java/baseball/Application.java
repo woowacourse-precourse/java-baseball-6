@@ -29,6 +29,7 @@ class BaseballGame {
         }
     }
     private void makeComNum() {
+        computer.clear();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -38,10 +39,22 @@ class BaseballGame {
     }
     private void getUserNum() {
         System.out.print("숫자를 입력해주세요 : ");
-        String userNumber = Console.readLine();
+        String userInput = Console.readLine().replaceAll(" ", "");
+        try {
+            Integer.parseInt(userInput);
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException();
+        }
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException();
+        }
         user.clear();
         for (int i=0; i<3; i++) {
-            user.add(Character.getNumericValue(userNumber.charAt(i)));
+            int userNumber = Character.getNumericValue(userInput.charAt(i));
+            if (user.contains(userNumber)) {
+                throw new IllegalArgumentException();
+            }
+            user.add(userNumber);
         }
     }
     private int countStrike() {
@@ -86,9 +99,20 @@ class BaseballGame {
     }
     private void checkRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userAns = Console.readLine();
+        String userAns = Console.readLine().replaceAll(" ", "");
+        try {
+            Integer.parseInt(userAns);
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException();
+        }
+        if (userAns.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+        
         if (userAns.equals("2")) {
             isPlaying = false;
+        } else {
+            makeComNum();
         }
     }
 }
