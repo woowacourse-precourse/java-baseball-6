@@ -1,6 +1,8 @@
 package baseball.controller;
 
+import static baseball.Constants.END_WANT;
 import static baseball.Constants.PLAY_NUMBER_DIGIT;
+import static baseball.Constants.PLAY_WANT;
 
 import baseball.converter.StringInputConverter;
 import baseball.validator.NumberValidator;
@@ -26,9 +28,9 @@ public class InputController {
         NumberValidator.assertInputNumberWithLength(inputNumber, expectedLength);
     }
 
-    public static int receiveResumeNumberWithOption(final int restart, final int end) {
+    public static int receiveResumeNumber() {
         String resumeInput = Console.readLine();
-        assertResumeValue(resumeInput, restart, end);
+        assertResumeValue(resumeInput, PLAY_WANT, END_WANT);
 
         return StringInputConverter.toInt(resumeInput);
     }

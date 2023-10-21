@@ -1,8 +1,6 @@
 package baseball.controller;
 
-import static baseball.Constants.END_WANT;
 import static baseball.Constants.PLAY_NUMBER_DIGIT;
-import static baseball.Constants.PLAY_WANT;
 
 import baseball.Umpire;
 import baseball.factory.NumberFactory;
@@ -81,7 +79,7 @@ public class GameController {
     }
 
     private int receiveResumeNumber() {
-        return InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT);
+        return InputController.receiveResumeNumber();
     }
 
     private static void askResumeInput() {
