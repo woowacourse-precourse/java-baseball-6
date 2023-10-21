@@ -13,11 +13,12 @@ public class Player {
     public Player(){
     }
 
-    public String getInput(){
+    public void setInput(){
         input = Console.readLine();
-        System.out.println(input);
-        validateInput();
+    }
 
+    public String getInput(){
+        validateInput();
         return input;
     }
 

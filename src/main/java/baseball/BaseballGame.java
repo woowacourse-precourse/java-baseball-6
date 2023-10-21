@@ -31,7 +31,7 @@ public class BaseballGame {
             ballCnt = 0;
 
             System.out.println(INPUT_MESSAGE);
-            playerInput = player.getInput();
+            setPlayerInput();
 
             calculateScore();
             System.out.println(makeResultMessage());
@@ -48,6 +48,11 @@ public class BaseballGame {
                 answer = computer.makeRandomAnswer();
             }
         }
+    }
+
+    private void setPlayerInput(){
+        player.setInput();
+        playerInput = player.getInput();
     }
 
     private void calculateScore(){
