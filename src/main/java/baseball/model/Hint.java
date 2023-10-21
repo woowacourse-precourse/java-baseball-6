@@ -9,7 +9,7 @@ public class Hint {
     public Hint() {
     }
 
-    private int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    public int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int ballCount = 0;
 
         for(int i = 0; i < RANDOM_NUMBER_LENGTH; i++) {
@@ -23,7 +23,7 @@ public class Hint {
         return ballCount;
     }
 
-    private int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    public int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int strikeCount = 0;
 
         for(int i = 0; i < RANDOM_NUMBER_LENGTH; i++) {
