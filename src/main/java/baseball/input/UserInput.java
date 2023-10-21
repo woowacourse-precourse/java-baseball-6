@@ -10,6 +10,7 @@ import java.util.List;
 
 public class UserInput {
 
+	private static final String PLAY_AGAIN_NUMBER = "1";
 	private final NumberValidator numberValidator = new NumberValidator();
 
 	public List<Integer> getNumbers() {
@@ -32,7 +33,7 @@ public class UserInput {
 
 		numberValidator.isValidPlayAgain(input);
 
-		return input.equals("1");
+		return input.equals(PLAY_AGAIN_NUMBER);
 	}
 
 	public String getUserInput() {

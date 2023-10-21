@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class GameManager {
 
+	private static final int STRIKE_CONDITION = 3;
 	private final Balls answer = new Balls(new ArrayList<>());
 	private final Balls user = new Balls(new ArrayList<>());
 	private final UserInput userInput = new UserInput();
@@ -46,7 +47,7 @@ public class GameManager {
 	}
 
 	private boolean isGameEndedWith3Strikes() {
-		return gameService.countStrike(user.getBalls(), answer.getBalls()) == 3;
+		return gameService.countStrike(user.getBalls(), answer.getBalls()) == STRIKE_CONDITION;
 	}
 
 	private void setAnswerNumbers() {

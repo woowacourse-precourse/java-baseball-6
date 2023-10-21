@@ -2,6 +2,11 @@ package baseball.validators;
 
 public class NumberValidator {
 
+	private static final String NUMERIC_PATTERN = "^[1-9]+$";
+	private static final String PLAY_AGAIN_NUMBER = "1";
+	private static final String PLAY_END_NUMBER = "2";
+	private static final int LENGTH = 3;
+
 	public void isValidPlayGame(String input) {
 		if (!isNotBlankOrNull(input) || !isStringOfLength3(input) || !isNumeric(input) || !hasDuplicateNumbers(input)) {
 			throw new IllegalArgumentException();
@@ -19,7 +24,7 @@ public class NumberValidator {
 	}
 
 	public boolean isNumeric(String input) {
-		return input.matches("^[1-9]+$");
+		return input.matches(NUMERIC_PATTERN);
 	}
 
 	public boolean hasDuplicateNumbers(String input) {
@@ -27,10 +32,10 @@ public class NumberValidator {
 	}
 
 	public boolean isStringOfLength3(String input) {
-		return input.length() == 3;
+		return input.length() == LENGTH;
 	}
 
 	public boolean isOneOrTwo(String input) {
-		return input.equals("1") || input.equals("2");
+		return input.equals(PLAY_AGAIN_NUMBER) || input.equals(PLAY_END_NUMBER);
 	}
 }
