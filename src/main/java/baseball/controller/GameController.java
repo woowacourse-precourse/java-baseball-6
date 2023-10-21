@@ -36,13 +36,16 @@ public class GameController {
         View.gameResult(gameResult);
         if (gameResult.isAnswer(GAME_SIZE)) {
             endGame();
+            return;
         }
         getUserInput();
     }
 
     public void endGame() {
         View.gameEnd();
+        String responseRetry = Console.readLine();
+        if (responseRetry.equals(RETRY_GAME)) {
+            initGame();
+        }
     }
-
-
 }
