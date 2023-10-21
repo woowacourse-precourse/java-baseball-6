@@ -13,11 +13,18 @@ public class Baseball {
     }
 
     public void run() {
+        System.out.println(OutputStatement.GAME_START_OUTPUT.getOutput());
+        while (true) {
+            startGame();
+            boolean restartFlag = restartGame();
+            if (!restartFlag) {
+                break;
+            }
+        }
 
     }
 
     public void startGame() {
-        System.out.println(OutputStatement.GAME_START_OUTPUT.getOutput());
         BaseBallNumber answerNumber = new BaseBallNumber(generateNumber());
         while (true) {
             BaseBallNumber userNumber = new BaseBallNumber(inputUserNumber());
@@ -41,7 +48,6 @@ public class Baseball {
             System.out.println(outputString);
         }
         System.out.println(OutputStatement.GAME_END_OUTPUT.getOutput());
-        restartGame();
     }
 
     public List<Integer> generateNumber() {
@@ -73,7 +79,7 @@ public class Baseball {
         return integerList;
     }
 
-    public void restartGame() {
+    public boolean restartGame() {
         System.out.println(OutputStatement.RESTART_OUTPUT.getOutput());
         String inputNumber = Console.readLine();
         if (!userInputValidation.isValidRestartNumber(inputNumber)) {
@@ -86,12 +92,7 @@ public class Baseball {
         if (restartNumber > 3 || restartNumber <= 0) {
             throw new IllegalArgumentException();
         }
-        if (restartNumber == 2) {
-            return;
-        }
-        if (restartNumber == 1) {
-            startGame();
-        }
+        return restartNumber == 1;
     }
 
 }
