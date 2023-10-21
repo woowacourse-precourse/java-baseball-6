@@ -51,6 +51,8 @@
 
 - Number (숫자 도메인)
 
+- AnswerNumbers (정답 숫자 일급 컬렉션)
+
 ## 열거형 목록
 
 - GameMessage: 게임 진행에 필요한 메시지를 가진다
