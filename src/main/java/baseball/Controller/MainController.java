@@ -37,7 +37,7 @@ public class MainController {
         while (true) {
             processPlayerInput();
             if (comparator.isEndGame(gameData.getComputerNumber(), gameData.getPlayerInput())){
-                //checkReplay();
+                checkReplay();
                 return;
             }
             //processComperater();
@@ -50,5 +50,19 @@ public class MainController {
         ArrayList<Integer> playerInput = playerInputController.handlePlayerInput(playerFirstInput);
         gameData.setPlayerInput(playerInput);
     }
+
+    private void checkReplay() {
+        outputView.printHint(0,3);
+        inputView.printGameEnd();
+        String endnumber = Console.readLine();
+        validator.validateEndInput(endnumber);
+
+        if (endnumber.equals("1")) {
+            MainController.state = 1;
+        } else if (endnumber.equals("2")) {
+            MainController.state = 0;
+        }
+    }
+
 
 }
