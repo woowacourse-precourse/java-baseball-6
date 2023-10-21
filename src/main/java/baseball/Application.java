@@ -5,7 +5,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        do {
+            playSingleRound();
+        } while (getContinueGame() == 1);
+    }
+
+    private static void playSingleRound() {
+        int[] answer, inputNumber;
+
+        answer = generateRandomAnswer();
+        do {
+            inputNumber = getInputNumber();
+        } while (!getResult(answer, inputNumber));
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static int[] generateRandomAnswer() {
