@@ -6,16 +6,16 @@ import java.util.Objects;
 public class BaseballNumber {
     private static final int MIN_BASEBALL_NUMBER = 1;
     private static final int MAX_BASEBALL_NUMBER = 9;
-    private int baseballNumber;
+    private final int baseballNumberInt;
 
 
-    public BaseballNumber(int baseballNumber) {
-        validateBaseballNumber(baseballNumber);
-        this.baseballNumber = baseballNumber;
+    public BaseballNumber(int baseballNumberInt) {
+        validateBaseballNumber(baseballNumberInt);
+        this.baseballNumberInt = baseballNumberInt;
     }
 
-    private static void validateBaseballNumber(int baseballNumber) {
-        if (baseballNumber < MIN_BASEBALL_NUMBER || baseballNumber > MAX_BASEBALL_NUMBER) {
+    private static void validateBaseballNumber(int baseballNumberInt) {
+        if (baseballNumberInt < MIN_BASEBALL_NUMBER || baseballNumberInt > MAX_BASEBALL_NUMBER) {
             throw new IllegalArgumentException(
                     "[ERROR] 숫자가 " + MIN_BASEBALL_NUMBER + "~" + MAX_BASEBALL_NUMBER + " 사이가 아닙니다."
             );
@@ -23,7 +23,7 @@ public class BaseballNumber {
     }
 
     public static int getBaseballNumberValue(BaseballNumber baseballNumber) {
-        return baseballNumber.baseballNumber;
+        return baseballNumber.baseballNumberInt;
     }
 
     public static BaseballNumber getRandomBaseballNumber() {
@@ -37,7 +37,7 @@ public class BaseballNumber {
             return false;
         }
         BaseballNumber tmp = (BaseballNumber) o;
-        if (this.baseballNumber == tmp.baseballNumber) {
+        if (this.baseballNumberInt == tmp.baseballNumberInt) {
             return true;
         }
         return false;
@@ -45,6 +45,6 @@ public class BaseballNumber {
 
     @Override
     public int hashCode() {
-        return Objects.hash(baseballNumber);
+        return Objects.hash(baseballNumberInt);
     }
 }
