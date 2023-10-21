@@ -115,4 +115,33 @@ class InputValidationTest {
         //then
         assertThat(inputValidation.userInputToList(userInput)).isEqualTo(List.of(4, 3, 7));
     }
+
+    @DisplayName("게임 성공시 유저가 게임을 진행할지, 종료할지에 대한 요구 input의 유효성을 판단하는 테스트")
+    @Test
+    void validateNewGameOrEndUserInputTest() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String firstUserInput = "1";
+        final String secondUserInput = "2";
+        final String thirdUserInput = "3";
+        final String forthUserInput = "c";
+        final String fifthUserInput = "ㅁ";
+        final String lastUserInput = "123";
+        //then
+        assertThat(inputValidation.validateNewGameRequest(firstUserInput)).isEqualTo(1);
+        assertThat(inputValidation.validateNewGameRequest(secondUserInput)).isEqualTo(2);
+        assertThatThrownBy(() -> inputValidation.validateNewGameRequest(thirdUserInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1 혹은 2를 입력해주세요.");
+        assertThatThrownBy(() -> inputValidation.validateNewGameRequest(forthUserInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자를 입력해주세요");
+        assertThatThrownBy(() -> inputValidation.validateNewGameRequest(fifthUserInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자를 입력해주세요");
+        assertThatThrownBy(() -> inputValidation.validateNewGameRequest(lastUserInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("한자리 숫자 입력해주세요.");
+    }
 }
