@@ -43,7 +43,7 @@ public class Computer {
         int[] userNumberList = new int[3];
         for (int i = 0; i < 3; i++) {
             userNumberList[i] = userNumber / division;
-            userNumber%=division;
+            userNumber %= division;
             division /= 10;
         }
         return userNumberList;
