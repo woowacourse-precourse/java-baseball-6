@@ -4,6 +4,9 @@ import java.util.List;
 
 public class ExceptionList {
     public static void validNumbers(List<Integer> numbers) {
+        if(numbers == null) {
+            throw new IllegalArgumentException();
+        }
         if(numbers.size() != 3) {
             throw new IllegalArgumentException();
         }
@@ -12,7 +15,8 @@ public class ExceptionList {
         }
     }
 
-    public static void validReStartInputNumber(String InputNumber) {
+    public static void validInputNumber(String InputNumber) {
+
         if(!InputNumber.equals("1") && !InputNumber.equals("2")) {
             throw new IllegalArgumentException();
         }
