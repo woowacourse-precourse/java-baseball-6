@@ -5,11 +5,11 @@ public class Application {
 
         // while
 
-        // Game 객체 생성
-
         Game game = new Game();
 
         game.startGame();
+
+        game.playGame();
 
         // 게임 종료되어서 나오면 게임 재시작 객체
         // 재시작 여부 받아서 완전히 종료 or 다시 게임 실행
