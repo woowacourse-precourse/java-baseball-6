@@ -1,17 +1,14 @@
-package baseball.service;
+package baseball.version2.service;
 
-import static baseball.version1.Constants.BALL_NUMBER;
-import static baseball.version1.Constants.DIGIT_NUMBER;
-import static baseball.version1.Constants.RANGE_END_NUMBER;
-import static baseball.version1.Constants.RANGE_START_NUMBER;
-import static baseball.constants.Printer.ERROR_PHRASES;
-import static baseball.version1.Constants.STRIKE_NUMBER;
+import static baseball.Constants.DIGIT_NUMBER;
+import static baseball.Constants.RANGE_END_NUMBER;
+import static baseball.Constants.RANGE_START_NUMBER;
 import static java.lang.Integer.parseInt;
 
-import baseball.constants.Printer;
-import baseball.repository.ComputerRepository;
-import baseball.repository.ScoreRepository;
-import baseball.validator.DataValidator;
+import baseball.version2.constants.Printer;
+import baseball.version2.repository.ComputerRepository;
+import baseball.version2.repository.ScoreRepository;
+import baseball.version2.validator.DataValidator;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -24,12 +21,14 @@ public class Service {
     private ScoreRepository scoreRepository;
     public Service() {
         this.computerRepository = new ComputerRepository();
+        this.scoreRepository = new ScoreRepository();
         this.printer = new Printer();
         this.dataValidator = new DataValidator();
     }
 
     // 컴퓨터 서비스
     public ArrayList<Integer> getComputerAnswer() {
+        printer.printStart();
         ArrayList<Integer> computerAnswer = new ArrayList<>();
         while (computerAnswer.size() < DIGIT_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(RANGE_START_NUMBER, RANGE_END_NUMBER);
@@ -70,19 +69,19 @@ public class Service {
         int answerOrder = 0;
         try {
             for (String input : inputStringArray) {
-                answerArray[answerOrder] = parseInt(input);
+                answerArray[answerOrder++] = parseInt(input);
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ERROR_PHRASES);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new IllegalArgumentException(ERROR_PHRASES);
+            throw new IllegalArgumentException();
+        } catch (ArrayIndexOutOfBoundsException a) {
+            throw new IllegalArgumentException();
         }
         return answerArray;
     }
 
 
     public void compareTwoAnswer(int[] playerAnswer) {
-        scoreRepository = new ScoreRepository();
+
         for (int i = 0; i < playerAnswer.length; i++) {
             checkPlayerValueAndComputerAnswer(playerAnswer, i);
         }
@@ -109,6 +108,9 @@ public class Service {
         }
         if(ball==0&&strike>0){
             printer.printStrike(strike);
+            if(strike==3){
+                printer.printThreeStrike();
+            }
         }
         if(ball>0&&strike==0){
             printer.printBall(ball);
@@ -120,7 +122,12 @@ public class Service {
 
     public int getPlayerDecision() {
         printer.printSelectContinue();
-        int decision = Integer.parseInt(Console.readLine());
+        int decision=0;
+        try {
+             decision = Integer.parseInt(Console.readLine());
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
         dataValidator.validateDecision(decision);
         return decision;
     }

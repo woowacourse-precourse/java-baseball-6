@@ -1,6 +1,6 @@
 package baseball.version1;
 
-import static baseball.version1.Constants.*;
+import static baseball.Constants.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 

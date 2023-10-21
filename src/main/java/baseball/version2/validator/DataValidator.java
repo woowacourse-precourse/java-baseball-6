@@ -1,27 +1,26 @@
-package baseball.validator;
+package baseball.version2.validator;
 
-import static baseball.version1.Constants.CONTINUE_NUMBER;
-import static baseball.version1.Constants.DIGIT_NUMBER;
-import static baseball.version1.Constants.STOP_NUMBER;
+import static baseball.Constants.CONTINUE_NUMBER;
+import static baseball.Constants.STOP_NUMBER;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class DataValidator {
     public void validatePlayerAnswer(int[] playerAnswerArray) {
-        if (playerAnswerArray.length != DIGIT_NUMBER || isContainZero(playerAnswerArray)
-                || isDuplicate(playerAnswerArray)) {
+        if ( isContainZero(playerAnswerArray) || isDuplicate(playerAnswerArray)) {
             throw new IllegalArgumentException();
         }
     }
 
     private boolean isContainZero(int[] playerAnswerArray) {
-        for(int i : playerAnswerArray){
-            if(i==0){
-                throw new IllegalArgumentException();
+        for(int i : playerAnswerArray) {
+            if (i == 0) {
+                return true;
             }
         }
-        return false;
+            return false;
+
     }
 
     private boolean isDuplicate(int[] playerAnswerArray) { // 중복 체크
@@ -38,8 +37,8 @@ public class DataValidator {
     }
 
     public void validateDecision(int decision) {
-        if(decision!=CONTINUE_NUMBER&&decision!=STOP_NUMBER){
-            throw new IllegalArgumentException(CONTINUE_NUMBER+" 또는"+STOP_NUMBER+"를 입력하세요");
+        if (decision != CONTINUE_NUMBER && decision != STOP_NUMBER) {
+            throw new IllegalArgumentException();
         }
     }
 }

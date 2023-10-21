@@ -1,4 +1,4 @@
-package baseball.repository;
+package baseball.version2.repository;
 
 public class ScoreRepository {
     private int ball;

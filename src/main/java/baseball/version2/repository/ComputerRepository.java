@@ -1,4 +1,4 @@
-package baseball.repository;
+package baseball.version2.repository;
 
 import java.util.Map;
 import java.util.TreeMap;
