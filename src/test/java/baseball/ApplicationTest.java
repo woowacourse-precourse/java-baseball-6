@@ -84,4 +84,22 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> Application.validateInput(input4))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("게임 결과 비교 테스트")
+    void evaluateAndDisplayGameResult_test() {
+        // given
+        List<Integer> userNumbers1 = Arrays.asList(1, 4, 3);
+        // when
+        boolean result1 = Application.evaluateAndDisplayGameResult(computerNumbers, userNumbers1);
+        // then
+        assertThat(result1).isFalse();
+
+        // given
+        List<Integer> userNumbers2 = Arrays.asList(1, 2, 3);
+        // when
+        boolean result2 = Application.evaluateAndDisplayGameResult(computerNumbers, userNumbers2);
+        // then
+        assertThat(result2).isTrue();
+    }
 }
