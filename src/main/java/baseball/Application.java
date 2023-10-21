@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    private static final String RESTART = "1";
-//    private static final String QUIT = "2";
     private static final int TOTAL_CARDS = 3;
 
     public static void main(String[] args) {
@@ -34,6 +32,9 @@ public class Application {
     }
 
     private static List<Integer> checkThreeStrikes(Result result, List<Integer> computer) {
+        final String RESTART = "1";
+//        final String QUIT = "2";
+
         if (result.strikes() == computer.size()) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
