@@ -36,7 +36,7 @@ public class BaseBallController {
 		while (true) {
 			consoleOutput.printReq();
 			BaseBallResult result = getResult(consoleInput.getGameInput());
-			if (result.getStrikeCount() == NumberConstant.PICK_COUNT.getValue()) {
+			if (result.strikeCount() == NumberConstant.PICK_COUNT.getValue()) {
 				consoleOutput.printEnd();
 				return;
 			}

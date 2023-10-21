@@ -14,8 +14,8 @@ public class ConsoleOutput {
 	}
 
 	public void printResult(BaseBallResult result) {
-		int ballCount = result.getBallCount();
-		int strikeCount = result.getStrikeCount();
+		int ballCount = result.ballCount();
+		int strikeCount = result.strikeCount();
 		if (ballCount == 0 && strikeCount == 0) {
 			System.out.println(GameConstant.NONE.getValue());
 		} else if (ballCount != 0 && strikeCount == 0) {
