@@ -1,5 +1,6 @@
 package baseball.console;
 
+import baseball.console.constant.ErrorMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.util.InputValidation;
@@ -16,7 +17,7 @@ public class ConsoleInput {
 		if (inputValidation.isValidGameInput(input)) {
 			return input;
 		}
-		throw new IllegalArgumentException("1 ~ 9 중 중복되지 않은 세자리 숫자만 입력 가능합니다.");
+		throw new IllegalArgumentException(ErrorMessage.GAME_INPUT_ERROR_MSG.getValue());
 	}
 
 	public String getEndInput() {
@@ -24,7 +25,7 @@ public class ConsoleInput {
 		if (inputValidation.isValidEndInput(input)) {
 			return input;
 		}
-		throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
+		throw new IllegalArgumentException(ErrorMessage.END_INPUT_ERROR_MSG.getValue());
 	}
 }
 
