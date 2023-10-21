@@ -16,4 +16,8 @@ public class InputView {
         System.out.println(InputMessage.INSERT_NUMBER);
         return Utils.stringToList(Console.readLine());
     }
+
+    public void printCorrect() {
+        System.out.println(InputMessage.CORRECT);
+    }
 }
