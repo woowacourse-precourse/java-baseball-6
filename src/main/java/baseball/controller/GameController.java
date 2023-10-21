@@ -30,8 +30,7 @@ public class GameController {
 
             if (service.isGameWon()) {
                 OutputView.printGameEndMessage();
-                int input = InputView.readGameCommand();
-                gameCommand = GameCommand.from(input);
+                gameCommand = readGameCommand();
 
                 if (gameCommand.equals(GameCommand.QUIT)) {
                     break;
@@ -50,5 +49,10 @@ public class GameController {
 
         GameResult gameResult = service.getGameResult();
         OutputView.printGameResult(gameResult);
+    }
+
+    private GameCommand readGameCommand() {
+        int gameCommand = InputView.readGameCommand();
+        return GameCommand.from(gameCommand);
     }
 }
