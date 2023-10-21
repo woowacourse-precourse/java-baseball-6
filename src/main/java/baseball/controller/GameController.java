@@ -29,7 +29,6 @@ public class GameController {
         while(!isGameClear){
             isGameClear = player.swingBat(computer);
         }
-        outputView.showGameClearMessage();
         outputView.showGameRestartInputMessage();
     }
 }
