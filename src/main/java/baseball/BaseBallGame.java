@@ -10,7 +10,7 @@ public class BaseBallGame implements Game{
     private Balls userBalls;
     private Balls computerBalls;
     private static User user=new User();
-    private static Computer computer = new Computer();
+    private Computer computer = new Computer();
     private static GameRule rule = new BaseBallRule();
     private static Comparator comparator = new Comparator();
     private static Hint hint = new Hint();
