@@ -34,4 +34,10 @@ public class PlayNumberBaseBallGame {
             displayResult();
         }
     }
+
+    private static void initStatus(){
+        strike = 0;
+        ball = 0;
+        nothing = 0;
+    }
 }
