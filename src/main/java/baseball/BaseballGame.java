@@ -91,7 +91,7 @@ public class BaseballGame {
             if(userNum.get(i) == randomNum.get(i)){
                 resultList.put("strike", resultList.get("strike") + 1);
             } else if(randomNum.contains(userNum.get(i))){
-                resultList.put("ball", resultList.get("strike") + 1);
+                resultList.put("ball", resultList.get("ball") + 1);
             }
         }
         return resultList;
