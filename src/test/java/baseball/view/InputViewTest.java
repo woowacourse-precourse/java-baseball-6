@@ -50,4 +50,13 @@ class InputViewTest {
         Assertions.assertThatCode(() -> Validation.isValidInput(input))
                 .doesNotThrowAnyException();
     }
+
+    @ParameterizedTest
+    @DisplayName("1 혹은 2의 숫자외 입력 예외 테스트")
+    @ValueSource(strings = {"0", "11", "22", "-1", "111", "12", "222"})
+    void invalidInputsTest5(String input) {
+        Assertions.assertThatThrownBy(() -> Validation.isRestartInputInRange(input)).
+                isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1 혹은 2의 숫자만 입력 가능 합니다.");
+    }
 }
