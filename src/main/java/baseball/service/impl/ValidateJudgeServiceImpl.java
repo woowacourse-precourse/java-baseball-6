@@ -24,7 +24,6 @@ public class ValidateJudgeServiceImpl implements ValidateJudgeService {
                 }
             }
         }
-
         return Arrays.asList(strikeCount, ballCount);
     }
 

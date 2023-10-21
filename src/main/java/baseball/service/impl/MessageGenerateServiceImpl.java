@@ -10,6 +10,8 @@ public class MessageGenerateServiceImpl implements MessageGenerateService {
         Integer ballCount = resultList.get(1);
         if (strikeCount.equals(3)) {
             return strikeCount + "스트라이크";
+        } else if (ballCount.equals(0) && !strikeCount.equals(0)) {
+            return strikeCount + "스트라이크";
         } else if (!ballCount.equals(0) && !strikeCount.equals(0)) {
             return ballCount + "볼 " + strikeCount + "스트라이크";
         } else if (!ballCount.equals(0)) {
