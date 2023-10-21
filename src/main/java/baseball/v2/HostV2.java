@@ -1,4 +1,4 @@
-package baseball.history;
+package baseball.v2;
 
 import camp.nextstep.edu.missionutils.Console;
 

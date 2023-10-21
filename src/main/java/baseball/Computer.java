@@ -1,13 +1,11 @@
-package baseball.history;
+package baseball;
+
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 1. 서로 다른 세자리 수 생성하기.
- * 2.
- */
-public class ComputerV2 implements SetNumV2 {
+public class Computer implements SetNum {
     public List<Integer> setNum() {
         List<Integer> computerNum = new ArrayList<>();
         while (computerNum.size() < 3) {

@@ -1,4 +1,4 @@
-package baseball.history;
+package baseball.v1;
 
 import java.util.ArrayList;
 import java.util.HashSet;

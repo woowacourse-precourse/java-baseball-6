@@ -1,12 +1,11 @@
-package baseball;
+package baseball.v4;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
-public class GameManager {
+public class GameManagerV4 {
 
-    public static void playGame(Computer computer, Challenger challengerV4) {
+    public static void playGame(ComputerV4 computer, ChallengerV4 challengerV4) {
         // 컴퓨터의 숫자 설정
         List<Integer> computerNums = computer.setNum();
 

@@ -1,26 +1,26 @@
 package baseball;
 
-public class GameEntities {
-    private final ComputerV3 computer;
-    private final PlayerV3 player;
 
-    private GameEntities(ComputerV3 computer, PlayerV3 player) {
+public class GameEntities {
+    private final Computer computer;
+    private final Challenger challenger;
+
+    private GameEntities(Computer computer, Challenger challenger) {
         this.computer = computer;
-        this.player = player;
+        this.challenger = challenger;
     }
 
     public static GameEntities createEntities() {
-        ComputerV3 computer = new ComputerV3();
-        PlayerV3 player = new PlayerV3();
-        return new GameEntities(computer, player);
+        Computer computer = new Computer();
+        Challenger challenger = new Challenger();
+        return new GameEntities(computer, challenger);
     }
 
-    public ComputerV3 getComputer() {
+    public Computer getComputer() {
         return computer;
     }
 
-    public PlayerV3 getPlayer() {
-        return player;
+    public Challenger getChallenger() {
+        return challenger;
     }
 }
-

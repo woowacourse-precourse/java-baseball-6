@@ -7,15 +7,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class PlayerV3 implements SetNumV3{
+public class Challenger implements SetNum {
     public List<Integer> setNum() {
-        List<Integer> playerNums = new ArrayList<>();
+        List<Integer> challengerNums = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         System.out.println(input);
 
         try {
-
             // 빈 입력 처리
             if (input.isEmpty()) {
                 throw new IllegalArgumentException();
@@ -40,12 +39,12 @@ public class PlayerV3 implements SetNumV3{
                 if (!uniqueDigits.add(digit)) {
                     throw new IllegalArgumentException();
                 }
-                playerNums.add(0, digit);
+                challengerNums.add(0, digit);
                 parsedInput /= 10;
             }
         } catch (IndexOutOfBoundsException e) {
             throw new IllegalArgumentException();
         }
-        return playerNums;
+        return challengerNums;
     }
 }

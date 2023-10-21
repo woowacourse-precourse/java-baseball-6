@@ -1,11 +1,11 @@
-package baseball;
+package baseball.v4;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerV3 implements SetNumV3{
+public class ComputerV4 implements SetNumV4 {
     public List<Integer> setNum() {
         List<Integer> computerNum = new ArrayList<>();
         while (computerNum.size() < 3) {
