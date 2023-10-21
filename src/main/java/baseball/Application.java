@@ -16,18 +16,15 @@ public class Application {
         while (try_again.equals("1")) {
             List<Integer> computerNum = new ArrayList<>();
             getComputerNum(computerNum);
-            while (true) {
+            do {
                 List<Integer> userInputNum = new ArrayList<>();
                 System.out.print("숫자를 입력해주세요 : ");
                 String userInputString = Console.readLine();
                 checkUserInput(userInputString);
                 getUserInput(userInputString, userInputNum);
                 is_it_correct = compareUserWithCom(userInputNum, computerNum);
-                if (is_it_correct) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    break;
-                }
-            }
+                check3strike(is_it_correct);
+            } while (!is_it_correct);
             try_again = restartOrNot();
         }
     }
@@ -38,7 +35,7 @@ public class Application {
             throw new IllegalArgumentException(errorMessage);
         }
         // Check each character is number.
-        for (int i = 0; i < input.length(); i++) {
+        for (int i = 0; i < 3; i++) {
             if (!(input.charAt(i) >= '1' && input.charAt(i) <= '9')) {
                 throw new IllegalArgumentException(errorMessage);
             }
@@ -107,6 +104,12 @@ public class Application {
             throw new IllegalArgumentException(errorMessage);
         }
         return try_again;
+    }
+
+    static void check3strike(boolean is_it_correct) {
+        if (is_it_correct) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 }
 
