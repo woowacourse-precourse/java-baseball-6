@@ -55,5 +55,5 @@
 
 ## RandomNumber
   - Method
-    - [ ] 중복되지 않은 임의의 숫자값 3 개 반환
+    - [x] 중복되지 않은 임의의 숫자값 3 개 반환
     **camp.nextstep.edu.missionutils.Randoms - `pickNumberInRange()`**
