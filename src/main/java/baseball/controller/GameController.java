@@ -52,6 +52,7 @@ public class GameController {
 
         if (status == RETRY) return true;
         if (status == EXIT) return false;
+
         throw new IllegalArgumentException(OUT_OF_BOUND);
     }
 
