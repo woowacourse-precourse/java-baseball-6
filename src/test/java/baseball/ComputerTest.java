@@ -56,6 +56,7 @@ class ComputerTest {
         assertThatIllegalArgumentException().isThrownBy(() -> computer.addUserNumber(invalidUserNumber))
                 .withMessageContaining("숫자만 입력해야 합니다.");
     }
+
     @DisplayName("사용자는 3개의 숫자만 입력할 수 없습니다.")
     @ParameterizedTest
     @ValueSource(strings = {"1234", "12345", "12", "1"})
