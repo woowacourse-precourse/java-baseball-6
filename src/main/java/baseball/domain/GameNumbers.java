@@ -16,7 +16,7 @@ public final class GameNumbers {
 
         this.gameNumbers = Arrays.stream(gameNumbers.split(""))
                 .map(Integer::parseInt)
-                .map(GameNumber::new)
+                .map(GameNumber::from)
                 .collect(Collectors.toList());
     }
 

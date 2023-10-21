@@ -1,8 +1,10 @@
 package baseball.domain;
 
-import java.util.Objects;
+import java.util.stream.Stream;
 
-public final class GameNumber {
+public enum GameNumber {
+    ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9);
+
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 9;
     private static final String RANGE_EXCEPTION_MESSAGE =
@@ -10,31 +12,14 @@ public final class GameNumber {
 
     private final int number;
 
-    public GameNumber(int number) {
+    GameNumber(int number) {
         this.number = number;
-        validateRange();
     }
 
-    private void validateRange() {
-        if (number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw new IllegalArgumentException(RANGE_EXCEPTION_MESSAGE);
-        }
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) {
-            return true;
-        }
-        if (!(object instanceof GameNumber gameNumber)) {
-            return false;
-        }
-
-        return number == gameNumber.number;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(number);
+    public static GameNumber from(int number) {
+        return Stream.of(GameNumber.values())
+                .filter(gameNumber -> gameNumber.number == number)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(RANGE_EXCEPTION_MESSAGE));
     }
 }
