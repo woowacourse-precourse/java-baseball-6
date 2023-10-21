@@ -7,6 +7,14 @@ public class Referee {
     private Integer strike;
     private Integer ball;
 
+    public Integer getStrike() {
+        return strike;
+    }
+
+    public Integer getBall() {
+        return ball;
+    }
+
     public void duplicateNumbers(List<Integer> computerNumber, List<Integer> playerNumber){
         int strikeCount = 0;
         int ballCount = 0;
