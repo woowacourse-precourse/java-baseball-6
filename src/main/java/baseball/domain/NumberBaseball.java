@@ -1,22 +1,19 @@
 package baseball.domain;
 
+import baseball.utils.RandomUtils;
+
 import java.util.List;
 
 public class NumberBaseball {
-
-    private final RandomNumberPicker randomNumberPicker;
+    private final int numberLimit;
     private final NumberBaseballIO numberBaseballIO;
     private final User user;
 
-    private final int numberLimit;
-
     public NumberBaseball(
             int numberLimit,
-            RandomNumberPicker randomNumberPicker,
             NumberBaseballIO numberBaseballIO,
             User user) {
         this.numberLimit = numberLimit;
-        this.randomNumberPicker = randomNumberPicker;
         this.numberBaseballIO = numberBaseballIO;
         this.user = user;
     }
@@ -29,7 +26,7 @@ public class NumberBaseball {
 
     public void startGame() {
         // 랜덤한 서로다른 숫자 생성
-        List<Integer> answer = randomNumberPicker.generateDistinctNumbers(numberLimit);
+        List<Integer> answer = RandomUtils.generateDistinctNumbers(numberLimit);
 
         boolean isFinish = false;
 

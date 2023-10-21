@@ -14,14 +14,9 @@ public class Config {
         return new User(numberBaseballIO());
     }
 
-    public RandomNumberPicker randomNumberPicker() {
-        return new RandomNumberPicker();
-    }
-
     public NumberBaseball numberBaseball(int numberLimit) {
         return new NumberBaseball(
                 numberLimit,
-                randomNumberPicker(),
                 numberBaseballIO(),
                 user());
     }
