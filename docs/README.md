@@ -73,5 +73,5 @@
 - `Ball`
     - [x] `isEmpty()`: 볼이 비어있는지 확인.
 - `Strike`
-    - [ ] `isEmpty()`: 스트라이크가 비어있는지 확인.
-    - [ ] `isFullCount()`: 3스트라이크인지 확인.
+    - [x] `isEmpty()`: 스트라이크가 비어있는지 확인.
+    - [x] `isFullCount()`: 3스트라이크인지 확인.
