@@ -6,6 +6,16 @@ import java.util.Set;
 
 public class NumericValidator {
 
+    public void validate(List<Integer> numbers) {
+        if (numbers.size() != 3) {
+            throw new IllegalArgumentException("잘못된 입력입니다. 자릿수 오류");
+        } else if (!isDifferentNumber(numbers)) {
+            throw new IllegalArgumentException("잘못된 입력입니다. 중복 오류");
+        } else if (!isBetween1And9(numbers)) {
+            throw new IllegalArgumentException("잘못된 입력입니다. 범위 오류");
+        }
+    }
+
     // 서로 다른 숫자인지 검사
     private boolean isDifferentNumber(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>();
@@ -23,5 +33,4 @@ public class NumericValidator {
         }
         return status;
     }
-
 }
