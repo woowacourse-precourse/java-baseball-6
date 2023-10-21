@@ -20,4 +20,17 @@ public class Game {
         target = computer;
     }
 
+    public void checkInput(String input){
+        if(input.length()!=3){
+            throw new IllegalStateException();
+        }
+        for(int i=0;i<3;i++){
+            if('1'>input.charAt(i) || '9'<input.charAt(i)){
+                throw new IllegalStateException();
+            }
+        }
+    }
+
+
+
 }
