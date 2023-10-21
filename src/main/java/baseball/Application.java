@@ -62,7 +62,7 @@ public class Application {
     public static void calculateStrikeAndBall(List<Integer> selectNumber, Integer[] userNumbers) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (selectNumber.get(i) == userNumbers[j] && i == j) {
+                if ((selectNumber.get(i) == userNumbers[j]) && (i == j)) {
                     strikeCount++;
 //                    System.out.println("strikeCount = " + strikeCount);
                 } else if (selectNumber.get(i) == userNumbers[j]) {
@@ -80,7 +80,7 @@ public class Application {
         if (strikeCount != 0) {
             System.out.print(strikeCount + "스트라이크");
         }
-        if (ballCount + strikeCount == 0) {
+        if ((ballCount + strikeCount) == 0) {
             System.out.print("낫싱");
         }
         System.out.println();
@@ -92,7 +92,7 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             userInput = Console.readLine();
             try {
-                if (Integer.parseInt(userInput) != 1 && Integer.parseInt(userInput) != 2) {
+                if ((Integer.parseInt(userInput) != 1) && (Integer.parseInt(userInput) != 2)) {
                     Application.throwException("1과 2중에 입력하세요.");
                 }
             } catch (NumberFormatException ex) {
