@@ -16,4 +16,13 @@ public class Referee {
         return strikes;
     }
 
+    public static int calculateBallCount(List<Integer> computer, List<Integer> user) {
+        int balls = 0;
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if (computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i))) {
+                balls++;
+            }
+        }
+        return balls;
+    }
 }
