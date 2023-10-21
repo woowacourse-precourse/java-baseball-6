@@ -13,7 +13,7 @@ class Digit {
     }
 
     Digit(char target) {
-        this.digit = target;
+        this.digit = target - '0';
     }
 
     @Override
