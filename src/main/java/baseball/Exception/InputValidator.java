@@ -6,8 +6,8 @@ import java.util.Set;
 
 public class InputValidator {
     private final String NUMBER_REGEX = "^[1-9]+$";
-    private final int RESTART_COMMAND = 1;
-    private final int QUIT_COMMAND = 2;
+    private final String RESTART_COMMAND = "1";
+    private final String QUIT_COMMAND = "2";
     private final int AVAIL_LENGTH = 3;
 
     public void doValidate(String input) {
