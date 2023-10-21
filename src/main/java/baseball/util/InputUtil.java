@@ -2,24 +2,30 @@ package baseball.util;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputUtil {
 
     public static List<Integer> readIntegerList() {
-        try {
-            return readLine().chars()
-                    .mapToObj(Character::getNumericValue)
-                    .toList();
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(); // TODO 커스텀 예외 만들기
-        }
+        return stringToIntegerList(readLine());
+    }
+
+    private static List<Integer> stringToIntegerList(String input) {
+        validateInteger(input);
+        return input.chars()
+                .mapToObj(Character::getNumericValue)
+                .collect(Collectors.toList());
     }
 
     public static int readInt() {
-        try {
-            return Integer.parseInt(readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(); // TODO 커스텀 예외 만들기
+        String input = readLine();
+        validateInteger(input);
+        return Integer.parseInt(input);
+    }
+
+    private static void validateInteger(String input) {
+        if (input.chars().anyMatch(c -> !Character.isDigit(c))) {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -31,7 +37,7 @@ public class InputUtil {
 
     private static void validateHasInput(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException(); // TODO 커스텀 예외 만들기
+            throw new IllegalArgumentException();
         }
     }
 }
