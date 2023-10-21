@@ -37,20 +37,15 @@ public class Application {
     }
 
     public static void startGame() {
-        try {
-            boolean flag = true;
-            while (flag) {
-                System.out.println("숫자 야구 게임을 시작합니다.");
-                playGame();
-//                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                flag = isRestartGame();
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            Console.close();
+        boolean flag = true;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (flag) {
+            playGame();
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            flag = isRestartGame();
         }
+        Console.close();
     }
 
     private static void playGame() {
