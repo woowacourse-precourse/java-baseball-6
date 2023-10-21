@@ -9,10 +9,10 @@ public class GameInterface {
     //수정
     public static void PrintResult(int strike, int ball, boolean judge) {
         if (judge) {
-            System.out.println(Ment.getNothing());
+            System.out.println(Ment.Nothing);
             return;
         }
-        System.out.println(ball + Ment.getBall() + strike + Ment.getStrike());
+        System.out.println(ball + Ment.Ball + strike + Ment.Strike);
     }
 
     public static void PrintGameClear() {
@@ -21,14 +21,14 @@ public class GameInterface {
 
     public static boolean GameClear(int strike) {
         if (strike == 3) {
-            System.out.println(Ment.getMentClear());
+            System.out.println(Ment.MentClear);
             return true;
         }
         return false;
     }
 
     public static boolean GameRestart() {
-        System.out.println(Ment.getMentRestart());
+        System.out.println(Ment.MentRestart);
         int choice = Integer.valueOf(readLine());
         if (choice == 1) {
             return true;
@@ -40,7 +40,7 @@ public class GameInterface {
     }
 
     public static String InputNumbers() {
-        System.out.printf(Ment.getMentInput());
+        System.out.printf(Ment.MentInput);
         String Tempnumbers = readLine();
         return Tempnumbers;
     }
