@@ -19,4 +19,8 @@ public class User {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public List<Integer> getUserNumber() {
+        return userNumber;
+    }
 }
