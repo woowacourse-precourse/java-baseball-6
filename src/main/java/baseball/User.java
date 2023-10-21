@@ -33,12 +33,12 @@ public class User {
 
     private void checkInputString(String input) {
         checkInputLength(input);
-        checkInputHasZero(input);
         checkInputHasChar(input);
+        checkInputHasZero(input);
     }
 
     private void addNumber(int num) {
-        if (user.contains(num) || num < 1 || num > 9) {
+        if (user.contains(num)) {
             throw new IllegalArgumentException("This is already contained: " + num);
         }
         user.add(num);
