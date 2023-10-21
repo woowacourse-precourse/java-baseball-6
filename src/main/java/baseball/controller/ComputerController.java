@@ -12,9 +12,9 @@ public class ComputerController {
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
     Computer computer = new Computer();
-    boolean gameState = false;
 
     public void start() {
+        boolean gameState = false;
         computer.setComputerNumber();
         int computerNumber = computer.getComputerNumber();
         while (!gameState) {
