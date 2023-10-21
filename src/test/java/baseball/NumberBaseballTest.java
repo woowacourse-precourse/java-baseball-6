@@ -49,4 +49,11 @@ public class NumberBaseballTest {
         assertThat(game.compareNumber("123"))
                 .isEqualTo("3스트라이크");
     }
+
+    @Test
+    @DisplayName("사용자 숫자를 넣고_컴퓨터 숫자와 1자리 자리까지 같고 2자리 똑같은 수가 있다면_2볼 1스트라이크를 반환한다")
+    void userNumber_2Strike1Ball() {
+        assertThat(game.compareNumber("132"))
+                .isEqualTo("2볼 1스트라이크");
+    }
 }
