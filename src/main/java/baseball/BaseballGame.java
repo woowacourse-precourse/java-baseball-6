@@ -7,7 +7,8 @@ import java.util.List;
 
 public class BaseballGame {
     public void run(){
-
+        printGameStart();
+        List<Integer> randomNum = initRandomNum();
     }
 
     private void printGameStart(){
@@ -16,6 +17,7 @@ public class BaseballGame {
 
     private List<Integer> initRandomNum(){
         List<Integer> randomNumList = new ArrayList<>();
+        
         while (randomNumList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomNumList.contains(randomNumber)) {
