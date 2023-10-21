@@ -8,13 +8,16 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 import java.util.List;
-import java.util.regex.Matcher;
 
 public class BaseballGameController {
+    private boolean firstRun = true;
     private boolean continueGame = true;
 
     public void run() {
-        OutputView.printStart();
+        if (firstRun) {
+            OutputView.printStart();
+            firstRun = false;
+        }
         Computer computer = new Computer();
         Player player = new Player();
         Referee referee = new Referee();
@@ -25,15 +28,19 @@ public class BaseballGameController {
         computer.setComputerNumber();
         List<Integer> computerNumber = computer.getComputerNumber();
         while (continueGame) {
-            String playerNumber = InputView.inputNumber();
-            isValidPlayerNumber(playerNumber);
-            player.setPlayerNumber(playerNumber);
+            String playerNumberAsString = InputView.inputNumber();
+            isValidPlayerNumber(playerNumberAsString);
+            player.setPlayerNumber(playerNumberAsString);
+            List<Integer> playerNumber = player.getPlayerNumber();
 
-            boolean success = referee.compareComputerPlayer(computerNumber, player.getPlayerNumber());
+            boolean success = referee.compareComputerPlayer(computerNumber, playerNumber);
             if (success) {
                 isSuccess();
             }
             if (!success) {
+                int ball = referee.calculateBall(computerNumber, playerNumber);
+                int strike = referee.calculateStrike(computerNumber, playerNumber);
+                printHint(ball, strike);
             }
         }
     }
@@ -43,20 +50,17 @@ public class BaseballGameController {
         String restartOrEndNumber = InputView.restartOrEndNumber();
         isValidRestartOrEndNumber(restartOrEndNumber);
 
-        if (restartOrEndNumber == "1") {
-			Computer computer = new Computer();
-			Player player = new Player();
-			Referee referee = new Referee();
-			repeatGame(computer, player, referee);
+        if (restartOrEndNumber.equals("1")) {
+            run();
         }
-        if (restartOrEndNumber == "2") {
+        if (restartOrEndNumber.equals("2")) {
             continueGame = false;
         }
     }
 
-	private void printHint(List<Integer> computerNumber, List<Integer> playerNumber) {
-
-	}
+    private void printHint(int ball, int strike) {
+        OutputView.printStrikeAndBall(ball, strike);
+    }
 
     private void isValidPlayerNumber(String number) {
         String answerValidationRegex = "^(?!.*(.).*\\1)[1-9]{3}$";
@@ -67,6 +71,4 @@ public class BaseballGameController {
         String oneOrTwoValidationRegex = "^[12]$";
         InputValidator.validateInput(oneOrTwoValidationRegex, number);
     }
-
-
 }
