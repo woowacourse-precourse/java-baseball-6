@@ -1,5 +1,7 @@
 package baseball.validator;
 
+import baseball.converter.IntegerInputConverter;
+
 public class ResumeValidator {
 
     public static void assertResumeInput(final String inputNumber, final int resume, final int end) {
@@ -24,6 +26,6 @@ public class ResumeValidator {
     }
 
     private static boolean isInputEqualToNumber(final String input, final int number) {
-        return input.equals(String.valueOf(number));
+        return input.equals(IntegerInputConverter.toString(number));
     }
 }
