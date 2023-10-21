@@ -31,6 +31,12 @@ public class Validation {
         }
     }
 
+    public static void isRestartInputInRange(String input) {
+        if (!Pattern.matches("^[12]$", input)) {
+            throw new IllegalArgumentException("1 혹은 2의 숫자만 입력 가능 합니다.");
+        }
+    }
+
     public static void isDuplicate(String input) {
         Set<Character> number = new HashSet<>();
         for (char digit : input.toCharArray()) {
