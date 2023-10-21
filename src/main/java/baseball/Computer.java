@@ -9,7 +9,7 @@ public class Computer {
     private static final int COMPUTER_NUMBER_COUNT = 3;
     private static final int MINIMUM_NUMBER = 1;
     private static final int MAXIMUM_NUMBER = 9;
-    private final List<Integer> numbers = new ArrayList<>();
+    private List<Integer> numbers = new ArrayList<>();
 
     public void selectNumbers() {
         while (numbers.size() < COMPUTER_NUMBER_COUNT) {
@@ -18,6 +18,7 @@ public class Computer {
                 numbers.add(randomNumber);
             }
         }
+        numbers.forEach(System.out::println);
     }
 
     public boolean contains(int number) {
