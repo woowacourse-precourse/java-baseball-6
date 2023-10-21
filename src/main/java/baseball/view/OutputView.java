@@ -1,10 +1,11 @@
 package baseball.view;
 
 import baseball.service.BaseballGame;
-import java.util.List;
 
 public class OutputView {
-    private BaseballGame baseballGame = new BaseballGame();
+    private BaseballGame  =new
+
+    BaseballGame();
 
     public static void printStartGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -22,19 +23,19 @@ public class OutputView {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public void printCalculateResult(List<Integer> computerNumber, List<Integer> playerNumber) {
-        baseballGame.calculateNumbers(computerNumber, playerNumber);
-        if (baseballGame.strikeCount != 0 && baseballGame.ballCount != 0) {
-            System.out.println(baseballGame.ballCount + "볼 " + baseballGame.strikeCount + "스트라이크");
+    public static void printCalculateResult(int ballCount, int strikeCount) {
+
+        if (ballCount != 0 && strikeCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
-        if (baseballGame.strikeCount == 0 && baseballGame.ballCount == 0) {
+        if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
         }
-        if (baseballGame.strikeCount == 0 && baseballGame.ballCount != 0) {
-            System.out.println(baseballGame.ballCount + "볼 ");
+        if (ballCount != 0 && strikeCount == 0) {
+            System.out.println(ballCount + "볼 ");
         }
-        if (baseballGame.strikeCount != 0 && baseballGame.ballCount == 0) {
-            System.out.println(baseballGame.strikeCount + "스트라이크");
+        if (ballCount == 0 && strikeCount != 0) {
+            System.out.println(strikeCount + "스트라이크");
         }
     }
 }
