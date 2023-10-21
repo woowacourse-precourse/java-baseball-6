@@ -3,7 +3,7 @@ package baseball.console.util;
 import java.util.HashSet;
 import java.util.Set;
 
-import baseball.constant.GameConstant;
+import baseball.console.constant.OutputConstant;
 import baseball.constant.NumberConstant;
 
 public class InputValidation {
@@ -25,7 +25,7 @@ public class InputValidation {
 		if (input == null || input.length() != NumberConstant.END_INPUT_LENGTH.getValue()) {
 			return false;
 		}
-		return input.equals(GameConstant.RESTART.getValue()) || input.equals(GameConstant.FINISH.getValue());
+		return input.equals(OutputConstant.RESTART.getValue()) || input.equals(OutputConstant.FINISH.getValue());
 	}
 
 	private boolean isInRange(char digitChar) {

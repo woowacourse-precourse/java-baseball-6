@@ -1,36 +1,36 @@
 package baseball.console;
 
-import baseball.constant.GameConstant;
+import baseball.console.constant.OutputConstant;
 import baseball.constant.NumberConstant;
 import baseball.dto.GameResult;
 
 public class ConsoleOutput {
 	public void printInit() {
-		System.out.println(GameConstant.GAME_INIT.getValue());
+		System.out.println(OutputConstant.GAME_INIT.getValue());
 	}
 
 	public void printReq() {
-		System.out.print(GameConstant.INPUT_REQ.getValue());
+		System.out.print(OutputConstant.INPUT_REQ.getValue());
 	}
 
 	public void printResult(GameResult result) {
 		int ballCount = result.ballCount();
 		int strikeCount = result.strikeCount();
 		if (ballCount == 0 && strikeCount == 0) {
-			System.out.println(GameConstant.NONE.getValue());
+			System.out.println(OutputConstant.NONE.getValue());
 		} else if (ballCount != 0 && strikeCount == 0) {
-			System.out.println(ballCount + GameConstant.BALL.getValue());
+			System.out.println(ballCount + OutputConstant.BALL.getValue());
 		} else if (ballCount == 0) {
-			System.out.println(strikeCount + GameConstant.STRIKE.getValue());
+			System.out.println(strikeCount + OutputConstant.STRIKE.getValue());
 		} else {
-			System.out.println(ballCount + GameConstant.BALL.getValue()
-				+ " " + strikeCount + GameConstant.STRIKE.getValue());
+			System.out.println(ballCount + OutputConstant.BALL.getValue()
+				+ " " + strikeCount + OutputConstant.STRIKE.getValue());
 		}
 	}
 
 	public void printEnd() {
-		System.out.println(NumberConstant.PICK_COUNT.getValue() + GameConstant.STRIKE.getValue());
-		System.out.println(GameConstant.SUCCESS.getValue());
-		System.out.println(GameConstant.GAME_END.getValue());
+		System.out.println(NumberConstant.PICK_COUNT.getValue() + OutputConstant.STRIKE.getValue());
+		System.out.println(OutputConstant.SUCCESS.getValue());
+		System.out.println(OutputConstant.GAME_END.getValue());
 	}
 }

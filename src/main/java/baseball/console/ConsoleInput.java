@@ -1,6 +1,6 @@
 package baseball.console;
 
-import baseball.constant.ErrorMessage;
+import baseball.console.constant.ErrorMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.console.util.InputValidation;

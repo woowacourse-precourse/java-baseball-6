@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import baseball.constant.GameConstant;
+import baseball.console.constant.OutputConstant;
 import baseball.console.ConsoleInput;
 import baseball.console.ConsoleOutput;
 import baseball.constant.NumberConstant;
@@ -24,7 +24,7 @@ public class GameService {
 	public void run() {
 		while (true) {
 			playGame();
-			if (consoleInput.getEndInput().equals(GameConstant.FINISH.getValue())) {
+			if (consoleInput.getEndInput().equals(OutputConstant.FINISH.getValue())) {
 				return;
 			}
 		}
