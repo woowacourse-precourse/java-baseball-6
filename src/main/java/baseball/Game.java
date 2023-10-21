@@ -22,6 +22,8 @@ public class Game {
     private void playSingleGame() {
         List<Integer> computerNumbers = numberGenerator.generateRandomNumbers();
 
+        System.out.print("숫자를 입력해주세요 : ");
+
         while (true) {
             String userInput = inputValidator.validateAndReturnInput();
             String hint = hintEvaluator.evaluate(computerNumbers, userInput);
@@ -33,13 +35,22 @@ public class Game {
             }
 
             System.out.println(hint);
+
         }
     }
 
     private boolean isContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String choice = inputValidator.validateAndReturnInput();
+        String choice = inputValidator.validateAndReturnGameContinuationChoice();
 
-        return "1".equals(choice);
+        if ("1".equals(choice)) {
+            return true;
+        } else if ("2".equals(choice)) {
+            System.out.println("종료");
+            return false;
+        } else {
+            System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+            return isContinue();
+        }
     }
 }

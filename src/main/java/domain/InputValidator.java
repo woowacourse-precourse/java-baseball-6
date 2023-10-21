@@ -9,6 +9,7 @@ public class InputValidator {
 
     private static final int INPUT_NUMBER_COUNT = 3;
 
+
     public String validateAndReturnInput() {
 
         String input = Console.readLine();
@@ -33,4 +34,14 @@ public class InputValidator {
 
         return input;
     }
+    public String validateAndReturnGameContinuationChoice() {
+        String input = Console.readLine();
+
+        if (!"1".equals(input) && !"2".equals(input)) {
+            throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+
+        return input;
+    }
+
 }
