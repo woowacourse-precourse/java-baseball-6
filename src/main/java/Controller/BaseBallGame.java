@@ -25,7 +25,6 @@ public class BaseBallGame {
     public void run() {
         computer.CreateAnswer();
         do {
-            System.out.println(computer.getAnswer());
             PlayerNumbers = player.InputNumbers();
             strike = 0;
             ball = 0;

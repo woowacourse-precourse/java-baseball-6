@@ -9,6 +9,6 @@ public class GameResult {
             System.out.println(Ment.getNothing());
             return;
         }
-        System.out.println(strike + Ment.getStrike() + ball + Ment.getBall());
+        System.out.println(ball + Ment.getBall() + strike + Ment.getStrike());
     }
 }
