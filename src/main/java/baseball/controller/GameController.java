@@ -5,6 +5,8 @@ import baseball.io.Output;
 import baseball.model.Game;
 import baseball.model.Number;
 
+import java.util.List;
+
 public class GameController {
     private final Game game;
     private final Input input;
@@ -20,14 +22,14 @@ public class GameController {
     public void runGame() {
         while (game.isOngoing()) {
             String userInput = input.readLine();
-            int ballCount = game.getBallCount(userInput);
-            int strikeCount = game.getStrikeCount(userInput);
-            output.printResult(ballCount , strikeCount);
-            if (strikeCount == Number.getGameSize()) {
+            List<Integer> result = game.playRound(userInput);
+            output.printResult(result);
+            if (game.isWin(result)) {
                 break;
             }
         }
         handleGameEnd();
+
     }
 
     private void handleGameEnd() {
