@@ -11,27 +11,25 @@ public class OutputView {
         System.out.println(START_MESSAGE);
     }
 
-    public static void gameResult(int strikeCount, int ballCount) {
+    public static void gameResultOutput(int strikeCount, int ballCount) {
         if (strikeCount == 0 && ballCount == 0) {
             System.out.println(NOTHING);
             return;
         }
-        if(ballCount > 0 && strikeCount > 0){
-            System.out.println(ballCount+BALL+" "+strikeCount+STRIKE);
+        if (ballCount > 0 && strikeCount > 0) {
+            System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
             return;
         }
         if (strikeCount == 0) {
-            System.out.println(ballCount + BALL+" ");
+            System.out.println(ballCount + BALL + " ");
             return;
         }
-        if(ballCount == 0){
-            System.out.println(strikeCount+STRIKE);
+        if (ballCount == 0) {
+            System.out.println(strikeCount + STRIKE);
         }
     }
 
     public static void gameEndOutput() {
         System.out.println(GAME_END_MESSAGE);
     }
-
-
 }
