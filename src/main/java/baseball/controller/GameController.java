@@ -40,7 +40,7 @@ public class GameController {
         while (true) {
             askNumberInput();
 
-            int userNumber = InputController.receiveUserNumberWidthLength(PLAY_NUMBER_DIGIT);
+            int userNumber = receiveUserNumber();
 
             int ball = Umpire.countBall(computerNumber, userNumber);
             int strike = Umpire.countStrike(computerNumber, userNumber);
@@ -56,16 +56,20 @@ public class GameController {
         updateResumeNumber();
     }
 
+    private int selectNewNumber() {
+        return NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
+    }
+
     private static void askNumberInput() {
         AskController.askNumberInput();
     }
 
-    private boolean isStrikeEqualToGoal(final int strike) {
-        return strike == PLAY_NUMBER_DIGIT;
+    private static int receiveUserNumber() {
+        return InputController.receiveUserNumberWidthLength(PLAY_NUMBER_DIGIT);
     }
 
-    private int selectNewNumber() {
-        return NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
+    private boolean isStrikeEqualToGoal(final int strike) {
+        return strike == PLAY_NUMBER_DIGIT;
     }
 
     private static void printGameEnd() {
