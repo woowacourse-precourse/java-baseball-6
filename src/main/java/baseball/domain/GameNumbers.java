@@ -56,4 +56,18 @@ public class GameNumbers {
     private GameNumber getGameNumber(int index) {
         return gameNumbers.get(index);
     }
+
+    public int countBall(GameNumbers otherGameNumbers) {
+        return (int) IntStream.range(0, LENGTH)
+                .filter(index -> isSameNumberDifferentIndex(otherGameNumbers, index))
+                .count();
+    }
+
+    private boolean isSameNumberDifferentIndex(GameNumbers otherGameNumbers, int index) {
+        return contains(otherGameNumbers.getGameNumber(index)) && !isSameNumberSameIndex(otherGameNumbers, index);
+    }
+
+    private boolean contains(GameNumber gameNumber) {
+        return gameNumbers.contains(gameNumber);
+    }
 }
