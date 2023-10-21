@@ -27,7 +27,6 @@ public class NumberBaseballService {
     }
 
     public NumberBaseballResult countStrikeAndBall(int inputNum) {
-        // 굳이 List로 안둬도 될듯 리팩토링 대상
         List<Integer> inputNumList = convertIntToList(inputNum);
         List<Integer> compNumList = numberBaseball.getComputerNumToList();
 
@@ -37,20 +36,16 @@ public class NumberBaseballService {
             return new NumberBaseballResult(0, 0);
         }
 
-        int strikeCnt = getStrikeCnt(inputNumList);
+        int strikeCnt = getStrikeCnt(inputNumList, compNumList);
         return new NumberBaseballResult(strikeCnt, getBallCnt(sameNumCnt, strikeCnt));
     }
 
     public List<Integer> convertIntToList(Integer num) {
-        List<String> strNumList = convertIntegerToStringList(num);
-
-        // 여기 메서드 추출 해도 될듯
-        return convertStrListToIntList(strNumList);
+        return convertStrListToIntList(convertIntegerToStringList(num));
     }
 
     private List<String> convertIntegerToStringList(Integer num) {
-        String strNum = num.toString();
-        return Arrays.asList(strNum.split(""));
+        return Arrays.asList(num.toString().split(""));
     }
 
     private List<Integer> convertStrListToIntList(List<String> strNumList) {
@@ -70,14 +65,9 @@ public class NumberBaseballService {
                 .filter(i -> compNumList.contains(i)).count();
     }
 
-    private int getStrikeCnt(List<Integer> inputNumList) {
-        int strikeCnt = 0;
-        for(int i=0; i<inputNumList.size(); i++) {
-            // 메서드 추출 대상
-            if(Objects.equals(inputNumList.get(i), numberBaseball.getComputerNumToList().get(i))) {
-                strikeCnt++;
-            }
-        }
-        return strikeCnt;
+    private int getStrikeCnt(List<Integer> inputNumList, List<Integer> compNumList) {
+        return (int) inputNumList.stream()
+                .filter(n -> n == compNumList.get(inputNumList.indexOf(n)))
+                .count();
     }
 }
