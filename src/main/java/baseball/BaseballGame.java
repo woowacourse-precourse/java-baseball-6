@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class BaseballGame {
     public void run(){
-        inputUserNum();
+        List<Integer> userNum = inputUserNum();
     }
 
     private List<Integer> inputUserNum(){
