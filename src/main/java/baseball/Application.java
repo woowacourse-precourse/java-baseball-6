@@ -19,8 +19,8 @@ public class Application {
                 Randoms.pickUniqueNumbersInRange(1, 9, 3);
 
         boolean isCorrect = true;       // 유저와 컴퓨터의 숫자 배열 일치 상태 변수
-        int strike;
-        int ball;
+        int strike = 0;
+        int ball = 0;
 
         System.out.println(computerArray);
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -63,8 +63,6 @@ public class Application {
             }
 
             // 볼 스트라이크 갯수 파악
-            strike = 0;
-            ball = 0;
             for (int i = 0; i < 3; i++) {
                 if (computerArray.get(i).equals(userArray.get(i))) {
                     strike++;
@@ -73,7 +71,32 @@ public class Application {
                 }
             }
 
+            // 조건에 따라 게임 진행
+            if (strike == 0 && ball == 0) {
+                System.out.println("낫싱");
+            } else if (strike == 3) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+                // 종료 단계 입력받기
+                String restartValue = Console.readLine();
+
+                // 입력 값에 따라 수행
+                if (restartValue.equals("1"))
+                    ;
+                else if (restartValue.equals("2")) {
+                    break;
+                } else {
+                    throw new IllegalArgumentException("잘못된 입력 형식입니다.");
+                }
+            } else {
+                System.out.printf("%d볼 %d스트라이크", ball, strike);
+            }
+
+            userArray.clear();
+            strike = 0;
+            ball = 0;
         }
     }
-
 }
