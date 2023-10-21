@@ -7,7 +7,7 @@ public class UserValidation {
     public int validation(String userInputString) {
         // 입력 길이 검증
         if (userInputString.length() != 3) {
-            throw new IllegalArgumentException("Fail : 세자리 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("Fail : 100~999 사이 서로 다른 숫자를 입력해주세요.");
         }
 
         // 중복 문자 검증
@@ -15,7 +15,7 @@ public class UserValidation {
             throw new IllegalArgumentException("Fail : 중복된 숫자를 입력하셨습니다.");
         }
 
-        // 숫자 변환 및 범위 검증
+        // 문자를 숫자로 변환 및 범위 검증
         int userInput = parseAndValidateNumber(userInputString);
 
         return userInput;
@@ -27,13 +27,9 @@ public class UserValidation {
 
     private int parseAndValidateNumber(String str) {
         try {
-            int number = Integer.parseInt(str);
-            if (number < 100 || number > 999) {
-                throw new IllegalArgumentException("Fail : 3 자리 숫자를 입력해주세요.");
-            }
-            return number;
+            return Integer.parseInt(str);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Fail : 1~9 사이 숫자를 입력해주세요");
+            throw new IllegalArgumentException("Fail : 1~9 사이 숫자를 입력해주세요.");
         }
     }
 
@@ -48,6 +44,6 @@ public class UserValidation {
             }
         } catch (NumberFormatException e) {
         }
-        throw new IllegalArgumentException("Fail : '1 또는 2' 입력해주세요.");
+        throw new IllegalArgumentException("Fail : '1' 또는 '2' 입력해주세요.");
     }
 }
