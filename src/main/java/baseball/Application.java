@@ -62,4 +62,19 @@ public class Application {
         }
         return userNumbers;
     }
+
+    public static boolean evaluateAndDisplayGameResult(List<Integer> computerNumbers, List<Integer> userNumbers){
+        int balls = 0;
+        int strikes = 0;
+
+        for(int i = 0; i < 3; i++){
+            if(computerNumbers.get(i).equals(userNumbers.get(i))){
+                strikes++;
+            } else if(computerNumbers.contains(userNumbers.get(i))){
+                balls++;
+            }
+        }
+
+        return displayGameResult(balls, strikes);
+    }
 }
