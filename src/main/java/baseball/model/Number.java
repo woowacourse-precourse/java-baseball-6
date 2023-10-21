@@ -31,4 +31,8 @@ public class Number {
     public String toString() {
         return number.toString();
     }
+
+    public List<Integer> getList(){
+        return number;
+    }
 }
