@@ -10,28 +10,33 @@ public class Computer {
     public static final int MAX_NUMBER_RANGE = 9;
     public static final int THREE_DIGIT = 3;
 
-    private List<Integer> numbers;
+    private Numbers numbers;
 
     public Computer() {
-        generateRandomThreeDigitNumber();
+        numbers = new Numbers(generateComputerNumbers());
     }
 
-    public List<Integer> getNumbers() {
-        return new ArrayList<Integer>(numbers);
+    private List<Integer> generateComputerNumbers() {
+        List<Integer> computerNumbers = new ArrayList<Integer>();
+        generateRandomThreeDigit(computerNumbers);
+        return computerNumbers;
     }
 
-    private void generateRandomThreeDigitNumber() {
-        numbers = new ArrayList<Integer>();
-        while (numbers.size() < THREE_DIGIT) {
+    private void generateRandomThreeDigit(List<Integer> computerNumbers) {
+        while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
-            addUniqueRandomNumber(randomNumber);
+            addUniqueNumber(computerNumbers, randomNumber);
         }
     }
 
-    private void addUniqueRandomNumber(int randomNumber) {
-        if (!numbers.contains(randomNumber)) {
-            numbers.add(randomNumber);
+    private static void addUniqueNumber(List<Integer> computerNumbers, int randomNumber) {
+        if (!computerNumbers.contains(randomNumber)) {
+            computerNumbers.add(randomNumber);
         }
+    }
+
+    public Numbers getNumbers() {
+        return numbers;
     }
 
 }
