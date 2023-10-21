@@ -40,9 +40,16 @@ public class Application {
     }
 
     public static List<Integer> inputAndValidateUserNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
+        String input = getUserInput();
+        return validateInput(input);
+    }
 
+    private static String getUserInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return Console.readLine();
+    }
+
+    private static List<Integer> validateInput(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
@@ -63,14 +70,14 @@ public class Application {
         return userNumbers;
     }
 
-    public static boolean evaluateAndDisplayGameResult(List<Integer> computerNumbers, List<Integer> userNumbers){
+    public static boolean evaluateAndDisplayGameResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
         int balls = 0;
         int strikes = 0;
 
-        for(int i = 0; i < 3; i++){
-            if(computerNumbers.get(i).equals(userNumbers.get(i))){
+        for (int i = 0; i < 3; i++) {
+            if (computerNumbers.get(i).equals(userNumbers.get(i))) {
                 strikes++;
-            } else if(computerNumbers.contains(userNumbers.get(i))){
+            } else if (computerNumbers.contains(userNumbers.get(i))) {
                 balls++;
             }
         }
