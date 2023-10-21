@@ -1,31 +1,35 @@
 package baseball.gameLogic;
 
 import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.models.User;
+
+import static baseball.utils.InputValidator.validateRestartInput;
+import static baseball.utils.InputValidator.validateUserAnswer;
 
 /*
  User의 행동들을 수행하는 클래스
  */
 
 public class UserAction {
-    public User user = new User();
+    private final User user = new User();
 
 
-    public void inputAnswer(InputValidator inputValidator){
-        user.numberList = inputValidator.validateUserAnswer(Console.readLine());
+    public void inputAnswer(){
+        user.numberList = validateUserAnswer(Console.readLine());
     }
 
-    public void inputRestartFactor(InputValidator inputValidator){
-        user.mind = inputValidator.validateRestartInput(Console.readLine());
+    public void inputRestartFactor(){
+        user.mind = validateRestartInput(Console.readLine());
     }
 
     public List<Integer> getNumberList(){
         return user.numberList;
     }
 
-    public int getMind(){
+    public int showMind(){
         return user.mind;
     }
 
