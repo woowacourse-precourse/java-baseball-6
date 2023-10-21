@@ -1,6 +1,10 @@
 package view;
 
 public class InputText {
+
+    /**
+     * 사용자의 입력을 요청하는 텍스트 출력 기능
+     */
     public void inputNum(){
         System.out.print("숫자를 입력해주세요 : ");
     }

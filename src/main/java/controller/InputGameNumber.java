@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputGameNumber {
+
+    /**
+     * 사용자가 게임 숫자를 입력하는 기능
+     * 숫자를 입력하면 List로 반환하게 구현
+     */
     public List<Integer> inputNum(){
         String tmp = Console.readLine();
         List<Integer> userNum = new ArrayList<>();

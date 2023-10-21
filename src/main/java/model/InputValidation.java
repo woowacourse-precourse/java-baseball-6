@@ -6,6 +6,10 @@ import java.util.Set;
 
 public class InputValidation {
 
+    /**
+     * 사용자 입력에 대한 검증 기능
+     * 조건에 맞지 않으면 예외 발생
+     */
     public void gameNumValidation(List<Integer> inputNum){
         Set<Integer> set = new HashSet<>(inputNum);
 
