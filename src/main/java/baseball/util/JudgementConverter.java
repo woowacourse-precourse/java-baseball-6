@@ -6,23 +6,23 @@ import baseball.util.enums.PitchType;
 public class JudgementConverter {
     public static String of(Judgement judgement) {
         if (judgement.isNothing()) {
-            return PitchType.NOTHING.getValue();
+            return PitchType.NOTHING.getType();
         }
         if (judgement.isThreeStrike()) {
-            return judgement.getStrike() + PitchType.STRIKE.getValue();
+            return judgement.getStrike() + PitchType.STRIKE.getType();
         }
-        return makeScoreResult(judgement.getBall(), judgement.getStrike());
+        return makeJudgementResult(judgement.getBall(), judgement.getStrike());
     }
 
-    private static String makeScoreResult(int ballCount, int strikeCount) {
-        StringBuilder resultBuilder = new StringBuilder();
+    private static String makeJudgementResult(int ballCount, int strikeCount) {
+        String judgementResult = "";
         if (ballCount > 0) {
-            resultBuilder.append(ballCount).append(PitchType.BALL.getValue());
+            judgementResult += ballCount + PitchType.BALL.getType();
         }
         if (strikeCount > 0) {
-            resultBuilder.append(strikeCount).append(PitchType.STRIKE.getValue());
+            judgementResult += strikeCount + PitchType.STRIKE.getType();
         }
-        return resultBuilder.toString();
+        return judgementResult;
     }
 
 }
