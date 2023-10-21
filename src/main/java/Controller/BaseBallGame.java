@@ -4,6 +4,7 @@ import Model.Computer;
 import Model.Player;
 import Model.Refree;
 import View.GameResult;
+
 import java.util.ArrayList;
 
 public class BaseBallGame {
@@ -13,6 +14,7 @@ public class BaseBallGame {
     private static ArrayList<Integer> PlayerNumbers;
     private static int strike;
     private static int ball;
+    private static boolean isNothing;
 
     public BaseBallGame() {
         player = new Player();
@@ -20,7 +22,6 @@ public class BaseBallGame {
         computer = new Computer();
     }
 
-    //수정
     public void run() {
         do {
             System.out.println(computer.getAnswer());
@@ -36,10 +37,11 @@ public class BaseBallGame {
             }
             //수정
             if (strike + ball == 0) {
-                GameResult.PrintResult(strike, ball, true);
+                isNothing = true;
             } else if (strike + ball != 0) {
-                GameResult.PrintResult(strike, ball, false);
+                isNothing = false;
             }
+            GameResult.PrintResult(strike, ball, isNothing);
         } while (true);
     }
 }

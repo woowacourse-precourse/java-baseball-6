@@ -1,5 +1,7 @@
 package Model;
 
+import Constant.Ment;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ public class Player {
 
     public ArrayList<Integer> InputNumbers() {
         PlayerNumbers = new ArrayList<>();
-        System.out.printf("숫자를 입력해주세요 : ");
+        System.out.printf(Ment.getMentInput());
         Tempnumbers = readLine();
         for (int i = 0; i < 3; i++) {
             PlayerNumbers.add(Character.getNumericValue(Tempnumbers.charAt(i)));
