@@ -9,9 +9,9 @@ public class Ball {
     private final int position;
 
     public Ball(int position, int number) {
+        validateRange(number);
         this.number = number;
         this.position = position;
-
     }
 
     public void validateRange(int number) {

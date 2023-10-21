@@ -47,7 +47,8 @@
 # 추후 보완이 필요한 부분 🚨🚨
 - [ ] referee가 필요할까? - 어쨌든 게임 over등을 관리하는 클래스든 뭐가 있어야할 것 같으니 고민해보기
 - [ ] 결과를 담는 dto 필요할까? 아니면 클래스라도?
-- [ ] getStrikeCount, ballCount 같은 기능의 stream인데 중복 제거 시도해보기
+- [x] getStrikeCount, ballCount 같은 기능의 stream인데 중복 제거 시도해보기
+- [ ] view static 제거하고 instance로 호출하기
 
 
 # 기타 참고 사항 (추후 삭제)

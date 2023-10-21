@@ -6,9 +6,11 @@ import java.util.stream.Collectors;
 
 public class Balls {
 
+    private static final int BALL_COUNT = 3;
     private final List<Ball> balls;
 
     public Balls(List<Ball> ballList) {
+        valdateDuplicates(ballList);
         this.balls = ballList;
     }
 
@@ -16,27 +18,16 @@ public class Balls {
         balls = Arrays.asList(ballValues);
     }
 
-//    public void validateSize(List<Ball> ballList) {
-//        if (!hasThreeDigits(ballList)) {
-//            throw new IllegalArgumentException("3자리의 숫자를 입력해주세요.");
-//        }
-//    }
-
     public void valdateDuplicates(List<Ball> ballList) {
         if (hasDuplicatesInList(ballList)) {
             throw new IllegalArgumentException("중복되지 않는 3자리의 숫자를 입력해주세요.");
         }
     }
 
-//    private boolean hasThreeDigits(List<Ball> ballList) {
-//        return ballList.size() == BALL_COUNT;
-//    }
-
     private boolean hasDuplicatesInList(List<Ball> ballList) {
         int uniqueBallCount = (int) ballList.stream()
             .distinct()
             .count();
-
         return uniqueBallCount < BALL_COUNT;
     }
 
