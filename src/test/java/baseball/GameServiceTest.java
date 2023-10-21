@@ -11,7 +11,7 @@ class GameServiceTest {
     Player player = new Player();
 
     @Test
-    void 스트라이크_카운트_증가_테스트() {
+    void 유저_숫자_컴퓨터_숫자_비교후_스트라이크_카운트_증가_테스트() {
         player.settingPlayerNumber(new int[]{1, 2, 3});
         List<Integer> computer = Arrays.asList(1, 2, 3);
 
@@ -21,7 +21,7 @@ class GameServiceTest {
     }
 
     @Test
-    void 볼_카운트_증가_테스트() {
+    void 유저_숫자_컴퓨터_숫자_비교후_볼_카운트_증가_테스트() {
         player.settingPlayerNumber(new int[]{3, 1, 2});
         List<Integer> computer = Arrays.asList(1, 2, 5);
 
@@ -31,7 +31,7 @@ class GameServiceTest {
     }
 
     @Test
-    void 낫싱_테스트() {
+    void 유저_숫자_컴퓨터_숫자_비교후_낫싱_테스트() {
         player.settingPlayerNumber(new int[]{4, 5, 6});
         List<Integer> computer = Arrays.asList(1, 2, 3);
 
