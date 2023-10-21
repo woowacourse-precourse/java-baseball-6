@@ -1,6 +1,10 @@
 package baseball;
 
 public class Referee {
+    public GameResult judge(String computer, String player) {
+        return new GameResult(getBallCount(computer, player), getStrikeCount(computer, player));
+    }
+
     public int getStrikeCount(String computer, String player) {
         int strikeCount = 0;
         for (int index = 0; index < computer.length(); index++) {
