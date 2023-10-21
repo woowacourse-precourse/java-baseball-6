@@ -50,9 +50,9 @@
 ## 구조 관련 생각
 
 - ### Controller 관련 처리 
-  - [ ] 초기 시작점 관련 처리
+  - [X] 초기 시작점 관련 처리
     - [X] main -> Controller(GameController) 로 보내기
-    - [ ] 처리 끝난 이후 main 으로 돌아와서 게임 내용 끝내기
+    - [X] 처리 끝난 이후 main 으로 돌아와서 게임 내용 끝내기
 - ### Service 관련 처리
   - [ ] 스트라이크 볼 관련 처리는 Service에서 진행
 - ### View 관련 처리
