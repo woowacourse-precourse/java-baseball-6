@@ -14,7 +14,7 @@ public class Discriminator {
     private List<Integer> guessNumber;
 
     private Discriminator(final int ball, final int strike, final int nothing,
-                         final List<Integer> computerNumber, final List<Integer> guessNumber) {
+                          final List<Integer> computerNumber, final List<Integer> guessNumber) {
         this.ball = ball;
         this.strike = strike;
         this.nothing = nothing;
