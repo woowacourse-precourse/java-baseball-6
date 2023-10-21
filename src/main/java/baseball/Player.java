@@ -3,6 +3,8 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Player {
 
     private static final int NUMBER_LENGTH = 3;
@@ -10,22 +12,23 @@ public class Player {
     private static final String RESTART_FLAG = "1";
     private static final String EXIT_FLAG = "2";
 
-    public String inputNumbers(String input){
-        String numbers = getPlayerInput(input);
+    public String inputNumbers(){
+        String numbers = getPlayerInput();
         isInputNull(numbers);
         checkBallValidation(numbers);
         return numbers;
     }
 
-    public boolean conformGameRestart(String input){
-        String flag = getPlayerInput(input);
+    public boolean conformGameRestart(){
+        String flag = getPlayerInput();
         isInputNull(flag);
         checkFlagValidation(flag);
         return isRestartFlag(flag);
     }
 
     // TODO player의 입력을 받는 메소드로 변경 필요
-    private String getPlayerInput(String playerInput){
+    private String getPlayerInput(){
+        String playerInput = readLine();
         return playerInput;
     }
 
