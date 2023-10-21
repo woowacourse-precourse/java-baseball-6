@@ -11,6 +11,7 @@ public class GameNumberCheckService {
     private List<Integer> countStrikeBallList = new ArrayList<>();
 
     public List<Integer> compareGameNumber(List<Integer> playerNumbers, List<Integer> computerNumbers) {
+        resetCountStrikeBall();
         setcountStrikeBallList(getcountStrike(playerNumbers, computerNumbers),
                 getcountBall(playerNumbers, computerNumbers));
         return countStrikeBallList;
@@ -52,5 +53,11 @@ public class GameNumberCheckService {
                 countBall++;
             }
         }
+    }
+
+    public void resetCountStrikeBall() {
+        countStrikeBallList.clear();
+        countStrike = 0;
+        countBall = 0;
     }
 }
