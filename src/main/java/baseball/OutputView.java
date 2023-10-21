@@ -15,10 +15,13 @@ public class OutputView {
     }
 
     public void printClearBaseBallGame(){
-        System.out.println(ProgressMessage.CLEAR_BASEBALL_GAME);
+        String message = String.format(ProgressMessage.CLEAR_BASEBALL_GAME.toString(), BaseballRole.THREE_STRIKE.getValue());
+        System.out.println(message);
     }
 
     public void printRestartMessage(){
-        System.out.println(ProgressMessage.INPUT_RESTART_MESSAGE);
+        String message = String.format(ProgressMessage.INPUT_RESTART_MESSAGE.toString(),
+                BaseballRole.GAME_RESTART.getValue(), BaseballRole.GAME_EXIT.getValue());
+        System.out.println(message);
     }
 }
