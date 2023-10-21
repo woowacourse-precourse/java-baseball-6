@@ -28,9 +28,9 @@ public class Application {
                 String userInput = Console.readLine();
 
                 if (!checkIsNumber(userInput)
-                        || checkIsDuplicated(userInput)
-                        || !checkInputLength(userInput)
-                        || checkIsZero(userInput)) {
+                            || checkIsDuplicated(userInput)
+                            || !checkInputLength(userInput)
+                            || checkIsZero(userInput)) {
                     throw new IllegalArgumentException();
                 }
 
@@ -126,6 +126,5 @@ public class Application {
         }
         return ballCount;
     }
-
 }
 
