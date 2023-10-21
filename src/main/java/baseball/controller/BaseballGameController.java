@@ -28,10 +28,12 @@ public class BaseballGameController {
 
         GameChoice gameChoice = new GameChoice();
 
-        TargetNumber targetNumber = new TargetNumber();
-
         while (gameChoice.isRestart()) {
+            TargetNumber targetNumber = new TargetNumber();
+
             playGame(targetNumber);
+
+            gameChoice = requestGameChoice();
         }
     }
 
@@ -53,7 +55,9 @@ public class BaseballGameController {
         }
     }
 
-    public void requestGameChoice() {
+    public GameChoice requestGameChoice() {
+        int choice = inputHandler.inputGameResult();
 
+        return new GameChoice(choice);
     }
 }
