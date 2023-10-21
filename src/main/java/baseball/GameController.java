@@ -26,10 +26,12 @@ public class GameController {
 
     public void restartOrExit() {
         outputView.printRestartOrExit();
-        if (inputView.readReplayNumber()) {
+        if (inputView.readReplayNumber() == RestartStatus.RESTART) {
             computer.init();
             play();
+            return;
         }
+        outputView.printExit();
     }
 
     public boolean compare() {

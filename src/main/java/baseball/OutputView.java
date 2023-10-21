@@ -29,4 +29,8 @@ public class OutputView {
     public void printRestartOrExit() {
         System.out.println(ProcessMessage.RESTART_OR_EXIT);
     }
+
+    public void printExit() {
+        System.out.println(ProcessMessage.EXIT);
+    }
 }

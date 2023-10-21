@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 public class InputValidator {
     private static final String REGEX = "^[0-9]+$";
+    private static final String RESTART = "1";
+    private static final String EXIT = "2";
     private static final String ELEMENT = "";
     private static final int COUNT_OF_NUMBER = 3;
 
@@ -19,7 +21,7 @@ public class InputValidator {
     }
 
     private void validateOneOrTwo(String number) {
-        if (number != "1" && number != "2") {
+        if (!number.equals(RESTART) && !number.equals(EXIT)) {
             throw new IllegalArgumentException(ExceptionMessage.IS_NOT_RESTART_NUMBER.toString());
         }
     }

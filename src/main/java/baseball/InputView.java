@@ -17,9 +17,13 @@ public class InputView {
                 .toList();
     }
 
-    public boolean readReplayNumber() {
+    public RestartStatus readReplayNumber() {
         String number = Console.readLine();
         validator.validateRestartNumber(number);
-        return number.equals(RestartStatus.RESTART.toString());
+        return Arrays.stream(RestartStatus.values())
+                .filter(status -> status.toString().equals(number))
+                .findFirst()
+                .get();
+
     }
 }
