@@ -10,11 +10,13 @@ class RandomAnswerFactoryTest {
     void 서로_다른_3자리수_생성(){
         RandomAnswerFactory randomAnswerFactory = new RandomAnswerFactory();
 
-        List<Integer> answer = randomAnswerFactory.getRandomAnswer();
+        Answer answer1 = randomAnswerFactory.getRandomAnswer();
+        Answer answer2 = randomAnswerFactory.getRandomAnswer();
 
-        assertEquals(answer.size(), 3);
-        assertNotEquals(answer.get(0), answer.get(1));
-        assertNotEquals(answer.get(1), answer.get(2));
-        assertNotEquals(answer.get(0), answer.get(2));
+        assertNotEquals(answer1.getFirstNumber(), answer1.getSecondNumber());
+        assertNotEquals(answer1.getFirstNumber(), answer1.getThirdNumber());
+        assertNotEquals(answer1.getSecondNumber(), answer1.getThirdNumber());
+
+        assertNotEquals(answer1, answer2);
     }
 }
