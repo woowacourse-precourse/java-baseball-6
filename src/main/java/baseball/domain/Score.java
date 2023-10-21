@@ -15,11 +15,11 @@ public class Score {
     }
 
     public String format() {
-        selectFormatter(ball, strike);
+        selectFormatter();
         return stringFormatter.format(ball, strike);
     }
 
-    private void selectFormatter(int ball, int strike) {
+    private void selectFormatter() {
         if (bothAreZero(ball, strike)) {
             stringFormatter = new BothZeroFormatter();
         }
