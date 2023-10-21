@@ -17,6 +17,7 @@ public class Application {
 class BaseballGame {
     private List<Integer> computer = new ArrayList<>();
     private List<Integer> user = new ArrayList<>();
+    private boolean isPlaying = false;
     void play() {
         makeComNum();
         getUserNum();
@@ -53,5 +54,27 @@ class BaseballGame {
         }
         return ball;
     }
-    // printResult
+    private void printResult(int strike, int ball) {
+        if (ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        String result = "";
+        ball -= strike;
+
+        if (ball > 0) {
+            result += (ball + "볼 ");
+        }
+        if (strike > 0 ){
+            result += (strike + "스트라이크");
+        }
+        System.out.println(result);
+
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            checkRestart();
+        }
+    }
+    private void checkRestart() {}
 }
