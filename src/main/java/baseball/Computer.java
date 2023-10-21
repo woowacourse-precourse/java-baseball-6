@@ -8,8 +8,13 @@ public class Computer {
     private static final int ANSWER_DIGIT = 3;
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 9;
+    private static final String NOTHING = "낫싱";
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
 
     private static Map<Integer, Integer> answer;
+    private int strikeCnt;
+    private int ballCnt;
 
     public Computer(){
     }
@@ -28,5 +33,50 @@ public class Computer {
         }
 
         return answer;
+    }
+
+    public void calculateScore(String playerInput){
+        initializeScore();
+
+        for(int i=0;i<ANSWER_DIGIT;i++) {
+            int userNum = Character.getNumericValue(playerInput.charAt(i));
+            if(!answer.containsKey(userNum)){
+                continue;
+            }
+
+            if(answer.get(userNum) == i){
+                strikeCnt++;
+                continue;
+            }
+
+            ballCnt++;
+        }
+    }
+
+    private void initializeScore(){
+        strikeCnt = 0;
+        ballCnt = 0;
+    }
+
+    public String makeResultMessage(){
+        String result = "";
+
+        if(strikeCnt == 0 && ballCnt == 0){
+            return NOTHING;
+        }
+
+        if(ballCnt > 0){
+            result += (ballCnt + BALL + " ");
+        }
+
+        if(strikeCnt > 0){
+            result += (strikeCnt + STRIKE);
+        }
+
+        return result;
+    }
+
+    public boolean isPlayerWin(){
+        return strikeCnt == ANSWER_DIGIT;
     }
 }
