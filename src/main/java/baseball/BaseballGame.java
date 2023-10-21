@@ -48,7 +48,6 @@ public class BaseballGame {
                 answerNumber.add(randomNumber);
             }
         }
-        // System.out.println(answerNumber.toString());
     }
 
     public void readExpectedNumber(String input) {
@@ -96,7 +95,7 @@ public class BaseballGame {
         strikeNumber = computeStrikeNumber();
         ballNumber = computeBallNumber();
 
-        // printGameResult();
+        printGameResult();
     }
 
     private int computeStrikeNumber() {
@@ -122,6 +121,22 @@ public class BaseballGame {
         }
 
         return count;
+    }
+
+    private void printGameResult() {
+        if(ballNumber != 0) {
+            System.out.print(ballNumber+"볼 ");
+        }
+        if(strikeNumber != 0) {
+            System.out.println(strikeNumber+"스트라이크");
+        }
+        if (ballNumber == 0 && strikeNumber == 0) {
+            System.out.println("낫싱");
+        }
+
+        if(isCompleted()) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 
     public boolean isCompleted() {
