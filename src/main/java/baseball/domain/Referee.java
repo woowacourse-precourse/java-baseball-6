@@ -1,34 +1,68 @@
 package baseball.domain;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
+
+import static baseball.view.OutputView.isEnd;
 
 public class Referee {
 
-    List<BallStatus> BallStatuses;
-    int strikeNum = 0;
-    int ballNum = 0;
+    int strikeNumber = 0;
+    int ballNumber = 0;
+    int next = 1;
 
-    public Referee(List<BallStatus> result) {
-        this.BallStatuses = result;
-        judge();
+    public Referee() {
     }
 
-    private void judge() {
+    public void classify(List<BallStatus> BallStatuses) {
         for (BallStatus ballStatus : BallStatuses) {
             if (ballStatus == BallStatus.STRIKE) {
-                strikeNum ++;
+                strikeNumber++;
             }
             if (ballStatus == BallStatus.BALL) {
-                ballNum ++;
+                ballNumber++;
             }
         }
     }
 
-    public int getStrikeNum() {
-        return strikeNum;
+    public void judge() {
+        if (strikeNumber == 3) {
+            System.out.println(String.format("%d스트라이크", strikeNumber));
+            isEnd();
+            return;
+        }
+        if (ballNumber > 0 && strikeNumber > 0) {
+            System.out.println(String.format("%d볼 %d스트라이크", ballNumber, strikeNumber));
+            return;
+        }
+        if (ballNumber == 0 && strikeNumber > 0 && strikeNumber < 3) {
+            System.out.println(String.format("%d스트라이크", strikeNumber));
+            return;
+        }
+        if (ballNumber > 0 && strikeNumber == 0) {
+            System.out.println(String.format("%d볼", ballNumber));
+            return;
+        }
+        if (ballNumber == 0 && strikeNumber == 0) {
+            System.out.println(String.format("낫싱"));
+            return;
+        } else {
+            System.out.println("에러");
+        }
+    }
+    
+    private void isEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int next = Integer.parseInt(Console.readLine());
     }
 
-    public int getBallNum() {
-        return ballNum;
+    public int getNext() {
+        return next;
+    }
+
+    public int getStrikeNumber() {
+        return strikeNumber;
     }
 }

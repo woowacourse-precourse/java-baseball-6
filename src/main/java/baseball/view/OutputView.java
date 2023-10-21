@@ -1,33 +1,30 @@
 package baseball.view;
 
+import baseball.domain.BallStatus;
 import baseball.domain.Referee;
+import baseball.domain.Result;
+import org.junit.platform.commons.support.HierarchyTraversalMode;
+
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OutputView {
-   private StringBuilder sb =  new StringBuilder();
 
-    public OutputView() {
-    }
+    public static void printResult(Map<BallStatus, Integer> ballStatusMap) {
 
-    public void printResult(Referee referee) {
-        if (referee.getBallNum() == 3) {
-            sb.append("3볼 ");
-        }
-        if (referee.getBallNum() == 2) {
-            sb.append("2볼 ");
-        }
-        if (referee.getBallNum() == 1) {
-            sb.append("1볼 ");
-        }
-        if (referee.getStrikeNum() == 3) {
-            sb.append("3스트라이크");
-        }
-        if (referee.getStrikeNum() == 2) {
-            sb.append("2스트라이크");
-        }
-        if (referee.getStrikeNum() == 1) {
-            sb.append("1스트라이크");
-        }
-        String result = sb.toString();
+        String result = ballStatusMap.entrySet()
+                .stream()
+                .filter(entry -> entry.getKey().equals(BallStatus.NOTHING))
+                .map(entry -> String.format("%s%s", entry.getValue(), entry.getKey().getName()))
+                .collect(Collectors.joining(" "));
         System.out.println(result);
+
+
     }
-}
+
+    public static boolean isEnd(Map<BallStatus, Integer> ballStatusMap) {
+        return (ballStatusMap.get(BallStatus.STRIKE) == 3);
+
+        }
+    }
+

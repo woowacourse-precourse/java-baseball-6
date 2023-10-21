@@ -12,11 +12,12 @@ public class RefereeTest {
     @Test
     void Referee_STRIKE_BALL개수_테스트() {
         List<Integer> computerBallNumbers = Arrays.asList(3, 1, 2);
-        List<Integer> userBallNumbers = Arrays.asList(3, 2, 4);
+        List<Integer> playerBallNumbers = Arrays.asList(3, 2, 4);
         Balls balls = new Balls(computerBallNumbers);
-        List<BallStatus> result = balls.play(userBallNumbers);
-        Referee referee = new Referee(result);
-        assertThat(referee.getStrikeNum()).isEqualTo(1);
-        assertThat(referee.getBallNum()).isEqualTo(1);
+        Balls playerBalls = BallsFactory.createPlayerBalls(playerBallNumbers);
+        List<BallStatus> result = balls.play(playerBalls);
+        Referee referee = new Referee();
+        assertThat(referee.getStrikeNumber()).isEqualTo(1);
+
     }
 }

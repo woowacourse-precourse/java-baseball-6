@@ -33,9 +33,10 @@ public class BallsTest {
     @Test
     void 컴퓨터Balls_유저Balls_반환값() {
         List<Integer> computerBallNumbers = Arrays.asList(3, 1, 2);
-        List<Integer> userBallNumbers = Arrays.asList(3, 2, 4);
+        List<Integer> playerBallNumbers = Arrays.asList(3, 2, 4);
         Balls balls = new Balls(computerBallNumbers);
-        List<BallStatus> result = balls.play(userBallNumbers);
+        Balls playerBalls = BallsFactory.createPlayerBalls(playerBallNumbers);
+        List<BallStatus> result = balls.play(playerBalls);
         assertThat(result.get(0)).isEqualTo(BallStatus.STRIKE);
         assertThat(result.get(1)).isEqualTo(BallStatus.BALL);
         assertThat(result.get(2)).isEqualTo(BallStatus.NOTHING);

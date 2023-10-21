@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -21,17 +22,21 @@ public class Balls {
     public BallStatus match(Ball userBall) {
         return balls.stream()
                 .map(ball -> ball.match(userBall))
+                .sorted(Comparator.comparing(BallStatus::getOrder))
                 .filter(status -> !status.equals(BallStatus.NOTHING))
                 .findAny()
                 .orElse(BallStatus.NOTHING);
     }
 
-    public List<BallStatus> play(List<Integer> userBallNumbers) {
-        List<Ball> userBalls = mapToBalls(userBallNumbers);
-        List<BallStatus> ballStatuses = userBalls.stream()
-                .map(userBall -> this.match(userBall))
+    public List<BallStatus> play(Balls playerBalls) {
+        List<BallStatus> ballStatuses = playerBalls.getBalls().stream()
+                .map(playerBall -> this.match(playerBall))
                 .collect(Collectors.toList());
 
         return ballStatuses;
+    }
+
+    public List<Ball> getBalls() {
+        return balls;
     }
 }
