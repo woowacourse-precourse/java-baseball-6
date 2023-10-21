@@ -1,4 +1,12 @@
-1. 추후에 여러 게임을 실행할 수 있도록 Game 인터페이스를 구현한다.
+1. Model, View, Controller, Logic 으로 나눠서 구현해보자
+   - Model = User, Computer
+   - Controller = UserController(), ComputerController()
+   - View = ConsoleView()
+   - Logic = BaseBallLogic()
+2. 생성하는 클래스, 메소드를 실행하는 클래스를 분리한다. 
+   - Main()에서 생성을 모두 담당하고, 실행은 로직에서 담당한다. 
+3. 모든 클래스는 서로의 메소드를 직접 호출하지 않도록 한다. ( Interface를 통해 추상화 한다.)
+4. 추후에 여러 게임을 실행할 수 있도록 Game 인터페이스를 구현한다.
     - void start(void)
     - void exit(void)
 
