@@ -2,7 +2,6 @@ package baseball;
 
 import baseball.model.Number;
 import baseball.model.PitchCount;
-import baseball.type.MessageType;
 import camp.nextstep.edu.missionutils.Console;
 
 
@@ -10,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static baseball.type.MessageType.*;
 import static java.lang.Boolean.FALSE;
 
 /**
@@ -18,8 +18,8 @@ import static java.lang.Boolean.FALSE;
  * @since : 2023/10/21
  */
 public class Game {
-    private static final int REPLAY_GAME = 1;
-    private static final int EXIT_GAME = 0;
+    private static final String REPLAY_GAME = "1";
+    private static final String EXIT_GAME = "2";
 
 
     /**
@@ -29,13 +29,12 @@ public class Game {
      */
     public void start() {
         //게임 시작 처리
-        System.out.println(MessageType.START.getMessage());
+        System.out.println(START.getMessage());
 
         //게임 진행
-        int replayChoice = REPLAY_GAME;
-        while (replayChoice == REPLAY_GAME) {
-            replayChoice = play();
-        }
+        do {
+            play();
+        } while (decideContinuation());
     }
 
 
@@ -44,7 +43,7 @@ public class Game {
      * @auther : SYB
      * @since : 2023/10/21
      */
-    public int play() {
+    public void play() {
         Number computerNumber = new Number();
         computerNumber.createRandomNumber();
 
@@ -56,7 +55,6 @@ public class Game {
             isAnswer = calculator(computerNumber, userNumber);
             userNumber.clear();
         }
-        return checkExitReplay();
     }
 
 
@@ -66,7 +64,7 @@ public class Game {
      * @since : 2023/10/21
      */
     public List<Integer> inputUserNumber() {
-        System.out.print(MessageType.ASK.getMessage());
+        System.out.print(ASK.getMessage());
 
         String inputLine = Console.readLine();
         try {
@@ -92,7 +90,7 @@ public class Game {
         System.out.println(pitchCount.getHint());
 
         if (pitchCount.isAnswer()) {
-            System.out.println(MessageType.SUCCESS.getMessage());
+            System.out.println(SUCCESS.getMessage());
             return true;
         } else {
             return false;
@@ -105,7 +103,15 @@ public class Game {
      * @auther : SYB
      * @since : 2023/10/21
      */
-    private int checkExitReplay() {
-        return 0;
+    public boolean decideContinuation() {
+        System.out.println(REPLAY_CHECK.getMessage());
+        String readLine = Console.readLine();
+        if (readLine.equals(REPLAY_GAME)) {
+            return true;
+        } else if (readLine.equals(EXIT_GAME)) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
