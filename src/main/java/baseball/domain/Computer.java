@@ -16,9 +16,12 @@ public class Computer {
     private static final String NOTHING = "낫싱";
 
     private List<Integer> numbers;
-    private boolean threeStrike;
 
-    public GuessNumberResultResponse calculateGuessNumberResult(final List<Integer> guessNumbers) {
+    public Computer(final List<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
+    public String calculateGuessNumberResult(final List<Integer> guessNumbers) {
         int ballCount = NO_BALL;
         int strikeCount = NO_STRIKE;
         for (int index = 0; index < BASEBALL_GAME_NUMBER_DIGIT; index++) {
@@ -26,7 +29,7 @@ public class Computer {
             strikeCount += calculateStrike(getList().get(index), guessNumbers.get(index));
         }
         checkThreeStrike(strikeCount);
-        return conditionalResult(strikeCount, ballCount);
+        return conditionalResult(strikeCount, ballCount).getResult();
     }
 
     private int calculateBall(final List<Integer> computerNumber, final int guessNumber, final int index) {
