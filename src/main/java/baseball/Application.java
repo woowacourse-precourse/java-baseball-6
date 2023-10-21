@@ -99,7 +99,7 @@ public class Application {
 
         strike = 0;
         for (int i = 0; i < inputNumber.length; i++) {
-            if (answer[i] == inputNumber[i]) {
+            if (inputNumber[i] == answer[i]) {
                 strike++;
             }
         }
