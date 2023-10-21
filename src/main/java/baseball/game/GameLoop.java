@@ -6,8 +6,8 @@ import baseball.context.GameLifeCycle;
 import baseball.game.dto.Baseball;
 import baseball.game.dto.BaseballScore;
 import baseball.io.input.Input;
-import baseball.io.input.ValidationInput;
 import baseball.io.input.validation.InputValidator;
+import baseball.io.input.validation.Validation;
 
 public class GameLoop {
 
@@ -34,12 +34,12 @@ public class GameLoop {
     }
 
     public void run() {
-        Input validationInput = new ValidationInput(input, new InputValidator());
+        Validation<String> inputValidator = new InputValidator();
         GameLifeCycle gameLifeCycle = baseballContext.getGameLifeCycle();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (gameLifeCycle.isRunning()) {
             System.out.print("숫자를 입력해주세요 : ");
-            String balls = validationInput.nextLine();
+            String balls = input.nextLineWithValidation(inputValidator);
             BaseballScore matchResults =
                 baseballGame.match(Baseball.of(baseballContext.getAnswer()), Baseball.of(balls));
             String transformed = baseballContext.transformer(matchResults);
