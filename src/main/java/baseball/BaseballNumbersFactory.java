@@ -19,4 +19,21 @@ public class BaseballNumbersFactory {
         }
         return baseballNumbers;
     }
+
+    public static List<BaseballNumber> getBaseballNumbers(String baseballNumbersString) {
+        validatebaseballNumbers(baseballNumbersString);
+        List<BaseballNumber> baseballNumbers = new ArrayList<>();
+        for (String baseballNumberString : baseballNumbersString.split("")) {
+            int baseballNumberInt = Integer.parseInt(baseballNumberString);
+            BaseballNumber baseballNumber = new BaseballNumber(baseballNumberInt);
+            baseballNumbers.add(baseballNumber);
+        }
+    }
+
+    public static void validatebaseballNumbers(String baseballNumbersString) {
+        Validation.validateInputEmptyOrNull(baseballNumbersString);
+        Validation.validateInputLength(baseballNumbersString, BASEBALL_NUMBERS_LENGTH);
+        Validation.validateInputDistinct(baseballNumbersString);
+        Validation.validateInputDigit(baseballNumbersString);
+    }
 }
