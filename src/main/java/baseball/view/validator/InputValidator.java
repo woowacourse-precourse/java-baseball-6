@@ -4,7 +4,7 @@ import org.junit.platform.commons.util.StringUtils;
 
 import java.util.regex.Pattern;
 
-public class Validator {
+public class InputValidator {
 
     protected static void validateInput(String input) {
         if (StringUtils.isBlank(input)) {

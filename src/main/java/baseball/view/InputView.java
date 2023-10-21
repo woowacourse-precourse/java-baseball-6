@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.view.validator.Validator;
+import baseball.view.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -11,7 +11,7 @@ public class InputView {
         System.out.print(INPUT_BALL_NUMBERS_MESSAGE);
         String input = Console.readLine();
 
-        Validator.validateBallNumbers(input);
+        InputValidator.validateBallNumbers(input);
         return input;
     }
 
@@ -19,7 +19,7 @@ public class InputView {
         System.out.println(INPUT_RESTART_OPTION_NUMBER_MESSAGE);
         String input = Console.readLine();
 
-        Validator.validateRestartOptionNumber(input);
+        InputValidator.validateRestartOptionNumber(input);
         return Integer.parseInt(input);
     }
 }
