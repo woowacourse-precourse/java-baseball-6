@@ -18,7 +18,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class InputViewTest {
+public class BaseballInputViewTest {
 
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
 
@@ -41,7 +41,8 @@ public class InputViewTest {
     @ValueSource(strings = {"123", "456"})
     void baseballNumberWithInputValidatorSuccessTest(String input) {
         System.setIn(generateUserInput(input));
-        String baseBallNumber = BaseballInputView.inputBaseballNumber();
+        BaseballInputView baseballInputView = new BaseballInputView();
+        String baseBallNumber = baseballInputView.inputBaseballNumber();
         assertThat(output.toString()).isEqualTo("숫자를 입력해주세요 : ");
         assertThat(baseBallNumber).isEqualTo(input);
     }
@@ -51,7 +52,8 @@ public class InputViewTest {
     @MethodSource("provideValidateBaseballNumberFailTestArguments")
     void baseballNumberWithInputValidatorFailTest(String input, String message) {
         System.setIn(generateUserInput(input));
-        assertThatCode(BaseballInputView::inputBaseballNumber)
+        BaseballInputView baseballInputView = new BaseballInputView();
+        assertThatCode(baseballInputView::inputBaseballNumber)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
         assertThat(output.toString()).isEqualTo("숫자를 입력해주세요 : ");
@@ -72,7 +74,9 @@ public class InputViewTest {
     @MethodSource("provideContinueOrExitTestArguments")
     void continueOrExitSuccessTest(String input, boolean expected) {
         System.setIn(generateUserInput(input));
-        boolean isContinue = BaseballInputView.continueOrExit();
+        BaseballInputView baseballInputView = new BaseballInputView();
+        String baseBallNumber = baseballInputView.inputBaseballNumber();
+        boolean isContinue = baseballInputView.continueOrExit();
         assertThat(isContinue).isEqualTo(expected);
     }
 
@@ -88,7 +92,8 @@ public class InputViewTest {
     @ValueSource(strings = {"-1", "0", "3", "가나다", "abc"})
     void continueOrExitFailTest(String input) {
         System.setIn(generateUserInput(input));
-        assertThatCode(BaseballInputView::continueOrExit)
+        BaseballInputView baseballInputView = new BaseballInputView();
+        assertThatCode(baseballInputView::continueOrExit)
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
