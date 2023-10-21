@@ -38,3 +38,9 @@
 1. baseballController
    - [x] 게임 시작
    - [] 숫자가 동일할때까지 반복
+
+### Validation
+1. PlayerValidation
+   - [] 숫자인지 확인
+   - [] 3자리 숫자 인지 확인
+   - [] 중복이 없는지 확인
