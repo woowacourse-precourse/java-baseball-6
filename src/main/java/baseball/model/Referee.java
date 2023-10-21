@@ -18,7 +18,7 @@ public class Referee {
 		return ball;
 	}
 
-	private int calculateStrikes(List<Integer> computerNumber, List<Integer> playerNumber) {
+	private int calculateStrike(List<Integer> computerNumber, List<Integer> playerNumber) {
 		int strike = 0;
 
 		for (int i = 0; i < computerNumber.size(); i++) {
