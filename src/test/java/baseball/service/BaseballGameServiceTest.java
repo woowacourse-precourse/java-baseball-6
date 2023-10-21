@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.domain.User;
 import baseball.servcie.BaseballGameService;
 import camp.nextstep.edu.missionutils.Console;
 import org.assertj.core.api.Assertions;
@@ -7,6 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 class BaseballGameServiceTest {
 
@@ -64,6 +67,26 @@ class BaseballGameServiceTest {
         Assertions.assertThatThrownBy(() -> baseballGameService.checkRestart())
                 .isInstanceOf(IllegalArgumentException.class);
 
+
+        Console.close();
+    }
+    
+    @Test
+    @DisplayName("유효성 검증 - 실패")
+    public void validateFail() {
+        //given
+        User user = new User();
+        String inputBaseballNumber = "333";
+        System.setIn(new ByteArrayInputStream(inputBaseballNumber.getBytes()));
+
+        List<Integer> baseballNumbers = List.of(2, 3);
+
+        //when
+        user.readBaseballNumber();
+
+        //then
+        Assertions.assertThatThrownBy(() -> baseballGameService.checkValidation(user, baseballNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
 
         Console.close();
     }
