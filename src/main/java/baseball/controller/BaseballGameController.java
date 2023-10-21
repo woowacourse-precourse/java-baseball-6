@@ -19,6 +19,10 @@ public class BaseballGameController {
         return comparator.getStrikeCount() != 0 && comparator.getBallCount() == 0;
     }
 
+    public boolean isBallAnswer() {
+        return comparator.getStrikeCount() == 0 && comparator.getBallCount() != 0;
+    }
+
     public boolean isCorrectAnswer() {
         return comparator.getStrikeCount() == 3;
     }
