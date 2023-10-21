@@ -3,7 +3,6 @@ package baseball.service.impl;
 import baseball.service.ValidateJudgeService;
 import baseball.vo.UserCode;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -29,9 +28,9 @@ public class ValidateJudgeServiceImpl implements ValidateJudgeService {
     }
 
     @Override
-    public void validateLegalUserCode(List<Integer> userCode) {
-        Set<Integer> userCodeSet = new HashSet<>(userCode);
-        if (userCode.size() != 3 || userCodeSet.size() != 3) {
+    public void validateLegalUserCode(UserCode userCode) {
+        Set<Integer> userCodeSet = userCode.convertUserCodeToSet();
+        if (userCode.getUserCodeSize() != 3 || userCodeSet.size() != 3) {
             throw new IllegalArgumentException();
         }
     }

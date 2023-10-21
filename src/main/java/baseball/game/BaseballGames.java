@@ -24,7 +24,7 @@ public class BaseballGames {
 
         while (true) {
             UserCode userCode = userCodeService.makeUserCode(codes);
-            validateJudgeService.validateLegalUserCode(userCode.getCodes());
+            validateJudgeService.validateLegalUserCode(userCode);
             List<Integer> resultList = validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
             String batResult = messageGenerateService.makeMessage(resultList);
             System.out.println(batResult);

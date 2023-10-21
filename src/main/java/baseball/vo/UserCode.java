@@ -1,6 +1,8 @@
 package baseball.vo;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public final class UserCode {
 
@@ -8,10 +10,6 @@ public final class UserCode {
 
     public UserCode(List<Integer> codes) {
         this.codes = codes;
-    }
-
-    public List<Integer> getCodes() {
-        return codes;
     }
 
     public UserCode makeNewUserCode(List<Integer> codes) {
@@ -24,6 +22,10 @@ public final class UserCode {
 
     public Integer getUserCodeElement(int index) {
         return codes.get(index);
+    }
+
+    public Set<Integer> convertUserCodeToSet() {
+        return new HashSet<>(codes);
     }
 
 }
