@@ -105,3 +105,4 @@ while (computer.size() < 3) {
     * Randoms.pickNumberInRange(min, max): 주어진 범위 내에서 랜덤한 숫자를 선택하는 유틸리티 메서드입니다.
 * makePrintln 메서드: 스트라이크와 볼 개수에 따라 결과를 출력합니다
 
+
