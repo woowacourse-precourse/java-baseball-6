@@ -10,6 +10,14 @@ public class GameController {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
 
+
+    public boolean gameStart() {
+        inputView.printStart();
+        startInspection();
+
+        return inputView.printEnd() == 1;
+    }
+
     public void startInspection() {
         ComputerNumber computerNumber = new ComputerNumber();
         UserNumber userNumber = new UserNumber();
