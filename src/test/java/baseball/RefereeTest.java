@@ -19,10 +19,23 @@ class RefereeTest {
         Referee referee = new Referee(answerList);
         //then
         assertThat(referee.getAnswerList()).isEqualTo(answerList);
+        assertThat(referee.getAnswerList().size()).isEqualTo(3);
+        assertThat(referee.getAnswerList()).isEqualTo(answerList);
     }
 
+    @DisplayName("유저의 숫자를 정답과 비교하여 볼을 판정하는 테스트")
     @Test
-    void judgeUserInput() {
+    void judgeNumberTest() {
+        //given
+        int firstNumber = 4;
+        int secondNumber = 9;
+        int thirdNumber = 2;
+        List<Integer> answerList = List.of(firstNumber, secondNumber, thirdNumber);
+        Referee referee = new Referee(answerList);
+        //when
+        int result = referee.judgeNumber(firstNumber, 1);
+        //then
+        assertThat(result).isEqualTo(1);
     }
 
     @Test
