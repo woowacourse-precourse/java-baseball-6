@@ -12,14 +12,13 @@ public class OutputHandler {
     }
 
     public static void printStrikesAndBalls(Result forPrint) {
-        String stringForPrint = "";
         if (forPrint.numberOfBalls > 0) {
-            stringForPrint += forPrint.numberOfBalls + "볼 ";
+            System.out.print(forPrint.numberOfBalls + "볼 ");
         }
         if (forPrint.numberOfStrikes > 0) {
-            stringForPrint += forPrint.numberOfStrikes + "스트라이크";
+            System.out.print(forPrint.numberOfStrikes + "스트라이크");
         }
-        System.out.println(stringForPrint);
+        System.out.println();
     }
 
     public static void printAllStrike() {
