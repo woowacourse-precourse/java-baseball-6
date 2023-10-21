@@ -29,9 +29,7 @@ class UserTest {
         //when
         //InputStream in = new ByteArrayInputStream(input.getBytes());
         //System.setIn(in);
-
         //Balls userBalls=user.makeUserNumber();
-
 
         //then
         //Assertions.assertThat(userBalls.getBalls()).isEqualTo(balls.getBalls());
