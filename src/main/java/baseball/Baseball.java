@@ -4,34 +4,33 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Baseball {
     public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다." );
-        List<Integer> answerNumber = generateNumber();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        BaseBallNumber answerNumber = new BaseBallNumber(generateNumber());
         while (true) {
-            List<Integer> userNumber = inputUserNumber();
-            Integer strikeCount = getStrikeCount(answerNumber, userNumber);
+            BaseBallNumber userNumber = new BaseBallNumber(inputUserNumber());
+            Integer strikeCount = answerNumber.getStrikeCount(userNumber);
             if (strikeCount == 3) {
-                System.out.println("3스트라이크" );
+                System.out.println("3스트라이크");
                 break;
             }
-            Integer ballCount = getBallCount(answerNumber, userNumber);
+            Integer ballCount = answerNumber.getBallCount(userNumber);
             if (ballCount == 0 && strikeCount == 0) {
-                System.out.println("낫싱" );
+                System.out.println("낫싱");
                 continue;
             }
             StringBuilder outputString = new StringBuilder();
             if (ballCount > 0) {
-                outputString.append(ballCount).append("볼 " );
+                outputString.append(ballCount).append("볼 ");
             }
             if (strikeCount > 0) {
-                outputString.append(strikeCount).append("스트라이크" );
+                outputString.append(strikeCount).append("스트라이크");
             }
             System.out.println(outputString);
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료" );
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         restartGame();
     }
 
@@ -56,7 +55,7 @@ public class Baseball {
     }
 
     public List<Integer> inputUserNumber() {
-        System.out.print("숫자를 입력해주세요 : " );
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         List<Integer> integerList = new ArrayList<>();
         if (inputNumber.length() != 3) {
@@ -76,29 +75,8 @@ public class Baseball {
         return integerList;
     }
 
-    public Integer getStrikeCount(List<Integer> answerNumber, List<Integer> userNumber) {
-        Integer strikeCount = 0;
-        for (int i = 0; i < 3; ++i) {
-            if (Objects.equals(answerNumber.get(i), userNumber.get(i))) {
-                strikeCount++;
-            }
-        }
-        return strikeCount;
-    }
-
-    public Integer getBallCount(List<Integer> answerNumber, List<Integer> userNumber) {
-        Integer ballCount = 0;
-        for (int i = 0; i < 3; ++i) {
-            Integer number = userNumber.get(i);
-            if (answerNumber.contains(number) && !answerNumber.get(i).equals(number)) {
-                ballCount++;
-            }
-        }
-        return ballCount;
-    }
-
     public void restartGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." );
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputNumber = Console.readLine();
         if (!isNumeric(inputNumber)) {
             throw new IllegalArgumentException();
