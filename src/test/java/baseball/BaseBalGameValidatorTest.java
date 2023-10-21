@@ -21,7 +21,7 @@ class BaseBalGameValidatorTest {
 
     @ParameterizedTest
     @CsvSource({
-            "111", "112", "1", "100", "101", "999", "-1", "-12", "-122", "-999"
+            "111", "112", "1", "100", "101", "999", "-1", "-12", "-122", "-999", "012", "0123"
     })
     public void 세자리_숫자가아니거나_값은값이_있다면_예외를_반환한다(String baseBallValue) {
         Assertions.assertThatCode(() -> new BaseBalGameValidator().validBaseBallValue(baseBallValue))

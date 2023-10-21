@@ -7,7 +7,7 @@ public class BaseBalGameValidator {
     private static final int BASEBALL_SIZE = 3;
 
     private static final String NOT_NUMBER_ERROR_MESSAGE = "%s는 숫자가 아닙니다.";
-    private static final String DUPLICATE_OR_SIZE_ERROR_MESSAGE = "%d는 세자리 숫자가 아니거나, 값은 값이 존재합니다.";
+    private static final String DUPLICATE_OR_SIZE_ERROR_MESSAGE = "%s는 세자리 숫자가 아니거나, 값은 값이 존재합니다.";
     private static final String NEGATIVE_VALUE_ERROR_MESSAGE = "%d는 세자리가 각각다른 음수입니다.";
 
     public void validBaseBallValue(int baseballValue) {
@@ -17,7 +17,7 @@ public class BaseBalGameValidator {
 
     public void validBaseBallValue(String baseballValue) {
         checkIsNumber(baseballValue);
-        checkDuplicateAndSize(Integer.parseInt(baseballValue));
+        checkDuplicateAndSize(baseballValue);
         checkIsPositive(Integer.parseInt(baseballValue));
     }
 
@@ -32,6 +32,16 @@ public class BaseBalGameValidator {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(String.format(NOT_NUMBER_ERROR_MESSAGE, baseballValue));
         }
+    }
+
+    private void checkDuplicateAndSize(String baseballValue) {
+        Set<Integer> duplicateChecker = generateDuplicateChecker(Integer.parseInt(baseballValue));
+        if (isFirstZero(baseballValue) || duplicateChecker.size() != BASEBALL_SIZE)
+            throw new IllegalArgumentException(String.format(DUPLICATE_OR_SIZE_ERROR_MESSAGE, baseballValue));
+    }
+
+    private boolean isFirstZero(String baseballValue) {
+        return Integer.toString(Integer.parseInt(baseballValue)).length() != baseballValue.length();
     }
 
     private void checkDuplicateAndSize(int baseballValue) {
