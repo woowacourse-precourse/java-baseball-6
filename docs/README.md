@@ -27,11 +27,10 @@
         - [x] `Ball`들의 값 중복 검증
         - [x] `Ball`들의 위치 중복 검증
 
-## 📒 ConvertorUtils
+## 📒 BallsUtils
 
-- [ ] 형변환 utility class
-    - [ ] `String`을 `List<Ball>`로 변환
-    - [ ] `List<Ball>`를 `Balls`로 변환
+- [ ] Balls 관련 utility class
+    - [ ] `List<Integer>`를 `List<Ball>`로 변환
 
 ## 📒 RandomBallsGeneratorUtil
 
@@ -97,6 +96,11 @@
     - [ ] 숫자 입력 요구 메시지 출력
     - [ ] 정답 축하 메시지 출력
     - [ ] 재시작 여부 질문 메시지 출력
+
+## 📒 StringUtils
+
+- [ ] String 관련 utility class
+    - [ ] `String`을 `List<Integer>`로 변환
 
 ---
 
