@@ -16,7 +16,7 @@ public class Number {
 
     private void validateValueRange(int value) {
         if (value < MIN_VALUE || value > MAX_VALUE) {
-            throw new IllegalArgumentException("1 에서 9 사이의 값이 아닙니다");
+            throw new IllegalArgumentException("1 에서 9 사이의 값이 아닙니다.");
         }
     }
 

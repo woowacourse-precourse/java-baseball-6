@@ -27,7 +27,7 @@ public class InputView {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값이 숫자가 아닙니다.");
+            throw new IllegalArgumentException("숫자가 아닌 값이 포함되어 있습니다.");
         }
     }
 
@@ -41,7 +41,7 @@ public class InputView {
         for (char eachChar : input.toCharArray()) {
             int eachDigit = Character.getNumericValue(eachChar);
             if (eachDigit < MIN_NUMERIC_RANGE_VALUE || eachDigit > MAX_NUMERIC_RANGE_VALUE) {
-                throw new IllegalArgumentException("1 에서 9 사이의 값이 아닙니다");
+                throw new IllegalArgumentException("1 에서 9 사이의 값이 아닙니다.");
             }
         }
     }
@@ -49,7 +49,7 @@ public class InputView {
     private static void hasNoDuplicates(String input) {
         char[] inputArray = input.toCharArray();
         if (inputArray[0] == inputArray[1] || inputArray[1] == inputArray[2] || inputArray[0] == inputArray[2]) {
-            throw new IllegalArgumentException("중복된 값이 존재합니다");
+            throw new IllegalArgumentException("중복된 값이 존재합니다.");
         }
     }
 
