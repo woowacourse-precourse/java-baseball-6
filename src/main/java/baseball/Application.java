@@ -82,15 +82,18 @@ public class Application {
     }
 
     // 플레이어로 부터 숫자를 받는 메서드
-    private void getPlayerNumbers() {
+    private int[] getPlayerNumbers() {
+        int[] playerNumbers = new int[3];
         for (int i = 0; i < 3; i++) {
             System.out.println("숫자를 입력해주세요 : ");
             int playerNumber = Integer.parseInt(Console.readLine());
 
             if (playerNumber <= 1 || playerNumber > 9) {
                 throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 프로그램을 종료합니다.");
+            } else {
+                playerNumbers[i] = playerNumber;
             }
-            playerNumbers[i] = playerNumber;
         }
+        return playerNumbers;
     }
 }
