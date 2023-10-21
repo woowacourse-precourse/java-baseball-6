@@ -26,18 +26,15 @@
 
 - `InputView`: 사용자의 입력을 받는 메세지 출력.
 - `OutputView`: 사용자의 입력에 따른 응답 메세지 출력.
-
-### Util
-
 - `InputValidator`: 사용자가 입력한 숫자가 `InputView`의 조건에 맞게 입력했는지 검증.
-- `AnswerGenerator`: 3자리 수를 반환하는 메서드가 정의된 인터페이스.
-- `RandomAnswerGenerator`: 1~9 범위의 서로다른 3자리의 무작위 숫자를 정답으로 생성하여 반환.
-- `FixedAnswerGenerator`: 무작위가 아닌 고정된 값으로 테스트하기 위해 만든 숫자 생성기.
 
 ### 도메인
 
-- `Computer`: `AnswerGenerator`를 구현한 클래스에게서 생성된 숫자를 받아서 정답으로 저장하고, 사용자의 입력값과 비교.
+- `AnswerGenerator`: 3자리 수를 반환하는 메서드가 정의된 인터페이스.
+- `RandomAnswerGenerator`: 1~9 범위의 서로다른 3자리의 무작위 숫자를 정답으로 생성하여 반환.
+- `FixedAnswerGenerator`: 무작위가 아닌 고정된 값으로 테스트하기 위해 만든 숫자 생성기.
 - `Answer`: 컴퓨터가 만든 1~9 범위의 서로다른 3자리 수를 가지는 일급 컬렉션.
+- `Computer`: `AnswerGenerator`를 구현한 클래스에게서 생성된 숫자를 받아서 정답으로 저장하고, 사용자의 입력값과 비교.
 - `Score`: `"볼"`, `"스트라이크"`를 저장.
 - `Ball`: `"볼"`을 저장.
 - `Strike`: `"스트라이크"`를 저장.
