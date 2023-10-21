@@ -23,6 +23,26 @@ public class Referee {
         return ballNumbers;
     }
 
+    public boolean isNothing(int strikeNumbers, int ballNumbers) {
+        return strikeNumbers == Constants.ZERO && ballNumbers == Constants.ZERO;
+    }
+
+    public boolean isOnlyBall(int strikeNumbers, int ballNumbers) {
+        return strikeNumbers == Constants.ZERO && ballNumbers != Constants.ZERO;
+    }
+
+    public boolean isOnlyStrike(int strikeNumbers, int ballNumbers) {
+        return strikeNumbers != Constants.ZERO && ballNumbers == Constants.ZERO;
+    }
+
+    public boolean isStrikeAndBall(int strikeNumbers, int ballNumbers) {
+        return strikeNumbers != Constants.ZERO && ballNumbers != Constants.ZERO;
+    }
+
+    public boolean isThreeStrike(int strikeNumbers) {
+        return strikeNumbers == Constants.THREE_STRIKE;
+    }
+
     private boolean isRandomNumbersContainInputNumber(String randomNumbers, char inputNumber) {
         for (int i = 0; i < Constants.NUMBER_OF_NUMBERS; i++) {
             if (isSameNumberInSamePlace(randomNumbers.charAt(i), inputNumber)) {

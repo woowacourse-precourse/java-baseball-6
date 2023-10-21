@@ -29,7 +29,7 @@ public class BaseballGameController {
 
             determineResult(strikeNumbers, ballNumbers);
 
-            if (isThreeStrike(strikeNumbers)) {
+            if (referee.isThreeStrike(strikeNumbers)) {
                 OutputView.printAnswerMessage();
                 OutputView.printRestartOrEndInputMessage();
                 break;
@@ -45,37 +45,17 @@ public class BaseballGameController {
     }
 
     private void determineResult(int strikeNumbers, int ballNumbers) {
-        if (isNothing(strikeNumbers, ballNumbers)) {
+        if (referee.isNothing(strikeNumbers, ballNumbers)) {
             OutputView.printNothing();
         }
-        if (isOnlyBall(strikeNumbers, ballNumbers)) {
+        if (referee.isOnlyBall(strikeNumbers, ballNumbers)) {
             OutputView.printOnlyBall(ballNumbers);
         }
-        if (isOnlyStrike(strikeNumbers, ballNumbers)) {
+        if (referee.isOnlyStrike(strikeNumbers, ballNumbers)) {
             OutputView.printOnlyStrike(strikeNumbers);
         }
-        if (isStrikeAndBall(strikeNumbers, ballNumbers)) {
+        if (referee.isStrikeAndBall(strikeNumbers, ballNumbers)) {
             OutputView.printBallAndStrike(ballNumbers, strikeNumbers);
         }
-    }
-
-    private boolean isNothing(int strikeNumbers, int ballNumbers) {
-        return strikeNumbers == Constants.ZERO && ballNumbers == Constants.ZERO;
-    }
-
-    private boolean isOnlyBall(int strikeNumbers, int ballNumbers) {
-        return strikeNumbers == Constants.ZERO && ballNumbers != Constants.ZERO;
-    }
-
-    private boolean isOnlyStrike(int strikeNumbers, int ballNumbers) {
-        return strikeNumbers != Constants.ZERO && ballNumbers == Constants.ZERO;
-    }
-
-    private boolean isStrikeAndBall(int strikeNumbers, int ballNumbers) {
-        return strikeNumbers != Constants.ZERO && ballNumbers != Constants.ZERO;
-    }
-
-    private boolean isThreeStrike(int strikeNumbers) {
-        return strikeNumbers == Constants.THREE_STRIKE;
     }
 }
