@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.RegameChoice;
 import baseball.domain.GameConstants;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -36,20 +37,20 @@ public class Application {
         //검증: 만약 숫자의 자리수가 3보다 작으면 잘못 입력한 것이다.
         //검증: 만약 숫자의 자리수가 3보다 크면 잘못 입력한 것이다.
         int inputNumLen = inputNum.length();
-        if (inputNumLen<GameConstants.NUMBER_LENGTH) {
+        if (inputNumLen < GameConstants.NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
 
-        if (inputNumLen>GameConstants.NUMBER_LENGTH) {
+        if (inputNumLen > GameConstants.NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
 
         //검증: 만약 같은 숫자가 2개 이상 있으면 잘못 입력한 것이다.
         Set numSet=new HashSet();
-        for (int i=0; i<GameConstants.NUMBER_LENGTH; i++){
+        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++){
             numSet.add(inputNum.charAt(i));
         }
-        if (numSet.size()<GameConstants.NUMBER_LENGTH){
+        if (numSet.size() < GameConstants.NUMBER_LENGTH){
             throw new IllegalArgumentException();
         }
 
@@ -114,19 +115,31 @@ public class Application {
 
         //[게임 종료]
         //사용자가 입력한 숫자와 컴퓨터가 뽑은 숫자가 모두 같으면 "게임 종료 문구" 출력 후 게임 종료　
-        if (strike == 3){
+        if (strike == GameConstants.NUMBER_LENGTH){
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int regameNum = Integer.parseInt(Console.readLine());
+            String regameNum = Console.readLine();
 
-            if (regameNum==2){
+            //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
+            //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
+            if (!isInteger(regameNum)) {
+                throw new IllegalArgumentException();
+            }
+            int parsedRegameNum= Integer.parseInt(regameNum);
+
+            RegameChoice regameChoice = RegameChoice.fromValue(parsedRegameNum);
+
+            if (regameChoice == RegameChoice.EXIT_GAME) {
                 return;
+            }
+            if (regameChoice == RegameChoice.OTHER_CHOICE) {
+                throw new IllegalArgumentException();
             }
         }
     }
 
     //string이 Integer인지 아닌지 판단. TODO: IntegerUtil에 넣기
-    public static boolean isInteger(String string) {
+        public static boolean isInteger(String string) {
         try {
             Integer.parseInt(string);
             return true;
@@ -153,9 +166,6 @@ public class Application {
 
         return integer;
     }
-
-
-
 
 
 }
