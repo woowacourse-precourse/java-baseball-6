@@ -5,6 +5,18 @@ import java.util.List;
 
 public class InputAnswerImpl implements InputAnswer {
 
+    private static InputAnswerImpl singleton;
+
+    private InputAnswerImpl() {
+    }
+
+    public static InputAnswerImpl getInstance() {
+        if (singleton == null) {
+            singleton = new InputAnswerImpl();
+        }
+        return singleton;
+    }
+
     @Override
     public List<Integer> inputAnswer() throws IllegalArgumentException {
         String input = Console.readLine();

@@ -1,9 +1,8 @@
 package baseball.ProcessGame;
 
+import baseball.Config.DiContainer;
 import baseball.EndGame.EndProcess;
-import baseball.EndGame.EndProcessImpl;
 import baseball.Input.InputAnswer;
-import baseball.Input.InputAnswerImpl;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +10,21 @@ import java.util.List;
 
 public class BaseBallGameImpl implements BaseBallGame {
 
-    private static final InputAnswer inputAnswer = new InputAnswerImpl();
-    private static final EndProcess endProcess = new EndProcessImpl();
+    private static final InputAnswer inputAnswer = DiContainer.getInputAnswer();
+    private static final EndProcess endProcess = DiContainer.getEndProcess();
     private List<Integer> computerNumber;
+
+    private static BaseBallGameImpl singleton;
+
+    private BaseBallGameImpl() {
+    }
+
+    public static BaseBallGameImpl getInstance() {
+        if (singleton == null) {
+            singleton = new BaseBallGameImpl();
+        }
+        return singleton;
+    }
 
     @Override
     public void initGame() {

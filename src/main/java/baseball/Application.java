@@ -1,20 +1,20 @@
 package baseball;
 
-import baseball.ProcessGame.BaseBallGame;
-import baseball.ProcessGame.BaseBallGameImpl;
-import camp.nextstep.edu.missionutils.Console;
+import static java.lang.System.out;
 
-import static java.lang.System.*;
+import baseball.Config.DiContainer;
+import baseball.ProcessGame.BaseBallGame;
+import camp.nextstep.edu.missionutils.Console;
 
 
 public class Application {
 
     private static final String startupMessage = "숫자 야구 게임을 시작합니다.";
-    private static final BaseBallGame baseBallGame = new BaseBallGameImpl();
+    private static final BaseBallGame baseBallGame = DiContainer.getBaseBallGame();
 
     public static void main(String[] args) {
         out.println(startupMessage);
-        try{
+        try {
             baseBallGame.initGame();
         } catch (IllegalArgumentException e) {
             out.println(e.getMessage());

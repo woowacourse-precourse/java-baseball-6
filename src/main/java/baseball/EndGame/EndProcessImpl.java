@@ -1,12 +1,24 @@
 package baseball.EndGame;
 
+import baseball.Config.DiContainer;
 import baseball.ProcessGame.BaseBallGame;
-import baseball.ProcessGame.BaseBallGameImpl;
 import camp.nextstep.edu.missionutils.Console;
 
 public class EndProcessImpl implements EndProcess {
 
-    private static final BaseBallGame baseBallGame = new BaseBallGameImpl();
+    private static final BaseBallGame baseBallGame = DiContainer.getBaseBallGame();
+    private static EndProcessImpl singleton;
+
+    private EndProcessImpl() {
+    }
+
+    public static EndProcessImpl getSingleton() {
+        if (singleton == null) {
+            singleton = new EndProcessImpl();
+        }
+        return singleton;
+    }
+
 
     @Override
     public void userChoice() {
