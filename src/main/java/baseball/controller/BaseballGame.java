@@ -20,9 +20,6 @@ public class BaseballGame {
 
     private void createComputerNumber() {
         computer = new Computer();
-        for(int num : computer.getComputerNumber()) {
-            System.out.println(num);
-        }
     }
 
     private void getUserNumber() {
@@ -44,5 +41,7 @@ public class BaseballGame {
                 ball++;
             }
         }
+
+        OutputView.printOneGameResult(strike, ball);
     }
 }
