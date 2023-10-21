@@ -5,7 +5,6 @@ import java.util.List;
 public class CheckBallAndStrike {
 
     private static final int NO_COUNT = 0;
-    private static final int THREE_STRIKE = 3;
 
     private int ball;
     private int strike;
@@ -49,7 +48,7 @@ public class CheckBallAndStrike {
     }
 
     public boolean isThreeStrike(){
-        return strike != THREE_STRIKE;
+        return strike != BaseballRole.THREE_STRIKE.getValue();
     }
 
 }
