@@ -14,13 +14,15 @@ public class Application {
     private final MakeUserAnswer makeUserAnswer;
     private final Play play;
     private final PrintResult printResult;
+    private final Restart restart;
 
     public Application(MakeComputerRandom makeComputerRandom, MakeUserAnswer makeUserAnswer, Play play,
-                       PrintResult printResult) {
+                       PrintResult printResult, Restart restart) {
         this.makeComputerRandom = makeComputerRandom;
         this.makeUserAnswer = makeUserAnswer;
         this.play = play;
         this.printResult = printResult;
+        this.restart = restart;
     }
 
     public static void main(String[] args) {
@@ -29,9 +31,9 @@ public class Application {
         MakeUserAnswer makeUserAnswer = new MakeUserAnswer(userValidation);
         Play play = new Play();
         Restart restart = new Restart(userValidation);
-        PrintResult printResult = new PrintResult(restart);
+        PrintResult printResult = new PrintResult();
 
-        Application app = new Application(makeComputerRandom, makeUserAnswer, play, printResult);
+        Application app = new Application(makeComputerRandom, makeUserAnswer, play, printResult, restart);
 
         app.runGame();
     }
@@ -61,6 +63,10 @@ public class Application {
         printResult.printInput();
         User user = makeUserAnswer.input();
         play.playBaseBallGame(computer, user);
-        return printResult.result(user);
+        boolean isEndOfGame = printResult.result(user);
+        if (isEndOfGame) {
+            return restart.restartOrExit();
+        }
+        return 0;
     }
 }

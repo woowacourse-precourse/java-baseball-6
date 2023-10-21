@@ -6,18 +6,12 @@ import baseball.domain.User;
  * 5. result() : 결과 출력
  */
 public class PrintResult {
-    private final Restart restart;
-
-    public PrintResult(Restart restart) {
-        this.restart = restart;
-    }
 
     public void printInput() {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    // 0 : 계속 진행, 1 : 재시작, 2 : 종료
-    public int result(User user) {
+    public boolean result(User user) {
         int strike = user.getStrike();
         int ball = user.getBall();
 
@@ -26,21 +20,36 @@ public class PrintResult {
 
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return restart.restartOrExit();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return true;
         }
 
-        return 0;
+        return false;
     }
 
     private String generateMessage(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
+        if (isNothing(strike, ball)) {
             return "낫싱";
-        } else if (strike != 0 && ball != 0) {
-            return ball + "볼 " + strike + "스트라이크";
-        } else if (strike == 0) {
-            return ball + "볼 ";
-        } else {
-            return strike + "스트라이크";
         }
+
+        return generateScore(strike, ball);
+    }
+
+    private boolean isNothing(int strike, int ball) {
+        return strike == 0 && ball == 0;
+    }
+
+    private String generateScore(int strike, int ball) {
+        StringBuilder score = new StringBuilder();
+
+        if (ball != 0) {
+            score.append(ball).append("볼 ");
+        }
+
+        if (strike != 0) {
+            score.append(strike).append("스트라이크");
+        }
+
+        return score.toString().trim();
     }
 }
