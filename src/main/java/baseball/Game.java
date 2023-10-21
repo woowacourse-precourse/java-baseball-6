@@ -13,4 +13,8 @@ public class Game {
         this.player = player;
         this.answer = answer;
     }
+
+    public void start() {
+        System.out.println(START_GAME_COMMENT);
+    }
 }
