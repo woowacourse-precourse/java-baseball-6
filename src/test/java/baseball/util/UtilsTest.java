@@ -34,4 +34,17 @@ class UtilsTest {
         assertThatThrownBy(() -> Utils.validateEndNumber(number))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("String 값을 int 로 변환한다.")
+    @Test
+    void stringToInt() {
+        // given
+        String inputNumber = "2";
+
+        // when
+        int number = Utils.stringToInt(inputNumber);
+
+        // then
+        assertEquals(2, number);
+    }
 }
