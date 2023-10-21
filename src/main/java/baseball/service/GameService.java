@@ -10,10 +10,7 @@ import java.util.stream.Stream;
 
 import baseball.model.GameResult;
 
-
-
 public class GameService {
-
     private final List<Integer> gameRandomNumbers;
 
     public GameService(List<Integer> gameRandomNumbers) {
