@@ -67,6 +67,8 @@
 
 - AnswerNumbers (정답 숫자 도메인)
 
+- BallCount (결과 볼카운트를 나타내는 일급 컬렉션)
+
 ## 열거형 목록
 
 - GameMessage: 게임 진행에 필요한 메시지를 가진다
