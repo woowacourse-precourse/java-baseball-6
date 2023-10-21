@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Collections;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -26,6 +28,17 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void generateThreeDifferentDigit() {
+        List<Integer> computer = BaseballNumberGenerator.generateThreeDigits();
+        assertThat(computer.size()).isEqualTo(3);
+        for (int digit : computer) {
+            assertThat(Collections.frequency(computer, digit)).isEqualTo(1);
+            assertThat(digit).isGreaterThanOrEqualTo(1);
+            assertThat(digit).isLessThanOrEqualTo(9);
+        }
     }
 
     @Override
