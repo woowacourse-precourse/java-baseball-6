@@ -1,5 +1,11 @@
 package baseball;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class MessageStream {
     public static void printStartMessage() {
         String startMessage = "숫자 야구 게임을 시작합니다.\n";
@@ -30,5 +36,13 @@ public class MessageStream {
     public static void restartMessage() {
         String restartMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
         System.out.print(restartMessage);
+    }
+
+    public static List<Integer> input() {
+        String str = readLine();
+        return IntStream.range(0, str.length())
+                .map(i -> Integer.parseInt(str.substring(i, i + 1)))
+                .boxed()
+                .collect(Collectors.toList());
     }
 }
