@@ -1,8 +1,11 @@
 package baseball.domain;
 
+import baseball.config.AppConfig;
 import baseball.util.MessagePrinter;
 
 public class BaseballGame {
+
+    public static final int BALL_COUNT = 3;
 
     private final MessagePrinter messagePrinter;
 
@@ -16,5 +19,11 @@ public class BaseballGame {
 
     public void start() {
         messagePrinter.printStartMessage();
+        play();
+    }
+
+    private void play() {
+        Pitcher pitcher = AppConfig.getPitcher();
+        Umpire umpire = Umpire.from(pitcher.pitchBalls());
     }
 }
