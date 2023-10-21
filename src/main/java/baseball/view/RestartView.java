@@ -11,7 +11,7 @@ public class RestartView {
     }
 
     public static boolean doRestart() {
-        final String input = Console.readLine();
+        final String input = Console.readLine().trim();
         return input.equals("1");
     }
 

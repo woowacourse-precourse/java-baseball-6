@@ -8,6 +8,6 @@ public class PredictView {
 
     public static String printAndRead() {
         System.out.print(PREDICT_MESSAGE);
-        return Console.readLine();
+        return Console.readLine().trim();
     }
 }
