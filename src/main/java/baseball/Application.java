@@ -24,9 +24,20 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
+        //검증: 만약 숫자의 자리수가 3보다 작으면 잘못 입력한 것이다.
+        //검증: 만약 숫자의 자리수가 3보다 크면 잘못 입력한 것이다.
+        int inputNumLen = inputNum.length();
+        if (inputNumLen<n) {
+            throw new IllegalArgumentException();
+        }
+
+        if (inputNumLen>n) {
+            throw new IllegalArgumentException();
+        }
+
     }
 
-    //정수인지 아닌지 확인
+    //정수인지 아닌지 판단
     public static boolean isInteger(String strValue) {
         try {
             Integer.parseInt(strValue);
@@ -35,4 +46,6 @@ public class Application {
             return false;
         }
     }
+
+
 }
