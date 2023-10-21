@@ -39,8 +39,7 @@ public class Application {
             }
             ReStart();
         } catch(IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("게임이 종료되었습니다");
         }
     }
 
@@ -75,9 +74,9 @@ public class Application {
 
     public static List<Integer> PlayerSelectNumber() {
         List<Integer> playerNumber = new ArrayList<>();
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요 : ");
 
-        String player = Console.readLine().replaceAll(" ", "");
+        String player = Console.readLine();
 
         for(int i=0; i<player.length(); i++) {
             playerNumber.add(player.charAt(i) - '0');
