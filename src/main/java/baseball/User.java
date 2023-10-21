@@ -5,22 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-
-    private List<Integer> numbers;
-    private boolean gameStatus;
-
-    public User() {
-        this.gameStatus = true;
-    }
-
-    public boolean getGameStatus() {
-        return this.gameStatus;
-    }
-
-    public List<Integer> getNumbers() {
-        return this.numbers;
-    }
-
     public List<Integer> getNumbersFromUser() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
