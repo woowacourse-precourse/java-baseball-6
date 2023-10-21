@@ -21,7 +21,7 @@ public class BallComparator {
 
     private int countStrike(List<Ball> userBalls, List<Ball> computerBalls) {
         int strike = 0;
-        for (int i = BEGIN_INDEX; i < END_INDEX; i++) {
+        for (int i = BEGIN_INDEX; i <= END_INDEX; i++) {
             BallNumber userBall = userBalls.get(i).getBallNumber();
             BallNumber computerBall = computerBalls.get(i).getBallNumber();
             if (userBall.getBallNumber() == computerBall.getBallNumber()) {
