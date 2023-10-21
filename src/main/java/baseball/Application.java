@@ -59,6 +59,7 @@ public class Application {
         }
 
         private List<Integer> inputUserNumbers() {
+            System.out.print("숫자를 입력해주세요 : ");
             String[] numbers = scanner.nextLine().split("");
 
             checkUserNumbers(numbers);
@@ -107,10 +108,15 @@ public class Application {
         }
 
         public boolean checkInningEnd() {
-            return count[1] == 3;
+            if (count[1] == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return true;
+            }
+            return false;
         }
 
         public boolean checkExit() {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int exitCode = scanner.nextInt();
             if (exitCode == 1) {
                 return false;
