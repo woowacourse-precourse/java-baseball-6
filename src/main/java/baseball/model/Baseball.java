@@ -6,14 +6,14 @@ import java.util.List;
 
 
 public class Baseball {
-    
+
     List<Integer> ballNum = new ArrayList<>();
 
     public Baseball(List<Integer> ballNum) {
         this.ballNum = ballNum;
     }
 
-    public void makeBaseball() {
+    public Baseball makeBaseball() {
 
         while (ballNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -21,6 +21,8 @@ public class Baseball {
                 ballNum.add(randomNumber);
             }
         }
+
+        return new Baseball(ballNum);
 
     }
 }
