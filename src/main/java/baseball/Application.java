@@ -16,9 +16,12 @@ public class Application {
 
 class BaseballGame {
     private List<Integer> computer = new ArrayList<>();
+    private List<Integer> user = new ArrayList<>();
     void play() {
         makeComNum();
         System.out.println(computer);
+        getUserNum();
+        System.out.println(user);
     }
     private void makeComNum() {
         while (computer.size() < 3) {
@@ -26,6 +29,12 @@ class BaseballGame {
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
+        }
+    }
+    private void getUserNum() {
+        String userNumber = Console.readLine();
+        for (int i=0; i<3; i++) {
+            user.add(Character.getNumericValue(userNumber.charAt(i)));
         }
     }
     private int countStrike(List<Integer> user) {
