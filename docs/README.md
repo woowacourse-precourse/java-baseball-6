@@ -58,9 +58,9 @@
 
 ## 📙 Results
 
-- [ ] 2개의 `Numbers`에 대한 `ResultStatus`들을 다루는 class
-    - [ ] 결과를 반환 (`toString()` 오버라이딩)
+- [x] 2개의 `Numbers`에 대한 `ResultStatus`들을 다루는 class
     - [x] `Strike/Ball/Out`의 각각의 수를 저장
+    - [x] 결과를 반환 (`toString()` 오버라이딩)
 
 ---
 

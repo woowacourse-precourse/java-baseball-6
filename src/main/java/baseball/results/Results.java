@@ -14,4 +14,8 @@ public class Results {
         this.ballCount = ballCount;
     }
 
+    @Override
+    public String toString() {
+        return ResultsUtils.getStringValueOfResults(strikeCount, ballCount);
+    }
 }

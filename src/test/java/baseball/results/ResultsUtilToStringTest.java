@@ -50,4 +50,25 @@ public class ResultsUtilToStringTest {
         Assertions.assertEquals(string, expectedString);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+            "3,0,3스트라이크",
+            "2,1,1볼 2스트라이크",
+            "2,0,2스트라이크",
+            "1,2,2볼 1스트라이크",
+            "1,1,1볼 1스트라이크",
+            "1,0,1스트라이크",
+            "0,3,3볼",
+            "0,2,2볼",
+            "0,1,1볼",
+            "0,0,낫싱",
+    })
+    void 판별_출력값_반환(int strikeCount, int ballCount, String expected) {
+        // when
+        String result = ResultsUtils.getStringValueOfResults(strikeCount, ballCount);
+
+        // then
+        Assertions.assertEquals(result, expected);
+    }
+
 }
