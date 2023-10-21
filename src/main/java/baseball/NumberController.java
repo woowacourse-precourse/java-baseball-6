@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +20,9 @@ public class NumberController {
 
     public List<Integer> suggestedNumberConverter(int numberSuggestion) {
         List<Integer> suggestion = new ArrayList<>();
-        suggestion.add(numberSuggestion/100);
-        suggestion.add(numberSuggestion/10%10);
-        suggestion.add(numberSuggestion%10);
+        suggestion.add(numberSuggestion / 100);
+        suggestion.add(numberSuggestion / 10 % 10);
+        suggestion.add(numberSuggestion % 10);
         return suggestion;
     }
 }
