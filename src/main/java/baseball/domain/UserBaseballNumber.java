@@ -12,7 +12,7 @@ import static baseball.handler.ErrorHandler.*;
 public class UserBaseballNumber {
 
     private static final int VALID_VALUES_LENGTH = 3;
-    private List<String> userValues;
+    private final List<String> userValues;
 
     public UserBaseballNumber(List<String> userValues) {
         validate(userValues);

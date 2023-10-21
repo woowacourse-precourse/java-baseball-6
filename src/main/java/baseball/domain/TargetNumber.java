@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TargetNumber {
 
-    private List<Integer> targetNumber;
+    private final List<Integer> targetNumber;
 
     public TargetNumber() {
         this.targetNumber = getComputerNumbers();
