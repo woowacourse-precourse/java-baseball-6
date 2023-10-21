@@ -8,7 +8,7 @@ public class NumberParser {
 
     public static List<Integer> parseIntegerList(String numberString) {
         List<Integer> parsedNumbers = new ArrayList<>();
-        validateIntString(numberString);
+        validateNotEmptyString(numberString);
         for (int i = 0; i < numberString.length(); i++) {
             char ch = numberString.charAt(i);
             parsedNumbers.add(parseIntCharacter(ch));
@@ -17,7 +17,7 @@ public class NumberParser {
     }
 
     public static int parseSingleDigitNumber(String numberString) {
-        validateIntString(numberString);
+        validateNotEmptyString(numberString);
         if (numberString.length() != 1) {
             throw new IllegalArgumentException("문자열 길이가 올바르지 않습니다.");
         }
@@ -31,7 +31,7 @@ public class NumberParser {
         return Character.getNumericValue(ch);
     }
 
-    private static void validateIntString(String numberString) {
+    private static void validateNotEmptyString(String numberString) {
         if (numberString == null || numberString.isEmpty()) {
             throw new IllegalArgumentException("비어있지 않은 문자열이 입력되어야 합니다.");
         }
