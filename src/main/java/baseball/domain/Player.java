@@ -11,11 +11,15 @@ public class Player {
 	public static final String NUMBER_FORMAT = "\\d+";
 	public static final String NOT_NUMBER_ERROR_MESSAGE = "숫자가 아닙니다.";
 
-	private Balls balls;
+	private final Balls balls;
 
 	public Player(final String numbers) {
 		validate(numbers);
 		this.balls = new Balls(mapToList(numbers));
+	}
+
+	public Player updateBalls(final String numbers) {
+		return new Player(numbers);
 	}
 
 	private List<Integer> mapToList(final String numbers) {
@@ -34,6 +38,10 @@ public class Player {
 		if (!matcher.matches()) {
 			throw new IllegalArgumentException(NOT_NUMBER_ERROR_MESSAGE);
 		}
+	}
+
+	public Balls getBalls() {
+		return balls;
 	}
 
 }

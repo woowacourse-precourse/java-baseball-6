@@ -2,6 +2,7 @@ package baseball.domain;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Balls {
@@ -56,6 +57,23 @@ public class Balls {
 		return IntStream.rangeClosed(MIN_POSITION, MAX_POSITION)
 						.mapToObj(position -> new Ball(numbers.get(position), position))
 						.toList();
+	}
+
+	@Override
+	public boolean equals(final Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Balls otherBalls = (Balls)o;
+		return Objects.equals(balls, otherBalls.balls);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(balls);
 	}
 
 }
