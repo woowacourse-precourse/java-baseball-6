@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Baseball {
+    private final UserInputValidation userInputValidation;
+
+    public Baseball() {
+        userInputValidation = new UserInputValidation();
+    }
+
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         BaseBallNumber answerNumber = new BaseBallNumber(generateNumber());
@@ -45,23 +51,11 @@ public class Baseball {
         return numberList;
     }
 
-    public boolean isNumeric(String strNum) {
-        try {
-            Integer number = Integer.parseInt(strNum);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
-
     public List<Integer> inputUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         List<Integer> integerList = new ArrayList<>();
-        if (inputNumber.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-        if (!isNumeric(inputNumber)) {
+        if (!userInputValidation.isValidGameNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < 3; ++i) {
@@ -78,7 +72,7 @@ public class Baseball {
     public void restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputNumber = Console.readLine();
-        if (!isNumeric(inputNumber)) {
+        if (!userInputValidation.isValidGameNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }
         if (inputNumber.length() != 1) {
