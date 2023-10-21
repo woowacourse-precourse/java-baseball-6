@@ -29,9 +29,33 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트_문자가_입력될때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_특수문자가_입력될때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("!12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 예외_테스트_숫자가_3개인데_같은수_중복() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("332"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_숫자가_여러개인데_같은수_중복되어_중복값을_제외하면_3개일때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("3324444442222222"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
