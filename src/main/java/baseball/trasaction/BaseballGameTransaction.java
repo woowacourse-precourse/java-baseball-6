@@ -1,5 +1,6 @@
-package baseball;
+package baseball.trasaction;
 
+import baseball.object.game.BaseballGame;
 import baseball.io.Input;
 import baseball.io.Output;
 import java.util.Objects;
@@ -16,6 +17,15 @@ public class BaseballGameTransaction {
     private static final Set<String> INPUT_RESTARTS = Set.of(GAME_RESTART, GAME_FINISH);
 
     public void run() {
+        try {
+            playSession();
+        } catch (IllegalArgumentException e) {
+            Output.consoleLine("예외가 발생하여 어플리케이션을 종료합니다.");
+            throw e;
+        }
+    }
+
+    private static void playSession() {
         Output.consoleLine(GAME_START_MESSAGE);
 
         boolean whetherPlay = true;
