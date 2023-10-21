@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.awt.print.PrinterGraphics;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,16 +13,18 @@ public class NumberGenerator {
     private List<Integer> answer = new ArrayList<Integer>();
 
     public NumberGenerator() {
-        makeRandomAnswerList();
     }
 
-    public void makeRandomAnswerList() {
-        while (answer.size() < 3) {
+    public List<Integer> makeRandomAnswerList() {
+        List<Integer> answerList = new ArrayList<>();
+        while (answerList.size() < 3) {
             final int randomNumber = generateRandomNumber();
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
+            if (!answerList.contains(randomNumber)) {
+                answerList.add(randomNumber);
             }
         }
+        this.answer = answerList;
+        return answerList;
     }
 
     public int generateRandomNumber() {
