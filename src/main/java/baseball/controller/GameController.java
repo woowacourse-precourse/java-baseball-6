@@ -13,6 +13,10 @@ public class GameController {
         Validator validator=new Validator();
         validator.validateContinue(input);
 
+        return isOne(input);
+    }
+
+    private boolean isOne(String input){
         return input.equals("1");
     }
 }
