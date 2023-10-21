@@ -12,6 +12,11 @@ public class Computer {
         this.answer = generateAnswer();
     }
 
+    public Computer(List<Integer> answer) {
+        // TODO: 중복된, 범위 밖의 숫자가 포함된 경우, 예외처리
+        this.answer = answer;
+    }
+
     private List<Integer> generateAnswer() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3) {
