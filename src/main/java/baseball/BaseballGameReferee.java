@@ -4,7 +4,11 @@ import java.util.List;
 
 public class BaseballGameReferee {
 
-    private final BaseballGameNumber answer = new BaseballGameNumber();
+    private BaseballGameNumber answer = new BaseballGameNumber();
+
+    public void refreshAnswer() {
+        answer = new BaseballGameNumber();
+    }
 
     public BaseballGameJudgement judgement(BaseballGameNumber input) {
         BaseballGameJudgement judgement = new BaseballGameJudgement();
@@ -24,7 +28,6 @@ public class BaseballGameReferee {
             if(now == inputNumbers.get(i)) {
                if(nowIndex == i) {
                    judgement.addStrike();
-                   continue;
                }
                judgement.addBall();
             }

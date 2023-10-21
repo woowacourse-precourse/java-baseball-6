@@ -13,6 +13,10 @@ public class BaseballGameJudgement {
         this.strike++;
     }
 
+    public boolean isThreeStrike() {
+        return this.strike == 3;
+    }
+
     public void printJudgement() {
         StringBuilder sb = new StringBuilder();
         if(ball != 0) {
