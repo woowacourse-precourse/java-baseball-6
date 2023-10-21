@@ -1,12 +1,12 @@
 package baseball;
 
 public class FixedValue {
-    public static final int user_min_value = 1;
-    public static final int user_max_value = 9;
-    public static final int input_number_size = 3;
-    public static final int restart_game = 1;
-    public static final int end_game = 2;
-    public static final int correct_answer = 3;
-    public static final int reset_number = -1;
-    public static final int wrong_answer = 0;
+    public static final int USER_MIN_VALUE = 1;
+    public static final int USER_MAX_VALUE = 9;
+    public static final int INPUT_NUMBER_SIZE = 3;
+    public static final int RESTART_GAME = 1;
+    public static final int END_GAME = 2;
+    public static final int CORRECT_ANSWER = 3;
+    public static final int RESET_NUMBER = -1;
+    public static final int WRONG_ANSWER = 0;
 }

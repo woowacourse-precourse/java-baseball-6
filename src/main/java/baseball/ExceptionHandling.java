@@ -18,14 +18,14 @@ public class ExceptionHandling {
     }
 
     public static void checkNumberSize(String number) throws IllegalArgumentException {
-        if (number.length() != FixedValue.input_number_size) {
+        if (number.length() != FixedValue.INPUT_NUMBER_SIZE) {
             throw new IllegalArgumentException("3개의 숫자를 입력하지 않으셨습니다.");
         }
     }
 
     public static void restartOrEnd(String number) throws IllegalArgumentException {
-        if (!number.equals(String.valueOf(FixedValue.restart_game)) && !number.equals(
-                String.valueOf(FixedValue.end_game))) {
+        if (!number.equals(String.valueOf(FixedValue.RESTART_GAME)) && !number.equals(
+                String.valueOf(FixedValue.END_GAME))) {
             throw new IllegalArgumentException("새로 시작하거나 종료하는 숫자가 아닙니다.");
         }
     }
