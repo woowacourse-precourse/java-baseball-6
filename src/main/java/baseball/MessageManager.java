@@ -16,7 +16,7 @@ public class MessageManager extends Messages {
         return inputResponse;
     }
 
-    public void showMessage(GameProcessor gameProcessor, String message) {
-        System.out.print(gameProcessor.getResult() + message);
-    }
+//    public void showMessage(GameProcessor gameProcessor, String message) {
+//        System.out.print(gameProcessor.getResult() + message);
+//    }
 }
