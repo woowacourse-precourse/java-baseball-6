@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.domain.GameResultDTO;
+
 public class OutputView {
     StringBuilder sb;
     private void StringBuilderSetting() {
@@ -14,18 +16,18 @@ public class OutputView {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public void GameResult(int ball, int strike) {
+    public void GameResult(GameResultDTO gameResultDTO) {
         StringBuilderSetting();
-        if(strike == 0 && ball == 0) {
+        if(gameResultDTO.getStrike() == 0 && gameResultDTO.getBall() == 0) {
             sb.append("낫싱");
         }
 
-        if(ball != 0){
-            sb.append(ball).append("볼 ");
+        if(gameResultDTO.getBall() != 0){
+            sb.append(gameResultDTO.getBall() ).append("볼 ");
         }
 
-        if(strike != 0){
-            sb.append(strike).append("스트라이크");
+        if(gameResultDTO.getStrike() != 0){
+            sb.append(gameResultDTO.getStrike()).append("스트라이크");
         }
         System.out.println(sb);
     }
