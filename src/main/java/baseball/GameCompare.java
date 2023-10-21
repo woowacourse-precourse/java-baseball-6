@@ -8,9 +8,10 @@ public class GameCompare {
     private static final int THREE_STRIKE = 3;
     private int ball;
     private int strike;
-    private List<Integer> randomNumbers = RandomNum.createRandomNum();
+    private List<Integer> randomNumbers;
 
     public GameCompare() {
+        randomNumbers = RandomNum.createRandomNum();
     }
 
     public boolean updateGameCompare(Player player) {
@@ -35,6 +36,7 @@ public class GameCompare {
         if (ball != ZERO) {
             stringBuilder.append(ball);
             stringBuilder.append(OutputMessage.BALL);
+            stringBuilder.append(OutputMessage.SPACE);
         }
     }
 
@@ -48,11 +50,13 @@ public class GameCompare {
     private void isBallAndStrike(StringBuilder stringBuilder) {
         if (ball == ZERO && strike == ZERO) {
             stringBuilder.append(OutputMessage.NOTHING);
+            stringBuilder.append(OutputMessage.SPACE);
         }
     }
 
     private void isGameOver(StringBuilder stringBuilder) {
         if (strike == THREE_STRIKE) {
+            stringBuilder.append(OutputMessage.LINE_BREAK);
             stringBuilder.append(OutputMessage.THREE_STRIKE_MESSAGE);
         }
     }
