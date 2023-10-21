@@ -3,7 +3,9 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -57,5 +59,17 @@ class NumberGeneratorTest {
         //then
         randomNumberList.forEach(randomNumber -> assertThat(randomNumber).isBetween(1, 9));
         assertThat(randomNumberList.size()).isEqualTo(3);
+    }
+
+    @DisplayName("생성된 랜덤 리스트의 값이 중복되는지 확인하는 테스트")
+    @Test
+    void duplicateNumberInRandomList() {
+        //given
+        NumberGenerator numberGenerator = new NumberGenerator();
+        //when
+        List<Integer> randomNumberList = numberGenerator.makeRandomAnswerList();
+        //given
+        Set<Integer> integerSet = new HashSet<>(randomNumberList);
+        assertThat(integerSet.size()).isEqualTo(3);
     }
 }
