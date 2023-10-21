@@ -37,7 +37,6 @@ public class Application {
             }
 
             List<Integer> guessNumbers=new ArrayList<>();
-
             for(char c:guess.toCharArray()){
                 if(Character.isDigit(c)){
                     guessNumbers.add(Character.getNumericValue(c));
@@ -58,7 +57,6 @@ public class Application {
                     break;
                 }
             } else {
-
                 for(int i=0; i<3; i++) {
                     if(valueList.get(i).equals(guessNumbers.get(i)))
                         strike++;
@@ -73,15 +71,11 @@ public class Application {
                     result += ball + "볼";
                 } else if (strike != 0) {
                     result += strike + "스트라이크";
+                } else if(ball+strike==0){
+                    result  += "낫싱";
                 }
-
-                if (ball+strike == 0)
-                    result += "낫싱";
-
                 System.out.println(result);
             }
-
         }
-
     }
 }
