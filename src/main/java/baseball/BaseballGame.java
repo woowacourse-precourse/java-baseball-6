@@ -2,6 +2,10 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+
 public class BaseballGame {
 
     public static final int RESTART_OPERATION = 1;
@@ -10,8 +14,8 @@ public class BaseballGame {
     int exitNumber = 0;
     int strikeNumber = 3;
     int ballNumber = 0;
-    int[] answerNumber = new int[3];
-    int[] expectedNumber = new int[3];
+    List<Integer> answerNumber;
+    List<Integer> expectedNumber;
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -26,11 +30,24 @@ public class BaseballGame {
             }
         }
     }
+
     private void resetGame() {
-        //makeAnswerNumber();
+        makeAnswerNumber();
         exitNumber = 0;
         strikeNumber = 0;
         ballNumber = 0;
+    }
+
+    public void makeAnswerNumber() {
+        answerNumber = new ArrayList<>();
+
+        while (answerNumber.size() < BASEBALL_NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answerNumber.contains(randomNumber)) {
+                answerNumber.add(randomNumber);
+            }
+        }
+        // System.out.println(answerNumber.toString());
     }
 
     private boolean isCompleted() {
@@ -61,5 +78,4 @@ public class BaseballGame {
             throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
         }
     }
-
 }
