@@ -18,4 +18,10 @@ public class PlayerValidation {
             }
         }
     }
+
+    public static void isCheckSize(String numbers) {
+        if(numbers.length() != 3){
+            throw new IllegalArgumentException("3자리 수가 아닙니다");
+        }
+    }
 }
