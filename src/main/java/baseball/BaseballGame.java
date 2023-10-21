@@ -3,10 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
+    private final static int numberLength = 3;
     /* 게임 시작 */
     public static void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        final int numberLength = 3;
         Answer answer = new Answer(numberLength);
         String message;
         while (true) {
@@ -17,8 +17,10 @@ public class BaseballGame {
             Status status = new Status(result);
             message = status.toString();
             System.out.println(message);
-            if (status.isCorrect())
+            if (status.isCorrect()) {
+                System.out.println(message);
                 break;
+            }
         }
         menu();
         Console.close();
@@ -34,9 +36,10 @@ public class BaseballGame {
         while (!menuSelect.equals("2")) {
             if (menuSelect.equals("1")) {
                 startGame();
-                break;
+                return;
             }
             menuSelect = Console.readLine();
         }
+        System.out.println(numberLength + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
