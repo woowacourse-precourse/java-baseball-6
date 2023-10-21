@@ -26,10 +26,36 @@ public class GameController {
             String userNumber = getUserNumber();
             BaseballService baseballService = new BaseballService(userNumber,nowComNumber);
             GameStateDto gamestate = baseballService.caculate();
+            outputResult(gamestate);
 
         }
 
 
+    }
+
+
+
+    private void outputResult(GameStateDto gamestate) {
+        int strike = gamestate.getStrike();
+        int ball = gamestate.getBall();
+        if(strike == 3) {
+            threeThrikeOutput(strike);
+            gamestate.activateEndGame();
+        }
+        else if(strike >0 && ball >0)
+            outputView.strikeBall(strike, ball);
+        else if(strike>0)
+            outputView.onlyStrike(strike);
+        else if(ball>0)
+            outputView.onlyBall(ball);
+        else if(strike==0 && ball==0)
+            outputView.nothing();
+    }
+
+    private void threeThrikeOutput(int strike) {
+        outputView.onlyStrike(strike);
+        outputView.endGame();
+        outputView.restart();
     }
 
 
