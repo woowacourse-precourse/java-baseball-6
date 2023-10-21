@@ -7,7 +7,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-// 숫자야구게임의 진행을 담당하는 클래스
 public class BaseballService {
     public BaseballNumber initializeComputerNumber() {
         List<Integer> computer = new ArrayList<>();
