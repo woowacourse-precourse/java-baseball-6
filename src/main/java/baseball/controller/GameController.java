@@ -14,6 +14,8 @@ public class GameController {
 
     private static final String RESET_COMMAND = "1";
     private static final int NUMBER_SIZE = 3;
+    private static final int START_NUMBER = 1;
+    private static final int END_NUMBER = 9;
 
     public void run() {
         OutputView.printStart();
@@ -23,7 +25,7 @@ public class GameController {
     }
 
     private void playGame() {
-        programNumber = new ProgramNumber(NUMBER_SIZE);
+        programNumber = new ProgramNumber(NUMBER_SIZE, START_NUMBER, END_NUMBER);
         do {
             userNumber = new UserNumber(InputView.inputUserNumber());
             int[] result = getResultList();
