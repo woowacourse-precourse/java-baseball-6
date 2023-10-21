@@ -18,4 +18,8 @@ public class BaseballGameCounts {
     public void showCounts() {
 
     }
+
+    public void editMessage(String frag) {
+        this.message += frag;
+    }
 }
