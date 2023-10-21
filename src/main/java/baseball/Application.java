@@ -24,7 +24,7 @@ public class Application {
 
         int chunkIndex = 0;
 
-        chunk = Input.sliceToThree(computerInput, chunkIndex);
+        chunk = Input.sliceToThree(computerInput, 0);
         System.out.println("숫자 야구 게임을 시작합니다.");
         computerNumber = new ComputerNumber(chunk);
         chunkIndex++;
@@ -33,18 +33,15 @@ public class Application {
             if(exitCommand == RESTARTED){
                 chunk = Input.sliceToThree(computerInput, chunkIndex);
                 computerNumber = new ComputerNumber(chunk);
+                chunkIndex++;
             }
 
             System.out.print("숫자를 입력해 주세요 : ");
             guessNumber = new GuessNumber();
-
             Printer.printBaseballNumber(guessNumber);
             countResult = game.count(computerNumber, guessNumber);
             Printer.printResult(countResult);
             exitCommand = game.checkRestart(countResult);
-
-            if(exitCommand == EXIT)
-                return;
         }
     }
 }

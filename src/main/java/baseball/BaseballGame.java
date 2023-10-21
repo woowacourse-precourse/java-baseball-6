@@ -19,12 +19,6 @@ public class BaseballGame {
     int exitCommand = INITIALIZE;
     List<Integer> chunk;
 
-    static BaseballGame baseballGame = new BaseballGame();
-    private BaseballGame(){}
-    public static BaseballGame getInstance(){
-        return baseballGame;
-    }
-
     public void run(final int[] computerInput) throws IllegalArgumentException{
         int chunkIndex = 0;
 
@@ -45,11 +39,13 @@ public class BaseballGame {
             countResult = count(computerNumber, guessNumber);
             Printer.printResult(countResult);
             exitCommand = checkRestart(countResult);
-
-            if(exitCommand == EXIT)
-                return;
         }
     }
+    static BaseballGame baseballGame = new BaseballGame();
+    public static BaseballGame getInstance(){
+        return baseballGame;
+    }
+    private BaseballGame(){}
 
     private int countBall(
             final ComputerNumber computer, final int guessNumber, final int computerNumber){
