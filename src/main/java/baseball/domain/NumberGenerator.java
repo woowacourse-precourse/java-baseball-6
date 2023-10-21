@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
-    private static final int SIZE = 3;
-
     public static List<BaseBall> generateAnswerNumbers(){
         List<BaseBall> randomBaseBallNumbers = new ArrayList<>();
-        while(randomBaseBallNumbers.size() < SIZE){
+        while(randomBaseBallNumbers.size() < BaseBalls.SIZE){
             int number = Randoms.pickNumberInRange(BaseBall.MIN_NUMBER, BaseBall.MAX_NUMBER);
             if(!randomBaseBallNumbers.contains(number)){
                 randomBaseBallNumbers.add(BaseBall.toBaseBall(number));

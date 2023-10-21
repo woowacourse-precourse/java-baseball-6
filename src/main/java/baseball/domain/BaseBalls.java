@@ -4,19 +4,27 @@ import java.util.List;
 
 public class BaseBalls {
     private List<BaseBall> numbers;
-    private NumberGenerator numberGenerator;
+    public static final int SIZE = 3;
 
     public BaseBalls(List<BaseBall> numbers){
+        validateSize();
+        validateDuplication();
         this.numbers = numbers;
-        validate();
-    }
-
-    private void validate(){
-        // TODO: (1) 3자리 숫자가 아닌 값을 입력한 경우 예외처리
-        //       (2) 3자리 숫자중에 중복되는 숫자가 존재하는 경우 예외처리
     }
 
     public static BaseBalls getBaseBallNumbers(){
         return new BaseBalls(NumberGenerator.generateAnswerNumbers());
+    }
+
+    private void validateSize(){
+        if(numbers.size() != SIZE){
+            throw new IllegalArgumentException("숫자의 길이는 3이여야합니다.");
+        }
+    }
+
+    private void validateDuplication(){
+        if(numbers.stream().distinct().count() != SIZE){
+            throw new IllegalArgumentException("중복되는 숫자없이, 서로 다른 3개의 숫자를 입력해야합니다.");
+        }
     }
 }

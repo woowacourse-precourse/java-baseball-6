@@ -7,11 +7,13 @@ public class BaseBall {
 
     public BaseBall(int number) {
         this.number = number;
-        validate();
+        validateRange();
     }
 
-    private void validate(){
-        // TODO : 1부터 9사이의 숫자를 입력하도록 요구 (예외처리)
+    private void validateRange(){
+        if(number < MIN_NUMBER || number > MAX_NUMBER){
+            throw new IllegalArgumentException("1부터 9사이의 숫자를 입력홰야합니다.");
+        }
     }
 
     public static BaseBall toBaseBall(int number){
