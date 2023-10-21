@@ -7,7 +7,7 @@ public class ExceptionList {
         if(numbers.size() != 3) {
             throw new IllegalArgumentException("numbers사이즈 예외 발생");
         }
-        if(checkDuplicateNumber(numbers)) {
+        if(checkDuplicateNumber(numbers, 0, 0)) {
             throw new IllegalArgumentException("중복수 예외 발생");
         }
     }
@@ -18,10 +18,11 @@ public class ExceptionList {
         }
     }
 
-    public static boolean checkDuplicateNumber(List<Integer> numbers) {
-        int numbersIdx = 0;
-        int checkNumberIdx = 0;
-
+    public static boolean checkDuplicateNumber(
+            List<Integer> numbers,
+            int numbersIdx,
+            int checkNumberIdx
+    ) {
         while(numbersIdx != numbers.size()) {
             int searchNumber = numbers.get(numbersIdx);
             int checkNumber = numbers.get(checkNumberIdx);
