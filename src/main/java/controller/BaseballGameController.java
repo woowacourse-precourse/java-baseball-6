@@ -31,17 +31,7 @@ public class BaseballGameController {
             int strikeCount = countStrike(computer, userNumbers);
             int includedNumberCount = countIncludedNumbers(computer, userNumbers);
 
-            int ballCount = includedNumberCount - strikeCount;
-
-            if (includedNumberCount == 0) {
-                System.out.println("낫싱");
-            } else if (strikeCount == 0) {
-                System.out.println(ballCount + "볼");
-            } else if (strikeCount == includedNumberCount) {
-                System.out.println(strikeCount + "스트라이크");
-            } else if (strikeCount > 0) {
-                System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-            }
+            baseballGameView.printJudgementMessage(strikeCount, includedNumberCount);
         }
     }
 

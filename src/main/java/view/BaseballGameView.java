@@ -13,6 +13,20 @@ public class BaseballGameView {
         return getUserNumberList(parsedUserInput);
     }
 
+    public void printJudgementMessage(int strikeCount, int includedNumberCount) {
+        int ballCount = includedNumberCount - strikeCount;
+
+        if (includedNumberCount == 0) {
+            System.out.println("낫싱");
+        } else if (strikeCount == 0) {
+            System.out.println(ballCount + "볼");
+        } else if (strikeCount == includedNumberCount) {
+            System.out.println(strikeCount + "스트라이크");
+        } else if (strikeCount > 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+    }
+
     public int isContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
