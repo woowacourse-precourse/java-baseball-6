@@ -10,15 +10,17 @@ public class Game {
 
     public Game() {
         this.randomAnswer = new ArrayList<>();
+        createRandomAnswer();
     }
 
-    public List<Integer> createRandomAnswer() {
+    private List<Integer> createRandomAnswer() {
         while (randomAnswer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomAnswer.contains(randomNumber)) {
                 randomAnswer.add(randomNumber);
             }
         }
+
         return randomAnswer;
     }
 
@@ -41,22 +43,47 @@ public class Game {
         }
     }
 
-    public String getHint(String input) {
+    public int countStrike(String input) {
         List<Integer> inputList = stringToIntegerList(input);
+        int strikeCount = 0;
 
-        // find StrikeCount and ballCount
-        Integer strikeCount = 0;
+        for (int i = 0; i < 3; i++) {
+            Integer number = inputList.get(i);
+            if (isStrike(number, i)) strikeCount++;
+        }
+
+        return strikeCount;
+    }
+
+    public boolean restartGame(String input) {
+        if (input.equals("1")) {
+            return true;
+        } else if (input.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public boolean isEndGame(int strikeCount) {
+        if (strikeCount == 3) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public int countBall(String input) {
+        List<Integer> inputList = stringToIntegerList(input);
         Integer ballCount = 0;
 
         for (int i = 0; i < 3; i++) {
             Integer number = inputList.get(i);
-
-            if (isStrike(number, i)) strikeCount++;
-            else if (isBall(number, i)) ballCount++;
+            if (isBall(number, i)) ballCount++;
         }
-
-        return createHint(strikeCount, ballCount);
+        return ballCount;
     }
+
 
 
     private List<Integer> stringToIntegerList(String str) {
@@ -73,22 +100,5 @@ public class Game {
 
     private Boolean isBall(Integer number, int index) {
         return randomAnswer.contains(number) && (!number.equals(randomAnswer.get(index)));
-    }
-
-    private String createHint(Integer strikeCount, Integer ballCount) {
-        StringBuilder sb = new StringBuilder();
-
-        if (ballCount != 0) {
-            sb.append(ballCount).append("볼 ");
-        }
-        if (strikeCount != 0) {
-            sb.append(strikeCount).append("스트라이크");
-        }
-
-        if (ballCount == 0 && strikeCount == 0) {
-            sb.append("낫싱");
-        }
-
-        return sb.toString();
     }
 }
