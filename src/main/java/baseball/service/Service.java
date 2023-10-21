@@ -19,7 +19,6 @@ public class Service {
 
     public List<Integer> readNumber(){
         String input = Console.readLine();
-
         if (input.length() != 3) {
             throw new IllegalArgumentException("입력 문자열의 길이는 3이어야 합니다.");
         }
@@ -62,16 +61,16 @@ public class Service {
         }
         if (strike == 0) {
             System.out.println(ball + "볼");
+            return quit;
         }
         if (ball == 0) {
             System.out.println(strike + "스트라이크");
+            return quit;
         }
         if (ball > 0 && strike > 0 ){
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
-
         return quit;
-
     }
 
     public boolean restart(boolean quit){

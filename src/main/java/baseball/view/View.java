@@ -14,13 +14,16 @@ public class View {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(!quit){
             List<Integer> randomNumber = controller.makeNumber();
-            //System.out.println(randomNumber); // TODO: 개발 이후에 해당 내용 삭제 필요
+            System.out.println(randomNumber); // TODO: 개발 이후에 해당 내용 삭제 필요
             System.out.print("숫자를 입력해주세요: ");
             List<Integer> userNumber = controller.getNumber();
             quit = controller.countScore(randomNumber,userNumber,score, quit);
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            quit = controller.restart(quit);
+            if(quit){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                quit = controller.restart(quit);
+            }
+
         }
 
     }
