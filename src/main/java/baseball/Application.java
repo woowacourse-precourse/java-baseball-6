@@ -5,6 +5,6 @@ public class Application {
         GameManager gameManager = new GameManager();
 
         gameManager.proceedIntro();
-
+        gameManager.proceedMainGame();
     }
 }

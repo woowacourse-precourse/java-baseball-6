@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GameProcessor {
@@ -49,10 +50,29 @@ public class GameProcessor {
             for (int j = 0; j < DIGIT_SIZE; j++) {
                 if (userNumberList.get(i).equals(randomNumberList.get(j))) {
                     ball++;
+                    break;
                 }
             }
         }
         return String.valueOf(ball);
+    }
+
+    public List<String> calculateStrikeBall(Data data) {
+        List<String> strikeBall = Arrays.asList("0", "0");
+        List<String> userNumberList = generateUserNumberList(data);
+        List<String> randomNumberList = generateRandomNumberList();
+
+        String strike = calculateStrike(data, userNumberList, randomNumberList);
+        String ball = calculateBall(data, userNumberList, randomNumberList);
+
+        strikeBall.set(0, strike);
+        strikeBall.set(1, ball);
+
+        System.out.println(strikeBall);
+        System.out.println(userNumberList);
+        System.out.println(randomNumberList);
+
+        return strikeBall;
     }
 
     public void IllegalArgumentException(Data data) {

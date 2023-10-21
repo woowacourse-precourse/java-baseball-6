@@ -6,34 +6,7 @@ public class Messages {
     private String outroMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private String sameDigitMessage = "스트라이크";
     private String sameNumberMessage = "볼";
-
-    public Messages() {
-        this.introMessage = introMessage;
-        this.inputMessage = inputMessage;
-        this.outroMessage = outroMessage;
-        this.sameDigitMessage = sameDigitMessage;
-        this.sameNumberMessage = sameNumberMessage;
-    }
-
-    public void setIntroMessage(String introMessage) {
-        this.introMessage = introMessage;
-    }
-
-    public void setInputMessage(String inputMessage) {
-        this.inputMessage = inputMessage;
-    }
-
-    public void setSameDigitMessage(String sameDigitMessage) {
-        this.sameDigitMessage = sameDigitMessage;
-    }
-
-    public void setSameNumberMessage(String sameNumberMessage) {
-        this.sameNumberMessage = sameNumberMessage;
-    }
-
-    public void setOutroMessage(String outroMessage) {
-        this.outroMessage = outroMessage;
-    }
+    private String wrongMessage = "낫싱";
 
     public String getIntroMessage() {
         return introMessage;
@@ -41,6 +14,10 @@ public class Messages {
 
     public String getInputMessage() {
         return inputMessage;
+    }
+
+    public String getOutroMessage() {
+        return outroMessage;
     }
 
     public String getSameDigitMessage() {
@@ -51,7 +28,31 @@ public class Messages {
         return sameNumberMessage;
     }
 
-    public String getOutroMessage() {
-        return outroMessage;
+    public String getWrongMessage() {
+        return wrongMessage;
+    }
+
+    public void setIntroMessage(String introMessage) {
+        this.introMessage = introMessage;
+    }
+
+    public void setInputMessage(String inputMessage) {
+        this.inputMessage = inputMessage;
+    }
+
+    public void setOutroMessage(String outroMessage) {
+        this.outroMessage = outroMessage;
+    }
+
+    public void setSameDigitMessage(String sameDigitMessage) {
+        this.sameDigitMessage = sameDigitMessage;
+    }
+
+    public void setSameNumberMessage(String sameNumberMessage) {
+        this.sameNumberMessage = sameNumberMessage;
+    }
+
+    public void setWrongMessage(String wrongMessage) {
+        this.wrongMessage = wrongMessage;
     }
 }
