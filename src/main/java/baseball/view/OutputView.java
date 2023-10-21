@@ -15,8 +15,7 @@ public class OutputView {
         System.out.println(END_BASEBALL_GAME_MESSAGE);
     }
 
-    public static boolean matchResult(Score score) {
+    public static void matchResult(Score score) {
         System.out.println(score.toString());
-        return score.isStrikeOut();
     }
 }

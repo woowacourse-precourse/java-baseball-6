@@ -41,7 +41,8 @@ public class OutputViewTest {
     @ParameterizedTest
     @MethodSource("provideMatchResultTestArguments")
     void matchResultTest(Score score, String matchResult, boolean isStrikeOut) {
-        boolean isFullCount = OutputView.matchResult(score);
+        OutputView.matchResult(score);
+        boolean isFullCount = score.isStrikeOut();
         assertThat(output.toString()).isEqualTo(matchResult);
         assertThat(isFullCount).isEqualTo(isStrikeOut);
     }
