@@ -18,15 +18,15 @@ public class BallCounter {
         this.ballCount++;
     }
 
+    public boolean isNothing() {
+        return this.strikeCount == 0 && this.ballCount == 0;
+    }
+
     public int getStrikeCount() {
         return strikeCount;
     }
 
     public int getBallCount() {
         return ballCount;
-    }
-
-    public boolean isNothing() {
-        return this.strikeCount == 0 && this.ballCount== 0;
     }
 }
