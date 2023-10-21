@@ -14,7 +14,6 @@ class Game {
 
         public List<Integer> set() {
             String input = Console.readLine();
-            System.out.println(input);
             checkInputError(input);
             this.userNumberSaved = stringToList(input);
             return this.userNumberSaved;
@@ -26,6 +25,7 @@ class Game {
 
         private List<Integer> stringToList(String number) {
             List<Integer> ret = new ArrayList<>();
+
             for (int i = 0; i < number.length(); i++) {
                 String oneNum = number.substring(i, i + 1);
                 Integer oneNumInt = Integer.parseInt(oneNum);
@@ -147,6 +147,7 @@ class Game {
     private int printResult(List<Integer> userNumber, List<Integer> comNumber) { // 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시
         int strikeCnt = countStrike(userNumber, comNumber);
         int ballCnt = countBall(userNumber, comNumber);
+
         if (ballCnt > 0) {
             System.out.print(ballCnt + "볼");
         }
@@ -164,6 +165,7 @@ class Game {
 
     private void checkRestartInputError(String restartInput) throws IllegalArgumentException {
         List<String> correctAnswer = List.of("1", "2");
+
         if (correctAnswer.contains(restartInput) == false) {
             throw new IllegalArgumentException();
         }
@@ -172,6 +174,7 @@ class Game {
     private boolean askContinue() {// 재시작여부 입력 받기
         boolean ret = false;
         String userInput = Console.readLine();
+
         checkRestartInputError(userInput);
         if (userInput.compareTo("1") == 0) {
             ret = true;
@@ -187,6 +190,7 @@ class Game {
         UserNumber userNumber = new UserNumber();
         ComNumber comNumber = new ComNumber();
         List<Integer> comNumberList = comNumber.get();
+
         while (continueGame) {
             printInput();
             userNumber.set();
