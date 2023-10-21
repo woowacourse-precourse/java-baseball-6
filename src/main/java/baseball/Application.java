@@ -28,11 +28,11 @@ public class Application {
                 if (user.length != 3)
                     throw new IllegalArgumentException("숫자의 길이가 큽니다");
 
-                int numberOfStrike = 0;
-                int numberOfBall = 0;
-
                 //TODO 무슨 말인지 모르겠다 공부하자 새로운 언어에서의 문법
                 Integer[] userNumber = Stream.of(user).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
+
+                int numberOfStrike = 0;
+                int numberOfBall = 0;
 
                 for (int i = 0; i < LENGTH_OF_NUMBER; i++) {
                     if (computer.get(i).equals(userNumber[i]))
