@@ -15,7 +15,7 @@ public class Result {
         return numberOfBalls == 0 && numberOfStrikes == 0;
     }
 
-    public boolean StrikesAllOfBalls() {
+    public boolean isStrikesAllOfBalls() {
         return numberOfStrikes == SystemConstant.MAXIMUM_DIGIT;
     }
 }

@@ -18,7 +18,7 @@ public class GameManager {
         BallNumber playerNumber = returnPlayerNumber();
         ResultCalculator resultCalculator = new ResultCalculator(computerNumber);
         Result roundResult = resultCalculator.calculateResult(playerNumber);
-        if (roundResult.StrikesAllOfBalls()) {
+        if (roundResult.isStrikesAllOfBalls()) {
             choiceNewGameOrGameOver();
             return;
         }
