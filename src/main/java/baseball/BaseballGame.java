@@ -113,4 +113,20 @@ public class BaseballGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    private void printGameResult(Map<String, Integer> resultList){
+        int strikeCount = resultList.get("strike");
+        int ballCount = resultList.get("ball");
+        String result = "낫싱";
+        if(strikeCount != 0 && ballCount != 0){
+            result = ballCount + "볼 " + strikeCount + "스트라이크";
+        }else if (ballCount != 0){
+            result = ballCount + "볼";
+        } else if(strikeCount != 0){
+            result = strikeCount + "스트라이크";
+        }
+
+        System.out.println(result);
+        printWinGame();
+    }
+
 }
