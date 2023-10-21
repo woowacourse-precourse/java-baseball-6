@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.game;
 
 public enum GameState {
     PLAYING, END;

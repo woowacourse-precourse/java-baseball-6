@@ -1,5 +1,8 @@
-package baseball.domain;
+package baseball.domain.game;
 
+import baseball.domain.ball.Ball;
+import baseball.domain.status.BallStatus;
+import baseball.domain.game.result.PlayResult;
 import baseball.utils.Constants;
 
 import java.util.ArrayList;

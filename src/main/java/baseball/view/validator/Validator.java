@@ -1,4 +1,4 @@
-package baseball.utils;
+package baseball.view.validator;
 
 import org.junit.platform.commons.util.StringUtils;
 

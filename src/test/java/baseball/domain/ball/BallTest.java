@@ -1,5 +1,6 @@
-package baseball.domain;
+package baseball.domain.ball;
 
+import baseball.domain.status.BallStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

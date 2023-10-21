@@ -1,4 +1,6 @@
-package baseball.domain;
+package baseball.domain.game.result;
+
+import baseball.domain.status.BallStatus;
 
 import java.util.Objects;
 
@@ -9,7 +11,7 @@ public class PlayResult {
     private int strike;
     private int ball;
 
-    PlayResult(int strike, int ball) {
+    public PlayResult(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
     }

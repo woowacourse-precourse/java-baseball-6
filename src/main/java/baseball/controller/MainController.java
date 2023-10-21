@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.domain.Balls;
-import baseball.domain.BaseballGame;
-import baseball.domain.PlayResult;
+import baseball.domain.game.Balls;
+import baseball.domain.game.BaseballGame;
+import baseball.domain.game.result.PlayResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
