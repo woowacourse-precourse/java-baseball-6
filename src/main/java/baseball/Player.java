@@ -1,9 +1,9 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import java.util.HashSet;
 import java.util.Set;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Player {
     private static final int NUMBER_LENGTH = 3;
