@@ -1,27 +1,38 @@
 package Game;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 public class playGame {
-    String answer = new String();
+    static String answer = new String();
 
-    public playGame(){
+    public static void makeNumber(){
+        answer="";
         while(answer.length()<3){
             int randomNum= Randoms.pickNumberInRange(1,9);
             if(!answer.contains(String.valueOf(randomNum))){
                 answer+=String.valueOf(randomNum);
             }
         }
+
+        for(char c: answer.toCharArray())
+        {
+            System.out.print(c);
+        }
     }
     public static void start(){
-        playGame game;
+        playGame game=new playGame();
         do{
-            game=new playGame();
+            makeNumber();
             game.turn();
-        }while(game.restart());
+            if(game.restart())
+            {
+                game=new playGame();
+            }
+            else
+            {
+                break;
+            }
+        }while(true);
     }
     private void turn(){
         String inputString;
@@ -29,7 +40,7 @@ public class playGame {
             System.out.print("숫자를 입력해주세요 :");
             inputString = Console.readLine();
             checkInputString(inputString);
-        }while(checkGameResult(inputString)==false);
+        }while(!checkGameResult(inputString));
     }
 
     private void checkInputString(String inputString)
@@ -76,12 +87,8 @@ public class playGame {
         int strike_cnt = cntStrike(inputNumberString);
         int total_cnt = cntTotal(inputNumberString);
         printResult(strike_cnt, total_cnt);
-        if(strike_cnt == 3){
-            return true;
-        }
-        else{
-            return false;
-        }
+
+        return (strike_cnt == 3);
     }
 
     private void printResult(int strike_cnt, int total_cnt){
@@ -90,13 +97,16 @@ public class playGame {
             System.out.println("낫싱");
         }
         else{
-            if(ball_cnt!=0){
-                System.out.print(ball_cnt+"볼");
+            if(ball_cnt !=0 && strike_cnt !=0)
+            {
+                System.out.println(ball_cnt+"볼 "+strike_cnt+"스트라이크");
             }
-            if(strike_cnt!=0){
-                System.out.print(strike_cnt+"스트라이크");
+            else if(ball_cnt!=0){
+                System.out.println(ball_cnt+"볼");
             }
-            System.out.println();
+            else if(strike_cnt!=0){
+                System.out.println(strike_cnt+"스트라이크");
+            }
         }
         if(strike_cnt==3){
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
