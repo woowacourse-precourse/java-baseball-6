@@ -29,6 +29,7 @@ public class Application {
             strike = scoreCalculator.computeStrike(randomNumbers, guessNumbers);
             ball = scoreCalculator.computeBall(randomNumbers, guessNumbers, strike);
 
+            printManager.printResult(strike, ball);
 
         }
 
