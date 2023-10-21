@@ -32,6 +32,10 @@ class BaseballGameMachineTest {
     @Test
     void gamePlayTest() {
         //given
+        String inputLine = "351";
+        InputStream inputStream = new ByteArrayInputStream(inputLine.getBytes());
+        System.setIn(inputStream);
+
         BaseballGameMachine gameMachine = new BaseballGameMachine();
         //when
         gameMachine.play();
