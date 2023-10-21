@@ -1,14 +1,11 @@
 package baseball;
 
-import java.util.Scanner;
-
 public class Game {
     private Computer computer = new Computer();
     private User user = new User();
     private Compare compare = new Compare();
     private UserInterface userInterface = new UserInterface();
 
-    private int retryCheckNumber = 0;
     private int bulls = 0;
     private int cows = 0;
 
@@ -17,13 +14,12 @@ public class Game {
         while(bulls != 3) {
             userInterface.pleaseEnterNumber();
             user.enterNumbers();
-            judgmentStrikeOrBall();
+            if(user.getUserNumbers().size() == 3) {
+                judgmentStrikeOrBall();
+            }
         }
         userInterface.gameEndMessage();
-        retryOrExitCheck();
-    }
-    public int getRetryCheckNumber() {
-        return retryCheckNumber;
+        userInterface.restartOrShutdownMessage();
     }
     public void judgmentStrikeOrBall() {
         bulls = compare.strikeCheck(computer.getComputerNumbers(), user.getUserNumbers());
@@ -38,10 +34,5 @@ public class Game {
             userInterface.nothing();
         }
         System.out.println();
-    }
-    public void retryOrExitCheck() { // 여기 나중에 예외처리
-        userInterface.restartOrShutdownMessage();
-        Scanner s = new Scanner(System.in);
-        retryCheckNumber = s.nextInt();
     }
 }

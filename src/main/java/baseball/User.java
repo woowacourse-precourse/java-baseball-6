@@ -7,11 +7,14 @@ import java.util.List;
 public class User {
     private List<Integer> userNumbers = new ArrayList<>();
 
-    public List<Integer> enterNumbers(){ // 숫자3개 입력
+    public List<Integer> enterNumbers() throws IllegalArgumentException{ // 숫자3개 입력
         userNumbers.clear();
         String console = Console.readLine(); // console => 이름 바꾸기
         for (int i = 0; i < console.length(); i++) {
             userNumbers.add(Integer.parseInt(console.substring(i, i + 1)));
+        }
+        if(userNumbers.size() > 3) {
+            throw new IllegalArgumentException();
         }
         return userNumbers;
     }
