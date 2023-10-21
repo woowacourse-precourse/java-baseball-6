@@ -1,7 +1,15 @@
 package baseball.validator;
 
-//TODO 싱글톤 패턴 변경?
 public class PlayerProposalValidator implements Validator {
+
+    private static final PlayerProposalValidator VALIDATOR = new PlayerProposalValidator();
+
+    private PlayerProposalValidator() {
+    }
+
+    public static void execute(String input) {
+        VALIDATOR.validate(input);
+    }
 
     @Override
     public void validate(String input) {

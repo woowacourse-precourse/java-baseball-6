@@ -4,6 +4,15 @@ import java.util.List;
 
 public class NewOrQuitValidator implements Validator{
 
+    private static final NewOrQuitValidator VALIDATOR = new NewOrQuitValidator();
+
+    private NewOrQuitValidator() {
+    }
+
+    public static void execute(String input){
+        VALIDATOR.validate(input);
+    }
+
     @Override
     public void validate(String input) {
         List<String> possibleNumber = List.of("1", "2");

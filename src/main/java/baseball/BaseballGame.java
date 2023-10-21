@@ -50,7 +50,7 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String newOrQuit = Console.readLine();
-        new NewOrQuitValidator().validate(newOrQuit);
+        NewOrQuitValidator.execute(newOrQuit);
 
         if (newOrQuit.equals("1")) return true;
         else return false;
