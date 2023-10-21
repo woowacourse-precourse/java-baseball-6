@@ -15,7 +15,7 @@ public class Validator {
     }
   }
 
-  public static void validateIsNumeric(String numbers) {
+  public static void validateInputNumberIsNumeric(String numbers) {
     for (char number : numbers.toCharArray()) {
       if (!Character.isDigit(number)) {
         throw new IllegalArgumentException(INVALID_NUMERIC_NUMBER);
@@ -23,7 +23,7 @@ public class Validator {
     }
   }
 
-  public static void vaildateInputNumbersDuplicated(String numbers) {
+  public static void validateInputNumbersDuplicated(String numbers) {
     Set<Character> set = new HashSet<>();
     for (char number : numbers.toCharArray()) {
       if (set.contains(number)) {
