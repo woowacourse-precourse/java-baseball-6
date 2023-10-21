@@ -40,4 +40,12 @@ class ApplicationTest extends NsTest {
             assertThat(e.getMessage()).isEqualTo("서로 다른 세자리 숫자만 입력 가능합니다.");
         }
     }
+    @Test
+    void 입력_범위_예외_테스트() {
+        try{
+            run("a12");
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage()).isEqualTo("1~9 사이의 숫자만 입력 가능합니다.");
+        }
+    }
 }
