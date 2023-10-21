@@ -37,4 +37,8 @@ public class User {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public List<Integer> getUserNumbers() {
+        return userNumbers;
+    }
 }
