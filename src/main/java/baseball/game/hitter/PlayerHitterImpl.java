@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class PlayerHitterImpl implements Hitter {
     IllegalArgumentCheck illegalArgumentCheck = new IllegalArgumentCheck();
+
     @Override
     public String swing() {
         String inputBat = "";
