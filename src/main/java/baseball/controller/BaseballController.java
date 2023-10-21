@@ -36,16 +36,14 @@ public class BaseballController {
         restart();
     }
 
-    //TODO: 재귀 에러 발생하는지 확인
     private void guess(GameNumber computer) {
-        GameNumber player = new GameNumber(inputView.readGuessNumber());
-        Score score = calculateScore(computer, player);
-        outputView.printScore(score);
-        if (score.isStrikeOut()) {
-            outputView.printGameEndMessage();
-            return;
+        Score score = null;
+        while (!isGuess(score)) {
+            GameNumber player = new GameNumber(inputView.readGuessNumber());
+            score = calculateScore(computer, player);
+            outputView.printScore(score);
         }
-        guess(computer);
+        outputView.printGameEndMessage();
     }
 
     private Score calculateScore(GameNumber computer, GameNumber player) {
@@ -67,5 +65,12 @@ public class BaseballController {
     private Command readGameCommand() {
         String value = inputView.readGameCommand();
         return Command.fromValue(value);
+    }
+
+    private Boolean isGuess(Score score) {
+        if (score == null) {
+            return false;
+        }
+        return score.isStrikeOut();
     }
 }
