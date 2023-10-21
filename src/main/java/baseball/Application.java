@@ -6,6 +6,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static repository.Computer.getComputerPicks;
+import static validation.Validator.validateInput;
+import static validation.Validator.validateOneOrTwo;
+
 public class Application {
     private static final int TOTAL_CARDS = 3;
 
@@ -47,9 +51,6 @@ public class Application {
         return computer;
     }
 
-    private static void validateOneOrTwo(String input) {
-        if (!input.matches("[1-2]")) throw new IllegalArgumentException();
-    }
 
     private static void printResult(Result result) {
         if (result.balls() == 0 && result.strikes() == 0) System.out.println("낫싱");
@@ -58,15 +59,6 @@ public class Application {
         else System.out.println(result.balls() + "볼" + " " + result.strikes() + "스트라이크");
     }
 
-    private static void validateInput(String input) {
-        if (!input.matches("[1-9]{3}") || hasDuplicateDigits(input)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static boolean hasDuplicateDigits(String input) {
-        return input.chars().distinct().count() < input.length();
-    }
 
     private static Result getResult(List<Integer> computer, String input) {
         int balls = 0;
