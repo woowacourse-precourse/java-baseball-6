@@ -8,6 +8,7 @@ public class InputVerifier {
         checkNumeric(isBallNumber);
         checkRange(isBallNumber);
         checkDistinct(isBallNumber);
+        checkEachRange(isBallNumber);
     }
 
     public void checkGameNumber(String isGameNumber) throws IllegalArgumentException {
@@ -29,6 +30,15 @@ public class InputVerifier {
     private void checkRange(String inRange) {
         if (Integer.parseInt(inRange) < 123 || 987 < Integer.parseInt(inRange)) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_RANGE);
+        }
+    }
+
+    private void checkEachRange(String inRange) {
+        if (inRange.chars()
+                .map(i -> (int) i)
+                .filter(i -> i < 1 || 9 < i)
+                .count() > 0) {
+            throw new IllegalArgumentException(SystemException.EXCEPTION_ONE_TO_NINE);
         }
     }
 
