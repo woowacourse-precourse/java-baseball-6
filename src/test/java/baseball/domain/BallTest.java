@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.domain;
 
 import baseball.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
