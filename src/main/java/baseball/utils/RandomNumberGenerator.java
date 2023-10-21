@@ -13,12 +13,20 @@ public class RandomNumberGenerator {
 
     public List<Integer> generateNumbers() {
         final List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < MAX_NUMBER_NUM) {
-            final int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
+        while (isNeedMoreNumber(numbers)) {
+            final int randomNumber = generateRandomNumber();
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
         }
         return numbers;
+    }
+
+    private boolean isNeedMoreNumber(final List<Integer> numbers) {
+        return numbers.size() < MAX_NUMBER_NUM;
+    }
+
+    private int generateRandomNumber() {
+        return Randoms.pickNumberInRange(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
     }
 }
