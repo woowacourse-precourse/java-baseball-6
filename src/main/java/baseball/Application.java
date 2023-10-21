@@ -18,12 +18,19 @@ public class Application {
 
 class Game {
     private List<Integer> answer;
+    private int strikes;
+    private int balls;
+
     public void startGame() {
         setNewAnswer();
-        System.out.println(this.answer);
+        initResult();
 
-        List<Integer> input = getNewInput();
-        System.out.println(input);
+        while (this.strikes != this.answer.size()) {
+            List<Integer> input = getNewInput();
+            initResult();
+            checkResult(input);
+            showResult();
+        }
     }
 
     private void setNewAnswer() {
@@ -70,6 +77,48 @@ class Game {
                 throw new IllegalArgumentException();
             }
             charSet.add(currentChar);
+        }
+    }
+
+    private void initResult() {
+        this.balls = 0;
+        this.strikes = 0;
+    }
+
+    private void checkResult(List<Integer> inputNumbers) {
+        for (int i = 0; i < this.answer.size(); i++) {
+            int answerDigit = this.answer.get(i);
+            int inputDigit = inputNumbers.get(i);
+
+            if (answerDigit == inputDigit) {
+                this.strikes++;
+            } else if (this.answer.contains(inputDigit)) {
+                this.balls++;
+            }
+        }
+    }
+
+    private void showResult() {
+        String result = "";
+        if (this.balls != 0) {
+            result += this.balls + "볼";
+        }
+
+        if (this.strikes != 0) {
+            if (this.balls != 0) {
+                result += " ";
+            }
+            result += this.strikes + "스트라이크";
+        }
+
+        if (this.balls == 0 && this.strikes == 0) {
+            result = "낫싱";
+        }
+
+        System.out.println(result);
+
+        if (this.strikes == this.answer.size()) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 }
