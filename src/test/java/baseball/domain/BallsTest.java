@@ -34,4 +34,12 @@ class BallsTest {
 			.hasMessage("1 부터 9 사이의 숫자가 아닙니다.");
 	}
 
+	@Test
+	@DisplayName("3자리 게임 숫자 검증 예외 처리: 3개의 숫자가 아닌 경우")
+	void givenNumbers_whenValidateSize_thenThrowIllegalArgumentException() {
+		assertThatThrownBy(() -> new Balls(List.of(1, 2)))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessage("3개의 숫자가 아닙니다.");
+	}
+
 }
