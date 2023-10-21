@@ -45,22 +45,20 @@ public class Application {
                 int ball = 0;
                 int strike = 0;
 
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 3; i++) {       // 볼과 스트라이크 계산
                     if (Objects.equals(userNum.get(i), computer.get(i))) strike++;
                     else if (!Objects.equals(userNum.get(i), computer.get(i)) && computer.contains(userNum.get(i)))
                         ball++;
                 }
 
-
-                System.out.println("computer = " + computer + " user = " + userNum);
-                if (ball == 0 && strike == 0) System.out.println("낫싱");
+                if (ball == 0 && strike == 0) System.out.println("낫싱");     // 조건에 따른 결과 출력
                 else if (strike == 3) {
                     System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    playGame = false;
+                    playGame = false;       // 입력 반복문 탈출
                 } else System.out.println(ball + "볼 " + strike + "스트라이크");
             }
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");  // 재시작 여부를 묻고 재시작 및 종료
             String againOrExit = Console.readLine();
             if (Objects.equals(againOrExit, "1")) System.out.println("게임을 새로 시작합니다.");
             else if (Objects.equals(againOrExit, "2")) {
