@@ -24,8 +24,6 @@ public final class Referee {
             int count = hintMap.get(type);
             hintMap.put(type, count + 1);
         }
-        trimHints();
-
         return hintMap;
     }
 
@@ -41,19 +39,5 @@ public final class Referee {
         return HintType.NOTHING;
     }
 
-    private void trimHints() {
-        int numberSize = answerNumbers.getAnswerNumbers().size();
 
-        if (hintMap.get(HintType.NOTHING).equals(numberSize)) {
-            hasOnlyNOTHING();
-            return;
-        }
-        hintMap.remove(HintType.NOTHING);
-    }
-
-    private void hasOnlyNOTHING() {
-        hintMap.remove(HintType.STRIKE);
-        hintMap.remove(HintType.BALL);
-        hintMap.put(HintType.NOTHING, 1);
-    }
 }

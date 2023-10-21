@@ -43,9 +43,14 @@
 ## DTO 기능 명세
 
 - [ ] CommandDTO
-- [ ] HintDTO
-    - [ ] 3 NOTHING 이라면 1 NOTHING을 반환한다.
-    - [ ] 그 이외에는 NOTHING만 제거한다.
+- [x] HintDTO
+
+## 서비스 기능 명세
+
+- [x] RefereeService
+    - [x] HintDto를 반환하는 함수를 가진다.
+        - [x] 3 NOTHING 이라면 1 NOTHING을 반환한다.
+        - [x] 그 이외에는 NOTHING만 제거한다.
 
 ## 입출력 기능 명세
 
