@@ -44,4 +44,3 @@ public class Computer {
         return this.numbers.equals(userNumbers);
     }
 }
-
