@@ -53,6 +53,22 @@ class RefereeTest {
         assertThat(result).isEqualTo(2);
     }
 
+    @DisplayName("낫싱을 판정하는 테스트")
+    @Test
+    void judgeNothingTest() {
+        //given
+        int firstNumber = 4;
+        int secondNumber = 9;
+        int thirdNumber = 2;
+        int notExistNumber = 5;
+        List<Integer> answerList = List.of(firstNumber, secondNumber, thirdNumber);
+        Referee referee = new Referee(answerList);
+        //when
+        int result = referee.judgeNumber(notExistNumber, 2);
+        //then
+        assertThat(result).isEqualTo(0);
+    }
+
     @Test
     void judgeNumber() {
     }
