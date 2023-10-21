@@ -102,4 +102,21 @@ class ApplicationTest extends NsTest {
         // then
         assertThat(result2).isTrue();
     }
+
+    @Test
+    @DisplayName("스트라이크/볼 결과 테스트")
+    void displayGameResult_test() {
+        // given
+        boolean result1 = Application.displayGameResult(0, 3);
+        // then
+        assertThat(result1).isTrue();
+
+        // given
+        boolean result2 = Application.displayGameResult(0, 0);
+        // then
+        assertThat(result2).isFalse();
+
+        boolean result3 = Application.displayGameResult(1, 2);
+        assertThat(result3).isFalse();
+    }
 }
