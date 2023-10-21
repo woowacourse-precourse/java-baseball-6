@@ -35,4 +35,10 @@ public class OutputView {
             System.out.println(strike+STRIKE_MESSAGE);
         }
     }
+
+    public static void isNotZeroStrikeAndBall(int strike, int ball) {
+        if(strike != 0 && ball != 0){
+            System.out.println(ball+BALL_MESSAGE+" "+strike+STRIKE_MESSAGE);
+        }
+    }
 }
