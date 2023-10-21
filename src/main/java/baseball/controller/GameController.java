@@ -27,11 +27,6 @@ public class GameController {
         gameProcess();
     }
 
-    public void gameRestart(){
-        createComputerBall();
-        gameProcess();
-    }
-
     public void gameProcess() {
         String number = input.inputUserNumber();
         ballException.validation(number);
@@ -43,7 +38,7 @@ public class GameController {
         int strikeResult = gameService.strikeResult(computer, user);
         int ballResult = gameService.ballResult(computer, user);
 
-        if (strikeResult == 3) gameReGameRequest();
+        if (strikeResult == 3) reGameRequest();
 
         if (strikeResult != 3){
             output.printGameResult(strikeResult, ballResult);
@@ -51,7 +46,7 @@ public class GameController {
         }
     }
 
-    public void gameReGameRequest(){
+    public void reGameRequest(){
         output.printGameEnd();
         String request = input.inputGameRequest();
         reGameException.validation(request);
@@ -59,6 +54,11 @@ public class GameController {
         int result = request.charAt(0) - '0';
 
         if (result == 1) gameRestart();
+    }
+
+    public void gameRestart(){
+        createComputerBall();
+        gameProcess();
     }
 
     public void createComputerBall() {
