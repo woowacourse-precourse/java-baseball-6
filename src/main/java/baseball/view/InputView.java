@@ -12,6 +12,7 @@ public class InputView {
 	}
 
 	public static List<Integer> readPlayerNumber() {
+		System.out.print("숫자를 입력해주세요 : ");
 		String playerNumber = Console.readLine();
 		validateBlank(playerNumber);
 		return toList(playerNumber);
