@@ -21,7 +21,7 @@ public class GameController {
     private static final String MSG_GAMEOVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String MSG_ASK_IF_CONTINUES = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String MSG_EXCEPTION_INVALID_INPUT = "올바르지 않은 입력값입니다.";
-    private static boolean playing = true;
+    public static boolean playing = true;
 
     private void init() {
         computerNumbers.clear();
