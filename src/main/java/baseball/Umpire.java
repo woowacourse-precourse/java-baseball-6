@@ -26,12 +26,12 @@ public class Umpire {
     }
 
     private void printResult() {
-        if (balls == 0 && strikes == 0) {
+        if (isNothing()) {
             result = Constants.NOTHING;
-        } else if (balls == 0) {
-            result = strikes + Constants.STRIKE;
-        } else if (strikes == 0) {
+        } else if (hasOnlyBall()) {
             result = balls + Constants.BALL;
+        } else if (hasOnlyStrike()) {
+            result = strikes + Constants.STRIKE;
         } else {
             result = balls + Constants.BALL + " " + strikes + Constants.STRIKE;
         }
@@ -41,5 +41,17 @@ public class Umpire {
 
     public boolean isThreeStrike() {
         return strikes == 3;
+    }
+
+    private boolean isNothing() {
+        return balls == 0 && strikes == 0;
+    }
+
+    private boolean hasOnlyBall() {
+        return strikes == 0;
+    }
+
+    private boolean hasOnlyStrike() {
+        return balls == 0;
     }
 }
