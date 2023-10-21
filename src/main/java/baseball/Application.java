@@ -48,12 +48,16 @@ public class Application {
                     throw new IllegalArgumentException();
                 }
                 for (int i=0; i<inputArray.length; i++) {
-                    try {
-                        inputToIntArray[i] = Integer.parseInt(inputArray[i]); // 입력 값이 숫자인지 체크
+                    try { // 입력 값이 숫자인지 체크
+                        inputToIntArray[i] = Integer.parseInt(inputArray[i]);
+                        if(inputToIntArray[i] == 0) {
+                            throw new IllegalArgumentException();
+                        }
                     } catch (IllegalArgumentException e) {
                         System.out.println("숫자를 입력해 주세요.");
                         throw new IllegalArgumentException();
                     }
+
                     if(!checkList[inputToIntArray[i]-1]) {
                         checkList[inputToIntArray[i]-1] = true;
                     } else { // 중복된 숫자 체크.
@@ -62,7 +66,6 @@ public class Application {
                 }
 
                 // 입력 후 판단.
-                // 구현 필요. randomNumberArray <> inputToIntArray 비교
                 int strike = 0;
                 int ball = 0;
 
