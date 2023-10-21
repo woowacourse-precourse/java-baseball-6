@@ -31,7 +31,7 @@ public class NumberBaseBall {
             List<Integer> guessAnswer = user.guessAnswer(numberLength);
 
             //추측한 정답에 대한 결과
-            Result guessResult = verifyGuess(answer, guessAnswer);
+            Result guessResult = Result.of(answer, guessAnswer);
             inputOutputHandler.printlnText(guessResult.toString());
 
             //결과가 정답인지 확인
@@ -44,22 +44,5 @@ public class NumberBaseBall {
         if(inputNumber == 1) startGame(numberLength);
 
         return;
-    }
-
-    public Result verifyGuess(List<Integer> answer, List<Integer> guessAnswer) {
-        int strike = 0;
-        int ball = 0;
-
-        for(int i=0; i<guessAnswer.size(); i++) {
-            int number = guessAnswer.get(i);
-            int index = answer.indexOf(number);
-
-            if(index == -1) continue;
-
-            if(index == i) strike++;
-            else ball++;
-        }
-
-        return new Result(ball,strike);
     }
 }
