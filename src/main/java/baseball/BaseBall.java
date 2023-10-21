@@ -16,5 +16,11 @@ public class BaseBall {
                 computer.add(randomNumber);
             }
         }
+
+        while(true) {
+            player.clear();
+            System.out.print("숫자를 입력해주세요 : ");
+            String stringPlayer = Console.readLine();
+        }
     }
 }
