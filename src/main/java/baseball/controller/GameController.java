@@ -19,14 +19,15 @@ public class GameController {
 
     private void playGame() {
         computer = new Computer();
-        while (!gameOnGoing()) ;
+        while (!gameOnGoing())
+            ;
         OutputView.printEndMessage();
     }
 
     private boolean gameOnGoing() {
         Player player = new Player(InputView.inputNumber());
         GameResult gameResult = computer.compareWithPlayer(player);
-        OutputView.printGameResult(gameResult);
+        OutputView.printGameResult(gameResult.getResult());
         return gameResult.isGameEnd();
     }
 
