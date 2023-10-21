@@ -98,12 +98,8 @@ public class Application{
     private static int findBall(List<Integer> computerNumber, List<Integer> userNumber, int strike){
         int count = 0;
         int[] visited = countExistingNumber(computerNumber,userNumber);
-        for(int i=1;i<=9;i++){
-            if(visited[i]==2){
-                count++;
-            }
-        }
-        return count-strike;
+        count = countSameNumber(visited)-strike;
+        return count;
     }
 
     private static int[] countExistingNumber(List<Integer> computerNumber, List<Integer> userNumber){
@@ -113,6 +109,16 @@ public class Application{
             visited[userNumber.get(i)]++;
         }
         return visited;
+    }
+
+    private static int countSameNumber(int[] visited){
+        int count = 0;
+        for(int i=1;i<=9;i++){
+            if(visited[i]==2){
+                count++;
+            }
+        }
+        return count;
     }
 
 }
