@@ -9,4 +9,8 @@ public class InputView {
         System.out.println(PRE_INPUT_MESSAGE);
         return Console.readLine();
     }
+
+    public String inputRestartNumber() {
+        return Console.readLine();
+    }
 }

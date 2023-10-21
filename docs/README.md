@@ -30,7 +30,7 @@
 - InputView
   - Method
     - [x] 플레이어 수 입력 
-    - [ ] 게임 재시작/종료 1과 2중 하나의 수 입력 
+    - [x] 게임 재시작/종료 1과 2중 하나의 수 입력 
     - camp.nextstep.edu.missionutils.Console - `readLine()` 사용
 - OutputView
   - Method
