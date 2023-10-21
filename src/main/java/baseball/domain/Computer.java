@@ -11,7 +11,19 @@ public class Computer {
 	public Computer(List<Integer> computerNumbers) {
 		validateComputerNumberSize(computerNumbers);
 		validateDuplicateNumber(computerNumbers);
+		validateNumberRange(computerNumbers);
 		this.computerNumbers = computerNumbers;
+	}
+
+	private void validateNumberRange(List<Integer> computerNumbers) {
+		if (isOverRange(computerNumbers)) {
+			throw new IllegalArgumentException("컴퓨터의 숫자가 범위에 벗어났습니다.");
+		}
+	}
+
+	private boolean isOverRange(List<Integer> computerNumbers) {
+		return computerNumbers.stream()
+			.anyMatch(computerNumber -> computerNumber < 1 || computerNumber > 9);
 	}
 
 	private void validateComputerNumberSize(List<Integer> computerNumbers) {
