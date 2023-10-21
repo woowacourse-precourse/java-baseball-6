@@ -2,23 +2,24 @@ package baseball.model;
 
 import baseball.util.Constants;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumber {
 
-    private final List<Integer> computerNumber;
+    private final List<BallNumber> computerNumber;
 
     public ComputerNumber() {
         computerNumber = generateComputerNumber();
     }
 
-    private List<Integer> generateComputerNumber() {
-        List<Integer> numberList = new ArrayList<>();
+    private List<BallNumber> generateComputerNumber() {
+        List<BallNumber> numberList = new ArrayList<>();
         while (numberList.size() < Constants.BALL_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(Constants.MIN_BALL_NUMBER, Constants.MAX_BALL_NUMBER);
-            if (!numberList.contains(randomNumber)) {
-                numberList.add(randomNumber);
+            BallNumber randomBallNumber = new BallNumber(Randoms.pickNumberInRange(1, 9));
+            if (!numberList.contains(randomBallNumber)) {
+                numberList.add(randomBallNumber);
             }
         }
         return numberList;
@@ -32,12 +33,12 @@ public class ComputerNumber {
         return computerNumber.size() != computerNumber.stream().distinct().count();
     }
 
-    public int getNumberByPosition(int position) {
+    public BallNumber getNumberByPosition(int position) {
         return computerNumber.get(position);
     }
 
-    public boolean hasNumber(int number) {
-        return computerNumber.contains(number);
+    public boolean hasNumber(BallNumber ballNumber) {
+        return computerNumber.contains(ballNumber);
     }
 
 }

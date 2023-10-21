@@ -25,7 +25,7 @@ public class Referee {
     }
 
     private boolean positionMatching(int position) {
-        return computer.getNumberByPosition(position) == player.getNumberByPosition(position);
+        return computer.getNumberByPosition(position).equals(player.getNumberByPosition(position));
     }
 
 }

@@ -1,10 +1,6 @@
 package baseball.controller;
 
-import baseball.model.Computer;
-import baseball.model.GameCommand;
-import baseball.model.JudgeResult;
-import baseball.model.Player;
-import baseball.model.Referee;
+import baseball.model.*;
 import baseball.util.JudgeResultFormatter;
 import baseball.view.InputView;
 import baseball.view.OutputView;

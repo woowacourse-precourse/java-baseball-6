@@ -15,12 +15,12 @@ public class Computer {
         return computerNumber.hasDuplicatedNumber();
     }
 
-    public int getNumberByPosition(int position) {
+    public BallNumber getNumberByPosition(int position) {
         return computerNumber.getNumberByPosition(position);
     }
 
-    public boolean hasNumber(int number) {
-        return computerNumber.hasNumber(number);
+    public boolean hasNumber(BallNumber ballNumber) {
+        return computerNumber.hasNumber(ballNumber);
     }
 
 }
