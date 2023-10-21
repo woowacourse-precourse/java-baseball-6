@@ -10,10 +10,6 @@ public class Application {
         int choose = 1;
         while (choose == 1) {
             List<Integer> computer = new ArrayList<>();
-            computer.add(Randoms.pickNumberInRange(1, 9));
-            computer.add(Randoms.pickNumberInRange(1, 9));
-            computer.add(Randoms.pickNumberInRange(1, 9));
-
             while(computer.size()<3){
                 int randNum=Randoms.pickNumberInRange(1,9);
                 if(!computer.contains(randNum)){
