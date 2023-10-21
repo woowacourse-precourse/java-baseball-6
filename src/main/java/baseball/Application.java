@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.controller.RegameChoice;
 import baseball.domain.GameConstants;
+import baseball.view.StartView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -13,8 +14,7 @@ public class Application {
 
         TotalGameLoop:
         while (true) {
-            //"게임 시작 문구" 출력　
-            System.out.println("숫자 야구 게임을 시작합니다.");
+            StartView.displayStartMessage();
 
             //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
             List<Integer> computerNumList = new ArrayList<>();
