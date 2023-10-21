@@ -28,12 +28,20 @@ public class Computer {
     }
 
     public boolean getHintByPlayer(Set<Ball> playerBalls) {
+        int[] counts = computeBallAndStrikeCounts(playerBalls);
+        int ballCount = counts[0];
+        int strikeCount = counts[1];
+        return displayHint(strikeCount, ballCount);
+    }
+
+    private int[] computeBallAndStrikeCounts(Set<Ball> playerBalls) {
         int ballCount = 0;
         int strikeCount = 0;
         int computeIndex = 0;
-        int playerIndex = 0;
+
         for (Ball computeBall : balls) {
             computeIndex++;
+            int playerIndex = 0;
             for (Ball playerBall : playerBalls) {
                 playerIndex++;
                 if (playerBall.equals(computeBall)) {
@@ -42,33 +50,40 @@ public class Computer {
                     } else {
                         ballCount++;
                     }
-                    playerIndex = 0;
                     break;
                 }
             }
-
         }
 
-        if (strikeCount == 3) {
-            System.out.println();
-            outputView.showStrikeOnlyHint(strikeCount);
-            outputView.showGameClearMessage();
-            return true;
-        }
-        if (strikeCount != 0 && ballCount != 0) {
-            outputView.showBallAndStrikeHint(ballCount, strikeCount);
-            System.out.println();
-            return false;
-        }
-        if (strikeCount == 0 && ballCount != 0) {
-            outputView.showBallOnlyHint(ballCount);
-            return false;
-        }
-        if (strikeCount != 0) {
-            outputView.showStrikeOnlyHint(strikeCount);
-            return false;
-        }
-        outputView.showNothingHint();
-        return false;
+        return new int[]{ballCount, strikeCount};
     }
+
+    private boolean displayHint(int strikeCount, int ballCount) {
+        return switch (strikeCount) {
+            case 3 -> {
+                outputView.showStrikeOnlyHint(strikeCount);
+                outputView.showGameClearMessage();
+                yield true;
+            }
+            case 0 -> {
+                if (ballCount != 0) {
+                    outputView.showBallOnlyHint(ballCount);
+                    yield false;
+                } else {
+                    outputView.showNothingHint();
+                    yield false;
+                }
+            }
+            default -> {
+                if (ballCount != 0) {
+                    outputView.showBallAndStrikeHint(ballCount, strikeCount);
+                    yield false;
+                } else {
+                    outputView.showStrikeOnlyHint(strikeCount);
+                    yield false;
+                }
+            }
+        };
+    }
+
 }
