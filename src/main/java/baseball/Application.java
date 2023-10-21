@@ -51,14 +51,10 @@ public class Application {
     private static void playGame() {
         List<Integer> computerNumbers = generateComputerNumbers();
 
-        System.out.println(computerNumbers);
-
         boolean isAnswerRight = false;
         while (!isAnswerRight) {
             List<Integer> userNumbers = requestUserNumbers();
             Map<PlayResult, Integer> gameResult = new HashMap<>();
-
-            System.out.println(userNumbers);
 
             for (int index = 0; index < computerNumbers.size(); index++) {
                 int computerNumber = computerNumbers.get(index);
