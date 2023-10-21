@@ -18,10 +18,12 @@ public class BaseBallGame {
         int strike = 0;
 
         for (int i = 0; i < computerList.size(); i++) {
-            if (computerList.get(i) == userList.get(i)) {
+            int tempComNum = computerList.get(i);
+            int tempUserNum = userList.get(i);
+            if (tempComNum == tempUserNum) {
                 strike++;
             }
-            if (computerList.get(i) != userList.get(i) && computerList.contains(userList.get(i))) {
+            if (tempComNum != tempUserNum && computerList.contains(tempUserNum)) {
                 ball++;
             }
         }
