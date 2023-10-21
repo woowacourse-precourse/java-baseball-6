@@ -1,6 +1,8 @@
 -[ ] GameEngine
-    - [ ] 서로 다른 임의의 수 3개를 선택한다
-        - [ ] 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
+    - [x] 정답값을 입력받는다.
+        - [x] 그 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
+        - [x] 세자리 음수이면, IllegalArgumentException 반환
+
     -[ ] 점수를 체점해준다.
     - [ ] 채점할 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
         -[ ] 게임을 종료시킨다.

@@ -10,6 +10,11 @@ public class BaseBalGameValidator {
     private static final String DUPLICATE_OR_SIZE_ERROR_MESSAGE = "%d는 세자리 숫자가 아니거나, 값은 값이 존재합니다.";
     private static final String NEGATIVE_VALUE_ERROR_MESSAGE = "%d는 세자리가 각각다른 음수입니다.";
 
+    public void validBaseBallValue(int baseballValue) {
+        checkDuplicateAndSize(baseballValue);
+        checkIsPositive(baseballValue);
+    }
+
     public void validBaseBallValue(String baseballValue) {
         checkIsNumber(baseballValue);
         checkDuplicateAndSize(Integer.parseInt(baseballValue));
