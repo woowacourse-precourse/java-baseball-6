@@ -1,7 +1,7 @@
 자바 JDK 17버전인지확인
 
 라이브러리 사용적용사항
-camp 자체 라이브러리인지- 외부에서 작동안함 우테코안에서 시뮬레이션 미리미리 조금씩 하면서 체크하기 
+camp 자체 라이브러리인지!- 외부에서 작동안함 우테코안에서 시뮬레이션 미리미리 조금씩 하면서 체크하기 
 1. camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현
 2. Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
 3. 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
