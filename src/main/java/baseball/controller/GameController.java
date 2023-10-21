@@ -10,7 +10,6 @@ import baseball.view.OutputView;
 public class GameController {
     private InputView inputView;
     private OutputView outputView;
-
     private Game game;
 
     public GameController() {
@@ -18,23 +17,13 @@ public class GameController {
         outputView=new OutputView();
     }
 
-    public Numbers convertToNumbers(String values){
-        return new Numbers(values);
-    }
-    public boolean isContinue(String input){
-        Validator validator=new Validator();
-        validator.validateContinue(input);
-
-        return isOne(input);
+    public void start(){
+        outputView.printProgramStartMessage();
+        while(startGame());
     }
 
     private boolean isOne(String input){
         return input.equals("1");
-    }
-
-    public void start(){
-        outputView.printProgramStartMessage();
-        while(startGame());
     }
 
     private boolean startGame(){
