@@ -1,5 +1,7 @@
 package baseball.View;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class GameView {
     /**
      * Veiw는 Model에만 의존해야 하고, Controller에는 의존하면 안된다.
@@ -25,12 +27,16 @@ public class GameView {
         System.out.println("낫싱");
     }
 
-    public void printGameOverMessage() {
+    public String printGameOverMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        return Console.readLine();
     }
 
-    public void printInputMessage() {
+    public String printInputMessage() {
         System.out.println("숫자를 입력해주세요 : ");
+
+        return Console.readLine();
     }
 
 }

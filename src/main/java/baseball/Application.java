@@ -15,14 +15,10 @@ public class Application {
     private static List<Integer> COMPUTER_NUM = new ArrayList<>();
 
     public static void main(String[] args) {
-        NumberGenerator numberGenerator = new NumberGenerator();
-        BaseBallGame baseBallGame = new BaseBallGame(numberGenerator);
-        GameView gameView = new GameView();
-        GameController gameController = new GameController(baseBallGame, gameView);
+        GameController gameController = new GameController();
 
         gameController.startGame();
-
-        gameStart(); // 곧 삭제될 코드
+//        gameStart(); // 곧 삭제될 코드
     }
 
     private static void gameStart() {
