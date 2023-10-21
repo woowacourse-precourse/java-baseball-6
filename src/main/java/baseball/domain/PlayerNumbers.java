@@ -21,9 +21,9 @@ public class PlayerNumbers {
         if (isOutOfRange(numbers)) {
             throw new IllegalArgumentException("[ERROR] 숫자는 1 이상 9 이하여야 합니다.");
         }
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.subList(i + 1, numbers.size())
-                    .contains(numbers.get(i))) {
+        for (int indexOfCurrentNumber = 0; indexOfCurrentNumber < numbers.size(); indexOfCurrentNumber++) {
+            List<Integer> remainingNumbers = numbers.subList(indexOfCurrentNumber + 1, numbers.size());
+            if (remainingNumbers.contains(numbers.get(indexOfCurrentNumber))) {
                 throw new IllegalArgumentException("[ERROR] 숫자는 서로 달라야 합니다.");
             }
         }
