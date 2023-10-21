@@ -14,6 +14,7 @@ public class GameResult {
     }
 
     public void setStrike(int strike) {
+        validateStrikeBall(strike);
         this.strike = strike;
     }
 
@@ -22,7 +23,13 @@ public class GameResult {
     }
 
     public void setBall(int ball) {
+        validateStrikeBall(ball);
         this.ball = ball;
     }
 
+    public void validateStrikeBall(int number) {
+        if(number > 3 || number < 0) {
+            throw new IllegalArgumentException("스트라이크 또는 볼은 0~3 사이입니다.");
+        }
+    }
 }
