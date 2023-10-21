@@ -23,4 +23,17 @@ public class StartGame {
 
         return playerNumbers;
     }
+
+    public boolean isGameStart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.next();
+
+        if(input.equals("1")){
+            return true;
+        }
+
+        return false;
+    }
 }
