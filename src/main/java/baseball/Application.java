@@ -63,11 +63,10 @@ public class Application {
                 if (computerNumber.get(i).equals(userGuess.get(j))) {//same number exist
                     if (i != j) {
                         ball++;
-                        break;
                     } else {
                         strike++;
-                        break;
                     }
+                    break;
                 }
             }
         }
@@ -86,10 +85,17 @@ public class Application {
         return computer;
     }
 
+    public static void validateInput(String input) {
+        if (input.length() != 3)
+            throw new IllegalArgumentException("3자리 수를 입력해 주세요!");
+    }
+
     //user input
     private static List<Integer> getUserInput() {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
+        validateInput(input);
+
         List<Integer> parseInput = new ArrayList<>();
         for (char ch : input.toCharArray()) {
             parseInput.add(ch - '0'); //char to integer
