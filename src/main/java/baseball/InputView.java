@@ -24,9 +24,32 @@ public class InputView {
 
     private void userInputValidation(String input) throws IllegalArgumentException {
         if (input.length() != 3) {
-            throw new IllegalArgumentException("입력값이 잘못되었습니다.");
+            throw new IllegalArgumentException("3자리의 수를 입력하시오.");
+        }
+
+        if (!(input.matches("^[0-9]*$"))) {
+            throw new IllegalArgumentException("숫자 외에 다른 문자가 존재합니다.");
+        }
+
+        char[] splitInput = input.toCharArray();
+
+        for (int i = 0; i < splitInput.length; i++) {
+            checkDuplicatedNumber(i, splitInput);
         }
     }
+
+    private void checkDuplicatedNumber(int i, char[] splitInput) {
+        for (int j = i + 1; j < splitInput.length; j++) {
+            compareTwoNum(i, j, splitInput);
+        }
+    }
+
+    private void compareTwoNum(int i, int j, char[] splitInput) {
+        if (splitInput[i] == splitInput[j]) {
+            throw new IllegalArgumentException("입력에 중복되는 숫자가 존재합니다.");
+        }
+    }
+
 
     private List<Integer> inputConverter(Integer input) {
         List<Integer> convertedInput = new ArrayList<>();
