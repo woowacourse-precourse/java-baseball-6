@@ -9,22 +9,22 @@ import java.util.List;
 
 public class Computer {
 
-    private final List<Integer> elements;
+    private final Numbers numbers;
 
 
     public Computer() {
-        this.elements = createRandomNumbers();
+        this.numbers = new Numbers(createRandomNumbers());
     }
 
     public List<Integer> createRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < BallConstant.BALL_LENGTH.getValue()) {
+        List<Integer> elements = new ArrayList<>();
+        while (elements.size() < BallConstant.BALL_LENGTH.getValue()) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
+            if (!elements.contains(randomNumber)) {
+                elements.add(randomNumber);
             }
         }
-        return numbers;
+        return elements;
     }
 
     public GameResult calculateBallCount(Player player) {
@@ -44,10 +44,10 @@ public class Computer {
     }
 
     private boolean isBall(int playerNumber) {
-        return elements.contains(playerNumber);
+        return numbers.contains(playerNumber);
     }
 
     private boolean isStrike(int playerNumber, int position) {
-        return playerNumber == elements.get(position);
+        return numbers.isSamePosition(position, playerNumber);
     }
 }
