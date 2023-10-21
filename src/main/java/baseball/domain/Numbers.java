@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import java.util.List;
-import java.util.Set;
 
 public final class Numbers {
 
@@ -20,7 +19,7 @@ public final class Numbers {
     }
 
     private boolean isNotUnique(final List<Integer> numbers) {
-        return numbers.size() != Set.of(numbers).size();
+        return numbers.size() != numbers.stream().distinct().count();
     }
 
     private boolean isNotProperSize(final List<Integer> numbers) {
