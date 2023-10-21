@@ -7,7 +7,7 @@ import java.util.List;
 
 public class NumberGenerator {
 
-    public String generateRandomNumber() {
+    public String generateRandomBaseballNumber() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

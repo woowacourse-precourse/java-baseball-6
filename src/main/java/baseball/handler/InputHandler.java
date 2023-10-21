@@ -8,10 +8,10 @@ public class InputHandler {
     private final OutputHandler outputHandler = new OutputHandler();
     private final InputValidator inputValidator = new InputValidator();
 
-    public String askUserInputNumber() {
+    public String askUserBaseballNumber() {
         outputHandler.printInputRequestMessage();
         String input = Console.readLine();
-        inputValidator.checkInputNumber(input);
+        inputValidator.checkBaseballNumber(input);
 
         return input;
     }

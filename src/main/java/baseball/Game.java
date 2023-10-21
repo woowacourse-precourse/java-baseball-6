@@ -17,10 +17,10 @@ public class Game {
     }
 
     public void play() {
-        String computerNumber = numberGenerator.generateRandomNumber();
+        String computerBaseballNumber = numberGenerator.generateRandomBaseballNumber();
         while (!isGameOver) {
-            String userInputNumber = inputHandler.askUserInputNumber();
-            isGameOver = outputHandler.printResultMessage(userInputNumber, computerNumber);
+            String userBaseballNumber = inputHandler.askUserBaseballNumber();
+            isGameOver = outputHandler.printResultMessage(userBaseballNumber, computerBaseballNumber);
         }
     }
 

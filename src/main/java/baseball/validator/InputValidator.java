@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class InputValidator {
 
-    public void checkInputNumber(String input) {
+    public void checkBaseballNumber(String input) {
         if (input == null || input.length() != 3) {
             throw new IllegalArgumentException("입력 값이 3자리가 아닙니다.");
         }
