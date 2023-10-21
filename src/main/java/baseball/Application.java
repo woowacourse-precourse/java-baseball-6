@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+    private static final int NUM_DIGITS = 3;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         while(true){
@@ -37,7 +39,7 @@ public class Application {
     public static List<Integer> generateComputerRandomThreeDigitNumber(){
 
         List<Integer> computer = new ArrayList<>();
-        while(computer.size() <3 ){
+        while(computer.size() <NUM_DIGITS ){
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -62,11 +64,10 @@ public class Application {
 
         int numStrikes=0;
         int numBalls =0;
-        for(int i=0;i<3;i++){
+        for(int i=0;i<NUM_DIGITS;i++){
             if(user.get(i)==computer.get(i)){
                 numStrikes++;
-            }
-            else if(user.get(i)!=computer.get(i) && computer.contains(user.get(i))){
+            } else if(user.get(i)!=computer.get(i) && computer.contains(user.get(i))){
                 numBalls++;
             }
         }
@@ -83,10 +84,10 @@ public class Application {
     public static void validateUserThreeNumbers(String userThreeNumbers){
         List<Integer> user = new ArrayList<>();
 
-        if(userThreeNumbers.length()!=3)//3개 미만, 또는 초과해서 입력된 경우에 대한 예외처리
+        if(userThreeNumbers.length()!=NUM_DIGITS)//3개 미만, 또는 초과해서 입력된 경우에 대한 예외처리
             throw new IllegalArgumentException("3개의 수를 입력하지 않았습니다.");
 
-        for(int i=0;i<userThreeNumbers.length();i++){
+        for(int i=0;i<NUM_DIGITS;i++){
             char char_num = userThreeNumbers.charAt(i);
 
             if(user.contains(char_num-'0'))//중복 된 값에 대한 예외처리
@@ -110,21 +111,20 @@ public class Application {
     private static boolean evaluateGuess(int numStrikes,int numBalls){
 
         String message = "";
-        if(numStrikes == 3){
+        if(numStrikes == NUM_DIGITS){
             message = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다.! 게임 종료";
         }
         if(numBalls>0){
             message = numBalls+"볼";
         }
-        if(numStrikes>0 && numStrikes <3){
+        if(numStrikes>0 && numStrikes <NUM_DIGITS){
             message = (message.isEmpty() ? "" : message + " ") +numStrikes+"스트라이크";
         }
         if (message.isEmpty()) {
             message="낫싱";
         }
         System.out.println(message);
-        return numStrikes ==3;
+        return numStrikes ==NUM_DIGITS;
     }
-
 
 }
