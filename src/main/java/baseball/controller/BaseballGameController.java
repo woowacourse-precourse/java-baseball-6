@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.util.NumericComparator;
+import baseball.view.InputView;
 
 public class BaseballGameController {
     private Computer computer;
@@ -15,8 +16,15 @@ public class BaseballGameController {
         this.player = new Player();
     }
 
-    private boolean isGameRestart(int retryNumber) {
-        return retryNumber == 1;
+    // 재시작이면 true, 종료이면 false를 반환한다.
+    private boolean isGameReStart() {
+        int answer = Integer.parseInt(InputView.getRetryNumber());
+        if(answer == 1) {
+            return true;
+        } else if(answer == 2) {
+            return false;
+        }
+        throw new IllegalArgumentException("잘못된 입력값입니다.");
     }
 
     private boolean isStrikeAnswer() {
