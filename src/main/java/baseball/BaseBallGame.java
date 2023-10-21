@@ -1,6 +1,7 @@
 package baseball;
 
-import baseball.generator.ComputerRandomNumberGenerator;
+import baseball.generator.NumberManager;
+import baseball.generator.NumberMatcher;
 import baseball.generator.RandomNumberGenerator;
 import baseball.input.BaseBallGameUserInput;
 import baseball.input.UserInput;
@@ -8,8 +9,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
 
-    private final RandomNumberGenerator<BaseBallNumberCollection> randomNumberGenerator =
-        new ComputerRandomNumberGenerator();
+    private final RandomNumberGenerator<BaseBallNumberCollection> randomNumberGenerator = new NumberManager();
+    private final NumberMatcher<BaseBallNumberCollection> numberMatcher = new NumberManager();
     private final UserInput<BaseBallNumberCollection> baseBallUserInput = new BaseBallGameUserInput();
     private final Integer baseBallGameSize;
 
@@ -41,7 +42,7 @@ public class BaseBallGame {
     }
 
     private Boolean matchingNumber(final BaseBallNumberCollection userInput, final BaseBallNumberCollection randomNumber){
-        if(randomNumberGenerator.match(userInput, randomNumber)){
+        if(numberMatcher.match(userInput, randomNumber)){
             System.out.println(String.format(WIN_GAME_FORMAT,baseBallGameSize));
             return false;
         }else{
