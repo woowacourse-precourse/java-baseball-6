@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -9,9 +10,28 @@ import java.util.Set;
 
 public class BaseballGame {
     public void run(){
+        printGameStart();
+        List<Integer> randomNum = initRandomNum();
         List<Integer> userNum = inputUserNum();
     }
 
+    private void printGameStart(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    private List<Integer> initRandomNum(){
+        List<Integer> randomNumList = new ArrayList<>();
+        
+        while (randomNumList.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!randomNumList.contains(randomNumber)) {
+                randomNumList.add(randomNumber);
+            }
+        }
+
+        return randomNumList;
+    }
+    
     private List<Integer> inputUserNum(){
         System.out.print("숫자를 입력해주세요 : ");
         String userInputString = Console.readLine();
