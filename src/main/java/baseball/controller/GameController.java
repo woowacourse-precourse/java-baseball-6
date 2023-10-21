@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.Hint;
 import baseball.model.Player;
+import java.util.List;
 
 public class GameController {
     private final OutputController outputController;
@@ -33,7 +34,7 @@ public class GameController {
         boolean isGameClear = false;
         while(!isGameClear){
             outputController.showGameInputMessage();
-            String input = inputController.getPlayerGuessNumber();
+            List<Integer> input = inputController.getPlayerGuessNumber();
             Hint result = player.swingBat(computer,input);
             isGameClear = outputController.displayHint(result);
         }
