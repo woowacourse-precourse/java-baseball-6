@@ -6,6 +6,5 @@ public interface GameService {
     void restartOrQuit(String order);
     int[] checkCount(String numbers);
     boolean isGameSet();
-
     boolean getQuit();
 }

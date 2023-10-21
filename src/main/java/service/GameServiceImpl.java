@@ -41,6 +41,6 @@ public class GameServiceImpl implements GameService{
         return numbersUtil.getGameSet();
     }
 
-
+    @Override
     public boolean getQuit() { return quit; }
 }

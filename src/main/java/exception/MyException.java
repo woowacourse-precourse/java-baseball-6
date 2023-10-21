@@ -16,7 +16,7 @@ public class MyException {
 
     private void varlidateRange(String input) {
         if(input.length() != 3) {
-            throw new IllegalArgumentException("the input range is 3 : ");
+            throw new IllegalArgumentException("the input range is 3");
         }
     }
 
