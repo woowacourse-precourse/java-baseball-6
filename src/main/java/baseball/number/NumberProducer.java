@@ -9,6 +9,13 @@ import java.util.Set;
 
 public class NumberProducer {
 
+    /**
+     * 범위 내 숫자 생성
+     * @param startRangeNumber
+     * @param endRangeNumber
+     * @param count
+     * @return
+     */
     public static List<Integer> makeNumberInRange(
             int startRangeNumber,
             int endRangeNumber,
