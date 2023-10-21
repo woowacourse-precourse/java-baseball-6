@@ -1,15 +1,10 @@
 package baseball;
 
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.presenter.GamePresenter;
 
 public class Application {
     public static void main(String[] args) {
-        OutputView outputView = new OutputView();
-        outputView.start();
-        outputView.input();
-
-        InputView inputView = new InputView();
-        inputView.inputNumbers();
+        GamePresenter gamePresenter = new GamePresenter();
+        gamePresenter.play();
     }
 }

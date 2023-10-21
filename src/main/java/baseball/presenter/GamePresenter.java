@@ -1,9 +1,24 @@
 package baseball.presenter;
 
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.HashSet;
 import java.util.Set;
 
 public class GamePresenter {
+    OutputView outputView = new OutputView();
+    InputView inputView = new InputView();
+
+    public void play() {
+        outputView.start();
+        startGame();
+    }
+
+    private void startGame() {
+        outputView.input();
+        inputView.inputNumbers();
+    }
+
     public void validateNumbers(String numbers) {
         if (!isValidNumeric(numbers)) {
             throw new IllegalArgumentException("잘못된 형식입니다.");
