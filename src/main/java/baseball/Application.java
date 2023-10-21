@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 
 public class Application {
@@ -118,15 +119,25 @@ public class Application {
     /***
      * 입력 값의,각 자리의 범위를 검증한다
      *
-     * @param number
+     * @param inputNumber
      */
-    private static void checkNumberRange(int number) {
-        int[] intArrayInputNumber = getDigitsArray(number);
+    private static void checkInputNumberRange(int inputNumber) {
+        int[] intArrayInputNumber = getDigitsArray(inputNumber);
 
         for (int n : intArrayInputNumber) {
-            if (n > 9 || n < 1) {
-                throw new IllegalArgumentException("1~9 사이의 숫자만 입력 가능합니다.");
-            }
+            checkNumberValidity(n, 1, 9);
+        }
+    }
+
+
+    /***
+     * 파라메터가 low~high 사이의 숫자인지 검증한다
+     *
+     * @param number
+     */
+    private static void checkNumberValidity(int number, int low, int high) {
+        if (number > high || number < low) {
+            throw new IllegalArgumentException(low + "에서" + high + " 사이의 숫자만 입력 가능합니다.");
         }
     }
 
@@ -137,12 +148,28 @@ public class Application {
     private static void createComputerNumber() {
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
+            addNotExistNumberToList(computerNumber, randomNumber);
         }
     }
 
+
+    private static void addNotExistNumberToList(List<Integer> numberList, int number) {
+        if (!isAlreadyInList(numberList, number)) {
+            addNumberToList(numberList, number);
+        }
+    }
+
+    private static void addNumberToList(List<Integer> numberList, int number) {
+        numberList.add(number);
+    }
+
+
+    private static boolean isAlreadyInList(List<Integer> numberList, int number) {
+        if (numberList.contains(number)) {
+            return true;
+        }
+        return false;
+    }
 
     /***
      * 컴퓨터 숫자를 List에서 Char 배열로 타입변환 하는 함수.
@@ -195,17 +222,12 @@ public class Application {
      * 배열 내에 중복되는 수가 있는지 확인한다
      *
      * @param arr
-     * @return
+     * @return 배열에 중복값이 있는지에 대한 여부를 boolean값으로 반환
      */
     public static boolean areAllDistinct(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] == arr[j]) {
-                    return false; // 중복된 숫자가 발견됨
-                }
-            }
-        }
-        return true; // 중복된 숫자가 없음
+        return IntStream.range(0, arr.length)
+                .noneMatch(i -> IntStream.range(i + 1, arr.length)
+                        .anyMatch(j -> arr[i] == arr[j]));
     }
 }
 
