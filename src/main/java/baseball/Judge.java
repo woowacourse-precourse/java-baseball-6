@@ -16,22 +16,21 @@ public class Judge {
         return numbers;
     }
 
-    public int[] createUserNumber(String userInputStr){
+    public String playGame(String userInputStr) {
         checkError(userInputStr);
+
         int userInputNum = Integer.parseInt(userInputStr);
         int[] userInputArr = new int[3];
+
         userInputArr[0] = userInputNum / 100;
         userInputArr[1] = (userInputNum / 10) % 10;
         userInputArr[2] = userInputNum % 10;
-        return userInputArr;
-    }
 
-    public String playGame(int[] user) {
-        int[] strikeAndBall = calculateStrikeAndBall(user);
+        int[] strikeAndBall = calculateStrikeAndBall(userInputArr);
         return checkStrikeAndBall(strikeAndBall);
     }
 
-    private int[] calculateStrikeAndBall( int[] user) {
+    private int[] calculateStrikeAndBall(int[] user) {
         int[] strikeAndBall = new int[2];
         for (int i = 0; i < 3; i++) {
             if (computerNumbers[i] == user[i])
@@ -43,20 +42,9 @@ public class Judge {
     }
 
     public String checkStrikeAndBall(int[] strikeAndBall) {
-        String message = switch (strikeAndBall[0]) {
-            case 1 -> "1볼 ";
-            case 2 -> "2볼 ";
-            case 3 -> "3볼 ";
-            default -> "";
-        };
-
-        message += switch (strikeAndBall[1]) {
-            case 1 -> "1스트라이크";
-            case 2 -> "2스트라이크";
-            case 3 -> "3스트라이크";
-            default -> "낫싱";
-        };
-
+        String message =
+                (strikeAndBall[0] > 0 ? strikeAndBall[0] + "볼 " : "") +
+                (strikeAndBall[1] > 0 ? strikeAndBall[1] + "스트라이크" : "낫싱");
         return message;
     }
 

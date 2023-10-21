@@ -10,15 +10,12 @@ public class Application {
         while (isGame) {
             Judge judge = new Judge();
 
-            int[] userNumber;
             String gameResult;
-
             do {
                 System.out.print("숫자를 입력해주세요 : ");
 
                 String inputNum = Console.readLine();
-                userNumber = judge.createUserNumber(inputNum);
-                gameResult = judge.playGame(userNumber);
+                gameResult = judge.playGame(inputNum);
                 System.out.println(gameResult);
             } while (!judge.isGameEnd(gameResult));
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
