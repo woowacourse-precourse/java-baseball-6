@@ -11,8 +11,8 @@ public class CheckBallAndStrike {
     private final List<Integer> baseballNumbers;
 
     public CheckBallAndStrike() {
-        this.ball = 0;
-        this.strike = 0;
+        this.ball = NO_COUNT;
+        this.strike = NO_COUNT;
         this.baseballNumbers = RandomNumberCreateUtil.createBaseballNumbers();
     }
 
