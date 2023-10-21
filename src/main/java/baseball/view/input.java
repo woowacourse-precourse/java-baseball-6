@@ -20,13 +20,5 @@ public class input {
     public static void endGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         gameMode = readLine();
-        // 검증 코드
-//        if(gameMode.equals("1") || gameMode.equals("2")) {
-//            throw new IllegalArgumentException("1과 2 중에서 선택해야합니다.");
-//        }
     }
-
-//    private boolean hasDuplicateCharacters(String str) {
-//        return str.chars().distinct().count() != str.length();
-//    }
 }
