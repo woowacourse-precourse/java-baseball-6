@@ -1,0 +1,8 @@
+#현재 디렉터리의 테스트 디렉터리는 무시
+test/
+
+# main의 java를 제외한 다른 파일과 디렉터리는 무시
+main/.idea/
+main/out/
+main/main.iml
+
