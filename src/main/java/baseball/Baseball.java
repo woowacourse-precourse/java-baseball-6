@@ -55,7 +55,7 @@ public class Baseball {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         List<Integer> integerList = new ArrayList<>();
-        if (!userInputValidation.isValidGameNumber(inputNumber)) {
+        if (!userInputValidation.isValidRestartNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < 3; ++i) {
