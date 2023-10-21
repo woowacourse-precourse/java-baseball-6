@@ -29,8 +29,8 @@
 
 ## 📒 BallsUtils
 
-- [ ] Balls 관련 utility class
-    - [ ] `List<Integer>`를 `List<Ball>`로 변환
+- [x] Balls 관련 utility class
+    - [x] `List<Integer>`를 `List<Ball>`로 변환
 
 ## 📒 RandomBallsGeneratorUtil
 
