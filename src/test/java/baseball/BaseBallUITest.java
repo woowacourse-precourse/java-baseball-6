@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -31,4 +33,17 @@ class BaseBallUITest {
         Assertions.assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expect);
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "0,0,낫싱", "0,1,1볼", "0,2,2볼", "0,3,3볼",
+            "1,0,1스트라이크", "1,1,1볼 1스트라이크", "1,2,2볼 1스트라이크",
+            "2,0,2스트라이크", "2,1,1볼 2스트라이크",
+            "3,0,3스트라이크"
+
+    })
+    void 게임_점수_문구가_출력되야한다(int strike, int ball, String expect) {
+        BaseBallUI baseBallUI = new BaseBallUI();
+        baseBallUI.printBaseBallScore(new BaseBallScore(strike, ball));
+        Assertions.assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expect);
+    }
 }
