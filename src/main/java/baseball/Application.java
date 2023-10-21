@@ -28,6 +28,7 @@ public class Application {
                 threeStrikes = true;
             }
         }
+        OutputView.printFinishMessage();
     }
 
     static boolean isThreeStrike(int strikeCounts) {

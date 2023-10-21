@@ -6,6 +6,7 @@ public class OutputView {
     static String BALL = "볼";
     static String STRIKE = "스트라이크";
     static String NOTHING = "낫싱";
+    static String GAME_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static void printStartMessage() {
         System.out.println(GAME_START_MESSAGE);
@@ -27,5 +28,9 @@ public class OutputView {
             stringBuilder.append(NOTHING);
         }
         System.out.println(stringBuilder);
+    }
+
+    public static void printFinishMessage() {
+        System.out.println(GAME_FINISH_MESSAGE);
     }
 }
