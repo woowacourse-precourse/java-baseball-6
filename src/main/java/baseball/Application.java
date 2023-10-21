@@ -15,11 +15,33 @@ public class Application {
         playGame();
     }
 
-    private static void playGame() {
+    private static void startProgram() {
+        String goal = generateValue();
+        playGame(goal);
+    }
+
+    private static void playGame(String goal) {
         System.out.println("숫자를 입력해주세요");
         String input = Console.readLine();
         validation(input);
     }
+
+    private static String generateValue(){
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+
+        StringBuilder resultBuilder = new StringBuilder();
+        for (Integer i : computer) {
+            resultBuilder.append(i.toString());
+        }
+        return resultBuilder.toString();
+    }
+
 
     private static void validation(String input){
         String pattern = "[1-9]{1,3}";
