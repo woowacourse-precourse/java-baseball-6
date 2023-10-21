@@ -24,6 +24,14 @@ public class BaseBallGame {
     }
 
     /**
+     * 게임을 다시 시작할때 셋팅해주는 메소드
+     */
+    public void restartGame() {
+        computerNumber = numberGenerator.generatorComputerNumber(BASEBALL_NUM_SIZE);
+        isGameOver = false;
+    }
+
+    /**
      * 게임이 현재 끝난 상태인지 반환함
      */
     public boolean isGameOver() {
