@@ -22,13 +22,34 @@ public class OutputBallCountTest {
         System.setOut(System.out);
     }
     @Test
-    void 출력_테스트(){
+    void 낫싱출력_테스트(){
         //given
-        int[] count = {0,0};
+        int[] count = {3,0};
         OutputBallCount print = new OutputBallCount();
         //when
         print.printCount(count);
         //then
         Assertions.assertEquals("낫싱\n", outputMessage.toString());
+    }
+    @Test
+    void 볼출력_테스트(){
+        //given
+        int[] count = {0,3};
+        OutputBallCount print = new OutputBallCount();
+        //when
+        print.printCount(count);
+        //then
+        Assertions.assertEquals("3볼\n", outputMessage.toString());
+    }
+
+    @Test
+    void 스트라이크출력_테스트(){
+        //given
+        int[] count = {3,0};
+        OutputBallCount print = new OutputBallCount();
+        //when
+        print.printCount(count);
+        //then
+        Assertions.assertEquals("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n", outputMessage.toString());
     }
 }
