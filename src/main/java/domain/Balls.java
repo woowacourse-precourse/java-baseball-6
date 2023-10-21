@@ -16,4 +16,8 @@ public class Balls {
         ballSizeValidator.validate(balls);
         this.balls = balls;
     }
+
+    public List<Ball> getBalls() {
+        return balls;
+    }
 }
