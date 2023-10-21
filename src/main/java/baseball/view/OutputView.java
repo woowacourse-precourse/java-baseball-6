@@ -10,11 +10,11 @@ public class OutputView {
 
         if (balls > 0 && strikes > 0) {
             System.out.printf("%d볼 %d스트라이크\n", balls, strikes);
-        }else if (balls > 0) {
+        } else if (balls > 0) {
             System.out.printf("%d볼\n", balls);
-        }else if (strikes > 0) {
+        } else if (strikes > 0) {
             System.out.printf("%d스트라이크\n", strikes);
-        }else if(balls == 0 && strikes == 0){
+        } else if (balls == 0 && strikes == 0) {
             System.out.println("낫싱");
         }
     }

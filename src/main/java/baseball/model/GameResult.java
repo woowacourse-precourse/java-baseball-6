@@ -1,10 +1,11 @@
 package baseball.model;
 
 public class GameResult {
+
     private int ballCount;
     private int strikeCount;
 
-    public GameResult(){
+    public GameResult() {
         ballCount = 0;
         strikeCount = 0;
     }
@@ -25,7 +26,7 @@ public class GameResult {
         return strikeCount;
     }
 
-    public boolean isSuccess(){
+    public boolean isSuccess() {
         return strikeCount == 3;
     }
 
