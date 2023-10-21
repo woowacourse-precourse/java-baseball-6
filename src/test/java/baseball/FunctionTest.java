@@ -43,6 +43,7 @@ public class FunctionTest {
         System.setIn(in1);
 
         List<Integer> userInputList1 = Application.getUserTrialInput();
+        camp.nextstep.edu.missionutils.Console.close();
 
         assertEquals(List.of(1, 2, 3), userInputList1);
 
@@ -51,6 +52,7 @@ public class FunctionTest {
         System.setIn(in2);
 
         List<Integer> userInputList2 = Application.getUserTrialInput();
+        camp.nextstep.edu.missionutils.Console.close();
 
         assertEquals(List.of(6, 0, 8), userInputList2);
     }
