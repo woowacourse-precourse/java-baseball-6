@@ -38,7 +38,7 @@
 ### Controller
 1. baseballController
    - [x] 게임 시작
-   - [] 숫자가 동일할때까지 반복
+   - [x] 숫자가 동일할때까지 반복
 
 ### Validation
 1. PlayerValidation

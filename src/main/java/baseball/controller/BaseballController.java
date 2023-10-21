@@ -14,10 +14,26 @@ public class BaseballController {
     public void startGame(){
         OutputView.baseballGameStart();
         System.out.println(computer.getComputerNumber());
-        player.inputPlayerNumber(InputView.playerNumber());
-        System.out.println(player.getPlayerNumber());
-        referee.duplicateNumbers(computer.getComputerNumber(), player.getPlayerNumber());
-        System.out.println("스트라이크 : "+ referee.getStrike()+" 볼 : "+ referee.getBall());
-        OutputView.detailMessage(referee.getStrike(), referee.getBall());
+        matchGame();
+
+    }
+
+    public void matchGame() {
+        while(true){
+            player.inputPlayerNumber(InputView.playerNumber());
+            System.out.println(player.getPlayerNumber());
+            referee.duplicateNumbers(computer.getComputerNumber(), player.getPlayerNumber());
+            System.out.println("스트라이크 : "+ referee.getStrike()+" 볼 : "+ referee.getBall());
+            OutputView.detailMessage(referee.getStrike(), referee.getBall());
+            if (outPlayer(referee.getStrike())) break;
+        }
+    }
+
+    public boolean outPlayer(int strike) {
+        if(strike == 3){
+            OutputView.threeStrikeMessage();
+            return true;
+        }
+        return false;
     }
 }
