@@ -1,6 +1,7 @@
 package baseball.model;
 
-import baseball.Constants;
+import static baseball.Constants.PLAY_NUMBER_DIGIT;
+
 import baseball.converter.IntegerInputConverter;
 import baseball.converter.StringInputConverter;
 import java.util.HashSet;
@@ -14,14 +15,16 @@ public class Umpire {
 
     private int computerNumber;
     private int userNumber;
+    private boolean endFlag;
 
-    private Umpire(final int computerNumber, final int userNumber) {
+    private Umpire(final int computerNumber, final int userNumber, final boolean flag) {
         this.computerNumber = computerNumber;
         this.userNumber = userNumber;
+        this.endFlag = flag;
     }
 
     public static Umpire createDefault() {
-        return new Umpire(DEFAULT_NUMBER, DEFAULT_NUMBER);
+        return new Umpire(DEFAULT_NUMBER, DEFAULT_NUMBER, false);
     }
 
     public int countStrike() {
@@ -79,11 +82,24 @@ public class Umpire {
     }
 
     public boolean isGameEnd() {
-        return countStrike() == Constants.PLAY_NUMBER_DIGIT;
+        if (isGameFinish()) {
+            endFlag = true;
+        }
+        return endFlag;
+    }
+
+    private boolean isGameFinish() {
+        return countStrike() == PLAY_NUMBER_DIGIT;
     }
 
     public void prepareJudgement(final int computerNumber, final int userNumber) {
         this.computerNumber = computerNumber;
         this.userNumber = userNumber;
+    }
+
+    public void resetGame() {
+        this.computerNumber = DEFAULT_NUMBER;
+        this.userNumber = DEFAULT_NUMBER;
+        this.endFlag = false;
     }
 }

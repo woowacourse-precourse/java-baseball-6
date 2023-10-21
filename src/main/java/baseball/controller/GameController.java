@@ -35,23 +35,24 @@ public class GameController {
     private void play() {
         int computerNumber = selectNewNumber();
 
-        while (true) {
+        while (!isGameEnd()) {
             askNumberInput();
 
             prepareGameJudgementWithComputer(computerNumber);
             printGameJudgement();
-
-            if (isGameEnd()) {
-                break;
-            }
         }
         printGameEnd();
         askResumeInput();
         updateResumeNumber();
+        clearUmpireMemory();
     }
 
     private int selectNewNumber() {
         return NumberFactory.createNumber();
+    }
+
+    private boolean isGameEnd() {
+        return umpire.isGameEnd();
     }
 
     private static void askNumberInput() {
@@ -78,10 +79,6 @@ public class GameController {
         return umpire.countStrike();
     }
 
-    private boolean isGameEnd() {
-        return umpire.isGameEnd();
-    }
-
     private static void printGameEnd() {
         EndView.end();
     }
@@ -96,5 +93,9 @@ public class GameController {
 
     private int receiveResumeNumber() {
         return InputController.receiveResumeNumber();
+    }
+
+    public void clearUmpireMemory() {
+        umpire.resetGame();
     }
 }
