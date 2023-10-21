@@ -113,9 +113,15 @@ public class NumberValidatorTest {
         String playerInput1 = "1";
         String playerInput2 = "2";
         String playerInput3 = "종료";
+        String errorMessage = "재시작/종료 여부는 1 또는 2를 입력해주세요.";
 
         assertThat(numberValidator.isValidContinueGameChoice(playerInput1)).isTrue();
         assertThat(numberValidator.isValidContinueGameChoice(playerInput2)).isTrue();
-        assertThat(numberValidator.isValidContinueGameChoice(playerInput3)).isFalse();
+        try {
+            numberValidator.isValidContinueGameChoice(playerInput3);
+            fail("IllegalArgumentException 가 발생해야한다.");
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage()).isEqualTo(errorMessage);
+        }
     }
 }

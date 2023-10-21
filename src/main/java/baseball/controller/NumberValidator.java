@@ -13,6 +13,7 @@ public class NumberValidator {
     private static final String DUPLICATE_INPUT_MESSAGE = "중복되지 않는 서로 다른 숫자를 입력해주세요.";
     private static final String CONTINUE_NUMBER = "1";
     private static final String GAME_TERMINATE_NUMBER = "2";
+    private static final String WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE = "재시작/종료 여부는 1 또는 2를 입력해주세요.";
 
     public boolean isTreeLengthLetter(String playerInput) {
         return playerInput.length() == BASEBALL_GAME_NUMBER_LENGTH;
@@ -50,6 +51,10 @@ public class NumberValidator {
     }
 
     public boolean isValidContinueGameChoice(String playerInput) {
-        return playerInput == CONTINUE_NUMBER || playerInput == GAME_TERMINATE_NUMBER;
+        if (playerInput == CONTINUE_NUMBER || playerInput == GAME_TERMINATE_NUMBER) {
+            return true;
+        }
+        throw new IllegalArgumentException(WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE);
     }
+
 }
