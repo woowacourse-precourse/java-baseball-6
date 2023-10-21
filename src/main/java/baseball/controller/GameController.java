@@ -1,8 +1,6 @@
 package baseball.controller;
 
-import static baseball.Constants.PLAY_NUMBER_DIGIT;
-
-import baseball.Umpire;
+import baseball.model.Umpire;
 import baseball.factory.NumberFactory;
 import baseball.model.ResumeNumber;
 import baseball.view.EndView;
@@ -12,9 +10,11 @@ import baseball.view.StartView;
 public class GameController {
 
     private final ResumeNumber resumeNumber;
+    private final Umpire umpire;
 
     public GameController() {
         this.resumeNumber = ResumeNumber.createDefault();
+        this.umpire = Umpire.createDefault();
     }
 
     public void playBaseball() {
@@ -39,13 +39,10 @@ public class GameController {
             askNumberInput();
 
             int userNumber = receiveUserNumber();
+            umpire.prepareJudgement(computerNumber, userNumber);
+            ResultView.printResult(umpire.countBall(), umpire.countStrike());
 
-            int ball = Umpire.countBall(computerNumber, userNumber);
-            int strike = Umpire.countStrike(computerNumber, userNumber);
-
-            ResultView.printResult(ball, strike);
-
-            if (isStrikeEqualToGoal(strike)) {
+            if (umpire.isGameEnd()) {
                 break;
             }
         }
@@ -64,10 +61,6 @@ public class GameController {
 
     private static int receiveUserNumber() {
         return InputController.receiveUserNumber();
-    }
-
-    private boolean isStrikeEqualToGoal(final int strike) {
-        return strike == PLAY_NUMBER_DIGIT;
     }
 
     private static void printGameEnd() {
