@@ -4,37 +4,37 @@ import player.BaseballNumbers;
 
 public class BaseballScore {
 
-    private Strike strike;
-    private Ball ball;
+    private Integer strike;
+    private Integer ball;
 
     public BaseballScore() {
-        this.strike = new Strike();
-        this.ball = new Ball();
+        this.strike = 0;
+        this.ball = 0;
     }
 
     public void setStrikeAndBall(BaseballNumbers computerBaseballNumber, BaseballNumbers playerBaseballNumber) {
         for (int i = 0; i < computerBaseballNumber.size(); i++) {
             if (computerBaseballNumber.get(i).equals(playerBaseballNumber.get(i))) {
-                strike.plusOne();
+                strike++;
                 continue;
             }
 
             if (computerBaseballNumber.contains(playerBaseballNumber.get(i))) {
-                ball.plusOne();
+                ball++;
             }
         }
     }
 
     public void clearStrikeAndBall() {
-        strike.clear();
-        ball.clear();
+        strike = 0;
+        ball = 0;
     }
 
     public Integer getStrike() {
-        return strike.getScore();
+        return strike;
     }
 
     public Integer getBall() {
-        return ball.getScore();
+        return ball;
     }
 }
