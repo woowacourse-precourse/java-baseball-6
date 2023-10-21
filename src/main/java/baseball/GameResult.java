@@ -17,8 +17,8 @@ public class GameResult {
         }
     }
 
-    public boolean hasThreeStrike() {
-        return result.getOrDefault(CompareStatus.STRIKE, 0) == 3;
+    public boolean isNotThreeStrike() {
+        return result.getOrDefault(CompareStatus.STRIKE, 0) != 3;
     }
 
     public List<String> getBallAndStrikeResult() {
@@ -27,9 +27,5 @@ public class GameResult {
                 .filter(status -> status.getValue() != null)
                 .map(status -> status.getValue() + status.getKey().toString())
                 .toList();
-    }
-
-    public Integer getStrikeResult() {
-        return result.get(CompareStatus.STRIKE);
     }
 }

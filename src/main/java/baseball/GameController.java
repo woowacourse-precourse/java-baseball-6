@@ -20,7 +20,9 @@ public class GameController {
             player.setNumbers(inputView.readNumbers());
             compareSystem = new CompareSystem(computer, player);
             gameResult = compareSystem.compare();
+            isNotThreeStrike = gameResult.isNotThreeStrike();
             outputView.printResult(gameResult);
         }
+        outputView.printThreeStrike();
     }
 }
