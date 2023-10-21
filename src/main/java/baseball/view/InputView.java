@@ -15,7 +15,7 @@ public class InputView {
 	}
 
 	public static String restartOrEndNumber() {
-		System.out.print(RESTART_OR_END_MESSAGE);
+		System.out.println(RESTART_OR_END_MESSAGE);
 		String number = Console.readLine();
 		return number;
 	}
