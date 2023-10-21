@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,7 +12,11 @@ public class Application {
         private List<Integer> computerNumbers;
         private List<Integer> userNumbers;
         private int[] count;
-        private final Scanner scanner = new Scanner(System.in);
+        private Scanner scanner;
+
+        public BaseBallGame(InputStream inputStream) {
+            this.scanner = new Scanner(inputStream);
+        }
 
         public List<Integer> getComputerNumbers() {
             return computerNumbers;
@@ -27,6 +32,10 @@ public class Application {
 
         public void setComputerNumbers() {
             this.computerNumbers = makeRandomNumbers();
+        }
+
+        public void setComputerNumbers(List<Integer> computerNumbers) {
+            this.computerNumbers = computerNumbers;
         }
 
         public void setUserNumbers() {
