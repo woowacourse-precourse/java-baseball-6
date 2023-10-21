@@ -1,42 +1,22 @@
 package baseball;
 
-import baseball.count.Count;
-import baseball.generateRandomNum.GenerateRandomNum;
+import baseball.computer.Computer;
+import baseball.player.Player;
+import baseball.refree.Refree;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
-    @Test
-    void 컴퓨터_랜덤숫자_생성() {
-        GenerateRandomNum generateRandomNum = new GenerateRandomNum();
-        List<Integer> randomNum = generateRandomNum.generate();
-
-        assertThat(3).isEqualTo(randomNum.size());
-        System.out.println(randomNum);
-    }
-
-    @Test
-    void 판정_카운트() {
-        Count count = new Count();
-        GenerateRandomNum generateRandomNum = new GenerateRandomNum();
-
-        List<Integer> computer = generateRandomNum.generate();
-        List<Integer> player = generateRandomNum.generate();
-
-        String result = count.count(computer,player);
-
-        System.out.println(computer);
-        System.out.println(player);
-        System.out.println(result);
-    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
