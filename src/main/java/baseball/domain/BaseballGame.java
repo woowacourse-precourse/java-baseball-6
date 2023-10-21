@@ -25,7 +25,9 @@ public class BaseballGame {
             String userInput = getUserInput();
             int[] inputNums = rule.evaluateNumbers(userInput);
             score = answer.calculateScore(inputNums);
+            printScore(score);
         } while (!canFinish(score));
+
 
     }
 
@@ -43,5 +45,24 @@ public class BaseballGame {
         }
 
         return false;
+    }
+
+    private void printScore(int[] score) {
+        StringBuilder result = new StringBuilder();
+        int countOfStrikes = score[0], countOfBalls = score[1];
+
+        if (countOfBalls > 0) {
+            result.append(countOfBalls).append(BALL).append(" ");
+        }
+
+        if (countOfStrikes > 0) {
+            result.append(countOfStrikes).append(STRIKE).append(" ");
+        }
+
+        if (countOfBalls == 0 && countOfStrikes == 0) {
+            result.append(NOTHING);
+        }
+
+        System.out.println(result);
     }
 }
