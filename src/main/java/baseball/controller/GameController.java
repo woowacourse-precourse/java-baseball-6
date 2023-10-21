@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.domain.Computer;
 import baseball.dto.JudgeDTO;
 import baseball.service.GameService;
-
 import java.util.Arrays;
 
 public class GameController {
@@ -20,13 +19,16 @@ public class GameController {
     private final GameService gameService;
 
     private static GameController INSTANCE;
+
     private GameController(Computer computer, GameService gameService) {
         this.computer = computer;
         this.gameService = gameService;
     }
+
     public static GameController getInstance(Computer computer, GameService gameService) {
-        if (INSTANCE == null)
+        if (INSTANCE == null) {
             INSTANCE = new GameController(computer, gameService);
+        }
         return INSTANCE;
     }
 
@@ -50,8 +52,12 @@ public class GameController {
 
         int status = Integer.parseInt(input);
 
-        if (status == RETRY) return true;
-        if (status == EXIT) return false;
+        if (status == RETRY) {
+            return true;
+        }
+        if (status == EXIT) {
+            return false;
+        }
 
         throw new IllegalArgumentException(OUT_OF_BOUND);
     }
@@ -60,8 +66,9 @@ public class GameController {
         Arrays.sort(charArray);
 
         for (int i = 0; i < charArray.length - 1; i++) {
-            if (charArray[i] == charArray[i + 1])
+            if (charArray[i] == charArray[i + 1]) {
                 throw new IllegalArgumentException(DUPLICATED_ELEMENT_EXCEPTION);
+            }
         }
     }
 
@@ -69,16 +76,18 @@ public class GameController {
         char[] charArray = input.toCharArray();
 
         for (char ch : charArray) {
-            if (!Character.isDigit(ch))
+            if (!Character.isDigit(ch)) {
                 throw new IllegalArgumentException(NON_NUMERIC_EXCEPTION);
+            }
         }
 
         return charArray;
     }
 
-    private void validateCapacity(String input ,int capacity) {
-        if (input.length() != capacity)
+    private void validateCapacity(String input, int capacity) {
+        if (input.length() != capacity) {
             throw new IllegalArgumentException(OUT_OF_BOUND);
+        }
     }
 
     private int[] changeIntArray(char[] charArray) {

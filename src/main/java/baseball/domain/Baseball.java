@@ -14,8 +14,9 @@ public class Baseball {
     }
 
     private void validateRange(int number) {
-        if (MINIMUM_NUMBER > number && MAXIMUM_NUMBER < number)
+        if (MINIMUM_NUMBER > number && MAXIMUM_NUMBER < number) {
             throw new IllegalArgumentException(ILLEGAL_RANGE);
+        }
     }
 
     public int getNumber() {
@@ -24,8 +25,12 @@ public class Baseball {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Baseball baseball = (Baseball) o;
 

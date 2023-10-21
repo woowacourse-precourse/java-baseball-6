@@ -9,12 +9,15 @@ public class GameFactory {
     private final Dispatcher dispatcher;
 
     private static GameFactory INSTANCE;
+
     private GameFactory(Dispatcher dispatcher) {
         this.dispatcher = dispatcher;
     }
+
     public static GameFactory getInstance(Dispatcher dispatcher) {
-        if (INSTANCE == null)
+        if (INSTANCE == null) {
             INSTANCE = new GameFactory(dispatcher);
+        }
         return INSTANCE;
     }
 
@@ -29,8 +32,11 @@ public class GameFactory {
         while (true) {
             JudgeDTO judge = dispatcher.dispatchProcess(View.input());
             View.printMessage(judge.getMessage());
-            if (judge.isAllStrike())
-                if (!isRetry()) break;
+            if (judge.isAllStrike()) {
+                if (!isRetry()) {
+                    break;
+                }
+            }
         }
     }
 

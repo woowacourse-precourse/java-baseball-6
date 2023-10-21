@@ -5,12 +5,15 @@ import baseball.dto.JudgeDTO;
 public class Dispatcher {
 
     private static Dispatcher INSTANCE;
+
     private Dispatcher(GameController gameController) {
         this.gameController = gameController;
     }
+
     public static Dispatcher getInstance(GameController gameController) {
-        if (INSTANCE == null)
+        if (INSTANCE == null) {
             INSTANCE = new Dispatcher(gameController);
+        }
         return INSTANCE;
     }
 

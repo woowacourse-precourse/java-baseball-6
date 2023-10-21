@@ -1,7 +1,6 @@
 package baseball.service;
 
 import baseball.dto.JudgeDTO;
-
 import java.util.List;
 
 public class GameServiceImpl implements GameService {
@@ -16,7 +15,10 @@ public class GameServiceImpl implements GameService {
     private static final int NOTHING = 2;
 
     private static final GameService INSTANCE = new GameServiceImpl();
-    private GameServiceImpl() { }
+
+    private GameServiceImpl() {
+    }
+
     public static GameService getInstance() {
         return INSTANCE;
     }
@@ -39,18 +41,23 @@ public class GameServiceImpl implements GameService {
             if (numbers.get(i) == currentTarget) {
                 referee[STRIKE]++;
             } else {
-                if (numbers.contains(currentTarget)) referee[BALL]++;
-                else referee[NOTHING]++;
+                if (numbers.contains(currentTarget)) {
+                    referee[BALL]++;
+                } else {
+                    referee[NOTHING]++;
+                }
             }
         }
     }
 
     private JudgeDTO buildStatusAndMessage(int[] referee, boolean flag) {
         StringBuilder builder = new StringBuilder();
-        if (referee[NOTHING] == CAPACITY) builder.append(NOTHING_STATUS_MESSAGE);
-        else {
-            if (referee[BALL] != 0)
+        if (referee[NOTHING] == CAPACITY) {
+            builder.append(NOTHING_STATUS_MESSAGE);
+        } else {
+            if (referee[BALL] != 0) {
                 builder.append(referee[BALL] + BALL_STATUS_MESSAGE);
+            }
 
             if (referee[STRIKE] != 0) {
                 builder.append(referee[STRIKE] + STRIKE_STATUS_MESSAGE);
