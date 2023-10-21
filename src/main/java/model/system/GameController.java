@@ -7,7 +7,12 @@ import utils.BaseballNumberUtils;
 
 public class GameController {
 
-    public GameController() {
+    private final GameStarter gameStarter;
+    private final GameTerminator gameTerminator;
+
+    public GameController(GameStarter gameStarter, GameTerminator gameTerminator) {
+        this.gameStarter = gameStarter;
+        this.gameTerminator = gameTerminator;
     }
 
     public void run() {
