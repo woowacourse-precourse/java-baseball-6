@@ -1,7 +1,7 @@
 package data;
 
 import camp.nextstep.edu.missionutils.Console;
-import utility.BaseballNumberChecker;
+import utility.ValidityChecker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +14,11 @@ public final class GuessNumber extends BaseballNumber{
         List<Integer> numbers = this.numbers;
         String input = this.input;
 
-        BaseballNumberChecker.validateBaseballNumberSize(input);
-        BaseballNumberChecker.validateBaseballNumberType(input);
+        ValidityChecker.validateBaseballNumberSize(input);
+        ValidityChecker.validateBaseballNumberType(input);
 
         saveAsList(input);
-        BaseballNumberChecker.isBaseballNumberSequence(numbers, MAX_NUMBER_LENGTH);
+        ValidityChecker.isBaseballNumberSequence(numbers, MAX_NUMBER_LENGTH);
     }
     private void saveAsList(String input){
         List<Integer> numbers = this.numbers;

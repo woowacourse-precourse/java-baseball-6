@@ -3,8 +3,8 @@ package utility;
 import java.util.Collections;
 import java.util.List;
 
-public final class BaseballNumberChecker {
-    private BaseballNumberChecker(){}
+public final class ValidityChecker {
+    private ValidityChecker(){}
     public static void validateBaseballNumberSize(final String input)
             throws IllegalArgumentException{
         if(input.length() != 3)
