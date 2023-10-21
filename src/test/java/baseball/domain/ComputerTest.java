@@ -1,11 +1,9 @@
 package baseball.domain;
 
-import baseball.strategy.DuplicateAllowancePolicy;
+import baseball.strategy.ForbidDuplicationPolicy;
 import baseball.strategy.RandomNumberGeneratePolicy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,12 +14,12 @@ class ComputerTest {
     void successGenerateThreeAnyDifferentNumber() {
         // given
         final var randomNumberGenerateStrategy = new RandomNumberGeneratePolicy();
-        final DuplicateAllowancePolicy duplicateAllowancePolicy = () -> false;
+        final var duplicateAllowancePolicy = new ForbidDuplicationPolicy();
         final int numberCount = 3;
 
         // when
-        Computer computer = new Computer();
-        List<Integer> numbers = computer.generateNumbers(randomNumberGenerateStrategy, duplicateAllowancePolicy, numberCount);
+        var computer = new Computer();
+        var numbers = computer.generateNumbers(randomNumberGenerateStrategy, duplicateAllowancePolicy, numberCount);
 
         // then
         assertThat(numbers).hasSize(numberCount).doesNotHaveDuplicates();
