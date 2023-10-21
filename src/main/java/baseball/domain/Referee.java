@@ -13,13 +13,13 @@ public class Referee {
     public void judge(List<Integer> numbers, int[] inputNumbers) {
         for (int i = 0; i < numbers.size(); i++) {
             int currentTarget = inputNumbers[i];
-            if (isBall(numbers, currentTarget)) {
-                addBallCount();
+            if (isStrike(numbers.get(i), currentTarget)) {
+                addStrikeCount();
                 continue;
             }
 
-            if (isStrike(numbers.get(i), currentTarget)) {
-                addStrikeCount();
+            if (isBall(numbers, currentTarget)) {
+                addBallCount();
             } else {
                 addMissCount();
             }
