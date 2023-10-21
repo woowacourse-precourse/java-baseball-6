@@ -23,7 +23,7 @@ public class GameController {
     private static final String MSG_EXCEPTION_INVALID_INPUT = "올바르지 않은 입력값입니다.";
     public static boolean playing = true;
 
-    private void init() {
+    public void init() {
         computerNumbers.clear();
     }
 
@@ -31,6 +31,7 @@ public class GameController {
         System.out.println(MSG_START);
         while (playing) {
             if (computerNumbers.isEmpty()) computerNumbers = service.generateNumbers();
+            System.out.println("치트: " + computerNumbers.get(0) + computerNumbers.get(1) + computerNumbers.get(2));
             System.out.println(MSG_QUERY);
             List<Integer> userNumbers = receiveInput();
             int[] result = service.compare(computerNumbers, userNumbers);
