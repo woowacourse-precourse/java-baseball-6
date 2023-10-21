@@ -2,7 +2,7 @@ package baseball.domain;
 
 public enum GameOption {
     RESTART("1"),
-    END("0");
+    END("2");
 
     private final String option;
 
