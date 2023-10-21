@@ -20,6 +20,6 @@ public enum RetryCommand {
         return Arrays.stream(RetryCommand.values())
                 .filter(value -> value.command == command)
                 .findAny()
-                .get();
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.INVALID_RETRY_COMMAND.getMessage()));
     }
 }
