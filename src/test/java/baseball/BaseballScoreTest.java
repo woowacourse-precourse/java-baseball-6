@@ -10,8 +10,7 @@ public class BaseballScoreTest {
     @Test
     @DisplayName("toString이 잘 되는지 확인")
     void 출력_테스트() {
-        BaseballScore score = new BaseballScore();
-        score.ball = 1; score.strike = 2;
+        BaseballScore score = new BaseballScore(1, 2);
 
         String s = score.toString();
 

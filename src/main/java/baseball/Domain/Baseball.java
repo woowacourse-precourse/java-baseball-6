@@ -36,15 +36,14 @@ public class Baseball {
 
     public BaseballScore compare(Baseball baseball) {
 
-        BaseballScore baseballScore = new BaseballScore();
-
+        int ball = 0, strike = 0;
         for(Map.Entry<Integer, Integer> pair : dict.entrySet()) {
             if(!baseball.dict.containsKey(pair.getKey())) continue;
-            if(baseball.dict.get(pair.getKey()) == pair.getValue()) baseballScore.strike++;
-            else baseballScore.ball++;
+            if(baseball.dict.get(pair.getKey()) == pair.getValue()) strike++;
+            else ball++;
         }
 
-        return baseballScore;
+        return new BaseballScore(ball, strike);
 
     }
 

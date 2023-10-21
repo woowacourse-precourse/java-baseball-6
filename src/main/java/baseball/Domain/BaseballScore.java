@@ -1,19 +1,22 @@
 package baseball.Domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BaseballScore {
 
     public int ball, strike;
 
-    BaseballScore() {
-        ball = strike = 0;
+    public BaseballScore(int ball, int strike) {
+        this.ball = ball; this.strike = strike;
     }
 
     @Override
     public String toString() {
-        if(ball == 0 && strike == 0) { return "낫싱"; }
-        if(ball != 0 && strike == 0) { return String.format("%d볼", ball); }
-        if(ball == 0 && strike != 0) { return String.format("%d스트라이크", strike); }
-        return String.format("%d볼 %d스트라이크", ball, strike);
+        List<String> parts = new ArrayList<>();
+        if(ball > 0) parts.add(ball + "볼");
+        if(strike > 0) parts.add(strike + "스트라이크");
+        return parts.isEmpty()? "낫싱" : String.join(" ", parts);
     }
 
 }
