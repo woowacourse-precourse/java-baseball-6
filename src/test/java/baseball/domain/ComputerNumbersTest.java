@@ -24,9 +24,10 @@ class ComputerNumbersTest {
     void checkPlayerNumbers_Success(List<Integer> computerNumberList, List<Integer> playerNumberList, int countOfBall, int countOfStrike) {
         // given
         ComputerNumbers computerNumbers = new ComputerNumbers(computerNumberList);
+        PlayerNumbers playerNumbers = new PlayerNumbers(playerNumberList, 3);
 
         // when
-        computerNumbers.checkPlayerNumbers(playerNumberList, 3);
+        computerNumbers.checkPlayerNumbers(playerNumbers, 3);
 
         // then
         assertThat(BallCounter.getCountOfBall()).isEqualTo(countOfBall);
