@@ -36,7 +36,6 @@ public class BaseballGameController {
 
         private static void validateUsersGuess(String guess) {
             Validator.validateNull(guess);
-            Validator.validateSize(guess, 3);
         }
     }
 }

@@ -9,6 +9,7 @@ public class NumberList {
     private List<Integer> numberList;
 
     public NumberList(List<Integer> numberList) {
+        Validator.validateSize(numberList, 3);
         validateRepeatedNumber(numberList);
         validateIsInRange(numberList);
         this.numberList = numberList;

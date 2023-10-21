@@ -9,10 +9,6 @@ import java.util.List;
 public class Computer {
     private NumberList answer;
 
-    public NumberList getAnswer() {
-        return answer;
-    }
-
     public boolean isAnswer(NumberList guess) {
         return answer.equals(guess);
     }
