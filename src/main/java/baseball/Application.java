@@ -26,8 +26,16 @@ public class Application
     	String userInput = Console.readLine();
     	Console.close();
     	
-    	if (userInput.length() != 3) {
+    	if (userInput.length() != 3)
+    	{
             throw new IllegalArgumentException();
         }
+    	
+    	if (!userInput.matches("\\d{3}")) 
+    	{
+            throw new IllegalArgumentException();
+        }
+    	
     }
+
 }
