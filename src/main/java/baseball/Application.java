@@ -18,11 +18,11 @@ class Game {
 
     int[] Answer = new int[3];
     Game(){
-        int num;
-        for (int i=0; i<3; i++){  // 컴퓨터가 임의의 숫자 3개 선택 (정답 숫자)
-            num = this.RandomNumber();
+        int index= 0;
+        while (index<3){  // 컴퓨터가 임의의 숫자 3개 선택 (정답 숫자)
+            int num = this.RandomNumber();
             if (!Check.RepeatNumber(Answer,num)){
-                Answer[i] = num;
+                Answer[index++] = num;
             }
         }
     }
@@ -166,14 +166,14 @@ class Hint{
         int tmp;
         for (int i=0; i<3; i++){
             tmp = answer.Answer[i];
-             if(!Check.RepeatNumber(target.Answer, tmp)){
-                 continue;
-             }
-             if (i == Check.Location(target.Answer,tmp)){
-                 StrikeCount();
-                 continue;
-             }
-             BallCount();
+            if(!Check.RepeatNumber(target.Answer, tmp)){
+                continue;
+            }
+            if (i == Check.Location(target.Answer,tmp)){
+                StrikeCount();
+                continue;
+            }
+            BallCount();
         }
     }
 
@@ -183,6 +183,9 @@ class Hint{
             result += this.ball + "볼";
         }
         if (this.strike != 0){
+            if (this.ball != 0){
+                result += " ";
+            }
             result += this.strike + "스트라이크";
         }
         if (result.equals("")){
