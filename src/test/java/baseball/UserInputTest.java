@@ -128,4 +128,21 @@ class UserInputTest {
         }
     }
 
+    @DisplayName("재시작 여부 값으로 2를 입력하였을 시 성공")
+    @Test
+    void inputRestartValueTwo() throws NoSuchMethodException{
+        String stringValue = "2";
+        GameController gameController = new GameController();
+        Method method = gameController.getClass().getDeclaredMethod("checkRestart", String.class);
+        method.setAccessible(true);
+
+        try{
+            boolean resultValue = (boolean) method.invoke(gameController, stringValue);
+            assertThat(resultValue).isFalse();
+
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
