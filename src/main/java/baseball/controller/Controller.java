@@ -3,10 +3,8 @@ package baseball.controller;
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.service.BaseballGame;
-import baseball.utils.Utils;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class Controller {
     private static final int RESTART_GAME = 1;
@@ -35,20 +33,19 @@ public class Controller {
 
     public void PlayGame() {
         OutputView.printInput();
-        List<Integer> playerNumbers = Utils.parseIntegerList(InputView.inputBaseballNumbers());
-        player.setBaseballNumbers(playerNumbers);
+        player.setBaseballNumbers(InputView.inputBaseballNumbers());
 
         baseballGame.calculateNumbers(computer.getBaseballNumbers(), player.getBaseballNumbers());
         OutputView.printCalculateResult(baseballGame.ballCount, baseballGame.strikeCount);
     }
 
+
     public void selectGameState() {
         OutputView.printRestartOrQuit();
-        int gameStateNumber = Integer.parseInt(InputView.inputGameStateNumber());
-        if (gameStateNumber == 1) {
+        if (InputView.inputGameStateNumber() == RESTART_GAME) {
             run();
         }
-        if (gameStateNumber == 2) {
+        if (InputView.inputGameStateNumber() == QUIT_GAME) {
             return;
         }
     }

@@ -2,12 +2,17 @@ package baseball.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.utils.Utils;
+import java.util.List;
+
 public class InputView {
-    public static String inputBaseballNumbers() {
-        return readLine();
+    public static List<Integer> inputBaseballNumbers() {
+        List<Integer> playerNumbers = Utils.parseIntegerList(readLine());
+        return playerNumbers;
     }
 
-    public static String inputGameStateNumber() {
-        return readLine();
+    public static int inputGameStateNumber() {
+        int gameStateNumber = Integer.parseInt(readLine());
+        return gameStateNumber;
     }
 }
