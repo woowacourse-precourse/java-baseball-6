@@ -21,14 +21,19 @@ public class GameController {
         return new GameController();
     }
     public void setUpNewGame() {
-        outputView.showIntroMessage();
-        computer.initComputerNumbers();
+        boolean gameProcess = true;
+        while(gameProcess) {
+            outputView.showIntroMessage();
+            computer.initComputerNumbers();
+            playGame();
+            outputView.showGameRestartInputMessage();
+            gameProcess = player.isRestartGame();
+        }
     }
     public void playGame() {
         boolean isGameClear = false;
         while(!isGameClear){
             isGameClear = player.swingBat(computer);
         }
-        outputView.showGameRestartInputMessage();
     }
 }
