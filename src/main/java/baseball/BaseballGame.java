@@ -11,11 +11,12 @@ public class BaseballGame {
     private static final String REQUIRED_THREE_DIGITS = "입력 값은 3자리 숫자여야 합니다.";
     private static final int MAX_STRIKE = 3;
 
-    BaseballGameLogic baseballGameLogic = new BaseballGameLogic();
-    BaseballGameView baseballGameView = new BaseballGameView();
+    private final BaseballGameLogic baseballGameLogic;
+    private final BaseballGameView baseballGameView;
 
     public BaseballGame() {
-
+        baseballGameLogic = new BaseballGameLogic();
+        baseballGameView = new BaseballGameView();
     }
 
     public void start() {
