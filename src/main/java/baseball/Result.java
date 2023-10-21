@@ -1,4 +1,9 @@
 package baseball;
 
-public record Result(int ballCount, int strikeCount) {
+record Result(int ballCount, int strikeCount) {
+
+    boolean isThreeStrike() {
+        return strikeCount == Size.THREE.num;
+    }
+
 }
