@@ -9,8 +9,6 @@ import baseball.view.OutputView;
 
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.*;
-
 public class GameController {
 
     private final InputView inputView;
@@ -32,6 +30,11 @@ public class GameController {
             ballCounter = gameService.judgeGames(computerBalls, playerBalls);
             outputView.showResult(ballCounter);
         }
+    }
+
+    public boolean retryOrExit() {
+        String command = dataController.readRetryOrEndCommand();
+        return command.equals(GameOption.RESTART.getOption());
     }
 }
 

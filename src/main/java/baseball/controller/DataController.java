@@ -21,7 +21,7 @@ public class DataController {
         this.ballsGenerator = new BallsGenerator();
     }
 
-    protected List<String> readValues() {
+    protected List<String> readPlayerInputValues() {
         String value = readLine();
         dataValidator.validateInputNumber(value);
 
@@ -29,7 +29,14 @@ public class DataController {
     }
 
     public List<Balls> generatePlayerNumbers() {
-        List<String> values = readValues();
+        List<String> values = readPlayerInputValues();
         return ballsGenerator.generatePlayerNumbers(values);
+    }
+
+    public String readRetryOrEndCommand() {
+        String value = readLine();
+        dataValidator.validateRetryOrEndGameCommand(value);
+
+        return value;
     }
 }

@@ -1,12 +1,10 @@
 package baseball.controller;
 
 import baseball.domain.BallCounter;
-import baseball.domain.GameOption;
+
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class SystemController {
     private final InputView inputView;
@@ -25,22 +23,14 @@ public class SystemController {
     }
 
     public void run() {
-        BallCounter ballCounter = new BallCounter(0, 0);
-        inputView.generateGameStartMessage();
-        gameController.tryOnce(gameService.generateComputerNumbers(), ballCounter);
-        outputView.showGameEndMessage();
-        inputView.showRetryOrEndGameMessage();
-        if (retryOrExit()) run();
-    }
-
-    private boolean retryOrExit() {
-        String data = readLine();
-        if (data.equals(GameOption.RESTART.getOption())) {
-            return true;
+        boolean continueGame = true;
+        while (continueGame) {
+            BallCounter ballCounter = new BallCounter(0, 0);
+            inputView.generateGameStartMessage();
+            gameController.tryOnce(gameService.generateComputerNumbers(), ballCounter);
+            outputView.showGameEndMessage();
+            inputView.showRetryOrEndGameMessage();
+            continueGame = gameController.retryOrExit();
         }
-        if (data.equals(GameOption.END.getOption())) {
-            return false;
-        }
-        return false;
     }
 }
