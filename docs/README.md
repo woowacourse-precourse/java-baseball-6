@@ -82,3 +82,5 @@
 - GameMessage: 게임 진행에 필요한 메시지를 가진다
 
 - StrikeBall: 스트라이크, 볼 혹은 맞추지 못한 상태를 가진다
+
+- BallCountMessage: 볼카운트 결과에 대한 메시지를 가진다
