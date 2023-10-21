@@ -10,9 +10,13 @@ public class GameController {
     OutputView outputView = new OutputView();
 
     public void startProgram() {
-        outputView.outputStartProgram();
-        Game game = initGame();
-        compareNumber(game);
+        try {
+            outputView.outputStartProgram();
+            Game game = initGame();
+            compareNumber(game);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private Game initGame() {
