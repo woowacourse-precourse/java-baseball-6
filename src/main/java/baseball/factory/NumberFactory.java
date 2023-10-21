@@ -2,6 +2,7 @@ package baseball.factory;
 
 import static baseball.Constants.PLAY_NUMBER_DIGIT;
 
+import baseball.converter.BuilderInputConverter;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberFactory {
@@ -32,7 +33,7 @@ public class NumberFactory {
     }
 
     private static boolean isBuilderContainsNumber(final StringBuilder builder, final int number) {
-        return isInputContainsNumber(builder.toString(), number);
+        return isInputContainsNumber(BuilderInputConverter.toString(builder), number);
     }
 
     private static boolean isInputContainsNumber(final String input, final int number) {
@@ -44,6 +45,6 @@ public class NumberFactory {
     }
 
     private static int convertBuilderToNumber(final StringBuilder builder) {
-        return Integer.parseInt(builder.toString());
+        return Integer.parseInt(BuilderInputConverter.toString(builder));
     }
 }
