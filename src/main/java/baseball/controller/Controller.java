@@ -33,6 +33,8 @@ public class Controller {
                     System.out.println("낫싱");
                 }
             }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            InputView.inputRestartNumber();
         }
     }
 }
