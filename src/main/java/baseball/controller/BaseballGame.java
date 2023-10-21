@@ -14,12 +14,16 @@ public class BaseballGame {
     public void startGame() {
         OutputView.printGameStartMessage();
         createComputerNumber();
-        getUserNumber();
-        compareNumbers();
+        do {
+            getUserNumber();
+        } while(!isCorrectNumber());
     }
 
     private void createComputerNumber() {
         computer = new Computer();
+        for(int num : computer.getComputerNumber()) {
+            System.out.println(num);
+        }
     }
 
     private void getUserNumber() {
@@ -27,7 +31,7 @@ public class BaseballGame {
         user = new User(userNumber);
     }
 
-    private void compareNumbers() {
+    private boolean isCorrectNumber() {
         List<Integer> computerNumber = computer.getComputerNumber();
         List<Integer> userNumber = user.getUserNumber();
         int strike = 0;
@@ -43,5 +47,12 @@ public class BaseballGame {
         }
 
         OutputView.printOneGameResult(strike, ball);
+
+        if(strike == 3 && ball == 0) {
+            OutputView.printThreeStrikeMessage();
+            return true;
+        }
+
+        return false;
     }
 }
