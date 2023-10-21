@@ -1,6 +1,12 @@
 package baseball.validator;
 
 public class InputValidator {
+    public static boolean isInputNumbersValid(String input) {
+        if (isThreeChar(input) && isNumber(input) && isBetweenOneAndNine(input) && isNotDuplicate(input)) {
+            return true;
+        }
+        return false;
+    }
 
     public static boolean isThreeChar(String input) {
         if (input.length() == 3) {
