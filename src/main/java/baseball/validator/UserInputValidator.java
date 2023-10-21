@@ -1,5 +1,6 @@
 package baseball.validator;
 
+import baseball.constans.ErrorMessage;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -15,19 +16,19 @@ public class UserInputValidator {
     public static void validateIsNumberAndRange(String userInput) {
 
         if (!NUMBER_PATTERN.matcher(userInput).matches()) {
-            throw new IllegalArgumentException("[ERROR] 1~9 까지의 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_RANGE_EXCEPTION.getMessage());
         }
     }
 
     public static void validateLength(String userInput) {
         if (userInput.length() != 3) {
-            throw new IllegalArgumentException("[ERROR] 3자리 수만 입력 가능합니다.");
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_LENGTH_EXCEPTION.getMessage());
         }
     }
 
     public static void validateFinishOrRestart(String userInput) {
         if (!userInput.equals("1") && !userInput.equals("2")) {
-            throw new IllegalArgumentException("[ERROR] 1 또는 2 의 값만 입력 가능합니다.");
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_NOT_CORRECT_EXCEPTION.getMessage());
         }
     }
 
@@ -35,7 +36,7 @@ public class UserInputValidator {
         List<Integer> list = Arrays.stream(userInput.split("")).map(Integer::parseInt).toList();
         for (Integer i : list) {
             if (Collections.frequency(list, i) > 1) {
-                throw new IllegalArgumentException("[ERROR] 같은 숫자는 1번만 입력 가능합니다.");
+                throw new IllegalArgumentException(ErrorMessage.NUMBER_DUPLICATED_EXCEPTION.getMessage());
             }
         }
 
