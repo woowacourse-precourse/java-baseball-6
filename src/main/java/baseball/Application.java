@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 
 public class Application {
@@ -15,6 +14,8 @@ public class Application {
     static List<Integer> computerNumber = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         //컴퓨터 숫자를 생성한다
         createComputerNumber();
 
@@ -27,6 +28,7 @@ public class Application {
 
         while (true) {
             //입력을 받는다
+            System.out.print("숫자를 입력해주세요 : ");
             int inputNumber = Integer.parseInt(br.readLine());
 
             //입력 값에 대한 조건을 검증한다
@@ -34,56 +36,37 @@ public class Application {
             //checkNumberRange(inputNumber);
             //checkEachDigitIsSameNumber(inputNumber);
 
-            //컴퓨터 숫자를 char 배열로 표현하도록 바꾼다
+            //컴퓨터 숫자를 int 배열로 표현하도록 바꾼다
             int[] intArrayComputerNumber = listTransformToIntArray(computerNumber);
 
-            //입력 숫자를 char 배열로 표현하도록 바꾼다
-            int[] charArrayInputNumber = getDigitsArray(inputNumber);
+            //입력 숫자를 int 배열로 표현하도록 바꾼다
+            int[] intArrayInputNumber = getDigitsArray(inputNumber);
 
             /***
-             * 1~9까지의 배열을 하나 만들고 컴퓨터 숫자에 있는 각 자리의 수를 1로 바꾸고,
-             * 입력 값에 있는 각 자리의 수를 배열에서 1인 수만 0으로 바꾼다
-             * 1의 갯수로 답을 알아낸다
+             * ComputerNumber 배열과 InputNumber 배열을 이중 루프
+             * intArrayInputNumber[i] == intArrayComputerNumber[j] && i == j 이면 strike
              */
-
-            //1~9까지의 오름차순 배열 생성 후 초기화 //나중에 9를 다른 변수로 선언 후 사용
-            int[] discriminator = new int[10];
-            for (int i = 0; i <= 9; i++) {
-                discriminator[i] = 0;
-            }
-
-            //컴퓨터 숫자에 있는 각 자리의 수에 매칭되는 인덱스 값을 1로 치환
-            for (int i = 0; i < NUMBER_DIGIT; i++) {
-                for (int j = 1; j <= 9; j++) {
-                    if (intArrayComputerNumber[i] == j) {
-                        discriminator[j] = 1;
+            int strike = 0;
+            int ball = 0;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (intArrayInputNumber[i] == intArrayComputerNumber[j]) {
+                        if (i == j) {
+                            strike++;
+                            continue;
+                        }
+                        ball++;
                     }
                 }
             }
 
-            //입력 값에 있는 각 자리의 수를 배열에서 1인 수만 0으로 치환
-            for (int i = 0; i < NUMBER_DIGIT; i++) {
-                for (int j = 1; j <= 9; j++) {
-                    if (charArrayInputNumber[i] == j && discriminator[j] == 1) {
-                        discriminator[j] = 0;
-                    }
-                }
-            }
-
-            //1인 원소가 0개면 정답
-            count = 0;
-            for (int i = 1; i <= 9; i++) {
-                if (discriminator[i] == 1) {
-                    count++;
-                }
-            }
-
-            if (count == 0) {
+            if (strike == 3) {
                 break;
             }
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
-
-        System.out.println("!");
+        System.out.println("3스트라이크");
+        System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
     }
 
@@ -222,12 +205,17 @@ public class Application {
      * 배열 내에 중복되는 수가 있는지 확인한다
      *
      * @param arr
-     * @return 배열에 중복값이 있는지에 대한 여부를 boolean값으로 반환
+     * @return
      */
     public static boolean areAllDistinct(int[] arr) {
-        return IntStream.range(0, arr.length)
-                .noneMatch(i -> IntStream.range(i + 1, arr.length)
-                        .anyMatch(j -> arr[i] == arr[j]));
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    return false; // 중복된 숫자가 발견됨
+                }
+            }
+        }
+        return true; // 중복된 숫자가 없음
     }
 }
 
