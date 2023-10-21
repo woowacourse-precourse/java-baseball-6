@@ -5,31 +5,32 @@ import java.util.List;
 
 public abstract class BallNumbers {
 
-  public static final int BALL_COUNT = 3;
 
-  protected final List<BallNumber> ballNumbers;
+    public static final int BALL_COUNT = 3;
 
-  protected BallNumbers(final List<Integer> numbers) {
-    validateNumbersCount(numbers);
-    this.ballNumbers = intoBallNumberList(numbers);
-  }
+    protected final List<BallNumber> ballNumbers;
 
-  private static List<BallNumber> intoBallNumberList(final List<Integer> numbers) {
-    final List<BallNumber> ballNumbers = new ArrayList<>();
-
-    for (final Integer number : numbers) {
-      ballNumbers.add(new BallNumber(number));
+    protected BallNumbers(final List<Integer> numbers) {
+        validateNumbersCount(numbers);
+        this.ballNumbers = intoBallNumberList(numbers);
     }
-    return ballNumbers;
-  }
 
-  private static void validateNumbersCount(final List<Integer> numbers) {
-    if (numbers.size() != BALL_COUNT) {
-      throw new IllegalArgumentException("BallNumbers는 3자리로 이루어진 숫자여야 합니다.");
+    private static List<BallNumber> intoBallNumberList(final List<Integer> numbers) {
+        final List<BallNumber> ballNumbers = new ArrayList<>();
+
+        for (final Integer number : numbers) {
+            ballNumbers.add(new BallNumber(number));
+        }
+        return ballNumbers;
     }
-  }
 
-  protected BallNumber get(final int index) {
-    return ballNumbers.get(index);
-  }
+    private static void validateNumbersCount(final List<Integer> numbers) {
+        if (numbers.size() != BALL_COUNT) {
+            throw new IllegalArgumentException("BallNumbers는 3자리로 이루어진 숫자여야 합니다.");
+        }
+    }
+
+    protected BallNumber get(final int index) {
+        return ballNumbers.get(index);
+    }
 }
