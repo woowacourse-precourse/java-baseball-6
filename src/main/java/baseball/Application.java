@@ -97,7 +97,7 @@ public class Application {
                 GameResult gameResult = playGame(answerList, userInputList);
                 System.out.println(gameResult);
 
-                if (gameResult.getStrike() == 3) {
+                if (gameResult.isAllStrike()) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     if (getUserRestartInput() == 2) {
                         gameState = false;
