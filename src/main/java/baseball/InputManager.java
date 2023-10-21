@@ -31,7 +31,7 @@ public class InputManager {
     private String getInput() {
 
         Scanner scanner = new Scanner(System.in);
-        String inputValue = scanner.next();
+        String inputValue = scanner.nextLine();
 
         return inputValue;
 
