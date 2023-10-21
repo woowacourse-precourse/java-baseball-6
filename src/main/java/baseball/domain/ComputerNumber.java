@@ -29,6 +29,11 @@ public class ComputerNumber {
         return new ArrayList<>(uniqueNumbers);
     }
 
+    public void verifyNumber(List<Integer> number) {
+        gameResult.setStrike(verifyStrike(answerNumber.getNumber(), number));
+        gameResult.setBall(verifyBall(answerNumber.getNumber(), number));
+    }
+
     public int verifyStrike(List<Integer> answer, List<Integer> userNumber) {
         return (int) IntStream.range(0, userNumber.size())
                 .filter(i -> answer.get(i).equals(userNumber.get(i)))
