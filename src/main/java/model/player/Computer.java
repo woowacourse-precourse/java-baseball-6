@@ -1,20 +1,14 @@
 package model.player;
 
 import java.util.List;
-import model.system.ValidNumberChecker;
 
-public class Computer implements Player, RandomNumber {
+public class Computer extends Player {
 
-    private Computer(List<Integer> OtherNumbers) {
+    private Computer(List<Integer> numbers) {
+        super(numbers);
     }
 
-    @Override
-    public List<Integer> createRandomNumbers() {
-        return null;
+    public static Computer create(List<Integer> numbers) {
+        return new Computer(numbers);
     }
-
-    public static Computer create(ValidNumberChecker validNumberChecker) {
-        return new Computer(null);
-    }
-
 }

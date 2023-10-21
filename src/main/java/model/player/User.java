@@ -1,14 +1,14 @@
 package model.player;
 
 import java.util.List;
-import model.system.ValidNumberChecker;
 
-public class User implements Player {
+public class User extends Player {
 
-    private User(List<Integer> OtherNumbers) {
+    private User(List<Integer> numbers) {
+        super(numbers);
     }
 
-    public static User create(List<Integer> OtherNumbers, ValidNumberChecker validNumberChecker) {
-        return new User(OtherNumbers);
+    public static User create(List<Integer> numbers) {
+        return new User(numbers);
     }
 }

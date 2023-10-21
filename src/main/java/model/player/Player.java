@@ -1,9 +1,12 @@
 package model.player;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public interface Player {
+public abstract class Player {
 
-    List<Integer> numbers = new ArrayList<>(3);
+    protected final List<Integer> numbers;
+
+    protected Player(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
 }
