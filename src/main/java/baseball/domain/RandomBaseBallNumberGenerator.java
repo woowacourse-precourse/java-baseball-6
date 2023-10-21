@@ -1,20 +1,30 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
+import exception.DuplicateBaseBallNumber;
+import exception.OutOfBaseBallNumbersSize;
 
-public class RandomBaseBallNumberGenerator implements BaseBallNumberGenerator {
+public final class RandomBaseBallNumberGenerator implements BaseBallNumberGenerator {
 
     @Override
-    public List<Integer> create() {
-        List<Integer> baseballNumbers = new ArrayList<>();
-        while (baseballNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!baseballNumbers.contains(randomNumber)) {
-                baseballNumbers.add(randomNumber);
-            }
+    public BaseBallNumbers create() {
+        BaseBallNumbers baseballNumbers = BaseBallNumbers.empty();
+        while (baseballNumbers.size() < BaseBallNumbers.MAX_BASE_BALL_SIZE) {
+            addBaseBallNumber(baseballNumbers);
         }
         return baseballNumbers;
+    }
+
+    private int createRandomNumber() {
+        return Randoms.pickNumberInRange(BaseBallNumbers.MIN_BASE_BALL_NUMBER, BaseBallNumbers.MAX_BASE_BALL_NUMBER);
+    }
+
+    private void addBaseBallNumber(BaseBallNumbers baseballNumbers) {
+        try {
+            int number = createRandomNumber();
+            baseballNumbers.add(number);
+        } catch (DuplicateBaseBallNumber | OutOfBaseBallNumbersSize ignored) {
+            return;
+        }
     }
 }
