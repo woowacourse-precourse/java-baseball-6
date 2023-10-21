@@ -12,18 +12,18 @@ class RandomNumberGeneratorTest {
     @Test
     @DisplayName("랜덤한 숫자를 생성할 수 있다")
     void generateTest() {
-        RandomNumberGenerator randomNumberGenerator = createRandomNumber(List.of(3,6,9,7,2,1));
-        assertDoesNotThrow(randomNumberGenerator::generate);
+        RandomNumberGenerator generator = createRandomNumberGenerator(List.of(3,6,9,7,2,1));
+        assertDoesNotThrow(generator::generate);
     }
 
     @Test
     @DisplayName("중간에 중복된 수를 제공하더라도 랜덤한 숫자를 생성할 수 있다")
     void generateTest_whenSuppliedOverlappedValue() {
-        RandomNumberGenerator randomNumberGenerator = createRandomNumber(List.of(3,6,3,6,7));
-        assertDoesNotThrow(randomNumberGenerator::generate);
+        RandomNumberGenerator generator = createRandomNumberGenerator(List.of(3,6,3,6,7));
+        assertDoesNotThrow(generator::generate);
     }
 
-    RandomNumberGenerator createRandomNumber(List<Integer> mockData) {
+    RandomNumberGenerator createRandomNumberGenerator(List<Integer> mockData) {
         return new RandomNumberGenerator(new MockIntegerSupplier(mockData));
     }
 
