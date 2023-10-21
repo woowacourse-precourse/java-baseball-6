@@ -28,7 +28,7 @@ public class InputVerifier {
     }
 
     private static void checkRange(String inRange) {
-        if (Integer.parseInt(inRange) < 123 || 987 < Integer.parseInt(inRange)) {
+        if (inRange.length() != 3) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_RANGE);
         }
     }
