@@ -1,6 +1,6 @@
 package baseball.console;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 import baseball.util.InputValidation;
 
@@ -12,8 +12,7 @@ public class ConsoleInput {
 	}
 
 	public String getGameInput() {
-		Scanner sc = new Scanner(System.in);
-		String input = sc.nextLine();
+		String input = Console.readLine();
 		if (inputValidation.isGameInputValid(input)) {
 			return input;
 		}
@@ -21,8 +20,7 @@ public class ConsoleInput {
 	}
 
 	public String getEndInput() {
-		Scanner sc = new Scanner(System.in);
-		String input = sc.nextLine();
+		String input = Console.readLine();
 		if (inputValidation.isEndInputValid(input)) {
 			return input;
 		}
