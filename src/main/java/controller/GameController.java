@@ -39,6 +39,14 @@ public class GameController {
         boolean answer = false;
         while(!answer){
             validationPlayer();
+            answer = computer.threeStrike(gameNumber);
+            messagePrint(answer);
+        }
+    }
+
+    private void messagePrint(boolean answer){
+        if(answer){
+            outputView.printGameEnd();
         }
     }
 
