@@ -50,11 +50,11 @@
 ### Controller
 
 1. NumberValidator
-    + [ ] playerInput 유효성 검사
+    + [x] playerInput 유효성 검사
         + [x] 세 자리인지 확인
         + [x] 1-9 사이의 정수로 구성되어 있는지 확인
         + [x] 중복되는 값이 있는지(= 서로 다른 숫자인지) 확인
-        + [ ] 위 경우들에 따른 오류 메세지 출력 후 ```IllegalArgumentException``` 발생 후 종료
+        + [x] 위 경우들에 따른 오류 메세지 출력 후 ```IllegalArgumentException``` 발생 후 종료
     + [ ] 게임 재시작/종료 여부의 유효성 검사
         + [ ] 1 또는 2 인지 확인한다.
         + [ ] 1 또는 2가 아닐 경우 ```IllegalArgumentException``` 발생 후 종료
@@ -84,11 +84,11 @@
 
 ### 목표 : 각 경우에 대해 실패할 경우와 추가적으로 성공할 경우도 작성
 
-+ [ ] NumberValidator 대한 단위테스트
++ [x] NumberValidator 대한 단위테스트
     + [x] 세 자리인지
     + [x] 1-9 사이의 정수로 구성되어 있는지
     + [x] 중복되는 값이 존재하는지
-    + [ ] 알맞는 오류 메세지 출력 후 ```IllegalArgumentException```을 발생 시키는지
+    + [x] 알맞는 오류 메세지 출력 후 ```IllegalArgumentException```을 발생 시키는지
 + [ ] playerInput 이 playerNumbers로 정상적으로 파싱이 되는지
 + [ ] BaseBallController
     + [ ] 스트라이크, 볼의 카운팅 변수를 0으로 초기화하는지
