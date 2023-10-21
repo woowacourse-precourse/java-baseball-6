@@ -1,5 +1,6 @@
 package baseball.generator;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ComputerRandomNumber {
@@ -23,7 +24,7 @@ public class ComputerRandomNumber {
     }
 
     public List<Integer> getRandomNumberList(){
-        return randomNumberList;
+        return Collections.unmodifiableList(this.randomNumberList);
     }
 
 }
