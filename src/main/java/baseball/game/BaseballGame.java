@@ -38,18 +38,13 @@ public class BaseballGame implements Game {
 
             view.displayAskRestartMessage();
 
-        } while (gonnaRestart());
+        } while (goonaRestart());
 
     }
 
-    private boolean gonnaRestart() {
+    private boolean goonaRestart() {
         String inputString = view.inputString();
-
-        if (!inputString.equals("1") && !inputString.equals("2")) {
-            throw new IllegalArgumentException("");
-        }
-
-        return inputString.equals("1");
+        return RestartStatus.gonnaRestart(inputString);
     }
 
 }

@@ -128,9 +128,9 @@
 
 ## 📘 RestartStatus
 
-- [ ] 재시작에 대한 enum class
-    - [ ] 입력값에 대한 재시작 여부를 판단
-    - [ ] 입력값에 대한 검증
+- [x] 재시작에 대한 enum class
+    - [x] 입력값에 대한 재시작 여부를 판단
+    - [x] 입력값에 대한 검증
 
 ## 📘 Application
 
