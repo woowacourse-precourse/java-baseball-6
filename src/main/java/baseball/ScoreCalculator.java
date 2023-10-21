@@ -12,10 +12,26 @@ public class ScoreCalculator {
         computeStrike(randomNumbers, guessNumbers);
         System.out.println("strike = " + strike);
 
+        computeBall(randomNumbers, guessNumbers);
+        System.out.println("ball = " + ball);
+
+    }
+
+    private void computeBall(List<Integer> randomNumbers, List<Integer> guessNumbers) {
+
+        for (Integer i : guessNumbers) {
+
+            if (randomNumbers.contains(i)) {
+                ball++;
+            }
+
+        }
+
+        ball -= strike;
     }
 
     private void computeStrike(List<Integer> randomNumbers, List<Integer> guessNumbers) {
-        // 이런짓을 해도 되나..?
+
         for (int i = 0; i < 3; i++) {
 
             if (randomNumbers.get(i) == guessNumbers.get(i)) {
