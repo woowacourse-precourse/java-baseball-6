@@ -90,12 +90,53 @@ public class Application {
             return computer;
         }
 
+        public String getResult() {
+            String result = "";
+
+            result += this.count[0] > 0 ? String.format("%d볼 ", this.count[0]) : "";
+            result += this.count[1] > 0 ? String.format("%d스트라이크", this.count[1]) : "";
+            result = result.trim();
+
+            if (result.equals("")) {
+                return "낫싱";
+            }
+
+            System.out.println(result);
+
+            return result;
+        }
+
+        public boolean checkInningEnd() {
+            return count[1] == 3;
+        }
+
+        public boolean checkExit() {
+            int exitCode = scanner.nextInt();
+            if (exitCode == 1) {
+                return false;
+            } else if (exitCode == 2) {
+                return true;
+            } else {
+                throw new IllegalArgumentException("종료 코드를 잘못 입력했습니다.");
+            }
+        }
+
         public void playGame() {
             System.out.println("숫자 야구 게임을 시작합니다.");
 
-            setComputerNumbers();
-            setUserNumbers();
-            setCount();
+            while (true) {
+                setComputerNumbers();
+                setUserNumbers();
+                setCount();
+
+                getResult();
+
+                if (checkInningEnd() && checkExit()) {
+                    break;
+                }
+
+            }
+
 
         }
 
@@ -103,7 +144,7 @@ public class Application {
 
 
     public static void main(String[] args) {
-        BaseBallGame baseBallGame = new BaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame(System.in);
         baseBallGame.playGame();
     }
 }
