@@ -1,18 +1,18 @@
 package baseball;
 
+import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Check {
-    Computer computer;
-    User user;
     int strike;
     int ball;
 
-    public void resultCheck() {
+    public void resultCheck(List<Integer> comp_numbers, List<Integer> user_numbers) {
         strike = 0;
         ball = 0;
         for(int i=0;i<3;i++) {
-            int idx = user.user.indexOf(computer.computer.get(i));
+            int idx = user_numbers.indexOf(comp_numbers.get(i));
             if(idx==i) {
                 strike+=1;
             }
@@ -34,7 +34,7 @@ public class Check {
     }
     
     public boolean endingCheck() {
-        if(strike==3) {
+        if(this.strike==3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
@@ -42,6 +42,7 @@ public class Check {
     }
 
     public boolean replayCheck() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String choice = Console.readLine();
         if(choice.equals("1")) {
             return true;
