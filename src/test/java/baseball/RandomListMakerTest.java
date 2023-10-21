@@ -17,4 +17,11 @@ public class RandomListMakerTest {
         List<Integer> integerList = RandomListMaker.generateRandomNumbers();
         assertThat(integerList.size()).isEqualTo(LIST_SIZE);
     }
+
+    @DisplayName("RandomListMaker에서 생성된 리스트에 중복된 값이 없는지 확인")
+    @Test
+    public void isDistinct(){
+        List<Integer> integerList = RandomListMaker.generateRandomNumbers();
+        assertThat(integerList.stream().distinct().count()).isEqualTo(LIST_SIZE);
+    }
 }
