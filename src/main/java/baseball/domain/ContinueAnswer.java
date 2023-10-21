@@ -16,7 +16,7 @@ public class ContinueAnswer {
         answer = parsedValidatedInt;
     }
 
-    public int getAnswer() {
-        return answer;
+    public boolean ifContinue() {
+        return answer == CONTINUE_ANSWER;
     }
 }
