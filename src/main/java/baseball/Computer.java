@@ -1,9 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
     // Computer가 어떤 숫자를 가지고 있는지 모르게 하기 위해

@@ -1,12 +1,13 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputHandler {
 
     public List<Integer> inputNumber() {
-        System.out.print("숫자를 입력해주세요 : " );
+        System.out.print("숫자를 입력해주세요 : ");
         String str = Console.readLine();
         isValidNumber(str);
         List<Integer> threeNumList = StringManipulator.strToArrayList(str);
