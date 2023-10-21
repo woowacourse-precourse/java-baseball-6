@@ -17,5 +17,16 @@ public class Application {
         OutputView.printStartMessage();
         List<Integer> computer = BaseballNumberGenerator.generateThreeDigits();
         List<Integer> userNumbers = InputView.getThreeDigits();
+        int strikeCounts = getStrikeCounts(computer, userNumbers);
+    }
+
+    static int getStrikeCounts(List<Integer> computer, List<Integer> userNumbers) {
+        int count = 0;
+        for (int i = 0; i < computer.size(); ++i) {
+            if (computer.get(i) == userNumbers.get(i)) {
+                ++count;
+            }
+        }
+        return count;
     }
 }
