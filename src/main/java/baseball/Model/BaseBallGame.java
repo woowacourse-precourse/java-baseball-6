@@ -22,7 +22,28 @@ public class BaseBallGame {
             throw new IllegalArgumentException("입력 자릿 수 오류");
 
     }
+    /**
+     * 유저의 입력을 받아 볼과 스트라이크를 알려주는 메소드
+     */
+    public List<Integer> checkBallCount(List<Integer> userInput) {
+        List<Integer> listBallStrike = new ArrayList<>();
+        int totalCount = 0;
+        int strikeCount = 0;
+        int ballCount = 0;
 
+        for (int i = 0; i < BASEBALL_NUM_SIZE; i++) {
+            if (userInput.contains(computerNumber.get(i))) {
+                totalCount++;
+            }
+            if (userInput.get(i) == computerNumber.get(i)) {
+                strikeCount++;
+            }
+        }
+        ballCount = totalCount - strikeCount;
+        listBallStrike.add(ballCount);
+        listBallStrike.add(strikeCount);
+        return listBallStrike;
+    }
     /**
      * 게임을 다시 시작할때 셋팅해주는 메소드
      */
