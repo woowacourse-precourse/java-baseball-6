@@ -10,6 +10,9 @@ public class GameController {
     private static final InputView input = new InputView();
     private BaseballNumbers computer;
     private final int IS_CORRECT = 3;
+    private final String GAME_RESET = "1";
+    private final String GAME_TERMINATE = "2";
+    private final String ONE_OR_TWO_EXCEPTION = "1 또는 2를 입력해 주세요.";
     private int ball;
     private int strike;
 
@@ -23,10 +26,17 @@ public class GameController {
 
     private boolean gameReset() {
         String s = input.resetOrEnd();
-        if (s.equals("1")) {
+        return isOneOrTwo(s);
+    }
+
+    private boolean isOneOrTwo(String s) {
+        if (s.equals(GAME_RESET)) {
             return true;
         }
-        return false;
+        if (s.equals(GAME_TERMINATE)) {
+            return false;
+        }
+        throw new IllegalArgumentException(ONE_OR_TWO_EXCEPTION);
     }
 
     private void reset() {
@@ -50,7 +60,9 @@ public class GameController {
     public boolean isCorrect(BaseballNumbers other) {
         ball = computer.countBall(other);
         strike = computer.countStrike(other);
+
         output.printResult(ball, strike, ball == 0 && strike == 0);
+
         if (strike == IS_CORRECT) {
             return true;
         }
