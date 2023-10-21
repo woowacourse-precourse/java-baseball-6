@@ -13,7 +13,12 @@ public class OutputView {
     System.out.println(RESTART_MESSAGE);
   }
 
+  public void printEndMessage() {
+    System.out.println(END_MASSAGE);
+  }
+
   public void printNothingScore() {
     System.out.println("낫싱");
   }
+
 }
