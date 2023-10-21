@@ -5,6 +5,7 @@ import baseball.model.Hint;
 import baseball.model.NumberList;
 import baseball.model.User;
 import baseball.utils.Convert;
+import baseball.validator.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -72,13 +73,12 @@ public class BaseballGameController {
         }
 
         private static void validateUsersGuess(String userInput) {
-            boolean isValid = (userInput.length() == 3);
-            for (int i = 0; i < userInput.length() && isValid; i++) {
+            Validator.validateNull(userInput);
+            Validator.validateSize(userInput, 3);
+
+            for (int i = 0; i < userInput.length(); i++) {
                 int number = userInput.charAt(i) - '0';
-                isValid = (1 <= number && number <= 9);
-            }
-            if (!isValid) {
-                throw new IllegalArgumentException("1~9 사이 수 3자리를 입력해주세요.");
+                Validator.validateInRange(number, 1, 9);
             }
         }
     }

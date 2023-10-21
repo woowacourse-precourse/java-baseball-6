@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.validator.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -36,11 +37,9 @@ public class MainController {
         }
 
         private static void validateWhetherRestart(String userInput) {
-            if (userInput.length() != 1) {
-                throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
-            } else if (userInput.charAt(0) != RESTART_GAME_STRING && userInput.charAt(0) != END_GAME_STRING) {
-                throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
-            }
+            Validator.validateNull(userInput);
+            Validator.validateSize(userInput, 1);
+            Validator.validateInRange(userInput.charAt(0) - '0', 1, 2);
         }
     }
 }
