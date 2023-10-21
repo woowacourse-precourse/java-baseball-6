@@ -50,16 +50,16 @@ public class GameController {
         updateResumeNumber();
     }
 
-    private void prepareGameJudgementWithComputer(int computerNumber) {
-        umpire.prepareJudgement(computerNumber, receiveUserNumber());
-    }
-
     private int selectNewNumber() {
         return NumberFactory.createNumber();
     }
 
     private static void askNumberInput() {
         AskController.askNumberInput();
+    }
+
+    private void prepareGameJudgementWithComputer(int computerNumber) {
+        umpire.prepareJudgement(computerNumber, receiveUserNumber());
     }
 
     private static int receiveUserNumber() {
@@ -74,15 +74,15 @@ public class GameController {
         EndView.end();
     }
 
+    private static void askResumeInput() {
+        AskController.askResumeInput();
+    }
+
     private void updateResumeNumber() {
         resumeNumber.updateNumber(receiveResumeNumber());
     }
 
     private int receiveResumeNumber() {
         return InputController.receiveResumeNumber();
-    }
-
-    private static void askResumeInput() {
-        AskController.askResumeInput();
     }
 }
