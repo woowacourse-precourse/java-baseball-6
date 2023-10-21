@@ -73,15 +73,15 @@ public class Play {
     }
 
     private int checkInputNumber() {
-        int temp;
+        int menuNum;
         try {
-            temp = Integer.parseInt(input);
+            menuNum = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Input is not Integer: " + input);
         }
-        if (temp < 1 || temp > 2) {
-            throw new IllegalArgumentException("Invalid Number: " + temp);
+        if (menuNum < 1 || menuNum > 2) {
+            throw new IllegalArgumentException("Invalid Number: " + menuNum);
         }
-        return temp;
+        return menuNum;
     }
 }
