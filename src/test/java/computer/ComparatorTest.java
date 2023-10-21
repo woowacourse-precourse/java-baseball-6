@@ -29,8 +29,8 @@ class ComparatorTest {
 
 
         //then
-        Assertions.assertThat(comparator.strike).isEqualTo(1);
-        Assertions.assertThat(comparator.ball).isEqualTo(2);
+        Assertions.assertThat(hint.loadStrike()).isEqualTo(1);
+        Assertions.assertThat(hint.loadBall()).isEqualTo(2);
     }
 
 

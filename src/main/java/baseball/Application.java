@@ -6,14 +6,14 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        InputView inputView=new InputView();
+        InputView inputView = new InputView();
         boolean restart;
-        do{
-            Game baseballGame=new BaseBallGame();
+        do {
+            Game baseballGame = new BaseBallGame();
             baseballGame.start();
-            restart=inputView.restart();
+            restart = inputView.restart();
 
-        }while(restart);
+        } while (restart);
 
     }
 }

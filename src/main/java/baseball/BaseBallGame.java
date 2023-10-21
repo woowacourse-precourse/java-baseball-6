@@ -24,7 +24,6 @@ public class BaseBallGame implements Game{
         comparator.compare(computerBalls,userBalls);
         gameProgress();
         over();
-
     }
 
     public void gameProgress(){
@@ -46,12 +45,8 @@ public class BaseBallGame implements Game{
         return false;
     }
 
-
-
-
     @Override
     public void over() {
         outputView.viewGameOver();
     }
-
 }
