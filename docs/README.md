@@ -39,6 +39,8 @@
     - OutputView: 게임을 시작, 종료, 재시작 등의 메시지 출력 기능 구현
   
 - controller: 게임이 실제 진행되는 부분
-    - BaseballGame: 모델과 뷰를 이어줌
-    - NumberValidator: 숫자의 유효성 검사
-    - NumberCompare: 두 숫자를 비교하여 정답인지 확인
+    - BaseballGameController: 모델과 뷰를 이어줌
+
+- util: 입력값 유효성 검사, 숫자 비교와 같은 독립적인 로직을 구현한 부분
+    - NumericValidator: 숫자의 유효성 검사
+    - NumericComparator: 두 숫자를 비교하여 정답인지 확인
