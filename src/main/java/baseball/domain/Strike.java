@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Strike {
     private static final int ZERO_COUNT = 0;
     private static final int FULL_COUNT = 3;
-    public static final String NO_STRIKE_MESSAGE = "";
-    public static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String NO_STRIKE_MESSAGE = "";
+    private static final String STRIKE_MESSAGE = "스트라이크";
     private int strike;
 
     public Strike(int strike) {

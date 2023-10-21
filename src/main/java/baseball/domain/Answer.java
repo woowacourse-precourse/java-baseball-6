@@ -3,8 +3,8 @@ package baseball.domain;
 import java.util.List;
 
 public class Answer {
-    public static final int ZERO_COUNT = 0;
-    public static final int ONE_COUNT = 1;
+    private static final int ZERO_COUNT = 0;
+    private static final int ONE_COUNT = 1;
     private final List<Integer> answer;
 
     public Answer(List<Integer> answer) {

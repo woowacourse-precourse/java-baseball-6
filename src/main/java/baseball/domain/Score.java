@@ -4,8 +4,8 @@ package baseball.domain;
 import java.util.Objects;
 
 public class Score {
-    public static final String NO_BALL_NO_STRIKE_MESSAGE = "낫싱";
-    public static final String SPACE = " ";
+    private static final String NO_BALL_NO_STRIKE_MESSAGE = "낫싱";
+    private static final String SPACE = " ";
     private Ball ball;
     private Strike strike;
 

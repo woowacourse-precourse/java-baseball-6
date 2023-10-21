@@ -6,9 +6,9 @@ import java.util.List;
 
 public class RandomAnswerGenerator implements AnswerGenerator {
 
-    public static final int ANSWER_SIZE = 3;
-    public static final int MIN_BASEBALL_NUMBER = 1;
-    public static final int MAX_BASEBALL_NUMBER = 9;
+    private static final int ANSWER_SIZE = 3;
+    private static final int MIN_BASEBALL_NUMBER = 1;
+    private static final int MAX_BASEBALL_NUMBER = 9;
 
     @Override
     public Answer generate() {

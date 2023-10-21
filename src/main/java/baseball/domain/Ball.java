@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Ball {
     private static final int ZERO_COUNT = 0;
-    public static final String NO_BALL_MESSAGE = "";
-    public static final String BALL_MESSAGE = "볼";
+    private static final String NO_BALL_MESSAGE = "";
+    private static final String BALL_MESSAGE = "볼";
     private int ball;
 
     public Ball(int ball) {
