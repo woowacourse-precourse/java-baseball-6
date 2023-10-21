@@ -11,7 +11,6 @@ public class User {
     private static final int NUM_COUNT = 3;
     private static final String REGEX = String.format("^[1-9]{%d}$", NUM_COUNT);
 
-
     private final String input;
 
     public User(String number) {
@@ -56,6 +55,14 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(input);
+    }
+
+    public boolean contains(int number) {
+        return input.contains(String.valueOf(number));
+    }
+
+    public boolean isSamePosition(int number, int index) {
+        return input.charAt(index) == String.valueOf(number).charAt(0);
     }
 
 }
