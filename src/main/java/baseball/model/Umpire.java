@@ -70,12 +70,13 @@ public class Umpire {
         return originSet.size();
     }
 
-    public void prepareJudgement(final int computerNumber, final int userNumber) {
-        this.computerNumber = computerNumber;
-        this.userNumber = userNumber;
-    }
 
     public boolean isGameEnd() {
         return countStrike() == Constants.PLAY_NUMBER_DIGIT;
+    }
+
+    public void prepareJudgement(final int computerNumber, final int userNumber) {
+        this.computerNumber = computerNumber;
+        this.userNumber = userNumber;
     }
 }
