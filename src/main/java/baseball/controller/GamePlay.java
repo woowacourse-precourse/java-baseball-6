@@ -17,7 +17,8 @@ public class GamePlay {
             int[] inputNumbers = Array.strToArr(inputValue);
             int[] compareResult = Array.checkNumbers(randomNumbers, inputNumbers);
             printResult(compareResult);
-            if(compareResult[0] == 3) {
+            if(compareResult[1] == 3) {
+                Output.printWhenGameEnd();
                 validationResult = false;
             }
         }
@@ -27,6 +28,7 @@ public class GamePlay {
         if(compareResult[0] != 0 && compareResult[1] != 0) {
             Output.printBall(compareResult[0]);
             Output.printStrike(compareResult[1]);
+            System.out.println();
         } else if (compareResult[0] != 0) {
             Output.printBall(compareResult[0]);
             System.out.println();
@@ -34,7 +36,7 @@ public class GamePlay {
             Output.printStrike(compareResult[1]);
             System.out.println();
         } else {
-            Output.printWhenGameEnd();
+            Output.printNothing();
         }
     }
 

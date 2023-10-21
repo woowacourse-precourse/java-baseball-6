@@ -1,5 +1,7 @@
 package baseball.util;
 
+import java.util.Arrays;
+
 public class Array {
     public static int[] makeRandom() {
         int[] numbers = new int[3];
@@ -17,6 +19,7 @@ public class Array {
                 index++;
             }
         }
+        System.out.println(Arrays.toString(numbers));
         return numbers;
     }
 
