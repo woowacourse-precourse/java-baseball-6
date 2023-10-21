@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallService {
+
+    private static final int NUMBER_OF_DIGITS = 3;
+
     public List<Integer> generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < NUMBER_OF_DIGITS ) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -21,13 +24,11 @@ public class BaseBallService {
     public GameResult getGameResult(List<Integer> targetNumber, List<Integer> userInput) {
         int strike = 0;
         int ball = 0;
-        for (int i = 0; i < 3; i++) {
-            if (userInput.contains(targetNumber.get(i))) {
-                ball++;
-            }
+        for (int i = 0; i < NUMBER_OF_DIGITS; i++) {
             if (userInput.get(i).equals(targetNumber.get(i))) {
                 strike++;
-                ball--;
+            } else if (targetNumber.contains(userInput.get(i))) {
+                ball++;
             }
         }
         return new GameResult(strike, ball);
