@@ -13,11 +13,8 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다");
 
-        try{
-            GameStart();
-        } catch(IllegalArgumentException e){
+        GameStart();
 
-        }
     }
 
     public static void GameStart() {
@@ -76,7 +73,7 @@ public class Application {
         List<Integer> playerNumber = new ArrayList<>();
         System.out.println("숫자를 입력해주세요 : ");
 
-        String player = Console.readLine();
+        String player = Console.readLine().replaceAll(" ", "");
 
         for(int i=0; i<player.length(); i++) {
             playerNumber.add(player.charAt(i) - '0');
