@@ -13,6 +13,10 @@ public class Application {
 
             game.getGuessNums();
             roundResult = game.getHint();
+
+            if (roundResult == 2) {
+                running = game.isRestart();
+            }
         }
     }
 }

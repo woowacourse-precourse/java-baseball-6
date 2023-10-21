@@ -13,8 +13,8 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public int getGuessNums() {
-        System.out.println("숫자를 입력해주세요 : ");
+    public void getGuessNums() {
+        System.out.print("숫자를 입력해주세요 : ");
         String guessNumsStr = Console.readLine();
         ArrayList guessNums = new ArrayList<>();
         for (int i = 0; i < guessNumsStr.length(); i++) {
@@ -22,11 +22,9 @@ public class Game {
         }
 
         player.setGuessNums(guessNums);
-
-        return getHint();
     }
 
-    private int getHint() {
+    public int getHint() {
         hint.makeHint(player.getGuessNums(), computer.getNums());
         int ball = hint.getBall();
         int strike = hint.getStrike();
@@ -49,5 +47,20 @@ public class Game {
         }
 
         return result;
+    }
+
+    public boolean isRestart() {
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String value = Console.readLine();
+
+            if (value == "1") {
+                return true;
+            } else if (value == "2") {
+                return false;
+            } else {
+                System.out.println("잘못된 입력 값 입니다.");
+            }
+        }
     }
 }
