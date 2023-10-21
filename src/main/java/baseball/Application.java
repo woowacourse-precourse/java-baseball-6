@@ -6,12 +6,12 @@ public class Application {
 
     public static void main(String[] args) {
 
-        PrintManager printGuide = new PrintManager();
+        PrintManager printManager = new PrintManager();
         NumberMaker numberMaker = new NumberMaker();
         InputManager inputManager = new InputManager();
         ScoreCalculator scoreCalculator = new ScoreCalculator();
 
-        printGuide.printGameStart();
+        printManager.printGameStart();
 
         int ball = 0;
         int strike = 0;
@@ -21,7 +21,7 @@ public class Application {
 
         while (strike != 3) {
 
-            printGuide.printInputValue();
+            printManager.printInputValue();
 
             List<Integer> guessNumbers = inputManager.getGuessNumbers();
             System.out.println("guessNumbers = " + guessNumbers);
