@@ -1,8 +1,13 @@
 package baseball.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import baseball.util.CalculationResult;
 import baseball.util.GameInputValid;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -99,5 +104,74 @@ class GameModelTest {
         assertThrows(IllegalArgumentException.class, () -> {
             gameModel.validateUserInput(input);
         });
+    }
+
+    @DisplayName("입력값과 랜덤값을 비교하여 3개가 완전히 일치 경우 3스트라이크")
+    @Test
+    public void checkGameResultThreeStrike() {
+        //given
+        List<Integer> comNumberList = new ArrayList<>();
+        comNumberList.add(1);
+        comNumberList.add(2);
+        comNumberList.add(3);
+
+        List<Integer> userNumber = new ArrayList<>();
+        userNumber.add(1);
+        userNumber.add(2);
+        userNumber.add(3);
+
+        //when
+        CalculationResult result = new CalculationResult();
+        result.calStrikeAndBall(comNumberList, userNumber);
+
+        //then
+        assertEquals(3, result.getStrikeCnt());
+        assertEquals(0, result.getBallCnt());
+    }
+
+    @DisplayName("입력값과 랜덤값을 비교하여 1개만 완전히 일치하고 2개는 위치가 틀린 경우 2볼 1스트라이크")
+    @Test
+    public void checkGameResultOneStrikeTwoBall() {
+        //given
+        List<Integer> comNumberList = new ArrayList<>();
+        comNumberList.add(1);
+        comNumberList.add(2);
+        comNumberList.add(3);
+
+        List<Integer> userNumber = new ArrayList<>();
+        userNumber.add(1);
+        userNumber.add(3);
+        userNumber.add(2);
+
+        //when
+        CalculationResult result = new CalculationResult();
+        result.calStrikeAndBall(comNumberList, userNumber);
+
+        //then
+        assertEquals(1, result.getStrikeCnt());
+        assertEquals(2, result.getBallCnt());
+    }
+
+    @DisplayName("입력값과 랜덤값을 비교하여 같은 값이 없을 경우 0볼 0스트라이크")
+    @Test
+    public void checkGameResultNotting() {
+        //given
+        List<Integer> comNumberList = new ArrayList<>();
+        comNumberList.add(1);
+        comNumberList.add(2);
+        comNumberList.add(3);
+
+        List<Integer> userNumber = new ArrayList<>();
+        userNumber.add(4);
+        userNumber.add(5);
+        userNumber.add(6);
+
+        //when
+        CalculationResult result = new CalculationResult();
+        result.calStrikeAndBall(comNumberList, userNumber);
+
+        //then
+        assertEquals(0, result.getStrikeCnt());
+        assertEquals(0, result.getBallCnt());
     }
 }
