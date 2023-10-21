@@ -15,8 +15,6 @@ public class BaseBallGame {
     private static final int RANDOM_NUMBER_LENGTH = 3;
     private static final String GAME_RESTART_STATE = "1";
     private static final String GAME_END_STATE = "2";
-    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-
     private static final String GAME_END_MESSAGE = RANDOM_NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 " + GAME_RESTART_STATE +
             ", 종료하려면 " + GAME_END_STATE + "를 입력하세요.";
@@ -24,7 +22,7 @@ public class BaseBallGame {
     public void gameStart() {
         boolean progress = true;
 
-        printStartMessage();
+//        printStartMessage();
 
         while(progress) {
             progress();
@@ -160,12 +158,6 @@ public class BaseBallGame {
         return Arrays.stream(convertValue.split(""))
                 .mapToInt(Integer::parseInt)
                 .boxed().collect(Collectors.toList());
-    }
-
-
-
-    private void printStartMessage() {
-        System.out.println(START_MESSAGE);
     }
 
     private List<Integer> getRandomNumber() {
