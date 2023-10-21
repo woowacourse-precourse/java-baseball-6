@@ -10,8 +10,8 @@ import java.util.Map;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RefereeTest {
-    private User user;
-    private User computer;
+    private Numbers userNumbers;
+    private Numbers computerNumbers;
     private Referee referee;
 
     @BeforeEach
@@ -23,9 +23,9 @@ public class RefereeTest {
     @Test
     @DisplayName("판정 테스트")
     public void ballJudgeTest() {
-        user = new User(List.of(1,2,3));
-        computer = new User(List.of(1,3,4));
-        referee.judge(user, computer);
+        userNumbers = new Numbers(List.of(1,2,3));
+        computerNumbers = new Numbers(List.of(1,3,4));
+        referee.judge(userNumbers, computerNumbers);
         Map<String,Integer> judgement = referee.getJudgement();
 
         assertThat(judgement.get("ball")).isEqualTo(1);
@@ -35,9 +35,9 @@ public class RefereeTest {
     @Test
     @DisplayName("스트라이크 판정 테스트")
     public void strikeJudgeTest() {
-        user = new User(List.of(1,2,3));
-        computer = new User(List.of(1,2,3));
-        referee.judge(user, computer);
+        userNumbers = new Numbers(List.of(1,2,3));
+        computerNumbers = new Numbers(List.of(1,2,3));
+        referee.judge(userNumbers, computerNumbers);
         Map<String,Integer> judgement = referee.getJudgement();
 
         assertThat(judgement.get("ball")).isEqualTo(0);
@@ -47,9 +47,9 @@ public class RefereeTest {
     @Test
     @DisplayName("낫싱 테스트")
     public void nothingJudgeTest() {
-        user = new User(List.of(1,2,3));
-        computer = new User(List.of(4,5,6));
-        referee.judge(user, computer);
+        userNumbers = new Numbers(List.of(1,2,3));
+        computerNumbers = new Numbers(List.of(4,5,6));
+        referee.judge(userNumbers, computerNumbers);
         Map<String,Integer> judgement = referee.getJudgement();
 
         assertThat(judgement.get("ball")).isEqualTo(0);
