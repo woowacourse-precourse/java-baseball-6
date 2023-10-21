@@ -4,6 +4,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class ValidCheckNumber {
+    public static void validCheckPlayer(List<Integer> player){
+        validCheckSize(player);
+        zeroCheck(player);
+        duplicationCheck(player);
+    }
     public static void zeroCheck(List<Integer> player){
         if (player.contains(0)){
             throw new IllegalArgumentException();
@@ -15,12 +20,14 @@ public class ValidCheckNumber {
             throw new IllegalArgumentException();
         }
     }
-    public static void validCheckPlayer(String s){
+    public static void validCheckSize(List<Integer> player){
+        if (player.size() != 3){
+            throw new IllegalArgumentException();
+        }
+    }
+    public static void validCheckInt(String s){
         try{
             int i = Integer.parseInt(s);
-            if (i>987 || i<123){
-                throw new IllegalArgumentException();
-            }
         }catch (NumberFormatException e){
             throw new IllegalArgumentException();
         }

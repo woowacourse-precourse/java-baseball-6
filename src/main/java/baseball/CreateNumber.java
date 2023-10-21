@@ -20,15 +20,14 @@ public class CreateNumber {
     public List<Integer> getPlayerNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String s = Console.readLine();
-        ValidCheckNumber.validCheckPlayer(s);
+        ValidCheckNumber.validCheckInt(s);
         List<Integer> player = stringToList(s);
-        ValidCheckNumber.duplicationCheck(player);
-        ValidCheckNumber.zeroCheck(player);
+        ValidCheckNumber.validCheckPlayer(player);
         return player;
     }
     public List<Integer> stringToList(String s){
         List<Integer> player = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < s.length(); i++) {
             int temp = s.charAt(i)-48;
             player.add(temp);
         }
