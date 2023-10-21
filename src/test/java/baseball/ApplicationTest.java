@@ -1,39 +1,35 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.catchThrowable;
+
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-import org.mockito.MockedStatic;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.NoSuchElementException;
-
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mockStatic;
 
 class ApplicationTest extends NsTest {
     private InputStream originalSystemIn;
+
     @BeforeEach
     void setup() {
         originalSystemIn = System.in;
     }
+
     @AfterEach
     void teardown() {
         System.setIn(originalSystemIn);
         Console.close();
     }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -44,6 +40,7 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -51,6 +48,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void getComputerNumbersList_테스트() {
         //given
@@ -61,6 +59,7 @@ class ApplicationTest extends NsTest {
         assertThat(computerNumbersList).hasSize(3).doesNotHaveDuplicates()
                 .allMatch(i -> i > 0 && i < 10);
     }
+
     @Test
     void getUserNumbersList_정상작동_테스트() {
         //given
@@ -70,8 +69,9 @@ class ApplicationTest extends NsTest {
         //when
         List<Integer> userNumbersList = Application.getUserNumbersList();
         //then
-        assertThat(userNumbersList).containsExactly(1,2,3);
+        assertThat(userNumbersList).containsExactly(1, 2, 3);
     }
+
     @Test
     void getUserNumbersList_정상작동_테스트2() {
         //given
@@ -81,8 +81,9 @@ class ApplicationTest extends NsTest {
         //when
         List<Integer> userNumbersList = Application.getUserNumbersList();
         //then
-        assertThat(userNumbersList).containsExactly(2,9,4);
+        assertThat(userNumbersList).containsExactly(2, 9, 4);
     }
+
     @Test
     void getUserNumbersList_예외상황_테스트() {
         //given
@@ -99,8 +100,8 @@ class ApplicationTest extends NsTest {
     @Test
     void getBallStrikeCount_테스트() {
         //given
-        List<Integer> computerNumbersList = Arrays.asList(1,2,3);
-        List<Integer> userNumbersList = Arrays.asList(1,3,9);
+        List<Integer> computerNumbersList = Arrays.asList(1, 2, 3);
+        List<Integer> userNumbersList = Arrays.asList(1, 3, 9);
         //when
         int ballCount = Application.getBallCount(computerNumbersList, userNumbersList);
         int strikeCount = Application.getStrikeCount(computerNumbersList, userNumbersList);
@@ -108,6 +109,7 @@ class ApplicationTest extends NsTest {
         assertThat(ballCount).isEqualTo(1);
         assertThat(strikeCount).isEqualTo(1);
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
