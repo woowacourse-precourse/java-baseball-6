@@ -26,6 +26,7 @@ public class InputView {
 
     public boolean readContinueGame() {
         int gameOption = Integer.parseInt(Console.readLine());
+        validateGameOption(gameOption);
         if (gameOption == 1) return true;
         return false;
     }
@@ -45,6 +46,12 @@ public class InputView {
     public void validateNumberCount(List<Integer> numbers) {
         if (numbers.size() != 3) {
             throw new IllegalArgumentException(INVALID_NUMBER_COUNT.getMessage());
+        }
+    }
+
+    private void validateGameOption(int gameOption) {
+        if (gameOption != 1 && gameOption != 2) {
+            throw new IllegalArgumentException(INVALID_GAME_OPTION.getMessage());
         }
     }
 }
