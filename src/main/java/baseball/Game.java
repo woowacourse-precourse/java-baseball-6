@@ -65,6 +65,8 @@ public class Game {
      * @since : 2023/10/21
      */
     public List<Integer> inputUserNumber() {
+        System.out.print(MessageType.ASK.getMessage());
+
         String inputLine = Console.readLine();
         try {
             return Stream.of(inputLine.split(""))
