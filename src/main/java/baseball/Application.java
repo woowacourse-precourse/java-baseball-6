@@ -1,7 +1,12 @@
 package baseball;
 
+import baseball.game.hitter.PlayerHitterImpl;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        PlayerHitterImpl hitter = new PlayerHitterImpl();
+
+        System.out.println("입력:");
+        hitter.swing();
     }
 }
