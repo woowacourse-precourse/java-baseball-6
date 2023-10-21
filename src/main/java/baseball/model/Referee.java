@@ -5,15 +5,18 @@ import baseball.util.Constants;
 public class Referee {
     private final Computer computer;
     private final Player player;
+    private final JudgeResult judgeResult;
 
     public Referee(Computer computer, Player player) {
         this.computer = computer;
         this.player = player;
+        this.judgeResult = new JudgeResult();
     }
 
     public void judgeBallCount() {
         for (int i = 0; i < Constants.BALL_LENGTH; i++) {
             BallCount ballCount = BallCount.judge(numberMatching(i), positionMatching(i));
+            judgeResult.addResult(ballCount);
         }
     }
 
