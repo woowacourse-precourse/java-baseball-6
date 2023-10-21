@@ -2,9 +2,6 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-<<<<<<< HEAD
-        // TODO: 프로그램 구현
-=======
         GameMaster.run();
         /*int userInput = 1, strike = 0, ball = 0;
 
@@ -61,6 +58,5 @@ public class Application {
             System.out.println(userInput);
         }
         System.out.println("게임 종료");*/
->>>>>>> 98c739d (feat: setup precourse baseball project)
     }
 }
