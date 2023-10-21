@@ -23,4 +23,11 @@ public class ComputerNumberTest {
         assertThatThrownBy(() -> new ComputerNumber(List.of(1, 2, 0)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("컴퓨터 숫자 3자리 중 중복이 있으면 예외가 발생한다.")
+    void testValidateComputerNumberDuplicate() {
+        assertThatThrownBy(() -> new ComputerNumber(List.of(1, 2, 2)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
