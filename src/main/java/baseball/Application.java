@@ -10,10 +10,14 @@ import java.util.Set;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-	private final static int MAX_DIGIT = 3; 
-	
+	private final static int MAX_DIGIT = 3;
+	private final static int STRIKE_COUNT_INDEX = 0;
+	private final static int BALL_COUNT_INDEX = 1;
+
 	private static String user = ""; // 사용자가 입력한 값을 받음.
-	
+	// 0 : strikeCount / 1 : ballCount
+	private static int[] scores = new int[2];
+
 	// 게임 시작
 	public static void runGame() {
 		System.out.println("숫자 야구 게임을 시작합니다.");
@@ -26,15 +30,15 @@ public class Application {
 
 	// 게임 진행
 	public static void play() {
-		List<Integer> computer = randomNumberInit();
+		List<Integer> computer = randomNumberGenerate();
 
 		while (true) {
 			System.out.print("숫자를 입력해주세요 : ");
 			user = Console.readLine();
 			exceptionHandling();
-			int[] scores = compare(computer);
-			showResults(scores);
-			if (threeStrike(scores))
+			compare(computer);
+			showResults();
+			if (threeStrike())
 				break;
 		}
 	}
@@ -42,7 +46,7 @@ public class Application {
 	// 예외 처리
 	public static void exceptionHandling() {
 		int inputLength = user.length();
-		
+
 		Set<Character> set = new HashSet<>();
 		for (int i = 0; i < inputLength; i++) {
 			char ch = user.charAt(i);
@@ -58,7 +62,7 @@ public class Application {
 	}
 
 	// 랜덤 3자리 번호 생성
-	public static List<Integer> randomNumberInit() {
+	public static List<Integer> randomNumberGenerate() {
 		List<Integer> computer = new ArrayList<>();
 
 		while (computer.size() < MAX_DIGIT) {
@@ -70,33 +74,30 @@ public class Application {
 		return computer;
 	}
 
-	/*
-	 * 컴퓨터와 사용자 숫자 비교 함수 
-	 * return int[2] 
-	 * 0 : strikeCount / 1 : ballCount
-	 */
-	public static int[] compare(List<Integer> computer) {
+	// 컴퓨터와 사용자 숫자 비교 함수
+	public static void compare(List<Integer> computer) {
 		int strikeCount = 0;
 		int ballCount = 0;
 
 		for (int i = 0; i < computer.size(); i++) {
 			int computerNumber = computer.get(i);
 			int userNumber = Integer.valueOf(user.charAt(i)) - '0';
-			
+
 			if (computerNumber == userNumber)
 				strikeCount++;
 			else if (computer.contains(userNumber))
 				ballCount++;
 		}
 
-		return new int[] { strikeCount, ballCount };
+		scores[STRIKE_COUNT_INDEX] = strikeCount;
+		scores[BALL_COUNT_INDEX] = ballCount;
 	}
 
 	// 결과 보여주기
-	public static void showResults(int[] scores) {
-		int strikeCount = scores[0];
-		int ballCount = scores[1];
-		
+	public static void showResults() {
+		int strikeCount = scores[STRIKE_COUNT_INDEX];
+		int ballCount = scores[BALL_COUNT_INDEX];
+
 		System.out.println(user);
 
 		StringBuffer sb = new StringBuffer();
@@ -109,14 +110,14 @@ public class Application {
 			if (strikeCount != 0)
 				sb.append(strikeCount + "스트라이크");
 		}
-			
+
 		System.out.println(sb.toString().trim());
 	}
 
 	// 종료 조건
-	public static Boolean threeStrike(int[] scores) {
-		int strikeCount = scores[0];
-		
+	public static Boolean threeStrike() {
+		int strikeCount = scores[STRIKE_COUNT_INDEX];
+
 		if (strikeCount == MAX_DIGIT) {
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			return true;
