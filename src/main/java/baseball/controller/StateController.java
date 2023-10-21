@@ -24,7 +24,8 @@ public class StateController {
     public boolean repeatPlayerExpect() {
         Map<String, Integer> scoreMap = new HashMap<String, Integer>();
         scoreMap = computerModel.scoreCalculator(inputview.inputPlayerNumber());
-        return !(scoreMap.get("Strike") == 3);
+        gameScoreCheck(scoreMap);
+        return !(scoreMap.get("strikeScore") == 3);
     }
 
     public boolean gameStateChange() {
@@ -32,5 +33,22 @@ public class StateController {
         return Integer.parseInt(inputview.inputRestartNumber()) == GAMESTATE_RESTART;
     }
 
+    public void gameScoreCheck(Map<String, Integer> scoreMap) {
+        int strikeScore = scoreMap.get("strikeScore");
+        int ballScore = scoreMap.get("ballScore");
 
+        if (strikeScore == 3) {
+            outputView.printStrikeScore(strikeScore);
+            outputView.printEndMessage();
+        }
+        if (strikeScore == 0 && ballScore == 0) {
+            outputView.printNothingScore();
+        }
+        if (strikeScore > 0 && ballScore == 0) {
+            outputView.printStrikeScore(strikeScore);
+        }
+        if (strikeScore == 0 && ballScore > 0) {
+            outputView.printBallScore(ballScore);
+        }
+    }
 }
