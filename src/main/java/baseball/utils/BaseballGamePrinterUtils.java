@@ -17,4 +17,21 @@ public class BaseballGamePrinterUtils {
     public static void askPlayerTargetNums() {
         System.out.print("숫자를 입력해주세요 : ");
     }
+
+    public static void announceGameResult(int ballCount, int strikeCount) {
+        String announceText = "";
+        if (ballCount > 0) {
+            announceText += ballCount + "볼";
+        }
+        if (strikeCount > 0) {
+            if (announceText.length() > 0) {
+                announceText += " ";
+            }
+            announceText += strikeCount + "스트라이크";
+        }
+        if (ballCount == 0 && strikeCount == 0) {
+            announceText = "낫싱";
+        }
+        System.out.println(announceText);
+    }
 }

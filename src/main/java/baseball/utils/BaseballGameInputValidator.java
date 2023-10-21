@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 import org.assertj.core.util.VisibleForTesting;
 
-public class BaseballGameConsoleValidator {
+public class BaseballGameInputValidator {
 
     private static final int VALID_INPUT_LENGTH_FOR_RESTART = 1;
     private static final int VALID_INPUT_LENGTH_FOR_PLAYER = 3;

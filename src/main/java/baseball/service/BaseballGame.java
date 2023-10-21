@@ -1,34 +1,46 @@
 package baseball.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import static baseball.utils.BaseballGamePrinterUtils.announceGameResult;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import org.assertj.core.util.VisibleForTesting;
 
 public class BaseballGame {
 
-    private final List<Integer> baseballGameNumbers = new ArrayList<>();
+    private static final int STRIKE_COUNT_TO_WIN = 3;
+    private static final int NUMBER_TO_COMPARE = 3;
+    private final List<Integer> baseballGameNumbers;
 
-    public BaseballGame() {
-        initBaseballGameNumbers();
-    }
-
-    private void initBaseballGameNumbers() {
-        while (baseballGameNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!baseballGameNumbers.contains(randomNumber)) {
-                baseballGameNumbers.add(randomNumber);
-            }
-        }
-    }
-
-    @VisibleForTesting
-    protected int getBaseballGameNumbersSize() {
-        // Only for testing
-        return baseballGameNumbers.size();
+    public BaseballGame(List<Integer> baseballGameNumbers) {
+        this.baseballGameNumbers = new ArrayList<>(baseballGameNumbers);
     }
 
     public boolean isPlayerWin(List<Integer> playerTargetNums) {
-        return true;
+        int ballCount = calculateBall(playerTargetNums);
+        int strikeCount = calculateStrike(playerTargetNums);
+        announceGameResult(ballCount, strikeCount);
+        return isCountToWin(strikeCount);
+    }
+
+    @VisibleForTesting
+    protected int calculateBall(List<Integer> playerTargetNums) {
+        return (int) IntStream.range(0, NUMBER_TO_COMPARE)
+                .filter(i -> baseballGameNumbers.contains(playerTargetNums.get(i))
+                        && !baseballGameNumbers.get(i).equals(playerTargetNums.get(i)))
+                .count();
+    }
+
+    @VisibleForTesting
+    protected int calculateStrike(List<Integer> playerTargetNums) {
+        return (int) IntStream.range(0, NUMBER_TO_COMPARE)
+                .filter(i -> baseballGameNumbers.get(i).equals(playerTargetNums.get(i)))
+                .count();
+    }
+
+    @VisibleForTesting
+    protected static boolean isCountToWin(int count) {
+        return count == STRIKE_COUNT_TO_WIN;
     }
 }

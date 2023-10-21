@@ -1,15 +1,15 @@
 package baseball.utils;
 
-import static baseball.utils.BaseballGameConsoleValidator.isAbleToParseToNum;
-import static baseball.utils.BaseballGameConsoleValidator.isRightSize;
-import static baseball.utils.BaseballGameConsoleValidator.isValidatedInputForPlayer;
-import static baseball.utils.BaseballGameConsoleValidator.isValidatedInputForRestart;
+import static baseball.utils.BaseballGameInputValidator.isAbleToParseToNum;
+import static baseball.utils.BaseballGameInputValidator.isRightSize;
+import static baseball.utils.BaseballGameInputValidator.isValidatedInputForPlayer;
+import static baseball.utils.BaseballGameInputValidator.isValidatedInputForRestart;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-class BaseballGameConsoleValidatorTest {
+class BaseballGameInputValidatorTest {
 
     @Test
     public void isAbleToParseToNum_number_true() {

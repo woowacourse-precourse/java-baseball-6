@@ -1,7 +1,7 @@
 package baseball.utils;
 
-import static baseball.utils.BaseballGameConsoleValidator.isValidatedInputForPlayer;
-import static baseball.utils.BaseballGameConsoleValidator.isValidatedInputForRestart;
+import static baseball.utils.BaseballGameInputValidator.isValidatedInputForPlayer;
+import static baseball.utils.BaseballGameInputValidator.isValidatedInputForRestart;
 import static baseball.utils.BaseballGamePrinterUtils.askPlayerTargetNums;
 import static baseball.utils.BaseballGamePrinterUtils.printAskStartNewGame;
 import static baseball.utils.NewGameStartFlag.START;
