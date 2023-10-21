@@ -38,6 +38,15 @@ public class Application {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하시면 2를 입력하세요.");
+                String restartNum = Console.readLine();
+                if (Integer.parseInt(restartNum) != 1 && Integer.parseInt(restartNum) != 2) {
+                    throw new IllegalArgumentException();
+                } else if (Integer.parseInt(restartNum) == 2) {
+                    break;
+                } else {
+                    randomNumber.randomNumberGenerate();
+                    System.out.println(randomNumber.getRandomNumber());
+                }
             } else if (ball == 0) {
                 System.out.println(strike + "스트라이크");
             } else if (strike == 0) {
