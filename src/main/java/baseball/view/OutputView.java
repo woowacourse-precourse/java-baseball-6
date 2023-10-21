@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.RoundResult;
+import baseball.domain.Round;
 
 public class OutputView {
 
@@ -18,13 +18,13 @@ public class OutputView {
         System.out.println(GAME_END_MESSAGE);
     }
 
-    public static void printRoundResult(RoundResult roundResult) {
+    public static void printRoundResult(Round round) {
         StringBuilder sb = new StringBuilder();
-        if (roundResult.hasBall()) {
-            sb.append(roundResult.ballCount()).append(BALL_MESSAGE);
+        if (round.hasBall()) {
+            sb.append(round.getBallCount()).append(BALL_MESSAGE);
         }
-        if (roundResult.hasStrike()) {
-            sb.append(roundResult.strikeCount()).append(STRIKE_MESSAGE);
+        if (round.hasStrike()) {
+            sb.append(round.getStrikeCount()).append(STRIKE_MESSAGE);
         }
         if (sb.isEmpty()) {
             sb.append(NOTHING_CORRECT_MESSAGE);

@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.domain.ComputerNumbers;
+import baseball.domain.ReplayType;
 import baseball.domain.Round;
-import baseball.domain.RoundResult;
 import baseball.domain.UserNumbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -15,9 +15,8 @@ public class NumberBaseballGame {
         while (!isGameEnd) {
             UserNumbers userNumbers = InputView.readUserNumber();
             Round round = new Round(computerNumbers, userNumbers);
-            RoundResult roundResult = round.calculateRoundResult();
-            OutputView.printRoundResult(roundResult);
-            isGameEnd = roundResult.isEnd();
+            OutputView.printRoundResult(round);
+            isGameEnd = round.isGameEnd();
         }
     }
 

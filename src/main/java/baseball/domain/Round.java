@@ -1,40 +1,52 @@
 package baseball.domain;
 
 public final class Round {
-    private final ComputerNumbers computerNumbers;
-    private final UserNumbers userNumbers;
-
+    private int ballCount = 0;
+    private int strikeCount = 0;
 
     public Round(ComputerNumbers computerNumbers, UserNumbers userNumbers) {
-        this.computerNumbers = computerNumbers;
-        this.userNumbers = userNumbers;
+        calculateRoundResult(computerNumbers, userNumbers);
     }
 
-    private int getComputerNumber(int i) {
-        return computerNumbers.get(i);
+    public int getBallCount() {
+        return ballCount;
     }
 
-    private int getUserNumber(int i) {
-        return userNumbers.get(i);
+    public int getStrikeCount() {
+        return strikeCount;
     }
 
-    private boolean IsStrike(int i) {
-        return getUserNumber(i) == getComputerNumber(i);
+    public boolean hasBall() {
+        return ballCount != 0;
     }
 
-    public RoundResult calculateRoundResult() {
-        int ballCount = 0;
-        int strikeCount = 0;
-        for (int i = 0; i < 3; i++) {
-            if (IsStrike(i)) {
-                strikeCount++;
-                continue;
-            }
-            if (computerNumbers.contains(getUserNumber(i))) {
-                ballCount++;
-            }
+    public boolean hasStrike() {
+        return strikeCount != 0;
+    }
+
+    public boolean isGameEnd() {
+        return strikeCount == 3;
+    }
+
+    private void countStrike(int i, ComputerNumbers computerNumbers, UserNumbers userNumbers) {
+        if (computerNumbers.get(i) == userNumbers.get(i)) {
+            strikeCount++;
         }
-        return new RoundResult(ballCount, strikeCount);
     }
+
+    private void countBall(int i, ComputerNumbers computerNumbers, UserNumbers userNumbers) {
+        int userNumber = userNumbers.get(i);
+        if (computerNumbers.get(i) == userNumbers.get(i) && computerNumbers.contains(userNumber)) {
+            ballCount++;
+        }
+    }
+
+    private void calculateRoundResult(ComputerNumbers computerNumbers, UserNumbers userNumbers) {
+        for (int i = 0; i < 3; i++) {
+            countStrike(i, computerNumbers, userNumbers);
+            countBall(i, computerNumbers, userNumbers);
+        }
+    }
+
 }
 
