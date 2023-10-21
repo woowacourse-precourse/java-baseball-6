@@ -12,7 +12,7 @@ public class Application {
         private List<Integer> computerNumbers;
         private List<Integer> userNumbers;
         private int[] count;
-        private Scanner scanner;
+        private final Scanner scanner;
 
         public BaseBallGame(InputStream inputStream) {
             this.scanner = new Scanner(inputStream);
