@@ -1,15 +1,19 @@
 package baseball.util;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class GameInputValid implements UserInputValid {
 
     @Override
     public void inputValid(String input) throws IllegalArgumentException {
-        compareInputType(input);
+        checkInputValue(input);
     }
 
-    private void compareInputType(String input) throws IllegalArgumentException {
-        if (!isNumeric(input) || !isValidRange(input) || isValidZeroValue(input)) {
+    private void checkInputValue(String input) throws IllegalArgumentException {
+        if (!isNumeric(input) || !isValidRange(input) || isValidZeroValue(input)
+                || isValidDuplicateValue(input)) {
             throw new IllegalArgumentException();
         }
     }
@@ -29,5 +33,15 @@ public class GameInputValid implements UserInputValid {
 
     private boolean isValidZeroValue(String input) {
         return input.contains("0");
+    }
+
+    private boolean isValidDuplicateValue(String input) {
+        Set<Character> uniqueChars = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            if (!uniqueChars.add(c)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
