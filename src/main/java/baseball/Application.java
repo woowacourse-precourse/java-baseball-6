@@ -12,6 +12,5 @@ public class Application {
 
         gameProcessor.IllegalArgumentException(data);
 
-        System.out.println(gameProcessor.generateUserNumberList(data));
     }
 }

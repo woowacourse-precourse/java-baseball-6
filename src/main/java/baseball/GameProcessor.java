@@ -44,12 +44,19 @@ public class GameProcessor {
         return String.valueOf(strike);
     }
 
-    public List<String> calculateStrikeBallList(Data data) {
-        List<String> strikeBallList = new ArrayList<>();
+    private static String calculateBall(Data data) {
+        int ball = 0;
         List<String> randomNumberList = generateRandomNumberList();
         List<String> userNumberList = generateUserNumberList(data);
 
-
+        for (int i = 0; i < DIGIT_SIZE; i++) {
+            for (int j = 0; j < DIGIT_SIZE; j++) {
+                if (userNumberList.get(i).equals(randomNumberList.get(j))) {
+                    ball++;
+                }
+            }
+        }
+        return String.valueOf(ball);
     }
 
     public void IllegalArgumentException(Data data) {
