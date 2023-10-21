@@ -3,7 +3,7 @@
 * 게임 시작
 * 컴퓨터가 생성하는 1 ~ 9까지 임의의 세 자리수 만들어서 반환 feat: Add a method that creates and returns the random number
 * 사용자의 입력을 받음 feat: Add a method that receives a user's input and returns it
-* 사용자 입력이 잘못돼서 예외가 터졌을 때 처리하는 메서드
+* 사용자 입력이 잘못돼서 예외가 터졌을 때 처리하는 메서드 feat: Add a method that make exception if the input number does not fit the range
 * 컴퓨터의 수와 사용자의 수를 비교해서 결과 담음
 * 결과 판별하고 출력 
 * 게임 종료

@@ -6,7 +6,6 @@ import baseball.controller.BaseballGameController;
 public class Application {
 
     private static final int RESTART = 1;
-    private static final int TERMINATE = 0;
 
     public static void main(String[] args) {
         BaseballGameController baseballGameController = new BaseballGameController(); // 게임 컨트롤러 생성

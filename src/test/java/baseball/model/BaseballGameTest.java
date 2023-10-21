@@ -24,8 +24,8 @@ public class BaseballGameTest {
             Assertions.assertThat(randomNumber).isInstanceOf(Integer.class);
 
             // 전달한 범위 안에 있는 정수인지 확인
-            Assertions.assertThat(randomNumber).isGreaterThan(99);
-            Assertions.assertThat(randomNumber).isLessThan(1000);
+            Assertions.assertThat(randomNumber).isGreaterThanOrEqualTo(baseball.model.RangeConstant.START_INT);
+            Assertions.assertThat(randomNumber).isLessThanOrEqualTo(baseball.model.RangeConstant.END_INT);
 
         }
 
