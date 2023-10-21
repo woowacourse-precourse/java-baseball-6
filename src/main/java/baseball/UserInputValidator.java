@@ -1,6 +1,8 @@
 package baseball;
 
-import static baseball.Constants.*;
+import static baseball.Constants.NUMBER_LOWER_BOUND;
+import static baseball.Constants.NUMBER_UPPER_BOUND;
+import static baseball.Constants.SIZE_OF_DIGITS;
 
 import java.util.ArrayList;
 import java.util.HashSet;
