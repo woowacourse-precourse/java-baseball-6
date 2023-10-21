@@ -37,18 +37,18 @@ public class BaseballGameLogic {
         return digitList;
     }
 
-    public BallCount checkBallCount(List<Integer> randomThreeDigits, List<Integer> inputDigits){
+    public BallCount checkBallCount(List<Integer> randomThreeDigits, List<Integer> playerInputNumber){
         int strike = 0;
         int ball = 0;
         BallCount ballCount = new BallCount();
 
         for(int i = 0; i < DIGIT_LENGTH; i++){
-            if(Objects.equals(randomThreeDigits.get(i), inputDigits.get(i))){
+            if(Objects.equals(randomThreeDigits.get(i), playerInputNumber.get(i))){
                 strike ++;
                 continue;
             }
 
-            if(randomThreeDigits.contains(inputDigits.get(i))){
+            if(randomThreeDigits.contains(playerInputNumber.get(i))){
                 ball ++;
             }
         }
