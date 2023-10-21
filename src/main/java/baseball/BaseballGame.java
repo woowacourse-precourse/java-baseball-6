@@ -102,4 +102,11 @@ public class BaseballGame {
         resultList.put("ball", 0);
     }
 
+    private boolean isAllStrike(Map<String, Integer> resultList){
+        if(resultList.get("strike") == 3){
+            return true;
+        }
+        return false;
+    }
+
 }
