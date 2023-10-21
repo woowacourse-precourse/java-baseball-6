@@ -7,8 +7,6 @@ public class CompareNumber {
     private final int num;
     private final int pos;
 
-    //컴퓨터가 생성한 번호 n 에 대하여 position, number 를 인자로 받고
-    //유저가 입력한 번호 n1 n2 n3 을 모두 비교한다.
     public CompareNumber(int pos, int num) {
         this.pos = pos;
         this.num = num;
@@ -37,7 +35,7 @@ public class CompareNumber {
         return num == that.num && pos == that.pos;
     }
 
-    @Override
+    @Override// 한 객체가 동일한 pos, num 을 갖는다면 동일한 해시코드를 반환한다.
     public int hashCode() {// 한 클래스에서 동일한 num, pos 를 갖는다면 동일한 해시코드를 반환한다.
         return Objects.hash(pos, num);
     }
