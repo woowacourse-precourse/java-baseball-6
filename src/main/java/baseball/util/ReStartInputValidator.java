@@ -14,7 +14,7 @@ public class ReStartInputValidator extends Validator{
 
     private void validateReStartInputNum(String reStartNum) throws IllegalArgumentException{
         if(!RESTART_NUMBER_REGEX.matcher(reStartNum).matches()) {
-            throw new IllegalArgumentException("Exception Message : 재시작 입력값의 형식에 맞춰주세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RESTART_INPUT_NUM.getErrorMessage());
         }
     }
 }

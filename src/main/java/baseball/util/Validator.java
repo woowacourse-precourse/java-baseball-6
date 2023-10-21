@@ -11,7 +11,7 @@ public abstract class Validator {
 
     static void validateEmptyInput(String inputNum) {
         if(inputNum.isEmpty()) {
-            throw new IllegalArgumentException("Exception Message : 공백을 입력하지 마세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RESTART_INPUT_NUM.getErrorMessage());
         }
     }
 

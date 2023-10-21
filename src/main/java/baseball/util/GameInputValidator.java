@@ -15,7 +15,7 @@ public class GameInputValidator extends Validator{
 
     private void validateGameInputNum(String gameInputNum) throws IllegalArgumentException{
         if(!GAME_NUMBER_REGEX.matcher(gameInputNum).matches()) {
-            throw new IllegalArgumentException("Exception Message : 숫자야구 입력 형식에 맞춰주세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_GAME_INPUT_NUM.getErrorMessage());
         }
     }
 }
