@@ -5,6 +5,15 @@ import java.util.List;
 
 public class InputValidator {
 
+    public List<Integer> validateInput(String inputNumbers) {
+        validateLength(inputNumbers);
+        List<Integer> numberList = convertStrToList(inputNumbers);
+        validateRange(numberList);
+        validateDuplicate(numberList);
+
+        return numberList;
+    }
+
     public void validateLength(String inputNumbers) {
         if (inputNumbers.length() != 3) {
             throw new IllegalArgumentException("입력한 숫자의 길이를 확인하세요.");
