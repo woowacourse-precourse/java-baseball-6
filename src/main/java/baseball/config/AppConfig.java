@@ -3,25 +3,30 @@ package baseball.config;
 import baseball.controller.Dispatcher;
 import baseball.controller.GameController;
 import baseball.domain.Computer;
+import baseball.domain.Referee;
 import baseball.factory.GameFactory;
 import baseball.service.GameService;
 import baseball.service.GameServiceImpl;
 
 public class AppConfig {
-    
-    private Computer computer() {
+
+    public Computer computer() {
         return new Computer();
     }
 
-    private GameService gameService() {
-        return GameServiceImpl.getInstance();
+    public Referee referee() {
+        return new Referee();
     }
 
-    private GameController gameController() {
+    public GameService gameService() {
+        return GameServiceImpl.getInstance(referee());
+    }
+
+    public GameController gameController() {
         return GameController.getInstance(computer(), gameService());
     }
 
-    private Dispatcher dispatcher() {
+    public Dispatcher dispatcher() {
         return Dispatcher.getInstance(gameController());
     }
 
