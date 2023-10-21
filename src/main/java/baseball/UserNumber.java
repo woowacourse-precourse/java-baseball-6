@@ -10,7 +10,7 @@ public class UserNumber {
     private final List<Integer> userNumber = new ArrayList<>();
 
     public UserNumber(String userNumber) {
-        // this.userNumber = userNumber;
+
     }
 
     private void validateLength(String userInputNumber){
@@ -34,6 +34,12 @@ public class UserNumber {
                 throw new IllegalArgumentException();
             }
             set.add(ch);
+        }
+    }
+
+    private void convertInputStringToList(String userInputNumber){
+        for(char ch: userInputNumber.toCharArray()){
+            userNumber.add(Character.getNumericValue(ch));
         }
     }
 
