@@ -1,8 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Application {
@@ -16,6 +19,16 @@ public class Application {
         int n=3;
         int startN=1;
         int endN=9;
+
+        //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
+        List<Integer> computerNum = new ArrayList<>();
+        while (computerNum.size() < n) {
+            int randomNumber = Randoms.pickNumberInRange(startN, endN);
+            if (!computerNum.contains(randomNumber)) {
+                computerNum.add(randomNumber);
+            }
+        }
+        System.out.println("컴퓨터가 뽑은 수"+computerNum);
 
         //사용자는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 입력　
         System.out.print("숫자를 입력해주세요 : ");
@@ -46,6 +59,7 @@ public class Application {
         if (numSet.size()<n){
             throw new IllegalArgumentException();
         }
+
 
     }
 
