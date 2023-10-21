@@ -1,4 +1,4 @@
-package baseball.IO;
+package baseball.io;
 
 public class ConsoleOutput implements Output{
 

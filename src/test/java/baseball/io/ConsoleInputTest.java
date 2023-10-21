@@ -1,4 +1,4 @@
-package baseball.IO;
+package baseball.io;
 
 import java.io.ByteArrayInputStream;
 import org.junit.jupiter.api.Assertions;
