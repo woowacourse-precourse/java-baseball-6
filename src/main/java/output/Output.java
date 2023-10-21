@@ -1,23 +1,32 @@
-package baseball;
+package output;
 
-import static baseball.OutputMessage.*;
+import static output.OutputMessage.ASK_NUMBER;
+import static output.OutputMessage.BALL;
+import static output.OutputMessage.BALL_AND_STRIKE;
+import static output.OutputMessage.CORRECT_AND_ASK_RESTART;
+import static output.OutputMessage.NOTHING;
+import static output.OutputMessage.START;
+import static output.OutputMessage.STRIKE;
 
-class Output {
+import judge.JudgeResult;
+import judge.JudgeStatus;
 
-    static void start() {
+public class Output {
+
+    public void start() {
         System.out.println(START);
     }
 
-    void askUserNumber() {
+    public void askUserNumber() {
         System.out.print(ASK_NUMBER);
     }
 
-    void printResult(JudgeResult result) {
+    public void printResult(JudgeResult result) {
         if (isNothing(result)) {
             System.out.printf(NOTHING);
             return;
         }
-        printBallAndStrike(result.getBall(), result.getStrike());
+        printBallAndStrike(result);
         if (isCorrect(result)) {
             System.out.printf(CORRECT_AND_ASK_RESTART);
         }
@@ -31,7 +40,10 @@ class Output {
         return result.getStatus() == JudgeStatus.CORRECT;
     }
 
-    private void printBallAndStrike(int ball, int strike) {
+    private void printBallAndStrike(JudgeResult result) {
+        int ball = result.getBall();
+        int strike = result.getStrike();
+
         if (ball != 0 && strike == 0) {
             System.out.printf(BALL, ball);
         }
