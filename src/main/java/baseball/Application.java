@@ -33,6 +33,8 @@ public class Application {
 
         }
 
+        printManager.printGameOver();
+
 
     }
 }
