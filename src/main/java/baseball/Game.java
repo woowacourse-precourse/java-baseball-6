@@ -9,17 +9,14 @@ public class Game {
         display.printStartText();
     }
     public void playGame(){
+        computer.initComputerNumbers();
+        Judgement judgeResult;
         do{
-            computer.initComputerNumbers();
-            Judgement judgeResult;
-            do{
-                int[] userInputs = display.getUserInput();
-                judgeResult = computer.getJudgeResult(userInputs);
-                judgeResult.printResult();
-            }
-            while(!judgeResult.isOut());
-            display.printGameOverText();
+            int[] userInputs = display.getUserInput();
+            judgeResult = computer.getJudgeResult(userInputs);
+            judgeResult.printResult();
         }
-        while(display.getRestartInput());
+        while(!judgeResult.isOut());
+        display.printGameOverText();
     }
 }
