@@ -28,4 +28,14 @@ public class Exceptions {
         }throw new IllegalArgumentException("숫자는 3자리수만 입력 가능합니다.");
     }
 
+    public void isInvalidZero(String input){
+        int first = Integer.parseInt(input.substring(0,1));
+        int second = Integer.parseInt(input.substring(1,2));
+        int third = Integer.parseInt(input.substring(input.length()-1));
+
+        if(first != 0 && second != 0 && third !=0){
+            return;
+        }throw new IllegalArgumentException("각 자릿수는 1~9만 입력 가능합니다.");
+    }
+
 }

@@ -17,6 +17,7 @@ public class Baseball {
             String inputNum = Console.readLine();
             exception.isInvalidNumberDuplication(inputNum);
             exception.isInvalidNumberLength(inputNum);
+            exception.isInvalidZero(inputNum);
             playBall(computer, inputNum, units);
             result(units);
         }
