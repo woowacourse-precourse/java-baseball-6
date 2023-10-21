@@ -33,7 +33,7 @@ public class BaseBallGameController {
         List<Integer> targetNumber = baseBallService.generateRandomNumbers();
 
         while (true) {
-            baseballOutputView.printMessage(BaseballGameMessage.REQUEST_USER_INPUT);
+            baseballOutputView.printUserInputMessage(BaseballGameMessage.REQUEST_USER_INPUT);
             List<Integer> userInput = baseballInputView.userGuessInput();
             String gameResult = baseBallService.getGameResult(targetNumber, userInput).toString();
             baseballOutputView.printGameResult(gameResult);
