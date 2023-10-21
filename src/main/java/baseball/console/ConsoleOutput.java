@@ -1,7 +1,7 @@
 package baseball.console;
 
-import baseball.console.constant.GameConstant;
-import baseball.controller.constant.NumberConstant;
+import baseball.constant.GameConstant;
+import baseball.constant.NumberConstant;
 import baseball.dto.BaseBallResult;
 
 public class ConsoleOutput {

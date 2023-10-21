@@ -3,8 +3,8 @@ package baseball.util;
 import java.util.HashSet;
 import java.util.Set;
 
-import baseball.console.constant.GameConstant;
-import baseball.controller.constant.NumberConstant;
+import baseball.constant.GameConstant;
+import baseball.constant.NumberConstant;
 
 public class InputValidation {
 
