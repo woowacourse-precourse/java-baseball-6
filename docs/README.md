@@ -31,11 +31,8 @@
 
 - [x] Balls 관련 utility class
     - [x] `List<Integer>`를 `List<Ball>`로 변환
-
-## 📒 RandomBallsGeneratorUtil
-
-- [ ] 무작위 `Balls`을 생성 (게임에서의 정답)
-    - [ ] `camp.nextstep.edu.missionutils.Randoms`library의 `pickNumberInRange()` 활용
+    - [ ] 무작위 `Balls`을 생성 (게임에서의 정답)
+        - [ ] `camp.nextstep.edu.missionutils.Randoms`library의 `pickNumberInRange()` 활용
         - [ ] 중복값 제외
 
 ---
