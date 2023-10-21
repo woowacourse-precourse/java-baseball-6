@@ -10,6 +10,15 @@ public class GameResult {
     }
 
     public void result() {
-        System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        if (isNothing()) {
+            System.out.println("낫싱");
+        }
+        if (!isNothing()) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+    }
+
+    private boolean isNothing() {
+        return ballCount == 0 && strikeCount == 0;
     }
 }
