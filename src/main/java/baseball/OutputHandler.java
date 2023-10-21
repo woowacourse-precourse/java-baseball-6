@@ -1,7 +1,7 @@
 package baseball;
 
 public class OutputHandler {
-    public static void printMessage(String message) {
+    public static void printMessage(final String message) {
         System.out.println(message);
     }
 

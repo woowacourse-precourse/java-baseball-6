@@ -11,7 +11,7 @@ public class Judgement {
         strikes = 0;
     }
 
-    public void callBallOrStrike(BaseballNumber computerNumber, BaseballNumber userNumber) {
+    public void callBallOrStrike(final BaseballNumber computerNumber, final BaseballNumber userNumber) {
         initCount();
         List<Integer> targetNumbers = computerNumber.numbers();
         List<Integer> userGuess = userNumber.numbers();

@@ -15,7 +15,7 @@ public class UserInput {
         return numbers;
     }
 
-    private static List<Integer> convertStringToNumbers(String string) {
+    private static List<Integer> convertStringToNumbers(final String string) {
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < Constants.MAX_DIGITS; i++) {
             int digit = convertCharToInt(string.charAt(i));
@@ -24,7 +24,7 @@ public class UserInput {
         return numbers;
     }
 
-    private static int convertCharToInt(char ch) {
+    private static int convertCharToInt(final char ch) {
         int digit = Character.getNumericValue(ch);
         UserInputValidator.validateNonzeroDigit(digit);
         return digit;

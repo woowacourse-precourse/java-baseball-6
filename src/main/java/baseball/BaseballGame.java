@@ -31,7 +31,7 @@ public class BaseballGame {
         return false;
     }
 
-    private void tryGuess(BaseballNumber targetNumber) {
+    private void tryGuess(final BaseballNumber targetNumber) {
         BaseballNumber userGuess = new BaseballNumber(UserInput.inputNumbers());
         judgement.callBallOrStrike(targetNumber, userGuess);
         OutputHandler.printMessage(judgement.toString());

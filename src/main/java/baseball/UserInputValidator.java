@@ -5,13 +5,13 @@ import java.util.Set;
 
 public class UserInputValidator {
 
-    static void validateLength(String string) {
+    static void validateLength(final String string) {
         if (string.length() != Constants.MAX_DIGITS) {
             throw new IllegalArgumentException();
         }
     }
 
-    static void validateNonzeroDigit(int digit) {
+    static void validateNonzeroDigit(final int digit) {
         if (digit < 1 || digit > 9) {
             throw new IllegalArgumentException();
         }
