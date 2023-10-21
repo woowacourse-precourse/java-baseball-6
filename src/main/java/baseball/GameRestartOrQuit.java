@@ -13,8 +13,8 @@ public class GameRestartOrQuit {
         return new GameRestartOrQuit(restartOrQuitNumber);
     }
 
-    public String getRestartOrQuitNumber() {
-        return restartOrQuitNumber;
+    public boolean isGameQuit() {
+        return restartOrQuitNumber.equals(Constants.GAME_QUIT);
     }
 
     private void validateRestartOrQuitNumber(String number) {

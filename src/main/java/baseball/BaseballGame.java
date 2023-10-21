@@ -20,7 +20,7 @@ public class BaseballGame {
             Printer.printGameRestartOrQuit();
             String input = Console.readLine();
             GameRestartOrQuit gameRestartOrQuit = GameRestartOrQuit.from(input);
-            gameQuit = isGameQuit(gameRestartOrQuit.getRestartOrQuitNumber());
+            gameQuit = gameRestartOrQuit.isGameQuit();
         } while(!gameQuit);
     }
 
@@ -37,9 +37,5 @@ public class BaseballGame {
             Printer.printHint(hint);
             threeStrike = hint.isThreeStrike();
         } while(!threeStrike);
-    }
-
-    private boolean isGameQuit(String number) {
-        return number.equals(Constants.GAME_QUIT);
     }
 }
