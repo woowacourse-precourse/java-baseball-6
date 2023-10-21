@@ -12,7 +12,7 @@ public class GameView {
     }
 
 
-    private void printHint(Integer strikeCount, Integer ballCount) {
+    public void printHint(Integer strikeCount, Integer ballCount) {
         StringBuilder hint = new StringBuilder();
 
         if (ballCount != 0) hint.append(ballCount).append("볼 ");
