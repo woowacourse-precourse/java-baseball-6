@@ -1,10 +1,9 @@
 package baseball.mytest.model;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.function.Predicate;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
 
 public class InputNumberValidatorTest {
     InputNumberValidator validator = new InputNumberValidator();
@@ -15,12 +14,12 @@ public class InputNumberValidatorTest {
 
     @Test
     void 입력이_1_또는_2인지_제외_모두_검증() {
-        String input  = "586";
+        String input = "586";
         validator.validateAllInput(input);
     }
 
     @Test
-    void 입력이_3자리인지_검증() {
+    void 입력이_3자리이면_true_검증() {
         String input = "1a4";
         assertTest(input, validator::hasThreeDigits);
     }
