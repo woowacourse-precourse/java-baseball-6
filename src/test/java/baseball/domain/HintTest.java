@@ -11,4 +11,10 @@ public class HintTest {
 		Hint hint = new Hint(0, 2);
 		assertTrue(hint.isStrikeCountZero());
 	}
+
+	@Test
+	void isBallCountZero_메서드는_ball이_0이면_true를_반환한다() {
+		Hint hint = new Hint(1, 0);
+		assertTrue(hint.isBallCountZero());
+	}
 }
