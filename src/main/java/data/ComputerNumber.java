@@ -10,11 +10,18 @@ public final class ComputerNumber extends BaseballNumber {
         this.numbers = Randoms.pickUniqueNumbersInRange(1,9,3);
     }
 
-    public ComputerNumber(int first, int second, int third) throws IllegalArgumentException{
+    public ComputerNumber(int first, int second, int third){
         this.numbers = new ArrayList<>();
         List<Integer> numbers = this.numbers;
         numbers.add(first);
         numbers.add(second);
         numbers.add(third);
+    }
+
+    public ComputerNumber(ArrayList<Integer> sequence) throws IllegalArgumentException{
+        if(sequence.size() != 3)
+            throw new IllegalArgumentException();
+        for(int number : sequence)
+            numbers.add(number);
     }
 }
