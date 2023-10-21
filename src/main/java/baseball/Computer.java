@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    public List<Integer> generate() {
+    public String generate() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -13,6 +13,12 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
-        return computer;
+
+        StringBuilder sb = new StringBuilder();
+        for (Integer number : computer) {
+            sb.append(number);
+        }
+
+        return sb.toString();
     }
 }
