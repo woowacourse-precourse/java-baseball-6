@@ -3,6 +3,9 @@ package baseball.Controller;
 import baseball.Model.GameData;
 import baseball.View.InputView;
 import baseball.View.OutputView;
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
 
 public class MainController {
     OutputView outputView = new OutputView();
@@ -32,13 +35,20 @@ public class MainController {
 
     private void processInputAndCompare() {
         while (true) {
-            //processPlayerInput();
+            processPlayerInput();
             if (comparator.isEndGame(gameData.getComputerNumber(), gameData.getPlayerInput())){
                 //checkReplay();
                 return;
             }
             //processComperater();
         }
+    }
+
+    private void processPlayerInput() {
+        inputView.printNumberRequest();
+        String playerFirstInput = Console.readLine();
+        ArrayList<Integer> playerInput = playerInputController.handlePlayerInput(playerFirstInput);
+        gameData.setPlayerInput(playerInput);
     }
 
 }
