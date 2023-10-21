@@ -32,7 +32,7 @@ public class OutputView {
             result.append(gameResult.getStrikeCount());
             result.append(STRIKE_MESSAGE);
         }
-        if (gameResult.isNothing()){
+        if (gameResult.isNothing()) {
             result.append(NOTHING_MESSAGE);
         }
         System.out.println(result);

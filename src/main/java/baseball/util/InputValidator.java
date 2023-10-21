@@ -37,6 +37,6 @@ public class InputValidator {
     }
 
     private static boolean isRetryForm(String rawRetry) {
-        return rawRetry.equals("1") ||  rawRetry.equals("2");
+        return rawRetry.equals("1") || rawRetry.equals("2");
     }
 }
