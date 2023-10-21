@@ -25,17 +25,29 @@ public class Score {
         return score.get(STRIKE).equals(Number.OUT_COUNT);
     }
 
+    private Boolean hasHint(Hint hint) {
+        return this.score.get(hint) > 0;
+    }
+
+    private Integer countHint(Hint hint) {
+        return this.score.get(hint);
+    }
+
+    private Boolean hasNotThing() {
+        return score.keySet().stream().noneMatch(this::hasHint);
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        if (score.get(STRIKE) == 0 && score.get(BALL) == 0) {
+        if (hasNotThing()) {
             builder.append(NOT_THING);
         }
-        if (score.get(BALL) > 0) {
-            builder.append(score.get(BALL)).append(BALL).append(BLANK);
+        if (hasHint(BALL)) {
+            builder.append(countHint(BALL)).append(BALL).append(BLANK);
         }
-        if (score.get(STRIKE) > 0) {
-            builder.append(score.get(STRIKE)).append(STRIKE);
+        if (hasHint(STRIKE)) {
+            builder.append(countHint(STRIKE)).append(STRIKE);
         }
         return builder.toString();
     }
