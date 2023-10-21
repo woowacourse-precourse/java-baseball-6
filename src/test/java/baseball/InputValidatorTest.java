@@ -42,14 +42,14 @@ public class InputValidatorTest {
     }
 
     @Test
-    void hasDuplicationTest_caseTrue() {
+    void hasDuplicateCharsTest_caseTrue() {
         String playerInput = "12345";
 
         assertThat(inputValidator.hasDuplicateChars(playerInput)).isTrue();
     }
 
     @Test
-    void hasDuplicationTest_caseFalse() {
+    void hasDuplicateCharsTest_caseFalse() {
         String playerInput = "13345";
 
         assertThat(inputValidator.hasDuplicateChars(playerInput)).isFalse();
