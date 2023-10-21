@@ -3,6 +3,10 @@ package baseball.baseball;
 import static baseball.common.Constant.BALL_AMOUNT;
 import static baseball.common.Constant.MAX_BALL_NUMBER;
 import static baseball.common.Constant.MIN_BALL_NUMBER;
+import static baseball.common.Message.BALL_MESSAGE;
+import static baseball.common.Message.EMPTY_MESSAGE;
+import static baseball.common.Message.STRIKE_MESSAGE;
+import static baseball.common.Message.SUCCESS_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -28,12 +32,12 @@ public class BaseBall {
       Integer ballNumber = this.ballNumbers.get(i);
       Integer targetBallNumber = targetBallNumbers.get(i);
 
-      if (ballNumber.equals(targetBallNumber)) { // 스트라이크 인경우
+      if (ballNumber.equals(targetBallNumber)) {
         strikeCount++;
         continue;
       }
 
-      if (this.ballNumbers.contains(targetBallNumber)) { // 볼 인경우
+      if (this.ballNumbers.contains(targetBallNumber)) {
         ballCount++;
       }
     }
@@ -45,7 +49,7 @@ public class BaseBall {
 
   public Boolean isSucceed(int strikeCount) {
     if (strikeCount == BALL_AMOUNT) {
-      System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+      System.out.println(SUCCESS_MESSAGE);
       return true;
     }
     return false;
@@ -53,13 +57,13 @@ public class BaseBall {
 
   private void printResult(int ballCount, int strikeCount) {
     if (ballCount == 0 && strikeCount == 0) {
-      System.out.println("낫싱");
+      System.out.println(EMPTY_MESSAGE);
     } else if (ballCount == 0) {
-      System.out.println(strikeCount + "스트라이크");
+      System.out.println(strikeCount + STRIKE_MESSAGE);
     } else if (strikeCount == 0) {
-      System.out.println(ballCount + "볼");
+      System.out.println(ballCount + BALL_MESSAGE);
     } else {
-      System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+      System.out.println(ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE);
     }
   }
 

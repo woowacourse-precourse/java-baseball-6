@@ -5,6 +5,12 @@ import static baseball.common.Constant.EXIT_NUMBER_STR;
 import static baseball.common.Constant.MAX_BALL_NUMBER_CHAR;
 import static baseball.common.Constant.MIN_BALL_NUMBER_CHAR;
 import static baseball.common.Constant.RESTART_NUMBER_STR;
+import static baseball.common.Message.DUPLICATION_START_INPUT_NUMBER_MESSAGE;
+import static baseball.common.Message.END_INPUT_MESSAGE;
+import static baseball.common.Message.INVALID_END_INPUT_NUMBER_MESSAGE;
+import static baseball.common.Message.INVALID_START_INPUT_LENGTH_MESSAGE;
+import static baseball.common.Message.INVALID_START_INPUT_NUMBER_MESSAGE;
+import static baseball.common.Message.START_INPUT_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -13,7 +19,7 @@ import java.util.List;
 public class BaseBallInputDevice {
 
   public List<Integer> startInput() {
-    System.out.print("숫자를 입력해주세요 : ");
+    System.out.print(START_INPUT_MESSAGE);
 
     List<Integer> inputNumbers = new ArrayList<>();
     String inputStr = Console.readLine();
@@ -33,7 +39,7 @@ public class BaseBallInputDevice {
   }
 
   public int endInput() {
-    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    System.out.println(END_INPUT_MESSAGE);
 
     String inputStr = Console.readLine();
     validateExitNumber(inputStr);
@@ -43,25 +49,25 @@ public class BaseBallInputDevice {
 
   private void validateStartLength(String inputStr) {
     if (inputStr.length() != BALL_AMOUNT) {
-      throw new IllegalArgumentException("3개의 숫자만 입력이 가능합니다.");
+      throw new IllegalArgumentException(INVALID_START_INPUT_LENGTH_MESSAGE);
     }
   }
 
   private void validateStartNumber(char inputChar) {
     if (inputChar < MIN_BALL_NUMBER_CHAR || inputChar > MAX_BALL_NUMBER_CHAR) {
-      throw new IllegalArgumentException("1~9까지의 숫자만 입력이 가능 합니다.");
+      throw new IllegalArgumentException(INVALID_START_INPUT_NUMBER_MESSAGE);
     }
   }
 
   private void validateExistsNumber(int inputNumber, List<Integer> inputNumbers) {
     if (inputNumbers.contains(inputNumber)) {
-      throw new IllegalArgumentException("서로 다른 숫자만 입력이 가능 합니다.");
+      throw new IllegalArgumentException(DUPLICATION_START_INPUT_NUMBER_MESSAGE);
     }
   }
 
   private void validateExitNumber(String inputStr) {
     if (!(inputStr.equals(RESTART_NUMBER_STR) || inputStr.equals(EXIT_NUMBER_STR))) {
-      throw new IllegalArgumentException("1 또는 2만 입력이 가능 합니다.");
+      throw new IllegalArgumentException(INVALID_END_INPUT_NUMBER_MESSAGE);
     }
   }
 
