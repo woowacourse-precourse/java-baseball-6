@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.validator.PlayerProposalValidator;
+
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -9,6 +11,7 @@ public class Player {
 
     public Player(String input) {
         //TODO 예외처리 로직(여기다가 할지 다른데서 할지)
+        new PlayerProposalValidator().validate(input);
         this.proposal = List.of(
                 input.charAt(0)-'0',
                 input.charAt(1)-'0',
