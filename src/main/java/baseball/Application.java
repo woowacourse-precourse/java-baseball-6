@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        String isGameContinue = "2";
+        String isGameContinue;
 
         do {
             System.out.println("숫자 야구 게임을 시작합니다.");
@@ -47,7 +47,7 @@ public class Application {
     public static List<Integer> player3() {
         System.out.print("숫자를 입력해주세요 : ");
         List<String> inputstr = Arrays.asList(Console.readLine().split(""));
-        List<Integer> input = inputstr.stream().map(s -> Integer.parseInt(s)).toList();
+        List<Integer> input = inputstr.stream().map(Integer::parseInt).toList();
 
         if (exceptions(input)) {
             throw new IllegalArgumentException("허용되지 않은 입력입니다.");
