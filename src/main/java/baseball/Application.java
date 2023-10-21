@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Application {
 
-    private static int strikeCount = 0;
-    private static int ballCount = 0;
+    private static int strikeCount;
+    private static int ballCount;
 
     public static void selectThreeNumber(List<Integer> selectNumber) {
         while (selectNumber.size() != 3) {
@@ -19,6 +19,18 @@ public class Application {
                 selectNumber.add(randomNumber);
             }
         }
+    }
+
+    public static void inputThreeNumber(String userInput, Integer[] userNumbers) {
+        System.out.print("숫자를 입력해주세요 : ");
+        userInput = Console.readLine();
+
+        //입력값의 크기가 3개가 아닐 때 => 예외 발생
+        if (userInput.length() != 3) {
+            Application.throwException("3개의 숫자만 입력하세요.");
+        }
+        //숫자배열 만들기
+        Application.convertIntNumbers(userInput, userNumbers);
     }
 
     public static void convertIntNumbers(String userInput, Integer[] userNumbers) {
@@ -32,29 +44,16 @@ public class Application {
                 }
                 userNumbers[i] = Integer.parseInt(userInputChars[i]);
                 //같은 숫자를 입력했을 때 => 예외발생
-                for (int j = i + 1; j < 3; j++)
+                for (int j = i + 1; j < 3; j++) {
                     if (userNumbers[i] == Integer.parseInt(userInputChars[j])) {
                         Application.throwException("서로 다른 숫자를 입력하세요.");
                     }
+                }
             }
         } catch (NumberFormatException ex) {
             //문자가 포함될 때 => 예외 발생
             Application.throwException("숫자만 입력하세요.");
         }
-    }
-
-    public static void inputThreeNumber(String userInput, Integer[] userNumbers) {
-
-        userInput = Console.readLine();
-
-        //입력값의 크기가 3개가 아닐 때 => 예외 발생
-        if (userInput.length() != 3) {
-            Application.throwException("3개의 숫자만 입력하세요.");
-        }
-        //숫자배열 만들기
-        Application.convertIntNumbers(userInput, userNumbers);
-
-
     }
 
     public static void throwException(String warning) {
@@ -100,7 +99,6 @@ public class Application {
             } catch (NumberFormatException ex) {
                 Application.throwException("숫자만 입력하세요.");
             }
-
             if (Integer.parseInt(userInput) == 1) {
                 selectNumber.clear();
                 Application.selectThreeNumber(selectNumber);
@@ -108,7 +106,6 @@ public class Application {
             } else {
                 return false;
             }
-
         }
         return true;
     }
@@ -136,7 +133,6 @@ public class Application {
         while (isGameRunning) {
             Application.initializeCounts();
 
-            System.out.print("숫자를 입력해주세요 : ");
             //3. 사용자 입력값 받기
             Application.inputThreeNumber(userInput, userNumbers);
 
