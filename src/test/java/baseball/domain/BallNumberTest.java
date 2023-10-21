@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import org.junit.jupiter.api.DisplayName;
@@ -16,6 +16,6 @@ public class BallNumberTest {
         expacted.add(4);
         expacted.add(2);
         expacted.add(6);
-        assertTrue(ballNumber.ballNumber.equals(expacted));
+        assertEquals(ballNumber.ballNumber, expacted);
     }
 }

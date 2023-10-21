@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import baseball.domain.BallNumber;
 import baseball.domain.Result;
@@ -16,7 +15,7 @@ public class ResultCalculatorTest {
         ResultCalculator resultCalculator = new ResultCalculator(new BallNumber("123"));
         BallNumber comparisonNumber = new BallNumber("123");
 
-        assertTrue(resultCalculator.computerNumber.ballNumber.equals(comparisonNumber.ballNumber));
+        assertEquals(resultCalculator.computerNumber.ballNumber, comparisonNumber.ballNumber);
     }
 
     @DisplayName("스트라이크의 개수를 제대로 계산했는지 확인")
