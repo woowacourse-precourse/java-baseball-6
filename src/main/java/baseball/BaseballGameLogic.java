@@ -12,7 +12,7 @@ public class BaseballGameLogic {
     private static final int DIGIT_MINIMUM = 1;
     private static final int DIGIT_MAXIMUM = 9;
 
-    public List<Integer> getThreeDigitNonZero(){
+    public List<Integer> getRandomThreeDigitNonZero(){
         List<Integer> threeDigitNonZero = new ArrayList<>();
 
         while (threeDigitNonZero.size() < DIGIT_LENGTH) {

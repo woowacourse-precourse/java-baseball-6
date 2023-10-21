@@ -23,7 +23,7 @@ public class BaseballGame {
 
         while (keepPlaying) {
             baseballGameView.printStartMessage();
-            playUntilThreeStrikes(baseballGameLogic.getThreeDigitNonZero());
+            playUntilThreeStrikes(baseballGameLogic.getRandomThreeDigitNonZero());
             baseballGameView.printRestartMessage();
             keepPlaying = askForRestartOrQuit();
         }
