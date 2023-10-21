@@ -9,16 +9,25 @@ import static baseball.constant.MessageConst.*;
  */
 public class MessageUtil {
 
+    /**
+     * 게임 시작 전 출력 메시지
+     */
     public void printInitMessage() {
 
         System.out.println(START_GAME_MESSAGE);
     }
 
+    /**
+     * 숫자 입력 메시지
+     */
     public void printInputMessage() {
 
         System.out.println(INPUT_MESSAGE);
     }
 
+    /**
+     * 결과에 대한 메시지
+     */
     public void printResultMessage(int strike, int ball) {
 
         StringBuilder result = new StringBuilder();
@@ -38,9 +47,11 @@ public class MessageUtil {
         }
 
         System.out.println(result.toString());
-
     }
 
+    /**
+     * 성공 메시지
+     */
     public void printSuccessMessage(){
 
         System.out.println(SUCCESS_MESSAGE);
