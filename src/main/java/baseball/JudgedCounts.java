@@ -15,10 +15,10 @@ public class JudgedCounts {
       return ball;
     }
 
-  public void strikeCount() {
+  public void setStrike() {
       this.strike +=1 ;
   }
-  public void ballCount() {
+  public void setBall() {
     this.ball +=1 ;
   }
 }

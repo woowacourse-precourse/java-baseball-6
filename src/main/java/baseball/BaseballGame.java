@@ -36,9 +36,9 @@ public class BaseballGame {
         JudgedCounts judgedCounts = new JudgedCounts(0,0);
         for (int ball = 0; ball < answerList.size(); ball++) {
             if (answerList.get(ball) == balls[ball]) {
-                judgedCounts.strikeCount();
+                judgedCounts.setStrike();
             } else if (answerList.contains(balls[ball])) {
-                judgedCounts.ballCount();
+                judgedCounts.setBall();
             }
         }
         return judgedCounts;
