@@ -84,4 +84,15 @@ public class Application {
         return integerList;
     }
 
+    //char to Integer
+    public static Integer parseInteger(char character){
+        Integer integer = character - '0';
+
+        return integer;
+    }
+
+
+    //같은 수가 같은 자리에 있으면 스트라이크　
+
+
 }
