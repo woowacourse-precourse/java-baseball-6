@@ -19,7 +19,6 @@ public class Array {
                 index++;
             }
         }
-        System.out.println(Arrays.toString(numbers));
         return numbers;
     }
 

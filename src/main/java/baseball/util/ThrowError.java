@@ -1,20 +1,20 @@
 package baseball.util;
 
 public class ThrowError {
-    public static void throwError(String str) throws IllegalAccessError{
+    public static void throwError(String str) throws IllegalArgumentException{
         int[] inputArr = new int[str.length()];
         for(int i = 0; i < inputArr.length; i++) {
             inputArr[i] = str.charAt(i);
         }
 //        System.out.println(Arrays.toString(inputArr));
         if(checkLength(inputArr)) {
-            throw new IllegalAccessError("3자리를 입력했는지 확인해주세요.");
+            throw new IllegalArgumentException("3자리를 입력했는지 확인해주세요.");
         }
         if(checkDuplicate(inputArr)) {
-            throw new IllegalAccessError("중복된 값은 입력 할 수 없습니다.");
+            throw new IllegalArgumentException("중복된 값은 입력 할 수 없습니다.");
         }
         if(checkInteger(inputArr)) {
-            throw new IllegalAccessError("정수만 입력 할 수 있습니다.");
+            throw new IllegalArgumentException("정수만 입력 할 수 있습니다.");
         }
     }
 
@@ -44,5 +44,4 @@ public class ThrowError {
         }
         return false;
     }
-
 }

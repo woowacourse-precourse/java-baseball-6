@@ -18,5 +18,4 @@ public class Application {
             isReset = ResetGame.isReset();
         }
     }
-
 }
