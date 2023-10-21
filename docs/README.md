@@ -34,7 +34,7 @@
     - camp.nextstep.edu.missionutils.Console - `readLine()` 사용
 - OutputView
   - Method
-    - [ ] 플레이어 - 컴퓨터 점수 출력
+    - [x] 플레이어 - 컴퓨터 점수 출력
     - [x] 하나도 없는 경우(낫싱) 경우 출력
     - [x] 3개의 숫자를 모두 맞힐 경우(3스트라이크) 경우 출력
     - [x] 게임 시작 문구 출력

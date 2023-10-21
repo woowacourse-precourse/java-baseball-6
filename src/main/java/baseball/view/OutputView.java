@@ -21,4 +21,8 @@ public class OutputView {
     System.out.println("낫싱");
   }
 
+  public void printBallStrikeScore(int ballScore, int strikeScore) {
+    System.out.println(ballScore+"볼 "+strikeScore+"스트라이크");
+  }
+
 }
