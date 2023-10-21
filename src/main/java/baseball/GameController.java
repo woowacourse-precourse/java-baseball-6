@@ -11,15 +11,15 @@ public class GameController {
     }
 
     public void run() {
-        while(true) {
+        while (true) {
             computer.generateRandomNumbers();
-            if(!gameStart()) {
+            if (!playGame()) {
                 break;
             }
         }
     }
 
-    public boolean gameStart() {
+    public boolean playGame() {
         while (true) {
             if (computer.compareNumbers(user.getNumbersFromUser())) {
                 return user.restartGame();
