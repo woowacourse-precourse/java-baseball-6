@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.exception.Exception;
 import baseball.domain.Score;
+import baseball.service.Service;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -9,27 +10,14 @@ import java.util.List;
 
 public class Controller {
 
-    List<Integer> computer = new ArrayList<>();
-    Score score = new Score();
+    private static Service service = new Service();
 
-    public Score getScore(String input) {
-
-        Exception.checkException(input);
-
-        score.checkStrike(input, computer);
-        score.checkBall(input, computer);
-
-        return score;
+    public void generateRandomValue()   {
+        service.generateRandomValue();
     }
 
-    public void generateRandomValue() {
-        computer.clear();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
+    public Score getScore (String input) {
+        return service.getScore(input);
     }
 
 }

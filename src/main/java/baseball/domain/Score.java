@@ -6,6 +6,7 @@ public class Score {
 
     private int strike;
     private int ball;
+    private ResultState resultState;
 
     public int getStrike() {
         return strike;
@@ -13,6 +14,10 @@ public class Score {
 
     public int getBall() {
         return ball;
+    }
+
+    public ResultState getResultState() {
+        return resultState;
     }
 
     public int checkStrike(String input, List<Integer> computer) {
@@ -35,5 +40,19 @@ public class Score {
             }
         }
         return ball;
+    }
+
+    public void setResultState(int ball, int strike) {
+        if (strike == 3) {
+            resultState = ResultState.THREE_STRIKE;
+        } else if (ball == 0 && strike == 0) {
+            resultState = ResultState.NOTHING;
+        } else if (ball == 0) {
+            resultState = ResultState.STRIKE;
+        } else if (strike == 0) {
+            resultState = ResultState.BALL;
+        } else {
+            resultState = ResultState.BALL_AND_STRIKE;
+        }
     }
 }
