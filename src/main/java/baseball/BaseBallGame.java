@@ -4,6 +4,7 @@ import computer.Comparator;
 import computer.Computer;
 import computer.Hint;
 import user.User;
+import view.OutputView;
 
 public class BaseBallGame implements Game{
 
@@ -14,6 +15,7 @@ public class BaseBallGame implements Game{
     private static GameRule rule = new BaseBallRule();
     private static Comparator comparator = new Comparator();
     private static Hint hint = new Hint();
+    private static OutputView outputView=new OutputView();
     @Override
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -37,7 +39,7 @@ public class BaseBallGame implements Game{
     }
 
     public boolean ruleApply(){
-        System.out.println("strike:"+ hint.loadStrike()+", ball: "+hint.loadBall());
+        outputView.viewHint();
         if(rule.isRulePass(hint.loadStrike())){
             return true;
         }
