@@ -1,7 +1,17 @@
 package message;
 
-import static constant.StringConstant.*;
-import static utils.BaseballRules.*;
+import static constant.StringConstant.BALL;
+import static constant.StringConstant.CONTINUE_OR_FINISH;
+import static constant.StringConstant.END_GAME;
+import static constant.StringConstant.INTEGER_INPUT_FROM_USER;
+import static constant.StringConstant.INVALID_INPUT_MESSAGE;
+import static constant.StringConstant.NOTHING;
+import static constant.StringConstant.STRIKE;
+import static constant.StringConstant.THREE_STRIKE;
+import static utils.BaseballRules.hasBallButNoStrike;
+import static utils.BaseballRules.hasStrikeAndBall;
+import static utils.BaseballRules.hasStrikeButNoBall;
+import static utils.BaseballRules.noStrikeAndBall;
 
 import score.Score;
 
@@ -16,7 +26,7 @@ public class Message {
     }
 
     public static void printThreeStrikeMessage() {
-        System.out.print(THREE_STRIKE);
+        System.out.print(THREE_STRIKE + " ");
         System.out.println(END_GAME);
     }
 
