@@ -34,7 +34,7 @@ public class OutputViewTest {
     @Test
     void endGameTest() {
         OutputView.endGame();
-        assertThat(output.toString()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임종료\n");
+        assertThat(output.toString()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 
     @DisplayName("정답과 입력값을 비교하여 Score를 출력한다.")
