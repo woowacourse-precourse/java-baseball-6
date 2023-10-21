@@ -16,7 +16,7 @@ public class BaseBalGameValidator {
     }
 
     public void validBaseBallValue(String baseballValue) {
-        checkIsNumber(baseballValue);
+        checkIsNumber(baseballValue, NOT_NUMBER_ERROR_MESSAGE);
         checkDuplicateAndSize(baseballValue);
         checkIsPositive(Integer.parseInt(baseballValue));
     }
@@ -26,11 +26,11 @@ public class BaseBalGameValidator {
             throw new IllegalArgumentException(String.format(NEGATIVE_VALUE_ERROR_MESSAGE, value));
     }
 
-    private void checkIsNumber(String baseballValue) {
+    private void checkIsNumber(String baseballValue, String errorMessage) {
         try {
             Integer.parseInt(baseballValue);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(String.format(NOT_NUMBER_ERROR_MESSAGE, baseballValue));
+            throw new IllegalArgumentException(String.format(errorMessage, baseballValue));
         }
     }
 
