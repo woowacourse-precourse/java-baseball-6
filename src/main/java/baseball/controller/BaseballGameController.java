@@ -15,6 +15,10 @@ public class BaseballGameController {
         this.player = new Player();
     }
 
+    public boolean isStrikeAnswer() {
+        return comparator.getStrikeCount() != 0 && comparator.getBallCount() == 0;
+    }
+
     public boolean isCorrectAnswer() {
         return comparator.getStrikeCount() == 3;
     }
