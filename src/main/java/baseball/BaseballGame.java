@@ -3,16 +3,22 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class BaseballGame {
+    private final int NUMBER_LENGTH = 3;
     public void run(){
         printGameStart();
         List<Integer> randomNum = initRandomNum();
-        List<Integer> userNum = inputUserNum();
+        List<Integer> userNum;
+        Map<String, Integer> result;
+
+        do {
+            userNum = inputUserNum();
+            result = countStrikeAndBall(userNum, randomNum);
+            printGameResult(result);
+        }while(!isAllStrike(result));
+
     }
 
     private void printGameStart(){
@@ -84,4 +90,53 @@ public class BaseballGame {
             return false;
         }
     }
+
+    private Map<String, Integer> countStrikeAndBall(List<Integer> userNum, List<Integer> randomNum){
+        Map<String, Integer> resultList = new HashMap<>();
+        initStrikeAndBallNum(resultList);
+
+        for(int i = 0; i < NUMBER_LENGTH; i++){
+            if(userNum.get(i) == randomNum.get(i)){
+                resultList.put("strike", resultList.get("strike") + 1);
+            } else if(randomNum.contains(userNum.get(i))){
+                resultList.put("ball", resultList.get("ball") + 1);
+            }
+        }
+        return resultList;
+    }
+
+    private void initStrikeAndBallNum(Map<String, Integer> resultList){
+        resultList.put("strike", 0);
+        resultList.put("ball", 0);
+    }
+
+    private boolean isAllStrike(Map<String, Integer> resultList){
+        if(resultList.get("strike") == 3){
+            return true;
+        }
+        return false;
+    }
+
+    private void printWinGame(Map<String, Integer> resultList){
+        if(isAllStrike(resultList)) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
+    private void printGameResult(Map<String, Integer> resultList){
+        int strikeCount = resultList.get("strike");
+        int ballCount = resultList.get("ball");
+        String result = "낫싱";
+        if(strikeCount != 0 && ballCount != 0){
+            result = ballCount + "볼 " + strikeCount + "스트라이크";
+        }else if (ballCount != 0){
+            result = ballCount + "볼";
+        } else if(strikeCount != 0){
+            result = strikeCount + "스트라이크";
+        }
+
+        System.out.println(result);
+        printWinGame(resultList);
+    }
+
 }
