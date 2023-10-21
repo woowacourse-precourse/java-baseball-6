@@ -9,6 +9,8 @@ Balls인
   - 생성자에서 생성할 때 3개가 맞는지 확인하였다.
 - 다른 Balls와 비교해서 스트라이크 개수 찾기 - o
 - 다른 Balls와 비교해서 볼 개수 찾기 - o
+- 삼진아웃인지 확인하기 - o
+- 낫싱인지 확인하기 - o
 
 NumberGenerator
 - 랜덤숫자 Balls를 생성 - o
@@ -19,6 +21,7 @@ Input
 
 Output
 - 게임시작문구 출력하기 - o
+- 스트라이크/볼/낫싱인지 결과 출력하기 - o
 
 ---
 - 모든 예외는 IllegalArgumentException로 발생시킨다. 

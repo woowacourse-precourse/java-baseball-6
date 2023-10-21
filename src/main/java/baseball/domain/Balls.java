@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class Balls {
 
+    private static final int ZERO = 0;
     private static final int BALL_SIZE = 3;
 
     private final List<Ball> balls;
@@ -18,6 +19,14 @@ public class Balls {
         if (balls == null || balls.size() != BALL_SIZE) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public boolean isThreeStrike(Balls balls) {
+        return countStrike(balls) == BALL_SIZE;
+    }
+
+    public boolean isNothing(Balls balls) {
+        return countStrike(balls) == ZERO && countBall(balls) == ZERO;
     }
 
     public int countStrike(Balls balls) {

@@ -47,9 +47,9 @@ class BallsTest {
         assertThat(result).isEqualTo(3);
     }
 
-    @DisplayName("다른 Balls와 비교해서 볼 개수 찾기")
+    @DisplayName("삼진아웃인지 확인하기")
     @Test
-    void countBall() {
+    void isThreeStrike() {
         // given
         List<Ball> ballList = new ArrayList<>();
         ballList.add(new Ball(4, 0));
@@ -59,14 +59,37 @@ class BallsTest {
 
         ballList = new ArrayList<>();
         ballList.add(new Ball(4, 0));
-        ballList.add(new Ball(6, 1));
-        ballList.add(new Ball(5, 2));
+        ballList.add(new Ball(5, 1));
+        ballList.add(new Ball(6, 2));
         Balls user = new Balls(ballList);
 
         // when
-        int result = com.countBall(user);
+        boolean result = com.isThreeStrike(user);
 
         // then
-        assertThat(result).isEqualTo(2);
+        assertThat(result).isTrue();
+    }
+
+    @DisplayName("낫싱인지 확인하기")
+    @Test
+    void isNothing() {
+        // given
+        List<Ball> ballList = new ArrayList<>();
+        ballList.add(new Ball(4, 0));
+        ballList.add(new Ball(5, 1));
+        ballList.add(new Ball(6, 2));
+        Balls com = new Balls(ballList);
+
+        ballList = new ArrayList<>();
+        ballList.add(new Ball(7, 0));
+        ballList.add(new Ball(8, 1));
+        ballList.add(new Ball(9, 2));
+        Balls user = new Balls(ballList);
+
+        // when
+        boolean result = com.isNothing(user);
+
+        // then
+        assertThat(result).isTrue();
     }
 }
