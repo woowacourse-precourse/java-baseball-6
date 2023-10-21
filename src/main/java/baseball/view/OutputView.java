@@ -3,6 +3,7 @@ package baseball.view;
 import baseball.domain.GameResultDTO;
 
 public class OutputView {
+
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GAME_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String STRIKE_MESSAGE = "스트라이크";
@@ -26,6 +27,7 @@ public class OutputView {
     private void printNothing() {
         System.out.println(NOTHING_MESSAGE);
     }
+
     private void printBallAndStrike(GameResultDTO gameResultDTO) {
         if (isOnlyBall(gameResultDTO)) {
             printBall(gameResultDTO.getBall());
