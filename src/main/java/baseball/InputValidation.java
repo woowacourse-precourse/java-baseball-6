@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class InputValidation {
 
     public List<Integer> validateUserNumbers(String input) {
-        String trimmed = input.replace(" ", "");
+        String trimmed = deleteSpace(input);
         validateLength(trimmed);
         validateOnlyDigit(trimmed);
         validateContainZero(trimmed);
@@ -18,7 +18,7 @@ public class InputValidation {
     }
 
     public void validateRestartOrStop(String input) {
-        String trimmed = input.replace(" ", "");
+        String trimmed = deleteSpace(input);
         validateSignLength(trimmed);
         validateSign(trimmed);
     }
@@ -28,6 +28,10 @@ public class InputValidation {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3개의 숫자만 입력해주세요.");
         }
+    }
+
+    public String deleteSpace(String input) {
+        return input.replace(" ", "");
     }
 
     // 숫자로만 이루어져있는지 검증
