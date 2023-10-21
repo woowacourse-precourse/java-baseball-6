@@ -10,19 +10,27 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class BaseballGame {
+    private static final String RESTART = "1";
     private List<Integer> computerNumber;
     private User user;
 
     public void startGame() {
+        do {
+            playOneGame();
+        } while(restart());
+    }
+
+    private void playOneGame() {
         GameResult gameResult;
         OutputView.printGameStartMessage();
         createComputerNumber();
+
         do {
             getUserNumber();
             gameResult = compareNumber();
-        } while(!gameResult.isSuccess());
+        } while (!gameResult.isSuccess());
+
         OutputView.printThreeStrikeMessage();
-        getRestartOrExit();
     }
 
     private void createComputerNumber() {
@@ -69,11 +77,11 @@ public class BaseballGame {
         return ball;
     }
 
-    private boolean getRestartOrExit() {
+    private boolean restart() {
         String restartOrExit = InputView.getRestartOrExit();
         Validator.validateRestartOrExit(restartOrExit);
 
-        if(restartOrExit.equals("1")) {
+        if(restartOrExit.equals(RESTART)) {
             return true;
         }
 
