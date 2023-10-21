@@ -4,7 +4,6 @@ import baseball.controller.GameController;
 import baseball.model.UserNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -142,6 +141,22 @@ class UserInputTest {
 
         } catch (InvocationTargetException | IllegalAccessException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @DisplayName("재시작 여부 값으로 1과 2외의 값을 입력하였을 시 에러 발생")
+    @Test
+    void inputWrongRestartValue() throws NoSuchMethodException{
+        String stringValue = "0";
+        GameController gameController = new GameController();
+        try{
+            Method method = gameController.getClass().getDeclaredMethod("checkRestart", String.class);
+            method.setAccessible(true);
+            method.invoke(gameController, stringValue);
+        }
+        catch(InvocationTargetException | IllegalAccessException e){
+            Throwable cause = e.getCause();
+            assertThat(cause instanceof IllegalArgumentException).isTrue();
         }
     }
 
