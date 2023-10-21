@@ -12,9 +12,4 @@ class ComputerTest {
     void setUp() {
         computer = new Computer();
     }
-
-    @Test
-    void checkMakeList() {
-        assertEquals(computer.getRandomList().size(), 3);
-    }
 }

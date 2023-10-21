@@ -22,7 +22,12 @@ public class Person {
         inputList.clear();
     }
 
-    public List<Integer> getInputList() {
-        return inputList;
+
+    public boolean containsNumber(int number) {
+        return inputList.contains(number);
+    }
+
+    public int getNumberAt(int index) {
+        return inputList.get(index);
     }
 }

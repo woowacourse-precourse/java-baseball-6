@@ -12,13 +12,4 @@ class PersonTest {
     void setup() {
         person = new Person();
     }
-
-    @Test
-    void insert() {
-        String input = "123";
-
-        person.insert(input);
-
-        assertEquals(person.getInputList().get(0), 1);
-    }
 }

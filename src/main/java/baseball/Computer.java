@@ -21,8 +21,12 @@ public class Computer {
         insertRandom();
     }
 
-    public List<Integer> getRandomList() {
-        return randomList;
+    public boolean containsNumber(int number) {
+        return randomList.contains(number);
+    }
+
+    public int getNumberAt(int index) {
+        return randomList.get(index);
     }
 
     private void insertRandom() {

@@ -67,10 +67,7 @@ public class GameRunner {
             gameUtils.restartGame(ballStrikeCount);
             return false;
         }
-        if (choice == GameConstants.END_GAME) {
-            return true;
-        }
-        return false;
+        return choice == GameConstants.END_GAME;
     }
 
     private boolean isThreeStrike(BallStrikeCount ballStrikeCount) {
@@ -86,5 +83,4 @@ public class GameRunner {
             throw new IllegalArgumentException(GameConstants.NOT_VALID_LENGTH);
         }
     }
-
 }

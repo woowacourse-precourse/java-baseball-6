@@ -1,8 +1,5 @@
 package baseball;
 
-import java.util.List;
-
-
 public class GameScore {
     private final Person person;
     private final Computer computer;
@@ -14,14 +11,12 @@ public class GameScore {
 
     public BallStrikeCount calculateScore() {
         BallStrikeCount ballStrikeCount = new BallStrikeCount();
-        List<Integer> personList = person.getInputList();
-        List<Integer> computerList = computer.getRandomList();
 
         for (int i = 0; i < GameConstants.LIST_SIZE; i++) {
-            int personNum = personList.get(i);
+            int personNum = person.getNumberAt(i);
 
-            if (computerList.contains(personNum)) {
-                if (computerList.indexOf(personNum) == i) {
+            if (computer.containsNumber(personNum)) {
+                if (computer.getNumberAt(i) == personNum) {
                     ballStrikeCount.increaseStrike();
                     continue;
                 }
