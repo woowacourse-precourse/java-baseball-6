@@ -52,7 +52,7 @@ public class BaseballGame {
             int playerNumber = player.getNumberOf(idx);
             int computerNumber = computer.getNumberOf(idx);
 
-            result.updateResult(playerNumber, computerNumber, computer);
+            result.update(playerNumber, computerNumber, computer);
         }
 
         return result;
