@@ -60,7 +60,7 @@ public class MainController {
     }
 
     private void showPlayResult(PlayResult playResult) {
-        outputView.printResult(playResult.getBall(), playResult.getStrike());
+        outputView.printResult(playResult.ball(), playResult.strike());
     }
 
     private void decideToRestartOrNot(BaseballGame baseballGame) {
