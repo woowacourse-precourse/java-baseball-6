@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.domain.constants.NumberBaseballConstants;
+
 import java.util.List;
 
 public class Result {
@@ -31,11 +33,11 @@ public class Result {
 
     @Override
     public String toString() {
-        if(ball == 0 && strike == 0) return NumberBaseball.NOTHING;
+        if(ball == 0 && strike == 0) return NumberBaseballConstants.NOTHING;
 
         String result = "";
-        if(ball > 0) result = ball + NumberBaseball.BALL + " ";
-        if(strike > 0) result += strike + NumberBaseball.STRIKE;
+        if(ball > 0) result = ball + NumberBaseballConstants.BALL + " ";
+        if(strike > 0) result += strike + NumberBaseballConstants.STRIKE;
 
         return result.trim();
     }

@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.domain.constants.NumberBaseballConstants;
 import baseball.utils.RandomUtils;
 
 import java.util.List;
@@ -17,11 +18,6 @@ public class NumberBaseball {
         this.numberBaseballIO = numberBaseballIO;
         this.user = user;
     }
-    public static final String STRIKE = "스트라이크";
-    public static final String BALL = "볼";
-    public static final String NOTHING = "낫싱";
-    public static final int CONTINUE_GAME = 1;
-    public static final int GAME_OVER = 2;
 
 
     public void startGame() {
@@ -45,14 +41,17 @@ public class NumberBaseball {
     private boolean shouldContinueGame() {
         int userChoice = numberBaseballIO.printEndMessageAndInputChoice(numberLimit);
 
-        if(userChoice != CONTINUE_GAME && userChoice != GAME_OVER)
+        if(
+                userChoice != NumberBaseballConstants.CONTINUE_GAME &&
+                userChoice != NumberBaseballConstants.GAME_OVER
+        )
             throw new IllegalArgumentException(
-                    CONTINUE_GAME +
+                    NumberBaseballConstants.CONTINUE_GAME +
                     " 또는 " +
-                    GAME_OVER +
+                    NumberBaseballConstants.GAME_OVER +
                     "만 입력 가능합니다.");
 
-        return userChoice == CONTINUE_GAME;
+        return userChoice == NumberBaseballConstants.CONTINUE_GAME;
     }
 
 

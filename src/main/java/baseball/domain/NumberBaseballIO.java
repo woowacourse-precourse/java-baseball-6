@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.domain.constants.NumberBaseballConstants;
+
 import java.util.List;
 
 public class NumberBaseballIO {
@@ -24,9 +26,9 @@ public class NumberBaseballIO {
     public void printEndMessage(int numberLimit) {
         inputOutputHandler.printlnText(
                 numberLimit + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 "  +
-                NumberBaseball.CONTINUE_GAME +
+                NumberBaseballConstants.CONTINUE_GAME +
                 ", 종료하려면 " +
-                NumberBaseball.GAME_OVER +"를 입력하세요.");
+                NumberBaseballConstants.GAME_OVER +"를 입력하세요.");
     }
 
     public int getUserEndChoice() {
