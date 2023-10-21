@@ -3,6 +3,7 @@ package baseball.model;
 import static baseball.util.ValidationChecking.checkUserInputValidate;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class UserNumber {
@@ -14,7 +15,7 @@ public class UserNumber {
     }
 
     public List<Integer> getInputNumber() {
-        return this.userNumber;
+        return Collections.unmodifiableList(this.userNumber);
     }
 
     public static List<Integer> changeStringtoList(String string) {
