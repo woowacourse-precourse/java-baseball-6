@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.Computer;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,6 +10,7 @@ import java.util.List;
 
 public class ComputerController {
     InputView inputView = new InputView();
+    OutputView outputView = new OutputView();
     Computer computer = new Computer();
     boolean gameState = false;
 
@@ -35,6 +37,16 @@ public class ComputerController {
         List<Integer> computerNumbers = computer.getComputerNumbers();
         int strike = strikeCheck(playerNumbers, computerNumbers);
         int ball = ballCheck(playerNumbers, computerNumbers);
+
+        if (strike != 0 && ball != 0) {
+            outputView.print_strike_and_ball(ball, strike);
+        } else if (strike != 0 && ball == 0) {
+            outputView.print_strike(strike);
+        } else if (strike == 0 && ball != 0) {
+            outputView.print_ball(ball);
+        } else {
+            outputView.print_nothing();
+        }
     }
 
     private int ballCheck(List<Integer> playerNumbers, List<Integer> computerNumbers) {
@@ -65,7 +77,6 @@ public class ComputerController {
             playerNumber /= 10;
         }
         Collections.reverse(tempList);
-
         return tempList;
     }
 
