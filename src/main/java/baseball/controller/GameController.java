@@ -22,22 +22,28 @@ public class GameController {
 		randomGenerator = new RandomGenerator();
 	}
 	public void gameStart() {
-		boolean isGameStatus = true;
 		outputView.printGameStart();
 		gameData.setComputerNumbers(randomGenerator.generateRandomNumbers());
-		while(isGameStatus) {
-			gameData.setInputString(inputView.readNumber());
-			List<Integer> validateResult =
-				InputValidation.validateAndConvertInputToIntegerList(gameData.getInputString());
-			gameData.setPlayerNumbers(validateResult);
-			isGameStatus = !compareNumber();
-			outputView.printResult(gameData.getStrikeCount(), gameData.getBallCount());
+		while(true) {
+			progressGame();
+			boolean isCheck = !compareNumber();
+			if (isCheck == false){
+				break;
+			}
+
 		}
 		if(isRestartRequested()) {
 			gameStart();
 			return;
 		}
 		outputView.printGameEnd();
+	}
+	public void progressGame() {
+		gameData.setInputString(inputView.readNumber());
+		List<Integer> validateResult =
+			InputValidation.validateAndConvertInputToIntegerList(gameData.getInputString());
+		gameData.setPlayerNumbers(validateResult);
+		outputView.printResult(gameData.getStrikeCount(), gameData.getBallCount());
 	}
 	public boolean compareNumber() {
 		gameData.initCount();
