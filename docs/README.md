@@ -31,14 +31,6 @@
 
 컴퓨터 역할을 할 객체
 
-NumberList만을 인스턴스로 가지고 있는 일급 컬렉션(?)
-
-### ./model/User
-
-유저 역할을 할 객체
-
-NumberList만을 인스턴스로 가지고 있는 일급 컬렉션(?)
-
 ### ./model/Hint
 
 볼, 스트라이크 개수 정보를 저장하기 위한 모델
@@ -70,15 +62,6 @@ NumberList만을 인스턴스로 가지고 있는 일급 컬렉션(?)
 * [x] GameController를 통해 숫자 야구 게임 진행
 * [x] 게임 재시작/종료 여부 처리
 
-### ./controller/MainController.InputController (MainController의 inner class)
-
-MainController 내에서 사용자 입력을 받는 부분에 대한 로직을 처리하는 컨트롤러
-
-* [x] 사용자로부터 게임 재시작 여부 입력 받기
-* 입력값 조건(예외 처리)
-    * [x] 1자리 정수여야 한다.
-    * [x] 1 또는 2여야 한다.
-
 ### ./controller/BaseballGameController
 
 숫자 야구 게임을 진행하는 컨트롤러
@@ -86,15 +69,20 @@ MainController 내에서 사용자 입력을 받는 부분에 대한 로직을 �
 * [x] 랜덤한 3자리 수를 선택하는 기능
 * [x] 사용자로부터 게싱 정보를 받아 컴퓨터의 정답과 비교 후, 힌트 결과 생성 및 출력
 
-### ./controller/BaseballGameController.InputController (BaseballGameController의 inner class)
+### ./controller/BaseballGameController.InputController
 
 BaseballGameController 내에서 사용자 입력을 받는 부분에 대한 로직을 처리하는 컨트롤러
 
 * [x] 사용자로부터 3자리 수 입력 받기
-* 입력값 조건(예외 처리)
+    * [x] null이면 안 된다.
     * [x] 3자리 정수여야 한다.
     * [x] 1에서 9사이 정수여야 한다.
     * [x] 서로 달라야 한다.
+
+* [x] 사용자로부터 게임 재시작 여부 입력 받기
+    * [x] null이면 안 된다.
+    * [x] 1자리 정수여야 한다.
+    * [x] 1 또는 2여야 한다.
 
 ## 기타
 
