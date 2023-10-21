@@ -12,7 +12,7 @@ public class BaseballScore {
         this.ball = 0;
     }
 
-    public void setStrikeAndBall(BaseballNumbers computerBaseballNumber, BaseballNumbers playerBaseballNumber) {
+    public void calculateStrikeAndBall(BaseballNumbers computerBaseballNumber, BaseballNumbers playerBaseballNumber) {
         for (int i = 0; i < computerBaseballNumber.size(); i++) {
             if (computerBaseballNumber.get(i).equals(playerBaseballNumber.get(i))) {
                 strike++;
