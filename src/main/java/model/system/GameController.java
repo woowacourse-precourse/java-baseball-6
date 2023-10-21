@@ -7,6 +7,11 @@ public class GameController implements GameSystem {
 
     @Override
     public void execute() {
+        GameStarter gameStarter = new GameStarter();
+        GameTerminator gameTerminator = new GameTerminator();
+
+        gameStarter.execute();
+        gameTerminator.execute();
     }
 
 }
