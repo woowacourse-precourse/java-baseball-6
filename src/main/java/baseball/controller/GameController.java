@@ -6,7 +6,7 @@ import baseball.domain.BaseBallNumbers;
 import baseball.domain.GameRestartStatus;
 import baseball.domain.NumberGenerator;
 import baseball.dto.request.GameRestartDto;
-import baseball.dto.request.PlayerNumberDto;
+import baseball.dto.request.PlayerNumbersDto;
 import baseball.dto.response.GameResultDto;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -47,8 +47,8 @@ public class GameController {
     }
 
     private BaseBallNumbers scanPlayerBaseBallNumbers() {
-        PlayerNumberDto playerNumberDto = inputView.scanPlayerNumbers();
-        return BaseBallNumbers.generateNumbers(playerNumberDto.getPlayerNumbers());
+        PlayerNumbersDto playerNumbersDto = inputView.scanPlayerNumbers();
+        return BaseBallNumbers.generateNumbers(playerNumbersDto.getNumbers());
     }
 
     private void printGameResult(BaseBallGame game, BaseBallNumbers playerNumbers) {

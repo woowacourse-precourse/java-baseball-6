@@ -42,12 +42,12 @@ public class OutputView {
     private void printIfHasStrike(int ballCount, int strikeCount) {
         if (strikeCount > ZERO_STRIKE_COUNT) {
             System.out.printf(STRIKE_COUNT_MESSAGE_FORMAT, strikeCount);
-            printIfEndingMessageIfAllStrike(ballCount, strikeCount);
+            printEndMessageIfAllStrike(ballCount, strikeCount);
         }
         printEmptyLine();
     }
 
-    private void printIfEndingMessageIfAllStrike(int ballCount, int strikeCount) {
+    private void printEndMessageIfAllStrike(int ballCount, int strikeCount) {
         if (ballCount == ZERO_BALL_COUNT && strikeCount == THREE_STRIKE_COUNT) {
             printEmptyLine();
             System.out.print(GAME_END_MESSAGE);

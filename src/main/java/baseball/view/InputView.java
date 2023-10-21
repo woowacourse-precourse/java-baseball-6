@@ -5,7 +5,7 @@ import static java.util.stream.Collectors.toList;
 import java.util.List;
 import java.util.stream.Stream;
 import baseball.dto.request.GameRestartDto;
-import baseball.dto.request.PlayerNumberDto;
+import baseball.dto.request.PlayerNumbersDto;
 import baseball.util.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -22,12 +22,12 @@ public class InputView {
         return LazyHolder.INSTANCE;
     }
 
-    public PlayerNumberDto scanPlayerNumbers() {
+    public PlayerNumbersDto scanPlayerNumbers() {
         System.out.print(INPUT_PLAYER_NUMBER_MESSAGE);
         String rawPlayerNumbers = Console.readLine();
         validatePlayerNumbers(rawPlayerNumbers);
         List<Integer> playerNumbers = splitToInt(PLAYER_NUMBER_DELIMITER, rawPlayerNumbers);
-        return new PlayerNumberDto(playerNumbers);
+        return new PlayerNumbersDto(playerNumbers);
     }
 
     private List<Integer> splitToInt(String format, String input) {
