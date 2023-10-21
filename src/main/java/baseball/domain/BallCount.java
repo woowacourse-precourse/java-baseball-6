@@ -23,4 +23,12 @@ public class BallCount {
     private boolean hasInvalidSize(final List<StrikeBall> ballCount) {
         return ballCount.size() != BALL_COUNT_SIZE;
     }
+
+    public long getStrikeNum() {
+        return ballCount.stream().filter(StrikeBall::isStrike).count();
+    }
+
+    public long getBallNum() {
+        return ballCount.stream().filter(StrikeBall::isBall).count();
+    }
 }
