@@ -5,26 +5,26 @@ import baseball.model.Number;
 public class BaseballService {
 
     public int getBallCount (Number computer , Number user){
-        int BallCount = 0;
+        int ballCount = 0;
         for (int i = 0; i<Number.getGameSize(); i++) {
             Integer x = user.get(i);
             Integer y = computer.get(i);
             if (!(x.equals(y)) && computer.contains(x)) {
-                BallCount++;
+                ballCount++;
             }
         }
-        return BallCount;
+        return ballCount;
     }
 
     public int getStrikeCount (Number computer , Number user){
-        int StrikeCount = 0;
+        int strikeCount = 0;
         for (int i = 0; i<Number.getGameSize(); i++) {
             Integer x = user.get(i);
             Integer y = computer.get(i);
             if (x.equals(y)) {
-                StrikeCount++;
+                strikeCount++;
             }
         }
-        return StrikeCount;
+        return strikeCount;
     }
 }
