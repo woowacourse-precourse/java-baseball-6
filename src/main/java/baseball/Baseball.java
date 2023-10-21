@@ -13,7 +13,7 @@ public class Baseball {
     }
 
     public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(OutputStatement.GAME_START_OUTPUT.getOutput());
         BaseBallNumber answerNumber = new BaseBallNumber(generateNumber());
         while (true) {
             BaseBallNumber userNumber = new BaseBallNumber(inputUserNumber());
@@ -36,7 +36,7 @@ public class Baseball {
             }
             System.out.println(outputString);
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(OutputStatement.GAME_END_OUTPUT.getOutput());
         restartGame();
     }
 
@@ -52,7 +52,7 @@ public class Baseball {
     }
 
     public List<Integer> inputUserNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(OutputStatement.INPUT_NUMBER_OUTPUT.getOutput());
         String inputNumber = Console.readLine();
         List<Integer> integerList = new ArrayList<>();
         if (!userInputValidation.isValidGameNumber(inputNumber)) {
@@ -70,7 +70,7 @@ public class Baseball {
     }
 
     public void restartGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(OutputStatement.RESTART_OUTPUT.getOutput());
         String inputNumber = Console.readLine();
         if (!userInputValidation.isValidRestartNumber(inputNumber)) {
             throw new IllegalArgumentException();
