@@ -2,10 +2,10 @@ package baseball.domain;
 
 import java.util.List;
 
-public class GameIO {
+public class NumberBaseBallIO {
     private final InputOutputHandler inputOutputHandler;
 
-    public GameIO(InputOutputHandler inputOutputHandler) {
+    public NumberBaseBallIO(InputOutputHandler inputOutputHandler) {
         this.inputOutputHandler = inputOutputHandler;
     }
 
