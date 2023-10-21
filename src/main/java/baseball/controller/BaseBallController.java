@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import baseball.console.GameConstant;
+import baseball.console.constant.GameConstant;
 import baseball.console.ConsoleInput;
 import baseball.console.ConsoleOutput;
-import baseball.console.NumberConstant;
+import baseball.controller.constant.NumberConstant;
 import baseball.dto.BaseBallResult;
 import camp.nextstep.edu.missionutils.Randoms;
 

@@ -1,4 +1,4 @@
-package baseball.console;
+package baseball.controller.constant;
 
 public enum NumberConstant {
 	MIN_NUMBER(1),
