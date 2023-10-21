@@ -1,6 +1,5 @@
 package baseball.baseball;
 
-import baseball.game.turn.TurnBasedGameService;
 import baseball.game.turn.TurnInput;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,16 +49,7 @@ public class BaseballGameTurnInput implements TurnInput {
         }
     }
 
-    private BaseballGameTurnResult calculateResult(BaseballNumber answer) {
-        int numBall = answer.countBall(baseballNumber);
-        int numStrike = answer.countStrike(baseballNumber);
-
-        return new BaseballGameTurnResult(numBall, numStrike);
-    }
-
-    @Override
-    public BaseballGameTurnResult calculateResult(TurnBasedGameService gameService) {
-        BaseballNumber answer = ((BaseballGameService) gameService).getAnswer();
-        return calculateResult(answer);
+    public BaseballNumber getBaseballNumber() {
+        return baseballNumber;
     }
 }
