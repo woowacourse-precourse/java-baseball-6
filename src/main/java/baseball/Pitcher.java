@@ -2,9 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Input {
+public class Pitcher {
 
-    public int[] userInput() {
+    public int[] pitch() {
         System.out.print("숫자를 입력해주세요 : ");
 
         String input = Console.readLine();
