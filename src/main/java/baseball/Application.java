@@ -51,7 +51,9 @@ public class Application {
 
 	//1~9 사이의 서로 다른 3자리로 이루어진 컴퓨터 숫자를 생성하는 메서드
 	static List<Integer> createComputerNumber() {
+
 		List<Integer> computerNumber = new ArrayList<>();
+
 		final int COMPUTER_NUMBER_SIZE = 3;
 		final int COMPUTER_MIN_NUMBER = 1;
 		final int COMPUTER_MAX_NUMBER = 9;
@@ -68,6 +70,7 @@ public class Application {
 	}
 
 	static int countBall(List<Integer> computerNumber, List<Integer> userNumber) {
+
 		int ballNumber = 0;
 
 		for (int eachUserNumber : userNumber) {
@@ -80,6 +83,7 @@ public class Application {
 	}
 
 	static int countStrike(List<Integer> computerNumber, List<Integer> userNumber) {
+
 		int strikeNumber = 0;
 
 		for (int i = 0; i < userNumber.size(); i++) {
@@ -106,6 +110,7 @@ public class Application {
 	}
 
 	static void printInputControlSign() {
+
 		final String END_SIGN = "2";
 		final String RESTART_SIGH = "1";
 		final int COMPUTER_NUMBER_SIZE = 3;
@@ -115,6 +120,7 @@ public class Application {
 	}
 
 	static void checkControlSign(String controlSign) {
+
 		final String END_SIGN = "2";
 		final String RESTART_SIGH = "1";
 
@@ -126,6 +132,7 @@ public class Application {
 }
 
 class UserNumber {
+
 	final int USER_NUMBER_SIZE = 3;
 	final int USER_MIN_NUMBER = 1;
 	final int USER_MAX_NUMBER = 9;
@@ -138,10 +145,10 @@ class UserNumber {
 	}
 
 	void checkInputOnlyNum(String[] inputUserNumber) {
+
 		boolean errorTest = false;
 
 		for (String eachUserNumber : inputUserNumber) {
-
 			try {
 				Integer.parseInt(eachUserNumber);
 			} catch (IllegalArgumentException ill) {
@@ -151,7 +158,6 @@ class UserNumber {
 			if (errorTest) {
 				throw new IllegalArgumentException("숫자만 입력해주세요.");
 			}
-
 		}
 	}
 
