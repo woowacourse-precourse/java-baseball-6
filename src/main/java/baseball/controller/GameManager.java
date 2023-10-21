@@ -48,8 +48,7 @@ public class GameManager {
         InputVerifier inputVerifier = new InputVerifier();
         String playerChoice = inputHandler.insertNewGameOrGameOver();
         inputVerifier.checkGameNumber(playerChoice);
-        int intChoice = Integer.parseInt(playerChoice);
-        if (intChoice == SystemConstant.NEW_GAME) {
+        if (Integer.parseInt(playerChoice) == SystemConstant.NEW_GAME) {
             SystemManager.newGame();
         }
     }
