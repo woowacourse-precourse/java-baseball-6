@@ -9,8 +9,12 @@ public class Number {
 
     public Number(String inputNumber) {
         List<Integer> number = stringToIntegerList(inputNumber);
-        validNumber(inputNumber, number);
+        Validation.validNumber(inputNumber, number);
         this.number = number;
+    }
+
+    public List<Integer> toIntList() {
+        return number;
     }
 
     private List<Integer> stringToIntegerList(String inputNumber) {
@@ -19,18 +23,5 @@ public class Number {
                 .boxed()
                 .toList();
     }
-
-    private static void validNumber(String stringNumber, List<Integer> stringToInteger) {
-        if (!Validation.isInteger(stringNumber)) {
-            throw new IllegalArgumentException("숫자만 입력해주세요.");
-        } else if (Validation.isAvailLength(stringToInteger)) {
-            throw new IllegalArgumentException("세자리 숫자를 입력해주세요.");
-        } else if (Validation.isDuplicate(stringToInteger)) {
-            throw new IllegalArgumentException("서로 다른 세자리 수를 입력해주세요.");
-        } else if (Validation.isAvailRange(stringToInteger)) {
-            throw new IllegalArgumentException("1 부터 9 사이의 숫자만 입력 가능합니다.");
-        }
-    }
-
 
 }

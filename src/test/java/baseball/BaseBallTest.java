@@ -4,16 +4,31 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import baseball.domain.answer.Answer;
+import baseball.domain.game.Game;
 import baseball.domain.number.Number;
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class BaseBallTest {
+
+    private static Stream<Arguments> numberToTest() {
+        return Stream.of(
+                arguments(List.of(3, 8, 9), List.of(3, 4, 5), "1스트라이크"),
+                arguments(List.of(5, 1, 4), List.of(3, 4, 5), "2볼"),
+                arguments(List.of(5, 4, 1), List.of(3, 4, 5), "1볼 1스트라이크"),
+                arguments(List.of(2, 9, 8), List.of(3, 4, 5), "낫싱"),
+                arguments(List.of(3, 4, 5), List.of(3, 4, 5), "3스트라이크"));
+    }
+
     @Test
     @DisplayName("서로 다른 세자리의 수를 생성한다.")
     void createAnswer() {
@@ -60,4 +75,13 @@ public class BaseBallTest {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> new Number(argument));
         assertThat(e.getMessage()).isEqualTo("세자리 숫자를 입력해주세요.");
     }
+
+    @ParameterizedTest
+    @MethodSource("numberToTest")
+    @DisplayName("인덱스를 비교하여 같으면 스트라이크, 같은 문자가 있다면 볼, 같은문자가 없으면 낫싱 출력")
+    void compareTest(List<Integer> number1, List<Integer> number2, String message) {
+        String result = Game.compare(number1, number2);
+        assertThat(result).isEqualTo(message);
+    }
+
 }
