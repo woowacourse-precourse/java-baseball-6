@@ -5,15 +5,15 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameManager {
 
-    private BaseBall baseBall;
+    private Game game;
 
-    public GameManager(BaseBall baseBall) {
-        this.baseBall = baseBall;
+    public GameManager(Game game) {
+        this.game = game;
     }
 
     public void game() {
         BaseballGameNoticeUtil.noticeStartGame();
-        baseBall.baseBallRun();
+        game.gameRun();
 
         while (true) {
             BaseballGameNoticeUtil.noticeAgainOrExit();
@@ -21,7 +21,7 @@ public class GameManager {
             if (requireAgainOrExit().equals("2")) {
                 break;
             }
-            baseBall.baseBallRun();
+            game.gameRun();
         }
     }
 

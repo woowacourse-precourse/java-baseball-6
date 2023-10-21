@@ -5,11 +5,10 @@ import baseball.utils.NumbersValidator;
 import baseball.utils.RandomNumberCreator;
 import baseball.utils.ResultPrinter;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 
-public class BaseBall {
+public class BaseBall implements Game {
 
     private BaseballCalculator baseballCalculator;
 
@@ -17,17 +16,19 @@ public class BaseBall {
         this.baseballCalculator = baseballCalculator;
     }
 
-    public void baseBallRun() {
+    @Override
+    public void gameRun() {
         // 랜덤 값 생성
         List<Integer> computerNumbers = RandomNumberCreator.makeRandomNumber();
-        boolean isCorrect = baseBallStart(computerNumbers);
+        boolean isCorrect = gameStart(computerNumbers);
 
         while (!isCorrect) { // 정답 맞출 때 까지 반복
-            isCorrect = baseBallStart(computerNumbers);
+            isCorrect = gameStart(computerNumbers);
         }
     }
 
-    public boolean baseBallStart(List<Integer> computerNumbers) {
+    @Override
+    public boolean gameStart(List<Integer> computerNumbers) {
         /**
          * 1. 숫자 입력(+ 입력 값 검증)
          * 2. 입력 값 계산기에 전달
