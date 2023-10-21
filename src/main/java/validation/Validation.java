@@ -1,15 +1,23 @@
 package validation;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import static validation.Constant.*;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class Validation {
     public static void inputValidationCheck(String inputString) {
-        if (inputString.length() != NUMBER_SIZE) {
+        verifyLength(inputString);
+        isNumericString(inputString);
+    }
+
+    private static void verifyLength(String input) {
+        if (input.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException(WRONG_INPUT_SIZE);
         }
-        for (char c : inputString.toCharArray()) {
+    }
+
+    private static void isNumericString(String input) {
+        for (char c : input.toCharArray()) {
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException();
             }
@@ -20,7 +28,7 @@ public class Validation {
         int inputNumber = Integer.parseInt(Console.readLine());
 
         if (inputNumber > QUIT || inputNumber < RESTART) {
-            throw new IllegalArgumentException(WRONG_INPUT_SIZE);
+            throw new IllegalArgumentException(WRONG_INPUT_STRING);
         }
         return inputNumber;
     }

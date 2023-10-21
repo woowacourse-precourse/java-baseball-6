@@ -1,14 +1,14 @@
 package game;
 
+import static validation.Constant.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import validation.Validation;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static validation.Constant.*;
-
-import validation.Validation;
 
 public class Game {
     static List<Integer> answer = new ArrayList<>();
