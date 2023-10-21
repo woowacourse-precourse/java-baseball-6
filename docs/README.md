@@ -20,6 +20,8 @@
 
 - `keyNum`에서 인덱스 0자리의 값이 0이면 (값이 없다는 뜻) 종료 (IllegalArgumentException 발생)
 
+- Scanner를 사용해서 받았던 입력을 console api 사용하는 걸로 바꿈
+
 #### ✅ returnResult()
 
 - `keyNum` `answer` 배열을 순회/비교함
@@ -73,7 +75,13 @@
 
 #### ⬜ 1, 2 입력하면 각각 결과 나오도록
 
-- 
+<br>
+
+# 3. 리팩토링
+
+#### ⬜ inputNumbers() 안에 있는 로직들 좀 더 분리해야됨
+
+#### ⬜ run() 안에 있는 게임 실행하는 부분 코드 따로 분리하기
 
 <br>
 

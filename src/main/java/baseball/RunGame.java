@@ -46,6 +46,7 @@ public class RunGame {
             }
         }
     }
+
     // 게임시작 문구 출력 => IsMatch > accurateTest 실행
     public void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -55,6 +56,7 @@ public class RunGame {
     public void finishGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
     }
     // 숫자 입력받아 int 배열으로 전환하는 과정
     public boolean inputNumbers(){
@@ -72,7 +74,6 @@ public class RunGame {
         }
         return true;
     }
-
     // 숫자를 판단해서 결과 출력
     public boolean returnResult(){
         int[] ball = {0, 0, 0};
