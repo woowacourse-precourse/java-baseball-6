@@ -13,6 +13,12 @@ public class Validator {
                 && isNotRepeat(inputCharArray);
     }
 
+    public boolean validateRestart(String inputValue) {
+
+        return inputValue.equals("1") || inputValue.equals("2");
+
+    }
+
     private boolean isNumbers(char[] inputCharArray) {
 
         for (char ch : inputCharArray) {
