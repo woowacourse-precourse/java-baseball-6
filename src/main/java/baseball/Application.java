@@ -52,8 +52,17 @@ public class Application {
 
 
     private static List<Integer> convertInputToNumberList(String input){
+        //입력받은 string에 오류 있는지 확인
+        if(input.length()!=NUM_COUNT || !input.matches("[1-9]+")){
+            throw new IllegalArgumentException();
+        }
+        
         List<Integer> numberList = new ArrayList<>();
 
+        //integer 리스트에 숫자로 저장
+        for(char c: input.toCharArray()){
+            numberList.add(c-'0');
+        }
 
         return numberList;
     }
