@@ -1,31 +1,35 @@
 package Util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class NumberCompare {
+
     private int ball;
     private int strike;
 
-    public int[] getNumberCount(String computerNumber, String userNumber){
+    public Map<String, Integer> getNumberCount(String computerNumber, String userNumber) {
         resetCount();
-        ballCount(computerNumber,userNumber);
-        strikeCount(computerNumber,userNumber);
+        ballCount(computerNumber, userNumber);
+        strikeCount(computerNumber, userNumber);
         resultCount();
-        return new int[]{ball,strike};
+        return createResultMap();
     }
 
-    private void resetCount(){
+    private void resetCount() {
         ball = 0;
         strike = 0;
     }
 
-    private void ballCount(String computerNumber, String userNumber){
-        for(int i = 0; i<userNumber.length(); i++){
-            if(computerNumber.contains(Character.toString(userNumber.charAt(i)))){
-                ball ++;
+    private void ballCount(String computerNumber, String userNumber) {
+        for (int i = 0; i < userNumber.length(); i++) {
+            if (computerNumber.contains(Character.toString(userNumber.charAt(i)))) {
+                ball++;
             }
         }
     }
 
-    private void strikeCount(String computerNumber, String userNumber){
+    private void strikeCount(String computerNumber, String userNumber) {
         for (int i = 0; i < userNumber.length(); i++) {
             if (computerNumber.charAt(i) == userNumber.charAt(i)) {
                 strike++;
@@ -33,8 +37,14 @@ public class NumberCompare {
         }
     }
 
-    private void resultCount(){
+    private void resultCount() {
         ball = ball - strike;
     }
 
+    private Map<String, Integer> createResultMap() {
+        Map<String, Integer> result = new HashMap<>();
+        result.put("BALL", ball);
+        result.put("STRIKE", strike);
+        return result;
+    }
 }
