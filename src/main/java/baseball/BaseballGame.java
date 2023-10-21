@@ -10,7 +10,6 @@ public class BaseballGame {
     private static final String REQUIRED_ONE_OR_TWO = "입력 값은 1또는 2여야 합니다.";
     private static final String REQUIRED_THREE_DIGITS = "입력 값은 3자리 숫자여야 합니다.";
     private static final int MAX_STRIKE = 3;
-    List<Integer> randomThreeDigits;
 
     BaseballGameLogic baseballGameLogic = new BaseballGameLogic();
     BaseballGameView baseballGameView = new BaseballGameView();
@@ -23,15 +22,14 @@ public class BaseballGame {
         boolean isRestart = true;
 
         while (isRestart) {
-            randomThreeDigits = baseballGameLogic.getThreeDigitNonZero();
             baseballGameView.printStartMessage();
-            play();
+            play(baseballGameLogic.getThreeDigitNonZero());
             baseballGameView.printRestartMessage();
             isRestart = askRestart();
         }
     }
 
-    private void play() {
+    private void play(List<Integer> randomThreeDigits) {
         boolean isThreeStrike = false;
 
         while (!isThreeStrike){
