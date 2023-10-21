@@ -19,7 +19,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // TODO: 사용자가 입력한 수를 컴퓨터가 입력한 수와 비교하며 ball 갯수와 strike 갯수를 세는 기능 구현
+        // TODO: 결과에 따라 흐름을 분기하는 기능 구현
         boolean continueGame = true;
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -40,6 +40,15 @@ public class Application {
 
             for (char c : userInput.toCharArray()) {
                 user.add(Character.getNumericValue(c));
+            }
+            int ballCount = 0;
+            int strikeCount = 0;
+            for (int i = 0; i < 3; i++) {
+                if (computer.get(i) == user.get(i)) {
+                    strikeCount++;
+                } else if (computer.contains(user.get(i))) {
+                    ballCount++;
+                }
             }
         } while (continueGame);
         System.out.println("게임 종료");
