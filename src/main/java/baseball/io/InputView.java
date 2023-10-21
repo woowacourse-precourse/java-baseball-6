@@ -15,4 +15,10 @@ public class InputView {
         inputValidator.validateNumber(input);
         return input;
     }
+
+    public String readRetry() {
+        final String input = Console.readLine();
+        inputValidator.validateRetryCommand(input);
+        return input;
+    }
 }
