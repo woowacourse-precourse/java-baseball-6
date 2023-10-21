@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,8 +11,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -61,5 +61,27 @@ class ApplicationTest extends NsTest {
             assertThat(number).isGreaterThanOrEqualTo(1);
             assertThat(number).isLessThanOrEqualTo(9);
         });
+    }
+
+    @Test
+    @DisplayName("사용자 숫자 유효성 검사")
+    void validateInput_test(){
+        // when
+        String input1 = "1234";
+        String input2 = "122";
+        String input3 = "12c";
+        String input4 = "012";
+
+        assertThatThrownBy(() -> Application.validateInput(input1))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> Application.validateInput(input2))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> Application.validateInput(input3))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> Application.validateInput(input4))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
