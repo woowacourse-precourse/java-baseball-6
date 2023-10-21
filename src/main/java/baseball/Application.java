@@ -28,7 +28,7 @@ public class Application {
         while (stateRepeatGuess) {
             List<Integer> playerGuessNumbers = getPlayerGuessNumbers();
             String resultOfGuess = getResultOfGuess(computerNumbers, playerGuessNumbers);
-            System.out.println(resultOfGuess);
+            displayResultOfGuess(resultOfGuess);
 
             if (resultOfGuess.equals("3스트라이크")) {
                 stateRepeatGuess = false;
@@ -159,6 +159,10 @@ public class Application {
         }
 
         return balls + "볼 " + strikes + "스트라이크";
+    }
+
+    public static void displayResultOfGuess(final String resultOfGuess) {
+        System.out.println(resultOfGuess);
     }
 
     public static void displayTerminateGame() {
