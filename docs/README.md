@@ -6,20 +6,19 @@
 - 게임 시작시 "숫자 야구 게임을 시작합니다." 문구 출력.
 
 ### 2. 게임 라운드 실행 기능
-- `playGame()` 메서드로 전체 게임 중 하나의 라운드를 실행.
-- `generateUniqueRandomNumbers`로 컴퓨터가 숫자를 선택 
-- `inputAndValidateUserNumbers`로 사용해 사용자의 예측 정답값을 입력.
-- `evaluateAndDisplayGameResult` 메서드를 통해 사용자의 입력값과 컴퓨터의 선택 숫자를 비교
-- `displayGameResult`로 게임 결과를 출력.
+- `playGame()` 메서드로 전체 게임의 한 라운드를 진행.
+  - 컴퓨터는 `generateUniqueRandomNumbers` 메서드를 통해 숫자를 선택.
+  - 플레이어는 `inputAndValidateUserNumbers` 메서드를 통해 예측 정답값을 입력
+  - 게임의 결과는 `evaluateAndDisplayGameResult` 메서드를 통해 출력
 
 ### 3. 컴퓨터 숫자 선택 기능
 - `generateUniqueRandomNumbers` 메서드로 랜덤 숫자 생성.
     - `Randoms.pickNumberInRange()`를 활용하여 1~9 범위의 랜덤 숫자 생성.
-    - 중복되지 않는 3개의 숫자를 리스트로 반환.
+    - 선택된 숫자는 중복되지 않아야 하며, 총 3개의 숫자를 리스트로 반환
 
 ### 4. 플레이어의 예측 정답값 입력 기능
-- 사용자로부터 3자리의 숫자를 입력받는다.
-    - 입력값의 유효성 검사 `inputAndValidateUserNumbers` 메서드:
+- `getUserInput` 메서드를 사용하여 플레이어로부터 3자리의 숫자를 입력
+    - 입력값의 유효성 검사 `validateInput` 메서드:
         - 입력값의 길이가 3인지 확인.
         - 각 자리수가 숫자인지 확인.
         - 중복된 숫자가 없는지 확인.
@@ -29,7 +28,7 @@
     - 스트라이크: 동일한 위치에 동일한 숫자.
     - 볼: 다른 위치에 동일한 숫자 존재.
 
-### 6. 플레이 결과 출력 기능
+### 6. 게임 결과 출력 기능
 - `displayGameResult` 메서드를 통해 게임의 결과를 화면에 출력.
     - 3스트라이크인 경우 게임 종료 문구 출력.
     - 스트라이크 및 볼 수에 따라 해당 결과를 화면에 출력.
@@ -39,7 +38,7 @@
     - "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 문구 출력 후 사용자의 선택에 따라 게임 재시작 또는 종료.
 
 ### 8. 예외상황 처리 기능
-- `inputAndValidateUserNumbers` 메서드 내에서의 예외 처리:
+- `validateInput` 메서드 내에서의 예외 처리:
     - 3자리 이외의 숫자 입력.
     - 숫자가 아닌 값 입력.
     - 동일한 숫자 반복 입력.
