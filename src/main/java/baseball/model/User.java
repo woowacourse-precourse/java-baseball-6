@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 public class User {
     private List<Integer> userNumber;
-    private String restartOrExit;
 
     public User(String userNumber) {
         Validator.validateUserNumber(userNumber);
@@ -23,10 +22,5 @@ public class User {
 
     public List<Integer> getUserNumber() {
         return userNumber;
-    }
-
-    public void setRestartOrExit(String input) {
-        Validator.validateRestartOrExit(input);
-        restartOrExit = input;
     }
 }

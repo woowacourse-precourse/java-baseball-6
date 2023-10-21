@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.GameResult;
 import baseball.model.User;
+import baseball.validator.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -68,8 +69,14 @@ public class BaseballGame {
         return ball;
     }
 
-    private void getRestartOrExit() {
+    private boolean getRestartOrExit() {
         String restartOrExit = InputView.getRestartOrExit();
-        user.setRestartOrExit(restartOrExit);
+        Validator.validateRestartOrExit(restartOrExit);
+
+        if(restartOrExit.equals("1")) {
+            return true;
+        }
+
+        return false;
     }
 }
