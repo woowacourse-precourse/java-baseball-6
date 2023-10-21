@@ -28,20 +28,8 @@ public class BaseballGameController {
         while (!computer.equals(userNumbers)) {
             userNumbers = baseballGameView.getUserNumberList();
 
-            int strikeCount = 0;
-            int includedNumberCount = 0;
-
-            for (int i = 0; i < 3; i++) {
-                if (computer.get(i).equals(userNumbers.get(i))) {
-                    strikeCount ++;
-                }
-            }
-
-            for (int i = 0; i < 3; i++) {
-                if (computer.contains(userNumbers.get(i))) {
-                    includedNumberCount ++;
-                }
-            }
+            int strikeCount = countStrike(computer, userNumbers);
+            int includedNumberCount = countIncludedNumbers(computer, userNumbers);
 
             int ballCount = includedNumberCount - strikeCount;
 
@@ -57,4 +45,27 @@ public class BaseballGameController {
         }
     }
 
+    private int countStrike(List<Integer> computer, List<Integer> userNumbers) {
+        int strikeCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(userNumbers.get(i))) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
+    private int countIncludedNumbers(List<Integer> computer, List<Integer> userNumbers) {
+        int includedNumberCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computer.contains(userNumbers.get(i))) {
+                includedNumberCount++;
+            }
+        }
+
+        return includedNumberCount;
+    }
 }
