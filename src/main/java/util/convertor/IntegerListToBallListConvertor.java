@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 public  class IntegerListToBallListConvertor {
 
     public static List<Ball> convert(List<Integer> numbers) {
-        List<Ball> balls = IntStream.range(0, 3)
+        List<Ball> balls = IntStream.range(0, numbers.size())
                 .mapToObj(i -> {
                     int value = numbers.get(i);
                     int index = i + 1;
