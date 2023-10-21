@@ -9,17 +9,36 @@ import java.util.Scanner;
 public class Application {
     static final int NUM_OF_DIGITS = 3;
     static boolean GAME = true;
+    static boolean WIN = false;
 
     public static void main(String[] args) {
-        List<Integer> computerNumber = createRandomNumbers();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (GAME){
-            int[] userNumber = new int[NUM_OF_DIGITS];
-            getUserInput(userNumber);
-            String ballStrikeCheck = checkNumber(userNumber, computerNumber);
-            System.out.println(ballStrikeCheck);
-            if (!GAME)
-                break;
+            List<Integer> computerNumber = createRandomNumbers();
+            while (!WIN) {
+                int[] userNumber = new int[NUM_OF_DIGITS];
+                getUserInput(userNumber);
+                String ballStrikeCheck = checkNumber(userNumber, computerNumber);
+                System.out.println(ballStrikeCheck);
+                if (WIN)
+                    break;
+            }
+            Scanner scanner = new Scanner(System.in);
+            try {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int restartOption = scanner.nextInt();
+                if (restartOption != 1 && restartOption != 2) {
+                    throw new IllegalArgumentException();
+                }
+                if (restartOption == 1) {
+                    WIN = false;
+                }
+                if (restartOption == 2) {
+                    GAME = false;
+                }
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -81,7 +100,7 @@ public class Application {
         if (ballCount != 0 && strikeCount != 0) result = String.format("%d볼 %d스트라이크", ballCount, strikeCount);
         if (strikeCount == NUM_OF_DIGITS) {
             result = String.format("%d개의 숫자를 모두 맞히셨습니다! 게임종료", NUM_OF_DIGITS);
-            GAME = false;
+            WIN = true;
         }
         return result;
     }
