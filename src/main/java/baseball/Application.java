@@ -71,6 +71,9 @@ public class Application {
     private static int getStrikeCount(List<Integer> computer, List<Integer> user){
         int strikeCnt = 0;
 
+        for(int i = 0;i<NUM_COUNT;i++){
+            if(computer.get(i).equals(user.get(i)))strikeCnt++;
+        }
 
         return strikeCnt;
     }
@@ -78,6 +81,10 @@ public class Application {
 
     private static int getBallCount(List<Integer> computer, List<Integer> user){
         int ballCnt = 0;
+
+        for(int u:user){
+            if(computer.contains(u))ballCnt++;
+        }
 
         return ballCnt - getStrikeCount(computer, user);
     }
