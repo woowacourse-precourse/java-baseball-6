@@ -16,14 +16,18 @@ public class OutputView {
     }
 
     public void print_strike(int strikeCount) {
-        System.out.print(strikeCount + STRIKE_MESSAGE);
+        System.out.println(strikeCount + STRIKE_MESSAGE);
     }
 
     public void print_ball(int ballCount) {
-        System.out.print(ballCount + BALL_MESSAGE);
+        System.out.println(ballCount + BALL_MESSAGE);
     }
 
     public void print_nothing() {
         System.out.println(NOTHING_MESSAGE);
+    }
+
+    public void print_strike_and_ball(int ballCount, int strikeCount) {
+        System.out.println(ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE);
     }
 }
