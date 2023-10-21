@@ -18,40 +18,20 @@ public class GameController {
     private final DataController dataController;
     private final GameService gameService;
 
-    public GameController() {
+    public GameController(InputView inputView, OutputView outputView) {
         this.gameService = new GameService();
-        this.outputView = new OutputView();
-        this.inputView = new InputView();
+        this.outputView = outputView;
+        this.inputView = inputView;
         this.dataController = new DataController();
     }
 
-    private void tryOnce(List<Balls> computerBalls, BallCounter ballCounter) {
+    public void tryOnce(List<Balls> computerBalls, BallCounter ballCounter) {
         while (!gameService.isEndGameCondition(ballCounter)) {
             inputView.showInputMessage();
             List<Balls> playerBalls = dataController.generatePlayerNumbers();
             ballCounter = gameService.judgeGames(computerBalls, playerBalls);
             outputView.showResult(ballCounter);
         }
-    }
-
-    public void run() {
-        BallCounter ballCounter = new BallCounter(0, 0);
-        inputView.generateGameStartMessage();
-        tryOnce(gameService.generateComputerNumbers(), ballCounter);
-        outputView.showGameEndMessage();
-        inputView.showRetryOrEndGameMessage();
-        if (retryOrExit()) run();
-    }
-
-    private boolean retryOrExit() {
-        String data = readLine();
-        if (data.equals(GameOption.RESTART.getOption())) {
-            return true;
-        }
-        if (data.equals(GameOption.END.getOption())) {
-            return false;
-        }
-        return false;
     }
 }
 
