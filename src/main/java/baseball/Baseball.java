@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class Baseball {
     private int strike = 0;
     private int ball = 0;
 
-    private List<Integer> computer = new ArrayList<>();
+    private Computer computer = new Computer();
     private List<Integer> user = new ArrayList<>();
 
     public Baseball() {
@@ -36,7 +35,7 @@ public class Baseball {
     }
 
     public void play() {
-        generateComputerNumber();
+        computer.generateComputerNumber(MIN_NUMBER, MAX_NUMBER);
 
         while (true) {
             System.out.print(NUMBER_INPUT_MESSAGE);
@@ -65,33 +64,15 @@ public class Baseball {
 
     private void checkSameNumber() {
         for (int i = 0; i < user.size(); i++) {
-            int computerNumber = computer.get(i);
+            int computerNumber = computer.getComputerNumber(i);
             int userNumber = user.get(i);
 
             if (computerNumber == userNumber) {
                 strike++;
-            } else if (computer.contains(userNumber)) {
+            } else if (computer.isContainsNumber(userNumber)) {
                 ball++;
             }
         }
-    }
-
-    private void generateComputerNumber() {
-        if (!computer.isEmpty()) {
-            computer.clear();
-        }
-
-        while (computer.size() < 3) {
-            int randomNumber = getRandomNumber();
-
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-    }
-
-    private int getRandomNumber() {
-        return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 
     private String userNumberInput() {
