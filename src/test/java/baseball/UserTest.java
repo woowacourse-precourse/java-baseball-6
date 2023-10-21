@@ -20,13 +20,14 @@ class UserTest {
         System.setIn(inputStream);
     }
     @Test
-    void 숫자를_입력할_수_있다() throws IOException {
+    void 자릿수가_3이아닌_숫자인_경우() throws IOException {
         // Arrange, Action
-        String result = User.readLine();
+        User user = new User();
+        String result = user.readLine();
         // Assert
         assertThat(result).isInstanceOf(String.class);
         if(result.length() != 3){
-            assertThatThrownBy(() -> User.readLine())
+            assertThatThrownBy(() -> user.readLine())
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
