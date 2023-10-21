@@ -7,6 +7,11 @@ import java.util.List;
 
 public class Baseball_Input {
     private static List<Integer> userInput;
+    private static int restartNum;
+
+    public static List<Integer> getUserInput(){
+        return userInput;
+    }
 
     public static void setUserInput(){
         userInput = new ArrayList<>();
@@ -37,4 +42,38 @@ public class Baseball_Input {
         }
 
     }
+
+    public static int getRestartNum(){
+        return restartNum;
+    }
+
+    public static boolean setRestartNum(){
+
+        Baseball_output.printRestart();
+        String inputString = Console.readLine();
+        try {
+
+            int inputStrToInt = Integer.parseInt(inputString);
+
+            if(inputStrToInt == 1){
+                restartNum = 1;
+                return true;
+            }
+            if(inputStrToInt == 2){
+                restartNum = 2;
+                return false;
+            }
+
+            // 1과 2 이외는 에러처리
+            IllegalArgumentException e = new IllegalArgumentException("IllegalArgumentException");
+            throw e;
+
+        }catch(IllegalArgumentException e){
+            throw e;
+        }
+
+    }
+
+
+
 }
