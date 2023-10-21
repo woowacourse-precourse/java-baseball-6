@@ -4,23 +4,24 @@ import java.util.List;
 
 public class ScoreCalculator {
 
-    int ball;
-    int strike;
+    public int computeStrike(List<Integer> randomNumbers, List<Integer> guessNumbers) {
 
-    public void doCalculate(List<Integer> randomNumbers, List<Integer> guessNumbers) {
+        int strike = 0;
 
-        computeStrike(randomNumbers, guessNumbers);
-        System.out.println("strike = " + strike);
+        for (int i = 0; i < 3; i++) {
+            if (randomNumbers.get(i) == guessNumbers.get(i)) {
+                strike++;
+            }
+        }
 
-        computeBall(randomNumbers, guessNumbers);
-        System.out.println("ball = " + ball);
-
+        return strike;
     }
 
-    private void computeBall(List<Integer> randomNumbers, List<Integer> guessNumbers) {
+    public int computeBall(List<Integer> randomNumbers, List<Integer> guessNumbers, int strike) {
+
+        int  ball = 0;
 
         for (Integer i : guessNumbers) {
-
             if (randomNumbers.contains(i)) {
                 ball++;
             }
@@ -28,17 +29,8 @@ public class ScoreCalculator {
         }
 
         ball -= strike;
-    }
 
-    private void computeStrike(List<Integer> randomNumbers, List<Integer> guessNumbers) {
-
-        for (int i = 0; i < 3; i++) {
-
-            if (randomNumbers.get(i) == guessNumbers.get(i)) {
-                strike++;
-            }
-
-        }
+        return ball;
     }
 
 }
