@@ -15,7 +15,7 @@ public class NumberGenerator {
         makeRandomAnswerList();
     }
 
-    private void makeRandomAnswerList() {
+    public void makeRandomAnswerList() {
         while (answer.size() < 3) {
             final int randomNumber = Randoms.pickNumberInRange(minNumber, maxNumber);
             if (!answer.contains(randomNumber)) {
