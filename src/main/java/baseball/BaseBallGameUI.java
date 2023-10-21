@@ -49,6 +49,18 @@ public class BaseBallGameUI {
         if(inputValueToInt == 1) {
             Computer computer = new Computer();
             System.out.println(computer.getComputerBall());
+            while(gameSwitch) {
+                inputPlayerNum();
+                String inputValue1 = readLine();
+                int inputValueToInt1 = Integer.parseInt(inputValue1);
+                try {
+                    Player player = new Player(inputValueToInt1);
+                    printResult(referee.decideResult(computer.getComputerBall(), player.getPlayerBall()));
+                } catch (IllegalArgumentException e) {
+                    System.out.println("예외 발생!");
+                    restartGame();
+                }
+            }
         }
         return gameSwitch;
     }
@@ -61,9 +73,13 @@ public class BaseBallGameUI {
             inputPlayerNum();
             String inputValue = readLine();
             int inputValueToInt = Integer.parseInt(inputValue);
-            Player player = new Player(inputValueToInt);
-            printResult(referee.decideResult(computer.getComputerBall(), player.getPlayerBall()));
-            System.out.println(referee.decideResult(computer.getComputerBall(), player.getPlayerBall()));
+            try {
+                Player player = new Player(inputValueToInt);
+                printResult(referee.decideResult(computer.getComputerBall(), player.getPlayerBall()));
+            } catch (IllegalArgumentException e) {
+                System.out.println("예외 발생!");
+                restartGame();
+            }
         }
     }
 }
