@@ -9,7 +9,12 @@ public class Game {
     private final UserInputHandler userInputHandler = new UserInputHandler();
     private final NumberGenerator numberGenerator = new NumberGenerator();
     private final ResultCalculator resultCalculator = new ResultCalculator();
-    private boolean isCorrect = false;
+    private boolean isCorrect;
+
+    public Game() {
+        this.isCorrect = false;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 
     public void play() {
         String computerNumber = numberGenerator.generateRandomNumber();
@@ -21,7 +26,7 @@ public class Game {
         }
     }
 
-    public boolean checkRestart() {
+    public boolean Restart() {
         isCorrect = false;
         return userInputHandler.askRestart();
     }

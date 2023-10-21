@@ -5,11 +5,9 @@ public class Application {
 
         Game game = new Game();
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
         do {
             game.play();
         }
-        while (game.checkRestart());
+        while (game.Restart());
     }
 }
