@@ -13,7 +13,31 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         startProgram();
+
+        while ( retryCheck() ) {
+            startProgram();
+        }
     }
+
+    private static boolean retryCheck() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String retry = Console.readLine();
+
+        switch (retry) {
+            case "1" -> {
+                return true;
+            }
+            case "2" -> {
+                System.out.println("stop");
+                Console.close();
+                return false;
+            }
+            default -> {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
 
     private static void startProgram() {
         String goal = generateValue();
@@ -41,7 +65,6 @@ public class Application {
         }
         return resultBuilder.toString();
     }
-
 
     private static void validation(String input){
         String pattern = "[1-9]{1,3}";
