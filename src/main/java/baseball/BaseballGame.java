@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BaseballGame {
@@ -11,9 +12,7 @@ public class BaseballGame {
     public static final int RESTART_OPERATION = 1;
     public static final int EXIT_OPERATION = 2;
     public static final int BASEBALL_NUMBER_LENGTH = 3;
-    int exitNumber = 0;
-    int strikeNumber = 3;
-    int ballNumber = 0;
+    int exitNumber, strikeNumber, ballNumber;
     List<Integer> answerNumber;
     List<Integer> expectedNumber;
 
@@ -21,7 +20,8 @@ public class BaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
         resetGame();
         while (true) {
-            // readExpectedNumber();
+            System.out.print("숫자를 입력해주세요 : ");
+            readExpectedNumber(readLine());
 
             //computeAnswer();
 
@@ -50,11 +50,52 @@ public class BaseballGame {
         // System.out.println(answerNumber.toString());
     }
 
-    private boolean isCompleted() {
+    public void readExpectedNumber(String input) {
+        expectedNumber = inputToExpectedNumber(input);
+
+        if (expectedNumber.size() != BASEBALL_NUMBER_LENGTH) {
+            throw new IllegalArgumentException(BASEBALL_NUMBER_LENGTH + "자리 수를 입력해야 합니다.");
+        }
+        if (expectedNumber.contains(0)) {
+            throw new IllegalArgumentException("0은 입력할 수 없습니다.");
+        }
+        if (isDuplicated(expectedNumber)) {
+            throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
+        }
+    }
+
+    public List<Integer> inputToExpectedNumber(String input) {
+        List<Integer> numbers = new ArrayList<>();
+        int temp = 0;
+
+        try {
+            temp = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+        }
+
+        while (temp > 0) {
+            numbers.add(0, temp % 10);
+            temp /= 10;
+        }
+        return numbers;
+    }
+
+    public Boolean isDuplicated(List<Integer> number) {
+        for (int i = 0; i < number.size(); i++) {
+            int duplication = Collections.frequency(number, number.get(i));
+            if (duplication > 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isCompleted() {
         return strikeNumber == BASEBALL_NUMBER_LENGTH;
     }
 
-    private boolean isExit() {
+    public boolean isExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         readExitNumber(readLine());
