@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PlayerValidation {
 
-    public static void checkNumber(String numbers){
+    public static List<Integer> checkNumber(String numbers){
         isCheckNumber(numbers);
         isCheckSize(numbers);
         return isCheckDuplicate(numbers);
@@ -23,5 +23,16 @@ public class PlayerValidation {
         if(numbers.length() != 3){
             throw new IllegalArgumentException("3자리 수가 아닙니다");
         }
+    }
+
+    public static List<Integer> isCheckDuplicate(String numbers) {
+        List<Integer> number = new ArrayList<>();
+        for(int i=0; i<numbers.length(); i++){
+            if(number.contains((numbers.charAt(i)-'0'))){
+                throw new IllegalArgumentException("중복된 값입니다");
+            }
+            number.add(numbers.charAt(i)-'0');
+        }
+        return number;
     }
 }
