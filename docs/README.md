@@ -34,7 +34,7 @@
 - 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 생성함.
 
 
-[Package Version History](https://fabulous-butterkase-809.notion.site/Package-Version-History-40b396bf1b31431084fa11abdd79d138?pvs=4)
+## 참고: [Package Version History](https://fabulous-butterkase-809.notion.site/Package-Version-History-40b396bf1b31431084fa11abdd79d138?pvs=4)
 
 
 
