@@ -21,6 +21,7 @@ public class Application {
     
     // 숫자 입력
     public static String InputNum() {
+        System.out.print("숫자를 입력해주세요: ");
         String inputNum = Console.readLine();
         System.out.println(inputNum);
         return inputNum;
@@ -45,14 +46,44 @@ public class Application {
         return 1;
     }
 
+    // 결과 출력
+    public static boolean baseball(List<Integer> answer, String str) {
+        int ball = 0, strike = 0;
+        for(int i=0; i<3; i++) {
+            int n = answer.get(i);
+            for(int j=0; j<3; j++){
+                if(n == str.charAt(j) - '0') {
+                    if(i == j)
+                        strike++;
+                    else
+                        ball++;
+                }
+            }
+        }
+        if(ball == 0 && strike == 0)
+            System.out.println("낫싱");
+        else if(strike == 3) {
+            System.out.println("3스트라이크");
+            return true;
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computer = create_answer();
+        List<Integer> answer = create_answer();
         int status = 1; // 게임 진행 상태
         while(status == 1) {
             String input = InputNum();
             if(validation(input) == 0)
                 break;
+            if(baseball(answer, input)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                status = Integer.parseInt(Console.readLine());
+            }
         }
         System.out.println("게임을 완전히 종료합니다.");
     }
