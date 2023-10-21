@@ -20,6 +20,7 @@ public class GameService {
 	}
 
 	public void run() {
+		consoleOutput.printInit();
 		while (true) {
 			playGame();
 			if (consoleInput.getEndInput().equals(PlayConstant.FINISH.getValue())) {
@@ -29,7 +30,6 @@ public class GameService {
 	}
 
 	private void playGame() {
-		consoleOutput.printInit();
 		targetNumber = randomNumberGenerator.getRandomNumber();
 		while (true) {
 			consoleOutput.printReq();
