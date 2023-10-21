@@ -11,6 +11,8 @@ public class GameStarter {
     private final OutputHandler outputHandler;
     private final InputResolver inputResolver;
     private final String RESTART_COMMAND = "1";
+    private final int THREE_STRIKE = 3;
+    private final int NO_BALL = 0;
     private List<Integer> answerNumbers;
 
     public GameStarter() {
@@ -28,8 +30,12 @@ public class GameStarter {
     public void startGame() {
         while (true) {
             String inputNumber = inputHandler.getNumbers();
-            GameResult result = getGameResult(inputResolver.stringToIntegerList(inputNumber));
+            List<Integer> playerNumbers = inputResolver.stringToIntegerList(inputNumber);
+
+            GameResult result = getGameResult(playerNumbers);
+
             outputHandler.printGameResult(result);
+
             if (isGameOver(result)) {
                 outputHandler.printFinishMessage();
                 quitOrPlay();
@@ -39,7 +45,7 @@ public class GameStarter {
     }
 
     private boolean isGameOver(GameResult result) {
-        return result.getStrikeCount() == 3;
+        return result.getStrikeCount() == THREE_STRIKE && result.getBallCount() == NO_BALL;
     }
 
     private GameResult getGameResult(List<Integer> playerNumbers) {
