@@ -50,4 +50,12 @@ public class ComputerNumber {
         return gameResult.getStrike() == 3;
     }
 
+    public int getStrike() {
+        return gameResult.getStrike();
+    }
+
+    public int getBall() {
+        return gameResult.getBall();
+    }
+
 }
