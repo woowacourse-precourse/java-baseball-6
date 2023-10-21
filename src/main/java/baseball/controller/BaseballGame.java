@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.GameResult;
 import baseball.model.User;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -8,22 +9,23 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class BaseballGame {
-    private Computer computer;
+    private List<Integer> computerNumber;
     private User user;
 
     public void startGame() {
+        GameResult gameResult;
         OutputView.printGameStartMessage();
         createComputerNumber();
         do {
             getUserNumber();
-        } while(!isCorrectNumber());
+            gameResult = compareNumber();
+        } while(!gameResult.isSuccess());
+        OutputView.printThreeStrikeMessage();
     }
 
     private void createComputerNumber() {
-        computer = new Computer();
-        for(int num : computer.getComputerNumber()) {
-            System.out.println(num);
-        }
+        Computer computer = new Computer();
+        computerNumber = computer.getComputerNumber();
     }
 
     private void getUserNumber() {
@@ -31,28 +33,37 @@ public class BaseballGame {
         user = new User(userNumber);
     }
 
-    private boolean isCorrectNumber() {
-        List<Integer> computerNumber = computer.getComputerNumber();
+    private GameResult compareNumber() {
         List<Integer> userNumber = user.getUserNumber();
+        int strike = countStrike(userNumber);
+        int ball = countBall(userNumber);
+
+        OutputView.printOneGameResult(strike, ball);
+
+        return new GameResult(strike, ball);
+    }
+
+    private int countStrike(List<Integer> userNumber) {
         int strike = 0;
-        int ball = 0;
 
         for(int num : userNumber) {
             if(userNumber.indexOf(num) == computerNumber.indexOf(num)) {
                 strike++;
             }
+        }
+
+        return strike;
+    }
+
+    private int countBall(List<Integer> userNumber) {
+        int ball = 0;
+
+        for(int num : userNumber) {
             if(userNumber.indexOf(num) != computerNumber.indexOf(num) && computerNumber.contains(num)) {
                 ball++;
             }
         }
 
-        OutputView.printOneGameResult(strike, ball);
-
-        if(strike == 3 && ball == 0) {
-            OutputView.printThreeStrikeMessage();
-            return true;
-        }
-
-        return false;
+        return ball;
     }
 }
