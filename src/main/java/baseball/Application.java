@@ -1,11 +1,10 @@
 package baseball;
 
-import baseball.controller.BaseballController;
-import baseball.io.OutputView;
+import baseball.factory.ComponentFactory;
 
 public class Application {
     public static void main(String[] args) {
-        final BaseballController baseballController = new BaseballController(new OutputView());
-        baseballController.run();
+        final ComponentFactory componentFactory = new ComponentFactory();
+        componentFactory.baseballController().run();
     }
 }
