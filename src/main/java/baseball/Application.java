@@ -19,7 +19,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // TODO: 결과에 따라 흐름을 분기하는 기능 구현
+        // TODO: 리팩터링
         boolean continueGame = true;
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -48,6 +48,36 @@ public class Application {
                     strikeCount++;
                 } else if (computer.contains(user.get(i))) {
                     ballCount++;
+                }
+            }
+            if (strikeCount == 3) {
+                System.out.println(strikeCount + "스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String restart = Console.readLine();
+                if (!restart.equals("1") && !restart.equals("2")) {
+                    throw new IllegalArgumentException();
+                }
+                if (restart.equals("1")) {
+                    computer = new ArrayList<>();
+                    while (computer.size() < 3) {
+                        int randomNumber = Randoms.pickNumberInRange(1, 9);
+                        if (!computer.contains(randomNumber)) {
+                            computer.add(randomNumber);
+                        }
+                    }
+                } else {
+                    continueGame = false;
+                }
+            } else if (strikeCount == 0 && ballCount == 0) {
+                System.out.println("낫싱");
+            } else {
+                if (ballCount == 0) {
+                    System.out.println(strikeCount + "스트라이크");
+                } else if (strikeCount == 0) {
+                    System.out.println(ballCount + "볼");
+                } else {
+                    System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
                 }
             }
         } while (continueGame);
