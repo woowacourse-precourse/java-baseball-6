@@ -1,11 +1,11 @@
 package baseball.domain;
 
-public class GameStatus {
+public class GameResult {
 
     private int ballCount;
     private int strikeCount;
 
-    public GameStatus() {
+    public GameResult() {
         this.ballCount = 0;
         this.strikeCount = 0;
     }

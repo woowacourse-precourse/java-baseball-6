@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.GameNumber;
-import baseball.domain.GameStatus;
+import baseball.domain.GameResult;
 import baseball.domain.RetryCommand;
 import baseball.service.GameService;
 import baseball.view.InputView;
@@ -22,17 +22,17 @@ public class GameController {
     public void run() {
         outputView.printStartMessage();
         while (gameService.isNotDone()) {
-            gameService.resetStatus();
-            GameStatus gameStatus = playOneRound();
-            outputView.printRoundResult(gameStatus);
-            if (gameStatus.isThreeStrike()) {
+            gameService.resetResult();
+            GameResult gameResult = playOneRound();
+            outputView.printRoundResult(gameResult);
+            if (gameResult.isThreeStrike()) {
                 outputView.printSuccess();
                 checkRetry();
             }
         }
     }
 
-    private GameStatus playOneRound() {
+    private GameResult playOneRound() {
         GameNumber userNumber = getUserNumber();
         return gameService.compareNumber(userNumber);
     }
@@ -43,7 +43,7 @@ public class GameController {
 
     private void checkRetry() {
         RetryCommand command = inputView.getRetryCommand();
-        if (command.isRetryCommand()) {
+        if (command.isRetry()) {
             gameService = GameService.startNewGame();
         }
     }

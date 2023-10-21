@@ -20,7 +20,7 @@ public enum RetryCommand {
                 .orElseThrow(() -> new IllegalArgumentException("1, 2만 입력 가능합니다."));
     }
 
-    public boolean isRetryCommand() {
+    public boolean isRetry() {
         return this.equals(RETRY);
     }
 

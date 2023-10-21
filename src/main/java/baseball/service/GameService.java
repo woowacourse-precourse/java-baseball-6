@@ -1,14 +1,14 @@
 package baseball.service;
 
 import baseball.domain.GameNumber;
-import baseball.domain.GameStatus;
+import baseball.domain.GameResult;
 import baseball.domain.Judgement;
 
 import java.util.List;
 
 public class GameService {
 
-    private final GameStatus gameStatus;
+    private final GameResult gameResult;
     private final GameNumber answerNumber;
 
     public static GameService startNewGame() {
@@ -16,7 +16,7 @@ public class GameService {
     }
 
     private GameService() {
-        this.gameStatus = new GameStatus();
+        this.gameResult = new GameResult();
         this.answerNumber = createNewAnswer();
     }
 
@@ -25,15 +25,15 @@ public class GameService {
         return new GameNumber(generatedNumber);
     }
 
-    public GameStatus compareNumber(GameNumber userNumber) {
+    public GameResult compareNumber(GameNumber userNumber) {
         for (int index = 0; index < 3; index++) {
-            Judgement judgement = checkNumber(answerNumber, userNumber, index);
-            gameStatus.updateCount(judgement);
+            Judgement judgement = checkNumber(userNumber, index);
+            gameResult.updateCount(judgement);
         }
-        return gameStatus;
+        return gameResult;
     }
 
-    private static Judgement checkNumber(GameNumber answerNumber, GameNumber userNumber, int index) {
+    private Judgement checkNumber(GameNumber userNumber, int index) {
         int indexNumber = userNumber.getNumberOfIndex(index);
         boolean isContain = answerNumber.isContain(indexNumber);
         boolean isInPlace = answerNumber.isInPlace(index, indexNumber);
@@ -41,10 +41,10 @@ public class GameService {
     }
 
     public boolean isNotDone() {
-        return gameStatus.isNotThreeStrike();
+        return gameResult.isNotThreeStrike();
     }
 
-    public void resetStatus() {
-        gameStatus.reset();
+    public void resetResult() {
+        gameResult.reset();
     }
 }

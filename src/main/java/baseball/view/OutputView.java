@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.GameStatus;
+import baseball.domain.GameResult;
 
 public class OutputView {
 
@@ -10,10 +10,10 @@ public class OutputView {
         System.out.println(START_MESSAGE);
     }
 
-    public void printRoundResult(GameStatus gameStatus) {
+    public void printRoundResult(GameResult gameResult) {
         StringBuilder sb = new StringBuilder();
-        int ballCount = gameStatus.getBallCount();
-        int strikeCount = gameStatus.getStrikeCount();
+        int ballCount = gameResult.getBallCount();
+        int strikeCount = gameResult.getStrikeCount();
         if (ballCount != 0) {
             sb.append(ballCount).append("볼 ");
         }
