@@ -2,6 +2,9 @@ package baseball.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -86,6 +89,25 @@ class UserNumberTest {
         assertThatThrownBy(() -> new UserNumber(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 숫자가 존재하지 않아야 합니다");
+    }
+
+    @DisplayName("String 타입을 List<Integer> 타입으로 교체")
+    @Test
+    void convertStringToIntegerList() throws NoSuchMethodException{
+        String stringValue = "123";
+        List<Integer> expectedNumbers = List.of(1, 2, 3);
+        UserNumber userNumber = new UserNumber(stringValue);
+        Method method = userNumber.getClass().getDeclaredMethod("StringToList", String.class);
+        method.setAccessible(true);
+
+        try{
+            List<Integer> resultList = (List<Integer>) method.invoke(userNumber, stringValue);
+            assertThat(expectedNumbers).isEqualTo(resultList);
+
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }
