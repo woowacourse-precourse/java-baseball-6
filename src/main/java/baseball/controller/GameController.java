@@ -20,10 +20,14 @@ public class GameController {
     }
 
     public void playBaseball() {
-        StartView.welcome();
+        printGameWelcome();
         while (resumeNumber.isWantMoreGame()) {
             play();
         }
+    }
+
+    private static void printGameWelcome() {
+        StartView.welcome();
     }
 
     private void play() {
@@ -64,7 +68,7 @@ public class GameController {
     private static void printGameEnd() {
         EndView.end();
     }
-    
+
     private void updateResumeNumber() {
         resumeNumber.updateNumber(InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT));
     }
