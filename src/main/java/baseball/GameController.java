@@ -12,6 +12,13 @@ public class GameController {
         this.user = new User();
     }
 
+    public void run() {
+        while (user.getGameStatus()) {
+            computer.generateRandomNumbers();
+            gameStart();
+        }
+    }
+
     public void gameStart() {
         while (true) {
             user.getNumbersFromUser();
