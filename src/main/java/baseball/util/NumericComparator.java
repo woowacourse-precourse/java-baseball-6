@@ -11,6 +11,14 @@ public class NumericComparator {
         this.ballCount = 0;
     }
 
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
     public void compare(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         resetCount();
 
