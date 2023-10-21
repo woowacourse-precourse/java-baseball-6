@@ -33,5 +33,14 @@ public class BaseBallGameController {
                 break;
             }
         }
+
+        decideNextAction();
+    }
+    private void decideNextAction() {
+        baseballOutputView.printMessage(BaseballGameMessage.QUIT_OR_START_GAME);
+        int userInput = baseballInputView.userProgressInput();
+        if (userInput == 1) {
+            startGame();
+        }
     }
 }
