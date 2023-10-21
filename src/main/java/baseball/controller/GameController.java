@@ -58,7 +58,7 @@ public class GameController {
         computerModel = new ComputerModel(computers);
     }
 
-    public void compareNumbers() {
+    private void compareNumbers() {
         List<Integer> human = humanModel.getHumans();
         List<Integer> computer = computerModel.getComputers();
         int[] strikeIdx = checkStrike(human, computer);
