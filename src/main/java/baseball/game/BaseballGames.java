@@ -6,6 +6,7 @@ import baseball.service.ValidateJudgeService;
 import baseball.service.impl.MessageGenerateServiceImpl;
 import baseball.service.impl.UserCodeServiceImpl;
 import baseball.service.impl.ValidateJudgeServiceImpl;
+import baseball.vo.BaseballCode;
 import baseball.vo.UserCode;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class BaseballGames {
 
     private static final String END_COMMENT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    public void playBaseball(List<Integer> baseballCode) {
+    public void playBaseball(BaseballCode baseballCode) {
 
         UserCode codes = new UserCode(new ArrayList<>());
 

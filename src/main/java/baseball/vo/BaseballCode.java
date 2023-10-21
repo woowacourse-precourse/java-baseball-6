@@ -9,12 +9,15 @@ public final class BaseballCode {
         this.codes = codes;
     }
 
-    public List<Integer> getCodes() {
-        return codes;
-    }
-
     public BaseballCode makeNewBaseballCode(List<Integer> codes) {
         return new BaseballCode(codes);
     }
 
+    public Integer getBaseballCodeSize() {
+        return codes.size();
+    }
+
+    public Integer getBaseballCodeElement(int index) {
+        return codes.get(index);
+    }
 }

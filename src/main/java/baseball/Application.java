@@ -22,7 +22,7 @@ public class Application {
         BaseballCode baseballCode = new BaseballCode(new ArrayList<>());
         while (true) {
             BaseballCode baseballCodes = baseballCode.makeNewBaseballCode(randomCodeService.makeRandomCodeList());
-            baseballGames.playBaseball(baseballCodes.getCodes());
+            baseballGames.playBaseball(baseballCodes);
             int code = Integer.parseInt(readLine());
             boolean restartStatus = validateJudgeService.restartValidateCode(code);
             System.out.println(RESTART_COMMENT);
