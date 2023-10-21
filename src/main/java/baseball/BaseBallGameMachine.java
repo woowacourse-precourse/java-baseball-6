@@ -1,52 +1,35 @@
 package baseball;
 
-import baseball.io.Input;
 import baseball.io.Output;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class BaseBallGameMachine {
+    private final Computer computer;
+    private final User user;
+    boolean flag = true;
+    private List<Integer> computerNumbers = new ArrayList<>();
 
-    private final Input input = new Input();
-    private final Output output = new Output();
-    private List<Integer> computerNumbers;
-    private boolean flag = true;
-
-    public void run() {
-        output.printStartMessage();
-
-        makeRandomNumbers();
-
-        while (flag) {
-            List<Integer> userNumbersInput = userInput();
-
-            printHint(calculation(userNumbersInput));
-        }
-
-        finishOrRestart();
+    public BaseBallGameMachine(Computer computer, User user) {
+        this.computer = computer;
+        this.user = user;
     }
 
+    public void playGame() {
+        computer.makeRandomNumbers();
+        computerNumbers = computer.getComputerNumbers();
 
-    public void makeRandomNumbers() {
+        while (true) {
+            List<Integer> userInput = user.userInput();
+            int[] result = calculation(userInput);
+            printHint(result);
 
-        computerNumbers = new ArrayList<>();
-
-        while (computerNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
+            if (result[1] == 3) {
+                break;
             }
         }
-    }
 
-
-
-    public List<Integer> userInput() {
-        output.printRequestUserNumberInput();
-        return input.userNumberInput();
     }
 
     public int[] calculation(List<Integer> userInput) {
@@ -63,7 +46,8 @@ public class BaseBallGameMachine {
     public int countBall(List<Integer> userInput) {
         int ball = 0;
         for (int i = 0; i < userInput.size(); i++) {
-            if (!Objects.equals(userInput.get(i), computerNumbers.get(i)) && computerNumbers.contains(userInput.get(i))) {
+            if (!Objects.equals(userInput.get(i), computerNumbers.get(i)) && computerNumbers.contains(
+                    userInput.get(i))) {
                 ball++;
             }
         }
@@ -73,7 +57,6 @@ public class BaseBallGameMachine {
 
     public int countStrike(List<Integer> userInput) {
         int strike = 0;
-
         for (int i = 0; i < userInput.size(); i++) {
             if (Objects.equals(userInput.get(i), computerNumbers.get(i))) {
                 strike++;
@@ -84,17 +67,7 @@ public class BaseBallGameMachine {
     }
 
     public void printHint(int[] calculation) {
-        output.printHint(calculation);
-    }
-
-    public void finishOrRestart() {
-        output.printFinishOrRestart();
-        String finishOrRestartInput = input.finishOrRestartInput();
-
-        if (finishOrRestartInput.equals("1")) {
-            flag = true;
-            run();
-        }
+        Output.printHint(calculation);
     }
 
 
