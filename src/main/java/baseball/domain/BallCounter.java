@@ -20,8 +20,8 @@ public class BallCounter {
         ballCounter.put(STRIKE, ballCounter.getOrDefault(STRIKE, 0) + 1);
     }
 
-    public static boolean isNotAllStrike(int digitNumber) {
-        return getCountOfStrike() != digitNumber;
+    public static boolean isAllStrike(int digitNumber) {
+        return getCountOfStrike() == digitNumber;
     }
 
     public static void reset() {
