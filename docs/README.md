@@ -20,19 +20,22 @@
 
 - Player
   - [x] 예상된 숫자를 저장한다.
-  - [x] 입력한 숫자의 중복 검사와 개수를 확인한다.
+  - [x] 볼과 스트라이크의 숫자를 계산한다.
+
+- PlayerValidator
+  - [x] 입력한 숫자의 중복 검사와 개수를 검증한다.
 <hr>
 
 ## 상수 목록
 - BaseballMessage
   - [x] 숫자야구 용어 상수
-- BaseballRole
-  - [x] 숫자야구 규칙 상수
-  - [x] 재시작 입력 메시지를 확인한다.
 - ErrorMessage
   - [x] 에러 메시지 상수
 - ProgressMessage
   - [x] 게임 진행 메시지 상수
+- BaseballRole
+  - [x] 숫자야구 규칙 상수
+  - [x] 재시작 입력 메시지를 검증한다.
 
 
 ## 에러 처리
