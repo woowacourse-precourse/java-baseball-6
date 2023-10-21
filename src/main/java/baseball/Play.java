@@ -15,7 +15,13 @@ public class Play {
         rules = new Rules();
     }
 
-    public void startGame() {
+    public void numberBaseBallGame() {
+        startGame();
+        runGame();
+        restartOrFinishGame();
+    }
+
+    private void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         com.setCom();
     }
@@ -25,7 +31,7 @@ public class Play {
         input = Console.readLine();
     }
 
-    public void runGame() {
+    private void runGame() {
         while (true) {
             setInput("숫자를 입력해주세요 : ");
             user.setUser(input);
@@ -39,7 +45,7 @@ public class Play {
         }
     }
 
-    public void restartOrFinishGame() {
+    private void restartOrFinishGame() {
         while (true) {
             setInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
             int menu = checkInputNumber();
