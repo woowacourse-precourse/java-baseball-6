@@ -12,12 +12,9 @@ import java.util.List;
 
 public class Number {
     private final List<Integer> number = new ArrayList<>();
-
-    public Number() {
-
-    }
-
-    public Number(String inputNumber) {
+    
+    public void inputUserNumber(String inputNumber) {
+        number.clear();
         stringToIntegerList(inputNumber);
     }
 
@@ -32,8 +29,8 @@ public class Number {
         System.out.println(number);
     }
 
-    public GameResult inputCheck(Number inputNumber) {
-        return new GameResult(ballCheck(inputNumber), strikeCheck(inputNumber));
+    public void inputCheck(Number inputNumber, GameResult gameResult) {
+        gameResult.gameResultInit(ballCheck(inputNumber), strikeCheck(inputNumber));
     }
 
     private void stringToIntegerList(String inputNumber) {

@@ -4,9 +4,9 @@ import static baseball.constant.GameConstant.RESTART_VALUE;
 import static baseball.validator.GameValidator.restartOrExitValueValidate;
 
 public class GameRestartOrExit {
-    private final String restartOrExit;
+    private String restartOrExit = "";
 
-    public GameRestartOrExit(String restartOrExit) {
+    public void gameRestartOrValueInput(String restartOrExit) {
         restartOrExitValueValidate(restartOrExit);
         this.restartOrExit = restartOrExit;
     }

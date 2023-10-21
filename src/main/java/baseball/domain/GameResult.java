@@ -6,14 +6,14 @@ import static baseball.constant.GameConstant.STRIKE;
 import static baseball.constant.GameConstant.THREE_STRIKE;
 
 public class GameResult {
-    private final int ballCount;
-    private final int strikeCount;
+    private int ballCount = 0;
+    private int strikeCount = 0;
 
-    public GameResult(int ballCount, int strikeCount) {
+    public void gameResultInit(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }
-
+    
     public String result() {
         if (ballCount != 0 && strikeCount != 0) {
             return ballCount + BALL + " " + strikeCount + STRIKE;

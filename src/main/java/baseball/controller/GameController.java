@@ -13,6 +13,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
     private final Number computerNumber = new Number();
+    private final Number userNumber = new Number();
+    private final GameResult gameResult = new GameResult();
+    private final GameRestartOrExit gameRestartOrExit = new GameRestartOrExit();
 
     public void gameRun() {
         do {
@@ -22,13 +25,11 @@ public class GameController {
         } while (restartOrExit());
     }
 
-    //한 게임
     private void oneGamePlay() {
-        GameResult gameResult;
         do {
             userInputView();
-            Number userNumber = new Number(Console.readLine());
-            gameResult = userNumber.inputCheck(computerNumber);
+            userNumber.inputUserNumber(Console.readLine());
+            userNumber.inputCheck(computerNumber, gameResult);
             gameResultView(gameResult);
         } while (gameResult.gameEnd());
     }
@@ -37,7 +38,7 @@ public class GameController {
     private boolean restartOrExit() {
         gameEndView();
         restartOrExitView();
-        GameRestartOrExit restartOrExit = new GameRestartOrExit(Console.readLine());
-        return restartOrExit.restartOrExitCheck();
+        gameRestartOrExit.gameRestartOrValueInput(Console.readLine());
+        return gameRestartOrExit.restartOrExitCheck();
     }
 }
