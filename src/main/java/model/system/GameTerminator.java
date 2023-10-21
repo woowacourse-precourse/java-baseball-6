@@ -4,11 +4,11 @@ import model.referee.GameScoreboard;
 
 public class GameTerminator {
 
-    GameTerminator() {
+    public GameTerminator() {
     }
 
-    public boolean isGameOver(GameScoreboard gameScoreboard) {
-        return false;
+    public boolean isGameStillRunning(GameScoreboard gameScoreboard) {
+        return !gameScoreboard.isThreeStrike();
     }
 
 }
