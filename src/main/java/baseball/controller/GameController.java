@@ -34,8 +34,8 @@ public class GameController {
             String userInput = inputView.requestUserNumber();
             UserNumber userNumber = new UserNumber(userInput);
 
-            GameResult result = numberMatcher.match(userNumber.getUserNumber(),
-                answerNumber.getAnswerNumber());
+            GameResult result = numberMatcher.match(userNumber.userNumberToList(),
+                answerNumber.answerNumberToList());
 
             outputView.displayResult(result.getBallCount(), result.getStrikeCount());
 
