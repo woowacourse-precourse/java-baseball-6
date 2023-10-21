@@ -12,19 +12,15 @@ public class Config {
         return new Me(inputOutputHandler());
     }
 
-    public NumberBaseBall numberBaseBall() {
-        return new NumberBaseBall();
-    }
-
     public RandomNumberPicker randomNumberPicker() {
         return new RandomNumberPicker();
     }
 
-    public Opponent opponent() {
-        return new Opponent(
-                numberBaseBall(),
+    public NumberBaseBall numberBaseBall() {
+        return new NumberBaseBall(
                 randomNumberPicker(),
                 inputOutputHandler(),
                 me());
     }
+
 }
