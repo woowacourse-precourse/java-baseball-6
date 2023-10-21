@@ -20,18 +20,22 @@
 
 ## 수행 기능 정리
 1. Model
-   i. PlayerNumber
-   ii. ComputerNumber
+    - BaseBall
+        i. playerNumber
+        ii. computerNumber
 2. View
-   i. OutputView
+
+    i. OutputView
       - [] 숫자 야구 게임 시작 메시지 출력
       - [] 성공메시지 및 게임종료 메시지
       - [] 힌트 메시지
-   ii. InputView
+   
+    ii. InputView
       - [] 사용자가 숫자입력하는 View
       - [] 재시작 아니면 끝내는 View
-3. Controller
-   i. GameController
+3. Controller 
+
+    i. GameController
       - [] 게임시작 메시지 출력하고 BaseBallControll연결 시키기
       - [] PlayerNumber와 GameNumber가 동일할 때까지 반복
       - [] 게임이 끝나면 InputView에서 재시작 아니면 끝내는 View 사용하기
