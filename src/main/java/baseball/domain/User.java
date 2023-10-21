@@ -4,14 +4,13 @@ import java.util.List;
 
 public class User {
 
-    private final InputOutputHandler inputOutputHandler;
+    private final GameIO gameIO;
 
-    public User(InputOutputHandler inputOutputHandler) {
-        this.inputOutputHandler = inputOutputHandler;
+    public User(GameIO gameIO) {
+        this.gameIO = gameIO;
     }
 
     public List<Integer> guessAnswer(int numberLength) {
-        List<Integer> guessNumberList = inputOutputHandler.inputUniqueNumbers(numberLength);
-        return guessNumberList;
+        return gameIO.inputGuessAnswer(numberLength);
     }
 }

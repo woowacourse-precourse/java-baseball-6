@@ -8,8 +8,10 @@ public class Config {
         return new InputOutputHandler();
     }
 
+    public GameIO gameIO() {return new GameIO(inputOutputHandler());}
+
     public User user() {
-        return new User(inputOutputHandler());
+        return new User(gameIO());
     }
 
     public RandomNumberPicker randomNumberPicker() {
@@ -19,7 +21,7 @@ public class Config {
     public NumberBaseBall numberBaseBall() {
         return new NumberBaseBall(
                 randomNumberPicker(),
-                inputOutputHandler(),
+                gameIO(),
                 user());
     }
 

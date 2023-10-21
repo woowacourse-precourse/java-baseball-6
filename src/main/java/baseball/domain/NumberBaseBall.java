@@ -7,15 +7,15 @@ public class NumberBaseBall {
     public static final String BALL = "볼";
     public static final String NOTHING = "낫싱";
     private final RandomNumberPicker randomNumberPicker;
-    private final InputOutputHandler inputOutputHandler;
+    private final GameIO gameIO;
     private final User user;
 
     public NumberBaseBall(
             RandomNumberPicker randomNumberPicker,
-            InputOutputHandler inputOutputHandler,
+            GameIO gameIO,
             User user) {
         this.randomNumberPicker = randomNumberPicker;
-        this.inputOutputHandler = inputOutputHandler;
+        this.gameIO = gameIO;
         this.user = user;
     }
 
@@ -27,22 +27,23 @@ public class NumberBaseBall {
 
         while (!isFinish) {
             // 정답 맞추기 시작
-            inputOutputHandler.printText("숫자를 입력해주세요 : ");
+            gameIO.printStart();
             List<Integer> guessAnswer = user.guessAnswer(numberLength);
 
             //추측한 정답에 대한 결과
             Result guessResult = Result.of(answer, guessAnswer);
-            inputOutputHandler.printlnText(guessResult.toString());
+            gameIO.printGuessResult(guessResult);
 
             //결과가 정답인지 확인
             if(guessResult.isCorrect()) isFinish = true;
         }
 
-        inputOutputHandler.printlnText("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int inputNumber = inputOutputHandler.inputOneNumber();
+        int userChoice = gameIO.printEndMessageAndInputChoice();
 
-        if(inputNumber == 1) startGame(numberLength);
+        if(userChoice != 1 && userChoice != 2)
+            throw new IllegalArgumentException("1또는 2를 입력해야합니다.");
 
-        return;
+        if(userChoice == 1) startGame(numberLength);
+
     }
 }

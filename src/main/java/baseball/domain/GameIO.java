@@ -1,0 +1,39 @@
+package baseball.domain;
+
+import java.util.List;
+
+public class GameIO {
+    private final InputOutputHandler inputOutputHandler;
+
+    public GameIO(InputOutputHandler inputOutputHandler) {
+        this.inputOutputHandler = inputOutputHandler;
+    }
+
+    public void printStart() {
+        inputOutputHandler.printText("숫자를 입력해주세요 : ");
+    }
+
+    public List<Integer> inputGuessAnswer(int numberLength) {
+        return inputOutputHandler.inputUniqueNumbers(numberLength);
+    }
+
+    public void printGuessResult(Result result) {
+        inputOutputHandler.printlnText(result.toString());
+    }
+
+    public void printEndMessage() {
+        inputOutputHandler.printlnText("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public int getUserEndChoice() {
+        return inputOutputHandler.inputOneNumber();
+    }
+
+    public int printEndMessageAndInputChoice() {
+        printEndMessage();
+        return getUserEndChoice();
+    }
+
+
+
+}
