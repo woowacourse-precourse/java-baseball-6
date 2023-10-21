@@ -3,10 +3,13 @@ package runGame;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import error.ErrorManage;
+
 import java.util.List;
 
+import static runGame.constant.*;
+
 public class RunGame {
-    String computer_num;
+    private String computer_num;
 
     public RunGame() {
         List<Integer> c_num = Randoms.pickUniqueNumbersInRange(1, 9, 3);
@@ -14,12 +17,13 @@ public class RunGame {
         computer_num = List_to_String.replaceAll("[^0-9]", "");
     }
 
-    public void run() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    public static void run() {
+        System.out.println(START_GAME);
+        RunGame runGame;
         do {
-            RunGame runGame = new RunGame();
+            runGame = new RunGame();
             runGame.gaemStart();
-        } while (gameOver());
+        } while (runGame.gameOver());
 
         Console.close();
     }
@@ -29,10 +33,10 @@ public class RunGame {
         String number; // 유저가 입력한 숫자
 
         do {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(INPUT_NUMBER);
             number = Console.readLine();
             errorManage.inputNumberErrorManage(number);
-        } while (!gameResult(number).equals("3스트라이크"));
+        } while (!gameResult(number).equals(SUCCESS));
     }
 
     private String gameResult(String number) {
@@ -48,12 +52,12 @@ public class RunGame {
         ErrorManage errorManage = new ErrorManage();
         String exit;
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GAME_OVER);
+        System.out.println(RESTART_GAEM);
 
         exit = Console.readLine();
         errorManage.exitNumberErrorManage(exit);
-        return exit.equals("1");
+        return exit.equals(RESTART_NUMBER);
     }
 
     private int isStrike(String numbers) {
@@ -83,7 +87,7 @@ public class RunGame {
         String answer = "";
 
         if (strike == 0 && ball == 0) {
-            answer = "낫싱";
+            answer = NOTHING;
         }
 
         answer += NumOfBall(ball - strike);
@@ -94,7 +98,7 @@ public class RunGame {
 
     private String NumOfStrike(int strike) {
         if (strike > 0) {
-            return strike + "스트라이크";
+            return strike + STRIKE;
         }
 
         return "";
@@ -102,7 +106,7 @@ public class RunGame {
 
     private String NumOfBall(int ball) {
         if (ball > 0) {
-            return ball + "볼 ";
+            return ball + BALL;
         }
 
         return "";

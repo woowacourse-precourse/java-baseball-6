@@ -2,31 +2,33 @@ package error;
 
 import java.util.HashSet;
 
+import static error.ErrorConstant.*;
+
 public class ErrorManage {
     public void inputNumberErrorManage(String input) {
         if (isCorrectLength(input)) {
-            throw new IllegalArgumentException("{input number} :input의 길이가 이상합니다.");
+            throw new IllegalArgumentException(INPUT_LENGTH_ERROR);
         }
         if (!isNumeric(input)) {
-            throw new IllegalArgumentException("{input number} : 숫자가 아닌 문자가 포함되어 있습니다.");
+            throw new IllegalArgumentException(NOT_NUMBER);
         }
         if (!hasUniqueDigits(input)) {
-            throw new IllegalArgumentException("{input number} : 숫자가 서로 다르지 않습니다.");
+            throw new IllegalArgumentException(SAME_NUMBER);
         }
     }
 
     public void exitNumberErrorManage(String input) {
         if (isCorrectLength(input)) {
-            throw new IllegalArgumentException("{exit number} : input의 길이가 이상합니다.");
+            throw new IllegalArgumentException(EXIT_LENGTH_ERROR);
         }
         if (is1or2(input)) {
-            throw new IllegalArgumentException("{exit number} : 제대로 된 input값이 아닙니다.");
+            throw new IllegalArgumentException(INCORRECT_NUMBER);
         }
 
     }
 
     private boolean is1or2(String str) {
-        return (!str.equals("1") && !str.equals("2"));
+        return (!str.equals(CORRECT_NUMBER1) && !str.equals(CORRECT_NUMBER2));
     }
 
     private boolean isCorrectLength(String str) {
