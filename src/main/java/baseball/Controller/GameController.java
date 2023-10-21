@@ -28,10 +28,11 @@ public class GameController {
 
             if (ballStrikeCount.get(BALL) != 0 && ballStrikeCount.get(STRIKE) == 0) {
                 gameView.printBallMessage(ballStrikeCount.get(BALL));
-            } else if (ballStrikeCount.get(BALL) != 0) {
+            }
+            if (ballStrikeCount.get(BALL) != 0 && ballStrikeCount.get(STRIKE) != 0) {
                 gameView.printBallStrikeMessage(ballStrikeCount.get(BALL));
             }
-            if (ballStrikeCount.get(STRIKE) == 0) {
+            if (ballStrikeCount.get(STRIKE) != 0) {
                 gameView.printStrikeMessage(ballStrikeCount.get(STRIKE));
             }
             if (ballStrikeCount.get(BALL) == 0 && ballStrikeCount.get(STRIKE) == 0) {
