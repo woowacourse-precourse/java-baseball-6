@@ -69,13 +69,13 @@ public class RunGame {
     // 숫자 입력받아 int 배열으로 전환하는 과정
     public boolean inputNumbers(){
         System.out.println("숫자를 입력해주세요 : ");
-//        Scanner input = new Scanner(System.in);
         String numStr = Console.readLine();
+        if (numStr.length() > 3) throw new IllegalArgumentException();
         int num = Integer.parseInt(numStr);
 //        System.out.println(num);
         int j = 100;
         for (int i = 0; i < 3; i++) {
-            if (i == 0 && num/j == 0) return false;
+            if (i == 0 && num/j == 0) throw new IllegalArgumentException();
             keyNum[i] = (int) num/j;
             num -= (num/j)*j;
             j /= 10;
