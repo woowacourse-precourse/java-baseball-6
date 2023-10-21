@@ -2,6 +2,8 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class RandomNumber {
@@ -10,10 +12,17 @@ public class RandomNumber {
     private static final int MAX_DIGIT = Digit.MAX_VALUE;
     private static final int NUMBER_LENGTH = Number.NUMBER_LENGTH;
 
-    private RandomNumber() {
+    private final Supplier<Integer> randomValue;
+
+    RandomNumber(Supplier<Integer> randomValue) {
+        this.randomValue = Objects.requireNonNull(randomValue);
     }
 
-    public static Number generate() {
+    public static RandomNumber create() {
+        return new RandomNumber(() -> Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT));
+    }
+
+    public Number generate() {
         List<Digit> values = Stream.iterate(generateRandomDigit(), digit -> generateRandomDigit())
                 .distinct().limit(NUMBER_LENGTH)
                 .toList();
@@ -21,8 +30,8 @@ public class RandomNumber {
         return Number.from(values);
     }
 
-    private static Digit generateRandomDigit() {
-        int value = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
+    private Digit generateRandomDigit() {
+        int value = randomValue.get();
         return Digit.from(value);
     }
 

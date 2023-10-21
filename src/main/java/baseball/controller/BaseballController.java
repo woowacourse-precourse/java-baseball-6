@@ -11,6 +11,7 @@ public class BaseballController {
 
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
+    private final RandomNumber randomNumber = RandomNumber.create();
 
     public void run() {
         outputView.printStartGame();
@@ -23,7 +24,7 @@ public class BaseballController {
     }
 
     private void playGame() {
-        Number correctAnswer = RandomNumber.generate();
+        Number correctAnswer = randomNumber.generate();
 
         ComparisonResult result;
         do {
