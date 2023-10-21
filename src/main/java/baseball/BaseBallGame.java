@@ -4,14 +4,12 @@ import java.util.List;
 
 public class BaseBallGame {
 
+    PrintManager printManager = new PrintManager();
+    NumberMaker numberMaker = new NumberMaker();
+    InputManager inputManager = new InputManager();
+    ScoreCalculator scoreCalculator = new ScoreCalculator();
+
     public void doBaseBallGame() {
-
-        PrintManager printManager = new PrintManager();
-        NumberMaker numberMaker = new NumberMaker();
-        InputManager inputManager = new InputManager();
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
-
-        printManager.printGameStart();
 
         int ball = 0;
         int strike = 0;
@@ -34,6 +32,7 @@ public class BaseBallGame {
         }
 
         printManager.printGameOver();
+
     }
 
 }
