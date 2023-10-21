@@ -12,6 +12,7 @@ public class Application {
             }
 
             game.getGuessNums();
+            roundResult = game.getHint();
         }
     }
 }
