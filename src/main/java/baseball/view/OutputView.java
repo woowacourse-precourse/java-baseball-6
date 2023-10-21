@@ -23,4 +23,10 @@ public class OutputView {
             System.out.println(NONE_MESSAGE);
         }
     }
+
+    public static void isZeroStrike(int strike, int ball) {
+        if(strike ==0 && ball != 0){
+            System.out.println(ball+BALL_MESSAGE);
+        }
+    }
 }
