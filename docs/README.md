@@ -39,7 +39,8 @@
 ### 요구사항
 - 프로그램 종료 시 `System.exit()`으로 강제 종료를 하지 않는다.
 - 구현이 완료되면 `ApplicationTest`의 모든 테스트를 성공해야한다.
-- 랜덤 함수의 경우 제공되는 라이브러리를 활용한다.
+- <U>입력은 Console을 활용하여 받도록 한다.</U>
+- <U>랜덤 함수의 경우 제공되는 라이브러리를 활용한다.</U>
 
 ---
 
@@ -56,6 +57,12 @@
 - [x] RESTART : `1`
 - [x] FINISH : `2`
 
+### NumberConstant
+- 전반적으로 사용되는 매직넘버들을 상수로 처리한 Enum 클래스이다.
+- [x] MIN_NUMBER : 1
+- [x] MAX_NUMBER : 9
+- [x] PICK_COUNT : 3
+
 ### InputValidation
 - 입력의 유효성을 판단하는 클래스이다.
 - [x] 게임 진행 중 유효성 판단 메서드
@@ -67,7 +74,7 @@
 
 ### ConsoleInput
 - 입력을 담당하는 클래스이다.
-- [x] `Scanner`를 통해 입력을 받는다.
+- [x] `Console.readLine()`를 통해 입력을 받는다.
 - [x] try-catch를 통해 `InputValidation`으로 유효성을 판단한다. 
 - [x] 유효하지 않은 입력의 경우 `IllegalArgumentException`를 발생시킨다.
   - RuntimeException의 하위클래스이므로 exception 발생 시 게임은 그대로 종료되어야 한다.
@@ -92,4 +99,6 @@
   - true라면 재시작하고 false라면 while문을 종료시키고 전체 게임을 종료한다. 
 
 ---
+
+
 
