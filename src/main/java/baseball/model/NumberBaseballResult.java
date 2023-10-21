@@ -12,7 +12,7 @@ public class NumberBaseballResult {
     public String generateResultString() {
         String resultStr = "";
         if(strikeCnt != 0 && ballCnt != 0) {
-            resultStr =  ballCnt + "볼" + strikeCnt + "스트라이크";
+            resultStr =  ballCnt + "볼 " + strikeCnt + "스트라이크";
         }
         if (strikeCnt == 0 && ballCnt != 0) {
             resultStr = ballCnt + "볼";
