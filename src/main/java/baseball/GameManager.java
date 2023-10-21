@@ -1,11 +1,11 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.*;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Predicate;
 
 public class GameManager {
     private static GameManager gameManager;
@@ -60,18 +60,18 @@ public class GameManager {
     private List<Integer> answerStringToNumber(String answer) {
         validateAnswerLength(answer);
 
-        List<Integer> answerNumber = new ArrayList<>();
+        List<Integer> answerNumbers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            char answerChar = answer.charAt(i);
-            validateAnswerCharRange(answerChar);
-            validateNumberDuplicated(answerChar, answerNumber);
-            answerNumber.add((int) answerChar - 48);
+            int number = answer.charAt(i) - 48;
+            validateAnswerNumberRange(number);
+            validateNumberDuplicated(number, answerNumbers);
+            answerNumbers.add(number);
         }
-        return answerNumber;
+        return answerNumbers;
     }
 
-    private void validateAnswerCharRange(char c) {
-        if (c < 49 || c > 57)
+    private void validateAnswerNumberRange(int n) {
+        if (n < 1 || n > 9)
             throw new IllegalArgumentException();
     }
 
@@ -80,12 +80,27 @@ public class GameManager {
             throw new IllegalArgumentException();
     }
 
-    private void validateNumberDuplicated(char answerChar, List<Integer> answerNumber) {
-        if (answerNumber.stream().anyMatch(n -> answerChar - 48 == n))
+    private void validateNumberDuplicated(int n, List<Integer> answerNumbers) {
+        if (answerNumbers.stream().anyMatch(m -> m == n))
             throw new IllegalArgumentException();
     }
 
     private List<Integer> generateRandomNumber() {
-        return new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 9, 3));
+        List<Integer> correctNumber = new ArrayList<>();
+        while(correctNumber.size() < 3) {
+            int n = Randoms.pickNumberInRange(1, 9);
+            boolean isDuplicated = false;
+            for (Integer i : correctNumber) {
+                if (i == n) {
+                    isDuplicated = true;
+                    break;
+                }
+            }
+
+            if (!isDuplicated)
+                correctNumber.add(n);
+        }
+
+        return correctNumber;
     }
 }
