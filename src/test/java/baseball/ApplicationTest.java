@@ -1,7 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -31,5 +36,30 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    private List<Integer> computerNumbers;
+
+    @BeforeEach
+    void setup() {
+        computerNumbers = Arrays.asList(1, 2, 3);
+    }
+
+    @Test
+    @DisplayName("컴퓨터의 랜덤 숫자 생성 테스트")
+    void generateUniqueRandomNumbers_test() {
+        // when
+        List<Integer> numbers = Application.generateUniqueRandomNumbers();
+
+        // then
+        assertThat(numbers).hasSize(3);
+        assertThat(numbers.get(0)).isNotEqualTo(numbers.get(1));
+        assertThat(numbers.get(0)).isNotEqualTo(numbers.get(2));
+        assertThat(numbers.get(1)).isNotEqualTo(numbers.get(2));
+
+        numbers.forEach(number -> {
+            assertThat(number).isGreaterThanOrEqualTo(1);
+            assertThat(number).isLessThanOrEqualTo(9);
+        });
     }
 }
