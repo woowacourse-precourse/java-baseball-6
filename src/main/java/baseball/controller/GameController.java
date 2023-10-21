@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.CompareNumber;
+import baseball.model.NumberComparator;
 import baseball.model.ProgramNumber;
 import baseball.model.ResetGameNumber;
 import baseball.model.UserNumber;
@@ -8,7 +8,7 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    private final CompareNumber numberComparator = new CompareNumber();
+    private final NumberComparator numberComparator = new NumberComparator();
     private ProgramNumber programNumber;
     private UserNumber userNumber;
 

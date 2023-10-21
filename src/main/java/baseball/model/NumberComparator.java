@@ -1,6 +1,6 @@
 package baseball.model;
 
-public class CompareNumber {
+public class NumberComparator {
     private int strikes = 0;
     private int balls = 0;
 
