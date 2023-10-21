@@ -13,7 +13,7 @@ public class GameView {
     }
 
     public String getUserInput() {
-        System.out.println(USER_INPUT_MESSAGE);
+        System.out.print(USER_INPUT_MESSAGE);
         String userInput = Console.readLine();
         return userInput;
     }
