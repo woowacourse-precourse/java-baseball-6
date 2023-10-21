@@ -59,15 +59,9 @@ public class Application {
     }
 
     public enum Status {
-        NOTHING(0, 0, "낫싱"),
-        BALL1(0, 1, "1볼"),
-        BALL2(0, 2, "2볼"),
-        BALL3(0, 3, "3볼"),
-        STRIKE1(1, 0, "1스트라이크"),
-        STRIKE2(2, 0, "2스트라이크"),
-        BALL1_STRIKE1(1, 1, "1볼 1스트라이크"),
-        BALL2_STRIKE1(1, 2, "2볼 1스트라이크"),
-        CORRECT(3, 0, "3스트라이크");
+        NOTHING(0, 0, "낫싱"), BALL1(0, 1, "1볼"), BALL2(0, 2, "2볼"), BALL3(0, 3, "3볼"), STRIKE1(1, 0, "1스트라이크"), STRIKE2(
+                2, 0, "2스트라이크"), BALL1_STRIKE1(1, 1, "1볼 1스트라이크"), BALL2_STRIKE1(1, 2, "2볼 1스트라이크"), CORRECT(3, 0,
+                "3스트라이크");
 
         private Integer strike;
         private Integer ball;
@@ -89,29 +83,8 @@ public class Application {
         }
     }
 
-    public class PrintPackage {
-        public static void printGameStartMessage() {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-        }
-
-        public static void printRequestNumber() {
-            System.out.print("숫자를 입력해주세요 : ");
-        }
-
-        public static void printRetryMessage() {
-            System.out.print("숫자를 입력해주세요 : ");
-        }
-
-        public static void printRegameMessage() {
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        }
-
-        public static void printResult(String results) {
-            System.out.println(results);
-        }
-    }
-
     public class InputClass {
+
         static List<Integer> extractRandomNumber() {
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
@@ -131,6 +104,29 @@ public class Application {
                 user.add(Character.getNumericValue(readLine.charAt(i)));
             }
             return user;
+        }
+
+    }
+
+    public class PrintPackage {
+        public static void printGameStartMessage() {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+        }
+
+        public static void printRequestNumber() {
+            System.out.print("숫자를 입력해주세요 : ");
+        }
+
+        public static void printRetryMessage() {
+            System.out.print("숫자를 입력해주세요 : ");
+        }
+
+        public static void printRegameMessage() {
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+
+        public static void printResult(String results) {
+            System.out.println(results);
         }
     }
 }
