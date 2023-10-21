@@ -31,7 +31,7 @@ public class GameManager {
             OutputHandler.printNothing();
             return;
         }
-        OutputHandler.printStrikesAndBalls(toShow);
+        OutputHandler.printStrikesAndBalls(toShow.numberOfStrikes, toShow.numberOfBalls);
     }
 
     private BallNumber returnPlayerNumber() {

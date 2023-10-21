@@ -1,7 +1,5 @@
 package baseball.view;
 
-import baseball.domain.Result;
-
 public class OutputHandler {
     public static void theGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -11,9 +9,9 @@ public class OutputHandler {
         System.out.println("낫싱");
     }
 
-    public static void printStrikesAndBalls(Result forPrint) {
-        printBalls(forPrint.numberOfBalls);
-        printStrikes(forPrint.numberOfStrikes);
+    public static void printStrikesAndBalls(int numberOfStrikes, int numberOfBalls) {
+        printBalls(numberOfBalls);
+        printStrikes(numberOfStrikes);
         System.out.println();
     }
 
