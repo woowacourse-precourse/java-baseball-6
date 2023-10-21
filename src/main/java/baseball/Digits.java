@@ -50,7 +50,7 @@ final class Digits {
     int countStrike(Digits target) {
         int strikeCount = 0;
         for (int i = 0; i < target.digits.size(); i++) {
-            if(digits.get(i) == target.digits.get(i)) strikeCount++;
+            if (digits.get(i).equals(target.digits.get(i))) strikeCount++;
         }
         return strikeCount;
     }
