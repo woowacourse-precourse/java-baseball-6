@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import static baseball.Constants.END;
+import static baseball.Constants.END_WANT;
 import static baseball.Constants.PLAY_NUMBER_DIGIT;
-import static baseball.Constants.RESTART;
+import static baseball.Constants.PLAY_WANT;
 
 import baseball.Umpire;
 import baseball.factory.NumberFactory;
@@ -16,7 +16,7 @@ public class GameController {
     private final ResumeNumber resumeNumber;
 
     public GameController() {
-        this.resumeNumber = ResumeNumber.from(RESTART);
+        this.resumeNumber = ResumeNumber.from(PLAY_WANT);
     }
 
     public static void play() {
@@ -37,8 +37,8 @@ public class GameController {
 
             if (isStrikeEqualToGoal(strike)) {
                 EndView.end(PLAY_NUMBER_DIGIT);
-                AskController.askResumeInputWithOption(RESTART, END);
-                int resumeNumber = InputController.receiveResumeNumberWithOption(RESTART, END);
+                AskController.askResumeInputWithOption(PLAY_WANT, END_WANT);
+                int resumeNumber = InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT);
                 if (isUserWantMoreGame(resumeNumber)) {
                     computerNumber = selectNewNumber();
                 }
@@ -54,7 +54,7 @@ public class GameController {
     }
 
     private static boolean isUserWantMoreGame(final int resumeNumber) {
-        return resumeNumber == RESTART;
+        return resumeNumber == PLAY_WANT;
     }
 
     private static int selectNewNumber() {
@@ -62,6 +62,6 @@ public class GameController {
     }
 
     private static boolean isUserWantStopGame(final int resumeNumber) {
-        return resumeNumber == END;
+        return resumeNumber == END_WANT;
     }
 }
