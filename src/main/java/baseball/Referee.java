@@ -38,7 +38,7 @@ public class Referee {
         }
         StringBuilder print = new StringBuilder();
         if (judgment[0] > 0) {
-            print.append(String.format("%d볼 ", judgment[0]));
+            print.append(String.format("%d볼 ", judgment[0] - judgment[1]));
         }
         if (judgment[1] > 0) {
             print.append(String.format("%d스트라이크", judgment[1]));
