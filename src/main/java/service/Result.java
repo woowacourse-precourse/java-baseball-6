@@ -13,6 +13,14 @@ public class Result {
         this.strikes = strikes;
     }
 
+    public int getBalls() {
+        return balls;
+    }
+
+    public int getStrikes() {
+        return strikes;
+    }
+
     public static Result getResult(List<Integer> computer, String input) {
         int balls = 0;
         int strikes = 0;
@@ -39,13 +47,5 @@ public class Result {
         else if (result.getBalls() == 0) System.out.println(result.getStrikes() + "스트라이크");
         else if (result.getStrikes() == 0) System.out.println(result.getBalls() + "볼");
         else System.out.println(result.getBalls() + "볼" + " " + result.getStrikes() + "스트라이크");
-    }
-
-    public int getBalls() {
-        return balls;
-    }
-
-    public int getStrikes() {
-        return strikes;
     }
 }
