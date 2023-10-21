@@ -7,19 +7,10 @@ public class User {
 
     private String userNumber;
 
-    public User() throws IllegalArgumentException{
-        try{
-            String userInput = Console.readLine();
-            Validator.validateUserInput(userInput);
-            Validator.validateInputLength(userInput, 3);
-            this.userNumber = userInput;
-        } catch (IllegalArgumentException e){
-            throw e;
-        }
+    public User() {
     }
 
-    public String getuserNumber(){
+    public String getuserNumber() {
         return userNumber;
     }
-
 }
