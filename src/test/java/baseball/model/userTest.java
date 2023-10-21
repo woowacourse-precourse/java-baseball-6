@@ -12,14 +12,18 @@ class userTest {
     @Test
     public void validateInput_test() throws Exception {
         //given
-        String input = "123";
+        String validInput = "123";
         user user = new user();
 
-        //when
-        user.setUserNumber(input);
-        
-        //then
-        assertEquals(input, user.getUserNumber());
+        // when
+        user.setUserNumber(validInput);
+
+        // then
+        assertEquals(validInput.length(), user.getUserNumber().size());
+
+        for (int i = 0; i < validInput.length(); i++) {
+            assertEquals(Character.getNumericValue(validInput.charAt(i)), user.getUserNumber().get(i));
+        }
     }
 
      // 3개를 입력하지 않았을 경우
