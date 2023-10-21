@@ -11,8 +11,11 @@
 
 - [x] HintType : 결과 타입을 가진다.
     - [x] STRIKE를 가진다.
+        - [x] 스트라이크라는 name을 가진다.
     - [x] BALL을 가진다.
-    - [x] NOTHING을 가진다.
+        - [x] 볼이라는 name을 가진다.
+        - [x] NOTHING을 가진다.
+            - [x] 낫싱이라는 name을 가진다.
 
 
 - [x] Referee: 사용자가 입력한 답을 판독한다.
@@ -36,6 +39,13 @@
 - [x] AnswerNumbers : 정답 번호를 가진다.
     - [x] 정답 번호를 가진다.
     - [x] NumberGenerator를 호출해서 중복이 없을때까지 n개의 숫자를 생성한다.
+
+## DTO 기능 명세
+
+- [ ] CommandDTO
+- [ ] HintDTO
+    - [ ] 3 NOTHING 이라면 1 NOTHING을 반환한다.
+    - [ ] 그 이외에는 NOTHING만 제거한다.
 
 ## 입출력 기능 명세
 
