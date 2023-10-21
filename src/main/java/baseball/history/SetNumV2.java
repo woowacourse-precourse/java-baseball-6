@@ -1,4 +1,4 @@
-package baseball;
+package baseball.history;
 
 import java.util.List;
 

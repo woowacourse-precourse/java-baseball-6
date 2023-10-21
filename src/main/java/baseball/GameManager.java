@@ -6,8 +6,10 @@ import java.util.List;
 public class GameManager {
 
     public static void stop() {
+//        System.exit(0);
         return;
     }
+
 
     public static List<Integer> ready(SetNumV3 object) {
         return object.setNum();

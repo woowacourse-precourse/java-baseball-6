@@ -42,8 +42,8 @@ public class PlayerV3 implements SetNumV3{
                 playerNums.add(0, digit);
                 parsedInput /= 10;
             }
-        } catch (IllegalArgumentException e) {
-            GameManager.stop();
+        } catch (IndexOutOfBoundsException e) {
+            throw new IllegalArgumentException();
         }
         return playerNums;
     }
