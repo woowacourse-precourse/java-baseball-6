@@ -49,5 +49,9 @@ public class GameController {
         }
     }
 
+    private void initializeAnswerNumber(){
+        this.answerNumber = new AnswerNumber();
+    }
+
 
 }
