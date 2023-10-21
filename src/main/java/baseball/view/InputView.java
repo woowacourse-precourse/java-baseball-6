@@ -8,7 +8,7 @@ public class InputView {
         System.out.print(ENTER_GUESS_MESSAGE);
     }
 
-    public static void printEnterWhetherRestart() {
+    public static void printEnterRestartOrNot() {
         System.out.println(ENTER_WHETHER_RESTART);
     }
 }

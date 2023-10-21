@@ -30,13 +30,13 @@ public class MainController {
 
     private static class InputController {
         public static String scanRestartOrNot() {
-            InputView.printEnterWhetherRestart();
+            InputView.printEnterRestartOrNot();
             String userInput = Console.readLine();
-            validateWhetherRestart(userInput);
+            validateRestartOrNot(userInput);
             return userInput;
         }
 
-        private static void validateWhetherRestart(String userInput) {
+        private static void validateRestartOrNot(String userInput) {
             Validator.validateNull(userInput);
             Validator.validateSize(userInput, 1);
             Validator.validateInRange(userInput.charAt(0) - '0', 1, 2);
