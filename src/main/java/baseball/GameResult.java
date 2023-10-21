@@ -17,6 +17,10 @@ public class GameResult {
         }
     }
 
+    public boolean isNothing() {
+        return result.size() == 0;
+    }
+
     public boolean isNotThreeStrike() {
         return result.getOrDefault(CompareStatus.STRIKE, 0) != 3;
     }

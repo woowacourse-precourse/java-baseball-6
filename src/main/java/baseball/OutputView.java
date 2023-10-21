@@ -14,7 +14,15 @@ public class OutputView {
     }
 
     public void printResult(GameResult gameResult) {
+        if (gameResult.isNothing()) {
+            printNotingResult();
+            return;
+        }
         printBallAndStrikeResult(gameResult.getBallAndStrikeResult());
+    }
+
+    private void printNotingResult() {
+        System.out.println(CompareStatus.NOTHING);
     }
 
     public void printBallAndStrikeResult(List<String> results) {
