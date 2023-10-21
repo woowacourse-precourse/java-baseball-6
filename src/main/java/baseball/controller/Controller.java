@@ -12,5 +12,9 @@ public class Controller {
         return service.makeNumber();
     }
 
+    public List<Integer> getNumber(){
+        return service.readNumber();
+    }
+
 
 }
