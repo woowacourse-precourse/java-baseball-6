@@ -16,4 +16,11 @@ public class ComputerNumberTest {
         assertThatThrownBy(() -> new ComputerNumber(List.of(1, 2, 3, 4)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("컴퓨터 숫자가 0을 포함하고 있으면 예외가 발생한다.")
+    void testValidateComputerNumberContainZero() {
+        assertThatThrownBy(() -> new ComputerNumber(List.of(1, 2, 0)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
