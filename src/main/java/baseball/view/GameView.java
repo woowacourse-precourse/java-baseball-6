@@ -15,4 +15,8 @@ public class GameView {
         String userInput = Console.readLine();
         return userInput;
     }
+
+    public void printHintMessage(String hintMessage) {
+        System.out.println(hintMessage);
+    }
 }
