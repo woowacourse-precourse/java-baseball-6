@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import data.ComputerNumber;
 import data.GuessNumber;
+import utility.Command;
 import utility.Input;
 import utility.Printer;
 import utility.ValidityChecker;
@@ -13,40 +14,11 @@ import java.util.List;
 import static utility.Command.*;
 
 public class BaseballGame {
-    ComputerNumber computerNumber;
-    GuessNumber guessNumber;
-    List<Integer> countResult;
-    int exitCommand = INITIALIZE;
-    List<Integer> chunk;
-
-    public void run(final int[] computerInput) throws IllegalArgumentException{
-        int chunkIndex = 0;
-
-        chunk = Input.sliceToThree(computerInput, chunkIndex);
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        computerNumber = new ComputerNumber(chunk);
-        chunkIndex++;
-
-        while(exitCommand == INITIALIZE || exitCommand == RESTARTED) {
-            if(exitCommand == RESTARTED){
-                chunk = Input.sliceToThree(computerInput, chunkIndex);
-                computerNumber = new ComputerNumber(chunk);
-            }
-
-            System.out.print("숫자를 입력해 주세요 : ");
-            guessNumber = new GuessNumber();
-            Printer.printBaseballNumber(guessNumber);
-            countResult = count(computerNumber, guessNumber);
-            Printer.printResult(countResult);
-            exitCommand = checkRestart(countResult);
-        }
-    }
     static BaseballGame baseballGame = new BaseballGame();
     public static BaseballGame getInstance(){
         return baseballGame;
     }
     private BaseballGame(){}
-
     private int countBall(
             final ComputerNumber computer, final int guessNumber, final int computerNumber){
         List<Integer> computerNumbers = computer.getNumbers();
