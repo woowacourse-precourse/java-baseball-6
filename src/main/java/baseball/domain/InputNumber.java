@@ -21,19 +21,19 @@ public class InputNumber {
         long distinctCount = inputNumber.stream().distinct().count();
 
         if (distinctCount != inputNumber.size()) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("숫자의 중복은 허용되지 않습니다.");
         }
     }
 
     private void checkLength(int length) {
-        if (length > 3) {
-            throw new IllegalArgumentException("");
+        if (length != 3) {
+            throw new IllegalArgumentException("3자리 수의 숫자를 입력해주세요");
         }
     }
 
     private void checkNotContainZero(List<Integer> inputNumber) {
         if (inputNumber.contains(0)) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("0은 입력할 수 없습니다.");
         }
     }
 
