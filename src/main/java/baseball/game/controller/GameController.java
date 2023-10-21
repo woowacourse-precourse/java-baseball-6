@@ -6,32 +6,36 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
 
+    private Game game;
+    private GameView gameView;
 
     public boolean startGame() {
 
-        Game game = new Game();
-        GameView gameView = new GameView();
+        String userInput;
+        game = new Game();
+        gameView = new GameView();
 
         gameView.printGameStart();
 
-        while (true) {
-            String input = Console.readLine();
-            game.validateInput(input);
-
-            int strikeCount = game.countStrike(input);
-            int ballCount = game.countBall(input);
-            gameView.printHint(strikeCount, ballCount);
-
-            if (game.isEndGame(strikeCount)) {
-                gameView.printGameEnd();
-                input = Console.readLine();
-                return game.restartGame(input);
-            }
+        while (game.isGamePlaying()) {
+            userInput = Console.readLine();
+            getHint(userInput);
         }
 
+        gameView.printGameEnd();
+        userInput = Console.readLine();
 
+        return game.restartGame(userInput);
     }
 
+    private void getHint(String input) {
 
+        game.validateInput(input);
+
+        int strikeCount = game.countStrike(input);
+        int ballCount = game.countBall(input);
+        gameView.printHint(strikeCount, ballCount);
+
+    }
 
 }

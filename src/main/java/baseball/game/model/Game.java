@@ -8,9 +8,12 @@ public class Game {
 
     private List<Integer> randomAnswer;
 
+    private Boolean isGameEnd;
+
     public Game() {
         this.randomAnswer = new ArrayList<>();
         createRandomAnswer();
+        this.isGameEnd = false;
     }
 
     private List<Integer> createRandomAnswer() {
@@ -52,6 +55,8 @@ public class Game {
             if (isStrike(number, i)) strikeCount++;
         }
 
+        if (strikeCount == 3) isGameEnd = true;
+
         return strikeCount;
     }
 
@@ -65,17 +70,14 @@ public class Game {
         }
     }
 
-    public boolean isEndGame(int strikeCount) {
-        if (strikeCount == 3) {
-            return true;
-        }
-        return false;
+    public boolean isGamePlaying() {
+        return !this.isGameEnd;
     }
 
 
     public int countBall(String input) {
         List<Integer> inputList = stringToIntegerList(input);
-        Integer ballCount = 0;
+        int ballCount = 0;
 
         for (int i = 0; i < 3; i++) {
             Integer number = inputList.get(i);
