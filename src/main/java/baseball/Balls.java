@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Balls {
@@ -40,6 +41,7 @@ public class Balls {
     private TryResult getTryResult(Ball playerBall) {
         return balls.stream()   // balls = answerBalls
             .map(answerBall -> answerBall.getTryResult(playerBall))
+            .filter(tryResult -> tryResult != TryResult.NOTHING)
             .findFirst()
             .orElse(TryResult.NOTHING);
     }

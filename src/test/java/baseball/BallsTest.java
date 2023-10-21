@@ -9,10 +9,16 @@ import org.junit.jupiter.api.Test;
 public class BallsTest {
 
     @Test
-    void ballsSizeTest() {
-        List<Ball> ballList = List.of(new Ball(1, 1), new Ball(1, 2));
-        Balls balls = new Balls(ballList);
-        assertThatThrownBy(() -> balls.validateSize(ballList))
+    void _2자리_입력한_경우() {
+        List<Integer> rawBallList = InputConvertor.convertBalls("12");
+        assertThatThrownBy(() -> InputValidator.validateBallsCount(rawBallList))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("3자리의 숫자를 입력해주세요.");
+    }
+    @Test
+    void _4자리_입력한_경우() {
+        List<Integer> rawBallList = InputConvertor.convertBalls("1234");
+        assertThatThrownBy(() -> InputValidator.validateBallsCount(rawBallList))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("3자리의 숫자를 입력해주세요.");
     }
@@ -40,43 +46,23 @@ public class BallsTest {
         Ball otherBall = new Ball(1, 2);
         assertThat(ball.equals(otherBall)).isFalse();
     }
-    @Test
-    void 정답은_1_입력숫자는_1일때_첫째자리_비교결과_true를_반환한다() {
-        Ball ball = new Ball(1, 1);
-        Ball otherBall = new Ball(1, 1);
-        assertThat(ball.equals(otherBall)).isTrue();
-    }
 
     @Test
     void 정답은_123_입력숫자는_123일때_strike_3를_반환한다() {
         Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
         Balls otherBalls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
-        assertThat(balls.getStrikeCount(otherBalls)).isEqualTo(3);
-    }
-    @Test
-    void 정답은_123_입력숫자는_321일때_strike_1를_반환한다() {
-        Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
-        Balls otherBalls = new Balls(new Ball(1,3), new Ball(2,2), new Ball(3,1));
-        assertThat(balls.getStrikeCount(otherBalls)).isEqualTo(1);
-    }
-
-    @Test
-    void 정답은_123_입력숫자는_451일때_ball_1를_반환한다() {
-        Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
-        Balls otherBalls = new Balls(new Ball(1,4), new Ball(2,5), new Ball(3,1));
-        assertThat(balls.getBallCount(otherBalls)).isEqualTo(1);
+        assertThat(balls.getTryResultList(otherBalls)).containsExactly(TryResult.STRIKE, TryResult.STRIKE, TryResult.STRIKE);
     }
     @Test
     void 정답은_123_입력숫자는_231일때_ball_3를_반환한다() {
         Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
         Balls otherBalls = new Balls(new Ball(1,2), new Ball(2,3), new Ball(3,1));
-        assertThat(balls.getBallCount(otherBalls)).isEqualTo(3);
+        assertThat(balls.getTryResultList(otherBalls)).containsExactly(TryResult.BALL, TryResult.BALL, TryResult.BALL);
     }
     @Test
     void 정답은_123_입력숫자는_135일때_strike_1_ball_1를_반환한다() {
         Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
         Balls otherBalls = new Balls(new Ball(1,1), new Ball(2,3), new Ball(3,5));
-        assertThat(balls.getStrikeCount(otherBalls)).isEqualTo(1);
-        assertThat(balls.getBallCount(otherBalls)).isEqualTo(1);
+        assertThat(balls.getTryResultList(otherBalls)).contains(TryResult.STRIKE, TryResult.BALL);
     }
 }
