@@ -10,7 +10,7 @@ public class InputValidator {
     private static final int INPUT_NUMBER_COUNT = 3;
 
     public String validateAndReturnInput() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
 
         String input = Console.readLine();
 
