@@ -24,8 +24,8 @@ public class GameScore {
 
     public int getBall() {
         int ball = 0;
-        for (int i=0; i<3; i++) {
-            if (computer.contains(suggestion.get(i)) && !Objects.equals(suggestion.get(i), computer.get(i))){
+        for (int i = 0; i < 3; i++) {
+            if (computer.contains(suggestion.get(i)) && !Objects.equals(suggestion.get(i), computer.get(i))) {
                 ball++;
             }
         }

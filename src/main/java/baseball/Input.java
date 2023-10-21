@@ -9,8 +9,8 @@ public class Input {
         Console.readLine();
     }
 
-    public void gameSwitch() {
+    public int retryOrEnd() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Console.readLine();
+        return Integer.parseInt(Console.readLine());
     }
 }
