@@ -22,4 +22,31 @@ public class Computer {
         }
         return answer;
     }
+
+    // TODO: test code 작성
+    public List<Integer> compareWithAnswer(List<Integer> target) {
+        // TODO: target에 대한 검증
+        int strikeCount = 0, ballCount = 0;
+
+        // TODO: Stream 문법으로 개선하기
+        for (int i = 0; i < answer.size(); i++) {
+            if (answer.get(i).equals(target.get(i))) {
+                strikeCount++;
+            }
+        }
+
+        // TODO: Stream 문법으로 개선하기
+        for (int i = 0; i < answer.size(); i++) {
+            for (int j = 0; j < answer.size(); j++) {
+                if (i == j) {
+                    continue;
+                }
+                if (answer.get(i).equals(target.get(i))) {
+                    ballCount++;
+                }
+            }
+        }
+
+        return List.of(strikeCount, ballCount);
+    }
 }
