@@ -36,7 +36,7 @@ public class Computer {
 
 	private void validateDuplicateNumber(List<Integer> computerNumbers) {
 		if (isDuplicateNumber(computerNumbers)) {
-			throw new IllegalArgumentException("사용자가 입력한 숫자가 중복되었습니다.");
+			throw new IllegalArgumentException("컴퓨터가 생성한 숫자가 중복되었습니다.");
 		}
 	}
 
