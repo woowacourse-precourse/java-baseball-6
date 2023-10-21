@@ -21,7 +21,7 @@ public class BaseballGameMachine {
             System.out.print(message.requestInput());
             List<Integer> userInput = inputValidation.validateUserInput(input());
             List<Integer> result = referee.judgeUserInput(userInput);
-            System.out.println(message.result(result.get(0), result.get(1)));
+            System.out.println(message.result(result));
             if (result.get(0) == 0 && result.get(1) == 3) {
                 System.out.println(message.success());
                 System.out.println(message.requestRetryOrEnd());

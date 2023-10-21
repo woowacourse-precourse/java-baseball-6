@@ -3,6 +3,8 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class MessageTest {
@@ -56,9 +58,7 @@ class MessageTest {
         //given
         Message message = new Message();
         //when
-        final int ball = 0;
-        final int strike = 0;
-        final String nothingResult = message.result(0, 0);
+        final String nothingResult = message.result(null);
         //then
         assertThat(nothingResult).isEqualTo("낫싱");
     }
@@ -71,7 +71,7 @@ class MessageTest {
         //when
         final int ball = 2;
         final int strike = 0;
-        final String onlyBallResult = message.result(2, 0);
+        final String onlyBallResult = message.result(List.of(ball, strike));
         //then
         assertThat(onlyBallResult).isEqualTo(ball + "볼");
     }
@@ -84,7 +84,7 @@ class MessageTest {
         //when
         final int ball = 0;
         final int strike = 3;
-        final String onlyStrikeResult = message.result(0, 3);
+        final String onlyStrikeResult = message.result(List.of(ball, strike));
         //then
         assertThat(onlyStrikeResult).isEqualTo(strike + "스트라이크");
     }
@@ -97,7 +97,7 @@ class MessageTest {
         //when
         final int ball = 1;
         final int strike = 2;
-        final String ballAndStrikeResult = message.result(1, 2);
+        final String ballAndStrikeResult = message.result(List.of(ball, strike));
         //then
         assertThat(ballAndStrikeResult).isEqualTo(ball + "볼 " + strike + "스트라이크");
     }
