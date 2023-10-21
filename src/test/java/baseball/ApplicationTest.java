@@ -31,6 +31,30 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 범위_벗어난_사용자_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("120"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복된_사용자_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("455"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자가_아닌_사용자_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 난수_생성후_개수_테스트() {
         RandomUtil randomUtil = new RandomUtil();
         assertThat(randomUtil.createRandomList().size()).isEqualTo(3);
