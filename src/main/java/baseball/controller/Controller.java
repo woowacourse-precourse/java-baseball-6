@@ -9,9 +9,9 @@ import java.util.List;
 
 public class Controller {
     private static Answer answer;
-    private static NumberGenerator generator = new NumberGenerator();
-    private static InputView inputView = new InputView();
-    private static OutputView outputView = new OutputView();
+    private static final NumberGenerator generator = new NumberGenerator();
+    private static final InputView inputView = new InputView();
+    private static final OutputView outputView = new OutputView();
     private static boolean flag = true;
 
     public static void run() {
