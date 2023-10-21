@@ -1,6 +1,6 @@
 package baseball.game.core;
 
-import baseball.game.service.Answer;
+import baseball.game.service.answer.Answer;
 import baseball.game.service.BaseballGame;
 import baseball.io.input.Input;
 

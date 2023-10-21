@@ -1,6 +1,6 @@
 package baseball.game.core;
 
-import baseball.game.service.Answer;
+import baseball.game.service.answer.Answer;
 import baseball.game.service.BaseballGame;
 import baseball.game.service.dto.Baseball;
 import baseball.game.service.dto.BaseballScore;
@@ -27,8 +27,9 @@ public class GameLoop {
         while (gameLifeCycle.isRunning()) {
             System.out.print("숫자를 입력해주세요 : ");
             String balls = input.nextLineWithValidation(InputValidator.singleton());
+            String currentAnswer = answer.getAnswer();
             Baseball myBall = Baseball.of(balls);
-            Baseball computerBall = Baseball.of(answer.getAnswer());
+            Baseball computerBall = Baseball.of(currentAnswer);
 
             BaseballScore matchResults = baseballGame.match(computerBall, myBall);
             System.out.println(matchResults);
