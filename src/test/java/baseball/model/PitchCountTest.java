@@ -45,8 +45,8 @@ class PitchCountTest {
 
         //일부 숫자가 맞는 경우
         pitchCount.countStrikeBall(computerNumber, userNumberPartialMatch);
-        assertEquals(2, pitchCount.getStrikeCnt());
-        assertEquals(0, pitchCount.getBallCnt());
+        assertEquals(1, pitchCount.getStrikeCnt());
+        assertEquals(2, pitchCount.getBallCnt());
     }
 
 
