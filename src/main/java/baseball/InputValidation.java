@@ -31,18 +31,18 @@ public class InputValidation {
     }
 
     // 길이에 대한 검증
-    private void validateLength(String input) {
+    public void validateLength(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION_MSG);
         }
     }
 
-    private String deleteSpace(String input) {
+    public String deleteSpace(String input) {
         return input.replace(" ", "");
     }
 
     // 숫자로만 이루어져있는지 검증
-    private void validateOnlyDigit(String input) {
+    public void validateOnlyDigit(String input) {
         boolean checkOnlyDigit = input.chars().allMatch(Character::isDigit);
 
         if (!checkOnlyDigit) {
@@ -51,33 +51,33 @@ public class InputValidation {
     }
 
     // 0을 포함했는지 검증
-    private void validateContainZero(String input) {
+    public void validateContainZero(String input) {
         if (input.contains("0")) {
             throw new IllegalArgumentException(INPUT_CONTAIN_ZERO_EXCEPTION_MSG);
         }
     }
 
     // 중복수에 대한 검증
-    private void validateDuplicateNumber(String input) {
+    public void validateDuplicateNumber(String input) {
         if (input.chars().distinct().count() < 3) {
             throw new IllegalArgumentException(INPUT_DUPLICATION_EXCEPTION_MSG);
         }
     }
 
     // 문자열 -> 리스트 변환
-    private List<Integer> convertStrToIntegerList(String input) {
+    public List<Integer> convertStrToIntegerList(String input) {
         return input.chars()
                 .mapToObj(Character::getNumericValue)
                 .collect(Collectors.toList());
     }
 
-    private void validateSign(String input) {
+    public void validateSign(String input) {
         if (input.charAt(0) != '1' && input.charAt(0) != '2') {
             throw new IllegalArgumentException(CONTROL_SIGN_NUMBER_EXCEPTION_MSG);
         }
     }
 
-    private void validateSignLength(String input) {
+    public void validateSignLength(String input) {
         if (input.length() != 1) {
             throw new IllegalArgumentException(CONTROL_SIGN_LENGTH_EXCEPTION_MSG);
         }
