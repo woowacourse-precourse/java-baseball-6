@@ -1,6 +1,5 @@
 package process;
 
-import domain.ComputerNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +9,7 @@ import java.util.List;
 public class ComputerNumberTest {
 
     final List<Integer> computer = new ArrayList<>();
-    final ComputerNumber computerNumber = ComputerNumber.getInstance(computer);
+    final ComputerNumberProcess computerNumber = ComputerNumberProcess.getInstance(computer);
     @Test
     @DisplayName("세자리 랜덤 수 생성 확인")
     public void makeRandomNumbers() throws Exception {
