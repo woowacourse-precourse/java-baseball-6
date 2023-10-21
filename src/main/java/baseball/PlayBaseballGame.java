@@ -1,14 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class PlayBaseballGame {
     static List<Integer> getRandomNum() {
@@ -25,11 +23,8 @@ public class PlayBaseballGame {
     }
 
     static List<Integer> getPlayerGuess() throws IOException {
-        InputStream numberGuessStream = System.in;
-        InputStreamReader numberGuessStreamReader = new InputStreamReader(numberGuessStream);
-        BufferedReader numberGuessBufferReader = new BufferedReader(numberGuessStreamReader);
 
-        String numberGuessInput = numberGuessBufferReader.readLine();
+        String numberGuessInput = readLine();
         int numberGuess = Integer.parseInt(numberGuessInput);
 
         int firstNum;
@@ -84,6 +79,21 @@ public class PlayBaseballGame {
             return false;
         }
     }
+
+    static boolean askNewGame() throws IOException{
+        System.out.println("게임을 새로 시작하시려면 1, 종료하려면 2를 입력하세요.");
+
+        String newGameAnswerString = readLine();
+        int newGameAnswer = Integer.parseInt(newGameAnswerString);
+
+        if(newGameAnswer == 1) {
+            return true;
+        } else if(newGameAnswer == 2) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
     public static void playGame() {
 
         boolean isCorrect = false;
@@ -105,5 +115,17 @@ public class PlayBaseballGame {
         }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+        boolean startNewGame;
+
+        try {
+            startNewGame = askNewGame();
+        } catch (IllegalArgumentException | IOException e) {
+            return;
+        }
+
+        if(startNewGame) {
+            playGame();
+        }
     }
 }
