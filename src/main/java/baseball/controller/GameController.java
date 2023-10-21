@@ -33,23 +33,32 @@ public class GameController {
     }
 
     public void start(){
-        String input="1";
         outputView.printProgramStartMessage();
+        while(startGame());
+    }
 
-        while(isOne(input)) {
-            game = new Game();
+    private boolean startGame(){
+        game = new Game(); //게임 생성
+        playGame(); //게임 수행
 
-            playGame();
+        return continueGame();
+    }
 
-            //재시작 여부
-            input = inputView.inputContinue();
-            Validator validator = new Validator();
-            validator.validateContinue(input);
-        }
+    private boolean continueGame(){
+        return isOne(inputContinue());
+    }
+
+    private String inputContinue(){ //입력
+        String input=inputView.inputContinue();
+        Validator validator = new Validator();
+        validator.validateContinue(input);
+
+        return input;
     }
 
     private void playGame(){
-        while (playOneTime())//게임 입출력 사이클 1회 반복
+        while (playOneTime());//게임 입출력 사이클 1회 반복
+        
         outputView.printFinishGameMessage();//게임 종료문구 출력
     }
 
