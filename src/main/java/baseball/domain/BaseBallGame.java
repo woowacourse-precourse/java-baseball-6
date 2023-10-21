@@ -6,6 +6,7 @@ import java.util.List;
 
 public class BaseBallGame {
 
+    private ComputerNum computerNum = new ComputerNum();
     private List<Integer> computerList;
 
     public BaseBallGame() {
@@ -34,7 +35,6 @@ public class BaseBallGame {
     }
 
     public void buildNewComputerList() {
-        ComputerNum computerNum = new ComputerNum();
         computerList = computerNum.buildComputerNum();
     }
 }
