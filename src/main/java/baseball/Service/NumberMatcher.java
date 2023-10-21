@@ -1,4 +1,4 @@
-package baseball;
+package baseball.Service;
 
 import baseball.Model.GameResult;
 import java.util.List;
