@@ -17,6 +17,7 @@ public class Baseball {
         }
         return computer;
     }
+
     //사용자 입력 받음
     void playBaseball() {
         List<Integer> computer = generateValue();
@@ -71,8 +72,13 @@ public class Baseball {
                 throw new IllegalArgumentException();
             }
         }
+        for (int j = 0; j < 2; j++) {
+            if (user.charAt(j) == user.charAt(2)) {
+                throw new IllegalArgumentException();
+            }
+            if (j == 1 && user.charAt(j) == user.charAt(0)) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
-
-
-
 }
