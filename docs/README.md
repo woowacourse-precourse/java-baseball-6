@@ -19,9 +19,10 @@
 
 ## Domain 구성
 ***
-### BaseballPosition
+### Baseball
 #### **Field**
-    1부터 9까지의 범위 중 하나의 위치를 저장(ballPosition)
+    0부터 2 사이 순서를 저장(order)
+    1부터 9까지의 범위 중 하나의 위치를 저장(position)
 #### **Method**
     위치가 같은지 확인(equals)
     위치를 입력으로 받아서 BaseballPosition 인스턴스 생성(from)
