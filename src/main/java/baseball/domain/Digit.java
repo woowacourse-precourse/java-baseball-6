@@ -2,8 +2,8 @@ package baseball.domain;
 
 public class Digit {
 
-    private static final int MIN_VALUE = 1;
-    private static final int MAX_VALUE = 9;
+    static final int MIN_VALUE = 1;
+    static final int MAX_VALUE = 9;
 
     private final int value;
 

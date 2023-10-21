@@ -3,11 +3,12 @@ package baseball.domain;
 import baseball.dto.ComparisonResult;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Number {
 
-    private static final int NUMBER_LENGTH = 3;
+    static final int NUMBER_LENGTH = 3;
 
     private final List<Digit> digits;
 
@@ -35,6 +36,11 @@ public class Number {
 
     private int countDistinctDigit(List<Digit> digits) {
         return new HashSet<>(digits).size();
+    }
+
+    public static Number from(List<Digit> digits) {
+        Objects.requireNonNull(digits);
+        return new Number(List.copyOf(digits));
     }
 
     public static Number from(int value) {
