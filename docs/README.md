@@ -2,8 +2,8 @@
 
 
 
-
-
+~~
+~~
 ### 기능 명세서 작성 
 문제에서 요구하는 기능을 다음처럼 작성해봤다. 
 
@@ -17,40 +17,68 @@
 
 ```mermaid
 classDiagram
-    GameController -- Game
-    application --> GameController
-    Game -- UserController
-    Game -- LogicController
-    Game -- ComputerController
+    application --> GameFlowController
+    GameController -- LogicController
+    GameController -- ComputerController
     GameController -- OutputView
+    GameController -- InputView
     GameController -- numbersValidator
+    ComputerController -- numbersValidator
+    GameFlowController -- GameController
+    ComputerController -- Computer
+    LogicController -- Computer
     
-            
+     class GameFlowController{
+         - gameController : GameController
+         + startGame()
+     }      
             
       class application{ 
           + start()
       }
-      class UserController{
-          
+      class Computer{
+          - computerNumber : String
+          - computer : Computer
+          + getInstance()
+          + clearInstance()
       }
       
       class OutputView{
-          
+          + displayMessage()
+          + displayScore(int,int)
+          + displayBallScore(int)
+          + displayStrikeScore(int)
       }
+      class InputView{
+            + inputNumber();
+            + restartInputNumber();
+        }
       class LogicController{
-          
+          - computer : Computer
+          - scoreboard : Map<String,int>
+          + judge() : Boolean
+          + convertStringToIntArray(String) : int[]
       }
-      class Game{
-      } 
+      class ComputerController{
+          -  computer:Computer
+          -  numberValidator:NumberValidator
+          + setGameClearNumber()
+      }
       class GameController{
-          +play()
-          +restart()
-          +end()
+          - logicController:LogicController
+          - inputView:InputView
+          - outputView:OutputView
+          - numberValidator:NumberValidator
+          - computerController :ComputerController
+          - endGame : boolean
+          + startGame()
+          + setEndGame(Boolean)
+          + ynReStart(): Boolean
       }
       class numbersValidator{
+          + isValidNumber(String)
       }
 
 ```
-
 
 
