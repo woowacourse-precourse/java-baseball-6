@@ -3,10 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -21,14 +18,14 @@ public class Application {
         int endN=9;
 
         //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
-        List<Integer> computerNum = new ArrayList<>();
-        while (computerNum.size() < n) {
+        List<Integer> computerNumList = new ArrayList<>();
+        while (computerNumList.size() < n) {
             int randomNumber = Randoms.pickNumberInRange(startN, endN);
-            if (!computerNum.contains(randomNumber)) {
-                computerNum.add(randomNumber);
+            if (!computerNumList.contains(randomNumber)) {
+                computerNumList.add(randomNumber);
             }
         }
-        System.out.println("컴퓨터가 뽑은 수"+computerNum);
+        System.out.println("컴퓨터가 뽑은 수"+computerNumList);
 
         //사용자는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 입력　
         System.out.print("숫자를 입력해주세요 : ");
@@ -60,13 +57,16 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
+        //검증이 완료되어야 변환 가능
+        List<Integer> inputNumList = parseIntegerList(inputNum);
+        System.out.println(inputNumList);
 
     }
 
-    //정수인지 아닌지 판단
-    public static boolean isInteger(String strValue) {
+    //string이 Integer인지 아닌지 판단. TODO: IntegerUtil에 넣기
+    public static boolean isInteger(String string) {
         try {
-            Integer.parseInt(strValue);
+            Integer.parseInt(string);
             return true;
         } catch (NumberFormatException ex) {
             return false;
@@ -84,7 +84,7 @@ public class Application {
         return integerList;
     }
 
-    //char to Integer
+    //char to Integer TODO: IntegerUtil에 넣기
     public static Integer parseInteger(char character){
         Integer integer = character - '0';
 
