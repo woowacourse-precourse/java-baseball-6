@@ -24,7 +24,6 @@ public class BaseballScore {
 
     public void addBallCount(int count) {
         this.ballCount += count;
-
     }
 
     public void addStrikeCount(int count) {
