@@ -8,14 +8,13 @@ public class BaseballNumber {
     private List<Integer> number;
 
     public BaseballNumber(String number) {
-
         this.number = Util.stringToIntegerList(number);
     }
 
     public BaseballNumber(List<Integer> computerNumber) {
         this.number = computerNumber;
     }
-     
+
     public static BaseballScore compareNumber(BaseballNumber computerNumber, BaseballNumber userNumber) {
         BaseballScore baseballScore = new BaseballScore(0, 0);
         List<Integer> computerNumberList = computerNumber.number;
@@ -24,5 +23,4 @@ public class BaseballNumber {
         baseballScore.addBallCount(Util.countSameValueDifferentIdxByList(computerNumberList, userNumberList));
         return baseballScore;
     }
-
 }
