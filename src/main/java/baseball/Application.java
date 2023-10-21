@@ -12,7 +12,7 @@ public class Application {
         int status = 1;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (status != 0) {
+        while (status != 2) {
             List<Integer> randomNumbers = randomUtil.createRandomList();
 
             status = gameController.startGame(randomNumbers);

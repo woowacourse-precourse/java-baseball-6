@@ -10,6 +10,7 @@ public class GameController {
     NumberModel numberModel = new NumberModel();
     GameView gameView = new GameView();
     ValidationUtil validationUtil = new ValidationUtil();
+
     public int startGame(List<Integer> randomNumbers) {
         numberModel.setComputerNumbers(randomNumbers);
 
@@ -25,8 +26,17 @@ public class GameController {
         numberModel.setUserNumbers(userNumbers);
 
 
+        return askRestart();
+    }
 
-        return 0;
+    public int askRestart() {
+        String userInput = gameView.inputRestart();
+        if (userInput.equals("1")) {
+            return 1;
+        } else if (userInput.equals("2")) {
+            return 2;
+        }
+        throw new IllegalArgumentException("잘못 입력하셨습니다.");
     }
 
 }
