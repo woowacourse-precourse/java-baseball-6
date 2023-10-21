@@ -3,16 +3,17 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class MessageManager extends Messages {
+    private String inputResponse;
     public void showIntro() {
         System.out.print(super.getIntroMessage());
         System.out.println();
     }
 
-    public String getInput() {
+    public String getInputResponse() {
         System.out.print(super.getInputMessage());
-        String input = readLine();
+        inputResponse = readLine();
         System.out.println();
-        return input;
+        return inputResponse;
     }
 
     public void showMessage(GameProcessor gameProcessor, String message) {
