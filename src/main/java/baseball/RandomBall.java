@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RandomBall {
 
-    public static List<Integer> makeRandomBall() {
+    protected static List<Integer> makeRandomBall() {
         List<Integer> ball = new ArrayList<>();
         while (ball.size() < 3) {
             int tempBall = Randoms.pickNumberInRange(1, 9);
