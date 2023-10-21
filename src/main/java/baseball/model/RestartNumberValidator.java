@@ -7,14 +7,13 @@ public class RestartNumberValidator {
     private static final String FINISH_NUMBER = "2";
     private static final int RESTART_FINISH_NUMBER_LENGTH = 1;
 
-    public static boolean validate(String restartNumber) {
+    public static void validate(String restartNumber) {
         if (!hasValidLength(restartNumber)) {
             throw new IllegalArgumentException(INPUT_LENGTH_IS_NOT_ONE);
         }
         if (!isInValidRange(restartNumber)) {
             throw new IllegalArgumentException(INPUT_IS_NOT_VALID_NUMBER);
         }
-        return RESTART_NUMBER.equals(restartNumber);
     }
 
     private static boolean hasValidLength(String restartNumber) {
