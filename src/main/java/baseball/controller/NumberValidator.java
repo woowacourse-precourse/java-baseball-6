@@ -3,6 +3,7 @@ package baseball.controller;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class NumberValidator {
     public static final int BASEBALL_NUMBER_LENGTH = 3;
@@ -10,7 +11,7 @@ public class NumberValidator {
     private static final String WRONG_RANGE_NUMBER_MESSAGE = "1~9 사이의 숫자만 입력해주세요.";
     private static final String WRONG_SAME_NUMBER_MESSAGE = "서로 다른 세 자리 숫자만 입력해주세요.";
 
-    public void toValidateNumber(String inputNumber) {
+    public int[] toValidateNumber(String inputNumber) {
         if (!isSameLength(inputNumber)) {
             throw new IllegalArgumentException(WRONG_LEGNTH_NUMBER_MESSAGE);
         } else if (!isSameRange(inputNumber)) {
@@ -18,6 +19,7 @@ public class NumberValidator {
         } else if (!isDiffNumber(inputNumber)) {
             throw new IllegalArgumentException(WRONG_SAME_NUMBER_MESSAGE);
         }
+        return convertStringToIntArray(inputNumber);
     }
 
     public boolean isSameLength(String inputNumber) {
@@ -33,5 +35,9 @@ public class NumberValidator {
         Set<String> setNumbers = Arrays.stream(numbers).collect(Collectors.toSet());
 
         return setNumbers.size() == BASEBALL_NUMBER_LENGTH;
+    }
+
+    public int[] convertStringToIntArray(String inputNumber) {
+        return Stream.of(inputNumber.split("")).mapToInt(Integer::parseInt).toArray();
     }
 }
