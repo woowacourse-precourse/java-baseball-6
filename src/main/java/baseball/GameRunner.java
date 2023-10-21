@@ -7,8 +7,7 @@ public class GameRunner {
     public GameRunner() {
         Person person = new Person();
         Computer computer = new Computer();
-        GameScore gameScore = new GameScore(person, computer);
-        this.gameRound = new GameRound(person, computer, gameScore);
+        this.gameRound = new GameRound(person, computer);
     }
 
     public void playGame() {

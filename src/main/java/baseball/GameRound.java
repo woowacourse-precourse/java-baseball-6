@@ -7,10 +7,10 @@ public class GameRound {
     private final Person person;
     private final Computer computer;
 
-    public GameRound(Person person, Computer computer, GameScore gameScore) {
+    public GameRound(Person person, Computer computer) {
         this.person = person;
         this.computer = computer;
-        this.gameScore = gameScore;
+        gameScore = new GameScore(person, computer);
     }
 
     public boolean playRound() {
@@ -34,16 +34,16 @@ public class GameRound {
 
     private boolean checkContinueGame(BallStrikeCount ballStrikeCount) {
         if (isThreeStrike(ballStrikeCount)) {
-            return handleUserChoice(ballStrikeCount);
+            return handleUserChoice();
         }
-        restartRound(ballStrikeCount);
+        restartRound();
         return false;
     }
 
-    private boolean handleUserChoice(BallStrikeCount ballStrikeCount) {
+    private boolean handleUserChoice() {
         int choice = Integer.parseInt(Console.readLine());
         if (choice == GameConstants.RESTART_GAME) {
-            restartGame(ballStrikeCount);
+            restartGame();
             return false;
         }
         return choice == GameConstants.END_GAME;
@@ -53,13 +53,11 @@ public class GameRound {
         return ballStrikeCount.getStrikeCount() == GameConstants.THREE_STRIKE;
     }
 
-    public void restartRound(BallStrikeCount ballStrikeCount) {
-        ballStrikeCount.clean();
+    public void restartRound() {
         person.clean();
     }
 
-    public void restartGame(BallStrikeCount ballStrikeCount) {
-        ballStrikeCount.clean();
+    public void restartGame() {
         person.clean();
         computer.clearAndInitialize();
     }

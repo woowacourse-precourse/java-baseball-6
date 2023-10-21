@@ -17,11 +17,6 @@ public class BallStrikeCount {
         strikeCount++;
     }
 
-    public void clean() {
-        ballCount = 0;
-        strikeCount = 0;
-    }
-
     public int getBallCount() {
         return ballCount;
     }
