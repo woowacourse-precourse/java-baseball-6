@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ public class Generator {
 
     private static final int MIN_NUM = 1;
     private static final int MAX_NUM = 9;
+    private static final int LIST_LEN = 3;
 
     public static List<Integer> generateAnswer(int listLen) {
         List<Integer> answerList = new ArrayList<>();
@@ -25,7 +27,10 @@ public class Generator {
         return answerList;
     }
 
-    public static List<Integer> generateInputList(String input) {
+    public static List<Integer> generateInputList() {
+        String input = Console.readLine();
+        Validation.validateInputLength(input, LIST_LEN);
+
         int inputLen = input.length();
 
         List<Integer> inputList = new ArrayList<>();

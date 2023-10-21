@@ -1,10 +1,9 @@
 package baseball.controller;
 
 import baseball.view.View;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
-public class Game {
+public class Core {
 
     private static final int LIST_LEN = 3;
 
@@ -15,17 +14,14 @@ public class Game {
         while (playing) {
             View.askNumber();
 
-            String input = Console.readLine();
-            Validation.validateInputLength(input, LIST_LEN);
+            List<Integer> inputList = Generator.generateInputList();
 
-            List<Integer> inputList = Generator.generateInputList(input);
-
-            int strike = Game.countStrike(inputList, answer);
-            int ball = Game.countBall(inputList, answer);
+            int strike = Core.countStrike(inputList, answer);
+            int ball = Core.countBall(inputList, answer);
 
             View.showResult(strike, ball);
 
-            playing = Game.isNotOver(strike);
+            playing = Core.isNotOver(strike);
         }
     }
 

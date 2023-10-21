@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.controller.Game;
+import baseball.controller.Core;
 import baseball.controller.Validation;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
@@ -15,7 +15,7 @@ public class Application {
         boolean running = true;
 
         while (running) {
-            Game.run();
+            Core.run();
 
             View.showClosing();
             View.askOneOrTwo();
@@ -24,10 +24,10 @@ public class Application {
         }
     }
 
-    private static boolean checkExit() {
+    public static boolean checkExit() {
         String input = Console.readLine();
         Validation.validateInputLength(input, ONE_OR_TWO_LEN);
-        
+
         int inputNum = input.charAt(0) - '0';
         Validation.validateOneOrTwo(inputNum);
 
