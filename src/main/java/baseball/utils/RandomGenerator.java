@@ -10,11 +10,8 @@ import java.util.List;
 
 public class RandomGenerator {
 
-
-
 	public List<Integer> generateRandomNumbers() {
 		List<Integer> randomNumbers = new ArrayList<>(NUMBER_LENGTH);
-
 		for (int i = 0; i < NUMBER_LENGTH; i++) {
 			randomNumbers.add(generateUniqueRandomNumber(randomNumbers));
 		}
