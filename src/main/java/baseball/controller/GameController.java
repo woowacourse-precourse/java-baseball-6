@@ -26,8 +26,8 @@ public class GameController {
 		gameData.setComputerNumbers(randomGenerator.generateRandomNumbers());
 		while(true) {
 			progressGame();
-			boolean isCheck = !compareNumber();
-			if (isCheck == false){
+			boolean isCheck = compareNumber();
+			if (!isCheck){
 				break;
 			}
 
@@ -58,7 +58,7 @@ public class GameController {
 				gameData.incBallCount();
 			}
 		}
-		return gameData.getStrikeCount() == 3;
+		return gameData.getStrikeCount() != 3;
 	}
 	public boolean isRestartRequested() {
 		String restartInput = inputView.readRestart();
