@@ -24,6 +24,9 @@ public class StartGame {
         return playerNumbers;
     }
 
+    /**
+     * 게임을 다시시작 할지에 대한 여부를 묻는 메서드 입니다.
+     */
     public boolean isGameStart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
