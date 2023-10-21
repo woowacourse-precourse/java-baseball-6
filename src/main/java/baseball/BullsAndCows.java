@@ -1,8 +1,8 @@
 package baseball;
 
-import static baseball.Constants.ALERT_END_CHOICE;
 import static baseball.Constants.ALERT_INPUT;
 import static baseball.Constants.ALERT_START;
+import static baseball.Constants.END_CHOICE;
 
 import baseball.end.InputChoice;
 import baseball.end.Restart;
@@ -97,7 +97,7 @@ public class BullsAndCows {
     }
 
     private void alertEndChoice() {
-        System.out.println(ALERT_END_CHOICE);
+        System.out.println(END_CHOICE);
     }
 
     private void readInputChoice() {

@@ -12,5 +12,5 @@ public class Constants {
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
 
-    public static final String ALERT_END_CHOICE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String END_CHOICE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 }
