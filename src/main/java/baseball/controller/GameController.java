@@ -41,7 +41,7 @@ public class GameController {
             prepareGameJudgementWithComputer(computerNumber);
             printGameJudgement();
 
-            if (umpire.isGameEnd()) {
+            if (isGameEnd()) {
                 break;
             }
         }
@@ -67,7 +67,19 @@ public class GameController {
     }
 
     private void printGameJudgement() {
-        ResultView.printResult(umpire.countBall(), umpire.countStrike());
+        ResultView.printResult(countGameBall(), countGameStrike());
+    }
+
+    private int countGameBall() {
+        return umpire.countBall();
+    }
+
+    private int countGameStrike() {
+        return umpire.countStrike();
+    }
+
+    private boolean isGameEnd() {
+        return umpire.isGameEnd();
     }
 
     private static void printGameEnd() {
