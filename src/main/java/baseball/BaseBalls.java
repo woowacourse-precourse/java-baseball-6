@@ -20,13 +20,13 @@ public class BaseBalls {
     }
 
 
-    public List<BallScore> compare(List<Integer> userBalls) {
-        List<BallScore> ballScores = new ArrayList<>();
+    public GameResult compare(List<Integer> userBalls) {
+        GameResult gameResult = new GameResult();
         for (int i = 0; i < userBalls.size(); i++) {
             CompareNumber compareNumber = new CompareNumber(i + 1, userBalls.get(i));
-            ballScores.add(getScore(compareNumber));
+            gameResult.saveResult(getScore(compareNumber));
         }
-        return ballScores;
+        return gameResult;
     }
 
     private BallScore getScore(CompareNumber userBall) {
