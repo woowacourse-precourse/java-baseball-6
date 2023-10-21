@@ -44,16 +44,16 @@ public class NumberBaseballTest {
     }
 
     @Test
-    @DisplayName("사용자 숫자를 넣고_컴퓨터 숫자와 모두 같다면_3스트라이크를 반환한다")
-    void userNumber_isEqualAllComputerNumber_3Strike() {
-        assertThat(game.compareNumber("123"))
-                .isEqualTo("3스트라이크");
+    @DisplayName("사용자 숫자를 넣고_컴퓨터 숫자와 자리까지 모두 같다면_스트라이크를 반환한다")
+    void userNumber_isEqualComputerNumberEachDigit_Strike() {
+        assertThat(game.compareNumber("123")).isEqualTo("3스트라이크");
+        assertThat(game.compareNumber("193")).isEqualTo("2스트라이크");
     }
 
     @Test
-    @DisplayName("사용자 숫자를 넣고_컴퓨터 숫자와 1자리 자리까지 같고 2자리 똑같은 수가 있다면_2볼 1스트라이크를 반환한다")
-    void userNumber_2Strike1Ball() {
-        assertThat(game.compareNumber("132"))
-                .isEqualTo("2볼 1스트라이크");
+    @DisplayName("사용자 숫자를 넣고_컴퓨터 숫자와 똑같은 수가 있다면_볼을 반환한다")
+    void userNumber_isEqualComputerNumber_Ball() {
+        assertThat(game.compareNumber("132")).isEqualTo("2볼 1스트라이크");
+        assertThat(game.compareNumber("312")).isEqualTo("3볼");
     }
 }
