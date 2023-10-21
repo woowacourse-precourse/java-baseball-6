@@ -3,6 +3,7 @@ package baseball.utils;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.*;
 
+
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -111,6 +112,47 @@ class StringUtilsTest {
                 arguments("123123", -1),
                 arguments("44982", -100),
                 arguments("39AAAAAAA2", -4)
+        );
+    }
+
+
+    @ParameterizedTest
+    @MethodSource("hasDuplicate_Success")
+    @DisplayName("문자열이 중복된 값을 가지는지 테스트 - 성공(중복된 문자가 하나라도 있을 시) true 리턴")
+    public void checkTargetHasDuplicate_Success(final String value) {
+        Assertions.assertTrue(StringUtils.hasDuplicate(value));
+    }
+
+    static Stream<Arguments> hasDuplicate_Success() {
+        return Stream.of(
+                arguments("123123"),
+                arguments("44982"),
+                arguments("  "),
+                arguments("&&"),
+                arguments("abca"),
+                arguments("abc a"),
+                arguments("''''"),
+                arguments("39AAAAAAA2")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("hasDuplicate_Failure")
+    @DisplayName("문자열이 중복된 값을 가지는지 테스트 - 실패(중복된 문자가 없을 시) false 리턴")
+    public void checkTargetHasDuplicate_Failure(final String value) {
+        Assertions.assertFalse(StringUtils.hasDuplicate(value));
+    }
+
+    static Stream<Arguments> hasDuplicate_Failure() {
+        return Stream.of(
+                arguments("123"),
+                arguments("4982"),
+                arguments(" "),
+                arguments(""),
+                arguments("abc"),
+                arguments("abc리 "),
+                arguments("'"),
+                arguments("39A2")
         );
     }
 }
