@@ -3,10 +3,22 @@ package baseball.utils;
 import baseball.balls.Ball;
 import baseball.balls.Balls;
 import baseball.results.ResultStatus;
+import baseball.results.Results;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class ResultsUtils {
+
+    public static Results determineResults(Balls balls, Balls anotherBalls) {
+        Results results = new Results();
+
+        for (Ball ball : balls.getBalls()) {
+            ResultStatus resultStatus = determineResultStatus(anotherBalls, ball);
+            results.addResultStatus(resultStatus);
+        }
+
+        return results;
+    }
 
     public static ResultStatus determineResultStatus(Balls balls, Ball ball) {
         if (balls.hasSameBall(ball)) {

@@ -28,4 +28,8 @@ public class Balls {
                 .anyMatch(ball -> ball.equals(anotherBall));
     }
 
+    public List<Ball> getBalls() {
+        return balls;
+    }
+
 }

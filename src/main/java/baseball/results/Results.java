@@ -18,4 +18,13 @@ public class Results {
     public String toString() {
         return ResultsUtils.getStringValueOfResults(strikeCount, ballCount);
     }
+
+    public void addResultStatus(ResultStatus resultStatus) {
+        if (resultStatus == ResultStatus.STRIKE) {
+            strikeCount++;
+        }
+        if (resultStatus == ResultStatus.BALL) {
+            ballCount++;
+        }
+    }
 }
