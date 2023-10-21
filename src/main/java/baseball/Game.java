@@ -12,8 +12,13 @@ public class Game {
         user = new User();
     }
     public void doGame() {
-
+        do {
+            startGame();
+            inGame();
+            endGame();
+        } while (end == false);
     }
+
     public void startGame() {
 
     }
