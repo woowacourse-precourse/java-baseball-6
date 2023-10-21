@@ -28,9 +28,30 @@
         - 스트라이크와 볼이 모두 없을때 **낫싱**
         - 스트라이크가 3개일때 **3개의 숫자를 모두 맞히셨습니다! 게임 종료**
 
+## 예외발생 (IllegalArgumentException)
 
-- 예외발생 (IllegalArgumentException)
-    - 1~9 까지의 수가 아닌 다른 수가 존재
-    - 길이가 3이 아닐때
-    - 3개의 숫자 중 중복된 숫자가 존재
-    - 1, 2가 아닌 다른 명령어가 입력 되었을때
+- 1~9 까지의 수가 아닌 다른 수가 존재
+- 길이가 3이 아닐때
+- 3개의 숫자 중 중복된 숫자가 존재
+- 1, 2가 아닌 다른 명령어가 입력 되었을때
+
+## 상수목록
+
+`INIT_GAME_MSG` : "숫자 야구 게임을 시작합니다."   
+`END_GAME_MSG` :"3개의 숫자를 모두 맞히셨습니다! 게임 종료"   
+`INPUT_NUMBERS_MSG` : "숫자를 입력해주세요 : "   
+`INPUT_COMMAND_MSG` : "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."   
+`STRIKE` : "스트라이크"   
+`BALL` : "볼"   
+`NOTHING` : "낫싱"   
+`INVALID_LENGTH_EXCEPTION_MSG` : "입력한 숫자의 길이를 확인하세요."   
+`INVALID_RANGE_EXCEPTION_MSG` : "입력 값의 범위(1~9)를 확인하세요."   
+`INVALID_DUPLICATE_EXCEPTION_MSG` : "중복된 숫자가 존재합니다."   
+`INVALID_COMMAND_EXCEPTION_MSG` : "명령어를 확인하세요. 1 (재시작), 2 (종료)"
+
+`NUMBER_LENGTH` : 3   
+`INPUT_MIN_VALUE` : 1   
+`INPUT_MAX_VALUE` : 9   
+`ALL_STRIKE` : 3   
+`COMMAND_RESTART` : 1   
+`COMMAND_EXIT` : 2   
