@@ -5,6 +5,7 @@ enum OutputMessage {
     INPUT_NUMBER("숫자를 입력해주세요 : "),
     BALL("볼"),
     STRIKE("스트라이크"),
+    NOTHING("낫싱"),
     GAME_CLEAR("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
     RETRY_OR_END("게임을 새로 시작하려면 " + Command.RETRY.key + ", 종료하려면 " + Command.EXIT.key + "를 입력하세요.")
 
