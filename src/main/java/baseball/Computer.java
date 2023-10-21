@@ -21,22 +21,19 @@ public class Computer {
 
     private final List<Character> answerAsChars = new ArrayList<>();
 
-    public void generateAnswer() {
+    public void generateAnswerAsChars() {
         while (answerAsChars.size() < MAX_LENGTH) {
-            generateRandomDigit();
+            generateRandomAnswerAsChar();
         }
     }
 
     public String generateResult(String playerInput) {
         List<Character> playerInputAsChars;
         playerInputAsChars = strToCharacterList(playerInput);
-
-        int totalCount = computeStrikeAndBall(playerInputAsChars);
-        int strikeCount = computeStrike(playerInputAsChars);
-        return generateResultString(totalCount, strikeCount);
+        return generateResultString(computeStrikeAndBall(playerInputAsChars), computeStrike(playerInputAsChars));
     }
 
-    private void generateRandomDigit() {
+    private void generateRandomAnswerAsChar() {
         int randomIntNumber = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
         char randomNumber = Integer.toString(randomIntNumber).charAt(0);
         if (!answerAsChars.contains(randomNumber)) {

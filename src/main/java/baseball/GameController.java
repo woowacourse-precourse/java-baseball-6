@@ -18,7 +18,7 @@ public class GameController {
     private void startGame(Player player) {
         boolean isAnswerCorrect = false;
         Computer computer = new Computer();
-        computer.generateAnswer();
+        computer.generateAnswerAsChars();
 
         while (!isAnswerCorrect) {
             isAnswerCorrect = runGameTurn(player, computer);
