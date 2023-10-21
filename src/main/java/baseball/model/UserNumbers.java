@@ -20,7 +20,7 @@ public class UserNumbers {
         this.numbers = numbers;
     }
 
-    public static UserNumbers fromList(final String input) {
+    public static UserNumbers createWithInput(final String input) {
         validateInput(input);
         List<Integer> numbers = Converter.convertStringToIntegerList(input);
         return new UserNumbers(numbers);
