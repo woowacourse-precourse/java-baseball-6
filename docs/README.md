@@ -43,7 +43,7 @@
 
 ## 📙 ResultStatus
 
-- [ ] `Strike/Ball/Out`에 대한 enum class
+- [x] `Strike/Ball/Out`에 대한 enum class
 
 ## 📒 ResultDeterminerUtil
 
