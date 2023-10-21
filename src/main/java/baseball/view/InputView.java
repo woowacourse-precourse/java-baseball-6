@@ -20,4 +20,10 @@ public class InputView {
     public void printCorrect() {
         System.out.println(InputMessage.CORRECT);
     }
+
+    public int printEnd() {
+        System.out.println(InputMessage.END);
+        return Utils.stringToInt(Console.readLine());
+    }
+
 }
