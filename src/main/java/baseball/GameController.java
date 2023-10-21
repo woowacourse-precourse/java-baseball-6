@@ -5,16 +5,33 @@ import java.util.List;
 public class GameController {
 
     public void start() {
+        OutputView.printStart();
         run();
-
-
     }
 
     private void run() {
-        OutputView.printStart();
-        Balls answerBalls = generateAnswerBalls();
-        Balls playerBalls = InputView.scanBalls();
-        List<TryResult> tryResults = playerBalls.getTryResultList(answerBalls);
+        Retry retry = Retry.DEFAULT;
+        while (retry != Retry.END) {
+            Balls answerBalls = generateAnswerBalls();
+            play(answerBalls);
+            retry = InputView.scanRetry();
+        }
+    }
+
+    private void play(Balls answerBalls) {
+        boolean gameWin = false;
+        while (!gameWin) {
+            Balls playerBalls = InputView.scanBalls();
+            List<TryResult> tryResults = playerBalls.getTryResultList(answerBalls);
+            OutputView.printResult(tryResults);
+            gameWin = checkGameWin(tryResults);
+        }
+        OutputView.printGameOver();
+    }
+
+    private boolean checkGameWin(List<TryResult> tryResults) {
+        return tryResults.stream()
+            .allMatch(tryResult -> tryResult == TryResult.STRIKE);
     }
 
     private Balls generateAnswerBalls() {
@@ -27,5 +44,4 @@ public class GameController {
     Balls generateAnswerBallsTest() {
         return generateAnswerBalls();
     }
-
 }
