@@ -26,7 +26,7 @@ public class Validator {
   public static void validateInputNumbersDuplicated(String numbers) {
     Set<Character> set = new HashSet<>();
     for (char number : numbers.toCharArray()) {
-      if (set.contains(number)) {
+      if (!set.add(number)) {
         throw new IllegalArgumentException(INVALID_DUPLICATED_NUMBER);
       }
     }
