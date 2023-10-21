@@ -19,7 +19,7 @@ public class Application {
                     computer = NumberProducer.makeNumberInRange(1, 9, 3);
                     reGame = 0; // reGame 초기화
                     // test
-                    System.out.println("computer = " + computer);
+//                    System.out.println("computer = " + computer);
                 }
                 System.out.print("숫자를 입력해주세요 : ");
                 String result = NumberMatcher.numberMatcherResult(computer);
@@ -34,7 +34,8 @@ public class Application {
                 }
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("잘못된 입력입니다. 1부터 9 사이의 숫자만 입력할 수 있습니다.");
+//            System.out.println("잘못된 입력입니다. 1부터 9 사이의 숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException();
         }
     }
 }
