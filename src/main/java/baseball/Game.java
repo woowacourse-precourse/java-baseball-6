@@ -66,7 +66,7 @@ public class Game {
         return value==1;
     }
 
-    private List<Integer> getNumberInput(){
+    private List<Integer> getUserNumbers(){
         System.out.print(NUMBER_INPUT);
         String input = Console.readLine().trim();
         Integer value;
@@ -82,16 +82,37 @@ public class Game {
 
         Stack<Integer> stack = new Stack<>();
 
-        while(value>=0){
+        while(value>0){
            stack.push(value%10);
            value/=10;
         }
 
-        List<Integer> numberInput=new ArrayList<>();
+        List<Integer> userNumbers=new ArrayList<>();
         while(!stack.isEmpty())
-            numberInput.add(stack.pop());
+            userNumbers.add(stack.pop());
 
-        return numberInput;
+        return userNumbers;
     }
 
+    public void run(){
+        List<Integer> userNumbers;
+        int ball, strike;
+
+        printGameStart();
+        computer.generateRandomNumber();
+        while(true){
+            userNumbers=getUserNumbers();
+            ball = computer.getBallCount(userNumbers);
+            strike = computer.getStrikeCount(userNumbers);
+
+            printResult(ball, strike);
+            if(strike==3){
+                printGameEnd();
+                if(getGameContinueInput()) break;
+                else{
+                    computer.generateRandomNumber();
+                }
+            }
+        }
+    }
 }
