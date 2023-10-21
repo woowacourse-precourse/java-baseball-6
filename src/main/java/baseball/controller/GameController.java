@@ -6,6 +6,7 @@ import baseball.util.BaseballRandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
@@ -21,7 +22,14 @@ public class GameController {
     public void start(){
         outputView.printGameStartMessage();
     }
-
+    private static List<Integer> transferStringToIntegerList(String targetString){
+        String[] stringList = targetString.split("");
+        List<Integer> result = new ArrayList<>();
+        for(String s : stringList){
+            result.add(Integer.parseInt(s));
+        }
+        return result;
+    }
     private static String provideStrikeAndBallCount(int ballCount, int strikeCount){
         if(ballCount == COUNT_ZERO_VALUE && strikeCount == COUNT_ZERO_VALUE){
             return NOTHING_STRING;
