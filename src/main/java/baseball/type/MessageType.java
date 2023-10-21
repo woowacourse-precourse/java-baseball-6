@@ -1,4 +1,4 @@
-package baseball;
+package baseball.type;
 
 /**
  *  @Enum  : 숫자 야구 게임의 출력 메세지 문자열
