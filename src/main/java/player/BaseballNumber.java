@@ -25,8 +25,7 @@ public class BaseballNumber {
 
     @Override
     public boolean equals(Object baseballNumber) {
-        if (baseballNumber instanceof BaseballNumber) {
-            BaseballNumber convertBaseballNumber = (BaseballNumber) baseballNumber;
+        if (baseballNumber instanceof BaseballNumber convertBaseballNumber) {
             return this.baseballNumber.equals(convertBaseballNumber.baseballNumber);
         }
         return false;
