@@ -58,8 +58,20 @@ public class InputView {
         }
     }
 
-    public static String readEndSign() {
+    public static int readEndSign() {
         System.out.println(RESTART_MESSAGE);
-        return Console.readLine();
+        String endSign = Console.readLine();
+        return validationEndSign(endSign);
+    }
+    private static int validationEndSign(String endSign){
+        checkNumeric(endSign);
+        int integerEndsign = Integer.parseInt(endSign);
+        checkEndSignRange(integerEndsign);
+        return integerEndsign;
+    }
+    private static void checkEndSignRange(int sign){
+        if(sign > 2){
+            throw new IllegalArgumentException();
+        }
     }
 }

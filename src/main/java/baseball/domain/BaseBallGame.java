@@ -48,11 +48,11 @@ public class BaseBallGame {
         return result.getStrikeCount() != 3;
     }
 
-    private boolean isEnd(String sign) {
-        if (sign.equals("1")) {
+    private boolean isEnd(int sign) {
+        if(sign == 1){
             return true;
         }
-        if (sign.equals("2")) {
+        if(sign == 2){
             return false;
         }
         throw new IllegalArgumentException();
