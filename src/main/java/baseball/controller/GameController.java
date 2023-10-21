@@ -31,7 +31,7 @@ public class GameController {
         int computerNumber = selectNewNumber();
 
         while (playWant) {
-            AskController.askNumberInput();
+            askNumberInput();
 
             int userNumber = InputController.receiveUserNumberWidthLength(PLAY_NUMBER_DIGIT);
 
@@ -47,6 +47,10 @@ public class GameController {
         EndView.end(PLAY_NUMBER_DIGIT);
         AskController.askResumeInputWithOption(PLAY_WANT, END_WANT);
         resumeNumber.updateNumber(InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT));
+    }
+
+    private static void askNumberInput() {
+        AskController.askNumberInput();
     }
 
     private boolean isStrikeEqualToGoal(final int strike) {
