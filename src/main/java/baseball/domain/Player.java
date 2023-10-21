@@ -10,7 +10,7 @@ public class Player {
         this.numbers = numbers;
     }
 
-    public static Player of(List<Integer> numbers) {
+    public static Player from(List<Integer> numbers) {
         return new Player(numbers);
     }
 

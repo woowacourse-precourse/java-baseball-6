@@ -45,7 +45,7 @@ public class BaseballGame {
     }
 
     private GameResult play() {
-        Player player = Player.of(inputView.readPlayerNumber());
+        Player player = Player.from(inputView.readPlayerNumber());
         GameResult result = new GameResult();
 
         for (int idx = 0; idx < PLAY_AMOUNT; idx++) {
