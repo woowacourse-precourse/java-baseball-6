@@ -31,7 +31,8 @@ public class Application {
         }
 
     }
-    public static List<Integer> randomNumber(){ //게임 정답을 랜덤으로 생성하는 함수
+    //게임 정답을 랜덤으로 생성하는 함수
+    public static List<Integer> randomNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -39,12 +40,13 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-//        for (int i=0;i<3;i++)
-//            System.out.print(computer.get(i));
+        for (int i=0;i<3;i++)
+            System.out.print(computer.get(i));
 
         return computer;
     }
-    public static List<Integer> userInput(){ //사용자 입력 함수
+    //사용자 입력 함수
+    public static List<Integer> userInput(){
         List<Integer> user=new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
 
@@ -60,68 +62,71 @@ public class Application {
                     throw new IllegalArgumentException();//"중복 숫자를 입력"
                 }
                 user.add(check);
-            } else {//유효하지 않은 문자
+            }
+            else if(!Character.isDigit(c)) {
                 throw new IllegalArgumentException();//"유효하지 않은 문자"
             }
         }
         return user;
     }
-    public static List<Integer> score(List<Integer> computer,List<Integer> user){ //계산 함수
+    //올바른 위치에 있는 숫자 개수 계산 함수
+    public static int rightPlace(List<Integer> computer,List<Integer> user){
+        int right=0;
+
+        if(computer.get(0)==user.get(0))
+            right+=1;
+        if(computer.get(1)==user.get(1))
+            right+=1;
+        if(computer.get(2)==user.get(2))
+            right+=1;
+
+        return right;
+    }
+    //사용자 입력에 대해 정답 숫자가 포함된 개수에 따른 계산 결과 도출 함수
+    public static List<Integer> score(List<Integer> computer,List<Integer> user){
         List<Integer> result=new ArrayList<>();
 
-        List<Integer> diff=new ArrayList<>(computer);
+        List<Integer> diff=new ArrayList<>(computer); //볼, 스트라이크 개수를 차례로 입력
         diff.removeAll(user);
 
-        if(diff.size()==3){//숫자 3개가 없는 경우
-            result.add(0); result.add(0);//낫싱
+        if(diff.size()==3){//숫자 3개가 포함되지 않은 경우
+            result.add(0); result.add(0);
         }
         else if(diff.size()==0){ //숫자 3개가 포함된 경우
-            if(computer.get(0)==user.get(0)&&computer.get(1)==user.get(1)){
-                result.add(0); result.add(3); //3스트라이크
+            if(rightPlace(computer,user)==3){
+                result.add(0); result.add(3);
             }
-            else if(computer.get(0)!=user.get(0)&&computer.get(1)!=user.get(1)&&computer.get(2)!=user.get(2)){
-                result.add(3); result.add(0); //3볼
+            else if(rightPlace(computer,user)==0){
+                result.add(3); result.add(0);
             }
-            else{
-                result.add(2);result.add(1);//2볼 1스
+            else if(rightPlace(computer,user)==1){
+                result.add(2);result.add(1);
             }
         }
         else if(diff.size()==2){ //숫자 1개가 포함된 경우
-            if((computer.get(0)==user.get(0))||(computer.get(1)==user.get(1))||(computer.get(2)==user.get(2))){
-                result.add(0);result.add(1);//1스
+            if(rightPlace(computer,user)==1){
+                result.add(0);result.add(1);
             }
-            else{
-                result.add(1);result.add(0);//1볼
+            else if(rightPlace(computer,user)==0){
+                result.add(1);result.add(0);
             }
         }
         else{ //숫자 2개가 포함된 경우
-            if(computer.get(0)==user.get(0)){
-                if(computer.get(1)==user.get(1)){
-                    result.add(0);result.add(2);
-                }
-                if(computer.get(2)==user.get(2)){
-                    result.add(0);result.add(2);
-                }
-                else{
-                    result.add(1);result.add(1);
-                }
+            if(rightPlace(computer,user)==2){
+                result.add(0);result.add(2);
             }
-            else if(computer.get(1)==user.get(1)){
-                if(computer.get(2)==user.get(2)){
-                    result.add(0);result.add(2);
-                }
-                else{
-                    result.add(1);result.add(1);
-                }
+            else if(rightPlace(computer,user)==1){
+                result.add(1);result.add(1);
             }
-            else{
+            else if(rightPlace(computer,user)==0){
                 result.add(2);result.add(0);
             }
 
         }
         return result;
     }
-    public static void resultOutput(List<Integer> result){ //계산 결과 출력 함수
+    //계산 결과 출력 함수
+    public static void resultOutput(List<Integer> result){
         if (result.get(0)!=0&&result.get(1)!=0){
             System.out.println(result.get(0)+"볼 "+result.get(1)+"스트라이크");
         }
@@ -135,7 +140,8 @@ public class Application {
             System.out.println(result.get(1)+"스트라이크");
         }
     }
-    public static String endGame(){ //게임 종료 후 재시작 여부 확인 함수
+    //게임 종료 후 재시작 여부 확인 함수
+    public static String endGame(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         String checkEnd=camp.nextstep.edu.missionutils.Console.readLine();
