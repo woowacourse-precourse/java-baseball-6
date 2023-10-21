@@ -10,7 +10,7 @@ public class Computer {
     private final int END_INCLUSIVE = 9;
     private final int LENGTH = 3;
 
-    private List<Integer> computerNumbers=new ArrayList<>(LENGTH);
+    private List<Integer> computerNumbers = new ArrayList<>(LENGTH);
 
     private static class LazyHolder {
         public static final Computer INSTANCE = new Computer();
@@ -21,13 +21,13 @@ public class Computer {
     }
 
     public synchronized void generateRandomNumber() {
-        if(computerNumbers.size()>0)
+        if (computerNumbers.size() > 0)
             computerNumbers.clear();
 
         int randomNumber;
-        while(computerNumbers.size()<LENGTH){
+        while (computerNumbers.size() < LENGTH) {
             randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
-            if(!computerNumbers.contains(randomNumber))
+            if (!computerNumbers.contains(randomNumber))
                 computerNumbers.add(randomNumber);
         }
     }
@@ -57,7 +57,7 @@ public class Computer {
             userNumber = userNumbers.get(i);
             computerNumber = computerNumbers.get(i);
 
-            if(userNumber==computerNumber) count++;
+            if (userNumber == computerNumber) count++;
         }
 
         return count;
