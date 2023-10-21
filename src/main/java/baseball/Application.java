@@ -12,28 +12,33 @@ class Game {
         computer = new ArrayList<>();
         userInput = new ArrayList<>();
     }
+
     public void run() {
         try {
             do { play(); } while (restart());
         } catch (IllegalArgumentException e) { throw e; }
     }
+
     public void play() {
         createNum();
-        while (true) {
-            if (input()) {
-                if (isCorrect()) { break; }
-            } else throw new IllegalArgumentException("잘못된 입력으로 인해 게임을 종료합니다.");
-        }
+        do {
+            if (!input()) {
+                throw new IllegalArgumentException("잘못된 입력으로 인해 게임을 종료합니다.");
+            }
+        } while (!isCorrect());
     }
+    
     public static boolean restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String reNum = Console.readLine();
-        if (reNum.equals("1")) return true;
+        if (reNum.equals("1")) 
+            return true;
         else if (reNum.equals("2")) {
             System.out.println("게임 종료");
             return false;
         } else throw new IllegalArgumentException("1또는 2중 하나를 입력하세요.");
     }
+
     public boolean isCorrect() {
         int strikeNum = 0;
         int ballNum = 0;
@@ -58,12 +63,12 @@ class Game {
             return false;
         }
     }
+
     public void createNum() {
         computer.clear();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) { computer.add(randomNumber); }
-            System.out.println(computer);
         }
     }
 
@@ -73,27 +78,15 @@ class Game {
         int num;
         if (inputStr.length() == 3) {
             try {
-                if (userInput.size() < 3) {
-                    for (int i = 0; i < inputStr.length(); i++) {
-                        num = Integer.parseInt(inputStr.substring(i, i + 1));
-                        if (num == 0) throw new IllegalArgumentException("0은 입력불가능합니다.");
-                        userInput.add(num);
-                    }
-                    for (int i = 0; i < userInput.size(); i++) {
-                        for (int j = 0; j < i; j++) {
-                            if (userInput.get(i).equals(userInput.get(j))) throw new IllegalArgumentException("중복된 요소가 있습니다.");
-                        }
-                    }
-                } else {
-                    for (int i = 0; i < inputStr.length(); i++) {
-                        num = Integer.parseInt(inputStr.substring(i, i + 1));
-                        if (num == 0) throw new IllegalArgumentException("0은 입력불가능합니다.");
-                        userInput.set(i, num);
-                    }
-                    for (int i = 0; i < userInput.size(); i++) {
-                        for (int j = 0; j < i; j++) {
-                            if (userInput.get(i).equals(userInput.get(j))) throw new IllegalArgumentException("중복된 요소가 있습니다.");
-                        }
+                userInput.clear();
+                for (int i = 0; i < inputStr.length(); i++) {
+                    num = Character.getNumericValue(inputStr.charAt(i));
+                    if (num == 0) throw new IllegalArgumentException("0은 입력불가능합니다.");
+                    userInput.add(num);
+                }
+                for (int i = 0; i < userInput.size(); i++) {
+                    for (int j = 0; j < i; j++) {
+                        if (userInput.get(i).equals(userInput.get(j))) throw new IllegalArgumentException("중복된 요소가 있습니다.");
                     }
                 }
             } catch (NumberFormatException e) {
@@ -105,6 +98,7 @@ class Game {
         }
     }
 }
+
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
