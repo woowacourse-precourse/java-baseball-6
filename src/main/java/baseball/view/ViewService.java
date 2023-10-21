@@ -2,6 +2,8 @@ package baseball.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.domain.Hint;
+
 public class ViewService {
 
     public void printReadMessage() {
@@ -10,6 +12,14 @@ public class ViewService {
 
     public String readNumber() {
         return readLine();
+    }
+
+    public void printHintMessage(Hint hint) {
+        System.out.println(hint.toString());
+
+        if (hint.isThreeStrike()) {
+            printGameEndMessage();
+        }
     }
 
     private void printGameEndMessage() {
