@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import static baseball.exception.InputException.*;
 
 public class InputView {
-    private static List<Integer> playerNumbers;
 
     public static List<Integer> inputPlayerNumbers(){
 
@@ -15,7 +14,7 @@ public class InputView {
         notNumericException(input);
         lenException(input);
 
-        playerNumbers = new ArrayList<>();
+        List<Integer> playerNumbers = new ArrayList<>();
         for(String num : input.split("")) {
             int number = Integer.parseInt(num);
             playerNumbers.add(number);
@@ -24,5 +23,15 @@ public class InputView {
         outOfRangeException(playerNumbers);
 
         return playerNumbers;
+    }
+    public static boolean inputRestartChoice(){
+        OutputView.restartAndGameOverPrint();
+        String input = Console.readLine();
+        if(input.equals("1")) return true;
+        if(input.equals("2")) {
+            OutputView.gameOverPrint();
+            return false;
+        }
+        return false;
     }
 }

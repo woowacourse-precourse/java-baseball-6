@@ -21,5 +21,6 @@ public class BaseballController {
         } while(!result.equals("3스트라이크"));
 
         OutputView.correctInputPrint();
+        OutputView.restartAndGameOverPrint();
     }
 }

@@ -1,16 +1,19 @@
 package baseball;
 
+import baseball.controller.BaseballController;
 import baseball.domain.CompareNumbers;
 import baseball.domain.Computer;
 import baseball.exception.InputException;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class BaseballGameTest {
+public class BaseballGameTest extends NsTest {
     @Test
     void 컴퓨터_랜덤숫자_생성(){
         assertThat(Computer.createRandomNumbers().size()).isEqualTo(3);
@@ -55,5 +58,18 @@ public class BaseballGameTest {
 
         assertThat(test.generateResult()).isEqualTo("낫싱");
     }
-
+    @Test
+    void 현재_진행상황_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("326", "234", "1", "245", "168", "2");
+                    assertThat(output()).contains("2볼", "3스트라이크", "1", "낫싱", "3스트라이크", "게임 종료");
+                },
+                2, 3, 4, 1, 6, 8
+        );
+    }
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
+    }
 }
