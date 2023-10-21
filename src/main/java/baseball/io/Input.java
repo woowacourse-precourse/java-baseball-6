@@ -7,7 +7,11 @@ import java.util.List;
 
 public class Input {
 
-    public List<Integer> userNumberInput() {
+    private Input() {
+
+    }
+
+    public static List<Integer> userNumberInput() {
         String userNumberInput = Console.readLine();
         UserInputValidator.validateIsNumberAndRange(userNumberInput);
         UserInputValidator.validateLength(userNumberInput);
@@ -16,7 +20,7 @@ public class Input {
         return Arrays.stream(userNumberInput.split("")).map(Integer::parseInt).toList();
     }
 
-    public String finishOrRestartInput() {
+    public static String finishOrRestartInput() {
         String userInput = Console.readLine();
         UserInputValidator.validateFinishOrRestart(userInput);
 
