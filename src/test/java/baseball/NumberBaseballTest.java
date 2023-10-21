@@ -1,8 +1,8 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,10 +33,10 @@ public class NumberBaseballTest {
     @Test
     @DisplayName("사용자로부터 받은 숫자가_3자리 서로다른 숫자가 아닐경우_예외를 발생한다.")
     void userNumber_isNot3DifferentNumber_throwException() {
-        Assertions.assertThatThrownBy(() -> game.validateUserNumber("21a"))
+        assertThatThrownBy(() -> game.validateUserNumber("21a"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자가 아니다");
-        Assertions.assertThatThrownBy(() -> game.validateUserNumber("224"))
+        assertThatThrownBy(() -> game.validateUserNumber("224"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복 숫자가 존재한다");
         assertThat(game.validateUserNumber("234"))
