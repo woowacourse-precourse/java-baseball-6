@@ -1,14 +1,27 @@
 package baseball.exception;
 
+import baseball.domain.GameOption;
+
 import java.util.*;
 
 public class DataValidator {
     private static final int MAX_BALL_SIZE = 3;
 
+    private static final String BLANK_DELIMITERS = "";
+
+    private static final String ZERO = "0";
+
+    public void validateRetryOrEndGameCommand(String data) {
+        if (!data.equals(GameOption.RESTART.getOption()) && !data.equals(GameOption.END.getOption())) {
+            throw new IllegalArgumentException("게임을 재시작하려면 1, 종료하려면 2를 입력하세요");
+        }
+    }
+
     public void validateInputNumber(String data) {
         validateDataLength(data);
         validateDataIsDuplicate(data);
         validateDataIsNumber(data);
+        validateDataRange(data);
     }
 
     private void validateDataLength(String data) {
@@ -26,7 +39,7 @@ public class DataValidator {
     }
 
     private void validateDataIsDuplicate(String data) {
-        String[] array = data.split("");
+        String[] array = data.split(BLANK_DELIMITERS);
         Set<String> set = new HashSet<>();
         Collections.addAll(set, array);
 
@@ -34,4 +47,11 @@ public class DataValidator {
             throw new IllegalArgumentException("중복된 숫자를 입력할 수 없습니다.");
         }
     }
+
+    private void validateDataRange(String data) {
+        if (data.contains(ZERO)) {
+            throw new IllegalArgumentException("1~9까지의 숫자만 입력해주세요.");
+        }
+    }
+
 }
