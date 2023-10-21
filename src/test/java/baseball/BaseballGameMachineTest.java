@@ -27,4 +27,13 @@ class BaseballGameMachineTest {
         //then
         assertThat(inputLine).isEqualTo(input);
     }
+
+    @DisplayName("게임 실행 테스트")
+    @Test
+    void gamePlayTest() {
+        //given
+        BaseballGameMachine gameMachine = new BaseballGameMachine();
+        //when
+        gameMachine.play();
+    }
 }
