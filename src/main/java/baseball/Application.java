@@ -9,44 +9,19 @@ public class Application {
         String inputSystem;
 
         Computer computer = new Computer(); // 컴퓨터 객체 생성
-        String randomNumber = computer.generate(); // 컴퓨터 번호 생성
+        String randomNumber = computer.generateRandom(); // 컴퓨터 번호 생성
+
+        User user = new User(); // 사용자 객체 생성
 
         System.out.println(randomNumber);
 
         // 본격적으로 시작
         do{
+            user.reset(); // 사용자 입력값 초기화
             inputSystem = ""; // 재시작 후에 초기화를 하기 위함
 
             System.out.print("숫자를 입력해주세요 : ");
-
-            String inputNumber = Console.readLine(); // 1~9 범위 생성, 자리마다 중복되는 값 있는지 확인, 숫자만 입력했는지
-
-            for (int i = 0; i < inputNumber.length(); i++) { // 숫자만 입력했는지 확인
-                int num = inputNumber.charAt(i) -'0';
-                if(num > 10 || num < 0){
-                    throw new IllegalArgumentException("contains except Number");
-                }
-            }
-            for (int i = 0; i < inputNumber.length(); i++) { // 1~9 사이의 범위만 입력했는지 확인
-                if(inputNumber.contains("0")){
-                    throw new IllegalArgumentException("have to be range 1~9");
-                }
-            }
-
-            if (inputNumber.length() > 3) { // 3개의 숫자 생성
-                throw new IllegalArgumentException("Over the size");
-            }
-
-            // 3개의 숫자가 각기 다른 숫자인가. 중복 체크
-            // 1. 이중 포문으로 1번이 2번,3번 비교, 2번이 3번 비교해서 판단
-            // 2.
-            for (int i = 0; i < inputNumber.length()-1; i++) {
-                for (int j = i+1; j < inputNumber.length(); j++) {
-                    if (inputNumber.charAt(i) == inputNumber.charAt(j)) {
-                        throw new IllegalArgumentException("have be duplicated number");
-                    }
-                }
-            }
+            String inputNumber = user.generateInput();
 
             /**
              * 스트라이크 판정 로직 -> 사용자 번호를 기준으로 컴퓨터 번호와 비교하여 스트라이크 판정
@@ -97,7 +72,7 @@ public class Application {
 
             if (inputSystem.equals("1")) { // 재시작
                 computer.reset(); // 리셋
-                randomNumber = computer.generate();
+                randomNumber = computer.generateRandom();
 
             }
 
