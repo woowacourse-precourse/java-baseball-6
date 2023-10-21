@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.HashMap;
-
 public class Game {
     Display display;
     Computer computer;
@@ -12,11 +10,11 @@ public class Game {
     }
     public void playGame(){
         do{
-            computer.initiate();
+            computer.initComputerNumbers();
             boolean gameOver = false;
             do{
                 int[] userInputs = display.getUserInput();
-                int[] judgeResult = computer.judge(userInputs);
+                int[] judgeResult = computer.getJudgeResult(userInputs);
                 display.printJudgeResult(judgeResult);
                 gameOver = (judgeResult[1] == 3);
             }
