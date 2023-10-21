@@ -1,6 +1,6 @@
-package baseball;
+package baseball.version1;
 
-import static baseball.Constants.*;
+import static baseball.version1.Constants.*;
 
 import java.util.ArrayList;
 

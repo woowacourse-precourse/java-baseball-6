@@ -1,6 +1,6 @@
-package baseball;
+package baseball.version1;
 
-import static baseball.Constants.*;
+import static baseball.version1.Constants.*;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class Game {
         this.gameProcessor = new GameProcessor();
     }
 
-    void run() {
+    public void run() {
         int continueDecision = CONTINUE_NUMBER;
         while (continueDecision == CONTINUE_NUMBER) {
             System.out.println("숫자 야구 게임을 시작합니다.");

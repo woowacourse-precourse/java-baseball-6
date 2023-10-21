@@ -1,4 +1,4 @@
-package baseball;
+package baseball.version1;
 
 public class Score {
 
