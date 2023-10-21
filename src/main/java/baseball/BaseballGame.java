@@ -109,8 +109,10 @@ public class BaseballGame {
         return false;
     }
 
-    private void printWinGame(){
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    private void printWinGame(Map<String, Integer> resultList){
+        if(isAllStrike(resultList)) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 
     private void printGameResult(Map<String, Integer> resultList){
@@ -126,7 +128,7 @@ public class BaseballGame {
         }
 
         System.out.println(result);
-        printWinGame();
+        printWinGame(resultList);
     }
 
 }
