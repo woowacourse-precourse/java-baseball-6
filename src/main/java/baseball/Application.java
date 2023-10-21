@@ -12,7 +12,7 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         int retry = 1;  // 게임 종료 후 재시작 확인용
-         while (retry == 1) {
+        while (retry == 1) {
             // 컴퓨터 숫자 값 설정
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
@@ -28,11 +28,10 @@ public class Application {
                 int ball = 0;
                 System.out.print("숫자를 입력해주세요 : ");
                 String user = Console.readLine();
-                String[] userArr = user.split("");
                 List<Integer> userNum = new ArrayList<>();
-                for(String str : userArr)
-                    if (!userNum.contains(Integer.parseInt(str)))
-                        userNum.add(Integer.parseInt(str));
+                for(Character ch : user.toCharArray())
+                    if (!userNum.contains(Character.getNumericValue(ch))) // 중복된 숫자는 저장하지 않음
+                        userNum.add(Character.getNumericValue(ch));
                 // 예외 처리
                 if (userNum.size() != 3) {
                     throw new IllegalArgumentException("올바른 값을 입력해 주세요");
