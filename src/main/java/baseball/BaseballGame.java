@@ -6,6 +6,19 @@ import java.util.List;
 
 public class BaseballGame {
 
+    /**
+     * 숫자 야구 게임의 흐름 전체를 제어
+     */
+    public static void start() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        do {
+            newGame();
+        } while (restart());
+
+        System.out.println("숫자 야구 게임을 완전히 종료합니다.");
+    }
+
     private static void newGame() {
         Computer computer = initAnswer();
         List<Integer> result;
