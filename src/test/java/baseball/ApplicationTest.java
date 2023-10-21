@@ -22,8 +22,21 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
+        // 3개 보다 많은 숫자
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        // 3개 보다 적은 숫자
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        // 중복된 숫자
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("222"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
