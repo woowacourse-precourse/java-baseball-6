@@ -1,7 +1,7 @@
 package baseball.domain;
 
 public enum GameCommand {
-    RESTART(1), EXIT(2);
+    RESTART(1), END(2);
 
     private static final String INVALID_GAME_STATUS_MESSAGE = "1 또는 2를 입력해주세요";
     private final int command;
@@ -17,5 +17,9 @@ public enum GameCommand {
             }
         }
         throw new IllegalArgumentException(INVALID_GAME_STATUS_MESSAGE);
+    }
+
+    public boolean isEnd() {
+        return this == END;
     }
 }

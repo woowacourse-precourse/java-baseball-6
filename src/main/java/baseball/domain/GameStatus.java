@@ -4,17 +4,21 @@ public enum GameStatus {
     RUN, CLEAR, END;
 
     public static GameStatus from(int strikeCount) {
-        if (strikeCount == Balls.BALLS_SIZE) {
+        if (isClear(strikeCount)) {
             return CLEAR;
         }
         return RUN;
     }
 
     public static GameStatus from(GameCommand gameCommand) {
-        if (gameCommand == GameCommand.EXIT) {
+        if (gameCommand.isEnd()) {
             return END;
         }
         return RUN;
+    }
+
+    private static boolean isClear(int strikeCount) {
+        return strikeCount == Balls.BALLS_SIZE;
     }
 
     public boolean isNotClear() {

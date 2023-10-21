@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 class GameCommandTest {
     @DisplayName("command 를 입력받아 게임 상태를 반환한다")
     @ParameterizedTest
-    @CsvSource({"1, RESTART", "2, EXIT"})
+    @CsvSource({"1, RESTART", "2, END"})
     void getGameStatusFromCommand(int command, GameCommand expected) {
         GameCommand actual = GameCommand.from(command);
 
