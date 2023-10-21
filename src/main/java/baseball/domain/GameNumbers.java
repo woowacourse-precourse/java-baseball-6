@@ -3,6 +3,7 @@ package baseball.domain;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class GameNumbers {
     public static final int LENGTH = 3;
@@ -40,5 +41,19 @@ public class GameNumbers {
         return (int) gameNumbers.chars()
                 .distinct()
                 .count();
+    }
+
+    public int countStrike(GameNumbers otherGameNumbers) {
+        return (int) IntStream.range(0, LENGTH)
+                .filter(index -> isSameNumberSameIndex(otherGameNumbers, index))
+                .count();
+    }
+
+    private boolean isSameNumberSameIndex(GameNumbers otherGameNumbers, int index) {
+        return getGameNumber(index).equals(otherGameNumbers.getGameNumber(index));
+    }
+
+    private GameNumber getGameNumber(int index) {
+        return gameNumbers.get(index);
     }
 }
