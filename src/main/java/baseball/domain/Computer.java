@@ -10,6 +10,10 @@ public class Computer {
     private int computerNumber;
     private List<Integer> computerNumbers;
 
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
+    }
+
     public void setComputerNumber() {
         computerNumber = makeNumber();
     }
