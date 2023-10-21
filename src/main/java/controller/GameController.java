@@ -45,5 +45,6 @@ public class GameController {
     private void validationPlayer(){
         gameNumber.setPlayerInput(inputView.inputNumber());
         List<Integer> playerNumbers = validation.validate(gameNumber.getPlayerInput());
+        gameNumber.setPlayerNumbers(playerNumbers);
     }
 }
