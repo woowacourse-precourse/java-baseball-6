@@ -23,7 +23,7 @@ public class Computer {
         return List.of(ball, strike);
     }
 
-    public int judgeScore(List<Integer> answer, int number, int index) {
+    private int judgeScore(List<Integer> answer, int number, int index) {
         if (answer.get(index) == number) {
             return (STRIKE);
         }
