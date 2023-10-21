@@ -29,6 +29,7 @@ public class Application {
 			while (strikeNumber != computerNumber.size()) {
 				String[] inputUserNumber = userNumber.inputUserNumber();
 				userNumber.checkInputOnlyNum(inputUserNumber);
+				userNumber.checkInputSize(inputUserNumber);
 
 				List<Integer> userNumberList = userNumber.toListUserNumber(inputUserNumber);
 				userNumber.checkSizeUserNum(userNumberList);
@@ -148,10 +149,18 @@ class UserNumber {
 			}
 
 			if (errorTest) {
-				throw new IllegalArgumentException("숫자만 입력해주세요");
+				throw new IllegalArgumentException("숫자만 입력해주세요.");
 			}
 
 		}
+	}
+
+	void checkInputSize(String[] inputUserNumber) {
+
+		if(inputUserNumber.length != USER_NUMBER_SIZE) {
+			throw new IllegalArgumentException("3자리 숫자만 입력해주세요.");
+		}
+
 	}
 
 	List<Integer> toListUserNumber(String[] inputUserNumber) {
