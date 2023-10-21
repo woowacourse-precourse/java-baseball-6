@@ -34,7 +34,10 @@ public class BaseballGame {
             outputView.showInputNumberMessage();
             Result result = rule.check(inputUserNumber(), computer);
             outputView.showResult(result);
-            running = false;
+            if (result.isGameClear()) {
+                running = false;
+                checkRestart();
+            }
         }
     }
 
@@ -50,7 +53,7 @@ public class BaseballGame {
     private GameNumber toGameNumber(String number) {
         NumberValidation.validate(number);
         return new GameNumber(Arrays.stream(number
-                .split(""))
+                        .split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList()));
     }
