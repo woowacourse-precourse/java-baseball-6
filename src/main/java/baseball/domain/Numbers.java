@@ -4,8 +4,8 @@ public class Numbers {
     private final String numbers;
 
     public Numbers(String numbers){
-        Validator validator=new Validator();
-        validator.validateNumbers(numbers);
+        Validator validator=new NumbersValidator();
+        validator.validate(numbers);
 
         this.numbers=numbers;
     }

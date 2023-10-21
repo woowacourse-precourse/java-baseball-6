@@ -4,8 +4,8 @@ public class Restart {
     private String option;
 
     public Restart(String input){
-        Validator validator=new Validator();
-        validator.validateContinue(input);
+        Validator validator=new RestartValidator();
+        validator.validate(input);
 
         this.option=input;
     }
