@@ -103,8 +103,6 @@ class BaseballOutput {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
-
-
 }
 
 class StrikeCall implements BallCount {
@@ -135,6 +133,9 @@ class BallCall implements BallCount {
 
 class BaseModel {
 
+    private final static int userExceptionCheckForR = 3; // 게임 중 입력값 확인시
+    private final static int userExceptionCheckForE = 1; // 게임 끝났을 때 재시작 확인시
+
     private BaseModel() {
     }
 
@@ -162,15 +163,22 @@ class BaseModel {
     }
 
     static GameState newOrEnd(String userChoice) {
-
+        exceptionCheck(userChoice);
         if (userChoice.equals("1")) {
             return GameState.NEWGAME;
         }
         return GameState.END;
     }
 
+    static void exceptionCheck(String userChoice) throws IllegalArgumentException {
+        if ((userChoice.length() != userExceptionCheckForE || !userChoice.matches("\\d+")) ||
+                (!userChoice.equals("1") && !userChoice.equals("2"))) {
+            throw new IllegalArgumentException("please enter the correct number");
+        }
+    }
+
     static void exceptionCheck(LinkedHashSet<Integer> userNumber) throws IllegalArgumentException {
-        if (userNumber.size() != 3) {
+        if (userNumber.size() != userExceptionCheckForR) {
             throw new IllegalArgumentException("please input 3 digit");
         }
         for (int i : userNumber) {
