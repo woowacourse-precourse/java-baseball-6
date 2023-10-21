@@ -4,6 +4,9 @@ import java.util.List;
 
 public class PlayerNumbers {
 
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+
     private final List<Integer> numbers;
 
     public PlayerNumbers(List<Integer> numbers, int digitNumber) {
@@ -32,7 +35,7 @@ public class PlayerNumbers {
 
     private boolean isOutOfRange(List<Integer> numbers) {
         return numbers.stream()
-                .anyMatch(number -> !(1 <= number && number <= 9));
+                .anyMatch(number -> !(MIN_NUMBER <= number && number <= MAX_NUMBER));
     }
 
     public void compareForBallCount(int computerNumber, int indexOfComputerNumber) {
