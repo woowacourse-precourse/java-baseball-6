@@ -12,4 +12,10 @@ public class GameController {
         this.numberService = numberService;
         this.viewService = viewService;
     }
+
+    private Player prepareComputer() {
+        Player computer = new Player();
+        computer.setPlayer(numberService.getRandomNumber());
+        return computer;
+    }
 }
