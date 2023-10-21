@@ -27,7 +27,7 @@ public class GameController {
     private void playGame() {
         programNumber = new ProgramNumber(NUMBER_SIZE, START_NUMBER, END_NUMBER);
         do {
-            userNumber = new UserNumber(InputView.inputUserNumber());
+            userNumber = new UserNumber(InputView.inputUserNumber(), NUMBER_SIZE);
             int[] result = getResultList();
             OutputView.printScoreMessage(result[0], result[1]);
         } while (!isAnswer());

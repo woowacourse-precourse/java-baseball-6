@@ -6,9 +6,9 @@ import java.util.Set;
 public class UserNumber {
     private final String userNumber;
 
-    public UserNumber(String userNumber) {
+    public UserNumber(String userNumber, int numberSize) {
         checkIsDigit(userNumber);
-        checkIsThree(userNumber);
+        checkNumberSize(userNumber, numberSize);
         checkNotDuplicate(userNumber);
 
         this.userNumber = userNumber;
@@ -34,10 +34,10 @@ public class UserNumber {
     }
 
     /**
-     * 세자리 숫자가 아닐 경우 예외 발생
+     * 자리수가 맞지 않을 경우 예외 발생
      */
-    public static void checkIsThree(String inputWord) {
-        if (inputWord.length() != 3) {
+    public static void checkNumberSize(String inputWord, int numberSize) {
+        if (inputWord.length() != numberSize) {
             throw new IllegalArgumentException("세자리 숫자가 아닙니다.");
         }
     }
