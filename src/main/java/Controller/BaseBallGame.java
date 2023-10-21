@@ -42,6 +42,9 @@ public class BaseBallGame {
                 isNothing = false;
             }
             GameResult.PrintResult(strike, ball, isNothing);
+            if(refree.GameClear(strike)){
+
+            }
         } while (true);
     }
 }
