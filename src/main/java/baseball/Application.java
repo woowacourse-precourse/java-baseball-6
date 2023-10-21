@@ -18,7 +18,14 @@ public class Application {
                 checkCorrectInput(input);
                 int number = Integer.parseInt(input);
 
+                judge = game.judgeGame(number);
 
+                if(judge.equals("SUCCESS")){
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    judge = Console.readLine();
+                    if(judge.equals(GAME_RESTART)) game.createAnswer(); //새로운 답안 생성
+                }
             }
             catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -37,5 +44,6 @@ public class Application {
             throw new IllegalArgumentException("ERROR : 3자리의 숫자를 입력해주세요");
         }
     }
+
 
 }
