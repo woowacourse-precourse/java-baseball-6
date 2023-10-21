@@ -3,8 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.*;
 
 public class Application 
 {
@@ -27,6 +26,8 @@ public class Application
     	String userInput = Console.readLine();
     	Console.close();
     	
-    	System.out.println(userInput);
+    	if (userInput.length() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 }
