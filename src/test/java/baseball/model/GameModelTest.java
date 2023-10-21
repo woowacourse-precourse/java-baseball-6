@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import baseball.util.CalculationResult;
+import baseball.util.GameChoiceInputValid;
 import baseball.util.GameInputValid;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,8 @@ class GameModelTest {
     @BeforeEach
     public void setUp() {
         GameInputValid gameInputValid = new GameInputValid();
-        gameModel = new GameModel(gameInputValid);
+        GameChoiceInputValid gameChoiceInputValid = new GameChoiceInputValid();
+        gameModel = new GameModel(gameInputValid, gameChoiceInputValid);
     }
 
     @DisplayName("사용자가 숫자를 입력한다.")

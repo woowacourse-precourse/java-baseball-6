@@ -1,5 +1,6 @@
 package baseball.view;
 
+import static baseball.util.MessageConstants.GAME_CHOICE_MESSAGE;
 import static baseball.util.MessageConstants.STARTING_MESSAGE;
 import static baseball.util.MessageConstants.USER_INPUT_MESSAGE;
 
@@ -18,4 +19,8 @@ public class User {
         return sc.nextLine();
     }
 
+    public String getGameChoiceInput() {
+        System.out.println(GAME_CHOICE_MESSAGE.getContent());
+        return sc.nextLine();
+    }
 }

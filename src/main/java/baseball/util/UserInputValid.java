@@ -2,6 +2,6 @@ package baseball.util;
 
 public interface UserInputValid {
 
-    public void inputValid(String input);
+    void inputValid(String input);
 
 }

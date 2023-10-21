@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.util.CalculationResult;
+import baseball.util.GameChoiceInputValid;
 import baseball.util.GameInputValid;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,11 +10,14 @@ public class GameModel {
 
     private Computer computer;
     private GameInputValid gameInputValid;
+    private GameChoiceInputValid gameChoiceInputValid;
 
-    public GameModel(GameInputValid gameInputValid) {
+
+    public GameModel(GameInputValid gameInputValid, GameChoiceInputValid gameChoiceInputValid) {
         computer = new Computer();
         computer.generateRandomNumber();
         this.gameInputValid = gameInputValid;
+        this.gameChoiceInputValid = gameChoiceInputValid;
     }
 
     public void validateUserInput(String input) throws IllegalArgumentException {
@@ -37,6 +41,14 @@ public class GameModel {
         result.calStrikeAndBall(comNumberList, userNumberList);
 
         return result;
+    }
+
+    public void validateUserChoice(String input) throws IllegalArgumentException {
+        gameChoiceInputValid.inputValid(input);
+    }
+
+    public void reset() {
+        computer.generateRandomNumber();
     }
 
 }

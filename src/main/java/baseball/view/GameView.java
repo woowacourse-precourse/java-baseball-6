@@ -24,6 +24,10 @@ public class GameView {
         return user.getUserInput();
     }
 
+    public String getGameChoiceInput() {
+        return user.getGameChoiceInput();
+    }
+
     public String showGameResult(CalculationResult result) {
         StringBuilder sb = new StringBuilder();
         int strikeCnt = result.getStrikeCnt();
