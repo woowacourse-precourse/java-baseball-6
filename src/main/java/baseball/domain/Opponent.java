@@ -32,12 +32,12 @@ public class Opponent {
             List<Integer> guessAnswer = me.guessAnswer(numberLength);
 
             //추측한 정답에 대한 결과
-            String guessResult = numberBaseBall.verifyGuess(answer, guessAnswer);
+            Result guessResult = numberBaseBall.verifyGuess(answer, guessAnswer);
 
-            inputOutputHandler.printlnText(guessResult);
+            inputOutputHandler.printlnText(guessResult.toString());
 
             //결과가 정답인지 확인
-            if(numberBaseBall.isAnswer(guessResult)) isContinuing = false;
+            if(guessResult.isCorrect()) isContinuing = false;
         }
 
         inputOutputHandler.printlnText("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
