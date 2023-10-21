@@ -48,6 +48,22 @@ public class PlayNumberBaseBallGame {
         return playerAnswerList;
     }
 
+    private static void compareNumbers(List<Integer> answerList, List<Integer> playerAnswer) {
+        for(int i = 0;i < BALL_SIZE; ++i){
+            int currentNumber = playerAnswer.get(i);
+            /* 현 상태에 대한 값을  */
+            if(!answerList.contains(currentNumber)){
+                ++nothing;
+                continue;
+            }
+            if(answerList.get(i) == currentNumber){
+                ++strike;
+                continue;
+            }
+            ++ball;
+        }
+    }
+
     private static void initStatus(){
         strike = 0;
         ball = 0;
