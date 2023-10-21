@@ -11,10 +11,12 @@ public class UserInputValidation {
     }
 
     public boolean isNumeric(String userInput) {
-        try {
-            Integer.parseInt(userInput);
-        } catch (NumberFormatException e) {
-            return false;
+        for (int i = 0; i < GAME_NUMBER_SIZE; ++i) {
+            char c = userInput.charAt(i);
+            int number = Character.getNumericValue(c);
+            if (number <= 0 || number > 9) {
+                return false;
+            }
         }
         return true;
     }
