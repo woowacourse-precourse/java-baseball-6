@@ -11,13 +11,13 @@ public class Computer {
     private static final int ANSWER_MAX_NUM = 9;
 
     public List<Integer> makeAnswer() {
-        List<Integer> answer = new ArrayList<>();
-        while(answer.size()<ANSWER_SIZE) {
+        List<Integer> computerAnswer = new ArrayList<>();
+        while(computerAnswer.size()<ANSWER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(ANSWER_MIN_NUM, ANSWER_MAX_NUM);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
+            if (!computerAnswer.contains(randomNumber)) {
+                computerAnswer.add(randomNumber);
             }
         }
-        return answer;
+        return computerAnswer;
     }
 }

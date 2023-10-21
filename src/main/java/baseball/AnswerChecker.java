@@ -9,11 +9,11 @@ public class AnswerChecker {
     private static final int STRIKE_INDEX = 1;
     private static final int ANSWER_SIZE = 3;
 
-    public String checkAnswer(List<Integer> answer, List<Integer> myAnswer){
-        if(answer.equals(myAnswer)){
+    public String checkAnswer(List<Integer> computerAnswer, List<Integer> myAnswer){
+        if(computerAnswer.equals(myAnswer)){
             return CORRECT_ANSWER;
         }
-            String gameResult = countBallAndStrike(answer, myAnswer);
+            String gameResult = countBallAndStrike(computerAnswer, myAnswer);
             return gameResult;
     }
 
