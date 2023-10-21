@@ -33,8 +33,8 @@ public class NumericValidator {
 
     // 1 ~ 9 사이의 숫자인지 검사
     private boolean isBetween1And9(List<Integer> numbers) {
-        for (int i = 0; i < numbers.size(); i++) {
-            if (!(numbers.get(i) >= BALL_MIN_NUMBER && numbers.get(i) <= BALL_MAX_NUMBER)) {
+        for (Integer number : numbers) {
+            if (!(number >= BALL_MIN_NUMBER && number <= BALL_MAX_NUMBER)) {
                 return false;
             }
         }
