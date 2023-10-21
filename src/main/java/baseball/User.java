@@ -1,6 +1,11 @@
 package baseball;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import camp.nextstep.edu.missionutils.Console;
+
+
 public class User {
     private static final int INPUT_LENGTH = 3;
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
@@ -13,14 +18,23 @@ public class User {
         String input = Console.readLine();
         checkInputLength(input);
         checkDuplicateInput(input);
-        for(int i = 0; i < INPUT_LENGTH; i++){
+        for (int i = 0; i < INPUT_LENGTH; i++){
             this.userInput[i] = input.charAt(i);
         }
     }
 
     private void checkInputLength(String input) {
-        if(input.length() != INPUT_LENGTH) {
+        if (input.length() != INPUT_LENGTH) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
+        }
+    }
+
+    private void checkDuplicateInput(String input) {
+        Set<Character> uniqueInput = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            if (!uniqueInput.add(c)){
+                throw  new IllegalArgumentException();
+            }
         }
     }
 
