@@ -7,6 +7,7 @@ public class NumberBaseBallGameMessage {
     public static void printMessage(String message) {
         System.out.println(message);
     }
+
     public static void printStart() {
         System.out.println(NumberBaseBallGameWord.START.getKrName());
     }
@@ -28,7 +29,23 @@ public class NumberBaseBallGameMessage {
     }
 
     public static boolean isEnd(String message) {
-        if(message.equals(getEndMessage())) return true;
+        if (message.equals(getEndMessage())) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isReStart(String message) {
+        if (message.equals(NumberBaseBallGameWord.NEW_GAME.getKrName())) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isExit(String message) {
+        if (message.equals(NumberBaseBallGameWord.EXIT_GAME.getKrName())) {
+            return true;
+        }
         return false;
     }
 }
