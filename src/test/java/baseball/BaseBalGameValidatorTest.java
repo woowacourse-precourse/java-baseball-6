@@ -39,4 +39,12 @@ class BaseBalGameValidatorTest {
                 .hasMessage(String.format("%S는 세자리가 각각다른 음수입니다.", baseBallValue));
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "123", "456", "789", "321"
+    })
+    public void 세자리가_각각다른_양수이면_예외를_반환하지_않는다(String baseBallValue) {
+        Assertions.assertThatCode(() -> new BaseBalGameValidator().validBaseBallValue(baseBallValue))
+                .doesNotThrowAnyException();
+    }
 }
