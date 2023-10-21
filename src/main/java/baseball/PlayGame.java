@@ -29,4 +29,12 @@ public class PlayGame {
             throw new IllegalArgumentException("입력값의 길이가 초과되었습니다.");
         }
     }
+
+    public void validateIntegerNumber(String input) {
+        for (char c : input.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException("1~9 사이에 있는 정수만 입력해주세요.");
+            }
+        }
+    }
 }
