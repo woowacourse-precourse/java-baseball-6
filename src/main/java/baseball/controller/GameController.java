@@ -49,16 +49,22 @@ public class GameController {
     }
 
     private void playGame(){
-        Result result=new Result(new Numbers("123"),new Numbers("456"));
+        while (playOneTime())//게임 입출력 사이클 1회 반복
+        outputView.printFinishGameMessage();//게임 종료문구 출력
+    }
 
-        while (!result.isThreeStrike()) {//입력과 결과확인
-            String userInput = inputView.inputNumbers();
-            Numbers user = new Numbers(userInput);
-            result = game.calculateResult(user);
+    private boolean playOneTime(){
+        Result result=game.calculateResult(inputUser()); //결과 반환
+        outputView.printResult(result.getResult()); //내용 출력
 
-            outputView.printResult(result.getResult());
-        }
+        return isNotFinish(result);
+    }
 
-        outputView.printFinishGameMessage();
+    private Numbers inputUser(){ //입력
+        return new Numbers(inputView.inputNumbers());
+    }
+
+    private boolean isNotFinish(Result result){
+        return !result.isThreeStrike();
     }
 }
