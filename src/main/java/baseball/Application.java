@@ -28,7 +28,15 @@ class BaseballGame {
             }
         }
     }
-    // countStrike
+    private int countStrike(List<Integer> user) {
+        int strike = 0;
+        for (int i=0; i<3; i++) {
+            if (user.get(i) == computer.get(i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
     // countBall
     // printResult
 }
