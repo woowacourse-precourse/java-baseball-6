@@ -10,20 +10,24 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         while(true){
-            displayGameStartMessage();
-            List<Integer> computer = generateComputerRandomThreeDigitNumber();
-
-            while(true){
-                List<Integer> userNumber = getUserGuessThreeDigitNumber();
-                if(checkForGameEnd(computer,userNumber)){//3스트라이크인 경우,
-                    break;
-                }
-            }
+            playSingleGameRound();
             if(restartOrExit()==false){//종료
                 break;
             }
         }
 
+    }
+
+    private static void playSingleGameRound() {
+        displayGameStartMessage();
+        List<Integer> computer = generateComputerRandomThreeDigitNumber();
+
+        while(true){
+            List<Integer> userNumber = getUserGuessThreeDigitNumber();
+            if(checkForGameEnd(computer,userNumber)){//3스트라이크인 경우,
+                break;
+            }
+        }
     }
 
     public static void displayGameStartMessage()  {
