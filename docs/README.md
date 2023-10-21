@@ -1,7 +1,7 @@
 # 기능 요구 사항
 
 * 필요한 클래스
-    1. Random
+    1. RandomNum
         * 3자리의 수를 만들어 주는 클래스
         * 각 자리의 숫자는 camp.nextsetp.edu.missionutils.Randoms의 pickNumberInRange(x,y) 사용
         * 각 자리의 숫자는 모두 달라야 한다.
@@ -30,6 +30,16 @@
     * 기능 1. print
         * 게임 시작 문구
           숫자 야구 게임을 시작합니다.
+
+* 게임 도중
+    * 기능 1. 입력
+        * camp.nextstep.edu.missionutils.Console의 readLine()
+    * 기능 2. 비교
+        * 사용자의 입력을 받는다.
+          숫자를 입력해주세요 :
+        * 컴퓨터의 수와 비교한다.
+        * 3개 다 맞으면 게임 종료 여부를 입력받는다.
+        * 3개 다 맞은게 아니면 힌트를 출력한다.
 
 * 게임 종료
     * 상대방의 3자리 수를 맞추면 종료
