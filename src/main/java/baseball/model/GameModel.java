@@ -11,7 +11,6 @@ public class GameModel {
     ArrayList<Integer> answer;
     int ball;
     int strike;
-    boolean retry;
     private static final GameModel GAME_MODEL = new GameModel();
 
     public static GameModel getGameModel() {
@@ -38,9 +37,22 @@ public class GameModel {
         if (s.length() != 3) {
             throw new IllegalArgumentException();
         }
+        duplicateCheck(s);
+        guess = numFormatCheck(s);
+    }
+
+    void duplicateCheck(String s) {
+        if (Arrays.stream(s.split("")).collect(Collectors.toSet()).size() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
+    ArrayList<Integer> numFormatCheck(String s) {
+        ArrayList<Integer> rval;
 
         try {
-            guess = Arrays
+            rval = Arrays
                     .stream(s.split(""))
                     .mapToInt(Integer::parseInt)
                     .boxed()
@@ -48,6 +60,8 @@ public class GameModel {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+
+        return rval;
     }
 
     public void checkAnswer() {
@@ -63,44 +77,12 @@ public class GameModel {
         }
     }
 
+    public int getBall() {
+        return ball;
+    }
+
     public int getStrike() {
         return strike;
     }
 
-    public void setRetry(String s) {
-        switch (s) {
-            case "1":
-                retry = true;
-                break;
-            case "2":
-                retry = false;
-                break;
-            default:
-                throw new IllegalArgumentException();
-        }
-    }
-
-    public boolean getRetry() {
-        return retry;
-    }
-
-    public StringBuilder getHint() {
-        StringBuilder resultStatement = new StringBuilder();
-
-        if (ball > 0) {
-            resultStatement.append(ball).append("볼");
-        }
-
-        if (strike > 0) {
-            if (!resultStatement.isEmpty()) {
-                resultStatement.append(" ");
-            }
-            resultStatement.append(strike).append("스트라이크");
-        }
-
-        if (resultStatement.isEmpty()) {
-            resultStatement.append("낫싱");
-        }
-        return resultStatement;
-    }
 }

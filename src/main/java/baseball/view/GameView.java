@@ -24,7 +24,24 @@ public class GameView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void hintView(StringBuilder s) {
-        System.out.println(s);
+    public void hintView(int ball, int strike) {
+        StringBuilder resultStatement = new StringBuilder();
+
+        if (ball > 0) {
+            resultStatement.append(ball).append("볼");
+        }
+
+        if (strike > 0) {
+            if (!resultStatement.isEmpty()) {
+                resultStatement.append(" ");
+            }
+            resultStatement.append(strike).append("스트라이크");
+        }
+
+        if (resultStatement.isEmpty()) {
+            resultStatement.append("낫싱");
+        }
+
+        System.out.println(resultStatement);
     }
 }

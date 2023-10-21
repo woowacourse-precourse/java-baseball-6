@@ -13,27 +13,38 @@ public class GameController {
         return GAME_CONTROLLER;
     }
 
-    public void guessHandler() {
+    public void guessInputController() {
         String s = gameView.guessInputView();
         gameModel.setGuess(s);
     }
 
-    public void restartHandler() {
+    public boolean retryInputController() {
         String s = gameView.restartInputView();
-        gameModel.setRetry(s);
+        return switch (s) {
+            case "1" -> true;
+            case "2" -> false;
+            default -> throw new IllegalArgumentException();
+        };
+    }
+
+    public void hintController() {
+        gameView.hintView(gameModel.getBall(), gameModel.getStrike());
     }
 
     public void gameStart() {
         do {
+
             gameView.gameStartView();
             gameModel.generateAnswer();
+
             do {
                 gameModel.resetCount();
-                guessHandler();
+                guessInputController();
+
                 gameModel.checkAnswer();
-                gameView.hintView(gameModel.getHint());
+                hintController();
             } while (gameModel.getStrike() != 3);
-            restartHandler();
-        } while (gameModel.getRetry());
+
+        } while (retryInputController());
     }
 }
