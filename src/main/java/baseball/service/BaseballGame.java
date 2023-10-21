@@ -6,9 +6,14 @@ import java.util.List;
 
 public class BaseballGame {
 
+
+    private static final int COUNT_ZERO = 0;
+    public int strikeCount;
+    public int ballCount;
+
     public void calculateNumbers(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        int strikeCount = 0;
-        int ballCount = 0;
+        strikeCount = COUNT_ZERO;
+        ballCount = COUNT_ZERO;
 
         for (int i = 0; i < playerNumbers.size(); i++) {
             if (computerNumbers.get(i).equals(playerNumbers.get(i))) {
