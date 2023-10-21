@@ -17,12 +17,12 @@ public class BaseBallGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
         state = GameState.PLAYING;
 
-        generateNum();
         play();
     }
 
-    public void play(){
-        while(state == GameState.CORRECT){
+    private void play(){
+        generateNum();
+        while(state != GameState.CORRECT){
             chooseNum();
             System.out.println(getResult());
         }
@@ -36,6 +36,7 @@ public class BaseBallGame {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         String[] userNumAsString = input.split("");
+        userNum.clear();
         for(String str : userNumAsString){
             int number = Integer.parseInt(str);
             userNum.add(number);

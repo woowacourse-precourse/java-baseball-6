@@ -6,6 +6,5 @@ public class Application {
 
         BaseBallGame baseBallGame = new BaseBallGame();
         baseBallGame.startGame();
-        baseBallGame.play();
     }
 }
