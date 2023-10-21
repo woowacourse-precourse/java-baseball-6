@@ -36,14 +36,14 @@ public class InputValidation {
             throw new IllegalArgumentException("숫자를 중복하지 않고 입력해주시기 바랍니다.");
         }
 
-        for (Character c : charSet) {
+        charSet.forEach(c -> {
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException("숫자만을 입력해주시기 바랍니다.");
             }
             if (c.equals('0')) {
                 throw new IllegalArgumentException("1 ~ 9 사이의 숫자만을 입력해주시기 바랍니다.");
             }
-        }
+        });
     }
 
     public int validateNewGameRequest(String input) throws IllegalArgumentException {

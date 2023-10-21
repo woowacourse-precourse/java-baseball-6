@@ -12,6 +12,7 @@ public class BaseballGameMachine {
     public String input() {
         return Console.readLine();
     }
+
     private void display(String message) {
         System.out.print(message);
     }
@@ -50,6 +51,7 @@ public class BaseballGameMachine {
         }
         return false;
     }
+
     public boolean newGameOrEnd(String input) {
         int userInput = inputValidation.validateNewGameRequest(input);
         if (userInput == 2) {
