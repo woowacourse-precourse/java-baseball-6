@@ -12,19 +12,19 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-class BallsTest {
+class BaseballsTest {
     @DisplayName("Balls 생성")
     @Nested
-    class CreateBalls {
+    class CreateBaseballs {
         @DisplayName("유효한 세자리 숫자로 Balls를 생성한다")
         @ParameterizedTest
         @MethodSource
         void successCreateBallsIfValid3DigitNumber(List<Integer> Valid3DigitNumber) {
             List<Ball> expected = Valid3DigitNumber.stream().map(Ball::new).collect(Collectors.toList());
 
-            Balls balls = new Balls(Valid3DigitNumber);
+            Baseballs baseballs = new Baseballs(Valid3DigitNumber);
 
-            assertThat(balls.getBalls()).isEqualTo(expected);
+            assertThat(baseballs.getBalls()).isEqualTo(expected);
         }
 
         static Stream<Arguments> successCreateBallsIfValid3DigitNumber() {
@@ -41,7 +41,7 @@ class BallsTest {
             List<Integer> invalid3DigitNumber = List.of(1, 2, 0);
 
             assertThatIllegalArgumentException()
-                    .isThrownBy(() -> new Balls(invalid3DigitNumber));
+                    .isThrownBy(() -> new Baseballs(invalid3DigitNumber));
         }
 
         @DisplayName("세 자리가 아닌 숫자를 입력하면 예외가 발생한다")
@@ -49,7 +49,7 @@ class BallsTest {
         @MethodSource
         void throwExceptionIfNot3DigitNumber(List<Integer> not3DigitNumber) {
             assertThatIllegalArgumentException()
-                    .isThrownBy(() -> new Balls(not3DigitNumber));
+                    .isThrownBy(() -> new Baseballs(not3DigitNumber));
         }
 
         static Stream<Arguments> throwExceptionIfNot3DigitNumber() {
@@ -65,8 +65,8 @@ class BallsTest {
     @ParameterizedTest
     @MethodSource
     void judgeBallCountIfPresentBalls(List<Integer> computerNumber, List<Integer> playerNumber, int expected) {
-        Balls computer = new Balls(computerNumber);
-        Balls player = new Balls(playerNumber);
+        Baseballs computer = new Baseballs(computerNumber);
+        Baseballs player = new Baseballs(playerNumber);
 
         int actual = computer.getBallCount(player);
 
@@ -86,8 +86,8 @@ class BallsTest {
     @ParameterizedTest
     @MethodSource
     void judgeStrikeCountIfPresentBalls(List<Integer> computerNumber, List<Integer> playerNumber, int expected) {
-        Balls computer = new Balls(computerNumber);
-        Balls player = new Balls(playerNumber);
+        Baseballs computer = new Baseballs(computerNumber);
+        Baseballs player = new Baseballs(playerNumber);
 
         int actual = computer.getStrikeCount(player);
 

@@ -18,7 +18,7 @@ public enum GameStatus {
     }
 
     private static boolean isClear(int strikeCount) {
-        return strikeCount == Balls.BALLS_SIZE;
+        return strikeCount == Baseballs.BALLS_SIZE;
     }
 
     public boolean isNotClear() {

@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.Ball;
-import baseball.domain.Balls;
+import baseball.domain.Baseballs;
 import baseball.domain.GameStatus;
 import baseball.domain.GameCommand;
 import baseball.utils.Converter;
@@ -24,7 +24,7 @@ public class BaseballGameController {
         outputView.printGameStart();
 
         while (gameStatus.isNotEnd()) {
-            Balls computer = createComputer();
+            Baseballs computer = createComputer();
 
             while (gameStatus.isNotClear()) {
                 gameStatus = play(computer);
@@ -36,24 +36,24 @@ public class BaseballGameController {
         }
     }
 
-    private Balls createComputer() {
+    private Baseballs createComputer() {
         List<Integer> generatedNumbers =
-                NumberGenerator.generateUniqueNumbers(Ball.LOWER_LIMIT, Ball.UPPER_LIMIT, Balls.BALLS_SIZE);
-        return new Balls(generatedNumbers);
+                NumberGenerator.generateUniqueNumbers(Ball.LOWER_LIMIT, Ball.UPPER_LIMIT, Baseballs.BALLS_SIZE);
+        return new Baseballs(generatedNumbers);
     }
 
-    private GameStatus play(Balls computer) {
-        Balls player = createPlayer();
+    private GameStatus play(Baseballs computer) {
+        Baseballs player = createPlayer();
         int ballCount = computer.getBallCount(player);
         int strikeCount = computer.getStrikeCount(player);
         outputView.printBallAndStrike(ballCount, strikeCount);
         return GameStatus.from(strikeCount);
     }
 
-    private Balls createPlayer() {
+    private Baseballs createPlayer() {
         int playerNumber = inputView.readPlayerNumber();
         List<Integer> numbers = Converter.convertIntToList(playerNumber);
-        return new Balls(numbers);
+        return new Baseballs(numbers);
     }
 
     private GameCommand getGameCommand() {

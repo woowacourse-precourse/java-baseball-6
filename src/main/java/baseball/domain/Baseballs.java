@@ -3,14 +3,14 @@ package baseball.domain;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Balls {
+public class Baseballs {
     private static final String INVALID_DIGIT_NUMBER = "세 자리 숫자를 입력해주세요";
     public static final int START_POSITION = 0;
     public static final int BALLS_SIZE = 3;
 
     private final List<Ball> balls;
 
-    public Balls(List<Integer> numbers) {
+    public Baseballs(List<Integer> numbers) {
         validate(numbers);
         balls = toBalls(numbers);
     }
@@ -27,18 +27,18 @@ public class Balls {
                 .toList();
     }
 
-    public int getBallCount(Balls player) {
+    public int getBallCount(Baseballs player) {
         List<Ball> playerBalls = player.getBalls();
         return (int) IntStream.range(START_POSITION, BALLS_SIZE)
-                .filter(position -> !isSameOfPositionAndSameNumber(position, playerBalls.get(position)))
-                .filter(position -> ballsContain(playerBalls.get(position)))
+                .filter(position -> !isSamePositionAndSameNumber(position, playerBalls.get(position)))
+                .filter(position -> ballsContains(playerBalls.get(position)))
                 .count();
     }
 
-    public int getStrikeCount(Balls player) {
+    public int getStrikeCount(Baseballs player) {
         List<Ball> playerBalls = player.getBalls();
         return (int) IntStream.range(START_POSITION, BALLS_SIZE)
-                .filter(position -> isSameOfPositionAndSameNumber(position, playerBalls.get(position)))
+                .filter(position -> isSamePositionAndSameNumber(position, playerBalls.get(position)))
                 .count();
     }
 
@@ -46,11 +46,11 @@ public class Balls {
         return balls;
     }
 
-    private boolean isSameOfPositionAndSameNumber(int position, Ball ball) {
+    private boolean isSamePositionAndSameNumber(int position, Ball ball) {
         return balls.get(position).equals(ball);
     }
 
-    private boolean ballsContain(Ball ball) {
+    private boolean ballsContains(Ball ball) {
         return balls.contains(ball);
     }
 }
