@@ -25,13 +25,13 @@ public class User {
 
     private void checkInputHasChar(String input) {
         try {
-            Integer.parseInt(input);
+            int temp = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("This input is not Integer: " + input);
         }
     }
 
-    private void checkInputString(String input) {
+    private void checkValidInputNumber(String input) {
         checkInputLength(input);
         checkInputHasChar(input);
         checkInputHasZero(input);
@@ -53,7 +53,7 @@ public class User {
     }
 
     public void setUser(String input) {
-        checkInputString(input);
+        checkValidInputNumber(input);
         String[] tokens = input.split("");
         for (String str : tokens) {
             addNumber(Integer.parseInt(str));
