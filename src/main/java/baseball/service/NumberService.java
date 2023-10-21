@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.model.Game;
 import baseball.model.Number;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
@@ -9,7 +10,7 @@ public class NumberService {
 
     public Number generate(){
         Number computer = new Number();
-        while (computer.size() < Number.getGameSize()) {
+        while (computer.size() < Game.SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -32,7 +33,7 @@ public class NumberService {
     public boolean validateInput(String userInput){
         HashSet<Character> set = new HashSet<>();
 
-        if (userInput.length() != Number.getGameSize()) {
+        if (userInput.length() != Game.SIZE) {
             return false;
         }
 
@@ -44,6 +45,6 @@ public class NumberService {
             set.add(ch);
         }
 
-        return set.size() == Number.getGameSize();
+        return set.size() == Game.SIZE;
     }
 }

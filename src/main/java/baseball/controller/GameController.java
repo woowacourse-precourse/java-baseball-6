@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.io.Input;
 import baseball.io.Output;
 import baseball.model.Game;
-import baseball.model.Number;
 
 import java.util.List;
 
