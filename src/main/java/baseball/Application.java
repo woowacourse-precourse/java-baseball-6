@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.IllegalFormatException;
 import java.util.List;
 public class Application {
     public static void main(String[] args) {
@@ -37,8 +36,12 @@ public class Application {
                     if(userGuess.get(i) == computer.get(i)){
                         strike++;
                     }
-                    else if(computer.contains(userGuess.get(i))){
-                        ball++;
+                    else{
+                        for(int j=0; j<3; j++){
+                            if(i!=j && userGuess.get(i) == computer.get(j)){
+                                ball++;
+                            }
+                        }
                     }
                 }
                 if(strike==0 && ball==0){
