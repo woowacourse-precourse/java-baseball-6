@@ -25,4 +25,13 @@ public class PlayNumberBaseBallGame {
         }
     }
 
- }
+    private static void playGame(List<Integer> answer) {
+        initStatus();
+        while(strike < BALL_SIZE){
+            initStatus();
+            System.out.println(INPUT_NUMBER);
+            compareNumbers(answer, getPlayerAnswer());
+            displayResult();
+        }
+    }
+}
