@@ -35,7 +35,7 @@ public class BaseBallGame {
             }
             messageService.printWinMessage();
             messageService.printGameRestartOrGameEndMessage();
-            choiceNumber = InputRestartOrEnd();
+            choiceNumber = inputRestartOrEnd();
         }
     }
 
@@ -57,7 +57,7 @@ public class BaseBallGame {
         return new Result(ballCount, strikeCount);
     }
 
-    public ChoiceNumber InputRestartOrEnd() {
+    public ChoiceNumber inputRestartOrEnd() {
         int restartNumber = Integer.parseInt(userService.inputUserNumber());
         validation.validateInputChoice(restartNumber);
         return new ChoiceNumber(restartNumber);
