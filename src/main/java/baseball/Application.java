@@ -66,7 +66,7 @@ public class Application {
 
         inputNumber = new int[input.length()];
         for (int i = 0; i < input.length(); i++) {
-            inputNumber[i] = (int) input.charAt(i);
+            inputNumber[i] = input.charAt(i) - '0';
         }
         return inputNumber;
     }
