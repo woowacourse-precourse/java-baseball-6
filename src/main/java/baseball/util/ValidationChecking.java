@@ -2,6 +2,7 @@ package baseball.util;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class ValidationChecking {
@@ -24,6 +25,12 @@ public class ValidationChecking {
             if (number < 1 || number > 9) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    public static void checkRetryInput(String number) {
+        if (!Objects.equals(number, "2") && !Objects.equals(number, "1")) {
+            throw new IllegalArgumentException();
         }
     }
 }
