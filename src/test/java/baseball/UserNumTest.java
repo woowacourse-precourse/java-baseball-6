@@ -16,7 +16,7 @@ public class UserNumTest {
         String userNum = "123";
 
         // when
-        List<String> userNumList = user.userNum(userNum);
+        List<String> userNumList = user.splitUserNum(userNum);
 
         // then
         System.out.println(userNumList);
