@@ -17,11 +17,12 @@ public class Game {
             System.out.println(Data.computerNumber); // 디버깅용
             setPlayerNumber();
             System.out.println(Data.playerNumber); //디버깅용
-            getHint();
+            getResult();
             System.out.println(Data.strike + " 스트라이크 " + Data.ball + "볼");// 디버깅용
+
         }
     }
-    static void getHint(){
+    static void getResult(){
         int count = 0;
         Data.strike = 0;
         Data.ball = 0;
