@@ -11,7 +11,7 @@
   * 게임 시작 안내
   * 재시작 여부 묻기
 * attribute
-  * 
+  * 없음
 * method
   * main
   * askRestart
@@ -26,6 +26,8 @@
   * run
   * askQuery
   * judge
+  * printResult
+  * isCorrect
 
 # 기타 Issue
 ### answer 결정에 대한 책임은 어디에서?
