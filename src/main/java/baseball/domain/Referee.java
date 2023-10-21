@@ -22,6 +22,7 @@ public final class Referee {
     }
 
     public Map<HintType, Integer> getHint(PlayerNumbers playerNumbers) {
+        Map<HintType, Integer> hintMap = initHintMap();
         List<Integer> numbers = playerNumbers.getNumbers();
 
         for (int i = 0; i < numbers.size(); i++) {
