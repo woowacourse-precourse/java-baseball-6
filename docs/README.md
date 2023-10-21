@@ -17,39 +17,37 @@
 
 ```mermaid
 classDiagram
-    Validation <|-- inputValidation
-    Validation .. viewValidation
-    
     GameController -- Game
+    application --> GameController
+    Game -- UserController
+    Game -- LogicController
+    Game -- ComputerController
+    GameController -- OutputView
+    GameController -- numbersValidator
     
-      class User{
-          +int number
-          +swim()
-          +quack()
+            
+            
+      class application{ 
+          + start()
       }
-      class Computer{
-          -int sizeInFeet
-          -canEat()
-      }
-      class View{
-          +bool is_wild
-          +run()
+      class UserController{
+          
       }
       
-      class Game{
+      class OutputView{
           
+      }
+      class LogicController{
+          
+      }
+      class Game{
       } 
       class GameController{
           +play()
           +restart()
           +end()
       }
-      class Validation{
-          <<interface>>
-      }
-      class inputValidation{
-      }
-      class viewValidation{
+      class numbersValidator{
       }
 
 ```
