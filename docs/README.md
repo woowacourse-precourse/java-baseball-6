@@ -13,11 +13,12 @@
   - [x] 유효한 입력이 아닌 경우 IllegalArgumentException 발생
   - [x] 입력 값을 playerGuessNumbers에 리스트로 저장
   - [x] 정답을 맞출 때까지 반복
-- [ ] computerNumber와 playerNumber 비교
-  - [x] 스트라이크 개수 구하기
+- [x] computerNumber와 playerNumber 비교
   - [x] 볼 개수 구하기
-  - [ ] 스트라이크 개수와 볼 개수를 출력
-- [x] 3스트라이크인 경우 게임 종료
+  - [x] 스트라이크 개수 구하기
+  - [x] 볼 개수와 스트라이크 개수 출력
+- [ ] 3스트라이크인 경우 게임 종료
+  - [ ] 게임 종료 문구 출력
   - [x] 게임 재시작 여부를 묻는 메시지 출력
   - [x] 입력받은 수가 1 또는 2인지 검사
   - [x] 유효한 입력이 아닌 경우 IllegalArgumentException 발생
