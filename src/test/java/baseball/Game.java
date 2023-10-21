@@ -39,6 +39,10 @@ public class Game {
             }
         }
 
+        return generateOutput(strike, ball);
+    }
+
+    private String generateOutput(int strike, int ball) {
         String result = "";
         if (strike == 0 && ball == 0) {
             result = "낫싱";
@@ -49,7 +53,6 @@ public class Game {
         } else {
             result = ball + "볼 " + strike + "스트라이크";
         }
-
         return result;
     }
 }
