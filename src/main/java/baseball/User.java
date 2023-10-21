@@ -21,11 +21,11 @@ public class User {
         return this.numbers;
     }
 
-    public void getNumbersFromUser() {
+    public List<Integer> getNumbersFromUser() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         validateNumbersFromUser(input);
-        this.numbers = convertStringToIntList(input);
+        return convertStringToIntList(input);
     }
 
     public void validateNumbersFromUser(String input) {
