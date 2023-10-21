@@ -15,18 +15,25 @@ public class Controller {
 
     public void run() {
         startGame();
-        PlayGame();
+
+        while (true) {
+            PlayGame();
+            if (baseballGame.strikeCount == 3) {
+                break;
+            }
+        }
     }
 
     public void startGame() {
         OutputView.printStartGame();
         computer.setBaseballNumbers(baseballGame.createComputerNumbers());
-        OutputView.printInput();
-        List<Integer> playerNumbers = Utils.parseIntegerList(InputView.inputBaseballNumbers());
-        player.setBaseballNumbers(playerNumbers);
     }
 
     public void PlayGame() {
+        OutputView.printInput();
+        List<Integer> playerNumbers = Utils.parseIntegerList(InputView.inputBaseballNumbers());
+        player.setBaseballNumbers(playerNumbers);
+
         baseballGame.calculateNumbers(computer.getBaseballNumbers(), player.getBaseballNumbers());
         OutputView.printCalculateResult(baseballGame.ballCount, baseballGame.strikeCount);
     }
