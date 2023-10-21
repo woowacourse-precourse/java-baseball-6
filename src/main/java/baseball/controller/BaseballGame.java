@@ -50,8 +50,10 @@ public class BaseballGame {
             OutputView.printBallStrike(cntBallStrike[0], cntBallStrike[1]);
 
             //볼, 스트라이크 카운트 초기화
-            cntBallStrike[0] = 0;
-            cntBallStrike[1] = 0;
+            if (cntBallStrike[1] != 3) {
+                cntBallStrike[0] = 0;
+                cntBallStrike[1] = 0;
+            }
         }
 
         printCelebrate();
