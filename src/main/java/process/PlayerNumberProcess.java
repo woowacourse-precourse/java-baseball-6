@@ -20,18 +20,17 @@ public class PlayerNumberProcess {
     public List<Integer> getInputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        List<Integer> numbers = getNumbers(input);
-        ValidationNumber.validateNumbers(numbers);
-        return numbers;
+        return getNumbers(input);
     }
 
-    private List<Integer> getNumbers(String input) {
+    public List<Integer> getNumbers(String input) {
         inputNumber = new ArrayList<>();
         for (char ch : input.toCharArray()) {
             String str = String.valueOf(ch);
             int num = ValidationNumber.validationNumberType(str);
             inputNumber.add(num);
         }
+        ValidationNumber.validateNumbers(inputNumber);
         return inputNumber;
     }
 
