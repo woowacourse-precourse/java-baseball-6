@@ -37,7 +37,8 @@ public class Application {
     }
 
     public static List<Integer> getUserTrialInput() {
-        String userInput = camp.nextstep.edu.missionutils.Console.readLine(); // 항상 올바른 입력값이라고 가정함
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = camp.nextstep.edu.missionutils.Console.readLine();
         vaildUserTrialInput(userInput);
 
         List<Integer> userInputList = new ArrayList<>();
@@ -78,7 +79,7 @@ public class Application {
     public static int getUserRestartInput() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        String userInput = camp.nextstep.edu.missionutils.Console.readLine(); // 항상 올바른 입력값이라고 가정함
+        String userInput = camp.nextstep.edu.missionutils.Console.readLine();
         vaildUserRestartInput(userInput);
 
         return Integer.parseInt(userInput);
@@ -90,7 +91,6 @@ public class Application {
 
         while (gameState) {
             List<Integer> answerList = makeRandomAnswer();
-            System.out.println(answerList); // debug
 
             while (true) {
                 List<Integer> userInputList = getUserTrialInput();
