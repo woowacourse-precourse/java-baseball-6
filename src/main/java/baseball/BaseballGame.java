@@ -15,7 +15,6 @@ public class BaseballGame {
 
     public BaseballGame() {
         numbers = new ArrayList<>();
-        setNumber();
     }
 
     public void game() {
