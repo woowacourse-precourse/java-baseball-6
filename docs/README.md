@@ -58,11 +58,11 @@
 - `Computer`
     - [ ] `getScore()`: 컴퓨터가 가지고 있는 정답 `Answer`와 사용자가 입력한 3자리 수를 비교하여 `Score` 객체 반환.
 - `AnswerGenerator`
-    - [ ] `Answer` 타입을 반환하는 `generate()` 메서드 정의
+    - [x] `Answer` 타입을 반환하는 `generate()` 메서드 정의
 - `RandomAnswerGenerator`: `AnswerGenerator` 구현
-    - [ ] `Randoms.pickNumberInRange()` 메서드를 사용하여 `Answer` 타입 반환.
+    - [x] `Randoms.pickNumberInRange()` 메서드를 사용하여 `Answer` 타입 반환.
 - `FixedAnswerGenerator`: `AnswerGenerator` 구현
-    - [ ] `generate()` 메서드를 구현하고, 오버라이딩하여 `String` 타입을 매개변수로 3자리 숫자를 생성하여 `Answer` 타입 반환.
+    - [x] `generate()` 메서드를 구현하고, 오버라이딩하여 `String` 타입을 매개변수로 3자리 숫자를 생성하여 `Answer` 타입 반환.
 - `Answer`
     - [x] 정답과 입력값을 비교하여 `Score`반환.
 - `Score`
