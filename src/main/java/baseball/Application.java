@@ -16,9 +16,29 @@ public class Application {
         return computer;
     }
 
+    public static void vaildUserTrialInput(String userInput) {
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException("3자리의 숫자를 입력하세요.");
+        }
+
+        for (char c : userInput.toCharArray()) {
+            if (c < '1' || c > '9') {
+                throw new IllegalArgumentException("올바른 숫자를 입력하세요.");
+            }
+        }
+
+        for (int i = 0; i < userInput.length() - 1; i++) {
+            for (int j = i + 1; j < userInput.length(); j++) {
+                if (userInput.charAt(i) == userInput.charAt(j)) {
+                    throw new IllegalArgumentException("중복되지 않은 숫자를 입력하세요.");
+                }
+            }
+        }
+    }
+
     public static List<Integer> getUserTrialInput() {
         String userInput = camp.nextstep.edu.missionutils.Console.readLine(); // 항상 올바른 입력값이라고 가정함
-        // todo: 유저 입력값 검사
+        vaildUserTrialInput(userInput);
 
         List<Integer> userInputList = new ArrayList<>();
         for (char c : userInput.toCharArray()) {
