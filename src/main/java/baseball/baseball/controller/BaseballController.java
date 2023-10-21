@@ -19,29 +19,32 @@ public class BaseballController {
     }
 
     private void start() {
-        outputView.printStartGame();
-        goalNumber = baseballService.createGoalNumber();
-
-        // 테스트용 정답 번호 출력
-        System.out.println("goalNumber = " + goalNumber);
-
-        game();
-    }
-
-    private void game(){
         boolean isEndGame = false;
 
         while (!isEndGame) {
+            outputView.printStartGame();
+            goalNumber = baseballService.createGoalNumber();
+
+            game();
+
+            isEndGame = endGame();
+        }
+    }
+
+    private void game() {
+        boolean isStopGame = false;
+
+        while (!isStopGame) {
             List<Integer> inputNumber = getInputNumber();
 
             String hint = checkNumber(inputNumber);
             outputView.printHint(hint);
 
-            isEndGame = hint.equals(SUCCESS_MESSAGE);
+            isStopGame = hint.equals(SUCCESS_MESSAGE);
         }
     }
 
-    private List<Integer> getInputNumber(){
+    private List<Integer> getInputNumber() {
         String inputString = inputView.getInputNumber();
 
         if (inputString.length() != 3) {
@@ -53,5 +56,21 @@ public class BaseballController {
 
     private String checkNumber(List<Integer> inputNumber) {
         return baseballService.checkNumber(goalNumber, inputNumber);
+    }
+
+    private boolean endGame() {
+        int endGame;
+
+        try {
+            endGame = Integer.parseInt(inputView.getEndGame());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자 1 또는 2만 입력 가능합니다.");
+        }
+
+        if (endGame != 1 && endGame != 2) {
+            throw new IllegalArgumentException("숫자 1 또는 2만 입력 가능합니다.");
+        }
+
+        return endGame == 2;
     }
 }
