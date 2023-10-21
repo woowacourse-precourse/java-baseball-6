@@ -1,11 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
@@ -47,11 +46,9 @@ public class Application {
             System.out.println(LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = readLine();
-            if (input.equals("1")) {
-                continue;
-            } else if (input.equals("2")) {
+            if (input.equals("2")) {
                 break;
-            } else {
+            } else if (!input.equals("1")) {
                 throw new IllegalArgumentException();
             }
         }
@@ -76,14 +73,10 @@ public class Application {
 
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < string.length(); i++) {
-            try {
-                Integer temp = Integer.parseInt(String.valueOf(string.charAt(i)));
-                if (result.indexOf(temp) > -1) {
-                    throw new IllegalArgumentException();
-                } else {
-                    result.add(temp);
-                }
-            } catch (NumberFormatException e) {
+            if (string.charAt(i) >= '1' && string.charAt(i) <= '9'
+                    && result.indexOf(Integer.parseInt(String.valueOf(string.charAt(i)))) < 0) {
+                result.add(Integer.parseInt(String.valueOf(string.charAt(i))));
+            } else {
                 throw new IllegalArgumentException();
             }
         }
