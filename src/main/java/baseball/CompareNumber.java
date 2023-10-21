@@ -19,4 +19,10 @@ public class CompareNumber {
         }
         return new int[]{strike,ball};
     }
+    public static boolean checkAllStrike(int[] strike_ball){
+        if (strike_ball[0]==3){
+            return false;
+        }
+        return true;
+    }
 }
