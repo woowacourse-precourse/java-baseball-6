@@ -32,10 +32,9 @@ public class BaseBallInputDevice {
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
     String inputStr = Console.readLine();
-    int inputNumber = Integer.parseInt(inputStr);
-    validateEndNumber(inputNumber);
+    validateExitNumber(inputStr);
 
-    return inputNumber;
+    return Integer.parseInt(inputStr);
   }
 
   private void validateLength(String inputStr) {
@@ -56,9 +55,9 @@ public class BaseBallInputDevice {
     }
   }
 
-  private void validateEndNumber(int inputNumber) {
-    if (inputNumber != 1 && inputNumber != 2) {
-      throw new IllegalArgumentException("1 또는 2만 입력이 가능합니다.");
+  private void validateExitNumber(String inputStr) {
+    if (!(inputStr.equals("1") || inputStr.equals("2"))) {
+      throw new IllegalArgumentException("1 또는 2만 입력이 가능 합니다.");
     }
   }
 
