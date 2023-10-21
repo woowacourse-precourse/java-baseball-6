@@ -9,7 +9,7 @@ public class GameInputValid implements UserInputValid {
     }
 
     private void compareInputType(String input) throws IllegalArgumentException {
-        if (!isNumeric(input) || !isValidRange(input)) {
+        if (!isNumeric(input) || !isValidRange(input) || isValidZeroValue(input)) {
             throw new IllegalArgumentException();
         }
     }
@@ -25,5 +25,9 @@ public class GameInputValid implements UserInputValid {
 
     private boolean isValidRange(String input) {
         return input.length() == NumberConstants.LIMIT_NUMBERS_SIZE.getValue();
+    }
+
+    private boolean isValidZeroValue(String input) {
+        return input.contains("0");
     }
 }
