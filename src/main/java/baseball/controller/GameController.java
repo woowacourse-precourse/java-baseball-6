@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.factory.NumberFactory;
+import baseball.model.RandomNumber;
 import baseball.model.Referee;
 import baseball.model.ResumeNumber;
 import baseball.view.EndView;
@@ -25,7 +25,7 @@ public class GameController {
     }
 
     private void play() {
-        int computerNumber = NumberFactory.createNumber();
+        int computerNumber = RandomNumber.pickNumber();
 
         while (!referee.isGameEnd()) {
             AskController.askNumberInput();
