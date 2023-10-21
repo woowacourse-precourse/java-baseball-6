@@ -6,7 +6,8 @@ import java.util.Set;
 
 public class NumberValidator {
 
-    public static final int LENGTH = 3;
+    public static final int ONE_LENGTH = 1;
+    public static final int THREE_LENGTH = 3;
     public static final int MIN_VALUE = 1;
     public static final int MAX_VALUE = 9;
 
@@ -50,18 +51,26 @@ public class NumberValidator {
         return resultSet;
     }
 
-    public static void validateRequiredLength(String input) {
-        if (Objects.equals(input, "1") || Objects.equals(input, "2")) {
-            return;
-        }
-
-        if (input.length() != LENGTH) {
-            throw new IllegalArgumentException(input + "의 길이는 " + LENGTH + "이어야 합니다.");
+    public static void validateThreeLength(String input) {
+        if (input.length() != THREE_LENGTH) {
+            throw new IllegalArgumentException(input + "의 길이는 " + THREE_LENGTH + "이어야 합니다.");
         }
     }
 
-    public static boolean isBelowRequiredLength(int size) {
-        return size < LENGTH;
+    public static void validateOneLength(String input) {
+        if (input.length() != ONE_LENGTH) {
+            throw new IllegalArgumentException(input + "의 길이는 " + ONE_LENGTH + "이어야 합니다.");
+        }
+    }
+
+    public static void validateOneOrTwo(String input) {
+        if (!Objects.equals(input, "1") && !Objects.equals(input, "2")) {
+            throw new IllegalArgumentException(input + "은 1 또는 2여야 합니다.");
+        }
+    }
+
+    public static boolean isBelowThreeLength(int size) {
+        return size < THREE_LENGTH;
     }
 
 }

@@ -1,9 +1,9 @@
 package baseball.computer.validator;
 
-import static baseball.validator.NumberValidator.LENGTH;
+import static baseball.validator.NumberValidator.THREE_LENGTH;
 import static baseball.validator.NumberValidator.validateAllDigits;
 import static baseball.validator.NumberValidator.validateDuplicateNumber;
-import static baseball.validator.NumberValidator.validateRequiredLength;
+import static baseball.validator.NumberValidator.validateThreeLength;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -60,7 +60,7 @@ class NumberValidatorTest {
 
         // when
         // then
-        assertThat(NumberValidator.isBelowRequiredLength(invalidNumber)).isFalse();
+        assertThat(NumberValidator.isBelowThreeLength(invalidNumber)).isFalse();
     }
 
     @DisplayName("경계인 3보다 작다면 True를 반환한다.")
@@ -71,7 +71,7 @@ class NumberValidatorTest {
 
         // when
         // then
-        assertThat(NumberValidator.isBelowRequiredLength(invalidNumber)).isTrue();
+        assertThat(NumberValidator.isBelowThreeLength(invalidNumber)).isTrue();
     }
 
     @DisplayName("중복된 숫자가 있다면 예외가 발생한다.")
@@ -132,7 +132,7 @@ class NumberValidatorTest {
 
         // when
         // then
-        assertThatCode(() -> validateRequiredLength(validInput))
+        assertThatCode(() -> validateThreeLength(validInput))
                 .doesNotThrowAnyException();
     }
 
@@ -144,9 +144,9 @@ class NumberValidatorTest {
 
         // when
         // then
-        assertThatThrownBy(() -> validateRequiredLength(invalidInput))
+        assertThatThrownBy(() -> validateThreeLength(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(invalidInput + "의 길이는 " + LENGTH + "이어야 합니다.");
+                .hasMessage(invalidInput + "의 길이는 " + THREE_LENGTH + "이어야 합니다.");
     }
 
 }
