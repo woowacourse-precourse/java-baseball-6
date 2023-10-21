@@ -14,5 +14,4 @@ public class RestartView {
         final String input = Console.readLine().trim();
         return input.equals("1");
     }
-
 }

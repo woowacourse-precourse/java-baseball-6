@@ -7,5 +7,4 @@ public class WinView {
     public static void print() {
         System.out.println(WIN_MESSAGE);
     }
-
 }

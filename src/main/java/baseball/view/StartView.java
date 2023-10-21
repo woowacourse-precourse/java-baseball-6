@@ -7,5 +7,4 @@ public class StartView {
     public static void print() {
         System.out.println(START_MESSAGE);
     }
-
 }
