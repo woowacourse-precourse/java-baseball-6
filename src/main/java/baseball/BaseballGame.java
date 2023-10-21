@@ -20,8 +20,8 @@ public class BaseballGame {
 
     private void run() throws IllegalArgumentException {
         while (!isDone) {
-            String userBall = Display.requestUserBall();
-            Validator.validateUserBall(userBall);
+            Ball userBall = new Ball(Display.requestUserBall());
+            Validator.validateBall(userBall);
 
             // todo: 컴퓨터 랜덤 볼 선택
             // todo: 사용자 입력
