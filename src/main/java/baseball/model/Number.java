@@ -1,19 +1,15 @@
 package baseball.model;
 
-import static baseball.config.NumberConfig.NUMBER_LENGTH;
-import static baseball.config.NumberConfig.NUMBER_MAXIMUM_INCLUSIVE;
-import static baseball.config.NumberConfig.NUMBER_MINIMUM_INCLUSIVE;
-import static baseball.validator.NumberValidator.validateContainDuplicatedNumber;
-import static baseball.validator.NumberValidator.validateContainOnlyNumber;
-import static baseball.validator.NumberValidator.validateEmpty;
-import static baseball.validator.NumberValidator.validateNumberLength;
+import baseball.view.InputView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static baseball.config.NumberConfig.*;
+import static baseball.validator.NumberValidator.*;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.joining;
-
-import baseball.view.InputView;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Number {
     private final String value;
@@ -44,7 +40,7 @@ public class Number {
     }
 
     public int countBallCount(final Number computerNumber) {
-        int ret = 0;
+        int ballCount = 0;
         String playerNumber = this.getValue();
         String compareNumber = computerNumber.getValue();
 
@@ -53,10 +49,10 @@ public class Number {
             char compareDigit = compareNumber.charAt(i);
 
             if (playerDigit != compareDigit && compareNumber.contains(valueOf(playerDigit))) {
-                ret++;
+                ballCount++;
             }
         }
-        return ret;
+        return ballCount;
     }
 
     public int countStrikeCount(final Number computerNumber) {
@@ -78,9 +74,6 @@ public class Number {
                 .collect(joining(""));
     }
 
-    /**
-     * getNumber() 외부 객체에서 값을 꺼내지 못하도록 private로 제한
-     */
     public String getValue() {
         return value;
     }

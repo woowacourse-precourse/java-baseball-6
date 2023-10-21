@@ -1,10 +1,6 @@
 package baseball.view;
 
-import static baseball.config.OutputViewConfig.GAME_OVER;
-import static baseball.config.OutputViewConfig.GAME_START;
-import static baseball.config.OutputViewConfig.NOTHING;
-import static baseball.config.OutputViewConfig.REQUEST_PLAYER_NUMBER;
-import static baseball.config.OutputViewConfig.REQUEST_RESTART_OR_EXIT;
+import static baseball.config.OutputViewConfig.*;
 
 public class OutputView {
     public static void printRequestNumber() {
@@ -14,8 +10,7 @@ public class OutputView {
     public static void printGameStart() {
         System.out.println(GAME_START.getMessage());
     }
-
-
+    
     public static void printRequestRestartOrExit() {
         System.out.println(REQUEST_RESTART_OR_EXIT.getMessage());
     }
