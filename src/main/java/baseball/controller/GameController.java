@@ -30,7 +30,8 @@ public class GameController {
         List<Integer> userInpuNumbers = gameService.parseInput(userInputString);
     }
 
-    public void makeResult(List<Integer> userInputNumbers) {
+    public void getResult(List<Integer> userInputNumbers) {
         GameResult gameResult = gameService.calculateGameResult(userInputNumbers);
+        View.gameResult(gameResult);
     }
 }

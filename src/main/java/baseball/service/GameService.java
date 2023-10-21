@@ -4,7 +4,6 @@ import static baseball.properties.Properties.*;
 
 import baseball.model.GameResult;
 
-import baseball.properties.Properties;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
