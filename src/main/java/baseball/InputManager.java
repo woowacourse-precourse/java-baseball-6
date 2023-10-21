@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -45,10 +47,7 @@ public class InputManager {
 
     private String getInput() {
 
-        Scanner scanner = new Scanner(System.in);
-        String inputValue = scanner.nextLine();
-
-        return inputValue;
+        return Console.readLine();
 
     }
 
