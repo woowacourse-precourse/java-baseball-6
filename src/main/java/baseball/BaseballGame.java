@@ -24,13 +24,13 @@ public class BaseballGame {
 
         while (isRestart) {
             baseballGameView.printStartMessage();
-            play(baseballGameLogic.getThreeDigitNonZero());
+            playUntilThreeStrikes(baseballGameLogic.getThreeDigitNonZero());
             baseballGameView.printRestartMessage();
-            isRestart = askRestart();
+            isRestart = askForRestartOrQuit();
         }
     }
 
-    private void play(List<Integer> randomThreeDigits) {
+    private void playUntilThreeStrikes(List<Integer> randomThreeDigits) {
         boolean isThreeStrike = false;
 
         while (!isThreeStrike){
@@ -73,7 +73,7 @@ public class BaseballGame {
         throw new IllegalArgumentException(REQUIRED_ONE_OR_TWO);
     }
 
-    private boolean askRestart(){
+    private boolean askForRestartOrQuit(){
         String restartInputNumber = getRestartInput();
         return !restartInputNumber.equals(QUIT);
     }
