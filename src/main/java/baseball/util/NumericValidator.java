@@ -7,11 +7,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class NumericValidator {
+    private static final int BALL_NUMBER_LENGTH = 3;
+    private static final int BALL_MIN_NUMBER = 1;
+    private static final int BALL_MAX_NUMBER = 9;
 
     public List<Integer> validate(String inputNumber) {
         List<Integer> playerNumbers = converStringToList(inputNumber);
 
-        if (playerNumbers.size() != 3) {
+        if (playerNumbers.size() != BALL_NUMBER_LENGTH) {
             throw new IllegalArgumentException("잘못된 입력입니다. 자릿수 오류");
         } else if (!isDifferentNumber(playerNumbers)) {
             throw new IllegalArgumentException("잘못된 입력입니다. 중복 오류");
@@ -28,13 +31,13 @@ public class NumericValidator {
         for (int i = 0; i < numbers.size(); i++) {
             set.add(numbers.get(i));
         }
-        return set.size() == 3;
+        return set.size() == BALL_NUMBER_LENGTH;
     }
 
     // 1 ~ 9 사이의 숫자인지 검사
     private boolean isBetween1And9(List<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
-            if (!(numbers.get(i) >= 1 && numbers.get(i) <= 9)) {
+            if (!(numbers.get(i) >= BALL_MIN_NUMBER && numbers.get(i) <= BALL_MAX_NUMBER)) {
                 return false;
             }
         }
