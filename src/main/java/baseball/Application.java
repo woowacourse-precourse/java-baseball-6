@@ -17,10 +17,16 @@ public class Application {
 class BaseballGame {
     private List<Integer> computer = new ArrayList<>();
     private List<Integer> user = new ArrayList<>();
-    private boolean isPlaying = false;
+    private boolean isPlaying = true;
     void play() {
-        makeComNum();
-        getUserNum();
+        while (isPlaying) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            makeComNum();
+            while (isPlaying) {
+                getUserNum();
+                printResult(countStrike(), countBall());
+            }
+        }
     }
     private void makeComNum() {
         while (computer.size() < 3) {
@@ -31,7 +37,9 @@ class BaseballGame {
         }
     }
     private void getUserNum() {
+        System.out.print("숫자를 입력해주세요 : ");
         String userNumber = Console.readLine();
+        user.clear();
         for (int i=0; i<3; i++) {
             user.add(Character.getNumericValue(userNumber.charAt(i)));
         }
