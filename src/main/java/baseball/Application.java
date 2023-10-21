@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -22,7 +21,7 @@ public class Application {
             List<Integer> computer = startCreate.computerCreate();
             String result = "";
 
-            while (!result.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")){
+            while (!result.equals("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")){
                 result = checkFinal.checkAll(computer, startGame.PlayerNumber());
                 System.out.println(result);
             }

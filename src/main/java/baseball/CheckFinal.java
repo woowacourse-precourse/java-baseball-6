@@ -9,7 +9,7 @@ public class CheckFinal {
     Strike strike = new Strike();
 
     /**
-     * ball의 갯수를 반환해주는 메서드입니다.
+     * ball의 갯수를 반환해주는 메서드 입니다.
      * */
     public int ball(List<Integer> computer, List<Integer> player){
         int total = startCompare.countDigit(computer, player);
@@ -19,7 +19,7 @@ public class CheckFinal {
     }
 
     /**
-     * total, strike, ball의 갯수를 다 확인한 메서드입 니다.
+     * total, strike, ball의 갯수를 다 확인한 메서드 입니다.
      * 낫싱, 볼, 스트라이크의 유무를 알려주는 확인 메서드 입니다.
      * */
     public String checkAll(List<Integer> computer, List<Integer> player){
@@ -28,7 +28,7 @@ public class CheckFinal {
         int ball = ball(computer, player);
 
         if (stikeCount == 3){
-            return "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         } else if (total == 0){
             return "낫싱";
         } else if (stikeCount == 0){
