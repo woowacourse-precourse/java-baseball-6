@@ -18,7 +18,7 @@ public class GameController {
 
     public void startGame() {
         gameView.printStartMessage();
-        while (true) {
+        while (!baseBallGame.isGameOver()) {
             String input = gameView.printInputMessage();
             List<Integer> userInput = baseBallGame.parseUserInput(input);
 
