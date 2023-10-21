@@ -9,24 +9,28 @@ public class GameMessages {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public static void printBallStrike(int ball, int strike) {
-        System.out.println(ball + "볼" + " " + strike + "스트라이크");
-    }
+    public static void printStatusMessage(int ball, int strike) {
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
 
-    public static void printStrike(int strike) {
-        System.out.println(strike + "스트라이크");
-    }
+        if (strike > 0 && ball > 0) {
+            System.out.println(ball + "볼" + " " + strike + "스트라이크");
+            return;
+        }
 
-    public static void printBall(int ball) {
-        System.out.println(ball + "볼");
-    }
+        if (strike > 0) {
+            System.out.println(strike + "스트라이크");
+            return;
+        }
 
-    public static void printThreeStrike() {
-        System.out.println("3스트라이크");
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    }
+        if (ball > 0) {
+            System.out.println(ball + "볼");
+            return;
+        }
 
-    public static void printNothing() {
         System.out.println("낫싱");
     }
 }
