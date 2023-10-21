@@ -33,8 +33,6 @@
 3. domain
     - Computer
     - [ ] 플레이어가 맞춰야하는 숫자 생성 로직 구현
-    - Player
-    - [ ] 숫자를 제시하는 기능 구현
 
 4. validation
     - Validator
