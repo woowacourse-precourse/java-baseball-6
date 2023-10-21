@@ -16,7 +16,7 @@ public class InputView {
 
     public static int readGameCommand() {
         // TODO: Outputview로 분리하는 것 고민중
-        System.out.printf(INPUT_RETRY_OR_QUIT_REQUEST_MESSAGE, GameCommand.RETRY.getNumber(), GameCommand.QUIT.getNumber());
+        System.out.printf(INPUT_RETRY_OR_QUIT_REQUEST_MESSAGE, GameCommand.RESTART.getNumber(), GameCommand.QUIT.getNumber());
         return InputUtil.readInt();
     }
 }

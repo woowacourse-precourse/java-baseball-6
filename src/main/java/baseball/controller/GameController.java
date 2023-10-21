@@ -56,7 +56,7 @@ public class GameController {
     }
 
     private void restart(GameCommand gameCommand) {
-        if (gameCommand.equals(GameCommand.RETRY)) {
+        if (gameCommand.equals(GameCommand.RESTART)) {
             service.startGame();
             playGame();
         }

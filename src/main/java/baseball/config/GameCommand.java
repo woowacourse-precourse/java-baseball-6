@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public enum GameCommand {
 
-    RETRY(1),
+    RESTART(1),
     QUIT(2);
 
     private final int number;
@@ -17,7 +17,7 @@ public enum GameCommand {
         return Arrays.stream(GameCommand.values())
                 .filter(gameCommand -> gameCommand.number == input)
                 .findAny()
-                .orElseThrow(IllegalArgumentException::new); // TODO 커스텀 예외 만들기
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public int getNumber() {
