@@ -9,23 +9,27 @@ public class Game {
 
     public static void startGame(){
         while (true){
-            System.out.println("게임시작");
+            System.out.println("숫자 야구 게임을 시작합니다.");
             if(!Data.isCreated) {
                 initComputerNumber();
                 Data.isCreated = true;
             }
             System.out.println(Data.computerNumber); // 디버깅용
             setPlayerNumber();
-            System.out.println(Data.playerNumber); //디버깅용
             getResult();
             printHint();
-            if(restartGame()){
-               Data.isCreated = false;
+            if(Data.strike == Data.ANSWER_STRIKE){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                if(!restartGame()){
+                    break;
+                }
+                Data.isCreated = false;
             }
+
         }
     }
     static boolean restartGame(){
-
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int input = Integer.parseInt(playerInput());
         if(input == Data.DO_RESTART) return true;
         else if(input == Data.DO_NOT_RESTART) return false;
@@ -60,6 +64,7 @@ public class Game {
     }
     static void setPlayerNumber() throws IllegalArgumentException{
         Data.playerNumber = new ArrayList<>();
+        System.out.println("숫자를 입력해주세요 : ");
         String input = playerInput();
         int toIntInput = Integer.parseInt(input);
         while (toIntInput > 0){
