@@ -29,6 +29,8 @@ final class Digits {
 
     //TODO : 정적팩터리로?
     Digits(String input) {
+        if(input.length() != Size.THREE.num) throw new IllegalArgumentException();
+        digits = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             Digit digit = new Digit(input.charAt(i));
             if (digits.contains(digit)) throw new IllegalArgumentException();
