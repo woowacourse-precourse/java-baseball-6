@@ -13,11 +13,18 @@ public class Player {
 
     private List<Integer> inputNumbers;
 
-    public Player(String inputNumber) {
-        List<Integer> inputNumbers = parsingNumber(inputNumber);
+    public Player(){}
+
+    public void updateNumbers(String inputNumber) {
+        initInputNumbers();
+        List<Integer> expectedNumbers = parsingNumber(inputNumber);
         validateOneToNine(inputNumbers);
-        validateDuplicateNumber(inputNumbers);
-        this.inputNumbers = inputNumbers;
+        validateDuplicateNumber(expectedNumbers);
+        this.inputNumbers = expectedNumbers;
+    }
+
+    private void initInputNumbers(){
+        this.inputNumbers = new ArrayList<>();
     }
 
     private List<Integer> parsingNumber(String inputNumber) {
