@@ -15,6 +15,10 @@ public class BaseballGameController {
         this.player = new Player();
     }
 
+    public boolean isGameRestart(int retryNumber) {
+        return retryNumber == 1;
+    }
+
     public boolean isStrikeAnswer() {
         return comparator.getStrikeCount() != 0 && comparator.getBallCount() == 0;
     }
