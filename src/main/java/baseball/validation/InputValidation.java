@@ -10,6 +10,16 @@ import java.util.regex.Pattern;
 public class InputValidation {
 
     /**
+     * 사용자의 입력값에 대한 모든 검증을 진행한다.
+     */
+    public void validateInputNum(String input) {
+        validateNull(input);
+        validateLengthAtLeastFour(input);
+        validateNaturalNumber(input);
+        validateUniqueIntegers(input);
+    }
+
+    /**
      * 사용자의 숫자 입력값이 자연수로만 이루어져 있는지 검증한다.
      */
     public void validateNaturalNumber(String input) {
