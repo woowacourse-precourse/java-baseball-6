@@ -4,7 +4,6 @@ import baseball.entity.Computer;
 import baseball.service.Service;
 import baseball.view.Input;
 import baseball.view.Log;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Controller {
 
@@ -18,6 +17,7 @@ public class Controller {
         Computer computer = Computer.getInstance();
         computer.init();
         service.startGame();
+        Log.info("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return Input.readExitNumber();
     }
 }
