@@ -9,7 +9,9 @@ import static baseball.BaseballGameView.showWinMessage;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -64,6 +66,13 @@ public class NumberBaseballGame {
 
     void validateInput(String inputString) throws IllegalArgumentException {
         if (!Pattern.matches(INPUT_REGEX, inputString)) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 숫자 입력입니다: " + inputString);
+        }
+        Set<Character> set = new HashSet<>();
+        for (char s : inputString.toCharArray()) {
+            set.add(s);
+        }
+        if (set.size() != 3) {
             throw new IllegalArgumentException("[ERROR] 잘못된 숫자 입력입니다: " + inputString);
         }
     }
