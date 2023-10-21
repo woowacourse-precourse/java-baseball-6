@@ -39,11 +39,15 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String oneOrTwo = Console.readLine();
 
-            if (!oneOrTwo.matches("[1-2]")) throw new IllegalArgumentException();
+            validateOneOrTwo(input);
 
             return input.equals(RESTART) ? getComputerPicks() : null;
         }
         return computer;
+    }
+
+    private static void validateOneOrTwo(String oneOrTwo) {
+        if (!oneOrTwo.matches("[1-2]")) throw new IllegalArgumentException();
     }
 
     private static void printResult(Result result) {
