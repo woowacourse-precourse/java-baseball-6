@@ -8,21 +8,8 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         GameController gameController = new GameController();
-        PrintView printView = new PrintView();
 
-        printView.printGameStartMessage();
-        int[] answer = RandomUtils.getRandomNumbers();
-        for (int i=0; i<3; i++) {
-            System.out.println("answer = " + answer[i]);
-        }
-        boolean state = true;
-
-        while (state) {
-            printView.printUserInputMessage();
-            int[] inputNum = gameController.getInputNumber();
-            state = gameController.analyzeInputNumber(answer, inputNum);
-        }
-        printView.printRestartMessage();
+        gameController.gameSet();
 
     }
 }
