@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,6 +34,18 @@ public class PlayNumberBaseBallGame {
             compareNumbers(answer, getPlayerAnswer());
             displayResult();
         }
+    }
+
+    private static List<Integer> getPlayerAnswer() {
+        String playerAnswer = scanner.next();
+        /* 입력으로 받으면 안 되는 예외 사항 총 처리 */
+        Validator.checkAllException(playerAnswer);
+
+        List<Integer> playerAnswerList = new ArrayList<>();
+        for(int i = 0;i < BALL_SIZE; ++i){
+            playerAnswerList.add(playerAnswer.charAt(i) - '0');
+        }
+        return playerAnswerList;
     }
 
     private static void initStatus(){
