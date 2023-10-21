@@ -11,129 +11,138 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        //"게임 시작 문구" 출력　
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        TotalGameLoop:
+        while (true) {
+            //"게임 시작 문구" 출력　
+            System.out.println("숫자 야구 게임을 시작합니다.");
 
-        //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
-        List<Integer> computerNumList = new ArrayList<>();
-        while (computerNumList.size() < GameConstants.NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(GameConstants.MIN_DIGIT, GameConstants.MAX_DIGIT);
-            if (!computerNumList.contains(randomNumber)) {
-                computerNumList.add(randomNumber);
-            }
-        }
-        System.out.println("컴퓨터가 뽑은 수"+computerNumList);
-
-        //사용자는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 입력　
-        System.out.print("숫자를 입력해주세요 : ");
-        String inputNum = Console.readLine();
-
-        //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
-        //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
-        if (!isInteger(inputNum)) {
-            throw new IllegalArgumentException();
-        }
-
-        //검증: 만약 숫자의 자리수가 3보다 작으면 잘못 입력한 것이다.
-        //검증: 만약 숫자의 자리수가 3보다 크면 잘못 입력한 것이다.
-        int inputNumLen = inputNum.length();
-        if (inputNumLen < GameConstants.NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
-        }
-
-        if (inputNumLen > GameConstants.NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
-        }
-
-        //검증: 만약 같은 숫자가 2개 이상 있으면 잘못 입력한 것이다.
-        Set numSet=new HashSet();
-        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++){
-            numSet.add(inputNum.charAt(i));
-        }
-        if (numSet.size() < GameConstants.NUMBER_LENGTH){
-            throw new IllegalArgumentException();
-        }
-
-        //검증: 만약 숫자의 각 자리가 1이상 9이하가 아니면 잘못 입력한 것
-        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
-            if (!inputNum.matches("^[1-9]+$")){
-                throw new IllegalArgumentException();
-            }
-        }
-
-        //검증이 완료되어야 변환 가능
-        List<Integer> inputNumList = parseIntegerList(inputNum);
-        System.out.println(inputNumList);
-
-        //컴퓨터는 사용자가 입력한 숫자와 뽑은 숫자를 비교하여 힌트를 판단, 출력　
-        //힌트는 스트라이크, 볼, 낫싱 3가지　
-        //같은 수가 같은 자리에 있으면 스트라이크　
-        int strike = 0;
-        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++){
-            if (inputNumList.get(i).equals(computerNumList.get(i))) {
-                strike++;
-            }
-        }
-
-        //같은 수가 다른 자리에 있으면 볼　
-        int ball = 0;
-        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++){
-            for (int j = 0; j < GameConstants.NUMBER_LENGTH; j++){
-                if (i==j){
-                    continue;
-                }
-                if (inputNumList.get(i).equals(computerNumList.get(j))) {
-                    ball++;
+            //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
+            List<Integer> computerNumList = new ArrayList<>();
+            while (computerNumList.size() < GameConstants.NUMBER_LENGTH) {
+                int randomNumber = Randoms.pickNumberInRange(GameConstants.MIN_DIGIT, GameConstants.MAX_DIGIT);
+                if (!computerNumList.contains(randomNumber)) {
+                    computerNumList.add(randomNumber);
                 }
             }
-        }
+            System.out.println("컴퓨터가 뽑은 수" + computerNumList);
 
-        //같은 수가 전혀 없으면 낫싱　
-        boolean nothing = false;
-        if (strike == 0 && ball == 0) nothing=true;
+            GuessingLoop:
+            while (true) {
+                //사용자는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 입력　
+                System.out.print("숫자를 입력해주세요 : ");
+                String inputNum = Console.readLine();
 
-        //힌트 출력 화면
-        //형식은 "숫자+힌트명"이며, 여러 개일 경우 공백 하나를 기준으로 한 줄에 출력
-        StringBuilder hintBuilder = new StringBuilder();
-        if (ball > 0){
-            hintBuilder.append(ball + "볼");
-        }
+                //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
+                //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
+                if (!isInteger(inputNum)) {
+                    throw new IllegalArgumentException();
+                }
 
-        if (!hintBuilder.isEmpty()){ //비어있지 않으면 공백 넣기
-            hintBuilder.append(" ");
-        }
+                //검증: 만약 숫자의 자리수가 3보다 작으면 잘못 입력한 것이다.
+                //검증: 만약 숫자의 자리수가 3보다 크면 잘못 입력한 것이다.
+                int inputNumLen = inputNum.length();
+                if (inputNumLen < GameConstants.NUMBER_LENGTH) {
+                    throw new IllegalArgumentException();
+                }
 
-        if (strike > 0){
-            hintBuilder.append(strike + "스트라이크");
-        }
+                if (inputNumLen > GameConstants.NUMBER_LENGTH) {
+                    throw new IllegalArgumentException();
+                }
 
-        if (nothing){
-            hintBuilder.append("낫싱");
-        }
+                //검증: 만약 같은 숫자가 2개 이상 있으면 잘못 입력한 것이다.
+                Set numSet = new HashSet();
+                for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
+                    numSet.add(inputNum.charAt(i));
+                }
+                if (numSet.size() < GameConstants.NUMBER_LENGTH) {
+                    throw new IllegalArgumentException();
+                }
 
-        System.out.println(hintBuilder.toString());
+                //검증: 만약 숫자의 각 자리가 1이상 9이하가 아니면 잘못 입력한 것
+                for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
+                    if (!inputNum.matches("^[1-9]+$")) {
+                        throw new IllegalArgumentException();
+                    }
+                }
 
-        //[게임 종료]
-        //사용자가 입력한 숫자와 컴퓨터가 뽑은 숫자가 모두 같으면 "게임 종료 문구" 출력 후 게임 종료　
-        if (strike == GameConstants.NUMBER_LENGTH){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String regameNum = Console.readLine();
+                //검증이 완료되어야 변환 가능
+                List<Integer> inputNumList = parseIntegerList(inputNum);
+                System.out.println(inputNumList);
 
-            //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
-            //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
-            if (!isInteger(regameNum)) {
-                throw new IllegalArgumentException();
-            }
-            int parsedRegameNum= Integer.parseInt(regameNum);
+                //컴퓨터는 사용자가 입력한 숫자와 뽑은 숫자를 비교하여 힌트를 판단, 출력　
+                //힌트는 스트라이크, 볼, 낫싱 3가지　
+                //같은 수가 같은 자리에 있으면 스트라이크　
+                int strike = 0;
+                for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
+                    if (inputNumList.get(i).equals(computerNumList.get(i))) {
+                        strike++;
+                    }
+                }
 
-            RegameChoice regameChoice = RegameChoice.fromValue(parsedRegameNum);
+                //같은 수가 다른 자리에 있으면 볼　
+                int ball = 0;
+                for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
+                    for (int j = 0; j < GameConstants.NUMBER_LENGTH; j++) {
+                        if (i == j) {
+                            continue;
+                        }
+                        if (inputNumList.get(i).equals(computerNumList.get(j))) {
+                            ball++;
+                        }
+                    }
+                }
 
-            if (regameChoice == RegameChoice.EXIT_GAME) {
-                return;
-            }
-            if (regameChoice == RegameChoice.OTHER_CHOICE) {
-                throw new IllegalArgumentException();
+                //같은 수가 전혀 없으면 낫싱　
+                boolean nothing = false;
+                if (strike == 0 && ball == 0) nothing = true;
+
+                //힌트 출력 화면
+                //형식은 "숫자+힌트명"이며, 여러 개일 경우 공백 하나를 기준으로 한 줄에 출력
+                StringBuilder hintBuilder = new StringBuilder();
+                if (ball > 0) {
+                    hintBuilder.append(ball + "볼");
+                }
+
+                if (!hintBuilder.isEmpty()) { //비어있지 않으면 공백 넣기
+                    hintBuilder.append(" ");
+                }
+
+                if (strike > 0) {
+                    hintBuilder.append(strike + "스트라이크");
+                }
+
+                if (nothing) {
+                    hintBuilder.append("낫싱");
+                }
+
+                System.out.println(hintBuilder.toString());
+
+                //[게임 종료]
+                //사용자가 입력한 숫자와 컴퓨터가 뽑은 숫자가 모두 같으면 "게임 종료 문구" 출력 후 게임 종료　
+                if (strike == GameConstants.NUMBER_LENGTH) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    String regameNum = Console.readLine();
+
+                    //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
+                    //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
+                    if (!isInteger(regameNum)) {
+                        throw new IllegalArgumentException();
+                    }
+                    int parsedRegameNum = Integer.parseInt(regameNum);
+
+                    RegameChoice regameChoice = RegameChoice.fromValue(parsedRegameNum);
+
+                    if (regameChoice == RegameChoice.RESTART_GAME){
+                        break GuessingLoop;
+                    }
+                    if (regameChoice == RegameChoice.EXIT_GAME) {
+                        return;
+                    }
+                    if (regameChoice == RegameChoice.OTHER_CHOICE) {
+                        throw new IllegalArgumentException();
+                    }
+                }
             }
         }
     }
