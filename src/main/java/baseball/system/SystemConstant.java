@@ -1,7 +1,7 @@
 package baseball.system;
 
 public class SystemConstant {
-    final static public int MAXIMUM_DIGIT = 3;
-    final static public String END_GAME = "2";
-    final static public String NEW_GAME = "1";
+    public static final int MAXIMUM_DIGIT = 3;
+    public static final String END_GAME = "2";
+    public static final String NEW_GAME = "1";
 }

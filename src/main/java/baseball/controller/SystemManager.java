@@ -1,7 +1,7 @@
 package baseball.controller;
 
 public class SystemManager {
-    static public void newGame() {
+    public static void newGame() {
         GameManager gameManager = new GameManager();
         gameManager.playRound();
     }
