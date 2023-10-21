@@ -14,16 +14,20 @@ public class Computer {
     private static final int MAX_LENGTH = 3;
     private static final int MIN_DIGIT = 1;
     private static final int MAX_DIGIT = 9;
+    private static final int FIRST_CHARACTER_INDEX = 0;
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
     private static final String BLANK = " ";
-
     private final List<Character> answerAsChars = new ArrayList<>();
 
-    public void generateAnswerAsChars() {
+    public Computer() {
+        generateAnswer();
+    }
+
+    public void generateAnswer() {
         while (answerAsChars.size() < MAX_LENGTH) {
-            generateRandomAnswerAsChar();
+            generateRandomNumber();
         }
     }
 
@@ -33,9 +37,13 @@ public class Computer {
         return generateResultString(computeStrikeAndBall(playerInputAsChars), computeStrike(playerInputAsChars));
     }
 
-    private void generateRandomAnswerAsChar() {
+    private void generateRandomNumber() {
         int randomIntNumber = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
-        char randomNumber = Integer.toString(randomIntNumber).charAt(0);
+        char randomNumber = Integer.toString(randomIntNumber).charAt(FIRST_CHARACTER_INDEX);
+        checkDuplicate(randomNumber);
+    }
+
+    private void checkDuplicate(char randomNumber) {
         if (!answerAsChars.contains(randomNumber)) {
             answerAsChars.add(randomNumber);
         }

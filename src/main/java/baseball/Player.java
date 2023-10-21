@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Player {
-    private static final int PLAYER_INPUT_LENGTH = 3;
+    private static final int INPUT_LENGTH = 3;
     private static final int INITIAL_INVALID_COUNT = 0;
     private static final String RESTART_FLAG = "1";
     private static final String EXIT_FLAG = "2";
@@ -16,13 +16,13 @@ public class Player {
     private static final char MAX_ALLOWABLE_DIGIT = '9';
 
     public String inputNumbers() {
-        String playerInputNumber = getPlayerInput();
-        isInputNull(playerInputNumber);
-        checkInputNumberValidation(playerInputNumber);
-        return playerInputNumber;
+        String inputNumber = getPlayerInput();
+        isInputNull(inputNumber);
+        checkInputNumberValidation(inputNumber);
+        return inputNumber;
     }
 
-    public boolean conformGameRestart() {
+    public boolean wantToRestartRound() {
         String flag = getPlayerInput();
         isInputNull(flag);
         checkFlagValidation(flag);
@@ -40,25 +40,25 @@ public class Player {
         }
     }
 
-    private void checkInputNumberValidation(String playerInputNumber) {
-        if (hasInvalidLength(playerInputNumber) ||
-                hasInvalidCharacter(playerInputNumber) ||
-                hasDuplicateNumber(playerInputNumber)) {
+    private void checkInputNumberValidation(String inputNumber) {
+        if (IsInvalidLength(inputNumber) ||
+                hasInvalidNumber(inputNumber) ||
+                hasDuplicateNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private boolean hasInvalidLength(String playerInputNumber) {
-        if (playerInputNumber.length() == PLAYER_INPUT_LENGTH) {
+    private boolean IsInvalidLength(String inputNumber) {
+        if (inputNumber.length() == INPUT_LENGTH) {
             return false;
         }
         return true;
     }
 
-    private boolean hasInvalidCharacter(String playerInputNumber) {
+    private boolean hasInvalidNumber(String inputNumber) {
         int invalidCount = INITIAL_INVALID_COUNT;
-        for (char playerInputNumberAsChar : playerInputNumber.toCharArray()) {
-            invalidCount += isInvalid(playerInputNumberAsChar);
+        for (char inputNumberAsChar : inputNumber.toCharArray()) {
+            invalidCount += isInvalid(inputNumberAsChar);
         }
         if (invalidCount == INITIAL_INVALID_COUNT) {
             return false;
@@ -66,16 +66,16 @@ public class Player {
         return true;
     }
 
-    private boolean hasDuplicateNumber(String playerInputNumber) {
+    private boolean hasDuplicateNumber(String inputNumber) {
         Set<Character> inputNumberSet = new HashSet<>();
-        for (char playerInputNumberAsChar : playerInputNumber.toCharArray()) {
-            inputNumberSet.add(playerInputNumberAsChar);
+        for (char inputNumberAsChar : inputNumber.toCharArray()) {
+            inputNumberSet.add(inputNumberAsChar);
         }
-        return playerInputNumber.length() != inputNumberSet.size();
+        return inputNumber.length() != inputNumberSet.size();
     }
 
-    private int isInvalid(char playerInputAsChar) {
-        if (playerInputAsChar < MIN_ALLOWABLE_DIGIT || playerInputAsChar > MAX_ALLOWABLE_DIGIT) {
+    private int isInvalid(char inputAsChar) {
+        if (inputAsChar < MIN_ALLOWABLE_DIGIT || inputAsChar > MAX_ALLOWABLE_DIGIT) {
             return INVALID_SCORE;
         }
         return VALID_SCORE;
