@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.List;
+import java.util.Set;
 
 public final class Numbers {
 
@@ -13,12 +14,16 @@ public final class Numbers {
     }
 
     private void validate(final List<Integer> numbers) {
-        if (isProperSize(numbers)) {
-            throw new IllegalStateException();
+        if (isNotProperSize(numbers) || isNotUnique(numbers)) {
+            throw new IllegalArgumentException();
         }
     }
 
-    private boolean isProperSize(final List<Integer> numbers) {
+    private boolean isNotUnique(final List<Integer> numbers) {
+        return numbers.size() != Set.of(numbers).size();
+    }
+
+    private boolean isNotProperSize(final List<Integer> numbers) {
         return numbers.size() != NUMBER_LIST_SIZE;
     }
 }
