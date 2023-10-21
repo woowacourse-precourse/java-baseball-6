@@ -5,6 +5,8 @@ import java.util.List;
 public interface NumbersObjects {
     public void add(int number);
 
+    int get(int index);
+
     public void deleteAll();
 
     public int size();

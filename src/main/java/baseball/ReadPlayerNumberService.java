@@ -3,21 +3,21 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ReadPlayerNumberService {
-    private PlayerNumbers playerNumbers;
+    private NumbersObjects playerNumbers;
 
-    public ReadPlayerNumberService(PlayerNumbers playerNumbers) {
+    public ReadPlayerNumberService(NumbersObjects playerNumbers) {
         this.playerNumbers = playerNumbers;
     }
 
     public void readPlayerNumber(int numOfNumbers) {
         System.out.print("숫자를 입력해주세요 : ");
         int scanPlayerNumber = Integer.parseInt(Console.readLine());
-        if (verify(scanPlayerNumber)) {
+        if (playerReadLineVerify(scanPlayerNumber)) {
             addPlayerNumbers(scanPlayerNumber, numOfNumbers);
         }
     }
 
-    private boolean verify(int scanPlayerNumber) {
+    private boolean playerReadLineVerify(int scanPlayerNumber) {
         return true;
     }
 

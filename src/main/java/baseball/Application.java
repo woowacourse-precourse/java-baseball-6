@@ -8,22 +8,41 @@ public class Application {
 
         final int numOfNumbers = 3;
 
-        ComputerNumbers computerNumbers = new ComputerNumbers();
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
+        ComputerNumbers computerNumbers = new ComputerNumbers();
         RandomPickNumberService randomPickNumbers = new RandomPickNumberService(computerNumbers);
 
-        randomPickNumbers.randomPick(numOfNumbers);
-
         PlayerNumbers playerNumbers = new PlayerNumbers();
-
         ReadPlayerNumberService readPlayerNumberService = new ReadPlayerNumberService(playerNumbers);
 
-        readPlayerNumberService.readPlayerNumber(numOfNumbers);
+        CheckBallStrikeCount checkBallStrikeCount = new CheckBallStrikeCount(computerNumbers, playerNumbers);
+        ResultOfGame resultOfGame = new ResultOfGame();
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println(computerNumbers.getList());
-        System.out.println(playerNumbers.getList());
+        PrintResultOfThisGame printResultOfThisGame = new PrintResultOfThisGame(resultOfGame);
 
+        while (endToggle) {
+            randomPickNumbers.randomPick(numOfNumbers);
+            readPlayerNumberService.readPlayerNumber(numOfNumbers);
+
+            resultOfGame.initResult(numOfNumbers);
+
+            checkBallStrikeCount.checkBallCount(resultOfGame);
+            checkBallStrikeCount.checkStrikeCount(resultOfGame);
+
+            System.out.println(computerNumbers.getList());
+            System.out.println(playerNumbers.getList());
+            System.out.println(resultOfGame.getList());
+
+            printResultOfThisGame.getResultOfThisGame();
+
+            if (printResultOfThisGame.isThreeStrike()) {
+                endToggle = false;
+            }
+
+            playerNumbers.deleteAll();
+            resultOfGame.deleteAll();
+        }
     }
 
 

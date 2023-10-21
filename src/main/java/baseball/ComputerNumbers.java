@@ -10,6 +10,10 @@ public class ComputerNumbers implements NumbersObjects {
         computer.add(number);
     }
 
+    public int get(int index) {
+        return computer.get(index);
+    }
+
     public void deleteAll() {
         computer.clear();
     }

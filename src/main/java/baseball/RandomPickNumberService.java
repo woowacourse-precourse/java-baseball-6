@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomPickNumberService {
 
-    private ComputerNumbers computerNumbers;
+    private NumbersObjects computerNumbers;
 
-    public RandomPickNumberService(ComputerNumbers computerNumbers) {
+    public RandomPickNumberService(NumbersObjects computerNumbers) {
         this.computerNumbers = computerNumbers;
     }
 

@@ -10,6 +10,11 @@ public class PlayerNumbers implements NumbersObjects {
         player.add(number);
     }
 
+    @Override
+    public int get(int index) {
+        return player.get(index);
+    }
+
     public void deleteAll() {
         player.clear();
     }
