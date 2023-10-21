@@ -18,6 +18,10 @@ public class InputView {
 		return toList(playerNumber);
 	}
 
+	public static void readPlayerRestart() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+	}
+
 	private static int validateInteger(String input) {
 		try {
 			return Integer.parseInt(input);
