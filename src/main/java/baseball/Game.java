@@ -13,7 +13,7 @@ public class Game {
     }
 
     public void run() {
-        while(true) {
+        while (true) {
             List<Integer> query = this.askQuery();
             int[] result = this.judge(query);
             this.printResult(result);
