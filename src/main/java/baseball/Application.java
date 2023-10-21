@@ -8,5 +8,6 @@ public class Application {
         while (flag) {//게임 다시 시작할지 정하는 flag
             flag = game.start();
         }
+        Console.close();
     }
 }
