@@ -6,6 +6,7 @@ import static baseball.version1.Constants.RANGE_END_NUMBER;
 import static baseball.version1.Constants.RANGE_START_NUMBER;
 import static baseball.constants.Printer.ERROR_PHRASES;
 import static baseball.version1.Constants.STRIKE_NUMBER;
+import static java.lang.Integer.parseInt;
 
 import baseball.constants.Printer;
 import baseball.repository.ComputerRepository;
@@ -69,7 +70,7 @@ public class Service {
         int answerOrder = 0;
         try {
             for (String input : inputStringArray) {
-                answerArray[answerOrder] = Integer.parseInt(input);
+                answerArray[answerOrder] = parseInt(input);
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_PHRASES);
@@ -115,5 +116,12 @@ public class Service {
         if(ball>0&&strike>0){
             printer.printBallAndStrike(ball,strike);
         }
+    }
+
+    public int getPlayerDecision() {
+        printer.printSelectContinue();
+        int decision = Integer.parseInt(Console.readLine());
+        dataValidator.validateDecision(decision);
+        return decision;
     }
 }

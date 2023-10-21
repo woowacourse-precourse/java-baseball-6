@@ -1,6 +1,8 @@
 package baseball.validator;
 
-import static baseball.Constants.DIGIT_NUMBER;
+import static baseball.version1.Constants.CONTINUE_NUMBER;
+import static baseball.version1.Constants.DIGIT_NUMBER;
+import static baseball.version1.Constants.STOP_NUMBER;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -35,4 +37,9 @@ public class DataValidator {
         return false;
     }
 
+    public void validateDecision(int decision) {
+        if(decision!=CONTINUE_NUMBER&&decision!=STOP_NUMBER){
+            throw new IllegalArgumentException(CONTINUE_NUMBER+" 또는"+STOP_NUMBER+"를 입력하세요");
+        }
+    }
 }
