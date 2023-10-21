@@ -18,7 +18,7 @@ public class BaseballNumbers {
     }
 
     public BaseballNumbers(List<BaseballNumber> baseballNumbers) {
-        validateMaxLength(baseballNumbers);
+        validateNumberLength(baseballNumbers);
         validateDuplicateNumber(baseballNumbers);
         this.baseballNumbers = baseballNumbers;
     }
@@ -35,8 +35,8 @@ public class BaseballNumbers {
         return baseballNumbers.contains(baseballNumber);
     }
 
-    private void validateMaxLength(List<BaseballNumber> baseballNumbers) {
-        if (baseballNumbers.size() > MAX_LENGTH) {
+    private void validateNumberLength(List<BaseballNumber> baseballNumbers) {
+        if (baseballNumbers.size() != MAX_LENGTH) {
             throw new IllegalArgumentException(ONLY_THREE_NUMBER_MESSAGE);
         }
     }
