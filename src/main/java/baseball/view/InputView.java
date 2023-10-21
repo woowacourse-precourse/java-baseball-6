@@ -20,7 +20,7 @@ public class InputView {
     public int readNumOfReGame() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String reStartInputNum = Console.readLine();
-        new ReStartInputValidator().validate(Console.readLine());
+        new ReStartInputValidator().validate(reStartInputNum);
         return Integer.parseInt(reStartInputNum);
     }
 
