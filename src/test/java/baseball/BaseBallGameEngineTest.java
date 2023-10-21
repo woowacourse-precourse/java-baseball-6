@@ -3,8 +3,14 @@ package baseball;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class BaseBallGameEngineTest {
+    private static String[] notOneOrTwoSource() {
+        return new String[]{null, "", " ", "DJ", "dj", "baseball", "야구", "1야구1", "야구가좋아", "★", "11★", "O", "Z", "l", " 123", "12 3", "123 "
+                , " 1", " 2", "1 ", "2 ", "01", "02"};
+    }
+
     @ParameterizedTest
     @CsvSource({
             "111", "112", "1", "100", "101", "999", "-1", "-12", "-122", "-999"
@@ -78,5 +84,22 @@ class BaseBallGameEngineTest {
         Assertions.assertThatCode(() -> new BaseBallGameEngine(123, new BaseBalGameValidator()).calculatingBaseBallScore(baseBallValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(String.format("%S는 세자리가 각각다른 음수입니다.", baseBallValue));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1,true", "2,false"
+    })
+    public void 엔드커멘드는_1이나2는_반환값이_나온다(String command, boolean expect) {
+        Assertions.assertThat(new BaseBallGameEngine(123, new BaseBalGameValidator()).isEnd(command))
+                .isEqualTo(expect);
+    }
+
+    @ParameterizedTest
+    @MethodSource("notOneOrTwoSource")
+    public void 엔드커멘드는_1이나2이아니면_예외를_반환한다(String command) {
+        Assertions.assertThatCode(() -> new BaseBallGameEngine(123, new BaseBalGameValidator()).isEnd(command))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(String.format("%S는 1이거나 2가 아닙니다.", command));
     }
 }

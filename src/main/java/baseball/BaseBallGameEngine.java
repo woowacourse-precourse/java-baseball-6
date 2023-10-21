@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class BaseBallGameEngine {
+    private static final int END_COMMAND = 1;
     private final int answer;
     private final BaseBalGameValidator baseBalGameValidator;
 
@@ -16,6 +17,11 @@ public class BaseBallGameEngine {
     public BaseBallScore calculatingBaseBallScore(int baseBallValue) {
         baseBalGameValidator.validBaseBallValue(baseBallValue);
         return new BaseBallScore(getStrikeScore(baseBallValue), getBallScore(baseBallValue));
+    }
+
+    public boolean isEnd(String command) {
+        baseBalGameValidator.validEndCommand(command);
+        return Integer.parseInt(command) == END_COMMAND;
     }
 
     private int getStrikeScore(int baseBallValue) {

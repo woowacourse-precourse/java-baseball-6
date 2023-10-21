@@ -6,10 +6,10 @@
     -[x] 점수를 체점해준다.
         - [x] 체점가능한 숫자일경우, 채점을 해준다.
         - [x] 채점할 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
-    -[ ] 게임을 종료시킨다.
-    -[ ] 게임이 종료한 후에, 1번을 입력되면,게임을 다시 시작한다.
-    -[ ] 게임이 종료한 후에,2번을 입력되면,완전히 종료할수 있다.
-    -[ ] 1,2가 아니면, IllegalArgumentException 반환
+    -[x] 종료명령어를 판단한다.
+        -[x] 1번을 입력되면, true를 반환.
+        -[x] 2번을 입력되면, false를 반환.
+        -[x] 1,2가 아니면, IllegalArgumentException 반환
 
 -[ ] BaseBallGameValidator
     - [x] baseballGame숫자를 검증한다.
