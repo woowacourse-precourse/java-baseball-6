@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -32,6 +35,15 @@ public class Application {
         }
 
         if (inputNumLen>n) {
+            throw new IllegalArgumentException();
+        }
+
+        //검증: 만약 같은 숫자가 2개 이상 있으면 잘못 입력한 것이다.
+        Set numSet=new HashSet();
+        for (int i=0; i<n; i++){
+            numSet.add(inputNum.charAt(i));
+        }
+        if (numSet.size()<n){
             throw new IllegalArgumentException();
         }
 
