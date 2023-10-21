@@ -11,6 +11,7 @@ public class Validator {
     public static final String NULL_OR_EMPTY_MESSAGE = "값을 입력해주세요";
     public static final String NOT_THREE_DIGIT_NUMBER_MESSAGE = "세자리 숫자를 입력해주세요";
     public static final String NOT_UNIQUE_NUMBER_MESSAGE = "중복된 숫자가 있습니다.";
+    public static final String NOT_ONE_OR_TWO = "1 또는 2만 입력해주세요";
 
     public static void isNullOrEmpty(String input) {
         if (input == null || input.equals(EMPTY)) {
@@ -38,5 +39,13 @@ public class Validator {
             throw new IllegalArgumentException(NOT_UNIQUE_NUMBER_MESSAGE);
         }
         uniqueNumber.add(number);
+    }
+
+    public static void isOneOrTwo(String input) {
+        Pattern pattern = Pattern.compile("[1-2]{1}");
+        Matcher matcher = pattern.matcher(input);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException(NOT_ONE_OR_TWO);
+        }
     }
 }

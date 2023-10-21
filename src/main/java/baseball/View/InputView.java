@@ -26,8 +26,15 @@ public class InputView {
     }
 
 
+    public static String requestRestartOrExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        validateRestartOrEnd(input);
+        return input;
+    }
 
-
-
-
+    private static void validateRestartOrEnd(String input) {
+        Validator.isNullOrEmpty(input);
+        Validator.isOneOrTwo(input);
+    }
 }
