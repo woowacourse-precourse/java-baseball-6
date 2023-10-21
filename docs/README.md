@@ -24,7 +24,6 @@
 - InputView, OutputView 입력과 출력
 - BaseballController 입력에 따른 비즈니스 로직 
 - Computer, Player, Result 컴퓨터, 플레이어, 결과 
-- BaseballService 모델을 통한 데이터 도출 
 - InputValidator 입력 값에 대한 검증 
 
 ## 🤔 요구 사항에 대한 분석 (공부 및 적용할 것) 
