@@ -11,7 +11,6 @@ public class Application {
     
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Scanner sc = new Scanner(System.in);
         boolean isGameRunning = true;
 
         while (isGameRunning) {
@@ -21,17 +20,17 @@ public class Application {
     }
 
     private static void playBaseballGame() {
-        String correctAnswer = RandomThreeNumber.getRandomNumber();
+        String answer = RandomThreeNumber.getRandomNumber(); //정답!
         int strikeCount = 0;
         
         while (strikeCount < STRIKE_MAX) {
             String playerInput = getPlayerInput();
             Validate.validate_InputDataCheck(playerInput);
 
-            char[] correctNumbers = correctAnswer.toCharArray();
+            char[] correctNumbers = answer.toCharArray();
             char[] playerNumbers = playerInput.toCharArray();
             
-            //strike 우선처리하고, ball 후처리
+            //TODO:strike 우선처리하고, ball 후처리
             strikeCount = calculateStrike(correctNumbers, playerNumbers);
             int ballCount = calculateBall(correctNumbers, playerNumbers);
 
@@ -71,7 +70,8 @@ public class Application {
         }
         return ball;
     }
-
+    
+    //스트라이크, 볼 표시
     private static void displayResult(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
@@ -84,6 +84,7 @@ public class Application {
         }
     }
 
+    //게임재시작유무
     private static boolean askForRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int restartOption = Integer.parseInt(Console.readLine());
