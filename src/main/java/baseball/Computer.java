@@ -20,16 +20,22 @@ public class Computer {
         duplicateCheck[num] = true;
         return false;
     }
-    public int[] getJudgeResult(int[] input){
+    public int[] getJudgeResult(int[] userInput){
         int[] judgeResult = new int[2];
-        for(int user = 0; user < 3; user++){
-            for(int com = 0; com < 3; com++){
-                if(input[user] == computerNumbers[com]){
-                    if(user == com) judgeResult[1]++;
-                    else judgeResult[0]++;
-                }
-            }
+        for(int userIndex = 0; userIndex < 3; userIndex++){
+            if(isStrike(userInput, userIndex)) judgeResult[1]++;
+            else if(isBall(userInput, userIndex)) judgeResult[0]++;
         }
         return judgeResult;
+    }
+    private boolean isStrike(int[] userInput, int index){
+        return userInput[index] == computerNumbers[index];
+    }
+    private boolean isBall(int[] userInput, int userIndex){
+        for(int computerIndex = 0; computerIndex < 3; computerIndex++){
+            if(userIndex == computerIndex) continue;
+            if(userInput[userIndex] == computerNumbers[computerIndex]) return true;
+        }
+        return false;
     }
 }
