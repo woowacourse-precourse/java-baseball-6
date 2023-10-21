@@ -12,12 +12,11 @@ public class Application {
     private static boolean isGameToBeContinued = true;
 
     public static void main(String[] args) {
-        printMessage(Message.START_MESSAGE);
         playGame();
-        Console.close();
     }
 
     private static void playGame() {
+        printMessage(Message.START_MESSAGE);
         do {
             List<Integer> pickedIntegers = getRandomIntegers();
 
@@ -31,6 +30,7 @@ public class Application {
 
                 strikeCount = 0;
                 ballCount = 0;
+        Console.close();
 
                 for (int i = 0; i < inputValue.length(); i++) {
                     for (int j = 0; j < pickedIntegers.size(); j++) {
