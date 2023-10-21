@@ -12,7 +12,9 @@ public class PlayerNumber {
 
     public void setPlayerNumber(String numbers) {
         playerNumber = new ArrayList<>();
-        convert(numbers);
+        if (NumbersValidator.validate(numbers)) {
+            convert(numbers);
+        }
     }
 
     private static void convert(String numbers) {
