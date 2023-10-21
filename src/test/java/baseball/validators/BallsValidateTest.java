@@ -3,8 +3,8 @@ package baseball.validators;
 import baseball.balls.Ball;
 import baseball.balls.BallValue;
 import baseball.balls.Balls;
+import baseball.testUtils.BallsGeneratorUtil;
 import java.util.List;
-import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,11 +13,12 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class BallsValidateTest {
 
     private final int BALL_COUNT = Balls.BALL_COUNT;
+    private final int BALL_MIN_VALUE = BallValue.MIN_VALUE;
 
     @Test
     void 공_개수_기준치_동일_허용() {
         // when
-        List<Ball> balls = generateBallList(BALL_COUNT, true, true);
+        List<Ball> balls = BallsGeneratorUtil.generateBallList(BALL_COUNT, BALL_MIN_VALUE, true, true);
 
         // then
         Assertions.assertDoesNotThrow(() -> {
@@ -32,7 +33,7 @@ public class BallsValidateTest {
     })
     void 공_개수_기준치_미만_혹은_초과_불허(int ballCount) {
         // when
-        List<Ball> balls = generateBallList(ballCount, true, true);
+        List<Ball> balls = BallsGeneratorUtil.generateBallList(ballCount, BALL_MIN_VALUE, true, true);
 
         // then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -43,7 +44,7 @@ public class BallsValidateTest {
     @Test
     void 공_값_미중복_허용() {
         // when
-        List<Ball> balls = generateBallList(BALL_COUNT, false, true);
+        List<Ball> balls = BallsGeneratorUtil.generateBallList(BALL_COUNT, BALL_MIN_VALUE, false, true);
 
         // then
         Assertions.assertDoesNotThrow(() -> {
@@ -54,7 +55,7 @@ public class BallsValidateTest {
     @Test
     void 공_값_중복_불허() {
         // when
-        List<Ball> balls = generateBallList(BALL_COUNT, true, true);
+        List<Ball> balls = BallsGeneratorUtil.generateBallList(BALL_COUNT, BALL_MIN_VALUE, true, true);
 
         // then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -65,7 +66,7 @@ public class BallsValidateTest {
     @Test
     void 공_인덱스_미중복_허용() {
         // when
-        List<Ball> balls = generateBallList(BALL_COUNT, true, false);
+        List<Ball> balls = BallsGeneratorUtil.generateBallList(BALL_COUNT, BALL_MIN_VALUE, true, false);
 
         // then
         Assertions.assertDoesNotThrow(() -> {
@@ -76,36 +77,12 @@ public class BallsValidateTest {
     @Test
     void 공_인덱스_중복_불허() {
         // when
-        List<Ball> balls = generateBallList(BALL_COUNT, false, true);
+        List<Ball> balls = BallsGeneratorUtil.generateBallList(BALL_COUNT, BALL_MIN_VALUE, false, true);
 
         // then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             BallsValidators.validateIndexDuplication(balls);
         });
-    }
-
-    private List<Ball> generateBallList(int ballCount, boolean willDuplicateValue, boolean willDuplicateIndex) {
-        return IntStream.range(0, ballCount)
-                .mapToObj(i -> {
-                    int value = makeValue(willDuplicateValue, i);
-                    int index = makeIndex(willDuplicateIndex, i);
-                    return new Ball(value, index);
-                })
-                .toList();
-    }
-
-    private int makeValue(boolean willDuplicate, int index) {
-        if (willDuplicate) {
-            return BallValue.MIN_VALUE;
-        }
-        return BallValue.MIN_VALUE + index;
-    }
-
-    private int makeIndex(boolean willDuplicate, int index) {
-        if (willDuplicate) {
-            return 0;
-        }
-        return index;
     }
 
 }
