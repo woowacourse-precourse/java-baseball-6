@@ -1,79 +1,103 @@
 ## 코드 진행
+
 ![](https://velog.velcdn.com/images/sohyun9527/post/79fd5c2f-9344-44c8-8ab6-d0ae32ea9ae8/image.jpg)
 
 ## Message 클래스
-- 출력 메서드
+
+- 각종 메시지들은 static final로 선언하여 사용
+- 게임 문구, 에러메시지 포함
+
 ```java
-String startMessage() 게임 시작 문구 반환
-String requestNumberMessage() 숫자 입력 메시지 문구 반환
-String successMessage() 3스트라이크 성공 문구 반환
-String restartOrStopMessage() 재시작 / 종료 선택 문구 반환
-String scoreMessage(int ball, int strike) 볼 / 스트라이크 현재 스코어 문구 반환
+
 ```
 
 ## NumberBaseballGame 클래스
+
 - 출력 메서드
+
 ```java
-void speaker(String message) 입력받은 메세지 출력
+void speaker(String message)입력받은 메세지 출력
 ```
+
 - 게임 진행 메서드
+
 ```java
-void play() 종료를 입력받기 전까지 계속 게임을 진행하는 메서드
-void oneRound() play 메서드 내부에서 3스트라이크가 될 때까지 진행하는 하나의 라운드
-boolean restartOrStop() 하나의 라운드 종료 후 재시작 / 종료를 묻는 메서드
+void play()종료를 입력받기 전까지 계속 게임을 진행하는 메서드
+        void oneRound()play 메서드 내부에서 3스트라이크가 될 때까지 진행하는 하나의 라운드
+        boolean restartOrStop()하나의 라운드 종료 후 재시작/종료를 묻는 메서드
 ```
 
 ## AnswerMaker 클래스
+
 - 난수 생성 메서드
+
 ```java
-int makeNumber(int min, int max) min, max 사이의 하나의 숫자 반환
+int makeNumber(int min,int max)min,max 사이의 하나의 숫자 반환
 ```
+
 - 리스트로 난수 생성 후 저장 메서드
+
 ```java
-AnswerMaker(int min, int max) 생성자 호출 시 makeNumber를 사용해 난수 생성후 정답을 리스트로 만들어 저장
+AnswerMaker(int min,int max)생성자 호출 시 makeNumber를 사용해 난수 생성후 정답을 리스트로 만들어 저장
 ```
+
 - 저장된 정답을 호출하는 메서드
+
 ```java
 List<Integer> getAnswer()
 ```
 
 ## Computer 클래스
+
 - strike, ball 스코어 측정 메서드
+
 ```java
-List<Integer> countScore(List<Integer> answer, List<Integer> userNumbers) 정답과 유저의 답안을 비교해 strike, ball의 개수를 세어 리스트로 반환
+List<Integer> countScore(List<Integer> answer,List<Integer> userNumbers)정답과 유저의 답안을 비교해 strike,ball의 개수를 세어 리스트로 반환
 
-int judgeScore(List<Integer> answer, int number, int index) 숫자와 위치를 비교해 BALL, STRIKE, NOTHING 셋중 하나 반환
+        int judgeScore(List<Integer> answer,int number,int index)숫자와 위치를 비교해 BALL,STRIKE,NOTHING 셋중 하나 반환
 
-//먼가... judgeScore를 위해 countScore에서부터 answer를 받아오는게 좀 그런가..
 
 ```
 
 ## InputValidation 클래스
+
 - validation을 userInput값에 대해서만 진행하고, 기존에 작성한 함수도 확장성이 떨어진다고 생각해 UserInput을 위한 valid로 기능 통일..
 
 - 유저의 입력값에 대한 Validation을 한번에 진행하는 메서드
+
 ```java
-List<Integer> validateUserNumbers(String input) 전체 validation을 진행하는 메서드
+List<Integer> validateUserNumbers(String input)전체 validation을 진행하는 메서드
+        void validateRestartOrStop(String input)입력받은 재시작/종료 값을 validation 진행하는 메서드
 
 ```
+
 - 문자열을 리스트로 반환하는 메서드
+
 ```java
-List<Integer> convertStrToList(String input) String -> List<Integer> 변환하여 반환
+List<Integer> convertStrToList(String input)String->List<Integer> 변환하여 반환
 ```
+
 - validation 메서드들
-```java
-void duplicationCheck(String input) 중복수 판별 
-void onlyDigitCheck(String input) 숫자만 적혀있는지 판별
-void inRangeCheck(String input) 1 ~ 9 사이의 수인지 판별
-void sizeCheck(String input) 지정된 사이즈만큼 들어왔는지 판별
 
+```java
+void validateOnlyDigit(String input)입력값이 숫자로만 이루어져 있는지 검수
+        void validateContainZero(String input)입력값에 0이 포함되어있는지 검수
+        void validateDuplicateNumber(String input)입력값이 중복된 숫자가 있는지 검수
+        void validateSign(String input)재시작/종료 입력값이 1,2인지 검수
+        void validateSignLength(String input)재시작/종료 입력값이 한자리 수인지 검수
 ```
 
+- 공백 제거 메서드
+
+```java
+String deleteSpace(String input)숫자 사이의 공백을 제거하는 메서드
+```
 
 ### 뭘 만들어야 할까?
 
 1. 입력 Validation
     - 입력된 수가 잘못되었을 경우
+
     1. 3자리가 아닌 수를 입력했을 경우
     2. 중복된 수를 입력했을 경우
     3. 숫자가 아닌 것을 입력했을 경우
