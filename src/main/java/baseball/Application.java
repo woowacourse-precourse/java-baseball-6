@@ -19,27 +19,7 @@ public class Application {
 
 		while (!controlSign.equals(END_SIGN)) {
 
-			List<Integer> computerNumber = createComputerNumber();
-
-			UserNumber userNumber = new UserNumber();
-
-			int strikeNumber = 0;
-			int ballNumber;
-
-			while (strikeNumber != computerNumber.size()) {
-				String[] inputUserNumber = userNumber.inputUserNumber();
-				userNumber.checkInputOnlyNum(inputUserNumber);
-				userNumber.checkInputSize(inputUserNumber);
-
-				List<Integer> userNumberList = userNumber.toListUserNumber(inputUserNumber);
-				userNumber.checkSizeUserNum(userNumberList);
-				userNumber.checkRangeUserNum(userNumberList);
-
-				ballNumber = countBall(computerNumber, userNumberList);
-				strikeNumber = countStrike(computerNumber, userNumberList);
-
-				printStrike(ballNumber, strikeNumber);
-			}
+			playGame();
 
 			printInputControlSign();
 			controlSign = Console.readLine();
@@ -49,7 +29,32 @@ public class Application {
 		}
 	}
 
-	//1~9 사이의 서로 다른 3자리로 이루어진 컴퓨터 숫자를 생성하는 메서드
+	static void playGame() {
+
+		List<Integer> computerNumber = createComputerNumber();
+
+		UserNumber userNumber = new UserNumber();
+
+		int strikeNumber = 0;
+		int ballNumber;
+
+		while (strikeNumber != computerNumber.size()) {
+			String[] inputUserNumber = userNumber.inputUserNumber();
+			userNumber.checkInputOnlyNum(inputUserNumber);
+			userNumber.checkInputSize(inputUserNumber);
+
+			List<Integer> userNumberList = userNumber.toListUserNumber(inputUserNumber);
+			userNumber.checkSizeUserNum(userNumberList);
+			userNumber.checkRangeUserNum(userNumberList);
+
+			ballNumber = countBall(computerNumber, userNumberList);
+			strikeNumber = countStrike(computerNumber, userNumberList);
+
+			printStrike(ballNumber, strikeNumber);
+		}
+
+	}
+
 	static List<Integer> createComputerNumber() {
 
 		List<Integer> computerNumber = new ArrayList<>();
