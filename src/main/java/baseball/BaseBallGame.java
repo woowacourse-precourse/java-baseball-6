@@ -18,9 +18,21 @@ public class BaseBallGame {
         state = GameState.PLAYING;
 
         generateNum();
+        play();
     }
 
-    public void chooseNum(){
+    public void play(){
+        while(state == GameState.CORRECT){
+            chooseNum();
+            System.out.println(returnResult());
+        }
+        exitGame();
+        if(state == GameState.PLAYING){
+            play();
+        }
+    }
+
+    private void chooseNum(){
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         String[] userNumAsString = input.split("");
