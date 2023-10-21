@@ -78,6 +78,7 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             randomNumbers[i] = Randoms.pickNumberInRange(1, 9);
         }
+        return randomNumbers; // 난수 배열을 반환
     }
 
     // 플레이어로 부터 숫자를 받는 메서드
