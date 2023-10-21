@@ -30,17 +30,21 @@ public class Computer {
     public void calculateBallCount(Player player) {
         for (int position = 0; position < BallConstant.BALL_LENGTH.getValue(); position++) {
             int playerNumber = player.getByPosition(position);
-            BallStatus ballStatus = decideBall(playerNumber);
-            System.out.println(ballStatus);
+            BallStatus ballStatus = decideBall(playerNumber, position);
         }
     }
 
-    private BallStatus decideBall(int playerNumber) {
+    private BallStatus decideBall(int playerNumber, int position) {
         boolean isBall = isBall(playerNumber);
-        return BallStatus.getBallStatus(isBall);
+        boolean isStrike = isStrike(playerNumber, position);
+        return BallStatus.getBallStatus(isBall, isStrike);
     }
 
     private boolean isBall(int playerNumber) {
         return elements.contains(playerNumber);
+    }
+
+    private boolean isStrike(int playerNumber, int position) {
+        return playerNumber == elements.get(position);
     }
 }
