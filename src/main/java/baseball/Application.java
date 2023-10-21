@@ -87,4 +87,8 @@ public class Application {
         }
         return balls;
     }
+
+    private static void hi() {
+        System.out.println("hello");
+    }
 }
