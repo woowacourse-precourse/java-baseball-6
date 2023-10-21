@@ -1,7 +1,9 @@
 package baseball.controller;
 
+import baseball.core.CompareNumber;
 import baseball.core.GenerateNumberList;
 import baseball.property.GameCondition;
+import baseball.property.GameScore;
 import baseball.validation.GameValidation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -17,7 +19,7 @@ public class GameController {
             String user_input_value = InputView.readLineByConsole();
             if (GameValidation.verifyForGameValue(user_input_value)){
                 List<Integer> user = GenerateNumberList.generateInputValueToUser(user_input_value);
-
+                GameScore gameScore = CompareNumber.compareNumberList(user, computer);
             }
         }
     }
