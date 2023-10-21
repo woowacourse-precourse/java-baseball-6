@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Set;
 
 class Game {
-    public List<Integer> answer;
+    private List<Integer> answer;
     Game(List<Integer> answer) {
         this.answer = answer;
     }
 
-    void run() {
+    public void run() {
         while(true) {
             List<Integer> query = this.askQuery();
             int[] result = this.judge(query);
@@ -26,7 +26,7 @@ class Game {
         }
     }
 
-    List<Integer> askQuery() {
+    private List<Integer> askQuery() {
         System.out.print("숫자를 입력해주세요 : ");
         String queryString = Console.readLine();
         try {
@@ -51,7 +51,7 @@ class Game {
         }
     }
 
-    int[] judge(List<Integer> query) {
+    private int[] judge(List<Integer> query) {
         int[] result = {0, 0};
 
         // Ball judgement
@@ -72,7 +72,7 @@ class Game {
         return result;
     }
 
-    void printResult(int[] result) {
+    private void printResult(int[] result) {
         if (result[0] > 0 && result[1] > 0) {
             System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
         } else if (result[0] > 0) {
