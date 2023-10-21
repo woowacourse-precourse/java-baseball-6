@@ -26,4 +26,9 @@ public class ResultOfGameTest {
     void 낫싱일_경우() {
         assertThat(resultOfGame.result(0, 0)).isEqualTo("낫싱");
     }
+
+    @Test
+    void 정답일_경우() {
+        assertThat(resultOfGame.result(3, 0)).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
