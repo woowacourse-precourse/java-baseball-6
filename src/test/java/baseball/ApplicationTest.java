@@ -73,9 +73,9 @@ class ApplicationTest extends NsTest {
     @Test
     void Should_ReturnBallOrStrikeCount_When_EnterCorrectUserNumbers() {
         // given
-        BaseBallGame baseBallGame = new BaseBallGame();
-
         System.setIn(new ByteArrayInputStream("124".getBytes()));
+
+        BaseBallGame baseBallGame = new BaseBallGame();
         baseBallGame.setUserNumbers();
         baseBallGame.setComputerNumbers();
 
