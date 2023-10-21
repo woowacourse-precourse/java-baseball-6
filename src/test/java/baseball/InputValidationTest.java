@@ -3,6 +3,7 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
@@ -18,7 +19,7 @@ class InputValidationTest {
         //when
         final String containSpaceUserInput = "12 4";
         //then
-        assertThatThrownBy(() -> inputValidation.validateUserInput(containSpaceUserInput))
+        assertThatThrownBy(() -> inputValidation.validateInputString(containSpaceUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("공백 없이 오직 숫자만 입력해주시기 바랍니다.");
     }
@@ -31,7 +32,7 @@ class InputValidationTest {
         //when
         final String containCommaUserInput = "2,87";
         //then
-        assertThatThrownBy(() -> inputValidation.validateUserInput(containCommaUserInput))
+        assertThatThrownBy(() -> inputValidation.validateInputString(containCommaUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("콤마 없이 오직 숫자만 입력해주시기 바랍니다.");
     }
@@ -44,7 +45,7 @@ class InputValidationTest {
         //when
         final String overLengthUserInput = "1792";
         //then
-        assertThatThrownBy(() -> inputValidation.validateUserInput(overLengthUserInput))
+        assertThatThrownBy(() -> inputValidation.validateInputString(overLengthUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3개의 숫자만을 입력해주시기 바랍니다.");
     }
@@ -57,7 +58,7 @@ class InputValidationTest {
         //when
         final String lessLengthUserInput = "79";
         //then
-        assertThatThrownBy(() -> inputValidation.validateUserInput(lessLengthUserInput))
+        assertThatThrownBy(() -> inputValidation.validateInputString(lessLengthUserInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3개의 숫자만을 입력해주시기 바랍니다.");
     }
@@ -103,6 +104,18 @@ class InputValidationTest {
         assertThatThrownBy(() -> inputValidation.validateInputNumber(zeroNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1 ~ 9 사이의 숫자만을 입력해주시기 바랍니다.");
+    }
+
+    @DisplayName("게임 진행시 입력하는 input에 대한 전체 유효성 검사 테스트")
+    @Test
+    void ValidateAllUserInput() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String userInput = "437";
+        final List<Integer> parsedUserInput = List.of(4, 3, 7);
+        //then
+        assertThat(inputValidation.validateUserInput(userInput)).isEqualTo(parsedUserInput);
     }
 
     @DisplayName("유효한 input 값 정수 리스트로 변환하는 테스트")
