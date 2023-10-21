@@ -22,6 +22,17 @@ public class GameController {
 
     public void gameStart(){
         outputView.displayStartGame();
+
+        int choice = inputView.requestGameRestart();
+        if(choice == 1){
+            // 게임 재시작
+        }
+        if(choice == 2){
+            // 게임 완전히 종료
+        }
+    }
+
+    private void playRound(){
         while(true) {
             String userInput = inputView.requestUserNumber();
             UserNumber userNumber = new UserNumber(userInput);
@@ -36,7 +47,6 @@ public class GameController {
             outputView.displayResult(result.getBallCount(), result.getStrikeCount());
 
         }
-
     }
 
 
