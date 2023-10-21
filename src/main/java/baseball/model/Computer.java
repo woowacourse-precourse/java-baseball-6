@@ -51,6 +51,7 @@ public class Computer {
 
         if (strikeCount == 3) {
             System.out.println();
+            outputView.showStrikeOnlyHint(strikeCount);
             outputView.showGameClearMessage();
             return true;
         }
