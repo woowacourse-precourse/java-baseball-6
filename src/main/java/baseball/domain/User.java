@@ -29,8 +29,8 @@ public class User {
         return Integer.parseInt(input);
     }
 
-    public void validRange(int input) {
-        if(input <= 1 || input >= 10){
+    public void validRange(int input) { // test에서 String으로 넣음. 내가 했던 처음 방법
+        if(input < 1 || input > 10){
             throw new IllegalArgumentException("out of bounds range 1~9");
         }
     }

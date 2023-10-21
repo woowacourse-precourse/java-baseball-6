@@ -4,14 +4,20 @@ import baseball.domain.User;
 
 import java.util.List;
 
-public class userService {
-    private User user = new User();
+public class UserService {
+    private User user;
 
-    public void generateInput() {
+    public UserService() {
+        user = new User();
+    }
+
+    public List<Integer> generateInput() {
         List<Integer> inputNumber = user.getUserNumber();
         while (inputNumber.size() < 3) {
             user.enterNum();
         }
+
+        return inputNumber;
     }
 
     public void resetInput() {
