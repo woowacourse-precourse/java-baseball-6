@@ -18,6 +18,14 @@ public class BaseballNumbers {
         }
     }
 
+    public void createBaseballNumbers(String userInput) {
+        for (int i = 0; i < 3; i++) {
+            char userInputNumber = userInput.charAt(i);
+            BaseballNumber userBaseballNumber = new BaseballNumber(userInputNumber);
+            ballNumbers.add(userBaseballNumber);
+        }
+    }
+
     public int getStrikeCount(BaseballNumbers inputBaseballNumbers) {
         int strikeCount = 0;
         for (int i = 0; i < 3; i++) {
