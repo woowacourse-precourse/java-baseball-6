@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class UserNumber {
-    private List<Integer> userNumber;
+    private final List<Integer> userNumber;
 
     public UserNumber(String inputNumber) {
         this.userNumber = changeStringtoList(inputNumber);

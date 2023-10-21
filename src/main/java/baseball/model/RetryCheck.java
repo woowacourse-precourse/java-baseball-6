@@ -3,7 +3,7 @@ package baseball.model;
 import static baseball.util.ValidationChecking.checkRetryInput;
 
 public class RetryCheck {
-    private String num;
+    private final String num;
 
     public RetryCheck(String num) {
         checkRetryInput(num);
