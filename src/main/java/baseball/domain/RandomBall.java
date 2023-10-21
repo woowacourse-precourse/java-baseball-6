@@ -21,4 +21,7 @@ public class RandomBall {
         }
     }
 
+    public List<Integer> getBalls() {
+        return this.balls;
+    }
 }
