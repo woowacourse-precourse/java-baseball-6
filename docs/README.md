@@ -103,5 +103,6 @@ MVC 패턴
   Controller
   1. 모델이나 뷰에 대해서 알고 있어야 한다.
   2. 모델이나 뷰의 변경을 모니터링 해야 한다.
+ 참고 - https://velog.io/@eddy_song/mvc
 -->
   
