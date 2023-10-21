@@ -6,6 +6,7 @@ public class InputValidate {
     private static final int END_ASCII_CODE = 57; // 숫자 9
     private static final int MAX_NUMBER_LENGTH = 3;
     private static final String NON_NUMERIC_ERROR_MESSAGE = "숫자만 입력해주세요.";
+    private static final String LENGTH_ERROR_MESSAGE = "입력 길이가 일치하지 않습니다. 입력 길이는 : ";
 
     public void validateNumeric(String input) {
         String stringValue = String.valueOf(input);
@@ -15,5 +16,13 @@ public class InputValidate {
             }
         }
     }
-    
+
+    public void validateLength(String input) {
+        int inputLength = input.length();
+        if (inputLength != MAX_NUMBER_LENGTH) {
+            throw new IllegalArgumentException(LENGTH_ERROR_MESSAGE + MAX_NUMBER_LENGTH);
+        }
+    }
+
+
 }
