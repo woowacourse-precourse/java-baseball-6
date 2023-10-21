@@ -6,10 +6,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer extends BaseballPlayer {
+public class Computer implements BaseballNumberInput {
+
+    List<Integer> baseballNumbers = new ArrayList<>();
 
     @Override
-    public void inputBaseballNumber() {
+    public void inputBaseballNumbers() {
         List<Integer> computerBaseballNumber = new ArrayList<>();
         while (computerBaseballNumber.size() < MAX_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,6 +19,6 @@ public class Computer extends BaseballPlayer {
                 computerBaseballNumber.add(randomNumber);
             }
         }
-        super.baseballNumber = computerBaseballNumber;
+        baseballNumbers = computerBaseballNumber;
     }
 }

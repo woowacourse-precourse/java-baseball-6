@@ -11,10 +11,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class User extends BaseballPlayer {
+public class User implements BaseballNumberInput {
+
+    List<Integer> baseballNumbers = new ArrayList<>();
 
     @Override
-    public void inputBaseballNumber() {
+    public void inputBaseballNumbers() {
         List<Integer> playerInputBaseballNumber = new ArrayList<>();
         String[] playerInput = Console.readLine().split("");
 
@@ -25,7 +27,7 @@ public class User extends BaseballPlayer {
 
         validateMaxLength(playerInputBaseballNumber);
         validateDuplicateNumber(playerInputBaseballNumber);
-        super.baseballNumber = playerInputBaseballNumber;
+        baseballNumbers = playerInputBaseballNumber;
     }
 
     private void validateMaxLength(List<Integer> playerInput) {
