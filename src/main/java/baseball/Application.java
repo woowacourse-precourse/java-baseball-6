@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.dto.Computer;
+import baseball.service.Converter;
 import baseball.service.Generator;
 
 public class Application {
@@ -9,8 +10,8 @@ public class Application {
         while (true) {
             Computer computer = new Computer();
             Generator generator = new Generator();
-            //System.out.println(logic.numToString());
             computer.setInput(generator.generateNum());
+            computer.setComputerNumberBall(Converter.convert(computer.getInput()));
 
         }
     }
