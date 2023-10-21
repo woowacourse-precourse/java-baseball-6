@@ -10,7 +10,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberManager {
     private final static int LENGTH = 3;
-    private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private static BufferedReader br;
+
+    NumberManager(BufferedReader br){
+        this.br = br;
+    }
 
     public List<Integer> createRandomNumber() {
         List<Integer> number = new ArrayList<>();
@@ -23,8 +27,8 @@ public class NumberManager {
         return number;
     }
 
-    public List<Integer> receiveNumber() {
-        String number = "";
+    public List<Integer> receiveUserNumber() {
+        String number = " ";
         System.out.print("숫자를 입력해주세요 : ");
         try {
             number = br.readLine();
@@ -56,6 +60,18 @@ public class NumberManager {
             numberList.add(number.charAt(i) - '0');
         }
         return numberList;
+    }
+
+    public String readLine(){
+        try {
+            String str = br.readLine();
+            if(str!=null)
+                return str;
+            throw new IllegalArgumentException("입력이 NULL입니다.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("입력을 읽을 수 없습니다.");
+        }
     }
 
 }
