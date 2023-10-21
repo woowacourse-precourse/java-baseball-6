@@ -11,8 +11,10 @@ import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class BaseballGameController {
     public void startGame() {
@@ -84,12 +86,26 @@ public class BaseballGameController {
             return userInput;
         }
 
-        private static void validateUsersGuess(String userInput) {
-            Validator.validateNull(userInput);
-            Validator.validateSize(userInput, 3);
+        private static void validateUsersGuess(String guess) {
+            Validator.validateNull(guess);
+            Validator.validateSize(guess, 3);
+            validateIsInRange(guess);
+            validateRepeatedNumber(guess);
+        }
 
-            for (int i = 0; i < userInput.length(); i++) {
-                int number = userInput.charAt(i) - '0';
+        private static void validateRepeatedNumber(String guess) {
+            Set<Character> set = new HashSet<>();
+            for (int i = 0; i < guess.length(); i++) {
+                set.add(guess.charAt(i));
+            }
+            if (set.size() != guess.length()) {
+                throw new IllegalArgumentException("중복된 원소가 있습니다.");
+            }
+        }
+
+        private static void validateIsInRange(String guess) {
+            for (int i = 0; i < guess.length(); i++) {
+                int number = guess.charAt(i) - '0';
                 Validator.validateInRange(number, 1, 9);
             }
         }
