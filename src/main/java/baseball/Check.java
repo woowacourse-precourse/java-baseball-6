@@ -5,8 +5,8 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Check {
-    int strike;
-    int ball;
+    private int strike;
+    private int ball;
 
     public void resultCheck(List<Integer> comp_numbers, List<Integer> user_numbers) {
         strike = 0;
@@ -51,7 +51,7 @@ public class Check {
             return false;
         }
         else {
-            return false;
+            throw new IllegalArgumentException("오류처리");
         }
     }
 }
