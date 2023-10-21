@@ -15,12 +15,12 @@ public class OutputView {
         System.out.println(COLLECT_MESSAGE);
     }
 
-    public void print_strike() {
-        System.out.print(STRIKE_MESSAGE);
+    public void print_strike(int strikeCount) {
+        System.out.print(strikeCount + STRIKE_MESSAGE);
     }
 
-    public void print_ball() {
-        System.out.print(BALL_MESSAGE);
+    public void print_ball(int ballCount) {
+        System.out.print(ballCount + BALL_MESSAGE);
     }
 
     public void print_nothing() {
