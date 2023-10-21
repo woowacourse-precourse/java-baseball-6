@@ -15,6 +15,7 @@ public class Application {
         // 게임이 종류을 결정하는 변수
         boolean isChecked = true;
         boolean checkTheUserResponse = true;
+        String[] user;
 
         while (checkTheUserResponse) {
             System.out.println("숫자 야구 게임을 시작합니다.");
@@ -29,8 +30,12 @@ public class Application {
 
             while (isChecked) {
                 // 사용자의 입력을 받는 부분
+
                 System.out.print("숫자를 입력해주세요 : ");
-                String[] user = Console.readLine().split("");
+                user = Console.readLine().split("");
+                if (user.length != 3)
+                    throw new IllegalArgumentException("숫자의 길이가 큽니다");
+
                 int numberOfStrike = 0;
                 int numberOfBall = 0;
 
@@ -53,14 +58,14 @@ public class Application {
 
                 numberOfBall = numberOfBall - numberOfStrike;
 
-                if(numberOfStrike == 0 && numberOfBall !=0){
-                    System.out.println(numberOfBall+"볼");
-                }else if(numberOfStrike == 0 && numberOfBall == 0){
+                if (numberOfStrike == 0 && numberOfBall != 0) {
+                    System.out.println(numberOfBall + "볼");
+                } else if (numberOfStrike == 0 && numberOfBall == 0) {
                     System.out.println("낫싱");
-                }else if(numberOfBall == 0 && numberOfStrike !=0){
-                    System.out.println(numberOfStrike+"스트라이크");
-                }else{
-                    System.out.println(numberOfBall+"볼 "+numberOfStrike+"스트라이크");
+                } else if (numberOfBall == 0 && numberOfStrike != 0) {
+                    System.out.println(numberOfStrike + "스트라이크");
+                } else {
+                    System.out.println(numberOfBall + "볼 " + numberOfStrike + "스트라이크");
                 }
             }
             System.out.println("3스트라이크");
