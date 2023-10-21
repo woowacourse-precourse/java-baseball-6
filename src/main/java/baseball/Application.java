@@ -91,8 +91,14 @@ public class Application {
 
     
     private static void printResult(int strikes, int balls){
-
-
+        if(strikes==0 && balls == 0) {
+            System.out.println("낫싱");
+        }
+        else{
+            if(balls>0)System.out.print(balls+"볼 ");
+            if(strikes > 0)System.out.print(strikes+"스트라이크");
+            System.out.println();
+        }
     }
 
 }
