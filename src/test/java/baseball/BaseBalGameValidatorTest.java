@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class BaseBalGameValidatorTest {
     private static String[] notNumberSource() {
-        return new String[]{null, "", " ", "DJ", "dj", "baseball", "야구", "1야구1", "야구가좋아", "★", "11★", "O", "Z", "l"};
+        return new String[]{null, "", " ", "DJ", "dj", "baseball", "야구", "1야구1", "야구가좋아", "★", "11★", "O", "Z", "l", " 123", "12 3", "123 "};
     }
 
 
