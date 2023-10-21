@@ -27,8 +27,8 @@ public class Application {
             Printer.printInputNumber();
             String input = Console.readLine();
             Player playerNumbers = Player.from(input);
-
-            Hint hint = new Hint(computerNumbers.getComputer(), playerNumbers.getPlayerNumbers());
+            
+            Hint hint = Hint.of(computerNumbers.getComputer(), playerNumbers.getPlayerNumbers());
             Printer.printHint(hint);
             threeStrike = isThreeStrike(hint.getStrike());
         } while(!threeStrike);

@@ -7,8 +7,12 @@ public class Hint {
     private int strike = 0;
     private int ball = 0;
 
-    public Hint(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    private Hint(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         countStrikeAndBall(computerNumbers, playerNumbers);
+    }
+
+    public static Hint of(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        return new Hint(computerNumbers, playerNumbers);
     }
 
     public int getStrike() {
