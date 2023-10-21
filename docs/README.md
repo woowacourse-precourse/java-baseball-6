@@ -134,17 +134,19 @@
 - 테스트는 기본적으로 clean test를 위해 실패의 경우에도 결과값을 반대로 지정하여 통과하도록 하였다.  
 <br>
 - [x] 입력 테스트 완료  
-  ![input_test](./assets/input_test.png)  
+  <img src="./assets/input_test.png">  
   <br>
 - [x] 출력 테스트 완료  
-  ![output_test](./assets/output_test.png)  
+  <img src="./assets/output_test.png">  
   <br>
 - [x] 입력값 유효성 테스트 완료  
-  ![validation_test](./assets/validation_test.png)  
+  <img src="./assets/validation_test.png">  
   <br>
 - [x] 난수 생성 테스트 완료 (반복 테스트 X)  
-  ![random_test](./assets/random_test.png)  
+  <img src="./assets/random_test.png">  
   <br>
 - [x] 결과값 테스트 완료  
-  ![result_test](./assets/result_test.png)  
+  <img src="./assets/result_test.png">  
   <br>
+- [x] 메인 테스트 완료  
+  <img src="./assets/application_test.png">    
