@@ -19,9 +19,9 @@
 
 1. view
     - OutputView
-    - [ ] 화면에 출력할 기능을 구현
+    - [X] 화면에 출력할 기능을 구현
     - InputView
-    - [ ] 입력 기능을 구현
+    - [X] 입력 기능을 구현
 
 2. Controller
     - GameController
