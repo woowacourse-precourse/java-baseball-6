@@ -2,6 +2,9 @@ package baseball.game;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BaseballApp {
 
     public Computer computer;
@@ -15,8 +18,8 @@ public class BaseballApp {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         computer.genNumbers();
-
         startGame();
+
     }
 
     //게임을 진행한다.
@@ -24,22 +27,21 @@ public class BaseballApp {
 
         while(true) {
 
-            getInput();
+            //입력을 받고
+            String input = getInput();
 
-
+            //유효한 입력이라면 컴퓨터와 대결하도록
+            if(checkInput(input)) {
+                List<Integer> numList = transToList(input);
+            }
         }
-
     }
 
     public String getInput() {
 
-        //내용을 입력받는다.
         System.out.print("숫자를 입력해주세요 : ");
-        if(checkInput(Console.readLine())) {
 
-        }
-
-        return "";
+        return Console.readLine();
     }
 
     public boolean checkInput(String input) {
@@ -57,8 +59,20 @@ public class BaseballApp {
         return true;
     }
 
-    public int parseInt(String input) {
-        return 123;
+    public List<Integer> transToList (String input) {
+
+        List<Integer> numList = new ArrayList<>();
+
+        int wholeNum = Integer.parseInt(input);
+
+        //parseInt + String 처리 vs 숫자 계산, 뭐가 더 좋으려나
+        for(int i=100; i>0; i/=10) {
+            int nowNum = wholeNum/i;
+            numList.add(nowNum);
+            wholeNum -= nowNum * i;
+        }
+
+        return numList;
     }
 
 }
