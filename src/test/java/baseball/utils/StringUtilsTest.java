@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -154,5 +155,18 @@ class StringUtilsTest {
                 arguments("'"),
                 arguments("39A2")
         );
+    }
+
+    @Test
+    @DisplayName("Null 값 입력 시 예외 로직 검증")
+    public void checkStringUtilsInputNull() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> StringUtils.isNumeric(null));
+
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> StringUtils.isLengthEqual(null,0));
+
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> StringUtils.hasDuplicate(null));
     }
 }
