@@ -6,7 +6,9 @@ public class Application {
     public static void main(String[] args) {
         PlayerHitterImpl hitter = new PlayerHitterImpl();
 
+        String bat = "";
+
         System.out.println("입력:");
-        hitter.swing();
+        bat = hitter.swing();
     }
 }
