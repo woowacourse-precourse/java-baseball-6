@@ -31,13 +31,13 @@ public class Numbers {
     }
 
     private int calculateStrikeCount(final Numbers userNumbers) {
-        return (int) IntStream.range(0, numbers.size())
+        return (int) IntStream.range(0, NUMBER_LENGTH)
                 .filter(i -> isSameNumber(numbers.get(i), userNumbers.numbers.get(i)))
                 .count();
     }
 
     private int calculateBallCount(final Numbers userNumbers) {
-        return (int) IntStream.range(0, numbers.size())
+        return (int) IntStream.range(0, NUMBER_LENGTH)
                 .filter(i -> !isSameNumber(numbers.get(i), userNumbers.numbers.get(i))
                         && numbers.contains(userNumbers.numbers.get(i)))
                 .count();
