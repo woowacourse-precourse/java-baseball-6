@@ -10,6 +10,4 @@ public class Numbers {
         this.numbers = numbers;
     }
 
-    public void generateRandomThreeDigit() {
-    }
 }

@@ -23,7 +23,7 @@ public class Computer {
     }
 
     private void generateRandomThreeDigit(List<Integer> computerNumbers) {
-        while (computerNumbers.size() < 3) {
+        while (computerNumbers.size() < THREE_DIGIT) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE);
             addUniqueNumber(computerNumbers, randomNumber);
         }
