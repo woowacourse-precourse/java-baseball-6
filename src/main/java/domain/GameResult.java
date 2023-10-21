@@ -21,7 +21,7 @@ public class GameResult {
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        if(this.strike == 0){
+        if(this.strike == 0 && this.ball == 0){
             return "낫싱";
         }
         appendBallCount(sb);
