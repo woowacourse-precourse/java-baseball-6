@@ -20,7 +20,7 @@ public class Application {
     }
 
     private static void runGame() {
-        Computer computerNumbers = new Computer();
+        Computer computerNumbers = Computer.create();
 
         boolean threeStrike;
         do {

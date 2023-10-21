@@ -6,32 +6,32 @@ import java.util.List;
 
 public class Computer {
 
-    private final List<Integer> computer;
+    private final List<Integer> computerNumbers;
 
-    public Computer() {
-        this.computer = generateComputerNumber();
+    private Computer(List<Integer> computerNumbers) {
+        this.computerNumbers = computerNumbers;
     }
 
     public List<Integer> getComputer() {
-        return computer;
+        return computerNumbers;
     }
 
-    private List<Integer> generateComputerNumber() {
+    public static Computer create() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < Constants.NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(Constants.MIN_NUMBER, Constants.MAX_NUMBER);
             addNumber(randomNumbers, randomNumber);
         }
-        return randomNumbers;
+        return new Computer(randomNumbers);
     }
 
-    private void addNumber(List<Integer> numbers, int number) {
+    private static void addNumber(List<Integer> numbers, int number) {
         if (!isRedundantNumber(numbers, number)) {
             numbers.add(number);
         }
     }
 
-    private boolean isRedundantNumber(List<Integer> numbers, int number) {
+    private static boolean isRedundantNumber(List<Integer> numbers, int number) {
         return numbers.contains(number);
     }
 }
