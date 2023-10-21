@@ -6,8 +6,7 @@ import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class MainController {
-    private static final char RESTART_GAME_STRING = '1';
-    private static final char END_GAME_STRING = '2';
+    private static final String RESTART_GAME = "1";
     BaseballGameController baseballGameController;
 
     public MainController() {
@@ -15,17 +14,10 @@ public class MainController {
     }
 
     public void startProgram() {
-        boolean isRunning = true;
-
         OutputView.printStartProgramMessage();
         do {
             baseballGameController.startGame();
-
-            String restartOrNot = InputController.scanRestartOrNot();
-            if (restartOrNot.charAt(0) == END_GAME_STRING) {
-                isRunning = false;
-            }
-        } while (isRunning);
+        } while (InputController.scanRestartOrNot().equals(RESTART_GAME));
     }
 
     private static class InputController {
