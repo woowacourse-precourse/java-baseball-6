@@ -51,18 +51,18 @@ public class BallsTest {
     void 정답은_123_입력숫자는_123일때_strike_3를_반환한다() {
         Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
         Balls otherBalls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
-        assertThat(balls.getTryResultList(otherBalls)).containsExactly(TryResult.STRIKE, TryResult.STRIKE, TryResult.STRIKE);
+        assertThat(balls.getTryResultList(otherBalls).getTryResults()).containsExactly(TryResult.STRIKE, TryResult.STRIKE, TryResult.STRIKE);
     }
     @Test
     void 정답은_123_입력숫자는_231일때_ball_3를_반환한다() {
         Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
         Balls otherBalls = new Balls(new Ball(1,2), new Ball(2,3), new Ball(3,1));
-        assertThat(balls.getTryResultList(otherBalls)).containsExactly(TryResult.BALL, TryResult.BALL, TryResult.BALL);
+        assertThat(balls.getTryResultList(otherBalls).getTryResults()).containsExactly(TryResult.BALL, TryResult.BALL, TryResult.BALL);
     }
     @Test
     void 정답은_123_입력숫자는_135일때_strike_1_ball_1를_반환한다() {
         Balls balls = new Balls(new Ball(1,1), new Ball(2,2), new Ball(3,3));
         Balls otherBalls = new Balls(new Ball(1,1), new Ball(2,3), new Ball(3,5));
-        assertThat(balls.getTryResultList(otherBalls)).contains(TryResult.STRIKE, TryResult.BALL);
+        assertThat(balls.getTryResultList(otherBalls).getTryResults()).contains(TryResult.STRIKE, TryResult.BALL);
     }
 }

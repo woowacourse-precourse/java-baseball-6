@@ -4,8 +4,11 @@ import java.util.List;
 
 public class GameController {
 
+    private final InputView inputView = InputView.getInstance();
+    private final OutputView outputView = OutputView.getInstance();
+
     public void start() {
-        OutputView.printStart();
+        outputView.printStart();
         run();
     }
 
@@ -13,26 +16,22 @@ public class GameController {
         Retry retry = Retry.DEFAULT;
         while (retry != Retry.END) {
             Balls answerBalls = generateAnswerBalls();
-            play(answerBalls);
-            retry = InputView.scanRetry();
+            GameStatus gameStatus = GameStatus.PLAYING;
+            play(answerBalls, gameStatus);
+            retry = inputView.scanRetry();
         }
     }
 
-    private void play(Balls answerBalls) {
-        boolean gameWin = false;
-        while (!gameWin) {
-            Balls playerBalls = InputView.scanBalls();
-            List<TryResult> tryResults = playerBalls.getTryResultList(answerBalls);
-            OutputView.printResult(tryResults);
-            gameWin = checkGameWin(tryResults);
+    private void play(Balls answerBalls, GameStatus gameStatus) {
+        while (gameStatus == GameStatus.PLAYING) {
+            Balls playerBalls = inputView.scanBalls();
+            GameResult gameResult = playerBalls.getTryResultList(answerBalls);
+            outputView.printResult(gameResult);
+            gameStatus = gameResult.checkGameWin();
         }
-        OutputView.printGameOver();
+        outputView.printGameOver();
     }
 
-    private boolean checkGameWin(List<TryResult> tryResults) {
-        return tryResults.stream()
-            .allMatch(tryResult -> tryResult == TryResult.STRIKE);
-    }
 
     private Balls generateAnswerBalls() {
         NumberGenerator numberGenerator = new RandomNumberGenerator();
