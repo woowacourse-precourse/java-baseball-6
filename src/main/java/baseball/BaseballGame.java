@@ -43,6 +43,11 @@ public class BaseballGame {
     }
 
     private boolean isInteger(String userInput) {
-
+        try {
+            Integer.parseInt(userInput);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
     }
 }
