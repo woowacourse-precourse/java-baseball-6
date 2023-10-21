@@ -1,13 +1,11 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GameController {
-    Computer computer = new Computer();
-    List<Integer> player = new ArrayList<>();
-    OutputView outputView = new OutputView();
-    InputView inputView = new InputView();
+    private final Computer computer = new Computer();
+    private final Player player = new Player();
+    private final OutputView outputView = new OutputView();
+    private final InputView inputView = new InputView();
+    private CompareSystem compareSystem;
 
     public void start() {
         outputView.printStartMessage();

@@ -12,10 +12,24 @@ public class GameResult {
     }
 
     public void set(CompareStatus compareStatus, int compareCount) {
-        result.put(compareStatus, compareCount);
+        if (compareStatus != CompareStatus.NOTHING) {
+            result.put(compareStatus, compareCount);
+        }
     }
 
     public boolean hasThreeStrike() {
         return result.getOrDefault(CompareStatus.STRIKE, 0) == 3;
+    }
+
+    public List<String> getBallAndStrikeResult() {
+        result.remove(null);
+        return result.entrySet().stream()
+                .filter(status -> status.getValue() != null)
+                .map(status -> status.getValue() + status.getKey().toString())
+                .toList();
+    }
+
+    public Integer getStrikeResult() {
+        return result.get(CompareStatus.STRIKE);
     }
 }
