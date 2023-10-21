@@ -2,7 +2,7 @@ package baseball.util;
 
 import java.util.HashSet;
 
-import baseball.console.GameConstant;
+import baseball.console.constant.GameConstant;
 
 public class InputValidation {
 
