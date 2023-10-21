@@ -60,7 +60,7 @@ public class Game {
             throw new IllegalArgumentException(WRONG_INPUT);
         }
 
-        if(value!=1 || value!=2)
+        if(value!=1 && value!=2)
             throw new IllegalArgumentException(WRONG_INPUT);
 
         return value==1;
@@ -88,8 +88,16 @@ public class Game {
         }
 
         List<Integer> userNumbers=new ArrayList<>();
-        while(!stack.isEmpty())
-            userNumbers.add(stack.pop());
+        Set<Integer> validateSet=new HashSet<>();
+
+        while(!stack.isEmpty()){
+            value=stack.pop();
+            validateSet.add(value);
+            userNumbers.add(value);
+        }
+
+        if(validateSet.size()<3)
+            throw new IllegalArgumentException(WRONG_INPUT);
 
         return userNumbers;
     }
@@ -108,10 +116,10 @@ public class Game {
             printResult(ball, strike);
             if(strike==3){
                 printGameEnd();
-                if(getGameContinueInput()) break;
-                else{
+                if(getGameContinueInput()) {
                     computer.generateRandomNumber();
                 }
+                else break;
             }
         }
     }
