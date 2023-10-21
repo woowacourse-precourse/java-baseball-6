@@ -46,7 +46,7 @@ public class Computer {
                 if (i == j) {
                     continue;
                 }
-                if (answer.get(i).equals(target.get(i))) {
+                if (answer.get(i).equals(target.get(j))) {
                     ballCount++;
                 }
             }
