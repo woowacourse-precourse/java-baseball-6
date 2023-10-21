@@ -5,7 +5,7 @@ import baseball.dto.HintDto;
 
 import java.util.Map;
 
-public class RefereeService {
+public class Service {
     public HintDto getHintDto(Map<HintType, Integer> hintMap, int size) {
         if (hintMap.get(HintType.NOTHING).equals(size)) {
             hasOnlyNOTHING(hintMap);

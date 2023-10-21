@@ -14,11 +14,11 @@ public final class OutputView {
         System.out.println("숫자 야구 게임을 시작합니다");
     }
 
-    public void viewInputNumbers() {
+    public void displayInputNumbers() {
         System.out.print("숫자를 입력해주세요 :");
     }
 
-    public void viewHint(Map<HintType, Integer> hintMap) {
+    public void displayHint(Map<HintType, Integer> hintMap) {
         if (hintMap.containsKey(HintType.BALL)) {
             System.out.print(hintMap.get(HintType.BALL) + BALL_TEXT + " ");
         }
@@ -31,7 +31,7 @@ public final class OutputView {
         System.out.println();
     }
 
-    public void viewCorrectAnswer() {
+    public void displayCorrectAnswer() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
