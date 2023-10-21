@@ -32,7 +32,7 @@ public class Number {
         return number.toString();
     }
 
-    public List<Integer> getList(){
-        return number;
+    public Integer get(int index){
+        return number.get(index);
     }
 }
