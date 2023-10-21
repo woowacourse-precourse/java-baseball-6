@@ -16,15 +16,33 @@ public class MakeUserAnswer {
     }
 
     public User input() {
-        String userInputString = Console.readLine();
-        int userInput = userValidation.validation(userInputString);
+        String userInputString = readInput();
+        int validatedInput = validateInput(userInputString);
+        List<Integer> userValue = createUserValue(validatedInput);
 
-        List<Integer> user = new ArrayList<>();
-        user.add(userInput / 100);
-        int ten = userInput % 100;
-        user.add(ten / 10);
-        user.add(ten % 10);
-
-        return User.createUser(user);
+        return User.createUser(userValue);
     }
+
+    private String readInput() {
+        return Console.readLine();
+    }
+
+    private int validateInput(String userInput) {
+        return userValidation.validation(userInput);
+    }
+
+    private List<Integer> createUserValue(int number) {
+        List<Integer> digits = new ArrayList<>();
+
+        digits.add(number / 100);
+        number %= 100;
+
+        digits.add(number / 10);
+        number %= 10;
+
+        digits.add(number);
+
+        return digits;
+    }
+
 }
