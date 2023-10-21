@@ -27,4 +27,8 @@ public class OutputView {
     public void printSuccess() {
         System.out.println(GameMessage.SUCCESS.toValue());
     }
+
+    public void printRetryInputRequest() {
+        System.out.println(GameMessage.RETRY_INPUT_REQUEST.toValue());
+    }
 }
