@@ -22,13 +22,11 @@ public class Application {
                 }
             }
             // 스트라이크, 볼 변수 선언
-            int strike;
-            int ball;
-
+            Referee referee;
+            BallCount ballCount;
             do {
                 // 변수 초기화
-                strike = 0;
-                ball = 0;
+                referee = new Referee();
 
                 System.out.print("숫자를 입력해주세요 : ");
                 number = Console.readLine();
@@ -41,33 +39,12 @@ public class Application {
                     int num = Integer.parseInt(number.substring(i, i + 1));
                     playerBall.add(num);
                 }
-                // 정답 안에 숫자가 있다면 true, 없다면 false
-                for (int i = 0; i < playerBall.size(); i++) {
-                    int num = playerBall.get(i);
-                    if (computerBall.contains(num)) {
-                        // 컴퓨터 i번쨰 자리 수와 유저 정답의 i번째 자리수가 같다면 스트라이크 + 1
-                        if (computerBall.get(i) == num) {
-                            strike++;
-                            // 다르다면 볼 + 1
-                        } else {
-                            ball++;
-                        }
-                    }
-                }
 
-                StringBuffer sb = new StringBuffer();
-                // 볼이 있으면 볼 추가
-                if (ball > 0) {
-                    sb.append(ball + "볼 ");
-                } // 스트라이크가 있다면 스트라이크 추가
-                if (strike > 0) {
-                    sb.append(strike + "스트라이크");
-                } // 둘 다 0 이면 낫싱 추가
-                if (ball == 0 && strike == 0) {
-                    sb.append("낫싱");
-                } // 버퍼 출력
-                System.out.println(sb.toString());
-            } while (strike < 3); // 3스트라이크가 나올 때 까지 반복
+                ballCount = referee.checkBallCount(playerBall, computerBall);
+                // 정답 안에 숫자가 있다면 true, 없다면 false
+                System.out.println(ballCount.toString());
+
+            } while (!ballCount.isThreeStrike()); // 3스트라이크가 나올 때 까지 반복
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
