@@ -40,7 +40,7 @@
 4. UserInput
     - 사용자 입력
     - 유효성 검사
-5. Numbers
+5. BaseballNumber
     - 3개의 숫자를 저장하고 관리
 6. Judgement
     - 사용자 입력과 컴퓨터 숫자 비교
