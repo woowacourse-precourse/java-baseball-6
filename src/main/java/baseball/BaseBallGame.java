@@ -51,7 +51,7 @@ public class BaseBallGame implements Game{
 
     @Override
     public void over() {
-        System.out.println("게임종료");
+        outputView.viewGameOver();
     }
 
 }
