@@ -1,12 +1,12 @@
 package baseball.model;
 
-import static baseball.config.NumberConfig.NUMBER_LENGTH;
-
 import baseball.view.OutputView;
 
+import static baseball.config.NumberConfig.NUMBER_LENGTH;
+
 public class Result {
-    private int ballCount;
-    private int strikeCount;
+    private final int ballCount;
+    private final int strikeCount;
 
     private Result(final Number playerNumber, final Number computerNumber) {
         ballCount = playerNumber.countBallCount(computerNumber);
