@@ -3,12 +3,10 @@ package baseball;
 public class Status {
     private int[] status;
     private int statusCode;
-
     public Status (int[] status) {
         this.status = status;
         this.statusCode = checkStatusCode();
     }
-
     /* 상태 코드에 따른 문자 처리 */
     public String toString () {
         switch (this.statusCode) {
@@ -25,7 +23,6 @@ public class Status {
         }
         return "오류";
     }
-
     /* [스트라이크, 볼, 아웃] 배열에 따른 상태 코드 확인 */
     private int checkStatusCode () {
         if (this.status[0] == 0) {
@@ -40,7 +37,6 @@ public class Status {
         }
         return 4;
     }
-
     /* 입력된 사용자 답에 대한 정답 여부 확인 */
     public boolean isCorrect () {
         if (statusCode == 1)
