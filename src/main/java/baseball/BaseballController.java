@@ -6,10 +6,13 @@ import java.util.HashSet;
 
 public class BaseballController {
 
+    private static final String RESTART = "1";
+    private static final String END = "2";
+
     private final BaseballView view;
     private final BaseballModel model;
 
-    private boolean isPlaying = true;
+    private boolean isProgress = false;
 
     public BaseballController(BaseballView view, BaseballModel model) {
         this.view = view;
@@ -20,19 +23,24 @@ public class BaseballController {
      * 게임 시작
      */
     public void startGame() {
+        isProgress = true;
         view.outputStartMessage();
+        while (isProgress) {
+            playGame();
+            finishGame();
+        }
     }
 
     /**
      * 게임 진행
      */
-    public void playGame() {
-        isPlaying = true;
+    private void playGame() {
+        boolean isPlaying = true;
         model.chooseRandomNumbers();
         while (isPlaying) {
             view.outputPlayMessage();
             String input = Console.readLine();
-            validateInput(input);
+            validateBaseballNumbersInput(input);
 
             HintResult hintResult = model.getHint(input);
             view.outputHintResultMessage(hintResult);
@@ -42,7 +50,20 @@ public class BaseballController {
         }
     }
 
-    private void validateInput(String input) {
+    /**
+     * 게임 완료 (재시작 또는 종료)
+     */
+    private void finishGame() {
+        view.outputFinishMessage();
+        String input = Console.readLine();
+        validateFinishInput(input);
+
+        if (input.equals(END)) {
+            isProgress = false;
+        }
+    }
+
+    private void validateBaseballNumbersInput(String input) {
         validateLength(input);
         validateContainsZero(input);
         validateContainsAlphabetic(input);
@@ -76,6 +97,12 @@ public class BaseballController {
             if (!set.add(inputNumber)) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    private void validateFinishInput(String input) {
+        if (!input.equals(RESTART) && !input.equals(END)) {
+            throw new IllegalArgumentException();
         }
     }
 }

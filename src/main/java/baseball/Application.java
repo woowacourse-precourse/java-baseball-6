@@ -6,8 +6,6 @@ public class Application {
             new BaseballController(new BaseballView(), new BaseballModel());
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         controller.startGame();
-        controller.playGame();
     }
 }
