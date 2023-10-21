@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ValidationTest {
     @Test
-    void failIfInputIsAlphabet() {
+    void throwExceptionIfInputIsAlphabet() {
         String alphabetInput = "abc";
         command(alphabetInput);
         assertThatThrownBy(() -> {
@@ -19,7 +19,7 @@ public class ValidationTest {
     }
 
     @Test
-    void failIfInputIsKorean() {
+    void throwExceptionIfInputIsKorean() {
         final String koreanInput = "가나다";
         command(koreanInput);
         assertThatThrownBy(() -> {
@@ -28,7 +28,7 @@ public class ValidationTest {
     }
 
     @Test
-    void failIfInputIsShorterThanThree() {
+    void throwExceptionIfInputIsShorterThanThree() {
         final String shortNumbers = "23";
         command(shortNumbers);
         assertThatThrownBy(() -> {
@@ -37,7 +37,7 @@ public class ValidationTest {
     }
 
     @Test
-    void failIfInputIsLongerThanThree() {
+    void throwExceptionIfInputIsLongerThanThree() {
         final String longNumbers = "23553";
         command(longNumbers);
         assertThatThrownBy(() -> {
