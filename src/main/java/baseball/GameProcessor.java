@@ -31,6 +31,27 @@ public class GameProcessor {
         return userNumberList;
     }
 
+    private static String calculateStrike(Data data) {
+        int strike = 0;
+        List<String> randomNumberList = generateRandomNumberList();
+        List<String> userNumberList = generateUserNumberList(data);
+
+        for (int i = 0; i < DIGIT_SIZE; i++) {
+            if (userNumberList.get(i).equals(randomNumberList.get(i))) {
+                strike++;
+            }
+        }
+        return String.valueOf(strike);
+    }
+
+    public List<String> calculateStrikeBallList(Data data) {
+        List<String> strikeBallList = new ArrayList<>();
+        List<String> randomNumberList = generateRandomNumberList();
+        List<String> userNumberList = generateUserNumberList(data);
+
+
+    }
+
     public void IllegalArgumentException(Data data) {
         if ((data.getInputData().length()) > 3) {
             System.out.println("3보다 큽니다");
