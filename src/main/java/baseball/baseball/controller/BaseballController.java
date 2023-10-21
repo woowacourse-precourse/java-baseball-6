@@ -7,6 +7,9 @@ import baseball.baseball.view.OutputView;
 
 import java.util.List;
 
+import static baseball.baseball.model.constants.INVALID_END_GAME_INPUT_ERROR;
+import static baseball.baseball.model.constants.NUMBER_LENGTH_ERROR;
+
 public class BaseballController {
     private static final BaseballService baseballService = new BaseballService();
     private static final OutputView outputView = OutputView.getInstance();
@@ -48,7 +51,7 @@ public class BaseballController {
         String inputString = inputView.getInputNumber();
 
         if (inputString.length() != 3) {
-            throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
+            throw new IllegalArgumentException(NUMBER_LENGTH_ERROR);
         }
 
         return StringConvertUtil.stringToIntList(inputString);
@@ -64,11 +67,11 @@ public class BaseballController {
         try {
             endGame = Integer.parseInt(inputView.getEndGame());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자 1 또는 2만 입력 가능합니다.");
+            throw new IllegalArgumentException(INVALID_END_GAME_INPUT_ERROR);
         }
 
         if (endGame != 1 && endGame != 2) {
-            throw new IllegalArgumentException("숫자 1 또는 2만 입력 가능합니다.");
+            throw new IllegalArgumentException(INVALID_END_GAME_INPUT_ERROR);
         }
 
         return endGame == 2;

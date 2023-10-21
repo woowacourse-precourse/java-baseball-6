@@ -3,6 +3,8 @@ package baseball.baseball.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.baseball.model.constants.NOT_NUMBER_ERROR;
+
 public class StringConvertUtil {
 
     public static List<Integer> stringToIntList(String inputString) {
@@ -13,7 +15,7 @@ public class StringConvertUtil {
             char digit = inputString.charAt(i);
 
             if (!Character.isDigit(digit)) {
-                throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+                throw new IllegalArgumentException(NOT_NUMBER_ERROR);
             }
 
             int num = Character.getNumericValue(digit);
