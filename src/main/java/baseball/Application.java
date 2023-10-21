@@ -61,6 +61,16 @@ public class Application {
         List<Integer> inputNumList = parseIntegerList(inputNum);
         System.out.println(inputNumList);
 
+        //컴퓨터는 사용자가 입력한 숫자와 뽑은 숫자를 비교하여 힌트를 판단, 출력　
+        //힌트는 스트라이크, 볼, 낫싱 3가지　
+        //같은 수가 같은 자리에 있으면 스트라이크　
+        int strike = 0;
+        for (int i = 0; i < n; i++){
+            if (inputNumList.get(i).equals(computerNumList.get(i))) {
+                strike++;
+            }
+        }
+
     }
 
     //string이 Integer인지 아닌지 판단. TODO: IntegerUtil에 넣기
