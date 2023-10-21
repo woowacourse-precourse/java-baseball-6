@@ -24,6 +24,6 @@ public class Application {
             }
         } while (!endFlag);
 
-       printHandler.programEnd();
+        printHandler.programEnd();
     }
 }

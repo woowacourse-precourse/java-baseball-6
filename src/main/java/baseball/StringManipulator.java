@@ -9,13 +9,14 @@ public class StringManipulator {
     public static List<Integer> strToArrayList(String input) {
         List<Integer> threeNumList = new ArrayList<>();
 
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             char digitChar = input.charAt(i);
             int digit = Character.getNumericValue(digitChar);
             threeNumList.add(digit);
         }
         return threeNumList;
     }
+
     public static boolean hasDuplicates(String input) {
         Set<Character> characterSet = new HashSet<>();
 

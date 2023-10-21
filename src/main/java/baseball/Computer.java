@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Computer {
             }
         }
     }
+
     public boolean compareNumber(List<Integer> inputNumbers) {
         int strike = 0;
         int ball = 0;
@@ -25,7 +27,7 @@ public class Computer {
             int inputNum = inputNumbers.get(i);
 
             if (oneNum == inputNum) {
-               strike += 1;
+                strike += 1;
             } else if (threeNumbers.contains(inputNum)) {
                 ball += 1;
             }

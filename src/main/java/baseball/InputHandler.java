@@ -37,8 +37,4 @@ public class InputHandler {
             throw new IllegalArgumentException("중복된 숫자를 입력하였습니다.");
         }
     }
-
-
-
-
 }
