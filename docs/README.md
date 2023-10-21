@@ -74,16 +74,16 @@ MainController 내에서 사용자 입력을 받는 부분에 대한 로직을 �
 
 * [x] 사용자로부터 게임 재시작 여부 입력 받기 + 예외 처리
 
-### ./controller/GameController
+### ./controller/BaseballGameController
 
 숫자 야구 게임을 진행하는 컨트롤러
 
 * [x] 랜덤한 3자리 수를 선택하는 기능
 * [x] 사용자로부터 게싱 정보를 받아 컴퓨터의 정답과 비교 후, 힌트 결과 생성 및 출력
 
-### ./controller/GameController.InputController (GameController의 inner class)
+### ./controller/BaseballGameController.InputController (BaseballGameController의 inner class)
 
-GameController 내에서 사용자 입력을 받는 부분에 대한 로직을 처리하는 컨트롤러
+BaseballGameController 내에서 사용자 입력을 받는 부분에 대한 로직을 처리하는 컨트롤러
 
 * [x] 사용자로부터 3자리 수 입력 받기 + 예외 처리
 
