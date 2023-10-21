@@ -24,9 +24,9 @@ public class Opponent {
         // 랜덤한 서로다른 숫자 생성
         List<Integer> answer = randomNumberPicker.generateDistinctNumbers(numberLength);
 
-        boolean isContinuing = true;
+        boolean isFinish = false;
 
-        while (isContinuing) {
+        while (!isFinish) {
             // 정답 맞추기 시작
             inputOutputHandler.printText("숫자를 입력해주세요 : ");
             List<Integer> guessAnswer = me.guessAnswer(numberLength);
@@ -37,7 +37,7 @@ public class Opponent {
             inputOutputHandler.printlnText(guessResult.toString());
 
             //결과가 정답인지 확인
-            if(guessResult.isCorrect()) isContinuing = false;
+            if(guessResult.isCorrect()) isFinish = true;
         }
 
         inputOutputHandler.printlnText("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
