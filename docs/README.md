@@ -47,24 +47,21 @@
 
 - [x] `Strike/Ball/Out`에 대한 enum class
 
-## 📒 ResultDeterminerUtil
+## 📒 ResultsUtils
 
-- [ ] `ResultStatus`를 판별하는 utility class
+- [ ] `ResultStatus` 관련 utility class
     - [ ] 하나의 `Ball`와 하나의 `Balls`에 대한 `ResultStatus`를 판별하여 반환
+    - [ ] 결과를 `String`으로 반환
+        - [ ] `Strike`, `Ball`, `Out` 값을 받아 `String`으로 반환
+            - [ ] `n볼`로 가공
+            - [ ] `n스트라이크`로 가공
+            - [ ] 볼과 스트라이크가 없을 경우 `낫싱` 반환
 
 ## 📙 Results
 
 - [ ] 2개의 `Numbers`에 대한 `ResultStatus`들을 다루는 class
     - [ ] `Strike/Ball/Out`의 각각의 수를 저장
     - [ ] 결과를 반환 (`toString()` 오버라이딩)
-
-## 📒 ResultStringBuilderUtil
-
-- [ ] 결과를 `String`으로 반환
-    - [ ] `Strike`, `Ball`, `Out` 값을 받아 `String`으로 반환
-        - [ ] `n볼`로 가공
-        - [ ] `n스트라이크`로 가공
-        - [ ] 볼과 스트라이크가 없을 경우 `낫싱` 반환
 
 ---
 
