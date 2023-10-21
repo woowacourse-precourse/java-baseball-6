@@ -17,10 +17,6 @@ public class Application {
         }
     }
 
-    public static void displayStartGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
     public static void playGame() {
         boolean stateRepeatGuess = true;
         List<Integer> computerNumbers = generateComputerNumbers();
@@ -47,11 +43,6 @@ public class Application {
         throw new IllegalArgumentException("1 또는 2를 입력하세요.");
     }
 
-    public static String askReplayGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Console.readLine();
-    }
-
     public static List<Integer> generateComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
 
@@ -69,11 +60,6 @@ public class Application {
         String playerGuess = askPlayerGuess();
         validatePlayerGuess(playerGuess);
         return convertStringToIntList(playerGuess);
-    }
-
-    public static String askPlayerGuess() {
-        System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
     }
 
     public static void validatePlayerGuess(final String inputNumbers) {
@@ -158,12 +144,26 @@ public class Application {
         return balls + "볼 " + strikes + "스트라이크";
     }
 
-    public static void displayResultOfGuess(final String resultOfGuess) {
-        System.out.println(resultOfGuess);
-    }
-
     public static boolean getStateRepeatGuess(final String resultOfGuess) {
         return !(resultOfGuess.equals("3스트라이크"));
+    }
+
+    public static String askPlayerGuess() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return Console.readLine();
+    }
+
+    public static String askReplayGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Console.readLine();
+    }
+
+    public static void displayStartGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public static void displayResultOfGuess(final String resultOfGuess) {
+        System.out.println(resultOfGuess);
     }
 
     public static void displayTerminateGame() {
