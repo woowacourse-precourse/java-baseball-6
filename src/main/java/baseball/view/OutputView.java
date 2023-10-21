@@ -1,12 +1,7 @@
 package baseball.view;
 
-import baseball.service.BaseballGame;
-
 public class OutputView {
-    private BaseballGame  =new
-
-    BaseballGame();
-
+    
     public static void printStartGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
