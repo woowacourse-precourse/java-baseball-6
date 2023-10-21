@@ -6,14 +6,19 @@ import java.util.Map;
 
 public final class Referee {
     private final AnswerNumbers answerNumbers;
-    private final Map<HintType, Integer> hintMap = new HashMap<>();
 
     public Referee(AnswerNumbers answerNumbers) {
         this.answerNumbers = answerNumbers;
 
-        hintMap.put(HintType.STRIKE, 0);
-        hintMap.put(HintType.BALL, 0);
-        hintMap.put(HintType.NOTHING, 0);
+        initHintMap();
+    }
+
+    private Map<HintType, Integer> initHintMap() {
+        Map<HintType, Integer> map = new HashMap<>();
+        map.put(HintType.STRIKE, 0);
+        map.put(HintType.BALL, 0);
+        map.put(HintType.NOTHING, 0);
+        return map;
     }
 
     public Map<HintType, Integer> getHint(PlayerNumbers playerNumbers) {
@@ -25,6 +30,13 @@ public final class Referee {
             hintMap.put(type, count + 1);
         }
         return hintMap;
+    }
+
+    public boolean isSameWithAnswer(PlayerNumbers playerNumbers) {
+        String numbers = playerNumbers.getNumbers().toString();
+        String answer = answerNumbers.getAnswerNumbers().toString();
+
+        return numbers.equals(answer);
     }
 
     private HintType compareToAnswer(int number, int index) {
