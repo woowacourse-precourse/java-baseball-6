@@ -3,15 +3,20 @@ package baseball;
 import java.util.List;
 
 public class PlayGame {
-    public int totalScore(List<UserBalls> user, List<ComputerBalls> computer){
-        int result = 0;
-        for(int i= 0; i < user.size(); i++){
-            if(computer.contains(user.get(i))){
-                result += 1;
-            }
+    ScoreCheck scoreCheck = new ScoreCheck();
+    public String gameResult(List<Integer> user, List<Integer>computer){
+        int result = scoreCheck.totalScore(user, computer);
+        int strike = scoreCheck.strikeCount(user,computer);
+        int ball = scoreCheck.ballCount(user, computer);
+
+        if(result ==0){
+            return "낫싱";
+        } else if(strike == 0){
+            return (ball + "볼");
+        } else if (ball == 0) {
+            return  strike + "스트라이크";
+
         }
-        return result;
+        return ball + "볼 " + strike + "스트라이크";
     }
-
-
 }
