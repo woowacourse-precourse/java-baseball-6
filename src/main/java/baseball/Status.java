@@ -12,9 +12,7 @@ public class Status {
         switch (this.statusCode) {
             case 0 :
                 return "낫싱";
-            case 1 :
-                return this.status[0] + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-            case 2 :
+            case 1, 2 :
                 return this.status[0] + "스트라이크";
             case 3 :
                 return this.status[1] + "볼";
