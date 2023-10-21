@@ -2,41 +2,38 @@
 
 ## 📕 Ball
 
-- [ ] 공의 값과 위치 값을 갖는 class
-    - [ ] 다른 공에 대해 값이 일치하는지 비교
-    - [ ] 다른 공에 대해 위치 값이 일치하는지 비교
-    - [ ] 다른 공에 대해 값과 위치 값이 일치하는지 비교 (`equals()` 오버라이딩)
+- [x] 공의 값과 위치 값을 갖는 class
+    - [x] 다른 공에 대해 값이 일치하는지 비교
+    - [x] 다른 공에 대해 위치 값이 일치하는지 비교
+    - [x] 다른 공에 대해 값과 위치 값이 일치하는지 비교 (`equals()` 오버라이딩)
 
 ### 📕 BallValue
 
-- [ ] 공의 값을 갖는 class
-    - [ ] 값에 대한 검증
-    - [ ] `equals()` 오버라이딩
+- [x] 공의 값을 갖는 class
+    - [x] 값에 대한 검증
+    - [x] `equals()` 오버라이딩
 
 ### 📕 BallIndex
 
-- [ ] 공의 위치 값을 갖는 class
-    - [ ] 위치 값에 대한 검증
-    - [ ] `equals()` 오버라이딩
+- [x] 공의 위치 값을 갖는 class
+    - [x] 위치 값에 대한 검증
+    - [x] `equals()` 오버라이딩
 
 ## 📕 Balls
 
-- [ ] `Ball`들을 갖는 class
-    - [ ] `List<Ball>`만을 가지는 일급 컬렉션
-        - [ ] `Ball`들의 개수 검증
-        - [ ] `Ball`들의 값 중복 검증
+- [x] `Ball`들을 갖는 class
+    - [x] `List<Ball>`만을 가지는 일급 컬렉션
+        - [x] `Ball`들의 개수 검증
+        - [x] `Ball`들의 값 중복 검증
+        - [x] `Ball`들의 위치 중복 검증
 
-## 📒 ConvertorUtils
+## 📒 BallsUtils
 
-- [ ] 형변환 utility class
-    - [ ] `String`을 `List<Ball>`로 변환
-    - [ ] `List<Ball>`를 `Balls`로 변환
-
-## 📒 RandomBallsGeneratorUtil
-
-- [ ] 무작위 `Balls`을 생성 (게임에서의 정답)
-    - [ ] `camp.nextstep.edu.missionutils.Randoms`library의 `pickNumberInRange()` 활용
-        - [ ] 중복값 제외
+- [x] Balls 관련 utility class
+    - [x] `List<Integer>`를 `List<Ball>`로 변환
+    - [x] 무작위 `Balls`을 생성 (게임에서의 정답)
+        - [x] `camp.nextstep.edu.missionutils.Randoms`library의 `pickNumberInRange()` 활용
+        - [x] 중복값 제외
 
 ---
 
@@ -96,6 +93,11 @@
     - [ ] 숫자 입력 요구 메시지 출력
     - [ ] 정답 축하 메시지 출력
     - [ ] 재시작 여부 질문 메시지 출력
+
+## 📒 StringUtils
+
+- [x] String 관련 utility class
+    - [x] `String`을 `List<Integer>`로 변환
 
 ---
 
