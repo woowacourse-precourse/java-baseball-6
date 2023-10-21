@@ -127,6 +127,8 @@
 
 7. 기존에 작성한 NumberGenerator에서 반복문을 잘못 작성하여 난수가 2개나 1개만 생성되는 치명적인 오류를 발생하여 이를 수정하였다.
 
+8. GameScore 클래스에 게임 종료 여부를 확인하는 isUserFindAnswer 메서드를 추가하였다.
+
 ## 테스트 케이스 목록
 
 - `InputTest`: `InputView`클래스의 메서드 `inputGuideMsg`에 대한 단위 테스트
