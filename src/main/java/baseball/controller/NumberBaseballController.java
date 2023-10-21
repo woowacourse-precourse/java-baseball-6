@@ -19,16 +19,16 @@ public class NumberBaseballController {
         this.numberBaseballService = numberBaseballService;
     }
 
-    public void run() {
+    public void run() throws IllegalArgumentException{
         inputView.showGameStartMent();
         readInputNumFromInputView();
     }
 
-    public void readInputNumFromInputView() {
+    public void readInputNumFromInputView() throws IllegalArgumentException{
         createGameResultFromInputNum(inputView.readNum());
     }
 
-    public void createGameResultFromInputNum(int inputNum) {
+    public void createGameResultFromInputNum(int inputNum) throws IllegalArgumentException{
         if(numberBaseballService.isSameNum(inputNum)) {
             processOfEndGame();
             return;
@@ -50,7 +50,7 @@ public class NumberBaseballController {
         loopGame();
     }
 
-    private void processOfEndGame() {
+    private void processOfEndGame() throws IllegalArgumentException {
         outputView.printEndGame();
         if(inputView.readNumOfReGame() == RE_GAME) {
             generateNewGame();
