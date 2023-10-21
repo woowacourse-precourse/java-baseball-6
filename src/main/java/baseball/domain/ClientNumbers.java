@@ -22,7 +22,6 @@ public class ClientNumbers implements Numbers {
 
         for(int i=0; i<SIZE; i++) {
             for(int j=0; j<SIZE; j++) {
-
                 int cl = numbers.get(i);
                 int co = computerNumbers.getNumbers().get(j);
 

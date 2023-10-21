@@ -10,23 +10,23 @@ public class OutputView {
         System.out.println(START_MSG);
     }
 
-    public static void printBallAndStrike(int ball, int strike) {
+    public static void printBallAndStrikeMsg(int ball, int strike) {
         System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 
-    public static void printBall(int ball) {
+    public static void printBallMsg(int ball) {
         System.out.println(ball + "볼");
     }
 
-    public static void printStrike(int strike) {
+    public static void printStrikeMsg(int strike) {
         System.out.println(strike + "스트라이크");
     }
 
-    public static void printNothing() {
+    public static void printNothingMsg() {
         System.out.println("낫싱");
     }
 
-    public static void printSuccess() {
+    public static void printSuccessMsg() {
         System.out.println(SUCCESS_MSG);
     }
 

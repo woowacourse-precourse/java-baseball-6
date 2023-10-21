@@ -20,24 +20,31 @@ public class Game implements Numbers {
             ClientNumbers clientNumbers = InputView.makeClientNumbers();
             Info info = clientNumbers.compareWithComputerNumbers(computerNumbers);
 
+            System.out.println("--------- computerNumbers ---------");
+            System.out.println(computerNumbers.hashCode());
+            System.out.println(computerNumbers.getNumbers().size());
+            System.out.println("--------- clientNumbers ---------");
+            System.out.println(clientNumbers.hashCode());
+            System.out.println(clientNumbers.getNumbers().size());
+
             int ball = info.ball;
             int strike = info.strike;
             boolean ongoing2 = info.ongoing;
             System.out.println(ball + " " + strike + " " + ongoing2);
 
             if (ball > 0 && strike > 0) {
-                OutputView.printBallAndStrike(ball, strike); // ?볼 ?스트라이크
+                OutputView.printBallAndStrikeMsg(ball, strike); // ?볼 ?스트라이크
             } else if (ball > 0) {
-                OutputView.printBall(ball); // ?볼
+                OutputView.printBallMsg(ball); // ?볼
             } else if (strike > 0) {
-                OutputView.printStrike(strike); // ?스트라이크
+                OutputView.printStrikeMsg(strike); // ?스트라이크
             } else if (ball == 0 && strike == 0) {
-                OutputView.printNothing(); // 낫싱
+                OutputView.printNothingMsg(); // 낫싱
             }
 
             if (strike == 3) {
                 ongoing = info.ongoing;
-                OutputView.printSuccess(); // 3개의 숫자를 모두 맞히셨습니다! 게임 종료
+                OutputView.printSuccessMsg(); // 3개의 숫자를 모두 맞히셨습니다! 게임 종료
             }
         }
     }
