@@ -9,6 +9,8 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class Controller {
+    private static final int RESTART_GAME = 1;
+    private static final int QUIT_GAME = 2;
     private Computer computer = new Computer();
     private Player player = new Player();
     private BaseballGame baseballGame = new BaseballGame();
@@ -22,6 +24,7 @@ public class Controller {
                 break;
             }
         }
+        selectGameState();
     }
 
     public void startGame() {
@@ -36,5 +39,15 @@ public class Controller {
 
         baseballGame.calculateNumbers(computer.getBaseballNumbers(), player.getBaseballNumbers());
         OutputView.printCalculateResult(baseballGame.ballCount, baseballGame.strikeCount);
+    }
+
+    public void selectGameState() {
+        int gameStateNumber = Integer.parseInt(InputView.inputGameStateNumber());
+        if (gameStateNumber == 1) {
+            run();
+        }
+        if (gameStateNumber == 2) {
+            return;
+        }
     }
 }
