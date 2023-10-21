@@ -27,7 +27,6 @@ public class BaseballGameMachine {
         }
     }
 
-
     public void gameProcess() {
         Referee referee = new Referee(numberGenerator.generateRandomAnswerList());
         System.out.println(referee.getAnswerList());
@@ -35,15 +34,23 @@ public class BaseballGameMachine {
         while (!success) {
             display(message.requestInput());
             List<Integer> userInput = inputValidation.validateUserInput(input());
-            List<Integer> result = referee.judgeUserInput(userInput);
-            display(message.result(result) + '\n');
-            if (result != null && result.get(0) == 0 && result.get(1) == 3) {
-                display(message.success());
-                success = true;
-            }
+            List<Integer> gameResult = referee.judgeUserInput(userInput);
+            display(message.result(gameResult) + '\n');
+            success = isSuccess(gameResult);
         }
     }
 
+    public boolean isSuccess(List<Integer> gameResult) {
+        if (gameResult == null) {
+            return false;
+        }
+        final int ball = gameResult.get(0);
+        final int strike = gameResult.get(1);
+        if (ball == 0 && strike == 3) {
+            return true;
+        }
+        return false;
+    }
     public boolean newGameOrEnd(String input) {
         int userInput = inputValidation.validateNewGameRequest(input);
         if (userInput == 2) {
