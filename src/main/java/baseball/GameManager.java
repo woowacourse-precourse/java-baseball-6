@@ -13,7 +13,7 @@ public class GameManager {
     }
 
     public void proceedMainGame() {
-        messageManager.showAnswer(data, gameProcessor);
+        messageManager.showAnswer(data, gameProcessor, messageManager);
     }
 
 }

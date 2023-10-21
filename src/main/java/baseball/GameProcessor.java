@@ -11,7 +11,7 @@ public class GameProcessor {
     private static final int LAST_RANDOM_NUMBER = 9;
     private static final int DIGIT_SIZE = 3;
 
-    private static List<String> generateRandomNumberList() {
+    private List<String> generateRandomNumberList() {
         List<String> randomNumberList = new ArrayList<>();
         for (int i = 0; i < DIGIT_SIZE; i++) {
             int randomNumber = Randoms.pickNumberInRange(INITIAL_RANDOM_NUMBER, LAST_RANDOM_NUMBER);
@@ -20,7 +20,7 @@ public class GameProcessor {
         return randomNumberList;
     }
 
-    private static List<String> generateUserNumberList(Data data) {
+    private List<String> generateUserNumberList(Data data) {
         List<String> userNumberList = new ArrayList<>();
 
         String userNumberString = data.getUserInput();
@@ -32,7 +32,7 @@ public class GameProcessor {
         return userNumberList;
     }
 
-    private static String calculateStrike(Data data, List<String> userNumberList, List<String> randomNumberList) {
+    private String calculateStrike(Data data, List<String> userNumberList, List<String> randomNumberList) {
         int strike = 0;
 
         for (int i = 0; i < DIGIT_SIZE; i++) {
@@ -43,7 +43,7 @@ public class GameProcessor {
         return String.valueOf(strike);
     }
 
-    private static String calculateBall(Data data, List<String> userNumberList, List<String> randomNumberList) {
+    private String calculateBall(Data data, List<String> userNumberList, List<String> randomNumberList) {
         int ball = 0;
 
         for (int i = 0; i < DIGIT_SIZE; i++) {
@@ -57,7 +57,7 @@ public class GameProcessor {
         return String.valueOf(ball);
     }
 
-    public List<String> calculateStrikeBall(Data data) {
+    private List<String> calculateStrikeBall(Data data) {
         List<String> strikeBall = Arrays.asList("0", "0");
         List<String> userNumberList = generateUserNumberList(data);
         List<String> randomNumberList = generateRandomNumberList();
@@ -73,6 +73,36 @@ public class GameProcessor {
         System.out.println(randomNumberList);
 
         return strikeBall;
+    }
+
+    public String generateAnswerText(Data data, MessageManager messageManager) {
+        String answerText;
+        StringBuilder answerTextBuilder = new StringBuilder();
+        List<String> answerList = calculateStrikeBall(data);
+        System.out.println(answerList);
+
+        if (Integer.parseInt(answerList.get(0)) > 0 && Integer.parseInt(answerList.get(1)) > 0) {
+            answerTextBuilder.append(answerList.get(0));
+            answerTextBuilder.append(messageManager.getSameDigitMessage());
+            answerTextBuilder.append(" ");
+            answerTextBuilder.append(answerList.get(1));
+            answerTextBuilder.append(messageManager.getSameNumberMessage());
+        }
+        if (Integer.parseInt(answerList.get(0)) > 0 && Integer.parseInt(answerList.get(1)) == 0) {
+            answerTextBuilder.append(answerList.get(0));
+            answerTextBuilder.append(messageManager.getSameDigitMessage());
+        }
+        if (Integer.parseInt(answerList.get(0)) == 0 && Integer.parseInt(answerList.get(1)) > 0) {
+            answerTextBuilder.append(answerList.get(1));
+            answerTextBuilder.append(messageManager.getSameNumberMessage());
+        }
+        if (Integer.parseInt(answerList.get(0)) == 0 && Integer.parseInt(answerList.get(1)) == 0) {
+            answerTextBuilder.append(messageManager.getWrongMessage());
+        }
+
+        answerText = answerTextBuilder.toString();
+
+        return answerText;
     }
 
     public void IllegalArgumentException(Data data) {
