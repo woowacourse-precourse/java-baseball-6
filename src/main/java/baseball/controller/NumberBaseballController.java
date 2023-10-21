@@ -28,16 +28,20 @@ public class NumberBaseballController {
         createGameResultFromInputNum(inputView.readNum());
     }
 
-    private void sameCheckInputNumAndCompNum(int inputNum) {
-        if(numberBaseballService.isSameNum(inputNum)) {
-            processOfEndGame();
-        }
-    }
-
     public void createGameResultFromInputNum(int inputNum) throws IllegalArgumentException{
-        sameCheckInputNumAndCompNum(inputNum);
+        if (sameCheck(inputNum)) {
+            return;
+        }
         NumberBaseballResult gameResult = numberBaseballService.countStrikeAndBall(inputNum);
         sendGameResultToOutputView(gameResult);
+    }
+
+    private boolean sameCheck(int inputNum) {
+        if(numberBaseballService.isSameNum(inputNum)) {
+            processOfEndGame();
+            return true;
+        }
+        return false;
     }
 
     private void loopGame() {
