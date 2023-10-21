@@ -10,7 +10,6 @@ public class Referee {
     private Referee(final int computerNumber, final int userNumber, final boolean flag) {
         this.computerNumber = computerNumber;
         this.userNumber = userNumber;
-        this.isEndFlag = flag;
     }
 
     public static Referee createDefault() {
