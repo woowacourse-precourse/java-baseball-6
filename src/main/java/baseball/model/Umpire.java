@@ -15,12 +15,12 @@ public class Umpire {
 
     private int computerNumber;
     private int userNumber;
-    private boolean endFlag;
+    private boolean isEndFlag;
 
     private Umpire(final int computerNumber, final int userNumber, final boolean flag) {
         this.computerNumber = computerNumber;
         this.userNumber = userNumber;
-        this.endFlag = flag;
+        this.isEndFlag = flag;
     }
 
     public static Umpire createDefault() {
@@ -83,9 +83,9 @@ public class Umpire {
 
     public boolean isGameEnd() {
         if (isGameFinish()) {
-            endFlag = true;
+            isEndFlag = true;
         }
-        return endFlag;
+        return isEndFlag;
     }
 
     private boolean isGameFinish() {
@@ -100,6 +100,6 @@ public class Umpire {
     public void resetGame() {
         this.computerNumber = DEFAULT_NUMBER;
         this.userNumber = DEFAULT_NUMBER;
-        this.endFlag = false;
+        this.isEndFlag = false;
     }
 }
