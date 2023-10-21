@@ -4,9 +4,9 @@
 
 어플리케이션의 전반적인 동작을 담당한다. 
 
-- [ ] 게임 시작 및 초기화
-  - [ ] Computer 인스턴스 생성
-  - [ ] MessageStream 시작 메시지 출력
+- [x] 게임 시작 및 초기화
+  - [x] Computer 인스턴스 생성
+  - [x] MessageStream 시작 메시지 출력
 - [ ] 사용자 입력과 비교 로직 실행
   - [ ] MessageStream 사용자 입력 안내 메시지 출력
   - [ ] MessageStream 사용자 입력

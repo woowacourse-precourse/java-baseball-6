@@ -1,7 +1,13 @@
 package baseball;
 
 public class Application {
+    private static Computer computer;
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    }
+
+    private static void init() {
+        computer = new Computer();
+        MessageStream.printStartMessage();
     }
 }
