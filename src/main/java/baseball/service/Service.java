@@ -58,6 +58,7 @@ public class Service {
         if (strike == 3) {
             System.out.println("3스트라이크");
             quit = true;
+            return quit;
         }
         if (strike == 0) {
             System.out.println(ball + "볼");
@@ -71,6 +72,17 @@ public class Service {
 
         return quit;
 
+    }
+
+    public boolean restart(boolean quit){
+        String input = Console.readLine();
+        if(input.equals("1")){
+            quit = false;
+        }
+        if(input.equals("2")){
+            quit = true;
+        }
+        return quit;
     }
 
 }

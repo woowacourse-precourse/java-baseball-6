@@ -21,5 +21,9 @@ public class Controller {
         return service.countScore(computer, user, score, quit);
     }
 
+    public boolean restart(boolean quit){
+        return service.restart(quit);
+    }
+
 
 }
