@@ -12,10 +12,7 @@ import static validation.Validator.validateInput;
 import static validation.Validator.validateOneOrTwo;
 
 public class Game {
-    private Game() {
-    }
-
-    public static void play() {
+    public void play() {
         List<Integer> computer = getComputerPicks();
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -33,7 +30,7 @@ public class Game {
         }
     }
 
-    private static List<Integer> checkThreeStrikes(Result result, List<Integer> computer) {
+    private List<Integer> checkThreeStrikes(Result result, List<Integer> computer) {
         final String RESTART = "1";
 //        final String QUIT = "2";
 
