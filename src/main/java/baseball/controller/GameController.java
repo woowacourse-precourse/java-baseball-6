@@ -30,7 +30,6 @@ public class GameController {
 			if (!isCheck){
 				break;
 			}
-
 		}
 		if(isRestartRequested()) {
 			gameStart();
@@ -65,5 +64,4 @@ public class GameController {
 		String validatedRestartInput = InputValidation.validateRestartInput(restartInput);
 		return validatedRestartInput.equals("1");
 	}
-
 }
