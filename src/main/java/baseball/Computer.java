@@ -18,7 +18,7 @@ public class Computer {
 
     private List<Integer> generateComputerNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < Constants.NUMBER_SIZE) {
+        while (randomNumbers.size() < Constants.NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(Constants.MIN_NUMBER, Constants.MAX_NUMBER);
             addNumber(randomNumbers, randomNumber);
         }

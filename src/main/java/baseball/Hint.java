@@ -20,7 +20,7 @@ public class Hint {
     }
 
     private void countStrikeAndBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        for (int i = 0; i < Constants.NUMBER_SIZE; i++) {
+        for (int i = 0; i < Constants.NUMBERS_SIZE; i++) {
             if (playerNumbers.get(i).equals(computerNumbers.get(i))) {
                 strike++;
                 continue;

@@ -35,7 +35,7 @@ public class Player {
     }
 
     private void validateNumberDigit(String input) {
-        if (input.length() != Constants.NUMBER_SIZE) {
+        if (input.length() != Constants.NUMBERS_SIZE) {
             throw new IllegalArgumentException();
         }
     }
