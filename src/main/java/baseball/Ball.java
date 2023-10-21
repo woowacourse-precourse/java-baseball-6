@@ -56,4 +56,10 @@ public class Ball {
     public static int getMaximumBallSize(){
         return MAXIMUM_BALL_SIZE;
     }
+    public static int getMinimumNum(){
+        return MINIMUM_NUM;
+    }
+    public static int getMaximumNum(){
+        return MAXIMUM_NUM;
+    }
 }
