@@ -1,27 +1,32 @@
 package baseball.config;
 
-import baseball.Dispatcher;
+import baseball.controller.Dispatcher;
 import baseball.controller.GameController;
 import baseball.domain.Computer;
+import baseball.factory.GameFactory;
 import baseball.service.GameServiceImpl;
 import baseball.service.GameService;
 
 public class AppConfig {
 
-    public Computer computer() {
+    private Computer computer() {
         return new Computer();
     }
 
-    public GameController gameController() {
-        return GameController.getInstance(computer(), gameService());
-    }
-
-    public GameService gameService() {
+    private GameService gameService() {
         return GameServiceImpl.getInstance();
     }
 
-    public Dispatcher dispatcher() {
+    private GameController gameController() {
+        return GameController.getInstance(computer(), gameService());
+    }
+
+    private Dispatcher dispatcher() {
         return Dispatcher.getInstance(gameController());
+    }
+
+    public GameFactory gameFactory() {
+        return GameFactory.getInstance(dispatcher());
     }
 
 }
