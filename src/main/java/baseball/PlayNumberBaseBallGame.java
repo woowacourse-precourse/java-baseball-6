@@ -19,7 +19,6 @@ public class PlayNumberBaseBallGame {
         while(gameStatus.equals(RESTART_GAME)){
             List<Integer> number = NumberGenerator.generateAnswerNumbers();
             initStatus();
-            for(int i=0;i<3;++i) System.out.print(number.get(i));
             playGame(number);
             System.out.println(RESTART_OR_STOP_GAME);
             gameStatus = scanner.next();
