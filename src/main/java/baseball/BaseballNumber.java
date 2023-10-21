@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Objects;
 
 public class BaseballNumber {
     private static final int MIN_BASEBALL_NUMBER = 1;
@@ -28,5 +29,22 @@ public class BaseballNumber {
     public static BaseballNumber getRandomBaseballNumber() {
         int randomNumber = Randoms.pickNumberInRange(MIN_BASEBALL_NUMBER, MAX_BASEBALL_NUMBER);
         return new BaseballNumber(randomNumber);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof BaseballNumber)) {
+            return false;
+        }
+        BaseballNumber tmp = (BaseballNumber) o;
+        if (this.baseballNumber == tmp.baseballNumber) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(baseballNumber);
     }
 }
