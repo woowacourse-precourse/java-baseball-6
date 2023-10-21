@@ -1,9 +1,9 @@
 package baseball.domain.number.validation;
 
-import static baseball.computer.ComputerConstants.MAX_NUMBER;
-import static baseball.computer.ComputerConstants.MIN_NUMBER;
+import static baseball.domain.number.NumberConstants.MAX_NUMBER;
+import static baseball.domain.number.NumberConstants.MIN_NUMBER;
 
-import baseball.computer.ComputerConstants;
+import baseball.domain.number.NumberConstants;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class GameNumbersValidation {
     }
 
     private static void validateLength(List<Integer> numbers) {
-        if (numbers.size() != ComputerConstants.NUMBERS_LENGTH) {
+        if (numbers.size() != NumberConstants.NUMBERS_LENGTH) {
             throw new IllegalArgumentException(WRONG_LENGTH);
         }
     }

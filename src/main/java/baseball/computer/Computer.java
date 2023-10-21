@@ -1,8 +1,8 @@
 package baseball.computer;
 
-import static baseball.computer.ComputerConstants.MAX_NUMBER;
-import static baseball.computer.ComputerConstants.MIN_NUMBER;
-import static baseball.computer.ComputerConstants.NUMBERS_LENGTH;
+import static baseball.domain.number.NumberConstants.MAX_NUMBER;
+import static baseball.domain.number.NumberConstants.MIN_NUMBER;
+import static baseball.domain.number.NumberConstants.NUMBERS_LENGTH;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
