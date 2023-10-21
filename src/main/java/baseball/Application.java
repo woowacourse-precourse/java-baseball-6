@@ -15,6 +15,7 @@ public class Application {
                 if (!gameManager.doGameAgain(user.readLineForRestartGame(),computer)) break;
             }
         }
+        System.out.println("게임 종료");
     }
 
     static void startMessage() {
