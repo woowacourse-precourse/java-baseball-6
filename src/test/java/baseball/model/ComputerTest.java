@@ -28,6 +28,13 @@ class ComputerTest {
         assertThrows(IllegalArgumentException.class,() -> new Computer(inValidNumbers));
     }
 
+    @DisplayName("컴퓨터는 중복된 숫자를 가질 수 없다")
+    @ParameterizedTest
+    @MethodSource("inValidDuplicateData")
+    void validateNumberDuplicate(List<Integer> inValidNumbers){
+        assertThrows(IllegalArgumentException.class,() -> new Computer(inValidNumbers));
+    }
+
 
     static Stream<Arguments> inValidSizeData() {
         return Stream.of(
@@ -40,6 +47,13 @@ class ComputerTest {
                 Arguments.of(Arrays.asList(-1, 2, 33)),
                 Arguments.of(Arrays.asList(0, 0, 0)),
                 Arguments.of(Arrays.asList(11, 22, 33))
+        );
+    }
+    static Stream<Arguments> inValidDuplicateData() {
+        return Stream.of(
+                Arguments.of(Arrays.asList(1, 2, 1)),
+                Arguments.of(Arrays.asList(2, 2, 2)),
+                Arguments.of(Arrays.asList(5, 3, 3))
         );
     }
 }
