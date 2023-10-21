@@ -2,6 +2,7 @@ package baseball;
 
 public class Game {
     private Computer computer;
+    private final String GAME_START="숫자 야구 게임을 시작합니다.";
 
     private Game(Computer computer) {
         this.computer = computer;
@@ -13,5 +14,9 @@ public class Game {
 
     public static Game getInstance(){
         return LazyHolder.INSTANCE;
+    }
+
+    private void printGameStart(){
+        System.out.println(GAME_START);
     }
 }
