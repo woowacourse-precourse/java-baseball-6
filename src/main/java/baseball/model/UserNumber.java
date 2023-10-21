@@ -26,10 +26,10 @@ public class UserNumber {
             throw new IllegalArgumentException("세자리 숫자를 입력해주세요");
         }
         else if(!isInRange(StringToList(number))){
-            throw new IllegalArgumentException("각자리의 숫자가 1부터 9사이의 숫자로 이루어져야 합니다.");
+            throw new IllegalArgumentException("각자리의 숫자가 1부터 9사이의 숫자로 이루어져야 합니다");
         }
         else if(!isDistinct(StringToList(number))){
-            throw new IllegalArgumentException("중복된 숫자가 존재하지 않아야 합니다.");
+            throw new IllegalArgumentException("중복된 숫자가 존재하지 않아야 합니다");
         }
     }
 
