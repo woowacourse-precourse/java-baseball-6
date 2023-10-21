@@ -7,12 +7,20 @@ import static baseball.Constants.ALERT_START;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Baseball {
-    private final Answer answer = new Answer();
-    private InputNumbers inputNumbers = new InputNumbers();
+    private Answer answer;
+    private InputNumbers inputNumbers;
     private BallAndStrike ballAndStrike;
-    private Result result = Result.DEFAULT;
-    private InputChoice inputChoice = new InputChoice();
-    private Restart restart = new Restart();
+    private Result result;
+    private InputChoice inputChoice;
+    private Restart restart;
+
+    public Baseball() {
+        answer = new Answer();
+        inputNumbers = new InputNumbers();
+        result = Result.DEFAULT;
+        inputChoice = new InputChoice();
+        restart = new Restart();
+    }
 
     public void run() {
         while (restart.getRestart()) {
