@@ -1,5 +1,6 @@
-package baseball;
+package baseball.model;
 
+import baseball.utils.Validation;
 import java.util.ArrayList;
 import java.util.List;
 
