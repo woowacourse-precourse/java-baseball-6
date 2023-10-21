@@ -47,14 +47,14 @@ public class FunctionTest {
 
         assertEquals(List.of(1, 2, 3), userInputList1);
 
-        String input2 = "608";
+        String input2 = "618";
         InputStream in2 = new ByteArrayInputStream(input2.getBytes());
         System.setIn(in2);
 
         List<Integer> userInputList2 = Application.getUserTrialInput();
         camp.nextstep.edu.missionutils.Console.close();
 
-        assertEquals(List.of(6, 0, 8), userInputList2);
+        assertEquals(List.of(6, 1, 8), userInputList2);
     }
 
     @Test
