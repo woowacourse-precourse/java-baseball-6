@@ -17,4 +17,8 @@ public class RandomNum {
             }
         }
     }
+
+    public ArrayList<Integer> getNums() {
+        return nums;
+    }
 }
