@@ -7,12 +7,12 @@
 - [x] 게임 시작 및 초기화
   - [x] Computer 인스턴스 생성
   - [x] MessageStream 시작 메시지 출력
-- [ ] 사용자 입력과 비교 로직 실행
-  - [ ] MessageStream 사용자 입력 안내 메시지 출력
-  - [ ] MessageStream 사용자 입력
-  - [ ] Computer 정답과 입력을 비교
-  - [ ] MessageStream 비교 결과 출력
-  - [ ] 예측 성공 시, 게임 재시작 로직 실행
+- [x] 사용자 입력과 비교 로직 실행
+  - [x] MessageStream 사용자 입력 안내 메시지 출력
+  - [x] MessageStream 사용자 입력
+  - [x] Computer 정답과 입력을 비교
+  - [x] MessageStream 비교 결과 출력
+  - [x] 예측 성공 시, 게임 재시작 로직으로 이동
 - [ ] 게임 재시작
   - [ ] 게임 재시작 여부 메시지 출력
   - [ ] 재시작 시, Computer 인스턴스 새로 생성
