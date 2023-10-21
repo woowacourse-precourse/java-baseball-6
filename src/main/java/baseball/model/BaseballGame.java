@@ -49,6 +49,8 @@ public class BaseballGame {
         String userInput = readLine();
         if (userInput.length() != 3) throw new IllegalArgumentException("잘못된 입력입니다.");
         for (int i = 0; i < userInput.length(); i++) {
+
+
             int num = Character.getNumericValue(userInput.charAt(i));
             if (!user.contains(num)) {
                 user.add(num);
