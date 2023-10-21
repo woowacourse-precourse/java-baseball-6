@@ -19,14 +19,25 @@ public class Computer {
         return new Computer(generator.generate());
     }
 
-    public int getStrikeCount(final List<Integer> inputNumbers) {
-        return (int) IntStream.range(FIRST_NUMBER, inputNumbers.size())
-            .filter(index -> isStrike(index, inputNumbers))
+    public int getStrikeCount(final List<Integer> userNumbers) {
+        return (int) IntStream.range(FIRST_NUMBER, userNumbers.size())
+            .filter(index -> isStrike(index, userNumbers))
             .count();
     }
 
-    private boolean isStrike(int index, List<Integer> inputNumbers) {
-        return numbers.get(index).equals(inputNumbers.get(index));
+    private boolean isStrike(final int index, final List<Integer> userNumbers) {
+        return numbers.get(index).equals(userNumbers.get(index));
+    }
+
+    public int getBallCount(final List<Integer> userNumbers) {
+        return (int) IntStream.range(FIRST_NUMBER, userNumbers.size())
+            .filter(index -> isBall(index, userNumbers))
+            .count();
+    }
+
+    private boolean isBall(final int index, final List<Integer> userNumbers) {
+        int number = userNumbers.get(index);
+        return !numbers.get(index).equals(number) && numbers.contains(number);
     }
 }
 
