@@ -10,10 +10,7 @@ public class Game {
     public static void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true){
-            if(!Data.isCreated) {
-                initComputerNumber();
-                Data.isCreated = true;
-            }
+            initComputerNumber();
             //System.out.println(Data.computerNumber); // 디버깅용
             setPlayerNumber();
             getResult();
@@ -28,6 +25,7 @@ public class Game {
 
         }
     }
+
     static boolean restartGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int input = Integer.parseInt(playerInput());
@@ -54,6 +52,8 @@ public class Game {
         Data.ball -= Data.strike;
     }
     static void initComputerNumber(){
+        if(Data.isCreated) return;
+
         Data.computerNumber = new ArrayList<>();
         while (Data.computerNumber.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1,9);
@@ -61,6 +61,7 @@ public class Game {
                 Data.computerNumber.add(randomNumber);
             }
         }
+        Data.isCreated = true;
     }
     static void setPlayerNumber() throws IllegalArgumentException{
         Data.playerNumber = new ArrayList<>();
