@@ -10,19 +10,18 @@ import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
         List<Integer> computerNumber = new ArrayList<>();
         int[] digits;
         int strikeCount, ballCount;
         boolean isEnd = false;
         int isRestart = 0;
 
-
         // 게임 시작
         startGame();
 
         // 컴퓨터의 서로 다른 3자리 숫자 생성
-        getRandomNumber(computerNumber);
+        Utils.getRandomNumber(computerNumber);
 
         while (!isEnd) {
 
@@ -50,7 +49,7 @@ public class Application {
             if (isRestart == 1) {
                 isEnd = false;
                 isRestart = 0;
-                getRandomNumber(computerNumber);
+                Utils.getRandomNumber(computerNumber);
             }
         }
 
@@ -60,28 +59,17 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void getRandomNumber(List<Integer> computerNumber) {
-        computerNumber.clear();
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
-        }
-    }
-
     public static int[] getUserInput() throws IllegalArgumentException{
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        int[] digits = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
+        int[] digits = Utils.convertStringToInt(input);
+        int[] distinctDigits = Arrays.stream(digits).distinct().toArray();
 
         // IllegalArgumentException을 발생시켜야 하는 경우
         // 3자리 숫자가 아닐 경우 or 서로 다른 숫자가 아닐 경우
-        int[] distinctDigits = Arrays.stream(digits).distinct().toArray();
         if (digits.length != 3 || distinctDigits.length != 3) {
             throw new IllegalArgumentException();
         }
-
         return digits;
     }
 
@@ -132,7 +120,7 @@ public class Application {
     public static int isRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        int[] digits = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
+        int[] digits = Utils.convertStringToInt(input);
         if (digits.length != 1 || (digits[0] != 1 & digits[0] != 2)) {
             throw new IllegalArgumentException();
         }
