@@ -29,21 +29,32 @@ public class Application {
             System.out.println("숫자 야구 게임을 시작합니다.");
         }
 
-        //입력 받기
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-        validateInput(input);
+        while (true) {
+            //입력 받기
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            validateInput(input);
 
-        //판별하기
-        if (input.equals(ballsOfComputer)) {
-            System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            //@todo: 종료 기능 구현하기
-        } else if (balls.stream().map(Object::toString).noneMatch(input::contains)) {
-            System.out.println("낫싱");
-        } else if (!input.equals(ballsOfComputer)){
-            checkBalls(ballsOfComputer, input);
+            //판별하기
+            if (input.equals(ballsOfComputer)) {
+                System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                closeGame();
+                break;
+            } else if (balls.stream().map(Object::toString).noneMatch(input::contains)) {
+                System.out.println("낫싱");
+            } else if (!input.equals(ballsOfComputer)) {
+                checkBalls(ballsOfComputer, input);
+            }
         }
 
+    }
+
+    private static void closeGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int result = Integer.parseInt(Console.readLine());
+        if (result == 1) {
+            startBaseballGame(false);
+        }
     }
 
     private static void checkBalls(String balls, String input) {
