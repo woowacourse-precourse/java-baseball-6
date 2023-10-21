@@ -53,15 +53,7 @@ public class GameController {
         return strike == PLAY_NUMBER_DIGIT;
     }
 
-    private boolean isUserWantMoreGame(final int resumeNumber) {
-        return resumeNumber == PLAY_WANT;
-    }
-
     private int selectNewNumber() {
         return NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
-    }
-
-    private boolean isUserWantStopGame(final int resumeNumber) {
-        return resumeNumber == END_WANT;
     }
 }
