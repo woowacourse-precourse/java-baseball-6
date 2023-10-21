@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 
 public class BaseballGame {
-    private static Boolean isGameOn = true;
-    private static Boolean newGame = false;
+
+    private static GameState gameState = GameState.RUNNING;
     private static LinkedHashSet<Integer> userNumber = null;
 
     private BaseballGame() {
@@ -15,24 +15,22 @@ public class BaseballGame {
     public final static void turnOn() {
         BaseballOutput.gameStart();
         BaseModel.newbaseballNumber();
+        gameState = GameState.RUNNING;
         mainGame();
     }
 
     private static void mainGame() {
-        while (isGameOn) {
+        while (gameState == GameState.RUNNING) {
             setting();
             exceptionCheck();
-            if (!isGameOn) {
-                isGameOn = true;
+            if (gameState == GameState.END) {
                 break;
             }
             printBns(BaseModel.judgeNumber(BaseModel.generateUNumber(userNumber)));
             newOrEnd();
-            if (!isGameOn && !newGame) {
-                isGameOn = true;
+            if (gameState == GameState.END) {
                 break;
             }
-            newGame = false;
         }
     }
 
@@ -40,18 +38,17 @@ public class BaseballGame {
         try {
             BaseModel.exceptionCheck(userNumber);
         } catch (IllegalArgumentException e) {
-            isGameOn = false;
+            gameState = GameState.END;
             throw e;
         }
     }
 
     private static void newOrEnd() {
-        if (!isGameOn) {
+        if (gameState == GameState.END) {
             BaseballOutput.printNewOrEnd();
-            newGame = BaseModel.newOrEnd(Console.readLine());
-            if (newGame) {
+            if (BaseModel.newOrEnd(Console.readLine()) == GameState.NEWGAME) {
                 BaseModel.newbaseballNumber();
-                isGameOn = true;
+                gameState = GameState.RUNNING;
             }
         }
     }
@@ -69,7 +66,7 @@ public class BaseballGame {
         } else if (bns[0] == 0) {
             BaseballOutput.printCall(new StrikeCall(bns[1]));
             if (bns[1] == 3) {
-                isGameOn = false;
+                gameState = GameState.END;
             }
             return;
         } else if (bns[1] == 0) {
@@ -164,12 +161,12 @@ class BaseModel {
         return userNumberRet;
     }
 
-    static boolean newOrEnd(String userChoice) {
+    static GameState newOrEnd(String userChoice) {
 
         if (userChoice.equals("1")) {
-            return true;
+            return GameState.NEWGAME;
         }
-        return false;
+        return GameState.END;
     }
 
     static void exceptionCheck(LinkedHashSet<Integer> userNumber) throws IllegalArgumentException {
