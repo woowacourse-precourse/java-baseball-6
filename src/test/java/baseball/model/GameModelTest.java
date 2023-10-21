@@ -64,4 +64,28 @@ class GameModelTest {
             gameModel.validateUserInput(input);
         });
     }
+
+    @DisplayName("사용자가 0의 숫자값을 입력할 경우 예외가 발생한다.")
+    @Test
+    public void inputZeroValue() {
+        //when
+        String input = "012";
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> {
+            gameModel.validateUserInput(input);
+        });
+    }
+
+    @DisplayName("사용자가 Null(띄어쓰기)의 값을 입력할 경우 예외가 발생한다.")
+    @Test
+    public void inputNullPoint() {
+        //when
+        String input = "1 3";
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> {
+            gameModel.validateUserInput(input);
+        });
+    }
 }
