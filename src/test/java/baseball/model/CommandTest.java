@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CommandTest {
 
@@ -24,8 +24,8 @@ class CommandTest {
     @ParameterizedTest(name = "{index} {displayName} value={0}, {1}")
     @ValueSource(strings = {"3", "0", "", "abd"})
     void checkInvalidateCommand(String value) {
-        assertThatThrownBy(() -> Command.fromValue(value))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Command.fromValue(value));
 
     }
 

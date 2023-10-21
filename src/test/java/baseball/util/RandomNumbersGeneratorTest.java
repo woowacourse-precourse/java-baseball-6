@@ -17,7 +17,8 @@ class RandomNumbersGeneratorTest {
     @Test
     void checkUniqueRandomNumbers() {
         List<Integer> computer = RandomNumbersGenerator.generate();
-        assertThat(Set.copyOf(computer).size()).isEqualTo(computer.size())
+        assertThat(Set.copyOf(computer).size())
+                .isEqualTo(computer.size())
                 .isEqualTo(SIZE);
     }
 
@@ -25,6 +26,7 @@ class RandomNumbersGeneratorTest {
     @Test
     void checkValidRangeNumbers() {
         List<Integer> computer = RandomNumbersGenerator.generate();
-        assertThat(computer).allMatch(number -> MIN <= number && number <= MAX);
+        assertThat(computer)
+                .allMatch(number -> MIN <= number && number <= MAX);
     }
 }

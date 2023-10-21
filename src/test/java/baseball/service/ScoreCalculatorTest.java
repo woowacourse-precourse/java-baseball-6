@@ -19,14 +19,16 @@ class ScoreCalculatorTest {
     @ParameterizedTest(name = "{index} {displayName} message={0}, {1}, {2}")
     @MethodSource("checkStrikeParametersProvider")
     void checkCalculateStrike(GameNumber computer, GameNumber player, Integer strikeCount) {
-        assertThat(scoreCalculator.calculateStrike(computer, player)).isEqualTo(strikeCount);
+        assertThat(scoreCalculator.calculateStrike(computer, player))
+                .isEqualTo(strikeCount);
     }
 
     @DisplayName("같은 수 다른 자리면 볼")
     @ParameterizedTest(name = "{index} {displayName} message={0}, {1}, {2}")
     @MethodSource("checkBallParametersProvider")
     void checkCalculateBall(GameNumber computer, GameNumber player, Integer ballCount) {
-        assertThat(scoreCalculator.calculateBall(computer, player)).isEqualTo(ballCount);
+        assertThat(scoreCalculator.calculateBall(computer, player))
+                .isEqualTo(ballCount);
     }
 
     static Stream<Arguments> checkStrikeParametersProvider() {

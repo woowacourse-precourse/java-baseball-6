@@ -16,7 +16,8 @@ class ConverterTest {
     @ParameterizedTest(name = "{index} {displayName} message={0}, {1}")
     @MethodSource("converterParametersProvider")
     void checkConverter(String value, List<Integer> result) {
-        assertThat(Converter.convertList(value)).isEqualTo(result);
+        assertThat(Converter.convertList(value))
+                .isEqualTo(result);
     }
 
     static Stream<Arguments> converterParametersProvider() {

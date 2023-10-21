@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class GameNumberTest {
 
@@ -18,8 +18,8 @@ class GameNumberTest {
     @ParameterizedTest(name = "{index} {displayName} message={0}")
     @ValueSource(strings = {"1234", "5567", "-123", "ball", "wt6", "-0", "", "603", "999999999999999999999"})
     void checkInvalidValueString(String value) {
-        assertThatThrownBy(() -> new GameNumber(value))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new GameNumber(value));
     }
 
     @DisplayName("올바른 값 입력 확인 문자열")
