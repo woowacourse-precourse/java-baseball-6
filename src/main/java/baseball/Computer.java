@@ -27,4 +27,8 @@ public class Computer {
     public int get(int index) {
         return numbers.get(index);
     }
+
+    public void init() {
+        numbers = new ArrayList<>();
+    }
 }

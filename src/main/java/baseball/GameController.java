@@ -10,17 +10,26 @@ public class GameController {
 
     public void start() {
         outputView.printStartMessage();
-        computer.selectNumbers();
         play();
     }
 
     public void play() {
+        computer.selectNumbers();
         boolean isNotThreeStrike = true;
         while (isNotThreeStrike) {
             isNotThreeStrike = compare();
             outputView.printResult(gameResult);
         }
         outputView.printThreeStrike();
+        restartOrExit();
+    }
+
+    public void restartOrExit() {
+        outputView.printRestartOrExit();
+        if (inputView.readReplayNumber()) {
+            computer.init();
+            play();
+        }
     }
 
     public boolean compare() {

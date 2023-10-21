@@ -16,4 +16,9 @@ public class InputView {
                 .map(Integer::parseInt)
                 .toList();
     }
+
+    public boolean readReplayNumber() {
+        String number = Console.readLine();
+        return number.equals(RestartStatus.RESTART.toString());
+    }
 }
