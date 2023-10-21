@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Set;
 
 public class NumberUtil {
+
+    protected NumberUtil() {
+
+    }
+
     public static List<Integer> converStringToList(String numberString) {
         ArrayList<Integer> numberList = new ArrayList<>();
         for (int i = 0; i < numberString.length(); i++) {
