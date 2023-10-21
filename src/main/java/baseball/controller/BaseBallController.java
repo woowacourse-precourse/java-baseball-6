@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import static baseball.consts.NumberConst.GAME_RESTART_NUMBER;
+
 import baseball.domain.BaseBallGame;
 import baseball.domain.GameResult;
 import baseball.domain.UserNum;
@@ -15,9 +17,9 @@ public class BaseBallController {
 
     public void run() {
         OutputView.printGameStart();
-        String restartNum = "1";
+        String restartNum = GAME_RESTART_NUMBER;
 
-        while (restartNum.equals("1")) {
+        while (restartNum.equals(GAME_RESTART_NUMBER)) {
             String inputUserNum = InputView.inputUserNum();
             InputValidation.validateInputNum(inputUserNum);
 
@@ -40,7 +42,7 @@ public class BaseBallController {
     }
 
     private void checkRestartNum(String restartNum) {
-        if(restartNum.equals("1")){
+        if (restartNum.equals(GAME_RESTART_NUMBER)) {
             baseBallGame.buildNewComputerList();
         }
     }
