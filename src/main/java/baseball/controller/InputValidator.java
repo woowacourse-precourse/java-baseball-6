@@ -1,5 +1,8 @@
 package baseball.controller;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class InputValidator {
 
     private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
@@ -15,6 +18,17 @@ public class InputValidator {
             if (playerInput.charAt(i) < MIN_DIGIT || playerInput.charAt(i) > MAX_DIGIT) {
                 return false;
             }
+        }
+        return true;
+    }
+
+    public boolean hasDuplicateChars(String playerInput) {
+        Set<Character> seenChar = new HashSet<>();
+        for (int i = 0; i < playerInput.length(); i++) {
+            if (seenChar.contains(playerInput.charAt(i))) {
+                return false;
+            }
+            seenChar.add(playerInput.charAt(i));
         }
         return true;
     }
