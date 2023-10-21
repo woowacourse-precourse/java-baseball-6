@@ -4,10 +4,7 @@ package baseball.domain;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.IllformedLocaleException;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Player {
 
@@ -56,9 +53,7 @@ public class Player {
 
 //  해당 메소드는 게임 중 입력값을 검증할 때도 필요 할 수 있으니 public으로 선언
     public boolean verifyInputValue(String numberStr){
-        return isThreeDigits(numberStr) && isNumbers(numberStr)
-//                && isDuplicate(numberStr)
-                ;
+        return isThreeDigits(numberStr) && isNumbers(numberStr) && isDuplicate(numberStr);
     }
 
 //    사용자가 입력한 값이 3자리 수인지 검증
@@ -74,9 +69,12 @@ public class Player {
 //    중복된 값이 있는지 검증
     private boolean isDuplicate(String numberStr){
         int length = numberStr.length();
-        return numberStr.chars()
-                .distinct()
-                .count() == length;
+        Set<Character> characterSet = new HashSet<>();
+
+        for(int i = 0; i<numberStr.length(); i++){
+            characterSet.add(numberStr.charAt(i));
+        }
+        return characterSet.size() == length;
     }
 
 //    입력받은 숫자를 리스트로 반환
@@ -96,6 +94,7 @@ public class Player {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < NUMBER_OF_DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+            System.out.println(randomNumber);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }

@@ -57,7 +57,7 @@ public class BaseBallGame {
             return;
         }
         if (resultList.get(STRIKE_INDEX) == 3) {
-            System.out.println("3스트라이크");
+            System.out.println(getResultMessage(resultList));
             System.out.println(ALL_STRIKE_MESSAGE);
             isGameOver = true;
             return;
