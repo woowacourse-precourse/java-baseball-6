@@ -9,9 +9,16 @@ public class Balls {
     private final List<Ball> balls;
 
     public Balls(List<Ball> balls) {
+        validateBallCount(balls);
         validateValueDuplication(balls);
         validateIndexDuplication(balls);
         this.balls = balls;
+    }
+
+    private void validateBallCount(List<Ball> balls) {
+        if (balls.size() != BALL_COUNT) {
+            throw new IllegalArgumentException("공의 개수가 유효하지 않습니다");
+        }
     }
 
     private void validateValueDuplication(List<Ball> balls) {
