@@ -39,9 +39,9 @@ public class Validation {
     }
 
     private void validateInSameNumber(String number) {
-        for (int i = 0; i < NumberConstant.INPUT_LENGTH.getNumber(); i++) {
-            for (int j = 0; j < NumberConstant.INPUT_LENGTH.getNumber(); j++) {
-                findDuplicateNumber(number, i, j);
+        for (int index1 = 0; index1 < NumberConstant.INPUT_LENGTH.getNumber(); index1++) {
+            for (int index2 = 0; index2 < NumberConstant.INPUT_LENGTH.getNumber(); index2++) {
+                findDuplicateNumber(number, index1, index2);
             }
         }
     }

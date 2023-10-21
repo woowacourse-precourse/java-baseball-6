@@ -10,10 +10,12 @@ import baseball.view.OutputView;
 
 public class GameController {
 
+    private static final String RESTART = "1";
     private static String computerNumber;
     private final InputView inputView;
     private final OutputView outputView;
     private final Validation validation = new Validation();
+
 
 
     public GameController(InputView inputView, OutputView outputView) {
@@ -58,7 +60,7 @@ public class GameController {
     private void checkRestart(GameStateDto gamestate) {
         String restartNumber = inputView.readRestart();
         validation.validateRestart(restartNumber);
-        if (restartNumber.equals("1")) {
+        if (restartNumber.equals(RESTART)) {
             gamestate.activateRestart();
         }
     }

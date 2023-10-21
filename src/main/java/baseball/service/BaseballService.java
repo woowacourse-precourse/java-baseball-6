@@ -23,30 +23,30 @@ public class BaseballService {
 
     private void calculateBall(
         GameStateDto gameStateDto) {
-        for (int i = 0; i < NumberConstant.INPUT_LENGTH.getNumber(); i++) {
-            findDifferentIndexSameNumber(gameStateDto, i);
+        for (int index = 0; index < NumberConstant.INPUT_LENGTH.getNumber(); index++) {
+            findDifferentIndexSameNumber(gameStateDto, index);
         }
     }
 
-    private void findDifferentIndexSameNumber(GameStateDto gameStateDto, int i) {
-        for (int j = 0; j < NumberConstant.INPUT_LENGTH.getNumber(); j++) {
-            if (isDifferentIndex(i, j) && isSameNumber(i, j)) {
+    private void findDifferentIndexSameNumber(GameStateDto gameStateDto, int index1) {
+        for (int index2 = 0; index2 < NumberConstant.INPUT_LENGTH.getNumber(); index2++) {
+            if (isDifferentIndex(index1, index2) && isSameNumber(index1, index2)) {
                 addBall(gameStateDto);
             }
         }
     }
 
-    private boolean isSameNumber(int i, int j) {
-        return userNumber.charAt(i) == computerNumber.charAt(j);
+    private boolean isSameNumber(int index1, int index2) {
+        return userNumber.charAt(index1) == computerNumber.charAt(index2);
     }
 
-    private boolean isSameNumber(int i) {
-        return userNumber.charAt(i) == computerNumber.charAt(i);
+    private boolean isSameNumber(int index) {
+        return userNumber.charAt(index) == computerNumber.charAt(index);
     }
 
 
-    private boolean isDifferentIndex(int i, int j) {
-        return i != j;
+    private boolean isDifferentIndex(int index1, int index2) {
+        return index1 != index2;
     }
 
     private void addBall(GameStateDto gameStateDto) {
@@ -54,8 +54,8 @@ public class BaseballService {
     }
 
     private void calculateStrike(GameStateDto gameStateDto) {
-        for (int i = 0; i < NumberConstant.INPUT_LENGTH.getNumber(); i++) {
-            if (isSameNumber(i)) {
+        for (int index = 0; index < NumberConstant.INPUT_LENGTH.getNumber(); index++) {
+            if (isSameNumber(index)) {
                 addStrike(gameStateDto);
             }
         }
