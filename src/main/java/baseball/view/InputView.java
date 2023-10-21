@@ -5,19 +5,17 @@ import camp.nextstep.edu.missionutils.Console;
 import static baseball.exception.InputException.*;
 
 public class InputView {
-    static List<Integer> numbers;
-    public InputView() {
-        this.numbers = inputPlayerNumbers();
-    }
+    private static List<Integer> playerNumbers;
+
     public static List<Integer> inputPlayerNumbers(){
 
-        System.out.println("숫자를 입력해주세요 : ");
+        OutputView.playerInputPrint();
         String input = Console.readLine();
 
         notNumericException(input);
         lenException(input);
 
-        List<Integer> playerNumbers = new ArrayList<>();
+        playerNumbers = new ArrayList<>();
         for(String num : input.split("")) {
             int number = Integer.parseInt(num);
             playerNumbers.add(number);

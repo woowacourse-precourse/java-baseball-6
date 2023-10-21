@@ -7,14 +7,14 @@ public class CompareNumbers {
         this.computer = computer;
         this.player = player;
     }
-    public int getTotalHits(){
+    private int getTotalHits(){
         int count = 0;
         for(int num : player){
             if(computer.contains(num)) count++;
         }
         return count;
     }
-    public int strikeCount(){
+    private int strikeCount(){
         int count = 0;
         for(int i = 0; i < 3; i++) {
             if(computer.get(i) == player.get(i)) count++;

@@ -13,8 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class BaseballGameTest {
     @Test
     void 컴퓨터_랜덤숫자_생성(){
-        Computer computer = new Computer();
-        assertThat(computer.getRandomNumbers().size()).isEqualTo(3);
+        assertThat(Computer.createRandomNumbers().size()).isEqualTo(3);
     }
     @Test
     void 사용자_숫자_길이_테스트(){
@@ -48,4 +47,13 @@ public class BaseballGameTest {
 
         assertThat(test.generateResult()).isEqualTo("낫싱");
     }
+    @Test
+    void 볼_테스트(){
+        List<Integer> computer = List.of(1,2,9);
+        List<Integer> player = List.of(7,4,6);
+        CompareNumbers test = new CompareNumbers(computer, player);
+
+        assertThat(test.generateResult()).isEqualTo("낫싱");
+    }
+
 }
