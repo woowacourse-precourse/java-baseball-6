@@ -3,18 +3,31 @@ package baseball;
 import java.util.List;
 
 public class Compare {
-    public void countStirkeOrBall(List<Integer> com, List<Integer> user) {
+    public int countStirke(List<Integer> com, List<Integer> user) {
         int strike = 0;
-        int ball = 0;
         for(int i = 0; i < com.size(); i++) {
             int userNum = user.get(i);
             if (com.get(i) == userNum) {
                 strike++;
             }
-            else if (com.contains(userNum)) {
-                ball++;
+        }
+        return strike;
+    }
+    public int countAll(List<Integer> com, List<Integer> user) {
+        int all = 0;
+        for(int i = 0; i < com.size(); i++) {
+            int userNum = user.get(i);
+            if (com.contains(userNum)) {
+                all++;
             }
         }
-        System.out.println(ball + " ," + strike);
+        return all;
+    }
+    public void compareResult(List<Integer> com, List<Integer> user) {
+        int strike;
+        int ball;
+        strike = countStirke(com, user);
+        ball = countAll(com, user) - strike;
+        System.out.println(ball + ", " + strike);
     }
 }

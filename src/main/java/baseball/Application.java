@@ -17,7 +17,7 @@ public class Application {
             System.out.println(comNum.toString());
             List<Integer> userNum = user.userNumber();
             System.out.println(userNum.toString());
-            comp.countStirkeOrBall(comNum, userNum);
+            comp.compareResult(comNum, userNum);
         }
 
     }
