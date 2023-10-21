@@ -8,7 +8,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
@@ -48,16 +47,14 @@ public class Application {
             Integer computerNumber = computer.get(i);
             Integer userNumber = user.get(i);
 
-            if (Objects.equals(computerNumber, userNumber)) {
+            if (computerNumber.equals(userNumber)) {
                 strikes++;
             } else if (computer.contains(userNumber)) {
                 balls++;
             }
         }
         Status status = Status.getStatus(strikes, balls);
-        if (status.equals(Status.CORRECT)) {
-            PrintPackage.printResult(status.result);
-        }
+        PrintPackage.printResult(status.result);
         return status == Status.CORRECT;
     }
 
@@ -88,7 +85,7 @@ public class Application {
                     return status;
                 }
             }
-            return null;
+            throw new RuntimeException();
         }
     }
 
