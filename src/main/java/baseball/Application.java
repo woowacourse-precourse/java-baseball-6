@@ -47,8 +47,8 @@ public class Application {
         return computer;
     }
 
-    private static void validateOneOrTwo(String oneOrTwo) {
-        if (!oneOrTwo.matches("[1-2]")) throw new IllegalArgumentException();
+    private static void validateOneOrTwo(String input) {
+        if (!input.matches("[1-2]")) throw new IllegalArgumentException();
     }
 
     private static void printResult(Result result) {
