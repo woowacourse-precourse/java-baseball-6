@@ -16,4 +16,9 @@ public class BallHint {
     public int getBall() {
         return this.ball;
     }
+
+    public void resetHint() {
+        this.strike = 0;
+        this.ball = 0;
+    }
 }
