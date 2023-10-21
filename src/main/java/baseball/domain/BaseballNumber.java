@@ -12,4 +12,12 @@ public class BaseballNumber {
 		validateNumber(numbers);
 		this.numbers = numbers;
 	}
+
+	public int getComputerNumberByIndex(int index) {
+		return numbers.get(index);
+	}
+
+	public boolean isComputerNumberContainsPlayerNumber(int playerNumber) {
+		return numbers.contains(playerNumber);
+	}
 }
