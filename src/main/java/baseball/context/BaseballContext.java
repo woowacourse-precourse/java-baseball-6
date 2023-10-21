@@ -1,5 +1,7 @@
 package baseball.context;
 
+import baseball.game.Answer;
+
 public class BaseballContext {
 
     private final GameLifeCycle gameLifeCycle;

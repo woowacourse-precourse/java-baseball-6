@@ -1,4 +1,4 @@
-package baseball.context;
+package baseball.game;
 
 public class Answer {
 
