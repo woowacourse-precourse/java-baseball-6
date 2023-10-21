@@ -24,4 +24,12 @@ public class HintService {
         }
         return hintMsg;
     }
+
+    public boolean isCorrect(BaseballNumbers computerNumber, BaseballNumbers inputNumber) {
+        int strikeCount = computerNumber.getStrikeCount(inputNumber);
+        if (strikeCount == 3) {
+            return true;
+        }
+        return false;
+    }
 }
