@@ -6,22 +6,26 @@ import java.util.List;
 public class BaseBallGame {
     /**
      * Model은 Controller와 View에 관련된 코드가 있으면 안된다!!!!!!
+     * <p>
+     * 본 클래스는 게임의 전체적인데이터와  로직을 관리합니다.
      */
     private List<Integer> computerNumber;
     private NumberGenerator numberGenerator;
     private boolean isGameOver;
-
     private static final int BASEBALL_NUM_SIZE = 3;
-    public BaseBallGame(NumberGenerator numberGenerator){
+
+    public BaseBallGame(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
         computerNumber = numberGenerator.generatorComputerNumber(BASEBALL_NUM_SIZE);
         isGameOver = false;
     }
-    public void playingGame(List<Integer> userInput){
-        if(userInput.size() != BASEBALL_NUM_SIZE)
+
+    public void playingGame(List<Integer> userInput) {
+        if (userInput.size() != BASEBALL_NUM_SIZE)
             throw new IllegalArgumentException("입력 자릿 수 오류");
 
     }
+
     /**
      * 유저의 입력을 받아 볼과 스트라이크를 알려주는 메소드
      */
@@ -44,6 +48,7 @@ public class BaseBallGame {
         listBallStrike.add(strikeCount);
         return listBallStrike;
     }
+
     /**
      * 게임을 다시 시작할때 셋팅해주는 메소드
      */
@@ -58,6 +63,7 @@ public class BaseBallGame {
     public boolean isGameOver() {
         return isGameOver;
     }
+
     /**
      * 유저가 입력한 String형식의 Input을 List형식으로 파씽함
      */
