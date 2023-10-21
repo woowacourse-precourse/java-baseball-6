@@ -21,5 +21,5 @@
    - [x] (예외) 3자리 숫자가 아닌 경우(그보다 적거나 많은 경우)
 - [x] 게임 진행여부 결정
    - [x] (예외) 1, 2 외의 값이 입력된 경우
-- [ ] 부적절한 값 입력 시 IllegalArgumentException 예외 던지기
+- [x] 부적절한 값 입력 시 IllegalArgumentException 예외 던지기
 
