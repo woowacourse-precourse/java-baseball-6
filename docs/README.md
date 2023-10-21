@@ -49,9 +49,9 @@
 ### View
 - [x] InputView (InputValidateController에서 유효성 검사)
     - [x] 사용자에게 숫자 3개 입력 받는 기능
-      - [ ] 유효한 값 인지 ErrorException을 통해 확인 , 유효하지 않으면 종료
+      - [x] 유효한 값 인지 ErrorException을 통해 확인 , 유효하지 않으면 종료
     - [x] 사용자에게 재시작 , 종료 여부 입력 받는 기능
-      - [ ] 유효한 값 인지 ErrorException을 통해 확인 , 유효하지 않으면 종료
+      - [x] 유효한 값 인지 ErrorException을 통해 확인 , 유효하지 않으면 종료
 
 - [ ] OutputView
     - [x] 게임 시작 메시지
