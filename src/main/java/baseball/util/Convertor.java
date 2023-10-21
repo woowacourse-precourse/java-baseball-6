@@ -6,11 +6,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static baseball.util.ErrorMessage.RETRY_COMMAND_ERROR;
+
 public class Convertor {
+
+    private static final String SPLIT_UNIT = "";
 
     public static List<Integer> convertStringToList(String input) {
         List<Integer> list = new ArrayList<>();
-        String[] split = input.split("");
+        String[] split = input.split(SPLIT_UNIT);
         for (String s : split) {
             int digit = Integer.parseInt(s);
             list.add(digit);
@@ -22,6 +26,6 @@ public class Convertor {
         return Arrays.stream(RetryCommand.values())
                 .filter(it -> it.getNumber().equals(input))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("1, 2만 입력 가능합니다."));
+                .orElseThrow(() -> new IllegalArgumentException(RETRY_COMMAND_ERROR));
     }
 }

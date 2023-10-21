@@ -21,7 +21,7 @@ public class GameService {
     }
 
     private GameNumber createNewAnswer() {
-        List<Integer> generatedNumber = NumberGenerator.generateNumber(3);
+        List<Integer> generatedNumber = NumberGenerator.generateNumber();
         return new GameNumber(generatedNumber);
     }
 

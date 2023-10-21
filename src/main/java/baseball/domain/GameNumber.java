@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.util.ErrorMessage.*;
+
 public class GameNumber {
 
     private final List<Integer> number;
@@ -38,27 +40,27 @@ public class GameNumber {
 
     private void checkLength(List<Integer> number) {
         if (number.size() != 3) {
-            throw new IllegalArgumentException("3자리 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException(LENGTH_ERROR);
         }
     }
 
     private void checkDuplicate(List<Integer> number) {
         Set<Integer> set = new HashSet<>(number);
         if (set.size() != number.size()) {
-            throw new IllegalArgumentException("중복 되지 않는 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException(DUPLICATE_ERROR);
         }
     }
 
     private void checkZero(List<Integer> number) {
         if (number.contains(0)) {
-            throw new IllegalArgumentException("0은 포함할 수 없습니다.");
+            throw new IllegalArgumentException(ZERO_ERROR);
         }
     }
 
     private void checkNegative(List<Integer> number) {
         for (Integer i : number) {
             if (i < 0) {
-                throw new IllegalArgumentException("음수는 포함할 수 없습니다.");
+                throw new IllegalArgumentException(NEGATIVE_ERROR);
             }
         }
     }

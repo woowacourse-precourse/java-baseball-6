@@ -7,10 +7,14 @@ import java.util.List;
 
 public class NumberGenerator {
 
-    public static List<Integer> generateNumber(int numberLength) {
+    private static final int NUMBER_LENGTH = 3;
+    private static final int START_INCLUSIVE = 1;
+    private static final int END_INCLUSIVE = 9;
+
+    public static List<Integer> generateNumber() {
         List<Integer> gameNumber = new ArrayList<>();
-        while(gameNumber.size() != numberLength) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while(gameNumber.size() != NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
             if (!gameNumber.contains(randomNumber)) {
                 gameNumber.add(randomNumber);
             }
