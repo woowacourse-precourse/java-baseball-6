@@ -52,7 +52,7 @@ public class GameController {
             }
         }
         printGameEnd();
-        AskController.askResumeInput();
+        askResumeInput();
         updateResumeNumber();
     }
 
@@ -82,5 +82,9 @@ public class GameController {
 
     private int receiveResumeNumber() {
         return InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT);
+    }
+
+    private static void askResumeInput() {
+        AskController.askResumeInput();
     }
 }
