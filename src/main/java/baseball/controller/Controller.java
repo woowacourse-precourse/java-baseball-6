@@ -21,6 +21,7 @@ public class Controller {
         while (true) {
             PlayGame();
             if (baseballGame.strikeCount == 3) {
+                OutputView.printSuccess();
                 break;
             }
         }
@@ -42,6 +43,7 @@ public class Controller {
     }
 
     public void selectGameState() {
+        OutputView.printRestartOrQuit();
         int gameStateNumber = Integer.parseInt(InputView.inputGameStateNumber());
         if (gameStateNumber == 1) {
             run();
