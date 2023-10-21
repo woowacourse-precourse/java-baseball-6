@@ -51,14 +51,13 @@ public class Play {
             setInput("숫자를 입력해주세요 : ");
             user.setUser(input);
             // 스트라이크, 볼 개수 구하기
-            rules.countBallAndStrikes(com.getCom(), user.getUser());
+            rules.countBallAndStrikes(user.getUser(), com.getCom());
             // 결과 출력
             if (rules.isThreeStrikes()) {
-                System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                rules.printIfAnswer();
                 break;
             }
-            rules.printBallAndStrikes();
+            rules.printIfNotAnswer();
             user.clearUser();
         }
     }
