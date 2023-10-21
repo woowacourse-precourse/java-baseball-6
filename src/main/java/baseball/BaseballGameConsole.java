@@ -16,7 +16,7 @@ public class BaseballGameConsole {
     private boolean isContinue;
     private List<Integer> hitterSelection;
     private String pitcherSelection;
-    private int[] ballCount;
+    private BallCount ballCount;
     private boolean strikeOut;
 
     void start() {
@@ -80,36 +80,37 @@ public class BaseballGameConsole {
     }
 
     private void getBallCount() {
-        this.ballCount = new int[2]; // [0] : strike, [1] : ball
+        this.ballCount = new BallCount();
 
         for (int i = 0; i < this.pitcherSelection.length(); i++) {
             char numChar = this.pitcherSelection.charAt(i);
             int num = Character.getNumericValue(numChar);
+
             if (num == this.hitterSelection.get(i)) {
-                this.ballCount[0]++;
+                this.ballCount.addStrike();
             } else if (this.hitterSelection.contains(num)) {
-                this.ballCount[1]++;
+                this.ballCount.addBall();
             }
         }
     }
 
     private void printBallCount() {
-        if (this.ballCount[0] == 0 && this.ballCount[1] == 0) {
+        if (this.ballCount.getStrike() == 0 && this.ballCount.getBall() == 0) {
             System.out.println("낫싱");
         } else {
             String message = "";
-            if (this.ballCount[1] > 0) {
-                message = this.ballCount[1] + "볼";
+            if (this.ballCount.getBall() > 0) {
+                message = this.ballCount.getBall() + "볼";
             }
-            if (this.ballCount[0] > 0) {
-                message += (message.isEmpty() ? "" : " ") + this.ballCount[0] + "스트라이크";
+            if (this.ballCount.getStrike() > 0) {
+                message += (message.isEmpty() ? "" : " ") + this.ballCount.getStrike() + "스트라이크";
             }
             System.out.println(message);
         }
     }
 
     private void checkStrikeOut() {
-        if (this.ballCount[0] == SIZE) {
+        if (this.ballCount.getStrike() == SIZE) {
             System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", SIZE);
             this.strikeOut = true;
         }
