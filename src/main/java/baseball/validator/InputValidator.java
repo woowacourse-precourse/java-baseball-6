@@ -29,4 +29,11 @@ public class InputValidator {
         }
         return true;
     }
+
+    public static boolean isLengthOne(String input) {
+        if (input.length() != 1) {
+            throw new IllegalArgumentException("1 또는 2의 한 글자만 입력 가능합니다.");
+        }
+        return true;
+    }
 }
