@@ -9,6 +9,14 @@ import java.util.Set;
 
 public class ComputerNumber {
 
+    private final AnswerNumber answerNumber;
+    private final GameResult gameResult;
+
+    public ComputerNumber() {
+        answerNumber = new AnswerNumber(makeNumber());
+        gameResult = new GameResult();
+    }
+
     public List<Integer> makeNumber() {
         Set<Integer> uniqueNumbers = new HashSet<>();
 
@@ -19,4 +27,5 @@ public class ComputerNumber {
 
         return new ArrayList<>(uniqueNumbers);
     }
+
 }
