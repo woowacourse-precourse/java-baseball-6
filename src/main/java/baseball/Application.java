@@ -16,7 +16,6 @@ public class Application {
         PrintPackage.printGameStartMessage();
         while (gameStatus) {
             List<Integer> computer = InputClass.extractRandomNumber();
-            System.out.println("computer = " + computer);
             compare(computer);
             gameStatus = gameRetry();
         }
@@ -56,6 +55,7 @@ public class Application {
             PrintPackage.printResult(status.result);
             correct = (status == Status.CORRECT);
         }
+        PrintPackage.printGameEndMessage();
     }
 
     public enum Status {
@@ -85,7 +85,7 @@ public class Application {
 
     public class InputClass {
 
-        static List<Integer> extractRandomNumber() {
+        public static List<Integer> extractRandomNumber() {
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -93,6 +93,8 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }
+            check3DigitsNumber(computer);
+            checkEachDigitRange(computer);
             return computer;
         }
 
@@ -101,11 +103,43 @@ public class Application {
             String readLine = Console.readLine();
             List<Integer> user = new ArrayList<>();
             for (int i = 0; i < readLine.length(); i++) {
-                user.add(Character.getNumericValue(readLine.charAt(i)));
+                char digit = readLine.charAt(i);
+                if (checkDigit(digit)) {
+                    int number = Character.getNumericValue(digit);
+                    checkUniqueNumber(user, number);
+                    user.add(number);
+                }
+
             }
+            check3DigitsNumber(user);
+            checkEachDigitRange(user);
             return user;
         }
 
+        public static Boolean checkDigit(Character number) {
+            if (Character.isDigit(number)) {
+                return Boolean.TRUE;
+            }
+            throw new IllegalArgumentException("INPUT ONLY NUMBER");
+        }
+
+        public static void checkUniqueNumber(List<Integer> numberList, int number) {
+            if (numberList.contains(number)) {
+                throw new IllegalArgumentException("INPUT UNIQUE NUMBER");
+            }
+        }
+
+        public static void check3DigitsNumber(List<Integer> numberList) throws IllegalArgumentException {
+            if (numberList.size() != 3) {
+                throw new IllegalArgumentException("LENGTH MUST BE 3");
+            }
+        }
+
+        public static void checkEachDigitRange(List<Integer> numberList) throws IllegalArgumentException {
+            if (numberList.stream().anyMatch(num -> num < 1 || num > 9)) {
+                throw new IllegalArgumentException("EACH NUMBER HAS RANGE 1-9");
+            }
+        }
     }
 
     public class PrintPackage {
@@ -115,6 +149,10 @@ public class Application {
 
         public static void printRequestNumber() {
             System.out.print("숫자를 입력해주세요 : ");
+        }
+
+        public static void printGameEndMessage() {
+            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
 
         public static void printRegameMessage() {
