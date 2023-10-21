@@ -3,11 +3,10 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Digits {
-    List<Digit> digits;
+final class Digits {
+    private final List<Digit> digits = new ArrayList<>();
 
-    public Digits() {
-        digits = new ArrayList<>();
+    Digits() {
         while (digits.size() < Size.THREE.num) {
             Digit randomDigit = new Digit();
             if (!digits.contains(randomDigit)) digits.add(randomDigit);
