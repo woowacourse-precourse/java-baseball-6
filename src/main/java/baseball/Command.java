@@ -1,13 +1,18 @@
 package baseball;
 
+import java.util.Arrays;
+
 enum Command {
-    RETRY(1),
-    EXIT(2)
+    RETRY("1", true),
+    EXIT("2", false)
     ;
 
-    final int key;
+    final String key;
+    final boolean retry;
 
-    Command(int key) {
+    Command(String key, boolean retry) {
         this.key = key;
+        this.retry = retry;
     }
+
 }
