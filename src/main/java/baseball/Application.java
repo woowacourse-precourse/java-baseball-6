@@ -11,9 +11,7 @@ public class Application {
             int num = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(num)) {
                 answer.add(num);
-                System.out.println(num);
             }
-
         }
 
         return answer;
