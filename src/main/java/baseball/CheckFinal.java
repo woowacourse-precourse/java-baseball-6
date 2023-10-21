@@ -27,7 +27,9 @@ public class CheckFinal {
         int stikeCount = strike.checkStrike(computer, player);
         int ball = ball(computer, player);
 
-        if (total == 0){
+        if (stikeCount == 3){
+            return "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        } else if (total == 0){
             return "낫싱";
         } else if (stikeCount == 0){
             return ball + "볼";
