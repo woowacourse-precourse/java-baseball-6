@@ -11,12 +11,7 @@ public class Player {
 
     public List<Integer> getNumbers() {
         String inputText = Console.readLine();
-
-        for (int i = 0; i < 3; i++) {
-            char convertChar = inputText.charAt(i);
-            int convertInt = Character.getNumericValue(convertChar);
-            saveThreeNumbers.add(convertInt);
-        }
+        saveThreeNumbers = Validator.checkThreeNumbers(inputText);
 
         return saveThreeNumbers;
     }
