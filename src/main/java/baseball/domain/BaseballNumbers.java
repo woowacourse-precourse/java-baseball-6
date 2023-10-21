@@ -17,4 +17,17 @@ public class BaseballNumbers {
             ballNumbers.add(baseballNumber);
         }
     }
+
+    public int getStrikeCount(BaseballNumbers inputBaseballNumbers) {
+        int strikeCount = 0;
+        for (int i = 0; i < 3; i++) {
+            BaseballNumber baseballNumber = ballNumbers.get(i);
+            BaseballNumber inputBaseballNumber = inputBaseballNumbers.ballNumbers.get(i);
+            if (baseballNumber.equals(inputBaseballNumber)) {
+                strikeCount += 1;
+            }
+        }
+
+        return strikeCount;
+    }
 }
