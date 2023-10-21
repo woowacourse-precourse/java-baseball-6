@@ -1,11 +1,19 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.List;
+import java.util.Scanner;
+
 public class Game {
     private Computer computer;
+
     private final String GAME_START="숫자 야구 게임을 시작합니다.";
     private final String GAME_END="3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private final String GAME_CONTINUE="게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final String WRONG_INPUT="입력값이 올바르지 않습니다.";
 
-    private Game(Computer computer) {
+    public Game(Computer computer) {
         this.computer = computer;
     }
 
@@ -40,4 +48,22 @@ public class Game {
 
         System.out.println(sb);
     }
+
+    private boolean getGameContinueInput(){
+        System.out.println(GAME_CONTINUE);
+        String input = Console.readLine().trim();
+        Integer value;
+
+        try{
+            value=Integer.valueOf(input);
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException(WRONG_INPUT);
+        }
+
+        if(value!=1 || value!=2)
+            throw new IllegalArgumentException(WRONG_INPUT);
+
+        return value==1;
+    }
+
 }
