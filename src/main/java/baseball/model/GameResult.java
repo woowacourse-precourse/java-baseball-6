@@ -1,8 +1,8 @@
 package baseball.model;
 
 public class GameResult {
-    private Integer ballCount;
-    private Integer strikeCount;
+    private final Integer ballCount;
+    private final Integer strikeCount;
 
     public GameResult(Integer ballCount, Integer strikeCount) {
         this.ballCount = ballCount;
