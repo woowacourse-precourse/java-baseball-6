@@ -2,13 +2,15 @@ package baseball.util;
 
 public class Validation {
 
-    private static final String NUMBER_REGEX = "^[1-9]*$";
+    private static final String NUMBER_REGEX = "^[1-9]+$";
     private static final Integer INPUT_LENGTH = 3;
 
     public String validateNumber(String number) {
         checkRightNumber(number);
         return number;
     }
+
+
 
     private void checkRightNumber(String number) {
         validateIsNumber(number);
