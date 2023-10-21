@@ -34,4 +34,8 @@ public enum GameCommand {
     private static boolean isValidInput(final String input) {
         return input.equals(RESTART.number) || input.equals(QUIT.number);
     }
+
+    public static boolean isRestart(final GameCommand command) {
+        return command.equals(RESTART);
+    }
 }
