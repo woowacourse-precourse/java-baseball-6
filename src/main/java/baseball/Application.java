@@ -16,7 +16,7 @@ public class Application {
         try{
             GameStart();
         } catch(IllegalArgumentException e){
-            return;
+
         }
     }
 
@@ -24,7 +24,7 @@ public class Application {
 
         try {
             List<Integer> computerNumber = ComputerSelectNumber();
-            System.out.println("컴퓨터 숫자 : " + computerNumber);
+
             ExceptionList.validNumbers(computerNumber);
             while(true) {
 
@@ -48,7 +48,7 @@ public class Application {
         System.out.println("게임을 새로 시작려면 1, 종료하려면 2를 입력하세요.");
 
         String reStartNumber = Console.readLine();
-        ExceptionList.validReStartInputNumber(reStartNumber);
+        ExceptionList.validInputNumber(reStartNumber);
 
         if(reStartNumber.equals("1")) {
             GameStart();
