@@ -8,7 +8,7 @@ public interface Input {
 
     default String nextLineWithValidation(Validation<String> validator) {
         String line = nextLine();
-        if (validator.validation(line)) {
+        if (!validator.validation(line)) {
             throw new IllegalArgumentException();
         }
         return line;
