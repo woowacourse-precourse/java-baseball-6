@@ -38,4 +38,14 @@ public class NumberUtil {
             throw new IllegalArgumentException("입력값은 양의 정수이어야 합니다.");
         }
     }
+
+    protected static void validateRange(String number) {
+        List<Integer> numberList = NumberUtil.converStringToList(number);
+
+        for (int integerNum : numberList) {
+            if (integerNum < 1 || integerNum > 9) {
+                throw new IllegalArgumentException("입력되는 각 숫자는 1 이상 9 이하의 정수로 이루어져야 합니다.");
+            }
+        }
+    }
 }
