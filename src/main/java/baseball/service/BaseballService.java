@@ -1,8 +1,11 @@
-package baseball;
+package baseball.service;
 
+import baseball.domain.BaseballNumber;
+import baseball.domain.BaseballScore;
+import baseball.util.Util;
+import baseball.view.BaseballPrint;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +29,8 @@ public class BaseballService {
             playBaseballGame();
         }
     }
-    public  BaseballNumber initializeComputerNumber() {
+
+    public BaseballNumber initializeComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -45,10 +49,11 @@ public class BaseballService {
     }
 
     public BaseballScore compareBaseballNumber(BaseballNumber computerNumber, BaseballNumber userNumber) {
-        BaseballScore baseballScore = BaseballNumber.compareNumber(computerNumber,userNumber);
+        BaseballScore baseballScore = BaseballNumber.compareNumber(computerNumber, userNumber);
         baseballScore.printBaseballScore();
         return baseballScore;
     }
+
     public BaseballNumber initializeUserNumber() {
         BaseballPrint.printInputNumberMessage();
         return new BaseballNumber(Console.readLine());
