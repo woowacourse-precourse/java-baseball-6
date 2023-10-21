@@ -40,4 +40,18 @@ public class InputValidatorTest {
         assertThat(inputValidator.isAllDigit(playerInput1)).isFalse();
         assertThat(inputValidator.isAllDigit(playerInput2)).isFalse();
     }
+
+    @Test
+    void hasDuplicationTest_caseTrue() {
+        String playerInput = "12345";
+
+        assertThat(inputValidator.hasDuplicateChars(playerInput)).isTrue();
+    }
+
+    @Test
+    void hasDuplicationTest_caseFalse() {
+        String playerInput = "13345";
+
+        assertThat(inputValidator.hasDuplicateChars(playerInput)).isFalse();
+    }
 }
