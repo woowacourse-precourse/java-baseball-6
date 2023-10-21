@@ -2,16 +2,14 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.awt.print.PrinterGraphics;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class NumberGenerator {
     private final int maxNumber = 9;
     private final int minNumber = 1;
 
-    public List<Integer> makeRandomAnswerList() {
+    public List<Integer> generateRandomAnswerList() {
         List<Integer> answerList = new ArrayList<>();
         while (answerList.size() < 3) {
             final int randomNumber = generateRandomNumber();

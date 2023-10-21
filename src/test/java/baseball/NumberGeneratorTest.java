@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class NumberGeneratorTest {
 
@@ -32,7 +31,7 @@ class NumberGeneratorTest {
         NumberGenerator numberGenerator = new NumberGenerator();
         //when
         for (int i = 0; i < 1000; i++) {
-            final List<Integer> randomList = numberGenerator.makeRandomAnswerList();
+            final List<Integer> randomList = numberGenerator.generateRandomAnswerList();
             //then
             System.out.println(randomList);
         }
@@ -55,7 +54,7 @@ class NumberGeneratorTest {
         //given
         NumberGenerator numberGenerator = new NumberGenerator();
         //when
-        final List<Integer> randomNumberList = numberGenerator.makeRandomAnswerList();
+        final List<Integer> randomNumberList = numberGenerator.generateRandomAnswerList();
         //then
         randomNumberList.forEach(randomNumber -> assertThat(randomNumber).isBetween(1, 9));
         assertThat(randomNumberList.size()).isEqualTo(3);
@@ -67,7 +66,7 @@ class NumberGeneratorTest {
         //given
         NumberGenerator numberGenerator = new NumberGenerator();
         //when
-        final List<Integer> randomNumberList = numberGenerator.makeRandomAnswerList();
+        final List<Integer> randomNumberList = numberGenerator.generateRandomAnswerList();
         //given
         final Set<Integer> integerSet = new HashSet<>(randomNumberList);
         assertThat(integerSet.size()).isEqualTo(3);
