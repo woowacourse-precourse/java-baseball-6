@@ -3,12 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class BaseballGame {
+    private final int NUMBER_LENGTH = 3;
     public void run(){
         printGameStart();
         List<Integer> randomNum = initRandomNum();
@@ -84,4 +82,19 @@ public class BaseballGame {
             return false;
         }
     }
+
+    private Map<String, Integer> countStrikeAndBall(List<Integer> userNum, List<Integer> randomNum){
+        Map<String, Integer> resultList = new HashMap<>();
+        initStrikeAndBallNum();
+
+        for(int i = 0; i < NUMBER_LENGTH; i++){
+            if(userNum.get(i) == randomNum.get(i)){
+                resultList.put("strike", resultList.get("strike") + 1);
+            } else if(randomNum.contains(userNum.get(i))){
+                resultList.put("ball", resultList.get("strike") + 1);
+            }
+        }
+        return resultList;
+    }
+
 }
