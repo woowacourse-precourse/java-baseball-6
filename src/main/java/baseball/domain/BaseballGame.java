@@ -13,7 +13,6 @@ public class BaseballGame {
     private final InputView inputView;
 
     private static Computer computer;
-    private static Player player;
 
     public BaseballGame(OutputView outputView, InputView inputView) {
         this.outputView = outputView;
@@ -28,25 +27,25 @@ public class BaseballGame {
     }
 
     private void playGame() {
-        while (true) {
-            player = Player.of(inputView.readPlayerNumber());
-            GameResult result = play();
+        GameResult result = play();
 
-            if (result.getStrikeCount() == THREE_STRIKE) {
-                outputView.printGameFinishMessage();
-                String option = inputView.readRestartOrNot();
-                if (option.equals(SIGN_RESTART)) {
-                    computer = Computer.generate();
-                    continue;
-                } else if (option.equals(SIGN_STOP)) {
-                    break;
-                }
+        if (result.getStrikeCount() == THREE_STRIKE) {
+            outputView.printGameFinishMessage();
+            String option = inputView.readRestartOrNot();
+            if (option.equals(SIGN_RESTART)) {
+                computer = Computer.generate();
+                playGame();
+            } else if (option.equals(SIGN_STOP)) {
+                return;
             }
+        } else {
             outputView.printGameResultMessage(result);
+            playGame();
         }
     }
 
     private GameResult play() {
+        Player player = Player.of(inputView.readPlayerNumber());
         GameResult result = new GameResult();
 
         for (int idx = 0; idx < PLAY_AMOUNT; idx++) {
