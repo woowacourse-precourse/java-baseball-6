@@ -23,28 +23,42 @@ public class Baseball {
     }
 
     private void build(List<Integer> numbers) {
-        if(numbers.size() != 3) throw new IllegalArgumentException();
-        for(Integer n : numbers) {
-            if(n == 0) throw new IllegalArgumentException();
-        }
+        validateSize(numbers);
+        validateZero(numbers);
 
         dict = new HashMap<>();
-        for(int i=0;i<3;i++) {
-            dict.put(numbers.get(i), i);
-        }
+        for(int i=0;i<3;i++) dict.put(numbers.get(i), i);
+    }
+
+    private static void validateZero(List<Integer> numbers) {
+        for(Integer n : numbers) if(n == 0) throw new IllegalArgumentException();
+    }
+
+    private static void validateSize(List<Integer> numbers) {
+        if(numbers.size() != 3) throw new IllegalArgumentException();
     }
 
     public BaseballScore compare(Baseball baseball) {
 
         int ball = 0, strike = 0;
         for(Map.Entry<Integer, Integer> pair : dict.entrySet()) {
-            if(!baseball.dict.containsKey(pair.getKey())) continue;
-            if(baseball.dict.get(pair.getKey()) == pair.getValue()) strike++;
-            else ball++;
+            int number = pair.getKey(), index = pair.getValue();
+            if(baseball.contains(number)) {
+                if(baseball.isStrike(number, index)) strike++;
+                else ball++;
+            }
         }
 
         return new BaseballScore(ball, strike);
 
+    }
+
+    private boolean contains(int number) {
+        return dict.containsKey(number);
+    }
+
+    private boolean isStrike(int number, int index) {
+        return dict.get(number) == index;
     }
 
 }
