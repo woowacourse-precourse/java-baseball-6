@@ -31,26 +31,32 @@ public class BaseballGameController {
 
             boolean success = referee.compareComputerPlayer(computerNumber, player.getPlayerNumber());
             if (success) {
-                continueGame = isSuccess();
+                isSuccess();
             }
             if (!success) {
             }
         }
     }
 
-    private boolean isSuccess() {
+    private void isSuccess() {
         OutputView.printSuccess();
         String restartOrEndNumber = InputView.restartOrEndNumber();
         isValidRestartOrEndNumber(restartOrEndNumber);
 
         if (restartOrEndNumber == "1") {
-            return true;
+			Computer computer = new Computer();
+			Player player = new Player();
+			Referee referee = new Referee();
+			repeatGame(computer, player, referee);
         }
         if (restartOrEndNumber == "2") {
-            return false;
+            continueGame = false;
         }
-        return false;
     }
+
+	private void printHint(List<Integer> computerNumber, List<Integer> playerNumber) {
+
+	}
 
     private void isValidPlayerNumber(String number) {
         String answerValidationRegex = "^(?!.*(.).*\\1)[1-9]{3}$";
