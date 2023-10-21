@@ -5,6 +5,7 @@ public class OutputView {
     private static final String BALL_MESSAGE = "볼";
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String NONE_MESSAGE = "낫싱";
+    private static final String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
 
     public static void baseballGameStart(){
@@ -40,5 +41,9 @@ public class OutputView {
         if(strike != 0 && ball != 0){
             System.out.println(ball+BALL_MESSAGE+" "+strike+STRIKE_MESSAGE);
         }
+    }
+
+    public static void threeStrikeMessage(){
+        System.out.println(THREE_STRIKE_MESSAGE);
     }
 }
