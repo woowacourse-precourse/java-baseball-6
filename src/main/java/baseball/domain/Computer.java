@@ -2,13 +2,9 @@ package baseball.domain;
 
 
 public class Computer {
-    private Answer answer;
+    private final Answer answer;
 
     public Computer(AnswerGenerator answerGenerator) {
-        initAnswer(answerGenerator);
-    }
-
-    public void initAnswer(AnswerGenerator answerGenerator) {
         answer = answerGenerator.generate();
     }
 
