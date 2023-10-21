@@ -19,6 +19,16 @@ public class BaseballGameController {
         this.player = new Player();
     }
 
+    public void start() {
+        boolean gameStatus = true;
+        OutputView.printStartGameMessage();
+        while (gameStatus) {
+            List<Integer> computerNumbers = computer.generateComputerNumbers();
+            playing(computerNumbers);
+            gameStatus = isGameReStart();
+        }
+    }
+
     private void playing(List<Integer> computerNumbers) {
         boolean correct = false;
 
