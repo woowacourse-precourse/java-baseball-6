@@ -6,6 +6,8 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         while (true) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+
             // 게임 엔터티 생성
             GameEntities entities = GameEntities.createEntities();
             ComputerV3 computer = entities.getComputer();

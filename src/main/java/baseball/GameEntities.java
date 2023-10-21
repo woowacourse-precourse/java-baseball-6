@@ -10,8 +10,6 @@ public class GameEntities {
     }
 
     public static GameEntities createEntities() {
-        //여기에 넣는게 맞는지 모르겠다.
-        System.out.println("숫자 야구 게임을 시작합니다.");
         ComputerV3 computer = new ComputerV3();
         PlayerV3 player = new PlayerV3();
         return new GameEntities(computer, player);

@@ -6,7 +6,6 @@ import java.util.List;
 public class GameManager {
 
     public static void stop() {
-//        System.exit(0);
         return;
     }
 
@@ -35,29 +34,31 @@ public class GameManager {
             }
         }
 
-        String printStrike = strike + "스트라이크";
-        String printBall = ball + "볼";
-        String printNotThing = "낫싱";
-        String result = "";
+//        String printStrike = strike + "스트라이크";
+//        String printBall = ball + "볼";
+//        String printNotThing = "낫싱";
+//        String result = "";
 
         // 최종 결과 및 낫싱 판정
-        if (strike == 0 && ball == 0) {
-            result = printNotThing;
-        } else {
-            if (ball > 0) {
-                result += printBall;
-            }
-            if (strike > 0) {
-                if (ball > 0) {
-                    result += " ";
-                }
-                result += printStrike;
-            }
+        StringBuilder result = new StringBuilder();
+
+        if (ball > 0) {
+            result.append(ball).append("볼");
         }
 
+        if (strike > 0) {
+            if (result.length() > 0) {
+                result.append(" ");
+            }
+            result.append(strike).append("스트라이크");
+        }
 
+        if (strike == 0 && ball == 0) {
+            result.append("낫싱");
+        }
 
-        return result;
+        return result.toString();
+
     }
     public static String playOrNot() {
         try {

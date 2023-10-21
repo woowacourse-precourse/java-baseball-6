@@ -12,6 +12,7 @@ public class PlayerV3 implements SetNumV3{
         List<Integer> playerNums = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+        System.out.println(input);
 
         try {
 
