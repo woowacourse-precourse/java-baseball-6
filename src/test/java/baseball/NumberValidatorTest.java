@@ -108,4 +108,14 @@ public class NumberValidatorTest {
         assertThat(numberValidator.isValidNumber(playerInput)).isTrue();
     }
 
+    @Test
+    void testIsValidContinueGameChoice() {
+        String playerInput1 = "1";
+        String playerInput2 = "2";
+        String playerInput3 = "종료";
+
+        assertThat(numberValidator.isValidContinueGameChoice(playerInput1)).isTrue();
+        assertThat(numberValidator.isValidContinueGameChoice(playerInput2)).isTrue();
+        assertThat(numberValidator.isValidContinueGameChoice(playerInput3)).isFalse();
+    }
 }
