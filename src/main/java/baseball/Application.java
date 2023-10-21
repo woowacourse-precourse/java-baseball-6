@@ -76,5 +76,11 @@ class BaseballGame {
             checkRestart();
         }
     }
-    private void checkRestart() {}
+    private void checkRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userAns = Console.readLine();
+        if (userAns.equals("2")) {
+            isPlaying = false;
+        }
+    }
 }
