@@ -4,8 +4,9 @@ import java.util.List;
 
 public class NumberBaseballGame {
     Message message = new Message();
-    UserInput userInput = new UserInput();
     Computer computer = new Computer();
+    InputValidation inputValidation = new InputValidation();
+    UserInput userInput = new UserInput();
 
     public void speaker(String message) {
         System.out.print(message);
@@ -25,7 +26,7 @@ public class NumberBaseballGame {
 
     public boolean restartOrStop() {
         String sign = userInput.getUserInput();
-        userInput.validateContinueSign(sign);
+        inputValidation.validateRestartOrStop(sign);
         return (sign.charAt(0) != '2');
     }
 
@@ -33,7 +34,8 @@ public class NumberBaseballGame {
         boolean threeStrike = false;
         while (!threeStrike) {
             speaker(message.requestNumberMessage());
-            List<Integer> userNumbers = userInput.makeUserInputToThreeNumbers();
+            String userLine = userInput.getUserInput();
+            List<Integer> userNumbers = inputValidation.convertStrToIntegerList(userLine);
             List<Integer> score = computer.countScore(answer, userNumbers);
             speaker(message.scoreMessage(score) + '\n');
             if (score.get(1) == 3) {

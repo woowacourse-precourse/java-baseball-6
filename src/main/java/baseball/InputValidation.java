@@ -1,6 +1,7 @@
 package baseball;
 
-import java.util.Arrays;
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,12 @@ public class InputValidation {
         validateDuplicateNumber(trimmed);
 
         return (convertStrToIntegerList(trimmed));
+    }
+
+    public void validateRestartOrStop(String input) {
+        String trimmed = input.replace(" ", "");
+        validateSignLength(trimmed);
+        validateSign(trimmed);
     }
 
     // 길이에 대한 검증
