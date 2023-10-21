@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Utils {
-    public List<Integer> convertStringToIntList(String input) {
+    public static List<Integer> convertStringToIntList(String input) {
         List<Integer> playerNumber = new ArrayList<>();
 
         for (String number : input.split("")) {
