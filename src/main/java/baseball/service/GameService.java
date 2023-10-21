@@ -4,12 +4,9 @@ import baseball.domain.GameNumber;
 import baseball.domain.GameResult;
 import baseball.domain.Judgement;
 
-import java.util.List;
-
 public class GameService {
 
     private final GameResult gameResult;
-    private final GameNumber answerNumber;
 
     public static GameService startNewGame() {
         return new GameService();
@@ -17,23 +14,17 @@ public class GameService {
 
     private GameService() {
         this.gameResult = new GameResult();
-        this.answerNumber = createNewAnswer();
     }
 
-    private GameNumber createNewAnswer() {
-        List<Integer> generatedNumber = NumberGenerator.generateNumber();
-        return new GameNumber(generatedNumber);
-    }
-
-    public GameResult compareNumber(GameNumber userNumber) {
+    public GameResult compareNumber(GameNumber answerNumber, GameNumber userNumber) {
         for (int index = 0; index < 3; index++) {
-            Judgement judgement = checkNumber(userNumber, index);
+            Judgement judgement = checkNumber(answerNumber, userNumber, index);
             gameResult.updateCount(judgement);
         }
         return gameResult;
     }
 
-    private Judgement checkNumber(GameNumber userNumber, int index) {
+    private Judgement checkNumber(GameNumber answerNumber, GameNumber userNumber, int index) {
         int indexNumber = userNumber.getNumberOfIndex(index);
         boolean isContain = answerNumber.isContain(indexNumber);
         boolean isInPlace = answerNumber.isInPlace(index, indexNumber);
