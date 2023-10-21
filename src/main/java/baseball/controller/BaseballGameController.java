@@ -16,7 +16,9 @@ public class BaseballGameController {
     public int startGame() {
         int randomNumber = baseballGame.makeRandomNumber();
         baseballGameView.startView();
+        int userInput = baseballGameView.readUserInputView();
 
+        // 사용자 입력값 예외처리 작성
 
         return 1;
     }

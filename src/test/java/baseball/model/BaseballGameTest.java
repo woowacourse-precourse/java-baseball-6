@@ -1,19 +1,19 @@
 package baseball.model;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class BaseballGameTest {
 
     BaseballGame baseballGame = new BaseballGame();
 
-    @Test()
+    @Test
+    @DisplayName("난수 반환 메서드 테스트")
     public void makeRandomTest() {
 
         //given
         int randomNumber;
-        int start = 100;
-        int end = 999;
 
         for(int i = 0; i < 100; i++) {
             //when
