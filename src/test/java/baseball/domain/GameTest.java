@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -46,4 +47,15 @@ class GameTest {
         Assertions.assertThat(game.countBalls(computerNumber, playerNumber)).isEqualTo(expectedBalls);
     }
 
+    @Test
+    @DisplayName("낫싱 테스트")
+    public void compareNumbersTest3() {
+        List<Integer> computerNumber = List.of(1, 2, 3);
+        List<Integer> playerNumber = List.of(4, 5, 6);
+
+        game.compareNumbers(computerNumber, playerNumber);
+
+        Assertions.assertThat(game.getStrikes()).isEqualTo(0);
+        Assertions.assertThat(game.getBalls()).isEqualTo(0);
+    }
 }
