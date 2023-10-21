@@ -16,6 +16,9 @@ public class ExceptionList {
         if(InputNumber != 1 && InputNumber != 2) {
             throw new IllegalArgumentException("종료시 입력한 수 예외 발생");
         }
+        if(InputNumber == null) {
+            throw new IllegalArgumentException("어떤 수도 입력하지 않음");
+        }
     }
 
     public static boolean checkDuplicateNumber(
