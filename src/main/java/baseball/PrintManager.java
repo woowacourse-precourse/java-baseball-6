@@ -7,7 +7,7 @@ public class PrintManager {
     }
 
     public void printInputValue() {
-        System.out.println("숫자를 입력해주세요.");
+        System.out.printf("숫자를 입력해주세요 : ");
     }
 
     //TODO 리펙토링 고민해보기
