@@ -13,6 +13,12 @@ public class Validation {
         return input;
     }
 
+    public static String isValidRestartInput(String input) {
+        isEmpty(input);
+        isRestartInputInRange(input);
+        return input;
+    }
+
     public static void isEmpty(String input) {
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException("값을 입력해 주세요.");
