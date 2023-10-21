@@ -2,7 +2,7 @@ package baseball.repository;
 
 import baseball.domain.AnswerNumbers;
 
-public class DomainRepository {
+public class AnswerNumbersRepository {
 
     private AnswerNumbers answerNumbers;
 

@@ -6,7 +6,7 @@ import baseball.io.InputManager;
 import baseball.io.InputValidator;
 import baseball.io.InputView;
 import baseball.io.OutputView;
-import baseball.repository.DomainRepository;
+import baseball.repository.AnswerNumbersRepository;
 import baseball.service.BaseballService;
 import baseball.utils.RandomNumberGenerator;
 
@@ -29,11 +29,11 @@ public class ComponentFactory {
     }
 
     private BaseballService baseballService() {
-        return new BaseballService(randomNumberGenerator(), domainRepository());
+        return new BaseballService(randomNumberGenerator(), answerNumbersRepository());
     }
 
-    private DomainRepository domainRepository() {
-        return new DomainRepository();
+    private AnswerNumbersRepository answerNumbersRepository() {
+        return new AnswerNumbersRepository();
     }
 
     private RandomNumberGenerator randomNumberGenerator() {

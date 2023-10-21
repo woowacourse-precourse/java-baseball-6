@@ -55,7 +55,7 @@
     - 랜덤 숫자를 생성해 저장한다
     - 정답과 유저의 시도를 비교해 결과를 반환한다
 
-- DomainRepository
+- AnswerNumbersRepository
     - 정답 숫자를 저장한다
     - 정답 숫자를 조회한다
 
