@@ -43,4 +43,16 @@ public class Hint {
         }
         return false;
     }
+
+    public String getStrikeString() {
+        return strike + "스트라이크";
+    }
+
+    public String getBallString() {
+        return ball + "볼";
+    }
+
+    public String getNothingString() {
+        return "낫싱";
+    }
 }
