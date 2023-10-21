@@ -43,5 +43,13 @@ class UserNumberTest {
                 .hasMessage("숫자를 입력해주세요");
     }
 
+    @DisplayName("사용자 수가 숫자와 문자가 섞인 값이 입력된다면 에러 발생")
+    @Test
+    void inputMixedCharacterAndDigitString(){
+        String inputNumber = "great1234";
+        assertThatThrownBy(() -> new UserNumber(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자를 입력해주세요");
+    }
 
 }
