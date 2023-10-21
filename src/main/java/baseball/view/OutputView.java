@@ -3,19 +3,23 @@ package baseball.view;
 import java.util.List;
 
 public class OutputView {
+    private static final int STRIKE = 0;
+    private static final int BALL = 1;
+    private static final int WIN_STRIKES = 3;
+
     public static boolean outputResult(List<Integer> numberResult){
+        // TODO : 리팩토링
         boolean correctAnswer = false;
         boolean nothing = true;
-        //System.out.println("낫싱");
         for(int i = 1; i >= 0; i--){
             if(numberResult.get(i).equals(0))
                 continue;
             nothing = false;
-            if(i == 0){
+            if(i == STRIKE){
                 System.out.print(numberResult.get(i) + "스트라이크");
                 if(checkAnswer(numberResult.get(i)))
                     correctAnswer = true;
-            }else if(i==1){
+            }else if(i==BALL){
                 System.out.print(numberResult.get(i) + "볼 ");
             }
         }
@@ -25,7 +29,7 @@ public class OutputView {
     }
 
     public static boolean checkAnswer(Integer strike){
-        if(strike.equals(3))
+        if(strike.equals(WIN_STRIKES))
             return true;
         return false;
     }
