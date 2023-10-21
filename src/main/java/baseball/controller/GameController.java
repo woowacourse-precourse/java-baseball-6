@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.Command;
 import baseball.service.GameService;
 import baseball.view.Input;
 import baseball.view.Output;
@@ -24,5 +25,7 @@ public class GameController {
 
         output.showGameOver();
         output.showGameRestartMessage();
+
+        Command.find(input.readNumber());
     }
 }
