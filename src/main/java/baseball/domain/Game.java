@@ -6,13 +6,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game implements Numbers {
 
-    ComputerNumbers computerNumbers = new ComputerNumbers();
-
     public void startGame() {
         OutputView.printStartMsg(); // 숫자 야구 게임을 시작합니다.
     }
 
     public void proceedGame() {
+        ComputerNumbers computerNumbers = new ComputerNumbers();
         boolean ongoing = true;
 
         while(ongoing) {
@@ -53,6 +52,7 @@ public class Game implements Numbers {
                 proceedGame();
             } else {
                 oneMore = false;
+                OutputView.printExitMsg();
             }
         }
     }

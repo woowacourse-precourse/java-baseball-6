@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ClientNumbers implements Numbers {
 
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
 
     public ClientNumbers() {
         numbers = new ArrayList<>(SIZE);

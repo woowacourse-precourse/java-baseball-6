@@ -7,7 +7,6 @@ import baseball.exception.InputNumberNotUnique;
 import baseball.exception.InputSizeNot3;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Scanner;
 
 public class InputView {
     private static final String INPUT_MSG = "숫자를 입력해주세요 : ";
