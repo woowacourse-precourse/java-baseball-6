@@ -4,6 +4,7 @@ import baseball.constant.Hint;
 import baseball.model.Command;
 import baseball.model.GameNumber;
 import baseball.model.Score;
+import baseball.service.RestartService;
 import baseball.service.ScoreCalculator;
 import baseball.util.RandomNumbersGenerator;
 import baseball.view.InputView;
@@ -28,12 +29,19 @@ public class BaseballController {
         play();
     }
 
+    //TODO: 재귀를 없앴지만 가독성이 떨어졌다. 변경필요
     private void play() {
-        GameNumber computer = new GameNumber(RandomNumbersGenerator.generate());
-        //TODO: 디버깅 용 출력문 지우기
-        System.out.println("computer = " + computer);
-        guess(computer);
-        restart();
+        RestartService restartService = new RestartService();
+        while (true) {
+            GameNumber computer = new GameNumber(RandomNumbersGenerator.generate());
+            //TODO: 디버깅 용 출력문 지우기
+            System.out.println("computer = " + computer);
+            guess(computer);
+            if (restartService.isRestart(readGameCommand())) {
+                continue;
+            }
+            break;
+        }
     }
 
     private void guess(GameNumber computer) {
@@ -50,16 +58,6 @@ public class BaseballController {
         int strike = calculator.calculateStrike(computer, player);
         int ball = calculator.calculateBall(computer, player);
         return new Score(Map.of(Hint.STRIKE, strike, Hint.BALL, ball));
-    }
-
-    private void restart() {
-        Command command = readGameCommand();
-        if (Command.QUIT.equals(command)) {
-            return;
-        }
-        if (Command.RESTART.equals(command)) {
-            play();
-        }
     }
 
     private Command readGameCommand() {
