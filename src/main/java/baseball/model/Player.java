@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.validate.GameValidate;
 import baseball.validate.InputValidate;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -10,7 +11,9 @@ public class Player {
     private final OutputView outputView;
     private final InputView inputView;
     private final InputValidate inputValidate;
+    private final GameValidate gameValidate;
     public Player(){
+        this.gameValidate = new GameValidate();
         this.inputView = new InputView();
         this.inputValidate = new InputValidate();
         this.outputView = new OutputView();
@@ -25,5 +28,12 @@ public class Player {
             balls.add(new Ball(givensNumber));
         }
         return computer.getHintByPlayer(balls);
+    }
+
+    public boolean isRestartGame() {
+        String input  = inputView.getPlayerRestart();
+        int restartNumber = inputValidate.checkNumber(input);
+        gameValidate.checkGameRestartInput(restartNumber);
+        return restartNumber == 1;
     }
 }
