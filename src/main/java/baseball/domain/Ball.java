@@ -2,12 +2,22 @@ package baseball.domain;
 
 public class Ball {
 
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+
     private final int number;
     private final int position;
 
     public Ball(int number, int position) {
+        validateRange(number);
         this.number = number;
         this.position = position;
+    }
+
+    private static void validateRange(int digit) {
+        if (digit < MIN_NUMBER || MAX_NUMBER < digit) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public boolean isStrike(Ball ball) {
