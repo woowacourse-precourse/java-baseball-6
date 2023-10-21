@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.stream.IntStream;
+
 public class BallArray {
     private final Integer[] ballArr;
 
@@ -7,22 +9,20 @@ public class BallArray {
         ballArr = number;
     }
 
-    public BallResult compareWith(BallArray BallArray) {
-        int ballCount = 0;
-        int strikeCount = 0;
+    public BallResult compareWith(BallArray ballArray) {
+        return new BallResult(calculateBalls(ballArray),calculateStrikes(ballArray));
+    }
 
-        for (int i = 0; i < ballArr.length; i++) {
-            if ( ballArr[i].equals(BallArray.ballArr[i])) {
-                strikeCount++;
-            } else {
-                for (int j = 0; j < ballArr.length; j++) {
-                    if (j != i && ballArr[j].equals(BallArray.ballArr[i])) {
-                        ballCount++;
-                    }
-                }
-            }
-        }
+    private int calculateStrikes(BallArray ballArray) {
+        return (int) IntStream.range(0, ballArr.length)
+                .filter(i -> this.ballArr[i].equals(ballArray.ballArr[i]))
+                .count();
+    }
 
-        return new BallResult(ballCount,strikeCount);
+    private int calculateBalls(BallArray ballArray) {
+        return (int) IntStream.range(0, ballArr.length)
+                .filter(i -> IntStream.range(0, ballArr.length)
+                        .anyMatch(j -> j != i && this.ballArr[j].equals(ballArray.ballArr[i])))
+                .count();
     }
 }
