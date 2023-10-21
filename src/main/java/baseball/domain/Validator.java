@@ -4,15 +4,18 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class Validator {
+    private static final String NUMBERS_REGEX="[0-9]+";
+    private static final String CONTINUE_REGEX="[1-2]+";
+
     public void validateNumbers(String numbers){
         validateSize(numbers,3);
-        validateType(numbers,"[0-9]+");
+        validateType(numbers,NUMBERS_REGEX);
         validateUnique(numbers);
     }
 
     public void validateContinue(String input){
         validateSize(input,1);
-        validateType(input,"[1-2]+");
+        validateType(input,CONTINUE_REGEX);
     }
 
     private void validateSize(String numbers,int size){
