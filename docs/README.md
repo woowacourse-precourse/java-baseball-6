@@ -18,9 +18,9 @@
 -> Computer 동작을 컨트롤 (Random 숫자 생성)<br>
 #### View : GameResult <br>
 -> Model에게 정보를 받은 Controller로 부터 게임 진행 상황을 전달 받음<br>
--> 인터페이스가 되어서 출력을 담당<br>
+-> 인터페이스가 되어서 입력과 출력을 담당<br>
 #### Model : Player <br>
--> 입력<br>
+-> Controoler로 부터 받은 값을 ArrayList로 파싱<br>
 #### Model : Refree <br>
 -> Player의 입력에 대해서 판단을 함<br>
 -> 게임 종료를 판단<br>
@@ -33,7 +33,7 @@
 1. BaseBallGame을 컨트롤 하는 객체가 생성된다.
 2. Controller로 게임을 시작한다.
 3. 게임이 시작되면 Controller에 의해 Computer는 숫자를 생각한다.
-4. Player는 숫자를 입력한다.
+4. Player는 인퍼에스를 통해 숫자를 입력한다.
 5. Refree는 판단한다.
 6. 4-5를 반복하고 Refree는 게임 종료를 판단한다.
 7. 게임 종료 후에 Player의 의사에 따라 Refree는 게임을 재시작할지 완전히 종료할지 판단한다.
