@@ -42,14 +42,12 @@ public class GameService {
 		}
 	}
 
-	private GameResult getResult(String input) {
+	private GameResult getResult(String inputNumber) {
 		int ballCount = 0, strikeCount = 0;
 		for (int i = 0; i < targetNumber.length(); i++) {
-			char targetDigit = targetNumber.charAt(i);
-			char inputDigit = input.charAt(i);
-			if (targetDigit == inputDigit) {
+			if (targetNumber.charAt(i) == inputNumber.charAt(i)) {
 				strikeCount++;
-			} else if (targetNumber.contains(String.valueOf(inputDigit))) {
+			} else if (targetNumber.contains(String.valueOf(inputNumber.charAt(i)))) {
 				ballCount++;
 			}
 		}
