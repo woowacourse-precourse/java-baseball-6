@@ -10,12 +10,15 @@ public class InputView {
 
     public static String baseballNumber() {
         System.out.print(BASEBALL_NUMBER_INPUT_MESSAGE);
-        return InputValidator.validateBaseballNumber(Console.readLine());
+        String input = Console.readLine();
+        InputValidator.validateBaseballNumber(input);
+        return input;
     }
 
     public static boolean continueOrExit() {
         System.out.println(CONTINUE_OR_EXIT_INPUT_MESSAGE);
-        String input = InputValidator.validateContinueOrExitNumber(Console.readLine());
+        String input = Console.readLine();
+        InputValidator.validateContinueOrExitNumber(input);
         return input.equals(CONTINUE_NUMBER);
     }
 }
