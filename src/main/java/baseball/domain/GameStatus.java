@@ -4,7 +4,7 @@ public enum GameStatus {
     RUN, CLEAR, END;
 
     public static GameStatus from(int strikeCount) {
-        if (isClear(strikeCount)) {
+        if (isAllStrike(strikeCount)) {
             return CLEAR;
         }
         return RUN;
@@ -17,7 +17,7 @@ public enum GameStatus {
         return RUN;
     }
 
-    private static boolean isClear(int strikeCount) {
+    private static boolean isAllStrike(int strikeCount) {
         return strikeCount == Baseballs.BALLS_SIZE;
     }
 
