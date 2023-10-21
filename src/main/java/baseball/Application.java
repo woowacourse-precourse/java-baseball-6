@@ -25,8 +25,6 @@ public class Application {
             userInputList.add(c - '0');
         }
 
-        camp.nextstep.edu.missionutils.Console.close();
-
         return userInputList;
     }
 
