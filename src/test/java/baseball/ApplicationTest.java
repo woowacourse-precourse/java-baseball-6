@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.model.RandomNumberCreator;
+import baseball.model.UserNumberChecker;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -43,6 +44,25 @@ class ApplicationTest extends NsTest {
         assertThat(num1).isNotEqualTo(num2);
         assertThat(num1).isNotEqualTo(num3);
         assertThat(num2).isNotEqualTo(num3);
+    }
+
+    @Test
+    void 사용자입력값체크_테스트() {
+        assertSimpleTest(() -> assertThatThrownBy(
+                () -> UserNumberChecker.isLengthCorrect("12")
+        ).isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() -> assertThatThrownBy(
+                () -> UserNumberChecker.isSingleDigit("a12")
+        ).isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() -> assertThatThrownBy(
+                () -> UserNumberChecker.isSingleDigit("012")
+        ).isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() -> assertThatThrownBy(
+                () -> UserNumberChecker.isDuplicatedNumber("112")
+        ).isInstanceOf(IllegalArgumentException.class));
     }
 
     @Test
