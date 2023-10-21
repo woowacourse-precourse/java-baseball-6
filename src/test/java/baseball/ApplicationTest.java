@@ -9,6 +9,37 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+
+    @Test
+    void 입력_성공() {
+        String input1 = "789";
+        if(BaseballGameNumber.validateBaseballGameNumber(input1)) {
+            BaseballGameNumber number = new BaseballGameNumber(input1);
+        }
+    }
+
+    @Test
+    void 입력_실패() {
+        String input1 = "1324";
+        String input2 = "031";
+        String input3 = "112";
+        String input4 = "13n";
+
+        assertThatThrownBy(()-> BaseballGameNumber.validateBaseballGameNumber(input1)
+        ).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(()-> BaseballGameNumber.validateBaseballGameNumber(input2)
+        ).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(()-> BaseballGameNumber.validateBaseballGameNumber(input3)
+        ).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(()-> BaseballGameNumber.validateBaseballGameNumber(input4)
+        ).isInstanceOf(IllegalArgumentException.class);
+
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
