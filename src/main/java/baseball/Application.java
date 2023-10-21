@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.List;
 import view.OutputView;
 
 public class Application {
@@ -13,5 +14,6 @@ public class Application {
 
     static void startGame() {
         OutputView.printStartMessage();
+        List<Integer> computer = BaseballNumberGenerator.generateThreeDigits();
     }
 }
