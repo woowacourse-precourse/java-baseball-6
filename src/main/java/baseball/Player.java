@@ -24,7 +24,15 @@ public class Player {
     public int askRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String read = Console.readLine();
+        validateRestartCommand(read);
         return Integer.parseInt(read);
+    }
+
+    private void validateRestartCommand(String command) {
+        if (command.equals("1") || command.equals("2")) {
+            return;
+        }
+        throw new IllegalArgumentException("1또는 2만 입력해야 합니다");
     }
 
     private void validateCount(String numbers) {
