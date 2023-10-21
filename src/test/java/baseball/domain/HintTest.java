@@ -17,4 +17,10 @@ public class HintTest {
 		Hint hint = new Hint(1, 0);
 		assertTrue(hint.isBallCountZero());
 	}
+
+	@Test
+	void isThreeStrike_메서드는_strike가_3이면_true를_반환한다() {
+		Hint hint = new Hint(3, 0);
+		assertTrue(hint.isThreeStrike());
+	}
 }
