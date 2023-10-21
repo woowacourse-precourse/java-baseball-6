@@ -13,12 +13,13 @@ public class BaseballGame {
 
     public void play() {
         computer.pickRandomNumber(3);
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             List<Integer> playerNumbers = player.readNumber();
             GameResult currentResult = computer.getResult(playerNumbers);
             printResult(currentResult);
 
-            if (currentResult.getStrikeCount() == 3 && replay()) {
+            if (currentResult.getStrikeCount() == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 if (player.askRestart() == 2) {
                     break;
@@ -39,9 +40,5 @@ public class BaseballGame {
             toString += "낫싱";
         }
         System.out.println(toString);
-    }
-
-    private boolean replay() {
-        return true;
     }
 }
