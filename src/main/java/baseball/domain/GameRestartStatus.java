@@ -15,9 +15,9 @@ public enum GameRestartStatus {
         this.commandNumber = commandNumber;
     }
 
-    public static GameRestartStatus from(int gameRestartNumber) {
+    public static GameRestartStatus from(int commandNumber) {
         return Stream.of(values())
-                .filter(gameRestartStatus -> gameRestartStatus.commandNumber == gameRestartNumber)
+                .filter(gameRestartStatus -> gameRestartStatus.commandNumber == commandNumber)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(RESTART_EXCEPTION_MESSAGE));
     }
