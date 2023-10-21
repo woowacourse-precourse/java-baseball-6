@@ -9,24 +9,24 @@ public class BaseBallScore {
     private int ball;
     private int nothing;
 
-    public BaseBallScore(int maxGameCount) {
+    BaseBallScore(int maxGameCount) {
         strike = 0;
         ball = 0;
         nothing = 0;
         this.maxGameCount = maxGameCount;
     }
 
-    public void increaseStrike() {
+    void increaseStrike() {
         strike++;
         validateScore();
     }
 
-    public void increaseBall() {
+    void increaseBall() {
         ball++;
         validateScore();
     }
 
-    public void increaseNothing() {
+    void increaseNothing() {
         nothing++;
         validateScore();
     }
@@ -37,7 +37,7 @@ public class BaseBallScore {
         }
     }
 
-    public Boolean verifyingWinGame() {
+    Boolean verifyingWinGame() {
         return (this.nothing == 0) && (this.ball == 0) && (this.strike == maxGameCount);
     }
 
