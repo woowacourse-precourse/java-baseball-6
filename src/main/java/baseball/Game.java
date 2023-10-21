@@ -2,8 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     private Computer computer;
@@ -12,8 +11,9 @@ public class Game {
     private final String GAME_END="3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final String GAME_CONTINUE="게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private final String WRONG_INPUT="입력값이 올바르지 않습니다.";
+    private final String NUMBER_INPUT="숫자를 입력해주세요 : ";
 
-    public Game(Computer computer) {
+    private Game(Computer computer) {
         this.computer = computer;
     }
 
@@ -64,6 +64,34 @@ public class Game {
             throw new IllegalArgumentException(WRONG_INPUT);
 
         return value==1;
+    }
+
+    private List<Integer> getNumberInput(){
+        System.out.print(NUMBER_INPUT);
+        String input = Console.readLine().trim();
+        Integer value;
+
+        try{
+            value=Integer.valueOf(input);
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException(WRONG_INPUT);
+        }
+
+        if(value/100<=0 || value/100>=10)
+            throw new IllegalArgumentException(WRONG_INPUT);
+
+        Stack<Integer> stack = new Stack<>();
+
+        while(value>=0){
+           stack.push(value%10);
+           value/=10;
+        }
+
+        List<Integer> numberInput=new ArrayList<>();
+        while(!stack.isEmpty())
+            numberInput.add(stack.pop());
+
+        return numberInput;
     }
 
 }
