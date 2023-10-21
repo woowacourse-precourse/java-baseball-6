@@ -1,5 +1,7 @@
 package baseball.factory;
 
+import static baseball.Constants.PLAY_NUMBER_DIGIT;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberFactory {
@@ -7,10 +9,10 @@ public class NumberFactory {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 9;
 
-    public static int pickNumberWithLength(final int length) {
+    public static int createNumber() {
         StringBuilder numberBuilder = new StringBuilder();
 
-        while (isBuilderLengthLowerThanLength(numberBuilder, length)) {
+        while (isBuilderLengthLowerThanLength(numberBuilder, PLAY_NUMBER_DIGIT)) {
             saveNewNumber(numberBuilder);
         }
 

@@ -57,7 +57,7 @@ public class GameController {
     }
 
     private int selectNewNumber() {
-        return NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
+        return NumberFactory.createNumber();
     }
 
     private static void askNumberInput() {
