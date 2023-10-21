@@ -54,7 +54,7 @@
     - [X] main -> Controller(GameController) 로 보내기
     - [X] 처리 끝난 이후 main 으로 돌아와서 게임 내용 끝내기
 - ### Service 관련 처리
-  - [ ] 스트라이크 볼 관련 처리는 Service에서 진행
+  - [X] 스트라이크 볼 관련 처리는 Service에서 진행
 - ### View 관련 처리
   - [X] View에서는 다른 곳과 격리!!
   - [X] Controller랑 상호작용하여 Validate에게 위임하여 처리
