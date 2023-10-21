@@ -15,7 +15,7 @@ public class Application {
 
             while(true){
                 List<Integer> userNumber = getUserGuessThreeDigitNumber();
-                if(evaluateGuessAndCheckForGameEnd(computer,userNumber)){//3스트라이크인 경우,
+                if(checkForGameEnd(computer,userNumber)){//3스트라이크인 경우,
                     break;
                 }
             }
@@ -54,36 +54,20 @@ public class Application {
         return user;
     }
 
-    public static boolean evaluateGuessAndCheckForGameEnd(List<Integer> user,List<Integer> computer){
+    public static boolean checkForGameEnd(List<Integer> user,List<Integer> computer){//1이면, 게임 종료하기 위한 단계로 간다.
 
-        int strike=0;
-        int ball =0;
+        int numStrikes=0;
+        int numBalls =0;
         for(int i=0;i<3;i++){
             if(user.get(i)==computer.get(i)){
-                strike++;
+                numStrikes++;
             }
             else if(user.get(i)!=computer.get(i) && computer.contains(user.get(i))){
-                ball++;
+                numBalls++;
             }
         }
 
-
-        if(ball ==0 &&strike == 3){
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다.! 게임 종료");
-            return true;
-        }
-        else if(ball>0 && strike >0){
-            System.out.println(ball+"볼 "+strike+"스트라이크");
-        }  else if (ball == 0 && strike > 0 &&strike <3) {
-            System.out.println(strike+"스트라이크");
-        }else if (ball > 0 && strike == 0) {
-            System.out.println(ball + "볼");
-        } else if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
-        }
-
-        return false;
+        return evaluateGuess(numStrikes,numBalls);
     }
 
     public static boolean restartOrExit(){//반환값이 1이면 restart
@@ -117,6 +101,25 @@ public class Application {
         else if(choice.equals("2"))
             return false;
         throw new IllegalArgumentException("1 또는 2를 입력하지 않았습니다.");
+    }
+
+    private static boolean evaluateGuess(int numStrikes,int numBalls){
+
+        if(numBalls ==0 &&numStrikes == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다.! 게임 종료");
+            return true;
+        }
+        else if(numBalls>0 && numStrikes >0){
+            System.out.println(numBalls+"볼 "+numStrikes+"스트라이크");
+        }  else if (numBalls == 0 && numStrikes > 0 &&numStrikes <3) {
+            System.out.println(numStrikes+"스트라이크");
+        }else if (numBalls > 0 && numStrikes == 0) {
+            System.out.println(numBalls + "볼");
+        } else if (numBalls == 0 && numStrikes == 0) {
+            System.out.println("낫싱");
+        }
+        return false;
     }
 
 
