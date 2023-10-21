@@ -31,7 +31,19 @@ public class ComputerController {
     }
 
     private void compareComputerAndPlayer(int playerNumber) {
-        numberToList(playerNumber);
+        List<Integer> playerNumbers = numberToList(playerNumber);
+        List<Integer> computerNumbers = computer.getComputerNumbers();
+        strikeCheck(playerNumbers, computerNumbers);
+    }
+
+    private int strikeCheck(List<Integer> playerNumbers, List<Integer> computerNumbers) {
+        int strikeCount = 0;
+        for (int i = 0; i < 3; i++) {
+            if (playerNumbers.get(i) == computerNumbers.get(i)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
     }
 
     private List<Integer> numberToList(int playerNumber) {
