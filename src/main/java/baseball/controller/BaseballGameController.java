@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class GameController {
+public class BaseballGameController {
     public void startGame() {
         Computer computer = new Computer();
         User user = new User();
@@ -64,8 +64,6 @@ public class GameController {
     }
 
     private static class InputController {
-        private static final String WRONG_INPUT_ANSWER = "1~9 사이 수 3자리를 입력해주세요.";
-
         public static String scanUsersGuess() {
             InputView.printEnterNumbers();
             String userInput = Console.readLine();
@@ -83,7 +81,7 @@ public class GameController {
                 isValid &= (1 <= number && number <= 9);
             }
             if (!isValid) {
-                throw new IllegalArgumentException("[ERROR] " + WRONG_INPUT_ANSWER);
+                throw new IllegalArgumentException("1~9 사이 수 3자리를 입력해주세요.");
             }
         }
     }
