@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.Compare;
 import baseball.Computer;
 import baseball.input.AfterGameInput;
 import baseball.input.UserInput;
@@ -9,6 +10,7 @@ import java.util.List;
 public class NumberBaseBallGame {
 
     Computer computer = new Computer();
+    Compare compare = new Compare();
     UserInput user = new UserInput();
     AfterGameInput afterGameInput = new AfterGameInput();
     private int ball = 0;
@@ -47,11 +49,11 @@ public class NumberBaseBallGame {
     }
 
     private int getStrike(List<Integer> answer, List<Integer> userInput) {
-        return computer.compareUserInputAndAnswer(userInput, answer).getStrike();
+        return compare.getBallAndStrikeData(userInput,answer).getStrike();
     }
 
     private int getBall(List<Integer> answer, List<Integer> userInput) {
-        return computer.compareUserInputAndAnswer(userInput, answer).getBall();
+        return compare.getBallAndStrikeData(userInput,answer).getBall();
     }
 
     private static void printBallAndStrike(int ball, int strike) {

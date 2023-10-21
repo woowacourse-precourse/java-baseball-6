@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.dto.BallAndStrikeData;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -16,22 +17,4 @@ public class Computer {
         }
         return answer;
     }
-
-    public BallAndStrikeData compareUserInputAndAnswer(List<Integer> userInput, List<Integer> answer){
-        int ball = 0;
-        int strike = 0;
-
-        for (int i = 0; i < userInput.size(); i++) {
-            if (userInput.get(i).equals(answer.get(i))) {
-                strike++;
-            }
-            else if (answer.contains(userInput.get(i))) {
-                ball++;
-            }
-        }
-        BallAndStrikeData data = new BallAndStrikeData(ball,strike);
-        return data;
-    }
-
-
 }

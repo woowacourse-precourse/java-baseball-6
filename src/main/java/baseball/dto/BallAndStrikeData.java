@@ -1,4 +1,4 @@
-package baseball;
+package baseball.dto;
 
 public class BallAndStrikeData {
     private final int ball;
