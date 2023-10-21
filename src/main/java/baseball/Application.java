@@ -14,10 +14,10 @@ public class Application {
         BaseballGame game = new BaseballGame();
         Answer answer = new Answer();
         GameLoop gameLoop = new GameLoopBuilder()
-            .input(input)
-            .gameService(game)
-            .computer(answer)
-            .build();
+                .input(input)
+                .gameService(game)
+                .computer(answer)
+                .build();
 
         gameLoop.run();
     }
