@@ -19,4 +19,21 @@ public class GameService {
         }
         return randomNumberList;
     }
+
+    public int[] compareGuessToRandom(List<Integer> userGuessNumber, List<Integer> randomNumber) {
+        int[] ballAndStrike = new int[2];
+        for (int index = 0; index < userGuessNumber.size(); index++) {
+            int guessNumber = userGuessNumber.get(index);
+            if (!randomNumber.contains(guessNumber)) {
+                continue;
+            }
+            int randNumIndex = randomNumber.indexOf(guessNumber);
+            if (randNumIndex == index) {
+                ballAndStrike[1]++;
+            } else if (randNumIndex != index) {
+                ballAndStrike[0]++;
+            }
+        }
+        return ballAndStrike;
+    }
 }
