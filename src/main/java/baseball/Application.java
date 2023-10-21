@@ -82,8 +82,8 @@ public class Application {
                 }
             }
         }
-        return new Result(balls, strikes);
 
+        return new Result(balls, strikes);
     }
 
     private record Result(int balls, int strikes) {
@@ -98,6 +98,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+
         return computer;
     }
 }
