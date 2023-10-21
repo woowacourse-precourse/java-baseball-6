@@ -18,17 +18,17 @@ public class Application {
 //        for (int number : comArrayList) {
 //            System.out.print(number);
 //        }
-        int answerStatus = 1;
-        while (answerStatus == 1) {
+        boolean newGame = true;
+        while (newGame) {
             int ball = 0;
             int strike = 0;
             System.out.print("숫자를 입력해주세요 : ");
             String humanInput = Console.readLine();
-            //숫자가 아닌 값을 넣었을 때 예외처리ㅂ
-            if(!humanInput.matches("\\d+")){
-                throw new IllegalArgumentException("숫자가 아닌 값이 입력되었습니다.");
+            //숫자가 아닌 값을 넣었을 때 예외처리
+            if(!humanInput.matches("\\d+") || humanInput.length() != 3){
+                throw new IllegalArgumentException("3자리 숫자만 입력 가능합니다.");
             }
-            //String으로 받았기 때문에 각각의 인덱스들을 int값으로 변리
+            //String으로 받았기 때문에 각각의 인덱스들을 int값으로 변현
             char[] digits = humanInput.toCharArray();
             for (char digitChar : digits) {
                 int digit = Character.getNumericValue(digitChar);
@@ -46,13 +46,21 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
                 //원래있던 comArrayList를 없애주고 다시 getComNumber를 실행시켜서 깊은 복사로 적용
-                List<Integer> restart = new ArrayList<>();
-                getComNumber(restart);
+                List<Integer> restartComNumber = new ArrayList<>();
+                getComNumber(restartComNumber);
                 comArrayList.clear();
-                for (int i = 0; i < 3; i++) {
-                    comArrayList.add(restart.get(i));
+                comArrayList.addAll(restartComNumber);
+
+                String restart = Console.readLine();
+                if (restart.equals("1")){
+                    newGame = true;
                 }
-                answerStatus = Integer.parseInt(Console.readLine());
+                else if (restart.equals("2")){
+                    newGame = false;
+                } else{
+                    throw new IllegalArgumentException("1또는 2만 입력 가능합니다.");
+                }
+
             } else {
                 if (strike == 0 && ball == 0) {
                     System.out.println("낫싱");
@@ -66,6 +74,7 @@ public class Application {
             }
             humanArrayList.clear();
         }
+        Console.close();
     }
 
     //컴퓨터 랜덤넘버 생성 함수
