@@ -5,30 +5,30 @@ import baseball.exception.InputNeitherRestartNorExit;
 import baseball.exception.InputNotNumber;
 import baseball.exception.InputNumberNotUnique;
 import baseball.exception.InputSizeNot3;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Scanner;
 
 public class InputView {
-    private static final String ENTER_NUMBERS_MSG = "숫자를 입력해주세요 : ";
-    private final int CLIENT_NUMBERS_SIZE = 3;
+    private static final String INPUT_MSG = "숫자를 입력해주세요 : ";
+    private static final int CLIENT_NUMBERS_SIZE = 3;
 
-    public void printInputMsg() {
-        System.out.print(ENTER_NUMBERS_MSG);
+    public static void printInputMsg() {
+        System.out.print(INPUT_MSG);
     }
 
-    public ClientNumbers makeClientNumbers() {
-        Scanner scanner = new Scanner(System.in);
-        String inputStr = scanner.nextLine();
+    public static ClientNumbers makeClientNumbers() {
+        String inputStr = Console.readLine();
 
         validateInputNotNumber(inputStr);
         validateInputNumberNotUnique(inputStr);
         validateInputSizeNot3(inputStr);
 
         int input = Integer.parseInt(inputStr);
-        ClientNumbers clientNumbers = new ClientNumbers(CLIENT_NUMBERS_SIZE);
+        ClientNumbers clientNumbers = new ClientNumbers();
 
-        while (input > 0) {
-            clientNumbers.intArr.add(input % 10);
+        for(int i=CLIENT_NUMBERS_SIZE-1; i>=0; i--) {
+            clientNumbers.getNumbers().add(input % 10);
             input /= 10;
         }
 
@@ -36,13 +36,13 @@ public class InputView {
     }
 
     // 사용자가 모든 숫자를 맞춘 이후에 검증해야 함
-    public void validateInputNeitherRestartNorExit(String inputStr) {
+    public static void validateInputNeitherRestartNorExit(String inputStr) {
         if (!inputStr.equals("1") || !inputStr.equals("2")) {
             throw new InputNeitherRestartNorExit();
         }
     }
 
-    public void validateInputNotNumber(String inputStr) {
+    public static void validateInputNotNumber(String inputStr) {
         char[] charArray = inputStr.toCharArray();
 
         for(char c : charArray) {
@@ -52,10 +52,10 @@ public class InputView {
         }
     }
 
-    public void validateInputNumberNotUnique(String inputStr) {
+    public static void validateInputNumberNotUnique(String inputStr) {
         char[] charArray = inputStr.toCharArray();
 
-        for(int i=1; i<=CLIENT_NUMBERS_SIZE; i++) {
+        for(int i=1; i<CLIENT_NUMBERS_SIZE; i++) {
             char firstChar = charArray[0];
             if(firstChar == charArray[i]) {
                 throw new InputNumberNotUnique();
@@ -63,7 +63,7 @@ public class InputView {
         }
     }
 
-    public void validateInputSizeNot3(String inputStr) {
+    public static void validateInputSizeNot3(String inputStr) {
         if (inputStr.length() != CLIENT_NUMBERS_SIZE) {
             throw new InputSizeNot3();
         }
