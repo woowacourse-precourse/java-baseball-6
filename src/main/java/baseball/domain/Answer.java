@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static baseball.constants.GameOption.ANSWER_NUMBER_LENGTH;
 
@@ -38,12 +38,8 @@ public class Answer {
     }
 
     private int calculateStrikes(int[] inputNums) {
-        int result = 0;
-        for (int i = 0; i < this.numbers.size(); i++) {
-            if (inputNums[i] == this.numbers.get(i)) {
-                result++;
-            }
-        }
-        return result;
+        return (int) IntStream.range(0, numbers.size())
+                .filter(i -> inputNums[i] == numbers.get(i))
+                .count();
     }
 }

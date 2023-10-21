@@ -23,16 +23,24 @@ public class BaseballGame {
     }
 
     private void start() {
+        // 사용자가 맞춰야 하는 정답 생성
         answer.pickNumbers();
 
         int[] score;
         do {
             String userInput = getUserInput();
-            int[] inputNums = rule.evaluateNumbers(userInput);
-            score = answer.calculateScore(inputNums);
+
+            // 사용자가 입력한 문자열 형태의 숫자가 유효한지, 유효성 검증
+            int[] inputNumbers = rule.validateUserInput(userInput);
+
+            // 사용자가 입력한 수와 정답과 비교하여 점수 계산
+            score = answer.calculateScore(inputNumbers);
+
+            // 점수 출력
             printScore(score);
         } while (!canFinish(score));
 
+        // 재시작 여부 확인
         if (checkRestart()) {
             start();
         }
@@ -46,6 +54,7 @@ public class BaseballGame {
     private boolean canFinish(int[] score) {
         int countOfStrikes = score[0];
 
+        // 스트라이크 개수와 맞춰야 하는 숫자의 개수와 일치하는 경우 정답이므로 종료
         if (countOfStrikes == ANSWER_NUMBER_LENGTH.getLength()) {
             System.out.println(FINISH_MESSAGE);
             return true;
@@ -58,14 +67,17 @@ public class BaseballGame {
         StringBuilder result = new StringBuilder();
         int countOfStrikes = score[0], countOfBalls = score[1];
 
+        // 볼 개수 입력
         if (countOfBalls > 0) {
             result.append(countOfBalls).append(BALL).append(" ");
         }
 
+        // 스트라이크 개수 입력
         if (countOfStrikes > 0) {
             result.append(countOfStrikes).append(STRIKE).append(" ");
         }
 
+        // 낫싱인 경우 입력
         if (countOfBalls == 0 && countOfStrikes == 0) {
             result.append(NOTHING);
         }

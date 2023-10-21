@@ -6,11 +6,15 @@ import static baseball.constants.ErrorMessage.*;
 import static baseball.constants.GameOption.ANSWER_NUMBER_LENGTH;
 
 public class Rule {
-    public int[] evaluateNumbers(String input) {
-        int[] inputNums = validateInputFormat(input);
-        validateLength(inputNums);
-        validateDuplicate(inputNums);
-        return inputNums;
+    public int[] validateUserInput(String input) {
+        // 입력한 문자를 숫자 배열로 변환
+        int[] inputNumbers = validateInputFormat(input);
+        // 정답 길이와 일치하는 입력을 했는지 확인
+        validateLength(inputNumbers);
+        // 입력한 숫자에 중복한 수가 있는지 확인
+        validateDuplicate(inputNumbers);
+
+        return inputNumbers;
     }
 
     private int[] validateInputFormat(String input) {
@@ -19,6 +23,7 @@ public class Rule {
                     .mapToInt(Integer::parseInt)
                     .toArray();
         } catch (NumberFormatException e) {
+            // 사용자가 입력한 문자에서 숫자로 변환될 수 없는 경우 발생하는 예외 처리
             throw new IllegalArgumentException(WRONG_INPUT_FORMAT.toString());
         }
     }
