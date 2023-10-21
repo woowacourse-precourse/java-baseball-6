@@ -9,10 +9,6 @@ public class Computer {
 
     private List<Integer> randomNumbers;
 
-    public List<Integer> getRandomNumbers() {
-        return this.randomNumbers;
-    }
-
     void generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
