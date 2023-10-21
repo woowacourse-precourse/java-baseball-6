@@ -17,20 +17,20 @@ public class NumberValidation {
         return userNumber;
     }
 
-    public List<Integer> changeToList(String inputNumber) {
+    private List<Integer> changeToList(String inputNumber) {
         List<Integer> userNumber = Arrays.stream(inputNumber.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         return userNumber;
     }
 
-    public void validateNumberSize(List<Integer> userNumber) {
+    private void validateNumberSize(List<Integer> userNumber) {
         if (userNumber.size() != NumberConstant.INPUT_SIZE) {
             throw new IllegalArgumentException(MessageConstant.VALIDATE_SIZE_MESSAGE);
         }
     }
 
-    public void validateNumberRange(List<Integer> userNumber) {
+    private void validateNumberRange(List<Integer> userNumber) {
         for (int i = 0; i < userNumber.size(); i++) {
             if (userNumber.get(i) < NumberConstant.MIN_NUMBER || userNumber.get(i) > NumberConstant.MAX_NUMBER) {
                 throw new IllegalArgumentException(MessageConstant.VALIDATE_RANGE_MESSAGE);
@@ -38,7 +38,7 @@ public class NumberValidation {
         }
     }
 
-    public void validateDuplication(List<Integer> userNumber) {
+    private void validateDuplication(List<Integer> userNumber) {
         if (userNumber.size() != userNumber.stream().distinct().count()) {
             throw new IllegalArgumentException(MessageConstant.VALIDATE_DUPLICATION_MESSAGE);
         }
