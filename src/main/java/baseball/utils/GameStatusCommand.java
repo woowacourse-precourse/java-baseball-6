@@ -19,6 +19,10 @@ public enum GameStatusCommand {
                 .orElseThrow(() -> new IllegalArgumentException("1 또는 2만 입력 가능합니다."));
     }
 
+    public boolean isQuit() {
+        return this == QUIT;
+    }
+
     public int getNumber() {
         return number;
     }

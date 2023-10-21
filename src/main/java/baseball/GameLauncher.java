@@ -1,7 +1,5 @@
 package baseball;
 
-import static baseball.utils.GameStatusCommand.QUIT;
-
 import baseball.domain.BallCounter;
 import baseball.domain.ComputerNumbers;
 import baseball.domain.ComputerNumbersGenerator;
@@ -26,7 +24,7 @@ public class GameLauncher {
         while (true) {
             playBaseball();
             GameStatusCommand gameStatusCommand = GameStatusCommand.of(InputView.readNumberOfGameStatusCommand());
-            if (gameStatusCommand == QUIT) {
+            if (gameStatusCommand.isQuit()) {
                 return;
             }
         }
