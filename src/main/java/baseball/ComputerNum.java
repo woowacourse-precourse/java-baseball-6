@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenComputerNum {
+public class ComputerNum {
     List<String> computerNumList = new ArrayList<>(); // 컴퓨터가 생성한 3자리 숫자
 
     public List<String> genComputerNum() {

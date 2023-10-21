@@ -7,15 +7,15 @@ import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class GenComputerNumTest {
+public class ComputerNumTest {
     @DisplayName("컴퓨터 3자리 수 생성 테스트")
     @Test
     public void genComputerNumTest() {
         // given
-        GenComputerNum genComputerNum = new GenComputerNum();
+        ComputerNum computerNum = new ComputerNum();
 
         // when
-        List<String> computerNumList = genComputerNum.genComputerNum();
+        List<String> computerNumList = computerNum.genComputerNum();
 
         // then
         System.out.println(computerNumList);
