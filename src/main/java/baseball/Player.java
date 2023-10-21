@@ -23,10 +23,17 @@ public class Player {
     }
 
     private void validateInput(){
+        validateLength();
+        validateOnlyNumber();
+    }
+
+    private void validateLength(){
         if(input.length() != INPUT_LENGTH){
             throw new IllegalArgumentException();
         }
+    }
 
+    private void validateOnlyNumber(){
         for(int i=0;i<INPUT_LENGTH;i++){
             char ch = input.charAt(i);
 
