@@ -1,12 +1,13 @@
 package baseball.game;
 
+import static baseball.common.Constant.EXIT_NUMBER;
+
 import baseball.baseball.BaseBall;
 import baseball.baseball.BaseBallInputDevice;
 import java.util.List;
 
 public class Game {
 
-  private final static int STOP_VALUE = 2;
   private final BaseBallInputDevice inputDevice;
 
   public Game() {
@@ -39,7 +40,7 @@ public class Game {
 
   private Boolean isEndPlay() {
     int endInput = inputDevice.endInput();
-    return endInput == STOP_VALUE;
+    return endInput == EXIT_NUMBER;
   }
 
 }

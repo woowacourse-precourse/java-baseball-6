@@ -1,14 +1,15 @@
 package baseball.baseball;
 
+import static baseball.common.Constant.BALL_AMOUNT;
+import static baseball.common.Constant.MAX_BALL_NUMBER;
+import static baseball.common.Constant.MIN_BALL_NUMBER;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBall {
 
-  private static final int MAX_BALL_SIZE = 3;
-  private static final int RANGE_FIRST_NUMBER = 1;
-  private static final int RANGE_LAST_NUMBER = 9;
   private final List<Integer> ballNumbers;
 
   public BaseBall() {
@@ -23,7 +24,7 @@ public class BaseBall {
     int strikeCount = 0;
     int ballCount = 0;
 
-    for (int i = 0; i < MAX_BALL_SIZE; i++) {
+    for (int i = 0; i < BALL_AMOUNT; i++) {
       Integer ballNumber = this.ballNumbers.get(i);
       Integer targetBallNumber = targetBallNumbers.get(i);
 
@@ -43,7 +44,7 @@ public class BaseBall {
   }
 
   public Boolean isSucceed(int strikeCount) {
-    if (strikeCount == MAX_BALL_SIZE) {
+    if (strikeCount == BALL_AMOUNT) {
       System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
       return true;
     }
@@ -65,8 +66,8 @@ public class BaseBall {
   private List<Integer> generatedRandomBallNumbers() {
     List<Integer> ballNumbers = new ArrayList<>();
 
-    while (ballNumbers.size() < MAX_BALL_SIZE) {
-      int randomNumber = Randoms.pickNumberInRange(RANGE_FIRST_NUMBER, RANGE_LAST_NUMBER);
+    while (ballNumbers.size() < BALL_AMOUNT) {
+      int randomNumber = Randoms.pickNumberInRange(MIN_BALL_NUMBER, MAX_BALL_NUMBER);
       addBallNumber(ballNumbers, randomNumber);
     }
 
