@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.AttemptNumbers;
 import baseball.io.InputManager;
 import baseball.io.OutputView;
 import baseball.service.BaseballService;
@@ -27,6 +28,7 @@ public class BaseballController {
     private void play() {
         baseballService.saveRandomNumbers();
         outputView.printNumberInputRequest();
-        inputManager.readAttemptNumbers();
+        final AttemptNumbers attemptNumbers = inputManager.readAttemptNumbers();
+        baseballService.checkAnswer(attemptNumbers);
     }
 }

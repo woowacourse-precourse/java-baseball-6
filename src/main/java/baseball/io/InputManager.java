@@ -1,6 +1,6 @@
 package baseball.io;
 
-import baseball.domain.Numbers;
+import baseball.domain.AttemptNumbers;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,11 +14,11 @@ public class InputManager {
         this.inputView = inputView;
     }
 
-    public Numbers readAttemptNumbers() {
+    public AttemptNumbers readAttemptNumbers() {
         final String input = inputView.readAttemptNumbers();
         final List<Integer> numbers = mapToNumbers(input);
 
-        return new Numbers(numbers);
+        return new AttemptNumbers(numbers);
     }
 
     private List<Integer> mapToNumbers(final String input) {

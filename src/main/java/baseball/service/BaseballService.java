@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.AnswerNumbers;
 import baseball.domain.AttemptNumbers;
+import baseball.domain.BallCount;
 import baseball.repository.DomainRepository;
 import baseball.utils.RandomNumberGenerator;
 
@@ -23,7 +24,8 @@ public class BaseballService {
         domainRepository.saveAnswerNumbers(answerNumbers);
     }
 
-    public void checkAnswer(final AttemptNumbers attemptNumbers) {
+    public BallCount checkAnswer(final AttemptNumbers attemptNumbers) {
         final AnswerNumbers answerNumbers = domainRepository.findAnswerNumbers();
+        return attemptNumbers.checkAnswer(answerNumbers);
     }
 }
