@@ -7,7 +7,6 @@ public class Play {
     private final User user;
     private final Computer com;
     private final Rules rules;
-    private String input;
 
     public Play() {
         user = new User();
