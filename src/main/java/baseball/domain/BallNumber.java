@@ -20,4 +20,8 @@ public class BallNumber {
     public int getBallNumberByDigit(int digit) {
         return ballNumber.get(digit);
     }
+
+    public boolean hasThis(int comparisonNumber) {
+        return ballNumber.contains(comparisonNumber);
+    }
 }

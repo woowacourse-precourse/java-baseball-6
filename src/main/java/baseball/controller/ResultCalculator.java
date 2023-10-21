@@ -34,11 +34,8 @@ public class ResultCalculator {
     private int countBalls(BallNumber comparisonNumber, int numberOfStrikes) {
         return (int) comparisonNumber.ballNumber
                 .stream()
-                .filter(this::ballInThisArea)
+                .filter(computerNumber::hasThis)
                 .count() - numberOfStrikes;
     }
 
-    private boolean ballInThisArea(int eachNumber) {
-        return computerNumber.ballNumber.contains(eachNumber);
-    }
 }
