@@ -9,6 +9,7 @@ public class Application {
         PrintGuide printGuide = new PrintGuide();
         NumberMaker numberMaker = new NumberMaker();
         InputManager inputManager = new InputManager();
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
 
         printGuide.printGameStart();
 
@@ -19,6 +20,8 @@ public class Application {
 
         List<Integer> guessNumbers = inputManager.getGuessNumbers();
         System.out.println("guessNumbers = " + guessNumbers);
+
+        scoreCalculator.doCalculate(randomNumbers, guessNumbers);
 
     }
 }
