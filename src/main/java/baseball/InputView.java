@@ -24,6 +24,5 @@ public class InputView {
                 .filter(status -> status.toString().equals(number))
                 .findFirst()
                 .get();
-
     }
 }

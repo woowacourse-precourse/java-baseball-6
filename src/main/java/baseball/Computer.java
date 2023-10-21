@@ -18,7 +18,6 @@ public class Computer {
                 numbers.add(randomNumber);
             }
         }
-        numbers.forEach(System.out::println);
     }
 
     public boolean contains(int number) {
