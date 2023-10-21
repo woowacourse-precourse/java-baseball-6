@@ -2,17 +2,19 @@ package baseball.service;
 
 import baseball.domain.Score;
 import baseball.exception.Exception;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
+import baseball.global.ComputerSingleton;
 import java.util.List;
 
 public class Service {
-    List<Integer> computer = new ArrayList<>();
+
+    ComputerSingleton computerSingleton = ComputerSingleton.getInstance();
+    List<Integer> computer = computerSingleton.getComputer();
     Score score = new Score();
 
     public Score getScore(String input) {
 
-        Exception.checkException(input);
+        Exception.validateInputLength(input);
+        Exception.validateNumericInput(input);
 
         score.checkStrike(input, computer);
         score.checkBall(input, computer);
@@ -21,13 +23,15 @@ public class Service {
         return score;
     }
 
-    public void generateRandomValue() {
-        computer.clear();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+    public boolean isRestart(String input) {
+
+        Exception.validateRestartInput(input);
+        
+        if (input.equals("1")) {
+            computerSingleton.resetComputer();
+            return true;
+        } else {
+            return false;
         }
     }
 }
