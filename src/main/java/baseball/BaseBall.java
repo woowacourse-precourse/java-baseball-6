@@ -87,12 +87,12 @@ public class BaseBall {
     }
 
     private void validateInput(List<Integer> player) {
-        if (computer == null || player == null) {
+        if (player == null) {
             throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
-        } else if (computer.isEmpty() || player.isEmpty()) {
+        } else if (player.isEmpty()) {
             throw new IllegalArgumentException("입력값은 빈 배열일 수 없습니다.");
-        } else if (computer.size() != player.size()) {
-            throw new IllegalArgumentException("입력 길이가 일치하지 않습니다.");
+        } else if (player.size() != length) {
+            throw new IllegalArgumentException(String.format("입력 길이는 %d 이어야 합니다.", length));
         }
     }
 }
