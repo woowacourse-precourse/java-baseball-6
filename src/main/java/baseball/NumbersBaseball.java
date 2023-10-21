@@ -70,8 +70,13 @@ public class NumbersBaseball {
     }
 
     private void generateAnswer() {
+        int randomNum;
         for (int i = 0; i < 3; i++) {
-            answer[i] = Randoms.pickNumberInRange(1, 9);
+            randomNum = Randoms.pickNumberInRange(1, 9);
+            while (contains(answer, randomNum)) {
+                randomNum = Randoms.pickNumberInRange(1, 9);
+            }
+            answer[i] = randomNum;
         }
     }
 
