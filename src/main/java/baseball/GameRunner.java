@@ -3,9 +3,15 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameRunner {
-    private final GameUtils gameUtils;
     private final GameScore gameScore;
     private final Person person;
+    private final Computer computer;
+
+    public GameRunner(Person person, Computer computer, GameScore gameScore) {
+        this.person = person;
+        this.computer = computer;
+        this.gameScore = gameScore;
+    }
 
     public void playGame() {
         GameMessages.printStartMessage();
@@ -14,12 +20,6 @@ public class GameRunner {
                 return;
             }
         }
-    }
-
-    public GameRunner(Person person, GameUtils gameUtils, GameScore gameScore) {
-        this.person = person;
-        this.gameUtils = gameUtils;
-        this.gameScore = gameScore;
     }
 
     public boolean playRound() {
@@ -46,17 +46,30 @@ public class GameRunner {
             return handleUserChoice(ballStrikeCount);
         }
 
-        gameUtils.restartRound(ballStrikeCount);
+        restartRound(ballStrikeCount);
         return false;
+    }
+
+    private void restartRound(BallStrikeCount ballStrikeCount) {
+        // 라운드를 다시 시작하기 위한 초기화 작업
+        ballStrikeCount.clean();
+        person.clean();
     }
 
     private boolean handleUserChoice(BallStrikeCount ballStrikeCount) {
         int choice = Integer.parseInt(Console.readLine());
         if (choice == GameConstants.RESTART_GAME) {
-            gameUtils.restartGame(ballStrikeCount);
+            restartGame(ballStrikeCount);
             return false;
         }
         return choice == GameConstants.END_GAME;
+    }
+
+    private void restartGame(BallStrikeCount ballStrikeCount) {
+        // 게임을 다시 시작하기 위한 초기화 작업
+        ballStrikeCount.clean();
+        person.clean();
+        computer.clearAndInitialize();
     }
 
     private boolean isThreeStrike(BallStrikeCount ballStrikeCount) {
