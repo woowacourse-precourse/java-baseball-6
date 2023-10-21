@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.Computer;
 import baseball.domain.Game;
 import baseball.domain.Player;
+import baseball.view.InputView;
 
 public class Controller {
     private boolean isGameInProgress;
@@ -17,6 +18,9 @@ public class Controller {
             Computer computer = new Computer();
             Player player = new Player();
             Game game = new Game();
+            while (game.getStrikes() != 3) {
+                game.compareNumbers(computer.getNumber(), player.getNumber(InputView.inputPlayerNumber()));
+            }
         }
 
     }

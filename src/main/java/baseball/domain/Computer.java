@@ -6,6 +6,12 @@ import java.util.List;
 
 public class Computer {
 
+    private final List<Integer> computerNumber;
+
+    public Computer() {
+        this.computerNumber = getRandomNumber();
+    }
+
     public List<Integer> getRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -15,5 +21,9 @@ public class Computer {
             }
         }
         return computer;
+    }
+
+    public List<Integer> getNumber() {
+        return computerNumber;
     }
 }
