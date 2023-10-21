@@ -1,9 +1,14 @@
 package baseball;
 
+import static baseball.MessageConstant.REQUEST_NUMBER_MESSAGE;
+import static baseball.MessageConstant.RESTART_OR_STOP_MESSAGE;
+import static baseball.MessageConstant.START_MESSAGE;
+import static baseball.MessageConstant.SUCCESS_MESSAGE;
+
 import java.util.List;
 
 public class NumberBaseballGame {
-    Message message = new Message();
+    MessageConstant messageConstant = new MessageConstant();
     Computer computer = new Computer();
     InputValidation inputValidation = new InputValidation();
     UserInput userInput = new UserInput();
@@ -15,9 +20,9 @@ public class NumberBaseballGame {
     public void play() {
         boolean gameStatus = true;
         while (gameStatus) {
-            speaker(message.startMessage() + '\n');
+            speaker(START_MESSAGE + '\n');
             oneRound();
-            speaker(message.restartOrStopMessage());
+            speaker(RESTART_OR_STOP_MESSAGE);
             gameStatus = restartOrStop();
         }
     }
@@ -34,18 +39,18 @@ public class NumberBaseballGame {
         boolean threeStrike = false;
 
         while (!threeStrike) {
-            speaker(message.requestNumberMessage());
+            speaker(REQUEST_NUMBER_MESSAGE);
             String userLine = userInput.getUserInput();
             List<Integer> userNumbers = inputValidation.validateUserNumbers(userLine);
             List<Integer> answer = answerMaker.getAnswer();
             List<Integer> ballAndStrikeCount = computer.countScore(answer, userNumbers);
             int strikeCount = ballAndStrikeCount.get(1);
 
-            speaker(message.scoreMessage(ballAndStrikeCount) + '\n');
+            speaker(messageConstant.scoreMessage(ballAndStrikeCount) + '\n');
             if (strikeCount == 3) {
                 threeStrike = true;
             }
         }
-        speaker(message.successMessage() + '\n');
+        speaker(SUCCESS_MESSAGE + '\n');
     }
 }
