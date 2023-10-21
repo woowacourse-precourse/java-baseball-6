@@ -1,7 +1,8 @@
 package baseball.view;
 
-public class outputView {
-    public static void main(String[] args) {
+import camp.nextstep.edu.missionutils.Console;
 
-    }
+public class outputView {
+
+
 }
