@@ -23,5 +23,9 @@ public class AnswerNumber {
         }
     }
 
+    public List<Integer> getAnswerNumber() {
+        return answerNumber;
+    }
+
 
 }
