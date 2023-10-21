@@ -13,11 +13,12 @@ public class Application {
         printGuide.printGameStart();
 
         List<Integer> randomNumbers = numberMaker.makeRandomNumbers();
-        System.out.println(randomNumbers);
+        System.out.println("randomNumbers = " + randomNumbers);
 
-        String guessNumbers = inputManager.getGuessNumbers();
+        printGuide.printInputValue();
 
-
+        List<Integer> guessNumbers = inputManager.getGuessNumbers();
+        System.out.println("guessNumbers = " + guessNumbers);
 
     }
 }
