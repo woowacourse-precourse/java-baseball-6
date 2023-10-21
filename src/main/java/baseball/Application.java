@@ -84,15 +84,14 @@ class Game {
 
 			// 어레이로 변환
 			transformInput = this.transformToArray(userInput);
-			System.out.println("변환한 값" + Arrays.toString(transformInput));
 
 			// 사용자가 입력 값과 주어진 값이 같은지 비
 			for (int i = 0; i < purposedNumber.size(); i++) {
 				if (purposedNumber.contains(transformInput[i])) { // 볼 조건
-					ballCount++;
 					if (purposedNumber.get(i) == transformInput[i]) { // 스트라이크 조건
-						ballCount--;
 						strikeCount++;
+					} else {
+						ballCount++;
 					}
 				}
 			}
