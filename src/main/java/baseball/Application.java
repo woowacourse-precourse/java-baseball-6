@@ -6,10 +6,20 @@ public class Application {
     private static Computer computer;
 
     public static void main(String[] args) {
+        boolean isGameContinuing = true;
+        start();
+        while (isGameContinuing) {
+            init();
+            process();
+            isGameContinuing = restart();
+        }
     }
 
     private static void init() {
         computer = new Computer();
+    }
+
+    private static void start() {
         MessageStream.printStartMessage();
     }
 
