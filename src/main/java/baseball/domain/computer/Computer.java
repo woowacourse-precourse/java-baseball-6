@@ -6,6 +6,12 @@ import java.util.List;
 
 public class Computer {
 
+    private final BaseballAlgorithm baseballAlgorithm;
+
+    public Computer(BaseballAlgorithm baseballAlgorithm) {
+        this.baseballAlgorithm = baseballAlgorithm;
+    }
+
     public List<Integer> generateRandomNumber() {
         List<Integer> randomNumber = new ArrayList<>();
         while (randomNumber.size() < 3) {
@@ -15,5 +21,9 @@ public class Computer {
             }
         }
         return randomNumber;
+    }
+
+    public String checkBallAndStrike(List<Integer> randomNumber, String userInput) {
+        return baseballAlgorithm.calculateBaseballResult(randomNumber, userInput);
     }
 }
