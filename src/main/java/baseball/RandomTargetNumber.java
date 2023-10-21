@@ -49,6 +49,6 @@ public class RandomTargetNumber implements Numbers {
 
     @Override
     public String toString() {
-        return String.valueOf(this.numContainer.get(0)) + this.numContainer.get(1) + this.numContainer.get(1);
+        return String.valueOf(this.numContainer.get(0)) + this.numContainer.get(1) + this.numContainer.get(2);
     }
 }
