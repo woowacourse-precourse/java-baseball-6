@@ -8,6 +8,7 @@ public class OutputWriter {
     public void printInputMessage(){
         System.out.print("숫자를 입력해주세요 : ");
     }
+
     public void printResultOfInput(int ball, int strike){
         if(isZero(ball) && isZero(strike)) System.out.println("낫싱");
         else if(!isZero(ball) &&  isZero(strike)) System.out.println(ball + "볼");
