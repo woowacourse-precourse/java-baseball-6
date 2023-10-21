@@ -10,9 +10,8 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
-        TotalGameLoop:
+    TotalGameLoop:
         while (true) {
             StartView.displayStartMessage();
 
@@ -121,8 +120,8 @@ public class Application {
                 //[게임 종료]
                 //사용자가 입력한 숫자와 컴퓨터가 뽑은 숫자가 모두 같으면 "게임 종료 문구" 출력 후 게임 종료　
                 if (strike == GameConstants.NUMBER_LENGTH) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    System.out.println(GameConstants.GAME_END_MESSAGE);
+                    System.out.println(GameConstants.RESTART_CHOICE_MESSAGE);
                     String regameNum = Console.readLine();
 
                     //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
@@ -149,7 +148,7 @@ public class Application {
     }
 
     public static void throwInvalidValueException() {
-        throw new IllegalArgumentException("유효하지 않은 값 예외: Custom error message");
+        throw new IllegalArgumentException();
     }
 
     //string이 Integer인지 아닌지 판단. TODO: IntegerUtil에 넣기
@@ -180,6 +179,5 @@ public class Application {
 
         return integer;
     }
-
 
 }
