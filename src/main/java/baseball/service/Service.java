@@ -1,8 +1,8 @@
 package baseball.service;
 
-import baseball.domain.Balls;
 import baseball.domain.Game;
 import baseball.domain.GameState;
+import baseball.domain.balls.Balls;
 
 public class Service {
     private final Game game;

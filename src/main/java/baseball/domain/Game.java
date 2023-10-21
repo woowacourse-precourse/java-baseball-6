@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import baseball.domain.balls.Balls;
+import baseball.domain.balls.BallsGenerator;
+
 public class Game {
     private GameState gameState = GameState.READY;
     private final BallsGenerator ballsGenerator;

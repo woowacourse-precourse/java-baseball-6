@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.balls;
 
 import static baseball.utils.Constants.MAX_NUMBER;
 import static baseball.utils.Constants.MIN_NUMBER;

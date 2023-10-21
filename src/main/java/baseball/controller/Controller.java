@@ -2,9 +2,9 @@ package baseball.controller;
 
 import static baseball.utils.Constants.NUMBER_OF_BALLS;
 
-import baseball.domain.Balls;
 import baseball.domain.Game;
-import baseball.domain.RandomBallsGenerator;
+import baseball.domain.balls.Balls;
+import baseball.domain.balls.RandomBallsGenerator;
 import baseball.domain.score.Hint;
 import baseball.service.Service;
 import baseball.view.Command;
