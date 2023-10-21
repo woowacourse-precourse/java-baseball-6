@@ -1,0 +1,15 @@
+# <타입>/<제목> 형식으로 작성하며, 무엇을 했는지 명확하게 작성
+# 예시: `FEAT / create~`, `FEAT / add~`, `BUG / fix~`, `DOC / delete~`
+
+##########
+
+# FEAT	(Feature) 개선 또는 기능 추가
+# BUG	(Bug Fix) 버그 수정
+# DOC	(Documentation) 문서 작업
+# TST	(Test) 테스트 추가/수정
+# BLD	(Build) 빌드 또는 패키지 매니저 수정
+# CLN	(Cleanup) 코드 정리/리팩토링
+# STL   (Style) 코드에 영향을 주지 않는 변경
+
+##########
+
