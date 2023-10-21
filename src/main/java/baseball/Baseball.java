@@ -4,17 +4,23 @@ import static baseball.Constants.ALERT_END_CHOICE;
 import static baseball.Constants.ALERT_INPUT;
 import static baseball.Constants.ALERT_START;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Baseball {
     private final Answer answer = new Answer();
     private InputNumbers inputNumbers = new InputNumbers();
     private BallAndStrike ballAndStrike;
     private Result result = Result.DEFAULT;
     private InputChoice inputChoice = new InputChoice();
+    private Restart restart = new Restart();
 
     public void run() {
-        start();
-        game();
-        end();
+        while (restart.getRestart()) {
+            start();
+            game();
+            end();
+        }
+        Console.close();
     }
 
     private void start() {
@@ -76,7 +82,7 @@ public class Baseball {
 
     private void decideEndOrNot() {
         if (inputChoice.getInputChoice() == 2) {
-            // 게임 다시 시작
+            restart.stop();
         }
     }
 }
