@@ -1,9 +1,9 @@
 package baseball.game.core;
 
-import baseball.game.Answer;
-import baseball.game.BaseballGame;
-import baseball.game.dto.Baseball;
-import baseball.game.dto.BaseballScore;
+import baseball.game.service.Answer;
+import baseball.game.service.BaseballGame;
+import baseball.game.service.dto.Baseball;
+import baseball.game.service.dto.BaseballScore;
 import baseball.io.input.Input;
 import baseball.io.input.validation.InputValidator;
 

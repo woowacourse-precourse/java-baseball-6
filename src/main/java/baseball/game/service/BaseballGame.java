@@ -1,7 +1,7 @@
-package baseball.game;
+package baseball.game.service;
 
-import baseball.game.dto.Baseball;
-import baseball.game.dto.BaseballScore;
+import baseball.game.service.dto.Baseball;
+import baseball.game.service.dto.BaseballScore;
 
 public class BaseballGame {
 

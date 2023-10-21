@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.game.service;
 
 public class Answer {
 

@@ -1,4 +1,4 @@
-package baseball.game.dto;
+package baseball.game.service.dto;
 
 public record BaseballScore(int ballCount, int strikeCount) {
 

@@ -1,4 +1,4 @@
-package baseball.game.dto;
+package baseball.game.service.dto;
 
 import java.util.ArrayList;
 import java.util.List;

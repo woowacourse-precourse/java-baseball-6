@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.game.Answer;
-import baseball.game.BaseballGame;
+import baseball.game.service.Answer;
+import baseball.game.service.BaseballGame;
 import baseball.game.core.GameLoop;
 
 import baseball.game.core.GameLoopBuilder;

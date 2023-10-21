@@ -1,7 +1,7 @@
 package baseball.game.core;
 
-import baseball.game.Answer;
-import baseball.game.BaseballGame;
+import baseball.game.service.Answer;
+import baseball.game.service.BaseballGame;
 import baseball.io.input.Input;
 
 public class GameLoopBuilder {
