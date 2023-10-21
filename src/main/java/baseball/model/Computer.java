@@ -26,7 +26,7 @@ public class Computer {
     }
 
     private boolean isStrike(final int index, final List<Integer> userNumbers) {
-        return numbers.get(index).equals(userNumbers.get(index));
+        return this.numbers.get(index).equals(userNumbers.get(index));
     }
 
     public int getBallCount(final List<Integer> userNumbers) {
@@ -37,7 +37,11 @@ public class Computer {
 
     private boolean isBall(final int index, final List<Integer> userNumbers) {
         int number = userNumbers.get(index);
-        return !numbers.get(index).equals(number) && numbers.contains(number);
+        return !this.numbers.get(index).equals(number) && this.numbers.contains(number);
+    }
+
+    public boolean isThreeStrikes(final List<Integer> userNumbers) {
+        return this.numbers.equals(userNumbers);
     }
 }
 
