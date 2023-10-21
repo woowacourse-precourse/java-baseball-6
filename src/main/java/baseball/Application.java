@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.GameConstants;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -22,8 +23,8 @@ public class Application {
 
         //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
         List<Integer> computerNumList = new ArrayList<>();
-        while (computerNumList.size() < n) {
-            int randomNumber = Randoms.pickNumberInRange(startN, endN);
+        while (computerNumList.size() < GameConstants.NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(GameConstants.MIN_DIGIT, GameConstants.MAX_DIGIT);
             if (!computerNumList.contains(randomNumber)) {
                 computerNumList.add(randomNumber);
             }
@@ -43,20 +44,20 @@ public class Application {
         //검증: 만약 숫자의 자리수가 3보다 작으면 잘못 입력한 것이다.
         //검증: 만약 숫자의 자리수가 3보다 크면 잘못 입력한 것이다.
         int inputNumLen = inputNum.length();
-        if (inputNumLen<n) {
+        if (inputNumLen<GameConstants.NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
 
-        if (inputNumLen>n) {
+        if (inputNumLen>GameConstants.NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
 
         //검증: 만약 같은 숫자가 2개 이상 있으면 잘못 입력한 것이다.
         Set numSet=new HashSet();
-        for (int i=0; i<n; i++){
+        for (int i=0; i<GameConstants.NUMBER_LENGTH; i++){
             numSet.add(inputNum.charAt(i));
         }
-        if (numSet.size()<n){
+        if (numSet.size()<GameConstants.NUMBER_LENGTH){
             throw new IllegalArgumentException();
         }
 
@@ -68,7 +69,7 @@ public class Application {
         //힌트는 스트라이크, 볼, 낫싱 3가지　
         //같은 수가 같은 자리에 있으면 스트라이크　
         int strike = 0;
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++){
             if (inputNumList.get(i).equals(computerNumList.get(i))) {
                 strike++;
             }
@@ -78,6 +79,8 @@ public class Application {
         int ball = 0;
         for (int i = 0; i < n; i++){
             for (int j = 0; j < n; j++){
+        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++){
+            for (int j = 0; j < GameConstants.NUMBER_LENGTH; j++){
                 if (inputNumList.get(i).equals(computerNumList.get(j))) {
                     ball++;
                 }
