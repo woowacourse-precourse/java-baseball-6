@@ -8,4 +8,8 @@ public enum GameMessage {
     GameMessage(final String message) {
         this.message = message;
     }
+
+    public String toValue() {
+        return this.message;
+    }
 }
