@@ -1,6 +1,7 @@
 package baseball.application;
 
 import baseball.domain.Hint;
+import baseball.domain.Player;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,6 +18,16 @@ public class NumberService {
         }
 
         return new ArrayList<>(numberSet);
+    }
+
+    public Hint getHint(Player computer, Player player) {
+        List<Integer> computerNumber = computer.getNumbers();
+        List<Integer> playerNumber = player.getNumbers();
+        Hint hint = new Hint();
+
+        compareNumber(computerNumber, playerNumber, hint);
+
+        return hint;
     }
 
     private static void compareNumber(List<Integer> computerNumber, List<Integer> playerNumber,
