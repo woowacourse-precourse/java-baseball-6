@@ -21,6 +21,10 @@ public class BaseballController {
         outputView.printStartGame();
         goalNumber = baseballService.createGoalNumber();
 
+        game();
+    }
+
+    private void game(){
         List<Integer> inputNumber = getInputNumber();
 
         String hint = checkNumber(inputNumber);
