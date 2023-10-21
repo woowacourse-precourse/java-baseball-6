@@ -11,13 +11,9 @@ public class GameProcess {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> player = Player.playerNumber();
 
-        if (countBall(player, computer) > 0) {
-            System.out.print(countBall(player, computer) + "볼");
-        }
-
-        if (countStrike(player, computer) > 0) {
-            System.out.println(countStrike(player, computer) + "스트라이크");
-        }
+        int strike = countStrike(player, computer);
+        int ball = countBall(player, computer);
+        printGameResult(strike, ball);
 
         // computer와 player 확인 작업(이후 삭제 예정)
         System.out.println(computer);
@@ -46,5 +42,23 @@ public class GameProcess {
         }
 
         return ball;
+    }
+
+    public static void printGameResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (strike > 0 && ball > 0) {
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+            return;
+        }
+        if (strike > 0) {
+            System.out.printf("%d스트라이크\n", strike);
+            return;
+        }
+        if (ball > 0) {
+            System.out.printf("%d볼\n", ball);
+        }
     }
 }
