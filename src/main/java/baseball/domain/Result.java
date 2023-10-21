@@ -1,12 +1,26 @@
 package baseball.domain;
 
+import java.util.List;
+
 public class Result {
     private int ball;
     private int strike;
 
-    public Result(int ball, int strike) {
-        this.ball = ball;
-        this.strike = strike;
+    public Result(List<Integer> inputAnswer, List<Integer> randomNumbers){
+        compareInputAnswerToRandomNumbers(inputAnswer, randomNumbers);
+    }
+
+    private void compareInputAnswerToRandomNumbers(List<Integer> inputAnswer, List<Integer> randomNumbers) {
+        ball = 0;
+        strike = 0;
+
+        for (int i = 0; i < inputAnswer.size(); i++) {
+            if (inputAnswer.get(i).equals(randomNumbers.get(i))) {
+                strike++;
+            } else if (randomNumbers.contains(inputAnswer.get(i))) {
+                ball++;
+            }
+        }
     }
 
     public String getOutputMessage() {
