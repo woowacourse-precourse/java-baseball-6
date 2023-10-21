@@ -46,6 +46,7 @@ public class Application {
     String user_num = Console.readLine();
     containsDuplicates(user_num);
     isStringLengthCorrect(user_num);
+    checkThreeDigitNumber(user_num);
     return user_num;
   }
 
@@ -85,13 +86,15 @@ public class Application {
     return 0;
   }
 
-  public static void isStringLengthCorrect(String user_num) throws IllegalArgumentException {
+  public static void isStringLengthCorrect(String user_num)
+      throws IllegalArgumentException { // 자리수 검사
     if (user_num.length() != 3) {
       throw new IllegalArgumentException("3자리를 입력하세요.");
     }
   }
 
-  public static void containsDuplicates(String user_num) throws IllegalArgumentException {
+  public static void containsDuplicates(String user_num)
+      throws IllegalArgumentException { // 중복되었는지 검사
     int first = user_num.charAt(0);
     int second = user_num.charAt(1);
     int third = user_num.charAt(2);
@@ -100,10 +103,18 @@ public class Application {
     }
   }
 
-  public static void handleInvalidInput(String user) throws IllegalArgumentException {
+  public static void handleInvalidInput(String user) throws IllegalArgumentException { // 1또는 2 검사
     if (!user.equals("1") && !user.equals("2")) {
       throw new IllegalArgumentException("1 또는 2를 입력하세요.");
     }
   }
 
+  public static void checkThreeDigitNumber(String user_num)
+      throws NumberFormatException { // 입력된 문자열에 문자가 있는지 확인
+    for (char c : user_num.toCharArray()) {
+      if (!Character.isDigit(c)) {
+        throw new NumberFormatException("문자가 포함되어 있습니다.");
+      }
+    }
+  }
 }
