@@ -32,7 +32,7 @@ public class BaseballGameTurnInput implements TurnInput {
     }
 
     private void validDuplicate(int[] countNumbers, char ch) {
-        if (countNumbers[ch - '0']++ == 2) {
+        if (++countNumbers[ch - '0'] == 2) {
             throw new IllegalArgumentException("입력은 서로 다른 숫자여야 합니다.");
         }
     }
