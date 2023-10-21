@@ -11,6 +11,8 @@ public class BaseballGameConsole {
     static final int MIN = 1;
     static final int MAX = 9;
     static final int SIZE = 3;
+    static final int START_NUM = 1;
+    static final int END_NUM = 2;
     private boolean isContinue;
     private List<Integer> hitterSelection;
     private String pitcherSelection;
@@ -107,21 +109,22 @@ public class BaseballGameConsole {
     }
 
     private void checkStrikeOut() {
-        if (this.ballCount[0] == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if (this.ballCount[0] == SIZE) {
+            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", SIZE);
             this.strikeOut = true;
         }
     }
 
     private void checkContinue() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.\n", START_NUM, END_NUM);
         String continueAnswer = Console.readLine();
+        String regex = String.format("^[%d-%d]$", START_NUM, END_NUM);
 
-        if (!continueAnswer.matches("^[1-2]$")) {
+        if (!continueAnswer.matches(regex)) {
             throw new IllegalArgumentException();
         }
 
-        if ("2".equals(continueAnswer)) {
+        if (Integer.toString(END_NUM).equals(continueAnswer)) {
             this.isContinue = false;
         }
     }
