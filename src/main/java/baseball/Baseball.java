@@ -1,27 +1,25 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Baseball {
-    public ArrayList<Integer> computerNumber;
-    public ArrayList<Integer> userNumber;
+    ArrayList<Integer> computerNumber;
+    ArrayList<Integer> userNumber;
     int ball;
     int strike;
+
     Baseball() {
         this.ball = 0;
         this.strike = 0;
     }
 
-    public int getBall() {
-        return ball;
+    void inputResult() {
+
     }
 
-    public int getStrike() {
-        return strike;
-    }
-
-    public void resetComputerNumber() {
+    void resetComputerNumber() {
         computerNumber = new ArrayList<Integer>();
         while(computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -30,7 +28,7 @@ public class Baseball {
         }
     }
 
-    public void resetUserNumber(String inputNumber) throws InputNumberException {
+    void resetUserNumber(String inputNumber) throws InputNumberException {
         userNumber = new ArrayList<Integer>();
         String[] inputNumberArray = inputNumber.split("");
         for(String s : inputNumberArray) {
@@ -43,7 +41,8 @@ public class Baseball {
         }
     }
 
-    public void checkStrike() {
+    void checkStrike() {
+        strike = 0; ball = 0;
         for(int i = 0; i < computerNumber.size(); i++) {
             if(computerNumber.get(i) == userNumber.get(i)) {
                 strike++;
@@ -51,7 +50,6 @@ public class Baseball {
                 checkBall(userNumber.get(i));
             }
         }
-        printResult();
     }
 
     void checkBall(int i) {
@@ -61,12 +59,53 @@ public class Baseball {
     }
 
     void printResult() {
-        if(strike == 0 || ball == 0) {
+        if(strike == 0 && ball == 0) {
             System.out.println("낫싱");
             return;
         }
-        if (strike > 0) System.out.println(strike + "스트라이크 ");
-        if (ball > 0) System.out.println(ball + "볼 ");
-        if (strike > 3) System.out.println("3개의 숫자를 모두 맞추셨습니다!");
+        if (ball > 0) {
+            System.out.print(ball + "볼 ");
+        }
+        if (strike > 0) {
+            System.out.print(strike + "스트라이크 ");
+        }
+        if (strike == 3) {
+            System.out.println();
+            System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
+            return;
+        }
+        System.out.println();
+    }
+
+    public boolean playBaseballGame() {
+        resetComputerNumber();
+        while(true) {
+            // 1. 숫자 입력 및 확인
+            System.out.println("숫자를 입력해주세요. : ");
+            String inputNumber = Console.readLine();
+            try{
+                resetUserNumber(inputNumber);
+            } catch (InputNumberException e) {
+                return false;       // 프로그램 종료
+            }
+
+            // 2. 스트라이크, 볼 판단 및 결과 출력
+            checkStrike();
+            printResult();
+
+            // 3. 다시 입력받을지 게임을 종료할지 판단.
+            String exitGame = null;
+            if(strike == 3) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+                exitGame = Console.readLine();
+                if(exitGame.equals("1")) {
+                    return true;
+                }
+                else if(exitGame.equals("2")) {
+                    System.out.println("게임 종료");
+                    return false;
+                }
+            }
+        }
     }
 }
