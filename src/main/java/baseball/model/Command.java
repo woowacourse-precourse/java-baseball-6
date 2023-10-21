@@ -20,6 +20,14 @@ public enum Command {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
+    public static Boolean isRestart(Command command) {
+        return Command.RESTART.equals(command);
+    }
+
+    public static Boolean isQuit(Command command) {
+        return Command.QUIT.equals(command);
+    }
+
     @Override
     public String toString() {
         return this.value;
