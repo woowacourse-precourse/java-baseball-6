@@ -8,27 +8,25 @@ import java.util.List;
 public class Computer {
     private List<Integer> computerNumbers;
 
-    public Computer() {
-        setNumbers();
-    }
+    public List<Integer> generateComputerNumbers() {
+        List<Integer> computerNumbers = new ArrayList<>();
 
-    public List<Integer> getNumbers() {
+        while (computerNumbers.size() < 3) {
+            int randomNumber = randomNumberGenerator();
+            if (isDifferentNumber(computerNumbers, randomNumber)) {
+                computerNumbers.add(randomNumber);
+            }
+        }
         return computerNumbers;
     }
 
-    public void setNumbers() {
-        this.computerNumbers = generateRandomNumbers();
+    // 난수 생성기
+    private int randomNumberGenerator() {
+        return Randoms.pickNumberInRange(1, 9);
     }
 
-    private List<Integer> generateRandomNumbers() {
-        List<Integer> randomNumbers = new ArrayList<>();
-
-        while (randomNumbers.size() < 3) {
-            int number = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumbers.contains(number)) {
-                randomNumbers.add(number);
-            }
-        }
-        return randomNumbers;
+    // 새로 생성한 숫자가 이미 존재하는지 중복을 체크한다.
+    private boolean isDifferentNumber(List<Integer> computerNumber, int randomNumber) {
+        return !computerNumber.contains(randomNumber);
     }
 }
