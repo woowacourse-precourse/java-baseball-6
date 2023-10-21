@@ -59,13 +59,19 @@ public class NumberBaseballController {
 
     private void processOfEndGame() throws IllegalArgumentException {
         outputView.printEndGame();
+        if (isReStartGame()) {
+            return;
+        }
+        outputView.endOfGame();
+    }
+
+    private boolean isReStartGame() throws IllegalArgumentException{
         if(inputView.readNumOfReGame() == RE_GAME) {
             generateNewGame();
             readInputNumFromInputView();
-            return;
+            return true;
         }
-
-        outputView.endOfGame();
+        return false;
     }
 
 
