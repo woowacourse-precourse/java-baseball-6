@@ -23,10 +23,7 @@ public class BaseballGameMachine {
             display(message.start() + '\n');
             gameProcess();
             display(message.requestRetryOrEnd() + '\n');
-            int newOrEnd = newGameOrEnd(input());
-            if (newOrEnd == 2) {
-                gameEnd = true;
-            }
+            gameEnd = newGameOrEnd(input());
         }
     }
 
@@ -47,7 +44,11 @@ public class BaseballGameMachine {
         }
     }
 
-    public int newGameOrEnd(String input) {
-        return inputValidation.validateNewGameRequest(input);
+    public boolean newGameOrEnd(String input) {
+        int userInput = inputValidation.validateNewGameRequest(input);
+        if (userInput == 2) {
+            return true;
+        }
+        return false;
     }
 }
