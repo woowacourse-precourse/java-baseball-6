@@ -1,21 +1,23 @@
 package baseball.validate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InputValidate {
-    public void checkNumbers(String givenNumbers) {
+    public List<Integer> checkNumbers(String givenNumbers) {
+        List<Integer> validatedNumbers = new ArrayList<>();
         String[] numbers = givenNumbers.split("");
-        if(numbers.length > 3 || numbers.length < 0){
-            throw new NumberFormatException("[ERROR] Wrong Size");
-        }
         for(String number : numbers) {
-            checkNumber(number);
+            validatedNumbers.add(checkNumber(number));
         }
+        return validatedNumbers;
     }
 
     public Integer checkNumber(String givenNumber) {
         try {
             return Integer.parseInt(givenNumber);
         } catch (NumberFormatException e) {
-            throw new NumberFormatException("[ERROR]" + givenNumber);
+            throw new NumberFormatException("[ERROR] : Input " + givenNumber);
         }
     }
 }
