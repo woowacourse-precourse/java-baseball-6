@@ -25,6 +25,13 @@ public class BaseballController {
         if (inputString.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
         }
-        StringConvertUtil.stringToIntList(inputString);
+        List<Integer> inputNumber = StringConvertUtil.stringToIntList(inputString);
+
+        String hint = checkNumber(inputNumber);
+        outputView.printHint(hint);
+    }
+
+    private String checkNumber(List<Integer> inputNumber){
+        return baseballService.checkNumber(goalNumber, inputNumber);
     }
 }
