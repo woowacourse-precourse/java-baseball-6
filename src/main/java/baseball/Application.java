@@ -13,14 +13,6 @@ public class Application {
         //"게임 시작 문구" 출력　
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        //공통 변수들 TODO : 추후 static class으로 뺄 수 있다.
-        int n=3;
-        int startN=1;
-        int endN=9;
-        String strikeText="스트라이크";
-        String ballText="볼";
-        String nothingText="낫싱";
-
         //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
         List<Integer> computerNumList = new ArrayList<>();
         while (computerNumList.size() < GameConstants.NUMBER_LENGTH) {
@@ -77,8 +69,6 @@ public class Application {
 
         //같은 수가 다른 자리에 있으면 볼　
         int ball = 0;
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j < n; j++){
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++){
             for (int j = 0; j < GameConstants.NUMBER_LENGTH; j++){
                 if (i==j){
@@ -92,8 +82,28 @@ public class Application {
 
         //같은 수가 전혀 없으면 낫싱　
         boolean nothing = false;
-        if (strike==0 && ball==0) nothing=true;
+        if (strike == 0 && ball == 0) nothing=true;
 
+        //힌트 출력 화면
+        //형식은 "숫자+힌트명"이며, 여러 개일 경우 공백 하나를 기준으로 한 줄에 출력
+        StringBuilder hintBuilder = new StringBuilder();
+        if (ball > 0){
+            hintBuilder.append(ball + "볼");
+        }
+
+        if (!hintBuilder.isEmpty()){ //비어있지 않으면 공백 넣기
+            hintBuilder.append(" ");
+        }
+
+        if (strike > 0){
+            hintBuilder.append(strike + "스트라이크");
+        }
+
+        if (nothing){
+            hintBuilder.append("낫싱");
+        }
+
+        System.out.println(hintBuilder.toString());
     }
 
     //string이 Integer인지 아닌지 판단. TODO: IntegerUtil에 넣기
@@ -105,6 +115,7 @@ public class Application {
             return false;
         }
     }
+
 
     //String to List<Integer> TODO: IntegerListConverter 따로 둬서 IntegerListConverter.parseIntegerList
     public static List<Integer> parseIntegerList(String string){
@@ -125,7 +136,7 @@ public class Application {
     }
 
 
-    //같은 수가 같은 자리에 있으면 스트라이크　
+
 
 
 }
