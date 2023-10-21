@@ -15,20 +15,20 @@ public class InputValidator {
         return numberList;
     }
 
-    public void validateLength(String inputNumbers) {
+    private void validateLength(String inputNumbers) {
         if (inputNumbers.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException(INVALID_LENGTH_EXCEPTION_MSG);
         }
     }
 
-    public List<Integer> convertStrToList(String inputNumbers) {
+    private List<Integer> convertStrToList(String inputNumbers) {
         return inputNumbers.chars()
                 .map(Character::getNumericValue)
                 .boxed()
                 .toList();
     }
 
-    public void validateRange(List<Integer> numberList) {
+    private void validateRange(List<Integer> numberList) {
         boolean isRange = numberList.stream()
                 .allMatch(number -> number >= INPUT_MIN_VALUE && number <= INPUT_MAX_VALUE);
 
@@ -37,7 +37,7 @@ public class InputValidator {
         }
     }
 
-    public void validateDuplicate(List<Integer> numberList) {
+    private void validateDuplicate(List<Integer> numberList) {
         boolean isDuplicate = numberList.stream().distinct().count() != NUMBER_LENGTH;
         if (isDuplicate) {
             throw new IllegalArgumentException(INVALID_DUPLICATE_EXCEPTION_MSG);
