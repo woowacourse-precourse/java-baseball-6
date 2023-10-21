@@ -16,4 +16,8 @@ public class GameResult {
     public Integer getStrikeCount() {
         return strikeCount;
     }
+
+    public boolean isAnswer(int gameSize) {
+        return strikeCount == gameSize;
+    }
 }

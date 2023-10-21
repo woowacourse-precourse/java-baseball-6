@@ -28,10 +28,21 @@ public class GameController {
         View.gameInput();
         String userInputString = Console.readLine();
         List<Integer> userInpuNumbers = gameService.parseInput(userInputString);
+        getResult(userInpuNumbers);
     }
 
     public void getResult(List<Integer> userInputNumbers) {
         GameResult gameResult = gameService.calculateGameResult(userInputNumbers);
         View.gameResult(gameResult);
+        if (gameResult.isAnswer(GAME_SIZE)) {
+            endGame();
+        }
+        getUserInput();
     }
+
+    public void endGame() {
+        View.gameEnd();
+    }
+
+
 }
