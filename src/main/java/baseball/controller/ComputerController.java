@@ -7,12 +7,12 @@ import java.util.List;
 
 public class ComputerController {
 
-    public static List<Integer> getComputerRandomNumber() {
+    public List<Integer> getComputerRandomNumber() {
 
         return generateRandomNumber();
     }
 
-    private static List<Integer> generateRandomNumber() {
+    private List<Integer> generateRandomNumber() {
         List<Integer> randomNumberList = new ArrayList<>();
         int newRandomNumber;
 

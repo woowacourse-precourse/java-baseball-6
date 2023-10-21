@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.model.PlayerAnswer;
+
 public class GameView {
 
     public void printStartGameMessage() {
@@ -15,11 +17,24 @@ public class GameView {
     }
 
     public void printInputNumberMessage() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public void printAnswerHintMessage(String hintMessage) {
-        System.out.println(hintMessage);
+    public void printAnswerHintMessage(PlayerAnswer playerAnswer) {
+        System.out.println(printBallOrStrike(playerAnswer));
+    }
+
+    private String printBallOrStrike(PlayerAnswer playerAnswer) {
+        String hint = "";
+
+        if (playerAnswer.getBall() > 0) {
+            hint += playerAnswer.getBall() + "볼 ";
+        }
+        if (playerAnswer.getStrike() > 0) {
+            hint += playerAnswer.getStrike() + "스트라이크";
+        }
+
+        return hint.equals("") ? "낫싱" : hint;
     }
 
 }
