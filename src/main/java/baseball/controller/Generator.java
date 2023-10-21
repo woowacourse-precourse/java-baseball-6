@@ -8,11 +8,14 @@ import java.util.List;
 
 public class Generator {
 
-    private static final int MIN_NUM = Configuration.MIN_NUM;
-    private static final int MAX_NUM = Configuration.MAX_NUM;
-    private static final int LIST_LEN = Configuration.LIST_LEN;
+    int MIN_NUM = Configuration.MIN_NUM;
+    int MAX_NUM = Configuration.MAX_NUM;
+    int LIST_LEN = Configuration.LIST_LEN;
 
-    public static List<Integer> generateAnswer(int listLen) {
+    Validation validation = new Validation();
+
+
+    public List<Integer> generateAnswer(int listLen) {
         List<Integer> answerList = new ArrayList<>();
 
         while (answerList.size() < listLen) {
@@ -28,9 +31,9 @@ public class Generator {
         return answerList;
     }
 
-    public static List<Integer> generateInputList() {
+    public List<Integer> generateInputList() {
         String input = Console.readLine();
-        Validation.validateInputLength(input, LIST_LEN);
+        validation.validateInputLength(input, LIST_LEN);
 
         int inputLen = input.length();
 
@@ -38,8 +41,8 @@ public class Generator {
         for (int idx = 0; idx < inputLen; idx++) {
             int inputNum = input.charAt(idx) - '0';
 
-            Validation.validateNumber(inputNum);
-            Validation.validateDuplication(inputList, inputNum);
+            validation.validateNumber(inputNum);
+            validation.validateDuplication(inputList, inputNum);
 
             inputList.add(inputNum);
         }
