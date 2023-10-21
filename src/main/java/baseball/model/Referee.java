@@ -4,29 +4,29 @@ public class Referee {
 
     private static final int DEFAULT_NUMBER = 0;
 
-    private int computerNumber;
-    private int userNumber;
+    private int hitter;
+    private int pitcher;
 
-    private Referee(final int computerNumber, final int userNumber, final boolean flag) {
-        this.computerNumber = computerNumber;
-        this.userNumber = userNumber;
+    private Referee(final int hitter, final int pitcher) {
+        this.hitter = hitter;
+        this.pitcher = pitcher;
     }
 
     public static Referee createDefault() {
-        return new Referee(DEFAULT_NUMBER, DEFAULT_NUMBER, false);
+        return new Referee(DEFAULT_NUMBER, DEFAULT_NUMBER);
     }
 
     public int answerResult(final GameRule gameRule) {
-        return gameRule.calculate(userNumber, computerNumber);
+        return gameRule.calculate(pitcher, hitter);
     }
 
-    public void prepareJudgement(final int computerNumber, final int userNumber) {
-        this.computerNumber = computerNumber;
-        this.userNumber = userNumber;
+    public void prepareJudgement(final int hitter, final int pitcher) {
+        this.hitter = hitter;
+        this.pitcher = pitcher;
     }
 
     public void resetGame() {
-        this.computerNumber = DEFAULT_NUMBER;
-        this.userNumber = DEFAULT_NUMBER;
+        this.hitter = DEFAULT_NUMBER;
+        this.pitcher = DEFAULT_NUMBER;
     }
 }
