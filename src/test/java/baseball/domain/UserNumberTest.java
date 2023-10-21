@@ -24,4 +24,11 @@ public class UserNumberTest {
         assertThatThrownBy(() -> new UserNumber(List.of(0, 1, 2)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("사용자 숫자 3자리 중 중복이 있으면 예외가 발생한다.")
+    void testValidateUserNumberDuplicate() {
+        assertThatThrownBy(() -> new UserNumber(List.of(1, 1, 2)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
