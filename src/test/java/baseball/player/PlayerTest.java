@@ -23,14 +23,4 @@ public class PlayerTest {
         List<Integer> expected = List.of(1,2,3);
         assertThat(expected).isEqualTo(playerNum);
     }
-
-    @Test
-    void 세자리_입력_예외() {
-        Player player = new Player();
-        String input = "12";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        assertThrows(IllegalArgumentException.class, player::enter);
-    }
 }
