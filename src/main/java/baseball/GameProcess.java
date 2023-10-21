@@ -26,4 +26,16 @@ public class GameProcess {
         System.out.println(player);
     }
 
+    public List<Integer> getPlayerNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> playerNumber = Player.playerNumber();
+        return playerNumber;
+    }
+
+    public void countScore(List<Integer> player, List<Integer> computer, Score score) {
+        int strike = Score.countStrike(player, computer);
+        int ball = Score.countBall(player, computer);
+        score.setScore(strike, ball);
+    }
+
 }

@@ -49,6 +49,11 @@ public class Score {
         }
     }
 
+    public void setScore(int strike, int score) {
+        this.strike = strike;
+        this.ball = ball;
+    }
+
     public Score() {
         this.strike = 0;
         this.ball = 0;
