@@ -16,6 +16,7 @@ public class GameController {
             OutputView.outputForGameValueInput();
             String user_input_value = InputView.readLineByConsole();
             if (GameValidation.verifyForGameValue(user_input_value)){
+                List<Integer> integers = GenerateNumberList.generateInputValueToUser(user_input_value);
 
             }
         }
