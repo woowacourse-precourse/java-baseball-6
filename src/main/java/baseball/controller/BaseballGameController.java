@@ -72,13 +72,10 @@ public class BaseballGameController {
         }
 
         private static void validateUsersGuess(String userInput) {
-            boolean isValid = true;
-            if (userInput.length() != 3) {
-                isValid = false;
-            }
-            for (int i = 0; i < userInput.length(); i++) {
+            boolean isValid = (userInput.length() == 3);
+            for (int i = 0; i < userInput.length() && isValid; i++) {
                 int number = userInput.charAt(i) - '0';
-                isValid &= (1 <= number && number <= 9);
+                isValid = (1 <= number && number <= 9);
             }
             if (!isValid) {
                 throw new IllegalArgumentException("1~9 사이 수 3자리를 입력해주세요.");
