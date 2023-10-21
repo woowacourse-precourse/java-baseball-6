@@ -22,7 +22,7 @@ class NumberGeneratorTest {
             List<Integer> generatedNumbers = NumberGenerator.generateUniqueNumbers(startInclusive, endInclusive, digit);
 
             Set<Integer> uniqueNumbers = new HashSet<>(generatedNumbers);
-            assertThat(uniqueNumbers.size()).isEqualTo(digit);
+            assertThat(uniqueNumbers).hasSize(digit);
         }
 
         @DisplayName("범위가 너무 작으면 예외가 발생한다")
