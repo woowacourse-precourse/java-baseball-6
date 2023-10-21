@@ -157,10 +157,9 @@ class UserNumber {
 
 	void checkInputSize(String[] inputUserNumber) {
 
-		if(inputUserNumber.length != USER_NUMBER_SIZE) {
+		if (inputUserNumber.length != USER_NUMBER_SIZE) {
 			throw new IllegalArgumentException("3자리 숫자만 입력해주세요.");
 		}
-
 	}
 
 	List<Integer> toListUserNumber(String[] inputUserNumber) {
@@ -172,7 +171,6 @@ class UserNumber {
 			if (!userNumber.contains(eachUserNumberList)) {
 				userNumber.add(eachUserNumberList);
 			}
-
 		}
 
 		return userNumber;
@@ -186,6 +184,7 @@ class UserNumber {
 	}
 
 	void checkRangeUserNum(List<Integer> userNumber) {
+
 		for (Integer eachUserNumber : userNumber) {
 			if (!(USER_MIN_NUMBER <= eachUserNumber && eachUserNumber <= USER_MAX_NUMBER)) {
 				throw new IllegalArgumentException("1~9 사이의 숫자만 입력해주세요");
