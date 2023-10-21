@@ -13,12 +13,10 @@ public class BaseballGame {
 
     public BaseballGame(){
         computerNumber = new ComputerNumber();
-
     }
 
     public void start(){
         OutputView.printStart();
-        System.out.println(computerNumber.getComputer());
         do{
             playGame();
             printScore();
