@@ -7,7 +7,14 @@ import java.util.List;
 import java.util.Set;
 
 public class InputValidation {
-    public List<Integer> validateUserInput(String input) throws IllegalArgumentException{
+    public List<Integer> validateUserInput(String input) throws IllegalArgumentException {
+        validateInputString(input);
+        validateInputNumber(input);
+        final List<Integer> parseIntList = userInputToList(input);
+        return parseIntList;
+    }
+
+    public void validateInputString(String input) throws IllegalArgumentException {
         if (input.contains(" ")) {
             throw new IllegalArgumentException("공백 없이 오직 숫자만 입력해주시기 바랍니다.");
         }
@@ -17,12 +24,9 @@ public class InputValidation {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3개의 숫자만을 입력해주시기 바랍니다.");
         }
-        validateInputNumber(input);
-        final List<Integer> parseIntList = userInputToList(input);
-        return parseIntList;
     }
 
-    public void validateInputNumber(String input) throws IllegalArgumentException{
+    public void validateInputNumber(String input) throws IllegalArgumentException {
         Set<Character> charSet = new HashSet<Character>();
         charSet.add(input.charAt(0));
         charSet.add(input.charAt(1));
@@ -42,16 +46,7 @@ public class InputValidation {
         }
     }
 
-    public List<Integer> userInputToList(String userInput) {
-        List<Integer> userInputList = new ArrayList<>();
-        for (int i = 0; i < userInput.length(); i++) {
-            char c = userInput.charAt(i);
-            userInputList.add(Character.getNumericValue(c));
-        }
-        return userInputList;
-    }
-
-    public int validateNewGameRequest(String input) throws IllegalArgumentException{
+    public int validateNewGameRequest(String input) throws IllegalArgumentException {
         if (input.length() != 1) {
             throw new IllegalArgumentException("한자리 숫자 입력해주세요.");
         }
@@ -63,5 +58,14 @@ public class InputValidation {
             throw new IllegalArgumentException("1 혹은 2를 입력해주세요.");
         }
         return inputValue;
+    }
+
+    public List<Integer> userInputToList(String userInput) {
+        List<Integer> userInputList = new ArrayList<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            char c = userInput.charAt(i);
+            userInputList.add(Character.getNumericValue(c));
+        }
+        return userInputList;
     }
 }
