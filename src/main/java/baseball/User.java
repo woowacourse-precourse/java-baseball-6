@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class User {
     private static final String ENTER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
@@ -26,7 +28,7 @@ public class User {
     }
 
     private boolean isValidInput(String number) {
-        if (!checkValidLength(number) || !checkDigit(number)) {
+        if (!checkValidLength(number) || !checkDigit(number) || !checkDuplicatedNumber(number)) {
             return false;
         } else {
             return true;
@@ -51,5 +53,23 @@ public class User {
         }
         return true;
     }
+
+    //중복된 숫자가 존재하는지 검사하는 함수
+    private boolean checkDuplicatedNumber(String number) {
+
+        List<Integer> numberList = new ArrayList<Integer>();
+
+        for (int i = 0; i < NUMBER_LEN; i++) {
+            numberList.add(Character.getNumericValue(number.charAt(i)));
+        }
+
+        Set<Integer> numberSet = new HashSet<Integer>(numberList);
+
+        if (numberSet.size() != numberList.size()) {
+            return false;
+        }
+        return true;
+    }
+
 
 }
