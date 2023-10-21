@@ -23,11 +23,12 @@ public class GameManager {
     private final static String BALL_SCORE = "볼";
     private final static String STRIKE_SCORE = "스트라이크";
     GameManager(){
-        gameInit();
     }
     public void gameInit(){
         position = new int[10];
         setResult();
+        ball = 0;
+        strike = 0;
     }
     private void setResult(){
         int cnt = 0;
