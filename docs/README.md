@@ -1,19 +1,30 @@
 1. 미션은 기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항 세 가지로 구성되어 있다.
 2. 세 개의 요구 사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만든다.
 3. 기능 요구 사항에 기재되지 않은 내용은 스스로 판단하여 구현한다.
+https://jjeongil.tistory.com/2124
 
 구현할 기능 목록 (기능이 작동하면 커밋해보기)
-1. 서로 다른 3자리의 수를 입력받는 객체 
--- 변수 숫자가 아니어도 오류
+1. 서로 다른 3자리의 수를 입력받는 객체
+https://st-lab.tistory.com/92
+-- 변수 숫자가 아니어도 오류 // 미완성
 -- tochararray 변환해서 length 3자리 이상일경우 IllegalArgumentException
+https://cheershennah.tistory.com/147
 완료
--- asdf넣으면 입력오류
+-- asdf넣으면 입력오류 // 미완성
 2. 3자리의 수가 서로 다른 수인지 확인하는 객체 1==2? 2==3? 1==3? 
 -- IllegalArgumentException
 3. 컴퓨터가 서로 다른 수를 만드는 객체
+random num 활용
+https://offbyone.tistory.com/237
+https://roeldowney.tistory.com/492
+https://webclub.tistory.com/166
 4. 입력으로 3개의 를 받아 스트라이크 볼 낫싱 확인하는 객체
+제대로 작동함
 5. 게임이 끝난 경우 재시작/종료를 구분하는 1과 2중 하나의 수를 입력 객체
 -- 변수 오류일경우 IllegalArgumentException
+
+https://geojun.tistory.com/36 흠 중복값 제거하는 방법
+https://e-you.tistory.com/214 랜덤시드
 
 🚀 기능 요구 사항
 기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
