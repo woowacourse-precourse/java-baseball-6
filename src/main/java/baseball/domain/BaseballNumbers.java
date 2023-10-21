@@ -30,4 +30,17 @@ public class BaseballNumbers {
 
         return strikeCount;
     }
+
+    public int getBallCount(BaseballNumbers inputBaseballNumbers) {
+        int ballCount = 0;
+        List<BaseballNumber> baseballNumberList = this.ballNumbers;
+        for (int i = 0; i < 3; i++) {
+            BaseballNumber baseballNumber = baseballNumberList.get(i);
+            BaseballNumber inputBaseballNumber = inputBaseballNumbers.ballNumbers.get(i);
+            if (baseballNumberList.contains(inputBaseballNumber) && !baseballNumber.equals(inputBaseballNumber)) {
+                ballCount += 1;
+            }
+        }
+        return ballCount;
+    }
 }
