@@ -42,19 +42,23 @@ public class Application {
 
 
 class RandomNumberGenerator{
+    static int hundred;
+    static int ten;
+    static int one;
+
     public static int generate() {
         int randomNumber;
         do {
-            randomNumber = Randoms.pickNumberInRange(100, 1000);
-        } while (!isDistinct(randomNumber));
+            hundred=Randoms.pickNumberInRange(1,9);
+            ten=Randoms.pickNumberInRange(1,9);
+            one=Randoms.pickNumberInRange(1,9);
+        } while (!isDistinct(hundred, ten, one));
+        randomNumber=hundred*100+ten*10+one;
         return randomNumber;
     }
 
     //세 자리가 모두 다른 숫자인지 확인하는 함수
-    public static boolean isDistinct(int randomNumber){
-        int hundred = randomNumber / 100;
-        int ten = (randomNumber / 10) % 10;
-        int one = randomNumber % 10;
+    public static boolean isDistinct(int hundred, int ten, int one){
         return (hundred != ten) && (hundred != one) && (one != ten);
     }
 }
