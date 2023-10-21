@@ -27,26 +27,29 @@ public class Game {
     private List<Integer> askQuery() {
         System.out.print("숫자를 입력해주세요 : ");
         String queryString = Console.readLine();
+
+        int queryInt;
         try {
-            int queryInt = Integer.parseInt(queryString);
-            List<Integer> query = Arrays.asList(
-                    queryInt / 100,
-                    (queryInt / 10) % 10,
-                    queryInt % 10);
-            for (int i = 0; i < 3; i++) {
-                if (query.get(i) < 1 || query.get(i) > 9) {
-                    throw new Exception("Digits must be ranged 1 to 9");
-                }
-                for (int j = i + 1; j < 3; j++) {
-                    if (query.get(i).equals(query.get(j))) {
-                        throw new Exception("Digits must be unique");
-                    }
+            queryInt = Integer.parseInt(queryString);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Input must be a number");
+        }
+
+        List<Integer> query = Arrays.asList(
+                queryInt / 100,
+                (queryInt / 10) % 10,
+                queryInt % 10);
+        for (int i = 0; i < 3; i++) {
+            if (query.get(i) < 1 || query.get(i) > 9) {
+                throw new IllegalArgumentException("Digits must be ranged 1 to 9");
+            }
+            for (int j = i + 1; j < 3; j++) {
+                if (query.get(i).equals(query.get(j))) {
+                    throw new IllegalArgumentException("Digits must be unique");
                 }
             }
-            return query;
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
         }
+        return query;
     }
 
     private int[] judge(List<Integer> query) {
