@@ -1,10 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import service.Result;
 
 import java.util.List;
 
 import static repository.Computer.getComputerPicks;
+import static service.Result.getResult;
+import static service.Result.printResult;
 import static validation.Validator.validateInput;
 import static validation.Validator.validateOneOrTwo;
 
@@ -37,7 +40,7 @@ public class Application {
         final String RESTART = "1";
 //        final String QUIT = "2";
 
-        if (result.strikes() == computer.size()) {
+        if (result.getStrikes() == computer.size()) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = Console.readLine();
@@ -48,39 +51,4 @@ public class Application {
         }
         return computer;
     }
-
-
-    private static void printResult(Result result) {
-        if (result.balls() == 0 && result.strikes() == 0) System.out.println("낫싱");
-        else if (result.balls() == 0) System.out.println(result.strikes() + "스트라이크");
-        else if (result.strikes() == 0) System.out.println(result.balls() + "볼");
-        else System.out.println(result.balls() + "볼" + " " + result.strikes() + "스트라이크");
-    }
-
-
-    private static Result getResult(List<Integer> computer, String input) {
-        int balls = 0;
-        int strikes = 0;
-        char[] inputChars = input.toCharArray();
-
-        for (int i = 0; i < TOTAL_CARDS; i++) {
-            for (int j = 0; j < TOTAL_CARDS; j++) {
-                if (computer.get(i) == Character.getNumericValue(inputChars[j])) {
-                    if (i == j) {
-                        strikes++;
-                    } else {
-                        balls++;
-                    }
-                    break;
-                }
-            }
-        }
-
-        return new Result(balls, strikes);
-    }
-
-    private record Result(int balls, int strikes) {
-    }
-
-
 }
