@@ -13,14 +13,14 @@ public class Player {
     public void changeExpectedNumbers(String numbers) {
         initExpectedNumbers();
         playerValidator.validateExpectedNumbers(numbers);
-        expectedNumbers = getExpectedNumbers(numbers);
+        expectedNumbers = toList(numbers);
     }
 
     private void initExpectedNumbers() {
         expectedNumbers = new ArrayList<>();
     }
 
-    private List<Integer> getExpectedNumbers(String numbers) {
+    private List<Integer> toList(String numbers) {
         return numbers.chars()
                 .filter(Character::isDigit)
                 .map(Character::getNumericValue)
