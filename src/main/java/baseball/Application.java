@@ -7,12 +7,18 @@ import java.util.List;
 
 public class Application {
 
-    static StringBuilder sb = new StringBuilder();
+    static List<Integer> computer;
 
     public static void main(String[] args) {
-        
-        // 1. 난수 생성하기
-        List<Integer> computer = new ArrayList<>();
+
+        genNumbers();
+        System.out.println(computer);
+
+    }
+
+    static void genNumbers() {
+
+        computer = new ArrayList<>();
 
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -22,10 +28,6 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-
-        sb.append(computer);
-
-        System.out.println(sb.toString());
 
     }
 }
