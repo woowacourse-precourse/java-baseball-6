@@ -13,4 +13,14 @@ public class User {
     public String getuserNumber() {
         return userNumber;
     }
+
+    public void setUserNumber(String userNumber) {
+        try {
+            Validator.validateUserInput(userNumber);
+            Validator.validateInputLength(userNumber, 3);
+            this.userNumber = userNumber;
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+    }
 }
