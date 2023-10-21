@@ -85,7 +85,7 @@ public class BaseballGame {
 
     private Map<String, Integer> countStrikeAndBall(List<Integer> userNum, List<Integer> randomNum){
         Map<String, Integer> resultList = new HashMap<>();
-        initStrikeAndBallNum();
+        initStrikeAndBallNum(resultList);
 
         for(int i = 0; i < NUMBER_LENGTH; i++){
             if(userNum.get(i) == randomNum.get(i)){
@@ -95,6 +95,11 @@ public class BaseballGame {
             }
         }
         return resultList;
+    }
+
+    private void initStrikeAndBallNum(Map<String, Integer> resultList){
+        resultList.put("strike", 0);
+        resultList.put("ball", 0);
     }
 
 }
