@@ -26,10 +26,7 @@ public class GameController {
         GameCommand gameCommand = GameCommand.RETRY;
 
         while (gameCommand.equals(GameCommand.RETRY)) {
-            List<Integer> playerBaseBall = InputView.readBaseBallNumbers();
-            service.setPlayerBaseball(playerBaseBall);
-            GameResult gameResult = service.getGameResult();
-            OutputView.printGameResult(gameResult);
+            playAndPrintGameResult();
 
             if (service.isGameWon()) {
                 OutputView.printGameEndMessage();
@@ -43,8 +40,15 @@ public class GameController {
                 if (gameCommand.equals(GameCommand.RETRY)) {
                     service.startGame();
                 }
-
             }
         }
+    }
+
+    private void playAndPrintGameResult() {
+        List<Integer> playerBaseBall = InputView.readBaseBallNumbers();
+        service.setPlayerBaseball(playerBaseBall);
+
+        GameResult gameResult = service.getGameResult();
+        OutputView.printGameResult(gameResult);
     }
 }
