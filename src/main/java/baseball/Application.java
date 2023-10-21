@@ -7,5 +7,7 @@ public class Application {
         // TODO: 프로그램 구현
         RandomNumber randomNumber = new RandomNumber();
         System.out.println(randomNumber.number);
+        PlayerInput playerInput = new PlayerInput();
+        System.out.println(playerInput.inputNumber);
     }
 }
