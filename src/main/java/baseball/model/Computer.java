@@ -1,18 +1,15 @@
 package baseball.model;
 
-import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Computer {
     private Set<Ball> balls;
-    private final OutputView outputView;
     private final static Integer MIN_VALUE = 1;
     private final static Integer MAX_VALUE = 9;
 
     public Computer() {
-        outputView = new OutputView();
     }
 
     public void initComputerNumbers() {
@@ -27,11 +24,11 @@ public class Computer {
         return Randoms.pickNumberInRange(minValue, maxValue);
     }
 
-    public boolean getHintByPlayer(Set<Ball> playerBalls) {
+    public Hint getHintByPlayer(Set<Ball> playerBalls) {
         int[] counts = computeBallAndStrikeCounts(playerBalls);
         int ballCount = counts[0];
         int strikeCount = counts[1];
-        return displayHint(strikeCount, ballCount);
+        return new Hint(strikeCount,ballCount);
     }
 
     private int[] computeBallAndStrikeCounts(Set<Ball> playerBalls) {
@@ -57,33 +54,4 @@ public class Computer {
 
         return new int[]{ballCount, strikeCount};
     }
-
-    private boolean displayHint(int strikeCount, int ballCount) {
-        return switch (strikeCount) {
-            case 3 -> {
-                outputView.showStrikeOnlyHint(strikeCount);
-                outputView.showGameClearMessage();
-                yield true;
-            }
-            case 0 -> {
-                if (ballCount != 0) {
-                    outputView.showBallOnlyHint(ballCount);
-                    yield false;
-                } else {
-                    outputView.showNothingHint();
-                    yield false;
-                }
-            }
-            default -> {
-                if (ballCount != 0) {
-                    outputView.showBallAndStrikeHint(ballCount, strikeCount);
-                    yield false;
-                } else {
-                    outputView.showStrikeOnlyHint(strikeCount);
-                    yield false;
-                }
-            }
-        };
-    }
-
 }

@@ -7,9 +7,10 @@ public class Player {
     public Player() {
 
     }
-    public boolean swingBat(Computer computer,String input) {
+
+    public Hint swingBat(Computer computer, String input) {
         Set<Ball> balls = new LinkedHashSet<>();
-        for(String number : input.split("")) {
+        for (String number : input.split("")) {
             int givensNumber = Integer.parseInt(number);
             balls.add(new Ball(givensNumber));
         }

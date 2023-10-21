@@ -1,2 +1,4 @@
-package baseball.model;public class Hint {
+package baseball.model;
+
+public record Hint(int strike,int ball) {
 }
