@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private final List<Integer> user = new ArrayList<>();
+    private final List<Integer> userNumber = new ArrayList<>();
 
     public User(String number){
         validateStringNumber(number);
         generateUser(number);
     }
 
-    public List<Integer> getUser() {
-        return user;
+    public List<Integer> getUserNumber() {
+        return userNumber;
     }
 
     private void validateStringNumber(String number) {
@@ -34,7 +34,7 @@ public class User {
         }
     }
     private void checkForDuplicate(int intNumber) {
-        if (user.contains(intNumber)) {
+        if (userNumber.contains(intNumber)) {
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }
@@ -56,7 +56,7 @@ public class User {
     private void generateUser(String number) {
         for (String stringNumber : number.split("")) {
             int intNumber = Integer.parseInt(stringNumber);
-            user.add(intNumber);
+            userNumber.add(intNumber);
         }
     }
 }

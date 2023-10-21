@@ -7,13 +7,13 @@ import java.util.List;
 
 public class Computer {
 
-    private final List<Integer> computer = new ArrayList<>();
+    private final List<Integer> computerNumber = new ArrayList<>();
 
     public Computer() {
         generateRandomNumbers();
     }
     public void generateRandomNumbers() {
-        while (computer.size() < 3) {
+        while (computerNumber.size() < 3) {
             addComputerNumber();
 //            addTestComputerNumber();
         }
@@ -22,18 +22,18 @@ public class Computer {
     private void addTestComputerNumber() {
         //테스트 용
         for (int i = 1; i <= 3; i ++) {
-            computer.add(i);
+            computerNumber.add(i);
         }
     }
 
     private void addComputerNumber() {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
-        if (!computer.contains(randomNumber)) {
-            computer.add(randomNumber);
+        if (!computerNumber.contains(randomNumber)) {
+            computerNumber.add(randomNumber);
         }
     }
 
-    public List<Integer> getComputer() {
-        return computer;
+    public List<Integer> getComputerNumber() {
+        return computerNumber;
     }
 }
