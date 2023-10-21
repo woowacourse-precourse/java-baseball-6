@@ -15,9 +15,15 @@ public class GameView {
     public void printHint(Integer strikeCount, Integer ballCount) {
         StringBuilder hint = new StringBuilder();
 
-        if (ballCount != 0) hint.append(ballCount).append("볼 ");
-        if (strikeCount != 0) hint.append(strikeCount).append("스트라이크");
-        if (ballCount == 0 && strikeCount == 0) hint.append("낫싱");
+        if (ballCount != 0) {
+            hint.append(ballCount).append("볼 ");
+        }
+        if (strikeCount != 0) {
+            hint.append(strikeCount).append("스트라이크");
+        }
+        if (ballCount == 0 && strikeCount == 0) {
+            hint.append("낫싱");
+        }
 
         System.out.println(hint);
     }
