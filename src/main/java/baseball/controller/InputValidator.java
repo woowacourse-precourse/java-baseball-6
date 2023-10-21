@@ -26,10 +26,11 @@ public class InputValidator {
         Set<Character> seenChar = new HashSet<>();
         for (int i = 0; i < playerInput.length(); i++) {
             if (seenChar.contains(playerInput.charAt(i))) {
-                return false;
+                return true;
             }
             seenChar.add(playerInput.charAt(i));
         }
-        return true;
+        return false;
     }
+
 }
