@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -21,6 +22,10 @@ public class Player {
         validateOneToNine(inputNumbers);
         validateDuplicateNumber(expectedNumbers);
         this.inputNumbers = expectedNumbers;
+    }
+
+    public List<Integer> getInputNumbers(){
+        return Collections.unmodifiableList(inputNumbers);
     }
 
     private void initInputNumbers(){
