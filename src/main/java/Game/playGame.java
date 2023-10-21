@@ -2,15 +2,19 @@
 
 package Game;
 
+import Game.constant;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
+import static Game.constant.*;
+
 public class playGame {
     String answer = new String();
 
     public String makeNumber(){
         answer="";
-        while(answer.length()<3){
-            int randomNum= Randoms.pickNumberInRange(1,9);
+        while(answer.length()<ANSWER_SIZE){
+            int randomNum= Randoms.pickNumberInRange(START_NUM,END_NUM);
             if(!answer.contains(String.valueOf(randomNum))){
                 answer+=String.valueOf(randomNum);
             }
@@ -46,13 +50,13 @@ public class playGame {
             System.out.print("숫자를 입력해주세요 : ");
             inputString = Console.readLine();
             checkInputString(inputString);
-        }while(!checkGameResult(inputString));
+        }while(checkGameResult(inputString)!= SUCCESS_BOOLEAN);
     }
 
     private void checkInputString(String inputString)
     {
         String tmp="";
-        if (inputString.length() !=3)
+        if (inputString.length() !=NORMAL_INPUT_LENGTH)
         {   //예외처리 : 문자열 길이 판단
             throw new IllegalArgumentException("잘못된 길이의 문자를 입력하셨습니다.");
         }
@@ -94,13 +98,13 @@ public class playGame {
         int total_cnt = cntTotal(inputNumberString);
         printResult(strike_cnt, total_cnt);
 
-        return (strike_cnt == 3);
+        return (strike_cnt == SUCCESS_STRIKE);
     }
 
     private void printResult(int strike_cnt, int total_cnt){
         int ball_cnt= total_cnt- strike_cnt;
-        if(total_cnt==0){
-            System.out.println("낫싱");
+        if(total_cnt==NOTHING){
+            System.out.println(NOTHING_STRING);
         }
         else{
             if(ball_cnt !=0 && strike_cnt !=0)
@@ -115,17 +119,17 @@ public class playGame {
             }
         }
         if(strike_cnt==3){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(ANSWER_SIZE+SUCCESS_STRING);
         }
     }
 
     private boolean restart(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(RESTART_MESSAGE);
         String inputString = Console.readLine();
-        if(inputString.equals("1")){
+        if(inputString.equals(RESTART_INPUT_STRING)){
             return true;
         }
-        else if(inputString.equals("2")){
+        else if(inputString.equals(TERMINATE_INPUT_STRING)){
             return false;
         }
         else{
