@@ -2,10 +2,20 @@ package baseball;
 
 
 public class Referee {
-    public static int[] judge(Ball userBall, Ball comBall){
-        int[] judgement = new int[2];
-        judgement[0] = comBall.countStrike(userBall);
-        judgement[1] = comBall.countBall(userBall);
-        return judgement;
+    int strike;
+    int ball;
+    Referee(){
+        this.strike = 0;
+        this.ball = 0;
+    }
+    public void judge(Ball userBall, Ball comBall){
+        strike = comBall.countStrike(userBall);
+        ball = comBall.countBall(userBall);
+    }
+    public int getStrike(){
+        return strike;
+    }
+    public int getBall(){
+        return ball;
     }
 }
