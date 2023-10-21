@@ -19,11 +19,16 @@ public class GameController {
         this.resumeNumber = ResumeNumber.from(PLAY_WANT);
     }
 
-    public void play() {
+    public void playBaseball() {
+        StartView.welcome();
+        while (resumeNumber.isWantMoreGame()) {
+            play();
+        }
+    }
+
+    private void play() {
         boolean playWant = true;
         int computerNumber = selectNewNumber();
-
-        StartView.welcome();
 
         while (playWant) {
             AskController.askNumberInput();
@@ -36,17 +41,12 @@ public class GameController {
             ResultView.printResult(ball, strike);
 
             if (isStrikeEqualToGoal(strike)) {
-                EndView.end(PLAY_NUMBER_DIGIT);
-                AskController.askResumeInputWithOption(PLAY_WANT, END_WANT);
-                int resumeNumber = InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT);
-                if (isUserWantMoreGame(resumeNumber)) {
-                    computerNumber = selectNewNumber();
-                }
-                if (isUserWantStopGame(resumeNumber)) {
-                    playWant = false;
-                }
+                playWant = false;
             }
         }
+        EndView.end(PLAY_NUMBER_DIGIT);
+        AskController.askResumeInputWithOption(PLAY_WANT, END_WANT);
+        resumeNumber.updateNumber(InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT));
     }
 
     private boolean isStrikeEqualToGoal(final int strike) {

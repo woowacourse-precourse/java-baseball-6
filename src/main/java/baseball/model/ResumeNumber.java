@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.Constants.PLAY_WANT;
+
 public class ResumeNumber {
 
     private int resumeNumber;
@@ -14,5 +16,9 @@ public class ResumeNumber {
 
     public void updateNumber(final int number) {
         this.resumeNumber = number;
+    }
+
+    public boolean isWantMoreGame() {
+        return resumeNumber == PLAY_WANT;
     }
 }
