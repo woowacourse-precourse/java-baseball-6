@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+
+    private static final String RESTART_INPUT = "1";
+    private static final String EXIT_INPUT = "2";
     public List<Integer> getNumbersFromUser() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
@@ -42,12 +45,9 @@ public class User {
     public boolean restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if (!(input.equals("1") || input.equals("2"))) {
+        if (!(input.equals(RESTART_INPUT) || input.equals(EXIT_INPUT))) {
             throw new IllegalArgumentException("1 또는 2를 입력하세요.");
         }
-        if (input.equals("2")) {
-            return false;
-        }
-        return true;
+        return input.equals(RESTART_INPUT);
     }
 }
