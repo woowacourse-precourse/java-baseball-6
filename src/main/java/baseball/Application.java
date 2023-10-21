@@ -47,10 +47,10 @@ public class Application {
     public static void ReStart() {
         System.out.println("게임을 새로 시작려면 1, 종료하려면 2를 입력하세요.");
 
-        int reStartNumber = Integer.parseInt(Console.readLine());
+        String reStartNumber = Console.readLine();
         ExceptionList.validReStartInputNumber(reStartNumber);
 
-        if(reStartNumber == 1) {
+        if(reStartNumber.equals("1")) {
             GameStart();
         } else {
             System.out.println("게임이 종료되었습니다.");
