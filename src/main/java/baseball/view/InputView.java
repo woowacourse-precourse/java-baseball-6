@@ -15,7 +15,7 @@ public final class InputView {
         return input;
     }
 
-    public String readEndNumber() {
+    public String readCommand() {
         String input = readLine();
         return input;
     }
