@@ -34,20 +34,24 @@ public class GameManager {
             }
         }
 
-        discriminator.printResult();
+        discriminator.printGuessResult();
 
         return discriminator.getStrike();
     }
 
     public boolean getNextGameState() {
-        System.out.println(WIN_THE_GAME_MESSAGE);
-        System.out.println(NEXT_GAME_OR_NOT_MESSAGE);
+        printNextGameMessage();
         String nextGameString = Console.readLine();
 
         int nextGameState = Integer.parseInt(nextGameString);
         validateState(nextGameState);
 
         return nextGameState == EXIT_GAME;
+    }
+
+    private void printNextGameMessage() {
+        System.out.println(WIN_THE_GAME_MESSAGE);
+        System.out.println(NEXT_GAME_OR_NOT_MESSAGE);
     }
 
     private void validateState(final int nextGameState) {

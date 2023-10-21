@@ -6,7 +6,8 @@ import static baseball.constant.NumberConstant.*;
 import static baseball.constant.TextConstant.*;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(final String[] args) {
         System.out.println(INIT_GAME_MESSAGE);
         NumberCreator numberCreator = NumberCreator.initGame();
         GameManager gameManager = GameManager.initGame();
