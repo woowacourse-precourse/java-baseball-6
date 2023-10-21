@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Computer {
 
+    private static final int STRIKE_SIZE = 3;
+
     private List<Integer> randomNumbers;
 
     void generateRandomNumbers() {
@@ -34,10 +36,7 @@ public class Computer {
             }
         }
         printResult(ballNum, strikeNum);
-        if (strikeNum == 3) {
-            return true;
-        }
-        return false;
+        return strikeNum == STRIKE_SIZE;
     }
 
     public void printResult(int ballNum, int strikeNum) {
