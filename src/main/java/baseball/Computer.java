@@ -13,19 +13,29 @@ public class Computer {
     private int stateNothing = 0;
 
     // 모든 자리의 수가 서로 다르고, 0이 포함되지 않는 숫자를 생성하는 메서드
-    public int makeNumber() {
+    public String makeNumber() {
         Integer randomNumber = 0;
 
-        while (true) {
-            // 세 자리 수 중 유효한 가장 첫 번째 수 ~ 마지막 수를 범위로 설정
+        // 랜덤한 숫자를 생성하고, 검증한 결과가 true인 동안 계속해서 랜덤 숫자를 새로 생성
+        do {
             randomNumber = Randoms.pickNumberInRange(123, 987);
-            String[] randomNumberSplit = randomNumber.toString().split("");
+        }
+        while (validateComputerNumber(randomNumber.toString()));
 
-            // 세 자리가 모두 다르고, 0이 포함되지 않는 경우 randomNumber를 반환한다.
-            if (randomNumberSplit[0] != randomNumberSplit[1] && randomNumberSplit[1] != randomNumberSplit[2]
-                    && randomNumberSplit[0] != randomNumberSplit[2] && !Arrays.asList(randomNumberSplit).contains("0")) {
-                return randomNumber;
-            }
+        // 검증이 끝나면 해당 숫자를 반환
+        return randomNumber.toString();
+    }
+
+    public boolean validateComputerNumber(String computerNumber) {
+        // 각 자리를 비교하기 위한 String 배열
+        String[] computerNumberSplit = computerNumber.split("");
+        // 조건에 맞지 않으면 예외 발생
+        if (computerNumberSplit.length != 3 || Arrays.asList(computerNumberSplit).contains("0") ||
+                computerNumberSplit[0].equals(computerNumberSplit[1]) || computerNumberSplit[1].equals(computerNumberSplit[2]) ||
+                computerNumberSplit[0].equals(computerNumberSplit[2])) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
