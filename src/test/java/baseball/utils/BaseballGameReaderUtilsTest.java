@@ -1,8 +1,10 @@
 package baseball.utils;
 
+import static baseball.utils.BaseballGameReaderUtils.convertPlayerTargetNums;
 import static baseball.utils.BaseballGameReaderUtils.isNewGameStarted;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class BaseballGameReaderUtilsTest {
@@ -47,5 +49,38 @@ class BaseballGameReaderUtilsTest {
 
         // when & then
         assertThrows(IllegalArgumentException.class, () -> isNewGameStarted(answer));
+    }
+
+    @Test
+    public void convertPlayerTargetNums_validated() {
+        // given
+        String input = "123";
+
+        // when
+        List<Integer> playerTargetNums = convertPlayerTargetNums(input);
+
+        // then
+        assertEquals(playerTargetNums.size(), 3);
+        assertEquals(playerTargetNums.get(0), 1);
+        assertEquals(playerTargetNums.get(1), 2);
+        assertEquals(playerTargetNums.get(2), 3);
+    }
+
+    @Test
+    public void convertPlayerTargetNums_notNumber_throw() {
+        // given
+        String input = "1a3";
+
+        // when & then
+        assertThrows(IllegalArgumentException.class, () -> convertPlayerTargetNums(input));
+    }
+
+    @Test
+    public void convertPlayerTargetNums_duplication_throw() {
+        // given
+        String input = "133";
+
+        // when & then
+        assertThrows(IllegalArgumentException.class, () -> convertPlayerTargetNums(input));
     }
 }

@@ -1,7 +1,9 @@
 package baseball.utils;
 
 import static baseball.utils.BaseballGameConsoleValidator.isAbleToParseToNum;
-import static baseball.utils.BaseballGameConsoleValidator.isValidatedInput;
+import static baseball.utils.BaseballGameConsoleValidator.isRightSize;
+import static baseball.utils.BaseballGameConsoleValidator.isValidatedInputForPlayer;
+import static baseball.utils.BaseballGameConsoleValidator.isValidatedInputForRestart;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -34,38 +36,100 @@ class BaseballGameConsoleValidatorTest {
     }
 
     @Test
-    public void isValidatedInput_numberAndRightSize_true() {
+    public void isRightSize_sameSize_true() {
         // given
-        String testNum = "123";
+        int input = 3;
+        int inputRightSize = 3;
 
         // when
-        boolean validatedInput = isValidatedInput(testNum, 3);
+        boolean isRightSize = isRightSize(input, inputRightSize);
 
         // then
-        assertTrue(validatedInput);
+        assertTrue(isRightSize);
     }
 
     @Test
-    public void isValidatedInput_numberWithCharAndRightSize_false() {
+    public void isRightSize_differentSize_true() {
         // given
-        String testNum = "1a3";
+        int input = 2;
+        int inputRightSize = 3;
 
         // when
-        boolean validatedInput = isValidatedInput(testNum, 3);
+        boolean isRightSize = isRightSize(input, inputRightSize);
 
         // then
-        assertFalse(validatedInput);
+        assertFalse(isRightSize);
     }
 
     @Test
-    public void isValidatedInput_numberAndWrongSize_false() {
+    public void isValidatedInputForRestart_validate_true() {
         // given
-        String testNum = "123";
+        String answer = "2";
 
         // when
-        boolean validatedInput = isValidatedInput(testNum, 2);
+        boolean isValidated = isValidatedInputForRestart(answer);
 
         // then
-        assertFalse(validatedInput);
+        assertTrue(isValidated);
+    }
+
+    @Test
+    public void isValidatedInputForRestart_notRightSize_false() {
+        // given
+        String answer = "23";
+
+        // when
+        boolean isValidated = isValidatedInputForRestart(answer);
+
+        // then
+        assertFalse(isValidated);
+    }
+
+    @Test
+    public void isValidatedInputForRestart_notNumber_false() {
+        // given
+        String answer = "2a";
+
+        // when
+        boolean isValidated = isValidatedInputForRestart(answer);
+
+        // then
+        assertFalse(isValidated);
+    }
+
+    @Test
+    public void isValidatedInputForPlayer_validate_true() {
+        // given
+        String answer = "234";
+
+        // when
+        boolean isValidated = isValidatedInputForPlayer(answer);
+
+        // then
+        assertTrue(isValidated);
+    }
+
+    @Test
+    public void isValidatedInputForPlayer_notRightSize_false() {
+        // given
+        String answer = "23";
+
+        // when
+        boolean isValidated = isValidatedInputForPlayer(answer);
+
+        // then
+        assertFalse(isValidated);
+    }
+
+    @Test
+    public void isValidatedInputForPlayer_notNumber_false() {
+        // given
+        String answer = "2a3";
+
+        // when
+        boolean isValidated = isValidatedInputForPlayer(answer);
+
+        // then
+        assertFalse(isValidated);
     }
 }
