@@ -23,4 +23,10 @@ public class PlayGame {
 
         return userNumbers;
     }
+
+    public void validateNumberLength(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("입력값의 길이가 초과되었습니다.");
+        }
+    }
 }
