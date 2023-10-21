@@ -42,4 +42,16 @@ public class GameManager {
         }
         return ballCount;
     }
+
+    public boolean isCompleted(String result) {
+        return result.equals("3스트라이크");
+    }
+
+    public boolean doGameAgain(Integer num, Computer computer) {
+        if (num == 1) {
+            computer.resetNumber();
+            return true;
+        }
+        return false;
+    }
 }
