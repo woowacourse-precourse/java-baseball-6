@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.constant.ResultStatus;
 import baseball.constant.StrikeBall;
 
 import java.util.List;
@@ -30,5 +31,12 @@ public class BallCount {
 
     public long getBallNum() {
         return ballCount.stream().filter(StrikeBall::isBall).count();
+    }
+
+    public ResultStatus checkResultStatus() {
+        if (getStrikeNum() == BALL_COUNT_SIZE) {
+            return ResultStatus.FINISHED;
+        }
+        return ResultStatus.CONTINUE;
     }
 }
