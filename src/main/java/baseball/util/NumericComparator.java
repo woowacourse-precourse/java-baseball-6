@@ -3,6 +3,7 @@ package baseball.util;
 import java.util.List;
 
 public class NumericComparator {
+    private static final int BALL_NUMBER_LENGTH = 3;
     private int strikeCount;
     private int ballCount;
 
@@ -22,7 +23,7 @@ public class NumericComparator {
     public void compare(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         resetCount();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BALL_NUMBER_LENGTH; i++) {
             int playerNumber = playerNumbers.get(i);
             int computerNumber = computerNumbers.get(i);
 
