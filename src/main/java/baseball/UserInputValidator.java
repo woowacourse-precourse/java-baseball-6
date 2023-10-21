@@ -12,7 +12,7 @@ public class UserInputValidator {
     }
 
     static void validateNonzeroDigit(int digit) {
-        if (digit < 0 || digit > 9) {
+        if (digit < 1 || digit > 9) {
             throw new IllegalArgumentException();
         }
     }
