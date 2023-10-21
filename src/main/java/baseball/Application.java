@@ -28,10 +28,22 @@ public class Application {
     }
 
     private static int restartOrnot() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-        return Integer.parseInt(input);
+        int choice;
+        while (true){
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = Console.readLine();
+            try{
+                choice=Integer.parseInt(input);
+                if(choice==1||choice==2)
+                    return choice;
+                else
+                    System.out.println("잘못된 입력입니다.");
+            }catch (IllegalArgumentException e){
+                System.out.println("잘못된 입력입니다.");
+            }
+        }
     }
+
 
     private static boolean checkWinCondition(int strike) {
         if (strike == 3) {
