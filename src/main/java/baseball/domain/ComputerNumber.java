@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class ComputerNumber {
 
@@ -26,6 +27,18 @@ public class ComputerNumber {
         }
 
         return new ArrayList<>(uniqueNumbers);
+    }
+
+    public int verifyStrike(List<Integer> answer, List<Integer> userNumber) {
+        return (int) IntStream.range(0, userNumber.size())
+                .filter(i -> answer.get(i).equals(userNumber.get(i)))
+                .count();
+    }
+
+    public int verifyBall(List<Integer> answer, List<Integer> userNumber) {
+        return (int) IntStream.range(0, userNumber.size())
+                .filter(i -> !answer.get(i).equals(userNumber.get(i)) && answer.contains(userNumber.get(i)))
+                .count();
     }
 
 }
