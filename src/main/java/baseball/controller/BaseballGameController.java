@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.GameResult;
 import baseball.domain.TargetNumber;
 import baseball.domain.UserBaseballNumber;
 import baseball.handler.InputHandler;
@@ -40,6 +41,13 @@ public class BaseballGameController {
     }
 
     public void playGame(TargetNumber targetNumber, UserBaseballNumber userBaseballNumber) {
+        while (true) {
+            GameResult gameResult = baseballGameService.compareNumber(targetNumber, userBaseballNumber);
+            outputHandler.printGameResult();
 
+            if (gameResult.isWin()) {
+                break;
+            }
+        }
     }
 }

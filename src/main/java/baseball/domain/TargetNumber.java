@@ -10,10 +10,10 @@ public class TargetNumber {
     private final List<Integer> targetNumber;
 
     public TargetNumber() {
-        this.targetNumber = getComputerNumbers();
+        this.targetNumber = generateComputerNumbers();
     }
 
-    private List<Integer> getComputerNumbers() {
+    private List<Integer> generateComputerNumbers() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -25,5 +25,9 @@ public class TargetNumber {
         }
 
         return computer;
+    }
+
+    public List<Integer> getComputerNumbers() {
+        return List.copyOf(targetNumber);
     }
 }
