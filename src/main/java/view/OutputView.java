@@ -18,7 +18,7 @@ public class OutputView {
     public static void printResult(int ballCount, int strikeCount) {
         StringBuilder stringBuilder = new StringBuilder();
         if (ballCount > 0) {
-            stringBuilder.append(ballCount).append(BALL).append('\n');
+            stringBuilder.append(ballCount).append(BALL).append(' ');
         }
         if (strikeCount > 0) {
             stringBuilder.append(strikeCount).append(STRIKE);
