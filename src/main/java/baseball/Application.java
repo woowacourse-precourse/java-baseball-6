@@ -19,6 +19,7 @@ public class Application {
         List<Integer> userNumbers = InputView.getThreeDigits();
         int strikeCounts = getStrikeCounts(computer, userNumbers);
         int ballCounts = getBallCounts(computer, userNumbers);
+        OutputView.printResult(ballCounts, strikeCounts);
     }
 
     static int getStrikeCounts(List<Integer> computer, List<Integer> userNumbers) {
