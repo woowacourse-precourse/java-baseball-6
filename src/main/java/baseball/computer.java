@@ -10,6 +10,7 @@ public class computer {
     private final List<Integer> numbers = new ArrayList<>(); // 컴퓨터가 생성한 숫자 리스트
 
     private void threeRandomsNum() {
+        numbers.clear();
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             add(randomNumber);
