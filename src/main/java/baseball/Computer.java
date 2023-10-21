@@ -8,8 +8,8 @@ public class Computer {
 
 
     // 임의의 값으로 컴퓨터 초기 값을 세팅한다.
-    public void computerSetting(){
-        for(int i=0; i<computer.length; i++){
+    public void computerSetting() {
+        for (int i = 0; i < computer.length; i++) {
             computer[i] = Randoms.pickNumberInRange(1, 9);
         }
     }
