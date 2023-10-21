@@ -62,4 +62,4 @@
 * ContinueAnswer
   * int answer
   * void createAnswer(String answerString)
-  * int getAnswer()
+  * boolean ifContinue()
