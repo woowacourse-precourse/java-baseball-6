@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private List<Integer> balls = new ArrayList<>();
+    private List<Integer> balls;
 
     public Computer() {
     }
 
     public void selectBalls() {
+        balls = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int num = pickNumberInRange(0, 9);
 
@@ -21,5 +22,12 @@ public class Computer {
             }
             balls.add(num);
         }
+        for (int i : balls) {
+            System.out.println(i); //////////
+        }
+    }
+
+    public List<Integer> getBalls() {
+        return balls;
     }
 }
