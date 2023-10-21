@@ -6,17 +6,7 @@ import java.util.List;
 public class Strike {
 
     /**
-     * strike의 수를 반환 하는 메서드 입니다.
-     */
-    public int strikeCount(){
-        List<Integer> computer = new ArrayList<>();
-        List<Integer> player = new ArrayList<>();
-
-        return checkStrike(computer, player);
-    }
-
-    /**
-     * strike의 갯수를 확인 해주는 메서드 입니다.
+     * strike의 갯수를 확인하고, 수를 반환 해주는 메서드 입니다.
      */
     public int checkStrike(List<Integer> computer, List<Integer> player){
         int strike = 0;
