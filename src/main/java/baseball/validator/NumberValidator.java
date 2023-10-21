@@ -11,7 +11,7 @@ public class NumberValidator {
     public static final int MAX_VALUE = 9;
 
     private NumberValidator() {
-        throw new IllegalArgumentException("NumberValidator(): 인스턴스 생성 불가능");
+        throw new AssertionError("NumberValidator(): 인스턴스 생성 불가능");
     }
 
     public static void validateNaturalNumber(int number) {
