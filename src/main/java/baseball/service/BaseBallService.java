@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +11,12 @@ import baseball.constant.NumberConstant;
 import baseball.dto.BaseBallResult;
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class BaseBallController {
+public class BaseBallService {
 	private final ConsoleInput consoleInput;
 	private final ConsoleOutput consoleOutput;
 	private String targetNumber;
 
-	public BaseBallController() {
+	public BaseBallService() {
 		consoleInput = new ConsoleInput();
 		consoleOutput = new ConsoleOutput();
 	}
