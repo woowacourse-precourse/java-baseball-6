@@ -64,6 +64,18 @@ public class PlayNumberBaseBallGame {
         }
     }
 
+    private static void displayResult() {
+        if(strike == BALL_SIZE){
+            System.out.println(FIND_ANSWER);
+            return;
+        }
+        if(strike == 0 && ball == 0){
+            System.out.println(FIND_NOTHING);
+            return;
+        }
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+    }
+
     private static void initStatus(){
         strike = 0;
         ball = 0;
