@@ -17,7 +17,7 @@ public class GameNumberTest {
         GameNumber gameNumber = new GameNumber(integers);
 
         //then
-        List<Integer> number = gameNumber.getNumber();
+        List<Integer> number = gameNumber.number();
         assertThat(number.size()).isEqualTo(3);
         assertThat(number).containsExactly(1, 3, 4);
     }

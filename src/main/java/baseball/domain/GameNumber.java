@@ -6,13 +6,10 @@ import java.util.Set;
 
 import static baseball.util.ErrorMessage.*;
 
-public class GameNumber {
+public record GameNumber(List<Integer> number) {
 
-    private final List<Integer> number;
-
-    public GameNumber(List<Integer> number) {
+    public GameNumber {
         checkNumber(number);
-        this.number = number;
     }
 
     private void checkNumber(List<Integer> number) {
@@ -32,10 +29,6 @@ public class GameNumber {
 
     public boolean isInPlace(int index, int indexNumber) {
         return this.number.get(index).equals(indexNumber);
-    }
-
-    public List<Integer> getNumber() {
-        return number;
     }
 
     private void checkLength(List<Integer> number) {
