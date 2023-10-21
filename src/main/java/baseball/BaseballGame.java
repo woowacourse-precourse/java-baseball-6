@@ -20,11 +20,23 @@ public class BaseballGame {
             if (status.isCorrect())
                 break;
         }
+        menu();
         Console.close();
     }
     /* 입력 값 정상여부 확인 */
     private static void checkInputValue (String userAnswer, int numberLength) {
         if (userAnswer.length() != numberLength)
             throw new IllegalArgumentException();
+    }
+    /* 게임 종료 후 메뉴 선택 1 - 재시작, 2 - 종료 */
+    private static void menu () {
+        String menuSelect = Console.readLine();
+        while (!menuSelect.equals("2")) {
+            if (menuSelect.equals("1")) {
+                startGame();
+                break;
+            }
+            menuSelect = Console.readLine();
+        }
     }
 }
