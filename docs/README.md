@@ -51,6 +51,7 @@
     - [x] 게임 시작 시 새로운 computerModel 객체 반환
     - [x] 게임 재시작/종료 조정
     - [x] player가 3 strike에 성공했는 지 체크하는 함수 생성
+    - [x] 점수에 따라 score 출력하는 함수 생성
 
 ## RandomNumber
   - Method

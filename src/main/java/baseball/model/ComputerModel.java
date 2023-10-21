@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ComputerModel {
-    private String computerNumber;
+    private final String computerNumber;
 
     public ComputerModel(List<Integer> computerNumber) {
         this.computerNumber = computerNumber.toString();
