@@ -5,6 +5,8 @@ import baseball.domain.player.Batter;
 import baseball.domain.player.Pitcher;
 import baseball.domain.score.ImmutableBallStrikeCount;
 import baseball.dto.BattedBallsDTO;
+import baseball.dto.Command;
+import baseball.exception.InvalidCommandException;
 import baseball.util.InputHandler;
 import baseball.util.MessagePrinter;
 import java.util.List;
@@ -56,6 +58,18 @@ public class BaseballGame {
             return false;
         }
         messagePrinter.printEndAndRequestCommand();
+        Command command = inputHandler.getCommand();
+        checkIsNewRoundNeeded(command);
         return true;
+    }
+
+    private void checkIsNewRoundNeeded(Command command) {
+        if (command.orderRestart()) {
+            isNewRoundNeeded = false;
+            return;
+        }
+        if (!command.orderExit()) {
+            throw new InvalidCommandException();
+        }
     }
 }
