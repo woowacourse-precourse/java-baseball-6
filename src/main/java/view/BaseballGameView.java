@@ -13,6 +13,14 @@ public class BaseballGameView {
         return getUserNumberList(parsedUserInput);
     }
 
+    public int isContinue() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String userInput = Console.readLine();
+
+        return Integer.parseInt(userInput);
+    }
+
     private int parseUserNumberInput(String userNumberInput) {
         int parsedUserNumber;
 

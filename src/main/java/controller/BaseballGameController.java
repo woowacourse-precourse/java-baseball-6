@@ -7,8 +7,20 @@ import view.BaseballGameView;
 
 public class BaseballGameController {
     private final BaseballGameView baseballGameView = new BaseballGameView();
+    private int isContinue = 1;
 
-    public void doBaseballGame() {
+    public void repeatBaseballGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (isContinue == 1) {
+            doBaseballGame();
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isContinue = baseballGameView.isContinue();
+        }
+    }
+
+    private void doBaseballGame() {
         List<Integer> computer = ComputerNumberGenerator.generate();
 
         List<Integer> userNumbers = new ArrayList<>();

@@ -7,6 +7,6 @@ public class Application {
         // TODO: 프로그램 구현
 
         BaseballGameController baseballGameController = new BaseballGameController();
-        baseballGameController.doBaseballGame();
+        baseballGameController.repeatBaseballGame();
     }
 }
