@@ -1,30 +1,20 @@
 package baseball.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import baseball.util.NumericValidator;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Player {
 
     private List<Integer> playerNumbers;
+    private NumericValidator validator;
 
-    public Player(String input) {
-        setNumbers(input);
+    public Player() {
+        this.validator = new NumericValidator();
     }
 
-    public void setNumbers(String input) {
-        this.playerNumbers = generateInputNumbers(input);
-    }
-
-    public List<Integer> getNumbers() {
+    public List<Integer> getPlayerNumbers(String inputNumber) {
+        this.playerNumbers = validator.validate(inputNumber);
         return playerNumbers;
-    }
-
-    public List<Integer> generateInputNumbers(String input) {
-        int[] intArray = Arrays.stream(input.split(""))
-                .mapToInt(Integer::parseInt)
-                .toArray();
-        return new ArrayList<>(Arrays.stream(intArray).boxed().collect(Collectors.toList()));
     }
 }
