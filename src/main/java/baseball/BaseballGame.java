@@ -11,7 +11,7 @@ public class BaseballGame {
     private Computer computer;
     private Result result;
 
-    protected BaseballGame() {
+    public BaseballGame() {
         this.user = new User();
         this.computer = new Computer();
         this.result = new Result();
