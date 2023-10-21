@@ -9,11 +9,9 @@ public class Application {
 
         messageManager.showIntro();
         data.setInputData(messageManager.getInputResponse());
-        System.out.println(data.getInputData());
 
         gameProcessor.IllegalArgumentException(data);
 
-        int[] randomNumberRanage = {1, 9};
-        System.out.println(randomNumberRanage[0] + randomNumberRanage[1]);
+        System.out.println(gameProcessor.generateUserNumberList(data));
     }
 }
