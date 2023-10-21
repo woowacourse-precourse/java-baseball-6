@@ -3,41 +3,48 @@ package baseball.game;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerGame {
-    private String comAnswer;
-    private String userAnswer;
+    final static int ANSWER_LEN = 3;
 
-    public ComputerGame() {
-        comAnswer = computerRandomNum();
-        System.out.println(comAnswer);
-    }
-
+    /**
+     * 전체 게임 시작
+     */
     public void gameStart() {
+        String comAnswer = getComputerRandomNumber();
+
         boolean success;
         do {
+            // 사용자에게 입력을 받는다
             UserInput input = new UserInput();
-            userAnswer = input.userAnswer;
+            String userAnswer = input.userAnswer;
+
             success = getHint(userAnswer, comAnswer);
         } while (!success);
 
     }
 
-    private String computerRandomNum() {
+    /**
+     * 컴퓨터(상대방) 랜덤 숫자 생성
+     */
+    private String getComputerRandomNumber() {
         //중복 없이 3개의 숫자로 구성
         String num = "";
-        while (num.length() < 3) {
+        while (num.length() < ANSWER_LEN) {
             String tmp = String.valueOf(Randoms.pickNumberInRange(1, 9));
             if (!num.contains(tmp)) {
-                num += tmp;
+                num = num.concat(tmp);
             }
         }
         return num;
     }
 
+    /**
+     * 사용자 입력값에 대한 판단 후 힌트 제공
+     */
     private boolean getHint(String userAnswer, String computerAnswer) {
         String result = "";
+        int ball = countBall(userAnswer, computerAnswer);
+        int strike = countStrike(userAnswer, computerAnswer);
 
-        int ball = ballCnt(userAnswer, computerAnswer);
-        int strike = strikeCnt(userAnswer, computerAnswer);
         ball -= strike;
 
         if (ball > 0) {
@@ -51,16 +58,19 @@ public class ComputerGame {
         }
         System.out.println(result);
 
-        if (strike == 3) {
+        if (strike == ANSWER_LEN) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
         return false;
     }
 
-    private int ballCnt(String userAnswer, String comAnswer) {
+    /**
+     * '볼'에 대한 카운팅
+     */
+    private int countBall(String userAnswer, String comAnswer) {
         int cnt = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < ANSWER_LEN; i++) {
             String cur = String.valueOf(userAnswer.charAt(i));
             if (comAnswer.contains(cur)) {
                 cnt++;
@@ -69,14 +79,16 @@ public class ComputerGame {
         return cnt;
     }
 
-    private int strikeCnt(String userAnswer, String comAnswer) {
+    /**
+     * '스트라이크' 에 대한 카운팅
+     */
+    private int countStrike(String userAnswer, String comAnswer) {
         int cnt = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < ANSWER_LEN; i++) {
             if (comAnswer.indexOf(userAnswer.charAt(i)) == i) {
                 cnt++;
             }
         }
         return cnt;
     }
-
 }
