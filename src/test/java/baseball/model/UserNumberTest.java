@@ -25,5 +25,14 @@ class UserNumberTest {
                 .hasMessage("숫자를 입력해주세요");
     }
 
+    @DisplayName("사용자 수가 여러개의 공백으로 입력된다면 에러 발생")
+    @Test
+    void inputBlankUserNumber(){
+        String inputNumber = "   ";
+        assertThatThrownBy(() -> new UserNumber(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자를 입력해주세요");
+    }
+
 
 }
