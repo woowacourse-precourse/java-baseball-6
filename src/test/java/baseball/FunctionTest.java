@@ -16,28 +16,28 @@ import org.junit.jupiter.api.Test;
 public class FunctionTest {
 
     @Test
-    void 정답_리스트의_크기는_3이어야_한다() {
+    void 정답_리스트의_크기는_3이다() {
         List<Integer> answerList = Application.makeRandomAnswer();
 
         assertEquals(3, answerList.size());
     }
 
     @Test
-    void 정답_리스트의_숫자는_1에서_9사이여야_한다() {
+    void 정답_리스트의_숫자는_1에서_9사이다() {
         List<Integer> answerList = Application.makeRandomAnswer();
 
         assertTrue(answerList.stream().allMatch(num -> num >= 1 && num <= 9));
     }
 
     @Test
-    void 정답_리스트의_모든_숫자는_중복되지_않아야_한다() {
+    void 정답_리스트의_모든_숫자는_중복되면_안된다() {
         List<Integer> answerList = Application.makeRandomAnswer();
 
         assertEquals(answerList.size(), answerList.stream().distinct().count());
     }
 
     @Test
-    void 사용자의_올바른_입력이_잘_받아져야_한다() {
+    void 사용자의_올바른_입력을_받는다() {
         String input1 = "123";
         InputStream in1 = new ByteArrayInputStream(input1.getBytes());
         System.setIn(in1);

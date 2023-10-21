@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class ClassTest {
     @Test
-    void GameResult_클래스의_getter가_잘_호출되어야_한다() {
+    void GameResult_클래스의_getter를_호출한다() {
         GameResult result = new GameResult(1, 2);
 
         assertEquals(1, result.getStrike());
@@ -19,7 +19,7 @@ public class ClassTest {
     }
 
     @Test
-    void GameResult_클래스의_toString_결과가_올발라야_한다() {
+    void GameResult_클래스의_toString을_호출한다() {
         GameResult result1 = new GameResult(1, 2);
         assertEquals("2볼 1스트라이크", result1.toString());
 
