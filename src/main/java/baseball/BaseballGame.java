@@ -2,21 +2,36 @@ package baseball;
 
 public class BaseballGame {
     Boolean isDone;
-    Boolean firstStart;
 
     public BaseballGame() {
         isDone = false;
-        firstStart = true;
     }
 
     // 게임 시작
-    public void start() {
+    public void start() throws IllegalArgumentException {
         // 시작 문구 출력
-        isDone = false;
+        Display.printStartMessage();
+
+        run();
+        while (isRestart()) {
+            run();
+        }
+    }
+
+    private void run() throws IllegalArgumentException {
+        while (!isDone) {
+            String userBall = Display.requestUserBall();
+            Validator.validateUserBall(userBall);
+
+            // todo: 컴퓨터 랜덤 볼 선택
+            // todo: 사용자 입력
+            // todo: 정답 여부
+        }
     }
 
     // 게임 종료 후 재시작 묻기
-    public void askRestart() {
-
+    public boolean isRestart() {
+        //todo: 사용자에게 재시작 여부 묻고 재시작일 경우 true
+        return false;
     }
 }
