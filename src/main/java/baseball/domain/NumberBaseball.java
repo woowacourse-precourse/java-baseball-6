@@ -28,6 +28,13 @@ public class NumberBaseball {
         // 랜덤한 서로다른 숫자 생성
         List<Integer> answer = RandomUtils.generateDistinctNumbers(numberLimit);
 
+        playUntilCorrect(answer);
+
+        if(shouldContinueGame()) startGame();
+
+    }
+
+    private void playUntilCorrect(List<Integer> answer) {
         boolean isFinish = false;
 
         while (!isFinish) {
@@ -37,10 +44,8 @@ public class NumberBaseball {
             //추측한 정답이 정답인지 확인
             if(checkGuessAnswer(answer,guessAnswer)) isFinish = true;
         }
-
-        if(shouldContinueGame()) startGame();
-
     }
+
 
     private boolean shouldContinueGame() {
         int userChoice = numberBaseballIO.printEndMessageAndInputChoice(numberLimit);
