@@ -6,16 +6,16 @@ public class OutputView {
 
     //숫자 야구 게임 시작 메시지 출력
     public void showStartMessage(){
-        System.out.print(START_MESSAGE);
+        System.out.println(START_MESSAGE);
     }
 
     //게임종료 메시지
     public void endMessage(){
-        System.out.print(END_MESSAGE);
+        System.out.println(END_MESSAGE);
     }
 
     //힌트 메시지 출력
     public void showHintMessage(String hintMessage){
-        System.out.print(hintMessage);
+        System.out.println(hintMessage);
     }
 }
