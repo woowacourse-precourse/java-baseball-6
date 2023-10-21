@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.GameCommand;
 import baseball.model.JudgeResult;
 import baseball.model.Player;
 import baseball.model.Referee;
@@ -9,14 +10,17 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
+    private GameCommand gameCommand;
 
     public GameController() {
-
+        gameCommand = GameCommand.GAME_START;
     }
 
     public void play() {
         OutputView.printGameStart();
-        initializeGame();
+        while (gameCommand == GameCommand.GAME_START) {
+            initializeGame();
+        }
     }
 
     public void initializeGame() {
@@ -39,7 +43,7 @@ public class GameController {
     }
 
     private void readRetryCommand() {
-
+        gameCommand = GameCommand.decideGameCommand(InputView.readRetryCommand());
     }
 
     private boolean isGameSuccess(JudgeResult judgeResult) {

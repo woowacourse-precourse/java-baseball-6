@@ -8,4 +8,10 @@ public class InputView {
         System.out.print(ConsoleMessage.READ_PLAYER_NUMBER);
         return Console.readLine();
     }
+
+    public static String readRetryCommand() {
+        System.out.print(ConsoleMessage.READ_RETRY_COMMAND);
+        return Console.readLine();
+    }
+
 }

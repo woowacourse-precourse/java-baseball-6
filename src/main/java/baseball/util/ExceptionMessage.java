@@ -7,4 +7,5 @@ public class ExceptionMessage {
     public static final String NOT_IN_RANGE = String.format("각 숫자는 %d에서 %d 사이여야 합니다", Constants.MIN_BALL_NUMBER,
             Constants.MAX_BALL_NUMBER);
     public static final String WRONG_JUDGE = "잘못된 결과입니다";
+    public static final String WRONG_INPUT = "잘못된 입력값입니다.";
 }
