@@ -4,9 +4,13 @@ public class GameRestartOrQuit {
 
     private String restartOrQuitNumber;
     
-    public GameRestartOrQuit(String restartOrQuitNumber) {
+    private GameRestartOrQuit(String restartOrQuitNumber) {
         validateRestartOrQuitNumber(restartOrQuitNumber);
         this.restartOrQuitNumber = restartOrQuitNumber;
+    }
+
+    public static GameRestartOrQuit from(String restartOrQuitNumber) {
+        return new GameRestartOrQuit(restartOrQuitNumber);
     }
 
     public String getRestartOrQuitNumber() {

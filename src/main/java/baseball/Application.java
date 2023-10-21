@@ -14,7 +14,7 @@ public class Application {
 
             Printer.printGameRestartOrQuit();
             String input = Console.readLine();
-            GameRestartOrQuit gameRestartOrQuit = new GameRestartOrQuit(input);
+            GameRestartOrQuit gameRestartOrQuit = GameRestartOrQuit.from(input);
             gameQuit = isGameQuit(gameRestartOrQuit.getRestartOrQuitNumber());
         } while(!gameQuit);
     }
@@ -27,7 +27,7 @@ public class Application {
             Printer.printInputNumber();
             String input = Console.readLine();
             Player playerNumbers = Player.from(input);
-            
+
             Hint hint = Hint.of(computerNumbers.getComputer(), playerNumbers.getPlayerNumbers());
             Printer.printHint(hint);
             threeStrike = isThreeStrike(hint.getStrike());
