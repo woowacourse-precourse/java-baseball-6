@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.config.GameConfig;
+import java.util.Objects;
 
 public class GameResult {
 
@@ -21,7 +22,7 @@ public class GameResult {
     }
 
     public static GameResult allStrike() {
-        return new GameResult(0, 3);
+        return new GameResult(0, GameConfig.BASEBALL_LENGTH);
     }
 
     public static GameResult nothing() {
@@ -38,5 +39,22 @@ public class GameResult {
 
     public boolean isNothing() {
         return ballCount == 0 && strikeCount == 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GameResult that = (GameResult) o;
+        return ballCount == that.ballCount && strikeCount == that.strikeCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ballCount, strikeCount);
     }
 }
