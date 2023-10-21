@@ -29,8 +29,9 @@ public class BaseBallGame {
         int strikeCount = 0;
         int ballCount = 0;
 
-        if (userInput.size() != BASEBALL_NUM_SIZE)
+        if (userInput.size() != BASEBALL_NUM_SIZE) {
             throw new IllegalArgumentException("입력 자릿 수 오류");
+        }
 
         for (int i = 0; i < BASEBALL_NUM_SIZE; i++) {
             if (userInput.contains(computerNumber.get(i))) {
@@ -77,8 +78,9 @@ public class BaseBallGame {
                 int digit = Character.getNumericValue(c);
                 parsedInput.add(digit);
             }
-            if (!Character.isDigit(c))
+            if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException("허가되지 않은 문자열");
+            }
 
         }
 
