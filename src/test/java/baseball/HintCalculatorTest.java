@@ -56,7 +56,7 @@ public class HintCalculatorTest {
 
     @DisplayName("userNumber와 computerNumber가 일치할 때 3스트라이크 출력")
     @Test
-    void prinThreeStrikeCount(){
+    void printThreeStrikeCount(){
         List<Integer> userList = List.of(1, 2, 3);
         List<Integer> computerList = List.of(1, 2, 3);
         HintCalculator hintCalculator = new HintCalculator(userList, computerList);
