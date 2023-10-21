@@ -66,4 +66,29 @@ public class InputViewTest {
                 arguments("abc", "입력값은 1~9 범위의 숫자만 가능합니다.")
         );
     }
+
+    @DisplayName("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. 출력하고 사용자의 입력을 받는다.")
+    @ParameterizedTest
+    @MethodSource("provideContinueOrExitTestArguments")
+    void continueOrExitSuccessTest(String input, boolean expected) {
+        System.setIn(generateUserInput(input));
+        boolean isContinue = InputView.continueOrExit();
+        assertThat(isContinue).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> provideContinueOrExitTestArguments() {
+        return Stream.of(
+                arguments("1", true),
+                arguments("2", false)
+        );
+    }
+
+    @DisplayName("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. 출력하고 사용자의 입력을 받는다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "0", "3", "가나다", "abc"})
+    void continueOrExitFailTest(String input) {
+        System.setIn(generateUserInput(input));
+        assertThatCode(InputView::continueOrExit)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
