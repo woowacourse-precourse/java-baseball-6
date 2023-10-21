@@ -66,6 +66,6 @@ public class Application {
     }
 
     public static void output(String outputMessage) {
-
+        System.out.print(outputMessage);
     }
 }
