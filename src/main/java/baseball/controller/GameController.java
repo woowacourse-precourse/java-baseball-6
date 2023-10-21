@@ -16,7 +16,7 @@ public class GameController {
             OutputView.outputForGameValueInputBefore();
             String user_input_value = InputView.readLineByConsole();
             if (GameValidation.verifyForGameValue(user_input_value)){
-                OutputView.outputForGameValueInputAfter();
+
             }
         }
     }
