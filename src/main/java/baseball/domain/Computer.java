@@ -5,6 +5,8 @@ import java.util.List;
 public class Computer {
 
 	private static final int MAX_NUMBER_SIZE = 3;
+	private static final int MIN_NUMBER_RANGE = 1;
+	private static final int MAX_NUMBER_RANGE = 9;
 
 	private final List<Integer> computerNumbers;
 
@@ -23,7 +25,7 @@ public class Computer {
 
 	private boolean isOverRange(List<Integer> computerNumbers) {
 		return computerNumbers.stream()
-			.anyMatch(computerNumber -> computerNumber < 1 || computerNumber > 9);
+			.anyMatch(computerNumber -> computerNumber < MIN_NUMBER_RANGE || computerNumber > MAX_NUMBER_RANGE);
 	}
 
 	private void validateComputerNumberSize(List<Integer> computerNumbers) {
