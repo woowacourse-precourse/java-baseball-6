@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class BaseballBallFactory {
     private final static int BALL_LENGTH = 3;
@@ -15,17 +16,19 @@ public class BaseballBallFactory {
         while (intHashSet.size() < BALL_LENGTH) {
             intHashSet.add(Randoms.pickNumberInRange(MIN_BALL_NUMBER,MAX_BALL_NUMBER));
         }
-        StringBuilder result = new StringBuilder();
-        for (int i : intHashSet) {
-            result.append(i);
-        }
-        return new BallArray(Integer.parseInt(result.toString()));
+        return new BallArray(intHashSet.toArray(new Integer[BALL_LENGTH]));
     }
 
     public static BallArray createManualBall(int number){
         if ((int) (Math.log10(number) + 1) > BALL_LENGTH) {
             throw new IllegalArgumentException();
         }
-        return new BallArray(number);
+        return new BallArray(splitToDigitsArray(number));
+    }
+
+    private static Integer[] splitToDigitsArray(int number) {
+        return Stream.of(String.valueOf(number).split(""))
+                .map(Integer::valueOf)
+                .toArray(Integer[]::new);
     }
 }

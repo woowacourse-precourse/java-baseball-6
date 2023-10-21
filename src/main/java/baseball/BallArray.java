@@ -1,15 +1,10 @@
 package baseball;
 
-import java.util.stream.Stream;
-
 public class BallArray {
-    private final int[] ballArr;
+    private final Integer[] ballArr;
 
-    public BallArray(int number) {
-        ballArr = Stream.of(String.valueOf(number)
-                        .split(""))
-                .mapToInt(Integer::parseInt)
-                .toArray();
+    public BallArray(Integer... number) {
+        ballArr = number;
     }
 
     public BallResult compareWith(BallArray BallArray) {
@@ -17,11 +12,11 @@ public class BallArray {
         int strikeCount = 0;
 
         for (int i = 0; i < ballArr.length; i++) {
-            if (BallArray.ballArr[i] == this.ballArr[i]) {
+            if ( ballArr[i].equals(BallArray.ballArr[i])) {
                 strikeCount++;
             } else {
                 for (int j = 0; j < ballArr.length; j++) {
-                    if (j != i && BallArray.ballArr[i] == this.ballArr[j]) {
+                    if (j != i && ballArr[j].equals(BallArray.ballArr[i])) {
                         ballCount++;
                     }
                 }
