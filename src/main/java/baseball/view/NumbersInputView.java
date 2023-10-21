@@ -1,5 +1,5 @@
 package baseball.view;
-import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Console;
 
 
 import baseball.dto.NumbersStringDto;
