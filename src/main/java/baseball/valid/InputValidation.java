@@ -6,6 +6,9 @@ import static baseball.consts.NumberConst.GAME_RESTART_NUMBER;
 import static baseball.consts.NumberConst.NUMBER_SIZE;
 import static baseball.consts.NumberConst.START_NUMBER;
 
+import baseball.util.ConvertUtil;
+import java.util.List;
+
 public class InputValidation {
 
     public static void validateInputNum(String input) {
@@ -28,8 +31,8 @@ public class InputValidation {
     }
 
     private static void validateNumRange(String input) {
-        if (!input.chars().map(letter -> letter - '0').boxed()
-                .allMatch(num -> num >= START_NUMBER && num <= END_NUMBER)) {
+        List<Integer> list = ConvertUtil.convertStrToIntList(input);
+        if (!list.stream().allMatch(num -> num >= START_NUMBER && num <= END_NUMBER)) {
             throw new IllegalArgumentException();
         }
     }
