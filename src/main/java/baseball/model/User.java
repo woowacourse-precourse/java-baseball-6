@@ -7,20 +7,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
-    private List<Integer> userNumber;
+    private Numbers userNumber;
 
     public User(String userNumber) {
         Validator.validateUserNumber(userNumber);
         this.userNumber = changeStringToList(userNumber);
     }
 
-    private List<Integer> changeStringToList(String input) {
-        return Arrays.stream(input.split(""))
+    private Numbers changeStringToList(String input) {
+        List<Integer> userNumberList = Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+
+        return new Numbers(userNumberList);
     }
 
-    public List<Integer> getUserNumber() {
+    public Numbers getUserNumber() {
         return userNumber;
     }
 }

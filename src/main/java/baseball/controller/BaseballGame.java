@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.Computer;
 import baseball.model.GameResult;
+import baseball.model.Numbers;
 import baseball.model.User;
 import baseball.validator.Validator;
 import baseball.view.InputView;
@@ -11,8 +12,7 @@ import java.util.List;
 
 public class BaseballGame {
     private static final String RESTART = "1";
-    private List<Integer> computerNumber;
-    private User user;
+    private Numbers computerNumber;
 
     public void startGame() {
         do {
@@ -26,8 +26,10 @@ public class BaseballGame {
         createComputerNumber();
 
         do {
-            getUserNumber();
-            gameResult = compareNumber();
+            String userNumber = InputView.getUserNumber();
+            User user = new User(userNumber);
+            gameResult = computerNumber.compareNumbers(user.getUserNumber());
+            OutputView.printOneGameResult(gameResult.getStrike(), gameResult.getBall());
         } while (!gameResult.isSuccess());
 
         OutputView.printThreeStrikeMessage();
@@ -36,45 +38,6 @@ public class BaseballGame {
     private void createComputerNumber() {
         Computer computer = new Computer();
         computerNumber = computer.getComputerNumber();
-    }
-
-    private void getUserNumber() {
-        String userNumber = InputView.getUserNumber();
-        user = new User(userNumber);
-    }
-
-    private GameResult compareNumber() {
-        List<Integer> userNumber = user.getUserNumber();
-        int strike = countStrike(userNumber);
-        int ball = countBall(userNumber);
-
-        OutputView.printOneGameResult(strike, ball);
-
-        return new GameResult(strike, ball);
-    }
-
-    private int countStrike(List<Integer> userNumber) {
-        int strike = 0;
-
-        for(int num : userNumber) {
-            if(userNumber.indexOf(num) == computerNumber.indexOf(num)) {
-                strike++;
-            }
-        }
-
-        return strike;
-    }
-
-    private int countBall(List<Integer> userNumber) {
-        int ball = 0;
-
-        for(int num : userNumber) {
-            if(userNumber.indexOf(num) != computerNumber.indexOf(num) && computerNumber.contains(num)) {
-                ball++;
-            }
-        }
-
-        return ball;
     }
 
     private boolean restart() {
