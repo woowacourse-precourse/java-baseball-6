@@ -8,16 +8,17 @@
   - [2.2 🤔 인터페이스 사용에 대한 고민](#-인터페이스-사용에-대한-고민)
   - [2.3 🚧 getter의 사용을 지양해라?](#-getter의-사용을-지양해라-)
   - [2.4 ⚙️ 일급 컬렉션](#-일급-컬렉션)
+  - [2.5 ❗ 매직 넘버 사용을 지양하자](#-매직-넘버-사용을-지양하자)
+  - [2.6 👻 generateComputerNumbers 메서드의 위치](#-generatecomputernumbers-메서드의-위치)
 - [3. 다음 미션에 적용할 학습 내용](#ledger-다음-미션에-적용할-학습-내용) <br/>
 
 # :ballot_box_with_check: 구현 기능 목록
 - [ ] controller Package
   - [ ] BaseballGameController
     - view Package와 domain Package의 데이터를 전달하며 값을 출력하는 클래스
-    - 프로그램을 실행하는 run 메서드
-    - `UserBaseballNumber`객체를 반환하여 사용자의 입력값을 받아오는 `loadUserValues` 메서드
-    - user의 숫자 입력값에 따라 `ConsoleOutput의` 메서드를 출력하는 `showGameResult` 메서드
-    - 게임이 종료됐는지 체크하는 `checkGameResult` 메서드
+    - 프로그램을 실행하는 `run` 메서드
+    - UserBaseballNumber객체를 반환하여 사용자의 입력값을 받아오는 `loadUserValues` 메서드
+    - 게임을 진행시키는 `playGame` 메서드
     - 게임 종료 후 다음 게임의 상태값에 따른 결과를 실행하는 `requestGameChoice` 메서드
     
 
@@ -26,11 +27,20 @@
     - 게임을 위해 입력한 숫자에 대해서 유효성 검사와 값의 반환을 담당하는 일급 컬렉션
     - 입력한 값이 3자리인지 확인하는 `validate` 메서드
     - 입력값에 중복된 값이 있는지 확인하는 `validateDuplicate` 메서드
+    - 입력값이 1~9 사이의 숫자인지 확인하는 `validateRange` 메서드
     - 입력값을 꺼낼 수 있는 `getUserValues` 메서드
-  - [ ] RequestUserChoice
+  - [ ] GameChoice
     - 게임 종료 후 다음 게임의 상태값을 정하는 클래스
     - 입력값이 1 혹은 2가 맞는지 확인하는 `validate` 메서드
-    - user가 선택한 값을 반환하는 `getUserChoice` 메서드
+    - user가 선택한 값에 따른 참 혹은 거짓을 반환하는 `isRestart` 메서드
+  - [ ] GameResult
+    - 게임 진행 중 생기는 스트라이크와 볼의 개수의 결과를 저장하는 클래스
+    - 스트라이크와 볼의 개수에 따라 출력해야 할 문자열을 반환하는 `getResult` 메서드
+    - 3스트라이크 달성 시 게임이 종료될 수 있도록 하는 `isWin` 메서드
+  - [ ] TargetNumber
+    - 대상이 되는 컴퓨터의 번호를 저장하는 클래스
+    - 컴퓨터의 번호를 랜덤하게 생성하는 `generateComputerNumbers` 메서드
+    - 대상이 되는 번호를 내보내는 `getComputerNumbers` 메서드
   
 
 - [ ] handler Package
@@ -132,5 +142,14 @@ public class UserBaseballNumber {
 ## ⚙️ 일급 컬렉션
 
 🔹 일급 컬렉션(First-Class Collection)은 상태와 행위를 함께 캡슐화하는데 주로 컬렉션을 사용하는 디자인 패턴이다. 일급 컬렉션은 컬렉션을 하나의 객체로 취급하여 해당 컬렉션과 관련된 동작을 통합하고, 높은 응집도와 캡슐화를 통해 코드의 가독성과 유지 보수성을 향상시키는 데 도움이 된다는 내용에 이번 미션에서 일급 컬렉션을 활용했다.
+
+## ❗ 매직 넘버 사용을 지양하자
+
+🔹 문제를 풀이한 입장에서는 숫자의 의미를 바로 파악할 수 있었지만 다른 사람들이 보는 경우 의미를 알 수 없을만한 숫자들을 볼 수 있었다. 이러한 의미가 명확하지 않은 수를 매직넘버 라고 하고 이러한 부분을 지양해야 한다는 사실에 기존의 코드에서 수정했다. 또한 그러한 상수들을 한곳에 모아서 관리하는 클래스를 만들지 상수를 사용한 클래스 위쪽에 적어둘지 고민을 하던 중 상수로서 의미를 파악할 수 있어도 그 값으로 어떤 값을 사용했는지 바로 알 수 있는 것이 좋을 것 같다는 생각에 클래스를 만들지 않았다.
+
+## 👻 generateComputerNumbers 메서드의 위치
+
+🔹 문제를 접한 후 비교의 대상이 되는 타겟 번호를 어느 package에 위치 시킬지 고민했다. 처음에는 타겟 번호를 생성하는 것이기 때문에 비즈니스 로직으로 생각하고 `service package`에 위치시켰지만, 그 번호에 대한 유효성 검사도 필요하고 값을 저장하고 불러오는 역할이 필요하다는 생각에 `service package` -> `domain package`로 위치를 옮겼다.
+
 
 # :ledger: 다음 미션에 적용할 학습 내용
