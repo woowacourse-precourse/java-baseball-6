@@ -28,13 +28,23 @@ public class GetNumbers {
         List<Integer> numbers = new ArrayList<>();
 
         for (char ch : input.toCharArray()) {
-            if (!numbers.contains(Character.getNumericValue(ch))) {
-                numbers.add(Character.getNumericValue(ch));
+            int numberValue = Character.getNumericValue(ch);
+
+            if (numbers.contains(numberValue)) {
+                throw new IllegalArgumentException("중복된 값은 입력불가합니다.");
             }
+
+            if (!(numberValue >= 1 && numberValue <= 9)) {
+                throw new IllegalArgumentException("1~9 사이의 정수만 입력가능합니다.");
+            }
+
+            numbers.add(numberValue);
         }
 
-        BaseballException.numListSize(numbers, MAX_NUM_LENGTH);
+        if (numbers.size() != MAX_NUM_LENGTH) {
+            throw new IllegalArgumentException("세자리 수만 입력가능합니다.");
+        }
+
         return numbers;
     }
-
 }
