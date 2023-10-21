@@ -13,7 +13,7 @@ class ComputerTest {
     void 세자리랜덤수리턴() {
         Computer computer = new Computer();
 
-        List<Integer> randomNumbers = computer.getNumbers();
+        List<Integer> randomNumbers = computer.getComputerNumbers();
 
         assertEquals(NUMBER_SIZE, randomNumbers.size());
     }

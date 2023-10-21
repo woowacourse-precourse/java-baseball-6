@@ -5,14 +5,14 @@ import baseball.model.service.ComputerNumberImpl;
 import java.util.List;
 
 public class Computer {
-    private List<Integer> numbers;
+    private List<Integer> computerNumbers;
 
     public Computer() {
         ComputerNumber computerNumber = new ComputerNumberImpl();
-        this.numbers = computerNumber.generate();
+        this.computerNumbers = computerNumber.generate();
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
     }
 }
