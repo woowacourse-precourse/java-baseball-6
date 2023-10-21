@@ -37,12 +37,12 @@ public class GameController {
             GameResult result = numberMatcher.match(userNumber.getUserNumber(),
                 answerNumber.getAnswerNumber());
 
+            outputView.displayResult(result.getBallCount(), result.getStrikeCount());
+
             if (result.isSuccess()) {
                 outputView.displayWinningMessage();
                 break;
             }
-
-            outputView.displayResult(result.getBallCount(), result.getStrikeCount());
 
         }
     }
