@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -9,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.utils.RandomUtil;
+import baseball.model.NumberModel;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -20,6 +22,16 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+
+    @Test
+    void 사용자입력_저장_테스트() {
+        RandomUtil randomUtil = new RandomUtil();
+        List<Integer> randomInput = randomUtil.createRandomList();
+        NumberModel numberModel = new NumberModel();
+
+        numberModel.setUserNumbers(randomInput);
+        assertThat(numberModel.getUserNumbers()).isEqualTo(randomInput);
     }
 
     @Test
