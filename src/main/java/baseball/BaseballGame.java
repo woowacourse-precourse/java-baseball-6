@@ -13,13 +13,17 @@ public class BaseballGame {
     }
 
     private List<Integer> inputUserNum(){
-        int userInput = Integer.valueOf(Console.readLine());
+        String userInputString = Console.readLine();
+        checkUserNumForm(userInputString);
+
+        Integer userInput = Integer.valueOf(userInputString);
         List<Integer> userNum = new ArrayList<>();
 
         while(userInput != 0){
             userNum.add(0, userInput % 10);
             userInput /= 10;
         }
+
         return userNum;
     }
 
