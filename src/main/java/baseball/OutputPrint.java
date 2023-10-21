@@ -20,4 +20,7 @@ public class OutputPrint {
     public static void printEnd(int strike){
         System.out.println(strike + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+    public static void printStart(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 }
