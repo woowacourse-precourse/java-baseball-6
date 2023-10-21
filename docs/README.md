@@ -12,8 +12,7 @@
 6. 정답 여부 확인. 정답시 7번이동.
 7. 다시 시작 여부 확인(1 시작 , 2 종료)
 
-model(Computer)
-
+Computer Class
 1. 필드 : targetNumber
 2. 생성자 : targetNumber를 생성
    -> camp.nextstep.edu.missionutils.Randoms의
@@ -23,7 +22,7 @@ model(Computer)
 4. MakeHint
    -> 배열을 문자열로 반환
 
-controller(Application)
+Application Class
 camp.nextstep.edu.missionutils 모듈 사용
 
 1. player 객체 생성
@@ -48,12 +47,11 @@ camp.nextstep.edu.missionutils 모듈 사용
 3. compareNumber에서 MakeHint를 호출해서 string을 반환하자.
 4. input 처리도 따로 클래스를 만들자.
 
-controller(Game)
-
+Game Class
 1. 이전 Application의 기능.
 2. main 에서 계속해서 호출하여 게임을 실행하도록 만들자.
 
-model(Input)
+Input Class
 Input은 예외를 발생시킨다.
 camp.nextstep.edu.missionutils.Console의
 readLine()은 String을 반환하는데 이를 int값으로 변환 시켜야한다.
@@ -92,6 +90,22 @@ readLine()은 String을 반환하는데 이를 int값으로 변환 시켜야한�
 2. 주석을 적은 부분에 대해 각각 함수로 만들자.
 3. 효율성을 위한 코드를 추가하자.
 
+------------------
+4회차
+테스트케이스 업데이트
 
+1. 1볼 ,2볼 ,3볼 ,1볼 1스트라이크, ... 등 모든 출력이 잘 되는지 확인
+2. 게임 진행중 문자를 넣는경우, 3글자 넘는 숫자를 넣는 경우 , 같은 숫자를 넣는 경우
+   0을 넣는 경우 등 게임 진행중 예외가 발생할 때 원하는 예외가 발생하는지 확인
+3. 게임이 끝나고 다시 시작하냐고 물을 때 1, 2 가 아닌 다른 숫자 , 문자, 1보다 긴 문자열
+   을 넣었을때 원하는 예외가 발생하는지 확인
 
+총정리
 
+1. application에서 Game객체를 생성해 게임을 시작한다.
+2. Game 객체는 Input 클래스를 통해 옳바른 사용자의 숫자를 얻는다.
+   (Input 클래스는 camp.nextstep.edu.missionutils.Console로 입력받는다.)
+3. 받은 수를 바탕으로 computer 객체에게 hint를 요청한다.
+4. hint가 3strike라면 game 객체는 application에게 종료를 알린다.
+5. application main은 Input 클래스를 통해 종료 코드를 받고 게임 재시작 여부를
+   결정한다.
