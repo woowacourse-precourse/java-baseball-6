@@ -23,9 +23,8 @@ public class BaseBallGame {
     private static final String CONTINUE_GAME_QUESTION_FORMAT =
         String.format("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.",CONTINUE_GAME_CODE, STOP_GAME_CODE);
 
-    public BaseBallGame(Integer gameSize) {
-        baseBallGameSize=gameSize;
-
+    public BaseBallGame(final Integer gameSize) {
+        baseBallGameSize= gameSize;
     }
 
     public void startGame(){

@@ -7,8 +7,8 @@ import java.util.List;
 
 public class ComputerRandomNumberGenerator implements RandomNumberGenerator<List<Integer>, ComputerRandomNumber> {
     @Override
-    public ComputerRandomNumber generate(Integer randomNumberSize) {
-        List<Integer> computer = new ArrayList<>();
+    public ComputerRandomNumber generate(final Integer randomNumberSize) {
+        final List<Integer> computer = new ArrayList<>();
         while(computer.size() < randomNumberSize){
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if(!computer.contains(randomNumber)){
