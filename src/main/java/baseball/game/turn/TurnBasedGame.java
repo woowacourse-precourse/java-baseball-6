@@ -24,7 +24,7 @@ public class TurnBasedGame implements Game {
             turnBasedGameView.printResult(turnResult);
             if (turnResult.isGameCleared()) {
                 turnBasedGameView.printClear();
-                break;
+                return;
             }
         }
     }
