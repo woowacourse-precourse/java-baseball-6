@@ -2,9 +2,12 @@ package baseball;
 
 import baseball.model.Number;
 import baseball.type.MessageType;
+import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.lang.Boolean.FALSE;
 
@@ -19,9 +22,9 @@ public class Game {
 
 
     /**
-     *  @Method  : 게임 시작 기능
-     *  @since   : 2023/10/21
-     *  @auther  : SYB
+     * @Method : 게임 시작 기능
+     * @auther : SYB
+     * @since : 2023/10/21
      */
     public void start() {
         //게임 시작 처리
@@ -36,18 +39,18 @@ public class Game {
 
 
     /**
-     *  @Method  : 게임 진행 기능
-     *  @since   : 2023/10/21
-     *  @auther  : SYB
+     * @Method : 게임 진행 기능
+     * @auther : SYB
+     * @since : 2023/10/21
      */
-    private int play() {
+    public int play() {
         Number computerNumber = new Number();
         computerNumber.createRandomNumber();
 
         Number userNumber = new Number();
 
         boolean isAnswer = FALSE;
-        while(!isAnswer) {
+        while (!isAnswer) {
             userNumber.setUserNumberList(inputUserNumber());
             isAnswer = calculator(computerNumber, userNumber);
             userNumber.clear();
@@ -57,19 +60,26 @@ public class Game {
 
 
     /**
-     *  @Method  : 사용자 입력 기능
-     *  @since   : 2023/10/21
-     *  @auther  : SYB
+     * @Method : 사용자 입력 기능
+     * @auther : SYB
+     * @since : 2023/10/21
      */
-    private List<Integer> inputUserNumber() {
-        return new ArrayList<>();
+    public List<Integer> inputUserNumber() {
+        String inputLine = Console.readLine();
+        try {
+            return Stream.of(inputLine.split(""))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 
 
     /**
-     *  @Method  : 재시작 및 종료 처리 기능
-     *  @since   : 2023/10/21
-     *  @auther  : SYB
+     * @Method : 재시작 및 종료 처리 기능
+     * @auther : SYB
+     * @since : 2023/10/21
      */
     private int checkExitReplay() {
         return 0;
@@ -77,9 +87,9 @@ public class Game {
 
 
     /**
-     *  @Method  : 힌트 및 정답 처리 기능
-     *  @since   : 2023/10/21
-     *  @auther  : SYB
+     * @Method : 힌트 및 정답 처리 기능
+     * @auther : SYB
+     * @since : 2023/10/21
      */
     private boolean calculator(Number computerNumber, Number userNumber) {
         return false;
