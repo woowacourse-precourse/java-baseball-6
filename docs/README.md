@@ -16,3 +16,6 @@
     - [x] 3자리 미만
     - [x] 문자
   - [x] while문 endGameCommand의 1,2가 아닌 다른 값
+- [ ] 예외관련 테스트코드 추가
+  - [x] 야구숫자 테스트
+  - [ ] CommandLine 테스트
