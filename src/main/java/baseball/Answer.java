@@ -2,10 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Answer {
     private int numberLength;
     private String answer;
@@ -15,16 +11,19 @@ public class Answer {
     }
     /* 랜덤 정수 배출 */
     private String setRandomNumber () {
-        List<Integer> randomNumberList = new ArrayList<>();
-        while (randomNumberList.size() < numberLength) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumberList.contains(randomNumber)) {
-                randomNumberList.add(randomNumber);
-            }
+        StringBuilder settingAnswer = new StringBuilder();
+        while (settingAnswer.length() < this.numberLength) {
+            int randomDigit = Randoms.pickNumberInRange(1, 9);
+            String digitToString = String.valueOf(randomDigit);
+            appendDigit(settingAnswer, digitToString);
         }
-        return randomNumberList.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining());
+        return settingAnswer.toString();
+    }
+    /* 중복 검증 후 StringBuilder에 숫자 추가 */
+    private void appendDigit (StringBuilder settingAnswer, String randomDigit) {
+        String checkAnswer = settingAnswer.toString();
+        if (!checkAnswer.contains(randomDigit))
+            settingAnswer.append(randomDigit);
     }
     /* 사용자 입력 값을 받아, [스트라이크, 볼, 아웃]을 정수형 배열로 반환 */
     public int[] getStatusArray (String userAnswer) {
