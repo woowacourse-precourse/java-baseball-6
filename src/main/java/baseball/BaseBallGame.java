@@ -53,6 +53,8 @@ public class BaseBallGame {
             msg += ballNum + "볼 ";
         if(strikeNum != 0)
             msg += strikeNum + "스트라이크";
+        if(ballNum == 0 && strikeNum == 0)
+            msg = "낫싱";
         if(strikeNum == 3)
             state = GameState.CORRECT;
 
