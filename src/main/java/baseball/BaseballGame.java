@@ -3,16 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
-    private final Computer computer;
-    private final UserInput userInput;
     private final Judgement judgement;
-    private final OutputHandler outputHandler;
 
     public BaseballGame() {
-        computer = new Computer();
-        userInput = new UserInput();
         judgement = new Judgement();
-        outputHandler = new OutputHandler();
     }
 
     public void start() {
@@ -25,7 +19,7 @@ public class BaseballGame {
     }
 
     public boolean wantsToRestart() {
-        outputHandler.printGameRestart();
+        OutputHandler.printGameRestart();
         String input = Console.readLine();
         if (input.equals("1")) {
             return true;
