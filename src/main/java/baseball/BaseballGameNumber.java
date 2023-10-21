@@ -31,6 +31,10 @@ class BaseballGameNumber {
         }
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
     public static boolean validateBaseballGameNumber (String input) throws IllegalStateException {
         if(!validateFormat(input) || !validateDuplication(input)) {
             throw new IllegalArgumentException();
