@@ -3,7 +3,7 @@ package baseball;
 import java.util.HashSet;
 
 public class User {
-    protected String userSelectNum;
+    private String userSelectNum;
 
     public void userSelect() {
         System.out.println("숫자를 입력해주세요");
@@ -18,7 +18,7 @@ public class User {
             throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
         }
         for (char num : userSelectNum.toCharArray()) {
-            if (!hashUserSelectNum.add(num) && !Character.isDigit(num)) {
+            if (!Character.isDigit(num) || !hashUserSelectNum.add(num)) {
                 throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
             }
         }
@@ -27,5 +27,4 @@ public class User {
     public String getUserSelectNum() {
         return userSelectNum;
     }
-
 }
