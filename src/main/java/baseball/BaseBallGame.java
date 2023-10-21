@@ -87,20 +87,6 @@ public class BaseBallGame {
         System.out.println(sb);
     }
 
-
-
-    private int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        int strikeCount = 0;
-
-        for(int i = 0; i < RANDOM_NUMBER_LENGTH; i++) {
-            if(computerNumbers.get(i).equals(playerNumbers.get(i))) {
-                strikeCount++;
-            }
-        }
-
-        return strikeCount;
-    }
-
     private List<Integer> getPlayerNumber() {
         return inputPlayerNumber();
     }
