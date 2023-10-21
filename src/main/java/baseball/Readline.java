@@ -13,13 +13,13 @@ public class Readline {
 
         int checkinput = Integer.parseInt(input);
         if(checkinput < 100 || checkinput > 999){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 값 입력 (3자리가 아닌 숫자)");
         }
         for(String sliceInput: input.split("")){
             playNumber.add(Integer.parseInt(sliceInput));
         }
         if(playNumber.get(0) == playNumber.get(1) || playNumber.get(1) == playNumber.get(2) || playNumber.get(0) == playNumber.get(2)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 값 입력 (서로 다른 숫자가 아닌 3자리 숫자)");
         }
         return playNumber;
     }

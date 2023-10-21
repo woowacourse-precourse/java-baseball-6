@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Objects;
 
 public class Replay {
     public boolean ReplayGame(){
@@ -10,14 +9,14 @@ public class Replay {
         // readLine()을 통해 값을 읽는다.
         String input = Console.readLine();
         // equals를 통해 1일경우만 true를 return 한다.
-        if(Objects.equals(input, "1")){
+        if(input == "1"){
             return true;
         }
-        else if(Objects.equals(input, "2")) {
+        else if(input == "2") {
             return false;
         }
-        else {
-            throw new IllegalArgumentException();
-        }
+        // 잘못된 값을 입력할경우 IllegalArgumentException 오류를 발생시킨다.
+        throw new IllegalArgumentException("잘못된 값 입력 (1 또는 2가 아닌 입력)");
+
     }
 }
