@@ -16,4 +16,9 @@ public class User {
         }
         return numbers;
     }
+    public int userDecision() {
+        int decision;
+        String input = readLine();
+        return decision = Integer.parseInt(input);
+    }
 }

@@ -39,6 +39,7 @@ public class Compare {
         User use = new User();
         Computer compu = new Computer();
         List<Integer> comNum= compu.computerNumber();
+        System.out.println(comNum.toString());
         while (!Answer) {
             List<Integer> userNum = use.userNumber();
             strike = countStirke(comNum, userNum);
