@@ -28,6 +28,21 @@ public class InputManager {
 
     }
 
+    public int getRestart() {
+
+        String inputValue = getInput();
+        System.out.println("inputValue = " + inputValue);
+
+        int answer = 0;
+
+        if (validator.validateRestart(inputValue)) {
+            answer = Integer.parseInt(inputValue);
+        }
+
+        return answer;
+
+    }
+
     private String getInput() {
 
         Scanner scanner = new Scanner(System.in);
