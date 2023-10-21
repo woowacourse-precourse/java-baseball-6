@@ -1,21 +1,35 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        NumberBaseballGame game = new NumberBaseballGame();
-        boolean startGame = true;
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        while (startGame) {
-            game.start();
-            String input = Console.readLine();
-            if (!NumberBaseballUtility.isValidChoice(input)) {
+        BaseballModel model = new BaseballModel();
+        BaseballView view = new BaseballView();
+        while (true) {
+            model.generateAnswer();
+            view.printStartMessage();
+
+            Score score;
+            do {
+                String guessInput = view.getPlayerGuess();
+                if (!model.isValidGuess(guessInput)) {
+                    throw new IllegalArgumentException();
+                }
+                List<Integer> playerGuess = model.parseStringToIntegerList(guessInput);
+                score = model.calculateScore(playerGuess);
+                view.printGameResult(score);
+            } while (score.getStrike() != 3);
+
+            view.printEndMessage();
+
+            String choiceInput = view.getPlayerChoice();
+            if (!model.isValidChoice(choiceInput)) {
                 throw new IllegalArgumentException();
             }
-            if (input.equals("2")) {
-                startGame = false;
+            if (choiceInput.equals("2")) {
+                break;
             }
         }
     }
