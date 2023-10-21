@@ -19,4 +19,15 @@ public class BaseBallNumber {
         }
         return strikeCount;
     }
+
+    public Integer getBallCount(BaseBallNumber userNumber) {
+        Integer ballCount = 0;
+        for (int i = 0; i < 3; ++i) {
+            Integer number = userNumber.baseballNumber.get(i);
+            if (baseballNumber.contains(number) && !baseballNumber.get(i).equals(number)) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
 }
