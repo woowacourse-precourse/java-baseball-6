@@ -5,7 +5,23 @@ import java.util.Objects;
 
 public class GameProcess {
     public static void gameStart() {
+        List<Integer> computer = Computer.computerNumber();
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> player = Player.playerNumber();
+
+        if (countBall(player, computer) > 0) {
+            System.out.print(countBall(player, computer) + "볼");
+        }
+
+        if (countStrike(player, computer) > 0) {
+            System.out.println(countStrike(player, computer) + "스트라이크");
+        }
+
+        // computer와 player 확인 작업(이후 삭제 예정)
+        System.out.println(computer);
+        System.out.println(player);
     }
 
     public static Integer countStrike(List<Integer> playerNumber, List<Integer> computerNumber) {
