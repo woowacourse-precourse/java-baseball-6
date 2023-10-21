@@ -22,5 +22,27 @@ public class BaseballGame {
         return answer;
     }
 
+    public JudgedCounts judgeAnswer(Answer answer, int inputNumber) {
+        int firstBall = inputNumber/100;
+        int secondBall = inputNumber%100/10;
+        int thirdBall = inputNumber%10;
+        int[] balls = {firstBall,secondBall,thirdBall};
+        List<Integer> answerList = answer.getAnswerNumbers();
+
+        return judgeStrikeOrBall(answerList, balls);
+    }
+
+    private JudgedCounts judgeStrikeOrBall(List<Integer> answerList, int[] balls) {
+        JudgedCounts judgedCounts = new JudgedCounts(0,0);
+        for (int ball = 0; ball < answerList.size(); ball++) {
+            if (answerList.get(ball) == balls[ball]) {
+                judgedCounts.strikeCount();
+            } else if (answerList.contains(balls[ball])) {
+                judgedCounts.ballCount();
+            }
+        }
+        return judgedCounts;
+    }
+
 
 }

@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.Answer;
 import baseball.BaseballGame;
+import baseball.JudgedCounts;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 public class BaseballGameController {
@@ -21,7 +22,8 @@ public class BaseballGameController {
     public void startGame() {
         outputView.readStartMessage();
         Answer answer = baseballGame.answerGenerate();
-        inputView.inputNumber();
+        int inputNumber = inputView.inputNumber();
+        JudgedCounts judgedCounts = baseballGame.judgeAnswer(answer, inputNumber);
     }
 
 }
