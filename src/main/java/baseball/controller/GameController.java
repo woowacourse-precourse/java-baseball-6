@@ -46,7 +46,7 @@ public class GameController {
         }
         EndView.end(PLAY_NUMBER_DIGIT);
         AskController.askResumeInputWithOption(PLAY_WANT, END_WANT);
-        resumeNumber.updateNumber(InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT));
+        updateResumeNumber();
     }
 
     private static void askNumberInput() {
@@ -59,5 +59,9 @@ public class GameController {
 
     private int selectNewNumber() {
         return NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
+    }
+
+    private void updateResumeNumber() {
+        resumeNumber.updateNumber(InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT));
     }
 }
