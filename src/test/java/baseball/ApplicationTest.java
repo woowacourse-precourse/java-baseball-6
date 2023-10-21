@@ -50,13 +50,13 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 숫자의_개수가_3개이상_입력_예외() {
-
+        BaseballService baseballService = new BaseballService();
         //given
         String input = "1234";
 
         //when
         //then
-        assertThatThrownBy(() -> new BaseballNumber(input))
+        assertThatThrownBy(() -> baseballService.initializeUserNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력의 길이는 3이어야합니다.");
     }
@@ -64,10 +64,11 @@ class ApplicationTest extends NsTest {
     @Test
     void 중복된_숫자가_들어왔을때_예외() {
         //given
+        BaseballService baseballService = new BaseballService();
         String input = "484";
         //when
         //then
-        assertThatThrownBy(() -> new BaseballNumber(input))
+        assertThatThrownBy(() -> baseballService.initializeUserNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("모든 입력된 값은 달라야합니다.");
     }
@@ -76,13 +77,15 @@ class ApplicationTest extends NsTest {
     void initializeUserNumber_유효성테스트() {
         //initializeUserNumber메서드의 주기능이되는 BaseballNumber의 생성자를 테스트
         //given
+        BaseballService baseballService = new BaseballService();
+
         String str1 = "123";
         String str2 = "456";
         String str3 = "789";
         //when
-        final Throwable thrown1 = catchThrowable(() -> new BaseballNumber(str1));
-        final Throwable thrown2 = catchThrowable(() -> new BaseballNumber(str2));
-        final Throwable thrown3 = catchThrowable(() -> new BaseballNumber(str3));
+        final Throwable thrown1 = catchThrowable(() -> baseballService.initializeUserNumber(str1));
+        final Throwable thrown2 = catchThrowable(() -> baseballService.initializeUserNumber(str2));
+        final Throwable thrown3 = catchThrowable(() -> baseballService.initializeUserNumber(str3));
 
         //then
         assertThat(thrown1).as("initializeUserNumber_테스트").doesNotThrowAnyException();
@@ -93,13 +96,14 @@ class ApplicationTest extends NsTest {
     @Test
     void 사용자_입력이_숫자가_아닐때() {
         //given
+        BaseballService baseballService = new BaseballService();
         String str1 = "asdf";
         String str2 = "qwer";
         String str3 = "zxcv";
         //when
-        final Throwable thrown1 = catchThrowable(() -> new BaseballNumber(str1));
-        final Throwable thrown2 = catchThrowable(() -> new BaseballNumber(str2));
-        final Throwable thrown3 = catchThrowable(() -> new BaseballNumber(str3));
+        final Throwable thrown1 = catchThrowable(() -> baseballService.initializeUserNumber(str1));
+        final Throwable thrown2 = catchThrowable(() -> baseballService.initializeUserNumber(str2));
+        final Throwable thrown3 = catchThrowable(() -> baseballService.initializeUserNumber(str3));
 
         //then
         assertThat(thrown1).as("initializeUserNumber_테스트").isInstanceOf(IllegalArgumentException.class);
