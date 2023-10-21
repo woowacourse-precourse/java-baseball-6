@@ -6,33 +6,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
-    private static final int INPUT_SIZE = 3;
     private final OutputView outputView;
 
     public InputView(OutputView outputView) {
         this.outputView = outputView;
     }
 
-    private static String validateInput(String input, int inputSize) {
-        InputValidator.validateInputLength(input, inputSize);
-        InputValidator.validateInputScope(input, inputSize);
-        InputValidator.validateInputDuplicated(input);
-        return input;
-    }
-
-    public static String inputByTest(String testInput) {
-        return validateInput(testInput, INPUT_SIZE);
-    }
-
-    public static String inputGameActionByTest(String input) {
-        return input;
-    }
-
     public List<Integer> inputOtherThreeNumbers() {
         outputView.printInputNumbersMessage();
-        String validatedInput = validateInput(readLine(), INPUT_SIZE);
-
-        return Arrays.stream(validatedInput.split(""))
+        String input = readLine();
+        InputValidator.validateNumericInput(input);
+        return Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .toList();
     }
@@ -40,11 +24,14 @@ public class InputView {
     public boolean inputGameAction() {
         outputView.printGameSuccessMessage();
         outputView.printGameActionMessage();
-        String gameActionAnswer = inputGameActionByTest(readLine());
-        if ("1".equals(gameActionAnswer)) {
+
+        String input = readLine();
+        InputValidator.validateNumericInput(input);
+
+        if ("1".equals(input)) {
             return true;
         }
-        if ("2".equals(gameActionAnswer)) {
+        if ("2".equals(input)) {
             return false;
         }
         throw new IllegalArgumentException(Err.ERROR_GAME_ACTION_INPUT_MESSAGE.getMessage());
