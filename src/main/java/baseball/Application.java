@@ -53,6 +53,13 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
+        //검증: 만약 숫자의 각 자리가 1이상 9이하가 아니면 잘못 입력한 것
+        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
+            if (!inputNum.matches("^[1-9]+$")){
+                throw new IllegalArgumentException();
+            }
+        }
+
         //검증이 완료되어야 변환 가능
         List<Integer> inputNumList = parseIntegerList(inputNum);
         System.out.println(inputNumList);
