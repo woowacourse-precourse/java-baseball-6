@@ -60,22 +60,27 @@ public class Application {
         return computer;
     }
 
-    // 입력받은 숫자의 볼과 스트라이크 여부를 체킹하는 기능
+    // 입력받은 숫자의 볼과 스트라이크의 여부를 체킹하는 기능
     public int[] checkStrikeAndBall(int[] input_number, List<Integer> computer_number) {
         int[] strike_ball = {0,0}; // {볼, 스트라이크}
 
         for (int input_index=0; input_index<SIZE; input_index++) {
             for (int comp_index=0; comp_index<SIZE; comp_index++) {
-                if (input_number[input_index] == computer_number.get(comp_index)) {
-                    if(input_index == comp_index) {
-                        strike_ball[STRIKE_INDEX] += 1;
-                    } else {
-                        strike_ball[BALL_INDEX] += 1;
-                    }
-                }
+                checkDetail(input_number, computer_number, strike_ball, input_index, comp_index);
             }
         }
         return strike_ball;
+    }
+
+    // 실제로 볼과 스트라이크의 여부를 체킹하는 세부 기능 - 체킹하는 방법의 변화가 있을 때 유지보수에 용이하다.
+    private void checkDetail(int[] input_number, List<Integer> computer_number, int[] strike_ball, int input_index, int comp_index) {
+        if (input_number[input_index] == computer_number.get(comp_index)) {
+            if(input_index == comp_index) {
+                strike_ball[STRIKE_INDEX] += 1;
+            } else {
+                strike_ball[BALL_INDEX] += 1;
+            }
+        }
     }
 
     // 힌트를 출력하는 기능
