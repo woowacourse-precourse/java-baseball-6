@@ -55,15 +55,5 @@ public class GameTool {
         }
         return true;
     }
-    /*
-     * 힌트 결과 출력
-     */
-    public void printHint(int strike, int ball, boolean nothing) {
-        if (ball != 0)
-            System.out.println(ball+"볼 ");
-        if (strike != 0)
-            System.out.print(strike+"스트라이크");
-        if (nothing == true)
-            System.out.println("낫싱");
-    }
+
 }
