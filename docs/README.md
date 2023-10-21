@@ -1,6 +1,5 @@
 ## BaseballGame
 숫자 야구 게임의 메인 프로세스를 담당하는 클래스
-- run : 숫자 야구 게임의 전체적인 프로세스를 담는다.
 - countBall : computer의 숫자와 현재 guess를 비교해서 볼이면 1을 반환한다.
 - sumBall : countBall의 개수를 합산한다.
 - countStrike : computer의 숫자와 현재 guess를 비교해서 스트라이크이면 1을 반환한다.
