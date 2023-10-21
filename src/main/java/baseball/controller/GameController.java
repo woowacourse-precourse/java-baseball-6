@@ -4,6 +4,7 @@ import baseball.constant.RetryCommand;
 import baseball.domain.Computer;
 import baseball.domain.GameResult;
 import baseball.domain.Player;
+import baseball.domain.BaseBallGame;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -11,12 +12,17 @@ public class GameController {
 
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();
+    private BaseBallGame baseBallGame;
 
     public void start() {
         outputView.printStartMessage();
+        playGame();
+    }
+
+    public void playGame() {
         while (true) {
-            Computer computer = new Computer();
-            playUntilThreeStrike(computer);
+            baseBallGame = new BaseBallGame(new Computer());
+            playUntilThreeStrike();
             RetryCommand retryCommand = readRetry();
             if (retryCommand.isEnd()) {
                 break;
@@ -24,14 +30,10 @@ public class GameController {
         }
     }
 
-    private void playUntilThreeStrike(Computer computer) {
-        while (true) {
-            Player player = readPlayerBall();
-            GameResult result = computer.calculateBallCount(player);
+    private void playUntilThreeStrike() {
+        while (baseBallGame.isProgress()) {
+            GameResult result = baseBallGame.getBallCount(readPlayerBall());
             outputView.printGameResult(result);
-            if (result.isThreeStrike()) {
-                break;
-            }
         }
     }
 
@@ -39,6 +41,7 @@ public class GameController {
         outputView.printGameEnd();
         return inputView.readRetry();
     }
+
     private Player readPlayerBall() {
         outputView.printInputGuide();
         return new Player(inputView.readPlayerBall());
