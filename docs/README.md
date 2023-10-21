@@ -50,38 +50,13 @@
 
 ## BaseballScore
 
-`Strike`와 `Ball` 계산을 위한 클래스
+strike와 ball 계산을 위한 클래스
 
-- `BaseballNumbers` 두 개를 받아 strike, ball
-  세팅해주는`setStrikeAndBall(BaseballNumbers computerBaseballNumber, BaseballNumbers playerBaseballNumber)`
+- `BaseballNumbers` 두 개를 받아 strike, ball을
+  계산해주는`calculateStrikeAndBall(BaseballNumbers computerBaseballNumber, BaseballNumbers playerBaseballNumber)`
 - strike, ball 0으로 초기화 시켜주는 함수 `clearStrikeAndBall()`
 - 스트라이크 개수 반환 `getStrike()`
 - 볼 개수 반환 `getBall()`
-
----
-
-## Score
-
-`Strike` 와 `Ball`의 조상 클래스
-
-- 1을 더해주는 `plusOne()`
-- 0으로 초기화 하는 `clear()`
-
----
-
-## Strike
-
-`Score`의 자식 클래스
-
-- `Score`의 기능 그대로 사용
-
----
-
-## Ball
-
-`Score`의 자식 클래스
-
-- `Score`의 기능 그대로 사용
 
 ---
 
