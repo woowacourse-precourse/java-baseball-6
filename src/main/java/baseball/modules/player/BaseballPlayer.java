@@ -9,10 +9,11 @@ import baseball.utils.ListUtils;
 import baseball.utils.NumberUtils;
 import baseball.utils.StringUtils;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class BaseballPlayer {
+public abstract class BaseballPlayer implements Player{
 
     private final List<Integer> numbers;
 
@@ -49,8 +50,9 @@ public abstract class BaseballPlayer {
         }
     }
 
+    @Override
     public List<Integer> getNumbers() {
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
 
 
