@@ -17,7 +17,7 @@ public class GameController {
     private final static int COUNT_ZERO_VALUE = 0;
     private final static int LIST_BALL_INDEX = 0;
     private final static int LIST_STRIKE_INDEX = 1;
-    private final static Computer computer = new Computer(new BaseballRandomNumberGenerator().generate());
+    private static Computer computer = new Computer(new BaseballRandomNumberGenerator().generate());
     private final static InputView inputView = new InputView();
     private final static OutputView outputView = new OutputView();
     public void start(){
@@ -31,6 +31,7 @@ public class GameController {
             outputView.printGameHint(hintMessage);
             if (ballAndStrikeCount.get(LIST_STRIKE_INDEX) == 3){
                 gameLoopCommand = gameRetry();
+                computer = new Computer(new BaseballRandomNumberGenerator().generate());
             }
         }
     }

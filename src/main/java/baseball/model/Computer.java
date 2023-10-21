@@ -34,4 +34,7 @@ public class Computer {
         return this.computerNumberList.contains(userNumber);
     }
 
+    public void printComputer(){
+        System.out.println(computerNumberList.toString());
+    }
 }
