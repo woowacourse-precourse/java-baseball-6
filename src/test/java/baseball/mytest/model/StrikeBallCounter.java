@@ -2,11 +2,10 @@ package baseball.mytest.model;
 
 public class StrikeBallCounter {
 
-
     public static class CompareResult {
         private int strike = 0;
         private int ball = 0;
-        
+
         private CompareResult(int strike, int ball) {
             this.strike = strike;
             this.ball = ball;
@@ -33,14 +32,16 @@ public class StrikeBallCounter {
     }
 
     private int strikeCount(String playerInput, String computerNumber, int i) {
-        if (computerNumber.indexOf(playerInput.charAt(i)) == i) {
+        int computerIndex = computerNumber.indexOf(playerInput.charAt(i));
+        if (computerIndex == i) {
             return 1;
         }
         return 0;
     }
 
     private int ballCount(String playerInput, String computerNumber, int i) {
-        if (computerNumber.indexOf(playerInput.charAt(i)) != i) {
+        int computerIndex = computerNumber.indexOf(playerInput.charAt(i));
+        if (computerIndex != i && computerIndex != -1) {
             return 1;
         }
         return 0;
