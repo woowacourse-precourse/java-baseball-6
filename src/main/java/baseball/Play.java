@@ -26,14 +26,33 @@ public class Play {
         com.setCom();
     }
 
-    private void setInput(String msg) {
+    private String setInput(String msg) {
         System.out.print(msg);
-        input = Console.readLine();
+        String temp = Console.readLine();
+        checkInputHasChar(temp);
+        return temp;
+    }
+
+    private void checkInputHasChar(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("This input is not Integer: " + input);
+        }
+    }
+
+    private int checkMenuNumber(String input) {
+        checkInputHasChar(input);
+        int menuNum = Integer.parseInt(input);
+        if (menuNum < 1 || menuNum > 2) {
+            throw new IllegalArgumentException("Invalid Number: " + menuNum);
+        }
+        return menuNum;
     }
 
     private void runGame() {
         while (true) {
-            setInput("숫자를 입력해주세요 : ");
+            String input = setInput("숫자를 입력해주세요 : ");
             user.setUser(input);
             rules.countBallAndStrikes(user.getUser(), com.getCom());
             if (rules.isThreeStrikes()) {
@@ -47,11 +66,11 @@ public class Play {
 
     private void restartOrFinishGame() {
         while (true) {
-            setInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-            int menu = checkInputNumber();
-            if (menu == 1) {
+            String input = setInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            int menuNum = checkMenuNumber(input);
+            if (menuNum == 1) {
                 restartGame();
-            } else if (menu == 2) {
+            } else if (menuNum == 2) {
                 finishGame();
                 break;
             }
@@ -70,18 +89,5 @@ public class Play {
         user.clearUser();
         com.clearCom();
         Console.close();
-    }
-
-    private int checkInputNumber() {
-        int menuNum;
-        try {
-            menuNum = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Input is not Integer: " + input);
-        }
-        if (menuNum < 1 || menuNum > 2) {
-            throw new IllegalArgumentException("Invalid Number: " + menuNum);
-        }
-        return menuNum;
     }
 }
