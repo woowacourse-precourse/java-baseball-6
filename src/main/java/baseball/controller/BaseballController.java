@@ -4,7 +4,7 @@ import baseball.domain.AnswerGenerator;
 import baseball.domain.Computer;
 import baseball.domain.Score;
 import baseball.view.BaseballInputView;
-import baseball.view.OutputView;
+import baseball.view.BaseballOutputView;
 
 public class BaseballController {
     private final AnswerGenerator answerGenerator;
@@ -14,12 +14,12 @@ public class BaseballController {
     }
 
     public void run() {
-        OutputView.startGame();
+        BaseballOutputView.startGame();
         boolean isContinue = true;
         while (isContinue) {
             Computer computer = new Computer(answerGenerator);
             play(computer);
-            OutputView.endGame();
+            BaseballOutputView.endGame();
             isContinue = BaseballInputView.continueOrExit();
         }
     }
@@ -28,7 +28,7 @@ public class BaseballController {
         boolean isStrikeOut = false;
         while (!isStrikeOut) {
             Score score = computer.getScore(BaseballInputView.inputBaseballNumber());
-            OutputView.matchResult(score);
+            BaseballOutputView.matchResult(score);
             isStrikeOut = score.isStrikeOut();
         }
     }

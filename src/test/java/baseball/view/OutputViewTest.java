@@ -26,14 +26,14 @@ public class OutputViewTest {
     @DisplayName("최초 게임 시작시 숫자 야구 게임을 시작합니다. 문구를 출력한다.")
     @Test
     void startGameTest() {
-        OutputView.startGame();
+        BaseballOutputView.startGame();
         assertThat(output.toString()).isEqualTo("숫자 야구 게임을 시작합니다.\n");
     }
 
     @DisplayName("3스트라이크시 3개의 숫자를 모두 맞히셨습니다! 게임종료 문구를 출력한다.")
     @Test
     void endGameTest() {
-        OutputView.endGame();
+        BaseballOutputView.endGame();
         assertThat(output.toString()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 
@@ -41,7 +41,7 @@ public class OutputViewTest {
     @ParameterizedTest
     @MethodSource("provideMatchResultTestArguments")
     void matchResultTest(Score score, String matchResult, boolean isStrikeOut) {
-        OutputView.matchResult(score);
+        BaseballOutputView.matchResult(score);
         boolean isFullCount = score.isStrikeOut();
         assertThat(output.toString()).isEqualTo(matchResult);
         assertThat(isFullCount).isEqualTo(isStrikeOut);
