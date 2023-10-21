@@ -25,6 +25,33 @@ public class Play {
         input = Console.readLine();
     }
 
+    public void runGame() {
+        while (true) {
+            setInput("숫자를 입력해주세요 : ");
+            user.setUser(input);
+            rules.countBallAndStrikes(user.getUser(), com.getCom());
+            if (rules.isThreeStrikes()) {
+                rules.printIfAnswer();
+                break;
+            }
+            rules.printIfNotAnswer();
+            user.clearUser();
+        }
+    }
+
+    public void restartOrFinishGame() {
+        while (true) {
+            setInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            int menu = checkInputNumber();
+            if (menu == 1) {
+                restartGame();
+            } else if (menu == 2) {
+                finishGame();
+                break;
+            }
+        }
+    }
+
     private void restartGame() {
         user.clearUser();
         com.clearCom();
@@ -50,32 +77,5 @@ public class Play {
             throw new IllegalArgumentException("Invalid Number: " + temp);
         }
         return temp;
-    }
-
-    public void restartOrFinishGame() {
-        while (true) {
-            setInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-            int menu = checkInputNumber();
-            if (menu == 1) {
-                restartGame();
-            } else if (menu == 2) {
-                finishGame();
-                break;
-            }
-        }
-    }
-
-    public void runGame() {
-        while (true) {
-            setInput("숫자를 입력해주세요 : ");
-            user.setUser(input);
-            rules.countBallAndStrikes(user.getUser(), com.getCom());
-            if (rules.isThreeStrikes()) {
-                rules.printIfAnswer();
-                break;
-            }
-            rules.printIfNotAnswer();
-            user.clearUser();
-        }
     }
 }
