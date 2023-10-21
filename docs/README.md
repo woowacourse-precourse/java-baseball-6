@@ -46,7 +46,42 @@
 
 # 🛠️ 기능 목록
 
-### BaseBallConstant
+## 💡 Main Class
+### Application
+- [x] `run()` 메서드를 실행한다.
+<br><br>
+
+## 💡 Service
+
+### NumberConstant
+- 매직넘버들을 상수로 처리한 Enum 클래스이다.
+- [x] MIN_NUMBER : 1
+- [x] MAX_NUMBER : 9
+- [x] PICK_COUNT : 3
+
+### PlayConstant
+- 게임 실행 관련 상수들을 담은 Enum 클래스이다.
+- [x] RESTART : `1`
+- [x] FINISH : `2`
+
+### RandomNumberGenerator
+- 난수 생성 역할을 하는 유틸 클래스이다.
+- [x] 난수 생성 메서드
+
+### GameService
+- 메인 로직을 담당하는 클래스로, 게임 진행에 필요한 주요 메서드들이 담긴다.
+- [x] 게임 실행 메서드를 생성한다.
+  - 게임을 시작하고, 종료 후 재실행 여부까지 파악하여 반복한다.
+- [x] 게임 진행 메서드를 생성한다.
+  - 숫자 생성 후 `while`문을 통해 입력값과 지속적으로 비교한다.
+  - 게임 종료 후 리턴한다.
+- [x] 결과 값을 도출하는 메서드를 생성한다.
+  - 입력된 숫자를 기반으로 어떤 결과가 나왔는지 리턴한다.
+<br><br>
+
+## 💡 Console
+
+### OutputConstant
 - 출력에 필요한 상수들을 담은 Enum 클래스이다.
 - [x] GAME_INIT : `숫자 야구 게임을 시작합니다.`
 - [x] INPUT_REQ : `숫자를 입력해주세요 : `
@@ -54,14 +89,6 @@
 - [x] STRIKE : `스트라이크`
 - [x] SUCCESS : `3개의 숫자를 모두 맞히셨습니다! 게임 종료`
 - [x] GAME_END : `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.`
-- [x] RESTART : `1`
-- [x] FINISH : `2`
-
-### NumberConstant
-- 전반적으로 사용되는 매직넘버들을 상수로 처리한 Enum 클래스이다.
-- [x] MIN_NUMBER : 1
-- [x] MAX_NUMBER : 9
-- [x] PICK_COUNT : 3
 
 ### InputValidation
 - 입력의 유효성을 판단하는 클래스이다.
@@ -75,30 +102,28 @@
 ### ConsoleInput
 - 입력을 담당하는 클래스이다.
 - [x] `Console.readLine()`를 통해 입력을 받는다.
-- [x] try-catch를 통해 `InputValidation`으로 유효성을 판단한다. 
+- [x] try-catch를 통해 `InputValidation`으로 유효성을 판단한다.
 - [x] 유효하지 않은 입력의 경우 `IllegalArgumentException`를 발생시킨다.
   - RuntimeException의 하위클래스이므로 exception 발생 시 게임은 그대로 종료되어야 한다.
 
 ### ConsoleOutput
 - 출력을 담당하는 클래스이다.
 - [x] `ConsoleConstant`를 활용하여 `System.out.println()`을 통해 출력을 한다.
+<br><br>
 
-### BaseBallController
-- 메인 로직을 담당하는 클래스로, 게임 진행에 필요한 주요 메서드들이 담긴다.
-- [x] 게임 진행 메서드를 생성한다. 리턴 타입은 boolean이다. (재시작 여부를 리턴한다)
-  - 숫자 생성 후 `while`문을 통해 입력값과 지속적으로 비교한다.
-  - `while`문의 종료조건은 입력값과 뽑은 랜덤숫자가 일치할 경우이다.
-- [x] 랜덤 숫자 생성 메서드를 생성한다.
-  - 필드에 랜덤 숫자를 배치한다.
-- [x] 입력된 숫자의 정답 여부를 boolean으로 리턴하는 메서드를 생성한다.
-  - Application은 이를 기준으로 게임 진행 지속 여부를 결정한다.
+## 💡 DTO
 
-### Application
-- [x] `while`문을 통해 `BaseBall`클래스의 게임 진행 메서드를 실행한다.
-  - 이 재시작여부(boolean)가 위의 while문의 종료조건이다.
-  - true라면 재시작하고 false라면 while문을 종료시키고 전체 게임을 종료한다. 
+### GameResult
+- 게임 결과를 담을 dto이다.
+- [x] 볼 카운트와 스트라이크 카운트를 담는다.
+<br><br>
+
+## 💡 Exception
+
+### ErrorMessage
+- 에러메세지들을 담을 Enum 클래스이다.
+- [x] 게임 중 입력 받을 3자리 숫자와 관련된 에러메세지
+- [x] 게임 종료 후 입력 받을 1자리 숫자와 관련된 에러메세지
+<br>
 
 ---
-
-
-
