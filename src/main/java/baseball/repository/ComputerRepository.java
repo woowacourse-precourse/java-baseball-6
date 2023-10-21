@@ -3,14 +3,14 @@ package baseball.repository;
 import java.util.Map;
 import java.util.TreeMap;
 public class ComputerRepository {
-    private Map<Integer,Integer> answerMap = new TreeMap<>();
+    private int[] answerArray = new int[3];
 
 
-    public Map<Integer, Integer> getAnswerMap() {
-        return answerMap;
+    public int[] getAnswerArray() {
+        return answerArray;
     }
 
-    public void setAnswerMap(Map<Integer, Integer> answerMap) {
-        this.answerMap = answerMap;
+    public void setAnswerArray(int[] answerArray) {
+        this.answerArray = answerArray;
     }
 }
