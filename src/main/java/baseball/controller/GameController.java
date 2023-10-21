@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.Umpire;
 import baseball.factory.NumberFactory;
+import baseball.model.ResumeNumber;
 import baseball.view.EndView;
 import baseball.view.ResultView;
 import baseball.view.StartView;
@@ -11,6 +12,12 @@ public class GameController {
     private static final int PLAY_NUMBER_DIGIT = 3;
     private static final int RESTART = 1;
     private static final int END = 2;
+
+    private final ResumeNumber resumeNumber;
+
+    public GameController() {
+        this.resumeNumber = ResumeNumber.from(RESTART);
+    }
 
     public static void play() {
         boolean playWant = true;
