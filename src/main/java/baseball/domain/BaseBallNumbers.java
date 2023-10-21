@@ -15,4 +15,8 @@ public class BaseBallNumbers {
         return new BaseBallNumbers(new ArrayList<>());
     }
 
+    public int size() {
+        return baseballNumbers.size();
+    }
+
 }
