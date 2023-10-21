@@ -8,7 +8,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class BaseballGame {
     private final List<Integer> computer;
-    private final List<Integer> user;
+    private List<Integer> user;
     private BaseballGameCounts baseballGameCounts;
 
     protected BaseballGame() {
