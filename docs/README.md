@@ -24,8 +24,10 @@
 
 ### View
 
-- `InputView`: 사용자의 입력을 받는 메세지 출력.
-- `OutputView`: 사용자의 입력에 따른 응답 메세지 출력.
+- `InputView`: 사용자의 입력을 받는 인터페이스.
+- `OutputView`: 사용자의 입력에 따른 응답 메세지를 출력하는 인터페이스.
+- `BaseballInputView`: 숫자 야구게임 사용자의 입력을 받는 메세지 출력하는 클래스.
+- `BaseballOutputView`: 숫자 야구게임 사용자의 입력에 따른 응답 메세지 출력하는 클래스.
 - `InputValidator`: 사용자가 입력한 숫자가 `InputView`의 조건에 맞게 입력했는지 검증.
 
 ### 도메인
@@ -41,10 +43,10 @@
 
 ### 기능 목록
 
-- `InputView`
-    - [x] `baseballNumber()`: `"숫자를 입력해주세요 : "`를 출력하고 `Console.readLine()`으로 3자리 숫자를 입력 받음.
+- `BaseballInputView`
+    - [x] `inputBaseballNumber()`: `"숫자를 입력해주세요 : "`를 출력하고 `Console.readLine()`으로 3자리 숫자를 입력 받음.
     - [x] `continueOrExit()`: `"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."`를 출력하고 `1` 또는 `2` 숫자를 입력 받아서 `true`, `false` 반환.
-- `OutputView`
+- `BaseballOutputView`
     - [x] `startGame()`: 최초 시작시 `"숫자 야구 게임을 시작합니다."`를 출력.
     - [x] `endGame()`: 매 게임시 3자리 숫자를 모두 맞추면 `"3개의 숫자를 모두 맞히셨습니다! 게임종료"`를 출력.
     - [x] `matchResult()`: `Computer`의 `match()` 메서드에서 `"볼"`, `"스트라이크"`를 넘겨받아서 `Score` 출력.
