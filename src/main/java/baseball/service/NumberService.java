@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 
 public class NumberService {
+    private static final String INPUT_ERROR_MESSAGE = "서로 다른 정수 3개를 입력해주세요 1<= N <= 9";
 
     public Number generate(){
         Number computer = new Number();
@@ -24,7 +25,7 @@ public class NumberService {
                     .map(Character::getNumericValue).forEach(user::add);
             return user;
         } else{
-            throw new IllegalArgumentException("서로 다른 정수 3개를 입력해주세요 1<= N <= 9");
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
     }
 
