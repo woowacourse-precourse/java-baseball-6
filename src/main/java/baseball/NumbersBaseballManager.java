@@ -7,15 +7,15 @@ public class NumbersBaseballManager {
     private NumbersBaseball numbersBaseball = new NumbersBaseball();
     public static String RESTART_CMD = "1";
     public static String FINISH_CMD = "2";
-    public static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    public static final String FINSIH_MESSAGE = "게임을 종료합니다.";
-
-    public void gameStart(String startMessage,String finishMessage) {
-        System.out.println(startMessage);
-        gameLogic(startMessage,finishMessage);
+    public void setGameMessage(String startMessage, String finishMessage) {
+        numbersBaseball.setMessages(startMessage, finishMessage);
+    }
+    public void startGame() {
+        System.out.println(numbersBaseball.getStartMessage());
+        gameLogic();
     }
 
-    private void gameLogic(String startMessage,String finishMessage) {
+    private void gameLogic() {
         BaseballInfo baseballInfo = new BaseballInfo(0, 0);
         numbersBaseball.generateAnswer();
         while (!baseballInfo.isThreeStrike()) {
@@ -25,18 +25,17 @@ public class NumbersBaseballManager {
             baseballInfo = NumbersBaseball.getCompareResultWith(convertToIntArr(input));
             System.out.println(baseballInfo);
             if (baseballInfo.isThreeStrike()) {
-                finish(startMessage,finishMessage);
+                finish();
                 return;
             }
         }
     }
 
-    public void finish(String startMessage,String finishMessage) {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    public void finish() {
+        System.out.println(numbersBaseball.getFinishMessage());
         String input = Console.readLine();
         if (input.equals(RESTART_CMD)) {
-            gameLogic(startMessage,finishMessage);
+            gameLogic();
         }
     }
 

@@ -22,7 +22,7 @@ public class BaseballInfo {
         strike++;
     }
 
-    public void addball() {
+    public void addBall() {
         ball++;
     }
 
