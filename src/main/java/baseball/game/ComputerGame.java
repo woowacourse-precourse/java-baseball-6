@@ -17,7 +17,13 @@ public class ComputerGame {
             UserInput input = new UserInput();
             String userAnswer = input.userAnswer;
 
-            success = getHint(userAnswer, comAnswer);
+            int ball = countBall(userAnswer, comAnswer);
+            int strike = countStrike(userAnswer, comAnswer);
+            ball -= strike;
+
+            printHint(ball, strike);
+            success = judge(strike);
+
         } while (!success);
 
     }
@@ -38,15 +44,10 @@ public class ComputerGame {
     }
 
     /**
-     * 사용자 입력값에 대한 판단 후 힌트 제공
+     * 사용자 입력값에 대한 힌트 문자열 출력
      */
-    private boolean getHint(String userAnswer, String computerAnswer) {
+    private void printHint(int ball, int strike) {
         String result = "";
-        int ball = countBall(userAnswer, computerAnswer);
-        int strike = countStrike(userAnswer, computerAnswer);
-
-        ball -= strike;
-
         if (ball > 0) {
             result += ball + "볼 ";
         }
@@ -57,7 +58,12 @@ public class ComputerGame {
             result = "낫싱";
         }
         System.out.println(result);
+    }
 
+    /**
+     * 3개 스트라이크 (게임 승리) 판단
+     */
+    private boolean judge(int strike) {
         if (strike == ANSWER_LEN) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
