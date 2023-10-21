@@ -71,6 +71,16 @@ public class Application {
             }
         }
 
+        //같은 수가 다른 자리에 있으면 볼　
+        int ball = 0;
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < n; j++){
+                if (inputNumList.get(i).equals(computerNumList.get(j))) {
+                    ball++;
+                }
+            }
+        }
+
     }
 
     //string이 Integer인지 아닌지 판단. TODO: IntegerUtil에 넣기
