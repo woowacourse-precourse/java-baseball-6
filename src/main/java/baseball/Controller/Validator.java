@@ -21,7 +21,7 @@ public class Validator {
     }
 
 
-    public void validateEndInput(String endnumber){
+    public void validateGameEndInput(String endnumber){
         try{
             int n = Integer.parseInt(endnumber);
             if(n!=1 && n!=2)

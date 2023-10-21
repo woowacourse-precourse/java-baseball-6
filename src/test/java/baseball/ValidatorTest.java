@@ -44,30 +44,30 @@ public class ValidatorTest {
     void 종료_입력_검증_문자() {
         String endInput1 = "a";
         assertThrows(IllegalArgumentException.class, () ->
-            validator.validateEndInput(endInput1));
+            validator.validateGameEndInput(endInput1));
     }
     @Test
     void 종료_입력_검증_1과2외() {
         String endInput2 = "12";
         assertThrows(IllegalArgumentException.class, () ->
-            validator.validateEndInput(endInput2));
+            validator.validateGameEndInput(endInput2));
     }
     @Test
     void 종료_입력_검증_1과2외_2() {
         String endInput3 = "3";
         assertThrows(IllegalArgumentException.class, () ->
-            validator.validateEndInput(endInput3));
+            validator.validateGameEndInput(endInput3));
     }
     @Test
     void 종료_입력_검증_정답() {
         String endInput4 = "1";
         assertDoesNotThrow(() ->
-            validator.validateEndInput(endInput4));
+            validator.validateGameEndInput(endInput4));
     }
     @Test
     void 종료_입력_검증_정답2() {
         String endInput5 = "2";
         assertDoesNotThrow(() ->
-            validator.validateEndInput(endInput5));
+            validator.validateGameEndInput(endInput5));
     }
 }

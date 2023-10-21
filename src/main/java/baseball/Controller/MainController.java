@@ -55,7 +55,7 @@ public class MainController {
         outputView.printHint(0,3);
         inputView.printGameEnd();
         String endnumber = Console.readLine();
-        validator.validateEndInput(endnumber);
+        validator.validateGameEndInput(endnumber);
 
         if (endnumber.equals("1")) {
             MainController.state = 1;

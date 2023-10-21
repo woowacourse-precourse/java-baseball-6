@@ -83,7 +83,7 @@ __Validator__
    4) 숫자가 서로 중복되지 않는지 검증
 
 
-- [x] validateEndInput (게임종료 후 1,2입력 검증)
+- [x] validateGameEndInput (게임종료 후 1,2입력 검증)
   1) 1혹은 2인지 검증
 
 __RandomNumberGenerator__
