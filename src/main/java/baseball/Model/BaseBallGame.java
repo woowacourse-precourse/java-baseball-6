@@ -50,9 +50,17 @@ public class BaseBallGame {
     /**
      * 게임을 다시 시작할때 셋팅해주는 메소드
      */
-    public void restartGame() {
-        computerNumber = numberGenerator.generatorComputerNumber(BASEBALL_NUM_SIZE);
-        isGameOver = false;
+    public void restartGame(String userInput) {
+        if (userInput.equals("1")) {
+            computerNumber = numberGenerator.generatorComputerNumber(BASEBALL_NUM_SIZE);
+            isGameOver = false;
+            return;
+        }
+        if (userInput.equals("2")) {
+            isGameOver = true;
+            return;
+        }
+        throw new IllegalArgumentException("허가되지 않은 문자열");
     }
 
     /**

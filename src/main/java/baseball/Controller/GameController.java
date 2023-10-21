@@ -13,35 +13,31 @@ public class GameController {
     private static final int BALL = 0;
     private static final int STRIKE = 1;
 
-
-    public GameController() {
-
-    }
-
     public void startGame() {
         gameView.printStartMessage();
         while (!baseBallGame.isGameOver()) {
             String input = gameView.printInputMessage();
             List<Integer> userInput = baseBallGame.parseUserInput(input);
-
             List<Integer> ballStrikeCount = baseBallGame.checkBallCount(userInput);
+            int balls = ballStrikeCount.get(BALL);
+            int strikes = ballStrikeCount.get(STRIKE);
 
-            if (ballStrikeCount.get(BALL) != 0 && ballStrikeCount.get(STRIKE) == 0) {
-                gameView.printBallMessage(ballStrikeCount.get(BALL));
+            if (balls != 0 && strikes == 0) {
+                gameView.printBallMessage(balls);
+            } else if (balls != 0 && strikes != 0) {
+                gameView.printBallStrikeMessage(balls);
             }
-            if (ballStrikeCount.get(BALL) != 0 && ballStrikeCount.get(STRIKE) != 0) {
-                gameView.printBallStrikeMessage(ballStrikeCount.get(BALL));
+            if (strikes != 0) {
+                gameView.printStrikeMessage(strikes);
             }
-            if (ballStrikeCount.get(STRIKE) != 0) {
-                gameView.printStrikeMessage(ballStrikeCount.get(STRIKE));
-            }
-            if (ballStrikeCount.get(BALL) == 0 && ballStrikeCount.get(STRIKE) == 0) {
+            if (balls == 0 && strikes == 0) {
                 gameView.printNothingMessage();
             }
 
+            baseBallGame.gameOverCheck(strikes);
             if (baseBallGame.isGameOver()) {
-                gameView.printGameOverMessage();
-                baseBallGame.restartGame();
+                String inputRestart = gameView.printGameOverMessage();
+                baseBallGame.restartGame(inputRestart);
             }
         }
     }
