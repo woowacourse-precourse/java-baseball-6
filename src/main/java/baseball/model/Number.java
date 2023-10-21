@@ -1,14 +1,12 @@
 package baseball.model;
 
+import baseball.exception.ErrorMessage;
 import java.util.List;
 
 public class Number {
     public final int firstNumber;
     public final int secondNumber;
     public final int thirdNumber;
-
-    private final String INPUT_LENGTH_IS_NOT_THREE = "3자리 수를 입력해야 합니다.";
-    private final String INPUT_DIGIT_IS_NUIQUE = "3자리의 수는 모두 달라야 합니다.";
 
     public Number(List<Integer> digits) {
         firstNumber = digits.get(0);
@@ -39,7 +37,7 @@ public class Number {
 
     private int validateIsDigit(int digit) {
         if (digit < 1 || digit > 9) {
-            throw new IllegalArgumentException("1 이상 9 이하의 숫자가 아닙니다.");
+            throw new IllegalArgumentException(ErrorMessage.INPUT_IS_NOT_DIGIT.getMessage());
         }
         return digit;
     }
@@ -47,13 +45,13 @@ public class Number {
 
     private void validateInputNumberUnique(int first, int second, int third) {
         if (first == second || second == third || first == third) {
-            throw new IllegalArgumentException(INPUT_DIGIT_IS_NUIQUE);
+            throw new IllegalArgumentException(ErrorMessage.INPUT_DIGIT_IS_NOT_UNIQUE.getMessage());
         }
     }
 
     private void validateInputNumberSize(Integer number) {
         if (number < 100 || number > 999) {
-            throw new IllegalArgumentException(INPUT_LENGTH_IS_NOT_THREE);
+            throw new IllegalArgumentException(ErrorMessage.INPUT_LENGTH_IS_NOT_THREE.getMessage());
         }
 
     }

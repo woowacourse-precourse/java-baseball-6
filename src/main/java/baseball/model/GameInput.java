@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.exception.ErrorMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameInput {
@@ -14,14 +15,11 @@ public class GameInput {
     public Integer readFinishInput() {
         int number = Integer.parseInt(Console.readLine());
 
-        switch (number) {
-            case 1:
-                return RESTART_GAME;
-            case 2:
-                return END_GAME;
-            default:
-                throw new IllegalArgumentException("1 또는 2를 입력해야합니다.");
-        }
+        return switch (number) {
+            case 1 -> RESTART_GAME;
+            case 2 -> END_GAME;
+            default -> throw new IllegalArgumentException(ErrorMessage.FINISH_INPUT_IS_WRONG.getMessage());
+        };
     }
 
 }
