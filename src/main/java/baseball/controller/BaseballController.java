@@ -8,14 +8,19 @@ import baseball.view.OutputView;
 
 public class BaseballController {
     public static void run() {
-        RandomAnswerGenerator answerGenerator = new RandomAnswerGenerator();
-        Computer computer = new Computer(answerGenerator);
         OutputView.startGame();
-        do {
+        boolean isContinue = true;
+        while (isContinue) {
+            Computer computer = getComputer();
             play(computer);
             OutputView.endGame();
-            computer.initAnswer(answerGenerator);
-        } while (InputView.continueOrExit());
+            isContinue = InputView.continueOrExit();
+        }
+    }
+
+    private static Computer getComputer() {
+        RandomAnswerGenerator answerGenerator = new RandomAnswerGenerator();
+        return new Computer(answerGenerator);
     }
 
     private static void play(Computer computer) {
