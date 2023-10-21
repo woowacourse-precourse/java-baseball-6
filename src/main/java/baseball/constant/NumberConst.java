@@ -5,9 +5,9 @@ package baseball.constant;
  */
 public final class NumberConst {
 
-    public static final Integer RESTART_NUM = 1;
+    public static final Integer RESTART_NUMBER = 1;
 
-    public static final Integer EXIT_NUM = 2;
+    public static final Integer EXIT_NUMBER = 2;
 
     public static final Integer INPUT_LENGTH = 3;
 
