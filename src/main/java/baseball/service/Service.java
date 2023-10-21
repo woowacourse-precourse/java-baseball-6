@@ -99,4 +99,21 @@ public class Service {
         }
     }
 
+    public void printResult() {
+        int ball = scoreRepository.getBall();
+        int strike = scoreRepository.getStrike();
+
+        if (ball == 0 && strike == 0) {
+            printer.printNothing();
+        }
+        if(ball==0&&strike>0){
+            printer.printStrike(strike);
+        }
+        if(ball>0&&strike==0){
+            printer.printBall(ball);
+        }
+        if(ball>0&&strike>0){
+            printer.printBallAndStrike(ball,strike);
+        }
+    }
 }

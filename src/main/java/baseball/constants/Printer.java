@@ -9,6 +9,11 @@ public class Printer {
 
     private final String SELECT_CONTINUE_PHRASES= "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    private final String NOTHING_PHRASES= "낫싱";
+
+    private final String BALL_PHRASES = "볼";
+    private final String STRIKE_PHRASES = "스트라이크";
+
     public static  String ERROR_PHRASES = "1~9까지의 서로 다른 세 자리 숫자만 입력하세요";
 
 
@@ -25,5 +30,21 @@ public class Printer {
     }
     public void printSelectContinue(){
         System.out.println(SELECT_CONTINUE_PHRASES);
+    }
+
+    public void printNothing(){
+        System.out.println(NOTHING_PHRASES);
+    }
+
+    public void printBall(int ball){
+        System.out.println(ball+BALL_PHRASES);
+    }
+
+    public void printStrike(int strike){
+        System.out.println(strike+STRIKE_PHRASES);
+    }
+
+    public void printBallAndStrike(int ball,int strike){
+        System.out.println(ball+BALL_PHRASES+" "+strike+STRIKE_PHRASES);
     }
 }
