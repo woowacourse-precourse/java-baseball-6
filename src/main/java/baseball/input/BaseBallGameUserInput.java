@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BaseBallGameUserInput implements UserInput<List<Integer>> {
-    private static final String INPUT_FORMAT = "숫자를 입력해주세요 :";
+    private static final String INPUT_FORMAT = "숫자를 입력해주세요 : ";
     @Override
     public List<Integer> input(Integer inputSize) {
         System.out.print(INPUT_FORMAT);
