@@ -17,7 +17,7 @@ public class Game {
             List<Integer> query = this.askQuery();
             int[] result = this.judge(query);
             this.printResult(result);
-            if (result[0] == 3) {
+            if (this.isCorrect(result)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
@@ -80,5 +80,9 @@ public class Game {
         } else {
             System.out.println("낫싱");
         }
+    }
+
+    private boolean isCorrect(int[] result) {
+        return result[0] == 3;
     }
 }
