@@ -2,27 +2,39 @@ package baseball.view;
 
 public class OutputView {
 
+    private OutputView() {
+    }
+
     public static void printBeginningMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private OutputView() {
-    }
-
     public static void printBallCountResult(int countOfBall, int countOfStrike) {
-        if (countOfBall == 0 && countOfStrike == 0) {
+        if (isNothing(countOfBall, countOfStrike)) {
             System.out.println("낫싱");
             return;
         }
-        if (countOfStrike == 0) {
+        if (isOnlyBall(countOfStrike)) {
             System.out.println(countOfBall + "볼");
             return;
         }
-        if (countOfBall == 0) {
+        if (isOnlyStrike(countOfBall)) {
             System.out.println(countOfStrike + "스트라이크");
             return;
         }
         System.out.println(countOfBall + "볼 " + countOfStrike + "스트라이크");
+    }
+
+    private static boolean isNothing(int countOfBall, int countOfStrike) {
+        return countOfBall == 0 && countOfStrike == 0;
+    }
+
+    private static boolean isOnlyBall(int countOfStrike) {
+        return countOfStrike == 0;
+    }
+
+    private static boolean isOnlyStrike(int countOfBall) {
+        return countOfBall == 0;
     }
 
     public static void printEndingMessageForAllStrike(int digitNumber) {
