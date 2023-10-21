@@ -20,21 +20,21 @@ public class Play {
         com.getIntArray();
     }
 
-    public void getInput(String msg) {
+    public void setInput(String msg) {
         System.out.print(msg);
         input = Console.readLine();
     }
 
     public void restartOrFinishGame() {
         while (true) {
-            getInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            setInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
             if (Integer.parseInt(input) > 2 || Integer.parseInt(input) < 1) {
                 throw new IllegalArgumentException("Invalid input: " + input);
             }
             if (input.equals("1")) {
                 com.clearList();
                 com.getIntArray();
-                user.clearList();
+                user.clearUser();
                 runGame();
             }
             if (input.equals("2")) {
@@ -48,13 +48,13 @@ public class Play {
     public void runGame() {
         while (true) {
             // 사용자 입력
-            getInput("숫자를 입력해주세요 : ");
+            setInput("숫자를 입력해주세요 : ");
             if (input.length() != 3) {
                 throw new IllegalArgumentException("Invalid input: " + input);
             }
-            user.getIntArray(input);
+            user.setUser(input);
             // 스트라이크, 볼 개수 구하기
-            rules.countBallAndStrikes(com.getList(), user.getList());
+            rules.countBallAndStrikes(com.getList(), user.getUser());
             // 결과 출력
             if (rules.isThreeStrikes()) {
                 System.out.println("3스트라이크");
@@ -62,7 +62,7 @@ public class Play {
                 break;
             }
             rules.printBallAndStrikes();
-            user.clearList();
+            user.clearUser();
         }
     }
 }
