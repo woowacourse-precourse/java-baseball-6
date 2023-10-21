@@ -11,16 +11,16 @@ public class GameView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void printBallStrikeMessage() {
-        System.out.print("볼 ");
+    public void printBallStrikeMessage(int ball) {
+        System.out.print(ball + "볼 ");
     }
 
-    public void printBallMessage() {
-        System.out.println("볼");
+    public void printBallMessage(int ball) {
+        System.out.println(ball + "볼");
     }
 
-    public void printStrikeMessage() {
-        System.out.println("스트라이크");
+    public void printStrikeMessage(int strike) {
+        System.out.println(strike + "스트라이크");
     }
 
     public void printNothingMessage() {
