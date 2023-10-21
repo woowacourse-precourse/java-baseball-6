@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validator {
+
     private static final Pattern NUMBER_PATTERN = Pattern.compile("[1-9]+");
 
     public static void validateUserInput(String userInput) {
@@ -30,14 +31,13 @@ public class Validator {
             return false;
         }
 
-
         Set<Character> seen = new HashSet<>();
+
         for (char digit : input.toCharArray()) {
             if (!seen.add(digit)) {
                 return false;
             }
         }
-
         return true;
     }
 
