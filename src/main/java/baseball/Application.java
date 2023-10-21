@@ -12,7 +12,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         while(true){
-            playSingleGameRound();
+            playGame();
             if(shouldRestartGame()==false){//종료
                 break;
             }
@@ -20,7 +20,7 @@ public class Application {
 
     }
 
-    private static void playSingleGameRound() {
+    private static void playGame() {
         displayGameStartMessage();
         List<Integer> computer = generateComputerRandomThreeDigitNumber();
 
