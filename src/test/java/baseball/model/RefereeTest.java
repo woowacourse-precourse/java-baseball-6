@@ -110,4 +110,56 @@ class RefereeTest {
         //then
         Assertions.assertEquals(ballNumbers, 3);
     }
+
+    @Test
+    public void 낫싱_판별_테스트() {
+        //given
+        final int strikeNumber = 0;
+        final int ballNumber = 0;
+
+        //when
+        boolean isNothing = referee.isNothing(strikeNumber, ballNumber);
+
+        //then
+        Assertions.assertTrue(isNothing);
+    }
+
+    @Test
+    public void 볼만_있는_경우_판별_테스트() {
+        //given
+        final int strikeNumber = 0;
+        final int ballNumber = 1;
+
+        //when
+        boolean isOnlyBall = referee.isOnlyBall(strikeNumber, ballNumber);
+
+        //then
+        Assertions.assertTrue(isOnlyBall);
+    }
+
+    @Test
+    public void 스트라이크만_있는_경우_판별_테스트() {
+        //given
+        final int strikeNumber = 1;
+        final int ballNumber = 0;
+
+        //when
+        boolean isOnlyStrike = referee.isOnlyStrike(strikeNumber, ballNumber);
+
+        //then
+        Assertions.assertTrue(isOnlyStrike);
+    }
+
+    @Test
+    public void 둘_다_있는_경우_판별_테스트() {
+        //given
+        final int strikeNumber = 2;
+        final int ballNumber = 1;
+
+        //when
+        boolean isStrikeAndBall = referee.isStrikeAndBall(strikeNumber, ballNumber);
+
+        //then
+        Assertions.assertTrue(isStrikeAndBall);
+    }
 }
