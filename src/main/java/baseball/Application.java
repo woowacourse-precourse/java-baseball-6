@@ -10,7 +10,7 @@ public class Application {
         printStart();
 
         while(true) {
-            RunGame.runBaseBallGame();
+            new RunGame();
             if(!wantToRestartOrEnd())
                 break;
         }

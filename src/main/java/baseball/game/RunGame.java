@@ -4,7 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class RunGame {
 
-    public static void runBaseBallGame() {
+    public RunGame() {
+        runBaseBallGame();
+    }
+
+    private static void runBaseBallGame() {
         Game.generateNumber();
 
         while (true) {
