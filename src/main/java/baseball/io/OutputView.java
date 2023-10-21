@@ -9,6 +9,6 @@ public class OutputView {
     }
 
     public void printNumberInputRequest() {
-        System.out.println(GameMessage.NUMBER_INPUT_REQUEST.toValue());
+        System.out.print(GameMessage.NUMBER_INPUT_REQUEST.toValue());
     }
 }
