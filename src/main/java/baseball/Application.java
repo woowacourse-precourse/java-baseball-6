@@ -1,8 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.*;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     private static final String RESTART = "1";
@@ -70,8 +72,8 @@ public class Application {
         int strikes = 0;
         char[] inputChars = input.toCharArray();
 
-        for (int i = 0; i < computer.size(); i++) {
-            for (int j = 0; j < input.length(); j++) {
+        for (int i = 0; i < TOTAL_CARDS; i++) {
+            for (int j = 0; j < TOTAL_CARDS; j++) {
                 if (computer.get(i) == Character.getNumericValue(inputChars[j])) {
                     if (i == j) {
                         strikes++;
