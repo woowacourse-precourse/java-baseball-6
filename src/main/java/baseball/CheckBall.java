@@ -8,11 +8,20 @@ import java.util.stream.Stream;
 
 public class CheckBall {
 
-    protected static boolean giveBallResult(String tempBall, List<Integer> rightBall) {
+    protected static boolean giveBallResult(String tempBall, List<Integer> rightBall){
 
-        List<Integer> integerTempBall = Arrays.stream(tempBall.split(""))
-                .map(Integer::valueOf)
-                .collect(Collectors.toList());
+        List<Integer> integerTempBall = new ArrayList<>();
+        try {
+            integerTempBall = Arrays.stream(tempBall.split(""))
+                    .map(Integer::valueOf)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (integerTempBall.size() != 3) {
+            throw new IllegalArgumentException();
+        }
 
         int strike = 0;
         int ball = 0;
