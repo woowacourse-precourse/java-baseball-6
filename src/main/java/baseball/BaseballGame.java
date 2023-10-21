@@ -74,7 +74,7 @@ public class BaseballGame {
 
         List<Integer> inputNumberList = new ArrayList<>();
 
-        //숫자 gameFew 만큼 써놨는지 확인
+        //숫자 gameLength 만큼 써놨는지 확인
         if (inputNumber.length != gameLength) {
             return true;
         }
