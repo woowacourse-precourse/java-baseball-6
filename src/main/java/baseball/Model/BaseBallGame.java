@@ -91,6 +91,9 @@ public class BaseBallGame {
 
         for (int i = 0; i < BASEBALL_NUM_SIZE; i++) {
             char c = input.charAt(i);
+            if (c == '0') {
+                throw new IllegalArgumentException("허가되지 않은 문자열");
+            }
             if (Character.isDigit(c)) {
                 int digit = Character.getNumericValue(c);
                 parsedInput.add(digit);
