@@ -73,7 +73,7 @@ public class Application {
 
         public void checkUserNumbers(String[] numbers) {
             if (numbers.length < 1 || numbers.length > 3) {
-                throw new IllegalArgumentException("정해진 수보다 많이 입력하였습니다.");
+                throw new IllegalArgumentException("정해진 수의 범위를 넘었습니다.");
             }
             for (String number : numbers) {
                 if (!number.matches("\\d")) {
