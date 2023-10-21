@@ -40,7 +40,15 @@ public class Application {
     private static void getUserInput(int[] userNumberDigits) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
-        int userNumber = scanner.nextInt();
+        Integer userNumber = null;
+        try {
+            String userNumberString = scanner.next();
+            userNumber = Integer.parseInt(userNumberString);
+            if (userNumberString.length() != 3)
+                throw new IllegalAccessException();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
         for (int i = NUM_OF_DIGITS - 1; i >= 0; i--) {
             int filteredNum = (int) (userNumber % Math.pow(10, i + 1));
             int digit = filteredNum / (int) Math.pow(10, i);
