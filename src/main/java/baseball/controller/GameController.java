@@ -33,7 +33,7 @@ public class GameController {
 			isGameStatus = !compareNumber();
 			outputView.printResult(gameData.getStrikeCount(), gameData.getBallCount());
 		}
-		if(isRestart()) {
+		if(isRestartRequested()) {
 			gameStart();
 			return;
 		}
@@ -54,7 +54,7 @@ public class GameController {
 		}
 		return gameData.getStrikeCount() == 3;
 	}
-	public boolean isRestart() {
+	public boolean isRestartRequested() {
 		String restartInput = inputView.readRestart();
 		String validatedRestartInput = InputValidation.validateRestartInput(restartInput);
 		return validatedRestartInput.equals("1");
