@@ -66,12 +66,12 @@ public class Game {
 
     private void compareInputNumber(int[] result, int currentPosition) {
         if(randomNumbers.get(currentPosition) == inputNumbers.get(currentPosition)) {
-            result[0]++;
+            result[1]++;
             return;
         }
 
         if(randomNumbers.contains(inputNumbers.get(currentPosition))) {
-            result[1]++;
+            result[0]++;
         }
     }
 }
