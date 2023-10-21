@@ -15,7 +15,7 @@ public class BaseBallGame {
     private static final int RANDOM_NUMBER_LENGTH = 3;
     private static final String GAME_RESTART_STATE = "1";
     private static final String GAME_END_STATE = "2";
-    private static final String GAME_END_MESSAGE = RANDOM_NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
     private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 " + GAME_RESTART_STATE +
             ", 종료하려면 " + GAME_END_STATE + "를 입력하세요.";
 
@@ -41,7 +41,7 @@ public class BaseBallGame {
             isCorrect = compareNumber(computerNumbers, playerNumbers);
         }
 
-        printEndMessage();
+//        printEndMessage();
     }
 
     private boolean isRestart() {
@@ -61,10 +61,6 @@ public class BaseBallGame {
 
     private void printRestartQuestionMessage() {
         System.out.println(GAME_RESTART_MESSAGE);
-    }
-
-    private void printEndMessage() {
-        System.out.println(GAME_END_MESSAGE);
     }
 
     private boolean compareNumber(List<Integer> computerNumbers, List<Integer> playerNumbers) {
