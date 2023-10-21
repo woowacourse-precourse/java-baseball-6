@@ -4,9 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import util.NumberGenerator;
+import util.StringChecker;
 
 public class BaseballGame implements Game {
     private final NumberGenerator numberGenerator;
+    private final StringChecker stringChecker;
     private int strikeCount;
     private int ballCount;
     private List<Integer> user;
@@ -15,6 +17,7 @@ public class BaseballGame implements Game {
 
     public BaseballGame(int numberLength) {
         this.numberGenerator = new NumberGenerator(numberLength, 1, 9);
+        this.stringChecker = new StringChecker();
         this.numberLength = numberLength;
         this.ballCount = 0;
         this.strikeCount = 0;
@@ -115,7 +118,7 @@ public class BaseballGame implements Game {
         this.user = new ArrayList<>();
         String input;
         input = Console.readLine();
-        if (input.length() != this.numberLength || !isStringAllDigits(input)) {
+        if (input.length() != this.numberLength || !this.stringChecker.isStringAllDigits(input)) {
             throw new IllegalArgumentException(input);
         }
         for (char c : input.toCharArray()) {
