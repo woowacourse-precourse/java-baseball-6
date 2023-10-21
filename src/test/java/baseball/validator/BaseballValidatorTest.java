@@ -60,7 +60,7 @@ class BaseballValidatorTest extends BaseballValidator{
                 .hasMessage(message);
     }
     private void testRetryException(Integer num, String message) {
-        assertThatThrownBy(() -> retryValidator(num))
+        assertThatThrownBy(() -> restartValidator(num))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
     }

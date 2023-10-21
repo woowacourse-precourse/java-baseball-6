@@ -12,43 +12,53 @@ public class BaseballController {
     public static void run(){
         start();
     }
+
     private static void start(){
         OutputView.startGame();
         Baseball baseball =new Baseball(true);
-        User user= new User(true);
+        User user= new User();
         Computer computer = new Computer();
-        do{
-            gameStartRequest(user,computer);
-            whetherRetryGame(baseball);
-        }
-        while(baseball.isState());
-        }
+        gameStartRequest(baseball, user, computer);
+    }
 
-    private static void gameStartRequest( User user, Computer computer) {
+    private static void gameStartRequest(Baseball baseball,User user,Computer computer){
         do{
-            computer.createComputerBall();
-            playBaseball(user,computer);
+            repeatGame(user,computer);
+            restartAndShutdown(baseball);
         }
-        while(user.retry());
+        while(baseball.restart());
+    }
+
+    private static void repeatGame( User user, Computer computer) {
+        computer.createComputerBall();
+        playBaseball(user,computer);
+        gameComplete();
     }
 
     private static void playBaseball(User user, Computer computer) {
         BallCount ballCount = new BallCount(true);
         do{
-            user.setBaseball(inputUserNumber());
-            ballCount.initBallCount();
-            ballCount.baseballGame(computer.getBaseball(), user.getBaseball());
-            ballCount.strikeOut();
+            user.setUserBall(userEnterNumber());
+            compareRequest(ballCount,user,computer);
         }
         while(ballCount.isStrikeOut());
-        user.endGame();
-        OutputView.endGame();
-    }
-    private static void whetherRetryGame(Baseball baseball) {
-        baseball.retryAndEnd(InputView.retryGame());
     }
 
-    public static List<Integer> inputUserNumber(){
+    private static void compareRequest(BallCount ballCount, User user, Computer computer){
+        ballCount.initializeBallCount();
+        ballCount.ballCountResponse(computer.getComputerBall(), user.getUserBall());
+        OutputView.printBallCount(ballCount.printBallCount());
+
+    }
+
+    private static void gameComplete(){
+        OutputView.gameComplete();
+    }
+    private static void restartAndShutdown(Baseball baseball) {
+        baseball.restartAndShutdown(InputView.retryGame());
+    }
+
+    public static List<Integer> userEnterNumber(){
         return InputView.inputNumber();
     }
 }

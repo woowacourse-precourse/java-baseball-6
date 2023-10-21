@@ -4,28 +4,16 @@ import baseball.validator.BaseballValidator;
 import java.util.List;
 
 public class User  {
-    List<Integer> baseball;
-    boolean playGame;
+    private List<Integer> userBall;
 
-    public User(boolean playGame){
-        this.playGame=playGame;
-    }
-
-    public void endGame() {
-        this.playGame = false;
-    }
-
-    public void setBaseball(List<Integer> baseball) {
+    public void setUserBall(List<Integer> baseball) {
         if (BaseballValidator.validator(baseball)) {
-            this.baseball = baseball;
+            this.userBall = baseball;
         }
     }
 
-    public List<Integer> getBaseball() {
-        return baseball;
+    public List<Integer> getUserBall() {
+        return userBall;
     }
 
-    public boolean retry() {
-        return playGame;
-    }
 }

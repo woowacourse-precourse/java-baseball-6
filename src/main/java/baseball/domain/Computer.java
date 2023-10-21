@@ -6,30 +6,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private static final Integer RANDOM_START = 1;
-    private static final Integer RANDOM_END = 9;
-    private static final Integer RANDOM_SIZE = 3;
+    private static final Integer RANDOM_NUMBER_START = 1;
+    private static final Integer RANDOM_NUMBER_END = 9;
+    private static final Integer RANDOM_NUMBER_SIZE = 3;
 
-    List<Integer> baseball;
+    private List<Integer> computerBall;
     public Computer (){};
-    public void setBaseball(List<Integer> baseball) {
-        this.baseball = baseball;
+    public void setComputerBall(List<Integer> baseball) {
+        if (BaseballValidator.validator(baseball)) {
+            this.computerBall = baseball;
+        }
     }
 
-    public List<Integer> getBaseball() {
-        return baseball;
+    public List<Integer> getComputerBall() {
+        return computerBall;
     }
 
     public void createComputerBall(){
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < RANDOM_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(RANDOM_START, RANDOM_END);
+        while (computer.size() < RANDOM_NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_START, RANDOM_NUMBER_END);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
-        if (BaseballValidator.validator(computer)) {
-            this.baseball = computer;
-        }
+        setComputerBall(computer);
     }
 }
