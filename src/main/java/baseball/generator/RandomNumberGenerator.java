@@ -1,4 +1,4 @@
-package baseball;
+package baseball.generator;
 
 public interface RandomNumberGenerator<T,R> {
     R generate(Integer size);
