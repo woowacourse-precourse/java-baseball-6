@@ -42,6 +42,7 @@ public class Game {
     public void inputUser() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputData = Console.readLine();
+        Validate.validateUserInput(inputData);
         String[] inputNumbers = inputData.split("");
         List<Integer> userNumbers = new ArrayList<>(3);
         for (int i = 0; i < 3; i++) {
@@ -97,13 +98,13 @@ public class Game {
     public String printResult() {
         String result = "";
         if (checkNothing()) {
-            return "낫싱";
+            return Number.NOTHING.getTitle();
         }
         if (countBall() != 0) {
-            result += countBall() + "볼 ";
+            result += countBall() + Number.BALL.getTitle() + " ";
         }
         if (countStrike() != 0) {
-            result += countStrike() + "스트라이크 ";
+            result += countStrike() + Number.STRIKE.getTitle() + " ";
         }
         return result;
     }
@@ -121,13 +122,17 @@ public class Game {
     public void questionRestartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
-        if (Integer.parseInt(userInput) == 1) { // 게임 다시 시작
-            this.gameRestartState = GameRestartState.GAME_CONTINUE;
-            initComputerNumbers();
+        if (!userInput.equals(GameRestartState.GAME_CONTINUE.getGameState()) && !userInput.equals(GameRestartState.GAME_STOP.getGameState())) {
+            throw new IllegalArgumentException("잘못된 값을 입력하여서 프로그램을 종료합니다.");
         }
-        if (Integer.parseInt(userInput) == 2) {
+        if (userInput.equals(GameRestartState.GAME_CONTINUE.getGameState())) { // 게임 다시 시작
+            this.gameRestartState = GameRestartState.GAME_CONTINUE;
+            initComputerNumbers(); // 게임 재시작을 위해서 컴퓨터의 숫자들을 다시 설정
+        }
+        if (userInput.equals(GameRestartState.GAME_STOP.getGameState())) {
             this.gameRestartState = GameRestartState.GAME_STOP;
         }
+
     }
 
 
