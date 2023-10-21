@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -9,26 +10,12 @@ import java.util.List;
 import java.util.Set;
 
 public class Application {
-
     private static final int SIZE = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final int BALL_INDEX = 0;
     private static final int STRIKE_INDEX = 1;
     private static final String RESTART_FLAG = "1";
-
-
-
-
-    // 시작문구를 출력하는 기능
-    public void printGameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
-    // 사용자의 숫자입력을 알리는 기능
-    public void printUserInput() {
-        System.out.print("숫자를 입력해주세요 : ");
-    }
 
     // 사용자의 숫자입력을 받는 기능
     public String numberInput() {
@@ -83,27 +70,6 @@ public class Application {
         }
     }
 
-    // 힌트를 출력하는 기능
-    public void printStrikeBall(int[] strike_ball) {
-        if (strike_ball[BALL_INDEX] != 0 && strike_ball[STRIKE_INDEX] == 0) { // 볼만 있는 경우
-            System.out.println(strike_ball[BALL_INDEX] + "볼");}
-
-        if(strike_ball[BALL_INDEX] == 0 && strike_ball[STRIKE_INDEX] != 0) { // 스트라이크만 있는 경우
-            System.out.println(strike_ball[STRIKE_INDEX] + "스트라이크");}
-
-        if(strike_ball[BALL_INDEX] == 0 && strike_ball[STRIKE_INDEX] == 0) { // 하나도 없는 경우
-            System.out.println("낫싱");}
-
-        System.out.println(strike_ball[BALL_INDEX] + "볼 " + strike_ball[STRIKE_INDEX] + "스트라이크"); // 스트라이크 볼 둘다 있는 경우
-    }
-
-    // 정답을 맞췄을 때 재시작의 여부를 묻는 기능
-    public void printGameRestart() {
-        System.out.println("3스트라이크");
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-    }
-
     // 사용자 입력값에 대한 예외처리
     public void exceptionUserInput(int[] input_number) {
         if (input_number.length != SIZE) {
@@ -120,7 +86,7 @@ public class Application {
         Set<Integer> uniqueNumbers = new HashSet<>();
 
         for (Integer number : numbers) {
-            // 만약 이미 Set에 있는 숫자라면 중복이 있다고 판단하고 true를 반환합니다.
+            // 만약 이미 Set에 있는 숫자라면 중복이 있다고 판단하고 true를 반환
             if (!uniqueNumbers.add(number)) {
                 return true;
             }
@@ -129,24 +95,25 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        Application A = new Application();
+        Application application = new Application();
+        View view = new View();
 
-        A.printGameStart();
-        List<Integer> computer_number = A.randomNumber();
+        view.printGameStart();
+        List<Integer> computer_number = application.randomNumber();
         while (true) {
-            A.printUserInput();
-            String str_input_number = A.numberInput();
-            int[] int_input_number = A.stringToIntArray(str_input_number);
-            A.exceptionUserInput(int_input_number);
+            view.printUserInput();
+            String str_input_number = application.numberInput();
+            int[] int_input_number = application.stringToIntArray(str_input_number);
+            application.exceptionUserInput(int_input_number);
 
-            int[] strike_ball = A.checkStrikeAndBall(int_input_number, computer_number);
-            A.printStrikeBall(strike_ball);
+            int[] strike_ball = application.checkStrikeAndBall(int_input_number, computer_number);
+            view.printStrikeBall(strike_ball);
 
             if(strike_ball[STRIKE_INDEX] == SIZE) {
-                A.printGameRestart();
-                String restart_number = A.numberInput();
+                view.printGameRestart();
+                String restart_number = application.numberInput();
                 if(restart_number.equals(RESTART_FLAG)) {
-                    computer_number = A.randomNumber();
+                    computer_number = application.randomNumber();
                 } else {
                     break;
                 }
