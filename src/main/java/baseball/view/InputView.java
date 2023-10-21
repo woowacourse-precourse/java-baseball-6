@@ -21,12 +21,12 @@ public class InputView {
         return playernum;
     }
 
-    public boolean FinishGame() {
-        String cond = Console.readLine();
+    public int FinishGame() {
+        String inputNum = Console.readLine();
 
-        numberCheck.NumberCheck(cond); // 숫자 검증
+        numberCheck.NumberCheck(inputNum); // 숫자 검증
 
-        return Integer.parseInt(cond) == 1;
+        return Integer.parseInt(inputNum);
     }
 
 }
