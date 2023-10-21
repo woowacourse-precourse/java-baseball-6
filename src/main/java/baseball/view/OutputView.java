@@ -15,6 +15,6 @@ public class OutputView {
     }
 
     public void endOfGame() {
-        System.out.println("숫자야구 게임이 종료되었습니다.");
+        System.out.println("게임 종료");
     }
 }
