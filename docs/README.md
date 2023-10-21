@@ -43,6 +43,9 @@
 - ComponentFactory
     - 컴포넌트들을 조합해 컨트롤러를 생성한다
 
+- RandomNumberGenerator
+    - 랜덤 숫자를 생성한다
+
 ## 열거형 목록
 
 - GameMessage: 게임 진행에 필요한 메시지를 가진다
