@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class Numbers {
 
@@ -22,24 +23,16 @@ public class Numbers {
     }
 
     private int calculateStrikeCount(final Numbers userNumbers) {
-        int count = 0;
-        for (int i = 0; i < numbers.size(); i++) {
-            if (isSameNumber(numbers.get(i), userNumbers.numbers.get(i))) {
-                count++;
-            }
-        }
-        return count;
+        return (int) IntStream.range(0, numbers.size())
+                .filter(i -> isSameNumber(numbers.get(i), userNumbers.numbers.get(i)))
+                .count();
     }
 
     private int calculateBallCount(final Numbers userNumbers) {
-        int count = 0;
-        for (int i = 0; i < numbers.size(); i++) {
-            if (!isSameNumber(numbers.get(i), userNumbers.numbers.get(i))
-                    && numbers.contains(userNumbers.numbers.get(i))) {
-                count++;
-            }
-        }
-        return count;
+        return (int) IntStream.range(0, numbers.size())
+                .filter(i -> !isSameNumber(numbers.get(i), userNumbers.numbers.get(i))
+                        && numbers.contains(userNumbers.numbers.get(i)))
+                .count();
     }
 
     private boolean isSameNumber(final int computerNumber, final int userNumber) {
