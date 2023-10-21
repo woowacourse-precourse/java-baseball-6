@@ -49,6 +49,9 @@
 - BaseballService
     - 랜덤 숫자를 생성해 저장한다
 
+- DomainRepository
+    - 정답 숫자를 저장한다
+
 - Number (숫자 도메인)
 
 - AnswerNumbers (정답 숫자 일급 컬렉션)
