@@ -2,7 +2,7 @@ package study;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import baseball.Model.AnswerNumber;
+import baseball.model.AnswerNumber;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
-package baseball.Service;
+package baseball.service;
 
-import baseball.Model.GameResult;
+import baseball.model.GameResult;
 import java.util.List;
 
 public class NumberMatcher {
