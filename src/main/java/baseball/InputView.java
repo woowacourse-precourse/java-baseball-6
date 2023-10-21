@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class InputView {
 
@@ -27,12 +28,7 @@ public class InputView {
     }
 
     public boolean provideRestartDecisionFromUser() {
-        String s = Console.readLine();
-        if (s == "1") {
-            return true;
-        }
-
-        return false;
+        return Objects.equals(Console.readLine(), "1");
     }
 
     private void userInputValidation(String input) {
