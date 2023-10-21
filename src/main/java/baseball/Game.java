@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Game {
-    private List<Integer> answer;
+    private final List<Integer> answer;
     Game(List<Integer> answer) {
         this.answer = answer;
     }
