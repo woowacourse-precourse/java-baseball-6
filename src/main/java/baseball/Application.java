@@ -31,7 +31,7 @@ public class Application {
 
         input = Console.readLine();
         if (!isValidInput(input)) {
-            throw new IllegalArgumentException();
+            throw (new IllegalArgumentException());
         };
         return (stringToIntArray(input));
     }
@@ -138,5 +138,31 @@ public class Application {
             System.out.print(strike);
             System.out.print("스트라이크");
         }
+    }
+
+    private static int getContinueGame() {
+        String choice;
+
+        choice = Console.readLine();
+        if (!isValidChoice(choice)) {
+            throw (new IllegalArgumentException());
+        }
+        return (stringToInt(choice));
+    }
+
+    private static boolean isValidChoice(String choice) {
+        return (isLengthOne(choice) && isValidNumber(choice));
+    }
+
+    private static boolean isLengthOne(String choice) {
+        return (choice.length() == 1);
+    }
+
+    private static boolean isValidNumber(String choice) {
+        return ((choice.charAt(0) == '1') || (choice.charAt(0) == '2'));
+    }
+
+    private static int stringToInt(String choice) {
+        return (choice.charAt(0) - '0');
     }
 }
