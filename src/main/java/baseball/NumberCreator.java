@@ -52,6 +52,10 @@ public class NumberCreator {
             throw new IllegalArgumentException(GUESS_NUMBER_LENGTH_EXCEPTION);
         }
 
+        if (numbers.contains(0)) {
+            throw new IllegalArgumentException(GUESS_NUMBER_RANGE_EXCEPTION);
+        }
+
         Stream<Integer> numberStream = numbers.stream();
         Stream<Integer> distinctNumberStream = numberStream.distinct();
 
