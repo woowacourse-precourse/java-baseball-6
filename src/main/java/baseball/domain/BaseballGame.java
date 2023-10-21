@@ -2,8 +2,11 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static baseball.constants.ErrorMessage.WRONG_RESPONSE_AFTER_FINISH;
 import static baseball.constants.GameMessage.*;
 import static baseball.constants.GameOption.ANSWER_NUMBER_LENGTH;
+import static baseball.constants.SystemOption.EXIT_SYSTEM_VALUE;
+import static baseball.constants.SystemOption.RESTART_SYSTEM_VALUE;
 
 public class BaseballGame {
     private Answer answer;
@@ -28,7 +31,9 @@ public class BaseballGame {
             printScore(score);
         } while (!canFinish(score));
 
-
+        if (checkRestart()) {
+            start();
+        }
     }
 
     private static String getUserInput() {
@@ -64,5 +69,20 @@ public class BaseballGame {
         }
 
         System.out.println(result);
+    }
+
+    private boolean checkRestart() {
+        String userInput = Console.readLine();
+        
+        if (userInput.equals(RESTART_SYSTEM_VALUE.getValue())) {
+            return true;
+        }
+
+        if (userInput.equals(EXIT_SYSTEM_VALUE.getValue())) {
+            return false;
+        }
+
+        throw new IllegalStateException(WRONG_RESPONSE_AFTER_FINISH.toString());
+
     }
 }
