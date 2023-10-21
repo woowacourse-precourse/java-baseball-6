@@ -11,4 +11,8 @@ public class ScoreCalculator {
                         .equals(answer.get(index)))
                 .count();
     }
+
+    private boolean excludeStrike(List<Integer> playerInput, List<Integer> answer, int index) {
+        return !playerInput.get(index).equals(answer.get(index));
+    }
 }
