@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static final int NUMBER_LENGTH = 3;
+    private static final int MIN_RANDOM = 1;
+    private static final int MAX_RANDOM = 9;
+    private static final int CONTINUE_GAME = 1;
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -30,8 +34,8 @@ public class Application {
 
     public static List<Integer> generateUniqueRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (numbers.size() < NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM, MAX_RANDOM);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
@@ -44,13 +48,13 @@ public class Application {
         return validateInput(input);
     }
 
-    private static String getUserInput() {
+    public static String getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
 
-    private static List<Integer> validateInput(String input) {
-        if (input.length() != 3) {
+    public static List<Integer> validateInput(String input) {
+        if (input.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
 
@@ -61,7 +65,7 @@ public class Application {
             }
 
             int num = Character.getNumericValue(c);
-            if (num < 1 || num > 9 || userNumbers.contains(num)) {
+            if (num < MIN_RANDOM || num > MAX_RANDOM || userNumbers.contains(num)) {
                 throw new IllegalArgumentException();
             }
 
@@ -74,7 +78,7 @@ public class Application {
         int balls = 0;
         int strikes = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (computerNumbers.get(i).equals(userNumbers.get(i))) {
                 strikes++;
             } else if (computerNumbers.contains(userNumbers.get(i))) {
@@ -109,6 +113,6 @@ public class Application {
     public static boolean askForNewGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int choice = Integer.parseInt(Console.readLine());
-        return choice == 1;
+        return choice == CONTINUE_GAME;
     }
 }
