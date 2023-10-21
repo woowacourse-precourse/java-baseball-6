@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class Application {
                 }
             }
 
-            System.out.println("computer = " + computer);
+//            System.out.println("computer = " + computer);
 
             Boolean isCorrect = Boolean.FALSE;
             while (!isCorrect){
@@ -32,11 +33,16 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 int inputNum;
                 try {
-                    Scanner num = new Scanner(System.in);
-                    inputNum = num.nextInt();
+//                    Scanner num = new Scanner(System.in);
+                    inputNum = Integer.parseInt(Console.readLine());
+//                    inputNum = num.nextInt();
+//                    System.out.println("inputNum = " + inputNum);
                 } catch (InputMismatchException e) {
                     throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
                 }
+
+                if (inputNum<100 || inputNum > 999) throw new IllegalArgumentException("[ERROR] 3자리 숫자를 입력해주세요.");
+
 
                 int[] intArray = new int[3];
                 for (int i = 2; i >= 0; i--) {
@@ -57,10 +63,12 @@ public class Application {
                 }
                 if (strike == 3) {
                     isCorrect = Boolean.TRUE;
+                    System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    Scanner num2 = new Scanner(System.in);
-                    int isReplaying = Integer.parseInt(num2.next());
+//                    Scanner num2 = new Scanner(System.in);
+                    int isReplaying = Integer.parseInt(Console.readLine());
+//                    int isReplaying = Integer.parseInt(num2.next());
                     if (isReplaying == 2) isPlaying = Boolean.FALSE;
                 }
                 else if (ball > 0 && strike > 0) System.out.println(ball + "볼 " + strike +"스트라이크");
@@ -71,8 +79,6 @@ public class Application {
             }
 
         }
-
-
 
     }
 }
