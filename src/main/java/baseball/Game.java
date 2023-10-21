@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constants.*;
+
 import java.util.ArrayList;
 
 public class Game {
@@ -9,6 +11,7 @@ public class Game {
     private Score score;
     private final GameProcessor gameProcessor;
 
+
     public Game() {
         this.player = new Player();
         this.computer = new Computer();
@@ -16,8 +19,8 @@ public class Game {
     }
 
     void run() {
-        int continueDecision = 1;
-        while (continueDecision == 1) {
+        int continueDecision = CONTINUE_NUMBER;
+        while (continueDecision == CONTINUE_NUMBER) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             ArrayList<Integer> computerAnswer = settingNewGame();
             start(computerAnswer);
@@ -32,12 +35,12 @@ public class Game {
 
     void start(ArrayList<Integer> computerAnswer) {
         score = new Score();
-        while (score.getStrike() != 3) {
+        while (score.getStrike() != THREE_STRIKE) {
             System.out.print("숫자를 입력해주세요 : ");
             ArrayList<Integer> playerAnswer = player.getPlayerAnswer();
             int[] result = gameProcessor.getCompareTwoAnswerResult(playerAnswer, computerAnswer);
-            score.setBall(result[0]);
-            score.setStrike(result[1]);
+            score.setBall(result[BALL_NUMBER]);
+            score.setStrike(result[STRIKE_NUMBER]);
             gameProcessor.printScore(score);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");

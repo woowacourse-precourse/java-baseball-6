@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constants.*;
+
 import java.util.ArrayList;
 
 public class GameProcessor {
@@ -13,10 +15,10 @@ public class GameProcessor {
             int computerOrder = 0;
             for (Integer computerValue : computerAnswer) {
                 if (playerValue == computerValue && playerOrder == computerOrder) {
-                    result[1]++;
+                    result[STRIKE_NUMBER]++;
                 }
                 if (playerValue == computerValue && playerOrder != computerOrder) {
-                    result[0]++;
+                    result[BALL_NUMBER]++;
                 }
                 computerOrder++;
             }
