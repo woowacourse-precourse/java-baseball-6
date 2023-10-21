@@ -40,7 +40,7 @@ public class GameManager {
         }while(cnt<3);
     }
 
-    public int startGames(){
+    public void startGames(){
         System.out.println(START_COMMENT);
         do{
             playGames();
@@ -49,9 +49,15 @@ public class GameManager {
         System.out.println(END_COMMENT);
         System.out.println(RESTART_COMMENT);
         String answer = Console.readLine();
-        if(!answer.equals("1") && !answer.equals("2"))
-            throw new IllegalArgumentException();
-        return answer.charAt(0)-0x30;
+        if(answer.equals("2"))
+            return;
+        if(answer.equals("1"))
+        {
+            gameInit();
+            startGames();
+            return;
+        }
+        throw new IllegalArgumentException();
     }
 
     public void playGames(){
