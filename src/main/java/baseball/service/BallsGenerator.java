@@ -12,7 +12,8 @@ public class BallsGenerator {
     private static final int MINIMUM_RANDOM_NUMBER = 1;
     private static final int MAXIMUM_RANDOM_NUMBER = 9;
 
-    public int generateRandomBall() {
+
+    private int generateRandomBall() {
         return Randoms.pickNumberInRange(MINIMUM_RANDOM_NUMBER, MAXIMUM_RANDOM_NUMBER);
     }
 
@@ -37,5 +38,13 @@ public class BallsGenerator {
             computers.add(new Balls(value, i));
         }
         return computers;
+    }
+
+    public List<Balls> generatePlayerNumbers(List<String> values) {
+        List<Balls> ballsList = new ArrayList<>();
+        for (int i = 0; i < MAX_BALL_SIZE; i++) {
+            ballsList.add(new Balls(Integer.parseInt(values.get(i)), i));
+        }
+        return ballsList;
     }
 }

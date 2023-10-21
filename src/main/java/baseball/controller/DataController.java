@@ -4,22 +4,24 @@ import static camp.nextstep.edu.missionutils.Console.*;
 
 import baseball.domain.Balls;
 import baseball.exception.DataValidator;
+import baseball.service.BallsGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DataController {
 
-    private static final int BALL_MAX_SIZE = 3;
     private static final String EMPTY_STRING = "";
 
-    private DataValidator dataValidator;
+    private final DataValidator dataValidator;
+
+    private final BallsGenerator ballsGenerator;
 
     public DataController() {
-        dataValidator = new DataValidator();
+        this.dataValidator = new DataValidator();
+        this.ballsGenerator = new BallsGenerator();
     }
 
-    private List<String> readValues() {
+    protected List<String> readValues() {
         String value = readLine();
         dataValidator.validateInputNumber(value);
 
@@ -28,10 +30,6 @@ public class DataController {
 
     public List<Balls> generatePlayerNumbers() {
         List<String> values = readValues();
-        List<Balls> ballsList = new ArrayList<>();
-        for (int i = 0; i < BALL_MAX_SIZE; i++) {
-            ballsList.add(new Balls(Integer.parseInt(values.get(i)), i));
-        }
-        return ballsList;
+        return ballsGenerator.generatePlayerNumbers(values);
     }
 }
