@@ -70,7 +70,7 @@ class InputValidationTest {
         //when
         final String duplicatedNumber = "119";
         //then
-        assertThatThrownBy(() -> inputValidation.validateUserInput(duplicatedNumber))
+        assertThatThrownBy(() -> inputValidation.validateInputNumber(duplicatedNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자를 중복하지 않고 입력해주시기 바랍니다.");
     }
@@ -84,10 +84,10 @@ class InputValidationTest {
         final String alphabetCharacterInput = "1c9";
         final String koreanCharacterInput = "2ㅍ1";
         //then
-        assertThatThrownBy(() -> inputValidation.validateUserInput(alphabetCharacterInput))
+        assertThatThrownBy(() -> inputValidation.validateInputNumber(alphabetCharacterInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만을 입력해주시기 바랍니다.");
-        assertThatThrownBy(() -> inputValidation.validateUserInput(koreanCharacterInput))
+        assertThatThrownBy(() -> inputValidation.validateInputNumber(koreanCharacterInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자만을 입력해주시기 바랍니다.");
     }
@@ -100,7 +100,7 @@ class InputValidationTest {
         //when
         final String zeroNumber = "140";
         //then
-        assertThatThrownBy(() -> inputValidation.validateUserInput(zeroNumber))
+        assertThatThrownBy(() -> inputValidation.validateInputNumber(zeroNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1 ~ 9 사이의 숫자만을 입력해주시기 바랍니다.");
     }
@@ -113,6 +113,6 @@ class InputValidationTest {
         //when
         final String userInput = "437";
         //then
-        assertThat(inputValidation.validateUserInput(userInput)).isEqualTo(List.of(4, 3, 7));
+        assertThat(inputValidation.userInputToList(userInput)).isEqualTo(List.of(4, 3, 7));
     }
 }

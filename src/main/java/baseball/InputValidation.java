@@ -22,7 +22,7 @@ public class InputValidation {
         return parseIntList;
     }
 
-    private void validateInputNumber(String input) throws IllegalArgumentException{
+    public void validateInputNumber(String input) throws IllegalArgumentException{
         Set<Character> charSet = new HashSet<Character>();
         charSet.add(input.charAt(0));
         charSet.add(input.charAt(1));
@@ -42,7 +42,7 @@ public class InputValidation {
         }
     }
 
-    private List<Integer> userInputToList(String userInput) {
+    public List<Integer> userInputToList(String userInput) {
         List<Integer> userInputList = new ArrayList<>();
         for (int i = 0; i < userInput.length(); i++) {
             char c = userInput.charAt(i);
@@ -53,7 +53,7 @@ public class InputValidation {
 
     public int validateNewGameRequest(String input) throws IllegalArgumentException{
         if (input.length() != 1) {
-            throw new IllegalArgumentException("한자리 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("한자리 숫자 입력해주세요.");
         }
         if (!Character.isDigit(input.charAt(0))) {
             throw new IllegalArgumentException("숫자를 입력해주세요");

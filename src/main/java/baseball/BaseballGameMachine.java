@@ -7,7 +7,6 @@ import java.util.List;
 public class BaseballGameMachine {
     private Message message = new Message();
     private NumberGenerator numberGenerator = new NumberGenerator();
-
     private InputValidation inputValidation = new InputValidation();
 
     public String input() {
