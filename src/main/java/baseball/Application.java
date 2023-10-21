@@ -26,7 +26,7 @@ public class Application {
 
         answer = new int[3];
         do {
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 3; i++) {
                 answer[i] = Randoms.pickNumberInRange(1, 9);
             }
         } while (duplicateNumber(answer));
