@@ -51,11 +51,14 @@ public class BaseballNumbers {
 
     @Override
     public boolean equals(Object baseballNumbers) {
-        if (baseballNumbers instanceof BaseballNumbers otherBaseballNumber) {
-            for (int i = 0; i < this.baseballNumbers.size(); i++) {
-                if (!otherBaseballNumber.get(i).equals(this.baseballNumbers.get(i))) {
-                    return false;
-                }
+        if (!(baseballNumbers instanceof BaseballNumbers)) {
+            return false;
+        }
+
+        BaseballNumbers otherBaseballNumber = (BaseballNumbers) baseballNumbers;
+        for (int i = 0; i < this.baseballNumbers.size(); i++) {
+            if (!otherBaseballNumber.get(i).equals(this.baseballNumbers.get(i))) {
+                return false;
             }
         }
 
