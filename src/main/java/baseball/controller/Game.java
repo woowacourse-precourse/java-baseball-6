@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.BallComparator;
 import baseball.model.ComputerNumber;
 import baseball.model.PlayerNumber;
+import baseball.model.RestartNumberValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.ArrayList;
@@ -41,6 +42,12 @@ public class Game {
         } while (!finishGame());
 
         outputView.printFinishMessage();
+    }
+
+    public boolean askRestart() {
+        String restartFinishMsg = inputView.askRestartNumber();
+        RestartNumberValidator.validate(restartFinishMsg);
+        return restartFinishMsg.equals(RESTART_MESSAGE);
     }
 
     private boolean finishGame() {
