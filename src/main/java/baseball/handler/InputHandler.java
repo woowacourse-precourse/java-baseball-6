@@ -1,16 +1,19 @@
 package baseball.handler;
 
 import camp.nextstep.edu.missionutils.Console;
+import baseball.handler.OutputHandler;
 
-public class UserInputHandler {
+public class InputHandler {
+
+    private final OutputHandler outputHandler = new OutputHandler();
 
     public String askUserInputNumber() {
-        System.out.println("숫자를 입력해주세요 : ");
+        outputHandler.printInputRequestMessage();
         return Console.readLine();
     }
 
     public boolean askRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        outputHandler.printAskGameRestartMessage();
         String input = Console.readLine();
 
         if (!"1".equals(input) && !"2".equals(input)) {

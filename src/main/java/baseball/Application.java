@@ -8,6 +8,6 @@ public class Application {
         do {
             game.play();
         }
-        while (game.Restart());
+        while (game.isRestart());
     }
 }
