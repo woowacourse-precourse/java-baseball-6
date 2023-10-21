@@ -3,6 +3,7 @@ package baseball.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -27,5 +28,29 @@ public class Answer {
 
     public static Answer createAnswer() {
         return new Answer();
+    }
+
+    public int[] calculateScore(int[] inputNums) {
+        int countOfCommons = calculateCommons(inputNums);
+        int countOfStrikes = calculateStrikes(inputNums);
+        int countOfBalls = countOfCommons - countOfStrikes;
+
+        return new int[]{countOfStrikes, countOfBalls};
+    }
+
+    private int calculateCommons(int[] inputNums) {
+        return (int) Arrays.stream(inputNums)
+                .filter(number -> this.numbers.contains(number))
+                .count();
+    }
+
+    private int calculateStrikes(int[] inputNums) {
+        int result = 0;
+        for (int i = 0; i < this.numbers.size(); i++) {
+            if (inputNums[i] == this.numbers.get(i)) {
+                result++;
+            }
+        }
+        return result;
     }
 }

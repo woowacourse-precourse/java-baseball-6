@@ -15,22 +15,19 @@ public class BaseballGame {
 
     public void run() {
         System.out.println(START_MESSAGE);
-        try {
-            start();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        start();
     }
 
     private void start() {
-        Answer answer = Answer.createAnswer();
-
-        while (true) {
+        this.answer = Answer.createAnswer();
+        int[] score;
+        do {
             String userInput = getUserInput();
             int[] inputNums = rule.evaluateNumbers(userInput);
-        }
-    }
+            score = answer.calculateScore(inputNums);
+        } while (true);
 
+    }
 
     private static String getUserInput() {
         System.out.print(GET_USER_INPUT);
