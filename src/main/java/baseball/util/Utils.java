@@ -11,4 +11,9 @@ public class Utils {
                 .collect(Collectors.toList());
     }
 
+    public static void validateEndNumber(int number) {
+        if(number < 1 || number > 2) {
+            throw new IllegalArgumentException("1, 2 만 입력 가능합니다");
+        }
+    }
 }
