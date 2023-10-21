@@ -9,4 +9,9 @@ public class BaseballController {
         this.view = view;
         this.model = model;
     }
+
+    public void startGame() {
+        view.outputStartMessage();
+        model.chooseRandomNumbers();
+    }
 }
