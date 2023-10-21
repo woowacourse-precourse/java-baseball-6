@@ -17,7 +17,7 @@ public final class AttemptNumbers {
 
     public BallCount checkAnswer(final AnswerNumbers answerNumbers) {
         final List<StrikeBall> strikeBalls =
-                IntStream.of(MIN_INDEX, INTERATION_TIME)
+                IntStream.range(MIN_INDEX, INTERATION_TIME)
                         .mapToObj(i -> answerNumbers.checkStrikeBall(numbers.getByIndex(i), i))
                         .toList();
 
