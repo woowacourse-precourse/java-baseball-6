@@ -24,6 +24,7 @@ public class BaseballGame {
         changeNumber(userInput);
         userNumber = changeIntegerList(userInput);
         numberVaildation(userNumber);
+        duplicateValidation(userNumber);
     }
 
     public void changeNumber(String userInput) {
@@ -54,6 +55,14 @@ public class BaseballGame {
             if(number > MAX_NUMBER || number < MIX_NUMBER){
                 throw new IllegalArgumentException("숫자가 범위를 벗어났습니다.");
             }
+        }
+    }
+
+    public void duplicateValidation(List<Integer> userNumber){
+        Set<Integer> numberSet = new HashSet<>(userNumber);
+
+        if(numberSet.size() != userNumber.size()){
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }
 
