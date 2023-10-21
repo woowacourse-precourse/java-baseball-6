@@ -70,4 +70,73 @@ public class Application {
         }
         return inputNumber;
     }
+
+    private static boolean getResult(int[] answer, int[] inputNumber) {
+        int ball, strike;
+
+        strike = getStrike(answer, inputNumber);
+        ball = getCount(answer, inputNumber) - strike;
+        printResult(ball, strike);
+        return (strike == 3);
+    }
+
+    private static int getStrike(int[] answer, int[] inputNumber) {
+        int strike;
+
+        strike = 0;
+        for (int i = 0; i < inputNumber.length; i++) {
+            if (answer[i] == inputNumber[i]) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    private static int getCount(int[] answer, int[] inputNumber) {
+        int count;
+
+        count = 0;
+        for (int number : inputNumber) {
+            if (isInArray(number, answer)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static boolean isInArray(int number, int[] arr) {
+        for (int arrNum : arr) {
+            if (number == arrNum) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void printResult(int ball, int strike) {
+        if ((ball < 0) && (strike < 0)) {
+            System.out.print("낫싱");
+            return ;
+        }
+        printBall(ball);
+        if ((ball > 0) && (strike > 0)) {
+            System.out.print(" ");
+        }
+        printStrike(strike);
+        System.out.println();
+    }
+
+    private static void printBall(int ball) {
+        if (ball > 0) {
+            System.out.print(ball);
+            System.out.print("볼");
+        }
+    }
+
+    private static void printStrike(int strike) {
+        if (strike > 0) {
+            System.out.print(strike);
+            System.out.print("스트라이크");
+        }
+    }
 }
