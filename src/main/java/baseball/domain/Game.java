@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Game {
     private List<Integer> randomNumbers;
-
+    private List<Integer> inputNumbers;
     private Game(List<Integer> randomNumbers) {
         this.randomNumbers = randomNumbers;
     }
@@ -15,17 +15,9 @@ public class Game {
         return new Game(randomNumbers);
     }
 
-    public void compareNumber(String inputValue) {
-        List<Integer> inputNumbers = getStringToList(inputValue);
-    }
-
-    private List<Integer> getStringToList(String inputValue) {
+    public void setInputNumber(String inputValue) {
         validateInputNumber(inputValue);
-        List<Integer> inputNumbers = new ArrayList<>();
-        for (char currentCharacter : inputValue.toCharArray()) {
-            inputNumbers.add((int) currentCharacter);
-        }
-        return inputNumbers;
+        inputNumbers = changeStringToList(inputValue);
     }
 
     private void validateInputNumber(String inputValue) {
@@ -53,6 +45,33 @@ public class Game {
     private void isBetweenOneAndNine(char currentCharacter) {
         if(!('1' <= currentCharacter && currentCharacter <= '9')) {
             throw new IllegalArgumentException("1 ~ 9 사이의 숫자가 아닙니다.");
+        }
+    }
+
+    private List<Integer> changeStringToList(String inputValue) {
+        List<Integer> inputNumbers = new ArrayList<>();
+        for (char currentCharacter : inputValue.toCharArray()) {
+            inputNumbers.add((int) currentCharacter);
+        }
+        return inputNumbers;
+    }
+
+    public int[] getCompareResult() {
+        int[] result = {0, 0};
+        for(int currentPosition = 0; currentPosition < randomNumbers.size(); currentPosition++) {
+            compareInputNumber(result, currentPosition);
+        }
+        return result;
+    }
+
+    private void compareInputNumber(int[] result, int currentPosition) {
+        if(randomNumbers.get(currentPosition) == inputNumbers.get(currentPosition)) {
+            result[0]++;
+            return;
+        }
+
+        if(randomNumbers.contains(inputNumbers.get(currentPosition))) {
+            result[1]++;
         }
     }
 }
