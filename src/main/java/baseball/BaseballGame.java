@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.Computer.*;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -9,9 +10,6 @@ import java.util.Set;
 
 
 public class BaseballGame {
-    static final int MAX_NUMBER = 9;
-    static final int MIX_NUMBER = 1;
-    static final int NUMBER_SIZE = 3;
 
     public void GameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -54,7 +52,7 @@ public class BaseballGame {
 
     public void numberVaildation(List<Integer> userNumber){
         for(Integer number : userNumber) {
-            if(number > MAX_NUMBER || number < MIX_NUMBER){
+            if(number > Computer.MAX_NUMBER || number < Computer.MIX_NUMBER){
                 throw new IllegalArgumentException("숫자가 범위를 벗어났습니다.");
             }
         }
@@ -69,7 +67,7 @@ public class BaseballGame {
     }
 
     public void sizeVaildation(List<Integer> userNumber){
-        if(userNumber.size() != NUMBER_SIZE){
+        if(userNumber.size() != Computer.NUMBER_SIZE){
             throw new IllegalArgumentException("3자리 수가 아닙니다.");
         }
     }
