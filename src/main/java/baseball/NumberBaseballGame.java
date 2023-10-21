@@ -22,14 +22,14 @@ public class NumberBaseballGame {
         }
     }
 
-    public boolean restartOrStop() {
+    private boolean restartOrStop() {
         String sign = userInput.getUserInput();
 
         inputValidation.validateRestartOrStop(sign);
         return (sign.charAt(0) != '2');
     }
 
-    public void oneRound() {
+    private void oneRound() {
         AnswerMaker answerMaker = new AnswerMaker(1, 9);// 각 라운드당 하나의 정답을 생성하기
         boolean threeStrike = false;
 
