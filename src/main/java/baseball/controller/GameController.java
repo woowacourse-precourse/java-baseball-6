@@ -34,25 +34,23 @@ public class GameController {
     }
 
     private void playGame(){
-        playOneTime();//게임 입출력 사이클 1회 반복
+        playOneCycle();//게임 입출력 사이클 1회 반복
         
         outputView.printFinishGameMessage();//게임 종료문구 출력
     }
 
-    private void playOneTime(){
-        Result result=game.calculateResult(inputUser()); //결과 반환
-        outputView.printResult(result.getResult()); //내용 출력
+    private void playOneCycle(){
+        GameCycle cycle=new GameCycle(game,inputUser());
+        outputView.printResult(cycle.getResultMessage());
 
-        if (isNotFinish(result)){
-            playOneTime();
+        if (cycle.isFinish()){
+            return;
         }
+
+        playOneCycle();
     }
 
     private Numbers inputUser(){ //입력
         return new Numbers(inputView.inputNumbers());
-    }
-
-    private boolean isNotFinish(Result result){
-        return !result.isThreeStrike();
     }
 }
