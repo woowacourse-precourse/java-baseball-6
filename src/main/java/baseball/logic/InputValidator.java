@@ -55,4 +55,14 @@ public class InputValidator {
             throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
         }
     }
+
+    public int validateCommand(String inputNumber) {
+        int command = Integer.parseInt(inputNumber);
+
+        if (command != 1 && command != 2) {
+            throw new IllegalArgumentException("명령어를 확인하세요. 1 (재시작), 2 (종료)");
+        }
+
+        return command;
+    }
 }
