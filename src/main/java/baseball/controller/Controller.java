@@ -22,15 +22,16 @@ public class Controller {
     }
 
     public void start() {
-        Computer computer = Computer.createWithGenerator(new RandomNumberGenerator());
         GameCommand gameCommand = GameCommand.RESTART;
+
         while (GameCommand.isRestart(gameCommand)) {
-            playGame(computer);
-            askForRestart();
+            playGame();
+            gameCommand = askForRestart();
         }
     }
 
-    private void playGame(final Computer computer) {
+    private void playGame() {
+        Computer computer = Computer.createWithGenerator(new RandomNumberGenerator());
         List<Integer> inputNumbers = new ArrayList<>();
 
         while (!isGameOver(computer, inputNumbers)) {
