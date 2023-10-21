@@ -10,7 +10,7 @@ public class PlayGame {
         while (allStrike){
             List<Integer> player = createNumber.getPlayerNumber();
             int[] strike_ball = CompareNumber.checkNumber(computer, player);
-            allStrike=CompareNumber.checkAllStrike(strike_ball);
+            allStrike= (strike_ball[0] != 3);
             String result = PrintResult.print(strike_ball);
             System.out.println(result);
         }
