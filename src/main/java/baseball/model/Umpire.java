@@ -73,11 +73,11 @@ public class Umpire {
                 .collect(Collectors.toCollection(HashSet::new));
     }
 
-    private void intersection(Set<String> origin, Set<String> test) {
+    private void intersection(final Set<String> origin, final Set<String> test) {
         origin.retainAll(test);
     }
 
-    private int calculateSize(Set<String> set) {
+    private int calculateSize(final Set<String> set) {
         return set.size();
     }
 
