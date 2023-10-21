@@ -30,17 +30,17 @@ public class Service {
     }
 
     public void saveComputerAnswer(ArrayList<Integer> computerAnswer) {
-        Map<Integer,Integer> computerAnswerMap = convertListToMap(computerAnswer);
-        computerRepository.setAnswerMap(computerAnswerMap);
+        int[] computerAnswerArray = convertListToArray(computerAnswer);
+        computerRepository.setAnswerArray(computerAnswerArray);
     }
 
-    private Map<Integer, Integer> convertListToMap(ArrayList<Integer> computerAnswer) {
-        Map<Integer, Integer> answerMap = new TreeMap<>();
+    private int[] convertListToArray(ArrayList<Integer> computerAnswer) {
+        int[] answerArray = new int[2];
         int answerOrder = 0;
         for(int answer : computerAnswer){
-            answerMap.put(answerOrder,answer);
+            answerArray[answerOrder++] = answer;
         }
 
-        return answerMap;
+        return answerArray;
     }
 }
