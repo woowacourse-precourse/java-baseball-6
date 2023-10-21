@@ -12,13 +12,13 @@ public class ExceptionList {
         }
     }
 
-    public static void validReStartInputNumber(Integer InputNumber) {
-        if(InputNumber != 1 && InputNumber != 2) {
+    public static void validReStartInputNumber(String InputNumber) {
+        if(!InputNumber.equals("1") && !InputNumber.equals("2")) {
             throw new IllegalArgumentException("종료시 입력한 수 예외 발생");
         }
-        if(InputNumber == null) {
-            throw new IllegalArgumentException("어떤 수도 입력하지 않음");
-        }
+//        if(InputNumber == null) {
+//            throw new IllegalArgumentException("어떤 수도 입력하지 않음");
+//        }
     }
 
     public static boolean checkDuplicateNumber(
