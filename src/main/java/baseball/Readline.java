@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Readline {
     public List<Integer> ReadPlayerNumber(){
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         List<Integer> playNumber = new ArrayList<>();
         String input = Console.readLine();
 

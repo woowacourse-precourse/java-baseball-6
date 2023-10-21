@@ -10,7 +10,7 @@ public class Application {
         CheckStrike checkStrike = new CheckStrike();
         Replay replay = new Replay();
         boolean PlayAgain = true;
-
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while(PlayAgain){
             String result = "";
             List<Integer> computer = randomNumber.MakeRandomNumber();
