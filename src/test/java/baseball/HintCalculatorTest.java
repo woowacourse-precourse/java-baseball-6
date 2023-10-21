@@ -20,4 +20,16 @@ public class HintCalculatorTest {
         String expectedHintString = "낫싱";
         assertThat(hintString).isEqualTo(expectedHintString);
     }
+
+    @DisplayName("볼 개수가 0이고 스트라이크 개수가 0이 아닐 때 스트라이크만 출력")
+    @Test
+    void printOnlyStrikeCount(){
+        List<Integer> userList = List.of(1, 2, 3);
+        List<Integer> computerList = List.of(1, 4, 5);
+        HintCalculator hintCalculator = new HintCalculator(userList, computerList);
+        String hintString = hintCalculator.getHintString();
+        String expectedHintString = "1스트라이크";
+        assertThat(hintString).isEqualTo(expectedHintString);
+    }
+
 }
