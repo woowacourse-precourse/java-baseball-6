@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.model.Number;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashSet;
 
 public class NumberService {
 
@@ -14,5 +15,34 @@ public class NumberService {
             }
         }
         return computer;
+    }
+
+    public Number toNumber(String userInput){
+        Number user = new Number();
+        if (validateInput(userInput)) {
+            userInput.chars()
+                    .map(Character::getNumericValue).forEach(user::add);
+            return user;
+        } else{
+            throw new IllegalArgumentException("서로 다른 정수 3개를 입력해주세요 1<= N <= 9");
+        }
+    }
+
+    public boolean validateInput(String userInput){
+        HashSet<Character> set = new HashSet<>();
+
+        if (userInput.length() != Number.getGameSize()) {
+            return false;
+        }
+
+        for (int i=0;i<userInput.length();i++) {
+            char ch = userInput.charAt(i);
+            if (ch < '1' || ch > '9') {
+                return false;
+            }
+            set.add(ch);
+        }
+
+        return set.size() == Number.getGameSize();
     }
 }
