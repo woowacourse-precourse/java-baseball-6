@@ -52,4 +52,13 @@ class UserNumberTest {
                 .hasMessage("숫자를 입력해주세요");
     }
 
+    @DisplayName("사용자 수의 길이가 3보다 큰 값이 입력되면 에러 발생")
+    @Test
+    void inputOverThreeDigit(){
+        String inputNumber = "1234";
+        assertThatThrownBy(() -> new UserNumber(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("세자리 숫자를 입력해주세요");
+    }
+
 }
