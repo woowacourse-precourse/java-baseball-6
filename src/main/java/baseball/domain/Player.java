@@ -123,6 +123,16 @@ public class Player {
         return numberList.toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return Objects.equals(numberList, player.numberList);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(numberList);
+    }
 }
