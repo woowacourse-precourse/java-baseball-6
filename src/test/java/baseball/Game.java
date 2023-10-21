@@ -25,7 +25,7 @@ public class Game {
     public String compareNumber(String userNumber) {
         // String computerNumber = new Computer().generateRandomNumber();
         int strike = 0;
-        String computerNumber = "111";
+        String computerNumber = "123";
         for (int i = 0; i < 3; i++) {
             if (userNumber.charAt(i) == computerNumber.charAt(i)) {
                 strike++;
