@@ -5,6 +5,10 @@ import camp.nextstep.edu.missionutils.*;
 import java.util.*;
 
 public class Application {
+    private static final String RESTART = "1";
+//    private static final String QUIT = "2";
+    private static final int TOTAL_CARDS = 3;
+
     public static void main(String[] args) {
         playBaseballGame();
     }
@@ -37,7 +41,7 @@ public class Application {
 
             if (!oneOrTwo.matches("[1-2]")) throw new IllegalArgumentException();
 
-            return oneOrTwo.equals("1") ? getComputerPicks() : null;
+            return input.equals(RESTART) ? getComputerPicks() : null;
         }
         return computer;
     }
@@ -84,7 +88,7 @@ public class Application {
     private static List<Integer> getComputerPicks() {
         List<Integer> computer = new ArrayList<>();
 
-        while (computer.size() < 3) {
+        while (computer.size() < TOTAL_CARDS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
