@@ -18,8 +18,8 @@ public class Computer {
 
     private List<Integer> generateComputerNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (randomNumbers.size() < Constants.NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(Constants.MIN_NUMBER, Constants.MAX_NUMBER);
             addNumber(randomNumbers, randomNumber);
         }
         return randomNumbers;

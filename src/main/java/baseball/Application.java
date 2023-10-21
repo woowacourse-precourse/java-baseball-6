@@ -4,8 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
-    private static final String GAME_QUIT = "2";
-
     public static void main(String[] args) {
         Printer.printGameStart();
 
@@ -37,10 +35,10 @@ public class Application {
     }
 
     private static boolean isThreeStrike(int strike) {
-        return strike == 3;
+        return strike == Constants.GAME_WIN;
     }
 
     private static boolean isGameQuit(String number) {
-        return number.equals(GAME_QUIT);
+        return number.equals(Constants.GAME_QUIT);
     }
 }

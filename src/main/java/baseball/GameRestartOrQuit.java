@@ -2,8 +2,6 @@ package baseball;
 
 public class GameRestartOrQuit {
 
-    private static final String GAME_RESTART = "1";
-    private static final String GAME_QUIT = "2";
     private String restartOrQuitNumber;
     
     public GameRestartOrQuit(String restartOrQuitNumber) {
@@ -16,7 +14,7 @@ public class GameRestartOrQuit {
     }
 
     private void validateRestartOrQuitNumber(String number) {
-        if ((!number.equals(GAME_RESTART)) && (!number.equals(GAME_QUIT))) {
+        if ((!number.equals(Constants.GAME_RESTART)) && (!number.equals(Constants.GAME_QUIT))) {
             throw new IllegalArgumentException();
         }
     }
