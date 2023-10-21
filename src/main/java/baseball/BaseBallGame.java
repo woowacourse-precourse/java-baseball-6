@@ -108,11 +108,7 @@ public class BaseBallGame {
     }
 
 
-    private boolean isUniqueDigits(List<Integer> numbers) {
-        Set<Integer> deduplicatedNumbers = new HashSet<>(numbers);
 
-        return deduplicatedNumbers.size() == numbers.size();
-    }
 
 
 }

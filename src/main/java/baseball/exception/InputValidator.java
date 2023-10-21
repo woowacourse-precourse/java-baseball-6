@@ -1,10 +1,12 @@
 package baseball.exception;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class Validator {
+public class InputValidator {
 
-    public Validator() {
+    public InputValidator() {
 
     }
 
@@ -20,5 +22,11 @@ public class Validator {
 
     private boolean isValidLength(List<Integer> numbers, int length) {
         return numbers.size() == length;
+    }
+
+    public boolean isUniqueDigits(List<Integer> numbers) {
+        Set<Integer> deduplicatedNumbers = new HashSet<>(numbers);
+
+        return deduplicatedNumbers.size() == numbers.size();
     }
 }
