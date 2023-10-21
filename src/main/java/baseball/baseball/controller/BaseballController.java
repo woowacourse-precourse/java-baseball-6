@@ -12,6 +12,7 @@ public class BaseballController {
     private static final OutputView outputView = OutputView.getInstance();
     private static final InputView inputView = InputView.getInstance();
     private static List<Integer> goalNumber;
+    private static final String SUCCESS_MESSAGE = "3스트라이크";
 
     public void run() {
         start();
@@ -21,14 +22,23 @@ public class BaseballController {
         outputView.printStartGame();
         goalNumber = baseballService.createGoalNumber();
 
+        // 테스트용 정답 번호 출력
+        System.out.println("goalNumber = " + goalNumber);
+
         game();
     }
 
     private void game(){
-        List<Integer> inputNumber = getInputNumber();
+        boolean isEndGame = false;
 
-        String hint = checkNumber(inputNumber);
-        outputView.printHint(hint);
+        while (!isEndGame) {
+            List<Integer> inputNumber = getInputNumber();
+
+            String hint = checkNumber(inputNumber);
+            outputView.printHint(hint);
+
+            isEndGame = hint.equals(SUCCESS_MESSAGE);
+        }
     }
 
     private List<Integer> getInputNumber(){
