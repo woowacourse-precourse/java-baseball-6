@@ -51,20 +51,48 @@ public class Application {
 
     private static List<Integer> getUserInput() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("3자리 숫자를 입력해주세요 : ");
 
-        String input = scanner.nextLine();
-        if (!input.matches("\\d{3}")) {
-            throw new IllegalArgumentException("올바르지 않은 입력입니다.");
+        while (true) {
+            System.out.print("3자리 숫자를 입력해주세요 : ");
+            String input = scanner.nextLine();
+
+            // 길이 검증
+            if (input.length() != 3) {
+                System.out.println("입력한 값이 3자리 수가 아닙니다. 다시 입력해주세요.");
+                continue;
+            }
+
+            // 문자나 기호 포함 검증
+            if (!input.matches("\\d{3}")) {
+                System.out.println("숫자가 아닌 문자나 기호가 포함되어 있습니다. 다시 입력해주세요.");
+                continue;
+            }
+
+            List<Integer> numbers = new ArrayList<>();
+            boolean isValid = true;
+            for (char c : input.toCharArray()) {
+                int num = c - '0';
+                // 범위 검증
+                if (num < 1 || num > 9) {
+                    System.out.println("입력된 숫자가 1부터 9의 범위를 벗어났습니다. 다시 입력해주세요.");
+                    isValid = false;
+                    break;
+                }
+                // 중복 검증
+                if (numbers.contains(num)) {
+                    System.out.println("중복된 숫자가 있습니다. 다시 입력해주세요.");
+                    isValid = false;
+                    break;
+                }
+                numbers.add(num);
+            }
+
+            if (isValid) {
+                return numbers;
+            }
         }
-
-        List<Integer> numbers = new ArrayList<>();
-        for (char c : input.toCharArray()) {
-            numbers.add(c - '0');
-        }
-
-        return numbers;
     }
+
 
     private static Result compareNumbers(List<Integer> userInput, List<Integer> computerNumbers) {
         int balls = 0;
@@ -93,7 +121,7 @@ public class Application {
 
     private static boolean isGameContinued() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("게임을 계속하시겠습니까? (1: 재시작, 2: 종료)");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int choice = scanner.nextInt();
 
         return choice == 1;
