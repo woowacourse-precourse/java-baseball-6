@@ -29,6 +29,7 @@ public class Application {
     private static int[] getInputNumber() {
         String input;
 
+        System.out.print("숫자를 입력해주세요 : ");
         input = Console.readLine();
         if (!isValidInput(input)) {
             throw (new IllegalArgumentException());
