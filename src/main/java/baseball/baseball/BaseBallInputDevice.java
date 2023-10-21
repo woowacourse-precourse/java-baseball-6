@@ -6,11 +6,9 @@ import static baseball.common.Constant.MAX_BALL_NUMBER_CHAR;
 import static baseball.common.Constant.MIN_BALL_NUMBER_CHAR;
 import static baseball.common.Constant.RESTART_NUMBER_STR;
 import static baseball.common.Message.DUPLICATION_START_INPUT_NUMBER_MESSAGE;
-import static baseball.common.Message.END_INPUT_MESSAGE;
 import static baseball.common.Message.INVALID_END_INPUT_NUMBER_MESSAGE;
 import static baseball.common.Message.INVALID_START_INPUT_LENGTH_MESSAGE;
 import static baseball.common.Message.INVALID_START_INPUT_NUMBER_MESSAGE;
-import static baseball.common.Message.START_INPUT_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -19,8 +17,6 @@ import java.util.List;
 public class BaseBallInputDevice {
 
   public List<Integer> startInput() {
-    System.out.print(START_INPUT_MESSAGE);
-
     List<Integer> inputNumbers = new ArrayList<>();
     String inputStr = Console.readLine();
     validateStartLength(inputStr);
@@ -39,8 +35,6 @@ public class BaseBallInputDevice {
   }
 
   public int endInput() {
-    System.out.println(END_INPUT_MESSAGE);
-
     String inputStr = Console.readLine();
     validateExitNumber(inputStr);
 

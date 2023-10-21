@@ -3,10 +3,6 @@ package baseball.baseball;
 import static baseball.common.Constant.BALL_AMOUNT;
 import static baseball.common.Constant.MAX_BALL_NUMBER;
 import static baseball.common.Constant.MIN_BALL_NUMBER;
-import static baseball.common.Message.BALL_MESSAGE;
-import static baseball.common.Message.EMPTY_MESSAGE;
-import static baseball.common.Message.STRIKE_MESSAGE;
-import static baseball.common.Message.SUCCESS_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -24,7 +20,7 @@ public class BaseBall {
     return this.ballNumbers;
   }
 
-  public int getStrikeCount(List<Integer> targetBallNumbers) {
+  public Result getPlayResult(List<Integer> targetBallNumbers) {
     int strikeCount = 0;
     int ballCount = 0;
 
@@ -42,29 +38,7 @@ public class BaseBall {
       }
     }
 
-    printResult(ballCount, strikeCount);
-
-    return strikeCount;
-  }
-
-  public Boolean isSucceed(int strikeCount) {
-    if (strikeCount == BALL_AMOUNT) {
-      System.out.println(SUCCESS_MESSAGE);
-      return true;
-    }
-    return false;
-  }
-
-  private void printResult(int ballCount, int strikeCount) {
-    if (ballCount == 0 && strikeCount == 0) {
-      System.out.println(EMPTY_MESSAGE);
-    } else if (ballCount == 0) {
-      System.out.println(strikeCount + STRIKE_MESSAGE);
-    } else if (strikeCount == 0) {
-      System.out.println(ballCount + BALL_MESSAGE);
-    } else {
-      System.out.println(ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE);
-    }
+    return new Result(strikeCount, ballCount);
   }
 
   private List<Integer> generatedRandomBallNumbers() {
