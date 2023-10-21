@@ -12,6 +12,17 @@ public class GameController {
         this.user = new User();
     }
 
+    public void gameStart() {
+        while (true) {
+            user.getNumbersFromUser();
+            if (compareNumbers(user.getNumbers(), computer.getRandomNumbers())) {
+                user.restartGame();
+                break;
+            }
+        }
+
+    }
+
     public boolean compareNumbers(List<Integer> userNumbers, List<Integer> computerNumbers) {
         int ballNum = 0;
         int strikeNum = 0;
