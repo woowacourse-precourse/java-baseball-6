@@ -11,45 +11,110 @@ public class Application {
     public static void main(String[] args) throws IllegalArgumentException {
         // TODO: 프로그램 구현
         BaseballGame Game = new BaseballGame();
-        Game.GetComputer();
+        Game.Run();
     }
 };
 
-// 야구 게임의 클래스 선언
-class BaseballGame{
+class BaseballGameManager{
+    // 사용자에게 입력을 받습니다.
+    public void runGame(){
 
-    // 데이터 필드
-    List<Integer> Computer = new ArrayList<>();
-    List<Integer> User = new ArrayList<>();
-    int Strike;
-    int Ball;
-
-    // 메서드 ( Method )
-
-    // 사용자의 숫자 입력을 받는 부분
-    public void GetUser(){};
-
-    // 컴퓨터가 자신의 랜덤 숫자 3가리를 선정하는 부분
-    public void GetComputer(){
-        while (Computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!Computer.contains(randomNumber)) {
-                Computer.add(randomNumber);
-            }
-        }
     };
-    // 스트라이크 점수를 추가하는 함수
-    public void AddStrike(){};
+    public void getUserNumberInput(){};
+    public void getGameFinishInput() {
+        // 게임 종료 여부를 1 또는 2 로 입력받음
+    };
 
-    // 볼 점수를 추가하는 함수
-    public void AddBall(){};
-
-    // 두개의 숫자에 대해 점수 계산을 진행하는 함수
-    public void CheckNumber(){};
-
-    // 점수를 확인하고 출력 및 종료와 재시작 여부를 판단하는 코드
-    public void CheckScore(){};
-
-    public void CheckEnd(){};
 
 }
+class BaseballGame {
+
+    // 컴퓨터가 사용할 숫자를 저장할 리스트
+    List<Integer> computerNumbers = new ArrayList<>();
+
+    // 유저가 사용할 숫자를 저장할 리스트
+    List<Integer> userNumbers = new ArrayList<>();
+
+    // 스트라이크 갯수
+    int strikeCount;
+
+    // 볼 갯수
+    int ballCount;
+
+    // 게임 종료 여부를 확인하기 위한 정수
+    int gameFinish;
+
+    // 유저가 입력한 숫자에서 중복값을 확인
+    public void checkUserForDuplicates() {
+        // 구현
+    }
+
+    // 컴퓨터가 게임에 사용할 숫자를 새로 갱신합니다.
+    public void generateComputerNumbers() {
+        while (computerNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
+            }
+        }
+    }
+
+    // 스트라이크 갯수를 증가시킵니다.
+    public void incrementStrikeCount() {
+        strikeCount += 1;
+    }
+
+    // 볼 갯수를 증가시킵니다.
+    public void incrementBallCount() {
+        ballCount += 1;
+    }
+
+    // 스트라이크와 볼 갯수를 초기화합니다.
+    public void resetScores() {
+        strikeCount = 0;
+        ballCount = 0;
+    }
+
+    // Strike의 갯수를 반환합니다.
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    // Ball의 갯수를 반환합니다.
+    public int getBallCount() {
+        return ballCount;
+    }
+
+}
+
+
+class OutputView{
+    public void startGameAnnouncement(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+    public void promptUserForRoundGuess() {
+        System.out.print("숫자를 입력해주세요 :");
+    }
+
+    // 매 라운드의 숫자 야구에서 스트라이크를 출력합니다.
+    public void printStrike(int strikeCount) {
+        System.out.println(strikeCount + "스트라이크");
+    }
+
+    // 매 라운드의 숫자 야구에서 볼을 출력합니다.
+    public void printBall(int ballCount) {
+        System.out.println(ballCount +"볼");
+    }
+
+    // 매 라운드의 숫자 야구에서 아무 것도 출력하지 않습니다.
+    public void printNothing() {
+        System.out.println("낫싱");
+    }
+
+    // 매 라운드의 숫자 야구에서 스트라이크와 볼을 출력합니다.
+    public void printBoth(int strikeCount, int ballCount) {
+        System.out.println(ballCount+"볼 "+strikeCount+"스트라이크");
+    }
+
+
+};

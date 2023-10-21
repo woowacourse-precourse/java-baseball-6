@@ -10,18 +10,34 @@
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
-## ✅  클래스 구현해야할 기능
+## ✅  개발 진행상황
+### 1️⃣ 2023-10-20
+- README.md 클래그 초기 구현 목록 작성
+- Public void GetComputer()
+  - 컴퓨터가 게임에서 사용할 Int형 배열 Computer생성 메서드 추가
+- Application에서 BaseballGame의 메서드 사용을 위한 인스턴스 생성 코드 추가
+
+### 2️⃣ 2023-10-21
+- MVC 패턴을 이용한 구현 방식으로 구현의 구조도 변경
+
+## ✅  Application.java 구조 Ver.1
 ```java
+// Main Application
+public class Application {
+  public static void main(String[] args) throws IllegalArgumentException {
+    // TODO: 프로그램 구현
+    BaseballGame Game = new BaseballGame();
+    Game.Run();
+  }
+};
+
 // 야구 게임의 클래스 선언
-Public Class BaseballGame{
-    
-    // 데이터 필드
-    List<Integer> Computer = new ArrayList<>();
-    List<Integer> User = new ArrayList<>();
-    int Strike;
-    int Ball;
+Class BaseballGame{
 
     // 메서드 ( Method )
+    
+    // 게임 실행부 
+    public void Run(){};
 
     // 사용자의 숫자 입력을 받는 부분
     public void GetUser(){};
@@ -35,20 +51,128 @@ Public Class BaseballGame{
     // 볼 점수를 추가하는 함수
     public void AddBall(){};
     
+    // 점수를 초기화 하는 함수
+    public void ClearScore(){};
+    
     // 두개의 숫자에 대해 점수 계산을 진행하는 함수
     public void CheckNumber(){};
     
     // 점수를 확인하고 출력 및 종료와 재시작 여부를 판단하는 코드
     public void CheckScore(){};
     
+    // 게임 종료시 유저에게 1과 2를 입력받는 함수
     public void CheckEnd(){};
     
 }
+
+class GameManagerControll{
+    
+}
+
+class OutputView{
+    
+}
+Class BaseballGame{
+    List<Integer>
+    // 데이터 필드List<Integer>// Computer = new ArrayList<>();
+        List<Integer> User = new ArrayList<>();
+        int Strike;
+        int Ball;
+}
 ```
 
-## ✅  개발 진행상황
-### 1️⃣ 2023-10-20 
-- README.md 클래그 초기 구현 목록 작성 
-- Public void GetComputer() 
-  - 컴퓨터가 게임에서 사용할 Int형 배열 Computer생성 메서드 추가
-- Application에서 BaseballGame의 메서드 사용을 위한 인스턴스 생성 코드 추ㅇ 
+## ✅  Application.java 구조 Ver.2
+```java
+class BaseballGameManager{
+    
+    // 야구 게임을 시작합니다.
+    public void runGame(){
+    };
+    
+    // 유저에게 숫자를 입력받습니다.
+    public void getUserNumberInput(){
+    };
+    
+    // 게임의 재시작 여부를 입력받습니다.
+    public void getGameFinishInput() {
+    };
+
+
+}
+class BaseballGame {
+
+    // 컴퓨터가 사용할 숫자를 저장할 리스트
+    List<Integer> computerNumbers = new ArrayList<>();
+
+    // 유저가 사용할 숫자를 저장할 리스트
+    List<Integer> userNumbers = new ArrayList<>();
+
+    // 스트라이크 갯수
+    int strikeCount;
+
+    // 볼 갯수
+    int ballCount;
+
+    // 게임 종료 여부를 확인하기 위한 정수
+    int gameFinish;
+
+    // 유저가 입력한 숫자에서 중복값을 확인
+    public void checkUserForDuplicates() {
+    }
+
+    // 컴퓨터가 게임에 사용할 숫자를 새로 갱신합니다.
+    public void generateComputerNumbers() {
+    }
+
+    // 스트라이크 갯수를 증가시킵니다.
+    public void incrementStrikeCount() {
+    }
+
+    // 볼 갯수를 증가시킵니다.
+    public void incrementBallCount() {
+    }
+
+    // 스트라이크와 볼 갯수를 초기화합니다.
+    public void resetScores() {
+    }
+
+    // Strike의 갯수를 반환합니다.
+    public int getStrikeCount() {
+    }
+
+    // Ball의 갯수를 반환합니다.
+    public int getBallCount() {
+    }
+
+}
+
+
+class OutputView{
+    
+    // 게임의 시작 문구를 출력합니다.
+    public void startGameAnnouncement(){
+    }
+    
+    // 유저에게 숫자를 입력해달라는 문구를 출력합니다.
+    public void promptUserForRoundGuess() {
+    }
+
+    // 매 라운드의 숫자 야구에서 스트라이크를 출력합니다.
+    public void printStrike(int strikeCount) {
+    }
+
+    // 매 라운드의 숫자 야구에서 볼을 출력합니다.
+    public void printBall(int ballCount) {
+    }
+
+    // 매 라운드의 숫자 야구에서 아무 것도 출력하지 않습니다.
+    public void printNothing() {
+    }
+
+    // 매 라운드의 숫자 야구에서 스트라이크와 볼을 출력합니다.
+    public void printBoth(int strikeCount, int ballCount) {
+    }
+
+
+};
+```
