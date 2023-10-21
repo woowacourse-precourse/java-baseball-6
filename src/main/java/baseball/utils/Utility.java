@@ -1,6 +1,7 @@
 package baseball.utils;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Utility {
 
@@ -22,6 +23,14 @@ public class Utility {
         if (!gameCommand.contains(number)) {
             throw new IllegalArgumentException("올바른 명령어가 아닙니다.");
         }
+    }
+
+    public static List<Integer> convertStringToIntegerList(String input) {
+        return input.chars()
+            .filter(Character::isDigit)
+            .map(Character::getNumericValue)
+            .boxed()
+            .collect(Collectors.toList());
     }
 }
 
