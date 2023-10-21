@@ -12,7 +12,7 @@ public class Score {
         this.score = score;
     }
 
-    public void plus() {
+    public void plusOne() {
         score++;
     }
 
