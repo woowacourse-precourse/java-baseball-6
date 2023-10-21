@@ -1,10 +1,11 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 
 public class BaseBallNumberTest {
 
@@ -22,7 +23,10 @@ public class BaseBallNumberTest {
     @Test
     void 스트라이크_판정() {
         // given
-        goalNumber.initGoalNumber(new ArrayList<>(List.of(new Integer[]{1, 3, 5})));
+        MockedStatic<RandomNumberGenerator> mocked = Mockito.mockStatic(RandomNumberGenerator.class);
+        mocked.when(() -> RandomNumberGenerator.getNonDuplicateNumbers(rule)).thenReturn(List.of(1, 3, 5));
+        BaseBallNumber goalNumber = new BaseBallNumber(rule);
+        goalNumber.initGoalNumber();
         String[] inputs = {"246", "531", "136", "135"};
         for (int i = 0; i < 4; i++) {
             // when
@@ -30,12 +34,16 @@ public class BaseBallNumberTest {
             // then
             Assertions.assertEquals(i, goalNumber.countStrike(userGuess));
         }
+        mocked.close();
     }
 
     @Test
     void 볼_판정() {
         // given
-        goalNumber.initGoalNumber(new ArrayList<>(List.of(new Integer[]{1, 3, 5})));
+        MockedStatic<RandomNumberGenerator> mocked = Mockito.mockStatic(RandomNumberGenerator.class);
+        mocked.when(() -> RandomNumberGenerator.getNonDuplicateNumbers(rule)).thenReturn(List.of(1, 3, 5));
+        BaseBallNumber goalNumber = new BaseBallNumber(rule);
+        goalNumber.initGoalNumber();
         String[] inputs = {"246", "214", "913", "351"};
         for (int i = 0; i < 4; i++) {
             // when
@@ -43,5 +51,6 @@ public class BaseBallNumberTest {
             // then
             Assertions.assertEquals(i, goalNumber.countBall(userGuess));
         }
+        mocked.close();
     }
 }

@@ -7,4 +7,12 @@ public class ComputerPlayer {
     public ComputerPlayer(GameRule rule) {
         goalNumber = new BaseBallNumber(rule);
     }
+
+    public void decideGoalNumber() {
+        this.goalNumber.initGoalNumber();
+    }
+
+    public ResultOfGuess evaluateGuess(BaseBallNumber guess) {
+        return goalNumber.countBallAndStrike(guess);
+    }
 }

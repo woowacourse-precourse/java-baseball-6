@@ -13,13 +13,17 @@ public class BaseBallNumber {
         this.rule = rule;
     }
 
-    public void initGoalNumber(List<Integer> numbers) {
-        this.numbers = numbers;
+    public void initGoalNumber() {
+        this.numbers = RandomNumberGenerator.getNonDuplicateNumbers(rule);
     }
 
     public void setUserInput(String input) throws InvalidNumberException {
         validateInput(input);
         this.numbers = parseInput(input);
+    }
+
+    public ResultOfGuess countBallAndStrike(BaseBallNumber guess) {
+        return new ResultOfGuess(countBall(guess), countStrike(guess));
     }
 
     public int countStrike(BaseBallNumber guess) {
