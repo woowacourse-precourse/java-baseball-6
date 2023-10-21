@@ -18,8 +18,10 @@ public class Comparator {
     public int ball;
 
     public void compare(Balls computer, Balls user){
-        receiveBalls(computer,user);
+
         initScore();
+        initNumber();
+        receiveBalls(computer,user);
         int current=0;
         while(current<BALLS_SIZE){
             if(computerNumber.get(current).equals(userNumber.get(current))){
@@ -48,6 +50,11 @@ public class Comparator {
     private void initScore(){
         strike=0;
         ball=0;
+    }
+
+    private void initNumber(){
+        computerNumber.clear();
+        userNumber.clear();
     }
 
     public void store(int strike,int ball){

@@ -15,7 +15,7 @@ class ComparatorTest {
 
     @Test
     @DisplayName("컴퓨터의 숫자와 사용자 숫자 비교")
-    void 힌트_테스트(){
+    void 힌트_테스트o(){
         //given
         Balls computerBalls=new Balls(new ArrayList<Integer>(Arrays.asList(1,2,4)));
         Balls userBalls=new Balls(new ArrayList<Integer>(Arrays.asList(1,4,2)));
@@ -32,5 +32,7 @@ class ComparatorTest {
         Assertions.assertThat(comparator.strike).isEqualTo(1);
         Assertions.assertThat(comparator.ball).isEqualTo(2);
     }
+
+
 
 }
