@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class UserNumber {
     private static final int NUMBER_SIZE = 3;
@@ -22,6 +24,16 @@ public class UserNumber {
             if(!Character.isDigit(ch) || ch <'1' || ch >'9'){
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    private void validateDuplication(String userInputNumber){
+        Set<Character> set = new HashSet<>();
+        for(char ch : userInputNumber.toCharArray()){
+            if(set.contains(ch)){
+                throw new IllegalArgumentException();
+            }
+            set.add(ch);
         }
     }
 
