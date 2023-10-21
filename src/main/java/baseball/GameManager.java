@@ -6,11 +6,10 @@ public class GameManager {
     public String doGame(List<Integer> computerNumber, List<Integer> userNumber) {
         // 같은 수가 같은 자리에 있으면 스트라이크
         Integer strikeCount = getStrikeCount(computerNumber, userNumber);
-        if (strikeCount == 3) {
+        Integer ballCount = getBallCount(computerNumber, userNumber);
+        if (strikeCount > 0 && ballCount == 0) {
             return strikeCount + "스트라이크";
         }
-
-        Integer ballCount = getBallCount(computerNumber, userNumber);
 
         if (strikeCount > 0) {
             return +ballCount + "볼" + " " + strikeCount + "스트라이크";
