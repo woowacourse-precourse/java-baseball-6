@@ -24,7 +24,7 @@ class NumberBaseballGameTest {
 
     @DisplayName("재시작 입력에 대한 true 반환 테스트")
     @Test
-    public void restartOrStopTest() throws Exception {
+    public void restartTest() throws Exception {
         //given
         String sign = "1";
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(sign.getBytes());
@@ -33,6 +33,20 @@ class NumberBaseballGameTest {
         boolean result = numberBaseballGame.restartOrStop();
         //then
         assertThat(result).isEqualTo(true);
+
+    }
+
+    @DisplayName("종료 입력에 대한 false 반환 테스트")
+    @Test
+    public void stopTest() throws Exception {
+        //given
+        String sign = "2";
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(sign.getBytes());
+        System.setIn(byteArrayInputStream);
+        //when
+        boolean result = numberBaseballGame.restartOrStop();
+        //then
+        assertThat(result).isEqualTo(false);
 
     }
 
