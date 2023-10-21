@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import baseball.console.BaseBallConstant;
 import baseball.console.ConsoleInput;
 import baseball.console.ConsoleOutput;
+import baseball.console.NumberConstant;
 import baseball.dto.BaseBallResult;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -14,7 +15,6 @@ public class BaseBallController {
 	private final ConsoleInput consoleInput = new ConsoleInput();
 	private final ConsoleOutput consoleOutput = new ConsoleOutput();
 	private final String targetNumber;
-	private static final int MIN_NUMBER = 1, MAX_NUMBER = 9, PICK_COUNT = 3;
 
 	public BaseBallController() {
 		this.targetNumber = generateRandomNumber();
@@ -22,8 +22,9 @@ public class BaseBallController {
 
 	private String generateRandomNumber() {
 		List<Integer> numbers = new ArrayList<>();
-		while (numbers.size() < PICK_COUNT) {
-			int num = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+		while (numbers.size() < NumberConstant.PICK_COUNT.getValue()) {
+			int num = Randoms.pickNumberInRange(NumberConstant.MIN_NUMBER.getValue(),
+				NumberConstant.MAX_NUMBER.getValue());
 			if (!numbers.contains(num)) {
 				numbers.add(num);
 			}
@@ -37,7 +38,7 @@ public class BaseBallController {
 			consoleOutput.printReq();
 			String input = consoleInput.getGameInput();
 			BaseBallResult result = getResult(input);
-			if (result.getStrikeCount() == PICK_COUNT) {
+			if (result.getStrikeCount() == NumberConstant.PICK_COUNT.getValue()) {
 				consoleOutput.printEnd();
 				return consoleInput.getEndInput().equals(BaseBallConstant.RESTART.getValue());
 			}

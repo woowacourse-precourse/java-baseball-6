@@ -27,6 +27,7 @@ public class ConsoleOutput {
 	}
 
 	public void printEnd() {
+		System.out.println(NumberConstant.PICK_COUNT.getValue() + BaseBallConstant.STRIKE.getValue());
 		System.out.println(BaseBallConstant.SUCCESS.getValue());
 		System.out.println(BaseBallConstant.GAME_END.getValue());
 	}
