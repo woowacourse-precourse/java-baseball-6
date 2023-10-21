@@ -25,4 +25,14 @@ class BaseballNumbersTest {
 
         Assertions.assertEquals(2, ballCount);
     }
+
+    @Test
+    void 낫싱_판단_테스트() {
+        BaseballNumbers computerNumber = new BaseballNumbers(List.of(1, 2, 3));
+        BaseballNumbers playerNumber = new BaseballNumbers(List.of(4, 5, 6));
+
+        boolean isNothing = computerNumber.isNothing(playerNumber);
+
+        Assertions.assertTrue(isNothing);
+    }
 }
