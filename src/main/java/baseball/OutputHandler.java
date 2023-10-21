@@ -17,8 +17,24 @@ public class OutputHandler {
         printMessage("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static void printHint() {
-        // TODO
-        printMessage("0볼 0스트라이크");
+    public static void printHint(Judgement judgement) {
+        String message = joinHintMessage(judgement);
+        printMessage(message);
+    }
+
+    private static String joinHintMessage(Judgement judgement) {
+        StringBuilder sb = new StringBuilder();
+
+        if (judgement.balls > 0) {
+            sb.append(judgement.balls).append("볼");
+        }
+        if (judgement.strikes > 0) {
+            if (judgement.balls > 0) {
+                sb.append(" ");
+            }
+            sb.append(judgement.strikes).append("스트라이크");
+        }
+
+        return sb.isEmpty() ? "낫싱" : sb.toString();
     }
 }
