@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,17 +14,22 @@ public class Application {
     private static int ball;
 
     public static void main(String[] args) {
-        boolean continueFlag = true;
-        startBaseballGame();
-        while (continueFlag) {
-            boolean successFlag = false;
-            createComputerNumber();
-            while (!successFlag) {
-                inputUserNumber();
-                compareNumbers();
-                successFlag = printResult();
+        try {
+            boolean continueFlag = true;
+            startBaseballGame();
+            while (continueFlag) {
+                boolean successFlag = false;
+                createComputerNumber();
+                while (!successFlag) {
+                    inputUserNumber();
+                    compareNumbers();
+                    successFlag = printResult();
+                }
+                continueFlag = inputContinueOrExit();
             }
-            continueFlag = inputContinueOrExit();
+        } catch (IllegalArgumentException e) {
+            System.err.println("잘못된 값 입력: " + e.getMessage());
+            throw e;
         }
     }
 
