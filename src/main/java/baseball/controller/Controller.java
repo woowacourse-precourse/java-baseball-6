@@ -9,30 +9,37 @@ import java.util.List;
 
 public class Controller {
     private static Answer answer;
+    private static NumberGenerator generator = new NumberGenerator();
     private static InputView inputView = new InputView();
     private static OutputView outputView = new OutputView();
+    private static boolean flag = true;
 
     public static void run() {
-        NumberGenerator generator = new NumberGenerator();
-
         inputView.greetingMsg();
         answer = generator.createAnswer();
 
-        while (true) {
+        do {
             inputView.inputGuideMsg();
             List<Integer> input = inputView.inputByConsole();
             GameScore gameScore = answer.calcScore(input);
             outputView.printResult(gameScore);
-            if (gameScore.isUserFindAnswer()) {
-                outputView.roundEndMsg();
-                inputView.askRestartMsg();
-                if (inputView.provideRestartDecisionFromUser()) {
-                    answer = generator.createAnswer();
-                    continue;
-                }
-                break;
-            }
-        }
+            checkGameDone(gameScore);
+        } while (flag);
+    }
 
+    private static void checkGameDone(GameScore gameScore) {
+        if (gameScore.isUserFindAnswer()) {
+            outputView.roundEndMsg();
+            inputView.askRestartMsg();
+            receiveDecision();
+        }
+    }
+
+    private static void receiveDecision() {
+        if (inputView.receiveRestartDecisionFromUser()) {
+            answer = generator.createAnswer();
+            return;
+        }
+        flag = false;
     }
 }
