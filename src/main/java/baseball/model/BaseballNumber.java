@@ -6,16 +6,16 @@ import java.util.Objects;
 public class BaseballNumber {
     private static final int MIN_BASEBALL_NUMBER = 1;
     private static final int MAX_BASEBALL_NUMBER = 9;
-    private final int baseballNumberInt;
+    private final int baseballNumberValue;
 
 
-    public BaseballNumber(int baseballNumberInt) {
-        validateBaseballNumber(baseballNumberInt);
-        this.baseballNumberInt = baseballNumberInt;
+    public BaseballNumber(int baseballNumberValue) {
+        validateBaseballNumber(baseballNumberValue);
+        this.baseballNumberValue = baseballNumberValue;
     }
 
-    private static void validateBaseballNumber(int baseballNumberInt) {
-        if (baseballNumberInt < MIN_BASEBALL_NUMBER || baseballNumberInt > MAX_BASEBALL_NUMBER) {
+    private static void validateBaseballNumber(int baseballNumberValue) {
+        if (baseballNumberValue < MIN_BASEBALL_NUMBER || baseballNumberValue > MAX_BASEBALL_NUMBER) {
             throw new IllegalArgumentException(
                     "[ERROR] 숫자가 " + MIN_BASEBALL_NUMBER + "~" + MAX_BASEBALL_NUMBER + " 사이가 아닙니다."
             );
@@ -23,12 +23,12 @@ public class BaseballNumber {
     }
 
     public static int getBaseballNumberValue(BaseballNumber baseballNumber) {
-        return baseballNumber.baseballNumberInt;
+        return baseballNumber.baseballNumberValue;
     }
 
     public static BaseballNumber getRandomBaseballNumber() {
-        int randomNumber = Randoms.pickNumberInRange(MIN_BASEBALL_NUMBER, MAX_BASEBALL_NUMBER);
-        return new BaseballNumber(randomNumber);
+        int randomValue = Randoms.pickNumberInRange(MIN_BASEBALL_NUMBER, MAX_BASEBALL_NUMBER);
+        return new BaseballNumber(randomValue);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class BaseballNumber {
             return false;
         }
         BaseballNumber baseballNumber = (BaseballNumber) o;
-        if (this.baseballNumberInt == baseballNumber.baseballNumberInt) {
+        if (this.baseballNumberValue == baseballNumber.baseballNumberValue) {
             return true;
         }
         return false;
@@ -45,6 +45,6 @@ public class BaseballNumber {
 
     @Override
     public int hashCode() {
-        return Objects.hash(baseballNumberInt);
+        return Objects.hash(baseballNumberValue);
     }
 }
