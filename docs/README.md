@@ -51,4 +51,4 @@
 
 ---
 ## 클래스 다이어그램
-![baseball](https://github.com/study-hub-inu/study-hub-server/assets/97587573/2402f3a3-b8cf-4c64-b674-19547aeb0300)
+![baseball](https://github.com/study-hub-inu/study-hub-server/assets/97587573/0a9da7fe-e500-427d-acd1-eb02201b878f)
