@@ -8,14 +8,18 @@ import java.util.stream.Collectors;
 
 public class NumericValidator {
 
-    public void validate(List<Integer> numbers) {
-        if (numbers.size() != 3) {
+    public List<Integer> validate(String inputNumber) {
+        List<Integer> playerNumbers = converStringToList(inputNumber);
+
+        if (playerNumbers.size() != 3) {
             throw new IllegalArgumentException("잘못된 입력입니다. 자릿수 오류");
-        } else if (!isDifferentNumber(numbers)) {
+        } else if (!isDifferentNumber(playerNumbers)) {
             throw new IllegalArgumentException("잘못된 입력입니다. 중복 오류");
-        } else if (!isBetween1And9(numbers)) {
+        } else if (!isBetween1And9(playerNumbers)) {
             throw new IllegalArgumentException("잘못된 입력입니다. 범위 오류");
         }
+
+        return playerNumbers;
     }
 
     // 서로 다른 숫자인지 검사
@@ -30,7 +34,7 @@ public class NumericValidator {
     // 1 ~ 9 사이의 숫자인지 검사
     private boolean isBetween1And9(List<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
-            if(!(numbers.get(i) >= 1 && numbers.get(i) <= 9)) {
+            if (!(numbers.get(i) >= 1 && numbers.get(i) <= 9)) {
                 return false;
             }
         }
