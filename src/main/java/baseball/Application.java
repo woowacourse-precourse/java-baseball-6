@@ -4,8 +4,10 @@ public class Application {
     public static void main(String[] args) {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         Prompt prompt = new Prompt();
-        BaseBallGame game = new BaseBallGame(randomNumberGenerator, prompt);
+        Validator validator = new Validator();
+        BaseBallGameMapper baseBallGameMapper = new BaseBallGameMapper();
 
+        BaseBallGame game = new BaseBallGame(randomNumberGenerator, prompt, validator, baseBallGameMapper);
         game.start();
     }
 }
