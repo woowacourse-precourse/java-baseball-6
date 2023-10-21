@@ -15,6 +15,14 @@ public class GameResult {
             ball++;
         }
     }
+    private static HashMap<BallScore, Integer> getResult() {
+        result.put(BallScore.STRIKE, strike);
+        result.put(BallScore.BALL, ball);
+        return result;
+    }
+    public Integer getResult(BallScore ballScore) {
+        return getResult().get(ballScore);
+    }
     public boolean isNothing() {
         return strike == 0 && ball == 0;
     }
