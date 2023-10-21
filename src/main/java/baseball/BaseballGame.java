@@ -25,10 +25,7 @@ public class BaseballGame {
         do {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            Player player = new Player(
-                    List.of(input.charAt(0) - '0',
-                            input.charAt(1) - '0',
-                            input.charAt(2) - '0'));
+            Player player = new Player(input);
 
             result = player.compareToAnswer(computer);
             int ball = result.get(0);
