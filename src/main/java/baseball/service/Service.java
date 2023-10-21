@@ -124,4 +124,12 @@ public class Service {
         dataValidator.validateDecision(decision);
         return decision;
     }
+
+    public int getStrike() {
+        return scoreRepository.getStrike();
+    }
+
+    public void initScoreRepository() {
+        scoreRepository.initScore();
+    }
 }

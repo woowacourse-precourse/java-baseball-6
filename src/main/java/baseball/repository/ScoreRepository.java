@@ -25,4 +25,10 @@ public class ScoreRepository {
     public void increaseStrike() {
         strike++;
     }
+
+    public void initScore(){
+        strike=0;
+        ball=0;
+
+    }
 }
