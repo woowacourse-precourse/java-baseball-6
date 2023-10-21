@@ -3,9 +3,9 @@ package baseball;
 import java.util.HashMap;
 
 public class GameResult {
-    private static int strike;
-    private static int ball;
-    private static final HashMap<BallScore, Integer> result = new HashMap<>();
+    private int strike;
+    private int ball;
+    private final HashMap<BallScore, Integer> result = new HashMap<>();
 
     public void saveResult(BallScore score) {
         if (score.isStrike()) {
@@ -15,7 +15,7 @@ public class GameResult {
             ball++;
         }
     }
-    private static HashMap<BallScore, Integer> getResult() {
+    private HashMap<BallScore, Integer> getResult() {
         result.put(BallScore.STRIKE, strike);
         result.put(BallScore.BALL, ball);
         return result;
