@@ -7,6 +7,7 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Play {
+    private static boolean playFlag = true;
     private static final int STRIKE_THREE = 3;
     private final Score score;
     private final UserNumber userNumber;
@@ -17,15 +18,23 @@ public class Play {
     }
 
     public void play(ComputerNumber computerNumber) {
-        while (true) {
+        checkThreeStrike(score);
+        while (playFlag) {
             userNumber.newUserNumber(InputView.userNumberInput());
             score.countScore(userNumber.getUserNumber(), computerNumber.getComputerNumber());
             printResult(score);
-            if (score.getStrike() == STRIKE_THREE) {
-                break;
-            }
+            checkThreeStrike(score);
             score.resetScore();
         }
+    }
+
+    private void checkThreeStrike(Score score) {
+        int strike = score.getStrike();
+        if (strike == STRIKE_THREE) {
+            playFlag = false;
+            return;
+        }
+        playFlag = true;
     }
 
     private void printResult(Score score) {
