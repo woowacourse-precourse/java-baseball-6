@@ -28,6 +28,7 @@ public class BaseballNumbersFactory {
             BaseballNumber baseballNumber = new BaseballNumber(baseballNumberInt);
             baseballNumbers.add(baseballNumber);
         }
+        return baseballNumbers;
     }
 
     public static void validatebaseballNumbers(String baseballNumbersString) {
