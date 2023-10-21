@@ -63,11 +63,23 @@ public class Application {
         return new GameResult(strike, ball);
     }
 
+    public static void vaildUserRestartInput(String userInput) {
+        if (userInput.length() != 1) {
+            throw new IllegalArgumentException("1자리의 숫자를 입력하세요.");
+        }
+
+        for (char c : userInput.toCharArray()) {
+            if (c < '1' || c > '2') {
+                throw new IllegalArgumentException("올바른 숫자를 입력하세요.");
+            }
+        }
+    }
+
     public static int getUserRestartInput() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String userInput = camp.nextstep.edu.missionutils.Console.readLine(); // 항상 올바른 입력값이라고 가정함
-        // todo: 유저 입력값 검사
+        vaildUserRestartInput(userInput);
 
         return Integer.parseInt(userInput);
     }
