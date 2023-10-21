@@ -10,4 +10,8 @@ public enum ResultStatus {
     ResultStatus(String description) {
         this.description = description;
     }
+
+    public String getDescription() {
+        return description;
+    }
 }

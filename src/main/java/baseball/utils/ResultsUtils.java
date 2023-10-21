@@ -18,4 +18,9 @@ public final class ResultsUtils {
         return ResultStatus.OUT;
     }
 
+    public static String getStringValueOfResultStatusWithCount(ResultStatus resultStatus, int count) {
+        String description = resultStatus.getDescription();
+        return count + description;
+    }
+
 }
