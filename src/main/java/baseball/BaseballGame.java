@@ -52,4 +52,32 @@ public class BaseballGame {
         }
         return playerNumbers;
     }
+
+    private String compareInputAndNumbers(List<Integer> input) {
+        int ball = 0;
+        int strike = 0;
+        // 포함하고 있는지 검사 => 볼 개수
+        for (int i = 0; i < NUMBER_SIZE; i++) {
+            if (numbers.get(i).equals(input.get(i))) {
+                strike++;
+            }
+            else {
+                if (numbers.contains(input.get(i))) {
+                    ball++;
+                }
+            }
+        }
+
+        // 동적으로 추가하기
+        StringBuilder sb = new StringBuilder();
+        if (ball + strike == 0)
+            return BaseballJudgement.NOTHING.message;
+        if (ball > 0) {
+            sb.append(ball).append(BaseballJudgement.BALL.message).append(" ");
+        }
+        if (strike > 0) {
+            sb.append(strike).append(BaseballJudgement.STRIKE.message).append(" ");
+        }
+        return sb.toString();
+    }
 }
