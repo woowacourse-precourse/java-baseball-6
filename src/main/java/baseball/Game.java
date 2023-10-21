@@ -24,4 +24,20 @@ public class Game {
     private void printGameEnd(){
         System.out.println(GAME_END);
     }
+
+    private void printResult(int ball, int strike){
+        if(ball==0 && strike==0){
+            System.out.println("낫싱");
+            return;
+        }
+
+        StringBuilder sb=new StringBuilder();
+        if(ball>0)
+            sb.append(ball).append("볼").append(" ");
+
+        if(strike>0)
+            sb.append(strike).append("스트라이크");
+
+        System.out.println(sb);
+    }
 }
