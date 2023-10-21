@@ -15,7 +15,7 @@ class GameManagerTest {
         List<Integer> userNumber = List.of(1, 2, 3);
         GameManager gameManager = new GameManager();
         // Action
-        String result = gameManager.isEndGame(computerNumber, userNumber);
+        String result = gameManager.doGame(computerNumber, userNumber);
         // Assert
         assertThat(result).isEqualTo("3스트라이크");
     }
@@ -27,7 +27,7 @@ class GameManagerTest {
         List<Integer> userNumber = List.of(1, 2, 4);
         GameManager gameManager = new GameManager();
         // Action
-        String result = gameManager.isEndGame(computerNumber, userNumber);
+        String result = gameManager.doGame(computerNumber, userNumber);
         // Assert
         assertThat(result).isEqualTo("1볼 1스트라이크");
     }
@@ -39,7 +39,7 @@ class GameManagerTest {
         List<Integer> userNumber = List.of(2, 3, 4);
         GameManager gameManager = new GameManager();
         // Action
-        String result = gameManager.isEndGame(computerNumber, userNumber);
+        String result = gameManager.doGame(computerNumber, userNumber);
         // Assert
         assertThat(result).isEqualTo("2볼");
     }
@@ -51,7 +51,7 @@ class GameManagerTest {
         List<Integer> userNumber = List.of(4, 5, 6);
         GameManager gameManager = new GameManager();
         // Action
-        String result = gameManager.isEndGame(computerNumber, userNumber);
+        String result = gameManager.doGame(computerNumber, userNumber);
         // Assert
         assertThat(result).isEqualTo("낫싱");
     }

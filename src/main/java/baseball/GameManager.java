@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class GameManager {
-    public String isEndGame(List<Integer> computerNumber, List<Integer> userNumber) {
+    public String doGame(List<Integer> computerNumber, List<Integer> userNumber) {
         // 같은 수가 같은 자리에 있으면 스트라이크
         Integer strikeCount = getStrikeCount(computerNumber, userNumber);
         if (strikeCount == 3) {
