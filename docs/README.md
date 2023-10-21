@@ -20,7 +20,9 @@
 
 - `keyNum`에서 인덱스 0자리의 값이 0이면 (값이 없다는 뜻) 종료 (IllegalArgumentException 발생)
 
-#### ⬜ returnResult()
+- Scanner를 사용해서 받았던 입력을 console api 사용하는 걸로 바꿈
+
+#### ✅ returnResult()
 
 - `keyNum` `answer` 배열을 순회/비교함
 
@@ -58,12 +60,21 @@
 
 <br>
 
-# 2-2. 우선순위 2 기능목록
+# 3. 기능 수정 및 리팩토링
 
-#### ✅ finishGame()
+#### ✅ runningGame()
 
-- 랜덤한 숫자를 만들어서 배열에 넣기 : "서로 다른 수로 이루어진 3자리의 수"
-- 앞서 나온 숫자인지 중복여부를 생각해야됨
+- run() 안에 있는 게임 실행하는 부분 코드 따로 분리함
+
+- 게임 끝나고 1, 2 받을 때 게임을 다시시작하는 경우와 이어지게 하기 위함
+
+#### ⬜ inputNumbers() 기능추가 (입력받을 때 예외처리)
+
+- 중복되는 숫자 받지 않게, 글자수는 꼭 3
+
+- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생
+
+#### ⬜ inputNumbers() 안에 있는 로직들 좀 더 분리해야됨
 
 <br>
 
