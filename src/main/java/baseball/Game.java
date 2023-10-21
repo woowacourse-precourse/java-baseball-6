@@ -22,21 +22,21 @@ public class Game {
 
     public void checkInput(String input){
         if(input.length()!=3){
-            throw new IllegalStateException("입력값의 길이가 올바르지 않습니다.");
+            throw new IllegalArgumentException("입력값의 길이가 올바르지 않습니다.");
         }
         for(int i=0;i<3;i++){
             if('1'>input.charAt(i) || '9'<input.charAt(i)){
-                throw new IllegalStateException("숫자가 아닌 값이 존재합니다.");
+                throw new IllegalArgumentException("숫자가 아닌 값이 존재합니다.");
             }
         }
     }
 
     public void checkRestartInput(String input){
         if(input.length()!=1){
-            throw new IllegalStateException("입력값의 길이가 올바르지 않습니다.");
+            throw new IllegalArgumentException("입력값의 길이가 올바르지 않습니다.");
         }
         if(!input.equals("1")&&!input.equals("2")){
-            throw new IllegalStateException("숫자가 아닌 값이 존재합니다.");
+            throw new IllegalArgumentException("숫자가 아닌 값이 존재합니다.");
         }
     }
 
