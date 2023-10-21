@@ -17,4 +17,13 @@ public final class UserCode {
     public UserCode makeNewUserCode(List<Integer> codes) {
         return new UserCode(codes);
     }
+
+    public Integer getUserCodeSize() {
+        return codes.size();
+    }
+
+    public Integer getUserCodeElement(int index) {
+        return codes.get(index);
+    }
+
 }

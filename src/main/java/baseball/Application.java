@@ -2,12 +2,12 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import baseball.domain.BaseballCode;
 import baseball.game.BaseballGames;
 import baseball.service.RandomCodeService;
 import baseball.service.ValidateJudgeService;
 import baseball.service.impl.RandomCodeServiceImpl;
 import baseball.service.impl.ValidateJudgeServiceImpl;
+import baseball.vo.BaseballCode;
 import java.util.ArrayList;
 
 public class Application {

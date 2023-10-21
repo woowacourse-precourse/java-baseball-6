@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.domain.UserCode;
+import baseball.vo.UserCode;
 
 public interface UserCodeService {
 

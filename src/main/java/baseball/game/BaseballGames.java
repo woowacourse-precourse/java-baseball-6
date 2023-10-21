@@ -1,12 +1,12 @@
 package baseball.game;
 
-import baseball.domain.UserCode;
 import baseball.service.MessageGenerateService;
 import baseball.service.UserCodeService;
 import baseball.service.ValidateJudgeService;
 import baseball.service.impl.MessageGenerateServiceImpl;
 import baseball.service.impl.UserCodeServiceImpl;
 import baseball.service.impl.ValidateJudgeServiceImpl;
+import baseball.vo.UserCode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class BaseballGames {
         while (true) {
             UserCode userCode = userCodeService.makeUserCode(codes);
             validateJudgeService.validateLegalUserCode(userCode.getCodes());
-            List<Integer> resultList = validateJudgeService.validateAndCompareCodes(baseballCode, userCode.getCodes());
+            List<Integer> resultList = validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
             String batResult = messageGenerateService.makeMessage(resultList);
             System.out.println(batResult);
             if (batResult.equals("3스트라이크")) {

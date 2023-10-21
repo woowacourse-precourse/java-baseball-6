@@ -1,6 +1,7 @@
 package baseball.service.impl;
 
 import baseball.service.ValidateJudgeService;
+import baseball.vo.UserCode;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -9,17 +10,17 @@ import java.util.Set;
 public class ValidateJudgeServiceImpl implements ValidateJudgeService {
 
     @Override
-    public List<Integer> validateAndCompareCodes(List<Integer> baseballCodes, List<Integer> userCodes) {
+    public List<Integer> validateAndCompareCodes(List<Integer> baseballCodes, UserCode userCode) {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for (int i = 0; i < userCodes.size(); i++) {
+        for (int userCodeIndex = 0; userCodeIndex < userCode.getUserCodeSize(); userCodeIndex++) {
             for (int j = 0; j < baseballCodes.size(); j++) {
-                Integer userCode = userCodes.get(i);
+                Integer userCodeElement = userCode.getUserCodeElement(userCodeIndex);
                 Integer baseballCode = baseballCodes.get(j);
-                if (i != j && userCode.equals(baseballCode)) {
+                if (userCodeIndex != j && userCodeElement.equals(baseballCode)) {
                     ballCount += 1;
-                } else if (i == j && userCode.equals(baseballCode)) {
+                } else if (userCodeIndex == j && userCodeElement.equals(baseballCode)) {
                     strikeCount += 1;
                 }
             }

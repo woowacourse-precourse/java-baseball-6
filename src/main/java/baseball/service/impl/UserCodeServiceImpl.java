@@ -2,8 +2,8 @@ package baseball.service.impl;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import baseball.domain.UserCode;
 import baseball.service.UserCodeService;
+import baseball.vo.UserCode;
 import java.util.Arrays;
 import java.util.List;
 
