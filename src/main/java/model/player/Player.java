@@ -9,4 +9,8 @@ public abstract class Player {
     protected Player(List<Integer> numbers) {
         this.numbers = numbers;
     }
+
+    public int getNumberByPosition(int position) {
+        return numbers.get(position);
+    }
 }

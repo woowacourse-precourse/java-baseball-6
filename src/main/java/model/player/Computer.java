@@ -11,4 +11,8 @@ public class Computer extends Player {
     public static Computer create(List<Integer> numbers) {
         return new Computer(numbers);
     }
+
+    public boolean isContainsNumber(int numberByPosition) {
+        return numbers.contains(numberByPosition);
+    }
 }
