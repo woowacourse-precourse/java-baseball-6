@@ -16,12 +16,13 @@ public class Application {
             Refree refree = new Refree();
 
             List<Integer> computerNum = computer.generate();
-            List<Integer> playerNum = player.enter();
-
-            String result = refree.count(computerNum, playerNum);
-            System.out.println(computerNum);
-            System.out.println(playerNum);
-            System.out.println(result);
+            String result = "";
+            while (!result.equals("3스트라이크")){
+                List<Integer> playerNum = player.enter();
+                result = refree.count(computerNum, playerNum);
+                System.out.println(computerNum);
+                System.out.println(result);
+            }
         } catch (IllegalArgumentException e) {
             System.out.println("예외 발생 - " + e.getMessage());
         }
