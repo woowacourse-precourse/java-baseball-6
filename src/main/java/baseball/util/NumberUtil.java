@@ -15,6 +15,15 @@ public class NumberUtil {
         return numberList;
     }
 
+    public static void validate(String number) {
+        validateEmpty(number);
+        validateLength(number);
+        validateNumber(number);
+        validateUnique(number);
+        validateSign(number);
+        validateRange(number);
+    }
+
     protected static void validateEmpty(String number) {
         if (number.isEmpty()) {
             throw new IllegalArgumentException("입력값은 비어있지 않아야 합니다.");
