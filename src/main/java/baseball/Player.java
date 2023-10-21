@@ -11,6 +11,10 @@ public class Player {
         nums = randomNum.getNums();
     }
 
+    public ArrayList<Integer> getNums() {
+        return nums;
+    }
+
     public void setGuessNums(ArrayList<Integer> guessNums) {
         this.guessNums = guessNums;
     }
