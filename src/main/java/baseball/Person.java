@@ -10,9 +10,8 @@ public class Person {
         inputList = new ArrayList<>();
     }
 
-    public void insert(String input) {
+    public void insertNumberAndValidate(String input) {
         validateInput(input);
-        clean();
         for (char ch : input.toCharArray()) {
             inputList.add(Character.getNumericValue(ch));
         }
