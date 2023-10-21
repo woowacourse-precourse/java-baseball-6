@@ -38,7 +38,9 @@ public class Balls {
         int strike = countStrike(secondBalls);
         int strikesPlusBall = countStrikePlusBall(secondBalls);
         int ball = strikesPlusBall - strike;
-        return makeString(ball, strike);
+        Score score = Score.of(ball, strike);
+        StringFormatter formatter = score.selectFormatter();
+        return formatter.format(ball, strike);
     }
 
     private int countStrike(Balls secondBalls) {
@@ -51,33 +53,5 @@ public class Balls {
         return (int) balls.stream()
                 .filter(secondBalls.balls::contains)
                 .count();
-    }
-
-    private String makeString(int ball, int strike) {
-        if (bothAreZero(ball, strike)) {
-            return Hint.NOTHING.value();
-        }
-
-        if (onlyBall(ball, strike)) {
-            return String.format("%d%s", ball, Hint.BALL.value());
-        }
-
-        if (onlyStrike(ball, strike)) {
-            return String.format("%d%s", strike, Hint.STRIKE.value());
-        }
-
-        return String.format("%d%s %d%s", ball, Hint.BALL.value(), strike, Hint.STRIKE.value());
-    }
-
-    private static boolean bothAreZero(int ball, int strike) {
-        return ball == 0 && strike == 0;
-    }
-
-    private static boolean onlyBall(int ball, int strike) {
-        return ball != 0 && strike == 0;
-    }
-
-    private static boolean onlyStrike(int ball, int strike) {
-        return ball == 0 && strike != 0;
     }
 }
