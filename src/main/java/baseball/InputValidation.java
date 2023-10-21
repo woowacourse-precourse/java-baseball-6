@@ -1,5 +1,12 @@
 package baseball;
 
+import static baseball.MessageConstant.CONTROL_SIGN_LENGTH_EXCEPTION_MSG;
+import static baseball.MessageConstant.CONTROL_SIGN_NUMBER_EXCEPTION_MSG;
+import static baseball.MessageConstant.INPUT_CONTAIN_ZERO_EXCEPTION_MSG;
+import static baseball.MessageConstant.INPUT_DUPLICATION_EXCEPTION_MSG;
+import static baseball.MessageConstant.INPUT_LENGTH_EXCEPTION_MSG;
+import static baseball.MessageConstant.INPUT_NOT_ONLY_DIGIT_EXCEPTION_MSG;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +33,7 @@ public class InputValidation {
     // 길이에 대한 검증
     private void validateLength(String input) {
         if (input.length() != 3) {
-            throw new IllegalArgumentException("3개의 숫자만 입력해주세요.");
+            throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION_MSG);
         }
     }
 
@@ -39,21 +46,21 @@ public class InputValidation {
         boolean checkOnlyDigit = input.chars().allMatch(Character::isDigit);
 
         if (!checkOnlyDigit) {
-            throw new IllegalArgumentException("숫자만 입력해 주세요.");
+            throw new IllegalArgumentException(INPUT_NOT_ONLY_DIGIT_EXCEPTION_MSG);
         }
     }
 
     // 0을 포함했는지 검증
     private void validateContainZero(String input) {
         if (input.contains("0")) {
-            throw new IllegalArgumentException("1 ~ 9 사이의 숫자만 입력해주세요.");
+            throw new IllegalArgumentException(INPUT_CONTAIN_ZERO_EXCEPTION_MSG);
         }
     }
 
     // 중복수에 대한 검증
     private void validateDuplicateNumber(String input) {
         if (input.chars().distinct().count() < 3) {
-            throw new IllegalArgumentException("중복된 수는 입력할 수 없습니다");
+            throw new IllegalArgumentException(INPUT_DUPLICATION_EXCEPTION_MSG);
         }
     }
 
@@ -66,13 +73,13 @@ public class InputValidation {
 
     private void validateSign(String input) {
         if (input.charAt(0) != '1' && input.charAt(0) != '2') {
-            throw new IllegalArgumentException("재시작은 1, 게임 종료는 2입니다.");
+            throw new IllegalArgumentException(CONTROL_SIGN_NUMBER_EXCEPTION_MSG);
         }
     }
 
     private void validateSignLength(String input) {
         if (input.length() != 1) {
-            throw new IllegalArgumentException("하나의 숫자만 입력해 주세요");
+            throw new IllegalArgumentException(CONTROL_SIGN_LENGTH_EXCEPTION_MSG);
         }
     }
 }

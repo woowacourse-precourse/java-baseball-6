@@ -122,7 +122,7 @@ class InputValidationTest {
             Throwable originException = e.getCause();
             assertThat(originException)
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("하나의 숫자만 입력해 주세요");
+                    .hasMessage("하나의 숫자만 입력해 주세요.");
         }
     }
 
@@ -139,7 +139,7 @@ class InputValidationTest {
             Throwable originException = e.getCause();
             assertThat(originException)
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("중복된 수는 입력할 수 없습니다");
+                    .hasMessage("중복된 수는 입력할 수 없습니다.");
         }
     }
 }
