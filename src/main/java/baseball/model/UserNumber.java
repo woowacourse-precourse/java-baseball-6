@@ -13,7 +13,7 @@ public class UserNumber {
         return userNumber;
     }
 
-    public void validate(String input){
+    private void validate(String input){
         validateIsNumber(input);
         validateSize(input);
         validateHasZero(input);
