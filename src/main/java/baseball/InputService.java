@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class InputService {
@@ -10,8 +11,15 @@ public class InputService {
         System.out.print("숫자를 입력해주세요 : ");
         String inputValue = Console.readLine();
 
-        // 입력값 검증
-        if(!validateLength(inputValue) || !validateType(inputValue)) return null;
+        try {
+            // 입력값 검증
+            if(!validateLength(inputValue) || !validateType(inputValue)) {
+                throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return null;
+        }
 
         // 입력값 List<Integer>로 매핑
         List<Integer> inputValueList = new ArrayList<>();
@@ -22,15 +30,7 @@ public class InputService {
 
     // 입력값의 길이를 검증하는 로직
     private Boolean validateLength(String inputValue) {
-        try {
-            if (inputValue.length() != 3) {
-                throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
-            }
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return false;
-        }
-
+        if (inputValue.length() != 3) return false;
         return true;
     }
 
@@ -38,14 +38,7 @@ public class InputService {
     private Boolean validateType(String inputValue) {
         for (int i = 0; i < 3; i++) {
             int intValue = inputValue.charAt(i) - 48;
-            try {
-                if (!(1 <= intValue && intValue <= 9)) {
-                    throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
-                }
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-                return false;
-            }
+            if (!(1 <= intValue && intValue <= 9)) return false;
         }
         return true;
     }
