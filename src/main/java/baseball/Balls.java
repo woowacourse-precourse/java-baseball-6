@@ -45,10 +45,10 @@ public class Balls {
     }
 
     public PlayResult compareAll(final Balls other) {
-        return new PlayResult(mapCompareResults(other));
+        return new PlayResult(mapResults(other));
     }
 
-    private List<CompareResult> mapCompareResults(final Balls other) {
+    private List<CompareResult> mapResults(final Balls other) {
         return balls.stream()
                 .map(other::compare)
                 .collect(Collectors.toList());
