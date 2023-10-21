@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.List;
-import java.util.Objects;
 
 public class BaseBallNumber {
     private List<Integer> baseballNumber;
@@ -10,10 +9,16 @@ public class BaseBallNumber {
         this.baseballNumber = baseballNumber;
     }
 
+    public boolean checkStrike(Integer userNumber, int index) {
+        Integer answerNumber = baseballNumber.get(index);
+        return answerNumber.equals(userNumber);
+    }
+
     public Integer getStrikeCount(BaseBallNumber userNumber) {
         Integer strikeCount = 0;
         for (int i = 0; i < 3; ++i) {
-            if (Objects.equals(baseballNumber.get(i), userNumber.baseballNumber.get(i))) {
+            Integer number = userNumber.baseballNumber.get(i);
+            if (checkStrike(number, i)) {
                 strikeCount++;
             }
         }
@@ -24,7 +29,7 @@ public class BaseBallNumber {
         Integer ballCount = 0;
         for (int i = 0; i < 3; ++i) {
             Integer number = userNumber.baseballNumber.get(i);
-            if (baseballNumber.contains(number) && !baseballNumber.get(i).equals(number)) {
+            if (baseballNumber.contains(number) && !checkStrike(number, i)) {
                 ballCount++;
             }
         }
