@@ -28,7 +28,7 @@ public class User {
         checkInputHasZero(input);
     }
 
-    private void addNumber(int num) {
+    private void addNumberToArray(int num) {
         if (user.contains(num)) {
             throw new IllegalArgumentException("This is already contained: " + num);
         }
@@ -47,7 +47,7 @@ public class User {
         checkValidInputNumber(input);
         String[] tokens = input.split("");
         for (String str : tokens) {
-            addNumber(Integer.parseInt(str));
+            addNumberToArray(Integer.parseInt(str));
         }
     }
 }
