@@ -23,11 +23,11 @@ class UserTest {
     void 자릿수가_3이아닌_숫자인_경우() throws IOException {
         // Arrange, Action
         User user = new User();
-        String result = user.readLine();
+        String result = user.consoleReadLine();
         // Assert
         assertThat(result).isInstanceOf(String.class);
         if(result.length() != 3){
-            assertThatThrownBy(() -> user.readLine())
+            assertThatThrownBy(() -> user.consoleReadLine())
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }

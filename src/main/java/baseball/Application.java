@@ -23,7 +23,7 @@ public class Application {
 
     static String startGame(User user, Computer computer, GameManager gameManager) {
         System.out.print("숫자를 입력해주세요 : ");
-        user.readLine();
+        user.consoleReadLine();
         return gameManager.doGame(computer.number, user.number);
 
     }
