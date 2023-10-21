@@ -1,9 +1,9 @@
 package baseball.config;
 
-import baseball.domain.Batter;
-import baseball.domain.BatterImpl;
-import baseball.domain.Pitcher;
-import baseball.domain.PitcherImpl;
+import baseball.domain.player.Batter;
+import baseball.domain.player.BatterImpl;
+import baseball.domain.player.Pitcher;
+import baseball.domain.player.PitcherImpl;
 import baseball.util.InputHandler;
 import baseball.util.InputHandlerImpl;
 import baseball.util.MessagePrinter;

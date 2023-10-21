@@ -1,5 +1,7 @@
-package baseball.domain;
+package baseball.domain.player;
 
+import baseball.domain.Baseball;
+import baseball.domain.BaseballGame;
 import baseball.dto.BattedBallsDTO;
 import baseball.dto.validator.BattedBallsValidator;
 import java.util.List;

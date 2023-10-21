@@ -1,6 +1,8 @@
 package baseball.domain;
 
 import baseball.config.AppConfig;
+import baseball.domain.player.Batter;
+import baseball.domain.player.Pitcher;
 import baseball.dto.BattedBallsDTO;
 import baseball.util.InputHandler;
 import baseball.util.MessagePrinter;
