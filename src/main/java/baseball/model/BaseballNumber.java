@@ -32,15 +32,11 @@ public class BaseballNumber {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof BaseballNumber)) {
+    public boolean equals(Object object) {
+        if (!(object instanceof BaseballNumber)) {
             return false;
         }
-        BaseballNumber baseballNumber = (BaseballNumber) o;
-        if (this.baseballNumber == baseballNumber.baseballNumber) {
-            return true;
-        }
-        return false;
+        return baseballNumber == ((BaseballNumber) object).baseballNumber;
     }
 
     @Override
