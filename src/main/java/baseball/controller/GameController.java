@@ -21,13 +21,17 @@ public class GameController {
 
     public void playBaseball() {
         printGameWelcome();
-        while (resumeNumber.isWantMoreGame()) {
+        while (isGameCanPlay()) {
             play();
         }
     }
 
     private static void printGameWelcome() {
         StartView.welcome();
+    }
+
+    private boolean isGameCanPlay() {
+        return resumeNumber.isWantMoreGame();
     }
 
     private void play() {
