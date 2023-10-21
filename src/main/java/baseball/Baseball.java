@@ -12,6 +12,10 @@ public class Baseball {
         userInputValidation = new UserInputValidation();
     }
 
+    public void run() {
+
+    }
+
     public void startGame() {
         System.out.println(OutputStatement.GAME_START_OUTPUT.getOutput());
         BaseBallNumber answerNumber = new BaseBallNumber(generateNumber());
