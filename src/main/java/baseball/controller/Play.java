@@ -11,9 +11,9 @@ public class Play {
     private final Score score;
     private final UserNumber userNumber;
 
-    public Play(Score score, UserNumber userNumber) {
-        this.score = score;
-        this.userNumber = userNumber;
+    public Play() {
+        this.score = new Score();
+        this.userNumber = new UserNumber();
     }
 
     public void play(ComputerNumber computerNumber) {
