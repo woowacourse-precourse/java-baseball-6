@@ -21,6 +21,24 @@ public class BaseBall {
             player.clear();
             System.out.print("숫자를 입력해주세요 : ");
             String stringPlayer = Console.readLine();
+
+            if(validationNumber(stringPlayer)) {
+                // 사용자가 입력한 숫자와 정답 비교
+            }
+            else{
+                throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
+            }
         }
     }
+
+    public boolean validationNumber(String stringPlayer) {
+        if(stringPlayer.length() != 3)
+            return false;
+        for(char c : stringPlayer.toCharArray()){
+            if(!Character.isDigit(c))
+                return false;
+        }
+        return true;
+    }
+
 }
