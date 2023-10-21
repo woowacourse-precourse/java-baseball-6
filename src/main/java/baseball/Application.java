@@ -25,11 +25,12 @@ public class Application {
         try {
             List<Integer> computerNumber = ComputerSelectNumber();
             System.out.println("컴퓨터 숫자 : " + computerNumber);
+            ExceptionList.validNumbers(computerNumber);
             while(true) {
 
                 List<Integer> playerNumber = PlayerSelectNumber();
+                ExceptionList.validNumbers(playerNumber);
                 CompareNumber(computerNumber, playerNumber);
-
 
                 if(strike==3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -37,7 +38,8 @@ public class Application {
                 }
             }
 
-            if(ReStart().equals("1")) {
+            if(ReStart() == 1) {
+                ExceptionList.validReStartInputNumber(ReStart());
                 GameStart();
             } else {
                 System.out.println("게임이 종료되었습니다.");
@@ -45,7 +47,6 @@ public class Application {
         } catch(IllegalArgumentException e) {
 
         }
-
     }
 
     public static String ReStart() {
@@ -55,7 +56,6 @@ public class Application {
     }
 
     public static List<Integer> ComputerSelectNumber() {
-        //컴퓨터가 서로 다른 3개의 숫자 생성
 
         List<Integer> computer = new ArrayList<>();
 
@@ -95,7 +95,6 @@ public class Application {
                 ball++;
             }
         }
-
         System.out.println(PrintResult());
     }
 
