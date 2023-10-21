@@ -5,7 +5,6 @@ import baseball.domain.status.BallStatus;
 import baseball.domain.game.result.PlayResult;
 import baseball.utils.Constants;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +14,7 @@ public class Balls {
 
     public Balls(List<Integer> numbers) {
         validateBalls(numbers);
-        this.balls = generateBalls(numbers);
+        this.balls = BallMapper.mapFrom(numbers);
     }
 
     private void validateBalls(List<Integer> numbers) {
@@ -34,20 +33,6 @@ public class Balls {
 
     private boolean hasDuplicatedNumber(List<Integer> numbers) {
         return numbers.size() != new HashSet<>(numbers).size();
-    }
-
-    private List<Ball> generateBalls(List<Integer> numbers) {
-        List<Ball> balls = new ArrayList<>();
-
-        for (int index = 0; index < numbers.size(); index++) {
-            balls.add(generateBall(numbers, index));
-        }
-
-        return balls;
-    }
-
-    private Ball generateBall(List<Integer> numbers, int index) {
-        return new Ball(numbers.get(index), index + 1);
     }
 
     public PlayResult play(Balls balls) {
