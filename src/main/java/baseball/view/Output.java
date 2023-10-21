@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.results.Results;
+
 public interface Output {
 
     void displayGameStartMessage();
@@ -9,5 +11,7 @@ public interface Output {
     void displayCongratulationMessage();
 
     void displayAskRestartMessage();
+
+    void displayResults(Results results);
 
 }

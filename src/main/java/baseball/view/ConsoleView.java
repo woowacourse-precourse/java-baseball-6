@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.balls.Balls;
+import baseball.results.Results;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleView implements View {
@@ -29,4 +30,11 @@ public class ConsoleView implements View {
     public void displayAskRestartMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
+    @Override
+    public void displayResults(Results results) {
+        String resultString = results.toString();
+        System.out.println(resultString);
+    }
+
 }
