@@ -38,18 +38,22 @@ public class Score {
     }
 
     private static boolean bothAreZero(int ball, int strike) {
-        return ball == 0 && strike == 0;
+        return isZero(ball) && isZero(strike);
     }
 
     private static boolean onlyBall(int ball, int strike) {
-        return ball != 0 && strike == 0;
+        return !isZero(ball) && isZero(strike);
     }
 
     private static boolean onlyStrike(int ball, int strike) {
-        return ball == 0 && strike != 0;
+        return isZero(ball) && !isZero(strike);
     }
 
     private boolean ballAndStrike(int ball, int strike) {
-        return ball != 0 && strike != 0;
+        return !isZero(ball) && !isZero(strike);
+    }
+
+    private static boolean isZero(int number) {
+        return number == 0;
     }
 }
