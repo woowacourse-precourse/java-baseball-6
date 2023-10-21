@@ -26,4 +26,12 @@ public class Judgement {
     public boolean isNothing() {
         return ball == 0 && strike == 0;
     }
+
+    public boolean hasBall() {
+        return ball > 0;
+    }
+
+    public boolean hasStrike() {
+        return strike > 0;
+    }
 }
