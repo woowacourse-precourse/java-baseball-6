@@ -12,7 +12,6 @@ public class PlayNumberBaseBallGame {
     private static Scanner scanner = new Scanner(System.in);
     private static int strike;
     private static int ball;
-    private static int nothing;
 
     public static void start(){
         System.out.println(Notification.START_GAME);
@@ -53,7 +52,6 @@ public class PlayNumberBaseBallGame {
             int currentNumber = playerAnswer.get(i);
             /* 현 상태에 대한 값을  */
             if(!answerList.contains(currentNumber)){
-                ++nothing;
                 continue;
             }
             if(answerList.get(i) == currentNumber){
@@ -79,6 +77,5 @@ public class PlayNumberBaseBallGame {
     private static void initStatus(){
         strike = 0;
         ball = 0;
-        nothing = 0;
     }
 }
