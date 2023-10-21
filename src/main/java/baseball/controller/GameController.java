@@ -21,5 +21,7 @@ public class GameController {
             gameService.judge();
             output.showGameResult(gameService.getJudgement());
         }
+
+        output.showGameOver();
     }
 }
