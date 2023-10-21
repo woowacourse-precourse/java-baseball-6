@@ -31,4 +31,19 @@ public class InputValidator {
             throw new IllegalArgumentException("입력 값의 범위(1~9)를 확인하세요.");
         }
     }
+
+    public void validateDuplicate(List<Integer> numberList) {
+        boolean isDuplicate = false;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < i; j++) {
+                if (numberList.get(i).equals(numberList.get(j))) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+        }
+        if (isDuplicate) {
+            throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
+        }
+    }
 }
