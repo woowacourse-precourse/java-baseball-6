@@ -24,16 +24,14 @@ public class Application {
         while (gameStatus) {
             Boolean compare = compare(computer, inputUserNumber());
             if (compare) {
-                System.out.println("retry");
-                System.out.println("regame?");
+                PrintPackage.printRetryMessage();
+                PrintPackage.printRegameMessage();
                 String re = Console.readLine();
 
                 if (re.equals("1")) {
                     gameStatus = Boolean.TRUE;
                     computer = extractRandomNumber();
-                    System.out.println("computer = " + computer);
                 } else if (re.equals("2")) {
-                    System.out.println("2222");
                     gameStatus = Boolean.FALSE;
                 } else {
                     System.out.println("error");
@@ -56,11 +54,9 @@ public class Application {
                 balls++;
             }
         }
-
         Status status = Status.getStatus(strikes, balls);
-        System.out.println(status.getResult());
         if (status.equals(Status.CORRECT)) {
-            System.out.println("correct");
+            PrintPackage.printResult(status.result);
         }
         return status == Status.CORRECT;
     }
@@ -94,10 +90,6 @@ public class Application {
             }
             return null;
         }
-
-        public String getResult() {
-            return result;
-        }
     }
 
     public class PrintPackage {
@@ -107,6 +99,18 @@ public class Application {
 
         public static void printRequestNumber() {
             System.out.print("숫자를 입력해주세요 : ");
+        }
+
+        public static void printRetryMessage() {
+            System.out.print("숫자를 입력해주세요 : ");
+        }
+
+        public static void printRegameMessage() {
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+
+        public static void printResult(String results) {
+            System.out.println(results);
         }
     }
 
