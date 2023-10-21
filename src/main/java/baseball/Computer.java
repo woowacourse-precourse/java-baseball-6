@@ -19,10 +19,8 @@ public class Computer {
         return LazyHolder.INSTANCE;
     }
 
-    public List<Integer> generateRandomNumber() {
-        List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LENGTH);
-        computerNumbers = uniqueNumbers;
-        return uniqueNumbers;
+    public void generateRandomNumber() {
+        computerNumbers = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LENGTH);
     }
 
     public int getBallCount(List<Integer> userNumbers) {
