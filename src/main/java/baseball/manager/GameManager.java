@@ -8,12 +8,11 @@ public class GameManager {
         // 게임 시작 메시지 출력
         System.out.println(GAME_START_MESSAGE);
 
-        // Game 실행? init? -> random 값 생성
+        // Game 초기화 init? -> random 값 생성
 
-        // 예측값 입력 메시지 출력, 입력 받기
+        // 게임 실행
 
-        // 입력받은 에측값을 사용해 Game에 있는 정답과 비교
+        // 게임이 종료되면 게임 재시작 여부 확인
 
-        // 비교받은 결과값 출력
     }
 }
