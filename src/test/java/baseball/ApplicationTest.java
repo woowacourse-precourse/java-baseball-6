@@ -10,9 +10,8 @@ import java.util.List;
 
 import static baseball.Application.BaseBallGame;
 import static baseball.Application.main;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 class ApplicationTest extends NsTest {
     private final InputStream standardIn = System.in;
@@ -27,6 +26,7 @@ class ApplicationTest extends NsTest {
     void Should_ReturnCorrectRandomNumbers_When_MakeRandomNumbers() {
         // given
         BaseBallGame baseBallGame = new BaseBallGame();
+        baseBallGame.setComputerNumbers();
 
         // when
         List<Integer> computerNumbers = baseBallGame.getComputerNumbers();
@@ -47,7 +47,7 @@ class ApplicationTest extends NsTest {
         BaseBallGame baseBallGame = new BaseBallGame();
 
         // when
-        Throwable thrown = catchThrowable(() -> baseBallGame.playGame());
+        Throwable thrown = catchThrowable(() -> baseBallGame.setUserNumbers());
         System.setIn(standardIn);
 
         // then
@@ -60,9 +60,9 @@ class ApplicationTest extends NsTest {
         // given
         System.setIn(new ByteArrayInputStream("124".getBytes()));
         BaseBallGame baseBallGame = new BaseBallGame();
+        baseBallGame.setUserNumbers();
 
         // when
-        baseBallGame.playGame();
         List<Integer> userNumbers = baseBallGame.getUserNumbers();
         System.setIn(standardIn);
 
