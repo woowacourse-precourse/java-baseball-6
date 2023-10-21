@@ -20,4 +20,17 @@ class BallTest {
         // then
         assertThat(result).isTrue();
     }
+
+    @DisplayName("다른 ball과 비교해서 볼인지 확인")
+    @Test
+    void isBall() {
+        // given
+        Ball ball = new Ball(1, 2);
+
+        // when
+        boolean result = ball.isBall(new Ball(1, 0));
+
+        // then
+        assertThat(result).isTrue();
+    }
 }
