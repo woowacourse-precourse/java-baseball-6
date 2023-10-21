@@ -1,13 +1,11 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.Arrays;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import java.util.regex.Pattern;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException {
         while(true){
             System.out.println("숫자 야구 게임을 시작합니다.");
             int[] answerA = new int[3];
@@ -26,6 +24,15 @@ public class Application {
             while (strike<3){
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = readLine();
+
+                String pattern = "[1-9]{3}";
+                if(!(Pattern.matches(pattern, input)
+                        && input.charAt(0)!=input.charAt(1)
+                        && input.charAt(1)!=input.charAt(2)
+                        && input.charAt(0)!=input.charAt(2)
+                )) throw new IllegalArgumentException("서로 다른 3자리의 수를 입력하세요.");
+
+
                 ball = 0;
                 strike = 0;
                 for(int i=0; i<3; i++){
