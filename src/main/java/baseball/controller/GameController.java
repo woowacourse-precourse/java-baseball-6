@@ -1,12 +1,15 @@
 package baseball.controller;
 
 import baseball.BaseballGame;
+import baseball.validation.InputValidation;
 import camp.nextstep.edu.missionutils.Console;
 
 /**
  * 유저의 입출력을 처리하는 컨트롤러
  */
 public class GameController {
+
+    private final InputValidation inputValidation = new InputValidation();
 
     public String getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
@@ -16,6 +19,7 @@ public class GameController {
     public void controlRestartOrExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int input = Integer.parseInt(Console.readLine());
+        inputValidation.validateOneOrTwo(input);
         if (input == 1) {
             BaseballGame baseballGame = new BaseballGame();
             baseballGame.run();
