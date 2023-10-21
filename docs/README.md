@@ -93,9 +93,6 @@
     + [x] 알맞는 오류 메세지 출력 후 ```IllegalArgumentException```을 발생 시키는지
     + [x] 재시작/종료 여부의 입력에 대한 유효성 검사를 올바르게 하는지
 + [x] playerInput(문자열) 이 playerNumbers(리스트형태)로 정상적으로 파싱이 되는지
-+ [ ] BaseBallController
-    + [ ] 정답인지 아닌지를 판단하는지
-    + [ ] 결과에 따른 출력을 정상적으로 하는지
 + [x] RandomNumberGenerator 에 대한 테스트
     + [x] 길이가 3인 값을 생성하는지
     + [x] 생성한 값 중에 중복되는 값이 존재하는지 
