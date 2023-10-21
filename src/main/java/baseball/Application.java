@@ -1,54 +1,94 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.*;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
-        int userflag = 1;
+        int try_again = 1;
+        boolean is_it_correct = false;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(userflag == 1){
-            List<Integer> userInputNum = new ArrayList<>();
+        while (try_again == 1) {
             List<Integer> computerNum = new ArrayList<>();
-            System.out.println("숫자를 입력해주세요 : ");
-            String userInputString = Console.readLine();
-            checkUserInput(userInputString);
-            getUserInput(userInputString, userInputNum);
             getComputerNum(computerNum);
+            while (!is_it_correct) {
+                List<Integer> userInputNum = new ArrayList<>();
+                System.out.print("숫자를 입력해주세요 : ");
+                String userInputString = Console.readLine();
+                checkUserInput(userInputString);
+                getUserInput(userInputString, userInputNum);
+                is_it_correct = compareUserWithCom(userInputNum, computerNum);
+            }
+            try_again = 2;
         }
     }
 
-    static void checkUserInput(String input) throws IllegalArgumentException{
+    static void checkUserInput(String input) throws IllegalArgumentException {
         String errorMessage = "[error] 올바르지 않은 입력입니다.";
         // Check the input size is 3.
-        if(input.length() != 3) throw new IllegalArgumentException(errorMessage);
+        if (input.length() != 3) {
+            throw new IllegalArgumentException(errorMessage);
+        }
         // Check each character is number.
-        for(int i = 0; i < input.length(); i++){
-            if(!(input.charAt(i) >= '0' && input.charAt(i) <= '9')) throw new IllegalArgumentException(errorMessage);
+        for (int i = 0; i < input.length(); i++) {
+            if (!(input.charAt(i) >= '0' && input.charAt(i) <= '9')) {
+                throw new IllegalArgumentException(errorMessage);
+            }
         }
         // Check number are different each other.
         char firstNum = input.charAt(0);
         char secondNum = input.charAt(1);
         char thirdNum = input.charAt(2);
-        if(firstNum == secondNum || firstNum == thirdNum || secondNum == thirdNum) throw new IllegalArgumentException(errorMessage);
-    }
-
-    static void getUserInput(String userInputString, List<Integer> userInputNum){
-        // Convert user input from a string to an integer ArrayList.
-        for(int i = 0; i < 3; i++){
-            userInputNum.add((int)(userInputString.charAt(i) - '0'));
+        if (firstNum == secondNum || firstNum == thirdNum || secondNum == thirdNum) {
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
-    static void getComputerNum(List<Integer> computerNum){
+    static void getUserInput(String userInputString, List<Integer> userInputNum) {
+        // Convert user input from a string to an integer ArrayList.
+        for (int i = 0; i < 3; i++) {
+            userInputNum.add(userInputString.charAt(i) - '0');
+        }
+    }
+
+    static void getComputerNum(List<Integer> computerNum) {
         // Generate the computer's numbers.
-        while (computerNum.size() < 3){
+        while (computerNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNum.contains(randomNumber)){
+            if (!computerNum.contains(randomNumber)) {
                 computerNum.add(randomNumber);
             }
         }
+    }
+
+    static boolean compareUserWithCom(List<Integer> userInputNum, List<Integer> computerNum) {
+        // Compare user input numbers with computer's numbers.
+        int ball_count = 0;
+        int strike_count = 0;
+        boolean is_it_correct = false;
+        for (int i = 0; i < 3; i++) {
+            if (Objects.equals(userInputNum.get(i), computerNum.get(i))) {
+                strike_count++;
+            } else {
+                ball_count++;
+            }
+        }
+        // Print out the game result.
+        if (ball_count == 0) {
+            System.out.printf("%d스트라이크\n", strike_count);
+        } else if (strike_count == 0) {
+            System.out.printf("%d볼\n", ball_count);
+        } else {
+            System.out.printf("%d볼 %d스트라이크\n", ball_count, strike_count);
+        }
+        // Check if strike count is 3
+        if (strike_count == 3) {
+            is_it_correct = true;
+        }
+        return is_it_correct;
     }
 }
 
