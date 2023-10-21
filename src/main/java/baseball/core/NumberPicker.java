@@ -21,7 +21,7 @@ public class NumberPicker {
         return pickedNumbers;
     }
 
-    public List<Integer> pickNumberByInput(String unprocessedNumber) {
+    public List<Integer> picConsoleNumber(String unprocessedNumber) {
         String[] stringBeforeNumber = unprocessedNumber.split("\\s+");
         validateInput(stringBeforeNumber);
         return Arrays.stream(stringBeforeNumber).map(Integer::parseInt)

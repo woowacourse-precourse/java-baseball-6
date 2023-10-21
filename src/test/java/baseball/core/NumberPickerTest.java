@@ -31,19 +31,19 @@ class NumberPickerTest {
         NumberPicker numberPicker = new NumberPicker();
 
         //when
-        List<Integer> results = numberPicker.pickNumberByInput("2 1 9");
+        List<Integer> results = numberPicker.picConsoleNumber("2 1 9");
 
         //then
         Assertions.assertThat(results).contains(2,1,9);
         Assertions.assertThat(results).size().isEqualTo(3);
 
-        Assertions.assertThatThrownBy(() -> numberPicker.pickNumberByInput("1 2 11"))
+        Assertions.assertThatThrownBy(() -> numberPicker.picConsoleNumber("1 2 11"))
                 .isInstanceOf(IllegalRangeException.class);
 
-        Assertions.assertThatThrownBy(() -> numberPicker.pickNumberByInput("1 2 9 4"))
+        Assertions.assertThatThrownBy(() -> numberPicker.picConsoleNumber("1 2 9 4"))
                 .isInstanceOf(IllegalCountException.class);
 
-        Assertions.assertThatThrownBy(() -> numberPicker.pickNumberByInput("1 2 9 ㄴ"))
+        Assertions.assertThatThrownBy(() -> numberPicker.picConsoleNumber("1 2 9 ㄴ"))
             .isInstanceOf(IllegalTypeException.class);
     }
 }
