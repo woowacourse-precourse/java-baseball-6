@@ -30,10 +30,10 @@ public class GameController {
             userNumber = new UserNumber(InputView.inputUserNumber());
             int[] result = getResultList();
             OutputView.printScoreMessage(result[0], result[1]);
-        } while (!isGameEnd());
+        } while (!isAnswer());
     }
 
-    private boolean isGameEnd() {
+    private boolean isAnswer() {
         if (numberComparator.isAllStrike(NUMBER_SIZE)) {
             OutputView.printEnd();
             return true;
