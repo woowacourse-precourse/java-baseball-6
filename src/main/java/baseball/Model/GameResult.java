@@ -9,5 +9,12 @@ public class GameResult {
         strikeCount = 0;
     }
 
+    public void incrementBall() {
+        ballCount++;
+    }
+
+    public void incrementStrike() {
+        strikeCount++;
+    }
 
 }
