@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.HashSet;
 import java.util.List;
 
@@ -14,18 +13,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 class ApplicationTest extends NsTest {
-    private final InputStream standardIn = System.in;
-
     @Test
     void makeBaseBallGameObject() {
-        BaseBallGame baseBallGame = new BaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame(System.in);
         assertThat(baseBallGame).isNotNull();
     }
 
     @Test
     void Should_ReturnCorrectRandomNumbers_When_MakeRandomNumbers() {
         // given
-        BaseBallGame baseBallGame = new BaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame(System.in);
         baseBallGame.setComputerNumbers();
 
         // when
@@ -43,12 +40,10 @@ class ApplicationTest extends NsTest {
     @Test
     void Should_ThrowIllegalArgumentException_When_EnterIncorrectUserNumbers() {
         // given
-        System.setIn(new ByteArrayInputStream("12*".getBytes()));
-        BaseBallGame baseBallGame = new BaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame(new ByteArrayInputStream("12*".getBytes()));
 
         // when
         Throwable thrown = catchThrowable(() -> baseBallGame.setUserNumbers());
-        System.setIn(standardIn);
 
         // then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
@@ -58,13 +53,11 @@ class ApplicationTest extends NsTest {
     @Test
     void Should_Success_When_EnterCorrectUserNumbers() {
         // given
-        System.setIn(new ByteArrayInputStream("124".getBytes()));
-
-        BaseBallGame baseBallGame = new BaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame(new ByteArrayInputStream("124".getBytes()));
         baseBallGame.setUserNumbers();
+
         // when
         List<Integer> userNumbers = baseBallGame.getUserNumbers();
-        System.setIn(standardIn);
 
         // then
         assertThat(userNumbers).usingRecursiveComparison().isEqualTo(List.of(1, 2, 4));
@@ -73,19 +66,40 @@ class ApplicationTest extends NsTest {
     @Test
     void Should_ReturnBallOrStrikeCount_When_EnterCorrectUserNumbers() {
         // given
-        System.setIn(new ByteArrayInputStream("124".getBytes()));
-
-        BaseBallGame baseBallGame = new BaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame(new ByteArrayInputStream("124".getBytes()));
         baseBallGame.setUserNumbers();
-        baseBallGame.setComputerNumbers();
 
         // when
+        baseBallGame.setComputerNumbers(List.of(5,6,7));
         baseBallGame.setCount();
-        System.setIn(standardIn);
-        int[] count = baseBallGame.getCount();
+        int[] count1 = baseBallGame.getCount();
+        String count1Result = baseBallGame.getResult();
+
+        baseBallGame.setComputerNumbers(List.of(2, 4, 1));
+        baseBallGame.setCount();
+        int[] count2 = baseBallGame.getCount();
+        String count2Result = baseBallGame.getResult();
+
+        baseBallGame.setComputerNumbers(List.of(1, 2, 4));
+        baseBallGame.setCount();
+        int[] count3 = baseBallGame.getCount();
+        String count3Result = baseBallGame.getResult();
+
+        baseBallGame.setComputerNumbers(List.of(4, 2, 1));
+        baseBallGame.setCount();
+        int[] count4 = baseBallGame.getCount();
+        String count4Result = baseBallGame.getResult();
+
 
         // then
-        assertThat(count).isNotNull();
+        assertThat(count1).isEqualTo(new int[]{0, 0});
+        assertThat(count1Result).isEqualTo("낫싱");
+        assertThat(count2).isEqualTo(new int[]{3, 0});
+        assertThat(count2Result).isEqualTo("3볼");
+        assertThat(count3).isEqualTo(new int[]{0, 3});
+        assertThat(count3Result).isEqualTo("3스트라이크");
+        assertThat(count4).isEqualTo(new int[]{2, 1});
+        assertThat(count4Result).isEqualTo("2볼 1스트라이크");
     }
 
 //    @Test
