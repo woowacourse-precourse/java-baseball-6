@@ -16,4 +16,8 @@ public class OutputView {
     public void printGameResult(GameResult result) {
         System.out.println(result.getResultScreen());
     }
+    public void printGameEnd() {
+        System.out.println(OutputMessage.GAME_END.getMessage());
+        System.out.println(OutputMessage.RETRY.getMessage());
+    }
 }
