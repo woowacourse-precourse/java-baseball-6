@@ -34,11 +34,10 @@ public class checkthreenum implements Checknum {
     }
     @Override
     public boolean checkIsOneToNine(String num){
-
         List<Integer> digit = Arrays.asList(1,2,3,4,5,6,7,8,9);
         for(char c : num.toCharArray()){
-            c -= '0';
-            if(!digit.contains(c))
+            int n = c - '0';
+            if(!digit.contains(n))
                 throw new IllegalArgumentException();
         }
         return true;
