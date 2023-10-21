@@ -27,11 +27,14 @@ public class Computer {
         return numbers;
     }
 
-    public void calculateBallCount(Player player) {
+    public GameResult calculateBallCount(Player player) {
+        GameResult gameResult = new GameResult();
         for (int position = 0; position < BallConstant.BALL_LENGTH.getValue(); position++) {
             int playerNumber = player.getByPosition(position);
             BallStatus ballStatus = decideBall(playerNumber, position);
+            gameResult.increaseCount(ballStatus);
         }
+        return gameResult;
     }
 
     private BallStatus decideBall(int playerNumber, int position) {
