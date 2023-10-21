@@ -20,26 +20,46 @@ public class Play {
         com.setCom();
     }
 
-    public void setInput(String msg) {
+    private void setInput(String msg) {
         System.out.print(msg);
         input = Console.readLine();
+    }
+
+    private void restartGame() {
+        user.clearUser();
+        com.clearCom();
+        com.setCom();
+        runGame();
+    }
+
+    private void finishGame() {
+        System.out.println("숫자 야구 게임을 종료합니다.");
+        user.clearUser();
+        com.clearCom();
+        Console.close();
+    }
+
+    private int checkInputNumber() {
+        int temp;
+        try {
+            temp = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Input is not Integer: " + input);
+        }
+        if (temp < 1 || temp > 2) {
+            throw new IllegalArgumentException("Invalid Number: " + temp);
+        }
+        return temp;
     }
 
     public void restartOrFinishGame() {
         while (true) {
             setInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-            if (Integer.parseInt(input) > 2 || Integer.parseInt(input) < 1) {
-                throw new IllegalArgumentException("Invalid input: " + input);
-            }
-            if (input.equals("1")) {
-                user.clearUser();
-                com.clearCom();
-                com.setCom();
-                runGame();
-            }
-            if (input.equals("2")) {
-                System.out.println("숫자 야구 게임을 종료합니다.");
-                Console.close();
+            int menu = checkInputNumber();
+            if (menu == 1) {
+                restartGame();
+            } else if (menu == 2) {
+                finishGame();
                 break;
             }
         }
@@ -47,12 +67,9 @@ public class Play {
 
     public void runGame() {
         while (true) {
-            // 사용자 입력
             setInput("숫자를 입력해주세요 : ");
             user.setUser(input);
-            // 스트라이크, 볼 개수 구하기
             rules.countBallAndStrikes(user.getUser(), com.getCom());
-            // 결과 출력
             if (rules.isThreeStrikes()) {
                 rules.printIfAnswer();
                 break;
