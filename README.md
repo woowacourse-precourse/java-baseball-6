@@ -135,3 +135,107 @@ public class ReplayableGameSystemConsoleView implements ReplayableGameSystemView
 `ReplayableGameSystemConsoleView`클래스는 게임 본질 외적인 시스템에 관련한 입출력을 콘솔을 통해 진행한다. 만약 GUI를 통해
 진행된다면 `ReplayableGameSystemGuiView`를
 구현하면 될 것이다.
+
+### TurnBasedGame 클래스
+
+게임 그 자체를 나타내는 `Game` 인터페이스를 먼저 추가하였다.
+
+```java
+public interface Game {
+
+    void init();
+
+    void play();
+
+}
+```
+
+여러가지 게임의 종류가 존재할 수 있다. 턴제 게임이라던지 실시간 게임, 또는 게임 오버가 존재하는 게임, 온라인 게임 등 여러 게임이 존재할 수 있다. 위의 예시를 기반으로 게임을 추상화 해보면 초기화와 플레이라는
+두가지 행동으로 객체를 추상화 시킬 수 있다.
+
+이제 해당 클래스를 구현하는 **게임오버 없는 턴제 게임** 클래스를 구현해보자.
+
+```java
+public class TurnBasedGame implements Game {
+
+    private final TurnBasedGameView turnBasedGameView;
+    private final TurnBasedGameService turnBasedGameService;
+
+    public TurnBasedGame(TurnBasedGameView turnBasedGameView, TurnBasedGameService turnBasedGameService) {
+        this.turnBasedGameView = turnBasedGameView;
+        this.turnBasedGameService = turnBasedGameService;
+    }
+
+    public void init() {
+        turnBasedGameService.init();
+    }
+
+    public void play() {
+        turnBasedGameView.printStart();
+
+        while (true) {
+            TurnResult turnResult = turnBasedGameService.playTurn(turnBasedGameView.requestTurnInput());
+            turnBasedGameView.printResult(turnResult);
+            if (turnResult.isGameCleared()) {
+                turnBasedGameView.printClear();
+                return;
+            }
+        }
+    }
+}
+```
+
+`TurnBasedGameService`와 `TurnBasedGameView`를 생성자로 받고 `play()`메서드에서 두 객체의 협력을 통해 게임을 진행시킨다.
+
+간단히 인풋을 받아 턴을 진행하고 결과를 계산하고 출력한다. 이를 반복하다가 게임이 클리어 되었다면 클리어 결과를 출력하고 게임 진행을 종료시킨다.
+
+```java
+public interface TurnBasedGameView {
+
+    void printStart();
+
+    TurnInput requestTurnInput();
+
+    void printClear();
+
+    void printResult(TurnResult turnResult);
+}
+```
+
+`TurnBasedGameView`는 **게임 오버 없는 턴제 게임**에서 필요한 입출력을 담당하는 클래스이다. 시작 뷰를 출력하는 `printStart()`, 턴 입력을 받는 `requestTurnInput()`,
+게임 클리어 뷰를 출력하는 `printClear()`, 턴 결과를 출력하는 `printResult()` 메서드로 구성되어있다.
+
+만약 GUI로 입출력을 받고 싶으면 `TurnBasedGameView`가 GUI에서 동작하도록 구현하면 되고 콘솔로 입출력을 받고 싶으면 입출력을 콘솔로 하도록 구현하면 될 것이다.
+
+```java
+public interface TurnBasedGameService {
+    void init();
+
+    TurnResult playTurn(TurnInput turnInput);
+}
+
+```
+
+`TurnBasedGameService`는 `playTurn()`메서드를 통해 턴의 입력을 받고 결과를 반환한다. 해당 클래스는 **게임 오버 없는 턴제 게임**이라는 점을 고려해 숫자 야구 말고도 **목숨이 무한인
+행맨 게임** 등을 구현하기만
+하고 `TurnBasedGame`의 생성자로 의존성을 주입시킨다면 코드의 변경 없이 여러 게임을 실행시킬 수 있을 것이다.
+
+이제 입출력 클래스를 살펴보자.
+
+```java
+public interface TurnInput {
+
+    TurnResult calculateResult(TurnBasedGameService gameService);
+
+}
+```
+
+`TurnInput`클래스의 `caclualteResult()`메서드는 `TurnBasedGameService`를 파라미터로 받아 결과를 계산한다.
+
+```java
+public interface TurnResult {
+    boolean isGameCleared();
+}
+```
+
+`TurnResult` 클래스는 결과를 저장하고 게임 클리어 여부를 판단하는 책임을 가지고 있다.
