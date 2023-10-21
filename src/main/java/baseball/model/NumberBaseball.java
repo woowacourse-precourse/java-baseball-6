@@ -28,8 +28,8 @@ public class NumberBaseball {
         for (String s : stringList) {
             compNumStr+=s;
         }
-        Integer intNum = Integer.parseInt(compNumStr);
-        System.out.println("intNum = " + intNum);
+//        Integer intNum = Integer.parseInt(compNumStr);
+//        System.out.println("intNum = " + intNum);
         return Integer.parseInt(compNumStr);
     }
 
