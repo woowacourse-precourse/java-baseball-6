@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import baseball.constants.constants;
+import baseball.numberGenerator.*;
+
 
 
 public class Application {
@@ -17,44 +19,6 @@ public class Application {
     }
 }
 class baseballGame{
-
-    private static List<Integer> getPlayerNumber(){ // 플레이어가 3개의 번호를 입력받아 Integer List로 반환하게 해주는 메서드
-        List<Integer> playerNumber = new ArrayList<>();
-        System.out.println(constants.REQUIRE_NUMBER); // 숫자를 입력해주세요
-        String playerNumberString = Console.readLine();
-
-        playerNumber = Arrays.stream(playerNumberString.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-
-        if (validatePlayerNumber(playerNumber)) {
-            throw new IllegalArgumentException("잘못된 입력값이에요.");
-        }
-        return playerNumber;
-    }
-
-    private static List<Integer> getCpuRandomNumber(){ // cpu가 랜덤으로 3개의 번호를 생성해서 Integer List로 반환하게 해주는 메서드
-        List<Integer> cpuNumber = new ArrayList<>();
-        while (cpuNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!cpuNumber.contains(randomNumber)) {
-                cpuNumber.add(randomNumber);
-            }
-        }
-        return cpuNumber;
-    }
-
-    private static boolean validatePlayerNumber(List<Integer> input){ // 플레이어가 입력한 값이 옳은지 검증하는 메서드
-        if (input.size() != constants.INPUT_LENGTH) {
-            return true; // 입력된 숫자가 3자리가 아닐 경우에 true 반환 --> 오류를 발생시키기 위함
-        }
-
-        if (input.get(0) == input.get(1) || input.get(0) == input.get(2) || input.get(1) == input.get(2)){
-            return true; // 입력된 값에 중복된 숫자가 있을 경우 true 반환 --> 오류를 발생시키기 위함
-        }
-
-        return false;
-    }
 
     private static boolean checkEndGame(int strikes){ // strikes 가 3 일 경우에 게임을 종료시키는 메서드
         if (strikes == constants.STRIKE_FOR_ENDGAME) {
@@ -123,10 +87,10 @@ class baseballGame{
         boolean gameAgainCheck = true;
 
         System.out.println(constants.START_MESSAGE);
-        List<Integer> cpuGameNumber = getCpuRandomNumber();
+        List<Integer> cpuGameNumber = numberGenerator.getCpuRandomNumber();
 
         while(gameAgainCheck){ // gameAgainCheck 가 false가 되년 경우엔 게임 종료
-            List<Integer> playerGameNumber= getPlayerNumber();
+            List<Integer> playerGameNumber= numberGenerator.getPlayerNumber();
             strikes = checkStrike(playerGameNumber,cpuGameNumber);
             balls = checkBall(playerGameNumber,cpuGameNumber);
             nothing = checkNothing(playerGameNumber,cpuGameNumber);
@@ -150,7 +114,7 @@ class baseballGame{
                 if (gameAgainCheck == false){
                     break;
                 }
-                cpuGameNumber = getCpuRandomNumber();
+                cpuGameNumber = numberGenerator.getCpuRandomNumber();
             }
         }
         System.out.println(constants.DECLARE_GAME_END);
