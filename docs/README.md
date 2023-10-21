@@ -8,8 +8,8 @@
     - [ ] 3자리의 숫자를 입력하지 않으면 IllegalArgumentException가 발생되고 종료한다.
     - [ ] 사용자의 각각의 숫자가 1부터 9로 이루어져 있지 않으면 IllegalArgumentException가 발생되고 종료한다.
     - [ ] 숫자를 중복해서 입력하면 IllegalArgumentException가 발생되고 종료한다.
-    - [ ] 숫자가 아닌 값이 입력되면 IllegalArgumentException가 발생되고 종료한다.
-    - [ ] 빈 값이 입력되면 IllegalArgumentException가 발생되고 종료한다.
+    - [x] 숫자가 아닌 값이 입력되면 IllegalArgumentException가 발생되고 종료한다.
+    - [x] 빈 값이 입력되면 IllegalArgumentException가 발생되고 종료한다.
 - [ ] 컴퓨터의 숫자와 사용자의 숫자를 비교해 볼과 스트라이크 갯수를 계산한다.
     - [ ] 같은 수가 다른 자리에 있으면 볼
     - [ ] 같은 수가 같은 자리에 있으면 스트라이크
