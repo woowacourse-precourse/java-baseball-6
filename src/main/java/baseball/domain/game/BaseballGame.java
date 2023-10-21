@@ -22,7 +22,7 @@ public class BaseballGame {
     }
 
     public PlayResult play(Balls userBalls) {
-        PlayResult playResult = computerBalls.play(userBalls);
+        PlayResult playResult = PlayResult.from(computerBalls.compare(userBalls));
 
         if (playResult.isThreeStrike()) {
             gameState = gameState.end();

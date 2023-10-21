@@ -46,7 +46,7 @@ class BallsTest {
     @DisplayName("컴퓨터의 공들과 플레이어의 공 하나를 비교하여 결과를 알 수 있다.")
     void compare(Ball user, BallStatus expected) {
         Balls computers = new Balls(List.of(1, 2, 3));
-        BallStatus actual = computers.compare(user);
+        BallStatus actual = computers.judgeBallStatusOf(user);
 
         assertThat(actual).isEqualTo(expected);
     }

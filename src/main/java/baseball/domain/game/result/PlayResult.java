@@ -1,33 +1,27 @@
 package baseball.domain.game.result;
 
 import baseball.domain.status.BallStatus;
+import baseball.utils.Constants;
 
+import java.util.Map;
 import java.util.Objects;
 
 public class PlayResult {
-    private static final int INITIAL_COUNT = 0;
     private static final int THREE = 3;
 
-    private int strike;
-    private int ball;
+    private final int strike;
+    private final int ball;
 
     public PlayResult(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
     }
 
-    public PlayResult() {
-        this(INITIAL_COUNT, INITIAL_COUNT);
-    }
+    public static PlayResult from(Map<BallStatus, Integer> result) {
+        int strike = result.getOrDefault(BallStatus.STRIKE, Constants.INITIAL_COUNT);
+        int ball = result.getOrDefault(BallStatus.BALL, Constants.INITIAL_COUNT);
 
-    public void record(BallStatus ballStatus) {
-        if (ballStatus.isStrike()) {
-            strike++;
-            return;
-        }
-        if (ballStatus.isBall()) {
-            ball++;
-        }
+        return new PlayResult(strike, ball);
     }
 
     public boolean isThreeStrike() {

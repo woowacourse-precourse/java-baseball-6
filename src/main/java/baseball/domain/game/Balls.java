@@ -2,12 +2,9 @@ package baseball.domain.game;
 
 import baseball.domain.ball.Ball;
 import baseball.domain.status.BallStatus;
-import baseball.domain.game.result.PlayResult;
 import baseball.utils.Constants;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Balls {
     private final List<Ball> balls;
@@ -35,18 +32,18 @@ public class Balls {
         return numbers.size() != new HashSet<>(numbers).size();
     }
 
-    public PlayResult play(Balls balls) {
-        PlayResult playResult = new PlayResult();
+    public Map<BallStatus, Integer> compare(Balls balls) {
+        Map<BallStatus, Integer> countMap = new EnumMap<>(BallStatus.class);
 
         for (Ball ball : this.balls) {
-            BallStatus ballStatus = balls.compare(ball);
-            playResult.record(ballStatus);
+            BallStatus ballStatus = balls.judgeBallStatusOf(ball);
+            countMap.put(ballStatus, countMap.getOrDefault(ballStatus, Constants.INITIAL_COUNT) + 1);
         }
 
-        return playResult;
+        return countMap;
     }
 
-    public BallStatus compare(Ball ball) {
+    public BallStatus judgeBallStatusOf(Ball ball) {
         return balls.stream()
                 .map(ball::compare)
                 .filter(BallStatus::isNotNothing)
