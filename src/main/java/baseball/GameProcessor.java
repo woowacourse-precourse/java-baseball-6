@@ -31,10 +31,8 @@ public class GameProcessor {
         return userNumberList;
     }
 
-    private static String calculateStrike(Data data) {
+    private static String calculateStrike(Data data, List<String> userNumberList, List<String> randomNumberList) {
         int strike = 0;
-        List<String> randomNumberList = generateRandomNumberList();
-        List<String> userNumberList = generateUserNumberList(data);
 
         for (int i = 0; i < DIGIT_SIZE; i++) {
             if (userNumberList.get(i).equals(randomNumberList.get(i))) {
@@ -44,10 +42,8 @@ public class GameProcessor {
         return String.valueOf(strike);
     }
 
-    private static String calculateBall(Data data) {
+    private static String calculateBall(Data data, List<String> userNumberList, List<String> randomNumberList) {
         int ball = 0;
-        List<String> randomNumberList = generateRandomNumberList();
-        List<String> userNumberList = generateUserNumberList(data);
 
         for (int i = 0; i < DIGIT_SIZE; i++) {
             for (int j = 0; j < DIGIT_SIZE; j++) {
