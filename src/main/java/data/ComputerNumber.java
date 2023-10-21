@@ -18,7 +18,7 @@ public final class ComputerNumber extends BaseballNumber {
         numbers.add(third);
     }
 
-    public ComputerNumber(ArrayList<Integer> sequence) throws IllegalArgumentException{
+    public ComputerNumber(List<Integer> sequence) throws IllegalArgumentException{
         if(sequence.size() != 3)
             throw new IllegalArgumentException();
         for(int number : sequence)
