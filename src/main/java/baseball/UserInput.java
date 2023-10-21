@@ -6,33 +6,40 @@ import java.util.List;
 import java.util.Set;
 
 public class UserInput {
+    public static final int MAX_DIGITS = 3;
+
     public static List<Integer> inputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
-        List<Integer> inputNumbers;
-        try {
-            inputNumbers = new ArrayList<>(List.of(Integer.parseInt(inputString)));
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-        validateInputNumbers(inputNumbers);
-        return inputNumbers;
-    }
-
-    private static void validateInputNumbers(List<Integer> numbers) {
-        validateSize(numbers);
-        validateNonzero(numbers);
+        validateLength(inputString);
+        List<Integer> numbers = convertStringToNumbers(inputString);
         validateDuplicate(numbers);
+        return numbers;
     }
 
-    private static void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 3) {
+    private static List<Integer> convertStringToNumbers(String string) {
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < MAX_DIGITS; i++) {
+            int digit = convertCharToInt(string.charAt(i));
+            numbers.add(digit);
+        }
+        return numbers;
+    }
+
+    private static int convertCharToInt(char ch) {
+        int digit = Character.getNumericValue(ch);
+        validateNonzeroDigit(digit);
+        return digit;
+    }
+
+    private static void validateLength(String string) {
+        if (string.length() != MAX_DIGITS) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void validateNonzero(List<Integer> numbers) {
-        if (numbers.contains(0)) {
+    private static void validateNonzeroDigit(int digit) {
+        if (digit < 0 || digit > 9) {
             throw new IllegalArgumentException();
         }
     }
