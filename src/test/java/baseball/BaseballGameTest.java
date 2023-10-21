@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.controller.BaseballController;
 import baseball.domain.CompareNumbers;
 import baseball.domain.Computer;
 import baseball.exception.InputException;

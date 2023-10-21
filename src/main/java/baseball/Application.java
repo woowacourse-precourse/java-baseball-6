@@ -9,6 +9,6 @@ public class Application {
         // TODO: 프로그램 구현
         do{
             BaseballController.startGame();
-        }while(InputView.inputRestartChoice());
+        }while(InputView.inputRestartDecision());
     }
 }

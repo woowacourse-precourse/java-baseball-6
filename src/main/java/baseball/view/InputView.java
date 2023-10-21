@@ -24,9 +24,11 @@ public class InputView {
 
         return playerNumbers;
     }
-    public static boolean inputRestartChoice(){
-        OutputView.restartAndGameOverPrint();
+    public static boolean inputRestartDecision(){
         String input = Console.readLine();
+        notNumericException(input);
+        gameDecisionException(input);
+
         if(input.equals("1")) return true;
         if(input.equals("2")) {
             OutputView.gameOverPrint();
