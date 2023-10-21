@@ -29,18 +29,20 @@ public class BaseballController {
     }
 
     private void play() {
-        while (true) {
-            GameNumber computer = new GameNumber(RandomNumbersGenerator.generate());
-            //TODO: 디버깅 용 출력문 지우기
-            System.out.println("computer = " + computer);
-            guess(computer);
-            Command command = readGameCommand();
-            if (Command.isRestart(command)) {
-                continue;
-            }
-            if (Command.isQuit(command)) {
-                break;
-            }
+        GameNumber computer = new GameNumber(RandomNumbersGenerator.generate());
+        //TODO: 디버깅 용 출력문 지우기
+        System.out.println("computer = " + computer);
+        guess(computer);
+        restart();
+    }
+
+    private void restart() {
+        Command command = readGameCommand();
+        if (Command.isQuit(command)) {
+            return;
+        }
+        if (Command.isRestart(command)) {
+            play();
         }
     }
 
