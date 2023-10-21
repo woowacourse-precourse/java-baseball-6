@@ -20,7 +20,7 @@
 
 - `keyNum`에서 인덱스 0자리의 값이 0이면 (값이 없다는 뜻) 종료 (IllegalArgumentException 발생)
 
-#### ⬜ returnResult()
+#### ✅ returnResult()
 
 - `keyNum` `answer` 배열을 순회/비교함
 

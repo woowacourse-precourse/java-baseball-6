@@ -2,13 +2,14 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 //import baseball.IsMatch;
 
 public class RunGame {
     static int[] answer = new int[3];
     static int[] keyNum = new int[3];
-
+    // 난수생성
     public void createRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -19,15 +20,12 @@ public class RunGame {
         }
         int idx = 0;
         for (int a: computer) {
-            System.out.println(a);
+//            System.out.println(a);
             answer[idx] = a;
             idx += 1;
         }
 
     }
-
-
-
     // 시작지점 inputNumbers, returnResult 두개 실행
     public static void run(){
         RunGame startGame = new RunGame();
@@ -48,7 +46,6 @@ public class RunGame {
             }
         }
     }
-
     // 게임시작 문구 출력 => IsMatch > accurateTest 실행
     public void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -59,12 +56,12 @@ public class RunGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
-
     // 숫자 입력받아 int 배열으로 전환하는 과정
     public boolean inputNumbers(){
         System.out.println("숫자를 입력해주세요 : ");
-        Scanner input = new Scanner(System.in);
-        int num = input.nextInt();
+//        Scanner input = new Scanner(System.in);
+        String numStr = Console.readLine();
+        int num = Integer.parseInt(numStr);
 //        System.out.println(num);
         int j = 100;
         for (int i = 0; i < 3; i++) {
