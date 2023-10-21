@@ -28,7 +28,7 @@ public class NumberBaseballController {
         createGameResultFromInputNum(inputView.readNum());
     }
 
-    public void createGameResultFromInputNum(int inputNum) throws IllegalArgumentException{
+    private void createGameResultFromInputNum(int inputNum) throws IllegalArgumentException{
         if (sameCheck(inputNum)) {
             return;
         }
