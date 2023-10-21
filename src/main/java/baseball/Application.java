@@ -35,18 +35,18 @@ public class Application {
                 //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
                 //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
                 if (!isInteger(inputNum)) {
-                    throw new IllegalArgumentException();
+                    throwInvalidValueException();
                 }
 
                 //검증: 만약 숫자의 자리수가 3보다 작으면 잘못 입력한 것이다.
                 //검증: 만약 숫자의 자리수가 3보다 크면 잘못 입력한 것이다.
                 int inputNumLen = inputNum.length();
                 if (inputNumLen < GameConstants.NUMBER_LENGTH) {
-                    throw new IllegalArgumentException();
+                    throwInvalidValueException();
                 }
 
                 if (inputNumLen > GameConstants.NUMBER_LENGTH) {
-                    throw new IllegalArgumentException();
+                    throwInvalidValueException();
                 }
 
                 //검증: 만약 같은 숫자가 2개 이상 있으면 잘못 입력한 것이다.
@@ -55,13 +55,13 @@ public class Application {
                     numSet.add(inputNum.charAt(i));
                 }
                 if (numSet.size() < GameConstants.NUMBER_LENGTH) {
-                    throw new IllegalArgumentException();
+                    throwInvalidValueException();
                 }
 
                 //검증: 만약 숫자의 각 자리가 1이상 9이하가 아니면 잘못 입력한 것
                 for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
                     if (!inputNum.matches("^[1-9]+$")) {
-                        throw new IllegalArgumentException();
+                        throwInvalidValueException();
                     }
                 }
 
@@ -69,7 +69,8 @@ public class Application {
                 List<Integer> inputNumList = parseIntegerList(inputNum);
                 System.out.println(inputNumList);
 
-                //컴퓨터는 사용자가 입력한 숫자와 뽑은 숫자를 비교하여 힌트를 판단, 출력　
+                //컴퓨터는 사용자가 입력한 숫자
+                // 와 뽑은 숫자를 비교하여 힌트를 판단, 출력　
                 //힌트는 스트라이크, 볼, 낫싱 3가지　
                 //같은 수가 같은 자리에 있으면 스트라이크　
                 int strike = 0;
@@ -127,7 +128,7 @@ public class Application {
                     //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
                     //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
                     if (!isInteger(regameNum)) {
-                        throw new IllegalArgumentException();
+                        throwInvalidValueException();
                     }
                     int parsedRegameNum = Integer.parseInt(regameNum);
 
@@ -140,11 +141,15 @@ public class Application {
                         return;
                     }
                     if (regameChoice == RegameChoice.OTHER_CHOICE) {
-                        throw new IllegalArgumentException();
+                        throwInvalidValueException();
                     }
                 }
             }
         }
+    }
+
+    public static void throwInvalidValueException() {
+        throw new IllegalArgumentException("유효하지 않은 값 예외: Custom error message");
     }
 
     //string이 Integer인지 아닌지 판단. TODO: IntegerUtil에 넣기
