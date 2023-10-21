@@ -48,6 +48,15 @@ public class Application {
         System.out.println("숫자를 입력해주세요");
         String input = Console.readLine();
         validation(input);
+
+        boolean rightAnswer = apply(goal, input);
+
+        if (rightAnswer) {
+            playGame(goal);
+        } else {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
     }
 
     private static String generateValue(){
@@ -82,6 +91,42 @@ public class Application {
             characters.add(c);
         }
         return characters.size() != input.length();
+    }
+
+    private static boolean apply(String goal, String input) {
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            char inputChar = input.charAt(i);
+            char goalChar = goal.charAt(i);
+
+            if (inputChar == goalChar) {
+                strikes++;
+            } else if (goal.contains(String.valueOf(inputChar))) {
+                balls++;
+            }
+        }
+
+        if (strikes == input.length()) {
+            System.out.println(strikes + "스트라이크");
+            return false;
+        }
+
+        if (balls > 0 && input.length() >= balls && strikes == 0) {
+            System.out.println(balls + "볼 ");
+        } else if (balls > 0 && input.length() >= balls && strikes > 0) {
+            System.out.print(balls + "볼 ");
+        }
+
+        if (strikes > 0) {
+            System.out.println(strikes + "스트라이크");
+        }
+        if (strikes == 0 && balls == 0) {
+            System.out.println("낫싱");
+        }
+
+        return true;
     }
 
 }
