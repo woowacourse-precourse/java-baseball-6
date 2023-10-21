@@ -52,10 +52,14 @@ public class Game {
 
         for (int i = 0; i < 3; i++) {
             Integer number = inputList.get(i);
-            if (isStrike(number, i)) strikeCount++;
+            if (isStrike(number, i)) {
+                strikeCount++;
+            }
         }
 
-        if (strikeCount == 3) isGameEnd = true;
+        if (strikeCount == 3) {
+            isGameEnd = true;
+        }
 
         return strikeCount;
     }
@@ -81,11 +85,12 @@ public class Game {
 
         for (int i = 0; i < 3; i++) {
             Integer number = inputList.get(i);
-            if (isBall(number, i)) ballCount++;
+            if (isBall(number, i)) {
+                ballCount++;
+            }
         }
         return ballCount;
     }
-
 
 
     private List<Integer> stringToIntegerList(String str) {
