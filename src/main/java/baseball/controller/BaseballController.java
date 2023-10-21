@@ -18,6 +18,6 @@ public class BaseballController {
         System.out.println(player.getPlayerNumber());
         referee.duplicateNumbers(computer.getComputerNumber(), player.getPlayerNumber());
         System.out.println("스트라이크 : "+ referee.getStrike()+" 볼 : "+ referee.getBall());
-
+        OutputView.detailMessage(referee.getStrike(), referee.getBall());
     }
 }
