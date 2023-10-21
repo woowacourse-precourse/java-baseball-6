@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.ReplayCommand;
+import baseball.domain.ReplayType;
 import baseball.domain.UserNumbers;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -34,11 +34,10 @@ public class InputView {
         return new UserNumbers(convertUserInput(input));
     }
 
-    public static boolean readShouldReplay() {
+    public static ReplayType readShouldReplay() {
         System.out.println(REPLAY_INPUT_MESSAGE);
         String input = Console.readLine();
-        ReplayCommand command = new ReplayCommand(parseInt(input));
-        return command.shouldReplay();
+        return ReplayType.findTypeByInput(input);
     }
 
 }

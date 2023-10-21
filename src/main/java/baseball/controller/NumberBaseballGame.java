@@ -27,7 +27,8 @@ public class NumberBaseballGame {
         while (shouldPlay) {
             gameStart();
             OutputView.printEndMessage();
-            shouldPlay = InputView.readShouldReplay();
+            ReplayType replayType = InputView.readShouldReplay();
+            shouldPlay = replayType.isReplay();
         }
     }
 
