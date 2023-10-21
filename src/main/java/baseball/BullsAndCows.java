@@ -4,9 +4,16 @@ import static baseball.Constants.ALERT_END_CHOICE;
 import static baseball.Constants.ALERT_INPUT;
 import static baseball.Constants.ALERT_START;
 
+import baseball.end.InputChoice;
+import baseball.end.Restart;
+import baseball.game.BallAndStrike;
+import baseball.game.Mention;
+import baseball.game.Result;
+import baseball.start.Answer;
+import baseball.start.InputNumbers;
 import camp.nextstep.edu.missionutils.Console;
 
-public class Baseball {
+public class BullsAndCows {
     private Answer answer;
     private InputNumbers inputNumbers;
     private BallAndStrike ballAndStrike;
@@ -14,7 +21,7 @@ public class Baseball {
     private InputChoice inputChoice;
     private Restart restart;
 
-    public Baseball() {
+    public BullsAndCows() {
         answer = new Answer();
         inputNumbers = new InputNumbers();
         result = Result.DEFAULT;
@@ -68,7 +75,7 @@ public class Baseball {
     }
 
     private void readInputNumbers() {
-        inputNumbers.readInput();
+        inputNumbers.readInputNumbers();
     }
 
     private void getBallAndStrike() {
@@ -94,7 +101,7 @@ public class Baseball {
     }
 
     private void readInputChoice() {
-        inputChoice.readInput();
+        inputChoice.readInputChoices();
     }
 
     private void decideEndOrNot() {

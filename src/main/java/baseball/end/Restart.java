@@ -1,4 +1,4 @@
-package baseball;
+package baseball.end;
 
 public class Restart {
     private Boolean restart;

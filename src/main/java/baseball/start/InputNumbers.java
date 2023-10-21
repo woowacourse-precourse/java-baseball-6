@@ -1,4 +1,4 @@
-package baseball;
+package baseball.start;
 
 
 import static baseball.Constants.NUMBER_LENGTH;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class InputNumbers extends Input {
+public class InputNumbers {
 
     private List<Integer> inputNumbers;
 
@@ -16,18 +16,18 @@ public class InputNumbers extends Input {
         return this.inputNumbers;
     }
 
-    @Override
-    public void readInput() {
+    public void readInputNumbers() {
         String readLine = Console.readLine();
 
         if (isNotValidLength(readLine)) {
-            throwIllegalArgumentException();
+            throw new IllegalArgumentException();
         }
         if (isNotNumber(readLine)) {
-            throwIllegalArgumentException();
+            throw new IllegalArgumentException();
+
         }
         if (isNotDifferentNumber(readLine)) {
-            throwIllegalArgumentException();
+            throw new IllegalArgumentException();
         }
         StringToIntegerList(readLine);
     }

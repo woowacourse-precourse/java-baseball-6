@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 public enum Result {
     ANSWER, NOTHING, PART, DEFAULT;
