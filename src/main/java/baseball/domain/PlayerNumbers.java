@@ -34,4 +34,20 @@ public class PlayerNumbers {
         return numbers.stream()
                 .anyMatch(number -> !(1 <= number && number <= 9));
     }
+
+    public void compareForBallCount(int computerNumber, int indexOfComputerNumber) {
+        for (int indexOfPlayerNumbers = 0; indexOfPlayerNumbers < numbers.size(); indexOfPlayerNumbers++) {
+            if (numbers.get(indexOfPlayerNumbers) == computerNumber) {
+                ballCount(indexOfComputerNumber, indexOfPlayerNumbers);
+            }
+        }
+    }
+
+    private void ballCount(int indexOfComputerNumber, int indexOfPlayerNumbers) {
+        if (indexOfPlayerNumbers == indexOfComputerNumber) {
+            BallCounter.countStrike();
+            return;
+        }
+        BallCounter.countBall();
+    }
 }
