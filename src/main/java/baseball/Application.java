@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -23,6 +24,19 @@ public class Application {
         String inputValue = readLine();
 
         //사용자가 잘못된 값을 입력한 경우 오류 던지기
+        //문자열 문자 배열로 변경
+        char[] inputNum = inputValue.toCharArray();
+        //스트라이크 판단했는지 보는 배열
+        int[] visitedOfStrike = new int[3];
+        //볼 판단했는지 보는 배열
+        int[] visitedOfBall = new int[3];
+
+        //스트라이크 판단하는 로직
+        for(int i=0;i<3;i++){
+            if (answer.get(i) == Integer.parseInt(String.valueOf(inputNum[i]))){
+                visitedOfStrike[i] = 1;
+            }
+        }
 
         }
 
