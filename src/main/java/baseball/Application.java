@@ -17,6 +17,10 @@ public class Application {
         }
     }
 
+    public static void displayGameStartMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
     public static void playGame() {
         boolean stateRepeatGuess = true;
         List<Integer> computerNumbers = generateComputerNumbers();
@@ -47,10 +51,6 @@ public class Application {
         throw new IllegalArgumentException("1 또는 2를 입력하세요.");
     }
 
-    public static void displayGameStartMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
     public static List<Integer> generateComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
 
@@ -65,12 +65,12 @@ public class Application {
     }
 
     public static List<Integer> getPlayerGuessNumbers() {
-        String playerGuess = getPlayerGuess();
+        String playerGuess = askPlayerGuess();
         validatePlayerGuess(playerGuess);
         return convertStringToIntList(playerGuess);
     }
 
-    public static String getPlayerGuess() {
+    public static String askPlayerGuess() {
         System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
@@ -89,10 +89,6 @@ public class Application {
         return inputString.length() == 3;
     }
 
-    public static boolean isBetween1and9(final char inputChar) {
-        return inputChar >= '1' && inputChar <= '9';
-    }
-
     public static boolean isEachDigitBetween1and9(final String inputString) {
         for (int i = 0; i < inputString.length(); i++) {
             if (!isBetween1and9(inputString.charAt(i))) {
@@ -100,6 +96,10 @@ public class Application {
             }
         }
         return true;
+    }
+
+    public static boolean isBetween1and9(final char inputChar) {
+        return inputChar >= '1' && inputChar <= '9';
     }
 
     public static boolean isEachDigitDuplicated(final String inputDigits) {
