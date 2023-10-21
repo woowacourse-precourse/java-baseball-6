@@ -73,5 +73,15 @@ public class Application {
         }
     }
 
+    //String to List<Integer> TODO: IntegerListConverter 따로 둬서 IntegerListConverter.parseIntegerList
+    public static List<Integer> parseIntegerList(String string){
+        List<Integer> integerList = new ArrayList<>();
+
+        for (char character : string.toCharArray()){
+            integerList.add(parseInteger(character));
+        }
+
+        return integerList;
+    }
 
 }
