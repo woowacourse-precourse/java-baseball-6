@@ -6,7 +6,7 @@ import baseball.console.BaseBallConstant;
 
 public class InputValidation {
 
-	public boolean isGameInputValid(String input) {
+	public boolean isValidGameInput(String input) {
 		final int LENGTH_STANDARD = 3;
 		if (input == null || input.length() != LENGTH_STANDARD) {
 			return false;
@@ -20,7 +20,7 @@ public class InputValidation {
 		return true;
 	}
 
-	public boolean isEndInputValid(String input) {
+	public boolean isValidEndInput(String input) {
 		final int LENGTH_STANDARD = 1;
 		if (input == null || input.length() != LENGTH_STANDARD) {
 			return false;

@@ -13,76 +13,76 @@ class InputValidationTest {
 
 	@Test
 	void gameInputNull() {
-		assertFalse(inputValidation.isGameInputValid(null));
+		assertFalse(inputValidation.isValidGameInput(null));
 	}
 
 	@Test
 	void gameInputShort() {
-		assertFalse(inputValidation.isGameInputValid("12"));
+		assertFalse(inputValidation.isValidGameInput("12"));
 	}
 
 	@Test
 	void gameInputLong() {
-		assertFalse(inputValidation.isGameInputValid("1234"));
+		assertFalse(inputValidation.isValidGameInput("1234"));
 	}
 
 	@Test
 	void gameInputMultiple() {
-		assertFalse(inputValidation.isGameInputValid("121"));
+		assertFalse(inputValidation.isValidGameInput("121"));
 	}
 
 	@Test
 	void gameInputNotNum() {
-		assertFalse(inputValidation.isGameInputValid("a35"));
+		assertFalse(inputValidation.isValidGameInput("a35"));
 	}
 
 	@Test
 	void gameInputOutOfRange() {
-		assertFalse(inputValidation.isGameInputValid("021"));
+		assertFalse(inputValidation.isValidGameInput("021"));
 	}
 
 	@Test
 	void gameInputNegative() {
-		assertFalse(inputValidation.isGameInputValid("-34"));
+		assertFalse(inputValidation.isValidGameInput("-34"));
 	}
 
 	@Test
 	void gameInputValid() {
-		assertTrue(inputValidation.isGameInputValid("123"));
+		assertTrue(inputValidation.isValidGameInput("123"));
 	}
 
 	@Test
 	void endInputNull() {
-		assertFalse(inputValidation.isEndInputValid(null));
+		assertFalse(inputValidation.isValidEndInput(null));
 	}
 
 	@Test
 	void endInputShort() {
-		assertFalse(inputValidation.isEndInputValid(""));
+		assertFalse(inputValidation.isValidEndInput(""));
 	}
 
 	@Test
 	void endInputLong() {
-		assertFalse(inputValidation.isEndInputValid("12"));
+		assertFalse(inputValidation.isValidEndInput("12"));
 	}
 
 	@Test
 	void endInputNotNum() {
-		assertFalse(inputValidation.isEndInputValid("a"));
+		assertFalse(inputValidation.isValidEndInput("a"));
 	}
 
 	@Test
 	void endInputOutOfRange() {
-		assertFalse(inputValidation.isEndInputValid("3"));
+		assertFalse(inputValidation.isValidEndInput("3"));
 	}
 
 	@Test
 	void endInputNegative() {
-		assertFalse(inputValidation.isEndInputValid("-1"));
+		assertFalse(inputValidation.isValidEndInput("-1"));
 	}
 
 	@Test
 	void endInputValid() {
-		assertTrue(inputValidation.isEndInputValid("1"));
+		assertTrue(inputValidation.isValidEndInput("1"));
 	}
 }
