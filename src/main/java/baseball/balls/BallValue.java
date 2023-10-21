@@ -1,5 +1,6 @@
 package baseball.balls;
 
+import baseball.validators.BallValueValidators;
 import java.util.Objects;
 
 public class BallValue {
@@ -10,14 +11,8 @@ public class BallValue {
     private final int value;
 
     public BallValue(int value) {
-        validateValueRange(value);
+        BallValueValidators.validateValueRange(value);
         this.value = value;
-    }
-
-    private void validateValueRange(int value) {
-        if (value < MIN_VALUE || value > MAX_VALUE) {
-            throw new IllegalArgumentException("공의 값이 유효하지 않은 값입니다.");
-        }
     }
 
     @Override

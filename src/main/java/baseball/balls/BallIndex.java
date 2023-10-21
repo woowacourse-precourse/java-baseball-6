@@ -1,5 +1,6 @@
 package baseball.balls;
 
+import baseball.validators.BallIndexValidators;
 import java.util.Objects;
 
 public class BallIndex {
@@ -7,14 +8,8 @@ public class BallIndex {
     private final int index;
 
     public BallIndex(int index) {
-        validateIndexRange(index);
+        BallIndexValidators.validateIndexRange(index);
         this.index = index;
-    }
-
-    private void validateIndexRange(int value) {
-        if (value < 0 || value >= Balls.BALL_COUNT) {
-            throw new IllegalArgumentException("공의 위치값이 유효하지 않은 값입니다.");
-        }
     }
 
     @Override
