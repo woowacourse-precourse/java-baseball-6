@@ -63,7 +63,7 @@ public class GameController {
         printGameJudgement();
     }
 
-    private void prepareGameJudgementWithComputer(int computerNumber) {
+    private void prepareGameJudgementWithComputer(final int computerNumber) {
         umpire.prepareJudgement(computerNumber, receiveUserNumber());
     }
 
