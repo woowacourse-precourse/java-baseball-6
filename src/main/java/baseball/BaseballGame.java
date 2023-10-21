@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class BaseballGame {
 
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Constants.OUTPUT_GAME_START);
         run();
     }
 
@@ -14,7 +14,7 @@ public class BaseballGame {
         System.out.println(computer.getNumbers());
 
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(Constants.INPUT_USER_NUMBER);
             String inputNumber = Console.readLine();
             // TODO: inputNumber 예외 처리
 
@@ -28,16 +28,16 @@ public class BaseballGame {
             }
         }
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(Constants.OUTPUT_GAME_END);
         exist();
     }
 
     public void exist() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(Constants.INPUT_MODE_RESTART_OR_END);
         int inputMode = Integer.parseInt(Console.readLine());
         // TODO: inputMode 예외 처리
 
-        if (inputMode == 1) {
+        if (inputMode == Constants.MODE_RESTART) {
             run();  // 재시작
         }  // 완전히 종료
     }
