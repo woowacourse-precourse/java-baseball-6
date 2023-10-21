@@ -10,7 +10,6 @@ public class BaseballGame {
     private static final String REQUIRED_ONE_OR_TWO = "입력 값은 1또는 2여야 합니다.";
     private static final String REQUIRED_THREE_DIGITS = "입력 값은 3자리 숫자여야 합니다.";
     private static final int MAX_STRIKE = 3;
-
     private final BaseballGameLogic baseballGameLogic;
     private final BaseballGameView baseballGameView;
 
@@ -20,13 +19,13 @@ public class BaseballGame {
     }
 
     public void start() {
-        boolean isRestart = true;
+        boolean keepPlaying = true;
 
-        while (isRestart) {
+        while (keepPlaying) {
             baseballGameView.printStartMessage();
             playUntilThreeStrikes(baseballGameLogic.getThreeDigitNonZero());
             baseballGameView.printRestartMessage();
-            isRestart = askForRestartOrQuit();
+            keepPlaying = askForRestartOrQuit();
         }
     }
 
@@ -36,10 +35,9 @@ public class BaseballGame {
         while (!isThreeStrike){
             baseballGameView.printInputGuideMessage();
 
-            String threeDigitsInput = getThreeDigitsInput();
-            List<Integer> playerNumbers = baseballGameLogic.changeStringToDigit(threeDigitsInput);
+            List<Integer> playerInputNumber = baseballGameLogic.changeStringToDigit(inputThreeDigits());
 
-            BallCount ballCount = baseballGameLogic.checkBallCount(randomThreeDigits, playerNumbers);
+            BallCount ballCount = baseballGameLogic.checkBallCount(randomThreeDigits, playerInputNumber);
             baseballGameView.printBallCount(ballCount);
 
             if(ballCount.getStrike() == MAX_STRIKE){
@@ -49,7 +47,7 @@ public class BaseballGame {
         }
     }
 
-    private String getThreeDigitsInput(){
+    private String inputThreeDigits(){
         String threeDigitsInput = Console.readLine();
         validateThreeDigits(threeDigitsInput);
         return threeDigitsInput;
@@ -61,7 +59,11 @@ public class BaseballGame {
         }
     }
 
-    private String getRestartInput(){
+    private boolean askForRestartOrQuit(){
+        return inputRestartOrQuit().equals(RESTART);
+    }
+
+    private String inputRestartOrQuit(){
         String input = Console.readLine();
         validateIsOneOrTwo(input);
         return input;
@@ -71,10 +73,5 @@ public class BaseballGame {
         if(input.equals(RESTART) || input.equals(QUIT))
             return;
         throw new IllegalArgumentException(REQUIRED_ONE_OR_TWO);
-    }
-
-    private boolean askForRestartOrQuit(){
-        String restartInputNumber = getRestartInput();
-        return !restartInputNumber.equals(QUIT);
     }
 }
