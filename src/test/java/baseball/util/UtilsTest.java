@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UtilsTest {
@@ -21,5 +22,16 @@ class UtilsTest {
 
         // then
         assertEquals(answerValue, userNumber);
+    }
+
+    @DisplayName("1,2 가 아닌 숫자가 들어왔을 경우 예외를 발생시킨다.")
+    @Test
+    void validateEndNumber() {
+        // given
+        int number = 3;
+
+        // when, then
+        assertThatThrownBy(() -> Utils.validateEndNumber(number))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
