@@ -21,7 +21,7 @@ public class ComputerController {
             int playerNumber = inputView.print_input_message();
             gameState = compareNumber(computerNumber, playerNumber);
         }
-
+        outputView.print_end();
     }
 
     private boolean compareNumber(int computerNumber, int playerNumber) {
