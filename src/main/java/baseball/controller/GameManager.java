@@ -18,6 +18,10 @@ public class GameManager {
         BallNumber playerNumber = inputPlayerNumber();
         ResultCalculator resultCalculator = new ResultCalculator(computerNumber);
         Result roundResult = resultCalculator.calculateResult(playerNumber);
+        endRound(roundResult);
+    }
+
+    private void endRound(Result roundResult) {
         if (roundResult.isStrikesAllOfBalls()) {
             choiceNewGameOrGameOver();
             return;
