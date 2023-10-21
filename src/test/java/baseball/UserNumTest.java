@@ -8,18 +8,18 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class UserNumTest {
-    @DisplayName("컴퓨터 3자리 수 생성 테스트")
+    @DisplayName("사용지 3자리 수 입력 테스트")
     @Test
     public void userNumTest() {
         // given
-        UserNum userNum = new UserNum();
-        String number = "123";
+        UserNum user = new UserNum();
+        String userNum = "123";
 
         // when
-        List<String> userNumList = userNum.userNum();
+        List<String> userNumList = user.userNum(userNum);
 
         // then
         System.out.println(userNumList);
-        ssertThat(userNumList.size()).isEqualTo(3);
+        assertThat(userNumList.size()).isEqualTo(3);
     }
 }
