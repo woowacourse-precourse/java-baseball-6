@@ -3,12 +3,12 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class RandomNumberCreateUtil {
-    private RandomNumberCreateUtil() {
-        throw new IllegalStateException("RandomNumberCreateUtil class Error");
-    }
+public final class RandomNumberCreateUtil {
+
+    private RandomNumberCreateUtil() {}
 
     public static List<Integer> createBaseballNumbers(){
         List<Integer> baseballNumbers = new ArrayList<>();
@@ -19,7 +19,7 @@ public class RandomNumberCreateUtil {
                 baseballNumbers.add(randomNumber);
             }
         }
-        return baseballNumbers;
+        return Collections.unmodifiableList(baseballNumbers);
     }
 
 }

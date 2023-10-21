@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.Collections;
 import java.util.List;
 
 public class CheckBallAndStrike {
@@ -19,8 +18,8 @@ public class CheckBallAndStrike {
     }
 
     public void updateBallAndStrike(Player player){
-        this.ball = (int)player.compareBallCount(Collections.unmodifiableList(baseballNumbers));
-        this.strike = (int)player.compareStrikeCount(Collections.unmodifiableList(baseballNumbers));
+        this.ball = (int)player.compareBallCount(baseballNumbers);
+        this.strike = (int)player.compareStrikeCount(baseballNumbers);
     }
 
     public String statusBallAndStrike(){
