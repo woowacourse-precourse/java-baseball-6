@@ -5,6 +5,12 @@ public class Answer {
     private int secondNumber;
     private int thirdNumber;
 
+    public Answer(int firstNumber, int secondNumber, int thirdNumber) {
+        this.firstNumber = firstNumber;
+        this.secondNumber = secondNumber;
+        this.thirdNumber = thirdNumber;
+    }
+
     public int getFirstNumber() {
         return firstNumber;
     }
