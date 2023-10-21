@@ -10,20 +10,22 @@ public class PrintManager {
         System.out.println("숫자를 입력해주세요.");
     }
 
+    //TODO 리펙토링 고민해보기
     public void printResult(int strike, int ball) {
 
         if (ball == 0 && strike ==0) {
             System.out.println("낫싱");
         }
 
-        if (ball == 0) {
+        if (ball == 0 && strike != 0) {
             System.out.println(strike + "스트라이크");
         }
 
-        if (strike == 0) {
+        if (ball != 0 && strike == 0) {
             System.out.println(ball + "볼");
         }
 
+        if (ball != 0 && strike != 0)
         System.out.println(ball + "볼 " + strike + "스트라이크");
 
     }
