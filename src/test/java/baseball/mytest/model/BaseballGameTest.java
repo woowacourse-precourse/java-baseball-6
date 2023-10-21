@@ -8,7 +8,7 @@ public class BaseballGameTest {
     BaseballGame baseballGame = new BaseballGame();
 
     @Test
-    void 숫자_1_입력시_재시작_2_입력시_종료() {
+    void 숫자_1_입력시_재시작_2_입력시_종료_검증() {
         String input = "1";
         String input2 = "2";
 
