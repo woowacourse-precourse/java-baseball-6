@@ -38,8 +38,11 @@
     - [x] 입력으로 들어온 값이 Enum에 포함된지 체크
     - [x] 재시작 커멘드인지 여부 체크
 
-- `Input`
+- `InputView`
     - [x] 사용자로 부터 입력을 받는다.
+
+- `OutputView`
+    - [x] 알맞은 형식을 출력한다.
 
 - `InputValidation`
     - [x] 입력에 대한 예외를 처리
