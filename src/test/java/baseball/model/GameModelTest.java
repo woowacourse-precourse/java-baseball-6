@@ -88,4 +88,16 @@ class GameModelTest {
             gameModel.validateUserInput(input);
         });
     }
+
+    @DisplayName("사용자가 중복된 숫자의 값을 입력할 경우 예외가 발생한다.")
+    @Test
+    public void inputDuplicateNumber() {
+        //when
+        String input = "112";
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> {
+            gameModel.validateUserInput(input);
+        });
+    }
 }
