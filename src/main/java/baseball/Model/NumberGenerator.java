@@ -9,10 +9,9 @@ public class NumberGenerator {
     /**
      * Model은 Controller와 View에 관련된 코드가 있으면 안된다!!!!!!
      */
-    private static final int BASEBALL_NUM_SIZE = 3;
-    public List<Integer> generatorComputerNumber(){
+    public List<Integer> generatorComputerNumber(int baseballNumSize){
         List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < BASEBALL_NUM_SIZE) {
+        while (computerNumber.size() < baseballNumSize) {
             int num = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(num)) {
                 computerNumber.add(num);

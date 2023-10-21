@@ -15,6 +15,7 @@ public class GameView {
     public void printBallStrikeMessage(){
         System.out.print("볼 ");
     }
+
     public void printBallMessage(){
         System.out.println("볼");
     }
