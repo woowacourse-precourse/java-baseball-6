@@ -73,7 +73,7 @@ public class Application {
         }
     }
 
-    public static void displayResult(int ballCount, int strikeCount) {
+    public static void displayResult() {
         if (ballCount != 0) {
             System.out.print(ballCount + "볼 ");
         }
@@ -86,7 +86,7 @@ public class Application {
         System.out.println();
     }
 
-    public static boolean restartOrExitGame(int strikeCount, String userInput, List<Integer> selectNumber) {
+    public static boolean restartOrExitGame(String userInput, List<Integer> selectNumber) {
         if (strikeCount == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -136,10 +136,10 @@ public class Application {
 
             //4. 규칙에 따라 출력
             Application.calculateStrikeAndBall(selectNumber, userNumbers);
-            Application.displayResult(ballCount, strikeCount);
+            Application.displayResult();
 
             //5. 게임 종료 후, 재시작 & 종료 선택
-            isGameRunning = Application.restartOrExitGame(strikeCount, userInput, selectNumber);
+            isGameRunning = Application.restartOrExitGame(userInput, selectNumber);
         }
     }
 }
