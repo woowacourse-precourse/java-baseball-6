@@ -24,22 +24,32 @@ public class Game {
 
     public String compareNumber(String userNumber) {
         // String computerNumber = new Computer().generateRandomNumber();
-        int strike = 0;
-        int ball = 0;
         String computerNumber = "123";
+        int ball = calculateBallCount(userNumber, computerNumber);
+        int strike = calculateStrikeCount(userNumber, computerNumber);
+        ball -= strike;
+
+        return generateOutput(strike, ball);
+    }
+
+    private int calculateStrikeCount(String userNumber, String computerNumber) {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (userNumber.charAt(i) == computerNumber.charAt(i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    private int calculateBallCount(String userNumber, String computerNumber) {
+        int ball = 0;
         for (int i = 0; i < 3; i++) {
             if (userNumber.contains(String.valueOf(computerNumber.charAt(i)))) {
                 ball++;
             }
         }
-        for (int i = 0; i < 3; i++) {
-            if (userNumber.charAt(i) == computerNumber.charAt(i)) {
-                strike++;
-                ball--;
-            }
-        }
-
-        return generateOutput(strike, ball);
+        return ball;
     }
 
     private String generateOutput(int strike, int ball) {
