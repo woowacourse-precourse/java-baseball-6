@@ -13,7 +13,7 @@ public class GameController {
     public static void playingBaseballGame(GameCondition game_coin){
         List<Integer> computer_numbers = GenerateNumberList.generateRandomNumberToComputer(3);
         while (game_coin.equals(GameCondition.CONTINUE)){
-            OutputView.outputForGameValueInputBefore();
+            OutputView.outputForGameValueInput();
             String user_input_value = InputView.readLineByConsole();
             if (GameValidation.verifyForGameValue(user_input_value)){
 
