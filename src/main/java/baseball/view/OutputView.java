@@ -12,4 +12,8 @@ public class OutputView {
   public void printRestartMessage() {
     System.out.println(RESTART_MESSAGE);
   }
+
+  public void printNothingScore() {
+    System.out.println("낫싱");
+  }
 }
