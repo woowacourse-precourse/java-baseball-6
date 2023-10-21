@@ -27,34 +27,34 @@ public class InputReader {
         return toInt(input);
     }
 
-    public int toInt(String input){
+    private int toInt(String input){
         return Integer.parseInt(input);
     }
 
-    public List<Integer> toIntegerList(String input){
+    private List<Integer> toIntegerList(String input){
         return Arrays.stream(input.split(""))
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .toList();
     }
 
-    public void validateGameFinishInputSize(String input){
+    private void validateGameFinishInputSize(String input){
         if (input.length() != 1) throw new IllegalArgumentException("input's size have to be 1");
     }
 
-    public void validateGameFinishInputType(String input){
+    private void validateGameFinishInputType(String input){
         if(!input.matches("[1-2]+")) throw new IllegalArgumentException("input have to type only one or two.");
     }
 
-    public void validateGameInputSize(String input){
+    private void validateGameInputSize(String input){
         if(input.length() != 3) throw new IllegalArgumentException("input's size have to be 3");
     }
 
-    public void validateGameInputType(String input){
+    private void validateGameInputType(String input){
         if(!input.matches("[0-9]+")) throw new IllegalArgumentException("input have to type only number.");
     }
 
-    public void validateGameInputDuplicationOfNumber(String input){
+    private void validateGameInputDuplicationOfNumber(String input){
         Set<Character> set = new HashSet<>();
 
         for(char c : input.toCharArray()){
