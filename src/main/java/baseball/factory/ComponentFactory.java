@@ -2,6 +2,7 @@ package baseball.factory;
 
 import baseball.controller.BaseballController;
 import baseball.io.OutputView;
+import baseball.repository.DomainRepository;
 import baseball.service.BaseballService;
 import baseball.utils.RandomNumberGenerator;
 
@@ -12,7 +13,11 @@ public class ComponentFactory {
     }
 
     private BaseballService baseballService() {
-        return new BaseballService(randomNumberGenerator());
+        return new BaseballService(randomNumberGenerator(), domainRepository());
+    }
+
+    private DomainRepository domainRepository() {
+        return new DomainRepository();
     }
 
     private RandomNumberGenerator randomNumberGenerator() {
