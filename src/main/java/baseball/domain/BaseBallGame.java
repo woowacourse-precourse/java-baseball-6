@@ -12,9 +12,10 @@ public class BaseBallGame {
     public static final int OUT_INDEX = 2;
 
     private static final String GAME_START_MESSAGE = "숫자야구 게임을 시작합니다";
-    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 :";
+    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String NOTING_MESSAGE = "낫싱";
-    private static final String ALL_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String ALL_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다!";
+    private static final String END_MESSAGE = "게임 종료";
 
     private static boolean isGameOver = false;
 
@@ -35,14 +36,15 @@ public class BaseBallGame {
     private void startGame() {
 
         while (true) {
-            System.out.print(INPUT_NUMBER_MESSAGE);
-            List<Integer> answer1 = player1.createAnswer();
-            List<Integer> answer2 = player2.createAnswer();
+            System.out.println(INPUT_NUMBER_MESSAGE);
+            List<Integer> answer1 = player1.createHumansNumberList();
+//            List<Integer> answer2 = player2.createAnswer();
 
 //            player1.compareAnswers(answer2);
             printResult(player2.compareAnswers(answer1));
 
             if (isGameOver) {
+                System.out.println(END_MESSAGE);
                 break;
             }
 
@@ -55,7 +57,8 @@ public class BaseBallGame {
             return;
         }
         if (resultList.get(STRIKE_INDEX) == 3) {
-            System.out.print(ALL_STRIKE_MESSAGE);
+            System.out.println("3스트라이크");
+            System.out.println(ALL_STRIKE_MESSAGE);
             isGameOver = true;
             return;
         }
