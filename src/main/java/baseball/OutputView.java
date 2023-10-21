@@ -1,12 +1,12 @@
 package baseball;
 
-import java.util.List;
-
 public class OutputView {
 
-    private static final String ERROR_MESSAGE_FORMAT = "[ERROR] ";
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GAMEOVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String STRIKE_MESSAGE = "스트라이크 ";
+    private static final String BALL_MESSAGE = "볼";
+    private static final String NOTHING_MESSAGE = "낫싱";
     private static OutputView instance;
 
     public static OutputView getInstance() {
@@ -16,18 +16,27 @@ public class OutputView {
         return instance;
     }
 
-    public static void printExceptionMessage(String message) {
-        System.out.println(ERROR_MESSAGE_FORMAT + message);
-    }
-
-    public static void printStart() {
+    public void printStart() {
         System.out.println(START_MESSAGE);
     }
 
-    public static void printResult(List<TryResult> tryResults) {
+    public void printResult(GameResult gameResult) {
+        StringBuilder result = new StringBuilder();
+        if (gameResult.hasStrike()) {
+            result.append(gameResult.getStrikeCount());
+            result.append(STRIKE_MESSAGE);
+        }
+        if (gameResult.hasBall()) {
+            result.append(gameResult.getBallCount());
+            result.append(BALL_MESSAGE);
+        }
+        if (gameResult.isNothing()){
+            result.append(NOTHING_MESSAGE);
+        }
+        System.out.println(result);
     }
 
-    public static void printGameOver() {
+    public void printGameOver() {
         System.out.println(GAMEOVER_MESSAGE);
     }
 }

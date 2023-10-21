@@ -21,7 +21,7 @@ public class InputView {
         return instance;
     }
 
-    public static Balls scanBalls() {
+    public Balls scanBalls() {
         System.out.println(BALL_NUMBER_INPUT_MESSAGE);
         String rawBalls = Console.readLine();
         InputValidator.validateBalls(rawBalls);
@@ -35,7 +35,7 @@ public class InputView {
             }).collect(collectingAndThen(toList(), Balls::from));
     }
 
-    public static Retry scanRetry() {
+    public Retry scanRetry() {
         System.out.println(RETRY_INPUT_MESSAGE);
         String rawRetry = Console.readLine();
         InputValidator.validateRetry(rawRetry);

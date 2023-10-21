@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Ball {
 
     private static final int UNDER_RANGE = 1;
+    private static final String RANGE_EXCEPTION_MESSAGE = "[ERROR] 입력은 0을 포함할 수 없슴니다.";
     private final int number;
     private final int position;
 
@@ -16,7 +17,7 @@ public class Ball {
 
     public void validateRange(int number) {
         if (!isInRange(number)) {
-            throw new IllegalArgumentException("입력은 0을 포함할 수 없슴니다.");
+            throw new IllegalArgumentException(RANGE_EXCEPTION_MESSAGE);
         }
     }
 
