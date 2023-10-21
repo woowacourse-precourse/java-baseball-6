@@ -15,17 +15,20 @@ public class Application {
         int randomThirdNumber; //(1의 자리로 인식할 랜덤한 숫자)
         int strikeCount = 0; //(스트라이크 횟수)
         int ballCount = 0; //(볼 횟수)
+        int inputRestart = 1; //(게임 재시작 입력 숫자)
 
-      randomNumber = generateRandomNumber();
       System.out.println("숫자 야구 게임을 시작합니다.");
-
-      while(strikeCount != 3){
-      System.out.print("숫자를 입력해주세요 :");
-      inputNumber = Integer.parseInt(Console.readLine());
-      strikeCount = generateGameGuess(inputNumber, randomNumber);
+      while (inputRestart == 1) {
+          randomNumber = generateRandomNumber();
+          while (strikeCount != 3) {
+              System.out.print("숫자를 입력해주세요 :");
+              inputNumber = Integer.parseInt(Console.readLine());
+              strikeCount = generateGameGuess(inputNumber, randomNumber);
+          }
+          System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+          System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+          inputRestart = Integer.parseInt(Console.readLine());
       }
-      System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-      System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     public static int generateRandomNumber() {
@@ -59,6 +62,7 @@ public class Application {
         }
         return strikeCount;
     }
+
     public static boolean ballCounter(int[] randomArray, int inputValue) {
         for (int i : randomArray) {
             if (i == inputValue) {
