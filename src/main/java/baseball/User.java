@@ -23,17 +23,8 @@ public class User {
         }
     }
 
-    private void checkInputHasChar(String input) {
-        try {
-            int temp = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("This input is not Integer: " + input);
-        }
-    }
-
     private void checkValidInputNumber(String input) {
         checkInputLength(input);
-        checkInputHasChar(input);
         checkInputHasZero(input);
     }
 
