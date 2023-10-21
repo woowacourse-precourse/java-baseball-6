@@ -40,7 +40,7 @@ public class GameController {
 
             int userNumber = receiveUserNumber();
             umpire.prepareJudgement(computerNumber, userNumber);
-            ResultView.printResult(umpire.countBall(), umpire.countStrike());
+            printGameJudgement();
 
             if (umpire.isGameEnd()) {
                 break;
@@ -61,6 +61,10 @@ public class GameController {
 
     private static int receiveUserNumber() {
         return InputController.receiveUserNumber();
+    }
+
+    private void printGameJudgement() {
+        ResultView.printResult(umpire.countBall(), umpire.countStrike());
     }
 
     private static void printGameEnd() {
