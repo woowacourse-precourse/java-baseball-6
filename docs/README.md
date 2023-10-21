@@ -62,10 +62,14 @@
     - 게임이 끝나면 재시작/종료 묻기
 
 3. NumberValidator
-    - playerNumber 데이터 유효성 검사
+    - inputNumber 데이터 유효성 검사 및 정수형 변환
+        - 각 경우에 따라 오류 메시지 출력
+        (IllegalArgumentException 발생 후 종료)
         - 3자리 숫자인지 확인
         - 숫자인지 확인
         - 서로 다른 숫자인지 확인
+        - 정수형으로 변환 (playerNumber)
+        
 
 4. RandomUtility
     - 서로 다른 3자리 난수 생성
