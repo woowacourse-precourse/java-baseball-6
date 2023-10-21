@@ -2,9 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Application {
 
@@ -126,7 +126,6 @@ public class Application {
         List<Integer> selectNumber = new ArrayList<>();
         Application.selectThreeNumber(selectNumber);
 
-        System.out.println("selectNumber = " + selectNumber);
         //2. 출력문 구성
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (isGameRunning) {
@@ -135,23 +134,13 @@ public class Application {
             //3. 사용자 입력값 받기
             Application.inputThreeNumber(userInput, userNumbers);
 
-//            for (int i : userNumbers) {
-//                System.out.println("i = " + i);
-//            }
             //4. 규칙에 따라 출력
-
             Application.calculateStrikeAndBall(selectNumber, userNumbers);
-//            System.out.println("strikeCount = " + strikeCount);
-//            System.out.println("ballCount = " + ballCount);
             Application.displayResult(ballCount, strikeCount);
 
             //5. 게임 종료 후, 재시작 & 종료 선택
             isGameRunning = Application.restartOrExitGame(strikeCount, userInput, selectNumber);
-
-
         }
     }
-
-
 }
 
