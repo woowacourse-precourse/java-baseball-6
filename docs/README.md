@@ -12,15 +12,24 @@
     ``` java
     List<Integer> initRandomNum()
     ```
-- 사용자 숫자 입력 받기
-    ``` java
-    List<Integer> inputUserNum()
-    ```
-- 사용자 입력 형식 확인하기
-    ``` java
-    void checkUserNumForm(List<Integer> userNum)
-    ```
-  
+<br></br>
+- 사용자 입력
+  - 사용자 숫자 입력 받기
+      ``` java
+      List<Integer> inputUserNum()
+      ```
+  - 사용자 입력 형식 확인하기
+      ``` java
+      void checkUserNumForm(String userInput)
+      ```
+  - 사용자 입력 중복 숫자 확인
+      ``` java
+      boolean isDuplicatedNum(String userInput)
+      ```
+  - 사용자 입력 정수인지 확인
+      ``` java
+      boolean isInteger(String userInput)
+      ```
 <br></br>
 - 게임 결과 관련 기능들
   - 스트라이크 개수 세기
