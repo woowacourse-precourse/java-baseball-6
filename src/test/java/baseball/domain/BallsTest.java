@@ -12,7 +12,7 @@ public class BallsTest {
     private static final String BALL = Hint.BALL.value();
     private static final String NOTHING = Hint.NOTHING.value();
     @Test
-    void 중복숫자_테스트() {
+    void 중복_숫자_입력시_예외() {
         List<Integer> input = List.of(1, 1, 1);
         assertThatThrownBy(() -> Balls.from(input)).isInstanceOf(IllegalArgumentException.class);
     }
