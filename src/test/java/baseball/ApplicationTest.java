@@ -45,7 +45,7 @@ class ApplicationTest extends NsTest {
         final List<Integer> computerNumberList = Game.createNumbers(size);
 
         // then
-        assertThat(computerNumberList.size()).isEqualTo(3);
+        assertThat(computerNumberList.size()).isEqualTo(size);
     }
 
     @DisplayName("컴퓨터 랜덤 번호 범위 테스트")
