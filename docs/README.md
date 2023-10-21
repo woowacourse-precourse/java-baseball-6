@@ -39,3 +39,21 @@
 
 ## 📖 리펙토링
 - `System.out.print`바로 사용하지 않고 메서드로 생성
+
+- 패키지 분리
+  - `game`
+    - `balls`
+      - **Balls**
+    - **GameManager**
+    - **GameMessages**
+    - **GameService**
+  - `input`
+    - **UserInput**
+  - `util`
+    - **ConsoleUtil**
+  - `validators`
+    - **NumberValidator**
+  - **Application**
+
+- 하드코딩 제거(상수화)
+  - ex) `private static final String NUMERIC_PATTERN = "^[1-9]+$";`
