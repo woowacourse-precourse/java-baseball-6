@@ -22,13 +22,13 @@ public class OutputView {
         int strike = ballStrike.get(STRIKE_INDEX_IN_LIST);
 
         if (ball == ZERO && strike == ZERO) {
-            System.out.println(NOTHING_MESSAGE);
+            System.out.print(NOTHING_MESSAGE);
         }
         if (ball > ZERO) {
-            System.out.println(ball + BALL_MESSAGE + SPACE);
+            System.out.print(ball + BALL_MESSAGE + SPACE);
         }
         if (strike > ZERO) {
-            System.out.println(strike + STRIKE_MESSAGE);
+            System.out.print(strike + STRIKE_MESSAGE);
         }
         System.out.println();
     }
