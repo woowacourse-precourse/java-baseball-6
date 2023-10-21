@@ -29,7 +29,7 @@ public class Application {
             for (int i = 0; i < 2; i++) {
                 answer[i] = Randoms.pickNumberInRange(1, 9);
             }
-        } while(!duplicateNumber(answer));
+        } while (duplicateNumber(answer));
         return answer;
     }
 
