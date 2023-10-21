@@ -25,7 +25,7 @@ class RefereeTest {
 
     @DisplayName("유저의 숫자를 정답과 비교하여 볼을 판정하는 테스트")
     @Test
-    void judgeNumberTest() {
+    void judgeBallTest() {
         //given
         int firstNumber = 4;
         int secondNumber = 9;
@@ -37,6 +37,8 @@ class RefereeTest {
         //then
         assertThat(result).isEqualTo(1);
     }
+
+
 
     @Test
     void judgeNumber() {
