@@ -46,4 +46,13 @@ class BaseBallUITest {
         baseBallUI.printBaseBallScore(new BaseBallScore(strike, ball));
         Assertions.assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expect);
     }
+
+    @Test
+    void 숫자_야구게임을끝나는_문구가_출력되야한다() {
+        final String expect = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        BaseBallUI baseBallUI = new BaseBallUI();
+        baseBallUI.endGame();
+        Assertions.assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expect);
+    }
+
 }
