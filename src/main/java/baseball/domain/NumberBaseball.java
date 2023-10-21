@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.domain.constants.NumberBaseballConstants;
+import baseball.domain.validators.NumberBaseballValidator;
 import baseball.utils.RandomUtils;
 
 import java.util.List;
@@ -8,14 +9,17 @@ import java.util.List;
 public class NumberBaseball {
     private final int numberLimit;
     private final NumberBaseballIO numberBaseballIO;
+    private final NumberBaseballValidator numberBaseballValidator;
     private final User user;
 
     public NumberBaseball(
             int numberLimit,
             NumberBaseballIO numberBaseballIO,
+            NumberBaseballValidator numberBaseballValidator,
             User user) {
         this.numberLimit = numberLimit;
         this.numberBaseballIO = numberBaseballIO;
+        this.numberBaseballValidator = numberBaseballValidator;
         this.user = user;
     }
 
@@ -40,16 +44,7 @@ public class NumberBaseball {
 
     private boolean shouldContinueGame() {
         int userChoice = numberBaseballIO.printEndMessageAndInputChoice(numberLimit);
-
-        if(
-                userChoice != NumberBaseballConstants.CONTINUE_GAME &&
-                userChoice != NumberBaseballConstants.GAME_OVER
-        )
-            throw new IllegalArgumentException(
-                    NumberBaseballConstants.CONTINUE_GAME +
-                    " 또는 " +
-                    NumberBaseballConstants.GAME_OVER +
-                    "만 입력 가능합니다.");
+        numberBaseballValidator.validateContinueGame(userChoice);
 
         return userChoice == NumberBaseballConstants.CONTINUE_GAME;
     }

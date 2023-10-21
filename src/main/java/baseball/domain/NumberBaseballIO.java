@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.domain.constants.NumberBaseballConstants;
+import baseball.utils.StringUtils;
 
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class NumberBaseballIO {
     }
 
     public List<Integer> inputGuessAnswer(int numberLength) {
-        return inputOutputHandler.inputUniqueNumbers(numberLength);
+        String input = inputOutputHandler.inputUniqueNumbers(numberLength);
+        return StringUtils.toIntegerList(input);
     }
 
     public void printGuessResult(Result result) {
