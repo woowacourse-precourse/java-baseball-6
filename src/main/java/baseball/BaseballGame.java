@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class BaseballGame {
 
@@ -23,7 +24,7 @@ public class BaseballGame {
             System.out.print("숫자를 입력해주세요 : ");
             readExpectedNumber(readLine());
 
-            //computeAnswer();
+            computeAnswer();
 
             if (isCompleted() && isExit()) {
                 return;
@@ -89,6 +90,38 @@ public class BaseballGame {
             }
         }
         return false;
+    }
+
+    public void computeAnswer() {
+        strikeNumber = computeStrikeNumber();
+        ballNumber = computeBallNumber();
+
+        // printGameResult();
+    }
+
+    private int computeStrikeNumber() {
+        int count = 0;
+
+        for(int i = 0; i < BASEBALL_NUMBER_LENGTH; i++) {
+            if(Objects.equals(expectedNumber.get(i), answerNumber.get(i))) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private int computeBallNumber() {
+        int count = 0;
+
+        for(int i = 0; i < BASEBALL_NUMBER_LENGTH; i++) {
+            if (expectedNumber.contains(answerNumber.get(i))
+                    && !Objects.equals(expectedNumber.get(i), answerNumber.get(i))) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public boolean isCompleted() {
