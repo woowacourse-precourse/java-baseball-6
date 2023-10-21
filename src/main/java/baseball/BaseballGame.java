@@ -11,10 +11,43 @@ public class BaseballGame {
     private static final int END_NUMBER = 9;
     private static final int NUMBER_SIZE = 3;
     private final List<Integer> numbers;
+    private boolean continueGame = true;
 
     public BaseballGame() {
         numbers = new ArrayList<>();
         setNumber();
+    }
+
+    public void game() {
+        setNumber();
+        boolean win = false;
+        while (!win) {
+            List<Integer> playerNumbers = getPlayerNumbers();
+            String result = compareInputAndNumbers(playerNumbers);
+            System.out.println(result);
+            if (result.contains(NUMBER_SIZE + BaseballJudgement.STRIKE.message)) {
+                win = true;
+                System.out.println(NUMBER_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+        }
+    }
+
+    public void play() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (continueGame) {
+            this.game();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = Console.readLine();
+            if (input.equals("1")) {
+                continueGame = true;
+            }
+            else if (input.equals("2")) {
+                continueGame = false;
+            }
+            else {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     private void setNumber(){
