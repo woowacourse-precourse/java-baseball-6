@@ -25,13 +25,15 @@ public class RandomComputerNumberGenerator {
 
     @Override
     public String toString() {
-        String numberString = numbers.stream()
+        String numberString = generateNumberString();
+        validateDuplicateNumber(Integer.parseInt(numberString));
+        return numberString;
+    }
+
+    private String generateNumberString() {
+        return numbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
-
-        validateDuplicateNumber(Integer.parseInt(numberString));
-
-        return numberString;
     }
 
 }
