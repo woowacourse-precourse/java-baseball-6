@@ -1,8 +1,8 @@
 package baseball.model;
 
 public class Hint {
-    int ballCount;
-    int strikeCount;
+    private final int ballCount;
+    private final int strikeCount;
 
     public Hint(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
