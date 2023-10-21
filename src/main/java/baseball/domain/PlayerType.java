@@ -1,5 +1,10 @@
 package baseball.domain;
 
 public enum PlayerType {
-    HUMAN,COMPUTER;
+    HUMAN("HUMAN"),COMPUTER("COMPUTER");
+    private final String name;
+
+    PlayerType(String name) {
+        this.name = name;
+    }
 }

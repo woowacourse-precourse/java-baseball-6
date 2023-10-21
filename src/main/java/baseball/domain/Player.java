@@ -13,8 +13,9 @@ public class Player {
 
     private final int NUMBER_OF_DIGITS = 3;
     private final String ERROR_MESSAGE ="입력값이 잘못되었습니다";
-    private final PlayerType playerType;
+    public final PlayerType playerType;
     private final List<Integer> numberList;
+    private final String HUMAN_CREATE_NUMBER_MESSAGE = "게임에서 사용할 숫자를 입력해주세요";
 
 
     public Player(PlayerType playerType) {
@@ -32,7 +33,7 @@ public class Player {
 
 //    사람의 숫자 셋팅
     private List<Integer> createHumansNumberList(){
-        List<Integer> list = new ArrayList<>();
+        System.out.println(HUMAN_CREATE_NUMBER_MESSAGE);
         String numberStr = Console.readLine();
 
         if(!verifyInputValue(numberStr)){
