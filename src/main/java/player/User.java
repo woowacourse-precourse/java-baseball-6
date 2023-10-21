@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User implements BaseballNumberInput {
+public class User implements BaseballPlayer {
 
     BaseballNumbers baseballNumbers;
 
@@ -21,4 +21,8 @@ public class User implements BaseballNumberInput {
         baseballNumbers = new BaseballNumbers(playerInputBaseballNumber);
     }
 
+    @Override
+    public BaseballNumbers getBaseballNumbers() {
+        return this.baseballNumbers;
+    }
 }

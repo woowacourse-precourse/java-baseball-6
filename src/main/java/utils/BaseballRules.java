@@ -1,10 +1,11 @@
 package utils;
 
-import java.util.List;
+import player.BaseballNumbers;
 
 public class BaseballRules {
 
-    public static boolean isThreeStrike(List<Integer> playerBaseballNumber, List<Integer> computerBaseballNumber) {
+    public static boolean isThreeStrike(BaseballNumbers playerBaseballNumber,
+                                        BaseballNumbers computerBaseballNumber) {
         return playerBaseballNumber.equals(computerBaseballNumber);
     }
 

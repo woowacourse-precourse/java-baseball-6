@@ -1,8 +1,9 @@
 package score;
 
-import java.util.List;
+import player.BaseballNumbers;
 
 public class Score {
+    
     private Integer strike;
     private Integer ball;
 
@@ -11,7 +12,8 @@ public class Score {
         this.ball = 0;
     }
 
-    public void setStrikeAndBall(List<Integer> computerBaseballNumber, List<Integer> playerBaseballNumber) {
+    public void setStrikeAndBall(BaseballNumbers computerBaseballNumber,
+                                 BaseballNumbers playerBaseballNumber) {
         for (int i = 0; i < computerBaseballNumber.size(); i++) {
             if (computerBaseballNumber.get(i).equals(playerBaseballNumber.get(i))) {
                 this.strike++;

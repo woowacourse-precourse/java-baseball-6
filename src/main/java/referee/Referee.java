@@ -18,11 +18,11 @@ public class Referee {
     private final Score score = new Score();
 
     public void playBall() {
-        computer.inputBaseballNumber();
+        computer.inputBaseballNumbers();
 
         do {
             baseballFlow();
-        } while (!BaseballRules.isThreeStrike(user.getBaseballNumber(), computer.getBaseballNumber()));
+        } while (!BaseballRules.isThreeStrike(user.getBaseballNumbers(), computer.getBaseballNumbers()));
 
         Message.printThreeStrikeMessage();
         continueOrFinish();
@@ -31,8 +31,8 @@ public class Referee {
     private void baseballFlow() {
         Message.printIntegerInputFromUserMessage();
         score.clearStrikeAndBall();
-        user.inputBaseballNumber();
-        score.setStrikeAndBall(user.getBaseballNumber(), computer.getBaseballNumber());
+        user.inputBaseballNumbers();
+        score.setStrikeAndBall(user.getBaseballNumbers(), computer.getBaseballNumbers());
         Message.printHintMessage(score);
     }
 

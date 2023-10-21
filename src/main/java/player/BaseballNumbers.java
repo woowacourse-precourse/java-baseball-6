@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Set;
 
 public class BaseballNumbers {
-    List<BaseballNumber> baseballNumbers;
+
+    private List<BaseballNumber> baseballNumbers;
 
     public BaseballNumbers() {
         this.baseballNumbers = new ArrayList<>();
@@ -20,6 +21,18 @@ public class BaseballNumbers {
         validateMaxLength(baseballNumbers);
         validateDuplicateNumber(baseballNumbers);
         this.baseballNumbers = baseballNumbers;
+    }
+
+    public int size() {
+        return baseballNumbers.size();
+    }
+
+    public BaseballNumber get(int index) {
+        return baseballNumbers.get(index);
+    }
+
+    public boolean contains(BaseballNumber baseballNumber) {
+        return baseballNumbers.contains(baseballNumber);
     }
 
     private void validateMaxLength(List<BaseballNumber> baseballNumbers) {
@@ -34,5 +47,18 @@ public class BaseballNumbers {
         if (baseballNumberSet.size() < MAX_LENGTH) {
             throw new IllegalArgumentException(NO_DUPLICATE_NUMBER_MESSAGE);
         }
+    }
+
+    @Override
+    public boolean equals(Object baseballNumbers) {
+        BaseballNumbers otherBaseballNumber = (BaseballNumbers) baseballNumbers;
+
+        for (int i = 0; i < this.baseballNumbers.size(); i++) {
+            if (!otherBaseballNumber.get(i).equals(this.baseballNumbers.get(i))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

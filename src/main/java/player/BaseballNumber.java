@@ -3,7 +3,8 @@ package player;
 import static constant.StringConstant.ONLY_NUMBER_MESSAGE;
 
 public class BaseballNumber {
-    Integer baseballNumber;
+
+    private Integer baseballNumber;
 
     public BaseballNumber(String baseballNumber) {
         validateNumericInput(baseballNumber);
@@ -20,5 +21,19 @@ public class BaseballNumber {
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(ONLY_NUMBER_MESSAGE);
         }
+    }
+
+    @Override
+    public boolean equals(Object baseballNumber) {
+        if (baseballNumber instanceof BaseballNumber) {
+            BaseballNumber convertBaseballNumber = (BaseballNumber) baseballNumber;
+            return this.baseballNumber.equals(convertBaseballNumber.baseballNumber);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return baseballNumber.hashCode();
     }
 }

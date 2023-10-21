@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -34,13 +34,18 @@ public class UserTest {
         //given
         final String playerInput = "123";
         provideUserInput(playerInput);
+        List<BaseballNumber> baseballNumbers = new ArrayList<>();
+        baseballNumbers.add(new BaseballNumber(1));
+        baseballNumbers.add(new BaseballNumber(2));
+        baseballNumbers.add(new BaseballNumber(3));
+
 
         //when
-        player.inputBaseballNumber();
-        List<Integer> playerBaseballNumber = player.getBaseballNumber();
+        player.inputBaseballNumbers();
+        BaseballNumbers playerBaseballNumber = player.getBaseballNumbers();
 
         //then
-        assertThat(playerBaseballNumber).isEqualTo(Arrays.asList(1, 2, 3));
+        assertThat(playerBaseballNumber).isEqualTo(new BaseballNumbers(baseballNumbers));
     }
 
     @Test
@@ -51,7 +56,7 @@ public class UserTest {
         provideUserInput(playerInput);
 
         //when, then
-        assertThatThrownBy(player::inputBaseballNumber)
+        assertThatThrownBy(player::inputBaseballNumbers)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리의 숫자만 입력가능합니다.");
     }
@@ -65,7 +70,7 @@ public class UserTest {
         provideUserInput(playerInput);
 
         //when, then
-        assertThatThrownBy(player::inputBaseballNumber)
+        assertThatThrownBy(player::inputBaseballNumbers)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자만 입력 가능합니다.");
     }

@@ -1,13 +1,8 @@
 package player;
 
-import java.util.ArrayList;
-import java.util.List;
+public interface BaseballPlayer {
 
-public abstract class BaseballPlayer {
-    protected List<Integer> baseballNumber = new ArrayList<>();
+    void inputBaseballNumbers();
 
-    public abstract void inputBaseballNumber();
-    public List<Integer> getBaseballNumber() {
-        return this.baseballNumber;
-    }
+    BaseballNumbers getBaseballNumbers();
 }

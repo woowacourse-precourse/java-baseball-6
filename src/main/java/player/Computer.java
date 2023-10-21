@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer implements BaseballNumberInput {
+public class Computer implements BaseballPlayer {
 
     BaseballNumbers baseballNumbers;
 
@@ -20,5 +20,10 @@ public class Computer implements BaseballNumberInput {
             }
         }
         baseballNumbers = new BaseballNumbers(computerBaseballNumber);
+    }
+
+    @Override
+    public BaseballNumbers getBaseballNumbers() {
+        return this.baseballNumbers;
     }
 }
