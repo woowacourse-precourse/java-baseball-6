@@ -11,7 +11,6 @@ public class PlayerNumber {
     }
 
     public void setPlayerNumber(String numbers) {
-        playerNumber = new ArrayList<>();
         if (NumbersValidator.validate(numbers)) {
             convert(numbers);
         }
