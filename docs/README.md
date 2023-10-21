@@ -42,7 +42,7 @@
         ```
     - 3스트라이크 확인하기
         ``` java
-      boolean checkAllStrike(List<Integer> userNum, List<Integer> randomNum)
+      boolean isAllStrike(Map<String, Integer> resultList)
         ```
     - 결과 출력하기
         ``` java
