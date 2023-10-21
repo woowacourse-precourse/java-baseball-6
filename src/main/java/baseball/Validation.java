@@ -5,6 +5,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Validation {
+    static final int MIN_BASEBALL_NUMBER = 1;
+    static final int MAX_BASEBALL_NUMBER = 9;
+
+    public static void validateBaseballNumber(int baseballNumber) {
+        if (baseballNumber < MIN_BASEBALL_NUMBER || baseballNumber > MAX_BASEBALL_NUMBER) {
+            throw new IllegalArgumentException(
+                    "[ERROR] 숫자가 " + MIN_BASEBALL_NUMBER + "~" + MAX_BASEBALL_NUMBER + " 사이가 아닙니다."
+            );
+        }
+    }
+
     public static void validateUserNumbers(String userNumbers, int numbersLength) {
         validateInputEmptyOrNull(userNumbers);
         validateInputLength(userNumbers, numbersLength);
