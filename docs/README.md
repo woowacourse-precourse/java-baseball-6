@@ -75,7 +75,7 @@
 - duplicateNumber 메소드
   - 사용자로부터 받은 입력의 자릿수 중 중복되는 수가 있는 경우 예외를 발생시킨다.
     
-### Convertor
+### Converter
 특정 자료형을 다른 자료형으로 변환한다. 
 - stringToIntList
   - String 타입의 데이터들을 int타입 List로 변환한다.
