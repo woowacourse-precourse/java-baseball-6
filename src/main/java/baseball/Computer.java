@@ -41,4 +41,21 @@ public class Computer {
 
         return count;
     }
+
+    public int getStrikeCount(List<Integer> userNumbers){
+        int count=0;
+        int userNumber, computerNumber;
+
+        for(int i=0; i<userNumbers.size(); i++){
+            userNumber=userNumbers.get(i);
+
+            for(int j=0; j<computerNumbers.size(); j++){
+                computerNumber=computerNumbers.get(j);
+
+                if(userNumber==computerNumber && i==j) count++;
+            }
+        }
+
+        return count;
+    }
 }
