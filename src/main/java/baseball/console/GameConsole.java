@@ -2,8 +2,8 @@ package baseball.console;
 
 import baseball.console.game.GameList;
 import baseball.console.game.numberbaseball.NumberBaseballGame;
-import baseball.console.util.ConsoleMessage;
-import baseball.console.util.ConsoleStatus;
+import baseball.console.config.ConsoleMessage;
+import baseball.console.config.ConsoleStatus;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameConsole {

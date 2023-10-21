@@ -1,65 +1,38 @@
 package baseball.console.game.numberbaseball;
 
-import baseball.console.game.numberbaseball.domain.Computer;
+import baseball.console.game.numberbaseball.domain.computer.Computer;
+import baseball.console.game.numberbaseball.domain.user.UserPrediction;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NumberBaseballGame {
+    UserPrediction userPrediction;
     Computer computer;
-    List<Integer> userNumbers;
 
     boolean isCorrect;
 
     public NumberBaseballGame() {
         computer = new Computer();
-        userNumbers = new ArrayList<>();
         isCorrect = false;
     }
 
     public void start() {
+        computer.generate();
         while (!isCorrect) {
-            userPredict();
-            isCorrect = matchTest(userNumbers, computer.getNumbers());
+            userPrediction = userPredict();
+            isCorrect = matchTest(userPrediction.getUserNumbers(), computer.getNumbers());
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private void userPredict() {
-            String prediction = getUserPrediction();
-            int predictedNumber = validateAndParse(prediction);
-            numberToList(predictedNumber);
+    private UserPrediction userPredict() {
+        printGameMessage("숫자를 입력해주세요: ");
+        return new UserPrediction(Console.readLine());
     }
 
 
-    private void numberToList(int predictedNumber) {
-        userNumbers.add(predictedNumber / 100);
-        userNumbers.add(predictedNumber % 100 / 10);
-        userNumbers.add(predictedNumber %10);
-    }
-    private String getUserPrediction() {
-            printGameMessage("숫자를 입력해주세요: ");
-            return Console.readLine();
-    }
-
-    private int validateAndParse(String userPrediction) throws IllegalArgumentException{
-        int number;
-        try {
-            number = Integer.parseInt(userPrediction);
-
-            if (number < 123) {
-                throw new IllegalArgumentException("input is cannot be less than 123.");
-            }
-            if (number > 987) {
-                throw new IllegalArgumentException("input is cannot be greater than 123.");
-            }
-
-            return number;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("유효한 정수가 아닙니다.", e);
-        }
-    }
 
     private boolean matchTest(List<Integer> userNumbers, List<Integer> targetNumbers) {
         int strike = 0;

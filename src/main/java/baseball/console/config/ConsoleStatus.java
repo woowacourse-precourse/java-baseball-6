@@ -1,4 +1,4 @@
-package baseball.console.util;
+package baseball.console.config;
 
 public enum ConsoleStatus {
     NONE, CONTINUE, EXIT

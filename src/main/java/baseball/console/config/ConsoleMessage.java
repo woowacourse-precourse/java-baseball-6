@@ -1,4 +1,4 @@
-package baseball.console.util;
+package baseball.console.config;
 
 public class ConsoleMessage {
     public static final String NUMBER_BASEBALL_GAME_START = "숫자 야구 게임을 시작합니다.";

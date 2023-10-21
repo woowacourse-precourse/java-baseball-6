@@ -1,4 +1,4 @@
-package baseball.console.game.numberbaseball.domain;
+package baseball.console.game.numberbaseball.domain.computer;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -10,13 +10,14 @@ public class Computer {
 
     public Computer() {
         numbers = new ArrayList<>();
+    }
+    public void generate() {
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber))
                 numbers.add(randomNumber);
         }
     }
-
     public List<Integer> getNumbers() {
         return numbers;
     }
