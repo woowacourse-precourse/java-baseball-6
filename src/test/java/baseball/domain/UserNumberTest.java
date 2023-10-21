@@ -17,4 +17,11 @@ public class UserNumberTest {
         assertThatThrownBy(() -> new UserNumber(List.of(1, 2, 3, 4)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("사용자 숫자가 0을 포함하고 있으면 예외가 발생한다.")
+    void testValidateUserNumberContainZero() {
+        assertThatThrownBy(() -> new UserNumber(List.of(0, 1, 2)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
