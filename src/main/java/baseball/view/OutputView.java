@@ -17,4 +17,10 @@ public class OutputView {
         isZeroball(strike, ball);
         isNotZeroStrikeAndBall(strike,ball);
     }
+
+    public static void isZeroStrikeAndBall(int strike, int ball) {
+        if(strike ==0 && ball == 0){
+            System.out.println(NONE_MESSAGE);
+        }
+    }
 }
