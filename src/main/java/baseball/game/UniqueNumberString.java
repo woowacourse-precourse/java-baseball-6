@@ -88,6 +88,24 @@ public class UniqueNumberString {
     }
 
     @Override
+    public int hashCode() {
+        int result = ruleSet.hashCode();
+        result = 31 * result + value.hashCode();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof UniqueNumberString numberString)) {
+            return false;
+        }
+        return numberString.ruleSet.equals(ruleSet) && numberString.value.equals(value);
+    }
+
+    @Override
     public String toString() {
         return "UniqueNumberString{" +
                 "value='" + value + '\'' +

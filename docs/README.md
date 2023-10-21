@@ -5,11 +5,11 @@
 - [x] GoalValue 및 Test 구현
   - [x] create 및 validate 구현
   - [x] createRandom 구현
-  - [ ] equals 구현
+  - [x] equals 구현
 - [x] CompareResult 구현
   - [x] toString 구현
   - [x] GoalValue.compare() 구현
-  - [ ] equals 구현
+  - [x] equals 구현
 - [x] GoalValue 리팩토링
   - [x] UniqueNumberString 으로 변경
   - [x] RuleSet 도입 

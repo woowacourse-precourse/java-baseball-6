@@ -18,6 +18,24 @@ public class MatchResult {
     }
 
     @Override
+    public int hashCode() {
+        int result = Integer.hashCode(ball);
+        result = 31 * result + Integer.hashCode(strike);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof MatchResult result)) {
+            return false;
+        }
+        return (result.ball == ball) && (result.strike == strike);
+    }
+
+    @Override
     public String toString() {
         if (ball == 0 && strike == 0) {
             return "낫싱";

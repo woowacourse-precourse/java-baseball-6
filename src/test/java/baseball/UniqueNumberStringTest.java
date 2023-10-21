@@ -7,12 +7,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UniqueNumberStringTest {
     @Test
-    void compare_정적메서드_비교시_올바른_결과_반환한다() {
+    void match_Test() {
         // given
         String[][] cases = {{"123", "321"}, {"123", "123"}, {"123", "231"}, {"123", "456"}};
         int[][] answers = {{2, 1}, {0, 3}, {3, 0}, {0, 0}};
@@ -33,7 +34,7 @@ public class UniqueNumberStringTest {
     }
 
     @Test
-    void 올바르지_않은_값으로_생성할수없다() {
+    void create_Test() {
         // given
         String[] cases = {"123", "456", "789", "112", "121", "211", "111", "", "1", "11", "1111", "cow", "24L"};
         boolean[] answers = {true, true, true, false, false, false, false, false, false, false, false, false, false};
@@ -88,6 +89,23 @@ public class UniqueNumberStringTest {
             }
         }
 
+        // then
         assertTrue(equalCount < equalLimit);
+    }
+
+    @Test
+    void equals_Test() {
+        // given
+        UniqueNumberString ns1 = UniqueNumberString.create("123", RuleSet.BASIC);
+        UniqueNumberString ns2 = UniqueNumberString.create("123", RuleSet.BASIC);
+        UniqueNumberString ns3 = UniqueNumberString.create("124", RuleSet.BASIC);
+
+        // when
+        boolean expectTrue = ns1.equals(ns2);
+        boolean expectFalse = ns1.equals(ns3);
+
+        // then
+        assertTrue(expectTrue);
+        assertFalse(expectFalse);
     }
 }
