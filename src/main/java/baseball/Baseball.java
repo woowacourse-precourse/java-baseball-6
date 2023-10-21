@@ -1,45 +1,47 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
+import baseball.Opponent.GuessResult;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Baseball {
-    private List<Integer> answer;
+public class Baseball implements Game {
+    private Opponent opponent;
 
     public Baseball() {
-        answer = new ArrayList<>();
-        while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
-        }
+        opponent = new Opponent();
     }
 
-    public Result guess(String userInput) throws IllegalArgumentException {
-        List<Integer> userGuess = filterUserInput(userInput);
+    @Override
+    public void play() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        Result result = new Result();
-        for (int i = 0; i < 3; i++) {
-            Integer pieceOfGuess = userGuess.get(i);
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String question = Console.readLine();
+            List<Integer> filteredQuestion = filterQuestion(question);
 
-            if (pieceOfGuess.equals(answer.get(i))) {
-                // strike
-                result.addStrike();
-            } else {
-                // ball or not
-                if (answer.contains(pieceOfGuess)) {
-                    // ball
-                    result.addBall();
+            GuessResult guessResult = opponent.guess(filteredQuestion);
+            System.out.println(guessResult.toHangul());
+
+            if (guessResult.isCorrect()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String endInput = Console.readLine();
+                if ("1".equals(endInput)) {
+                    opponent = new Opponent();
+                } else if ("2".equals(endInput)) {
+                    break;
+                } else {
+                    throw new IllegalArgumentException("Invalid end input");
                 }
             }
         }
-        return result;
     }
 
-    private List<Integer> filterUserInput(String userInput) throws IllegalArgumentException {
+
+    private List<Integer> filterQuestion(String userInput) throws IllegalArgumentException {
         if (userInput == null) {
             throw new IllegalArgumentException("Null input");
         }
@@ -58,45 +60,10 @@ public class Baseball {
                 }
                 userGuess.push(i);
             }
-
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException("NaN");
         }
 
         return userGuess;
-    }
-
-    public static class Result {
-        private int ball = 0;
-        private int strike = 0;
-
-        public void addStrike() {
-            strike = strike + 1;
-        }
-
-        public void addBall() {
-            ball = ball + 1;
-        }
-
-        public boolean isCorrect() {
-            return strike == 3;
-        }
-
-        public String toHangul() {
-            if (ball == 0 && strike == 0) {
-                return "낫싱";
-            }
-            if (ball > 0 && strike > 0) {
-                // ball and strike
-                return String.format("%d볼 %d스트라이크", ball, strike);
-            } else if (ball > 0) {
-                // only ball
-                return String.format("%d볼", ball);
-            } else {
-                // only strike
-                return String.format("%d스트라이크", strike);
-            }
-
-        }
     }
 }
