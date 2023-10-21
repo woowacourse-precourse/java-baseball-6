@@ -11,6 +11,13 @@ public class Input {
         return stringToInt(input);
     }
 
+    public static int readExitNumber() throws IllegalArgumentException {
+        String input = Console.readLine();
+        Validation.checkNumberIsZeroOrOne(input);
+        return stringToInt(input);
+    }
+
+
     private static int stringToInt(String input) {
         return Integer.parseInt(input);
     }
