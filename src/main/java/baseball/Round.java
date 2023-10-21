@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.List;
-
 public class Round {
 
     public StrikeAndBall judge(MyInt myInt, ComInt comInt) {
@@ -20,10 +18,7 @@ public class Round {
     }
 
     private boolean checkStrike(MyInt myInt, ComInt comInt, int i) {
-        if (myInt.getMyIntIdx(i).equals(comInt.getIdx(i))) {
-            return true;
-        }
-        return false;
+        return myInt.getMyIntIdx(i).equals(comInt.getIdx(i));
     }
 }
 

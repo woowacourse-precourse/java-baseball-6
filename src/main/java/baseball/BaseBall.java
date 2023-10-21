@@ -1,9 +1,8 @@
 package baseball;
 
-import java.util.ArrayList;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static java.lang.Integer.parseInt;
+
+import java.util.Objects;
 
 public class BaseBall {
     public static void run() {
@@ -17,7 +16,9 @@ public class BaseBall {
             StrikeAndBall judge = getStrikeAndBall(comInt);
             if (judge.getStrike() == 3) {
                 comInt = strikeOut();
-                if (comInt == null) break;
+                if (comInt == null) {
+                    break;
+                }
             }
         }
     }
@@ -53,14 +54,11 @@ public class BaseBall {
     }
 
 
-
-
     private static String judged(StrikeAndBall judge) {
         int ball = judge.getBall();
         int strike = judge.getStrike();
         String ballStrikeString = getBallStrikeString(ball, strike);
-        if (ballStrikeString != null) return ballStrikeString;
-        return "낫싱";
+        return Objects.requireNonNullElse(ballStrikeString, "낫싱");
     }
 
     private static String getBallStrikeString(int ball, int strike) {

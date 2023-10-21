@@ -1,9 +1,9 @@
 package baseball;
 
+import static java.lang.Integer.parseInt;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.Integer.parseInt;
 
 public class MyInt {
     private final List<Integer> myInt = new ArrayList<>();
