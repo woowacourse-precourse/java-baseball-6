@@ -28,7 +28,7 @@ public class ResultCalculator {
     }
 
     private boolean isStrike(int eachNumber, int digit) {
-        return NumberComparator.isEqual(eachNumber, computerNumber.getBallNumberByDigit(digit));
+        return eachNumber == computerNumber.getBallNumberByDigit(digit);
     }
 
     private int countBalls(BallNumber comparisonNumber, int numberOfStrikes) {
