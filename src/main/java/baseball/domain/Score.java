@@ -20,18 +20,31 @@ public class Score {
     }
 
     private void selectFormatter() {
+        checkBothAreZero();
+        checkOnlyBall();
+        checkOnlyStrike();
+        checkBallAndStrike();
+    }
+
+    private void checkBothAreZero() {
         if (bothAreZero(ball, strike)) {
             stringFormatter = new BothZeroFormatter();
         }
+    }
 
+    private void checkOnlyBall() {
         if (onlyBall(ball, strike)) {
             stringFormatter = new OnlyBallFormatter();
         }
+    }
 
+    private void checkOnlyStrike() {
         if (onlyStrike(ball, strike)) {
             stringFormatter = new OnlyStrikeFormatter();
         }
+    }
 
+    private void checkBallAndStrike() {
         if (ballAndStrike(ball, strike)) {
             stringFormatter = new BallAndStrikeFormatter();
         }
