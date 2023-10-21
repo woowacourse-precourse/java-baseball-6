@@ -44,7 +44,7 @@ public class BaseBallGame {
             }
             GameResult.PrintResult(strike, ball, isNothing);
             if (refree.GameClear(strike)) {
-                if(refree.GameRestart()){
+                if (refree.GameRestart()) {
                     this.run();
                 }
                 break;
