@@ -1,3 +1,3 @@
 public class Practice {
-    String son;
+    String sonJimin;
 }
