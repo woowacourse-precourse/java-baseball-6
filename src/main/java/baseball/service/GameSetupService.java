@@ -35,7 +35,6 @@ public class GameSetupService {
         return new ArrayList<>(ballNumbers);
     }
 
-
     private List<Ball> createComputerBalls(List<Integer> ballNumbers) {
         return ballNumbers.stream()
                 .map(Ball::new)

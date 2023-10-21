@@ -15,8 +15,6 @@ public class GameLogicService {
         return new GameResult(balls, strikes);
     }
 
-
-
     public Game updateGameStatusOnThreeStrike(Game game, GameResult gameResult) {
         if (gameResult.isThreeStrike()) {
             game.setGameFinished(true);
