@@ -3,7 +3,7 @@ package baseball.console;
 import baseball.constant.ErrorMessage;
 import camp.nextstep.edu.missionutils.Console;
 
-import baseball.util.InputValidation;
+import baseball.console.util.InputValidation;
 
 public class ConsoleInput {
 	private final InputValidation inputValidation;
