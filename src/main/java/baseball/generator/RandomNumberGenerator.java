@@ -1,9 +1,9 @@
 package baseball.generator;
 
-public interface RandomNumberGenerator<T,R> {
-    R generate(Integer size);
+public interface RandomNumberGenerator<T> {
+    T generate(Integer size);
 
-    default Boolean match(T input, R generatedNumber){
+    default Boolean match(T matchingTargetNumber, T generatedNumber){
         return false;
     }
 }

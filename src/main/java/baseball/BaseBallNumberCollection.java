@@ -1,14 +1,14 @@
-package baseball.generator;
+package baseball;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
-public class ComputerRandomNumber {
+public class BaseBallNumberCollection {
     private final List<Integer> randomNumberList;
 
     public static final Integer NOT_FOUND = -1;
 
-    public ComputerRandomNumber(List<Integer> randomNumberList) {
+    public BaseBallNumberCollection(List<Integer> randomNumberList) {
         this.randomNumberList = randomNumberList;
     }
 
@@ -19,12 +19,16 @@ public class ComputerRandomNumber {
         return NOT_FOUND;
     }
 
+    public Integer get(int index){
+        return randomNumberList.get(index);
+    }
+
     public Integer size(){
         return randomNumberList.size();
     }
 
-    public List<Integer> getRandomNumberList(){
-        return Collections.unmodifiableList(this.randomNumberList);
+    public Set<Integer> getUniqueValueSet(){
+        return Set.copyOf(this.randomNumberList);
     }
 
 }

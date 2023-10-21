@@ -1,19 +1,16 @@
 package baseball;
 
-import baseball.generator.ComputerRandomNumber;
 import baseball.generator.ComputerRandomNumberGenerator;
 import baseball.generator.RandomNumberGenerator;
 import baseball.input.BaseBallGameUserInput;
 import baseball.input.UserInput;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
-
 public class BaseBallGame {
 
-    private final RandomNumberGenerator<List<Integer>, ComputerRandomNumber> randomNumberGenerator =
+    private final RandomNumberGenerator<BaseBallNumberCollection> randomNumberGenerator =
         new ComputerRandomNumberGenerator();
-    private final UserInput<List<Integer>> baseBallUserInput = new BaseBallGameUserInput();
+    private final UserInput<BaseBallNumberCollection> baseBallUserInput = new BaseBallGameUserInput();
     private final Integer baseBallGameSize;
 
     private static final String CONTINUE_GAME_CODE = "1";
@@ -30,8 +27,8 @@ public class BaseBallGame {
     public void startGame(){
         System.out.println(BASE_BALL_GAME_START_FORMAT);
         do{
-            final ComputerRandomNumber randomNumberList = generateNumber();
-            List<Integer> userInput;
+            final BaseBallNumberCollection randomNumberList = generateNumber();
+            BaseBallNumberCollection userInput;
             do{
                 userInput=baseBallUserInput.input(baseBallGameSize);
             }while(matchingNumber(userInput, randomNumberList));
@@ -39,11 +36,11 @@ public class BaseBallGame {
         baseBallUserInput.close();
     }
 
-    private ComputerRandomNumber generateNumber(){
+    private BaseBallNumberCollection generateNumber(){
         return randomNumberGenerator.generate(baseBallGameSize);
     }
 
-    private Boolean matchingNumber(final List<Integer> userInput, final ComputerRandomNumber randomNumber){
+    private Boolean matchingNumber(final BaseBallNumberCollection userInput, final BaseBallNumberCollection randomNumber){
         if(randomNumberGenerator.match(userInput, randomNumber)){
             System.out.println(String.format(WIN_GAME_FORMAT,baseBallGameSize));
             return false;

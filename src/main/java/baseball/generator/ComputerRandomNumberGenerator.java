@@ -1,13 +1,14 @@
 package baseball.generator;
 
+import baseball.BaseBallNumberCollection;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerRandomNumberGenerator implements RandomNumberGenerator<List<Integer>, ComputerRandomNumber> {
+public class ComputerRandomNumberGenerator implements RandomNumberGenerator<BaseBallNumberCollection> {
     @Override
-    public ComputerRandomNumber generate(final Integer randomNumberSize) {
+    public BaseBallNumberCollection generate(final Integer randomNumberSize) {
         final List<Integer> computer = new ArrayList<>();
         while(computer.size() < randomNumberSize){
             int randomNumber = Randoms.pickNumberInRange(1,9);
@@ -15,21 +16,23 @@ public class ComputerRandomNumberGenerator implements RandomNumberGenerator<List
                 computer.add(randomNumber);
             }
         }
-        return new ComputerRandomNumber(computer);
+        return new BaseBallNumberCollection(computer);
     }
 
     @Override
-    public Boolean match(final List<Integer> input, final ComputerRandomNumber generatedNumber) {
-        final BaseBallScore baseBallScore = calculateBaseBallScore(generatedNumber, input);
+    public Boolean match(final BaseBallNumberCollection matchingTargetNumber,
+                         final BaseBallNumberCollection generatedNumber) {
+        final BaseBallScore baseBallScore = calculateBaseBallScore(matchingTargetNumber,generatedNumber);
         System.out.println(baseBallScore);
         return baseBallScore.verifyingWinGame();
     }
 
-    private BaseBallScore calculateBaseBallScore(final ComputerRandomNumber randomNumber, final List<Integer> input) {
+    private BaseBallScore calculateBaseBallScore(final BaseBallNumberCollection matchingTargetNumber,
+                                                 final BaseBallNumberCollection randomNumber) {
         final BaseBallScore baseBallScore = new BaseBallScore(randomNumber.size());
-        for(int i=0;i<input.size();i++){
-            final Integer findNumberIndex = randomNumber.indexOf(input.get(i));
-            if(findNumberIndex.equals(ComputerRandomNumber.NOT_FOUND)){
+        for(int i=0;i<matchingTargetNumber.size();i++){
+            final Integer findNumberIndex = randomNumber.indexOf(matchingTargetNumber.get(i));
+            if(findNumberIndex.equals(BaseBallNumberCollection.NOT_FOUND)){
                 baseBallScore.increaseNothing();
             }else{
                 if(findNumberIndex==i) baseBallScore.increaseStrike();
