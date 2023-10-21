@@ -48,7 +48,26 @@ public class Application {
     }
 
     public static void repeatRound(List<Integer> computer) {
+        boolean isContinue = true;
+        int inputLength = 3;
 
+        List<Integer> user;
+
+        Result result;
+
+        String numberInputRequestMessage = "숫자를 입력해주세요 : ";
+
+        while (isContinue) {
+            output(numberInputRequestMessage);
+
+            user = input(inputLength);
+
+            result = compareTwoNumber(computer, user);
+
+            output(result.message);
+
+            isContinue = result.isContinue;
+        }
     }
 
     public static List<Integer> generateRandomNumber() {
