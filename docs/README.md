@@ -71,7 +71,7 @@
 - `Answer`
     - [ ] 정답과 입력값을 비교하여 `Score`반환.
 - `Ball`
-    - [ ] `isEmpty()`: 볼이 비어있는지 확인.
+    - [x] `isEmpty()`: 볼이 비어있는지 확인.
 - `Strike`
     - [ ] `isEmpty()`: 스트라이크가 비어있는지 확인.
     - [ ] `isFullCount()`: 3스트라이크인지 확인.
