@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.dto.Score;
 import baseball.enums.GameOverSignal;
 import baseball.enums.Message;
 import camp.nextstep.edu.missionutils.Console;
@@ -20,35 +21,47 @@ public class Application {
         do {
             List<Integer> pickedIntegers = getRandomIntegers();
 
-            int strikeCount = 0;
-            int ballCount;
-            while (strikeCount < 3) {
+            while (true) {
                 printMessage(Message.INPUT_NUMBER_PROMPT);
-                String inputValue = Console.readLine();
 
-                validateInput(inputValue);
+                String inputValue = getInputValue();
+                Score score = getScoreFrom(inputValue, pickedIntegers);
 
-                strikeCount = 0;
-                ballCount = 0;
-        Console.close();
+                printScoreBoardMessageFrom(score);
+                printIfStrikeOutFrom(score);
 
-                for (int i = 0; i < inputValue.length(); i++) {
-                    for (int j = 0; j < pickedIntegers.size(); j++) {
-                        if (inputValue.charAt(i) == pickedIntegers.get(j).toString().charAt(0) && i == j) {
-                            strikeCount++;
-                            break;
-                        }
-
-                        if (inputValue.charAt(i) == pickedIntegers.get(j).toString().charAt(0)) {
-                            ballCount++;
-                        }
-                    }
+                if (score.getStrikeCount() == 3) {
+                    break;
                 }
-                printScoreBoardMessage(strikeCount, ballCount);
-                printIfStrikeOut(strikeCount);
             }
             askIfContinue();
         } while (isGameToBeContinued);
+        Console.close();
+    }
+
+    private static Score getScoreFrom(String inputValue, List<Integer> pickedIntegers) {
+        Score score = Score.builder().build();
+
+        for (int i = 0; i < inputValue.length(); i++) {
+            for (int j = 0; j < pickedIntegers.size(); j++) {
+                if (inputValue.charAt(i) == pickedIntegers.get(j).toString().charAt(0) && i == j) {
+                    score.increaseStrikeCount();
+                    break;
+                }
+
+                if (inputValue.charAt(i) == pickedIntegers.get(j).toString().charAt(0)) {
+                    score.increaseBallCount();
+                }
+            }
+        }
+        return score;
+    }
+
+    private static String getInputValue() {
+        String inputValue = Console.readLine();
+
+        validateInput(inputValue);
+        return inputValue;
     }
 
     private static void validateInput(String inputValue) {
@@ -69,20 +82,20 @@ public class Application {
         return pickedIntegers;
     }
 
-    private static void printScoreBoardMessage(int strikeCount, int ballCount) {
-        if (strikeCount + ballCount == 0) {
+    private static void printScoreBoardMessageFrom(Score score) {
+        if (score.getStrikeCount() + score.getBallCount() == 0) {
             printMessage(Message.NOTHING);
             return;
         }
 
-        String ballMessage = (ballCount != 0) ? ballCount + Message.BALL.getMessage() : "";
-        String strikeMessage = (strikeCount != 0) ? strikeCount + Message.STRIKE.getMessage() : "";
+        String ballMessage = (score.getBallCount() != 0) ? score.getBallCount() + Message.BALL.getMessage() : "";
+        String strikeMessage = (score.getStrikeCount() != 0) ? score.getStrikeCount() + Message.STRIKE.getMessage() : "";
 
         System.out.println((ballMessage + " " + strikeMessage).trim());
     }
 
-    private static void printIfStrikeOut(int strikeCount) {
-        if (strikeCount == 3) {
+    private static void printIfStrikeOutFrom(Score score) {
+        if (score.getStrikeCount() == 3) {
             printMessage(Message.END_MESSAGE);
         }
     }
