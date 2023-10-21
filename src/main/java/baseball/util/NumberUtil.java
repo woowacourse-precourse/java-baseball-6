@@ -1,7 +1,9 @@
 package baseball.util;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class NumberUtil {
     public static List<Integer> converStringToList(String numberString) {
@@ -46,6 +48,16 @@ public class NumberUtil {
             if (integerNum < 1 || integerNum > 9) {
                 throw new IllegalArgumentException("입력되는 각 숫자는 1 이상 9 이하의 정수로 이루어져야 합니다.");
             }
+        }
+    }
+
+    protected static void validateUnique(String number) {
+        Set<Character> numberSet = new HashSet<>();
+        for (char digit : number.toCharArray()) {
+            if (numberSet.contains(digit)) {
+                throw new IllegalArgumentException("입력되는 각 숫자는 서로 다른 숫자이어야 합니다.");
+            }
+            numberSet.add(digit);
         }
     }
 }
