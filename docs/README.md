@@ -62,17 +62,17 @@
     - [x] 게임 성공 메세지 (종료 메시지)
 
 ### Controller
-- [ ] GameController
+- [x] GameController
     - [x] Comuputer Model 생성
         - [x] RandomUtil로 생성한 숫자 저장
-    - [ ] 게임 시작
+    - [x] 게임 시작
         - [x] 게임 시작 메시지 출력 (OutputView 사용)
-        - [ ] 사용자에게 숫자 입력 받기 (InputView 사용)
-    - [ ] 유저의 입력 String -> List<Integer> 로 변환 기능
-    - [ ] 입력 값과 Comuputer에 저장된 숫자 값 비교후 힌트 제공 (OutputView 사용)
-        - [ ] 입력 값을 Computer Model에서 비교 후 Strike 수 , Ball 수 List 배열 받기
+        - [x] 사용자에게 숫자 입력 받기 (InputView 사용)
+    - [x] 입력 값과 Comuputer에 저장된 숫자 값 비교후 힌트 제공
+        - [x] 입력 값을 Computer Model에서 비교 후 Strike 수 , Ball 수 List 배열 받기
         - [x] 비교 결과 받은 ball,strike List를 출력 메시지로 전환 기능
-        - [ ] 3스트라이크면 게임 종료
+        - [x] 3스트라이크면 게임 종료
     - [x] 게임 종료
         - [x] 종료 메시지 출력
         - [x] 재시작 , 종료 여부 입력 받기 (InputView 사용)
+    - [x] 유저의 입력 String -> List<Integer> 로 변환 기능

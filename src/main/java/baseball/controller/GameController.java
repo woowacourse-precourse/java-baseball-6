@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
+    private final static String GAME_RETRY_VALUE = "1";
     private final static String NOTHING_STRING = "낫싱";
     private final static String BALL_STRING = "볼";
     private final static String STRIKE_STRING = "스트라이크";
@@ -21,6 +22,16 @@ public class GameController {
     private final static OutputView outputView = new OutputView();
     public void start(){
         outputView.printGameStartMessage();
+        boolean gameLoopCommand = true;
+        while (gameLoopCommand){
+            List<Integer> userInputNumber = transferStringToIntegerList(inputView.readBaseballNumber());
+            List<Integer> ballAndStrikeCount = computer.compareNumberList(userInputNumber);
+            String hintMessage = provideStrikeAndBallCount(ballAndStrikeCount.get(LIST_BALL_INDEX),ballAndStrikeCount.get(LIST_STRIKE_INDEX));
+            outputView.printGameHint(hintMessage);
+            if (ballAndStrikeCount.get(LIST_STRIKE_INDEX) == 3){
+                gameLoopCommand = gameRetry();
+            }
+        }
     }
     private static List<Integer> transferStringToIntegerList(String targetString){
         String[] stringList = targetString.split("");
@@ -45,7 +56,7 @@ public class GameController {
         outputView.printGameEndMessage();
         outputView.printGameRetryMessage();
         String command = inputView.readRetryCommand();
-        if (command.equals("1")){
+        if (command.equals(GAME_RETRY_VALUE)){
             return true;
         }
         return false;
