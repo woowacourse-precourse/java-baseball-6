@@ -31,14 +31,14 @@ public class BaseballGameService {
 
     }
 
-    public void checkRestart(){
+    public boolean checkRestart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String checkString = Console.readLine();
 
         baseballGameValidation.validateString(checkString);
 
-        if(checkString.equals("1"))
-            playGame();
+        return (checkString.equals("1"));
+
     }
 
     public List<Integer> initComputerBaseBallNumber() {
