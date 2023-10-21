@@ -1,33 +1,41 @@
 package baseball.view;
 
+import static baseball.config.OutputViewConfig.GAME_START;
+import static baseball.config.OutputViewConfig.NOTHING;
+import static baseball.config.OutputViewConfig.REQUEST_PLAYER_NUMBER;
+import static baseball.config.OutputViewConfig.REQUEST_RESTART_OR_EXIT;
+
 public class OutputView {
+    public static void printRequestNumber() {
+        System.out.print(REQUEST_PLAYER_NUMBER.getMessage());
+    }
 
     public static void printGameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START.getMessage());
     }
 
-    public static void printRequestNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
-    }
 
     public static void printRequestRestartOrExit() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(REQUEST_RESTART_OR_EXIT.getMessage());
     }
 
     public static void printNothing() {
-        System.out.print("낫싱");
+        System.out.println(NOTHING.getMessage());
     }
 
     public static void printBallCount(int ballCount) {
-        System.out.print(ballCount + "볼");
+        String result = String.format("%d볼", ballCount);
+        System.out.println(result);
     }
 
     public static void printStrikeCount(int strikeCount) {
-        System.out.print(strikeCount + "스트라이크");
+        String result = String.format("%d스트라이크", strikeCount);
+        System.out.println(result);
     }
-    
+
     public static void printBallAndStrikeCount(int ballCount, int strikeCount) {
-        System.out.print(ballCount + "볼 " + strikeCount + "스트라이크");
+        String result = String.format("%d볼 %d스트라이크", ballCount, strikeCount);
+        System.out.println(result);
     }
 
     public static void printEmptyLine() {

@@ -1,7 +1,10 @@
 package baseball.model;
 
-import static baseball.config.Config.NUMBER_LENGTH;
-import static baseball.validator.NumberValidator.validateNumber;
+import static baseball.config.NumberConfig.NUMBER_LENGTH;
+import static baseball.validator.NumberValidator.validateContainDuplicatedNumber;
+import static baseball.validator.NumberValidator.validateContainOnlyNumber;
+import static baseball.validator.NumberValidator.validateEmpty;
+import static baseball.validator.NumberValidator.validateNumberLength;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.joining;
@@ -12,11 +15,14 @@ import java.util.List;
 
 public class Number {
 
-    private String number;
+    private final String value;
 
-    private Number(String number) {
-        validateNumber(number);
-        this.number = number;
+    private Number(String value) {
+        validateEmpty(value);
+        validateNumberLength(value);
+        validateContainOnlyNumber(value);
+        validateContainDuplicatedNumber(value);
+        this.value = value;
     }
 
     public static Number generateRandomNumber(final int numberLength) {
@@ -38,8 +44,8 @@ public class Number {
 
     public int countBallCount(final Number computerNumber) {
         int ret = 0;
-        String playerNumber = this.getNumber();
-        String compareNumber = computerNumber.getNumber();
+        String playerNumber = this.getValue();
+        String compareNumber = computerNumber.getValue();
 
         for (int i = 0; i < playerNumber.length(); i++) {
             char playerDigit = playerNumber.charAt(i);
@@ -54,10 +60,10 @@ public class Number {
 
     public int countStrikeCount(final Number computerNumber) {
         int strikeCount = 0;
-        String playerNumber = this.getNumber();
-        String compareNumber = computerNumber.getNumber();
+        String playerNumber = this.getValue();
+        String compareNumber = computerNumber.getValue();
 
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
+        for (int i = 0; i < NUMBER_LENGTH.getValue(); i++) {
             if (playerNumber.charAt(i) == compareNumber.charAt(i)) {
                 strikeCount++;
             }
@@ -74,7 +80,7 @@ public class Number {
     /**
      * getNumber() 외부 객체에서 값을 꺼내지 못하도록 private로 제한
      */
-    public String getNumber() {
-        return number;
+    public String getValue() {
+        return value;
     }
 }
