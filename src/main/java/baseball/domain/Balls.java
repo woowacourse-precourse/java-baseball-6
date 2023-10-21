@@ -27,16 +27,18 @@ public class Balls {
     }
 
     private void validate(List<Ball> balls) {
+        validateNotNullAndNotEmpty(balls);
         validateNumeric(balls);
         validateNumberOfBalls(balls);
         validateDuplicates(balls);
     }
+    private void validateNotNullAndNotEmpty(List<Ball> balls) {
+        if (balls == null || balls.isEmpty()) {
+            throwIllegalArgumentException();
+        }
+    }
 
     private void validateNumeric(List<Ball> balls) {
-        if (balls == null) {
-            throwIllegalArgumentException(); // NullPointerException 이 좋아보임
-        }
-
         for (Ball ball : balls) {
             if (ball.number() == null || ball.number() < MIN_BALL || ball.number() > MAX_BALL) {
                 throwIllegalArgumentException();
