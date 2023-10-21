@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.utils;
 
 public interface NumberGenerator {
 

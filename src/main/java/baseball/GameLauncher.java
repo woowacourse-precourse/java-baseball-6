@@ -5,7 +5,7 @@ import static baseball.utils.GameStatusCommand.QUIT;
 import baseball.domain.BallCounter;
 import baseball.domain.ComputerNumbers;
 import baseball.domain.ComputerNumbersGenerator;
-import baseball.domain.NumberGenerator;
+import baseball.utils.NumberGenerator;
 import baseball.domain.PlayerNumbers;
 import baseball.utils.GameStatusCommand;
 import baseball.view.InputView;

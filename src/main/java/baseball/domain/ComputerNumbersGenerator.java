@@ -3,6 +3,8 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.utils.NumberGenerator;
+
 public class ComputerNumbersGenerator {
 
     public static ComputerNumbers generate(NumberGenerator numberGenerator, int digitNumber) {
