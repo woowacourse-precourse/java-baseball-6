@@ -88,7 +88,15 @@ public class Player {
         return computer;
     }
 
+//    외부에서 들어온 숫자(다른 사용자가 추측한 답)와 해당 사용자의 답을 비교
+    
 
+
+
+    @Override
+    public String toString() {
+        return numberList.toString();
+    }
 
 
 
