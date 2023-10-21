@@ -47,11 +47,6 @@ public class GameController {
         }
     }
 
-    private boolean restartGame() {
-        outputView.inputGameRestartMessage();
-        return gameResultService.restartGame(inputView.requestRestartChoice());
-    }
-
     private Balls getPlayerBalls() {
         return gameSetupService.generatePlayerBalls(inputView.requestPlayerGuess());
     }
@@ -62,6 +57,11 @@ public class GameController {
 
     private Game updateGameState(Game game, GameResult gameResult) {
         return gameLogicService.updateGameStatusOnThreeStrike(game, gameResult); // 플레이어가 맞췄으면 게임 종료;
+    }
+
+    private boolean restartGame() {
+        outputView.inputGameRestartMessage();
+        return gameResultService.restartGame(inputView.requestRestartChoice());
     }
 
 }
