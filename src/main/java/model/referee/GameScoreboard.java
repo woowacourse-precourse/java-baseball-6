@@ -22,4 +22,21 @@ public class GameScoreboard {
     public GameScoreboard incrementBall() {
         return new GameScoreboard(strike, ball + 1);
     }
+
+    public boolean isThreeStrike() {
+        return this.strike == 3;
+    }
+
+    public boolean isNothing() {
+        return ball == 0 && strike == 0;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
 }

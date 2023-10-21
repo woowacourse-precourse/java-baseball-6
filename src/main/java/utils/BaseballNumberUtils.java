@@ -17,7 +17,7 @@ public class BaseballNumberUtils {
         }
 
         if (input.length() != BASEBALL_GAME_NUMBER_LENGTH) {
-            return false;
+            throw new IllegalArgumentException("올바른 길이의 문자를 입력해주세요.");
         }
 
         List<Integer> numbers = new ArrayList<>();
