@@ -27,5 +27,7 @@ public class GameController {
             computerNumber.verifyNumber(userNumber.getNumber());
             outputView.printResult(computerNumber.getStrike(), computerNumber.getBall());
         }
+
+        inputView.printCorrect();
     }
 }
