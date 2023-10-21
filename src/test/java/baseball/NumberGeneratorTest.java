@@ -26,6 +26,8 @@ class NumberGeneratorTest {
         NumberGenerator numberGenerator = new NumberGenerator();
         for (int i = 0; i < 1000; i++) {
             List<Integer> randomList = numberGenerator.makeRandomAnswerList();
+            //확인차 출력
+            System.out.println(randomList);
         }
     }
 

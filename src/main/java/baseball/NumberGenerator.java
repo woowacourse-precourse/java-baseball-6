@@ -10,7 +10,6 @@ import java.util.Random;
 public class NumberGenerator {
     private final int maxNumber = 9;
     private final int minNumber = 1;
-    private List<Integer> answer = new ArrayList<Integer>();
 
     public NumberGenerator() {
     }
@@ -23,15 +22,11 @@ public class NumberGenerator {
                 answerList.add(randomNumber);
             }
         }
-        this.answer = answerList;
         return answerList;
     }
 
     public int generateRandomNumber() {
         final int randomNumber = Randoms.pickNumberInRange(minNumber, maxNumber);
         return randomNumber;
-    }
-    public List<Integer> getAnswer() {
-        return this.answer;
     }
 }
