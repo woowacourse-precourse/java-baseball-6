@@ -25,8 +25,9 @@ public class PrintManager {
             System.out.println(ball + "볼");
         }
 
-        if (ball != 0 && strike != 0)
-        System.out.println(ball + "볼 " + strike + "스트라이크");
+        if (ball != 0 && strike != 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
 
     }
 
