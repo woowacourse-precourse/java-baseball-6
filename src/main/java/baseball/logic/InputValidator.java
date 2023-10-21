@@ -23,7 +23,7 @@ public class InputValidator {
     public List<Integer> convertStrToList(String inputNumbers) {
         List<Integer> numberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            numberList.add((int) inputNumbers.charAt(i));
+            numberList.add((int) inputNumbers.charAt(i) - '0');
         }
         return numberList;
     }
