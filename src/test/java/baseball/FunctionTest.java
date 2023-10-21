@@ -1,6 +1,8 @@
 package baseball;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
@@ -55,6 +57,19 @@ public class FunctionTest {
         camp.nextstep.edu.missionutils.Console.close();
 
         assertEquals(List.of(6, 1, 8), userInputList2);
+    }
+
+    @Test
+    void 사용자의_잘못된_입력을_검사한다() {
+        assertThrows(IllegalArgumentException.class, () -> Application.vaildUserTrialInput("12"));
+        assertThrows(IllegalArgumentException.class, () -> Application.vaildUserTrialInput("1a1"));
+        assertThrows(IllegalArgumentException.class, () -> Application.vaildUserTrialInput("101"));
+        assertThrows(IllegalArgumentException.class, () -> Application.vaildUserTrialInput("121"));
+        assertDoesNotThrow(() -> {
+            Application.vaildUserTrialInput("123");
+            Application.vaildUserTrialInput("456");
+            Application.vaildUserTrialInput("789");
+        });
     }
 
     @Test
