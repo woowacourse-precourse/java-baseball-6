@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
+
     public BaseballGame(){}
 
     private int countBall(
-            final ComputerNumber computer, final int playerNumber, final int computerNumber){
+            final ComputerNumber computer, final int guessNumber, final int computerNumber){
         List<Integer> computerNumbers = computer.getNumbers();
-        if(computerNumbers.contains(playerNumber)
-                && computerNumber != playerNumber)
+        if(computerNumbers.contains(guessNumber)
+                && computerNumber != guessNumber)
             return 1;
         return 0;
     }
@@ -31,8 +32,8 @@ public class BaseballGame {
         }
         return totalBall;
     }
-    private int countStrike(final int computerNumber,final int playerNumber){
-        if(computerNumber == playerNumber)
+    private int countStrike(final int computerNumber,final int guessNumber){
+        if(computerNumber == guessNumber)
             return 1;
         return 0;
     }
@@ -58,4 +59,5 @@ public class BaseballGame {
 
         return countList;
     }
+
 }
