@@ -11,6 +11,9 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
+            int strike = 0;
+            int ball = 0;
+
             System.out.printf("숫자를 입력하세요 : ");
             String inputString = Console.readLine();
             Set<Character> inputArr = new HashSet<>();
@@ -19,6 +22,14 @@ public class Application {
             }
             if (inputArr.size() != 3 || inputString.contains("0")) {
                 throw new IllegalArgumentException();
+            }
+
+            for (int i = 0; i < inputString.length(); i++) {
+                if (randomNumber.getRandomNumber().get(i).equals(Character.getNumericValue(inputString.charAt(i)))) {
+                    strike += 1;
+                } else if (randomNumber.getRandomNumber().contains(Character.getNumericValue(inputString.charAt(i)))) {
+                    ball += 1;
+                }
             }
         }
     }
