@@ -37,10 +37,9 @@ public class GameController {
 
         while (!isGameEnd()) {
             askNumberInput();
-
-            prepareGameJudgementWithComputer(computerNumber);
-            printGameJudgement();
+            playRound(computerNumber);
         }
+
         printGameEnd();
         askResumeInput();
         updateResumeNumber();
@@ -57,6 +56,11 @@ public class GameController {
 
     private static void askNumberInput() {
         AskController.askNumberInput();
+    }
+
+    private void playRound(final int computerNumber) {
+        prepareGameJudgementWithComputer(computerNumber);
+        printGameJudgement();
     }
 
     private void prepareGameJudgementWithComputer(int computerNumber) {
