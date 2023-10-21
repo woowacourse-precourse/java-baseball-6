@@ -5,7 +5,6 @@ import baseball.model.Player;
 import baseball.model.PlayerAnswer;
 import baseball.view.GameView;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
@@ -19,17 +18,19 @@ public class GameController {
     PlayerAnswer playerAnswer = new PlayerAnswer();
 
     public void playGame() {
+
         boolean proceedGameFlag = true;
 
+        gameView.printStartGameMessage();
+
         while (proceedGameFlag) {
-            gameView.printStartGameMessage();
             computer.setComputerRandomNumber(computerController.getComputerRandomNumber());
-            repeatFindAnswer();
+            proceedGameFlag = repeatFindAnswer();
 
         }
     }
 
-    private void repeatFindAnswer() {
+    private boolean repeatFindAnswer() {
         boolean correctAnswerFlag = false;
 
         while (!correctAnswerFlag) {
@@ -41,13 +42,16 @@ public class GameController {
 
             if (correctAnswerFlag) {
                 gameView.printSuccessGameMessage();
+                String playerRetry = Console.readLine();
+                correctAnswerFlag = retryGame(playerRetry);
+                break;
             }
 
 
 
         }
 
-
+        return correctAnswerFlag;
     }
 
     private boolean compareAnswer(List<Integer> computerNumberList, List<Integer> playerNumberList) {
@@ -69,10 +73,20 @@ public class GameController {
         }
         // ==================================================================================================
 
-
         return playerAnswer.getStrike() == 3;
     }
 
+    private boolean retryGame(String playerOption) {
+
+        switch (playerOption) {
+            case "1" : return true;
+
+            case "2" : return false;
+
+        }
+
+        return false;
+    }
 
 
 
