@@ -11,14 +11,10 @@ public class GameController {
     private final OutputView outputView = new OutputView();
 
     public void process() {
-        try {
-            boolean continueGame = true;
+        boolean continueGame = true;
 
-            while(continueGame) {
-                continueGame = gameStart();
-            }
-        } catch(IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        while(continueGame) {
+            continueGame = gameStart();
         }
     }
 
