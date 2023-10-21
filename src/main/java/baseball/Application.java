@@ -1,9 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static repository.Computer.getComputerPicks;
@@ -84,16 +82,5 @@ public class Application {
     private record Result(int balls, int strikes) {
     }
 
-    private static List<Integer> getComputerPicks() {
-        List<Integer> computer = new ArrayList<>();
 
-        while (computer.size() < TOTAL_CARDS) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-
-        return computer;
-    }
 }
