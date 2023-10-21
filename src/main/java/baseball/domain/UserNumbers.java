@@ -7,11 +7,11 @@ public final class UserNumbers {
     private final List<Integer> numbers;
 
     public UserNumbers(List<Integer> numbers) {
-        validate(numbers);
         this.numbers = numbers;
+        validate();
     }
 
-    private void validateSize(List<Integer> numbers) {
+    private void validateSize() {
         if (numbers.size() != 3) {
             throw new IllegalArgumentException();
         }
@@ -23,8 +23,8 @@ public final class UserNumbers {
         }
     }
 
-    private void validate(List<Integer> numbers) {
-        validateSize(numbers);
+    private void validate() {
+        validateSize();
         List<Integer> compare = new ArrayList<>();
         for (Integer number : numbers) {
             validateNumber(compare, number);
