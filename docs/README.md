@@ -36,6 +36,8 @@
     - [x] 무작위 `Balls`을 생성 (게임에서의 정답)
         - [x] `camp.nextstep.edu.missionutils.Randoms`library의 `pickNumberInRange()` 활용
         - [x] 중복값 제외
+    - [x] `List<Integer>`를 `Balls`로 변환
+    - [x] `String`를 `Balls`로 변환
 
 ---
 
