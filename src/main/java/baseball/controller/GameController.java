@@ -16,7 +16,7 @@ public class GameController {
     private final ResumeNumber resumeNumber;
 
     public GameController() {
-        this.resumeNumber = ResumeNumber.from(PLAY_WANT);
+        this.resumeNumber = ResumeNumber.createDefault();
     }
 
     public void playBaseball() {

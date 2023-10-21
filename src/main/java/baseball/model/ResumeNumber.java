@@ -10,8 +10,8 @@ public class ResumeNumber {
         this.resumeNumber = number;
     }
 
-    public static ResumeNumber from(final int number) {
-        return new ResumeNumber(number);
+    public static ResumeNumber createDefault() {
+        return new ResumeNumber(PLAY_WANT);
     }
 
     public void updateNumber(final int number) {
