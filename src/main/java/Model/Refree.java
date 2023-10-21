@@ -33,11 +33,13 @@ public class Refree {
         }
         return false;
     }
-    public boolean GameRestart(){
-        int choice=Integer.valueOf(readLine());
-        if(choice==1){
+
+    public boolean GameRestart() {
+        System.out.println(Ment.getMentRestart());
+        int choice = Integer.valueOf(readLine());
+        if (choice == 1) {
             return true;
-        }else if(choice==2){
+        } else if (choice == 2) {
             return false;
         }
         ExceptionHandling.ExceptionNotOneTwo();

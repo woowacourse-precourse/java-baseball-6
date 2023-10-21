@@ -18,7 +18,8 @@ public abstract class ExceptionHandling {
             }
         }
     }
+
     public static void ExceptionNotOneTwo() {
-        throw new IllegalArgumentException("1과 2가 아닌 입력")
+        throw new IllegalArgumentException("1과 2가 아닌 입력");
     }
 }

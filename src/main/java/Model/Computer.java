@@ -7,9 +7,6 @@ import java.util.ArrayList;
 public class Computer {
     private static ArrayList<Integer> Answer;
 
-    public Computer() {
-        this.CreateAnswer();
-    }
 
     public void CreateAnswer() {
         Answer = new ArrayList<>();

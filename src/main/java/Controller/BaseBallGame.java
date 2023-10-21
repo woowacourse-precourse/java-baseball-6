@@ -23,6 +23,7 @@ public class BaseBallGame {
     }
 
     public void run() {
+        computer.CreateAnswer();
         do {
             System.out.println(computer.getAnswer());
             PlayerNumbers = player.InputNumbers();
@@ -42,8 +43,11 @@ public class BaseBallGame {
                 isNothing = false;
             }
             GameResult.PrintResult(strike, ball, isNothing);
-            if(refree.GameClear(strike)){
-
+            if (refree.GameClear(strike)) {
+                if(refree.GameRestart()){
+                    this.run();
+                }
+                break;
             }
         } while (true);
     }
