@@ -34,5 +34,14 @@ class UserNumberTest {
                 .hasMessage("숫자를 입력해주세요");
     }
 
+    @DisplayName("사용자 수가 숫자값이 아니라면 에러 발생")
+    @Test
+    void inputNotDigitString(){
+        String inputNumber = "great";
+        assertThatThrownBy(() -> new UserNumber(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자를 입력해주세요");
+    }
+
 
 }
