@@ -23,7 +23,7 @@ class RefereeTest {
         assertThat(referee.getAnswerList()).isEqualTo(answerList);
     }
 
-    @DisplayName("유저의 숫자를 정답과 비교하여 볼을 판정하는 테스트")
+    @DisplayName("볼을 판정하는 테스트")
     @Test
     void judgeBallTest() {
         //given
@@ -38,7 +38,20 @@ class RefereeTest {
         assertThat(result).isEqualTo(1);
     }
 
-
+    @DisplayName("스트라이크를 판정하는 테스트")
+    @Test
+    void judgeStrikeTest() {
+        //given
+        int firstNumber = 4;
+        int secondNumber = 9;
+        int thirdNumber = 2;
+        List<Integer> answerList = List.of(firstNumber, secondNumber, thirdNumber);
+        Referee referee = new Referee(answerList);
+        //when
+        int result = referee.judgeNumber(thirdNumber, 2);
+        //then
+        assertThat(result).isEqualTo(2);
+    }
 
     @Test
     void judgeNumber() {
