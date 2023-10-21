@@ -23,7 +23,7 @@ public class GameProcessor {
     private static List<String> generateUserNumberList(Data data) {
         List<String> userNumberList = new ArrayList<>();
 
-        String userNumberString = data.getInputData();
+        String userNumberString = data.getUserInput();
 
         for (int i = 0; i < DIGIT_SIZE; i++) {
             char digitChar = userNumberString.charAt(i);
@@ -76,7 +76,7 @@ public class GameProcessor {
     }
 
     public void IllegalArgumentException(Data data) {
-        if ((data.getInputData().length()) > 3) {
+        if ((data.getUserInput().length()) > 3) {
             System.out.println("3보다 큽니다");
         }
     }

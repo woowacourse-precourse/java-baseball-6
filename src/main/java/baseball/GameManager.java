@@ -7,7 +7,7 @@ public class GameManager {
 
     public void proceedIntro() {
         messageManager.showIntro();
-        data.setInputData(messageManager.getInputResponse());
+        data.setUserInput(messageManager.getUserInput());
 
         gameProcessor.IllegalArgumentException(data);
     }
