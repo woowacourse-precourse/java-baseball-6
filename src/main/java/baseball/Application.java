@@ -8,8 +8,6 @@ public class Application {
 
         BaseballApp baseballApp = new BaseballApp();
         baseballApp.run();
-
     }
-
 
 }

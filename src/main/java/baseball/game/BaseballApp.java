@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class BaseballApp {
 
@@ -13,7 +14,6 @@ public class BaseballApp {
         this.computer = new Computer();
     }
 
-    //야구게임 앱을 키면 난수가 생성되고, 게임이 시작된다.
     public void run() {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -22,24 +22,21 @@ public class BaseballApp {
 
     }
 
-    //게임을 진행한다.
     public void startGame() {
 
         boolean power = true;
-        boolean result = false;
 
         while(power) {
 
-            //입력을 받고
             String input = getInput();
 
-            //유효한 입력이라면 컴퓨터와 대결하도록
             if(checkInput(input)) {
-                result = computer.compare(transToList(input));
-            }
+                Map<String, Integer> compareMap = computer.compare(transToList(input));
+                boolean result = computer.showResult(compareMap);
 
-            if(result) {
-                power = computer.gameWin();
+                if(result) {
+                    power = computer.gameOver();
+                }
             }
         }
     }

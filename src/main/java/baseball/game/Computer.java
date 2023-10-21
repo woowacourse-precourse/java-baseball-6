@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Computer {
 
@@ -22,27 +24,31 @@ public class Computer {
         }
     }
 
-    public boolean compare(List<Integer> inputList) {
+    public Map<String, Integer> compare(List<Integer> inputList) {
 
-        int strikeCnt = 0;
-        int ballCnt = 0;
-        boolean winFlag = false;
+        Map<String, Integer> compareMap = new HashMap<>();
+
+        compareMap.put("strikeCnt", 0);
+        compareMap.put("ballCnt", 0);
 
         for(int i=0; i<inputList.size(); i++) {
 
-            //값이 있다면
             if(randomNums.contains(inputList.get(i))){
-
-                //자리가 같다면 strike, 자리는 안 같다면 ball
                 if(randomNums.get(i) == inputList.get(i)) {
-                    strikeCnt++;
+                    compareMap.replace("strikeCnt", compareMap.get("strikeCnt") + 1);
                 } else {
-                    ballCnt++;
+                    compareMap.replace("ballCnt", compareMap.get("ballCnt") + 1);
                 }
-            } else {
-                continue;
             }
         }
+
+        return compareMap;
+    }
+
+    public boolean showResult(Map<String, Integer> compareMap) {
+
+        Integer strikeCnt = compareMap.get("strikeCnt");
+        Integer ballCnt = compareMap.get("ballCnt");
 
         if(strikeCnt==0 && ballCnt == 0) {
             System.out.println("낫싱");
@@ -55,22 +61,22 @@ public class Computer {
         }
 
         if(strikeCnt == 3) {
-            winFlag = true;
+            return true;
         }
 
-        return winFlag;
+        return false;
     }
 
-    public boolean gameWin() {
+    public boolean gameOver() {
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        String reGame = Console.readLine();
+        String gameOverCode = Console.readLine();
 
-        if(reGame.equals("1")) {
+        if(gameOverCode.equals("1")) {
             genNumbers();
-        } else if(reGame.equals("2")) {
+        } else if(gameOverCode.equals("2")) {
             return false;
         } else {
             throw new IllegalArgumentException("1이나 2만 입력해주세요");
