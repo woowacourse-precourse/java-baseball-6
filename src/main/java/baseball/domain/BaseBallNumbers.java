@@ -3,7 +3,11 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseBallNumbers {
+public final class BaseBallNumbers {
+
+    public static final int MAX_BASE_BALL_SIZE = 3;
+    public static final int MIN_BASE_BALL_NUMBER = 1;
+    public static final int MAX_BASE_BALL_NUMBER = 9;
 
     private final List<Integer> baseballNumbers;
 
