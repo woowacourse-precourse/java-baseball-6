@@ -3,17 +3,20 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 class Game {
-    public int answer;
-    Game(int answer) {
+    public List<Integer> answer;
+    Game(List<Integer> answer) {
         this.answer = answer;
     }
 
     void run() {
         while(true) {
-            int query = this.askQuery();
+            List<Integer> query = this.askQuery();
             int[] result = this.judge(query);
             this.printResult(result);
             if (result[0] == 3) {
@@ -23,61 +26,47 @@ class Game {
         }
     }
 
-    int askQuery() {
+    List<Integer> askQuery() {
         System.out.print("숫자를 입력해주세요 : ");
         String queryString = Console.readLine();
         try {
-            int query = Integer.parseInt(queryString);
-            if (query > 999 || query < 123)
-                throw new Exception();
-            int[] queryDigit = {
-                    query % 10,
-                    (query / 10) % 10,
-                    (query / 100) % 10};
-            if (queryDigit[0] == queryDigit[1] || queryDigit[1] == queryDigit[2] ||
-                    queryDigit[0] == queryDigit[2])
-                throw new Exception();
+            int queryInt = Integer.parseInt(queryString);
+            List<Integer> query = Arrays.asList(
+                    queryInt / 100,
+                    (queryInt / 10) % 10,
+                    queryInt % 10);
+            for (int i = 0; i < 3; i++) {
+                if (query.get(i) < 1 || query.get(i) > 9) {
+                    throw new Exception("Digits must be ranged 1 to 9");
+                }
+                for (int j = i + 1; j < 3; j++) {
+                    if (query.get(i).equals(query.get(j))) {
+                        throw new Exception("Digits must be unique");
+                    }
+                }
+            }
             return query;
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
     }
 
-    int[] judge(int query) {
+    int[] judge(List<Integer> query) {
         int[] result = {0, 0};
 
-        int[] queryDigit = {
-                query % 10,
-                (query / 10) % 10,
-                (query / 100) % 10};
-        int[] answerDigit = {
-                this.answer % 10,
-                (this.answer / 10) % 10,
-                (this.answer / 100) % 10};
+        // Ball judgement
+        Set<Integer> answerSet = new HashSet<>(this.answer);
+        Set<Integer> querySet = new HashSet<>(query);
+
+        querySet.retainAll(answerSet);
+        result[1] = querySet.size();
 
         // Strike judgement
         for (int i = 0; i < 3; i++) {
-            if (queryDigit[i] == answerDigit[i]) {
+            if (query.get(i).equals(this.answer.get(i))) {
                 result[0] += 1;
-                queryDigit[i] = 0;
-                answerDigit[i] = 0;
+                result[1] -= 1;
             }
-        }
-
-        // Ball judgement
-        boolean[] queryDigitDistribution = new boolean[10];
-        boolean[] answerDigitDistribution = new boolean[10];
-        for (int i = 0; i < 10; i++) {
-            queryDigitDistribution[i] = false;
-            answerDigitDistribution[i] = false;
-        }
-        for (int i = 0; i < 3; i++) {
-            queryDigitDistribution[queryDigit[i]] = true;
-            answerDigitDistribution[answerDigit[i]] = true;
-        }
-        for (int i = 1; i < 10; i++) {
-            if (queryDigitDistribution[i] & answerDigitDistribution[i])
-                result[1]++;
         }
 
         return result;
@@ -115,10 +104,9 @@ public class Application {
                     randomList.add(randomNumber);
                 }
             }
-            int randomInt = randomList.get(0) * 100 + randomList.get(1) * 10 + randomList.get(2);
 
             // Run game
-            Game game = new Game(randomInt);
+            Game game = new Game(randomList);
             game.run();
 
             // Ask and restart or break.
