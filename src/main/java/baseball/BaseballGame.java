@@ -31,7 +31,7 @@ public class BaseballGame {
 
     private void exist() {
         Mode mode = new Mode();
-        if (mode.isRestart()) {
+        if (mode.isRestart(mode.getMode())) {
             run();  // 재시작
         }  // 완전히 종료
     }
