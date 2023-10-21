@@ -40,4 +40,28 @@ class GameModelTest {
             gameModel.validateUserInput(input);
         });
     }
+
+    @DisplayName("사용자가 3자리 미만의 값을 입력할 경우 예외가 발생한다.")
+    @Test
+    public void inputLessThanRange() {
+        //when
+        String input = "12";
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> {
+            gameModel.validateUserInput(input);
+        });
+    }
+
+    @DisplayName("사용자가 3자리 초과의 값을 입력할 경우 예외가 발생한다.")
+    @Test
+    public void inputGreaterThanRange() {
+        //when
+        String input = "1234";
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> {
+            gameModel.validateUserInput(input);
+        });
+    }
 }
