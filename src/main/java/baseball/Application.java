@@ -7,10 +7,14 @@ import java.util.List;
 
 public class Application {
     static boolean askRestart() {
-        // TODO: add inputString validation
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputString = Console.readLine();
-        return inputString.equals("1");
+        if (inputString.equals("1"))
+            return true;
+        if (inputString.equals("2"))
+            return false;
+
+        throw new IllegalArgumentException("Input must be 1 or 2");
     }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
