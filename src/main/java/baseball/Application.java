@@ -69,7 +69,9 @@ public class Application {
                 }
             } catch (IllegalArgumentException e) {
                 if (e.getMessage().equals("over 3"))
-                    throw new IllegalArgumentException("잘못된 입력값입니다. 입력값은 3자리 숫자여야 합니다.\n 입력값: \"" + input + "\"");
+                    throw new IllegalArgumentException(
+                            "잘못된 입력값입니다. 입력값은 3자리 숫자여야 합니다.\n 입력값: \"" + input + "\""
+                    );
                 throw new IllegalArgumentException("잘못된 입력값입니다. 입력값은 숫자여야 합니다.\n 입력값: \"" + input + "\"");
             }
         }
@@ -81,7 +83,9 @@ public class Application {
         String restartCheck = Console.readLine();
         if (restartCheck.equals("1")) return true;
         else if (restartCheck.equals("2")) return false;
-        else throw new IllegalArgumentException("잘못된 입력값입니다. 입력값은 1과 2 중에 있어야 합니다.\n 입력값: \"" + restartCheck + "\"");
+        else throw new IllegalArgumentException(
+                "잘못된 입력값입니다. 입력값은 1과 2 중에 있어야 합니다.\n 입력값: \"" + restartCheck + "\""
+            );
     }
 
     public static void main(String[] args) {
