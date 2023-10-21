@@ -12,10 +12,15 @@ public class GameController {
     public void startProgram() {
         outputView.outputStartProgram();
         Game game = initGame();
+        compareNumber(game);
     }
 
     private Game initGame() {
         GameService gameService = new GameService();
         return Game.numberOf(gameService.getRandomNumbers());
+    }
+
+    private void compareNumber(Game game) {
+        game.compareNumber(inputView.inputNumber());
     }
 }
