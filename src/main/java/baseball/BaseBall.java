@@ -8,9 +8,9 @@ public class BaseBall {
         do {
             startGame();
             OutputPrint.printEnd(Ball.getMaximumBallSize());
-        }while(InputPrint.isEndOfGame());
+        }while(!InputPrint.isEndOfGame());
     }
-    public void startGame(){
+    private void startGame(){
         comBall.createRandBall();
 
         do {
