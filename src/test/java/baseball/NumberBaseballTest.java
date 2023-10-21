@@ -42,4 +42,11 @@ public class NumberBaseballTest {
         assertThat(game.validateUserNumber("234"))
                 .isEqualTo("234");
     }
+
+    @Test
+    @DisplayName("사용자 숫자를 넣고_컴퓨터 숫자와 모두 같다면_3 스트라이크를 반환한다")
+    void name() {
+        assertThat(game.compareNumber("111"))
+                .isEqualTo("3 스트라이크");
+    }
 }

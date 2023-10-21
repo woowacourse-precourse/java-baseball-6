@@ -21,4 +21,16 @@ public class Game {
                 userNumber.charAt(0) == userNumber.charAt(2) ||
                 userNumber.charAt(1) == userNumber.charAt(2);
     }
+
+    public String compareNumber(String userNumber) {
+        // String computerNumber = new Computer().generateRandomNumber();
+        int strike = 0;
+        String computerNumber = "111";
+        for (int i = 0; i < 3; i++) {
+            if (userNumber.charAt(i) == computerNumber.charAt(i)) {
+                strike++;
+            }
+        }
+        return strike + " 스트라이크";
+    }
 }
