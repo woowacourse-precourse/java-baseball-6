@@ -15,14 +15,14 @@ public class ResumeValidator {
         }
     }
 
+    private static boolean isInputLengthValid(final String input, final int resume, final int end) {
+        return input.length() == Math.min(resume, end);
+    }
+
     private static void assertInputValue(final String inputNumber, final int resume, final int end) {
         if (!isInputEqualToNumber(inputNumber, resume) && !isInputEqualToNumber(inputNumber, end)) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private static boolean isInputLengthValid(final String input, final int resume, final int end) {
-        return input.length() == Math.min(resume, end);
     }
 
     private static boolean isInputEqualToNumber(final String input, final int number) {
