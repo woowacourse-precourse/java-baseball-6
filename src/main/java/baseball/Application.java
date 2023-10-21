@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class Application {
     private static final boolean DEFAULT_STATE = false;
+    private static final String GAMECLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String GAMERESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -54,11 +56,9 @@ public class Application {
             // 입력 예외처리 - 플레이어가 세 자리 서로 다른 숫자로 구성된 정수형 숫자를 입력했는지 확인
             if (!isNumber(inputString)) {
                 throw new IllegalArgumentException();
-            }
-            else if (!isThreeDigitNumber(inputString)) {
+            } else if (!isThreeDigitNumber(inputString)) {
                 throw new IllegalArgumentException();
-            }
-            else if (!isDifferentDigits(inputString)) {
+            } else if (!isDifferentDigits(inputString)) {
                 throw new IllegalArgumentException();
             }
 
@@ -77,11 +77,55 @@ public class Application {
             */
 
             // TODO: 스트라이크, 볼, 낫싱의 여부를 확인
+            // 정답일 때, isGameClear = true;
 
+            int strikeCount = 0;
+            int ballCount = 0;
 
+            // 스트라이크, 볼의 개수 세기
+            for (int i = 0; i < player.length; i++) {
+                if (computer.get(i) == player[i]) {
+                    strikeCount++;
+                } else if (computer.contains(player[i])) {
+                    ballCount++;
+                }
+            }
+
+            // 스트라이크, 볼의 개수에 따른 결과 출력
+            if (strikeCount == 0 && ballCount == 0) {
+                System.out.println("낫싱");
+            } else if (ballCount > 0 && strikeCount > 0) {
+                System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            } else if (strikeCount > 0) {
+                System.out.println(strikeCount + "스트라이크");
+            } else {
+                System.out.println(ballCount + "볼");
+            }
+            // 만약 strikeCount == 3 이면, 모두 정답이므로 정답 처리
+            if (strikeCount == 3) {
+                isGameClear = true;
+                System.out.println(GAMECLEAR_MESSAGE);
+            }
         }
 
+        // 게임 종료 후, 재시작 여부 확인 메시지 출력
+        System.out.println(GAMERESTART_MESSAGE);
+        String choiceString = readLine();
 
+        // 입력 예외처리
+        if (!isNumber(choiceString)) {
+            throw new IllegalArgumentException();
+        }
+
+        int choice = Integer.parseInt(choiceString);
+
+        if (choice == 1) {
+            // 재시작
+            System.err.println("1번 - 재시작!");
+        } else if (choice == 2) {
+            // 게임 종료
+            System.err.println("2번 - 종료!");
+        }
     }
 
     // 입력 받은 값이 정수형인지 판별하는 메소드
