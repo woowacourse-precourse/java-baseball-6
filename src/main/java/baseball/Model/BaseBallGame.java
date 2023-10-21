@@ -3,6 +3,9 @@ package baseball.Model;
 import java.util.List;
 
 public class BaseBallGame {
+    /**
+     * Model은 Controller와 View에 관련된 코드가 있으면 안된다!!!!!!
+     */
     private List<Integer> computerNumber;
     private NumberGenerator numberGenerator;
     private boolean isGameOver;

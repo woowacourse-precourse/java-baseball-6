@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
+    /**
+     * Model은 Controller와 View에 관련된 코드가 있으면 안된다!!!!!!
+     */
     private static final int BASEBALL_NUM_SIZE = 3;
     public List<Integer> generatorComputerNumber(){
         List<Integer> computerNumber = new ArrayList<>();
