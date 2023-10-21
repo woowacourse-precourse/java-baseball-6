@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallNumbers {
@@ -8,6 +9,10 @@ public class BaseBallNumbers {
 
     private BaseBallNumbers(List<Integer> numbers) {
         this.baseballNumbers = numbers;
+    }
+
+    public static BaseBallNumbers emptyNumbers() {
+        return new BaseBallNumbers(new ArrayList<>());
     }
 
 }
