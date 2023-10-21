@@ -1,9 +1,5 @@
 package baseball;
 
-import static baseball.Application.InputClass.extractRandomNumber;
-import static baseball.Application.InputClass.inputUserNumber;
-import static baseball.Application.PrintPackage.printRequestNumber;
-
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -16,46 +12,50 @@ public class Application {
     }
 
     public static void gameStart() {
-        PrintPackage.printGameStartMessage();
         Boolean gameStatus = Boolean.TRUE;
-        List<Integer> computer = InputClass.extractRandomNumber();
-        System.out.println("computer = " + computer);
+        PrintPackage.printGameStartMessage();
         while (gameStatus) {
-            Boolean compare = compare(computer, inputUserNumber());
-            if (compare) {
-                PrintPackage.printRetryMessage();
-                PrintPackage.printRegameMessage();
-                String re = Console.readLine();
-
-                if (re.equals("1")) {
-                    gameStatus = Boolean.TRUE;
-                    computer = extractRandomNumber();
-                } else if (re.equals("2")) {
-                    gameStatus = Boolean.FALSE;
-                } else {
-                    System.out.println("error");
-                }
-            }
+            List<Integer> computer = InputClass.extractRandomNumber();
+            System.out.println("computer = " + computer);
+            compare(computer);
+            gameStatus = gameRetry();
         }
     }
 
-    private static Boolean compare(List<Integer> computer, List<Integer> user) {
-        Integer strikes = 0;
-        Integer balls = 0;
+    private static Boolean gameRetry() {
+        PrintPackage.printRegameMessage();
+        String retry = Console.readLine();
+        return checkRetry(retry);
+    }
 
-        for (Integer i = 0; i < computer.size(); i++) {
-            Integer computerNumber = computer.get(i);
-            Integer userNumber = user.get(i);
-
-            if (computerNumber.equals(userNumber)) {
-                strikes++;
-            } else if (computer.contains(userNumber)) {
-                balls++;
-            }
+    private static Boolean checkRetry(String retry) {
+        if (retry.equals("1")) {
+            return Boolean.TRUE;
         }
-        Status status = Status.getStatus(strikes, balls);
-        PrintPackage.printResult(status.result);
-        return status == Status.CORRECT;
+        return Boolean.FALSE;
+    }
+
+    private static void compare(List<Integer> computer) {
+        Boolean correct = Boolean.FALSE;
+        while (correct == Boolean.FALSE) {
+            List<Integer> user = InputClass.inputUserNumber();
+            Integer strikes = 0;
+            Integer balls = 0;
+
+            for (int i = 0; i < computer.size(); i++) {
+                Integer computerNumber = computer.get(i);
+                Integer userNumber = user.get(i);
+
+                if (computerNumber.equals(userNumber)) {
+                    strikes++;
+                } else if (computer.contains(userNumber)) {
+                    balls++;
+                }
+            }
+            Status status = Status.getStatus(strikes, balls);
+            PrintPackage.printResult(status.result);
+            correct = (status == Status.CORRECT);
+        }
     }
 
     public enum Status {
@@ -97,7 +97,7 @@ public class Application {
         }
 
         public static List<Integer> inputUserNumber() {
-            printRequestNumber();
+            PrintPackage.printRequestNumber();
             String readLine = Console.readLine();
             List<Integer> user = new ArrayList<>();
             for (int i = 0; i < readLine.length(); i++) {
@@ -117,12 +117,8 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
         }
 
-        public static void printRetryMessage() {
-            System.out.print("숫자를 입력해주세요 : ");
-        }
-
         public static void printRegameMessage() {
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
 
         public static void printResult(String results) {
