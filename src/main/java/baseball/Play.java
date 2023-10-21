@@ -17,7 +17,7 @@ public class Play {
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        com.getIntArray();
+        com.setCom();
     }
 
     public void setInput(String msg) {
@@ -32,9 +32,9 @@ public class Play {
                 throw new IllegalArgumentException("Invalid input: " + input);
             }
             if (input.equals("1")) {
-                com.clearList();
-                com.getIntArray();
                 user.clearUser();
+                com.clearCom();
+                com.setCom();
                 runGame();
             }
             if (input.equals("2")) {
@@ -49,12 +49,9 @@ public class Play {
         while (true) {
             // 사용자 입력
             setInput("숫자를 입력해주세요 : ");
-            if (input.length() != 3) {
-                throw new IllegalArgumentException("Invalid input: " + input);
-            }
             user.setUser(input);
             // 스트라이크, 볼 개수 구하기
-            rules.countBallAndStrikes(com.getList(), user.getUser());
+            rules.countBallAndStrikes(com.getCom(), user.getUser());
             // 결과 출력
             if (rules.isThreeStrikes()) {
                 System.out.println("3스트라이크");
