@@ -24,3 +24,19 @@ G --> |no|H((종료));
 1. 시간제한 만들기
     - 요구사항 및 테스트와 맞지 않아 어려워 보임
 2. 클래스 분리하기
+
+# Class Diagram
+```mermaid
+classDiagram
+class Main
+	Main : 정답만들기()
+	Main : 입력받기()
+	Main : 결과출력하기()
+	Main : 재시작하기()
+	Main : 에러()
+class Player {
+	-List~Integer~ numbers
+	+compareWith()
+}
+Main ..> Player : depends
+```
