@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         boolean stateReplayGame = true;
 
-        displayStartGame();
+        printStartGame();
 
         while (stateReplayGame) {
             playGame();
@@ -24,11 +24,11 @@ public class Application {
         while (stateRepeatGuess) {
             List<Integer> playerGuessNumbers = getPlayerGuessNumbers();
             String resultOfGuess = getResultOfGuess(computerNumbers, playerGuessNumbers);
-            displayResultOfGuess(resultOfGuess);
+            printResultOfGuess(resultOfGuess);
             stateRepeatGuess = getStateRepeatGuess(resultOfGuess);
         }
 
-        displayTerminateGame();
+        printTerminateGame();
     }
 
     public static boolean getAnswerReplayGame() {
@@ -158,15 +158,15 @@ public class Application {
         return Console.readLine();
     }
 
-    public static void displayStartGame() {
+    public static void printStartGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void displayResultOfGuess(final String resultOfGuess) {
+    public static void printResultOfGuess(final String resultOfGuess) {
         System.out.println(resultOfGuess);
     }
 
-    public static void displayTerminateGame() {
+    public static void printTerminateGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
