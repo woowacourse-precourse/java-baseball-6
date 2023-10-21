@@ -21,6 +21,12 @@ public final class BallsUtils {
     }
 
     public static List<Ball> convertIntegersToBallList(List<Integer> integers) {
+
+        int integerCount = integers.size();
+        if (integerCount != Balls.BALL_COUNT) {
+            throw new IllegalArgumentException();
+        }
+
         return IntStream.range(0, Balls.BALL_COUNT)
                 .mapToObj(i -> {
                     int value = integers.get(i);
