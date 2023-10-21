@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.IllegalFormatException;
 import java.util.List;
 
 public class Application {
@@ -81,33 +82,74 @@ public class Application {
 
         System.out.println(answer);
     }
-    public static void main(String[] args) {
-
-        // 중복 없는 3자리 수 만들기
-        List<Integer> computer = get_random_numbers();
-        System.out.println("컴퓨터: " + computer);
-        // 사용자 입력 받기
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
-        System.out.println();
-        //System.out.println("사용자 입력: " + userInputStr);
-
-        // 사용자 입력 유효성 확인
-        if (!check_user_input(userInput)){
-            // TODO : IllegalArgumentException 발생 후 종료
-            System.out.println("입력 잘못 했네!");
+    public static int check_restart(String restart){
+        // 아무것도 입력 하지 않음
+        if (restart == null) {
+            return 0;
+        }
+        // user_input 길이를 확인 (1자리)
+        if(restart.length()!=1){
+            return 0;
         }
 
-        // 사용자 입력을 String -> List<Integer>로 변환
-        List<Integer> user = convert_user_input(userInput);
-        System.out.println("사용자 입력: " + user);
+        // user_input이 모두 숫자 인지 확인
+        if(restart.equals("1")){
+            return 1;
+        } else if(restart.equals("2")){
+            return 2;
+        }
 
-        // 비교 하기 : [볼, 스트라이크]
-        List<Integer> compareResult = compare_computer_to_user(computer, user);
+        return 0;
+    }
+    public static void main(String[] args) {
+        // 게임
+        while(true) {
+            // 중복 없는 3자리 수 만들기
+            List<Integer> computer = get_random_numbers();
+            System.out.println("컴퓨터: " + computer);
+            
+            // 맞추기
+            while (true) {
+                // 사용자 입력 받기
+                System.out.println("숫자 야구 게임을 시작합니다.");
+                System.out.print("숫자를 입력해주세요 : ");
+                String userInput = Console.readLine();
+                System.out.println();
+                //System.out.println("사용자 입력: " + userInputStr);
 
-        // 결과 출력
-        print_result(compareResult);
+                // 사용자 입력 유효성 확인
+                if (!check_user_input(userInput)) {
+                    // TODO : IllegalArgumentException 발생 후 종료
+                    throw new IllegalArgumentException("[ERROR] 숫자가 잘못된 형식입니다.");
+                }
+
+                // 사용자 입력을 String -> List<Integer>로 변환
+                List<Integer> user = convert_user_input(userInput);
+                System.out.println("사용자 입력: " + user);
+
+                // 비교 하기 : [볼, 스트라이크]
+                List<Integer> compareResult = compare_computer_to_user(computer, user);
+
+                // 결과 출력
+                print_result(compareResult);
+
+                if (compareResult.get(1) == 3) {
+                    break;
+                }
+            }
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String userRestart = Console.readLine();
+            // 0:잘못된 입력 , 1:재시작, 2:종료
+            int restart = check_restart(userRestart);
+
+            if (restart == 0) {
+                throw new IllegalArgumentException("[ERROR] 숫자가 잘못된 형식입니다.");
+            } else if (restart == 2) {
+                break;
+            }
+        }
 
     }
 }
