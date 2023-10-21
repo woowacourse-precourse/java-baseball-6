@@ -1,6 +1,7 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Randoms;
+
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     // 게임에 사용되는 3자리 숫자 배열 정의
@@ -14,12 +15,31 @@ public class Application {
 
     // 게임 실행 메서드
     public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        generateRandomNumbers();
-        getPlayerNumbers();
-        String result = checkStrikesOrBall(randomNumbers, playerNumbers);
-        System.out.println(result);
+
+        while (!isGameOver) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            generateRandomNumbers();
+            getPlayerNumbers();
+            String result = checkStrikesOrBall(randomNumbers, playerNumbers);
+            System.out.println(result);
+            if (result.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                isGameOver = !askForRestart(); // 물어보고 재시작 여부를 확인
+            }
+        }
     }
+
+    // 게임 재시작 여부를 물어보는 메서드
+    private boolean askForRestart() {
+        String response;
+        do {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            response = Console.readLine();
+        } while (!response.equals("1") && !response.equals("2"));
+
+        return response.equals("1");
+    }
+
 
     // 스트라이크 & 볼 계산 로직
     public String checkStrikesOrBall(int[] randomNumbers, int[] playerNumbers) {
