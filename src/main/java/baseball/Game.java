@@ -23,8 +23,9 @@ public class Game {
             else if (input.contains(answer.get(i))) ball++;
         }
 
+        makePrintln(strike,ball);
 
-        String result = "NULL";
+        String result = (strike==3) ? "SUCCESS" : "FAIL";
         return result;
     }
 
@@ -36,5 +37,12 @@ public class Game {
                 answer.add(randomNumber);
             }
         }
+    }
+
+    private void makePrintln(int strike, int ball){
+        if(ball>0&&strike>0) System.out.println(ball+"볼 "+strike+"스트라이크");
+        else if(ball>0&&strike==0) System.out.println(ball+"볼");
+        else if(ball==0&&strike>0) System.out.println(strike+"스트라이크");
+        else System.out.println("낫싱");
     }
 }
