@@ -12,11 +12,12 @@ public class Application {
         displayGameStartMessage();
 
         while (stateReplayGame) {
-            stateReplayGame = playGame();
+            playGame();
+            stateReplayGame = askReplayGame();
         }
     }
 
-    public static boolean playGame() {
+    public static void playGame() {
         boolean stateRepeatGuess = true;
         List<Integer> computerNumbers = generateComputerNumbers();
 
@@ -31,7 +32,6 @@ public class Application {
                 stateRepeatGuess = false;
             }
         }
-        return askReplayGame();
     }
 
     public static boolean askReplayGame() {
