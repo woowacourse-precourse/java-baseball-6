@@ -58,8 +58,8 @@
 
 ### Controller
 - [ ] GameController
-    - [ ] Comuputer Model 생성
-        - [ ] RandomUtil로 생성한 숫자 저장
+    - [x] Comuputer Model 생성
+        - [x] RandomUtil로 생성한 숫자 저장
     - [ ] 게임 시작
         - [ ] 게임 시작 메시지 출력 (OutputView 사용)
         - [ ] 사용자에게 숫자 입력 받기 (InputView 사용)
