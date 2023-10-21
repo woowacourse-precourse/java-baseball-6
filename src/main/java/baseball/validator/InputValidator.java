@@ -21,6 +21,12 @@ public class InputValidator {
         }
     }
 
+    public void checkRestartInput(String input) {
+        if ("1".equals(input) || "2".equals(input)) {
+            throw new IllegalArgumentException("1 또는 2 만 입력할 수 있습니다.");
+        }
+    }
+
     private boolean hasDuplicateNumbers(String input) {
         Set<Character> numberSet = new HashSet<>();
         for (char ch : input.toCharArray()) {

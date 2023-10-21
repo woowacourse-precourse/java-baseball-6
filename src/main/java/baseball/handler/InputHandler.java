@@ -19,10 +19,7 @@ public class InputHandler {
     public boolean askRestart() {
         outputHandler.printAskGameRestartMessage();
         String input = Console.readLine();
-
-        if (!"1".equals(input) && !"2".equals(input)) {
-            throw new IllegalArgumentException();
-        }
+        inputValidator.checkRestartInput(input);
 
         return "1".equals(input);
     }
