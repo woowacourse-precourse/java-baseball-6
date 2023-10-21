@@ -30,16 +30,5 @@ public class Application {
         // playerInputNumber 확인 작업
         System.out.println(playerInputNumber);
 
-        // computer 에 랜덤한 세 자리 수 지정
-        List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
-        }
-
-        // computerNumber 리스트 확인
-        System.out.println(computerNumber);
     }
 }
