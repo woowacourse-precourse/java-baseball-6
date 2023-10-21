@@ -8,10 +8,28 @@ import java.util.*;
 public class Game {
 
     public static void startGame(){
-        System.out.println("게임시작");
-        initComputerNumber();
-        setPlayerNumber();
-        System.out.println(Data.playerNumber);
+        while (true){
+            System.out.println("게임시작");
+            if(!Data.isCreated) {
+                initComputerNumber();
+                Data.isCreated = true;
+            }
+            System.out.println(Data.computerNumber); // 디버깅용
+            setPlayerNumber();
+            System.out.println(Data.playerNumber); //디버깅용
+            getHint();
+            System.out.println(Data.strike + " 스트라이크 " + Data.ball + "볼");// 디버깅용
+        }
+    }
+    static void getHint(){
+        int count = 0;
+        Data.strike = 0;
+        Data.ball = 0;
+        for(int index = 0; index < Data.playerNumber.size(); index++){
+            if(Data.computerNumber.get(index).equals(Data.playerNumber.get(index))  ) Data.strike += 1;
+            if(Data.computerNumber.contains(Data.playerNumber.get(index))) Data.ball += 1;
+        }
+        Data.ball -= Data.strike;
     }
     static void initComputerNumber(){
         Data.computerNumber = new ArrayList<>();
