@@ -8,14 +8,14 @@ import message.Message;
 import player.BaseballPlayer;
 import player.Computer;
 import player.User;
-import score.Score;
+import score.BaseballScore;
 import utils.BaseballRules;
 
 public class Referee {
 
     private final BaseballPlayer computer = new Computer();
     private final BaseballPlayer user = new User();
-    private final Score score = new Score();
+    private final BaseballScore score = new BaseballScore();
 
     public void playBall() {
         computer.inputBaseballNumbers();

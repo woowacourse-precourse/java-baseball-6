@@ -12,7 +12,7 @@ import player.BaseballNumbers;
 
 public class ScoreTest {
 
-    Score score = new Score();
+    BaseballScore score = new BaseballScore();
 
     @AfterEach
     public void 테스트_종료_후_점수_초기화() {

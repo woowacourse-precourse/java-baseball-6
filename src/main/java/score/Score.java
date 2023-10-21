@@ -1,41 +1,26 @@
 package score;
 
-import player.BaseballNumbers;
-
 public class Score {
-    
-    private Integer strike;
-    private Integer ball;
+
+    private Integer score;
 
     public Score() {
-        this.strike = 0;
-        this.ball = 0;
+        score = 0;
     }
 
-    public void setStrikeAndBall(BaseballNumbers computerBaseballNumber,
-                                 BaseballNumbers playerBaseballNumber) {
-        for (int i = 0; i < computerBaseballNumber.size(); i++) {
-            if (computerBaseballNumber.get(i).equals(playerBaseballNumber.get(i))) {
-                this.strike++;
-                continue;
-            }
-
-            if (computerBaseballNumber.contains(playerBaseballNumber.get(i))) {
-                this.ball++;
-            }
-        }
+    public Score(Integer score) {
+        this.score = score;
     }
 
-    public void clearStrikeAndBall() {
-        this.strike = 0;
-        this.ball = 0;
+    public void plus() {
+        score++;
     }
 
-    public Integer getStrike() {
-        return strike;
+    public void clear() {
+        score = 0;
     }
 
-    public Integer getBall() {
-        return ball;
+    public Integer getScore() {
+        return score;
     }
 }

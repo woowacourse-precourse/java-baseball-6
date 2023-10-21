@@ -13,7 +13,7 @@ import static utils.BaseballRules.hasStrikeAndBall;
 import static utils.BaseballRules.hasStrikeButNoBall;
 import static utils.BaseballRules.noStrikeAndBall;
 
-import score.Score;
+import score.BaseballScore;
 
 public class Message {
 
@@ -34,7 +34,7 @@ public class Message {
         System.out.println(END_GAME);
     }
 
-    public static void printHintMessage(Score score) {
+    public static void printHintMessage(BaseballScore score) {
         int strike = score.getStrike();
         int ball = score.getBall();
 
