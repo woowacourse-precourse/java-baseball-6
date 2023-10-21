@@ -37,7 +37,7 @@
     - printResult()
       : 3개의 숫자 맞췄을 경우 문구 출력
 
-3. ComputerNum
+3. ComputerNum
     - genComputerNum()
      : 서로 다른 1~9까지의 3자리 숫자 생성
 
