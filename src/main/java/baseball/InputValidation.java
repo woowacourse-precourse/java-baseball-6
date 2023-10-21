@@ -50,4 +50,18 @@ public class InputValidation {
         }
         return userInputList;
     }
+
+    public int validateNewGameRequest(String input) throws IllegalArgumentException{
+        if (input.length() != 1) {
+            throw new IllegalArgumentException("1 혹은 2를 입력해주세요.");
+        }
+        if (!Character.isDigit(input.charAt(0))) {
+            throw new IllegalArgumentException("숫자 1 혹은 2를 입력해주세요");
+        }
+        int inputValue = Character.getNumericValue(input.charAt(0));
+        if (inputValue < 0 || inputValue > 2) {
+            throw new IllegalArgumentException("1 혹은 2를 입력해주세요.");
+        }
+        return inputValue;
+    }
 }
