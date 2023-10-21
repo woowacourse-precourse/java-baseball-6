@@ -35,8 +35,8 @@ public class InputValidation {
             throw new IllegalArgumentException("1 ~ 9 사이의 숫자만 입력해주세요.");
         }
     }
-    // 중복수에 대한 검증
 
+    // 중복수에 대한 검증
     /*
     * 드디어 stream 써보는군아~~
     * 타입 변환할 때, for문을 돌면서 작업할 때. 공부하던거 드디어 쓴당!!
@@ -50,6 +50,12 @@ public class InputValidation {
 
     public void validateSign(String input) {
         if (input.charAt(0) != '1' && input.charAt(0) != '2') {
+            throw new IllegalArgumentException("재시작은 1, 게임 종료는 2입니다.");
+        }
+    }
+
+    public void validateSignLength(String input) {
+        if (input.length() != 1) {
             throw new IllegalArgumentException("재시작은 1, 게임 종료는 2입니다.");
         }
     }

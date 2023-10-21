@@ -12,8 +12,15 @@ class InputValidationTest {
 
     InputValidation inputValidation = new InputValidation();
 
+    @DisplayName("통합 테스트 - 올바른 input이 들어온 케이스, 공백까지는 인정")
     @Test
     void validateUserNumbers() {
+        //given
+        String input = "3 69";
+        //when
+        List<Integer> result = inputValidation.validateUserNumbers(input);
+        //then
+        assertThat(result).isEqualTo(List.of(3,6,9));
     }
 
     @DisplayName("오류 검증 - 지정된 길이가 아니라면 (3개의 숫자만 입력해주세요.) 에러 메시지")
