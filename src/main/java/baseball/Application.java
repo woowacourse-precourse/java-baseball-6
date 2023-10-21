@@ -14,6 +14,7 @@ public class Application {
 
     // 게임 실행 메서드
     public void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         generateRandomNumbers();
         getPlayerNumbers();
         String result = checkStrikesOrBall(randomNumbers, playerNumbers);
@@ -32,7 +33,14 @@ public class Application {
                 balls++;
             }
         }
-        return String.format("%d스트라이크 %d볼", strikes, balls);
+
+        if (strikes == 3) {
+            return "3스트라이크";
+        } else if (strikes == 0 && balls == 0) {
+            return "낫싱";
+        } else {
+            return String.format("%d스트라이크 %d볼", strikes, balls);
+        }
     }
 
     private boolean containsNumber(int[] numbers, int target) {
@@ -57,7 +65,7 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             int playerNumber = Integer.parseInt(Console.readLine());
 
-            if (playerNumber < 1 || playerNumber > 9) {
+            if (playerNumber <= 1 || playerNumber > 9) {
                 throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 프로그램을 종료합니다.");
             }
             playerNumbers[i] = playerNumber;
