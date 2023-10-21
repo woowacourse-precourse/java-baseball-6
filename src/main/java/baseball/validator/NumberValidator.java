@@ -31,6 +31,7 @@ public class NumberValidator {
     public static void validateAllDigits(String input) {
         for (char c : input.toCharArray()) {
             validateEachDigit(input, c);
+            validateNaturalNumber(Integer.parseInt(String.valueOf(c)));
         }
     }
 
