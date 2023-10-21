@@ -64,11 +64,28 @@ public class Application {
 
         return result;
     }
+    public static void print_result(List<Integer> result){
+        String answer = "";
+
+        if (result.get(0)>0){
+            answer += result.get(0) + "볼 ";
+        }
+
+        if (result.get(1)>0){
+            answer += result.get(1) + "스트라이크 ";
+        }
+
+        if (answer.isEmpty()){
+            answer = "낫싱";
+        }
+
+        System.out.println(answer);
+    }
     public static void main(String[] args) {
 
         // 중복 없는 3자리 수 만들기
         List<Integer> computer = get_random_numbers();
-
+        System.out.println("컴퓨터: " + computer);
         // 사용자 입력 받기
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
@@ -90,7 +107,7 @@ public class Application {
         List<Integer> compareResult = compare_computer_to_user(computer, user);
 
         // 결과 출력
-
+        print_result(compareResult);
 
     }
 }
