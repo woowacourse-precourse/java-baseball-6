@@ -24,7 +24,7 @@
 
 ## RamdomBallNumberGenerator
 
-- 랜덤으로 1~9 사이 세자리 수 생성 (정답 역할) []
+- 랜덤으로 1~9 사이 세자리 수 생성 (정답 역할) [o]
 
 ## GameController
 
