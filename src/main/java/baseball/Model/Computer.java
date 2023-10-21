@@ -3,16 +3,21 @@ package baseball.Model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class Computer extends Numbers{
+public class Computer {
     public static final int MIN_NUMBER_RANGE = 1;
     public static final int MAX_NUMBER_RANGE = 9;
     public static final int THREE_DIGIT = 3;
 
+    private List<Integer> numbers;
+
     public Computer() {
         generateRandomThreeDigitNumber();
+    }
+
+    public List<Integer> getNumbers() {
+        return new ArrayList<Integer>(numbers);
     }
 
     private void generateRandomThreeDigitNumber() {

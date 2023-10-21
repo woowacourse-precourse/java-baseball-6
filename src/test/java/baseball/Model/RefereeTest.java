@@ -4,15 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RefereeTest {
-    private Numbers user;
-    private Numbers computer;
+    private User user;
+    private User computer;
     private Referee referee;
 
     @BeforeEach
@@ -24,8 +23,8 @@ public class RefereeTest {
     @Test
     @DisplayName("판정 테스트")
     public void ballJudgeTest() {
-        user = new Numbers(List.of(1,2,3));
-        computer = new Numbers(List.of(1,3,4));
+        user = new User(List.of(1,2,3));
+        computer = new User(List.of(1,3,4));
         referee.judge(user, computer);
         Map<String,Integer> judgement = referee.getJudgement();
 
@@ -36,8 +35,8 @@ public class RefereeTest {
     @Test
     @DisplayName("스트라이크 판정 테스트")
     public void strikeJudgeTest() {
-        user = new Numbers(List.of(1,2,3));
-        computer = new Numbers(List.of(1,2,3));
+        user = new User(List.of(1,2,3));
+        computer = new User(List.of(1,2,3));
         referee.judge(user, computer);
         Map<String,Integer> judgement = referee.getJudgement();
 
@@ -48,8 +47,8 @@ public class RefereeTest {
     @Test
     @DisplayName("낫싱 테스트")
     public void nothingJudgeTest() {
-        user = new Numbers(List.of(1,2,3));
-        computer = new Numbers(List.of(4,5,6));
+        user = new User(List.of(1,2,3));
+        computer = new User(List.of(4,5,6));
         referee.judge(user, computer);
         Map<String,Integer> judgement = referee.getJudgement();
 

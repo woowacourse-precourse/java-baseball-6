@@ -1,15 +1,16 @@
 package baseball.Model;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Referee {
 
+    public static final String STRIKE = "strike";
+    public static final String BALL = "ball";
     int strike;
     int ball;
 
-    public void judge(Numbers user, Numbers computer) {
+    public void judge(User user, Computer computer) {
         int sameNumberCount = countSameNumber(user, computer);
         int sameIndexAndNumberCount = countStrike(user, computer);
 
@@ -17,18 +18,18 @@ public class Referee {
         ball = sameNumberCount - strike;
     }
 
-    private int countSameNumber(Numbers user, Numbers computer) {
+    private int countSameNumber(User user, Computer computer) {
         return user.compareAndCount(computer);
     }
 
-    private int countStrike(Numbers user, Numbers computer) {
+    private int countStrike(User user, Computer computer) {
         return user.countSameIndexAndNumber(computer);
     }
 
     public Map<String,Integer> getJudgement() {
         Map<String,Integer> judgement = new HashMap<String,Integer>();
-        judgement.put("strike",strike);
-        judgement.put("ball",ball);
+        judgement.put(STRIKE,strike);
+        judgement.put(BALL,ball);
         return judgement;
     }
 }

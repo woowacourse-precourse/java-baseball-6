@@ -3,13 +3,12 @@ package baseball.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Numbers {
+public class User {
     public static final int FIRST_INDEX = 0;
     public static final int LAST_INDEX = 2;
-    List<Integer> numbers;
+    private List<Integer> numbers;
 
-    public Numbers() {}
-    public Numbers(List<Integer> numbers) {
+    public User(List<Integer> numbers) {
         this.numbers = numbers;
     }
 
@@ -17,7 +16,7 @@ public class Numbers {
         return new ArrayList<Integer>(numbers);
     }
 
-    public int compareAndCount(Numbers computer) {
+    public int compareAndCount(Computer computer) {
         int count = 0;
         List<Integer> computerNumbers = computer.getNumbers();
         for (int number : numbers) {
@@ -29,7 +28,7 @@ public class Numbers {
     }
 
 
-    public int countSameIndexAndNumber(Numbers computer) {
+    public int countSameIndexAndNumber(Computer computer) {
         int strike = 0;
         List<Integer> computerNumbers = computer.getNumbers();
         for (int index = FIRST_INDEX; index <= LAST_INDEX; index++) {
