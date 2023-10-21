@@ -35,11 +35,11 @@ public class GameController {
     }
 
     public void run() {
-        BallCounter ballCounter = new BallCounter(0, 0); //볼 객체를 생성
-        inputView.generateGameStartMessage(); //시작 메세지
-        tryOnce(gameService.generateComputerNumbers(), ballCounter); //게임 시작
-        outputView.showGameEndMessage(); //끝나는 메세지
-        inputView.showRetryOrEndGameMessage(); //재시작 메세지
+        BallCounter ballCounter = new BallCounter(0, 0);
+        inputView.generateGameStartMessage();
+        tryOnce(gameService.generateComputerNumbers(), ballCounter);
+        outputView.showGameEndMessage();
+        inputView.showRetryOrEndGameMessage();
         if (retryOrExit()) run();
     }
 
