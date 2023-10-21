@@ -32,4 +32,12 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+    @Test
+    void 입력_중복된_숫자_포함_예외_테스트() {
+        try{
+            run("112");
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage()).isEqualTo("서로 다른 세자리 숫자만 입력 가능합니다.");
+        }
+    }
 }
