@@ -23,25 +23,33 @@ public class BaseballService {
 
     private void calculateBall(
         GameStateDto gameStateDto) {
-        for(int i=0; i<3; i++)
-        {
-            findOtherIndexSameNumberAndAddBall(gameStateDto, i);
+        for (int i = 0; i < 3; i++) {
+            findDifferentIndexSameNumber(gameStateDto, i);
         }
     }
 
-    private void findOtherIndexSameNumberAndAddBall(GameStateDto gameStateDto, int i) {
+    private void findDifferentIndexSameNumber(GameStateDto gameStateDto, int i) {
         for (int j = 0; j < 3; j++) {
-            if (i != j && userNumber.charAt(i) == computerNumber.charAt(j))
-                gameStateDto.addBall();
+            if (i != j && userNumber.charAt(i) == computerNumber.charAt(j)) {
+                addBall(gameStateDto);
+            }
         }
+    }
+
+    private void addBall(GameStateDto gameStateDto) {
+        gameStateDto.addBall();
     }
 
     private void calculateStrike(String userNumber, String nowComNumber,
         GameStateDto gameStateDto) {
-        for(int i=0; i<3; i++){
-            if(userNumber.charAt(i) == nowComNumber.charAt(i)) {
-                gameStateDto.addStrike();
-             }
+        for (int i = 0; i < 3; i++) {
+            if (userNumber.charAt(i) == nowComNumber.charAt(i)) {
+                addStrike(gameStateDto);
+            }
         }
+    }
+
+    private void addStrike(GameStateDto gameStateDto) {
+        gameStateDto.addStrike();
     }
 }
