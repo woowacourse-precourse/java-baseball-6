@@ -4,6 +4,13 @@ import java.util.List;
 
 public class Referee {
 
+	public boolean compareComputerPlayer(List computerNumber, List playerNumber) {
+		if (computerNumber.equals(playerNumber)) {
+			return true;
+		}
+		return false;
+	}
+
 	private int calculateBall(List<Integer> computerNumber, List<Integer> playerNumber) {
 		int ball = 0;
 
