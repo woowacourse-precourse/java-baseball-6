@@ -27,4 +27,12 @@ public class InputJudgmentService {
         }
         return strike;
     }
+    public Integer judgeBall(List<Integer> userNumbers,List<Integer> computerNumbers){
+        for(int i=0; i<userNumbers.size(); i++){
+            if(computerNumbers.contains(userNumbers.get(i))){
+                ball++;
+            }
+        }
+        return ball;
+    }
 }
