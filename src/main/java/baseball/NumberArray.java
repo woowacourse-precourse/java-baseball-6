@@ -20,6 +20,7 @@ public class NumberArray {
                 numList.add(randomNumber);
             }
         }
+        System.out.println("computer:" + numList);
     }
 
     public NumberArray(String num) {

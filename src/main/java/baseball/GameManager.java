@@ -7,7 +7,6 @@ public class GameManager {
     Computer computer;
 
     void Start() {
-        computer = new Computer();
         System.out.println("숫자 야구 게임을 시작합니다.");
         game();
         while (true) {
@@ -22,25 +21,49 @@ public class GameManager {
 
     String readMenu() {
         String data = Console.readLine();
-        if (!(data.length() < 2 && (data == "1" || data == "2"))) {
+        if (!(data.length() == 1 && ("1".equals(data) || "2".equals(data)))) {
             throw new IllegalArgumentException("입력값이 올바르지 않습니다.");
         }
         return data;
     }
-//    String readNum() {
-//        String data = Console.readLine();
-//        if (!(data.length() < 4 && (data  == "1" || data =="2") )) {
-//            throw new IllegalArgumentException("입력값이 올바르지 않습니다.");
-//        }
-//        return data;
-//    }
-
 
     void game() {
-        System.out.print("숫자를 입력해주세요 : ");
-        numForUser = new NumberArray(Console.readLine());
+        computer = new Computer();
+        Ball ball = Ball.getInstance();
+        Strike strike = Strike.getInstance();
         while (true) {
-
+            ball.setBallNum(0);
+            strike.setNum(0);
+            System.out.print("숫자를 입력해주세요 : ");
+            numForUser = new NumberArray(Console.readLine());
+            computer.check(numForUser.getNumList());
+            if (ball.getBallNum() == 0 && strike.getNum() == 0) {
+                System.out.println("낫싱");
+            }
+            if (printBall(ball.getBallNum()) > 0 && strike.getNum() > 0) {
+                System.out.print(" ");
+            }
+            printStrike(strike.getNum());
+            System.out.println();
+            if (strike.getNum() == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
+
+    void printStrike(int num) {
+        if (num > 0) {
+            System.out.print(num + "스트라이크");
+        }
+    }
+
+    int printBall(int num) {
+        if (num > 0) {
+            System.out.print(num + "볼");
+        }
+        return num;
+    }
+
+
 }

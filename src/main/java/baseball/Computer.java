@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.Iterator;
+import java.util.List;
 
 public class Computer {
     private NumberArray computerNum = new NumberArray();
@@ -9,21 +10,35 @@ public class Computer {
 
     }
 
-    String checkBallorStrike(NumberArray userNum) {
+    private void checkBallorStrike(int num, int index) {
+        Ball ball = Ball.getInstance();
+        Strike strike = Strike.getInstance();
 
-        return "";
-    }
+        int value = computerNum.getNumList().get(index);
 
-    String checkIfExist(NumberArray userNum) {
-
-        Iterator<Integer> iter = userNum.getNumList().iterator();
-        while (iter.hasNext()) {
-            if (!computerNum.getNumList().contains(iter.next())) {
-                return "낫싱";
-            }
+        if (value == num) {
+            strike.setNum(strike.getNum() + 1);
+            return;
         }
-        return "";
+
+        ball.setBallNum(ball.getBallNum() + 1);
     }
 
+    private void checkIfExist(int num, int index) {
+        System.out.println(num);
+        if (computerNum.getNumList().contains(num)) {
+            checkBallorStrike(num, index);
+        }
+    }
+
+    public void check(List<Integer> numList) {
+        int i = 0;
+        Iterator<Integer> iter = numList.iterator();
+        while (iter.hasNext()) {
+//            System.out.println(iter.next() + "");
+            checkIfExist(iter.next(), i);
+            i++;
+        }
+    }
 
 }
