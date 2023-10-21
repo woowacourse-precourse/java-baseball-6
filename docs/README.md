@@ -42,7 +42,7 @@
 ### 기능 목록
 
 - `InputView`
-    - [x] `baseBallNumber()`: `"숫자를 입력해주세요 : "`를 출력하고 `Console.readLine()`으로 3자리 숫자를 입력 받음.
+    - [x] `baseballNumber()`: `"숫자를 입력해주세요 : "`를 출력하고 `Console.readLine()`으로 3자리 숫자를 입력 받음.
     - [x] `continueOrExit()`: `"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."`를 출력하고 `1` 또는 `2` 숫자를 입력 받아서 `true`, `false` 반환.
 - `OutputView`
     - [x] `startGame()`: 최초 시작시 `"숫자 야구 게임을 시작합니다."`를 출력.
@@ -50,7 +50,7 @@
     - [x] `matchResult()`: `Computer`의 `match()` 메서드에서 `"볼"`, `"스트라이크"`를 넘겨받아서 `Score` 출력하고 `"3스트라이크"` 인지 아닌지를 `boolean`
       으로 반환.
 - `InputValidator`: 사용자가 잘못된 값을 입력시 `IllegalArgumentException` 발생시킨 후 애플리케이션 종료.
-    - [x] `validateBaseBallNumber()`: `InputView`의 `baseBallNumber()`에서 입력받은 숫자가 1~9 범위의 서로다른 3자리 숫자인지 검증.
+    - [x] `validateBaseballNumber()`: `InputView`의 `baseballNumber()`에서 입력받은 숫자가 1~9 범위의 서로다른 3자리 숫자인지 검증.
     - [x] `validateContinueOrExitNumber()`: `InputView`의 `continueOrExit()`에서 입력받은 숫자가 1 또는 2의 한자리 숫자인지 검증.
 - `Computer`
     - [x] `getScore()`: 컴퓨터가 가지고 있는 정답 `Answer`와 사용자가 입력한 3자리 수를 비교하여 `Score` 객체 반환.

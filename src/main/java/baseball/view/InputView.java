@@ -8,9 +8,9 @@ public class InputView {
     private static final String CONTINUE_OR_EXIT_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String CONTINUE_NUMBER = "1";
 
-    public static String baseBallNumber() {
+    public static String baseballNumber() {
         System.out.print(BASEBALL_NUMBER_INPUT_MESSAGE);
-        return InputValidator.validateBaseBallNumber(Console.readLine());
+        return InputValidator.validateBaseballNumber(Console.readLine());
     }
 
     public static boolean continueOrExit() {

@@ -41,23 +41,23 @@ public class InputViewTest {
     @ValueSource(strings = {"123", "456"})
     void baseballNumberWithInputValidatorSuccessTest(String input) {
         System.setIn(generateUserInput(input));
-        String baseBallNumber = InputView.baseBallNumber();
+        String baseBallNumber = InputView.baseballNumber();
         assertThat(output.toString()).isEqualTo("숫자를 입력해주세요 : ");
         assertThat(baseBallNumber).isEqualTo(input);
     }
 
     @DisplayName("숫자를 입력해주세요 : 문구를 출력하고 사용자의 입력을 받는다.")
     @ParameterizedTest
-    @MethodSource("provideValidateBaseBallNumberFailTestArgument")
+    @MethodSource("provideValidateBaseballNumberFailTestArguments")
     void baseballNumberWithInputValidatorFailTest(String input, String message) {
         System.setIn(generateUserInput(input));
-        assertThatCode(InputView::baseBallNumber)
+        assertThatCode(InputView::baseballNumber)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
         assertThat(output.toString()).isEqualTo("숫자를 입력해주세요 : ");
     }
 
-    static Stream<Arguments> provideValidateBaseBallNumberFailTestArgument() {
+    static Stream<Arguments> provideValidateBaseballNumberFailTestArguments() {
         return Stream.of(
                 arguments("1", "입력값은 3자리 수만 가능합니다."),
                 arguments("1234", "입력값은 3자리 수만 가능합니다."),

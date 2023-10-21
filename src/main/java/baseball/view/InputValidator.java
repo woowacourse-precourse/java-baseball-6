@@ -15,7 +15,7 @@ public class InputValidator {
     private static final String CONTINUE_OR_EXIT_NUMBER_EXCEPTION_MESSAGE = "입력값은 1 또는 2 만 가능합니다.";
     private static final String CONTINUE_OR_EXIT_NUMBER_LENGTH_EXCEPTION_MESSAGE = "입력값은 한 자리 수만 입력 가능합니다.";
 
-    public static String validateBaseBallNumber(String input) {
+    public static String validateBaseballNumber(String input) {
         validInputLength(input);
         validIsNumber(input);
         validIsDuplicated(input);
