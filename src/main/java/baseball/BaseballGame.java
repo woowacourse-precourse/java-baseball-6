@@ -20,6 +20,7 @@ public class BaseballGame {
             if (status.isCorrect())
                 break;
         }
+        Console.close();
     }
     /* 입력 값 정상여부 확인 */
     private static void checkInputValue (String userAnswer, int numberLength) {
