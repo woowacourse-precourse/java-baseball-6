@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.Objects;
 
 public class Ball {
-    private int number;
+    private final int number;
 
     public Ball(int number) {
         this.number = number;
