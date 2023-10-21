@@ -9,8 +9,9 @@ import java.util.List;
 public class Referee {
 
     private static final int MAX_BALL_SIZE = 3;
+    private static final int ZERO = 0;
 
-    public BallStatus checkBallStatus(Balls computer, Balls player) {
+    private BallStatus checkBallStatus(Balls computer, Balls player) {
         if (computer.getLocation() == player.getLocation() && computer.getNumber() == player.getNumber()) {
             return BallStatus.STRIKE;
         }
@@ -21,31 +22,28 @@ public class Referee {
     }
 
     public BallCounter judgeGame(List<Balls> computerBalls, List<Balls> playerBalls) {
-        BallCounter ballCounter = new BallCounter(0, 0);
+        BallCounter ballCounter = new BallCounter(ZERO, ZERO);
 
         for (Balls computerBall : computerBalls) {
-            ballCounter = checkPlayerBalls(computerBall, playerBalls, ballCounter);
+            checkPlayerBalls(computerBall, playerBalls, ballCounter);
         }
-
         return ballCounter;
     }
 
-    private BallCounter checkPlayerBalls(Balls computerBall, List<Balls> playerBalls, BallCounter ballCounter) {
+    private void checkPlayerBalls(Balls computerBall, List<Balls> playerBalls, BallCounter ballCounter) {
         for (Balls playerBall : playerBalls) {
             BallStatus status = checkBallStatus(computerBall, playerBall);
-            ballCounter = updateCounterByStatus(status, ballCounter);
+            updateCounterByStatus(status, ballCounter);
         }
-        return ballCounter;
     }
 
-    private BallCounter updateCounterByStatus(BallStatus ballStatus, BallCounter ballCounter) {
+    private void updateCounterByStatus(BallStatus ballStatus, BallCounter ballCounter) {
         if (ballStatus.equals(BallStatus.STRIKE)) {
             ballCounter.increaseStrikeCount();
         }
         if (ballStatus.equals(BallStatus.BALL)) {
             ballCounter.increaseBallCount();
         }
-        return ballCounter;
     }
 
     public boolean isEndGameCondition(BallCounter ballCounter) {
