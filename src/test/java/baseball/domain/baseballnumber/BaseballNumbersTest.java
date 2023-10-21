@@ -15,8 +15,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayName("[BaseballNumbersTest]")
 class BaseballNumbersTest {
 
-    private static final String ERROR_MESSAGE_WRONG_SIZE = "세 개의 숫자를 중복 없이 입력해 주세요.";
+    private static final String ERROR_MESSAGE_WRONG_SIZE = "세 개의 숫자를 입력해 주세요.";
     private static final String ERROR_MESSAGE_INVALID_RANGE = "1에서 9 사이의 수만 입력할 수 있습니다.";
+    private static final String ERROR_MESSAGE_DUPLICATED = "중복 없이 입력해 주세요.";
 
     @Test
     @DisplayName("정수 리스트로 생성 가능하다.")
@@ -72,7 +73,7 @@ class BaseballNumbersTest {
         // when, then
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
             () -> new BaseballNumbers(input));
-        assertThat(e.getMessage()).isEqualTo(ERROR_MESSAGE_WRONG_SIZE);
+        assertThat(e.getMessage()).isEqualTo(ERROR_MESSAGE_DUPLICATED);
     }
 
     @Test
@@ -85,5 +86,17 @@ class BaseballNumbersTest {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
             () -> new BaseballNumbers(input));
         assertThat(e.getMessage()).isEqualTo(ERROR_MESSAGE_INVALID_RANGE);
+    }
+
+    @Test
+    @DisplayName("중복을 제거 하여도 크기가 3인 경우 IllegalArgumentException을 발생한다.")
+    void throwIllegalArgumentExceptionWhenSizeIsThreeAfterDeleteDuplicatedValue() {
+        // given
+        List<Integer> input = Arrays.asList(1, 1, 2, 3);
+
+        // when, then
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
+            () -> new BaseballNumbers(input));
+        assertThat(e.getMessage()).isEqualTo(ERROR_MESSAGE_WRONG_SIZE);
     }
 }
