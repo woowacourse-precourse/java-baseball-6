@@ -39,7 +39,7 @@ public class GameManager {
         InputVerifier inputVerifier = new InputVerifier();
         String playerNumber = inputHandler.insertBallNum();
         inputVerifier.checkBallNumber(playerNumber);
-        return new BallNumber(Integer.parseInt(playerNumber));
+        return new BallNumber(playerNumber);
     }
 
     private void choiceNewGameOrGameOver() {
