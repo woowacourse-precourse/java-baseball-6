@@ -59,4 +59,12 @@ class InputViewTest {
                 isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1 혹은 2의 숫자만 입력 가능 합니다.");
     }
+
+    @ParameterizedTest
+    @DisplayName("재시작 여부 입력 모든 유효성 성공 테스트")
+    @ValueSource(strings = {"1", "2"})
+    void validInputsTest2(String input) {
+        Assertions.assertThatCode(() -> Validation.isValidRestartInput(input))
+                .doesNotThrowAnyException();
+    }
 }
