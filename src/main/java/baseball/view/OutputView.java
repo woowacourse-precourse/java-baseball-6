@@ -16,4 +16,8 @@ public class OutputView {
     public void onlyStrike(int strike) {
         System.out.println(strike + "스트라이크");
     }
+
+    public void strikeAndBall(int strike, int ball) {
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+    }
 }
