@@ -142,3 +142,19 @@ while (computer.size() < 3) {
 - 미션은 [java-baseball-6](https://github.com/woowacourse-precourse/java-baseball-6) 저장소를 Fork & Clone해 시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+----
+
+# TODO LIST
+1. 프로그래밍 요구사항 [환경설정]
+- [ ] java17 버전 점검
+- [ ] 코드 컨벤션
+2. 기능 요구사항 분석
+- [ ] 입출력 요구사항 바탕 매커니즘 분석하기
+- [ ] 기능 리스트 만들기
+3. 구현 요구사항 
+ - [ ] 라이브러리 사용
+   - random 값 추출(camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용)
+   - 사용자 입력 (camp.nextstep.edu.missionutils.Console의 readLine()을 활용)
+ - [ ] 모든 테스트 성공
