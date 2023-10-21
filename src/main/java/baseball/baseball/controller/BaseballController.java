@@ -21,17 +21,23 @@ public class BaseballController {
         outputView.printStartGame();
         goalNumber = baseballService.createGoalNumber();
 
-        String inputString = inputView.getInputNumber();
-        if (inputString.length() != 3) {
-            throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
-        }
-        List<Integer> inputNumber = StringConvertUtil.stringToIntList(inputString);
+        List<Integer> inputNumber = getInputNumber();
 
         String hint = checkNumber(inputNumber);
         outputView.printHint(hint);
     }
 
-    private String checkNumber(List<Integer> inputNumber){
+    private List<Integer> getInputNumber(){
+        String inputString = inputView.getInputNumber();
+
+        if (inputString.length() != 3) {
+            throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
+        }
+
+        return StringConvertUtil.stringToIntList(inputString);
+    }
+
+    private String checkNumber(List<Integer> inputNumber) {
         return baseballService.checkNumber(goalNumber, inputNumber);
     }
 }
