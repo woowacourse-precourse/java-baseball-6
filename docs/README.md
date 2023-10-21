@@ -36,7 +36,7 @@
 3. Controller 
 
     i. GameController
-      - [] 게임시작 메시지 출력하고 BaseBallControll연결 시키기
+      - [] 게임시작 메시지 출력하고 BaseBallController연결 시키기
       - [] PlayerNumber와 GameNumber가 동일할 때까지 반복
       - [] 게임이 끝나면 InputView에서 재시작 아니면 끝내는 View 사용하기
    
