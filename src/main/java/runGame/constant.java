@@ -2,6 +2,11 @@ package runGame;
 
 public class constant {
 
+    //초기화
+    public static int ANSWER_SIZE = 3;
+    public static int START_RANGE = 1;
+    public static int END_RANGE = 9;
+
     // 게임 시작
     public static String START_GAME = "숫자 야구 게임을 시작합니다.";
     public static String INPUT_NUMBER = "숫자를 입력해주세요 : ";

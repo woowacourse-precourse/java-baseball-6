@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import error.ErrorManage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static runGame.constant.*;
@@ -12,20 +13,25 @@ public class RunGame {
     private String computer_num;
 
     public RunGame() {
-        List<Integer> c_num = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        String List_to_String = c_num.toString();
+        List<Integer> c_number = new ArrayList<>();
+        while (c_number.size() < ANSWER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+            if (!c_number.contains(randomNumber)) {
+                c_number.add(randomNumber);
+            }
+        }
+        String List_to_String = c_number.toString();
         computer_num = List_to_String.replaceAll("[^0-9]", "");
     }
 
     public static void run() {
         System.out.println(START_GAME);
         RunGame runGame;
+
         do {
             runGame = new RunGame();
             runGame.gaemStart();
         } while (runGame.gameOver());
-
-        Console.close();
     }
 
     private void gaemStart() {
@@ -40,9 +46,7 @@ public class RunGame {
     }
 
     private String gameResult(String number) {
-        int strike = isStrike(number);
-        int ball = isBall(number);
-        String result = NumOfStrikeAndBall(strike, ball);
+        String result = NumOfStrikeAndBall(isStrike(number), isBall(number));
         System.out.println(result);
 
         return result;
@@ -57,6 +61,7 @@ public class RunGame {
 
         exit = Console.readLine();
         errorManage.exitNumberErrorManage(exit);
+
         return exit.equals(RESTART_NUMBER);
     }
 
