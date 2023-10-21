@@ -8,13 +8,11 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    CompareNumber compareNumber = new CompareNumber();
-    private ProgramNumber program;
-    private UserNumber user;
     private final CompareNumber numberComparator = new CompareNumber();
     private ProgramNumber programNumber;
     private UserNumber userNumber;
 
+    private static final String RESET_COMMAND = "1";
 
     public void run() {
         OutputView.printStart();
@@ -46,6 +44,6 @@ public class GameController {
 
     private boolean isResetRequested() {
         ResetGameNumber resetGameNumber = new ResetGameNumber(InputView.resetNumber());
-        return resetGameNumber.getResetNumber().equals("1");
+        return resetGameNumber.getResetNumber().equals(RESET_COMMAND);
     }
 }
