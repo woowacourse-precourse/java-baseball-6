@@ -69,7 +69,28 @@ class RefereeTest {
         assertThat(result).isEqualTo(0);
     }
 
+    @DisplayName("유저 inputList 전체 판정하는 테스트")
     @Test
-    void judgeNumber() {
+    void judgeUserInputTest() {
+        //given
+        List<Integer> answerList = List.of(3, 7, 6);
+        Referee referee = new Referee(answerList);
+        List<Integer> userInput1 = List.of(3, 7, 6);
+        List<Integer> userInput2 = List.of(7, 6, 3);
+        List<Integer> userInput3 = List.of(3, 6, 7);
+        List<Integer> userInput4 = List.of(2, 1, 8);
+        List<Integer> userInput5 = List.of(3, 6, 1);
+        //when
+        List<Integer> result1 = referee.judgeUserInput(userInput1);
+        List<Integer> result2 = referee.judgeUserInput(userInput2);
+        List<Integer> result3 = referee.judgeUserInput(userInput3);
+        List<Integer> result4 = referee.judgeUserInput(userInput4);
+        List<Integer> result5 = referee.judgeUserInput(userInput5);
+        //then
+        assertThat(result1).isEqualTo(List.of(0, 3));
+        assertThat(result2).isEqualTo(List.of(3, 0));
+        assertThat(result3).isEqualTo(List.of(2, 1));
+        assertThat(result4).isEqualTo(null);
+        assertThat(result5).isEqualTo(List.of(1, 1));
     }
 }
