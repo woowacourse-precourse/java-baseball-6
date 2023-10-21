@@ -2,7 +2,9 @@ package baseball.constant;
 
 public enum BallConstant {
 
-    BALL_LENGTH(3);
+    BALL_LENGTH(3),
+    MAX_NUMBER(9),
+    MIN_NUMBER(1);
 
     private final int value;
 

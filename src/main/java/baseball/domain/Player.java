@@ -20,6 +20,7 @@ public class Player {
     private void validateElements(List<Integer> elements) {
         validateLength(elements);
         validateDuplicate(elements);
+        validateRange(elements);
     }
 
     private void validateLength(List<Integer> elements) {
@@ -35,6 +36,18 @@ public class Player {
             ExceptionMessage message = ExceptionMessage.DUPLICATE_NUMBER;
             throw new IllegalArgumentException(message.getMessage());
         }
+    }
+
+    private void validateRange(List<Integer> elements) {
+        int max = BallConstant.MAX_NUMBER.getValue();
+        int min = BallConstant.MIN_NUMBER.getValue();
+        for (int value: elements) {
+            if (!(min <= value && value <= max)) {
+                ExceptionMessage message = ExceptionMessage.INVALID_RANGE;
+                throw new IllegalArgumentException(message.getMessage());
+            }
+        }
+
     }
 
     public int getByPosition(int position) {
