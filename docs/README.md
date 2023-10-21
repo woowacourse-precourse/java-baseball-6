@@ -89,3 +89,5 @@
 - StrikeBall: 스트라이크, 볼 혹은 맞추지 못한 상태를 가진다
 
 - BallCountMessage: 볼카운트 결과에 대한 메시지를 가진다
+
+- ResultStatus: 결과의 상태를 가진다
