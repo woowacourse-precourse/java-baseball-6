@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenerateRandom {
+public class GenerateNumberList {
 
-    public static List<Integer> generateRandomNumberByList(int generate_cnt){
+    public static List<Integer> generateRandomNumberToComputer(int generate_cnt){
         List<Integer> computer_numbers = new ArrayList<>();
         while (computer_numbers.size() < generate_cnt) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
