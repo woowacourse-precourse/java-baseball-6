@@ -53,8 +53,7 @@
   * void addBall()
   * void addStrike()
   * boolean isNothing()
-  * int getBallCount()
-  * int getStrikeCount()
+  * String getResultStringFormat()
   * boolean isAllStrike()
 * Validator
   * int parseValidatedInt(String str)

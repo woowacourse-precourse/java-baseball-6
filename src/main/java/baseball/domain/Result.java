@@ -21,12 +21,13 @@ public class Result {
         return ballCount == 0 && strikeCount == 0;
     }
 
-    public int getBallCount() {
-        return ballCount;
-    }
-
-    public int getStrikeCount() {
-        return strikeCount;
+    public String getResultStringFormat() {
+        if (isAllStrike()) {
+            return "3스트라이크";
+        } else if (isNothing()) {
+            return "낫싱";
+        }
+        return String.format("%d볼 %d스트라이크%n", ballCount, strikeCount);
     }
 
     public boolean isAllStrike() {

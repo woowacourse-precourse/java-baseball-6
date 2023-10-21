@@ -8,14 +8,7 @@ public class OutputView {
     }
 
     public void printResult(Result result) {
-        if (result.isNothing()) {
-            System.out.println("낫싱");
-            return;
-        } else if (result.isAllStrike()) {
-            System.out.println("3스트라이크");
-            return;
-        }
-        System.out.printf("%d볼 %d스트라이크%n", result.getBallCount(), result.getStrikeCount());
+        System.out.println(result.getResultStringFormat());
     }
 
     public void gameOverMention() {
