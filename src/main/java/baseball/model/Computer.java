@@ -9,15 +9,11 @@ public class Computer {
 
     private List<Integer> computerNumber;
 
-    public Computer() {
-        this.computerNumber = drawComputerNumber();
-    }
-
     public List<Integer> getComputerNumber() {
         return computerNumber;
     }
 
-    private List<Integer> drawComputerNumber(){
+    public void drawComputerNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -25,7 +21,7 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
-        return computer;
+        computerNumber = computer;
     }
 
 }

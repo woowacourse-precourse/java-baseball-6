@@ -13,12 +13,13 @@ public class BaseballController {
     Referee referee = new Referee();
     public void startGame(){
         OutputView.baseballGameStart();
-        System.out.println(computer.getComputerNumber());
         matchGame();
 
     }
 
     public void matchGame() {
+        computer.drawComputerNumber();
+        System.out.println(computer.getComputerNumber());
         while(true){
             player.inputPlayerNumber(InputView.playerNumber());
             System.out.println(player.getPlayerNumber());
