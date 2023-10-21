@@ -1,9 +1,11 @@
 package baseball.view;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.List;
+import java.util.stream.Stream;
 import baseball.dto.request.GameRestartDto;
 import baseball.dto.request.PlayerNumberDto;
-import baseball.util.InputConverter;
 import baseball.util.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -24,8 +26,14 @@ public class InputView {
         System.out.print(INPUT_PLAYER_NUMBER_MESSAGE);
         String rawPlayerNumbers = Console.readLine();
         validatePlayerNumbers(rawPlayerNumbers);
-        List<Integer> playerNumbers = InputConverter.splitToInt(PLAYER_NUMBER_DELIMITER, rawPlayerNumbers);
+        List<Integer> playerNumbers = splitToInt(PLAYER_NUMBER_DELIMITER, rawPlayerNumbers);
         return new PlayerNumberDto(playerNumbers);
+    }
+
+    private List<Integer> splitToInt(String format, String input) {
+        return Stream.of(input.split(format))
+                .map(Integer::parseInt)
+                .collect(toList());
     }
 
     private static void validatePlayerNumbers(String rawPlayerNumbers) {
@@ -37,8 +45,12 @@ public class InputView {
         System.out.println(INPUT_GAME_RESTART_MESSAGE);
         String rawGameRestart = Console.readLine();
         validateGameRestart(rawGameRestart);
-        int gameRestartNumber = InputConverter.convertToInt(rawGameRestart);
+        int gameRestartNumber = convertToInt(rawGameRestart);
         return new GameRestartDto(gameRestartNumber);
+    }
+
+    private int convertToInt(String input) {
+        return Integer.parseInt(input);
     }
 
     private void validateGameRestart(String rawGameRestart) {
