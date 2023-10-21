@@ -31,25 +31,22 @@ public class PlayBaseballGame {
         int secondNum;
         int thirdNum;
 
-        try {
-            firstNum = numberGuess/100;
 
-            if(firstNum > 9 || firstNum == 0) {
-                throw new IllegalArgumentException();
-            }
+        firstNum = numberGuess/100;
 
-            numberGuess = numberGuess%100;
-            secondNum = numberGuess/10;
-            if(secondNum == 0) {
-                throw new IllegalArgumentException();
-            }
+        if(firstNum > 9 || firstNum == 0) {
+            throw new IllegalArgumentException();
+        }
 
-            thirdNum = numberGuess%10;
-            if(thirdNum == 0) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            return List.of(0, 0, 0);
+        numberGuess = numberGuess%100;
+        secondNum = numberGuess/10;
+        if(secondNum == 0) {
+            throw new IllegalArgumentException();
+        }
+
+        thirdNum = numberGuess%10;
+        if(thirdNum == 0) {
+            throw new IllegalArgumentException();
         }
 
         return List.of(firstNum, secondNum, thirdNum);
@@ -120,8 +117,8 @@ public class PlayBaseballGame {
 
         try {
             startNewGame = askNewGame();
-        } catch (IllegalArgumentException | IOException e) {
-            return;
+        } catch (IOException e) {
+            throw new IllegalArgumentException();
         }
 
         if(startNewGame) {
