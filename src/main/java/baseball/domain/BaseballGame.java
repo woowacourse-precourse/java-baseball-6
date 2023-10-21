@@ -14,6 +14,7 @@ public class BaseballGame {
 
     public BaseballGame() {
         rule = new Rule();
+        answer = new Answer();
     }
 
     public void run() {
@@ -22,7 +23,8 @@ public class BaseballGame {
     }
 
     private void start() {
-        this.answer = Answer.createAnswer();
+        answer.pickNumbers();
+
         int[] score;
         do {
             String userInput = getUserInput();
