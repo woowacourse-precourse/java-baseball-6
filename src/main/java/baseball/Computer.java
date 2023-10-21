@@ -6,31 +6,33 @@ import java.util.ArrayList;
 
 public class Computer {
 
-    private ArrayList<Integer> randomNums;
+    private ArrayList<Integer> random_numbers;
+    private int ball;
+    private int strike;
 
     public Computer() {
-        this.randomNums = new ArrayList<>();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        this.random_numbers = new ArrayList<>();
 
-        while(this.randomNums.isEmpty() || this.randomNums.size() < 3) {
+        while (this.random_numbers.isEmpty() || this.random_numbers.size() < 3) {
             int random_number = Randoms.pickNumberInRange(1, 9);
-            if(!this.randomNums.contains(random_number)) this.randomNums.add(random_number);
+            if (!this.random_numbers.contains(random_number)) {
+                this.random_numbers.add(random_number);
+            }
         }
+
+        this.ball = 0;
+        this.strike = 0;
     }
 
     public boolean check_input(ArrayList<Integer> input) {
-        int ball = this.count_ball(input);
-        int strike = this.count_strike(input);
+        this.count_ball(input);
+        this.count_strike(input);
 
-        if(ball != 0) {
-            System.out.print(ball + "볼 ");
-        }
-        if(strike != 0) {
-            System.out.println(strike + "스트라이크");
-        }
-        if(ball == 0 && strike == 0) {
+        if (this.ball == 0 && this.strike == 0) {
             System.out.println("낫싱");
         }
-        if(strike == 3) {
+        if (this.strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
@@ -38,26 +40,34 @@ public class Computer {
         return false;
     }
 
-    private int count_ball(ArrayList<Integer> input) {
-        int balls = 0;
-        for(int i = 0; i < 3; i++) {
-            ArrayList<Integer> check_list = new ArrayList<>(this.randomNums);
-            check_list.remove(this.randomNums.get(i));
+    private void count_ball(ArrayList<Integer> input) {
+        this.ball = 0;
+        for (int i = 0; i < 3; i++) {
+            ArrayList<Integer> check_list = new ArrayList<>(this.random_numbers);
+            check_list.remove(this.random_numbers.get(i));
 
-            if(check_list.contains(input.get(i))) balls++;
+            if (check_list.contains(input.get(i))) {
+                this.ball++;
+            }
         }
 
-        return balls;
+        if (this.ball != 0) {
+            System.out.print(this.ball + "볼 ");
+        }
     }
 
-    private int count_strike(ArrayList<Integer> input) {
-        int strike = 0;
-        for(int i = 0; i < 3; i++) {
-            int check_num = this.randomNums.get(i);
+    private void count_strike(ArrayList<Integer> input) {
+        this.strike = 0;
+        for (int i = 0; i < 3; i++) {
+            int check_num = this.random_numbers.get(i);
 
-            if(check_num == input.get(i)) strike++;
+            if (check_num == input.get(i)) {
+                this.strike++;
+            }
         }
 
-        return strike;
+        if (this.strike != 0) {
+            System.out.println(this.strike + "스트라이크");
+        }
     }
 }
