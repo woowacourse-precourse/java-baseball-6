@@ -15,6 +15,7 @@ public class BaseBallGame {
     public BaseBallGame(NumberGenerator numberGenerator){
         this.numberGenerator = numberGenerator;
         computerNumber = numberGenerator.generatorComputerNumber(BASEBALL_NUM_SIZE);
+        isGameOver = false;
     }
     public void playingGame(List<Integer> userInput){
         if(userInput.size() != BASEBALL_NUM_SIZE)
@@ -22,6 +23,12 @@ public class BaseBallGame {
 
     }
 
+    /**
+     * 게임이 현재 끝난 상태인지 반환함
+     */
+    public boolean isGameOver() {
+        return isGameOver;
+    }
     /**
      * 유저가 입력한 String형식의 Input을 List형식으로 파씽함
      */
