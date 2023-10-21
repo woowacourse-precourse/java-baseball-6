@@ -11,6 +11,10 @@ public enum RegameChoice {
         this.value = value;
     }
 
+    public int getValue() {
+        return value;
+    }
+
     public static RegameChoice fromValue(int value) {
         for (RegameChoice choice : RegameChoice.values()) {
             if (choice.value == value) {
