@@ -25,4 +25,8 @@ public class GameResult {
         return strikeCount;
     }
 
+    public boolean isSuccess(){
+        return strikeCount == 3;
+    }
+
 }
