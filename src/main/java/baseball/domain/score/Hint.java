@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.score;
 
 public enum Hint {
     NOTHING("낫싱"),

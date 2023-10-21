@@ -3,6 +3,7 @@ package baseball.domain;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import baseball.domain.score.Hint;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,7 @@ public class BallsTest {
     private static final String STRIKE = Hint.STRIKE.value();
     private static final String BALL = Hint.BALL.value();
     private static final String NOTHING = Hint.NOTHING.value();
+
     @Test
     void 중복_숫자_입력시_예외() {
         List<Integer> input = List.of(1, 1, 1);

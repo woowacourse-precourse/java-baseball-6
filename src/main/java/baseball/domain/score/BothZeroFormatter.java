@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.score;
 
 public class BothZeroFormatter implements StringFormatter {
     @Override

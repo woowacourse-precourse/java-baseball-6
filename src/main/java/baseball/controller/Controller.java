@@ -4,8 +4,8 @@ import static baseball.utils.Constants.NUMBER_OF_BALLS;
 
 import baseball.domain.Balls;
 import baseball.domain.Game;
-import baseball.domain.Hint;
 import baseball.domain.RandomBallsGenerator;
+import baseball.domain.score.Hint;
 import baseball.service.Service;
 import baseball.view.Command;
 import baseball.view.InputView;

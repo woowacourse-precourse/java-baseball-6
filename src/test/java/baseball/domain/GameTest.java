@@ -2,6 +2,7 @@ package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import baseball.domain.score.Hint;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.score;
 
 public class Score {
     private final int ball;

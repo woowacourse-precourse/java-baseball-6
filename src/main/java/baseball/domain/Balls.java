@@ -2,6 +2,7 @@ package baseball.domain;
 
 import static baseball.utils.Constants.NUMBER_OF_BALLS;
 
+import baseball.domain.score.Score;
 import java.util.List;
 import java.util.stream.IntStream;
 
