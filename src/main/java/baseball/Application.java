@@ -1,17 +1,17 @@
 package baseball;
 
+import java.util.Arrays;
+
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
-
+        Game target = new Game();
+        Game.init(target);
     }
 }
 
 class Game {
-    private  static final String InputNumberMessage = "숫자를 입력해주세요 : ";
-    private  static final String CheckingRestart = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
     private int RandomNumber(){ // 1~9까지 랜덤 숫자 생성
         return pickNumberInRange(1,9);
     }
@@ -33,6 +33,25 @@ class Game {
         }
     }
 
+    public static void init(Game target){
+        Game Useranswer = Game.UserNumber();
+
+        Hint hint = new Hint();
+        hint.Compare(Useranswer, target);
+        hint.PrintResult();
+
+        if (hint.strike != 3){
+            Game.init(target);
+            return;
+        }
+
+        int Restart = Game.CheckRestart();
+        if (Restart == 1){
+            target = new Game();
+            Game.init(target);
+        }
+    }
+
     static char[] stringToChar(String str){
         char[] charArray = new char[str.length()];
         for (int i=0; i<str.length(); i++){
@@ -42,10 +61,31 @@ class Game {
     }
 
     private static Game UserNumber(){ // 사용자로부터 숫자 입력받기
-        System.out.print(InputNumberMessage);
+        System.out.print("숫자를 입력해주세요 : ");
         String UserAnswer = readLine();
         Check.CheckInput(UserAnswer); // 입력 받은 숫자가 조건들을 만족하는지 체크
         return new Game(UserAnswer); // 문자열을 숫자로 변환
+    }
+
+    private static int NewGameUserNumber(String ans){
+        int InputValue;
+        try{
+            InputValue = Integer.parseInt(ans);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+        if (InputValue != 1 && InputValue != 2){
+            throw new IllegalArgumentException();
+        }
+        return InputValue;
+    }
+
+    private static int CheckRestart(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String NewAnswer = readLine();
+        return Game.NewGameUserNumber(NewAnswer);
     }
 
 
@@ -73,10 +113,10 @@ class Check{
         if (ans.length() != 3){
             throw new IllegalArgumentException();
         }
-        if (Check.checkRepeat(ans)){
+        if (!Check.checkRepeat(ans)){
             throw new IllegalArgumentException();
         }
-        if (Check.checkNum(ans)){
+        if (!Check.checkNum(ans)){
             throw new IllegalArgumentException();
         }
 
@@ -104,5 +144,50 @@ class Check{
         char[] NumArray = Game.stringToChar(str);
         return !Check.RepeatNumber(NumArray,'0');
     }
+
+    static int Location(final int[] arr, final int num){
+        for (int i=0; i<3; i++){
+            if (arr[i]==num) return i;
+        }
+        return -1;
+    }
 }
 
+class Hint{
+    int ball,strike;
+
+    private void StrikeCount(){
+        this.strike++;
+    }
+    private void BallCount(){
+        this.ball++;
+    }
+    void Compare(Game answer, Game target){
+        int tmp;
+        for (int i=0; i<3; i++){
+            tmp = answer.Answer[i];
+             if(!Check.RepeatNumber(target.Answer, tmp)){
+                 continue;
+             }
+             if (i == Check.Location(target.Answer,tmp)){
+                 StrikeCount();
+                 continue;
+             }
+             BallCount();
+        }
+    }
+
+    void PrintResult(){
+        String result = "";
+        if (this.ball != 0){
+            result += this.ball + "볼";
+        }
+        if (this.strike != 0){
+            result += this.strike + "스트라이크";
+        }
+        if (result.equals("")){
+            result = "낫싱";
+        }
+        System.out.println(result);
+    }
+}
