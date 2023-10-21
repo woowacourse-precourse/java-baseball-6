@@ -4,112 +4,62 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-
-//해결해야 하는거 mvc 다시 이해해서 구성해야함 // 예외 발생시 프로그램 종료한다는걸까먹음
 public class BaseballGame {
-    private static Iterator<Integer> bNumber = null;
     private static Boolean isGameOn = true;
     private static Boolean newGame = false;
-
-    private static void generateNewNumber() {
-        BaseModel.newbaseballNumber();
-    }
-
-    private static void newBNumber() {
-        bNumber = BaseModel.generateBNumber();
-    }
-
-    private static LinkedHashSet<Integer> forUserExCheck(String userNumber) {
-        return BaseModel.forUNumberChecking(userNumber);
-    }
-
-    private static Iterator<Integer> generateNewUserNumber(LinkedHashSet<Integer> userNumber) {
-        return BaseModel.generateUNumber(userNumber);
-    }
+    private static LinkedHashSet<Integer> userNumber = null;
 
     private BaseballGame() {
     }
 
     public final static void turnOn() {
         BaseballOutput.gameStart();
-        generateNewNumber();
-        newBNumber();
+        BaseModel.newbaseballNumber();
         mainGame();
     }
 
     private static void mainGame() {
-        BaseballOutput.printInputUserNum();
-        LinkedHashSet<Integer> userInput = forUserExCheck(inputUserNumber());
-        exceptionCheck(userInput);
-        printBns(judgeNumber(generateNewUserNumber(userInput)));
+        while (isGameOn) {
+            setting();
+            exceptionCheck();
+            if (!isGameOn) {
+                isGameOn = true;
+                break;
+            }
+            printBns(BaseModel.judgeNumber(BaseModel.generateUNumber(userNumber)));
+            newOrEnd();
+            if (!isGameOn && !newGame) {
+                isGameOn = true;
+                break;
+            }
+            newGame = false;
+        }
+    }
 
+    private static void exceptionCheck() throws IllegalArgumentException {
+        try {
+            BaseModel.exceptionCheck(userNumber);
+        } catch (IllegalArgumentException e) {
+            isGameOn = false;
+            throw e;
+        }
+    }
+
+    private static void newOrEnd() {
         if (!isGameOn) {
             BaseballOutput.printNewOrEnd();
-            String userChoice = inputUserNumber();
-//            exceptionCheckNewOrEnd(userChoice);
-            newOrEnd(userChoice);
+            newGame = BaseModel.newOrEnd(Console.readLine());
             if (newGame) {
-                generateNewNumber();
-            } else if (!newGame) {
-                return;
-            }
-        }
-        newBNumber();
-        mainGame();
-    }
-
-    private static void newOrEnd(String userChoice) {
-
-        if (userChoice.equals("1")) {
-            newGame = true;
-            return;
-        }
-        newGame = false;
-    }
-
-
-    private static String inputUserNumber() {
-        String userInputNumber = Console.readLine();
-        return userInputNumber;
-    }
-
-    //    private static void exceptionCheckNewOrEnd(String userChoice) {
-//        if (userChoice.length() != 1 || !userChoice.matches("\\d+")) {
-//            throw new IllegalArgumentException("You should input single data");
-//        }
-//    }
-//
-    private static void exceptionCheck(LinkedHashSet<Integer> userNumber) {
-        if (userNumber.size() != 3) {
-            throw new IllegalArgumentException("please input 3 digit");
-
-        }
-        for (int i : userNumber) {
-            if (i < 1 || i > 9) {
-                throw new IllegalArgumentException("please input the exact data");
+                BaseModel.newbaseballNumber();
+                isGameOn = true;
             }
         }
     }
 
-    private static int[] judgeNumber(Iterator<Integer> uNumber) {
-        LinkedHashSet<Integer> temp = new LinkedHashSet<>();
-        int first = 0;
-        int second = 0;
-        int strike = 0;
-
-        while (bNumber.hasNext() && uNumber.hasNext()) {
-            first = bNumber.next();
-            second = uNumber.next();
-            System.out.println(first);
-            temp.add(first);
-            temp.add(second);
-
-            if (first == second) {
-                strike++;
-            }
-
-        }//6개면 낫싱 5개면..1개 겹침 1스트면 4개면 2개 겹침 3개면 3개 겹침
-        return new int[]{(6 - temp.size() - strike), strike};
+    private static void setting() {
+        BaseModel.generateBNumber();
+        BaseballOutput.printInputUserNum();
+        userNumber = BaseModel.forUNumberChecking(Console.readLine());
     }
 
     private static void printBns(int[] bns) {
@@ -128,11 +78,6 @@ public class BaseballGame {
         }
         BaseballOutput.printCall(new BallCall(bns[0]), new StrikeCall(bns[1]));
     }
-
-    //메소드 하나는 게임을 계속할지 말지 결정을 하도록 하고
-    //사용자가 1을 누르면 다시 게임이 시작된다.. 그러면 1을 누르거나 2를 받을 메소드도 필요함
-
-
 }
 
 class BaseballOutput {
@@ -153,14 +98,15 @@ class BaseballOutput {
         }
     }
 
+    static void printCall() {
+        System.out.println("낫싱");
+    }
+
     static void printNewOrEnd() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    static void printCall() {
-        System.out.println("낫싱");
-    }
 
 }
 
@@ -196,13 +142,18 @@ class BaseModel {
     }
 
     static LinkedHashSet<Integer> baseballNumber = null;
+    private static Iterator<Integer> bNumber = null;
 
     static void newbaseballNumber() {
         baseballNumber = NumberGenerator.numberGenerating(3);
     }
 
-    static Iterator<Integer> generateBNumber() {
-        return baseballNumber.iterator();
+    static void generateBNumber() {
+        bNumber = baseballNumber.iterator();
+    }
+
+    static Iterator<Integer> generateUNumber(LinkedHashSet<Integer> userNumber) {
+        return userNumber.iterator();
     }
 
     static LinkedHashSet<Integer> forUNumberChecking(String userNumber) {
@@ -213,8 +164,44 @@ class BaseModel {
         return userNumberRet;
     }
 
-    static Iterator<Integer> generateUNumber(LinkedHashSet<Integer> userNumber) {
-        return userNumber.iterator();
+    static boolean newOrEnd(String userChoice) {
+
+        if (userChoice.equals("1")) {
+            return true;
+        }
+        return false;
+    }
+
+    static void exceptionCheck(LinkedHashSet<Integer> userNumber) throws IllegalArgumentException {
+        if (userNumber.size() != 3) {
+            throw new IllegalArgumentException("please input 3 digit");
+        }
+        for (int i : userNumber) {
+            if (i < 1 || i > 9) {
+                throw new IllegalArgumentException("please input the exact data");
+            }
+        }
+    }
+
+    static int[] judgeNumber(Iterator<Integer> uNumber) {
+        LinkedHashSet<Integer> temp = new LinkedHashSet<>();
+        int first = 0;
+        int second = 0;
+        int strike = 0;
+
+        while (bNumber.hasNext() && uNumber.hasNext()) {
+            first = bNumber.next();
+            second = uNumber.next();
+            System.out.println(first);
+            temp.add(first);
+            temp.add(second);
+
+            if (first == second) {
+                strike++;
+            }
+
+        }
+        return new int[]{(6 - temp.size() - strike), strike};
     }
 }
 
