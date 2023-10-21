@@ -10,8 +10,8 @@ public class Computer {
     private final List<Character> answerDigits = new ArrayList<>();
 
     private static final int INITIAL_COUNT = 0;
-    private static final int ANSWER_START = 0;
-    private static final int ANSWER_LENGTH = 3;
+    private static final int INITIAL_LENGTH = 0;
+    private static final int MAX_LENGTH = 3;
     private static final int MIN_DIGIT = 1;
     private static final int MAX_DIGIT = 9;
 
@@ -21,7 +21,7 @@ public class Computer {
     private static final String BLANK = " ";
 
     public void generateAnswer(){
-        while(answerDigits.size() < ANSWER_LENGTH){
+        while(answerDigits.size() < MAX_LENGTH){
             generateRandomDigit();
         }
     }
@@ -29,27 +29,12 @@ public class Computer {
     public String generateResult(String playerInput){
         int totalCount;
         int strikeCount;
-        int ballCount;
-        List<Character> guessDigits = new ArrayList<>();
+        List<Character> playerInputAsChars;
 
-        for (char digit : playerInput.toCharArray()) {
-            guessDigits.add(digit);
-        }
-
-        totalCount = computeStrikeAndBall(guessDigits);
-        strikeCount = computeStrike(guessDigits);
-        ballCount = totalCount - strikeCount;
-
-        if (totalCount == INITIAL_COUNT){
-            return NOTHING;
-        }
-        if (strikeCount == INITIAL_COUNT){
-            return ballCount + BALL;
-        }
-        if (ballCount == INITIAL_COUNT){
-            return strikeCount + STRIKE;
-        }
-        return ballCount + BALL + BLANK + strikeCount + STRIKE;
+        playerInputAsChars = strToCharacterList(playerInput);
+        totalCount = computeStrikeAndBall(playerInputAsChars);
+        strikeCount = computeStrike(playerInputAsChars);
+        return generateResultString(totalCount, strikeCount);
     }
 
     private void generateRandomDigit(){
@@ -60,9 +45,9 @@ public class Computer {
         }
     }
 
-    public int computeStrikeAndBall(List<Character> guessDigits){
+    private int computeStrikeAndBall(List<Character> guessDigits){
         int totalCount = INITIAL_COUNT;
-        for (int i = ANSWER_START; i < ANSWER_LENGTH; i++){
+        for (int i = INITIAL_LENGTH; i < MAX_LENGTH; i++){
             if (answerDigits.contains(guessDigits.get(i))){
                 totalCount++;
             }
@@ -70,13 +55,30 @@ public class Computer {
         return totalCount;
     }
 
-    public int computeStrike(List<Character> guessDigits){
+    private int computeStrike(List<Character> guessDigits){
         int strikeCount = INITIAL_COUNT;
-        for (int i = ANSWER_START; i < ANSWER_LENGTH; i++){
+        for (int i = INITIAL_LENGTH; i < MAX_LENGTH; i++){
             if (guessDigits.get(i).equals(answerDigits.get(i))){
                 strikeCount ++;
             }
         }
         return strikeCount;
+    }
+
+    private String generateResultString(int totalCount, int strikeCount){
+        int ballCount = totalCount - strikeCount;
+
+        if (totalCount == INITIAL_COUNT){ return NOTHING; }
+        if (strikeCount == INITIAL_COUNT){ return ballCount + BALL; }
+        if (ballCount == INITIAL_COUNT){ return strikeCount + STRIKE; }
+        return ballCount + BALL + BLANK + strikeCount + STRIKE;
+    }
+
+    private List<Character> strToCharacterList (String str){
+        List<Character> characterList = new ArrayList<>();
+        for (char character : str.toCharArray()) {
+            characterList.add(character);
+        }
+        return characterList;
     }
 }

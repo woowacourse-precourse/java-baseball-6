@@ -8,25 +8,36 @@ public class GameController {
     private static final String GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String ASK_TO_CONTINUE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public void run(){
+    public void setGame() {
         Player player = new Player();
         System.out.println(GAME_START);
         do {
-            Computer computer = new Computer();
-            computer.generateAnswer();
+            startGame(player);
+        } while (player.conformGameRestart());
+    }
 
-            while(true){
-                System.out.println(INPUT_NUMBER);
-                String playerInput = player.inputNumbers();
-                String result = computer.generateResult(playerInput);
+    private void startGame(Player player) {
+        boolean isAnswerCorrect = false;
+        Computer computer = new Computer();
+        computer.generateAnswer();
 
-                System.out.println(result);
-                if (result.equals(ANSWER_RESULT)){
-                    break;
-                }
-            }
-            System.out.println(GAME_OVER);
-            System.out.println(ASK_TO_CONTINUE);
-        }while (player.conformGameRestart());
+        while (!isAnswerCorrect) {
+            isAnswerCorrect = runGameTurn(player, computer);
+        }
+        System.out.println(GAME_OVER);
+        System.out.println(ASK_TO_CONTINUE);
+    }
+
+    private boolean runGameTurn(Player player, Computer computer) {
+        System.out.println(INPUT_NUMBER);
+        String playerInput = player.inputNumbers();
+
+        String resultString = computer.generateResult(playerInput);
+        System.out.println(resultString);
+
+        if (resultString.equals(ANSWER_RESULT)) {
+            return true;
+        }
+        return false;
     }
 }

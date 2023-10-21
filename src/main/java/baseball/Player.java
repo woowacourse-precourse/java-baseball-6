@@ -26,7 +26,6 @@ public class Player {
         return isRestartFlag(flag);
     }
 
-    // TODO player의 입력을 받는 메소드로 변경 필요
     private String getPlayerInput(){
         String playerInput = readLine();
         return playerInput;
