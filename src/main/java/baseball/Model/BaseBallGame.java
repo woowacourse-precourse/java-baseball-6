@@ -63,6 +63,15 @@ public class BaseBallGame {
     }
 
     /**
+     * 게임이 끝났는지 체크해줌
+     */
+    public void gameOverCheck(int strike) {
+        if (strike == BASEBALL_NUM_SIZE) {
+            isGameOver = true;
+        }
+    }
+
+    /**
      * 유저가 입력한 String형식의 Input을 List형식으로 파씽함
      */
     public List<Integer> parseUserInput(String input) {
