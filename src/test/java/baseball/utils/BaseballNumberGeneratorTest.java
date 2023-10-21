@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 @DisplayName("[Baseball Generator]")
 class BaseballNumberGeneratorTest {
 
-    private static List<Integer> BASEBALL_NUMBER_RANGE_LIST = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    private static final List<Integer> BASEBALL_NUMBER_RANGE_LIST = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
     private List<Integer> baseball;
 
