@@ -29,6 +29,6 @@ public class GameScore {
     }
 
     public boolean isUserFindAnswer() {
-        return strike == 3 ? true : false;
+        return strike == 3;
     }
 }
