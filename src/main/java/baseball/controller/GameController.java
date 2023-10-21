@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constant.NumberConstant;
 import baseball.dto.GameStateDto;
 import baseball.service.BaseballService;
 import baseball.service.ComputerNumberGenerator;
@@ -66,7 +67,7 @@ public class GameController {
     private void outputResult(GameStateDto gamestate) {
         int strike = gamestate.getStrike();
         int ball = gamestate.getBall();
-        if (strike == 3) {
+        if (strike == NumberConstant.THREE_STRIKE.getNumber()) {
             threeStrikeProcess(gamestate, strike);
         } else if (strike > 0 && ball > 0) {
             outputView.strikeBall(strike, ball);

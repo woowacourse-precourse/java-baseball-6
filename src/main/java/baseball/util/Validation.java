@@ -1,14 +1,13 @@
 package baseball.util;
 
+import baseball.constant.NumberConstant;
 import baseball.constant.ValidateException;
 
 public class Validation {
 
     private static final String NUMBER_REGEX = "^[1-9]+$";
     private static final String RESTART_NUMBER_REGEX = "^[1-2]+$";
-    private static final Integer INPUT_LENGTH = 3;
 
-    private static final Integer RESTART_LENGTH = 1;
 
     public String validateNumber(String number) {
         checkRightNumber(number);
@@ -28,7 +27,7 @@ public class Validation {
     }
 
     private static void validateRestartNumberLength(String number) {
-        if (number.length() != RESTART_LENGTH) {
+        if (number.length() != NumberConstant.RESTART_INPUT_LENGTH.getNumber()) {
             throw new IllegalArgumentException(ValidateException.RESTART_INPUT_NUMBER_LENGTH_EXCEPTION.getMsg());
         }
     }
@@ -40,8 +39,8 @@ public class Validation {
     }
 
     private void validateInSameNumber(String number) {
-        for (int i = 0; i < INPUT_LENGTH; i++) {
-            for (int j = 0; j < INPUT_LENGTH; j++) {
+        for (int i = 0; i < NumberConstant.INPUT_LENGTH.getNumber(); i++) {
+            for (int j = 0; j < NumberConstant.INPUT_LENGTH.getNumber(); j++) {
                 findDuplicateNumber(number, i, j);
             }
         }
@@ -62,7 +61,7 @@ public class Validation {
     }
 
     private void validateIsRightLength(String number) {
-        if (number.length() != INPUT_LENGTH) {
+        if (number.length() != NumberConstant.INPUT_LENGTH.getNumber()) {
             throw new IllegalArgumentException(ValidateException.INPUT_NUMBER_LENGTH_EXCEPTION.getMsg());
         }
     }

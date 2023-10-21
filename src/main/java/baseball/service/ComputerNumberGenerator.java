@@ -1,10 +1,10 @@
 package baseball.service;
 
+import baseball.constant.NumberConstant;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerNumberGenerator {
 
-    private static final Integer NUMBER_LENGTH = 3;
     private static ComputerNumberGenerator instance = new ComputerNumberGenerator();
 
     private ComputerNumberGenerator() {
@@ -33,7 +33,7 @@ public class ComputerNumberGenerator {
 
 
     private boolean isShorterThanNumberLength(StringBuilder comNumberBuilder) {
-        return comNumberBuilder.length() < NUMBER_LENGTH;
+        return comNumberBuilder.length() < NumberConstant.INPUT_LENGTH.getNumber();
     }
 
 

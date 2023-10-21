@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.constant.NumberConstant;
 import baseball.dto.GameStateDto;
 
 public class BaseballService {
@@ -22,13 +23,13 @@ public class BaseballService {
 
     private void calculateBall(
         GameStateDto gameStateDto) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NumberConstant.INPUT_LENGTH.getNumber(); i++) {
             findDifferentIndexSameNumber(gameStateDto, i);
         }
     }
 
     private void findDifferentIndexSameNumber(GameStateDto gameStateDto, int i) {
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < NumberConstant.INPUT_LENGTH.getNumber(); j++) {
             if (isDifferentIndex(i, j) && isSameNumber(i, j)) {
                 addBall(gameStateDto);
             }
@@ -53,7 +54,7 @@ public class BaseballService {
     }
 
     private void calculateStrike(GameStateDto gameStateDto) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NumberConstant.INPUT_LENGTH.getNumber(); i++) {
             if (isSameNumber(i)) {
                 addStrike(gameStateDto);
             }
