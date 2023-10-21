@@ -9,12 +9,6 @@ public class OutputView {
     private final String NOTTING_MESSAGE = "낫싱";
 
     public void printGameResult(int strikeCount, int ballCount) {
-        if (strikeCount == GameConstants.FIXED_DIGIT_NUMBER) {
-            System.out.println(GUESS_SUCCESS_MESSAGE);
-
-            return;
-        }
-
         if (strikeCount == 0 && ballCount == 0) {
             System.out.println(NOTTING_MESSAGE);
 
@@ -32,5 +26,9 @@ public class OutputView {
         }
 
         System.out.println(resultMessage);
+    }
+
+    public void printSuccessMessage() {
+        System.out.println(GUESS_SUCCESS_MESSAGE);
     }
 }

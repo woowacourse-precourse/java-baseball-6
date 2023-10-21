@@ -20,4 +20,11 @@ public class PlayerService {
 
         return playerNums;
     }
+
+    public String inputGameCommand() {
+        String input = Console.readLine();
+        InputValidator.validateCommand(input);
+
+        return input;
+    }
 }
