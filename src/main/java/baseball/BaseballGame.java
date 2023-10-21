@@ -18,6 +18,7 @@ public class BaseballGame {
     }
 
     private void setNumber(){
+        numbers.clear();
         while (numbers.size() < NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
             if (!numbers.contains(randomNumber)) {
