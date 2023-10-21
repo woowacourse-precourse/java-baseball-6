@@ -10,6 +10,16 @@ import java.util.stream.Stream;
 
 public final class BallsUtils {
 
+    public static Balls convertStringToBalls(String string) {
+        List<Integer> integers = StringUtils.convertStringToIntegerList(string);
+        return convertIntegersToBalls(integers);
+    }
+
+    public static Balls convertIntegersToBalls(List<Integer> integers) {
+        List<Ball> balls = BallsUtils.convertIntegersToBallList(integers);
+        return new Balls(balls);
+    }
+
     public static List<Ball> convertIntegersToBallList(List<Integer> integers) {
         return IntStream.range(0, Balls.BALL_COUNT)
                 .mapToObj(i -> {
