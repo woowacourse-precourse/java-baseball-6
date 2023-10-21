@@ -11,9 +11,7 @@ import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class BaseballGameController {
     public void startGame() {
@@ -54,9 +52,9 @@ public class BaseballGameController {
 
     private int calculateBallCount(NumberList answer, NumberList guess) {
         int ballCount = 0;
-        for (int i = 0; i < answer.getNumberList().size(); i++) {
-            for (int j = 0; j < guess.getNumberList().size(); j++) {
-                if (answer.getNumberList().get(i).equals(guess.getNumberList().get(j)) && i != j) {
+        for (int i = 0; i < answer.size(); i++) {
+            for (int j = 0; j < guess.size(); j++) {
+                if (answer.get(i).equals(guess.get(j)) && i != j) {
                     ballCount++;
                 }
             }
@@ -66,8 +64,8 @@ public class BaseballGameController {
 
     private int calculateStrikeCount(NumberList answer, NumberList guess) {
         int strikeCount = 0;
-        for (int i = 0; i < answer.getNumberList().size(); i++) {
-            if (answer.getNumberList().get(i).equals(guess.getNumberList().get(i))) {
+        for (int i = 0; i < answer.size(); i++) {
+            if (answer.get(i).equals(guess.get(i))) {
                 strikeCount++;
             }
         }
@@ -85,25 +83,6 @@ public class BaseballGameController {
         private static void validateUsersGuess(String guess) {
             Validator.validateNull(guess);
             Validator.validateSize(guess, 3);
-            validateIsInRange(guess);
-            validateRepeatedNumber(guess);
-        }
-
-        private static void validateRepeatedNumber(String guess) {
-            Set<Character> set = new HashSet<>();
-            for (int i = 0; i < guess.length(); i++) {
-                set.add(guess.charAt(i));
-            }
-            if (set.size() != guess.length()) {
-                throw new IllegalArgumentException("중복된 원소가 있습니다.");
-            }
-        }
-
-        private static void validateIsInRange(String guess) {
-            for (int i = 0; i < guess.length(); i++) {
-                int number = guess.charAt(i) - '0';
-                Validator.validateInRange(number, 1, 9);
-            }
         }
     }
 }

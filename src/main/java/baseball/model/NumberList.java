@@ -1,25 +1,42 @@
 package baseball.model;
 
-import java.util.ArrayList;
+import baseball.validator.Validator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class NumberList {
     private List<Integer> numberList;
 
-    public NumberList() {
-        numberList = new ArrayList<>();
-    }
-
     public NumberList(List<Integer> numberList) {
+        validateRepeatedNumber(numberList);
+        validateIsInRange(numberList);
         this.numberList = numberList;
     }
 
-    public List<Integer> getNumberList() {
-        return numberList;
+    public int size() {
+        return numberList.size();
     }
 
-    public void setNumberList(List<Integer> numberList) {
-        this.numberList = numberList;
+    public Integer get(int index) {
+        return numberList.get(index);
+    }
+
+    private void validateRepeatedNumber(List<Integer> numberList) {
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < numberList.size(); i++) {
+            set.add(numberList.get(i));
+        }
+        if (set.size() != numberList.size()) {
+            throw new IllegalArgumentException("중복된 원소가 있습니다.");
+        }
+    }
+
+    private void validateIsInRange(List<Integer> numberList) {
+        for (int i = 0; i < numberList.size(); i++) {
+            int number = numberList.get(i) - '0';
+            Validator.validateInRange(number, 1, 9);
+        }
     }
 
     public boolean equals(NumberList a) {
