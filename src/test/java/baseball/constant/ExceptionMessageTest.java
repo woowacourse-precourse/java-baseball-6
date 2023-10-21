@@ -13,12 +13,20 @@ public class ExceptionMessageTest {
     void 메세지_내용_일치() {
         // given
         String length = "입력한 수의 길이가 길거나 짧습니다.";
-        String type = "잘못된 입력 형식입니다.";
+        String type = "잘못된 입력입니다.";
 
         // then
         assertAll(
-                () -> assertEquals(LENGTH.getValue(), length),
-                () -> assertEquals(TYPE.getValue(), type)
+                () -> assertEquals(LENGTH.getMessage(), length),
+                () -> assertEquals(TYPE.getMessage(), type)
         );
+    }
+
+    @Test
+    void builder_정상_출력_확인() {
+        // given
+        String lengthBuildText = "입력한 수의 길이가 길거나 짧습니다.\nExpect: 3\nActual: 4";
+
+        assertEquals(LENGTH.build(4), lengthBuildText);
     }
 }
