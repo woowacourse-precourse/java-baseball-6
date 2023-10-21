@@ -10,7 +10,10 @@ public class UserNumber {
     private final List<Integer> userNumber = new ArrayList<>();
 
     public UserNumber(String userNumber) {
-
+        validateLength(userNumber);
+        validateDigit(userNumber);
+        validateDuplication(userNumber);
+        convertInputStringToList(userNumber);
     }
 
     private void validateLength(String userInputNumber){
