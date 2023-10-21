@@ -9,14 +9,18 @@ public class Computer {
         boolean[] duplicateCheck = new boolean[10];
         for(int i = 0; i < 3; i++){
             int num = Randoms.pickNumberInRange(1, 9);
-            if(duplicateCheck[num]){
+            if(checkDuplicated(duplicateCheck, num)){
                 i--;
                 continue;
             }
-            duplicateCheck[num] = true;
             randomNumbers[i] = num;
         }
         return randomNumbers;
+    }
+    private boolean checkDuplicated(boolean[] duplicateCheck, int num){
+        if(duplicateCheck[num]) return true;
+        duplicateCheck[num] = true;
+        return false;
     }
     public int[] judge(int[] input){
         int[] judgeResult = new int[2];
