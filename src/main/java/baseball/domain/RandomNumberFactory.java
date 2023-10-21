@@ -11,12 +11,12 @@ public class RandomNumberFactory {
 	private static final int MAX_NUMBER_RANGE = 9;
 	private static final int MAX_NUMBER_SIZE = 3;
 
-	public Computer generate() {
+	public BaseballNumber generate() {
 		List<Integer> computer = new ArrayList<>();
 		while (computer.size() < MAX_NUMBER_SIZE) {
 			generateNumber(computer);
 		}
-		return new Computer(computer);
+		return new BaseballNumber(computer);
 	}
 
 	private void generateNumber(List<Integer> computer) {
