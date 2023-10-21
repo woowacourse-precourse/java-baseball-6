@@ -12,4 +12,12 @@ public class NumberUtil {
             throw new IllegalArgumentException("입력값은 3자리이어야 합니다.");
         }
     }
+
+    protected static void validateNumber(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            if (!Character.isDigit(number.charAt(i))) {
+                throw new IllegalArgumentException("입력값은 정수이어야 합니다.");
+            }
+        }
+    }
 }
