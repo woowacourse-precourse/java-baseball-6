@@ -8,7 +8,13 @@ public class ExceptionList {
             throw new IllegalArgumentException("numbers사이즈 예외 발생");
         }
         if(checkDuplicateNumber(numbers)) {
+            throw new IllegalArgumentException("중복수 예외 발생");
+        }
+    }
 
+    public static void validReStartInputNumber(Integer InputNumber) {
+        if(InputNumber != 1 && InputNumber != 2) {
+            throw new IllegalArgumentException("종료시 입력한 수 예외 발생");
         }
     }
 
