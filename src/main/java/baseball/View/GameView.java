@@ -10,9 +10,7 @@ public class GameView {
 
     public String getNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
-        String buffer = Console.readLine();
-        System.out.println(buffer);
-        return buffer;
+        return Console.readLine();
     }
 
     public void printScore(BaseballScore score) {
@@ -25,8 +23,6 @@ public class GameView {
     }
 
     public String getAnswer() {
-        String buffer = Console.readLine();
-        System.out.println(buffer);
-        return buffer;
+        return Console.readLine();
     }
 }
