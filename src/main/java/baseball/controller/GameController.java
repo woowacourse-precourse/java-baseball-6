@@ -23,7 +23,8 @@ public class GameController {
         program = new ProgramNumber();
         do {
             user = new UserNumber(InputView.inputUserNumber());
-            OutputView.printScoreMessage(getResultList()[0], getResultList()[1]);
+            int[] result = getResultList();
+            OutputView.printScoreMessage(result[0], result[1]);
         } while (!isEnd());
     }
 
