@@ -2,6 +2,10 @@ package baseball.view;
 
 public class ResultView {
 
+    private static final String BALL_MARK = "볼";
+    private static final String STRIKE_MARK = "스트라이크";
+    private static final String NOTHING_MARK = "낫싱";
+
     public static void printResult(final int ball, final int strike) {
         if (isBothNotZero(ball, strike)) {
             printBoth(ball, strike);
@@ -22,7 +26,7 @@ public class ResultView {
     }
 
     private static void printBoth(final int ball, final int strike) {
-        System.out.println(ball + "볼 " + strike + "스트라이크");
+        System.out.println(ball + BALL_MARK + " " + strike + STRIKE_MARK);
     }
 
     private static boolean isOnlyLeftNotZero(final int leftNumber, final int rightNumber) {
@@ -30,11 +34,11 @@ public class ResultView {
     }
 
     private static void printStrike(final int strike) {
-        System.out.println(strike + "스트라이크");
+        System.out.println(strike + STRIKE_MARK);
     }
 
     private static void printBall(final int ball) {
-        System.out.println(ball + "볼");
+        System.out.println(ball + BALL_MARK);
     }
 
     private static boolean isBothZero(final int ball, final int strike) {
@@ -42,6 +46,6 @@ public class ResultView {
     }
 
     private static void printNothing() {
-        System.out.println("낫싱");
+        System.out.println(NOTHING_MARK);
     }
 }
