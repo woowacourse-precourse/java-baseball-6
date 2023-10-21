@@ -70,4 +70,13 @@ class UserNumberTest {
                 .hasMessage("세자리 숫자를 입력해주세요");
     }
 
+    @DisplayName("사용자 수가 범위를 넘어가면 에러 발생")
+    @Test
+    void inputOutOfRange(){
+        String inputNumber = "120";
+        assertThatThrownBy(() -> new UserNumber(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("각자리의 숫자가 1부터 9사이의 숫자로 이루어져야 합니다");
+    }
+
 }
