@@ -46,15 +46,16 @@ public class Application {
 
     // 랜덤 숫자 생성
     public static String generateNumber() {
-        List<Integer> computer = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        while (computer.size() < 3) {
+        List<Integer> computer = new ArrayList<>();
+        while (sb.length() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
+                sb.append(randomNumber);
             }
         }
-        return computer.toString().replaceAll("[^0-9]", "");
+        return sb.toString();
     }
 
     // 사용자 입력 유효성 확인 -> 예외 처리
