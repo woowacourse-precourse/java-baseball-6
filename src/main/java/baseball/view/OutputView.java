@@ -23,4 +23,8 @@ public class OutputView {
     public void printRestartOrEndMessage() {
         System.out.println(GAME_RESTART_OR_END_MESSAGE);
     }
+
+    public void printResult(String result) {
+        System.out.println(result);
+    }
 }
