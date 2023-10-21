@@ -5,6 +5,7 @@ import baseball.domain.Hint;
 import baseball.domain.Player;
 import baseball.util.NumberUtil;
 import baseball.view.ViewService;
+import java.util.Objects;
 
 public class GameController {
 
@@ -14,6 +15,15 @@ public class GameController {
     public GameController(NumberService numberService, ViewService viewService) {
         this.numberService = numberService;
         this.viewService = viewService;
+    }
+
+    public void startGame() {
+        do {
+            Player computer = prepareComputer();
+
+            play(computer);
+
+        } while (!Objects.equals(viewService.readNumber(), "2")); // 종료(2)를 누르지 않으면 게임을 다시 시작한다.
     }
 
     private void play(Player computer) {
