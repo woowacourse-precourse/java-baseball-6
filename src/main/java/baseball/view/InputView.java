@@ -1,11 +1,14 @@
 package baseball.view;
 
-import static baseball.util.Validator.checkCanChangeToInteger;
-import static baseball.util.Validator.checkIsBlank;
+import static java.util.regex.Pattern.matches;
 
+import baseball.exception.view.InputBlankException;
+import baseball.exception.view.InputCanNotChangeToIntException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
+
+    private static final String REGEXP_PATTERN_NUMBER = "^[\\d]*$";
 
     private final OutputView outputView;
 
@@ -34,6 +37,18 @@ public class InputView {
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception.getMessage());
             return readGameStateNumber();
+        }
+    }
+
+    private void checkIsBlank(final String string) {
+        if (string.isBlank()) {
+            throw new InputBlankException();
+        }
+    }
+
+    private void checkCanChangeToInteger(final String string) {
+        if (!matches(REGEXP_PATTERN_NUMBER, string)) {
+            throw new InputCanNotChangeToIntException(string);
         }
     }
 }
