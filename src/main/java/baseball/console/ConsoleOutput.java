@@ -1,8 +1,10 @@
 package baseball.console;
 
+import java.util.StringJoiner;
+
 import baseball.console.constant.OutputConstant;
-import baseball.service.constant.NumberConstant;
 import baseball.dto.GameResult;
+import baseball.service.constant.NumberConstant;
 
 public class ConsoleOutput {
 	public void printInit() {
@@ -14,23 +16,24 @@ public class ConsoleOutput {
 	}
 
 	public void printResult(GameResult result) {
-		int ballCount = result.ballCount();
-		int strikeCount = result.strikeCount();
-		if (ballCount == 0 && strikeCount == 0) {
-			System.out.println(OutputConstant.NONE.getValue());
-		} else if (ballCount != 0 && strikeCount == 0) {
-			System.out.println(ballCount + OutputConstant.BALL.getValue());
-		} else if (ballCount == 0) {
-			System.out.println(strikeCount + OutputConstant.STRIKE.getValue());
-		} else {
-			System.out.println(ballCount + OutputConstant.BALL.getValue()
-				+ " " + strikeCount + OutputConstant.STRIKE.getValue());
+		StringJoiner message = new StringJoiner(" ");
+		if (result.ballCount() != 0) {
+			message.add(result.ballCount() + OutputConstant.BALL.getValue());
 		}
+		if (result.strikeCount() != 0) {
+			message.add(result.strikeCount() + OutputConstant.STRIKE.getValue());
+		}
+		if (message.length() == 0) {
+			message.add(OutputConstant.NONE.getValue());
+		}
+		System.out.println(message);
 	}
 
 	public void printEnd() {
-		System.out.println(NumberConstant.PICK_COUNT.getValue() + OutputConstant.STRIKE.getValue());
-		System.out.println(OutputConstant.SUCCESS.getValue());
-		System.out.println(OutputConstant.GAME_END.getValue());
+		StringJoiner message = new StringJoiner("\n");
+		message.add(NumberConstant.PICK_COUNT.getValue() + OutputConstant.STRIKE.getValue())
+			.add(OutputConstant.SUCCESS.getValue())
+			.add(OutputConstant.GAME_END.getValue());
+		System.out.println(message);
 	}
 }
