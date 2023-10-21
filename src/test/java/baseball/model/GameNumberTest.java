@@ -1,7 +1,6 @@
 package baseball.model;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,27 +11,27 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ComputerTest {
+class GameNumberTest {
 
-    @DisplayName("컴퓨터는 숫자를 3개만 가질 수 있다")
+    @DisplayName("숫자는 3개 가질 수 있다")
     @ParameterizedTest
     @MethodSource("inValidSizeData")
-    void validateNumberSize(List<Integer> inValidNumbers){
-        assertThrows(IllegalArgumentException.class,() -> new Computer(inValidNumbers));
+    void validateSize(List<Integer> inValidNumbers){
+        assertThrows(IllegalArgumentException.class,() -> new GameNumber(inValidNumbers));
     }
 
-    @DisplayName("컴퓨터는 숫자를 1부터 9까지만 가질 수 있다")
+    @DisplayName("숫자는 1부터 9까지만 가질 수 있다")
     @ParameterizedTest
     @MethodSource("inValidRangeData")
-    void validateNumberRange(List<Integer> inValidNumbers){
-        assertThrows(IllegalArgumentException.class,() -> new Computer(inValidNumbers));
+    void validateRange(List<Integer> inValidNumbers){
+        assertThrows(IllegalArgumentException.class,() -> new GameNumber(inValidNumbers));
     }
 
-    @DisplayName("컴퓨터는 중복된 숫자를 가질 수 없다")
+    @DisplayName("숫자는 서로 다른 수로 이루어져 있다")
     @ParameterizedTest
     @MethodSource("inValidDuplicateData")
-    void validateNumberDuplicate(List<Integer> inValidNumbers){
-        assertThrows(IllegalArgumentException.class,() -> new Computer(inValidNumbers));
+    void validateDuplicate(List<Integer> inValidNumbers){
+        assertThrows(IllegalArgumentException.class,() -> new GameNumber(inValidNumbers));
     }
 
 

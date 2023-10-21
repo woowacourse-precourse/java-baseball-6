@@ -1,29 +1,28 @@
 package baseball.model;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 import static java.util.Arrays.stream;
 
-public class Computer {
+public class GameNumber {
     private static final int NUMBERS_SIZE = 3;
 
     private final List<Integer> numbers;
 
-    public Computer(List<Integer> numbers) {
-        validateNumberSize(numbers);
-        validateNumberRange(numbers);
-        validateNumberDuplicate(numbers);
+    public GameNumber(List<Integer> numbers) {
+        validateSize(numbers);
+        validateRange(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
-    private void validateNumberSize(List<Integer> numbers){
+    private void validateSize(List<Integer> numbers){
         if(numbers.size() != NUMBERS_SIZE){
             throw new IllegalArgumentException("숫자는 3개를 가져야 합니다");
         }
     }
 
-    private void validateNumberRange(List<Integer> numbers){
+    private void validateRange(List<Integer> numbers){
         numbers.stream()
                 .filter(number -> 1 > number || 9 < number)
                 .findAny()
@@ -31,7 +30,7 @@ public class Computer {
                 { throw new IllegalArgumentException("숫자는 1부터 9까지의 수로 이루어져야 합니다");});
     }
 
-    private void validateNumberDuplicate(List<Integer> numbers){
+    private void validateDuplicate(List<Integer> numbers){
         long validNumberCount =  numbers.stream()
                 .distinct()
                 .count();
