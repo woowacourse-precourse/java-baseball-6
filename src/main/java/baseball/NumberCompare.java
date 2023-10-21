@@ -13,10 +13,15 @@ public class NumberCompare {
 
 
     public int[] Compare(String userNumber, String computerNumber){
-        System.out.println(userNumber + " " + computerNumber);
+        resetCount();
         CountStrike(userNumber,computerNumber);
         CountBall(userNumber, computerNumber);
         return new int[] {ball,strike};
+    }
+
+    public void resetCount(){
+        ball = 0;
+        strike = 0;
     }
 
 
