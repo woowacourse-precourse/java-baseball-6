@@ -1,18 +1,17 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.Hint;
 import baseball.model.Player;
-import baseball.view.InputView;
-import baseball.view.OutputView;
 
 public class GameController {
-    private final OutputView outputView;
-    private final InputView inputView;
+    private final OutputController outputController;
+    private final InputController inputController;
     private final Computer computer;
     private final Player player;
     private GameController() {
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
+        this.outputController = new OutputController();
+        this.inputController = new InputController();
         this.computer = new Computer();
         this.player = new Player();
         setUpNewGame();
@@ -23,17 +22,20 @@ public class GameController {
     public void setUpNewGame() {
         boolean gameProcess = true;
         while(gameProcess) {
-            outputView.showIntroMessage();
+            outputController.showIntroMessage();
             computer.initComputerNumbers();
             playGame();
-            outputView.showGameRestartInputMessage();
-            gameProcess = player.isRestartGame();
+            outputController.showGameRestartInputMessage();
+            gameProcess = inputController.isRestartGame();
         }
     }
     public void playGame() {
         boolean isGameClear = false;
         while(!isGameClear){
-            isGameClear = player.swingBat(computer);
+            outputController.showGameInputMessage();
+            String input = inputController.getPlayerGuessNumber();
+            Hint result = player.swingBat(computer,input);
+            isGameClear = outputController.displayHint(result);
         }
     }
 }
