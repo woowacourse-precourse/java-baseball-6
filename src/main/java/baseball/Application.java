@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
 
@@ -82,20 +84,17 @@ public class Application {
     }
 
     public static void validateUserThreeNumbers(String userThreeNumbers){
-        List<Integer> user = new ArrayList<>();
-
         if(userThreeNumbers.length()!=NUM_DIGITS)//3개 미만, 또는 초과해서 입력된 경우에 대한 예외처리
             throw new IllegalArgumentException("3개의 수를 입력하지 않았습니다.");
 
-        for(int i=0;i<NUM_DIGITS;i++){
-            char char_num = userThreeNumbers.charAt(i);
+        Set<Character> uniqueChars = new HashSet<>();
 
-            if(user.contains(char_num-'0'))//중복 된 값에 대한 예외처리
-                throw new IllegalArgumentException("중복된 수를 입력하였습니다.");
-            if(char_num<'1' || char_num>'9'){//1~9가 아닌 값에 대한 예외처리
+        for(char char_num : userThreeNumbers.toCharArray()){
+            if(char_num<'1' || char_num>'9')//1~9가 아닌 값에 대한 예외처리
                 throw new IllegalArgumentException("1~9사이 수가 아닌 값을 입력하였습니다.");
-            }
-            user.add(char_num-'0');
+
+            if(!uniqueChars.add(char_num))//중복된 수를 넣으려고 하는 경우 예외처리
+                throw new IllegalArgumentException("중복된 수를 입력하였습니다.");
         }
     }
 
