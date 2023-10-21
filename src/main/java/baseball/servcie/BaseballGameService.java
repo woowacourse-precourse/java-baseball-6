@@ -1,9 +1,9 @@
 package baseball.servcie;
 
+import baseball.domain.Computer;
 import baseball.domain.User;
 import baseball.validation.BaseballGameValidation;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -19,16 +19,17 @@ public class BaseballGameService {
     }
 
     public void playGame(){
-        List<Integer> computerBaseBallNumber = initComputerBaseBallNumber();
+        Computer computer = new Computer();
+        User user = new User();
+        computer.initComputerBaseBallNumber();
 
         boolean check = false;
 
         while(!check) {
-            List<Integer> userNumberList = userReadNumber();
-
-            check = compareNumber(userNumberList, computerBaseBallNumber);
+            List<Integer> userNumberList = userReadNumber(user);
+            checkValidation(user, userNumberList);
+            check = compareNumber(userNumberList, computer.getBaseballNumber());
         }
-
     }
 
     public boolean checkRestart(){
@@ -41,19 +42,6 @@ public class BaseballGameService {
 
     }
 
-    public List<Integer> initComputerBaseBallNumber() {
-        List<Integer> computerNumberList = new ArrayList<>();
-
-        while (computerNumberList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumberList.contains(randomNumber)) {
-                computerNumberList.add(randomNumber);
-            }
-        }
-
-        return computerNumberList;
-    }
-
     public boolean compareNumber(List<Integer> userNumber, List<Integer> computerNumber) {
         int strike = calculateStrike(userNumber, computerNumber);
         int ball = calculateBall(userNumber, computerNumber);
@@ -63,25 +51,26 @@ public class BaseballGameService {
         return (strike == ALL_STRIKE);
     }
 
-    public List<Integer> userReadNumber() {
-        User user = new User();
+    private List<Integer> userReadNumber(User user) {
         user.readBaseballNumber();
-        baseballGameValidation.validateBaseballNumber(user.getBaseballNumberList());
 
         List<Integer> userNumberList = convertCharToInteger(user.getBaseballNumberList());
         return userNumberList;
     }
 
-    public List<Integer> convertCharToInteger(String baseBallString) {
-        ArrayList<Integer> baseballNumbers = new ArrayList<>();
+    private List<Integer> convertCharToInteger(String baseBallString) {
+        List<Integer> baseballNumbers = new ArrayList<>();
 
         for (char baseballChar : baseBallString.toCharArray())
             if (Character.isDigit(baseballChar) && Character.getNumericValue(baseballChar) != 0)
                 baseballNumbers.add(Character.getNumericValue(baseballChar));
 
-        baseballGameValidation.checkBaseballNumberSize(baseballNumbers);
-
         return baseballNumbers;
+    }
+
+    private void checkValidation(User user, List<Integer> baseballNumbers){
+        baseballGameValidation.validateBaseballNumber(user.getBaseballNumberList());
+        baseballGameValidation.checkBaseballNumberSize(baseballNumbers);
     }
 
     private static int calculateStrike(List<Integer> userNumber, List<Integer> computerNumber) {
