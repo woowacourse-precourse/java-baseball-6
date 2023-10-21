@@ -31,6 +31,6 @@ public class Game {
                 strike++;
             }
         }
-        return strike + " 스트라이크";
+        return strike + "스트라이크";
     }
 }
