@@ -19,5 +19,20 @@ public class OutputHandler {
     }
 
     public void printGameResult(GameResult result) {
+        int ballCount = result.getBallCount();
+        int strikeCount = result.getStrikeCount();
+
+        if(ballCount == 0 && strikeCount == 0) {
+            System.out.println(NOTHING);
+            return;
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        if(ballCount != 0) {
+            stringBuilder.append(ballCount).append(BALL).append(WHITE_SPACE);
+        }
+        if(strikeCount != 0) {
+            stringBuilder.append(strikeCount).append(STRIKE);
+        }
+        System.out.println(stringBuilder);
     }
 }
