@@ -47,4 +47,15 @@ class NumberGeneratorTest {
         assertThat(randomNumber).isBetween(1, 9);
     }
 
+    @DisplayName("생성된 랜덤 리스트의 범위와 크기가 3인지 확인하는 테스트")
+    @Test
+    void validateRandomListRangeAndSize() {
+        //given
+        NumberGenerator numberGenerator = new NumberGenerator();
+        //when
+        List<Integer> randomNumberList = numberGenerator.makeRandomAnswerList();
+        //then
+        randomNumberList.forEach(randomNumber -> assertThat(randomNumber).isBetween(1, 9));
+        assertThat(randomNumberList.size()).isEqualTo(3);
+    }
 }
