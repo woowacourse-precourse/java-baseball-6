@@ -19,9 +19,7 @@ class BaseballGame {
     private List<Integer> user = new ArrayList<>();
     void play() {
         makeComNum();
-        System.out.println(computer);
         getUserNum();
-        System.out.println(user);
     }
     private void makeComNum() {
         while (computer.size() < 3) {
@@ -46,6 +44,14 @@ class BaseballGame {
         }
         return strike;
     }
-    // countBall
+    private int countBall() {
+        int ball = 0;
+        for (int computerNum : computer) {
+            if (user.contains(computerNum)) {
+                ball++;
+            }
+        }
+        return ball;
+    }
     // printResult
 }
