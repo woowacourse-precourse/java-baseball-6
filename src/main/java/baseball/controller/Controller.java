@@ -3,6 +3,8 @@ package baseball.controller;
 import baseball.domain.Computer;
 import baseball.domain.Game;
 import baseball.domain.Player;
+import baseball.util.ConsoleMessage;
+import baseball.util.Constants;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -11,7 +13,7 @@ public class Controller {
 
     public Controller() {
         isGameInProgress = true;
-        OutputView.printlnConsoleMessage("숫자 야구 게임을 시작합니다.");
+        OutputView.printlnConsoleMessage(ConsoleMessage.START_GAME);
     }
 
     public void play() {
@@ -22,9 +24,9 @@ public class Controller {
     }
 
     private void quitOrRestartGame() {
-        OutputView.printlnConsoleMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        OutputView.printlnConsoleMessage(ConsoleMessage.THREE_STRIKE_GAME_END);
         String command = InputView.inputRestartNumber();
-        if (command.equals("2")) {
+        if (Integer.parseInt(command) == Constants.QUIT) {
             isGameInProgress = false;
         }
     }
@@ -37,7 +39,7 @@ public class Controller {
     }
 
     private static void playGameLoop(Game game, Computer computer, Player player) {
-        while (game.getStrikes() != 3) {
+        while (game.getStrikes() != Constants.NUMBER_LENGTH) {
             game.compareNumbers(computer.getNumber(), player.getNumber(InputView.inputPlayerNumber()));
             OutputView.printGameResult(game.getStrikes(), game.getBalls());
         }

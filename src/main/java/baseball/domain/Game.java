@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.util.Constants;
 import java.util.List;
 
 public class Game {
@@ -27,7 +28,7 @@ public class Game {
 
     public int countStrikes(List<Integer> computerNumber, List<Integer> playerNumber) {
         int strikes = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.NUMBER_LENGTH; i++) {
             int computerDigit = computerNumber.get(i);
             int playerDigit = playerNumber.get(i);
 
@@ -40,7 +41,7 @@ public class Game {
 
     public int countBalls(List<Integer> computerNumber, List<Integer> playerNumber) {
         int balls = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.NUMBER_LENGTH; i++) {
             int computerDigit = computerNumber.get(i);
             int playerDigit = playerNumber.get(i);
 

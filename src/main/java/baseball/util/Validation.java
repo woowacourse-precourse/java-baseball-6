@@ -21,25 +21,25 @@ public class Validation {
 
     public static void isEmpty(String input) {
         if (input.trim().isEmpty()) {
-            throw new IllegalArgumentException("값을 입력해 주세요.");
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_VALUE);
         }
     }
 
     public static void isLengthThree(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("세 자리 숫자를 입력해 주세요.");
+        if (input.length() != Constants.NUMBER_LENGTH) {
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_THREE_DIGIT_NUMBER);
         }
     }
 
     public static void isInRange(String input) {
-        if (!Pattern.matches("^[1-9]+$", input)) {
-            throw new IllegalArgumentException("1부터 9까지의 숫자만 입력 가능 합니다.");
+        if (!Pattern.matches(Constants.NON_ZERO_DIGITS_REGEX, input)) {
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_NON_ZERO_SINGLE_DIGIT);
         }
     }
 
     public static void isRestartInputInRange(String input) {
-        if (!Pattern.matches("^[12]$", input)) {
-            throw new IllegalArgumentException("1 혹은 2의 숫자만 입력 가능 합니다.");
+        if (!Pattern.matches(Constants.ONE_OR_TWO_REGEX, input)) {
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_ONE_OR_TWO);
         }
     }
 
@@ -48,8 +48,8 @@ public class Validation {
         for (char digit : input.toCharArray()) {
             number.add(digit);
         }
-        if (number.size() != 3) {
-            throw new IllegalArgumentException("서로 다른 숫자를 입력해 주세요.");
+        if (number.size() != Constants.NUMBER_LENGTH) {
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_DISTINCT_NUMBERS);
         }
     }
 }

@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.util.ExceptionMessage;
 import baseball.util.Validation;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +14,7 @@ class InputViewTest {
     void invalidInputsTest1(String input) {
         Assertions.assertThatThrownBy(() -> Validation.isEmpty(input)).
                 isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("값을 입력해 주세요.");
+                .hasMessage(ExceptionMessage.INPUT_VALUE);
     }
 
     @ParameterizedTest
@@ -22,7 +23,7 @@ class InputViewTest {
     void invalidInputsTest2(String input) {
         Assertions.assertThatThrownBy(() -> Validation.isLengthThree(input)).
                 isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("세 자리 숫자를 입력해 주세요.");
+                .hasMessage(ExceptionMessage.INPUT_THREE_DIGIT_NUMBER);
     }
 
     @ParameterizedTest
@@ -31,7 +32,7 @@ class InputViewTest {
     void invalidInputsTest3(String input) {
         Assertions.assertThatThrownBy(() -> Validation.isInRange(input)).
                 isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("1부터 9까지의 숫자만 입력 가능 합니다.");
+                .hasMessage(ExceptionMessage.INPUT_NON_ZERO_SINGLE_DIGIT);
     }
 
     @ParameterizedTest
@@ -40,7 +41,7 @@ class InputViewTest {
     void invalidInputsTest4(String input) {
         Assertions.assertThatThrownBy(() -> Validation.isDuplicate(input)).
                 isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("서로 다른 숫자를 입력해 주세요.");
+                .hasMessage(ExceptionMessage.INPUT_DISTINCT_NUMBERS);
     }
 
     @ParameterizedTest
@@ -57,7 +58,7 @@ class InputViewTest {
     void invalidInputsTest5(String input) {
         Assertions.assertThatThrownBy(() -> Validation.isRestartInputInRange(input)).
                 isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("1 혹은 2의 숫자만 입력 가능 합니다.");
+                .hasMessage(ExceptionMessage.INPUT_ONE_OR_TWO);
     }
 
     @ParameterizedTest
