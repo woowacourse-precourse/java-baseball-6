@@ -10,18 +10,26 @@ import java.util.List;
 
 
 public class BaseballGame {
-    private UserNumber userNumber;
-    private List<Integer> computerNumber;
-
-    /*public BaseballGame() {
-        this.computerNumber = new ComputerNumber();
-    }*/
 
     public void gameStart() {
-        this.computerNumber = ComputerNumber.makeComputerNumber();
+        List<Integer> computerNumber = ComputerNumber.makeComputerNumber();
         gameStartMessage();
         userInputMessage();
-        this.userNumber = new UserNumber(userInput());
+        UserNumber userNumber = new UserNumber(userInput());
+    }
+
+    public int[] countBallStrike(List<Integer> userNumber, List<Integer> computerNumber) {
+        int[] cntBallStrike = {0, 0};
+
+        for (int i = 0; i < userNumber.size(); i++) {
+            if (userNumber.get(i).equals(computerNumber.get(i))) {
+                cntBallStrike[1]++;
+            } else if (computerNumber.contains(userNumber.get(i))) {
+                cntBallStrike[0]++;
+            }
+        }
+
+        return cntBallStrike;
     }
 
     //public static
