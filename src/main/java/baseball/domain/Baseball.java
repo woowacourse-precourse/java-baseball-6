@@ -14,7 +14,7 @@ public class Baseball {
     }
 
     private void validateRange(int number) {
-        if (MINIMUM_NUMBER > number && MAXIMUM_NUMBER < number) {
+        if (MINIMUM_NUMBER > number || MAXIMUM_NUMBER < number) {
             throw new IllegalArgumentException(ILLEGAL_RANGE);
         }
     }
