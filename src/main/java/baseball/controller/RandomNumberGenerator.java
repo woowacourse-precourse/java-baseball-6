@@ -9,7 +9,9 @@ import java.util.stream.IntStream;
 
 public class RandomNumberGenerator {
     static public BallNumber generate() {
-        ArrayList<Integer> computer = (ArrayList<Integer>) IntStream.generate(() -> Randoms.pickNumberInRange(1, 9))
+        ArrayList<Integer> computer = (ArrayList<Integer>) IntStream
+                .generate(() ->
+                        Randoms.pickNumberInRange(1, 9))
                 .distinct()
                 .limit(3)
                 .boxed()

@@ -13,11 +13,13 @@ public class ResultCalculator {
     }
 
     public Result calculateResult(BallNumber comparisonNumber) {
-        int newStrikes = (int) IntStream.range(0, SystemConstant.MAXIMUM_DIGIT)
+        int newStrikes = (int) IntStream
+                .range(0, SystemConstant.MAXIMUM_DIGIT)
                 .filter(i ->
                         isStrike(comparisonNumber.getBallNumberByDigit(i), i))
                 .count();
-        int newBalls = (int) comparisonNumber.ballNumber.stream()
+        int newBalls = (int) comparisonNumber.ballNumber
+                .stream()
                 .filter(this::ballInThisArea)
                 .count() - newStrikes;
 
