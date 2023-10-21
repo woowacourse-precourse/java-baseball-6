@@ -49,7 +49,9 @@
 ### View
 - [x] InputView (InputValidateController에서 유효성 검사)
     - [x] 사용자에게 숫자 3개 입력 받는 기능
+      - [ ] 유효한 값 인지 ErrorException을 통해 확인 , 유효하지 않으면 종료
     - [x] 사용자에게 재시작 , 종료 여부 입력 받는 기능
+      - [ ] 유효한 값 인지 ErrorException을 통해 확인 , 유효하지 않으면 종료
 
 - [ ] OutputView
     - [x] 게임 시작 메시지
@@ -66,6 +68,7 @@
     - [ ] 게임 시작
         - [x] 게임 시작 메시지 출력 (OutputView 사용)
         - [ ] 사용자에게 숫자 입력 받기 (InputView 사용)
+    - [ ] 유저의 입력 String -> List<Integer> 로 변환 기능
     - [ ] 입력 값과 Comuputer에 저장된 숫자 값 비교후 힌트 제공 (OutputView 사용)
         - [ ] 입력 값을 Computer Model에서 비교 후 Strike 수 , Ball 수 List 배열 받기
         - [x] 비교 결과 받은 ball,strike List를 출력 메시지로 전환 기능
