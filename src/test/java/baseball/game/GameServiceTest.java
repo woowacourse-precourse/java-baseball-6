@@ -5,16 +5,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class GameManagerTest {
+class GameServiceTest {
 
-	private final GameManager gameManager = new GameManager();
+	private final GameService gameService = new GameService();
 
 	@Test
 	void countBall() {
 		List<Integer> user = List.of(1, 2, 3);
 		List<Integer> answer = List.of(7, 8, 2);
 
-		int balls = gameManager.countBall(user, answer);
+		int balls = gameService.countBall(user, answer);
 
 		assertThat(balls).isEqualTo(1);
 	}
@@ -24,7 +24,7 @@ class GameManagerTest {
 		List<Integer> user = List.of(1, 2, 3);
 		List<Integer> answer = List.of(1, 2, 4);
 
-		int balls = gameManager.countStrike(user, answer);
+		int balls = gameService.countStrike(user, answer);
 
 		assertThat(balls).isEqualTo(2);
 	}
@@ -34,7 +34,7 @@ class GameManagerTest {
 		List<Integer> user = List.of(1, 2, 3);
 		List<Integer> answer = List.of(3, 4, 1);
 
-		String hint = gameManager.giveHint(user, answer);
+		String hint = gameService.giveHint(user, answer);
 
 		assertThat(hint).isEqualTo("2볼");
 	}
@@ -44,7 +44,7 @@ class GameManagerTest {
 		List<Integer> user = List.of(1, 2, 3);
 		List<Integer> answer = List.of(1, 2, 4);
 
-		String hint = gameManager.giveHint(user, answer);
+		String hint = gameService.giveHint(user, answer);
 
 		assertThat(hint).isEqualTo("2스트라이크");
 	}
@@ -54,7 +54,7 @@ class GameManagerTest {
 		List<Integer> user = List.of(1, 2, 3);
 		List<Integer> answer = List.of(1, 7, 2);
 
-		String hint = gameManager.giveHint(user, answer);
+		String hint = gameService.giveHint(user, answer);
 
 		assertThat(hint).isEqualTo("1볼 1스트라이크");
 	}
