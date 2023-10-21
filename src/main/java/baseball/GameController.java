@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -8,12 +9,13 @@ public class GameController {
 
     private static final String INPUT_ERROR_MESSAGE = "잘못된 입력값입니다.";
     private static final Pattern pattern = Pattern.compile("([1-9]{3,3})");
+    private String computerNumber;
 
     public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         Computer computer = new Computer();
-        String computerNumber = computer.getComputerRandomNumber();
+        computerNumber = computer.getComputerRandomNumber();
 
         // 유저 입력
         User user = new User();
@@ -59,11 +61,18 @@ public class GameController {
             }
 
             if (result.equals("3스트라이크")) {
-                break;
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String restart = Console.readLine();
+
+                if (restart.equals("2")) {
+                    break;
+                } else {
+                    computerNumber = computer.getComputerRandomNumber();
+                }
             }
         }
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     // 스트라이크 볼 계산 test method
