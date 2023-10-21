@@ -44,13 +44,20 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> answerList = makeRandomAnswer();
         System.out.println(answerList);
 
-        List<Integer> userInputList = getUserTrialInput();
-        System.out.println(userInputList);
+        while (true) {
+            List<Integer> userInputList = getUserTrialInput();
+            GameResult gameResult = playGame(answerList, userInputList);
+            System.out.println(gameResult);
 
-        GameResult gameResult = playGame(answerList, userInputList);
-        System.out.println(gameResult);
+            if (gameResult.getStrike() == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+        camp.nextstep.edu.missionutils.Console.close();
     }
 }
