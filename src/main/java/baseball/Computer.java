@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Computer {
@@ -24,6 +25,42 @@ public class Computer {
 
         // 검증이 끝나면 해당 숫자를 반환
         return randomNumber.toString();
+    }
+
+    public void checkNumber(String computerNumber, String playerNumber) {
+        String[] computerNumberSplit = computerNumber.split("");
+        String[] playerNumberSplit = playerNumber.split("");
+        String hint = "";
+
+        for (int i = 0; i < 3; i++) {
+            // 볼이 있는지 검사
+            // 만약 플레이어가 입력한 숫자 중 i번째가 컴퓨터가 가지고 있는 숫자에 포함되면 볼 횟수 증가
+            if (Arrays.asList(computerNumberSplit).contains(playerNumberSplit[i])) {
+                stateBall += 1;
+            } else {
+                stateNothing += 1;
+            }
+
+            // 스트라이크가 있는지 검사
+            // 스트라이크가 존재하면 볼 횟수 감소, 스트라이크 횟수 증가
+            if (computerNumberSplit[i].equals(playerNumberSplit[i])) {
+                stateStrike += 1;
+                stateBall -= 1;
+            }
+        }
+
+        if (stateBall != 0) {
+            hint += stateBall + "볼 ";
+        }
+
+        if (stateStrike != 0) {
+            hint += stateStrike + "스트라이크";
+        }
+
+        if (stateNothing == 3) {
+            hint = "낫싱";
+        }
+        System.out.println(hint);
     }
 
     public boolean validateComputerNumber(String computerNumber) {
