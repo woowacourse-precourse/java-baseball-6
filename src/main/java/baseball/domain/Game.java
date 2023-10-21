@@ -10,8 +10,11 @@ public class Game {
 
     public void startGame() {
         outputView.printStartMsg();
+
         for(int i=0; i<3; i++) {
-            inputView.enterNumbers();
+            inputView.printInputMsg();
+            inputView.makeClientNumbers();
         }
+
     }
 }
