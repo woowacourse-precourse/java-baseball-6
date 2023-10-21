@@ -13,3 +13,29 @@
 
 
 ---
+
+### 구현할 기능 목록
+#### 계층형 구조로 기능 구현
+
+1. view
+    - OutputView
+    - [ ] 화면에 출력할 기능을 구현
+    - InputView
+    - [ ] 입력 기능을 구현
+
+2. Controller
+    - GameController
+    - [ ] 게임실행 기능 구현
+    - [ ] 재시도 여부 확인 기능 구현
+    - ComputerController
+    - [ ] 게임의 핵심 로직을 실행하며 게임을 진행하는 로직 구현
+
+3. domain
+    - Computer
+    - [ ] 플레이어가 맞춰야하는 숫자 생성 로직 구현
+    - Player
+    - [ ] 숫자를 제시하는 기능 구현
+
+4. validation
+    - Validator
+    - [ ] 플레이어가 입력한 값을 확인하는 기능 구현
