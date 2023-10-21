@@ -50,5 +50,24 @@ public class Balls {
         }
     }
 
+    public boolean match(Balls targetBalls) {
+        int strikeCount = 0;
+        int ballCount = 0;
 
+        for (int i = 0; i < balls.size(); i++) {
+            int searchIndex = targetBalls.indexOf(balls.get(i));
+            if (searchIndex == i) {
+                strikeCount++;
+            } else if (searchIndex >= 0) {
+                ballCount++;
+            }
+        }
+
+        GameIO.gameResultPrint(strikeCount, ballCount);
+        return strikeCount == 3;
+    }
+
+    private int indexOf(int number) {
+        return balls.indexOf(number);
+    }
 }
