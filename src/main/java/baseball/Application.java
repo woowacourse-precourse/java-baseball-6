@@ -19,6 +19,8 @@ public class Application {
                 Randoms.pickUniqueNumbersInRange(1, 9, 3);
 
         boolean isCorrect = true;       // 유저와 컴퓨터의 숫자 배열 일치 상태 변수
+        int strike;
+        int ball;
 
         System.out.println(computerArray);
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -59,7 +61,18 @@ public class Application {
             for (String value : inputList) {
                 userArray.add(Integer.parseInt(value));
             }
-            
+
+            // 볼 스트라이크 갯수 파악
+            strike = 0;
+            ball = 0;
+            for (int i = 0; i < 3; i++) {
+                if (computerArray.get(i).equals(userArray.get(i))) {
+                    strike++;
+                } else if (computerArray.contains(userArray.get(i))) {
+                    ball++;
+                }
+            }
+
         }
     }
 
