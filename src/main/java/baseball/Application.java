@@ -14,7 +14,6 @@ public class Application {
 	static void restartOrEndGame() {
 
 		final String END_SIGN = "2";
-		final String RESTART_SIGH = "1";
 
 		String controlSign = "";
 
@@ -42,7 +41,7 @@ public class Application {
 			}
 
 			printInputControlSign();
-			controlSign = Console.readLine().trim();
+			controlSign = Console.readLine();
 
 			checkControlSign(controlSign);
 
