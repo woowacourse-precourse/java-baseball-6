@@ -24,6 +24,7 @@ public class GameController {
         outputView.printGameStartMessage();
         boolean gameLoopCommand = true;
         while (gameLoopCommand){
+            outputView.printGameNumberInputMessage();
             List<Integer> userInputNumber = transferStringToIntegerList(inputView.readBaseballNumber());
             List<Integer> ballAndStrikeCount = computer.compareNumberList(userInputNumber);
             String hintMessage = provideStrikeAndBallCount(ballAndStrikeCount.get(LIST_BALL_INDEX),ballAndStrikeCount.get(LIST_STRIKE_INDEX));
@@ -41,13 +42,16 @@ public class GameController {
         }
         return result;
     }
+
     private static String provideStrikeAndBallCount(int ballCount, int strikeCount){
         if(ballCount == COUNT_ZERO_VALUE && strikeCount == COUNT_ZERO_VALUE){
             return NOTHING_STRING;
-        } else if (ballCount != COUNT_ZERO_VALUE && strikeCount == COUNT_ZERO_VALUE) {
+        }
+        if (ballCount != COUNT_ZERO_VALUE && strikeCount == COUNT_ZERO_VALUE) {
             return String.valueOf(ballCount) + BALL_STRING;
-        } else if (ballCount == COUNT_ZERO_VALUE && strikeCount != COUNT_ZERO_VALUE) {
-            return String.valueOf(ballCount) + STRIKE_STRING;
+        }
+        if (ballCount == COUNT_ZERO_VALUE && strikeCount != COUNT_ZERO_VALUE) {
+            return String.valueOf(strikeCount) + STRIKE_STRING;
         }
         return String.valueOf(ballCount) + BALL_STRING + " " + String.valueOf(ballCount) + STRIKE_STRING;
     }
