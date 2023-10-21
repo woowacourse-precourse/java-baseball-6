@@ -23,15 +23,8 @@ public final class Controller {
 
     public void run() {
         Referee referee = initGame();
-        PlayerNumbers playerNumbers = null;
-        while (playerNumbers == null || !referee.isSameWithAnswer(playerNumbers)) {
-            playerNumbers = viewPlayerNumbersInput();
-            System.out.println("playerNumbers = " + playerNumbers.getNumbers());
-            viewHint(referee, playerNumbers);
-        }
-        outputView.displayCorrectAnswer();
-        outputView.viewEndGame();
-        inputView.readEndNumber();
+        play(referee);
+        end();
     }
 
     private Referee initGame() {
@@ -40,11 +33,12 @@ public final class Controller {
 
     }
 
-    private PlayerNumbers viewPlayerNumbersInput() {
-        outputView.displayInputNumbers();
-        String readNumbers = inputView.readNumbers();
-        List<Integer> numbers = readNumbers.chars().mapToObj(num -> num - '0').toList();
-        return new PlayerNumbers(numbers);
+    private void play(Referee referee) {
+        PlayerNumbers playerNumbers = getPlayerNumbers();
+        while (!referee.isSameWithAnswer(playerNumbers)) {
+            viewHint(referee, playerNumbers);
+            playerNumbers = getPlayerNumbers();
+        }
     }
 
     private void viewHint(Referee referee, PlayerNumbers playerNumbers) {
@@ -53,5 +47,25 @@ public final class Controller {
         Map<HintType, Integer> hintMap = referee.getHint(playerNumbers);
         HintDto hintDto = service.getHintDto(new HashMap<>(hintMap), numberSize);
         outputView.displayHint(hintDto.getHint());
+    }
+
+    private PlayerNumbers getPlayerNumbers() {
+        outputView.displayInputNumbers();
+        String readNumbers = inputView.readNumbers();
+        List<Integer> numbers = readNumbers.chars().mapToObj(num -> num - '0').toList();
+        return new PlayerNumbers(numbers);
+    }
+
+    private void end() {
+        outputView.displayCorrectAnswer();
+        outputView.displaySelect();
+        runCommand(inputView.readCommand());
+    }
+
+    private void runCommand(String command) {
+        int number = Integer.parseInt(command);
+        if (number == 1) {
+            run();
+        }
     }
 }
