@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.dto.GameStateDto;
+import baseball.service.BaseballService;
 import baseball.service.ComputerNumberGenerator;
 import baseball.util.Validation;
 import baseball.view.InputView;
@@ -22,11 +24,15 @@ public class GameController {
         while(true){
             outputView.printInputInitMessage();
             String userNumber = getUserNumber();
+            BaseballService baseballService = new BaseballService(userNumber,nowComNumber);
+            GameStateDto gamestate = baseballService.caculate();
 
         }
 
 
     }
+
+
 
     private String getComputerNumber() {
         ComputerNumberGenerator generator = ComputerNumberGenerator.getInstance();
