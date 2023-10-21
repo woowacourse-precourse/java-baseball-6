@@ -16,14 +16,16 @@ public class GameController {
 
     public void start(){
         outputView.printProgramStartMessage();
-        while(startGame());
+        startGame();
     }
 
-    private boolean startGame(){
+    private void startGame(){
         game = new Game(); //게임 생성
         playGame(); //게임 수행
 
-        return checkRestart();
+        if (checkRestart()){
+            startGame();
+        }
     }
 
     private boolean checkRestart(){
@@ -32,16 +34,18 @@ public class GameController {
     }
 
     private void playGame(){
-        while (playOneTime());//게임 입출력 사이클 1회 반복
+        playOneTime();//게임 입출력 사이클 1회 반복
         
         outputView.printFinishGameMessage();//게임 종료문구 출력
     }
 
-    private boolean playOneTime(){
+    private void playOneTime(){
         Result result=game.calculateResult(inputUser()); //결과 반환
         outputView.printResult(result.getResult()); //내용 출력
 
-        return isNotFinish(result);
+        if (isNotFinish(result)){
+            playOneTime();
+        }
     }
 
     private Numbers inputUser(){ //입력
