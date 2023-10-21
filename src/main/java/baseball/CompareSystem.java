@@ -1,13 +1,14 @@
 package baseball;
 
 public class CompareSystem {
-    private final GameResult result = new GameResult();
+    private final GameResult result;
     private final Computer computer;
     private final Player player;
 
     public CompareSystem(Computer computer, Player player) {
         this.computer = computer;
         this.player = player;
+        this.result = new GameResult();
     }
 
     public GameResult compare() {
