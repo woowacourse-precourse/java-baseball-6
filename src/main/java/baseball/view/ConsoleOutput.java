@@ -10,7 +10,7 @@ public class ConsoleOutput implements OutputHandler {
     }
 
     @Override
-    public void printGameResult() {
-
+    public void printGameResult(String result) {
+        System.out.println(result);
     }
 }

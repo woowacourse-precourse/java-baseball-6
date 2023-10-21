@@ -27,11 +27,7 @@ public class BaseballGameController {
 
         TargetNumber targetNumber = new TargetNumber();
 
-        while (true) {
-            UserBaseballNumber userBaseballNumber = loadUserValues();
-
-            playGame(targetNumber, userBaseballNumber);
-        }
+        playGame(targetNumber);
     }
 
     public UserBaseballNumber loadUserValues() {
@@ -40,10 +36,11 @@ public class BaseballGameController {
         return new UserBaseballNumber(userValues);
     }
 
-    public void playGame(TargetNumber targetNumber, UserBaseballNumber userBaseballNumber) {
+    public void playGame(TargetNumber targetNumber) {
         while (true) {
+            UserBaseballNumber userBaseballNumber = loadUserValues();
             GameResult gameResult = baseballGameService.compareNumber(targetNumber, userBaseballNumber);
-            outputHandler.printGameResult();
+            outputHandler.printGameResult(gameResult.getResult());
 
             if (gameResult.isWin()) {
                 break;
