@@ -6,19 +6,35 @@ public class BaseballGame {
 
     public static final int RESTART_OPERATION = 1;
     public static final int EXIT_OPERATION = 2;
+    public static final int BASEBALL_NUMBER_LENGTH = 3;
     int exitNumber = 0;
+    int strikeNumber = 3;
+    int ballNumber = 0;
     int[] answerNumber = new int[3];
     int[] expectedNumber = new int[3];
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-
+        resetGame();
         while (true) {
+            // readExpectedNumber();
 
-            if (isExit()) {
+            //computeAnswer();
+
+            if (isCompleted() && isExit()) {
                 return;
             }
         }
+    }
+    private void resetGame() {
+        //makeAnswerNumber();
+        exitNumber = 0;
+        strikeNumber = 0;
+        ballNumber = 0;
+    }
+
+    private boolean isCompleted() {
+        return strikeNumber == BASEBALL_NUMBER_LENGTH;
     }
 
     private boolean isExit() {
@@ -28,6 +44,7 @@ public class BaseballGame {
 
         switch (exitNumber) {
             case RESTART_OPERATION:
+                resetGame();
                 break;
             case EXIT_OPERATION:
                 return true;
