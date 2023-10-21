@@ -1,5 +1,7 @@
-package baseball.model;
+package baseball;
 
+import baseball.controller.GameController;
+import baseball.model.UserNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class UserNumberTest {
+class UserInputTest {
 
     @DisplayName("사용자 수 정상적인 값 입력되면 성공")
     @Test
@@ -107,7 +109,23 @@ class UserNumberTest {
         } catch (InvocationTargetException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    @DisplayName("재시작 여부 값으로 1을 입력하였을 시 성공")
+    @Test
+    void inputRestartValueOne() throws NoSuchMethodException{
+        String stringValue = "1";
+        GameController gameController = new GameController();
+        Method method = gameController.getClass().getDeclaredMethod("checkRestart", String.class);
+        method.setAccessible(true);
+
+        try{
+            boolean resultValue = (boolean) method.invoke(gameController, stringValue);
+            assertThat(resultValue).isTrue();
+
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
