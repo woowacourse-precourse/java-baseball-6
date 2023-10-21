@@ -76,16 +76,16 @@ public class BaseBallGame {
         String playerInput = Console.readLine();
         List<Integer> playerNumbers = parseToNumberList(playerInput);
 
-        validateInput(playerNumbers);
+//        validateInput(playerNumbers);
 
         return playerNumbers;
     }
 
-    private void validateInput(List<Integer> input) {
-        if(!isUniqueDigits(input) || !isValidLength(input) || !isValidRange(input)) {
-            throw new IllegalArgumentException();
-        }
-    }
+//    private void validateInput(List<Integer> input) {
+//        if(!isUniqueDigits(input) || !isValidLength(input) || !isValidRange(input)) {
+//            throw new IllegalArgumentException();
+//        }
+//    }
 
     private boolean isValidRange(List<Integer> numbers) {
         for(Integer number : numbers) {
@@ -114,7 +114,5 @@ public class BaseBallGame {
         return deduplicatedNumbers.size() == numbers.size();
     }
 
-    private boolean isValidLength(List<Integer> numbers) {
-        return numbers.size() == RANDOM_NUMBER_LENGTH;
-    }
+
 }

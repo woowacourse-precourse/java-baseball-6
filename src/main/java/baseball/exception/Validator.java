@@ -1,5 +1,7 @@
 package baseball.exception;
 
+import java.util.List;
+
 public class Validator {
 
     public Validator() {
@@ -14,5 +16,9 @@ public class Validator {
         }
 
         return true;
+    }
+
+    private boolean isValidLength(List<Integer> numbers, int length) {
+        return numbers.size() == length;
     }
 }
