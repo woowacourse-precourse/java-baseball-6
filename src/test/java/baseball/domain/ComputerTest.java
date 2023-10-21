@@ -28,7 +28,4 @@ public class ComputerTest {
 
         Assertions.assertEquals(3, createdResultSize);
     }
-
-
-
 }
