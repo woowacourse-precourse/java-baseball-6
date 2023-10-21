@@ -50,7 +50,6 @@ public class Controller {
         OutputView.printEndMessage();
         InputView.printRetryMessage();
         String message = Console.readLine();
-        System.out.println(message);
         if (message.equals(RETRY)) {
             run();
         }
@@ -75,7 +74,6 @@ public class Controller {
     private void requestUserInputData() {
         InputView.requestInputData();
         inputData = Console.readLine();
-        System.out.println(inputData);
     }
 
     private void checkInputData() {
