@@ -9,21 +9,22 @@ import static service.PrintService.*;
 
 public class GameService {
     public static void playOneGame() {
-        List<Integer> answer = generateComputerNumber(NUMBER_SET_SIZE);
+        List<Integer> answer = generateRandomNumber(NUMBER_SET_SIZE);
         List<Integer> input;
 
         do {
+            printInput();
             input = readInputNumber(NUMBER_SET_SIZE);
-        } while (checkResult(answer, input));
+        } while (!checkResult(answer, input, NUMBER_SET_SIZE, CORRECT_STRIKE_NUM));
 
         printCorrectAnswer();
     }
 
-    private static boolean checkResult(List<Integer> answer, List<Integer> input) {
+    private static boolean checkResult(List<Integer> answer, List<Integer> input, int size, int correct) {
         int ball = 0;
         int strike = 0;
 
-        for (int i = 0; i < NUMBER_SET_SIZE; i++) {
+        for (int i = 0; i < size; i++) {
             Integer num = input.get(i);
 
             if (answer.contains(num)) {
@@ -34,10 +35,12 @@ public class GameService {
 
         printAnswerCheckResult(ball, strike);
 
-        return strike == CORRECT_STRIKE_NUM;
+        return strike == correct;
     }
 
     public static boolean isRestart() {
+        printRestart();
+
         return readRestartNumber() == 1;
     }
 }

@@ -7,6 +7,10 @@ public class PrintService {
          System.out.println(START_APPLICATION_MESSAGE);
      }
 
+     public static void printInput() {
+         System.out.print(INPUT_MESSAGE);
+     }
+
      public static void printAnswerCheckResult(int ball, int strike) {
          if (ball == 0 && strike == 0)
              System.out.print(NOTHING_STRING);
@@ -24,5 +28,11 @@ public class PrintService {
          System.out.println(CORRECT_ANSWER_MESSAGE);
      }
 
+     public static void printRestart() {
+         System.out.println(RESTART_MESSAGE);
+     }
 
+     public static void printCloseApplication() {
+         System.out.println(CLOSE_APPLICATION_MESSAGE);
+     }
 }
