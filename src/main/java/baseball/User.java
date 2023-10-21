@@ -13,10 +13,15 @@ public class User {
         String input = Console.readLine();
         checkInputLength(input);
         checkDuplicateInput(input);
-        for (int i = 0; i < INPUT_LENGTH; i++){
+        for(int i = 0; i < INPUT_LENGTH; i++){
             this.userInput[i] = input.charAt(i);
         }
+    }
 
+    private void checkInputLength(String input) {
+        if(input.length() != INPUT_LENGTH) {
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
+        }
     }
 
 }
