@@ -1,12 +1,16 @@
 package baseball.repository;
 
-import baseball.domain.Numbers;
+import baseball.domain.AnswerNumbers;
 
 public class DomainRepository {
 
-    private Numbers answerNumbers;
+    private AnswerNumbers answerNumbers;
 
-    public void saveAnswerNumbers(final Numbers numbers) {
+    public void saveAnswerNumbers(final AnswerNumbers numbers) {
         this.answerNumbers = numbers;
+    }
+
+    public AnswerNumbers findAnswerNumbers() {
+        return this.answerNumbers;
     }
 }
