@@ -105,21 +105,21 @@ public class Application {
 
     private static boolean evaluateGuess(int numStrikes,int numBalls){
 
-        if(numBalls ==0 &&numStrikes == 3){
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다.! 게임 종료");
-            return true;
+        String message = "";
+        if(numStrikes == 3){
+            message = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다.! 게임 종료";
         }
-        else if(numBalls>0 && numStrikes >0){
-            System.out.println(numBalls+"볼 "+numStrikes+"스트라이크");
-        }  else if (numBalls == 0 && numStrikes > 0 &&numStrikes <3) {
-            System.out.println(numStrikes+"스트라이크");
-        }else if (numBalls > 0 && numStrikes == 0) {
-            System.out.println(numBalls + "볼");
-        } else if (numBalls == 0 && numStrikes == 0) {
-            System.out.println("낫싱");
+        if(numBalls>0){
+            message = numBalls+"볼";
         }
-        return false;
+        if(numStrikes>0 && numStrikes <3){
+            message = (message.isEmpty() ? "" : message + " ") +numStrikes+"스트라이크";
+        }
+        if (message.isEmpty()) {
+            message="낫싱";
+        }
+        System.out.println(message);
+        return numStrikes ==3;
     }
 
 
