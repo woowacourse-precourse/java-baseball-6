@@ -5,9 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     // 게임에 사용되는 3자리 숫자 배열 정의
-    int[] playerNumbers = new int[3]; // 플레이어
-    int[] randomNumbers = new int[3]; // 컴퓨터
-    boolean isGameOver = false;
+    private boolean isGameOver = false;
 
     public static void main(String[] args) {
         Application app = new Application();
@@ -19,8 +17,9 @@ public class Application {
 
         while (!isGameOver) {
             System.out.println("숫자 야구 게임을 시작합니다.");
-            generateRandomNumbers();
-            getPlayerNumbers();
+            int[] playerNumbers = getPlayerNumbers(); // 플레이어
+            int[] randomNumbers = generateRandomNumbers(); // 컴퓨터
+
             String result = checkStrikesOrBall(randomNumbers, playerNumbers);
             System.out.println(result);
             if (result.equals("3스트라이크")) {
@@ -74,7 +73,8 @@ public class Application {
     }
 
     // 난수 생성 및 배열에 저장하는 메서드
-    private void generateRandomNumbers() {
+    private int[] generateRandomNumbers() {
+        int[] randomNumbers = new int[3];
         for (int i = 0; i < 3; i++) {
             randomNumbers[i] = Randoms.pickNumberInRange(1, 9);
         }
