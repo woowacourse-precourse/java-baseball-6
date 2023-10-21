@@ -86,7 +86,7 @@
     - 게임의 시작 종료 재시작을 제어하는 객체다.
       - 역할: 게임의 시작과 종료를 제어한다.
       - 책임: 게임의 시작, 종료, 재시작 등의 흐름을 관리
-      - 상호작용 : Game, InputView, OutputView
+      - 상호작용 : Game, InputView, OutputView, AnswerGenerator, ScoreCalculator 
   - AnswerGenerator
     - 게임의 정답을 만드는 객체다.
       - 역할: 게임의 정답을 생성한다.
