@@ -59,7 +59,7 @@
         + [x] 1 또는 2 인지 확인한다.
         + [x] 1 또는 2가 아닐 경우 ```IllegalArgumentException``` 발생 후 종료
 2. InputParser
-    + [ ] playerInput 을 playerNumbers로 파싱
+    + [x] playerInput 을 playerNumbers로 파싱
 3. BaseBallController
     + [ ] 게임 시작
         + [ ] 스트라이크, 볼 카운팅 변수를 0으로 초기화
