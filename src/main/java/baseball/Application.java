@@ -5,11 +5,25 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Application {
-    private static List<Integer> userNumberSaved = new ArrayList<>();
-    private static List<Integer> comNumberSaved = new ArrayList<>();
+class UserNumber {
+    private List<Integer> userAnswer = new ArrayList<>();
 
-    private static List<Integer> stringToList(String number) {
+    public UserNumber() {
+    }
+
+    public List<Integer> set() {
+        String input = Console.readLine();
+        System.out.println(input);
+        checkInputError(input);
+        this.userAnswer = stringToList(input);
+        return this.userAnswer;
+    }
+
+    public List<Integer> get() {
+        return this.userAnswer;
+    }
+
+    private List<Integer> stringToList(String number) {
         List<Integer> ret = new ArrayList<>();
         for (int i = 0; i < number.length(); i++) {
             String oneNum = number.substring(i, i + 1);
@@ -19,67 +33,96 @@ public class Application {
         return ret;
     }
 
-    private static void checkGameInputError(String input) throws IllegalArgumentException {
-        boolean isException = false;
+    private void checkInputError(String input) {
+        String[] inputArray = input.split("");
 
-        if (input.length() != 3) {// 3자리 확인
-            isException = true;
-        } else {
-            try {// 숫자형식으로 변환 시 예외발생 확인
-                Integer.decode(input);
-            } catch (NumberFormatException e) {
-                isException = true;
-            }
-
-            for (byte oneNumChar : input.getBytes()) {// 1~9 확인
-                if (oneNumChar < '1' || oneNumChar > '9') {
-                    isException = true;
-                    break;
-                }
-            }
-
-            for (String oneNum : input.split("")) {// 숫자 중복 확인
-                String inputErased = input.replaceFirst(oneNum, "");
-                if (inputErased.contains(oneNum)) {
-                    isException = true;
-                    break;
-                }
-            }
-        }
-        if (isException) {
-            throw new IllegalArgumentException();
-        }
-
-    }
-
-    private static void checkRestartInputError(String input) throws IllegalArgumentException {
-        List<String> correctAnswer = List.of("1", "2");
-        if (correctAnswer.contains(input) == false) {
+        if (checkNullError(inputArray) || checkLengthError(inputArray, 3) || checkNumericError(inputArray)
+                || checkEach1to9Error(inputArray)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void getUserNumber() {// 사용자의 입력을 List<Integer>으로 저장
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
-        checkGameInputError(userInput);
-        userNumberSaved = stringToList(userInput);
+    private boolean checkNullError(String[] input) {
+        if (input == null || input.length == 0) {
+            return true;
+        }
+        return false;
     }
 
-    private static void getComNumber() {// 컴퓨터의 입력을 List<Integer>으로 저장
-        while (comNumberSaved.size() < 3) {
+    private boolean checkLengthError(String[] userInput, int length) {
+        if (userInput.length != length) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkNumericError(String[] userInput) {
+        try {// 숫자형식으로 변환 시 예외 발생 여부
+            for (String n : userInput)
+                Integer.decode(n);
+        } catch (NumberFormatException e) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkEach1to9Error(String[] userInput) {
+        for (String userInputChar : userInput) {// 1~9 확인
+            char c = userInputChar.charAt(0);
+            if (c < '1' || c > '9') {
+                return true;
+            }
+        }
+        return false;
+    }
+
+}
+
+class ComNumber {
+    private List<Integer> comAnswer = null;
+
+    ComNumber() {
+        this.comAnswer = newNumber();
+    }
+
+    List<Integer> newNumber() {
+        List<Integer> newNumber = new ArrayList<>();
+
+        while (newNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!comNumberSaved.contains(randomNumber)) {
-                comNumberSaved.add(randomNumber);
+            if (!newNumber.contains(randomNumber)) {
+                newNumber.add(randomNumber);
             }
         }
+        this.comAnswer = newNumber;
+        return this.comAnswer;
     }
 
-    private static int strikeCount() {// 스트라이크 개수 확인
+    List<Integer> get() {
+        return this.comAnswer;
+    }
+}
+
+class Game {
+
+    private void printStart() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    private void printInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    private void printRestart() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    private int countStrike(List<Integer> userNumber, List<Integer> comNumber) {// 스트라이크 개수 확인
         int ret = 0;
         for (int i = 0; i < 3; i++) {
-            Integer user = userNumberSaved.get(i);
-            Integer com = comNumberSaved.get(i);
+            Integer user = userNumber.get(i);
+            Integer com = comNumber.get(i);
             if (user == com) {
                 ret++;
             }
@@ -87,55 +130,47 @@ public class Application {
         return ret;
     }
 
-    private static int ballCount() {// 볼 개수 확인
+    private int countBall(List<Integer> userNumber, List<Integer> comNumber) {// 볼 개수 확인
         int ret = 0;
-        for (Integer user : userNumberSaved) {
-            for (Integer com : comNumberSaved) {
-                if (user == com) {
+
+        for (int i = 0; i < userNumber.size(); i++) {
+            Integer userNumber1 = userNumber.get(i);
+            for (int j = 0; j < comNumber.size(); j++) {
+                Integer comNumber1 = comNumber.get(j);
+                if (i != j && userNumber1 == comNumber1) {
                     ret++;
                 }
             }
         }
-        ret -= strikeCount();
         return ret;
     }
 
-    private static boolean isNothing() { // 스트라이크, 볼의 결과값으로 낫싱 확인
-        boolean ret = false;
-        if (strikeCount() == 0 && ballCount() == 0) {
-            ret = true;
+    private int printResult(List<Integer> userNumber, List<Integer> comNumber) { // 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시
+        int strikeCnt = countStrike(userNumber, comNumber);
+        int ballCnt = countBall(userNumber, comNumber);
+        if (ballCnt > 0) {
+            System.out.print(ballCnt + "볼");
         }
-        return ret;
-    }
-
-    private static void printStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
-    private static int printResult() { // 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시
-        int ballCount = ballCount();
-        int strikeCount = strikeCount();
-        if (ballCount > 0) {
-            System.out.print(ballCount + "볼");
-        }
-        if (strikeCount > 0) {
-            if (ballCount > 0) {
+        if (strikeCnt > 0) {
+            if (ballCnt > 0) {
                 System.out.print(" ");
             }
-            System.out.print(strikeCount + "스트라이크");
-        } else if (isNothing()) {
+            System.out.print(strikeCnt + "스트라이크");
+        } else if (strikeCnt == 0 && ballCnt == 0) {
             System.out.print("낫싱");
         }
         System.out.print("\n");
-        return strikeCount;
+        return strikeCnt;
     }
 
-    private static void printRestart() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    private void checkRestartInputError(String restartInput) throws IllegalArgumentException {
+        List<String> correctAnswer = List.of("1", "2");
+        if (correctAnswer.contains(restartInput) == false) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    private static boolean askContinue() {// 재시작여부 입력 받기
+    private boolean askContinue() {// 재시작여부 입력 받기
         boolean ret = false;
         String userInput = Console.readLine();
         checkRestartInputError(userInput);
@@ -147,32 +182,37 @@ public class Application {
         return ret;
     }
 
-    private static void initNumberSaved() {
-        userNumberSaved = new ArrayList<>();
-        comNumberSaved = new ArrayList<>();
-    }
-
-    private static void game() {// 게임 진행
+    public void play() {
         printStart();
         boolean continueGame = true;
-        getComNumber();
+        UserNumber userNumber = new UserNumber();
+        ComNumber comNumber = new ComNumber();
+        List<Integer> comNumberList = comNumber.get();
         while (continueGame) {
-            getUserNumber();
-            int result = printResult();
-            if (result == 3) {
+            printInput();
+            userNumber.set();
+            List<Integer> userNumberList = userNumber.get();
+            printResult(userNumberList, comNumberList);
+
+            int cnt = countStrike(userNumberList, comNumberList);
+            if (cnt == 3) {
                 printRestart();
                 continueGame = askContinue();
-                if (continueGame) {
-                    initNumberSaved();
-                    getComNumber();
-                }
+            }
+            if (cnt == 3 && continueGame) {
+                comNumber.newNumber();
+                comNumberList = comNumber.get();
             }
         }
     }
 
+}
+
+public class Application {
     public static void main(String[] args) {
         try {
-            game();
+            Game game = new Game();
+            game.play();
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }
