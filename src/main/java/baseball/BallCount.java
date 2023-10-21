@@ -20,7 +20,7 @@ public class BallCount {
     /**
      * 컴퓨터의 값과 사용자의 값을 바탕으로 볼카운트 객체 반환
      */
-    public static BallCount createBallCount(List<Integer> computer, List<Integer> player){
+    public static BallCount create(List<Integer> computer, List<Integer> player){
         int s = 0;
         int b = 0;
 

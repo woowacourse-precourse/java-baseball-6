@@ -15,7 +15,7 @@ public class Application {
             while (true) {
                 List<Integer> player = getPlayerNumber();
 
-                BallCount ballCount = BallCount.createBallCount(computer, player);
+                BallCount ballCount = BallCount.create(computer, player);
 
                 if (ballCount.getBallCountType() == BallCountType.STRIKEOUT){
                     ballCount.printStrikeOut();
