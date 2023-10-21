@@ -1,5 +1,7 @@
 package baseball.model;
 
+import java.util.Objects;
+
 public class BaseballGameCounts {
     private int strikes;
     private int balls;
@@ -16,14 +18,44 @@ public class BaseballGameCounts {
     }
 
     public void showCounts() {
-        if (message.isEmpty()) {
-            System.out.println("낫싱");
-        } else {
-            System.out.println(message);
-        }
+        System.out.println(Objects.requireNonNullElse(message, "낫싱"));
     }
 
     public void editMessage(String frag) {
-        this.message += frag;
+        if (message == null) {
+            this.message = frag;
+        } else {
+            this.message = frag + this.message;
+        }
+    }
+
+    public void resetCounts() {
+        this.message = null;
+        this.strikes = 0;
+        this.balls = 0;
+    }
+
+    public void setStrikes(int strikes) {
+        this.strikes = strikes;
+    }
+
+    public void setBalls(int balls) {
+        this.balls = balls;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public int getStrikes() {
+        return strikes;
+    }
+
+    public int getBalls() {
+        return balls;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }
