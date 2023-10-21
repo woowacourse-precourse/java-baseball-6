@@ -1,6 +1,6 @@
 package baseball.Model;
 
-public class Notice {
+public class Constant {
     public static final String Game_Start = "숫자 야구 게임을 시작합니다.";
     public static final String Input_Number = "숫자를 입력해주세요 : ";
     public static final String Game_Over = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
