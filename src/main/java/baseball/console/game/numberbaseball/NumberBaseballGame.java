@@ -1,6 +1,6 @@
-package baseball.console.game;
+package baseball.console.game.numberbaseball;
 
-import baseball.domain.Computer;
+import baseball.console.game.numberbaseball.domain.Computer;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
