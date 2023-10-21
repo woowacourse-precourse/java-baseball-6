@@ -21,7 +21,7 @@ public class Application {
             }
             boolean progress = true;
 
-            List<Integer> user = new ArrayList<>();
+            ArrayList<Integer> user = new ArrayList<>();
             System.out.println("숫자 야구 게임을 시작합니다.");
             while (progress) {
                 System.out.printf("숫자를 입력하세요: ");
@@ -29,21 +29,24 @@ public class Application {
 
                 String input = Console.readLine();
 
-                if(input.length() != 3) {
-                    throw new IllegalArgumentException();
-                }
 
-                for (int i = 0; i < input.length(); i++) {
-                    int num = Character.getNumericValue(input.charAt(i));
-                    if (num < 0) { //getNumericValue는 숫자로 변환되지 않을 경우, 경우에 따라 -1 이나 2를 반환함
+                    if (input.length() != 3) {
                         throw new IllegalArgumentException();
                     }
-                    if (!user.contains(num)) {
-                        user.add(num);
-                    } else { //입력값이 서로 다른 3자리 수가 아님
-                        throw new IllegalArgumentException();
+
+                    for (int i = 0; i < input.length(); i++) {
+                        int num = Character.getNumericValue(input.charAt(i));
+                        if (num <= 0 || num > 9) { //getNumericValue는 숫자로 변환되지 않을 경우, 경우에 따라 -1 이나 2를 반환함
+                            throw new IllegalArgumentException();
+
+                        }
+                        if (!user.contains(num)) {
+                            user.add(num);
+                        } else { //입력값이 서로 다른 3자리 수가 아님
+                            throw new IllegalArgumentException();
+                        }
                     }
-                }
+
 
                 //숫자 비교
                 int ball = 0;
@@ -67,7 +70,7 @@ public class Application {
                 } else {
                     if (strike == 3) {
                         System.out.println("3스트라이크");
-                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                         System.out.println("게임으로 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                         progress = false;
                         String answer = Console.readLine();
@@ -78,6 +81,7 @@ public class Application {
                         } else {
                             throw new IllegalArgumentException();
                         }
+
                     } else if (ball == 3) {
                         System.out.println("3볼");
                     } else if (ball != 0) {
