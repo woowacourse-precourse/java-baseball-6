@@ -43,4 +43,15 @@ public class BaseballNumbers {
         }
         return ballCount;
     }
+
+    public boolean isNothing(BaseballNumbers inputBaseballNumbers) {
+        List<BaseballNumber> baseballNumberList = this.ballNumbers;
+        for (int i = 0; i < 3; i++) {
+            BaseballNumber inputBaseballNumber = inputBaseballNumbers.ballNumbers.get(i);
+            if (baseballNumberList.contains(inputBaseballNumber)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
