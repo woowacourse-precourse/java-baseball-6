@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Umpire {
+public class Referee {
 
     private static final int DEFAULT_NUMBER = 0;
 
@@ -17,14 +17,14 @@ public class Umpire {
     private int userNumber;
     private boolean isEndFlag;
 
-    private Umpire(final int computerNumber, final int userNumber, final boolean flag) {
+    private Referee(final int computerNumber, final int userNumber, final boolean flag) {
         this.computerNumber = computerNumber;
         this.userNumber = userNumber;
         this.isEndFlag = flag;
     }
 
-    public static Umpire createDefault() {
-        return new Umpire(DEFAULT_NUMBER, DEFAULT_NUMBER, false);
+    public static Referee createDefault() {
+        return new Referee(DEFAULT_NUMBER, DEFAULT_NUMBER, false);
     }
 
     public int countStrike() {

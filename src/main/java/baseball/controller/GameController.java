@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.Umpire;
+import baseball.model.Referee;
 import baseball.factory.NumberFactory;
 import baseball.model.ResumeNumber;
 import baseball.view.EndView;
@@ -10,11 +10,11 @@ import baseball.view.StartView;
 public class GameController {
 
     private final ResumeNumber resumeNumber;
-    private final Umpire umpire;
+    private final Referee referee;
 
     public GameController() {
         this.resumeNumber = ResumeNumber.createDefault();
-        this.umpire = Umpire.createDefault();
+        this.referee = Referee.createDefault();
     }
 
     public void playBaseball() {
@@ -51,7 +51,7 @@ public class GameController {
     }
 
     private boolean isGameEnd() {
-        return umpire.isGameEnd();
+        return referee.isGameEnd();
     }
 
     private static void askNumberInput() {
@@ -64,7 +64,7 @@ public class GameController {
     }
 
     private void prepareGameJudgementWithComputer(final int computerNumber) {
-        umpire.prepareJudgement(computerNumber, receiveUserNumber());
+        referee.prepareJudgement(computerNumber, receiveUserNumber());
     }
 
     private static int receiveUserNumber() {
@@ -76,11 +76,11 @@ public class GameController {
     }
 
     private int countGameBall() {
-        return umpire.countBall();
+        return referee.countBall();
     }
 
     private int countGameStrike() {
-        return umpire.countStrike();
+        return referee.countStrike();
     }
 
     private static void printGameEnd() {
@@ -100,6 +100,6 @@ public class GameController {
     }
 
     private void clearUmpireMemory() {
-        umpire.resetGame();
+        referee.resetGame();
     }
 }
