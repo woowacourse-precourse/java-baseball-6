@@ -23,13 +23,10 @@ public class GameController {
     public void gameStart(){
         outputView.displayStartGame();
 
-        int choice = inputView.requestGameRestart();
-        if(choice == 1){
-            // 게임 재시작
-        }
-        if(choice == 2){
-            // 게임 완전히 종료
-        }
+        do{
+            initializeAnswerNumber();
+            playRound();
+        }while(isContinued());
     }
 
     private void playRound(){
