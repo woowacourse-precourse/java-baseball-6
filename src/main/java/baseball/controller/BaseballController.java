@@ -29,29 +29,39 @@ public class BaseballController {
     }
 
     private void play() {
-        GameNumber computer = new GameNumber(RandomNumbersGenerator.generate());
-        //TODO: 디버깅 용 출력문 지우기
-        System.out.println("computer = " + computer);
-        guess(computer);
-        restart();
+        while (true) {
+            GameNumber computer = new GameNumber(RandomNumbersGenerator.generate());
+            //TODO: 디버깅 용 출력문 지우기
+            System.out.println("computer = " + computer);
+            guess(computer);
+            
+            //TODO: 분리가 필요해 보여
+            Command command = readGameCommand();
+            if (isRestart(command)) {
+                continue;
+            }
+            if (isQuit(command)) {
+                return;
+            }
+        }
     }
 
-    private void restart() {
-        Command command = readGameCommand();
-        if (Command.isQuit(command)) {
-            return;
-        }
-        if (Command.isRestart(command)) {
-            play();
-        }
+    private boolean isQuit(Command command) {
+        return Command.isQuit(command);
+    }
+
+    private boolean isRestart(Command command) {
+        return Command.isRestart(command);
     }
 
     private void guess(GameNumber computer) {
-        Score score = null;
-        while (!isGuess(score)) {
+        while (true) {
             GameNumber player = new GameNumber(inputView.readGuessNumber());
-            score = calculateScore(computer, player);
+            Score score = calculateScore(computer, player);
             outputView.printScore(score);
+            if (isCorrect(score)) {
+                break;
+            }
         }
         outputView.printGameEndMessage();
     }
@@ -67,7 +77,7 @@ public class BaseballController {
         return Command.fromValue(value);
     }
 
-    private Boolean isGuess(Score score) {
+    private Boolean isCorrect(Score score) {
         if (score == null) {
             return false;
         }
