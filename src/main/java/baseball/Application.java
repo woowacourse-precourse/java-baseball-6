@@ -7,13 +7,13 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        boolean answerReplayGame = true;
+        boolean stateReplayGame = true;
 
         displayGameStartMessage();
 
-        while (answerReplayGame) {
+        while (stateReplayGame) {
             playGame();
-            answerReplayGame = getAnswerReplayGame();
+            stateReplayGame = getAnswerReplayGame();
         }
     }
 
