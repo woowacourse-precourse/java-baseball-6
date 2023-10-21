@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Player {
     private static final int INPUT_LENGTH = 3;
@@ -19,18 +21,32 @@ public class Player {
     }
 
     public String getInput(){
-
         return input;
     }
 
     private void validateInput(){
         validateLength();
         validateOnlyNumber();
+        validateDuplicated();
     }
 
     private void validateLength(){
         if(input.length() != INPUT_LENGTH){
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplicated(){
+        Set<Integer> existedNumber = new HashSet<>();
+
+        for(int i=0;i<INPUT_LENGTH;i++){
+            int num = Character.getNumericValue(input.charAt(i));
+
+            if(existedNumber.contains(num)){
+                throw new IllegalArgumentException();
+            }
+
+            existedNumber.add(num);
         }
     }
 
