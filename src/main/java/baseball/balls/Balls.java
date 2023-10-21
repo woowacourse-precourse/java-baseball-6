@@ -1,5 +1,7 @@
 package baseball.balls;
 
+import baseball.utils.BallsUtils;
+import baseball.utils.StringUtils;
 import java.util.List;
 
 public class Balls {
@@ -41,6 +43,16 @@ public class Balls {
                 throw new IllegalArgumentException("인덱스가 중복된 공이 존재합니다");
             }
         });
+    }
+
+    public static Balls fromIntegers(List<Integer> integers) {
+        List<Ball> balls = BallsUtils.convertIntegersToBallList(integers);
+        return new Balls(balls);
+    }
+
+    public static Balls fromString(String string) {
+        List<Integer> integers = StringUtils.convertStringToIntegerList(string);
+        return fromIntegers(integers);
     }
 
 }
