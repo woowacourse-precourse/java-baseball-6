@@ -7,12 +7,10 @@ import java.util.Objects;
 public class Replay {
     public boolean ReplayGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
+        // readLine()을 통해 값을 읽는다.
         String input = Console.readLine();
-
-        if(Objects.equals(input, "1")){
-            return true;
-        }
-        return false;
+        // equals를 통해 1일경우만 true를 return 한다.
+        return Objects.equals(input, "1");
+//        else throw new IllegalArgumentException();
     }
 }
