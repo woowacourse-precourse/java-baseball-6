@@ -19,7 +19,7 @@ public class GameController {
         this.resumeNumber = ResumeNumber.from(PLAY_WANT);
     }
 
-    public static void play() {
+    public void play() {
         boolean playWant = true;
         int computerNumber = selectNewNumber();
 
@@ -49,19 +49,19 @@ public class GameController {
         }
     }
 
-    private static boolean isStrikeEqualToGoal(final int strike) {
+    private boolean isStrikeEqualToGoal(final int strike) {
         return strike == PLAY_NUMBER_DIGIT;
     }
 
-    private static boolean isUserWantMoreGame(final int resumeNumber) {
+    private boolean isUserWantMoreGame(final int resumeNumber) {
         return resumeNumber == PLAY_WANT;
     }
 
-    private static int selectNewNumber() {
+    private int selectNewNumber() {
         return NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
     }
 
-    private static boolean isUserWantStopGame(final int resumeNumber) {
+    private boolean isUserWantStopGame(final int resumeNumber) {
         return resumeNumber == END_WANT;
     }
 }
