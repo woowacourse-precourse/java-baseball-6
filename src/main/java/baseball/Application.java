@@ -17,7 +17,7 @@ public class Application {
 
                 BallCount ballCount = BallCount.create(computer, player);
 
-                if (ballCount.getBallCountType() == BallCountType.STRIKEOUT){
+                if (ballCount.getBallCountType() == BallCountType.STRIKEOUT) {
                     ballCount.printStrikeOut();
                     break;
                 }
@@ -64,13 +64,13 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         final char[] playerInput = Console.readLine().toCharArray();
 
-        if (playerInput.length != 3){
+        if (playerInput.length != 3) {
             throw new IllegalArgumentException();
         }
 
         for (int c : playerInput) {
             int i = c - 48;
-            if(player.contains(i)){
+            if (player.contains(i)) {
                 throw new IllegalArgumentException();
             }
             player.add(i);

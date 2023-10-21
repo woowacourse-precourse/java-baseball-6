@@ -20,7 +20,7 @@ public class BallCount {
     /**
      * 컴퓨터의 값과 사용자의 값을 바탕으로 볼카운트 객체 반환
      */
-    public static BallCount create(List<Integer> computer, List<Integer> player){
+    public static BallCount create(List<Integer> computer, List<Integer> player) {
         int s = 0;
         int b = 0;
 
@@ -41,33 +41,33 @@ public class BallCount {
     /**
      * 볼, 스트라이크에 따른 상태 반환
      */
-    private static BallCountType gettBallCountType(int ball, int strike){
-        if(isStrikeOut(strike)){
+    private static BallCountType gettBallCountType(int ball, int strike) {
+        if (isStrikeOut(strike)) {
             return BallCountType.STRIKEOUT;
-        }else if(isNothing(ball, strike)){
+        } else if (isNothing(ball, strike)) {
             return BallCountType.NOTHING;
-        }else if(hasBall(ball) && hasStrike(strike)){
+        } else if (hasBall(ball) && hasStrike(strike)) {
             return BallCountType.BALL_AND_STRIKE;
-        }else if(hasStrike(strike)){
+        } else if (hasStrike(strike)) {
             return BallCountType.ONLY_STRIKE;
-        }else{
+        } else {
             return BallCountType.ONLY_BALL;
         }
     }
 
-    private static boolean isStrikeOut(int strike){
+    private static boolean isStrikeOut(int strike) {
         return strike == 3;
     }
 
-    private static boolean isNothing(int ball, int strike){
+    private static boolean isNothing(int ball, int strike) {
         return strike + ball <= 0;
     }
 
-    private static boolean hasStrike(int strike){
+    private static boolean hasStrike(int strike) {
         return strike > 0;
     }
 
-    private static boolean hasBall(int ball){
+    private static boolean hasBall(int ball) {
         return ball > 0;
     }
 
@@ -75,23 +75,24 @@ public class BallCount {
         return ballCountType;
     }
 
-    public void printStrikeOut(){
+    public void printStrikeOut() {
         System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public void printNothing(){
+    public void printNothing() {
         System.out.println("낫싱");
     }
-    public void printBallAndStrike(){
+
+    public void printBallAndStrike() {
         System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 
-    public void printOnlyBall(){
+    public void printOnlyBall() {
         System.out.println(ball + "볼");
     }
 
-    public void printOnlyStrike(){
+    public void printOnlyStrike() {
         System.out.println(strike + "스트라이크");
     }
 }
