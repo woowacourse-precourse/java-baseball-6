@@ -22,7 +22,7 @@ public class ValidationUtil {
     }
 
     private void checkRange(char ch) {
-        if (ch < '0' || ch  > '9') {
+        if (ch < '1' || ch  > '9') {
             throw new IllegalArgumentException();
         }
     }
