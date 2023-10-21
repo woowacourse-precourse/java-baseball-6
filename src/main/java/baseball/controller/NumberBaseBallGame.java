@@ -3,7 +3,7 @@ package baseball.controller;
 import baseball.Compare;
 import baseball.Computer;
 import baseball.GameStatus;
-import baseball.input.AfterGameInput;
+import baseball.input.NewGameInput;
 import baseball.input.UserInput;
 
 import java.util.List;
@@ -13,21 +13,21 @@ public class NumberBaseBallGame {
     Computer computer = new Computer();
     Compare compare = new Compare();
     UserInput user = new UserInput();
-    AfterGameInput afterGameInput = new AfterGameInput();
+    NewGameInput newGame = new NewGameInput();
     private int ball = 0;
     private int strike = 0;
 
-    public void game(){
+    public void start(){
         int gameStatus = GameStatus.PLAY.status;
         while(gameStatus == GameStatus.PLAY.status){
-            gameStatus = startGame();
+            gameStatus = playGame();
         }
     }
 
-    public int startGame(){
+    public int playGame(){
         //정답 생성
         List<Integer> answer = computer.makeNewNumber();
-        System.out.println("answer = " + answer);
+        //System.out.println("answer = " + answer);
 
         //user가 정답을 맞출때까지 user 입력, 볼,스트라이크 출력 반복
         while(strike != 3){
@@ -46,7 +46,7 @@ public class NumberBaseBallGame {
         //볼, 스트라이크 초기화
         resetBallAndStrike();
 
-        return afterGameInput.getAfterGameInput();
+        return newGame.newGame();
     }
 
     private int getStrike(List<Integer> answer, List<Integer> userInput) {

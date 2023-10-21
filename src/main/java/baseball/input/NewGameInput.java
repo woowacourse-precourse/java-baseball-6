@@ -3,9 +3,9 @@ package baseball.input;
 import baseball.GameStatus;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-public class AfterGameInput {
+public class NewGameInput {
 
-    public int getAfterGameInput(){
+    public int newGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = readLine();
         int inputNumber;
