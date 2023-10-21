@@ -16,7 +16,6 @@ public class NumberBaseball {
     public void start() {
         OutputView.printGameStart();
         getNumbersFromPlayer();
-        System.out.println(player);
     }
 
     public void getNumbersFromPlayer() {
