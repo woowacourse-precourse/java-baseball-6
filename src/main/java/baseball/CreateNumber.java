@@ -21,14 +21,17 @@ public class CreateNumber {
         System.out.print("숫자를 입력해주세요 : ");
         String s = Console.readLine();
         ValidCheckNumber.validCheckPlayer(s);
-        //s를 검사하여 세자리수가 아니면 IllegalStateException 맞다면 반환
+        List<Integer> player = stringToList(s);
+        ValidCheckNumber.duplicationCheck(player);
+        ValidCheckNumber.zeroCheck(player);
+        return player;
+    }
+    public List<Integer> stringToList(String s){
         List<Integer> player = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int temp = s.charAt(i)-48;
             player.add(temp);
         }
-        ValidCheckNumber.duplicationCheck(player);
-        ValidCheckNumber.zeroCheck(player);
         return player;
     }
 }

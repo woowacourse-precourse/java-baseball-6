@@ -3,6 +3,7 @@ package baseball;
 public class PrintResult {
     public static String print(int[] strike_ball){
         StringBuilder sb = new StringBuilder();
+
         if (strike_ball[1]>0){
             sb.append(strike_ball[1]);
             sb.append("볼");

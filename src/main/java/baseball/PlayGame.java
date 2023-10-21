@@ -6,14 +6,14 @@ public class PlayGame {
     public void play(){
         CreateNumber createNumber = new CreateNumber();
         List<Integer> computer = createNumber.getComputer();
-        boolean restart = true;
-        while (restart){
+        boolean allStrike = true;
+        while (allStrike){
             List<Integer> player = createNumber.getPlayerNumber();
             int[] strike_ball = CompareNumber.checkNumber(computer, player);
-            String result = PrintResult.print(strike_ball);
             if (strike_ball[0]==3){
-                restart=false;
+                allStrike=false;
             }
+            String result = PrintResult.print(strike_ball);
             System.out.println(result);
         }
     }
