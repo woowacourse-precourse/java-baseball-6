@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -11,9 +10,12 @@ import java.util.List;
 
 public class NumberBaseballController {
 
+    private static final String DUPLICATE_NUMBER_EXCEPTION_MESSAGE = "서로 다른 수를 입력해주세요.";
+
     private static final OutputView outputView = new OutputView();
     private static final InputView inputView = new InputView();
-    private static final Validator validator = new Validator();
+
+
 
     public void run() {
         int restartNum = 1;
@@ -43,18 +45,15 @@ public class NumberBaseballController {
     }
 
     public List<Integer> getUserNumbers() {
-        int userNumber = inputView.printInputNumber();
+        int userNumber = Integer.parseInt(inputView.printInputNumber());
         List<Integer> userNumbers = chageIntToList(userNumber);
 
-        validator.isThreeDigit(userNumbers);
-        validator.isNotInSameNumber(userNumbers);
-
+        isNotInSameNumber(userNumbers); // 중복 값 검증
         return userNumbers;
     }
 
     public int getRestartNumber() {
-        int restartNum = inputView.printRestartNumber();
-        validator.isOneOrTwo(restartNum);
+        int restartNum = Integer.parseInt(inputView.printRestartNumber());
         return restartNum;
     }
 
@@ -82,6 +81,14 @@ public class NumberBaseballController {
 
     public boolean isInSamePlace(List<Integer> userNumbers, List<Integer> computerNumbers, int userNumber) {
         return computerNumbers.indexOf(userNumber) == userNumbers.indexOf(userNumber);
+    }
+
+    public void isNotInSameNumber(List<Integer> userNumbers) {
+        int originSize = userNumbers.size();
+        List<Integer> distinct = userNumbers.stream().distinct().toList();
+
+        if (originSize != distinct.size())
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_EXCEPTION_MESSAGE);
     }
 
     public List<Integer> chageIntToList(int userNumber) {
