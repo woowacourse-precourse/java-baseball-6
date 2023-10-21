@@ -14,6 +14,7 @@ public class User {
         if (!userCheck(temp_answer)) throw new IllegalArgumentException();
         int temp_num_answer = Integer.parseInt(temp_answer);
         int slice = 100;
+        //조건에 맞는 입력이여서 List<Integer>에 넣어줌
         for(int i=0;i<3;i++){
             user_answer.add(temp_num_answer/slice);
             temp_num_answer = temp_num_answer%slice;
