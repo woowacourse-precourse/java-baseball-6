@@ -8,7 +8,10 @@ public class Computer {
     private static final int defaultDigitalCount = 3;
     private static final int minimumCanCreatedValue = 1;
     private static final int maximumCanCreatedValue = 9;
-    private ArrayList<Integer> numberList;
+    private final ArrayList<Integer> numberList;
+    public ArrayList<Integer> getNumberList(){
+        return this.numberList;
+    }
 
     public Computer() {
         this.numberList = generateRandomNumberListWithNotRepeating();
