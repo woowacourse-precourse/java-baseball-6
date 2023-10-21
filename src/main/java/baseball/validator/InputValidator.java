@@ -22,4 +22,11 @@ public class InputValidator {
         }
         return true;
     }
+
+    public static boolean isNotDuplicate(String input) {
+        if (input.chars().distinct().count() != input.length()) {
+            throw new IllegalArgumentException("중복된 값이 존재합니다.");
+        }
+        return true;
+    }
 }
