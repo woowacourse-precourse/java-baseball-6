@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import java.util.Objects;
+
 public class Balls {
 
     private int number;
@@ -16,5 +18,22 @@ public class Balls {
 
     public int getLocation() {
         return location;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Balls balls = (Balls) o;
+        return number == balls.number && location == balls.location;
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(number, location);
     }
 }
