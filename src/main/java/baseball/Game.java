@@ -13,7 +13,7 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void getGuessNums() {
+    public int getGuessNums() {
         System.out.println("숫자를 입력해주세요 : ");
         String guessNumsStr = Console.readLine();
         ArrayList guessNums = new ArrayList<>();
@@ -22,5 +22,32 @@ public class Game {
         }
 
         player.setGuessNums(guessNums);
+
+        return getHint();
+    }
+
+    private int getHint() {
+        hint.makeHint(player.getGuessNums(), computer.getNums());
+        int ball = hint.getBall();
+        int strike = hint.getStrike();
+        // 낫싱: 0, 볼 또는 스트라이크: 1, 3개의 숫자를 모두 맞힐 경우: 2
+        int result = -1;
+
+        if (strike == 3) {
+            System.out.println(strike + "스트라이크");
+            System.out.println(strike + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+            result = 2;
+        } else if (ball >= 1 || strike >= 1) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+
+            result = 1;
+        } else if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+
+            result = 0;
+        }
+
+        return result;
     }
 }
