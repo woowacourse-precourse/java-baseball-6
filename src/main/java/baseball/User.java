@@ -8,17 +8,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class User {
     List<Integer> number = new ArrayList<>();
-    public String readLine() {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+    public String consoleReadLine() {
         String result;
-        try {
-            result = in.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        if(result.length() != 3){
+        result = readLine();
+        if (result == null || result.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
         }
         number = convertStringToIntegerArray(result);
@@ -26,13 +24,8 @@ public class User {
     }
 
     public Integer readLineForRestartGame() {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String result;
-        try {
-            result = in.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        result = readLine();
         return Integer.parseInt(result);
     }
 
