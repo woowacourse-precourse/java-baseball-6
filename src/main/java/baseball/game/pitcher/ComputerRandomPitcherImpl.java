@@ -1,8 +1,19 @@
 package baseball.game.pitcher;
 
+import static baseball.AppConfig.DIGIT_NUM;
+import static baseball.AppConfig.MAX_NUMBER;
+import static baseball.AppConfig.MIN_NUMBER;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 public class ComputerRandomPitcherImpl implements Pitcher {
+
+    String ball = "";
     @Override
-    public int pitch() {
-        return 0;
+    public String pitch() {
+        for(int i = 0 ; i < DIGIT_NUM ; i++){
+            int randNum = pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            ball = ball + randNum;
+        }
+        return ball;
     }
 }
