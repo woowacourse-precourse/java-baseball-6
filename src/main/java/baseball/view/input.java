@@ -13,11 +13,6 @@ public class input {
     public static void inputUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         userNumber = readLine();
-        // 검증 코드
-//        if (userNumber.length() != 3 || !userNumber.matches("[0-9]+") || hasDuplicateCharacters(userNumber)) {
-//            throw new IllegalArgumentException("입력값은 서로 다른 세 자리 숫자여야 합니다.");
-//        }
-
         System.out.println();
     }
 
