@@ -3,6 +3,8 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -101,5 +103,16 @@ class InputValidationTest {
         assertThatThrownBy(() -> inputValidation.validateUserInput(zeroNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1 ~ 9 사이의 숫자만을 입력해주시기 바랍니다.");
+    }
+
+    @DisplayName("유효한 input 값 정수 리스트로 변환하는 테스트")
+    @Test
+    void parseStringToIntegerListTest() {
+        //given
+        InputValidation inputValidation = new InputValidation();
+        //when
+        final String userInput = "437";
+        //then
+        assertThat(inputValidation.validateUserInput(userInput)).isEqualTo(List.of(4, 3, 7));
     }
 }

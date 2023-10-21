@@ -45,7 +45,8 @@ public class InputValidation {
     private List<Integer> userInputToList(String userInput) {
         List<Integer> userInputList = new ArrayList<>();
         for (int i = 0; i < userInput.length(); i++) {
-            userInputList.add(Integer.parseInt(userInput, i));
+            char c = userInput.charAt(i);
+            userInputList.add(Character.getNumericValue(c));
         }
         return userInputList;
     }

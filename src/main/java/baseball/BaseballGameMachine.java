@@ -23,5 +23,5 @@ public class BaseballGameMachine {
         System.out.println(message.start() + '\n');
     }
 
-    public void
+//    public void
 }
