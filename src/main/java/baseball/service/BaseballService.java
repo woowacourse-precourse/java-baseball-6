@@ -13,12 +13,11 @@ public class BaseballService {
         this.computerNumber = computerNumber;
     }
 
-    public GameStateDto caculate() {
+    public GameStateDto calculate() {
         GameStateDto gameStateDto = new GameStateDto();
         calculateStrike(gameStateDto);
         calculateBall(gameStateDto);
         return gameStateDto;
-
     }
 
     private void calculateBall(

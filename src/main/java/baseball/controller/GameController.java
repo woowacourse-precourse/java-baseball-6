@@ -28,7 +28,7 @@ public class GameController {
             outputView.printInputInitMessage();
             String userNumber = getUserNumber();
             BaseballService baseballService = new BaseballService(userNumber, computerNumber);
-            gamestate = baseballService.caculate();
+            gamestate = baseballService.calculate();
             outputResult(gamestate);
         } while (isGameReStart(gamestate));
     }

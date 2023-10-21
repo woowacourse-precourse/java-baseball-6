@@ -4,9 +4,7 @@ public class GameStateDto {
 
     private int strike;
     private int ball;
-
     private boolean endGame;
-
     private boolean restart;
 
     public boolean isEndGame() {
@@ -20,8 +18,8 @@ public class GameStateDto {
         this.endGame = false;
     }
 
-    public void addStrike(){
-        this.strike=this.strike+1;
+    public void addStrike() {
+        this.strike = this.strike + 1;
     }
 
     public int getStrike() {
@@ -36,15 +34,15 @@ public class GameStateDto {
         return restart;
     }
 
-    public void addBall(){
-        this.ball=this.ball+1;
+    public void addBall() {
+        this.ball = this.ball + 1;
     }
 
-    public void activateRestart(){
-        this.restart=true;
+    public void activateRestart() {
+        this.restart = true;
     }
 
     public void activateEndGame() {
-        this.endGame=true;
+        this.endGame = true;
     }
 }

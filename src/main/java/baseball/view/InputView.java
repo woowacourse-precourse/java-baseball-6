@@ -9,12 +9,12 @@ public class InputView {
     private InputView() {
     }
 
-    public static InputView getInstance(){
+    public static InputView getInstance() {
         return instance;
     }
 
     public String readUserNumber() {
-         return Console.readLine();
+        return Console.readLine();
     }
 
     public String readRestart() {

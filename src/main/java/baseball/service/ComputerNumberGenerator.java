@@ -11,15 +11,15 @@ public class ComputerNumberGenerator {
 
     }
 
-    public static ComputerNumberGenerator getInstance(){
+    public static ComputerNumberGenerator getInstance() {
         return instance;
     }
 
-    public String generate(){
+    public String generate() {
         StringBuilder comNumberBuilder = new StringBuilder();
-        while(isShorterThanNumberLength(comNumberBuilder)){
+        while (isShorterThanNumberLength(comNumberBuilder)) {
             int randomNumber = Randoms.pickNumberInRange(1, 9); // builder 에서 tostring 에서 중복되면 더하지 않으면 되잖아??
-            if(isDuplicated(comNumberBuilder, randomNumber)){
+            if (isDuplicated(comNumberBuilder, randomNumber)) {
                 continue;
             }
             comNumberBuilder.append(randomNumber);
