@@ -18,27 +18,18 @@ public class GameController {
 
     public void run() {
         OutputView.printGameStartMessage();
+        service.startGame();
         playGame();
     }
 
     private void playGame() {
-        service.startGame();
-        GameCommand gameCommand = GameCommand.RETRY;
-
-        while (gameCommand.equals(GameCommand.RETRY)) {
+        while (true) {
             playAndPrintGameResult();
 
             if (service.isGameWon()) {
                 OutputView.printGameEndMessage();
-                gameCommand = readGameCommand();
-
-                if (gameCommand.equals(GameCommand.QUIT)) {
-                    break;
-                }
-
-                if (gameCommand.equals(GameCommand.RETRY)) {
-                    service.startGame();
-                }
+                restartOrQuit();
+                break;
             }
         }
     }
@@ -51,8 +42,23 @@ public class GameController {
         OutputView.printGameResult(gameResult);
     }
 
+    private void restartOrQuit() {
+        GameCommand gameCommand = readGameCommand();
+        if (gameCommand.equals(GameCommand.QUIT)) {
+            return;
+        }
+        restart(gameCommand);
+    }
+
     private GameCommand readGameCommand() {
         int gameCommand = InputView.readGameCommand();
         return GameCommand.from(gameCommand);
+    }
+
+    private void restart(GameCommand gameCommand) {
+        if (gameCommand.equals(GameCommand.RETRY)) {
+            service.startGame();
+            playGame();
+        }
     }
 }
