@@ -2,10 +2,10 @@ package baseball.domain;
 
 import java.util.List;
 
-public class NumberBaseBallIO {
+public class NumberBaseballIO {
     private final InputOutputHandler inputOutputHandler;
 
-    public NumberBaseBallIO(InputOutputHandler inputOutputHandler) {
+    public NumberBaseballIO(InputOutputHandler inputOutputHandler) {
         this.inputOutputHandler = inputOutputHandler;
     }
 
@@ -24,9 +24,9 @@ public class NumberBaseBallIO {
     public void printEndMessage(int numberLimit) {
         inputOutputHandler.printlnText(
                 numberLimit + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 "  +
-                NumberBaseBall.CONTINUE_GAME +
+                NumberBaseball.CONTINUE_GAME +
                 ", 종료하려면 " +
-                NumberBaseBall.GAME_OVER +"를 입력하세요.");
+                NumberBaseball.GAME_OVER +"를 입력하세요.");
     }
 
     public int getUserEndChoice() {

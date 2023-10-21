@@ -4,13 +4,13 @@ import java.util.List;
 
 public class User {
 
-    private final GameIO gameIO;
+    private final NumberBaseballIO numberBaseballIO;
 
-    public User(GameIO gameIO) {
-        this.gameIO = gameIO;
+    public User(NumberBaseballIO numberBaseballIO) {
+        this.numberBaseballIO = numberBaseballIO;
     }
 
     public List<Integer> guessAnswer(int numberLength) {
-        return gameIO.inputGuessAnswer(numberLength);
+        return numberBaseballIO.inputGuessAnswer(numberLength);
     }
 }

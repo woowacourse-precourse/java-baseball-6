@@ -31,11 +31,11 @@ public class Result {
 
     @Override
     public String toString() {
-        if(ball == 0 && strike == 0) return NumberBaseBall.NOTHING;
+        if(ball == 0 && strike == 0) return NumberBaseball.NOTHING;
 
         String result = "";
-        if(ball > 0) result = ball + NumberBaseBall.BALL + " ";
-        if(strike > 0) result += strike + NumberBaseBall.STRIKE;
+        if(ball > 0) result = ball + NumberBaseball.BALL + " ";
+        if(strike > 0) result += strike + NumberBaseball.STRIKE;
 
         return result.trim();
     }

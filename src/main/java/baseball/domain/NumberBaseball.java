@@ -2,22 +2,22 @@ package baseball.domain;
 
 import java.util.List;
 
-public class NumberBaseBall {
+public class NumberBaseball {
 
     private final RandomNumberPicker randomNumberPicker;
-    private final GameIO gameIO;
+    private final NumberBaseballIO numberBaseballIO;
     private final User user;
 
     private final int numberLimit;
 
-    public NumberBaseBall(
+    public NumberBaseball(
             int numberLimit,
             RandomNumberPicker randomNumberPicker,
-            GameIO gameIO,
+            NumberBaseballIO numberBaseballIO,
             User user) {
         this.numberLimit = numberLimit;
         this.randomNumberPicker = randomNumberPicker;
-        this.gameIO = gameIO;
+        this.numberBaseballIO = numberBaseballIO;
         this.user = user;
     }
     public static final String STRIKE = "스트라이크";
@@ -46,7 +46,7 @@ public class NumberBaseBall {
     }
 
     private boolean shouldContinueGame() {
-        int userChoice = gameIO.printEndMessageAndInputChoice(numberLimit);
+        int userChoice = numberBaseballIO.printEndMessageAndInputChoice(numberLimit);
 
         if(userChoice != CONTINUE_GAME && userChoice != GAME_OVER)
             throw new IllegalArgumentException(
@@ -60,13 +60,13 @@ public class NumberBaseBall {
 
 
     private List<Integer> startGuess() {
-        gameIO.printStart();
+        numberBaseballIO.printStart();
         return user.guessAnswer(numberLimit);
     }
 
     private boolean checkGuessAnswer(List<Integer> answer, List<Integer> guessAnswer) {
         Result guessResult = Result.of(answer, guessAnswer);
-        gameIO.printGuessResult(guessResult);
+        numberBaseballIO.printGuessResult(guessResult);
 
         return guessResult.isCorrect();
     }

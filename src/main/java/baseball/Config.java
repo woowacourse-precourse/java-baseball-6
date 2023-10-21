@@ -8,21 +8,21 @@ public class Config {
         return new InputOutputHandler();
     }
 
-    public GameIO gameIO() {return new GameIO(inputOutputHandler());}
+    public NumberBaseballIO numberBaseballIO() {return new NumberBaseballIO(inputOutputHandler());}
 
     public User user() {
-        return new User(gameIO());
+        return new User(numberBaseballIO());
     }
 
     public RandomNumberPicker randomNumberPicker() {
         return new RandomNumberPicker();
     }
 
-    public NumberBaseBall numberBaseBall(int numberLimit) {
-        return new NumberBaseBall(
+    public NumberBaseball numberBaseball(int numberLimit) {
+        return new NumberBaseball(
                 numberLimit,
                 randomNumberPicker(),
-                gameIO(),
+                numberBaseballIO(),
                 user());
     }
 
