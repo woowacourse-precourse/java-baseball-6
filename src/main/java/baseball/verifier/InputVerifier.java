@@ -8,7 +8,7 @@ public class InputVerifier {
         checkNumeric(isBallNumber);
         checkRange(isBallNumber);
         checkDistinct(isBallNumber);
-        checkIsZero(isBallNumber);
+        checkHasZero(isBallNumber);
     }
 
     public void checkGameNumber(String isGameNumber) throws IllegalArgumentException {
@@ -33,11 +33,8 @@ public class InputVerifier {
         }
     }
 
-    private void checkIsZero(String inRange) {
-        if (inRange.chars()
-                .map(Character::getNumericValue)
-                .filter(i -> i == 0)
-                .count() > 0) {
+    private void checkHasZero(String inRange) {
+        if (inRange.contains("0")) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_HAS_ZERO);
         }
     }
