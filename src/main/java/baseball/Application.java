@@ -20,6 +20,7 @@ public class Application {
 
 				while (true) {
 					System.out.print("숫자를 입력해주세요 : ");
+					List<Integer> user = setUserNumber(readLine());
 				}
 
 				System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -45,4 +46,12 @@ public class Application {
 		}
 	}
 
+	public static List<Integer> setUserNumber(String str) throws IllegalArgumentException {
+		List<Integer> user = new ArrayList<>();
+		String[] input = str.split("");
+		for (String s : input) {
+			user.add(Integer.parseInt(s));
+		}
+		return user;
+	}
 }
