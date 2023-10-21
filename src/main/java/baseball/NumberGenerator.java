@@ -9,7 +9,7 @@ public class NumberGenerator {
     public Answer createAnswer() {
         List<Integer> answer = new ArrayList<>();
 
-        for (int i = 0; i < 3; i++) {
+        while (answer.size() != 3) {
             isAnswerHasDuplicatedValue(answer, Randoms.pickNumberInRange(1, 9));
         }
 
