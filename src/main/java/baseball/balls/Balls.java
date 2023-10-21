@@ -28,4 +28,14 @@ public class Balls {
         return fromIntegers(integers);
     }
 
+    public boolean hasSameValueBall(Ball anotherBall) {
+        return balls.stream()
+                .anyMatch(ball -> ball.hasSameValue(anotherBall));
+    }
+
+    public boolean hasSameBall(Ball anotherBall) {
+        return balls.stream()
+                .anyMatch(ball -> ball.equals(anotherBall));
+    }
+
 }
