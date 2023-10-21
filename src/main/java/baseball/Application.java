@@ -86,20 +86,20 @@ public class Application{
     }
 
     private static int findStrike(List<Integer> computerNumber, List<Integer> userNumber){
-        int count = 0;
+        int strikeCount = 0;
         for(int i=0;i<3;i++){
             if(computerNumber.get(i)==userNumber.get(i)){
-                count++;
+                strikeCount++;
             }
         }
-        return count;
+        return strikeCount;
     }
 
     private static int findBall(List<Integer> computerNumber, List<Integer> userNumber, int strike){
-        int count = 0;
+        int ballCount = 0;
         int[] visited = countExistingNumber(computerNumber,userNumber);
-        count = countSameNumber(visited)-strike;
-        return count;
+        ballCount = countSameNumber(visited)-strike;
+        return ballCount;
     }
 
     private static int[] countExistingNumber(List<Integer> computerNumber, List<Integer> userNumber){
