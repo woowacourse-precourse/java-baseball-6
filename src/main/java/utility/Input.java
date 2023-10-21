@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Input {
     private Input(){}
-    public static List<Integer> sliceToThree(final int[] input, int count) throws IllegalArgumentException{
+    public static List<Integer> sliceToThree(final int[] input, final int count) throws IllegalArgumentException{
         List<Integer> chunk = new ArrayList<>();
         int currentNumber = 0;
         if(input.length % 3 != 0)

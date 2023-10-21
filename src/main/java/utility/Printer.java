@@ -6,7 +6,7 @@ import java.util.List;
 
 public final class Printer {
     private Printer(){}
-    public static void printBaseballNumber(GuessNumber guess){
+    public static void printBaseballNumber(final GuessNumber guess){
         List<Integer> guessNumbers = guess.getNumbers();
         for (Integer integer : guessNumbers) {
             System.out.print(integer);

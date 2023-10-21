@@ -25,7 +25,7 @@ public class BaseballGame {
         return baseballGame;
     }
 
-    public void run(int[] computerInput) throws IllegalArgumentException{
+    public void run(final int[] computerInput) throws IllegalArgumentException{
         int chunkIndex = 0;
 
         chunk = Input.sliceToThree(computerInput, chunkIndex);

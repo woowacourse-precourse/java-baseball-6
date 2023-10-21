@@ -17,10 +17,4 @@ public class BaseballNumber {
             numbers.add(number);
         return numbers;
     }
-
-    public void print() {
-        for(int number : this.numbers)
-            System.out.print(number);
-        System.out.println();
-    }
 }
