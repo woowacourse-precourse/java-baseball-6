@@ -2,6 +2,8 @@ package baseball;
 
 import data.ComputerNumber;
 import data.GuessNumber;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
@@ -46,5 +48,14 @@ public class BaseballGame {
         }
         return totalStrike;
     }
+    public List<Integer> count(final ComputerNumber computer, final GuessNumber guess){
+        List<Integer> countList = new ArrayList<>();
+        int ball = sumBall(computer, guess);
+        int strike = sumStrike(computer, guess);
 
+        countList.add(ball);
+        countList.add(strike);
+
+        return countList;
+    }
 }
