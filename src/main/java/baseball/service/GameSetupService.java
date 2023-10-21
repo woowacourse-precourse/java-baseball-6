@@ -42,6 +42,12 @@ public class GameSetupService {
     }
 
     private List<Ball> createPlayerBalls(String playerGuess) {
+        /*System.out.println(playerGuess.length());
+        if (playerGuess == null || playerGuess.trim().isEmpty() || playerGuess.trim().isBlank()) {
+            throw new IllegalArgumentException("입력은 숫자만 포함해야 합니다.");
+        }
+         */
+
         return playerGuess.chars()
                 .mapToObj(ballNumber -> new Ball(Character.getNumericValue(ballNumber)))
                 .collect(Collectors.toList());
