@@ -52,8 +52,8 @@ public class Application {
         List<Integer> user = new ArrayList<>();
         String userThreeNumbers = Console.readLine();
         validateUserThreeNumbers(userThreeNumbers);
-        for(int i=0;i<userThreeNumbers.length();i++){
-            user.add(userThreeNumbers.charAt(i)-'0');
+        for(char c: userThreeNumbers.toCharArray()){
+            user.add(Character.getNumericValue(c));
         }
         return user;
     }
