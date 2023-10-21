@@ -1,10 +1,15 @@
 package baseball.model;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class BaseballGame {
 
     private int randomNum;
+    private BaseballGameCounts baseballGameCounts;
+    private String userInput;
 
     protected BaseballGame() {}
 
@@ -13,7 +18,37 @@ public class BaseballGame {
     }
 
     public void run() {
+        // 랜덤 수 생성
         this.generateRandomNum();
+
+        while(true)
+        {
+            this.getUserInput();
+
+            this.checkStrikes();
+
+            this.checkBalls();
+
+            this.showCounts();
+
+            if (this.baseballGameCounts.isWinCondition()) {
+                return;
+            }
+        }
+    }
+
+    private void getUserInput() {
+    }
+
+    private void showCounts() {
+    }
+
+    private void checkBalls() {
+
+    }
+
+    private void checkStrikes() {
+
     }
 
     private void generateRandomNum() {
