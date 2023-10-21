@@ -4,10 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Game {
-    static int strike = 0;
-    static int ball = 0;
-    static int check = 0;
-
     private final ComputerSetting computerSetting;
     private final PlayerGame playerGame;
 
@@ -50,9 +46,9 @@ public class Game {
     }
 
     public int[] gameLogic(List<Integer> computer, List<Integer> answerNumber) {
-        strike = 0;
-        ball = 0;
-        check = 0;
+        int strike = 0;
+        int ball = 0;
+        int check = 0;
         for (int i = 0; i < computer.size(); i++) {
             if (computer.get(i) == answerNumber.get(i)) {
                 strike++;
