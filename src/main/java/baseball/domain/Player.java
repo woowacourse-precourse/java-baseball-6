@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.IllformedLocaleException;
 import java.util.List;
+import java.util.Objects;
 
 public class Player {
 
@@ -14,6 +15,7 @@ public class Player {
     private final String ERROR_MESSAGE ="입력값이 잘못되었습니다";
     private final PlayerType playerType;
     private final List<Integer> numberList;
+
 
     public Player(PlayerType playerType) {
         this.playerType = playerType;
@@ -89,7 +91,30 @@ public class Player {
     }
 
 //    외부에서 들어온 숫자(다른 사용자가 추측한 답)와 해당 사용자의 답을 비교
-    
+    public List<Integer> compareAnswers(int answerNumber){
+        List<Integer> otherPlayersList = numberToList(answerNumber);
+        return calculateStrikesAndBalls(this.numberList, otherPlayersList);
+    }
+
+//    두개의 리스트를 비교해 스트라이크, 볼, 아웃을 비교
+    private List<Integer> calculateStrikesAndBalls(List<Integer> thisList, List<Integer> otherList){
+        int strike = 0;
+        int ball = 0;
+        int out = 0;
+
+        for(int i =0; i < thisList.size();i++){
+            if(!thisList.contains(otherList.get(i))){
+                out++;
+                continue;
+            }
+            if(Objects.equals(thisList.get(i), otherList.get(i))){
+                strike++;
+                continue;
+            }
+            ball++;
+        }
+        return List.of(strike, ball, out);
+    }
 
 
 
