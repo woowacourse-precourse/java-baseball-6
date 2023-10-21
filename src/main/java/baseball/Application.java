@@ -18,14 +18,12 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
-            int balls = 0;
-            int strikes = 0;
             System.out.print("숫자를 입력해주세요 : ");
 
             String input = Console.readLine();
             validateInput(input);
 
-            Result result = getResult(computer, input, strikes, balls);
+            Result result = getResult(computer, input);
             printResult(result);
 
             computer = checkThreeStrikes(result, computer);
@@ -67,7 +65,9 @@ public class Application {
         return input.chars().distinct().count() < input.length();
     }
 
-    private static Result getResult(List<Integer> computer, String input, int strikes, int balls) {
+    private static Result getResult(List<Integer> computer, String input) {
+        int balls = 0;
+        int strikes = 0;
         char[] inputChars = input.toCharArray();
 
         for (int i = 0; i < computer.size(); i++) {
