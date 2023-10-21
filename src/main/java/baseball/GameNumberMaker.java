@@ -11,18 +11,20 @@ public class GameNumberMaker {
         this.gameNumber = new GameNumber();
     }
 
-    public List<Integer> makeGameNumber() {
-
+    public List<Integer> generateGameNumber() {
         List<Integer> numbers = new ArrayList<>();
-
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
         }
-        gameNumber.setGameNumber(numbers);
+        return numbers;
+    }
 
+    public List<Integer> generateAndSetGameNumber() {
+        List<Integer> numbers = generateGameNumber();
+        gameNumber.setGameNumber(numbers);
         return gameNumber.getGameNumber();
     }
 }

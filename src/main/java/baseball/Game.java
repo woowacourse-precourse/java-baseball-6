@@ -10,10 +10,9 @@ public class Game {
     }
 
     public void startGame() {
-
         // 게임 번호 생성
-        List<Integer> gameNumber = gameNumberMaker.makeGameNumber();
-
+        List<Integer> gameNumber = gameNumberMaker.generateAndSetGameNumber();
+        System.out.println(gameNumber);
         // while
         // 정답 입력 객체
         // 채점 객체

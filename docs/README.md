@@ -12,7 +12,11 @@
 
 ## 💻 기능 1 - 게임 생성
 
-* 야구 숫자 게임 시작합니다.
+* 야구 숫자 게임 생성 및 시작합니다.
+    * Application.java
+        * new Game() -> 게임 생성
+    * Game.java
+        * startGame() -> 게임 시작
 
 
 * Application main()에서 game 인스턴스를 생성합니다.
@@ -23,6 +27,12 @@
 ## 💻 기능 2 - 게임 문제 생성
 
 * 야구 숫자 게임 문제를 생성합니다.
+    * Game.java
+        * new GameNumberMaker() -> gameNumberMaker 생성
+    * GameNumberMaker.java
+        * new GameNumber() -> gameNumber DTO 생성
+        * generateGameNumber() -> gameNumber 랜덤 생성 기능 수행
+        * generateAndSetGameNumber() -> gameNumber 생성, DTO 저장 및 반환
 
 
 * 문제 생성 조건
@@ -33,10 +43,13 @@
 * camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용하여 게임 문제를 생성합니다.
 
 
-* Game 인스턴스 생성 -> GameNumberMaker 인스턴스 생성 -> GameNumber 인스턴스 생성합니다.
+* Game 인스턴스 생성 -> GameNumberMaker 인스턴스 생성 -> GameNumber DTO 생성합니다.
 
 
-* Game startGame()에서 makeGameNumber() 호출하여 gameNumber DTO에 gameNumber(문제) 생성 및 저장 후 return 받습니다.
+* GameNumberMaker generateGameNumber()에서 gameNumber를 랜덤 생성하는 기능을 수행합니다.
+
+
+* GameNumberMaker generateAndSetGameNumber()에서 generateGameNumber()를 호출하여 gameNumber 랜덤으로 생성하고 DTO에 저장 및 반환합니다.
 
 ## 💻 기능 3 - 정답 입력
 
