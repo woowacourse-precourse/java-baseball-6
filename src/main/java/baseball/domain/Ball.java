@@ -16,6 +16,11 @@ public class Ball {
 		return this.equals(ball);
 	}
 
+	public boolean isBall(final Ball ball) {
+		return this.ballNumber.equals(ball.ballNumber)
+			&& !this.ballPosition.equals(ball.ballPosition);
+	}
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o) {
