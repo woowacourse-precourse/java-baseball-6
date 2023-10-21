@@ -9,8 +9,8 @@ public class BallArray {
         ballArr = number;
     }
 
-    public BallResult compareWith(BallArray ballArray) {
-        return new BallResult(calculateBalls(ballArray),calculateStrikes(ballArray));
+    public BallResultDto compareWith(BallArray ballArray) {
+        return new BallResultDto(calculateBalls(ballArray),calculateStrikes(ballArray));
     }
 
     private int calculateStrikes(BallArray ballArray) {

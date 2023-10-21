@@ -32,8 +32,8 @@ public class BaseballGame {
     }
 
     private boolean isGameOverWithStrikeCount(BallArray ballArray) {
-        BallResult userBallResult = computer.getUserBallResult(ballArray);
-        OutView.ballScoringResultsPrint(userBallResult);
-        return userBallResult.getStrike() < 3;
+        BallResultDto userBallResultDto = computer.getUserBallResult(ballArray);
+        OutView.ballScoringResultsPrint(userBallResultDto);
+        return userBallResultDto.getStrike() < 3;
     }
 }

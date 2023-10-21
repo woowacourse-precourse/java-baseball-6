@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.BallResult;
+import baseball.BallResultDto;
 
 public class OutView {
     public static void gameStartPrint() {
@@ -11,8 +11,8 @@ public class OutView {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public static void ballScoringResultsPrint(BallResult ballResult) {
-        System.out.println(convertBallResultToString(ballResult));
+    public static void ballScoringResultsPrint(BallResultDto ballResultDto) {
+        System.out.println(convertBallResultToString(ballResultDto));
     }
 
     public static void endGamePrint() {
@@ -23,16 +23,16 @@ public class OutView {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    private static String convertBallResultToString(BallResult ballResult) {
-        if (ballResult.getBall() == 0 && ballResult.getStrike() == 0) {
+    private static String convertBallResultToString(BallResultDto ballResultDto) {
+        if (ballResultDto.getBall() == 0 && ballResultDto.getStrike() == 0) {
             return "낫싱";
         }
         StringBuilder result = new StringBuilder();
-        if (ballResult.getBall() > 0) {
-            result.append(ballResult.getBall()).append("볼 ");
+        if (ballResultDto.getBall() > 0) {
+            result.append(ballResultDto.getBall()).append("볼 ");
         }
-        if (ballResult.getStrike() > 0) {
-            result.append(ballResult.getStrike()).append("스트라이크");
+        if (ballResultDto.getStrike() > 0) {
+            result.append(ballResultDto.getStrike()).append("스트라이크");
         }
         return result.toString();
     }

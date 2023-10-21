@@ -7,7 +7,7 @@ public class Computer {
         ballArray = BaseballBallFactory.createRanDomBall();
     }
 
-    public BallResult getUserBallResult(BallArray userBallArr) {
+    public BallResultDto getUserBallResult(BallArray userBallArr) {
         return ballArray.compareWith(userBallArr);
     }
 
