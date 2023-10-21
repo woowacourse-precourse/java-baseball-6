@@ -10,6 +10,9 @@ public class StringUtils {
     }
 
     public static boolean isNumeric(final String value) {
+        if (value == null) {
+            throw new IllegalArgumentException();
+        }
         if (StringUtils.isLengthEqual(value, 0)) {
             return false;
         }
@@ -18,6 +21,9 @@ public class StringUtils {
     }
 
     public static boolean isLengthEqual(final String value, final int length) {
+        if (value == null) {
+            throw new IllegalArgumentException();
+        }
         if (length < 0) {
             throw new IllegalArgumentException();
         }
@@ -25,6 +31,12 @@ public class StringUtils {
     }
 
     public static boolean hasDuplicate(final String value) {
+        if (value == null) {
+            throw new IllegalArgumentException();
+        }
+        if (value.isEmpty()) {
+            return false;
+        }
         return value.length() != Arrays.stream(value.split("")).collect(Collectors.toSet()).size();
     }
 
