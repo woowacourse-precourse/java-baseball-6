@@ -16,6 +16,7 @@ public class Player {
     public final PlayerType playerType;
     private final List<Integer> numberList;
     private final String HUMAN_CREATE_NUMBER_MESSAGE = "게임에서 사용할 숫자를 입력해주세요";
+    private final String HUMAN_MAKE_ANSWER_MESSAGE = "숫자를 입력해주세요: ";
 
 
     public Player(PlayerType playerType) {
@@ -28,12 +29,21 @@ public class Player {
             case HUMAN-> createHumansNumberList();
             case COMPUTER-> createComputersNumberList();
         };
-
     }
+
+
+    public List<Integer> createAnswer(){
+        return switch (this.playerType){
+            case HUMAN -> createHumansNumberList();
+            case COMPUTER -> new ArrayList<>();
+        };
+    }
+
+
 
 //    사람의 숫자 셋팅
     private List<Integer> createHumansNumberList(){
-        System.out.println(HUMAN_CREATE_NUMBER_MESSAGE);
+        printGuideMessage();
         String numberStr = Console.readLine();
 
         if(!verifyInputValue(numberStr)){
@@ -41,6 +51,15 @@ public class Player {
         }
         return numberToList(Integer.parseInt(numberStr));
     }
+
+    private void printGuideMessage(){
+        if(this.numberList== null){
+            System.out.println(HUMAN_CREATE_NUMBER_MESSAGE);
+            return ;
+        }
+        System.out.print(HUMAN_MAKE_ANSWER_MESSAGE);
+    }
+
 
 //  해당 메소드는 게임 중 입력값을 검증할 때도 필요 할 수 있으니 public으로 선언
     public boolean verifyInputValue(String numberStr){
@@ -92,9 +111,8 @@ public class Player {
     }
 
 //    외부에서 들어온 숫자(다른 사용자가 추측한 답)와 해당 사용자의 답을 비교
-    public List<Integer> compareAnswers(int answerNumber){
-        List<Integer> otherPlayersList = numberToList(answerNumber);
-        return calculateStrikesAndBalls(this.numberList, otherPlayersList);
+    public List<Integer> compareAnswers(List<Integer> otherPlayersAnswer){
+        return calculateStrikesAndBalls(this.numberList, otherPlayersAnswer);
     }
 
 //    두개의 리스트를 비교해 스트라이크, 볼, 아웃을 비교
