@@ -1,4 +1,4 @@
-package baseball.generator;
+package baseball.manager;
 
 public class BaseBallScore {
     private static final String BALL_FORMAT = "%s볼";

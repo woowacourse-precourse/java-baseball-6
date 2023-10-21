@@ -1,4 +1,4 @@
-package baseball.generator;
+package baseball.manager;
 
 import baseball.BaseBallNumberCollection;
 import camp.nextstep.edu.missionutils.Randoms;

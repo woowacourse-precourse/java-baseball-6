@@ -1,8 +1,8 @@
 package baseball;
 
-import baseball.generator.NumberManager;
-import baseball.generator.NumberMatcher;
-import baseball.generator.RandomNumberGenerator;
+import baseball.manager.NumberManager;
+import baseball.manager.NumberMatcher;
+import baseball.manager.RandomNumberGenerator;
 import baseball.input.BaseBallGameUserInput;
 import baseball.input.UserInput;
 import camp.nextstep.edu.missionutils.Console;
