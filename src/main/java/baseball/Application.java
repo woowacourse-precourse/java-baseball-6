@@ -1,8 +1,10 @@
 package baseball;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+
 class Game {
     private final List<Integer> computer;
     private final List<Integer> userInput;
@@ -12,31 +14,25 @@ class Game {
     }
     public void run() {
         try {
-            do {
-                play();
-            } while (restart());
-        } catch (IllegalArgumentException e) {
-            throw e;
-        }
+            do { play(); } while (restart());
+        } catch (IllegalArgumentException e) { throw e; }
     }
     public void play() {
         createNum();
         while (true) {
             if (input()) {
-                if (isCorrect()) {
-                    break;
-                }
-            } else {
-                throw new IllegalArgumentException("잘못된 입력으로 인해 게임을 종료합니다.");
-            }
+                if (isCorrect()) { break; }
+            } else throw new IllegalArgumentException("잘못된 입력으로 인해 게임을 종료합니다.");
         }
     }
     public static boolean restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String reNum = Console.readLine();
-        if(reNum.equals("1")){ return true;}
-        else if(reNum.equals("2")){return false;}
-        else throw new IllegalArgumentException("1또는 2중 하나를 입력하세요.");
+        if (reNum.equals("1")) return true;
+        else if (reNum.equals("2")) {
+            System.out.println("게임 종료");
+            return false;
+        } else throw new IllegalArgumentException("1또는 2중 하나를 입력하세요.");
     }
     public boolean isCorrect() {
         int strikeNum = 0;
@@ -46,9 +42,7 @@ class Game {
             if (userInput.contains(comInt)) {
                 if (userInput.get(index).equals(computer.get(index))) {
                     strikeNum++;
-                } else {
-                    ballNum++;
-                }
+                } else { ballNum++; }
             }
             index++;
         }
@@ -68,55 +62,47 @@ class Game {
         computer.clear();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+            if (!computer.contains(randomNumber)) { computer.add(randomNumber); }
             System.out.println(computer);
         }
     }
+
     public boolean input() {
         System.out.print("숫자를 입력하세요.");
         String inputStr = Console.readLine();
         int num;
-            if (inputStr.length() == 3) {
-                try{
-                    if (userInput.size() < 3) {
-                    
-                        for (int i = 0; i < inputStr.length(); i++) {
-                            num = Integer.parseInt(inputStr.substring(i, i + 1));
-                            if (num == 0)
-                            throw new IllegalArgumentException("0은 입력불가능합니다.");
-                            userInput.add(num);
-                        }
-                        for(int i = 0; i< userInput.size(); i++){
-                            for (int j = 0; j < i; j++) {
-                                if (userInput.get(i).equals(userInput.get(j))) {
-                                    throw new IllegalArgumentException("중복된 요소가 있습니다.");
-                                }
-                            }
-                        }
-                    } else {
-                        for (int i = 0; i < inputStr.length(); i++) {
-                            num = Integer.parseInt(inputStr.substring(i, i + 1));
-                            if (num == 0)
-                            throw new IllegalArgumentException("0은 입력불가능합니다.");
-                            userInput.set(i, num);
-                        }
-                        for(int i = 0; i<userInput.size(); i++){
-                            for (int j = 0; j < i; j++) {
-                                if (userInput.get(i).equals(userInput.get(j))) {
-                                    throw new IllegalArgumentException("중복된 요소가 있습니다.");
-                                }
-                            }
-                        }          
+        if (inputStr.length() == 3) {
+            try {
+                if (userInput.size() < 3) {
+                    for (int i = 0; i < inputStr.length(); i++) {
+                        num = Integer.parseInt(inputStr.substring(i, i + 1));
+                        if (num == 0) throw new IllegalArgumentException("0은 입력불가능합니다.");
+                        userInput.add(num);
                     }
-                }catch(NumberFormatException e){
-                        throw new IllegalArgumentException("숫자만 입력해주세요.");
+                    for (int i = 0; i < userInput.size(); i++) {
+                        for (int j = 0; j < i; j++) {
+                            if (userInput.get(i).equals(userInput.get(j))) throw new IllegalArgumentException("중복된 요소가 있습니다.");
+                        }
                     }
-                return true;
-            } else {
-                throw new IllegalArgumentException("3글자를 입력해주세요.");
+                } else {
+                    for (int i = 0; i < inputStr.length(); i++) {
+                        num = Integer.parseInt(inputStr.substring(i, i + 1));
+                        if (num == 0) throw new IllegalArgumentException("0은 입력불가능합니다.");
+                        userInput.set(i, num);
+                    }
+                    for (int i = 0; i < userInput.size(); i++) {
+                        for (int j = 0; j < i; j++) {
+                            if (userInput.get(i).equals(userInput.get(j))) throw new IllegalArgumentException("중복된 요소가 있습니다.");
+                        }
+                    }
+                }
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("숫자만 입력해주세요.");
             }
+            return true;
+        } else {
+            throw new IllegalArgumentException("3글자를 입력해주세요.");
+        }
     }
 }
 public class Application {
