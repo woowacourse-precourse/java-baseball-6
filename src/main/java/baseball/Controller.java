@@ -6,7 +6,6 @@ import baseball.util.Converter;
 import baseball.util.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +13,10 @@ public class Controller {
 
     public static final int SIZE = 3;
     public static final String RETRY = "1";
-    private String inputData;
+    private String userNumber;
     List<Integer> computerNumbers;
     List<Integer> userNumbers;
+    InputView inputView = new InputView();
     OutputView outputView = new OutputView();
     Validator validator;
     Converter converter;
@@ -37,7 +37,7 @@ public class Controller {
         int strike = 0;
         while (strike != 3) {
             initGame();
-            requestUserInputData();
+            inputUserNumber();
             checkInputData();
             generateUserNumbers();
             requestJudge(computerNumbers, userNumbers);
@@ -48,8 +48,7 @@ public class Controller {
 
     public void end() {
         OutputView.printEndMessage();
-        InputView.printRetryMessage();
-        String message = Console.readLine();
+        String message = InputView.printRetryMessage();
         if (message.equals(RETRY)) {
             run();
         }
@@ -71,17 +70,16 @@ public class Controller {
         referee = new Referee();
     }
 
-    private void requestUserInputData() {
-        InputView.requestInputData();
-        inputData = Console.readLine();
+    private void inputUserNumber() {
+        userNumber = inputView.inputNumber();
     }
 
     private void checkInputData() {
-        validator.checkValid(inputData, SIZE);
+        validator.checkValid(userNumber, SIZE);
     }
 
     private void generateUserNumbers() {
-        converter = new Converter(inputData);
+        converter = new Converter(userNumber);
         userNumbers = converter.getSeperatedNumbers();
     }
 
