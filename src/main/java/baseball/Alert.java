@@ -8,5 +8,23 @@ public class Alert {
     public static final String NOTHING = "낫싱";
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";
+
+    public static void gameStartMessage() {
+        System.out.println(GAME_START);
+    }
+
+    public static void userInputStartMessage() {
+        System.out.print(INPUT_START);
+    }
+
+    public static void gameFinishMessage() {
+        System.out.println(GAME_FINISH);
+        System.out.println(RESTART);
+    }
+
+    public static void NothingMessage() {
+        System.out.println(NOTHING);
+    }
+
 }
 
