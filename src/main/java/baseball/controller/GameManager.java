@@ -36,18 +36,16 @@ public class GameManager {
 
     private BallNumber returnPlayerNumber() {
         InputHandler inputHandler = new InputHandler();
-        InputVerifier inputVerifier = new InputVerifier();
         String playerNumber = inputHandler.insertBallNum();
-        inputVerifier.checkBallNumber(playerNumber);
+        InputVerifier.checkBallNumber(playerNumber);
         return new BallNumber(playerNumber);
     }
 
     private void choiceNewGameOrGameOver() {
         OutputHandler.printAllStrike();
         InputHandler inputHandler = new InputHandler();
-        InputVerifier inputVerifier = new InputVerifier();
         String playerChoice = inputHandler.insertNewGameOrGameOver();
-        inputVerifier.checkGameNumber(playerChoice);
+        InputVerifier.checkGameNumber(playerChoice);
         if (Integer.parseInt(playerChoice) == SystemConstant.NEW_GAME) {
             SystemManager.newGame();
         }
