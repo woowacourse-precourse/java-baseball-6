@@ -2,12 +2,15 @@ package baseball.console;
 
 import baseball.console.game.GameList;
 import baseball.console.game.numberbaseball.NumberBaseballGame;
-import baseball.console.util.Status;
+import baseball.console.util.ConsoleMessage;
+import baseball.console.util.ConsoleStatus;
 import camp.nextstep.edu.missionutils.Console;
+
+import static baseball.console.util.ConsoleMessage.*;
 
 public class GameConsole {
     NumberBaseballGame numberBaseballGame;
-    Status status;
+    ConsoleStatus consoleStatus;
     GameList target;
 
     public GameConsole() {
@@ -16,20 +19,24 @@ public class GameConsole {
 
     private void init() {
         target = GameList.NUMBER_BASEBALL;
-        status = Status.CONTINUE;
+        consoleStatus = ConsoleStatus.CONTINUE;
     }
 
     public void start() {
-        while (status == Status.CONTINUE) {
+        while (consoleStatus == ConsoleStatus.CONTINUE) {
             if (target == GameList.NUMBER_BASEBALL) {
-                System.out.println("숫자 야구 게임을 시작합니다.");
+                printConsoleMessage(NUMBER_BASEBALL_GAME_START);
                 launchNumberBaseball();
             }
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            printConsoleMessage(CONTINUE_OR_EXIT);
             int choice = Integer.parseInt(Console.readLine());
-            status = Status.values()[choice];
+            consoleStatus = ConsoleStatus.values()[choice];
         }
 
+    }
+
+    private void printConsoleMessage(String message) {
+        System.out.println(message);
     }
 
     private void launchNumberBaseball() {

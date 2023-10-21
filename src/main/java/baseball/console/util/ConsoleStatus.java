@@ -1,5 +1,5 @@
 package baseball.console.util;
 
-public enum Status {
+public enum ConsoleStatus {
     NONE, CONTINUE, EXIT
 }
