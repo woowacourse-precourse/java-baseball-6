@@ -13,6 +13,7 @@ public class GameController {
     private UserNumber userNumber;
 
     private static final String RESET_COMMAND = "1";
+    private static final int NUMBER_SIZE = 3;
 
     public void run() {
         OutputView.printStart();
@@ -22,7 +23,7 @@ public class GameController {
     }
 
     private void playGame() {
-        programNumber = new ProgramNumber();
+        programNumber = new ProgramNumber(NUMBER_SIZE);
         do {
             userNumber = new UserNumber(InputView.inputUserNumber());
             int[] result = getResultList();
@@ -31,7 +32,7 @@ public class GameController {
     }
 
     private boolean isGameEnd() {
-        if (numberComparator.isThreeStrike()) {
+        if (numberComparator.isAllStrike(NUMBER_SIZE)) {
             OutputView.printEnd();
             return true;
         }

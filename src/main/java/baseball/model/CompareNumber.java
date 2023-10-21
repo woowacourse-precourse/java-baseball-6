@@ -58,9 +58,9 @@ public class CompareNumber {
     }
 
     /**
-     * 스트라이크가 3개면 true반환
+     * 전부 스트라이크면 true반환
      */
-    public boolean isThreeStrike() {
-        return strikes == 3;
+    public boolean isAllStrike(int numberSize) {
+        return strikes == numberSize;
     }
 }
