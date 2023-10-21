@@ -28,7 +28,7 @@ public class Application {
             MessageStream.printInputMessage();
             List<Integer> userInput = MessageStream.predictionInput();
             List<Integer> compareResult = computer.compareWithAnswer(userInput);
-            MessageStream.printResultMessage(compareResult.get(1), compareResult.get(0));
+            MessageStream.printResultMessage(compareResult.get(0), compareResult.get(1));
             if (compareResult.get(1).equals(3)) {
                 break;
             }

@@ -31,7 +31,7 @@ public class Computer {
     // TODO: test code 작성
     public List<Integer> compareWithAnswer(List<Integer> target) {
         // TODO: target에 대한 검증
-        int strikeCount = 0, ballCount = 0;
+        int ballCount = 0, strikeCount = 0;
 
         // TODO: Stream 문법으로 개선하기
         for (int i = 0; i < answer.size(); i++) {
@@ -52,7 +52,7 @@ public class Computer {
             }
         }
 
-        return List.of(strikeCount, ballCount);
+        return List.of(ballCount, strikeCount);
     }
 
     public List<Integer> getAnswer() {
