@@ -11,14 +11,12 @@ public class BaseballGameConsole {
     static final int MIN = 1;
     static final int MAX = 9;
     static final int SIZE = 3;
-    boolean isContinue;
-    List<Integer> hitterSelection;
-    String pitcherSelection;
-    int[] ballCount;
-    String continueAnswer;
+    private boolean isContinue;
+    private List<Integer> hitterSelection;
+    private String pitcherSelection;
+    private int[] ballCount;
+    private boolean strikeOut;
 
-
-    // 외부에서 접근 가능
     void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         this.isContinue = true;
@@ -30,17 +28,14 @@ public class BaseballGameConsole {
     }
 
     private void play() {
+        this.strikeOut = false;
         getHitterSelection();
 
-        while (true) {
+        while (!this.strikeOut) {
             getPitcherSelection();
             getBallCount();
             printBallCount();
-
-            if (this.ballCount[0] == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
+            checkStrikeOut();
         }
     }
 
@@ -111,15 +106,22 @@ public class BaseballGameConsole {
         }
     }
 
+    private void checkStrikeOut() {
+        if (this.ballCount[0] == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            this.strikeOut = true;
+        }
+    }
+
     private void checkContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        this.continueAnswer = Console.readLine();
+        String continueAnswer = Console.readLine();
 
-        if (!this.continueAnswer.matches("^[1-2]$")) {
+        if (!continueAnswer.matches("^[1-2]$")) {
             throw new IllegalArgumentException();
         }
 
-        if ("2".equals(this.continueAnswer)) {
+        if ("2".equals(continueAnswer)) {
             this.isContinue = false;
         }
     }
