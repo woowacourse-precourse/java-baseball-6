@@ -28,7 +28,7 @@ public class GameController {
 
             GameResult result = numberMatcher.match(userNumber.getUserNumber(), answerNumber.getAnswerNumber());
 
-            if(result.isCorrect()){
+            if(result.isSuccess()){
                 outputView.displayWinningMessage();
                 break;
             }
