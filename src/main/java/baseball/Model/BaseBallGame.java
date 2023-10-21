@@ -20,12 +20,6 @@ public class BaseBallGame {
         isGameOver = false;
     }
 
-    public void playingGame(List<Integer> userInput) {
-        if (userInput.size() != BASEBALL_NUM_SIZE)
-            throw new IllegalArgumentException("입력 자릿 수 오류");
-
-    }
-
     /**
      * 유저의 입력을 받아 볼과 스트라이크를 알려주는 메소드
      */
@@ -34,6 +28,9 @@ public class BaseBallGame {
         int totalCount = 0;
         int strikeCount = 0;
         int ballCount = 0;
+
+        if (userInput.size() != BASEBALL_NUM_SIZE)
+            throw new IllegalArgumentException("입력 자릿 수 오류");
 
         for (int i = 0; i < BASEBALL_NUM_SIZE; i++) {
             if (userInput.contains(computerNumber.get(i))) {
