@@ -34,8 +34,9 @@ public class NumberBaseBallGame {
             List<Integer> userInput = user.getUserInput();
 
             //사용자가 입력한 숫자와 컴퓨터가 저장한 숫자를 비교하여 볼과 스트라이크를 구한다.
-            ball = getBall(answer, userInput);
-            strike = getStrike(answer, userInput);
+            compare.setBallAndStrike(answer, userInput);
+            ball = compare.getBall();
+            strike = compare.getStrike();
 
             //볼과 스트라이크 값을 출력한다.
             printBallAndStrike(ball, strike);
@@ -47,14 +48,6 @@ public class NumberBaseBallGame {
         resetBallAndStrike();
 
         return newGame.newGame();
-    }
-
-    private int getStrike(List<Integer> answer, List<Integer> userInput) {
-        return compare.getBallAndStrikeData(userInput,answer).getStrike();
-    }
-
-    private int getBall(List<Integer> answer, List<Integer> userInput) {
-        return compare.getBallAndStrikeData(userInput,answer).getBall();
     }
 
     private static void printBallAndStrike(int ball, int strike) {
