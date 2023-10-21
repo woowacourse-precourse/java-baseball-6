@@ -5,4 +5,4 @@
 4. printresult 결과 출력 (int strikes, int balls) // 1볼 1스트라이크, 낫싱 등
 5. wincondition 승리 체크 (int strikes) //return 이기면 true 지면 false
 6. 재시작여부 //return 1=>재시작, 2=>종료
-7. // 예외처리..?
+7. 예외처리 // 세자리 수가 아닐시 error
