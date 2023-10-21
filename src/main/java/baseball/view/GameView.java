@@ -29,7 +29,8 @@ public class GameView {
         int strikeCnt = result.getStrikeCnt();
         int ballCnt = result.getBallCnt();
         if (strikeCnt == LIMIT_NUMBERS_SIZE.getValue()) {
-            sb.append(SUCCESS_MESSAGE.getContent());
+            sb.append(strikeCnt).append(STRIKE_MESSAGE.getContent()).append("\n")
+                    .append(SUCCESS_MESSAGE.getContent());
         }
         if (strikeCnt > 0 && ballCnt > 0) {
             sb.append(ballCnt).append(BALL_MESSAGE.getContent()).append(" ")
