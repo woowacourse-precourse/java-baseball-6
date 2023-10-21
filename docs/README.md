@@ -15,7 +15,7 @@
 
 ## 정답 숫자 생성
 
-- `Random.pickNumberInRange()`를 활용해 정답 숫자를 생성한다.
+- `Randoms.pickNumberInRange()`를 활용해 정답 숫자를 생성한다.
     - `1` ~ `9` 사이의 3 개의 숫자 생성한다.
     - 중복되지 않도록 생성한다.
     - `int[]`로 저장한다.
