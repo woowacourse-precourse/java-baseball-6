@@ -15,8 +15,8 @@ public class Hint {
         return new Hint(computerNumbers, playerNumbers);
     }
 
-    public int getStrike() {
-        return strike;
+    public boolean isThreeStrike() {
+        return strike == Constants.GAME_WIN;
     }
 
     public String getHint() {

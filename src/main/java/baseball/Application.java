@@ -30,12 +30,8 @@ public class Application {
 
             Hint hint = Hint.of(computerNumbers.getComputer(), playerNumbers.getPlayerNumbers());
             Printer.printHint(hint);
-            threeStrike = isThreeStrike(hint.getStrike());
+            threeStrike = hint.isThreeStrike();
         } while(!threeStrike);
-    }
-
-    private static boolean isThreeStrike(int strike) {
-        return strike == Constants.GAME_WIN;
     }
 
     private static boolean isGameQuit(String number) {
