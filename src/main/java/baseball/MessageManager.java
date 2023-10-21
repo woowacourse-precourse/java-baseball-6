@@ -11,7 +11,7 @@ public class MessageManager extends Messages {
         System.out.println();
     }
 
-    public String getInputResponse() {
+    public String getUserInput() {
         System.out.print(super.getInputMessage());
         inputResponse = readLine();
         System.out.println();
