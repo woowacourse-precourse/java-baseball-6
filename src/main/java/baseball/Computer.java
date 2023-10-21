@@ -1,17 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
 
-    private static final int STRIKE_SIZE = 3;
-
     private List<Integer> randomNumbers;
 
-    void generateRandomNumbers() {
+    public void generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,23 +20,32 @@ public class Computer {
     }
 
     public boolean compareNumbers(List<Integer> userNumbers) {
-        int ballNum = 0;
-        int strikeNum = 0;
+        int ballNum = calculateBalls(userNumbers);
+        int strikeNum = calculateStrikes(userNumbers);
+        return printResult(ballNum, strikeNum);
+    }
 
+    private int calculateBalls(List<Integer> userNumbers) {
+        int ballNum = 0;
         for (int i = 0; i < userNumbers.size(); i++) {
-            if (userNumbers.get(i) == randomNumbers.get(i)) {
-                strikeNum++;
-                continue;
-            }
-            if (randomNumbers.contains(userNumbers.get(i))) {
+            if (randomNumbers.contains(userNumbers.get(i)) && userNumbers.get(i) != randomNumbers.get(i)) {
                 ballNum++;
             }
         }
-        printResult(ballNum, strikeNum);
-        return strikeNum == STRIKE_SIZE;
+        return ballNum;
     }
 
-    public void printResult(int ballNum, int strikeNum) {
+    private int calculateStrikes(List<Integer> userNumbers) {
+        int strikeNum = 0;
+        for (int i = 0; i < userNumbers.size(); i++) {
+            if (userNumbers.get(i).equals(randomNumbers.get(i))) {
+                strikeNum++;
+            }
+        }
+        return strikeNum;
+    }
+
+    private boolean printResult(int ballNum, int strikeNum) {
         if (ballNum != 0) {
             System.out.print(ballNum + "볼 ");
         }
@@ -52,7 +58,8 @@ public class Computer {
         System.out.println();
         if (strikeNum == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
         }
-
+        return false;
     }
 }
