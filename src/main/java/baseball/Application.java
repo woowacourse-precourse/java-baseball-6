@@ -3,6 +3,7 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,9 +41,41 @@ public class Application{
         List<Integer> inputNumbers;
         System.out.print("숫자를 입력해주세요: ");
         String inputString = readLine();
-        //TODO : 입력값 유효성 검사
+        throwIfInvalidInputString(inputString);
         inputNumbers = stringIntoIntegerList(inputString);
         return inputNumbers;
+    }
+
+    private static void throwIfInvalidInputString(String inputString){
+        if(isNotThreeDigits(inputString)||isDuplicated(inputString)||isNotInRange(inputString)){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static boolean isNotThreeDigits(String inputString){
+        return inputString.length()!=3;
+    }
+
+    private static boolean isDuplicated(String inputString){
+        int[] visited=new int[10];
+        for(int i=0;i<inputString.length();i++){
+            int number = inputString.charAt(i)-'0';
+            if(visited[number]!=0){
+                return true;
+            }
+            visited[number]++;
+        }
+        return false;
+    }
+
+    private static boolean isNotInRange(String inputString){
+        for(int i=0;i<inputString.length();i++){
+            int number = inputString.charAt(i)-'0';
+            if(number<1||number>9){
+                return true;
+            }
+        }
+        return false;
     }
 
     private static List<Integer> stringIntoIntegerList(String inputString){
