@@ -15,27 +15,27 @@ public class BaseballGameController {
         this.player = new Player();
     }
 
-    public boolean isGameRestart(int retryNumber) {
+    private boolean isGameRestart(int retryNumber) {
         return retryNumber == 1;
     }
 
-    public boolean isStrikeAnswer() {
+    private boolean isStrikeAnswer() {
         return comparator.getStrikeCount() != 0 && comparator.getBallCount() == 0;
     }
 
-    public boolean isBallAnswer() {
+    private boolean isBallAnswer() {
         return comparator.getStrikeCount() == 0 && comparator.getBallCount() != 0;
     }
 
-    public boolean isStrikeAndBallAnswer() {
+    private boolean isStrikeAndBallAnswer() {
         return comparator.getStrikeCount() != 0 && comparator.getBallCount() != 0;
     }
 
-    public boolean isCorrectAnswer() {
+    private boolean isCorrectAnswer() {
         return comparator.getStrikeCount() == 3;
     }
 
-    public boolean isNothingAnswer() {
+    private boolean isNothingAnswer() {
         return comparator.getStrikeCount() == 0 && comparator.getBallCount() == 0;
     }
 
