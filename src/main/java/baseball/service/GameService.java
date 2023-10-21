@@ -1,31 +1,32 @@
 package baseball.service;
 
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.domain.GameResultDTO;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
-    InputView inputView = new InputView();
-    OutputView outputView = new OutputView();
+    List<Integer> computerNumber = new ArrayList<>();
 
-    public boolean GameProcess(List<Integer> computer) {
-        int strike = 0;
-        while(strike != 3) {
-            outputView.InputNumber(); // 숫자 입력 메시지 출력
-            strike = GameResult(computer);
+    public void setComputerNumber() {
+        List<Integer> computerNumber = new ArrayList<>();
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
         }
 
-        outputView.EndGame(); // 게임 종료 메시지 출력
-        return inputView.FinishGame();
+        this.computerNumber = computerNumber;
     }
 
-    private int GameResult(List<Integer> computer) {
+    public GameResultDTO GameResult(List<Integer> playerNumber) {
         int idx=0, strike=0, ball=0;
 
-        for(int i : inputView.PlayerNumberInput()) {
-            if(computer.contains(i)) {
-                if(computer.indexOf(i) == idx) {
+        for(int i : playerNumber) {
+            if(computerNumber.contains(i)) {
+                if(computerNumber.indexOf(i) == idx) {
                     strike++;
                 }
                 else {
@@ -35,8 +36,8 @@ public class GameService {
             idx++;
         }
 
-        outputView.GameResult(ball, strike);
+        GameResultDTO gameResultDTO = new GameResultDTO(ball, strike);
 
-        return strike;
+        return gameResultDTO;
     }
 }
