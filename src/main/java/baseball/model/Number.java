@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Number {
-
     private final String value;
 
     private Number(String value) {

@@ -5,7 +5,6 @@ import static baseball.config.NumberConfig.NUMBER_LENGTH;
 import baseball.view.OutputView;
 
 public class Result {
-
     private int ballCount;
     private int strikeCount;
 

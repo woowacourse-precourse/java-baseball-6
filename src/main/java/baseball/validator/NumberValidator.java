@@ -4,7 +4,6 @@ package baseball.validator;
 import static baseball.config.NumberConfig.NUMBER_LENGTH;
 
 public class NumberValidator {
-
     public static void validateNumberLength(final String number) {
         if (!isValidLength(number)) {
             throw new IllegalArgumentException("number Length is different from the system setting");
