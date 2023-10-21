@@ -9,12 +9,17 @@ public class Application {
 
     public static void main(String[] args) {
         Application app = new Application();
-        app.startGame();
+
+        try {
+            app.startGame();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     // 게임 실행 메서드
     public void startGame() {
-
         while (!isGameOver) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             int[] playerNumbers = getPlayerNumbers(); // 플레이어
@@ -31,13 +36,17 @@ public class Application {
 
     // 게임 재시작 여부를 물어보는 메서드
     private boolean askForRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String response;
         do {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             response = Console.readLine();
-        } while (!response.equals("1") && !response.equals("2"));
+            if (response.equals("2")) {
+                System.out.println("게임 종료");
+                System.exit(0); // 게임을 완전히 종료
+            }
+        } while (!response.equals("1"));
 
-        return response.equals("1");
+        return true; // 1을 입력하면 true 반환 (게임 재시작)
     }
 
 
@@ -59,7 +68,7 @@ public class Application {
         } else if (strikes == 0 && balls == 0) {
             return "낫싱";
         } else {
-            return String.format("%d스트라이크 %d볼", strikes, balls);
+            return String.format("%d볼 %d스트라이크", balls, strikes);
         }
     }
 
@@ -88,7 +97,7 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             int playerNumber = Integer.parseInt(Console.readLine());
 
-            if (playerNumber <= 1 || playerNumber > 9) {
+            if (playerNumber < 1 || playerNumber > 9) {
                 throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 프로그램을 종료합니다.");
             } else {
                 playerNumbers[i] = playerNumber;
