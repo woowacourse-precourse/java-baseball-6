@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class InputJudgmentService {
-    private final User user;
-    private final Computer computer;
     private Integer strike = 0;
-    private Integer ball;
+    private Integer ball = 0;
 
     public InputJudgmentService(User user,Computer computer){
-        this.user = user;
-        this.computer = computer;
+        judgeStrike(user.getUserNumbers(),computer.getComputerNumbers());
+        judgeBall(user.getUserNumbers(),computer.getComputerNumbers());
     }
 
     public Integer judgeStrike(List<Integer> userNumbers,List<Integer> computerNumbers){
