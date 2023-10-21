@@ -14,10 +14,19 @@ public class Controller {
     private BaseballGame baseballGame = new BaseballGame();
 
     public void run() {
-        startGame();
+        OutputView.printStartGame();
+        playGame();
+    }
 
+    public void playGame() {
+        computer.setBaseballNumbers(baseballGame.createComputerNumbers());
         while (true) {
-            PlayGame();
+            OutputView.printInputNumbers();
+            player.setBaseballNumbers(InputView.inputBaseballNumbers());
+
+            baseballGame.calculateNumbers(computer.getBaseballNumbers(), player.getBaseballNumbers());
+            OutputView.printCalculateResult(baseballGame.ballCount, baseballGame.strikeCount);
+
             if (baseballGame.strikeCount == 3) {
                 OutputView.printSuccess();
                 break;
@@ -26,25 +35,11 @@ public class Controller {
         selectGameState();
     }
 
-    public void startGame() {
-        OutputView.printStartGame();
-        computer.setBaseballNumbers(baseballGame.createComputerNumbers());
-    }
-
-    public void PlayGame() {
-        OutputView.printInput();
-        player.setBaseballNumbers(InputView.inputBaseballNumbers());
-
-        baseballGame.calculateNumbers(computer.getBaseballNumbers(), player.getBaseballNumbers());
-        OutputView.printCalculateResult(baseballGame.ballCount, baseballGame.strikeCount);
-    }
-
-
     public void selectGameState() {
         OutputView.printRestartOrQuit();
         int gameStateNumber = InputView.inputGameStateNumber();
         if (gameStateNumber == RESTART_GAME) {
-            run();
+            playGame();
         }
         if (gameStateNumber == QUIT_GAME) {
             return;
