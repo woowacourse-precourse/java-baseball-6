@@ -8,5 +8,6 @@ public class GameController {
 
     public static void startGame() {
         OutputView.printStartMessage();
+        String userGameNumbers = InputView.readUserInput();
     }
 }
