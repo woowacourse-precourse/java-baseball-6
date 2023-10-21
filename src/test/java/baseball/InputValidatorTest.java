@@ -98,4 +98,20 @@ public class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 숫자가 존재합니다.");
     }
+
+    @Test
+    void 사용자_입력_명령어_검증() {
+        // given
+        String correctInput = "1";
+        String wrongInput = "3";
+
+        // when, then
+        assertThatNoException().isThrownBy(() ->
+                validator.validateCommand(correctInput));
+
+        assertThatThrownBy(() ->
+                validator.validateCommand(wrongInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("명령어를 확인하세요. 1 (재시작), 2 (종료)");
+    }
 }
