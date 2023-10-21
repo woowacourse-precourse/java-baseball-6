@@ -8,6 +8,7 @@ public class BaseballGame {
 
     private Computer computer = new Computer();
     private Player player = new Player();
+    private boolean isGameEnd = false;
     private String playerInput;
     private String resultMessage;
 
@@ -18,25 +19,25 @@ public class BaseballGame {
         System.out.println(START_MESSAGE);
         computer.makeRandomAnswer();
 
-        while(true){
-            System.out.println(INPUT_MESSAGE);
-            setPlayerInput();
+        while(!isGameEnd){
+            progress();
+        }
+    }
 
-            computer.calculateScore(playerInput);
-            setResultMessage();
-            System.out.println(resultMessage);
+    private void progress(){
+        System.out.println(INPUT_MESSAGE);
+        setPlayerInput();
 
-            if(computer.isPlayerWin()){
-                System.out.println(WIN_MESSAGE);
-                System.out.println(RESTART_OR_END_MESSAGE);
+        computer.calculateScore(playerInput);
+        setResultMessage();
+        System.out.println(resultMessage);
 
-                player.setEndInput();
-                if(isEnd()){
-                    return;
-                }
+        if(computer.isPlayerWin()){
+            System.out.println(WIN_MESSAGE);
+            System.out.println(RESTART_OR_END_MESSAGE);
 
-                computer.makeRandomAnswer();
-            }
+            player.setEndInput();
+            restartOrEndGame();
         }
     }
 
@@ -49,8 +50,12 @@ public class BaseballGame {
         resultMessage = computer.makeResultMessage();
     }
 
-    private boolean isEnd(){
-        return player.isEnd();
-    }
+    private void restartOrEndGame(){
+        if(player.isEnd()){
+           isGameEnd = true;
+           return;
+        }
 
+        computer.makeRandomAnswer();
+    }
 }
