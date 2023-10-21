@@ -27,7 +27,10 @@ public class NumberGeneration {
                     MIN_RANGE_NUMBER.getValue(),
                     MAX_RANGE_NUMBER.getValue()
             );
-            numberList.add(randomNumber);
+
+            if (!numberList.contains(randomNumber)) {
+                numberList.add(randomNumber);
+            }
         }
         return numberList;
     }
