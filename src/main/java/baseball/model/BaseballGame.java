@@ -47,10 +47,19 @@ public class BaseballGame {
     private void getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
+
+        // 숫자인지 검증
+        try {
+            Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+
+        // 3자리 수 검증 확인
         if (userInput.length() != 3) throw new IllegalArgumentException("잘못된 입력입니다.");
+
+        // 중복 자리수 검증
         for (int i = 0; i < userInput.length(); i++) {
-
-
             int num = Character.getNumericValue(userInput.charAt(i));
             if (!user.contains(num)) {
                 user.add(num);
