@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 public class BallValueRangeValidateTest {
 
-    private final int MIN_VALUE = BallValue.BALL_MIN_VALUE;
-    private final int MAX_VALUE = BallValue.BALL_MAX_VALUE;
+    private final int MIN_VALUE = BallValue.MIN_VALUE;
+    private final int MAX_VALUE = BallValue.MAX_VALUE;
 
     @Test
     void 값_최소값_허용() {

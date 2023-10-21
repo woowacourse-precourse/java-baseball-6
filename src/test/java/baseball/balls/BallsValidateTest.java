@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class BallsValidateTest {
 
-    private final int MIN_VALUE = BallValue.BALL_MIN_VALUE;
+    private final int MIN_VALUE = BallValue.MIN_VALUE;
     private final int BALL_COUNT = Balls.BALL_COUNT;
 
     @Test
@@ -50,30 +50,30 @@ public class BallsValidateTest {
     }
 
     private List<Ball> makeBallsWithoutDuplicated() {
-        return IntStream.rangeClosed(1, BALL_COUNT)
+        return IntStream.range(0, BALL_COUNT)
                 .mapToObj(i -> {
-                    int value = MIN_VALUE + i - 1;
-                    int index = i - 1;
+                    int value = MIN_VALUE + i;
+                    int index = i;
                     return new Ball(value, index);
                 })
                 .toList();
     }
 
     private List<Ball> makeBallsWithDuplicatedValue() {
-        return IntStream.rangeClosed(1, BALL_COUNT)
+        return IntStream.range(0, BALL_COUNT)
                 .mapToObj(i -> {
                     int value = MIN_VALUE;
-                    int index = i - 1;
+                    int index = i;
                     return new Ball(value, index);
                 })
                 .toList();
     }
 
     private List<Ball> makeBallsWithDuplicatedIndex() {
-        return IntStream.rangeClosed(1, BALL_COUNT)
+        return IntStream.range(0, BALL_COUNT)
                 .mapToObj(i -> {
-                    int value = MIN_VALUE + i - 1;
-                    int index = 1;
+                    int value = MIN_VALUE + i;
+                    int index = 0;
                     return new Ball(value, index);
                 })
                 .toList();

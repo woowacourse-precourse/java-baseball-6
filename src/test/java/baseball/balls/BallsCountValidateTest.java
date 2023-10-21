@@ -36,11 +36,10 @@ public class BallsCountValidateTest {
     }
 
     private List<Ball> generateBalls(int ballCount) {
-        return IntStream.rangeClosed(1, ballCount)
+        return IntStream.range(0, ballCount)
                 .mapToObj(i -> {
-                    int value = BallValue.BALL_MIN_VALUE + i - 1;
-                    int index = i - 1;
-                    return new Ball(value, index);
+                    int value = BallValue.MIN_VALUE + i;
+                    return new Ball(value, i);
                 })
                 .toList();
     }
