@@ -14,4 +14,8 @@ public class Player {
 			playerNumber.add(digit);
 		}
 	}
+
+	public List<Integer> getPlayerNumber() {
+		return playerNumber;
+	}
 }
