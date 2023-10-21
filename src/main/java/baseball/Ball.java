@@ -23,7 +23,7 @@ public class Ball {
         }
         updateBall(newBall);
     }
-    // updateball 분리한 이유 -> Ball의 필드에 새로운게 추가 될 경우에 업데이트를 전담하게 하기 위해서
+
     public void createUserBall(List<Integer> userInput){
         updateBall(userInput);
     }
@@ -34,6 +34,7 @@ public class Ball {
         }while(target.contains(newDigit));
         return newDigit;
     }
+    // updateball 분리한 이유 -> Ball의 필드에 새로운게 추가 될 경우에 업데이트를 전담하게 하기 위해서
     private void updateBall(List<Integer> newBall){
         ball = newBall;
     }
@@ -51,6 +52,7 @@ public class Ball {
         }
         return ballCount;
     }
+    // getter 추가
     public static int getMaximumBallSize(){
         return MAXIMUM_BALL_SIZE;
     }
