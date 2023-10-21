@@ -16,11 +16,7 @@ public class GameController {
 
         while (true) {
             String input = Console.readLine();
-            try {
-                game.validateInput(input);
-            } catch (Exception e) {
-                return false;
-            }
+            game.validateInput(input);
 
             int strikeCount = game.countStrike(input);
             int ballCount = game.countBall(input);
