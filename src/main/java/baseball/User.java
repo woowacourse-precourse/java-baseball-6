@@ -26,7 +26,7 @@ public class User {
     }
 
     private boolean isValidInput(String number) {
-        if (!checkValidLength(number)) {
+        if (!checkValidLength(number) || !checkDigit(number)) {
             return false;
         } else {
             return true;
@@ -41,4 +41,15 @@ public class User {
             return true;
         }
     }
+
+    //1~9 사이의 숫자로만 이루어져 있는지 검사하는 함수
+    private boolean checkDigit(String number) {
+        for (int i = 0; i < NUMBER_LEN; i++) {
+            if (number.charAt(i) < '1' || number.charAt(i) > '9') {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
