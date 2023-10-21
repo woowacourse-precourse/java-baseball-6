@@ -25,5 +25,37 @@ class BaseBallGameEngineTest {
                 .hasMessage(String.format("%S는 세자리가 각각다른 음수입니다.", baseBallValue));
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "123,456,0,0",
+            "123,789,0,0",
+            "123,451,0,1",
+            "123,452,0,1",
+            "123,435,0,1",
+            "123,201,0,2",
+            "123,210,0,2",
+            "123,231,0,3",
+            "456,564,0,3",
+            "823,879,1,0",
+            "823,793,1,0",
+            "803,701,1,0",
+            "803,301,1,1",
+            "803,108,1,1",
+            "123,321,1,2",
+            "654,456,1,2",
+            "123,124,2,0",
+            "654,754,2,0",
+            "789,780,2,0",
+            "789,789,3,0",
+            "890,890,3,0",
+            "123,123,3,0",
+    })
+    public void 점수를_체점해준다(int generateValue, int baseBallValue, int strike, int ball) {
+        BaseBallScore expect = new BaseBallScore(strike, ball);
+        BaseBallScore result = new BaseBallGameEngine(generateValue, new BaseBalGameValidator()).calculatingBaseBallScore(baseBallValue);
+        Assertions.assertThat(result.getStrike()).isEqualTo(expect.getStrike());
+        Assertions.assertThat(result.getBall()).isEqualTo(expect.getBall());
+
+    }
 
 }

@@ -4,8 +4,9 @@
         - [x] 세자리 음수이면, IllegalArgumentException 반환
 
     -[ ] 점수를 체점해준다.
-    - [ ] 채점할 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
-        -[ ] 게임을 종료시킨다.
+        - [x] 체점가능한 숫자일경우, 채점을 해준다.
+        - [ ] 채점할 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
+    -[ ] 게임을 종료시킨다.
     -[ ] 게임이 종료한 후에, 1번을 입력되면,게임을 다시 시작한다.
     -[ ] 게임이 종료한 후에,2번을 입력되면,완전히 종료할수 있다.
     -[ ] 1,2가 아니면, IllegalArgumentException 반환
