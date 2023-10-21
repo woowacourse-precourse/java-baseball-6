@@ -37,7 +37,7 @@ class BaseballGame {
             user.add(Character.getNumericValue(userNumber.charAt(i)));
         }
     }
-    private int countStrike(List<Integer> user) {
+    private int countStrike() {
         int strike = 0;
         for (int i=0; i<3; i++) {
             if (user.get(i) == computer.get(i)) {
