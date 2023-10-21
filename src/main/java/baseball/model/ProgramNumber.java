@@ -14,7 +14,7 @@ public class ProgramNumber {
 
     //생성 시 바로 프로그램 숫자를 만들 수 있도록 한다.
     public ProgramNumber() {
-        setProgramNumber();
+        createProgramNumber();
     }
 
     //1 ~ 9 범위 내의 랜덤한 숫자 하나 획득
@@ -23,7 +23,7 @@ public class ProgramNumber {
     }
 
     //세자리 자연수 획득
-    private void setProgramNumber() {
+    private void createProgramNumber() {
         //중복을 피하기 위해 HashSet 사용
         Set<String> programNumberSet = new LinkedHashSet<>(3);
         while (programNumberSet.size() < 3) {
