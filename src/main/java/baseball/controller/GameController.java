@@ -7,9 +7,20 @@ import baseball.view.OutputView;
 
 public class GameController {
 
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
+    public void process() {
+        try {
+            boolean continueGame = true;
+
+            while(continueGame) {
+                continueGame = gameStart();
+            }
+        } catch(IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public boolean gameStart() {
         inputView.printStart();
