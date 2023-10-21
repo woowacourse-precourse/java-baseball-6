@@ -1,53 +1,39 @@
 package baseball;
 
+/**
+ * 나는 숫자를 전달해주면
+ * 숫자를 비교하고 결과값을 출력해줄게
+ *
+ */
 public class NumberCompare {
+    private static final int CHANCE = 3;
+    private int ball;
+    private int strike;
 
-    private final int CHANCE = 3;
 
 
-    public int Hit(UserNumber userNumber, ComputerNumber computerNumber){
-        int result = 0;
-
-        for(int i = 0; i < CHANCE; i++){
-            if(computerNumber.getComputerNumber().indexOf(userNumber.getUserNumber().charAt(i)) != -1){
-                result++;
-            }
-        }
-
-        return result;
+    public int[] Compare(String userNumber, String computerNumber){
+        System.out.println(userNumber + " " + computerNumber);
+        CountStrike(userNumber,computerNumber);
+        CountBall(userNumber, computerNumber);
+        return new int[] {ball,strike};
     }
 
-    public int Strike(UserNumber userNumber, ComputerNumber computerNumber){
-        int strike = 0;
 
+    public void CountBall(String userNumber, String computerNumber){
         for(int i = 0; i < CHANCE; i++){
-            if(computerNumber.getComputerNumber().charAt(i) == userNumber.getUserNumber().charAt(i)){
+            if(computerNumber.contains(Character.toString(userNumber.charAt(i)))){
+                ball++;
+            }
+        }
+        ball = ball - strike;
+    }
+
+    public void CountStrike(String userNumber, String computerNumber){
+        for(int i = 0; i < CHANCE; i++){
+            if(computerNumber.charAt(i) == userNumber.charAt(i)){
                 strike++;
             }
         }
-
-        return strike;
     }
-
-    public boolean PrintHint(UserNumber userNumber, ComputerNumber computerNumber){
-        int strike = Strike(userNumber, computerNumber);
-        int ball = Hit(userNumber, computerNumber) - strike;
-
-        if(strike == 3){
-            return true;
-        }
-
-        if(ball !=0 && strike == 0){
-            System.out.println(ball + "볼");
-        } else if( ball != 0 && strike != 0 ) {
-            System.out.println(ball + "볼" + " " +strike + "스트라이크");
-        } else if( ball == 0 && strike != 0 ) {
-            System.out.println(strike + "스트라이크");
-        } else {
-            System.out.println("낫싱");
-        }
-
-        return false;
-    }
-
 }
