@@ -30,12 +30,28 @@ public class Number {
 
 
     /**
-     * @Method : 사용자 입력 숫자 저장(검증 기능 포함)
+     * @Method : 사용자 입력 숫자 저장
      * @auther : SYB
      * @since : 2023/10/21
      */
     public void setUserNumberList(List<Integer> numberList) {
-        this.target.addAll(numberList);
+        if (validationNumber(numberList)) {
+            this.target.addAll(numberList);
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
+    /**
+     * @Method : 숫자 검증(1~9 숫자, 서로 다른 3자리의 수)
+     * @auther : SYB
+     * @since : 2023/10/21
+     */
+    private static boolean validationNumber(List<Integer> numberList) {
+        boolean range = numberList.stream().allMatch(n -> n >= 1 && n <= 9);
+        boolean distinctSize = numberList.stream().distinct().count() == 3;
+        return range && distinctSize;
     }
 
 
