@@ -2,12 +2,9 @@ package baseball.service;
 
 import baseball.domain.GameResult;
 
+import static baseball.domain.GameResult.*;
+
 public class GameResultService {
-    private static final String BALL = "볼";
-    private static final String STRIKE = "스트라이크";
-    private static final String NOTHING = "낫싱";
-    private static final String RESTART = "1";
-    private static final String EXIT = "2";
 
     public String showResult(GameResult gameResult) {
         if (gameResult.isNothing()) {
