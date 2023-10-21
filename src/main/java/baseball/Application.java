@@ -72,6 +72,9 @@ public class Application {
         }
 
         public void checkUserNumbers(String[] numbers) {
+            if (numbers.length < 1 || numbers.length > 3) {
+                throw new IllegalArgumentException("정해진 수보다 많이 입력하였습니다.");
+            }
             for (String number : numbers) {
                 if (!number.matches("\\d")) {
                     throw new IllegalArgumentException("잘못된 수가 입력되었습니다.");
@@ -99,7 +102,7 @@ public class Application {
             result = result.trim();
 
             if (result.equals("")) {
-                return "낫싱";
+                result = "낫싱";
             }
 
             System.out.println(result);
@@ -119,6 +122,7 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int exitCode = scanner.nextInt();
             if (exitCode == 1) {
+                scanner.nextLine();
                 return false;
             } else if (exitCode == 2) {
                 return true;
@@ -132,18 +136,18 @@ public class Application {
 
             while (true) {
                 setComputerNumbers();
-                setUserNumbers();
-                setCount();
-
-                getResult();
-
-                if (checkInningEnd() && checkExit()) {
+                while (true) {
+                    setUserNumbers();
+                    setCount();
+                    getResult();
+                    if (checkInningEnd()) {
+                        break;
+                    }
+                }
+                if (checkExit()) {
                     break;
                 }
-
             }
-
-
         }
 
     }
