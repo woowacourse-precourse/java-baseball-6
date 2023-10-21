@@ -20,4 +20,9 @@
 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
 ### 하나도 맞지 않을 경우 낫싱을 출력하고 다시 입력 받는다.
 ### 부분적으로 맞았을 경우 결과를 출력하고 다시 입력 받는다.
-## 4. 
+
+## 클래스를 나눠보기
+### 사용자의 입력을 처리할 클래스 UserInputHandler
+### 컴퓨터의 RandomNumber를 생성할 클래스 ComputerNumberGenerator
+### 사용자의 입력에 대한 게임 결과를 처리할 클래스 GameScoreHandler
+### 게임의 시작과 끝을 결정하는 클래스 GameStarter
