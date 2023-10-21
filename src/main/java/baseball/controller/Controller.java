@@ -28,14 +28,14 @@ public class Controller {
     void playGame() {
         PlayerChoice playerChoice = PlayerChoice.RETRY;
         while (playerChoice == PlayerChoice.RETRY) {
-            initComputerBaseBallNumber();
+            initComputerBaseballNumber();
             playOneGame();
             outputView.printGameFinish();
             playerChoice = askRetry();
         }
     }
 
-    private void initComputerBaseBallNumber() {
+    private void initComputerBaseballNumber() {
         computerBaseballNumber = new RandomBaseballNumberGenerator().generate();
     }
 
