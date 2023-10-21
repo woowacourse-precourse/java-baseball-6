@@ -19,7 +19,7 @@ public class Computer {
     }
 
     public void addUserNumber(final String inputUserNumber) {
-        this.userNumbers = Numbers.createUserNumbers(inputUserNumber);
+        this.userNumbers = UserNumbers.createUserNumbers(inputUserNumber);
     }
 
     public GameResult createResult() {
