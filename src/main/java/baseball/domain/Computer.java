@@ -2,45 +2,35 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Computer {
-    private String randomNumber;
-    private int size;
+    private List<Integer> computerNumber;
 
     public Computer() {
-        randomNumber = "";
-        size = 0;
+        computerNumber = new ArrayList<>();
     }
 
-    public String generateRandom() {
-        while (size < 3) {
-            String number = createOne(); // 숫자 하나 생성
-
-            boolean check = checkDuplication(randomNumber, number); // 중복체크
-            if (!check) {
-                randomNumber += number; // 중복이 아니므로 이어 붙이기
-                addSize();
-            }
+    public void createOne() {
+        int number = Randoms.pickNumberInRange(1,9);
+        if(!validDuplication(number)){
+            computerNumber.add(number);
         }
-        return randomNumber;
     }
 
-    private String createOne() {
-        return String.valueOf(Randoms.pickNumberInRange(1, 9)); // 1~9 사이의 번호 하나 생성
-    }
-
-    private boolean checkDuplication(String number, String num) { // 중복 체크
-        if(number.contains(num)) return true;
+    public boolean validDuplication(int number) {
+        if(computerNumber.contains(number)) return true;
         return false;
     }
 
-    private void addSize() { // 사이즈 증가
-        size++;
+    public void reset() {
+        computerNumber.clear();
     }
 
-    public void reset() { // 초기화
-        randomNumber = "";
-        size = 0;
+    public List<Integer> getComputerNumber() {
+        return computerNumber;
     }
 
 }
