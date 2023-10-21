@@ -3,7 +3,7 @@ package baseball;
 import domain.Ball;
 import domain.BallComparator;
 import domain.Balls;
-import domain.BaseballResultDto;
+import domain.GameResult;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -18,16 +18,16 @@ public class BallCompareTest {
     @ParameterizedTest
     @DisplayName("N 스트라이크 N볼 검증")
     @MethodSource("ProvideCompareTestCases")
-    public void BallCompareTest(Balls userBalls, Balls computerBalls, BaseballResultDto resultDto) {
+    public void BallCompareTest(Balls userBalls, Balls computerBalls, GameResult resultDto) {
         //given
         BallComparator ballComparator = new BallComparator();
 
         //when
-        BaseballResultDto baseballResultDto = ballComparator.compareStatus(userBalls,
+        GameResult gameResult = ballComparator.compareStatus(userBalls,
                 computerBalls);
         //then
-        Assertions.assertThat(baseballResultDto.getStrike()).isEqualTo(resultDto.getStrike());
-        Assertions.assertThat(baseballResultDto.getBall()).isEqualTo(resultDto.getBall());
+        Assertions.assertThat(gameResult.getStrike()).isEqualTo(resultDto.getStrike());
+        Assertions.assertThat(gameResult.getBall()).isEqualTo(resultDto.getBall());
     }
 
     static Stream<Arguments> ProvideCompareTestCases() {
@@ -38,7 +38,7 @@ public class BallCompareTest {
         ballList.add(new Ball(7, 2));
         ballList.add(new Ball(6, 3));
         Balls balls = new Balls(ballList);
-        BaseballResultDto resultDto = new BaseballResultDto(3, 0);
+        GameResult resultDto = new GameResult(3, 0);
         testCases.add(Arguments.of(balls, balls, resultDto));
 
         List<Ball> ballList1 = new ArrayList<>();
@@ -51,10 +51,10 @@ public class BallCompareTest {
         ballList2.add(new Ball(7, 2));
         ballList2.add(new Ball(5, 3));
         Balls balls2 = new Balls(ballList2);
-        BaseballResultDto resultDto1 = new BaseballResultDto(2, 0);
+        GameResult resultDto1 = new GameResult(2, 0);
         testCases.add(Arguments.of(balls1, balls2, resultDto1));
 
-        BaseballResultDto resultDto2 = new BaseballResultDto(1, 2);
+        GameResult resultDto2 = new GameResult(1, 2);
         testCases.add(Arguments.of(balls, balls2, resultDto2));
 
         return testCases.stream();

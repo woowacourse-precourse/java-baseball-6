@@ -4,7 +4,6 @@ package domain;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BallComparator {
@@ -14,10 +13,10 @@ public class BallComparator {
 
     private static int MAX_STRIKE = 3;
 
-    public BaseballResultDto compareStatus(Balls userBalls, Balls computerBalls) {
+    public GameResult compareStatus(Balls userBalls, Balls computerBalls) {
         int strike = countStrike(userBalls.getBalls(), computerBalls.getBalls());
         int ball = countBall(userBalls.getBalls(), computerBalls.getBalls(), strike);
-        return new BaseballResultDto(strike, ball);
+        return new GameResult(strike, ball);
     }
 
     private int countStrike(List<Ball> userBalls, List<Ball> computerBalls) {
