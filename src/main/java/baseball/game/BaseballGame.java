@@ -4,7 +4,8 @@ import baseball.computer.Computer;
 import baseball.domain.command.Command;
 import baseball.domain.number.GameNumber;
 import baseball.domain.result.Result;
-import baseball.game.validate.NumberValidation;
+import baseball.game.validate.IntegerValidator;
+import baseball.game.validate.NegativeNumberValidator;
 import baseball.rule.Rule;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -53,21 +54,23 @@ public class BaseballGame {
     }
 
     private Command inputUserCommand() {
-        String command = inputView.inputNumber();
-        NumberValidation.validate(command);
-        return new Command(Integer.valueOf(command));
+        return new Command(validateNumber(inputView.inputNumber()));
     }
 
     private GameNumber inputUserNumber() {
-        String number = inputView.inputNumber();
-        return toGameNumber(number);
+        return toGameNumber(inputView.inputNumber());
     }
 
     private GameNumber toGameNumber(String number) {
-        NumberValidation.validate(number);
-        return new GameNumber(Arrays.stream(number
-                        .split(""))
+        return new GameNumber(Arrays.stream(number.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList()));
+    }
+
+    private Integer validateNumber(String input) {
+        IntegerValidator.validate(input);
+        Integer number = Integer.valueOf(input);
+        NegativeNumberValidator.validate(number);
+        return number;
     }
 }
