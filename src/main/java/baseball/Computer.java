@@ -24,9 +24,9 @@ public class Computer {
         if (computerNumbers.size() > 0)
             computerNumbers.clear();
 
-        int randomNumber;
+
         while (computerNumbers.size() < LENGTH) {
-            randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+            int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
             if (!computerNumbers.contains(randomNumber))
                 computerNumbers.add(randomNumber);
         }
@@ -34,13 +34,12 @@ public class Computer {
 
     public int getBallCount(List<Integer> userNumbers) {
         int count = 0;
-        int userNumber, computerNumber;
 
         for (int i = 0; i < userNumbers.size(); i++) {
-            userNumber = userNumbers.get(i);
+            int userNumber = userNumbers.get(i);
 
             for (int j = 0; j < computerNumbers.size(); j++) {
-                computerNumber = computerNumbers.get(j);
+                int computerNumber = computerNumbers.get(j);
 
                 if (userNumber == computerNumber && i != j) count++;
             }
@@ -51,11 +50,10 @@ public class Computer {
 
     public int getStrikeCount(List<Integer> userNumbers) {
         int count = 0;
-        int userNumber, computerNumber;
 
         for (int i = 0; i < userNumbers.size(); i++) {
-            userNumber = userNumbers.get(i);
-            computerNumber = computerNumbers.get(i);
+            int userNumber = userNumbers.get(i);
+            int computerNumber = computerNumbers.get(i);
 
             if (userNumber == computerNumber) count++;
         }

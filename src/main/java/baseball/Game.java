@@ -103,17 +103,15 @@ public class Game {
     }
 
     public void run() {
-        List<Integer> userNumbers;
-        int ball, strike;
-
         printGameStart();
         computer.generateRandomNumber();
         while (true) {
-            userNumbers = getUserNumbers();
-            ball = computer.getBallCount(userNumbers);
-            strike = computer.getStrikeCount(userNumbers);
+            List<Integer> userNumbers = getUserNumbers();
+            int ball = computer.getBallCount(userNumbers);
+            int strike = computer.getStrikeCount(userNumbers);
 
             printResult(ball, strike);
+
             if (strike == 3) {
                 printGameEnd();
                 if (getGameContinueInput()) {
