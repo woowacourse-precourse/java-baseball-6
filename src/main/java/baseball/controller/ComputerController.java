@@ -33,7 +33,18 @@ public class ComputerController {
     private void compareComputerAndPlayer(int playerNumber) {
         List<Integer> playerNumbers = numberToList(playerNumber);
         List<Integer> computerNumbers = computer.getComputerNumbers();
-        strikeCheck(playerNumbers, computerNumbers);
+        int strike = strikeCheck(playerNumbers, computerNumbers);
+        int ball = ballCheck(playerNumbers, computerNumbers);
+    }
+
+    private int ballCheck(List<Integer> playerNumbers, List<Integer> computerNumbers) {
+        int ballCount = 0;
+        for (int playerNumber : playerNumbers) {
+            if (computerNumbers.contains(playerNumber)) {
+                ballCount++;
+            }
+        }
+        return ballCount;
     }
 
     private int strikeCheck(List<Integer> playerNumbers, List<Integer> computerNumbers) {
