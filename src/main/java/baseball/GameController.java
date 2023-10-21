@@ -9,7 +9,7 @@ public class GameController {
     public void run() {
         printMessage.startMessage();
         boolean isStart = true;
-        while(isStart) {
+        while (isStart) {
             isStart = isStartGame();
         }
     }
@@ -17,9 +17,10 @@ public class GameController {
     // 메서드명 수정 좀 더 고민해보자
     // 더 쪼개야할 것 같다
     private boolean isStartGame() {
-        randomNumber.createNumber();
+        RandomNumber randomNumber = new RandomNumber();
         boolean isNotCorrect = true;
-        while(isNotCorrect) {
+        while (isNotCorrect) {
+            randomNumber.createNumber();
             int[] result;
             printMessage.enterNumberMessage();
             String threeNumber = inputMessage.inputThreeNumber();
@@ -30,7 +31,9 @@ public class GameController {
             }
         }
         printMessage.correctMessage();
-        randomNumber.deleteNumber();
-        return inputMessage.inputMenuNumber();
+        printMessage.menuMessage();
+        if (inputMessage.inputMenuNumber().compareTo("1") == 0)
+            return true;
+        return false;
     }
 }
