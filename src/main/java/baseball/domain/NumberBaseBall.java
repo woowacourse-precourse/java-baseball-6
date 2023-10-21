@@ -8,10 +8,14 @@ public class NumberBaseBall {
     private final GameIO gameIO;
     private final User user;
 
+    private final int numberLimit;
+
     public NumberBaseBall(
+            int numberLimit,
             RandomNumberPicker randomNumberPicker,
             GameIO gameIO,
             User user) {
+        this.numberLimit = numberLimit;
         this.randomNumberPicker = randomNumberPicker;
         this.gameIO = gameIO;
         this.user = user;
@@ -23,26 +27,26 @@ public class NumberBaseBall {
     public static final int GAME_OVER = 2;
 
 
-    public void startGame(int numberLength) {
+    public void startGame() {
         // 랜덤한 서로다른 숫자 생성
-        List<Integer> answer = randomNumberPicker.generateDistinctNumbers(numberLength);
+        List<Integer> answer = randomNumberPicker.generateDistinctNumbers(numberLimit);
 
         boolean isFinish = false;
 
         while (!isFinish) {
             // 정답 맞추기 시작
-            List<Integer> guessAnswer = startGuess(numberLength);
+            List<Integer> guessAnswer = startGuess();
 
             //추측한 정답이 정답인지 확인
             if(checkGuessAnswer(answer,guessAnswer)) isFinish = true;
         }
 
-        if(shouldContinueGame()) startGame(numberLength);
+        if(shouldContinueGame()) startGame();
 
     }
 
     private boolean shouldContinueGame() {
-        int userChoice = gameIO.printEndMessageAndInputChoice();
+        int userChoice = gameIO.printEndMessageAndInputChoice(numberLimit);
 
         if(userChoice != CONTINUE_GAME && userChoice != GAME_OVER)
             throw new IllegalArgumentException(
@@ -55,9 +59,9 @@ public class NumberBaseBall {
     }
 
 
-    private List<Integer> startGuess(int numberLength) {
+    private List<Integer> startGuess() {
         gameIO.printStart();
-        return user.guessAnswer(numberLength);
+        return user.guessAnswer(numberLimit);
     }
 
     private boolean checkGuessAnswer(List<Integer> answer, List<Integer> guessAnswer) {

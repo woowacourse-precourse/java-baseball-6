@@ -21,9 +21,9 @@ public class GameIO {
         inputOutputHandler.printlnText(result.toString());
     }
 
-    public void printEndMessage() {
+    public void printEndMessage(int numberLimit) {
         inputOutputHandler.printlnText(
-                "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 "  +
+                numberLimit + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 "  +
                 NumberBaseBall.CONTINUE_GAME +
                 ", 종료하려면 " +
                 NumberBaseBall.GAME_OVER +"를 입력하세요.");
@@ -33,8 +33,8 @@ public class GameIO {
         return inputOutputHandler.inputOneNumber();
     }
 
-    public int printEndMessageAndInputChoice() {
-        printEndMessage();
+    public int printEndMessageAndInputChoice(int numberLimit) {
+        printEndMessage(numberLimit);
         return getUserEndChoice();
     }
 

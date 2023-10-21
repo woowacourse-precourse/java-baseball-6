@@ -18,8 +18,9 @@ public class Config {
         return new RandomNumberPicker();
     }
 
-    public NumberBaseBall numberBaseBall() {
+    public NumberBaseBall numberBaseBall(int numberLimit) {
         return new NumberBaseBall(
+                numberLimit,
                 randomNumberPicker(),
                 gameIO(),
                 user());
