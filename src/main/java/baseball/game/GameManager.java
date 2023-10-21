@@ -7,7 +7,7 @@ import baseball.domain.ComputerBaseballs;
 import baseball.domain.UserBaseballs;
 import baseball.dto.Result;
 
-public class GameController {
+public class GameManager {
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
