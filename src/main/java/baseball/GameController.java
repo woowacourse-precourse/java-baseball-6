@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class GameController {
 
     private Computer computer;
@@ -8,6 +10,26 @@ public class GameController {
     public GameController() {
         this.computer = new Computer();
         this.user = new User();
+    }
+
+    public boolean compareNumbers(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        int ballNum = 0;
+        int strikeNum = 0;
+
+        for (int i = 0; i < userNumbers.size(); i++) {
+            if (userNumbers.get(i) == computerNumbers.get(i)) {
+                strikeNum++;
+                continue;
+            }
+            if (computerNumbers.contains(userNumbers.get(i))) {
+                ballNum++;
+            }
+        }
+        printResult(ballNum, strikeNum);
+        if (strikeNum == 3) {
+            return true;
+        }
+        return false;
     }
 
     public void printResult(int ballNum, int strikeNum) {
