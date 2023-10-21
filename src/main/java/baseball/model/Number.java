@@ -1,6 +1,8 @@
 package baseball.model;
 
 import static baseball.config.NumberConfig.NUMBER_LENGTH;
+import static baseball.config.NumberConfig.NUMBER_MAXIMUM_INCLUSIVE;
+import static baseball.config.NumberConfig.NUMBER_MINIMUM_INCLUSIVE;
 import static baseball.validator.NumberValidator.validateContainDuplicatedNumber;
 import static baseball.validator.NumberValidator.validateContainOnlyNumber;
 import static baseball.validator.NumberValidator.validateEmpty;
@@ -25,10 +27,10 @@ public class Number {
         this.value = value;
     }
 
-    public static Number generateRandomNumber(final int numberLength) {
+    public static Number generateRandomNumber() {
         List<Integer> pickedInteger = new ArrayList<>();
-        while (pickedInteger.size() < numberLength) {
-            int number = pickNumberInRange(1, 9);
+        while (pickedInteger.size() < NUMBER_LENGTH.getValue()) {
+            int number = pickNumberInRange(NUMBER_MINIMUM_INCLUSIVE.getValue(), NUMBER_MAXIMUM_INCLUSIVE.getValue());
             if (!pickedInteger.contains(number)) {
                 pickedInteger.add(number);
             }

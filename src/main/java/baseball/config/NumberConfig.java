@@ -1,7 +1,9 @@
 package baseball.config;
 
 public enum NumberConfig {
-    NUMBER_LENGTH(3);
+    NUMBER_LENGTH(3),
+    NUMBER_MINIMUM_INCLUSIVE(1),
+    NUMBER_MAXIMUM_INCLUSIVE(9);
 
     private final int value;
 

@@ -1,5 +1,6 @@
 package baseball.view;
 
+import static baseball.config.OutputViewConfig.GAME_OVER;
 import static baseball.config.OutputViewConfig.GAME_START;
 import static baseball.config.OutputViewConfig.NOTHING;
 import static baseball.config.OutputViewConfig.REQUEST_PLAYER_NUMBER;
@@ -23,6 +24,10 @@ public class OutputView {
         System.out.println(NOTHING.getMessage());
     }
 
+    public static void printGameOver() {
+        System.out.println(GAME_OVER.getMessage());
+    }
+
     public static void printBallCount(int ballCount) {
         String result = String.format("%d볼", ballCount);
         System.out.println(result);
@@ -36,9 +41,5 @@ public class OutputView {
     public static void printBallAndStrikeCount(int ballCount, int strikeCount) {
         String result = String.format("%d볼 %d스트라이크", ballCount, strikeCount);
         System.out.println(result);
-    }
-
-    public static void printGameOver() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }

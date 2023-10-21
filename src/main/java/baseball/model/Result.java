@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.config.NumberConfig.NUMBER_LENGTH;
+
 import baseball.view.OutputView;
 
 public class Result {
@@ -29,6 +31,6 @@ public class Result {
     }
 
     public boolean checkGameOver() {
-        return strikeCount == 3;
+        return strikeCount == NUMBER_LENGTH.getValue();
     }
 }
