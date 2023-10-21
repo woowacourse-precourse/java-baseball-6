@@ -11,6 +11,11 @@ public class BaseballNumbers {
         createBaseballNumbers(numbers);
     }
 
+    public BaseballNumbers(String userInput) {
+        this.ballNumbers = new ArrayList<>();
+        createBaseballNumbers(userInput);
+    }
+
     public void createBaseballNumbers(List<Integer> numbers) {
         for (Integer number : numbers) {
             BaseballNumber baseballNumber = new BaseballNumber(number);
