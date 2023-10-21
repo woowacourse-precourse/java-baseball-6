@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.GameChoice;
 import baseball.domain.GameResult;
 import baseball.domain.TargetNumber;
 import baseball.domain.UserBaseballNumber;
@@ -25,9 +26,13 @@ public class BaseballGameController {
     public void run() {
         outputHandler.printGameStart();
 
+        GameChoice gameChoice = new GameChoice();
+
         TargetNumber targetNumber = new TargetNumber();
 
-        playGame(targetNumber);
+        while (gameChoice.isRestart()) {
+            playGame(targetNumber);
+        }
     }
 
     public UserBaseballNumber loadUserValues() {
@@ -46,5 +51,9 @@ public class BaseballGameController {
                 break;
             }
         }
+    }
+
+    public void requestGameChoice() {
+
     }
 }
