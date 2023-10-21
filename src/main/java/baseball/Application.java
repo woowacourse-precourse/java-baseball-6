@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
@@ -40,7 +41,17 @@ public class Application {
                 userNum.add(Character.getNumericValue(num.charAt(i)));
             }
 
-            System.out.println(userNum + " " + computer);
+            int ball = 0;
+            int strike = 0;
+
+            for(int i=0; i<3; i++){
+                if(Objects.equals(userNum.get(i), computer.get(i))) strike++;
+                else if(!Objects.equals(userNum.get(i), computer.get(i)) && computer.contains(userNum.get(i))) ball++;
+            }
+
+
+            System.out.println("computer = " + computer + " user = " + userNum);
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
 }
