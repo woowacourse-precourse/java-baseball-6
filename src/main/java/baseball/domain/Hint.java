@@ -36,4 +36,11 @@ public class Hint {
         }
         return false;
     }
+
+    public boolean isThreeStrike() {
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
 }
