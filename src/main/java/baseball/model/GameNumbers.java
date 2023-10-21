@@ -10,4 +10,15 @@ public class GameNumbers {
         numbers = list;
     }
 
+    public Integer get(int i) {
+        return numbers.get(i);
+    }
+
+    public boolean contains(Integer num) {
+        return numbers.contains(num);
+    }
+
+    public boolean isEqualToAt(int index, Integer num) {
+        return numbers.get(index).equals(num);
+    }
 }
