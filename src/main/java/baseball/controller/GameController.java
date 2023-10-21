@@ -1,8 +1,11 @@
 package baseball.controller;
 
+import baseball.domain.BaseBalls;
+import baseball.domain.NumberGenerator;
 import baseball.view.GameView;
 
 public class GameController {
+    private BaseBalls answers;
 
     public GameController(){
     }
@@ -16,7 +19,7 @@ public class GameController {
     }
 
     private void createAnswers(){
-        // TODO : 정답 생성
+        this.answers = BaseBalls.getBaseBallNumbers();
     }
 
     private void round(){
