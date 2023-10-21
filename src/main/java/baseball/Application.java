@@ -25,7 +25,6 @@ public class Application {
 
         while(true) {
             System.out.print("숫자를 입력해주세요 : ");
-
             String userInput = Console.readLine();
 
             if(!checkIsNumber(userInput)
@@ -35,22 +34,27 @@ public class Application {
                 throw new IllegalArgumentException();
             }
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            user = makeUserNumberList(userInput);
+            int strikeCount = checkStrike(user, computer);
+            int ballCount = checkBall(user, computer);
 
-            int endGame = Integer.parseInt(Console.readLine());
+            if(strikeCount == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int endGame = Integer.parseInt(Console.readLine());
 
-            if(endGame == 1) {
-                continue;
-            } else if (endGame == 2) {
-                break;
-            } else {
-                throw new IllegalArgumentException();
+                if(endGame == 1) {
+                    continue;
+                } else if (endGame == 2) {
+                    break;
+                } else {
+                    throw new IllegalArgumentException();
+                }
             }
         }
     }
 
     public static boolean checkIsNumber(String userInput) {
-        System.out.println("1 = " + 1);
         for(int i = 0; i < userInput.length(); i++) {
             char digitChar = userInput.charAt(i);
             if(!Character.isDigit(digitChar)) {
@@ -61,7 +65,6 @@ public class Application {
     }
 
     public static boolean checkIsDuplicated(String userInput) {
-        System.out.println("2" );
         Set<Character> set = new HashSet<>();
         for(int i = 0; i < userInput.length(); i++) {
             if(!set.add(userInput.charAt(i))) {
@@ -72,7 +75,6 @@ public class Application {
     }
 
     public static boolean checkInputLength(String userInput) {
-        System.out.println("3" );
         if(userInput.length() != 3) {
             return false;
         }
@@ -80,11 +82,39 @@ public class Application {
     }
 
     public static boolean checkIsZero(String userInput) {
-        System.out.println("4" );
         if(userInput.contains("0")) {
             return true;
         }
         return false;
     }
+
+    public static List<Integer> makeUserNumberList(String userInput) {
+        List<Integer> user = new ArrayList<>();
+        for (char c : userInput.toCharArray()) {
+            user.add(Character.getNumericValue(c));
+        }
+        return user;
+    }
+
+    public static int checkStrike(List<Integer> user, List<Integer> computer) {
+        int strikeCount = 0;
+        for(int i=0; i<3; i++) {
+            if(user.get(i).equals(computer.get(i))) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
+    public static int checkBall(List<Integer> user, List<Integer> computer) {
+        int ballCount = 0;
+        for(int i=0; i<3; i++) {
+            if(computer.contains(user.get(i)) && !user.get(i).equals(computer.get(i))) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
 }
 
