@@ -2,11 +2,11 @@ package baseball.domain;
 
 import java.util.List;
 
-public class Me {
+public class User {
 
     private final InputOutputHandler inputOutputHandler;
 
-    public Me(InputOutputHandler inputOutputHandler) {
+    public User(InputOutputHandler inputOutputHandler) {
         this.inputOutputHandler = inputOutputHandler;
     }
 

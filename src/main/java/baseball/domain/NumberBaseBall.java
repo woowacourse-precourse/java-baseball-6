@@ -8,15 +8,15 @@ public class NumberBaseBall {
     public static final String NOTHING = "낫싱";
     private final RandomNumberPicker randomNumberPicker;
     private final InputOutputHandler inputOutputHandler;
-    private final Me me;
+    private final User user;
 
     public NumberBaseBall(
             RandomNumberPicker randomNumberPicker,
             InputOutputHandler inputOutputHandler,
-            Me me) {
+            User user) {
         this.randomNumberPicker = randomNumberPicker;
         this.inputOutputHandler = inputOutputHandler;
-        this.me = me;
+        this.user = user;
     }
 
     public void startGame(int numberLength) {
@@ -28,7 +28,7 @@ public class NumberBaseBall {
         while (!isFinish) {
             // 정답 맞추기 시작
             inputOutputHandler.printText("숫자를 입력해주세요 : ");
-            List<Integer> guessAnswer = me.guessAnswer(numberLength);
+            List<Integer> guessAnswer = user.guessAnswer(numberLength);
 
             //추측한 정답에 대한 결과
             Result guessResult = verifyGuess(answer, guessAnswer);

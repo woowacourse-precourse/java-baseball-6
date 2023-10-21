@@ -8,8 +8,8 @@ public class Config {
         return new InputOutputHandler();
     }
 
-    public Me me() {
-        return new Me(inputOutputHandler());
+    public User user() {
+        return new User(inputOutputHandler());
     }
 
     public RandomNumberPicker randomNumberPicker() {
@@ -20,7 +20,7 @@ public class Config {
         return new NumberBaseBall(
                 randomNumberPicker(),
                 inputOutputHandler(),
-                me());
+                user());
     }
 
 }
