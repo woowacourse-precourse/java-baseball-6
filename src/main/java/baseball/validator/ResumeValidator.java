@@ -10,13 +10,9 @@ public class ResumeValidator {
     }
 
     private static void assertInputLength(final String inputNumber, final int resume, final int end) {
-        if (!isInputLengthValid(inputNumber, resume, end)) {
+        if (inputNumber.length() == Math.min(resume, end)) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private static boolean isInputLengthValid(final String input, final int resume, final int end) {
-        return input.length() == Math.min(resume, end);
     }
 
     private static void assertInputValue(final String inputNumber, final int resume, final int end) {
