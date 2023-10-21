@@ -25,7 +25,12 @@ public class Judge {
         return userInputArr;
     }
 
-    public int[] playGame(int[] computer, int[] user) {
+    public String playGame(int[] computer, int[] user) {
+        int[] strikeAndBall = calculateStrikeAndBall(computer, user);
+        return checkStrikeAndBall(strikeAndBall);
+    }
+
+    private int[] calculateStrikeAndBall(int[] computer, int[] user) {
         int[] strikeAndBall = new int[2];
         for (int i = 0; i < 3; i++) {
             if (computer[i] == user[i])
@@ -54,8 +59,8 @@ public class Judge {
         return message;
     }
 
-    public boolean isGameEnd(int[] gameResult){
-        return gameResult[1] == 3 ? false : true;
+    public boolean isGameEnd(String gameResult) {
+        return gameResult.equals("3스트라이크");
     }
 
     private void checkError(String inputStr){
@@ -78,5 +83,4 @@ public class Judge {
                 return true;
         return false;
     }
-
 }
