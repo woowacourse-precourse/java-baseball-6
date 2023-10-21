@@ -4,6 +4,7 @@ import java.util.List;
 
 public class BaseBallNumber {
     private final List<Integer> baseballNumber;
+    private static final Integer NUMBER_SIZE = 3;
 
     public BaseBallNumber(List<Integer> baseballNumber) {
         this.baseballNumber = baseballNumber;
@@ -27,7 +28,7 @@ public class BaseBallNumber {
 
     public Integer getStrikeCount(BaseBallNumber userNumber) {
         Integer strikeCount = 0;
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < NUMBER_SIZE; ++i) {
             Integer number = userNumber.getNumberByIndex(i);
             if (checkStrike(number, i)) {
                 strikeCount++;
@@ -38,7 +39,7 @@ public class BaseBallNumber {
 
     public Integer getBallCount(BaseBallNumber userNumber) {
         Integer ballCount = 0;
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < NUMBER_SIZE; ++i) {
             Integer number = userNumber.getNumberByIndex(i);
             if (checkBall(number, i)) {
                 ballCount++;
