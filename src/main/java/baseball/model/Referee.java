@@ -14,5 +14,21 @@ public class Referee {
             strikeCount += duplicateStrike(computerNumber.get(i), playerNumber.get(i));
             ballCount += duplicateBall(computerNumber.get(i), playerNumber.get(i), playerNumber);
         }
+        strike = strikeCount;
+        ball = ballCount;
+    }
+
+    public int duplicateStrike(int computerNumber, int playerNumber){
+        if(computerNumber == playerNumber){
+            return 1;
+        }
+        return 0;
+    }
+
+    private int duplicateBall(int computerNumber, int playerNumber, List<Integer> playerNumbers) {
+        if(computerNumber != playerNumber && playerNumbers.contains(computerNumber)){
+            return 1;
+        }
+        return 0;
     }
 }
