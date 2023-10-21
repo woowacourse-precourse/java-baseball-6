@@ -12,6 +12,10 @@ public class NumberGenerator {
     private List<Integer> answer = new ArrayList<Integer>();
 
     public NumberGenerator() {
+        makeRandomAnswerList();
+    }
+
+    private void makeRandomAnswerList() {
         while (answer.size() < 3) {
             final int randomNumber = Randoms.pickNumberInRange(minNumber, maxNumber);
             if (!answer.contains(randomNumber)) {
