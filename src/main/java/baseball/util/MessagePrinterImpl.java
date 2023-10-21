@@ -1,12 +1,12 @@
 package baseball.util;
 
-import static baseball.util.constant.GameMessage.START;
+import baseball.util.constant.GameMessage;
 
 public class MessagePrinterImpl implements MessagePrinter {
 
     @Override
     public void printStartMessage() {
-        printMessage(START.getMessage());
+        printMessage(GameMessage.START.getMessage());
     }
 
     private void printMessage(String message) {
