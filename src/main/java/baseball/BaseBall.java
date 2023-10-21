@@ -74,4 +74,13 @@ public class BaseBall {
         }
         System.out.print("\n");
     }
+
+    public int restart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String state = Console.readLine();
+        if(state.equals("1") || state.equals("2"))
+            return Integer.parseInt(state);
+        else
+            throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
+    }
 }
