@@ -30,7 +30,10 @@
 - `AnswerGenerator`: 3자리 수를 반환하는 메서드가 정의된 인터페이스.
 - `RandomAnswerGenerator`: 1~9 범위의 서로다른 3자리의 무작위 숫자를 정답으로 생성하여 반환.
 - `FixedAnswerGenerator`: 무작위가 아닌 고정된 값으로 테스트하기 위해 만든 숫자 생성기.
+- `Answer`: 컴퓨터가 만든 1~9 범위의 서로다른 3자리 수를 가지는 일급 컬렉션.
 - `Score`: `"볼"`, `"스트라이크"`를 저장.
+- `Ball`: `"볼"`을 저장.
+- `Strike`: `"스트라이크"`를 저장.
 
 ### 기능 목록
 - `InputView`
@@ -53,10 +56,17 @@
         - [ ] 같은 자리 같은 수의 경우 `"스트라이크"` 증가.
         - [ ] 모든 숫자를 비교 후 `"볼"`, `"스트라이크"`를 `OutputView`의 `matchResult()` 메서드 매개변수로 넘겨서 호출.
 - `AnswerGenerator`
-    - [ ] `List<Integer>` 타입을 반환하는 `generate()` 메서드 정의
+    - [ ] `Answer` 타입을 반환하는 `generate()` 메서드 정의
 - `RandomAnswerGenerator`: `AnswerGenerator` 구현
-    - [ ] `Randoms.pickNumberInRange()` 메서드를 사용하여 `List<Integer>` 타입 반환.
+    - [ ] `Randoms.pickNumberInRange()` 메서드를 사용하여 `Answer` 타입 반환.
 - `FixedAnswerGenerator`: `AnswerGenerator` 구현
-    - [ ] `generate()` 메서드를 구현하고, 오버라이딩하여 `String` 타입을 매개변수로 3자리 숫자를 생성하여 `List<Integer>` 타입 반환.
+    - [ ] `generate()` 메서드를 구현하고, 오버라이딩하여 `String` 타입을 매개변수로 3자리 숫자를 생성하여 `Answer` 타입 반환.
 - `Score`
     - [ ] `toString()` 메서드를 오버라이딩하여 `"n볼"`, `"n스트라이크"`, `"낫싱"` `"3스트라이크"` 출력. 
+    - [ ] `isStrikeOut()`: 정답과 입력값을 비교하여 `"3스트라이크"`인지 `boolean` 반환.
+- `Answer`
+    - [ ]
+- `Ball`
+    - [ ]
+- `Strike`
+    - [ ]
