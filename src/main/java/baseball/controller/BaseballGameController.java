@@ -36,7 +36,7 @@ public class BaseballGameController {
         }
     }
 
-    private static Balls createComputer() {
+    private Balls createComputer() {
         List<Integer> generatedNumbers =
                 NumberGenerator.generateUniqueNumbers(Ball.LOWER_LIMIT, Ball.UPPER_LIMIT, Balls.BALLS_SIZE);
         return new Balls(generatedNumbers);

@@ -15,9 +15,13 @@ public class Ball {
     }
 
     private void validate(int number) {
-        if (number < LOWER_LIMIT || number > UPPER_LIMIT) {
+        if (isOutOfRange(number)) {
             throw new IllegalArgumentException(INVALID_NUMBER_MESSAGE);
         }
+    }
+
+    private static boolean isOutOfRange(int number) {
+        return number < LOWER_LIMIT || number > UPPER_LIMIT;
     }
 
     @Override

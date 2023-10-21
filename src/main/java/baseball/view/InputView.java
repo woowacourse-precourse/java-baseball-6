@@ -3,17 +3,17 @@ package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    private static final String INVALID_INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요";
-    public static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    public static final String INPUT_GAME_COMMAND_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String INVALID_INPUT_NUMBER = "숫자를 입력해주세요";
+    private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
+    private static final String INPUT_GAME_COMMAND = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public int readPlayerNumber() {
-        print(INPUT_NUMBER_MESSAGE);
+        print(INPUT_NUMBER);
         return readInt();
     }
 
     public int readGameCommand() {
-        println(INPUT_GAME_COMMAND_MESSAGE);
+        println(INPUT_GAME_COMMAND);
         return readInt();
     }
 
@@ -30,7 +30,7 @@ public class InputView {
         try {
             parsedNumber = Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALID_INPUT_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(INVALID_INPUT_NUMBER);
         }
         return parsedNumber;
     }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Balls {
-    private static final String INVALID_DIGIT_NUMBER_MESSAGE = "세 자리 숫자를 입력해주세요";
+    private static final String INVALID_DIGIT_NUMBER = "세 자리 숫자를 입력해주세요";
     public static final int START_POSITION = 0;
     public static final int BALLS_SIZE = 3;
 
@@ -17,7 +17,7 @@ public class Balls {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != BALLS_SIZE) {
-            throw new IllegalArgumentException(INVALID_DIGIT_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(INVALID_DIGIT_NUMBER);
         }
     }
 
