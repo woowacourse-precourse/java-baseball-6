@@ -63,7 +63,7 @@ public class Baseball {
             throw new IllegalArgumentException("세자리 수를 입력해주세요.");
         }
 
-        List<Integer> inputDigitArr = getDigitArray(inputNum);
+        List<Integer> inputDigitArr = getDigitList(inputNum);
 
         if(inputDigitArr.get(0) == inputDigitArr.get(1) || inputDigitArr.get(1) == inputDigitArr.get(2) || inputDigitArr.get(2) == inputDigitArr.get(0)) {
             throw new IllegalArgumentException("서로 다른 세자리 수를 입력해주세요.");
@@ -77,8 +77,8 @@ public class Baseball {
         int strikeCount = 0;
         int ballCount = 0;
 
-        List<Integer> inputDigitArr = getDigitArray(input);
-        List<Integer> answerDigitArr = getDigitArray(answer);
+        List<Integer> inputDigitArr = getDigitList(input);
+        List<Integer> answerDigitArr = getDigitList(answer);
 
         for(int index = 0; index < 3; index++) {
             if (inputDigitArr.get(index) == answerDigitArr.get(index)) {
@@ -107,7 +107,7 @@ public class Baseball {
         return false;
     }
 
-    private List<Integer> getDigitArray(int input) {
+    private List<Integer> getDigitList(int input) {
         List<Integer> result = new ArrayList<>();
 
         result.add(input / 100);
