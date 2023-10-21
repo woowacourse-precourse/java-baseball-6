@@ -7,26 +7,26 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class InputNumbers {
+public class InputNumbers extends Input {
 
     private List<Integer> inputNumbers;
 
     public List<Integer> getInputNumbers() {
         return this.inputNumbers;
     }
-    
 
+    @Override
     public void readInput() {
         String readLine = Console.readLine();
 
         if (isNotValidLength(readLine)) {
-            throw new IllegalArgumentException();
+            throwIllegalArgumentException();
         }
         if (isNotNumber(readLine)) {
-            throw new IllegalArgumentException();
+            throwIllegalArgumentException();
         }
         if (isNotDifferentNumber(readLine)) {
-            throw new IllegalArgumentException();
+            throwIllegalArgumentException();
         }
         StringToIntegerList(readLine);
     }

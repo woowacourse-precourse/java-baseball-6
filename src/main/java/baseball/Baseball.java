@@ -29,11 +29,16 @@ public class Baseball {
     }
 
     private void game() {
-        alertInput();
-        readInputNumbers();
-        getBallAndStrike();
-        getResult();
-        writeMention();
+        while (true) {
+            alertInput();
+            readInputNumbers();
+            getBallAndStrike();
+            getResult();
+            writeMention();
+            if (isAnswer()) {
+                break;
+            }
+        }
     }
 
     private void end() {
@@ -70,6 +75,10 @@ public class Baseball {
     private void writeMention() {
         Mention mention = new Mention(result, ballAndStrike);
         System.out.println(mention.getMention());
+    }
+
+    private Boolean isAnswer() {
+        return result == Result.ANSWER;
     }
 
     private void alertEndChoice() {
