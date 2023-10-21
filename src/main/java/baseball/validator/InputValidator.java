@@ -22,7 +22,7 @@ public class InputValidator {
     }
 
     public void checkRestartInput(String input) {
-        if ("1".equals(input) || "2".equals(input)) {
+        if (!("1".equals(input) || "2".equals(input))) {
             throw new IllegalArgumentException("1 또는 2 만 입력할 수 있습니다.");
         }
     }
