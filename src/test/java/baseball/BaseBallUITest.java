@@ -29,7 +29,7 @@ class BaseBallUITest {
     void 숫자_야구게임을시작하는_문구가_출력되야한다() {
         final String expect = "숫자 야구 게임을 시작합니다.";
         BaseBallUI baseBallUI = new BaseBallUI();
-        baseBallUI.gameStart();
+        baseBallUI.startGame();
         Assertions.assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expect);
     }
 

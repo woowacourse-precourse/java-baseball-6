@@ -10,7 +10,7 @@ public class BaseBallUI {
     private static final String STRIKE_MESSAGE = "%d스트라이크";
     private static final String BALL_MESSAGE = "%d볼";
 
-    void gameStart() {
+    void startGame() {
         System.out.println(START_MESSAGE);
     }
 
