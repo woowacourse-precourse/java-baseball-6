@@ -16,7 +16,7 @@ Input
 - 재시작 여부 입력받기 - o
 
 Output
-- 게임시작문구 출력하기
+- 게임시작문구 출력하기 - o
 
 ---
 - 모든 예외는 IllegalArgumentException로 발생시킨다. 
