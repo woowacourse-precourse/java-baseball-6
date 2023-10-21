@@ -11,6 +11,7 @@ public class InputValidation {
         validateLength(trimmed);
         validateOnlyDigit(trimmed);
         validateContainZero(trimmed);
+        validateDuplicateNumber(trimmed);
 
         return (convertStrToIntegerList(trimmed));
     }
@@ -24,7 +25,9 @@ public class InputValidation {
 
     // 숫자로만 이루어져있는지 검증
     public void validateOnlyDigit(String input) {
-        if (!input.chars().allMatch(Character::isDigit)) {
+        boolean checkOnlyDigit = input.chars().allMatch(Character::isDigit);
+
+        if (!checkOnlyDigit) {
             throw new IllegalArgumentException("숫자만 입력해 주세요.");
         }
     }
@@ -37,6 +40,13 @@ public class InputValidation {
     }
 
     // 중복수에 대한 검증
+    public void validateDuplicateNumber(String input) {
+        if (input.chars().distinct().count() < 3) {
+            throw new IllegalArgumentException("중복된 수는 입력할 수 없습니다");
+        }
+    }
+
+    // 문자열 -> 리스트 변환
     /*
     * 드디어 stream 써보는군아~~
     * 타입 변환할 때, for문을 돌면서 작업할 때. 공부하던거 드디어 쓴당!!

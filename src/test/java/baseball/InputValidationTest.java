@@ -79,4 +79,13 @@ class InputValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("재시작은 1, 게임 종료는 2입니다.");
     }
+
+    @DisplayName("오류 검증 - 중복된 수를 입력했다면 (중복된 수는 입력할 수 없습니다) 에러 메시지")
+    @Test
+    void validateDuplicateNumber() {
+        String input = "112";
+        assertThatThrownBy(() -> inputValidation.validateDuplicateNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("중복된 수는 입력할 수 없습니다");
+    }
 }
