@@ -1,6 +1,7 @@
 package baseball.game;
 
 import baseball.computer.Computer;
+import baseball.domain.command.Command;
 import baseball.domain.number.GameNumber;
 import baseball.domain.result.Result;
 import baseball.game.validate.NumberValidation;
@@ -35,14 +36,21 @@ public class BaseballGame {
             Result result = rule.check(inputUserNumber(), computer);
             outputView.showResult(result);
             if (result.isGameClear()) {
-                running = false;
                 checkRestart();
+                running = false;
             }
         }
     }
 
-    public void checkRestart() {
+    private void checkRestart() {
         outputView.showOptionMenu();
+        inputUserCommand();
+    }
+
+    private Command inputUserCommand() {
+        String command = inputView.inputNumber();
+        NumberValidation.validate(command);
+        return new Command(Integer.valueOf(command));
     }
 
     private GameNumber inputUserNumber() {
