@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
 
-    public void numberSuggestion() {
+    public int numberSuggestion() {
         System.out.print("숫자를 입력해주세요 : ");
-        Console.readLine();
+        return Integer.parseInt(Console.readLine());
     }
 
     public int retryOrEnd() {
