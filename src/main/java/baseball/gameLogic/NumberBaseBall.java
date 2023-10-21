@@ -3,6 +3,8 @@ package baseball.gameLogic;
 import baseball.userInterface.MessageViewer;
 import baseball.models.Score;
 
+import java.util.List;
+
 import static baseball.models.Constants.*;
 
 /*
@@ -11,56 +13,60 @@ import static baseball.models.Constants.*;
 
 public class NumberBaseBall {
     NumberChecker numberChecker;
-    InputValidator inputValidator;
     MessageViewer messageViewer;
-    Score score;
-    UserAction userAction;
     ComputerAction computerAction;
+    UserAction userAction;
+
+    List<Integer> computerNumList, userNumList;
+    int mind;
 
     public void init(){
         numberChecker = new NumberChecker();
-        inputValidator = new InputValidator();
         messageViewer = new MessageViewer();
         computerAction = new ComputerAction();
         userAction = new UserAction();
 
-        computerAction.generateNumber();
+        mind = WANNA_KEEP_PLAYING;
     }
 
     public void run(){
-        int mind = WANNA_KEEP_PLAYING;
+        Score score;
+
+        computerAction.generateNumber();
+        computerNumList = computerAction.getNumberList();
 
         messageViewer.printStartMsg();
 
         while (mind == WANNA_KEEP_PLAYING){
             messageViewer.printInputRequestMsg();
-            userAction.inputAnswer(inputValidator);
-            score = numberChecker.checkNumber(userAction.getNumberList(), computerAction.getNumberList());
 
-            int ballCount = score.ballCount;
-            int strikeCount = score.strikeCount;
-            messageViewer.printResultMsg(ballCount, strikeCount);
+            userAction.inputAnswer();
+            userNumList = userAction.getNumberList();
 
-            mind = checkKeepGoing(strikeCount);
+            score = numberChecker.checkNumber(userNumList, computerNumList);
+
+            messageViewer.printResultMsg(score.ballCount, score.strikeCount);
+
+            checkKeepPlaying(score.strikeCount);
         }
     }
 
-    public int checkKeepGoing(int strikeCount){
+    public void checkKeepPlaying(int strikeCount){
         if (strikeCount == MAX_STRIKES) {
             messageViewer.printGameEndMsg();
-            userAction.inputRestartFactor(inputValidator);
 
-            int mind = userAction.getMind();
-            regenerateNumber(mind);
+            userAction.inputRestartFactor();
+            mind = userAction.showMind();
 
-            return mind;
+            regenerateNumber();
         }
-
-        return WANNA_KEEP_PLAYING;
     }
 
-    public void regenerateNumber(int mind){
-        if (mind == WANNA_KEEP_PLAYING)
+    public void regenerateNumber(){
+        if (mind == WANNA_KEEP_PLAYING) {
             computerAction.generateNumber();
+            computerNumList = computerAction.getNumberList();
+        }
     }
+
 }
