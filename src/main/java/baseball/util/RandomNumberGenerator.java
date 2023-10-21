@@ -1,5 +1,6 @@
-package baseball;
+package baseball.util;
 
+import baseball.util.NumberGenerator;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;

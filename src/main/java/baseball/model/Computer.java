@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.NumberGenerator;
+import baseball.util.NumberGenerator;
 
 import java.util.List;
 import java.util.stream.IntStream;
