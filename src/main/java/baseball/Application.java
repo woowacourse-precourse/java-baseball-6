@@ -1,37 +1,38 @@
 package baseball;
 
-import java.util.ArrayList;
-
 public class Application {
-    public static void main(String[] args) throws IllegalArgumentException{
+    public static void main(String[] args) throws IllegalArgumentException {
+        GameManager gameManager = new GameManager();
+        User user = new User();
+        Computer computer = new Computer();
         startMessage();
-        doGame();
-        endMessage();
-        restartGame();
+        while (true) {
+            String result = startGame(user, computer, gameManager);
+            System.out.println(result);
+            if (gameManager.isCompleted(result)) {
+                endMessage();
+                restartGameMessage();
+                if (!gameManager.doGameAgain(Integer.parseInt(user.readLine()),computer)) break;
+            }
+        }
     }
 
     static void startMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    static void doGame() {
-        System.out.println("숫자를 입력해주세요 : 123");
-        System.out.println("1볼 1스트라이크");
+    static String startGame(User user, Computer computer, GameManager gameManager) {
+        System.out.print("숫자를 입력해주세요 : ");
+        user.readLine();
+        return gameManager.doGame(computer.number, user.number);
 
-
-        ArrayList<String> a = new ArrayList<>();
-        a.add("낫싱");
-        a.add("3스트라이크");
-        a.add("1볼 1스트라이크");
-        a.add("게임 종료");
-        System.out.println(a);
     }
 
     static void endMessage() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    static void restartGame() {
+    static void restartGameMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }
