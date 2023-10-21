@@ -12,34 +12,37 @@
    <br>
 ## 구조
 #### Controller : BaseBallGame<br>
--> Player, Refree 생성 (Model)<br>
+-> Player, Refree, Computer 생성 (Model)<br>
 -> Player의 동작을 컨트롤 (입력)<br>
 -> Refree의 동작을 컨트롤 (IsStrike, IsBall, Exception 처리 등)<br>
-#### View : GameResult<br>
+-> Computer 동작을 컨트롤 (Random 숫자 생성)<br>
+#### View : GameResult <br>
 -> Model에게 정보를 받은 Controller로 부터 게임 진행 상황을 전달 받음<br>
 -> 인터페이스가 되어서 출력을 담당<br>
-#### Model : Player<br>
+#### Model : Player <br>
 -> 입력<br>
-#### Model : Refree<br>
+#### Model : Refree <br>
 -> Player의 입력에 대해서 판단을 함<br>
 -> 게임 종료를 판단<br>
 -> 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 지 판단<br>
 -> 잘못된 값을 입력할 경우 IllegalArgumentException 처리<br>
+#### Model : Computer <br>
+-> Random한 세 자리 숫자를 생성함<br>
 <br>
 ## Flow
 1. BaseBallGame을 컨트롤 하는 객체가 생성된다.
-2. Controller로 게임을 시작한다.
-3. 게임을 시작하면 Controller에 의해 자동으로 Computer는 숫자를 생각한다.
+2. 객체가 생성되면 Controller에 의해 자동으로 Computer는 숫자를 생각한다.
+3. Controller로 게임을 시작한다.
 4. Player는 숫자를 입력한다.
 5. Refree는 판단한다.
 6. 4-5를 반복하고 Refree는 게임 종료를 판단한다.
 7. 게임 종료 후에 Player의 의사에 따라 Refree는 게임을 재시작할지 완전히 종료할지 판단한다.
    <br>
 ## 기능
-1. 스트라이크를 판단하는 기능(Refree) [ ]
-2. 볼을 판단하는 기능(Refree) [ ]
-3. 낫싱을 판단하는 기능(Refree) [ ]
-4. 컴퓨터가 숫자를 랜덤으로 생각하는 기능(Controller) [ ]
+1. 스트라이크를 판단하는 기능(Refree) [o]
+2. 볼을 판단하는 기능(Refree) [o]
+3. 낫싱을 판단하는 기능(Refree) [o]
+4. 컴퓨터가 숫자를 랜덤으로 생각하는 기능(Computer) [o]
 5. 게임을 종료할 지 판단하는 기능(Refree) [ ]
 6. 게임을 다시 시작하는 기능 [ ]
 7. 게임을 완전히 종료하는 기능 [ ]
