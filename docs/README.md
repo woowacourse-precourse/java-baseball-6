@@ -133,6 +133,7 @@
 
 - 테스트는 기본적으로 clean test를 위해 실패의 경우에도 결과값을 반대로 지정하여 통과하도록 하였다.  
 <br>
+
 - [x] 입력 테스트 완료
 
   <img src="./assets/input_test.png">  
