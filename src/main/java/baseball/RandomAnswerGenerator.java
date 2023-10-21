@@ -11,12 +11,12 @@ public class RandomAnswerGenerator implements AnswerGenerator {
     public static final int MAX_BASEBALL_NUMBER = 9;
 
     @Override
-    public List<Integer> generate() {
+    public Answer generate() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < ANSWER_SIZE) {
             addNonDuplicatedNumber(answer);
         }
-        return answer;
+        return new Answer(answer);
     }
 
     private static void addNonDuplicatedNumber(List<Integer> answer) {

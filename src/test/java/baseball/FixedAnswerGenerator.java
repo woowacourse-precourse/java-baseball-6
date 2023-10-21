@@ -4,7 +4,7 @@ import java.util.List;
 
 public class FixedAnswerGenerator implements AnswerGenerator {
     @Override
-    public List<Integer> generate() {
-        return List.of(7, 1, 3);
+    public Answer generate() {
+        return new Answer(List.of(7, 1, 3));
     }
 }
