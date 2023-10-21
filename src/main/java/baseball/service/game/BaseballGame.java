@@ -1,18 +1,18 @@
 package baseball.service.game;
 
-import baseball.service.output.OutPutView;
-import baseball.service.output.Output;
-import baseball.service.calculator.BaseballCalculator;
 import baseball.domain.computer.ComputerNumber;
+import baseball.dto.Result;
+import baseball.service.calculator.BaseballCalculator;
+import baseball.service.calculator.Calculate;
 import baseball.service.input.Input;
 import baseball.service.input.InputView;
-import baseball.dto.Result;
-import baseball.service.calculator.Calculate;
+import baseball.service.output.OutPutView;
+import baseball.service.output.Output;
 import baseball.util.error.ErrorMessage;
 import baseball.util.message.PrintMessage;
 import camp.nextstep.edu.missionutils.Console;
 
-public class BaseballGame implements GameInterface{
+public class BaseballGame implements GameInterface {
     private static final int TARGET_NUMBER = 3;
     private static final int REPLAY_NUMBER = 1;
     private static final int QUIT_NUMBER = 2;
@@ -37,23 +37,25 @@ public class BaseballGame implements GameInterface{
     }
 
     private void playingGame(final ComputerNumber computerNumber) {
-        while (true){
+        while (true) {
             int[] inputNumber = input.execute();
             Result result = calculate.calculateBallAndStrike(computerNumber, inputNumber);
             output.execute(result);
-            if (isWin(result)) break;
+            if (isWin(result)) {
+                break;
+            }
         }
     }
 
     private static boolean isWin(final Result result) {
-        if(isStrikeTargetNum(result)){
+        if (isStrikeTargetNum(result)) {
             return true;
         }
         return false;
     }
 
     private static boolean isStrikeTargetNum(Result result) {
-        return result.getStrikeCount() == TARGET_NUMBER;
+        return result.strikeCount() == TARGET_NUMBER;
     }
 
     private void wannaPlayOrQuit() {
@@ -65,7 +67,7 @@ public class BaseballGame implements GameInterface{
     }
 
     private static void isValidNum(int decision) {
-        if(isNotOne(decision) && isNotTwo(decision)){
+        if (isNotOne(decision) && isNotTwo(decision)) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_DECISION.toString());
         }
     }
@@ -79,13 +81,13 @@ public class BaseballGame implements GameInterface{
     }
 
     private static void isQuit(final int decision) {
-        if(decision == QUIT_NUMBER){
+        if (decision == QUIT_NUMBER) {
 
         }
     }
 
     private void isReplay(final int decision) {
-        if(decision ==REPLAY_NUMBER){
+        if (decision == REPLAY_NUMBER) {
             play();
         }
     }
