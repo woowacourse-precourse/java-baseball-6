@@ -37,7 +37,7 @@ public class Application {
                 }
             }
 
-            if(Restart().equals("1")) {
+            if(ReStart().equals("1")) {
                 GameStart();
             } else {
                 System.out.println("게임이 종료되었습니다.");
@@ -48,7 +48,7 @@ public class Application {
 
     }
 
-    public static String Restart() {
+    public static String ReStart() {
         System.out.println("게임을 새로 시작려면 1, 종료하려면 2를 입력하세요.");
 
         return Console.readLine();
