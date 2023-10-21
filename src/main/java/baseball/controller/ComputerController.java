@@ -26,6 +26,7 @@ public class ComputerController {
 
     private boolean compareNumber(int computerNumber, int playerNumber) {
         if (computerNumber == playerNumber) {
+            outputView.print_strike(3);
             return true;
         }
         compareComputerAndPlayer(playerNumber);
