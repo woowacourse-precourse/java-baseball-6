@@ -41,8 +41,8 @@ public class Application {
         } catch (NumberFormatException e) { //만약 숫자가 아닌 값이 있다면 해당 예외 발생
             throw new IllegalArgumentException("ERROR: 숫자만을 입력해주세요");
         }
-        if (number.length() != 3) {
-            throw new IllegalArgumentException("ERROR : 3자리의 숫자를 입력해주세요");
+        if (number.length() != 3 || number.contains("0")) {
+            throw new IllegalArgumentException("ERROR : 1~9의 3자리 숫자를 입력해주세요");
         }
     }
 
