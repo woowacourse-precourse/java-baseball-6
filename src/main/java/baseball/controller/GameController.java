@@ -13,19 +13,25 @@ public class GameController {
 
     public void play() {
         output.showStartMessage();
-        gameService.init();
 
-        while (!gameService.isGameOver()) {
-            output.showInputMessage();
-            gameService.makePlayer(input.readNumber());
+        while (true) {
+            gameService.init();
 
-            gameService.judge();
-            output.showGameResult(gameService.getJudgement());
+            while (!gameService.isGameOver()) {
+                output.showInputMessage();
+                gameService.makePlayer(input.readNumber());
+
+                gameService.judge();
+                output.showGameResult(gameService.getJudgement());
+            }
+
+            output.showGameOver();
+            output.showGameRestartMessage();
+
+            Command command = Command.find(input.readNumber());
+            if (command.equals(Command.EXIT)) {
+                return;
+            }
         }
-
-        output.showGameOver();
-        output.showGameRestartMessage();
-
-        Command.find(input.readNumber());
     }
 }
