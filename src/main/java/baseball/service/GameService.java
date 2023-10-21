@@ -19,13 +19,13 @@ public class GameService {
     }
 
     private static int getStrikeCount(RandomNumber randomNumber, InputNumber inputNumber) {
-        return (int) IntStream.range(0, 2)
+        return (int) IntStream.range(0, 3)
                 .filter(index -> isStrike(randomNumber, inputNumber, index))
                 .count();
     }
 
     private static int getBallCnt(RandomNumber randomNumber, InputNumber inputNumber) {
-        return (int) IntStream.range(0, 2)
+        return (int) IntStream.range(0, 3)
                 .filter(index -> isBall(randomNumber, inputNumber, index))
                 .count();
     }

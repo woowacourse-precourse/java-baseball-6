@@ -3,7 +3,6 @@ package baseball.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RandomNumber {
@@ -22,16 +21,12 @@ public class RandomNumber {
                 computer.add(randomNumber);
             }
         }
-        Collections.shuffle(computer);
+        System.out.println(computer);
         return computer;
     }
 
     public boolean numberExistsInList(Integer numberAtIndex) {
         return randomNumber.contains(numberAtIndex);
-    }
-
-    public Integer getNumberAtIndex(int index) {
-        return randomNumber.get(index);
     }
 
     public boolean isNotSameNumberAtIndex(Integer numberAtIndex, int index) {

@@ -15,7 +15,7 @@ public enum RetryCommand {
         return Arrays.stream(RetryCommand.values())
                 .filter(retryCommand -> retryCommand.command.equals(input))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public boolean isRetry() {

@@ -1,14 +1,17 @@
 package baseball.util;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TypeConvertor {
 
     public static List<Integer> stringToIntergerList(String input) {
-        return input.chars()
-                .filter(Character::isDigit)
-                .mapToObj(Character::getNumericValue)
-                .collect(Collectors.toList());
+        try {
+            return Arrays.stream(input.split(""))
+                    .map(Integer::parseInt)
+                    .toList();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력해주세요");
+        }
     }
 }
