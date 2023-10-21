@@ -3,22 +3,24 @@ package baseball.service;
 import baseball.domain.HintType;
 import baseball.dto.HintDto;
 
+import java.util.List;
 import java.util.Map;
 
 public class Service {
     public HintDto getHintDto(Map<HintType, Integer> hintMap, int size) {
-        if (hintMap.get(HintType.NOTHING).equals(size)) {
-            hasOnlyNOTHING(hintMap);
-            return new HintDto(hintMap);
+        if (!hintMap.get(HintType.NOTHING).equals(size)) {
+            hintMap.remove(HintType.NOTHING);
         }
-        hintMap.remove(HintType.NOTHING);
+        removeIfZero(hintMap);
 
         return new HintDto(hintMap);
     }
 
-    private void hasOnlyNOTHING(Map<HintType, Integer> hintMap) {
-        hintMap.remove(HintType.STRIKE);
-        hintMap.remove(HintType.BALL);
-        hintMap.put(HintType.NOTHING, 1);
+    private void removeIfZero(Map<HintType, Integer> hintMap) {
+        List<HintType> removes = hintMap.keySet().stream()
+                .filter(type -> hintMap.get(type) == 0)
+                .toList();
+
+        removes.forEach(hintMap::remove);
     }
 }

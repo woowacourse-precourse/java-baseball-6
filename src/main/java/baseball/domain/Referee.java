@@ -9,7 +9,6 @@ public final class Referee {
 
     public Referee(AnswerNumbers answerNumbers) {
         this.answerNumbers = answerNumbers;
-
         initHintMap();
     }
 
