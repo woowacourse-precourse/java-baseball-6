@@ -11,7 +11,7 @@ public class Referee {
 		return false;
 	}
 
-	private int calculateBall(List<Integer> computerNumber, List<Integer> playerNumber) {
+	public int calculateBall(List<Integer> computerNumber, List<Integer> playerNumber) {
 		int ball = 0;
 
 		for (int i = 0; i < computerNumber.size(); i++) {
@@ -25,7 +25,7 @@ public class Referee {
 		return ball;
 	}
 
-	private int calculateStrike(List<Integer> computerNumber, List<Integer> playerNumber) {
+	public int calculateStrike(List<Integer> computerNumber, List<Integer> playerNumber) {
 		int strike = 0;
 
 		for (int i = 0; i < computerNumber.size(); i++) {
