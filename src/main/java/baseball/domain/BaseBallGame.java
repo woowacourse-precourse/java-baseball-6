@@ -9,8 +9,7 @@ public class BaseBallGame {
     private List<Integer> computerList;
 
     public BaseBallGame() {
-        ComputerNum computerNum = new ComputerNum();
-        computerList = computerNum.buildComputerNum();
+        buildNewComputerList();
     }
 
     public GameResult compareNumList(List<Integer> userList) {
