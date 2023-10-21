@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.controller.Game;
+import baseball.controller.Generator;
 import baseball.controller.Validation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -30,7 +32,7 @@ public class Application {
         }
     }
 
-    private static void run() {
+    public static void run() {
         List<Integer> answer = Generator.generateAnswer(LIST_LEN);
         boolean playing = true;
 
