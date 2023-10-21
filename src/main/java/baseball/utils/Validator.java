@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Validation {
+public class Validator {
 
     public static void validateUserNumbers(String userNumbers, int numbersLength) {
         validateInputEmptyOrNull(userNumbers);
