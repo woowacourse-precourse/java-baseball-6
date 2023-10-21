@@ -9,6 +9,8 @@ import baseball.view.OutputView;
 import java.util.Objects;
 
 public class Game {
+    private static final String GAME_EXIT_FLAG = "1";
+
     private Number computerNumber;
     private Number playerNumber;
     private Result result;
@@ -17,7 +19,7 @@ public class Game {
         do {
             computerNumber = Number.generateRandomNumber(NUMBER_LENGTH);
             play();
-        } while (Objects.equals(InputView.requestRestartOrExit(), "1"));
+        } while (Objects.equals(InputView.requestRestartOrExit(), GAME_EXIT_FLAG));
     }
 
     private void play() {
