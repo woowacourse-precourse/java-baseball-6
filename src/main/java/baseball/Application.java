@@ -24,6 +24,10 @@ public class Application {
             int strike = 0;
             System.out.print("숫자를 입력해주세요 : ");
             String humanInput = Console.readLine();
+            //숫자가 아닌 값을 넣었을 때 예외처리ㅂ
+            if(!humanInput.matches("\\d+")){
+                throw new IllegalArgumentException("숫자가 아닌 값이 입력되었습니다.");
+            }
             //String으로 받았기 때문에 각각의 인덱스들을 int값으로 변리
             char[] digits = humanInput.toCharArray();
             for (char digitChar : digits) {
@@ -45,26 +49,27 @@ public class Application {
                 List<Integer> restart = new ArrayList<>();
                 getComNumber(restart);
                 comArrayList.clear();
-                for (int i = 0; i < 3; i++){
+                for (int i = 0; i < 3; i++) {
                     comArrayList.add(restart.get(i));
                 }
                 answerStatus = Integer.parseInt(Console.readLine());
             } else {
-                if (strike == 0){
+                if (strike == 0 && ball == 0) {
+                    System.out.println("낫싱");
+                } else if (strike == 0) {
                     System.out.println(ball + "볼");
-                }
-                else if(ball == 0){
+                } else if (ball == 0) {
                     System.out.println(strike + "스트라이크");
-                }
-                else {
+                } else {
                     System.out.println(ball + "볼 " + strike + "스트라이크");
                 }
             }
             humanArrayList.clear();
         }
     }
+
     //컴퓨터 랜덤넘버 생성 함수
-    private static void getComNumber(List<Integer> comArrayList){
+    private static void getComNumber(List<Integer> comArrayList) {
         while (comArrayList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!comArrayList.contains(randomNumber)) {
