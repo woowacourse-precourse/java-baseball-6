@@ -1,4 +1,7 @@
 package baseball;
+import baseball.domain.Computer;
+import baseball.domain.Judge;
+import baseball.domain.User;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -15,8 +18,6 @@ public class Application {
 
         Judge judge = new Judge();
 
-        System.out.println(randomNumber);
-
         // 본격적으로 시작
         do{
             user.reset(); // 사용자 입력값 초기화
@@ -25,12 +26,10 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String inputNumber = user.generateInput();
 
-
             judge.judgeResult(randomNumber, inputNumber); // 스트라이크, 볼 판정
             String result = judge.getResult();
 
             System.out.println(result);
-
 
             boolean complete = judge.checkThree();
 
@@ -43,7 +42,6 @@ public class Application {
                 randomNumber = computer.generateRandom();
             }
             judge.reset();
-
 
         }while(!inputSystem.equals("2"));
     }
