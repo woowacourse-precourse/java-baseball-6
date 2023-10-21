@@ -1,14 +1,15 @@
 package baseball.service;
 
-import static baseball.Constants.BALL_NUMBER;
-import static baseball.Constants.DIGIT_NUMBER;
-import static baseball.Constants.RANGE_END_NUMBER;
-import static baseball.Constants.RANGE_START_NUMBER;
-import static baseball.Constants.STRIKE_NUMBER;
+import static baseball.version1.Constants.BALL_NUMBER;
+import static baseball.version1.Constants.DIGIT_NUMBER;
+import static baseball.version1.Constants.RANGE_END_NUMBER;
+import static baseball.version1.Constants.RANGE_START_NUMBER;
 import static baseball.constants.Printer.ERROR_PHRASES;
+import static baseball.version1.Constants.STRIKE_NUMBER;
 
 import baseball.constants.Printer;
 import baseball.repository.ComputerRepository;
+import baseball.repository.ScoreRepository;
 import baseball.validator.DataValidator;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -19,6 +20,7 @@ public class Service {
     private final ComputerRepository computerRepository;
     private final Printer printer;
     private final DataValidator dataValidator;
+    private ScoreRepository scoreRepository;
     public Service() {
         this.computerRepository = new ComputerRepository();
         this.printer = new Printer();
@@ -45,7 +47,7 @@ public class Service {
     private int[] convertListToArray(ArrayList<Integer> computerAnswer) {
         int[] answerArray = new int[3];
         int answerOrder = 0;
-        for(int answer : computerAnswer){
+        for (int answer : computerAnswer) {
             answerArray[answerOrder++] = answer;
         }
 
@@ -63,19 +65,38 @@ public class Service {
     }
 
     private int[] convertStringToInt(String[] inputStringArray) {
-            int[] answerArray = new  int[3];
-            int answerOrder = 0;
-            try {
-                for (String input : inputStringArray) {
-                    answerArray[answerOrder]=Integer.parseInt(input);
-                }
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException(ERROR_PHRASES);
-            } catch (ArrayIndexOutOfBoundsException e){
-                throw new IllegalArgumentException(ERROR_PHRASES);
+        int[] answerArray = new int[3];
+        int answerOrder = 0;
+        try {
+            for (String input : inputStringArray) {
+                answerArray[answerOrder] = Integer.parseInt(input);
             }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_PHRASES);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new IllegalArgumentException(ERROR_PHRASES);
+        }
         return answerArray;
     }
 
+
+    public void compareTwoAnswer(int[] playerAnswer) {
+        scoreRepository = new ScoreRepository();
+        for (int i = 0; i < playerAnswer.length; i++) {
+            checkPlayerValueAndComputerAnswer(playerAnswer, i);
+        }
+    }
+
+    private void checkPlayerValueAndComputerAnswer(int[] playerAnswer, int i) {
+        int[] computerAnswer = computerRepository.getAnswerArray();
+        for (int j=0;j<computerAnswer.length;j++) {
+            if ( playerAnswer[i]==computerAnswer[j] && i == j){
+                scoreRepository.increaseStrike();
+            }
+            if (playerAnswer[i]==computerAnswer[j] && i != j) {
+                scoreRepository.increaseBall();
+            }
+        }
+    }
 
 }

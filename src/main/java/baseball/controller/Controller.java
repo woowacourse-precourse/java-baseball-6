@@ -1,6 +1,7 @@
 package baseball.controller;
 
 
+import baseball.service.Service;
 import java.util.ArrayList;
 
 public class Controller {
@@ -37,8 +38,8 @@ public class Controller {
     }
 
     private void startGame() {
-        ArrayList<Integer> playerAnswer = service.getPlayerAnswer();
-        int[] scoreTable = service.compareTwoAnswer(playerAnswer);
+        int[] playerAnswer = service.getPlayerAnswer();
+        service.compareTwoAnswer(playerAnswer);
         service.printResult(scoreTable);
     }
 
