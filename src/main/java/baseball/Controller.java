@@ -3,24 +3,31 @@ package baseball;
 import java.util.List;
 
 public class Controller {
-    private static Integer command = 1;
+    private static Answer answer;
+    private static InputView inputView = new InputView();
+    private static OutputView outputView = new OutputView();
 
     public static void run() {
         NumberGenerator generator = new NumberGenerator();
 
-        InputView inputView = new InputView();
         inputView.greetingMsg();
+        answer = generator.createAnswer();
 
-        Answer answer = generator.createAnswer();
-
-        while (command != 2) {
-            try {
-                inputView.inputGuideMsg();
-                List<Integer> input = inputView.inputByConsole();
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
+        while (true) {
+            inputView.inputGuideMsg();
+            List<Integer> input = inputView.inputByConsole();
+            GameScore gameScore = answer.calcScore(input);
+            outputView.printResult(gameScore);
+            if (gameScore.isUserFindAnswer()) {
+                outputView.roundEndMsg();
+                inputView.askRestartMsg();
+                if (inputView.provideRestartDecisionFromUser()) {
+                    answer = generator.createAnswer();
+                    continue;
+                }
                 break;
             }
         }
+
     }
 }
