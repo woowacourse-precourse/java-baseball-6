@@ -20,7 +20,9 @@ public class GameController {
     private static Computer computer = new Computer(new BaseballRandomNumberGenerator().generate());
     private final static InputView inputView = new InputView();
     private final static OutputView outputView = new OutputView();
+
     public void start(){
+        computer.printComputer();
         outputView.printGameStartMessage();
         boolean gameLoopCommand = true;
         while (gameLoopCommand){
@@ -44,16 +46,15 @@ public class GameController {
     }
 
     private static String provideStrikeAndBallCount(int ballCount, int strikeCount){
+        //둘다 0 나싱
         if(ballCount == COUNT_ZERO_VALUE && strikeCount == COUNT_ZERO_VALUE){
             return NOTHING_STRING;
-        }
-        if (ballCount != COUNT_ZERO_VALUE && strikeCount == COUNT_ZERO_VALUE) {
+        }else if (ballCount != COUNT_ZERO_VALUE && strikeCount == COUNT_ZERO_VALUE) {
             return String.valueOf(ballCount) + BALL_STRING;
-        }
-        if (ballCount == COUNT_ZERO_VALUE && strikeCount != COUNT_ZERO_VALUE) {
+        }else if (ballCount == COUNT_ZERO_VALUE) {
             return String.valueOf(strikeCount) + STRIKE_STRING;
         }
-        return String.valueOf(ballCount) + BALL_STRING + " " + String.valueOf(ballCount) + STRIKE_STRING;
+        return String.valueOf(ballCount) + BALL_STRING + " " + String.valueOf(strikeCount) + STRIKE_STRING;
     }
 
     private static boolean gameRetry(){

@@ -15,7 +15,7 @@ public class Computer {
         int ballCount = 0;
         int strikeCount = 0;
         for(int i = 0; i < userNumberList.size(); i++){
-            if(checkStrinkeNumber(computerNumberList.get(i),userNumberList.get(i))){
+            if(checkStrikeNumber(computerNumberList.get(i),userNumberList.get(i))){
                 strikeCount += 1;
                 continue;
             }
@@ -26,7 +26,7 @@ public class Computer {
         return new ArrayList<>(Arrays.asList(ballCount,strikeCount));
     }
 
-    private static boolean checkStrinkeNumber(int comuputerNumber, int userNumber){
+    private static boolean checkStrikeNumber(int comuputerNumber, int userNumber){
         return comuputerNumber == userNumber;
     }
 
