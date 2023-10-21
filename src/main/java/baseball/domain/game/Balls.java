@@ -2,9 +2,10 @@ package baseball.domain.game;
 
 import baseball.domain.ball.Ball;
 import baseball.domain.status.BallStatus;
-import baseball.utils.Constants;
 
 import java.util.*;
+
+import static baseball.utils.Constants.*;
 
 public class Balls {
     private final List<Ball> balls;
@@ -16,7 +17,9 @@ public class Balls {
 
     private void validateBalls(List<Integer> numbers) {
         if (isInvalidSize(numbers)) {
-            throw new IllegalArgumentException("공들은 3개의 공으로 이루어져야 합니다.");
+            throw new IllegalArgumentException(
+                    String.format("공들은 %d개의 공으로 이루어져야 합니다.", BALLS_SIZE)
+            );
         }
 
         if (hasDuplicatedNumber(numbers)) {
@@ -25,7 +28,7 @@ public class Balls {
     }
 
     private boolean isInvalidSize(List<Integer> numbers) {
-        return numbers.size() != Constants.BALLS_SIZE;
+        return numbers.size() != BALLS_SIZE;
     }
 
     private boolean hasDuplicatedNumber(List<Integer> numbers) {
@@ -37,7 +40,7 @@ public class Balls {
 
         for (Ball ball : this.balls) {
             BallStatus ballStatus = balls.judgeBallStatusOf(ball);
-            countMap.put(ballStatus, countMap.getOrDefault(ballStatus, Constants.INITIAL_COUNT) + 1);
+            countMap.put(ballStatus, countMap.getOrDefault(ballStatus, INITIAL_COUNT) + 1);
         }
 
         return countMap;

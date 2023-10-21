@@ -15,7 +15,9 @@ public class Position {
 
     private void validatePosition(int position) {
         if (position < MIN_POSITION || position > MAX_POSITION) {
-            throw new IllegalArgumentException("공의 위치는 1에서 3사이의 값이어야 합니다.");
+            throw new IllegalArgumentException(
+                    String.format("공의 위치는 %d에서 %d사이의 값이어야 합니다.", MIN_POSITION, MAX_POSITION)
+            );
         }
     }
 

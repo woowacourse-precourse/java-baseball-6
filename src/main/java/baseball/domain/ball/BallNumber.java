@@ -14,7 +14,9 @@ public class BallNumber {
 
     private void validateBallNumber(int ballNumber) {
         if (ballNumber < MIN_BALL_NUMBER || ballNumber > MAX_BALL_NUMBER) {
-            throw new IllegalArgumentException("공의 숫자는 1에서 9사이의 값이어야 합니다.");
+            throw new IllegalArgumentException(
+                    String.format("공의 숫자는 %d에서 %d사이의 값이어야 합니다.", MIN_BALL_NUMBER, MAX_BALL_NUMBER)
+            );
         }
     }
 
