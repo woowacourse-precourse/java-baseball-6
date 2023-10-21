@@ -1,4 +1,4 @@
-package baseball;
+package baseball.Domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.Domain;
 
 public class BaseballScore {
 

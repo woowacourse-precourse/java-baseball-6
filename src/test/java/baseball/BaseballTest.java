@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.Domain.Baseball;
+import baseball.Domain.BaseballScore;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

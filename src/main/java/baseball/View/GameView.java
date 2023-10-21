@@ -1,5 +1,6 @@
-package baseball;
+package baseball.View;
 
+import baseball.Domain.BaseballScore;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
