@@ -6,22 +6,32 @@ public class Application {
 
     public static void main(String[] args) {
 
-        PrintGuide printGuide = new PrintGuide();
+        PrintManager printGuide = new PrintManager();
         NumberMaker numberMaker = new NumberMaker();
         InputManager inputManager = new InputManager();
         ScoreCalculator scoreCalculator = new ScoreCalculator();
 
         printGuide.printGameStart();
 
+        int ball = 0;
+        int strike = 0;
+
         List<Integer> randomNumbers = numberMaker.makeRandomNumbers();
         System.out.println("randomNumbers = " + randomNumbers);
 
-        printGuide.printInputValue();
+        while (strike != 3) {
 
-        List<Integer> guessNumbers = inputManager.getGuessNumbers();
-        System.out.println("guessNumbers = " + guessNumbers);
+            printGuide.printInputValue();
 
-        scoreCalculator.doCalculate(randomNumbers, guessNumbers);
+            List<Integer> guessNumbers = inputManager.getGuessNumbers();
+            System.out.println("guessNumbers = " + guessNumbers);
+
+            strike = scoreCalculator.computeStrike(randomNumbers, guessNumbers);
+            ball = scoreCalculator.computeBall(randomNumbers, guessNumbers, strike);
+
+
+        }
+
 
     }
 }
