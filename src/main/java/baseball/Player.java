@@ -15,10 +15,11 @@ public class Player {
 
     public void setInput(){
         input = Console.readLine();
+        validateInput();
     }
 
     public String getInput(){
-        validateInput();
+
         return input;
     }
 
