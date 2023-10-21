@@ -6,6 +6,7 @@ public class InputValidator {
     private static final String NOT_NUMBER = "입력값이 숫자가 아닙니다.";
     private static final String ZERO_INCLUDED = "0은 사용되면 안됩니다. 수의 범위는 1~9 입니다.";
     private static final String DUPLICATE_DIGITS = "서로 다른 수로 이루어지지 않았습니다.";
+    private static final String ONE_OR_TWO = "1 또는 2만 입력해야 합니다.";
     private static final int NUMBER_LENGTH = 3;
 
     public static void validateUserNumber(String userNumber) {
@@ -24,6 +25,12 @@ public class InputValidator {
 
         if (hasDuplicateDigits(userNumber)) {
             throw new IllegalArgumentException(DUPLICATE_DIGITS);
+        }
+    }
+
+    public static void validateRestartCommand(String restartCommand) {
+        if (!restartCommand.equals("1") && !restartCommand.equals("2")) {
+            throw new IllegalArgumentException(ONE_OR_TWO);
         }
     }
 
