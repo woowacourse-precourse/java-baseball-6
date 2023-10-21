@@ -20,13 +20,14 @@ public class Computer {
         duplicateCheck[num] = true;
         return false;
     }
-    public int[] getJudgeResult(int[] userInput){
-        int[] judgeResult = new int[2];
+    public Judgement getJudgeResult(int[] userInput){
+        int strike = 0;
+        int ball = 0;
         for(int userIndex = 0; userIndex < 3; userIndex++){
-            if(isStrike(userInput, userIndex)) judgeResult[1]++;
-            else if(isBall(userInput, userIndex)) judgeResult[0]++;
+            if(isStrike(userInput, userIndex)) strike++;
+            else if(isBall(userInput, userIndex)) ball++;
         }
-        return judgeResult;
+        return new Judgement(ball, strike);
     }
     private boolean isStrike(int[] userInput, int index){
         return userInput[index] == computerNumbers[index];

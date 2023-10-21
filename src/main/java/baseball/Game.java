@@ -11,14 +11,13 @@ public class Game {
     public void playGame(){
         do{
             computer.initComputerNumbers();
-            boolean gameOver = false;
+            Judgement judgeResult;
             do{
                 int[] userInputs = display.getUserInput();
-                int[] judgeResult = computer.getJudgeResult(userInputs);
-                display.printJudgeResult(judgeResult);
-                gameOver = (judgeResult[1] == 3);
+                judgeResult = computer.getJudgeResult(userInputs);
+                judgeResult.printResult();
             }
-            while(!gameOver);
+            while(!judgeResult.isOut());
             display.printGameOverText();
         }
         while(display.getRestartInput());
