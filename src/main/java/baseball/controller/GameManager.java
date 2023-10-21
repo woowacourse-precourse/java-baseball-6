@@ -44,7 +44,7 @@ public class GameManager {
         OutputHandler.printAllStrike();
         String playerChoice = InputHandler.inputNewGameOrGameOver();
         InputVerifier.checkGameNumber(playerChoice);
-        if (Integer.parseInt(playerChoice) == SystemConstant.NEW_GAME) {
+        if (playerChoice.equals(SystemConstant.NEW_GAME)) {
             SystemManager.newGame();
         }
     }

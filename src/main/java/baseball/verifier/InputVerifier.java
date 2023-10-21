@@ -12,9 +12,7 @@ public class InputVerifier {
     }
 
     public static void checkGameNumber(String isGameNumber) throws IllegalArgumentException {
-        checkNumeric(isGameNumber);
-        int intGameNumber = Integer.parseInt(isGameNumber);
-        if (intGameNumber != SystemConstant.NEW_GAME && intGameNumber != SystemConstant.END_GAME) {
+        if (!isGameNumber.equals(SystemConstant.NEW_GAME) && !isGameNumber.equals(SystemConstant.END_GAME)) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_GAME_NUMBER);
         }
     }
