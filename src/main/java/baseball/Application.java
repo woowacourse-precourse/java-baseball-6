@@ -1,6 +1,8 @@
 package baseball;
 
-import static baseball.status.ErrorCode.*;
+import static baseball.status.ErrorCode.INVALID_DISTINCT_INPUT;
+import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT;
+import static baseball.status.ErrorCode.INVALID_LENGTH_INPUT;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -16,8 +18,39 @@ class Game {
         while (!inputNum.equals(computerNum)) {
             String input = setInput();
             inputNum = getIntegerInput(input);
+            output(computerNum, inputNum);
         }
         replay();
+    }
+
+    /**
+     * 스트라이크, 볼, 낫싱 결과 출력
+     *
+     * @param computerNum 컴퓨터 수
+     * @param inputNum    입력 수
+     */
+    private void output(List<Integer> computerNum, List<Integer> inputNum) {
+        int ball = 0;
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computerNum.contains(inputNum.get(i)) && computerNum.indexOf(inputNum.get(i)) == i) {
+                strike++;
+            } else if (computerNum.contains(inputNum.get(i)) && computerNum.indexOf(inputNum.get(i)) != i) {
+                ball++;
+            }
+        }
+        if (ball > 0) {
+            System.out.print(ball + "볼 ");
+        }
+
+        if (strike > 0) {
+            System.out.print(strike + "스트라이크");
+        }
+
+        if (strike == 0 && ball == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println();
     }
 
     /**
