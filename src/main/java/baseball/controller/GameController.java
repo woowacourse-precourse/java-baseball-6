@@ -42,7 +42,7 @@ public class GameController {
     }
 
     public void endGame() {
-        View.gameEnd();
+        View.gameEnd(GAME_SIZE);
         String responseRetry = Console.readLine();
         if (responseRetry.equals(RETRY_GAME)) {
             initGame();
