@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import static constant.constant.*;
+import static constant.StringError.*;
 
 public class playGame {
     String answer = new String();
@@ -18,11 +19,11 @@ public class playGame {
                 answer+=String.valueOf(randomNum);
             }
         }
-
+        /*
         for(char c: answer.toCharArray())
         {
             System.out.print(c);
-        }
+        }*/
 
 
 
@@ -57,16 +58,16 @@ public class playGame {
         String tmp="";
         if (inputString.length() !=NORMAL_INPUT_LENGTH)
         {   //예외처리 : 문자열 길이 판단
-            throw new IllegalArgumentException("잘못된 길이의 문자를 입력하셨습니다.");
+            throw new IllegalArgumentException(wrongLengthInputError);
         }
         for(char c: inputString.toCharArray()) {
             //예외처리 : 음수 입력 및 문자입력
             if (c < '0' || c > '9') {
-                throw new IllegalArgumentException("잘못된 타입의 문자를 입력하셨습니다.");
+                throw new IllegalArgumentException(wrongTypeInputError);
             }
             // 예외처리 : 중복된 숫자 입력
             if(tmp.contains(String.valueOf(c))){
-                throw new IllegalArgumentException("중복된 숫자를 입력하셨습니다");
+                throw new IllegalArgumentException(sameNumberError);
             }
             tmp+=String.valueOf(c);
 
@@ -132,7 +133,7 @@ public class playGame {
             return false;
         }
         else{
-            throw new IllegalArgumentException("잘못된 입력을 입력하셨습니다.");
+            throw new IllegalArgumentException(wrongInputError);
         }
     }
 }
