@@ -9,7 +9,7 @@ import static validation.Validator.validateInput;
 import static validation.Validator.validateOneOrTwo;
 
 public class Application {
-    private static final int TOTAL_CARDS = 3;
+    public static final int TOTAL_CARDS = 3;
 
     public static void main(String[] args) {
         playBaseballGame();
