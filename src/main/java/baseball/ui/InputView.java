@@ -2,8 +2,9 @@ package baseball.ui;
 
 import baseball.global.util.Validator;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
     private final OutputView outputView;
@@ -18,18 +19,14 @@ public class InputView {
     public List<Integer> readPlayerNumber() {
         String[] inputNumbers = readNumber();
 
-        List<Integer> numbers = new ArrayList<>();
-        for (String number : inputNumbers) {
-            numbers.add(Integer.parseInt(number));
-        }
-
-        return numbers;
+        return Arrays.stream(inputNumbers)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     private String[] readNumber() {
         outputView.printNumberInputMessage();
-        String inputValue = Console.readLine();
-        String[] inputNumbers = inputValue.split(SEPARATOR);
+        String[] inputNumbers = readLine().split(SEPARATOR);
 
         Validator.validatePlayerNumber(inputNumbers);
         return inputNumbers;
@@ -37,7 +34,7 @@ public class InputView {
 
     public String readRestartOrNot() {
         outputView.printRestartSelectMessage();
-        String selectOption = Console.readLine();
+        String selectOption = readLine();
 
         validateRestartOrNotValue(selectOption);
         return selectOption;
@@ -47,5 +44,9 @@ public class InputView {
     private static void validateRestartOrNotValue(String selectOption) {
         Validator.validateNumberFormat(selectOption);
         Validator.validateSelectOptionType(selectOption);
+    }
+
+    private String readLine() {
+        return Console.readLine();
     }
 }
