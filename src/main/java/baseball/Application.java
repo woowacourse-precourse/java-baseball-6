@@ -26,7 +26,7 @@ public class Application {
 
         while(true){
             List<Integer> userNumber = getUserGuessThreeDigitNumber();
-            if(checkForGameEnd(computer,userNumber)){//3스트라이크인 경우,
+            if(playSingleGameRound(computer,userNumber)){//3스트라이크인 경우,
                 break;
             }
         }
@@ -60,7 +60,7 @@ public class Application {
         return user;
     }
 
-    public static boolean checkForGameEnd(List<Integer> user,List<Integer> computer){//1이면, 게임 종료하기 위한 단계로 간다.
+    public static boolean playSingleGameRound(List<Integer> user,List<Integer> computer){//1이면, 게임 종료하기 위한 단계로 간다.
 
         int numStrikes=0;
         int numBalls =0;
