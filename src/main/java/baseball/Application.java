@@ -18,30 +18,34 @@ public class Application {
         } catch(IllegalArgumentException e) {
             return;
         }
-
-
     }
 
     public static void GameStart() {
 
-        List<Integer> computerNumber = ComputerSelectNumber();
-        System.out.println("컴퓨터 숫자 : " + computerNumber);
-        while(true) {
-            List<Integer> playerNumber = PlayerSelectNumber();
-            CompareNumber(computerNumber, playerNumber);
+        try {
+            List<Integer> computerNumber = ComputerSelectNumber();
+            System.out.println("컴퓨터 숫자 : " + computerNumber);
+            while(true) {
+
+                List<Integer> playerNumber = PlayerSelectNumber();
+                CompareNumber(computerNumber, playerNumber);
 
 
-            if(strike==3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
+                if(strike==3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
             }
+
+            if(Restart().equals("1")) {
+                GameStart();
+            } else {
+                System.out.println("게임이 종료되었습니다.");
+            }
+        } catch(IllegalArgumentException e) {
+
         }
 
-        if(Restart().equals("1")) {
-            GameStart();
-        } else {
-            System.out.println("게임이 종료되었습니다.");
-        }
     }
 
     public static String Restart() {
@@ -56,15 +60,12 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
 
         while(computer.size()<3) {
-            try{
-                int randomNumber = Randoms.pickNumberInRange(9, 1);
+
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
 
                 if(!computer.contains(randomNumber)) {
                     computer.add(randomNumber);
                 }
-            } catch(IllegalArgumentException e) {
-                throw new IllegalArgumentException();
-            }
 
         }
         return computer;
@@ -74,7 +75,7 @@ public class Application {
         List<Integer> playerNumber = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
 
-        String player = Console.readLine();
+        String player = Console.readLine().replaceAll(" ", "");
 
         for(int i=0; i<player.length(); i++) {
             playerNumber.add(player.charAt(i) - '0');
