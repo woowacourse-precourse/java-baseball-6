@@ -60,6 +60,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_빈값이_입력될떄() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" 321 "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {

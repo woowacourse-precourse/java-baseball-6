@@ -2,18 +2,19 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.config.AppConfig;
 import baseball.game.BaseballGames;
 import baseball.service.RandomCodeService;
 import baseball.service.ValidateJudgeService;
-import baseball.service.impl.RandomCodeServiceImpl;
-import baseball.service.impl.ValidateJudgeServiceImpl;
 import baseball.vo.BaseballCode;
 import java.util.ArrayList;
 
 public class Application {
+
+    private static final AppConfig appConfig = new AppConfig();
     private static final BaseballGames baseballGames = new BaseballGames();
-    private static final RandomCodeService randomCodeService = new RandomCodeServiceImpl();
-    private static final ValidateJudgeService validateJudgeService = new ValidateJudgeServiceImpl();
+    private static final RandomCodeService randomCodeService = appConfig.randomCodeService();
+    private static final ValidateJudgeService validateJudgeService = appConfig.validateJudgeService();
 
     private static final String RESTART_COMMENT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String FINISH_COMMENT = "게임 종료";
