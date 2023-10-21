@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Objects;
+
 public class Result {
     private int strike;
     private int ball;
@@ -16,34 +18,49 @@ public class Result {
 
     @Override
     public String toString() {
-        if(strike + ball == 0){
+        if (strike + ball == 0) {
             return "낫싱";
         }
         StringBuilder result = new StringBuilder();
-        if(ball != 0){
+        if (ball != 0) {
             result.append(ball + "볼");
         }
         if (strike != 0) {
-            if(!result.isEmpty())
+            if (!result.isEmpty()) {
                 result.append(" ");
+            }
             result.append(strike + "스트라이크");
         }
 
         return result.toString();
     }
 
-    public void addStrike(){
+    public void addStrike() {
         this.strike++;
     }
-    public void addBall(){
+
+    public void addBall() {
         this.ball++;
     }
 
-    public int getStrike() {
-        return strike;
+    public boolean isAnswer() {
+        return this.strike == 3;
     }
 
-    public int getBall() {
-        return ball;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Result result = (Result) o;
+        return strike == result.strike && ball == result.ball;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(strike, ball);
     }
 }
