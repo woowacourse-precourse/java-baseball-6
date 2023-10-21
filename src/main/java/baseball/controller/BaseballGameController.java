@@ -12,6 +12,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BaseballGameController {
     public void startGame() {
@@ -48,20 +49,31 @@ public class BaseballGameController {
     }
 
     private Hint calculateHint(NumberList answer, NumberList guess) {
+        int ballCount = calculateBallCount(answer, guess);
+        int strikeCount = calculateStrikeCount(answer, guess);
+        return new Hint(ballCount, strikeCount);
+    }
+
+    private int calculateBallCount(NumberList answer, NumberList guess) {
         int ballCount = 0;
-        int strikeCount = 0;
         for (int i = 0; i < answer.getNumberList().size(); i++) {
             for (int j = 0; j < guess.getNumberList().size(); j++) {
-                if (answer.getNumberList().get(i).equals(guess.getNumberList().get(j))) {
-                    if (i != j) {
-                        ballCount++;
-                    } else {
-                        strikeCount++;
-                    }
+                if (Objects.equals(answer.getNumberList().get(i), guess.getNumberList().get(j)) && i != j) {
+                    ballCount++;
                 }
             }
         }
-        return new Hint(ballCount, strikeCount);
+        return ballCount;
+    }
+
+    private int calculateStrikeCount(NumberList answer, NumberList guess) {
+        int strikeCount = 0;
+        for (int i = 0; i < answer.getNumberList().size(); i++) {
+            if (answer.getNumberList().get(i).equals(guess.getNumberList().get(i))) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
     }
 
     private static class InputController {
