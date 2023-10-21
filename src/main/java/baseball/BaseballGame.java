@@ -33,6 +33,20 @@ public class BaseballGame {
         } while (result.get(1) != 3);
     }
 
+    //TODO: private 메서드에 static을 붙이는 게 적절한지 확인
+    private static Boolean restart() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        int newOrQuit = Integer.parseInt(Console.readLine());
+        if (newOrQuit==1) return true;
+        else if(newOrQuit==2) return false;
+        else {
+            System.out.println("잘못된 입력입니다.");
+            throw new IllegalArgumentException("재시작/종료 숫자 미일치");
+        }
+    }
+
     private static Computer initAnswer() {
         return new Computer();
     }
