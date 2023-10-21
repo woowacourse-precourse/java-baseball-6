@@ -16,4 +16,8 @@ public class InputView {
     public String readUserNumber() {
          return Console.readLine();
     }
+
+    public String readRestart() {
+        return Console.readLine();
+    }
 }
