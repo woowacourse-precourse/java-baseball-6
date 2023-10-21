@@ -22,9 +22,6 @@ public class Computer {
             }
             balls.add(num);
         }
-        for (int i : balls) {
-            System.out.println(i); //////////
-        }
     }
 
     public List<Integer> getBalls() {
