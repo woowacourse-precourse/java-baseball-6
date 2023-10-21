@@ -17,7 +17,7 @@ public class Service {
             Result result = computer.resultNumber(userNumber);
             Log.result(result.getBall(), result.getStrike());
             if (result.correctAnswer()) {
-                Log.info("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                Log.info("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return;
             }
         }

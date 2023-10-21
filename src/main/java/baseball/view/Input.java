@@ -13,7 +13,7 @@ public class Input {
 
     public static boolean readExitNumber() throws IllegalArgumentException {
         String input = Console.readLine();
-        Validation.checkNumberIsZeroOrOne(input);
+        Validation.checkNumberIsOneOrTwo(input);
         return stringToInt(input) == 1;
     }
 
