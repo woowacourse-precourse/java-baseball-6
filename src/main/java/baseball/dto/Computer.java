@@ -4,7 +4,7 @@ public class Computer {
     private String input = "";
     private int[] computerNumberBall;
 
-    Computer() {
+    public Computer() {
     }
 
     public String getInput() {

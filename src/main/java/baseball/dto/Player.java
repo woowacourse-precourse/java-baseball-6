@@ -5,7 +5,7 @@ public class Player {
     private int[] playerNumberBall;
     private String condition = "";
 
-    Player() {
+    public Player() {
     }
 
     public String getInput() {
