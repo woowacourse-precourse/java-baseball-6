@@ -26,6 +26,9 @@ public class MessageStream {
             finalMessage = strike + strikeMessage;
         }
         System.out.print(finalMessage + "\n");
+        if (strike == 3) {
+            printEndMessage();
+        }
     }
 
     public static void printEndMessage() {
