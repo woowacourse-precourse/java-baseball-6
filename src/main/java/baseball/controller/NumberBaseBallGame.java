@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.Compare;
 import baseball.Computer;
+import baseball.GameStatus;
 import baseball.input.AfterGameInput;
 import baseball.input.UserInput;
 
@@ -17,9 +18,9 @@ public class NumberBaseBallGame {
     private int strike = 0;
 
     public void game(){
-        int gameOver = 1;
-        while(gameOver == 1){
-            gameOver = startGame();
+        int gameStatus = GameStatus.PLAY.status;
+        while(gameStatus == GameStatus.PLAY.status){
+            gameStatus = startGame();
         }
     }
 

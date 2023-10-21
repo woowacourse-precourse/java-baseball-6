@@ -1,5 +1,7 @@
 package baseball.input;
 
+import baseball.GameStatus;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 public class AfterGameInput {
 
@@ -12,9 +14,11 @@ public class AfterGameInput {
         }catch (Exception e){
             throw new IllegalArgumentException("잘못된 입력값입니다.");
         }
-        if (inputNumber == 1 || inputNumber == 2) {
+
+        if (inputNumber == GameStatus.PLAY.status || inputNumber == GameStatus.FINISH.status) {
             return inputNumber;
-        } else {
+        }
+        else {
             throw new IllegalArgumentException("입력값은 1 또는 2이어야 합니다.");
         }
     }
