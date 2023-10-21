@@ -1,13 +1,14 @@
 package baseball.controller;
 
+import baseball.Configuration;
 import java.util.List;
 
 public class Validation {
 
-    private static final int CONTINUE = 1;
-    private static final int END = 2;
-    private static final int MIN_NUM = 1;
-    private static final int MAX_NUM = 9;
+    private static final int CONTINUE = Configuration.CONTINUE;
+    private static final int END = Configuration.END;
+    private static final int MIN_NUM = Configuration.MIN_NUM;
+    private static final int MAX_NUM = Configuration.MAX_NUM;
 
     public static void validateInputLength(String input, int value) {
         if (input.length() != value) {

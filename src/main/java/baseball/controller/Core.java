@@ -1,11 +1,12 @@
 package baseball.controller;
 
+import baseball.Configuration;
 import baseball.view.View;
 import java.util.List;
 
 public class Core {
 
-    private static final int LIST_LEN = 3;
+    private static final int LIST_LEN = Configuration.LIST_LEN;
 
     public static void run() {
         List<Integer> answer = Generator.generateAnswer(LIST_LEN);
