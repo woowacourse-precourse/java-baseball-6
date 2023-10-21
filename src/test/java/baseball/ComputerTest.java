@@ -16,6 +16,14 @@ public class ComputerTest extends NsTest {
         assertThat(computerNumbers.size()).isEqualTo(3);
     }
 
+    @Test
+    void 컴퓨터_숫자중복값() {
+        Computer computer = new Computer();
+        List<Integer> computerNumbers = computer.generateComputerNumbers();
+        assertThat(computerNumbers.get(0)).isNotEqualTo(computerNumbers.get(1)).isNotEqualTo(computerNumbers.get(2));
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
