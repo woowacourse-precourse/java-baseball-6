@@ -2,7 +2,7 @@ package study;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import baseball.UserNumber;
+import baseball.Model.UserNumber;
 import org.junit.jupiter.api.Test;
 
 class UserNumberTest {
