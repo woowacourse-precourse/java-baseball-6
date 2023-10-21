@@ -48,6 +48,14 @@ class BaseBallUITest {
     }
 
     @Test
+    void 숫자_야구게임_플레이_문구가_출력되야한다() {
+        final String expect = "숫자를 입력해주세요 :";
+        BaseBallUI baseBallUI = new BaseBallUI();
+        baseBallUI.playing();
+        Assertions.assertThat(outputStreamCaptor.toString().trim()).isEqualTo(expect);
+    }
+
+    @Test
     void 숫자_야구게임을끝나는_문구가_출력되야한다() {
         final String expect = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         BaseBallUI baseBallUI = new BaseBallUI();
