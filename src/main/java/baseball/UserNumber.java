@@ -1,6 +1,4 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,6 +6,7 @@ public class UserNumber {
 
     private static final int MAX_NUMBER_LENGTH = 3;
     private final String userNumber;
+
 
     public UserNumber(String number) {
         validateLength(number);
@@ -33,17 +32,21 @@ public class UserNumber {
     }
 
     public void validateDuplication(String number){
+        Set<Character> validateNumber = getCharacters(number);
+        if(validateNumber.size() != 3){
+            throw new IllegalArgumentException("숫자가 중복될 수 없습니다.");
+        }
+    }
+
+    private Set<Character> getCharacters(String number) {
         Set<Character> validateNumber = new HashSet<>();
 
         for(int i = 0; i < MAX_NUMBER_LENGTH; i++){
             validateNumber.add(number.charAt(i));
         }
-
-        if(validateNumber.size() != 3){
-            throw new IllegalArgumentException("숫자가 중복될 수 없습니다.");
-        }
-
+        return validateNumber;
     }
+
 
 
 }
