@@ -3,7 +3,6 @@ package baseball;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import baseball.model.GenerateRandomNumbers;
-import baseball.presenter.GamePresenter;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -19,9 +18,9 @@ public class GenerateRandomNumbersTest {
         }
         String validNumbers = sb.toString();
 
-        GamePresenter gamePresenter = new GamePresenter();
+        BaseballGame baseballGame = new BaseballGame();
         try {
-            gamePresenter.validateNumbers(validNumbers);
+            baseballGame.validateNumbers(validNumbers);
         } catch (IllegalArgumentException e) {
             fail("예외가 발생했습니다: " + e.getMessage());
         }
