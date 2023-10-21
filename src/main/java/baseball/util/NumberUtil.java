@@ -1,6 +1,18 @@
 package baseball.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NumberUtil {
+    public static List<Integer> converStringToList(String numberString) {
+        ArrayList<Integer> numberList = new ArrayList<>();
+        for (int i = 0; i < numberString.length(); i++) {
+            numberList.add(Character.getNumericValue(numberString.charAt(i)));
+        }
+
+        return numberList;
+    }
+
     protected static void validateEmpty(String number) {
         if (number.isEmpty()) {
             throw new IllegalArgumentException("입력값은 비어있지 않아야 합니다.");
