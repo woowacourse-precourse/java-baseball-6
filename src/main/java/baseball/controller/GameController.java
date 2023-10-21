@@ -14,29 +14,30 @@ public class GameController {
     private InputView inputView;
     private OutputView outputView;
 
-    public GameController(){
+    public GameController() {
         this.numberMatcher = new NumberMatcher();
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
 
-    public void gameStart(){
+    public void gameStart() {
         outputView.displayStartGame();
 
-        do{
+        do {
             initializeAnswerNumber();
             playRound();
-        }while(isContinued());
+        } while (isContinued());
     }
 
-    private void playRound(){
-        while(true) {
+    private void playRound() {
+        while (true) {
             String userInput = inputView.requestUserNumber();
             UserNumber userNumber = new UserNumber(userInput);
 
-            GameResult result = numberMatcher.match(userNumber.getUserNumber(), answerNumber.getAnswerNumber());
+            GameResult result = numberMatcher.match(userNumber.getUserNumber(),
+                answerNumber.getAnswerNumber());
 
-            if(result.isSuccess()){
+            if (result.isSuccess()) {
                 outputView.displayWinningMessage();
                 break;
             }
@@ -46,8 +47,13 @@ public class GameController {
         }
     }
 
-    private void initializeAnswerNumber(){
+    private void initializeAnswerNumber() {
         this.answerNumber = new AnswerNumber();
+    }
+
+    private boolean isContinued() {
+        int choice = inputView.requestGameRestart();
+        return choice == 1;
     }
 
 
