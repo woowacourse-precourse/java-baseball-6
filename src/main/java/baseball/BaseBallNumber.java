@@ -14,6 +14,13 @@ public class BaseBallNumber {
         return answerNumber.equals(userNumber);
     }
 
+    public boolean checkBall(Integer userNumber, int index) {
+        if (checkStrike(userNumber, index)) {
+            return false;
+        }
+        return baseballNumber.contains(userNumber);
+    }
+
     public Integer getStrikeCount(BaseBallNumber userNumber) {
         Integer strikeCount = 0;
         for (int i = 0; i < 3; ++i) {
@@ -29,7 +36,7 @@ public class BaseBallNumber {
         Integer ballCount = 0;
         for (int i = 0; i < 3; ++i) {
             Integer number = userNumber.baseballNumber.get(i);
-            if (baseballNumber.contains(number) && !checkStrike(number, i)) {
+            if (checkBall(number, i)) {
                 ballCount++;
             }
         }
