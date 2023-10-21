@@ -51,8 +51,8 @@ class ApplicationTest extends NsTest {
         BaseBallGame baseBallGame2 = new BaseBallGame(new ByteArrayInputStream("12345".getBytes()));
 
         // when
-        Throwable thrown1 = catchThrowable(() -> baseBallGame1.setUserNumbers());
-        Throwable thrown2 = catchThrowable(() -> baseBallGame2.setUserNumbers());
+        Throwable thrown1 = catchThrowable(baseBallGame1::setUserNumbers);
+        Throwable thrown2 = catchThrowable(baseBallGame2::setUserNumbers);
 
         // then
         assertThat(thrown1).isInstanceOf(IllegalArgumentException.class)
@@ -140,7 +140,7 @@ class ApplicationTest extends NsTest {
 
         // when
         baseBallGame.setUserNumbers();
-        Throwable thrown = catchThrowable(() -> baseBallGame.checkExit());
+        Throwable thrown = catchThrowable(baseBallGame::checkExit);
 
         // then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
