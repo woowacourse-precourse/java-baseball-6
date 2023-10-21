@@ -13,12 +13,11 @@ public class PlayNumberBaseBallGame {
     private static int ball;
     private static int nothing;
 
-    public static void play(){
+    public static void start(){
         System.out.println(Notification.START_GAME);
         String gameStatus = RESTART_GAME;
         while(gameStatus.equals(RESTART_GAME)){
             List<Integer> number = NumberGenerator.generateAnswerNumbers();
-            initStatus();
             playGame(number);
             System.out.println(RESTART_OR_STOP_GAME);
             gameStatus = scanner.next();
@@ -26,4 +25,4 @@ public class PlayNumberBaseBallGame {
         }
     }
 
-}
+ }
