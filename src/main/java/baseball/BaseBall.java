@@ -109,7 +109,7 @@ public class BaseBall {
                 throw new IllegalArgumentException();
             }
 
-            if (number.charAt(0)  == '1' || number.charAt(0) == '2') {
+            if (number.charAt(0) == '1' || number.charAt(0) == '2') {
                 if (number.charAt(0) - '0' == 2) {
                     return true;
                 } else {
