@@ -46,4 +46,8 @@ public class ComputerNumber {
                 .count();
     }
 
+    public boolean verifyEnd() {
+        return gameResult.getStrike() == 3;
+    }
+
 }
