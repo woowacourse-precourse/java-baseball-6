@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Score {
+    private int strike;
+    private int ball;
+
     public static Integer countStrike(List<Integer> playerNumber, List<Integer> computerNumber) {
         int strike = 0;
 
@@ -44,5 +47,10 @@ public class Score {
         if (ball > 0) {
             System.out.printf("%d볼\n", ball);
         }
+    }
+
+    public Score() {
+        this.strike = 0;
+        this.ball = 0;
     }
 }
