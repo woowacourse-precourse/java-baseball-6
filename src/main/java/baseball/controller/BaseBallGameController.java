@@ -1,14 +1,11 @@
 package baseball.controller;
 
-
+import baseball.BaseballGameMessage;
 import baseball.service.BaseBallService;
 
 import java.util.List;
 
-import static baseball.BaseballGameMessage.*;
-
 public class BaseBallGameController {
-
     private final BaseBallService baseBallService;
 
     public BaseBallGameController() {
@@ -16,7 +13,7 @@ public class BaseBallGameController {
     }
 
     public void startGame() {
-        System.out.println(START_GAME);
+        System.out.println(BaseballGameMessage.START_GAME);
 
         List<Integer> targetNumber = baseBallService.generateRandomNumbers();
     }
