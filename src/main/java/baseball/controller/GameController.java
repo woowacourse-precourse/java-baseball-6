@@ -35,10 +35,9 @@ public class GameController {
     }
 
     private void play() {
-        boolean playWant = true;
         int computerNumber = selectNewNumber();
 
-        while (playWant) {
+        while (true) {
             askNumberInput();
 
             int userNumber = InputController.receiveUserNumberWidthLength(PLAY_NUMBER_DIGIT);
@@ -49,7 +48,7 @@ public class GameController {
             ResultView.printResult(ball, strike);
 
             if (isStrikeEqualToGoal(strike)) {
-                playWant = false;
+                break;
             }
         }
         printGameEnd();
