@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.model;
 
 import baseball.utill.Converter;
 import baseball.view.InputView;

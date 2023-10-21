@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.domain.Result;
+import baseball.model.Result;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
 import org.junit.jupiter.api.Test;
