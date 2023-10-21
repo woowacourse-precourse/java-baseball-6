@@ -47,8 +47,7 @@
 - `OutputView`
     - [x] `startGame()`: 최초 시작시 `"숫자 야구 게임을 시작합니다."`를 출력.
     - [x] `endGame()`: 매 게임시 3자리 숫자를 모두 맞추면 `"3개의 숫자를 모두 맞히셨습니다! 게임종료"`를 출력.
-    - [x] `matchResult()`: `Computer`의 `match()` 메서드에서 `"볼"`, `"스트라이크"`를 넘겨받아서 `Score` 출력하고 `"3스트라이크"` 인지 아닌지를 `boolean`
-      으로 반환.
+    - [x] `matchResult()`: `Computer`의 `match()` 메서드에서 `"볼"`, `"스트라이크"`를 넘겨받아서 `Score` 출력.
 - `InputValidator`: 사용자가 잘못된 값을 입력시 `IllegalArgumentException` 발생시킨 후 애플리케이션 종료.
     - [x] `validateBaseballNumber()`: `InputView`의 `baseballNumber()`에서 입력받은 숫자가 1~9 범위의 서로다른 3자리 숫자인지 검증.
     - [x] `validateContinueOrExitNumber()`: `InputView`의 `continueOrExit()`에서 입력받은 숫자가 1 또는 2의 한자리 숫자인지 검증.
