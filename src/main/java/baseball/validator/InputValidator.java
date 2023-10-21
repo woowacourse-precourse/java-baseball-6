@@ -15,4 +15,11 @@ public class InputValidator {
         }
         return true;
     }
+
+    public static boolean isBetweenOneAndNine(String input) {
+        if (input.chars().anyMatch(c -> c < '1' || c > '9')) {
+            throw new IllegalArgumentException("입력값이 1~9 사이의 숫자가 아닙니다.");
+        }
+        return true;
+    }
 }
