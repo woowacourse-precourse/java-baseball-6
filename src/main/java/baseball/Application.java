@@ -97,17 +97,22 @@ public class Application{
 
     private static int findBall(List<Integer> computerNumber, List<Integer> userNumber, int strike){
         int count = 0;
-        int[] visited = new int[10];
-        for(int i=0;i<3;i++){
-            visited[computerNumber.get(i)]++;
-            visited[userNumber.get(i)]++;
-        }
+        int[] visited = countExistingNumber(computerNumber,userNumber);
         for(int i=1;i<=9;i++){
             if(visited[i]==2){
                 count++;
             }
         }
         return count-strike;
+    }
+
+    private static int[] countExistingNumber(List<Integer> computerNumber, List<Integer> userNumber){
+        int[] visited = new int[10];
+        for(int i=0;i<3;i++){
+            visited[computerNumber.get(i)]++;
+            visited[userNumber.get(i)]++;
+        }
+        return visited;
     }
 
 }
