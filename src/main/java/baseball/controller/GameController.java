@@ -2,9 +2,9 @@ package baseball.controller;
 
 import static baseball.properties.Properties.*;
 
-import baseball.model.GameResult;
 import java.util.List;
 
+import baseball.model.GameResult;
 import baseball.service.GameService;
 import baseball.utils.RandomUtils;
 import baseball.view.View;

@@ -2,13 +2,15 @@ package baseball.service;
 
 import static baseball.properties.Properties.*;
 
-import baseball.model.GameResult;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
+
+import baseball.model.GameResult;
+
+
 
 public class GameService {
 
