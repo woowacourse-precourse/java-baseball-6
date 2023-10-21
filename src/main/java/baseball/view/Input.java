@@ -11,10 +11,10 @@ public class Input {
         return stringToInt(input);
     }
 
-    public static int readExitNumber() throws IllegalArgumentException {
+    public static boolean readExitNumber() throws IllegalArgumentException {
         String input = Console.readLine();
         Validation.checkNumberIsZeroOrOne(input);
-        return stringToInt(input);
+        return stringToInt(input) == 1;
     }
 
 

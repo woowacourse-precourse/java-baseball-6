@@ -37,4 +37,38 @@ public class Computer {
     private boolean existNumber(int randomNumber) {
         return numberList[randomNumber];
     }
+
+    public int[] makeUserNumberList(int userNumber) {
+        int division = 100;
+        int[] userNumberList = new int[3];
+        for (int i = 0; i < 3; i++) {
+            userNumberList[i] = userNumber / division;
+            division /= 10;
+        }
+        return userNumberList;
+    }
+
+    public Result resultNumber(int userNumber) {
+        int[] userNumberList = makeUserNumberList(userNumber);
+        int ballCount = 0;
+        int strikeCount = 0;
+        for (int i = 0; i < MAX_SIZE; i++) {
+            if (checkStrikeByIndexAndNumber(i, userNumberList[i])) {
+                strikeCount++;
+                continue;
+            }
+            if (checkBallByNumber(userNumberList[i])) {
+                ballCount++;
+            }
+        }
+        return Result.createResult(ballCount, strikeCount);
+    }
+
+    private boolean checkBallByNumber(int userNumber) {
+        return numberList[userNumber];
+    }
+
+    private boolean checkStrikeByIndexAndNumber(int index, int number) {
+        return balls.get(index) == number;
+    }
 }
