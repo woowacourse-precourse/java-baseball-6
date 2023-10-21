@@ -6,17 +6,17 @@ import java.util.List;
 
 public class Game {
 
-    private List<Integer> randomAnswer;
-
+    private final List<Integer> randomAnswer;
     private Boolean isGameEnd;
 
     public Game() {
-        this.randomAnswer = new ArrayList<>();
-        createRandomAnswer();
+        this.randomAnswer = createRandomAnswer();
         this.isGameEnd = false;
     }
 
     private List<Integer> createRandomAnswer() {
+        ArrayList<Integer> randomAnswer = new ArrayList<>();
+
         while (randomAnswer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomAnswer.contains(randomNumber)) {

@@ -9,7 +9,7 @@ public class GameController {
     private Game game;
     private GameView gameView;
 
-    public boolean startGame() {
+    public boolean playingGame() {
 
         String userInput;
         game = new Game();
