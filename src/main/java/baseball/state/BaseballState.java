@@ -18,8 +18,8 @@ public class BaseballState {
         return state.get(n);
     }
 
-    public BaseballMatchResult match(BaseballState other) {
-        final var matcher = new BaseballMatchHelper(this);
+    public BaseballStateMatchResult match(BaseballState other) {
+        final var matcher = new BaseballStateMatchHelper(this);
         var ball = 0;
         var strike = 0;
 
@@ -32,6 +32,6 @@ public class BaseballState {
             ball += BooleanUtil.booleanToInt(isBall);
 
         }
-        return new BaseballMatchResult(ball, strike);
+        return new BaseballStateMatchResult(ball, strike);
     }
 }

@@ -7,11 +7,11 @@ import static baseball.constant.BaseballStrings.STRIKE_MESSAGE;
 
 import baseball.util.Assertions;
 
-public class BaseballMatchResult {
+public class BaseballStateMatchResult {
     private final int ball;
     private final int strike;
 
-    public BaseballMatchResult(int _ball, int _strike) {
+    public BaseballStateMatchResult(int _ball, int _strike) {
         Assertions.assertInRange(_ball, 0, MAX_MATCH);
         Assertions.assertInRange(_strike, 0, MAX_MATCH);
         Assertions.assertInRange(_ball + _strike, 0, MAX_MATCH);

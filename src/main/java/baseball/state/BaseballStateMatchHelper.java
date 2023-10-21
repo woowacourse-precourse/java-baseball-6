@@ -6,10 +6,10 @@ import static baseball.constant.BaseballConstants.MAX_MATCH;
 import baseball.util.Assertions;
 import java.util.Arrays;
 
-public class BaseballMatchHelper {
+public class BaseballStateMatchHelper {
     private final int[] indexMatcher;
 
-    public BaseballMatchHelper(BaseballState state) {
+    public BaseballStateMatchHelper(BaseballState state) {
         indexMatcher = new int[MAX_DIGIT + 1];
         Arrays.fill(indexMatcher, -1);
         for (int i = 0; i < MAX_MATCH; i++) {
