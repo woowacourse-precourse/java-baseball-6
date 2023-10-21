@@ -21,10 +21,7 @@ public class StringUtils {
     }
 
     public static boolean isLengthEqual(final String value, final int length) {
-        if (value == null) {
-            throw new IllegalArgumentException();
-        }
-        if (length < 0) {
+        if (value == null || length < 0) {
             throw new IllegalArgumentException();
         }
         return value.length() == length;

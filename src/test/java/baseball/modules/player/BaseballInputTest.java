@@ -1,4 +1,4 @@
-package baseball.modules.console;
+package baseball.modules.player;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.*;
@@ -19,7 +19,7 @@ class BaseballInputTest {
     @Test
     @DisplayName("사용자가 입력 양식에 맞게 입력을 했을 경우")
     public void checkValidationUserInput_Success() {
-        assertThat(new BaseballInput("123")).isEqualTo(new BaseballInput("123"));
+        assertThat(new Human("123")).isEqualTo(new Human("123"));
     }
 
     @ParameterizedTest
@@ -27,7 +27,7 @@ class BaseballInputTest {
     @DisplayName("사용자가 입력 양식에 맞지 않게 입력한 경우 - 숫자가 아닌 문자")
     public void checkValidationUserInput_Exception_NotNumeric(final String input) {
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> new BaseballInput(input));
+                () -> new Human(input));
     }
 
     static Stream<Arguments> userInput_Exception_NotNumeric() {
@@ -45,7 +45,7 @@ class BaseballInputTest {
     @DisplayName("사용자가 입력 양식에 맞지 않게 입력한 경우 - 3자리가 아님")
     public void checkValidationUserInput_Exception_InvalidLength(final String input) {
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> new BaseballInput(input));
+                () -> new Human(input));
     }
 
     static Stream<Arguments> userInput_Exception_InvalidLength() {
@@ -62,7 +62,7 @@ class BaseballInputTest {
     @DisplayName("사용자가 입력 양식에 맞지 않게 입력한 경우 - 중복된 숫자를 입력")
     public void checkValidationUserInput_Exception_Duplicate(final String input) {
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> new BaseballInput(input));
+                () -> new Human(input));
     }
 
     static Stream<Arguments> userInput_Exception_Duplicate() {
@@ -79,7 +79,7 @@ class BaseballInputTest {
     @DisplayName("사용자가 입력 양식에 맞지 않게 입력한 경우 - 범위에 맞지 않은 숫자 입력")
     public void checkValidationUserInput_Exception_InvalidRange(final String input) {
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> new BaseballInput(input));
+                () -> new Human(input));
     }
 
     static Stream<Arguments> userInput_Exception_InvalidRange() {
