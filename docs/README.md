@@ -21,7 +21,7 @@
   * query에 대한 계산
   * query 받고 출력
 * attribute
-  * answer
+  * answer: List<Integer>
 * method
   * run
   * askQuery
@@ -33,3 +33,5 @@
   * Game 밖에서 결정 후 시작하는 것이 적절.
 ### askSomething은 출력의 책임이 있나?
   * 출력의 책임을 ask가 지는 쪽이 깔끔하다고 판단
+### answer의 타입은 어떤 것이 좋을까?
+  * int로 하면 결국 쪼개야 하는데, 애초에 List<>로 짜는게 낫겠다.
