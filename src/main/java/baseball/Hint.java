@@ -21,15 +21,15 @@ public class Hint {
     }
 
     private void countStrikeAndBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        for(int i=0; i<NUMBER_SIZE; i++) {
-            if(playerNumbers.get(i).equals(computerNumbers.get(i))) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
+            if (playerNumbers.get(i).equals(computerNumbers.get(i))) {
                 strike++;
                 continue;
             }
 
-           if(computerNumbers.contains(playerNumbers.get(i))) {
+           if (computerNumbers.contains(playerNumbers.get(i))) {
                ball++;
-            }
+           }
         }
     }
 }

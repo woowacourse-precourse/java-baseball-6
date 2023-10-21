@@ -13,10 +13,18 @@ public class Print {
     public static void printHint(Hint hint) {
         int ball = hint.getBall();
         int strike = hint.getStrike();
-        if(ball != 0 && strike != 0) printBallAndStrike(ball, strike);
-        if(ball != 0 && strike == 0) printBall(ball);
-        if(ball == 0 && strike != 0) printStrike(strike);
-        if(ball == 0 && strike == 0) printNothing();
+        if ((ball != 0) && (strike != 0)) {
+            printBallAndStrike(ball, strike);
+        }
+        if ((ball != 0) && (strike == 0)) {
+            printBall(ball);
+        }
+        if ((ball == 0) && (strike != 0)) {
+            printStrike(strike);
+        }
+        if ((ball == 0) && (strike == 0)) {
+            printNothing();
+        }
     }
 
     public static void printGameWin() {

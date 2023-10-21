@@ -35,19 +35,19 @@ public class Player {
     }
 
     private void validateNumberDigit(String input) {
-        if(input.length() != 3) {
+        if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateRedundantNumber(List<Integer> numbers, int number) {
-        if(numbers.contains(number)){
+        if (numbers.contains(number)) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateIsNumber(char input) {
-        if(!Character.isDigit(input)) {
+        if (!Character.isDigit(input)) {
             throw new IllegalArgumentException();
         }
     }

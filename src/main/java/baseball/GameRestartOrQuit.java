@@ -16,7 +16,7 @@ public class GameRestartOrQuit {
     }
 
     private void validateRestartOrQuitNumber(String number) {
-        if (!number.equals(GAME_RESTART) && !number.equals(GAME_QUIT)) {
+        if ((!number.equals(GAME_RESTART)) && (!number.equals(GAME_QUIT))) {
             throw new IllegalArgumentException();
         }
     }

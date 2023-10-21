@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+
     private final List<Integer> computer;
 
     public Computer() {

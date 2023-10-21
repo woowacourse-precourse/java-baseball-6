@@ -11,7 +11,6 @@ public class Application {
 
         boolean gameQuit;
         do {
-
             runGame();
             Print.printGameWin();
 
