@@ -38,7 +38,7 @@ public class BaseBallInputDevice {
   }
 
   private void validateStartLength(String inputStr) {
-    if (inputStr.length() > INPUT_SIZE) {
+    if (inputStr.length() != INPUT_SIZE) {
       throw new IllegalArgumentException("3개의 숫자만 입력이 가능합니다.");
     }
   }
