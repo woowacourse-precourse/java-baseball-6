@@ -7,10 +7,10 @@ public class UserInputValidation {
         if (userInput.length() != GAME_NUMBER_SIZE) {
             return false;
         }
-        return isNumeric(userInput);
+        return isRangeGameNumber(userInput);
     }
 
-    public boolean isNumeric(String userInput) {
+    public boolean isRangeGameNumber(String userInput) {
         for (int i = 0; i < GAME_NUMBER_SIZE; ++i) {
             char c = userInput.charAt(i);
             int number = Character.getNumericValue(c);
