@@ -15,9 +15,11 @@ public class Application {
             System.out.println("숫자를 입력해주세요: ");
             UserNumber userNumber = new UserNumber(); // 각 라운드마다 새로운 입력 받기
             List<Integer> userNumbers = userNumber.getUserNumbers();
+            Computer computer = new Computer();
+            List<Integer> computerNumbers = computer.getComputerNumbers();
 
             Compare compare = new Compare();
-            compare.compareNumbers(userNumbers);
+            compare.countBall(computerNumbers, userNumbers);
 
             if (compare.strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
