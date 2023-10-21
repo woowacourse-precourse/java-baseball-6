@@ -1,12 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
 
 public class Application {
     public void startGame() {
@@ -27,9 +27,15 @@ public class Application {
         return randomNumber;
     }
 
+    public String getUserNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+
+        return input;
+    }
+
     public static void main(String[] args) {
         Application app = new Application();
         app.startGame();    // 게임 시작
-
     }
 }
