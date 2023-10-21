@@ -10,10 +10,20 @@ public class UserNumber {
 
     public UserNumber() {
         userNumber = new ArrayList<>();
-        while (userNumber.size() < 3) {
+        try {
             String userNum = Console.readLine();
-            int number = Integer.parseInt(userNum);
-            userNumber.add(number);
+            String[] numbers = userNum.split("");
+            
+            if (numbers.length == 3) {
+                for (String numStr : numbers) {
+                    int number = Integer.parseInt(numStr);
+                    userNumber.add(number);
+                }
+            } else {
+                System.exit(1); // 입력된 숫자 3자리가 아닌 경우 종료
+            }
+        } catch (IllegalArgumentException e) {
+            System.exit(1); // 입력된 숫자가 잘못된 경우 종료
         }
     }
 
