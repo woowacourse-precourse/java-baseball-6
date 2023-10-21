@@ -8,6 +8,9 @@ import java.util.List;
 public class TargetNumber {
 
     private final List<Integer> targetNumber;
+    private static final int VALID_VALUES_LENGTH = 3;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
 
     public TargetNumber() {
         this.targetNumber = generateComputerNumbers();
@@ -16,8 +19,8 @@ public class TargetNumber {
     private List<Integer> generateComputerNumbers() {
         List<Integer> computer = new ArrayList<>();
 
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < VALID_VALUES_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);

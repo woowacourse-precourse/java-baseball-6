@@ -5,9 +5,11 @@ import static baseball.handler.ErrorHandler.INVALID_NUMBER;
 public class GameChoice {
 
     private final int choice;
+    private final int RESTART_GAME = 1;
+    private final int FINISH_GAME = 2;
 
     public GameChoice() {
-        this.choice = 1;
+        this.choice = RESTART_GAME;
     }
 
     public GameChoice(int choice) {
@@ -17,12 +19,12 @@ public class GameChoice {
     }
 
     private void validate(int choice) {
-        if (choice != 1 && choice != 2) {
+        if (choice != RESTART_GAME && choice != FINISH_GAME) {
             throw INVALID_NUMBER.getException();
         }
     }
 
     public boolean isRestart() {
-        return choice == 1;
+        return choice == RESTART_GAME;
     }
 }

@@ -4,6 +4,7 @@ public class GameResult {
 
     private final int strike;
     private final int ball;
+    private final int THREE_STRIKE = 3;
 
     public GameResult(int strike, int ball) {
         this.strike = strike;
@@ -22,7 +23,7 @@ public class GameResult {
         if (ball == 0 && strike == 0) {
             result += "낫싱";
         }
-        if (strike == 3) {
+        if (strike == THREE_STRIKE) {
             result += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
 
@@ -30,6 +31,6 @@ public class GameResult {
     }
 
     public boolean isWin() {
-        return strike == 3;
+        return strike == THREE_STRIKE;
     }
 }
