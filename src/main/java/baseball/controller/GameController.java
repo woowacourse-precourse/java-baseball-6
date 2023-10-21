@@ -1,9 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.Game;
-import baseball.domain.Numbers;
-import baseball.domain.Result;
-import baseball.domain.Validator;
+import baseball.domain.*;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -22,27 +19,16 @@ public class GameController {
         while(startGame());
     }
 
-    private boolean isOne(String input){
-        return input.equals("1");
-    }
-
     private boolean startGame(){
         game = new Game(); //게임 생성
         playGame(); //게임 수행
 
-        return continueGame();
+        return checkRestart();
     }
 
-    private boolean continueGame(){
-        return isOne(inputContinue());
-    }
-
-    private String inputContinue(){ //입력
-        String input=inputView.inputContinue();
-        Validator validator = new Validator();
-        validator.validateContinue(input);
-
-        return input;
+    private boolean checkRestart(){
+        Restart restart =new Restart(inputView.inputContinue());
+        return restart.isContinue();
     }
 
     private void playGame(){
