@@ -59,4 +59,8 @@ public class Computer {
     public boolean isAllCorrect() {
         return this.status.isAllCorrect();
     }
+
+    public void setGameStatus(String status) {
+        this.status = GameStatus.statusMatch(status);
+    }
 }

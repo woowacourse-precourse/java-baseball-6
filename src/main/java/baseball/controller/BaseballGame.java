@@ -21,6 +21,9 @@ public class BaseballGame {
         do {
             computer.createRandomNumbers();
             play();
+
+            String restart = Input.restartOrNot();
+            computer.setGameStatus(player.restartOrNot(restart));
         } while (!isEnd());
     }
 

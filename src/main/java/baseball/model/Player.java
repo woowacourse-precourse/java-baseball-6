@@ -55,4 +55,10 @@ public class Player {
         }
     }
 
+    public String restartOrNot(String restart) {
+        if (!(restart.equals("1") || restart.equals("2"))) {
+            throw new IllegalArgumentException(ILLEGAL_INPUT_FOR_STATUS.message());
+        }
+        return restart;
+    }
 }
