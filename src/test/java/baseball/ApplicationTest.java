@@ -41,6 +41,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 입력_채점() {
+        BaseballGameReferee referee = new BaseballGameReferee();
+
+        String[] inputs = new String[]{"123","231","864","987","563","786","624","391","418","175"};
+        System.out.println();
+        for (String str : inputs) {
+            referee.judgement(new BaseballGameNumber(str)).printJudgement();
+        }
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
