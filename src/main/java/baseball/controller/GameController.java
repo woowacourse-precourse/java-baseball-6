@@ -31,7 +31,6 @@ public class GameController {
             outputView.printGameHint(hintMessage);
             if (ballAndStrikeCount.get(LIST_STRIKE_INDEX) == 3){
                 gameLoopCommand = gameRetry();
-                computer = new Computer(new BaseballRandomNumberGenerator().generate());
             }
         }
     }
@@ -62,6 +61,7 @@ public class GameController {
         outputView.printGameRetryMessage();
         String command = inputView.readRetryCommand();
         if (command.equals(GAME_RETRY_VALUE)){
+            computer = new Computer(new BaseballRandomNumberGenerator().generate());
             return true;
         }
         return false;
