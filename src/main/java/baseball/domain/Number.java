@@ -12,12 +12,12 @@ public final class Number {
     }
 
     private void validate(final Integer value) {
-        if (isProperValue(value)) {
+        if (isNotProperValue(value)) {
             throw new IllegalStateException();
         }
     }
 
-    private boolean isProperValue(final Integer value) {
+    private boolean isNotProperValue(final Integer value) {
         return value < MIN_VALUE || value > MAX_VALUE;
     }
 }
