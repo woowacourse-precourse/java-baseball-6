@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Balls {
 
@@ -17,5 +18,21 @@ public class Balls {
         if (balls == null || balls.size() != BALL_SIZE) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public int countStrike(Balls balls) {
+        return getBalls().stream()
+                .filter(b -> balls.isStrike(b))
+                .collect(Collectors.toList())
+                .size();
+    }
+
+    private boolean isStrike(Ball ball) {
+        return getBalls().stream()
+                .anyMatch(b -> b.isStrike(ball));
+    }
+
+    private List<Ball> getBalls() {
+        return this.balls;
     }
 }

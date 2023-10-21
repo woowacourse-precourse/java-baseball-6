@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BallsTest {
@@ -21,5 +22,28 @@ class BallsTest {
         assertThatThrownBy(() -> new Balls(ballList))
                 .isInstanceOf(IllegalArgumentException.class);
 
+    }
+
+    @DisplayName("다른 Balls와 비교해서 스트라이크 개수 찾기")
+    @Test
+    void countStrike() {
+        // given
+        List<Ball> ballList = new ArrayList<>();
+        ballList.add(new Ball(4, 0));
+        ballList.add(new Ball(5, 1));
+        ballList.add(new Ball(6, 2));
+        Balls com = new Balls(ballList);
+
+        ballList = new ArrayList<>();
+        ballList.add(new Ball(4, 0));
+        ballList.add(new Ball(5, 1));
+        ballList.add(new Ball(6, 2));
+        Balls user = new Balls(ballList);
+
+        // when
+        int result = com.countStrike(user);
+
+        // then
+        assertThat(result).isEqualTo(3);
     }
 }
