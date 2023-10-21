@@ -39,8 +39,7 @@ public class Balls {
         int strikesPlusBall = countStrikePlusBall(secondBalls);
         int ball = strikesPlusBall - strike;
         Score score = Score.of(ball, strike);
-        StringFormatter formatter = score.selectFormatter();
-        return formatter.format(ball, strike);
+        return score.format();
     }
 
     private int countStrike(Balls secondBalls) {

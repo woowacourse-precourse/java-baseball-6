@@ -14,9 +14,9 @@ public class Score {
         return new Score(ball, strike);
     }
 
-    public StringFormatter selectFormatter() {
+    public String format() {
         selectFormatter(ball, strike);
-        return stringFormatter;
+        return stringFormatter.format(ball, strike);
     }
 
     private void selectFormatter(int ball, int strike) {
