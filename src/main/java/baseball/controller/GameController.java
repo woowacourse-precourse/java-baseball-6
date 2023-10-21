@@ -44,7 +44,7 @@ public class GameController {
                 playWant = false;
             }
         }
-        EndView.end(PLAY_NUMBER_DIGIT);
+        printGameEnd();
         AskController.askResumeInputWithOption(PLAY_WANT, END_WANT);
         updateResumeNumber();
     }
@@ -61,6 +61,10 @@ public class GameController {
         return NumberFactory.pickNumberWithLength(PLAY_NUMBER_DIGIT);
     }
 
+    private static void printGameEnd() {
+        EndView.end();
+    }
+    
     private void updateResumeNumber() {
         resumeNumber.updateNumber(InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT));
     }
