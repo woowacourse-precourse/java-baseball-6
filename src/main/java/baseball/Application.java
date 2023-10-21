@@ -1,10 +1,10 @@
 package baseball;
 
-import baseball.service.BaseBallService;
+import baseball.service.GameService;
 
 public class Application {
 	public static void main(String[] args) {
-		BaseBallService baseBallService = new BaseBallService();
-		baseBallService.run();
+		GameService gameService = new GameService();
+		gameService.run();
 	}
 }

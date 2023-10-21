@@ -2,7 +2,7 @@ package baseball.console;
 
 import baseball.constant.GameConstant;
 import baseball.constant.NumberConstant;
-import baseball.dto.BaseBallResult;
+import baseball.dto.GameResult;
 
 public class ConsoleOutput {
 	public void printInit() {
@@ -13,7 +13,7 @@ public class ConsoleOutput {
 		System.out.print(GameConstant.INPUT_REQ.getValue());
 	}
 
-	public void printResult(BaseBallResult result) {
+	public void printResult(GameResult result) {
 		int ballCount = result.ballCount();
 		int strikeCount = result.strikeCount();
 		if (ballCount == 0 && strikeCount == 0) {

@@ -8,15 +8,15 @@ import baseball.constant.GameConstant;
 import baseball.console.ConsoleInput;
 import baseball.console.ConsoleOutput;
 import baseball.constant.NumberConstant;
-import baseball.dto.BaseBallResult;
+import baseball.dto.GameResult;
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class BaseBallService {
+public class GameService {
 	private final ConsoleInput consoleInput;
 	private final ConsoleOutput consoleOutput;
 	private String targetNumber;
 
-	public BaseBallService() {
+	public GameService() {
 		consoleInput = new ConsoleInput();
 		consoleOutput = new ConsoleOutput();
 	}
@@ -35,7 +35,7 @@ public class BaseBallService {
 		generateTargetNumber();
 		while (true) {
 			consoleOutput.printReq();
-			BaseBallResult result = getResult(consoleInput.getGameInput());
+			GameResult result = getResult(consoleInput.getGameInput());
 			if (result.strikeCount() == NumberConstant.PICK_COUNT.getValue()) {
 				consoleOutput.printEnd();
 				return;
@@ -55,7 +55,7 @@ public class BaseBallService {
 		targetNumber = numbers.stream().map(String::valueOf).collect(Collectors.joining());
 	}
 
-	private BaseBallResult getResult(String input) {
+	private GameResult getResult(String input) {
 		int ballCount = 0, strikeCount = 0;
 		for (int i = 0; i < targetNumber.length(); i++) {
 			char targetDigit = targetNumber.charAt(i);
@@ -66,6 +66,6 @@ public class BaseBallService {
 				ballCount++;
 			}
 		}
-		return new BaseBallResult(ballCount, strikeCount);
+		return new GameResult(ballCount, strikeCount);
 	}
 }
