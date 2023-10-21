@@ -35,7 +35,7 @@ public class InputVerifier {
 
     private void checkEachRange(String inRange) {
         if (inRange.chars()
-                .map(i -> (int) i)
+                .map(Character::getNumericValue)
                 .filter(i -> i < 1 || 9 < i)
                 .count() > 0) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_ONE_TO_NINE);
