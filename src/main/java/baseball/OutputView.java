@@ -25,6 +25,7 @@ public class OutputView {
     }
 
     public static void printResult(List<TryResult> tryResults) {
+    }
 
     public static void printGameOver() {
         System.out.println(GAMEOVER_MESSAGE);
