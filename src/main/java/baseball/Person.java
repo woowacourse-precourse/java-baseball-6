@@ -11,10 +11,10 @@ public class Person {
     }
 
     public void insert(String input) {
-        int inputNum;
-        for (int i = 0; i < input.length(); i++) {
-            inputNum = Character.getNumericValue(input.charAt(i));
-            inputList.add(inputNum);
+        validateInput(input);
+        clean();
+        for (char ch : input.toCharArray()) {
+            inputList.add(Character.getNumericValue(ch));
         }
     }
 
@@ -22,12 +22,17 @@ public class Person {
         inputList.clear();
     }
 
-
-    public boolean containsNumber(int number) {
-        return inputList.contains(number);
-    }
-
     public int getNumberAt(int index) {
         return inputList.get(index);
+    }
+
+    private void validateInput(String input) {
+        if (!input.matches("\\d+")) {
+            throw new IllegalArgumentException(GameConstants.NOT_NUMBER);
+        }
+
+        if (input.length() != GameConstants.LIST_SIZE) {
+            throw new IllegalArgumentException(GameConstants.NOT_VALID_LENGTH);
+        }
     }
 }
