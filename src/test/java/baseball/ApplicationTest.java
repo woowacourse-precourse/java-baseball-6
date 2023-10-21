@@ -25,20 +25,24 @@ class ApplicationTest extends NsTest {
     void 랜덤숫자생성_테스트() {
         RandomNumberCreator randomNumber = new RandomNumberCreator();
         randomNumber.setRandomNumber();
-        int[] generatedNumbers = randomNumber.getAnswer(); // 정답을 테스트코드에 들고 오는 게 맞을까?
+        String generatedNumbers = randomNumber.getAnswer(); // 정답을 테스트코드에 들고 오는 게 맞을까?
 
         // 세 자릿수 테스트
-        assertThat(randomNumber.getAnswer().length).isEqualTo(3);
+        assertThat(randomNumber.getAnswer().length()).isEqualTo(3);
 
         // 숫자 범위 테스트
-        for (int number : generatedNumbers) {
-            assertThat(number).isBetween(1, 9);
+        for (int i = 0; i < 3; i++) {
+            int numericValue = Character.getNumericValue(generatedNumbers.charAt(i));
+            assertThat(numericValue).isBetween(1, 9);
         }
 
         // 숫자 중복 여부 테스트
-        assertThat(generatedNumbers[0]).isNotEqualTo(generatedNumbers[1]);
-        assertThat(generatedNumbers[0]).isNotEqualTo(generatedNumbers[2]);
-        assertThat(generatedNumbers[1]).isNotEqualTo(generatedNumbers[2]);
+        int num1 = Character.getNumericValue(generatedNumbers.charAt(0));
+        int num2 = Character.getNumericValue(generatedNumbers.charAt(1));
+        int num3 = Character.getNumericValue(generatedNumbers.charAt(2));
+        assertThat(num1).isNotEqualTo(num2);
+        assertThat(num1).isNotEqualTo(num3);
+        assertThat(num2).isNotEqualTo(num3);
     }
 
     @Test
