@@ -2,5 +2,6 @@ package baseball.context;
 
 public enum GameState {
     RUNNING,
-    FINISH
+    FINISH,
+    RESTART
 }
