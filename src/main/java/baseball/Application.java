@@ -11,7 +11,7 @@ public class Application {
         // TODO: 프로그램 구현
         while(true){
             playSingleGameRound();
-            if(restartOrExit()==false){//종료
+            if(shouldRestartGame()==false){//종료
                 break;
             }
         }
@@ -74,7 +74,7 @@ public class Application {
         return evaluateGuess(numStrikes,numBalls);
     }
 
-    public static boolean restartOrExit(){//반환값이 1이면 restart
+    public static boolean shouldRestartGame(){//반환값이 1이면 restart
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String choice = Console.readLine();
         return validateRestartOrExitChoice(choice);
