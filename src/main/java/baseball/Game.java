@@ -19,8 +19,18 @@ public class Game {
             System.out.println(Data.playerNumber); //디버깅용
             getResult();
             printHint();
-
+            if(restartGame()){
+               Data.isCreated = false;
+            }
         }
+    }
+    static boolean restartGame(){
+
+        int input = Integer.parseInt(playerInput());
+        if(input == Data.DO_RESTART) return true;
+        else if(input == Data.DO_NOT_RESTART) return false;
+        else throw new IllegalArgumentException();
+
     }
     static void printHint(){
         if(Data.strike == Data.ANSWER_STRIKE) System.out.println(Data.strike +"스트라이크");
