@@ -16,26 +16,28 @@ public class Result {
 
     @Override
     public String toString() {
-        if(strike + ball == 0){
+        if (strike + ball == 0) {
             return "낫싱";
         }
         StringBuilder result = new StringBuilder();
-        if(ball != 0){
+        if (ball != 0) {
             result.append(ball + "볼");
         }
         if (strike != 0) {
-            if(!result.isEmpty())
+            if (!result.isEmpty()) {
                 result.append(" ");
+            }
             result.append(strike + "스트라이크");
         }
 
         return result.toString();
     }
 
-    public void addStrike(){
+    public void addStrike() {
         this.strike++;
     }
-    public void addBall(){
+
+    public void addBall() {
         this.ball++;
     }
 

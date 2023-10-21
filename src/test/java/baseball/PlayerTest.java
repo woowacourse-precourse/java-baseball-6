@@ -3,45 +3,43 @@ package baseball;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class PlayerTest {
 
     Player player = new Player();
 
     @Test
-    public void inputContains3Number() throws Exception{
+    public void inputContains3Number() throws Exception {
         //given
 
         //when
         Assertions.assertThatThrownBy(
-                () ->
-                        player.getInput("12"),
+                        () ->
+                                player.getInput("12"),
                         Player.INPUT_MUST_3_NUMBER_EXCEPTION)
                 .isInstanceOf(IllegalArgumentException.class);
         //then
     }
 
     @Test
-    public void input_must_not_duplicated() throws Exception{
+    public void input_must_not_duplicated() throws Exception {
         //given
         //when
         Assertions.assertThatThrownBy(
-                () ->
-                        player.getInput("111"),
+                        () ->
+                                player.getInput("111"),
                         Player.INPUT_MUST_NOT_DUPLICATED_EXCEPTION)
                 .isInstanceOf(IllegalArgumentException.class);
         //then
     }
 
     @Test
-    public void numeric_exception_in_getInput() throws Exception{
+    public void numeric_exception_in_getInput() throws Exception {
         //given
 
         //when
         Assertions.assertThatThrownBy(
-                ()->
-                        player.getInput("a"),
+                        () ->
+                                player.getInput("a"),
                         Player.NUMBER_FORMAT_EXCEPTION)
                 .isInstanceOf(IllegalArgumentException.class);
 
@@ -49,7 +47,7 @@ class PlayerTest {
     }
 
     @Test
-    public void success_getInput() throws Exception{
+    public void success_getInput() throws Exception {
         //given
 
         //when
@@ -60,7 +58,7 @@ class PlayerTest {
     }
 
     @Test
-    public void numericException_in_restart() throws Exception{
+    public void numericException_in_restart() throws Exception {
         //given
         //when
         Assertions.assertThatIllegalArgumentException()
@@ -71,31 +69,31 @@ class PlayerTest {
     }
 
     @Test
-    public void wrongInput_in_restart0() throws Exception{
+    public void wrongInput_in_restart0() throws Exception {
         //given
 
         //when
         Assertions.assertThatIllegalArgumentException()
                 .isThrownBy(() -> player.restart("0"))
-                .withMessage(Player.WRONG_INPUT_IN_RESTART);
+                .withMessage(Player.WRONG_INPUT_IN_RESTART_EXCEPTION);
 
         //then
     }
 
     @Test
-    public void wrongInput_in_restart_3() throws Exception{
+    public void wrongInput_in_restart_3() throws Exception {
         //given
 
         //when
         Assertions.assertThatIllegalArgumentException()
                 .isThrownBy(() -> player.restart("3"))
-                .withMessage(Player.WRONG_INPUT_IN_RESTART);
+                .withMessage(Player.WRONG_INPUT_IN_RESTART_EXCEPTION);
 
         //then
     }
 
     @Test
-    public void restart_returns_true_when_1_input() throws Exception{
+    public void restart_returns_true_when_1_input() throws Exception {
         //given
         //when
         boolean restart = player.restart("1");
@@ -106,7 +104,7 @@ class PlayerTest {
     }
 
     @Test
-    public void restart_returns_false_when_2_input() throws Exception{
+    public void restart_returns_false_when_2_input() throws Exception {
         //given
         //when
         boolean restart = player.restart("2");

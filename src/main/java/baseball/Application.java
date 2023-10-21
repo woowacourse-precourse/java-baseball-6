@@ -7,7 +7,7 @@ public class Application {
         try {
             Game game = new Game();
             game.startGame();
-        }finally {
+        } finally {
             Console.close();
         }
     }
