@@ -19,7 +19,7 @@ public class User {
         checkInputLength(input);
         checkDuplicateInput(input);
         for (int i = 0; i < INPUT_LENGTH; i++){
-            this.userInput[i] = input.charAt(i);
+            this.userInput[i] = Character.getNumericValue(input.charAt(i));
         }
     }
 
