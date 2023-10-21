@@ -45,15 +45,14 @@ public class Controller {
 
     public int inputRetryValid() throws IllegalArgumentException{
         String input = Console.readLine();
-        try{ // input이 문자인 경우를 대비
-            int gameRetry = Integer.parseInt(input);
-            if(gameRetry <= 0 || gameRetry >= 3){
-                throw new IllegalArgumentException();
-            }
-            return gameRetry;
-        } catch(NumberFormatException e){
+        if(input.length() != 1){
             throw new IllegalArgumentException();
         }
+        char c = input.charAt(0);
+        if(c < '1' || c > '2'){
+            throw new IllegalArgumentException();
+        }
+        return c - '0';
     }
 
 }
