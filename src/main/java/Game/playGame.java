@@ -2,11 +2,10 @@
 
 package Game;
 
-import Game.constant;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import static Game.constant.*;
+import static constant.constant.*;
 
 public class playGame {
     String answer = new String();

@@ -1,4 +1,4 @@
-package Game;
+package constant;
 
 public class constant {
     //초기화
