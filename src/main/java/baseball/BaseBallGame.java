@@ -31,12 +31,12 @@ public class BaseBallGame {
 
     private void progress() {
         boolean isCorrect = false;
-        List<Integer> computerNumbers = getRandomNumber();
+//        List<Integer> computerNumbers = getRandomNumber();
         List<Integer> playerNumbers;
 
         while(!isCorrect) {
             playerNumbers = getPlayerNumber();
-            isCorrect = compareNumber(computerNumbers, playerNumbers);
+//            isCorrect = compareNumber(computerNumbers, playerNumbers);
         }
 
 //        printEndMessage();
@@ -152,17 +152,7 @@ public class BaseBallGame {
                 .boxed().collect(Collectors.toList());
     }
 
-    private List<Integer> getRandomNumber() {
-        Set<Integer> computerNumber = new HashSet<>();
 
-        while(computerNumber.size() < RANDOM_NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-
-            computerNumber.add(randomNumber);
-        }
-
-        return computerNumber.stream().toList();
-    }
 
     private boolean isNumeric(String input) {
         for(char c : input.toCharArray()) {
