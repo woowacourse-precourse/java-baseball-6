@@ -16,8 +16,6 @@ public class BaseBallGame {
     private static final String GAME_RESTART_STATE = "1";
     private static final String GAME_END_STATE = "2";
 
-    private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 " + GAME_RESTART_STATE +
-            ", 종료하려면 " + GAME_END_STATE + "를 입력하세요.";
 
     public void gameStart() {
         boolean progress = true;
@@ -27,7 +25,7 @@ public class BaseBallGame {
         while(progress) {
             progress();
 
-            progress = isRestart();
+//            progress = isRestart();
         }
     }
 
@@ -44,24 +42,22 @@ public class BaseBallGame {
 //        printEndMessage();
     }
 
-    private boolean isRestart() {
-        printRestartQuestionMessage();
-        String inputState = Console.readLine();
+//    private boolean isRestart() {
+//        printRestartQuestionMessage();
+//        String inputState = Console.readLine();
+//
+//        if(inputState.equals(GAME_RESTART_STATE)){
+//            return true;
+//        }
+//
+//        if (inputState.equals(GAME_END_STATE)) {
+//            return false;
+//        }
+//
+//        throw new IllegalArgumentException();
+//    }
 
-        if(inputState.equals(GAME_RESTART_STATE)){
-            return true;
-        }
 
-        if (inputState.equals(GAME_END_STATE)) {
-            return false;
-        }
-
-        throw new IllegalArgumentException();
-    }
-
-    private void printRestartQuestionMessage() {
-        System.out.println(GAME_RESTART_MESSAGE);
-    }
 
     private boolean compareNumber(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int strikeCount = getStrikeCount(computerNumbers, playerNumbers);
