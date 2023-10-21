@@ -23,7 +23,7 @@ public class BaseballGameController {
     public static void gameStart() {
         View.printStart();
         playerInput();
-        compareNumber.checkNothing(computer, player);
+        compareNumber.checkStrike(computer, player);
     }
 
     public static void playerInput() {
