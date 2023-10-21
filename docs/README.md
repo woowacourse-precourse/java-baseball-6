@@ -16,3 +16,10 @@ X
 ### Return
 X
 
+### `checkNumber()`
+### 용도
+볼, 스트라이크 여부를 판단해 GAME 플래그를 바꾸고 문자열을 반환하는 함수
+### Param
+`int[]`, `List<Integer>`
+### Return
+String
