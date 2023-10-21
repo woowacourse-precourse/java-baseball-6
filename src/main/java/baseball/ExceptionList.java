@@ -29,6 +29,7 @@ public class ExceptionList {
 
             if(numbersIdx == checkNumberIdx) {
                 numbersIdx++;
+                continue;
             }
             if(checkNumberIdx == numbers.size()-1) {
                 checkNumberIdx = 0;

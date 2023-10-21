@@ -46,7 +46,7 @@ public class Application {
                 System.out.println("게임이 종료되었습니다.");
             }
         } catch(IllegalArgumentException e) {
-            return;
+            System.out.println(e.getMessage());
         }
     }
 
