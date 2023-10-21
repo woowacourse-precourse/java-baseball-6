@@ -12,9 +12,14 @@ import baseball.dto.BaseBallResult;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseBallController {
-	private final ConsoleInput consoleInput = new ConsoleInput();
-	private final ConsoleOutput consoleOutput = new ConsoleOutput();
+	private final ConsoleInput consoleInput;
+	private final ConsoleOutput consoleOutput;
 	private String targetNumber;
+
+	public BaseBallController() {
+		consoleInput = new ConsoleInput();
+		consoleOutput = new ConsoleOutput();
+	}
 
 	public void run() {
 		while (true) {
@@ -42,8 +47,7 @@ public class BaseBallController {
 	private void generateTargetNumber() {
 		List<Integer> numbers = new ArrayList<>();
 		while (numbers.size() < NumberConstant.PICK_COUNT.getValue()) {
-			int randomNumber = Randoms.pickNumberInRange(NumberConstant.MIN_NUMBER.getValue(),
-				NumberConstant.MAX_NUMBER.getValue());
+			int randomNumber = Randoms.pickNumberInRange(NumberConstant.MIN_NUMBER.getValue(), NumberConstant.MAX_NUMBER.getValue());
 			if (!numbers.contains(randomNumber)) {
 				numbers.add(randomNumber);
 			}
