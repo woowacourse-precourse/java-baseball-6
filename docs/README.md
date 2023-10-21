@@ -80,20 +80,20 @@
 
 ## 📗 View
 
-- [ ] `Input`과 `Output`을 상속받는 interface
+- [x] `Input`과 `Output`을 상속받는 interface
 
 ## 📗 Input
 
-- [ ] 입력을 담당하는 interface
-    - [ ] `String`을 입력받는 메소드
+- [x] 입력을 담당하는 interface
+    - [x] `String`을 입력받는 메소드
 
 ## 📗 Output
 
-- [ ] 출력을 담당하는 interface
-    - [ ] 게임 시작 메시지 출력
-    - [ ] 숫자 입력 요구 메시지 출력
-    - [ ] 정답 축하 메시지 출력
-    - [ ] 재시작 여부 질문 메시지 출력
+- [x] 출력을 담당하는 interface
+    - [x] 게임 시작 메시지 출력
+    - [x] 숫자 입력 요구 메시지 출력
+    - [x] 정답 축하 메시지 출력
+    - [x] 재시작 여부 질문 메시지 출력
 
 ## 📒 StringUtils
 
