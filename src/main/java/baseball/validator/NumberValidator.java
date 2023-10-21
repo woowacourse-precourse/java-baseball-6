@@ -1,6 +1,7 @@
 package baseball.validator;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class NumberValidator {
@@ -49,6 +50,10 @@ public class NumberValidator {
     }
 
     public static void validateRequiredLength(String input) {
+        if (Objects.equals(input, "1") || Objects.equals(input, "2")) {
+            return;
+        }
+
         if (input.length() != LENGTH) {
             throw new IllegalArgumentException(input + "의 길이는 " + LENGTH + "이어야 합니다.");
         }
