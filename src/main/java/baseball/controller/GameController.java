@@ -52,7 +52,7 @@ public class GameController {
             }
         }
         printGameEnd();
-        AskController.askResumeInputWithOption(PLAY_WANT, END_WANT);
+        AskController.askResumeInput();
         updateResumeNumber();
     }
 
