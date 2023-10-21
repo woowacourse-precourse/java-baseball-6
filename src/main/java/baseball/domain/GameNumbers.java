@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class GameNumbers {
+public final class GameNumbers {
     public static final int LENGTH = 3;
     private static final String VALID_NUMBER_LENGTH = String.format("^\\d{%d}$", LENGTH);
 
