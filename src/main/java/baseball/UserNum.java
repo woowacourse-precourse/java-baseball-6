@@ -8,8 +8,8 @@ import java.util.List;
 public class UserNum {
     List<String> userNumList = new ArrayList<>(); // 사용자가 입력한 3자리 숫자
 
-    public List<String> genComputerNum() {
-        String userNum = Console.readLine();
+    public List<String> userNum() {
+        String userNum = Console.readLine(); // readLine()으로 
 
         for (String number : userNum.split("")) {
             userNumList.add(number);
