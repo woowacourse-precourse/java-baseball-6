@@ -11,7 +11,7 @@
   - [ ] MessageStream 사용자 입력 안내 메시지 출력
   - [ ] MessageStream 사용자 입력
   - [ ] Computer 정답과 입력을 비교
-  - [ ] MessageStream 비교 결과
+  - [ ] MessageStream 비교 결과 출력
   - [ ] 예측 성공 시, 게임 재시작 로직 실행
 - [ ] 게임 재시작
   - [ ] 게임 재시작 여부 메시지 출력
