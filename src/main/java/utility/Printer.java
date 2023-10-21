@@ -25,9 +25,8 @@ public final class Printer {
             result.append("3스트라이크\n")
                     .append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
-        if (ball > 0 && strike > 0 || ball < 3 && strike < 3){
+        if ((ball > 0 && ball < 3) || (strike > 0 && strike < 3)){
             result.append(ball).append("볼 ").append(strike).append("스트라이크");
         }
-        System.out.println(result);
     }
 }
