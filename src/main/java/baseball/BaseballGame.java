@@ -1,20 +1,15 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class BaseballGame {
     private static final String RESTART = "1";
     private static final String QUIT = "2";
     private static final String REQUIRED_ONE_OR_TWO = "입력 값은 1또는 2여야 합니다.";
     private static final String REQUIRED_THREE_DIGITS = "입력 값은 3자리 숫자여야 합니다.";
-    private static final int DIGIT_LENGTH = 3;
-    private static final int DIGIT_MINIMUM = 1;
-    private static final int DIGIT_MAXIMUM = 9;
+    private static final int MAX_STRIKE = 3;
     List<Integer> randomThreeDigits;
 
     BaseballGameLogic baseballGameLogic = new BaseballGameLogic();
@@ -48,7 +43,7 @@ public class BaseballGame {
             BallCount ballCount = baseballGameLogic.checkBallCount(randomThreeDigits, playerNumbers);
             baseballGameView.printBallCount(ballCount);
 
-            if(ballCount.getStrike() == DIGIT_LENGTH){
+            if(ballCount.getStrike() == MAX_STRIKE){
                 baseballGameView.printEndMessage();
                 isThreeStrike = true;
             }
