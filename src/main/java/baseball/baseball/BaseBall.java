@@ -42,6 +42,14 @@ public class BaseBall {
     return strikeCount;
   }
 
+  public Boolean isSucceed(int strikeCount) {
+    if (strikeCount == MAX_BALL_SIZE) {
+      System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+      return true;
+    }
+    return false;
+  }
+
   private void printResult(int ballCount, int strikeCount) {
     if (ballCount == 0 && strikeCount == 0) {
       System.out.println("낫싱");
