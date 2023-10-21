@@ -7,42 +7,42 @@ import java.util.List;
 
 public class Game {
 
-  private static final int NUMBER_LENGTH = 3;
+    private static final int NUMBER_LENGTH = 3;
 
-  public static boolean play() {
-    List<Integer> randomNumbers = createRandomNumber();
+    public static boolean play() {
+        List<Integer> randomNumbers = createRandomNumber();
 
-    while (true) {
-      Printer.input();
-      String input = Console.readLine();
-      List<Integer> inputNumbers;
+        while (true) {
+            Printer.input();
+            String input = Console.readLine();
+            List<Integer> inputNumbers;
 
-      try {
-        inputNumbers = InputValidator.checkInputNumber(input);
-      } catch (IllegalArgumentException e) {
-        System.out.println(e.getMessage());
-        continue;
-      }
+            try {
+                inputNumbers = InputValidator.checkInputNumber(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                continue;
+            }
 
-      Baseball value = InputValidator.matchNumbers(inputNumbers, randomNumbers);
+            Baseball value = InputValidator.matchNumbers(inputNumbers, randomNumbers);
 
-      if (ResultEvaluator.evaluate(value)) {
-        return ResultEvaluator.restart();
-      }
-    }
-  }
-
-  private static List<Integer> createRandomNumber() {
-    List<Integer> randomNumbers = new ArrayList<>();
-
-    while (randomNumbers.size() < NUMBER_LENGTH) {
-      int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-      if (!randomNumbers.contains(randomNumber)) {
-        randomNumbers.add(randomNumber);
-      }
+            if (ResultEvaluator.evaluate(value)) {
+                return ResultEvaluator.restart();
+            }
+        }
     }
 
-    return randomNumbers;
-  }
+    private static List<Integer> createRandomNumber() {
+        List<Integer> randomNumbers = new ArrayList<>();
+
+        while (randomNumbers.size() < NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
+        }
+
+        return randomNumbers;
+    }
 }
