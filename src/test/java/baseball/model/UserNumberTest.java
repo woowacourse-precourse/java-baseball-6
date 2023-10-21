@@ -61,4 +61,13 @@ class UserNumberTest {
                 .hasMessage("세자리 숫자를 입력해주세요");
     }
 
+    @DisplayName("사용자 수의 길이가 3보다 작은 값이 입력되면 에러 발생")
+    @Test
+    void inputUnderThreeDigit(){
+        String inputNumber = "12";
+        assertThatThrownBy(() -> new UserNumber(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("세자리 숫자를 입력해주세요");
+    }
+
 }
