@@ -2,16 +2,12 @@ package baseball.controller;
 
 import baseball.domain.GameNumber;
 import baseball.domain.GameStatus;
+import baseball.domain.RetryCommand;
 import baseball.service.GameService;
-import baseball.service.NumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.List;
-
 public class GameController {
-
-    private static final int NUMBER_LENGTH = 3;
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -24,23 +20,31 @@ public class GameController {
     }
 
     public void run() {
-        GameNumber computerNumber = setGame();
+        outputView.printStartMessage();
         while (gameService.isNotDone()) {
             gameService.resetStatus();
-            GameNumber userNumber = getUserNumber();
-            GameStatus gameStatus = gameService.compareNumber(computerNumber, userNumber);
+            GameStatus gameStatus = playOneRound();
             outputView.printRoundResult(gameStatus);
+            if (gameStatus.isThreeStrike()) {
+                outputView.printSuccess();
+                checkRetry();
+            }
         }
-
     }
 
-    private GameNumber setGame() {
-        outputView.printStartMessage();
-        List<Integer> generatedNumber = NumberGenerator.generateNumber(NUMBER_LENGTH);
-        return new GameNumber(generatedNumber);
+    private GameStatus playOneRound() {
+        GameNumber userNumber = getUserNumber();
+        return gameService.compareNumber(userNumber);
     }
 
     private GameNumber getUserNumber() {
         return inputView.getUserNumber();
+    }
+
+    private void checkRetry() {
+        RetryCommand command = inputView.getRetryCommand();
+        if (command.isRetryCommand()) {
+            gameService = GameService.startNewGame();
+        }
     }
 }

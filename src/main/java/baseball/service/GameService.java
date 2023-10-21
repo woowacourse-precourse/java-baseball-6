@@ -4,21 +4,30 @@ import baseball.domain.GameNumber;
 import baseball.domain.GameStatus;
 import baseball.domain.Judgement;
 
+import java.util.List;
+
 public class GameService {
 
     private final GameStatus gameStatus;
-
-    private GameService() {
-        this.gameStatus = new GameStatus();
-    }
+    private final GameNumber answerNumber;
 
     public static GameService startNewGame() {
         return new GameService();
     }
 
-    public GameStatus compareNumber(GameNumber computerNumber, GameNumber userNumber) {
+    private GameService() {
+        this.gameStatus = new GameStatus();
+        this.answerNumber = createNewAnswer();
+    }
+
+    private GameNumber createNewAnswer() {
+        List<Integer> generatedNumber = NumberGenerator.generateNumber(3);
+        return new GameNumber(generatedNumber);
+    }
+
+    public GameStatus compareNumber(GameNumber userNumber) {
         for (int index = 0; index < 3; index++) {
-            Judgement judgement = checkNumber(computerNumber, userNumber, index);
+            Judgement judgement = checkNumber(answerNumber, userNumber, index);
             gameStatus.updateCount(judgement);
         }
         return gameStatus;

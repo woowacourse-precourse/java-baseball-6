@@ -10,10 +10,6 @@ public class GameStatus {
         this.strikeCount = 0;
     }
 
-    public boolean isNotThreeStrike() {
-        return strikeCount != 3;
-    }
-
     public void updateCount(Judgement judgement) {
         if (judgement == Judgement.STRIKE) {
             this.strikeCount++;
@@ -23,16 +19,24 @@ public class GameStatus {
         }
     }
 
+    public boolean isThreeStrike() {
+        return this.strikeCount == 3;
+    }
+
+    public boolean isNotThreeStrike() {
+        return strikeCount != 3;
+    }
+
+    public void reset() {
+        this.ballCount = 0;
+        this.strikeCount = 0;
+    }
+
     public int getBallCount() {
         return ballCount;
     }
 
     public int getStrikeCount() {
         return strikeCount;
-    }
-
-    public void reset() {
-        this.ballCount = 0;
-        this.strikeCount = 0;
     }
 }
