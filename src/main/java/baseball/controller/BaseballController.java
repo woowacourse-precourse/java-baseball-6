@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.AttemptNumbers;
+import baseball.domain.BallCount;
 import baseball.io.InputManager;
 import baseball.io.OutputView;
 import baseball.service.BaseballService;
@@ -29,6 +30,7 @@ public class BaseballController {
         baseballService.saveRandomNumbers();
         outputView.printNumberInputRequest();
         final AttemptNumbers attemptNumbers = inputManager.readAttemptNumbers();
-        baseballService.checkAnswer(attemptNumbers);
+        final BallCount ballCount = baseballService.checkAnswer(attemptNumbers);
+        outputView.printBallCount(ballCount);
     }
 }
