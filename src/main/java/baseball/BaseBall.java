@@ -17,18 +17,24 @@ public class BaseBall {
             }
         }
 
-        while(true) {
+        Score score = new Score();
+        while(score.getStrike() != 3) {
             player.clear();
             System.out.print("숫자를 입력해주세요 : ");
             String stringPlayer = Console.readLine();
+            score.reset();
 
             if(validationNumber(stringPlayer)) {
-                // 사용자가 입력한 숫자와 정답 비교
+                convertPlayer(stringPlayer, player);
+                getResult(computer, player, score);
+                showResult(score);
             }
             else{
                 throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
             }
+
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public boolean validationNumber(String stringPlayer) {
@@ -41,4 +47,31 @@ public class BaseBall {
         return true;
     }
 
+    public void convertPlayer(String stringPlayer, List<Integer> player) {
+        String[] tmp = stringPlayer.split("");
+        player.add(Integer.parseInt(tmp[0]));
+        player.add(Integer.parseInt(tmp[1]));
+        player.add(Integer.parseInt(tmp[2]));
+    }
+
+    public void getResult(List<Integer> computer, List<Integer> player, Score score) {
+        for(int i = 0; i < 3; i++) {
+            if(player.get(i) == computer.get(i))
+                score.setStrike(score.getStrike() + 1);
+            else if(computer.contains(player.get(i)))
+                score.setBall(score.getBall() + 1);
+        }
+    }
+
+    public void showResult(Score score) {
+        if(score.getBall() == 0 && score.getStrike() == 0)
+            System.out.print("낫싱");
+        else {
+            if(score.getBall() > 0)
+                System.out.print(score.getBall() + "볼 ");
+            if(score.getStrike() > 0)
+                System.out.print(score.getStrike() + "스트라이크 ");
+        }
+        System.out.print("\n");
+    }
 }
