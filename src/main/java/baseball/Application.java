@@ -24,7 +24,7 @@ public class Application {
                 BaseballScore score = base.compare(now);
                 gameView.printScore(score);
 
-                if(score.strike == 3) break;
+                if(score.isThreeStrike()) break;
 
             }
 

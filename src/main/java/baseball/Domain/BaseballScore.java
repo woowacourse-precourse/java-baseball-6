@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BaseballScore {
 
-    public int ball, strike;
+    private int ball, strike;
 
     public BaseballScore(int ball, int strike) {
         this.ball = ball; this.strike = strike;
@@ -19,4 +19,7 @@ public class BaseballScore {
         return parts.isEmpty()? "낫싱" : String.join(" ", parts);
     }
 
+    public boolean isThreeStrike() {
+        return strike == 3;
+    }
 }

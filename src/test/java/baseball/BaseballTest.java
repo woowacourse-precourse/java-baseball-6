@@ -48,10 +48,10 @@ public class BaseballTest {
         String n1 = "123", n2 = "321";
         Baseball b1 = new Baseball(n1), b2 = new Baseball(n2);
 
-        BaseballScore score = b1.compare(b2);
+        BaseballScore score = b1.compare(b2), expect = new BaseballScore(2, 1);
 
-        Assertions.assertThat(score.ball).isSameAs(2);
-        Assertions.assertThat(score.strike).isSameAs(1);
+        Assertions.assertThat(score.toString()).isEqualTo(expect.toString());
+
     }
 
 }
