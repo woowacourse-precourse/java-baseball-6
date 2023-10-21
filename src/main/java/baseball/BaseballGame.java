@@ -39,7 +39,16 @@ public class BaseballGame {
     }
 
     private boolean isDuplicatedNum(String userInput){
+        Set<Character> userInputSet = new HashSet<>();
 
+        for(char userInputChar : userInput.toCharArray()){
+            userInputSet.add(userInputChar);
+        }
+
+        if(userInputSet.size() == userInput.length()){
+            return false;
+        }
+        return true;
     }
 
     private boolean isInteger(String userInput) {
