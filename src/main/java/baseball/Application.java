@@ -7,13 +7,13 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        boolean stateReplayGame = true;
+        boolean answerReplayGame = true;
 
         displayGameStartMessage();
 
-        while (stateReplayGame) {
+        while (answerReplayGame) {
             playGame();
-            stateReplayGame = askReplayGame();
+            answerReplayGame = getAnswerReplayGame();
         }
     }
 
@@ -38,9 +38,8 @@ public class Application {
         displayTerminateGame();
     }
 
-    public static boolean askReplayGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String answerReplayGame = Console.readLine();
+    public static boolean getAnswerReplayGame() {
+        String answerReplayGame = askReplayGame();
 
         if (answerReplayGame.equals("1")) {
             return true;
@@ -49,6 +48,11 @@ public class Application {
         }
 
         throw new IllegalArgumentException("1 또는 2를 입력하세요.");
+    }
+
+    public static String askReplayGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Console.readLine();
     }
 
     public static List<Integer> generateComputerNumbers() {
