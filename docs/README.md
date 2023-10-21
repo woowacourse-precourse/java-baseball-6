@@ -113,27 +113,27 @@ private static int state = 1;
 
 private static int count = 0;
 
-2. [ ] playGame
+2. [x] playGame
     - state가 1일때만 루프
     - count가 0이라면 generateNumbers호출
     - processInpuntAndComperate 호출
       
    
 
-3.[ ]  processInputAndCompare
+3.[x]  processInputAndCompare
     - inputView.printNumberRequest호출
     - 사용자 입력받아 playerFirstInput변수에 저장
     - handlePlayerInput으로 사용자 입력 변환
     - 모델에 사용자 입력 저장
    
 
-3. [ ] checkReplay
+3. [x] checkReplay
     - 전부 맞았으니 3스트라이크가 표시되게 printHint호출 후 printGameEnd호출
     - endNumber를 입력받고 validateEndInput에서 검증
     - 1이면 State를1로 유지해 설정된 while문에 따라 게임 재시작, 2면 게임종료
 
 
-4. [ ] processComperater
+4. [x] processComperater
     - compartaor를 이용해 낫싱,볼,스트라이크 계산 후 변수에 저장
     - 각 해당하는 힌트 출력
 
