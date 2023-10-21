@@ -22,25 +22,24 @@ public class Application {
             cnt_ball = 0;
 
             System.out.print("숫자를 입력해주세요 : ");
-//            String input = Console.readLine();
+
             int input = Integer.parseInt(Console.readLine());
 
-            int[] input_arr = new int[3];
-
-            input_arr[0] = input / 100;  // 100의 자리
-            input_arr[1] = (input % 100) / 10;  // 10의 자리
-            input_arr[2] = input % 10;  // 1의 자리
+            int[] inputArray = inputArray(input);
 
             // 스트라이크, 볼 판정
             for (int i = 0; i < numbers.size(); i++) {
-                if (numbers.contains(input_arr[i])) {
+                if (numbers.contains(inputArray[i])) {
                     cnt_ball++;
-                    if (numbers.get(i) == input_arr[i]) {
+                    if (numbers.get(i) == inputArray[i]) {
                         cnt_strike++;
                         cnt_ball--;
                     }
                 }
             }
+
+            //결과 출력
+            result(cnt_strike, cnt_ball);
         }
     }
 
@@ -56,5 +55,32 @@ public class Application {
         }
 
         return computer;
+    }
+
+    // 입력 값 배열화
+    private static int[] inputArray(int input) {
+        int[] input_arr = new int[3];
+
+        input_arr[0] = input / 100;  // 100의 자리
+        input_arr[1] = (input % 100) / 10;  // 10의 자리
+        input_arr[2] = input % 10;  // 1의 자리
+
+        return input_arr;
+    }
+
+    // 결과 출력
+    private static void result(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
     }
 }
