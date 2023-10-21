@@ -1,10 +1,14 @@
-package Util;
+package util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumberGenerator {
+
+    private ComputerNumberGenerator() {
+
+    }
     public static List<Integer> generate() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {

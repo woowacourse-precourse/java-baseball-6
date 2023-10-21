@@ -1,6 +1,6 @@
 package controller;
 
-import Util.ComputerNumberGenerator;
+import util.ComputerNumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 import view.BaseballGameView;
