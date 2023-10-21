@@ -26,7 +26,18 @@ public class MainController {
             if(count == 0){
                 gameData.setComputerNumber(randomNumbersGenerator.generateNumbers());
             }
-            //processInputAndCompare();
+            processInputAndCompare();
+        }
+    }
+
+    private void processInputAndCompare() {
+        while (true) {
+            //processPlayerInput();
+            if (comparator.isEndGame(gameData.getComputerNumber(), gameData.getPlayerInput())){
+                //checkReplay();
+                return;
+            }
+            //processComperater();
         }
     }
 
