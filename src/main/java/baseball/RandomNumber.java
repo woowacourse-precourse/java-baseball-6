@@ -8,30 +8,25 @@ import java.util.List;
 import java.util.Map;
 
 public class RandomNumber {
-    private List<Integer> randomNumber = new ArrayList<>();
+    private int[] randomNumbers;
     private final NumberValidation numberValidation = new NumberValidation();
+    private final ArrayUtils arrayUtils= new ArrayUtils();
 
-    // 메서드명 create 사용해도 괜찮은가
-    public void createNumber() {
-        while (randomNumber.size() < 3) {
+    public void generateRandomNumber() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumber.contains(number)) {
-                randomNumber.add(number);
+            if (!numbers.contains(number)) {
+                numbers.add(number);
             }
         }
+        randomNumbers = arrayUtils.listToIntArray(numbers);
     }
 
-    public int[] validateNumber(String inputNumber) {
-        int ball = numberValidation.getBallNumber(randomNumber, inputNumber);
-        int strike = numberValidation.getStrikeNumber(randomNumber, inputNumber);
+    public int[] checkInputNumbers(String stringNumbers) {
         int[] result = new int[2];
-        result[0] = ball;
-        result[1] = strike;
+        int[] inputNumbers = arrayUtils.stringToIntArray(stringNumbers);
+        result = numberValidation.getResult(randomNumbers, inputNumbers);
         return result;
-    }
-
-    // 밖에서 delete 해도 될까? 객체를 게임마다 새로 만들어야 할까?
-    public void deleteNumber() {
-        randomNumber.clear();
     }
 }

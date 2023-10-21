@@ -4,38 +4,39 @@ import java.util.List;
 
 public class NumberValidation {
 
-    public int getStrikeNumber(List randomNumber, String inputNumber) {
-        int strike = 0;
-        for (int index = 0; index < 3; index++) {
-            strike += getStrike((int)randomNumber.get(index), inputNumber.charAt(index));
-        }
-        return strike;
+    public int[] getResult(int[] randomNumber, int[] inputNumber) {
+        int result[] = new int[2];
+        result[0] = getBallCount(randomNumber, inputNumber);
+        result[1] = getStrikeCount(randomNumber, inputNumber);
+        return result;
     }
 
-    private int getStrike(int randomNumber, char inputNumber) {
-        if (randomNumber == Character.getNumericValue(inputNumber))
-            return 1;
-        return 0;
-    }
-
-    public int getBallNumber(List randomNumber, String inputNumber) {
+    private int getBallCount(int[] randomNumber, int[] inputNumber) {
         int ball = 0;
         for (int index = 0; index < 3; index++) {
-            ball += getBall(randomNumber, index, inputNumber.charAt(index));
+            if (randomNumber[index] != inputNumber[index]){
+                ball += getBall(randomNumber, inputNumber[index]);
+            }
         }
         return ball;
     }
 
-    // strike 검사를 또 하는 것이 이상하다
-    private int getBall(List randomNumber, int compareIndex, char inputNumber) {
-        int number = Character.getNumericValue(inputNumber);
-        if (getStrike((int)randomNumber.get(compareIndex), inputNumber) == 1)
-            return 0;
+    private int getBall(int[] randomNumber, int inputNumber) {
         for (int index = 0; index < 3; index++) {
-            if ((int)randomNumber.get(index) == number) {
+            if (randomNumber[index] == inputNumber) {
                 return 1;
             }
         }
         return 0;
+    }
+
+    private int getStrikeCount(int[] randomNumber, int[] inputNumber) {
+        int strike = 0;
+        for (int index = 0; index < 3; index++) {
+            if (randomNumber[index] == inputNumber[index]) {
+                strike++;
+            }
+        }
+        return strike;
     }
 }

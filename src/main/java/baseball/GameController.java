@@ -18,13 +18,13 @@ public class GameController {
     // 더 쪼개야할 것 같다
     private boolean isStartGame() {
         RandomNumber randomNumber = new RandomNumber();
+        randomNumber.generateRandomNumber();
         boolean isNotCorrect = true;
         while (isNotCorrect) {
-            randomNumber.createNumber();
             int[] result;
             printMessage.enterNumberMessage();
             String threeNumber = inputMessage.inputThreeNumber();
-            result = randomNumber.validateNumber(threeNumber);
+            result = randomNumber.checkInputNumbers(threeNumber);
             printMessage.resultMessage(result[0], result[1]);
             if (result[1] == 3) {
                 isNotCorrect = false;
