@@ -14,7 +14,47 @@ public class Application {
         List<Integer> comArrayList = new ArrayList<>();
         List<Integer> humanArrayList = new ArrayList<>();
         getComNumber(comArrayList);
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        for (int number : comArrayList) {
+            System.out.print(number);
+        }
 
+        int answerStatus = 1;
+        while (answerStatus == 1) {
+            int ball = 0;
+            int strike = 0;
+            System.out.print("숫자를 입력해주세요 : ");
+            String humanInput = Console.readLine();
+            char[] digits = humanInput.toCharArray();
+            for (char digitChar : digits) {
+                int digit = Character.getNumericValue(digitChar);
+                humanArrayList.add(digit);
+            }
+            for (int i = 0; i < 3; i++) {
+                if (Objects.equals(comArrayList.get(i), humanArrayList.get(i))) {
+                    strike++;
+                } else if (comArrayList.contains(humanArrayList.get(i))) {
+                    ball++;
+                }
+            }
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+                getComNumber(comArrayList);
+                answerStatus = Integer.parseInt(Console.readLine());
+            } else {
+                if (strike == 0){
+                    System.out.println(ball + "볼");
+                }
+                else if(ball == 0){
+                    System.out.println(strike + "스트라이크");
+                }
+                else {
+                    System.out.println(ball + "볼 " + strike + "스트라이크");
+                }
+            }
+            humanArrayList.clear();
+        }
     }
     private static void getComNumber(List<Integer> comArrayList){
         while (comArrayList.size() < 3) {
