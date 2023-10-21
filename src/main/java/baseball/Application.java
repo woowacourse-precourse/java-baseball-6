@@ -23,7 +23,7 @@ public class Application {
                 }
                 switch (ballCount.getBallCountType()) {
                     case NOTHING -> ballCount.printNothing();
-                    case STRIKE_AND_BALL -> ballCount.printBallAndStrike();
+                    case BALL_AND_STRIKE -> ballCount.printBallAndStrike();
                     case ONLY_BALL -> ballCount.printOnlyBall();
                     case ONLY_STRIKE -> ballCount.printOnlyStrike();
                 }

@@ -47,7 +47,7 @@ public class BallCount {
         }else if(isNothing(ball, strike)){
             return BallCountType.NOTHING;
         }else if(hasBall(ball) && hasStrike(strike)){
-            return BallCountType.STRIKE_AND_BALL;
+            return BallCountType.BALL_AND_STRIKE;
         }else if(hasStrike(strike)){
             return BallCountType.ONLY_STRIKE;
         }else{
