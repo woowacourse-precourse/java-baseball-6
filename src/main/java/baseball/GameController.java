@@ -6,6 +6,7 @@ public class GameController {
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();
     private CompareSystem compareSystem;
+    private GameResult gameResult;
 
     public void start() {
         outputView.printStartMessage();
@@ -14,15 +15,18 @@ public class GameController {
     }
 
     public void play() {
-        GameResult gameResult;
         boolean isNotThreeStrike = true;
         while (isNotThreeStrike) {
-            player.setNumbers(inputView.readNumbers());
-            compareSystem = new CompareSystem(computer, player);
-            gameResult = compareSystem.compare();
-            isNotThreeStrike = gameResult.isNotThreeStrike();
+            isNotThreeStrike = compare();
             outputView.printResult(gameResult);
         }
         outputView.printThreeStrike();
+    }
+
+    public boolean compare() {
+        player.setNumbers(inputView.readNumbers());
+        compareSystem = new CompareSystem(computer, player);
+        gameResult = compareSystem.compare();
+        return gameResult.isNotThreeStrike();
     }
 }
