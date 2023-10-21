@@ -1,7 +1,7 @@
 package baseball.validation;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class BaseballGameValidation {
 
@@ -10,7 +10,7 @@ public class BaseballGameValidation {
             throw new IllegalArgumentException();
     }
 
-    public void checkBaseballNumberSize(ArrayList<Integer> baseballNumbers) {
+    public void checkBaseballNumberSize(List<Integer> baseballNumbers) {
         if (baseballNumbers.size() != 3)
             throw new IllegalArgumentException();
     }
