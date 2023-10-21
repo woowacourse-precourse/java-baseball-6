@@ -1,23 +1,12 @@
 package baseball;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class BaseBall {
-    private final int LENGTH;
-    private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-    public BaseBall(int length) {
-        this.LENGTH = length;
-    }
-
-    public BaseBall() {
-        this.LENGTH = 3;
-    }
+    private final int LENGTH = 3;
 
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -26,48 +15,45 @@ public class BaseBall {
         computer.createComputerNumber(LENGTH);
 
         while (true) {
-            try {
-                int strike = 0;
-                int ball = 0;
-                String number = inputNumber();
 
-                for (int i = 0; i < LENGTH; i++) {
-                    int cur = number.charAt(i) - '0';
-                    if (computer.get(i) == cur) {
-                        strike++;
-                    } else if (computer.contains(cur)) {
-                        ball++;
-                    }
+            int strike = 0;
+            int ball = 0;
+            String number = inputNumber();
+
+            for (int i = 0; i < LENGTH; i++) {
+                int cur = number.charAt(i) - '0';
+                if (computer.get(i) == cur) {
+                    strike++;
+                } else if (computer.contains(cur)) {
+                    ball++;
                 }
+            }
 
-                if (strike == LENGTH) {
-                    System.out.println(strike + "스트라이크");
-                    System.out.println(LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    break;
-                }
+            if (strike == LENGTH) {
+                System.out.println(strike + "스트라이크");
+                System.out.println(LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                break;
+            }
 
-                if (strike == 0) {
-                    if (ball == 0) {
-                        System.out.println("낫싱");
-                    } else {
-                        System.out.println(ball + "볼");
-                    }
+            if (strike == 0) {
+                if (ball == 0) {
+                    System.out.println("낫싱");
                 } else {
-                    if (ball == 0) {
-                        System.out.println(strike + "스트라이크");
-                    } else {
-                        System.out.println(ball + "볼 " + strike + "스트라이크");
-                    }
+                    System.out.println(ball + "볼");
                 }
-            } catch (IOException e) {
-                throw new IllegalArgumentException();
+            } else {
+                if (ball == 0) {
+                    System.out.println(strike + "스트라이크");
+                } else {
+                    System.out.println(ball + "볼 " + strike + "스트라이크");
+                }
             }
         }
     }
 
-    private String inputNumber() throws IOException {
-        String number = br.readLine();
+    private String inputNumber() {
+        String number = Console.readLine();
         validateInputNumber(number);
         return number;
     }
@@ -98,27 +84,23 @@ public class BaseBall {
     }
 
     public boolean isTerminate() {
-        try {
-            String number = br.readLine();
+        String number = Console.readLine();
 
-            if (number == null) {
-                throw new IllegalArgumentException();
-            }
+        if (number == null) {
+            throw new IllegalArgumentException();
+        }
 
-            if (number.length() != 1) {
-                throw new IllegalArgumentException();
-            }
+        if (number.length() != 1) {
+            throw new IllegalArgumentException();
+        }
 
-            if (number.charAt(0) == '1' || number.charAt(0) == '2') {
-                if (number.charAt(0) - '0' == 2) {
-                    return true;
-                } else {
-                    return false;
-                }
+        if (number.charAt(0) == '1' || number.charAt(0) == '2') {
+            if (number.charAt(0) - '0' == 2) {
+                return true;
             } else {
-                throw new IllegalArgumentException();
+                return false;
             }
-        } catch (IOException e) {
+        } else {
             throw new IllegalArgumentException();
         }
     }
