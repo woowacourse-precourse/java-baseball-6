@@ -1,0 +1,27 @@
+package baseball.view;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@SuppressWarnings("NonAsciiCharacters")
+class InputValidationTest {
+
+    private InputValidation inputValidation;
+
+    @BeforeEach
+    void init() {
+        inputValidation = new InputValidation();
+    }
+
+    @ValueSource(strings = {"", " "})
+    @ParameterizedTest
+    void 빈값을_넣으면_예외가_발생한다(String input) {
+        assertThrows(IllegalArgumentException.class, () -> inputValidation.validate(input));
+    }
+}
