@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import static baseball.utils.Convert.booleanToInt;
+
 import baseball.model.Computer;
 import baseball.model.Hint;
 import baseball.model.NumberList;
@@ -53,10 +55,8 @@ public class BaseballGameController {
     private int calculateBallCount(NumberList answer, NumberList guess) {
         int ballCount = 0;
         for (int i = 0; i < answer.size(); i++) {
-            for (int j = 0; j < guess.size(); j++) {
-                if (answer.get(i).equals(guess.get(j)) && i != j) {
-                    ballCount++;
-                }
+            for (int j = 0; i != j && j < guess.size(); j++) {
+                ballCount += booleanToInt(answer.get(i).equals(guess.get(j)));
             }
         }
         return ballCount;
@@ -65,9 +65,7 @@ public class BaseballGameController {
     private int calculateStrikeCount(NumberList answer, NumberList guess) {
         int strikeCount = 0;
         for (int i = 0; i < answer.size(); i++) {
-            if (answer.get(i).equals(guess.get(i))) {
-                strikeCount++;
-            }
+            strikeCount += booleanToInt(answer.get(i).equals(guess.get(i)));
         }
         return strikeCount;
     }

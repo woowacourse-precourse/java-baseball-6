@@ -14,4 +14,11 @@ public class Convert {
         }};
         return new NumberList(numberList);
     }
+
+    public static int booleanToInt(boolean b) {
+        if (b == true) {
+            return 1;
+        }
+        return 0;
+    }
 }
