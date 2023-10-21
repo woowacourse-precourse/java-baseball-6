@@ -27,6 +27,18 @@ public class Balls {
                 .size();
     }
 
+    public int countBall(Balls balls) {
+        return getBalls().stream()
+                .filter(b -> balls.isBall(b))
+                .collect(Collectors.toList())
+                .size();
+    }
+
+    private boolean isBall(Ball ball) {
+        return getBalls().stream()
+                .anyMatch(b -> b.isBall(ball));
+    }
+
     private boolean isStrike(Ball ball) {
         return getBalls().stream()
                 .anyMatch(b -> b.isStrike(ball));

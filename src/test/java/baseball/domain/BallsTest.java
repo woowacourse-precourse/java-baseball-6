@@ -46,4 +46,27 @@ class BallsTest {
         // then
         assertThat(result).isEqualTo(3);
     }
+
+    @DisplayName("다른 Balls와 비교해서 볼 개수 찾기")
+    @Test
+    void countBall() {
+        // given
+        List<Ball> ballList = new ArrayList<>();
+        ballList.add(new Ball(4, 0));
+        ballList.add(new Ball(5, 1));
+        ballList.add(new Ball(6, 2));
+        Balls com = new Balls(ballList);
+
+        ballList = new ArrayList<>();
+        ballList.add(new Ball(4, 0));
+        ballList.add(new Ball(6, 1));
+        ballList.add(new Ball(5, 2));
+        Balls user = new Balls(ballList);
+
+        // when
+        int result = com.countBall(user);
+
+        // then
+        assertThat(result).isEqualTo(2);
+    }
 }
