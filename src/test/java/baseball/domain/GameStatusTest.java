@@ -10,7 +10,7 @@ class GameStatusTest {
     @DisplayName("스트라이크 개수로 게임 결과를 반환한다")
     @ParameterizedTest
     @CsvSource({"0, RUN", "3, CLEAR"})
-    void GetGameResultFromStrikeCount(int strikeCount, GameStatus expected) {
+    void getGameResultFromStrikeCount(int strikeCount, GameStatus expected) {
         GameStatus actual = GameStatus.from(strikeCount);
 
         assertThat(actual).isEqualTo(expected);

@@ -10,7 +10,7 @@ class GameCommandTest {
     @DisplayName("command 를 입력받아 게임 상태를 반환한다")
     @ParameterizedTest
     @CsvSource({"1, RESTART", "2, EXIT"})
-    void GetGameStatusFromCommand(int command, GameCommand expected) {
+    void getGameStatusFromCommand(int command, GameCommand expected) {
         GameCommand actual = GameCommand.from(command);
 
         assertThat(actual).isEqualTo(expected);

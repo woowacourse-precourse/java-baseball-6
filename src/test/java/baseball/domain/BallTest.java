@@ -14,7 +14,7 @@ class BallTest {
         @DisplayName("유효한 숫자를 입력하면 예외가 발생하지 않는다")
         @ParameterizedTest
         @ValueSource(ints = {1, 9})
-        void NoExceptionIfValidNumber(int validNumber) {
+        void noExceptionIfValidNumber(int validNumber) {
             assertThatNoException()
                     .isThrownBy(() -> new Ball(validNumber));
         }
@@ -22,7 +22,7 @@ class BallTest {
         @DisplayName("유효하지 않은 숫자를 입력하면 예외가 발생한다")
         @ParameterizedTest
         @ValueSource(ints = {-1, 0, 10})
-        void ThrowExceptionIfInvalidNumber(int invalidNumber) {
+        void throwExceptionIfInvalidNumber(int invalidNumber) {
             assertThatIllegalArgumentException()
                     .isThrownBy(() -> new Ball(invalidNumber));
         }

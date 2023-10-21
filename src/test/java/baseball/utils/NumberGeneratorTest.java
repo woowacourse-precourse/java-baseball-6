@@ -14,7 +14,7 @@ class NumberGeneratorTest {
     class GenerateUniqueNumbers {
         @DisplayName("중복되지 않는 숫자를 생성할 수 있다")
         @Test
-        void SuccessGenerateUniqueNumbers() {
+        void successGenerateUniqueNumbers() {
             int startInclusive = 1;
             int endInclusive = 3;
             int digit = 3;
@@ -27,7 +27,7 @@ class NumberGeneratorTest {
 
         @DisplayName("범위가 너무 작으면 예외가 발생한다")
         @Test
-        void ThrowExceptionIfToSmallRange() {
+        void throwExceptionIfToSmallRange() {
             int startInclusive = 1;
             int endInclusive = 2;
             int digit = 3;
