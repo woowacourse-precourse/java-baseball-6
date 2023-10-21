@@ -9,12 +9,14 @@ import java.util.List;
 
 public class Application {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static final String NOT_VALID_NUMBER = "3자리의 숫자만 입력 가능합니다.";
+
     public static void main(String[] args) {
 
         try {
             baseballGame();
-        }catch (IOException ioException){
-
+        }catch (IOException | IllegalArgumentException ioException){
+            ioException.printStackTrace();
         }
 
     }
@@ -25,15 +27,17 @@ public class Application {
 
         String input;
         while (true){
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             input = br.readLine();
-            isValidNumber();
+            checkValidNumber(input);
         }
     }
 
-    private static boolean isValidNumber() {
-        //TODO : 세자리 숫자인지 체크
-        return false;
+    private static void checkValidNumber(String input) {
+        if(input.length() != 3){
+            throw new IllegalArgumentException(NOT_VALID_NUMBER);
+        }
+        Integer.parseInt(input);
     }
 
     private static List<Integer> createAnswerNumber() {
