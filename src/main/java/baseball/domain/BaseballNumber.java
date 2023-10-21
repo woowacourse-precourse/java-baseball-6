@@ -7,6 +7,10 @@ public class BaseballNumber {
         this.ballNumber = baseballNumber;
     }
 
+    public BaseballNumber(char userInputNumber) {
+        this.ballNumber = Character.getNumericValue(userInputNumber);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof BaseballNumber)) {
