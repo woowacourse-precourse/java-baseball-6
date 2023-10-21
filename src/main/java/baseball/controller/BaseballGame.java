@@ -1,7 +1,9 @@
 package baseball.controller;
 
+import baseball.common.CheckResult;
 import baseball.model.Computer;
 import baseball.model.Player;
+import baseball.view.Input;
 import baseball.view.Output;
 
 public class BaseballGame {
@@ -24,7 +26,15 @@ public class BaseballGame {
 
     public void play() {
         do {
-            player.getPlayerInput();
+            String playerInputNumbers = Input.playerInputNumbers();
+            player.setPlayerNumbers(playerInputNumbers);
+
+            CheckResult checkResult = computer.checkPlayerNumbers(player.getPlayerNumbers());
+            if (isAllCorrect()) {
+                Output.printAllCorrect();
+            } else {
+                Output.printResult(checkResult);
+            }
         } while (!isAllCorrect());
     }
 

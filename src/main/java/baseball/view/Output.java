@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.common.exception.ExceptionMessage;
+import baseball.common.CheckResult;
 
 public class Output {
     private static final String START_GAME = "숫자 야구 게임을 시작합니다.";
@@ -14,7 +14,22 @@ public class Output {
         System.out.println(ALL_CORRECT);
     }
 
-    public static void printTerminated(ExceptionMessage message) {
-        System.out.println(message.message());
+    public static void printResult(CheckResult checkResult) {
+        if (checkResult.getStrike() == 0 && checkResult.getBall() == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        if (checkResult.getBall() > 0) {
+            sb.append(checkResult.getBall()).append("볼 ");
+        }
+
+        if (checkResult.getStrike() > 0) {
+            sb.append(checkResult.getStrike() + "스트라이크");
+        }
+
+        System.out.println(sb);
     }
 }
