@@ -1,5 +1,15 @@
 package baseball.logic;
 
+import static baseball.constant.Constant.COMMAND_EXIT;
+import static baseball.constant.Constant.COMMAND_RESTART;
+import static baseball.constant.Constant.INPUT_MAX_VALUE;
+import static baseball.constant.Constant.INPUT_MIN_VALUE;
+import static baseball.constant.Constant.INVALID_COMMAND_EXCEPTION_MSG;
+import static baseball.constant.Constant.INVALID_DUPLICATE_EXCEPTION_MSG;
+import static baseball.constant.Constant.INVALID_LENGTH_EXCEPTION_MSG;
+import static baseball.constant.Constant.INVALID_RANGE_EXCEPTION_MSG;
+import static baseball.constant.Constant.NUMBER_LENGTH;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +25,14 @@ public class InputValidator {
     }
 
     public void validateLength(String inputNumbers) {
-        if (inputNumbers.length() != 3) {
-            throw new IllegalArgumentException("입력한 숫자의 길이를 확인하세요.");
+        if (inputNumbers.length() != NUMBER_LENGTH) {
+            throw new IllegalArgumentException(INVALID_LENGTH_EXCEPTION_MSG);
         }
     }
 
     public List<Integer> convertStrToList(String inputNumbers) {
         List<Integer> numberList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             numberList.add((int) inputNumbers.charAt(i) - '0');
         }
         return numberList;
@@ -30,20 +40,21 @@ public class InputValidator {
 
     public void validateRange(List<Integer> numberList) {
         boolean isRange = true;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             int number = numberList.get(i);
-            if (number < 1 || number > 9) {
+            if (number < INPUT_MIN_VALUE || number > INPUT_MAX_VALUE) {
                 isRange = false;
+                break;
             }
         }
         if (!isRange) {
-            throw new IllegalArgumentException("입력 값의 범위(1~9)를 확인하세요.");
+            throw new IllegalArgumentException(INVALID_RANGE_EXCEPTION_MSG);
         }
     }
 
     public void validateDuplicate(List<Integer> numberList) {
         boolean isDuplicate = false;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             for (int j = 0; j < i; j++) {
                 if (numberList.get(i).equals(numberList.get(j))) {
                     isDuplicate = true;
@@ -52,15 +63,15 @@ public class InputValidator {
             }
         }
         if (isDuplicate) {
-            throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
+            throw new IllegalArgumentException(INVALID_DUPLICATE_EXCEPTION_MSG);
         }
     }
 
     public int validateCommand(String inputNumber) {
         int command = Integer.parseInt(inputNumber);
 
-        if (command != 1 && command != 2) {
-            throw new IllegalArgumentException("명령어를 확인하세요. 1 (재시작), 2 (종료)");
+        if (command != COMMAND_RESTART && command != COMMAND_EXIT) {
+            throw new IllegalArgumentException(INVALID_COMMAND_EXCEPTION_MSG);
         }
 
         return command;
