@@ -10,6 +10,8 @@ Balls인
 - 다른 Balls와 비교해서 스트라이크 개수 찾기 - o
 - 다른 Balls와 비교해서 볼 개수 찾기 - o
 
+NumberGenerator
+- 랜덤숫자 Balls를 생성 - o
 
 Input
 - 사용자로부터 숫자 입력받기 - o
