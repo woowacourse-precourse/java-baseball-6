@@ -16,4 +16,15 @@ public class BaseballService {
         return BallCount;
     }
 
+    public int getStrikeCount (Number computer , Number user){
+        int StrikeCount = 0;
+        for (int i = 0; i<Number.getGameSize(); i++) {
+            Integer x = user.get(i);
+            Integer y = computer.get(i);
+            if (x.equals(y)) {
+                StrikeCount++;
+            }
+        }
+        return StrikeCount;
+    }
 }
