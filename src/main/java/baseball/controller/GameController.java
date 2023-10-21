@@ -1,11 +1,15 @@
 package baseball.controller;
 
 import baseball.view.ErrorView;
+import baseball.view.PrintView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
-    int strike=0;
-    int ball=0;
+    int strike = 0;
+    int ball = 0;
+
+    PrintView printView = new PrintView();
+
     public int[] getInputNumber() {
         ErrorView errorView = new ErrorView();
         int[] inputNum = new int[3];
@@ -30,33 +34,32 @@ public class GameController {
         ball = 0;
 
         for (int i = 0; i < answer.length; i++) {
-            compareNumber(answer,inputNum,i);
+            compareNumber(answer, inputNum, i);
         }
 
-        if(strike ==3) {
-            System.out.println(strike+"스트라이크");
-            return false;
-        }
-        System.out.println(ball+"볼 "+strike+"스트라이크");
-        return true;
+        printView.printScoreMessage(strike, ball);
+
+        return strike != 3;
     }
 
-    // 정답과 숫자가 같은지 확인한다.
-    public void compareNumber(int[] answer, int[] inputNum, int index) {
-        for (int j = 0; j < inputNum.length; j++) {
-            if (answer[index] == inputNum[j]) {
-                getCount(index, j);
-                break;
+
+        // 정답과 숫자가 같은지 확인한다.
+        public void compareNumber ( int[] answer, int[] inputNum, int index){
+            for (int j = 0; j < inputNum.length; j++) {
+                if (answer[index] == inputNum[j]) {
+                    getCount(index, j);
+                    break;
+                }
+            }
+        }
+
+        // 스트라이크와 볼의 갯수를 구한다.
+        public void getCount ( int index, int j){
+            if (index != j) {
+                ball++;
+            }
+            if (index == j) {
+                strike++;
             }
         }
     }
-
-    // 스트라이크와 볼의 갯수를 구한다.
-    public void getCount(int index, int j) {
-        if (index != j) {
-            ball++;
-        }if (index == j) {
-            strike++;
-        }
-    }
-}
