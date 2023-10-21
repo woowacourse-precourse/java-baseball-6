@@ -45,7 +45,7 @@ public class BaseBallInputDevice {
   }
 
   private void validateNumeric(char inputChar) {
-    if (inputChar < '0' || inputChar > '9') {
+    if (inputChar < '1' || inputChar > '9') {
       throw new IllegalArgumentException("숫자만 입력이 가능 합니다.");
     }
   }
