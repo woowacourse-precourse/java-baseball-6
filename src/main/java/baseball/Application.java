@@ -5,6 +5,8 @@ import view.InputView;
 import view.OutputView;
 
 public class Application {
+
+    static int FINISH_STRIKE_CONDITION = 3;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean startGame = true;
@@ -15,11 +17,24 @@ public class Application {
 
     static void startGame() {
         OutputView.printStartMessage();
+        boolean threeStrikes = false;
         List<Integer> computer = BaseballNumberGenerator.generateThreeDigits();
-        List<Integer> userNumbers = InputView.getThreeDigits();
-        int strikeCounts = getStrikeCounts(computer, userNumbers);
-        int ballCounts = getBallCounts(computer, userNumbers);
-        OutputView.printResult(ballCounts, strikeCounts);
+        while (!threeStrikes) {
+            List<Integer> userNumbers = InputView.getThreeDigits();
+            int strikeCounts = getStrikeCounts(computer, userNumbers);
+            int ballCounts = getBallCounts(computer, userNumbers);
+            OutputView.printResult(ballCounts, strikeCounts);
+            if (isThreeStrike(strikeCounts)) {
+                threeStrikes = true;
+            }
+        }
+    }
+
+    static boolean isThreeStrike(int strikeCounts) {
+        if (strikeCounts == FINISH_STRIKE_CONDITION) {
+            return true;
+        }
+        return false;
     }
 
     static int getStrikeCounts(List<Integer> computer, List<Integer> userNumbers) {
