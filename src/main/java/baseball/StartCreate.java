@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class StartCreate {
 
@@ -19,9 +19,7 @@ public class StartCreate {
      * 랜덤한 숫자를 하나를 생성 해주는 메서드 입니다.
      */
     public int randomDigit(){
-        Random random = new Random();
-
-        return random.nextInt(9) + 1;
+        return Randoms.pickNumberInRange(1,9);
     }
 
     /**
