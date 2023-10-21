@@ -6,7 +6,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
@@ -33,10 +32,25 @@ public class Application {
                 try {
                     inputNum = Integer.parseInt(Console.readLine());
                 } catch (InputMismatchException e) {
+                    //6-3. 숫자가 아닌 문자가 입력되는 경우
                     throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
                 }
 
+                //6-1. 3자리 숫자가 아닌경우, 6-5. 음수인 경우
                 if (inputNum<100 || inputNum > 999) throw new IllegalArgumentException("[ERROR] 3자리 숫자를 입력해주세요.");
+
+                int isoverlap = inputNum;
+                int a = isoverlap % 10;
+                isoverlap /= 10;
+                int b = isoverlap % 10;
+                isoverlap /= 10;
+                int c = isoverlap;
+
+                //6-2. 숫자에 중복이 들어가는 경우
+                if ( a == b || b == c || c == a) throw new IllegalArgumentException("[ERROR] 숫자는 중복되면 안됩니다.");
+
+                //6-4. 0이 포함되는 경우
+                if (a == 0 || b == 0 || c == 0) throw new IllegalArgumentException("[ERROR] 숫자에 0이 포함되면 안됩니다.");
 
 
                 int[] intArray = new int[3];
@@ -67,10 +81,7 @@ public class Application {
                 else if (ball > 0) System.out.println(ball + "볼");
                 else if (strike > 0) System.out.println(strike + "스트라이크");
                 else System.out.println("낫싱");
-
             }
-
         }
-
     }
 }
