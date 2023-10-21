@@ -8,4 +8,8 @@ public class OutputView {
   public void printStartMessage() {
     System.out.println(START_MESSAGE);
   }
+
+  public void printRestartMessage() {
+    System.out.println(RESTART_MESSAGE);
+  }
 }
