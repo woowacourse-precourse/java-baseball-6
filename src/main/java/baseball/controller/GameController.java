@@ -14,10 +14,10 @@ public class GameController {
     private InputView inputView;
     private OutputView outputView;
 
-    public GameController() {
-        this.numberMatcher = new NumberMatcher();
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
+    public GameController(NumberMatcher numberMatcher, InputView inputView, OutputView outputView) {
+        this.numberMatcher = numberMatcher;
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void gameStart() {
