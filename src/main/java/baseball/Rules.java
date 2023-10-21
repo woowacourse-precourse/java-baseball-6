@@ -44,7 +44,7 @@ public class Rules {
 
     private void hasNothing() {
         if (balls == 0 && strikes == 0) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
     }
 
