@@ -8,6 +8,8 @@ import java.util.Set;
 public class NumberGenerator {
     public static final String TO_SMALL_RANGE = "자릿수보다 범위가 더 커야 합니다";
 
+    private NumberGenerator() {}
+
     public static List<Integer> generateUniqueNumbers(int startInclusive, int endInclusive, int digit) {
         validate(startInclusive, endInclusive, digit);
         Set<Integer> numbers = new LinkedHashSet<>();
