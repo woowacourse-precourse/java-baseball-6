@@ -19,8 +19,8 @@ public class Score {
     @Override
     public String toString() {
         if ((ball != NO_COUNT) && (strike != NO_COUNT)) {
-            return strike + STRIKE.getMessage()
-                    + " " + ball + BALL.getMessage();
+            return ball + BALL.getMessage()
+                    + " " + strike + STRIKE.getMessage();
         } else if (ball != NO_COUNT) {
             return ball + BALL.getMessage();
         } else if (strike != NO_COUNT) {
