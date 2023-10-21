@@ -49,10 +49,10 @@ public class Application {
         }
     }
 
-    public static String ReStart() {
+    public static int ReStart() {
         System.out.println("게임을 새로 시작려면 1, 종료하려면 2를 입력하세요.");
 
-        return Console.readLine();
+        return Integer.parseInt(Console.readLine());
     }
 
     public static List<Integer> ComputerSelectNumber() {
