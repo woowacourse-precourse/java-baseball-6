@@ -24,7 +24,7 @@ public class Game {
             List<Integer> input = player.getInput();
             result = computer.getResult(input);
             System.out.println(result);
-        } while (result.getStrike() != 3);
+        } while (result.isAnswer());
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
