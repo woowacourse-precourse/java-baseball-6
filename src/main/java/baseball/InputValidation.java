@@ -1,10 +1,13 @@
 package baseball;
 
+import java.text.Collator;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class InputValidation {
-    public void validateUserInput(String input) throws IllegalArgumentException{
+    public List<Integer> validateUserInput(String input) throws IllegalArgumentException{
         if (input.contains(" ")) {
             throw new IllegalArgumentException("공백 없이 오직 숫자만 입력해주시기 바랍니다.");
         }
@@ -15,9 +18,11 @@ public class InputValidation {
             throw new IllegalArgumentException("3개의 숫자만을 입력해주시기 바랍니다.");
         }
         validateInputNumber(input);
+        final List<Integer> parseIntList = userInputToList(input);
+        return parseIntList;
     }
 
-    private void validateInputNumber(String input) {
+    private void validateInputNumber(String input) throws IllegalArgumentException{
         Set<Character> charSet = new HashSet<Character>();
         charSet.add(input.charAt(0));
         charSet.add(input.charAt(1));
@@ -35,5 +40,13 @@ public class InputValidation {
                 throw new IllegalArgumentException("1 ~ 9 사이의 숫자만을 입력해주시기 바랍니다.");
             }
         }
+    }
+
+    private List<Integer> userInputToList(String userInput) {
+        List<Integer> userInputList = new ArrayList<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            userInputList.add(Integer.parseInt(userInput, i));
+        }
+        return userInputList;
     }
 }
