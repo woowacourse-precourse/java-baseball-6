@@ -11,16 +11,19 @@ public class Game {
         computer = new Computer();
         user = new User();
     }
+
     public void doGame() {
         do {
             startGame();
             inGame();
             endGame();
-        } while (end == false);
+            end = true;
+        } while (!end);
     }
 
     public void startGame() {
-
+        computer.printMsg("숫자 야구 게임을 시작합니다.\n");
+        computer.makeAnswer();
     }
 
     public void inGame() {
