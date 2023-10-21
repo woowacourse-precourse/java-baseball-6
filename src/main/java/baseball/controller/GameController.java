@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Game;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
@@ -12,5 +13,9 @@ public class GameController {
 
     public void run() {
         this.game = new Game();
+    }
+
+    public void playGame() {
+        String inputNumber = InputView.getInputNumber();
     }
 }

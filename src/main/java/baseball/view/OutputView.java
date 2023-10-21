@@ -1,9 +1,9 @@
 package baseball.view;
 
-import baseball.utils.OutputMessage;
+import baseball.utils.Message;
 
 public class OutputView {
     public static void printGameStart() {
-        System.out.println(OutputMessage.START_GAME);
+        System.out.println(Message.START_GAME);
     }
 }

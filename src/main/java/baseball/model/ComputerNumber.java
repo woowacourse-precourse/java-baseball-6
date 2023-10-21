@@ -16,7 +16,7 @@ public class ComputerNumber {
 
     public List<Integer> createRandomNumber() {
         List<Integer> randomNumber = pickRandomNumber();
-        if (!NumberValidation.isDuplicated(randomNumber)) {
+        if (!NumberValidation.validateInputDuplicated(randomNumber)) {
             return randomNumber;
         }
         return createRandomNumber();
