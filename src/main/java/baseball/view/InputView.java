@@ -7,4 +7,9 @@ public class InputView {
         OutputView.printInputUserNumberMessage();
         return Console.readLine();
     }
+
+    public static String getRestartOrExit() {
+        OutputView.printRestartOrExit();
+        return Console.readLine();
+    }
 }

@@ -21,6 +21,8 @@ public class BaseballGame {
             gameResult = compareNumber();
         } while(!gameResult.isSuccess());
         OutputView.printThreeStrikeMessage();
+
+        String restartOrExit = InputView.getRestartOrExit();
     }
 
     private void createComputerNumber() {
