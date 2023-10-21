@@ -12,22 +12,22 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(true) {
+        while (true) {
             List<Integer> computer = new ArrayList<>();
             List<Integer> user = new ArrayList<>();
 
-            while(computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1,9);
-                if(!computer.contains(randomNumber)) {
+            while (computer.size() < 3) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!computer.contains(randomNumber)) {
                     computer.add(randomNumber);
                 }
             }
 
-            while(true) {
+            while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String userInput = Console.readLine();
 
-                if(!checkIsNumber(userInput)
+                if (!checkIsNumber(userInput)
                         || checkIsDuplicated(userInput)
                         || !checkInputLength(userInput)
                         || checkIsZero(userInput)) {
@@ -38,12 +38,22 @@ public class Application {
                 int strikeCount = checkStrike(user, computer);
                 int ballCount = checkBall(user, computer);
 
-                if(strikeCount == 3) {
+                if (strikeCount > 0 && ballCount > 0) {
+                    System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
+                } else if (strikeCount > 0) {
+                    System.out.println(strikeCount + "스트라이크");
+                } else if (ballCount > 0) {
+                    System.out.println(ballCount + "볼");
+                } else {
+                    System.out.println("낫싱");
+                }
+
+                if (strikeCount == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     int endGame = Integer.parseInt(Console.readLine());
 
-                    if(endGame == 1) {
+                    if (endGame == 1) {
                         break;
                     } else if (endGame == 2) {
                         return;
@@ -56,9 +66,9 @@ public class Application {
     }
 
     public static boolean checkIsNumber(String userInput) {
-        for(int i = 0; i < userInput.length(); i++) {
+        for (int i = 0; i < userInput.length(); i++) {
             char digitChar = userInput.charAt(i);
-            if(!Character.isDigit(digitChar)) {
+            if (!Character.isDigit(digitChar)) {
                 return false;
             }
         }
@@ -67,8 +77,8 @@ public class Application {
 
     public static boolean checkIsDuplicated(String userInput) {
         Set<Character> set = new HashSet<>();
-        for(int i = 0; i < userInput.length(); i++) {
-            if(!set.add(userInput.charAt(i))) {
+        for (int i = 0; i < userInput.length(); i++) {
+            if (!set.add(userInput.charAt(i))) {
                 return true;
             }
         }
@@ -76,14 +86,14 @@ public class Application {
     }
 
     public static boolean checkInputLength(String userInput) {
-        if(userInput.length() != 3) {
+        if (userInput.length() != 3) {
             return false;
         }
         return true;
     }
 
     public static boolean checkIsZero(String userInput) {
-        if(userInput.contains("0")) {
+        if (userInput.contains("0")) {
             return true;
         }
         return false;
@@ -99,8 +109,8 @@ public class Application {
 
     public static int checkStrike(List<Integer> user, List<Integer> computer) {
         int strikeCount = 0;
-        for(int i=0; i<3; i++) {
-            if(user.get(i).equals(computer.get(i))) {
+        for (int i=0; i<3; i++) {
+            if (user.get(i).equals(computer.get(i))) {
                 strikeCount++;
             }
         }
@@ -109,8 +119,8 @@ public class Application {
 
     public static int checkBall(List<Integer> user, List<Integer> computer) {
         int ballCount = 0;
-        for(int i=0; i<3; i++) {
-            if(computer.contains(user.get(i)) && !user.get(i).equals(computer.get(i))) {
+        for (int i=0; i<3; i++) {
+            if (computer.contains(user.get(i)) && !user.get(i).equals(computer.get(i))) {
                 ballCount++;
             }
         }
