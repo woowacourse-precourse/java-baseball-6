@@ -8,32 +8,45 @@ import java.util.List;
 
 public class NumberBaseballGame {
     Computer computer;
+    List<Integer> userNumbers;
+
     boolean isCorrect;
 
     public NumberBaseballGame() {
+        computer = new Computer();
+        userNumbers = new ArrayList<>();
+        isCorrect = false;
     }
 
     public void start() {
-        computer = new Computer();
-        isCorrect = false;
         while (!isCorrect) {
-            System.out.print("숫자를 입력해주세요: ");
-            String userInput = Console.readLine();
-            int userNumber = userInputValidationTest(userInput);
-            List<Integer> userNumbers = new ArrayList<>();
-            userNumbers.add(userNumber / 100);
-            userNumbers.add(userNumber % 100 / 10);
-            userNumbers.add(userNumber %10);
-
+            userPredict();
             isCorrect = matchTest(userNumbers, computer.getNumbers());
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private int userInputValidationTest(String userInput) throws IllegalArgumentException{
+    private void userPredict() {
+            String prediction = getUserPrediction();
+            int predictedNumber = validateAndParse(prediction);
+            numberToList(predictedNumber);
+    }
+
+
+    private void numberToList(int predictedNumber) {
+        userNumbers.add(predictedNumber / 100);
+        userNumbers.add(predictedNumber % 100 / 10);
+        userNumbers.add(predictedNumber %10);
+    }
+    private String getUserPrediction() {
+            printGameMessage("숫자를 입력해주세요: ");
+            return Console.readLine();
+    }
+
+    private int validateAndParse(String userPrediction) throws IllegalArgumentException{
         int number;
         try {
-            number = Integer.parseInt(userInput);
+            number = Integer.parseInt(userPrediction);
 
             if (number < 123) {
                 throw new IllegalArgumentException("input is cannot be less than 123.");
@@ -73,5 +86,8 @@ public class NumberBaseballGame {
         }
 
         return strike == 3;
+    }
+    private void printGameMessage(String message) {
+        System.out.println(message);
     }
 }
