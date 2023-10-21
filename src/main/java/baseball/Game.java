@@ -3,16 +3,15 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 public class Game {
 
     public static void startGame(){
         System.out.println("게임시작");
         initComputerNumber();
-
+        setPlayerNumber();
+        System.out.println(Data.playerNumber);
     }
     static void initComputerNumber(){
         Data.computerNumber = new ArrayList<>();
@@ -23,7 +22,8 @@ public class Game {
             }
         }
     }
-    static void setPlayerNumber(){
+    static void setPlayerNumber() throws IllegalArgumentException{
+        Data.playerNumber = new ArrayList<>();
         String input = playerInput();
         int toIntInput = Integer.parseInt(input);
         while (toIntInput > 0){
@@ -31,8 +31,25 @@ public class Game {
             toIntInput /= 10;
         }
         Collections.reverse(Data.playerNumber);
+        exceptionCheck();
 
+    }
+    static void exceptionCheck(){
+        if(Data.playerNumber.contains(0)){
+            throw new IllegalArgumentException();
+        }
+        if(Data.playerNumber.size() != 3){
+            throw new IllegalArgumentException();
+        }
+        if(!redundantCheck()){
+            throw new IllegalArgumentException();
+        }
+    }
+    static boolean redundantCheck(){
+        Set<Integer> inputSet = new HashSet<>(Data.playerNumber);
 
+        if(inputSet.size() != Data.playerNumber.size()) return false;
+        return true;
     }
 
     static String playerInput(){
