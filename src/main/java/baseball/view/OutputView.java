@@ -9,6 +9,7 @@ public class OutputView {
     private final static String STRIKE = "스트라이크 ";
     private final static String ALL_STRIKE = "3스트라이크";
     private final static String FINISH = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private final static String START = "숫자 야구 게임을 시작합니다.";
 
     public void printNothing() {
         System.out.println(NOTHING);
@@ -26,5 +27,9 @@ public class OutputView {
         System.out.println(FINISH);
     }
 
-    
+    public void printGameStart() {
+        System.out.println(START);
+    }
+
+
 }
