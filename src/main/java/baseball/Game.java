@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.model.Number;
+import baseball.model.PitchCount;
 import baseball.type.MessageType;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -79,21 +80,32 @@ public class Game {
 
 
     /**
+     * @Method : 힌트 및 정답 생성 처리 기능
+     * @auther : SYB
+     * @since : 2023/10/21
+     */
+    public boolean calculator(Number computerNumber, Number userNumber) {
+        PitchCount pitchCount = new PitchCount();
+
+        pitchCount.countStrikeBall(computerNumber.getTarget(), userNumber.getTarget());
+
+        System.out.println(pitchCount.getHint());
+
+        if (pitchCount.isAnswer()) {
+            System.out.println(MessageType.SUCCESS.getMessage());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    /**
      * @Method : 재시작 및 종료 처리 기능
      * @auther : SYB
      * @since : 2023/10/21
      */
     private int checkExitReplay() {
         return 0;
-    }
-
-
-    /**
-     * @Method : 힌트 및 정답 처리 기능
-     * @auther : SYB
-     * @since : 2023/10/21
-     */
-    private boolean calculator(Number computerNumber, Number userNumber) {
-        return false;
     }
 }

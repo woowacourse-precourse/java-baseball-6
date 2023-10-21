@@ -63,4 +63,14 @@ public class Number {
     public void clear() {
         this.target.clear();
     }
+
+
+    /**
+     *  @Method  : 타겟 숫자 리턴
+     *  @since   : 2023/10/21
+     *  @auther  : SYB
+     */
+    public List<Integer> getTarget() {
+        return target;
+    }
 }
