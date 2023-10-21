@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.view.BaseballPrint;
+import baseball.view.BaseballOutputView;
 
 // 숫자야구게임 중 스트라이크와 볼 개수 관리하는 클래스
 public class BaseballScore {
@@ -32,6 +32,6 @@ public class BaseballScore {
     }
 
     public void printBaseballScore() {
-        BaseballPrint.printBallAndStrikeCount(ballCount, strikeCount);
+        BaseballOutputView.printBallAndStrikeCount(ballCount, strikeCount);
     }
 }
