@@ -1,9 +1,6 @@
 package baseball.jyw1341;
 
 import baseball.BallCount;
-import baseball.BaseballGame;
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -56,7 +53,26 @@ class BaseballGameTest {
         Assertions.assertEquals(ballCount.getStrike(), 2);
     }
 
-    private BallCount checkBallCount(List<Integer> randomThreeDigits, List<Integer> inputDigits){
+    @Test
+    void testCheckBallCount2() {
+        List<Integer> randomThreeDigits = new ArrayList<>();
+        List<Integer> inputDigits = new ArrayList<>();
+
+        randomThreeDigits.add(1);
+        randomThreeDigits.add(2);
+        randomThreeDigits.add(1);
+
+        inputDigits.add(1);
+        inputDigits.add(1);
+        inputDigits.add(2);
+
+        BallCount ballCount = checkBallCount(randomThreeDigits, inputDigits);
+
+        Assertions.assertEquals(ballCount.getStrike(), 1);
+        Assertions.assertEquals(ballCount.getBall(), 2);
+    }
+
+    BallCount checkBallCount(List<Integer> randomThreeDigits, List<Integer> inputDigits){
         int strike = 0;
         int ball = 0;
         BallCount ballCount = new BallCount();
