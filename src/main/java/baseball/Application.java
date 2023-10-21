@@ -82,7 +82,44 @@ public class Application {
     }
 
     public static Result compareTwoNumber(List<Integer> computer, List<Integer> user) {
-        Result result = null;
+        Result result;
+        String message = "";
+        boolean isContinue = true;
+
+        int ball = 0;
+        int strike = 0;
+
+        for (int userIndex = 0; userIndex < user.size(); userIndex++) {
+            int userNumber = user.get(userIndex);
+            for (int computerIndex = 0; computerIndex < computer.size(); computerIndex++) {
+                int computerNumber = computer.get(computerIndex);
+                if (userNumber == computerNumber && userIndex != computerIndex) {
+                    ball++;
+                } else if (userNumber == computerNumber && userIndex == computerIndex) {
+                    strike++;
+                }
+            }
+        }
+
+        if (ball == 0 && strike == 0) {
+            message = "낫싱";
+        }
+
+        if (ball != 0) {
+            message = message.concat(ball + "볼 ");
+        }
+
+        if (strike != 0) {
+            message = message.concat(strike + "스트라이크");
+        }
+
+        if (ball == 0 && strike == 3) {
+            message = message.concat("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isContinue = false;
+        }
+
+        result = new Result(message.trim(), isContinue);
+
         return result;
     }
 
