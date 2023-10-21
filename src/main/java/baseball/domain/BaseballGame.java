@@ -3,6 +3,7 @@ package baseball.domain;
 import baseball.config.AppConfig;
 import baseball.domain.player.Batter;
 import baseball.domain.player.Pitcher;
+import baseball.domain.score.ImmutableBallStrikeCount;
 import baseball.dto.BattedBallsDTO;
 import baseball.util.InputHandler;
 import baseball.util.MessagePrinter;
@@ -14,10 +15,12 @@ public class BaseballGame {
 
     private final MessagePrinter messagePrinter;
     private final InputHandler inputHandler;
+    private boolean isNewRoundNeeded;
 
     private BaseballGame(MessagePrinter messagePrinter, InputHandler inputHandler) {
         this.messagePrinter = messagePrinter;
         this.inputHandler = inputHandler;
+        this.isNewRoundNeeded = true;
     }
 
     public static BaseballGame of(MessagePrinter messagePrinter, InputHandler inputHandler) {
@@ -26,10 +29,12 @@ public class BaseballGame {
 
     public void start() {
         messagePrinter.printStartMessage();
-        play();
+        while (isNewRoundNeeded) {
+            playNewRound();
+        }
     }
 
-    private void play() {
+    private void playNewRound() {
         Pitcher pitcher = AppConfig.getPitcher();
         Batter batter = AppConfig.getBatter();
         Umpire umpire = Umpire.from(pitcher.pitchBalls());
@@ -38,6 +43,19 @@ public class BaseballGame {
             messagePrinter.printBatterRequest();
             BattedBallsDTO battedBallsDTO = inputHandler.getBattedBallsInput();
             List<Baseball> battedBalls = batter.tryBatting(battedBallsDTO);
+            ImmutableBallStrikeCount battedResult = umpire.umpireBattedBalls(battedBalls);
+            messagePrinter.printBallAndStrike(battedResult);
+            if (isRoundEnd(battedResult)) {
+                return;
+            }
         }
+    }
+
+    private boolean isRoundEnd(ImmutableBallStrikeCount battedResult) {
+        if (!battedResult.isAllStrike()) {
+            return false;
+        }
+        messagePrinter.printEndAndRequestCommand();
+        return true;
     }
 }

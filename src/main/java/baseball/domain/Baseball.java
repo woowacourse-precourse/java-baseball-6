@@ -22,6 +22,19 @@ public class Baseball {
         return new Baseball(order, position);
     }
 
+    public boolean isStrike(Map<Integer, Baseball> ballsPartitionedByOrder) {
+        Baseball other = ballsPartitionedByOrder.get(order);
+        return this.isAtSamePositionWith(other);
+    }
+
+    public boolean isBall(Map<Integer, Baseball> ballsPartitionedByPosition) {
+        return ballsPartitionedByPosition.containsKey(position);
+    }
+
+    private boolean isAtSamePositionWith(Baseball other) {
+        return this.position == other.position;
+    }
+
     public static Map<Integer, Baseball> partitionBallsByOrder(List<Baseball> baseballs) {
         return partitionBalls(baseballs, (baseball) -> baseball.order);
     }
