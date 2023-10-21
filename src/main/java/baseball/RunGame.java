@@ -58,9 +58,13 @@ public class RunGame {
     }
     // 종료지점
     public void finishGame() {
+        RunGame runningGame = new RunGame();
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
+        String oneTwo = Console.readLine();
+        if (oneTwo.equals("1")) {
+            runningGame.runningGame();
+        }
     }
     // 숫자 입력받아 int 배열으로 전환하는 과정
     public boolean inputNumbers(){
