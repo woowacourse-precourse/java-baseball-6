@@ -61,9 +61,9 @@ public class BaseBallGame {
 
     private boolean compareNumber(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int strikeCount = getStrikeCount(computerNumbers, playerNumbers);
-        int ballCount = getBallCount(computerNumbers, playerNumbers);
+//        int ballCount = getBallCount(computerNumbers, playerNumbers);
 
-        printHint(strikeCount, ballCount);
+//        printHint(strikeCount, ballCount);
 
         return strikeCount == RANDOM_NUMBER_LENGTH;
     }
@@ -87,19 +87,7 @@ public class BaseBallGame {
         System.out.println(sb);
     }
 
-    private int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        int ballCount = 0;
 
-        for(int i = 0; i < RANDOM_NUMBER_LENGTH; i++) {
-            int playerNumber = playerNumbers.get(i);
-
-            if (!computerNumbers.get(i).equals(playerNumber) && computerNumbers.contains(playerNumber)) {
-                ballCount++;
-            }
-        }
-
-        return ballCount;
-    }
 
     private int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int strikeCount = 0;
@@ -151,8 +139,6 @@ public class BaseBallGame {
                 .mapToInt(Integer::parseInt)
                 .boxed().collect(Collectors.toList());
     }
-
-
 
     private boolean isNumeric(String input) {
         for(char c : input.toCharArray()) {
