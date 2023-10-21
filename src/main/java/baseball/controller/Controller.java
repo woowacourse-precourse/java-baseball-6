@@ -42,10 +42,11 @@ public class Controller {
 
     public void selectGameState() {
         OutputView.printRestartOrQuit();
-        if (InputView.inputGameStateNumber() == RESTART_GAME) {
+        int gameStateNumber = InputView.inputGameStateNumber();
+        if (gameStateNumber == RESTART_GAME) {
             run();
         }
-        if (InputView.inputGameStateNumber() == QUIT_GAME) {
+        if (gameStateNumber == QUIT_GAME) {
             return;
         }
     }
