@@ -15,4 +15,10 @@ enum Command {
         this.retry = retry;
     }
 
+    static Command getCommand(String input) {
+        return Arrays.stream(Command.values())
+                .filter(command -> command.key.equals(input))
+                .findAny()
+                .orElseThrow(IllegalArgumentException::new);
+    }
 }
