@@ -16,18 +16,30 @@ public class Controller {
 
     public void play() {
         while (isGameInProgress) {
-            Computer computer = new Computer();
-            Player player = new Player();
-            Game game = new Game();
-            while (game.getStrikes() != 3) {
-                game.compareNumbers(computer.getNumber(), player.getNumber(InputView.inputPlayerNumber()));
-                OutputView.printGameResult(game.getStrikes(), game.getBalls());
-            }
-            OutputView.printlnConsoleMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            String command = InputView.inputRestartNumber();
-            if (command.equals("2")) {
-                isGameInProgress = false;
-            }
+            runGame();
+            quitOrRestartGame();
+        }
+    }
+
+    private void quitOrRestartGame() {
+        OutputView.printlnConsoleMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        String command = InputView.inputRestartNumber();
+        if (command.equals("2")) {
+            isGameInProgress = false;
+        }
+    }
+
+    private static void runGame() {
+        Computer computer = new Computer();
+        Player player = new Player();
+        Game game = new Game();
+        playGameLoop(game, computer, player);
+    }
+
+    private static void playGameLoop(Game game, Computer computer, Player player) {
+        while (game.getStrikes() != 3) {
+            game.compareNumbers(computer.getNumber(), player.getNumber(InputView.inputPlayerNumber()));
+            OutputView.printGameResult(game.getStrikes(), game.getBalls());
         }
     }
 }
