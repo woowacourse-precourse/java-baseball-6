@@ -36,14 +36,14 @@ public class OutputView {
     }
 
     private void showBall(Result result) {
-        if (result.getStrike() > 0) {
-            System.out.print(result.getBall() + BALL + " ");
+        if (result.getBall() > 0) {
+            System.out.print(result.getBall() + BALL);
         }
     }
 
     private void showStrike(Result result) {
-        if (result.getBall() > 0) {
-            System.out.print(result.getStrike() + STRIKE + " ");
+        if (result.getStrike() > 0) {
+            System.out.print(result.getStrike() + STRIKE);
         }
     }
 
