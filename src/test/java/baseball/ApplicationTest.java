@@ -24,7 +24,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void makeRandomNumbers() {
+    void Should_ReturnCorrectRandomNumbers_When_MakeRandomNumbers() {
         // given
         BaseBallGame baseBallGame = new BaseBallGame();
 
@@ -41,7 +41,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 유저가_잘못된_수_입력시_IllegalException발생() {
+    void Should_ThrowIllegalArgumentException_When_EnterIncorrectUserNumbers() {
         // given
         System.setIn(new ByteArrayInputStream("12*".getBytes()));
         BaseBallGame baseBallGame = new BaseBallGame();
@@ -56,7 +56,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 유저가_적적한_수_입력시_성공() {
+    void Should_Success_When_EnterCorrectUserNumbers() {
         // given
         System.setIn(new ByteArrayInputStream("124".getBytes()));
         BaseBallGame baseBallGame = new BaseBallGame();
