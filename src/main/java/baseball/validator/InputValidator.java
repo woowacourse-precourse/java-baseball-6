@@ -36,4 +36,11 @@ public class InputValidator {
         }
         return true;
     }
+
+    public static boolean isEqualToOneOrTwo(String input) {
+        if (input.charAt(0) != '1' && input.charAt(0) != '2') {
+            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
+        }
+        return true;
+    }
 }
