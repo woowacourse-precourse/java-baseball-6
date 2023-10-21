@@ -47,7 +47,7 @@ class InputValidationTest {
         String stringWithFourOrMore = "1234";
 
         // then
-        assertThatThrownBy(() -> inputValidation.isLengthAtLeastFour(stringWithFourOrMore))
+        assertThatThrownBy(() -> inputValidation.validateLengthAtLeastFour(stringWithFourOrMore))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력값은 3 이하여야 합니다.");
     }

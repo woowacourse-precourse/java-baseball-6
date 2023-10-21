@@ -21,7 +21,7 @@ public class InputValidation {
         }
     }
 
-    public void isLengthAtLeastFour(String input) {
+    public void validateLengthAtLeastFour(String input) {
         if (input.length() >= 4) {
             throw new IllegalArgumentException("입력값은 3 이하여야 합니다.");
         }
