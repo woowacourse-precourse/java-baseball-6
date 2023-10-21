@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class InputManager {
+public class InputManager{
 
     Validator validator = new Validator();
+    PrintManager printManager = new PrintManager();
 
-    public List<Integer> getGuessNumbers() {
+    public List<Integer> getGuessNumbers() throws IllegalArgumentException{
 
         String inputValue = getInput();
 
@@ -24,9 +25,12 @@ public class InputManager {
                 guessNumbers.add(i - '0');
             }
 
+            return guessNumbers;
+
         }
 
-        return guessNumbers;
+        printManager.printError();
+        throw new IllegalArgumentException();
 
     }
 
@@ -35,13 +39,13 @@ public class InputManager {
         String inputValue = getInput();
         System.out.println("inputValue = " + inputValue);
 
-        int answer = 0;
 
         if (validator.validateRestart(inputValue)) {
-            answer = Integer.parseInt(inputValue);
+            return Integer.parseInt(inputValue);
         }
 
-        return answer;
+        printManager.printError();
+        throw new IllegalArgumentException();
 
     }
 

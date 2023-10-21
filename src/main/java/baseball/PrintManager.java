@@ -38,4 +38,8 @@ public class PrintManager {
     public void printRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
+    public void printError() {
+        System.out.println("적절하지 않은 값을 입력했습니다. 게임을 종료합니다.");
+    }
 }
