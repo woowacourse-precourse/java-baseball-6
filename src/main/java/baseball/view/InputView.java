@@ -26,7 +26,7 @@ public class InputView {
         return inputConverter(Integer.parseInt(input));
     }
 
-    public boolean provideRestartDecisionFromUser() {
+    public boolean receiveRestartDecisionFromUser() {
         return Objects.equals(Console.readLine(), "1");
     }
 
