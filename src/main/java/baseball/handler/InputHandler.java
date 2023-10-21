@@ -1,15 +1,19 @@
 package baseball.handler;
 
 import camp.nextstep.edu.missionutils.Console;
-import baseball.handler.OutputHandler;
+import baseball.validator.InputValidator;
 
 public class InputHandler {
 
     private final OutputHandler outputHandler = new OutputHandler();
+    private final InputValidator inputValidator = new InputValidator();
 
     public String askUserInputNumber() {
         outputHandler.printInputRequestMessage();
-        return Console.readLine();
+        String input = Console.readLine();
+        inputValidator.checkInputNumber(input);
+
+        return input;
     }
 
     public boolean askRestart() {
