@@ -21,7 +21,7 @@ public class BaseballNumbersFactory {
     }
 
     public static List<BaseballNumber> getBaseballNumbers(String baseballNumbersString) {
-        validatebaseballNumbers(baseballNumbersString);
+        validateBaseballNumbers(baseballNumbersString);
         List<BaseballNumber> baseballNumbers = new ArrayList<>();
         for (String baseballNumberString : baseballNumbersString.split("")) {
             int baseballNumberInt = Integer.parseInt(baseballNumberString);
@@ -31,7 +31,7 @@ public class BaseballNumbersFactory {
         return baseballNumbers;
     }
 
-    public static void validatebaseballNumbers(String baseballNumbersString) {
+    public static void validateBaseballNumbers(String baseballNumbersString) {
         Validation.validateInputEmptyOrNull(baseballNumbersString);
         Validation.validateInputLength(baseballNumbersString, BASEBALL_NUMBERS_LENGTH);
         Validation.validateInputDistinct(baseballNumbersString);
