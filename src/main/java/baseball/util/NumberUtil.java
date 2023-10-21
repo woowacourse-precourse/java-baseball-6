@@ -20,4 +20,10 @@ public class NumberUtil {
             }
         }
     }
+
+    protected static void validateSign(String number) {
+        if (number.charAt(0) == '-') {
+            throw new IllegalArgumentException("입력값은 양의 정수이어야 합니다.");
+        }
+    }
 }
