@@ -13,12 +13,7 @@ public class Application {
         Compare comp = new Compare();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true) {
-            List<Integer> comNum = com.computerNumber();
-            System.out.println(comNum.toString());
-            List<Integer> userNum = user.userNumber();
-            System.out.println(userNum.toString());
-            comp.compareResult(comNum, userNum);
+            comp.startCompare();
         }
-
     }
 }

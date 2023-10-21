@@ -30,4 +30,21 @@ public class Compare {
         }
         return Answer;
     }
+    public void startCompare() {
+        int strike;
+        int ball;
+
+        boolean Answer = false;
+        Result res = new Result();
+        User use = new User();
+        Computer compu = new Computer();
+        List<Integer> comNum= compu.computerNumber();
+        while (!Answer) {
+            List<Integer> userNum = use.userNumber();
+            strike = countStirke(comNum, userNum);
+            ball = countAll(comNum, userNum) - strike;
+            res.printResult(strike, ball);
+            Answer = isAnswer(strike);
+        }
+    }
 }
