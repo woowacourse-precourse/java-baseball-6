@@ -17,6 +17,8 @@ public final class InputView {
 
     public String readCommand() {
         String input = readLine();
+        inputValidator.validateIsNumeric(input);
+        inputValidator.validateCommand(Integer.parseInt(input));
         return input;
     }
 }
