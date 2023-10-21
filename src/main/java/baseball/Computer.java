@@ -1,13 +1,16 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
     private static final int INITIAL_COUNT = 0;
     private static final int INITIAL_LENGTH = 0;
+    private static final int CONTAINED_SCORE = 1;
+    private static final int NOT_CONTAINED_SCORE = 0;
+    private static final int MATCHED_SCORE = 1;
+    private static final int NOT_MATCHED_SCORE = 0;
     private static final int MAX_LENGTH = 3;
     private static final int MIN_DIGIT = 1;
     private static final int MAX_DIGIT = 9;
@@ -16,10 +19,10 @@ public class Computer {
     private static final String NOTHING = "낫싱";
     private static final String BLANK = " ";
 
-    private final List<Character> answerDigits = new ArrayList<>();
+    private final List<Character> answerAsChars = new ArrayList<>();
 
     public void generateAnswer() {
-        while (answerDigits.size() < MAX_LENGTH) {
+        while (answerAsChars.size() < MAX_LENGTH) {
             generateRandomDigit();
         }
     }
@@ -36,27 +39,23 @@ public class Computer {
     private void generateRandomDigit() {
         int randomIntNumber = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
         char randomNumber = Integer.toString(randomIntNumber).charAt(0);
-        if (!answerDigits.contains(randomNumber)) {
-            answerDigits.add(randomNumber);
+        if (!answerAsChars.contains(randomNumber)) {
+            answerAsChars.add(randomNumber);
         }
     }
 
-    private int computeStrikeAndBall(List<Character> guessDigits) {
+    private int computeStrikeAndBall(List<Character> playerInputAsChars) {
         int totalCount = INITIAL_COUNT;
         for (int i = INITIAL_LENGTH; i < MAX_LENGTH; i++) {
-            if (answerDigits.contains(guessDigits.get(i))) {
-                totalCount++;
-            }
+            totalCount += isNumberContainedAsScore(playerInputAsChars.get(i));
         }
         return totalCount;
     }
 
-    private int computeStrike(List<Character> guessDigits) {
+    private int computeStrike(List<Character> playerInputAsChars) {
         int strikeCount = INITIAL_COUNT;
         for (int i = INITIAL_LENGTH; i < MAX_LENGTH; i++) {
-            if (guessDigits.get(i).equals(answerDigits.get(i))) {
-                strikeCount++;
-            }
+            strikeCount += isNumberMatchedAsScore(answerAsChars.get(i), playerInputAsChars.get(i));
         }
         return strikeCount;
     }
@@ -73,6 +72,20 @@ public class Computer {
             return strikeCount + STRIKE;
         }
         return ballCount + BALL + BLANK + strikeCount + STRIKE;
+    }
+
+    private int isNumberContainedAsScore(Character playerInputAsChar) {
+        if (answerAsChars.contains(playerInputAsChar)) {
+            return CONTAINED_SCORE;
+        }
+        return NOT_CONTAINED_SCORE;
+    }
+
+    private int isNumberMatchedAsScore(Character answerAsChar, Character playerInputAsChar) {
+        if (playerInputAsChar.equals(answerAsChar)) {
+            return MATCHED_SCORE;
+        }
+        return NOT_MATCHED_SCORE;
     }
 
     private List<Character> strToCharacterList(String string) {
