@@ -13,7 +13,7 @@ public class InputService {
 
         try {
             // 입력값 검증
-            if(!validateLength(inputValue) || !validateType(inputValue)) {
+            if(!validateLength(inputValue) || !validateType(inputValue) || !validateDuplicateValue(inputValue)) {
                 throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
             }
         } catch (IllegalArgumentException e) {
@@ -39,6 +39,15 @@ public class InputService {
         for (int i = 0; i < 3; i++) {
             int intValue = inputValue.charAt(i) - 48;
             if (!(1 <= intValue && intValue <= 9)) return false;
+        }
+        return true;
+    }
+
+    // 입력값의 중복을 검증하는 로직
+    private Boolean validateDuplicateValue(String inputValue) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < 3; i++) {
+            if(!set.add(inputValue.charAt(i) - 48)) return false;
         }
         return true;
     }
