@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.List;
+import java.util.Map;
 
 public class BaseballGame {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
@@ -14,7 +14,7 @@ public class BaseballGame {
 
     private Computer computer = new Computer();
     private Player player = new Player();
-    private List<Integer> answer;
+    private Map<Integer, Integer> answer;
     private String playerInput;
     private int strikeCnt;
     private int ballCnt;
@@ -58,18 +58,16 @@ public class BaseballGame {
     private void calculateScore(){
         for(int i=0;i<3;i++) {
             int userNum = Character.getNumericValue(playerInput.charAt(i));
-
-            for (int j = 0; j < 3; j++) {
-                int answerNum = answer.get(j);
-                if (userNum == answerNum) {
-                    if (i == j) {
-                        strikeCnt++;
-                        break;
-                    }
-
-                    ballCnt++;
-                }
+            if(!answer.containsKey(userNum)){
+                continue;
             }
+
+            if(answer.get(userNum) == i){
+                strikeCnt++;
+                continue;
+            }
+
+            ballCnt++;
         }
     }
 
