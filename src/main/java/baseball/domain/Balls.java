@@ -25,9 +25,13 @@ public class Balls {
     }
 
     private void validateLength(List<Integer> input) {
-        if (input.size() != NUMBER_OF_BALLS) {
+        if (isIllegalSize(input)) {
             throw new IllegalArgumentException(NUMBER_OF_BALLS + "개의 숫자를 입력하세요.");
         }
+    }
+
+    private static boolean isIllegalSize(List<Integer> input) {
+        return input.size() != NUMBER_OF_BALLS;
     }
 
     private boolean isDuplicated(List<Integer> balls) {
