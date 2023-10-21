@@ -28,14 +28,19 @@ public class Player {
 
     private void validateNumberSize(String numbers) {
         if (numbers.length() != BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue()){
-            throw new IllegalArgumentException(ErrorMessage.INPUT_DIFFERENT_THREE_NUMBERS.getMessage());
+            throw new IllegalArgumentException(getExpectedNumbersErrorMessage());
         }
     }
 
     private void validateDuplicateNumber(String numbers) {
         if (checkDuplicated(numbers).size() != BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue()){
-            throw new IllegalArgumentException(ErrorMessage.INPUT_DIFFERENT_THREE_NUMBERS.getMessage());
+            throw new IllegalArgumentException(getExpectedNumbersErrorMessage());
         }
+    }
+
+    private String getExpectedNumbersErrorMessage() {
+        return String.format(ErrorMessage.INPUT_DIFFERENT_THREE_NUMBERS.getMessage()
+                , BaseballRole.MAX_BASEBALL_NUMBER_SIZE.getValue());
     }
 
     private Set<Integer> checkDuplicated(String numbers){
