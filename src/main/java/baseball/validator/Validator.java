@@ -13,6 +13,9 @@ public class Validator {
     private static final String NEGATIVE_ERROR_MESSAGE = "양수를 입력해야 합니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "중복된 숫자가 포함되어 있습니다.";
     private static final String OUT_OF_RANGE_ERROR_MESSAGE = "각 자리의 숫자는 1과 9 사이의 숫자만 입력 가능합니다.";
+    private static final String RESTART_OR_EXIT_ERROR_MESSAGE = "1(재시작) 또는 2(종료)를 입력해야 합니다.";
+    private static final String RESTART_NUM = "1";
+    private static final String EXIT_NUM = "2";
 
     public static void validateUserNumber(String number) {
         validateThreeDigit(number);
@@ -60,4 +63,9 @@ public class Validator {
         }
     }
 
+    public static void validateRestartOrExit(String restartOrExit) {
+        if (!restartOrExit.equals(RESTART_NUM) && !restartOrExit.equals(EXIT_NUM)) {
+            throw new IllegalArgumentException(RESTART_OR_EXIT_ERROR_MESSAGE);
+        }
+    }
 }
