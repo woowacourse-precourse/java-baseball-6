@@ -39,7 +39,7 @@ public class BaseBallGame {
         }
     }
 
-    public Result comparison(List<Integer> computer, List<Integer> user) {
+    private Result comparison(List<Integer> computer, List<Integer> user) {
         int ballCount = 0;
         int strikeCount = 0;
         for (int i = 0; i < NumberConstant.INPUT_SIZE; i++) {
@@ -57,7 +57,7 @@ public class BaseBallGame {
         return new Result(ballCount, strikeCount);
     }
 
-    public ChoiceNumber inputRestartOrEnd() {
+    private ChoiceNumber inputRestartOrEnd() {
         int restartNumber = Integer.parseInt(userService.inputUserNumber());
         validation.validateInputChoice(restartNumber);
         return new ChoiceNumber(restartNumber);
