@@ -3,8 +3,8 @@ package baseball;
 public class GameResultMessage {
     public static String generateResultMessage(int[] result) {
         /*
-        * 스트라이크, 볼 여부 출력
-        */
+         * 스트라이크, 볼 여부 출력
+         */
         String message = "";
         if (result[0] == 0 && result[1] == 0) {
             message = "낫싱";
