@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.constant.RetryCommand;
 import baseball.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -17,5 +18,11 @@ public class InputView {
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .toList();
+    }
+
+    public RetryCommand readRetry() {
+        String input = Console.readLine();
+        inputValidator.validateIsNumber(input);
+        return RetryCommand.getRetryCommand(Integer.parseInt(input));
     }
 }
