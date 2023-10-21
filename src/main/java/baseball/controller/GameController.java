@@ -74,6 +74,10 @@ public class GameController {
     }
 
     private void updateResumeNumber() {
-        resumeNumber.updateNumber(InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT));
+        resumeNumber.updateNumber(receiveResumeNumber());
+    }
+
+    private int receiveResumeNumber() {
+        return InputController.receiveResumeNumberWithOption(PLAY_WANT, END_WANT);
     }
 }
