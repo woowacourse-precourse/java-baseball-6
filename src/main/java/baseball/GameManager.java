@@ -5,7 +5,7 @@ import baseball.handler.OutputHandler;
 
 import java.util.List;
 
-public class GameStarter {
+public class GameManager {
     private final NumberGenerator numberGenerator;
     private final InputHandler inputHandler;
     private final OutputHandler outputHandler;
@@ -15,7 +15,7 @@ public class GameStarter {
     private final int NO_BALL = 0;
     private List<Integer> answerNumbers;
 
-    public GameStarter() {
+    public GameManager() {
         numberGenerator = new NumberGenerator();
         inputHandler = new InputHandler();
         outputHandler = new OutputHandler();
@@ -32,7 +32,7 @@ public class GameStarter {
             String inputNumber = inputHandler.getNumbers();
             List<Integer> playerNumbers = inputResolver.stringToIntegerList(inputNumber);
 
-            GameResult gameResult = getGameResult(playerNumbers);
+            GameResult gameResult = createGameResult(playerNumbers);
 
             outputHandler.printGameResult(gameResult);
 
@@ -48,7 +48,7 @@ public class GameStarter {
         return gameResult.getStrikeCount() == THREE_STRIKE && gameResult.getBallCount() == NO_BALL;
     }
 
-    private GameResult getGameResult(List<Integer> playerNumbers) {
+    private GameResult createGameResult(List<Integer> playerNumbers) {
         int strikeCount = countStrike(playerNumbers);
         int ballCount = countBall(playerNumbers);
         return new GameResult(strikeCount, ballCount);
