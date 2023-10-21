@@ -69,7 +69,7 @@ class NumberGeneratorTest {
         //when
         final List<Integer> randomNumberList = numberGenerator.makeRandomAnswerList();
         //given
-        Set<Integer> integerSet = new HashSet<>(randomNumberList);
+        final Set<Integer> integerSet = new HashSet<>(randomNumberList);
         assertThat(integerSet.size()).isEqualTo(3);
     }
 }
