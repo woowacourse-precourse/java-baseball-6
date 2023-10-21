@@ -25,6 +25,17 @@ public class User {
         return result;
     }
 
+    public Integer readLineForRestartGame() {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        String result;
+        try {
+            result = in.readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return Integer.parseInt(result);
+    }
+
     private ArrayList<Integer> convertStringToIntegerArray(String result) {
         ArrayList<Integer> userNumber = new ArrayList<>();
         String[] splitResult = result.split("");

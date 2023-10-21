@@ -12,7 +12,7 @@ public class Application {
             if (gameManager.isCompleted(result)) {
                 endMessage();
                 restartGameMessage();
-                if (!gameManager.doGameAgain(Integer.parseInt(user.readLine()),computer)) break;
+                if (!gameManager.doGameAgain(user.readLineForRestartGame(),computer)) break;
             }
         }
     }
