@@ -13,7 +13,7 @@ public class ScoreCalculatorBaseBall implements ScoreCalculator {
     }
 
     private Integer calStrike(List<Integer> userInput, List<Integer> computerInput) {
-        return null;
+
     }
 
     private Integer calBall(List<Integer> userInput, List<Integer> computerInput) {
