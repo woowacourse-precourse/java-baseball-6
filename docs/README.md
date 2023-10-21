@@ -49,7 +49,7 @@
 
 ### Controller
 
-1. NumberValidator
+1. InputValidator
     + [x] playerInput 유효성 검사
         + [x] 세 자리인지 확인
         + [x] 1-9 사이의 정수로 구성되어 있는지 확인
@@ -85,7 +85,7 @@
 
 ### 목표 : 각 경우에 대해 실패할 경우와 추가적으로 성공할 경우도 작성
 
-+ [x] NumberValidator 대한 단위테스트
++ [x] InputValidator 대한 단위테스트
     + [x] 세 자리인지
     + [x] 1-9 사이의 정수로 구성되어 있는지
     + [x] 중복되는 값이 존재하는지

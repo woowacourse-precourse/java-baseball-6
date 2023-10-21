@@ -3,17 +3,17 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
-import baseball.controller.NumberValidator;
+import baseball.controller.InputValidator;
 import org.junit.jupiter.api.Test;
 
 public class NumberValidatorTest {
-    NumberValidator numberValidator = new NumberValidator();
+    InputValidator numberValidator = new InputValidator();
 
     @Test
     void isTreeLengthLetterTest_caseTrue() {
         String playerInput = "가나라";
 
-        assertThat(numberValidator.isTreeLengthLetter(playerInput)).isTrue();
+        assertThat(numberValidator.isThreeLengthLetter(playerInput)).isTrue();
     }
 
     @Test
@@ -21,8 +21,8 @@ public class NumberValidatorTest {
         String playerInput1 = "가나다라";
         String playerInput2 = "12";
 
-        assertThat(numberValidator.isTreeLengthLetter(playerInput1)).isFalse();
-        assertThat(numberValidator.isTreeLengthLetter(playerInput2)).isFalse();
+        assertThat(numberValidator.isThreeLengthLetter(playerInput1)).isFalse();
+        assertThat(numberValidator.isThreeLengthLetter(playerInput2)).isFalse();
     }
 
     @Test
