@@ -39,6 +39,13 @@ public class Application {
 
     private static List<Integer> generateRandomNumbers(){
         List<Integer> numbers = new ArrayList<>();
+        //세 개의 중복되지 않는 숫자 생성 후 리스트에 저장
+        while(numbers.size()<NUM_COUNT){
+            int randomNumber = Randoms.pickNumberInRange(Min_NUM, Max_NUM);
+            if(!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
 
         return numbers;
     }
