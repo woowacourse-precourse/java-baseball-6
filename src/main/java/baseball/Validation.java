@@ -13,9 +13,9 @@ public class Validation {
         validateInputDigit(userNumbers);
     }
 
-    public static void validateGameRestartOrNot(String gameRestartOrOver, String gameRestart, String gameOver) {
-        validateInputEmptyOrNull(gameRestartOrOver);
-        if (!gameRestartOrOver.equals(gameRestart) && !gameRestartOrOver.equals(gameOver)) {
+    public static void validateGameRestartOrNot(String gameRestartOrNot, String gameRestart, String gameOver) {
+        validateInputEmptyOrNull(gameRestartOrNot);
+        if (!gameRestartOrNot.equals(gameRestart) && !gameRestartOrNot.equals(gameOver)) {
             throw new IllegalArgumentException("[ERROR] 입력 값이 " + gameRestart + " 또는 " + gameOver + " 가 아닙니다.");
         }
     }
