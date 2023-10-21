@@ -31,5 +31,8 @@ public class BaseballGameController {
         return comparator.getStrikeCount() == 3;
     }
 
+    public boolean isNothingAnswer() {
+        return comparator.getStrikeCount() == 0 && comparator.getBallCount() == 0;
+    }
 
 }
