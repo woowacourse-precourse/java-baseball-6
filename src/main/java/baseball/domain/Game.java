@@ -8,8 +8,6 @@ public class Game {
     private final Numbers computer;
 
     public Game(){
-        generateComputerNumbers();
-
         this.computer=new Numbers(generateComputerNumbers());
     }
 
