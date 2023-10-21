@@ -34,11 +34,10 @@ public class Baseball {
             while(!checkGameScore(answerNumberList, inputNumberList)){
                 inputNumberList = getNumberInputList();
             }
-            printMessage.gameResult(1, 1);
-            printMessage.inputNumberMessage();
-            printMessage.gameResult(0, 3);
-            printMessage.gameCommand();
+
+            printMessage.endGameCommand();
             commandNumber = Integer.parseInt(Console.readLine());
+
         }while (commandNumber == 1);
     }
 
@@ -106,8 +105,4 @@ public class Baseball {
 
         return false;
     }
-
-
-
-
 }

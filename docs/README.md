@@ -7,11 +7,11 @@
   - getNumberInputList() 메서드로 받은 입력값을 ArrayList로 반환
 - [x] 입력받은 값이 볼인지 스트라이크인지 판단하는 checkGameScore()메서드 구현
   - ArrayList 두개를 받아와 값을 비교 후 처리
-- [ ] startGame()메서드 세부 로직 처리
+- [x] startGame()메서드 세부 로직 처리
 - [ ] 예외값 처리
   - 야구숫자
     - 같은값
     - 0
     - 3자리 초과
     - 3자리 미만
-  - while문 command의 1,2가 아닌 다른 값
+  - while문 endGameCommand의 1,2가 아닌 다른 값
