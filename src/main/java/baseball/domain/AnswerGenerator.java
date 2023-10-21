@@ -1,6 +1,4 @@
-package baseball;
-
-import java.util.List;
+package baseball.domain;
 
 public interface AnswerGenerator {
     Answer generate();
