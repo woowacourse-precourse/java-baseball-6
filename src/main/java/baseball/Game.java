@@ -18,9 +18,16 @@ public class Game {
             setPlayerNumber();
             System.out.println(Data.playerNumber); //디버깅용
             getResult();
-            System.out.println(Data.strike + " 스트라이크 " + Data.ball + "볼");// 디버깅용
+            printHint();
 
         }
+    }
+    static void printHint(){
+        if(Data.strike == Data.ANSWER_STRIKE) System.out.println(Data.strike +"스트라이크");
+        else if(Data.strike == 0 && Data.ball ==0)System.out.println("낫싱");
+        else if(Data.strike == 0) System.out.println(Data.ball + "볼");
+        else if(Data.ball == 0) System.out.println(Data.strike + "스트라이크");
+        else System.out.println(Data.ball + "볼 " +Data.strike + "스트라이크");
     }
     static void getResult(){
         int count = 0;

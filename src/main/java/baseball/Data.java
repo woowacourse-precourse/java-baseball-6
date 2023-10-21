@@ -7,7 +7,7 @@ public class Data {
     public static ArrayList<Integer> computerNumber;
     public static ArrayList<Integer> playerNumber;
     public final int DO_RESTART = 1;
-
+    public static final int ANSWER_STRIKE = 3;
     public static int strike;
     public static int ball;
 }
