@@ -1,6 +1,5 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
@@ -9,16 +8,10 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         String inputSystem;
 
-        // 상대가 되는 컴퓨터 숫자 생성
-        String randomNumber = "";
+        Computer computer = new Computer(); // 컴퓨터 객체 생성
+        String randomNumber = computer.generate(); // 컴퓨터 번호 생성
 
-        for (int i = 0; i < 3; ) { // 3개의 숫자 생성
-            int number = Randoms.pickNumberInRange(1, 9); // 1~9 범위 생성
-            if (!randomNumber.contains(String.valueOf(number))){
-                randomNumber += number; // 자리마다 중복되는 값 없으면 삽입
-                i++;
-            }
-        }
+        System.out.println(randomNumber);
 
         // 본격적으로 시작
         do{
@@ -86,6 +79,7 @@ public class Application {
                 judge = "낫싱";
             }
             System.out.println(judge);
+
             /**
              * 3스트라이크 체크
              */
@@ -102,14 +96,8 @@ public class Application {
              */
 
             if (inputSystem.equals("1")) { // 재시작
-
-                for (int i = 0; i < 3; ) { // 3개의 숫자 생성
-                    int number = Randoms.pickNumberInRange(1, 9); // 1~9 범위 생성
-                    if (!randomNumber.contains(String.valueOf(number))){
-                        randomNumber += number; // 자리마다 중복되는 값 없으면 삽입
-                        i++;
-                    }
-                }
+                computer.reset(); // 리셋
+                randomNumber = computer.generate();
 
             }
 

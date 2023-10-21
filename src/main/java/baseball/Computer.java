@@ -13,7 +13,6 @@ public class Computer {
     }
 
     public String generate() {
-
         while (size < 3) {
             String number = createOne(); // 숫자 하나 생성
 
