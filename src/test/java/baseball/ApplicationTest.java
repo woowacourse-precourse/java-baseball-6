@@ -9,6 +9,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import baseball.domain.BaseballNumber;
 import baseball.domain.BaseballScore;
 import baseball.service.BaseballService;
+import baseball.validator.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -138,4 +139,99 @@ class ApplicationTest extends NsTest {
         assertThat(result2).isEqualTo(true);
     }
 
+    @Test
+    void validateStringIsNaturalNumber_문자열이_자연수가_아니라면_예외발생() {
+        //given
+        String string1 = "123";
+        String string2 = "abc";
+        String string3 = "123a";
+        //when
+        Throwable throwable1 = catchThrowable(
+                () -> Validator.validateStringIsNaturalNumber(string1, "문자열이 자연수로 이루어지지 않았습니다"));
+        Throwable throwable2 = catchThrowable(
+                () -> Validator.validateStringIsNaturalNumber(string2, "문자열이 자연수로 이루어지지 않았습니다"));
+        Throwable throwable3 = catchThrowable(
+                () -> Validator.validateStringIsNaturalNumber(string3, "문자열이 자연수로 이루어지지 않았습니다"));
+        //then
+        assertThat(throwable1).as("자연수일때").doesNotThrowAnyException();
+        assertThat(throwable2).as("자연수가 아닐때").isInstanceOf(IllegalArgumentException.class);
+        assertThat(throwable3).as("문자가 섞여있을때").isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateStringHasNot_문자열이_특정문자를_갖고있다면_예외발생() {
+        //given
+        String testString1 = "abcdef";
+        String testString2 = "123456";
+        String testString3 = "안녕하세요";
+        String notContainsString1 = "a";
+        String notContainsString2 = "6";
+        String notContainsString3 = "A";
+        //when
+        Throwable throwable1 = catchThrowable(
+                () -> Validator.validateStringHasNot(notContainsString1, testString1, "문자열이 특정 문자를 갖고있습니다."));
+        Throwable throwable2 = catchThrowable(
+                () -> Validator.validateStringHasNot(notContainsString2, testString2, "문자열이 특정 문자를 갖고있습니다."));
+        Throwable throwable3 = catchThrowable(
+                () -> Validator.validateStringHasNot(notContainsString3, testString3, "문자열이 특정 문자를 갖고있습니다."));
+        //then
+        assertThat(throwable1).as("특정 문자를 갖고있을때").isInstanceOf(IllegalArgumentException.class);
+        assertThat(throwable2).as("특정 문자를 갖고있을때").isInstanceOf(IllegalArgumentException.class);
+        assertThat(throwable3).as("특정 문자를 갖고있지 않을때").doesNotThrowAnyException();
+    }
+
+    @Test
+    void validateStringLength_문자열이_주어진_길이가_아닐때_예외발생() {
+        //given
+        String testString1 = "abc";
+        String testString2 = "abcd";
+        int length1 = 4;
+        int length2 = 4;
+        //when
+        Throwable throwable1 = catchThrowable(
+                () -> Validator.validateStringLength(length1, testString1, "문자열이 주어진 길이와 다릅니다."));
+        Throwable throwable2 = catchThrowable(
+                () -> Validator.validateStringLength(length2, testString2, "문자열이 주어진 길이와 다릅니다."));
+        //then
+        assertThat(throwable1).as("주어진 길이가 다를때").isInstanceOf(IllegalArgumentException.class);
+        assertThat(throwable2).as("주어진 길이와 같을때").doesNotThrowAnyException();
+    }
+
+    @Test
+    void validateStringAllDifferent_문자열이_중복되는_문자를_갖고있을때_예외발생() {
+        //given
+        String testString1 = "abcc";
+        String testString2 = "abc";
+        //when
+        Throwable throwable1 = catchThrowable(
+                () -> Validator.validateStringAllDifferent(testString1, "문자열이 중복되는 문자를 갖고있습니다."));
+        Throwable throwable2 = catchThrowable(
+                () -> Validator.validateStringAllDifferent(testString2, "문자열이 중복되는 문자를 갖고있습니다."));
+        //then
+        assertThat(throwable1).as("중복되는 문자를 갖고있을때").isInstanceOf(IllegalArgumentException.class);
+        assertThat(throwable2).as("중복되는 문자를 갖고있지 않을때").doesNotThrowAnyException();
+    }
+
+    @Test
+    void validateStringIsOneOrTwo_문자열이_1이나_2가_아닐때_예외발생() {
+        //given
+        String testString1 = "1";
+        String testString2 = "2";
+        String testString3 = "3";
+        String testString4 = "a";
+        //when
+        Throwable throwable1 = catchThrowable(
+                () -> Validator.validateStringIsOneOrTwo(testString1));
+        Throwable throwable2 = catchThrowable(
+                () -> Validator.validateStringIsOneOrTwo(testString2));
+        Throwable throwable3 = catchThrowable(
+                () -> Validator.validateStringIsOneOrTwo(testString3));
+        Throwable throwable4 = catchThrowable(
+                () -> Validator.validateStringIsOneOrTwo(testString4));
+        //then
+        assertThat(throwable1).as("문자열이 1이나 2 일때").doesNotThrowAnyException();
+        assertThat(throwable2).as("문자열이 1이나 2 일때").doesNotThrowAnyException();
+        assertThat(throwable3).as("문자열이 1이나 2가 아닐때").isInstanceOf(IllegalArgumentException.class);
+        assertThat(throwable4).as("문자열이 1이나 2가 아닐때").isInstanceOf(IllegalArgumentException.class);
+    }
 }
