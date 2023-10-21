@@ -11,7 +11,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class BaseballGameController {
     public void startGame() {
@@ -23,7 +22,7 @@ public class BaseballGameController {
             guessing(user);
             OutputView.printHintMessage(calculateHint(computer.getAnswer(), user.getGuess()));
             if (computer.getAnswer().equals(user.getGuess())) {
-                OutputView.printSuccessAndEndMessage();
+                OutputView.printSuccessAndEndGameMessage();
                 break;
             }
         }
@@ -36,13 +35,14 @@ public class BaseballGameController {
     }
 
     public void createRandomAnswer(Computer computer) {
-        List<Integer> answerList = new ArrayList<>();
-        while (answerList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answerList.contains(randomNumber)) {
-                answerList.add(randomNumber);
+        List<Integer> answerList = new ArrayList<>() {{
+            while (size() < 3) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!contains(randomNumber)) {
+                    add(randomNumber);
+                }
             }
-        }
+        }};
         computer.setAnswer(new NumberList(answerList));
     }
 
@@ -51,7 +51,7 @@ public class BaseballGameController {
         int strikeCount = 0;
         for (int i = 0; i < answer.getNumberList().size(); i++) {
             for (int j = 0; j < guess.getNumberList().size(); j++) {
-                if (Objects.equals(answer.getNumberList().get(i), guess.getNumberList().get(j))) {
+                if (answer.getNumberList().get(i).equals(guess.getNumberList().get(j))) {
                     if (i != j) {
                         ballCount++;
                     } else {
@@ -65,7 +65,7 @@ public class BaseballGameController {
 
     private static class InputController {
         public static String scanUsersGuess() {
-            InputView.printEnterNumbers();
+            InputView.printEnterGuess();
             String userInput = Console.readLine();
             validateUsersGuess(userInput);
             return userInput;
