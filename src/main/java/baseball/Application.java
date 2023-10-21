@@ -81,6 +81,9 @@ public class Application {
             for (int j = 0; j < n; j++){
         for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++){
             for (int j = 0; j < GameConstants.NUMBER_LENGTH; j++){
+                if (i==j){
+                    continue;
+                }
                 if (inputNumList.get(i).equals(computerNumList.get(j))) {
                     ball++;
                 }
