@@ -36,8 +36,8 @@ public class BaseballNumber {
         if (!(o instanceof BaseballNumber)) {
             return false;
         }
-        BaseballNumber tmp = (BaseballNumber) o;
-        if (this.baseballNumberInt == tmp.baseballNumberInt) {
+        BaseballNumber baseballNumber = (BaseballNumber) o;
+        if (this.baseballNumberInt == baseballNumber.baseballNumberInt) {
             return true;
         }
         return false;
