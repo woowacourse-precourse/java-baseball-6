@@ -113,4 +113,15 @@ public class FunctionTest {
 
         assertEquals(2, userInputNumber2);
     }
+
+    @Test
+    void 사용자의_잘못된_재시작_입력을_검사한다() {
+        assertThrows(IllegalArgumentException.class, () -> Application.vaildUserRestartInput("0"));
+        assertThrows(IllegalArgumentException.class, () -> Application.vaildUserRestartInput("a"));
+        assertThrows(IllegalArgumentException.class, () -> Application.vaildUserRestartInput("11"));
+        assertDoesNotThrow(() -> {
+            Application.vaildUserRestartInput("1");
+            Application.vaildUserRestartInput("2");
+        });
+    }
 }
