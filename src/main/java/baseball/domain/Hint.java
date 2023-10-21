@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import java.util.ArrayList;
+
 public class Hint {
 
     private int strike;
@@ -42,6 +44,22 @@ public class Hint {
             return true;
         }
         return false;
+    }
+
+    public String toString() {
+        ArrayList<String> resultString = new ArrayList<>();
+
+        if (isBallExist()) {
+            resultString.add(getBallString());
+        }
+        if (isStrikeExist()) {
+            resultString.add(getStrikeString());
+        }
+        if (isHintNothing()) {
+            resultString.add(getNothingString());
+        }
+
+        return String.join(" ", resultString);
     }
 
     public String getStrikeString() {
