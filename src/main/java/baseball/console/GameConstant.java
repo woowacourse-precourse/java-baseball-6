@@ -1,6 +1,6 @@
 package baseball.console;
 
-public enum BaseBallConstant {
+public enum GameConstant {
 	GAME_INIT("숫자 야구 게임을 시작합니다."),
 	INPUT_REQ("숫자를 입력해주세요 : "),
 	BALL("볼"),
@@ -13,7 +13,7 @@ public enum BaseBallConstant {
 
 	private final String value;
 
-	BaseBallConstant(String value) {
+	GameConstant(String value) {
 		this.value = value;
 	}
 

@@ -2,7 +2,7 @@ package baseball.util;
 
 import java.util.HashSet;
 
-import baseball.console.BaseBallConstant;
+import baseball.console.GameConstant;
 
 public class InputValidation {
 
@@ -25,6 +25,6 @@ public class InputValidation {
 		if (input == null || input.length() != LENGTH_STANDARD) {
 			return false;
 		}
-		return input.equals(BaseBallConstant.RESTART.getValue()) || input.equals(BaseBallConstant.FINISH.getValue());
+		return input.equals(GameConstant.RESTART.getValue()) || input.equals(GameConstant.FINISH.getValue());
 	}
 }
