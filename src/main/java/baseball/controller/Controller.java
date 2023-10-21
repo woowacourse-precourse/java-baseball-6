@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.controller.mapper.ResultMapper;
 import baseball.model.Computer;
 import baseball.model.GameCommand;
 import baseball.model.UserNumbers;
@@ -36,8 +37,8 @@ public class Controller {
             inputNumbers = getInputNumbers();
             int ballCount = computer.getBallCount(inputNumbers);
             int strikeCount = computer.getStrikeCount(inputNumbers);
-            // todo 계산로직
-
+            String result = ResultMapper.resultToString(ballCount, strikeCount);
+            outputView.printResult(result);
         }
         outputView.printEnd();
     }
