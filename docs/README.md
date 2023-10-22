@@ -90,33 +90,36 @@
 숫자 야구 게임에 필요한 `BaseballNumber`세 개를 담은 컬렉션이다.
 - [X] 입력받은 문자열로 `BaseballNumber` 세 개를 생성한 후 집합에 추가한다.
 - [X] 입력받은 문자열이 3개가 아니거나 중복이 있다면 `IllegalArgumentException`을 발생한다.
+- [X] 값은 같지만 순서가 다른 `BaseballNumber`를 포함하고 있는지 확인한다.
+- [X] 값과 순서가 모두 같은 `BaseballNumber`를 포함하고 있는지 확인한다.
 
 <br>
 
 ### `RestartFlag`
 게임 재시작 여부를 확인하는 입력값을 답은 클래스 이다.
-- [ ] 게임 재시작, 종료 여부를 알려준다.
-- [ ] 입력값이 1, 2가 아닌 경우 `IllegalArgumentException`을 발생한다.
+- [X] 게임 재시작, 종료 여부를 알려준다.
+- [X] 입력값이 1, 2가 아닌 경우 `IllegalArgumentException`을 발생한다.
 
 <br>
 
 ### `Computer`
 `컴퓨터`에 해당하는 클래스로, 사용자가 맞춰야 하는 임의의 수 세 개를 담고 있다.
-- [ ] 임의의 `BaseballNumbers` 를 생성한다.
+- [X] 임의의 `BaseballNumbers` 를 생성한다.
 
 <br>
 
 ### `Player`
 `사용자`에 해당하는 클래스로, 입력한 세 개의 수 담고 있다.
-- [ ] 사용자가 입력한 `BaseballNumbers` 를 저장한다.
-- [ ] `BaseballNumbers`를 교체한다.
+- [X] 사용자가 입력한 `BaseballNumbers` 를 저장한다.
+- [X] `BaseballNumbers`를 교체한다.
 
 <br>
 
 ### `CompareResult`
 `Comparator`에서 비교한 결과를 담은 클래스이다.
-- [ ] `Strike`와 `Ball`을 카운트 한다.
-- [ ] 비교 결과 담은 문자열을 반환한다.
+- [X] `Strike`와 `Ball`을 카운트 한다.
+- [X] 비교 결과 담은 문자열을 반환한다.
+- [X] `Strike`가 3인 경우 정답임을 알려준다.
 
 <br>
 
@@ -128,8 +131,8 @@
 
 ### `StringConverter`
 `사용자`가 입력한 문자열을 정수로 변환해주는 클래스이다.
-- [ ] 문자열을 `int`로 변환하여 반환한다.
-- [ ] 문자열을 `List<Integer>`로 변환하여 반환한다. 
-- [ ] 입력받은 문자열이 정수로 변환이 불가능한 경우 `IllegalArgumentException`을 발생한다.
+- [X] 문자열을 `int`로 변환하여 반환한다.
+- [X] 문자열을 `List<Integer>`로 변환하여 반환한다. 
+- [X] 입력받은 문자열이 정수로 변환이 불가능한 경우 `IllegalArgumentException`을 발생한다.
 
 <br>
