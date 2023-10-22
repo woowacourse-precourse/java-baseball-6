@@ -21,18 +21,18 @@ public class ComNumberGenerator {
         return comNumbers;
     }
 
-    private void updateComNumbers(int randomNumber) {
-        if (comNumbers.contains(randomNumber)) {
-            return;
-        }
-        comNumbers.add(randomNumber);
-    }
-
     private void resetComNumbers() {
         comNumbers = new ArrayList<>();
     }
 
     private boolean isNotFull() {
         return comNumbers.size() < BALL_COUNT;
+    }
+
+    private void updateComNumbers(int randomNumber) {
+        if (comNumbers.contains(randomNumber)) {
+            return;
+        }
+        comNumbers.add(randomNumber);
     }
 }
