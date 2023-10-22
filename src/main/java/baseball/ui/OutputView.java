@@ -13,6 +13,6 @@ public class OutputView {
     }
 
     public void printGameEndMessage() {
-        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", GameConfig.PITCH_COUNT.getValue());
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", GameConfig.PITCH_COUNT.getValue());
     }
 }
