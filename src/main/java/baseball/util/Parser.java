@@ -25,10 +25,10 @@ public class Parser {
 	}
 
 	private static String parseHintToOneResult(int strike, int ball) {
-		if(strike ==0 ) {
-			return strike + STRIKE;
+		if(strike == 0 ) {
+			return ball + BALL;
 		}
-		return ball + BALL;
+		return strike + STRIKE;
 	}
 
 	private static String parseHintToResults(int strike, int ball) {

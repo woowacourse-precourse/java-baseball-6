@@ -8,7 +8,12 @@ public class Hint {
 
 	public String createHint(TargetNumber targetNumber, InputNumber inputNumber) {
 		compare(targetNumber, inputNumber);
+
 		return Parser.parseHintToString(strike, ball);
+	}
+
+	public boolean isWin(int size) {
+		return strike==size ;
 	}
 
 	private void compare(TargetNumber targetNumber, InputNumber inputNumber) {
