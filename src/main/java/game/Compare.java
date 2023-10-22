@@ -1,9 +1,15 @@
-package baseball;
+package game;
+
+import static input.Computer.computerNumber;
+import static input.User.userNumber;
+import static game.Result.printResult;
 
 import java.util.List;
 
 public class Compare {
-    public int countStirke(List<Integer> com, List<Integer> user) {
+    private static final int BASEBALL_COUNT = 3;
+
+    private static int countStirke(List<Integer> com, List<Integer> user) {
         int strike = 0;
         for(int i = 0; i < com.size(); i++) {
             int userNum = user.get(i);
@@ -13,7 +19,7 @@ public class Compare {
         }
         return strike;
     }
-    public int countAll(List<Integer> com, List<Integer> user) {
+    private static int countAll(List<Integer> com, List<Integer> user) {
         int all = 0;
         for(int i = 0; i < com.size(); i++) {
             int userNum = user.get(i);
@@ -23,28 +29,23 @@ public class Compare {
         }
         return all;
     }
-    public boolean isAnswer(int strike) {
+    private static boolean isAnswer(int strike) {
         boolean Answer = false;
-        if(strike == 3) {
+        if(strike == BASEBALL_COUNT) {
             Answer = true;
         }
         return Answer;
     }
-    public void startCompare() {
+    public static void startCompare() {
         int strike;
         int ball;
-
         boolean Answer = false;
-        Result res = new Result();
-        User use = new User();
-        Computer compu = new Computer();
-        List<Integer> comNum= compu.computerNumber();
-        System.out.println(comNum.toString());
+        List<Integer> comNum = computerNumber();
         while (!Answer) {
-            List<Integer> userNum = use.userNumber();
+            List<Integer> userNum = userNumber();
             strike = countStirke(comNum, userNum);
             ball = countAll(comNum, userNum) - strike;
-            res.printResult(strike, ball);
+            printResult(strike, ball);
             Answer = isAnswer(strike);
         }
     }
