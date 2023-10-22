@@ -8,30 +8,16 @@ import java.util.stream.Stream;
 
 public class CheckBall {
 
-    protected static boolean giveBallResult(String tempBall, List<Integer> rightBall){
-
-        List<Integer> integerTempBall = new ArrayList<>();
-        try {
-            integerTempBall = Arrays.stream(tempBall.split(""))
-                    .map(Integer::valueOf)
-                    .collect(Collectors.toList());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-
-        if (integerTempBall.size() != 3) {
-            throw new IllegalArgumentException();
-        }
+    protected static boolean giveBallResult(List<Integer> resultBall, List<Integer> rightBall){
 
         int strike = 0;
         int ball = 0;
-        boolean status = false;
 
         for (int i = 0; i < rightBall.size(); i++) {
-            if (rightBall.get(i) == integerTempBall.get(i)) {
+            if (rightBall.get(i) == resultBall.get(i)) {
                 strike++;
             }
-            if (rightBall.contains(integerTempBall.get(i))) {
+            if (rightBall.contains(resultBall.get(i))) {
                 ball++;
             }
         }
