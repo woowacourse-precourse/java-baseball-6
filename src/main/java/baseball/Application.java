@@ -11,24 +11,23 @@ public class Application {
 
     static int strike;
     static int ball;
+    static int[] index;
 
     public static void main(String[] args) {
 
         //게임이 끝난 후 사용자가 계속 게임을 할 지에 대한 변수
         int continue_game;
 
-
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true){
             List<Integer> computer = new ArrayList<>();
-            List<Integer> user_guess = new ArrayList<>();
-
-
+            index = new int[10];
             while (computer.size() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
                 if (!computer.contains(randomNumber)) {
                     computer.add(randomNumber);
+                    index[randomNumber] = computer.size();
                 }
             }
 
@@ -52,6 +51,7 @@ public class Application {
             ball = 0;
             sb = new StringBuilder();
             user_guess = new ArrayList<>();
+            System.out.printf("숫자를 입력해주세요 : ");
             user_guess_input = readLine();
 
             check_user_input(user_guess, user_guess_input);
@@ -77,26 +77,21 @@ public class Application {
     }
 
     private static void compare_input(List<Integer> computer, List<Integer> user_guess) {
-        for (int i = 0; i < computer.size(); i++) {
 
-            int now_com_num = computer.get(i);
-            int now_com_index = i;
+        for(int i = 0; i < user_guess.size();i++){
 
-            for (int j = 0; j < user_guess.size(); j++) {
+            int now_user_num = user_guess.get(i);
+            int now_user_index = i+1;
+            int now_com_num = user_guess.get(i);
+            int now_com_index = index[now_com_num];
 
-                int now_user_num = user_guess.get(j);
-                int now_user_index = j;
-
-                if ((now_com_index == now_user_index) && (now_com_num == now_user_num)) {
-
+            if (now_com_index == now_user_index) {
                     strike++;
-                } else if (now_com_num == now_user_num) {
-
+                } else if(now_com_index!=0){
                     ball++;
                 }
-
-            }
         }
+
     }
 
     private static void check_user_input(List<Integer> user_guess, String user_guess_input) {
