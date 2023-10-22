@@ -29,7 +29,7 @@ public class OutputView {
     }
 
     private boolean isOut(final int ballCount, final int strikeCount) {
-        return ballCount == NO_COUNT && strikeCount == NO_COUNT;
+        return !hasCount(ballCount) && !hasCount(strikeCount);
     }
 
     private String buildStatus(final int ballCount, final int strikeCount) {
