@@ -9,10 +9,11 @@ import java.util.Map;
 public class Application {
     public static void main(String[] args) {
         Input input = new Input();
+        Output output = new Output();
         boolean gameFirstStarted = true;
         while (true) {
             if (gameFirstStarted) {
-                System.out.println("숫자 야구 게임을 시작합니다.");
+                output.printStartGame();
                 gameFirstStarted = false;
             }
 
