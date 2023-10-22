@@ -24,5 +24,8 @@ test {
     useJUnitPlatform()
 }
 
+//초기상태로 바꿈
+
+
 
 
