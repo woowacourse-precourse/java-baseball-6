@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args)throws IllegalArgumentException  {
         // TODO: 프로그램 구현
 
         List<Integer> computer = new ArrayList<>();
@@ -29,7 +29,8 @@ public class Application {
             //입력
             System.out.print("숫자를 입력해주세요 : ");
             Scanner sc=new Scanner(System.in);
-            String input=sc.nextLine();
+            String input = sc.nextLine();
+
             for(int i=0; i<input.length(); i++){
                 int value=(int)input.charAt(i)-'0';
                 user.add(value);
