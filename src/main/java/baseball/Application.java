@@ -46,7 +46,7 @@ public class Application {
         input = Console.readLine();
         if (!isValidInput(input)) {
             throw (new IllegalArgumentException());
-        };
+        }
         return (stringToIntArray(input));
     }
 
