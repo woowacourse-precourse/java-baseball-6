@@ -24,8 +24,9 @@ public class Game {
     }
 
     public void run() {
+        computer.pickRandomNumbers();
+
         while (true) {
-            computer.pickRandomNumbers();
             GameNumbers gameNumbersOfPlayer = getGameNumbersOfPlayer();
             GameResult result = computer.getResult(gameNumbersOfPlayer);
             outputView.printResult(result);
