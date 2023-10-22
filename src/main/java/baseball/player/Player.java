@@ -18,6 +18,14 @@ public class Player {
         for(int i = 0; i <playerString.length(); i++){
             char digitChar = playerString.charAt(i);
             int digit = Character.getNumericValue(digitChar);
+            for(int j = 0; j <player.size(); j++){
+                if(player.get(j) == digit){
+                    throw new IllegalArgumentException("입력은 중복되지 않은 숫자로 이루어져야합니다.");
+                }
+            }
+            if(!(digit >=1 && digit <= 9)){
+                throw new IllegalArgumentException("입력은 1~9의 숫자로 이루어져야합니다.");
+            }
             player.add(digit);
         }
 
