@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,16 @@ public class RandomNumberGenerator {
         return Randoms.pickUniqueNumbersInRange(1, 9,numberOfRandom);
     }
 
+
+    public static List<Integer> getUniqueRandomNumberSequence(int LengthOfSequence){
+        Set<Integer> set = new HashSet<>();
+        while(set.size() != 3){
+            set.add(Randoms.pickNumberInRange(1,9));
+        }
+        List<Integer> randomNumbers = new ArrayList<>(set);
+        validateRandomNumbers(randomNumbers);
+        return randomNumbers;
+    }
     private static void validateRandomNumbers(List<Integer> randomNumbers){
         List<Integer> nonDuplicateNumbers = randomNumbers.stream().distinct().toList();
         if (nonDuplicateNumbers.size() != 3){
