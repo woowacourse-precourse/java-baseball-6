@@ -7,10 +7,10 @@ public class OutputView {
         System.out.print(REQUEST_PLAYER_NUMBER.getMessage());
     }
 
-    public static void printGameStart() {
+    public static void printInitialGameStart() {
         System.out.println(GAME_START.getMessage());
     }
-    
+
     public static void printRequestRestartOrExit() {
         System.out.println(REQUEST_RESTART_OR_EXIT.getMessage());
     }
