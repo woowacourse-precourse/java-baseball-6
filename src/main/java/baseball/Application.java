@@ -30,14 +30,26 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         randomNumberList = getNewRandomNumberList();
+        do{
+            userInput = getInputOnGame();
+            inputValidationCheck(userInput);
+            userNumberList = numericString2List(userInput);
+            List<Integer> testResult = userAnswerTesting();
+            printTestResult(testResult);
 
-        userInput = getInputOnGame();
-        inputValidationCheck(userInput);
-        userNumberList = numericString2List(userInput);
-        List<Integer> testResult = userAnswerTesting();
-        printTestResult(testResult);
+        }while(!isUserAnswerCorrect());
 
         System.out.println("게임이 종료되었습니다.");
+    }
+
+    /**
+     * 정답을 모두 맞추었는지 확인
+     * @return 사용자 입력이 정답인 경우 true
+     */
+    public static boolean isUserAnswerCorrect() {
+        int count;
+        count = userNumberList.get(BallType.STRIKE.value);
+        return count == LENGTH_OF_CORRECTION_ANSWER;
     }
 
     /**
@@ -135,7 +147,7 @@ public class Application {
      * @return 사용자가 입력한 문자열 데이터
      */
     public static String getInputOnGame() {
-        System.out.println("숫자를 입력해주세요: ");
+        System.out.print("숫자를 입력해주세요: ");
         return Console.readLine();
     }
 
