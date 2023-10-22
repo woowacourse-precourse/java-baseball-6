@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class PlayGame {
 
@@ -35,6 +38,17 @@ public class PlayGame {
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException("1~9 사이에 있는 정수만 입력해주세요.");
             }
+        }
+    }
+
+    public void validateDuplicateNumbers(String input) {
+        HashSet<Character> setNumbers = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            setNumbers.add(c);
+        }
+
+        if (input.length() != setNumbers.size()) {
+            throw new IllegalArgumentException("중복된 값을 입력하지 말아주세요.");
         }
     }
 }
