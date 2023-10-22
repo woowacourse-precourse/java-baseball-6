@@ -29,4 +29,16 @@ public class GameStatus {
         strikeCnt = 0;
         ballCnt = 0;
     }
+
+    public boolean isNotBallCntZero() {
+        return this.ballCnt != 0;
+    }
+
+    public boolean isNotStrikeCntZero() {
+        return this.strikeCnt != 0;
+    }
+
+    public boolean isNothing() {
+        return strikeCnt == 0 && ballCnt == 0;
+    }
 }
