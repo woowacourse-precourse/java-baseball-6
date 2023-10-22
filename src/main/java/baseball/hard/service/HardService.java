@@ -8,8 +8,7 @@ public class HardService extends CommonNumberService {
 
     //카운트 제한을 넘었는지 체크
     public boolean isCountOver(int count){
-        if(count>COUNT_LIMIT) return true;
-        return false;
+        return count > COUNT_LIMIT;
     }
 
 
