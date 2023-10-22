@@ -7,7 +7,7 @@ public class Validate {
         if (checkInputLength(userInput)) {
             throw new IllegalArgumentException();
         }
-        if (checkSameNumber(userInput)) {
+        if (hasSameNumber(userInput)) {
             throw new IllegalArgumentException();
         }
         return true;
@@ -20,7 +20,7 @@ public class Validate {
         return false;
     }
 
-    public static boolean checkSameNumber(String userInput) {
+    public static boolean hasSameNumber(String userInput) {
         HashSet<Character> numberSet = new HashSet<Character>();
         for (int i = 0 ; i < userInput.length() ; i ++ ) {
             numberSet.add(userInput.charAt(i));
