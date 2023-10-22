@@ -9,4 +9,11 @@ public class ScoreBoard {
         this.scoreBoardList = scoreBoardList;
     }
 
+    public int countStrike() {
+        return (int) scoreBoardList.stream()
+                .filter(e -> e.equals("STRIKE"))
+                .count();
+    }
+
+
 }
