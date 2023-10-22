@@ -36,6 +36,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 숫자가_아닌_것을_입력했을_시_예외_발생_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12삼"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
