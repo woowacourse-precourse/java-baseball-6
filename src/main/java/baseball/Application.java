@@ -113,16 +113,8 @@ public class Application {
         } catch (Exception e){
             throw new IllegalArgumentException();
         }
-        // 사용자 인풋이 3자리가 아니면 예외 발생
-        if (inputString.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-        // 사용자 인풋에 "0"이 포함되면 예외 발생
-        if (inputString.contains("0")) {
-            throw new IllegalArgumentException();
-        }
-        // 사용자 인풋에 동일 숫자 존재시 예외 발생
-        if (isDuplicated(inputString)) {
+        // 사용자 인풋이 3자리가 아니거나, "0"이 포함되거나, 동일 숫자 존재시 예외 발생
+        if (inputString.length() != 3 || inputString.contains("0") || isDuplicated(inputString)) {
             throw new IllegalArgumentException();
         }
         return number;
