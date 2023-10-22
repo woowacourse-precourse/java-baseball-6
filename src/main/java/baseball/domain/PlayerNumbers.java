@@ -39,8 +39,8 @@ public class PlayerNumbers {
     }
 
     public void checkForBallCount(ComputerNumbers computerNumbers, int digitNumber) {
-        for (int i = 0; i < digitNumber; i++) {
-            computerNumbers.compare(numbers.get(i), i);
+        for (int indexOfPlayerNumber = 0; indexOfPlayerNumber < digitNumber; indexOfPlayerNumber++) {
+            computerNumbers.compare(numbers.get(indexOfPlayerNumber), indexOfPlayerNumber);
         }
     }
 }
