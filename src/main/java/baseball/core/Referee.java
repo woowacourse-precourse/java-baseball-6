@@ -6,11 +6,20 @@ import java.util.List;
 
 public class Referee {
     public GameResult judge(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        int ballCount = getBallCount(computerNumbers, userNumbers);
+        int strikeCount = getStrikeCount(computerNumbers, userNumbers);
+        return new GameResult(ballCount, strikeCount);
+    }
+
+    private int getStrikeCount(List<Integer> computerNumbers, List<Integer> userNumbers) {
         int strikeCount = 0;
         for(int i = 0; i < computerNumbers.size(); i++) {
             if(computerNumbers.get(i) == userNumbers.get(i)) strikeCount++;
         }
+        return strikeCount;
+    }
 
+    private int getBallCount(List<Integer> computerNumbers, List<Integer> userNumbers) {
         int ballCount = 0;
         for(int i = 0; i < computerNumbers.size(); i++) {
             for(int j = 0; j < userNumbers.size(); j++) {
@@ -18,7 +27,6 @@ public class Referee {
                 if(computerNumbers.get(i) == userNumbers.get(j)) ballCount++;
             }
         }
-
-        return new GameResult(ballCount, strikeCount);
+        return ballCount;
     }
 }
