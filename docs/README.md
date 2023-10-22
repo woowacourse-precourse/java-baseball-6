@@ -17,13 +17,13 @@
 
 ### 기능
 
-[ ] 1~9의 서로 다른 임의의 수를 3개 선택한다.
+[v] 1~9의 서로 다른 임의의 수를 3개 선택한다.
 
 [ ] Player에게 서로 다른 임의의 수 3자리를 추가로 입력받고 변경한다.
 
-[ ] 자신이 고른 수와 Player가 고른 수를 사용해 GameMachine을 실행한다.
+[v] 자신이 고른 수와 Player가 고른 수를 사용해 GameMachine을 실행한다.
 
-[ ] GameMachine이 반환한 GameResult로 게임을 진행한다.
+[v] GameMachine이 반환한 GameResult로 게임을 진행한다.
 
 [ ] Strike가 3개 반환될 때까지 게임을 반복한다.
 
