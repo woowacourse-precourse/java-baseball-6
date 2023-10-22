@@ -36,15 +36,31 @@ public class Game {
     private void startGame(int randomNumber) {
         boolean isAnswerCorrect = false;
         while (!isAnswerCorrect) {
-            String input = Console.readLine();
-            if (!input.matches("\\d{" + NUM_OF_DIGITS + "}")) {
+            String inputNumber = Console.readLine();
+            if (!inputNumber.matches("\\d{" + NUM_OF_DIGITS + "}")) {
                 throw new IllegalArgumentException();
             }
-            int inputNumber = Integer.parseInt(input);
             if (compareNumbers(inputNumber, randomNumber)) { // 숫자 비교 메서드, 3스트라이크이면 true를 return
                 isAnswerCorrect = true;
             }
         }
+    }
+
+    private boolean compareNumbers(String inputNumber, int randomNumber) {
+        String randomString = Integer.toString(randomNumber);
+        int ballCnt = 0;
+        int strikeCnt = 0;
+        for (int i = 0; i < randomString.length(); i++) {
+            for (int j = 0; j < inputNumber.length(); j++) {
+                boolean b = randomString.charAt(i) == inputNumber.charAt(j);
+                if (b && i == j) {
+                    strikeCnt++;
+                } else if (b) {
+                    ballCnt++;
+                }
+            }
+        }
+        return strikeCnt == 3; // 3스트라이크이면 true를 return
     }
 
 
