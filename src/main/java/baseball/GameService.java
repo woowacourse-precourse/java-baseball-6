@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class GameService {
 
@@ -35,24 +36,16 @@ public class GameService {
         computeBall(playerList, computerList);
     }
 
-    private void computeStrike(List<Integer> playerList, List<Integer> computerList) {
-        int newStrike = 0;
-        for (int i = 0; i < playerList.size(); i++) {
-            if (playerList.get(i) == computerList.get(i)) {
-                newStrike += 1;
-            }
-        }
-        strike = newStrike;
+    public void computeStrike(List<Integer> playerList, List<Integer> computerList) {
+        strike = (int) IntStream.range(0, playerList.size())
+            .filter(i -> playerList.get(i).equals(computerList.get(i)))
+            .count();
     }
 
     private void computeBall(List<Integer> playerList, List<Integer> computerList) {
-        int newBall = 0;
-        for (int i = 0; i < playerList.size(); i++) {
-            if (playerList.get(i) != computerList.get(i) && computerList.contains(
-                playerList.get(i))) {
-                newBall += 1;
-            }
-        }
-        ball = newBall;
+        ball = (int) IntStream.range(0, playerList.size())
+            .filter(i -> playerList.get(i) != computerList.get(i)
+                && computerList.contains(playerList.get(i)))
+            .count();
     }
 }
