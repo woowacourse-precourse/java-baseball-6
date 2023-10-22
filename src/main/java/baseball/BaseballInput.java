@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Baseball_Input {
+public class BaseballInput {
     private static List<Integer> userInput;
     private static int restartNum;
 
