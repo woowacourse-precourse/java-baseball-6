@@ -7,9 +7,9 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class ComputerRandomPitcherImpl implements Pitcher {
 
-    String ball = "";
     @Override
     public String pitch() {
+        String ball = "";
         for(int i = 0 ; i < DIGIT_NUM ; i++){
             int randNum = pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             ball = ball + randNum;
