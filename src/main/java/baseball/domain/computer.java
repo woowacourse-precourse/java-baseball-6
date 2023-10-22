@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class computer {
+    private String answer;
+
+
     // 컴퓨터가 임의의 랜덤한 숫자 3개를 생성해낸다.
     public List<Integer> createNumber() {
         List<Integer> computer = new ArrayList<>();
