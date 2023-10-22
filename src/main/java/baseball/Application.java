@@ -1,15 +1,13 @@
 package baseball;
 
 import baseball.controller.GameController;
-import baseball.service.GameLogicService;
-import baseball.service.GameResultService;
-import baseball.service.GameSetupService;
-import baseball.view.console.InputView;
-import baseball.view.console.OutputView;
+import baseball.service.GameService;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        GameController gameController = new GameController(outputView(), inputView(), gameSetupService(), gameLogicService(), gameResultService());
+        GameController gameController = new GameController(outputView(), inputView(), gameSetupService());
         gameController.run();
     }
 
@@ -21,15 +19,7 @@ public class Application {
         return new InputView();
     }
 
-    private static GameSetupService gameSetupService() {
-        return new GameSetupService();
-    }
-
-    private static GameLogicService gameLogicService() {
-        return new GameLogicService();
-    }
-
-    private static GameResultService gameResultService() {
-        return new GameResultService();
+    private static GameService gameSetupService() {
+        return new GameService();
     }
 }

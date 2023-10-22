@@ -3,29 +3,21 @@ package baseball.controller;
 import baseball.domain.Balls;
 import baseball.domain.Game;
 import baseball.domain.GameResult;
-import baseball.service.GameLogicService;
-import baseball.service.GameResultService;
-import baseball.service.GameSetupService;
-import baseball.view.console.InputView;
-import baseball.view.console.OutputView;
+import baseball.service.GameService;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class GameController {
     private final OutputView outputView;
     private final InputView inputView;
-    private final GameSetupService gameSetupService;
-    private final GameLogicService gameLogicService;
-    private final GameResultService gameResultService;
+    private final GameService gameService;
 
     public GameController(OutputView outputView,
                           InputView inputView,
-                          GameSetupService gameSetupService,
-                          GameLogicService gameLogicService,
-                          GameResultService gameResultService) {
+                          GameService gameService) {
         this.outputView = outputView;
         this.inputView = inputView;
-        this.gameSetupService = gameSetupService;
-        this.gameLogicService = gameLogicService;
-        this.gameResultService = gameResultService;
+        this.gameService = gameService;
     }
 
     public void run() {
@@ -37,22 +29,22 @@ public class GameController {
     }
 
     private void playGame() {
-        Game game = gameSetupService.gameCreate();
+        Game game = gameService.createGame();
         while (!game.isGameFinished()) {
             outputView.inputBallsMessage();
-            GameResult gameResult = gameLogicService.compareBalls(game, getPlayerBalls());
-            outputView.resultMessage(gameResultService.showResult(gameResult));
-            gameLogicService.updateGameState(game, gameResult);
+            GameResult gameResult = game.compareAndResult(getPlayerBalls());
+            outputView.resultMessage(gameResult.createGameResult());
+            game.updateGameState(gameResult);
         }
     }
 
     private Balls getPlayerBalls() {
-        return gameSetupService.generatePlayerBalls(inputView.requestPlayerGuess());
+        return gameService.generatePlayerBalls(inputView.requestPlayerGuess());
     }
 
     private boolean restartGame() {
         outputView.inputGameRestartMessage();
-        return gameResultService.restartGame(inputView.requestRestartChoice());
+        return gameService.restartGame(inputView.requestRestartChoice());
     }
 
 }
