@@ -15,7 +15,7 @@ public class NumberBaseballGameTest {
         List<Integer> computer = Arrays.asList(1, 2, 3);
         List<Integer> user = Arrays.asList(1, 2, 3);
 
-        boolean isWin = numberBaseballGame.isUserWin(user, computer);
+        boolean isWin = numberBaseballGame.isUserWin(numberBaseballGame.countStrike(user, computer));
 
         assertThat(isWin).isTrue();
     }
