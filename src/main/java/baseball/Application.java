@@ -17,23 +17,8 @@ public class Application {
             Computer computer = new Computer();
 
             while (true) {
-                List<Integer> my = new ArrayList<>();
-                System.out.print("숫자를 입력해주세요 : ");
-                String inputNumbers = readLine();
 
-                if (inputNumbers.length() != 3){
-                    throw new IllegalArgumentException("입력한 숫자 길이가 맞지 않습니다.");
-                }
-
-                for (int i = 0; i < inputNumbers.length(); i++){
-                    try {
-                        int number = Character.getNumericValue(inputNumbers.charAt(i));
-                        my.add(number);
-                    } catch (Exception e) {
-                        throw new IllegalArgumentException("입력한 문자가 숫자가 아닙니다.");
-                    }
-
-                }
+                List<Integer> my = inputNumbers();
 
                 int[] compareResult = computer.compareNumber(my);
 
@@ -81,8 +66,28 @@ public class Application {
                 throw new IllegalArgumentException("잘못 입력하셨습니다.");
             }
         }
+    }
 
+    static List<Integer> inputNumbers() throws IllegalArgumentException{
 
+        List<Integer> my = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputNumbers = readLine();
 
+        if (inputNumbers.length() != 3){
+            throw new IllegalArgumentException("입력한 숫자 길이가 맞지 않습니다.");
+        }
+
+        for (int i = 0; i < inputNumbers.length(); i++){
+            try {
+                int number = Character.getNumericValue(inputNumbers.charAt(i));
+                my.add(number);
+            } catch (Exception e) {
+                throw new IllegalArgumentException("입력한 문자가 숫자가 아닙니다.");
+            }
+
+        }
+
+        return my;
     }
 }
