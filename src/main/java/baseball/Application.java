@@ -2,8 +2,12 @@ package baseball;
 
 import static baseball.Constants.MAX_STRIKE;
 import static baseball.Constants.NUM_LENGTH;
+import static baseball.Constants.NEW_LINE;
+import static baseball.Constants.RESTART;
+import static baseball.Constants.EXIT;
 
 import baseball.GameResult;
+import baseball.Status;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.sql.SQLOutput;
@@ -26,14 +30,14 @@ public class Application {
     }
 
     public static void startBaseballGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        printMessage(Status.GAME_START, NEW_LINE);
         boolean continueFlag = true;
         while (continueFlag) {
             createComputerNumber();
             while (strike != MAX_STRIKE) {
                 inputUserNumber();
                 compareNumbers();
-                printResult();
+                printGameResult();
             }
             continueFlag = inputContinueOrExit();
         }
@@ -50,7 +54,7 @@ public class Application {
     }
 
     public static void inputUserNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        printMessage(Status.INPUT_NUMBER, !NEW_LINE);
         String inputNumber = Console.readLine();
         if (inputNumber.length() != NUM_LENGTH) {
             throw new IllegalArgumentException();
@@ -91,23 +95,33 @@ public class Application {
         }
     }
 
-    public static void printResult() {
+    public static void printGameResult() {
         String message = GameResult.getMessage(ball, strike);
         System.out.println(message);
     }
 
     public static boolean inputContinueOrExit() {
-        ball = 0;
-        strike = 0;
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String inputNumber = Console.readLine();
-        if (!inputNumber.equals("1") && !inputNumber.equals("2")) {
-            throw new IllegalArgumentException();
-        }
-        if (inputNumber.equals("1")) {
+        printMessage(Status.RESTART_OR_EXIT, NEW_LINE);
+        int inputNumber = Integer.parseInt(Console.readLine());
+
+        if (inputNumber == RESTART) {
+            ball = 0;
+            strike = 0;
             return true;
+        } else if (inputNumber == EXIT) {
+            return false;
         }
-        return false;
+
+        throw new IllegalArgumentException();
+    }
+
+    public static void printMessage(Status status, boolean newLine) {
+        String message = status.getMessage();
+        if (newLine) {
+            System.out.println(message);
+        } else if (!newLine) {
+            System.out.print(message);
+        }
     }
 }
 
