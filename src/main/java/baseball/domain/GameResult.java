@@ -5,10 +5,6 @@ public class GameResult {
     private int strike;
     private int ball;
 
-    public boolean verifyEnd() {
-        return this.strike == 3;
-    }
-
     public int getStrike() {
         return strike;
     }
