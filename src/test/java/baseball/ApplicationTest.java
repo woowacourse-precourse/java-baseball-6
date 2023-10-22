@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -29,6 +30,37 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Nested
+    class GameServiceTest {
+
+        @Test
+        void strike를_올바르게_리턴한다() {
+            GameService gameService = new GameService();
+            gameService.computeStrike(List.of(1, 2, 3), List.of(1, 2, 3));
+            assertThat(gameService.getStrike()).isEqualTo(3);
+
+            gameService.computeStrike(List.of(1, 2, 3), List.of(1, 2, 4));
+            assertThat(gameService.getStrike()).isEqualTo(2);
+
+            gameService.computeStrike(List.of(1, 2, 3), List.of(1, 4, 5));
+            assertThat(gameService.getStrike()).isEqualTo(1);
+        }
+
+        @Test
+        void ball을_올바르게_리턴한다() {
+            GameService gameService = new GameService();
+            gameService.computeBall(List.of(1, 2, 3), List.of(1, 2, 3));
+            assertThat(gameService.getBall()).isEqualTo(0);
+
+            gameService.computeBall(List.of(1, 2, 3), List.of(1, 3, 4));
+            assertThat(gameService.getBall()).isEqualTo(1);
+
+            gameService.computeBall(List.of(1, 2, 3), List.of(4, 1, 2));
+            assertThat(gameService.getBall()).isEqualTo(2);
+        }
+    }
+
 
     @Nested
     class PlayerTest {

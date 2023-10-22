@@ -11,11 +11,11 @@ public class GameService {
     private int strike = 0;
     private int ball = 0;
 
-    public int getStrike(){
+    public int getStrike() {
         return strike;
     }
 
-    public int getBall(){
+    public int getBall() {
         return ball;
     }
 
@@ -50,7 +50,7 @@ public class GameService {
             .count();
     }
 
-    private void computeBall(List<Integer> playerList, List<Integer> computerList) {
+    public void computeBall(List<Integer> playerList, List<Integer> computerList) {
         ball = (int) IntStream.range(0, playerList.size())
             .filter(i -> playerList.get(i) != computerList.get(i)
                 && computerList.contains(playerList.get(i)))
