@@ -9,7 +9,7 @@ import java.util.List;
 public class InputView {
 
     public static String requestUserNumber() {
-        System.out.println("숫자를 입력해주세요");
+        System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
 
