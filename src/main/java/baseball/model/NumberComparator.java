@@ -3,6 +3,7 @@ package baseball.model;
 public class NumberComparator {
     private int strikes = 0;
     private int balls = 0;
+    private static final int RESET_NUMBER = 0; //매직넘버를 상수로 대체
 
     /**
      * 볼, 스트라이크 개수 세기
@@ -20,8 +21,8 @@ public class NumberComparator {
      * 새로운 게임이 시작되었을 때, 기존 게임의 결과 초기화
      */
     private void resetResult() {
-        strikes = 0;
-        balls = 0;
+        strikes = RESET_NUMBER;
+        balls = RESET_NUMBER;
     }
 
     /**
@@ -51,8 +52,8 @@ public class NumberComparator {
      */
     private void updateBall() {
         balls -= strikes;
-        if (balls < 0) {
-            balls = 0;
+        if (balls < RESET_NUMBER) {
+            balls = RESET_NUMBER;
         }
     }
 
