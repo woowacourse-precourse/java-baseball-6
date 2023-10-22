@@ -61,6 +61,17 @@ class OutputCommanderTest {
         assertEquals(expected, output);
     }
 
+    @Test
+    void 게임이_끝났을때_요구사항에_맞는_문구를_출력한다() {
+        OutputCommander outputCommander = new OutputCommander();
+        String expected = OutputMessage.GAME_CLEAR.message + "\n";
+
+        outputCommander.printGameClear();
+
+        String output = outputStream.toString();
+        assertEquals(expected, output);
+    }
+
 
 
 }
