@@ -1,6 +1,5 @@
-package baseball.refree;
+package baseball;
 
-import baseball.computer.Computer;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

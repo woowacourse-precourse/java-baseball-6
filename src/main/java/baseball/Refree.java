@@ -1,9 +1,9 @@
-package baseball.refree;
+package baseball;
 
 import java.util.List;
 
 public class Refree {
-    public String count(List<Integer> computer, List<Integer> player) {
+    public static String count(List<Integer> computer, List<Integer> player) {
         int strike = 0;
         int ball = 0;
         String result = "";

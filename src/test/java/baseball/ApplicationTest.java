@@ -1,14 +1,7 @@
 package baseball;
 
-import baseball.computer.Computer;
-import baseball.player.Player;
-import baseball.refree.Refree;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;

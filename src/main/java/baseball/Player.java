@@ -1,4 +1,4 @@
-package baseball.player;
+package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    public List<Integer> enter() throws IllegalArgumentException {
+    public static List<Integer> enter() throws IllegalArgumentException {
         List<Integer> player = new ArrayList<>();
 
         System.out.print("숫자를 입력해주세요 : ");

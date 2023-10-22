@@ -1,26 +1,20 @@
-package baseball.game;
+package baseball;
 
-import baseball.computer.Computer;
-import baseball.player.Player;
-import baseball.refree.Refree;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
 public class Game {
-    public void start(){
-        Computer computer = new Computer();
-        Player player = new Player();
-        Refree refree = new Refree();
+    public static void start(){
         Boolean again = true;
 
         while (again) {
-            List<Integer> computerNum = computer.generate();
+            List<Integer> computerNum = Computer.generate();
             String result = "";
 
             while (!result.equals("3스트라이크")){
-                List<Integer> playerNum = player.enter();
-                result = refree.count(computerNum, playerNum);
+                List<Integer> playerNum = Player.enter();
+                result = Refree.count(computerNum, playerNum);
                 System.out.println(result);
             }
 
