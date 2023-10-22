@@ -7,7 +7,6 @@ import java.util.Set;
 public class InputValidator {
 
     public InputValidator() {
-
     }
 
     public boolean isNumeric(String input) {
@@ -20,7 +19,7 @@ public class InputValidator {
         return true;
     }
 
-    private boolean isValidLength(List<Integer> numbers, int length) {
+    public boolean isValidLength(List<Integer> numbers, int length) {
         return numbers.size() == length;
     }
 
