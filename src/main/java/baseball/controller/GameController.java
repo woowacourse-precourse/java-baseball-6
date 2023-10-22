@@ -12,8 +12,8 @@ public class GameController {
     private final AnswerGenerator answerGenerator;
     private boolean isRunning;
 
-    public GameController(AnswerGenerator answerGenerator) {
-        this.answerGenerator = answerGenerator;
+    public GameController() {
+        this.answerGenerator = new AnswerGenerator();
         this.isRunning = true;
     }
 
