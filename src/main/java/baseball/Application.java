@@ -9,6 +9,9 @@ import java.util.List;
 
 import baseball.GameResult;
 
+import static baseball.Constants.MAX_STRIKE;
+import static baseball.Constants.NUM_LENGTH;
+
 public class Application {
 
     private static List<Integer> computer;
@@ -29,7 +32,7 @@ public class Application {
         boolean continueFlag = true;
         while (continueFlag) {
             createComputerNumber();
-            while (strike != 3) {
+            while (strike != MAX_STRIKE) {
                 inputUserNumber();
                 compareNumbers();
                 printResult();
@@ -40,7 +43,7 @@ public class Application {
 
     public static void createComputerNumber() {
         computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < NUM_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -51,12 +54,12 @@ public class Application {
     public static void inputUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
-        if (inputNumber.length() != 3) {
+        if (inputNumber.length() != NUM_LENGTH) {
             throw new IllegalArgumentException();
         }
 
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
+        for(int i = 0; i < NUM_LENGTH; i++) {
+            for(int j = 0; j < NUM_LENGTH; j++) {
                 if (i == j) continue;
                 if (inputNumber.charAt(i) == inputNumber.charAt(j)) {
                     throw new IllegalArgumentException();
@@ -65,7 +68,7 @@ public class Application {
         }
 
         user = new ArrayList<>();
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < NUM_LENGTH; i++) {
             char digit = inputNumber.charAt(i);
             if (!(digit >= '1' && digit <= '9')) {
                 throw new IllegalArgumentException();
@@ -78,8 +81,8 @@ public class Application {
     public static void compareNumbers() {
         ball = 0;
         strike = 0;
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
+        for(int i = 0; i < NUM_LENGTH; i++) {
+            for(int j = 0; j < NUM_LENGTH; j++) {
                 if (computer.get(i) != user.get(j)) continue;
                 if (i == j) {
                     strike += 1;
