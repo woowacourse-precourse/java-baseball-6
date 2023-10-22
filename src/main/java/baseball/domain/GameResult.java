@@ -9,15 +9,29 @@ public record GameResult(int balls, int strikes) {
     public static final String RESTART = "1";
     public static final String EXIT = "2";
 
-    public boolean isNothing() {
+    public String createGameResult() {
+        if (isNothing()) {
+            return NOTHING;
+        }
+        else if (isOnlyBall()) {
+            return balls + BALL;
+        }
+        else if (isOnlyStrike()) {
+            return strikes + STRIKE;
+        }
+
+        return toString();
+    }
+
+    private boolean isNothing() {
         return balls == 0 && strikes == 0;
     }
 
-    public boolean isOnlyBall() {
+    private boolean isOnlyBall() {
         return balls > 0 && strikes == 0;
     }
 
-    public boolean isOnlyStrike() {
+    private boolean isOnlyStrike() {
         return balls == 0 && strikes > 0;
     }
 

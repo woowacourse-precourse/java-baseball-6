@@ -7,17 +7,7 @@ import static baseball.domain.GameResult.*;
 public class GameResultService {
 
     public String showResult(GameResult gameResult) {
-        if (gameResult.isNothing()) {
-            return NOTHING;
-        }
-        else if (gameResult.isOnlyBall()) {
-            return gameResult.balls() + BALL;
-        }
-        else if (gameResult.isOnlyStrike()) {
-            return gameResult.strikes() + STRIKE;
-        }
-
-        return gameResult.toString();
+        return gameResult.createGameResult();
     }
 
     public boolean restartGame(String choice) {
