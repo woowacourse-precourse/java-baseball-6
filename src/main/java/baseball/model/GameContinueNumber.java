@@ -25,8 +25,12 @@ public class GameContinueNumber {
     }
 
     private void validateNumber(final String number) {
-        if (!number.equals(CONTINUE_NUMBER) && !number.equals(END_NUMBER)) {
+        if (isValidNumberInput(number)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static boolean isValidNumberInput(final String number) {
+        return !number.equals(CONTINUE_NUMBER) && !number.equals(END_NUMBER);
     }
 }
