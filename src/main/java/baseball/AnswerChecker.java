@@ -9,24 +9,15 @@ public class AnswerChecker {
     private static final int STRIKE_INDEX = 1;
     private static final int ANSWER_SIZE = 3;
 
-<<<<<<< HEAD
     public String checkAnswer(List<Integer> computerAnswer, List<Integer> myAnswer){
         if(computerAnswer.equals(myAnswer)){
-=======
-    public String checkAnswer(List<Integer> computerAnswer, List<Integer> myAnswer) {
-        if (computerAnswer.equals(myAnswer)) {
->>>>>>> bd5ab6810c2e47e9db91cc7141961bbf33337867
             return CORRECT_ANSWER;
         }
             String gameResult = countBallAndStrike(computerAnswer, myAnswer);
             return gameResult;
     }
 
-<<<<<<< HEAD
     private String countBallAndStrike(List<Integer> computerAnswer, List<Integer> myAnswer){
-=======
-    private String countBallAndStrike(List<Integer> answer, List<Integer> myAnswer) {
->>>>>>> bd5ab6810c2e47e9db91cc7141961bbf33337867
         int strikeCount = 0;
         int ballCount = 0;
         for (int i = 0; i < ANSWER_SIZE; i++) {
