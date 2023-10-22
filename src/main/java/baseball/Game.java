@@ -41,6 +41,7 @@ public class Game {
             if (strike == NUMBER_LENGTH) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                
                 setQuitInput();
                 handleQuit();
                 handleRestart();
@@ -61,9 +62,9 @@ public class Game {
     }
 
 
-    private void separateNumberToDigits() {
-        randomDigits = getSplitList(randomNumber);
-        userDigits = getSplitList(userNumber);
+    private void initializeBallCount() {
+        strike = 0;
+        ball = 0;
     }
 
     private void countStrikeAndBall() {
@@ -72,6 +73,7 @@ public class Game {
             calculateBallByIndex(i);
         }
     }
+
 
     private void calculateBallByIndex(int index) {
         for (int k = 0; k < NUMBER_LENGTH; k++) {
@@ -86,6 +88,18 @@ public class Game {
             strike++;
         }
     }
+
+
+    private void separateNumberToDigits() {
+        randomDigits = getSplitList(randomNumber);
+        userDigits = getSplitList(userNumber);
+    }
+
+
+    private List<String> getSplitList(int number) {
+        return Arrays.asList(String.valueOf(number).split(""));
+    }
+
 
     private void handleRestart() {
         if (quitInput.equals(INPUT_RESTART)) {
@@ -127,13 +141,5 @@ public class Game {
     }
 
 
-    private List<String> getSplitList(int number) {
-        return Arrays.asList(String.valueOf(number).split(""));
-    }
-
-    private void initializeBallCount() {
-        strike = 0;
-        ball = 0;
-    }
 }
 
