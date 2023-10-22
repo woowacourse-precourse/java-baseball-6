@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.model.Score;
+import baseball.model.ScoreData;
 
 public class BaseballGameView {
     public void showGameStartMessage() {
@@ -11,9 +11,9 @@ public class BaseballGameView {
         System.out.print("숫자를 입력해주세요: ");
     }
 
-    public void showGameResult(Score score) {
-        int strikes = score.getStrike();
-        int balls = score.getBall();
+    public void showGameResult(ScoreData scoreData) {
+        int strikes = scoreData.getStrike();
+        int balls = scoreData.getBall();
 
         StringBuilder result = new StringBuilder();
 

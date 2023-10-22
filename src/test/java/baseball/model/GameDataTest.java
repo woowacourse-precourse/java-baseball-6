@@ -24,7 +24,7 @@ public class GameDataTest {
     @Test
     public void testRandomNumbers() {
         GameData gameData = new GameData();
-        List<Integer> randomNumbers = gameData.getComputerNumbers();
+        List<Integer> randomNumbers = gameData.getRandomNumbers();
         assertNotNull(randomNumbers);
         assertEquals(3, randomNumbers.size());
 

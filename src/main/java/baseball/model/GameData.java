@@ -28,4 +28,8 @@ public class GameData {
     public int getStrikeCount() {
         return strikeCount;
     }
+
+    public boolean isGameFinished(ScoreData scoreData) {
+        return scoreData.strikes == 3;
+    }
 }

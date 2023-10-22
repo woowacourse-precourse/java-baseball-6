@@ -3,11 +3,11 @@ package baseball.model;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Score {
+public class ScoreData {
     int strikes;
     int balls;
 
-    public Score(List<Integer> randomNumbers, List<Integer> userInput) {
+    public ScoreData(List<Integer> randomNumbers, List<Integer> userInput) {
         this.strikes = (int) IntStream.range(0, 3)
                 .filter(i -> userInput.get(i).equals(randomNumbers.get(i)))
                 .count();
