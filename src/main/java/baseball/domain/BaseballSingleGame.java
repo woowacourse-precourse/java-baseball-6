@@ -1,11 +1,11 @@
 package baseball.domain;
 
-public class SingleBaseBallGame implements BaseBallGame {
+public class BaseballSingleGame implements BaseBallGame {
 
     private final MatchPlayer matchPlayer;
 
 
-    public SingleBaseBallGame(MatchPlayer matchPlayer) {
+    public BaseballSingleGame(MatchPlayer matchPlayer) {
         this.matchPlayer = matchPlayer;
     }
 
