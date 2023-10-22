@@ -1,19 +1,20 @@
 package baseball.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserNumber {
-    private final List<Integer> userNumber;
+    private final List<Integer> userNumber = new ArrayList<>();
 
     public UserNumber(String userNumber) {
-        this.userNumber = validateUserNumber(userNumber);
+        validateUserNumber(userNumber);
     }
 
     public List<Integer> getUserNumber() {
         return this.userNumber;
     }
 
-    private List<Integer> validateUserNumber(String userInput) {
+    private void validateUserNumber(String userInput) {
         // 숫자인지 검증
         try {
             Integer.parseInt(userInput);
@@ -29,8 +30,8 @@ public class UserNumber {
         // 중복 자리수 검증
         for (int i = 0; i < userInput.length(); i++) {
             int num = Character.getNumericValue(userInput.charAt(i));
-            if (!userNumber.contains(num)) {
-                userNumber.add(num);
+            if (!this.userNumber.contains(num)) {
+                this.userNumber.add(num);
             } else {
                 throw new IllegalArgumentException("잘못된 입력입니다.");
             }
