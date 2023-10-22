@@ -1,0 +1,36 @@
+package baseball.service;
+
+import baseball.domain.Baseball;
+import baseball.domain.GameConstants;
+import baseball.util.ObjectUtil;
+
+import java.util.List;
+
+public class StrikeService {
+
+    private static final StrikeService strikeService = new StrikeService();
+
+    public static StrikeService getInstance(){
+        return strikeService;
+    }
+
+    private StrikeService() {
+
+    }
+
+    public int count(Baseball computerBaseball, Baseball inputBaseball) {
+        int count = 0;
+        List computer = computerBaseball.getValues();
+        List input = inputBaseball.getValues();
+
+        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
+            if (ObjectUtil.isSame(computer.get(i), input.get(i))) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+
+}
