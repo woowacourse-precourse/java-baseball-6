@@ -71,7 +71,7 @@ public class BaseballGameManager {
         int[] splitNumberArray = Util.splitAndGetIntArray(inputNumber);
         for (int number : splitNumberArray) {
             if (number == 0) {
-                throw new IllegalArgumentException("1~9 숫자만 입력해주세요.");
+                throw new IllegalArgumentException("0은 사용이 불가능합니다.");
             }
         }
 
