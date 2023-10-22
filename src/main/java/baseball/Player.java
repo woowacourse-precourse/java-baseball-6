@@ -26,4 +26,10 @@ public class Player {
 
         return playerInputNumber;
     }
+
+    public static void isThreeDigitNumber(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
