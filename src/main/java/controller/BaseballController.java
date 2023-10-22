@@ -9,28 +9,31 @@ import java.util.Objects;
 import utility.Check;
 
 public class BaseballController {
-    private BaseballController() {
+    public BaseballController() {
     }
 
     static List<Integer> computer = new ArrayList<>();
     static List<Integer> player = new ArrayList<>();
-    static boolean RUNNING = true;
-    static boolean ANSWER = false;
+    static boolean RUNNING;
+    static boolean ANSWER;
 
-    public static void game() {
+    public static void runGame() throws IllegalArgumentException {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        RUNNING = true;
         while (RUNNING) {
+            ANSWER = false;
             computer.clear();
             getRandomNumber(computer);
-            ANSWER = false;
-            //임시로 출력
-            System.out.println(computer + "\n");
-            while (!ANSWER) {
-                getPlayerNumber();
-                ANSWER = isRight();
-                if (ANSWER == true) {
-                    continueGame();
-                }
+            game();
+        }
+    }
+
+    public static void game() {
+        while (!ANSWER) {
+            getPlayerNumber();
+            ANSWER = isRight();
+            if (ANSWER == true) {
+                continueGame();
             }
         }
     }
