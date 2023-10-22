@@ -1,7 +1,4 @@
-package baseball.ballcount;
-
-import baseball.game.Game;
-import baseball.game.GameProcess;
+package baseball.game;
 
 public class BaseballGameProcess implements GameProcess {
 
