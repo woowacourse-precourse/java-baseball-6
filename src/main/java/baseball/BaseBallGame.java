@@ -15,17 +15,23 @@ public class BaseBallGame {
     static String gameSet ="";
     static int ball=0;
     static int strike=0;
+    // BaseBallGame 싱글톤 객체로 생성
+    public static final BaseBallGame baseBallGame = new BaseBallGame();
 
-    public void start(){
+    public BaseBallGame getInstance(){
+        return baseBallGame;
+    }
+    private BaseBallGame(){}
+
+    public String start(){
         System.out.println("숫자 야구게임을 시작합니다.");
         computerAnswer=computerInput();
-        //System.out.println("computerAnswer = " + computerAnswer);
+
         // 사용자 입력
         while(true){
             System.out.print("숫자를 입력 해주세요: ");
             try{
                 userAnswer = readLine().replaceAll(" ","");
-                //System.out.println("userAnswer = " + userAnswer);
             }catch (Exception e){
                 throw new IllegalArgumentException(e);
             }
@@ -41,14 +47,8 @@ public class BaseBallGame {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 gameSet = readLine();
                 gameSet = restartOrExit();
-
-                // 재시작 및 종료 check
-                if(gameSet.equals("재시작")) {
-                    reset();
-                    start();
-                    return;
-                }
-                else if(gameSet.equals("게임 종료")) return;
+                reset();
+                return gameSet;
             }
         }
     }
@@ -57,7 +57,6 @@ public class BaseBallGame {
         userAnswer="";
         computerAnswer="";
         computer.clear();
-        Console.close();
     }
 
     private String umpire() {
@@ -92,7 +91,7 @@ public class BaseBallGame {
     private String restartOrExit() {
 
         if(gameSet.equals("1")) return "재시작";
-        else if(gameSet.equals("2")) return "종료";
+        else if(gameSet.equals("2")) return "게임 종료";
         throw new IllegalArgumentException();
     }
 
@@ -116,7 +115,6 @@ public class BaseBallGame {
 
     //컴퓨터 값 입력
     private String computerInput() {
-
 
         while (computer.size() < 3) {
             String randomNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
