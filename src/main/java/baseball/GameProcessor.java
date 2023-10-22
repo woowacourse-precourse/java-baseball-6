@@ -12,8 +12,8 @@ public class GameProcessor {
     private static final int DIGIT_SIZE = 3;
 
     private List<String> generateRandomNumberList(Data data) {
-//        List<String> randomNumberList = new ArrayList<>();
         List<String> randomNumberList = data.getRandomNumberList();
+        System.out.println("generate " + randomNumberList);
 
         if (randomNumberList.isEmpty()) {
             for (int i = 0; i < DIGIT_SIZE; i++) {
@@ -115,6 +115,8 @@ public class GameProcessor {
         }
 
         data.setAnswerList(answerList);
+        data.setIsCompleteAnswer(validateCompleteAnswer(data));
+
         answerText = answerTextBuilder.toString();
 
         return answerText;
