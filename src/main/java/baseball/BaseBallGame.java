@@ -60,8 +60,8 @@ public class BaseBallGame {
     private String getResult(){
         String msg = "";
 
-        int ballNum = Calculater.getBall(answerNum, userNum);
-        int strikeNum = Calculater.getStrike(answerNum, userNum);
+        int ballNum = Calculater.getBallNum(answerNum, userNum);
+        int strikeNum = Calculater.getStrikeNum(answerNum, userNum);
 
         if(ballNum != 0)
             msg += ballNum + "볼 ";

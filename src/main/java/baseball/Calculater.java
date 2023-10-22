@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Calculater {
 
-    public static int getBall(ArrayList<Integer> answerNum, ArrayList<Integer> userNum){
+    public static int getBallNum(ArrayList<Integer> answerNum, ArrayList<Integer> userNum){
         int i = 0;
 
         for(int num :userNum){
@@ -15,7 +15,7 @@ public class Calculater {
         return i;
     }
 
-    public static int getStrike(ArrayList<Integer> answerNum, ArrayList<Integer> userNum){
+    public static int getStrikeNum(ArrayList<Integer> answerNum, ArrayList<Integer> userNum){
         int i = 0;
 
         for(int num :userNum){
