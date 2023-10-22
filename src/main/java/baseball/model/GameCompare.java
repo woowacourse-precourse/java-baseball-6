@@ -1,24 +1,27 @@
 package baseball.model;
 
 import baseball.constant.OutputMessage;
-import baseball.utils.RandomNumberUtils;
+import baseball.model.collection.RandomNumbers;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class GameCompare {
     private static final int ZERO = 0;
     private static final int THREE_STRIKE = 3;
+    private final RandomNumbers randomNumbers;
+
     private int ball;
     private int strike;
-    private List<Integer> randomNumbers;
 
     public GameCompare() {
-        randomNumbers = RandomNumberUtils.createRandomNum();
+        this.ball = 0;
+        this.strike = 0;
+        this.randomNumbers = new RandomNumbers();
     }
 
     public boolean updateGameCompare(Player player) {
-        compareBall(player.getInputNumbers(), randomNumbers);
-        int expectedStrike = compareStrike(player.getInputNumbers(), randomNumbers);
+        compareBall(player.getInputNumbers());
+        int expectedStrike = compareStrike(player.getInputNumbers());
         if (expectedStrike == THREE_STRIKE) {
             return true;
         }
@@ -63,19 +66,20 @@ public class GameCompare {
         }
     }
 
-    private int compareStrike(List<Integer> randomNum, List<Integer> inputNum) {
+    private int compareStrike(List<Integer> inputNum) {
+        List<Integer> randomNum = randomNumbers.getRandomNumbers();
         List<Integer> compareStrike = IntStream.range(0, 3).filter(i -> randomNum.get(i).equals(inputNum.get(i)))
                 .mapToObj(randomNum::get).toList();
         this.strike = compareStrike.size();
         return strike;
     }
 
-    private void compareBall(List<Integer> randomNum, List<Integer> inputNum) {
+    private void compareBall(List<Integer> inputNum) {
+        List<Integer> randomNum = randomNumbers.getRandomNumbers();
         List<Integer> compareBall = IntStream.range(0, randomNum.size())
                 .filter(i -> inputNum.contains(randomNum.get(i)) && inputNum.indexOf(randomNum.get(i)) != i)
                 .mapToObj(randomNum::get).toList();
         this.ball = compareBall.size();
     }
-
 }
 
