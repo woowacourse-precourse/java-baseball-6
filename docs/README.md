@@ -1,7 +1,7 @@
 ## 기능 목록
 - [x] 게임 시작 문구 출력
-- [ ] 컴퓨터가 서로 다른 임의의 수 3개 선택
-  - [ ] `Randoms` 라이브러리의 `pickNumberInRange` 메서드를 활용
+- [x] 컴퓨터가 서로 다른 임의의 수 3개 선택
+  - [x] `Randoms` 라이브러리의 `pickNumberInRange` 메서드를 활용
 - [ ] 게임 진행
   - [x] 숫자를 입력 받음
     - [x] `Console` 라이브러리의 `readLine` 메서드를 활용
