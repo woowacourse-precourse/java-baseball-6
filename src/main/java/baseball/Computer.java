@@ -20,10 +20,14 @@ public class Computer {
     public static Computer create() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < Constants.NUMBERS_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(Constants.MIN_NUMBER, Constants.MAX_NUMBER);
+            int randomNumber = generateRandomNumber();
             addNumber(randomNumbers, randomNumber);
         }
         return new Computer(randomNumbers);
+    }
+
+    private static int generateRandomNumber() {
+        return Randoms.pickNumberInRange(Constants.MIN_NUMBER, Constants.MAX_NUMBER);
     }
 
     private static void addNumber(List<Integer> numbers, int number) {
