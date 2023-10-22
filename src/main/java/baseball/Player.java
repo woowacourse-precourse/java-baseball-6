@@ -7,10 +7,12 @@ import java.util.stream.Collectors;
 
 public class Player {
 
-    public List<Integer> inputNumbers() {
-        List<Integer> input = Arrays.stream(Console.readLine().split("")).mapToInt(Integer::parseInt).boxed().collect(
-                Collectors.toList());
-        return input;
+    public List<Integer> inputNumbers() throws IllegalArgumentException {
+        List<String> input = Arrays.stream(Console.readLine().split("")).toList();
+        if (input.size() != input.stream().distinct().count()) {
+            throw new IllegalArgumentException();
+        }
+        return input.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
     public boolean inputRestartOrEnd() {
@@ -23,4 +25,6 @@ public class Player {
         }
         return false;
     }
+
+
 }
