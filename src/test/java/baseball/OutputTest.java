@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
 
 public class OutputTest {
     private OutputStream outputStream;
-    OutputView outputView = new OutputView();
-    InputView inputView = new InputView();
+    final OutputView outputView = new OutputView();
+    final InputView inputView = new InputView();
     GameScore gameScore;
 
     @BeforeEach
