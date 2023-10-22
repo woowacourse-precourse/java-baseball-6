@@ -7,18 +7,18 @@ public class User {
 
     }
 
-    public String getGameInput() {
+    public String getInput() {
         // 엔터 전까지 한 줄 입력 받음
         String input = Console.readLine();
 
-        if (!isGameInputRight(input)) {
+        if (!isInputRight(input)) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
 
         return input;
     }
 
-    private boolean isGameInputRight(String input) {
+    private boolean isInputRight(String input) {
         boolean[] used = new boolean[9];
 
         if (input.length() != 3)
@@ -40,18 +40,18 @@ public class User {
         return true;
     }
 
-    public String getGameEndInput() {
+    public String getEndInput() {
         // 엔터 전까지 한 줄 입력 받음
         String input = Console.readLine();
 
-        if (!isGameEndInputRight(input)) {
+        if (!isEndInputRight(input)) {
             throw new IllegalArgumentException("잘못된 입력입니다.2");
         }
 
         return input;
     }
 
-    private boolean isGameEndInputRight(String input) {
+    private boolean isEndInputRight(String input) {
         if (input.length() != 1)
             return false;
 
