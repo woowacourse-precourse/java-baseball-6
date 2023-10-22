@@ -12,6 +12,7 @@ public class BaseballGame {
     public void play() {
         outputView.start();
         startGame();
+        outputView.end();
     }
 
     private void startGame() {
