@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Game {
@@ -14,10 +15,35 @@ public class Game {
 
     public void gameStart() {
         System.out.println(GAME_START_MESSAGE);
-        computerNumber = numberGenerator.setComputerNumber(); // 컴퓨터 번호 셋팅
+        computerNumber = numberGenerator.setComputerNumber(); // 최초 컴퓨터 번호 셋팅
+
+        for (int i : computerNumber) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
         while (!exit) {
             playerNumber = numberGenerator.setPlayerNumber(); // 플레이어 번호 셋팅
             String hint = hintGenerator.getHint(computerNumber, playerNumber); // Hint 결과 확인
+            System.out.println(hint);
+
+            if (hint.equals(STRIKE3)) {
+                System.out.println(GAME_OVER_MESSAGE);
+                decideNextStep();
+            }
+        }
+    }
+
+    public void decideNextStep() {
+        String num = Console.readLine();
+        if (num.equals("1")) { // 게임 재시작
+            computerNumber = numberGenerator.setComputerNumber(); // 컴퓨터 번호 새로 셋팅
+        }
+        if (num.equals("2")) { // 게임 종료
+            exit = true;
+        }
+        if (!num.equals("1") && !num.equals("2")) { // 예외 처리
+            throw new IllegalArgumentException();
         }
     }
 }
