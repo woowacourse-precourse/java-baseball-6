@@ -19,6 +19,13 @@ public class InputValidator {
         hasDuplicate(integerList);
     }
 
+    static void restartInputValidator(String string) throws IllegalArgumentException {
+        List<Integer> integerList = new ArrayList<>(stringToInt(string));
+        isEmpty(integerList);
+        isOneDigit(integerList);
+        isOneOrTwo(integerList);
+    }
+
     static void isEmpty(List<Integer> integerList) {
         if (integerList.isEmpty()) {
             throw new IllegalArgumentException("숫자를 입력해주세요");
@@ -28,6 +35,12 @@ public class InputValidator {
     static void isThreeDigit(List<Integer> integerList) {
         if (integerList.size() != INPUT_REQUIREMENT) {
             throw new IllegalArgumentException("3자리의 숫자를 입력해주세요");
+        }
+    }
+
+    static void isOneDigit(List<Integer> integerList) {
+        if (integerList.size() != 1) {
+            throw new IllegalArgumentException("1자리의 숫자를 입력해주세요");
         }
     }
 
@@ -51,6 +64,12 @@ public class InputValidator {
         Set<Integer> set = new HashSet<>(integerList);
         if (set.size() != integerList.size()) {
             throw new IllegalArgumentException("중복 없는 3자리수를 입력해주세요");
+        }
+    }
+
+    static void isOneOrTwo(List<Integer> integerList) {
+        if (integerList.get(0) != 1 || integerList.get(0) != 2) {
+            throw new IllegalArgumentException("1과 2중 하나를 입력해주세요");
         }
     }
 }

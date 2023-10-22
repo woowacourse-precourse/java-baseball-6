@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Application.beginGame;
+import static baseball.InputValidator.restartInputValidator;
 import static baseball.Utils.stringToInt;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -76,6 +77,7 @@ public class GameController {
     public void promptUserForRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String s = Console.readLine();
+        restartInputValidator(s);
         List<Integer> userAnswer = new ArrayList<>(stringToInt(s));
         restartOrExit(userAnswer);
     }
