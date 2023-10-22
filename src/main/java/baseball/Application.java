@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.Controller.GameManager;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -10,32 +11,11 @@ import java.util.Set;
 
 public class Application {
 
-    private static final int NUM_DIGITS = 3;
+    public static final int NUM_DIGITS = 3;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        while(true){
-            playGame();
-            if(shouldRestartGame()==false){//종료
-                break;
-            }
-        }
+        new GameManager().playGame();
 
-    }
-
-    private static void playGame() {
-        displayGameStartMessage();
-        List<Integer> computer = generateComputerRandomThreeDigitNumber();
-
-        while(true){
-            List<Integer> userNumber = getUserGuessThreeDigitNumber();
-            if(playSingleGameRound(computer,userNumber)){//3스트라이크인 경우,
-                break;
-            }
-        }
-    }
-
-    public static void displayGameStartMessage()  {
-        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public static List<Integer> generateComputerRandomThreeDigitNumber(){
@@ -60,21 +40,6 @@ public class Application {
             user.add(Character.getNumericValue(c));
         }
         return user;
-    }
-
-    public static boolean playSingleGameRound(List<Integer> user,List<Integer> computer){//true이면, 게임 종료하기 위한 단계로 간다.
-
-        int numStrikes=0;
-        int numBalls =0;
-        for(int i=0;i<NUM_DIGITS;i++){
-            if(user.get(i)==computer.get(i)){
-                numStrikes++;
-            } else if(user.get(i)!=computer.get(i) && computer.contains(user.get(i))){
-                numBalls++;
-            }
-        }
-        printGuessResult(numStrikes,numBalls);
-        return numStrikes == NUM_DIGITS;
     }
 
     public static boolean shouldRestartGame(){//반환값이 1이면 restart
@@ -107,7 +72,7 @@ public class Application {
         throw new IllegalArgumentException("1 또는 2를 입력하지 않았습니다.");
     }
 
-    private static void printGuessResult(int numStrikes,int numBalls){
+    public static void printGuessResult(int numStrikes,int numBalls){
 
         String message = "";
         if(numStrikes == NUM_DIGITS){
