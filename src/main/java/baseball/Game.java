@@ -2,7 +2,7 @@ package baseball;
 
 public class Game {
     private enum Status{
-        PROGRESS, FINISH
+        START, PROGRESS, FINISH, TERMINATED
     }
     private Status status;
 
