@@ -11,10 +11,6 @@ public class Computer {
 
     }
 
-    public void printMsg(String msg) {
-        System.out.print(msg);
-    }
-
     public void makeAnswer() {
         while (answer.size() < 3) {
             int num = Randoms.pickNumberInRange(1, 9);
@@ -44,7 +40,7 @@ public class Computer {
         printResult(ballCount, strikeCount);
 
         if (strikeCount == 3) {
-            printMsg("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
 
