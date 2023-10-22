@@ -34,4 +34,15 @@ public class Player {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+    private boolean isDuplicatedNumber(final List<Integer> randomNumberList, final int number) {
+        return randomNumberList.contains(number);
+    }
+
+    public boolean chooseRestartGame() {
+        int input = readNumber();
+
+        if (input != 1 && input != 2) throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+
+        return input == 1;
+    }
 }
