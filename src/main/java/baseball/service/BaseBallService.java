@@ -1,6 +1,8 @@
 package baseball.service;
 
+import static baseball.common.Constants.END_GAME;
 import static baseball.common.Constants.NUMBER_LENGTH;
+import static baseball.common.Constants.RESTART;
 
 import baseball.validation.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
@@ -33,7 +35,7 @@ public class BaseBallService {
             compareUserAndComputer();
         } while (judgeStrikeAndBall());
 
-        return true;
+        return selectRestart();
     }
 
     public boolean judgeStrikeAndBall() {
@@ -51,6 +53,18 @@ public class BaseBallService {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
         return true;
+    }
+
+    public boolean selectRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+        if (userInput.equals(RESTART)) {
+            return true;
+        } else if (userInput.equals(END_GAME)) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void compareUserAndComputer() {
