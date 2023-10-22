@@ -65,4 +65,16 @@ public class GameNumbers {
         }
     }
 
+    public boolean isSameValueAt(final int index, final int comparedValue) {
+        return numbers.get(index) == comparedValue;
+    }
+
+    public boolean isContains(final int value) {
+        return numbers.contains(value);
+    }
+
+    public int valueAt(final int index) {
+        return numbers.get(index);
+    }
+
 }

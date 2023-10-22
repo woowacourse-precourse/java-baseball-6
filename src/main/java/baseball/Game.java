@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.model.Computer;
 import baseball.model.GameNumbers;
+import baseball.model.GameResult;
 import baseball.utils.Parser;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -24,6 +25,8 @@ public class Game {
     public void run() {
         computer.pickRandomNumbers();
         GameNumbers gameNumbersOfPlayer = getGameNumbersOfPlayer();
+        GameResult result = computer.getResult(gameNumbersOfPlayer);
+        outputView.printResult(result);
     }
 
     private GameNumbers getGameNumbersOfPlayer() {
