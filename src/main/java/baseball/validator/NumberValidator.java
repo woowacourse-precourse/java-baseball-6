@@ -1,8 +1,6 @@
 package baseball.validator;
 
 
-import static baseball.config.NumberConfig.NUMBER_LENGTH;
-
 public class NumberValidator {
     public static void validateNumberLength(final String number) {
         if (!isValidLength(number)) {
@@ -29,7 +27,7 @@ public class NumberValidator {
     }
 
     private static boolean isValidLength(final String number) {
-        return number.length() == NUMBER_LENGTH.getValue();
+        return number.length() == 3;
     }
 
     private static boolean isValidNumber(final String number) {

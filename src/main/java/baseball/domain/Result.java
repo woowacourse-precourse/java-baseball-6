@@ -2,18 +2,18 @@ package baseball.domain;
 
 import baseball.view.OutputView;
 
-import static baseball.config.NumberConfig.NUMBER_LENGTH;
-
 public class Result {
+    private static final int NUMBER_LENGTH = 3;
+
     private final int ballCount;
     private final int strikeCount;
 
-    private Result(final Numbers playerNumber, final Numbers computerNumber) {
+    private Result(final Number playerNumber, final Number computerNumber) {
         ballCount = playerNumber.countBallCount(computerNumber);
         strikeCount = playerNumber.countStrikeCount(computerNumber);
     }
 
-    public static Result create(final Numbers playerNumber, final Numbers computerNumber) {
+    public static Result create(final Number playerNumber, final Number computerNumber) {
         return new Result(playerNumber, computerNumber);
     }
 
@@ -30,6 +30,6 @@ public class Result {
     }
 
     public boolean checkGameOver() {
-        return strikeCount == NUMBER_LENGTH.getValue();
+        return strikeCount == NUMBER_LENGTH;
     }
 }
