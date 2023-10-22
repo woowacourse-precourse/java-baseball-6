@@ -41,7 +41,7 @@ public class GameController {
         if (strikeAndBall.get(GameConstant.STRIKE_INDEX) == GameConstant.THREE_STRIKE) {
             computerView.printWinResult();
             askRestart();
-        } else {
+        } else if (strikeAndBall.get(GameConstant.STRIKE_INDEX) != GameConstant.THREE_STRIKE) {
             computerView.printLostResult(strikeAndBall);
         }
     }
@@ -50,7 +50,8 @@ public class GameController {
         Integer restart = inputView.getRestart();
         if (restart == 1) {
             isGameOver = false;
-        } else {
+            computer.setComputerGameNumber();
+        } else if (restart == 2) {
             isGameOver = true;
         }
     }
