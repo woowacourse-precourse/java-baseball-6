@@ -121,7 +121,7 @@ public class Application {
                 //[게임 종료]
                 //사용자가 입력한 숫자와 컴퓨터가 뽑은 숫자가 모두 같으면 "게임 종료 문구" 출력 후 게임 종료　
                 if (strike == GameConstants.NUMBER_LENGTH) {
-                    System.out.println(GameConstants.GAME_END_MESSAGE);
+                    System.out.println(GameConstants.END_MESSAGE);
                     System.out.println(GameConstants.RESTART_CHOICE_MESSAGE);
                     String regameNum = Console.readLine();
 
