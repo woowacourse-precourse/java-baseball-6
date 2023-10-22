@@ -26,7 +26,7 @@ public class Balls {
         }
     }
 
-    public void validateSize(List<Integer> balls){
+    private void validateSize(List<Integer> balls){
         if(balls.size()!=BALLS_SIZE){
             throw new IllegalArgumentException("3개의 숫자를 입력해야 합니다.");
         }
