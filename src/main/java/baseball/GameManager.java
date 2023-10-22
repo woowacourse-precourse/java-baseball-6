@@ -2,12 +2,10 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager {
-
 
     public static void start() {
         Balls computerBalls = createComputerBalls();
@@ -25,9 +23,11 @@ public class GameManager {
             System.out.println(statusResult);
 
             result = checkResult(statusResult);
-            if(result.equals("1")) computerBalls = createComputerBalls(); // 새로 시작할 경우 computer의 Balls 변경
+            if (result.equals("1")) {
+                computerBalls = createComputerBalls(); // 새로 시작할 경우 computer의 Balls 변경
+            }
 
-        } while(!result.equals("2"));
+        } while (!result.equals("2"));
     }
 
     public static Balls createComputerBalls() {
@@ -44,9 +44,9 @@ public class GameManager {
     }
 
     public static String checkResult(String result) {
-        if(result.equals("3스트라이크")) {
+        if (result.equals("3스트라이크")) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
-                                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             return Console.readLine();
         }

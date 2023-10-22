@@ -1,10 +1,10 @@
 package baseball;
 
 
-import org.junit.jupiter.api.Test;
-import java.util.List;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.assertj.core.api.Assertions.*;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class BallTest {
 
@@ -31,5 +31,4 @@ class BallTest {
         assertThat(b1.compare(b3)).isEqualTo(BallStatus.NOTHING);
         assertThat(b3.compare(b4)).isEqualTo(BallStatus.STRIKE);
     }
-
 }

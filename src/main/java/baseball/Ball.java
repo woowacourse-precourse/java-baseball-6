@@ -12,8 +12,11 @@ public class Ball {
     }
 
     public BallStatus compare(Ball otherBall) {
-        if(this.value == otherBall.getValue() && this.ord == otherBall.getOrd()) return BallStatus.STRIKE;
-        else if(this.value == otherBall.getValue() && this.ord != otherBall.getOrd()) return BallStatus.BALL;
+        if (this.value == otherBall.getValue() && this.ord == otherBall.getOrd()) {
+            return BallStatus.STRIKE;
+        } else if (this.value == otherBall.getValue() && this.ord != otherBall.getOrd()) {
+            return BallStatus.BALL;
+        }
         return BallStatus.NOTHING;
     }
 

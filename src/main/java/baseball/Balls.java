@@ -19,8 +19,8 @@ public class Balls {
 
     public String compare(Balls otherBalls) {
         BallStatusRecord statusRecord = new BallStatusRecord();
-
-        for(int i = 0; i < 3; i++) {
+        
+        for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 3; k++) {
                 statusRecord.record(ballList.get(i).compare(otherBalls.ballList.get(k)));
             }
