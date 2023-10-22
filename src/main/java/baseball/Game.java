@@ -13,6 +13,7 @@ public class Game {
     private int strike;
     private int ball;
     private boolean isSolved;
+    private boolean isFinished;
 
     public Game() {
         setRandomInt();
@@ -79,7 +80,14 @@ public class Game {
 
     public void getUserChoice() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Console.readLine();
+        String input = Console.readLine();
+        validateUserChoice(input);
+        if (input.equals("2"))
+            isFinished = true;
+    }
+
+    public boolean isFinished() {
+        return isFinished;
     }
 
     private void validateUserInt(String input) {
@@ -93,6 +101,12 @@ public class Game {
             if (input.lastIndexOf(input.charAt(i)) != i) {
                 throw new IllegalArgumentException("input has to be formed with different digits.");
             }
+        }
+    }
+
+    private void validateUserChoice(String input) {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("input has to be either 1 or 2.");
         }
     }
 }
