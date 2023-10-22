@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.utils.ErrorMessages;
+import baseball.utils.IntegerConvertor;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -17,17 +18,8 @@ public class Player {
     }
 
     private void validate(String input) {
-        validateInteger(input);
         validateSize(input);
         validateDuplicate(input);
-    }
-
-    private void validateInteger(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessages.PLAYER_NUMBERS_NOT_INTEGER);
-        }
     }
 
     private void validateSize(String input) {
@@ -45,7 +37,7 @@ public class Player {
 
     private List<Integer> toNumbers(String input) {
         return Arrays.stream(input.split(""))
-                .map(Integer::parseInt)
+                .map(IntegerConvertor::toInteger)
                 .toList();
     }
 

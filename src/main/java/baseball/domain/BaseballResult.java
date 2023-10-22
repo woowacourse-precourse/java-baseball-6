@@ -12,15 +12,15 @@ public enum BaseballResult {
     NOTHING("낫싱", (ball, strike) -> ball == 0 && strike == 0),
     ;
 
-    private final String message;
+    private final String messageFormat;
     private final BiPredicate<Integer, Integer> matcher;
 
-    private BaseballResult(String message, BiPredicate<Integer, Integer> matcher) {
-        this.message = message;
+    private BaseballResult(String messageFormat, BiPredicate<Integer, Integer> matcher) {
+        this.messageFormat = messageFormat;
         this.matcher = matcher;
     }
 
-    public BaseballResult of(Baseball baseball) {
+    public static BaseballResult of(Baseball baseball) {
         int ball = baseball.getBall();
         int strike = baseball.getStrike();
 
@@ -28,5 +28,9 @@ public enum BaseballResult {
                 .filter(value -> value.matcher.test(ball, strike))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessages.NOT_MATCH_BASEBALL_RESULT));
+    }
+
+    public String getMessageFormat() {
+        return messageFormat;
     }
 }
