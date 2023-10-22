@@ -35,12 +35,23 @@ public class Application {
         if (!inputCheckLength(input)) {
             return false;
         }
+        //다른 문자가 아닌, 숫자인지 확인
+        if (!inputCheckNumber(input)) {
+            return false;
+        }
 
         return true;
     }
 
     public boolean inputCheckLength(String input) {
         if (input.length() != 3) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean inputCheckNumber(String input) {
+        if (!input.matches("[1-9]+")) {
             return false;
         }
         return true;
