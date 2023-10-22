@@ -10,19 +10,32 @@ public class JudgeService {
         judge = new Judge();
     }
 
-    public void judgeResult(List<Integer> computerNum, List<Integer> userNum) { // 들여쓰기 초과
+    public void judgeResult(List<Integer> computerNum, List<Integer> userNum) {
+        int computerIndex;
+        int userIndex;
+        boolean isContain;
+
         for (int num : userNum) {
-            if(computerNum.contains(num) && computerNum.indexOf(num) == userNum.indexOf(num)){
+            computerIndex = computerNum.indexOf(num);
+            userIndex = userNum.indexOf(num);
+            isContain = isContain(computerNum, num);
+
+            if(isContain && computerIndex == userIndex){
                 judge.increaseStrike();
             }
-            if (computerNum.contains(num) && computerNum.indexOf(num) != userNum.indexOf(num)){
+            if (isContain && computerIndex != userIndex){
                 judge.increaseBall();
             }
         }
     }
 
+    private boolean isContain(List<Integer> computerNum, int num) {
+        return computerNum.contains(num);
+    }
+
     public boolean checkThree() {
         int strike = judge.getStrike();
+
         if (strike == 3) {
             return true;
         }
@@ -32,6 +45,7 @@ public class JudgeService {
     public void printResult() {
         int strike = judge.getStrike();
         int ball = judge.getBall();
+
         if (strike != 0 && ball != 0) { // N 스트라이크, N 볼
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }

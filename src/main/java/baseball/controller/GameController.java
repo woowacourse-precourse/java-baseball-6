@@ -53,6 +53,4 @@ public class GameController {
     private void randomReset() {
         computerService.resetRandom();
     }
-
-
 }
