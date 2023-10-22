@@ -28,12 +28,7 @@ public class InputView {
     public int getPlayerDecision() {
         System.out.println(SELECT_CONTINUE_PHRASES);
         String playerDecision = Console.readLine();
-        int decision;
-        try {
-            decision = Integer.parseInt(playerDecision);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
+        int decision = dataValidator.validateDecisionIsNumber(playerDecision);
         dataValidator.validateDecision(decision);
 
         return decision;

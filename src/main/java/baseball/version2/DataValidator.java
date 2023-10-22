@@ -12,6 +12,21 @@ import java.util.Set;
 
 public class DataValidator {
 
+    public static int[] validateIsNumberAndSize(String[] answerStringArray, int[] answerArray) {
+        int answerOrder = 0;
+        try {
+            for (String answerValue : answerStringArray) {
+                answerArray[answerOrder++] = parseInt(answerValue);
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ANSWER_ERROR_PHRASES);
+        } catch (ArrayIndexOutOfBoundsException a) {
+            throw new IllegalArgumentException(ANSWER_ERROR_PHRASES);
+        }
+
+        return answerArray;
+    }
+
     public void validatePlayerAnswer(int[] playerAnswerArray) {
         if (isContainZero(playerAnswerArray) || isDuplicate(playerAnswerArray)) {
             throw new IllegalArgumentException(ANSWER_ERROR_PHRASES);
@@ -28,21 +43,6 @@ public class DataValidator {
 
     }
 
-    public static int[] validateIsNumberAndSize(String[] answerStringArray, int[] answerArray) {
-        int answerOrder = 0;
-        try {
-            for (String answerValue : answerStringArray) {
-                answerArray[answerOrder++] = parseInt(answerValue);
-            }
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ANSWER_ERROR_PHRASES);
-        } catch (ArrayIndexOutOfBoundsException a) {
-            throw new IllegalArgumentException(ANSWER_ERROR_PHRASES);
-        }
-
-        return answerArray;
-    }
-
     private boolean isDuplicate(int[] playerAnswerArray) {
         Set<Integer> playerValueSet = new HashSet<>();
         for (int i : playerAnswerArray) {
@@ -56,9 +56,22 @@ public class DataValidator {
         return false;
     }
 
+
+    public int validateDecisionIsNumber(String playerDecision) {
+        int decision;
+        try {
+            decision = Integer.parseInt(playerDecision);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        return decision;
+    }
+
     public void validateDecision(int decision) {
         if (decision != CONTINUE_NUMBER && decision != STOP_NUMBER) {
             throw new IllegalArgumentException(DECISION_ERROR_PHRASES);
         }
     }
+
+
 }

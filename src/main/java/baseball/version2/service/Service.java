@@ -48,8 +48,6 @@ public class Service {
         return answerArray;
     }
 
-    // 플레이어 서비스
-
 
     public void compareTwoAnswer(int[] playerAnswer) {
 
