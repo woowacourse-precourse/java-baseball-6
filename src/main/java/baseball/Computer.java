@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
@@ -12,7 +13,13 @@ public class Computer {
     }
 
     public Ball drawBall() {
-        List<Integer> pickNumbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        List<Integer> pickNumbers = new ArrayList<>();
+        while (pickNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!pickNumbers.contains(randomNumber)) {
+                pickNumbers.add(randomNumber);
+            }
+        }
         return ball = new Ball(pickNumbers);
     }
 
