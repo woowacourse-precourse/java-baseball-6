@@ -10,19 +10,19 @@ public class Result {
         strike=0;
         ball=0;
 
-        for(String number:user.splitNumbers()){
-            compareIndex(computer.index(number),user.index(number));
+        for(int index=0;index<3;index++){
+            addResult(computer.calculateByIndex(user,index));
         }
     }
 
-    private void compareIndex(int computerIndex,int userIndex){
-        if(computerIndex==userIndex){
+    private void addResult(String result){
+        if (result.equals("스트라이크")){
             strike+=1;
             return;
         }
 
-        if(computerIndex!=-1) {
-            ball += 1;
+        if(result.equals("볼")){
+            ball+=1;
         }
     }
 
@@ -36,8 +36,9 @@ public class Result {
             resultMessage+= strike+"스트라이크";
         }
         if (resultMessage.equals("")){
-             resultMessage="낫싱";
+             return "낫싱";
         }
+
         return resultMessage.strip();
     }
 
