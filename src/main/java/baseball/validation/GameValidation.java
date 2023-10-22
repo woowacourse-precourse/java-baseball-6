@@ -9,7 +9,8 @@ public class GameValidation {
                         verifyForValueLength(input_value) &&
                                 verifyForValueIsSpace(input_value) &&
                                         verifyForValueIsNumeric(input_value) &&
-                                                verifyForValueIsDuplicate(input_value);
+                                                verifyForNumberRangeIsCorrect(input_value) &&
+                                                        verifyForValueIsDuplicate(input_value);
     }
 
     private static boolean verifyForValueIsEmpty(String value) {
@@ -50,5 +51,12 @@ public class GameValidation {
         }
         return true;
     } // use case : 111 같은 값을 검증하기 위해
+
+    private static boolean verifyForNumberRangeIsCorrect(String value){
+        if(!(value.chars().allMatch(v-> v >= '1' && v <= '9'))){
+            throw new IllegalArgumentException("입력 값은 1부터 9사이의 숫자여야합니다.");
+        }
+        return true;
+    } // use case : 1~9의 값
 
 }
