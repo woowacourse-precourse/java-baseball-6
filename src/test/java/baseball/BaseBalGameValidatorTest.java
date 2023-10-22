@@ -25,13 +25,24 @@ class BaseBalGameValidatorTest {
 
     @ParameterizedTest
     @CsvSource({
-            "111", "112", "1", "100", "101", "999", "-1", "-12", "-122", "-999", "012", "0123"
+            "111", "112", "1", "999", "-1", "-12", "-122", "-999"
     })
     public void 세자리_숫자가아니거나_값은값이_있다면_예외를_반환한다(String baseBallValue) {
         Assertions.assertThatCode(() -> new BaseBalGameValidator().validBaseBallValue(baseBallValue))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage(String.format("%S는 세자리 숫자가 아니거나, 값은 값이 존재합니다.", baseBallValue));
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "102", "302", "102", "120", "780", "970"
+    })
+    public void 숫자가_0이_있다면_예외를_반환한다(String baseBallValue) {
+        Assertions.assertThatCode(() -> new BaseBalGameValidator().validBaseBallValue(baseBallValue))
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(String.format("%S는 0이 포함되어있다.", baseBallValue));
+    }
+
 
     @ParameterizedTest
     @CsvSource({

@@ -2,21 +2,25 @@
     - [x] 정답값을 입력받는다.
         - [x] 그 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
         - [x] 세자리 음수이면, IllegalArgumentException 반환
+        - [x] 0이 포함되어있을떄,IllegalArgumentException 반환
 
-    -[x] 점수를 체점해준다.
-        - [x] 체점가능한 숫자일경우, 채점을 해준다.
-        - [x] 채점할 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
-    -[x] 종료명령어를 판단한다.
-        -[x] 1번을 입력되면, true를 반환.
-        -[x] 2번을 입력되면, false를 반환.
-        -[x] 1,2가 아니면, IllegalArgumentException 반환
+        -[x] 점수를 체점해준다.
+            - [x] 체점가능한 숫자일경우, 채점을 해준다.
+            - [x] 채점할 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
+            - [x] 0이 포함되어있을떄,IllegalArgumentException 반환
+
+        -[x] 종료명령어를 판단한다.
+            -[x] 1번을 입력되면, true를 반환.
+            -[x] 2번을 입력되면, false를 반환.
+            -[x] 1,2가 아니면, IllegalArgumentException 반환
 
 -[ ] BaseBallGameValidator
     - [x] baseballGame숫자를 검증한다.
         - [x] 그 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
         - [x] 숫자가 아니면,IllegalArgumentException 반환
         - [x] 세자리 음수이면, IllegalArgumentException 반환
-    -[x] 엔드커멘드를 검증한다.
+        - [x] 0이 포함되어있을떄,IllegalArgumentException 반환
+    - [x] 엔드커멘드를 검증한다.
         -[x] 1이나2가 아니라면, 예외를 반환한다.
 
 -[x] InputReader
