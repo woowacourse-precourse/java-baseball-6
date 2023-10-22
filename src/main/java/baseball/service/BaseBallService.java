@@ -18,12 +18,29 @@ public class BaseBallService {
     }
 
     public void start() {
-        boolean restart = true;
-
-        while (restart) {
+        boolean haveToGuess = true;
+        
+        while (haveToGuess) {
             receiveUserInput();
+            compareUserAndComputer();
         }
 
+    }
+
+    public void compareUserAndComputer() {
+        for (int i = 0; i < userNum.size(); i++) {
+            int userN = userNum.get(i);
+            for (int j = 0; j < computerNum.size(); j++) {
+                int comN = computerNum.get(j);
+                if (userN == comN) {
+                    if (i == j) {
+                        strike++;
+                    } else {
+                        ball++;
+                    }
+                }
+            }
+        }
     }
 
     public void checkValid(String strUserNum) {
