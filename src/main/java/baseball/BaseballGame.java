@@ -23,13 +23,13 @@ public class BaseballGame {
     }
 
     public static void startGame(){
-        Baseball_output.printStart();
+        BaseballOutput.printStart();
         setNumOfComputer();
         try{
             do{
                 initGameMembers();
-                Baseball_Input.setUserInput();
-                userInput = Baseball_Input.getUserInput();
+                BaseballInput.setUserInput();
+                userInput = BaseballInput.getUserInput();
                 countBallandStrike();
                 printBallandStrike();
 
@@ -62,14 +62,14 @@ public class BaseballGame {
     public static void printBallandStrike(){
 
         if(ball == 0 && strike == 0){
-            Baseball_output.printNothing();
+            BaseballOutput.printNothing();
             return;
         }
 
         if(ball == 0 && strike != 0){
-            Baseball_output.printStrike(strike);
+            BaseballOutput.printStrike(strike);
             if(strike == 3) {
-                Baseball_output.printGameEnd();
+                BaseballOutput.printGameEnd();
                 isThreeStrike = true;
                 return;
             }
@@ -77,11 +77,11 @@ public class BaseballGame {
         }
 
         if(ball != 0 && strike == 0){
-            Baseball_output.printBall(ball);
+            BaseballOutput.printBall(ball);
             return;
         }
 
-        Baseball_output.printBallAndStrike(ball,strike);
+        BaseballOutput.printBallAndStrike(ball,strike);
 
     }
 
@@ -96,9 +96,9 @@ public class BaseballGame {
         try{
             do{
                 startGame();
-                Baseball_output.printRestart();
-                Baseball_Input.setRestartNum();
-            }while(Baseball_Input.getRestartNum() == 1);
+                BaseballOutput.printRestart();
+                BaseballInput.setRestartNum();
+            }while(BaseballInput.getRestartNum() == 1);
 
         }catch (IllegalArgumentException e){
             throw e;
