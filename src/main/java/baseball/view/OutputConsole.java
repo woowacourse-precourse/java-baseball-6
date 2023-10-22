@@ -1,6 +1,9 @@
-package baseball.io;
+package baseball.view;
 
 public class OutputConsole {
+
+    private OutputConsole() {
+    }
 
     public static void print(String message) {
         System.out.print(message);

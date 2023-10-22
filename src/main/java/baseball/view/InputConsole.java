@@ -1,4 +1,4 @@
-package baseball.io;
+package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -67,9 +67,9 @@ public class InputConsole {
         }
 
         static void gameNumberDifferentDigitValidation(String input) {
-            int hundredsDigit =  input.charAt(0) - '0';
-            int tensDigit = input.charAt(1) - '0';
-            int onesDigit = input.charAt(2) - '0';
+            char hundredsDigit =  input.charAt(0);
+            char tensDigit = input.charAt(1);
+            char onesDigit = input.charAt(2);
 
             if (hundredsDigit == tensDigit || tensDigit == onesDigit || hundredsDigit == onesDigit) {
                 throw new IllegalArgumentException("입력된 숫자는 서로 다른 3자리의 수여야 합니다.");

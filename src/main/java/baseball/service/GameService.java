@@ -1,14 +1,16 @@
-package baseball.domain;
+package baseball.service;
 
-import baseball.io.OutputConsole;
+import baseball.domain.Message;
+import baseball.domain.Result;
+import baseball.view.OutputConsole;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class GameResult {
+public class GameService {
 
-    public static Result getResult(List<Integer> computerNumber, List<Integer> inputNumber) {
+    public Result checkResult(List<Integer> computerNumber, List<Integer> inputNumber) {
         Message hintMessage = getHintMessage(computerNumber, inputNumber);
-
         OutputConsole.println(hintMessage.getMessage());
         if (hintMessage == Message.THREE_STRIKE) {
             return Result.CORRECT;
@@ -17,26 +19,45 @@ public class GameResult {
         return Result.WRONG;
     }
 
-    private static Message getHintMessage(List<Integer> computerNumber, List<Integer> inputNumber) {
-        int ballCount = 0;
-        int strikeCount = 0;
-
-        for (int i = 0; i < computerNumber.size(); i++) {
-            for (int j = 0; j < inputNumber.size(); j++) {
-                if (i == j && computerNumber.get(i).equals(inputNumber.get(j))) {
-                    strikeCount++;
-                }
-
-                if (i != j && computerNumber.get(i).equals(inputNumber.get(j))) {
-                    ballCount++;
-                }
-            }
-        }
+    private Message getHintMessage(List<Integer> computerNumber, List<Integer> inputNumber) {
+        int ballCount = getBallAndStrikeCountList(computerNumber, inputNumber).get(0);
+        int strikeCount = getBallAndStrikeCountList(computerNumber, inputNumber).get(1);
 
         return mappingHintMessage(ballCount, strikeCount);
     }
 
-    private static Message mappingHintMessage(int ballCount, int strikeCount) {
+    private List<Integer> getBallAndStrikeCountList(List<Integer> computerNumber, List<Integer> inputNumber) {
+        int ballCount = 0;
+        int strikeCount = 0;
+        for (int i = 0; i < computerNumber.size(); i++) {
+            for (int j = 0; j < inputNumber.size(); j++) {
+                ballCount += checkBallCount(computerNumber, inputNumber, i, j);
+                strikeCount += checkStrikeCount(computerNumber, inputNumber, i, j);
+            }
+        }
+
+        List<Integer> countList = new ArrayList<>();
+        countList.add(ballCount);
+        countList.add(strikeCount);
+
+        return countList;
+    }
+
+    private int checkBallCount(List<Integer> computerNumber, List<Integer> inputNumber, int i, int j) {
+        if (i != j && computerNumber.get(i).equals(inputNumber.get(j))) {
+            return 1;
+        }
+        return 0;
+    }
+
+    private int checkStrikeCount(List<Integer> computerNumber, List<Integer> inputNumber, int i, int j) {
+        if (i == j && computerNumber.get(i).equals(inputNumber.get(j))) {
+            return 1;
+        }
+        return 0;
+    }
+
+    private Message mappingHintMessage(int ballCount, int strikeCount) {
         if (ballCount == 1 && strikeCount == 0) {
             return Message.ONE_BALL;
         }
