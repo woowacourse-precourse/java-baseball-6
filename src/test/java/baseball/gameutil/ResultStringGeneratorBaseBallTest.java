@@ -121,7 +121,7 @@ public class ResultStringGeneratorBaseBallTest {
     @Test
     public void 쓰리_스트라이크() {
         // given
-        Score score = new Score(0, 1);
+        Score score = new Score(0, 3);
         ResultStringGenerator resultStringGenerator = new ResultStringGeneratorBaseBall();
 
         //when
