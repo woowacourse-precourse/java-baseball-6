@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-public class MyApplicationTest extends NsTest {
+public class ApplicationInputNumberTest extends NsTest {
 
     @Test
     void inputNumber_길이_제한_예외_테스트() {
