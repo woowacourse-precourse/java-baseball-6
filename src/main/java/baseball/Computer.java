@@ -17,11 +17,12 @@ public class Computer {
         }
     }
 
+    public List<Integer> getCom() {
+        return com;
+    }
+
     public void clearCom() {
         com.clear();
     }
 
-    public List<Integer> getCom() {
-        return com;
-    }
 }
