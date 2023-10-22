@@ -80,6 +80,14 @@ public class Application {
             throw new IllegalArgumentException("myNumber의 길이는 3이어야 합니다");
         }
     }
+
+    public void checkOnlyInterger(String myNumber){
+        for(int i =0; i < myNumber.length(); i++){
+            if(!Character.isDigit(myNumber.charAt(i))){
+                throw new IllegalArgumentException("myNumber의 값은 숫자로 이루어져야 합니다.");
+            }
+        }
+    }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         // TODO: 프로그램 구현
@@ -100,6 +108,7 @@ public class Application {
         while (!isExit){
             String myNumber = Console.readLine();
             baseballGame.checkDuplicateNumber(myNumber);
+            baseballGame.checkOnlyInterger(myNumber);
             baseballGame.checkLengthNumber(myNumber);
             boolean victory = baseballGame.compareMyInputNumberAndComputerNumber(myNumber,computerNumber);
             if (victory) {
