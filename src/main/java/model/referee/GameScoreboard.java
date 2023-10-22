@@ -17,11 +17,11 @@ public class GameScoreboard {
         this.ball = ball;
     }
 
-    public GameScoreboard incrementStrike() {
+    GameScoreboard incrementStrike() {
         return new GameScoreboard(strike + 1, ball);
     }
 
-    public GameScoreboard incrementBall() {
+    GameScoreboard incrementBall() {
         return new GameScoreboard(strike, ball + 1);
     }
 
