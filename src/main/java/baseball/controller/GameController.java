@@ -14,13 +14,22 @@ public class GameController {
         outputView.printStartGame();
         computerController.startGame(gameNumber);
 
-        gameNumber.setInputNumber(inputView.enterGameNumber());
+        repeatGussingAnswer();
+    }
 
-        computerController.compareNumbers(gameNumber);
-        computerController.provideHint();
+    private void repeatGussingAnswer() {
+        boolean correctAnswer = false;
 
-        if (computerController.isSuccessGame()) {
-            outputView.printEndGame();
+        while (!correctAnswer) {
+            gameNumber.setInputNumber(inputView.enterGameNumber());
+
+            computerController.compareNumbers(gameNumber);
+            computerController.provideHint();
+
+            correctAnswer = computerController.isSuccessGame();
+            if (correctAnswer) {
+                outputView.printEndGame();
+            }
         }
     }
 }
