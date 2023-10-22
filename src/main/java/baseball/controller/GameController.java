@@ -24,7 +24,7 @@ public class GameController {
                 game_coin = CheckGameResult.checkGameScore(gameScore, game_coin);
             }
         }
-        OutputView.outputForRetryCondition();
+        userSuccessGame();
         String user_input_retry = InputView.readLineByConsole();
         if (GameValidation.verifyForRetryValue(user_input_retry)){
             userWantRetryGame(user_input_retry);
@@ -35,5 +35,9 @@ public class GameController {
         if (user_input_retry.equals("1")){
             playingBaseballGame(GameCondition.CONTINUE);
         }
+    }
+
+    private static void userSuccessGame(){
+        OutputView.outputForRetryCondition();
     }
 }
