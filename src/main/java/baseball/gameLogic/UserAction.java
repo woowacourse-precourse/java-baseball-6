@@ -1,13 +1,14 @@
 package baseball.gameLogic;
 
+import java.util.HashSet;
 import java.util.List;
 
+import baseball.models.Constants;
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.models.User;
-
-import static baseball.utils.InputValidator.validateRestartInput;
-import static baseball.utils.InputValidator.validateUserAnswer;
+import static baseball.models.Constants.ANSWER_LENGTH;
+import static baseball.utils.InputValidator.*;
 
 /*
  User의 행동들을 수행하는 클래스
@@ -18,19 +19,29 @@ public class UserAction {
 
 
     public void inputAnswer(){
-        user.numberList = validateUserAnswer(Console.readLine());
+        String userAnswer = Console.readLine();
+        validateAnswerLength(userAnswer.length());
+        validateIsDistinct(userAnswer);
+        for (int i = 0; i < ANSWER_LENGTH; i++) {
+            user.saveNumber(userAnswer.charAt(i));
+        }
     }
 
     public void inputRestartFactor(){
-        user.mind = validateRestartInput(Console.readLine());
+        String userMind = Console.readLine();
+        user.changeMind(validateRestartInput(userMind));
     }
 
-    public List<Integer> getNumberList(){
-        return user.numberList;
+    public List<Integer> showNumberList(){
+        return user.showNumberList();
     }
 
     public int showMind(){
-        return user.mind;
+        return user.showMind();
+    }
+
+    public void clearAnswer(){
+        user.clearAnswerList();
     }
 
 }
