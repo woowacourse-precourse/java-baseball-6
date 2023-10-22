@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.Hitter;
 import baseball.model.Pitcher;
+import baseball.model.Referee;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -31,5 +32,29 @@ public class BaseballGame {
         return hitter.getHitterNum();
     }
 
-    
+    public static String compareNumbers(String hitterString) {
+        String result = "";
+        List<Integer> pitcherList = pitcher.getPitcherNum();
+        List<Integer> hitterList = hitterSwing(hitterString);
+        Referee referee = new Referee();
+
+        for(int i = 0; i < 3; i++){
+            if(pitcherList.indexOf(hitterList.get(i))==i){
+                referee.setStrikes();
+            }else if (pitcherList.contains(hitterList.get(i))){
+                referee.setBalls();
+            }
+        }
+        if(referee.getStrikes()>0 && referee.getBalls()>0) {
+            result = referee.getBalls() + "볼" + " " + referee.getStrikes() + "스트라이크";
+        } else if (referee.getStrikes()>0) {
+            result = referee.getStrikes() + "스트라이크";
+        } else if (referee.getBalls()>0) {
+            result = referee.getBalls() + "볼";
+        }else {
+            result = "낫싱";
+        }
+
+        return result;
+    }
 }

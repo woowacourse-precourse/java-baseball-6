@@ -19,16 +19,16 @@ public class Referee {
         return strikes;
     }
 
-    public void setStrikes(int strikes) {
-        this.strikes = strikes;
+    public void setStrikes() {
+        this.strikes += 1;
     }
 
     public int getBalls() {
         return balls;
     }
 
-    public void setBalls(int balls) {
-        this.balls = balls;
+    public void setBalls() {
+        this.balls += 1;
     }
 
 }
