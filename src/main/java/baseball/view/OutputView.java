@@ -21,7 +21,11 @@ public class OutputView {
     }
 
     public void printGameResult(int[] gameResult) {
-        if (gameResult[0] > 0) {
+        if (gameResult[0] == 3) {
+            System.out.println(gameResult[0] + GameHint.STRIKE.getMessage());
+            printGameSuccess();
+        }
+        if (gameResult[0] > 0 && gameResult[0] < 3) {
             System.out.println(gameResult[0] + GameHint.STRIKE.getMessage());
         }
         if (gameResult[1] > 0) {
