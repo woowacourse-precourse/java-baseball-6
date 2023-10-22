@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class GameService {
@@ -9,19 +10,24 @@ public class GameService {
     private int strike = 0;
     private int ball = 0;
 
-    public int getBall() {
-        return ball;
+    public void startGame() {
+        Computer computer = new Computer();
+        while (!isAllNumberMatched()) {
+            Player player = new Player();
+
+            Information.printInputNumber();
+            player.guessNumber(Console.readLine());
+
+            comparePlayerAndComputer(player, computer);
+            Information.printBallAndStrike(ball, strike);
+        }
     }
 
-    public int getStrike() {
-        return strike;
-    }
-
-    public boolean isAllNumberMatched() {
+    private boolean isAllNumberMatched() {
         return strike == MAX_DIGIT;
     }
 
-    public void comparePlayerAndComputer(Player player, Computer computer) {
+    private void comparePlayerAndComputer(Player player, Computer computer) {
         List<Integer> playerList = player.getPlayerNumbers();
         List<Integer> computerList = computer.getComputerNumbers();
 
