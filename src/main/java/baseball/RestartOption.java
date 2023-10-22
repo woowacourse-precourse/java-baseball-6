@@ -7,12 +7,21 @@ public class RestartOption {
 
     public RestartOption(String restartOption) {
         this.restartOption = restartOption;
+        validateInput();
     }
 
-    public void validateInput() {
+    private void validateInput() {
         if (!restartOption.equals(RESTART) && !restartOption.equals(EXIT)) {
             throw new IllegalArgumentException("[ERROR] : 잘못된 값이 입력되었습니다.");
         }
     }
+
+    public boolean isRestart() {
+        if (restartOption.equals(RESTART)) {
+            return true;
+        }
+        return false;
+    }
+
 
 }
