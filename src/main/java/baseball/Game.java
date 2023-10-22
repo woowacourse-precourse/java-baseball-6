@@ -38,10 +38,10 @@ public class Game {
         judge.announceResult(result);
     }
 
-    public boolean isRestart() {
+    public boolean isFinish() {
         printEndGameComment();
         printRestartGameComment();
 
-        return player.chooseRestartGame();
+        return player.chooseFinishGame();
     }
 }

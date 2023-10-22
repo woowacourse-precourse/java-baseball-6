@@ -38,11 +38,11 @@ public class Player {
         return randomNumberList.contains(number);
     }
 
-    public boolean chooseRestartGame() {
+    public boolean chooseFinishGame() {
         int input = readNumber();
 
         if (input != 1 && input != 2) throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
 
-        return input == 1;
+        return input == 2;
     }
 }
