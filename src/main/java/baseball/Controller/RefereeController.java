@@ -32,7 +32,6 @@ public class RefereeController {
         int[] query = new int[3];
 
         validationisThreeLength(queryString);
-        
         for(int i = 0; i < queryString.length(); ++i) {
             query[i] = queryString.charAt(i) - asciiZero;
             validationIsNumber(query[i]);
