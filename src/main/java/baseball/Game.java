@@ -13,7 +13,7 @@ public class Game {
         Judgement judgeResult;
         do{
             int[] userInputs = display.getUserInput();
-            judgeResult = computer.getJudgeResult(userInputs);
+            judgeResult = computer.getJudgement(userInputs);
             judgeResult.printResult();
         }
         while(!judgeResult.isOut());

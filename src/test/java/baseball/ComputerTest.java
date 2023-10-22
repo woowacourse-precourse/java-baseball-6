@@ -32,7 +32,7 @@ public class ComputerTest {
         assertJudgeResultOutput(testOut, new int[] {computerNumbers[0], computerNumbers[2], computerNumbers[1]}, "2볼 1스트라이크\n");
     }
     void assertJudgeResultOutput(ByteArrayOutputStream testOut, int[] userNumbers, String outputToCompare){
-        Judgement result = computer.getJudgeResult(userNumbers);
+        Judgement result = computer.getJudgement(userNumbers);
         result.printResult();
         Assertions.assertThat(testOut.toString()).isEqualTo(outputToCompare);
         testOut.reset();

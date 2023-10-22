@@ -20,23 +20,7 @@ public class Computer {
         duplicateCheck[num] = true;
         return false;
     }
-    public Judgement getJudgeResult(int[] userInput){
-        int strike = 0;
-        int ball = 0;
-        for(int userIndex = 0; userIndex < 3; userIndex++){
-            if(isStrike(userInput, userIndex)) strike++;
-            else if(isBall(userInput, userIndex)) ball++;
-        }
-        return new Judgement(ball, strike);
-    }
-    private boolean isStrike(int[] userInput, int index){
-        return userInput[index] == computerNumbers[index];
-    }
-    private boolean isBall(int[] userInput, int userIndex){
-        for(int computerIndex = 0; computerIndex < 3; computerIndex++){
-            if(userIndex == computerIndex) continue;
-            if(userInput[userIndex] == computerNumbers[computerIndex]) return true;
-        }
-        return false;
+    public Judgement getJudgement(int[] userInput){
+        return new Judgement(userInput, computerNumbers);
     }
 }
