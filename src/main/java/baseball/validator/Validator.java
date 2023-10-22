@@ -8,7 +8,7 @@ public class Validator {
     public static void validateOverlap(List<Integer> playerNumbers) {
         Set<Integer> noOverlapNumbers = new HashSet<>(playerNumbers);
         if (noOverlapNumbers.size() != playerNumbers.size()) {
-            throw new IllegalArgumentException("서로 다른 수를 입력해야 합니다.");
+            throw new IllegalArgumentException("서로 다른 수를 입력해주세요.");
         }
     }
 
@@ -24,7 +24,7 @@ public class Validator {
 
     public static void validateInputLength(String input, int length) {
         if (input.length() != length) {
-            throw new IllegalArgumentException(length + "개만 입력해주세요");
+            throw new IllegalArgumentException("숫자 " + length + "개를 입력해주세요");
         }
     }
 }
