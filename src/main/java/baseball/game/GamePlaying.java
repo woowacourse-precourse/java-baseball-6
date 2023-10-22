@@ -21,6 +21,7 @@ public class GamePlaying {
     PrintMessage printer = new PrintMessage();
 
     public boolean playGame() {
+        computerNumber.clear();
         computerNumber = cpu.setComputerNumber(computerNumber);
 
         int strike = 0;
@@ -41,6 +42,7 @@ public class GamePlaying {
     }
 
     private void enterValue() {
+        playerNumber.clear();
         playerNumber = player.getPlayerNumber(playerNumber);
     }
 
