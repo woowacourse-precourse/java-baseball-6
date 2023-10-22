@@ -14,7 +14,7 @@ public class Application {
     /**
      * 랜덤 볼 3개 만들기
      */
-    private List<Integer> makeRandomBalls() {
+    public List<Integer> makeRandomBalls() {
         List<Integer> randomBalls = new ArrayList<>();
 
         while (randomBalls.size() < 3) {
@@ -26,6 +26,5 @@ public class Application {
 
         return randomBalls;
     }
-
 
 }
