@@ -6,15 +6,22 @@ import java.util.Objects;
 
 class Digit {
 
-    private final int digit;
+    private int digit;
 
-    Digit() {
-        this.digit = Randoms.pickNumberInRange(1, 9);
+    private Digit() {
     }
 
-    Digit(int target) {
-        this.digit = target;
-        if(digit < 1 || digit > 9) throw new IllegalArgumentException();
+    static Digit generateRandomDigit() {
+        Digit randomDigit = new Digit();
+        randomDigit.digit = Randoms.pickNumberInRange(1, 9);
+        return randomDigit;
+    }
+
+    static Digit generateFixedDigit(int target) {
+        Digit fixedDigit = new Digit();
+        fixedDigit.digit = target;
+        if (fixedDigit.digit < 1 || fixedDigit.digit > 9) throw new IllegalArgumentException();
+        return fixedDigit;
     }
 
     @Override

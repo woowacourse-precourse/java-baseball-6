@@ -13,7 +13,7 @@ final class Digits {
     static Digits generateRandomDigits() {
         Digits randomDigits = new Digits();
         while (randomDigits.digits.size() < Size.THREE.num) {
-            Digit randomDigit = new Digit();
+            Digit randomDigit = Digit.generateRandomDigit();
             if (!randomDigits.digits.contains(randomDigit)) randomDigits.digits.add(randomDigit);
         }
         return randomDigits;
@@ -24,7 +24,7 @@ final class Digits {
 
         Digits fixedDigits = new Digits();
         input.chars()
-                .mapToObj(i -> new Digit(i - '0'))
+                .mapToObj(i -> Digit.generateFixedDigit(i - '0'))
                 .peek(digit -> { if (fixedDigits.digits.contains(digit)) throw new IllegalArgumentException(); })
                 .forEach(fixedDigits.digits::add);
         return fixedDigits;
