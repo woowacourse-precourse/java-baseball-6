@@ -27,12 +27,12 @@ public class BaseballGameController {
     }
 
     private void repeatGame(Computer computer, Player player, Referee referee) {
-        computer.setComputerNumber();
+        computer.createComputerNumber();
         List<Integer> computerNumber = computer.getComputerNumber();
         while (continueGame) {
             String playerNumberAsString = InputView.inputNumber();
             isValidPlayerNumber(playerNumberAsString);
-            player.setPlayerNumber(playerNumberAsString);
+            player.createPlayerNumber(playerNumberAsString);
             List<Integer> playerNumber = player.getPlayerNumber();
 
             boolean success = referee.compareComputerPlayer(computerNumber, playerNumber);
