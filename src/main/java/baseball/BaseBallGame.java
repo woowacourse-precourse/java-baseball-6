@@ -17,6 +17,12 @@ public class BaseBallGame {
 		guessTheNumbers();
 
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+		askWantToRestart();
+	}
+
+	// 다시 시작할 것인지 물어본다.
+	private void askWantToRestart() {
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
 		String input = Console.readLine();
