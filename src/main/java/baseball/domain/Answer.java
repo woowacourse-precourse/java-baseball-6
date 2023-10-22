@@ -1,39 +1,14 @@
 package baseball.domain;
 
-import java.util.List;
 
 public class Answer {
-    private static final int ZERO_COUNT = 0;
-    private static final int ONE_COUNT = 1;
-    private final List<Integer> answer;
+    private final Numbers numbers;
 
-    public Answer(List<Integer> answer) {
-        this.answer = answer;
+    public Answer(Numbers answer) {
+        this.numbers = answer;
     }
 
     public Score match(String input) {
-        int ball = ZERO_COUNT;
-        int strike = ZERO_COUNT;
-        for (int i = 0; i < answer.size(); i++) {
-            int answerNumber = answer.get(i);
-            int inputNumber = Character.getNumericValue(input.charAt(i));
-            ball += countBall(answer, answerNumber, inputNumber);
-            strike += countStrike(answerNumber, inputNumber);
-        }
-        return new Score(new Ball(ball), new Strike(strike));
-    }
-
-    private int countBall(List<Integer> answer, Integer answerNumber, int inputNumber) {
-        if (answerNumber != inputNumber && answer.contains(inputNumber)) {
-            return ONE_COUNT;
-        }
-        return ZERO_COUNT;
-    }
-
-    private int countStrike(Integer answerNumber, int inputNumber) {
-        if (answerNumber == inputNumber) {
-            return ONE_COUNT;
-        }
-        return ZERO_COUNT;
+        return numbers.calculateScore(input);
     }
 }
