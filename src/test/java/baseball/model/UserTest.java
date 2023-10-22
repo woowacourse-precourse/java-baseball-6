@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class userTest {
+class UserTest {
 
-    private user testUser;
+    private User testUser;
 
     @BeforeEach
     void setUp() {
-        testUser = new user();
+        testUser = new User();
     }
 
     @DisplayName("정상적인 input에 의한 get결과 테스트")

@@ -10,7 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class printTest {
+class PrintTest {
 
     /**
      * System.out.println()의 출력을 재지정하여 ByteArrayOutputStream에 저장하도록 설정
@@ -33,14 +33,14 @@ class printTest {
     @DisplayName("게임 시작 문구 출력 테스트")
     @Test
     public void printInitTest() {
-        print.printInit();
+        Print.printInit();
         assertEquals("숫자 야구 게임을 시작합니다.\n", outContent.toString());
     }
 
     @DisplayName("3개의 숫자를 모두 맞힐 경우 출력 테스트")
     @Test
     public void printWinTest() {
-        print.printWin();
+        Print.printWin();
         assertEquals("3스트라이크\n" +
                 "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n", outContent.toString());
     }
@@ -48,7 +48,7 @@ class printTest {
     @DisplayName("게임 결과 출력 테스트")
     @Test
     public void printResultTest() throws Exception {
-        print print = new print();
+        Print print = new Print();
 
         print.printResult(2, 1);
         assertEquals("2볼 1스트라이크\n", outContent.toString());

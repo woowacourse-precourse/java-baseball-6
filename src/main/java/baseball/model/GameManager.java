@@ -1,6 +1,6 @@
 package baseball.model;
 
-public class gameManager {
+public class GameManager {
     private String gameMode;
 
     public String getGameMode() {

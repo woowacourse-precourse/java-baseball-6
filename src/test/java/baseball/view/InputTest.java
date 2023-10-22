@@ -12,7 +12,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class inputTest {
+class InputTest {
 
     /**
      * System.out.println()의 출력을 재지정하여 ByteArrayOutputStream에 저장하도록 설정
@@ -52,7 +52,7 @@ class inputTest {
     @DisplayName("사용자의 3가지 숫자 입력 테스트")
     @Test
     public void inputUserNumberTest() {
-        input input = new input();
+        Input input = new Input();
         input.inputUserNumber();
 
         assertEquals("숫자를 입력해주세요 : \n", outContent.toString());
@@ -62,7 +62,7 @@ class inputTest {
     @DisplayName("게임 종료 후 재시작/종료 입력 테스트")
     @Test
     public void endGameTest() {
-        input inputClass = new input();
+        Input inputClass = new Input();
         inputClass.endGame();
 
         assertEquals("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n", outContent.toString());

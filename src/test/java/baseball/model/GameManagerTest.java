@@ -5,14 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class gameManagerTest {
+class GameManagerTest {
 
     @DisplayName("성공적인 재시작/종료 숫자 입력 테스트")
     @Test
     public void successGameMode_test() throws Exception {
         //given
         String input = "1";
-        gameManager gameManager = new gameManager();
+        GameManager gameManager = new GameManager();
         //when
         gameManager.setGameMode(input);
 
@@ -25,7 +25,7 @@ class gameManagerTest {
     public void failGameMode_test() throws Exception {
         //given
         String input = "3";
-        gameManager gameManager = new gameManager();
+        GameManager gameManager = new GameManager();
         //when
 
         //then

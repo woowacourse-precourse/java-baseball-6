@@ -5,12 +5,12 @@ import baseball.utils.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class computer {
+public class Computer {
 
     private List<Integer> comNumber;
     private RandomNumberGenerator randomNumberGenerator; // 랜덤한 난수 생성
 
-    public computer(RandomNumberGenerator randomNumberGenerator) {
+    public Computer(RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
         this.comNumber = new ArrayList<>();
     }

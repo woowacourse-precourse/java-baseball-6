@@ -8,15 +8,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class computerTest {
+class ComputerTest {
 
-    private computer testComputer;
+    private Computer testComputer;
 
     @DisplayName("예상 가능한 모의 객체 생성")
     @BeforeEach
     public void setUp() {
         // Initialize with a mock random number generator that always generates the same sequence.
-        testComputer = new computer(new RandomNumberGenerator() {
+        testComputer = new Computer(new RandomNumberGenerator() {
             int count = 0;
             @Override
             public int generateNumberInRange(int min, int max) {

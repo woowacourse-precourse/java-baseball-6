@@ -2,7 +2,7 @@ package baseball.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class input {
+public class Input {
 
     // player가 선택한 서로 다른 3가지 숫자
     private static String userNumber;
