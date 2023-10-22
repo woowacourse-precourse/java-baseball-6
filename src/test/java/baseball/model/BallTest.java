@@ -2,6 +2,7 @@ package baseball.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,5 +28,30 @@ public class BallTest {
         //when, then
         assertThatThrownBy(() -> new Ball(illegalNumber)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("1-9사이의 숫자를 입력해야 합니다.");
+    }
+
+
+    @DisplayName("Ball과 Ball을 비교해서 같으면 True")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
+    public void compareBallWithBall_true(int num) throws Exception {
+        //when
+        Ball ball1 = new Ball(num);
+        Ball ball2 = new Ball(num);
+
+        //then
+        assertThat(ball1.equals(ball2)).isTrue();
+    }
+
+    @DisplayName("Ball과 Ball을 비교해서 틀리면 False")
+    @ParameterizedTest
+    @CsvSource({"1,2", "2,3", "1,5"})
+    public void compareBallWithBall_false(int num1, int num2) throws Exception {
+        //when
+        Ball ball1 = new Ball(num1);
+        Ball ball2 = new Ball(num2);
+
+        //then
+        assertThat(ball1.equals(ball2)).isFalse();
     }
 }
