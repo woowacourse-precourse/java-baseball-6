@@ -25,9 +25,9 @@
 ## MVC 기반의 기능 구현 
 ### model
 1. GameNumber
-    - randomNumber : 난수 데이터 저장
+    - randomNumbers : 난수 데이터 저장
     - inputNumber : 입력 데이터 저장 (문자열 형태)
-    - playerNumber : 입력 데이터 저장 (inputNumber 정수형 변환)
+    - playerNumbers : 입력 데이터 저장 (inputNumber 정수형 변환)
         - 데이터 유효성 검사
         - inputNumber 정수형 변환
 
