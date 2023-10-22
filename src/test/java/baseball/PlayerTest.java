@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Constants.IN_GAME;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import camp.nextstep.edu.missionutils.Console;
@@ -36,7 +37,7 @@ public class PlayerTest extends NsTest {
     //then
     assertSimpleTest(
         () -> {
-          boolean isValid = player.validateInput(Console.readLine());
+          boolean isValid = player.validateNumericInput(Console.readLine(), IN_GAME);
           assertFalse(isValid);
         }
     );
@@ -53,7 +54,7 @@ public class PlayerTest extends NsTest {
     //then
     assertSimpleTest(
         () -> {
-          boolean isValid = player.validateInput(Console.readLine());
+          boolean isValid = player.validateNumericInput(Console.readLine(), IN_GAME);
           assertFalse(isValid);
         }
     );
