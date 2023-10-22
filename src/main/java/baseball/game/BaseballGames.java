@@ -27,7 +27,9 @@ public class BaseballGames implements Game {
         UserCode codes = new UserCode(new ArrayList<>());
         GameMessages gameEndComment = GameMessages.GAME_END_COMMENT;
         GameMessages strikeComment = GameMessages.THREE_STRIKE_COMMENT;
+        GameMessages numberInputComment = GameMessages.NUMBER_INPUT_COMMENT;
         while (true) {
+            System.out.print(numberInputComment.getMessage());
             UserCode userCode = userCodeService.makeUserCode(codes);
             validateJudgeService.validateLegalUserCode(userCode);
             GameResult gameResult = validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
