@@ -1,8 +1,11 @@
 package baseball;
 
+import baseball.entity.PlayerImpl;
+import baseball.impl.Player;
 import camp.nextstep.edu.missionutils.Console;
 
 public class View {
+    static Player player = new PlayerImpl();
     private View(){
 
     }
@@ -11,13 +14,14 @@ public class View {
     }
     public static String InputMessage(){
         System.out.print("숫자를 입력해주세요 : ");
-        //        Console.close();
-        return Console.readLine();
+        String input =  Console.readLine();
+        player.gameInputCheck(input);
+        return input;
     }
-    public static String ContinueMessage(){
+    public static boolean ContinueMessage(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        //        Console.close();
-        return Console.readLine();
+        String input =  Console.readLine();
+        return player.continueInputCheck(input);
     }
     public static boolean OutputMessage(Long Ball,Long Strike){
         String BallMessage = BallMessageFormat(Ball);
