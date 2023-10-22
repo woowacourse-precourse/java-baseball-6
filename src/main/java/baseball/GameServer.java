@@ -27,7 +27,8 @@ final class GameServer {
     }
 
     private Command askRetry() {
-        outputCommander.printGameClearAndAskRetry();
+        outputCommander.printGameClear();
+        outputCommander.printAskingRetry();
         return Command.getCommand(inputCommander.receiveInput());
     }
 

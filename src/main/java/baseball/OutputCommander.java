@@ -14,8 +14,11 @@ final class OutputCommander {
         System.out.println(score);
     }
 
-    void printGameClearAndAskRetry() {
+    void printGameClear() {
         System.out.println(OutputMessage.GAME_CLEAR.message);
+    }
+
+    void printAskingRetry() {
         System.out.println(OutputMessage.RETRY_OR_END.message);
     }
 
