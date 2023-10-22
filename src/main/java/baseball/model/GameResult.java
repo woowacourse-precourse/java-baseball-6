@@ -4,7 +4,6 @@ package baseball.model;
 public class GameResult {
     private final int strikeCount;
     private final int ballCount;
-    private static final String GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String NOTHING = "낫싱";
     private static final int ZERO = 0;
 
@@ -17,11 +16,7 @@ public class GameResult {
         return new GameResult(strikeCount, ballCount);
     }
 
-    private String resultString() {
-        if (strikeCount == 3) {
-            return GAME_OVER;
-        }
-
+    public String resultString() {
 
         if (strikeCount == ZERO && ballCount == ZERO) {
             return NOTHING;
