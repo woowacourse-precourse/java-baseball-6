@@ -8,10 +8,12 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
+
+    static int strike;
+    static int ball;
+
     public static void main(String[] args) {
-        StringBuilder sb;
-        //사용자가 제시하는 숫자를 저장할 변수
-        String user_guess_input;
+
         //게임이 끝난 후 사용자가 계속 게임을 할 지에 대한 변수
         int continue_game;
 
@@ -46,34 +48,15 @@ public class Application {
         String user_guess_input;
 
         while (true) {
-            int strike = 0;
-            int ball = 0;
+            strike = 0;
+            ball = 0;
             sb = new StringBuilder();
             user_guess = new ArrayList<>();
             user_guess_input = readLine();
 
             check_user_input(user_guess, user_guess_input);
 
-            for (int i = 0; i < computer.size(); i++) {
-
-                int now_com_num = computer.get(i);
-                int now_com_index = i;
-
-                for (int j = 0; j < user_guess.size(); j++) {
-
-                    int now_user_num = user_guess.get(j);
-                    int now_user_index = j;
-
-                    if ((now_com_index == now_user_index) && (now_com_num == now_user_num)) {
-
-                        strike++;
-                    } else if (now_com_num == now_user_num) {
-
-                        ball++;
-                    }
-
-                }
-            }
+            compare_input(computer, user_guess);
 
             if (strike == 3) {
                 sb.append(strike).append("스트라이크\n");
@@ -83,13 +66,36 @@ public class Application {
             }
 
             if (strike > 0 && ball > 0) {
-                sb.append(strike).append("스트라이크 ").append(ball).append("볼");
+                sb.append(ball).append("볼 ").append(strike).append("스트라이크");
             } else if (strike > 0) {
                 sb.append(strike).append("스트라이크");
             } else if (ball > 0) {
                 sb.append(ball).append("볼");
             } else sb.append("낫싱");
             System.out.println(sb);
+        }
+    }
+
+    private static void compare_input(List<Integer> computer, List<Integer> user_guess) {
+        for (int i = 0; i < computer.size(); i++) {
+
+            int now_com_num = computer.get(i);
+            int now_com_index = i;
+
+            for (int j = 0; j < user_guess.size(); j++) {
+
+                int now_user_num = user_guess.get(j);
+                int now_user_index = j;
+
+                if ((now_com_index == now_user_index) && (now_com_num == now_user_num)) {
+
+                    strike++;
+                } else if (now_com_num == now_user_num) {
+
+                    ball++;
+                }
+
+            }
         }
     }
 
