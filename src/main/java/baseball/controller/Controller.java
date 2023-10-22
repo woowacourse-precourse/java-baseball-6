@@ -19,12 +19,12 @@ public class Controller {
     }
 
     public void playGame() {
-        computer.setBaseballNumbers(baseballGame.createComputerNumbers());
+        computer.setComputerNumbers(baseballGame.createComputerNumbers());
         while (true) {
             OutputView.printInputNumbers();
-            player.setBaseballNumbers(InputView.inputBaseballNumbers());
+            player.setPlayerNumbers(InputView.inputBaseballNumbers());
 
-            baseballGame.calculateNumbers(computer.getBaseballNumbers(), player.getBaseballNumbers());
+            baseballGame.calculateNumbers(computer.getComputerNumbers(), player.getPlayerNumbers());
             OutputView.printCalculateResult(baseballGame.ballCount, baseballGame.strikeCount);
 
             if (baseballGame.strikeCount == 3) {
