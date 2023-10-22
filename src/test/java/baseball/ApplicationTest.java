@@ -1,7 +1,12 @@
 package baseball;
 
+import baseball.io.InputManager;
+import baseball.io.OutputManager;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +31,27 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void InputTest() throws IOException {
+        InputManager inputManager = new InputManager();
+
+        String wrongGameInputOne = "!23";
+        Assertions.assertThatThrownBy(() -> inputManager.validateGameInput(wrongGameInputOne))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String wrongGameInputTwo = "23";
+        Assertions.assertThatThrownBy(() -> inputManager.validateGameInput(wrongGameInputTwo))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String wrongRestartInputOne = "0";
+        Assertions.assertThatThrownBy(() -> inputManager.validateRestartInput(wrongRestartInputOne))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String wrongRestartInputTwo = "!";
+        Assertions.assertThatThrownBy(() -> inputManager.validateRestartInput(wrongRestartInputTwo))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
