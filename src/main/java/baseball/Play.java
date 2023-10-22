@@ -25,11 +25,13 @@ public class Play { // 숫자 야구 게임 진행 관련 클래스
         com.setCom();
     }
 
+    // countBallsAndStrikes() 내부 코드의 가독성을 높이기 위해 인자 전달용으로 getter 사용
+    // 또한 getter인 getUser()와 getCom()은 countBallsAndStrikes() 호출 이외의 용도로는 사용하지 않름
     private void runGame() {    // 게임 진행 단계
         while (true) {
             String input = setInput("숫자를 입력해주세요 : ");
             user.setUser(input);
-            rules.countBallAndStrikes(user.getUser(), com.getCom());
+            rules.countBallsAndStrikes(user.getUser(), com.getCom());
             if (rules.isThreeStrikes()) {
                 rules.printIfAnswer();
                 break;

@@ -11,7 +11,7 @@ public class Rules {    // 볼, 스트라이크 개수 규칙 관련 클래스
         initBallsAndStrikes();
     }
 
-    public void countBallAndStrikes(List<Integer> user, List<Integer> com) {
+    public void countBallsAndStrikes(List<Integer> user, List<Integer> com) {
         initBallsAndStrikes();
         for (Integer userNum : user) {
             if (!com.contains(userNum)) {
@@ -19,9 +19,9 @@ public class Rules {    // 볼, 스트라이크 개수 규칙 관련 클래스
             }
             int c_idx = com.indexOf(userNum);   // 사용자의 숫자가 저장된 상대방의 인덱스
             int u_idx = user.indexOf(userNum);  // 사용자의 숫자가 저장된 사용자의 인덱스
-            if (userNum.equals(com.get(c_idx)) && c_idx != u_idx) {
+            if (userNum.equals(com.get(c_idx)) && c_idx != u_idx) { // 숫자는 같고 자리는 다름
                 balls++;
-            } else if (userNum.equals(com.get(c_idx)) && c_idx == u_idx) {
+            } else if (userNum.equals(com.get(c_idx)) && c_idx == u_idx) { // 숫자와 자리 모두 동일
                 strikes++;
             }
         }
