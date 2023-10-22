@@ -22,7 +22,6 @@ public class Application {
                     computerNumber.add(randomNumber);
                 }
             }
-            System.out.println(computerNumber); // Todo: 디버그용
             System.out.println("숫자 야구 게임을 시작합니다.");
 
             int strike = 0;
@@ -38,7 +37,8 @@ public class Application {
                 String userNumber = Console.readLine();
 
                 // 사용자 번호 유효성 검사
-                if (!Pattern.matches("^[1-9]{3}$", userNumber) || userNumber.charAt(0) == userNumber.charAt(1)
+                if (!Pattern.matches("^[1-9]{3}$", userNumber) 
+                		|| userNumber.charAt(0) == userNumber.charAt(1)
                         || userNumber.charAt(0) == userNumber.charAt(2)
                         || userNumber.charAt(1) == userNumber.charAt(2)) {
                     throw new IllegalArgumentException();
