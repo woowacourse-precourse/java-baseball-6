@@ -7,7 +7,7 @@ public class GameManager {
 
     public void proceedIntro() {
         messageManager.showIntro();
-        data.setUserInput(messageManager.getUserInput());
+        data.setUserAnswerNumber(messageManager.getUserAnswerNumber());
 
         gameProcessor.IllegalArgumentException(data);
     }
@@ -16,4 +16,20 @@ public class GameManager {
         messageManager.showAnswer(data, gameProcessor, messageManager);
     }
 
+    public boolean validateCompleteAnswer() {
+        return gameProcessor.validateCompleteAnswer(data);
+    }
+
+    public void proceedOutro() {
+        messageManager.getUserContinueResponse();
+        data.setWillRestartResponse(messageManager.getWillRestartMessage());
+    }
+
+    public boolean validateRestart() {
+        boolean restart = false;
+        if (messageManager.getWillRestartMessage().equals("1")) {
+            restart = true;
+        }
+        return restart;
+    }
 }
