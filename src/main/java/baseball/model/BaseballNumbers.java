@@ -26,4 +26,8 @@ public class BaseballNumbers {
     public BaseballNumber getBaseballNumber(int index) {
         return baseballNumbers.get(index);
     }
+
+    public boolean containsBaseballNumber(BaseballNumber baseballNumber) {
+        return baseballNumbers.contains(baseballNumber);
+    }
 }
