@@ -31,4 +31,17 @@ public class Input {
         return result;
     }
 
+    public int readRetryChoice() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return stringToIntThrowException(Console.readLine());
+    }
+
+    private int stringToIntThrowException(String input) {
+        input = input.replaceAll("\\s", "");
+
+        if (!input.matches("[12]"))
+            throw new IllegalArgumentException("숫자가 아닌 문자가 포함되어 있습니다.");
+
+        return Integer.parseInt(input);
+    }
 }

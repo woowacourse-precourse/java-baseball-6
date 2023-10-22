@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
+        Input input = new Input();
         boolean gameFirstStarted = true;
         while (true) {
             if (gameFirstStarted) {
@@ -19,7 +20,6 @@ public class Application {
             computer.pickNumbers();
 
             while (true) {
-                Input input = new Input();
                 int[] guessNumbers = input.readGuessNumbers();
                 Map<String, Integer> result = computer.countStrikesAndBalls(guessNumbers);
 
@@ -28,8 +28,7 @@ public class Application {
                 }
             }
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int retryChoice = stringToIntThrowException(Console.readLine());
+            int retryChoice = input.readRetryChoice();
             if (retryChoice == 2)
                 break;
 
@@ -65,12 +64,5 @@ public class Application {
         return false;
     }
 
-    private static int stringToIntThrowException(String input) {
-        input = input.replaceAll("\\s", "");
 
-        if (!input.matches("[12]"))
-            throw new IllegalArgumentException("숫자가 아닌 문자가 포함되어 있습니다.");
-
-        return Integer.parseInt(input);
-    }
 }
