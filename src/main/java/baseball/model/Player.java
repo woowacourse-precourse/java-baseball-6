@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Player {
@@ -18,7 +19,7 @@ public class Player {
     public void updateNumbers(String inputNumber) {
         initInputNumbers();
         List<Integer> expectedNumbers = parsingNumber(inputNumber);
-        validateOneToNine(inputNumbers);
+        validateOneToNine(expectedNumbers);
         validateDuplicateNumber(expectedNumbers);
         this.inputNumbers = expectedNumbers;
     }
@@ -52,12 +53,12 @@ public class Player {
             }
         }
     }
+    
+    private void validateDuplicateNumber(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>();
 
-    private void validateDuplicateNumber(List<Integer> Numbers) {
-        HashSet<Integer> uniqueNumbers = new HashSet<>();
-
-        for (Integer number : Numbers) {
-            if (uniqueNumbers.contains(number)) {
+        for (Integer number : numbers) {
+            if (!uniqueNumbers.add(number)) {
                 throw new IllegalArgumentException(ExceptionMessage.HAVE_DUPLICATE_NUMBER.getMessage());
             }
         }
