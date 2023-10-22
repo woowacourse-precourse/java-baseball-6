@@ -7,6 +7,7 @@ public class Application {
         String input;
         Game game;
 
+        GameMessage.WELCOME.print();
         do {
             game = new Game(new User(), new Computer());
 

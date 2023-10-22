@@ -16,7 +16,6 @@ public class Game {
     public void play() {
         boolean isEnd = false;
 
-        GameMessage.WELCOME.print();
         computer.selectBalls();
         do {
             user.selectBalls();
