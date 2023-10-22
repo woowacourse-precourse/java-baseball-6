@@ -16,11 +16,12 @@
 
 - import camp.nextstep.edu.missionutils.Console의 readLine() 메소드를 활용해 입력받음.
 - 조건에 맞지 않는 입력일 때 IllegalArgumentException을 Throw한다.
-    1) 숫자를 입력하지 않았을 때
-    2) 3자리 수를 입력하지 않았을 때
-    3) 게임 끝나고 1 혹은 2를 입력하지 않았을 때
-    4) 다 다른 숫자가 아닐 때
-    5) 빈 문자열을 입력했을 때
-       [ ] 잘못된 값 입력 시 IllegalArgumentException 발생 후 애플리케이션 종료
+    1) 숫자를 입력하지 않았을 때 - okay
+    2) 3자리 수를 입력하지 않았을 때 - okay
+    3) 게임 끝나고 1 혹은 2를 입력하지 않았을 때 - okay
+    4) 다 다른 숫자가 아닐 때 - okay
+    5) 빈 문자열을 입력했을 때 - okay
 
 [ ] 각 실행마다 출력해야하는 게임 도움말 출력하기
+
+- 종료 후에도 도움말 출력해야할까?

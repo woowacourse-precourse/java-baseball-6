@@ -50,7 +50,7 @@ public class Application {
                 try {
                     guessInt = Integer.parseInt(guessStr);
                 } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    throw e;
                 }
 
                 // Throwing Error in case the number is not between 100, 999
@@ -62,6 +62,10 @@ public class Application {
                 g1 = guessInt / 100;
                 g2 = guessInt % 100 / 10;
                 g3 = guessInt % 100 % 10;
+
+                if (g1 == g2 || g2 == g3 || g1 == g3) {
+                    throw new IllegalArgumentException("Invalid argument: " + g1 + g2 + g3);
+                }
 
                 // Comparing value and index, but i think this code is too bulky
                 if (g1 == t1) {
