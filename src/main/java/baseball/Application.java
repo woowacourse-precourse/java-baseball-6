@@ -22,7 +22,7 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 int[] guessNumbers = stringToIntArrayThrowException(Console.readLine());
                 Map<String, Integer> result = computer.countStrikesAndBalls(guessNumbers);
-
+                printResult(result);
             }
 
         }
@@ -48,5 +48,20 @@ public class Application {
         }
 
         return result;
+    }
+
+    public static void printResult(Map<String, Integer> result) {
+
+        int strikes = result.get("strikes");
+        int balls = result.get("balls");
+
+        if (balls > 0) {
+            System.out.print(balls + "볼 ");
+        }
+        if (strikes > 0) {
+            System.out.print(strikes + "스트라이크");
+        }
+
+        System.out.println();
     }
 }
