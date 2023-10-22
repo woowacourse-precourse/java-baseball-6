@@ -11,18 +11,25 @@ import java.util.List;
 public class Application {
 
 
-    public void compareMyInputNumberAndComputerNumber(String myNumber, List<Integer> computerNumber) {
+    public boolean compareMyInputNumberAndComputerNumber(String myNumber, List<Integer> computerNumber) {
         int strike = 0;
         int ball = 0;
 
         for (int i =0; i<myNumber.length(); i++){
-            if (myNumber.charAt(i) == computerNumber.get(i)){
+            int number = Character.getNumericValue(myNumber.charAt(i));
+            if (number == computerNumber.get(i)){
                 strike++;
-            } else if (computerNumber.contains(myNumber.charAt(i)) && computerNumber.indexOf(myNumber.charAt(i)) != i) {
+            } else if (computerNumber.contains(number) && computerNumber.indexOf(number) != i) {
                 ball++;
             }
         }
         checkAnswerStrikeAndBall(strike,ball);
+        
+        if (strike == 3){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean determineFinishOrAgainGame(int startNumOrEndNum){
@@ -40,8 +47,8 @@ public class Application {
         if (strike == 0 && ball == 0){
             System.out.println("낫싱");
         } else if (strike == 3) {
-            String result = String.format("$d스트라이크",strike);
-            System.out.println(result);
+            System.out.println(String.format("$d스트라이크",strike));
+            System.out.println(String.format("$d개의 숫자를 모두 맞히셨습니다! 게임 종료",strike));
         } else if (strike != 0 && ball != 0){
             String result = String.format("$d볼 $d스트라이크",ball,strike);
             System.out.println(result);
@@ -54,11 +61,14 @@ public class Application {
         }
     }
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         // TODO: 프로그램 구현
+        Application baseballGame = new Application();
 
-        String myNumber = Console.readLine();
+        System.out.print("숫자를 입력해주세요 : ");
 
         List<Integer> computerNumber = new ArrayList<>();
+        boolean isExit = false;
 
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
@@ -67,6 +77,15 @@ public class Application {
             }
         }
 
-
+        while (!isExit){
+            String myNumber = Console.readLine();
+            boolean victory = baseballGame.compareMyInputNumberAndComputerNumber(myNumber,computerNumber);
+            if (victory) {
+                // strike가 3이였을 때 실행되는 부분
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int startNumOrEndNum = Integer.parseInt(Console.readLine());
+                isExit = baseballGame.determineFinishOrAgainGame(startNumOrEndNum);
+            }
+        }
     }
 }
