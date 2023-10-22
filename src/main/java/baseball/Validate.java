@@ -3,7 +3,7 @@ package baseball;
 import java.util.HashSet;
 
 public class Validate {
-    public static boolean isValidUserInput(String userInput) {
+    public static void isValidUserInput(String userInput) {
         if (checkInputLength(userInput)) {
             throw new IllegalArgumentException();
         }
@@ -13,7 +13,6 @@ public class Validate {
         if (isInvalidDigitsOnly(userInput)) {
             throw new IllegalArgumentException();
         }
-        return true;
     }
 
     public static boolean checkInputLength(String userInput) {
