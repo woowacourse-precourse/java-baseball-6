@@ -8,9 +8,7 @@ public class Application {
 
             gameManager.proceedIntro();
 
-            while (!gameManager.validateCompleteAnswer()) {
-                gameManager.proceedMainGame();
-            }
+            gameManager.proceedMainGame();
 
             gameManager.proceedOutro();
 //        }

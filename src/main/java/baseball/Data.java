@@ -10,6 +10,7 @@ public class Data {
     private List<String> randomNumberList;
     private List<String> answerList = Arrays.asList("0", "0");
     private String willRestartResponse;
+    private boolean digitSizeError = false;
 
     public String getUserAnswerNumber() {
         return userAnswerNumber;
@@ -57,5 +58,9 @@ public class Data {
 
     public void setWillRestartResponse(String willRestartResponse) {
         this.willRestartResponse = willRestartResponse;
+    }
+
+    public void setDigitSizeError(boolean digitSizeError) {
+        this.digitSizeError = digitSizeError;
     }
 }

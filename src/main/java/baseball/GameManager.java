@@ -7,13 +7,23 @@ public class GameManager {
 
     public void proceedIntro() {
         messageManager.showIntro();
-        data.setUserAnswerNumber(messageManager.getUserAnswerNumber());
-
-        gameProcessor.IllegalArgumentException(data);
     }
 
     public void proceedMainGame() {
-        messageManager.showAnswer(data, gameProcessor, messageManager);
+        while (!gameProcessor.validateCompleteAnswer(data)) {
+            try {
+                data.setUserAnswerNumber(messageManager.getUserAnswerNumber());
+
+                if (gameProcessor.illegalArgumentException(data)) {
+                    throw new IllegalArgumentException();
+                }
+
+                messageManager.showAnswer(data, gameProcessor, messageManager);
+            } catch (IllegalArgumentException e) {
+                data.setDigitSizeError(true);
+                break;
+            }
+        }
     }
 
     public boolean validateCompleteAnswer() {

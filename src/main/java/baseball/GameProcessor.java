@@ -68,9 +68,9 @@ public class GameProcessor {
         strikeBall.set(0, strike);
         strikeBall.set(1, ball);
 
-        System.out.println(strikeBall);
-        System.out.println(userNumberList);
-        System.out.println(randomNumberList);
+        System.out.println("strikeBall: " + strikeBall);
+        System.out.println("userNumberList: " + userNumberList);
+        System.out.println("randomNumberList: " + randomNumberList);
 
         return strikeBall;
     }
@@ -87,7 +87,7 @@ public class GameProcessor {
         String answerText;
         StringBuilder answerTextBuilder = new StringBuilder();
         List<String> answerList = calculateStrikeBall(data);
-        System.out.println(answerList);
+        System.out.println("answerList: " + answerList);
 
         if (Integer.parseInt(answerList.get(0)) > 0 && Integer.parseInt(answerList.get(1)) > 0) {
             answerTextBuilder.append(answerList.get(0));
@@ -114,10 +114,13 @@ public class GameProcessor {
         return answerText;
     }
 
-    public void IllegalArgumentException(Data data) {
-        if ((data.getUserAnswerNumber().length()) > 3) {
-            System.out.println("3보다 큽니다");
+    public boolean illegalArgumentException(Data data) {
+        boolean error = false;
+        if ((data.getUserAnswerNumber().length()) != 3) {
+            System.out.println("세자리 수를 입력해 주세요.");
+            error = true;
         }
+        return error;
     }
 
 
