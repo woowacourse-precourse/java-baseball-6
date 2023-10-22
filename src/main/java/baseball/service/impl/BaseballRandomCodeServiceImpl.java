@@ -1,11 +1,11 @@
 package baseball.service.impl;
 
-import baseball.service.RandomCodeService;
+import baseball.service.BaseballRandomCodeService;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomCodeServiceImpl implements RandomCodeService {
+public class BaseballRandomCodeServiceImpl implements BaseballRandomCodeService {
 
     @Override
     public List<Integer> makeRandomCodeList() {

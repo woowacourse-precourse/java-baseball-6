@@ -3,20 +3,20 @@ package baseball.game;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.message.GameMessages;
-import baseball.service.RandomCodeService;
+import baseball.service.BaseballRandomCodeService;
 import baseball.service.ValidateJudgeService;
 import baseball.vo.BaseballCode;
 import java.util.ArrayList;
 
 public class GameLauncher {
     private final Game baseballGames;
-    private final RandomCodeService randomCodeService;
+    private final BaseballRandomCodeService baseballRandomCodeService;
     private final ValidateJudgeService validateJudgeService;
 
-    public GameLauncher(Game baseballGames, RandomCodeService randomCodeService,
+    public GameLauncher(Game baseballGames, BaseballRandomCodeService randomCodeService,
                         ValidateJudgeService validateJudgeService) {
         this.baseballGames = baseballGames;
-        this.randomCodeService = randomCodeService;
+        this.baseballRandomCodeService = randomCodeService;
         this.validateJudgeService = validateJudgeService;
     }
 
@@ -27,7 +27,8 @@ public class GameLauncher {
         GameMessages restartComment = GameMessages.RESTART_COMMENT;
         System.out.println(startComment.getMessage());
         while (true) {
-            BaseballCode baseballCodes = baseballCode.makeNewBaseballCode(randomCodeService.makeRandomCodeList());
+            BaseballCode baseballCodes = baseballCode.makeNewBaseballCode(
+                    baseballRandomCodeService.makeRandomCodeList());
             baseballGames.playBaseball(baseballCodes);
             int code = Integer.parseInt(readLine());
             boolean restartStatus = validateJudgeService.restartValidateCode(code);

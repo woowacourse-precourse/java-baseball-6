@@ -2,7 +2,7 @@ package baseball.service;
 
 import java.util.List;
 
-public interface RandomCodeService {
+public interface BaseballRandomCodeService {
 
     List<Integer> makeRandomCodeList();
 }

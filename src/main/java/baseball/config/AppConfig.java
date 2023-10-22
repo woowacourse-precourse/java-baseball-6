@@ -3,12 +3,12 @@ package baseball.config;
 import baseball.game.BaseballGames;
 import baseball.game.Game;
 import baseball.game.GameLauncher;
+import baseball.service.BaseballRandomCodeService;
 import baseball.service.MessageGenerateService;
-import baseball.service.RandomCodeService;
 import baseball.service.UserCodeService;
 import baseball.service.ValidateJudgeService;
+import baseball.service.impl.BaseballRandomCodeServiceImpl;
 import baseball.service.impl.MessageGenerateServiceImpl;
-import baseball.service.impl.RandomCodeServiceImpl;
 import baseball.service.impl.UserCodeServiceImpl;
 import baseball.service.impl.ValidateJudgeServiceImpl;
 
@@ -18,8 +18,8 @@ public class AppConfig {
         return new MessageGenerateServiceImpl();
     }
 
-    public RandomCodeService randomCodeService() {
-        return new RandomCodeServiceImpl();
+    public BaseballRandomCodeService baseballRandomCodeService() {
+        return new BaseballRandomCodeServiceImpl();
     }
 
     public UserCodeService userCodeService() {
@@ -35,6 +35,6 @@ public class AppConfig {
     }
 
     public GameLauncher gameLauncher() {
-        return new GameLauncher(baseballGame(), randomCodeService(), validateJudgeService());
+        return new GameLauncher(baseballGame(), baseballRandomCodeService(), validateJudgeService());
     }
 }
