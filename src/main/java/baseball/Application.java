@@ -30,6 +30,9 @@ public class Application {
     private static int[] stringToIntArrayThrowException(String input) {
         input = input.replaceAll("\\s", "");
 
+        if (!input.matches("[1-9]+"))
+            throw new IllegalArgumentException("숫자가 아닌 문자가 포함되어 있습니다.");
+
         return Arrays.stream(input.split(""))
                 .mapToInt(Integer::parseInt)
                 .toArray();
