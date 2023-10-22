@@ -56,6 +56,14 @@ class GameServerTest extends NsTest {
         );
     }
 
+    @Test
+    void 사용자_입력값에_공백이_들어갈경우_IllegalArgumentException_예외를_터트린다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" 123"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     protected void runMain() {
