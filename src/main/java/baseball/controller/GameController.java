@@ -11,7 +11,6 @@ import java.util.List;
 public class GameController {
     private static final int NUMBER_LENGTH = 3;
     private static final int ZERO = 0;
-    private static final int FULL_STRIKE_COUNT = 3;
     private static final String SPACE_MESSAGE = " ";
     private static final String NULL_MESSAGE = "";
     private static final String BALL_MESSAGE = "볼";
@@ -26,7 +25,6 @@ public class GameController {
     Game game;
 
     public void startGame() {
-
         outputView.printStartMessage();
 
         do {
@@ -39,11 +37,15 @@ public class GameController {
         player = new Player();
         game = new Game();
 
-        computer.setComputerNumbers(randomUtil.generateRandomNumbers());
+        List<Integer> computerInput = randomUtil.generateRandomNumbers();
+        computer.setComputerNumbers(computerInput);
+
         do {
+            game.initStrikeAndBall();
+
             String playerInput = inputView.inputPlayerNumber();
             player.setPlayerNumbers(playerInput);
-            game.initStrikeAndBall();
+
             countStrikeAndBall(player.getPlayerNumbers(), computer.getComputerNumbers());
             printHintMessage();
         } while (!isCorrectNumber());
@@ -67,17 +69,16 @@ public class GameController {
         }
     }
 
-    public void countBall(List<Integer> computers, int currentIndex, int player) {
-        if (computers.get(currentIndex) != player && computers.contains(player)) {
+    public void countBall(List<Integer> computerNumbers, int currentIndex, int player) {
+        if (computerNumbers.get(currentIndex) != player && computerNumbers.contains(player)) {
             game.plusBallCount(1);
         }
     }
 
     public boolean isCorrectNumber() {
-        if (game.getStrikeCount() == FULL_STRIKE_COUNT) {
+        if (game.getStrikeCount() == NUMBER_LENGTH) {
             return true;
         }
-
         return false;
     }
 
@@ -95,7 +96,6 @@ public class GameController {
         if (game.getBallCount() > ZERO) {
             return game.getBallCount() + BALL_MESSAGE + SPACE_MESSAGE;
         }
-
         return NULL_MESSAGE;
     }
 
@@ -103,7 +103,6 @@ public class GameController {
         if (game.getStrikeCount() > ZERO) {
             return game.getStrikeCount() + STRIKE_MESSAGE;
         }
-
         return NULL_MESSAGE;
     }
 
@@ -116,10 +115,6 @@ public class GameController {
 
     public boolean restartGame() {
         String answer = inputView.askPlayerGameRestart();
-        if (answer.equals("1")) {
-            return true;
-        }
-
-        return false;
+        return answer.equals("1");
     }
 }
