@@ -5,7 +5,10 @@ import java.util.List;
 
 public class CountService {
 
-    public CountResultDto calculateCount(String computerNumber, String playerNumber) {
+    private CountService() {
+    }
+
+    public static CountResultDto calculateCount(String computerNumber, String playerNumber) {
         List<Integer> computerNumberList = ConversionService.stringToListOfInteger(computerNumber);
         List<Integer> playerNumberList = ConversionService.stringToListOfInteger(playerNumber);
 
@@ -15,7 +18,7 @@ public class CountService {
         return new CountResultDto(strikeCount, ballCount);
     }
 
-    public int calculateStrikeCount(List<Integer> computerNumberList, List<Integer> playerNumberList) {
+    private static int calculateStrikeCount(List<Integer> computerNumberList, List<Integer> playerNumberList) {
         int strikeCount = 0;
         for (int i = 0; i < computerNumberList.size(); i++) {
             if (computerNumberList.get(i).equals(playerNumberList.get(i))) {
@@ -25,7 +28,7 @@ public class CountService {
         return strikeCount;
     }
 
-    public int calculateBallCount(List<Integer> computerNumberList, List<Integer> playerNumberList) {
+    private static int calculateBallCount(List<Integer> computerNumberList, List<Integer> playerNumberList) {
         int ballCount = 0;
         for (int i = 0; i < computerNumberList.size(); i++) {
             if (computerNumberList.contains(playerNumberList.get(i))) {
