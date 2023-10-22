@@ -1,9 +1,9 @@
 package baseball.domain.baseballnumber;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BaseballNumbers {
 
@@ -11,15 +11,34 @@ public class BaseballNumbers {
     private static final String ERROR_MESSAGE_WRONG_SIZE = "세 개의 숫자를 입력해 주세요.";
     private static final String ERROR_MESSAGE_DUPLICATED = "중복 없이 입력해 주세요.";
 
-    private List<BaseballNumber> numbers = new ArrayList<>();
+    private final List<BaseballNumber> numbers;
 
     public BaseballNumbers(List<Integer> input) {
         validateSizeAndDuplicated(input);
-        input.forEach((number) -> numbers.add(new BaseballNumber(number)));
+        List<BaseballNumber> baseballNumbers = input.stream().map(BaseballNumber::new)
+            .collect(Collectors.toList());
+        numbers = baseballNumbers;
     }
 
     public List<BaseballNumber> numbers() {
         return numbers;
+    }
+
+    public BaseballNumber get(int index) {
+        return numbers.get(index);
+    }
+
+    public boolean containsWithDifferentIndex(BaseballNumber baseballNumber, int index) {
+        return numbers.contains(baseballNumber) && !isSameIndex(baseballNumber, index);
+    }
+
+    public boolean containsWithSameIndex(BaseballNumber baseballNumber, int index) {
+        return numbers.contains(baseballNumber) && isSameIndex(baseballNumber, index);
+    }
+
+    private boolean isSameIndex(BaseballNumber baseballNumber, int index) {
+        int indexOfBaseballNumber = numbers.indexOf(baseballNumber);
+        return indexOfBaseballNumber == index;
     }
 
     private void validateSizeAndDuplicated(List<Integer> input) {
