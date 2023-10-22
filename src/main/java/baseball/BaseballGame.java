@@ -22,6 +22,7 @@ public class BaseballGame {
         do {
             playerView.output(INPUT_NUMBERS_MESSAGE);
             String playerNumbers = playerView.input();
+            Player player = new Player(playerNumbers);
             gameResult = referee.judge(computerNumbers, playerNumbers);
             playerView.output(gameResult.result());
         } while (!gameResult.isWin());

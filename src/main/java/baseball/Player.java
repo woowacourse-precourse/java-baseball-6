@@ -11,7 +11,7 @@ public class Player {
         this.playerNumbers = playerNumbers;
     }
 
-    private void validateNumbers(String numbers) {
+    private void validateNumbers(String numbers) throws IllegalArgumentException {
         if (!isValidNumeric(numbers)) {
             throw new IllegalArgumentException("잘못된 형식입니다.");
         }
