@@ -62,10 +62,10 @@ class ApplicationTest extends NsTest {
         boolean result4 = core.isNotOver(case4);
 
         // then
-        assertThat(true).as("nothing").isEqualTo(result1);
-        assertThat(true).as("1 strike").isEqualTo(result3);
-        assertThat(true).as("2 strike").isEqualTo(result2);
-        assertThat(false).as("3 strike").isEqualTo(result4);
+        assertThat(result1).as("nothing").isEqualTo(true);
+        assertThat(result3).as("1 strike").isEqualTo(true);
+        assertThat(result2).as("2 strike").isEqualTo(true);
+        assertThat(result4).as("3 strike").isEqualTo(false);
     }
 
     @Test
@@ -94,15 +94,15 @@ class ApplicationTest extends NsTest {
         int result9 = core.countBall(case9.get(0), case9.get(1));
 
         // then
-        assertThat(0).as("nothing").isEqualTo(result1);
-        assertThat(1).as("1 ball").isEqualTo(result2);
-        assertThat(2).as("2 ball").isEqualTo(result3);
-        assertThat(3).as("3 ball").isEqualTo(result4);
-        assertThat(0).as("1 strike").isEqualTo(result5);
-        assertThat(1).as("1 strike 2 ball").isEqualTo(result6);
-        assertThat(2).as("1 strike 2 ball").isEqualTo(result7);
-        assertThat(0).as("2 strike").isEqualTo(result8);
-        assertThat(0).as("3 strike").isEqualTo(result9);
+        assertThat(result1).as("nothing").isEqualTo(0);
+        assertThat(result2).as("1 ball").isEqualTo(1);
+        assertThat(result3).as("2 ball").isEqualTo(2);
+        assertThat(result4).as("3 ball").isEqualTo(3);
+        assertThat(result5).as("1 strike").isEqualTo(0);
+        assertThat(result6).as("1 strike 2 ball").isEqualTo(1);
+        assertThat(result7).as("1 strike 2 ball").isEqualTo(2);
+        assertThat(result8).as("2 strike").isEqualTo(0);
+        assertThat(result9).as("3 strike").isEqualTo(0);
     }
 
 
@@ -132,15 +132,15 @@ class ApplicationTest extends NsTest {
         int result9 = core.countStrike(case9.get(0), case9.get(1));
 
         // then
-        assertThat(0).as("nothing").isEqualTo(result1);
-        assertThat(0).as("1 ball").isEqualTo(result2);
-        assertThat(0).as("2 ball").isEqualTo(result3);
-        assertThat(0).as("3 ball").isEqualTo(result4);
-        assertThat(1).as("1 strike").isEqualTo(result5);
-        assertThat(1).as("1 strike 2 ball").isEqualTo(result6);
-        assertThat(1).as("1 strike 2 ball").isEqualTo(result7);
-        assertThat(2).as("2 strike").isEqualTo(result8);
-        assertThat(3).as("3 strike").isEqualTo(result9);
+        assertThat(result1).as("nothing").isEqualTo(0);
+        assertThat(result2).as("1 ball").isEqualTo(0);
+        assertThat(result3).as("2 ball").isEqualTo(0);
+        assertThat(result4).as("3 ball").isEqualTo(0);
+        assertThat(result5).as("1 strike").isEqualTo(1);
+        assertThat(result6).as("1 strike 2 ball").isEqualTo(1);
+        assertThat(result7).as("1 strike 2 ball").isEqualTo(1);
+        assertThat(result8).as("2 strike").isEqualTo(2);
+        assertThat(result9).as("3 strike").isEqualTo(3);
     }
 
     @Test
