@@ -7,31 +7,31 @@ public class User {
 
     private static String answer;
 
-    public static String getAnswer() {
-        return answer;
-    }
-
-    public static void getUserAnswer() {
+    public User() {
         answer = Console.readLine();
         checkUserAnswer();
     }
 
-    private static void checkUserAnswer() {
+    public String getAnswer() {
+        return answer;
+    }
+
+    private void checkUserAnswer() {
         if(!isAnswerLengthRight()
                 || !isAnswerDigit()
                 || isAnswerContainZero())
             throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
-    private static boolean isAnswerLengthRight() {
+    private boolean isAnswerLengthRight() {
         return answer.length() == Key.NUMBER_LENGTH;
     }
 
-    private static boolean isAnswerDigit() {
+    private boolean isAnswerDigit() {
         return answer.chars().allMatch(Character::isDigit);
     }
 
-    private static boolean isAnswerContainZero() {
+    private boolean isAnswerContainZero() {
         return answer.chars().anyMatch(ch -> ch == '0');
     }
 }

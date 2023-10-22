@@ -10,35 +10,35 @@ public class Hint {
         strike = 0;
     }
 
-    public static int getBall() {
+    public int getBall() {
         return ball;
     }
 
-    public static int getStrike() {
+    public int getStrike() {
         return strike;
     }
 
-    public static boolean isNothing() {
+    public boolean isNothing() {
         return ball == 0 && strike == 0;
     }
 
-    public static boolean isThreeStrike() {
+    public boolean isThreeStrike() {
         return strike == 3;
     }
 
-    public static boolean isBallZero() {
+    public boolean isBallZero() {
         return ball == 0;
     }
 
-    public static boolean isStrikeZero() {
+    public boolean isStrikeZero() {
         return strike == 0;
     }
 
-    public static void increaseStrike() {
+    public void increaseStrike() {
         strike++;
     }
 
-    public static void increaseBall() {
+    public void increaseBall() {
         ball++;
     }
 }

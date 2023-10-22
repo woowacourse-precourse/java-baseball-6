@@ -2,6 +2,7 @@ package baseball.game;
 
 import baseball.Key;
 import baseball.object.Computer;
+import baseball.object.Hint;
 import baseball.object.User;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -26,11 +27,12 @@ public class RunGame {
     private void runBaseBallGame() {
         new Computer();
 
+        User user;
         while (true) {
             print.printInputNumber();
-            User.getUserAnswer();
-            Computer.compareNumber(User.getAnswer());
-            if(print.printResult())
+            user = new User();
+            Hint hint = Computer.compareNumber(user.getAnswer());
+            if(print.printResult(hint))
                 break;
         }
     }

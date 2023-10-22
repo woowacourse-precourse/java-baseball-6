@@ -18,20 +18,20 @@ public class Print {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public static boolean printResult() {
-        if(Hint.isThreeStrike()) {
-            System.out.println(Hint.getStrike() + Key.STRIKE);
+    public static boolean printResult(Hint hint) {
+        if(hint.isThreeStrike()) {
+            System.out.println(hint.getStrike() + Key.STRIKE);
             return true;
         }
 
-        if(Hint.isNothing())
+        if(hint.isNothing())
             System.out.println(Key.NOTHING);
-        else if(Hint.isBallZero())
-            System.out.println(Hint.getStrike() + Key.STRIKE);
-        else if(Hint.isStrikeZero())
-            System.out.println(Hint.getBall() + Key.BALL);
+        else if(hint.isBallZero())
+            System.out.println(hint.getStrike() + Key.STRIKE);
+        else if(hint.isStrikeZero())
+            System.out.println(hint.getBall() + Key.BALL);
         else
-            System.out.println(Hint.getBall() + Key.BALL + " " + Hint.getStrike() + Key.STRIKE);
+            System.out.println(hint.getBall() + Key.BALL + " " + hint.getStrike() + Key.STRIKE);
 
         return false;
     }

@@ -26,16 +26,18 @@ public class Computer {
                 .collect(Collectors.joining());
     }
 
-    public static void compareNumber(String answer) {
-        new Hint();
+    public static Hint compareNumber(String answer) {
+        Hint hint = new Hint();
 
         IntStream.range(0, Key.NUMBER_LENGTH)
                 .forEach(index -> {
                     if(answer.charAt(index) == number.charAt(index))
-                        Hint.increaseStrike();
+                        hint.increaseStrike();
                     else if(answer.contains(String.valueOf(number.charAt(index))))
-                        Hint.increaseBall();
+                        hint.increaseBall();
                 });
+
+        return hint;
     }
 
     public static String getNumber() {
