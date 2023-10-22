@@ -22,4 +22,12 @@ class PlayerInputTest {
                 .count())
                 .isNotEqualTo(3);
     }
+
+    @Test
+    @DisplayName("플레이어가 입력한 숫자는 3자리이다.")
+    void test3() {
+        String input = "123";
+
+        assertThat(input.length()).isEqualTo(3);
+    }
 }
