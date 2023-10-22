@@ -1,9 +1,8 @@
 package model.system;
 
-import java.util.List;
 import model.player.Computer;
+import model.player.User;
 import model.referee.GameScoreboard;
-import utils.BaseballNumberUtils;
 
 public final class GameController {
 
@@ -15,25 +14,10 @@ public final class GameController {
         this.gameTerminator = gameTerminator;
     }
 
-    public void run() {
-        final Computer computer = setupGame();
-        GameScoreboard gameScoreboard;
-        do {
-            gameScoreboard = playGameRound(computer);
-        } while (isGameRunning(gameScoreboard));
+    public GameScoreboard run(User user, Computer computer) {
+        GameScoreboard gameScoreboard = gameStarter.start(computer, user);
+        return gameScoreboard;
     }
 
-    private Computer setupGame() {
-        List<Integer> randomNumbers = BaseballNumberUtils.createRandomNumbers();
-        return Computer.create(randomNumbers);
-    }
-
-    private boolean isGameRunning(GameScoreboard gameScoreboard) {
-        return gameTerminator.isGameStillRunning(gameScoreboard);
-    }
-
-    private GameScoreboard playGameRound(Computer computer) {
-        return gameStarter.start(computer);
-    }
 
 }
