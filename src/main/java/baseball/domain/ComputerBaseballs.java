@@ -7,7 +7,7 @@ public class ComputerBaseballs extends AbstractBaseballs {
     private static final int FIRST_INDEX = 0;
     private static final int EXIST_NUMBER = 1;
 
-    public ComputerBaseballs(List<Baseball> baseballs) {
+    protected ComputerBaseballs(List<Baseball> baseballs) {
         super(baseballs);
     }
 
@@ -24,7 +24,7 @@ public class ComputerBaseballs extends AbstractBaseballs {
     }
 
     private boolean isStrike(int i, UserBaseballs userBaseballs) {
-        return baseballs.get(i).equals(userBaseballs.baseballs.get(i));
+        return baseballs.get(i).equals(userBaseballs.getBaseballs().get(i));
     }
 
     private boolean isBall(int i, UserBaseballs userBaseballs) {
@@ -32,7 +32,7 @@ public class ComputerBaseballs extends AbstractBaseballs {
             return false;
         }
 
-        long numberOfMatches = userBaseballs.baseballs.stream()
+        long numberOfMatches = userBaseballs.getBaseballs().stream()
                 .filter(baseball -> baseball.equals(this.baseballs.get(i)))
                 .count();
         return EXIST_NUMBER == numberOfMatches;

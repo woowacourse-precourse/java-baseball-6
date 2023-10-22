@@ -8,7 +8,7 @@ public class Baseball {
 
     private final int number;
 
-    public Baseball(int number) {
+    protected Baseball(int number) {
         verifyBaseballNumber(number);
         this.number = number;
     }
