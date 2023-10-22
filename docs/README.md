@@ -29,9 +29,26 @@
 5. 사용자가 게임을 계속할지 종료할지 결정하는 input 받기(`UserDecision`)
     - input이 1 또는 2 가 아니면 `IllegalArgumentException` 발생 후 게임 종료
 
-6. Application 에서 게임 흐름 구현
+6. `Application` 에서 게임 흐름 구현
     - startGame()
     - do-while 문을 사용해 `userDecision` 이 1이면 계속 playGame()
     - `userDecision` 이 1이 아니면 게임 종료
 
+## 🔍 테스트 코드 작성
 
+### InputTest
+
+- 자리수 예외 테스트
+- 1이상 9이하 예외 테스트
+- 숫자가 아닌 문자 입력시 예외 테스트
+- 게임 종료 후 사용자 입력 예외 테스트
+
+### GameTest
+
+- 3스트라이크 출력 테스트
+- 볼 스트라이크 출력 테스트
+- 볼 출력 테스트
+
+### ApplicationTest
+
+- 게임 종료 후 재시작 작동 테스트
