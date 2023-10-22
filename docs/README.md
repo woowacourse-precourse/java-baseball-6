@@ -90,9 +90,9 @@
 
 #### GameManager에 필요한 멤버 변수
 
-- `int[] ball`: 3자리 수를 담을 배열. 각 숫자는 서로 다른 수로 이루어져야 한다.
+- `Ball ball`: 생성된 공 정보를 담을 객체
 
-#### GamaManager에 필요한 메서드
+#### GamaManager에 필요한 주요 메서드
 
 - `void run()`
     - 게임을 진행시키는 메서드.
@@ -105,8 +105,21 @@
         - 잘못된 커맨드를 입력받을 경우 `IllegalArgumentException`을 발생시킨다.
     - 게임 재시작 커맨드(1)를 입력받았을 경우 게임을 새롭게 시작한다.
     - 게임 종료 커맨드(2)를 입력받았을 경우 게임을 종료한다.
+
+### Ball 클래스
+
+> GameManager에서 사용할 공 정보를 생성하고 관리하는 클래스
+
+#### Ball에 필요한 멤버 변수
+
+- `int[] balls`: 공 정보를 담을 배열
+- `Set validation`: 사용자로부터 입력받은 공 정보를 검증하기 위해 사용할 자료구조
+
+#### Ball에 필요한 주요 메서드
+
 - `void generateBalls()`: 서로 다른 수로 이루어진 3자리 수를 생성하여 멤버 변수인 ball 배열에 담는다.
 - `Result calculate()`: 사용자가 입력한 숫자를 바탕으로 결과를 계산한다. 계산한 결과는 `Result` 클래스로 반환한다.
+- `void validateBall()`: 사용자로부터 입력받은 공 정보의 유효성을 검증한다.
 
 ### Result 클래스
 
@@ -117,7 +130,7 @@
 - `int strike`: 스트라이크 개수
 - `int ball`: 볼 개수
 
-#### Result에 필요한 메서드
+#### Result에 필요한 주요 메서드
 
 - `boolean isWin()`: 3스트라이크를 달성했는지 여부를 확인하는 메서드. 달성했을 경우 true, 달성하지 못했을 경우 false를 리턴한다.
 - `String generateMessage()`: 볼/스트라이크 개수를 토대로 출력할 메세지를 반환한다.
