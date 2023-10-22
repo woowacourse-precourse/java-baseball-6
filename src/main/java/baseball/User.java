@@ -11,7 +11,7 @@ public class User{
 
     void setUser() throws IllegalArgumentException{
 
-        Integer num = Integer.parseInt(Console.readLine());
+       int num = Integer.parseInt(Console.readLine());
         user.add(num/100);
         user.add((num%100)/10);
         user.add(num%10);
