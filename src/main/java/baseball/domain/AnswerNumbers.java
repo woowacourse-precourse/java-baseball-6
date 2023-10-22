@@ -19,4 +19,9 @@ public final class AnswerNumbers {
         List<Integer> generateNumbers = numberGenerator.generate(NUMBER_SIZE);
         return new AnswerNumbers(generateNumbers);
     }
+
+    public boolean isSameWithAnswer(List<Integer> numbers) {
+        String answer = answerNumbers.toString();
+        return answer.equals(numbers.toString());
+    }
 }
