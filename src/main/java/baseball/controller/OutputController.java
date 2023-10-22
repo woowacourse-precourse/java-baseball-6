@@ -18,24 +18,24 @@ public class OutputController {
             case 3 -> {
                 outputView.showStrikeOnlyHint(strikeCount);
                 outputView.showGameClearMessage();
-                yield true;
+                yield false;
             }
             case 0 -> {
                 if (ballCount != 0) {
                     outputView.showBallOnlyHint(ballCount);
-                    yield false;
+                    yield true;
                 } else {
                     outputView.showNothingHint();
-                    yield false;
+                    yield true;
                 }
             }
             default -> {
                 if (ballCount != 0) {
                     outputView.showBallAndStrikeHint(ballCount, strikeCount);
-                    yield false;
+                    yield true;
                 } else {
                     outputView.showStrikeOnlyHint(strikeCount);
-                    yield false;
+                    yield true;
                 }
             }
         };

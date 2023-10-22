@@ -32,8 +32,8 @@ public class GameController {
     }
 
     public void playGame() {
-        boolean isGameClear = false;
-        while (!isGameClear) {
+        boolean isGameClear = true;
+        while (isGameClear) {
             outputController.showGameInputMessage();
             List<Integer> input = inputController.getPlayerGuessNumber();
             Hint result = BaseballGamePlayer.swingBat(gameComputer, input);
