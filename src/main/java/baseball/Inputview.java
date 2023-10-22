@@ -22,6 +22,9 @@ public class Inputview {
         System.out.println(OutputMessage.RESTART_GAME);
         String inputOption = Console.readLine();
 
+        Validation.checkLengthOne(inputOption);
+        Validation.checkStringRegex(inputOption);
+
         return inputOption;
     }
 }
