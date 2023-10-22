@@ -40,9 +40,8 @@ class Number{
 class Computer{
     private int strike = 0;
     private int ball = 0;
-    public int[] count(List<Integer> computer, List<Integer> player){
+    public List<Integer> count(List<Integer> computer, List<Integer> player){
         Number randNums = new Number();
-
         for(int i=0; i<player.size(); i++){
             int target = player.get(i);
             for(int j=0; j<computer.size(); j++){
@@ -56,9 +55,33 @@ class Computer{
                 }
             }
         }
-        int[] sb = {strike, ball};
-        System.out.println(Arrays.toString(sb));
+        List<Integer> sb = new ArrayList<>();
+        sb.add(strike);
+        sb.add(ball);
         return sb;
     }
 }
+class Game {
+    public String hint(List<Integer> computer, List<Integer> player){
+        Computer com = new Computer();
+        List<Integer> sb = com.count(computer, player);
+        if(sb.get(0) == 0 && sb.get(1) == 0){
+            return "낫싱";
+        }else if(sb.get(0) == 0){
+            return sb.get(1) + "볼";
+        }else if(sb.get(1) == 0){
+            return sb.get(0)+ "스트라이크";
+        }
+        return sb.get(1) + "볼" + sb.get(0)+ "스트라이크";
+    }
+    public int result(List<Integer> computer, List<Integer> player){
+        Computer com = new Computer();
+        List<Integer> sb = com.count(computer, player);
+        if(sb.get(0) == 3){
+            return 1;
+        }else{
+            return 2;
+        }
 
+    }
+}
