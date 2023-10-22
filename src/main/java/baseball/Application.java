@@ -57,14 +57,30 @@ public class Application {
         String[] inputArray = String.valueOf(inputNumber).split("");
         String[] answerArray = String.valueOf(answerNumber).split("");
         // 스트라이크 개수 세기
+        int strike = countStrike(inputArray, answerArray);
+
+        // 볼 개수 세기
+        int ball = countBall(inputArray, answerArray);
+
+        // 결과 출력
+        if (strike == 0 && ball == 0){
+            System.out.println("낫싱");
+            return;
+        }
+        System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+    }
+
+    private static int countStrike(String[] inputArray, String[] answerArray) {
         int strike = 0;
         for (int idx=0; idx<3; idx++){
             if (inputArray[idx].equals(answerArray[idx])) {
                 strike++;
             }
         }
+        return strike;
+    }
 
-        // 볼 개수 세기
+    private static int countBall(String[] inputArray, String[] answerArray) {
         int ball = 0;
         for (int i=0; i<3; i++){
             for (int j=0; j<3; j++){
@@ -76,14 +92,7 @@ public class Application {
                 }
             }
         }
-
-        // 결과 출력
-        if (strike == 0 && ball == 0){
-            System.out.println("낫싱");
-            return;
-        }
-        System.out.printf("%d볼 %d스트라이크\n", ball, strike);
-        return;
+        return ball;
     }
 
     private static int inputNumber() {
@@ -159,7 +168,7 @@ public class Application {
             if (++numberCount[element] >= 2) {
                 stopFlag = true;
                 break;
-            };
+            }
         }
         return stopFlag;
     }

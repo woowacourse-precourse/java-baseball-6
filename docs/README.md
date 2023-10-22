@@ -14,6 +14,14 @@ int checkNumber(int num)
 void printHint(int num)  
 : 입력 값에 대한 힌트를 출력하기  
 
+int countBall(String[] input, String[] answer)  
+: 볼 개수 세기    
+
+int countStrike(String[] input, String[] answer)  
+: 스트라이크 개수 세기
+
+
+
 int generateAnswerNumber()  
 : 정답 번호 생성하기 (서로 다른 세 자리의 숫자로 구성)   
 : return 생성한 세자리 양수 
