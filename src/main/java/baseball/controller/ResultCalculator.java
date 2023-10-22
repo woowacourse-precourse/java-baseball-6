@@ -25,12 +25,8 @@ public class ResultCalculator {
         return new Strikes(IntStream
                 .range(0, SystemConstant.MAXIMUM_DIGIT)
                 .filter(i ->
-                        isStrike(comparisonNumber.getBallNumberByDigit(i), i))
+                        comparisonNumber.getBallNumberByDigit(i) == computerNumber.getBallNumberByDigit(i))
                 .count());
-    }
-
-    private boolean isStrike(int eachNumber, int digit) {
-        return eachNumber == computerNumber.getBallNumberByDigit(digit);
     }
 
     private Balls countBalls(BallNumber comparisonNumber, Strikes numberOfStrikes) {
