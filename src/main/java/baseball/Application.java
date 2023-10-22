@@ -7,8 +7,7 @@ import baseball.view.ConsoleOutputView;
 public class Application {
 
     public static void main(String[] args) {
-        ConsoleOutputView consoleOutputView = new ConsoleOutputView();
-        Controller controller = new Controller(new ConsoleInputView(consoleOutputView), consoleOutputView);
+        Controller controller = new Controller(new ConsoleInputView(), new ConsoleOutputView());
         controller.start();
     }
 }
