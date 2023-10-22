@@ -35,7 +35,7 @@ public class Application {
                 }
             }
             if (ball != 0 && strike != 0) {
-                System.out.println(ball + "볼" + strike + "스트라이크");
+                System.out.println(ball + "볼 " + strike + "스트라이크");
             }
             // 실패 시 playerNumbers 수정
             if (!isFinished) {
