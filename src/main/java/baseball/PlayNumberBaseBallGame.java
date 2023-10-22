@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import static baseball.Constant.*;
 import static baseball.Notification.*;
+import static baseball.NumberGenerator.generateAnswerNumbers;
 
 public class PlayNumberBaseBallGame {
 
@@ -17,8 +18,7 @@ public class PlayNumberBaseBallGame {
         System.out.println(Notification.START_GAME);
         String gameStatus = RESTART_GAME;
         while(gameStatus.equals(RESTART_GAME)){
-            List<Integer> number = NumberGenerator.generateAnswerNumbers();
-            playGame(number);
+            playGame(generateAnswerNumbers());
             System.out.println(RESTART_OR_STOP_GAME);
             gameStatus = scanner.next();
             Validator.checkEndOrRestart(gameStatus);
