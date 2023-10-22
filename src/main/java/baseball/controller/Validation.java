@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Validation {
@@ -43,7 +42,7 @@ public class Validation {
     public void validateInputList(String input, int value) {
         validateInputLength(input, value);
 
-        List<String> stringList = new ArrayList<>(Arrays.asList(input.split("")));
+        List<String> stringList = List.of(input.split(""));
 
         validateNumber(stringList);
         validateDuplication(stringList);
