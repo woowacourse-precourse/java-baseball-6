@@ -9,6 +9,14 @@ public class InputView {
     private static final String INPUT_NUM_MESSAGE = "숫자를 입력해주세요 : ";
     public static final String RE_START_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    private InputView() {
+
+    }
+
+    public static InputView getInstance() {
+        return new InputView();
+    }
+
     // 메서드 네임 리팩토링 필요
     public void showGameStartMent() {
         System.out.println(GAME_START_MESSAGE);
