@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.Computer;
+import baseball.model.BaseBallGameComputer;
 import baseball.model.Hint;
 import baseball.model.Player;
 import java.util.List;
@@ -8,21 +8,21 @@ import java.util.List;
 public class GameController {
     private final OutputController outputController;
     private final InputController inputController;
-    private final Computer computer;
-    private final Player player;
+    private final BaseBallGameComputer computer;
+
     private GameController() {
         this.outputController = new OutputController();
         this.inputController = new InputController();
-        this.computer = new Computer();
-        this.player = new Player();
-        setUpNewGame();
+        this.computer = new BaseBallGameComputer();
     }
-    public static GameController StartGame() {
+
+    public static GameController StartBaseballGame() {
         return new GameController();
     }
-    public void setUpNewGame() {
+
+    public void startNewGame() {
         boolean gameProcess = true;
-        while(gameProcess) {
+        while (gameProcess) {
             outputController.showIntroMessage();
             computer.initComputerNumbers();
             playGame();
@@ -30,12 +30,13 @@ public class GameController {
             gameProcess = inputController.isRestartGame();
         }
     }
+
     public void playGame() {
         boolean isGameClear = false;
-        while(!isGameClear){
+        while (!isGameClear) {
             outputController.showGameInputMessage();
             List<Integer> input = inputController.getPlayerGuessNumber();
-            Hint result = player.swingBat(computer,input);
+            Hint result = Player.swingBat(computer, input);
             isGameClear = outputController.displayHint(result);
         }
     }

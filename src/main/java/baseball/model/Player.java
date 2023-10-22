@@ -9,7 +9,7 @@ public class Player {
 
     }
 
-    public Hint swingBat(Computer computer, List<Integer> playerNumbers) {
+    public static Hint swingBat(BaseBallGameComputer computer, List<Integer> playerNumbers) {
         Set<Ball> balls = new LinkedHashSet<>();
         for (Integer number : playerNumbers) {
             balls.add(new Ball(number));

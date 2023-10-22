@@ -4,12 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class Computer {
+public class BaseBallGameComputer {
     private Set<Ball> balls;
     private final static Integer MIN_VALUE = 1;
     private final static Integer MAX_VALUE = 9;
 
-    public Computer() {
+    public BaseBallGameComputer() {
     }
 
     public void initComputerNumbers() {
@@ -28,7 +28,7 @@ public class Computer {
         int[] counts = computeBallAndStrikeCounts(playerBalls);
         int ballCount = counts[0];
         int strikeCount = counts[1];
-        return new Hint(strikeCount,ballCount);
+        return new Hint(strikeCount, ballCount);
     }
 
     private int[] computeBallAndStrikeCounts(Set<Ball> playerBalls) {
