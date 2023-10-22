@@ -12,11 +12,15 @@ public class NumberBaseballService {
     private NumberBaseball numberBaseball;
 
     public NumberBaseballService() {
-        numberBaseball = new NumberBaseball();
+        initNumberBaseball();
+    }
+
+    private void initNumberBaseball() {
+        numberBaseball = NumberBaseball.getInstance();
     }
 
     public void newGame() {
-        numberBaseball = new NumberBaseball();
+        initNumberBaseball();
     }
 
     public boolean isSameNum(int inputNum) {
