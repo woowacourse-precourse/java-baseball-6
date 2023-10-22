@@ -16,7 +16,7 @@
     - [x] 3개의 숫자를 모두 맞히셨습니다! 게임 종료 라는 성공 문구를 출력한다.
 - [x] 게임을 종료하고 다시 시작할지 여부를 입력받는다.
     - [ ] 게임을 새로 시작하려면 1, 종료하려면 2를 입력한다.
-    - [ ] 1 또는 2가 입력되지 않으면 IllegalArgumentException가 발생되고 종료한다.
+    - [x] 1 또는 2가 입력되지 않으면 IllegalArgumentException가 발생되고 종료한다.
     - [x] 숫자가 아닌 값이 들어오면 IllegalArgumentException가 발생되고 종료한다.
     - [x] 재시작을 할때는 시작 문구를 출력하지 않는다.
     - [x] 빈 값이 입력되면 IllegalArgumentException가 발생되고 종료한다.
