@@ -1,15 +1,20 @@
 package baseball.controller;
 
 import baseball.BaseballGame;
+import baseball.domain.GameInfo;
+import baseball.service.GameService;
 import baseball.validation.InputValidation;
+
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.List;
 
 /**
  * 유저의 입출력을 처리하는 컨트롤러
  */
 public class GameController {
-
     private final InputValidation inputValidation = new InputValidation();
+    private final GameService gameService = new GameService();
 
     public String getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
@@ -42,5 +47,13 @@ public class GameController {
             sb.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
         System.out.println(sb);
+    }
+
+    public List<Integer> generateRandomDistinctThreeDigit() {
+        return gameService.generateRandomDistinctThreeDigit();
+    }
+
+    public void countStrikeOrBall(GameInfo gameInfo, String userInput) {
+        gameService.countStrikeOrBall(gameInfo, userInput);
     }
 }
