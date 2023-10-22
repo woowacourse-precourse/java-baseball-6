@@ -3,11 +3,11 @@ package baseball.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import baseball.domain.BallNumber;
-import baseball.domain.Result;
+import baseball.domain.GameScore;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class ResultCalculatorTest {
+public class GameScoreCalculatorTest {
 
     @DisplayName("상대방의 수가 제대로 저장되었는지 확인")
     @Test
@@ -24,9 +24,9 @@ public class ResultCalculatorTest {
         ResultCalculator resultCalculator = new ResultCalculator(new BallNumber("123"));
         BallNumber comparisonNumber = new BallNumber("125");
 
-        Result result = resultCalculator.calculateResult(comparisonNumber);
+        GameScore gameScore = resultCalculator.calculateResult(comparisonNumber);
 
-        assertEquals(result.numberOfStrikes.getValue(), 2);
+        assertEquals(gameScore.numberOfStrikes.getValue(), 2);
     }
 
     @DisplayName("볼의 개수를 제대로 계산했는지 확인")
@@ -35,8 +35,8 @@ public class ResultCalculatorTest {
         ResultCalculator resultCalculator = new ResultCalculator(new BallNumber("643"));
         BallNumber comparisonNumber = new BallNumber("435");
 
-        Result result = resultCalculator.calculateResult(comparisonNumber);
+        GameScore gameScore = resultCalculator.calculateResult(comparisonNumber);
 
-        assertEquals(result.numberOfBalls.getValue(), 2);
+        assertEquals(gameScore.numberOfBalls.getValue(), 2);
     }
 }

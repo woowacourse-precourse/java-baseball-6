@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.BallNumber;
-import baseball.domain.Result;
+import baseball.domain.GameScore;
 import baseball.system.SystemConstant;
 import baseball.verifier.InputVerifier;
 import baseball.view.InputHandler;
@@ -20,16 +20,16 @@ public class GameManager {
         endRound(resultCalculator.calculateResult(playerNumber));
     }
 
-    private void endRound(Result roundResult) {
-        if (roundResult.isStrikesAllOfBalls()) {
+    private void endRound(GameScore roundGameScore) {
+        if (roundGameScore.isStrikesAllOfBalls()) {
             choiceNewGameOrGameOver();
             return;
         }
-        showResultWhilePlayingRound(roundResult);
+        showResultWhilePlayingRound(roundGameScore);
         playRound();
     }
 
-    private void showResultWhilePlayingRound(Result toShow) {
+    private void showResultWhilePlayingRound(GameScore toShow) {
         if (toShow.isNothing()) {
             OutputHandler.printNothing();
             return;

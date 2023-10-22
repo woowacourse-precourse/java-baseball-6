@@ -7,21 +7,21 @@ import baseball.domain.scoringnumbers.Strikes;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class ResultTest {
+public class GameScoreTest {
 
     @DisplayName("스트라이크 개수가 제대로 저장됐는지 확인")
     @Test
     void StrikesIsCorrectlySaved() {
-        Result result = new Result(new Strikes(3), new Balls(0));
+        GameScore gameScore = new GameScore(new Strikes(3), new Balls(0));
 
-        assertEquals(result.numberOfStrikes.getValue(), 3);
+        assertEquals(gameScore.numberOfStrikes.getValue(), 3);
     }
 
     @DisplayName("볼 개수가 제대로 저장됐는지 확인")
     @Test
     void BallsISCorrectlySaved() {
-        Result result = new Result(new Strikes(0), new Balls(3));
+        GameScore gameScore = new GameScore(new Strikes(0), new Balls(3));
 
-        assertEquals(result.numberOfBalls.getValue(), 3);
+        assertEquals(gameScore.numberOfBalls.getValue(), 3);
     }
 }

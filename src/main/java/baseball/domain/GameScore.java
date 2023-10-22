@@ -3,11 +3,11 @@ package baseball.domain;
 import baseball.domain.scoringnumbers.Balls;
 import baseball.domain.scoringnumbers.Strikes;
 
-public class Result {
+public class GameScore {
     public Strikes numberOfStrikes;
     public Balls numberOfBalls;
 
-    public Result(Strikes newStrikes, Balls newBalls) {
+    public GameScore(Strikes newStrikes, Balls newBalls) {
         numberOfStrikes = newStrikes;
         numberOfBalls = newBalls;
     }

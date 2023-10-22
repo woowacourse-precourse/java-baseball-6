@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.BallNumber;
-import baseball.domain.Result;
+import baseball.domain.GameScore;
 import baseball.domain.scoringnumbers.Balls;
 import baseball.domain.scoringnumbers.Strikes;
 import baseball.system.SystemConstant;
@@ -14,11 +14,11 @@ public class ResultCalculator {
         computerNumber = newComputerNumber;
     }
 
-    public Result calculateResult(BallNumber comparisonNumber) {
+    public GameScore calculateResult(BallNumber comparisonNumber) {
         Strikes newStrikes = countStrikes(comparisonNumber);
         Balls newBalls = countBalls(comparisonNumber, newStrikes);
 
-        return new Result(newStrikes, newBalls);
+        return new GameScore(newStrikes, newBalls);
     }
 
     private Strikes countStrikes(BallNumber comparisonNumber) {
@@ -27,6 +27,10 @@ public class ResultCalculator {
                 .filter(i ->
                         comparisonNumber.getBallNumberByDigit(i) == computerNumber.getBallNumberByDigit(i))
                 .count());
+    }
+
+    private boolean isStrike(int eachNumber, int digit) {
+        return eachNumber == computerNumber.getBallNumberByDigit(digit);
     }
 
     private Balls countBalls(BallNumber comparisonNumber, Strikes numberOfStrikes) {
