@@ -12,7 +12,7 @@ public class BaseballReferee {
 				strike++;
 				continue;
 			}
-			if (computerNumbers.isNumberContainsPlayerNumber(playerNumbers.getNumberByIndex(i))) {
+			if (computerNumbers.isNumberContains(playerNumbers.getNumberByIndex(i))) {
 				ball++;
 			}
 		}

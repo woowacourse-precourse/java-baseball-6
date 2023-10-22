@@ -19,7 +19,7 @@ public class BaseballNumber {
 		return numbers.get(index);
 	}
 
-	public boolean isNumberContainsPlayerNumber(int playerNumber) {
+	public boolean isNumberContains(int playerNumber) {
 		return numbers.contains(playerNumber);
 	}
 

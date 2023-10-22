@@ -2,6 +2,7 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,5 +55,17 @@ class BaseballNumberTest {
 		BaseballNumber baseballNumber = new BaseballNumber(numbers);
 
 		assertEquals(baseballNumber.getNumberByIndex(1), 2);
+	}
+
+	@Test
+	void isNumberContains_메서드는_매개변수로_주어진_값이_포함되어_있으면_true를_반환한다() {
+		List<Integer> numbers = new ArrayList<>();
+		numbers.add(1);
+		numbers.add(2);
+		numbers.add(3);
+
+		BaseballNumber baseballNumber = new BaseballNumber(numbers);
+
+		assertTrue(baseballNumber.isNumberContains(3));
 	}
 }
