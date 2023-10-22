@@ -3,6 +3,7 @@ package baseball.contoller;
 
 import baseball.model.Result;
 import baseball.utill.Converter;
+import baseball.utill.ExceptionMessage;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -57,6 +58,6 @@ public class BaseBallGameController {
         if(sign == 2){
             return false;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_GAME_COMMAND.getMessage());
     }
 }

@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 public class Converter {
 
-
     public List<Integer> convertToNumericList(List<String> stringList) {
         return stringList.stream()
             .map(Integer::parseInt)
