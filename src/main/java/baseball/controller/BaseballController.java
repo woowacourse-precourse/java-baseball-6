@@ -1,9 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.BallCount;
-import baseball.domain.Baseball;
-import baseball.domain.Computer;
-import baseball.domain.User;
+import baseball.domain.*;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -54,6 +51,7 @@ public class BaseballController {
     private static void gameComplete(){
         OutputView.gameComplete();
     }
+
     private static void restartAndShutdown(Baseball baseball) {
         baseball.restartAndShutdown(InputView.retryGame());
     }

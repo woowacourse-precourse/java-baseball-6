@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import baseball.view.OutputView;
 import java.util.List;
 
 public class BallCount {
@@ -24,16 +23,20 @@ public class BallCount {
     public BallCount(boolean strikeOut){
         this.strikeOut= strikeOut;
     }
-    public void setStrike(){
+
+    public void incrementStrike(){
         this.strike += BASEBALL_BALL;
     }
-    public void setBall() {
+
+    public void incrementBall() {
         this.ball += BASEBALL_BALL;
     }
+
     public void initializeBallCount(){
         this.strike=0;
         this.ball=0;
     }
+
     public String printBallCount(){
         if(this.strike == THREE_STRIKE && this.ball == NOTHING_BALL){
             return THREE_STRIKE_MESSAGE;
@@ -50,23 +53,24 @@ public class BallCount {
         return this.ball + BALL_STRING + this.strike + STRIKE_STRING;
     }
 
-    public void ballCountResponse(List<Integer> computer, List<Integer>  user) {
-        ballCountCheck(computer,user);
+    public void ballCountResponse(List<Integer> computerBall, List<Integer> userBall) {
+        ballCountCheck(computerBall,userBall);
         strikeOutCheck();
     }
 
-    public void ballCountCheck(List<Integer> computer, List<Integer>  user){
+    private void ballCountCheck(List<Integer> computerBall, List<Integer> userBall){
         for(int i = 0 ; i < BASEBALL_SIZE;i++){
-            if(user.get(i) == computer.get(i)){
-                setStrike();
+            if(userBall.get(i) == computerBall.get(i)){
+                incrementStrike();
                 continue;
             }
-            if(computer.contains(user.get(i))){
-                setBall();
+            if(computerBall.contains(userBall.get(i))){
+                incrementBall();
             }
         }
     }
-    public void strikeOutCheck(){
+
+    private void strikeOutCheck(){
         if(this.strike == THREE_STRIKE && this.ball == NOTHING_BALL){
             this.strikeOut= false;
         }

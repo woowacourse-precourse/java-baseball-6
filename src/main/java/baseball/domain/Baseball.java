@@ -1,6 +1,5 @@
 package baseball.domain;
 
-
 import baseball.validator.BaseballValidator;
 
 public class Baseball {

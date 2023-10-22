@@ -11,7 +11,9 @@ public class Computer {
     private static final Integer RANDOM_NUMBER_SIZE = 3;
 
     private List<Integer> computerBall;
+
     public Computer (){};
+
     public void setComputerBall(List<Integer> baseball) {
         if (BaseballValidator.validator(baseball)) {
             this.computerBall = baseball;

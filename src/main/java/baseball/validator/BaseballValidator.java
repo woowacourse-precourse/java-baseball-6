@@ -10,6 +10,7 @@ public class BaseballValidator {
     private static final String DUPLICATE_EXCEPTION_MESSAGE ="중복된 숫자를 입력할 수 없습니다.";
     private static final String RANGE_EXCEPTION_MESSAGE ="1부터 9까지의 숫자만 입력할 수 있습니다.";
     private static final String RETRY_EXCEPTION_MESSAGE ="1 또는 2를 입력할 수 있습니다.";
+
     public static boolean validator(List<Integer> baseball){
         return sizeValidator(baseball) && duplicateValidator(baseball) && rangeValidator(baseball);
     }
