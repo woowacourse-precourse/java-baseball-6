@@ -3,9 +3,9 @@ package baseball.controller;
 import static baseball.util.Converter.convertStringToInt;
 import static baseball.util.Converter.convertStringToIntegerList;
 
+import baseball.controller.mapper.ResultMapper;
 import baseball.model.Computer;
 import baseball.model.GuessNumber;
-import baseball.model.Referee;
 import baseball.model.State;
 import baseball.view.ConsoleInputView;
 import baseball.view.ConsoleOutputView;
@@ -23,9 +23,9 @@ public class Controller {
 
     public void start() {
         Computer computer = Computer.createDefault();
-        Referee referee = new Referee(computer);
+        ResultMapper resultMapper = new ResultMapper();
         consoleOutputView.printStartMessage();
-        play(referee);
+        play(computer, resultMapper);
         consoleOutputView.printWinningMessage();
         int state = askMore();
         if (State.isMoreGame(state)) {
@@ -33,12 +33,14 @@ public class Controller {
         }
     }
 
-    private void play(final Referee referee) {
+    private void play(final Computer computer, final ResultMapper resultMapper) {
         GuessNumber guessNumber = guess();
-        String result = calculateResult(referee, guessNumber);
+        int ballCount = computer.countBalls(guessNumber.getGuessNumbers());
+        int strikeCount = computer.countStrikes(guessNumber.getGuessNumbers());
+        String result = resultMapper.makeResult(ballCount, strikeCount);
         consoleOutputView.printGuessNumberResult(result);
-        if (!referee.isGameOver(result)) {
-            play(referee);
+        if (!computer.isGameOver(strikeCount)) {
+            play(computer, resultMapper);
         }
     }
 
@@ -46,10 +48,6 @@ public class Controller {
         consoleOutputView.printGuessNumberInputMessage();
         String guessNumbers = consoleInputView.readGuessNumbers();
         return new GuessNumber(convertStringToIntegerList(guessNumbers));
-    }
-
-    private String calculateResult(final Referee referee, final GuessNumber guessNumber) {
-        return referee.calculateResult(guessNumber.getGuessNumbers());
     }
 
     private int askMore() {
