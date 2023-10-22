@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Scanner;
 
+import static baseball.utils.ErrorCode.*;
 import static baseball.utils.Message.*;
 
 public abstract class InputUtil {
@@ -28,7 +29,7 @@ public abstract class InputUtil {
 
     private static void checkGuessNumberDuplicate(String guessNumber) {
         if (isGuessNumberDuplicate(guessNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GUESS_NUMBER_DUPLICATED.getErrorMessage());
         }
     }
 
@@ -42,14 +43,14 @@ public abstract class InputUtil {
 
     private static void checkGuessNumberLengthThree(String guessNumber) {
         if (guessNumber.length() == 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GUESS_NUMBER_IS_NOT_THREE_LENGTH.getErrorMessage());
         }
     }
 
 
     private static void checkGuessNumberDigit(String value) {
         if (isStringDigit(value)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GUESS_NUMBER_IS_NOT_DIGIT.getErrorMessage());
         }
     }
 
@@ -66,10 +67,12 @@ public abstract class InputUtil {
     }
 
     private static void checkRestartNumberValid(String inputNumber) {
-        if (inputNumber.equals(RESTART_NUMBER) || inputNumber.equals(END_NUMBER)) {
-            return;
+        if (isRestartNumberValid(inputNumber)) {
+            throw new IllegalArgumentException(RESTART_NUMBER_IS_NOT_VALID.getErrorMessage());
         }
+    }
 
-        throw new IllegalArgumentException();
+    private static boolean isRestartNumberValid(String value) {
+        return value.equals(RESTART_NUMBER) || value.equals(END_NUMBER);
     }
 }
