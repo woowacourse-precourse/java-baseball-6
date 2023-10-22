@@ -44,10 +44,15 @@ public class CompareLogic {
 
     public boolean checkExitGame(int exitNumber) throws IllegalArgumentException {
         if (exitNumber == 1) {
-            return false;
-        } else if (exitNumber == 2) {
             return true;
+        } else if (exitNumber == 2) {
+            return false;
         }
         throw new IllegalArgumentException("1과2가 아닌 숫자를 입력하였습니다.");
     }
+
+    /*public int gameStopCheckInputNumber(String num){
+
+    }
+*/
 }
