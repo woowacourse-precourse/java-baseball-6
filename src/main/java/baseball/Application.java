@@ -19,7 +19,7 @@ public class Application {
 
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
-                int[] guessNumbers = stringToIntArray(Console.readLine());
+                int[] guessNumbers = stringToIntArrayThrowException(Console.readLine());
 
             }
 
@@ -27,7 +27,9 @@ public class Application {
 
     }
 
-    private static int[] stringToIntArray(String input) {
+    private static int[] stringToIntArrayThrowException(String input) {
+        input = input.replaceAll("\\s", "");
+
         return Arrays.stream(input.split(""))
                 .mapToInt(Integer::parseInt)
                 .toArray();
