@@ -1,4 +1,4 @@
-package baseball.domain.number;
+package baseball.domain.numbers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +20,11 @@ public class Numbers {
     }
 
     private static void validateNumberList(List<Integer> numberList) {
-        NumberValidator.validateNumberSize(numberList);
-        NumberValidator.validateNumberRange(numberList);
-        NumberValidator.validateDuplicateNumber(numberList);
+        NumbersValidator numbersValidator = NumbersValidator.create();
+
+        numbersValidator.validateNumberSize(numberList);
+        numbersValidator.validateNumberRange(numberList);
+        numbersValidator.validateDuplicateNumber(numberList);
     }
 
 

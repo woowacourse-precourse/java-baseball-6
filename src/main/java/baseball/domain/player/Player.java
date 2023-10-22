@@ -1,7 +1,7 @@
 package baseball.domain.player;
 
 
-import baseball.domain.number.Numbers;
+import baseball.domain.numbers.Numbers;
 
 public class Player {
 

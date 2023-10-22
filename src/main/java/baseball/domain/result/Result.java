@@ -1,6 +1,6 @@
 package baseball.domain.result;
 
-import static baseball.domain.number.NumberConstant.NUMBER_COUNT;
+import static baseball.domain.numbers.NumbersConstant.NUMBER_COUNT;
 import static baseball.domain.result.ResultContant.BALL_STRING;
 import static baseball.domain.result.ResultContant.NON_STRING;
 import static baseball.domain.result.ResultContant.STRIKE_STRING;

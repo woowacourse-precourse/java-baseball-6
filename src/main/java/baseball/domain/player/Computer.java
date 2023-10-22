@@ -1,10 +1,10 @@
 package baseball.domain.player;
 
-import static baseball.domain.number.NumberConstant.MAX_NUMBER;
-import static baseball.domain.number.NumberConstant.MIN_NUMBER;
-import static baseball.domain.number.NumberConstant.NUMBER_COUNT;
+import static baseball.domain.numbers.NumbersConstant.MAX_NUMBER;
+import static baseball.domain.numbers.NumbersConstant.MIN_NUMBER;
+import static baseball.domain.numbers.NumbersConstant.NUMBER_COUNT;
 
-import baseball.domain.number.Numbers;
+import baseball.domain.numbers.Numbers;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;

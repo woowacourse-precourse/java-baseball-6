@@ -1,9 +1,9 @@
 package baseball.domain.referee;
 
-import static baseball.domain.number.NumberConstant.MAX_INDEX;
-import static baseball.domain.number.NumberConstant.MIN_INDEX;
+import static baseball.domain.numbers.NumbersConstant.MAX_INDEX;
+import static baseball.domain.numbers.NumbersConstant.MIN_INDEX;
 
-import baseball.domain.number.Numbers;
+import baseball.domain.numbers.Numbers;
 import baseball.domain.result.Result;
 import java.util.List;
 import java.util.stream.IntStream;
