@@ -1,7 +1,9 @@
 package baseball.Controller;
 
-import baseball.dto.RandomNumGenerator;
+import baseball.domain.RandomNumGenerator;
+import baseball.domain.dto.Score;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.List;
 
@@ -10,6 +12,7 @@ import static baseball.Application.*;
 public class GameManager {
 
     private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     public void playGame() {
@@ -46,7 +49,7 @@ public class GameManager {
                 numBalls++;
             }
         }
-        printGuessResult(numStrikes,numBalls);
+        outputView.printResult(new Score(numBalls,numStrikes));
         return numStrikes == NUM_DIGITS;
     }
 }

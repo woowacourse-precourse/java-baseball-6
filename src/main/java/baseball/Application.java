@@ -40,22 +40,4 @@ public class Application {
         throw new IllegalArgumentException("1 또는 2를 입력하지 않았습니다.");
     }
 
-    public static void printGuessResult(int numStrikes,int numBalls){
-
-        String message = "";
-        if(numStrikes == NUM_DIGITS){
-            message = "3스트라이크";
-        }
-        if(numBalls>0){
-            message = numBalls+"볼";
-        }
-        if(numStrikes>0 && numStrikes <NUM_DIGITS){
-            message = (message.isEmpty() ? "" : message + " ") +numStrikes+"스트라이크";
-        }
-        if (message.isEmpty()) {
-            message="낫싱";
-        }
-        System.out.println(message);
-    }
-
 }
