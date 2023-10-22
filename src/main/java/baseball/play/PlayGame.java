@@ -6,13 +6,13 @@ import baseball.model.Hint;
 import baseball.model.User;
 import camp.nextstep.edu.missionutils.Console;
 
-public class RunGame {
+public class PlayGame {
 
     private final Print print;
     private final Computer computer;
     private final User user;
 
-    public RunGame(Print print, Computer computer, User user) {
+    public PlayGame(Print print, Computer computer, User user) {
         this.print = print;
         this.computer = computer;
         this.user = user;
@@ -35,7 +35,7 @@ public class RunGame {
             print.printInputNumber();
             user.inputAnswer();
             Hint hint = computer.compareNumber(user.getAnswer());
-            if(print.printResult(hint))
+            if(Print.printResult(hint))
                 break;
         }
     }
