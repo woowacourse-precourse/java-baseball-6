@@ -15,13 +15,6 @@ public class GameLogicService {
         return new GameResult(balls, strikes);
     }
 
-    public Game updateGameStatusOnThreeStrike(Game game, GameResult gameResult) {
-        if (gameResult.isThreeStrike()) {
-            game.setGameFinished(true);
-        }
-        return game;
-    }
-
     private int countStrikes(Balls computerBalls, Balls playerBalls) {
         int strikes = 0;
         for (int index = 0; index < BALL_SIZE; index++) {
@@ -30,6 +23,10 @@ public class GameLogicService {
             }
         }
         return strikes;
+    }
+
+    public void updateGameState(Game game, GameResult gameResult) {
+        game.updateGameState(gameResult);
     }
 
     private boolean isStrike(int index, Balls computerBalls, Balls playerBalls) {
@@ -47,7 +44,7 @@ public class GameLogicService {
     }
 
     private boolean isBall(int index, Balls computerBalls, Balls playerBalls) {
-        return !isStrike(index, computerBalls, playerBalls) && computerBalls.containsBall(playerBalls.getBall(index));
+        return !isStrike(index, computerBalls, playerBalls) && computerBalls.containsOtherBall(playerBalls.getBall(index));
     }
 
 }

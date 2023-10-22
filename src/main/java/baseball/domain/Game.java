@@ -17,7 +17,9 @@ public class Game {
         return gameFinished;
     }
 
-    public void setGameFinished(boolean gameFinished) {
-        this.gameFinished = gameFinished;
+    public void updateGameState(GameResult gameResult) {
+        if (gameResult.isThreeStrike()) {
+            gameFinished = !gameFinished;
+        }
     }
 }

@@ -40,23 +40,14 @@ public class GameController {
         Game game = gameSetupService.gameCreate();
         while (!game.isGameFinished()) {
             outputView.inputBallsMessage();
-            Balls playerBalls = getPlayerBalls();
-            GameResult gameResult = getGameResult(game, playerBalls);
-            outputView.resultMessage(gameResultService.showResult(gameResult)); // 비교 결과 출력
-            game = updateGameState(game, gameResult); // 직관적으로 알 수 있게 game 리턴 (참조형이라 안해도 되긴 함)
+            GameResult gameResult = gameLogicService.compareBalls(game, getPlayerBalls());
+            outputView.resultMessage(gameResultService.showResult(gameResult));
+            gameLogicService.updateGameState(game, gameResult);
         }
     }
 
     private Balls getPlayerBalls() {
         return gameSetupService.generatePlayerBalls(inputView.requestPlayerGuess());
-    }
-
-    private GameResult getGameResult(Game game, Balls playerBalls) {
-        return gameLogicService.compareBalls(game, playerBalls);
-    }
-
-    private Game updateGameState(Game game, GameResult gameResult) {
-        return gameLogicService.updateGameStatusOnThreeStrike(game, gameResult); // 플레이어가 맞췄으면 게임 종료;
     }
 
     private boolean restartGame() {
