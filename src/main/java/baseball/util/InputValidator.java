@@ -2,6 +2,9 @@ package baseball.util;
 
 public class InputValidator {
 
+    private static final String GAME_RESTART_NUMBER = "1";
+    private static final String GAME_END_NUMBER = "2";
+
     public static boolean isValidUserInput(String input) {
         if(isNotNumeric(input)) return false;
         if(isInvalidLength(input)) return false;
@@ -10,7 +13,7 @@ public class InputValidator {
     }
 
     public static boolean isValidUserRetryGameInput(String input) {
-        return input.equals("1") || input.equals("2");
+        return input.equals(GAME_RESTART_NUMBER) || input.equals(GAME_END_NUMBER);
     }
 
     private static boolean isDuplicated(String input) {
