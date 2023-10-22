@@ -13,7 +13,7 @@ public class User {
     //   2. [x] 중복된 숫자가 있는지 확인한다.
     //   3. [x] 이때 3글자가 아니거나, 중복일 경우, 글자 혹은 소수 같은 예외가 발생할 경우 에러를 발생한다.
     //   4. [x] 종료 여부 선택 : 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수만 입력가능하다.
-    public void inputNumber(){
+    public List<Integer> inputNumber(){
         String userNumber = Console.readLine();
         List<Integer> userList = new ArrayList<>();
         for (int i = 0; i < userNumber.length(); i++) {
@@ -21,7 +21,7 @@ public class User {
         }
         checkNumber(userList);
 
-
+        return userList;
     }
     public void checkNumber(List<Integer> userList){
         if(userList.size()!=3){
