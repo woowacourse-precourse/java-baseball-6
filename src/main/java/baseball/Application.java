@@ -48,9 +48,6 @@ public class Application {
                 System.out.println("낫싱");
             }
 
-            System.out.println(playResult.getBall());
-            System.out.println(playResult.getStrike());
-
             if (playResult.getBall() > 0 && playResult.getStrike() > 0) {
                 System.out.println(playResult.getBall() + "볼 " + playResult.getStrike() + "스트라이크");
             } else if (playResult.getBall() == 0 && playResult.getStrike() > 0) {
@@ -64,8 +61,6 @@ public class Application {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
                 String finishCheck = Console.readLine();
-
-                System.out.println("끝" + finishCheck);
 
                 if (finishCheck.equals("1")) {
                     restart = true;
