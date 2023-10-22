@@ -8,7 +8,7 @@ public class BallCount {
         return ball;
     }
 
-    public void setBall() {
-        this.ball++;
+    public void setBall(int ball) {
+        this.ball = ball;
     }
 }

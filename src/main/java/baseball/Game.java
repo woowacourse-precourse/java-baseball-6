@@ -3,10 +3,14 @@ package baseball;
 public class Game {
     private final GameNumberMaker gameNumberMaker;
     private final AnswerInput answerInput;
+    private final GameScore gameScore;
+    private final Hint hint;
 
     public Game() {
         this.gameNumberMaker = new GameNumberMaker();
         this.answerInput = new AnswerInput();
+        this.gameScore = new GameScore();
+        this.hint = new Hint();
     }
 
     public void startGame() {
@@ -17,17 +21,41 @@ public class Game {
     }
 
     public void playGame() {
-        // while
-        // 정답 입력 객체
-        answerInput.inputNumber();
-        System.out.println(answerInput.getAnswerNumber());
-        GameScore gameScore = new GameScore();
-        gameScore.checkStrike(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
-        gameScore.checkBall(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
-        System.out.println(gameScore.getStrikeCount());
-        System.out.println(gameScore.getBallCount());
+        while (true) {
+            answerInput.inputNumber();
+            gameScore.checkStrike(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
+            gameScore.checkBall(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
+            System.out.println(provideHint(gameScore.getStrikeCount(), gameScore.getBallCount()));
+
+            if (gameScore.getStrikeCount() == 3) {
+                return;
+            }
+        }
+
         // 채점 객체
         // 힌트 생성 객체
         // 3 스트라이크 시 게임 종료
+    }
+
+    public String provideHint(int strikeScore, int ballScore) {
+
+        if (strikeScore == 0 && ballScore == 0) {
+            hint.setHit(Contants.NOTHING);
+            return hint.getHit();
+        }
+
+        if (strikeScore == 0) {
+            hint.setHit(ballScore + Contants.BALL);
+            return hint.getHit();
+        }
+
+        if (ballScore == 0) {
+            hint.setHit(strikeScore + Contants.STRIKE);
+            return hint.getHit();
+        }
+
+        hint.setHit(ballScore + Contants.BALL + " " + strikeScore + Contants.STRIKE);
+
+        return hint.getHit();
     }
 }

@@ -8,7 +8,7 @@ public class StrikeCount {
         return strike;
     }
 
-    public void setStrike() {
-        this.strike++;
+    public void setStrike(int strike) {
+        this.strike = strike;
     }
 }
