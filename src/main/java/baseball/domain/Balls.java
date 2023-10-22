@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Balls {
 
+    private static final int MIN_POSITION = 0;
     private static final int BALL_SIZE = 3;
     private static final int ZERO = 0;
 
@@ -19,7 +20,7 @@ public class Balls {
     public static Balls create(String input) {
         List<Ball> ballList = new ArrayList<>();
 
-        for (int position = 0; position < input.length(); position++) {
+        for (int position = MIN_POSITION; position < input.length(); position++) {
             int digit = Character.getNumericValue(input.charAt(position));
             ballList.add(new Ball(digit, position));
         }
