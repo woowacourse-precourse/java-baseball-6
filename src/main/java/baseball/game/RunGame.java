@@ -1,7 +1,6 @@
 package baseball.game;
 
 import baseball.object.Computer;
-import baseball.object.Game;
 import baseball.object.User;
 import camp.nextstep.edu.missionutils.Console;
 

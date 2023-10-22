@@ -1,4 +1,7 @@
-package baseball.object;
+package baseball.game;
+
+import baseball.object.Computer;
+import baseball.object.NumberLength;
 
 public class Game {
 
