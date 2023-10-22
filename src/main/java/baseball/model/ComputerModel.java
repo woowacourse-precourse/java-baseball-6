@@ -12,19 +12,14 @@ public class ComputerModel {
     }
 
     public Map<ScoreState, Integer> scoreCalculator(String playerNumber) {
-        Map<ScoreState, Integer> scoreMap = new HashMap<>();
         String computerNumber = this.computerNumber;
-        scoreMap.put(ScoreState.BALL_SCORE, 0);
-        scoreMap.put(ScoreState.STRIKE_SCORE, 0);
-        int i = 0;
+        Map<ScoreState, Integer> scoreMap = scoreMapInitialize(new HashMap<>());
 
-        while( i < computerNumber.length()) {
+        for (int i = 0; i < computerNumber.length(); ) {
             if (computerNumber.charAt(i) == playerNumber.charAt(i)) {
-                String sameNumber = String.valueOf(computerNumber.charAt(i));
-                scoreMap.put(
-                    ScoreState.STRIKE_SCORE,(scoreMap.get(ScoreState.STRIKE_SCORE) + 1));
-                computerNumber = computerNumber.replace(sameNumber, "");
-                playerNumber = playerNumber.replace(sameNumber, "");
+                scoreMap.put(ScoreState.STRIKE_SCORE,(scoreMap.get(ScoreState.STRIKE_SCORE) + 1));
+                computerNumber = computerNumber.replace(String.valueOf(computerNumber.charAt(i)), "");
+                playerNumber = playerNumber.replace(String.valueOf(playerNumber.charAt(i)), "");
                 continue;
             }
             if (computerNumber.contains(Character.toString(playerNumber.charAt(i)))) {
@@ -32,6 +27,12 @@ public class ComputerModel {
             }
             i++;
         }
+        return scoreMap;
+    }
+
+    private Map<ScoreState, Integer> scoreMapInitialize(Map<ScoreState, Integer> scoreMap) {
+        scoreMap.put(ScoreState.BALL_SCORE, 0);
+        scoreMap.put(ScoreState.STRIKE_SCORE, 0);
         return scoreMap;
     }
 }

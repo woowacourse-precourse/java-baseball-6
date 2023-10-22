@@ -6,11 +6,10 @@ import baseball.view.OutputView;
 public class Application {
     public static void main(String[] args) {
         StateController controller = new StateController();
-        OutputView outputView = new OutputView();
         boolean gameState = true;
         boolean restart = false;
 
-        outputView.printStartMessage();
+        OutputView.printStartMessage();
         controller.gameStart();
 
         while (gameState) {
