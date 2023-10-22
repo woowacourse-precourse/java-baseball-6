@@ -35,4 +35,24 @@ class BaseballNumbersTest {
 
         Assertions.assertTrue(isNothing);
     }
+
+    @Test
+    void 세_자리_숫자가_아닐_경우_예외_발생() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            BaseballNumbers inputNumber = new BaseballNumbers("ab23");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            BaseballNumbers inputNumber = new BaseballNumbers("abc");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            BaseballNumbers inputNumber = new BaseballNumbers("41");
+        });
+    }
+
+    @Test
+    void 세_자리_숫자가_맞을_경우_예외_미발생() {
+        Assertions.assertDoesNotThrow(() -> {
+            BaseballNumbers inputNumber = new BaseballNumbers("567");
+        });
+    }
 }
