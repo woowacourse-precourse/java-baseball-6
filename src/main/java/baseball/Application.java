@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Enum.END_PROGRAM;
 import static baseball.Enum.GAME_START;
 import static baseball.Enum.INPUT_NUMBER;
 import static baseball.Enum.NEW_GAME_OR_END;
