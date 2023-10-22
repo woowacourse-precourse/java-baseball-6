@@ -38,6 +38,24 @@ public class GameService {
         }
     }
 
+    public boolean endGame() {
+        OutView.printEndGame();
+        return askRetryGame();
+    }
+
+    private boolean askRetryGame() throws IllegalArgumentException{
+        InputView.requestInputRestart();
+        String input = Console.readLine();
+
+        if(input.equals("1")) {
+            return false;
+        } else if(input.equals("2")) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("1 또는 2가 아닙니다.");
+        }
+    }
+
     private void giveHint() {
         if (this.strikeCount == 0 && this.ballCount == 0) {
             OutView.printNothing();
