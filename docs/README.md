@@ -4,8 +4,8 @@
 
 ## 컴퓨터가 숫자 선택하는 기능
 
-- [ ] generateNumber()를 통해 랜덤한 3자리 자연수를 생성한다
-- [ ] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+- [x] generateNumber()를 통해 랜덤한 3자리 자연수를 생성한다
+- [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
 
 
 
