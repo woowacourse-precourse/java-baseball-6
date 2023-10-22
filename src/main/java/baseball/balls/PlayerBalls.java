@@ -1,4 +1,6 @@
-package baseball;
+package baseball.balls;
+
+import baseball.validation.ValidInputBallsList;
 
 import java.util.List;
 
