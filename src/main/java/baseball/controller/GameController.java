@@ -30,27 +30,19 @@ public class GameController {
             if (computerNumbers.isEmpty()) computerNumbers = service.generateNumbers();
             System.out.println("치트: " + computerNumbers.get(0) + computerNumbers.get(1) + computerNumbers.get(2));
             InputView.printRequestingInput();
-            List<Integer> userNumbers = receiveInput();
+            final List<Integer> userNumbers = parser.parseInputToList(InputView.getUserInput());
             int[] result = service.compare(computerNumbers, userNumbers);
             OutputView.printResult(result);
             if(service.isThreeStrikes(result)){
                 InputView.printGameOver();
-                String restartInput = Console.readLine();
-                determineRestart(restartInput);
+                determineRestart(InputView.getUserInput());
             }
         }
     }
 
-    private List<Integer> receiveInput(){
-        String input = Console.readLine();
-        List<Integer> userNumbers = parser.parseInputToList(input);
-        if (validator.isInvalid(userNumbers)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
-        return userNumbers;
-    }
-
-    private void determineRestart(String restartInput) {
-        if (validator.isInvalid(restartInput)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
+    private void determineRestart(String input) {
+        if (validator.isInvalid(input)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
         init();
-        if(restartInput.equals(EXIT)) playing = false;
+        if(input.equals(EXIT)) playing = false;
     }
 }
