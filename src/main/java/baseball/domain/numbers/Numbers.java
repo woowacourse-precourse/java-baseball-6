@@ -4,7 +4,6 @@ import static baseball.domain.numbers.NumbersConstant.MAX_INDEX;
 import static baseball.domain.numbers.NumbersConstant.MIN_INDEX;
 
 import baseball.domain.Result;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -32,18 +31,15 @@ public class Numbers {
         numbersValidator.validateDuplicateNumber(numberList);
     }
 
-
-    public List<Integer> getNumberList() {
-        return new ArrayList<>(numberList);
-    }
-
     private void setNumberList(List<Integer> numberList) {
         this.numberList = numberList;
     }
 
     public Result calculateResult(Numbers opponentNumbers) {
-        List<Integer> opponentNumberList = opponentNumbers.getNumberList();
+        return opponentNumbers.calculateResultByList(numberList);
+    }
 
+    private Result calculateResultByList(List<Integer> opponentNumberList) {
         return Result.create(calculateBall(opponentNumberList), calculateStrike(opponentNumberList));
     }
 

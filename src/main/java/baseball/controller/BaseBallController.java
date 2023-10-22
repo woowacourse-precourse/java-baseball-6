@@ -1,37 +1,51 @@
 package baseball.controller;
 
+import baseball.domain.Pitcher;
 import baseball.domain.numbers.Numbers;
-import baseball.domain.Player;
+import baseball.domain.Hitter;
 import baseball.domain.Result;
 import baseball.view.BaseBallView;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class PlayerController {
+public class BaseBallController {
     private static final BaseBallView baseBallView = BaseBallView.create();
+    private Pitcher pitcher;
+    private Hitter hitter;
 
-    private PlayerController() {
+    private BaseBallController() {
     }
 
-    public static void startBattles (Player opponent) {
-        boolean isContinueBattle = Boolean.TRUE;
+    public static BaseBallController create(Pitcher pitcher) {
+        BaseBallController baseBallController = new BaseBallController();
+        baseBallController.setPitcher(pitcher);
 
-        while (isContinueBattle) {
-            isContinueBattle = startOneBattle(opponent);
+        return baseBallController;
+    }
+
+    private void setPitcher(Pitcher pitcher) {
+        this.pitcher = pitcher;
+    }
+
+    public void playBall() {
+        boolean isContinueBaseBall = Boolean.TRUE;
+
+        while (isContinueBaseBall) {
+            isContinueBaseBall = startOneBattle();
         }
     }
 
-    private static boolean startOneBattle(Player opponent) {
-        Player player = changePlayerNumbers(baseBallView.numbersInputView());
-        Result result = opponent.battle(player);
+    private boolean startOneBattle() {
+        hitter = changeHitter(baseBallView.numbersInputView());
+        Result result = pitcher.battleWithHitter(hitter);
 
         baseBallView.resultGameView(result.toString());
 
         return result.isContinue();
     }
 
-    private static Player changePlayerNumbers(String numberString) {
-        return Player.create(convertStringToNumbers(numberString));
+    private static Hitter changeHitter(String numberString) {
+        return Hitter.create(convertStringToNumbers(numberString));
     }
 
     private static Numbers convertStringToNumbers(String numberString) {

@@ -10,23 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Computer {
-    private Player player;
+public class Pitcher {
+    private Numbers numbers;
 
-    private Computer() {
+    private Pitcher() {
     }
 
-    public static Computer create() {
-        Computer computer = new Computer();
-        computer.setPlayer(Player.create(makeRandomNumbers()));
+    public static Pitcher create() {
+        Pitcher pitcher = new Pitcher();
+        pitcher.setNumbers(makeRandomNumbers());
 
-        return computer;
+        return pitcher;
     }
 
-    private void setPlayer(Player player) {
-        this.player = player;
+    private void setNumbers(Numbers numbers) {
+        this.numbers = numbers;
     }
-
 
     private static Numbers makeRandomNumbers() {
         List<Integer> numberList = new ArrayList<>();
@@ -46,7 +45,7 @@ public class Computer {
         return numberList.size() < NUMBER_COUNT;
     }
 
-    public Player getPlayer() {
-        return Player.create(player.getNumbers());
+    public Result battleWithHitter(Hitter hitter) {
+        return hitter.battleByNumbers(numbers);
     }
 }

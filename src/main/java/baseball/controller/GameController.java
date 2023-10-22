@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.Computer;
+import baseball.domain.Pitcher;
 import baseball.view.BaseBallView;
 
 
@@ -24,8 +24,10 @@ public class GameController {
     }
 
     private static boolean startGame() {
-        Computer computer = Computer.create();
-        PlayerController.startBattles(computer.getPlayer());
+        Pitcher pitcher = Pitcher.create();
+
+        BaseBallController baseBallController = BaseBallController.create(pitcher);
+        baseBallController.playBall();
 
         return checkIsContinueGame(baseBallView.continueInputView());
     }
