@@ -22,4 +22,9 @@ public class Validator {
         }
     }
 
+    public static void validateInputLength(String input, int length) {
+        if (input.length() != length) {
+            throw new IllegalArgumentException(length + "개만 입력해주세요");
+        }
+    }
 }
