@@ -54,6 +54,8 @@ public class Application {
                 else computer = createComputerNumber(); // 1이면 새 컴퓨터 숫자로 다시 시작
             }
         }
+
+        Console.close();
     }
 
     /**
