@@ -77,7 +77,6 @@ public class UmpireTest {
         }
 
         for(int i = 0 ; i < DIGIT_NUM ; i++){
-            System.out.println(compareCheckingBoard[i]);
             if(compareCheckingBoard[i] == true){
                 compareCount++;
             }
