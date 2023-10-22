@@ -8,7 +8,6 @@ public class BaseballGame {
     }
 
     public void play() {
-        // Userinput
         int strikes = -1;
         int balls = -1;
         while (strikes != 3) {
