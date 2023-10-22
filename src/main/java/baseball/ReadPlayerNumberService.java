@@ -10,11 +10,11 @@ public class ReadPlayerNumberService {
         this.playerNumbers = playerNumbers;
     }
 
-    public void readPlayerNumber(int numOfNumbers) {
+    public void readPlayerNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String scanPlayerNumber = Console.readLine();
         if (playerReadLineVerify(scanPlayerNumber)) {
-            addPlayerNumbers(readLineToInt(scanPlayerNumber), numOfNumbers);
+            addPlayerNumbers(readLineToInt(scanPlayerNumber));
         }
     }
 
@@ -29,10 +29,10 @@ public class ReadPlayerNumberService {
         return true;
     }
 
-    private void addPlayerNumbers(int scanPlayerNumber, int numOfNumbers) {
-        while (playerNumbers.size() < numOfNumbers) {
-            playerNumbers.add((int) (scanPlayerNumber / Math.pow(10, numOfNumbers - playerNumbers.size() - 1)));
-            scanPlayerNumber %= (int) Math.pow(10, numOfNumbers - playerNumbers.size());
+    private void addPlayerNumbers(int scanPlayerNumber) {
+        while (playerNumbers.size() < 3) {
+            playerNumbers.add((int) (scanPlayerNumber / Math.pow(10, 3 - playerNumbers.size() - 1)));
+            scanPlayerNumber %= (int) Math.pow(10, 3 - playerNumbers.size());
         }
     }
 

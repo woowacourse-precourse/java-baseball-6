@@ -7,8 +7,8 @@ public class ResultOfGame {
     private List<String> resultOfGame = new ArrayList<>();
 
 
-    public void initResult(int numOfNumbers) {
-        while (resultOfGame.size() < numOfNumbers) {
+    public void initResult() {
+        while (resultOfGame.size() < 3) {
             resultOfGame.add("nothing");
         }
     }
@@ -33,10 +33,6 @@ public class ResultOfGame {
 
     public void update(int index, String result) {
         resultOfGame.set(index, result);
-    }
-
-    public boolean contains(String result) {
-        return resultOfGame.contains(result);
     }
 
 

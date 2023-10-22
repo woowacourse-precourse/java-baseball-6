@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.List;
-
 public interface NumbersObjects {
     public void add(int number);
 
@@ -13,5 +11,4 @@ public interface NumbersObjects {
 
     public boolean contains(int number);
 
-    public List<Integer> getList();
 }

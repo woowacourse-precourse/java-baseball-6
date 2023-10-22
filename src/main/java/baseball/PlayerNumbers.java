@@ -26,8 +26,4 @@ public class PlayerNumbers implements NumbersObjects {
     public boolean contains(int number) {
         return player.contains(number);
     }
-
-    public List<Integer> getList() {
-        return player;
-    }
 }

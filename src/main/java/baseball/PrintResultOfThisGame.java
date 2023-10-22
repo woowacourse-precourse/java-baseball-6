@@ -31,13 +31,13 @@ public class PrintResultOfThisGame {
         if (strike != 0) {
             printResult += strike;
             printResult += "스트라이크";
-            if (strike == 3) {
-                printResult += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-                isThreeStrike = true;
-            }
         }
         if (nothing == 3) {
             printResult += "낫싱";
+        }
+        if (strike == 3) {
+            printResult += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            isThreeStrike = true;
         }
 
         System.out.println(printResult);
@@ -47,7 +47,7 @@ public class PrintResultOfThisGame {
         return isThreeStrike;
     }
 
-    public void init() {
+    public void deleteData() {
         isThreeStrike = false;
     }
 

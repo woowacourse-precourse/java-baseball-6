@@ -26,7 +26,4 @@ public class ComputerNumbers implements NumbersObjects {
         return computer.contains(number);
     }
 
-    public List<Integer> getList() {
-        return computer;
-    }
 }
