@@ -9,12 +9,12 @@ import java.util.Set;
 public class Computer {
     private static final int MIN_RANDOM_NUMBER = 1;
     private static final int MAX_RANDOM_NUMBER = 9;
-    private static final int RANDOM_NUMBER_LENGTH = 3;
+    private final int settingNumberLength;
 
     private final List<Integer> numbers;
 
-    // todo 상수값, 인수로 받는 거 고려해보기
-    public Computer() {
+    public Computer(int numberLength) {
+        this.settingNumberLength = numberLength;
         this.numbers = getRandomNumbers();
     }
 
@@ -25,7 +25,7 @@ public class Computer {
     private List<Integer> getRandomNumbers() {
         Set<Integer> computerNumber = new HashSet<>();
 
-        while(computerNumber.size() < RANDOM_NUMBER_LENGTH) {
+        while(computerNumber.size() < settingNumberLength) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
 
             computerNumber.add(randomNumber);

@@ -13,16 +13,17 @@ public class GameController {
 
     private static final String GAME_RESTART_STATE = "1";
     private static final String GAME_END_STATE = "2";
-    private static final int RANDOM_NUMBER_LENGTH = 3;
+    private final int settingNumberLength;
     private final Computer computer;
     private final Player player;
     private final Hint hint;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public GameController() {
-        this.computer = new Computer();
-        this.player = new Player();
+    public GameController(int numberLength) {
+        this.settingNumberLength = numberLength;
+        this.computer = new Computer(settingNumberLength);
+        this.player = new Player(settingNumberLength);
         this.hint = new Hint();
         this.inputView = new InputView();
         this.outputView = new OutputView();
@@ -72,7 +73,7 @@ public class GameController {
 
         outputView.printHint(strikeCount, ballCount);
 
-        return strikeCount == RANDOM_NUMBER_LENGTH;
+        return strikeCount == settingNumberLength;
     }
 
     private void setPlayerNumbers() {

@@ -9,9 +9,11 @@ public class Player {
     private final InputView inputView;
     private final Util util;
     private List<Integer> numbers;
+    private final int settingNumberLength;
 
-    public Player() {
+    public Player(int numberLength) {
         this.inputView = new InputView();
+        this.settingNumberLength = numberLength;
         this.util = new Util();
     }
 
