@@ -3,12 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -119,7 +117,11 @@ public class Application {
         return character - '0';
     }
 
-    private static PlayResult compareComputerAndUserNumbers(int computerNumber, List<Integer> userNumbers, int index) {
+    private static PlayResult compareComputerAndUserNumbers(
+            int computerNumber,
+            List<Integer> userNumbers,
+            int index
+    ) {
         if (isNothing(computerNumber, userNumbers)) {
             return PlayResult.NOTHING;
         }
@@ -170,17 +172,17 @@ public class Application {
             return stringBuilder.toString();
         }
 
-        Arrays.sort(gameResult.keySet().toArray());
-
-        for (Entry<PlayResult, Integer> playResultIntegerEntry : gameResult.entrySet()) {
-            if (playResultIntegerEntry.getKey() == PlayResult.NOTHING) {
-                continue;
-            }
-
+        if (gameResult.containsKey(PlayResult.BALL)) {
             stringBuilder
-                    .append(playResultIntegerEntry.getValue())
-                    .append(playResultIntegerEntry.getKey().getLabel())
+                    .append(gameResult.get(PlayResult.BALL))
+                    .append(PlayResult.BALL.getLabel())
                     .append(" ");
+        }
+
+        if (gameResult.containsKey(PlayResult.STRIKE)) {
+            stringBuilder
+                    .append(gameResult.get(PlayResult.STRIKE))
+                    .append(PlayResult.STRIKE.getLabel());
         }
 
         return stringBuilder.toString().trim();
