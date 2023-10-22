@@ -9,15 +9,23 @@ public class OutputView {
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
 
-    public static void printResult(Result result){
+    public static void printResult(Result result) {
         System.out.println(createGameResult(result));
     }
 
     private static String createGameResult(Result result) {
-        if (result.isNothing()) return printNothingResult();
-        if (result.hasOnlyBalls()) return  printBallsResult(result.getBall());
-        if (result.hasOnlyStrikes()) return printStrikesResult(result.getStrike());
-        if (result.hasBallsAndStrikes()) return printBallAndStrikeResult(result.getBall(), result.getStrike());
+        if (result.isNothing()) {
+            return printNothingResult();
+        }
+        if (result.hasOnlyBalls()) {
+            return printBallsResult(result.getBall());
+        }
+        if (result.hasOnlyStrikes()) {
+            return printStrikesResult(result.getStrike());
+        }
+        if (result.hasBallsAndStrikes()) {
+            return printBallAndStrikeResult(result.getBall(), result.getStrike());
+        }
         return EMPTY_STRING;
     }
 

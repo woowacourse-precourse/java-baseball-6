@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.util.Validator;
-import baseball.view.InputView;
 
 public class Command {
     private static final String EXIT = "2";
@@ -10,6 +9,7 @@ public class Command {
     public static String getExit() {
         return EXIT;
     }
+
     public static String getRestart() {
         return RESTART;
     }
@@ -17,10 +17,14 @@ public class Command {
     public static boolean isExit(String input) {
         return input.equals(EXIT);
     }
+
     public static boolean isRestart(String input) {
         return input.equals(RESTART);
     }
+
     public static void validate(String input) {
-        if(Validator.isInvalid(input)) throw new IllegalArgumentException(Errors.MSG_EXCEPTION_INVALID_INPUT);
+        if (Validator.isInvalid(input)) {
+            throw new IllegalArgumentException(Errors.MSG_EXCEPTION_INVALID_INPUT);
+        }
     }
 }

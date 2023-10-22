@@ -14,21 +14,25 @@ public class Validator {
         return !Command.isExit(input) && !Command.isRestart(input);
     }
 
-    private static boolean isNotValidDigits(List<Integer> userNumbers){
+    private static boolean isNotValidDigits(List<Integer> userNumbers) {
         return userNumbers.size() != Config.getMaxNumbers();
     }
 
-    private static boolean isNotNumber(List<Integer> userNumbers){
+    private static boolean isNotNumber(List<Integer> userNumbers) {
         for (int number : userNumbers) {
-            if (Config.isInvalidRange(number)) return true;
+            if (Config.isInvalidRange(number)) {
+                return true;
+            }
         }
         return false;
     }
 
-    private static boolean hasDuplicatedNumbers(List<Integer> userNumbers){
+    private static boolean hasDuplicatedNumbers(List<Integer> userNumbers) {
         List<Integer> temp = new ArrayList<>();
         for (int number : userNumbers) {
-            if(temp.contains(number)) return true;
+            if (temp.contains(number)) {
+                return true;
+            }
             temp.add(number);
         }
         return false;

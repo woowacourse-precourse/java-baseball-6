@@ -1,11 +1,9 @@
 package baseball.controller;
 
-import baseball.config.Config;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.Command;
-import baseball.service.GameService;
 import baseball.domain.Result;
-import baseball.util.Validator;
+import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -15,31 +13,39 @@ public class GameController {
     BaseballNumbers computerNumbers;
     public static boolean playing = true;
 
-    public void init() { computerNumbers = service.generateNumbers(); }
+    public void init() {
+        computerNumbers = service.generateNumbers();
+    }
 
     public void play() {
         InputView.printStart();
         while (playing) {
-            if (computerNumbers == null) computerNumbers = service.generateNumbers();
+            if (computerNumbers == null) {
+                computerNumbers = service.generateNumbers();
+            }
             InputView.printCheat(computerNumbers);
             InputView.printRequestingInput();
             BaseballNumbers userNumbers = InputView.getUserNumbers();
             Result result = service.compare(computerNumbers, userNumbers);
             OutputView.printResult(result);
             userNumbers.clear();
-            if(result.isAllStrikes()){
+            if (result.isAllStrikes()) {
                 InputView.printGameOver();
-                restartOrNot(InputView.getUserInput());;
+                restartOrNot(InputView.getUserInput());
+                ;
             }
         }
     }
 
     private void restartOrNot(String input) {
         Command.validate(input);
-        if(Command.isExit(input)) playing = false;
-        if(Command.isRestart(input)) init();
+        if (Command.isExit(input)) {
+            playing = false;
+        }
+        if (Command.isRestart(input)) {
+            init();
+        }
     }
-
 
 
 }

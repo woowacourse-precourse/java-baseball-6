@@ -7,6 +7,7 @@ import baseball.util.Parser;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
+
     private static final String MSG_START = "숫자 야구 게임을 시작합니다.";
     private static final String MSG_REQUESTING_INPUT = "숫자를 입력해주세요.";
     private static final String MSG_GAME_OVER = Config.getMaxNumbers() + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -26,7 +27,9 @@ public class InputView {
         System.out.printf(MSG_ASK_IF_CONTINUES, Command.getRestart(), Command.getExit());
     }
 
-    public static String getUserInput() { return Console.readLine(); }
+    public static String getUserInput() {
+        return Console.readLine();
+    }
 
     public static BaseballNumbers getUserNumbers() {
         BaseballNumbers userNumbers = Parser.parseStringToBaseballNumbers(InputView.getUserInput());
@@ -35,7 +38,7 @@ public class InputView {
 
     /* 값 확인용 */
     public static void printCheat(BaseballNumbers computerNumbers) {
-        for (int i = 0 ; i < Config.getMaxNumbers(); i++) {
+        for (int i = 0; i < Config.getMaxNumbers(); i++) {
             System.out.print(computerNumbers.get(i));
         }
         System.out.println();

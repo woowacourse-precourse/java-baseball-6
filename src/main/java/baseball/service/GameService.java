@@ -1,9 +1,9 @@
 package baseball.service;
+
 import baseball.config.Config;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.Result;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +11,13 @@ public class GameService {
 
     List<Integer> numbers = new ArrayList<>();
 
-    public BaseballNumbers generateNumbers(){
+    public BaseballNumbers generateNumbers() {
         numbers.clear();
-        while(numbers.size() < Config.getMaxNumbers()){
+        while (numbers.size() < Config.getMaxNumbers()) {
             int randomNumber = Randoms.pickNumberInRange(Config.getStartInclusive(), Config.getEndInclusive());
-            if(isNotDuplicated(randomNumber)) numbers.add(randomNumber);
+            if (isNotDuplicated(randomNumber)) {
+                numbers.add(randomNumber);
+            }
         }
         return new BaseballNumbers(numbers);
     }
@@ -27,9 +29,13 @@ public class GameService {
     public Result compare(BaseballNumbers computerNumbers, BaseballNumbers userNumbers) {
         int ball = 0;
         int strike = 0;
-        for (int index = 0; index < Config.getMaxNumbers(); index++){
-            if(isStrike(computerNumbers, userNumbers, index)) strike++;
-            if(isBall(computerNumbers, userNumbers, index)) ball++;
+        for (int index = 0; index < Config.getMaxNumbers(); index++) {
+            if (isStrike(computerNumbers, userNumbers, index)) {
+                strike++;
+            }
+            if (isBall(computerNumbers, userNumbers, index)) {
+                ball++;
+            }
         }
         return new Result(ball, strike);
     }
@@ -40,7 +46,7 @@ public class GameService {
     }
 
     private boolean isStrike(BaseballNumbers computerNumbers, BaseballNumbers userNumbers, int index) {
-        return computerNumbers.get(index) ==  userNumbers.get(index);
+        return computerNumbers.get(index) == userNumbers.get(index);
     }
 
 }
