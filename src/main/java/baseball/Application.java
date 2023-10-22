@@ -1,9 +1,10 @@
 package baseball;
 
-import baseball.view.InputView;
+import baseball.controller.GameController;
 
 public class Application {
     public static void main(String[] args) {
-        InputView.inputPositiveNumber();
+        GameController gameController = new GameController();
+        gameController.run();
     }
 }

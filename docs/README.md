@@ -15,10 +15,10 @@
 - [x] ❗️ 빈 문자열 입력일 경우 예외처리 한다. - [InputView](#InputView)#validateBlankString()
 - [x] ❗️ 문자, 특수기호 등의 입력이 있을 경우 예외처리 한다. - [InputView](#InputView)#validateNumber()
 - [x] ❗️ 음수의 입력이 감지될 경우 예외처리 한다. - [InputView](#InputView)#validatePositiveNumber()
-- [ ] ❗️ 숫자는 1~9 범위의 자연수가 아닐 경우 예외처리 한다.
-- [ ] ❗️ 3자리의 숫자가 아닐 경우 예외처리 한다.
-- [ ] ❗️ 3자리의 숫자 중 중복 숫자가 있을 경우 예외처리 한다.
-- [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
+- [x] ❗️ 3자리의 숫자가 아닐 경우 예외처리 한다. - [GameNumbers](#GameNumbers)#validateSize()
+- [x] ❗️ 숫자는 1~9 범위의 자연수가 아닐 경우 예외처리 한다. - [GameNumbers](#GameNumbers)#validateRange()
+- [x] ❗️ 3자리의 숫자 중 중복 숫자가 있을 경우 예외처리 한다. - [GameNumbers](#GameNumbers)#validateDuplicate()
+- [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
 ## 숫자 비교 기능
 
