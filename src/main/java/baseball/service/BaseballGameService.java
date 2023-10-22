@@ -16,6 +16,15 @@ public class BaseballGameService {
         baseballGameCompareService.compareUserNumberAndRandomNumber(getUserNumber(), createRandomNumber());
     }
 
+    public void restartBaseballGame() {
+        baseballGameCompareService.compareUserNumberAndRandomNumber(getUserNumber(), createRandomNumber());
+    }
+
+    public void endBaseballGame() {
+        printGameEndMessage();
+        getRestartOrEndNumber();
+    }
+
     private void printGameStartMessage() {
         OutputView outputView = new OutputView();
         outputView.printGameStartMessage();
@@ -49,5 +58,13 @@ public class BaseballGameService {
     private void printGameEndMessage() {
         OutputView outputView = new OutputView();
         outputView.printGameEndMessage();
+    }
+
+    private void getRestartOrEndNumber() {
+        InputView inputView = new InputView();
+        String result = inputView.getRestartOrEndNumber();
+        if (result.equals("1")) {
+            restartBaseballGame();
+        }
     }
 }
