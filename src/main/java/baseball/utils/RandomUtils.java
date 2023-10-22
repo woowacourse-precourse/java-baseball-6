@@ -26,6 +26,4 @@ public class RandomUtils {
         }
         return true;
     }
-
-
 }

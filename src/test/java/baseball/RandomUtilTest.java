@@ -12,6 +12,5 @@ public class RandomUtilTest {
             System.out.println(i);
         }
     }
-    @Test
-    void mi
+
 }
