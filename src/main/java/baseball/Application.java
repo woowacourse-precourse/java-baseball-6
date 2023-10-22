@@ -25,6 +25,18 @@ public class Application {
         return true;
     }
 
+    // 입력된 숫자가 정수인지 체크
+    public static boolean checkNumber(String inputString) {
+        try {
+            int number = Integer.parseInt(inputString);
+        } catch (NumberFormatException e) {
+            System.out.println(e.getClass().getName());
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
     // 컴퓨터가 랜덤 넘버를 생성
     public static List<Integer> createRandomNumber() {
         List<Integer> computer = new ArrayList<>();
