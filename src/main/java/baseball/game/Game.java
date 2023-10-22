@@ -13,6 +13,7 @@ public class Game {
     private int ballCount;
 
     public Game() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         this.player = new Player();
         this.computer = new Computer();
         this.strikeCount = 0;
@@ -33,8 +34,6 @@ public class Game {
     }
 
     private void play() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
         boolean isPlayGame = true;
 
         while (isPlayGame) {
