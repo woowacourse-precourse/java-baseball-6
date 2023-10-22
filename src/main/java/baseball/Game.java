@@ -10,7 +10,6 @@ import static baseball.Constant.*;
 
 public class Game {
     List<Integer> answerList = new ArrayList<>();
-
     public Game() {
         while (answerList.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
@@ -25,14 +24,14 @@ public class Game {
 
     public void play() {
         String inputString;
-        boolean isResultWin = false;
+        boolean is3Strike = false;
         do {
-            System.out.println(GET_NUMBER_MESSAGE);
+            System.out.print(GET_NUMBER_MESSAGE);
             inputString = Console.readLine();
             if (isValidNumber(inputString)) {
-                isResultWin = checkResult(inputString);
+                is3Strike = checkResult(inputString);
             }
-        } while (!isResultWin);
+        } while (!is3Strike);
     }
 
     private boolean isContainedNumber(int randomNumber) {
@@ -100,7 +99,6 @@ public class Game {
         for (int i = 0; i < inputString.length(); i++) {
             intArray[i] = Integer.parseInt(inputString.substring(i,i+1));
         }
-
         return intArray;
     }
 

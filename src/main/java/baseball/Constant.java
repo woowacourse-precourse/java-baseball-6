@@ -4,6 +4,9 @@ public class Constant {
     public static final int START_RANGE = 1;
     public static final int END_RANGE = 9;
     public static final int NUMBER_COUNT = 3;
+    public static final String STRIKE_STRING = "스트라이크";
+    public static final String BALL_STRING = "볼";
+    public static final String NOTHING_STRING = "낫싱";
     public static final String RESTART_STRING = "1";
     public static final String TERMINATE_STRING = "2";
     public static final String GET_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
