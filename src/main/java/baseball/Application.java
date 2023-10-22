@@ -80,18 +80,63 @@ public class Application {
         return list;
     }
 
+    // 스트라이크와 볼의 개수를 체크
+    public static boolean checkStrikeAndBall(List<Integer> answerList, List<Integer> inputList) {
+        boolean[] strikeList = new boolean[10];
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int i = 0; i < inputList.size(); i++) {
+            int inputNumberWithIndex = inputList.get(i);
+
+            if (answerList.get(i) == inputList.get(i)) {
+                strikeList[inputNumberWithIndex] = true;
+                strikeCount++;
+            } else if (!strikeList[inputNumberWithIndex] && answerList.contains(inputNumberWithIndex)) {
+                ballCount++;
+            }
+        }
+
+        if (ballCount != 0) {
+            System.out.print(ballCount + "볼 ");
+        }
+        if (strikeCount != 0) {
+            System.out.print(strikeCount + "스트라이크");
+        }
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.print("낫싱");
+        }
+
+        System.out.println();
+
+        if (strikeCount == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
 
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = createRandomNumber();
-        
+
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String number = camp.nextstep.edu.missionutils.Console.readLine();
             if (checkValidation(number)) {
                 List<Integer> inputList = stringToList(number);
-
+                if (checkStrikeAndBall(computer, inputList)) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    String command = camp.nextstep.edu.missionutils.Console.readLine();
+                    if (command.equals("1")) {
+                        computer = createRandomNumber();
+                    } else if (command.equals("2")) {
+                        break;
+                    }
+                }
             }
         }
     }
