@@ -1,6 +1,9 @@
 package baseball.computer.validator;
 
-import static baseball.validator.NumberValidator.THREE_LENGTH;
+import static baseball.constant.MessageConstants.DUPLICATE_NUMBER;
+import static baseball.constant.MessageConstants.LENGTH_MUST_BE_THREE;
+import static baseball.constant.MessageConstants.NATURAL_NUMBER;
+import static baseball.constant.MessageConstants.NOT_NUMBER;
 import static baseball.validator.NumberValidator.validateAllDigits;
 import static baseball.validator.NumberValidator.validateDuplicateNumber;
 import static baseball.validator.NumberValidator.validateThreeLength;
@@ -36,7 +39,7 @@ class NumberValidatorTest {
         // then
         assertThatThrownBy(() -> NumberValidator.validateNaturalNumber(invalidNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("숫자는 " + 1 + "에서 " + 9 + "까지여야 합니다.");
+                .hasMessage(NATURAL_NUMBER);
     }
 
     @DisplayName("양의 정수의 경계선인 10을 넣으면 예외가 발생한다.")
@@ -49,7 +52,7 @@ class NumberValidatorTest {
         // then
         assertThatThrownBy(() -> NumberValidator.validateNaturalNumber(invalidNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("숫자는 " + 1 + "에서 " + 9 + "까지여야 합니다.");
+                .hasMessage(NATURAL_NUMBER);
     }
 
     @DisplayName("경계인 3이라면 False를 반환한다.")
@@ -84,7 +87,7 @@ class NumberValidatorTest {
         // then
         assertThatThrownBy(() -> validateDuplicateNumber(duplicateNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(duplicateNumber + ": 중복된 숫자가 존재합니다.");
+                .hasMessage(duplicateNumber + DUPLICATE_NUMBER);
     }
 
     @DisplayName("중복된 숫자가 없다면 예외가 발생하지 않는다.")
@@ -109,7 +112,7 @@ class NumberValidatorTest {
         // then
         assertThatThrownBy(() -> validateAllDigits(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(invalidInput + "은 숫자가 아닙니다.");
+                .hasMessage(invalidInput + NOT_NUMBER);
     }
 
     @DisplayName("3자리 문자 중 숫자만을 넣었으므로 예외가 발생하지 않는다.")
@@ -146,7 +149,7 @@ class NumberValidatorTest {
         // then
         assertThatThrownBy(() -> validateThreeLength(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(invalidInput + "의 길이는 " + THREE_LENGTH + "이어야 합니다.");
+                .hasMessage(invalidInput + LENGTH_MUST_BE_THREE);
     }
 
 }
