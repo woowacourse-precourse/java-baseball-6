@@ -25,6 +25,7 @@ public class Hint {
 
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
+            return false;
         }
 
         if (ball > 0 && strike == 0) {

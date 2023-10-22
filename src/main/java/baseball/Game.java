@@ -13,6 +13,7 @@ public class Game {
             HintCountDto hintCountDto = Hint.calHint(computerNum, userNum);
             isGameDone = Hint.printHint(hintCountDto);
         }
+        restartOrEnd();
     }
 
     public static void restartOrEnd() {
