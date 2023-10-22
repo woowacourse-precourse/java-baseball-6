@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.validation.NumberValidation;
+import baseball.validation.InputValidation;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +15,7 @@ public class PlayerNumber {
 
     public List<Integer> createPlayerNumber(String str) {
         List<Integer> number = convertStringToInt(str);
-        NumberValidation.validateInput(number);
+        InputValidation.validateInput(number);
         return number;
     }
 

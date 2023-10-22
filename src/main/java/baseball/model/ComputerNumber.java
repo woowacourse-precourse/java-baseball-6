@@ -1,7 +1,7 @@
 package baseball.model;
 
 import baseball.utils.Constant;
-import baseball.validation.NumberValidation;
+import baseball.validation.InputValidation;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +16,7 @@ public class ComputerNumber {
 
     public List<Integer> createRandomNumber() {
         List<Integer> randomNumber = pickRandomNumber();
-        if (!NumberValidation.validateInputDuplicated(randomNumber)) {
+        if (!InputValidation.validateInputDuplicated(randomNumber)) {
             return randomNumber;
         }
         return createRandomNumber();

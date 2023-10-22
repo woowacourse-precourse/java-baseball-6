@@ -3,7 +3,7 @@ package baseball.validation;
 import baseball.utils.Constant;
 import java.util.List;
 
-public class NumberValidation {
+public class InputValidation {
     public static void validateInput(List<Integer> number) {
         validateInputLength(number);
         validateInputDigit(number);
@@ -28,5 +28,15 @@ public class NumberValidation {
 
     public static boolean validateInputDuplicated(List<Integer> number) {
         return Constant.LENGTH != number.stream().distinct().count();
+    }
+
+    public static boolean validateInputRestartOrExit(String input) {
+        if (input.equals(Constant.GAME_RESTART)) {
+            return true;
+        }
+        if (input.equals(Constant.GAME_EXIT)) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 }

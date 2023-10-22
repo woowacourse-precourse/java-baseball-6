@@ -3,11 +3,11 @@ package baseball.model;
 import java.util.List;
 
 public class Game {
-    private final List<Integer> computerNumber;
+    private List<Integer> computerNumber;
     private List<Integer> playerNumber;
     private GameResult gameResult;
 
-    public Game() {
+    public void setComputerNumber() {
         this.computerNumber = new ComputerNumber().getComputerNumber();
     }
 
