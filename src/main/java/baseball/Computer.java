@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Computer {
@@ -33,11 +34,11 @@ public class Computer {
         }
     }
 
-    public void calculateScore(String playerInput){
+    public void calculateScore(List<String> playerInput){
         initializeScore();
 
         for(int i=0;i<ANSWER_DIGIT;i++) {
-            int userNum = Character.getNumericValue(playerInput.charAt(i));
+            int userNum = Integer.parseInt(playerInput.get(i));
             if(!answer.containsKey(userNum)){
                 continue;
             }

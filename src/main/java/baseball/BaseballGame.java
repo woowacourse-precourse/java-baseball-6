@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class BaseballGame {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -9,7 +11,7 @@ public class BaseballGame {
     private Computer computer = new Computer();
     private Player player = new Player();
     private boolean isGameEnd = false;
-    private String playerInput;
+    private List<String> playerInput;
     private String resultMessage;
 
     public BaseballGame(){

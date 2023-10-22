@@ -1,7 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Player {
@@ -10,34 +13,35 @@ public class Player {
     private static final String END_NUM = "2";
     private static final String VALID_DIGIT_REGEX = "^[1-9]{3}$";
 
-    private String input;
+    private List<String> playerInput;
     private String endInput;
 
     public Player(){
     }
 
     public void setInput(){
-        input = Console.readLine();
-        validateInput();
+        String input = Console.readLine();
+        validateInput(input);
+        playerInput = Arrays.asList(input.split(""));
     }
 
-    public String getInput(){
-        return input;
+    public List<String> getInput(){
+        return playerInput;
     }
 
-    private void validateInput(){
-        validateLength();
-        validateOnlyNumber();
-        validateDuplicated();
+    private void validateInput(String input){
+        validateLength(input);
+        validateOnlyNumber(input);
+        validateDuplicated(input);
     }
 
-    private void validateLength(){
+    private void validateLength(String input){
         if(input.length() != INPUT_LENGTH){
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateDuplicated(){
+    private void validateDuplicated(String input){
         Set<Character> existedCharacter = new HashSet<>();
 
         for(int i=0;i<INPUT_LENGTH;i++){
@@ -51,7 +55,7 @@ public class Player {
         }
     }
 
-    private void validateOnlyNumber(){
+    private void validateOnlyNumber(String input){
         if(!input.matches(VALID_DIGIT_REGEX)){
             throw new IllegalArgumentException();
         }
