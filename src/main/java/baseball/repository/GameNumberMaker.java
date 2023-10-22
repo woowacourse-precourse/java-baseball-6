@@ -1,5 +1,6 @@
-package baseball;
+package baseball.repository;
 
+import baseball.dto.GameNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public class GameNumberMaker {
         this.gameNumber = new GameNumber();
     }
 
-    public List<Integer> generateGameNumber() {
+    private List<Integer> generateGameNumber() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

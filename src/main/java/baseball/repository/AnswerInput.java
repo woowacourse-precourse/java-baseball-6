@@ -1,5 +1,8 @@
-package baseball;
+package baseball.repository;
 
+import baseball.dto.AnswerNumber;
+import baseball.services.Constants;
+import baseball.services.InputExceptionError;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,8 +16,43 @@ public class AnswerInput {
         this.answerNumber = new AnswerNumber();
     }
 
+    private List<Integer> toIntegerArrayList(String getNumber) {
+        String[] getNumberArray = getNumber.split("");
+        List<Integer> answerNumber = new ArrayList<>();
+        for (String splitNumber : getNumberArray) {
+            int intSplitNumber = Integer.parseInt(splitNumber);
+            answerNumber.add(intSplitNumber);
+        }
+        return answerNumber;
+    }
+
+    private Boolean isLength(String checkNumber) {
+        if (checkNumber.length() != 3) {
+            return true;
+        }
+        return false;
+    }
+
+    private Boolean isStringChars(String checkNumber) {
+        if (!checkNumber.matches(Constants.ANSWER_NUMBER_PATTERN)) {
+            return true;
+        }
+        return false;
+    }
+
+    private Boolean isDuplicateChars(String checkNumber) {
+        Set<Character> charSet = new HashSet<>();
+        for (char number : checkNumber.toCharArray()) {
+            if (charSet.contains(number)) {
+                return true;
+            }
+            charSet.add(number);
+        }
+        return false;
+    }
+
     public void inputNumber() {
-        System.out.println(Contants.ASK_GAME_NUMBER);
+        System.out.println(Constants.ASK_GAME_NUMBER);
         String answer = Console.readLine();
         answer.replaceAll(" ", "");
         if (isStringChars(answer)) {
@@ -29,41 +67,6 @@ public class AnswerInput {
         List<Integer> number = toIntegerArrayList(answer);
 
         answerNumber.setAnswerNumber(number);
-    }
-
-    public List<Integer> toIntegerArrayList(String getNumber) {
-        String[] getNumberArray = getNumber.split("");
-        List<Integer> answerNumber = new ArrayList<>();
-        for (String splitNumber : getNumberArray) {
-            int intSplitNumber = Integer.parseInt(splitNumber);
-            answerNumber.add(intSplitNumber);
-        }
-        return answerNumber;
-    }
-
-    public Boolean isLength(String checkNumber) {
-        if (checkNumber.length() != 3) {
-            return true;
-        }
-        return false;
-    }
-
-    public Boolean isStringChars(String checkNumber) {
-        if (!checkNumber.matches(Contants.ANSWER_NUMBER_PATTERN)) {
-            return true;
-        }
-        return false;
-    }
-
-    public Boolean isDuplicateChars(String checkNumber) {
-        Set<Character> charSet = new HashSet<>();
-        for (char number : checkNumber.toCharArray()) {
-            if (charSet.contains(number)) {
-                return true;
-            }
-            charSet.add(number);
-        }
-        return false;
     }
 
     public List<Integer> getAnswerNumber() {

@@ -1,7 +1,7 @@
-package baseball;
+package baseball.services;
 
 public class InputExceptionError {
     public static void throwIllegalArgumentException() {
-        throw new IllegalArgumentException(Contants.ERROR_MESSAGE);
+        throw new IllegalArgumentException(Constants.ERROR_MESSAGE);
     }
 }
