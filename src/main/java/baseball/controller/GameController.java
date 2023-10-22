@@ -3,9 +3,9 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.Game;
 import baseball.model.Player;
+import baseball.utils.RandomUtil;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +23,7 @@ public class GameController {
 
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
+    RandomUtil randomUtil = new RandomUtil();
     Computer computer;
     Player player;
     Game game;
@@ -43,7 +44,7 @@ public class GameController {
         player = new Player();
         game = new Game();
 
-        computer.setComputerNumbers(getRandomNumbers());
+        computer.setComputerNumbers(randomUtil.generateRandomNumbers());
         do {
             player.setPlayerNumbers(convertplayerToList(inputView.inputPlayerNumber()));
             game.initStrikeAndBall();
@@ -52,18 +53,6 @@ public class GameController {
         } while (!isCorrectNumber());
 
         outputView.printEndMessage();
-    }
-
-    public List<Integer> getRandomNumbers() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-
-        return computer;
     }
 
     public List<Integer> convertplayerToList(String playerStr) {
