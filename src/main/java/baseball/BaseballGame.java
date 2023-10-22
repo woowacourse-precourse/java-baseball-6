@@ -13,7 +13,7 @@ public class BaseballGame {
     private static int ball;
     private static int strike;
 
-    private static void setNumOfComputer(){
+    private static void setNumOfComputer() {
         numOfComputer = new ArrayList<>();
         while (numOfComputer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,21 +23,20 @@ public class BaseballGame {
         }
     }
 
-    public static void startGame(){
+    public static void startGame() {
         BaseballOutput.printStart();
         setNumOfComputer();
-        try{
-            do{
+        try {
+            do {
                 initGameMembers();
                 BaseballInput.setUserInput();
                 userInput = BaseballInput.getUserInput();
                 countBallandStrike();
                 printBallandStrike();
 
+            } while (!isThreeStrike);
 
-            }while(!isThreeStrike);
-
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e){
             throw e;
         }
 
@@ -47,13 +46,13 @@ public class BaseballGame {
 
         for (int userIndex = 0; userIndex  < 3; ++userIndex) {
             int tmpUser = userInput.get(userIndex);
-            for(int comIndex = 0; comIndex < 3; comIndex++){
+            for (int comIndex = 0; comIndex < 3; comIndex++) {
                 int tmpCom = numOfComputer.get(comIndex);
-                if(tmpUser == tmpCom && userIndex == comIndex){
+                if (tmpUser == tmpCom && userIndex == comIndex) {
                     strike +=1;
                     continue;
                 }
-                if(tmpUser == tmpCom){
+                if (tmpUser == tmpCom) {
                     ball +=1;
                 }
             }
@@ -61,16 +60,16 @@ public class BaseballGame {
 
     }
 
-    public static void printBallandStrike(){
+    public static void printBallandStrike() {
 
-        if(ball == 0 && strike == 0){
+        if (ball == 0 && strike == 0) {
             BaseballOutput.printNothing();
             return;
         }
 
-        if(ball == 0 && strike != 0){
+        if (ball == 0 && strike != 0) {
             BaseballOutput.printStrike(strike);
-            if(strike == 3) {
+            if (strike == 3) {
                 BaseballOutput.printGameEnd();
                 isThreeStrike = true;
                 return;
@@ -78,7 +77,7 @@ public class BaseballGame {
             return;
         }
 
-        if(ball != 0 && strike == 0){
+        if (ball != 0 && strike == 0) {
             BaseballOutput.printBall(ball);
             return;
         }
@@ -87,25 +86,25 @@ public class BaseballGame {
 
     }
 
-    public static void initGameMembers(){
+    public static void initGameMembers() {
         isThreeStrike = false;
         ball = 0;
         strike = 0;
         return;
     }
 
-    public static void run(){
-        try{
-            do{
+    public static void run() {
+        try {
+            do {
                 startGame();
                 BaseballOutput.printRestart();
                 BaseballInput.setRestartNum();
-            }while(BaseballInput.getRestartNum() == 1);
+            } while (BaseballInput.getRestartNum() == 1);
 
 
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw e;
-        }finally {
+        } finally {
             Console.close();
         }
 
