@@ -9,8 +9,12 @@ import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import baseball.domain.BaseballNumber;
 import baseball.domain.BaseballScore;
 import baseball.service.BaseballService;
+import baseball.util.Util;
 import baseball.validator.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -233,5 +237,20 @@ class ApplicationTest extends NsTest {
         assertThat(throwable2).as("문자열이 1이나 2 일때").doesNotThrowAnyException();
         assertThat(throwable3).as("문자열이 1이나 2가 아닐때").isInstanceOf(IllegalArgumentException.class);
         assertThat(throwable4).as("문자열이 1이나 2가 아닐때").isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void stringToIntegerList_문자열을_IntegerList로_변경_IntegerList로변환() {
+        //given
+        String testString1 = "12345";
+        String testString2 = "abcde";
+        List<Integer> expectList = new ArrayList(Arrays.asList(1, 2, 3, 4, 5));
+        //when
+        List<Integer> resultList = Util.naturalNumberstringToIntegerList(testString1);
+        Throwable throwable = catchThrowable(
+                () -> Util.naturalNumberstringToIntegerList(testString2));
+        //then
+        assertThat(resultList).isEqualTo(expectList);
+        assertThat(throwable).as("문자열이 자연수로 이루어지지 않았을때").isInstanceOf(IllegalArgumentException.class);
     }
 }
