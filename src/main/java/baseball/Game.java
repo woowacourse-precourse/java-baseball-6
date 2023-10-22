@@ -38,7 +38,7 @@ class Game {
             String[] inputArray = input.split("");
 
             if (checkNullError(inputArray) || checkLengthError(inputArray, 3) || checkNumericError(inputArray)
-                    || checkEach1to9Error(inputArray)) {
+                    || checkEach1to9Error(inputArray) || checkDuplicateError(inputArray)) {
                 throw new IllegalArgumentException();
             }
         }
@@ -77,6 +77,13 @@ class Game {
             return false;
         }
 
+        private boolean checkDuplicateError(String[] userInput) {
+            if (userInput[0].equals(userInput[1]) || userInput[1].equals(userInput[2])
+                    || userInput[0].equals(userInput[2])) {
+                return true;
+            }
+            return false;
+        }
     }
 
     class ComNumber {
