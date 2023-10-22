@@ -2,10 +2,11 @@ package baseball.model;
 
 import static baseball.model.enums.RestartOrExitInputErrorMessage.INVALID_CHARACTER;
 import static baseball.model.enums.RestartOrExitInputErrorMessage.INVALID_LENGTH;
-import static baseball.model.PlayerInput.EMPTY_INPUT;
+import static baseball.model.input.PlayerInput.EMPTY_INPUT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.model.input.RestartOrExitInput;
 import org.junit.jupiter.api.Test;
 
 class RestartOrExitInputTest {

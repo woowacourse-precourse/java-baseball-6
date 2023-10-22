@@ -1,7 +1,8 @@
 package baseball.controller;
 
-import baseball.model.GameNumbers;
-import baseball.model.Score;
+import baseball.model.numbers.GameNumbers;
+import baseball.model.score.Score;
+import baseball.model.score.ScoreCalculator;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

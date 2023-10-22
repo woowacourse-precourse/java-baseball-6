@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.input;
 
 import static baseball.model.enums.NumberInputErrorMessage.DUPLICATE_NUMBER;
 import static baseball.model.enums.NumberInputErrorMessage.INVALID_CHARACTER;

@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.input;
 
 public class PlayerInput {
     public static final String EMPTY_INPUT = "입력이 없습니다.";

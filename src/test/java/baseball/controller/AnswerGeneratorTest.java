@@ -1,6 +1,7 @@
 package baseball.controller;
 
-import baseball.model.GameNumbers;
+import baseball.model.numbers.AnswerGenerator;
+import baseball.model.numbers.GameNumbers;
 import org.junit.jupiter.api.Test;
 
 class AnswerGeneratorTest {

@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.score;
 
 import static baseball.model.enums.ScoreMessage.BALL;
 import static baseball.model.enums.ScoreMessage.NOTHING;

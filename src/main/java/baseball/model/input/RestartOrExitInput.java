@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.input;
 
 import static baseball.model.enums.RestartOrExitCommand.EXIT_GAME;
 import static baseball.model.enums.RestartOrExitInputErrorMessage.INVALID_CHARACTER;

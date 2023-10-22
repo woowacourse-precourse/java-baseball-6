@@ -3,9 +3,10 @@ package baseball.controller;
 import static baseball.model.enums.GameMessage.EXIT_GAME_MESSAGE;
 import static baseball.model.enums.GameMessage.INPUT_NUMBERS_MESSAGE;
 
-import baseball.model.GameNumbers;
-import baseball.model.NumberInput;
-import baseball.model.Score;
+import baseball.model.numbers.GameNumbers;
+import baseball.model.input.NumberInput;
+import baseball.model.score.Score;
+import baseball.model.score.ScoreCalculator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
