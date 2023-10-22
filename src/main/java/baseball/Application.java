@@ -1,26 +1,25 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(true) {
-            List<Integer> randomNumber = generateUniqueNumbers();
+        while (true) {
+            UniqueRandomNumberGenerator uniqueRandomNumber =
+                    new UniqueRandomNumberGenerator(1, 9, 3);
 
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String inputNumber = Console.readLine();
-                List<Integer> answer = parseInput(inputNumber);
-                if (isSameAnswerAndRandomNumber(randomNumber, answer)) {
+                List<Integer> answer = processUserInput(inputNumber);
+                if (checkAndPrintNumberMatchResult(uniqueRandomNumber, answer)) {
                     break;
                 }
             }
+
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String choice = Console.readLine();
             if (choice.equals("2")) {
@@ -30,35 +29,24 @@ public class Application {
         }
     }
 
-    private static List<Integer> generateUniqueNumbers() {
-        List<Integer> uniqueNumbers = new ArrayList<>();
-        int min = 1;
-        int max = 9;
-
-        while (uniqueNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(min, max);
-            if (!uniqueNumbers.contains(randomNumber)) {
-                uniqueNumbers.add(randomNumber);
-            }
-        }
-        return uniqueNumbers;
-    }
-
-    private static List<Integer> parseInput(String input) {
+    private static List<Integer> processUserInput(String input) {
         validInput(input);
         return input.chars()
                 .mapToObj(Character::getNumericValue)
                 .toList();
     }
 
-    private static boolean isSameAnswerAndRandomNumber(List<Integer> randomNumber, List<Integer> answer) {
+    private static boolean checkAndPrintNumberMatchResult(UniqueRandomNumberGenerator randomNumber,
+                                                          List<Integer> answer) {
         int strikes = 0;
         int balls = 0;
+        List<Integer> integerList = randomNumber.randomNumberList();
+        int size = integerList.size();
 
-        for (int i = 0; i < randomNumber.size(); i++) {
-            if (randomNumber.get(i).equals(answer.get(i))) {
+        for (int i = 0; i < size; i++) {
+            if (integerList.get(i).equals(answer.get(i))) {
                 strikes++;
-            } else if (answer.contains(randomNumber.get(i))) {
+            } else if (answer.contains(integerList.get(i))) {
                 balls++;
             }
         }
@@ -101,5 +89,4 @@ public class Application {
         char[] digits = input.toCharArray();
         return digits[0] == digits[1] || digits[0] == digits[2] || digits[1] == digits[2];
     }
-
 }
