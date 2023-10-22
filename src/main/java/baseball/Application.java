@@ -65,6 +65,7 @@ public class Application {
                     }
                     player.add(playerNum);
                 }
+
                 // 스트라이크 수 확인
                 for (int s = 0; s < 3; s++) {
 
@@ -76,6 +77,15 @@ public class Application {
                         playerBall.add(player.get(s));
                     }
                 }
+
+                // 볼 수 확인
+                for (int b = 0; b < playerBall.size(); b++) {
+
+                    if(computerBall.contains(playerBall.get(b))) {
+                        ballCount++;
+                    }
+                }
+
             }
             // 플레이어가 입력한 값에 대한 예외 처리
             catch (IllegalArgumentException e) {
