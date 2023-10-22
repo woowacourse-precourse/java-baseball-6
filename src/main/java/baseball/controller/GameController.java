@@ -63,9 +63,9 @@ public class GameController {
 
     public boolean exit() {
         inputView.printGameOverMessage();
-        String command = playerService.inputGameCommand();
+        GameCommand gameCommand = playerService.inputCommand();
 
-        if (command.equals(GameCommand.GAME_RESTART_COMMAND)) {
+        if (gameCommand == GameCommand.GAME_RESTART) {
             return false;
         }
 
