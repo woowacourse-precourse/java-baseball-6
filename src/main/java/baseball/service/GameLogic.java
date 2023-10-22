@@ -1,8 +1,10 @@
 package baseball.service;
 
+import baseball.view.ErrorMessage;
 import baseball.view.PrintMessage;
 import baseball.vo.Computer;
 import baseball.vo.User;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ public class GameLogic {
             PrintMessage.printStrike(strikeCount);
         }else if(ballCount>0){
             PrintMessage.printBall(ballCount);
+            PrintMessage.printEnter();
         }else if(strikeCount>0){
             PrintMessage.printStrike(strikeCount);
         }
@@ -69,4 +72,16 @@ public class GameLogic {
         return nothing;
     }
 
+    public static boolean retryGame(){
+        boolean retry=true;
+        String input= Console.readLine();
+        if(input.equals("1")){
+            retry=true;
+        }else if(input.equals("2")){
+            retry=false;
+        }else{
+            throw new IllegalArgumentException(ErrorMessage.GAME_END_ERROR);
+        }
+        return retry;
+    }
 }
