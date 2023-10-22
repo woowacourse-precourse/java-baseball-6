@@ -21,4 +21,8 @@ public class Computer {
 
         return computerNums;
     }
+
+    public void inputNumberPhrase() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
 }
