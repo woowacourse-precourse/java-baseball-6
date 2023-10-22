@@ -30,10 +30,19 @@ public class GameService {
             // TODO : 이전에 입력한 숫자와 비교하여 중복된 숫자가 있는지 확인하는 로직 구현
 
             countStrikeAndBall(userNumbers);
+            giveHint();
 
             if(this.strikeCount == 3) {
                 break;
             }
+        }
+    }
+
+    private void giveHint() {
+        if (this.strikeCount == 0 && this.ballCount == 0) {
+            OutView.printNothing();
+        } else {
+            OutView.printResult(this.strikeCount, this.ballCount);
         }
     }
 
