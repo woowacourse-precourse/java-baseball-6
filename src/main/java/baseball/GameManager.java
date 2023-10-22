@@ -1,13 +1,21 @@
 package baseball;
 
 import baseball.number.GameNumber;
+import baseball.printer.ConsoleGamePrinter;
+import baseball.printer.GamePrinter;
+import baseball.receiver.ConsoleGameReceiver;
+import baseball.receiver.GameReceiver;
 
 import java.io.BufferedReader;
 
 public class GameManager {
 
-    public GameManager(BufferedReader receiver) {
+    private final GameReceiver gameReceiver;
+    private final GamePrinter gamePrinter;
 
+    public GameManager(BufferedReader receiver) {
+        this.gameReceiver = new ConsoleGameReceiver(receiver);
+        this.gamePrinter = new ConsoleGamePrinter();
     }
 
     public void run() {
