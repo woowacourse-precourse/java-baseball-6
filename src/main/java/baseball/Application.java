@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -17,6 +18,16 @@ public class Application {
             numOfStrike = getNumberOfStrike(computerNumber, playerNumber);
             printBaseBallResult(numOfBall, numOfStrike);
         } while(numOfStrike < 3);
+    }
+
+    private static List<Integer> getPlayerNumber() {
+        String playerInput = Console.readLine();
+        try {
+            return Arrays.stream(playerInput.split(""))
+                    .map(Integer::parseInt).toList();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 입력값입니다.");
+        }
     }
 
     private static List<Integer> getComputerNumber() {
