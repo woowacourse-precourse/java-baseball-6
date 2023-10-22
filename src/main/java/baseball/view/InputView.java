@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.config.Config;
 import baseball.domain.BaseballNumbers;
+import baseball.util.Parser;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -27,6 +28,11 @@ public class InputView {
     }
 
     public static String getUserInput() { return Console.readLine(); }
+
+    public static BaseballNumbers getUserNumbers() {
+        BaseballNumbers userNumbers = Parser.parseStringToBaseballNumbers(InputView.getUserInput());
+        return userNumbers;
+    }
 
     /* 값 확인용 */
     public static void printCheat(BaseballNumbers computerNumbers) {

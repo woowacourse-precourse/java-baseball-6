@@ -12,7 +12,6 @@ import baseball.view.OutputView;
 public class GameController {
 
     GameService service = new GameService();
-    Parser parser = new Parser();
     BaseballNumbers computerNumbers;
 
     public static boolean playing = true;
@@ -25,7 +24,7 @@ public class GameController {
             if (computerNumbers == null) computerNumbers = service.generateNumbers();
             InputView.printCheat(computerNumbers);
             InputView.printRequestingInput();
-            BaseballNumbers userNumbers = getUserNumbers();
+            BaseballNumbers userNumbers = InputView.getUserNumbers();
             Result result = service.compare(computerNumbers, userNumbers);
             OutputView.printResult(result);
             userNumbers.clear();
@@ -34,11 +33,6 @@ public class GameController {
                 restartOrNot(InputView.getUserInput());;
             }
         }
-    }
-
-    private BaseballNumbers getUserNumbers() {
-        BaseballNumbers userNumbers = parser.parseStringToBaseballNumbers(InputView.getUserInput());
-        return userNumbers;
     }
 
     private void restartOrNot(String input) {
