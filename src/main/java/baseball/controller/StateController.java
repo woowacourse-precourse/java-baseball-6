@@ -32,8 +32,12 @@ public class StateController {
     }
 
     public boolean gameStateChange() {
+        String playerNumber;
+
         outputView.printRestartMessage();
-        return Integer.parseInt(inputview.inputRestartNumber()) == GAMESTATE_RESTART;
+        playerNumber = inputview.inputRestartNumber();
+        exceptionCheck.restartInputCheck(playerNumber);
+        return Integer.parseInt(playerNumber) == GAMESTATE_RESTART;
     }
 
     public void gameScoreCheck(Map<String, Integer> scoreMap) {

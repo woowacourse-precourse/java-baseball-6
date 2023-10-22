@@ -9,4 +9,10 @@ public class ExceptionCheck {
             throw new IllegalArgumentException();
         }
     }
+
+    public void restartInputCheck(String inputNumber) {
+        if (!(Objects.equals(inputNumber, "1")) && !(Objects.equals(inputNumber, "2"))) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
