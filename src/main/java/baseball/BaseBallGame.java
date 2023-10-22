@@ -15,7 +15,6 @@ public class BaseBallGame {
     }
 
 
-
     private int countNumberOfStrike(final List<Integer> expectNumberSequence){
         int numberOfStrikes = 0;
         for (int i =0; i < computerRandomNumber.size(); i++){
@@ -26,6 +25,16 @@ public class BaseBallGame {
         return numberOfStrikes;
     }
 
+    private int countNumberOfBall(final List<Integer> expectNumberSequence,final int numberOfStrikes){
+        int numberOfBalls = Math.negateExact(numberOfStrikes);
+        Set<Integer> set = new HashSet<>(expectNumberSequence);
+        for (Integer randomNumber : computerRandomNumber) {
+            if (set.contains(randomNumber)){
+                numberOfBalls++;
+            }
+        }
+        return numberOfBalls;
+    }
 
     private List<Integer> stringToListConverter(String numberSequence){
         try{
