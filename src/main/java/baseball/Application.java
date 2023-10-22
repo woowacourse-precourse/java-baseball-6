@@ -11,14 +11,14 @@ public class Application {
 
     private static final int NUMBER_SIZE = 3;
 
-    private static void playBaseBall() {
+    private static void playBaseball() {
         int numOfBall, numOfStrike;
         List<Integer> computerNumber = getComputerNumber();
         do {
             List<Integer> playerNumber = getPlayerNumber();
             numOfBall = getNumberOfBall(computerNumber, playerNumber);
             numOfStrike = getNumberOfStrike(computerNumber, playerNumber);
-            printBaseBallResult(numOfBall, numOfStrike);
+            printBaseballResult(numOfBall, numOfStrike);
         } while(numOfStrike < NUMBER_SIZE);
     }
 
@@ -66,7 +66,7 @@ public class Application {
     public static void main(String[] args) {
         int choice;
         do {
-            playBaseBall();
+            playBaseball();
             choice = askToContinue();
         } while(choice == 1);
     }
