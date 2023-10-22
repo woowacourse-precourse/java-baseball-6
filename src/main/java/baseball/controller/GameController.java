@@ -38,7 +38,7 @@ public class GameController {
         while (!game.isGameOver()) {
             outputView.inputBallsMessage();
             GameResult gameResult = gameService.compareAndResult(computerBalls, getPlayerBalls());
-            outputView.resultMessage(gameResult.createGameResult());
+            outputView.resultMessage(gameService.createGameResult(gameResult));
             gameService.updateGameState(game, gameResult);
         }
     }

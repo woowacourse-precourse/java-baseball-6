@@ -55,6 +55,10 @@ public class GameService {
         return computerBall.number().equals(playerBall.number());
     }
 
+    public String createGameResult(GameResult gameResult) {
+        return gameResult.createGameResult();
+    }
+
     public void updateGameState(Game game, GameResult gameResult) {
         if (gameResult.isThreeStrike()) {
             game.toggleGameOver();
