@@ -12,6 +12,7 @@ public class Application {
 
         List<Integer> computer = makeRandomNumber();
         while (true) {
+            System.out.println("컴퓨터가 입력한 값: " + computer);
             System.out.print("숫자를 입력해주세요 : ");
 
             int strike = 0;
@@ -54,12 +55,12 @@ public class Application {
             if (strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int restart = Integer.parseInt(Console.readLine());
-                if (restart == 1) {
+                String restart = Console.readLine();
+                if (restart.equals("1")) {
                     computer = makeRandomNumber();
                     continue;
                 }
-                else if (restart == 2) {
+                else if (restart.equals("2")) {
                     break;
                 }
                 throw new IllegalArgumentException();
