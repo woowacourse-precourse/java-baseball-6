@@ -24,6 +24,7 @@ public class GameController {
         int strikeCount = countStrike(computerNum, userNum);
         int ballCount = countBall(computerNum, userNum);
         printResult(strikeCount, ballCount - strikeCount);
+        checkWin(strikeCount);
     }
 
     public int countStrike(List<Integer> computerNum, List<Integer> userNum) {
@@ -57,5 +58,11 @@ public class GameController {
             System.out.printf("%d스트라이크", strikeCount);
         }
         System.out.print("\n");
+    }
+
+    public void checkWin(int strikeCount) {
+        if (strikeCount == 3) {
+            hasWon = true;
+        }
     }
 }
