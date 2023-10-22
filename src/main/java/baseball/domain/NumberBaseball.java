@@ -8,14 +8,11 @@ public class NumberBaseball {
     }
 
     public void play(int numberLimit) {
-        // 랜덤한 서로다른 숫자 생성
-        boolean isFinish = false;
-
-        while (!isFinish) {
+        do {
             Answer answer = Answer.createByRandom(numberLimit);
+            System.out.println(answer.getAnswer());
             user.guessUntilCorrect(answer);
-            if(!user.isContinueGame(numberLimit)) isFinish = true;
-        }
+        }while (user.isContinueGame(numberLimit));
     }
 
 }
