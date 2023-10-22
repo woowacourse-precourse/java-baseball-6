@@ -46,4 +46,10 @@ public class BallNumbers {
         Integer userNumber = numberList.get(index);
         return answerNumber.equals(userNumber);
     }
+
+    public boolean isBall(BallNumbers answerNumbers, int index) {
+        return answerNumbers.numberList
+                .contains(numberList.get(index));
+    }
+
 }
