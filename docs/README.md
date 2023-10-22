@@ -1,4 +1,4 @@
--[ ] GameEngine
+-[x] GameEngine
     - [x] 정답값을 입력받는다.
         - [x] 그 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
         - [x] 세자리 음수이면, IllegalArgumentException 반환
@@ -14,7 +14,7 @@
             -[x] 2번을 입력되면, true를 반환.
             -[x] 1,2가 아니면, IllegalArgumentException 반환
 
--[ ] BaseBallGameValidator
+-[x] BaseBallGameValidator
     - [x] baseballGame숫자를 검증한다.
         - [x] 그 값이 같은 값이 있거나, 3개가 아닌 수를 선택하면,IllegalArgumentException 반환
         - [x] 숫자가 아니면,IllegalArgumentException 반환
@@ -30,7 +30,7 @@
     -[x] 값을 읽는다
     -[x] 입력 지원을 멈춘다.
 
--[ ] UI
+-[x] UI
     - [X] 게임 시작 문구를 출력한다.
     - [x] 게임 플레이중인 문구를 출력한다.
     - [x] 판단한 결과 값을 출력한다.
@@ -41,3 +41,10 @@
 
 -[x] AppConfig
     -[x] 위에서 언급한 객체들을 팩토리 역할을 한다.
+
+-[x] BaseBallGame
+    -[x] 게임을 시작하게 해준다
+        -[x] 초반의 문구를 출력한다.
+        -[x] 플레이 문구와 게임 플레이를 진행한다.
+        -[x] 플레이가 종료되면, 재시작할건지 물어본다.
+            -[x] 재시작을 원한다면, 다시 플레이부터 시작한다.
