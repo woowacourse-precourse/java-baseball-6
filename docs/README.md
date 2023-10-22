@@ -22,6 +22,7 @@
    + 같은 수가 전혀 없으면 낫싱
    + 볼, 스트라이크 둘 다 있으면 볼 먼저 출력
 + 입력
+   + "숫자를 숫자를 입력해주세요 : " 출력
    + 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
    + 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException 발생
       + 3자리 수 초과 입력
