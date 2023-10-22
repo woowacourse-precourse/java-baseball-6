@@ -1,10 +1,10 @@
 package baseball;
 
-import baseball.view.InputView;
+import baseball.controller.ComputerController;
 
 public class Application {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        inputView.enterGameNumber();
+        ComputerController computerController = new ComputerController();
+        computerController.startGame();
     }
 }

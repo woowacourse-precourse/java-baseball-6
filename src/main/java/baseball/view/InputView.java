@@ -12,8 +12,6 @@ public class InputView {
         System.out.print(inputNumberMessage);
         String inputNumber = Console.readLine();
         gameNumber.setInputNumber(inputNumber);
-        gameNumber.setRandomNumbers();
-
     }
 
 }
