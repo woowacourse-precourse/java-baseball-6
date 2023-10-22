@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.validation.ValidateDuplicatedNumber;
 import baseball.validation.ValidateNumberFormat;
+import baseball.validation.ValidateRetryCheckNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -20,4 +21,9 @@ public class InputView {
         ValidateDuplicatedNumber.validate(value);
     }
 
+    public int retryCheckNumber() {
+        String input = Console.readLine();
+        ValidateRetryCheckNumber.validate(input);
+        return Integer.parseInt(input);
+    }
 }

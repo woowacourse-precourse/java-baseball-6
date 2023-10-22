@@ -21,9 +21,26 @@ public class BaseballGameController {
     * */
     public void startGame() {
         outputView.readStartMessage();
-        Answer answer = baseballGame.answerGenerate();
-        int inputNumber = inputView.inputNumber();
-        JudgedCounts judgedCounts = baseballGame.judgeAnswer(answer, inputNumber);
+        do {
+            playGame();
+        }while (checkRetry());
     }
 
+    private void playGame() {
+        Answer answer = baseballGame.answerGenerate();
+        do {
+            int inputNumber = inputView.inputNumber();
+            String resultMessage = baseballGame.judgeAnswer(answer, inputNumber);
+            outputView.readCountsMessage(resultMessage);
+        } while (baseballGame.isContinue());
+        outputView.readEndMessage();
+    }
+
+    private Boolean checkRetry() {
+        outputView.readRetryCheckMessage();
+        if (baseballGame.checkRetry(inputView.retryCheckNumber())) {
+            return true;
+        }
+        return false;
+    }
 }

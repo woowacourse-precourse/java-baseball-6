@@ -7,7 +7,12 @@ import java.util.List;
 * 게임을 관리하는 클래스
 * */
 public class BaseballGame {
-    Answer answer;
+
+    Result result;
+
+    public BaseballGame() {
+        this.result = Result.FAIL;
+    }
 
     public Answer answerGenerate() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
@@ -18,18 +23,18 @@ public class BaseballGame {
                 answerNumbers.add(randomNumber);
             }
         }
-        answer = new Answer(answerNumbers);
-        return answer;
+        return new Answer(answerNumbers);
     }
 
-    public JudgedCounts judgeAnswer(Answer answer, int inputNumber) {
+    public String judgeAnswer(Answer answer, int inputNumber) {
         int firstBall = inputNumber/100;
         int secondBall = inputNumber%100/10;
         int thirdBall = inputNumber%10;
         int[] balls = {firstBall,secondBall,thirdBall};
         List<Integer> answerList = answer.getAnswerNumbers();
-
-        return judgeStrikeOrBall(answerList, balls);
+        JudgedCounts judgedCounts = judgeStrikeOrBall(answerList, balls);
+        isSuccess(judgedCounts);
+        return resultBuild(judgedCounts);
     }
 
     private JudgedCounts judgeStrikeOrBall(List<Integer> answerList, int[] balls) {
@@ -44,5 +49,25 @@ public class BaseballGame {
         return judgedCounts;
     }
 
+    private void isSuccess(JudgedCounts judgedCounts) {
+        if (judgedCounts.getStrike() == 3) {
+            result = Result.SUCCES;
+        }
+    }
+    private String resultBuild(JudgedCounts judgedCounts) {
+        CountResultBuilder countResultBuilder = new CountResultBuilder();
+        return countResultBuilder.build(judgedCounts.getStrike(), judgedCounts.getBall());
+    }
 
+    public Boolean isContinue() {
+        return result.equals(Result.FAIL);
+    }
+
+    public Boolean checkRetry(int checkNumber) {
+        if (checkNumber == Retry.RETRY.getCheckNumber()) {
+            result = Result.FAIL;
+            return true;
+        }
+        return false;
+    }
 }
