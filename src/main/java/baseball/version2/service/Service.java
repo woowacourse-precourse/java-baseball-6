@@ -1,28 +1,27 @@
 package baseball.version2.service;
 
 
-import static baseball.version2.Constants.Value.*;
+import static baseball.version2.Constants.Value.ANSWER_ARRAY_SIZE;
+import static baseball.version2.Constants.Value.RANGE_END_NUMBER;
+import static baseball.version2.Constants.Value.RANGE_START_NUMBER;
 
 import baseball.version2.dto.ScoreDto;
 import baseball.version2.repository.ComputerRepository;
 import baseball.version2.repository.ScoreRepository;
-import baseball.version2.view.InputView;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Service {
 
     private final ComputerRepository computerRepository;
-    private final InputView inputView;
+
     private ScoreRepository scoreRepository;
 
     public Service() {
         this.computerRepository = new ComputerRepository();
         this.scoreRepository = new ScoreRepository();
-        this.inputView = new InputView();
     }
 
-    // 컴퓨터 서비스
     public ArrayList<Integer> getComputerAnswer() {
         ArrayList<Integer> computerAnswer = new ArrayList<>();
         while (computerAnswer.size() < ANSWER_ARRAY_SIZE) {
@@ -71,13 +70,14 @@ public class Service {
         }
     }
 
+    public ScoreDto getResult() {
+        ScoreDto scoreDto = new ScoreDto(scoreRepository.getBall(), scoreRepository.getStrike());
+        return scoreDto;
+    }
 
     public void initScoreRepository() {
         scoreRepository.initScore();
     }
 
-    public ScoreDto getResult() {
-        ScoreDto scoreDto = new ScoreDto(scoreRepository.getBall(), scoreRepository.getStrike());
-        return scoreDto;
-    }
+
 }

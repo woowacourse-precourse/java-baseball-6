@@ -1,5 +1,7 @@
 package baseball.version2;
 
+import static baseball.version2.Constants.Value.CONTINUE_NUMBER;
+
 import baseball.version2.controller.Controller;
 
 public class Game {
@@ -10,15 +12,15 @@ public class Game {
         this.controller = new Controller();
     }
 
-    public void run(){
-        int continueDecision = 1;
-        while (continueDecision==1){
+    public void run() {
+        int continueDecision = CONTINUE_NUMBER;
+        while (continueDecision == CONTINUE_NUMBER) {
             controller.settingGame();
             boolean isCorrect = false;
-            while(!isCorrect){
-                isCorrect=controller.startGame();
+            while (!isCorrect) {
+                isCorrect = controller.startGame();
             }
-            continueDecision=controller.isContinue();
+            continueDecision = controller.isContinue();
         }
     }
 }
