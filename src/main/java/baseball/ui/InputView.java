@@ -15,7 +15,7 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public String scanPitches() {
+    public String scanNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = scanner.nextLine();
         validator.validate(input, GameConfig.PITCH_COUNT.getValue());
