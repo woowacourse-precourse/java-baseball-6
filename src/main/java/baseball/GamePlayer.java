@@ -14,9 +14,9 @@ public class GamePlayer {
     public void playGame() {
         while (gameState.getState() != GameState.END_STATE) {
             makeAnotherSuggestion(gameNumberController.randomComputerNumberGenerator());
+            Output.gameSucceeded();
+            gameState.checkGameRetryOrEnd(Input.retryOrEnd());
         }
-        Output.gameSucceeded();
-        gameState.checkGameRetryOrEnd(Input.retryOrEnd());
     }
 
     public void makeAnotherSuggestion(List<Integer> computer) {
