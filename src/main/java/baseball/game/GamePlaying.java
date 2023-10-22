@@ -6,6 +6,7 @@ import baseball.print.PrintMessage;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GamePlaying {
     private static final String STRIKE = "스트라이크";
@@ -33,7 +34,7 @@ public class GamePlaying {
     }
 
     private int isSame(int i) {
-        if (computerNumber.get(i) == playerNumber.get(i)) {
+        if (Objects.equals(computerNumber.get(i), playerNumber.get(i))) {
             return 1;
         }
         return 0;
