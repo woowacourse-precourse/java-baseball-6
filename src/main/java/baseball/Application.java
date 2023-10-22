@@ -24,12 +24,12 @@ public class Application {
 
             Player player = new Player();
             Result result = new Result();
-
+            Validate validator = new Validate();
             while (result.isCondition()) {//게임 한 판
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
                 try {
-                    new Validate().validate(num);
+                    validator.validate(num);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                     Console.close();
@@ -44,6 +44,16 @@ public class Application {
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restart = Console.readLine();
+            try {
+                validator.validateForRestart(restart);
+            } catch (Exception e) {
+                Console.close();
+                return;
+            }
+            if (restart == END) {
+                break;
+            }
         }
+        Console.close();
     }
 }
