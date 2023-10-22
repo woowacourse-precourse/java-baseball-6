@@ -16,10 +16,6 @@ public class BaseBall {
     this.ballNumbers = generatedRandomBallNumbers();
   }
 
-  public List<Integer> getBallNumbers() {
-    return this.ballNumbers;
-  }
-
   public Result getPlayResult(List<Integer> targetBallNumbers) {
     Result result = new Result();
 
