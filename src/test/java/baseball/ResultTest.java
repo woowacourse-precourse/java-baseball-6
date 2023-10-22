@@ -46,4 +46,15 @@ class ResultTest {
         assertEquals(resultInKorean, ballCount + OutputMessage.BALL.message);
     }
 
+    @Test
+    void Strike와_Ball이_있는_Result_결과를_한글_String으로_반환한다() {
+        int ballCount = 2;
+        int strikeCount = 1;
+        Result result = new Result(ballCount, strikeCount);
+
+        String resultInKorean = result.getResultInKorean();
+
+        assertEquals(resultInKorean, ballCount + OutputMessage.BALL.message + " " + strikeCount + OutputMessage.STRIKE.message);
+    }
+
 }
