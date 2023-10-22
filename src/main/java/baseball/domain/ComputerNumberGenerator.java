@@ -1,32 +1,24 @@
 package baseball.domain;
 
+import baseball.util.BallNumbersValidator;
+import baseball.util.NumberGenerator;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public class ComputerThreeNumbersGenerator {
+public class ComputerNumberGenerator {
     private final NumberGenerator numberGenerator;
 
-    public ComputerThreeNumbersGenerator(NumberGenerator numberGenerator) {
+    public ComputerNumberGenerator(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
     }
 
-    public Computer createOtherThreeNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
-            int randomNumber = numberGenerator.createRandomNumber();
-            if (hasNotDuplicationNumber(numbers, randomNumber)) {
-                numbers.add(randomNumber);
-            }
+    public Computer create() {
+        Set<Integer> set = new HashSet<>();
+        while (set.size() < BallNumbersValidator.GAME_NUMBERS_SIZE) {
+            set.add(numberGenerator.createNumber());
         }
-        return new Computer(numbers);
+        return Computer.of(new ArrayList<>(set));
     }
 
-    private boolean hasNotDuplicationNumber(List<Integer> numbers, int randomNumber) {
-        for (Integer number : numbers) {
-            if (number == randomNumber) {
-                return false;
-            }
-        }
-        return true;
-    }
 }
