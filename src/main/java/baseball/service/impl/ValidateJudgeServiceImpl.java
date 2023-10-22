@@ -43,6 +43,10 @@ public class ValidateJudgeServiceImpl implements ValidateJudgeService {
         if (userCode.getUserCodeSize() != 3 || userCodeSet.size() != 3) {
             throw new IllegalArgumentException();
         }
+
+        if (userCodeSet.contains(0)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
