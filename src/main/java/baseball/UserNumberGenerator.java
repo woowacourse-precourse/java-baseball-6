@@ -17,7 +17,7 @@ public class UserNumberGenerator {
     }
 
     private void validateInput(String input) {
-        if (input.isEmpty()) {
+        if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException("입력값이 존재하지 않습니다.");
         }
         if (input.contains(ZERO)) {
