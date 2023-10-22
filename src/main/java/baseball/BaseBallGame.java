@@ -9,10 +9,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class BaseBallGame {
 
     static String computerAnswer="";
-    static String userAnswer="";
-    static List<String> computer = new ArrayList<>();
-    static int ball=0;
-    static int strike=0;
+    public static String userAnswer="";
+    public static List<String> computer = new ArrayList<>();
+
 
     // BaseBallGame 싱글톤 객체로 생성
     public static final BaseBallGame baseBallGame = new BaseBallGame();
@@ -33,7 +32,8 @@ public class BaseBallGame {
             userAnswer=checkUserInput();
 
             // 사용자 입력과 컴퓨터 값과 비교
-            String decision = umpire();
+            BaseballUmpire baseballUmpire = new BaseballUmpire();
+            String decision = baseballUmpire.umpire(userAnswer,computer);
 
             // 3스트라이크일 경우
             RightAnswer rightAnswer = new RightAnswer();
@@ -46,35 +46,6 @@ public class BaseBallGame {
     }
     private void reset() {
         computer.clear();
-    }
-
-    private String umpire() {
-        ball=0; strike=0;
-        StringBuilder sb = new StringBuilder();
-        String[] ans = userAnswer.split("");
-
-        for(int i =0; i<3;i++){
-            if(computer.contains(ans[i])){
-                if(ans[i].equals(computer.get(i))){
-                    strike++;
-                    continue;
-                }
-                ball ++;
-            }
-        }
-
-        if(ball !=0 && strike !=0){
-            sb.append(ball+"볼 "+strike+"스트라이크");
-        } else if (ball==0 && strike==0) {
-            sb.append("낫싱");
-        } else if (strike==0) {
-            sb.append(ball+"볼");
-        } else if(ball ==0){
-            sb.append(strike+"스트라이크");
-        }
-
-        System.out.println(sb.toString());
-        return sb.toString();
     }
 
     //사용자 입력값 체크

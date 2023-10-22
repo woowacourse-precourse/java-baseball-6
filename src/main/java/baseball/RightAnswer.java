@@ -3,8 +3,7 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class RightAnswer {
-
-    static String gameSet ="";
+    private String gameSet ="";
 
     public boolean threeStrikeVAR(String decision) {
         if(decision.equals("3스트라이크")){
