@@ -32,8 +32,8 @@ class ApplicationTest extends NsTest {
         });
 
         // then
-        assertThat(result1).doesNotThrowAnyException();
-        assertThat(result2).isInstanceOf(IllegalArgumentException.class);
+        assertThat(result1).as("valid list").doesNotThrowAnyException();
+        assertThat(result2).as("invalid with duplication").isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
