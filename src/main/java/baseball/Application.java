@@ -7,11 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        System.out.println("숫자 야구게임을 시작합니다.");
-
-        // 1. 컴퓨터
+    public static List<Integer> pickComputerNumber(){
         List<Integer> computer = new ArrayList<>();
         while(computer.size() < 3){
             int computerNumber = Randoms.pickNumberInRange(1,9);
@@ -19,6 +15,14 @@ public class Application {
                 computer.add(computerNumber);
             }
         }
+        return computer;
+    }
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        System.out.println("숫자 야구게임을 시작합니다.");
+
+        // 1. 컴퓨터
+        List<Integer> computer = pickComputerNumber();
 
         // 2. 플레이어
         while(true) {
@@ -68,13 +72,7 @@ public class Application {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 int menu = Integer.parseInt(Console.readLine());
                 if (menu == 1) {
-                    computer.clear();
-                    while (computer.size() < 3) {
-                        int computerNumber = Randoms.pickNumberInRange(1, 9);
-                        if (!computer.contains(computerNumber)) {
-                            computer.add(computerNumber);
-                        }
-                    }
+                    computer = pickComputerNumber();
                     continue;
                 }
                 if (menu == 2) {
