@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.core.Referee;
+import baseball.dto.GameResult;
 import baseball.util.NumberGenerator;
 import baseball.util.Parser;
 import baseball.view.InputView;
@@ -47,7 +48,7 @@ public class GameManager {
     }
 
     private boolean calculateGameResult() {
-        String judgeResult = referee.judge(this.computerNumbers, this.userInputNumbers);
+        GameResult judgeResult = referee.judge(this.computerNumbers, this.userInputNumbers);
         return false;
     }
 
