@@ -6,6 +6,7 @@
  - 입력은 ``camp.nextstep.edu.missionutils.Console``의 ``readLine()``을 활용한다.
  - 아래의 경우 ``IllegalArgumentException``을 발생시키며 종료된다.
    - 입력이 숫자가 아닌 경우
+   - 입력이 음수이거나 0인 경우
    - 입력한 숫자가 3자리가 아닌 경우
    - 입력한 숫자에 중복이 존재하는 경우
 
