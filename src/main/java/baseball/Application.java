@@ -10,10 +10,29 @@ import java.util.List;
 public class Application {
 
     static void playGame(){
-        while(true){
-            break;
+        List<Integer> computerNumber = getRandomNumber();
+        while (true) {
+            System.out.print("숫자를 입력해 주세요 : ");
+            String userNumber = inputUserNumber();
+            // result[2] = {ball 갯수, strike 갯수}
+            int[] result = compareNumber(userNumber, computerNumber);
         }
 
+    }
+
+    static int[] compareNumber(String userNumber, List<Integer> computerNumber) {
+        String[] number = userNumber.split("");
+        int[] countBall = new int[2];
+
+        for (int i = 0; i < 3; i++) {
+            int num = Integer.parseInt(number[i]);
+            if (computerNumber.get(i) == num) {
+                countBall[1]++;
+            } else if (computerNumber.contains(num)) {
+                countBall[0]++;
+            }
+        }
+        return countBall;
     }
 
     static List<Integer> getRandomNumber() {
