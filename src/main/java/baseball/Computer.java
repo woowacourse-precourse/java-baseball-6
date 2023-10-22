@@ -6,15 +6,17 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Computer {
+    // 컴퓨터가 가지고 있는 숫자
+    public static String computerNumber = "";
     // 스트라이크 횟수
-    private int stateStrike = 0;
+    public static int stateStrike = 0;
     // 볼 횟수
-    private int stateBall = 0;
+    public static int stateBall = 0;
     // 낫싱 횟수
-    private int stateNothing = 0;
+    public static int stateNothing = 0;
 
     // 모든 자리의 수가 서로 다르고, 0이 포함되지 않는 숫자를 생성하는 메서드
-    public String makeNumber() {
+    public void makeNumber() {
         Integer randomNumber = 0;
 
         // 랜덤한 숫자를 생성하고, 검증한 결과가 true인 동안 계속해서 랜덤 숫자를 새로 생성
@@ -23,12 +25,18 @@ public class Computer {
         }
         while (validateComputerNumber(randomNumber.toString()));
 
-        // 검증이 끝나면 해당 숫자를 반환
-        return randomNumber.toString();
+        // 검증이 끝나면 해당 숫자를 저장
+        computerNumber = randomNumber.toString();
     }
 
-    public int getStateStrike() {
+    public static int getStateStrike() {
         return stateStrike;
+    }
+
+    public static void resetState() {
+        stateStrike = 0;
+        stateBall = 0;
+        stateNothing = 0;
     }
 
     public void checkNumber(String computerNumber, String playerNumber) {
