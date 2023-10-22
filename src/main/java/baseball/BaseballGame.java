@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.PlayerView.*;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,17 +12,18 @@ public class BaseballGame {
     private Referee referee = new Referee();
 
     public void play() {
-        playerView.start();
+        playerView.output(START_MESSAGE);
         do {
             startGame();
-            playerView.end();
-        } while (!isRetry());
+            playerView.output(END_MESSAGE);
+            playerView.output(INPUT_RETRY_MESSAGE);
+        } while (isRetry());
     }
 
     private void startGame() {
         String computerNumbers = computer.generate();
         do {
-            playerView.inputNumbers();
+            playerView.output(INPUT_NUMBERS_MESSAGE);
             String playerNumbers = playerView.input();
             gameResult = referee.judge(computerNumbers, playerNumbers);
             gameResult.result();
@@ -56,6 +59,6 @@ public class BaseballGame {
     }
 
     private boolean isRetry() {
-        return playerView.input().equals("2");
+        return playerView.input().equals(RETRY_NUMBER);
     }
 }
