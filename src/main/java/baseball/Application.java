@@ -4,9 +4,17 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Application {
+
+    static void playGame(){
+        while(true){
+            break;
+        }
+
+    }
 
     static List<Integer> getRandomNumber() {
         List<Integer> computer = new ArrayList<>();
@@ -21,7 +29,25 @@ public class Application {
 
     static String inputUserNumber() {
         String input = readLine();
+        checkUserInput(input);
         return input;
+    }
+
+    static void checkUserInput(String input) {
+        HashSet<Character> numberBucket = new HashSet<>();
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < 3; i++) {
+            if (input.charAt(i) < '1' || input.charAt(i) > '9') {
+                throw new IllegalArgumentException();
+            }
+            if (numberBucket.contains(input.charAt(i))) {
+                throw new IllegalArgumentException();
+            } else {
+                numberBucket.add(input.charAt(i));
+            }
+        }
     }
 
     static boolean replayInputCheck() {
@@ -37,5 +63,6 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        playGame();
     }
 }
