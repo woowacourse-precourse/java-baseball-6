@@ -22,6 +22,6 @@ public class GameConstants {
             RegameChoice.EXIT_GAME.getValue()
     );
 
-
+    public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
 }

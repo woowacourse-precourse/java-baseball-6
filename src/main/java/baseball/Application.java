@@ -3,6 +3,7 @@ package baseball;
 import baseball.controller.RegameChoice;
 import baseball.domain.GameConstants;
 import baseball.util.IntegerUtil;
+import baseball.view.InputView;
 import baseball.view.StartView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -29,7 +30,7 @@ public class Application {
             GuessingLoop:
             while (true) {
                 //사용자는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 입력　
-                System.out.print("숫자를 입력해주세요 : ");
+                InputView.displayInputMessage();
                 String inputNum = Console.readLine();
 
                 //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
