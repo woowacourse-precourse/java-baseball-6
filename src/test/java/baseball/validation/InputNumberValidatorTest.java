@@ -26,7 +26,7 @@ class InputNumberValidatorTest {
 
     @Test
     void 숫자가_중복이면_예외발생() {
-        assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validateInputDuplication(List.of(1, 2, 2)));
+        assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validateInputDuplication("22"));
     }
 
 }

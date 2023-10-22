@@ -48,8 +48,11 @@ public class InputNumberValidator {
      * 플레이어의 입력값이 중복인지 확인
      * @Param input 플레이어의 숫자
      * */
-    public static void validateInputDuplication(List<Integer> input) {
-        Set<Integer> duplicateCheckSet = new HashSet<>(input);
+    public static void validateInputDuplication(String input) {
+        Set<Character> duplicateCheckSet = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            duplicateCheckSet.add(c);
+        }
 
         if (duplicateCheckSet.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException();
