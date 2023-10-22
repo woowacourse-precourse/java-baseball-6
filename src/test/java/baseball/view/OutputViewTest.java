@@ -52,30 +52,10 @@ class OutputViewTest {
 
     // printBallStrike 각 조건 별 출력값 확인
     @Test
-    @DisplayName("printBallStrike() 볼:0 스트라이크:0 출력 검사")
-    void testPrintNothing() {
-        printBallStrike(0, 0);
-        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("낫싱");
-    }
-
-    @Test
-    @DisplayName("printBallStrike() 볼:1 스트라이크:0 출력 검사")
-    void testPrintBall() {
-        printBallStrike(1, 0);
-        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("1볼");
-    }
-
-    @Test
-    @DisplayName("printBallStrike() 볼:0 스트라이크:1 출력 검사")
-    void testPrintStrike() {
-        printBallStrike(0, 1);
-        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("1스트라이크");
-    }
-
-    @Test
-    @DisplayName("printBallStrike() 볼:1 스트라이크:1 출력 검사")
-    void testPrintBallStrik() {
-        printBallStrike(1, 1);
-        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("1볼 1스트라이크");
+    @DisplayName("printBallStrike() 출력 검사")
+    void testprintBallStrike() {
+        String s = "낫싱";
+        printBallStrike(s);
+        assertThat(outputStreamCaptor.toString().trim()).isEqualTo(s);
     }
 }
