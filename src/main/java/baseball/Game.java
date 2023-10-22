@@ -9,7 +9,8 @@ public class Game {
     private static final int NUMBER_LENGTH = 3;
     private static final String INPUT_RESTART = "1";
     private static final String INPUT_QUIT = "2";
-    private static final String EXCEPTION_MESSAGE = "Please answer 1 or 2.";
+    private static final String EXCEPTION_MESSAGE = "게임을 다시 시작하려면 1을 완전히 종료하려면 2를 입력해주세요. "
+            + "다른 입력은 불가능합니다";
 
     private int strike;
     private int ball;
@@ -27,21 +28,27 @@ public class Game {
 
     public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        initializeComputerNumber();
+        computer.setRandomNumber();
+        randomNumber = computer.getRandomNumber();
 
         while (!quit) {
 
-            initializeUserNumber();
-            initializeBallCount();
+            user.setUserNumber();
+            userNumber = user.getUserNumber();
 
-            separateNumberToDigits();
+            strike = 0;
+            ball = 0;
+
+            randomDigits = getSplitList(randomNumber);
+            userDigits = getSplitList(userNumber);
+
             countStrikeAndBall();
             printBallCount();
 
             if (strike == NUMBER_LENGTH) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                
+
                 setQuitInput();
                 handleQuit();
                 handleRestart();
@@ -50,32 +57,15 @@ public class Game {
     }
 
 
-    private void initializeComputerNumber() {
-        computer.setRandomNumber();
-        randomNumber = computer.getRandomNumber();
-    }
-
-
-    private void initializeUserNumber() {
-        user.setUserNumber();  // call setUserNumber()
-        userNumber = user.getUserNumber();  // call getUserNumber()
-    }
-
-
-    private void initializeBallCount() {
-        strike = 0;
-        ball = 0;
-    }
-
     private void countStrikeAndBall() {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
-            calculateStrikeByIndex(i);
-            calculateBallByIndex(i);
+            countStrike(i);  //
+            countBall(i);
         }
     }
 
 
-    private void calculateBallByIndex(int index) {
+    private void countBall(int index) {
         for (int k = 0; k < NUMBER_LENGTH; k++) {
             if (index != k && randomDigits.get(index).equals(userDigits.get(k))) {
                 ball++;
@@ -83,16 +73,10 @@ public class Game {
         }
     }
 
-    private void calculateStrikeByIndex(int index) {
+    private void countStrike(int index) {
         if (randomDigits.get(index).equals(userDigits.get(index))) {
             strike++;
         }
-    }
-
-
-    private void separateNumberToDigits() {
-        randomDigits = getSplitList(randomNumber);
-        userDigits = getSplitList(userNumber);
     }
 
 
@@ -103,7 +87,8 @@ public class Game {
 
     private void handleRestart() {
         if (quitInput.equals(INPUT_RESTART)) {
-            initializeComputerNumber();
+            computer.setRandomNumber();
+            randomNumber = computer.getRandomNumber();
         }
     }
 
@@ -125,6 +110,7 @@ public class Game {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
+    // inputlist = [1, 2] 생성말고 조건문으로 처리하기
 
     private void printBallCount() {
         String result = "";
