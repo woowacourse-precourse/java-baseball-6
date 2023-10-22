@@ -17,14 +17,14 @@ public class GameController {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 9;
 
-    public void run() {
+    public void startGame() {
         OutputView.printStart();
         do {
-            playGame();
+            playSingleGame();
         } while (isResetRequested());
     }
 
-    private void playGame() {
+    private void playSingleGame() {
         programNumber = new ProgramNumber(NUMBER_SIZE, START_NUMBER, END_NUMBER);
         do {
             userNumber = new UserNumber(InputView.inputUserNumber(), NUMBER_SIZE);
