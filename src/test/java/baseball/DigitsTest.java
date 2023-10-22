@@ -16,4 +16,13 @@ class DigitsTest {
         assertEquals(ballCount, 3);
     }
 
+    @Test
+    void 입력값의_strike_점수를_count_한다() {
+        Digits computerDigits = Digits.generateFixedDigits("123");
+        Digits userInput = Digits.generateFixedDigits("124");
+
+        int strikeCount = computerDigits.countStrike(userInput);
+
+        assertEquals(strikeCount, 2);
+    }
 }
