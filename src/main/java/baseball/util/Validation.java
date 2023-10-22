@@ -2,14 +2,14 @@ package baseball.util;
 
 public class Validation {
 
-    private final int MAX_INPUT_LENGTH = 3;
-    private final int MAX_EXIT_INPUT_LENGTH = 1;
+    public final static int MAX_INPUT_LENGTH = 3;
+    private final static int MAX_EXIT_INPUT_LENGTH = 1;
 
-    private boolean containsZero(String number) {
+    private static boolean containsZero(String number) {
         return number.contains("0");
     }
 
-    public void validNumber(String number) {
+    public static void validNumber(String number) {
 
         if (containsZero(number)) {
             throw new IllegalArgumentException("입력 문자열에 0이 포함되었습니다.");
@@ -22,7 +22,7 @@ public class Validation {
         }
     }
 
-    public void validExitNumber(String number) {
+    public static void validExitNumber(String number) {
 
         if (validLength(number, MAX_EXIT_INPUT_LENGTH)) {
             throw new IllegalArgumentException("입력 문자열의 길이가 1이 되어야 합니다.");
@@ -33,17 +33,17 @@ public class Validation {
         }
     }
 
-    private boolean containsLetter(String number, int maxLength) {
+    private static boolean containsLetter(String number, int maxLength) {
         String tmp = number.replaceAll("[^1-9]", "");
 
         return tmp.length() < maxLength;
     }
 
-    private boolean validLength(String number, int maxLength) {
+    private static boolean validLength(String number, int maxLength) {
         return number.length() != maxLength;
     }
 
-    private boolean duplicateNumber(String number) {
+    private static boolean duplicateNumber(String number) {
         int[] nums = new int[10];
 
         for (int i = 0; i < number.length(); i++) {
@@ -60,7 +60,7 @@ public class Validation {
         return false;
     }
 
-    private boolean isOneOrTwo(String number) {
+    private static boolean isOneOrTwo(String number) {
         return number.equals("1") || number.equals("2");
     }
 }
