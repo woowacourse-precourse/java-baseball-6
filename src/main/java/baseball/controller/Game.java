@@ -1,18 +1,19 @@
-package baseball;
+package baseball.controller;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.TextInterface;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseballGame {
+public class Game {
     List<Integer> answer = new ArrayList<>();
     List<Integer> userAnswer = new ArrayList<>();
     Boolean wantToStop = false;
     Boolean correct = false;
+    TextInterface textInterface = new TextInterface();
 
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        textInterface.openning();
         while (!wantToStop) {
             initGame();
             while (!correct) {
@@ -20,7 +21,6 @@ public class BaseballGame {
                 calculate();
             }
         }
-
     }
 
     public void initGame() {
@@ -46,8 +46,7 @@ public class BaseballGame {
         int userInputInteger;
 
         //user의 입력을 기다림.
-        System.out.print("숫자를 입력해주세요 : ");
-        userInputString = Console.readLine();
+        userInputString = textInterface.readInput();
         if (userInputString.length() != 3) {
             throw new IllegalArgumentException();
         }
@@ -70,15 +69,11 @@ public class BaseballGame {
 
         if (answer.equals(userAnswer)) {
             correct = true;
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            select = Console.readLine();
-
+            select = textInterface.correctAnswer();
             if (select.equals("1")) {
                 wantToStop = false;
             } else if (select.equals("2")) {
-                System.out.println("게임 종료");
+                textInterface.endGame();
                 wantToStop = true;
             } else {
                 throw new IllegalArgumentException();
@@ -96,13 +91,13 @@ public class BaseballGame {
             }
 
             if (strike == 0 && ball == 0) {
-                System.out.println("낫싱");
+                textInterface.nothing();
             } else if (strike != 0 && ball == 0) {
-                System.out.println(strike + "스트라이크");
+                textInterface.onlyStrike(strike);
             } else if (strike == 0 && ball != 0) {
-                System.out.println(ball + "볼");
+                textInterface.onlyBall(ball);
             } else if (strike != 0 && ball != 0) {
-                System.out.println(ball + "볼 " + strike + "스트라이크");
+                textInterface.ballAndStrike(ball, strike);
             }
             userAnswer.clear();
         }
