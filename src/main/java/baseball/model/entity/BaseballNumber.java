@@ -22,16 +22,28 @@ public class BaseballNumber {
 
     public BaseballNumber(String inputString) {
         List<Integer> inputNumbers = new ArrayList<>();
-        try {
-            for(char c : inputString.toCharArray()) {
-                inputNumbers.add(Integer.parseInt(c + ""));
+        for(char c : inputString.toCharArray()) {
+            int number = validateNumber(c);
+            if(!inputNumbers.contains(number)) {
+                inputNumbers.add(number);
             }
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
         }
         if(inputNumbers.size() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("서로 다른 3개의 숫자를 입력해주세요");
         }
         this.numbers = inputNumbers;
+    }
+
+    private int validateNumber(char c ) {
+        int number;
+        try {
+            number = Integer.parseInt(String.valueOf(c));
+        } catch (Exception e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요");
+        }
+        if(number < 1 || number > 9) {
+            throw new IllegalArgumentException("1~9 사이의 숫자를 입력해주세요");
+        }
+        return number;
     }
 }

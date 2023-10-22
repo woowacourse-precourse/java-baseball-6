@@ -6,8 +6,12 @@ import java.io.InputStreamReader;
 
 public class InputView {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public String inputNumbers() throws IOException {
-        return input("숫자를 입력해주세요 : ");
+    public String inputNumbers() {
+        try {
+            return input("숫자를 입력해주세요 : ");
+        } catch (IOException e) {
+            throw new IllegalArgumentException("입력이 잘못되었습니다.");
+        }
     }
     public String inputRestart() {
         return null;

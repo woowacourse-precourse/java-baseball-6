@@ -16,7 +16,7 @@ public class GameController {
             String input = inputView.inputNumbers();
             baseballNumber = new BaseballNumber(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("");
         }
     }
 }
