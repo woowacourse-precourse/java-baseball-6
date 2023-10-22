@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ValueConverter {
-    public int convertToInt(String number) {
+    public List<Integer> convertToList(String input) {
+        int number = convertToInt(input);
+        return convertToList(number);
+    }
+
+    private int convertToInt(String number) {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
@@ -12,7 +17,7 @@ public class ValueConverter {
         }
     }
 
-    public List<Integer> convertToList(int number) {
+    private List<Integer> convertToList(int number) {
         List<Integer> digits = new ArrayList<>();
         while (number > 0) {
             digits.add(0, number % 10);
