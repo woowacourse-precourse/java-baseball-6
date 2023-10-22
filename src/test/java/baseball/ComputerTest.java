@@ -19,12 +19,12 @@ public class ComputerTest {
     @Test
     void 판정테스트(){
         Computer computer = new Computer();
-        computer.computerNumbers = new int[] {1, 2, 3};
-        Judgement result1 = computer.getJudgeResult(new int[] {1, 2, 3});
-        Judgement result2 = computer.getJudgeResult(new int[] {2, 3, 1});
-        Judgement result3 = computer.getJudgeResult(new int[] {4, 1, 9});
-        Judgement result4 = computer.getJudgeResult(new int[] {1, 9, 2});
-        Judgement result5 = computer.getJudgeResult(new int[] {1, 3, 2});
+        int[] computerNumbers = computer.initComputerNumbers();
+        Judgement result1 = computer.getJudgeResult(computerNumbers);
+        Judgement result2 = computer.getJudgeResult(new int[] {computerNumbers[1], computerNumbers[2], computerNumbers[0]});
+        Judgement result3 = computer.getJudgeResult(new int[] {0, computerNumbers[0], 0});
+        Judgement result4 = computer.getJudgeResult(new int[] {computerNumbers[0], computerNumbers[2], 0});
+        Judgement result5 = computer.getJudgeResult(new int[] {computerNumbers[0], computerNumbers[2], computerNumbers[1]});
 
         Assertions.assertThat(result1.strikeCount).isEqualTo(3);
         Assertions.assertThat(result2.ballCount).isEqualTo(3);
@@ -32,4 +32,5 @@ public class ComputerTest {
         Assertions.assertThat(result4.strikeCount == 1 && result4.ballCount == 1).isTrue();
         Assertions.assertThat(result5.ballCount == 2 && result5.strikeCount == 1).isTrue();
     }
+
 }
