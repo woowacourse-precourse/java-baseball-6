@@ -67,4 +67,12 @@ public class GameNumbers {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public int getNumbersAt(int index) {
+        return numbers.get(index);
+    }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
 }

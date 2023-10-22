@@ -22,10 +22,12 @@ public class Game {
         }
     }
 
-    private void judgeNumberAt(int index) { // FIXME
-        if (Objects.equals(userGameNumbers.getNumbers().get(index), computerGameNumbers.getNumbers().get(index))) {
+    private void judgeNumberAt(int index) {
+        int userNumber = userGameNumbers.getNumbersAt(index);
+        int computerNumber = computerGameNumbers.getNumbersAt(index);
+        if (Objects.equals(userNumber, computerNumber)) {
             result.countUpStrike();
-        } else if (userGameNumbers.getNumbers().contains(computerGameNumbers.getNumbers().get(index))) {
+        } else if (userGameNumbers.contains(computerNumber)) {
             result.countUpBall();
         }
     }
