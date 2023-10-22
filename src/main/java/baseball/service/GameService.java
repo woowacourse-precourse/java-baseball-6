@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.Util.Validator;
+import baseball.constants.ErrorCode;
 import baseball.dto.Result;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -59,7 +60,7 @@ public class GameService {
                     .map(Integer::parseInt)
                     .toList();
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력된 값이 숫자가 아닙니다.");
+            throw new IllegalArgumentException(ErrorCode.NOT_NUMERIC.toString());
         }
     }
 

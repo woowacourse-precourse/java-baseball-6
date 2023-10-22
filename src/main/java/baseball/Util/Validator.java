@@ -1,5 +1,7 @@
 package baseball.Util;
 
+import baseball.constants.ErrorCode;
+
 import java.util.List;
 
 public class Validator {
@@ -7,7 +9,7 @@ public class Validator {
     public Integer validateCommand(String input) {
         Integer command = isNumeric(input);
         if (command != 1 && command != 2) {
-            throw new IllegalArgumentException("커맨드는 1 또는 2여야 합니다.");
+            throw new IllegalArgumentException(ErrorCode.INVALID_COMMAND.toString());
         }
         return command;
     }
@@ -23,13 +25,13 @@ public class Validator {
                 .distinct()
                 .toList();
         if (intList.size() != inputList.size()) {
-            throw new IllegalArgumentException("입력된 수가 1-9 사이의 값이 아니거나 중복된 값이 있습니다.");
+            throw new IllegalArgumentException(ErrorCode.INVALID_INPUT.toString());
         }
     }
 
     private void validateSize(List<Integer> inputList) {
         if (inputList.size() != 3) {
-            throw new IllegalArgumentException("정수는 총 3개 입력할 수 있습니다.");
+            throw new IllegalArgumentException(ErrorCode.INVALID_SIZE.toString());
         }
     }
 
@@ -38,7 +40,7 @@ public class Validator {
             Integer number = Integer.parseInt(input);
             return number;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력한 값이 정수가 아닙니다.");
+            throw new IllegalArgumentException(ErrorCode.NOT_NUMERIC.toString());
         }
     }
 }
