@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.constant.Constants;
-
 import java.util.List;
 
 public class Hint {
@@ -13,8 +12,8 @@ public class Hint {
         countStrikeAndBall(computerNumbers, playerNumbers);
     }
 
-    public static Hint of(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        return new Hint(computerNumbers, playerNumbers);
+    public static Hint of(List<Integer> computerNumbers, Number playerNumbers) {
+        return new Hint(computerNumbers, playerNumbers.getNumbers());
     }
 
     public boolean isThreeStrike() {
