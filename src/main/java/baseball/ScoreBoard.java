@@ -15,5 +15,11 @@ public class ScoreBoard {
                 .count();
     }
 
+    public int countBall() {
+        return (int) scoreBoardList.stream()
+                .filter(e -> e.equals("BALL"))
+                .count();
+    }
+
 
 }
