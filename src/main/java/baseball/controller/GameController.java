@@ -4,6 +4,7 @@ import baseball.model.Computer;
 import baseball.model.Game;
 import baseball.model.Player;
 import baseball.utils.RandomUtil;
+import baseball.utils.ValidationUtil;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -16,7 +17,9 @@ public class GameController {
     private static final String BALL_MESSAGE = "볼";
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String RESTART_GAME_OPTION = "1";
 
+    ValidationUtil validationUtil = new ValidationUtil();
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
     RandomUtil randomUtil = new RandomUtil();
@@ -56,6 +59,7 @@ public class GameController {
         game.initStrikeAndBall();
 
         String playerInput = inputView.inputPlayerNumber();
+        validationUtil.playerInputValidator(playerInput);
         player.setPlayerNumbers(playerInput);
 
         countStrikeAndBall(player.getPlayerNumbers(), computer.getComputerNumbers());
@@ -120,6 +124,8 @@ public class GameController {
 
     public boolean restartGame() {
         String answer = inputView.askPlayerGameRestart();
-        return answer.equals("1");
+        validationUtil.restartGameValidator(answer);
+
+        return answer.equals(RESTART_GAME_OPTION);
     }
 }

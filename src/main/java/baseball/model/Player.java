@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.utils.ValidationUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,12 +10,14 @@ public class Player {
     private static final char ZERO_CHAR = '0';
 
     private List<Integer> playerNumbers;
+    private ValidationUtil validationUtil = new ValidationUtil();
 
     public List<Integer> getPlayerNumbers() {
         return playerNumbers;
     }
 
     public void setPlayerNumbers(String playerNumberStr) {
+        validationUtil.savaNumberValidator(playerNumberStr);
         this.playerNumbers = convertNumberToList(playerNumberStr);
     }
 
