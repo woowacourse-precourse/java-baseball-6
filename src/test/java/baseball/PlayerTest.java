@@ -1,8 +1,10 @@
 package baseball;
 
 import static baseball.Constants.IN_GAME;
+import static baseball.Constants.RE_GAME;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
@@ -14,7 +16,6 @@ public class PlayerTest extends NsTest {
 
   private static final InputStream originalSystemIn = System.in;
 
-
   @AfterEach
   public void teardown() {
     System.setIn(originalSystemIn);
@@ -25,16 +26,12 @@ public class PlayerTest extends NsTest {
     System.out.println("test");
   }
 
-
   @Test()
   public void invalidThreeNumbers() {
     System.setIn(new ByteArrayInputStream("1234\n".getBytes()));
-
     Player player = new Player();
 
-    //when,
-
-    //then
+    //when, then
     assertSimpleTest(
         () -> {
           boolean isValid = player.validateNumericInput(Console.readLine(), IN_GAME);
@@ -42,6 +39,35 @@ public class PlayerTest extends NsTest {
         }
     );
     Console.close();
+  }
+
+  @Test
+  public void 재경기일_때_1과_2가_아닌_경우() {
+    System.setIn(new ByteArrayInputStream("3\n".getBytes()));
+    Player player = new Player();
+    assertSimpleTest(
+        () -> {
+          boolean isValid = player.userInputNumbers(RE_GAME);
+          ;
+          assertFalse(isValid);
+        }
+    );
+    Console.close();
+  }
+
+  @Test
+  public void 재경기일_때_숫자가_아닌_경우() {
+    System.setIn(new ByteArrayInputStream("a\n".getBytes()));
+    Player player = new Player();
+    assertSimpleTest(
+        () -> {
+          boolean isValid = player.userInputNumbers(RE_GAME);
+          ;
+          assertFalse(isValid);
+        }
+    );
+    Console.close();
+
   }
 
   @Test
