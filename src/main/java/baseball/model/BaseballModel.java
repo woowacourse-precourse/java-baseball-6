@@ -3,9 +3,7 @@ package baseball.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class BaseballModel {
     private static final int ANSWER_MIN_NUMBER = 1;
@@ -43,26 +41,5 @@ public class BaseballModel {
             list.add(Character.getNumericValue(c));
         }
         return list;
-    }
-
-    public boolean isValidGuess(String input) {
-        if (input.length() != 3) {
-            return false;
-        }
-        Set<Character> seen = new HashSet<>();
-        for (char c : input.toCharArray()) {
-            if (c < ANSWER_MIN_NUMBER + '0' || c > ANSWER_MAX_NUMBER + '0') {
-                return false;
-            }
-            if (seen.contains(c)) {
-                return false;
-            }
-            seen.add(c);
-        }
-        return true;
-    }
-
-    public boolean isValidChoice(String input) {
-        return input.equals("1") || input.equals("2");
     }
 }

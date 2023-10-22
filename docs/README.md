@@ -11,11 +11,15 @@
   - 입력값이 각 자리가 1~9인 중복없는 3자리 숫자가 아니라면 `IllegalArgumentException` 발생
 - `getPlayerGuess` 메서드
   - 사용자의 예측 정답을 입력 받음
-- `isValidGuess` 메서드
-  - 문자열을 인수로 받아 문자열이 정답으로 유효하다면 true 반환
-    - 문자열의 길이가 3이 아니라면 false 반환
-    - 문자열이 숫자가 아니라면 false 반환
-    - 문자열에 중복이 있다면 false 반환
+- `validateGuess` 메서드
+  - 사용자의 예측 정답 입력이 유효한 값인지 검증하는 메서드
+  - 문자열을 인수로 받아 1~9로 이루어진 중복없는 3자리 문자열이 아니라면 `IllegalArgumentException` 발생
+  - `isLengthThree` 메서드
+    - 문자열을 인수로 받아 길이가 3이라면 true 반환
+  - `isAllPositiveInteger` 메서드
+    - 문자열을 인수로 받아 각각의 문자가 1~9라면 true 반환
+  - `isAllUniqueCharacter` 메서드
+    - 문자열을 인수로 받아 각각의 문자가 문자열에서 유일하게 존재하면 true 반환
 ### 점수 계산 기능
 - `calcaulateScore` 메서드
   - 사용자 예측 정답을 인수로 받아 점수를 계산해서 Score 클래스 반환 
@@ -36,6 +40,8 @@
   - 그 외의 값은 `IllegalArgumentException` 발생
 - `getPlayerChoice` 메서드
   - 사용자로부터 게임 재시작 여부를 입력받음
-- `isValidChoice` 메서드
-  - 문자열을 인수로 받아 입력이 유효한지 검사해서 boolean 반환
-    - 문자열이 "1" 이나 "2"가 아니라면 false 반환
+- `validateChoice` 메서드
+  - 사용자의 재시작 여부 입력이 유효한 값인지 검증하는 메서드
+  - 문자열을 인수로 받아 "1" 또는 "2"가 아니라면 `IllegalArgumentException` 발생
+  - `isOneOrTwo` 메서드
+    - 문자열을 인수로 받아 "1" 이나 "2"라면 true 반환
