@@ -1,8 +1,8 @@
 package baseball.controller;
 
+import baseball.model.GameEndOption;
 import baseball.model.NumberComparator;
 import baseball.model.ProgramNumber;
-import baseball.model.ResetGameNumber;
 import baseball.model.UserNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -54,7 +54,7 @@ public class GameController {
     }
 
     private boolean isResetRequested() {
-        ResetGameNumber resetGameNumber = new ResetGameNumber(InputView.resetNumber());
-        return resetGameNumber.getResetNumber().equals(RESET_COMMAND);
+        GameEndOption gameEndOption = new GameEndOption(InputView.resetNumber());
+        return gameEndOption.getOptionValue().equals(RESET_COMMAND);
     }
 }
