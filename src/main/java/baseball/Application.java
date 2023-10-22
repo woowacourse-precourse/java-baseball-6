@@ -15,6 +15,26 @@ public class Application {
     public static final int STANDARD_NUMBER = 3;
 
     public static void main(String[] args) {
+        palyGame();
+
+        // 6. 게임 새로 시작 및 종료 문구 출력
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        // 7. 게임 새로 시작 또는 종료 기능 구현
+        String input = Console.readLine();
+        switch (input) {
+            case "1":
+                palyGame();
+                break;
+            case "2":
+                break;
+            default:
+                throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
+        }
+
+    }
+
+    private static void palyGame() {
         // 1. 시작 메시지 출력
         MessagePrinter.print(Message.START);
 
@@ -28,11 +48,14 @@ public class Application {
             validInput(input);
 
             // 4. 사용자 입력 받은 수와 기존 지정된 숫자 비교
-            gameOver = playGame(computerNumbers, input);
+            gameOver = compare(computerNumbers, input);
         }
+
+        // 5. 3개 숫자가 모두 동일한 경우 안내 멘트 출력 후 게임 종료 처리
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private static boolean playGame(List<Integer> computerNumbers, String input) {
+    private static boolean compare(List<Integer> computerNumbers, String input) {
         List<Integer> inputNumbers = Arrays.stream(input.split("")).map(Integer::parseInt).toList();
 
         int strikeCount = 0;
