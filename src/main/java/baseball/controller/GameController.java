@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.NumberModel;
+import baseball.service.GameService;
 import baseball.view.GameView;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +11,30 @@ public class GameController {
     NumberModel numberModel = new NumberModel();
     GameView gameView = new GameView();
     ValidationUtil validationUtil = new ValidationUtil();
+    GameService gameService;
 
     public int startGame(List<Integer> randomNumbers) {
-        numberModel.setComputerNumbers(randomNumbers);
+        saveComputerNumbers(randomNumbers);
+        gameService = new GameService(numberModel);
 
+        List<Integer> result;
+        boolean correct = false;
+        while (!correct) {
+            setAndSaveUserNumbers();
+            result = gameService.compareNumbers();
+            gameView.printHint(result);
+            correct = checkResult(result);
+        }
+
+        gameView.printEndMessage();
+        return askRestart();
+    }
+
+    private void saveComputerNumbers(List<Integer> randomNumbers) {
+        numberModel.setComputerNumbers(randomNumbers);
+    }
+
+    private void setAndSaveUserNumbers() {
         String userInput = gameView.inputUserNumber();
         validationUtil.validate(userInput);
 
@@ -24,12 +45,13 @@ public class GameController {
             userNumbers.add(convertedNum);
         }
         numberModel.setUserNumbers(userNumbers);
-
-
-        return askRestart();
     }
 
-    public int askRestart() {
+    private boolean checkResult(List<Integer> result) {
+        return result.get(0).equals(3);
+    }
+
+    private int askRestart() {
         String userInput = gameView.inputRestart();
         if (userInput.equals("1")) {
             return 1;
