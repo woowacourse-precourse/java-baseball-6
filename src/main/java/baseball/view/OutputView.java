@@ -41,4 +41,8 @@ public class OutputView {
 
 		System.out.println(joiner.toString());
 	}
+	
+	public void printErrorMessage(Exception exception) {
+		System.out.println(exception.getMessage());
+	}
 }

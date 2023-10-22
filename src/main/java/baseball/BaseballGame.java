@@ -29,7 +29,7 @@ public class BaseballGame {
 			progress();
 			retryOrExit();
 		} catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage());
+			outputView.printErrorMessage(e);
 			throw e;
 		}
 	}
