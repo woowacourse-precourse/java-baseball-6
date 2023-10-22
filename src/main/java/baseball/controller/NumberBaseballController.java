@@ -30,6 +30,7 @@ public class NumberBaseballController {
 
     private void createGameResultFromInputNum(int inputNum) throws IllegalArgumentException{
         if (sameCheck(inputNum)) {
+            processOfEndGame();
             return;
         }
         NumberBaseballResult gameResult = numberBaseballService.countStrikeAndBall(inputNum);
@@ -38,7 +39,6 @@ public class NumberBaseballController {
 
     private boolean sameCheck(int inputNum) {
         if(numberBaseballService.isSameNum(inputNum)) {
-            processOfEndGame();
             return true;
         }
         return false;
