@@ -11,6 +11,9 @@
 ## 📋 랜덤 번호 선택
 ### 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 
 - Random값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
+- Computer 클래스
+  - target: 맞춰야 할 수 3개를 저장하고 있는 리스트
+  - solved: 해당 수를 사용자가 맞췄는지 못맞췄는지 확인하기 위한 bool값
 
 ## 📋 번호 입력 받기
 ### 사용자는 1~9 중 서로 다른 수 3개를 제시한다.
