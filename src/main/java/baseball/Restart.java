@@ -14,6 +14,5 @@ public class Restart {
         } else {
             return false;
         }
-
     }
 }

@@ -20,7 +20,7 @@ public class Application {
 
             String result = "";
 
-            while (!result.equals("3 스트라이크")) {
+            while (!result.equals("3스트라이크")) {
                 result = check.Classification(com_num, init.playerNum());
                 System.out.println(result);
             }
