@@ -1,5 +1,7 @@
 package baseball.validation;
 
+import java.util.Arrays;
+
 public class Validator {
     public static boolean isSize(final String target, final int size) {
         return target.length() == size;
@@ -17,7 +19,7 @@ public class Validator {
     public static boolean isBetweenNumber(final String target, final int min, final int max) {
         for (char c : target.toCharArray()) {
             int number = Character.getNumericValue(c);
-            if ((number < min) && (number > max)) {
+            if ((number < min) || (number > max)) {
                 return false;
             }
         }
