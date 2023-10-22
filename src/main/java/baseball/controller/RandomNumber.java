@@ -12,11 +12,9 @@ public class RandomNumber {
     private int NUM_START = NumberRule.GAME_NUMBER_RANGE_START.getNumber();
     private int NUM_END = NumberRule.GAME_NUMBER_RANGE_END.getNumber();
     private Validation validation;
-    private DecimalNumber decimalNumber;
 
-    public RandomNumber(Validation validation, DecimalNumber decimalNumber) {
+    public RandomNumber(Validation validation) {
         this.validation = validation;
-        this.decimalNumber = decimalNumber;
     }
 
 
@@ -29,8 +27,6 @@ public class RandomNumber {
                 computer.add(randomNumber);
             }
         }
-
-        validation.validationGameNumber(computer.toString());    //랜덤 숫자 생성 유효성 검사
-        
+        DecimalNumber.store(computer);
     }
 }
