@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    final int randomLength = 3;
+    final int randomLen = 3;
     private List<Integer> randomInt;
     private List<Integer> userInt;
     private int strike;
@@ -21,7 +21,7 @@ public class Game {
 
     private void setRandomInt() {
         randomInt = new ArrayList<>();
-        while (randomInt.size() < randomLength) {
+        while (randomInt.size() < randomLen) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomInt.contains(randomNumber)) {
                 randomInt.add(randomNumber);
@@ -61,7 +61,7 @@ public class Game {
             }
         }
         System.out.println(result);
-        if (strike == randomLength) {
+        if (strike == randomLen) {
             isSolved = true;
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
@@ -70,7 +70,7 @@ public class Game {
     private void judgeUserInt() {
         strike = 0;
         ball = 0;
-        for (int i = 0; i < randomLength; i++) {
+        for (int i = 0; i < randomLen; i++) {
             if (randomInt.get(i).equals(userInt.get(i))) {
                 strike++;
             }
@@ -93,7 +93,7 @@ public class Game {
     }
 
     private void validateUserInt(String input) {
-        if (input.length() != randomLength) {
+        if (input.length() != randomLen) {
             throw new IllegalArgumentException("input has to be 3 digits.");
         }
         for (int i = 0; i < input.length(); i++) {
