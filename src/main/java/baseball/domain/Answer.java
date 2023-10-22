@@ -20,7 +20,7 @@ public class Answer {
             ball += countBall(answer, answerNumber, inputNumber);
             strike += countStrike(answerNumber, inputNumber);
         }
-        return new Score(ball, strike);
+        return new Score(new Ball(ball), new Strike(strike));
     }
 
     private int countBall(List<Integer> answer, Integer answerNumber, int inputNumber) {
