@@ -10,14 +10,22 @@ public class Validator {
     }
 
     public void verifyForRedo(String input) {
+        verifyNullAndEmpty(input);
         verifyNumber(input);
         verifyOneAndTwo(input);
     }
 
-    public void verify(String input) {
+    public void verifyForBaseballNumber(String input) {
+        verifyNullAndEmpty(input);
         verifyLength(input);
         verifyNumber(input);
         verifyUniqueNumber(input);
+    }
+
+    private void verifyNullAndEmpty(String input){
+        if(input == null || input.isBlank()){
+            throw new IllegalArgumentException("null 이거나 빈 문자열은 또는 공백으로 이루어질 수 없습니다.");
+        }
     }
 
     private void verifyOneAndTwo(String input) {
