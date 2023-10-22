@@ -15,6 +15,8 @@ import java.util.Map;
 public final class Controller {
     private final InputView inputView;
     private final OutputView outputView;
+    private HintProvider hintProvider;
+    private AnswerNumbers answerNumbers;
 
     public Controller(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -22,24 +24,23 @@ public final class Controller {
     }
 
     public void run() {
-        AnswerNumbers answerNumbers = createAnswerNumbers();
-        play(answerNumbers);
+        initGame();
+        play();
         end();
     }
 
-    private AnswerNumbers createAnswerNumbers() {
-        return AnswerNumbers.createAnswerNumbers(new AnswerNumberGenerator());
+    private void initGame() {
+        answerNumbers = AnswerNumbers.createAnswerNumbers(new AnswerNumberGenerator());
+        hintProvider = new HintProvider(answerNumbers);
 
     }
 
-    private void play(AnswerNumbers answerNumbers) {
-        HintProvider provider = new HintProvider();
+    private void play() {
         List<Integer> playerNumber = new ArrayList<>();
-        List<Integer> answer = answerNumbers.getAnswerNumbers();
+
         while (!answerNumbers.isSameWithAnswer(playerNumber)) {
             playerNumber = getPlayerNumber();
-            Map<HintType, Integer> hintResult = provider.compareNumbers(answer, playerNumber);
-            outputView.displayHint(hintResult);
+            getHint(playerNumber);
         }
     }
 
@@ -50,9 +51,15 @@ public final class Controller {
         return new PlayerNumbers(numbers).getNumbers();
     }
 
+    private void getHint(List<Integer> playerNumber) {
+        Map<HintType, Integer> hintResult = hintProvider.compareNumbers(playerNumber);
+        outputView.displayHint(hintResult);
+    }
+
     private void end() {
         outputView.displayCorrectAnswer();
         outputView.displaySelect();
+
         runCommand(inputView.readCommand());
     }
 
