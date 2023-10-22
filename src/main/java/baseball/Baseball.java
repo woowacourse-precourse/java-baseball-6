@@ -1,12 +1,16 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import baseball.validation.Validator;
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
-import static baseball.constant.MessageConstant.*;
-import static baseball.constant.NumberConstant.*;
-
 public class Baseball {
+    private final Validator validator = new Validator();
+    public List<Integer> getPlayerNumber() {
+        String input = Console.readLine();
+        List<Integer> player = validator.validateInputNumber(input);
 
+        return player;
+    }
 }
