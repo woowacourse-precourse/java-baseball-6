@@ -6,7 +6,7 @@ final class Computer {
 
     Result calculateScore(Digits target){
         int strikeCount = digits.countStrike(target);
-        int ballCount = digits.countBall(target) - strikeCount;
+        int ballCount = digits.countBall(target);
         return new Result(ballCount, strikeCount);
     }
 

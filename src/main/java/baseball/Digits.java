@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 final class Digits {
     private List<Digit> digits;
@@ -16,11 +17,9 @@ final class Digits {
             Digit randomDigit = new Digit();
             if (!randomDigits.digits.contains(randomDigit)) randomDigits.digits.add(randomDigit);
         }
-//        System.out.println(random.digits.get(0).digit + " " + random.digits.get(1).digit + " " + random.digits.get(2).digit);
         return randomDigits;
     }
 
-    //TODO : 정적팩터리로?
     static Digits generateFixedDigits(String input) {
         if(input.length() != Size.THREE.num) throw new IllegalArgumentException();
         Digits fixedDigits = new Digits();
@@ -33,13 +32,10 @@ final class Digits {
         return fixedDigits;
     }
 
-    //TODO : strike점수가 빠져야함
     int countBall(Digits target) {
-        int ballCount = 0;
-        for (Digit it : target.digits) {
-            if (digits.contains(it)) ballCount++;
-        }
-        return ballCount;
+        return (int) IntStream.range(0, target.digits.size())
+                .filter(i -> isDigitsContains(target.digits.get(i)) && isDifferentPosition(i, target.digits.get(i)))
+                .count();
     }
 
     int countStrike(Digits target) {
@@ -49,4 +45,13 @@ final class Digits {
         }
         return strikeCount;
     }
+
+    private boolean isDigitsContains(Digit digit) {
+        return digits.contains(digit);
+    }
+
+    private boolean isDifferentPosition(int index, Digit digit) {
+        return !digits.get(index).equals(digit);
+    }
+
 }
