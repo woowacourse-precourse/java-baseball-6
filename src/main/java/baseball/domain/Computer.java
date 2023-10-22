@@ -28,4 +28,14 @@ public class Computer {
         }
         return count;
     }
+
+    public int countContainedBallsAsIndex(Balls userBalls) {
+        int count = 0;
+        for (int i = 0; i < MAX_NUM; i++) {
+            if (balls.isSameWithIndexValue(i, userBalls.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
 }

@@ -36,4 +36,12 @@ public class Balls {
     public int get(int i) {
         return balls.get(i);
     }
+
+    public boolean isSameWithIndexValue(int index, int ball) {
+        return isSame(get(index), ball);
+    }
+
+    private boolean isSame(int ball1, int ball2) {
+        return ball1 == ball2;
+    }
 }
