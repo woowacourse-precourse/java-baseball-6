@@ -47,6 +47,33 @@ public class ComputerUmpireImpl implements Umpire {
 
     @Override
     public Score judge(Boolean[] strikeCheckingBoard, Boolean[] ballCheckingBoard, Score score) {
+        int strike = 0;
+        int ball = 0;
+        boolean homerun = false;
+        boolean nothing = false;
+
+        for(int i = 0 ; i < DIGIT_NUM ; i++){
+            if(strikeCheckingBoard[i] == true){
+                strike++;
+            }
+        }
+        for(int i = 0 ; i < DIGIT_NUM ; i++){
+            if(ballCheckingBoard[i] == true){
+                ball++;
+            }
+        }
+        if(strike == DIGIT_NUM){
+            homerun = true;
+        }
+        if(strike == 0 && ball == 0){
+            nothing = true;
+        }
+
+        score.setStrikeCount(strike);
+        score.setBallCount(ball);
+        score.setHomerunCount(homerun);
+        score.setNothingCount(nothing);
+
         return score;
     }
 }

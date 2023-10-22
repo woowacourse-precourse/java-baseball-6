@@ -97,12 +97,12 @@ public class UmpireTest {
     @Test
     void umpireJudgeCheck(){
         //given
-        String ball = "011";
-        String bat = "110";
+        String ball = "111";
+        String bat = "111";
 
-        int compareStrike = 0;
+        int compareStrike = 3;
         int compareBall = 0;
-        boolean compareHomerun = false;
+        boolean compareHomerun = true;
         boolean compareNothing = false;
 
         Score score = new Score();
@@ -125,6 +125,6 @@ public class UmpireTest {
         score = umpire.judge(strikeCheckingBoard, ballCheckingBoard, score);
 
         //then
-        Assertions.assertThat(score).isEqualTo(compareScore);
+        Assertions.assertThat(score).usingRecursiveComparison().isEqualTo(compareScore);
     }
 }
