@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 public class Hint {
 
-    private static Map<String, Integer> hint= new HashMap<>();
+    private Map<String, Integer> hint= new HashMap<>();
 
     private static Hint hintSingleton=new Hint();
 
