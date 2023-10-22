@@ -24,4 +24,8 @@ public class AnswerBall {
     public AnswerBall(List<Integer> answerBall) {
         this.answerBall = answerBall;
     }
+
+    public List<Integer> getAnswerBall() {
+        return answerBall;
+    }
 }
