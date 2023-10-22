@@ -22,7 +22,7 @@ public class Game {
 
     private void validateInputNumber(String inputValue) {
         validateLengthThree(inputValue);
-        validateNumber(inputValue);
+        validateEachNumber(inputValue);
     }
 
     private void validateLengthThree(String inputValue) {
@@ -31,7 +31,7 @@ public class Game {
         }
     }
 
-    private void validateNumber(String inputValue) {
+    private void validateEachNumber(String inputValue) {
         List<Character> compareList = new ArrayList<>();
         for(char currentCharacter : inputValue.toCharArray()) {
             isBetweenOneAndNine(currentCharacter);
