@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.constant.GameConstants;
+import baseball.util.GameConstants;
 
 public class OutputView {
     private final String GUESS_SUCCESS_MESSAGE = GameConstants.FIXED_DIGIT_NUMBER + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -15,14 +15,14 @@ public class OutputView {
             return;
         }
 
-        String resultMessage = "";
+        String resultMessage = ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE;
 
-        if (ballCount != 0) {
-            resultMessage = ballCount + BALL_MESSAGE;
+        if (ballCount == 0) {
+            resultMessage = strikeCount + STRIKE_MESSAGE;
         }
 
-        if (strikeCount != 0) {
-            resultMessage += " " + strikeCount + STRIKE_MESSAGE;
+        if (strikeCount == 0) {
+            resultMessage = ballCount + BALL_MESSAGE;
         }
 
         System.out.println(resultMessage);
