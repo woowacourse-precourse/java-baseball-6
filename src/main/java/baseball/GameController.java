@@ -6,8 +6,10 @@ public class GameController {
     private static final int NUM_LENGTH = 3;
     private int strikeCnt = 0;
     private int ballCnt = 0;
+    private RandomNumbers computer;
 
     public GameController() {
+        computer = new RandomNumbers();
     }
 
     // 초기화
@@ -26,29 +28,12 @@ public class GameController {
 
     public void startGame() {
 
-        //랜덤 값 생성
-        RandomNumbers computer = new RandomNumbers();
-
         System.out.println(computer.getAllNumbers());
 
         while (true) {
             resetCnt();
-            // 사용자 값 입력
-            System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
-            if (input.length() != NUM_LENGTH) {
-                throw new IllegalArgumentException("입력 값 오류");
-            }
-            String[] player = input.split("");
-
-            for (int i = 0; i < NUM_LENGTH; i++) {
-                if (computer.getNumber(i) == Integer.parseInt(player[i])) {
-                    addStrike();
-                } else if (computer.contains(Integer.parseInt(player[i]))) {
-                    addBall();
-                }
-            }
-            // 출력
+            String player = getPlayerInput();
+            calculateResult(player);
             printResult(strikeCnt, ballCnt);
 
             if (strikeCnt == 3) {
@@ -57,6 +42,26 @@ public class GameController {
         }
     }
 
+    public String getPlayerInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        if (input.length() != NUM_LENGTH) {
+            throw new IllegalArgumentException("입력 값 오류");
+        }
+        return input;
+    }
+
+    public void calculateResult(String input) {
+        String[] player = input.split("");
+
+        for (int i = 0; i < NUM_LENGTH; i++) {
+            if (computer.getNumber(i) == Integer.parseInt(player[i])) {
+                addStrike();
+            } else if (computer.contains(Integer.parseInt(player[i]))) {
+                addBall();
+            }
+        }
+    }
 
     public void printResult(int strikeCnt, int ballCnt) {
         if (strikeCnt + ballCnt == 0) {
