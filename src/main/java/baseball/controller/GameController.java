@@ -5,7 +5,6 @@ import baseball.util.Parser;
 import baseball.util.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,6 @@ public class GameController {
     Validator validator = new Validator();
     List<Integer> computerNumbers = new ArrayList<>();
 
-    private static final String EXIT = "2";
     public static boolean playing = true;
 
     public void init() {
@@ -30,19 +28,25 @@ public class GameController {
             if (computerNumbers.isEmpty()) computerNumbers = service.generateNumbers();
             System.out.println("치트: " + computerNumbers.get(0) + computerNumbers.get(1) + computerNumbers.get(2));
             InputView.printRequestingInput();
-            final List<Integer> userNumbers = parser.parseInputToList(InputView.getUserInput());
+            final List<Integer> userNumbers = getUserNumbers();
             int[] result = service.compare(computerNumbers, userNumbers);
             OutputView.printResult(result);
             if(service.isThreeStrikes(result)){
                 InputView.printGameOver();
-                determineRestart(InputView.getUserInput());
+                restartOrNot(InputView.getUserInput());
             }
         }
     }
 
-    private void determineRestart(String input) {
+    private List<Integer> getUserNumbers() {
+        final List<Integer> userNumbers = parser.parseInputToList(InputView.getUserInput());
+        if(validator.isInvalid(userNumbers)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
+        return userNumbers;
+    }
+
+    private void restartOrNot(String input) {
         if (validator.isInvalid(input)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
         init();
-        if(input.equals(EXIT)) playing = false;
+        if(input.equals(InputView.EXIT)) playing = false;
     }
 }
