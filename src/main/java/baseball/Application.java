@@ -43,7 +43,17 @@ public class Application {
             }
         }
 
-        
+        //스트라이크 개수
+        int strike = 0;
+
+        for(int i = 0; i < user.size(); i++){
+            if(computer.get(i) == user.get(i)){
+                strike += 1;
+            }
+        }
+
+        System.out.println(cnt);
+        System.out.println(strike);
 
 
     }
