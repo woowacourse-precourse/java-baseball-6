@@ -1,10 +1,12 @@
 package baseball.object;
 
+import baseball.Key;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Computer {
 
@@ -22,6 +24,17 @@ public class Computer {
         number = list.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
+    }
+
+    public static void compareNumber(String answer) {
+
+        IntStream.range(0, Key.NUMBER_LENGTH)
+                .forEach(index -> {
+                    if(answer.charAt(index) == number.charAt(index))
+                        Hint.increaseStrike();
+                    else if(answer.contains(String.valueOf(number.charAt(index))))
+                        Hint.increaseBall();
+                });
     }
 
     public static String getNumber() {
