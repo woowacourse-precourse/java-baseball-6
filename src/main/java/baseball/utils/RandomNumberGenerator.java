@@ -7,13 +7,13 @@ import java.util.List;
 
 public class RandomNumberGenerator {
 
-    private static final int MAX_NUMBER_NUM = 3;
+    private static final int MAX_NUMBER_COUNT = 3;
     private static final int MIN_NUMBER_RANGE = 1;
     private static final int MAX_NUMBER_RANGE = 9;
 
     public List<Integer> generateNumbers() {
         final List<Integer> numbers = new ArrayList<>();
-        while (isNeedMoreNumber(numbers)) {
+        while (isBelowMaxNumberCount(numbers)) {
             final int randomNumber = generateRandomNumber();
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
@@ -22,8 +22,8 @@ public class RandomNumberGenerator {
         return numbers;
     }
 
-    private boolean isNeedMoreNumber(final List<Integer> numbers) {
-        return numbers.size() < MAX_NUMBER_NUM;
+    private boolean isBelowMaxNumberCount(final List<Integer> numbers) {
+        return numbers.size() < MAX_NUMBER_COUNT;
     }
 
     private int generateRandomNumber() {
