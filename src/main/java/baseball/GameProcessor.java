@@ -98,16 +98,19 @@ public class GameProcessor {
         if (Integer.parseInt(answerList.get(0)) > 0 && Integer.parseInt(answerList.get(1)) > 0) {
             answerTextBuilder.append(answerList.get(0));
             answerTextBuilder.append(messageManager.getSameDigitMessage());
-            answerTextBuilder.append(" ");
-            answerTextBuilder.append(answerList.get(1));
-            answerTextBuilder.append(messageManager.getSameNumberMessage());
+            if (Integer.parseInt(answerList.get(0)) != 3) {
+                answerTextBuilder.append(" ");
+                answerTextBuilder.append(String.valueOf(
+                        Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0))));
+                answerTextBuilder.append(messageManager.getSameNumberMessage());
+            }
         }
         if (Integer.parseInt(answerList.get(0)) > 0 && Integer.parseInt(answerList.get(1)) == 0) {
             answerTextBuilder.append(answerList.get(0));
             answerTextBuilder.append(messageManager.getSameDigitMessage());
         }
         if (Integer.parseInt(answerList.get(0)) == 0 && Integer.parseInt(answerList.get(1)) > 0) {
-            answerTextBuilder.append(answerList.get(1));
+            answerTextBuilder.append(String.valueOf(Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0))));
             answerTextBuilder.append(messageManager.getSameNumberMessage());
         }
         if (Integer.parseInt(answerList.get(0)) == 0 && Integer.parseInt(answerList.get(1)) == 0) {
