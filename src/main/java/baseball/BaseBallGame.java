@@ -14,6 +14,38 @@ public class BaseBallGame {
         computerRandomNumber = RandomNumberGenerator.getUniqueRandomNumberSequence(3);
     }
 
+    public boolean gameStart(){
+        System.out.println(BaseBallGameConstant.START_MESSAGE);
+        while (true){
+            System.out.print(BaseBallGameConstant.INPUT_MESSAGE);
+            String expectNumber = Console.readLine();
+            List<Integer> expectNumberSequence = stringToListConverter(expectNumber);
+            int numberOfStrike = countNumberOfStrike(expectNumberSequence);
+            int numberOfBall = countNumberOfBall(expectNumberSequence, numberOfStrike);
+            printDynamicOutput(numberOfBall, numberOfStrike);
+            if (numberOfStrike == 3){
+                System.out.println(BaseBallGameConstant.CLEAR_MESSAGE);
+                System.out.println(BaseBallGameConstant.RESTART_MESSAGE);
+                String restartChoice = Console.readLine();
+                return getRestartCommand(restartChoice);
+            }
+        }
+    }
+
+    private boolean getRestartCommand(String choice){
+        try{
+            int convertedChoice = Integer.parseInt(choice);
+            if (convertedChoice == 1){
+                return true;
+            }else if (convertedChoice == 2){
+                return false;
+            }else{
+                throw new IllegalArgumentException();
+            }
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
+    }
 
     private void printDynamicOutput(final int balls,final int strikes){
         String dynamicOutput;
