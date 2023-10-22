@@ -1,7 +1,6 @@
 package baseball;
 
 public class GameMachine {
-
     private final String[] computerNumbers;
     private String[] playerNumbers;
     private static final int TOTAL_COMPUTER_NUMBERS = 3;
