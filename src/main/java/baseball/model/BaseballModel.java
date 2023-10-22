@@ -2,13 +2,11 @@ package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
-
 public class BaseballModel {
     private int[] targetNumber;
 
     public BaseballModel() {
-        generateRandomNumber();
+        //생성자에서는 난수를 생성하지 않도록 변경
     }
 
     public void generateRandomNumber() {

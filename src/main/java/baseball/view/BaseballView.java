@@ -29,7 +29,7 @@ public class BaseballView {
 
 
         if (balls > 0) {
-            result += balls + "볼";
+            result += balls + "볼 ";
         }
         if (strikes > 0) {
             result += strikes + "스트라이크 ";

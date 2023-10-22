@@ -16,9 +16,11 @@ public class BaseballController {
         view.displayGameStartMessage();
 
         boolean shouldRestart = true;
-        model.generateRandomNumber();
+
+        model.generateRandomNumber(); // 게임 시작 시에 난수 생성
 
         while (shouldRestart) {
+
             int[] guess = view.getUserGuess();
             int[] targetNumber = model.getTargetNumber();
 
@@ -41,16 +43,13 @@ public class BaseballController {
                     shouldRestart = false; // 게임 종료
                 } else if (choice == 1) {
                     shouldRestart = true; // 게임 재시작
+                    model.generateRandomNumber(); // 게임 재시작 시에 새로운 난수 생성
                 }
             }
         }
     }
 
     private boolean isValidInput(int[] guess) {
-        if (guess.length != 3) {
-            return false;
-        }
-
         // 서로 다른 숫자인지 확인
         for (int i = 0; i < guess.length; i++) {
             for (int j = i + 1; j < guess.length; j++) {
