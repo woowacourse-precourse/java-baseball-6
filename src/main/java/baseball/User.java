@@ -17,23 +17,29 @@ public class User {
         System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
         checkInputLength(input);
+        checkInputType(input);
         checkDuplicateInput(input);
-        for (int i = 0; i < INPUT_LENGTH; i++){
+        for(int i = 0; i < INPUT_LENGTH; i++){
             this.userInput[i] = Character.getNumericValue(input.charAt(i));
         }
     }
 
     private void checkInputLength(String input) {
-        if (input.length() != INPUT_LENGTH) {
+        if(input.length() != INPUT_LENGTH) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
+        }
+    }
+    private void checkInputType(String input) {
+        if(!input.matches(INPUT_REGEX)) {
+            throw  new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
     }
 
     private void checkDuplicateInput(String input) {
         Set<Character> uniqueInput = new HashSet<>();
-        for (char c : input.toCharArray()) {
+        for(char c : input.toCharArray()) {
             if (!uniqueInput.add(c)){
-                throw  new IllegalArgumentException();
+                throw new IllegalArgumentException();
             }
         }
     }
