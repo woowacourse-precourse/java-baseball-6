@@ -40,4 +40,10 @@ public class BallNumbers {
             }
         }
     }
+
+    public boolean isStrike(List<Integer> answerNumberList, int index) {
+        Integer answerNumber = answerNumberList.get(index);
+        Integer userNumber = numberList.get(index);
+        return answerNumber.equals(userNumber);
+    }
 }
