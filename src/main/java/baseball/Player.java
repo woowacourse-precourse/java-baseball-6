@@ -19,7 +19,7 @@ public class Player {
     public void addNumber() {
         numbers.clear();
         if(computer == null) {
-            setSelfNumber(numbers, writeNumber());
+            setNumberByInput(setInput());
             return;
         }
         computer.setAutoNumber(numbers);
@@ -27,13 +27,13 @@ public class Player {
     public int getNumber(int index) {
         return numbers.get(index);
     }
-    private void setSelfNumber(List<Integer> numbers, String input) {
+    private void setNumberByInput(String input) {
         while (numbers.size() < 3) {
             int num = input.charAt(numbers.size()) - '0';
             numbers.add(num);
         }
     }
-    private String writeNumber() {
+    private String setInput() {
         String input;
 
         System.out.print("숫자를 입력해주세요 : ");
