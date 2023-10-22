@@ -24,5 +24,6 @@ public class GameController {
                 game_coin = CheckGameResult.checkGameScore(gameScore, game_coin);
             }
         }
+        OutputView.outputForRetryCondition();
     }
 }
