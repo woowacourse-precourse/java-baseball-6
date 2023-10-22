@@ -19,8 +19,9 @@ public class Application {
 
     // 게임 실행 메서드
     public void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         while (!isGameOver) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
             int[] playerNumbers = getPlayerNumbers(); // 플레이어
             int[] randomNumbers = generateRandomNumbers(); // 컴퓨터
 
@@ -68,8 +69,10 @@ public class Application {
             return "3스트라이크";
         } else if (strikes == 0 && balls == 0) {
             return "낫싱";
-        } else {
+        } else if (strikes > 0 || balls > 0) {
             return String.format("%d볼 %d스트라이크", balls, strikes);
+        } else {
+            return "낫싱";
         }
     }
 
@@ -106,7 +109,7 @@ public class Application {
             if (playerNumber < '1' || playerNumber > '9') {
                 throw new IllegalArgumentException("1부터 9 사이의 숫자를 입력하세요.");
             }
-            playerNumbers[i] = playerNumber;
+            playerNumbers[i] = Character.getNumericValue(playerNumber);
         }
         return playerNumbers;
     }
