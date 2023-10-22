@@ -81,10 +81,10 @@ public class Application {
                 throw new IllegalArgumentException();
             } else {
                 try {
-                    if (Integer.parseInt(newGameYN) != 1 || Integer.parseInt(newGameYN) == 2) {
+                    if (Integer.parseInt(newGameYN) != 1 && Integer.parseInt(newGameYN) != 2) {
                         throw new IllegalArgumentException();
                     } else if (Integer.parseInt(newGameYN) == 2) {
-                        break;
+                        return;
                     }
                 } catch (NumberFormatException e) {
                     throw new IllegalArgumentException();
