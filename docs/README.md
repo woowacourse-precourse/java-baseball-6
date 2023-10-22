@@ -44,15 +44,17 @@
 # 구현 목록
 
 ---
-[] 게임 시작 문구 출력 - Communicator
+[x] 게임 시작 문구 출력 - Communicator
 
-[] 임의의 세자리 수 결정 - Computer
+[x] 임의의 세자리 수 결정 - Computer
 
-[] 숫자 입력 - Communicator
+[x] 숫자 입력 - Communicator
 
-[] 입력과 컴퓨터 수 비교 후 스트라이크/볼 개수 계산 - Computer
+[x] 입력 검증 - Validator
 
-[] 결과 출력 - Communicator
+[x] 입력과 컴퓨터 수 비교 후 스트라이크/볼 개수 계산 - Computer
+
+[x] 결과 출력 - Communicator
 
 [] 게임 종료 후 메뉴 출력 - Communicator
 
