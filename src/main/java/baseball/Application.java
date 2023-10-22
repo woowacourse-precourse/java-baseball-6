@@ -37,6 +37,21 @@ public class Application {
         return true;
     }
 
+    // 입력된 숫자가 중복인지 체크
+    public static boolean checkDuplication(String inputString) {
+        boolean[] checkArray = new boolean[10];
+
+        for (int i = 0; i < inputString.length(); i++) {
+            int intNumber = inputString.charAt(i) - '0';
+            if (checkArray[intNumber]) {
+                return false;
+            } else {
+                checkArray[intNumber] = true;
+            }
+        }
+        return true;
+    }
+
     // 컴퓨터가 랜덤 넘버를 생성
     public static List<Integer> createRandomNumber() {
         List<Integer> computer = new ArrayList<>();
