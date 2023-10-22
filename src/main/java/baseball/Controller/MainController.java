@@ -3,7 +3,6 @@ package baseball.Controller;
 import baseball.Model.GameData;
 import baseball.View.InputView;
 import baseball.View.OutputView;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class MainController {
@@ -47,21 +46,19 @@ public class MainController {
     }
 
     private void processPlayerInput() {
-        inputView.printNumberRequest();
-        String playerFirstInput = Console.readLine();
+        String playerFirstInput = inputView.printNumberRequest();
         ArrayList<Integer> playerInput = playerInputController.handlePlayerInput(playerFirstInput);
         gameData.setPlayerInput(playerInput);
     }
 
     private void checkReplay() {
         outputView.printHint(NO_COUNT, THREE_STRIKES);
-        inputView.printGameEnd();
-        String endnumber = Console.readLine();
-        validator.validateGameEndInput(endnumber);
+        String endNumber = inputView.printGameEnd();
+        validator.validateGameEndInput(endNumber);
 
-        if (endnumber.equals(PLAYER_INIT_CODE)) {
+        if (endNumber.equals(PLAYER_INIT_CODE)) {
             MainController.state = INIT_CODE;
-        } else if (endnumber.equals(PLAYER_GAME_END_CODE)) {
+        } else if (endNumber.equals(PLAYER_GAME_END_CODE)) {
             MainController.state = GAME_END_CODE;
         }
     }
