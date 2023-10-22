@@ -4,12 +4,12 @@ import static baseball.GameState.PROGRESS_STATE;
 
 public class Output {
 
-    public int gameStart() {
+    public static int gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         return PROGRESS_STATE;
     }
 
-    public void drawOutResult(int ball, int strike) {
+    public static void drawOutResult(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         }
@@ -24,7 +24,7 @@ public class Output {
         }
     }
 
-    public void gameSucceeded() {
+    public static void gameSucceeded() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
