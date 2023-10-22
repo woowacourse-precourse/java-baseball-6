@@ -12,12 +12,8 @@ public class Computer {
         this.playerNumbers = playerNumbers;
     }
 
-    // TODO: 게임 머신을 받아서 setting 하는 것으로 변경
-    public void setGameMachine(String[] playerNumbers) {
-        if (this.computerNumbers == null) {
-            throw new IllegalStateException("computerNumbers shouldn't be NULL");
-        }
-        this.gameMachine = new GameMachine(this.computerNumbers, playerNumbers);
+    public void setGameMachine(GameMachine newGameMachine) {
+        this.gameMachine = newGameMachine;
     }
 
     // TODO: 구동할 때 playerNumbers 를 받아서 구동하는 것으로 변경
