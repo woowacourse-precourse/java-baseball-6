@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
@@ -28,7 +27,19 @@ public class Application {
             randomNumbers.add(number);
         }
 
-        
+
+        List<Integer> userAnswers = new ArrayList<>();
+
+        String input = Console.readLine();
+
+        for (int i = 0; i < 3; i++) {
+
+            int number = Character.getNumericValue(input.charAt(i));
+
+            userAnswers.add(number);
+
+        }
+
 
 
     }
