@@ -24,11 +24,9 @@ public class GameLauncher {
         BaseballCode baseballCode = new BaseballCode(new ArrayList<>());
         GameMessages startComment = GameMessages.START_COMMENT;
         GameMessages finishComment = GameMessages.FINISH_COMMENT;
-        GameMessages restartComment = GameMessages.RESTART_COMMENT;
         System.out.println(startComment.getMessage());
         while (true) {
             boolean restartStatus = baseballGame(baseballCode);
-            System.out.println(restartComment.getMessage());
             if (restartStatus) {
                 continue;
             }
@@ -38,9 +36,11 @@ public class GameLauncher {
     }
 
     private boolean baseballGame(BaseballCode baseballCode) {
+        GameMessages restartComment = GameMessages.RESTART_COMMENT;
         BaseballCode baseballCodes = baseballCode.makeNewBaseballCode(
                 baseballRandomCodeService.makeRandomCodeList());
         baseballGames.playBaseball(baseballCodes);
+        System.out.println(restartComment.getMessage());
         int code = Integer.parseInt(readLine());
         return validateJudgeService.restartValidateCode(code);
     }
