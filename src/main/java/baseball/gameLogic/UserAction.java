@@ -2,11 +2,16 @@ package baseball.gameLogic;
 
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import baseball.models.User;
+
 import static baseball.utils.Constants.ANSWER_LENGTH;
-import static baseball.utils.InputValidator.*;
+
+import static baseball.utils.InputValidator.validateAnswerLength;
+import static baseball.utils.InputValidator.validateIsDistinct;
+import static baseball.utils.InputValidator.validateRestartInput;
+
+import static baseball.userInterface.InputViewer.requestUserAnswer;
+import static baseball.userInterface.InputViewer.requestUserRestartFactor;
 
 /*
  User의 행동들을 수행하는 클래스
@@ -17,7 +22,7 @@ public class UserAction {
 
 
     public void inputAnswer(){
-        String userAnswer = Console.readLine();
+        String userAnswer = requestUserAnswer();
         validateAnswerLength(userAnswer.length());
         validateIsDistinct(userAnswer);
         for (int i = 0; i < ANSWER_LENGTH; i++) {
@@ -26,7 +31,7 @@ public class UserAction {
     }
 
     public void inputRestartFactor(){
-        String userMind = Console.readLine();
+        String userMind = requestUserRestartFactor();
         user.changeMind(validateRestartInput(userMind));
     }
 
