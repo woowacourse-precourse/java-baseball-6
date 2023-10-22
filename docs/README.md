@@ -48,7 +48,7 @@
   * 3자리인가 검증
 ---
 
-### 📌 Commit Convention
+## 📌 Commit Convention
 
 - `feat` : 새로운 기능 추가
 - `fix` : 버그 수정
@@ -61,7 +61,7 @@
 - `refactor` : 코드 리팩토링
 ---
 
-### 📌 Branch Convention
+## 📌 Branch Convention
 
 - `main`
 - `develop`
@@ -70,7 +70,7 @@
 
 ---
 
-### 👀 스스로와의 약속
+## 👀 스스로와의 약속
 
 - 자바 코드 컨벤션을 지키면서 프로그래밍한다.
 - 기본적으로 Google Java Style Guide을 원칙으로 한다.
