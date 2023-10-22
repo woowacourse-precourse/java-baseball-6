@@ -29,8 +29,20 @@ public class ComputerUmpireImpl implements Umpire {
     }
 
     @Override
-    public Boolean[] checkBall(String ball, String bat, Boolean[] ballCheckingBoard) {
-        return new Boolean[0];
+    public Boolean[] checkBall(String ball, String bat, Boolean[] strikeCheckingBoard, Boolean[] ballCheckingBoard) {
+
+        for(int i = 0 ; i < DIGIT_NUM ; i++){
+            if(strikeCheckingBoard[i] == true){continue;}
+            for(int j = 0 ; j < DIGIT_NUM ; j++){
+                if(strikeCheckingBoard[j] == true){continue;}
+                if(ballCheckingBoard[j] == true){continue;}
+                if(ball.charAt(i) == bat.charAt(j)){
+                    ballCheckingBoard[j] = true;
+                    break;
+                }
+            }
+        }
+        return ballCheckingBoard;
     }
 
     @Override
