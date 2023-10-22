@@ -1,5 +1,7 @@
-package baseball.domain;
+package baseball.singlegame;
 
+import baseball.domain.AnswerNumbers;
+import baseball.domain.AnswerNumbersGenerator;
 import camp.nextstep.edu.missionutils.Randoms;
 import exception.DuplicateBaseBallNumber;
 import exception.OutOfBaseBallNumbersSize;

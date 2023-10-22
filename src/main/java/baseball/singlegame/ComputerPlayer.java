@@ -1,4 +1,9 @@
-package baseball.domain;
+package baseball.singlegame;
+
+import baseball.domain.AnswerNumbers;
+import baseball.domain.AnswerNumbersGenerator;
+import baseball.domain.BaseBallHint;
+import baseball.domain.MatchPlayer;
 
 public class ComputerPlayer implements MatchPlayer {
 
@@ -19,19 +24,10 @@ public class ComputerPlayer implements MatchPlayer {
     }
 
     private int countBall(AnswerNumbers answerNumbers) {
-        int ballCount = 0;
-        for (int number : answerNumbers.get()) {
-            if(answer.isBall(number)) ballCount++;
-        }
-        return ballCount;
+        return answer.count(answerNumbers::isBall);
     }
 
     private int countStrike(AnswerNumbers answerNumbers) {
-        int strikeCount = 0;
-        for (int i = 0; i < answerNumbers.size() ; i++) {
-            int number = answerNumbers.get().get(i);
-            if (answer.isStrike(number, i)) strikeCount++;
-        }
-        return strikeCount;
+        return answer.countWithIndex(answerNumbers::isStrike);
     }
 }

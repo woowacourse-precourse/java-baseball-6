@@ -1,20 +1,29 @@
 package baseball;
 
-import baseball.domain.BaseBallGame;
-import baseball.domain.BaseBallHint;
 import baseball.domain.AnswerNumbersGenerator;
-import baseball.domain.AnswerNumbers;
-import baseball.domain.ComputerPlayer;
+import baseball.domain.BaseBallGame;
+import baseball.singlegame.BaseballSingleGame;
+import baseball.singlegame.ComputerPlayer;
+import baseball.domain.GameState;
 import baseball.domain.MatchPlayer;
-import baseball.domain.RandomAnswerNumbersGenerator;
-import baseball.domain.BaseballSingleGame;
 import baseball.domain.Player;
+import baseball.singlegame.RandomAnswerNumbersGenerator;
 import baseball.view.SinglePlayerConsole;
 
 public class Application {
+
     public static void main(String[] args) {
-        final Player player = new SinglePlayerConsole();
-        startSingleBaseBallGame(player);
+        final Player player = initializePlayer();
+        final MatchPlayer matchPlayer = initializeMatchPlayer();
+        startBaseBallSingleGame(
+                new BaseballSingleGame(),
+                player,
+                matchPlayer
+        );
+    }
+
+    private static Player initializePlayer() {
+        return new SinglePlayerConsole();
     }
 
     private static MatchPlayer initializeMatchPlayer() {
@@ -22,26 +31,19 @@ public class Application {
         return new ComputerPlayer(numberGenerator);
     }
 
-    private static BaseBallGame initializeBaseBallGame() {
-        final MatchPlayer matchPlayer = initializeMatchPlayer();
-        return new BaseballSingleGame(matchPlayer);
-    }
-
-    private static void startSingleBaseBallGame(Player player) {
-        player.showStartGameMessage();
-        playBaseBallGame(player, initializeBaseBallGame());
-    }
-
-    private static void playBaseBallGame(Player player, BaseBallGame game) {
-        while (true) {
-            final AnswerNumbers userNumbers = player.getBaseballNumbers();
-            final BaseBallHint hint = game.checkBaseBallNumber(userNumbers);
-            player.printBaseBallHint(hint);
-            if (hint.hasThreeStrike()) {
-                player.printEndGameMessage();
-                break;
-            }
+    private static void startBaseBallSingleGame(
+            BaseBallGame game,
+            Player player,
+            MatchPlayer matchPlayer
+    ) {
+        final GameState gameState = game.play(player, matchPlayer);
+        if (gameState == GameState.RESTART) {
+            startBaseBallSingleGame(
+                    new BaseballSingleGame(),
+                    initializePlayer(),
+                    initializeMatchPlayer()
+            );
         }
-        if (player.checkRestart()) playBaseBallGame(player, initializeBaseBallGame());
+
     }
 }

@@ -4,6 +4,8 @@ import exception.DuplicateBaseBallNumber;
 import exception.OutOfBaseBallNumbersSize;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -13,14 +15,14 @@ public final class AnswerNumbers {
     public static final int MIN_BASE_BALL_NUMBER = 1;
     public static final int MAX_BASE_BALL_NUMBER = 9;
 
-    private final List<Integer> baseballNumbers;
+    private final List<Integer> values;
 
     private AnswerNumbers() {
-        this.baseballNumbers = new ArrayList<>();
+        this.values = new ArrayList<>();
     }
 
     private AnswerNumbers(IntStream numbers) {
-        this.baseballNumbers = new ArrayList<>();
+        this.values = new ArrayList<>();
         numbers.forEach(this::add);
     }
 
@@ -29,23 +31,23 @@ public final class AnswerNumbers {
     }
 
     public static AnswerNumbers of(String[] numbers) {
-       IntStream numbersStream = Stream.of(numbers).mapToInt(Integer::parseInt);
-       return new AnswerNumbers(numbersStream);
+        IntStream numbersStream = Stream.of(numbers).mapToInt(Integer::parseInt);
+        return new AnswerNumbers(numbersStream);
     }
 
     public int size() {
-        return baseballNumbers.size();
+        return values.size();
     }
 
     public void add(int number) {
         validateDuplicate(number);
         validateNumberRange(number);
         validateNumbersSize();
-        baseballNumbers.add(number);
+        this.values.add(number);
     }
 
     public void validateDuplicate(int number) {
-        if (baseballNumbers.contains(number)) {
+        if (this.values.contains(number)) {
             throw new DuplicateBaseBallNumber(String.format("Number %d already exists", number));
         }
     }
@@ -66,15 +68,43 @@ public final class AnswerNumbers {
         return number >= MIN_BASE_BALL_NUMBER && number <= MAX_BASE_BALL_NUMBER;
     }
 
-    public List<Integer> get() {
-        return baseballNumbers;
+    public int get(int index) {
+        return values.get(index);
+    }
+
+    public boolean hasNumber(int number) {
+        return values.contains(number);
+    }
+
+    public boolean hasNumberInPosition(int number, int index) {
+        return values.get(index) == number;
+    }
+
+    public int count(Predicate<Integer> predicate) {
+        int count = 0;
+        for (int number : values) {
+            if (predicate.test(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int countWithIndex(BiPredicate<Integer, Integer> biPredicate) {
+        int count = 0;
+        for (int i = 0; i < values.size(); i++) {
+            if (biPredicate.test(values.get(i), i)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public boolean isBall(int number) {
-        return baseballNumbers.contains(number);
+        return values.contains(number);
     }
 
     public boolean isStrike(int number, int index) {
-        return baseballNumbers.get(index) == number;
+        return values.get(index) == number;
     }
 }

@@ -17,12 +17,6 @@ public class SinglePlayerConsole implements Player {
     public String getBaseballNumbers() {
         OutputConsole.requestInputMessage();
         return InputConsole.readConsole();
-        /*try {
-            final IntStream numbers = Stream.of(stringNumbers.split("")).mapToInt(Integer::parseInt);
-            return AnswerNumbers.of(numbers);
-        } catch (NumberFormatException | OutOfBaseBallNumbersSize | DuplicateBaseBallNumber e) {
-            throw new IllegalArgumentException(String.format("올바르지 않은 입력입니다. 서로 다른 3개의 숫자를 입력해주세요. %s", stringNumbers));
-        }*/
     }
 
     @Override
