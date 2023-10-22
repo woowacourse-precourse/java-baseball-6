@@ -14,4 +14,8 @@ public enum GameConfig {
     public int getValue() {
         return value;
     }
+
+    public boolean notEquals(int value) {
+        return this.value != value;
+    }
 }

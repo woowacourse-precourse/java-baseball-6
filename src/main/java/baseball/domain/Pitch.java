@@ -11,10 +11,10 @@ public record Pitch(List<Integer> numbers) {
     }
 
     private void validateDuplicateCount(List<Integer> numbers) {
-        long distinctCount = numbers.stream()
+        int distinctCount = (int) numbers.stream()
                 .distinct()
                 .count();
-        if (distinctCount != GameConfig.PITCH_COUNT.getValue()) {
+        if (GameConfig.PITCH_COUNT.notEquals(distinctCount)) {
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }
@@ -22,11 +22,11 @@ public record Pitch(List<Integer> numbers) {
     private void validateRange(List<Integer> numbers) {
         int minNumber = GameConfig.MIN_NUMBER.getValue();
         int maxNumber = GameConfig.MAX_NUMBER.getValue();
-        long withinRangeCount = numbers.stream()
+        int withinRangeCount = (int) numbers.stream()
                 .filter(number -> minNumber <= number && number <= maxNumber)
                 .count();
 
-        if (withinRangeCount != GameConfig.PITCH_COUNT.getValue()) {
+        if (GameConfig.PITCH_COUNT.notEquals(withinRangeCount)) {
             throw new IllegalArgumentException(String.format("%d ~ %d 사이의 숫자여야 합니다.", minNumber, maxNumber));
         }
     }
