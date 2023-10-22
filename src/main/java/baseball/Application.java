@@ -156,7 +156,7 @@ public class Application {
         String input;                                               //입력받는 값을 넣어 줄 변수
         boolean gameFlag = true;                                    //게임 계속 실행할지 그만둘지 표시
         String result;                                              //결과를 출력해줄 변수
-        String gameOverInput;                                       //게임 종료 후 입력받는 값을 넣어 줄 변수
+        String gameOverInput = "";                                       //게임 종료 후 입력받는 값을 넣어 줄 변수
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         for (int com : computer) {
@@ -179,6 +179,13 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 gameOverInput = Console.readLine();
+            }
+
+            if ("2".equals(gameOverInput)) {                        //2를 입력했다면
+                gameFlag = false;                                   //while문이 반복하지 않도록 gameFlag에 false 입력
+            } else if ("1".equals(gameOverInput)) {                 //1을 입력했다면
+                computer = application.makeComputerNumber();        //상대방(컴퓨터)의 숫자를 새로 생성해서 게임 진행
+                gameOverInput = "";
             }
         }
     }
