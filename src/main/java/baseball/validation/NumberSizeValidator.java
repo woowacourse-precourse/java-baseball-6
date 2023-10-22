@@ -1,6 +1,5 @@
 package baseball.validation;
 
-import baseball.exception.NumberSizeException;
 import baseball.view.ErrorMessage;
 
 public class NumberSizeValidator {

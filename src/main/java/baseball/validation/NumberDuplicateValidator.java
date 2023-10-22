@@ -1,6 +1,5 @@
 package baseball.validation;
 
-import baseball.exception.NumberDuplicateException;
 import baseball.view.ErrorMessage;
 import java.util.HashSet;
 import java.util.Set;

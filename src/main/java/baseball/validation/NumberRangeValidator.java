@@ -1,6 +1,5 @@
 package baseball.validation;
 
-import baseball.exception.NumberRangeException;
 import baseball.view.ErrorMessage;
 import baseball.view.RegexPattern;
 import java.util.regex.Matcher;
