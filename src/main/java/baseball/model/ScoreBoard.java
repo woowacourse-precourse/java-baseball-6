@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.BallStatus;
 import java.util.List;
 
 public class ScoreBoard {
@@ -12,19 +13,19 @@ public class ScoreBoard {
 
     public int countStrike() {
         return (int) scoreBoardList.stream()
-                .filter(e -> e.equals("STRIKE"))
+                .filter(e -> e.equals(BallStatus.STRIKE.getBallStatus()))
                 .count();
     }
 
     public int countBall() {
         return (int) scoreBoardList.stream()
-                .filter(e -> e.equals("BALL"))
+                .filter(e -> e.equals(BallStatus.BALL.getBallStatus()))
                 .count();
     }
 
     public boolean isNothing() {
         if ((int) scoreBoardList.stream()
-                .filter(e -> e.equals("NOTHING"))
+                .filter(e -> e.equals(BallStatus.NOTHING.getBallStatus()))
                 .count() == scoreBoardList.size()) {
             return true;
         }
@@ -32,7 +33,7 @@ public class ScoreBoard {
     }
 
     public boolean isThreeStrike() {
-        if (countStrike() == scoreBoardList.size()){
+        if (countStrike() == scoreBoardList.size()) {
             return true;
         }
         return false;
