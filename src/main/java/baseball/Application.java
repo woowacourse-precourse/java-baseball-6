@@ -23,23 +23,14 @@ public class Application {
 
                 int numberOfStrike = calculatingStrikeValue(computer,userNumber);
 
+                int numberOfBall = calculatingBallValue(computer,userNumber);
+
+                System.out.println(ouputGameResult(numberOfStrike,numberOfBall));
+
                 if (numberOfStrike == 3) {
                     break;
                 }
-
-                int numberOfBall = calculatingBallValue(computer,userNumber);
-
-                if (numberOfStrike == 0 && numberOfBall != 0) {
-                    System.out.println(numberOfBall + "볼");
-                } else if (numberOfStrike == 0 && numberOfBall == 0) {
-                    System.out.println("낫싱");
-                } else if (numberOfBall == 0 && numberOfStrike != 0) {
-                    System.out.println(numberOfStrike + "스트라이크");
-                } else {
-                    System.out.println(numberOfBall + "볼 " + numberOfStrike + "스트라이크");
-                }
             }
-            System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int input = Integer.parseInt(Console.readLine());
@@ -87,5 +78,17 @@ public class Application {
                 numberOfBall++;
         }
         return numberOfBall - calculatingStrikeValue(computer,user);
+    }
+
+    static String ouputGameResult(int numberOfStrike, int numberOfBall){
+        if (numberOfStrike == 0 && numberOfBall != 0) {
+            return numberOfBall + "볼";
+        } else if (numberOfStrike == 0 && numberOfBall == 0) {
+            return "낫싱";
+        } else if (numberOfBall == 0 && numberOfStrike != 0) {
+            return numberOfStrike + "스트라이크";
+        } else {
+            return numberOfBall + "볼 " + numberOfStrike + "스트라이크";
+        }
     }
 }
