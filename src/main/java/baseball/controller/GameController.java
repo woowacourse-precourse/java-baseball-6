@@ -4,7 +4,6 @@ import baseball.config.Config;
 import baseball.domain.BaseballNumbers;
 import baseball.service.GameService;
 import baseball.domain.Result;
-import baseball.util.Parser;
 import baseball.util.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -13,7 +12,6 @@ public class GameController {
 
     GameService service = new GameService();
     BaseballNumbers computerNumbers;
-
     public static boolean playing = true;
 
     public void init() { computerNumbers = service.generateNumbers(); }
