@@ -33,7 +33,7 @@ public class Game {
             String guessNumber = input.getExpectationNumber();
             checkInputNumbers(guessNumber);
             setBallsAndStrikes(computerNumber, guessNumber);
-            checkBallsAndStrikes(BALL, STRIKE);
+            checkTotalBallsAndStrikes(BALL, STRIKE);
         }
         output.printAllStrikeMessage(STRIKE);
         checkRestartGame();
@@ -77,19 +77,9 @@ public class Game {
         STRIKE = STRIKE_COUNT;
     }
 
-    public void checkBallsAndStrikes(Integer ball, Integer strike){
-        if (ball != 0 & strike != 0){
-            output.printTotalMessage(ball, strike);
-        }
-        if (ball == 0 & strike != 0){
-            output.printStrikeMessage(strike);
-        }
-        if (ball != 0 & strike == 0){
-            output.printBallMessage(ball);
-        }
-        if (ball == 0 & strike == 0){
-            output.printNothingMessage();
-        }
+    public void checkTotalBallsAndStrikes(Integer ball, Integer strike){
+        String totalMessage = output.TotalMessage(ball, strike);
+        System.out.println(totalMessage);
     }
 
     public void checkRestartGame(){

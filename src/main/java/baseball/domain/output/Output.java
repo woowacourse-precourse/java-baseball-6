@@ -11,8 +11,6 @@ public class Output {
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
 
-    public static String RESULT;
-
     public void printStartGameMessage(){
         System.out.println(GAME_START);
     }
@@ -33,16 +31,16 @@ public class Output {
         System.out.print(WAITING_NUMBER);
     }
 
-    public void printNothingMessage(){
-        System.out.println(NO_CORRECT_NUMBER);
+    public String printBallMessage(Integer ball){
+        if (ball != 0){
+            return ball + BALL + " ";
+        } return "";
     }
 
-    public void printBallMessage(Integer ball){
-        System.out.println(ball+BALL);
-    }
-
-    public void printStrikeMessage(Integer strike){
-        System.out.println(strike+STRIKE);
+    public String printStrikeMessage(Integer strike){
+        if (strike != 0){
+            return strike + STRIKE;
+        } return "";
     }
 
     public void printAllStrikeMessage(Integer strike){
@@ -50,9 +48,11 @@ public class Output {
         printEndGameMessage();
     }
 
-    public void printTotalMessage(Integer ball, Integer strike){
-        System.out.println(ball + BALL + " " + strike + STRIKE);
+    public String TotalMessage(Integer ball, Integer strike){
+        String totalMessage = printBallMessage(ball) + printStrikeMessage(strike);
+        if (totalMessage.equals("")){
+            return NO_CORRECT_NUMBER;
+        }
+        return totalMessage;
     }
-
-
 }
