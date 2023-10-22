@@ -16,6 +16,9 @@ public class CommonNumberService {
     //정답은 3자리
     public static final int NUMBER_LENGTH = 3;
 
+    //도전 카운트
+    private int count = 1;
+
     //생성자
     public CommonNumberService(){
         computer = new ArrayList<>();
@@ -69,6 +72,44 @@ public class CommonNumberService {
 
         return true;
 
+    }
+
+    //사용자 입력과 정답 비교
+    public String isCorrect(String input){
+
+        int strike = 0;
+        int ball = 0;
+
+        //물어본 적이 있는 질문이라면 캐시에서 반환
+        String cacheValue = findCorrectInCache(input);
+        if(cacheValue!=null) return findCorrectInCache(input);
+
+        //유효한 입력에 대해서만 결과 반환
+        if(isValid(input)){
+
+            for(int index=0;index<NUMBER_LENGTH;index++){
+
+                int nowNum = input.charAt(index)-48;
+                if(nowNum==computer.get(index)) strike++;
+                else if(computer.contains(nowNum)) ball++;
+            }
+            if(strike==0&&ball==0) return "낫싱";
+            StringBuilder sb = new StringBuilder();
+            if(ball>0) sb.append(ball + "볼 ");
+            if(strike>0) sb.append(strike + "스트라이크");
+
+
+            String answer = sb.toString();
+
+            //캐시에 저장
+            putInputInCache(input,answer);
+
+            //정답 맞추면 count 초기화
+            if(strike==3) count=1;
+            return answer;
+        }
+
+        return null;
     }
 
 
