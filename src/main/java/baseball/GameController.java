@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.exception.GameException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
@@ -13,7 +14,7 @@ public class GameController {
         System.out.println("숫자 야구 게임을 시작합니다.");
         canPlay = true;
 
-        while (canPlay){
+        while (canPlay) {
             theAnswer = AnswerController.makeAnswer();
             System.out.println("answer: " + theAnswer);    // 테스트용
 
@@ -27,6 +28,10 @@ public class GameController {
     private static void gamePlay() {
         System.out.print("숫자를 입력해주세요 : ");
         guessNum = Console.readLine();
+//        if (guessNum.length() > 3) {
+//            throw new IllegalArgumentException();
+//        }
+        GameException.inputExceptionChecker(guessNum);
         System.out.println("guessNum = " + guessNum);   // 테스트용
 
         int resultCount = Counter.hitBallCounter(guessNum, theAnswer);
@@ -48,5 +53,4 @@ public class GameController {
             }
         }
     }
-
 }
