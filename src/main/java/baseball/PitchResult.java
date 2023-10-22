@@ -29,6 +29,15 @@ public class PitchResult {
     public int getRestartNumber() {
         return restartNumber;
     }
-    
+
+    public void judgePitch(String inputString) {
+        for (int i = 0; i < 3; i++) {
+            if (randomNumber.getRandomNumber().get(i).equals(Character.getNumericValue(inputString.charAt(i)))) {
+                addStrike(strike);
+            } else if (randomNumber.getRandomNumber().contains(Character.getNumericValue(inputString.charAt(i)))) {
+                addBall(ball);
+            }
+        }
+    }
 
 }
