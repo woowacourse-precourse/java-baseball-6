@@ -31,6 +31,16 @@
     - Exception
       - 1,2외에 다른 문자 입력
 
+[Worksflow]
+1. Computer 객체 생성하며 정답 숫자 지정
+2. User가 예상 정답 입력
+3. Computer.compare(user)를 통해 score 얻음
 
 
+[Validator]
+1. 사용자 데이터 입력 받을 때
+   - 중복 화인
+   - 1-9 숫자 확인
+   - 길이 3 인지
+2. 컴퓨터 데이터 생성 시
 
