@@ -1,11 +1,11 @@
-package baseball.domain;
+package baseball.model;
 
 import java.util.Arrays;
 import java.util.HashSet;
 
 public abstract class Validator {
     public abstract void validate(String input);
-    
+
     protected void validateSize(String numbers,int size){
         if (numbers.length()!=size){
             throw new IllegalArgumentException("값이 "+size+"자리여야 합니다.");

@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.model;
 
 public class Result {
     private int strike;

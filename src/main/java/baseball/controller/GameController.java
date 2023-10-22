@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.*;
+import baseball.model.*;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
