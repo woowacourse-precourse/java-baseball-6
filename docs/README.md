@@ -44,18 +44,29 @@
 # 구현 목록
 
 ---
-[] 게임 시작 문구 출력
+[] 게임 시작 문구 출력 - Communicator
 
-[] 임의의 세자리 수 결정
+[] 임의의 세자리 수 결정 - Computer
 
-[] 숫자 입력
+[] 숫자 입력 - Communicator
 
-[] 입력과 컴퓨터 수 비교 후 스트라이크/볼 개수 계산
+[] 입력과 컴퓨터 수 비교 후 스트라이크/볼 개수 계산 - Computer
 
-[] 결과 출력
+[] 결과 출력 - Communicator
 
-[] 게임 종료 후 메뉴 출력
+[] 게임 종료 후 메뉴 출력 - Communicator
 
-[] 시스템 종료
+[] 시스템 종료 - Application
 
 [] 예외 처리
+
+# 객체 디자인 - 1st Draft
+
+---
+Application - main 함수를 가지고 있는 객체 
+InstanceHandler - 객체들의 인스턴스를 생성/주입을 담당
+MenuHandler - 메뉴를 받고 실행
+Menu - 메뉴 1. 게임 시작 2. 시스템 종료
+Communicator - 유저와의 소통을 담당
+Validator - 받아온 값을 검증
+Computer - 게임의 상대방 역할
