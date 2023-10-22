@@ -22,7 +22,7 @@ public class Game {
 
     /**
      * String 형식으로 저장된 input이 3자리의 int로 이루어졌는지 확인하는 함수.
-     * 올바른 입력이 아니면, IllegalStateException 에러를 발생시킨다.
+     * 올바른 입력이 아니면, IllegalArgumentException 에러를 발생시킨다.
      */
     public void checkInput(String input){
         if(input.length()!=3){
@@ -37,7 +37,7 @@ public class Game {
 
     /**
      * String 형식으로 저장된 input이 1자리의 int로 이루어졌고, 1또는 2인지 확인하는 함수.
-     * 올바른 입력이 아니면, IllegalStateException 에러를 발생시킨다.
+     * 올바른 입력이 아니면, IllegalArgumentException 에러를 발생시킨다.
      */
     public void checkRestartInput(String input){
         if(input.length()!=1){
