@@ -11,8 +11,8 @@ public class InputView {
     }
 
     public String inputNumber() {
-        String inputNumber = Console.readLine();
         outputView.printInputNumber();
+        String inputNumber = Console.readLine();
 
         Validation.checkLengthThree(inputNumber);
         Validation.checkStringRegex(inputNumber);
@@ -21,8 +21,8 @@ public class InputView {
     }
 
     public String reStart() {
-        String inputOption = Console.readLine();
         outputView.printRestart();
+        String inputOption = Console.readLine();
 
         Validation.checkLengthOne(inputOption);
         Validation.checkStringRegex(inputOption);

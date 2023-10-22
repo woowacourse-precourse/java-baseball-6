@@ -13,7 +13,7 @@ public class OutputView {
     }
 
     public void printInputNumber() {
-        System.out.println(OutputMessage.PLEASE_INPUT_NUMBER);
+        System.out.print(OutputMessage.PLEASE_INPUT_NUMBER);
     }
 
     public void printRestart() {
