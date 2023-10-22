@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 public final class Ball {
     private final int index;

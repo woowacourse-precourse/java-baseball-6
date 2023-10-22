@@ -1,5 +1,8 @@
-package baseball;
+package baseball.view;
 
+import baseball.model.Balls;
+import baseball.model.Ground;
+import baseball.model.Referee;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;

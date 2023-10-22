@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.Ground;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

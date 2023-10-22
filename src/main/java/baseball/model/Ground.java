@@ -1,9 +1,8 @@
-package baseball;
+package baseball.model;
 
 import java.util.Objects;
-import java.util.StringJoiner;
 
-public class Ground {
+public final class Ground {
     private final int strike;
     private final int ball;
 

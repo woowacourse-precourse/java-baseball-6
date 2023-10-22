@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.BallNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

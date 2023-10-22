@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.model.Ball;
+import baseball.model.BallNumber;
+import baseball.model.BallStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
