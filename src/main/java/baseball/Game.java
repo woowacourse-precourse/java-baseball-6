@@ -44,7 +44,7 @@ public class Game {
 
     public void printResult() {
         JudgeInput();
-        String result = "";
+        String result;
         if (ball > 0 && strike > 0) {
             result = ball + "볼 " + strike + "스트라이크";
         }
