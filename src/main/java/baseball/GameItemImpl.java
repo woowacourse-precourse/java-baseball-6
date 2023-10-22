@@ -29,7 +29,7 @@ public class GameItemImpl implements GameItem {
     }
 
     @Override
-    public boolean checkForStrikes(List<Integer> numList) {
+    public boolean checkForStrikes(List<Integer> numList, List<Integer> computer) {
         // TODO Auto-generated method stub
         return false;
     }
