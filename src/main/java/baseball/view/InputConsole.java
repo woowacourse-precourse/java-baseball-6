@@ -1,10 +1,10 @@
 package baseball.view;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputConsole {
 
     public static String readConsole() {
-        return readLine();
+        return Console.readLine();
     }
 }
