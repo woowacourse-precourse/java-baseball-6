@@ -1,11 +1,14 @@
 package baseball;
 
-import java.util.List;public class Judgement {
+import java.util.List;
+
+public class Judgement {
     Compare compare = new Compare();
 
     public String judgement(List<String> computerNumList, List<String> userNumList) {
-        int ball = compare.compareNumbers(computerNumList, userNumList)[0];
-        int strike = compare.compareNumbers(computerNumList, userNumList)[1];
+        int[] results = compare.compareNumbers(computerNumList, userNumList); // Call once
+        int ball = results[0];
+        int strike = results[1];
 
         if (strike == 0 && ball == 0) {
             return "낫싱";
@@ -20,4 +23,5 @@ import java.util.List;public class Judgement {
         }
     }
 }
+
 
