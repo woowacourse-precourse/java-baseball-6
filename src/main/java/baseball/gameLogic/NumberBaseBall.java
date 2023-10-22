@@ -15,9 +15,12 @@ public class NumberBaseBall {
     NumberChecker numberChecker;
     ComputerAction computerAction;
     UserAction userAction;
+    Score score;
 
     List<Integer> computerNumList, userNumList;
+
     int gameStatus;
+
 
     public void init(){
         numberChecker = new NumberChecker();
@@ -28,29 +31,34 @@ public class NumberBaseBall {
     }
 
     public void run(){
-        Score score;
-
-        generateNumber();
-        computerNumList = computerAction.showNumberList();
-
+        generateComputerNumber();
         printStartMsg();
 
         while (gameStatus == WANNA_KEEP_PLAYING){
-            System.out.println(computerNumList.get(0) + "" + computerNumList.get(1) + "" + computerNumList.get(2));
-            userAction.inputAnswer();
-            userNumList = userAction.showNumberList();
-            System.out.println(userNumList.get(0) + "" + userNumList.get(1) + "" + userNumList.get(2));
-
-            score = numberChecker.checkNumber(userNumList, computerNumList);
+            getUserAnswer();
+            getScore();
             printResultMsg(score.ballCount, score.strikeCount);
-
             checkKeepPlaying(score.strikeCount);
-
-            userAction.clearAnswer();
         }
     }
 
+    public void generateComputerNumber(){
+        generateNumber();
+        computerNumList = computerAction.showNumberList();
+    }
+
+    public void getScore(){
+        score = numberChecker.checkNumber(userNumList, computerNumList);
+    }
+
+    public void getUserAnswer(){
+        userAction.inputAnswer();
+        userNumList = userAction.showNumberList();
+    }
+
     public void checkKeepPlaying(int strikeCount){
+        userAction.clearAnswer();
+
         if (strikeCount == MAX_STRIKES) {
             printGameEndMsg();
 
