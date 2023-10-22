@@ -8,4 +8,11 @@ public class InputValidator {
             throw new IllegalArgumentException("입력값이 없습니다.");
         }
     }
+
+    private void validateLength(String input) {
+        int ballCount = GameConfig.BALL_COUNT.getValue();
+        if (input.length() != ballCount) {
+            throw new IllegalArgumentException(String.format("입력값이 %d자리가 아닙니다.", ballCount));
+        }
+    }
 }
