@@ -22,10 +22,17 @@ public class GamePlaying {
 
     public boolean playGame() {
         enterValue();
+        int strike = guessNumber();
+
+        return isAnswer(strike);
+    }
+
+    private int guessNumber() {
         int strike = findStrike();
         int ball = findBall();
         printResult(strike, ball);
-        return isAnswer(strike);
+
+        return strike;
     }
 
     private void enterValue() {

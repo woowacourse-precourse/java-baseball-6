@@ -10,8 +10,9 @@ public class GameControl {
     public void gameStart() {
         gameState = true;
         printer.printStartMessage();
+
         while(gameState) {
-            newGame.playGame();
+            gameState = newGame.playGame();
         }
     }
 }
