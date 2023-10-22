@@ -4,7 +4,7 @@ public class RoundResult {
     private int ballCount;
     private int strikeCount;
 
-    public RoundResult(int ballCount, int strikeCount){
+    public RoundResult(int strikeCount, int ballCount){
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }

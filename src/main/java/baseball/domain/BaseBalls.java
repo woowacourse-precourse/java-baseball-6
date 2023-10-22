@@ -45,4 +45,8 @@ public class BaseBalls {
                 .filter(index -> !numbers.get(index).equals(otherBaseBalls.numbers.get(index)))
                 .count();
     }
+
+    public List<BaseBall> getNumbers() {
+        return numbers;
+    }
 }

@@ -23,6 +23,9 @@ public class GameController {
 
     private void createAnswers(){
         this.answers = BaseBalls.getAnswerBaseBallNumbers();
+        for(int i=0; i<3; i++){
+            System.out.println(answers.getNumbers().get(i).getNumber());
+        }
     }
 
     private void round(){
