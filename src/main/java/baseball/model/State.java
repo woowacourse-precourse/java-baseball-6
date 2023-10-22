@@ -15,14 +15,21 @@ public enum State {
     }
 
     public static State createWith(final String stateNumber) {
+        validateStateNumber(stateNumber);
 
         return Arrays.stream(values())
-                .filter(state -> isStateNumber(stateNumber))
+                .filter(state -> state.stateNumber.equals(stateNumber))
                 .findFirst()
                 .orElseThrow(() -> new NotMatchGameStateException(stateNumber));
     }
 
-    private static boolean isStateNumber(final String stateNumber) {
+    private static void validateStateNumber(final String stateNumber) {
+        if (!isStateNumber(stateNumber)) {
+            throw new NotMatchGameStateException(stateNumber);
+        }
+    }
+
+    private static boolean isStateNumber(String stateNumber) {
         return stateNumber.equals(RESTART.stateNumber) || stateNumber.equals(FINISH.stateNumber);
     }
 
