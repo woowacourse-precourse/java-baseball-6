@@ -6,6 +6,10 @@ import java.util.Set;
 
 public class UserNumber {
 
+    private static final int USER_NUMBER_SIZE = 3;
+    private static final int USER_NUMBER_START_RANGE = 1;
+    private static final int USER_NUMBER_END_RANGE = 9;
+
     private final List<Integer> userNumber;
 
     public UserNumber(List<Integer> userNumber) {
@@ -16,14 +20,14 @@ public class UserNumber {
     }
 
     private void validateSize(List<Integer> userNumber) {
-        if (userNumber.size() != 3) {
+        if (userNumber.size() != USER_NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateRange(List<Integer> userNumber) {
         for (int i = 0; i < userNumber.size(); i++) {
-            if ((userNumber.get(i) < 1) || (userNumber.get(i) > 9)) {
+            if ((userNumber.get(i) < USER_NUMBER_START_RANGE) || (userNumber.get(i) > USER_NUMBER_END_RANGE)) {
                 throw new IllegalArgumentException();
             }
         }
@@ -34,7 +38,7 @@ public class UserNumber {
         for (int i = 0; i < userNumber.size(); i++) {
             checkDuplication.add(userNumber.get(i));
         }
-        if (checkDuplication.size() != 3) {
+        if (checkDuplication.size() != USER_NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
     }
