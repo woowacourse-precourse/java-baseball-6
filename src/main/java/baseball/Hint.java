@@ -1,5 +1,10 @@
 package baseball;
 
+import static baseball.Enum.BALL;
+import static baseball.Enum.CORRECT_AND_END_THE_GAME;
+import static baseball.Enum.NOTHING;
+import static baseball.Enum.STRIKE;
+
 import java.util.List;
 
 
@@ -25,16 +30,16 @@ public class Hint {
             }
         }
         if (strike == 3) {
-            System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(CORRECT_AND_END_THE_GAME);
             return true;
         } else if (strike + ball == 0) {
-            sb.append("낫싱");
+            sb.append(NOTHING);
         } else if (strike == 0) {
-            sb.append(ball).append("볼");
+            sb.append(ball).append(BALL);
         } else if (ball == 0) {
-            sb.append(strike).append("스트라이크");
+            sb.append(strike).append(STRIKE);
         } else {
-            sb.append(ball).append("볼").append(" ").append(strike).append("스트라이크");
+            sb.append(ball).append(BALL).append(" ").append(strike).append(STRIKE);
         }
         System.out.println(sb);
         return false;
