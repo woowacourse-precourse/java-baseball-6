@@ -1,34 +1,35 @@
 package baseball;
 
-import java.util.List;
+import baseball.model.ComputerNumbers;
+import baseball.model.Number;
+import baseball.model.UserNumbers;
 
 public class CompareWithAnswer {
-    public static Boolean compareWithAnswer(List<Integer> answer, List<Integer> userInput){
+
+    public static boolean compareWithAnswer(ComputerNumbers computerNums, UserNumbers userNums) {
         Integer strike=0;
         Integer ball=0;
 
-        for(int i=0;i<userInput.size();i++){
-            if(checkStrike(userInput.get(i),answer.get(i)))
+        for(int i=0;i<computerNums.size;i++){
+            if(checkStrike(userNums.numbers[i],computerNums.numbers[i]))
                 strike++;
-            if(checkBall(i,userInput.get(i),answer))
+            if(checkBall(i,userNums.numbers[i],computerNums))
                 ball++;
         }
         return compareResult(strike, ball);
     }
 
-    public static Boolean checkStrike(Integer userIndexInteger,Integer answerIndexInteger){
-        if(answerIndexInteger==userIndexInteger)
-            return true;
-        else
-            return false;
+    private static boolean checkBall(int index, Number number, ComputerNumbers computerNums) {
+        for(int i=0;i<computerNums.size;i++){
+            if(i!=index && number.isequal(computerNums.numbers[i]))
+                return true;
+        }
+        return false;
     }
 
-    public static Boolean checkBall(Integer index,Integer userIndexInteger,List<Integer> answer){
-        for(int i=0;i<answer.size();i++){
-            if(i!=index && answer.get(i)==userIndexInteger) {
-                return true;
-            }
-        }
+    private static boolean checkStrike(Number usernumber, Number comuternumber) {
+        if(usernumber.isequal(comuternumber))
+            return true;
         return false;
     }
 

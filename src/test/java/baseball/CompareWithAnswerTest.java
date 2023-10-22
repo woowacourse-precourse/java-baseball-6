@@ -1,33 +1,52 @@
 package baseball;
 
+import baseball.model.ComputerNumbers;
+import baseball.model.Number;
+import baseball.model.UserNumbers;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CompareWithAnswerTest {
     @Test
-    public void 숫자비교_테스트_1볼_1스트라이크(){
+    public void 원볼_원스트라이크_테스트(){
         //given
-        List<Integer> answer_nums = Arrays.asList(2, 9, 4);
-        List<Integer> user_nums = Arrays.asList(1, 2, 4);
+        Number[] computerNums = { new Number(1),new Number(2),new Number(3)};
+        Number[] userNums= {new Number(4),new Number(1),new Number(3)};
+
+        UserNumbers userNumbers = new UserNumbers(userNums);
+        ComputerNumbers computerNumbers = new ComputerNumbers(computerNums);
         //when
-        Boolean result = CompareWithAnswer.compareWithAnswer(answer_nums, user_nums);
+        boolean b = CompareWithAnswer.compareWithAnswer(computerNumbers, userNumbers);
         //then
-        assertEquals(false,result);
+        assertEquals(false,b);
     }
 
     @Test
-    public void 숫자비교_테스트_3스트라이크(){
+    public void 제로볼_투스트라이크_테스트(){
         //given
-        List<Integer> answer_nums = Arrays.asList(2, 9, 4);
-        List<Integer> user_nums = Arrays.asList(2, 9, 4);
+        Number[] computerNums = { new Number(1),new Number(2),new Number(3)};
+        Number[] userNums= {new Number(1),new Number(2),new Number(4)};
+
+        UserNumbers userNumbers = new UserNumbers(userNums);
+        ComputerNumbers computerNumbers = new ComputerNumbers(computerNums);
         //when
-        Boolean result = CompareWithAnswer.compareWithAnswer(answer_nums, user_nums);
+        boolean b = CompareWithAnswer.compareWithAnswer(computerNumbers, userNumbers);
         //then
-        assertEquals(true,result);
+        assertEquals(false,b);
     }
 
+    @Test
+    public void 쓰리스트라이크_테스트(){
+        //given
+        Number[] computerNums = { new Number(1),new Number(2),new Number(3)};
+        Number[] userNums= {new Number(1),new Number(2),new Number(3)};
+
+        UserNumbers userNumbers = new UserNumbers(userNums);
+        ComputerNumbers computerNumbers = new ComputerNumbers(computerNums);
+        //when
+        boolean b = CompareWithAnswer.compareWithAnswer(computerNumbers, userNumbers);
+        //then
+        assertEquals(true,b);
+    }
 }
