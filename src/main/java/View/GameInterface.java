@@ -15,8 +15,8 @@ public class GameInterface {
         System.out.println(ball + Ment.Ball + strike + Ment.Strike);
     }
 
-    public static void PrintGameClear() {
-
+    public static void PrintGameStart() {
+        System.out.println(Ment.MentStart);
     }
 
     public static boolean GameClear(int strike) {

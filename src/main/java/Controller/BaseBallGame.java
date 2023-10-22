@@ -21,6 +21,7 @@ public class BaseBallGame {
         player = new Player();
         refree = new Refree();
         computer = new Computer();
+        GameInterface.PrintGameStart();
     }
 
     public void run() {
