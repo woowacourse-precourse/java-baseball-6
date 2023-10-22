@@ -4,22 +4,18 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerNumberTest {
-
-    final List<Integer> playerInput = new ArrayList<>();
-    final PlayerNumberProcess playerNumberProcess = PlayerNumberProcess.getInstance(playerInput);
+public class InputNumberTest {
+    final InputNumber inputNumber = InputNumber.of();
 
     @Test
     @DisplayName("플레이어에게 세자리수를 입력받는다")
     public void 세자리수_입력_받기() throws Exception {
         // given
         String input = "123";
-
         // when
-        List<Integer> numbers = playerNumberProcess.getNumbers(input);
+        List<Integer> numbers = inputNumber.getNumbers(input);
 
         String result = "";
         for (int num : numbers
@@ -38,7 +34,7 @@ public class PlayerNumberTest {
         String input = "ld2";
 
         // then
-        Assertions.assertThatThrownBy(() -> playerNumberProcess.getNumbers(input))
+        Assertions.assertThatThrownBy(() -> inputNumber.getNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class)  // 예상되는 exception
                 .hasMessage("숫자만 입력해주세요.");
     }
@@ -51,7 +47,7 @@ public class PlayerNumberTest {
 
 
         // then
-        Assertions.assertThatThrownBy(() -> playerNumberProcess.getNumbers(input))
+        Assertions.assertThatThrownBy(() -> inputNumber.getNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("세자리 수를 입력해주세요.");
 
@@ -64,7 +60,7 @@ public class PlayerNumberTest {
         String input = "012";
 
         // then
-        Assertions.assertThatThrownBy(() -> playerNumberProcess.getNumbers(input))
+        Assertions.assertThatThrownBy(() -> inputNumber.getNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1-9사이의 값을 입력해주세요.");
 
@@ -77,10 +73,9 @@ public class PlayerNumberTest {
         String input = "112";
 
         // then
-        Assertions.assertThatThrownBy(() -> playerNumberProcess.getNumbers(input))
+        Assertions.assertThatThrownBy(() -> inputNumber.getNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("서로 다른 숫자를 입력해주세요.");
 
     }
-
 }
