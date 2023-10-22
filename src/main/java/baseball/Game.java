@@ -15,7 +15,6 @@ public class Game {
         this.computer = new Computer();
         this.user = new User();
         this.validators = validators;
-        playBaseBallGame();
     }
 
     private void validateUserInput() {
@@ -127,5 +126,9 @@ public class Game {
 //                System.exit(1); -> 프로그램 종료 시 System.exit()를 호출하지 않는다.
             }
         }
+    }
+
+    public void startGame() {
+        playBaseBallGame();
     }
 }

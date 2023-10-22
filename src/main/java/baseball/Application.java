@@ -15,5 +15,6 @@ public class Application {
 
         List<Validator> validators = Arrays.asList(new LengthValidator(), new NoDuplicateValidator(), new RangeValidator());
         Game game = new Game(validators);
+        game.startGame();
     }
 }
