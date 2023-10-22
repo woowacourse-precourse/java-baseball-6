@@ -13,6 +13,10 @@ public final class Number {
         this.value = value;
     }
 
+    public Number(final Number number) {
+        this.value = number.value;
+    }
+
     private void validate(final Integer value) {
         if (isNotProperValue(value)) {
             throw new IllegalStateException();

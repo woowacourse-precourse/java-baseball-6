@@ -27,7 +27,7 @@ public final class Numbers {
     }
 
     public Number getByIndex(final int index) {
-        return numbers.get(index);
+        return new Number(numbers.get(index));
     }
 
     public boolean contains(final Number number) {
