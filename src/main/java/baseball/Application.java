@@ -26,12 +26,12 @@ public class Application {
                 if (printResultAndContinue(result)) {
                     break;
                 }
-
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int retryChoice = stringToIntThrowException(Console.readLine());
-                if (retryChoice == 2)
-                    break;
             }
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int retryChoice = stringToIntThrowException(Console.readLine());
+            if (retryChoice == 2)
+                break;
 
         }
 
