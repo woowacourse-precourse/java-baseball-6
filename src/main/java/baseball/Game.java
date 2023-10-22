@@ -87,8 +87,8 @@ public class Game {
         if (count <= 0) return "";
 
         return switch (type) {
-            case "스트라이크" -> String.format("%d 스트라이크", count);
-            case "볼" -> String.format("%d 볼 ", count);
+            case "스트라이크" -> String.format("%d스트라이크", count);
+            case "볼" -> String.format("%d볼 ", count);
             default -> throw new IllegalArgumentException("Invalid type");
         };
     }
@@ -98,7 +98,7 @@ public class Game {
     }
 
     private boolean isAnswer(String hint) {
-        return hint.equals("3 스트라이크");
+        return hint.equals("3스트라이크");
     }
 
     private void playBaseBallGame() {
@@ -122,8 +122,7 @@ public class Game {
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println(e);
-                return;
-//                System.exit(1); -> 프로그램 종료 시 System.exit()를 호출하지 않는다.
+                throw e;
             }
         }
     }
