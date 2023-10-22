@@ -36,4 +36,11 @@ public class BaseballNumber {
         int randomNumber = Randoms.pickNumberInRange(MIN_BASEBALL_NUMBER, MAX_BASEBALL_NUMBER);
         return of(randomNumber);
     }
+
+    @Override
+    public String toString() {
+        return "BaseballNumber{" +
+                "baseballNumber=" + baseballNumber +
+                '}';
+    }
 }
