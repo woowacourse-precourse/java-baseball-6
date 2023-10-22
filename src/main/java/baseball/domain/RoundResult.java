@@ -8,4 +8,24 @@ public class RoundResult {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }
+
+    public boolean isOnlyStrike(){
+        return (strikeCount != 0 && ballCount == 0);
+    }
+
+    public boolean isOnlyBall(){
+        return (strikeCount == 0 && ballCount != 0);
+    }
+
+    public boolean isNothing(){
+        return (strikeCount == 0 && ballCount == 0);
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
 }

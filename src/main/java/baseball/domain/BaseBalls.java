@@ -33,16 +33,12 @@ public class BaseBalls {
         }
     }
 
-    // 스트라이크 : 인덱스 값, 실제 값 모두 똑같아야함
     public int getStrikeCounts(BaseBalls otherBaseBalls){
         return (int) IntStream.range(0, SIZE)
                 .filter(index -> numbers.get(index).equals(otherBaseBalls.numbers.get(index)))
                 .count();
     }
 
-    // 볼 : 실제 값은 같으나, 인덱스 값이 다르다.
-    // 1) answer 가 포함하는 것을 필터링
-    // 2) 스트라이크인 것을 필터링 (인덱스 값, 실제 값 모두 똑같은 것)
     public int getBallCounts(BaseBalls otherBaseBalls){
         return (int) IntStream.range(0, SIZE)
                 .filter(index -> numbers.contains(otherBaseBalls.numbers.get(index)))

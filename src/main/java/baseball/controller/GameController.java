@@ -31,6 +31,8 @@ public class GameController {
             BaseBalls userNumbers = BaseBalls.getUserBaseBallNumbers(Console.readLine());
             int strikeCount = answers.getStrikeCounts(userNumbers);
             int ballCount = answers.getBallCounts(userNumbers);
+            roundResult = new RoundResult(strikeCount, ballCount);
+            GameView.printRoundResult(roundResult);
         } while(true);
     }
 }
