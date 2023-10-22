@@ -5,11 +5,10 @@ import baseball.model.ComputerModel;
 import baseball.random.RandomNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.HashMap;
 import java.util.Map;
 
 public class StateController {
-    public static final int GAMESTATE_RESTART = 1;
+    public static final int GAME_STATE_RESTART = 1;
     static final InputView inputview = new InputView();
     static final OutputView outputView = new OutputView();
     static final RandomNumber random = new RandomNumber();
@@ -32,12 +31,11 @@ public class StateController {
     }
 
     public boolean gameStateChange() {
-        String playerNumber;
-
         outputView.printRestartMessage();
-        playerNumber = inputview.inputRestartNumber();
+
+        String playerNumber = inputview.inputRestartNumber();
         exceptionCheck.restartInputCheck(playerNumber);
-        return Integer.parseInt(playerNumber) == GAMESTATE_RESTART;
+        return Integer.parseInt(playerNumber) == GAME_STATE_RESTART;
     }
 
     public void gameScoreCheck(Map<String, Integer> scoreMap) {

@@ -17,6 +17,7 @@ public class ComputerModel {
         scoreMap.put("ballScore", 0);
         scoreMap.put("strikeScore", 0);
         int i = 0;
+
         while( i < computerNumber.length()) {
             if (computerNumber.charAt(i) == playerNumber.charAt(i)) {
                 String sameNumber = String.valueOf(computerNumber.charAt(i));
@@ -25,7 +26,7 @@ public class ComputerModel {
                 playerNumber = playerNumber.replace(sameNumber, "");
                 continue;
             }
-            if (computerNumber.contains(Character.toString(playerNumber.charAt(i)))&&0 != computerNumber.length()) {
+            if (computerNumber.contains(Character.toString(playerNumber.charAt(i)))) {
                 scoreMap.put("ballScore", (scoreMap.get("ballScore") + 1));
             }
             i++;

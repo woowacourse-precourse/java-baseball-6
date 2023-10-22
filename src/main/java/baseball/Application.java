@@ -8,14 +8,20 @@ public class Application {
     public static void main(String[] args) {
         StateController controller = new StateController();
         OutputView outputView = new OutputView();
+        boolean gameState = true;
+        boolean restart = false;
 
         outputView.printStartMessage();
         controller.gameStart();
-        boolean gameState = true;
+
         while (gameState) {
             if(controller.repeatPlayerExpect()) {
-                gameState = controller.gameStateChange();
+                restart = controller.gameStateChange();
+                gameState = restart;
+            }
+            if (restart) {
                 controller.gameStart();
+                restart = false;
             }
         }
     }
