@@ -6,6 +6,8 @@ public class Application {
         int roundResult;
         boolean running = true;
 
+        game.startGame();
+
         while (true) {
             if (!running) {
                 break;
@@ -16,6 +18,9 @@ public class Application {
 
             if (roundResult == 2) {
                 running = game.isRestart();
+                if (running) {
+                    game.startGame();
+                }
             }
         }
     }

@@ -4,13 +4,19 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class Game {
-    private Player player = new Player();
-    private Player computer = new Player();
+    private Player player;
+    private Player computer;
 
     private Hint hint = new Hint();
 
     public Game() {
+    }
+
+    public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+
+        player = new Player();
+        computer = new Player();
     }
 
     public void getGuessNums() {
