@@ -52,6 +52,7 @@ public class BaseBallGameRunner {
             }
             throw new IllegalArgumentException("INVALID_INPUT_MESSAGE");
         }
+        Console.close();
     }
 
     private String getPlayerInput(String message) {
