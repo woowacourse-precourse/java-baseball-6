@@ -20,7 +20,7 @@ public class Game {
         }
     }
 
-    private int countStrike(String inputString) {
+    public int countStrike(String inputString) {
         int count = 0;
         for (int i = 0; i < 3; i++) {
             if (inputString.charAt(i) == this.answer.charAt(i)) {
@@ -30,7 +30,7 @@ public class Game {
         return count;
     }
 
-    private int countBall(String inputString) {
+    public int countBall(String inputString) {
         int count = 0;
         for (int i = 0; i < 3; i++) {
             if (inputString.charAt(i) != this.answer.charAt(i) && this.answer.contains(String.valueOf(inputString.charAt(i)))) { //리팩토링 필요한 지점
@@ -40,10 +40,11 @@ public class Game {
         return count;
     }
 
-    private boolean isAnswer(String inputString) {
+    public boolean isAnswer(String inputString) {
         if (countStrike(inputString) == 3) {
             return true;
         }
         return false;
     }
+
 }
