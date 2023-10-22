@@ -6,8 +6,6 @@ import baseball.model.Player;
 import baseball.utils.RandomUtil;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
@@ -28,14 +26,12 @@ public class GameController {
     Game game;
 
     public void startGame() {
-        boolean continueGame = true;
 
         outputView.printStartMessage();
 
-        while(continueGame) {
+        do {
             playGame();
-            continueGame = askRestartGame();
-        }
+        } while(restartGame());
     }
 
     public void playGame() {
@@ -118,7 +114,7 @@ public class GameController {
         return NULL_MESSAGE;
     }
 
-    public boolean askRestartGame() {
+    public boolean restartGame() {
         String answer = inputView.askPlayerGameRestart();
         if (answer.equals("1")) {
             return true;
