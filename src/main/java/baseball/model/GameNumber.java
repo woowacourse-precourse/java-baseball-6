@@ -1,7 +1,5 @@
 package baseball.model;
 
-import java.util.Arrays;
-
 import baseball.controller.NumberValidator;
 import baseball.controller.RandomUtility;
 
@@ -14,24 +12,22 @@ public class GameNumber {
 
     public void setInputNumber(String inputNumber) {
         this.inputNumber = inputNumber.replaceAll(" ", "");
-        setPlayerNumbers();
     }
 
     public String getInputNumber() {
         return inputNumber;
     }
 
-    public void setPlayerNumbers() {
-        playerNumbers = numberValidator.toValidateNumber(inputNumber);
+    public void setPlayerNumbers(int[] playerNumbers) {
+        this.playerNumbers = playerNumbers;
     }
 
     public int[] getPlayerNumbers() {
         return playerNumbers;
     }
 
-    public void setRandomNumbers() {
-        randomNumbers = randomUtility.generateRandomNumbers();
-        System.out.println("randomNumbers: " + Arrays.toString(randomNumbers));
+    public void setRandomNumbers(int[] randomNumbers) {
+        this.randomNumbers = randomNumbers;
     }
 
     public int[] getRandomNumbers() {

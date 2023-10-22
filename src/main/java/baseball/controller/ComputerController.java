@@ -14,9 +14,11 @@ public class ComputerController {
     private int strikeCount;
     private int ballCount;
     OutputView outputView = new OutputView();
+    RandomUtility randomUtility = new RandomUtility();
 
     public void startGame(GameNumber gameNumber) {
-        gameNumber.setRandomNumbers();
+        int[] randomNumbers = randomUtility.generateRandomNumbers();
+        gameNumber.setRandomNumbers(randomNumbers);
     }
     
     public boolean playGame(GameNumber gameNumber) {
