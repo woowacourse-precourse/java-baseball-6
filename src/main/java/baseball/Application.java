@@ -22,7 +22,9 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 int[] guessNumbers = stringToIntArrayThrowException(Console.readLine());
                 Map<String, Integer> result = computer.countStrikesAndBalls(guessNumbers);
-                printResult(result);
+                if (printResultAndContinue(result)) {
+                    break;
+                }
             }
 
         }
@@ -50,7 +52,7 @@ public class Application {
         return result;
     }
 
-    public static void printResult(Map<String, Integer> result) {
+    public static boolean printResultAndContinue(Map<String, Integer> result) {
 
         int strikes = result.get("strikes");
         int balls = result.get("balls");
@@ -68,5 +70,12 @@ public class Application {
         }
 
         System.out.println();
+
+        if (strikes == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+
+        return false;
     }
 }
