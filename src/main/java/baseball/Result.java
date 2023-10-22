@@ -10,6 +10,9 @@ public class Result {
         for (int index = 0; index < userNumbers.size(); index++) {
             char number = userNumbers.get(index);
 
+            if (isSameIndex(index, number, randomNumbers)) {
+                strike++;
+            }
         }
     }
 
