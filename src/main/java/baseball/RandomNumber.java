@@ -1,12 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumber {
-    private RandomNumber() {}
+    private RandomNumber() {
+    }
 
     public static List<Integer> generate(int length) {
         List<Integer> randomNumbers = new ArrayList<>();

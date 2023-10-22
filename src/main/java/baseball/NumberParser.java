@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberParser {
-    private NumberParser() {}
+    private NumberParser() {
+    }
 
     public static List<Integer> parseIntegerList(String numberString) {
         List<Integer> parsedNumbers = new ArrayList<>();
