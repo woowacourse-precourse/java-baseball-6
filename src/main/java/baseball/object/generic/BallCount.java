@@ -18,7 +18,7 @@ public record BallCount(long countOfStrike, long countOfBall) {
         if (countOfStrike < 0 ||
                 countOfBall < 0 ||
                 MAX_COUNT < countOfStrike + countOfBall) {
-            throw new IllegalArgumentException("잘못 생성된 볼카운트 객체입니다");
+            throw new IllegalArgumentException("잘못된 볼카운팅입니다.");
         }
     }
 
