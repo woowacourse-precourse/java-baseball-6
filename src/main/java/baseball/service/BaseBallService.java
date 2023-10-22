@@ -7,7 +7,7 @@ public class BaseBallService {
     private static int strike = 0;
     private static int ball = 0;
 
-    public static void init(List<Integer> generatedComputerNum) {
+    public void init(List<Integer> generatedComputerNum) {
         computerNum = generatedComputerNum;
     }
 }
