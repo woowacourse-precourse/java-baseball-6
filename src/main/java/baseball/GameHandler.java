@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class GameHandler {
-    private final User user = new User();
+    private final UserInputHandler userInputHandler = new UserInputHandler();
     private final Computer gameSession = new Computer();
     private final OutputView outputView = new OutputView();
     private final ResultGenerator resultGenerator = new ResultGenerator();
@@ -42,16 +42,16 @@ public class GameHandler {
 
     private List<Integer> obtainValidUserGuess(){
         outputView.printInputMessage();
-        String userInput = user.getUserInput();
+        String userInput = userInputHandler.readInput();
         validateUserGuess(userInput);
-        return user.getUserNumbers(userInput);
+        return userInputHandler.convertInputToNumbers(userInput);
     }
 
     private int obtainValidUserChoice() {
         outputView.printEndMessage();
-        String userInput= user.getUserInput();
+        String userInput= userInputHandler.readInput();
         validateUserChoice(userInput);
-        return user.getRestartChoice(userInput);
+        return userInputHandler.parseRestartChoice(userInput);
     }
 
     private void validateUserChoice(String userInput) {
