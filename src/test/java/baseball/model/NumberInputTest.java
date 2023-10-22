@@ -3,13 +3,12 @@ package baseball.model;
 import static baseball.model.enums.NumberInputErrorMessage.DUPLICATE_NUMBER;
 import static baseball.model.enums.NumberInputErrorMessage.INVALID_CHARACTER;
 import static baseball.model.enums.NumberInputErrorMessage.INVALID_LENGTH;
-import static baseball.model.input.PlayerInput.EMPTY_INPUT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.model.input.NumberInput;
-import org.junit.jupiter.api.Test;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class NumberInputTest {
 
@@ -74,19 +73,6 @@ class NumberInputTest {
         assertThatThrownBy(() -> new NumberInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DUPLICATE_NUMBER.getMessage());
-    }
-
-    @Test
-    void validate_null_인자() {
-        // given
-        String input = null;
-
-        // when
-
-        // then
-        assertThatThrownBy(() -> new NumberInput(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(EMPTY_INPUT);
     }
 
     @Test

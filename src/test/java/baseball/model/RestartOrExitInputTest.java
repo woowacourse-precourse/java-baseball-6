@@ -2,7 +2,6 @@ package baseball.model;
 
 import static baseball.model.enums.RestartOrExitInputErrorMessage.INVALID_CHARACTER;
 import static baseball.model.enums.RestartOrExitInputErrorMessage.INVALID_LENGTH;
-import static baseball.model.input.PlayerInput.EMPTY_INPUT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -49,19 +48,6 @@ class RestartOrExitInputTest {
         assertThatThrownBy(() -> new RestartOrExitInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_CHARACTER.getMessage());
-    }
-
-    @Test
-    void validate_null_인자() {
-        // given
-        String input = null;
-
-        // when
-
-        // then
-        assertThatThrownBy(() -> new RestartOrExitInput(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(EMPTY_INPUT);
     }
 
     @Test

@@ -1,13 +1,12 @@
 package baseball.controller;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import baseball.model.numbers.GameNumbers;
 import baseball.model.score.Score;
 import baseball.model.score.ScoreCalculator;
-import org.junit.jupiter.api.Test;
-
 import java.util.List;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import org.junit.jupiter.api.Test;
 
 class ScoreCalculatorTest {
     ScoreCalculator scoreCalculator = new ScoreCalculator();

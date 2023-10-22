@@ -3,7 +3,6 @@ package baseball.model.score;
 import static baseball.model.numbers.GameNumbers.GAME_NUMBERS_SIZE;
 
 import baseball.model.numbers.GameNumbers;
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.IntStream;

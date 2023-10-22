@@ -2,7 +2,6 @@ package baseball.model.numbers;
 
 import static baseball.model.numbers.GameNumbers.GAME_NUMBERS_SIZE;
 
-import baseball.model.numbers.GameNumbers;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;

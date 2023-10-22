@@ -1,9 +1,9 @@
 package baseball.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import baseball.model.score.Score;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class ScoreTest {
 
