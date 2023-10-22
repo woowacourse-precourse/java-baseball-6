@@ -1,8 +1,9 @@
 package baseball.model;
 
+import static baseball.utils.BaseballConstantUtils.GAME_OVER;
+import static baseball.utils.BaseballConstantUtils.GAME_RESTART;
+
 public class GameRestartOrNot {
-    private static final String GAME_RESTART = "1";
-    private static final String GAME_OVER = "2";
     private final String gameRestartOrNot;
 
     public GameRestartOrNot(String gameRestartOrNot) {

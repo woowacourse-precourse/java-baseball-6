@@ -1,10 +1,11 @@
 package baseball.model;
 
+import static baseball.utils.BaseballConstantUtils.MAX_BASEBALL_NUMBER;
+import static baseball.utils.BaseballConstantUtils.MIN_BASEBALL_NUMBER;
+
 import java.util.Objects;
 
 public class BaseballNumber {
-    private static final int MIN_BASEBALL_NUMBER = 1;
-    private static final int MAX_BASEBALL_NUMBER = 9;
     private final int baseballNumber;
 
 

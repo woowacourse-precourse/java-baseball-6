@@ -1,14 +1,15 @@
 package baseball.model;
 
+import static baseball.utils.BaseballConstantUtils.BASEBALL_NUMBERS_LENGTH;
+import static baseball.utils.BaseballConstantUtils.MAX_BASEBALL_NUMBER;
+import static baseball.utils.BaseballConstantUtils.MIN_BASEBALL_NUMBER;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class BaseballNumbersGenerator {
-    private static final int BASEBALL_NUMBERS_LENGTH = 3;
-    private static final int MIN_BASEBALL_NUMBER = 1;
-    private static final int MAX_BASEBALL_NUMBER = 9;
 
     public static BaseballNumbers getComputerBaseballNumbers() {
         List<BaseballNumber> computerBaseballNumberList = new ArrayList<>();

@@ -1,10 +1,11 @@
 package baseball.model;
 
+import static baseball.utils.BaseballConstantUtils.BASEBALL_NUMBERS_LENGTH;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumbers {
-    private static final int BASEBALL_NUMBERS_LENGTH = 3;
     private final List<BaseballNumber> baseballNumbers;
 
     public BaseballNumbers(List<BaseballNumber> baseballNumbers) {

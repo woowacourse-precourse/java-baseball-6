@@ -1,10 +1,11 @@
 package baseball.view;
 
+import static baseball.utils.BaseballConstantUtils.BASEBALL_NUMBERS_LENGTH;
+import static baseball.utils.BaseballConstantUtils.GAME_OVER;
+import static baseball.utils.BaseballConstantUtils.GAME_RESTART;
+
 public class OutputView {
 
-    private static final int BASEBALL_NUMBERS_LENGTH = 3;
-    private static final String GAME_RESTART = "1";
-    private static final String GAME_OVER = "2";
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String ENTER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String BALL = "볼 ";

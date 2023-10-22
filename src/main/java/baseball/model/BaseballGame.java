@@ -1,7 +1,8 @@
 package baseball.model;
 
+import static baseball.utils.BaseballConstantUtils.BASEBALL_NUMBERS_LENGTH;
+
 public class BaseballGame {
-    private static final int BASEBALL_NUMBERS_LENGTH = 3;
 
     private final BaseballNumbers computerBaseballNumbers;
     private BaseballNumbers userBaseballNumbers;
