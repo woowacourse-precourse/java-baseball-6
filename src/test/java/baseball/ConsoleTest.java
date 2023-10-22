@@ -13,21 +13,9 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static baseball.TestConstants.*;
 
 public class ConsoleTest {
-    private final String emptyString = "";
-    private final String successString = "123";
-    private final List<Integer> successList = List.of(1, 2, 3);
-    private final int successListSize = successList.size();
-    private final String nullString = null;
-    private final String notNumber = "ABC";
-    private final String outOfRangeNumber = "012";
-    private final String shorterThanLimitNumber = "1";
-    private final String longerThanLimitNumber = "1234";
-    private final String duplicateNumber = "112";
-    private final String RESTART = "1";
-    private final String TERMINATE = "2";
-    private final String NOT_BOTH_RESTART_AND_TERMINATE = "3";
 
     @Nested
     @DisplayName("사용자의 3자리 수 입력을 받는 기능")
@@ -39,8 +27,8 @@ public class ConsoleTest {
         void success() {
             assertSimpleTest(
                     () -> {
-                        run(successString);
-                        assertThat(output()).isEqualTo(successList.toString());
+                        run(SUCCESS_STRING);
+                        assertThat(output()).isEqualTo(SUCCESS_LIST_TO_STRING);
                     }
             );
         }
@@ -49,7 +37,7 @@ public class ConsoleTest {
         @DisplayName("null을 입력하면 예외가 발생한다.")
         void inputNull() {
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(nullString))
+                    assertThatThrownBy(() -> runException(NULL_STRING))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
@@ -58,7 +46,7 @@ public class ConsoleTest {
         @DisplayName("숫자가 아닌 입력을 하면 예외가 발생한다.")
         void inputNotNumber() {
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(notNumber))
+                    assertThatThrownBy(() -> runException(NOT_NUMBER_STRING))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
@@ -67,7 +55,7 @@ public class ConsoleTest {
         @DisplayName("범위를 벗어난 수를 입력하면 예외가 발생한다.")
         void inputOutOfRange() {
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(outOfRangeNumber))
+                    assertThatThrownBy(() -> runException(OUT_OF_RANGE_NUMBER))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
@@ -76,11 +64,11 @@ public class ConsoleTest {
         @DisplayName("정해진 길이를 벗어난 숫자를 입력하면 예외가 발생한다.")
         void inputInvalidLengthNumber() {
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(shorterThanLimitNumber))
+                    assertThatThrownBy(() -> runException(SHORTER_THAN_NUMBER_LENGTH_LIMIT))
                             .isInstanceOf(IllegalArgumentException.class)
             );
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(longerThanLimitNumber))
+                    assertThatThrownBy(() -> runException(LONGER_THAN_NUMBER_LENGTH_LIMIT))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
@@ -89,7 +77,7 @@ public class ConsoleTest {
         @DisplayName("중복된 수를 입력하면 예외가 발생한다.")
         void inputDuplicateNumber() {
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(duplicateNumber))
+                    assertThatThrownBy(() -> runException(DUPLICATE_NUMBER_STRING))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
@@ -111,12 +99,11 @@ public class ConsoleTest {
         void success() {
             assertRandomNumberInRangeTest(
                     () -> {
-                        run(emptyString);
-                        assertThat(output()).isEqualTo(successList.toString());
+                        run(EMPTY_STRING);
+                        assertThat(output()).isEqualTo(SUCCESS_LIST_TO_STRING);
                     },
-                    successList.get(0),
-                    successList.subList(1, successListSize)
-                            .toArray(new Integer[successListSize - 1])
+                    SUCCESS_LIST_FIRST_ELEMENT,
+                     SUCCESS_LIST_REMAINING_ELEMENTS
             );
         }
 
@@ -164,7 +151,7 @@ public class ConsoleTest {
             @DisplayName("null을 입력하면 예외가 발생한다.")
             void inputNull() {
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException(nullString))
+                        assertThatThrownBy(() -> runException(NULL_STRING))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
@@ -173,7 +160,7 @@ public class ConsoleTest {
             @DisplayName("숫자가 아닌 입력을 하면 예외가 발생한다")
             void inputNotNumber() {
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException(notNumber))
+                        assertThatThrownBy(() -> runException(NOT_NUMBER_STRING))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
