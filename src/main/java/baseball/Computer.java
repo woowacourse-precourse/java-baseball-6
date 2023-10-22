@@ -16,6 +16,17 @@ public class Computer {
         this.answer = getNewAnswer();
     }
 
+    public boolean makeGuess() {
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> input = getUserInput();
+        // ToDo: guess랑 answer 비교해서 strike, ball 계산
+        int nStrikes = 3;
+        int nBalls = 0;
+        // ToDo: 주어진 strike, ball에 따라 결과 출력
+        // printGuessResult(nStrikes, nBalls);
+        return (nStrikes == 3);
+    }
+
     private List<Integer> getNewAnswer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
