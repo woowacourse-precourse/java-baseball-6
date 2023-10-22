@@ -12,9 +12,8 @@ public class NumberGenerator {
 
     public static List<Integer> createComputerNumbers() {
         LinkedHashSet<Integer> computerNumbers = new LinkedHashSet<>();
-        int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
         while (computerNumbers.size() < 3) {
-            computerNumbers.add(randomNumber);
+            computerNumbers.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
         }
 
         return new ArrayList<>(computerNumbers);
