@@ -6,20 +6,30 @@ public class BaseBallGame {
 
     GameInput input;
     GameService service;
-    boolean gameProcess;
 
     public BaseBallGame() {
         input = new GameInput();
         service = new GameService();
-        gameProcess = true;
     }
 
-    public void playGame() {
+    public void startGameProcess() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean reGame = true; // start Game
+        while (reGame) {
+            playGame();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            reGame = input.userInputReGameSelection();
+        }
+    }
+
+    private void playGame() {
         List<Integer> userGuessNumber = null;
         List<Integer> randomNumber = null;
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean gameProcess = true;
+
         randomNumber = service.makeRandomNumberList();
         while (gameProcess) {
+            System.out.printf("숫자를 입력해주세요 : ");
             int[] ballAndStrike = guessNumber(userGuessNumber, randomNumber);
             printResult(ballAndStrike);
             if (ballAndStrike[1] == 3) {

@@ -8,10 +8,18 @@ public class GameInput {
     public GameInput() {
     }
 
-    public List<Integer> UserInputGuessNumber() {
+    public List<Integer> userInputGuessNumber() {
         String userGuessNumString = Console.readLine();
         // need exception handler
         return intStringToList(userGuessNumString);
+    }
+
+    public boolean userInputReGameSelection() {
+        String userReGameSelection = Console.readLine();
+        // need exception handler
+        if (Integer.parseInt(userReGameSelection) == 1)
+            return true; // start Game
+        return false; // exit Game
     }
 
     private List<Integer> intStringToList(String numberString) {
