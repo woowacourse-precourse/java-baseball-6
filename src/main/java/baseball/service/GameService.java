@@ -8,6 +8,8 @@ import baseball.domain.Referee;
 
 public class GameService {
 
+	private static final String END_CONDITION = "3스트라이크";
+
 	public Computer createComputer() {
 		return new Computer();
 	}
@@ -19,6 +21,10 @@ public class GameService {
 
 		GameResult gameResult = referee.compare(computerBalls, playerBalls);
 		return referee.notifyGameResult(gameResult);
+	}
+
+	public boolean isEnded(final String gameResultMessage) {
+		return gameResultMessage.equals(END_CONDITION);
 	}
 
 }
