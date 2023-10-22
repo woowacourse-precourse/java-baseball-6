@@ -10,6 +10,7 @@ public class Application {
     private static final int NUMBER_LENGTH = 3;
     private static final int NUMBER_MIN = 1;
     private static final int NUMBER_MAX = 9;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -17,12 +18,20 @@ public class Application {
         boolean continueGame = true;
         while (continueGame) {
             List<Integer> computerNumbers = generateRandomNumbers();
-            continueGame = playGame(computerNumbers);
-            if (continueGame) {
-                continueGame = askContinue();
+
+            boolean correctAnswer = false;
+            while (!correctAnswer) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String inputNumbers = Console.readLine();
+                validateInput(inputNumbers);
+
+                correctAnswer = playGame(computerNumbers, convertInputToNumbers(inputNumbers));
             }
+
+            continueGame = askContinue();
         }
     }
+
     /* 랜덤 컴퓨터 숫자 생성 */
     private static List<Integer> generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
@@ -36,31 +45,19 @@ public class Application {
     }
 
     /* 게임 시작 */
-    private static boolean playGame(List<Integer> computerNumbers) {
-        while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String inputNumbers = Console.readLine();
-
-            try {
-                validateInput(inputNumbers);
-                List<Integer> playerNumbers = convertInputToNumbers(inputNumbers);
-
-                int strikeCount = getStrikeCount(computerNumbers, playerNumbers);
-                if (strikeCount == 3) {
-                    System.out.println("3스트라이크");
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    return true;
-                }
-
-                int ballCount = getBallCount(computerNumbers, playerNumbers);
-
-                printCount(ballCount, strikeCount);
-
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                return false;
-            }
+    private static boolean playGame(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        int strikeCount = getStrikeCount(computerNumbers, playerNumbers);
+        if (strikeCount == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
         }
+
+        int ballCount = getBallCount(computerNumbers, playerNumbers);
+
+        printCount(ballCount, strikeCount);
+
+        return false;
     }
 
     /* 입력 숫자 검증*/
@@ -98,6 +95,7 @@ public class Application {
         }
         return numbers;
     }
+
     /* 스트라이크 갯수 세기*/
     private static int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int strikeCount = 0;
@@ -108,6 +106,7 @@ public class Application {
         }
         return strikeCount;
     }
+
     /* 볼 갯수 세기*/
     private static int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int ballCount = 0;
