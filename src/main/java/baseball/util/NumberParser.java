@@ -25,8 +25,8 @@ public class NumberParser {
     }
 
     private static int parseIntCharacter(char ch) {
-        if (!('0' <= ch && ch <= '9')) {
-            throw new IllegalArgumentException("숫자만 허용됩니다.");
+        if (!('1' <= ch && ch <= '9')) {
+            throw new IllegalArgumentException("1 ~ 9 사이의 숫자만 허용됩니다.");
         }
         return Character.getNumericValue(ch);
     }
