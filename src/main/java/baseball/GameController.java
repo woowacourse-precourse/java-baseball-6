@@ -65,10 +65,12 @@ public class GameController {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String restart = Console.readLine();
 
-                if (restart.equals("2")) {
+                if (restart.equals("1")) {
+                    computerNumber = computer.getComputerRandomNumber();
+                } else if (restart.equals("2")) {
                     break;
                 } else {
-                    computerNumber = computer.getComputerRandomNumber();
+                    throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
                 }
             }
         }
