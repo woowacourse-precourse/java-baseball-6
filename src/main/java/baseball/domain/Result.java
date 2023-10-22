@@ -15,6 +15,8 @@ public class Result {
     }
 
     public static Result create(Answer answer, Answer guessAnswer) {
+        if(answer.getSize() != guessAnswer.getSize()) throw new IllegalArgumentException("Result 인스턴스를 만들 수 없습니다.");
+
         int ballCount = 0;
         int strikeCount = 0;
 

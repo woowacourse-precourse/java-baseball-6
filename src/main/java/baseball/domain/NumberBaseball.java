@@ -10,7 +10,6 @@ public class NumberBaseball {
     public void play(int numberLimit) {
         do {
             Answer answer = Answer.createByRandom(numberLimit);
-            System.out.println(answer.getAnswer());
             user.guessUntilCorrect(answer);
         }while (user.isContinueGame(numberLimit));
     }
