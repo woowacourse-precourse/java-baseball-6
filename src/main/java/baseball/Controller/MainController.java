@@ -69,8 +69,6 @@ public class MainController {
       ballCount = comparator.countBalls(gameData.getComputerNumber(), gameData.getPlayerInput());
       strikeCount = comparator.countStrikes(gameData.getComputerNumber(),
           gameData.getPlayerInput());
-      gameData.setBallCount(ballCount);
-      gameData.setStrikeCount(strikeCount);
     }
 
     outputView.printHint(ballCount, strikeCount);
