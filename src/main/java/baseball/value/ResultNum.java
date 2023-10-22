@@ -7,15 +7,15 @@ public class ResultNum {
     int[] userNumber;
 
     public void setComputerNum(int[] RandomNum){
-        this.computerNumber = RandomNum;
+        computerNumber = RandomNum;
     }
 
     public int[] getComputerNumber(){
         return computerNumber;
     }
 
-    public void setUserNumber(int[] userNumber){
-        this.userNumber = userNumber;
+    public void setUserNumber(int[] userNum){
+        userNumber = userNum;
     }
     public int[] getUserNumber(){return userNumber;}
 }

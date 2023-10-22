@@ -5,9 +5,13 @@ import baseball.value.ResultNum;
 public class Rule {
 
     GameCount gameCount;
+    ResultNum resultNum;
+
+    public Rule(ResultNum resultNum){
+        this.resultNum = resultNum;
+    }
 
     public void checkMatches(){
-        ResultNum resultNum = new ResultNum();
         for (int i = 0; i < 3; i++){
             compareNumber(resultNum.getComputerNumber(), resultNum.getUserNumber(), i);
             System.out.println("qqq");
@@ -22,7 +26,7 @@ public class Rule {
                 break;
             }
         }
-        addCount(isNon, userIndex);
+        //addCount(isNon, userIndex);
     }
 
     public void addCount(int isNon, int userIndex){

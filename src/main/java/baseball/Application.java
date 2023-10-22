@@ -6,5 +6,6 @@ public class Application {
         // TODO: 프로그램 구현
         Controller controller = new Controller();
         controller.GameSetting();
+        controller.play();
     }
 }
