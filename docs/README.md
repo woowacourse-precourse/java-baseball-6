@@ -1,6 +1,7 @@
 # 기능 구현 목록
 
 ## 1. 컴퓨터를 담당하는 클래스(숫자 야구 게임에서 상대방의 역할)
+- Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()
 - 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다.
 - 컴퓨터는 입력한 숫자에 대한 결과를 출력한다.
     ```text
@@ -26,7 +27,6 @@
     ```
 
 ## 3. 게임 진행을 담당하는 클래스
-- Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()
 - 사용자가 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 맞추면 게임이 종료되고 아니라면 반복된다.
 
 ## 4. 게임에 반복을 담당하는 클래스
