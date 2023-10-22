@@ -23,9 +23,9 @@ public class Application {
             System.out.println(pickNumberInRange(1, 9));
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String userInput = readLine();
-            if (userInput.equals("1")) {
+            if (userInput.equals("1")) { // 1이면 게임 다시
                 continue;
-            } else if (userInput.equals("2")) {
+            } else if (userInput.equals("2")) { // 2이면 게임 종료
                 break;
             }
         }
