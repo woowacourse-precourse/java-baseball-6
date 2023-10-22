@@ -9,11 +9,11 @@ public class Baseball {
 
     List<Integer> ballNum = new ArrayList<>();
 
-    public Baseball(List<Integer> ballNum) {
-        this.ballNum = ballNum;
+    public Baseball() {
     }
 
-    public Baseball() {
+    public List<Integer> getBallNum() {
+        return this.ballNum;
     }
 
     public void makeBaseball() {

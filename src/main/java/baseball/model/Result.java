@@ -7,12 +7,9 @@ public class Result {
     private int strike;
     private int ball;
 
-
-    public Result(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
+    public Result() {
     }
-
+    
     public int getStrike() {
         return this.strike;
     }
