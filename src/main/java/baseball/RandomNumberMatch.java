@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.BaseballGameConstants.*;
+
 import java.util.List;
 
 public class RandomNumberMatch {
@@ -27,26 +29,34 @@ public class RandomNumberMatch {
             }
         }
 
-        if (strikes > 0 || balls > 0) {
-            System.out.println(ballsAndStrikesFormatted(strikes, balls));
-        } else {
-            System.out.println("낫싱");
-        }
+        String resultMessage = getResultMessage(strikes, balls);
+        System.out.println(resultMessage);
+        printGameFinishMessageIfAllMatched(strikes);
 
-        if (strikes == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
+        return strikes == ALL_MATCHED;
+    }
+
+    private void printGameFinishMessageIfAllMatched(int strikes) {
+        if (strikes == ALL_MATCHED) {
+            System.out.println(GAME_FINISHED_MESSAGE);
         }
-        return false;
+    }
+
+    private String getResultMessage(int strikes, int balls) {
+        if (strikes > 0 || balls > 0) {
+            return ballsAndStrikesFormatted(strikes, balls);
+        } else {
+            return NOTHING;
+        }
     }
 
     private String ballsAndStrikesFormatted(int strikes, int balls) {
         StringBuilder sb = new StringBuilder();
         if (balls > 0) {
-            sb.append(balls).append("볼 ");
+            sb.append(balls).append(BALL).append(" ");
         }
         if (strikes > 0) {
-            sb.append(strikes).append("스트라이크");
+            sb.append(strikes).append(STRIKE);
         }
         return sb.toString().trim();
     }
