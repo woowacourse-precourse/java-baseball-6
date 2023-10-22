@@ -16,7 +16,7 @@ public class BaseballGame {
     }
 
     public void start(){
-        System.out.println(START_MESSAGE);
+        printMessage(START_MESSAGE);
         computer.makeRandomAnswer();
 
         while(!isGameEnd){
@@ -25,16 +25,16 @@ public class BaseballGame {
     }
 
     private void progress(){
-        System.out.println(INPUT_MESSAGE);
+        printMessage(INPUT_MESSAGE);
         setPlayerInput();
 
         computer.calculateScore(playerInput);
         setResultMessage();
-        System.out.println(resultMessage);
+        printMessage(resultMessage);
 
         if(computer.isPlayerWin()){
-            System.out.println(WIN_MESSAGE);
-            System.out.println(RESTART_OR_END_MESSAGE);
+            printMessage(WIN_MESSAGE);
+            printMessage(RESTART_OR_END_MESSAGE);
 
             player.setEndInput();
             restartOrEndGame();
@@ -57,5 +57,9 @@ public class BaseballGame {
         }
 
         computer.makeRandomAnswer();
+    }
+
+    private void printMessage(String message){
+        System.out.println(message);
     }
 }
