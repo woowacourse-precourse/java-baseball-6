@@ -5,7 +5,7 @@ import baseball.domain.BaseBallNumbers;
 
 public interface Player {
 
-    void startBaseballGameMessage();
+    void showStartGameMessage();
 
     BaseBallNumbers readBaseballNumbers();
 

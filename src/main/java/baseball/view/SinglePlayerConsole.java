@@ -13,8 +13,8 @@ public class SinglePlayerConsole implements Player {
     private static final String END_CODE = "2";
 
     @Override
-    public void startBaseballGameMessage() {
-        OutputConsole.printStartMessage();
+    public void showStartGameMessage() {
+        OutputConsole.printStartGameMessage();
     }
 
     @Override
