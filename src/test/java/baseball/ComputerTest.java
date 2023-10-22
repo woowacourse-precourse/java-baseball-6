@@ -26,4 +26,15 @@ class ComputerTest {
         }
     }
 
+    @Test
+    void 재시작시_Digits를_재생성한다() {
+        Computer computer = new Computer();
+        try (MockedStatic<Digits> mDigits = mockStatic(Digits.class)) {
+            // when
+            computer.prepareGameRetry();
+
+            // then
+            mDigits.verify(Digits::generateRandomDigits, times(1));
+        }
+    }
 }
