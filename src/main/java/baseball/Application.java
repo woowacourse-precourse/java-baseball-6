@@ -22,7 +22,7 @@ public class Application {
                 while (!result.equals("3스트라이크")){
                     List<Integer> playerNum = player.enter();
                     result = refree.count(computerNum, playerNum);
-                    System.out.println(computerNum);
+//                    System.out.println(computerNum);
                     System.out.println(result);
                 }
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
