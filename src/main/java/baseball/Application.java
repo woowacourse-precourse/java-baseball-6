@@ -1,5 +1,3 @@
-package baseball;
-
 /*
  * <pre>
  * Class : Application
@@ -15,6 +13,8 @@ package baseball;
  * @version 1.0.0
  * @see
  */
+
+package baseball;
 
 import controller.BaseballController;
 
