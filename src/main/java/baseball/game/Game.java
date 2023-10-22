@@ -54,10 +54,6 @@ public class Game extends GameConstants {
     }
 
     private void compareNumbers(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        // todo: 출력 삭제하기
-        System.out.println("computerNumbers = " + computerNumbers);
-        System.out.println("playerNumbers = " + playerNumbers);
-
         for (int i = 0; i < MAX_NUMBER_COUNT; i++) {
             if (computerNumbers.get(i) == playerNumbers.get(i)) {
                 strikeCount++;
