@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.BaseBalls;
 import baseball.domain.NumberGenerator;
+import baseball.domain.ReGameCommand;
 import baseball.domain.RoundResult;
 import baseball.view.GameView;
 import camp.nextstep.edu.missionutils.Console;
@@ -18,14 +19,11 @@ public class GameController {
             createAnswers();
             round();
             GameView.printReGameMessage();
-        } while(false);
+        } while(new ReGameCommand(Console.readLine()).equals(new ReGameCommand(ReGameCommand.RESTART)));
     }
 
     private void createAnswers(){
         this.answers = BaseBalls.getAnswerBaseBallNumbers();
-        for(int i=0; i<3; i++){
-            System.out.println(answers.getNumbers().get(i).getNumber());
-        }
     }
 
     private void round(){
