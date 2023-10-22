@@ -30,7 +30,7 @@ public class OutputModule {
     }
 
     public void printNothing(){
-        System.out.println(nothingMessage);
+        System.out.print(nothingMessage);
     }
     public void printOut() {
         System.out.println(out);
