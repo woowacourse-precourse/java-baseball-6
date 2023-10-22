@@ -28,27 +28,35 @@ public class GameManager {
     public void startGame() {
         playerIoManager.welcomePlayer();
 
-        baseballJudge = BaseballJudge.computerBallOf(ballMaker.createBall());
+        baseballJudge = initializeBaseBallJudgeWithComputerBall();
 
         while (true) {
-            List<Integer> playerNumbers = playerIoManager.askThreeNumbers();
-            Ball playerBall = new Ball(playerNumbers);
-            JudgeResult judgeResult = baseballJudge.judge(playerBall);
-
-            playerIoManager.notifyJudgeResult(judgeResult);
+            Ball playerBall = playRound();
 
             if (baseballJudge.isPlayerWon(playerBall)) {
-
                 playerIoManager.congratulate();
 
                 if (!playerIoManager.isPlayerWantToReplay()) {
-                    break;
+                    return;
                 }
-
-                baseballJudge = BaseballJudge.computerBallOf(ballMaker.createBall());
+                
+                baseballJudge = initializeBaseBallJudgeWithComputerBall();
             }
         }
+    }
 
+    private Ball playRound() {
+        List<Integer> playerNumbers = playerIoManager.askThreeNumbers();
+        Ball playerBall = new Ball(playerNumbers);
+
+        JudgeResult judgeResult = baseballJudge.judge(playerBall);
+        playerIoManager.notifyJudgeResult(judgeResult);
+
+        return playerBall;
+    }
+
+    private BaseballJudge initializeBaseBallJudgeWithComputerBall() {
+        return BaseballJudge.computerBallOf(ballMaker.createBall());
     }
 
 }
