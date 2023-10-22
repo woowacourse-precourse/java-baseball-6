@@ -53,20 +53,4 @@ public class BaseballNumbers {
             }
         }
     }
-
-    @Override
-    public boolean equals(Object baseballNumbers) {
-        if (!(baseballNumbers instanceof BaseballNumbers)) {
-            return false;
-        }
-
-        BaseballNumbers otherBaseballNumbers = (BaseballNumbers) baseballNumbers;
-        for (int i = 0; i < this.baseballNumbers.size(); i++) {
-            if (!otherBaseballNumbers.get(i).equals(this.baseballNumbers.get(i))) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 }
