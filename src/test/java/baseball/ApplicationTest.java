@@ -4,15 +4,46 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 import baseball.controller.Core;
 import baseball.controller.Generator;
+import baseball.controller.Validation;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
+
+    @Test
+    void validateInputLength() {
+        // given
+        Validation validation = new Validation();
+        String case1 = "123";
+        String case2 = "12";
+        String case3 = "1234";
+
+        // when
+        Throwable result1 = catchThrowable(() -> {
+            validation.validateInputLength(case1, 3);
+        });
+        Throwable result2 = catchThrowable(() -> {
+            validation.validateInputLength(case2, 3);
+        });
+        Throwable result3 = catchThrowable(() -> {
+            validation.validateInputLength(case3, 3);
+        });
+
+        // then
+        assertThat(result1).as("valid input").doesNotThrowAnyException();
+        assertThatThrownBy(() -> {
+            validation.validateInputLength(case2, 3);
+        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> {
+            validation.validateInputLength(case3, 3);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     void generateInputList() {
