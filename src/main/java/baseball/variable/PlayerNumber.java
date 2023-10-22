@@ -8,6 +8,7 @@ import java.lang.Integer;
 
 public class PlayerNumber {
     public List<Integer> playerNumber = new ArrayList<>();
+    Validator validator = new Validator();
 
     public void getPlayerNumber() {
         String tempString = Console.readLine();
@@ -16,6 +17,7 @@ public class PlayerNumber {
             int n = Integer.parseInt(str[i]);
             playerNumber.add(n);
         }
+        validator.isValid(playerNumber);
     }
 
     private String[] splitString(String str) {
