@@ -1,5 +1,6 @@
 package baseball.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,67 +8,65 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class userTest {
 
-    // 잘 입력된 번호가 문제가 없는지
-    @DisplayName("성공적인 input 테스트")
-    @Test
-    public void validateInput_test() throws Exception {
-        //given
-        String validInput = "123";
-        user user = new user();
+    private user testUser;
 
-        // when
-        user.setUserNumber(validInput);
-
-        // then
-        assertEquals(validInput.length(), user.getUserNumber().size());
-
-        for (int i = 0; i < validInput.length(); i++) {
-            assertEquals(Character.getNumericValue(validInput.charAt(i)), user.getUserNumber().get(i));
-        }
+    @BeforeEach
+    void setUp() {
+        testUser = new user();
     }
 
-     // 3개를 입력하지 않았을 경우
-    @DisplayName("숫자 3개를 입력하지 않았을 경우 테스트")
+    @DisplayName("정상적인 input에 의한 get결과 테스트")
     @Test
-    public void invalidLength_test() throws Exception {
-        //given
+    public void setUserNumber_validInput() {
+        String input = "123";
+
+        assertDoesNotThrow(() -> testUser.setUserNumber(input));
+
+        assertEquals(1, (int) testUser.getUserNumber().get(0));
+        assertEquals(2, (int) testUser.getUserNumber().get(1));
+        assertEquals(3, (int) testUser.getUserNumber().get(2));
+    }
+
+    @DisplayName("Size가 올바르지 않을 떄 exception 테스트")
+    @Test
+    public void setUserNumber_invalidSize() {
         String input = "12";
-        user user = new user();
 
-        //when
-        
-        //then
-        assertThrows(IllegalArgumentException.class, () -> {
-            user.setUserNumber(input);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            testUser.setUserNumber(input);
         });
+
+        String expectedMessage = "3자리 숫자를 입력하지 않았습니다.";
+
+        assertTrue(exception.getMessage().contains(expectedMessage));
     }
 
-    @DisplayName("0 - 9 사이의 숫자가 아닌 경우")
+    @DisplayName("1-9사이의 숫자가 아닐 떄 exception 테스트")
     @Test
-    public void invalidNumber_test() throws Exception {
-        //given
-        String input = "12a";
-        user user = new user();
-        //when
-         
-        //then
-        assertThrows(IllegalArgumentException.class, () -> {
-            user.setUserNumber(input);
+    public void setUserNumber_invalidRange() {
+        String input = "12a"; // Contains '0' which is out of range
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            testUser.setUserNumber(input);
         });
+
+        String expectedMessage = "1-9 사이의 숫자로 구성되지 않았습니다.";
+
+        assertTrue(exception.getMessage().contains(expectedMessage));
     }
 
-    @DisplayName("숫자 중복 검사 테스트")
+    @DisplayName("중복 검사 exception 테스트")
     @Test
-    public void duplicate_test() throws Exception {
-        //given
-        String input = "112";
-        user user = new user();
-        //when
-        
-        //then
-        assertThrows(IllegalArgumentException.class, () -> {
-            user.setUserNumber(input);
+    public void setUserNumber_duplicateNumbers() {
+        String input = "122"; // Contains duplicate numbers
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            testUser.setUserNumber(input);
         });
-     } 
+
+        String expectedMessage = "입력 값은 서로 다른 세 자리 숫자여야 합니다.";
+
+        assertTrue(exception.getMessage().contains(expectedMessage));
+    }
 
 }
