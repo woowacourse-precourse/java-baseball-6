@@ -1,4 +1,4 @@
-package baseball;
+package baseball.view;
 
 public class Output {
     private static final String INITIAL_GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
@@ -26,3 +26,4 @@ public class Output {
         System.out.println(hint);
     }
 }
+
