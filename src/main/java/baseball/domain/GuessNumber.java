@@ -7,19 +7,18 @@ import static baseball.constant.Constant.START_INCLUSIVE;
 import baseball.exception.guess_number.NotEqualsGameNumberDigitsException;
 import baseball.exception.guess_number.NotMatchGameNumberFormatException;
 import baseball.exception.guess_number.NotUniqueNumberException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class GuessNumber {
 
-    private List<Integer> guessNumbers;
+    private final List<Integer> guessNumbers;
 
-    public void changeGuessNumbers(final List<Integer> guessNumbers) {
+    public GuessNumber(final List<Integer> guessNumbers) {
         validateGameNumberDigit(guessNumbers);
         validateUniqueNumber(guessNumbers);
         validateNumberRangeCondition(guessNumbers);
-        getList().addAll(guessNumbers);
+        this.guessNumbers = guessNumbers;
     }
 
     private void validateGameNumberDigit(final List<Integer> guessNumbers) {
@@ -46,24 +45,15 @@ public class GuessNumber {
 
     private void validateNumberRangeCondition(final List<Integer> guessNumbers) {
         guessNumbers.stream()
-                .filter(guessNumber -> !isGameNumberFormat(guessNumber))
+                .filter(guessNumber -> !isGameNumberRangeCondition(guessNumber))
                 .findAny()
                 .ifPresent(invalidNumber -> {
                     throw new NotMatchGameNumberFormatException(invalidNumber);
                 });
     }
 
-    private boolean isGameNumberFormat(final int guessNumber) {
-        return guessNumber >= START_INCLUSIVE && guessNumber <= END_INCLUSIVE;
-    }
-
-    private List<Integer> getList() {
-        if (guessNumbers == null) {
-            guessNumbers = new ArrayList<>();
-            return guessNumbers;
-        }
-        guessNumbers.clear();
-        return guessNumbers;
+    private boolean isGameNumberRangeCondition(final int guessNumber) {
+        return START_INCLUSIVE <= guessNumber && guessNumber <= END_INCLUSIVE;
     }
 
     public List<Integer> getGuessNumbers() {
