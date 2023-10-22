@@ -21,7 +21,6 @@ public class Rule {
     public void checkMatches() {
         for (int i = 0; i < 3; i++) {
             compareNumber(resultNum.getComputerNumber(), resultNum.getUserNumber(), i);
-            System.out.println("qqq");
         }
     }
 
@@ -46,10 +45,12 @@ public class Rule {
     }
 
     public boolean checkReGame() throws IllegalArgumentException {
+        final String REPLAY = "1";
+        final String ENDGAME = "2";
         String input = Console.readLine();
-        if (input.equals("1")) {
+        if (input.equals(REPLAY)) {
             return true;
-        } else if (input.equals("2")) {
+        } else if (input.equals(ENDGAME)) {
             return false;
         }
         throw new IllegalArgumentException();
