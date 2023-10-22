@@ -8,20 +8,47 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 public class Game {
-    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final int MAX_LENGTH = 3;
     private static ArrayList<Integer> computerNumber;
     private boolean exit = false;
 
     public void startGame() {
+        final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+
         System.out.println(START_MESSAGE);
-        computerNumber = setRandomNumber();
-        System.out.println(computerNumber);
         playGame();
     }
 
-    private ArrayList<Integer> setRandomNumber() {
-        int MAX_LENGTH = 3;
+    public void playGame() {
+        final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
 
+        computerNumber = setRandomNumber();
+        System.out.println(computerNumber);
+
+        while (!exit) {
+            System.out.print(INPUT_NUMBER_MESSAGE);
+            String input = Console.readLine();
+            int number = Integer.parseInt(input);
+            ArrayList<Integer> userNumber = convertIntToArrayList(number);
+            checkIllegalNumber(userNumber);
+            printAnswer(computerNumber, userNumber);
+        }
+        selectEndOptions();
+    }
+
+    public void selectEndOptions() {
+        final String END_OPTIONS_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+        System.out.println(END_OPTIONS_MESSAGE);
+        String input = Console.readLine();
+        int option = Integer.parseInt(input);
+        if (option == 1) {
+            exit = false;
+            playGame();
+        }
+    }
+
+    private ArrayList<Integer> setRandomNumber() {
         ArrayList<Integer> arrayList = new ArrayList<>();
 
         do {
@@ -32,17 +59,6 @@ public class Game {
         } while (arrayList.size() < MAX_LENGTH);
 
         return arrayList;
-    }
-
-    public void playGame() {
-        while (!exit) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
-            int number = Integer.parseInt(input);
-            ArrayList<Integer> userNumber = convertIntToArrayList(number);
-            checkIllegalNumber(userNumber);
-            printAnswer(computerNumber, userNumber);
-        }
     }
 
     public static ArrayList<Integer> convertIntToArrayList(int number) {
@@ -57,7 +73,7 @@ public class Game {
     }
 
     private static void checkIllegalNumber(ArrayList<Integer> arrayList) {
-        if (arrayList.size() != 3 || arrayList.contains(0) || isDuplicated(arrayList)) {
+        if (arrayList.size() != MAX_LENGTH || arrayList.contains(0) || isDuplicated(arrayList)) {
             throw new IllegalArgumentException();
         }
     }
@@ -76,6 +92,7 @@ public class Game {
         final String BALL = "볼 ";
         final String STRIKE = "스트라이크";
         final String NOTHING = "낫싱";
+        final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
         int ballCounter = 0;
         int strikeCounter = 0;
@@ -100,7 +117,8 @@ public class Game {
         }
         System.out.println(answer);
 
-        if (strikeCounter == 3) {
+        if (strikeCounter == MAX_LENGTH) {
+            System.out.println(END_MESSAGE);
             exit = true;
         }
     }
