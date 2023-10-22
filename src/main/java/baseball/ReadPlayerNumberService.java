@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.regex.Pattern;
 
 public class ReadPlayerNumberService {
     private NumbersObjects playerNumbers;
@@ -11,14 +12,18 @@ public class ReadPlayerNumberService {
 
     public void readPlayerNumber(int numOfNumbers) {
         System.out.print("숫자를 입력해주세요 : ");
-        int scanPlayerNumber = Integer.parseInt(Console.readLine());
+        String scanPlayerNumber = Console.readLine();
         if (playerReadLineVerify(scanPlayerNumber)) {
-            addPlayerNumbers(scanPlayerNumber, numOfNumbers);
+            addPlayerNumbers(readLineToInt(scanPlayerNumber), numOfNumbers);
         }
     }
 
-    private boolean playerReadLineVerify(int scanPlayerNumber) {
-        if (scanPlayerNumber > 999) {
+    private int readLineToInt(String readLine) {
+        return Integer.parseInt(readLine);
+    }
+
+    private boolean playerReadLineVerify(String scanPlayerNumber) {
+        if (!Pattern.matches("^\\d{3}$", scanPlayerNumber)) {
             throw new IllegalArgumentException();
         }
         return true;
