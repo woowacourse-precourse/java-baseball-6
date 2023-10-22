@@ -24,6 +24,7 @@ public class BaseBallGame implements Game{
     public void start() {
         inputView.start();
         computerBalls=computer.makeComputerNumber();
+        inputView.enterUserAnswer();
         userBalls=user.makeUserNumber();
         comparator.compare(computerBalls,userBalls);
         rulePassCheck();
@@ -40,6 +41,7 @@ public class BaseBallGame implements Game{
 
     public void getUserNumberAndCompare(boolean pass){
         if(!pass){
+            inputView.enterUserAnswer();
             userBalls=user.makeUserNumber();
             comparator.compare(computerBalls,userBalls);
         }

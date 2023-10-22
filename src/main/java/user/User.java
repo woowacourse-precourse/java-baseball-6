@@ -23,7 +23,6 @@ public class User {
 
     public Balls makeUserNumber(){
         initList();
-        System.out.println("숫자를 입력해주세요 : ");
         String strNumber = Console.readLine();
         addStringNumberToList(strNumber);
         return new Balls(userNumberList);
