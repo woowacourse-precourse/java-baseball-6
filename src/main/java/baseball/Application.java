@@ -18,9 +18,14 @@ public class Application {
             }
         }
 
-        // 게임 시작
+        // 게임 시작, 입력 받기
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
-        int num = Integer.parseInt(Console.readLine());
+        String ans = Console.readLine();
+
+        // 입력 유효성 검사 1. 빈 입력값 확인
+        if (ans.isEmpty()) {
+            throw new IllegalArgumentException("값을 입력해주세요.");
+        }
     }
 }
