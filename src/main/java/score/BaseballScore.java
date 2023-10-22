@@ -4,8 +4,8 @@ import player.BaseballNumbers;
 
 public class BaseballScore {
 
-    private Integer strike;
-    private Integer ball;
+    private int strike;
+    private int ball;
 
     public BaseballScore() {
         this.strike = 0;
