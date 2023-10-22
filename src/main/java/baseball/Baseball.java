@@ -84,7 +84,7 @@ public class Baseball {
         return true;
     }
 
-    //숫자야구 진행 함수
+    //숫자야구 진행 함수 (cnt는 컴퓨터가 생성할 숫자의 길이값)
     public void playBaseball(int cntnum){
 
         computer = setNum(cntnum); // 랜덤의 서로다른 숫자 생성
@@ -93,6 +93,6 @@ public class Baseball {
             result = inputNum(cntnum); //사용자의 입력값에 따른 strike, ball의 수 반환
             flag = printResult(result, cntnum); //스트라이크와 볼의 수에 따른 출력 및 게임 진행 여부
         }while (flag);
-    }
 
+    }
 }
