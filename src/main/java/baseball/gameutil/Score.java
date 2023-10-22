@@ -4,9 +4,9 @@ public class Score {
     private Integer strike;
     private Integer ball;
 
-    private Score (Integer strike, Integer ball){
-        this.strike = strike;
+    public Score (Integer ball, Integer strike){
         this.ball = ball;
+        this.strike = strike;
     }
 
     public Integer getStrike() {
@@ -15,9 +15,5 @@ public class Score {
 
     public Integer getBall() {
         return ball;
-    }
-
-    static Score fromNumber(Integer strike, Integer ball){
-        return new Score(strike, ball);
     }
 }

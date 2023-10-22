@@ -8,18 +8,19 @@ public class ScoreCalculatorBaseBall implements ScoreCalculator {
 
     @Override
     public Score calScore(List<Integer> userInput, List<Integer> computerInput) {
-        return Score.fromNumber(
-            calStrike(userInput, computerInput),
-            calBall(userInput, computerInput)
+        return new Score(
+            calBall(userInput, computerInput),
+            calStrike(userInput, computerInput)
         );
     }
 
     private Integer calStrike(List<Integer> userInput, List<Integer> computerInput) {
         assert userInput.size() == computerInput.size();
         int count = 0;
-        for(int i = 0; i < userInput.size(); i++){
-            if (userInput.get(i) == computerInput.get(i))
-                count+=1;
+        for (int i = 0; i < userInput.size(); i++) {
+            if (userInput.get(i) == computerInput.get(i)) {
+                count += 1;
+            }
         }
         return count;
     }
@@ -28,10 +29,11 @@ public class ScoreCalculatorBaseBall implements ScoreCalculator {
         assert userInput.size() == computerInput.size();
         Set<Integer> computerInputSet = new HashSet<>(computerInput);
         int count = 0;
-        for(int i = 0; i < userInput.size(); i++){
+        for (int i = 0; i < userInput.size(); i++) {
             Integer targetNumber = userInput.get(i);
-            if (targetNumber != computerInput.get(i) && computerInputSet.contains(targetNumber))
-                count+=1;
+            if (targetNumber != computerInput.get(i) && computerInputSet.contains(targetNumber)) {
+                count += 1;
+            }
         }
         return count;
     }

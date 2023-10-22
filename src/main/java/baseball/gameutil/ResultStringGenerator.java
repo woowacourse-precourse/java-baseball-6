@@ -1,2 +1,5 @@
-package baseball.gameutil;public class ResultStringGenerator {
+package baseball.gameutil;
+
+public interface ResultStringGenerator {
+    String result(Score score);
 }
