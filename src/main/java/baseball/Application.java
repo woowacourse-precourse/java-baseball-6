@@ -78,11 +78,13 @@ public class Application {
             }
             else if(ball == 0 && strike != 0){
                 System.out.println(strike + "스트라이크");
+                // 기능7. 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임을 종료함
                 if(strike == 3){
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     condition = false;
                 }
             }
+            // 기능6. 같은 수가 전혀 없으면 낫싱을 출력하게 함
             else{
                 System.out.println("낫싱");
             }
