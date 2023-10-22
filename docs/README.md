@@ -43,13 +43,11 @@
   - 3자리인지
   - 1-9까지 숫자인지
   - 중복이 없는지
-  - 유효성 검증 실패 시 IllegalArgumentException을 발생시킨다.
+  - 검증 실패 시 IllegalArgumentException을 발생시킨다.
 
 - [ ] 새 게임 시작 여부 입력 메시지에 대한 입력이라면, 추가적인 유효성을 검증한다.
-  - 3자리인지
-  - 1-9까지 숫자인지
-  - 중복이 없는지
-  - 유효성 검증 실패 시 IllegalArgumentException을 발생시킨다.
+  - 1 또는 2인지
+  - 검증 실패 시 IllegalArgumentException을 발생시킨다.
 
 ## 숫자 야구 게임
 - [ ] 숫자 야구 게임의 정답 숫자를 생성한다.
