@@ -27,11 +27,7 @@ public class GuessResultGenerator {
         }
         String ballResult = generateMessage(ballCount, BALL);
         String strikeResult = generateMessage(strikeCount, STRIKE);
-        if (!ballResult.isEmpty()) {
-            return new GuessResult((ballResult + " " + strikeResult).trim(), GUESS_WRONG);
-        }
-
-        return new GuessResult(strikeResult, GUESS_WRONG);
+        return new GuessResult((ballResult + " " + strikeResult).trim(), GUESS_WRONG);
     }
 
     public void resetIsMatched() {
