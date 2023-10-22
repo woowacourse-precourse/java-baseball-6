@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Computer {
 
-    private final List<Integer> target;
+    private List<Integer> target;
 
     private Boolean solved;
 
@@ -42,13 +42,15 @@ public class Computer {
             return "낫싱";
         }
 
-        if (strikeCount > 0) {
-            resultString = resultString + result.get(0) + "스트라이크 ";
+        if (ballCount > 0) {
+            resultString = resultString + result.get(1) + "볼 ";
         }
 
-        if (ballCount > 0) {
-            resultString = resultString + result.get(1) + "볼";
+        if (strikeCount > 0) {
+            resultString = resultString + result.get(0) + "스트라이크";
         }
+
+
 
         return resultString;
 
@@ -70,6 +72,17 @@ public class Computer {
             }
         }
 
+        // 3스트라이크일 경우, 정답 처리
+        if (strike == 3) {
+            solved = true;
+        }
+
         return new ArrayList<>(Arrays.asList(strike, ball));
+    }
+
+    // 게임 재시작 시, target을 변경하는 코드
+    public void changeTarget(List<Integer> target) {
+        this.target = target;
+        this.solved = false;
     }
 }
