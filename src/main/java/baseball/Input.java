@@ -17,6 +17,14 @@ public class Input {
         return userNumber;
     }
 
+    public boolean isRestart() {
+        String restartNumber = Console.readLine();
+        if (restartNumber.equals("1")) {
+            return true;
+        }
+        return false;
+    }
+
     boolean isNumber(String userNumber) {
         try {
             Integer.parseInt(userNumber);
