@@ -4,14 +4,9 @@ import baseball.model.GameModel;
 import baseball.view.GameView;
 
 public class GameController {
+    private static final GameModel gameModel = new GameModel();
+    private static final GameView gameView = new GameView();
 
-    private static final GameController GAME_CONTROLLER = new GameController();
-    private static final GameModel gameModel = GameModel.getGameModel();
-    private static final GameView gameView = GameView.getGameView();
-
-    public static GameController getGameController() {
-        return GAME_CONTROLLER;
-    }
 
     public void guessInputController() {
         String s = gameView.guessInputView();
@@ -28,7 +23,8 @@ public class GameController {
     }
 
     public void hintController() {
-        gameView.hintView(gameModel.getBall(), gameModel.getStrike());
+        StringBuilder s = gameModel.getHint();
+        gameView.hintView(s);
     }
 
     public void gameStart() {
@@ -42,6 +38,7 @@ public class GameController {
                 guessInputController();
 
                 gameModel.checkAnswer();
+
                 hintController();
             } while (gameModel.getStrike() != 3);
 

@@ -11,11 +11,6 @@ public class GameModel {
     ArrayList<Integer> answer;
     int ball;
     int strike;
-    private static final GameModel GAME_MODEL = new GameModel();
-
-    public static GameModel getGameModel() {
-        return GAME_MODEL;
-    }
 
     public void generateAnswer() {
         answer = new ArrayList<>(3);
@@ -38,11 +33,18 @@ public class GameModel {
             throw new IllegalArgumentException();
         }
         duplicateCheck(s);
+        outOfRangeCheck(s);
         guess = numFormatCheck(s);
     }
 
     void duplicateCheck(String s) {
         if (Arrays.stream(s.split("")).collect(Collectors.toSet()).size() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    void outOfRangeCheck(String s) {
+        if (s.contains("0")) {
             throw new IllegalArgumentException();
         }
     }
@@ -65,20 +67,36 @@ public class GameModel {
     }
 
     public void checkAnswer() {
-        int index = 0;
+        int guessIndex = 0;
         for (Integer i : guess) {
-            int num = answer.indexOf(i);
-            if (num == index) {
+            int indexOfStrike = answer.indexOf(i);
+            if (indexOfStrike == guessIndex) {
                 strike++;
-            } else if (num != -1) {
+            } else if (indexOfStrike != -1) {
                 ball++;
             }
-            index++;
+            guessIndex++;
         }
     }
 
-    public int getBall() {
-        return ball;
+    public StringBuilder getHint() {
+        StringBuilder resultStatement = new StringBuilder();
+        if (ball > 0) {
+            resultStatement.append(ball).append("볼");
+        }
+
+        if (strike > 0) {
+            if (!resultStatement.isEmpty()) {
+                resultStatement.append(" ");
+            }
+            resultStatement.append(strike).append("스트라이크");
+        }
+
+        if (resultStatement.isEmpty()) {
+            resultStatement.append("낫싱");
+        }
+
+        return resultStatement;
     }
 
     public int getStrike() {

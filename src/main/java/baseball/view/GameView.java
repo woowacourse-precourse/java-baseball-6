@@ -3,13 +3,6 @@ package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
-
-    private static final GameView GAME_VIEW = new GameView();
-
-    public static GameView getGameView() {
-        return GAME_VIEW;
-    }
-
     public String guessInputView() {
         System.out.println("숫자를 입력해주세요 : ");
         return Console.readLine();
@@ -24,24 +17,7 @@ public class GameView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void hintView(int ball, int strike) {
-        StringBuilder resultStatement = new StringBuilder();
-
-        if (ball > 0) {
-            resultStatement.append(ball).append("볼");
-        }
-
-        if (strike > 0) {
-            if (!resultStatement.isEmpty()) {
-                resultStatement.append(" ");
-            }
-            resultStatement.append(strike).append("스트라이크");
-        }
-
-        if (resultStatement.isEmpty()) {
-            resultStatement.append("낫싱");
-        }
-
+    public void hintView(StringBuilder resultStatement) {
         System.out.println(resultStatement);
     }
 }
