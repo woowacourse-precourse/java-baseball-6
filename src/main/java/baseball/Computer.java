@@ -14,7 +14,7 @@ public class Computer {
     public void selectBalls() {
         balls = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            int num = pickNumberInRange(0, 9);
+            int num = pickNumberInRange(1, 9);
 
             if (balls.contains(num)) {
                 i--;
