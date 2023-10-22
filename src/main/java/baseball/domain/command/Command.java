@@ -1,7 +1,5 @@
 package baseball.domain.command;
 
-import static baseball.domain.command.GameCommands.RESTART;
-
 import baseball.domain.command.validation.CommandValidator;
 
 public class Command {
@@ -14,6 +12,6 @@ public class Command {
     }
 
     public boolean isRestartCommand() {
-        return command.equals(RESTART);
+        return command.equals(GameCommands.RESTART);
     }
 }

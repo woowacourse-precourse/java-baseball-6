@@ -1,7 +1,6 @@
 package baseball.domain.result;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ResultTest {
@@ -10,6 +9,6 @@ class ResultTest {
     void isClear() {
         Result result = new Result(0, 3);
 
-        assertThat(result.isGameClear()).isTrue();
+        Assertions.assertThat(result.isGameClear()).isTrue();
     }
 }

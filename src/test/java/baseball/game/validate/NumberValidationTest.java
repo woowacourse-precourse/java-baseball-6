@@ -1,7 +1,6 @@
 package baseball.game.validate;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,7 +12,7 @@ class NumberValidationTest {
     @ValueSource(strings = {"1a2", "11b", "sws"})
     @ParameterizedTest
     void validateInteger(String noneNumber) {
-        assertThatThrownBy(() -> IntegerValidator.validate(noneNumber))
+        Assertions.assertThatThrownBy(() -> IntegerValidator.validate(noneNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -22,7 +21,7 @@ class NumberValidationTest {
     void checkNegativeNumber() {
         Integer negativeNumber = -234;
 
-        assertThatThrownBy(() -> NegativeNumberValidator.validate(negativeNumber))
+        Assertions.assertThatThrownBy(() -> NegativeNumberValidator.validate(negativeNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -30,7 +29,7 @@ class NumberValidationTest {
     @Test
     void checkRealNumber() {
         String realNumber = "12.3";
-        assertThatThrownBy(() -> IntegerValidator.validate(realNumber))
+        Assertions.assertThatThrownBy(() -> IntegerValidator.validate(realNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

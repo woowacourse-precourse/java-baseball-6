@@ -1,8 +1,7 @@
 package baseball.computer;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.List;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +14,6 @@ class ComputerTest {
 
         List<Integer> gameNumbers = computer.getGameNumbers();
 
-        assertThat(gameNumbers).hasSize(3);
+        Assertions.assertThat(gameNumbers).hasSize(3);
     }
 }

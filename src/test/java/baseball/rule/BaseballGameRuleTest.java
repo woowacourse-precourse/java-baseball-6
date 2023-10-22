@@ -1,13 +1,12 @@
 package baseball.rule;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import baseball.computer.Computer;
 import baseball.domain.number.GameNumber;
 import baseball.domain.result.Result;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -21,8 +20,8 @@ class BaseballGameRuleTest {
 
         Result result = rule.check(new GameNumber(userNumbers), new Computer(computerNumbers));
 
-        assertThat(result.getStrike()).isEqualTo(strike);
-        assertThat(result.getBall()).isEqualTo(ball);
+        Assertions.assertThat(result.getStrike()).isEqualTo(strike);
+        Assertions.assertThat(result.getBall()).isEqualTo(ball);
     }
 
     private static Stream<Arguments> provideNumbersAndResult() {

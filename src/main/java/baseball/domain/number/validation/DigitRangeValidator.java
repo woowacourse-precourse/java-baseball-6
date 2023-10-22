@@ -1,8 +1,6 @@
 package baseball.domain.number.validation;
 
-import static baseball.domain.number.NumberConstants.MAX_NUMBER;
-import static baseball.domain.number.NumberConstants.MIN_NUMBER;
-
+import baseball.domain.number.NumberConstants;
 import java.util.List;
 
 public class DigitRangeValidator {
@@ -11,7 +9,7 @@ public class DigitRangeValidator {
 
     public static void validate(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (number > MAX_NUMBER || number < MIN_NUMBER) {
+            if (number > NumberConstants.MAX_NUMBER || number < NumberConstants.MIN_NUMBER) {
                 throw new IllegalArgumentException(INVALID_RANGE_NUMBER);
             }
         }

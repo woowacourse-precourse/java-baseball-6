@@ -1,10 +1,9 @@
 package baseball.domain.number.validation;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +16,7 @@ class GameNumberValidatorTest {
     @ParameterizedTest
     void validateLength(String number) {
         List<Integer> numbers = toNumbers(number);
-        assertThatThrownBy(() -> NumberLengthValidator.validate(numbers))
+        Assertions.assertThatThrownBy(() -> NumberLengthValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -26,7 +25,7 @@ class GameNumberValidatorTest {
     @ParameterizedTest
     void checkDuplicateNumbers(String number) {
         List<Integer> numbers = toNumbers(number);
-        assertThatThrownBy(() -> DuplicateDigitValidator.validate(numbers))
+        Assertions.assertThatThrownBy(() -> DuplicateDigitValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -34,7 +33,7 @@ class GameNumberValidatorTest {
     @Test
     void validateDigitRange() {
         List<Integer> numbers = Arrays.asList(0, 1, 9);
-        assertThatThrownBy(() -> DigitRangeValidator.validate(numbers))
+        Assertions.assertThatThrownBy(() -> DigitRangeValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

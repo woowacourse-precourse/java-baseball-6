@@ -1,7 +1,6 @@
 package baseball.domain.command.validation;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ class CommandValidatorTest {
     void validate() {
         Integer noneCommand = 3;
 
-        assertThatThrownBy(() -> CommandValidator.validate(noneCommand))
+        Assertions.assertThatThrownBy(() -> CommandValidator.validate(noneCommand))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
