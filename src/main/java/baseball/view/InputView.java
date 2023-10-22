@@ -23,10 +23,11 @@ public class InputView {
         return stringToList(gameNum);
     }
 
-    public void getDecisionNum() {
+    public int getDecisionNum() {
         System.out.println(GET_DECISION_NUM);
         String decisionNum = Console.readLine();
         validateDecision(decisionNum);
+        return Integer.parseInt(decisionNum);
     }
 
     public void validateDecision(String line) {
