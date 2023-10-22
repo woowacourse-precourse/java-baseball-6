@@ -10,4 +10,5 @@ public interface BaseballGame {
     int[] result();
     void printResult(int[] result);
     void exceptionClose();
+    int getStrike();
 }

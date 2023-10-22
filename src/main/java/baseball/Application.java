@@ -2,7 +2,6 @@ package baseball;
 
 import baseball.game.BaseballGame;
 import baseball.game.NumBaseball;
-import java.util.ArrayList;
 
 public class Application {
     public static void main(String[] args) {
@@ -27,7 +26,7 @@ public class Application {
 
                 baseballGame.printResult(gameResult);
 
-                if(gameResult[1] == 3) { // 게임 종료(3 스트라이크) 시
+                if(baseballGame.getStrike() == 3) { // 게임 종료(3 스트라이크) 시
                     round = false;
                 }
                 baseballGame.gameInit(round);

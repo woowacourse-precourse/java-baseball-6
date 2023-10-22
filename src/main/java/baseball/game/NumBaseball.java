@@ -118,4 +118,8 @@ public class NumBaseball implements BaseballGame{
         throw new IllegalArgumentException();
     }
 
+    @Override
+    public int getStrike() {
+        return strike;
+    }
 }
