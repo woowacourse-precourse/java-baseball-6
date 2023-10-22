@@ -3,6 +3,7 @@ package baseball.service.impl;
 import baseball.service.ValidateJudgeService;
 import baseball.vo.BaseballCode;
 import baseball.vo.GameResult;
+import baseball.vo.RestartDecisionCode;
 import baseball.vo.UserCode;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,10 +51,10 @@ public class ValidateJudgeServiceImpl implements ValidateJudgeService {
     }
 
     @Override
-    public boolean restartValidateCode(Integer code) {
-        if (code == 1) {
+    public boolean restartValidateCode(RestartDecisionCode decisionCode) {
+        if (decisionCode.isDecisionCodeEqualOne()) {
             return true;
-        } else if (code == 2) {
+        } else if (decisionCode.isDecisionCodeEqualTwo()) {
             return false;
         }
         throw new IllegalArgumentException();

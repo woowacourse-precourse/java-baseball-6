@@ -1,11 +1,10 @@
 package baseball.game;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import baseball.message.GameMessages;
 import baseball.service.BaseballRandomCodeService;
 import baseball.service.ValidateJudgeService;
 import baseball.vo.BaseballCode;
+import baseball.vo.RestartDecisionCode;
 import java.util.ArrayList;
 
 public class GameLauncher {
@@ -37,11 +36,12 @@ public class GameLauncher {
 
     private boolean baseballGame(BaseballCode baseballCode) {
         GameMessages restartComment = GameMessages.RESTART_COMMENT;
+        RestartDecisionCode decisionCode = new RestartDecisionCode(null);
         BaseballCode baseballCodes = baseballCode.makeNewBaseballCode(
                 baseballRandomCodeService.makeRandomCodeList());
         baseballGames.playBaseball(baseballCodes);
         System.out.println(restartComment.getMessage());
-        int code = Integer.parseInt(readLine());
-        return validateJudgeService.restartValidateCode(code);
+        RestartDecisionCode restartDecisionCode = decisionCode.makeRestartDecisionCode();
+        return validateJudgeService.restartValidateCode(restartDecisionCode);
     }
 }

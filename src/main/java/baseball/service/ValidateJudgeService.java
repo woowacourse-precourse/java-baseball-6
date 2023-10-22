@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.vo.BaseballCode;
 import baseball.vo.GameResult;
+import baseball.vo.RestartDecisionCode;
 import baseball.vo.UserCode;
 
 public interface ValidateJudgeService {
@@ -10,5 +11,5 @@ public interface ValidateJudgeService {
 
     void validateLegalUserCode(UserCode userCode);
 
-    boolean restartValidateCode(Integer code);
+    boolean restartValidateCode(RestartDecisionCode code);
 }
