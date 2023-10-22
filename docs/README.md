@@ -28,7 +28,7 @@
 ### Model
 1. GameNumber
 - [ ] computerGenerateNumbers 저장
-- [ ] inputString 저장
+- [ ] userInputString 저장
 - [ ] userGuessNumbers 저장
 
 ### View
