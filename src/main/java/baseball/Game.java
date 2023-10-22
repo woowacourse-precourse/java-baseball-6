@@ -8,7 +8,7 @@ import java.util.List;
 public class Game {
 
     static List<Integer> target;
-
+    /** 주어진 코드를 사용하여 target을 초기화하는 함수. */
     public void initialize(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -20,6 +20,10 @@ public class Game {
         target = computer;
     }
 
+    /**
+     * String 형식으로 저장된 input이 3자리의 int로 이루어졌는지 확인하는 함수.
+     * 올바른 입력이 아니면, IllegalStateException 에러를 발생시킨다.
+     */
     public void checkInput(String input){
         if(input.length()!=3){
             throw new IllegalStateException("입력값의 길이가 올바르지 않습니다.");
@@ -31,6 +35,10 @@ public class Game {
         }
     }
 
+    /**
+     * String 형식으로 저장된 input이 1자리의 int로 이루어졌고, 1또는 2인지 확인하는 함수.
+     * 올바른 입력이 아니면, IllegalStateException 에러를 발생시킨다.
+     */
     public void checkRestartInput(String input){
         if(input.length()!=1){
             throw new IllegalStateException("입력값의 길이가 올바르지 않습니다.");
@@ -40,6 +48,10 @@ public class Game {
         }
     }
 
+    /**
+     * String 형식으로 저장된 input을 List<Interger> 타입으로 변환하는 함수.
+     * checkInput 함수를 거친 후 사용하기 때문에, 에러가 발생하지 않는다.
+     */
     public List<Integer> stringToList(String input){
         List<Integer> res = new ArrayList<>();
         res.add(input.charAt(0)-'0');
@@ -48,7 +60,10 @@ public class Game {
         return res;
     }
 
-    //[0] for strike, [1] for ball
+    /**
+     * List<Interger> 타입으로 저장된 integers화 target을 비교하는 함수.
+     * 결과값은 List<Integer>이며, 0번째 index는 strike의 개수를, 1번째 index는 ball의 개수를 의미한다.
+     */
     public List<Integer> compareNumbers(List<Integer> integers){
         List<Integer> res = new ArrayList<>();
         res.add(0);
@@ -67,6 +82,9 @@ public class Game {
         return res;
     }
 
+    /**
+     * List<Interger> 타입으로 저장된 compareResult를 String 형식으로 변환하는 함수.
+     */
     public String compareResultToString(List<Integer> compareResult){
         if(compareResult.get(0)==0 && compareResult.get(1)==0){
             return "낫싱";

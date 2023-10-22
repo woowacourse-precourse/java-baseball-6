@@ -15,8 +15,7 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = readLine();
                 game.checkInput(input);
-                List<Integer> inputList = game.stringToList(input);
-                List<Integer> compareResult = game.compareNumbers(inputList);
+                List<Integer> compareResult = game.compareNumbers(game.stringToList(input));
                 System.out.println(game.compareResultToString(compareResult));
                 if(compareResult.get(0)==3){
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
