@@ -21,6 +21,10 @@ public class Strike {
         }
     }
 
+    int getValue() {
+        return this.strike;
+    }
+
     public boolean isEmpty() {
         return this.strike == ZERO_COUNT;
     }

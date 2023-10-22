@@ -72,4 +72,4 @@
 - `Strike`
     - [x] `isEmpty()`: 스트라이크가 비어있는지 확인.
     - [x] `isFullCount()`: 3스트라이크인지 확인.
-    - [ ] `getValue()`: 스트라이크 값을 반환.
+    - [x] `getValue()`: 스트라이크 값을 반환.
