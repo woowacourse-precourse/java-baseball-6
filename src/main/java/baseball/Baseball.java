@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Objects;
+
 public class Baseball {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
@@ -15,6 +17,19 @@ public class Baseball {
         if (ballNumber < MIN_NUMBER || ballNumber > MAX_NUMBER) {
             throw new IllegalArgumentException("[ERROR] 숫자의 범위가 유효하지 않습니다.(1-9까지의 숫자만 입력 가능합니다.)");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Baseball baseball = (Baseball) o;
+        return ballNumber == baseball.ballNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ballNumber);
     }
 
 }
