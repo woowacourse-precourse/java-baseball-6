@@ -18,4 +18,8 @@ public record Inning(int strike, String result) {
     public static Inning ofNothing() {
         return new Inning(0, Hint.NOTHING.getValue());
     }
+
+    public boolean isThreeStrike() {
+        return strike == 3;
+    }
 }
