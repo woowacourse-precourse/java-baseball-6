@@ -1,15 +1,13 @@
 package baseball.controller;
 
-import static baseball.converter.BaseBallConverter.stringToOverallGameStatus;
-
 import baseball.domain.player.Computer;
-import baseball.enums.OverallGameStatus;
 import baseball.view.BaseBallView;
 
 
 public class GameController {
 
-
+    private static final String CONTINUE_GAME_SIG = "1";
+    private static final String END_GAME_SIG = "2";
     private static final BaseBallView baseBallView  = BaseBallView.create();
 
     private GameController() {
@@ -18,15 +16,28 @@ public class GameController {
     public static void run() {
         baseBallView.startGameView();
 
-        OverallGameStatus overallGameStatus = OverallGameStatus.CONTINUE;
+        boolean isContinueGame = true;
 
-        while (overallGameStatus.isContinue()) {
+        while (isContinueGame) {
             Computer computer = Computer.create();
 
             PlayerController.startBattle(computer.getPlayer());
 
-            overallGameStatus = stringToOverallGameStatus(baseBallView.continueInputView());
+            String continueInputString = baseBallView.continueInputView();
+
+            isContinueGame = checkIsContinueGame(continueInputString);
         }
+    }
+
+    private static boolean checkIsContinueGame(String continueInputString) {
+        if (continueInputString.equals(CONTINUE_GAME_SIG)) {
+            return true;
+        }
+        if (continueInputString.equals(END_GAME_SIG)) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
     }
 
 }

@@ -14,15 +14,15 @@ public class PlayerController {
     }
 
     public static void startBattle(Player opponent) {
-        boolean isContinueGame = Boolean.TRUE;
+        boolean isContinueBattle = Boolean.TRUE;
 
-        while (isContinueGame) {
+        while (isContinueBattle) {
             Numbers numbers = stringToNumbers(baseBallView.numbersInputView());
             Player player = Player.create(numbers);
 
             Result result = RefereeController.umpiredPlayers(player, opponent);
 
-            isContinueGame = result.isContinue();
+            isContinueBattle = result.isContinue();
         }
     }
 
