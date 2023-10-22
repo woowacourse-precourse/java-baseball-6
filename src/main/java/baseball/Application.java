@@ -24,6 +24,7 @@ public class Application {
 
 
         while(true){
+            int strike=0, ball=0;
 
             //입력
             System.out.print("숫자를 입력해주세요 : ");
@@ -33,6 +34,17 @@ public class Application {
                 int value=(int)input.charAt(i)-'0';
                 user.add(value);
             }
+
+
+            //비교
+            for(int idx=0; idx<user.size(); idx++){
+                int value=user.get(idx);
+                if(computer.contains(value)){
+                    if(computer.indexOf(value)==idx) strike++;
+                    else ball++;
+                }
+            }
+
 
         }
 
