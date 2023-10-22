@@ -253,4 +253,18 @@ class ApplicationTest extends NsTest {
         assertThat(resultList).isEqualTo(expectList);
         assertThat(throwable).as("문자열이 자연수로 이루어지지 않았을때").isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    void countSameValueSameIdxByIntegerLists_Integer리스트() {
+        //given
+        String testString1 = "12345";
+        String testString2 = "abcde";
+        List<Integer> expectList = new ArrayList(Arrays.asList(1, 2, 3, 4, 5));
+        //when
+        List<Integer> resultList = Util.naturalNumberstringToIntegerList(testString1);
+        Throwable throwable = catchThrowable(
+                () -> Util.naturalNumberstringToIntegerList(testString2));
+        //then
+        assertThat(resultList).isEqualTo(expectList);
+        assertThat(throwable).as("문자열이 자연수로 이루어지지 않았을때").isInstanceOf(IllegalArgumentException.class);
+    }
 }

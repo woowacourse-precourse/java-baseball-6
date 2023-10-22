@@ -19,7 +19,7 @@ public class BaseballNumber {
         BaseballScore baseballScore = new BaseballScore(0, 0);
         List<Integer> computerNumberList = computerNumber.number;
         List<Integer> userNumberList = userNumber.number;
-        baseballScore.addStrikeCount(Util.countSameValueSameIdxByIntegerList(computerNumberList, userNumberList));
+        baseballScore.addStrikeCount(Util.countSameValueSameIdxByIntegerLists(computerNumberList, userNumberList));
         baseballScore.addBallCount(Util.countSameValueDifferentIdxByIntegerList(computerNumberList, userNumberList));
         return baseballScore;
     }

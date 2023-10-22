@@ -17,7 +17,7 @@ public class Util {
         return integerList;
     }
 
-    public static int countSameValueSameIdxByIntegerList(List<Integer> integerList1, List<Integer> integerList2) {
+    public static int countSameValueSameIdxByIntegerLists(List<Integer> integerList1, List<Integer> integerList2) {
         int count = 0;
         for (int i = 0; i < integerList1.size(); i++) {
             count += countSameValueSameIdxBetweenIntegerListAndValue(integerList1.get(i), i, integerList2);
