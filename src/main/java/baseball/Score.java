@@ -57,7 +57,7 @@ public class Score {
         return ball;
     }
 
-    public void setScore(int strike, int score) {
+    public void setScore(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
     }
