@@ -1,5 +1,10 @@
 package baseball;
 
+import static baseball.Enum.END_PROGRAM;
+import static baseball.Enum.GAME_START;
+import static baseball.Enum.INPUT_NUMBER;
+import static baseball.Enum.NEW_GAME_OR_END;
+import static baseball.Enum.VALID;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
@@ -18,25 +23,25 @@ public class Application {
             }
         }
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START);
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(INPUT_NUMBER);
             String input = readLine();
             // 유효성 확인
             CheckValidation checkValidation = new CheckValidation(input);
-            String result = checkValidation.checkNumberValidation();
-            if (result.equals("유효")) {
+            Enum result = checkValidation.checkNumberValidation();
+            if (result.equals(VALID)) {
                 Hint hint = new Hint(computer, input);
                 // 힌트 제공 또는 정답 확인
                 boolean ifCorrect = hint.checkNumber();
                 if (ifCorrect) {
                     int ifContinue = -1;
                     while (ifContinue == -1) {
-                        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                        System.out.println(NEW_GAME_OR_END);
                         input = readLine();
                         ifContinue = checkValidation.checkAnswerValidation(input);
                         if (ifContinue == 2) {
-                            System.out.println("프로그램이 완전히 종료되었습니다. 게임을 하고 싶으면 다시실행 해주세요.");
+                            System.out.println(END_PROGRAM);
                             return;
                         }
                     }
