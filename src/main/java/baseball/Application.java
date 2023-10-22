@@ -16,6 +16,7 @@ public class Application {
                 answer.add(randomNumber);
             }
         }
+        System.out.println("answer: " + answer);
 
         // 2. 숫자 입력 받고 검증하기
 
@@ -43,6 +44,7 @@ public class Application {
                 answer.set(i, 0);
             }
         }
+        System.out.println("스트라이크: " + strike);
 
         // 4. 볼 계산
         int ball = 0;
@@ -51,5 +53,6 @@ public class Application {
                 ball++;
             }
         }
+        System.out.println("볼: " + ball);
     }
 }
