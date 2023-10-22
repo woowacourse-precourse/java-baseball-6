@@ -42,10 +42,25 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        // Todo: input 유효성 검사
+        isValidCheck(input);
 
         for (int i = 0; i < 3; i++) {
             playerNumbers.add(input.charAt(i)- '0');
         }
+    }
+
+    public void isValidCheck(String input) {
+        if (isNull(input) || input.isEmpty()
+            // Todo: 입력값에 숫자외에 다른 문자가 들어가 있는지 검사한다.
+            // Todo: 문자열 타입의 입력값 크기가 3인지 검사한다.
+            // Todo: 각 숫자(n)가 `1 <= n <= 9`의 범위에 속하는 정수인지 검사한다.
+            // Todo: 각 숫자가 서로 다른 수인지 검사한다.
+        ) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public boolean isNull(String string) {
+        return string == null;
     }
 }
