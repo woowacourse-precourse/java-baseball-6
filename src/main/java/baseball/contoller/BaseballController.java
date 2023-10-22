@@ -40,7 +40,7 @@ public class BaseballController {
 
     void callNumberToMatch(Computer computer, Player player){
         do{
-            String number = inputView.callNumbers();
+            String number = inputView.inputNumbers();
             baseballService.verifyException(number);
             player.callNumber(number);
 
@@ -50,9 +50,7 @@ public class BaseballController {
 
             if(referee.getStrike() == 3){
                 outputView.printMatchAllNumberMessage();
-                outputView.printProvideRestartMessage();
-
-                restart = baseballService.restart(inputView.restart());
+                restart = baseballService.restart(inputView.inputRestart());
                 return;
             }
         }while(restart);
