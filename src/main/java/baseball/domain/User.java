@@ -1,7 +1,7 @@
-package baseball;
+package baseball.domain;
 
-import baseball.logic.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
+import baseball.logic.InputValidator;
 
 public class User {
 
@@ -13,8 +13,7 @@ public class User {
 
     public int commandInput() {
         String input = Console.readLine();
-        int command = validator.validateCommand(input);
 
-        return command;
+        return validator.validateCommand(input);
     }
 }

@@ -1,7 +1,8 @@
-package baseball;
+package baseball.domain;
 
 import baseball.logic.GameManage;
 import baseball.logic.InputValidator;
+
 import java.util.List;
 
 import static baseball.constant.Constant.*;
