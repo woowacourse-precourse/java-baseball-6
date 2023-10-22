@@ -1,15 +1,13 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.in;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BaseballGameMachineTest {
 
@@ -23,21 +21,19 @@ class BaseballGameMachineTest {
 
         BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         //when
-        String input = baseballGameMachine.input();
+        String input = baseballGameMachine.userInput();
         //then
         assertThat(inputLine).isEqualTo(input);
     }
 
-    @DisplayName("게임 실행 테스트")
+    @DisplayName("유저 input이 3스트라이크 일때, 게임이 성공 했는지 팓단하는 테스트")
     @Test
-    void gamePlayTest() {
+    void isGameSuccess() {
         //given
-        String inputLine = "351";
-        InputStream inputStream = new ByteArrayInputStream(inputLine.getBytes());
-        System.setIn(inputStream);
-
-        BaseballGameMachine gameMachine = new BaseballGameMachine();
+        BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         //when
-        gameMachine.play();
+        final List<Integer> userInputResult = List.of(0, 3);
+        //then
+        assertThat(baseballGameMachine.isSuccess(userInputResult)).isEqualTo(true);
     }
 }

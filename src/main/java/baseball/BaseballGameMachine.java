@@ -9,7 +9,7 @@ public class BaseballGameMachine {
     private NumberGenerator numberGenerator = new NumberGenerator();
     private InputValidation inputValidation = new InputValidation();
 
-    public String input() {
+    public String userInput() {
         return Console.readLine();
     }
 
@@ -23,7 +23,7 @@ public class BaseballGameMachine {
             display(message.start() + '\n');
             gameProcess();
             display(message.requestRetryOrEnd() + '\n');
-            gameEnd = newGameOrEnd(input());
+            gameEnd = newGameOrEnd(userInput());
         }
         display(message.gameEnd() + '\n');
     }
@@ -35,7 +35,7 @@ public class BaseballGameMachine {
         while (!success) {
             display(message.requestInput());
 
-            List<Integer> userInput = inputValidation.validateUserInput(input());
+            List<Integer> userInput = inputValidation.validateUserInput(userInput());
             List<Integer> gameResult = referee.judgeUserInput(userInput);
 
             display(message.result(gameResult) + '\n');
