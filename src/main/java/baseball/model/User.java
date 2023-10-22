@@ -1,12 +1,12 @@
 package baseball.model;
 
+import baseball.NumberLimits;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class User {
-    private static final int NUM_LEN = 3;
     private final List<Integer> userNumberList;
 
     public User(String userNumber) {
@@ -27,10 +27,16 @@ public class User {
         //set을 이용한 중복검사
         Set<Integer> set = new HashSet<Integer>();
         set.addAll(userNumberList);
-        if (userNumberList.size() > NUM_LEN || userNumberList.size() < NUM_LEN) {
+        if (userNumberList.size() > NumberLimits.NUM_LIST_LENGTH.getValue()
+                || userNumberList.size() < NumberLimits.NUM_LIST_LENGTH.getValue()) {
             throw new IllegalArgumentException("[ERROR] : 숫자를 3개 입력해 주세요.");
         }
-        if (set.size() < NUM_LEN) {
+        for (Integer num : userNumberList) {
+            if (num < NumberLimits.MIN_VALUE.getValue() || num > NumberLimits.MAX_VALUE.getValue()) {
+                throw new IllegalArgumentException("[ERROR] : 1에서 9 사이의 숫자만 입력해주세요.");
+            }
+        }
+        if (set.size() < NumberLimits.NUM_LIST_LENGTH.getValue()) {
             throw new IllegalArgumentException("[ERROR] : 중복되지 않은 숫자를 입력해주세요.");
         }
     }
