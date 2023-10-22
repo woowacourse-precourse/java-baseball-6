@@ -40,7 +40,7 @@ public class Array {
     }
 
     public static void checkOneOrTwo(String userInput) {
-        if (!userInput.equals("0") && !userInput.equals("1")) {
+        if (!userInput.equals("1") && !userInput.equals("2")) {
             throw new IllegalArgumentException();
         }
     }
