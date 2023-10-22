@@ -9,15 +9,15 @@ public class Computer {
     public Computer() {
     }
 
-    int randomNumber;
+    int randomNum;
 
-    public void setRandomNumber() {
+    public void setRandomNum() {
         List<String> digitsList = getRandomDigits();
-        randomNumber = joinDigitsTogether(digitsList);
+        randomNum = joinDigitsTogether(digitsList);
     }
 
-    public int getRandomNumber() {
-        return randomNumber;
+    public int getRandomNum() {
+        return randomNum;
     }
 
 
