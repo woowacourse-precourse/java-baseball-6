@@ -65,4 +65,13 @@ class DigitsTest {
 
         assertEquals(strikeCount, 2);
     }
+
+    @Test
+    void Digits_내의_원소가_같을_경우_동일한_객체로_인식한다() {
+        Digits digits1 = Digits.generateFixedDigits("123");
+        Digits digits2 = Digits.generateFixedDigits("123");
+
+        assertEquals(digits1, digits2);
+    }
+
 }
