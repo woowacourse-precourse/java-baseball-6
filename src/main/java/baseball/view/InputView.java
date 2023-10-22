@@ -3,11 +3,11 @@ package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    public static String inputNumber(String message) {
+    public static int inputNumber(String message) {
         System.out.printf(message);
         String inputValue = Console.readLine();
         validateNumber(inputValue);
-        return inputValue;
+        return Integer.parseInt(inputValue);
     }
 
     public static void validateNumber(String inputValue) {

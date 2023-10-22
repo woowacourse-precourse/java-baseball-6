@@ -4,10 +4,8 @@ import java.util.List;
 
 public class Validator {
 
-    public List<Integer> validatedBaseballNumber(String inputValue) {
-        validateLength(inputValue, GameOption.BASEBALL_SIZE);
-        List<String> stringBaseballNumber = Utils.divideByOneLatter(inputValue);
-        List<Integer> baseballNumber = Utils.stringListToIntList(stringBaseballNumber);
+    public List<Integer> validatedBaseballNumber(int inputValue) {
+        List<Integer> baseballNumber = Utils.splitNumberToDigitList(inputValue);
         validateListInRange(baseballNumber, GameOption.BASEBALL_START_NUMBER, GameOption.BASEBALL_END_NUMBER);
         validateSameNumber(baseballNumber);
         return baseballNumber;
@@ -23,19 +21,6 @@ public class Validator {
         }
     }
 
-    public int validatedRestart(String inputValue) {
-        validateLength(inputValue, 1);
-        int intValue = Integer.parseInt(inputValue);
-        validateInRange(intValue, 1, 2);
-        return intValue;
-    }
-
-    private static void validateLength(String value, int size) {
-        if (value.length() != size) {
-            throw new IllegalArgumentException(GameOption.BASEBALL_SIZE + "자리 숫자를 입력해야 합니다.");
-        }
-    }
-
     private static void validateSameNumber(List<Integer> value) {
         int count = (int) value.stream()
                 .distinct()
@@ -44,4 +29,17 @@ public class Validator {
             throw new IllegalArgumentException("중복된 숫자가 포함되어 있습니다.");
         }
     }
+
+    public int validatedRestart(int inputValue) {
+        validateInRange(inputValue, 1, 2);
+        return inputValue;
+    }
+
+//    private static void validateLength(String value, int size) {
+//        if (value.length() != size) {
+//            throw new IllegalArgumentException(GameOption.BASEBALL_SIZE + "자리 숫자를 입력해야 합니다.");
+//        }
+//    }
+
+
 }
