@@ -34,7 +34,7 @@ public class BaseBallGame {
         while (isRunnable) {
             prompt.print(SystemMessage.INPUT);
             String playerInput = prompt.input();
-            validator.verify(playerInput);
+            validator.verifyForBaseballNumber(playerInput);
             List<Integer> verifiedInput = baseBallGameMapper.toList(playerInput);
             Status judgedStatus = referee.judge(verifiedInput, randomNumbers);
             prompt.print(judgedStatus::getResult);
