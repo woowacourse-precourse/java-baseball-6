@@ -1,19 +1,22 @@
 package baseball;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Data {
-    private String userInput;
-    private List<String> userInputList;
+    private String userAnswerNumber;
+    private List<String> userAnswerNumberList = Arrays.asList("0", "0");
     private int randomNumber;
     private List<String> randomNumberList;
+    private List<String> answerList;
+    private String willRestartResponse;
 
-    public String getUserInput() {
-        return userInput;
+    public String getUserAnswerNumber() {
+        return userAnswerNumber;
     }
 
-    public List<String> getUserInputList() {
-        return userInputList;
+    public List<String> getUserAnswerNumberList() {
+        return userAnswerNumberList;
     }
 
     public int getRandomNumber() {
@@ -24,12 +27,20 @@ public class Data {
         return randomNumberList;
     }
 
-    public void setUserInput(String userInput) {
-        this.userInput = userInput;
+    public List<String> getAnswerList() {
+        return answerList;
     }
 
-    public void setUserInputList(List<String> userInputList) {
-        this.userInputList = userInputList;
+    public String getWillRestartResponse() {
+        return willRestartResponse;
+    }
+
+    public void setUserAnswerNumber(String userAnswerNumber) {
+        this.userAnswerNumber = userAnswerNumber;
+    }
+
+    public void setUserAnswerNumberList(List<String> userAnswerNumberList) {
+        this.userAnswerNumberList = userAnswerNumberList;
     }
 
     public void setRandomNumber(int randomNumber) {
@@ -38,5 +49,13 @@ public class Data {
 
     public void setRandomNumberList(List<String> randomNumberList) {
         this.randomNumberList = randomNumberList;
+    }
+
+    public void setAnswerList(List<String> answerList) {
+        this.answerList = answerList;
+    }
+
+    public void setWillRestartResponse(String willRestartResponse) {
+        this.willRestartResponse = willRestartResponse;
     }
 }
