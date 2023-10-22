@@ -8,14 +8,13 @@ import java.util.List;
 
 public class Application {
     private static List<Integer> randomNumber = new ArrayList<>();
-    private static boolean match;
+    private static boolean isMatch;
     public static void main(String[] args) {
-
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true){
-            match = false;
+            isMatch = false;
             createRandomNumber();
-            while(!match){
+            while(!isMatch){
                 System.out.print("숫자를 입력해주세요 : ");
                 try{
                     int userInp = Integer.parseInt(Console.readLine());
@@ -25,29 +24,28 @@ public class Application {
                     }
 
                     compareNumber(userInp);
+
                 }catch (Exception e){
                     throw new IllegalArgumentException();
                 }
             }
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
             try{
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
                 int userSelect = Integer.parseInt(Console.readLine());
 
-                if(userSelect == 1){
-                    continue;
-                }else if(userSelect == 2){
+                if(userSelect == 2){
                     System.out.println("게임 종료");
                     break;
-                }else{
-                    throw new IllegalStateException();
+                }else if(userSelect < 1 || userSelect > 2){
+                    throw new IllegalArgumentException();
                 }
             }catch (IllegalStateException e) {
-                break;
+                throw new IllegalArgumentException();
             }
         }
     }
-    static void compareNumber(int userInp){
+    private static void compareNumber(int userInp){
         int strike = 0, ball = 0;
         for(int i = 2; i >= 0; i--){
             int num = userInp%10;
@@ -81,7 +79,7 @@ public class Application {
 
         if(strike == 3){
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
-            match = true;
+            isMatch = true;
         }
     }
 
@@ -95,7 +93,7 @@ public class Application {
         }
     }
 
-    static boolean checkDuplicate(int userInp){
+    private static boolean checkDuplicate(int userInp){
         boolean numCheck[] = new boolean[10];
         int copyInp = userInp;
         for(int i = 0; i < 3; i++){
