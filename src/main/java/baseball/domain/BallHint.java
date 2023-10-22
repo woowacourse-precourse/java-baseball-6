@@ -9,6 +9,18 @@ public class BallHint {
         return strike + ball == 0;
     }
 
+    public void increaseStrike() {
+        if (this.strike < 3) {
+            this.strike += 1;
+        }
+    }
+
+    public void IncreaseBall() {
+        if (this.ball < 3) {
+            this.strike += 1;
+        }
+    }
+
     public int getStrike() {
         return this.strike;
     }
