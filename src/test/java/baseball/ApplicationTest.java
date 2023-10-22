@@ -5,6 +5,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.model.IsGameClear;
 import baseball.model.RandomNumberCreator;
 import baseball.model.UserNumberChecker;
 import baseball.model.UserNumberGrader;
@@ -85,6 +86,18 @@ class ApplicationTest extends NsTest {
 
         assertThat(ball).isEqualTo(2);
         assertThat(strike).isEqualTo(1);
+    }
+
+    @Test
+    void 게임통과여부_테스트() {
+        UserNumberGrader userNumberGrader = new UserNumberGrader();
+        IsGameClear isGameClear = new IsGameClear(userNumberGrader);
+
+        // 스트라이크 3이면 게임 통과
+        assertThat(isGameClear.getResultGrade("123", "123")).isTrue();
+
+        // 스트라이크 3이 아니면 게임 통과하지 않음
+        assertThat(isGameClear.getResultGrade("123", "143")).isFalse();
     }
 
     @Test
