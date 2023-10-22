@@ -13,6 +13,10 @@ public class Application {
 
         String userInput = Console.readLine();
 
-        validator.validate(userInput);
+        try {
+            validator.validate(userInput);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 }
