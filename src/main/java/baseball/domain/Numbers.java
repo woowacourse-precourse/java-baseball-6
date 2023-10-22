@@ -3,6 +3,8 @@ package baseball.domain;
 import static baseball.enums.NumbersEnum.*;
 
 import baseball.enums.NumbersEnum;
+import baseball.exception.NumberDuplicationException;
+import baseball.exception.NumberRangeException;
 import baseball.exception.WrongLengthException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +17,7 @@ public interface Numbers {
                 .collect(Collectors.toList());
 
         if (duplicationCheckList.size() != integers.size()) {
-            throw new WrongLengthException();
+            throw new NumberDuplicationException();
         }
     }
 
