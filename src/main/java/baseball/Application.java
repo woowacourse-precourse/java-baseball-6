@@ -51,7 +51,7 @@ public class Application {
     }
 
     // 0번째 결과에는 볼 카운트, 1번째 결과에는 스트라이크 카운트를 저장한다.
-    private static int[] getGameResult(int[] playerNum, int[] computerNum) {
+    private static int[] getGameResult(final int[] playerNum, final int[] computerNum) {
         int[] result = new int[2];
         for (int i = 0; i < 3; i++) {
             // 같은 자리에 있따면 스트라이크
@@ -65,7 +65,7 @@ public class Application {
     }
 
     // 해당 playerNum가 computerNums에 존재 한다면 볼 이다.
-    private static boolean isBall(int playerNum, int[] computerNum) {
+    private static boolean isBall(int playerNum, final int[] computerNum) {
         for (int i = 0; i < 3; i++) {
             if (playerNum == computerNum[i])
                 return true;
