@@ -1,5 +1,8 @@
 package baseball;
 
+import static baseball.Constant.MAX_DIGIT;
+import static baseball.Constant.MAX_NUM;
+import static baseball.Constant.ONE_DIGIT;
 import static baseball.Utils.stringToInt;
 
 import java.util.ArrayList;
@@ -8,7 +11,6 @@ import java.util.List;
 import java.util.Set;
 
 public class InputValidator {
-    static final int INPUT_REQUIREMENT = 3;
 
     static void gameInputValidator(String string) throws IllegalArgumentException {
         List<Integer> integerList = new ArrayList<>(stringToInt(string));
@@ -32,13 +34,13 @@ public class InputValidator {
     }
 
     static void isThreeDigit(List<Integer> integerList) {
-        if (integerList.size() != INPUT_REQUIREMENT) {
+        if (integerList.size() != MAX_DIGIT) {
             throw new IllegalArgumentException("3자리의 숫자를 입력해주세요");
         }
     }
 
     static void isOneDigit(List<Integer> integerList) {
-        if (integerList.size() != 1) {
+        if (integerList.size() != ONE_DIGIT) {
             throw new IllegalArgumentException("1자리의 숫자를 입력해주세요");
         }
     }
@@ -53,7 +55,7 @@ public class InputValidator {
 
     static void isUnderTen(List<Integer> integerList) {
         for (int i : integerList) {
-            if (i > 9) {
+            if (i > MAX_NUM) {
                 throw new IllegalArgumentException("9이하의 숫자만 가능합니다");
             }
         }

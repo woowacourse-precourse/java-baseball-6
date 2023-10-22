@@ -1,6 +1,8 @@
 package baseball;
 
 import static baseball.Application.beginGame;
+import static baseball.Constant.RESTART;
+import static baseball.Constant.THREE_STRIKE;
 import static baseball.InputValidator.restartInputValidator;
 import static baseball.Utils.stringToInt;
 
@@ -69,7 +71,7 @@ public class GameController {
     }
 
     public void checkWin(int strikeCount) {
-        if (strikeCount == 3) {
+        if (strikeCount == THREE_STRIKE) {
             hasWon = true;
         }
     }
@@ -83,7 +85,7 @@ public class GameController {
     }
 
     public void restartOrExit(List<Integer> userAnswer) {
-        if (userAnswer.get(0) == 1) {
+        if (userAnswer.get(0) == RESTART) {
             beginGame();
         }
     }
