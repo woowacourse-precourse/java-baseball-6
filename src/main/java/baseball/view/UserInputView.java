@@ -3,6 +3,7 @@ package baseball.view;
 import baseball.util.common.Common;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -19,22 +20,29 @@ public class UserInputView {
 
     public String inputUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
-        String stringDigitsFromUserInput = Console.readLine();
+        try {
+            String stringDigitsFromUserInput = Console.readLine();
 
-        isStringEmpty(stringDigitsFromUserInput);
-        validateUserInputLength(stringDigitsFromUserInput);
-        validateIsNumber(stringDigitsFromUserInput);
-        validateHasDuplicateNumber(stringDigitsFromUserInput);
+            isStringEmpty(stringDigitsFromUserInput);
+            validateUserInputLength(stringDigitsFromUserInput);
+            validateIsNumber(stringDigitsFromUserInput);
+            validateHasDuplicateNumber(stringDigitsFromUserInput);
 
-        return stringDigitsFromUserInput;
+            return stringDigitsFromUserInput;
+        } catch (NoSuchElementException e) {
+            throw new IllegalArgumentException(VALID_IS_NULL);
+        }
     }
 
     public String isContinueGameByUserInput() {
-        String isContinueByUserInput = Console.readLine();
-        isStringEmpty(isContinueByUserInput);
-        validateIsNumber(isContinueByUserInput);
-
-        return isContinueByUserInput;
+        try {
+            String isContinueByUserInput = Console.readLine();
+            isStringEmpty(isContinueByUserInput);
+            validateIsNumber(isContinueByUserInput);
+            return isContinueByUserInput;
+        } catch (NoSuchElementException e) {
+            throw new IllegalArgumentException(VALID_IS_NULL);
+        }
     }
 
     private void isStringEmpty(String userInput) {
@@ -50,7 +58,7 @@ public class UserInputView {
     }
 
     private void validateIsNumber(String stringDigitsFromUserInput) {
-        if (Pattern.matches(stringDigitsFromUserInput, REGEXP_ONLY_NUM)) {
+        if (!Pattern.matches(REGEXP_ONLY_NUM, stringDigitsFromUserInput)) {
             throw new IllegalArgumentException(VALID_IS_NUM);
         }
     }
