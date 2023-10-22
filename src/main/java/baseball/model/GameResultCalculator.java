@@ -40,6 +40,8 @@ public class GameResultCalculator {
 
 
     public boolean isThreeStrike(Number randomNumber, Number inputNumber) {
-        return randomNumber.equals(inputNumber);
+        return randomNumber.firstNumber == inputNumber.firstNumber
+                && randomNumber.secondNumber == inputNumber.secondNumber
+                && randomNumber.thirdNumber == inputNumber.thirdNumber;
     }
 }
