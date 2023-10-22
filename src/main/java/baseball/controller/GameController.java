@@ -8,6 +8,9 @@ import java.util.List;
 import baseball.utils.ValidationUtil;
 
 public class GameController {
+    private static final String GAME_RESTART_ANSWER = "1";
+    private static final String GAME_END_ANSWER = "2";
+    private static final String WRONG_INPUT = "잘못 입력하셨습니다.";
     NumberModel numberModel = new NumberModel();
     GameView gameView = new GameView();
     ValidationUtil validationUtil = new ValidationUtil();
@@ -53,12 +56,12 @@ public class GameController {
 
     private int askRestart() {
         String userInput = gameView.inputRestart();
-        if (userInput.equals("1")) {
+        if (userInput.equals(GAME_RESTART_ANSWER)) {
             return 1;
-        } else if (userInput.equals("2")) {
+        } else if (userInput.equals(GAME_END_ANSWER)) {
             return 2;
         }
-        throw new IllegalArgumentException("잘못 입력하셨습니다.");
+        throw new IllegalArgumentException(WRONG_INPUT);
     }
 
 }
