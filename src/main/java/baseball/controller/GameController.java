@@ -14,10 +14,13 @@ import java.util.List;
 public class GameController {
 
     public static void playingBaseballGame(GameCondition game_coin){
-        List<Integer> computer = GenerateNumberList.generateRandomNumberToComputer(3);
+        playingByUserInput(game_coin,computerGameListByRandomGenerate());
+
+    }
+    private static void playingByUserInput(GameCondition game_coin,List<Integer> computer){
         while (game_coin.equals(GameCondition.CONTINUE)){
             OutputView.outputForGameValueInput();
-            String user_input_value = InputView.readLineByConsole();
+            String user_input_value = userInput();
             if (GameValidation.verifyForGameValue(user_input_value)){
                 List<Integer> user = GenerateNumberList.generateInputValueToUser(user_input_value);
                 GameScore gameScore = CompareNumber.compareNumberList(user, computer);
@@ -25,19 +28,31 @@ public class GameController {
             }
         }
         userSuccessGame();
-        String user_input_retry = InputView.readLineByConsole();
-        if (GameValidation.verifyForRetryValue(user_input_retry)){
-            userWantRetryGame(user_input_retry);
-        }
     }
 
     private static void userWantRetryGame(String user_input_retry){
         if (user_input_retry.equals("1")){
-            playingBaseballGame(GameCondition.CONTINUE);
+            playingByUserInput(GameCondition.CONTINUE,computerGameListByRandomGenerate());
         }
     }
 
     private static void userSuccessGame(){
         OutputView.outputForRetryCondition();
+        afterGameSuccess();
+    }
+
+    private static void afterGameSuccess(){
+        String user_input_retry = userInput();
+        if (GameValidation.verifyForRetryValue(user_input_retry)){
+            userWantRetryGame(user_input_retry);
+        }
+    }
+
+    private static List<Integer> computerGameListByRandomGenerate(){
+        return GenerateNumberList.generateRandomNumberToComputer(3);
+    }
+
+    private static String userInput(){
+        return InputView.readLineByConsole();
     }
 }
