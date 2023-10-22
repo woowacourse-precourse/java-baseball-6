@@ -14,7 +14,7 @@ public class Computer {
         this.numbers = numbers;
     }
 
-    public static Computer createWithGenerator(final NumberGenerator generator) {
+    public static Computer createWith(final NumberGenerator generator) {
         return new Computer(generator.generate());
     }
 

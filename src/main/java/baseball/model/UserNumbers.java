@@ -18,19 +18,19 @@ public class UserNumbers {
         this.numbers = numbers;
     }
 
-    public static UserNumbers createWithInput(final String input) {
-        validateInput(input);
+    public static UserNumbers createWith(final String input) {
+        validate(input);
         List<Integer> numbers = Converter.convertStringToIntegerList(input);
         return new UserNumbers(numbers);
     }
 
-    private static void validateInput(final String input) {
-        validateInputLength(input);
+    private static void validate(final String input) {
+        validateLength(input);
         validateNoZeros(input);
         validateNoDuplicates(input);
     }
 
-    private static void validateInputLength(final String input) {
+    private static void validateLength(final String input) {
         if (input.length() != REQUIRED_INPUT_LENGTH) {
             throw new IllegalArgumentException(INVALID_LENGTH_MESSAGE);
         }

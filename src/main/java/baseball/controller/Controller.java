@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.controller.mapper.ResultMapper;
 import baseball.model.Computer;
 import baseball.model.GameCommand;
 import baseball.model.UserNumbers;
@@ -31,13 +30,14 @@ public class Controller {
     }
 
     private void playGame() {
-        Computer computer = Computer.createWithGenerator(new RandomNumberGenerator());
+        Computer computer = Computer.createWith(new RandomNumberGenerator());
         List<Integer> inputNumbers = new ArrayList<>();
 
         while (!isGameOver(computer, inputNumbers)) {
             inputNumbers = getInputNumbers();
-            String result = getResult(computer, inputNumbers);
-            outputView.printResult(result);
+            int ballCount = computer.getBallCount(inputNumbers);
+            int strikeCount = computer.getStrikeCount(inputNumbers);
+            outputView.printResult(ballCount, strikeCount);
         }
         outputView.printEnd();
     }
@@ -49,14 +49,8 @@ public class Controller {
     private List<Integer> getInputNumbers() {
         outputView.printInputNumber();
         String numbers = inputView.readLine();
-        UserNumbers user = UserNumbers.createWithInput(numbers);
+        UserNumbers user = UserNumbers.createWith(numbers);
         return user.getNumbers();
-    }
-
-    private static String getResult(final Computer computer, final List<Integer> inputNumbers) {
-        int ballCount = computer.getBallCount(inputNumbers);
-        int strikeCount = computer.getStrikeCount(inputNumbers);
-        return ResultMapper.resultToString(ballCount, strikeCount);
     }
 
     private GameCommand askForRestart() {

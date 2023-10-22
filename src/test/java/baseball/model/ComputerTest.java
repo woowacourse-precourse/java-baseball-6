@@ -20,7 +20,7 @@ class ComputerTest {
 
     @BeforeEach
     void init() {
-        computer = Computer.createWithGenerator(new StubNumberGenerator("123"));
+        computer = Computer.createWith(new StubNumberGenerator("123"));
     }
 
     @CsvSource({"1, 2, 3, 3", "1, 3, 2,1 ", "5, 6, 7, 0", "1, 2, 5, 2"})
