@@ -30,60 +30,67 @@ public class Application {
                 }
             }
 
-            while (true) {
-                int strike = 0;
-                int ball = 0;
-                sb = new StringBuilder();
-                user_guess = new ArrayList<>();
-                user_guess_input = readLine();
-
-                for (char c : user_guess_input.toCharArray()) {
-
-                    user_guess.add(Integer.parseInt(String.valueOf(c)));
-                }
-
-                for (int i = 0; i < computer.size(); i++) {
-
-                    int now_com_num = computer.get(i);
-                    int now_com_index = i;
-
-                    for (int j = 0; j < user_guess.size(); j++) {
-
-                        int now_user_num = user_guess.get(j);
-                        int now_user_index = j;
-
-                        if ((now_com_index == now_user_index) && (now_com_num == now_user_num)) {
-
-                            strike++;
-                        } else if (now_com_num == now_user_num) {
-
-                            ball++;
-                        }
-
-                    }
-                }
-                if (strike == 3) {
-                    sb.append(strike).append("스트라이크\n");
-                    sb.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println(sb);
-                    break;
-                }
-
-                if (strike > 0 && ball > 0) {
-                    sb.append(strike).append("스트라이크 ").append(ball).append("볼");
-                } else if (strike > 0) {
-                    sb.append(strike).append("스트라이크");
-                } else if (ball > 0) {
-                    sb.append(ball).append("볼");
-                } else sb.append("낫싱");
-                System.out.println(sb);
-            }
+            playing_game(computer);
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             continue_game = Integer.parseInt(readLine());
 
             if (continue_game == 1) continue;
             if(continue_game == 2) break;
+        }
+    }
+
+    private static void playing_game(List<Integer> computer) {
+        StringBuilder sb;
+        List<Integer> user_guess;
+        String user_guess_input;
+        while (true) {
+            int strike = 0;
+            int ball = 0;
+            sb = new StringBuilder();
+            user_guess = new ArrayList<>();
+            user_guess_input = readLine();
+
+            for (char c : user_guess_input.toCharArray()) {
+
+                user_guess.add(Integer.parseInt(String.valueOf(c)));
+            }
+
+            for (int i = 0; i < computer.size(); i++) {
+
+                int now_com_num = computer.get(i);
+                int now_com_index = i;
+
+                for (int j = 0; j < user_guess.size(); j++) {
+
+                    int now_user_num = user_guess.get(j);
+                    int now_user_index = j;
+
+                    if ((now_com_index == now_user_index) && (now_com_num == now_user_num)) {
+
+                        strike++;
+                    } else if (now_com_num == now_user_num) {
+
+                        ball++;
+                    }
+
+                }
+            }
+            if (strike == 3) {
+                sb.append(strike).append("스트라이크\n");
+                sb.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(sb);
+                break;
+            }
+
+            if (strike > 0 && ball > 0) {
+                sb.append(strike).append("스트라이크 ").append(ball).append("볼");
+            } else if (strike > 0) {
+                sb.append(strike).append("스트라이크");
+            } else if (ball > 0) {
+                sb.append(ball).append("볼");
+            } else sb.append("낫싱");
+            System.out.println(sb);
         }
     }
 }
