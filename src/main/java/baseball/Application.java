@@ -27,4 +27,31 @@ public class Application {
         }
         return computer;
     }
+
+    /**
+     * 숫자로 이루어진 문자열을 정수 리스트로 변환해 줍니다.
+     * @param numbersStr 숫자 3개가 이루어진 문자열
+     * @return 1부터 9까지의 서로 다른 수 3개가 담긴 리스트
+     * @throws IllegalArgumentException
+     *         입력된 문자열 길이가 3이 아닐 경우,
+     *         숫자가 1부터 9까지가 아닐 경우,
+     *         중복된 숫자가 존재할 경우
+     */
+    public static List<Integer> getThreeNumbersFromString(String numbersStr) {
+        if (numbersStr.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        List<Integer> result = new ArrayList<>();
+        for (char numberChar:numbersStr.toCharArray()) {
+            if (numberChar < '1' || numberChar > '9') {
+                throw new IllegalArgumentException();
+            }
+            int number = numberChar - '1' + 1;
+            if (result.contains(number)) {
+                throw new IllegalArgumentException();
+            }
+            result.add(number);
+        }
+        return result;
+    }
 }
