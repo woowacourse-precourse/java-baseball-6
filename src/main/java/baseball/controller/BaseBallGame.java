@@ -10,12 +10,17 @@ import java.util.List;
 
 public class BaseBallGame {
 
+    private static final int THREE_STRIKE_COUNT = 3;
+    private static final int MAX_RANDOM_NUMBER_SIZE = 3;
+    private static final int MIN_RANDOM_NUMBER_VALUE = 1;
+    private static final int MAX_RANDOM_NUMBER_VALUE = 9;
+
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
 
     public void run() {
+        gameStart();
         do {
-            gameStart();
             playGame();
             quitGame();
         } while (playButton());
@@ -29,7 +34,7 @@ public class BaseBallGame {
         MyNumber myNumber = new MyNumber();
         Computer computer = new Computer(createRandomNumber());
 
-        while (myNumber.getStrike() != 3) {
+        while (myNumber.getStrike() != THREE_STRIKE_COUNT) {
             myNumber.resultInit();
             inputView.inputNumber(myNumber);
             getMyNumberResult(myNumber, computer);
@@ -77,8 +82,8 @@ public class BaseBallGame {
 
     public List<Integer> createRandomNumber() {
         List<Integer> randomNumberList = new ArrayList<>();
-        while (randomNumberList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (randomNumberList.size() < MAX_RANDOM_NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER_VALUE, MAX_RANDOM_NUMBER_VALUE);
             if (!randomNumberList.contains(randomNumber)) {
                 randomNumberList.add(randomNumber);
             }

@@ -4,13 +4,16 @@ import java.util.List;
 
 public class MyNumber {
 
+    private static final int STRIKE_AND_BALL_COUNT_INIT_VALUE = 0;
+    private static final int STRIKE_AND_BALL_INCREASE_VALUE = 1;
+
     private List<Integer> myNumberList;
     private int strike;
     private int ball;
 
     public MyNumber() {
-        this.strike = 0;
-        this.ball = 0;
+        this.strike = STRIKE_AND_BALL_COUNT_INIT_VALUE;
+        this.ball = STRIKE_AND_BALL_COUNT_INIT_VALUE;
     }
 
     public List<Integer> getMyNumberList() {
@@ -22,8 +25,8 @@ public class MyNumber {
     }
 
     public void resultInit() {
-        this.strike = 0;
-        this.ball = 0;
+        this.strike = STRIKE_AND_BALL_COUNT_INIT_VALUE;
+        this.ball = STRIKE_AND_BALL_COUNT_INIT_VALUE;
     }
 
     public int getStrike() {
@@ -35,11 +38,11 @@ public class MyNumber {
     }
 
     public void ballCount() {
-        ball++;
+        ball += STRIKE_AND_BALL_INCREASE_VALUE;
     }
 
     public void strikeCount() {
-        strike++;
+        strike += STRIKE_AND_BALL_INCREASE_VALUE;
     }
 
 }
