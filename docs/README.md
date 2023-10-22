@@ -16,6 +16,6 @@
 ## Count
 
 - [ ] 3자리  String 중복 확인
-- [ ] 3자리 여부 확인
-- [ ] Count 객체 생성하는 메서드
-- [ ] toString()
+- [X] 3자리 여부 확인
+- [X] Count 객체 생성하는 메서드
+- [X] toString()
