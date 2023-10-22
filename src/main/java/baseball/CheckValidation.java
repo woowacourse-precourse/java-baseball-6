@@ -1,5 +1,12 @@
 package baseball;
 
+import static baseball.Enum.END_PROGRAM;
+import static baseball.Enum.INVALID_ANSWER;
+import static baseball.Enum.LETTER_ERROR;
+import static baseball.Enum.LIMIT_THREE_NUMBER;
+import static baseball.Enum.NOT_DUPLICATED;
+import static baseball.Enum.VALID;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,30 +20,31 @@ public class CheckValidation {
 
     public int checkAnswerValidation(String s) {
         s = s.trim();
-        if (s.equals("1")) {
+        if (s.equals("1")) { // 새로운 게임 시작
             return 1;
         }
-        if (s.equals("2")) {
+        if (s.equals("2")) { // 게임 종료
+            System.out.println(END_PROGRAM);
             return 2;
-        } else {
-            System.out.println("1 또는 2만 입력할 수 있습니다.");
+        } else { // 유효하지 않은 입력
+            System.out.println(INVALID_ANSWER);
             return -1;
         }
     }
 
-    public String checkNumberValidation() {
+    public Enum checkNumberValidation() {
         // 문자열 배열로 치환
         String[] inputArr = input.split("");
         if (checkIfNumber(inputArr) == false) {
-            return "문자, 특수문자, 공백이 아닌 숫자만 입력해주세요.";
+            return LETTER_ERROR;
         }
         if (checkLength(inputArr) == false) {
-            return "3자리의 숫자만 입력해주세요.";
+            return LIMIT_THREE_NUMBER;
         }
         if (checkIfDuplicated(inputArr) == false) {
-            return "중복되지 않는 숫자로 이루어진 3자리 수를 입력해주세요.";
+            return NOT_DUPLICATED;
         }
-        return "유효";
+        return VALID;
     }
 
     // 입력값이 숫자인지 확인
