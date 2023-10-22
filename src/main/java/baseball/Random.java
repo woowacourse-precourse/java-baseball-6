@@ -10,7 +10,7 @@ import static baseball.Stationary.*;
 public class Random {
 
         // 중복되지 않는 3개의 숫자를 생성
-        public static HashSet createRandomNumber() {
+        public static HashSet<Integer> createRandomNumber() {
                 HashSet<Integer> randomNumbers = new HashSet<>(3);
                 while (randomNumbers.size() < 3) {
                         int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
@@ -22,13 +22,13 @@ public class Random {
         // HashSet을 String으로 변환하여 반환
         public static String returnRandomNumber() {
                 HashSet<Integer> randomNumbers = createRandomNumber();
-                Iterator iter = randomNumbers.iterator(); // Iterator를 사용하여 HashSet의 요소를 출력
-                String result = "";
+                Iterator<Integer> iter = randomNumbers.iterator(); // Iterator를 사용하여 HashSet의 요소를 출력
+                StringBuilder result = new StringBuilder();
 
                 while (iter.hasNext()) {
-                        result += iter.next();
+                        result.append(iter.next());
                 }
 
-                return result;
+                return result.toString();
         }
 }
