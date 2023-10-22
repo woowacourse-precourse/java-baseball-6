@@ -3,6 +3,7 @@ package baseball.model;
 import java.util.List;
 
 public class Game {
+    private static final int STRIKE_COUNT_PER_OUT = 3;
     private final BaseballNumbers computerBaseballNumbers;
     public boolean isGameOver = false;
 
@@ -16,14 +17,16 @@ public class Game {
         List<BaseballNumber> userNumberList = userBaseballNumbers.getBaseballNumbers();
         for (int userNumberIdx = 0; userNumberIdx < BaseballNumbers.NUMBERS_LENGTH; userNumberIdx++) {
             BaseballNumber userNumber = userNumberList.get(userNumberIdx);
-            if (isNothing(computerBasballNumberList, userNumber)) continue;
             if (isStrike(computerBasballNumberList, userNumber, userNumberIdx)) {
                 result.strike();
-                continue;
             }
             if (isBall(computerBasballNumberList, userNumber, userNumberIdx)) {
                 result.ball();
             }
+        }
+
+        if (result.getStrike() == STRIKE_COUNT_PER_OUT) {
+            isGameOver = true;
         }
         return result;
     }
@@ -34,10 +37,6 @@ public class Game {
 
     private static boolean isStrike(List<BaseballNumber> computerBasballNumberList, BaseballNumber userNumber, int userNumberIdx) {
         return computerBasballNumberList.contains(userNumber) && computerBasballNumberList.indexOf(userNumber) == userNumberIdx;
-    }
-
-    private static boolean isNothing(List<BaseballNumber> computerBasballNumberList, BaseballNumber userNumber) {
-        return !computerBasballNumberList.contains(userNumber);
     }
 
 }
