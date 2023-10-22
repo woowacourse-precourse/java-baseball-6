@@ -51,7 +51,7 @@ public class BaseballGame {
             OutputView.printBallStrike(ballStrikeCounter.toString());
 
             //3스트라이크 시 while 종료
-            if (ballStrikeCounter.toString().equals("3스트라이크")) {
+            if (ballStrikeCounter.isThreeStrike()) {
                 break;
             }
 

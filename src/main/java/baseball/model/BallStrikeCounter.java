@@ -30,6 +30,10 @@ public class BallStrikeCounter {
         this.strike = 0;
     }
 
+    public boolean isThreeStrike() {
+        return this.strike == 3;
+    }
+
     @Override
     public String toString() {
 
