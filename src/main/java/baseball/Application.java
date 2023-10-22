@@ -4,6 +4,7 @@ import baseball.dto.Computer;
 import baseball.dto.Player;
 import baseball.dto.Result;
 import baseball.service.Converter;
+import baseball.service.GameLogic;
 import baseball.service.Generator;
 import baseball.service.Validate;
 import camp.nextstep.edu.missionutils.Console;
@@ -17,8 +18,8 @@ public class Application {
             computer.setInput(new Generator().generateNum());
             computer.setComputerNumberBall(Converter.convert(computer.getInput()));
 
-            Result result = new Result();
             Player player = new Player();
+            Result result = new Result();
             while (result.isCondition()) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
@@ -29,9 +30,12 @@ public class Application {
                     Console.close();
                     return;
                 }
-                player.setPlayerNumberBall(Converter.convert(num));
-
-
+                player.setInput(num);
+                player.setPlayerNumberBall(Converter.convert(player.getInput()));
+                GameLogic logic = new GameLogic();
+                logic.play(player.getPlayerNumberBall(), computer.getComputerNumberBall(), result);
+                System.out.println(result.getBall() + "볼 " + result.getStrike() + "스트라이크");
+                logic.resultClear(result);
             }
         }
     }
