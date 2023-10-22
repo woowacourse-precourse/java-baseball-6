@@ -6,7 +6,6 @@ public class BaseballGame {
     public static void start() throws IllegalAccessException {
         GameView.displayGameStartMessage();
         playGame();
-
     }
 
     private static void playGame() throws IllegalAccessException {
@@ -17,6 +16,11 @@ public class BaseballGame {
 
             int[] result = Computer.calculateResult(guessNumbers, randomNumbers);
             GameView.displayGuessResult(Computer.formatResult(result));
+
+            if (Computer.isGameOver(result)) {
+                GameView.displayCorrectGuessMessage();
+                break;
+            }
         }
     }
 }
