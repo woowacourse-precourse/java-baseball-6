@@ -34,7 +34,7 @@ public class Application {
             }
 
         //숫자 비교
-        //총 개수
+        //총 개수 확인
         int cnt = 0;
 
         for(int i = 0; i < user.size(); i++){
@@ -43,7 +43,7 @@ public class Application {
             }
         }
 
-        //스트라이크 개수
+        //스트라이크 개수 확인
         int strike = 0;
 
         for(int i = 0; i < user.size(); i++){
