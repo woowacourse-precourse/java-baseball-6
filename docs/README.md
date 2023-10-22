@@ -77,4 +77,5 @@ public static String readLine() {
 
 1. BaseballGameController
     1. Model과 View를 연결해주는 역할.
-    2. Model로부터 데이터를 받아 View에게 전달
+    2. Model로부터 데이터를 받는다.
+    3. 2에서 받은 데이터를 View에게 전달한다.
