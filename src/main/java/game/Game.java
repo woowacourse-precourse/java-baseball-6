@@ -39,7 +39,7 @@ public class Game {
         do {
             game = new Game();
             game.start();
-        } while (restart());
+        } while (game.restart());
     }
 
     private static void printStartString() {
@@ -61,7 +61,7 @@ public class Game {
     }
 
 
-    private static boolean equalToAnswer(String inputNumber) {
+    private boolean equalToAnswer(String inputNumber) {
         int[] intInputNumber = changeToIntegerList(inputNumber);
         int strike = getStrike(intInputNumber);
         int ball = getBall(intInputNumber);
@@ -73,7 +73,7 @@ public class Game {
         return false;
     }
 
-    private static int[] changeToIntegerList(String inputNumber) {
+    private int[] changeToIntegerList(String inputNumber) {
         int[] inputList = new int[NUMBER_SIZE];
         for (int i = 0; i < NUMBER_SIZE; i++) {
             char input = inputNumber.charAt(i);
@@ -82,7 +82,7 @@ public class Game {
         return inputList;
     }
 
-    private static int getStrike(int[] inputNumber) {
+    private int getStrike(int[] inputNumber) {
         int strike = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {
             if (samePosition(inputNumber[i], answer.get(i))) {
@@ -92,14 +92,14 @@ public class Game {
         return strike;
     }
 
-    private static boolean samePosition(int ithInput, int ithAnswer) {
+    private boolean samePosition(int ithInput, int ithAnswer) {
         if (ithInput == ithAnswer) {
             return true;
         }
         return false;
     }
 
-    private static int getBall(int[] inputNumber) {
+    private int getBall(int[] inputNumber) {
         int ball = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {
             if (isInAnswer(inputNumber[i], answer.get(i))) {
@@ -109,55 +109,56 @@ public class Game {
         return ball;
     }
 
-    private static boolean isInAnswer(int ithInput, int ithAnswer) {
+    private boolean isInAnswer(int ithInput, int ithAnswer) {
         if (ithInput != ithAnswer && answer.contains(ithInput)) {
             return true;
         }
         return false;
     }
 
-    private static void printResult(int strike, int ball) {
+    private void printResult(int strike, int ball) {
         printBall(ball);
         printStrike(strike);
-        System.out.println();
+
         if (isNothing(strike, ball)) {
             printNothing();
         }
     }
 
-    private static boolean isNothing(int strike, int ball) {
+    private boolean isNothing(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             return true;
         }
         return false;
     }
 
-    private static void printNothing() {
+    private void printNothing() {
         System.out.println(NOTHING);
     }
 
-    private static void printBall(int ball) {
+    private void printBall(int ball) {
         if (ball > 0) {
             System.out.print(ball + BALL);
         }
     }
 
-    private static void printStrike(int strike) {
+    private void printStrike(int strike) {
         if (strike > 0) {
             System.out.print(strike + STRIKE);
         }
         endGame(strike);
     }
 
-    private static boolean endGame(int strike) {
+    private boolean endGame(int strike) {
         if (strike == STRIKE_SUCCESS) {
+            System.out.println();
             System.out.println(END_GAME_STRING);
             return true;
         }
         return false;
     }
 
-    private static boolean restart() {
+    private boolean restart() {
         System.out.println(RESTART_STRING);
         int inputNumber = Validation.askRestart();
 
