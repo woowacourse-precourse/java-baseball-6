@@ -10,12 +10,12 @@ enum Command {
     final String key;
     final boolean retry;
 
-    Command(String key, boolean retry) {
+    Command(final String key, final boolean retry) {
         this.key = key;
         this.retry = retry;
     }
 
-    static Command getCommand(String input) {
+    static Command getCommand(final String input) {
         return Arrays.stream(Command.values())
                 .filter(command -> command.key.equals(input))
                 .findAny()

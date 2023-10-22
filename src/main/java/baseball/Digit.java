@@ -17,7 +17,7 @@ final class Digit {
         return randomDigit;
     }
 
-    static Digit generateFixedDigit(int target) {
+    static Digit generateFixedDigit(final int target) {
         Digit fixedDigit = new Digit();
         fixedDigit.digit = target;
         if (fixedDigit.digit < 1 || fixedDigit.digit > 9) throw new IllegalArgumentException();
@@ -25,7 +25,7 @@ final class Digit {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Digit target = (Digit) o;

@@ -10,7 +10,7 @@ final class OutputCommander {
         System.out.print(OutputMessage.INPUT_NUMBER.message);
     }
 
-    void printGameScore(String score) {
+    void printGameScore(final String score) {
         System.out.println(score);
     }
 

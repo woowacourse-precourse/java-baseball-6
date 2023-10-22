@@ -20,7 +20,7 @@ final class Digits {
         return randomDigits;
     }
 
-    static Digits generateFixedDigits(String input) {
+    static Digits generateFixedDigits(final String input) {
         if(input.length() != Size.THREE.num) throw new IllegalArgumentException();
 
         Digits fixedDigits = new Digits();
@@ -31,32 +31,32 @@ final class Digits {
         return fixedDigits;
     }
 
-    int countBall(Digits target) {
+    int countBall(final Digits target) {
         return (int) IntStream.range(0, target.digits.size())
                 .filter(i -> isDigitsContains(target.digits.get(i)) && isDifferentPosition(i, target.digits.get(i)))
                 .count();
     }
 
-    int countStrike(Digits target) {
+    int countStrike(final Digits target) {
         return (int) IntStream.range(0, target.digits.size())
                 .filter(i -> isSameDigitAndSamePosition(i, target.digits.get(i)))
                 .count();
     }
 
-    private boolean isDigitsContains(Digit digit) {
+    private boolean isDigitsContains(final Digit digit) {
         return digits.contains(digit);
     }
 
-    private boolean isDifferentPosition(int index, Digit digit) {
+    private boolean isDifferentPosition(final int index, final Digit digit) {
         return !digits.get(index).equals(digit);
     }
 
-    private boolean isSameDigitAndSamePosition(int index, Digit digit) {
+    private boolean isSameDigitAndSamePosition(final int index, final Digit digit) {
         return digits.get(index).equals(digit);
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Digits target = (Digits) o;

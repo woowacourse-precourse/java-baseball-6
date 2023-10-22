@@ -5,7 +5,7 @@ enum Size {
 
     final int num;
 
-    Size(int num) {
+    Size(final int num) {
         this.num = num;
     }
 }
