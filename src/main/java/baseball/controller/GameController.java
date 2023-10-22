@@ -34,9 +34,13 @@ public class GameController {
             computerController.provideHint();
 
             correctAnswer = computerController.isSuccessGame();
-            if (correctAnswer) {
-                outputView.printEndGame();
-            }
+            sendEndMessage(correctAnswer);
+        }
+    }
+
+    private void sendEndMessage(boolean correctAnswer) {
+        if (correctAnswer) {
+            outputView.printEndGame();
         }
     }
 
