@@ -1,13 +1,11 @@
 package baseball.gameLogic;
 
-import java.util.HashSet;
 import java.util.List;
 
-import baseball.models.Constants;
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.models.User;
-import static baseball.models.Constants.ANSWER_LENGTH;
+import static baseball.utils.Constants.ANSWER_LENGTH;
 import static baseball.utils.InputValidator.*;
 
 /*

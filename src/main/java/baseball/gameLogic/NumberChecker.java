@@ -3,7 +3,7 @@ package baseball.gameLogic;
 import baseball.models.Score;
 import java.util.List;
 
-import static baseball.models.Constants.*;
+import static baseball.utils.Constants.*;
 
 /*
  주어진 숫자가 볼인지 스트라이크인지 판별하고 점수를 리턴하는 클래스

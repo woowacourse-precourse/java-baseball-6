@@ -1,4 +1,4 @@
-package baseball.models;
+package baseball.utils;
 
 /*
  BaseBall 구현에서 쓰이는 모든 상수들을 관리하는 클래스

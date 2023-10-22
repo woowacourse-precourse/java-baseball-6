@@ -3,7 +3,7 @@ package baseball.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.models.Constants.*;
+import static baseball.utils.Constants.*;
 import static baseball.utils.InputValidator.validateAnswerCharacter;
 
 /*

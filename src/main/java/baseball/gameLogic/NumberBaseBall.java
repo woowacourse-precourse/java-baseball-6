@@ -5,7 +5,7 @@ import baseball.models.Score;
 
 import java.util.List;
 
-import static baseball.models.Constants.*;
+import static baseball.utils.Constants.*;
 
 /*
   게임 구동을 담당하는 메인 클래스
