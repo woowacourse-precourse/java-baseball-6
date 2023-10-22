@@ -32,13 +32,21 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임_재시작_입력_예외_테스트() {
+        assertRandomNumberInRangeTest(() -> {
+            assertThatThrownBy(() -> run("589", "3"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("잘못된 입력값입니다.");
+        }, 5, 8, 9);
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
     @Test
     void 예외_테스트_숫자길이() {
         assertSimpleTest(() ->
