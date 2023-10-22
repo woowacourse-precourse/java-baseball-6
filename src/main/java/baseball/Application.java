@@ -13,6 +13,7 @@ public class Application {
             computer.setInput(generator.generateNum());
             computer.setComputerNumberBall(Converter.convert(computer.getInput()));
 
+
         }
     }
 }
