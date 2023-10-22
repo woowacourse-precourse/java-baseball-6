@@ -20,18 +20,20 @@ package view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class InputView {
     public static List<Integer> userInput() {
         String input = Console.readLine();
 
-        if (input.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-
         List<Integer> userNumber = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             userNumber.add(input.charAt(i) - '0');
+        }
+
+        Set<Integer> duplicateTest = Set.copyOf(userNumber);
+        if (duplicateTest.size() != 3) {
+            throw new IllegalArgumentException();
         }
 
         return userNumber;
