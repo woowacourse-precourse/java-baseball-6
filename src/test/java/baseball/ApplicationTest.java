@@ -17,6 +17,31 @@ import org.junit.jupiter.api.Test;
 class ApplicationTest extends NsTest {
 
     @Test
+    void validateOneOrTwo() {
+        // given
+        Validation validation = new Validation();
+        int case1 = 1;
+        int case2 = 2;
+        int case3 = 5;
+
+        // when
+        Throwable result1 = catchThrowable(() -> {
+            validation.validateOneOrTwo(case1);
+        });
+        Throwable result2 = catchThrowable(() -> {
+            validation.validateOneOrTwo(case2);
+        });
+        Throwable result3 = catchThrowable(() -> {
+            validation.validateOneOrTwo(case3);
+        });
+
+        // then
+        assertThat(result1).as("input: 1").doesNotThrowAnyException();
+        assertThat(result2).as("input: 2").doesNotThrowAnyException();
+        assertThat(result3).as("invalid input").isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void validateInputLength() {
         // given
         Validation validation = new Validation();
