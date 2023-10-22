@@ -39,6 +39,7 @@ public class GameConsole {
         int choice = Integer.parseInt(Console.readLine());
         status = ConsoleStatus.values()[choice];
     }
+
     private void printConsoleMessage(String message) {
         System.out.println(message);
     }
