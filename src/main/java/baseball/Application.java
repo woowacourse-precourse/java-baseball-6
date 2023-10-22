@@ -18,10 +18,28 @@ public class Application {
         for (int i =0; i<myNumber.length(); i++){
             if (myNumber.charAt(i) == computerNumber.get(i)){
                 strike++;
-            }
-            else if (computerNumber.contains(myNumber.charAt(i)) && computerNumber.indexOf(myNumber.charAt(i)) != i) {
+            } else if (computerNumber.contains(myNumber.charAt(i)) && computerNumber.indexOf(myNumber.charAt(i)) != i) {
                 ball++;
             }
+        }
+        checkAnswerStrikeAndBall(strike,ball);
+    }
+
+    public void checkAnswerStrikeAndBall(int strike, int ball){
+        if (strike == 0 && ball == 0){
+            System.out.println("낫싱");
+        } else if (strike == 3) {
+            String result = String.format("$d스트라이크",strike);
+            System.out.println(result);
+        } else if (strike != 0 && ball != 0){
+            String result = String.format("$d볼 $d스트라이크",ball,strike);
+            System.out.println(result);
+        } else if (ball == 0){
+            String result = String.format("$d스트라이크",strike);
+            System.out.println(result);
+        } else if (strike == 0){
+            String result = String.format("$d볼",ball);
+            System.out.println(result);
         }
     }
     public static void main(String[] args) {
