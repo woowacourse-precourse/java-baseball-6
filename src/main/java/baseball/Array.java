@@ -34,10 +34,14 @@ public class Array {
     public static void checkArrayNumber(String userNumber) {
         try {
             Integer.parseInt(userNumber);
-        } catch (IllegalArgumentException ignored) {
-
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
         }
     }
 
-
+    public static void checkOneOrTwo(String userInput) {
+        if (!userInput.equals("0") && !userInput.equals("1")) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
