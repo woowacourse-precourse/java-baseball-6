@@ -24,10 +24,10 @@ public class GameController {
         boolean playOption = true;
 
         outputView.printGameStart();
+        List<Integer> randomNumbers = randomNumberGenerator.generateRandomNumbers();
 
         while (playOption) {
             outputView.printForInputThreeDigitNumbers();
-            List<Integer> randomNumbers = randomNumberGenerator.generateRandomNumbers();
             System.out.println(randomNumbers);
 
             String inputNumbers = inputView.inputThreeDigitNumber();
