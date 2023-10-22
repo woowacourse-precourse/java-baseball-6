@@ -3,8 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import validator.Validator;
-
-import javax.swing.text.Style;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +10,26 @@ public class BaseballGame {
     public int strike, ball;
     Validator validator = new Validator();
 
+    public void startGame() {
+        setGame();
+        runGame();
+    }
+    public void setGame() {
+        sayStart();
+    }
+    public void runGame(){
+        strike = 0; ball = 0;
+        List<Integer> computer = getRandomThreeNum();
+        while (strike != 3) {
+            List<Integer> user = getThreeNum();
+            calculateBallStrike(user, computer);
+            sayBallStrike(ball, strike);
+        }
+        if (determineRestart()) {
+            runGame();
+        }
+        sayEnd();
+    }
     // 1. 게임 시작
     public void sayStart(){
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -80,7 +98,7 @@ public class BaseballGame {
     public void sayEnd() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-    // 5-2. 게임 재시작 할 지 정하기
+    // 5-2. 게임 새로 시작 할 지 정하기
     public Boolean determineRestart() throws IllegalArgumentException{
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
