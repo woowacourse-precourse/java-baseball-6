@@ -10,12 +10,11 @@ public class Referee {
     private static final int ONE_BALL = 1;
     private static final int NO_STRIKE = 0;
     private static final int NO_BALL = 0;
-    private static final int STRIKE_INDEX = 1;
     private static final String NOTHING = "낫싱";
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String BLANK = " ";
-    private static final String THREE_STRIKE = "3스트라이크";
+    private static final String THREE_STRIKE = "0볼 3스트라이크";
 
     private final Computer computer;
 
@@ -42,8 +41,8 @@ public class Referee {
         return NO_BALL;
     }
 
-    private int checkStrike(final int computerNumber, final int guessNumber) {
-        if (computer.isStrike(computerNumber, guessNumber)) {
+    private int checkStrike(final int guessNumber, final int index) {
+        if (computer.isStrike(guessNumber, index)) {
             return ONE_STRIKE;
         }
         return NO_STRIKE;
@@ -61,7 +60,6 @@ public class Referee {
     }
 
     public boolean isGameOver(final String result) {
-        String[] split = result.split(BLANK);
-        return split[STRIKE_INDEX].equals(THREE_STRIKE);
+        return result.equals(THREE_STRIKE);
     }
 }
