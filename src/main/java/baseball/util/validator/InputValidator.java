@@ -1,4 +1,4 @@
-package baseball.validator;
+package baseball.util.validator;
 
 public class InputValidator {
 

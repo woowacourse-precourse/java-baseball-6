@@ -1,4 +1,4 @@
-package baseball.converter;
+package baseball.util.converter;
 
 import java.util.List;
 import java.util.stream.Collectors;
