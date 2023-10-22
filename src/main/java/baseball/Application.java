@@ -7,70 +7,82 @@ import camp.nextstep.edu.missionutils.*;
 
 public class Application 
 {
-    public static void main(String[] args) 
-    {
-        
-    	System.out.println("숫자 야구 게임을 시작합니다.");
-    	List<Integer> computer = makeThreeRandomNum();
-    	
-    	String userInput;
-    	int strike;
-    	int ball;
-    	char currentNum;
-        int num;
-    	while(true) 
-    	{
-	    	System.out.print("숫자를 입력해주세요 : ");
-	    	userInput = Console.readLine();
-	    	inputLengthThree(userInput);
-	    	inputNumberOnly(userInput);
-	    	inputAllDistinct(userInput);
-    	
-    		strike = 0;
-        	ball = 0 ;
-        	
-	    	for (int i = 0; i < 3; i++) 
-	    	{
-	    		currentNum = userInput.charAt(i);
-	    		num = Character.getNumericValue(currentNum);
-	    		if(computer.contains(num)) 
-	    		{
-	    			if(num == computer.get(i)) 
-	    			{
-	    				strike = strike + 1;
-	    			} 
-	    			else 
-	    			{
-	    				ball = ball + 1;
-	    			}
-	    		}
-	    	}
-	    	
-	    	if(strike == 3)
-	    		break;
-	    	
-	    	if ((strike == 0) && (ball == 0)) 
-	    	{
-	    		System.out.println("낫싱");
-	    	} 
-	    	else if ((strike == 0) && (ball > 0))
-	    	{
-	    		System.out.println(ball+"볼");
-	    	}
-	    	else if ((strike > 0) && (ball == 0))
-	    	{
-	    		System.out.println(strike+"스트라이크");
-	    	}
-	    	else if ((strike > 0) && (ball > 0)) {
-	    		System.out.println(ball+"볼 "+strike+"스트라이크");
-	    	}
-	    	
-	    	
-    	}
-    	Console.close();
-    	System.out.println(strike+"스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    }
+    private static int strike;
+	private static int ball;
 
+	public static void main(String[] args) 
+    {
+        while(true) 
+        {
+	    	System.out.println("숫자 야구 게임을 시작합니다.");
+	    	List<Integer> computer = makeThreeRandomNum();
+	    	
+	    	String userInput;
+	
+	    	while(true) 
+	    	{
+		    	System.out.print("숫자를 입력해주세요 : ");
+		    	userInput = Console.readLine();
+		    	inputLengthThree(userInput);
+		    	inputNumberOnly(userInput);
+		    	inputAllDistinct(userInput);
+		    	howManyBallStrike(userInput, computer);
+		    	
+		    	if(strike == 3)
+		    		break;
+		    	
+		    	printHint();
+	    	}
+	    	System.out.println(strike+"스트라이크"
+	    			+ "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+	    			+ "\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+	    	
+	    	String restart = Console.readLine();
+			inputNumberOneOrTwo(restart);
+			if(restart.equals("2"))
+				break;
+        } 
+        Console.close();
+    }
+	public static void printHint() {
+		if ((strike == 0) && (ball == 0)) 
+		{
+			System.out.println("낫싱");
+		} 
+		else if ((strike == 0) && (ball > 0))
+		{
+			System.out.println(ball+"볼");
+		}
+		else if ((strike > 0) && (ball == 0))
+		{
+			System.out.println(strike+"스트라이크");
+		}
+		else if ((strike > 0) && (ball > 0)) {
+			System.out.println(ball+"볼 "+strike+"스트라이크");
+		}
+	}
+	
+    public static void howManyBallStrike(String userInput, List<Integer> computer) {
+    	strike = 0;
+    	ball = 0;
+    	for (int i = 0; i < 3; i++) 
+    	{
+    		char currentNum = userInput.charAt(i);
+    		int num = Character.getNumericValue(currentNum);
+    		if(computer.contains(num)) 
+    		{
+    			if(num == computer.get(i)) 
+    			{
+    				strike = strike + 1;
+    			} 
+    			else 
+    			{
+    				ball = ball + 1;
+    			}
+    		}
+    	}
+    }
+    
 	public static void inputAllDistinct(String userInput) {
 		Set<Character> set = new HashSet<>();
 
@@ -86,7 +98,15 @@ public class Application
 
 	public static void inputNumberOnly(String userInput) 
 	{
-		if (!userInput.matches("\\d{3}")) // 입력값에 숫자가 아닌 문자가 포함된 경우
+		if (!userInput.matches("\\d{3}"))
+    	{
+            throw new IllegalArgumentException();
+        }
+	}
+	
+	public static void inputNumberOneOrTwo(String restart) 
+	{
+		if (!restart.equals("1") && !restart.equals("2"))
     	{
             throw new IllegalArgumentException();
         }
@@ -99,7 +119,7 @@ public class Application
             throw new IllegalArgumentException();
         }
 	}
-
+	
 	public static List<Integer> makeThreeRandomNum() 
 	{
 		List<Integer> RandomNumbers = new ArrayList<>();
