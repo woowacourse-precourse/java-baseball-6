@@ -35,7 +35,6 @@ public class Controller {
     private void play() {
         Computer computer = Computer.createDefault(new BaseBallGameNumberGenerator());
         List<Integer> guessNumbers = new ArrayList<>();
-        System.out.println(computer.getNumbers());
         while (!computer.isGameOver(guessNumbers)) {
             guessNumbers = getGuessNumbers();
             String result = getResult(computer, guessNumbers);
