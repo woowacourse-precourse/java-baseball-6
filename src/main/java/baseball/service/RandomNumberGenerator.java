@@ -1,10 +1,10 @@
-package baseball;
+package baseball.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumberGenerator implements NumberGenerator {
     @Override
     public int generate() {
-        return Randoms.pickNumberInRange(1, 3);
+        return Randoms.pickNumberInRange(1, 9);
     }
 }
