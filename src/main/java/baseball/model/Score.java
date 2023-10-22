@@ -19,4 +19,8 @@ public class Score {
     public Integer getBall() {
         return ball;
     }
+
+    public boolean isAllStrike() {
+        return getStrike() == THREE_STRIKE;
+    }
 }
