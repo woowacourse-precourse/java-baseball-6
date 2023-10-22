@@ -32,6 +32,14 @@ public class Validator {
             this.ballCount -= this.strikeCount;
         }
     }
+    private int countSameNumber(int i) {
+        for(int j = 0; j < INPUT_LENGTH; j++) {
+            if(this.user.userInput[i] == this.computer.computerNumber[j]) {
+                return 1;
+            }
+        }
+        return 0;
+    }
 
 
 
