@@ -13,11 +13,11 @@ public class InputValidator {
     }
 
     private boolean hasNonNumeric(final String input) {
-        return input.chars().allMatch(this::isNotNumeric);
+        return input.chars().anyMatch(this::isNotNumeric);
     }
 
-    private boolean isNotNumeric(final int c) {
-        return MIN_NUMBER > c || c > MAX_NUMBER;
+    private boolean isNotNumeric(final int element) {
+        return MIN_NUMBER > element || element > MAX_NUMBER;
     }
 
     public void validateRetryCommand(final String input) {
