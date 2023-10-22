@@ -25,12 +25,20 @@ public class GameController {
     }
 
     private void playSingleGame() {
-        programNumber = new ProgramNumber(NUMBER_SIZE, START_NUMBER, END_NUMBER);
+        setGame();
         do {
-            userNumber = new UserNumber(InputView.inputUserNumber(), NUMBER_SIZE);
+            inputUserNumber();
             int[] result = getResultList();
             OutputView.printScoreMessage(result[0], result[1]);
         } while (!isAnswer());
+    }
+
+    private void setGame() {
+        programNumber = new ProgramNumber(NUMBER_SIZE, START_NUMBER, END_NUMBER);
+    }
+
+    private void inputUserNumber() {
+        userNumber = new UserNumber(InputView.inputUserNumber(), NUMBER_SIZE);
     }
 
     private boolean isAnswer() {
