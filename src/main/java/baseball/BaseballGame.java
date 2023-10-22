@@ -154,12 +154,12 @@ public class BaseballGame {
     private int inputEndOption(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String endOptionInputString = Console.readLine();
-        checkEndForm(endOptionInputString);
+        checkEndOptionForm(endOptionInputString);
 
         return Integer.valueOf(endOptionInputString);
     }
 
-    private void checkEndForm(String endOption){
+    private void checkEndOptionForm(String endOption){
         if(!isInteger(endOption)){
             throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
         }
