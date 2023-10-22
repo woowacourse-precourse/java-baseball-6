@@ -1,7 +1,7 @@
 package player;
 
-import static constant.StringConstant.INVALID_NUMBER_RANGE;
-import static constant.StringConstant.ONLY_NUMBER;
+import static constant.BaseballConstant.INVALID_NUMBER_RANGE;
+import static constant.BaseballConstant.ONLY_NUMBER;
 
 public class BaseballNumber {
 

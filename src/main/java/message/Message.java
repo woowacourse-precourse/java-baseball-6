@@ -1,13 +1,13 @@
 package message;
 
-import static constant.StringConstant.BALL;
-import static constant.StringConstant.CONTINUE_OR_FINISH;
-import static constant.StringConstant.END_GAME;
-import static constant.StringConstant.INTEGER_INPUT_FROM_USER;
-import static constant.StringConstant.INVALID_INPUT;
-import static constant.StringConstant.NOTHING;
-import static constant.StringConstant.STRIKE;
-import static constant.StringConstant.THREE_STRIKE;
+import static constant.BaseballConstant.BALL;
+import static constant.BaseballConstant.CONTINUE_OR_FINISH;
+import static constant.BaseballConstant.END_GAME;
+import static constant.BaseballConstant.INTEGER_INPUT_FROM_USER;
+import static constant.BaseballConstant.INVALID_INPUT;
+import static constant.BaseballConstant.NOTHING;
+import static constant.BaseballConstant.STRIKE;
+import static constant.BaseballConstant.THREE_STRIKE;
 import static utils.BaseballRules.hasBallButNoStrike;
 import static utils.BaseballRules.hasStrikeAndBall;
 import static utils.BaseballRules.hasStrikeButNoBall;

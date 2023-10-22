@@ -1,7 +1,7 @@
 package referee;
 
-import static constant.NumberConstant.END;
-import static constant.NumberConstant.START;
+import static constant.BaseballConstant.END;
+import static constant.BaseballConstant.START;
 
 import camp.nextstep.edu.missionutils.Console;
 import message.Message;
@@ -22,7 +22,8 @@ public class Referee {
 
         do {
             baseballFlow();
-        } while (!BaseballRules.isThreeStrike(user.getBaseballNumbers(), computer.getBaseballNumbers()));
+        } while (!BaseballRules.isThreeStrike(user.getBaseballNumbers(),
+                computer.getBaseballNumbers()));
 
         Message.printThreeStrikeMessage();
         continueOrFinish();

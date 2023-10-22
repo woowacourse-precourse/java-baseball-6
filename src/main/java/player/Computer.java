@@ -1,6 +1,6 @@
 package player;
 
-import static constant.NumberConstant.MAX_LENGTH;
+import static constant.BaseballConstant.MAX_LENGTH;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class Computer extends BaseballPlayer {
                 computerBaseballNumber.add(baseballNumber);
             }
         }
-        
+
         super.baseballNumbers = new BaseballNumbers(computerBaseballNumber);
     }
 }

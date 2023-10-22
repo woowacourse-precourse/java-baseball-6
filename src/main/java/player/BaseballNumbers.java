@@ -1,8 +1,8 @@
 package player;
 
-import static constant.NumberConstant.MAX_LENGTH;
-import static constant.StringConstant.NO_DUPLICATE_NUMBER;
-import static constant.StringConstant.ONLY_THREE_NUMBER;
+import static constant.BaseballConstant.MAX_LENGTH;
+import static constant.BaseballConstant.NO_DUPLICATE_NUMBER;
+import static constant.BaseballConstant.ONLY_THREE_NUMBER;
 
 import java.util.HashSet;
 import java.util.List;
