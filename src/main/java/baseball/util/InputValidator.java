@@ -8,6 +8,9 @@ public class InputValidator {
     private static final String DUPLICATE_DIGITS = "서로 다른 수로 이루어지지 않았습니다.";
     private static final String ONE_OR_TWO = "1 또는 2만 입력해야 합니다.";
     private static final int NUMBER_LENGTH = 3;
+    private static final String ZERO = "0";
+    private static final String RESTART_COMMAND = "1";
+    private static final String END_COMMAND = "2";
 
     public static void validateUserNumber(String userNumber) {
 
@@ -19,7 +22,7 @@ public class InputValidator {
             throw new IllegalArgumentException(NOT_NUMBER);
         }
 
-        if (userNumber.contains("0")) {
+        if (userNumber.contains(ZERO)) {
             throw new IllegalArgumentException(ZERO_INCLUDED);
         }
 
@@ -29,7 +32,7 @@ public class InputValidator {
     }
 
     public static void validateRestartCommand(String restartCommand) {
-        if (!restartCommand.equals("1") && !restartCommand.equals("2")) {
+        if (!restartCommand.equals(RESTART_COMMAND) && !restartCommand.equals(END_COMMAND)) {
             throw new IllegalArgumentException(ONE_OR_TWO);
         }
     }
