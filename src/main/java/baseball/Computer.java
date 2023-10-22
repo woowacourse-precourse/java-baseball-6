@@ -20,6 +20,7 @@ public class Computer {
             }
         }
     }
+
     static void compareNumber(int number){
         int digit=1;
         strike = 0;

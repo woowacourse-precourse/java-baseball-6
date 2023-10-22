@@ -16,11 +16,11 @@ public class User {
 
     static boolean hasDuplicateNumbers(final String input){
         boolean[] isExisted = new boolean[10];
-        for(char num: input.toCharArray()){
-            if(isExisted[num-'0']){
+        for(char digit: input.toCharArray()){
+            if(isExisted[digit-'0']){
                 return false;
             }
-            isExisted[num-'0'] = true;
+            isExisted[digit-'0'] = true;
         }
         return true;
     }
