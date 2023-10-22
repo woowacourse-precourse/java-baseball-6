@@ -1,19 +1,16 @@
 package baseball;
 
-import baseball.view.InputView;
-import baseball.view.OutputView;
 import java.util.HashSet;
 import java.util.Set;
 
 public class BaseballGame {
-    OutputView outputView = new OutputView();
-    InputView inputView = new InputView();
+    PlayerView playerView = new PlayerView();
 
     public void play() {
-        outputView.start();
+        playerView.start();
         do {
             startGame();
-            outputView.end();
+            playerView.end();
         } while (!isRetry());
     }
 
@@ -23,8 +20,8 @@ public class BaseballGame {
         GameResult gameResult = new GameResult();
         Referee referee = new Referee();
         do {
-            outputView.input();
-            String playerNumbers = inputView.input();
+            playerView.inputNumbers();
+            String playerNumbers = playerView.input();
             gameResult = referee.judge(computerNumbers, playerNumbers);
             gameResult.result();
         } while (!gameResult.isWin());
@@ -59,6 +56,6 @@ public class BaseballGame {
     }
 
     private boolean isRetry() {
-        return inputView.input().equals("2");
+        return playerView.input().equals("2");
     }
 }
