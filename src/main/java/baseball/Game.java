@@ -20,35 +20,60 @@ public class Game {
     /**
      * 게임 실행
      */
-    public void play() throws IllegalArgumentException {
+    public void play() {
         init();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        // 사용자의 값 입력
-        System.out.print("숫자를 입력해주세요 : ");
-        String userNum = Console.readLine();
+        GameStatus gameStatus = GameStatus.PLAYING;
 
-        // 사용자가 입력한 값에 대한 검증
-        if (!isValidUserNum(userNum)) {
-            throw new IllegalArgumentException(String.format("유효하지 않은 입력값 = %s", userNum));
+        while (GameStatus.PLAYING.equals(gameStatus)) {
+
+            // 사용자의 값 입력
+            System.out.print("숫자를 입력해주세요 : ");
+            String userNum = Console.readLine();
+
+            // 사용자가 입력한 값에 대한 검증
+            if (!isValidUserNum(userNum)) {
+                gameStatus = GameStatus.INVALID_USER_INPUT;
+            }
+
+            if (!GameStatus.INVALID_USER_INPUT.equals(gameStatus)) {
+                // 사용자가 입력한 값과 컴퓨터가 생성한 값을 비교하고 결과 출력
+                GameResult gameResult = compareUserNumAndComputerNum(userNum);
+                System.out.println(gameResult.returnResultToString());
+                if (gameResult.isEnd()) {
+                    gameStatus = GameStatus.END;
+                }
+            }
+
+            // 게임이 ALL STRIKE인 경우
+            if (GameStatus.END.equals(gameStatus)) {
+                System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", GameDetail.NUM_COUNT);
+            }
+
+            // 사용자가 입력한 값이 유효하지 않거나, 게임이 ALL STRIKE인 경우 => 게임 종료
+            if (GameStatus.INVALID_USER_INPUT.equals(gameStatus)) {
+                gameStatus = GameStatus.END;
+            }
         }
-
-        GameResult gameResult = compareUserNumAndComputerNum(userNum);
-        System.out.println(gameResult.returnResultToString());
-
     }
 
     /**
      * 사용자가 입력한 값에 대한 검증
      * @param userNum 사용자가 입력한 값
-     * @return 사용자가 입력한 값이 유효한 경우 true, 그렇지 않은 경우 false
+     * @return 사용자가 입력한 값이 유효한 경우 true
+     * @throws IllegalArgumentException 사용자가 입력한 값이 유효하지 않은 경우
      */
-    private boolean isValidUserNum(String userNum) {
+    private boolean isValidUserNum(String userNum) throws IllegalArgumentException {
         //입력이 양수가 아닌 경우 or 입력한 숫자가 3자리가 아닌 경우 or 입력한 숫자에 중복이 존재하는 경우
-        return isPositiveNumber(userNum)
-                && userNum.length() == GameDetail.NUM_COUNT
-                && !hasDuplicateNum(userNum);
+        if (!isPositiveNumber(userNum)
+                || (userNum.length() != GameDetail.NUM_COUNT)
+                || hasDuplicateNum(userNum)) {
+            throw new IllegalArgumentException(String.format("유효하지 않은 입력값 = %s", userNum));
+        }
+
+        return true;
     }
 
     /**
