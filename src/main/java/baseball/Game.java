@@ -1,6 +1,6 @@
 package baseball;
 
-public class Score {
+public class Game {
     private static final String BALL_STR = "볼";
     private static final String STRIKE_STR = "스트라이크";
     private static final String NOTHING = "낫싱";
@@ -11,9 +11,9 @@ public class Score {
     private int strike;
     private int ball;
 
-    public Score() {}
+    public Game() {}
 
-    public Score(int[] player, int[] computer) {
+    public Game(int[] player, int[] computer) {
         this.player = player;
         this.computer = computer;
     }
