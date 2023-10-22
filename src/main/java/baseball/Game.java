@@ -33,7 +33,7 @@ public class Game {
             core.printResult(strikeCount, ballCount);
 
             // 게임의 종료 조건 검사
-            isEnd = isEnd(strikeCount);
+            isEnd = core.isEnd(strikeCount);
 
             // 게임 종료시, 재시작 여부를 묻는 코드
             if (isEnd) {
@@ -75,13 +75,5 @@ public class Game {
             throw new IllegalArgumentException();
         }
         return digits[0];
-    }
-
-    public static boolean isEnd(int strikeCount) {
-        if (strikeCount == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
-        }
-        return false;
     }
 }
