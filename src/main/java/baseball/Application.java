@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -159,17 +161,14 @@ public class Application {
         return Integer.parseInt(sb.toString());
     }
 
+    // 사용자 인풋값에서 중복 숫자가 있는지 검사하는 기능
     private static boolean isDuplicated(String numberString) {
-        // 중복 숫자가 존재하면 다시 뽑기
-        int[] numberCount = new int[10];
-        boolean stopFlag = false;
-        for (int idx = 0; idx< numberString.length(); idx++) {
-            int element = numberString.charAt(idx) - '0';
-            if (++numberCount[element] >= 2) {
-                stopFlag = true;
-                break;
+        Set<Character> numberSet = new HashSet<>();
+        for (char uniqueNumber : numberString.toCharArray()){
+            if(!numberSet.add(uniqueNumber)){
+                return true;
             }
         }
-        return stopFlag;
+        return false;
     }
 }
