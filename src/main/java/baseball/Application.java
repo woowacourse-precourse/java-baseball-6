@@ -36,8 +36,15 @@ public class Application {
         if (input.length() != 3)
             throw new IllegalArgumentException("3자리의 숫자가 아닙니다.");
 
-        return Arrays.stream(input.split(""))
+        int[] result = Arrays.stream(input.split(""))
                 .mapToInt(Integer::parseInt)
+                .distinct()
                 .toArray();
+
+        if (result.length != 3) {
+            throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해야됩니다. ");
+        }
+
+        return result;
     }
 }
