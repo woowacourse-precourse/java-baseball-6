@@ -11,12 +11,17 @@ import java.util.stream.Collectors;
 public class InputView {
 
     public static final String MESSAGE_ASK_USER_INPUT = "숫자를 입력해주세요 : ";
+    private static final String MESSAGE_WELCOME = "숫자 야구 게임을 시작합니다.";
     public static final int FORMAL_INPUT_LENGTH = 3;
     private static final String NUMBER_CHECK = "^[1-9]{3}$";
 
     public static BallInfo getBallFromUserInput() {
         System.out.println(MESSAGE_ASK_USER_INPUT);
         return validateUserInput(Console.readLine());
+    }
+
+    public static void welcomeMessage(){
+        System.out.println(MESSAGE_WELCOME);
     }
 
     private static void validateInputLength(String userInput) {
