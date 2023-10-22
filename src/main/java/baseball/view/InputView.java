@@ -10,4 +10,7 @@ public class InputView {
         System.out.println(START_GAME_MESSAGE);
     }
 
+    public static void requestUserInput() {
+        System.out.println(INPUT_NUMBER_MESSAGE);
+    }
 }
