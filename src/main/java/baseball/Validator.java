@@ -31,12 +31,4 @@ public class Validator {
     public void validatedRestart(int inputValue) {
         validateInRange(inputValue, 1, 2);
     }
-
-//    private static void validateLength(String value, int size) {
-//        if (value.length() != size) {
-//            throw new IllegalArgumentException(GameOption.BASEBALL_SIZE + "자리 숫자를 입력해야 합니다.");
-//        }
-//    }
-
-
 }
