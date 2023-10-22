@@ -1,7 +1,8 @@
 package baseball.controller;
 
-import baseball.model.ComputerNumber;
-import baseball.model.PlayerNumber;
+import baseball.model.Computer;
+import baseball.model.Game;
+import baseball.model.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -19,36 +20,37 @@ public class GameController {
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String NOTHING_MESSAGE = "낫싱";
 
-    private int strike;
-    private int ball;
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
-    ComputerNumber computerNumber = new ComputerNumber();
-    PlayerNumber playerNumber = new PlayerNumber();
+    Computer computer;
+    Player player;
+    Game game;
 
     public void startGame() {
         boolean continueGame = true;
 
         outputView.printStartMessage();
-        computerNumber.setComputerNumbers(getRandomNumbers());
 
         while(continueGame) {
-            String playerNumberStr = inputView.inputPlayerNumber();
-            playerNumber.setPlayerNumbers(convertPlayerNumberToList(playerNumberStr));
-
-            initStrikeAndBall();
-            List<Integer> player = playerNumber.getPlayerNumbers();
-            List<Integer> computer = computerNumber.getComputerNumbers();
-            countStrikeAndBall(player, computer);
-            if (strike == FULL_STRIKE_COUNT) {
-                continueGame = false;
-            }
-            printHint();
+            playGame();
+            continueGame = askRestartGame();
         }
+    }
+
+    public void playGame() {
+        computer = new Computer();
+        player = new Player();
+        game = new Game();
+
+        computer.setComputerNumbers(getRandomNumbers());
+        do {
+            player.setPlayerNumbers(convertplayerToList(inputView.inputPlayerNumber()));
+            game.initStrikeAndBall();
+            countStrikeAndBall(player.getPlayerNumbers(), computer.getComputerNumbers());
+            printHint();
+        } while (!isCorrectNumber());
 
         outputView.printEndMessage();
-
-        askRestartGame();
     }
 
     public List<Integer> getRandomNumbers() {
@@ -63,42 +65,46 @@ public class GameController {
         return computer;
     }
 
-    public List<Integer> convertPlayerNumberToList(String playerNumberStr) {
+    public List<Integer> convertplayerToList(String playerStr) {
         List<Integer> player = new ArrayList<>();
         for (int index = 0; index < NUMBER_LENGTH; index++) {
-            int number = playerNumberStr.charAt(index) - ZERO_CHAR;
+            int number = playerStr.charAt(index) - ZERO_CHAR;
             player.add(number);
         }
 
         return player;
     }
 
-    public void initStrikeAndBall() {
-        strike = 0;
-        ball = 0;
-    }
-
     public void countStrikeAndBall(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         for (int index = 0; index < NUMBER_LENGTH; index++) {
-            int currentPlayerNumber = playerNumbers.get(index);
-            int currentComputerNumber = computerNumbers.get(index);
+            int playerNumber = playerNumbers.get(index);
+            int computerNumber = computerNumbers.get(index);
 
-            countStrike(currentPlayerNumber, currentComputerNumber);
-            countBall(computerNumbers, index, currentPlayerNumber);
+            countStrike(playerNumber, computerNumber);
+            countBall(computerNumbers, index, playerNumber);
         }
     }
 
-    public void countStrike(int playerNumber, int computerNumber) {
-        if (playerNumber == computerNumber) {
-            strike++;
+    public void countStrike(int player, int computer) {
+        if (player == computer) {
+            game.plusStrikeCount(1);
         }
     }
 
-    public void countBall(List<Integer> computerNumbers, int currentIndex, int playerNumber) {
-        if (computerNumbers.get(currentIndex) != playerNumber && computerNumbers.contains(playerNumber)) {
-            ball++;
+    public void countBall(List<Integer> computers, int currentIndex, int player) {
+        if (computers.get(currentIndex) != player && computers.contains(player)) {
+            game.plusBallCount(1);
         }
     }
+
+    public boolean isCorrectNumber() {
+        if (game.getStrikeCount() == FULL_STRIKE_COUNT) {
+            return true;
+        }
+
+        return false;
+    }
+
 
     public void printHint() {
         String hintMessage = "";
@@ -115,25 +121,27 @@ public class GameController {
     }
 
     public String getBallMessage() {
-        if (ball > 0) {
-            return ball + BALL_MESSAGE + SPACE_MESSAGE;
+        if (game.getBallCount() > 0) {
+            return game.getBallCount() + BALL_MESSAGE + SPACE_MESSAGE;
         }
 
         return NULL_MESSAGE;
     }
 
     public String getStrikeMessage() {
-        if (strike > 0) {
-            return strike + STRIKE_MESSAGE;
+        if (game.getStrikeCount() > 0) {
+            return game.getStrikeCount() + STRIKE_MESSAGE;
         }
 
         return NULL_MESSAGE;
     }
 
-    public void askRestartGame() {
+    public boolean askRestartGame() {
         String answer = inputView.askPlayerGameRestart();
         if (answer.equals("1")) {
-            startGame();
+            return true;
         }
+
+        return false;
     }
 }
