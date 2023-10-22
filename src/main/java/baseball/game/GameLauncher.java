@@ -9,11 +9,11 @@ import baseball.vo.BaseballCode;
 import java.util.ArrayList;
 
 public class GameLauncher {
-    private final BaseballGames baseballGames;
+    private final Game baseballGames;
     private final RandomCodeService randomCodeService;
     private final ValidateJudgeService validateJudgeService;
 
-    public GameLauncher(BaseballGames baseballGames, RandomCodeService randomCodeService,
+    public GameLauncher(Game baseballGames, RandomCodeService randomCodeService,
                         ValidateJudgeService validateJudgeService) {
         this.baseballGames = baseballGames;
         this.randomCodeService = randomCodeService;

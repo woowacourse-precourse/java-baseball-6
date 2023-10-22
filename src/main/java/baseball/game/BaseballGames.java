@@ -9,7 +9,7 @@ import baseball.vo.GameResult;
 import baseball.vo.UserCode;
 import java.util.ArrayList;
 
-public class BaseballGames {
+public class BaseballGames implements Game {
 
     private final ValidateJudgeService validateJudgeService;
     private final UserCodeService userCodeService;
