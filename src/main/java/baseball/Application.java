@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.GameCommand;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -12,5 +13,7 @@ public class Application {
 
         Game game = Game.getInstance(outputView, inputView);
         game.run();
+
+        GameCommand command = new GameCommand(inputView.readEndCommand());
     }
 }
