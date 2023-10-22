@@ -17,5 +17,6 @@ public class NumberBaseballGame {
     }
 
     void run() {
+        computerPlayer.generateNumber();
     }
 }
