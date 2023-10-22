@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 
+import baseball.Util.*;
+
 public class Computer {
     private static final int defaultDigitalCount = 3;
     private static final int minimumCanCreatedValue = 1;
@@ -62,7 +64,7 @@ public class Computer {
         int ballCount = 0;
         int strikeCount = 0;
 
-        var compareNumberList = parsingNumberToNumberList(playerNumber);
+        var compareNumberList = Util.parsingNumberToNumberList(playerNumber,digitCount);
         for (int i =0 ; i< digitCount;i++){
             if (compareNumberList[i]==numberList.get(i)){
                 strikeCount++;
@@ -86,17 +88,7 @@ public class Computer {
         }
         return false;
     }
-    private int[] parsingNumberToNumberList(int parsingNumber) {
-        int sliceUnit = (int) Math.pow(10, digitCount - 1);
-        var numberList = new int[digitCount];
-        for (int i = 0; i < digitCount; i++) {
-            int number = parsingNumber / sliceUnit;
-            numberList[i]=number;
-            parsingNumber %= sliceUnit;
-            sliceUnit /= 10;
-        }
-        return numberList;
-    }
+
 
     protected void printResultWithCount(int strikeCount,int ballCount){
         StringBuilder resultBuilder = new StringBuilder();
