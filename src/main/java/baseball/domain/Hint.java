@@ -17,8 +17,16 @@ public class Hint {
 		return strikeCount == ZERO;
 	}
 
+	public boolean isNotStrikeCountZero() {
+		return strikeCount != ZERO;
+	}
+
 	public boolean isBallCountZero() {
 		return ballCount == ZERO;
+	}
+
+	public boolean isNotBallCountZero() {
+		return ballCount != ZERO;
 	}
 
 	public boolean isThreeStrike() {

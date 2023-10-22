@@ -3,6 +3,8 @@ package baseball.domain;
 public class HintResult {
 
 	private static final String NOTHING = "낫싱";
+	private static final String BALL = "볼";
+	private static final String STRIKE = "스트라이크";
 
 	private final Hint hint;
 
@@ -12,17 +14,29 @@ public class HintResult {
 
 	@Override
 	public String toString() {
-		int strike = hint.getStrikeCount();
-		int ball = hint.getBallCount();
-		if (strike > 0 && ball > 0) {
-			return ball + "볼 " + strike + "스트라이크";
+		StringBuilder result = new StringBuilder();
+		int strikeCount = hint.getStrikeCount();
+		int ballCount = hint.getBallCount();
+
+		appendStrikeAndBall(result, strikeCount, ballCount);
+
+		return result.toString();
+	}
+
+	private void appendStrikeAndBall(StringBuilder result, int strikeCount, int ballCount) {
+		if (hint.isNotBallCountZero()) {
+			result.append(ballCount).append(BALL);
 		}
-		if (strike > 0 && hint.isBallCountZero()) {
-			return strike + "스트라이크";
+
+		if (hint.isNotStrikeCountZero()) {
+			if (hint.isNotBallCountZero()) {
+				result.append(" ");
+			}
+			result.append(strikeCount).append(STRIKE);
 		}
-		if (hint.isStrikeCountZero() && ball > 0) {
-			return ball + "볼";
+
+		if (hint.isStrikeCountZero() && hint.isBallCountZero()) {
+			result.append(NOTHING);
 		}
-		return NOTHING;
 	}
 }
