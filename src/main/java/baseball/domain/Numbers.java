@@ -12,11 +12,11 @@ import java.util.stream.Collectors;
 public interface Numbers {
 
     default void checkDuplication(List<Number> integers) {
-        List<Number> duplicationCheckList = integers.stream()
+        List<Number> distinctNumbers = integers.stream()
                 .distinct()
                 .toList();
 
-        if (duplicationCheckList.size() != integers.size()) {
+        if (distinctNumbers.size() != integers.size()) {
             throw new NumberDuplicationException();
         }
     }

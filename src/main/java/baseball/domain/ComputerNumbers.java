@@ -23,7 +23,7 @@ public class ComputerNumbers implements Numbers{
     private List<Number> createNumbers() {
         List<Number> numbers = new ArrayList<>();
 
-        while (numbers.size() < 3) {
+        while (numbers.size() < LENGTH.showValue()) {
             Number randomNumber = new Number(Randoms.pickNumberInRange(MIN_VALUE.showValue(), MAX_VALUE.showValue()));
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
