@@ -54,7 +54,7 @@ public class SinglePlayerConsole implements Player {
         if (baseBallHint.hasBall()) {
             stringBuilder.append(String.format("%d볼 ", baseBallHint.ball()));
         }
-        if (baseBallHint.isNothing()) {
+        if (baseBallHint.hasStrike()) {
             stringBuilder.append(String.format("%d스트라이크", baseBallHint.strike()));
         }
         OutputConsole.printHint(stringBuilder.toString());
