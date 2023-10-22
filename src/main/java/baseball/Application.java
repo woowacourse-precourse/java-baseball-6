@@ -11,6 +11,9 @@ import java.util.List;
 
 
 public class Application {
+
+    public static final int STANDARD_NUMBER = 3;
+
     public static void main(String[] args) {
         // 1. 시작 메시지 출력
         MessagePrinter.print(Message.START);
@@ -18,10 +21,57 @@ public class Application {
         // 2. 숫자 3자리 추출
         List<Integer> computerNumbers = getComputerNumbers();
 
-        // 3. 사용자 숫지 입력 기능 및 유효성 체크
-        String input = Console.readLine();
-        validInput(input);
+        boolean gameOver = false;
+        while (!gameOver) {
+            // 3. 사용자 숫지 입력 기능 및 유효성 체크
+            String input = Console.readLine();
+            validInput(input);
 
+            // 4. 사용자 입력 받은 수와 기존 지정된 숫자 비교
+            gameOver = playGame(computerNumbers, input);
+        }
+    }
+
+    private static boolean playGame(List<Integer> computerNumbers, String input) {
+        List<Integer> inputNumbers = Arrays.stream(input.split("")).map(Integer::parseInt).toList();
+
+        int strikeCount = 0;
+        int ballCount = 0;
+        for (int i = 0; i < STANDARD_NUMBER; i++) {
+            Integer computerNumber = computerNumbers.get(i);
+            Integer inputNumber = inputNumbers.get(i);
+
+            if (computerNumber == inputNumber) {
+                strikeCount++;
+            } else if (inputNumbers.contains(computerNumber)) {
+                ballCount++;
+            }
+        }
+
+        String resultMessage = getResultMessage(strikeCount, ballCount);
+        System.out.println(resultMessage);
+
+        return strikeCount == STANDARD_NUMBER;
+    }
+
+    private static String getResultMessage(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount == 0) {
+            return "낫싱";
+        }
+
+        String resultMessage = "";
+        if (ballCount != 0) {
+            resultMessage = ballCount + "볼";
+        }
+
+        if (ballCount != 0 && strikeCount!= 0) {
+            resultMessage += " ";
+        }
+
+        if (strikeCount != 0) {
+            resultMessage += strikeCount + "스트라이크";
+        }
+        return resultMessage;
     }
 
     /**
@@ -40,8 +90,8 @@ public class Application {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
 
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("숫자는 3자리로 입력 해야 합니다.");
+        if (input.length() != STANDARD_NUMBER) {
+            throw new IllegalArgumentException("숫자는 " + STANDARD_NUMBER + "자리로 입력 해야 합니다.");
         }
 
         long distinctRemoveStringCount = Arrays.asList(input.split("")).stream().distinct().count();
@@ -56,7 +106,7 @@ public class Application {
      */
     private static List<Integer> getComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
-        while (computerNumbers.size() < 3) {
+        while (computerNumbers.size() < STANDARD_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
