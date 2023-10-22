@@ -21,7 +21,7 @@ public class Application {
         }
     }
 
-    public void isSameNumber(List<Integer> list) {
+    public void hasSameNumber(List<Integer> list) {
         if (list.size() != 3) {
             throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해주세요.");
         }
@@ -46,6 +46,15 @@ public class Application {
         return list;
     }
 
+    public List<Integer> userInputToNumber(String user) {
+        List<Integer> list = new ArrayList<>();
+        for(Character ch : user.toCharArray())
+            if (!list.contains(Character.getNumericValue(ch))) {
+                list.add(Character.getNumericValue(ch));
+            }
+        return list;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application app = new Application();
@@ -66,12 +75,8 @@ public class Application {
                 app.isLengthThree(user);
                 app.isNumber(user);
 
-                List<Integer> userNum = new ArrayList<>();
-                for(Character ch : user.toCharArray())
-                    if (!userNum.contains(Character.getNumericValue(ch))) { // 중복된 숫자는 저장하지 않음
-                        userNum.add(Character.getNumericValue(ch));
-                    }
-                app.isSameNumber(userNum);
+                List<Integer> userNum = app.userInputToNumber(user);
+                app.hasSameNumber(userNum);
 
                 // 스트라이크, 볼 계산
                 for (int i : userNum) {
