@@ -37,7 +37,8 @@ public class GameProcessor {
         return userNumberList;
     }
 
-    private String calculateStrike(Data data, List<String> userNumberList, List<String> randomNumberList) {
+    private String calculateStrike(Data data, List<String> userNumberList,
+            List<String> randomNumberList) {
         int strike = 0;
 
         for (int i = 0; i < DIGIT_SIZE; i++) {
@@ -48,7 +49,8 @@ public class GameProcessor {
         return String.valueOf(strike);
     }
 
-    private String calculateBall(Data data, List<String> userNumberList, List<String> randomNumberList) {
+    private String calculateBall(Data data, List<String> userNumberList,
+            List<String> randomNumberList) {
         int ball = 0;
 
         for (int i = 0; i < DIGIT_SIZE; i++) {
@@ -90,7 +92,9 @@ public class GameProcessor {
         List<String> answerList = calculateStrikeBall(data);
 
         if (Integer.parseInt(answerList.get(0)) > 0 && Integer.parseInt(answerList.get(1)) > 0) {
-            if (Integer.parseInt(answerList.get(0)) != 3 && (Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0))) > 0) {
+            if (Integer.parseInt(answerList.get(0)) != 3
+                    && (Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0)))
+                    > 0) {
                 answerTextBuilder.append(String.valueOf(
                         Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0))));
                 answerTextBuilder.append(messageManager.getSameNumberMessage());
@@ -104,7 +108,8 @@ public class GameProcessor {
             answerTextBuilder.append(messageManager.getSameDigitMessage());
         }
         if (Integer.parseInt(answerList.get(0)) == 0 && Integer.parseInt(answerList.get(1)) > 0) {
-            answerTextBuilder.append(String.valueOf(Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0))));
+            answerTextBuilder.append(String.valueOf(
+                    Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0))));
             answerTextBuilder.append(messageManager.getSameNumberMessage());
         }
         if (Integer.parseInt(answerList.get(0)) == 0 && Integer.parseInt(answerList.get(1)) == 0) {

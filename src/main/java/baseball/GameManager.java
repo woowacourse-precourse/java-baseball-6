@@ -3,6 +3,7 @@ package baseball;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GameManager {
+
     private MessageManager messageManager = new MessageManager();
     private Data data = new Data();
     private GameProcessor gameProcessor = new GameProcessor();

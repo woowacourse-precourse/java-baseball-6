@@ -5,19 +5,20 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Data {
+
+    private final List<String> RANDOMNUMBERLIST = new ArrayList<>();
+    private final List<String> ANSWERLIST = Arrays.asList("0", "0");
+    private final String WILLRESTARTRESPONSE = "-1";
+    private final boolean ISNOERROR = true;
+    private final boolean ISCOMPLETEANSWER = false;
     private String userAnswerNumber;
     private List<String> userAnswerNumberList;
     private int randomNumber;
     private List<String> randomNumberList;
-    private final List<String> RANDOMNUMBERLIST = new ArrayList<>();
     private List<String> answerList;
-    private final List<String> ANSWERLIST = Arrays.asList("0", "0");
     private String willRestartResponse;
-    private final String WILLRESTARTRESPONSE = "-1";
     private boolean isNoError;
-    private final boolean ISNOERROR = true;
     private boolean isCompleteAnswer;
-    private final boolean ISCOMPLETEANSWER = false;
 
     public Data() {
         this.randomNumberList = RANDOMNUMBERLIST;
@@ -31,63 +32,63 @@ public class Data {
         return userAnswerNumber;
     }
 
-    public List<String> getUserAnswerNumberList() {
-        return userAnswerNumberList;
-    }
-
-    public int getRandomNumber() {
-        return randomNumber;
-    }
-
-    public List<String> getRandomNumberList() {
-        return randomNumberList;
-    }
-
-    public List<String> getAnswerList() {
-        return answerList;
-    }
-
-    public String getWillRestartResponse() {
-        return willRestartResponse;
-    }
-
     public void setUserAnswerNumber(String userAnswerNumber) {
         this.userAnswerNumber = userAnswerNumber;
     }
 
-    public boolean getIsCompleteAnswer() {
-        return isCompleteAnswer;
-    }
-
-    public boolean getIsNoError() {
-        return isNoError;
+    public List<String> getUserAnswerNumberList() {
+        return userAnswerNumberList;
     }
 
     public void setUserAnswerNumberList(List<String> userAnswerNumberList) {
         this.userAnswerNumberList = userAnswerNumberList;
     }
 
+    public int getRandomNumber() {
+        return randomNumber;
+    }
+
     public void setRandomNumber(int randomNumber) {
         this.randomNumber = randomNumber;
+    }
+
+    public List<String> getRandomNumberList() {
+        return randomNumberList;
     }
 
     public void setRandomNumberList(List<String> randomNumberList) {
         this.randomNumberList = randomNumberList;
     }
 
+    public List<String> getAnswerList() {
+        return answerList;
+    }
+
     public void setAnswerList(List<String> answerList) {
         this.answerList = answerList;
+    }
+
+    public String getWillRestartResponse() {
+        return willRestartResponse;
     }
 
     public void setWillRestartResponse(String willRestartResponse) {
         this.willRestartResponse = willRestartResponse;
     }
 
-    public void setIsNoError(boolean noError) {
-        this.isNoError = noError;
+    public boolean getIsCompleteAnswer() {
+        return isCompleteAnswer;
     }
 
     public void setIsCompleteAnswer(boolean completeAnswer) {
         isCompleteAnswer = completeAnswer;
+    }
+
+    public boolean getIsNoError() {
+        return isNoError;
+    }
+
+    public void setIsNoError(boolean noError) {
+        this.isNoError = noError;
     }
 }

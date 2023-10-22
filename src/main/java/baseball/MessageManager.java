@@ -3,8 +3,10 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class MessageManager extends Messages {
+
     private String userAnswerNumber;
     private String willContinueResponse;
+
     public void showIntro() {
         System.out.println(super.getIntroMessage());
     }
