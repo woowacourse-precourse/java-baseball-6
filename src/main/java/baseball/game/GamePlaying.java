@@ -36,7 +36,6 @@ public class GamePlaying {
         int ball = findBall();
         printResult(strike, ball);
 
-
         return strike;
     }
 
