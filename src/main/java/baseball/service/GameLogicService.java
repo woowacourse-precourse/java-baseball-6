@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.domain.Ball;
 import baseball.domain.Balls;
 import baseball.domain.Game;
 import baseball.domain.GameResult;
@@ -30,7 +31,10 @@ public class GameLogicService {
     }
 
     private boolean isStrike(int index, Balls computerBalls, Balls playerBalls) {
-        return computerBalls.getBall(index).number().equals(playerBalls.getBall(index).number());
+        // index 위치의 컴퓨터 공과 플레이어 공의 번호를 비교하여 스트라이크인지 확인
+        Ball computerBall = computerBalls.getBall(index);
+        Ball playerBall = playerBalls.getBall(index);
+        return computerBall.number().equals(playerBall.number());
     }
 
     private int countBalls(Balls computerBalls, Balls playerBalls) {
@@ -44,7 +48,10 @@ public class GameLogicService {
     }
 
     private boolean isBall(int index, Balls computerBalls, Balls playerBalls) {
-        return !isStrike(index, computerBalls, playerBalls) && computerBalls.containsOtherBall(playerBalls.getBall(index));
+        // index 위치의 컴퓨터 공과 플레이어 공의 번호를 비교하여 볼인지 확인
+        boolean isNotStrike = !isStrike(index, computerBalls, playerBalls);
+        boolean containsOtherBall = computerBalls.containsOtherBall(playerBalls.getBall(index));
+        return isNotStrike && containsOtherBall;
     }
 
 }
