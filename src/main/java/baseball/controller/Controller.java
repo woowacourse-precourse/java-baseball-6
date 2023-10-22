@@ -1,6 +1,10 @@
 package baseball.controller;
 
 import static baseball.controller.mapper.ResultMapper.mapToStringWith;
+import static baseball.model.State.RESTART;
+import static baseball.model.State.createWith;
+import static baseball.model.State.isMoreGame;
+import static baseball.util.Constant.BASEBALL_GAME_NUMBER_DIGIT;
 import static baseball.util.Converter.convertStringToIntegerList;
 
 import baseball.model.Computer;
@@ -14,6 +18,11 @@ import java.util.List;
 
 public class Controller {
 
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String GUESS_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String WINNING_MESSAGE = BASEBALL_GAME_NUMBER_DIGIT.getValue() + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String RESTART_OR_FINISH_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     private final ConsoleInputView consoleInputView;
     private final ConsoleOutputView consoleOutputView;
 
@@ -23,28 +32,28 @@ public class Controller {
     }
 
     public void start() {
-        consoleOutputView.printStartMessage();
-        State state = State.RESTART;
-        while (State.isMoreGame(state)) {
+        consoleOutputView.print(START_MESSAGE);
+        State state = RESTART;
+        while (isMoreGame(state)) {
             play();
             state = askMoreGame();
         }
     }
 
     private void play() {
-        Computer computer = Computer.createDefault(new BaseBallGameNumberGenerator());
+        Computer computer = Computer.createWith(new BaseBallGameNumberGenerator());
         List<Integer> guessNumbers = new ArrayList<>();
         while (!computer.isGameOver(guessNumbers)) {
             guessNumbers = getGuessNumbers();
             String result = getResult(computer, guessNumbers);
-            consoleOutputView.printGuessNumberResult(result);
+            consoleOutputView.print(result);
         }
-        consoleOutputView.printWinningMessage();
+        consoleOutputView.print(WINNING_MESSAGE);
     }
 
     private List<Integer> getGuessNumbers() {
-        consoleOutputView.printGuessNumberInputMessage();
-        String guessNumbers = consoleInputView.readStringCanConvertInt();
+        consoleOutputView.print(GUESS_NUMBER_INPUT_MESSAGE);
+        String guessNumbers = consoleInputView.readLine();
         GuessNumber guess = new GuessNumber(convertStringToIntegerList(guessNumbers));
         return guess.getGuessNumbers();
     }
@@ -56,8 +65,8 @@ public class Controller {
     }
 
     private State askMoreGame() {
-        consoleOutputView.printRestartOrFinishMessage();
-        String stateNumber = consoleInputView.readStringCanConvertInt();
-        return State.createWith(stateNumber);
+        consoleOutputView.print(RESTART_OR_FINISH_MESSAGE);
+        String stateNumber = consoleInputView.readLine();
+        return createWith(stateNumber);
     }
 }
