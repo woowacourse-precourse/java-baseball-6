@@ -24,6 +24,19 @@ class Computer{
         }
         return arr;
     }
+    public int[] compareNum(List<Integer> user){
+        int strike = 0, ball = 0;
+
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(Objects.equals(computerNum.get(i), user.get(j))){
+                    if(i == j) strike++;
+                    else ball++;
+                }
+            }
+        }
+        return new int[]{strike, ball};
+    }
 }
 
 class User {
@@ -74,6 +87,14 @@ class Game {
     public void start() {
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
+            getUserInput();
+        }
+    }
+
+    private boolean getUserInput() {
+        while(true){
+            User user = new User();
+            int[] result = computer.compareNum(user.getUserNum());
         }
     }
 
