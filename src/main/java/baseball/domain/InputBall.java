@@ -10,7 +10,13 @@ public class InputBall {
         this.balls = new ArrayList<>();
     }
 
-    public boolean validateInput(String input) {
+    public void saveInput(String input) {
+        validateInput(input);
+        
+
+    }
+
+    private void validateInput(String input) {
         try {
             int num = Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -22,6 +28,5 @@ public class InputBall {
         if (input.contains("0")) {
             throw new IllegalArgumentException("0이 포함되어 있습니다");
         }
-        return true;
     }
 }
