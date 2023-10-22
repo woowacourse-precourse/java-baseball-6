@@ -16,29 +16,36 @@ public class GameController {
         ballCnt = 0;
     }
 
+    public void addStrike() {
+        strikeCnt++;
+    }
+
+    public void addBall() {
+        ballCnt++;
+    }
+
     public void startGame() {
 
         //랜덤 값 생성
         RandomNumbers computer = new RandomNumbers();
-        computer.setRandomNumbers();
+
         System.out.println(computer.getAllNumbers());
 
         while (true) {
             resetCnt();
-
             // 사용자 값 입력
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             if (input.length() != NUM_LENGTH) {
                 throw new IllegalArgumentException("입력 값 오류");
             }
+            String[] player = input.split("");
 
-            String[] inputArr = input.split("");
             for (int i = 0; i < NUM_LENGTH; i++) {
-                if (computer.getNumber(i) == Integer.parseInt(inputArr[i])) {
-                    strikeCnt++;
-                } else if (computer.contains(Integer.parseInt(inputArr[i]))) {
-                    ballCnt++;
+                if (computer.getNumber(i) == Integer.parseInt(player[i])) {
+                    addStrike();
+                } else if (computer.contains(Integer.parseInt(player[i]))) {
+                    addBall();
                 }
             }
             // 출력
@@ -49,6 +56,7 @@ public class GameController {
             }
         }
     }
+
 
     public void printResult(int strikeCnt, int ballCnt) {
         if (strikeCnt + ballCnt == 0) {

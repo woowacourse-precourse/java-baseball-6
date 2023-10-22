@@ -9,19 +9,21 @@ public class RandomNumbers {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 9;
 
-    private List<Integer> numbers;
+    private List<Integer> numbers = new ArrayList<>();
 
     public RandomNumbers() {
-        this.numbers = new ArrayList<>();
+        this.numbers = generateRandomNumbers();
     }
 
-    public void setRandomNumbers() {
+    public List<Integer> generateRandomNumbers() {
+
         while (numbers.size() < NUMBER_LENGTH) {
             int n = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
             if (!numbers.contains(n)) {
                 numbers.add(n);
             }
         }
+        return new ArrayList<>(numbers);
     }
 
     public void add(Integer number) {
