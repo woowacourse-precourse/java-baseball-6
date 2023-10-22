@@ -3,68 +3,29 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
-
 public class Play {
     public Boolean play() {
-        int strike = 0;
-        int ball = 0;
-        String userNumber = "";
+        int strike = 0;                             // 스트라이크 개수
+        int ball = 0;                               // 볼 개수
+        String userNumber = "";                     // 사용자가 입력한 번호
+        String[] comRandomNumberArr = comNumber();  // 컴퓨터가 랜덤으로 생성한 번호
+        boolean gameAgain = true;                   // 게임 지속 여부
 
-        String[] comRandomNumberArr = comNumber();
-        /*for (int i = 0; i < 3; i++) {
-            comRandomNumberArr[i] = String.valueOf(Randoms.pickNumberInRange(1,9));
-            if (i == 1) {
-                while (true) {
-                    if (comRandomNumberArr[0].equals(comRandomNumberArr[i])) {
-                        comRandomNumberArr[i] = String.valueOf(Randoms.pickNumberInRange(1,9));
-                    } else {
-                        break;
-                    }
-                }
-            } else if (i == 2) {
-                while (true) {
-                    if (comRandomNumberArr[0].equals(comRandomNumberArr[i]) || comRandomNumberArr[1].equals(comRandomNumberArr[i])) {
-                        comRandomNumberArr[i] = String.valueOf(Randoms.pickNumberInRange(1,9));
-                    } else {
-                        break;
-                    }
-                }
-            }
-        }*/
-
-        boolean gameAgain = true;
-        while (gameAgain) {
-
-            /*try {
-                System.out.print("숫자를 입력해주세요 : ");
-                userNumber = Console.readLine();
-                if (userNumber.length() != 3) {
-                    throw new IllegalArgumentException("3자리의 숫자를 입력해주세요");
-                } else if ( userNumber.contains("0")) {
-                    throw new IllegalArgumentException("1~9까지의 수 3자리를 입력하세요.");
-                }
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                return true;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
+        while (gameAgain) {                         // 게임 1턴씩 반복 수행
             System.out.print("숫자를 입력해주세요 : ");
-            userNumber = Console.readLine();
-            if (userNumber.length() != 3) {
+            userNumber = Console.readLine();        // 사용자 입력값
+            if (userNumber.length() != 3) {         // 3자리만 입력 가능
                 throw new IllegalArgumentException("3자리의 숫자를 입력해주세요");
-            } else if ( userNumber.contains("0")) {
+            } else if ( userNumber.contains("0")) { // 0 입력 불가
                 throw new IllegalArgumentException("1~9까지의 수 3자리를 입력하세요.");
             }
+            String[] userNumberArr = userNumber.split("");            // 사용자 입력값 배열에 초기화
 
-            String[] userNumberArr = userNumber.split("");
-
-            for (int i = 0; i < comRandomNumberArr.length; i++) {
+            for (int i = 0; i < comRandomNumberArr.length; i++) {           // 스트라이크 개수 카운트
                 if (userNumberArr[i].equals(comRandomNumberArr[i])) strike++;
             }
 
-            for (int i = 0; i < comRandomNumberArr.length; i++) {
+            for (int i = 0; i < comRandomNumberArr.length; i++) {           // 볼 개수 카운트
                 for (int j = 0; j < userNumberArr.length; j++) {
                     if (userNumberArr[i].equals(comRandomNumberArr[j])) {
                         if (i == j) continue;
@@ -73,7 +34,6 @@ public class Play {
                 }
             }
 
-
             if (strike == 3) {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -81,11 +41,9 @@ public class Play {
                 String playAgain = Console.readLine();
                 if (playAgain.equals("1")) {
                     gameAgain = true;
-                    comRandomNumberArr = comNumber();
-                    //return false;
+                    comRandomNumberArr = comNumber();           // 게임 재시작시 컴퓨터 번호 새로 생성
                 } else if (playAgain.equals("2")) {
                     gameAgain = false;
-                    //return true;
                 } else {
                     throw new IllegalArgumentException();
                 }
@@ -100,17 +58,16 @@ public class Play {
             }
             strike = 0;
             ball = 0;
-            //System.out.println(Arrays.toString(comRandomNumberArr));
         }
         return false;
     }
 
-    public String[] comNumber() {
+    public String[] comNumber() {           // 컴퓨터 랜덤 번호 생성 메소드
         String[] comRandomNumberArr = new String[3];
         for (int i = 0; i < 3; i++) {
             comRandomNumberArr[i] = String.valueOf(Randoms.pickNumberInRange(1,9));
             if (i == 1) {
-                while (true) {
+                while (true) {              // 첫번째 인덱스의 숫자와 중복되지 않을 때까지 반복
                     if (comRandomNumberArr[0].equals(comRandomNumberArr[i])) {
                         comRandomNumberArr[i] = String.valueOf(Randoms.pickNumberInRange(1,9));
                     } else {
@@ -118,7 +75,7 @@ public class Play {
                     }
                 }
             } else if (i == 2) {
-                while (true) {
+                while (true) {              // 첫번째 인덱스의 숫자, 두번째 인덱스의 숫자와 중복되지 않을 때까지 반복
                     if (comRandomNumberArr[0].equals(comRandomNumberArr[i]) || comRandomNumberArr[1].equals(comRandomNumberArr[i])) {
                         comRandomNumberArr[i] = String.valueOf(Randoms.pickNumberInRange(1,9));
                     } else {
@@ -127,6 +84,6 @@ public class Play {
                 }
             }
         }
-        return comRandomNumberArr;
+        return comRandomNumberArr;          // 생성된 번호 리턴
     }
 }
