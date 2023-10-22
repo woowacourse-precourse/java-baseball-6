@@ -4,9 +4,7 @@ public class GameRunner {
 
     private final GameRound gameRound;
 
-    public GameRunner() {
-        Person person = new Person();
-        Computer computer = new Computer();
+    public GameRunner(Person person, Computer computer) {
         this.gameRound = new GameRound(person, computer);
     }
 
