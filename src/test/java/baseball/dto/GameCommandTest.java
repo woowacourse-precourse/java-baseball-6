@@ -1,18 +1,21 @@
 package baseball.dto;
 
 import baseball.constants.Constants;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class GameCommandTest {
 
-    @Test
     @DisplayName("잘못된 입력에 대한 예외처리")
-    void fromInvalidInputCommand() {
-        Assertions.assertThatThrownBy(() -> GameCommand.fromInputCommand("invalid"))
+    @ParameterizedTest
+    @CsvSource({"test", "3", ","})
+    void fromInvalidInputCommand(String input) {
+        assertThatThrownBy(() -> GameCommand.fromInputCommand(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Constants.ERROR_INVALID_COMMAND);
     }

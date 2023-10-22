@@ -4,6 +4,7 @@ import baseball.domain.Computer;
 import baseball.dto.GameCommand;
 import baseball.dto.Score;
 import camp.nextstep.edu.missionutils.Console;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +28,11 @@ public class Game {
         }
 
         System.out.println(GAME_END_STRING);
+        System.out.println(GAME_RESTART_INPUT);
     }
 
-    private List<Integer> getUserNums(String readLine) {
-        if (readLine.length() != NUMBER_SIZE) //잚못된 개수의 문자를 입력한 경우
+    public List<Integer> getUserNums(String readLine) {
+        if (StringUtils.isBlank(readLine) || readLine.length() != NUMBER_SIZE) //잚못된 개수의 문자를 입력한 경우
             throw new IllegalArgumentException(ERROR_INVALID_NUMBER);
 
         List<Integer> nums = new ArrayList<>();
@@ -43,10 +45,8 @@ public class Game {
         return nums;
     }
 
-    public boolean isReplay() {
-        System.out.println(GAME_RESTART_INPUT);
-        GameCommand command = GameCommand.fromInputCommand(Console.readLine());
-
-        return command == RESTART;
+    public boolean isReplay(String input) {
+        GameCommand gameCommand = GameCommand.fromInputCommand(input);
+        return gameCommand == RESTART;
     }
 }
