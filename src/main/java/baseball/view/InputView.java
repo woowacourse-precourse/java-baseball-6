@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.validation.InputValidation;
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
     public static void firstStart() {
@@ -9,14 +10,14 @@ public class InputView {
 
     public static String startInput() {
         System.out.println("숫자를 입력해주세요 : ");
-        String inputNum = System.console().readLine();
+        String inputNum = Console.readLine();
         InputValidation.verifyInputNum(inputNum);
         return inputNum;
     }
 
     public static String endInput() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return System.console().readLine();
+        return Console.readLine();
     }
 
 }
