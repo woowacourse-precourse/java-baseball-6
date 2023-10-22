@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -96,6 +97,31 @@ class NumbersTest {
 
             // then
             assertThat(result).isFalse();
+        }
+    }
+
+    @Nested
+    @DisplayName("생성시")
+    class CreateValidation {
+
+        @Test
+        @DisplayName("리스트의 원소 개수가 3개가 아닌경우 예외를 던진다")
+        void listSizeGreaterThantThree() {
+            // given
+            // when
+            // then
+            assertThatThrownBy(() -> new Numbers(List.of(1, 2, 3, 4)))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("중복값이 존재하는 경우 예외를 던진다")
+        void notUniqueElements() {
+            // given
+            // when
+            // then
+            assertThatThrownBy(() -> new Numbers(List.of(1, 2, 1)))
+                    .isInstanceOf(IllegalArgumentException.class);
         }
     }
 }
