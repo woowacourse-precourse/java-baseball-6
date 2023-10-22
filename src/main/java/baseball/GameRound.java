@@ -14,19 +14,19 @@ public class GameRound {
     }
 
     public boolean playRound() {
-        BallStrikeCount ballStrikeCount = executeRound();
-        determineMessage(ballStrikeCount);
+        String input = getInput();
+        person.insertNumberAndValidate(input);
+        BallStrikeCount ballStrikeCount = gameScore.calculateScore();
+        printMessage(ballStrikeCount);
         return checkContinueGame(ballStrikeCount);
     }
 
-    private BallStrikeCount executeRound() {
+    private String getInput() {
         GameMessages.printInputMessage();
-        String input = Console.readLine();
-        person.insertNumberAndValidate(input);
-        return gameScore.calculateScore();
+        return Console.readLine();
     }
 
-    private void determineMessage(BallStrikeCount ballStrikeCount) {
+    private void printMessage(BallStrikeCount ballStrikeCount) {
         int ball = ballStrikeCount.getBallCount();
         int strike = ballStrikeCount.getStrikeCount();
         GameMessages.printStatusMessage(ball, strike);
