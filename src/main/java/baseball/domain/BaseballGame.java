@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.domain;
 
 import java.util.stream.IntStream;
 
@@ -14,18 +14,18 @@ public class BaseballGame {
     }
 
     public Baseball compare() {
-        int strike = compareStrike();
-        int ball = compareBall();
+        int strike = countStrike();
+        int ball = countBall();
         return new Baseball(ball, strike);
     }
 
-    private int compareStrike() {
+    private int countStrike() {
         return (int) IntStream.range(0, NUMBER_SIZE)
                 .filter(idx -> computer.compareStrike(player, idx))
                 .count();
     }
 
-    private int compareBall() {
+    private int countBall() {
         return (int) IntStream.range(0, NUMBER_SIZE)
                 .filter(idx -> computer.compareBall(player, idx))
                 .count();
