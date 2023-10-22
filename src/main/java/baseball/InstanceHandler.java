@@ -1,11 +1,9 @@
 package baseball;
 
 public class InstanceHandler {
-    private final Computer computer;
     private final MenuHandler menuHandler;
 
     public InstanceHandler() {
-        this.computer = generateComputer();
         menuHandler = generateMenuHandler();
     }
 
@@ -13,8 +11,12 @@ public class InstanceHandler {
         return new Computer();
     }
 
+    private Communicator generateCommunicator() {
+        return new Communicator();
+    }
+
     private MenuHandler generateMenuHandler() {
-        return new MenuHandler(computer);
+        return new MenuHandler(generateComputer(), generateCommunicator());
     }
 
     public MenuHandler getMenuHandler() {
