@@ -64,6 +64,13 @@ class GameServerTest extends NsTest {
         );
     }
 
+    @Test
+    void 사용자_입력값에_중복되는_숫자가_있을경우_IllegalArgumentException_예외를_터트린다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     protected void runMain() {
