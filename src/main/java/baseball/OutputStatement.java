@@ -12,7 +12,7 @@ public enum OutputStatement {
         this.output = output;
     }
 
-    public String getOutput() {
-        return output;
+    public void printOutput() {
+        System.out.println(output);
     }
 }
