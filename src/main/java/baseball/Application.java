@@ -17,10 +17,11 @@ public class Application {
         boolean continueGame = true;
         while (continueGame) {
             List<Integer> computerNumbers = generateRandomNumbers();
-            System.out.println(computerNumbers);
-            playGame(computerNumbers);
+            continueGame = playGame(computerNumbers);
+            if (continueGame) {
+                continueGame = askContinue();
+            }
         }
-
     }
     /* 랜덤 컴퓨터 숫자 생성 */
     private static List<Integer> generateRandomNumbers() {
@@ -57,6 +58,7 @@ public class Application {
 
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
+                return false;
             }
         }
     }
@@ -129,5 +131,22 @@ public class Application {
             System.out.print("낫싱");
         }
         System.out.println();
+    }
+
+    private static boolean askContinue() {
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String inputNumber = Console.readLine();
+
+            switch (inputNumber) {
+                case "1":
+                    return true;
+                case "2":
+                    return false;
+                default:
+                    System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
+                    break;
+            }
+        }
     }
 }
