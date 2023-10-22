@@ -15,6 +15,10 @@ public class Convert {
     }
 
     public static int convertStringToInteger(String input) {
-        return Integer.parseInt(input);
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
