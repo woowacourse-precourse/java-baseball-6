@@ -12,12 +12,12 @@ public class Validation {
         return true;
     }
 
-    //숫자가 3개인지 확인
-    public boolean isThree(String userString) {
-        if (userString.length() == 3) {
+    //숫자 개수 확인
+    public boolean checkLength(String userString, int length) {
+        if (userString.length() == length) {
             return true;
         } else {
-            throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(length + "개의 숫자를 입력해주세요.");
         }
     }
 
@@ -33,14 +33,16 @@ public class Validation {
         return true;
     }
 
-    //최종 확인
-    public boolean isOk(String userString) {
-        if (isInteger(userString) && isThree(userString) && isDistinct(userString)) {
-            return true;
-        } else {
-            return false;
-        }
+    //유저 정답 입력 숫자 확인
+    public boolean isOkInput(String userString) {
+        return isInteger(userString) && checkLength(userString, 3) && isDistinct(userString);
+    } //유저의 인풋을 검사하는 함수
 
+    //재시작 시 입력 숫자 확인
+    public boolean isOkRestart(String userString) {
+        return isInteger(userString) && checkLength(userString, 1);
     }
+
+
 }
 
