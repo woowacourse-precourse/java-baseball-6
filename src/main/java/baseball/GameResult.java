@@ -15,12 +15,17 @@ public class GameResult {
     }
 
     public void result() {
+        String result = "";
         if (isNothing()) {
-            System.out.println("낫싱");
+            result += "낫싱";
         }
-        if (!isNothing()) {
-            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        if (ballCount > 0) {
+            result += ballCount + "볼 ";
         }
+        if (strikeCount > 0) {
+            result += strikeCount + "스트라이크";
+        }
+        System.out.println(result);
     }
 
     private boolean isNothing() {
