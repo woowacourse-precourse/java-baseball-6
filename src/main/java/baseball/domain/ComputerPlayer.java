@@ -16,10 +16,17 @@ public class ComputerPlayer implements MatchPlayer {
     private int countBall(BaseBallNumbers baseBallNumbers) {
         int ballCount = 0;
         for (int number : baseBallNumbers.get()) {
-            if(answer.isContain(number)) ballCount++;
+            if(answer.isBall(number)) ballCount++;
         }
         return ballCount;
     }
 
-
+    private int countStrike(BaseBallNumbers baseBallNumbers) {
+        int strikeCount = 0;
+        for (int i = 0; i < baseBallNumbers.size() ; i++) {
+            int number = baseBallNumbers.get().indexOf(i);
+            if (answer.isStrike(number, i)) strikeCount++;
+        }
+        return strikeCount;
+    }
 }
