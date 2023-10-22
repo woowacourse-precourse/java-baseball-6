@@ -6,11 +6,20 @@ public enum CountMessage {
     STRIKE("스트라이크"),
     NOTHING("낫싱");
 
+    private final String message;
+
     CountMessage(String message) {
+        this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return BALL + " " + STRIKE;
+    public String getMessage() {
+        return message;
+    }
+
+    public String toString(int count) {
+        if (count <= 0) {
+            return "";
+        }
+        return count + getMessage();
     }
 }
