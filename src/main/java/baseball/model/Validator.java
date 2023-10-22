@@ -19,8 +19,16 @@ public abstract class Validator {
     }
 
     protected void validateUnique(String numbers){
-        if(new HashSet<>(Arrays.asList(numbers.split(""))).size()!=3){
+        if(toSet(toArray(numbers)).size()!=3){
             throw new IllegalArgumentException("값의 중복은 없어야 합니다.");
         }
+    }
+
+    private HashSet<String> toSet(String[] numbers){
+        return new HashSet<>(Arrays.asList(numbers));
+    }
+
+    private String[] toArray(String numbers){
+        return numbers.split("");
     }
 }
