@@ -19,15 +19,17 @@ public class Judge {
     }
 
     public void evaluateUserNumberList(List<Integer> userNumberList) {
-        List<String> ScoreBoardList = new ArrayList<>();
+        List<String> scoreBoardList = new ArrayList<>();
         for (int i = 0; i < computerNumberMap.size(); i++) {
             if (computerNumberMap.get(i) == userNumberList.get(i)) { //map의 인덱스의 밸류와 사용자 숫자 리스트의 값이 같으면 스트라이크
-                ScoreBoardList.add("STRIKE");
+                scoreBoardList.add("STRIKE");
                 continue;
             }
+            if (computerNumberMap.containsValue(userNumberList.get(i))) { //위의 if문을 지나지 않았을 때 그 값을 가지고 있다면 볼
+                scoreBoardList.add("BALL");
+                continue;
+            }
+
         }
-
     }
-
-
 }
