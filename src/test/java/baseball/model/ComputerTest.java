@@ -42,6 +42,18 @@ class ComputerTest {
         assertThat(expected.get(GameResult.BALL)).isEqualTo(result.get(GameResult.BALL));
     }
 
+    @DisplayName("컴퓨터는 숫자를 비교해 같은 수가 없으면 낫싱을 반환한다")
+    @Test
+    void calculateNothing(){
+        Computer computer = new Computer(List.of(1, 2, 3));
+        GameNumber userGameNumber = new GameNumber(List.of(4, 5, 6));
+        Map<GameResult, Long> result = computer.calculate(userGameNumber);
+
+        assertThat(result.size()).isEqualTo(1);
+        assertThat(result.containsKey(GameResult.NOTHING)).isTrue();
+
+    }
+
     static Stream<Arguments> calculateData() {
         List<Integer> computerNumber = Arrays.asList(4, 2, 3);
         return Stream.of(
@@ -55,4 +67,5 @@ class ComputerTest {
                 Arguments.of(computerNumber, Arrays.asList(2, 5, 6), Map.of(GameResult.STRIKE, 0L, GameResult.BALL, 1L))
         );
     }
+
 }
