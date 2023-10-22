@@ -342,7 +342,7 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains(expectOutput1);
         assertThat(output()).doesNotContain(expectOutput2);
     }
-//BaseballService까지 테스트 코드 진행
+//BaseballService까지 테스트 코드 진행 나머지 테스트 진행하기
 
 
 }
