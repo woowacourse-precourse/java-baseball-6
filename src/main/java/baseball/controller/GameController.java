@@ -32,7 +32,6 @@ public class GameController {
             if (result.isAllStrikes()) {
                 InputView.printGameOver();
                 restartOrNot(InputView.getUserInput());
-                ;
             }
         }
     }
