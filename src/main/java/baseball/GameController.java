@@ -6,13 +6,14 @@ public class GameController {
 
     static String guessNum;
     static boolean canPlay;
+    static String theAnswer;
 
     public static void gameInitializer() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         canPlay = true;
 
         while (canPlay){
-            String theAnswer = AnswerController.makeAnswer();
+            theAnswer = AnswerController.makeAnswer();
             System.out.println("answer: " + theAnswer);    // 테스트용
 
             gamePlay();
@@ -24,11 +25,8 @@ public class GameController {
         guessNum = Console.readLine();
         System.out.println("guessNum = " + guessNum);   // 테스트용
 
-        /**
-         *         HERE: add counter method
-         *         to compare guessNum and theAnswer
-         *         counter();
-         */
+        int resultCount = Counter.hitBallCounter(guessNum, theAnswer);
+        System.out.println("resultCount = " + resultCount);     // for test
 
     }
 
