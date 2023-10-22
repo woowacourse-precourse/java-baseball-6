@@ -9,7 +9,7 @@ import java.util.List;
 public class Application {
     static List<Integer> computerNumbers = new ArrayList<>();
     static List<Integer> playerNumbers = new ArrayList<>();
-    static boolean isThreeStrike = false;
+    static boolean isThreeStrike;
 
     public static void main(String[] args) {
         boolean isFinishGame = false;
@@ -45,15 +45,14 @@ public class Application {
         isValidCheck(input);
 
         for (int i = 0; i < 3; i++) {
-            playerNumbers.add(input.charAt(i)- '0');
+            playerNumbers.add(input.charAt(i) - '0');
         }
     }
 
     public void isValidCheck(String input) {
-        if (isNull(input) || input.isEmpty() || !isLengthThree(input)
+        if (isNull(input) || input.isEmpty() || !isLengthThree(input) || !hasUniqueElementsOnly(input)
             // Todo: 입력값에 숫자외에 다른 문자가 들어가 있는지 검사한다.
             // Todo: 각 숫자(n)가 `1 <= n <= 9`의 범위에 속하는 정수인지 검사한다.
-            // Todo: 각 숫자가 서로 다른 수인지 검사한다.
         ) {
             throw new IllegalArgumentException();
         }
@@ -65,5 +64,16 @@ public class Application {
 
     public boolean isLengthThree(String string) {
         return string.length() == 3;
+    }
+
+    public boolean hasUniqueElementsOnly(String string) {
+        char target1 = string.charAt(0);
+        char target2 = string.charAt(1);
+        char target3 = string.charAt(2);
+
+        if (target1 != target2 && target1 != target3 && target2 != target3) {
+            return true;
+        }
+         return false;
     }
 }
