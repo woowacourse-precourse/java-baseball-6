@@ -27,6 +27,7 @@ public class Computer {
     }
 
     public static void compareNumber(String answer) {
+        new Hint();
 
         IntStream.range(0, Key.NUMBER_LENGTH)
                 .forEach(index -> {

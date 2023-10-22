@@ -29,7 +29,7 @@ public class RunGame {
         while (true) {
             print.printInputNumber();
             User.getUserAnswer();
-            Game.compareNumber(User.getAnswer());
+            Computer.compareNumber(User.getAnswer());
             if(print.printResult())
                 break;
         }
