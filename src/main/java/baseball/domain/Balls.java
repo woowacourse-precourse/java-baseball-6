@@ -24,4 +24,12 @@ public class Balls {
         }
         return false;
     }
+
+    public void convertToBalls(String nums) {
+        String[] numArr = nums.split("");
+
+        for (String num : numArr) {
+            addBall(Integer.parseInt(num));
+        }
+    }
 }
