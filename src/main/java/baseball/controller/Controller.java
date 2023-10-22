@@ -5,8 +5,8 @@ import static baseball.util.Converter.convertStringToIntegerList;
 
 import baseball.domain.Computer;
 import baseball.domain.GuessNumber;
+import baseball.domain.Referee;
 import baseball.domain.State;
-import baseball.domain.dto.GuessNumberResultResponse;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -22,46 +22,45 @@ public class Controller {
     }
 
     public void start() {
-        Computer computer = new Computer();
-        State state = new State();
-        GuessNumber guessNumber = new GuessNumber();
-        play(computer, guessNumber, state);
-        askMore(state);
-        while (state.isMoreGame()) {
-            play(computer, guessNumber, state);
-            askMore(state);
-        }
-    }
-
-    private void play(final Computer computer, final GuessNumber guessNumber, final State state) {
+        Computer computer = Computer.createDefault();
+        Referee referee = new Referee(computer);
         outputView.printStartMessage();
-        while (!computer.isGameOver()) {
-            guess(guessNumber);
-            calculate(computer, guessNumber);
+        play(referee);
+        outputView.printWinningMessage();
+        int state = askMore();
+        if (State.isMoreGame(state)) {
+            start();
         }
-        end(computer, state);
     }
 
-    private void guess(final GuessNumber guessNumber) {
+    private void play(final Referee referee) {
+        GuessNumber guessNumber = guess();
+        String result = calculateResult(referee, guessNumber);
+        outputView.printGuessNumberResult(result);
+        if (!referee.isGameOver(result)) {
+            play(referee);
+        }
+    }
+
+    private GuessNumber guess() {
         outputView.printGuessNumberInputMessage();
         String guessNumbers = inputView.readGuessNumbers();
-        guessNumber.changeGuessNumbers(convertStringToIntegerList(guessNumbers));
+        return new GuessNumber(convertStringToIntegerList(guessNumbers));
     }
 
-    private void calculate(final Computer computer, final GuessNumber guessNumber) {
-        GuessNumberResultResponse resultResponse = computer.calculateGuessNumberResult(guessNumber.getGuessNumbers());
-        outputView.printGuessNumberResult(resultResponse.getResult());
+    private String calculateResult(final Referee referee, final GuessNumber guessNumber) {
+        return referee.calculateResult(guessNumber.getGuessNumbers());
     }
 
-    private void askMore(final State state) {
+    private int askMore() {
         outputView.printRestartOrFinishMessage();
         String stateNumber = inputView.readGameStateNumber();
-        state.changeState(convertStringToInt(stateNumber));
+        int state = convertStringToInt(stateNumber);
+        validate(state);
+        return state;
     }
 
-    private void end(final Computer computer, final State state) {
-        computer.end();
-        state.end();
-        outputView.printWinningMessage();
+    private void validate(final int state) {
+        State.validate(state);
     }
 }
