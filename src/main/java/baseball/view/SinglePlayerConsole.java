@@ -59,4 +59,8 @@ public class SinglePlayerConsole implements Player {
         }
         OutputConsole.printHint(stringBuilder.toString());
     }
+
+    public void printEndGameMessage() {
+        OutputConsole.printEndMessage();
+    }
 }
