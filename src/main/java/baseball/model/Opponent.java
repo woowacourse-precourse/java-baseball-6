@@ -26,8 +26,7 @@ public class Opponent {
     public GuessResult calculateResult(final UserNumbers userNumbers) {
         GuessResult result = new GuessResult();
         List<Integer> guessedNumbers = userNumbers.getNumbers();
-        IntStream
-            .range(FIRST_INDEX, guessedNumbers.size())
+        IntStream.range(FIRST_INDEX, guessedNumbers.size())
             .forEach(index -> {
                 int numberIndex = numbers.indexOf(guessedNumbers.get(index));
                 handleResult(numberIndex, index, result);
@@ -40,10 +39,12 @@ public class Opponent {
         if (numberIndex == NUMBER_NOT_FOUND) {
             return;
         }
+
         if (numberIndex == index) {
             result.addStrikeCount();
             return;
         }
+
         result.addBallCount();
     }
 }
