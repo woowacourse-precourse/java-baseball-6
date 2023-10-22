@@ -1,8 +1,7 @@
 package baseball;
 
 import static baseball.domain.GameRules.*;
-import static baseball.ui.GameOutput.printLoopResult;
-import static baseball.ui.GameOutput.showWinMessage;
+import static baseball.ui.GameOutput.*;
 
 import baseball.domain.RandomNumberGenerator;
 import baseball.ui.GameInput;
@@ -18,6 +17,7 @@ public class GameRunner {
     void runGameLoop() {
         boolean userWin = false;
         while (!userWin) {
+            showNumberInputMessage();
             List<Integer> userNumber = GameInput.userNumberInput();
 
             int strike = countStrike(userNumber, computerNumber);

@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.ui.GameOutput.showGameContinueInputMessage;
 import static baseball.ui.GameOutput.showStartMessage;
 
 import baseball.ui.GameInput;
@@ -12,6 +13,8 @@ public class Application {
         while (continueGame) {
             GameRunner gameRunner = new GameRunner();
             gameRunner.runGameLoop();
+
+            showGameContinueInputMessage();
             continueGame = GameInput.getContinueInput();
         }
     }
