@@ -68,7 +68,14 @@ public class Application {
     }
 
     private static List<Integer> generateComputerNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        Set<Integer> computerNumbers = new HashSet<>();
+
+        while (computerNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            computerNumbers.add(randomNumber);
+        }
+
+        return new ArrayList<>(computerNumbers);
     }
 
     private static List<Integer> requestUserNumbers() {
