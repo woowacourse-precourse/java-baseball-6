@@ -19,7 +19,6 @@ public final class OutputView {
             return NOTHING;
         }
         return makeBallMessage(score.getBall()) +
-                DELIMITER +
                 makeStrikeMessage(score.getStrike());
     }
 
@@ -27,7 +26,7 @@ public final class OutputView {
         if(ballCount ==0){
             return "";
         }
-        return ballCount + BALL;
+        return ballCount + BALL+ DELIMITER;
     }
 
     private String makeStrikeMessage(int strikeCount){

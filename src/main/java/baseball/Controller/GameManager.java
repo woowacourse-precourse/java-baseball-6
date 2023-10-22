@@ -40,7 +40,7 @@ public class GameManager {
     }
 
     public boolean playSingleGameRound(List<Integer> user,List<Integer> computer){//true이면, 게임 종료하기 위한 단계로 간다.
-        Score userScore = Referee.makeScore(computer, user);
+        Score userScore = Referee.makeScore(user, computer);
         outputView.printResult(userScore);
         return userScore.getStrike() == NUM_DIGITS;
     }
