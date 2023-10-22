@@ -2,6 +2,6 @@ package baseball.game;
 
 public interface Game {
 
-    void execute();
+    void execute(String value);
 
 }
