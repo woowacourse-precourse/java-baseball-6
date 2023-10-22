@@ -11,7 +11,9 @@ public class RestartGame {
             int restart = sc.nextInt();
             if (restart == 1) {
                 return true;
-            } else if (restart !=2) {
+            } else if (restart ==2) {
+                return false;
+            } else {
                 throw new IllegalArgumentException("");
             }
         } catch (IllegalArgumentException e){

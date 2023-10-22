@@ -14,17 +14,21 @@ public class Application {
 
         boolean flag = true;
 
+        List<Integer> computer = computerNumber.randomNumber();
+        List<Integer> player;
+
         while (flag) {
-            List<Integer> computer = computerNumber.randomNumber();
-            List<Integer> player = userNumber.UserNumber();
+            player = userNumber.player();
 
             String result = gameResult.score(computer, player);
+            System.out.println(result);
 
             if (result.equals("3스트라이크")) {
-                System.out.println(gameResult.score(computer, player));
                 flag = restartGame.restart();
+                if (flag) {
+                    computer = computerNumber.randomNumber();
+                }
             }
-            System.out.println(gameResult.score(computer,player));
         }
     }
 }
