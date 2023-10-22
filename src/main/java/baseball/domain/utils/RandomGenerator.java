@@ -1,5 +1,6 @@
 package baseball.domain.utils;
 
+import baseball.domain.game.Input;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ public class RandomGenerator {
     private static List<Integer> randomGeneratedNumber = new ArrayList<>();
 
     public static List<Integer> getRandomNumbers(){
-        while (randomGeneratedNumber.size() < 3) {
+        while (randomGeneratedNumber.size() < Input.NUMLENGTH.getLength()) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomGeneratedNumber.contains(randomNumber)) {
                 randomGeneratedNumber.add(randomNumber);
