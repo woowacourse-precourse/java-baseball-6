@@ -15,10 +15,6 @@ public class Baseball {
         this.strike = 0;
     }
 
-    void inputResult() {
-
-    }
-
     void resetComputerNumber() {
         computerNumber = new ArrayList<Integer>();
         while(computerNumber.size() < 3) {
@@ -28,14 +24,14 @@ public class Baseball {
         }
     }
 
-    void resetUserNumber(String inputNumber) throws InputNumberException {
+    void resetUserNumber(String inputNumber) throws IllegalArgumentException {
         userNumber = new ArrayList<Integer>();
         String[] inputNumberArray = inputNumber.split("");
         for(String s : inputNumberArray) {
             int addNumber = Integer.valueOf(s).intValue();
             // 입력 예외 처리
             if(userNumber.contains(addNumber) || userNumber.size() + 1 > 3) {
-                throw new InputNumberException();
+                throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
             }
             userNumber.add(addNumber);
         }
@@ -85,8 +81,8 @@ public class Baseball {
             String inputNumber = Console.readLine();
             try{
                 resetUserNumber(inputNumber);
-            } catch (InputNumberException e) {
-                return false;       // 프로그램 종료
+            } catch (IllegalArgumentException e) {
+                throw e;
             }
 
             // 2. 스트라이크, 볼 판단 및 결과 출력
