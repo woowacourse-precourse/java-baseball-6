@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.BaseBallGameComputer;
+import baseball.model.BaseballGameComputer;
 import baseball.model.BaseballGamePlayer;
 import baseball.model.Hint;
 import java.util.List;
@@ -8,12 +8,12 @@ import java.util.List;
 public class GameController {
     private final OutputController outputController;
     private final InputController inputController;
-    private final BaseBallGameComputer gameComputer;
+    private final BaseballGameComputer gameComputer;
 
     private GameController() {
         this.outputController = new OutputController();
         this.inputController = new InputController();
-        this.gameComputer = new BaseBallGameComputer();
+        this.gameComputer = new BaseballGameComputer();
     }
 
     public static GameController StartBaseballGame() {
