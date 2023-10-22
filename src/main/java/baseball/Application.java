@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.controller.RegameChoice;
 import baseball.domain.GameConstants;
+import baseball.util.IntegerUtil;
 import baseball.view.StartView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -33,7 +34,7 @@ public class Application {
 
                 //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
                 //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
-                if (!isInteger(inputNum)) {
+                if (!IntegerUtil.isInteger(inputNum)) {
                     throwInvalidValueException();
                 }
 
@@ -126,7 +127,7 @@ public class Application {
 
                     //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
                     //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
-                    if (!isInteger(regameNum)) {
+                    if (!IntegerUtil.isInteger(regameNum)) {
                         throwInvalidValueException();
                     }
                     int parsedRegameNum = Integer.parseInt(regameNum);
@@ -151,33 +152,15 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
-    //string이 Integer인지 아닌지 판단. TODO: IntegerUtil에 넣기
-        public static boolean isInteger(String string) {
-        try {
-            Integer.parseInt(string);
-            return true;
-        } catch (NumberFormatException ex) {
-            return false;
-        }
-    }
-
-
     //String to List<Integer> TODO: IntegerListConverter 따로 둬서 IntegerListConverter.parseIntegerList
     public static List<Integer> parseIntegerList(String string){
         List<Integer> integerList = new ArrayList<>();
 
         for (char character : string.toCharArray()){
-            integerList.add(parseInteger(character));
+            integerList.add(IntegerUtil.parseInteger(character));
         }
 
         return integerList;
-    }
-
-    //char to Integer TODO: IntegerUtil에 넣기
-    public static Integer parseInteger(char character){
-        Integer integer = character - '0';
-
-        return integer;
     }
 
 }
