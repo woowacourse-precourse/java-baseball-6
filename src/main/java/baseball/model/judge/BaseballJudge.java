@@ -64,4 +64,8 @@ public class BaseballJudge {
                 computerBall.hasNumber(playerBall.getNumberOfPlace(placeNo));
     }
 
+    public boolean isPlayerWon(Ball playerBall) {
+        return judge(playerBall).hasThreeStrikeCount();
+    }
+
 }

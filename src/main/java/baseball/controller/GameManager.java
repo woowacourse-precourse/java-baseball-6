@@ -30,10 +30,23 @@ public class GameManager {
 
         baseballJudge = BaseballJudge.computerBallOf(ballMaker.createBall());
 
-        List<Integer> playerNumbers = playerIoManager.askThreeNumbers();
-        JudgeResult judgeResult = baseballJudge.judge(new Ball(playerNumbers));
+        while (true) {
+            List<Integer> playerNumbers = playerIoManager.askThreeNumbers();
+            Ball playerBall = new Ball(playerNumbers);
+            JudgeResult judgeResult = baseballJudge.judge(playerBall);
 
-        playerIoManager.notifyJudgeResult(judgeResult);
+            playerIoManager.notifyJudgeResult(judgeResult);
+
+            if (baseballJudge.isPlayerWon(playerBall)) {
+
+                playerIoManager.congratulate();
+//
+//            if (playerIoManager.isPlayerWantToReplay()) {
+//
+//            }
+            }
+        }
+
     }
 
 }

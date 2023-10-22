@@ -38,4 +38,8 @@ public class PlayerIoManager {
         consoleWriter.printLine(judgeResult.toResultString());
     }
 
+    public void congratulate() {
+        consoleWriter.printCongratulationText();
+    }
+
 }

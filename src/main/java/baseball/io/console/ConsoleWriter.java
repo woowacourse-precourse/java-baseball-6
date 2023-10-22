@@ -4,6 +4,7 @@ public class ConsoleWriter {
 
     private static final String GAME_START_TEXT = "숫자 야구 게임을 시작합니다.";
     public static final String NUMBER_INPUT_TEXT = "숫자를 입력해주세요 : ";
+    public static final String CONGRATULATION_TEXT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public void printGameStartText() {
         printLine(GAME_START_TEXT);
@@ -19,6 +20,10 @@ public class ConsoleWriter {
 
     private void print(String source) {
         System.out.print(source);
+    }
+
+    public void printCongratulationText() {
+        printLine(CONGRATULATION_TEXT);
     }
 
 }
