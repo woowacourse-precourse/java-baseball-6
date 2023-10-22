@@ -1,26 +1,19 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
 public class Application {
     public static void main(String[] args) {
 
-        List<Integer> userArray = new ArrayList<>();        // 유저가 입력한 숫자 상태 배열
-        List<Integer> computerArray;                        // 컴퓨터의 숫자 상태 배열
-
-        computerArray = generateComputerNumbers();          // 컴퓨터 랜덤 배열 생성
-
-        int strike = 0;
-        int ball = 0;
-
         System.out.println("숫자 야구 게임을 시작합니다.");
+
+        List<Integer> computerArray; // 컴퓨터의 숫자
+        computerArray = generateComputerNumbers(); // 컴퓨터 랜덤 배열 생성
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -30,12 +23,17 @@ public class Application {
             validateInputType(input);
             validateInputDuplicates(input);
 
-            // 유저의 숫자 상태 int 배열 생성
+            // 유저의 숫자 배열 생성
+            List<Integer> userArray = new ArrayList<>();
+
             for (int i = 0; i < input.length(); i++) {
                 userArray.add(Character.getNumericValue(input.charAt(i)));
             }
 
             // 볼 스트라이크 갯수 파악
+            int strike = 0;
+            int ball = 0;
+
             for (int i = 0; i < 3; i++) {
                 if (computerArray.get(i).equals(userArray.get(i))) {
                     strike++;
@@ -84,7 +82,7 @@ public class Application {
     private static List<Integer> generateComputerNumbers() {
         List<Integer> computerArray = new ArrayList<>();
         while (computerArray.size() < 3) {
-            int randomNumber = pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerArray.contains(randomNumber)) {
                 computerArray.add(randomNumber);
             }
