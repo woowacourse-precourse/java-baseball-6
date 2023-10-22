@@ -12,7 +12,7 @@ public class Opponent {
 
     public Opponent() {
         Set<Integer> numberSet = new HashSet<>();
-        while(numberSet.size() < 3) {
+        while (numberSet.size() < 3) {
             numberSet.add(Randoms.pickNumberInRange(1, 9));
         }
         this.number = numberSet.stream().map(Object::toString).collect(Collectors.joining());
@@ -24,8 +24,8 @@ public class Opponent {
 
     private int countStrike(String userInput) {
         int strike = 0;
-        for(int i = 0; i < DIGIT; i++) {
-            if(this.number.charAt(i) == userInput.charAt(i)) {
+        for (int i = 0; i < DIGIT; i++) {
+            if (this.number.charAt(i) == userInput.charAt(i)) {
                 strike++;
             }
         }
@@ -34,8 +34,9 @@ public class Opponent {
 
     private int countBall(String userInput) {
         int ball = 0;
-        for(int i = 0; i < DIGIT; i++) {
-            if(userInput.contains(String.valueOf(this.number.charAt(i))) && this.number.charAt(i) != userInput.charAt(i)) {
+        for (int i = 0; i < DIGIT; i++) {
+            if (userInput.contains(String.valueOf(this.number.charAt(i)))
+                    && this.number.charAt(i) != userInput.charAt(i)) {
                 ball++;
             }
         }

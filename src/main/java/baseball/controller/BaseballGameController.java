@@ -11,7 +11,9 @@ public class BaseballGameController {
 
     public void game() {
         Opponent opponent = initOpponent();
-        if(userInteraction(opponent)) { game(); }
+        if (userInteraction(opponent)) {
+            game();
+        }
     }
 
     private Opponent initOpponent() {
@@ -30,7 +32,7 @@ public class BaseballGameController {
         String userInput = inputView.inputUserGuess();
         BallCount ballCount = opponent.analyzeTry(userInput);
         outputView.printResult(ballCount.comment());
-        if(ballCount.gameEnd()) {
+        if (ballCount.gameEnd()) {
             return promptRestart();
         }
         return userInteraction(opponent);
