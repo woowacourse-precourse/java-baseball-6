@@ -37,4 +37,10 @@ public class BaseballGameController {
     public void playerNumbers() {
         player.setPlayerNumbers(firstGamePlayerInputView.setPlayerNumbers());
     }
+
+    //2. 플레이어의 숫자와 컴퓨터의 숫자를 비교해 스트라이크와 볼을 계산
+    public void calculateCountStrikeBall() {
+        countStrikeBall = gameNumberCheckService.compareGameNumber(player.getPlayerNumbers(),
+                computer.getComputerNumbers());
+    }
 }
