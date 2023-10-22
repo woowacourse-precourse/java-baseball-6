@@ -16,8 +16,8 @@ public class GameManager {
         return new GameManager();
     }
 
-    public int playGame(final List<Integer> computerNumber, final List<Integer> myNumbers) {
-        Discriminator discriminator = Discriminator.create(computerNumber, myNumbers);
+    public int playGame(final List<Integer> computerNumber, final List<Integer> guessNumber) {
+        Discriminator discriminator = Discriminator.create(computerNumber, guessNumber);
 
         for (int i = START_NUMBER; i < END_NUMBER; i++) {
 
