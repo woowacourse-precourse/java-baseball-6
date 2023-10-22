@@ -46,7 +46,7 @@ public class UserBaseballNumberGeneratorTest {
         List<Integer> baseballNumbers = baseballNumberGenerator.generateBaseballNumber(3);
 
         for (int i = 0; i < input.length(); i++) {
-            Assertions.assertEquals((int)input.charAt(i), baseballNumbers.get(i));
+            Assertions.assertEquals(Character.getNumericValue(input.charAt(i)), baseballNumbers.get(i));
         }
     }
 }

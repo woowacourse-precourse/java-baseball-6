@@ -31,7 +31,7 @@ public class UserBaseballNumberGenerator implements BaseballNumberGenerator {
         List<Integer> baseballNumber = new ArrayList<>();
 
         for (int i = 0; i < inputNumbers.length(); i++) {
-            baseballNumber.add((int) inputNumbers.charAt(i));
+            baseballNumber.add(Character.getNumericValue(inputNumbers.charAt(i)));
         }
 
         return baseballNumber;
