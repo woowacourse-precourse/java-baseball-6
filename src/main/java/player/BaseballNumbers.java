@@ -2,6 +2,7 @@ package player;
 
 import static constant.BaseballConstant.INVALID_NUMBER_RANGE;
 import static constant.BaseballConstant.MAX_LENGTH;
+import static constant.BaseballConstant.MIN_NUMBER;
 import static constant.BaseballConstant.NO_DUPLICATE_NUMBER;
 import static constant.BaseballConstant.ONLY_THREE_NUMBER;
 
@@ -48,7 +49,7 @@ public class BaseballNumbers {
 
     private void validateBelowRange() {
         for (Integer baseballNumber : baseballNumbers) {
-            if (baseballNumber < 0) {
+            if (baseballNumber <= MIN_NUMBER) {
                 throw new IllegalArgumentException(INVALID_NUMBER_RANGE);
             }
         }
