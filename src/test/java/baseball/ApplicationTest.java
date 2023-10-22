@@ -17,6 +17,31 @@ import org.junit.jupiter.api.Test;
 class ApplicationTest extends NsTest {
 
     @Test
+    void validateNumber() {
+        // given
+        Validation validation = new Validation();
+        List<String> case1 = List.of("1", "2", "3");
+        List<String> case2 = List.of("0", "1", "2");
+        List<String> case3 = List.of("-1", "1", "2");
+
+        // when
+        Throwable result1 = catchThrowable(() -> {
+            validation.validateNumber(case1);
+        });
+        Throwable result2 = catchThrowable(() -> {
+            validation.validateNumber(case2);
+        });
+        Throwable result3 = catchThrowable(() -> {
+            validation.validateNumber(case3);
+        });
+
+        // then
+        assertThat(result1).as("valid list").doesNotThrowAnyException();
+        assertThat(result2).as("invalid with 0").isInstanceOf(IllegalArgumentException.class);
+        assertThat(result3).as("invalid with -1").isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void validateOneOrTwo() {
         // given
         Validation validation = new Validation();
