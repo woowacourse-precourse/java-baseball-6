@@ -23,9 +23,7 @@ public class GameController {
 
             PlayerController.startBattle(computer.getPlayer());
 
-            String continueInputString = baseBallView.continueInputView();
-
-            isContinueGame = checkIsContinueGame(continueInputString);
+            isContinueGame = checkIsContinueGame(baseBallView.continueInputView());
         }
     }
 
