@@ -7,7 +7,8 @@ import java.util.List;
 
 public class Game {
     private static final int NUM_OF_DIGITS = 3;
-
+    private static final int NEW_GAME = 1;
+    private static final int QUIT = 2;
 
     public void start() {
         // 사용자가 2를 입력하면 종료 or 1을 입력하면 게임 지속
@@ -16,6 +17,17 @@ public class Game {
             int randomNumber = generateRandomNumber();
 
             playGame(randomNumber);
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            int choice = Integer.parseInt(Console.readLine());
+            if (choice == QUIT) {
+                break; // 게임 종료
+            }
+            if (choice != NEW_GAME) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
@@ -41,7 +53,7 @@ public class Game {
             if (!inputNumber.matches("\\d{" + NUM_OF_DIGITS + "}")) {
                 throw new IllegalArgumentException();
             }
-            if (compareNumbers(inputNumber, randomNumber)) { // 숫자 비교 메서드, 3스트라이크이면 true를 return
+            if (compareNumbers(inputNumber, randomNumber)) {
                 isAnswerCorrect = true;
             }
         }
@@ -64,7 +76,7 @@ public class Game {
 
         printGameResult(ballCnt, strikeCnt);
 
-        return strikeCnt == 3; // 3스트라이크이면 true를 return
+        return strikeCnt == 3;
     }
 
     private void printGameResult(int ballCnt, int strikeCnt) {
