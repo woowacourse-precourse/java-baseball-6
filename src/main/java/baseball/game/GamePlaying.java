@@ -77,6 +77,7 @@ public class GamePlaying {
         printBall(ball);
         printStrike(strike, ball);
         printNothing(strike, ball);
+        System.out.println();
     }
 
     private void printStrike(int strike, int ball) {
