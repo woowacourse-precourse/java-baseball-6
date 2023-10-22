@@ -1,11 +1,18 @@
 package baseball;
 
+import player.Computer;
+import player.User;
 import referee.Referee;
+import score.BaseballScore;
 
 public class Application {
 
     public static void main(String[] args) {
-        Referee referee = new Referee();
+        Computer computer = new Computer();
+        User user = new User();
+        BaseballScore score = new BaseballScore();
+
+        Referee referee = new Referee(computer, user, score);
         referee.playBall();
     }
 }

@@ -7,15 +7,19 @@ import static utils.BaseballRules.isThreeStrike;
 import camp.nextstep.edu.missionutils.Console;
 import message.Message;
 import player.BaseballPlayer;
-import player.Computer;
-import player.User;
 import score.BaseballScore;
 
 public class Referee {
 
-    private final BaseballPlayer computer = new Computer();
-    private final BaseballPlayer user = new User();
-    private final BaseballScore score = new BaseballScore();
+    private final BaseballPlayer computer;
+    private final BaseballPlayer user;
+    private final BaseballScore score;
+
+    public Referee(BaseballPlayer computer, BaseballPlayer user, BaseballScore score) {
+        this.computer = computer;
+        this.user = user;
+        this.score = score;
+    }
 
     public void playBall() {
         computer.inputBaseballNumbers();
