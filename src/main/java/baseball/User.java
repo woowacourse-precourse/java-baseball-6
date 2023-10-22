@@ -27,7 +27,7 @@ public class User {
 
     static boolean isInRange(final String input){
         for(char digit: input.toCharArray()){
-            if (digit < '0' || digit > '9'){
+            if (digit < '1' || digit > '9'){
                 return false;
             }
         }
