@@ -6,6 +6,7 @@ import baseball.model.GameNumber;
 public class ComputerController {
     private static final int BASEBALL_NUMBER_LENGTH = 3;
     private static final int BASEBALL_SUCCESS_STRIKE_COUNT = 3;
+    private static final int RESET_COUNT = 0;
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String BALL_MESSAGE = "볼";
     private static final String NOTHING_MESSAGE = "낫싱";
@@ -19,11 +20,18 @@ public class ComputerController {
     public void compareNumbers(GameNumber gameNumber) {
         int[] playerNumbers = gameNumber.getPlayerNumbers();
         int[] randomNumbers = gameNumber.getRandomNumbers();
+        
+        resetCount();
 
         for (int i = 0; i < BASEBALL_NUMBER_LENGTH; i++) {
             countStrike(randomNumbers, playerNumbers[i], i);
             countBall(randomNumbers, playerNumbers[i], i);
         }
+    }
+
+    private void resetCount() {
+        strikeCount = RESET_COUNT;
+        ballCount = RESET_COUNT;
     }
 
     private void countStrike(int[] randomNumbers, int playerNumber, int numberIndex) {
