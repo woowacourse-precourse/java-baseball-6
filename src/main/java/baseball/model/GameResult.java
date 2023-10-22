@@ -1,6 +1,5 @@
 package baseball.model;
 
-import baseball.view.OutputView;
 
 public class GameResult {
     private final int strikeCount;
@@ -9,9 +8,13 @@ public class GameResult {
     private static final String NOTHING = "낫싱";
     private static final int ZERO = 0;
 
-    private GameResult(int ballCount, int strikeCount) {
-        this.ballCount = ballCount;
+    private GameResult(int strikeCount, int ballCount) {
         this.strikeCount = strikeCount;
+        this.ballCount = ballCount;
+    }
+
+    public static GameResult gameResultFactory(int strikeCount, int ballCount) {
+        return new GameResult(strikeCount, ballCount);
     }
 
     private String resultString() {
