@@ -8,6 +8,6 @@ public class Constant {
 
     public static final Integer NUMBER_SIZE = 3;           //숫자의 갯수 확인
 
-    public static final String NUM_REGEX = "/[1-9]/";    //정규 표현식
+    public static final String NUM_REGEX = "^[1-9]*$";    //정규 표현식
 
 }
