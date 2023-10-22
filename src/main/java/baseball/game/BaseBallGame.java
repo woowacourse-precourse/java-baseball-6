@@ -28,7 +28,7 @@ public class BaseBallGame implements Game {
     BaseBall baseBall = new BaseBall();
     playRound(baseBall);
 
-    if (isEndPlay()) {
+    if (isEndBaseBallGame()) {
       return;
     }
     playBaseBallGame();
@@ -47,7 +47,7 @@ public class BaseBallGame implements Game {
     playRound(baseBall);
   }
 
-  private Boolean isEndPlay() {
+  private Boolean isEndBaseBallGame() {
     outputDevice.printEndInputMessage();
     int endInput = inputDevice.endInput();
     return endInput == EXIT_NUMBER;
