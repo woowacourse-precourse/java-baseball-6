@@ -17,8 +17,16 @@ public class MenuHandler {
         communicator.printStart();
         computer.decideAnswer();
 
-        List<Integer> inputNumbers = communicator.instructInputNumbers();
-        Map<String, Integer> counts = computer.count(inputNumbers);
-        communicator.printResult(counts);
+        boolean isOver = false;
+        while (!isOver) {
+            List<Integer> inputNumbers = communicator.instructInputNumbers();
+            Map<String, Integer> counts = computer.count(inputNumbers);
+            communicator.printResult(counts);
+            isOver = isCorrect(counts.get("strikeCount"));
+        }
+    }
+
+    private boolean isCorrect(int strikeCount) {
+        return strikeCount == 3;
     }
 }
