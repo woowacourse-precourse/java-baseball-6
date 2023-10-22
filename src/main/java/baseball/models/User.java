@@ -24,11 +24,7 @@ public class User {
     }
 
     public List<Integer> showNumberList(){
-        List<Integer> clonedList = new ArrayList<>();
-        for (int i = 0; i < ANSWER_LENGTH; i++) {
-            clonedList.add(numberList.get(i));
-        }
-        return clonedList;
+        return new ArrayList<>(numberList);
     }
 
     public int showMind(){
