@@ -39,4 +39,16 @@ class DigitTest {
         assertNotEquals(digit1, digit2);
     }
 
+    @Test
+    void 같은_숫자를_가진_Digit객체는_Hash_Collection_자료구조에서도_동일한_객체로_인식된다() {
+        Digit digit1 = new Digit(5);
+        Digit digit2 = new Digit(5);
+
+        Set<Digit> set = new HashSet<>();
+        set.add(digit1);
+        set.add(digit2);
+
+        assertEquals(set.size(), 1);
+    }
+
 }
