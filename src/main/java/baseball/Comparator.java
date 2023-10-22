@@ -10,15 +10,8 @@ public class Comparator {
         int ballCnt = 0;
 
         for (int i=0; i<user.length(); i++) {
-            for (int j=0; j<computer.length(); j++) {
-                if (user.charAt(i) == computer.charAt(j)) {
-                    if (i == j) {
-                        strikeCnt++;
-                    } else {
-                        ballCnt++;
-                    }
-                }
-            }
+            strikeCnt = getStrikeCnt(computer, user);
+            ballCnt = getBallCnt(computer, user) - strikeCnt;
         }
 
         Map<String, Integer> map = new HashMap<>();
@@ -26,5 +19,32 @@ public class Comparator {
         map.put("ball", ballCnt);
 
         return map;
+    }
+
+    private int getStrikeCnt(String computer, String user) {
+        int strikeCnt = 0;
+
+        for (int i=0; i<computer.length(); i++) {
+            if (computer.charAt(i) == user.charAt(i)) {
+                strikeCnt++;
+            }
+        }
+
+        return strikeCnt;
+    }
+
+    private int getBallCnt(String computer, String user) {
+        int ballCnt = 0;
+
+        for (int i=0; i<computer.length(); i++) {
+            for (int j=0; j<user.length(); j++) {
+                if (computer.charAt(i) == user.charAt(j)) {
+                    ballCnt++;
+                    break;
+                }
+            }
+        }
+
+        return ballCnt;
     }
 }
