@@ -4,3 +4,15 @@
 - [x] 볼인지 확인하는 기능
 - [x] 스트라이크인지 확인하는 기능
 - [ ] 재시작 여부를 확인하는 기능
+
+# 패키지 목록
+- domain
+  - Balls
+  - Computer
+- service
+  - game
+- util
+  - RandomNum
+- view
+  - InputView
+  - OutputView
