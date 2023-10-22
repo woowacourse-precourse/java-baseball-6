@@ -10,7 +10,7 @@ public class Validator {
         if (!isThreeNumbers(number)) {
             throw new IllegalArgumentException(NOT_THREE);
         }
-        if (!ifZeroInclue(number)) {
+        if (ifZeroInclue(number)) {
             throw new IllegalArgumentException(INCLUE_ZERO);
         }
     }
