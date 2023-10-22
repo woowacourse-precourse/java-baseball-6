@@ -39,6 +39,7 @@ public class BaseballGame {
             int playerBall = player.getPlayerBall(inning);
             calculateScore(computerBall, playerBall);
         }
+        return formatResult();
     }
 
     private void initScoreBoard() {
@@ -56,5 +57,30 @@ public class BaseballGame {
             int score = scoreBoard.get(BALL);
             scoreBoard.put(BALL, ++score);
         }
+    }
+
+    private String formatResult() {
+        int strikeScore = scoreBoard.get(STRIKE);
+        int ballScore = scoreBoard.get(BALL);
+        if (isNothing(strikeScore, ballScore)) {
+            return NOTHING.getDescription();
+        }
+        return formatString(strikeScore, ballScore);
+    }
+
+    private boolean isNothing(final int strikeScore, final int ballScore) {
+        return (strikeScore == SCORE_ZERO) && (ballScore == SCORE_ZERO);
+    }
+
+    private String formatString(final int strikeScore, final int ballScore) {
+        StringBuilder sb = new StringBuilder();
+        if (ballScore > SCORE_ZERO) {
+            sb.append(ballScore).append(BALL.getDescription());
+        }
+        sb.append(" ");
+        if (strikeScore > SCORE_ZERO) {
+            sb.append(strikeScore).append(STRIKE.getDescription());
+        }
+        return sb.toString().trim();
     }
 }
