@@ -6,13 +6,12 @@ import org.junit.jupiter.api.Test;
 
 public class ComputerTest {
     @Test
-    public void testGenerateRandomNumbers() {
+    void 컴퓨터_랜덤_숫자_유효성_테스트() {
         Computer computer = new Computer();
-        String randomNumbers = computer.generate();
+        String randomNumbers = computer.getComputerNumbers();
 
-        BaseballGame baseballGame = new BaseballGame();
         try {
-            baseballGame.validateNumbers(randomNumbers);
+            Player player = new Player(randomNumbers);
         } catch (IllegalArgumentException e) {
             fail("예외가 발생했습니다: " + e.getMessage());
         }
