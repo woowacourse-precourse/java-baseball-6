@@ -13,7 +13,7 @@
 
 - [x] 사용자에게 3자리 숫자를 입력받는다
 - [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-- [ ] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 어플리케이션을 종료한다.
+- [x] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 어플리케이션을 종료한다.
 
 
 
