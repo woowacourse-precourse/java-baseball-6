@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.Controller.PlayerInputController;
+import baseball.Controller.Validator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,8 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PlayerInputControllerTest {
-    PlayerInputController playerInputCon = new PlayerInputController();
+    Validator validator = new Validator();
+    PlayerInputController playerInputCon = new PlayerInputController(validator);
 
     @Test
     void 사용자_입력처리_테스트(){

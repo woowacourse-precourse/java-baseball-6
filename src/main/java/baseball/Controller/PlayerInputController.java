@@ -5,7 +5,11 @@ import java.util.ArrayList;
 public class PlayerInputController {
     private static final int PLAYER_INPUT_LENGTH = 3;
 
-    Validator validator = new Validator();
+    private final Validator validator;
+
+    public PlayerInputController(Validator validator) {
+        this.validator = validator;
+    }
 
     public ArrayList<Integer> handlePlayerInput(String playerFirstInput){
         validator.validatePlayerInput(playerFirstInput);

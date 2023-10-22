@@ -11,10 +11,11 @@ public class MainController {
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
     GameData gameData = new GameData();
-    RandomNumbersGenerator randomNumbersGenerator = new RandomNumbersGenerator();
-    PlayerInputController playerInputController = new PlayerInputController();
-    Comparator comparator = new Comparator();
     Validator validator = new Validator();
+    RandomNumbersGenerator randomNumbersGenerator = new RandomNumbersGenerator();
+    PlayerInputController playerInputController = new PlayerInputController(validator);
+    Comparator comparator = new Comparator();
+
 
     private static int state = 1;
     public MainController() {
