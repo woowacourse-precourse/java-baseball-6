@@ -46,4 +46,9 @@ public class GameController {
         String userNumberInput = inputView.getUserInput();
         gameNumber.changeNumber(userNumberInput);
     }
+
+    private UserNumbers getUserNumbers() {
+        UserNumbersDto userNumbersDto = new UserNumbersDto(inputView.getUserInput());
+        return userNumbersDto.toUserNumbers();
+    }
 }
