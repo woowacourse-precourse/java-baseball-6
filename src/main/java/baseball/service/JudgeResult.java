@@ -1,5 +1,7 @@
 package baseball.service;
 
+import baseball.domain.Computer;
+import baseball.domain.Player;
 import baseball.domain.Score;
 import java.util.List;
 
@@ -9,9 +11,9 @@ public class JudgeResult {
     int ballCnt;
     int strikeCnt;
 
-    public JudgeResult(List<Integer> computerNum, List<Integer> playerNum) {
-        this.computerNum = computerNum;
-        this.playerNum = playerNum;
+    public JudgeResult(Computer computer, Player player) {
+        this.computerNum = computer.getComputerNums();
+        this.playerNum = player.getInputNums();
         ballCnt = 0;
         strikeCnt = 0;
     }
@@ -21,6 +23,10 @@ public class JudgeResult {
         findScore();
         Score scoreOutput = new Score(strikeCnt, ballCnt);
         return scoreOutput.getScoreOutput();
+    }
+
+    public boolean isGameClear() {
+        return strikeCnt == 3;
     }
 
     private void findScore() {
