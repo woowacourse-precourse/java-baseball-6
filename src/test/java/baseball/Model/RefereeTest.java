@@ -25,8 +25,7 @@ public class RefereeTest {
     public void ballJudgeTest() {
         userNumbers = new Numbers(List.of(1,2,3));
         computerNumbers = new Numbers(List.of(1,3,4));
-        referee.judge(userNumbers, computerNumbers);
-        Map<String,Integer> judgement = referee.getJudgement();
+        Map<String,Integer> judgement = referee.judge(userNumbers, computerNumbers);
 
         assertThat(judgement.get("ball")).isEqualTo(1);
         assertThat(judgement.get("strike")).isEqualTo(1);
@@ -37,8 +36,7 @@ public class RefereeTest {
     public void strikeJudgeTest() {
         userNumbers = new Numbers(List.of(1,2,3));
         computerNumbers = new Numbers(List.of(1,2,3));
-        referee.judge(userNumbers, computerNumbers);
-        Map<String,Integer> judgement = referee.getJudgement();
+        Map<String,Integer> judgement = referee.judge(userNumbers, computerNumbers);
 
         assertThat(judgement.get("ball")).isEqualTo(0);
         assertThat(judgement.get("strike")).isEqualTo(3);
@@ -49,8 +47,7 @@ public class RefereeTest {
     public void nothingJudgeTest() {
         userNumbers = new Numbers(List.of(1,2,3));
         computerNumbers = new Numbers(List.of(4,5,6));
-        referee.judge(userNumbers, computerNumbers);
-        Map<String,Integer> judgement = referee.getJudgement();
+        Map<String,Integer> judgement = referee.judge(userNumbers, computerNumbers);
 
         assertThat(judgement.get("ball")).isEqualTo(0);
         assertThat(judgement.get("strike")).isEqualTo(0);
