@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.Computer;
 import baseball.domain.NumbersGenerator;
 import baseball.domain.Score;
+import baseball.view.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -26,14 +27,18 @@ public class BaseballController {
             Computer computer = new Computer(answerGenerator);
             play(computer);
             outputView.endGame();
-            isContinue = inputView.continueOrExit();
+            String input = inputView.continueOrExit();
+            InputValidator.validateContinueOrExitNumber(input);
+            isContinue = inputView.isContinue(input);
         }
     }
 
     private void play(Computer computer) {
         boolean isStrikeOut = false;
         while (!isStrikeOut) {
-            Score score = computer.getScore(inputView.inputBaseballNumber());
+            String input = inputView.inputBaseballNumber();
+            InputValidator.validateBaseballNumber(input);
+            Score score = computer.getScore(input);
             outputView.matchResult(score);
             isStrikeOut = score.isStrikeOut();
         }
