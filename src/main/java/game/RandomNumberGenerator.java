@@ -1,4 +1,4 @@
-package baseball;
+package game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;

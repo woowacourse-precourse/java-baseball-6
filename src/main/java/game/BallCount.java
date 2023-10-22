@@ -1,21 +1,21 @@
-package baseball;
+package game;
 
 public class BallCount {
 
     private int strike;
     private int ball;
 
-    BallCount() {
-        strike = 0;
-        ball = 0;
+    public BallCount() {
+        this.strike = 0;
+        this.ball = 0;
     }
 
-    public void addStrikeCount() {
-        strike++;
+    public void addStrike(int strike) {
+        this.strike += strike;
     }
 
-    public void addBallCount() {
-        ball++;
+    public void addBall(int ball) {
+        this.ball += ball;
     }
 
     public boolean isThreeStrike() {
@@ -29,7 +29,8 @@ public class BallCount {
     public String getBallCount() {
         StringBuffer sb = new StringBuffer();
         if (ball > 0) {
-            sb.append(ball + "볼 ");
+            sb.append(ball + "볼");
+            sb.append(" ");
         }
         if (strike > 0) {
             sb.append(strike + "스트라이크");
