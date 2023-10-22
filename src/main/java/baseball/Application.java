@@ -1,6 +1,6 @@
 package baseball;
 
-import java.lang.reflect.Array;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -76,7 +76,6 @@ public class Application {
             int flag = scan.nextInt();
             if ( flag == 1 ) continue;
             else break;
-
         }
 
 
