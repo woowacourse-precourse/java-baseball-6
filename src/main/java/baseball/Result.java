@@ -7,12 +7,10 @@ record Result(int ballCount, int strikeCount) {
     }
 
     String getResultInKorean() {
-        if(ballCount > 0 && strikeCount > 0)
-            return ballCount + OutputMessage.BALL.message + " " + strikeCount + OutputMessage.STRIKE.message;
-        else if (ballCount > 0)
-            return ballCount + OutputMessage.BALL.message;
-        else if (strikeCount > 0)
-            return strikeCount + OutputMessage.STRIKE.message;
-        else return OutputMessage.NOTHING.message;
+        String ball = ballCount > 0 ? ballCount + OutputMessage.BALL.message : "";
+        String strike = strikeCount > 0 ? strikeCount + OutputMessage.STRIKE.message : "";
+
+        String result = (ball.isEmpty() && strike.isEmpty()) ? OutputMessage.NOTHING.message : ball + " " + strike;
+        return result.trim();
     }
 }
