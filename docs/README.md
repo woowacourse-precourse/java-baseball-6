@@ -49,3 +49,41 @@
 - [ ] ❗️ 1, 2 숫자 외의 다른 입력을 받을 경우 예외처리 한다.
 - [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
+# 🌐 필요한 객체와 책임
+
+## [GameController](../src/main/java/baseball/controller/GameController.java)
+
+- 게임의 실행, 재실행, 종료를 판단한다.
+- `InputView`로부터 입력을 받는다.
+- `Game`을 생성한다.
+- `OutputView`로 결과를 전달한다.
+
+## [Game](../src/main/java/baseball/model/Game.java)
+
+- Computer의 `GameNumbers`와, User의 `GameNumbers`를 저장한다.
+- 게임의 결과인 `Result`를 저장한다.
+- 야구 게임의 로직을 수행한다.
+    - 숫자 비교 한 뒤 결과를 도출한다.
+    - 도출한 결과를 `Result`에 저장한다.
+
+## [GameNumbers](../src/main/java/baseball/model/GameNumbers.java)
+
+- 야구 게임의 숫자를 저장한다.
+- 랜덤 숫자를 생성한다.
+- 사용자의 입력 숫자가 유효한 숫자인지 검증한다.
+
+## [Result](../src/main/java/baseball/model/Result.java)
+
+- 야구 게임의 결과를 저장한다.
+
+## [InputView](../src/main/java/baseball/view/InputView.java)
+
+- 사용자로부터 입력을 받는다.
+- 유효하지 않은 입력에 대한 기본 예외 처리를 한다.
+    - ex) 빈 문자열 입력
+- 받은 입력을 `GameController`에게 전달한다.
+
+## [OutputView](../src/main/java/baseball/view/OutputView.java)
+
+- `Result`를 `GameController`로부터 전달받는다.
+- `Result`를 사용자에게 출력하여 알린다.
