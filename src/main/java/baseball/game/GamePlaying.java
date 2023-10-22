@@ -21,10 +21,11 @@ public class GamePlaying {
     PrintMessage printer = new PrintMessage();
 
     public boolean playGame() {
-        enterValue();
+        computerNumber = cpu.setComputerNumber(computerNumber);
 
         int strike = 0;
         while (strike != 3) {
+            enterValue();
             strike = guessNumber();
         }
 
@@ -40,7 +41,6 @@ public class GamePlaying {
     }
 
     private void enterValue() {
-        computerNumber = cpu.setComputerNumber(computerNumber);
         playerNumber = player.getPlayerNumber(playerNumber);
     }
 
