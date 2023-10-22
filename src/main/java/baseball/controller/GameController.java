@@ -20,9 +20,12 @@ public class GameController {
         while (!gameset.isSetEnd()) {
             playRound(gameset);
         }
+
+        OutputView.printSetEndMessage();
     }
 
     private static void playRound(GameSet gameSet) {
+        OutputView.printGameNumbersInputMessage();
         String userNumbersInput = InputView.readUserInput();
         RoundResult roundResult = gameSet.playRound(userNumbersInput);
 
