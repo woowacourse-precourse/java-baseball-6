@@ -84,4 +84,41 @@ Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
 ```
 
 테스트 코드를 여러개 작성해봤는데 생각보다 귀찮은 작업이 아니었고 단위적으로 테스트 하기 좋은 도구라는 생각이 들었다.
-테스트 코드를 먼저 작성해야하는지 아니면 기능을 구현하고 테스트 코드를 먼저 작성해야하는지 모르겠다. 자연스레 TDD에 흥미가 생기는 것 같다. 
+테스트 코드를 먼저 작성해야하는지 아니면 기능을 구현하고 테스트 코드를 먼저 작성해야하는지 모르겠다. 자연스레 TDD에 흥미가 생기는 것 같다.
+
+## input을 시뮬레이팅
+기능을 분리하긴 했지만 생각해보면 getOneOrTwo 같은 분리된 메서드는 클래스 안에서만 사용하기 때문에 public으로 바꾸는 것은 옳지 않다고 생각했다. private 접근자로 바꾸고도 테스트가 가능하도록 input에 대해서 시뮬레이트하도록 하는 방법을 서칭했다.
+
+방법은 Scanner의 동작 방식을 이용하는 것이었다. Scanner는 생성될 때 System.in에서 유저가 입력한 문자 스트림을 가져오는 형식인데 우리가 System.in에 넣고 싶은 문자를 넣어 Scanner가 가져가도록 유도하면 가능하다.
+
+다음은 System.in 에 넣고 싶은 문자를 넣는 코드이다.
+```
+void inputStringToSystemIn(String data){  
+    ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());  
+    System.setIn(testIn);  
+}
+```
+이를 통해 사용자의 입력을 시뮬레이트하면서 테스트 할 수 있었다.
+```
+@Test  
+void 유저입력예외처리테스트_길이가3이아닌입력(){  
+    inputStringToSystemIn("12 ");  
+	    Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {  
+        display.getUserInput();  
+    });  
+}
+```
+
+그러나 두 테스트를 연속으로 실행할 때는 `java.util.NoSuchElementException` 예외가 나왔다. 현재 스트림에 아무것도 없다는 뜻이다. 해결하기 위해 삽질을 했지만 답은 가까이에 있었다.
+
+```
+void inputStringToSystemIn(String data){  
+    ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());  
+    System.setIn(testIn);  
+    display.close();
+}
+```
+`System.setIn`은 말 그대로 System.in을 다른 스트림으로 바꾸는 명령이다. 
+`display.getUserInput()`은 처음으로 Scanner를 사용하는 명령이기 때문에 Scanner는 바꿔준 `ByteArrayInputStream`을 가지고 입력을 받는다. 
+그래서 첫번째 테스트는 성공했다. 하지만 Scanner가 close되지 않고 계속 사용된다면 아무리 `System.setIn`을 해봤자 이전에 설정한 `ByteArrayInputStream`을 가지고 입력을 받으니 아무 입력을 받지않아 `java.util.NoSuchElementException` 예외가 나오는 것이다.
+때문에 `display.close();`를 통해 Scanner를 종료해주고 바뀐 입력스트림을 가지고 다시 생성되도록 유도한 것이다. 
