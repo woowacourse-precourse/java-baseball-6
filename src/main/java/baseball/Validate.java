@@ -20,4 +20,9 @@ public class Validate {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void validateInputValue(String number) {
+        validateNumber(number);
+        duplicateNumber(number);
+    }
 }
