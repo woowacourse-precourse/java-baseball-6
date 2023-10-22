@@ -19,7 +19,7 @@ public class Computer {
     public Computer(){
     }
 
-    public Map<Integer, Integer> makeRandomAnswer(){
+    public void makeRandomAnswer(){
         answer = new HashMap<>();
         int order = 0;
 
@@ -31,8 +31,6 @@ public class Computer {
                 order++;
             }
         }
-
-        return answer;
     }
 
     public void calculateScore(String playerInput){
