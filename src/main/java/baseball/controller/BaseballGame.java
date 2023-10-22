@@ -65,7 +65,7 @@ public class BaseballGame {
     public void retryCheck() {
         RetryCheck retryCheck = new RetryCheck(userInput());
 
-        if (retryCheck.getNum().equals("1")) {
+        if (retryCheck.isRetry()) {
             this.gameStart();
         }
     }

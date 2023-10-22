@@ -10,8 +10,11 @@ public class RetryCheck {
         this.num = num;
     }
 
-    public String getNum() {
-        return num;
+    public boolean isRetry() {
+        if (this.num == "1") {
+            return true;
+        }
+        return false;
     }
 
     private static void checkRetryInput(String number) {
