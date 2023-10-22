@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validate {
@@ -10,4 +13,11 @@ public class Validate {
         }
     }
 
+    private static void duplicateNumber(String number) {
+        List<String> splitNumberContainer = List.of(number.split(""));
+        Set<String> numberContainer = new HashSet<>(splitNumberContainer);
+        if (number.length() != numberContainer.size()) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
