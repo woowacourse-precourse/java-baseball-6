@@ -13,9 +13,10 @@ public class InputNumberValidator {
     * 플레이어의 입력값(String)을 List로 변환하는 메서드
     * @Param input 플레이어의 숫자
     * */
-    private List<Integer> convertStrToList(String input) {
+    public static List<Integer> convertStrToList(String input) {
         return Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
 }
