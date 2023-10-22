@@ -39,9 +39,9 @@
 - ✅ displayExitMessage 메서드 구현
     - 게임이 종료될 때 메시지 구현
 
-## ❌ 게임 재시작/종료 여부 확인 메시지 출력 기능
+## ✅ 게임 재시작/종료 여부 확인 메시지 출력 기능
 
-- ❌ displayAskRestartOrExitGame 메서드 구현
+- ✅ displayAskRestartOrExitGame 메서드 구현
     - 재시작 여부 확인 메시지 구현
 
 # Controller
