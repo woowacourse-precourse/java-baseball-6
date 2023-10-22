@@ -1,11 +1,8 @@
 package baseball;
 import baseball.domain.Computer;
 import baseball.domain.Player;
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.domain.Referee;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -25,9 +22,9 @@ public class Application {
                 player.inputNumber();
                 String playerNumber = player.getNumber();
 
-                ArrayList<Integer> b_s = count_B_S(comNumber, playerNumber);
-                int count_ball = b_s.get(0);
-                int count_strike = b_s.get(1);
+                Referee referee = new Referee();
+                int count_ball = referee.countBall(comNumber, playerNumber);
+                int count_strike = referee.countStrike(comNumber, playerNumber);
 
                 String answer = "";
                 if (count_ball == 0 && count_strike == 0) {
@@ -55,27 +52,5 @@ public class Application {
                 }
             }
         }
-    }
-    static ArrayList<Integer> count_B_S(String computer, String user){
-        ArrayList<Integer> b_s = new ArrayList<>();
-        int ball = 0;
-        int strike = 0;
-        String[] com = new String[3];
-        String[] usr = new String[3];
-
-        for(int i=0;i<3;i++){
-            com[i] = computer.charAt(i)+"";
-            usr[i] = user.charAt(i)+"";
-        }
-
-        for(int i=0;i<3;i++) {
-            if (computer.contains(usr[i]) && !com[i].equals(usr[i]))
-                ball++;
-            if(com[i].equals(usr[i]))
-                strike++;
-        }
-        b_s.add(ball);
-        b_s.add(strike);
-        return b_s;
     }
 }
