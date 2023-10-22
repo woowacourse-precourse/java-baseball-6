@@ -24,8 +24,8 @@ public class ResultOutputGenerate {
         OutputView.outputForNothingScore(result);
     }
 
-    public static void generateSuccessResultTextForOutput(){
-        String result = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static void generateSuccessResultTextForOutput(int strike_count){
+        String result = strike_count+"스트라이크\n"+strike_count+"개의 숫자를 모두 맞히셨습니다! 게임 종료";
         OutputView.outputForGameSuccess(result);
     }
 

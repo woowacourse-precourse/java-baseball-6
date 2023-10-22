@@ -44,7 +44,7 @@ public class CheckGameResult {
     private static void checkOneTypeScore(int ball_count,int strike_count){
         if(checkOnlyStrikeScore(ball_count,strike_count)){
             if (checkGameSuccessCondition(strike_count)){
-                ResultOutputGenerate.generateSuccessResultTextForOutput();
+                ResultOutputGenerate.generateSuccessResultTextForOutput(strike_count);
                 game_result=GameCondition.FINISH;
                 return;
             }
