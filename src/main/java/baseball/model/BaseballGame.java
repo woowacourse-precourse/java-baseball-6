@@ -1,6 +1,5 @@
-package baseball.controller;
+package baseball.model;
 
-import baseball.model.BaseballNumber;
 import java.util.List;
 
 public class BaseballGame {

@@ -1,6 +1,5 @@
-package baseball.controller;
+package baseball.model;
 
-import baseball.model.BaseballNumber;
 import baseball.utils.Validator;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
