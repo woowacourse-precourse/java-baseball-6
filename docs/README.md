@@ -80,18 +80,16 @@
 
 - 사용자 숫자의 예외 발생을 테스트한다.
     - 사용자 숫자가 3자리가 아니면 IllegalArgumentException이 발생한다.
-    - 사용자 숫자가 0을 포함하고 있으면 IllegalArgumentException이 발생한다.
+    - 사용자 숫자의 범위가 1~9가 아니라면 IllegalArgumentException이 발생한다.
     - 사용자 숫자 3자리 중 중복이 있으면 IllegalArgumentException이 발생한다
 - 컴퓨터 숫자의 예외 발생을 테스트한다.
     - 컴퓨터 숫자가 3자리가 아니면 IllegalArgumentException이 발생한다.
-    - 컴퓨터 숫자가 0을 포함하고 있으면 IllegalArgumentException이 발생한다.
+    - 컴퓨터 숫자의 범위가 1~9가 아니라면 IllegalArgumentException이 발생한다.
     - 컴퓨터 숫자 3자리 중 중복이 있으면 IllegalArgumentException이 발생한다.
 - String을 List\<Integer\>로 변환하는 기능을 테스트한다.
-- String을 List\<Integer\>로 변환하는 기능의 예외 발생을 테스트한다.
-    - 숫자로 변환할 수 없는 입력이 있다면 IllegalArgumentException이 발생한다.
 - String을 Integer로 변환하는 기능을 테스트한다.
 - String을 Integer로 변환하는 기능의 예외 발생을 테스트한다.
-    - 숫자로 변환할 수 없는 입력이라면 IllegalArgumentException이 발생한다.
+    - 숫자로 변환할 수 없는 입력이라면 NumberFormatException이 발생할 것이고, 그것을 잡아 IllegalArgumentException을 발생시킨다.
 - 컴퓨터 숫자와 사용자 숫자를 비교하여 결과를 반환하는 기능을 테스트한다.
     - 낫싱을 반환하는 테스트 케이스
     - 1볼을 반환하는 테스트 케이스
