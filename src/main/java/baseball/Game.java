@@ -34,6 +34,9 @@ public class Game {
             throw new IllegalArgumentException(String.format("유효하지 않은 입력값 = %s", userNum));
         }
 
+        GameResult gameResult = compareUserNumAndComputerNum(userNum);
+        System.out.println(gameResult.returnResultToString());
+
     }
 
     /**
@@ -89,6 +92,24 @@ public class Game {
             }
         }
         computerNum = sb.toString();
+    }
+
+    /**
+     * 사용자가 입력한 값과 컴퓨터가 생성한 값을 비교하고 볼 카운트와 스트라이크 카운트 담은 GameResult 반환
+     * @param userNum 사용자가 입력한 값
+     * @return 게임결과
+     */
+    private GameResult compareUserNumAndComputerNum(String userNum) {
+        GameResult gameResult = new GameResult();
+        for (int i = 0; i < userNum.length(); i++) {
+            int indexFromComputerNum = computerNum.indexOf(userNum.charAt(i));
+            if (indexFromComputerNum == i) { // 같은 위치에 같은 숫자가 있는 경우
+                gameResult.plusStrikeCount();
+            } else if (indexFromComputerNum > -1) { // 같은 위치는 아니지만 존재는 하는 경우
+                gameResult.plusBallCount();
+            }
+        }
+        return gameResult;
     }
 
 }
