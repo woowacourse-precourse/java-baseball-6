@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    final int randomLength = 3;
     private List<Integer> randomInt;
     private List<Integer> userInput;
-    final int randomLength = 3;
+    private int strike;
+    private int ball;
+    private boolean isSolved;
 
     public Game() {
         setRandomInt();
@@ -33,6 +36,45 @@ public class Game {
         for (int j = 0; j < input.length(); j++) {
             userInput.add(input.charAt(j) - '0');
         }
+    }
+
+    public boolean isSolved() {
+        return isSolved;
+    }
+
+    public void printResult() {
+        JudgeInput();
+        String result = "";
+        if (ball > 0 && strike > 0) {
+            result = ball + "볼 " + strike + "스트라이크";
+        }
+        else if (ball == 0 && strike == 0) {
+            result = "낫싱";
+        }
+        else {
+            if (ball > 0) {
+                result = ball + "볼";
+            }
+            else {
+                result = strike + "스트라이크";
+            }
+        }
+        System.out.println(result);
+    }
+
+    private void JudgeInput() {
+        strike = 0;
+        ball = 0;
+        for (int i = 0; i < randomLength; i++) {
+            if (randomInt.get(i).equals(userInput.get(i))) {
+                strike++;
+            }
+            else if (randomInt.contains(userInput.get(i))) {
+                ball++;
+            }
+        }
+        if (strike == randomLength)
+            isSolved = true;
     }
 
     private void validateUserInput(String input) {

@@ -10,7 +10,10 @@ public class Application {
         while (!isFinished) {
             try {
                 Game game = new Game();
-                game.getUserInput();
+                while (!game.isSolved()) {
+                    game.getUserInput();
+                    game.printResult();
+                }
                 isFinished = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(e);
