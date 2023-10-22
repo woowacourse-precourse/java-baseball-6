@@ -11,7 +11,7 @@ public class Controller {
         gameStart();
         gameOn();
         endGame();
-        gameRestart();
+        restartGame();
     }
 
     public void gameStart() {
@@ -20,14 +20,14 @@ public class Controller {
     }
 
     public void gameOn() {
-        service.onGame();
+        service.gameInProgress();
     }
 
     public void endGame() {
         outPut.GameOverMessage();
     }
 
-    public void gameRestart() {
+    public void restartGame() {
         service.gameRestart();
     }
 }

@@ -1,21 +1,18 @@
 package baseball.domain;
 
-import java.util.ArrayList;
-
 public class Game {
     int ballCount;
     int strikeCount;
 
-    int[] randomNumber;
+    int[] gameRandomNumber;
 
-    public void setRandomNumber(int[] randomNumber) {
-        this.randomNumber = randomNumber;
+    public void setRandomNumber(int[] gameRandomNumber) {
+        this.gameRandomNumber = gameRandomNumber;
     }
 
-    public int[] getRandomNumber() {
-        return this.randomNumber;
+    public int[] getGameRandomNumber() {
+        return this.gameRandomNumber;
     }
-
 
     public void setCountZero() {
         ballCount = 0;
