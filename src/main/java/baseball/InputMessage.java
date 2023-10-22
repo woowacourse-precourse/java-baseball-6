@@ -8,13 +8,11 @@ public class InputMessage {
 
     public String inputThreeNumber() {
         String threeNumber = Console.readLine();
-        inputValidation.validateNumber(threeNumber);
         return threeNumber;
     }
 
-    public String inputMenuNumber() {
+    public String inputOptionNumber() {
         String menuNumber = Console.readLine();
-        inputValidation.validateOptionNumber(menuNumber);
         return menuNumber;
     }
 }
