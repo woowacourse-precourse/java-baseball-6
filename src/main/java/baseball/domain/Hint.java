@@ -6,11 +6,6 @@ public class Hint {
 	private int strike;
 	private int ball;
 
-	private Hint() {
-		strike = 0;
-		ball = 0;
-	}
-
 	public static Hint create(TargetNumber targetNumber, InputNumber inputNumber) {
 		Hint hint = new Hint();
 		hint.compare(targetNumber, inputNumber);

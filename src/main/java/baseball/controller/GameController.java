@@ -1,48 +1,15 @@
 package baseball.controller;
 
-import baseball.domain.Hint;
-import baseball.domain.InputNumber;
-import baseball.domain.TargetNumber;
-import baseball.util.Parser;
-import baseball.view.InputView;
-import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.service.GameService;
 
 public class GameController {
-	private static int NUMBER_SIZE = 3;
-	private TargetNumber targetNumber;
-	private InputNumber inputNumber;
-	private Hint hint;
+	private final GameService gameService;
+
+	public GameController() {
+		gameService = new GameService();
+	}
 
 	public void run() {
-		setTargetNumber();
-		do {
-			askInput();
-			printOutput(getResult());
-		} while(!checkWin());
+		gameService.start();
 	}
-
-	private void askInput() {
-		InputView.askNumber();
-		inputNumber = InputNumber.create(Console.readLine(),NUMBER_SIZE);
-	}
-
-	private void printOutput(String result) {
-		OutputView.printResult(result);
-	}
-
-	private boolean checkWin() {
-		return hint.isWin(NUMBER_SIZE);
-	}
-
-	private void setTargetNumber() {
-		targetNumber = TargetNumber.create(NUMBER_SIZE);
-	}
-
-	private String getResult() {
-		hint = Hint.create(targetNumber, inputNumber);
-		return hint.getResult();
-	}
-
-
 }
