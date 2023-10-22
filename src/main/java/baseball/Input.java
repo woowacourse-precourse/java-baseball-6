@@ -12,9 +12,11 @@ public class Input {
     }
 
     List<Integer> getNumber() { //사용자의 숫자를 입력받고 예외가 없다면 반환하는 함수
+        List<Integer> user = new ArrayList<>();
         String number = Console.readLine();
-        validateNumber(number);
-        return toArrayList(number);
+        user = toArrayList(number);
+        validate.validateUser(user);
+        return user;
     }
 
     List<Integer> toArrayList(String number) { // String을 ArrayList로 변환하는 함수
@@ -23,9 +25,5 @@ public class Input {
             inputNumber.add(number.charAt(i) - '0');
         }
         return inputNumber;
-    }
-
-    void validateNumber(String number) { // 예외처리 함수
-        validate.validateInput(number);
     }
 }

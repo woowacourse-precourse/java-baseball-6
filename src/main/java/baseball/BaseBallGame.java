@@ -10,7 +10,6 @@ public class BaseBallGame {
     private Check check; // 사용자와 컴퓨터 숫자를 비교하는 객체
 
     BaseBallGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         input = new Input();
         rand = new Rand();
         check = new Check();
