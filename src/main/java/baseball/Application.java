@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -55,6 +54,17 @@ public class Application {
         return list;
     }
 
+    public int[] countStrikeBall(List<Integer> computer, List<Integer> userNum) {
+        int[] countSB = {0, 0};
+        for (int i : userNum) {
+            if (computer.contains(i)) {
+                if (computer.indexOf(i) == userNum.indexOf(i)) countSB[0]++;  //스트라이크 갯수
+                if (computer.indexOf(i) != userNum.indexOf(i)) countSB[1]++; //볼 갯수
+            }
+        }
+        return countSB;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application app = new Application();
@@ -78,13 +88,14 @@ public class Application {
                 List<Integer> userNum = app.userInputToNumber(user);
                 app.hasSameNumber(userNum);
 
-                // 스트라이크, 볼 계산
-                for (int i : userNum) {
-                    if (computer.contains(i)) {
-                        if (computer.indexOf(i) == userNum.indexOf(i)) strike ++;
-                        if (computer.indexOf(i) != userNum.indexOf(i)) ball++;
-                    }
-                }
+                // 확인용
+                System.out.println(computer);
+                System.out.println(userNum);
+
+                strike = app.countStrikeBall(computer, userNum)[0];
+                ball = app.countStrikeBall(computer, userNum)[1];
+
+
                 // 결과 출력
                 if (ball > 0) {
                     System.out.print(ball + "볼 ");
