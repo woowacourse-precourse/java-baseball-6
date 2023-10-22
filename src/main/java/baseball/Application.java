@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,7 +22,7 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }
-            
+
 
             //사용자 숫자 입력(맞을 때까지 반복)
             int ans = 0;
