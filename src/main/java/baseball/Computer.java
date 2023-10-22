@@ -1,8 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Computer {
     private final Count answer;
@@ -16,15 +16,20 @@ public class Computer {
     }
 
     private String generateRandomCount() {
-        List<Integer> numbers = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= 9; i++) {
-            numbers.add(i);
+        Set<Integer> threeDigits = new HashSet<>();
+
+        final int upperDigitBound = 3;
+        final int lowerBound = 1;
+        final int upperBound = 9;
+
+        while (threeDigits.size() < upperDigitBound) {
+
+            threeDigits.add(Randoms.pickNumberInRange(lowerBound, upperBound));
         }
 
-        for (int i = 0; i < 3; i++) {
-            int deleteIndex = Randoms.pickNumberInRange(0, numbers.size() - 1);
-            sb.append(numbers.remove(deleteIndex));
+        StringBuilder sb = new StringBuilder();
+        for (Integer digit : threeDigits) {
+            sb.append(digit);
         }
 
         return sb.toString();
