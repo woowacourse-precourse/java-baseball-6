@@ -1,13 +1,13 @@
 package baseball;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class PlayerNumberValidator {
-    private Map<String, Integer> map;
+    private Set<String> set;
 
     public PlayerNumberValidator() {
-        map = new HashMap<>();
+        set = new HashSet<>();
     }
 
     public boolean isValidNumber(String number) {
@@ -17,10 +17,10 @@ public class PlayerNumberValidator {
 
         for (int i = 0; i < 3; i++) {
             char cur = number.charAt(i);
-            if (cur < '1' || cur > '9' || map.containsKey(String.valueOf(cur))) {
+            if (cur < '1' || cur > '9' || set.contains(cur)) {
                 return false;
             } else {
-                map.put(String.valueOf(cur), 1);
+                set.add(String.valueOf(cur));
                 return true;
             }
         }
