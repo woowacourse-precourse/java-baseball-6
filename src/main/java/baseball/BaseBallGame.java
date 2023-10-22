@@ -15,6 +15,18 @@ public class BaseBallGame {
     }
 
 
+    private List<Integer> stringToListConverter(String numberSequence){
+        try{
+            numberSequence = numberSequence.replaceAll(" ", "");
+            validateInputNumbers(numberSequence);
+            return Arrays.stream(numberSequence.split(""))
+                    .map(Integer::valueOf)
+                    .collect(Collectors.toList());
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void validateInputNumbers(String numberSequence){
         if (numberSequence.length() != 3){
             throw new IllegalArgumentException();
