@@ -19,8 +19,7 @@ class ComparatorTest {
         //given
         Balls computerBalls=new Balls(new ArrayList<Integer>(Arrays.asList(1,2,4)));
         Balls userBalls=new Balls(new ArrayList<Integer>(Arrays.asList(1,4,2)));
-        int strike=1;
-        int ball=2;
+
         Hint hint=new Hint();
 
         //when
