@@ -1,5 +1,7 @@
 package baseball.game;
 
+import baseball.object.Game;
+import baseball.object.User;
 import camp.nextstep.edu.missionutils.Console;
 
 public class RunGame {
