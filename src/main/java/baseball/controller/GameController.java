@@ -61,8 +61,8 @@ public class GameController {
                 input.endGame();
                 if(input.getGameMode().equals("2")){
                     // 루프를 벗어나 종료
-                    gameManager.setGameMode("2");
-//                    break;
+                    gameManager.setGameMode("2");   // 여기까지만 해도 프로그램은 종료가 되는데 왜 break를 써야 timeout이 나지 않는걸까?
+                    break;  // 루프를 벗어나기 위해
                 }
                 // 컴퓨터 숫자 초기화 후 재생성
                 computer.getComNumber().clear();
