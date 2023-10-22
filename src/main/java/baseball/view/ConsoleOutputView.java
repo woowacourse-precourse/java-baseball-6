@@ -11,29 +11,40 @@ public class ConsoleOutputView implements OutputView {
 
     @Override
     public void print(final String message) {
+        System.out.print(message);
+    }
+
+    public void printLine(final String message) {
         System.out.println(message);
     }
 
     public void printGameResult(final int ballCount, final int strikeCount) {
-        String result = makeBallResult(ballCount) + BLANK + makeStrikeResult(strikeCount);
-        System.out.println(result);
+        String result = makeResult(ballCount, strikeCount);
+        printLine(result);
     }
 
-    private String makeBallResult(final int ballCount) {
-        if (isZero(ballCount)) {
-            return EMPTY;
-        }
-        return ballCount + BALL;
-    }
-
-    private String makeStrikeResult(final int strikeCount) {
-        if (isZero(strikeCount)) {
+    private String makeResult(final int ballCount, final int strikeCount) {
+        if (isNothing(ballCount, strikeCount)) {
             return NOTHING;
         }
-        return strikeCount + STRIKE;
+        if (isOnlyBall(ballCount, strikeCount)) {
+            return ballCount + BALL;
+        }
+        if (isOnlyStrike(ballCount, strikeCount)) {
+            return strikeCount + STRIKE;
+        }
+        return ballCount + BALL + BLANK + strikeCount + STRIKE;
     }
 
-    private boolean isZero(final int count) {
-        return count == ZERO;
+    private boolean isNothing(final int ballCount, final int strikeCount) {
+        return ballCount == ZERO && strikeCount == ZERO;
+    }
+
+    private boolean isOnlyBall(final int ballCount, final int strikeCount) {
+        return ballCount != ZERO && strikeCount == ZERO;
+    }
+
+    private boolean isOnlyStrike(final int ballCount, final int strikeCount) {
+        return ballCount == ZERO && strikeCount != ZERO;
     }
 }
