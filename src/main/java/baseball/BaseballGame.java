@@ -5,7 +5,12 @@ import java.util.List;
 public class BaseballGame {
     private final int computerNumber;
 
-    public BaseballGame(int computerNumber) {
+    public BaseballGame(int computerNumber, int computerNumberCount) {
+        String computerNumberString = String.valueOf(computerNumber);
+        if (!Util.validateInputNumber(computerNumberString, computerNumberCount)) {
+            throw new IllegalArgumentException("컴퓨터가 가질 수 없는 숫자입니다.");
+        }
+
         this.computerNumber = computerNumber;
     }
 
@@ -19,8 +24,8 @@ public class BaseballGame {
     }
 
     private BaseballGameResult getBaseBallGameResult(int inputNumber) {
-        int[] computerNumberArray = Util.splitAndGetIntArray(computerNumber);
-        int[] inputNumberArray = Util.splitAndGetIntArray(inputNumber);
+        int[] computerNumberArray = Util.split(computerNumber);
+        int[] inputNumberArray = Util.split(inputNumber);
 
         int ball = 0;
         int strike = 0;
@@ -34,7 +39,7 @@ public class BaseballGame {
     }
 
     private boolean isBall(int[] computerNumberArray, int[] inputNumberArray, int i) {
-        List<Integer> removedComputerNumberList = Util.removeAndGetList(computerNumberArray, i);
+        List<Integer> removedComputerNumberList = Util.removeByIndex(computerNumberArray, i);
         return removedComputerNumberList.contains(inputNumberArray[i]);
     }
 

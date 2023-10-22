@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Util {
-    public static int[] splitAndGetIntArray(int number) {
+    public static int[] split(int number) {
         String[] numberStringArray = String.valueOf(number).split("");
         int[] numberIntArray = Stream.of(numberStringArray)
                 .mapToInt(Integer::parseInt)
@@ -17,7 +17,7 @@ public class Util {
         return numberIntArray;
     }
 
-    public static List<Integer> removeAndGetList(int[] intArray, int index) {
+    public static List<Integer> removeByIndex(int[] intArray, int index) {
         ArrayList<Integer> intList = new java.util.ArrayList<>(Arrays.stream(intArray)
                 .boxed()
                 .toList());
@@ -58,5 +58,41 @@ public class Util {
             resultNumber += numberList.get(i) * Math.pow(10, numberList.size() - 1 - i);
         }
         return resultNumber;
+    }
+
+    public static boolean validateInputNumber(String inputString, int numberCount) {
+        int inputNumber;
+
+        try {
+            inputNumber = Integer.parseInt(inputString);
+        } catch (NumberFormatException e1) {
+            return false;
+        }
+
+        int maxNumber = 0;
+        int minNumber = (int) Math.pow(10, numberCount - 1);
+        for (int i = 0; i < numberCount; i++) {
+            maxNumber += 9 * Math.pow(10, i);
+        }
+        if (inputNumber > maxNumber || inputNumber < minNumber) {
+            return false;
+        }
+
+        int[] splitNumberArray = Util.split(inputNumber);
+        for (int number : splitNumberArray) {
+            if (number == 0) {
+                return false;
+            }
+        }
+
+        boolean[] duplicateVerificationArray = new boolean[10];
+        for (int number : splitNumberArray) {
+            if (duplicateVerificationArray[number]) {
+                return false;
+            }
+            duplicateVerificationArray[number] = true;
+        }
+
+        return true;
     }
 }
