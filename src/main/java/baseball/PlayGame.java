@@ -3,8 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class PlayGame {
 
@@ -14,7 +12,9 @@ public class PlayGame {
     public void userInput() {
         System.out.println("숫자를 입력해주세요 : ");
         String originalInput = Console.readLine();
+        validateInput(originalInput);
         ArrayList<Integer> userNumberList = inputToArrayList(originalInput);
+
     }
 
     public ArrayList<Integer> inputToArrayList(String numInput) {
@@ -25,6 +25,13 @@ public class PlayGame {
         }
 
         return userNumbers;
+    }
+
+    public void validateInput(String input) {
+        validateNumberLength(input);
+        validateIsZero(input);
+        validateIntegerNumber(input);
+        validateDuplicateNumbers(input);
     }
 
     public void validateNumberLength(String input) {
