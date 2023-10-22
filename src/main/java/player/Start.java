@@ -23,7 +23,15 @@ public class Start {
 
             System.out.println(GuideMessageConstant.END_MESSAGE);
             System.out.println(GuideMessageConstant.RESTART_END_MESSAGE);
-            restarting_Game = Console.readLine();
+            try {
+                restarting_Game = Console.readLine();
+                if (!restarting_Game.equals("1") && !restarting_Game.equals("2")) {
+                    throw new IllegalArgumentException(GuideMessageConstant.ERROR_ONE_OR_TWO_ENTER);
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                System.exit(1);
+            }
         }
     }
 
