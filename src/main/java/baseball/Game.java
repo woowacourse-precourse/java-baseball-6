@@ -12,7 +12,7 @@ public class Game {
         while (true) {
             //한 게임 하는 사이클
             Round round = new Round(computer);
-            if (round.getRoundResult()) {
+            if (round.isGameEnd()) {
                 break;
             }
         }

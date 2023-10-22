@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Comparer {
@@ -14,18 +14,18 @@ public class Comparer {
         userNumber = user.getUserNumber();
     }
 
-    public ArrayList<Integer> getCompareResult() {
-        ArrayList<Integer> compareResult = new ArrayList<>();
+    public HashMap<String, Integer> getCompareResult() {
+        HashMap<String, Integer> compareResult = new HashMap<>();
         int strikeCount = getStrikeCount();
         int ballCount = getBallCount();
-        printRoundResult(strikeCount, ballCount);
-        compareResult.add(strikeCount);
-        compareResult.add(ballCount);
+        printCompareResult(strikeCount, ballCount);
+        compareResult.put("strikeCount", strikeCount);
+        compareResult.put("ballCount", ballCount);
 
         return compareResult;
     }
 
-    private static void printRoundResult(int strikeCount, int ballCount) {
+    private void printCompareResult(int strikeCount, int ballCount) {
         if (ballCount != 0 && strikeCount != 0) {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }

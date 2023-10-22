@@ -12,12 +12,12 @@ public class Computer {
         generateRandomNumbers();
     }
 
-    public void generateRandomNumbers() {
+    private void generateRandomNumbers() {
         while (computerNumber.size() < 3) {
             addComputerNumber();
         }
     }
-    
+
     private void addComputerNumber() {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
         if (!computerNumber.contains(randomNumber)) {
