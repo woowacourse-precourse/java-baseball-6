@@ -10,8 +10,8 @@ import baseball.domain.balls.Balls;
 public class Player {
 
 	private static final String DELIMITER = "";
-	public static final String NUMBER_FORMAT = "\\d+";
-	public static final String NOT_NUMBER_ERROR_MESSAGE = "숫자가 아닙니다.";
+	private static final String NUMBER_FORMAT = "\\d+";
+	private static final String NOT_NUMBER_ERROR_MESSAGE = "숫자가 아닙니다.";
 
 	private final Balls balls;
 
