@@ -17,11 +17,11 @@ public class UserInputValidation {
         return !isDuplicateGameNumber(userInput);
     }
 
-    public boolean isValidLengthGameNumber(String userInput) {
+    private boolean isValidLengthGameNumber(String userInput) {
         return userInput.length() == GAME_NUMBER_SIZE;
     }
 
-    public boolean isValidLengthRestartNumber(String userInput) {
+    private boolean isValidLengthRestartNumber(String userInput) {
         return userInput.length() == RESTART_NUMBER_SIZE;
     }
 
@@ -33,7 +33,7 @@ public class UserInputValidation {
         return isRangeRestartNumber(userInput);
     }
 
-    public boolean isRangeGameNumber(String userInput) {
+    private boolean isRangeGameNumber(String userInput) {
         for (int i = 0; i < GAME_NUMBER_SIZE; ++i) {
             char c = userInput.charAt(i);
             int number = Character.getNumericValue(c);
@@ -44,7 +44,7 @@ public class UserInputValidation {
         return true;
     }
 
-    public boolean isDuplicateGameNumber(String userInput) {
+    private boolean isDuplicateGameNumber(String userInput) {
         Set<Character> numberSet = new HashSet<>();
         for (char c : userInput.toCharArray()) {
             if (!numberSet.add(c)) {
@@ -54,7 +54,7 @@ public class UserInputValidation {
         return false;
     }
 
-    public boolean isRangeRestartNumber(String userInput) {
+    private boolean isRangeRestartNumber(String userInput) {
         char c = userInput.charAt(0);
         int number = Character.getNumericValue(c);
         return number >= 0 && number <= 2;
