@@ -10,7 +10,12 @@ import java.util.List;
 
 public class NumberPicker {
 
-    //private List<Integer> numberList;
+    protected NumberPicker() {
+    }
+
+    public static NumberPicker createNumberPicker() {
+        return new NumberPicker();
+    }
 
     public List<Integer> pickRandomNumber() {
         List<Integer> pickedNumbers = Randoms.pickUniqueNumbersInRange(

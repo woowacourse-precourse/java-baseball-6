@@ -11,7 +11,7 @@ public class Player implements Participant {
 
     private final NumberPicker numberPicker;
 
-    public Player(NumberPicker numberPicker) {
+    protected Player(NumberPicker numberPicker) {
         this.numberPicker = numberPicker;
     }
 
