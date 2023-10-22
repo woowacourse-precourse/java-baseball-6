@@ -24,6 +24,12 @@ public class User {
         makeUserNumber();
     }
 
+    public void resetUserNumber() {
+        if(userNumber != null) {
+            userNumber.clear();
+        }
+    }
+
     // inputNumber가 검증이 되면 userNumber에 넣기
 
     private void makeUserNumber() {
