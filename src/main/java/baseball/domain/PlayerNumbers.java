@@ -15,17 +15,14 @@ public class PlayerNumbers {
     }
 
     private void validateNumbers(List<Integer> numbers, int digitNumber) {
+        throwExceptionIfInvalidDigitNumber(numbers, digitNumber);
+        throwExceptionIfContainsNumberOutOfRange(numbers);
+        throwExceptionIfDuplicatedNumber(numbers);
+    }
+
+    private void throwExceptionIfInvalidDigitNumber(List<Integer> numbers, int digitNumber) {
         if (invalidDigitNumber(numbers, digitNumber)) {
             throw new IllegalArgumentException("[ERROR] 숫자는 " + digitNumber + "자리여야 합니다.");
-        }
-        if (isOutOfRange(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 숫자는 1 이상 9 이하여야 합니다.");
-        }
-        for (int indexOfCurrentNumber = 0; indexOfCurrentNumber < numbers.size(); indexOfCurrentNumber++) {
-            List<Integer> remainingNumbers = numbers.subList(indexOfCurrentNumber + 1, numbers.size());
-            if (remainingNumbers.contains(numbers.get(indexOfCurrentNumber))) {
-                throw new IllegalArgumentException("[ERROR] 숫자는 서로 달라야 합니다.");
-            }
         }
     }
 
@@ -33,9 +30,28 @@ public class PlayerNumbers {
         return numbers.size() != digitNumber;
     }
 
-    private boolean isOutOfRange(List<Integer> numbers) {
+    private void throwExceptionIfContainsNumberOutOfRange(List<Integer> numbers) {
+        if (containsNumberOutOfRange(numbers)) {
+            throw new IllegalArgumentException("[ERROR] 숫자는 " + MIN_NUMBER + " 이상 " + MAX_NUMBER + " 이하여야 합니다.");
+        }
+    }
+
+    private boolean containsNumberOutOfRange(List<Integer> numbers) {
         return numbers.stream()
-                .anyMatch(number -> !(MIN_NUMBER <= number && number <= MAX_NUMBER));
+                .anyMatch(this::isOutOfRange);
+    }
+
+    private boolean isOutOfRange(int number) {
+        return !(MIN_NUMBER <= number && number <= MAX_NUMBER);
+    }
+
+    private void throwExceptionIfDuplicatedNumber(List<Integer> numbers) {
+        for (int indexOfCurrentNumber = 0; indexOfCurrentNumber < numbers.size(); indexOfCurrentNumber++) {
+            List<Integer> remainingNumbers = numbers.subList(indexOfCurrentNumber + 1, numbers.size());
+            if (remainingNumbers.contains(numbers.get(indexOfCurrentNumber))) {
+                throw new IllegalArgumentException("[ERROR] 숫자는 서로 달라야 합니다.");
+            }
+        }
     }
 
     public void checkForBallCount(ComputerNumbers computerNumbers, int digitNumber) {
