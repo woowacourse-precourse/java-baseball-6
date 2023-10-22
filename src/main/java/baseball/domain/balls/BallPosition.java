@@ -4,8 +4,6 @@ import java.util.Objects;
 
 public class BallPosition {
 
-	private static final int MIN = 0;
-	private static final int MAX = 2;
 	private static final String POSITION_RANGE_ERROR_MESSAGE = "0 부터 2 사이의 숫자가 아닙니다.";
 
 	private final int position;
@@ -33,7 +31,7 @@ public class BallPosition {
 	}
 
 	private void validate(final int position) {
-		if (position < MIN || position > MAX) {
+		if (position < BallsRule.MIN_POSITION.getValue() || position > BallsRule.MAX_POSITION.getValue()) {
 			throw new IllegalArgumentException(POSITION_RANGE_ERROR_MESSAGE);
 		}
 	}

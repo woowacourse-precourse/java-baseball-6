@@ -9,11 +9,6 @@ import baseball.domain.GameResult;
 
 public class Balls {
 
-	private static final int MIN = 1;
-	private static final int MAX = 9;
-	private static final int SIZE = 3;
-	private static final int MIN_POSITION = 0;
-	private static final int MAX_POSITION = 2;
 	private static final String NUMBER_RANGE_ERROR_MESSAGE = "1 부터 9 사이의 숫자가 아닙니다.";
 	private static final String NUMBERS_SIZE_ERROR_MESSAGE = "3개의 숫자가 아닙니다.";
 	private static final String NUMBERS_DUPLICATION_ERROR_MESSAGE = "중복된 숫자가 존재합니다.";
@@ -33,20 +28,20 @@ public class Balls {
 
 	private void validateNumberRange(final List<Integer> numbers) {
 		numbers.stream()
-			   .filter(number -> number < MIN || number > MAX)
+			   .filter(number -> number < BallsRule.MIN_NUMBER.getValue() || number > BallsRule.MAX_NUMBER.getValue())
 			   .forEach(number -> {
 				   throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE);
 			   });
 	}
 
 	private void validateNumbersSize(final List<Integer> numbers) {
-		if (numbers.size() != SIZE) {
+		if (numbers.size() != BallsRule.BALLS_SIZE.getValue()) {
 			throw new IllegalArgumentException(NUMBERS_SIZE_ERROR_MESSAGE);
 		}
 	}
 
 	private void validateDuplication(final List<Integer> numbers) {
-		if (getCountWithoutDuplication(numbers) != SIZE) {
+		if (getCountWithoutDuplication(numbers) != BallsRule.BALLS_SIZE.getValue()) {
 			throw new IllegalArgumentException(NUMBERS_DUPLICATION_ERROR_MESSAGE);
 		}
 	}
@@ -56,7 +51,7 @@ public class Balls {
 	}
 
 	private List<Ball> mapToBalls(final List<Integer> numbers) {
-		return IntStream.rangeClosed(MIN_POSITION, MAX_POSITION)
+		return IntStream.rangeClosed(BallsRule.MIN_POSITION.getValue(), BallsRule.MAX_POSITION.getValue())
 						.mapToObj(position -> new Ball(numbers.get(position), position))
 						.toList();
 	}

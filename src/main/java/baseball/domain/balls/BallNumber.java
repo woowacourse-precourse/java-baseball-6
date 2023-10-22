@@ -4,8 +4,6 @@ import java.util.Objects;
 
 public class BallNumber {
 
-	private static final int MIN = 1;
-	private static final int MAX = 9;
 	private static final String NUMBER_RANGE_ERROR_MESSAGE = "1 부터 9 사이의 숫자가 아닙니다.";
 
 	private final int number;
@@ -33,7 +31,7 @@ public class BallNumber {
 	}
 
 	private void validate(int number) {
-		if (number < MIN || number > MAX) {
+		if (number < BallsRule.MIN_NUMBER.getValue() || number > BallsRule.MAX_NUMBER.getValue()) {
 			throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE);
 		}
 	}
