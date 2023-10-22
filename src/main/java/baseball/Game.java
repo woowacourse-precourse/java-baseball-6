@@ -24,12 +24,15 @@ public class Game {
     }
 
     public void run() {
-        computer.pickRandomNumbers();
-        GameNumbers gameNumbersOfPlayer = getGameNumbersOfPlayer();
-        GameResult result = computer.getResult(gameNumbersOfPlayer);
-        outputView.printResult(result);
-        if (result.isCorrect(MAX_STRIKES)) {
-            outputView.printEndMessage();
+        while (true) {
+            computer.pickRandomNumbers();
+            GameNumbers gameNumbersOfPlayer = getGameNumbersOfPlayer();
+            GameResult result = computer.getResult(gameNumbersOfPlayer);
+            outputView.printResult(result);
+            if (result.isCorrect(MAX_STRIKES)) {
+                outputView.printEndMessage();
+                break;
+            }
         }
     }
 

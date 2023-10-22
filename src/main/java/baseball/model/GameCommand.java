@@ -17,5 +17,9 @@ public class GameCommand {
             throw new IllegalArgumentException();
         }
     }
+
+    public boolean isEndSign() {
+        return command == END_COMMAND;
+    }
 }
 

@@ -11,9 +11,16 @@ public class Application {
 
         outputView.printStartMessage();
 
-        Game game = Game.getInstance(outputView, inputView);
-        game.run();
+        while (true) {
 
-        GameCommand command = new GameCommand(inputView.readEndCommand());
+            Game game = Game.getInstance(outputView, inputView);
+            game.run();
+
+            GameCommand command = new GameCommand(inputView.readEndCommand());
+            if (command.isEndSign()) {
+                break;
+            }
+
+        }
     }
 }
