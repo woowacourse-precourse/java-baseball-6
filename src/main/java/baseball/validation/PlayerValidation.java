@@ -35,4 +35,17 @@ public class PlayerValidation {
         }
         return number;
     }
+
+    public static Integer checkAnswerNumber(String number) {
+        isCheckNumber(number);
+        isCheckSize(number, 1);
+        ischeckOneOrTwo(number);
+        return Integer.parseInt(number);
+    }
+
+    private static void ischeckOneOrTwo(String number) {
+        if(!(number.equals("1") || number.equals("2"))){
+            throw new IllegalArgumentException("잘못된 입력 방식입니다");
+        }
+    }
 }
