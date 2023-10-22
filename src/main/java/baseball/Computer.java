@@ -22,6 +22,10 @@ public class Computer {
     }
 
     private String numberToString() {
-        return String.valueOf(Randoms.pickNumberInRange(100, 999));
+        StringBuilder sb = new StringBuilder();
+        sb.append(Randoms.pickNumberInRange(1, 9));
+        sb.append(Randoms.pickNumberInRange(0, 9));
+        sb.append(Randoms.pickNumberInRange(0, 9));
+        return sb.toString();
     }
 }
