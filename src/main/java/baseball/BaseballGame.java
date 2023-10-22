@@ -22,7 +22,7 @@ public class BaseballGame {
     }
     private static void inplay() {
         do {
-            baseball.setBallCount(userInputHandler.takeInput());
+            baseball.readBallCount(userInputHandler.takeInput());
         } while (!isEndCondition());
     }
     private static boolean isEndCondition() {
