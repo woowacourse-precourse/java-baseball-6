@@ -48,5 +48,4 @@ public class PlayerTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
-
 }

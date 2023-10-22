@@ -13,6 +13,5 @@ public class ComputerTest {
         List<Integer> randomNum = computer.generate();
 
         assertThat(3).isEqualTo(randomNum.size());
-        System.out.println(randomNum);
     }
 }
