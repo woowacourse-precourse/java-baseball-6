@@ -4,7 +4,7 @@ import computer.Hint;
 
 public class OutputView {
     public void viewHint(){
-        Hint hint = new Hint();
+        Hint hint = Hint.getInstance();
         if (hint.loadBall() != 0 && hint.loadStrike() != 0) {
             System.out.println(hint.loadBall() + "볼 " + hint.loadStrike() + "스트라이크");
             return;

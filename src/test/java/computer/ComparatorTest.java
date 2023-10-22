@@ -20,7 +20,7 @@ class ComparatorTest {
         Balls computerBalls=new Balls(new ArrayList<Integer>(Arrays.asList(1,2,4)));
         Balls userBalls=new Balls(new ArrayList<Integer>(Arrays.asList(1,4,2)));
 
-        Hint hint=new Hint();
+        Hint hint=Hint.getInstance();
 
         //when
         Comparator comparator=new Comparator();

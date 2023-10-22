@@ -11,7 +11,7 @@ public class BaseballGame implements Game{
 
     private static GameRule rule = new BaseBallRule();
     private static Comparator comparator = new Comparator();
-    private static Hint hint = new Hint();
+    private static Hint hint = Hint.getInstance();
     private static OutputView outputView=new OutputView();
     private static InputView inputView=new InputView();
 
