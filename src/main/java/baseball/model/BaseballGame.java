@@ -20,7 +20,7 @@ public class BaseballGame {
         for (int index = 0; index < BASEBALL_NUMBERS_LENGTH; index++) {
             BaseballNumber userBaseballNumber = userBaseballNumbers.getBaseballNumber(index);
             BaseballNumber randomBaseballNumber = computerBaseballNumbers.getBaseballNumber(index);
-            if (!userBaseballNumber.equals(randomBaseballNumber) && computerBaseballNumbers.contains(
+            if (!userBaseballNumber.equals(randomBaseballNumber) && computerBaseballNumbers.containsBaseballNumber(
                     userBaseballNumber)) {
                 ballCount++;
             }
