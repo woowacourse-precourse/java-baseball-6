@@ -21,12 +21,17 @@ public class ConsoleOutput implements OutPut {
     @Override
     public void printScore(Map<String, Integer> result) {
         StringBuilder sb = new StringBuilder();
-        if (result.get("ball") != 0) {
-            sb.append("" + result.get("strike") + "볼 ");
-        }
 
-        if (result.get("strike") != 0) {
-            sb.append("" + result.get("strike") + "스트라이크");
+        if (result.get("ball") == 0 && result.get("strike") == 0) {
+            sb.append("낫싱");
+        } else {
+            if (result.get("ball") != 0) {
+                sb.append("" + result.get("ball") + "볼 ");
+            }
+
+            if (result.get("strike") != 0) {
+                sb.append("" + result.get("strike") + "스트라이크");
+            }
         }
 
         print(sb.toString().strip() + "\n");
