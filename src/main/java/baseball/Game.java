@@ -1,20 +1,23 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
     private Computer computer = new Computer();
-    private User user = new User();
-    private Compare compare = new Compare();
     private UserInterface userInterface = new UserInterface();
 
+    private List<Integer> userInputNumbers = new ArrayList<>();
     private int bulls = 0;
     private int cows = 0;
 
     public void game() {
-        computer.setRandomNumbers();
         while(bulls != 3) {
             userInterface.pleaseEnterNumber();
-            user.enterNumbers();
-            if(user.getUserNumbers().size() == 3) {
+            inputNumbers();
+            if(userInputNumbers.size() == 3) {
                 judgmentStrikeOrBall();
             }
         }
@@ -22,8 +25,8 @@ public class Game {
         userInterface.restartOrShutdownMessage();
     }
     public void judgmentStrikeOrBall() {
-        bulls = compare.strikeCheck(computer.getComputerNumbers(), user.getUserNumbers());
-        cows = compare.ballCheck(computer.getComputerNumbers(), user.getUserNumbers()) - bulls;
+        bulls = computer.strikeCheck(userInputNumbers);
+        cows = computer.ballCheck(userInputNumbers) - bulls;
         if(cows > 0) { // 볼 출력
             userInterface.BallMessage(cows);
         }
@@ -34,5 +37,16 @@ public class Game {
             userInterface.nothing();
         }
         System.out.println();
+    }
+    public void inputNumbers() throws IllegalArgumentException{ // 숫자3개 입력
+        userInputNumbers.clear();
+
+        String input = Console.readLine(); // console => 이름 바꾸기
+        for (int i = 0; i < input.length(); i++) {
+            userInputNumbers.add(Integer.parseInt(input.substring(i, i + 1)));
+        }
+        if(userInputNumbers.size() > 3) {
+            throw new IllegalArgumentException();
+        }
     }
 }
