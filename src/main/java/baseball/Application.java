@@ -9,7 +9,10 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
-        System.out.println("input : " + input);
+        //예외 처리 3자리가 아닌경우
+        if (input.length() != 3) {
+            System.out.println("3자리 숫자를 입력해주세요.");
+        }
         
     }
 }
