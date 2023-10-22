@@ -42,12 +42,14 @@ public class BaseballGame {
     private boolean restartGame() throws IllegalArgumentException {
 
         System.out.println(RESTART_OR_STOP_QUESTION_SENTENCE);
+        return restartUserInput();
+    }
 
+    private boolean restartUserInput() throws IllegalArgumentException {
         String userInput = Console.readLine();
         if (!validateUserInput(userInput)){
             throw new IllegalArgumentException();
         }
-
         return userInput.equals(RESTART_GAME);
     }
 
