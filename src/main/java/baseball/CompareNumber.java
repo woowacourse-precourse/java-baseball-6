@@ -3,6 +3,7 @@ package baseball;
 import java.util.List;
 
 public class CompareNumber {
+    // computer와 player의 리스트를 비교하여 strike와 ball count
     public static int[] checkNumber(List<Integer> computer, List<Integer> player){
         int[] strike_ball={0,0};
         for (int i = 0; i<3; i++){
