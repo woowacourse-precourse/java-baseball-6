@@ -8,6 +8,7 @@ public class ComputerController {
     OutputView outputView = new OutputView();
     
     private static final int BASEBALL_NUMBER_LENGTH = 3;
+    private static final int BASEBALL_SUCCESS_STRIKE_COUNT = 3;
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String BALL_MESSAGE = "볼";
     private static final String NOTHING_MESSAGE = "낫싱";
@@ -57,5 +58,9 @@ public class ComputerController {
         }
 
         System.out.println(hint);
+    }
+
+    public boolean isSuccessGame() {
+        return strikeCount == BASEBALL_SUCCESS_STRIKE_COUNT;
     }
 }
