@@ -6,11 +6,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.controller.Core;
+import baseball.controller.Generator;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
+
+    @Test
+    void generateAnswer() {
+        // given
+        Generator generator = new Generator();
+        int listLen = 3;
+
+        // when
+        List<Integer> result = generator.generateAnswer(listLen);
+
+        // then
+        assertThat(result.size()).as("list size").isEqualTo(listLen);
+
+        List<Integer> check = new ArrayList<>();
+        for (int num : result) {
+            assertThat(false).as("duplication").isEqualTo(check.contains(num));
+            check.add(num);
+        }
+    }
 
     @Test
     void isNotOver() {
