@@ -34,20 +34,32 @@ public class NumberBaseballGame {
             ball = numberChecker.getBall(inputModule.getInputList());
             strike = numberChecker.getStrike(inputModule.getInputList());
 
-            if (ball != 0){
-                outputModule.printBall(ball);
-            }
-            if (strike != 0){
-                outputModule.printStrike(strike);
-            }
-            System.out.println();
-
-            if (strike == 3){
-                outputModule.printOut();
-                flag = true;
-            }
+            result(ball, strike);
         }
         oneMoreGame();
+    }
+
+    private void result(int ball, int strike) {
+        if (ball != 0 && strike == 0){
+            outputModule.printBall(ball);
+        }
+        if (ball == 0 && strike != 0){
+            outputModule.printStrike(strike);
+        }
+        if (ball != 0 && strike != 0){
+            outputModule.printBall(ball);
+            System.out.print(" ");
+            outputModule.printStrike(strike);
+        }
+        if (ball == 0 && strike == 0){
+            outputModule.printNothing();
+        }
+        System.out.println();
+
+        if (strike == 3){
+            outputModule.printOut();
+            flag = true;
+        }
     }
 
     private void oneMoreGame(){
