@@ -5,7 +5,7 @@ public enum GameHint {
     BALL("볼"),
     NOTHING("낫싱");
 
-    private String message;
+    private final String message;
 
     GameHint(String message) {
         this.message = message;
