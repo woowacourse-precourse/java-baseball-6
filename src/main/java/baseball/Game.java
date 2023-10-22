@@ -61,6 +61,10 @@ public class Game {
             }
         }
         System.out.println(result);
+        if (strike == randomLength) {
+            isSolved = true;
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 
     private void judgeUserInt() {
@@ -74,8 +78,6 @@ public class Game {
                 ball++;
             }
         }
-        if (strike == randomLength)
-            isSolved = true;
     }
 
     public void getUserChoice() {
