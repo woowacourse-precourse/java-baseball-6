@@ -9,6 +9,14 @@ public class Application {
 		do { 
 			GameController game = new GameController();
 			game.play(); // 게임 컨트롤러 실행
-		} while (Input.newGameSelect());
+		} while (newGame());
+    }
+    
+    public static boolean newGame() {
+    	int playerInput = Integer.parseInt(Input.newGameSelect());
+    	if (playerInput == 1) {
+    		return true;
+    	}
+    	return false;
     }
 }

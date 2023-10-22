@@ -9,7 +9,7 @@ public class ExceptionCheck {
 			inputLengthCheck(playerInput);
 			separateInputValues(playerInput);
 			inputDuplicationCheck(playerInput);
-			return playerInput;		
+			return playerInput;	
 		}
 		
 		private static void inputLengthCheck(String playerInput) throws IllegalArgumentException {
@@ -48,14 +48,14 @@ public class ExceptionCheck {
 			}
 		}
 		
-		public static boolean playerSelectCheck(int playerInput) throws IllegalArgumentException {
-			switch (playerInput) {
-			case 1 :
-				return true;
-			case 2 :
-				return false;
-			default :
-				throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
-			}			
+		public static String playerSelectCheck(String playerInput) {
+			correctNumberCheck(playerInput);
+			return playerInput;
+		}
+		
+		public static void correctNumberCheck(String playerInput) throws IllegalArgumentException {
+			if (!playerInput.equals("1") && !playerInput.equals("2")) {
+				throw new IllegalArgumentException("잘못된 값 입력 : 1 또는 2를 입력해주세요.");
+			}
 		}
 }
