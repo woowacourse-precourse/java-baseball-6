@@ -19,7 +19,7 @@ class ComputerTest {
 
     @BeforeEach
     void init() {
-        computer = Computer.createDefault(new TestNumberGenerator(List.of(1, 5, 9)));
+        computer = Computer.createWith(new TestNumberGenerator(List.of(1, 5, 9)));
     }
 
     @CsvSource({"1,2,3,1","4,5,6,1","7,8,9,1", "1,5,9,3"})
