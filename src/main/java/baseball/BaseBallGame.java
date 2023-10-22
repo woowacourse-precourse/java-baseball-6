@@ -3,11 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class BaseBallGame {
     RandomNumberPicker randomNumberPicker = new RandomNumberPicker();
-    Scanner scanner = new Scanner(System.in);
 
     public void play() {
         List<Integer> randomNums = randomNumberPicker.pickRandomNums();
