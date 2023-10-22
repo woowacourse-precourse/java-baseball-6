@@ -11,7 +11,7 @@ public class OutputView {
     public void printGameResult(GameStatus gamestatus) {
         String result = "";
         if (gamestatus.getBallCnt() != 0) {
-            result += gamestatus.getBallCnt() + "볼";
+            result += gamestatus.getBallCnt() + "볼 ";
         }
         if (gamestatus.getStrikeCnt() != 0) {
             result += gamestatus.getStrikeCnt() + "스트라이크";

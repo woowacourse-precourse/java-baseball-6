@@ -7,13 +7,13 @@ import java.util.List;
 
 public class RandomNumber {
 
-    private final List<Integer> randomNumber;
+    private List<Integer> randomNumber;
 
     public RandomNumber() {
         this.randomNumber = create();
     }
 
-    public List<Integer> create() {
+    private List<Integer> create() {
         ArrayList<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -31,5 +31,10 @@ public class RandomNumber {
 
     public Integer getNumberAtIndex(int index) {
         return this.randomNumber.get(index);
+    }
+
+    public void reset() {
+        randomNumber.clear();
+        this.randomNumber = create();
     }
 }

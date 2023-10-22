@@ -19,19 +19,47 @@ public class GameController {
     }
 
     public void playGame() {
-        RandomNumber randomNumber = new RandomNumber();
+        RandomNumber randomNumber = generateRandomNumber();
+
         while (!gameStatus.isEnd()) {
-            GameNumber gameNumber = new GameNumber(randomNumber, inputView.getInputNumber());
-            GameStatus gamestatus = gameService.compareNumber(gameNumber, gameStatus);
-            outputView.printGameResult(gamestatus);
-            if (gamestatus.isEnd()) {
-                outputView.printGameEndMessage();
-                RetryCommand command = inputView.getCommand();
-                if (command.isRetry()) {
-                    randomNumber = new RandomNumber();
-                    gamestatus.reset();
-                }
+            GameNumber gameNumber = createGameNumber(randomNumber);
+            gameStatus = compareGameNumbers(gameNumber);
+            displayGameResult(gameStatus);
+
+            if (gameStatus.isEnd()) {
+                handleGameEnd(randomNumber, gameStatus);
             }
         }
     }
+
+    private RandomNumber generateRandomNumber() {
+        return new RandomNumber();
+    }
+
+    private GameNumber createGameNumber(RandomNumber randomNumber) {
+        return new GameNumber(randomNumber, inputView.getInputNumber());
+    }
+
+    private GameStatus compareGameNumbers(GameNumber gameNumber) {
+        return gameService.compareNumber(gameNumber, gameStatus);
+    }
+
+    private void displayGameResult(GameStatus gameStatus) {
+        outputView.printGameResult(gameStatus);
+    }
+
+    private void handleGameEnd(RandomNumber randomNumber, GameStatus gameStatus) {
+        outputView.printGameEndMessage();
+        RetryCommand command = inputView.getCommand();
+
+        if (command.isRetry()) {
+            resetForRetry(randomNumber, gameStatus);
+        }
+    }
+
+    private void resetForRetry(RandomNumber randomNumber, GameStatus gameStatus) {
+        randomNumber.reset();
+        gameStatus.reset();
+    }
+
 }
