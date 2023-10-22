@@ -10,6 +10,13 @@ public class User {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
         }
 
+        for (int i = 0; i < number.length(); i++) {
+            char c = number.charAt(i);
+            if (c < '0' || c > '9') {
+                throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+            }
+        }
+
         if (hasDuplicatePattern(number)) {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
         }

@@ -5,10 +5,6 @@ import baseball.Model.Count;
 import baseball.Model.User;
 import baseball.View.Input;
 import baseball.View.Output;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class BaseballController {
     private final Computer computer;
     private final User user;

@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.Model.Computer;
+import baseball.Model.Restart;
+import baseball.Model.User;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +27,22 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 컴퓨터숫자_랜덤_생성(){
+        Computer computerNumber = new Computer();
+        computerNumber.setNumber();
+        assertThat(computerNumber.getNumber().length()).isEqualTo(3);
+    }
+
+    @Test
+    void 숫자이외의_입력_예외_테스트() {
+        User user = new User();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> user.setNumber("a23"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
