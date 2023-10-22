@@ -3,6 +3,7 @@ package baseball.model;
 import java.util.Arrays;
 
 public enum Command {
+    //TODO: 여기에 상수 선언 과연 맞을까
 
     RESTART("1"),
     QUIT("2");
