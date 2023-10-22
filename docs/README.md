@@ -31,8 +31,8 @@
 
 ## ❌ 게임 시작 메시지 출력 기능
 
-- ❌ displayNewGameMessage 메서드 구현
-    - ❌ 게임이 시작 될 때 안내 메시지 출력
+- ✅ displayNewGameMessage 메서드 구현
+    - ✅ 게임이 시작 될 때 안내 메시지 출력
 
 ## ❌ 게임 종료 메시지 출력 기능
 
