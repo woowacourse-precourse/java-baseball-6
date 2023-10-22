@@ -10,7 +10,7 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
-
+            //서로 다른 random 3자리 수 만들기
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
                 int randomNumber = pickNumberInRange(1, 9); // 1~9 랜덤 수 출력
@@ -20,7 +20,6 @@ public class Application {
             }
             System.out.println(computer);
             
-            System.out.println(pickNumberInRange(1, 9));
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String userInput = readLine();
             if (userInput.equals("1")) { // 1이면 게임 다시
