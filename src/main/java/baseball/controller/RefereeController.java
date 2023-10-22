@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.domain.player.Player;
-import baseball.domain.referee.Referee;
-import baseball.domain.result.Result;
+import baseball.domain.Player;
+import baseball.domain.Referee;
+import baseball.domain.Result;
 import baseball.view.BaseBallView;
 
 public class RefereeController {

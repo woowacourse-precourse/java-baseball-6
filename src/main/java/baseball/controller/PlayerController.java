@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.domain.numbers.Numbers;
-import baseball.domain.player.Player;
-import baseball.domain.result.Result;
+import baseball.domain.Player;
+import baseball.domain.Result;
 import baseball.view.BaseBallView;
 import java.util.Arrays;
 import java.util.stream.Collectors;

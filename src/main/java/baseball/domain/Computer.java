@@ -1,4 +1,4 @@
-package baseball.domain.player;
+package baseball.domain;
 
 import static baseball.domain.numbers.NumbersConstant.MAX_NUMBER;
 import static baseball.domain.numbers.NumbersConstant.MIN_NUMBER;
@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class Computer {
-    private  Player player;
+    private Player player;
 
     private Computer() {
     }

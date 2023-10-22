@@ -1,4 +1,4 @@
-package baseball.domain.result;
+package baseball.domain;
 
 import static baseball.domain.numbers.NumbersConstant.NUMBER_COUNT;
 

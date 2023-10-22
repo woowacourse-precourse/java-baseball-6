@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.player.Computer;
+import baseball.domain.Computer;
 import baseball.view.BaseBallView;
 
 
