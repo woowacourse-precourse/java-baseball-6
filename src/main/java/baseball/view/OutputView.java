@@ -27,15 +27,19 @@ public class OutputView {
     }
 
     public void printGameFailResult(int[] gameResult) {
-        if (gameResult[0] > 0 && gameResult[0] < 3) {
-            printStrikeHint(gameResult[0]);
-            return;
+        final int strikeIndex = GameHint.STRIKE.getResultIndex();
+        final int ballIndex = GameHint.BALL.getResultIndex();
+        final int nothingIndex = GameHint.NOTHING.getResultIndex();
+        final int noCount = 0;
+        final int maxCount = 3;
+
+        if (gameResult[strikeIndex] > noCount && gameResult[strikeIndex] < maxCount) {
+            printStrikeHint(gameResult[strikeIndex]);
         }
-        if (gameResult[1] > 0) {
-            printBallHint(gameResult[1]);
-            return;
+        if (gameResult[ballIndex] > noCount) {
+            printBallHint(gameResult[ballIndex]);
         }
-        if (gameResult[2] > 0) {
+        if (gameResult[nothingIndex] > noCount) {
             printNothingHint();
         }
     }
