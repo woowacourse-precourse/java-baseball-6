@@ -14,7 +14,14 @@ public class Application {
 
         // 컴퓨터가 숫자 3개를 고른다.
         List<Integer> computer = chooseNumByComputer();
-        
+
+        while (true) {
+            // 유저가 숫자 3개를 고른다.
+            List<Integer> user = chooseNumByUser();
+
+            // TODO 게임 종료 판단 기능 추가 시 삭제
+            break;
+        }
     }
 
     private static List<Integer> chooseNumByComputer() {
@@ -26,5 +33,19 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    private static List<Integer> chooseNumByUser() {
+        System.out.println("숫자를 입력해주세요 : ");
+
+        String userInput;
+        userInput = scanner.next();
+
+        List<Integer> num = new ArrayList<>();
+        // 유저의 입력을 숫자 리스트로 변환
+        for (int i = 0; i < userInput.length(); i++) {
+            num.add(userInput.charAt(i) - '0');
+        }
+        return num;
     }
 }
