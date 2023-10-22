@@ -14,7 +14,7 @@ public class InputMessage {
 
     public String inputMenuNumber() {
         String menuNumber = Console.readLine();
-        inputValidation.validateMenuNumber(menuNumber);
+        inputValidation.validateOptionNumber(menuNumber);
         return menuNumber;
     }
 }
