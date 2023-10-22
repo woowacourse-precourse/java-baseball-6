@@ -12,10 +12,10 @@ public class Baseball {
     private int[] result = new int[2]; // strike, ball의 수 저장 변수
     private boolean flag; // 게임 지속 여부 변수
 
-    private List<Integer> setNum(){ // 컴퓨터가 숫자를 생성해주는 함수
+    private List<Integer> setNum(int cntnum){ // 컴퓨터가 숫자를 생성해주는 함수
         List<Integer> num = new ArrayList<>();
 
-        while (num.size() < 3) {
+        while (num.size() < cntnum) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!num.contains(randomNumber)) {
                 num.add(randomNumber);
@@ -24,7 +24,7 @@ public class Baseball {
         return num;
     }
 
-    private int[] inputNum(){ // 숫자 입력 및 st
+    private int[] inputNum(int cntnum){ // 숫자 입력 및 st
 
         int[] stba = {0, 0}; // strike, ball의 수 저장 변수
         this.overlap = new ArrayList<>();
@@ -33,11 +33,11 @@ public class Baseball {
         String str = Console.readLine();
 
         //입력값이 3자리수인지 체크
-        if(str.length()!=3){
+        if(str.length()!=cntnum){
             throw new IllegalArgumentException("Invalid argument: "+str);
         }
 
-        for(int i=0; i<3; i++){
+        for(int i=0; i<cntnum; i++){
             int num = (int) str.charAt(i)-'0';
 
             //입력값이 정상적인지 체크
@@ -57,10 +57,10 @@ public class Baseball {
 
     }
     // strike와 볼의 수에 따른 출력 함수
-    private boolean printResult(int[] result){
+    private boolean printResult(int[] result, int cntnum){
         if (result[0] == 0 && result[1] == 0){
             System.out.println("낫싱");
-        } else if (result[0] == 3) {
+        } else if (result[0] == cntnum) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -68,7 +68,7 @@ public class Baseball {
 
             //입력값이 정상적인지 체크와 게임을 다시 진행할지의 여부
             if (choose.equals("1")) {
-                computer = setNum();
+                computer = setNum(cntnum);
             } else if(choose.equals("2")){
                 return false;
             }else {
@@ -85,13 +85,13 @@ public class Baseball {
     }
 
     //숫자야구 진행 함수
-    public void playBaseball(){
+    public void playBaseball(int cntnum){
 
-        computer = setNum(); // 랜덤의 서로다른 숫자 생성
+        computer = setNum(cntnum); // 랜덤의 서로다른 숫자 생성
 
         do {
-            result = inputNum(); //사용자의 입력값에 따른 strike, ball의 수 반환
-            flag = printResult(result); //스트라이크와 볼의 수에 따른 출력 및 게임 진행 여부
+            result = inputNum(cntnum); //사용자의 입력값에 따른 strike, ball의 수 반환
+            flag = printResult(result, cntnum); //스트라이크와 볼의 수에 따른 출력 및 게임 진행 여부
         }while (flag);
     }
 
