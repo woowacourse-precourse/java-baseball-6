@@ -1,7 +1,9 @@
 package baseball.controller;
 
 import baseball.domain.BallNumber;
+import baseball.domain.Balls;
 import baseball.domain.Result;
+import baseball.domain.Strikes;
 import baseball.system.SystemConstant;
 import java.util.stream.IntStream;
 
@@ -13,28 +15,28 @@ public class ResultCalculator {
     }
 
     public Result calculateResult(BallNumber comparisonNumber) {
-        int newStrikes = countStrikes(comparisonNumber);
-        int newBalls = countBalls(comparisonNumber, newStrikes);
+        Strikes newStrikes = countStrikes(comparisonNumber);
+        Balls newBalls = countBalls(comparisonNumber, newStrikes);
 
         return new Result(newStrikes, newBalls);
     }
 
-    private int countStrikes(BallNumber comparisonNumber) {
-        return (int) IntStream
+    private Strikes countStrikes(BallNumber comparisonNumber) {
+        return new Strikes(IntStream
                 .range(0, SystemConstant.MAXIMUM_DIGIT)
                 .filter(i ->
                         isStrike(comparisonNumber.getBallNumberByDigit(i), i))
-                .count();
+                .count());
     }
 
     private boolean isStrike(int eachNumber, int digit) {
         return eachNumber == computerNumber.getBallNumberByDigit(digit);
     }
 
-    private int countBalls(BallNumber comparisonNumber, int numberOfStrikes) {
-        return (int) comparisonNumber.ballNumberList
+    private Balls countBalls(BallNumber comparisonNumber, Strikes numberOfStrikes) {
+        return new Balls(comparisonNumber.ballNumberList
                 .stream()
                 .filter(computerNumber::hasThis)
-                .count() - numberOfStrikes;
+                .count() - numberOfStrikes.getValue());
     }
 }

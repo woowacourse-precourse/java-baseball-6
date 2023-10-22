@@ -1,24 +1,19 @@
 package baseball.domain;
 
-import baseball.system.SystemConstant;
-
 public class Result {
-    public int numberOfStrikes;
-    public int numberOfBalls;
-    //TODO: 원시값 포장하기
-    //TODO: 테스트 코드를 변경하고 private으로 전환하기
+    public Strikes numberOfStrikes;
+    public Balls numberOfBalls;
 
-    public Result(int newStrikes, int newBalls) {
+    public Result(Strikes newStrikes, Balls newBalls) {
         numberOfStrikes = newStrikes;
         numberOfBalls = newBalls;
     }
 
     public boolean isNothing() {
-        return numberOfBalls == 0 && numberOfStrikes == 0;
-        //TODO: 포장된 vo자료형의 메서드를 사용해서 코드 복잡도 줄이기
+        return numberOfBalls.isZero() && numberOfStrikes.isZero();
     }
 
     public boolean isStrikesAllOfBalls() {
-        return numberOfStrikes == SystemConstant.MAXIMUM_DIGIT;
+        return numberOfStrikes.isStrikeAllOfBalls();
     }
 }

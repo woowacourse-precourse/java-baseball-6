@@ -1,5 +1,8 @@
 package baseball.view;
 
+import baseball.domain.Balls;
+import baseball.domain.Strikes;
+
 public class OutputHandler {
     public static void theGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -9,7 +12,7 @@ public class OutputHandler {
         System.out.println("낫싱");
     }
 
-    public static void printStrikesAndBalls(int numberOfStrikes, int numberOfBalls) {
+    public static void printStrikesAndBalls(Strikes numberOfStrikes, Balls numberOfBalls) {
         printBalls(numberOfBalls);
         printStrikes(numberOfStrikes);
         System.out.println();
@@ -20,15 +23,15 @@ public class OutputHandler {
                 + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private static void printBalls(int numberOfBalls) {
-        if (numberOfBalls >= 1) {
-            System.out.print(numberOfBalls + "볼 ");
+    private static void printBalls(Balls numberOfBalls) {
+        if (!numberOfBalls.isZero()) {
+            System.out.print(numberOfBalls.getValue() + "볼 ");
         }
     }
 
-    private static void printStrikes(int numberOfStrikes) {
-        if (numberOfStrikes >= 1) {
-            System.out.print(numberOfStrikes + "스트라이크");
+    private static void printStrikes(Strikes numberOfStrikes) {
+        if (!numberOfStrikes.isZero()) {
+            System.out.print(numberOfStrikes.getValue() + "스트라이크");
         }
     }
 }

@@ -10,16 +10,16 @@ public class ResultTest {
     @DisplayName("스트라이크 개수가 제대로 저장됐는지 확인")
     @Test
     void StrikesIsCorrectlySaved() {
-        Result result = new Result(3, 0);
+        Result result = new Result(new Strikes(3), new Balls(0));
 
-        assertEquals(result.numberOfStrikes, 3);
+        assertEquals(result.numberOfStrikes.getValue(), 3);
     }
 
     @DisplayName("볼 개수가 제대로 저장됐는지 확인")
     @Test
     void BallsISCorrectlySaved() {
-        Result result = new Result(0, 3);
+        Result result = new Result(new Strikes(0), new Balls(3));
 
-        assertEquals(result.numberOfBalls, 3);
+        assertEquals(result.numberOfBalls.getValue(), 3);
     }
 }

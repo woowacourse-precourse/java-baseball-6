@@ -26,7 +26,7 @@ public class ResultCalculatorTest {
 
         Result result = resultCalculator.calculateResult(comparisonNumber);
 
-        assertEquals(result.numberOfStrikes, 2);
+        assertEquals(result.numberOfStrikes.getValue(), 2);
     }
 
     @DisplayName("볼의 개수를 제대로 계산했는지 확인")
@@ -37,6 +37,6 @@ public class ResultCalculatorTest {
 
         Result result = resultCalculator.calculateResult(comparisonNumber);
 
-        assertEquals(result.numberOfBalls, 2);
+        assertEquals(result.numberOfBalls.getValue(), 2);
     }
 }
