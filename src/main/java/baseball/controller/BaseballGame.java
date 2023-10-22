@@ -1,18 +1,20 @@
-package baseball.model;
+package baseball.controller;
 
 import static baseball.model.enums.GameMessage.EXIT_GAME_MESSAGE;
 import static baseball.model.enums.GameMessage.INPUT_NUMBERS_MESSAGE;
 
-import baseball.controller.ScoreCalculator;
+import baseball.model.GameNumbers;
+import baseball.model.NumberInput;
+import baseball.model.Score;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-public class Game {
+public class BaseballGame {
     private final ScoreCalculator scoreCalculator;
     private final GameNumbers answer;
     private boolean isRunning;
 
-    public Game(GameNumbers answer, ScoreCalculator scoreCalculator) {
+    public BaseballGame(GameNumbers answer, ScoreCalculator scoreCalculator) {
         this.scoreCalculator = scoreCalculator;
         this.answer = answer;
         isRunning = true;
