@@ -10,23 +10,28 @@ public class Referee {
     int strike;
     int ball;
 
-    public void judge(Numbers userNumbers, Numbers computerNumbers) {
-        int ballAndStrike = countBallAndStrike(userNumbers, computerNumbers);
-        int strike = countStrike(userNumbers, computerNumbers);
+    public Map<String,Integer> judge(Numbers userNumbers, Numbers computerNumbers) {
+        calculateStrikeAndBall(userNumbers, computerNumbers);
+        return makeJudgement();
+    }
+
+    private void calculateStrikeAndBall(Numbers userNumbers, Numbers computerNumbers) {
+        int ballAndStrike = countBallsAndStrikes(userNumbers, computerNumbers);
+        int strike = countStrikes(userNumbers, computerNumbers);
 
         this.strike = strike;
         this.ball = ballAndStrike - strike;
     }
 
-    private int countBallAndStrike(Numbers userNumbers, Numbers computerNumbers) {
+    private int countBallsAndStrikes(Numbers userNumbers, Numbers computerNumbers) {
         return userNumbers.countSameNumber(computerNumbers);
     }
 
-    private int countStrike(Numbers userNumbers, Numbers computerNumbers) {
+    private int countStrikes(Numbers userNumbers, Numbers computerNumbers) {
         return userNumbers.countSameIndexAndNumber(computerNumbers);
     }
 
-    public Map<String,Integer> getJudgement() {
+    private Map<String,Integer> makeJudgement() {
         Map<String,Integer> judgement = new HashMap<String,Integer>();
         judgement.put(STRIKE,strike);
         judgement.put(BALL,ball);
