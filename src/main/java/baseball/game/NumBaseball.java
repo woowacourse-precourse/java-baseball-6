@@ -6,9 +6,30 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class NumBaseball implements BaseballGame{
+    ArrayList<Integer> computer;
+    ArrayList<Integer> user;
+    int ball;
+    int strike;
+    int nothing;
+
+    public NumBaseball() {
+        this.computer = new ArrayList<>();
+        this.user = new ArrayList<>();
+    }
+
+    public void gameInit(boolean round) {
+        if(!round) {
+            this.computer.clear();
+        }
+
+        this.user.clear();
+        ball = 0;
+        strike = 0;
+        nothing = 0;
+    }
+
     @Override
     public ArrayList<Integer> comNum() {
-        ArrayList<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int random = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(random)) {
@@ -20,7 +41,6 @@ public class NumBaseball implements BaseballGame{
 
     @Override
     public ArrayList<Integer> userInput() {
-        ArrayList<Integer> user = new ArrayList<>();
         String input = Console.readLine();
 
         if (input.length() != 3) {
@@ -53,13 +73,10 @@ public class NumBaseball implements BaseballGame{
     }
 
     @Override
-    public int[] result(ArrayList<Integer> comNum, ArrayList<Integer> userNum) {
-        int ball = 0;
-        int strike = 0;
-        int nothing = 0;
-        for (int num : userNum) {
-            if (comNum.contains(num)) {
-                if (comNum.indexOf(num) == userNum.indexOf(num)) {
+    public int[] result() {
+        for (int num : user) {
+            if (computer.contains(num)) {
+                if (computer.indexOf(num) == user.indexOf(num)) {
                     strike++;
                 } else {
                     ball++;
