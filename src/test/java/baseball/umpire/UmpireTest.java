@@ -61,7 +61,9 @@ public class UmpireTest {
             boolean compareChecker = false;
             for(int j = 0 ; j < DIGIT_NUM ; j++){
                 if(ball.charAt(i) == batt.charAt(j)){
-                    compareChecker = true;
+                    if(!(i==j)){
+                        compareChecker = true;
+                    }
                 }
             }
             if(compareChecker == true){
