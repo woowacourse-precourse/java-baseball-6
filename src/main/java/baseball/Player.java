@@ -1,25 +1,37 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import static baseball.Reader.readNumber;
+import static baseball.Reader.readString;
+import static java.util.Arrays.stream;
 
 
 public class Player {
-    private static final Integer USER_NUMBER_SIZE = 3;
-    private final List<Integer> userNumberList;
+    private List<Integer> userNumberList;
 
-    public Player(List<Integer> userNumberList) {
-        this.userNumberList = userNumberList;
+    public Player() {
+        this.userNumberList = null;
     }
 
-    public List<Integer> loadListOf3Number() {
+    public List<Integer> load3NumberList() {
+        userNumberList = generateListOf3Number();
         return userNumberList;
     }
 
-    public int input3Number() {
-        return Integer.parseInt(readLine());
+    private List<Integer> generateListOf3Number() {
+        String inputString = readString();
+        List<Integer> userNumberList = changeStringToList(inputString);
+
+        return userNumberList;
     }
 
+    private List<Integer> changeStringToList(String inputString) {
+        String[] strings = inputString.split("");
+
+        return stream(strings)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
 }
