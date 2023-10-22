@@ -1,10 +1,10 @@
 package baseball.game;
 
+import baseball.model.Score;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 
 public class BaseballGame implements Game {
     private static final int NUMBER_OF_TARGET = 3;
@@ -36,8 +36,9 @@ public class BaseballGame implements Game {
 
     private boolean roundStart() {
         ArrayList<Integer> predictionList = readPrediction();
-        int numberOfStrike = gradePrediction(predictionList);
-        return numberOfStrike == NUMBER_OF_TARGET;
+        Score score = gradePrediction(predictionList);
+        printScore(score);
+        return score.getStrike() == NUMBER_OF_TARGET;
     }
 
     private ArrayList<Integer> readPrediction() {
@@ -65,39 +66,36 @@ public class BaseballGame implements Game {
         return predictionList;
     }
 
-    private int gradePrediction(ArrayList<Integer> predictionList) {
-        int ballCount = 0;
-        int strikeCount = 0;
+    private Score gradePrediction(ArrayList<Integer> predictionList) {
+        Score score = new Score();
 
         for (int i = 0; i < NUMBER_OF_TARGET; ++i) {
             if (targetMap.containsKey(predictionList.get(i))) {
                 if (targetMap.get(predictionList.get(i)) == i) {
-                    ++strikeCount;
+                    score.incrementStrike();
                     continue;
                 }
-                ballCount++;
+                score.incrementBall();
             }
         }
-        printGrade(ballCount, strikeCount);
-
-        return strikeCount;
+        return score;
     }
 
-    private void printGrade(int ballCount, int strikeCount) {
-        if (ballCount == 0 && strikeCount == 0) {
+    private void printScore(Score score) {
+        if (score.getBall() == 0 && score.getStrike() == 0) {
             System.out.println("낫싱");
             return;
         }
-        if (ballCount != 0) {
-            System.out.print(ballCount + "볼");
-            if (strikeCount != 0) {
+        if (score.getBall() != 0) {
+            System.out.print(score.getBall() + "볼");
+            if (score.getStrike() != 0) {
                 System.out.print(" ");
             } else {
                 System.out.println();
             }
         }
-        if (strikeCount != 0) {
-            System.out.println(strikeCount + "스트라이크");
+        if (score.getStrike() != 0) {
+            System.out.println(score.getStrike() + "스트라이크");
         }
     }
 }
