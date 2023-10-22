@@ -11,8 +11,9 @@ public class BaseBallGame {
     static String computerAnswer="";
     static String userAnswer="";
     static List<String> computer = new ArrayList<>();
-
     static String gameSet ="";
+    static int ball=0;
+    static int strike=0;
 
     public void start(){
         System.out.println("숫자 야구게임을 시작합니다.");
@@ -24,6 +25,8 @@ public class BaseBallGame {
             userAnswer = readLine();
             userAnswer=checkUserInput();
 
+            // 사용자 입력과 컴퓨터 값과 비교
+            umpire();
 
 
 
@@ -41,6 +44,35 @@ public class BaseBallGame {
 
             break;
         }
+    }
+
+    private void umpire() {
+        ball=0; strike=0;
+        StringBuilder sb = new StringBuilder();
+        String[] ans = userAnswer.split("");
+
+        for(int i =0; i<3;i++){
+            if(computer.contains(ans[i])){
+                if(ans[i].equals(computer.get(i))){
+                    strike++;
+                    continue;
+                }
+                ball ++;
+            }
+        }
+
+        if(ball !=0 && strike !=0){
+            sb.append(ball+"볼 "+strike+"스트라이크");
+        } else if (ball==0 && strike==0) {
+            sb.append("낫싱");
+        } else if (strike==0) {
+            sb.append(ball+"볼");
+        } else if(ball ==0){
+            sb.append(strike+"스트라이크");
+        }
+
+        System.out.println(sb.toString());
+
     }
 
     private String restartOrExit() {
