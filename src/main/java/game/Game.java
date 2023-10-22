@@ -34,12 +34,16 @@ public class Game {
     }
 
     public static void set() {
-        System.out.println(START_STRING);
+        printStartString();
         Game game;
         do {
             game = new Game();
             game.start();
         } while (restart());
+    }
+
+    private static void printStartString() {
+        System.out.println(START_STRING);
     }
 
     private void start() {
