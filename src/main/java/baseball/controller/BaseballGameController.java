@@ -11,11 +11,9 @@ public class BaseballGameController {
     private int strike;
     private Computer computer;
     private User user;
-    private Validation validation;
 
     public BaseballGameController() {
         this.computer = new Computer();
-        this.validation = new Validation();
         this.computer.makeNumber();
     }
 
@@ -46,7 +44,7 @@ public class BaseballGameController {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
 
-        validation.validNumber(inputNumber);
+        Validation.validNumber(inputNumber);
 
         for (int i = 0; i < Validation.MAX_INPUT_LENGTH; i++) {
             user.addNumber(Character.getNumericValue(inputNumber.charAt(i)));
@@ -57,7 +55,7 @@ public class BaseballGameController {
 
         String inputNum = Console.readLine();
 
-        validation.validExitNumber(inputNum);
+        Validation.validExitNumber(inputNum);
 
         int exitNum = Integer.parseInt(inputNum);
 
@@ -102,7 +100,7 @@ public class BaseballGameController {
     }
 
     public boolean exitGame() {
-        if (strike == 3) {
+        if (strike == Validation.MAX_INPUT_LENGTH) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
