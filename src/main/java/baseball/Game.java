@@ -109,7 +109,6 @@ public class Game {
   }
 
   private boolean gameOver(int strike) {
-    System.out.println(strike + STRIKE);
     return strike == NUMBER_LENGTH;
   }
 
