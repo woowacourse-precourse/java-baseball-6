@@ -14,5 +14,12 @@ public class Application {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
 
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+
+            if (c < '0' || c > '9') {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
+        }
     }
 }
