@@ -47,6 +47,31 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 정답을_맞추기_위한_입력값의_길이_예외_테스트() {
+        // given
+        int lengthThree = 3;
+        String case1 = "123";
+        String case2 = "12";
+        String case3 = "1234";
+
+        // when
+        Throwable result1 = catchThrowable(() -> {
+            Validator.validateInputLength(case1, lengthThree);
+        });
+        Throwable result2 = catchThrowable(() -> {
+            Validator.validateInputLength(case2, lengthThree);
+        });
+        Throwable result3 = catchThrowable(() -> {
+            Validator.validateInputLength(case3, lengthThree);
+        });
+
+        //then
+        assertThat(result1).doesNotThrowAnyException();
+        assertThat(result2).isInstanceOf(IllegalArgumentException.class);
+        assertThat(result3).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 정답을_맞춘_후_입력값의_길이_예외_테스트() {
         // given
         int lengthOne = 1;
@@ -58,11 +83,9 @@ class ApplicationTest extends NsTest {
         Throwable result1 = catchThrowable(() -> {
             Validator.validateInputLength(case1, lengthOne);
         });
-
         Throwable result2 = catchThrowable(() -> {
             Validator.validateInputLength(case2, lengthOne);
         });
-
         Throwable result3 = catchThrowable(() -> {
             Validator.validateInputLength(case3, lengthOne);
         });
