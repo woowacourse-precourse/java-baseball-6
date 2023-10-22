@@ -6,14 +6,14 @@ import java.util.List;
 
 public class Computer {
     private static final int INITIAL_COUNT = 0;
-    private static final int INITIAL_LENGTH = 0;
+    private static final int START_INDEX = 0;
+    private static final int VALID_NUMBER_LENGTH = 3;
     private static final int CONTAINED_SCORE = 1;
     private static final int NOT_CONTAINED_SCORE = 0;
     private static final int MATCHED_SCORE = 1;
     private static final int NOT_MATCHED_SCORE = 0;
-    private static final int MAX_LENGTH = 3;
-    private static final int MIN_DIGIT = 1;
-    private static final int MAX_DIGIT = 9;
+    private static final int MIN_VALID_DIGIT = 1;
+    private static final int MAX_VALID_DIGIT = 9;
     private static final int FIRST_CHARACTER_INDEX = 0;
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
@@ -26,7 +26,7 @@ public class Computer {
     }
 
     public void generateAnswer() {
-        while (answerAsChars.size() < MAX_LENGTH) {
+        while (answerAsChars.size() < VALID_NUMBER_LENGTH) {
             generateRandomNumber();
         }
     }
@@ -38,7 +38,7 @@ public class Computer {
     }
 
     private void generateRandomNumber() {
-        int randomIntNumber = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
+        int randomIntNumber = Randoms.pickNumberInRange(MIN_VALID_DIGIT, MAX_VALID_DIGIT);
         char randomNumber = Integer.toString(randomIntNumber).charAt(FIRST_CHARACTER_INDEX);
         checkDuplicate(randomNumber);
     }
@@ -51,7 +51,7 @@ public class Computer {
 
     private int computeStrikeAndBall(List<Character> playerInputAsChars) {
         int totalCount = INITIAL_COUNT;
-        for (int i = INITIAL_LENGTH; i < MAX_LENGTH; i++) {
+        for (int i = START_INDEX; i < VALID_NUMBER_LENGTH; i++) {
             totalCount += isNumberContainedAsScore(playerInputAsChars.get(i));
         }
         return totalCount;
@@ -59,7 +59,7 @@ public class Computer {
 
     private int computeStrike(List<Character> playerInputAsChars) {
         int strikeCount = INITIAL_COUNT;
-        for (int i = INITIAL_LENGTH; i < MAX_LENGTH; i++) {
+        for (int i = START_INDEX; i < VALID_NUMBER_LENGTH; i++) {
             strikeCount += isNumberMatchedAsScore(answerAsChars.get(i), playerInputAsChars.get(i));
         }
         return strikeCount;
