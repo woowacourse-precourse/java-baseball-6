@@ -1,6 +1,6 @@
 package baseball.input;
 
-import baseball.Error.CheckRestartNumber;
+import baseball.error.CheckRestartNumber;
 import baseball.output.Message;
 import camp.nextstep.edu.missionutils.Console;
 
