@@ -4,7 +4,7 @@
 
 ## BaseballPlayer
 
-숫자 야구 참여자들의 인터페이스
+숫자 야구 참여자들의 추상 클래스
 
 - 사용자의 입력을 받는 `inputBaseballNumbers()`
 
@@ -12,7 +12,7 @@
 
 ## User
 
-`BaseballPlayer` 의 구현체
+`BaseballPlayer` 의 자손 클래스
 
 - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 이용하여 구현한 `inputBaseballNumbers()`
 
@@ -20,7 +20,7 @@
 
 ## Computer
 
-`BaseballPlayer` 의 구현체
+`BaseballPlayer` 의 자손 클래스
 
 - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 이용하여 구현한 `inputBaseballNumbers()`
 
@@ -63,7 +63,8 @@ strike와 ball 계산을 위한 클래스
 ## Referee
 
 - 게임 시작 함수 `playBall()`
-- 게임의 흐름을 묶은 함수 `baseballFlow()` 흐름 : 입력해주세요 출력 -> 스트라이크, 볼 0으로 초기화 -> 사용자 입력 -> 스트라이크, 볼 계산 -> 힌트 출력
+- 게임의 흐름을 묶은 함수 `baseballFlow()` <br> 흐름 : 입력해주세요 출력 -> 스트라이크, 볼 0으로 초기화 -> 사용자 입력 -> 스트라이크, 볼 계산 ->
+  힌트 출력
 - 계속 진행할 것인지, 프로그램을 끝낼 것인지 물어보는 기능 `continueOrFinish()`
 
 ---
