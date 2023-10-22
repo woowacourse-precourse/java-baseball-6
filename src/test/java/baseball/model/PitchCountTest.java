@@ -1,10 +1,9 @@
 package baseball.model;
 
-import baseball.type.MessageType;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +19,7 @@ class PitchCountTest {
     List<Integer> userNumberDifferent;
     List<Integer> userNumberPartialMatch;
 
+
     @BeforeEach
     void init() {
         pitchCount = new PitchCount();
@@ -31,19 +31,15 @@ class PitchCountTest {
 
     @Test
     void 스트라이크_볼_카운트_검증() {
-
-        //완벽한 매치의 경우
         pitchCount.countStrikeBall(computerNumber, userNumberCorrect);
         assertTrue(pitchCount.isAnswer());
         assertEquals(3, pitchCount.getStrikeCnt());
         assertEquals(0, pitchCount.getBallCnt());
 
-        //숫자가 전혀 맞지 않는 경우
         pitchCount.countStrikeBall(computerNumber, userNumberDifferent);
         assertEquals(0, pitchCount.getStrikeCnt());
         assertEquals(0, pitchCount.getBallCnt());
 
-        //일부 숫자가 맞는 경우
         pitchCount.countStrikeBall(computerNumber, userNumberPartialMatch);
         assertEquals(1, pitchCount.getStrikeCnt());
         assertEquals(2, pitchCount.getBallCnt());
