@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class BaseBallGame {
@@ -13,33 +12,48 @@ public class BaseBallGame {
 
     private GameState state = GameState.NOT_START;
 
-    public void startGame(){
+    public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         state = GameState.PLAYING;
 
         play();
     }
 
-    private void play(){
+    private void play() {
         generateNum();
-        while(state != GameState.CORRECT){
+        while (state != GameState.CORRECT && state != GameState.END) {
             chooseNum();
-            System.out.println(getResult());
+            if (state != GameState.END)
+                System.out.println(getResult());
         }
-        exitGame();
-        if(state == GameState.PLAYING){
-            play();
+        if (state != GameState.END) {
+            exitGame();
+            if (state == GameState.PLAYING) {
+                play();
+            }
         }
     }
 
-    private void chooseNum(){
+
+    private void chooseNum() {
+        String input = "";
+
         System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
+        input = Console.readLine();
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
         String[] userNumAsString = input.split("");
         userNum.clear();
-        for(String str : userNumAsString){
+        for (String str : userNumAsString) {
             int number = Integer.parseInt(str);
             userNum.add(number);
+        }
+        if ((userNum.get(0) == userNum.get(1)) || (userNum.get(0) == userNum.get(2)) || (userNum.get(1) == userNum.get(2))) {
+            throw new IllegalArgumentException();
+
+
         }
     }
 
@@ -81,4 +95,5 @@ public class BaseBallGame {
             }
         }
     }
+
 }
