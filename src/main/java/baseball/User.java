@@ -11,23 +11,40 @@ public class User {
         this.user = new ArrayList<>();
     }
 
+    // 문자열 형식의 입력값을 정수 배열에 저장
+    public void setUser(String input) {
+        checkValidInputNumber(input);   // 문자열에 대한 유효성검사 실시
+        String[] tokens = input.split("");
+        for (String str : tokens) {
+            addNumberToArray(Integer.parseInt(str));
+        }
+    }
+
+    // 숫자로만 이루어진 문자열에 관한 유효성 검사
+    // 입력값은 Play 클래스의 checkInputHasChar()에서의 유효성 검사를 통과한 문자열
+    private void checkValidInputNumber(String input) {
+        checkInputLength(input);    // 문자열 길이 검사
+        checkInputHasZero(input);   // 0 포함 여부 검사
+    }
+
+    // 입력된 문자열의 길이가 3인지 검사
     private void checkInputLength(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("Invalid input length.");
         }
     }
 
+    // 입력된 문자열에 0이 포함되었는지 검사
+    // 이 유효성검사는 입력값은 3자리 숫자인 문자열을 대상으로 수행
+    // 따라서 이 검사를 통과하는 문자열은 1~9 사이 숫자로만 구성된 3자리 수
     private void checkInputHasZero(String input) {
         if (input.contains("0")) {
             throw new IllegalArgumentException("This input includes zero.");
         }
     }
 
-    private void checkValidInputNumber(String input) {
-        checkInputLength(input);
-        checkInputHasZero(input);
-    }
-
+    // 입력값을 배열에 저장할 때 서로 중복된 숫자가 있으면 IllegalArgumentException 발생 후 종료
+    // 중복된 숫자가 없다면 그대로 배열에 저장
     private void addNumberToArray(int num) {
         if (user.contains(num)) {
             throw new IllegalArgumentException("This is already contained: " + num);
@@ -41,13 +58,5 @@ public class User {
 
     public List<Integer> getUser() {
         return user;
-    }
-
-    public void setUser(String input) {
-        checkValidInputNumber(input);
-        String[] tokens = input.split("");
-        for (String str : tokens) {
-            addNumberToArray(Integer.parseInt(str));
-        }
     }
 }
