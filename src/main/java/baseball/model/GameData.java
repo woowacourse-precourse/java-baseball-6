@@ -21,7 +21,7 @@ public class GameData {
         this.gameStatus = gameStatus;
     }
 
-    public List<Integer> getComputerNumbers() {
+    public List<Integer> getRandomNumbers() {
         return randomNumbers;
     }
 
