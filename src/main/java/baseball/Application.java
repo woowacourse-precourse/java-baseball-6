@@ -5,26 +5,38 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
         // 게임 시작 문구 출력
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        // 게임 진행
+        playBaseball();
+
+        // 게임 종료
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+    
+    /**
+     * 야구 게임을 진행합니다.
+     */
+    private static void playBaseball() {
         // 컴퓨터 숫자 생성
         List<Integer> computer = createComputerNumberList();
 
-        // 사용자 입력 값 숫자 리스트로 변환
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
-        List<Integer> user = getThreeNumbersFromString(userInput);
+        // 사용자 입력 값과 컴퓨터 숫자 비교 후 3스트라이크 까지 반복
+        ComparisonResult result = new ComparisonResult(0, 0);
+        do {
+            // 사용자 입력 값 숫자 리스트로 변환
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = Console.readLine();
+            List<Integer> user = getThreeNumbersFromString(userInput);
 
-        // 컴퓨터와 사용자의 숫자 비교
-        ComparisonResult result = CompareNumberList(computer, user);
-        System.out.println(result);
-        System.out.println("컴퓨터 숫자 리스트: " +
-                computer.stream().map(Object::toString).collect(Collectors.joining()));
+            // 컴퓨터와 사용자의 숫자 비교
+            result = CompareNumberList(computer, user);
+            System.out.println(result);
+        } while(!result.isThreeStrike());
     }
 
     /**
