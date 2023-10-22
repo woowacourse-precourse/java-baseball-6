@@ -13,7 +13,7 @@ public class Application {
             game.play();
             GameMessage.GAME_RESTART_PROMPT.print();
             input = readLine();
-            if (isValid(input)) {
+            if (!isValid(input)) {
                 throw new IllegalArgumentException("잘못된 입력입니다.");
             }
         } while (Integer.parseInt(input) == 1);
