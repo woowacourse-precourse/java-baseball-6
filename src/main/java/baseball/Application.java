@@ -2,7 +2,20 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class Application {
+
+    private static void playBaseBall() {
+        int numOfBall, numOfStrike;
+        List<Integer> computerNumber = getComputerNumber();
+        do {
+            List<Integer> playerNumber = getPlayerNumber();
+            numOfBall = getNumberOfBall(computerNumber, playerNumber);
+            numOfStrike = getNumberOfStrike(computerNumber, playerNumber);
+            printBaseBallResult(numOfBall, numOfStrike);
+        } while(numOfStrike < 3);
+    }
 
     private static int askToContinue() {
         int choice = Integer.parseInt(Console.readLine());
