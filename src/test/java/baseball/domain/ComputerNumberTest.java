@@ -1,12 +1,11 @@
 package baseball.domain;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import baseball.model.ComputerNumber;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ComputerNumberTest {
 
@@ -18,9 +17,23 @@ public class ComputerNumberTest {
     }
 
     @Test
-    @DisplayName("컴퓨터 숫자가 0을 포함하고 있으면 예외가 발생한다.")
-    void testValidateComputerNumberContainZero() {
-        assertThatThrownBy(() -> new ComputerNumber(List.of(1, 2, 0)))
+    @DisplayName("컴퓨터 숫자 3자리가 각각 범위 1~9에 속하지 않는다면 예외가 발생한다.")
+    void testValidateComputerNumberRange1() {
+        assertThatThrownBy(() -> new ComputerNumber(List.of(0, 1, 2)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("컴퓨터 숫자 3자리가 각각 범위 1~9에 속하지 않는다면 예외가 발생한다.")
+    void testValidateComputerNumberRange2() {
+        assertThatThrownBy(() -> new ComputerNumber(List.of(8, 9, 10)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("컴퓨터 숫자 3자리가 각각 범위 1~9에 속하지 않는다면 예외가 발생한다.")
+    void testValidateComputerNumberRange3() {
+        assertThatThrownBy(() -> new ComputerNumber(List.of(-1, -2, -3)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
