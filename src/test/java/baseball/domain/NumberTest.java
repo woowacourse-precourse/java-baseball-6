@@ -15,7 +15,7 @@ class NumberTest {
     class Equals {
 
         @Test
-        @DisplayName("동일한 숫자를 가졌을 경우")
+        @DisplayName("동일한 숫자를 가진 경우 true를 반환한다")
         void equalValue() {
             // given
             final Number value = new Number(1);
@@ -29,7 +29,7 @@ class NumberTest {
         }
 
         @Test
-        @DisplayName("동일한 숫자를 가졌을 경우")
+        @DisplayName("다른 숫자를 가진 경우 false를 반환한다")
         void differentValue() {
             // given
             final Number value = new Number(1);
@@ -57,7 +57,7 @@ class NumberTest {
         }
 
         @Test
-        @DisplayName("최소 숫자보다 작은 값인 경우 예외를 던진다")
+        @DisplayName("최대 숫자보다 큰 값인 경우 예외를 던진다")
         void greaterThanMaximum() {
             // given
             // when
