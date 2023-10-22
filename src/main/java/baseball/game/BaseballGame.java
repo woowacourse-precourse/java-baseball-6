@@ -8,13 +8,13 @@ import java.util.HashMap;
 
 public class BaseballGame implements Game {
     private static final int NUMBER_OF_TARGET = 3;
-    private HashMap<Integer, Integer> targetMap;
+    private final HashMap<Integer, Integer> targetMap = new HashMap<>();
 
     public void printStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
     public void initGame() {
-        targetMap = new HashMap<>();
+        targetMap.clear();
         for (int i = 0; i < NUMBER_OF_TARGET; ++i) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             while (targetMap.containsKey(randomNumber)) {
