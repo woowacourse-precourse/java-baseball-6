@@ -1,16 +1,30 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
         // 게임 시작 문구 출력
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         // 컴퓨터 숫자 생성
         List<Integer> computer = createComputerNumberList();
+
+        // 사용자 입력 값 숫자 리스트로 변환
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        List<Integer> user = getThreeNumbersFromString(userInput);
+
+        // 컴퓨터와 사용자의 숫자 비교
+        ComparisonResult result = CompareNumberList(computer, user);
+        System.out.println(result);
+        System.out.println("컴퓨터 숫자 리스트: " +
+                computer.stream().map(Object::toString).collect(Collectors.joining()));
     }
 
     /**
@@ -53,5 +67,28 @@ public class Application {
             result.add(number);
         }
         return result;
+    }
+
+    /**
+     * 두 리스트를 비교하여 볼과 스트라이크의 개수를 찾아냅니다.
+     * @param computer 컴퓨터의 숫자 리스트
+     * @param user 유저의 숫자 리스트
+     * @return 볼과 스트라이크 개수를 포함한 결과
+     */
+    public static ComparisonResult CompareNumberList(List<Integer> computer, List<Integer> user) {
+        if (computer.size() != 3 || user.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+        int ball = 0;
+        int strike = 0;
+        for (int i = 0; i < user.size(); i++) {
+            if (user.get(i).intValue() == computer.get(i).intValue()) {
+                strike++;
+            }
+            else if (computer.contains(user.get(i))) {
+                ball++;
+            }
+        }
+        return new ComparisonResult(ball, strike);
     }
 }
