@@ -22,12 +22,33 @@ public class Application {
     }
 
     //사용자 입력값 받는 함수(매개변수x, 리턴값 ArrayList<Integer>)
-    public static List<Integer> inputUser(){
+    //예외처리
+    //1. 3글자가 아닐 때 3보다 작거나 3초과일때
+    //2. 숫자가 아닌 경우 그러니까 아스키코드로 0~9가 아닌 것
+    //--- 띄어쓰기가 들어갔을때(1,2에서 걸러짐)
+    //3. 중복된 수가 입력됐을 때
+    public static List<Integer> inputUser() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+
+        //예외처리
+        //1. 입력값이 3글자가 아닐 때
+        if(input.length() != 3){
+            throw new IllegalArgumentException();
+        }
+        //2. 숫자가 아닌 경우(아스키코드로 0~9가 아닌 것)
+        for(int i=0; i<input.length(); i++){
+            if('0' > input.charAt(i) && input.charAt(i) > '9'){
+                throw new IllegalArgumentException();
+            }
+        }
+        //3. 중복된 수가 입력됐을 떄
         String[] arr = input.split("");
         List<Integer> inputNum = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
+            if(inputNum.contains(Integer.parseInt(arr[i]))){
+                throw new IllegalArgumentException();
+            }
             inputNum.add(Integer.parseInt(arr[i]));
         }
         return inputNum;
@@ -138,7 +159,20 @@ public class Application {
 //
 //        System.out.println();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        play();
+        //찐게임시작
+        try{
+            play();
+        }catch (IllegalArgumentException e){
+            System.out.println("IllegalArgumentException 예외 발생");
+        }
+
+        //예외확인
+//        try{ // 예외가 발생할 지도 모르는 코드
+//            inputUser();
+//        } catch(IllegalArgumentException e){
+//            System.out.println("IllegalArgumentException 예외 발생");
+//        }
+
 
         // 사용자 값 입력 받는 기능
         // 서로 다른 3자리의 수 => 잘못된 값을 입력할 경우 예외 발생 후 종료
