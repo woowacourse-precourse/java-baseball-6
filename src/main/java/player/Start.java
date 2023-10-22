@@ -21,16 +21,13 @@ public class Start {
                 compareTwoValues.compareTwoValues(Input.inputNumber);
             }
 
+
             System.out.println(GuideMessageConstant.END_MESSAGE);
             System.out.println(GuideMessageConstant.RESTART_END_MESSAGE);
-            try {
-                restarting_Game = Console.readLine();
-                if (!restarting_Game.equals(StringConstant.CONTINUE) && !restarting_Game.equals(StringConstant.FINISH)) {
-                    throw new IllegalArgumentException(GuideMessageConstant.ERROR_ONE_OR_TWO_ENTER);
-                }
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
+
+            restarting_Game = Console.readLine();
+            Error.restartCommandError(restarting_Game);
+
             RandomPickNumber.RandomPickClean();
         }
     }
