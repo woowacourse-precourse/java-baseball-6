@@ -15,10 +15,18 @@ public class BaseBallGameNumberGenerator implements NumberGenerator {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < BASEBALL_GAME_NUMBER_DIGIT.getValue()) {
             int pickNumberInRange = pickNumberInRange(START_INCLUSIVE.getValue(), END_INCLUSIVE.getValue());
-            if (!numbers.contains(pickNumberInRange)) {
-                numbers.add(pickNumberInRange);
-            }
+            addIfNotDuplicate(numbers, pickNumberInRange);
         }
         return numbers;
+    }
+
+    private void addIfNotDuplicate(final List<Integer> numbers, final int pickNumberInRange) {
+        if (isNotInList(numbers, pickNumberInRange)) {
+            numbers.add(pickNumberInRange);
+        }
+    }
+
+    private boolean isNotInList(final List<Integer> numbers, final int pickNumberInRange) {
+        return !numbers.contains(pickNumberInRange);
     }
 }
