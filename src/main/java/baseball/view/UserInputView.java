@@ -38,7 +38,7 @@ public class UserInputView {
     }
 
     private void isStringEmpty(String userInput) {
-        if (userInput == null || userInput.isEmpty()) {
+        if (userInput == null || userInput.isBlank()) {
             throw new IllegalArgumentException(VALID_IS_NULL);
         }
     }
