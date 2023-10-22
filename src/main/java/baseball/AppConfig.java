@@ -4,6 +4,8 @@ import baseball.game.hitter.Hitter;
 import baseball.game.hitter.PlayerHitterImpl;
 import baseball.game.pitcher.ComputerRandomPitcherImpl;
 import baseball.game.pitcher.Pitcher;
+import baseball.game.umpire.ComputerUmpireImpl;
+import baseball.game.umpire.Umpire;
 
 public class AppConfig {
     //Hitter Setting
@@ -19,5 +21,9 @@ public class AppConfig {
 
     public Pitcher pitcher() {
         return new ComputerRandomPitcherImpl();
+    }
+
+    public Umpire umpire() {
+        return new ComputerUmpireImpl();
     }
 }
