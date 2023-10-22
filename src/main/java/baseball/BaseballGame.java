@@ -153,10 +153,10 @@ public class BaseballGame {
 
     private int inputEndOption(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String endOptionInputString = Console.readLine();
-        checkEndOptionForm(endOptionInputString);
+        String endOption = Console.readLine();
+        checkEndOptionForm(endOption);
 
-        return Integer.valueOf(endOptionInputString);
+        return Integer.valueOf(endOption);
     }
 
     private void checkEndOptionForm(String endOption){
@@ -168,8 +168,8 @@ public class BaseballGame {
         }
     }
 
-    private boolean isGameEnd(int userChoice){
-        if(userChoice == 2){
+    private boolean isGameEnd(int endOption){
+        if(endOption == 2){
             return true;
         }
         return false;
