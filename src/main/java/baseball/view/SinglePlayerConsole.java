@@ -1,12 +1,7 @@
 package baseball.view;
 
 import baseball.domain.BaseBallHint;
-import baseball.domain.AnswerNumbers;
 import baseball.domain.Player;
-import exception.DuplicateBaseBallNumber;
-import exception.OutOfBaseBallNumbersSize;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class SinglePlayerConsole implements Player {
 
@@ -19,15 +14,15 @@ public class SinglePlayerConsole implements Player {
     }
 
     @Override
-    public AnswerNumbers getBaseballNumbers() {
+    public String getBaseballNumbers() {
         OutputConsole.requestInputMessage();
-        String stringNumbers = InputConsole.readConsole();
-        try {
+        return InputConsole.readConsole();
+        /*try {
             final IntStream numbers = Stream.of(stringNumbers.split("")).mapToInt(Integer::parseInt);
             return AnswerNumbers.of(numbers);
         } catch (NumberFormatException | OutOfBaseBallNumbersSize | DuplicateBaseBallNumber e) {
             throw new IllegalArgumentException(String.format("올바르지 않은 입력입니다. 서로 다른 3개의 숫자를 입력해주세요. %s", stringNumbers));
-        }
+        }*/
     }
 
     @Override

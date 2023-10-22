@@ -4,7 +4,7 @@ public interface Player {
 
     void showStartGameMessage();
 
-    AnswerNumbers getBaseballNumbers();
+    String getBaseballNumbers();
 
     boolean checkRestart();
 

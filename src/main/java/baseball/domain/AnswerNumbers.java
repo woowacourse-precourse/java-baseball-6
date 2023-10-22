@@ -5,6 +5,7 @@ import exception.OutOfBaseBallNumbersSize;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public final class AnswerNumbers {
 
@@ -14,8 +15,8 @@ public final class AnswerNumbers {
 
     private final List<Integer> baseballNumbers;
 
-    private AnswerNumbers(List<Integer> numbers) {
-        this.baseballNumbers = numbers;
+    private AnswerNumbers() {
+        this.baseballNumbers = new ArrayList<>();
     }
 
     private AnswerNumbers(IntStream numbers) {
@@ -24,11 +25,12 @@ public final class AnswerNumbers {
     }
 
     public static AnswerNumbers empty() {
-        return new AnswerNumbers(new ArrayList<>());
+        return new AnswerNumbers();
     }
 
-    public static AnswerNumbers of(IntStream numbers) {
-        return new AnswerNumbers(numbers);
+    public static AnswerNumbers of(String[] numbers) {
+       IntStream numbersStream = Stream.of(numbers).mapToInt(Integer::parseInt);
+       return new AnswerNumbers(numbersStream);
     }
 
     public int size() {
