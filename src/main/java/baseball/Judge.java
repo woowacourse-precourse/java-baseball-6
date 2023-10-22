@@ -3,19 +3,11 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Judge {
-    int[] computerNumbers = createComputerNumber();
-    public int[] createComputerNumber() {
-        int[] numbers = new int[3];
-        for (int i = 0; i < 3; i++) {
-            int tempNum;
-            do {
-                tempNum = Randoms.pickNumberInRange(1, 9);
-            } while (containsNumber(numbers, tempNum));
-            numbers[i] = tempNum;
-        }
-        return numbers;
-    }
+    int[] computerNumbers;
 
+    public Judge(){
+        this.computerNumbers = createComputerNumber();
+    }
     public String playGame(String userInputStr) {
         checkError(userInputStr);
 
@@ -29,7 +21,26 @@ public class Judge {
         int[] strikeAndBall = calculateStrikeAndBall(userInputArr);
         return checkStrikeAndBall(strikeAndBall);
     }
-
+    public String checkStrikeAndBall(int[] strikeAndBall) {
+        String message =
+                (strikeAndBall[0] > 0 ? strikeAndBall[0] + "볼 " : "") +
+                (strikeAndBall[1] > 0 ? strikeAndBall[1] + "스트라이크" : "낫싱");
+        return message;
+    }
+    public boolean isGameEnd(String gameResult) {
+        return gameResult.equals("3스트라이크");
+    }
+    private int[] createComputerNumber() {
+        int[] numbers = new int[3];
+        for (int i = 0; i < 3; i++) {
+            int tempNum;
+            do {
+                tempNum = Randoms.pickNumberInRange(1, 9);
+            } while (containsNumber(numbers, tempNum));
+            numbers[i] = tempNum;
+        }
+        return numbers;
+    }
     private int[] calculateStrikeAndBall(int[] user) {
         int[] strikeAndBall = new int[2];
         for (int i = 0; i < 3; i++) {
@@ -40,18 +51,6 @@ public class Judge {
         }
         return strikeAndBall;
     }
-
-    public String checkStrikeAndBall(int[] strikeAndBall) {
-        String message =
-                (strikeAndBall[0] > 0 ? strikeAndBall[0] + "볼 " : "") +
-                (strikeAndBall[1] > 0 ? strikeAndBall[1] + "스트라이크" : "낫싱");
-        return message;
-    }
-
-    public boolean isGameEnd(String gameResult) {
-        return gameResult.equals("3스트라이크");
-    }
-
     private void checkError(String inputStr){
         if (inputStr.length() != 3)
             throw new IllegalArgumentException();
@@ -65,7 +64,6 @@ public class Judge {
             inputNumArray[i] = tempIndex;
         }
     }
-
     private boolean containsNumber(int[] array, int target) {
         for (int number : array)
             if (number == target)
