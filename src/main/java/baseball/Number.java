@@ -12,7 +12,7 @@ public class Number {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final String INPUT_SENTENCE = "숫자를 입력해주세요 : ";
-    private static final String REGAX = "^["+MIN_NUMBER+"-"+MAX_NUMBER+"]*$";
+    private static final String REGEX = "^["+MIN_NUMBER+"-"+MAX_NUMBER+"]*$";
 
     private int[] digits;
 
@@ -73,7 +73,7 @@ public class Number {
     }
 
     private boolean isMinToMax(String input) {
-        Pattern numberPattern = Pattern.compile(REGAX);
+        Pattern numberPattern = Pattern.compile(REGEX);
         return numberPattern.matcher(input).matches();
     }
 
