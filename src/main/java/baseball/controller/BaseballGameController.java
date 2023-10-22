@@ -10,6 +10,8 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class BaseballGameController {
+    private final static String RESTART = "1";
+    private final static String END = "2";
     private boolean firstRun = true;
     private boolean continueGame = true;
 
@@ -50,10 +52,10 @@ public class BaseballGameController {
         String restartOrEndNumber = InputView.restartOrEndNumber();
         isValidRestartOrEndNumber(restartOrEndNumber);
 
-        if (restartOrEndNumber.equals("1")) {
+        if (restartOrEndNumber.equals(RESTART)) {
             run();
         }
-        if (restartOrEndNumber.equals("2")) {
+        if (restartOrEndNumber.equals(END)) {
             continueGame = false;
         }
     }
