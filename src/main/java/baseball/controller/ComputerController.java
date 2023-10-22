@@ -2,11 +2,8 @@ package baseball.controller;
 
 import java.util.Arrays;
 import baseball.model.GameNumber;
-import baseball.view.OutputView;
 
 public class ComputerController {
-    OutputView outputView = new OutputView();
-    
     private static final int BASEBALL_NUMBER_LENGTH = 3;
     private static final int BASEBALL_SUCCESS_STRIKE_COUNT = 3;
     private static final String STRIKE_MESSAGE = "스트라이크";
@@ -16,7 +13,6 @@ public class ComputerController {
     private int ballCount;
 
     public void startGame(GameNumber gameNumber) {
-        outputView.printStartGame();
         gameNumber.setRandomNumbers();
     }
     
