@@ -1,12 +1,11 @@
 package baseball;
 
-import static baseball.GameViewer.startGame;
-
 public class Application {
+    private static GameController gameController = new GameController();
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        startGame();
+        gameController.startGame();
     }
 
 }

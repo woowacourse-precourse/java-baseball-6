@@ -12,9 +12,11 @@ public class UserService {
     }
     public User createUser(String input){
         if (input.length() != N) {
-            throw new IllegalArgumentException(N + "자리의 숫자를 입력해 주세요/");
+            throw new IllegalArgumentException(N + "자리의 숫자를 입력해 주세요.");
         }
 
         return new User(create(input));
     }
+
+//    public
 }
