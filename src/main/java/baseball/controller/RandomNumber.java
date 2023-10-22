@@ -30,7 +30,7 @@ public class RandomNumber {
             }
         }
 
-        validation.validationGameNumber(computer);    //랜덤 숫자 생성 유효성 검사
-
+        validation.validationGameNumber(computer.toString());    //랜덤 숫자 생성 유효성 검사
+        
     }
 }
