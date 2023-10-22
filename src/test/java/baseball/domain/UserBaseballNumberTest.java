@@ -28,4 +28,13 @@ public class UserBaseballNumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorHandler.DUPLICATE_NUMBER.getException().getMessage());
     }
+
+    @DisplayName("1~9 사이의 범위가 아닌 경우 예외가 발생한다")
+    @ParameterizedTest(name = "[{index}] Input : {0}")
+    @ValueSource(strings = {"1,2,10", "0,2,3"})
+    void createNumberWithInvalidRange(String inputString) {
+        assertThatThrownBy(() -> new UserBaseballNumber(Arrays.asList(inputString.split(","))))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorHandler.INVALID_RANGE.getException().getMessage());
+    }
 }
