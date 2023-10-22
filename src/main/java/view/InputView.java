@@ -25,10 +25,15 @@ public class InputView {
     public static List<Integer> userInput() {
         String input = Console.readLine();
         char[] inputNumber = input.toCharArray();
+        if (inputNumber.length != 3) {
+            throw new IllegalArgumentException();
+        }
+
         List<Integer> userNumber = new ArrayList<>();
         for (char i : inputNumber) {
             userNumber.add(Integer.parseInt(String.valueOf(i)));
         }
+
         return userNumber;
     }
 }
