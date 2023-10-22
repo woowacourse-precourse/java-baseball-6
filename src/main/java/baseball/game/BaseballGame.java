@@ -1,10 +1,10 @@
 package baseball.game;
 
-import baseball.output.GameOutput;
+import baseball.view.GameView;
 
 public class BaseballGame {
     public static void start() {
-        GameOutput.displayGameStartMessage();
+        GameView.displayGameStartMessage();
         playGame();
 
     }
@@ -12,7 +12,7 @@ public class BaseballGame {
     private static void playGame() {
         int[] randomNumbers = Computer.generateRandomNumbers();
         while (true) {
-            GameOutput.displayUserInputPrompt();
+            GameView.displayUserInputPrompt();
             int[] guessNumbers = User.getGuessNumbers();
         }
     }

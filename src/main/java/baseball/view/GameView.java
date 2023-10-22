@@ -1,6 +1,6 @@
-package baseball.output;
+package baseball.view;
 
-public class GameOutput {
+public class GameView {
     private static void displayMessage(String message) {
         System.out.print(message);
     }
