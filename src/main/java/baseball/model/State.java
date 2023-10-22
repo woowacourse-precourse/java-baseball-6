@@ -1,29 +1,32 @@
 package baseball.model;
 
 import baseball.exception.state.NotMatchGameStateException;
+import java.util.Arrays;
 
 public enum State {
 
-    RESTART(1),
-    FINISH(2);
+    RESTART("1"),
+    FINISH("2");
 
+    private final String stateNumber;
 
-    private final int stateNumber;
-
-    State(final int stateNumber) {
+    State(final String stateNumber) {
         this.stateNumber = stateNumber;
     }
 
-    public static boolean isMoreGame(final int stateNumber) {
-        return RESTART.stateNumber == stateNumber;
+    public static State createWith(final String stateNumber) {
+
+        return Arrays.stream(values())
+                .filter(state -> isStateNumber(stateNumber))
+                .findFirst()
+                .orElseThrow(() -> new NotMatchGameStateException(stateNumber));
     }
 
-    public static void validate(final int stateNumber) {
-        if (!isStateNumber(stateNumber)) {
-            throw new NotMatchGameStateException(stateNumber);
-        }
+    private static boolean isStateNumber(final String stateNumber) {
+        return stateNumber.equals(RESTART.stateNumber) || stateNumber.equals(FINISH.stateNumber);
     }
-    private static boolean isStateNumber(final int stateNumber) {
-        return RESTART.stateNumber == stateNumber || FINISH.stateNumber == stateNumber;
+
+    public static boolean isMoreGame(final State state) {
+        return RESTART == state;
     }
 }
