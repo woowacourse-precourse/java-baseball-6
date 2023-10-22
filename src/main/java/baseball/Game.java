@@ -79,13 +79,49 @@ public class Game {
 	
 	//결과
 	private boolean checkResult() {
-		return true;
-	}
+	      int strike = getStrike();
+	      int ball = StrikeOrBall() - strike;
+
+	      if(strike == Constants.DIGIT_SIZE)
+	         return true;
+	      else {
+	         if(strike == 0 && ball == 0)//낫싱
+	            printNothing();
+	         else
+	            printBall(strike, ball);
+	      }
+	      return false;
+	   }
+
 	
 	private void printStrike() { //3스트라이크 결과 출력
-		
+	      System.out.println(Constants.SUCCESS_STR);
+	      System.out.println(Constants.END_MSG); //success + restart 고려
+	        
+	        //restart() 재시작여부 확인 함수
 	}
 	
+	private void printNothing() {
+	      System.out.println(Constants.NOTHING_STR);
+	}
+	
+	private void printBall(int str, int b) {
+	      if(b != 0) {
+	         if(str > 0) //볼 + 스트라이크
+	            System.out.print(b + "볼 ");
+	         else //3볼
+	            System.out.println(b + "볼");
+	      }
+	      printResult(str);
+	}
+	
+	private void printResult(int str) { //스트라이크, 스트라이크 + 볼, 볼
+	      if(str != 0)
+	         System.out.println(str + "스트라이크");
+	      
+	      getInputNum();
+	}
+
 	private int StrikeOrBall() {
 		int cnt = 0;
 		for(int k = 0; k <Constants.DIGIT_SIZE; k++)
