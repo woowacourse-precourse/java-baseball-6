@@ -17,7 +17,8 @@ public class GameController {
         do {
             createAnswers();
             round();
-        } while(true);
+            GameView.printReGameMessage();
+        } while(false);
     }
 
     private void createAnswers(){

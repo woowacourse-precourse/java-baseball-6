@@ -13,7 +13,7 @@ public class NumberGenerator {
         while(randomBaseBallNumbers.size() < BaseBalls.SIZE){
             int number = Randoms.pickNumberInRange(BaseBall.MIN_NUMBER, BaseBall.MAX_NUMBER);
             if(!randomBaseBallNumbers.contains(number)){
-                randomBaseBallNumbers.add(BaseBall.toBaseBall(number));
+                randomBaseBallNumbers.add(BaseBall.toAnswerBaseBall(number));
             }
         }
         return randomBaseBallNumbers;
@@ -21,7 +21,7 @@ public class NumberGenerator {
 
     public static List<BaseBall> generateUserNumbers(String input){
         List<BaseBall> userBaseBallNumbers = Arrays.stream(input.split(""))
-                .map(digit -> BaseBall.toBaseBall(input))
+                .map(digit -> BaseBall.toUserBaseBall(digit))
                 .collect(Collectors.toList());
         return userBaseBallNumbers;
     }

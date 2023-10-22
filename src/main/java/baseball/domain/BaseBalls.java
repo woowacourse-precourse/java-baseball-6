@@ -8,8 +8,8 @@ public class BaseBalls {
     public static final int SIZE = 3;
 
     public BaseBalls(List<BaseBall> numbers){
-        validateSize();
-        validateDuplication();
+        validateSize(numbers);
+        validateDuplication(numbers);
         this.numbers = numbers;
     }
 
@@ -21,13 +21,13 @@ public class BaseBalls {
         return new BaseBalls(NumberGenerator.generateUserNumbers(input));
     }
 
-    private void validateSize(){
+    private void validateSize(List<BaseBall> numbers){
         if(numbers.size() != SIZE){
             throw new IllegalArgumentException("숫자의 길이는 3이여야합니다.");
         }
     }
 
-    private void validateDuplication(){
+    private void validateDuplication(List<BaseBall> numbers){
         if(numbers.stream().distinct().count() != SIZE){
             throw new IllegalArgumentException("중복되는 숫자없이, 서로 다른 3개의 숫자를 입력해야합니다.");
         }
