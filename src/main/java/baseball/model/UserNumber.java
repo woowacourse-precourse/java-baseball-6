@@ -3,8 +3,8 @@ package baseball.model;
 public class UserNumber {
     private final String userNumber;
 
-    public UserNumber(String userNumber, int numberSize) {
-        UserNumberValidator.validateUserNumber(userNumber, numberSize);
+    public UserNumber(String userNumber) {
+        UserNumberValidator.validateUserNumber(userNumber, NumberStatus.NUMBER_SIZE);
         this.userNumber = userNumber;
     }
 

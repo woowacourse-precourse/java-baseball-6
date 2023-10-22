@@ -2,19 +2,21 @@ package baseball.model;
 
 public class GameEndOption {
     private final String resetNumber;
-
-    public String getOptionValue() {
-        return resetNumber;
-    }
+    private static final String RESET_COMMAND = "1";
+    private static final String END_COMMAND = "2";
 
     public GameEndOption(String number) {
         validateOption(number);
         this.resetNumber = number;
     }
 
-    public static void validateOption(String number) {
-        if (!number.equals("1") && !number.equals("2")) {
-            throw new IllegalArgumentException("1, 2가 아닌 다른 값을 입력했습니다.");
+    private void validateOption(String number) {
+        if (!number.equals(RESET_COMMAND) && !number.equals(END_COMMAND)) {
+            throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
+    }
+
+    public boolean isReset() {
+        return resetNumber.equals(RESET_COMMAND);
     }
 }

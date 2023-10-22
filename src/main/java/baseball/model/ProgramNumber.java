@@ -13,21 +13,21 @@ public class ProgramNumber {
     }
 
     //생성 시 바로 프로그램 숫자를 만들 수 있도록 한다.
-    public ProgramNumber(int numberSize, int startNumber, int endNumber) {
-        createProgramNumber(numberSize, startNumber, endNumber);
+    public ProgramNumber() {
+        createProgramNumber();
     }
 
     //1 ~ 9 범위 내의 랜덤한 숫자 하나 획득
-    private String getOneNumber(int startNumber, int endNumber) {
-        return Integer.toString(Randoms.pickNumberInRange(startNumber, endNumber));
+    private String getOneNumber() {
+        return Integer.toString(Randoms.pickNumberInRange(NumberStatus.START_NUMBER, NumberStatus.END_NUMBER));
     }
 
     //세자리 자연수 획득
-    private void createProgramNumber(int numberSize, int startNumber, int endNumber) {
+    private void createProgramNumber() {
         //중복을 피하기 위해 HashSet 사용
-        Set<String> programNumberSet = new LinkedHashSet<>(numberSize);
-        while (programNumberSet.size() < numberSize) {
-            programNumberSet.add(getOneNumber(startNumber, endNumber));
+        Set<String> programNumberSet = new LinkedHashSet<>(NumberStatus.NUMBER_SIZE);
+        while (programNumberSet.size() < NumberStatus.NUMBER_SIZE) {
+            programNumberSet.add(getOneNumber());
         }
 
         programNumber = String.join("", programNumberSet);
