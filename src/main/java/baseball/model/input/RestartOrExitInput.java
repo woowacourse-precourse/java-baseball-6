@@ -17,7 +17,6 @@ public class RestartOrExitInput extends PlayerInput {
 
     @Override
     protected void validate() {
-        super.validate();
         checkInputLength();
         checkInputCommand();
     }

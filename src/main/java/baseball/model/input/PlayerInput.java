@@ -1,6 +1,6 @@
 package baseball.model.input;
 
-public class PlayerInput {
+abstract public class PlayerInput {
     public static final String EMPTY_INPUT = "입력이 없습니다.";
     protected final String input;
 
@@ -9,9 +9,5 @@ public class PlayerInput {
         validate();
     }
 
-    protected void validate() {
-        if (input == null) {
-            throw new IllegalArgumentException(EMPTY_INPUT);
-        }
-    }
+    abstract protected void validate();
 }
