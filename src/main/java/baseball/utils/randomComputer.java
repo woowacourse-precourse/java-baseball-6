@@ -1,21 +1,30 @@
 package baseball.utils;
 
-public class randomComputer {
-    public int[] computerRandom() {
-        int[] computerNumArray = new int[3];
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.LinkedHashSet;
 
-        for (int i = 0; i < computerNumArray.length; i++) {
-            computerNumArray[i] = (int) (Math.random() * 9 + 1);
-            for (int j = 0; j < computerNumArray.length; j++) {
-                if (i == j) {
-                    continue;
-                }
-                if (computerNumArray[j] == computerNumArray[i]) {
-                    i--;
-                    break;
-                }
-            }
+public class randomComputer {
+
+    private String computerRandomNumber;
+
+    public randomComputer() {
+        setComputerRandomNumber();
+    }
+
+    public String getComputerRandomNumber() {
+        return computerRandomNumber;
+    }
+
+    public void setComputerRandomNumber() {
+        LinkedHashSet<String> computerNumber = new LinkedHashSet<String>();
+        while (computerNumber.size() < 3) {
+            computerNumber.add(getComputerRandom());
         }
-        return computerNumArray;
+
+        this.computerRandomNumber = String.join("", computerNumber);
+    }
+
+    public static String getComputerRandom() {
+        return Integer.toString(Randoms.pickNumberInRange(1, 9));
     }
 }

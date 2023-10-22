@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.service.service;
+import baseball.utils.checkExceptionUser;
 import baseball.utils.randomComputer;
 import baseball.view.judgeView;
 import baseball.view.userView;
@@ -8,30 +9,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    public void Game() {
+    public void run() {
         List<Integer> user = new ArrayList<>();
-        boolean again = true;
         randomComputer randomComputer = new randomComputer();
         userView userView = new userView();
         service service = new service();
-        judgeView judgeView = new judgeView();
 
-        while (again) {
-            userView.gameStart();
-            int[] computer = randomComputer.computerRandom();
-            while (true) {
-                userView.userInputMessage();
-                user = service.userInput();
+        userView.gameStart();
+        while (true) {
+            judgeView judgeView = new judgeView();
+            String computer = randomComputer.getComputerRandomNumber();
+            user = service.userInput();
+            judgeView.judgeBaseball(computer, user);
 
-                judgeView.judgeBaseball(computer, user);
-
-                if (judgeView.countThreeStrike()) {
-                    judgeView.victoryScore();
-                    again = service.playAgain();
-                    break;
-                }
+            if (judgeView.countThreeStrike()) {
+                judgeView.victoryScore();
+                break;
             }
-
         }
+    }
+
+    public int askRetryInput() {
+        userView userView = new userView();
+        checkExceptionUser check = new checkExceptionUser();
+
+        String userregameNum = userView.userRegameMessage();
+        int userRegameNum = Integer.parseInt(userregameNum);
+        check.checkUserRegameException(userRegameNum);
+
+        return userRegameNum;
     }
 }

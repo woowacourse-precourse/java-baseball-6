@@ -16,7 +16,19 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
+        do {
+            Controller controller = new Controller();
+            controller.run();
+        } while (playAgain());
+
+    }
+
+    public static boolean playAgain() {
         Controller controller = new Controller();
-        controller.Game();
+
+        if (controller.askRetryInput() == 1) {
+            return true;
+        }
+        return false;
     }
 }

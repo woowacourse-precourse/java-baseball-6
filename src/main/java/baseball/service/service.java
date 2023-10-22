@@ -2,7 +2,6 @@ package baseball.service;
 
 import baseball.utils.checkExceptionUser;
 import baseball.view.userView;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +9,8 @@ public class service {
     checkExceptionUser check = new checkExceptionUser();
     userView userView = new userView();
 
-    public List<Integer> userInput() throws IllegalArgumentException {
-        String userInput = Console.readLine();
+    public List<Integer> userInput() {
+        String userInput = userView.userInputMessage();
         ArrayList<Integer> userNumArray = new ArrayList<>();
 
         //String userNumber = String.valueOf(userInput);
@@ -25,15 +24,4 @@ public class service {
         return userNumArray;
     }
 
-    public boolean playAgain() {
-        userView.userRegameMessage();
-        String userregameNum = Console.readLine();
-        int userRegameNum = Integer.parseInt(userregameNum);
-        check.checkUserRegameException(userRegameNum);
-
-        if (userRegameNum == 1) {
-            return true;
-        }
-        return false;
-    }
 }

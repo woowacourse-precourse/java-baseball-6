@@ -1,20 +1,27 @@
 package baseball.view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class judgeView {
     static boolean temp;
 
-    public void judgeBaseball(int[] computer, List<Integer> user) {
+    public void judgeBaseball(String computer, List<Integer> user) {
         int strike = 0;
         int ball = 0;
+        temp = false;
+        ArrayList<Integer> computerNum = new ArrayList<>();
 
-        for (int i = 0; i < computer.length; i++) {
+        for (char com : computer.toCharArray()) {
+            computerNum.add(Character.getNumericValue(com));
+        }
+
+        for (int i = 0; i < computerNum.size(); i++) {
             for (int j = 0; j < user.size(); j++) {
-                if (computer[i] == user.get(j) && i == j) {
+                if (computerNum.get(j) == user.get(j) && i == j) {
                     strike++;
                 }
-                if (computer[i] == user.get(j) && i != j) {
+                if (computerNum.get(i) == user.get(j) && i != j) {
                     ball++;
                 }
             }
