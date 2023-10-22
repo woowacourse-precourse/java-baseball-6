@@ -64,6 +64,10 @@ public class Validator {
         }
         System.out.println(result);
     }
+    public void startGame(){
+        System.out.println(START_MESSAGE);
+        game();
+    }
 
 
 }
