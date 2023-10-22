@@ -1,3 +1,4 @@
+//GameView.java
 package baseball;
 
 import java.util.ArrayList;
@@ -7,34 +8,40 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
 	public void printStartMessage(){
-		System.out.println("숫자 야구 게임을 시작합니다.");
+		System.out.println(Constants.START_MESSAGE);
 	}
 
 	public String getUserGuess(){
-		System.out.print("숫자를 입력해주세요 : ");
+		System.out.print(Constants.GUESS_MESSAGE);
 		String userNumber = Console.readLine();
 		validateUserGuess(userNumber);
 		return userNumber;
 	}
 
-	private void validateUserGuess(String userNumber){
+	private void validateUserGuess(String userNumber) {
+		// 숫자로만 이루어져 있는지 확인
 		boolean isOnlyNumber = userNumber.matches("\\d+");
-		boolean isRightSize = userNumber.length() == 3;
+		// 3자리인지 확인
+		boolean isRightSize = userNumber.length() == Constants.NUMBER_LENGTH;
 
-		if(!isOnlyNumber || !isRightSize){
-			throw new IllegalArgumentException("[ERROR] 3자리 수를 입력해주세요");
+		if (!isOnlyNumber || !isRightSize) {
+			throw new IllegalArgumentException(Constants.INVALID_LENGTH_ERROR);
 		}
 
-		List<Character> uniqueDigits = new ArrayList<>();
-		for(char c : userNumber.toCharArray()){
-			if(uniqueDigits.contains(c)){
-				throw new IllegalArgumentException("[ERROR] 서로 다른 3자리 숫자를 입력해주세요");
-			}
-			if (!uniqueDigits.contains(c)) {
-				uniqueDigits.add(c);
+		// 숫자가 서로 다른지 확인
+		if (!hasUniqueDigits(userNumber)) {
+			throw new IllegalArgumentException(Constants.DUPLICATE_DIGITS_ERROR);
+		}
+	}
+
+	// 사용자 입력에 중복된 숫자가 있는지 확인
+	private boolean hasUniqueDigits(String userNumber) {
+		for (char c : userNumber.toCharArray()) {
+			if (userNumber.indexOf(c) != userNumber.lastIndexOf(c)) {
+				return false;
 			}
 		}
-
+		return true;
 	}
 
 	public void printGuessResult(int numberOfStrike, int numberOfBall){
@@ -52,25 +59,21 @@ public class GameView {
 	}
 
 	public void printCorrectMessage(){
-		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println(Constants.CORRECT_MESSAGE);
 	}
 
 	//0 혹은 1이 아니면 예외
 	public String getRetry(){
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		System.out.println(Constants.RETRY_MESSAGE);
 		String retry = Console.readLine();
 		validateRetryInput(retry);
 		return retry;
 	}
 
 	private void validateRetryInput(String retry){
-		boolean isOneOrTwo = retry.equals("1") || retry.equals("2");
+		boolean isOneOrTwo = retry.equals(Constants.RETRY_TRUE) || retry.equals(Constants.RETRY_FALSE);
 		if(!isOneOrTwo){
-			throw new IllegalArgumentException("[ERROR] 1 혹은 2로 입력해주세요");
+			throw new IllegalArgumentException(Constants.INVALID_RETRY_INPUT_ERROR);
 		}
 	}
-
-
-
-
 }
