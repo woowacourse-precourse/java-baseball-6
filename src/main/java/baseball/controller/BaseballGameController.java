@@ -64,4 +64,24 @@ public class BaseballGameController {
             }
         }
     }
+
+    public void printResult() {
+
+        StringBuilder result = new StringBuilder();
+
+        if (ball > 0) {
+            result.append(ball).append("볼 ");
+        }
+        if (strike > 0) {
+            result.append(strike).append("스트라이크");
+        }
+
+        if (result.isEmpty()) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        String resultString = result.toString();
+        System.out.println(resultString);
+    }
 }
