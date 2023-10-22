@@ -26,20 +26,11 @@ public class Game {
             while (true) {
                 List<Integer> userNumber = getUserNumber();
 
-                calculateScore(userNumber, computerNumber);
-
-                if (result()) {
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    int choice = Integer.parseInt(Console.readLine());
-                    if (choice == RESTART_GAME) {
-                        break;
-                    } else if (choice == END_GAME) {
+                if (result(userNumber, computerNumber)) {
+                    if (!restartGame()) {
                         check = true;
-                        break;
                     }
-                    else{
-                        throw new IllegalArgumentException("게임 종료");
-                    }
+                    break;
                 }
             }
         }
@@ -99,7 +90,9 @@ public class Game {
         }
     }
 
-    boolean result(){
+    boolean result(List<Integer> userNumber, List<Integer> computerNumber) {
+        calculateScore(userNumber, computerNumber);
+
         String result = "";
         if (this.ball == 0 && this.strike == 0) {
             result = "낫싱";
@@ -123,5 +116,17 @@ public class Game {
             return true;
         }
         return false;
+    }
+
+    boolean restartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int choice = Integer.parseInt(Console.readLine());
+        if (choice == RESTART_GAME) {
+            return true;
+        } else if (choice == END_GAME) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("게임 종료");
+        }
     }
 }
