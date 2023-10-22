@@ -1,10 +1,12 @@
-package baseball;
+package baseball.game;
 
-import baseball.game.InputManager;
+import baseball.game.constant.Constants;
+import baseball.game.domain.BaseBall;
+import baseball.game.printmanager.InputManager;
+import baseball.game.printmanager.OutputManager;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class GameManager {
@@ -17,18 +19,12 @@ public class GameManager {
                 randNumbers.add(randomNumber);
             }
         }
-        System.out.print("randNumber: ");
-        for (Integer randNumber : randNumbers) {
-            System.out.print(randNumber);
-        }
         return randNumbers;
     }
-    public String calculateHint(List<Integer> randBaseballNumber, String userBaseballNumber) {
+    public BaseBall calculateBaseballGameResult(List<Integer> randBaseballNumber, String userBaseballNumber) {
         int strike = 0;
         int ball = 0;
-        System.out.println("userBaseballNumber = " + userBaseballNumber);
         for (int i = 0; i < randBaseballNumber.size(); i++) {
-            System.out.println(String.format("test: %s %s", randBaseballNumber.get(i), Integer.valueOf(String.valueOf(userBaseballNumber.charAt(i))) ));
             if (randBaseballNumber.get(i).equals(Integer.valueOf(String.valueOf(userBaseballNumber.charAt(i))))) {
                 strike++;
                 continue;
@@ -38,24 +34,33 @@ public class GameManager {
                 ball++;
             }
         }
-        return String.format("%s 스트라이크 %s 볼", strike, ball);
+
+        return new BaseBall(strike, ball);
     }
 
     public void playGame() {
         InputManager inputManager = new InputManager();
+        OutputManager outputManager = new OutputManager();
 
+        inputManager.printGameStartMessage();
         List<Integer> randBaseballNumber = createRandNumber();
         while (true) {
             String userBaseballNumber = inputManager.getBaseballNumberFromUser(inputManager);
-            System.out.println(calculateHint(randBaseballNumber, userBaseballNumber));
+            BaseBall baseBall = calculateBaseballGameResult(randBaseballNumber, userBaseballNumber);
+            outputManager.printHint(baseBall.getStrike(), baseBall.getBall());
 
-            if (isEnd(randBaseballNumber, userBaseballNumber)) {
+            if (isCorrectBaseballNumber(baseBall.getStrike())) {
+                outputManager.printEndMessage();
                 break;
             }
         }
     }
 
-    private boolean isEnd(List<Integer> randBaseballNumber, String userBaseballNumber) {
+    private boolean isCorrectBaseballNumber(int strike) {
+        return strike == Constants.BASEBALL_SIZE;
+    }
+
+    private boolean isCorrectBaseballNumber(List<Integer> randBaseballNumber, String userBaseballNumber) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Integer integer : randBaseballNumber) {
             stringBuilder.append(integer);
