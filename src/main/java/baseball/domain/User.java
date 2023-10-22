@@ -16,11 +16,7 @@ public class User {
     }
 
     public boolean isRestart(String number) {
-        int restartNumber = Integer.parseInt(number);
-        if (restartNumber == 1) {
-            return true;
-        }
-        return false;
+        return Integer.parseInt(number) == 1;
     }
 
     private void initUserNumber() {
