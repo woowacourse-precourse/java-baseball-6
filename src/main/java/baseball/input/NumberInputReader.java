@@ -5,5 +5,7 @@ package baseball.input;
  * @description input
  * @since 2023.10.23
  **********************************************************************************************************************/
-public class Input {
+public interface NumberInputReader {
+  int[] readInput();
+
 }
