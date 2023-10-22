@@ -6,11 +6,7 @@ public class Result {
     private int ball;
     private int strike;
 
-    public Result(List<Integer> inputAnswer, List<Integer> randomNumbers){
-        compareInputAnswerToRandomNumbers(inputAnswer, randomNumbers);
-    }
-
-    private void compareInputAnswerToRandomNumbers(List<Integer> inputAnswer, List<Integer> randomNumbers) {
+    public String compareInputAnswerToRandomNumbers(List<Integer> inputAnswer, List<Integer> randomNumbers) {
         ball = 0;
         strike = 0;
 
@@ -21,9 +17,10 @@ public class Result {
                 ball++;
             }
         }
+        return getOutputMessage();
     }
 
-    public String getOutputMessage() {
+    private String getOutputMessage() {
         if (ball > 0 && strike > 0) {
             return ball + "볼 " + strike + "스트라이크";
         } else if (ball > 0) {
@@ -32,5 +29,16 @@ public class Result {
             return strike + "스트라이크";
         }
         return "낫싱";
+    }
+
+    public boolean isGameOver() {
+        if (strike == 3) {
+            ball = 0;
+            strike = 0;
+            return true;
+        }
+        ball = 0;
+        strike = 0;
+        return false;
     }
 }
