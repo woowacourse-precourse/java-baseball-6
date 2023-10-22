@@ -31,18 +31,6 @@ public class Application {
         printTerminateGame();
     }
 
-    public static boolean getAnswerReplayGame() {
-        String answerReplayGame = askReplayGame();
-
-        if (answerReplayGame.equals("1")) {
-            return true;
-        } else if (answerReplayGame.equals("2")) {
-            return false;
-        }
-
-        throw new IllegalArgumentException("1 또는 2를 입력하세요.");
-    }
-
     public static List<Integer> generateComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
 
@@ -146,6 +134,18 @@ public class Application {
 
     public static boolean getStateRepeatGuess(final String resultOfGuess) {
         return !(resultOfGuess.equals("3스트라이크"));
+    }
+
+    public static boolean getAnswerReplayGame() {
+        String answerReplayGame = askReplayGame();
+
+        if (answerReplayGame.equals("1")) {
+            return true;
+        } else if (answerReplayGame.equals("2")) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("1 또는 2를 입력하세요.");
     }
 
     public static String askPlayerGuess() {
