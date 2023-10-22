@@ -14,6 +14,9 @@ public class Application {
             while (gameProgress) {
                 computer.inputNumberPhrase();
                 List<Integer> playerNums = player.inputNumbers();
+                Referee referee = Referee.createReferee(0, 0);
+                referee.strikeAndBallCheck(computerNums, playerNums);
+                gameProgress = referee.resultPhrase(referee.getBall(), referee.getStrike());
             }
         }
 
