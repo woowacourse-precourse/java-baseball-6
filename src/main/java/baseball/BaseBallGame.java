@@ -48,8 +48,6 @@ public class BaseBallGame {
         }
         if ((userNum.get(0) == userNum.get(1)) || (userNum.get(0) == userNum.get(2)) || (userNum.get(1) == userNum.get(2))) {
             throw new IllegalArgumentException();
-
-
         }
     }
 
@@ -79,6 +77,8 @@ public class BaseBallGame {
             state = GameState.PLAYING;
         }else if(Objects.equals(input, "2")){
             state = GameState.END;
+        }else{
+            throw new IllegalArgumentException();
         }
     }
 
