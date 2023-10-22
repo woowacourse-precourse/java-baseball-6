@@ -20,7 +20,7 @@ public record Balls (List<Ball> balls) {
 
     public boolean containsOtherBall(Ball otherBall) {
         for (Ball ball : balls) {
-            if (ball.number().equals(otherBall.number())) {
+            if (ball.isSameBall(otherBall)) {
                 return true;
             }
         }
