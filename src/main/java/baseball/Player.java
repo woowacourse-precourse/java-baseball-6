@@ -32,11 +32,7 @@ public class Player {
 
         int[] intTokens = new int[3];
         for (int i = 0; i < 3; i++) {
-            try {
-                intTokens[i] = Integer.parseInt(tokens[i]);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION);
-            }
+            intTokens[i] = parseInt(tokens[i]);
         }
 
         ArrayList<Integer> inputNumbers = new ArrayList<>();
@@ -61,16 +57,21 @@ public class Player {
     }
 
     //테스트를 위한 오버로딩
+
     public boolean restart(String s) throws IllegalArgumentException {
+        int input = parseInt(s);
+        if (input == RESTART) {
+            return true;
+        }
+        if (input == END) {
+            return false;
+        }
+        throw new IllegalArgumentException(WRONG_INPUT_IN_RESTART_EXCEPTION);
+    }
+
+    private int parseInt(String input) {
         try {
-            int input = Integer.parseInt(s);
-            if (input == RESTART) {
-                return true;
-            }
-            if (input == END) {
-                return false;
-            }
-            throw new IllegalArgumentException(WRONG_INPUT_IN_RESTART_EXCEPTION);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION);
         }
