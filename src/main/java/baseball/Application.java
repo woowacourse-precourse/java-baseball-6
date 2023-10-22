@@ -10,12 +10,16 @@ public class Application {
         // TODO: 프로그램 구현
 
         // 정답(3자리 숫자) 생성
-        List<Integer> target = new ArrayList<>();
-        while (target.size() < 3) {
+        List<Integer> tmp = new ArrayList<>();
+        while (tmp.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!target.contains(randomNumber)) {
-                target.add(randomNumber);
+            if (!tmp.contains(randomNumber)) {
+                tmp.add(randomNumber);
             }
+        }
+        StringBuilder target = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            target.append(tmp.get(i));
         }
 
         // 게임 시작, 입력 받기
