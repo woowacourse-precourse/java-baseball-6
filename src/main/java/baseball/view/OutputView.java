@@ -28,7 +28,7 @@ public class OutputView {
         System.out.print(" ");
     }
 
-    public static void outputForScoreNothing(){
+    public static void outputForNothingScore(){
         System.out.println("낫싱");
     }
 
