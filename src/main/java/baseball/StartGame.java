@@ -15,15 +15,16 @@ public class StartGame {
 
         String input = Console.readLine();
 
+        if (!input.matches("\\d{3}")) {
+            throw new IllegalArgumentException();
+        }
+
         List<Integer> playerNumbers = new ArrayList<>();
 
         for(String number : input.split("")){
             playerNumbers.add(Integer.parseInt(number));
         }
 
-        if(playerNumbers.size() != 3){
-            throw new IllegalArgumentException();
-        }
         return playerNumbers;
     }
 
