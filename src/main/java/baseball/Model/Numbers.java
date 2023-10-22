@@ -1,5 +1,7 @@
 package baseball.Model;
 
+import baseball.Util.RandomNumberGenerator;
+
 import java.util.List;
 
 public class Numbers {
