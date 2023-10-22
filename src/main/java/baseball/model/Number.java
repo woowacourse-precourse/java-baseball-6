@@ -47,5 +47,7 @@ public class Number {
         return ball;
     }
 
-
+    public boolean checkNothing(ArrayList<Integer> inputNumber) {
+        return getStrikeCount(inputNumber) == 0 & getBallCount(inputNumber) == 0;
+    }
 }
