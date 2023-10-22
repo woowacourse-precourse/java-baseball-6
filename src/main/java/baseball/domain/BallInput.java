@@ -23,6 +23,10 @@ public class BallInput {
         return this.balls;
     }
 
+    public void resetBalls() {
+        this.balls.clear();
+    }
+
     private void validateInput(String input) {
         try {
             int num = Integer.parseInt(input);
