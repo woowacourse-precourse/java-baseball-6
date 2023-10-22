@@ -24,4 +24,12 @@ public class GameResult {
             .filter(i -> playerNumber.get(i).equals(computerNumber.get(i)))
             .count();
     }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
 }
