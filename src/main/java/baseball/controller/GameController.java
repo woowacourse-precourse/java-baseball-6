@@ -1,56 +1,52 @@
 package baseball.controller;
 
 import baseball.model.*;
+import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import baseball.model.GameCycle;
 
 public class GameController {
     private InputView inputView;
     private OutputView outputView;
-    private Game game;
+    private GameService gameService;
 
     public GameController() {
         inputView=new InputView();
         outputView=new OutputView();
+        gameService=new GameService();
     }
 
-    public void start(){
+    public void startProgram(){
         outputView.printProgramStartMessage();
         startGame();
     }
 
     private void startGame(){
-        game = new Game(); //게임 생성
-        playGame(); //게임 수행
+        playGame();
 
-        if (checkRestart()){
+        if(gameService.isRestart(inputRestart())){
             startGame();
         }
     }
 
-    private boolean checkRestart(){
-        Restart restart =new Restart(inputView.inputContinue());
-        return restart.isContinue();
-    }
-
     private void playGame(){
-        playOneCycle();//게임 입출력 사이클 1회 반복
-        
-        outputView.printFinishGameMessage();//게임 종료문구 출력
-    }
+        GameCycle gameCycle=gameService.play(inputUser());
+        outputView.printResult(gameCycle.getResultMessage());
 
-    private void playOneCycle(){
-        GameCycle cycle=new GameCycle(game,inputUser());
-        outputView.printResult(cycle.getResultMessage());
-
-        if (cycle.isFinish()){
+        if(gameCycle.isFinish()){
+            gameService.finishGame();
+            outputView.printFinishGameMessage();
             return;
         }
-
-        playOneCycle();
+        playGame();
     }
 
-    private Numbers inputUser(){ //입력
+    private Numbers inputUser(){
         return new Numbers(inputView.inputNumbers());
+    }
+
+    private Restart inputRestart(){
+        return new Restart(inputView.inputContinue());
     }
 }
