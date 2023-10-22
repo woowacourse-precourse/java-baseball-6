@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    List<Integer> playerNumber = new ArrayList<>();
+    private List<Integer> playerNumber = new ArrayList<>();
 
     public void createPlayerNumber(String number) {
         playerNumber.clear();
