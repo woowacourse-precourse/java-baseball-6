@@ -19,4 +19,7 @@ public class Player {
         return numbers.get(i);
     }
 
+    public void setNumbers(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
 }
