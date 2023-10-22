@@ -43,6 +43,7 @@ public class GameController {
 		String replayCommandInput = getReplayCommandInput();
 		if (gameService.isReplay(replayCommandInput)) {
 			playBaseBallGame();
+			replayOrExitGame();
 		}
 	}
 
