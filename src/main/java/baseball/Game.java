@@ -69,7 +69,8 @@ public class Game {
         //입력이 양수가 아닌 경우 or 입력한 숫자가 3자리가 아닌 경우 or 입력한 숫자에 중복이 존재하는 경우
         if (!isPositiveNumber(userNum)
                 || (userNum.length() != GameDetail.NUM_COUNT)
-                || hasDuplicateNum(userNum)) {
+                || hasDuplicateNum(userNum)
+                || userNum.contains("0")) {
             throw new IllegalArgumentException(String.format("유효하지 않은 입력값 = %s", userNum));
         }
 
