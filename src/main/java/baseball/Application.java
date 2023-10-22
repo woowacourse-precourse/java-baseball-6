@@ -15,7 +15,6 @@ public class Application {
 
         List computer = shuffleNumber();
 
-        System.out.println("정보 : " + computer);
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (game) {
@@ -44,7 +43,6 @@ public class Application {
                 throw new IllegalArgumentException();
             }
 
-
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     if (i == j && computer.get(i) == inputList.get(j)) {
@@ -54,7 +52,6 @@ public class Application {
                     }
                 }
             }
-
             if (strike > 0) {
                 if (strike == 3) {
                     System.out.println(strike + "스트라이크");
@@ -69,10 +66,14 @@ public class Application {
                     }
                 } else if (ball > 0) {
                     System.out.println(ball + "볼 " + strike + "스트라이크");
+                } else {
+                    System.out.println(strike + "스트라이크");
                 }
             } else {
                 if (ball > 0) {
                     System.out.println(ball + "볼");
+                } else {
+                    System.out.println("낫싱");
                 }
             }
 
