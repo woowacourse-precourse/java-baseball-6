@@ -12,25 +12,17 @@ public class Game implements Numbers {
 
     public void proceedGame() {
         ComputerNumbers computerNumbers = new ComputerNumbers();
+
         boolean ongoing = true;
 
         while(ongoing) {
             InputView.printInputMsg(); // 숫자를 입력해주세요 :
 
             ClientNumbers clientNumbers = InputView.makeClientNumbers();
-            Info info = clientNumbers.compareWithComputerNumbers(computerNumbers);
-
-            System.out.println("--------- computerNumbers ---------");
-            System.out.println(computerNumbers.hashCode());
-            System.out.println(computerNumbers.getNumbers().size());
-            System.out.println("--------- clientNumbers ---------");
-            System.out.println(clientNumbers.hashCode());
-            System.out.println(clientNumbers.getNumbers().size());
+            Info info = clientNumbers.compareWithComputerNumbers(computerNumbers); // error
 
             int ball = info.ball;
             int strike = info.strike;
-            boolean ongoing2 = info.ongoing;
-            System.out.println(ball + " " + strike + " " + ongoing2);
 
             if (ball > 0 && strike > 0) {
                 OutputView.printBallAndStrikeMsg(ball, strike); // ?볼 ?스트라이크
@@ -59,7 +51,6 @@ public class Game implements Numbers {
                 proceedGame();
             } else {
                 oneMore = false;
-                OutputView.printExitMsg();
             }
         }
     }

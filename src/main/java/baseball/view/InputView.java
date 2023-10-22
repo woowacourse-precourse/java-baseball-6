@@ -23,12 +23,12 @@ public class InputView {
         validateInputNumberNotUnique(inputStr);
         validateInputSizeNot3(inputStr);
 
-        int input = Integer.parseInt(inputStr);
+        char[] charArray = inputStr.toCharArray();
+
         ClientNumbers clientNumbers = new ClientNumbers();
 
-        for(int i=CLIENT_NUMBERS_SIZE-1; i>=0; i--) {
-            clientNumbers.getNumbers().add(input % 10);
-            input /= 10;
+        for(char c : charArray) {
+            clientNumbers.getNumbers().add(Integer.parseInt(String.valueOf(c)));
         }
 
         return clientNumbers;
