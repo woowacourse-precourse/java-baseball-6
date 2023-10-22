@@ -7,7 +7,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+// 사용자의 숫자를 설정하고 유효성을 검사하는 클래스
 public class ChallengerV4 implements SetNumV4 {
+
+    // 사용자로부터 3개의 숫자를 설정하고 반환하는 메서드
     public List<Integer> setNum() {
         List<Integer> challengerNums = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");

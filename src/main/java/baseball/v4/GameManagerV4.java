@@ -3,8 +3,10 @@ package baseball.v4;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
+// 게임의 로직과 진행을 관리하는 클래스
 public class GameManagerV4 {
 
+    // 주어진 컴퓨터와 사용자를 이용하여 게임을 진행하는 메서드
     public static void playGame(ComputerV4 computer, ChallengerV4 challengerV4) {
         // 컴퓨터의 숫자 설정
         List<Integer> computerNums = computer.setNum();
@@ -22,6 +24,7 @@ public class GameManagerV4 {
             System.out.println(gameResult);
         }
     }
+    // 컴퓨터와 사용자의 숫자를 비교하여 결과(스트라이크, 볼, 낫싱)를 반환하는 메서드
     public static String playAndResult(List<Integer> computerNums, List<Integer> challengerNums) {
 
         int strike = 0;
@@ -63,7 +66,7 @@ public class GameManagerV4 {
         return result.toString();
 
     }
-
+    // 게임의 진행 의사를 묻는 메서드
     public static boolean askContinue() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");

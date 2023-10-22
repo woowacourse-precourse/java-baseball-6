@@ -1,5 +1,6 @@
 package baseball.v4;
 
+// 게임의 전체 흐름을 관리하는 컨트롤러 클래스
 public class GameProcessControllerV4 {
     public static void start() {
         while (true) {
@@ -20,7 +21,7 @@ public class GameProcessControllerV4 {
                 }
             } catch (IllegalArgumentException e) {
                 GameManagerV4.stop();
-                return; // 여기서도 게임 종료
+                return;
             }
         }
     }

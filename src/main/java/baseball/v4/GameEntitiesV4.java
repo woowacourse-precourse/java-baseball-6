@@ -1,6 +1,6 @@
 package baseball.v4;
 
-
+// 게임의 주요 엔터티(컴퓨터와 사용자)를 생성하고 관리하는 클래스
 public class GameEntitiesV4 {
     private final ComputerV4 computer;
     private final ChallengerV4 challenger;
