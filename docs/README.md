@@ -69,6 +69,8 @@
 - `Score`
     - [x] `toString()` 메서드를 오버라이딩하여 `"n볼"`, `"n스트라이크"`, `"낫싱"` `"3스트라이크"` 출력.
     - [x] `isStrikeOut()`: 정답과 입력값을 비교하여 `"3스트라이크"`인지 `boolean` 반환.
+    - [ ] `getBallCount()`: `Score`가 가지고 있는 `Ball`의 값을 반환.
+    - [ ] `getStrikeCount()`: `Score`가 가지고 있는 `Strike`의 값을 반환.
 - `Ball`
     - [x] `isEmpty()`: 볼이 비어있는지 확인.
     - [x] `getValue()`: 볼의 값을 반환.
