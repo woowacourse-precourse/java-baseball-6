@@ -22,10 +22,11 @@ public class MessageManager extends Messages {
         System.out.println(gameProcessor.generateAnswerText(data, messageManager));
     }
 
-    public String getUserContinueResponse() {
-        System.out.print(super.getOutroMessage());
-        System.out.println();
+    public void showComplete() {
+        System.out.println(super.getOutroMessage());
+    }
 
+    public String getUserContinueResponse() {
         System.out.println(super.getWillRestartMessage());
         willContinueResponse = readLine();
         System.out.println();
