@@ -6,13 +6,13 @@ import java.io.ByteArrayInputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class InputCommanderTest {
+class InputTest {
 
     @Test
     void 사용자의_입력을_받아온다(){
         String expected = "wooteco";
         System.setIn(new ByteArrayInputStream(expected.getBytes()));
-        InputCommander inputCommander = new InputCommander();
+        Input inputCommander = new Input();
 
         String input = inputCommander.receiveInput();
 
