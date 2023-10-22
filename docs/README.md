@@ -63,6 +63,6 @@
 * Ball의 개수
 * Strike의 개수
 
-[ ] ball의 개수를 반환한다.
+[v] ball의 개수를 반환한다.
 
-[ ] strike의 개수를 반환한다.
+[v] strike의 개수를 반환한다.
