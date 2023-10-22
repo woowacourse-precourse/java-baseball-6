@@ -14,16 +14,17 @@ public class Balls {
         this.balls = List.copyOf(balls);
     }
 
-    public boolean containsBall(Ball otherBall) {
+    public Ball getBall(int index) {
+        return balls.get(index);
+    }
+
+    public boolean containsOtherBall(Ball otherBall) {
         for (Ball ball : balls) {
             if (ball.number().equals(otherBall.number())) {
                 return true;
             }
         }
         return false;
-    }
-    public Ball getBall(int index) {
-        return balls.get(index);
     }
 
     private void validate(List<Ball> balls) {
@@ -32,6 +33,7 @@ public class Balls {
         validateNumberOfBalls(balls);
         validateDuplicates(balls);
     }
+
     private void validateNotNullAndNotEmpty(List<Ball> balls) {
         if (balls == null || balls.isEmpty()) {
             throwIllegalArgumentException();
