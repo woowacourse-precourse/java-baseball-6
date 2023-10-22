@@ -6,6 +6,7 @@ import baseball.model.GameRule;
 import baseball.model.RandomNumber;
 import baseball.model.Referee;
 import baseball.model.ResumeNumber;
+import baseball.view.AskView;
 import baseball.view.EndView;
 import baseball.view.ResultView;
 import baseball.view.StartView;
@@ -35,7 +36,7 @@ public class GameController {
         int computerNumber = RandomNumber.pickNumber();
 
         while (true) {
-            AskController.askNumberInput();
+            AskView.printAskNumber();
             int userNumber = InputController.receiveUserNumber();
             referee.prepareJudgement(computerNumber, userNumber);
 
@@ -49,7 +50,7 @@ public class GameController {
         }
 
         EndView.end();
-        AskController.askResumeInput();
+        AskView.printAskResume();
 
         int resumeAnswer = InputController.receiveResumeNumber();
         resumeNumber.updateNumber(resumeAnswer);
