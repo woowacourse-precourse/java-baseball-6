@@ -14,7 +14,6 @@ public class GameController {
     private static final int NUMBER_LENGTH = 3;
     private static final int ZERO = 0;
     private static final int FULL_STRIKE_COUNT = 3;
-    private static final char ZERO_CHAR = '0';
     private static final String SPACE_MESSAGE = " ";
     private static final String NULL_MESSAGE = "";
     private static final String BALL_MESSAGE = "볼";
@@ -46,23 +45,14 @@ public class GameController {
 
         computer.setComputerNumbers(randomUtil.generateRandomNumbers());
         do {
-            player.setPlayerNumbers(convertplayerToList(inputView.inputPlayerNumber()));
+            String playerInput = inputView.inputPlayerNumber();
+            player.setPlayerNumbers(playerInput);
             game.initStrikeAndBall();
             countStrikeAndBall(player.getPlayerNumbers(), computer.getComputerNumbers());
             printHintMessage();
         } while (!isCorrectNumber());
 
         outputView.printEndMessage();
-    }
-
-    public List<Integer> convertplayerToList(String playerStr) {
-        List<Integer> player = new ArrayList<>();
-        for (int index = 0; index < NUMBER_LENGTH; index++) {
-            int number = playerStr.charAt(index) - ZERO_CHAR;
-            player.add(number);
-        }
-
-        return player;
     }
 
     public void countStrikeAndBall(List<Integer> playerNumbers, List<Integer> computerNumbers) {
