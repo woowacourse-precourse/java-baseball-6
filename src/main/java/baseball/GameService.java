@@ -4,8 +4,14 @@ import java.util.List;
 
 public class GameService {
 
+    public static final int MAX_DIGIT = 3;
+
     private int strike = 0;
     private int ball = 0;
+
+    public boolean isAllNumberMatched() {
+        return strike == MAX_DIGIT;
+    }
 
     public void comparePlayerAndComputer(Player player, Computer computer) {
         List<Integer> playerList = player.getPlayerNumbers();
