@@ -76,8 +76,4 @@ public class Number {
     private boolean isStrike(int number, int digit) {
         return number == numbers.get(digit);
     }
-
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
 }
