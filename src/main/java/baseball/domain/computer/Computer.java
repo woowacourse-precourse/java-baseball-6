@@ -1,4 +1,4 @@
-package baseball.computer;
+package baseball.domain.computer;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public class Computer {
 
-    public ArrayList<Integer> makeRandomNumbers(){
-        ArrayList<Integer> computerNumbers = new ArrayList<>();
+    public ArrayList<String> makeRandomNumbers(){
+        ArrayList<String> computerNumbers = new ArrayList<>();
 
         while (computerNumbers.size() < 3){
-            Integer randomNumber = pickRandomNumber();
+            String randomNumber = String.valueOf(pickRandomNumber());
             if(!isContainsSameNumber(computerNumbers, randomNumber)){
                 computerNumbers.add(randomNumber);
             }
@@ -20,10 +20,10 @@ public class Computer {
     }
 
     public Integer pickRandomNumber(){
-        return Randoms.pickNumberInRange(1, 10);
+        return Randoms.pickNumberInRange(1, 9);
     }
 
-    public Boolean isContainsSameNumber(ArrayList<Integer> computerNumbers, Integer randomNumber){
+    public Boolean isContainsSameNumber(ArrayList<String> computerNumbers, String randomNumber){
         return computerNumbers.contains(randomNumber);
     }
 }
