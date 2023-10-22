@@ -23,16 +23,17 @@ import view.InputView;
 import view.RestartOrEndView;
 import view.ResultView;
 import view.StartView;
+import vo.AnswerBall;
 
 public class BaseballController {
     public static void startBaseball() {
         StartView.startView();
         while (true) {
-            List<Integer> answer = CreateRandomNumber.createRandomNumber();
+            AnswerBall answerBall = new AnswerBall(CreateRandomNumber.createRandomNumber());
 
             while (true) {
                 List<Integer> userInput = InputView.userInput();
-                List<Integer> result = Result.getResult(answer, userInput);
+                List<Integer> result = Result.getResult(answerBall, userInput);
                 if (ResultView.resultView(result)) {
                     break;
                 }
