@@ -28,7 +28,8 @@ public class Game {
         ballCount = 0;
     }
     private void initComputerAndPlayer() {
-
+        computer.generateNewNumbers();
+        player.inputNumbers();
     }
 
     private void play() {
@@ -42,15 +43,11 @@ public class Game {
 
             initStrikeBallCount();
 
-            // 컴퓨터와 플레이어 숫자 비교 (스트라이크, 볼, 낫싱 출력)
             compareNumbers(computerNumbers, playerNumbers);
 
-            // 게임 결과 출력
             if (strikeCount == 3) {
-                // 게임 종료
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                // 게임 재시작 여부 확인
-                checkIsContinue();
+                isPlayGame = checkIsContinue();
             } else {
                 player.inputNumbers();
             }
@@ -89,9 +86,9 @@ public class Game {
 
         if (input.equals("1")) {
             initComputerAndPlayer();
-            return false;
-        } else if (input.equals("2")) {
             return true;
+        } else if (input.equals("2")) {
+            return false;
         } else {
             throw new IllegalArgumentException("Error: Input must be 1 or 2");
         }

@@ -15,6 +15,10 @@ public class Computer {
         return numberGenerator.generateNumbers();
     }
 
+    public void generateNewNumbers() {
+        this.numbers = generateAndStoreNumbers();
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
