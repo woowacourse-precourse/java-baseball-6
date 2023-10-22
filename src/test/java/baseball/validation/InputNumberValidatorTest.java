@@ -16,7 +16,7 @@ class InputNumberValidatorTest {
 
     @Test
     void 숫자가_세자리가_아니면_예외발생() {
-        assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validateInputSize(List.of(1, 2)));
+        assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validateInputSize("12"));
     }
 
     @Test

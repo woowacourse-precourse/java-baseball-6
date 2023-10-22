@@ -28,8 +28,8 @@ public class InputNumberValidator {
      * 플레이어의 입력값이 3자리 수인지 확인
      * @Param input 플레이어의 숫자
      * */
-    public static void validateInputSize(List<Integer> input) {
-        if (input.size() != NUMBER_SIZE) {
+    public static void validateInputSize(String input) {
+        if (input.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
     }
