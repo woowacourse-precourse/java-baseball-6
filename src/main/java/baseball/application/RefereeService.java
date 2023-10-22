@@ -1,8 +1,32 @@
 package baseball.application;
 
+import baseball.domain.Pitch;
 import baseball.dto.Inning;
+import baseball.enums.GameConfig;
+import baseball.generator.PitchGenerator;
 
 public class RefereeService {
+    private final Pitch computer;
+
+    public RefereeService(PitchGenerator pitchGenerator) {
+        this.computer = new Pitch(pitchGenerator.generate());
+    }
+
+    public Inning compare(Pitch player) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < GameConfig.PITCH_COUNT.getValue(); i++) {
+            final int playerNumber = player.get(i);
+            if (computer.get(i) == playerNumber) {
+                strike++;
+                continue;
+            }
+            if (computer.contains(playerNumber)) {
+                ball++;
+            }
+        }
+        return createInning(strike, ball);
+    }
     private Inning createInning(int strike, int ball) {
         if (strike + ball == 0) {
             return Inning.ofNothing();
