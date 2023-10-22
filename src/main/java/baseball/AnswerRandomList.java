@@ -7,7 +7,7 @@ public class AnswerRandomList {
     private static final int NUMBER_IN_RANGE_MIN = 1;
     private static final int NUMBER_IN_RANGE_MAX = 9;
     private static final int NUMBER_LIST_SIZE_MAX = 3;
-    private List<Integer> ThreeRandomNumberList;
+    private final List<Integer> ThreeRandomNumberList;
 
     public AnswerRandomList(List<Integer> threeRandomNumberList) {
         ThreeRandomNumberList = threeRandomNumberList;
