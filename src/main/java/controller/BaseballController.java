@@ -1,7 +1,7 @@
 /*
  * <pre>
  * Class : BaseballController
- * Comment: Application 시작 클래스
+ * Comment: baseball.Application 시작 클래스
  * History
  * ================================================================
  * DATE             AUTHOR           NOTE
@@ -17,4 +17,9 @@
 package controller;
 
 public class BaseballController {
+    public static void startMission() {
+
+    }
+
+
 }
