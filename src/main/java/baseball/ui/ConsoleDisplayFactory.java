@@ -1,9 +1,9 @@
-package baseball.property;
+package baseball.ui;
 
 /**
  * @author 민경수
- * @description base ball game property
+ * @description console display
  * @since 2023.10.23
  **********************************************************************************************************************/
-public class BaseBallGameProperty {
+public class ConsoleDisplayFactory {
 }

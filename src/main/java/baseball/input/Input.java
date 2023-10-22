@@ -1,9 +1,9 @@
-package baseball.property;
+package baseball.input;
 
 /**
  * @author 민경수
- * @description base ball game property
+ * @description input
  * @since 2023.10.23
  **********************************************************************************************************************/
-public class BaseBallGameProperty {
+public class Input {
 }

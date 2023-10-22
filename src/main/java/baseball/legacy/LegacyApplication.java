@@ -1,8 +1,8 @@
-package baseball;
+package baseball.legacy;
 
 import baseball.legacy.game.GameManager;
 
-public class Application {
+public class LegacyApplication {
   public static void main(String[] args) {
     // TODO: 프로그램 구현
     /**
@@ -37,7 +37,23 @@ public class Application {
      * 5. 출력 방식이 바뀐다면?
      */
 
+    GameManager gameManager = new GameManager();
+    gameManager.start(); //게임 시작
 
+    while (true) {
+      gameManager.test();
+
+      if (!gameManager.isEnd()) {
+        continue;
+      }
+
+      if (gameManager.requestReplayGameChoice() == 2) {
+        System.out.println("게임 종료");
+        break;
+      }
+
+      gameManager.restart();
+    }
 
   }
 

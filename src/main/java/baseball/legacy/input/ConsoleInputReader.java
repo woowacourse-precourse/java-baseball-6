@@ -1,4 +1,4 @@
-package baseball.input;
+package baseball.legacy.input;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -7,10 +7,10 @@ import camp.nextstep.edu.missionutils.Console;
  * @description console input reader
  * @since 2023.10.20
  **********************************************************************************************************************/
-public class ConsoleInputReader implements InputReader{
+public class ConsoleInputReader implements InputReader {
 
   @Override
-  public Integer readNumber() {
+  public int readNumber() {
     return stringToInteger(Console.readLine());
   }
 

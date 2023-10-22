@@ -1,4 +1,4 @@
-package baseball.input;
+package baseball.legacy.input;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  * @description number contain zero validator
  * @since 2023.10.20
  **********************************************************************************************************************/
-public class NumberContainZeroValidator implements InputValidator{
+public class NumberContainZeroValidator implements InputValidator {
 
   @Override
   public void validate(Integer number) {

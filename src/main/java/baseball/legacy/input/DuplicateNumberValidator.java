@@ -1,4 +1,4 @@
-package baseball.input;
+package baseball.legacy.input;
 
 import java.util.ArrayList;
 import java.util.HashSet;

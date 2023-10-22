@@ -1,9 +1,10 @@
-package baseball.property;
+package baseball.legacy.baseballnumber;
 
 /**
  * @author 민경수
- * @description base ball game property
- * @since 2023.10.23
+ * @description base ball result
+ * @since 2023.10.21
  **********************************************************************************************************************/
-public class BaseBallGameProperty {
+public class BaseBallResult {
+
 }

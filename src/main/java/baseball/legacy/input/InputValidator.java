@@ -1,4 +1,4 @@
-package baseball.input;
+package baseball.legacy.input;
 
 public interface InputValidator {
 

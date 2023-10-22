@@ -1,9 +1,12 @@
-package baseball.property;
+package baseball.gamemanager;
 
 /**
  * @author 민경수
- * @description base ball game property
+ * @description game manager
  * @since 2023.10.23
  **********************************************************************************************************************/
-public class BaseBallGameProperty {
+public class GameManager {
+
+
+
 }
