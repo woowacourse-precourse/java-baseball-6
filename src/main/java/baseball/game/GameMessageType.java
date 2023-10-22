@@ -1,6 +1,6 @@
-package baseball.modules.console;
+package baseball.game;
 
-public enum MessageType{
+public enum GameMessageType {
     START("숫자 야구 게임을 시작합니다."),
     INPUT_REQUEST("숫자를 입력해주세요 : "),
     SUCCESS("3개의 숫자를 모두 맞히셨습니다! "),
@@ -10,7 +10,7 @@ public enum MessageType{
 
     private final String message;
 
-    MessageType(final String message) {
+    GameMessageType(final String message) {
         this.message = message;
     }
 
