@@ -1,9 +1,12 @@
 package baseball.validator;
 
 import baseball.util.Util;
+import javax.print.DocFlavor.STRING;
 
 public class Validator {
     public static final String NATURAL_NUMBER_REGULAR_EXPRESSION = Util.NATURAL_NUMBER_REGULAR_EXPRESSION;
+    private static final String STRING_ONE = "1";
+    private static final String STRING_TWO = "2";
 
     public static void validateStringIsNaturalNumber(String string, String exceptionMessage) {
         if (!string.matches(NATURAL_NUMBER_REGULAR_EXPRESSION)) {
@@ -35,7 +38,7 @@ public class Validator {
     }
 
     public static void validateStringIsOneOrTwo(String string) {
-        if (!string.equals("1") && !string.equals("2")) {
+        if (!string.equals(STRING_ONE) && !string.equals(STRING_TWO)) {
             throw new IllegalArgumentException("1, 2 중 하나를 입력해주세요");
         }
     }
