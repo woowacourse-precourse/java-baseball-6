@@ -57,6 +57,7 @@ public class Application {
     }
 
     private static List<Integer> getPlayerNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         String playerInput = Console.readLine();
         try {
             return Arrays.stream(playerInput.split(""))
