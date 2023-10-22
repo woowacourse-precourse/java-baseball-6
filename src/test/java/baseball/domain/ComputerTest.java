@@ -3,7 +3,6 @@ package baseball.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,24 +17,25 @@ public class ComputerTest {
     void getScoreTest(BaseballNumbers inputBaseballNumbers, Score expectedScore) {
         Computer computer = new Computer(new FixedBaseballNumbersGenerator());
         Score score = computer.getScore(inputBaseballNumbers);
-        assertThat(score).isEqualTo(expectedScore);
+        assertThat(score.getBallCount()).isEqualTo(expectedScore.getBallCount());
+        assertThat(score.getStrikeCount()).isEqualTo(expectedScore.getStrikeCount());
     }
 
     static Stream<Arguments> provideGetScoreTestArguments() {
         return Stream.of(
                 arguments(setInputBaseballNumbers(1, 2, 3), setExpectedScore(1, 1)),
-                arguments(setInputBaseballNumbers(1, 2, 3), setExpectedScore(1, 0)),
-                arguments(setInputBaseballNumbers(1, 2, 3), setExpectedScore(2, 0)),
-                arguments(setInputBaseballNumbers(1, 2, 3), setExpectedScore(0, 1)),
-                arguments(setInputBaseballNumbers(1, 2, 3), setExpectedScore(0, 3))
+                arguments(setInputBaseballNumbers(1, 4, 5), setExpectedScore(1, 0)),
+                arguments(setInputBaseballNumbers(6, 7, 1), setExpectedScore(2, 0)),
+                arguments(setInputBaseballNumbers(2, 1, 6), setExpectedScore(0, 1)),
+                arguments(setInputBaseballNumbers(7, 1, 3), setExpectedScore(0, 3))
         );
     }
 
-    private static List<BaseballNumber> setInputBaseballNumbers(int x, int y, int z) {
-        return Stream.of(x, y, z).map(BaseballNumber::new).toList();
+    private static BaseballNumbers setInputBaseballNumbers(int x, int y, int z) {
+        return new BaseballNumbers(Stream.of(x, y, z).map(BaseballNumber::new).toList());
     }
 
-    private static Score setExpectedScore(int ball, int ball1) {
-        return new Score(new Ball(ball), new Strike(ball1));
+    private static Score setExpectedScore(int ball, int strike) {
+        return new Score(new Ball(ball), new Strike(strike));
     }
 }
