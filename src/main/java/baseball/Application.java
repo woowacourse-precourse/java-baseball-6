@@ -11,16 +11,14 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (true){
+        do {
             // computer의 랜덤 숫자를 생성하는 함수 실행 + List에 값 저장
             List<Integer> computerNumbers = createComputerNumbers();
 
             // 게임 실행
             play(computerNumbers);
 
-            // 게임 종료 후 재시작 여부 선택
-            if (!choiceRestart()) break;
-        }
+        } while (choiceRestart()); // 게임 종료 후 재시작 여부 선택. false인 경우 반복문 탈출.
     }
 
     // computer의 랜덤 숫자 생성 함수
