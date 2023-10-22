@@ -17,7 +17,7 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             user.inputUserNumber();
 
-            count.compare(computer.getRandomNumbers(), user.getUserNumber());
+            count.compare(computer.getRandomNumbers(), user.getUserNumbers());
             count.showStatus();
 
             if (count.checkStrike() && restart.doRestart()) {

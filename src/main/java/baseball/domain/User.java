@@ -8,42 +8,42 @@ import java.util.List;
 import java.util.Set;
 
 public class User {
-    private List<Integer> userNumber;
+    private List<Integer> userNumbers;
 
     private static final int THREE_NUMBER = 3;
 
-    public List<Integer> getUserNumber() {
-        return userNumber;
+    public List<Integer> getUserNumbers() {
+        return userNumbers;
     }
 
     public void inputUserNumber() {
-        userNumber = new ArrayList<>();
+        userNumbers = new ArrayList<>();
         String number = Console.readLine();
         try {
             for (int i = 0; i < number.length(); i++) {
-                userNumber.add(Integer.parseInt(Character.toString(number.charAt(i))));
+                userNumbers.add(Integer.parseInt(Character.toString(number.charAt(i))));
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("서로 다른 세자리 숫자를 입력하세요.");
         }
-        validate(userNumber);
+        validate(userNumbers);
     }
 
-    public void validate(List<Integer> userNumber) {
-        checkDuplication(userNumber);
-        checkLength(userNumber);
+    public void validate(List<Integer> userNumbers) {
+        checkDuplication(userNumbers);
+        checkLength(userNumbers);
 
     }
 
-    public void checkDuplication(List<Integer> userNumber) {
-        Set<Integer> userNumber1 = new HashSet<>(userNumber);
-        if (userNumber.size() != userNumber1.size()) {
+    public void checkDuplication(List<Integer> userNumbers) {
+        Set<Integer> check = new HashSet<>(userNumbers);
+        if (userNumbers.size() != check.size()) {
             throw new IllegalArgumentException("서로 다른 세자리 숫자를 입력하세요.");
         }
     }
 
-    public void checkLength(List<Integer> userNumber) {
-        if (userNumber.size() != THREE_NUMBER) {
+    public void checkLength(List<Integer> userNumbers) {
+        if (userNumbers.size() != THREE_NUMBER) {
             throw new IllegalArgumentException("서로 다른 세자리 숫자를 입력하세요.");
         }
     }
