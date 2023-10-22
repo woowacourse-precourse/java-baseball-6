@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.domain.BaseBallHint;
 import baseball.domain.BaseBallNumbers;
+import baseball.domain.Player;
 import exception.DuplicateBaseBallNumber;
 import exception.OutOfBaseBallNumbersSize;
 import java.util.stream.IntStream;
@@ -18,7 +19,7 @@ public class SinglePlayerConsole implements Player {
     }
 
     @Override
-    public BaseBallNumbers readBaseballNumbers() {
+    public BaseBallNumbers getBaseballNumbers() {
         OutputConsole.requestInputMessage();
         String stringNumbers = InputConsole.readConsole();
         try {
