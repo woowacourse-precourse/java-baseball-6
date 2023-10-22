@@ -10,7 +10,7 @@ public class Score {
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
 
-    public static void checkScore(List<Integer> input, List<Integer> randomNumber) {
+    public static boolean checkScore(List<Integer> input, List<Integer> randomNumber) {
         int ballCount = 0;
         int strikeCount = 0;
 
@@ -26,7 +26,10 @@ public class Score {
 
         if (strikeCount == 3) {
             Game.successGame();
+            return true;
         }
+
+        return false;
     }
 
     private static void printScore(int ball, int strike) {
