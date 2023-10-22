@@ -15,12 +15,10 @@ public class Baseball_Input {
 
     public static void setUserInput(){
         userInput = new ArrayList<>();
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
         try {
-
             int inputStrToInt = Integer.parseInt(inputString);
-
             //세 자리수 입력 판단
             if(inputStrToInt < 123 || inputStrToInt > 987 ){
                 IllegalArgumentException e = new IllegalArgumentException("IllegalArgumentException");
@@ -29,7 +27,8 @@ public class Baseball_Input {
 
             // 서로 다른 수인지 판단
             for(int i=2; i>=0; i--){
-                int newAdder = inputStrToInt /= Math.pow(10,i) ;
+                int newAdder = inputStrToInt / (int)Math.pow(10,i) ;
+                inputStrToInt %= (int)Math.pow(10,i) ;
                 if(userInput.contains(newAdder)){
                     IllegalArgumentException e = new IllegalArgumentException("IllegalArgumentException");
                     throw e;
@@ -47,9 +46,8 @@ public class Baseball_Input {
         return restartNum;
     }
 
-    public static boolean setRestartNum(){
+    public static void setRestartNum(){
 
-        Baseball_output.printRestart();
         String inputString = Console.readLine();
         try {
 
@@ -57,11 +55,11 @@ public class Baseball_Input {
 
             if(inputStrToInt == 1){
                 restartNum = 1;
-                return true;
+                return;
             }
             if(inputStrToInt == 2){
                 restartNum = 2;
-                return false;
+                return;
             }
 
             // 1과 2 이외는 에러처리
