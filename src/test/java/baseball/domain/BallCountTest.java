@@ -2,9 +2,11 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.constant.ResultStatus;
 import baseball.constant.StrikeBall;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -40,7 +42,36 @@ class BallCountTest {
         assertThat(strikeNum).isOne();
     }
 
-    @Test
-    @DisplayName("")
-    void checkResultStatus() {}
+    @Nested
+    @DisplayName("결과 상태 요청시")
+    class CheckResultStatus {
+
+        @Test
+        @DisplayName("3스트라이크인 경우 SUCCESS를 반환하는가")
+        void threeStrikeToSuccess() {
+            // given
+            final BallCount ballCount =
+                    new BallCount(List.of(StrikeBall.STRIKE, StrikeBall.STRIKE, StrikeBall.STRIKE));
+
+            // when
+            final ResultStatus result = ballCount.checkResultStatus();
+
+            // then
+            assertThat(result).isEqualTo(ResultStatus.SUCCESS);
+        }
+
+        @Test
+        @DisplayName("3스트라이크가 아닌 경우 CONTINUE를 반환하는가")
+        void twoStrikeToContinue() {
+            // given
+            final BallCount ballCount =
+                    new BallCount(List.of(StrikeBall.STRIKE, StrikeBall.STRIKE, StrikeBall.NONE));
+
+            // when
+            final ResultStatus result = ballCount.checkResultStatus();
+
+            // then
+            assertThat(result).isEqualTo(ResultStatus.CONTINUE);
+        }
+    }
 }
