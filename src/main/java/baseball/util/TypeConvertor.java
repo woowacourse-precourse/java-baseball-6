@@ -11,7 +11,7 @@ public class TypeConvertor {
                     .map(Integer::parseInt)
                     .toList();
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력해주세요");
+            throw new IllegalArgumentException(ExceptionMessage.ONLY_NUMBER.getMessage());
         }
     }
 }

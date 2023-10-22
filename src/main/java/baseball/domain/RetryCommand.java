@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.util.ExceptionMessage;
+
 import java.util.Arrays;
 
 public enum RetryCommand {
@@ -15,7 +17,7 @@ public enum RetryCommand {
         return Arrays.stream(RetryCommand.values())
                 .filter(retryCommand -> retryCommand.command.equals(input))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("입력 값을 다시 한번 확인해주세요.(1,2)"));
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.CHECK_RETRY.getMessage()));
     }
 
     public boolean isRetry() {

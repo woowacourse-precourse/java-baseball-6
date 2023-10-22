@@ -2,6 +2,8 @@ package baseball.domain;
 
 import java.util.List;
 
+import static baseball.util.ExceptionMessage.*;
+
 public class InputNumber {
 
     private final List<Integer> inputNumber;
@@ -21,19 +23,19 @@ public class InputNumber {
         long distinctCount = inputNumber.stream().distinct().count();
 
         if (distinctCount != inputNumber.size()) {
-            throw new IllegalArgumentException("숫자의 중복은 허용되지 않습니다.");
+            throw new IllegalArgumentException(NOT_DUPLICATE.getMessage());
         }
     }
 
     private void checkLength(int length) {
         if (length != 3) {
-            throw new IllegalArgumentException("3자리 수의 숫자를 입력해주세요");
+            throw new IllegalArgumentException(CHECK_NUMBERS_LENGTH.getMessage());
         }
     }
 
     private void checkNotContainZero(List<Integer> inputNumber) {
         if (inputNumber.contains(0)) {
-            throw new IllegalArgumentException("0은 입력할 수 없습니다.");
+            throw new IllegalArgumentException(NOT_ZERO.getMessage());
         }
     }
 

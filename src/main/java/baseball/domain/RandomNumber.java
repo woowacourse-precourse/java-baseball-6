@@ -29,11 +29,7 @@ public class RandomNumber {
         return randomNumber.contains(numberAtIndex);
     }
 
-    public boolean isNotSameNumberAtIndex(Integer numberAtIndex, int index) {
-        return !randomNumber.get(index).equals(numberAtIndex);
-    }
-
-    public boolean isSameNumberAtIndex(Integer numberAtIndex, int index) {
-        return randomNumber.get(index).equals(numberAtIndex);
+    public Integer getNumberAtIndex(int index) {
+        return this.randomNumber.get(index);
     }
 }
