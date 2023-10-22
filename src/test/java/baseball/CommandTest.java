@@ -10,4 +10,10 @@ class CommandTest {
     void 사용자가_1을_누른경우_RETRY에_해당하는_객체를_반환한다() {
         assertEquals(Command.getCommand("1"), Command.RETRY);
     }
+
+    @Test
+    void 사용자가_2를_누른경우_EXIT에_해당하는_객체를_반환한다() {
+        assertEquals(Command.getCommand("2"), Command.EXIT);
+    }
+
 }
