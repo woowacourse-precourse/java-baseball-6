@@ -38,7 +38,7 @@ public class BaseballGame {
         for (int i=0; i<3; i++) {
             char charValue = input.charAt(i);
             String stringValue = String.valueOf(charValue);
-            Integer intValue = validator.changeToInteger(stringValue);;
+            Integer intValue = validator.changeToInteger(stringValue);
 
             validator.isRightRange(intValue);
             validator.isContain(user, intValue);

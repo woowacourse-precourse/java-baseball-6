@@ -1,5 +1,5 @@
 package baseball;
-import java.util.*;링
+import java.util.*;
 
 public class Application {
     // main 함수
