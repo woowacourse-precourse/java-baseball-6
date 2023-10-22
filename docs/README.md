@@ -48,8 +48,9 @@
   - and 연산을 수행했을 때의 값이 0이라면
     - 다음 인덱스로 넘어간다.
   - and 연산을 수행했을 때의 값이 0이 아니라면
-    - `strike`에 1을 더해주고
-    - `random_ball`과 `input_ball`의 값을 대조하여 같다면, `ball`에1을 더해주고 `strike에서 1을 빼준다.
+    - random_ball`과 `input_ball`의 값을 대조한다.
+      - 같다면 `strike`에 1을 더해준다.
+      - 다르다면 `ball`에1을 더해준다.
 - `strike`와 `ball`의 값을 바탕으로 볼, 스트라이크 여부를 출력해주고, 게임 승리 여부를 boolean으로 출력해준다.
 
 
