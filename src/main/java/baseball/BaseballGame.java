@@ -5,6 +5,17 @@ class BaseballGame{
     private int[] userNumbers;
 
     public void play(){
+        generateComputerNumbers();
+
+        boolean gameIsOver = false;
+        while(!gameIsOver){
+            userNumbersInput();
+
+            int strikeNum = countStrikes();
+            int ballNum = countBalls();
+
+            gameIsOver = gameResult(strikeNum, ballNum);
+        }
     }
 
     public void generateComputerNumbers(){
