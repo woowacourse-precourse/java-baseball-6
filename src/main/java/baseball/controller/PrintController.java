@@ -7,6 +7,10 @@ public class PrintController {
     private int strikeCount;
     private int ballCount;
 
+    public String printStart() {
+        return "숫자 야구 게임을 시작합니다.";
+    }
+
     public String printCount(InputNumber inputNumber) {
         StringBuilder output = new StringBuilder();
         strikeCount = countController.getStrikeCount(inputNumber);;
