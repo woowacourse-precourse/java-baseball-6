@@ -10,7 +10,7 @@ public class ComputerNumber {
 
     public ComputerNumber(List<Integer> computerNumber) {
         validateSize(computerNumber);
-        validateContainZero(computerNumber);
+        validateRange(computerNumber);
         validateDuplicate(computerNumber);
         this.computerNumber = computerNumber;
     }
@@ -21,9 +21,11 @@ public class ComputerNumber {
         }
     }
 
-    private void validateContainZero(List<Integer> computerNumber) {
-        if (computerNumber.contains(0)) {
-            throw new IllegalArgumentException();
+    private void validateRange(List<Integer> computerNumber) {
+        for (int i = 0; i < computerNumber.size(); i++) {
+            if ((computerNumber.get(i) < 1) || (computerNumber.get(i) > 9)) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
