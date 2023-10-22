@@ -25,7 +25,7 @@ public class Hint {
 		return ballCount == ZERO;
 	}
 
-	public boolean isSBallCountBiggerThanZero() {
+	public boolean isBallCountBiggerThanZero() {
 		return ballCount > ZERO;
 	}
 
