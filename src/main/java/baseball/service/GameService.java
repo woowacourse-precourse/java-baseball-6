@@ -8,13 +8,14 @@ import baseball.model.Player;
 public class GameService {
 
     private final NumberGenerator numberGenerator = new NumberGenerator();
-    private final Judgement judgement = new Judgement();
 
-    private Computer computer;
     private Player player;
+    private Computer computer;
+    private Judgement judgement;
 
     public void init() {
         computer = new Computer(numberGenerator.createComputerNumbers());
+        judgement = new Judgement();
     }
 
     public boolean isGameOver() {
