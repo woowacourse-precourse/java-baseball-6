@@ -26,9 +26,17 @@ public class Display {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    public static String askToRestartGame() {
+        System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.\n",
+                RestartType.RESTART.getValue(),
+                RestartType.EXIT.getValue()
+        );
+        return readLine();
+    }
+
     private static String makeMatchResultMessage(final MatchResult result) {
         if (result.isNothing) {
-            return "낫싱";
+            return new String("낫싱");
         }
         if (isBothBallAndStrike(result)) {
             return String.format("%d볼 %d스트라이크",

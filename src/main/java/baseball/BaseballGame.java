@@ -1,48 +1,57 @@
 package baseball;
 
 public class BaseballGame {
-    Boolean isDone;
+    Boolean isFinishedTheGame;
+    Boolean isRunning;
     Computer computer;
-    private static final int GAME_END_STRIKE_COUNT = 3;
+    private final int GAME_END_STRIKE_COUNT = 3;
 
     public BaseballGame() {
-        isDone = false;
+        isFinishedTheGame = false;
+        isRunning = false;
         this.computer = new Computer();
     }
 
     // 게임 시작
     public void start() throws IllegalArgumentException {
-        // 시작 문구 출력
         Display.printStartMessage();
-
-        run();
-        while (isRestart()) {
+        while (!isFinishedTheGame) {
             run();
         }
     }
 
     private void run() throws IllegalArgumentException {
+        isRunning = true;
         computer.drawBall();
-        while (!isDone) {
+        //System.out.println(computer.ball.value);
+        while (isRunning) {
             String userInputBall = Display.requestUserBall();
             Validator.validateUserInputBall(userInputBall);
             Ball userBall = new Ball(userInputBall);
             MatchResult result = computer.matchBall(userBall);
             Display.printMatchResult(result);
-            checkGameOver(result);
+            checkRunningState(result);
         }
         Display.printGameOver();
+        askToRestartGame();
     }
 
-    // 게임 종료 후 재시작 묻기
-    public boolean isRestart() {
-        //todo: 사용자에게 재시작 여부 묻고 재시작일 경우 true
-        return false;
+    private void askToRestartGame() throws IllegalArgumentException {
+        String restartAnswer = Display.askToRestartGame();
+        Validator.validateRestartInput(restartAnswer);
+        checkFinishedGame(restartAnswer);
     }
 
-    private void checkGameOver(MatchResult result) {
+    private void checkRunningState(MatchResult result) {
         if (result.strikeCount == GAME_END_STRIKE_COUNT) {
-            isDone = true;
+            isRunning = false;
+        }
+    }
+
+    private void checkFinishedGame(String restartAnswer) {
+        int answer = Integer.parseInt(restartAnswer);
+        if (RestartType.EXIT.getValue() == answer) {
+            isFinishedTheGame = true;
         }
     }
 }
