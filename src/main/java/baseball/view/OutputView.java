@@ -10,7 +10,7 @@ public class OutputView {
     private static final String NO_MESSAGE = "";
     private static final int ZERO = 0;
 
-    private static void printResult(ResultBall resultBall) {
+    public static void printResult(ResultBall resultBall) {
         int ball = resultBall.getBall();
         int strike = resultBall.getStrike();
 
