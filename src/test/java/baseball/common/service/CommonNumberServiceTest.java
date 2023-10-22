@@ -2,17 +2,19 @@ package baseball.common.service;
 
 import org.junit.jupiter.api.*;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class CommonNumberServiceTest {
+class CommonNumberServiceTest{
 
     private CommonNumberService commonNumberService;
     private Method isValid;
@@ -33,11 +35,25 @@ class CommonNumberServiceTest {
     public void 서로_다른_3자리_숫자_생성(){
 
         commonNumberService.createRandomNumber();
-        ArrayList<Integer> computer = commonNumberService.getComputer();
+        List<Integer> computer = commonNumberService.getComputer();
         assertEquals(computer.size(),3);        //3자리 숫자
 
         HashSet<Integer> set = new HashSet<>(computer);
         assertEquals(set.size(),3);     //서로 다른 숫자
+    }
+
+    @Test
+    @DisplayName("사용자 입력에 맞는 응답 생성 테스트")
+    public void 사용자_입력에_따라_응답_생성() throws NoSuchFieldException, IllegalAccessException {
+
+        //reflection
+        Field computerField = CommonNumberService.class.getDeclaredField("computer");
+        computerField.setAccessible(true);
+        ArrayList<Integer> answerList = new ArrayList<>(List.of(1, 2, 3));
+        computerField.set(commonNumberService,answerList);
+        assertEquals(commonNumberService.isCorrect("135"),"1볼 1스트라이크");
+        assertEquals(commonNumberService.isCorrect("456"),"낫싱");
+        assertEquals(commonNumberService.isCorrect("123"),"3스트라이크");
     }
 
     @Nested

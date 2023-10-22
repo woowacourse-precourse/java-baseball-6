@@ -5,11 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 public class CommonNumberService {
 
     //컴퓨터가 생성한 랜덤 정답 저장
-    private ArrayList<Integer> computer;
+    private List<Integer> computer;
     //컴퓨터 응답 캐시 저장
     private HashMap<String,String> cache;
 
@@ -129,7 +130,8 @@ public class CommonNumberService {
     }
 
     //정답 getter
-    public ArrayList<Integer> getComputer(){
+    public List<Integer> getComputer(){
         return computer;
     }
+
 }
