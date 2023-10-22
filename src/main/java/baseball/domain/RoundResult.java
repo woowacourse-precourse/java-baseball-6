@@ -9,12 +9,12 @@ public class RoundResult {
     private static final int ZERO = 0;
     private static final int THREE_STRIKE = 3;
 
-    private final int strike;
-    private final int ball;
+    private final int numberOfStrike;
+    private final int numberOfBall;
 
-    protected RoundResult(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
+    protected RoundResult(int numberOfStrike, int numberOfBall) {
+        this.numberOfStrike = numberOfStrike;
+        this.numberOfBall = numberOfBall;
     }
 
     public static RoundResult of(Balls target, Balls user) {
@@ -22,23 +22,23 @@ public class RoundResult {
     }
 
     public String getResult() {
-        if (strike == ZERO && ball == ZERO) {
+        if (numberOfStrike == ZERO && numberOfBall == ZERO) {
             return NOTHING;
         }
-        if (ball != ZERO && strike != ZERO) {
-            return ball + BALL + SPACE + strike + STRIKE;
+        if (numberOfBall != ZERO && numberOfStrike != ZERO) {
+            return numberOfBall + BALL + SPACE + numberOfStrike + STRIKE;
         }
-        if (ball != ZERO) {
-            return ball + BALL;
+        if (numberOfBall != ZERO) {
+            return numberOfBall + BALL;
         }
-        if (strike != ZERO) {
-            return strike + STRIKE;
+        if (numberOfStrike != ZERO) {
+            return numberOfStrike + STRIKE;
         }
         return null;
     }
 
 
     public boolean isLose() {
-        return strike != THREE_STRIKE;
+        return numberOfStrike != THREE_STRIKE;
     }
 }
