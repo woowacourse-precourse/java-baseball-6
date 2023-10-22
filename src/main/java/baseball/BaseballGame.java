@@ -18,11 +18,12 @@ public class BaseBallGame implements Game{
     private Balls userBalls;
     private Balls computerBalls;
     private User user=new User();
-    private Computer computer = new Computer();
+
 
     @Override
     public void start() {
         inputView.start();
+        Computer computer=new Computer();
         computerBalls=computer.makeComputerNumber();
         inputView.enterUserAnswer();
         userBalls=user.makeUserNumber();
