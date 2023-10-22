@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.model.GameCompare;
-import baseball.view.Inputview;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.model.Player;
 
@@ -10,15 +10,23 @@ public class Controller {
     private static final String GAME_RESTART = "1";
     private static final String GAME_END = "2";
 
+    private final InputView inputView;
+    private final OutputView outputView;
+
+    public Controller() {
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
+    }
+
     private boolean isGameFinished = false;
 
     public void play() {
         Player player = new Player();
-        Inputview.startGame();
+        outputView.printStartGame();
         while (true) {
             GameCompare gameCompare = new GameCompare();
             playGame(player, gameCompare);
-            String inputNumber = Inputview.reStart();
+            String inputNumber = inputView.reStart();
             if (isReStart(inputNumber)) {
                 break;
             }
@@ -37,7 +45,7 @@ public class Controller {
 
     private void playGame(Player player, GameCompare gameCompare) {
         while (!isGameFinished) {
-            String inputNumber = Inputview.inputNumber();
+            String inputNumber = inputView.inputNumber();
             player.updateNumbers(inputNumber);
             boolean endGameSign = gameCompare.updateGameCompare(player);
             String result = gameCompare.showResult();

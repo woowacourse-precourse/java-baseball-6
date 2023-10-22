@@ -1,17 +1,18 @@
 package baseball.view;
 
-import baseball.constant.OutputMessage;
 import camp.nextstep.edu.missionutils.Console;
 
-public class Inputview {
+public class InputView {
 
-    public static void startGame() {
-        System.out.println(OutputMessage.START_GAME);
+    private final OutputView outputView;
+
+    public InputView() {
+        this.outputView = new OutputView();
     }
 
-    public static String inputNumber() {
-        System.out.print(OutputMessage.PLEASE_INPUT_NUMBER);
+    public String inputNumber() {
         String inputNumber = Console.readLine();
+        outputView.printInputNumber();
 
         Validation.checkLengthThree(inputNumber);
         Validation.checkStringRegex(inputNumber);
@@ -19,9 +20,9 @@ public class Inputview {
         return inputNumber;
     }
 
-    public static String reStart() {
-        System.out.println(OutputMessage.RESTART_GAME);
+    public String reStart() {
         String inputOption = Console.readLine();
+        outputView.printRestart();
 
         Validation.checkLengthOne(inputOption);
         Validation.checkStringRegex(inputOption);
