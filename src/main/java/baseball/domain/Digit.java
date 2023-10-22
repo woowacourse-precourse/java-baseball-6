@@ -1,9 +1,18 @@
 package baseball.domain;
 
+import baseball.utils.message.ErrorMessage;
+
 public class Digit implements Comparable<Digit> {
+    private static final Integer MIN_RANGE = 1;
+    private static final Integer MAX_RANGE = 9;
+
     private final int digit;
 
     public Digit(int digit) {
+        if(digit > MIN_RANGE && MAX_RANGE > digit) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE_NUMBER);
+        }
+
         this.digit = digit;
     }
 

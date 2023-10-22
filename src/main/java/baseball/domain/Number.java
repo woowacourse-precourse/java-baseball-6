@@ -2,6 +2,9 @@ package baseball.domain;
 
 import baseball.utils.message.ErrorMessage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Number 클래스는 숫자 야구 게임에서 사용되는 3자리 정수를 저장한다.
  * 각 숫자는 1~9 범위를 가지며, 이를 벗어날 시 IllegalArgumentException을 발생시킨다.
@@ -12,17 +15,26 @@ public class Number implements Comparable<Number> {
 
     private static final Integer MAX_NUMBER_SIZE = 3;
 
-    private final Integer[] numbers;
+    /**
+     * Number는 DIGIT으로 구성되도록 만드는게 좋다고 생각된다.
+     *
+     */
+    private final List<Digit> numbers;
 
-    public Number(int[] numbers) {
-        if(!isValid(numbers)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE_NUMBER);
+    public Number(List<Integer> numbers) {
+        if(!isValidLength(numbers)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_LENGTH);
         }
 
-        this.numbers = new Integer[MAX_NUMBER_SIZE];
+        if(!isUniqueInNumbers(numbers)) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_UNIQUE_NUMBER);
+        }
 
-        for(int indexOfNumbers = 0 ; indexOfNumbers < MAX_NUMBER_SIZE; indexOfNumbers++) {
-            this.numbers[indexOfNumbers] = numbers[indexOfNumbers];
+        this.numbers = new ArrayList<>();
+
+        for (Integer number : numbers) {
+            Digit digit = new Digit(number);
+            this.numbers.add(digit);
         }
     }
 
@@ -32,18 +44,18 @@ public class Number implements Comparable<Number> {
      *
      * 처음 구현할 때, 서로 다른 자리수를 검사하지 않아서 이를 추가하였다.
      */
-    private static boolean isValid(int[] numbers) {
-        if(numbers.length != MAX_NUMBER_SIZE) {
-            return false;
-        }
+    private static boolean isValidLength(List<Integer> numbers) {
+        return numbers.size() == MAX_NUMBER_SIZE;
+    }
 
-        for(int indexOfNumbers = 0 ; indexOfNumbers < MAX_NUMBER_SIZE; indexOfNumbers++) {
-            if(numbers[indexOfNumbers] == 0) {
-                return false;
-            }
+    private static boolean isUniqueInNumbers(List<Integer> numbers) {
+        for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
+            int number = numbers.get(i);
 
-            for (int indexOfAnotherNumber = indexOfNumbers + 1; indexOfAnotherNumber < MAX_NUMBER_SIZE; indexOfAnotherNumber++) {
-                if(numbers[indexOfNumbers] == numbers[indexOfAnotherNumber]) {
+            for (int j = i+1; j < MAX_NUMBER_SIZE; j++) {
+                int anotherNumber = numbers.get(j);
+
+                if(number == anotherNumber) {
                     return false;
                 }
             }
@@ -63,8 +75,11 @@ public class Number implements Comparable<Number> {
     public int compareTo(Number o) {
 
         for (int indexOfNumbers = 0; indexOfNumbers < MAX_NUMBER_SIZE; indexOfNumbers++) {
-            if(!numbers[indexOfNumbers].equals(o.numbers[indexOfNumbers])) {
-                return numbers[indexOfNumbers] - o.numbers[indexOfNumbers];
+            Digit thisDigit = numbers.get(indexOfNumbers);
+            Digit compareDigit = o.numbers.get(indexOfNumbers);
+
+            if(!thisDigit.equals(compareDigit)) {
+                return thisDigit.compareTo(compareDigit);
             }
         }
 
