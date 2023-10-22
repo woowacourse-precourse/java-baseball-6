@@ -42,7 +42,7 @@ public class GameSetupService {
     }
 
     private List<Ball> createPlayerBalls(String playerGuess) {
-        if (playerGuess == null || playerGuess.trim().isEmpty() || playerGuess.trim().isBlank()) {
+        if (playerGuess == null || playerGuess.isBlank()) {
             throw new IllegalArgumentException("입력은 숫자만 포함해야 합니다.");
         }
 
