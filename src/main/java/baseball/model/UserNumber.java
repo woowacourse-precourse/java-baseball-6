@@ -10,7 +10,7 @@ public class UserNumber {
 
     public UserNumber(List<Integer> userNumber) {
         validateSize(userNumber);
-        validateContainZero(userNumber);
+        validateRange(userNumber);
         validateDuplicate(userNumber);
         this.userNumber = userNumber;
     }
@@ -21,9 +21,11 @@ public class UserNumber {
         }
     }
 
-    private void validateContainZero(List<Integer> userNumber) {
-        if (userNumber.contains(0)) {
-            throw new IllegalArgumentException();
+    private void validateRange(List<Integer> userNumber) {
+        for (int i = 0; i < userNumber.size(); i++) {
+            if ((userNumber.get(i) < 1) || (userNumber.get(i) > 9)) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
