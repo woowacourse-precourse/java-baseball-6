@@ -1,7 +1,9 @@
 package baseball;
 
 import baseball.domain.BaseBallGame;
+import baseball.domain.BaseBallHint;
 import baseball.domain.BaseBallNumberGenerator;
+import baseball.domain.BaseBallNumbers;
 import baseball.domain.ComputerPlayer;
 import baseball.domain.MatchPlayer;
 import baseball.domain.RandomBaseBallNumberGenerator;
@@ -11,9 +13,8 @@ import baseball.view.SinglePlayerConsole;
 
 public class Application {
     public static void main(String[] args) {
-        final BaseBallGame singleBaseBallGame = initializeBaseBallGame();
         final Player player = new SinglePlayerConsole();
-        startBaseBallGame(player, singleBaseBallGame);
+        startSingleBaseBallGame(player);
     }
 
     private static MatchPlayer initializeMatchPlayer() {
@@ -26,12 +27,21 @@ public class Application {
         return new SingleBaseBallGame(matchPlayer);
     }
 
-    private static void startBaseBallGame(Player player, BaseBallGame game) {
+    private static void startSingleBaseBallGame(Player player) {
         player.startBaseballGameMessage();
-        playBaseBallGame(player, game);
+        playBaseBallGame(player, initializeBaseBallGame());
     }
 
     private static void playBaseBallGame(Player player, BaseBallGame game) {
-        if (player.checkRestart()) playBaseBallGame(player, game);
+        while (true) {
+            final BaseBallNumbers userNumbers = player.readBaseballNumbers();
+            final BaseBallHint hint = game.checkBaseBallNumber(userNumbers);
+            player.printBaseBallHint(hint);
+            if (hint.hasThreeStrike()) {
+                player.printEndGameMessage();
+                break;
+            }
+        }
+        if (player.checkRestart()) playBaseBallGame(player, initializeBaseBallGame());
     }
 }
