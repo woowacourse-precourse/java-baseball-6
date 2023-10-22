@@ -15,6 +15,12 @@ public class Application {
 }
 
 class Game{
+    private static final int START_RANGE = 1;
+    private static final int END_RANGE = 9;
+    private static final int RESTART_GAME = 1;
+    private static final int END_GAME = 2;
+    private final int COUNT = 3;
+
     int ball, strike;
 
     void start(){
@@ -32,9 +38,9 @@ class Game{
                 if (result()) {
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     int choice = Integer.parseInt(Console.readLine());
-                    if (choice == 1) {
+                    if (choice == RESTART_GAME) {
                         break;
-                    } else if (choice == 2) {
+                    } else if (choice == END_GAME) {
                         check = true;
                         break;
                     }
@@ -48,8 +54,8 @@ class Game{
 
     private List<Integer> getComputerNumber(){
         List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computerNumber.size() < COUNT) {
+            int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
@@ -68,12 +74,12 @@ class Game{
     }
 
     private void validateInput(String input, List<Integer> userNumber) {
-        if (input.length() != 3) {
+        if (input.length() != COUNT) {
             throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
         }
         for (char digit : input.toCharArray()) {
             int num = digit - '0';
-            if (num < 1 || num > 9) {
+            if (num < START_RANGE || num > END_RANGE) {
                 throw new IllegalArgumentException("1부터 9까지의 숫자를 입력해주세요.");
             }
             if (userNumber.contains(num)) {
@@ -87,8 +93,8 @@ class Game{
         ball = 0;
         strike = 0;
 
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
+        for(int i = 0; i < COUNT; i++){
+            for(int j = 0; j < COUNT; j++){
                 if(Objects.equals(user.get(i), computer.get(j))){
                     if(i == j){
                         strike++;
@@ -109,7 +115,7 @@ class Game{
         }
         else if(ball == 0 && strike > 0){
             System.out.println(strike+"스트라이크");
-            if(strike == 3){
+            if(strike == COUNT){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return true;
             }
