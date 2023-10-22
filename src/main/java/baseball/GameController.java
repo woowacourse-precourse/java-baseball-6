@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
-    private Computer computer;
-    private UserInput userInput;
+    private final Computer computer;
+    private final UserInput userInput;
     private boolean hasWon;
 
     GameController() {

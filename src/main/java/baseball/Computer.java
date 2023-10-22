@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private List<Integer> randomNum;
+    private final List<Integer> randomNum;
 
     Computer() {
         this.randomNum = new ArrayList<>();
