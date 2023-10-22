@@ -81,7 +81,7 @@ public class Computer {
             }
         }
 
-        printResultWithCount(ballCount,strikeCount);
+        printResultWithCount(strikeCount,ballCount);
 
         if (strikeCount==3){
             return true;

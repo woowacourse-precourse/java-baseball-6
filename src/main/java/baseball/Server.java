@@ -1,6 +1,5 @@
 package baseball;
 
-import java.lang.reflect.Constructor;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,15 +16,31 @@ public class Server {
         this.player = new Player();
     }
     public void start(){
-        var userInput = player.getPlayerInput();
-        validatePlayerInputCommand(userInput);
+        while(gameStatusCode==1){
+            while(true){
+                System.out.print("숫자를 입력해주세요 : ");
+                var playerInput = player.getPlayerInput();
+                validatePlayerInput(playerInput);
 
-        var userCommand = Integer.parseInt(userInput);
-        if (userCommand == 1) {
-            restart();
-        }
-        if (userCommand == 2) {
-            quit();
+                var playerNumber = Integer.parseInt(playerInput);
+                var isPlayerWin = computer.checkUserNumberAndResponse(playerNumber);
+                if (isPlayerWin == true){
+                    break;
+                }
+            }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            var playerInput = player.getPlayerInput();
+            validatePlayerInputCommand(playerInput);
+
+            var userCommand = Integer.parseInt(playerInput);
+            if (userCommand == 1) {
+                restart();
+            }
+            if (userCommand == 2) {
+                quit();
+            }
         }
     }
 

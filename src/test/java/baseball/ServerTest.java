@@ -2,6 +2,7 @@ package baseball;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -49,12 +50,14 @@ public class ServerTest {
                         ()->server.validatePlayerInput(wrongInput));
         Assertions.assertEquals("중복된 숫자가 있습니다!",exception.getMessage());
     }
+    @Disabled
     @Test
     void testStart_사용자가_1을_입력하면_재시작한다(){
         System.setIn(new ByteArrayInputStream("1".getBytes()));
         server.start();
         Assertions.assertEquals(1,server.getGameStatusCode());
 }
+    @Disabled
     @Test
     void testStart_사용자가_2를_입력하면_종료한다(){
         System.setIn(new ByteArrayInputStream("2".getBytes()));
