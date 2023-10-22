@@ -27,6 +27,13 @@ public class Application {
              */
             System.out.print("숫자를 입력해주세요 : ");
             String user = Console.readLine();
+            try {
+                if(!(user.length() == 3 && 0 <=Integer.parseInt(user) && Integer.parseInt(user) <= 999)) {
+                    throw new IllegalArgumentException();
+                }
+            } catch(RuntimeException e) {
+                throw new IllegalArgumentException();
+            }
 
             /**
              * computer가 정한 3개의 숫자와 user의 입력 숫자를 비교하기
