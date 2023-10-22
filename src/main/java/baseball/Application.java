@@ -18,5 +18,23 @@ public class Application {
             }
         }
     }
+
+    private static void playGame(List<Integer> computerNumber) throws IllegalArgumentException {
+        String userInput = "";
+        List<Integer> parsedUserInput = new ArrayList<>();
+
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            userInput = Console.readLine();
+            if (userInput.length() != 3) {
+                throw new IllegalArgumentException();
+            }
+            parseString(parsedUserInput, userInput);
+            if (calc(parsedUserInput, computerNumber)) {
+                return;
+            }
+            parsedUserInput.clear();
+        }
+    }
     }
 }
