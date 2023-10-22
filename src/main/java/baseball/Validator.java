@@ -81,6 +81,17 @@ public class Validator {
             }
         }
     }
-
+    private boolean askRetry() {
+        System.out.println(RETRY_MESSAGE);
+        String quitInput = Console.readLine();
+        if(quitInput.equals(RESTART_NUMBER)) {
+            initializeRandomNumber();
+            return false;
+        }
+        if(quitInput.equals(QUIT_NUMBER)) {
+            return true;
+        }
+        throw new IllegalArgumentException(EXCEPTION_MESSAGE);
+    }
 
 }
