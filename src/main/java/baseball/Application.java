@@ -22,7 +22,7 @@ public class Application {
 //                    System.out.println("computer = " + computer);
                 }
                 System.out.print("숫자를 입력해주세요 : ");
-                String result = NumberMatcher.numberMatcherResult(computer);
+                String result = NumberMatcher.numberMatcherResult(computer, 1, 9, 3);
                 // todo 결과를 어떤 식으로 줘서 판별할지 고민
                 if (result.equals("3스트라이크")) {
                     System.out.println(result);
@@ -34,8 +34,7 @@ public class Application {
                 }
             }
         } catch (IllegalArgumentException e) {
-//            System.out.println("잘못된 입력입니다. 1부터 9 사이의 숫자만 입력할 수 있습니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 }
