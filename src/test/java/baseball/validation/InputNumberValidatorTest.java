@@ -9,6 +9,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class InputNumberValidatorTest {
 
     @Test
+    void 전체검증_메서드() {
+        String example = "316";
+        assertDoesNotThrow(() -> InputNumberValidator.validateInputSize(example));
+        assertDoesNotThrow(() -> InputNumberValidator.validateInputType(example));
+        assertDoesNotThrow(() -> InputNumberValidator.validateInputDuplication(example));
+
+        assertTrue(InputNumberValidator.convertStrToList(example) instanceof List<Integer>);
+    }
+
+    @Test
     void String을_List로_변환() {
         String example = "316";
         assertTrue(InputNumberValidator.convertStrToList(example) instanceof List<Integer>);
