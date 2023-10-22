@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -34,6 +35,7 @@ public class Application {
 
             while (true) {
                 List<Integer> userNumbers = inputUserNumbers();
+                System.out.println(userNumbers);
                 Result result = getResultForUserNumbers(computerNumbers, userNumbers);
                 printResult(result);
 
@@ -63,13 +65,29 @@ public class Application {
     private static List<Integer> inputUserNumbers() {
         List<Integer> userNumbers = new ArrayList<>();
         String userInput;
+        boolean selectedNum[] = new boolean[10];
 
         System.out.print("숫자를 입력해주세요 : ");
         userInput = Console.readLine();
+        Arrays.fill(selectedNum, false);
+
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException("입력 개수(3개) 부족 또는 초과");
+        }
 
         for (int i = 0; i < userInput.length(); i++) {
             int number = userInput.charAt(i) - '0';
+
+            if (number < 1 || number > 9) {
+                throw new IllegalArgumentException("조건 범위(1-9) 밖의 입력");
+            }
+
+            if (selectedNum[number]) {
+                throw new IllegalArgumentException("중복된 숫자 존재");
+            }
+
             userNumbers.add(number);
+            selectedNum[number] = true;
         }
         return userNumbers;
     }
@@ -122,6 +140,10 @@ public class Application {
     private static boolean selectUserExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
+
+        if (!userInput.equals("1") && !userInput.equals("2")) {
+            throw new IllegalArgumentException("잘못된 입력 형식 (1 또는 2만 가능)");
+        }
 
         if (userInput.equals("2")) {
             return true;
