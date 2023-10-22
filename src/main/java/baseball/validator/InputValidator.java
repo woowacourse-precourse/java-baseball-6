@@ -3,9 +3,12 @@ package baseball.validator;
 import baseball.enums.GameConfig;
 
 public class InputValidator {
+    private static final String ZERO = "0";
+
     public void validate(String input) {
         validateBlank(input);
         validateContainSpace(input);
+        validateContainZero(input);
     }
 
     private void validateBlank(String input) {
@@ -17,6 +20,12 @@ public class InputValidator {
     private void validateContainSpace(String input) {
         if (input.contains(" ")) {
             throw new IllegalArgumentException("공백이 포함되어 있습니다.");
+        }
+    }
+
+    private void validateContainZero(String input) {
+        if (input.contains(ZERO)) {
+            throw new IllegalArgumentException("0이 포함되어 있습니다.");
         }
     }
 
