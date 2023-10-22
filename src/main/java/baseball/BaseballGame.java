@@ -11,8 +11,10 @@ public class BaseballGame {
 
     public void play() {
         outputView.start();
-        startGame();
-        outputView.end();
+        do {
+            startGame();
+            outputView.end();
+        } while (!isRetry());
     }
 
     private void startGame() {
@@ -54,5 +56,9 @@ public class BaseballGame {
             uniqueDigits.add(element);
         }
         return uniqueDigits.size() == 3;
+    }
+
+    private boolean isRetry() {
+        return inputView.inputGameSelect().equals("2");
     }
 }

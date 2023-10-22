@@ -7,4 +7,8 @@ public class InputView {
         String numbers = Console.readLine();
         return numbers;
     }
+
+    public String inputGameSelect() {
+        return Console.readLine();
+    }
 }
