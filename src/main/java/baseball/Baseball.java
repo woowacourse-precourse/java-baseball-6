@@ -53,4 +53,15 @@ public class Baseball {
         return computer;
     }
 
+    public boolean isRestartOrExit() {
+        System.out.println(RESTART_OR_EXIT_MSG);
+        int number = Integer.parseInt(Console.readLine());
+
+        if (number == RESTART_NUM) {
+            startBaseball();
+        }
+
+        return false;
+    }
+
 }
