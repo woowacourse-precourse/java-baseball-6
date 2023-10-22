@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.model.Computer;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class NBGameController {
     public void start() {
