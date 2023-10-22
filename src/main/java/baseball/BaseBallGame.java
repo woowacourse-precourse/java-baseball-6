@@ -1,18 +1,44 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.stream.Stream;
 
 public class BaseBallGame {
 
     private final static int NUMBER_COUNT = 3;
     private int ball;
     private int strike;
-    private int[] randomNumbers;
+    private final int[] randomNumbers;
 
     private int[] userNumbers;
 
     public BaseBallGame() {
         randomNumbers = makeRandomNumbers();
+    }
+
+    public void start() {
+
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+
+            String input = Console.readLine();
+            String[] userNumberStr = input.split("");
+            int[] userNumberInt = stringToInt(userNumberStr);
+
+            checkEnableUserNumber(userNumberInt);
+            checkBallAndStrike();
+
+        } while (!isGameOver());
+
+    }
+
+    private int[] stringToInt(String[] numbersStr) {
+        try {
+            return Stream.of(numbersStr).mapToInt(Integer::parseInt).toArray();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("숫자 외의 문자가 입력되었습니다.");
+        }
     }
 
     public void checkEnableUserNumber(int[] userNumbers) {
@@ -45,9 +71,7 @@ public class BaseBallGame {
 
     }
 
-    public boolean isGameOver() {
-
-        checkBallAndStrike();
+    private boolean isGameOver() {
 
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
@@ -68,9 +92,9 @@ public class BaseBallGame {
 
     }
 
-    private static boolean isDuplicate(int[] numbers, int number) {
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] == number) {
+    private static boolean isDuplicate(int[] numbers, int findNumber) {
+        for (int number : numbers) {
+            if (number == findNumber) {
                 return true;
             }
         }
@@ -118,6 +142,5 @@ public class BaseBallGame {
             throw new IllegalArgumentException("숫자 갯수가 " + NUMBER_COUNT + "와 일치하지 않습니다.");
         }
     }
-
 
 }
