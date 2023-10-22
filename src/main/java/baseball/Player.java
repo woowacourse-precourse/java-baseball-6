@@ -16,6 +16,7 @@ public class Player {
         isThreeDigitNumber(playerInput);
         hasNoZero(playerInput);
         hasNoDuplicates(playerInput);
+        isNumeric(playerInput);
 
         // 입력받은 값을 char 배열에 넣기
         char[] playerInputChar = playerInput.toCharArray();
@@ -53,6 +54,15 @@ public class Player {
                 if (digit == input.charAt(j)) {
                     throw new IllegalArgumentException();
                 }
+            }
+        }
+    }
+
+    public static void isNumeric(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            char digit = input.charAt(i);
+            if (!Character.isDigit(digit)) {
+                throw new IllegalArgumentException();
             }
         }
     }
