@@ -23,7 +23,7 @@ class ApplicationTest extends NsTest {
     }
 
 
-
+    //숫자 개수
     @Test
     void 예외_테스트1() {
         assertSimpleTest(() ->
@@ -32,10 +32,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    //한글
     @Test
     void 예외_테스트2() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("yes"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    //중복
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("223"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
