@@ -75,13 +75,17 @@ public class Baseball {
     public BaseBallNumber inputUserNumber() {
         OutputStatement.INPUT_NUMBER_OUTPUT.printOutput();
         String inputNumber = Console.readLine();
-        return userInputNumber.parseBaseBallNumber(inputNumber);
+        BaseBallNumber baseBallNumber = userInputNumber.parseBaseBallNumber(inputNumber);
+        if (baseBallNumber == null) {
+            throw new IllegalArgumentException();
+        }
+        return baseBallNumber;
     }
 
     public boolean restartGame() {
         OutputStatement.RESTART_OUTPUT.printOutput();
         String inputNumber = Console.readLine();
-        if (!userInputValidation.isValidRestartNumber(inputNumber)) {
+        if (!userInputNumber.isValidRestartNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }
         int restartNumber = Integer.parseInt(inputNumber);
