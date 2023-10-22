@@ -21,6 +21,10 @@ public class GameController {
         outputView.outputStartProgram();
         Game game = initGame();
         startGame(game);
+
+        if(inputView.inputRestartNumber().equals("1")) {
+            startProgram();
+        }
     }
 
     private Game initGame() {
@@ -32,6 +36,10 @@ public class GameController {
         inputNumber(game);
         compareNumber(game);
         printResult(game);
+
+        if(!game.isThreeStrike()) {
+            startGame(game);
+        }
     }
 
     private void inputNumber(Game game) {
