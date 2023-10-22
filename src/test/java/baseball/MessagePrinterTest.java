@@ -100,4 +100,25 @@ class MessagePrinterTest {
             System.out.println("낫싱");
         }
     }
+
+    @Test
+    @DisplayName("3스트라이크가 아닐 경우 플레이어에게 새로운 입력을 요구한다.")
+    void test5() {
+        int strikeCount = 0;
+        List<Integer> computerNumbers = List.of(1, 2, 3);
+        String playerNumbers = "456";
+
+        for (int i=0; i<playerNumbers.length(); i++) {
+            int playerNumber = playerNumbers.charAt(i) - 48;
+            int computerNumber = computerNumbers.get(i);
+
+            if (playerNumber == computerNumber) {
+                strikeCount += 1;
+            }
+        }
+
+        if(strikeCount != 3) {
+            System.out.print("숫자를 입력해주세요 : ");
+        }
+    }
 }
