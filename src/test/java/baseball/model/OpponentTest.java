@@ -15,7 +15,7 @@ class OpponentTest {
 
     @BeforeEach
     void init() {
-        opponent = Opponent.createOpponentWithGenerator(new StubNumberGenerator(425));
+        opponent = Opponent.createOpponentWithGenerator(new SelectedNumberGenerator(425));
     }
 
     @Test

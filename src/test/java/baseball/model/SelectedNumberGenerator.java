@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class StubNumberGenerator implements NumberGenerator {
+public class SelectedNumberGenerator implements NumberGenerator {
 
     private final int numbers;
 
-    public StubNumberGenerator(int numbers) {
+    public SelectedNumberGenerator(int numbers) {
         this.numbers = numbers;
     }
 
