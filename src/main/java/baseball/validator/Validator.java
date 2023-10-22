@@ -17,14 +17,14 @@ public class Validator {
             char separatedInput = input.charAt(i);
             boolean isNumber = Character.isDigit(separatedInput);
             if (isNumber == false) {
-                throw new IllegalArgumentException("숫자를 입력해주세요");
+                throw new IllegalArgumentException("숫자를 입력해주세요.");
             }
         }
     }
 
     public static void validateInputLength(String input, int length) {
         if (input.length() != length) {
-            throw new IllegalArgumentException("숫자 " + length + "개를 입력해주세요");
+            throw new IllegalArgumentException("숫자 " + length + "개를 입력해주세요.");
         }
     }
 }
