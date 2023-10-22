@@ -10,20 +10,20 @@ import java.util.List;
 
 public class GameService {
     private final Validator validator;
+    private Boolean isGameEnd;
 
     public GameService(Validator validator) {
         this.validator = validator;
+        this.isGameEnd = false;
     }
 
 
-
     public void init() {
-
+        this.isGameEnd = false;
     }
 
     public List<Integer> createAnswer() {
         List<Integer> answer = new ArrayList<>();
-
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(randomNumber)) {
@@ -36,7 +36,6 @@ public class GameService {
     //TODO: createAnswer와 유사한 부분이 많으므로 하나의 메서드로 묶을 수 있을 듯!
     public List<Integer> getInput() {
         List<Integer> userInput = new ArrayList<>();
-
         while (userInput.size() < 3) {
             Integer input = validator.validateRange(Console.readLine());
             if (!userInput.contains(input)) {
@@ -48,8 +47,23 @@ public class GameService {
 
 
     public Result compare(List<Integer> answer, List<Integer> userInput) {
-        return null;
+        return new Result(getStrikes(answer, userInput), getBalls(answer, userInput));
     }
+
+    private Integer getStrikes(List<Integer> answer, List<Integer> userInput) {
+        return Math.toIntExact(userInput.stream()
+                .filter((input) ->
+                        answer.contains(input) && (answer.indexOf(input) == userInput.indexOf(input)))
+                .count());
+    }
+
+    private Integer getBalls(List<Integer> answer, List<Integer> userInput) {
+        return Math.toIntExact(userInput.stream()
+                .filter((input) ->
+                        answer.contains(input) && (answer.indexOf(input) != userInput.indexOf(input)))
+                .count());
+    }
+
 
     public boolean isWin(Result result) {
         return false;

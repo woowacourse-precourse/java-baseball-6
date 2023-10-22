@@ -16,20 +16,15 @@ public class GameController {
     }
 
     public void play() {
-        //TODO: MessageUtil을 통해 게임 시작 문구 & 숫자 입력 문구 출력
         messageUtil.printStart();
 
         while (!gameService.isGameEnd()) {
             messageUtil.printInput();
 
-            //TODO: 야구게임 정답 생성
             List<Integer> answer = gameService.createAnswer();
+            List<Integer> input = gameService.getInput();
 
-            //TODO: 사용자로부터 입력 받기 + 예외 처리
-            List<Integer> userInput = gameService.getInput();
-
-            //TODO: 정답과 사용자의 입력을 비교하여 결과 출력
-            Result result = gameService.compare(answer, userInput);
+            Result result = gameService.compare(answer, input);
             messageUtil.printResult(result);
 
             //TODO: 결과가 3 스트라이크인 경우, 재시작 여부 확인

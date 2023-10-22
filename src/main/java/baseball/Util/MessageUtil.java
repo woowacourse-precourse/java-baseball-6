@@ -13,7 +13,7 @@ public class MessageUtil {
     }
 
     public void printResult(Result result) {
-
+        System.out.println(Message.BALL.of(result.getBall()) + Message.STRIKE.of(result.getStrike()));
     }
 
     public void printWin() {
