@@ -11,6 +11,7 @@ public class BallRule implements GameRule {
     public int calculate(final int hitter, final int pitcher) {
         String hitterValue = String.valueOf(hitter);
         String pitcherValue = String.valueOf(pitcher);
+
         String[] hitterNumbers = hitterValue.split("");
         String[] pitcherNumbers = pitcherValue.split("");
 
@@ -19,9 +20,9 @@ public class BallRule implements GameRule {
         Set<String> onlyHitterSet = createSet(hitterNumbers, match);
         Set<String> onlyPitcherSet = createSet(pitcherNumbers, match);
 
-        intersection(onlyHitterSet, onlyPitcherSet);
+        onlyHitterSet.retainAll(onlyPitcherSet);
 
-        return calculateSize(onlyHitterSet);
+        return onlyHitterSet.size();
     }
 
     private boolean[] recordMatchedPositions(final String[] hitterNumbers, final String[] pitcherNumbers) {
@@ -41,13 +42,5 @@ public class BallRule implements GameRule {
                 .filter(i -> !match[i])
                 .mapToObj(i -> array[i])
                 .collect(Collectors.toCollection(HashSet::new));
-    }
-
-    private void intersection(final Set<String> hitterSet, final Set<String> pitcherSet) {
-        hitterSet.retainAll(pitcherSet);
-    }
-
-    private int calculateSize(final Set<String> set) {
-        return set.size();
     }
 }
