@@ -17,4 +17,36 @@ public class Computer {
                 .mapToInt(Integer::intValue)
                 .toArray();
     }
+
+    public static int[] calculateResult(int[] randomNumbers, int[] guessNumbers) {
+        int[] result = new int[2];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (randomNumbers[i] == guessNumbers[j]) {
+                    if (i == j) {
+                        result[1]++;
+                    } else {
+                        result[0]++;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    public static String formatResult(int[] result) {
+        if (result[0] > 0 && result[1] > 0) {
+            return result[0] + "볼 " + result[1] + "스트라이크";
+        } else if (result[0] > 0) {
+            return result[0] + "볼";
+        } else if (result[1] > 0) {
+            return result[1] + "스트라이크";
+        } else {
+            return "낫싱";
+        }
+    }
+
+    public static boolean isGameOver(int[] result) {
+        return result[1] == 3;
+    }
 }

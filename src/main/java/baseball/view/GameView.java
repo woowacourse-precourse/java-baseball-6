@@ -12,4 +12,8 @@ public class GameView {
     public static void displayUserInputPrompt() {
         displayMessage("숫자를 입력해주세요 : ");
     }
+
+    public static void displayGuessResult(String result) {
+        displayMessage(result + '\n');
+    }
 }
