@@ -20,6 +20,7 @@ import java.util.List;
 import model.CreateRandomNumber;
 import model.Result;
 import view.InputView;
+import view.ResultView;
 import view.StartView;
 
 public class BaseballController {
@@ -27,7 +28,9 @@ public class BaseballController {
         StartView.startView();
         List<Integer> answer = CreateRandomNumber.createRandomNumber();
         List<Integer> userInput = InputView.userInput();
+
         List<Integer> result = Result.getResult(answer, userInput);
+        ResultView.resultView(result);
 
     }
 
