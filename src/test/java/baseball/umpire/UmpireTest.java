@@ -27,6 +27,7 @@ public class UmpireTest {
         String ball = "123";
         String batt = "153";
         int compareCount = 0;
+        int strikeCount = 0;
         Boolean[] strikeCheckingBoard = new Boolean[DIGIT_NUM];
         Arrays.fill(strikeCheckingBoard, false);
 
@@ -38,7 +39,6 @@ public class UmpireTest {
         //when
         strikeCheckingBoard = umpire.checkStrike(ball, batt, strikeCheckingBoard);
         //then
-        int strikeCount = 0;
         for(int i = 0 ; i < DIGIT_NUM ; i++){
             if(strikeCheckingBoard[i] == true){
                 strikeCount++;
@@ -48,7 +48,37 @@ public class UmpireTest {
     }
 
     @Test
-    void umpireBallCheck(){}
+    void umpireBallCheck(){
+        //given
+        String ball = "123";
+        String batt = "153";
+        int compareCount = 0;
+        int ballCount = 0;
+        Boolean[] ballCheckingBoard = new Boolean[DIGIT_NUM];
+        Arrays.fill(ballCheckingBoard, false);
+
+        for(int i = 0 ; i < DIGIT_NUM ; i++){
+            boolean compareChecker = false;
+            for(int j = 0 ; j < DIGIT_NUM ; j++){
+                if(ball.charAt(i) == batt.charAt(j)){
+                    compareChecker = true;
+                }
+            }
+            if(compareChecker == true){
+                compareCount++;
+            }
+        }
+        //when
+        ballCheckingBoard = umpire.checkBall(ball, batt, ballCheckingBoard);
+        //then
+        for(int i = 0 ; i < DIGIT_NUM ; i++){
+            if(ballCheckingBoard[i] == true){
+                ballCount++;
+            }
+        }
+        Assertions.assertThat(ballCount).isEqualTo(compareCount);
+
+    }
 
     @Test
     void umpireHomerunCheck(){}
