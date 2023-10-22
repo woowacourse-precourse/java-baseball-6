@@ -1,8 +1,7 @@
 package baseball.view;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import baseball.domain.PlayerNumber;
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
@@ -10,13 +9,13 @@ public class InputView {
     }
 
     public static PlayerNumber inputPlayerNumber() {
-        String number = readLine();
+        String number = Console.readLine();
         PlayerNumber playerNumber = new PlayerNumber(number);
         return playerNumber;
     }
 
     public static String inputRetryCommand() {
-        String command = readLine();
+        String command = Console.readLine();
         return command;
     }
 }
