@@ -12,15 +12,15 @@ public class UI {
         return readLine();
     }
 
-    public void gameResult(int ball, int strike) {
-        if (ball == 0 && strike == 0) {
+    public void gameResult(int[] ballAndStrike) {
+        if (ballAndStrike[0] == 0 && ballAndStrike[1] == 0) {
             System.out.print("낫싱");
         }
-        if (ball != 0) {
-            System.out.print(ball + "볼 ");
+        if (ballAndStrike[0] != 0) {
+            System.out.print(ballAndStrike[0] + "볼 ");
         }
-        if (strike != 0) {
-            System.out.print(strike + "스트라이크");
+        if (ballAndStrike[1] != 0) {
+            System.out.print(ballAndStrike[1] + "스트라이크");
         }
         System.out.println();
     }
