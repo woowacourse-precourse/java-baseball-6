@@ -14,7 +14,7 @@
 - [✓] `Randoms` 및 `Console` API를 사용
 - [✓] `pickNumberInRange()`를 활용
 - [✓] `readLine()`를 입력
-- [ ] Java 코드 컨벤션 준수
+- [✓] Java 코드 컨벤션 준수
 - [ ] `./gradlew clean test` 실행할 때 통과
     ```
     BUILD SUCCESSFUL in 0s
