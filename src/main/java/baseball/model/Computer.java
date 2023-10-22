@@ -14,7 +14,7 @@ public class Computer {
         this.answer = numberGenerator.getGeneratedNumbers();
     }
 
-    public void generateScore(List<Integer> playerInput) {
+    public void calculateScore(List<Integer> playerInput) {
         ScoreCalculator scoreCalculator = new ScoreCalculator();
         this.score = scoreCalculator.calculateScore(playerInput, getAnswer());
     }
