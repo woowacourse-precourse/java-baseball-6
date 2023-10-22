@@ -4,6 +4,7 @@ import exception.DuplicateBaseBallNumber;
 import exception.OutOfBaseBallNumbersSize;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public final class BaseBallNumbers {
 
@@ -17,8 +18,17 @@ public final class BaseBallNumbers {
         this.baseballNumbers = numbers;
     }
 
+    private BaseBallNumbers(IntStream numbers) {
+        this.baseballNumbers = new ArrayList<>();
+        numbers.forEach(this::add);
+    }
+
     public static BaseBallNumbers empty() {
         return new BaseBallNumbers(new ArrayList<>());
+    }
+
+    public static BaseBallNumbers of(IntStream numbers) {
+        return new BaseBallNumbers(numbers);
     }
 
     public int size() {
