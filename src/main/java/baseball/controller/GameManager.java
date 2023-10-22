@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.io.PlayerIoManager;
-import baseball.model.Ball;
-import baseball.model.BallMaker;
+import baseball.model.ball.Ball;
+import baseball.model.ball.BallMaker;
 import baseball.model.judge.BaseballJudge;
 import baseball.model.judge.JudgeResult;
 import java.util.List;
@@ -39,7 +39,7 @@ public class GameManager {
                 if (!playerIoManager.isPlayerWantToReplay()) {
                     return;
                 }
-                
+
                 baseballJudge = initializeBaseBallJudgeWithComputerBall();
             }
         }

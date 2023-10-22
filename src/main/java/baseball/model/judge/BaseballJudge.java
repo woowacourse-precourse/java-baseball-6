@@ -1,6 +1,6 @@
 package baseball.model.judge;
 
-import baseball.model.Ball;
+import baseball.model.ball.Ball;
 
 public class BaseballJudge {
 
