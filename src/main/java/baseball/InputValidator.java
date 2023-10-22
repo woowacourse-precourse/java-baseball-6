@@ -2,16 +2,31 @@ package baseball;
 
 public class InputValidator {
     public static void checkUserTrialInput(String userInput) {
-        if (userInput.length() != 3) {
-            throw new IllegalArgumentException("3자리의 숫자를 입력하세요.");
-        }
+        checkInputLength(userInput, 3);
+        checkInputNumberRange(userInput, 1, 9);
+        checkDuplicateNumber(userInput);
+    }
 
+    public static void checkUserRestartInput(String userInput) {
+        checkInputLength(userInput, 1);
+        checkInputNumberRange(userInput, 1, 2);
+    }
+
+    private static void checkInputLength(String userInput, int length) {
+        if (userInput.length() != length) {
+            throw new IllegalArgumentException(length + "자리의 숫자를 입력하세요.");
+        }
+    }
+
+    private static void checkInputNumberRange(String userInput, int start, int end) {
         for (char c : userInput.toCharArray()) {
-            if (c < '1' || c > '9') {
+            if (c < intToChar(start) || c > intToChar(end)) {
                 throw new IllegalArgumentException("올바른 숫자를 입력하세요.");
             }
         }
+    }
 
+    private static void checkDuplicateNumber(String userInput) {
         for (int i = 0; i < userInput.length() - 1; i++) {
             for (int j = i + 1; j < userInput.length(); j++) {
                 if (userInput.charAt(i) == userInput.charAt(j)) {
@@ -21,15 +36,7 @@ public class InputValidator {
         }
     }
 
-    public static void checkUserRestartInput(String userInput) {
-        if (userInput.length() != 1) {
-            throw new IllegalArgumentException("1자리의 숫자를 입력하세요.");
-        }
-
-        for (char c : userInput.toCharArray()) {
-            if (c < '1' || c > '2') {
-                throw new IllegalArgumentException("올바른 숫자를 입력하세요.");
-            }
-        }
+    private static char intToChar(int num) {
+        return String.valueOf(num).charAt(0);
     }
 }
