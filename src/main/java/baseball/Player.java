@@ -2,12 +2,14 @@ package baseball;
 
 import baseball.util.InputUtil;
 
+import java.util.List;
+
 public class Player {
 
     private final InputUtil inputUtil = new InputUtil();
 
-    public int inputNumber() {
-        return inputUtil.inputNumber();
+    public List<Integer> inputNumber() {
+        return inputUtil.input();
     }
 
     public int inputReplay() {

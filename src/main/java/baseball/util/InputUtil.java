@@ -2,14 +2,31 @@ package baseball.util;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
 public class InputUtil {
 
-    public int inputNumber() {
-        String numberInput = "";
-        while (isValidInput(numberInput)) {
-            numberInput = Console.readLine();
+    private List<Integer> playerNumber;
+
+    public List<Integer> input() {
+        playerNumber = new ArrayList<>();
+        boolean isValidInput = false;
+
+        while (!isValidInput) {
+            String inputString = Console.readLine();
+            isValidInput = isValidString(inputString);
+            makeStringToList(inputString);
         }
-        return Integer.parseInt(numberInput);
+
+        return playerNumber;
+    }
+
+    private void makeStringToList(String inputString) {
+        for (int i = 0; i < inputString.length(); i++) {
+            playerNumber.add((int) inputString.charAt(i));
+        }
     }
 
     public int inputReplay() {
@@ -20,7 +37,8 @@ public class InputUtil {
         return Integer.parseInt(command);
     }
 
-    private boolean isValidInput(String input) {
+    //서로다른 3가지 숫자인지 체크
+    private boolean isValidString(String input) {
         return input.matches("^(?!.*(.).*\\1)[1-9]{3}$");
     }
 
