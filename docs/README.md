@@ -29,7 +29,6 @@
 - model
   - ComputerNum
   - PlayerNum
-  - RetryNum
   - Referee
 - view
   - InputView
