@@ -7,8 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
-    int ONE_OR_TWO_LEN = Configuration.ONE_OR_TWO_LEN;
-    int CONTINUE = Configuration.CONTINUE;
+    final int CONTINUE = 1;
 
     View view = new View();
     Core core = new Core();
@@ -30,9 +29,9 @@ public class Game {
 
     public boolean checkContinue() {
         String input = Console.readLine();
-        validation.validateInputLength(input, ONE_OR_TWO_LEN);
+        validation.validateInputLength(input, 1);
 
-        int inputNum = input.charAt(0) - '0';
+        int inputNum = Integer.parseInt(input);
         validation.validateOneOrTwo(inputNum);
 
         return inputNum == CONTINUE;

@@ -1,12 +1,11 @@
 package baseball.controller;
 
-import baseball.Configuration;
 import baseball.view.View;
 import java.util.List;
 
 public class Core {
 
-    int LIST_LEN = Configuration.LIST_LEN;
+    final int LIST_LEN = 3;
 
     Generator generator = new Generator();
     View view = new View();
@@ -18,7 +17,7 @@ public class Core {
         while (playing) {
             view.askNumber();
 
-            List<Integer> inputList = generator.generateInputList();
+            List<Integer> inputList = generator.generateInputList(LIST_LEN);
 
             int strike = countStrike(inputList, answer);
             int ball = countBall(inputList, answer);
