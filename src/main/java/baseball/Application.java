@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import static baseball.InputProcessor.*;
 
 public class Application {
 
@@ -12,7 +13,7 @@ public class Application {
 
     public void initializeNumber() {
         numbers = new ArrayList<>();
-        while (numbers.size() != 3){
+        while (numbers.size() != 3) {
             Integer number = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(number)) {
                 numbers.add(number);
@@ -32,17 +33,7 @@ public class Application {
             List<Integer> pitches = parsePitchInput(pitchInput);
             List<Integer> score = ScoreCalculator.calculate(pitches, numbers);
 
-            if (score.get(0) == 0 && score.get(1) == 0) {
-                System.out.println("낫싱");
-                continue;
-            }
-            if (score.get(1) > 0) {
-                System.out.print(score.get(1) + "볼 ");
-            }
-            if (score.get(0) > 0) {
-                System.out.print(score.get(0) + "스트라이크");
-            }
-            System.out.println();
+            printScore(score);
 
             if (score.get(0) == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -61,34 +52,18 @@ public class Application {
         }
     }
 
-    private void validateRestartInput(String restartInput) {
-        if (!(restartInput.equals("1") || restartInput.equals("2"))) {
-            throw new IllegalArgumentException();
+    private static void printScore(List<Integer> score) {
+        if (score.get(0) == 0 && score.get(1) == 0) {
+            System.out.println("낫싱");
+            return;
         }
-    }
-
-    private void validatePitchInput(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException();
+        if (score.get(1) > 0) {
+            System.out.print(score.get(1) + "볼 ");
         }
-
-        if (input.matches(".*[^1-9].*")) {
-            throw new IllegalArgumentException();
+        if (score.get(0) > 0) {
+            System.out.print(score.get(0) + "스트라이크");
         }
-
-        if (!input.matches("^(?!.*(.).*\\1)[1-9]+$")) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private List<Integer> parsePitchInput(String input) {
-        List<Integer> result = new ArrayList<>();
-
-        for (int index = 0; index < input.length(); index++) {
-            result.add(input.charAt(index) - '0');
-        }
-
-        return result;
+        System.out.println();
     }
 
     public static void main(String[] args) {
