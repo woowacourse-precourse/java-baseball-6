@@ -15,6 +15,8 @@ public class Application {
     private static void gameStart() {
         String computer = generateRandomNumber();
         String player = getUserInput();
+        int strike = countStrikes(computer, player);
+        int ball = countBalls(computer, player);
     }
 
     private static String generateRandomNumber() {
@@ -42,5 +44,22 @@ public class Application {
             if (list.contains(number)) throw new IllegalArgumentException();
             else list.add(number);
         }
+    }
+
+    private static int countStrikes(String computer, String player) {
+        int strike = 0;
+        for (int i = 0; i < 3; i++)
+            if (player.charAt(i) == computer.charAt(i))
+                strike++;
+        return strike;
+    }
+
+    private static int countBalls(String computer, String player) {
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            if (player.charAt(i) != computer.charAt(i) && computer.contains(Character.toString(player.charAt(i))))
+                ball++;
+        }
+        return ball;
     }
 }
