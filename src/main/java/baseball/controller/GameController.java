@@ -25,7 +25,6 @@ public class GameController {
 		Console.printGameStart();
 		computerPlayer.setNumberArray(Console.getComputerNumberArray());
 		while (!gameOver) {
-			Console.printInputMessage();
 			userPlayer.setNumberArray(Console.getUserNumberArray());
 			gameOver = Rule.judgeGameOver(userPlayer.getNumberArray(), computerPlayer.getNumberArray());
 		}
