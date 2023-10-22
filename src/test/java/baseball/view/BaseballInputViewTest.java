@@ -75,7 +75,6 @@ public class BaseballInputViewTest {
     void continueOrExitSuccessTest(String input, boolean expected) {
         System.setIn(generateUserInput(input));
         BaseballInputView baseballInputView = new BaseballInputView();
-        String baseBallNumber = baseballInputView.inputBaseballNumber();
         boolean isContinue = baseballInputView.continueOrExit();
         assertThat(isContinue).isEqualTo(expected);
     }
