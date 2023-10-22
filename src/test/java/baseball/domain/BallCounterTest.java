@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 class BallCounterTest {
 
+    private static final int DIGIT_NUMBER = 3;
+
     @AfterEach
     void resetBallCounter() {
         BallCounter.reset();
@@ -31,5 +33,20 @@ class BallCounterTest {
 
         // then
         assertThat(BallCounter.getCountOfStrike()).isEqualTo(1);
+    }
+
+    @DisplayName("스트라이크 개수가 지정 자릿수와 일치하는 경우 true를 반환한다.")
+    @Test
+    void isAllStrike_True() {
+        // given
+        for (int i = 0; i < DIGIT_NUMBER; i++) {
+            BallCounter.countStrike();
+        }
+
+        // when
+        boolean allStrike = BallCounter.isAllStrike(DIGIT_NUMBER);
+
+        // then
+        assertThat(allStrike).isTrue();
     }
 }
