@@ -7,6 +7,15 @@ public class Server {
     private static final int defaultDigitalCount = 3;
     private static final int minimumCanCreatedValue = 1;
     private static final int maximumCanCreatedValue = 9;
+
+    /**
+     * 사용자가 입력한 값 검증
+     *
+     * 사용자가 입력한 값이 유효할 시 , 통과한다
+     * 사용자가 잘못된 값을 입력한 경우 , IllegalArgumentException 을 발생시킨다.
+     *
+     * @param playerInput 사용자가 입력한 값
+     */
     public void validatePlayerInput(String playerInput){
         validateInputIsNumber(playerInput);
 
