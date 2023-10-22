@@ -5,25 +5,14 @@ import baseball.util.ScoreCalculator;
 import java.util.List;
 
 public class Computer {
+    private final NumberGenerator numberGenerator = new NumberGenerator();
+    private final ScoreCalculator scoreCalculator = new ScoreCalculator();
 
-    private List<Integer> answer;
-    private Score score;
-
-    public void generateNumber() {
-        NumberGenerator numberGenerator = new NumberGenerator();
-        this.answer = numberGenerator.getGeneratedNumbers();
+    public List<Integer> generateNumber() {
+        return numberGenerator.getGeneratedNumbers();
     }
 
-    public void calculateScore(List<Integer> playerInput) {
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
-        this.score = scoreCalculator.calculateScore(playerInput, getAnswer());
-    }
-
-    public List<Integer> getAnswer() {
-        return answer;
-    }
-
-    public Score getScore() {
-        return score;
+    public Score calculateScore(List<Integer> playerInput, List<Integer> answer) {
+        return scoreCalculator.calculateScore(playerInput, answer);
     }
 }

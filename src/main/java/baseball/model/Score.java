@@ -1,7 +1,6 @@
 package baseball.model;
 
 public class Score {
-
     private static final Integer THREE_STRIKE = 3;
 
     private Integer strike;
