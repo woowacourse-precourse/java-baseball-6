@@ -45,4 +45,9 @@ public class BaseballGameService {
         }
         return list;
     }
+
+    private void printGameEndMessage() {
+        OutputView outputView = new OutputView();
+        outputView.printGameEndMessage();
+    }
 }

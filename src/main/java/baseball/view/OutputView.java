@@ -23,4 +23,8 @@ public class OutputView {
         }
         System.out.println(sb);
     }
+
+    public void printGameEndMessage() {
+        System.out.println(Messages.GAME_END_MESSAGE.getMessage());
+    }
 }
