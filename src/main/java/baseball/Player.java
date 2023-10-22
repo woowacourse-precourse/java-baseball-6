@@ -9,8 +9,6 @@ import java.util.regex.Pattern;
 public class Player {
 
     private static final String REGEX_ONE_TO_NINE = "^[1-9]+$";
-    private static final String OUT_OF_ONE_TO_NIME = "[ERROR] 1 ~ 9 사이의 값만 입력해주세요";
-    private static final String HAVE_DUPLICATE_NUMBER = "[ERROR] 중복된 값이 있습니다.";
 
     private List<Integer> inputNumbers;
 
@@ -49,7 +47,7 @@ public class Player {
             String numberStr = number.toString();
             boolean isValid = Pattern.matches(REGEX_ONE_TO_NINE, numberStr);
             if (!isValid) {
-                throw new IllegalArgumentException(OUT_OF_ONE_TO_NIME);
+                throw new IllegalArgumentException(ExceptionMessage.OUT_OF_ONE_TO_NIME.getMessage());
             }
         }
     }
@@ -59,7 +57,7 @@ public class Player {
 
         for (Integer number : Numbers) {
             if (uniqueNumbers.contains(number)) {
-                throw new IllegalArgumentException(HAVE_DUPLICATE_NUMBER);
+                throw new IllegalArgumentException(ExceptionMessage.HAVE_DUPLICATE_NUMBER.getMessage());
             }
         }
     }
