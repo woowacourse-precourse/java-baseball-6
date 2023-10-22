@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserNumber {
-    public List<Integer> UserNumber() {
+    public List<Integer> player() {
         List<Integer> userNumber = new ArrayList<>();
         try {
             System.out.print("숫자를 입력해주세요: ");
