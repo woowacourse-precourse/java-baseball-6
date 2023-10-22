@@ -51,7 +51,7 @@ public class Comparator {
     }
 
     private void storeToHint(int strike,int ball){
-        Hint hint = new Hint();
+        Hint hint = Hint.getInstance();
         hint.save(strike, ball);
     }
 

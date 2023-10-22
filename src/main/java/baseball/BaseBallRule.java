@@ -8,7 +8,6 @@ public class BaseBallRule implements GameRule{
         if(strike==ALL_STRIKE){
             return true;
         }
-
         return false;
     }
 }

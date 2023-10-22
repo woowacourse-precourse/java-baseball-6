@@ -11,7 +11,7 @@ class HintTest {
     @DisplayName("힌트가 올바르게 저장되고 로드되는지")
     void 힌트_테스트(){
         //given
-        Hint hint=new Hint();
+        Hint hint=Hint.getInstance();
         int strike=1;
         int ball=2;
 

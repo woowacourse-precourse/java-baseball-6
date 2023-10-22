@@ -11,13 +11,19 @@ public class BaseballGame implements Game{
 
     private static GameRule rule = new BaseBallRule();
     private static Comparator comparator = new Comparator();
-    private static Hint hint = new Hint();
+    private static Hint hint = Hint.getInstance();
     private static OutputView outputView=new OutputView();
     private static InputView inputView=new InputView();
+    private static BaseballGame baseballGame=new BaseballGame();
 
     private Balls userBalls;
     private Balls computerBalls;
-    private User user=new User();
+
+    private BaseballGame(){}
+
+    public static BaseballGame getInstance(){
+        return baseballGame;
+    }
 
     @Override
     public void start() {
@@ -38,6 +44,7 @@ public class BaseballGame implements Game{
     }
 
     public void receiveUserBalls(){
+        User user=new User();
         inputView.enterUserAnswer();
         userBalls=user.makeUserNumber();
     }
