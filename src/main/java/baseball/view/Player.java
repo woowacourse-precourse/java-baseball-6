@@ -12,4 +12,6 @@ public interface Player {
     boolean checkRestart();
 
     void printBaseBallHint(BaseBallHint baseBallHint);
+
+    void printEndGameMessage();
 }
