@@ -31,5 +31,12 @@ class DigitTest {
         assertEquals(digit1, digit2);
     }
 
+    @Test
+    void 숫자가_같다고_같은_Digit으로_인식하지는_않는다() {
+        Integer digit1 = 5;
+        Digit digit2 = new Digit(5);
+
+        assertNotEquals(digit1, digit2);
+    }
 
 }
