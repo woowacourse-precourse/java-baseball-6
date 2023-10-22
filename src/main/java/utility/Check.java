@@ -1,5 +1,7 @@
 package utility;
 
+import java.util.Objects;
+
 public class Check {
     private Check(){}
 
@@ -40,5 +42,14 @@ public class Check {
             if (inputArr[i] < 49 || inputArr[i] > 57) return false;
         }
         return true;
+    }
+
+    //입력값이 1 또는 2인지 체크
+    public static boolean checkContinueInput(String input) {
+        if (Objects.equals(input, "1") || Objects.equals(input, "2"))
+            return true;
+        else{
+            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
+        }
     }
 }
