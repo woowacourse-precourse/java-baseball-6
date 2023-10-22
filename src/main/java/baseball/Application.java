@@ -1,11 +1,22 @@
 package baseball;
 
+import baseball.randomNumber.RandomNumber;
 import baseball.game.Game;
+
+import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) {
-        Game baseball = new Game();
-        baseball.startGame();    // 게임 시작
+        Game.printStartMessage();
+
+        while (true) {
+            List<Integer> computerNumber = RandomNumber.createRandomNumber();
+            System.out.println("computerNumber = " + computerNumber);
+            Game.doGame(computerNumber);
+            if (!Game.newGame()) {
+                break;
+            }
+        }
     }
 }
