@@ -92,6 +92,26 @@ public class Application {
         return correct;
     }
 
+    //결과를 출력해준다.
+    public static String Output(List<Integer> User_num, List<Integer> com_num, int strike) {
+        int contain = contain(User_num, com_num);
+        int ball = contain - strike;
+
+        String result = "";
+
+        if(contain == 0) {
+            result = "낫싱";
+        } else if(strike == 0) {
+            result = ball + "볼";
+        } else if(ball == 0) {
+            result = strike + "스트라이크";
+        } else {
+            result = ball + "볼" + " " + strike + "스트라이크";
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
