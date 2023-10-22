@@ -15,11 +15,11 @@ public class OutputView {
     }
 
     public static void printStartMessage() {
-        System.out.println(START_MASSAGE.getMessage());
+        System.out.println(START_MASSAGE);
     }
 
     public static void printInputGuideMessage() {
-        System.out.print(INPUT_GUIDE_MESSAGE.getMessage());
+        System.out.print(INPUT_GUIDE_MESSAGE);
     }
 
     public static void printResult(Result result) {
@@ -27,7 +27,7 @@ public class OutputView {
     }
 
     public static void printDoneMessage() {
-        System.out.println(DONE_MESSAGE.getMessage());
-        System.out.println(ASK_REPLAY_MESSAGE.getMessage());
+        System.out.println(DONE_MESSAGE);
+        System.out.println(ASK_REPLAY_MESSAGE);
     }
 }
