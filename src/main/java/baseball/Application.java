@@ -19,6 +19,9 @@ public class Application {
         ComputerBalls computerBalls = new ComputerBalls();
         List<Integer> computerBallList = computerBalls.inputComputerBalls();
 
+        Score score = new Score();
+        score.calculation(userBallList, computerBallList);
+
         System.out.println(userBallList);
         System.out.println(computerBallList);
     }

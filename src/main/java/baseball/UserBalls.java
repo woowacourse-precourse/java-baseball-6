@@ -13,7 +13,7 @@ public class UserBalls {
         List<Integer> userBalls = new ArrayList<>();
         String inputBall = Console.readLine();
 
-        if (inputBall.length() >= 4) {
+        if(inputBall.length() >= 4){
             throw new IllegalArgumentException("3자리의 숫자를 입력하세요.");
         }
 
