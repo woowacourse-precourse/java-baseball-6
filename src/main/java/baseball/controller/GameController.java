@@ -2,9 +2,9 @@ package baseball.controller;
 
 import baseball.model.Models;
 import baseball.view.Views;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
+
+
 import java.util.List;
 
 public class GameController {
@@ -16,8 +16,8 @@ public class GameController {
             Views.printIntro();
 
             List<Integer> answer = Models.generateNumber();
-
-            while(true) {
+            boolean isPossible = true;
+            while(isPossible) {
                 Views.printQuestion();
                 String userNumbers = Views.inputNumber();
 
@@ -42,7 +42,7 @@ public class GameController {
                 if(strikeCount ==3 ){
                     Views.printStrike(strikeCount);
                     Views.printOut();
-                    break;
+                    isPossible = false;
                 }
                 else if(Models.containsBothStrikeAndBall(strikeCount,ballCount)){
                     Views.printStrikeBallCount(strikeCount,ballCount);
