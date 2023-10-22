@@ -15,7 +15,7 @@ public class Game {
     public void startGame(){ //숫자 야구 게임을 시작하는 메소드
         this.computer.setNumbers(); //컴퓨터의 숫자 정하기
         while(true){ //종료 조건 : 3스트라이크
-            System.out.print("숫자를 입력해주세요: ");
+            System.out.print("숫자를 입력해주세요 : ");
             this.user.setGuessNumber(); //플레이어의 숫자 입력 받기
             int[] strikeAndBall = this.checkNumber(); //strikeAndBall[0]: 스트라이크, strikeAndBall[1]: 볼
             if(strikeAndBall[0]==3){ //3스트라이크: 반복문 종료 조건
