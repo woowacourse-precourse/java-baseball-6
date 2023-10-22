@@ -17,6 +17,7 @@ class ConsoleTest extends NsTest {
 
 	ConsoleController consoleController = new ConsoleController(new ConsoleInput(), new ConsoleOutput());
 
+
 	@Test
 	void 사용자입력시_정수_개수오류() {
 		assertSimpleTest(() ->
@@ -40,7 +41,7 @@ class ConsoleTest extends NsTest {
 						.isInstanceOf(NotIntegerInputException.class)
 		);
 		assertSimpleTest(() ->
-				assertThatThrownBy(() -> runException("1 2 3"))
+				assertThatThrownBy(() -> runException("1+2"))
 						.isInstanceOf(NotIntegerInputException.class)
 		);
 		assertSimpleTest(() ->

@@ -10,42 +10,40 @@ import java.util.Set;
 public class ConsoleInput {
 
 	public String getUserNumber() {
-		String inputString = Console.readLine();
+		String inputString = removeBlank(Console.readLine()).trim();
 		checkInputFormat(inputString);
-		return inputString.trim();
+		return inputString;
 	}
 
 	public String getResumeOption() {
-		String inputString = Console.readLine();
+		String inputString = removeBlank(Console.readLine()).trim();
 		checkResumeInputFormat(inputString);
 		return inputString;
 	}
 
 	public void checkInputFormat(String inputString) throws IllegalArgumentException {
-		String removedBlankString = removeBlank(inputString);
-		validateIntegerInput(removedBlankString);
-		validateIntegerLength(removedBlankString, 3);
-		validateNotZero(removedBlankString);
-		validateDuplicatedNumber(removedBlankString);
+		validateIntegerInput(inputString);
+		validateIntegerLength(inputString, 3);
+		validateNotZero(inputString);
+		validateDuplicatedNumber(inputString);
 	}
 
 	public void checkResumeInputFormat(String inputString) throws IllegalArgumentException {
-		String removedBlankString = removeBlank(inputString);
-		validateIntegerInput(removedBlankString);
-		validateIntegerLength(removedBlankString, 1);
-		validateResumeFormat(removedBlankString);
+		validateIntegerInput(inputString);
+		validateIntegerLength(inputString, 1);
+		validateResumeFormat(inputString);
 	}
 
-	private void validateNotZero(String removedBlankString) throws UsingZeroInputException {
-		if (isZeroIncluded(removedBlankString)) {
-			throw new UsingZeroInputException(removedBlankString);
+	private void validateNotZero(String inputString) throws UsingZeroInputException {
+		if (isZeroIncluded(inputString)) {
+			throw new UsingZeroInputException(inputString);
 		}
 
 	}
 
-	private void validateResumeFormat(String removedBlankString) throws NotValidResumeInputException {
-		if (!removedBlankString.equals("1") && !removedBlankString.equals("2")) {
-			throw new NotValidResumeInputException(removedBlankString);
+	private void validateResumeFormat(String inputString) throws NotValidResumeInputException {
+		if (!inputString.equals("1") && !inputString.equals("2")) {
+			throw new NotValidResumeInputException(inputString);
 		}
 	}
 
@@ -67,8 +65,8 @@ public class ConsoleInput {
 		}
 	}
 
-	private boolean isZeroIncluded(String removedBlankString) {
-		String[] array = removedBlankString.split("");
+	private boolean isZeroIncluded(String inputString) {
+		String[] array = inputString.split("");
 		for (String x : array) {
 			if (x.equals("0")) {
 				return true;
