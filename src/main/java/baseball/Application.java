@@ -2,7 +2,6 @@ package baseball;
 
 import baseball.Controller.GameManager;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,19 +15,6 @@ public class Application {
         // TODO: 프로그램 구현
         new GameManager().playGame();
 
-    }
-
-    public static List<Integer> generateComputerRandomThreeDigitNumber(){
-
-        List<Integer> computer = new ArrayList<>();
-        while(computer.size() <NUM_DIGITS ){
-            int randomNumber = Randoms.pickNumberInRange(1,9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-
-        return computer;
     }
 
     public static List<Integer> getUserGuessThreeDigitNumber(){

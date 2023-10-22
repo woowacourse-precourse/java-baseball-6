@@ -1,5 +1,7 @@
 package baseball.Controller;
 
+import baseball.dto.RandomNumGenerator;
+
 import java.util.List;
 
 import static baseball.Application.*;
@@ -15,7 +17,7 @@ public class GameManager {
     private void doGameUntilUserQuit() {
         boolean reGame=false;
         do {
-            List<Integer> computer = generateComputerRandomThreeDigitNumber();
+            List<Integer> computer = RandomNumGenerator.generateComputerRandomThreeDigitNumber();
             doGameLoopUntilGameOver(computer);
             reGame = shouldRestartGame(); //true이면, 재시작
         } while (reGame == true) ; //
