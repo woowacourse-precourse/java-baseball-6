@@ -19,8 +19,8 @@ public class BaseBallGame {
     OutputView outputView = new OutputView();
 
     public void run() {
-        gameStart();
         do {
+            gameStart();
             playGame();
             quitGame();
         } while (playButton());
