@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class GameTest {
     private final Game game = new Game();
+    private final GameRunner gameRunner = new GameRunner();
 
     @DisplayName("유저 인풋 에러 발생상황 확인")
     @ParameterizedTest
@@ -34,14 +35,14 @@ class GameTest {
     @Test
     @DisplayName("재실행 하는경우")
     void isReplay() {
-        boolean replay = game.isReplay("1");
+        boolean replay = gameRunner.isReplay("1");
         Assertions.assertThat(replay).isTrue();
     }
 
     @Test
     @DisplayName("재실행 하지 않는경우")
     void isNotReplay() {
-        boolean replay = game.isReplay("2");
+        boolean replay = gameRunner.isReplay("2");
         Assertions.assertThat(replay).isFalse();
     }
 }

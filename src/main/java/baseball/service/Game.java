@@ -1,8 +1,8 @@
 package baseball.service;
 
 import baseball.domain.Computer;
-import baseball.dto.GameCommand;
 import baseball.dto.Score;
+import baseball.util.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.platform.commons.util.StringUtils;
 
@@ -10,16 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.constants.Constants.*;
-import static baseball.dto.GameCommand.RESTART;
 import static baseball.dto.GameStatus.PLAY;
 
 public class Game {
+    private Computer computer;
+    private Score score;
 
+    public Game(Computer computer, Score score) {
+        this.computer = computer;
+        this.score = score;
+    }
 
-    public void play() {
-        Computer computer = new Computer();
-        Score score = new Score();
+    public Game() {
+        this(new Computer(RandomNumberGenerator.getRandom3Number()), new Score());
+    }
 
+    public void playGame() {
         while (score.getStatus() == PLAY) {
             System.out.println(GAME_NUMBER_INPUT_STRING);
             List<Integer> userNum = getUserNums(Console.readLine());
@@ -30,6 +36,7 @@ public class Game {
         System.out.println(GAME_END_STRING);
         System.out.println(GAME_RESTART_INPUT);
     }
+
 
     public List<Integer> getUserNums(String readLine) {
         if (StringUtils.isBlank(readLine) || readLine.length() != NUMBER_SIZE) //잚못된 개수의 문자를 입력한 경우
@@ -45,8 +52,5 @@ public class Game {
         return nums;
     }
 
-    public boolean isReplay(String input) {
-        GameCommand gameCommand = GameCommand.fromInputCommand(input);
-        return gameCommand == RESTART;
-    }
+
 }

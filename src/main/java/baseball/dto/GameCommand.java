@@ -4,14 +4,14 @@ import static baseball.constants.Constants.ERROR_INVALID_COMMAND;
 
 public enum GameCommand {
     RESTART("1"), END("2");
-    private final String code;
+    private final String command;
 
-    GameCommand(String code) {
-        this.code = code;
+    GameCommand(String command) {
+        this.command = command;
     }
 
     public String getCommand() {
-        return code;
+        return command;
     }
 
     public static GameCommand fromInputCommand(String input) {
@@ -20,6 +20,6 @@ public enum GameCommand {
                 return command;
             }
         }
-        throw new IllegalArgumentException(ERROR_INVALID_COMMAND);
+        throw new IllegalArgumentException(String.format(ERROR_INVALID_COMMAND+"%s",input));
     }
 }
