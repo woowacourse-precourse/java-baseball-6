@@ -6,10 +6,10 @@ import baseball.view.SystemInputMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
-    final int SIZE = 3;
+    final int NUMBER_SIZE = 3;
     final int START_INCLUSIVE = 1;
     final int END_INCLUSIVE = 9;
-    final int RESTART = 1;
+    final int GAME_RESTART = 1;
     final int GAME_OVER = 2;
 
     GameService gameService = new GameService();
@@ -22,7 +22,7 @@ public class GameController {
     }
 
     private void setGame() {
-        gameService.setGame(SIZE, START_INCLUSIVE, END_INCLUSIVE);
+        gameService.setGame(NUMBER_SIZE, START_INCLUSIVE, END_INCLUSIVE);
     }
 
     private void startGame() throws IllegalArgumentException {
@@ -35,7 +35,7 @@ public class GameController {
 
     private void askRestart() throws IllegalArgumentException {
         SystemInputMessage.printRestartMessage();
-        if (getInputNumber() == RESTART) {
+        if (getInputNumber() == GAME_RESTART) {
             run();
         }
     }
