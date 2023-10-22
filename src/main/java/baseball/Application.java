@@ -21,13 +21,10 @@ public class Application {
 
                 Integer[] userNumber = setUserNumber();
 
-                int numberOfStrike = 0;
+                int numberOfStrike = calculatingStrikeValue(computer,userNumber);
                 int numberOfBall = 0;
 
-                for (int i = 0; i < LENGTH_OF_NUMBER; i++) {
-                    if (computer.get(i).equals(userNumber[i]))
-                        numberOfStrike++;
-                }
+
 
                 if (numberOfStrike == 3) {
                     break;
@@ -78,5 +75,15 @@ public class Application {
 
         //TODO 무슨 말인지 모르겠다 공부하자 새로운 언어에서의 문법
         return Stream.of(user).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
+    }
+
+    static int calculatingStrikeValue(List<Integer> computer, Integer[] user){
+        int numberOfStrike = 0;
+
+        for (int i = 0; i < LENGTH_OF_NUMBER; i++) {
+            if (computer.get(i).equals(user[i]))
+                numberOfStrike++;
+        }
+        return numberOfStrike;
     }
 }
