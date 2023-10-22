@@ -10,7 +10,7 @@ public class Restart {
         Validator validator=new RestartValidator();
         validator.validate(input);
 
-        this.option=input;
+        option=input;
     }
 
     public boolean isContinue(){

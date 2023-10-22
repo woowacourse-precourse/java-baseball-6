@@ -8,7 +8,7 @@ public class Game {
     private final Numbers computer;
 
     public Game(){
-        this.computer=new Numbers(generateComputerNumbers());
+        computer=new Numbers(generateComputerNumbers());
     }
 
     private String generateComputerNumbers(){
