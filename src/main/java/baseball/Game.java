@@ -42,7 +42,7 @@ public class Game {
     public void inputUser() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputData = Console.readLine();
-        Validate.validateUserInput(inputData);
+        Validate.isValidUserInput(inputData);
         String[] inputNumbers = inputData.split("");
         List<Integer> userNumbers = new ArrayList<>(3);
         for (int i = 0; i < 3; i++) {
