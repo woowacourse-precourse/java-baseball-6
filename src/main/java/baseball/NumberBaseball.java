@@ -1,9 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class NumberBaseball {
     private enum GameStatus {
@@ -36,6 +34,10 @@ public class NumberBaseball {
         playGame();
     }
 
+    private void gameOn() {
+        gameStatus = GameStatus.ON;
+    }
+
     private void loadComNumbers() {
         List<Integer> comNumbers = comNumberGenerator.generate();
         computerBalls = BallContainer.getFromNumbers(comNumbers);
@@ -45,46 +47,23 @@ public class NumberBaseball {
         while (GameStatus.isGameOn(gameStatus)) {
             BallContainer userBalls = createUserBalls();
             PitchResult result = computerBalls.pitch(userBalls);
-            System.out.println(result.getHint());
 
-            restartOrExit(result);
+            executeByResult(result);
         }
     }
 
     private BallContainer createUserBalls() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        validateInput(input);
 
         List<Integer> userNumber = userNumberGenerator.generate(input);
 
         return BallContainer.getFromNumbers(userNumber);
     }
 
-    private void validateInput(String input) {
-        if (input.isEmpty()) {
-            throw new IllegalArgumentException("입력값이 존재하지 않습니다");
-        }
-        if (input.contains("0")) {
-            throw new IllegalArgumentException("0은 입력할 수 없습니다.");
-        }
-        if (input.contains("-")) {
-            throw new IllegalArgumentException("음수값은 입력이 불가능합니다.");
-        }
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("3자리의 숫자를 입력해주세요");
-        }
+    private void executeByResult(PitchResult result) {
+        System.out.println(result.getHint());
 
-        String distincted = Arrays.stream(input.split(""))
-                .distinct()
-                .collect(Collectors.joining());
-
-        if (!distincted.equals(input)) {
-            throw new IllegalArgumentException("중복은 허용되지 않습니다.");
-        }
-    }
-
-    private void restartOrExit(PitchResult result) {
         if (result.isGameEnd()) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             questIfRestart();
@@ -108,10 +87,6 @@ public class NumberBaseball {
             return;
         }
         throw new IllegalArgumentException("입력은 1 또는 2만 가능합니다.");
-    }
-
-    private void gameOn() {
-        gameStatus = GameStatus.ON;
     }
 
     private void gameOff() {
