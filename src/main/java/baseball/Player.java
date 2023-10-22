@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Player {
 
@@ -30,19 +32,23 @@ public class Player {
             throw new IllegalArgumentException(INPUT_MUST_3_NUMBER_EXCEPTION);
         }
 
-        ArrayList<Integer> inputNumbers = new ArrayList<>();
+        List<Integer> inputNumbers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            try {
-                int n = Integer.parseInt(tokens[i]);
-                if (inputNumbers.contains(n)) {
-                    throw new IllegalArgumentException(INPUT_MUST_NOT_DUPLICATED_EXCEPTION);
-                }
-                inputNumbers.add(n);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION);
-            }
+            inputNumbers.add(parseInt(tokens[i]));
         }
+
+        checkDuplicationNumber(inputNumbers);
         return inputNumbers;
+    }
+
+    private void checkDuplicationNumber(List<Integer> inputNumbers) {
+        Set<Integer> useNumber = new HashSet<>();
+        for (int number : inputNumbers) {
+            if (useNumber.contains(number)) {
+                throw new IllegalArgumentException(INPUT_MUST_NOT_DUPLICATED_EXCEPTION);
+            }
+            useNumber.add(number);
+        }
     }
 
     /**
@@ -57,16 +63,21 @@ public class Player {
     }
 
     //테스트를 위한 오버로딩
+
     public boolean restart(String s) throws IllegalArgumentException {
+        int input = parseInt(s);
+        if (input == RESTART) {
+            return true;
+        }
+        if (input == END) {
+            return false;
+        }
+        throw new IllegalArgumentException(WRONG_INPUT_IN_RESTART_EXCEPTION);
+    }
+
+    private int parseInt(String input) {
         try {
-            int input = Integer.parseInt(s);
-            if (input == RESTART) {
-                return true;
-            }
-            if (input == END) {
-                return false;
-            }
-            throw new IllegalArgumentException(WRONG_INPUT_IN_RESTART_EXCEPTION);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION);
         }
