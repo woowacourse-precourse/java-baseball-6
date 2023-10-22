@@ -43,7 +43,7 @@ public class Game {
             userDigits = getSplitList(userNumber);
 
             countStrikeAndBall();
-            printBallCount();
+            printHints();
 
             if (strike == NUMBER_LENGTH) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -112,7 +112,7 @@ public class Game {
     }
     // inputlist = [1, 2] 생성말고 조건문으로 처리하기
 
-    private void printBallCount() {
+    private void printHints() {
         String result = "";
         if (ball == 0 && strike == 0) {
             result = "낫싱";
