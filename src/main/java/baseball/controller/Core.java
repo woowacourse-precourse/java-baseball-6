@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.Result;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
@@ -24,17 +25,23 @@ public class Core {
 
             List<Integer> inputList = generator.generateInputList(listInput);
 
-            int strike = countStrike(inputList, answer);
-            int ball = countBall(inputList, answer);
+            Result result = makeResult(inputList, answer);
 
-            view.showResult(strike, ball);
+            view.showResult(result);
 
-            playing = isNotOver(strike);
+            playing = isNotOver(result.getStrike());
         }
     }
 
     public boolean isNotOver(int strike) {
         return strike != LIST_LEN;
+    }
+
+    public Result makeResult(List<Integer> input, List<Integer> answer) {
+        int strike = countStrike(input, answer);
+        int ball = countBall(input, answer);
+
+        return new Result(strike, ball);
     }
 
     public int countStrike(List<Integer> input, List<Integer> answer) {

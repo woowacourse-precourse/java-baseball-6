@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import baseball.controller.Core;
 import baseball.controller.Generator;
 import baseball.controller.Validation;
+import baseball.model.Result;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayOutputStream;
@@ -24,27 +25,27 @@ class ApplicationTest extends NsTest {
     void showResult() {
         // given
         View view = new View();
-        List<Integer> case1 = List.of(0, 0);
-        List<Integer> case2 = List.of(0, 2);
-        List<Integer> case3 = List.of(2, 0);
-        List<Integer> case4 = List.of(1, 1);
+        Result case1 = new Result(0, 0);
+        Result case2 = new Result(0, 2);
+        Result case3 = new Result(2, 0);
+        Result case4 = new Result(1, 1);
 
         // when
         OutputStream result1 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(result1));
-        view.showResult(case1.get(0), case1.get(1));
+        view.showResult(case1);
 
         OutputStream result2 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(result2));
-        view.showResult(case2.get(0), case2.get(1));
+        view.showResult(case2);
 
         OutputStream result3 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(result3));
-        view.showResult(case3.get(0), case3.get(1));
+        view.showResult(case3);
 
         OutputStream result4 = new ByteArrayOutputStream();
         System.setOut(new PrintStream(result4));
-        view.showResult(case4.get(0), case4.get(1));
+        view.showResult(case4);
 
         // then
         assertThat(result1.toString().strip()).as("0 strike 0 ball").isEqualTo("낫싱");
