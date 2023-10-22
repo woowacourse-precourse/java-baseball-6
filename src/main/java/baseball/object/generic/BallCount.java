@@ -1,4 +1,4 @@
-package baseball;
+package baseball.object.generic;
 
 public record BallCount(long strike, long ball) {
 
