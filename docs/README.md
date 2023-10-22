@@ -6,9 +6,9 @@
 - 시작 문구 출력
 
 ### 2. 게임 진행
+- **while문** : `isFinished`값이 true가 될 때까지
 - **try-catch문** : `IllegalArgumentException`
   - catch문에서 `Application` 종료
-- **while문** : `isFinished`값이 true가 될 때까지
 - `Game` 객체 생성
 - 게임 진행
   - 숫자 입력
