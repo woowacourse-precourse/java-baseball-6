@@ -4,7 +4,9 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
+import baseball.validator.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -42,6 +44,33 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("12삼"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 정답을_맞춘_후_입력값의_길이_예외_테스트() {
+        // given
+        int lengthOne = 1;
+        String case1 = "1";
+        String case2 = "";
+        String case3 = "12";
+
+        // when
+        Throwable result1 = catchThrowable(() -> {
+            Validator.validateInputLength(case1, lengthOne);
+        });
+
+        Throwable result2 = catchThrowable(() -> {
+            Validator.validateInputLength(case2, lengthOne);
+        });
+
+        Throwable result3 = catchThrowable(() -> {
+            Validator.validateInputLength(case3, lengthOne);
+        });
+
+        //then
+        assertThat(result1).doesNotThrowAnyException();
+        assertThat(result2).isInstanceOf(IllegalArgumentException.class);
+        assertThat(result3).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
