@@ -33,14 +33,18 @@ public class Application {
                 user.add(Integer.parseInt(num));
             }
 
+        //숫자 비교
+        //총 개수
+        int cnt = 0;
 
-            int strike = 0;
-            int ball = 0;
-
-            for(int i = 0; i < user.length; i ++){
-                if (computer.get(i).equals(Integer.valueOf(user[i]))) {
-                    System.out.println("Contain!");
-                }
+        for(int i = 0; i < user.size(); i++){
+            if(computer.contains(user.get(i))){
+                cnt += 1;
             }
+        }
+
+        
+
+
     }
 }
