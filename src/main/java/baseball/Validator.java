@@ -19,6 +19,9 @@ public class Validator {
         if (hasDuplicateNumbers(userInput)) {
             throw new IllegalArgumentException("Ball에 중복된 숫자가 존재합니다.");
         }
+        if (hasNumber(userInput, 0)) {
+            throw new IllegalArgumentException("숫자는 1~9만 사용할 수 있습니다.");
+        }
     }
 
     public static void validateRestartInput(String userInput) throws IllegalArgumentException {
@@ -64,5 +67,14 @@ public class Validator {
         return num - '0';
     }
 
+    private static boolean hasNumber(String input, int number) {
+        for (int i = 0; i < input.length(); i++) {
+            int num = input.charAt(i) - '0';
+            if (num == number) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
