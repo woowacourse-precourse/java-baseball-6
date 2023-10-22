@@ -31,12 +31,16 @@ public class GameService {
         List<Integer> proposal = player.getProposal();
         List<Integer> answer = computer.getAnswer();
 
-        int strike = (int) IntStream.range(0, 3)
-                .filter(i -> answer.get(i).equals(proposal.get(i)))
-                .count();
-        int ball = (int) IntStream.range(0, 3)
-                .filter(i -> !answer.get(i).equals(proposal.get(i)) && answer.contains(proposal.get(i)))
-                .count();
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (answer.get(i).equals(proposal.get(i))) {
+                strike++;
+            } else if (answer.contains(proposal.get(i))) {
+                ball++;
+            }
+        }
 
         return List.of(ball, strike);
     }
