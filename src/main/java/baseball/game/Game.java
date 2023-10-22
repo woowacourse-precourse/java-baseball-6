@@ -66,17 +66,25 @@ public class Game {
             }
         }
 
-        if (strikeCount > 0 || ballCount > 0) {
-            if (strikeCount > 0 && ballCount > 0) {
-                System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-            } else if (strikeCount > 0 && ballCount == 0) {
-                System.out.println(strikeCount + "스트라이크");
-            } else {
-                System.out.println(ballCount + "볼");
-            }
-        } else {
-            System.out.println("낫싱");
+        displayResult();
+    }
+
+    private void displayResult() {
+        StringBuilder result = new StringBuilder();
+
+        if (ballCount > 0) {
+            result.append(ballCount).append("볼 ");
         }
+
+        if (strikeCount > 0) {
+            result.append(strikeCount).append("스트라이크");
+        }
+
+        if (strikeCount == 0 && ballCount == 0) {
+            result.append("낫싱");
+        }
+
+        System.out.println(result.toString().trim());
     }
 
     private boolean checkIsContinue() {
