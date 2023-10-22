@@ -4,7 +4,7 @@ public class ResultBall {
 
     private final int strike;
     private final int ball;
-    
+
     public ResultBall(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;

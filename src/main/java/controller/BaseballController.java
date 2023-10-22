@@ -16,7 +16,6 @@
 
 package controller;
 
-import java.util.List;
 import model.CreateRandomNumber;
 import model.Result;
 import view.InputView;
@@ -24,6 +23,7 @@ import view.RestartOrEndView;
 import view.ResultView;
 import view.StartView;
 import vo.AnswerBall;
+import vo.ResultBall;
 import vo.UserBall;
 
 public class BaseballController {
@@ -31,11 +31,12 @@ public class BaseballController {
         StartView.startView();
         while (true) {
             AnswerBall answerBall = new AnswerBall(CreateRandomNumber.createRandomNumber());
+            System.out.println(answerBall.getAnswerBall());
 
             while (true) {
                 UserBall userBall = new UserBall(InputView.userInput());
-                List<Integer> result = Result.getResult(answerBall, userBall);
-                if (ResultView.resultView(result)) {
+                ResultBall resultBall = Result.getResult(answerBall, userBall);
+                if (ResultView.resultView(resultBall)) {
                     break;
                 }
             }
