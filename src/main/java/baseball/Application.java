@@ -12,7 +12,6 @@ public class Application{
         startGame();
         List<Integer> computerNumber = createComputerRandomNumber();
         playGame(computerNumber);
-
     }
 
     private static void startGame(){
@@ -34,6 +33,7 @@ public class Application{
         List<Integer> userNumber = input();
         int strike = findStrike(computerNumber, userNumber);
         int ball = findBall(computerNumber,userNumber,strike);
+        printResult(strike,ball);
     }
 
     private static List<Integer> input(){
@@ -119,6 +119,39 @@ public class Application{
             }
         }
         return count;
+    }
+
+    private static void printResult(int strike, int ball){
+        String result = printIfNothing(strike,ball)+printIfBall(ball)+printIfStrike(strike);
+        System.out.println(result);
+        if (isAllStrike(strike)){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
+    private static String printIfNothing(int strike, int ball){
+        if(ball==0&&strike==0){
+            return "낫싱";
+        }
+        return "";
+    }
+
+    private static String printIfBall(int ball){
+        if(ball!=0){
+            return ball+"볼 ";
+        }
+        return "";
+    }
+
+    private static String printIfStrike(int strike){
+        if(strike!=0){
+            return strike + "스트라이크";
+        }
+        return "";
+    }
+
+    private static boolean isAllStrike(int strike){
+        return strike == 3;
     }
 
 }
