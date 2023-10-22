@@ -1,6 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -10,6 +14,7 @@ public class Application {
 
     private static void gameStart() {
         String computer = generateRandomNumber();
+        String player = getUserInput();
     }
 
     private static String generateRandomNumber() {
@@ -19,5 +24,23 @@ public class Application {
             if (!computer.contains(Integer.toString(randomNumber))) computer += randomNumber;
         }
         return computer;
+    }
+
+    private static String getUserInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String player = Console.readLine();
+        validatePlayerInput(player);
+        return player;
+    }
+
+    private static void validatePlayerInput(String player) {
+        List<Integer> list = new LinkedList<>();
+        if (player.length() != 3) throw new IllegalArgumentException();
+        for (int i = 0; i < 3; i++) {
+            int number = player.charAt(i) - '0';
+            if (number < 1 || number > 9) throw new IllegalArgumentException();
+            if (list.contains(number)) throw new IllegalArgumentException();
+            else list.add(number);
+        }
     }
 }
