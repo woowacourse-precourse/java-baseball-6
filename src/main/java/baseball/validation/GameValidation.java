@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class GameValidation {
     public static boolean verifyForGameValue(String input_value) {
         return verifyForValueIsEmpty(input_value) &&
-                        verifyForValueLength(input_value) &&
+                        verifyForValueLength(input_value,3) &&
                                 verifyForValueIsSpace(input_value) &&
                                         verifyForValueIsNumeric(input_value) &&
                                                 verifyForNumberRangeIsCorrect(input_value) &&
@@ -20,8 +20,8 @@ public class GameValidation {
         return true;
     }
 
-    private static boolean verifyForValueLength(String value) {
-        if (value.length() != 3) {
+    private static boolean verifyForValueLength(String value,int target_length) {
+        if (value.length() != target_length) {
             throw new IllegalArgumentException("입력 값의 길이가 초과 또는 부족입니다.");
         }
         return true;
