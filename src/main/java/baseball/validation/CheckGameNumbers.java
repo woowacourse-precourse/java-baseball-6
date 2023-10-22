@@ -29,7 +29,15 @@ class DifferentEachOtherException extends IllegalArgumentException {
 
 
 public class CheckGameNumbers {
-    public void checkValidation(String in)
+    public void checkValidationOfNums(String in) {
+        try {
+            checkExceptions(in);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkExceptions(String in)
             throws ThreeDigitException, NumberRangeException, DifferentEachOtherException {
         if (!isThreeDigitNumbers(in)) {
             throw new ThreeDigitException();
