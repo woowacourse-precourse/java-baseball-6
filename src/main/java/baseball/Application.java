@@ -86,6 +86,18 @@ public class Application {
                     }
                 }
 
+                if (strikeCount != 0 && ballCount == 0){
+                    result = strikeCount  + "스트라이크";
+                } else if (strikeCount == 0 && ballCount != 0) {
+                    result = ballCount  + "볼";
+                } else if (strikeCount != 0 && ballCount != 0) {
+                    result = strikeCount  + "스트라이크 " + ballCount  + "볼";
+                } else {
+                    result = "낫싱";
+                }
+
+                System.out.println(result);
+
             }
             // 플레이어가 입력한 값에 대한 예외 처리
             catch (IllegalArgumentException e) {
