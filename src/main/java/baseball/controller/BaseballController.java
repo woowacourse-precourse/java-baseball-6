@@ -5,10 +5,7 @@ import baseball.model.ComputerNumber;
 import baseball.service.BaseballGameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
-import java.util.Map;
 
 public class BaseballController {
 
