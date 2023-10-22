@@ -7,7 +7,7 @@ public class Hint {
         return hint;
     }
 
-    public void setHint(String hit) {
+    public void setHint(String hint) {
         this.hint = hint;
     }
 }

@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Game {
     private final GameNumberMaker gameNumberMaker;
     private final AnswerInput answerInput;
@@ -14,22 +16,28 @@ public class Game {
     }
 
     public void startGame() {
-        // 게임 번호 생성
         System.out.println(Contants.START_MESSAGE);
         gameNumberMaker.generateAndSetGameNumber();
-        System.out.println(gameNumberMaker.getGameNumber());
     }
 
-    public int playGame() {
+    public void playGame() {
         answerInput.inputNumber();
         gameScore.checkStrike(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
         gameScore.checkBall(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
         System.out.println(provideHint(gameScore.getStrikeCount(), gameScore.getBallCount()));
-        return gameScore.getStrikeCount();
     }
 
-    public void endGame() {
-        System.out.println(Contants.END_GAME);
+    public boolean isEndGame() {
+        if (gameScore.getStrikeCount() == 3) {
+            System.out.println(Contants.END_GAME);
+            return true;
+        }
+        return false;
+    }
+
+    public String restartGame() {
+        System.out.println(Contants.RESTART_GAME);
+        return Console.readLine();
     }
 
     public String provideHint(int strikeScore, int ballScore) {

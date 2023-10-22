@@ -15,7 +15,7 @@
 * GameController.java - createGame()
 
 
-* 야구 숫자 게임 생성하고 전체적인 게임 사이클을 관리합니다.
+* 야구 숫자 게임 생성하고 전체적인 게임 사이클을 컨트롤합니다.
 
 ## 💻 기능 2 - 게임 시작 [✅]
 
@@ -124,14 +124,14 @@
 
 ## 💻 기능 8 - 게임 종료 [✅]
 
-* Game.java - endGame()
+* Game.java - isEndGame()
 
 
-* 게임 종료 메세지를 보내고 게임을 종료합니다.
+* strikeCount가 3이면 게임 종료 메세지를 보내고 게임을 종료합니다.
 
-## 💻 기능 9 - 게임 재시작
+## 💻 기능 9 - 게임 재시작 [✅]
 
-* 게임 재시작 & 종료여부를 player로 부터 입력받습니다.
+* 게임 재시작 또는 종료여부를 player로 부터 입력받습니다.
 
 
 * camp.nextstep.edu.missionutils.Console의 readLine()을 사용하여 player가 입력하는 값을 처리합니다.
