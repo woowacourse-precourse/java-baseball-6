@@ -2,8 +2,9 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        Game game = new Game();
+        String startPhrase = "숫자 야구 게임을 시작합니다.";
+        System.out.println(startPhrase);
 
-        game.startGame();
+        Game game = new Game();
     }
 }
