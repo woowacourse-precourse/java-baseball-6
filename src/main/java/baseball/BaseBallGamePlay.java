@@ -42,6 +42,16 @@ public class BaseBallGamePlay {
                 throw new IllegalArgumentException();
             }
         }
+
+        for(int i = 0; i < inputPlayerBall.length(); i++){
+            char currentChar = inputPlayerBall.charAt(i);
+            for(int j = i+1; j < inputPlayerBall.length(); j++){
+                if(currentChar == inputPlayerBall.charAt(j)){
+                    throw new IllegalArgumentException();
+                }
+            }
+        }
+
     }
 
     private boolean checkStrike(PlayerNumbers playerNumbers, ComputerNumbers computerNumbers) {
