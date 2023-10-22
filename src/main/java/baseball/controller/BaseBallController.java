@@ -21,26 +21,6 @@ public class BaseBallController {
         runGame(computerNumber);
     }
 
-    private void runGame(ComputerNumber computerNumber) {
-        boolean gameStatus = true;
-
-        while (gameStatus) {
-            System.out.print(GameMessage.INPUT_NUMBER.getMessage());
-            PlayerNumber playerNumber = InputView.inputPlayerNumber();
-            CountResultDto countResultDto = CountService.calculateCount(computerNumber.getNumber(), playerNumber.getNumber());
-            System.out.println(OutputView.printResult(countResultDto));
-            gameStatus = isWinGame(countResultDto.getStrikeCount());
-        }
-    }
-
-    private boolean isWinGame(int strikeCount) {
-        if (strikeCount == GameValue.THREE_STRIKE.getValue()) {
-            System.out.println(GameMessage.SUCCESS.getMessage());
-            return false;
-        }
-        return true;
-    }
-
     public boolean restartGame() {
         System.out.println(GameMessage.ASK_RETRY.getMessage());
         String command = InputView.inputRetryCommand();
@@ -54,5 +34,26 @@ public class BaseBallController {
         }
 
         throw new IllegalArgumentException(ErrorMessage.RESTART_COMMAND.getMessage());
+    }
+
+    private void runGame(ComputerNumber computerNumber) {
+        boolean gameStatus = true;
+
+        while (gameStatus) {
+            System.out.print(GameMessage.INPUT_NUMBER.getMessage());
+            PlayerNumber playerNumber = InputView.inputPlayerNumber();
+            CountResultDto countResultDto = CountService.calculateCount(computerNumber.getNumber(),
+                    playerNumber.getNumber());
+            System.out.println(OutputView.printResult(countResultDto));
+            gameStatus = isWinGame(countResultDto.getStrikeCount());
+        }
+    }
+
+    private boolean isWinGame(int strikeCount) {
+        if (strikeCount == GameValue.THREE_STRIKE.getValue()) {
+            System.out.println(GameMessage.SUCCESS.getMessage());
+            return false;
+        }
+        return true;
     }
 }
