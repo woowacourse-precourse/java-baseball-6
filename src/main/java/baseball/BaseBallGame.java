@@ -49,6 +49,9 @@ public class BaseBallGame {
         if ((userNum.get(0) == userNum.get(1)) || (userNum.get(0) == userNum.get(2)) || (userNum.get(1) == userNum.get(2))) {
             throw new IllegalArgumentException();
         }
+        if(userNum.contains(0)){
+            throw new IllegalArgumentException();
+        }
     }
 
     private String getResult(){
