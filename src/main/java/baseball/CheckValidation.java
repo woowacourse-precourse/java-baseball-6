@@ -8,16 +8,15 @@ public class CheckValidation {
     private String input;
 
     CheckValidation(String input) {
-        this.input = input;
+        this.input = input.trim();
     }
 
-    public int checkAnswerValidation(String str) {
-        // 빈 칸 제거
-        str.replaceAll(" ", "");
-        if (str.equals("1")) {
+    public int checkAnswerValidation(String s) {
+        s = s.trim();
+        if (s.equals("1")) {
             return 1;
         }
-        if (str.equals("2")) {
+        if (s.equals("2")) {
             return 2;
         } else {
             System.out.println("1 또는 2만 입력할 수 있습니다.");
@@ -26,11 +25,8 @@ public class CheckValidation {
     }
 
     public String checkNumberValidation() {
-        // 빈 칸 제거
-        input.replaceAll(" ", "");
         // 문자열 배열로 치환
         String[] inputArr = input.split("");
-
         if (checkIfNumber(inputArr) == false) {
             return "문자, 특수문자, 공백이 아닌 숫자만 입력해주세요.";
         }
