@@ -16,6 +16,10 @@ public class Validator {
         isDuplicate(input);
     }
 
+    public void checkValid(String input, String retry, String exit) {
+        isValidNumber(input, retry, exit);
+    }
+
     private void isValidSize(String input, int size) throws IllegalArgumentException {
         if (input.length() != size) {
             throw new IllegalArgumentException("올바른 자리 수의 값을 입력하세요.");
@@ -38,6 +42,12 @@ public class Validator {
         }
         if (inputNumbers.size() != new HashSet<>(inputNumbers).size()) {
             throw new IllegalArgumentException("중복된 숫자를 포함하고 있습니다.");
+        }
+    }
+
+    private void isValidNumber(String input, String retry, String exit) throws IllegalArgumentException {
+        if (!input.equals(retry) && !input.equals(exit)) {
+            throw new IllegalArgumentException("1(재시작)과 2(종료) 중 하나의 수를 입력하세요.");
         }
     }
 }

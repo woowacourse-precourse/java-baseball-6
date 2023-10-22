@@ -12,6 +12,7 @@ public class Controller {
 
     public static final int SIZE = 3;
     public static final String RETRY = "1";
+    public static final String EXIT = "2";
     private String userNumber;
     List<Integer> computerNumbers;
     List<Integer> userNumbers;
@@ -44,6 +45,7 @@ public class Controller {
     public void end() {
         printEndMessage();
         String message = InputView.printRetryMessage();
+        validator.checkValid(message, RETRY, EXIT);
         if (message.equals(RETRY)) {
             run();
         }
