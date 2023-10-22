@@ -16,4 +16,12 @@ public class StrikeCount {
         return this.count == 0;
     }
 
+    public int getCount() {
+        return this.count;
+    }
+
+    public boolean hasThreeCount() {
+        return this.count == 3;
+    }
+
 }
