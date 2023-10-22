@@ -13,18 +13,12 @@ public class BaseBallGame {
 
     public void gameStart(){
         genNumber();
-
-//        computer.forEach(System.out::print);
         while(callInput()){
-            makeUserNumber();
             if(checkRule()){
-                continue;
-            } else {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
-
     }
 
     private void genNumber(){
@@ -40,6 +34,10 @@ public class BaseBallGame {
         System.out.print("숫자를 입력해주세요 : ");
         this.userInput = camp.nextstep.edu.missionutils.Console.readLine();
         if(checkValid(userInput)){
+            this.userNumber = new ArrayList<>();
+            for(int i = 0; i < NUM_LIMIT; i++) {
+                this.userNumber.add(this.userInput.charAt(i) - '0');
+            }
             return true;
         }
         else{
@@ -67,7 +65,6 @@ public class BaseBallGame {
         } else {
             return false;
         }
-
     }
 
     private boolean checkNumber(String userInput) {
@@ -91,13 +88,6 @@ public class BaseBallGame {
         return true;
     }
 
-    private void makeUserNumber(){
-        this.userNumber = new ArrayList<>();
-        for(int i = 0; i < NUM_LIMIT; i++) {
-            this.userNumber.add(this.userInput.charAt(i) - '0');
-        }
-    }
-
     private boolean checkRule(){
         int ball = 0;
         int strike = 0;
@@ -118,12 +108,8 @@ public class BaseBallGame {
             System.out.println(strike + "스트라이크");
         }
         if (strike == 3){
-            return false;
+            return true;
         }
-        return true;
-    }
-
-    private void restartGame(){
-
+        return false;
     }
 }
