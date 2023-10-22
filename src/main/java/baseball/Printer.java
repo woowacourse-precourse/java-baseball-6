@@ -1,13 +1,15 @@
 package baseball;
 
+import baseball.constant.Constants;
+
 public class Printer {
 
     public static void printGameStart() {
-        System.out.println(Constant.GAME_START_MESSAGE);
+        System.out.println(Constants.GAME_START_MESSAGE);
     }
 
     public static void printInputNumber() {
-        System.out.print(Constant.INPUT_NUMBER_MESSAGE);
+        System.out.print(Constants.INPUT_NUMBER_MESSAGE);
     }
 
     public static void printHint(Hint hint) {
@@ -15,10 +17,10 @@ public class Printer {
     }
 
     public static void printGameWin() {
-        System.out.println(Constant.GAME_WIN_MESSAGE);
+        System.out.println(Constants.GAME_WIN_MESSAGE);
     }
 
     public static void printGameRestartOrQuit() {
-        System.out.println(Constant.GAME_RESTART_OR_QUIT_MESSAGE);
+        System.out.println(Constants.GAME_RESTART_OR_QUIT_MESSAGE);
     }
 }

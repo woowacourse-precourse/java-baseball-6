@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.constant.Constants;
+import baseball.constant.Errors;
+
 public class GameRestartOrQuit {
 
     private String restartOrQuitNumber;
@@ -14,12 +17,12 @@ public class GameRestartOrQuit {
     }
 
     public boolean isGameQuit() {
-        return restartOrQuitNumber.equals(Constant.GAME_QUIT);
+        return restartOrQuitNumber.equals(Constants.GAME_QUIT);
     }
 
     private void validateRestartOrQuitNumber(String number) {
-        if ((!number.equals(Constant.GAME_RESTART)) && (!number.equals(Constant.GAME_QUIT))) {
-            throw new IllegalArgumentException();
+        if ((!number.equals(Constants.GAME_RESTART)) && (!number.equals(Constants.GAME_QUIT))) {
+            throw new IllegalArgumentException(Errors.ERROR_RESTART_OR_QUIT_NUMBER);
         }
     }
 }

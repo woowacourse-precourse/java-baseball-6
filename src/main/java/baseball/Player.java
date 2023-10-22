@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.constant.Constants;
+import baseball.constant.Errors;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,25 +34,25 @@ public class Player {
 
     private static void validateNotZero(String input) {
         if (input.contains("0")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Errors.ERROR_NOT_ZERO);
         }
     }
 
     private static void validateNumberSize(String input) {
-        if (input.length() != Constant.NUMBERS_SIZE) {
-            throw new IllegalArgumentException();
+        if (input.length() != Constants.NUMBERS_SIZE) {
+            throw new IllegalArgumentException(Errors.ERROR_NUMBER_SIZE);
         }
     }
 
     private static void validateIsNumber(char input) {
         if (!Character.isDigit(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Errors.ERROR_IS_NUMBER);
         }
     }
 
     private static void validateDuplicatedNumber(List<Integer> numbers, int number) {
         if (numbers.contains(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Errors.ERROR_DUPLICATED_NUMBER);
         }
     }
 }
