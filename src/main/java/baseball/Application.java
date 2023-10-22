@@ -50,9 +50,8 @@ public class Application {
     }
 
     public void isValidCheck(String input) {
-        if (isNull(input) || input.isEmpty()
+        if (isNull(input) || input.isEmpty() || !isLengthThree(input)
             // Todo: 입력값에 숫자외에 다른 문자가 들어가 있는지 검사한다.
-            // Todo: 문자열 타입의 입력값 크기가 3인지 검사한다.
             // Todo: 각 숫자(n)가 `1 <= n <= 9`의 범위에 속하는 정수인지 검사한다.
             // Todo: 각 숫자가 서로 다른 수인지 검사한다.
         ) {
@@ -62,5 +61,9 @@ public class Application {
 
     public boolean isNull(String string) {
         return string == null;
+    }
+
+    public boolean isLengthThree(String string) {
+        return string.length() == 3;
     }
 }
