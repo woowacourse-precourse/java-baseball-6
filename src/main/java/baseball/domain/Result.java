@@ -33,6 +33,10 @@ public class Result {
         return hasBalls() && hasStrikes();
     }
 
+    public boolean isThreeStrikes() {
+        return getStrike() == 3;
+    }
+
     public int getBall() {
         return ball;
     }

@@ -15,10 +15,7 @@ public class GameController {
 
     public static boolean playing = true;
 
-    public void init() {
-        computerNumbers = service.generateNumbers();
-    }
-
+    public void init() { computerNumbers = service.generateNumbers(); }
 
     public void play() {
         InputView.printStart();
@@ -29,10 +26,9 @@ public class GameController {
             Result result = service.compare(computerNumbers, userNumbers);
             OutputView.printResult(result);
             userNumbers.clear();
-            if(service.isThreeStrikes(result)){
+            if(result.isThreeStrikes()){
                 InputView.printGameOver();
-                String input = InputView.getUserInput();
-                restartOrNot(input);;
+                restartOrNot(InputView.getUserInput());;
             }
         }
     }

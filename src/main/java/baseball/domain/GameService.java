@@ -43,8 +43,4 @@ public class GameService {
         return computerNumbers.get(index) ==  userNumbers.get(index);
     }
 
-    public boolean isThreeStrikes(Result result){
-        return result.getStrike() == 3;
-    }
-
 }
