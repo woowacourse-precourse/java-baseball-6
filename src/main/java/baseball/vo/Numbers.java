@@ -1,4 +1,7 @@
-package baseball.model;
+package baseball.vo;
+
+import baseball.model.NumbersValidator;
+import baseball.model.Validator;
 
 public class Numbers {
     private final String numbers;

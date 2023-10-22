@@ -1,10 +1,12 @@
 package baseball.model;
 
+import baseball.vo.Numbers;
+
 public class Result {
     private int strike;
     private int ball;
 
-    public Result(Numbers computer,Numbers user){
+    public Result(Numbers computer, Numbers user){
         initialize();
 
         for(String number:user.splitNumbers()){

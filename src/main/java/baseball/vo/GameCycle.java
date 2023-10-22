@@ -1,9 +1,12 @@
-package baseball.model;
+package baseball.vo;
+
+import baseball.model.Game;
+import baseball.model.Result;
 
 public class GameCycle {
     private Result result;
 
-    public GameCycle(Game game,Numbers user){
+    public GameCycle(Game game, Numbers user){
         this.result=game.calculateResult(user);
     }
 

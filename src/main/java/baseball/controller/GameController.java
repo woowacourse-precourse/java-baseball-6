@@ -1,10 +1,11 @@
 package baseball.controller;
 
-import baseball.model.*;
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import baseball.model.GameCycle;
+import baseball.vo.GameCycle;
+import baseball.vo.Numbers;
+import baseball.vo.Restart;
 
 public class GameController {
     private InputView inputView;

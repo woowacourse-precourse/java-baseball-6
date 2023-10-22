@@ -1,9 +1,9 @@
 package baseball.service;
 
 import baseball.model.Game;
-import baseball.model.GameCycle;
-import baseball.model.Numbers;
-import baseball.model.Restart;
+import baseball.vo.GameCycle;
+import baseball.vo.Numbers;
+import baseball.vo.Restart;
 
 public class GameService {
     private Game game;

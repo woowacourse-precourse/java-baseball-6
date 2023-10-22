@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.vo.Numbers;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 

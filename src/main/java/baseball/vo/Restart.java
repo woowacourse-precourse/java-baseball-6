@@ -1,4 +1,7 @@
-package baseball.model;
+package baseball.vo;
+
+import baseball.model.RestartValidator;
+import baseball.model.Validator;
 
 public class Restart {
     private String option;
