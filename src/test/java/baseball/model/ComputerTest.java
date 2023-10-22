@@ -1,14 +1,16 @@
 package baseball.model;
 
-import java.util.Arrays;
-import java.util.List;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.util.StubNumberGenerator;
-import org.assertj.core.api.Assertions;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
@@ -21,28 +23,30 @@ class ComputerTest {
         computer = Computer.createWithGenerator(new StubNumberGenerator("123"));
     }
 
-    @Test
-    void 스트라이크갯수를_반환한다() {
+    @CsvSource({"1, 2, 3, 3", "1, 3, 2,1 ", "5, 6, 7, 0", "1, 2, 5, 2"})
+    @ParameterizedTest
+    void 스트라이크갯수를_반환한다(int firstNum, int secondNum, int thirdNum, int expected) {
         // given
-        List<Integer> inputNumbers = Arrays.asList(1, 2, 3);
+        List<Integer> inputNumbers = Arrays.asList(firstNum, secondNum, thirdNum);
 
         // when
-        int strikeCount = computer.getStrikeCount(inputNumbers);
+        int result = computer.getStrikeCount(inputNumbers);
 
         // then
-        Assertions.assertThat(strikeCount).isEqualTo(3);
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    void 볼갯수를_반환한다() {
+    @CsvSource({"1, 2, 3, 0", "1, 3, 2, 2 ", "5, 6, 7, 0", "9, 2, 1, 1"})
+    @ParameterizedTest
+    void 볼갯수를_반환한다(int firstNum, int secondNum, int thirdNum, int expected) {
         // given
-        List<Integer> inputNumbers = Arrays.asList(2, 3, 4);
+        List<Integer> inputNumbers = Arrays.asList(firstNum, secondNum, thirdNum);
 
         // when
-        int ballCount = computer.getBallCount(inputNumbers);
+        int result = computer.getBallCount(inputNumbers);
 
         // then
-        Assertions.assertThat(ballCount).isEqualTo(2);
+        assertThat(result).isEqualTo(expected);
     }
 
     @Test
@@ -54,6 +58,6 @@ class ComputerTest {
         boolean isThreeStrikes = computer.isThreeStrikes(inputNumbers);
 
         // then
-        Assertions.assertThat(isThreeStrikes).isTrue();
+        assertThat(isThreeStrikes).isTrue();
     }
 }
