@@ -36,6 +36,24 @@ public class Balls {
         return false;
     }
 
+    public int getOtherPositionAndSameNumberCount(Balls otherBalls) {
+        int result = 0;
+        for (Ball ball : this.balls) {
+            if(otherBalls.isOtherPositionAndSameNumber(ball)) {
+                result++;
+            }
+        }
+        return result;
+    }
+    private boolean isOtherPositionAndSameNumber(Ball otherBall) {
+        for (Ball ball : this.balls) {
+            if(ball.isSameNumberAndOtherPosition(otherBall)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private List<Ball> createBalls(List<Integer> values) {
         return IntStream.range(START_INDEX, END_INDEX)
                 .mapToObj(index -> new Ball(new Number(values.get(index)), index))
