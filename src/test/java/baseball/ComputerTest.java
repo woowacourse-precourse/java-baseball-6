@@ -46,4 +46,20 @@ public class ComputerTest {
         assertEquals(5, computer.getNumberAt(1));
         assertEquals(6, computer.getNumberAt(2));
     }
+
+    @Test
+    @DisplayName("랜덤 숫자 중복 시 재생성 테스트")
+    public void testDuplicateRandomNumbers() {
+        // 랜덤 값 중복을 시뮬레이션
+        when(mockRandomGenerator.pickNumberInRange(1, 9)).thenReturn(1, 2, 2, 3);
+
+        // Computer 객체 재생성
+        computer = new Computer(mockRandomGenerator);
+
+        // 결과 검증
+        assertEquals(1, computer.getNumberAt(0));
+        assertEquals(2, computer.getNumberAt(1));
+        assertEquals(3, computer.getNumberAt(2));
+    }
+
 }
