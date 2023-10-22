@@ -8,7 +8,12 @@ import java.util.regex.Pattern;
 
 public class UserInputView {
     private static final String REGEXP_ONLY_NUM = "\\d+";
-    public UserInputView(){}
+    private static final String VALID_LENGTH = "숫자의 길이가 " + Common.NUM_LENGTH + "와 다릅니다.";
+    private static final String VALID_IS_NUM = "숫자가 아닌 문자가 입력 되었습니다.";
+    private static final String VALID_IS_DUPLICATE = "중복된 값이 들어갔습니다.";
+
+    public UserInputView() {
+    }
 
     public String inputUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
@@ -22,7 +27,7 @@ public class UserInputView {
         return stringDigitsFromUserInput;
     }
 
-    public String isContinueGameByUserInput(){
+    public String isContinueGameByUserInput() {
         String isContinueByUserInput = Console.readLine();
         validateIsNumber(isContinueByUserInput);
 
@@ -31,23 +36,23 @@ public class UserInputView {
 
     private void validateUserInputLength(String stringDigitsFromUserInput) {
         if (stringDigitsFromUserInput.length() != Common.NUM_LENGTH) {
-            throw new IllegalArgumentException("숫자의 길이가 " + Common.NUM_LENGTH + "와 다릅니다.");
+            throw new IllegalArgumentException(VALID_LENGTH);
         }
     }
 
-    private void validateIsNumber(String stringDigitsFromUserInput){
-        if(Pattern.matches(stringDigitsFromUserInput,REGEXP_ONLY_NUM)){
-            throw new IllegalArgumentException("숫자가 아닌 문자가 입력 되었습니다.");
+    private void validateIsNumber(String stringDigitsFromUserInput) {
+        if (Pattern.matches(stringDigitsFromUserInput, REGEXP_ONLY_NUM)) {
+            throw new IllegalArgumentException(VALID_IS_NUM);
         }
     }
 
-    private void validateHasDuplicateNumber(String stringDigitsFromUserInput){
+    private void validateHasDuplicateNumber(String stringDigitsFromUserInput) {
         Set<Character> userInputCharBySet = new HashSet<>();
-        for(char userInputChar : stringDigitsFromUserInput.toCharArray()){
+        for (char userInputChar : stringDigitsFromUserInput.toCharArray()) {
             userInputCharBySet.add(userInputChar);
         }
-        if(userInputCharBySet.size() != stringDigitsFromUserInput.length()){
-            throw new IllegalArgumentException("중복된 값이 들어갔습니다.");
+        if (userInputCharBySet.size() != stringDigitsFromUserInput.length()) {
+            throw new IllegalArgumentException(VALID_IS_DUPLICATE);
         }
     }
 }

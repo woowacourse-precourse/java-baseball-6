@@ -1,12 +1,12 @@
 package baseball.controller;
 
-import baseball.util.dto.Baseball;
-import baseball.util.common.Common;
 import baseball.model.ComputerModel;
-import baseball.util.exception.TerminateApplicationException;
-import baseball.util.UserInputEnum;
-import baseball.view.UserInputView;
 import baseball.model.UserModel;
+import baseball.util.UserInputEnum;
+import baseball.util.common.Common;
+import baseball.util.dto.Baseball;
+import baseball.util.exception.TerminateApplicationException;
+import baseball.view.UserInputView;
 import baseball.view.UserOutputView;
 
 public class BaseballController {
@@ -18,8 +18,8 @@ public class BaseballController {
 
 
     public BaseballController(UserInputView userInputView, UserOutputView userOutputView,
-            ComputerModel computerModel,
-            UserModel userModel) {
+                              ComputerModel computerModel,
+                              UserModel userModel) {
         this.userInputView = userInputView;
         this.userOutputView = userOutputView;
         this.computerModel = computerModel;
@@ -43,7 +43,6 @@ public class BaseballController {
     private void restartGame() {
         userOutputView.restartGame();
         String isContinueByUserInput = userInputView.isContinueGameByUserInput();
-
         UserInputEnum userInputEnum = UserInputEnum.fromString(isContinueByUserInput);
 
         if (userInputEnum.equals(UserInputEnum.RESTART)) {
