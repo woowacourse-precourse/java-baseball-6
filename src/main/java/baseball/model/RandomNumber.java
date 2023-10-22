@@ -26,15 +26,13 @@ public class RandomNumber {
 
     private static void saveNewNumber(final StringBuilder numberBuilder) {
         int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+        String randomValue = String.valueOf(randomNumber);
+        String pickedNumber = numberBuilder.toString();
 
-        if (isAlreadyPicked(numberBuilder, String.valueOf(randomNumber))) {
+        if (pickedNumber.contains(randomValue)) {
             return;
         }
-        numberBuilder.append(randomNumber);
-    }
 
-    private static boolean isAlreadyPicked(final StringBuilder numberBuilder, final String number) {
-        String pickedNumber = numberBuilder.toString();
-        return pickedNumber.contains(number);
+        numberBuilder.append(randomNumber);
     }
 }
