@@ -11,6 +11,7 @@ public class BaseballGameCompareService {
         int strikeCount = countStrike(target1, target2);
         int ballCount = countBall(target1, target2) - strikeCount;
         outputView.printGameResultBallAndStrike(ballCount, strikeCount);
+        isThreeStrike(strikeCount);
     }
 
     private int countStrike(List<Integer> target1, List<Integer> target2) {
@@ -31,5 +32,12 @@ public class BaseballGameCompareService {
             }
         }
         return ballCount;
+    }
+
+    private void isThreeStrike(int strikeCount) {
+        if (strikeCount == 3) {
+            BaseballGameService baseballGameService = new BaseballGameService();
+            baseballGameService.endBaseballGame();
+        }
     }
 }
