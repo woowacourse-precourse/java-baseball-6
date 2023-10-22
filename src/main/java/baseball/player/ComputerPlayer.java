@@ -14,6 +14,7 @@ public class ComputerPlayer {
     }
 
     public void pickNumber() {
+        clear();
         while(computer.size() < digits) {
             int randomNum = Randoms.pickNumberInRange(startInclusive, endInclusive);
             computer.add(randomNum);
