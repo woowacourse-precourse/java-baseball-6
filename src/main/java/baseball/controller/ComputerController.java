@@ -2,41 +2,36 @@ package baseball.controller;
 
 import baseball.common.RandomUtility;
 import baseball.model.BallAndStrikeCount;
+import baseball.model.ComputerNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
 
 public class ComputerController {
-    public static final int NUMBER_RANGE_MAX = 9;
     public static final String BALL_MESSAGE = "볼";
     public static final String SPACE_MESSAGE = " ";
     public static final String BLANK_MESSAGE = "";
     public static final String STRIKE_MESSAGE = "스트라이크";
     public static final int SUCCESS_GAME_STRIKE_NUMBER = 3;
-    private List<Integer> computerNumber;
-    private int[] numberIndex;
 
+    ComputerNumber computerNumber;
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
 
     public void startGame() {
-        computerNumber = RandomUtility.createComputerNumber();
-        initNumberIndex();
+        initComputerNumber();
         proceedGame();
     }
 
-    private void initNumberIndex() {
-        numberIndex = new int[NUMBER_RANGE_MAX+1];
-        for(int i=0; i<computerNumber.size(); i++) {
-            numberIndex[computerNumber.get(i)] = i+1;   //해당 숫자가 저장된 위치를 저장
-        }
+    public void initComputerNumber() {
+        computerNumber = new ComputerNumber(RandomUtility.createComputerNumber());
     }
 
     public void proceedGame() {
         outputView.printEnterNumber();
         String inputNumber = inputView.enterNumber();
         //TODO: 입력값 검증 (잘못된 값을 입력할 경우, IllegalArgumentException 발생)
-        BallAndStrikeCount count = getBallAndStrikeCount(inputNumber);
+        BallAndStrikeCount count = getBallAndStrikeCount(computerNumber, inputNumber);
         outputView.printHint(getHint(count));
         if(count.getBallCount() == SUCCESS_GAME_STRIKE_NUMBER) {
             System.out.println("맞았습니다!");
@@ -46,7 +41,7 @@ public class ComputerController {
     }
 
     //TODO: 테스트코드 작성
-    private String getHint(BallAndStrikeCount count) {
+    public String getHint(BallAndStrikeCount count) {
         String Hint="";
         Hint += getBallHint(count.getBallCount());
         Hint += getStrikeHint(count.getStrikeCount());
@@ -70,14 +65,15 @@ public class ComputerController {
 
 
     //TODO: 테스트코드 작성
-    private BallAndStrikeCount getBallAndStrikeCount(String inputNumber) {
+    public BallAndStrikeCount getBallAndStrikeCount(ComputerNumber computerNumber, String inputNumber) {
         int ballCount = 0, strikeCount = 0;
+        int[] computerNumberIndex = computerNumber.getNumberIndex();
 
-        for(int i=0; i<computerNumber.size(); i++) {
+        for(int i=0; i<inputNumber.length(); i++) {
             int num = Character.getNumericValue(inputNumber.charAt(i));
 
-            if(numberIndex[num] == 0) continue;
-            else if(numberIndex[num] == i+1) {
+            if(computerNumberIndex[num] == 0) continue;
+            else if(computerNumberIndex[num] == i+1) {
                 strikeCount++;
             } else {
                 ballCount++;
