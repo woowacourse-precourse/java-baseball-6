@@ -40,7 +40,21 @@ public class Validator {
         }
         return 0;
     }
-
-
+    private void printResultMessage() {
+        String result = "";
+        if(this.ballCount > 0 && this.strikeCount > 0){
+            result = ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE;
+        }
+        if(this.ballCount > 0 && this.strikeCount == 0) {
+            result = ballCount + BALL_MESSAGE;
+        }
+        if(this.ballCount == 0 && this.strikeCount > 0) {
+            result = strikeCount + STRIKE_MESSAGE;
+        }
+        if(this.ballCount == 0 && this.strikeCount == 0) {
+            result = NOTHING_MESSAGE;
+        }
+        System.out.println(result);
+    }
 
 }
