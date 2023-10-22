@@ -9,15 +9,17 @@ public class RandomNumber {
   static final int MAX_DIGIT = 9;
   static final int MIN_DIGIT = 1;
 
-  private final int randomNumber;
+  private int randomNumber;
 
   public RandomNumber() {
     this.randomNumber = generateUniqueRandomNumber();
   }
 
+
   public int getRandomNumber() {
     return randomNumber;
   }
+
 
   private int generateUniqueRandomNumber() {
     Set<Integer> randomDigitSet = generateRandomDigits();
