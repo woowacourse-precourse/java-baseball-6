@@ -1,13 +1,13 @@
 package baseball;
 
 public class Hint {
-    private String hit;
+    private String hint;
 
-    public String getHit() {
-        return hit;
+    public String getHint() {
+        return hint;
     }
 
-    public void setHit(String hit) {
-        this.hit = hit;
+    public void setHint(String hit) {
+        this.hint = hint;
     }
 }

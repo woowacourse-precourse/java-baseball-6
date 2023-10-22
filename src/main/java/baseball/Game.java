@@ -20,42 +20,37 @@ public class Game {
         System.out.println(gameNumberMaker.getGameNumber());
     }
 
-    public void playGame() {
-        while (true) {
-            answerInput.inputNumber();
-            gameScore.checkStrike(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
-            gameScore.checkBall(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
-            System.out.println(provideHint(gameScore.getStrikeCount(), gameScore.getBallCount()));
+    public int playGame() {
+        answerInput.inputNumber();
+        gameScore.checkStrike(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
+        gameScore.checkBall(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
+        System.out.println(provideHint(gameScore.getStrikeCount(), gameScore.getBallCount()));
+        return gameScore.getStrikeCount();
+    }
 
-            if (gameScore.getStrikeCount() == 3) {
-                return;
-            }
-        }
-
-        // 채점 객체
-        // 힌트 생성 객체
-        // 3 스트라이크 시 게임 종료
+    public void endGame() {
+        System.out.println(Contants.END_GAME);
     }
 
     public String provideHint(int strikeScore, int ballScore) {
 
         if (strikeScore == 0 && ballScore == 0) {
-            hint.setHit(Contants.NOTHING);
-            return hint.getHit();
+            hint.setHint(Contants.NOTHING);
+            return hint.getHint();
         }
 
         if (strikeScore == 0) {
-            hint.setHit(ballScore + Contants.BALL);
-            return hint.getHit();
+            hint.setHint(ballScore + Contants.BALL);
+            return hint.getHint();
         }
 
         if (ballScore == 0) {
-            hint.setHit(strikeScore + Contants.STRIKE);
-            return hint.getHit();
+            hint.setHint(strikeScore + Contants.STRIKE);
+            return hint.getHint();
         }
 
-        hint.setHit(ballScore + Contants.BALL + " " + strikeScore + Contants.STRIKE);
+        hint.setHint(ballScore + Contants.BALL + " " + strikeScore + Contants.STRIKE);
 
-        return hint.getHit();
+        return hint.getHint();
     }
 }
