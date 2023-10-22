@@ -1,6 +1,7 @@
 package baseball.Controller;
 
 import baseball.Model.Computer;
+import baseball.Model.CountState;
 import baseball.Model.Referee;
 import baseball.View.RefereeTerminalView;
 
@@ -13,7 +14,7 @@ public class RefereeController {
         this.refereeView = refereeView;
     }
 
-    private void validationisThreeLength(String queryString) throws IllegalArgumentException {
+    private void validationIsThreeLength(String queryString) throws IllegalArgumentException {
         if(queryString.length() != 3) {
             refereeView.displayException(referee.getExceptionMassage());
             throw new IllegalArgumentException();
@@ -31,7 +32,7 @@ public class RefereeController {
         int asciiZero = 48;
         int[] query = new int[3];
 
-        validationisThreeLength(queryString);
+        validationIsThreeLength(queryString);
         for(int i = 0; i < queryString.length(); ++i) {
             query[i] = queryString.charAt(i) - asciiZero;
             validationIsNumber(query[i]);
@@ -40,37 +41,34 @@ public class RefereeController {
         return query;
     }
 
-    public Boolean judge(String queryString, Computer computer) {
-        int strikeCount = 0;
-        int ballCount = 0;
-        int[] query = getQueryDecoding(queryString);
+    private CountState getCountState(int[] query, Computer computer) {
         int[] answer = computer.getAnswer();
         boolean[] pickedMap = computer.getPickedMap();
-        StringBuilder sb = new StringBuilder();
+        CountState countState = new CountState();
 
         for(int i = 0; i < 3; ++i) { 
             if(pickedMap[query[i]]) {
-                if(query[i] == answer[i]) ++strikeCount;
-                else ++ballCount;
+                if(query[i] == answer[i]) countState.countingStrike();
+                else countState.countingBall();
             }
         }
 
-        if(strikeCount == 0 && ballCount == 0) {
-            refereeView.displayJudge("낫싱");
-            return false;
-        }
-        if(ballCount > 0)
-            sb.append(ballCount).append("볼 ");
-        if(strikeCount > 0) {
-            sb.append(strikeCount).append("스트라이크 ");
-            // 3스트라이크에 대한 종료 flag
-            if(strikeCount == 3) {
-                refereeView.displayJudge(sb.toString());
-                return true;
-            }
-        }
+        return countState;
+    }
+
+    public Boolean judge(String queryString, Computer computer) {
+        StringBuilder sb = new StringBuilder();
+        int[] query = getQueryDecoding(queryString);
+        CountState countState = getCountState(query, computer);
+
+        if(countState.getStrikeCount() == 0 && countState.getBallCount() == 0)
+            sb.append("낫싱");
+        if(countState.getBallCount() > 0)
+            sb.append(countState.getBallCount()).append("볼 ");
+        if(countState.getStrikeCount() > 0)
+            sb.append(countState.getStrikeCount()).append("스트라이크 ");
 
         refereeView.displayJudge(sb.toString());
-        return false;
+        return (countState.getStrikeCount() == 3);
     }
 }

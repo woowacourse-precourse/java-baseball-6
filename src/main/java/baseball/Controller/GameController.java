@@ -12,14 +12,14 @@ public class GameController {
         this.gameView = new GameTerminalView();
     }
 
-    private void validationisOneOrTwo(String answer) throws IllegalArgumentException {
+    private void validationIsOneOrTwo(String answer) throws IllegalArgumentException {
         if(answer.equals("1") || answer.equals("2")) return;
         throw new IllegalArgumentException();
     }
 
     private boolean isReStart() {
         String answer = game.getPlayerController().answer();
-        validationisOneOrTwo(answer);
+        validationIsOneOrTwo(answer);
         return answer.equals("1");
     }
 

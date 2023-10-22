@@ -25,6 +25,7 @@ classDiagram
     PlayerController -- PlayerTerminalView
 
     RefereeController -- Referee
+    RefereeController -- CountState
     RefereeController -- RefereeTerminalView
 
     class Computer{
@@ -68,8 +69,21 @@ classDiagram
         -Referee referee;
         -RefereeTerminalView refereeView;
         +RefereeController()
+        -validationIsThreeLength()
+        -validationIsNumber()
+        -getCountState()
         -getQueryDecoding()
         +judge()
+    }
+
+    class CountState {
+        -int strikeCount
+        -int ballCount
+        +CountState()
+        +countingStrike()
+        +countingBall()
+        +getStrikeCount()
+        +getBallCount()
     }
 
     class Game {
@@ -88,6 +102,7 @@ classDiagram
         -Game game;
         -GameTerminalView gameView;
         +GameController()
+        -validationIsOneOrTwo()
         -isReStart()
         +start()
     }
