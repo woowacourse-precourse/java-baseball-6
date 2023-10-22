@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
+import java.util.Map;
 
 
 public class Application {
@@ -20,6 +21,7 @@ public class Application {
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 int[] guessNumbers = stringToIntArrayThrowException(Console.readLine());
+                Map<String, Integer> result = computer.countStrikesAndBalls(guessNumbers);
 
             }
 
