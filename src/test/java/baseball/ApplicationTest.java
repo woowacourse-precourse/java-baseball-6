@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.model.RandomNumberCreator;
 import baseball.model.UserNumberChecker;
+import baseball.model.UserNumberGrader;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -48,21 +49,42 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 사용자입력값체크_테스트() {
+        // 자릿수 검증
         assertSimpleTest(() -> assertThatThrownBy(
                 () -> UserNumberChecker.isLengthCorrect("12")
         ).isInstanceOf(IllegalArgumentException.class));
 
+        // 문자 입력 검증
         assertSimpleTest(() -> assertThatThrownBy(
                 () -> UserNumberChecker.isSingleDigit("a12")
         ).isInstanceOf(IllegalArgumentException.class));
 
+        // 기호 입력 검증
+        assertSimpleTest(() -> assertThatThrownBy(
+                () -> UserNumberChecker.isSingleDigit("-12")
+        ).isInstanceOf(IllegalArgumentException.class));
+
+        // 0 입력 검증
         assertSimpleTest(() -> assertThatThrownBy(
                 () -> UserNumberChecker.isSingleDigit("012")
         ).isInstanceOf(IllegalArgumentException.class));
 
+        // 중복 입력 검증
         assertSimpleTest(() -> assertThatThrownBy(
                 () -> UserNumberChecker.isDuplicatedNumber("112")
         ).isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void 볼스트라이크카운트_테스트() {
+        UserNumberGrader grader = new UserNumberGrader();
+
+        int[] result = grader.grader("145", "541");
+        int ball = result[0];
+        int strike = result[1];
+
+        assertThat(ball).isEqualTo(2);
+        assertThat(strike).isEqualTo(1);
     }
 
     @Test
