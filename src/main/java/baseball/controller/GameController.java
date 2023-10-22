@@ -22,18 +22,18 @@ public class GameController extends BaseBallGameRule {
         return new GameController();
     }
 
-    public void startNewGame() {
+    public void startGame() {
         Integer gameProcess = PLAY_BASEBALL_GAME;
         while (gameProcess.equals(PLAY_BASEBALL_GAME)) {
             outputController.showIntroMessage();
             gameComputer.readyForGame();
-            playGame();
+            playSingleGame();
             outputController.showGameRestartInputMessage();
             gameProcess = inputController.getPlayerRestart();
         }
     }
 
-    public void playGame() {
+    public void playSingleGame() {
         boolean allBallsNotHit = true;
         while (allBallsNotHit) {
             outputController.showGameInputMessage();

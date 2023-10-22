@@ -21,7 +21,7 @@ public class GameResult extends BaseBallGameRule {
         if (ballCount.equals(NO_HIT)) {
             return strikeCount + "스트라이크";
         }
-        return ballCount + "볼 " + strikeCount + "스트라이크";
+        return ballCount + "볼"+" "+ strikeCount + "스트라이크";
     }
 
     public boolean isAllStrikes() {
