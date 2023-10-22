@@ -3,12 +3,7 @@ package baseball.domain.rule;
 import baseball.console.Console;
 
 public class Rule {
-
-	private static int ball;
-	private static int strike;
 	private static int OFFSET = 3;
-
-	private static Console console;
 
 	private Rule() {
 	}
