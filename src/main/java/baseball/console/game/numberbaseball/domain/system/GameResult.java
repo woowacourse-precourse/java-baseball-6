@@ -1,6 +1,6 @@
 package baseball.console.game.numberbaseball.domain.system;
 
-import baseball.console.game.numberbaseball.domain.system.GameHint;
+import static baseball.console.game.numberbaseball.config.GameMessage.*;
 
 public class GameResult {
     private int strike;
@@ -13,16 +13,19 @@ public class GameResult {
 
     public String exportMessage() {
         if (strike == 0 && ball == 0)
-            return "낫싱\n";
+            return NOTHING_POSTFIX;
+        return makeMessage();
+    }
 
+    private String makeMessage() {
         String message = "";
         if (ball > 0)
-            message += String.format("%d볼 ", this.ball);
+            message += this.ball + BALL_POSTFIX;
         if (strike > 0)
-            message += String.format("%d스트라이크", this.strike);
+            message += this.strike + STRIKE_POSTFIX;
         message += "\n";
         if (strike == 3)
-            message += String.format("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n", this.strike);
+            message += CLEAR_AND_EXIT;
 
         return message;
     }

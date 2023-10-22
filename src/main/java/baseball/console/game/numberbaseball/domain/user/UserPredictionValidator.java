@@ -1,5 +1,6 @@
 package baseball.console.game.numberbaseball.domain.user;
 
+import baseball.console.game.numberbaseball.config.ExceptionMessage;
 import baseball.console.game.numberbaseball.util.NumberUtils;
 
 public class UserPredictionValidator {
@@ -8,12 +9,12 @@ public class UserPredictionValidator {
             int number = Integer.parseInt(userPrediction);
 
             if (!(100 < number && number < 999))
-                throw new IllegalArgumentException("입력값은 세 자리 정수이어야 합니다.");
+                throw new IllegalArgumentException(ExceptionMessage.INVALID_NOT_THREE_DIGITS + number);
             if (NumberUtils.hasDuplicateDigits(number))
-                throw new IllegalArgumentException("입력값은 각 자리 숫자가 모두 달라야합니다.");
+                throw new IllegalArgumentException(ExceptionMessage.INVALID_HAS_DUPLICATE_DIGITS + number);
 
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값이 정수가 아닙니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_NOT_INTEGER + userPrediction);
         }
     }
 }

@@ -1,7 +1,6 @@
 package baseball.console.game.numberbaseball.domain.system;
 
 public class GameHint {
-
     private int strike;
     private int ball;
     public GameHint(){

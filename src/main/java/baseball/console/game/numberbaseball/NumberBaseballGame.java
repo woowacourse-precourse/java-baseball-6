@@ -7,6 +7,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import static baseball.console.game.numberbaseball.config.GameMessage.REQUEST_USER_INPUT;
+
 public class NumberBaseballGame {
     UserPrediction userPrediction;
     Computer computer;
@@ -32,7 +34,7 @@ public class NumberBaseballGame {
     }
 
     private void userPredict() {
-        printGameMessage("숫자를 입력해주세요: ");
+        printGameMessage(REQUEST_USER_INPUT);
         userPrediction = new UserPrediction(Console.readLine());
     }
     private void compute() {
@@ -43,7 +45,7 @@ public class NumberBaseballGame {
     }
     private void refreshStatus() {
         if (computer.answer()) {
-            status = GameStatus.EXIT;
+            status = GameStatus.CLEAR;
         }
     }
     private void printGameMessage(String message) {

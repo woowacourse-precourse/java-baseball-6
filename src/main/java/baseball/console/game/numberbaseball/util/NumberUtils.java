@@ -1,5 +1,7 @@
 package baseball.console.game.numberbaseball.util;
 
+import baseball.console.game.numberbaseball.config.ExceptionMessage;
+
 import java.util.stream.Collectors;
 
 public class NumberUtils {
@@ -13,19 +15,19 @@ public class NumberUtils {
 
     public static int getHundredDigit(int number) throws IllegalArgumentException{
         if (number < 100)
-            throw new IllegalArgumentException("백의 자리 수를 구하기에 유효하지 않은 숫자가 전달되었습니다: " + number);
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_CALCULATE_HUNDRED_DIGIT + number);
         return number % 1000 / 100;
     }
 
     public static int getTenDigit(int number) throws IllegalArgumentException{
         if (number < 10)
-            throw new IllegalArgumentException("십의 자리 수를 구하기에 유효하지 않은 숫자가 전달되었습니다: " + number);
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_CALCULATE_TEN_DIGIT + number);
         return number % 100 / 10;
     }
 
     public static int getOneDigit(int number) throws IllegalArgumentException{
         if (number < 0)
-            throw new IllegalArgumentException("일의 자리 수를 구하기에 유효하지 않은 숫자가 전달되었습니다: " + number);
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_CALCULATE_ONE_DIGIT + number);
         return number % 10;
     }
 }
