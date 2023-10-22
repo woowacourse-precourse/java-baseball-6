@@ -52,4 +52,12 @@ public final class BaseBallNumbers {
             throw new OutOfBaseBallNumbersSize(String.format("max size of baseball numbers is %d", MAX_BASE_BALL_SIZE));
         }
     }
+
+    public List<Integer> get() {
+        return baseballNumbers;
+    }
+
+    public boolean isContain(int number) {
+        return baseballNumbers.contains(number);
+    }
 }
