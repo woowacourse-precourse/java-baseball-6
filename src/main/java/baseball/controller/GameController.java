@@ -57,17 +57,20 @@ public class GameController {
                 }
             }
 
-            Views.printWantRegame();
-            String input = Views.inputNumber();
-            Models.validateStringOneorTwo(input);
-            if(!Models.askRestart(input)){
+            if(reStrateGame()) {
                 break;
             }
 
         }
+    }
 
-
-
-
+    private boolean reStrateGame() {
+        Views.printWantRegame();
+        String input = Views.inputNumber();
+        Models.validateStringOneorTwo(input);
+        if(!Models.askRestart(input)){
+            return true;
+        }
+        return false;
     }
 }
