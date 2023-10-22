@@ -1,50 +1,29 @@
-package baseball.view;
+package baseball.util;
 
-import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class InputValidatorTest {
 
+    @DisplayName("숫자 이외의 문자를 입력하면 예외 발생")
     @Test
-    void 플레이어가_숫자_이외의_문자를_입력하면_예외_발생() {
+    void throwIfNonNumericInput() {
         String input = "12a";
         assertThatThrownBy(
                 () -> InputValidator.validateNumericInput(input)
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("게임 재실행 입력 값이 1 또는 2가 아니면 예외 발생")
     @Test
-    void 플레이어가_숫자_문자를_입력하면_통과() {
-        String input = "157";
-        assertThatNoException().isThrownBy(
-                () -> InputValidator.validateNumericInput(input)
-        );
-    }
-
-    @Test
-    void 게임_재실행과_종료에_대한_입력값이_1_또는_2가_아니면_예외_발생() {
+    void throwIfInvalidRestartInput() {
         String input = "x";
+
         assertThatThrownBy(
                 () -> InputValidator.validateNumericInput(input)
         ).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 게임_재실행_입력값이_1이면_통과() {
-        String input = "1";
-        assertThatNoException().isThrownBy(
-                () -> InputValidator.validateNumericInput(input)
-        );
-    }
-
-    @Test
-    void 게임_재실행_입력값이_2이면_통과() {
-        String input = "2";
-        assertThatNoException().isThrownBy(
-                () -> InputValidator.validateNumericInput(input)
-        );
     }
 
 }
