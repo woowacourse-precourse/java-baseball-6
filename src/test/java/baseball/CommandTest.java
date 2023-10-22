@@ -16,4 +16,8 @@ class CommandTest {
         assertEquals(Command.getCommand("2"), Command.EXIT);
     }
 
+    @Test
+    void 사용자가_1_혹은_2가_아닌_다른_입력값을_제시한경우_IllegalArgumentException_예외를_반환한다() {
+        assertThrows(IllegalArgumentException.class, () -> Command.getCommand("3"));
+    }
 }
