@@ -1,12 +1,14 @@
-package baseball;
+package baseball.game;
 
+import baseball.Computer;
+import baseball.User;
 import baseball.validators.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.GameUI.displayCorrectAnswerMessage;
+import static baseball.game.GameUI.displayCorrectAnswerMessage;
 
 public class Game {
     private User user;
@@ -59,7 +61,6 @@ public class Game {
         return exitCommand == 2;
     }
 
-
     private String inferHint() {
         int strike = countStrike();
         int ball = countBall();
@@ -68,7 +69,7 @@ public class Game {
 
     private String getResult(int strike, int ball) {
         if (isNothing(strike, ball)) {
-            return "낫싱";
+            return GameHintType.NOTHING.getLabel();
         }
 
         String strikeResult = getGameResult(GameHintType.STRIKE, strike);
@@ -80,8 +81,8 @@ public class Game {
         if (count <= 0) return "";
 
         return switch (hintType) {
-            case STRIKE -> String.format("%d%s", count, hintType.getLabel());
-            case BALL -> String.format("%d%s ", count, hintType.getLabel());
+            case STRIKE, BALL -> String.format("%d%s", count, hintType.getLabel());
+            case NOTHING -> "";
         };
     }
 
@@ -123,18 +124,4 @@ public class Game {
         playBaseBallGame();
     }
 
-    public enum GameHintType {
-        STRIKE("스트라이크"),
-        BALL("볼");
-
-        private final String label;
-
-        GameHintType(String label) {
-            this.label = label;
-        }
-
-        public String getLabel() {
-            return this.label;
-        }
-    }
 }

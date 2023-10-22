@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.game.Game;
+import baseball.game.GameUI;
 import baseball.validators.LengthValidator;
 import baseball.validators.NoDuplicateValidator;
 import baseball.validators.RangeValidator;

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 public class GameUI {
     public void diplayUserInput() {
