@@ -3,20 +3,19 @@ package baseball.controller;
 import baseball.model.BaseballGame;
 import baseball.model.BaseballNumbers;
 import baseball.model.BaseballNumbersGenerator;
+import baseball.model.GameRestartOrNot;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
-
-    private static final String GAME_RESTART = "1";
-    private static final String GAME_OVER = "2";
-
     public static void playGames() {
         OutputView.printGameStart();
-        String gameRestartOrNot = GAME_RESTART;
-        while (GAME_RESTART.equals(gameRestartOrNot)) {
+        while (true) {
             playGameOnce();
-            gameRestartOrNot = getGameRestartOrNot();
+            GameRestartOrNot gameRestartOrNot = InputView.getGameRestartOrNot();
+            if (!gameRestartOrNot.doesRestart()) {
+                break;
+            }
         }
     }
 
@@ -38,17 +37,5 @@ public class BaseballGameController {
         BaseballNumbers userBaseballNumbers = BaseballNumbersGenerator.getUserBaseballNumbers(
                 InputView.getUserBaseballNumbersString());
         return new BaseballGame(computerBaseballNumbers, userBaseballNumbers);
-    }
-
-    private static String getGameRestartOrNot() {
-        String gameRestartOrNot = InputView.getRestartOrNot();
-        validateGameRestartOrNot(gameRestartOrNot);
-        return gameRestartOrNot;
-    }
-
-    private static void validateGameRestartOrNot(String gameRestartOrNot) {
-        if (!GAME_RESTART.equals(gameRestartOrNot) && !GAME_OVER.equals(gameRestartOrNot)) {
-            throw new IllegalArgumentException("[ERROR] 입력 값이 " + GAME_RESTART + " 또는 " + GAME_OVER + " 가 아닙니다.");
-        }
     }
 }
