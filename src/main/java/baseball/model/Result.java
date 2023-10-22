@@ -8,6 +8,7 @@ public class Result {
     private static final String BALL_MESSAGE = "%d볼";
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String SPACE = " ";
+    private static final int END_STRIKE_LENGTH = 3;
     private int strikeCount;
     private int ballCount;
 
@@ -36,7 +37,7 @@ public class Result {
     }
 
     public boolean isContinue() {
-        return this.strikeCount != 3;
+        return this.strikeCount != END_STRIKE_LENGTH;
     }
 
 }
