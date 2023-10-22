@@ -77,7 +77,7 @@
 
 ```🌱 Controller```
 
-- BaseballGameController
+- BaseballGameController ✔️
     - 숫자 야구 게임의 전체 play 결정 담당
         - '컴퓨터의 숫자'와 'View를 통해 가져온 플레이어의 입력 숫자'를 비교한다.
         - 게임을 종료한 경우, 다음 게임 Replay or Quit 실행하는 것을 결정한다.
@@ -88,19 +88,19 @@
 ```🌱 Util```
 <br>
 
-- ComputerNumberGenerator
+- ComputerNumberGenerator ✔️
     - 숫자 야구 게임의 컴퓨터(상대방) 랜덤 숫자 생성 담당
         - 플레이어가 랜덤 숫자를 생각해 고르는 것처럼, 컴퓨터의 랜덤 숫자를 생성한다.
 
-- StringToArrayList
+- StringToArrayList ✔️
     - String 숫자의 ArrayList 변환 담당
         - String 형태로 입력되어 들어오는 숫자를 ArrayList 형태로 변환하여 1~9의 숫자를 정확히 파악한다.
           <br>
           <br>
 
-```🌱 Service``` ♻️
+```🌱 Service```
 
-- GameFlowManagementService
+- GameFlowManagementService ✔️
     - 숫자 야구 게임의 흐름 및 다음 게임의 'Replay or Quit' question 담당
 
 - GameNumberCheckService ✔️
@@ -111,15 +111,15 @@
 
 ```🌱 View```
 
-- FirstGamePlayerInputView
+- FirstGamePlayerInputView ✔️
     - 플레이어의 숫자 입력 처리 담당
         - 플레이어의 입력을 실제로 받고, 입력을 save한다.
 
-- NextGamePlayerInputView
+- NextGamePlayerInputView ✔️
     - **이전 게임 종료 후, 다음에 이어지는 게임**에서의 플레이어 숫자 입력 처리 담당
         - 플레이어의 입력을 실제로 받고, 입력을 save한다.
 
-- GameScoreView
+- GameScoreView ✔️
     - 숫자 야구 게임의 플레이 상황에 따른 적절한 결과 출력 담당
         - 게임 정상 종료 후, 게임의 결과와 Replay or Quit 여부를 출력한다.
   ```
