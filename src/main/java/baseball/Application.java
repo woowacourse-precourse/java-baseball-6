@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static class Result {
@@ -123,8 +124,37 @@ public class Application {
         return result;
     }
 
-    public static List<Integer> input(int inputLength) {
+    public static List<Integer> input(int inputLength) throws IllegalArgumentException {
         List<Integer> user = new ArrayList<>();
+
+        String inputNumber = Console.readLine();
+
+        try {
+            Integer.parseInt(inputNumber);
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException();
+        }
+
+        if (inputNumber.trim().length() != inputLength) {
+            throw new IllegalArgumentException();
+        }
+
+        if (inputLength == 3 && inputNumber.matches("0")) {
+            throw new IllegalArgumentException();
+        }
+
+        if (inputLength == 1 && !inputNumber.matches("1") && !inputNumber.matches("2")) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int index = 0; index < inputLength; index++) {
+            int number = inputNumber.charAt(index) - '0';
+            if (!user.isEmpty() && user.contains(number)) {
+                throw new IllegalArgumentException();
+            }
+            user.add(number);
+        }
+
         return user;
     }
 
