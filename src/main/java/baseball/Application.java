@@ -22,6 +22,15 @@ public class Application {
         } while(numOfStrike < NUMBER_SIZE);
     }
 
+    private static int getNumberOfStrike(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int strikeCount = 0;
+        for (int index = 0; index < NUMBER_SIZE; index++) {
+            if (playerNumber.get(index).equals(computerNumber.get(index)))
+                strikeCount++;
+        }
+        return strikeCount;
+    }
+
     private static int getNumberOfBall(List<Integer> computerNumber, List<Integer> playerNumber) {
         int ballCount = 0;
         for (int index = 0; index < NUMBER_SIZE; index++) {
