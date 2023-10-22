@@ -16,6 +16,7 @@ public class BaseballStadium {
                 result = BaseballGame.compareNumbers(inputNum());
                 System.out.println(result);
             }
+            result = "";
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             start = continewGame();
         }
@@ -24,7 +25,7 @@ public class BaseballStadium {
     }
 
     public static String inputNum(){
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
 
         return Console.readLine();
     }
