@@ -10,11 +10,14 @@ public class UserInputNumber {
         userInputValidation = new UserInputValidation();
     }
 
-    public List<Integer> parseToIntList(String userInput) {
+    public BaseBallNumber parseBaseBallNumber(String userInput) {
+        if (!userInputValidation.isValidGameNumber(userInput)) {
+            return null;
+        }
         List<Integer> integerList = new ArrayList<>();
         for (char c : userInput.toCharArray()) {
             integerList.add(Character.getNumericValue(c));
         }
-        return integerList;
+        return new BaseBallNumber(integerList);
     }
 }
