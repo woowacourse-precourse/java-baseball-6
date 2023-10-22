@@ -22,6 +22,14 @@ class BaseballsTest {
         );
     }
 
+    private static Stream<Arguments> invalidValueParameters() {
+        return Stream.of(
+                Arguments.of(List.of(1, 1, 2)),
+                Arguments.of(List.of(1, 2, 2)),
+                Arguments.of(List.of(1, 2, 1))
+        );
+    }
+
     @Test
     @DisplayName("3자리 수인 경우 Baseballs 객체를 생성하는 테스트")
     void constructorTest() {
@@ -35,8 +43,17 @@ class BaseballsTest {
     @ParameterizedTest
     @MethodSource("invalidSizeParameters")
     @DisplayName("3자리 수가 아닌 경우 예외 발생하는 테스트")
-    void constructorExceptionTest(List<Integer> numbers) {
+    void invalidListSizeExceptionTest(List<Integer> numbers) {
         // expected
         assertThrows(IllegalStateException.class, () -> new Baseballs(numbers));
     }
+
+    @ParameterizedTest
+    @MethodSource("invalidValueParameters")
+    @DisplayName("3개의 수가 서로 다르지 않은 경우 예외 발생하는 테스트")
+    void invalidValueExceptionTest(List<Integer> numbers) {
+        // expected
+        assertThrows(IllegalStateException.class, () -> new Baseballs(numbers));
+    }
+
 }
