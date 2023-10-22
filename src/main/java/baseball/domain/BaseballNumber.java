@@ -15,11 +15,11 @@ public class BaseballNumber {
 		this.numbers = numbers;
 	}
 
-	public int getComputerNumberByIndex(int index) {
+	public int getNumberByIndex(int index) {
 		return numbers.get(index);
 	}
 
-	public boolean isComputerNumberContainsPlayerNumber(int playerNumber) {
+	public boolean isNumberContainsPlayerNumber(int playerNumber) {
 		return numbers.contains(playerNumber);
 	}
 

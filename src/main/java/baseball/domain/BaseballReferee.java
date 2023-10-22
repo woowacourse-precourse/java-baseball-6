@@ -8,11 +8,11 @@ public class BaseballReferee {
 		int strike = 0;
 		int ball = 0;
 		for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
-			if (computerNumbers.getComputerNumberByIndex(i) == playerNumbers.getComputerNumberByIndex(i)) {
+			if (computerNumbers.getNumberByIndex(i) == playerNumbers.getNumberByIndex(i)) {
 				strike++;
 				continue;
 			}
-			if (computerNumbers.isComputerNumberContainsPlayerNumber(playerNumbers.getComputerNumberByIndex(i))) {
+			if (computerNumbers.isNumberContainsPlayerNumber(playerNumbers.getNumberByIndex(i))) {
 				ball++;
 			}
 		}
