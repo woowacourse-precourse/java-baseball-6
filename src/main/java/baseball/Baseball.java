@@ -23,7 +23,7 @@ public class Baseball {
         }
     }
 
-    public void startGame() {
+    private void startGame() {
         BaseBallNumber answerNumber = generateNumber();
         while (true) {
             BaseBallNumber userNumber = inputUserNumber();
@@ -34,7 +34,7 @@ public class Baseball {
         OutputStatement.GAME_END_OUTPUT.printOutput();
     }
 
-    public boolean isSuccessGame(BaseBallNumber answerNumber, BaseBallNumber userNumber) {
+    private boolean isSuccessGame(BaseBallNumber answerNumber, BaseBallNumber userNumber) {
         Integer strikeCount = answerNumber.getStrikeCount(userNumber);
         if (strikeCount == 3) {
             OutputStatement.THREE_STRIKE.printOutput();
@@ -61,7 +61,7 @@ public class Baseball {
     }
 
 
-    public BaseBallNumber generateNumber() {
+    private BaseBallNumber generateNumber() {
         List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -72,7 +72,7 @@ public class Baseball {
         return new BaseBallNumber(numberList);
     }
 
-    public BaseBallNumber inputUserNumber() {
+    private BaseBallNumber inputUserNumber() {
         OutputStatement.INPUT_NUMBER_OUTPUT.printOutput();
         String inputNumber = Console.readLine();
         BaseBallNumber baseBallNumber = userInputNumber.parseBaseBallNumber(inputNumber);
@@ -82,7 +82,7 @@ public class Baseball {
         return baseBallNumber;
     }
 
-    public boolean restartGame() {
+    private boolean restartGame() {
         OutputStatement.RESTART_OUTPUT.printOutput();
         String inputNumber = Console.readLine();
         if (!userInputNumber.isValidRestartNumber(inputNumber)) {
