@@ -6,14 +6,13 @@ import java.util.List;
 
 public class Computer {
 
-    public Computer() {
-    }
+    private static final int LENGTH_OF_NUMBER = 3;
 
     int randomNum;
 
     public void setRandomNumber() {
-        List<String> digitsList = getRandomDigits();
-        randomNum = joinDigitsTogether(digitsList);
+        List<String> integerList = getRandomIntegers();
+        randomNum = joinIntegers(integerList);
     }
 
     public int getRandomNumber() {
@@ -21,23 +20,23 @@ public class Computer {
     }
 
 
-    private static int joinDigitsTogether(List<String> digitsList) {
-        return Integer.parseInt(String.join("", digitsList));
+    private static int joinIntegers(List<String> integerList) {
+        return Integer.parseInt(String.join("", integerList));
     }
 
-    private static String getRandomDigit() {
+    private static String getRandomInteger() {
         return String.valueOf(Randoms.pickNumberInRange(1, 9));
     }
 
-    private static List<String> getRandomDigits() {
-        List<String> digitsList = new ArrayList<>();
-        while(digitsList.size() < 3) {
-            String digit = getRandomDigit();
-            if(!digitsList.contains(digit)) {
-                digitsList.add(digit);
+    private static List<String> getRandomIntegers() {
+        List<String> integerList = new ArrayList<>();
+        while (integerList.size() < LENGTH_OF_NUMBER) {
+            String number = getRandomInteger();
+            if (!integerList.contains(number)) {
+                integerList.add(number);
             }
         }
-        return digitsList;
+        return integerList;
     }
 
 }
