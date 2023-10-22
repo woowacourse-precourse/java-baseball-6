@@ -9,8 +9,7 @@ import java.util.List;
 public class Computer {
 
     private static final int BALLS_SIZE = 3;
-    List<Integer> computerNumber = new ArrayList<>();
-
+    private List<Integer> computerNumber = new ArrayList<>();
 
     public Balls makeComputerNumber(){
         while (computerNumber.size() < BALLS_SIZE) {

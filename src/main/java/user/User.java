@@ -14,6 +14,7 @@ public class User {
 
     private static final int INIT_INDEX = 0;
     private static final int DIVISOR = 10;
+
     private List userNumberList = new ArrayList<>();
 
     private void initList(){
@@ -24,11 +25,11 @@ public class User {
         initList();
         System.out.println("숫자를 입력해주세요 : ");
         String strNumber = Console.readLine();
-        translateStringToList(strNumber);
+        addStringNumberToList(strNumber);
         return new Balls(userNumberList);
     }
 
-    public void translateStringToList(String strNumber){
+    public void addStringNumberToList(String strNumber){
         int intNumber = Integer.parseInt(strNumber);
         for (int cur = INIT_INDEX; cur < strNumber.length(); cur++) {
             userNumberList.add(intNumber % DIVISOR);

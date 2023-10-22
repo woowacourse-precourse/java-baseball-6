@@ -4,6 +4,7 @@ import computer.Comparator;
 import computer.Computer;
 import computer.Hint;
 import user.User;
+import view.InputView;
 import view.OutputView;
 
 public class BaseBallGame implements Game{
@@ -12,6 +13,7 @@ public class BaseBallGame implements Game{
     private static Comparator comparator = new Comparator();
     private static Hint hint = new Hint();
     private static OutputView outputView=new OutputView();
+    private static InputView inputView=new InputView();
 
     private Balls userBalls;
     private Balls computerBalls;
@@ -20,7 +22,7 @@ public class BaseBallGame implements Game{
 
     @Override
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        inputView.start();
         computerBalls=computer.makeComputerNumber();
         userBalls=user.makeUserNumber();
         comparator.compare(computerBalls,userBalls);
