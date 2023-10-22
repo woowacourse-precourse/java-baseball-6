@@ -56,7 +56,7 @@ public class Validation implements Validate {
         return false;
     }
 
-    private int[] inputToArr(String input) {
+    public int[] inputToArr(String input) {
         int[] intArr = new int[EXPECTED_LENGTH];
 
         for (int i = 0; i < intArr.length; i++) {
@@ -75,6 +75,6 @@ public class Validation implements Validate {
                 return true;
             }
         }
-        return false;
+        throw new IllegalArgumentException();
     }
 }
