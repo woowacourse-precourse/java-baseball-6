@@ -73,7 +73,7 @@ public class Computer {
             result += (strikeCnt + STRIKE);
         }
 
-        return result;
+        return result.trim();
     }
 
     public boolean isPlayerWin(){
