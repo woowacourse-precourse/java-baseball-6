@@ -3,19 +3,17 @@ package baseball;
 import static baseball.constant.GameConstants.MAX_NUMBER_LENGTH;
 import static baseball.view.GameOutput.*;
 
-import baseball.constant.GameStatus;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.GameInput;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class NumberBaseballGame {
     List<Integer> computerNumber;
-    private final Validator validator;
     private final RandomNumberGenerator randomNumberGenerator;
+    private final GameInput gameInput;
 
     NumberBaseballGame() {
-        this.validator = new Validator();
         this.randomNumberGenerator = new RandomNumberGenerator();
+        this.gameInput = new GameInput();
     }
 
     public void start() {
@@ -24,14 +22,14 @@ public class NumberBaseballGame {
         while (gameContinuation) {
             computerNumber = randomNumberGenerator.generate();
             runGameLoop();
-            gameContinuation = getContinueInput();
+            gameContinuation = gameInput.getContinueInput();
         }
     }
 
     private void runGameLoop() {
         boolean userWin = false;
         while (!userWin) {
-            List<Integer> userNumber = userNumberInput();
+            List<Integer> userNumber = gameInput.userNumberInput();
             int strike = countStrike(userNumber, computerNumber);
             int ball = countBall(userNumber, computerNumber) - strike;
             printLoopResult(ball, strike);
@@ -40,17 +38,6 @@ public class NumberBaseballGame {
                 userWin = true;
             }
         }
-    }
-
-    private List<Integer> userNumberInput() {
-        showNumberInputMessage();
-        String inputString = Console.readLine();
-        validator.numberInput(inputString);
-
-        return inputString.chars()
-                .map(Character::getNumericValue)
-                .boxed()
-                .collect(Collectors.toList());
     }
 
     boolean isUserWin(int strike) {
@@ -75,12 +62,5 @@ public class NumberBaseballGame {
             }
         }
         return strike;
-    }
-
-    private boolean getContinueInput() {
-        showGameContinueInputMessage();
-        String inputContinue = Console.readLine();
-        validator.continueInput(inputContinue);
-        return inputContinue.equals(GameStatus.CONTINUE.getStatus());
     }
 }
