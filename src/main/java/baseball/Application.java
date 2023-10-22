@@ -20,7 +20,7 @@ public class Application {
             do {
                 String guessInput = view.getPlayerGuess();
                 validateGuess(guessInput);
-                List<Integer> playerGuess = model.parseStringToIntegerList(guessInput);
+                List<Integer> playerGuess = Util.parseStringToIntegerList(guessInput);
                 score = model.calculateScore(playerGuess);
                 view.printGameResult(score);
             } while (score.getStrike() != 3);

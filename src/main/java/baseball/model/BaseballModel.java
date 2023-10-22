@@ -34,12 +34,4 @@ public class BaseballModel {
         }
         return new Score(strike, ball);
     }
-
-    public List<Integer> parseStringToIntegerList(String input) {
-        List<Integer> list = new ArrayList<>();
-        for (char c : input.toCharArray()) {
-            list.add(Character.getNumericValue(c));
-        }
-        return list;
-    }
 }
