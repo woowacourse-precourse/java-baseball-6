@@ -27,4 +27,11 @@ public class Util {
         }
         return true;
     }
+
+    public static boolean validNumbersCount(List<Integer> numbers, int size) {
+        if (numbers.size() == size) {
+            return true;
+        }
+        return false;
+    }
 }
