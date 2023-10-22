@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.constant.GameCommand;
 import baseball.domain.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
@@ -21,10 +22,11 @@ public class PlayerService {
         return playerNums;
     }
 
-    public String inputGameCommand() {
-        String input = Console.readLine();
-        InputValidator.validateCommand(input);
+    public GameCommand inputCommand() {
+        String inputCommand = Console.readLine();
+        GameCommand gameCommand = GameCommand.findByInputCommand(inputCommand);
+        InputValidator.validateCommand(gameCommand);
 
-        return input;
+        return gameCommand;
     }
 }
