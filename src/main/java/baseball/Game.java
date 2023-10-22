@@ -9,7 +9,7 @@ import java.util.List;
 public class Game {
     final int randomLength = 3;
     private List<Integer> randomInt;
-    private List<Integer> userInput;
+    private List<Integer> userInt;
     private int strike;
     private int ball;
     private boolean isSolved;
@@ -28,13 +28,13 @@ public class Game {
         }
     }
 
-    public void getUserInput() {
-        userInput = new ArrayList<>();
+    public void getUserInt() {
+        userInt = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        validateUserInput(input);
+        validateUserInt(input);
         for (int j = 0; j < input.length(); j++) {
-            userInput.add(input.charAt(j) - '0');
+            userInt.add(input.charAt(j) - '0');
         }
     }
 
@@ -43,7 +43,7 @@ public class Game {
     }
 
     public void printResult() {
-        JudgeInput();
+        judgeUserInt();
         String result;
         if (ball > 0 && strike > 0) {
             result = ball + "볼 " + strike + "스트라이크";
@@ -62,14 +62,14 @@ public class Game {
         System.out.println(result);
     }
 
-    private void JudgeInput() {
+    private void judgeUserInt() {
         strike = 0;
         ball = 0;
         for (int i = 0; i < randomLength; i++) {
-            if (randomInt.get(i).equals(userInput.get(i))) {
+            if (randomInt.get(i).equals(userInt.get(i))) {
                 strike++;
             }
-            else if (randomInt.contains(userInput.get(i))) {
+            else if (randomInt.contains(userInt.get(i))) {
                 ball++;
             }
         }
@@ -77,7 +77,7 @@ public class Game {
             isSolved = true;
     }
 
-    private void validateUserInput(String input) {
+    private void validateUserInt(String input) {
         if (input.length() != randomLength) {
             throw new IllegalArgumentException("input has to be 3 digits.");
         }

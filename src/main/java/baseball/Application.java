@@ -11,7 +11,7 @@ public class Application {
             try {
                 Game game = new Game();
                 while (!game.isSolved()) {
-                    game.getUserInput();
+                    game.getUserInt();
                     game.printResult();
                 }
                 isFinished = true;
