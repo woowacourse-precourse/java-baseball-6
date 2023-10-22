@@ -7,6 +7,10 @@ public class Player {
 
     private List<Integer> list = new ArrayList<>();
 
+    public List<Integer> getPlayerNumbers() {
+        return List.copyOf(list);
+    }
+
     public void guessNumber(String input) {
         validateInput(input);
         for (int i = 0; i < input.length(); i++) {
