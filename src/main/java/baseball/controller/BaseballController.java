@@ -1,21 +1,25 @@
 package baseball.controller;
 
+import baseball.domain.BaseballNumber;
+import baseball.domain.BaseballNumbers;
+import baseball.domain.BaseballNumbersGenerator;
 import baseball.domain.Computer;
-import baseball.domain.NumbersGenerator;
 import baseball.domain.Score;
 import baseball.view.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BaseballController {
-    private final NumbersGenerator answerGenerator;
+    private final BaseballNumbersGenerator baseballNumbersGenerator;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public BaseballController(NumbersGenerator answerGenerator,
+    public BaseballController(BaseballNumbersGenerator baseballNumbersGenerator,
                               InputView inputView,
                               OutputView outputView) {
-        this.answerGenerator = answerGenerator;
+        this.baseballNumbersGenerator = baseballNumbersGenerator;
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -24,7 +28,7 @@ public class BaseballController {
         outputView.startGame();
         boolean isContinue = true;
         while (isContinue) {
-            Computer computer = new Computer(answerGenerator);
+            Computer computer = new Computer(baseballNumbersGenerator);
             play(computer);
             outputView.endGame();
             String input = inputView.continueOrExit();
@@ -38,9 +42,18 @@ public class BaseballController {
         while (!isStrikeOut) {
             String input = inputView.inputBaseballNumber();
             InputValidator.validateBaseballNumber(input);
-            Score score = computer.getScore(input);
+            BaseballNumbers inputNumbers = convertToNumbers(input);
+            Score score = computer.getScore(inputNumbers);
             outputView.matchResult(score);
             isStrikeOut = score.isStrikeOut();
         }
+    }
+
+    private BaseballNumbers convertToNumbers(String input) {
+        List<BaseballNumber> inputNumbers = input.chars()
+                .mapToObj(Character::getNumericValue)
+                .map(BaseballNumber::new)
+                .collect(Collectors.toList());
+        return new BaseballNumbers(inputNumbers);
     }
 }
