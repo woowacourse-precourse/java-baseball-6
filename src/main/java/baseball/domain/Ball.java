@@ -16,7 +16,7 @@ public class Ball {
 
     private static void validateRange(int digit) {
         if (digit < MIN_NUMBER || MAX_NUMBER < digit) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Ball의 숫자가 1~9 범위여야 합니다.");
         }
     }
 

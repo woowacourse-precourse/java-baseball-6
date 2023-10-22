@@ -30,7 +30,7 @@ public class Balls {
 
     private void validateSize(List<Ball> balls) {
         if (balls == null || balls.size() != BALL_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Balls Ball 개수는 3개여야 합니다.");
         }
     }
 

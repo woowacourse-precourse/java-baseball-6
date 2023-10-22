@@ -26,7 +26,7 @@ public class NumberGenerator {
 
     private void validateRange(int number) {
         if (number < MIN_RANGE || MAX_RANGE < number) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("생성된 랜덤 숫자는 1~9 범위여야 합니다.");
         }
     }
 

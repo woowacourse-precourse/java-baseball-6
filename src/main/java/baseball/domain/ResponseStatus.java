@@ -16,7 +16,7 @@ public enum ResponseStatus {
         return Arrays.stream(ResponseStatus.values())
                 .filter(s -> s.hasResponse(response))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(() -> new IllegalArgumentException("1 또는 2 로만 입력해주세요."));
     }
 
     private boolean hasResponse(String response) {
