@@ -17,7 +17,6 @@ public class ResultCalculator {
     public GameScore calculateResult(BallNumber comparisonNumber) {
         Strikes newStrikes = countStrikes(comparisonNumber);
         Balls newBalls = countBalls(comparisonNumber, newStrikes);
-
         return new GameScore(newStrikes, newBalls);
     }
 
@@ -25,7 +24,7 @@ public class ResultCalculator {
         return new Strikes(IntStream
                 .range(0, SystemConstant.MAXIMUM_DIGIT)
                 .filter(i ->
-                        comparisonNumber.getBallNumberByDigit(i) == computerNumber.getBallNumberByDigit(i))
+                        computerNumber.isEqualBallNumberByDigit(comparisonNumber, i))
                 .count());
     }
 

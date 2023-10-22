@@ -27,4 +27,8 @@ public class BallNumber {
     public boolean hasThis(int comparisonNumber) {
         return ballNumberList.contains(comparisonNumber);
     }
+
+    public boolean isEqualBallNumberByDigit(BallNumber compBallNumber, int digit) {
+        return ballNumberList.get(digit) == compBallNumber.getBallNumberByDigit(digit);
+    }
 }
