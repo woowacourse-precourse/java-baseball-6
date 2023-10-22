@@ -26,8 +26,12 @@ public class Application {
         //잘못 입력 시 (IllegalArgumentException 발생)
             Scanner sc = new Scanner(System.in);
             System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> user = new ArrayList<>();
             String input = sc.next();
-            String[] user = input.split("");
+
+            for(String num: input.split("")){
+                user.add(Integer.parseInt(num));
+            }
 
 
             int strike = 0;
