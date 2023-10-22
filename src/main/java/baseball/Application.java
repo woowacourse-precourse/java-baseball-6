@@ -110,7 +110,7 @@ public class Application {
         // int로 파싱 불가능하면 예외 발생
         try {
             number = Integer.parseInt(inputString);
-        } catch (Exception e){
+        } catch (NumberFormatException e){
             throw new IllegalArgumentException();
         }
         // 사용자 인풋이 3자리가 아니거나, "0"이 포함되거나, 동일 숫자 존재시 예외 발생
