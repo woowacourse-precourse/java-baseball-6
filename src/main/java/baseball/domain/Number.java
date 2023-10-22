@@ -7,6 +7,7 @@ public class Number {
 	private String number;
 
 	public Number(String number, int size) {
+		validateRange(number);
 		validateSize(number, size);
 		validateDuplication(number);
 		this.number = number;
@@ -14,6 +15,14 @@ public class Number {
 
 	protected String getNumber() {
 		return number;
+	}
+
+	private void validateRange(String number) {
+		for(char c : number.toCharArray()) {
+			if(c - '0' < 1 || c - '0' > 9) {
+				throw new IllegalArgumentException("숫자가 주어진 범위에서 벗어납니다.");
+			}
+		}
 	}
 
 	private void validateSize(String number, int size) {
