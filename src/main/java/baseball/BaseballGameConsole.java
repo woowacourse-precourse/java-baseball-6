@@ -21,19 +21,19 @@ public class BaseballGameConsole {
 
     void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        this.isContinue = true;
+        isContinue = true;
 
-        while (this.isContinue) {
+        while (isContinue) {
             play();
             checkContinue();
         }
     }
 
     private void play() {
-        this.strikeOut = false;
+        strikeOut = false;
         getHitterSelection();
 
-        while (!this.strikeOut) {
+        while (!strikeOut) {
             getPitcherSelection();
             getBallCount();
             printBallCount();
@@ -43,14 +43,14 @@ public class BaseballGameConsole {
 
     private void getPitcherSelection() {
         System.out.print("숫자를 입력해주세요 : ");
-        this.pitcherSelection = Console.readLine();
+        pitcherSelection = Console.readLine();
 
         checkValidPitcherSelection();
     }
 
     private void checkValidPitcherSelection() {
         String regex = String.format("^[%d-%d]{%d}$", MIN, MAX, SIZE);
-        boolean isValid = this.pitcherSelection.matches(regex) && !isDuplicated();
+        boolean isValid = pitcherSelection.matches(regex) && !isDuplicated();
 
         if (!isValid) {
             throw new IllegalArgumentException();
@@ -60,7 +60,7 @@ public class BaseballGameConsole {
     private boolean isDuplicated() {
         Set<Character> set = new HashSet<>();
 
-        for (char c : this.pitcherSelection.toCharArray()) {
+        for (char c : pitcherSelection.toCharArray()) {
             if (!set.add(c)) {
                 return true;
             }
@@ -69,50 +69,50 @@ public class BaseballGameConsole {
     }
 
     private void getHitterSelection() {
-        this.hitterSelection = new ArrayList<>();
+        hitterSelection = new ArrayList<>();
 
-        while (this.hitterSelection.size() < SIZE) {
+        while (hitterSelection.size() < SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
-            if (!this.hitterSelection.contains(randomNumber)) {
-                this.hitterSelection.add(randomNumber);
+            if (!hitterSelection.contains(randomNumber)) {
+                hitterSelection.add(randomNumber);
             }
         }
     }
 
     private void getBallCount() {
-        this.ballCount = new BallCount();
+        ballCount = new BallCount();
 
-        for (int i = 0; i < this.pitcherSelection.length(); i++) {
-            char numChar = this.pitcherSelection.charAt(i);
+        for (int i = 0; i < pitcherSelection.length(); i++) {
+            char numChar = pitcherSelection.charAt(i);
             int num = Character.getNumericValue(numChar);
 
-            if (num == this.hitterSelection.get(i)) {
-                this.ballCount.addStrike();
-            } else if (this.hitterSelection.contains(num)) {
-                this.ballCount.addBall();
+            if (num == hitterSelection.get(i)) {
+                ballCount.addStrike();
+            } else if (hitterSelection.contains(num)) {
+                ballCount.addBall();
             }
         }
     }
 
     private void printBallCount() {
-        if (this.ballCount.getStrike() == 0 && this.ballCount.getBall() == 0) {
+        if (ballCount.getStrike() == 0 && ballCount.getBall() == 0) {
             System.out.println("낫싱");
         } else {
             String message = "";
-            if (this.ballCount.getBall() > 0) {
-                message = this.ballCount.getBall() + "볼";
+            if (ballCount.getBall() > 0) {
+                message = ballCount.getBall() + "볼";
             }
-            if (this.ballCount.getStrike() > 0) {
-                message += (message.isEmpty() ? "" : " ") + this.ballCount.getStrike() + "스트라이크";
+            if (ballCount.getStrike() > 0) {
+                message += (message.isEmpty() ? "" : " ") + ballCount.getStrike() + "스트라이크";
             }
             System.out.println(message);
         }
     }
 
     private void checkStrikeOut() {
-        if (this.ballCount.getStrike() == SIZE) {
+        if (ballCount.getStrike() == SIZE) {
             System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", SIZE);
-            this.strikeOut = true;
+            strikeOut = true;
         }
     }
 
@@ -126,7 +126,7 @@ public class BaseballGameConsole {
         }
 
         if (Integer.toString(END_NUM).equals(continueAnswer)) {
-            this.isContinue = false;
+            isContinue = false;
         }
     }
 }

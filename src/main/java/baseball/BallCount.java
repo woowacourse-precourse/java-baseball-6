@@ -7,23 +7,23 @@ public class BallCount {
     private final Map<String, Integer> ballCount = new HashMap<>();
 
     public BallCount() {
-        this.ballCount.put("strike", 0);
-        this.ballCount.put("ball", 0);
+        ballCount.put("strike", 0);
+        ballCount.put("ball", 0);
     }
 
     void addStrike() {
-        this.ballCount.put("strike", this.ballCount.get("strike") + 1);
+        ballCount.put("strike", ballCount.get("strike") + 1);
     }
 
     void addBall() {
-        this.ballCount.put("ball", this.ballCount.get("ball") + 1);
+        ballCount.put("ball", ballCount.get("ball") + 1);
     }
 
     int getStrike() {
-        return this.ballCount.get("strike");
+        return ballCount.get("strike");
     }
 
     int getBall() {
-        return this.ballCount.get("ball");
+        return ballCount.get("ball");
     }
 }
