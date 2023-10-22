@@ -19,12 +19,20 @@ public class ComputerNumbers {
 
     private List<Integer> createComputerNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while(randomNumbers.size() < BaseballGame.GAME_NUMBER_DIGIT) {
+        do {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumbers.contains(randomNumber)) {
+            if (isNumbersNotDuplicate(randomNumbers, randomNumber)) {
                 randomNumbers.add(randomNumber);
             }
-        }
+        } while(!isValidDigit(randomNumbers));
         return randomNumbers;
+    }
+
+    private boolean isNumbersNotDuplicate(List<Integer> numbers, int number) {
+        return !numbers.contains(number);
+    }
+
+    private boolean isValidDigit(List<Integer> numbers) {
+        return numbers.size() == BaseballGame.GAME_NUMBER_DIGIT;
     }
 }
