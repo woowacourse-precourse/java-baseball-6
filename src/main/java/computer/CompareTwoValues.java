@@ -1,6 +1,7 @@
 package computer;
 
 import constant.GuideMessageConstant;
+import constant.StringConstant;
 
 import java.util.List;
 
@@ -12,8 +13,8 @@ public class CompareTwoValues {
 
     public static void valueExtraction(int inputNumber) {
         for (int i = 2; i > 0; i--) {
-            valueExtraction[i] = inputNumber % 10;
-            inputNumber /= 10;
+            valueExtraction[i] = inputNumber % StringConstant.DIVISION_NUMBERS;
+            inputNumber /= StringConstant.DIVISION_NUMBERS;
         }
         valueExtraction[0] = inputNumber;
 
