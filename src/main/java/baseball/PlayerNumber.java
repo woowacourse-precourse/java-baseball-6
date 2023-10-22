@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlayerNumber {
-
     private final static int NUMBER_LENGTH = 3;
+    private final static int START_NUMBER = 1;
+    private final static int FINAL_NUMBER = 9;
 
     private final List<Integer> playerNumber;
 
@@ -30,7 +31,7 @@ public class PlayerNumber {
         }
         
         //범위 확인(1~9)
-        if (!Arrays.stream(numbers).allMatch(number->1<=number&&number<=9)){
+        if (!Arrays.stream(numbers).allMatch(number->START_NUMBER<=number&&number<=FINAL_NUMBER)){
             throw new IllegalArgumentException();
         }
 
