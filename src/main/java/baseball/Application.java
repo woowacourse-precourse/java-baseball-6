@@ -17,34 +17,33 @@ public class Application
 	    	System.out.println("숫자 야구 게임을 시작합니다.");
 	    	List<Integer> computer = makeThreeRandomNum();
 	    	
-	    	String userInput;
-	
-	    	while(true) 
+	    	strike = 0;
+	    	ball = 0;
+	    	
+	    	while(strike < 3) 
 	    	{
 		    	System.out.print("숫자를 입력해주세요 : ");
-		    	userInput = Console.readLine();
-		    	inputLengthThree(userInput);
-		    	inputNumberOnly(userInput);
-		    	inputAllDistinct(userInput);
-		    	howManyBallStrike(userInput, computer);
-		    	
-		    	if(strike == 3)
-		    		break;
-		    	
-		    	printHint();
+		    	String userInput = Console.readLine();
+		    	if(inputLengthThree(userInput) && inputNumberOnly(userInput) && inputAllDistinct(userInput)) 
+		    	{
+		    		howManyBallStrike(userInput, computer);
+		    		printHint();
+		    	}
 	    	}
+	    	
 	    	System.out.println(strike+"스트라이크"
 	    			+ "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
 	    			+ "\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 	    	
-	    	String restart = Console.readLine();
-			inputNumberOneOrTwo(restart);
-			if(restart.equals("2"))
+	    	String restartcheck = Console.readLine();
+			inputNumberOneOrTwo(restartcheck);
+			if(restartcheck.equals("2"))
 				break;
         } 
         Console.close();
     }
-	public static void printHint() {
+	public static void printHint() 
+	{
 		if ((strike == 0) && (ball == 0)) 
 		{
 			System.out.println("낫싱");
@@ -53,7 +52,7 @@ public class Application
 		{
 			System.out.println(ball+"볼");
 		}
-		else if ((strike > 0) && (ball == 0))
+		else if ((strike > 0) && (strike < 3) && (ball == 0))
 		{
 			System.out.println(strike+"스트라이크");
 		}
@@ -62,28 +61,35 @@ public class Application
 		}
 	}
 	
-    public static void howManyBallStrike(String userInput, List<Integer> computer) {
+    public static void howManyBallStrike(String userInput, List<Integer> computer) 
+    {
     	strike = 0;
     	ball = 0;
     	for (int i = 0; i < 3; i++) 
     	{
     		char currentNum = userInput.charAt(i);
     		int num = Character.getNumericValue(currentNum);
-    		if(computer.contains(num)) 
-    		{
-    			if(num == computer.get(i)) 
-    			{
-    				strike = strike + 1;
-    			} 
-    			else 
-    			{
-    				ball = ball + 1;
-    			}
-    		}
+    		correctNumCheck(computer, i, num);
     	}
     }
     
-	public static void inputAllDistinct(String userInput) {
+	public static void correctNumCheck(List<Integer> computer, int i, int num) 
+	{
+		if(computer.contains(num)) 
+		{
+			if(num == computer.get(i)) 
+			{
+				strike = strike + 1;
+			} 
+			else 
+			{
+				ball = ball + 1;
+			}
+		}
+	}
+    
+	public static boolean inputAllDistinct(String userInput) 
+	{
 		Set<Character> set = new HashSet<>();
 
         for (int i = 0; i < userInput.length(); i++) // 중복된 값을 제외하고 입력값 전부를 배열에 추가 
@@ -94,30 +100,33 @@ public class Application
         {
             throw new IllegalArgumentException();
         }
+        return true;
 	}
 
-	public static void inputNumberOnly(String userInput) 
+	public static boolean inputNumberOnly(String userInput) 
 	{
 		if (!userInput.matches("\\d{3}"))
     	{
             throw new IllegalArgumentException();
         }
+		return true;
 	}
 	
-	public static void inputNumberOneOrTwo(String restart) 
+	public static void inputNumberOneOrTwo(String restartcheck) 
 	{
-		if (!restart.equals("1") && !restart.equals("2"))
+		if (!restartcheck.equals("1") && !restartcheck.equals("2"))
     	{
             throw new IllegalArgumentException();
         }
 	}
 
-	public static void inputLengthThree(String userInput) 
+	public static boolean inputLengthThree(String userInput) 
 	{
 		if (userInput.length() != 3)
     	{
             throw new IllegalArgumentException();
         }
+		return true;
 	}
 	
 	public static List<Integer> makeThreeRandomNum() 
