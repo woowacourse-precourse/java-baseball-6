@@ -50,11 +50,14 @@ public class Application {
     }
 
     public void isValidCheck(String input) {
-        if (isNull(input) || input.isEmpty() || !isLengthThree(input) || !hasUniqueElementsOnly(input)
-            // Todo: 입력값에 숫자외에 다른 문자가 들어가 있는지 검사한다.
-            // Todo: 각 숫자(n)가 `1 <= n <= 9`의 범위에 속하는 정수인지 검사한다.
-        ) {
-            throw new IllegalArgumentException();
+        if (isNull(input) || input.isEmpty() || !isLengthThree(input) || !hasUniqueElementsOnly(input)) {
+            throw new IllegalArgumentException("Invalid input: Input must be numbers between 1 and 9 only.");
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (!isNumberInRange(input.charAt(i) - '0', 1, 9)) {
+               throw new IllegalArgumentException("Invalid input: Input must be numbers between 1 and 9 only.");
+            }
         }
     }
 
@@ -75,5 +78,9 @@ public class Application {
             return true;
         }
          return false;
+    }
+
+    public boolean isNumberInRange(int number, int start, int end) {
+        return number >= start && number <= end;
     }
 }
