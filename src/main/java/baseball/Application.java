@@ -20,12 +20,12 @@ public class Application {
             }
             List<Integer> userInputList = new ArrayList<>();
             for(int i = 0; i < userInput.length(); i++) {
-                userInputList.add(userInput.charAt(i) - '0');
-                if(userInputList.contains(userInput.charAt(i))) {
+                if(userInputList.contains(userInput.charAt(i) - '0')) {
                     throw new IllegalArgumentException("중복되지 않은 숫자를 입력해주세요.");
                 }
+                userInputList.add(userInput.charAt(i) - '0');
             }
-
+            System.out.println(userInputList);
         }
 //        숫자를 입력해주세요 : 123
 //        1볼 1스트라이크
@@ -45,7 +45,7 @@ public class Application {
 
 
     public static boolean check(char c) {
-        if(c >= '0' && c <= '9') {
+        if(c >= '1' && c <= '9') {
             return true;
         }
         return false;
