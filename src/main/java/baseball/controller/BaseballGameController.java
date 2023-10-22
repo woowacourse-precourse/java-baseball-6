@@ -53,4 +53,15 @@ public class BaseballGameController {
 
         return false;
     }
+
+    public void checkNumber() {
+
+        for (int i = 0; i < Validation.MAX_INPUT_LENGTH; i++) {
+            if (user.getBall(i) == computer.getBall(i)) {
+                strike++;
+            } else if (computer.containsBall(user.getBall(i))) {
+                ball++;
+            }
+        }
+    }
 }
