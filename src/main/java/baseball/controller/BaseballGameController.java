@@ -6,6 +6,8 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
+    public static final String CONTINUE = "1";
+    public static final String END = "2";
     private final InputView inputView;
     private final OutputView outputView;
 
@@ -28,5 +30,28 @@ public class BaseballGameController {
             outputView.printResult(gameResult);
         } while (!baseballGame.isGameEnd());
         outputView.printEndGame();
+        continueGame();
+    }
+
+    private void continueGame() {
+        boolean gameRunning = true;
+        while (gameRunning) {
+            String inputContinueGame = inputView.readRetryGame();
+            if (isEndGame(inputContinueGame)) {
+                gameRunning = false;
+            }
+            if (isContinueGame(inputContinueGame)) {
+                process();
+                return;
+            }
+        }
+    }
+
+    private boolean isEndGame(final String input) {
+        return END.equals(input);
+    }
+
+    private boolean isContinueGame(final String input) {
+        return CONTINUE.equals(input);
     }
 }
