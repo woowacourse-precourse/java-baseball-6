@@ -4,8 +4,7 @@ import java.util.Objects;
 
 public class Check {
     private Check(){}
-
-    public static boolean checkUserInput(String input){
+    public static boolean checkUserInput(String input) throws IllegalArgumentException{
         if (!checkNumber(input)) {
             throw new IllegalArgumentException("입력값이 숫자가 아닙니다.");
         }else if(!checkLength(input)){

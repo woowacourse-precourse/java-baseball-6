@@ -1,6 +1,7 @@
 package controller;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,9 @@ import java.util.Objects;
 import utility.Check;
 
 public class BaseballController {
+    private BaseballController() {
+    }
+
     static List<Integer> computer = new ArrayList<>();
     static List<Integer> player = new ArrayList<>();
     static boolean RUNNING = true;
@@ -17,9 +21,9 @@ public class BaseballController {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (RUNNING) {
             computer.clear();
-            //임시로 출ㄹ력
             getRandomNumber(computer);
             ANSWER = false;
+            //임시로 출력
             System.out.println(computer + "\n");
             while (!ANSWER) {
                 getPlayerNumber();
@@ -44,8 +48,8 @@ public class BaseballController {
         player.clear();
         System.out.print("숫자를 입력해주세요 : ");
         String input = readLine();
-        for (int i = 0; i < 3; i++) {
-            if (Check.checkUserInput(input)) {
+        if (Check.checkUserInput(input)) {
+            for (int i = 0; i < 3; i++) {
                 player.add(Integer.valueOf(input.substring(i, i + 1)));
             }
         }
@@ -85,7 +89,7 @@ public class BaseballController {
 
     public static void continueGame() {
         String input = readLine();
-        if (Check.checkContinueInput(input)){
+        if (Check.checkContinueInput(input)) {
             if (Objects.equals(input, "2")) {
                 RUNNING = false;
                 System.out.println("게임 종료");
