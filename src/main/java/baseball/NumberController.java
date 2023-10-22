@@ -20,4 +20,14 @@ public class NumberController {
     return result;
     }
 
+    public List<Integer> splitter(int num) {
+      List<Integer> numList = new ArrayList<>(3);
+
+      numList.add(num/100);
+      numList.add((num%100)/10);
+      numList.add(num%10);
+
+      return numList;
+    }
+
 }
