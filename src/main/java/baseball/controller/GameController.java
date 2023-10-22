@@ -8,7 +8,8 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameController {
 	private final GameService gameService;
 	public static int NUMBER_SIZE = 3;
-	public static final String RESTART_NUMBER = "1";
+	public static final String RESTART = "1";
+	public static final String END = "2";
 
 	public GameController() {
 		gameService = new GameService();
@@ -24,6 +25,6 @@ public class GameController {
 
 	public boolean checkRestart() {
 		InputView.askRestart();
-		return Console.readLine().equals(RESTART_NUMBER);
+		return Console.readLine().equals(RESTART);
 	}
 }

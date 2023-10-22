@@ -1,14 +1,16 @@
 package baseball.domain;
 
+import static baseball.controller.GameController.NUMBER_SIZE;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Number {
 	private String number;
 
-	public Number(String number, int size) {
+	public Number(String number) {
 		validateRange(number);
-		validateSize(number, size);
+		validateSize(number, NUMBER_SIZE);
 		validateDuplication(number);
 		this.number = number;
 	}

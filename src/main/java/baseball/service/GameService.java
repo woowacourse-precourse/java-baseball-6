@@ -24,7 +24,7 @@ public class GameService {
 
 	private void askInput() {
 		InputView.askNumber();
-		inputNumber = InputNumber.create(Console.readLine(),NUMBER_SIZE);
+		inputNumber = InputNumber.create(Console.readLine());
 	}
 
 	private void printOutput(String result) {
