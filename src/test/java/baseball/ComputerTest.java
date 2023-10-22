@@ -1,12 +1,11 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.Test;
 
-public class ComputerTest extends NsTest {
+
+public class ComputerTest {
 
 
   @Test
@@ -14,9 +13,5 @@ public class ComputerTest extends NsTest {
     Computer computer1 = new Computer();
     Computer computer2 = new Computer();
     assertThat(computer1.equals(computer2)).isEqualTo(false);
-  }
-  @Override
-  public void runMain() {
-    Application.main(new String[]{});
   }
 }
