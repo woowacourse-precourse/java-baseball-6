@@ -13,12 +13,12 @@ public class GameService {
 
         if (ball == 0 && strike == 0) {
             return "낫싱";
-        } else {
-            String ballInfo = ball != 0 ? (ball + "볼") : "";
-            String strikeInfo = strike != 0 ? (strike + "스트라이크") : "";
-            String info = (ball != 0 && strike != 0) ? (ballInfo + " " + strikeInfo) : (ballInfo + strikeInfo);
-            return info;
         }
+
+        String ballInfo = ball != 0 ? ball + "볼" : "";
+        String strikeInfo = strike != 0 ? strike + "스트라이크" : "";
+
+        return ballInfo + (ball != 0 && strike != 0 ? " " : "") + strikeInfo;
     }
 
     /**
