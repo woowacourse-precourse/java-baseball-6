@@ -43,11 +43,11 @@ public class GameController {
 
     private void progress() {
         boolean isCorrect = false;
-        List<Integer> computerNumbers = computer.getNumbers();
+        computer.setRandomNumbers();
 
         while(!isCorrect) {
             setPlayerNumbers();
-            isCorrect = compareNumbers(computerNumbers, player.getNumbers());
+            isCorrect = compareNumbers(computer.getNumbers(), player.getNumbers());
         }
 
         outputView.printEndMessage();

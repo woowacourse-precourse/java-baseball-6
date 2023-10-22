@@ -2,6 +2,7 @@ package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,18 +12,21 @@ public class Computer {
     private static final int MAX_RANDOM_NUMBER = 9;
     private final int settingNumberLength;
 
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Computer(int numberLength) {
         this.settingNumberLength = numberLength;
-        this.numbers = getRandomNumbers();
     }
 
     public List<Integer> getNumbers() {
+        if(numbers.isEmpty()) {
+            return null;
+        }
+
         return numbers;
     }
 
-    private List<Integer> getRandomNumbers() {
+    public void setRandomNumbers() {
         Set<Integer> computerNumber = new HashSet<>();
 
         while(computerNumber.size() < settingNumberLength) {
@@ -31,6 +35,6 @@ public class Computer {
             computerNumber.add(randomNumber);
         }
 
-        return computerNumber.stream().toList();
+        this.numbers = computerNumber.stream().toList();
     }
 }
