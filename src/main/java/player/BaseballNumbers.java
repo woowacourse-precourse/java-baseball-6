@@ -1,5 +1,6 @@
 package player;
 
+import static constant.BaseballConstant.INVALID_NUMBER_RANGE;
 import static constant.BaseballConstant.MAX_LENGTH;
 import static constant.BaseballConstant.NO_DUPLICATE_NUMBER;
 import static constant.BaseballConstant.ONLY_THREE_NUMBER;
@@ -10,37 +11,46 @@ import java.util.Set;
 
 public class BaseballNumbers {
 
-    private final List<BaseballNumber> baseballNumbers;
+    private final List<Integer> baseballNumbers;
 
-    public BaseballNumbers(List<BaseballNumber> baseballNumbers) {
-        validateNumberLength(baseballNumbers);
-        validateDuplicateNumber(baseballNumbers);
+    public BaseballNumbers(List<Integer> baseballNumbers) {
         this.baseballNumbers = baseballNumbers;
+        validateNumberLength();
+        validateDuplicateNumber();
+        validateBelowRange();
     }
 
     public int size() {
         return baseballNumbers.size();
     }
 
-    public BaseballNumber get(int index) {
+    public Integer get(int index) {
         return baseballNumbers.get(index);
     }
 
-    public boolean contains(BaseballNumber baseballNumber) {
+    public boolean contains(Integer baseballNumber) {
         return baseballNumbers.contains(baseballNumber);
     }
 
-    private void validateNumberLength(List<BaseballNumber> baseballNumbers) {
+    private void validateNumberLength() {
         if (baseballNumbers.size() != MAX_LENGTH) {
             throw new IllegalArgumentException(ONLY_THREE_NUMBER);
         }
     }
 
-    private void validateDuplicateNumber(List<BaseballNumber> baseballNumbers) {
-        Set<BaseballNumber> baseballNumberSet = new HashSet<>(baseballNumbers);
+    private void validateDuplicateNumber() {
+        Set<Integer> baseballNumberSet = new HashSet<>(baseballNumbers);
 
         if (baseballNumberSet.size() < MAX_LENGTH) {
             throw new IllegalArgumentException(NO_DUPLICATE_NUMBER);
+        }
+    }
+
+    private void validateBelowRange() {
+        for (Integer baseballNumber : baseballNumbers) {
+            if (baseballNumber < 0) {
+                throw new IllegalArgumentException(INVALID_NUMBER_RANGE);
+            }
         }
     }
 

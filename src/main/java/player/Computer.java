@@ -10,10 +10,10 @@ public class Computer extends BaseballPlayer {
 
     @Override
     public void inputBaseballNumbers() {
-        List<BaseballNumber> computerBaseballNumber = new ArrayList<>();
+        List<Integer> computerBaseballNumber = new ArrayList<>();
 
         while (computerBaseballNumber.size() < MAX_LENGTH) {
-            BaseballNumber baseballNumber = new BaseballNumber(Randoms.pickNumberInRange(1, 9));
+            Integer baseballNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerBaseballNumber.contains(baseballNumber)) {
                 computerBaseballNumber.add(baseballNumber);
             }
