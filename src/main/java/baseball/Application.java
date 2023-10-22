@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -10,7 +9,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 public class Application {
 
     //  힌트를 출력하는 로직
-    public static void numberBaseball(){
+    public static void numberBaseball (){
 
         //정답 생성
         List<Integer> answer = new ArrayList<>();
@@ -24,6 +23,10 @@ public class Application {
         String inputValue = readLine();
 
         //사용자가 잘못된 값을 입력한 경우 오류 던지기
+        //숫자가 아니거나, 길이가 3이 아니거나
+        if (!inputValue.matches("\\d{3}")){
+            throw new IllegalArgumentException();
+        }
 
         //문자열 문자 배열로 변경
         char[] inputNum = inputValue.toCharArray();
@@ -63,7 +66,11 @@ public class Application {
         //랜덤값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberRange() 활용
 
         // 숫자 야구 진행 기능
-        numberBaseball();
+        try {
+            numberBaseball();
+        } catch(IllegalArgumentException e){
+            System.err.println("입력값이 올바르지 않습니다.");
+        }
 
     }
 }
