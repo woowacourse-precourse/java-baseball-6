@@ -4,11 +4,13 @@ public class Game {
 
     public String start() {
         String result = "";
+        String computerNumber = new Computer().generateRandomNumber();
+        //String computerNumber = "123";
         while (!result.equals("3스트라이크")) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.println("숫자를 입력해주세요 : ");
             String userNumber = new Input().get();
             validateUserNumber(userNumber);
-            result = compareNumber(userNumber);
+            result = compareNumber(userNumber, computerNumber);
             new Output().print(result);
         }
         return result;
@@ -39,9 +41,7 @@ public class Game {
                 userNumber.charAt(1) == userNumber.charAt(2);
     }
 
-    public String compareNumber(String userNumber) {
-        // String computerNumber = new Computer().generateRandomNumber();
-        String computerNumber = "123";
+    public String compareNumber(String userNumber, String computerNumber) {
         int ball = calculateBallCount(userNumber, computerNumber);
         int strike = calculateStrikeCount(userNumber, computerNumber);
         ball -= strike;
