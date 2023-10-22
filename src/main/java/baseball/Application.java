@@ -34,5 +34,13 @@ public class Application {
         if (inputList.stream().distinct().collect(Collectors.toList()).size() != inputList.size()) {
             throw new IllegalArgumentException();
         }
+
+        // 3. 스트라이크 계산
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (answer.get(i) == inputList.get(i)) {
+                strike++;
+            }
+        }
     }
 }
