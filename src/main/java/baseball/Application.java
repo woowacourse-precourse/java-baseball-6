@@ -15,7 +15,7 @@ public class Application {
             do {
                 String guessInput = view.getPlayerGuess();
                 if (!model.isValidGuess(guessInput)) {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException("유효하지 않은 값 입력");
                 }
                 List<Integer> playerGuess = model.parseStringToIntegerList(guessInput);
                 score = model.calculateScore(playerGuess);
@@ -26,7 +26,7 @@ public class Application {
 
             String choiceInput = view.getPlayerChoice();
             if (!model.isValidChoice(choiceInput)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("유효하지 않은 값 입력");
             }
             if (choiceInput.equals("2")) {
                 break;
