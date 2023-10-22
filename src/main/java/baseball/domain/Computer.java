@@ -8,10 +8,20 @@ import java.util.Objects;
 
 public class Computer extends DefaultData {
 
+    /**
+     * 한 게임에서 사용될 컴퓨터 역할의 객체
+     * @see DefaultData
+     */
     public Computer() {
         super();
         setNumberList(generateComputerNumber());
     }
+
+    /**
+     * 진행 게임의 기준값이 될 서로 다른 숫자 3개의 리스트를 생성하여 반환합니다.
+     * @return RandomNumber List
+     * @see RandomNumberGenerator
+     */
     private List<Integer> generateComputerNumber() {
         List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < MAX_LENGTH) {
@@ -23,6 +33,12 @@ public class Computer extends DefaultData {
         return numberList;
     }
 
+    /**
+     * 사용자(Pitch)와 비교한 후, Strike 의 갯수를 연산하여 반환합니다.
+     * @param userNumber 사용자가 입력한 숫자 List
+     * @return Strike 갯수
+     * @see baseball.application.GameLauncher#judge(Pitch)
+     */
     public int countStrike(List<Integer> userNumber) {
         int strikeCount = 0;
         for (int index = 0; index < MAX_LENGTH; index++) {
@@ -33,6 +49,12 @@ public class Computer extends DefaultData {
         return strikeCount;
     }
 
+    /**
+     * 사용자(Pitch)와 비교한 후, Ball 의 갯수를 연산하여 반환합니다.
+     * @param userNumber - 사용자가 입력한 숫자 List
+     * @return Ball 갯수
+     * @see baseball.application.GameLauncher#judge(Pitch)
+     */
     public int countBall(List<Integer> userNumber) {
         int ballCount = 0;
         for (Integer number : userNumber) {
