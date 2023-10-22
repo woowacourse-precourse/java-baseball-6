@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Baseball {
-    private final UserInputValidation userInputValidation;
+    private final UserInputNumber userInputNumber;
 
     public Baseball() {
-        userInputValidation = new UserInputValidation();
+        userInputNumber = new UserInputNumber();
     }
 
     public void run() {
@@ -75,19 +75,7 @@ public class Baseball {
     public BaseBallNumber inputUserNumber() {
         OutputStatement.INPUT_NUMBER_OUTPUT.printOutput();
         String inputNumber = Console.readLine();
-        List<Integer> integerList = new ArrayList<>();
-        if (!userInputValidation.isValidGameNumber(inputNumber)) {
-            throw new IllegalArgumentException();
-        }
-        for (int i = 0; i < 3; ++i) {
-            char c = inputNumber.charAt(i);
-            if (integerList.contains(Character.getNumericValue(c))) {
-                throw new IllegalArgumentException();
-            }
-            integerList.add(Character.getNumericValue(c));
-        }
-
-        return new BaseBallNumber(integerList);
+        return userInputNumber.parseBaseBallNumber(inputNumber);
     }
 
     public boolean restartGame() {
