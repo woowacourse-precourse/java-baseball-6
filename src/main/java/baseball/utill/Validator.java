@@ -5,6 +5,7 @@ import java.util.List;
 public class Validator {
 
     private static final int INPUT_LENGTH = 3;
+    private static final String ERROR_MESSAGE = "[ERROR] 올바르지 않은 입력입니다";
     public static void validation(List<String> input) {
         validationLength(input);
         validationNumeric(input);
@@ -13,7 +14,7 @@ public class Validator {
 
     private static void validationLength(List<String> input) {
         if (input.size() != INPUT_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
@@ -26,7 +27,7 @@ public class Validator {
         try {
             Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
@@ -36,7 +37,7 @@ public class Validator {
             .distinct()
             .toList();
         if (list.size() != INPUT_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
     public static void validationEndSign(String endSign){
@@ -46,7 +47,7 @@ public class Validator {
     }
     private static void checkEndSignRange(int sign){
         if(sign > 2){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
