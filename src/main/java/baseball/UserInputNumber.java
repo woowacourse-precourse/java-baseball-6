@@ -20,4 +20,8 @@ public class UserInputNumber {
         }
         return new BaseBallNumber(integerList);
     }
+
+    public boolean isValidRestartNumber(String inputNumber) {
+        return userInputValidation.isValidRestartNumber(inputNumber);
+    }
 }
