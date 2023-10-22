@@ -17,7 +17,7 @@
   - [ ] gameService() 구현
   - [ ] startGame() 구현
   - [ ] endGame() 구현
-- [ ] Computer 구현
+- [x] Computer 구현
 - [ ] User 구현
 ## 테스트
 > **"무조건" 하나 구현하면 하나 테스트 점검할 것**
@@ -26,6 +26,6 @@
 - [x] RandomGenerator 테스트
 - [ ] GameManger 테스트
 - [ ] GameService 테스트
-- [ ] Computer 테스트
+- [x] Computer 테스트
 - [ ] User 테스트
 - [ ] Application 테스트
