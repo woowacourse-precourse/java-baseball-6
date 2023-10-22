@@ -11,6 +11,7 @@ public class Number {
     private static final int CNT_NUMBER = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
+    private static final String INPUT_SENTENCE = "숫자를 입력해주세요 : ";
     private static final String regax = "^["+MIN_NUMBER+"-"+MAX_NUMBER+"]*$";
 
     private int[] digits;
@@ -32,6 +33,7 @@ public class Number {
     }
 
     public void inputAnswer() {
+        System.out.print(INPUT_SENTENCE);
         String input = Console.readLine();
         setDigits(input);
     }
