@@ -4,6 +4,11 @@ public class Judge {
     private int strike;
     private int ball;
 
+    public Judge(){
+        strike = 0;
+        ball = 0;
+    }
+    
     public void increaseStrike() {
         strike++;
     }
