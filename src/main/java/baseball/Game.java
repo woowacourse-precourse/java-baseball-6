@@ -10,7 +10,6 @@ public class Game {
         boolean restart;
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
-            computer.init();
             play();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             restart = player.restart();
@@ -19,6 +18,7 @@ public class Game {
 
     public void play() {
         Result result;
+        computer.init();
         do {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> input = player.getInput();
