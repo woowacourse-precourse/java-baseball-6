@@ -10,7 +10,7 @@ public class Game {
 
     private GameNumbers userGameNumbers;
     private final GameNumbers computerGameNumbers = createRandomGameNumbers();
-    private final Result result = new Result();
+    private Result result = new Result();
 
     public void updateUserNumbers(GameNumbers userGameNumbers) {
         this.userGameNumbers = userGameNumbers;
@@ -33,11 +33,11 @@ public class Game {
     }
 
     public void resetResult() {
-        this.result.reset();
+        this.result = new Result();
     }
 
     public boolean isRunning() {
-        return this.result.isRunning();
+        return this.result.getStrike() < NUMBERS_SIZE;
     }
 
     public Result getResult() {

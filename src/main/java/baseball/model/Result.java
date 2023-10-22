@@ -1,7 +1,5 @@
 package baseball.model;
 
-import static baseball.model.GameNumbers.NUMBERS_SIZE;
-
 public class Result {
 
     private int strike = 0;
@@ -15,18 +13,6 @@ public class Result {
         this.ball++;
     }
 
-    public void reset() {
-        this.strike = 0;
-        this.ball = 0;
-    }
-
-    public boolean isRunning() {
-        if (strike < NUMBERS_SIZE) {
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public String toString() {
         if (ball == 0 && strike == 0) {
@@ -37,5 +23,9 @@ public class Result {
             return ball + "볼";
         }
         return ball + "볼 " + strike + "스트라이크";
+    }
+
+    public int getStrike() {
+        return strike;
     }
 }
