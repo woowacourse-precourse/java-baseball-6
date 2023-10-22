@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User extends BaseballPlayer {
+    
     @Override
     public void inputBaseballNumbers() {
         List<BaseballNumber> playerInputBaseballNumber = new ArrayList<>();

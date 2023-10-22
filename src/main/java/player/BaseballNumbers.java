@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class BaseballNumbers {
 
-    private List<BaseballNumber> baseballNumbers;
+    private final List<BaseballNumber> baseballNumbers;
 
     public BaseballNumbers() {
         this.baseballNumbers = new ArrayList<>();

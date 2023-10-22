@@ -4,7 +4,7 @@ import static constant.StringConstant.ONLY_NUMBER_MESSAGE;
 
 public class BaseballNumber {
 
-    private Integer baseballNumber;
+    private final Integer baseballNumber;
 
     public BaseballNumber(String baseballNumber) {
         validateNumericInput(baseballNumber);
