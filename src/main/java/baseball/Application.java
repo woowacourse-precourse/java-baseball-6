@@ -5,12 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-class BaseballGame {
+class tmpGame {
     private String computerNum;
     private int strikeCnt;
     private int ballCnt;
 
-    public BaseballGame() {
+    public tmpGame() {
         this.computerNum = makeRandomNumber();
     }
 
@@ -173,7 +173,7 @@ public class Application {
         boolean isFinish = false;
 
         while (!isFinish) {
-            BaseballGame game = new BaseballGame();
+            tmpGame game = new tmpGame();
             isFinish = game.start();
         }
     }
