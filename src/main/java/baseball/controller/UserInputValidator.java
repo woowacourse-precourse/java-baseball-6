@@ -22,6 +22,18 @@ public class UserInputValidator {
         return userInputString.replaceAll(" ", "");
     }
 
+    public List<Integer> userInputNumbersValidate(String userInputString) {
+        if (!isThreeNumbers(userInputString)) {
+            throw new IllegalArgumentException(WRONG_ANSWER_LENGTH_MESSAGE);
+        } else if (!isNumericCastable(userInputString)) {
+            throw new IllegalArgumentException(WRONG_RANGE_STRING_MESSAGE);
+        } else if (!isNotDuplicate(userInputString)) {
+            throw new IllegalArgumentException(DUPLICATED_STRING_MESSAGE);
+        }
+
+        return convertStringToIntegerList(userInputString);
+    }
+
     public boolean isThreeNumbers(String userInputString) {
         if (userInputString.length() == ANSWER_LENGTH) {
             return true;
@@ -53,5 +65,10 @@ public class UserInputValidator {
             return true;
         }
         return false;
+    }
+
+    public List<Integer> convertStringToIntegerList(String userInputString) {
+        int[] convertedIntArray = Stream.of(userInputString.split("")).mapToInt(Integer::parseInt).toArray();
+        return Arrays.stream(convertedIntArray).boxed().collect(Collectors.toList());
     }
 }

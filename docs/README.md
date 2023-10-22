@@ -72,15 +72,15 @@
         - [x] 공백 제거
     - [x] 오류 메시지 전달
         - [x] IllegalArgumentException 발생 후 종료
-- [ ] userInputString -> 숫자형 userInputNumbers 변환
-    - [ ] 데이터 유효성 검사
+- [x] userInputString -> 숫자형 userInputNumbers 변환
+    - [x] 데이터 유효성 검사
         - [x] 세 자리 입력값인지 확인
         - [x] 숫자형 변환이 가능한 입력값인지 확인
           - [x] 1~9로 변환 가능한 문자로 이루어진 문자열인지 확인
         - [x] 서로 다른 입력값인지 확인
-        - [ ] 숫자형 userInputNumbers 변환
-    - [ ] 각 경우에 따른 오류 메시지 전달
-        - [ ] IllegalArgumentException 발생 후 종료
+        - [x] 숫자형 userInputNumbers 변환
+    - [x] 각 경우에 따른 오류 메시지 전달
+        - [x] IllegalArgumentException 발생 후 종료
 
 4. RandomUtility
 - [ ] 난수 생성
