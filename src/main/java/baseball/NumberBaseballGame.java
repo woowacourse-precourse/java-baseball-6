@@ -42,7 +42,6 @@ public class NumberBaseballGame {
         }
     }
 
-
     private List<Integer> userNumberInput() {
         showNumberInputMessage();
         String inputString = Console.readLine();
@@ -53,8 +52,7 @@ public class NumberBaseballGame {
                 .boxed()
                 .collect(Collectors.toList());
     }
-
-
+    
     boolean isUserWin(int strike) {
         return strike == MAX_NUMBER_LENGTH;
     }

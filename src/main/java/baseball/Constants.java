@@ -8,7 +8,6 @@ public final class Constants {
     static final String STOP = "2";
     static final int MIN_NUMBER = 1;
     static final int MAX_NUMBER = 9;
-
     static final int MAX_NUMBER_LENGTH = 3;
 
     private Constants() {
