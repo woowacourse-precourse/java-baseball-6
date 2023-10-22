@@ -28,12 +28,7 @@ class GameLauncher {
     void run() {
         while (init == 1) {
             makeRandomNum();
-            try {
-                playBaseball();
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                return;
-            }
+            playBaseball();
         }
     }
 
@@ -47,30 +42,23 @@ class GameLauncher {
         }
     }
 
-    void playBaseball() throws IllegalArgumentException {
+    void playBaseball() {
         int[] arrBallStrike;
 
         do {
             arrBallStrike = new int[]{0, 0};
             System.out.print("숫자를 입력해주세요 : ");
-            try {
-                int userNum = input();
-                if (userNum < 99) {
-                    throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
-                }
-                countBallStrike(arrBallStrike, userNum);
-                print(arrBallStrike);
-            } catch (IllegalArgumentException e) {
+            int userNum = input();
+            if (userNum < 99) {
                 throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
             }
+
+            countBallStrike(arrBallStrike, userNum);
+            print(arrBallStrike);
         } while (arrBallStrike[1] != 3);
 
-        try {
-            init = input();
-            if (init > 99) {
-                throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
-            }
-        } catch (IllegalArgumentException e) {
+        init = input();
+        if (init > 99) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
     }
@@ -91,12 +79,6 @@ class GameLauncher {
     }
 
     void print(int[] arrBallStrike) {
-        if (arrBallStrike[1] == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            return;
-        }
-
         if (arrBallStrike[0] == 0 && arrBallStrike[1] == 0) {
             System.out.println("낫싱");
             return;
@@ -112,6 +94,10 @@ class GameLauncher {
             }
         }
         System.out.println();
+        if (arrBallStrike[1] == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
     }
 
     int input() throws IllegalArgumentException {
