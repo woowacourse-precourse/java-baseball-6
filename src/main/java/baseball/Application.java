@@ -25,6 +25,17 @@ public class Application {
         checkAnswerStrikeAndBall(strike,ball);
     }
 
+    public boolean determineFinishOrAgainGame(int startNumOrEndNum){
+        if (startNumOrEndNum == 1){
+            return false;
+        }
+        else if (startNumOrEndNum == 2){
+            return true;
+        }
+        // 예외 처리 해야되는 부분
+        throw new IllegalArgumentException("startNumOrEndNum 값은 1 또는 2여야 합니다.");
+    }
+
     public void checkAnswerStrikeAndBall(int strike, int ball){
         if (strike == 0 && ball == 0){
             System.out.println("낫싱");
