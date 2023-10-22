@@ -11,4 +11,11 @@ public class BaseballGameProcess implements GameProcess {
         String computeValue = Computer.createValue();
         game.execute(computeValue);
     }
+
+    @Override
+    public void checkGameContinue(String gameContinue, Game game) {
+        if(gameContinue.equals("1")) {
+            startGame(game);
+        }
+    }
 }
