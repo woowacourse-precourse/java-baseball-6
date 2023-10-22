@@ -34,7 +34,7 @@ public class Game {
     public int[] inputNums() {
         System.out.print(Constans.REQUEST_NUMS);
         String userAnswer = Console.readLine();
-        inputNumsTest(userAnswer);
+        validateInput(userAnswer);
         String[] userAnswerNums = userAnswer.split("");
         int[] nums = new int[Constans.MAX_NUMBER];
         for(int i = 0; i < Constans.MAX_NUMBER; i++){
@@ -43,7 +43,7 @@ public class Game {
         return nums;
     }
 
-    public void inputNumsTest(String userAnswer){
+    public void validateInput(String userAnswer){
         String[] spiltAnswer = userAnswer.split("");
         Set<String> uniqueDigits = new HashSet<>();
         for(int i = 0; i < spiltAnswer.length; i++){
