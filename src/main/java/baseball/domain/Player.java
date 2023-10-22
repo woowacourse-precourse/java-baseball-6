@@ -1,7 +1,4 @@
-package baseball.view;
-
-import baseball.domain.BaseBallHint;
-import baseball.domain.BaseBallNumbers;
+package baseball.domain;
 
 public interface Player {
 
