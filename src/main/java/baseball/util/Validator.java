@@ -1,6 +1,7 @@
 package baseball.util;
 
 import baseball.config.Config;
+import baseball.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,8 @@ public class Validator {
         return isNotNumber(userNumbers) || isNotValidDigits(userNumbers) || hasDuplicatedNumbers(userNumbers);
     }
 
-    public boolean isInvalid(String restartInput) {
-        return !restartInput.equals("1") && !restartInput.equals("2");
+    public static boolean isInvalid(String restartInput) {
+        return !restartInput.equals(InputView.RESTART) && !restartInput.equals(InputView.EXIT);
     }
 
     private static boolean isNotValidDigits(List<Integer> userNumbers){
@@ -26,7 +27,6 @@ public class Validator {
     }
 
     private static boolean hasDuplicatedNumbers(List<Integer> userNumbers){
-
         List<Integer> temp = new ArrayList<>();
         for (int number : userNumbers) {
             if(temp.contains(number)) return true;

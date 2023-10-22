@@ -5,6 +5,7 @@ import baseball.domain.BaseballNumbers;
 import baseball.service.GameService;
 import baseball.domain.Result;
 import baseball.util.Parser;
+import baseball.util.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -41,6 +42,7 @@ public class GameController {
     }
 
     private void restartOrNot(String input) {
+        if(Validator.isInvalid(input)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
         if(input.equals(InputView.EXIT)) playing = false;
         if(input.equals(InputView.RESTART)) init();
     }
