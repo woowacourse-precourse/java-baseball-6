@@ -12,4 +12,8 @@ public class Constant {
     public static final int NUMBER_MIN_VALUE = 1;
     public static final int NUMBER_MAX_VALUE = 9;
     public static final int NUMBER_SIZE = 3;
+
+    public static final int RESTART_MIN_VALUE = 1;
+    public static final int RESTART_MAX_VALUE = 2;
+    public static final int RESTART_SIZE = 1;
 }

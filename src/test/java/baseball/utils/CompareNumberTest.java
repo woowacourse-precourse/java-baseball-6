@@ -10,7 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CompareNumberTest {
-
     @Test
     @DisplayName("1, 1를 리턴합니다.")
     void x볼y스트라이크() {

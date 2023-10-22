@@ -1,9 +1,9 @@
 package baseball.model.service;
 
-import static baseball.model.constants.ExceptionMessage.LENGTH_IS_WRONG;
-import static baseball.model.constants.ExceptionMessage.NOT_NUMBER;
-import static baseball.model.constants.ExceptionMessage.NUMBER_DUPLICATED;
-import static baseball.model.constants.ExceptionMessage.RANGE_IS_WRONG;
+import static baseball.model.constants.ExceptionMessage.PLAYER_LENGTH_IS_WRONG;
+import static baseball.model.constants.ExceptionMessage.PLAYER_NOT_NUMBER;
+import static baseball.model.constants.ExceptionMessage.PLAYER_NUMBER_DUPLICATED;
+import static baseball.model.constants.ExceptionMessage.PLAYER_RANGE_IS_WRONG;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -13,7 +13,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class PlayerNumberTest {
-
     @Test
     @DisplayName("숫자를 입력하지 않아 예외가 발생합니다.")
     void 숫자이외입력예외() {
@@ -24,7 +23,7 @@ class PlayerNumberTest {
             playerNumber.isNonNumber(numbers);
         });
 
-        assertEquals(NOT_NUMBER, exception.getMessage());
+        assertEquals(PLAYER_NOT_NUMBER, exception.getMessage());
     }
 
     @Test
@@ -37,7 +36,7 @@ class PlayerNumberTest {
             playerNumber.isLengthCorrect(numbers);
         });
 
-        assertEquals(LENGTH_IS_WRONG, exception.getMessage());
+        assertEquals(PLAYER_LENGTH_IS_WRONG, exception.getMessage());
     }
 
     @Test
@@ -50,7 +49,7 @@ class PlayerNumberTest {
             playerNumber.isRange(numbers);
         });
 
-        assertEquals(RANGE_IS_WRONG, exception.getMessage());
+        assertEquals(PLAYER_RANGE_IS_WRONG, exception.getMessage());
     }
 
     @Test
@@ -63,7 +62,7 @@ class PlayerNumberTest {
             playerNumber.isDuplicate(numbers);
         });
 
-        assertEquals(NUMBER_DUPLICATED, exception.getMessage());
+        assertEquals(PLAYER_NUMBER_DUPLICATED, exception.getMessage());
     }
 
 }
