@@ -10,9 +10,9 @@ public class InputValidator {
         }
     }
 
-    public static void validateCommand(String input) throws IllegalArgumentException {
-        if (!input.equals(GameCommand.GAME_RESTART_COMMAND) && !input.equals(GameCommand.GAME_OVER_COMMAND)) {
-            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+    public static void validateCommand(GameCommand gameCommand) throws IllegalArgumentException {
+        if (gameCommand == GameCommand.UNKNOWN_COMMAND) {
+            throw new IllegalArgumentException("잘못된 커맨드를 입력하셨습니다.");
         }
     }
 }
