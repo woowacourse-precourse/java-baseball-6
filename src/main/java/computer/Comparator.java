@@ -18,21 +18,31 @@ public class Comparator {
         initScore();
         initNumber();
         receiveBalls(computer, user);
-        int current = 0;
-        while (current < BALLS_SIZE) {
-            if (computerNumber.get(current).equals(userNumber.get(current))) {
-                strike++;
-                current++;
+
+        for(int current=0; current<3;current++) {
+            if(isSameValueAtSameLocation(current)){
                 continue;
             }
-            if (computerNumber.contains(userNumber.get(current))) {
-                ball++;
-                current++;
-                continue;
-            }
-            current++;
+            isContainInComputerNumber(current);
+
         }
-        store(strike, ball);
+        storeToHint(strike, ball);
+    }
+
+    private boolean isSameValueAtSameLocation(int location){
+        if (computerNumber.get(location).equals(userNumber.get(location))) {
+            strike++;
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isContainInComputerNumber(int location){
+        if (computerNumber.contains(userNumber.get(location))) {
+            ball++;
+            return true;
+        }
+        return false;
     }
 
     private void receiveBalls(Balls computer,Balls user){
@@ -52,7 +62,7 @@ public class Comparator {
         userNumber.clear();
     }
 
-    public void store(int strike,int ball){
+    public void storeToHint(int strike,int ball){
         Hint hint = new Hint();
         hint.save(strike, ball);
     }
