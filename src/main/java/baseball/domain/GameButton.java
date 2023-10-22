@@ -2,11 +2,13 @@ package baseball.domain;
 
 import java.util.Arrays;
 
-public class GameButton {
+public class GameButton { // TODO singleton
     private GameStatus gameStatus = GameStatus.PLAY;
 
-    public void turnButton(String code) {
-        this.gameStatus = GameStatus.of(code);
+    public void changeButton(String code) {
+        if (!gameStatus.code.equals(code)) {
+            this.gameStatus = GameStatus.of(code);
+        }
     }
 
     public boolean isPlay() {
