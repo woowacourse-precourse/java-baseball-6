@@ -1,6 +1,6 @@
 package baseball.exception;
 
-public class InputException {
+public class InputException{
     public static void validateInput(String input) {
         checkNumberLength(input);
         isNumeric(input);
@@ -24,7 +24,7 @@ public class InputException {
     }
 
     private static void checkRestartNumberType(String input) {
-        if (input.equals("1") || input.equals("2")) {
+        if (!(input.equals("1") || input.equals("2"))) {
             throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
         }
     }
