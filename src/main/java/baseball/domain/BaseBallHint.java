@@ -16,4 +16,8 @@ public record BaseBallHint(
     public boolean hasStrike() {
         return strike != 0;
     }
+
+    public boolean hasThreeStrike() {
+        return strike == 3;
+    }
 }
