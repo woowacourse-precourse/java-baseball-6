@@ -18,10 +18,16 @@ public class NumberGenerator {
         List<Ball> balls = new ArrayList<>();
         for (int position = MIN_POSITION; position < NUMBER; position++) {
             int number = pickNumberInRange(MIN_RANGE, MAX_RANGE);
+            validateRange(number);
             balls.add(new Ball(number, position));
         }
         return new Balls(balls);
     }
 
+    private void validateRange(int number) {
+        if (number < MIN_RANGE || MAX_RANGE < number) {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
