@@ -40,7 +40,7 @@ public class GameLauncher {
         while (true) {
             BallCounter.reset();
             PlayerNumbers playerNumbers = new PlayerNumbers(InputView.readNumbers(), DIGIT_NUMBER);
-            computerNumbers.checkPlayerNumbers(playerNumbers, DIGIT_NUMBER);
+            playerNumbers.checkForBallCount(computerNumbers, DIGIT_NUMBER);
             if (BallCounter.isAllStrike(DIGIT_NUMBER)) {
                 return;
             }

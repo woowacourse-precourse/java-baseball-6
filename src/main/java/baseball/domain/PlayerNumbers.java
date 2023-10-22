@@ -38,19 +38,9 @@ public class PlayerNumbers {
                 .anyMatch(number -> !(MIN_NUMBER <= number && number <= MAX_NUMBER));
     }
 
-    public void compareForBallCount(int computerNumber, int indexOfComputerNumber) {
-        for (int indexOfPlayerNumbers = 0; indexOfPlayerNumbers < numbers.size(); indexOfPlayerNumbers++) {
-            if (numbers.get(indexOfPlayerNumbers) == computerNumber) {
-                ballCount(indexOfComputerNumber, indexOfPlayerNumbers);
-            }
+    public void checkForBallCount(ComputerNumbers computerNumbers, int digitNumber) {
+        for (int i = 0; i < digitNumber; i++) {
+            computerNumbers.compare(numbers.get(i), i);
         }
-    }
-
-    private void ballCount(int indexOfComputerNumber, int indexOfPlayerNumbers) {
-        if (indexOfPlayerNumbers == indexOfComputerNumber) {
-            BallCounter.countStrike();
-            return;
-        }
-        BallCounter.countBall();
     }
 }

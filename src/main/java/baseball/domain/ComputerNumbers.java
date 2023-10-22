@@ -10,9 +10,19 @@ public class ComputerNumbers {
         this.numbers = numbers;
     }
 
-    public void checkPlayerNumbers(PlayerNumbers playerNumbers, int digitNumber) {
-        for (int i = 0; i < digitNumber; i++) {
-            playerNumbers.compareForBallCount(numbers.get(i), i);
+    public void compare(int playerNumber, int indexOfPlayerNumber) {
+        for (int indexOfComputerNumber = 0; indexOfComputerNumber < numbers.size(); indexOfComputerNumber++) {
+            if (numbers.get(indexOfComputerNumber) == playerNumber) {
+                ballCount(indexOfComputerNumber, indexOfPlayerNumber);
+            }
         }
+    }
+
+    private void ballCount(int indexOfComputerNumber, int indexOfPlayerNumbers) {
+        if (indexOfPlayerNumbers == indexOfComputerNumber) {
+            BallCounter.countStrike();
+            return;
+        }
+        BallCounter.countBall();
     }
 }
