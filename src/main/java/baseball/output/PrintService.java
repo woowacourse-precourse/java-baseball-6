@@ -38,9 +38,9 @@ public class PrintService {
         if (ballCount.getStrike() == 0 && ballCount.getBall() == 0) {
             PrintService.result();
         } else if (ballCount.getStrike() == 0) {
-            PrintService.result(ballCount.getStrike(), false);
+            PrintService.result(ballCount.getBall(), false);
         } else if (ballCount.getBall() == 0) {
-            PrintService.result(ballCount.getBall(), true);
+            PrintService.result(ballCount.getStrike(), true);
         } else {
             PrintService.result(ballCount.getBall(), ballCount.getStrike());
         }
