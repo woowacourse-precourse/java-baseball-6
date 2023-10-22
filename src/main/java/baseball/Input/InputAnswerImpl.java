@@ -1,5 +1,9 @@
 package baseball.Input;
 
+import static baseball.Message.InputAnswerMsg.DUPLICATE;
+import static baseball.Message.InputAnswerMsg.IS_INTEGER;
+import static baseball.Message.InputAnswerMsg.RANGE;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -38,7 +42,7 @@ public class InputAnswerImpl implements InputAnswer {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수만 입력해주세요." + "\n" + "입력값: " + input);
+            throw new IllegalArgumentException(IS_INTEGER.getMsg() + input);
         }
     }
 
@@ -47,14 +51,14 @@ public class InputAnswerImpl implements InputAnswer {
         if (input.charAt(0) == input.charAt(1) ||
                 input.charAt(0) == input.charAt(2) ||
                 input.charAt(1) == input.charAt(2)) {
-            throw new IllegalArgumentException("중복된 정수를 입력할 수 없습니다." + "\n" + "입력값: " + input);
+            throw new IllegalArgumentException(DUPLICATE.getMsg() + input);
         }
     }
 
     @Override
     public void rangeValidation(String input) {
         if (input.length() != 3) {
-            throw new IllegalArgumentException("범위를 벗어난 정수를 입력할 수 없습니다." + "\n" + "입력값: " + input);
+            throw new IllegalArgumentException(RANGE.getMsg() + input);
         }
     }
 }
