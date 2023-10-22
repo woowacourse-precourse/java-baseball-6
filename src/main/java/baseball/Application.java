@@ -57,7 +57,7 @@ public class Application {
             String result = String.format("%d스트라이크",strike);
             System.out.println(result);
         } else if (strike == 0){
-            String result = String.format("$d볼",ball);
+            String result = String.format("%d볼",ball);
             System.out.println(result);
         }
     }
