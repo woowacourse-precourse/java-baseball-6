@@ -7,6 +7,11 @@ public class Computer {
     public Computer() {
     }
 
+    public Computer(String input, int[] computerNumberBall) {
+        this.input = input;
+        this.computerNumberBall = computerNumberBall;
+    }
+
     public String getInput() {
         return input;
     }

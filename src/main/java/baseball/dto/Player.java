@@ -8,6 +8,12 @@ public class Player {
     public Player() {
     }
 
+    public Player(String input, int[] playerNumberBall, String condition) {
+        this.input = input;
+        this.playerNumberBall = playerNumberBall;
+        this.condition = condition;
+    }
+
     public String getInput() {
         return input;
     }

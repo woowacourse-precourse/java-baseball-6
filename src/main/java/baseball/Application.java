@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.dto.Computer;
+import baseball.dto.Player;
 import baseball.dto.Result;
 import baseball.service.Converter;
 import baseball.service.Generator;
@@ -17,6 +18,7 @@ public class Application {
             computer.setComputerNumberBall(Converter.convert(computer.getInput()));
 
             Result result = new Result();
+            Player player = new Player();
             while (result.isCondition()) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
@@ -27,6 +29,8 @@ public class Application {
                     Console.close();
                     return;
                 }
+                player.setPlayerNumberBall(Converter.convert(num));
+
 
             }
         }
