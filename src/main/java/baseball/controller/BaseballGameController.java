@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.NumberList;
 import baseball.model.Restart;
-import baseball.utils.Convert;
 import baseball.validator.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -23,7 +22,7 @@ public class BaseballGameController {
     }
 
     private NumberList guessing() {
-        return Convert.stringToNumberList(InputController.scanGuess());
+        return NumberList.stringToNumberList(InputController.scanGuess());
     }
 
     public boolean whetherRestart() {

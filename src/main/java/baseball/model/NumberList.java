@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.validator.Validator;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,6 +24,16 @@ public class NumberList {
         return numberList.get(index);
     }
 
+    public static NumberList stringToNumberList(String numberString) {
+        List<Integer> numberList = new ArrayList<>() {{
+            for (int i = 0; i < numberString.length(); i++) {
+                int number = numberString.charAt(i) - '0';
+                add(number);
+            }
+        }};
+        return new NumberList(numberList);
+    }
+    
     private void validateRepeatedNumber(List<Integer> numberList) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < numberList.size(); i++) {
