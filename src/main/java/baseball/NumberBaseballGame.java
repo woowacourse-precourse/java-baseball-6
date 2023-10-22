@@ -11,31 +11,42 @@ public class NumberBaseballGame {
     }
     public static void initGame() {
         answer = generateRandomNumber();
-        Game();
+        game();
     }
 
     //입력 + 처리 -> 이 함수를 반복할 것.
-    private static void Game(){
+    private static void game(){
         List<Integer> userInput = Input.getUserInput();
-        //결과 알려줘
-        for (Integer i : answer) {
-            System.out.println("i = " + i);
-        }
         caculateCount(userInput);
     }
     private static void caculateCount(List<Integer> userInput){
-        int strikeCount = 0;
-        int ballCount = 0;
-        for(int i=0;i<3;i++){
+        int strike = 0;
+        int ball = 0;
+        ball = countBall(userInput);
+        strike = countStrike(userInput);
+        getResult(strike,ball);
+    }
+
+    private static int countStrike(List<Integer> userInput) {
+        int strike = 0;
+        for (int i = 0;i<answer.size();i++){
             int cur = userInput.get(i);
-            if(answer.get(i).equals(cur)){
-                strikeCount++;
-            }
-            else if(answer.contains(cur)){
-                ballCount++;
+            if (answer.contains(cur)&&answer.indexOf(cur)==i){
+                strike++;
             }
         }
-        getResult(strikeCount,ballCount);
+        return strike;
+    }
+
+    private static int countBall(List<Integer> userInput) {
+        int ball = 0;
+        for(int i = 0 ; i<answer.size();i++){
+            int cur = userInput.get(i);
+            if (answer.contains(cur)&&answer.indexOf(cur)!=i){
+                ball++;
+            }
+        }
+        return ball;
     }
 
 
@@ -47,18 +58,18 @@ public class NumberBaseballGame {
         }
         else if(strikeCount==0&&ballCount==0){
             System.out.println("낫싱");
-            Game();
+            game();
         }
         else if(ballCount==0){
             System.out.println(strikeCount+"스트라이크");
-            Game();
+            game();
         }
         else if(strikeCount==0){
             System.out.println(ballCount+"볼");
-            Game();
+            game();
         }else{
             System.out.println(ballCount+"볼 "+strikeCount+"스트라이크");
-            Game();
+            game();
         }
     }
 
