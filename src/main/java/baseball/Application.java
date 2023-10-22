@@ -6,14 +6,15 @@ import baseball.dto.Result;
 import baseball.service.Converter;
 import baseball.service.GameLogic;
 import baseball.service.Generator;
+import baseball.service.ResultPrint;
 import baseball.service.Validate;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
             Computer computer = new Computer();
             computer.setInput(new Generator().generateNum());
             computer.setComputerNumberBall(Converter.convert(computer.getInput()));
@@ -34,7 +35,7 @@ public class Application {
                 player.setPlayerNumberBall(Converter.convert(player.getInput()));
                 GameLogic logic = new GameLogic();
                 logic.play(player.getPlayerNumberBall(), computer.getComputerNumberBall(), result);
-                System.out.println(result.getBall() + "볼 " + result.getStrike() + "스트라이크");
+                new ResultPrint(result).print();
                 logic.resultClear(result);
             }
         }
