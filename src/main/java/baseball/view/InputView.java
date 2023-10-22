@@ -7,12 +7,12 @@ public class InputView {
     private InputView() {
     }
 
-    public static Integer inputPositiveNumber() {
+    public static String inputPositiveNumber() {
         String inputString = Console.readLine();
         validateBlankString(inputString);
         validateNumber(inputString);
         validatePositiveNumber(inputString);
-        return Integer.parseInt(inputString);
+        return inputString;
     }
 
     private static void validateBlankString(String string) {
