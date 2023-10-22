@@ -10,10 +10,11 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        startGame();
+        boolean gameState = true;
+        startGame(gameState);
     }
 
-    public static void startGame() {
+    public static void startGame(boolean gameState) {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -22,7 +23,7 @@ public class Application {
             }
         }
 
-        while (true) {
+        while (gameState) {
 
             int strikeCount = 0;
             int ballCount = 0;
@@ -68,39 +69,40 @@ public class Application {
                 // 스트라이크 수 확인
                 for (int s = 0; s < 3; s++) {
 
-                    if(computer.get(s) == player.get(s)) {
+                    if (computer.get(s) == player.get(s)) {
                         strikeCount++;
-                    }
-                    else {
+                    } else {
                         computerBall.add(computer.get(s));
                         playerBall.add(player.get(s));
                     }
                 }
-                if (strikeCount == 3){
-                    result = strikeCount  + "스트라이크 \n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+                if (strikeCount == 3) {
+                    result = strikeCount + "스트라이크 \n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
                     System.out.println(result);
+                    gameState = false;
                     endGame();
                 }
 
                 // 볼 수 확인
                 for (int b = 0; b < playerBall.size(); b++) {
-                    if(computerBall.contains(playerBall.get(b))) {
+                    if (computerBall.contains(playerBall.get(b))) {
                         ballCount++;
                     }
                 }
 
-                if (strikeCount != 0 && ballCount == 0){
-                    result = strikeCount  + "스트라이크";
+                if (strikeCount > 0 && strikeCount < 3 && ballCount == 0) {
+                    result = strikeCount + "스트라이크";
+                    System.out.println(result);
                 } else if (strikeCount == 0 && ballCount != 0) {
-                    result = ballCount  + "볼";
+                    result = ballCount + "볼";
+                    System.out.println(result);
                 } else if (strikeCount != 0 && ballCount != 0) {
-                    result =  strikeCount  + "스트라이크 " + ballCount  + "볼 ";
-                } else {
+                    result = ballCount + "볼 " + strikeCount + "스트라이크 ";
+                    System.out.println(result);
+                } else if (strikeCount == 0 && ballCount == 0) {
                     result = "낫싱";
+                    System.out.println(result);
                 }
-
-                System.out.println(result);
-
             }
             // 플레이어가 입력한 값에 대한 예외 처리
             catch (IllegalArgumentException e) {
@@ -111,7 +113,24 @@ public class Application {
     }
 
     public static void endGame() {
+
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String choice = Console.readLine();
+
+        try {
+            String choice = Console.readLine();
+            switch (choice) {
+                case "1":
+                    startGame(true);
+                    break;
+                case "2":
+                    System.out.println("게임 종료");
+                    break;
+                default:
+                    throw new IllegalArgumentException("1(재시작)과 2(종료) 중 선택해 주세요.");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            throw e;
+        }
     }
 }
