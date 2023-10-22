@@ -27,7 +27,7 @@ public class UserInputHandler {
         return isCorrectDigit(input) && isCorrectLengthFromInput(input);
     }
 
-    public List<Integer> makeUserCount(String input) {
+    private List<Integer> makeUserCountList(String input) {
         List<Integer> userCountList = new ArrayList<>();
         for (char c : input.toCharArray()) {
             userCountList.add(Character.getNumericValue(c));
@@ -41,6 +41,6 @@ public class UserInputHandler {
         if (!isCorrectInput(userInput)) {
             throw new IllegalArgumentException("입력 오류");
         }
-        return makeUserCount(userInput);
+        return makeUserCountList(userInput);
     }
 }
