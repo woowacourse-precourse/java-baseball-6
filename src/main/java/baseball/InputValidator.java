@@ -28,7 +28,6 @@ public class InputValidator {
         return input.chars().allMatch(ch -> ch >= 1 + '0' && ch <= 9 + '0');
     }
 
-    // 사용자의 선택지에 대한 검증
     public static void validateChoiceInput(String input) {
         if (!input.matches("\\d+")) {
             throw new IllegalArgumentException(GameConstants.NOT_A_NUMBER);
