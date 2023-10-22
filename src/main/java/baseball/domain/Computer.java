@@ -4,11 +4,11 @@ package baseball.domain;
 public class Computer {
     private final Answer answer;
 
-    public Computer(NumbersGenerator answerGenerator) {
+    public Computer(BaseballNumbersGenerator answerGenerator) {
         answer = new Answer(answerGenerator.generate());
     }
 
-    public Score getScore(String input) {
-        return answer.match(input);
+    public Score getScore(BaseballNumbers inputBaseballNumbers) {
+        return answer.match(inputBaseballNumbers);
     }
 }
