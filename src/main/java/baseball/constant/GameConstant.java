@@ -8,6 +8,7 @@ public enum GameConstant {
     MAX_BALL_NUM(9),
     TOTAL_BALL_CNT(3),
     THREE_STRIKE(3),
+    NONE(0),
     RESTART(1),
     QUIT(2);
 
