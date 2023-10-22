@@ -1,7 +1,7 @@
 /*
  * <pre>
- * Class : BaseballController
- * Comment: baseball.Application 시작 클래스
+ * Class : StartView
+ * Comment: Application 시작 화면 출력 클래스
  * History
  * ================================================================
  * DATE             AUTHOR           NOTE
@@ -14,14 +14,10 @@
  * @see
  */
 
-package controller;
+package view;
 
-import view.StartView;
-
-public class BaseballController {
-    public static void startBaseball() {
-        StartView.startView();
+public class StartView {
+    public static void startView() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
-
-
 }
