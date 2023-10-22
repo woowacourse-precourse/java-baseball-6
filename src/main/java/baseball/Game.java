@@ -23,12 +23,12 @@ public class Game {
 
     public void play() {
         while (true) {
-            playRound();
+            playOneRound();
             if (isFinish) break;
         }
     }
 
-    public void playRound() {
+    private void playOneRound() {
         printInputNumberComment();
         List<Integer> answer = computer.loadRandomNumberList();
         List<Integer> playerNumbers = player.load3NumberList();
