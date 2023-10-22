@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import baseball.domain.scoringnumbers.Balls;
+import baseball.domain.scoringnumbers.Strikes;
+
 public class Result {
     public Strikes numberOfStrikes;
     public Balls numberOfBalls;

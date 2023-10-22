@@ -2,6 +2,8 @@ package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import baseball.domain.scoringnumbers.Balls;
+import baseball.domain.scoringnumbers.Strikes;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

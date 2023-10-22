@@ -1,9 +1,9 @@
 package baseball.controller;
 
 import baseball.domain.BallNumber;
-import baseball.domain.Balls;
 import baseball.domain.Result;
-import baseball.domain.Strikes;
+import baseball.domain.scoringnumbers.Balls;
+import baseball.domain.scoringnumbers.Strikes;
 import baseball.system.SystemConstant;
 import java.util.stream.IntStream;
 

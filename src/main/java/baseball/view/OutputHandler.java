@@ -1,7 +1,7 @@
 package baseball.view;
 
-import baseball.domain.Balls;
-import baseball.domain.Strikes;
+import baseball.domain.scoringnumbers.Balls;
+import baseball.domain.scoringnumbers.Strikes;
 
 public class OutputHandler {
     public static void theGameStart() {

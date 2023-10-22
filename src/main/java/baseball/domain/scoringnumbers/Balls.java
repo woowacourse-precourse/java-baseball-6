@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.scoringnumbers;
 
 public class Balls extends ScoringNumbers {
 

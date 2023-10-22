@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.scoringnumbers;
 
 import baseball.system.SystemConstant;
 
