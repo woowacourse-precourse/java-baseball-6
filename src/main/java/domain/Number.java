@@ -30,5 +30,8 @@ public class Number {
         }
     }
 
+    // Test Method
+    public static List<Integer> getGoalNumbers() {
+        return goalNumbers;
     }
 }
