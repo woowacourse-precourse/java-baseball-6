@@ -29,4 +29,20 @@ class RandomNumberTest {
 
         assertThat(randomNumbers.size()).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("각 자리 숫자는 서로 다르다.")
+    void test3() {
+        List<Integer> randomNumbers = new ArrayList<>();
+        while (randomNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
+        }
+
+        assertThat(randomNumbers.get(0)).isNotEqualTo(randomNumbers.get(1));
+        assertThat(randomNumbers.get(1)).isNotEqualTo(randomNumbers.get(2));
+        assertThat(randomNumbers.get(2)).isNotEqualTo(randomNumbers.get(0));
+    }
 }
