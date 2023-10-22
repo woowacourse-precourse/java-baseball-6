@@ -4,8 +4,8 @@ import java.util.List;
 
 public class CompareNumber {
 
-	public int strike;
-	public int ball;
+	private int strike;
+	private int ball;
 	
 	public CompareNumber() {
 		this.strike = 0;
@@ -22,5 +22,19 @@ public class CompareNumber {
 				this.ball ++;
 			}
 		}
+	}
+	
+	public int getStrike() {
+		return this.strike;
+	}
+	
+	public int getBall() {
+		return this.ball;
+	}
+	
+	public boolean threeStrike() {
+		if (strike == 3) {
+			return false;
+		} return true;
 	}
 }

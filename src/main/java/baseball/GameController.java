@@ -8,8 +8,12 @@ public class GameController {
 	
 	public void play() {
 		setComputerNumber(); // 컴퓨터 랜덤 숫자 생성
+		
+		do {
 		setPlayerNumber(); // 플레이어 숫자 입력
-		compareNumber(); // 컴퓨터, 플레이어 숫자 비교
+		comPareNumber(); // 컴퓨터, 플레이어 숫자 비교
+		Output.gameResult(compare.getStrike(), compare.getBall()); // 게임 결과 출력
+		} while (compare.threeStrike());
 	}
 
 	public void setComputerNumber() {
@@ -22,8 +26,7 @@ public class GameController {
 		player.setPlayerNumber(Input.inputPlayerNumber());
 	}	
 
-
-	public void compareNumber() {
+	public void comPareNumber() {
 		compare = new CompareNumber();
 		compare.compare(computer.getComputerNumber(), player.getPlayerNumber());
 	}
