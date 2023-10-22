@@ -1,8 +1,11 @@
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashSet;
+package baseball;
 
-private static final int MIN=1;
-private static final int MAX=9;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.HashSet;
+import java.util.Iterator;
+
+import static baseball.Stationary.*;
 
 public class Random {
 
@@ -25,7 +28,7 @@ public class Random {
                 while (iter.hasNext()) {
                         result += iter.next();
                 }
-                return result;
 
+                return result;
         }
 }
