@@ -21,7 +21,7 @@
 - [ ] User 구현
 ## 테스트
 > **"무조건" 하나 구현하면 하나 테스트 점검할 것**
-- [ ] Randoms 테스트
+- [x] Randoms 테스트
 - [x] Console 테스트
 - [ ] GameManger 테스트
 - [ ] GameService 테스트
