@@ -18,23 +18,22 @@ public class MessageStream {
     }
 
     public static void printResultMessage(int ball, int strike) {
-        if (ball == 0 && strike == 0) {
-            System.out.print("낫싱\n");
-            return;
-        }
-
-        String ballMessage = "볼", strikeMessage = "스트라이크", finalMessage;
-        if (ball > 0 && strike > 0) {
-            finalMessage = ball + ballMessage + " " + strike + strikeMessage;
-        } else if (ball > 0) {
-            finalMessage = ball + ballMessage;
-        } else {
-            finalMessage = strike + strikeMessage;
-        }
-        System.out.print(finalMessage + "\n");
-
+        printBallStrikeMessage(ball, strike);
         if (strike == 3) {
             printEndMessage();
+        }
+    }
+
+    private static void printBallStrikeMessage(int ball, int strike) {
+        String nothingMessage = "낫싱", ballMessage = "볼", strikeMessage = "스트라이크";
+        if (ball > 0 && strike > 0) {
+            System.out.print(ball + ballMessage + " " + strike + strikeMessage + "\n");
+        } else if (ball > 0) {
+            System.out.print(ball + ballMessage + "\n");
+        } else if (strike > 0) {
+            System.out.print(strike + strikeMessage + "\n");
+        } else {
+            System.out.print(nothingMessage + "\n");
         }
     }
 
