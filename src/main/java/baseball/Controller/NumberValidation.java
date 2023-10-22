@@ -10,9 +10,14 @@ package baseball.Controller;
 => 반복문을 통해 비교
  */
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class NumberValidation {
 
-    public int[] validationNumber(String inputNumber) {
+    public List<Integer> validationNumber(String inputNumber) {
         if (!checkBetween1to9(inputNumber)) {
             throw new IllegalArgumentException("1~9 사이의 수만 입력이 가능합니다.");
         } else if (!threeDigit(inputNumber)) {
@@ -24,13 +29,9 @@ public class NumberValidation {
         return toInputNumber(inputNumber);
     }
 
-    public int[] toInputNumber(String inputNumber) {
-        String cvt[] = inputNumber.split("");
-        int strToInt[] = new int[cvt.length];
-        for (int i = 0; i < cvt.length; i++) {
-            strToInt[i] = Integer.parseInt(cvt[i]);
-        }
-        return strToInt;
+    public List<Integer> toInputNumber(String inputNumber) {
+        int[] cvtIntArray = Stream.of(inputNumber.split("")).mapToInt(Integer::parseInt).toArray();
+        return Arrays.stream(cvtIntArray).boxed().collect(Collectors.toList());
     }
 
 
@@ -46,7 +47,7 @@ public class NumberValidation {
         String[] number = inputNumber.split("");
 
         for (int i = 0; i < inputNumber.length(); i++) {
-            for (int j = 0; j < inputNumber.length(); j++) {
+            for (int j = 0; j < i; j++) {
                 if (number[i] == number[j]) {
                     return false;
                 }

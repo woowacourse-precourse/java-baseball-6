@@ -1,6 +1,7 @@
 package baseball.Controller;
 
 import baseball.Model.PlayNumber;
+import baseball.View.OutputView;
 import java.util.List;
 
 /*
@@ -25,6 +26,7 @@ public class CheckAnswer {
     private int ballCount;
 
     RandomNumber randomNumber = new RandomNumber();
+    OutputView outputView = new OutputView();
 
     public void startGame(PlayNumber playNumber) {
         List<Integer> computerNumber = randomNumber.generateGameNumbers();
@@ -36,26 +38,27 @@ public class CheckAnswer {
         List<Integer> computerNumber = playNumber.getComputerNumber();
 
         compareNumber(playerNumber, computerNumber);
+
         boolean check = triStrike();
         return check;
 
     }
 
-    public String compareNumber(List<Integer> playerNumber, List<Integer> computerNumber) {
+    public void compareNumber(List<Integer> playerNumber, List<Integer> computerNumber) {
         initCount();
         checkAns(playerNumber, computerNumber);
-        String Hint = hint();
-        return Hint;
+        hint();
+
     }
 
-    private String hint() {
+    private void hint() {
         String hintMsg = "";
 
         hintMsg += ballMsg();
         hintMsg += strikeMsg();
         hintMsg += nothingMsg();
 
-        return hintMsg;
+        outputView.printHintMsg(hintMsg);
     }
 
     private String nothingMsg() {
@@ -79,24 +82,24 @@ public class CheckAnswer {
         return nullMsg;
     }
 
-    private void checkAns(List<Integer> playerNumber, List<Integer> computerNumber) {
+    private void checkAns(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         for (int i = 0; i < gameAnswerLength; i++) {
             //스트라이크 비교
-            checkStrike(playerNumber.get(i), computerNumber.get(i));
+            checkStrike(computerNumbers.get(i), playerNumbers.get(i));
             //볼 비교
-            checkBall(playerNumber.get(i), i, computerNumber);
+            checkBall(computerNumbers, playerNumbers.get(i), i);
         }
 
     }
 
-    private void checkBall(int playerNumber, int i, List<Integer> computerNumber) {
-        if ((playerNumber != computerNumber.get(i)) && computerNumber.contains(playerNumber)) {
+    private void checkBall(List<Integer> computerNumber, int playerNumber, int i) {
+        if (computerNumber.get(i) != playerNumber && computerNumber.contains(playerNumber)) {
             ballCount++;
         }
     }
 
-    private void checkStrike(int playerNumber, int computerNumber) {
-        if (playerNumber == computerNumber) {
+    private void checkStrike(int computerNumber, int playerNumber) {
+        if (computerNumber == playerNumber) {
             strikeCount++;
         }
     }
@@ -107,10 +110,8 @@ public class CheckAnswer {
     }
 
     public boolean triStrike() {
-        if (strikeCount == answerStrike) {
-            return true;
-        }
-        return false;
+        return strikeCount == answerStrike;
+
     }
 
 

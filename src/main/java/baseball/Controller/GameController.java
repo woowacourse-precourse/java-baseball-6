@@ -3,6 +3,7 @@ package baseball.Controller;
 import baseball.Model.PlayNumber;
 import baseball.View.InputView;
 import baseball.View.OutputView;
+import java.util.List;
 
 public class GameController {
     private static final String wrongAnswerRestartMSG = "1 또는 2만 입력이 가능합니다.";
@@ -50,7 +51,8 @@ public class GameController {
 
     private void setAndSavePlayerNumbers() {
         playNumber.setInputNumber(inputView.enterAskNumber());
-        int[] playerNumber = numberValidation.validationNumber(playNumber.getInputNumber());
+        List<Integer> playerNumber = numberValidation.validationNumber(playNumber.getInputNumber());
+        playNumber.setPlayerNumber(playerNumber);
     }
 
     private void sendEndMsgCorrect(boolean correctAns) {
