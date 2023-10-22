@@ -27,7 +27,7 @@ public class BaseballGame {
      */
     public int isBall() {
         int count = 0;
-        for (int i = 0; i < SUCCESS; i++) {
+        for (int i = 0; i < MAX_HIT; i++) {
             if (!Objects.equals(computerNumber.get(i), myNumber.get(i)) && computerNumber.contains(myNumber.get(i)))
                 count++;
         }
@@ -39,11 +39,11 @@ public class BaseballGame {
      */
     public int isStrike() {
         int count = 0;
-        for (int i = 0; i < SUCCESS; i++) {
+        for (int i = 0; i < MAX_HIT; i++) {
             if (Objects.equals(computerNumber.get(i), myNumber.get(i)))
                 count++;
         }
-        if (count == SUCCESS)
+        if (count == MAX_HIT)
             finish = false;
         return count;
     }

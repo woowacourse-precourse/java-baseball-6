@@ -16,6 +16,7 @@ public class InputView {
     public List<Integer> inputBaseBall() {
         String number = readLine();
         exceptionModel.checkBaseBall(number);
+        exceptionModel.checkDuplication(changeInteger(number));
         return changeInteger(number);
     }
 

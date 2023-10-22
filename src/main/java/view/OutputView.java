@@ -29,14 +29,14 @@ public class OutputView {
     public static void gameResult(int strike, int ball) {
         StringBuilder result = new StringBuilder();
         // 볼 스트라이크
-        if (strike == SUCCESS) {
+        if (strike == MAX_HIT) {
             result.append(strike).append(STRIKE);
-        } else if (strike == FAIL && ball == FAIL) {
+        } else if (strike == MIN_HIT && ball == MIN_HIT) {
             result.append(NOTHING);
         } else {
-            if (ball > FAIL)
+            if (ball > MIN_HIT)
                 result.append(ball).append(BALL).append(" ");
-            if (strike > FAIL)
+            if (strike > MIN_HIT)
                 result.append(strike).append(STRIKE);
         }
         System.out.println(result);
