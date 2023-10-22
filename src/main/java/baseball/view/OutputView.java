@@ -16,16 +16,16 @@ public class OutputView {
         System.out.println(OUTPUT_NOTHING);
     }
 
-    public void outputOnlyBall(int n) {
-        System.out.printf(OUTPUT_ONLY_BALL, n);
+    public void outputOnlyBall(int ball) {
+        System.out.printf(OUTPUT_ONLY_BALL, ball);
     }
 
-    public void outputOnlyStrike(int n) {
-        System.out.printf(OUTPUT_ONLY_STRIKE, n);
+    public void outputOnlyStrike(int strike) {
+        System.out.printf(OUTPUT_ONLY_STRIKE, strike);
     }
 
-    public void outputBallStrike(int[] n) {
-        System.out.printf(OUTPUT_BALL_STRIKE, n[0], n[1]);
+    public void outputBallStrike(int ball, int strike) {
+        System.out.printf(OUTPUT_BALL_STRIKE, ball, strike);
     }
 
     public void outputEndProgram() {
