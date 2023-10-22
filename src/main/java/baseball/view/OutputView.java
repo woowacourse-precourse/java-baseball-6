@@ -37,21 +37,16 @@ public class OutputView {
         StringBuilder status = new StringBuilder();
 
         appendIfNonZero(status, ballCount, BALL);
-        appendIfNonEmpty(status);
         appendIfNonZero(status, strikeCount, STRIKE);
 
-        return status.toString();
+        return status.toString().trim();
     }
 
     private void appendIfNonZero(final StringBuilder status, final int count, final String symbol) {
         if (hasCount(count)) {
-            status.append(count).append(symbol);
-        }
-    }
-
-    private void appendIfNonEmpty(final StringBuilder status) {
-        if (!status.isEmpty()) {
-            status.append(BLANK);
+            status.append(count)
+                    .append(symbol)
+                    .append(BLANK);
         }
     }
 
