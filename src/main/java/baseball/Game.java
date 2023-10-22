@@ -6,15 +6,19 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.GameUI.displayCorrectAnswerMessage;
+
 public class Game {
     private User user;
     private Computer computer;
     private final List<Validator> validators;
+    private final GameUI gameUI;
 
-    public Game(List<Validator> validators) {
+    public Game(List<Validator> validators, GameUI gameUI) {
         this.computer = new Computer();
         this.user = new User();
         this.validators = validators;
+        this.gameUI = gameUI;
     }
 
     private void validateUserInput() {
@@ -49,22 +53,10 @@ public class Game {
         return result;
     }
 
-    private void diplayUserInput() {
-        System.out.print("숫자를 입력해주세요 : ");
-    }
-
-    private void displayStartGame() {
-        System.out.println("숫자 야구 게임을 시작합니다");
-    }
 
     private static boolean isWantToQuitGame() {
         int exitCommand = Integer.parseInt(Console.readLine());
         return exitCommand == 2;
-    }
-
-    private static void displayCorrectAnswerMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
 
@@ -102,16 +94,16 @@ public class Game {
     }
 
     private void playBaseBallGame() {
-        displayStartGame();
+        gameUI.displayStartGame();
 
         while (true) {
             try {
-                diplayUserInput();
+                gameUI.diplayUserInput();
                 user.inputUserNumber();
                 validateUserInput();
 
                 String hint = inferHint();
-                System.out.println(hint);
+                gameUI.displayHint(hint);
 
                 if (isAnswer(hint)) {
                     displayCorrectAnswerMessage();
@@ -121,7 +113,7 @@ public class Game {
                     this.computer = new Computer();
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println(e);
+                gameUI.displayExceptionMessage(e);
                 throw e;
             }
         }

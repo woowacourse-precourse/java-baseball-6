@@ -14,7 +14,8 @@ public class Application {
         // TODO: 프로그램 구현
 
         List<Validator> validators = Arrays.asList(new LengthValidator(), new NoDuplicateValidator(), new RangeValidator());
-        Game game = new Game(validators);
+        GameUI gameUI = new GameUI();
+        Game game = new Game(validators, gameUI);
         game.startGame();
     }
 }
