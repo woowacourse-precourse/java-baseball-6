@@ -1,7 +1,9 @@
 package baseball.validation;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /*
@@ -40,6 +42,17 @@ public class InputNumberValidator {
         if (!input.matches(REGEX)) {
             throw new IllegalArgumentException();
         }
+    }
 
+    /*
+     * 플레이어의 입력값이 중복인지 확인
+     * @Param input 플레이어의 숫자
+     * */
+    public static void validateInputDuplication(List<Integer> input) {
+        Set<Integer> duplicateCheckSet = new HashSet<>(input);
+
+        if (duplicateCheckSet.size() != NUMBER_SIZE) {
+            throw new IllegalArgumentException();
+        }
     }
 }
