@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.CountStrikeAndBall;
 import baseball.model.RandomNumberGenerator;
 import baseball.model.UserNumberGenerator;
+import baseball.utils.Constant;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -22,7 +23,7 @@ public class BaseballGame {
             CountStrikeAndBall countStrikeAndBall = new CountStrikeAndBall(answerNumbers, userNumbers);
             OutputView outputView = new OutputView(countStrikeAndBall);
             outputView.printBallAndStrike();
-            if (outputView.strike == 3) {
+            if (outputView.strike == Constant.NUMBER_LENGTH) {
                 break;
             }
         }
@@ -39,6 +40,6 @@ public class BaseballGame {
 
     private static boolean isFinish() {
         String restart = InputView.endInput();
-        return restart.equals("1");
+        return restart.equals(Constant.RESTART);
     }
 }

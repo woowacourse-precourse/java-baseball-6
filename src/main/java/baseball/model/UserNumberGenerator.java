@@ -8,8 +8,8 @@ public class UserNumberGenerator {
         List<Integer> userNumbers = new ArrayList<>();
         String[] splitStr = userNumbersToString.split("");
         for (String splitUserNumber : splitStr) {
-            int singlenum = Integer.parseInt(splitUserNumber);
-            userNumbers.add(singlenum);
+            int singleNum = Integer.parseInt(splitUserNumber);
+            userNumbers.add(singleNum);
         }
         return userNumbers;
     }

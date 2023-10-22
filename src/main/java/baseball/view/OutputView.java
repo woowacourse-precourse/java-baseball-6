@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.model.CountStrikeAndBall;
+import baseball.utils.Constant;
 
 public class OutputView {
     public final int strike;
@@ -22,8 +23,8 @@ public class OutputView {
             System.out.print("낫싱");
         }
         System.out.println();
-        if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if (strike == Constant.NUMBER_LENGTH) {
+            System.out.println(Constant.FINISH_GAME);
         }
     }
 
