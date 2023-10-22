@@ -1,35 +1,59 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class NumberBaseballGame {
+    public static final String GAME_START_MSG = "숫자 야구 게임을 시작합니다.";
+    public static final String GAME_OVER_MSG = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String INPUT_MSG = "숫자를 입력해주세요 :";
-    private static List<Integer> answer = new ArrayList<>();
 
 
-    NumberBaseballGame(List<Integer> answer) {
-        NumberBaseballGame.answer = answer;
+    void StartGame() {
+        System.out.printf(GAME_START_MSG);
+        boolean isGaming = true;
+        while (isGaming) {
+
+            PlayBall();
+
+            System.out.printf(GAME_OVER_MSG);
+            String userChoice = camp.nextstep.edu.missionutils.Console.readLine();
+
+            if (userChoice.equals("2")) {
+                isGaming = false;
+            } else if (!userChoice.equals("1")) {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
+        }
     }
 
     void PlayBall() {
         boolean isCorrect = false;
+        List<Integer> answer = new ArrayList<>();
+
+        while (answer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
+            }
+        }
+
         while (!isCorrect) {
             List<Integer> guess = new ArrayList<>();
-
             System.out.println(INPUT_MSG);
             String input = camp.nextstep.edu.missionutils.Console.readLine();
             //입력값 컨버젼
             if (input.length() != 3) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("입력값이 3이 아닙니다");
             }
             for (int i = 0; i < 3; i++) {
                 int number = Character.getNumericValue(input.charAt(i));
                 if (!guess.contains(number)) {
                     guess.add(number);
                 } else {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException("숫자가 아닙니다");
                 }
             }
             //결과 판정
