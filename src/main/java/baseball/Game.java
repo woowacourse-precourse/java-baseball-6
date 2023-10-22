@@ -12,10 +12,10 @@ public class Game {
     final int randomLength = 3;
 
     public Game() {
-        SetRandomInt();
+        setRandomInt();
     }
 
-    public void SetRandomInt() {
+    private void setRandomInt() {
         randomInt = new ArrayList<>();
         while (randomInt.size() < randomLength) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
