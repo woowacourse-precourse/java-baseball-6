@@ -11,8 +11,7 @@ public record Pitch(List<Integer> numbers) {
     }
 
     private void validateDuplicateCount(List<Integer> numbers) {
-        long distinctCount = numbers
-                .stream()
+        long distinctCount = numbers.stream()
                 .distinct()
                 .count();
         if (distinctCount != GameConfig.PITCH_COUNT.getValue()) {
@@ -23,8 +22,7 @@ public record Pitch(List<Integer> numbers) {
     private void validateRange(List<Integer> numbers) {
         int minNumber = GameConfig.MIN_NUMBER.getValue();
         int maxNumber = GameConfig.MAX_NUMBER.getValue();
-        long withinRangeCount = numbers
-                .stream()
+        long withinRangeCount = numbers.stream()
                 .filter(number -> minNumber <= number && number <= maxNumber)
                 .count();
 
