@@ -12,7 +12,6 @@ public class Player {
         String playerInput = Console.readLine();
 
         // 입력받은 값이 세 자리 숫자가 아니라면 IllegalArgumentException 발생시킨 후 애플리케이션 종료
-//        if (playerInput.length() != 3) throw new IllegalArgumentException();
         isThreeDigitNumber(playerInput);
         hasNoZero(playerInput);
         hasNoDuplicates(playerInput);
@@ -28,7 +27,6 @@ public class Player {
             playerInputNumber.add(Character.getNumericValue(playerInputChar[len]));
             len++;
         }
-
         return playerInputNumber;
     }
 

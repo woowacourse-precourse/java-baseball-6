@@ -13,6 +13,8 @@ public class GameProcess {
             List<Integer> player = getPlayerNumber();
             countScore(player, computer, score);
             printScore(score);
+
+            // 유효한 값이 입력되는지 확인하기 위한 출력
             System.out.println(computer);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
