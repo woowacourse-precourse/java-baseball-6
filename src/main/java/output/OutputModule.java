@@ -21,11 +21,11 @@ public class OutputModule {
     }
 
     public void printBall() {
-        System.out.println(ball);
+        System.out.print(ball);
     }
 
     public void printStrike() {
-        System.out.println(strike);
+        System.out.print(strike);
     }
 
     public void printOut() {
