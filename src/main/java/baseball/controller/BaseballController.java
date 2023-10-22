@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.constant.Hint;
 import baseball.model.Command;
-import baseball.model.GameNumber;
+import baseball.model.GameNumbers;
 import baseball.model.Score;
 import baseball.service.ScoreCalculator;
 import baseball.util.RandomNumbersGenerator;
@@ -30,11 +30,11 @@ public class BaseballController {
 
     private void play() {
         while (true) {
-            GameNumber computer = new GameNumber(RandomNumbersGenerator.generate());
+            GameNumbers computer = new GameNumbers(RandomNumbersGenerator.generate());
             //TODO: 디버깅 용 출력문 지우기
             System.out.println("computer = " + computer);
             guess(computer);
-            
+
             //TODO: 분리가 필요해 보여
             Command command = readGameCommand();
             if (isRestart(command)) {
@@ -54,9 +54,9 @@ public class BaseballController {
         return Command.isRestart(command);
     }
 
-    private void guess(GameNumber computer) {
+    private void guess(GameNumbers computer) {
         while (true) {
-            GameNumber player = new GameNumber(inputView.readGuessNumber());
+            GameNumbers player = new GameNumbers(inputView.readGuessNumber());
             Score score = calculateScore(computer, player);
             outputView.printScore(score);
             if (isCorrect(score)) {
@@ -66,7 +66,7 @@ public class BaseballController {
         outputView.printGameEndMessage();
     }
 
-    private Score calculateScore(GameNumber computer, GameNumber player) {
+    private Score calculateScore(GameNumbers computer, GameNumbers player) {
         int strike = calculator.calculateStrike(computer, player);
         int ball = calculator.calculateBall(computer, player);
         return new Score(Map.of(Hint.STRIKE, strike, Hint.BALL, ball));
