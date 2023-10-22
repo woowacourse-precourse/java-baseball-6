@@ -20,9 +20,9 @@ public enum GameCommand {
         validateInput(input);
 
         return Arrays.stream(values())
-            .filter(command -> command.number.equals(input))
-            .findFirst()
-            .orElseThrow(() -> new IllegalArgumentException(WRONG_INPUT));
+                .filter(command -> command.number.equals(input))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(WRONG_INPUT));
     }
 
     private static void validateInput(final String input) {

@@ -1,7 +1,6 @@
 package baseball.model;
 
 import baseball.util.NumberGenerator;
-
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -21,8 +20,8 @@ public class Computer {
 
     public int getStrikeCount(final List<Integer> userNumbers) {
         return (int) IntStream.range(FIRST_NUMBER, userNumbers.size())
-            .filter(index -> isStrike(index, userNumbers))
-            .count();
+                .filter(index -> isStrike(index, userNumbers))
+                .count();
     }
 
     private boolean isStrike(final int index, final List<Integer> userNumbers) {
@@ -31,8 +30,8 @@ public class Computer {
 
     public int getBallCount(final List<Integer> userNumbers) {
         return (int) IntStream.range(FIRST_NUMBER, userNumbers.size())
-            .filter(index -> isBall(index, userNumbers))
-            .count();
+                .filter(index -> isBall(index, userNumbers))
+                .count();
     }
 
     private boolean isBall(final int index, final List<Integer> userNumbers) {

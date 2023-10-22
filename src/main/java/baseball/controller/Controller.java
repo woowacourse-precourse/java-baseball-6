@@ -22,6 +22,7 @@ public class Controller {
     }
 
     public void start() {
+        outputView.printStart();
         GameCommand gameCommand = GameCommand.RESTART;
 
         while (GameCommand.isRestart(gameCommand)) {
@@ -49,12 +50,14 @@ public class Controller {
     }
 
     private List<Integer> getInputNumbers() {
+        outputView.printInputNumber();
         String numbers = inputView.readLine();
         UserNumbers user = UserNumbers.createWithInput(numbers);
         return user.getNumbers();
     }
 
     private GameCommand askForRestart() {
+        outputView.printRestart();
         String choice = inputView.readLine();
         return GameCommand.make(choice);
     }

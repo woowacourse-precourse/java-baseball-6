@@ -1,7 +1,6 @@
 package baseball.model;
 
 import baseball.util.Converter;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -68,8 +67,8 @@ public class UserNumbers {
 
     private static boolean containsDuplicates(final String input) {
         return input.chars()
-            .distinct()
-            .count() != REQUIRED_INPUT_LENGTH;
+                .distinct()
+                .count() != REQUIRED_INPUT_LENGTH;
     }
 
     public List<Integer> getNumbers() {

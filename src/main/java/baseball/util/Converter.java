@@ -12,7 +12,7 @@ public class Converter {
 
     public static List<Integer> convertStringToIntegerList(final String string) {
         return Arrays.stream(string.split(SEPARATOR))
-            .map(Integer::parseInt)
-            .toList();
+                .map(Integer::parseInt)
+                .toList();
     }
 }
