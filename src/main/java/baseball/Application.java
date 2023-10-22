@@ -44,11 +44,11 @@ public class Application {
         String reStartNumber = Console.readLine();
         ExceptionList.validInputNumber(reStartNumber);
 
-        if(reStartNumber.equals("1")) {
+        if (reStartNumber.equals("1")) {
             GameStart();
-        } else {
-            System.out.println("게임이 종료되었습니다.");
+            return;
         }
+        System.out.println("게임이 종료되었습니다.");
     }
 
     public static List<Integer> ComputerSelectNumber() {
