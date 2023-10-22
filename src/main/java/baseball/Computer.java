@@ -3,7 +3,6 @@ package baseball;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class Computer {
 
@@ -25,7 +24,7 @@ public class Computer {
     }
 
     // 사용자가 컴퓨터의 수를 맞췄을 경우, 상태를 true로 바꿔준다.
-    public void makeSolved() {
+    private void makeSolved() {
         this.solved = true;
     }
 
@@ -74,7 +73,7 @@ public class Computer {
 
         // 3스트라이크일 경우, 정답 처리
         if (strike == 3) {
-            solved = true;
+           makeSolved();
         }
 
         return new ArrayList<>(Arrays.asList(strike, ball));

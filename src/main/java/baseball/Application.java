@@ -6,7 +6,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Application {
@@ -14,6 +13,7 @@ public class Application {
         // TODO: 프로그램 구현
         // 1. 랜덤 번호 선택
         Computer computer = new Computer(Randoms.pickUniqueNumbersInRange(1, 9, 3));
+
         while (true) {
             String input = null;
             // 2. 번호 입력 받기
@@ -26,8 +26,6 @@ public class Application {
                 }
             } catch (Exception e) {
                 throw new IllegalArgumentException("잘못된 입력입니다.", e);
-            } finally {
-
             }
 
             int[] arr = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
