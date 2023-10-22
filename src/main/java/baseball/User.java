@@ -23,6 +23,9 @@ public class User {
     validateInput(input);
     this.userNumber = parseUserNumber(input);
   }
+  public void setUserNumber() {
+    readUserNumberFromConsole();
+  }
 
   public void readUserNumberFromConsole() {
     System.out.println(REQUEST_MESSAGE);
@@ -32,9 +35,7 @@ public class User {
   }
 
   private void validateInput(String input) {
-    if ("1".equals(input.trim()) || "2".equals(input.trim())) {
-      return;
-    }
+
     boolean isValidLength = input.length() == VALID_LENGTH;
     boolean isValidType = Pattern.matches(REGEX, input);
     System.out.println(CHECK_TYPE + isValidType);
