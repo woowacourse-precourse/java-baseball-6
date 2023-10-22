@@ -99,13 +99,12 @@ public class BaseballGame {
         // 같은 수 포함
         List<Integer> userNum = new ArrayList<>();
         Array.checkForDuplicateNumbers(userNum, userNumber);
-        System.out.println(userNum);
+        //System.out.println(userNum);
 
         // 볼, 스트라이크 세기
         this.getAnswer(computer, userNum);
         // 출력
         this.printAnswer();
-
 
     }
 }
