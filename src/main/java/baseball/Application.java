@@ -98,14 +98,15 @@ public class Application {
         String input = Console.readLine();
 
         if (input.length() != 3) {
-            System.out.println("3자리 숫자를 다시 입력하세요.");
-            return generateRandomNumbers();
+            throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
         }
 
         for (int i = 0; i < 3; i++) {
             char playerNumber = input.charAt(i);
+            if (playerNumber < '1' || playerNumber > '9') {
+                throw new IllegalArgumentException("1부터 9 사이의 숫자를 입력하세요.");
+            }
             playerNumbers[i] = playerNumber;
-
         }
         return playerNumbers;
     }
