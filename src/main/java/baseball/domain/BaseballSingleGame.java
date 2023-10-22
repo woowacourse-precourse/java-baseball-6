@@ -38,9 +38,10 @@ public class BaseballSingleGame implements BaseBallGame {
         }
     }
 
-    private AnswerNumbers getAnswerOf(Player player) {
+    @Override
+    public AnswerNumbers getAnswerOf(Player player) {
         try {
-            final String[] playerAnswerStrings = player.getBaseballNumbers().split("")
+            final String[] playerAnswerStrings = player.getBaseballNumbers().split("");
             return AnswerNumbers.of(playerAnswerStrings);
         } catch (NumberFormatException | OutOfBaseBallNumbersSize | DuplicateBaseBallNumber e) {
             throw new IllegalArgumentException("올바르지 않은 입력입니다. 서로 다른 3개의 숫자를 입력해주세요.");
