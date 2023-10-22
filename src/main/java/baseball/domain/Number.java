@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Number {
     private final List<Integer> number = new ArrayList<>();
-    
+
     public void inputUserNumber(String inputNumber) {
         number.clear();
         stringToIntegerList(inputNumber);
@@ -68,5 +68,8 @@ public class Number {
         return ballCount;
     }
 
-
+    @Override
+    public String toString() {
+        return number.toString();
+    }
 }
