@@ -48,11 +48,15 @@ public class Output {
         printEndGameMessage();
     }
 
-    public String TotalMessage(Integer ball, Integer strike){
+    public String totalMessage(Integer ball, Integer strike){
         String totalMessage = printBallMessage(ball) + printStrikeMessage(strike);
         if (totalMessage.equals("")){
             return NO_CORRECT_NUMBER;
         }
         return totalMessage;
+    }
+
+    public void printTotalMessage(Integer ball, Integer strike){
+        System.out.println(totalMessage(ball, strike));
     }
 }

@@ -33,7 +33,7 @@ public class Game {
             String guessNumber = input.getExpectationNumber();
             checkInputNumbers(guessNumber);
             setBallsAndStrikes(computerNumber, guessNumber);
-            System.out.println(output.TotalMessage(BALL, STRIKE));
+            output.printTotalMessage(BALL, STRIKE);
         }
         output.printAllStrikeMessage(STRIKE);
         checkRestartGame();
