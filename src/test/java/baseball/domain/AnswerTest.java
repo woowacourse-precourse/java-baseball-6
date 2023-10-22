@@ -21,10 +21,10 @@ public class AnswerTest {
 
     static Stream<Arguments> provideMatchTestArguments() {
         return Stream.of(
-                arguments(new Answer(List.of(1, 2, 3)), "321", new Score(2, 1)),
-                arguments(new Answer(List.of(4, 5, 6)), "564", new Score(3, 0)),
-                arguments(new Answer(List.of(4, 5, 6)), "321", new Score(0, 0)),
-                arguments(new Answer(List.of(3, 2, 1)), "321", new Score(0, 3))
+                arguments(new Answer(List.of(1, 2, 3)), "321", new Score(new Ball(2), new Strike(1))),
+                arguments(new Answer(List.of(4, 5, 6)), "564", new Score(new Ball(3), new Strike(0))),
+                arguments(new Answer(List.of(4, 5, 6)), "321", new Score(new Ball(0), new Strike(0))),
+                arguments(new Answer(List.of(3, 2, 1)), "321", new Score(new Ball(0), new Strike(3)))
         );
     }
 }

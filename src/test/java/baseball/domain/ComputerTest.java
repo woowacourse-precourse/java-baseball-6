@@ -22,11 +22,11 @@ public class ComputerTest {
 
     static Stream<Arguments> provideGetScoreTestArguments() {
         return Stream.of(
-                arguments("123", new Score(1, 1)),
-                arguments("145", new Score(1, 0)),
-                arguments("671", new Score(2, 0)),
-                arguments("216", new Score(0, 1)),
-                arguments("713", new Score(0, 3))
+                arguments("123", new Score(new Ball(1), new Strike(1))),
+                arguments("145", new Score(new Ball(1), new Strike(0))),
+                arguments("671", new Score(new Ball(2), new Strike(0))),
+                arguments("216", new Score(new Ball(0), new Strike(1))),
+                arguments("713", new Score(new Ball(0), new Strike(3)))
         );
     }
 }

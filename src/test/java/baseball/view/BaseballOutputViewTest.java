@@ -3,7 +3,9 @@ package baseball.view;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
+import baseball.domain.Ball;
 import baseball.domain.Score;
+import baseball.domain.Strike;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.stream.Stream;
@@ -52,12 +54,12 @@ public class BaseballOutputViewTest {
 
     static Stream<Arguments> provideMatchResultTestArguments() {
         return Stream.of(
-                arguments(new Score(1, 1), "1볼 1스트라이크\n", false),
-                arguments(new Score(1, 0), "1볼\n", false),
-                arguments(new Score(2, 0), "2볼\n", false),
-                arguments(new Score(0, 1), "1스트라이크\n", false),
-                arguments(new Score(0, 0), "낫싱\n", false),
-                arguments(new Score(0, 3), "3스트라이크\n", true)
+                arguments(new Score(new Ball(1), new Strike(1)), "1볼 1스트라이크\n", false),
+                arguments(new Score(new Ball(1), new Strike(0)), "1볼\n", false),
+                arguments(new Score(new Ball(2), new Strike(0)), "2볼\n", false),
+                arguments(new Score(new Ball(0), new Strike(1)), "1스트라이크\n", false),
+                arguments(new Score(new Ball(0), new Strike(0)), "낫싱\n", false),
+                arguments(new Score(new Ball(0), new Strike(3)), "3스트라이크\n", true)
         );
     }
 }
