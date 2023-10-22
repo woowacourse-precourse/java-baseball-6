@@ -39,10 +39,12 @@
 - [ ] 같은 수가 존재 하지 않는 다면 낫싱 힌트 처리한다.
 - [ ] 숫자 3개가 같은 위치에 같은 숫자가 존재한 다면 게임 종료 이벤트 발생시킨다.
 
+#### NumericString
+- [x] 숫자가 아닌 문자 입력 시 IllegalArgumentException
+
 #### BaseBallNumberList
 
 - [x] 숫자 입력시 3자리 수가 아닐 시 IllegalArgumentException
-- [ ] 숫자가 아닌 문자 입력 시 IllegalArgumentException
 - [ ] 3개의 숫자중 같은 숫자 존재 시 IllegalArgumentException
 
 ### UI
