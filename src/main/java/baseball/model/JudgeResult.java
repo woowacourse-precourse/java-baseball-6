@@ -1,10 +1,13 @@
 package baseball.model;
 
 import baseball.util.Constants;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class JudgeResult {
+    private static final int NO_COUNT = 0;
+    private static final int ONE_COUNT = 1;
     private final Map<BallCount, Integer> judgeResult;
 
     public JudgeResult() {
@@ -12,15 +15,15 @@ public class JudgeResult {
     }
 
     public void addResult(BallCount ballCount) {
-        judgeResult.put(ballCount, judgeResult.getOrDefault(ballCount, 0) + 1);
+        judgeResult.put(ballCount, judgeResult.getOrDefault(ballCount, NO_COUNT) + ONE_COUNT);
     }
 
     public boolean hasBall() {
-        return judgeResult.getOrDefault(BallCount.BALL, 0) != 0;
+        return judgeResult.getOrDefault(BallCount.BALL, NO_COUNT) != NO_COUNT;
     }
 
     public boolean hasStrike() {
-        return judgeResult.getOrDefault(BallCount.STRIKE, 0) != 0;
+        return judgeResult.getOrDefault(BallCount.STRIKE, NO_COUNT) != NO_COUNT;
     }
 
     public boolean isNothing() {
@@ -36,7 +39,7 @@ public class JudgeResult {
     }
 
     public boolean isGameSuccess() {
-        return judgeResult.getOrDefault(BallCount.STRIKE, 0) == Constants.BALL_LENGTH;
+        return judgeResult.getOrDefault(BallCount.STRIKE, NO_COUNT) == Constants.BALL_LENGTH;
     }
 
 }
