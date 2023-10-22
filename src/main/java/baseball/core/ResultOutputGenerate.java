@@ -16,7 +16,7 @@ public class ResultOutputGenerate {
 
     public static void generateStrikeResultTextForOutput(int strike_count){
         String result = strike_count+"스트라이크";
-        OutputView.outputForBallScore(result);
+        OutputView.outputForStrikeScore(result);
     }
 
     public static void generateNothingResultTextForOutput(){
