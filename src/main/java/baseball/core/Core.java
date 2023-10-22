@@ -18,4 +18,16 @@ public class Core {
         return strikeCount;
     }
 
+    public int countBall(List<Integer> computer, List<Integer> player) {
+        int ballCount = 0;
+
+        for (int i = 0; i < INPUT_LENGTH; i++) {
+            if (player.contains(computer.get(i)) && player.get(i) != computer.get(i)) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
+    }
+
 }
