@@ -13,6 +13,7 @@ public class BaseballNumbers {
 
     public BaseballNumbers(String userInput) {
         this.ballNumbers = new ArrayList<>();
+        validateInputIsThreeNumber(userInput);
         createBaseballNumbers(userInput);
     }
 
@@ -28,6 +29,12 @@ public class BaseballNumbers {
             char userInputNumber = userInput.charAt(i);
             BaseballNumber userBaseballNumber = new BaseballNumber(userInputNumber);
             ballNumbers.add(userBaseballNumber);
+        }
+    }
+
+    public void validateInputIsThreeNumber(String userInput) {
+        if (!userInput.matches("^[0-9]{3}$")) {
+            throw new IllegalArgumentException("입력은 정확히 세 자리 숫자여야 합니다.");
         }
     }
 
