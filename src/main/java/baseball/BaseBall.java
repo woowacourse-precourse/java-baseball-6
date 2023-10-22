@@ -20,12 +20,9 @@ public class BaseBall {
 
             String input = readLine();
             if (!isValidNumber(input)) {
-                try {
-                    throwInputError();
-                } catch (IllegalArgumentException e) {
-                    return true;
-                }
+                throw new IllegalArgumentException();
             }
+
             createUserNumber(input);
 
             check(); // 결과 계산
@@ -39,11 +36,7 @@ public class BaseBall {
                 if (input.equals("2")) {
                     return true;
                 } else if (!input.equals("1")) {
-                    try {
-                        throwInputError();
-                    } catch (IllegalArgumentException e) {
-                        return true;
-                    }
+                    throw new IllegalArgumentException();
                 }
 
                 createComputerNumber();
@@ -74,6 +67,8 @@ public class BaseBall {
     }
 
     private boolean isValidNumber(String s) {
+        Set<Integer> hashSet = new HashSet<>();
+
         if (s.length() != 3) {
             return false;
         }
@@ -84,6 +79,12 @@ public class BaseBall {
             if (!(j >= 1 && j <= 9)) {
                 return false;
             }
+
+            if (hashSet.contains(j)) {
+                return false;
+            }
+
+            hashSet.add(j);
         }
 
         return true;
@@ -123,9 +124,5 @@ public class BaseBall {
         }
 
         System.out.println(sb);
-    }
-
-    private void throwInputError() {
-        throw new IllegalArgumentException();
     }
 }
