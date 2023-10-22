@@ -12,6 +12,7 @@ import java.util.List;
 
 public class GameController {
     private static final int NUMBER_LENGTH = 3;
+    private static final int ZERO = 0;
     private static final int FULL_STRIKE_COUNT = 3;
     private static final char ZERO_CHAR = '0';
     private static final String SPACE_MESSAGE = " ";
@@ -47,7 +48,7 @@ public class GameController {
             player.setPlayerNumbers(convertplayerToList(inputView.inputPlayerNumber()));
             game.initStrikeAndBall();
             countStrikeAndBall(player.getPlayerNumbers(), computer.getComputerNumbers());
-            printHint();
+            printHintMessage();
         } while (!isCorrectNumber());
 
         outputView.printEndMessage();
@@ -105,23 +106,18 @@ public class GameController {
         return false;
     }
 
-
-    public void printHint() {
-        String hintMessage = "";
+    public void printHintMessage() {
+        String hintMessage = NULL_MESSAGE;
 
         hintMessage += getBallMessage();
         hintMessage += getStrikeMessage();
-
-        if (hintMessage.equals("")) {
-            outputView.printHindMessage(NOTHING_MESSAGE);
-            return;
-        }
+        hintMessage += getNothingMessage();
 
         outputView.printHindMessage(hintMessage);
     }
 
     public String getBallMessage() {
-        if (game.getBallCount() > 0) {
+        if (game.getBallCount() > ZERO) {
             return game.getBallCount() + BALL_MESSAGE + SPACE_MESSAGE;
         }
 
@@ -129,10 +125,17 @@ public class GameController {
     }
 
     public String getStrikeMessage() {
-        if (game.getStrikeCount() > 0) {
+        if (game.getStrikeCount() > ZERO) {
             return game.getStrikeCount() + STRIKE_MESSAGE;
         }
 
+        return NULL_MESSAGE;
+    }
+
+    public String getNothingMessage() {
+        if (game.getBallCount() == ZERO && game.getStrikeCount() == ZERO) {
+            return NOTHING_MESSAGE;
+        }
         return NULL_MESSAGE;
     }
 
