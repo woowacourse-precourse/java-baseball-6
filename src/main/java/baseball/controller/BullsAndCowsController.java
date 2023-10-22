@@ -15,7 +15,7 @@ public class BullsAndCowsController {
 
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = bullsAndCowsService.createComputerRandomValue();
-            while(true) {
+            while (true) {
 
                 List<Integer> user = bullsAndCowsService.getThreeDigits();
 

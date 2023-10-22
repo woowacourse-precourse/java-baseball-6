@@ -2,8 +2,10 @@ package baseball.service;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class BullsAndCowsServiceImpl implements BullsAndCowsService {
 
@@ -17,7 +19,7 @@ public class BullsAndCowsServiceImpl implements BullsAndCowsService {
 
         List<Integer> computer = new ArrayList<>();
 
-        while(checkComputerRandomValueSize(computer)) {
+        while (checkComputerRandomValueSize(computer)) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (validateRandomNumber(computer, randomNumber)) {
                 computer.add(randomNumber);
@@ -90,12 +92,18 @@ public class BullsAndCowsServiceImpl implements BullsAndCowsService {
     private void printResult(int ballCount, int strikeCount) {
         StringBuilder message = new StringBuilder();
 
-        if (ballCount > 0) message.append(ballCount).append("볼 ");
-        if (strikeCount > 0) message.append(strikeCount).append("스트라이크");
+        if (ballCount > 0) {
+            message.append(ballCount).append("볼 ");
+        }
+        if (strikeCount > 0) {
+            message.append(strikeCount).append("스트라이크");
+        }
 
         String resultMessage = message.toString();
 
-        if(resultMessage.isEmpty()) resultMessage ="낫싱";
+        if (resultMessage.isEmpty()) {
+            resultMessage = "낫싱";
+        }
 
         System.out.println(resultMessage);
     }
