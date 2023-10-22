@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
-    private final int maxNumber = 9;
-    private final int minNumber = 1;
+    private final int MAX_NUMBER = 9;
+    private final int MIN_NUMBER = 1;
 
     public List<Integer> generateRandomAnswerList() {
         List<Integer> answerList = new ArrayList<>();
@@ -21,7 +21,7 @@ public class NumberGenerator {
     }
 
     public int generateRandomNumber() {
-        final int randomNumber = Randoms.pickNumberInRange(minNumber, maxNumber);
+        final int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
         return randomNumber;
     }
 }

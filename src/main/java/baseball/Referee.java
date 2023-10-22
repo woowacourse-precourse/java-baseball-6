@@ -5,6 +5,10 @@ import java.util.List;
 
 public class Referee {
     private List<Integer> answerList;
+    private final int STRIKE = 2;
+    private final int BALL = 1;
+    private final int NOTHING = 0;
+
     public Referee(List<Integer> answerList) {
         this.answerList = new ArrayList<>(answerList);
     }
@@ -14,10 +18,10 @@ public class Referee {
         int strike = 0;
         for (int i = 0; i < answerList.size(); i++) {
             final int result = judgeNumber(userInput.get(i), i);
-            if (result == 1) {
+            if (result == BALL) {
                 ball += 1;
             }
-            if (result == 2) {
+            if (result == STRIKE) {
                 strike += 1;
             }
         }
@@ -29,12 +33,12 @@ public class Referee {
 
     public int judgeNumber(int userNumber, int index) {
         if (answerList.get(index) == userNumber) {
-            return 2;
+            return STRIKE;
         }
         if (answerList.contains(userNumber)) {
-            return 1;
+            return BALL;
         }
-        return 0;
+        return NOTHING;
     }
 
     public List<Integer> getAnswerList() {

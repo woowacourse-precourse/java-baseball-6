@@ -33,8 +33,10 @@ public class BaseballGameMachine {
         boolean success = false;
         while (!success) {
             display(message.requestInput());
+
             List<Integer> userInput = inputValidation.validateUserInput(input());
             List<Integer> gameResult = referee.judgeUserInput(userInput);
+
             display(message.result(gameResult) + '\n');
             success = isSuccess(gameResult);
         }
@@ -44,6 +46,7 @@ public class BaseballGameMachine {
         if (gameResult == null) {
             return false;
         }
+
         final int ball = gameResult.get(0);
         final int strike = gameResult.get(1);
         if (ball == 0 && strike == 3) {
