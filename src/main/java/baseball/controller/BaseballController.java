@@ -35,7 +35,7 @@ public class BaseballController {
         boolean isRestart = true;
         AnswerNumbers answerNumbers = null;
 
-        inputView.start();
+        outputView.start();
 
         while (true) {
             answerNumbers = getNewAnswerNumbers(isRestart, answerNumbers);
