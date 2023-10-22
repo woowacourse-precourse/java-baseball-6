@@ -17,6 +17,7 @@ public class Application {
         boolean continueGame = true;
         while (continueGame) {
             List<Integer> computerNumbers = generateRandomNumbers();
+            System.out.println(computerNumbers);
             playGame(computerNumbers);
         }
 
@@ -41,7 +42,12 @@ public class Application {
 
             try {
                 validateInput(inputNumbers);
-                System.out.println("유효한 숫자");
+                List<Integer> playerNumbers = convertInputToNumbers(inputNumbers);
+
+                int strikeCount = getStrikeCount(computerNumbers, playerNumbers);
+                int ballCount = getBallCount(computerNumbers, playerNumbers);
+                System.out.println(strikeCount);
+                System.out.println(ballCount);
 
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -74,5 +80,34 @@ public class Application {
                 }
             }
         }
+    }
+
+    /* 입력받은 숫자(string) => List<Integer> */
+    private static List<Integer> convertInputToNumbers(String inputNumbers) {
+        List<Integer> numbers = new ArrayList<>();
+        for (char ch : inputNumbers.toCharArray()) {
+            numbers.add(Character.getNumericValue(ch));
+        }
+        return numbers;
+    }
+    /* 스트라이크 갯수 세기*/
+    private static int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        int strikeCount = 0;
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if (computerNumbers.get(i).equals(playerNumbers.get(i))) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+    /* 볼 갯수 세기*/
+    private static int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        int ballCount = 0;
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if (computerNumbers.contains(playerNumbers.get(i)) && !computerNumbers.get(i).equals(playerNumbers.get(i))) {
+                ballCount++;
+            }
+        }
+        return ballCount;
     }
 }
