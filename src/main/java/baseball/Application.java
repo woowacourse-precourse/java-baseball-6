@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Set;
 
 public class Application {
+
+    private static final int NUMBER_COUNT = 3; // 숫자 배열 크기 상수
+
     public static void main(String[] args) {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -34,7 +37,7 @@ public class Application {
             int strike = 0;
             int ball = 0;
 
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < NUMBER_COUNT; i++) {
                 if (computerArray.get(i).equals(userArray.get(i))) {
                     strike++;
                 } else if (computerArray.contains(userArray.get(i))) {
@@ -45,9 +48,9 @@ public class Application {
             // 조건에 따라 게임 진행
             if (strike == 0 && ball == 0) {
                 System.out.println("낫싱");
-            } else if (strike == 3) {
-                System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            } else if (strike == NUMBER_COUNT) {
+                System.out.printf("%d스트라이크%n", NUMBER_COUNT);
+                System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", NUMBER_COUNT);
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 computerArray.clear();
 
@@ -69,19 +72,15 @@ public class Application {
             } else {
                 System.out.printf("%d볼 %d스트라이크%n", ball, strike);
             }
-
             // 턴 종료 및 초기화
             userArray.clear();
-            strike = 0;
-            ball = 0;
         }
-
         Console.close();
     }
 
     private static List<Integer> generateComputerNumbers() {
         List<Integer> computerArray = new ArrayList<>();
-        while (computerArray.size() < 3) {
+        while (computerArray.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerArray.contains(randomNumber)) {
                 computerArray.add(randomNumber);
@@ -91,7 +90,7 @@ public class Application {
     }
 
     private static void validateInputCount(String input) {
-        if (input.length() != 3) {
+        if (input.length() != NUMBER_COUNT) {
             throw new IllegalArgumentException("잘못된 입력 형식입니다.");
         }
     }
