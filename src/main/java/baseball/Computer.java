@@ -6,7 +6,11 @@ import java.util.List;
 
 public class Computer {
 
-    private final List<Integer> com = new ArrayList<>();
+    private final List<Integer> com;
+
+    public Computer() {
+        this.com = new ArrayList<>();
+    }
 
     public void setCom() {  // 상대방의 3자리 숫자를 배열에 저장
         while (com.size() < 3) {
