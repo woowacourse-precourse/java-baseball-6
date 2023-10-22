@@ -1,5 +1,7 @@
-package baseball.domain;
+package baseball.service;
 import baseball.config.Config;
+import baseball.domain.BaseballNumbers;
+import baseball.domain.Result;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;

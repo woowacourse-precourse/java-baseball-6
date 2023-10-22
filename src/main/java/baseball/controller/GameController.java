@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.config.Config;
 import baseball.domain.BaseballNumbers;
-import baseball.domain.GameService;
+import baseball.service.GameService;
 import baseball.domain.Result;
 import baseball.util.Parser;
 import baseball.view.InputView;
