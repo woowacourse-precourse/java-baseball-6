@@ -28,7 +28,15 @@ public class Game {
 
     private void generate(Set<String> computer){
         while(computer.size()<3){
-            computer.add(Integer.toString(Randoms.pickNumberInRange(1,9)));
+            computer.add(toString(pickRandom()));
         }
+    }
+
+    private String toString(int number){
+        return Integer.toString(number);
+    }
+
+    private int pickRandom(){
+        return Randoms.pickNumberInRange(1,9);
     }
 }
