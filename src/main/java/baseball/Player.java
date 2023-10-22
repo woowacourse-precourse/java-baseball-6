@@ -11,7 +11,9 @@ public class Player {
         String playerInput = Console.readLine();
 
         // 입력받은 값이 세 자리 숫자가 아니라면 IllegalArgumentException 발생시킨 후 애플리케이션 종료
-        if (playerInput.length() != 3) throw new IllegalArgumentException();
+//        if (playerInput.length() != 3) throw new IllegalArgumentException();
+        isThreeDigitNumber(playerInput);
+        hasNoZero(playerInput);
 
         // 입력받은 값을 char 배열에 넣기
         char[] playerInputChar = playerInput.toCharArray();
@@ -30,6 +32,15 @@ public class Player {
     public static void isThreeDigitNumber(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    public static void hasNoZero(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            char digit = input.charAt(i);
+            if (digit < '1' || digit > '9') {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
