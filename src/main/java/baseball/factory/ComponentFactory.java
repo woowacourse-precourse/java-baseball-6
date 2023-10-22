@@ -3,6 +3,7 @@ package baseball.factory;
 import baseball.controller.BaseballController;
 import baseball.formatter.BallCountFormatter;
 import baseball.io.InputManager;
+import baseball.io.InputMapper;
 import baseball.io.InputValidator;
 import baseball.io.InputView;
 import baseball.io.OutputView;
@@ -17,7 +18,11 @@ public class ComponentFactory {
     }
 
     private InputManager inputManager() {
-        return new InputManager(inputView());
+        return new InputManager(inputView(), inputMapper());
+    }
+
+    private InputMapper inputMapper() {
+        return new InputMapper();
     }
 
     private InputView inputView() {
