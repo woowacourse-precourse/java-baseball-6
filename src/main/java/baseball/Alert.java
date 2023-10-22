@@ -19,8 +19,12 @@ public class Alert {
 
     public static void gameFinishMessage() {
         System.out.println(GAME_FINISH);
+    }
+
+    public static void reStartMessage() {
         System.out.println(RESTART);
     }
+
 
     public static void NothingMessage() {
         System.out.println(NOTHING);

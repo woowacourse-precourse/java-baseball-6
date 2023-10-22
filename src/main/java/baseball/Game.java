@@ -4,8 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Game {
 
@@ -15,7 +13,7 @@ public class Game {
     public void Start() {
         // 게임을 시작합니다.
         computerInputArray = Computer.getRandomNumber();
-        System.out.println(computerInputArray);
+//        System.out.println(computerInputArray);
 
         while (answer) {
             Alert.userInputStartMessage();
@@ -30,7 +28,7 @@ public class Game {
     }
 
     public static boolean reStart() {
-        // "메세지 다시 시작하시겠습니까?"
+        Alert.reStartMessage();
         String re = Console.readLine();
         if (re.equals("1")) {
             return true;
