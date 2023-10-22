@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.constant.GameResult;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -7,9 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Computer {
-    private final String STRIKE = "스트라이크";
-    private final String BALL = "볼";
-    private final String NOTHING = "낫싱";
     private GameNumber gameNumber;
 
     public Computer(List<Integer> numbers){
@@ -27,14 +25,14 @@ public class Computer {
         return numbers;
     }
 
-    public Map<String, Long> calculate(GameNumber userGameNumber){
+    public Map<GameResult, Long> calculate(GameNumber userGameNumber){
         long matchCount = gameNumber.containsCount(userGameNumber);
         long strikeCount = gameNumber.matchCount(userGameNumber);
         long ballCount = Math.abs(strikeCount - matchCount);
         if(strikeCount == 0 && ballCount == 0){
-            return Map.of(NOTHING,0L);
+            return Map.of(GameResult.NOTHING,0L);
         }
-        return Map.of(STRIKE, strikeCount, BALL, ballCount);
+        return Map.of(GameResult.STRIKE, strikeCount, GameResult.BALL, ballCount);
 
     }
 }
