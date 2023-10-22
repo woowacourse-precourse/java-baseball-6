@@ -253,18 +253,37 @@ class ApplicationTest extends NsTest {
         assertThat(resultList).isEqualTo(expectList);
         assertThat(throwable).as("문자열이 자연수로 이루어지지 않았을때").isInstanceOf(IllegalArgumentException.class);
     }
+
     @Test
-    void countSameValueSameIdxByIntegerLists_Integer리스트() {
+    void countSameValueSameIdxByIntegerLists_Integer리스트들_사이에_값이같고_인덱스도_같은_수의_개수_개수리턴() {
         //given
-        String testString1 = "12345";
-        String testString2 = "abcde";
-        List<Integer> expectList = new ArrayList(Arrays.asList(1, 2, 3, 4, 5));
+        List<Integer> testList1 = new ArrayList(Arrays.asList(1, 2, 3, 4, 5));
+        List<Integer> testList2 = new ArrayList(Arrays.asList(1, 2, 3, 1, 2));
+        int expectCount1 = 3;
+        List<Integer> testList3 = new ArrayList(Arrays.asList(5, 6, 7, 8, 9));
+        List<Integer> testList4 = new ArrayList(Arrays.asList(1, 6, 7, 9));
+        int expectCount2 = 2;
         //when
-        List<Integer> resultList = Util.naturalNumberstringToIntegerList(testString1);
-        Throwable throwable = catchThrowable(
-                () -> Util.naturalNumberstringToIntegerList(testString2));
+        int resultCount1 = Util.countSameValueSameIdxByIntegerLists(testList1, testList2);
+        int resultCount2 = Util.countSameValueSameIdxByIntegerLists(testList3, testList4);
         //then
-        assertThat(resultList).isEqualTo(expectList);
-        assertThat(throwable).as("문자열이 자연수로 이루어지지 않았을때").isInstanceOf(IllegalArgumentException.class);
+        assertThat(resultCount1).isEqualTo(expectCount1);
+        assertThat(resultCount2).isEqualTo(expectCount2);
+    }
+    @Test
+    void countSameValueDifferentIdxByIntegerList_Integer리스트들_사이에_값이같고_인덱스도_같은_수의_개수_개수리턴() {
+        //given
+        List<Integer> testList1 = new ArrayList(Arrays.asList(1, 2, 3, 4, 5));
+        List<Integer> testList2 = new ArrayList(Arrays.asList(1, 2, 3, 1, 2));
+        int expectCount1 = 3;
+        List<Integer> testList3 = new ArrayList(Arrays.asList(5, 6, 7, 8, 9));
+        List<Integer> testList4 = new ArrayList(Arrays.asList(1, 6, 7, 9));
+        int expectCount2 = 2;
+        //when
+        int resultCount1 = Util.countSameValueSameIdxByIntegerLists(testList1, testList2);
+        int resultCount2 = Util.countSameValueSameIdxByIntegerLists(testList3, testList4);
+        //then
+        assertThat(resultCount1).isEqualTo(expectCount1);
+        assertThat(resultCount2).isEqualTo(expectCount2);
     }
 }
