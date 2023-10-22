@@ -15,11 +15,13 @@ public class Application {
 
 class baseballGame {
 
-    public static void playGame() {
+    public void playGame() {
         int balls;
         int strikes;
         String nothing;
         boolean gameAgainCheck = true;
+        gameRule gameRule = new gameRule(); // gameRule 인스턴스 생성.
+        numberGenerator numberGenerator = new numberGenerator(); // numberGenerator 생성
 
         System.out.println(constants.START_MESSAGE);
         List<Integer> cpuGameNumber = numberGenerator.getCpuRandomNumber();
