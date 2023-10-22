@@ -25,6 +25,7 @@ public class BaseballGameMachine {
             display(message.requestRetryOrEnd() + '\n');
             gameEnd = newGameOrEnd(input());
         }
+        display(message.gameEnd() + '\n');
     }
 
     public void gameProcess() {
