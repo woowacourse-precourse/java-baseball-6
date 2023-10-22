@@ -21,9 +21,13 @@ public class UserInputValidation {
         return userInput.length() == GAME_NUMBER_SIZE;
     }
 
+    public boolean isValidLengthRestartNumber(String userInput) {
+        return userInput.length() == RESTART_NUMBER_SIZE;
+    }
+
 
     public boolean isValidRestartNumber(String userInput) {
-        if (userInput.length() != RESTART_NUMBER_SIZE) {
+        if (isValidLengthRestartNumber(userInput)) {
             return false;
         }
         return isRangeRestartNumber(userInput);
