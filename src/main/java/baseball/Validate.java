@@ -34,12 +34,15 @@ public class Validate {
         return false;
     }
 
-    public static boolean isInvalidDigitsOnly(String userInput) { 
+    public static boolean isInvalidDigitsOnly(String userInput) {
+        int startRange = '1';
+        int endRange = '9';
         for (int i = 0; i < 3; i++) {
-            if (Character.getNumericValue('1') > userInput.charAt(i)) {
+            int charTOASCII = userInput.charAt(i);
+            if (startRange > charTOASCII) {
                 return true;
             }
-            if (Character.getNumericValue('9') < userInput.charAt(i)) {
+            if (endRange < charTOASCII) {
                 return true;
             }
         }
