@@ -47,8 +47,7 @@ public class Application {
     public boolean determineFinishOrAgainGame(int startNumOrEndNum){
         if (startNumOrEndNum == 1){
             return false;
-        }
-        else if (startNumOrEndNum == 2){
+        } else if (startNumOrEndNum == 2){
             return true;
         }
         // 예외 처리 해야되는 부분
