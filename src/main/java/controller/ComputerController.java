@@ -19,8 +19,6 @@ import java.util.List;
 public class ComputerController {
 
     private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
-    private static final int BASEBALL_SUCCESS_STRIKE_COUNT = 3;
-    private static final int INIT_ZERO = 0;
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String BALL_MESSAGE = "볼";
     private static final String NOTHING_MESSAGE = "낫싱";
