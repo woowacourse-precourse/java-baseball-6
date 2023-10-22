@@ -14,6 +14,18 @@ public class User {
         }
     }
 
+    static boolean hasDuplicateNumbers(final String input){
+        boolean[] isExisted = new boolean[10];
+        for(char num: input.toCharArray()){
+            if(isExisted[num-'0']){
+                return false;
+            }
+            isExisted[num-'0'] = true;
+        }
+        return true;
+    }
+
+
     public static void validateInput(final String input){
         if(input == null){
             throw new IllegalArgumentException("Input value is null.");
@@ -23,6 +35,9 @@ public class User {
         }
         if(input.length() != 3){
             throw new IllegalArgumentException("Input 3 digit integer.");
+        }
+        if(!hasDuplicateNumbers(input)){
+            throw new IllegalArgumentException("Input not duplicate numbers.");
         }
     }
 
