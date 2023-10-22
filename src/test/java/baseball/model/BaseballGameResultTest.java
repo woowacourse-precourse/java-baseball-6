@@ -10,8 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 class BaseballGameResultTest {
 
     @Test
-    @DisplayName("볼 스트라이크 생성 확인")
-    void 볼_스트라이크_생성_확인() throws Exception {
+    @DisplayName("볼 스트라이크 카운팅 완료")
+    void 볼_스트라이크_카운팅_확인() throws Exception {
         //given
         List<Integer> computerNumber = List.of(1, 2, 3);
         List<Integer> userNumber1 = List.of(3,2,1);
