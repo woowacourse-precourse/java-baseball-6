@@ -25,15 +25,15 @@ public class GameController {
     }
 
     private void playSingleGame() {
-        setGame();
+        setupGame();
         do {
             inputUserNumber();
-            int[] result = getResultList();
+            int[] result = calculateResult();
             OutputView.printScoreMessage(result[0], result[1]);
         } while (!isAnswer());
     }
 
-    private void setGame() {
+    private void setupGame() {
         programNumber = new ProgramNumber(NUMBER_SIZE, START_NUMBER, END_NUMBER);
     }
 
@@ -49,7 +49,7 @@ public class GameController {
         return false;
     }
 
-    private int[] getResultList() {
+    private int[] calculateResult() {
         return numberComparator.getStrikeBall(userNumber.getUserNumber(), programNumber.getProgramNumber());
     }
 
