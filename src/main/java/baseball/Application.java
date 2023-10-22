@@ -9,9 +9,14 @@ import java.util.List;
 public class Application{
 
     public static void main(String[] args){
-        startGame();
-        List<Integer> computerNumber = createComputerRandomNumber();
-        playGame(computerNumber);
+        while(true){
+            startGame();
+            List<Integer> computerNumber = createComputerRandomNumber();
+            playGame(computerNumber);
+            if(terminate()){
+                break;
+            }
+        }
     }
 
     private static void startGame(){
@@ -155,6 +160,19 @@ public class Application{
 
     private static boolean isAllStrike(int strike){
         return strike == 3;
+    }
+
+    private static boolean terminate(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String exitInput = readLine();
+        throwIfInvalidExitInput(exitInput);
+        return exitInput.equals("2");
+    }
+
+    private static void throwIfInvalidExitInput(String exitInput){
+        if(!exitInput.equals("1")&&!exitInput.equals("2")){
+            throw new IllegalArgumentException();
+        }
     }
 
 }
