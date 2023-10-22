@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.controller.RegameController;
-import baseball.domain.Regame;
+import baseball.controller.RestartController;
+import baseball.domain.Restart;
 import baseball.domain.GameConstants;
 import baseball.util.IntegerUtil;
 import baseball.view.EndView;
@@ -136,15 +136,15 @@ public class Application {
                     }
                     int parsedRegameNum = Integer.parseInt(regameNum);
 
-                    Regame regame = RegameController.validateValue(parsedRegameNum);
+                    Restart restart = RestartController.validateValue(parsedRegameNum);
 
-                    if (regame == Regame.RESTART_GAME){
+                    if (restart == Restart.RESTART_GAME){
                         break GuessingLoop;
                     }
-                    if (regame == Regame.EXIT_GAME) {
+                    if (restart == Restart.EXIT_GAME) {
                         return;
                     }
-                    if (regame == Regame.OTHER_CHOICE) {
+                    if (restart == Restart.OTHER_CHOICE) {
                         throwInvalidValueException();
                     }
                 }

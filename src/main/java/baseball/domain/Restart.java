@@ -1,13 +1,13 @@
 package baseball.domain;
 
-public enum Regame {
+public enum Restart {
     RESTART_GAME(1),
     EXIT_GAME(2),
     OTHER_CHOICE(3);
 
     private final int value;
 
-    Regame(int value) {
+    Restart(int value) {
         this.value = value;
     }
 
