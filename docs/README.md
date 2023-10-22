@@ -2,6 +2,12 @@
 
 ## [기능 목록]
 
+- `IllegalArgumentException` 예외 처리
+- 스트라이크/볼/낫싱 확인
+- 플레이어 숫자 입력
+- 플레이어 숫자 입력 값 1~9 사이 숫자 확인
+- 상대방(컴퓨터) Random 값 추출
+
 ### [23.10.19]
 
 - 프리코스 메일 확인
@@ -11,7 +17,20 @@
 
 - Java 17 개발 환경 세팅
 - Git 연동
-  - 통신 방법 변경 HTTPS → SSH
+    - 통신 방법 변경 HTTPS → SSH
 - 개발 환경 세팅 중 발생한 이슈 해결
-  - Java 버전 변경 및 `asdf` 패키지 관리 툴 사용
-  - 터미널 재실행시 `java -version` 찾지 못함... JAVA_HOME 설정으로 해결
+    - Java 버전 변경 및 `asdf` 패키지 관리 툴 사용
+    - 터미널 재실행시 `java -version` 찾지 못함... JAVA_HOME 설정으로 해결
+
+### [23.10.22]
+
+- Git bare clone 수행
+- 기능 목록 1차 작성
+- 프로그램 전체 흐름 중 50% 구현
+    - 클린코드 고려 안함 (수정 필요)
+    - 메서드 복잡도 고려 안함 (수정 필요)
+- Java 코드 컨벤션 적용
+- 유용한 플러그인 적용
+    - CodeMetrics
+    - GitToolBox
+    - Rainbow Brackets
