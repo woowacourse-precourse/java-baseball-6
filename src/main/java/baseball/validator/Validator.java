@@ -11,4 +11,15 @@ public class Validator {
             throw new IllegalArgumentException("서로 다른 수를 입력해야 합니다.");
         }
     }
+
+    public static void validateIsNumber(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            char separatedInput = input.charAt(i);
+            boolean isNumber = Character.isDigit(separatedInput);
+            if (isNumber == false) {
+                throw new IllegalArgumentException("숫자를 입력해주세요");
+            }
+        }
+    }
+
 }
