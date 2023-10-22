@@ -6,17 +6,19 @@ import static baseball.GameOption.BASEBALL_START_NUMBER;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Validator {
 
     public List<Integer> validateBaseballNumber(String inputValue) {
         validateLength(inputValue, GameOption.BASEBALL_SIZE);
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < inputValue.length(); i++) {
-            String substring = inputValue.substring(i, i + 1);
-            validateNumber(substring);
-            result.add(Integer.parseInt(substring));
-        }
+        IntStream.range(0, inputValue.length())
+                .forEach(i -> {
+                    String substring = inputValue.substring(i, i + 1);
+                    validateNumber(substring);
+                    result.add(Integer.parseInt(substring));
+                });
         validateSameNumber(result);
         return result;
     }
@@ -37,15 +39,15 @@ public class Validator {
     }
 
     private static void validateNumber(String value) {
-        for (int i = 0; i < value.length(); i++) {
-            char currentChar = value.charAt(i);
-            if (isOutOfRange(currentChar)) {
-                throw new IllegalArgumentException(
-                        BASEBALL_START_NUMBER + "에서 " +
-                                BASEBALL_END_NUMBER + "까지 서로 다른 임의의 수 " +
-                                BASEBALL_SIZE + "개를 선택해야합니다.");
-            }
-        }
+        value.chars()
+                .forEach((currentChar) -> {
+                    if (isOutOfRange((char) currentChar)) {
+                        throw new IllegalArgumentException(
+                                BASEBALL_START_NUMBER + "에서 " +
+                                        BASEBALL_END_NUMBER + "까지 서로 다른 임의의 수 " +
+                                        BASEBALL_SIZE + "개를 선택해야합니다.");
+                    }
+                });
     }
 
     private static boolean isOutOfRange(char currentChar) {
