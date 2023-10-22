@@ -1,13 +1,12 @@
 package baseball.controller;
 
-import baseball.model.Comparator;
 import baseball.model.Computer;
+import baseball.model.NumberComparator;
 import baseball.model.Player;
 import baseball.model.Result;
 import baseball.utils.NumberProvider;
 import baseball.utils.Validator;
 import baseball.view.ConsoleView;
-
 import java.util.List;
 
 public class GameController {
@@ -26,8 +25,8 @@ public class GameController {
         boolean flag = true;
         while (flag) {
             Player player = createPlayer();
-            Comparator comparator = new Comparator(player, computer);
-            Result result = comparator.compare();
+            NumberComparator numberComparator = new NumberComparator(player, computer);
+            Result result = numberComparator.compareNumber();
             flag = isNotGameFinish(result);
         }
         return isRefreshGame();
@@ -61,7 +60,6 @@ public class GameController {
         if (result.isExistStrike()) {
             ConsoleView.printStrikeCount(result.getStrike());
         }
-
 
         return true;
     }

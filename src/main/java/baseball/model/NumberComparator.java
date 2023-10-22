@@ -1,22 +1,22 @@
 package baseball.model;
 
-public class Comparator {
-    private static final int START_INDEX = 0;
-    private static final int END_INDEX = 2;
+public class NumberComparator {
+    private static final int START_DIGIT_INDEX = 0;
+    private static final int END_DIGIT_INDEX = 2;
     private static final int PLUS_ZERO = 0;
     private static final int PLUS_ONE = 1;
-    private Player player;
-    private Computer computer;
+    private final Player player;
+    private final Computer computer;
 
-    public Comparator(Player player, Computer computer) {
+    public NumberComparator(Player player, Computer computer) {
         this.player = player;
         this.computer = computer;
     }
 
-    public Result compare() {
+    public Result compareNumber() {
         int strike = 0;
         int ball = 0;
-        for (int i = START_INDEX; i <= END_INDEX; i++)  {
+        for (int i = START_DIGIT_INDEX; i <= END_DIGIT_INDEX; i++) {
             int playerNumber = player.getNumbers().get(i);
             strike += plusStrike(computer.isSameNumberAndDigit(playerNumber, i));
             ball += plusBall(computer.isExistNumberOf(playerNumber));
