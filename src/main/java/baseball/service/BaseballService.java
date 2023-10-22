@@ -14,4 +14,11 @@ public class BaseballService {
             }
         }
     }
+
+    public boolean restart(String restart){
+        if(restart.equals("1")){
+            return true;
+        }
+        return false;
+    }
 }
