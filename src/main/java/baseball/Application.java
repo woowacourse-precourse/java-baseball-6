@@ -147,7 +147,7 @@ public class Application {
                 numbersIdx++;
             }
             if(searchNumber == checkNumber) return true;
-            else checkNumberIdx++;
+            checkNumberIdx++;
         }
         return false;
     }
