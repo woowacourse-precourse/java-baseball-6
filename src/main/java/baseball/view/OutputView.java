@@ -1,9 +1,11 @@
 package baseball.view;
 
 public class OutputView {
+    private static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String WINNING_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public void displayStartGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_GAME_MESSAGE);
     }
 
     public void displayResult(int balls, int strikes) {
@@ -20,7 +22,7 @@ public class OutputView {
     }
 
     public void displayWinningMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(WINNING_MESSAGE);
     }
 
 
