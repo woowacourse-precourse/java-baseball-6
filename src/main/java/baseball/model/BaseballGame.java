@@ -1,11 +1,10 @@
 package baseball.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseballGame {
     private final List<Integer> computer = new ArrayList<>();

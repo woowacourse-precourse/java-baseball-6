@@ -1,9 +1,8 @@
 package baseball;
 
-import baseball.model.BaseballGame;
-import camp.nextstep.edu.missionutils.Console;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
+
+import baseball.model.BaseballGame;
 
 public class Application {
     public static void main(String[] args) {
