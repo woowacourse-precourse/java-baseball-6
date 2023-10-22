@@ -15,7 +15,9 @@ public class AnswerTest {
     @ParameterizedTest
     @MethodSource("provideMatchTestArguments")
     void matchTest(Answer answer, BaseballNumbers inputBaseballNumbers, Score expectedScore) {
-        assertThat(answer.match(inputBaseballNumbers)).isEqualTo(expectedScore);
+        Score score = answer.match(inputBaseballNumbers);
+        assertThat(score.getBallCount()).isEqualTo(expectedScore.getBallCount());
+        assertThat(score.getStrikeCount()).isEqualTo(expectedScore.getStrikeCount());
     }
 
     static Stream<Arguments> provideMatchTestArguments() {
