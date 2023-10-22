@@ -16,18 +16,22 @@ public class Judgement {
     }
     private void calculateCount(int[] userInput, int[] computerNumbers){
         for(int userIndex = 0; userIndex < 3; userIndex++){
-            if(isStrike(userInput, computerNumbers, userIndex)) strikeCount++;
-            else if(isBall(userInput, computerNumbers, userIndex)) ballCount++;
+            countStrike(userInput, computerNumbers, userIndex);
+            countBallOneByOne(userInput, computerNumbers, userIndex);
         }
     }
-    private boolean isStrike(int[] userInput, int[] computerNumbers, int index){
-        return userInput[index] == computerNumbers[index];
+    private void countStrike(int[] userInput, int[] computerNumbers, int index){
+        if(userInput[index] == computerNumbers[index]) strikeCount++;
     }
-    private boolean isBall(int[] userInput, int[] computerNumbers, int userIndex){
+    private void countBallOneByOne(int[] userInput, int[] computerNumbers, int userIndex){
         for(int computerIndex = 0; computerIndex < 3; computerIndex++){
             if(userIndex == computerIndex) continue;
-            if(userInput[userIndex] == computerNumbers[computerIndex]) return true;
+            countBall(userInput[userIndex], computerNumbers[computerIndex]);
         }
-        return false;
+    }
+    private void countBall(int userNumber, int computerNumber){
+        if(userNumber == computerNumber){
+            ballCount++;
+        }
     }
 }
