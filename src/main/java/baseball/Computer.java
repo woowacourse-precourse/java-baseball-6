@@ -23,7 +23,7 @@ public class Computer {
         int num;
 
         while (true) {
-            num = Randoms.pickNumberInRange(0, 9);
+            num = Randoms.pickNumberInRange(1, 9);
             if (isRightNum(num, cnt))
                 break;
         }
@@ -41,5 +41,10 @@ public class Computer {
 
     public void makeResult() {
 
+    }
+
+    public boolean checkAnswer() {
+
+        return true;
     }
 }
