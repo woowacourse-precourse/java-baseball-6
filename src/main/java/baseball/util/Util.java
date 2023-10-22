@@ -36,7 +36,7 @@ public class Util {
         return count;
     }
 
-    public static int countSameValueDifferentIdxByIntegerList(List<Integer> integerList1, List<Integer> integerList2) {
+    public static int countSameValueDifferentIdxByIntegerLists(List<Integer> integerList1, List<Integer> integerList2) {
         int count = 0;
         for (int i = 0; i < integerList1.size(); i++) {
             count += countSameValueDifferentIdxBetweenIntegerListAndValue(integerList1.get(i), i, integerList2);
