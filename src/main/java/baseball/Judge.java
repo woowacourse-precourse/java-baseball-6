@@ -29,6 +29,7 @@ public class Judge {
                 scoreBoardList.add("BALL");
                 continue;
             }
+            scoreBoardList.add("NOTHING"); // 둘 다 아니라면 NOTHING
 
         }
     }
