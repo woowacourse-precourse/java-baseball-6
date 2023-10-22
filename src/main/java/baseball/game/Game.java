@@ -27,6 +27,9 @@ public class Game {
         strikeCount = 0;
         ballCount = 0;
     }
+    private void initComputerAndPlayer() {
+
+    }
 
     private void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -54,7 +57,7 @@ public class Game {
         }
     }
 
-    private boolean compareNumbers(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    private void compareNumbers(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         System.out.println("computerNumbers = " + computerNumbers);
         System.out.println("playerNumbers = " + playerNumbers);
 
@@ -77,8 +80,6 @@ public class Game {
         } else {
             System.out.println("낫싱");
         }
-
-        return true;
     }
 
     private boolean checkIsContinue() {
@@ -87,6 +88,7 @@ public class Game {
         String input = Console.readLine();
 
         if (input.equals("1")) {
+            initComputerAndPlayer();
             return false;
         } else if (input.equals("2")) {
             return true;
