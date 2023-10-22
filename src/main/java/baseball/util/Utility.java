@@ -1,16 +1,18 @@
 package baseball.util;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Utility {
 
-    private static List<Integer> assignComputerRandomNumber() {
+    public static List<Integer> assignComputerRandomNumber() {
         return Randoms.pickUniqueNumbersInRange(1, 9, 3);
     }
 
-    private static List<Integer> string2IntegerArrayList(String userInput) {
+    public static List<Integer> string2IntegerArrayList(String userInput) {
         List<Integer> arrayListUserInput = new ArrayList<>();
         String[] splitUserInput = userInput.split("");
 
@@ -19,6 +21,11 @@ public class Utility {
         }
 
         return arrayListUserInput;
+    }
+
+    public static List<Integer> input() {
+        String userInput = readLine();
+        return string2IntegerArrayList(userInput);
     }
 }
 
