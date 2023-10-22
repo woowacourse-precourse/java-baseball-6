@@ -1,10 +1,14 @@
 package baseball;
 
-import baseball.domain.*;
+import baseball.domain.InputOutputHandler;
+import baseball.domain.NumberBaseball;
+import baseball.domain.NumberBaseballIO;
+import baseball.domain.User;
 import baseball.domain.validators.InputValidator;
 import baseball.domain.validators.NumberBaseballValidator;
 
 public class BaseballApplication {
+    private static final int NUMBER_MAX_LENGTH = 3;
     private InputValidator cachedInputValidator;
     private NumberBaseballValidator cachedNumberBaseballValidator;
     private InputOutputHandler cachedInputOutputHandler;
@@ -12,14 +16,15 @@ public class BaseballApplication {
     private User cachedUser;
     private NumberBaseball cachedNumberBaseball;
 
-    private BaseballApplication() {};
+    private BaseballApplication() {
+    }
 
-    public static void run(int numberLimit) {
-        // 여기에서 실행 로직을 구현하세요.
-        // 예를 들면:
+    ;
+
+    public static void run() {
         BaseballApplication application = new BaseballApplication();
         NumberBaseball game = application.numberBaseball();
-        game.play(numberLimit);
+        game.play(NUMBER_MAX_LENGTH);
     }
 
     public InputValidator inputValidator() {
