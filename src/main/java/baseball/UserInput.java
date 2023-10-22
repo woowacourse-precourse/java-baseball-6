@@ -10,6 +10,7 @@ public class UserInput {
 		userInputList.clear();
 		System.out.printf("숫자를 입력해주세요 : ");
 			String userNumber = Console.readLine();
+			
 			// 예외처리 1 : 세 자리 숫자가 아닌 수 입력
 			if (userNumber.length() != 3) {
 				throw new IllegalArgumentException("세 자리 숫자만 입력가능합니다.");
@@ -25,9 +26,7 @@ public class UserInput {
 				throw new IllegalArgumentException("서로 다른 숫자만 입력가능합니다.");
 			}
 			
-			
 			// 예외처리 3 : 숫자가 아닌 문자열 입력
-			
 			
 			
 			char exceptCh_1 = inputNum_1.charAt(0);
@@ -52,15 +51,10 @@ public class UserInput {
 				
 			}
 		
-			
 			userInputList.add(inputNum_1);
 			userInputList.add(inputNum_2);
 			userInputList.add(inputNum_3);
-			//System.out.println(userInputList);
-		
-		//ComputerOutput comNum = new ComputerOutput();
-			
-				
+						
 		}	
 	
 	public List<String> getUserNum() {
