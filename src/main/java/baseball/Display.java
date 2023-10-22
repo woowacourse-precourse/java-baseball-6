@@ -16,4 +16,52 @@ public class Display {
         System.out.print("숫자를 입력해주세요 : ");
         return readLine();
     }
+
+    public static void printMatchResult(final MatchResult result) {
+        String message = makeMatchResultMessage(result);
+        System.out.println(message);
+    }
+
+    public static void printGameOver() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private static String makeMatchResultMessage(final MatchResult result) {
+        if (result.isNothing) {
+            return "낫싱";
+        }
+        if (isBothBallAndStrike(result)) {
+            return String.format("%d볼 %d스트라이크",
+                            result.ballCount,
+                            result.strikeCount);
+        }
+        if (isOnlyBall(result)) {
+            return String.format("%d볼", result.ballCount);
+        }
+        if (isOnlyStrike(result)) {
+            return String.format("%d스트라이크", result.strikeCount);
+        }
+        return "";
+    }
+
+    private static boolean isBothBallAndStrike(final MatchResult result) {
+        if (result.ballCount > 0 && result.strikeCount > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isOnlyBall(final MatchResult result) {
+        if (result.ballCount > 0 && result.strikeCount == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isOnlyStrike(final MatchResult result) {
+        if (result.strikeCount > 0 && result.ballCount == 0) {
+            return true;
+        }
+        return false;
+    }
 }

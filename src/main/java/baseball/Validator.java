@@ -3,12 +3,14 @@ package baseball;
 import java.util.Arrays;
 
 public class Validator {
-    public static void validateBall(Ball ball) throws IllegalArgumentException {
-        if (!isStringLength(ball.value, 3))
-            throw new IllegalArgumentException("Ball은 3글자를 만족해야 합니다.");
-        if (!isNumber(ball.value))
+    private static final int BALL_LENGTH = 3;
+
+    public static void validateUserInputBall(String userInput) throws IllegalArgumentException {
+        if (!isStringLength(userInput, BALL_LENGTH))
+            throw new IllegalArgumentException("Ball은 " + BALL_LENGTH + "글자를 만족해야 합니다.");
+        if (!isNumber(userInput))
             throw new IllegalArgumentException("Ball은 숫자만 가능합니다");
-        if (hasDuplicateNumbers(ball.value))
+        if (hasDuplicateNumbers(userInput))
             throw new IllegalArgumentException("Ball에 중복된 숫자가 존재합니다.");
     }
 
