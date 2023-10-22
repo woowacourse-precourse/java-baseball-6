@@ -25,6 +25,22 @@ public class BaseballGameController {
         this.user = new User();
     }
 
+    public boolean startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (true) {
+            initGame();
+            inputNumber();
+            checkNumber();
+            printResult();
+
+            boolean isExit = exitGame();
+            if (isExit) {
+                return isExit;
+            }
+        }
+    }
+
     public void inputNumber() {
 
         System.out.print("숫자를 입력해주세요 : ");
