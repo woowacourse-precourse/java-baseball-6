@@ -26,7 +26,7 @@ public class ComparisonResult {
     @Override
     public String toString() {
         if (ball > 0 && strike > 0) {
-            return String.format("%d볼, %d스트라이크", ball, strike);
+            return String.format("%d볼 %d스트라이크", ball, strike);
         }
         else if (ball > 0 && strike == 0) {
             return String.format("%d볼", ball);
