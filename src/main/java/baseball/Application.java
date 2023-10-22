@@ -36,5 +36,23 @@ public class Application {
             parsedUserInput.clear();
         }
     }
+
+    private static boolean calc(List<Integer> input, List<Integer> computerNumber) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < input.size(); i++) {
+            if (input.get(i) == computerNumber.get(i)) {
+                strike++;
+            } else if (computerNumber.contains(input.get(i))) {
+                ball++;
+            }
+        }
+        printResult(strike, ball);
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
     }
 }
