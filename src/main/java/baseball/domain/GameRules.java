@@ -5,6 +5,9 @@ import static baseball.constant.GameConstants.MAX_NUMBER_LENGTH;
 import java.util.List;
 
 public class GameRules {
+    private GameRules() {
+    }
+
     public static int countBall(List<Integer> userNumber, List<Integer> computerNumber) {
         int ball = 0;
         for (int i = 0; i < MAX_NUMBER_LENGTH; i++) {

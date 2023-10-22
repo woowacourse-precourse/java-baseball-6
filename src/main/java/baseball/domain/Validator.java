@@ -8,6 +8,9 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validator {
+    private Validator() {
+    }
+
     public static void numberInput(String inputString) throws IllegalArgumentException {
         if (!Pattern.matches(INPUT_REGEX, inputString) || !hasUniqueNumber(inputString)) {
             throw new IllegalArgumentException(ERROR_INVALID_INPUT + inputString);

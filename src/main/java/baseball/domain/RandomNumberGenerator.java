@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberGenerator {
+    private RandomNumberGenerator() {
+    }
+
     public static List<Integer> generate() {
         List<Integer> generatedNumbers = new ArrayList<>(MAX_NUMBER_LENGTH);
         while (generatedNumbers.size() < MAX_NUMBER_LENGTH) {
