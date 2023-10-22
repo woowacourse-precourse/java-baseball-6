@@ -11,11 +11,11 @@ public class Game {
         while(true) {
             int[] answerNums = creRandomNums();
 
-            //정답보기
-            for(int i = 0; i < answerNums.length; i++){
-                System.out.print(answerNums[i] + " ");
-            }
-            System.out.println();
+//            //정답보기
+//            for(int i = 0; i < answerNums.length; i++){
+//                System.out.print(answerNums[i] + " ");
+//            }
+//            System.out.println();
 
             String result = "";
 
@@ -76,7 +76,9 @@ public class Game {
                 if(j == i) {
                     if (userNum[i] == answerNums[j]) {
                         striker++;
-                    }else{
+                    }
+                }else{
+                    if (userNum[i] == answerNums[j]) {
                         ball++;
                     }
                 }
