@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.model;
 
 import baseball.util.BaseBallGameNumberGenerator;
 import java.util.List;

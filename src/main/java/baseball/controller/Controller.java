@@ -3,10 +3,10 @@ package baseball.controller;
 import static baseball.util.Converter.convertStringToInt;
 import static baseball.util.Converter.convertStringToIntegerList;
 
-import baseball.domain.Computer;
-import baseball.domain.GuessNumber;
-import baseball.domain.Referee;
-import baseball.domain.State;
+import baseball.model.Computer;
+import baseball.model.GuessNumber;
+import baseball.model.Referee;
+import baseball.model.State;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

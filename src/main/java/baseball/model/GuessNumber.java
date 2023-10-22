@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.model;
 
 import static baseball.util.Constant.BASEBALL_GAME_NUMBER_DIGIT;
 import static baseball.util.Constant.END_INCLUSIVE;
