@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.Arrays;
-
 public class BallCountCalculate {
 
 
