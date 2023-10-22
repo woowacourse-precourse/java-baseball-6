@@ -31,6 +31,7 @@ class MessageTest {
         assertThat(requestInputMessage).isEqualTo("숫자를 입력해주세요 : ");
     }
 
+    @DisplayName("게임 성공시 출력되는 메시지 테스트")
     @Test
     void successTest() {
         //given
@@ -50,6 +51,17 @@ class MessageTest {
         final String requestRetryOrEndMessage = message.requestRetryOrEnd();
         //then
         assertThat(requestRetryOrEndMessage).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    @DisplayName("게임이 종료 시, 출력되는 메시지 테스트")
+    @Test
+    void gameEndMessageTest() {
+        //given
+        Message message = new Message();
+        //when
+        final String gameEndMessage = message.gameEnd();
+        //then
+        assertThat(gameEndMessage).isEqualTo("게임 종료");
     }
 
     @DisplayName("게임 결과 볼과 스트라이크가 존재하지 않을 경우의 테스트")

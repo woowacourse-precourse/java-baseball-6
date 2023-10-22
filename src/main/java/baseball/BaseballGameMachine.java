@@ -29,7 +29,7 @@ public class BaseballGameMachine {
 
     public void gameProcess() {
         Referee referee = new Referee(numberGenerator.generateRandomAnswerList());
-        System.out.println(referee.getAnswerList());
+//        System.out.println(referee.getAnswerList());
         boolean success = false;
         while (!success) {
             display(message.requestInput());

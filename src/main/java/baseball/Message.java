@@ -19,6 +19,10 @@ public class Message {
         return "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     }
 
+    public String gameEnd() {
+        return "게임 종료";
+    }
+
     public String result(List<Integer> gameResult) {
         if (gameResult == null) {
             return "낫싱";
