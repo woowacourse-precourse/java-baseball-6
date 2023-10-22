@@ -1,22 +1,22 @@
 # 구현할 기능 목록 ⚾
 
-- [ ] 난수 생성기 구현 (**RandomNumberGenerator**)
-    - [ ] ```camp.nextstep.edu.missionutils.Randoms```의 ```pickNumberInRange()``` 활용
-    - [ ] 각 자리 숫자가 1-9 사이의 범위를 지키도록 구현
-    - [ ] 생성된 숫자는 서로 다른 3자리 수가 되도록 구현
-- [ ] 유저의 입력을 처리하는 클래스 구현 (**InputReader**)
-    - [ ] ```camp.nextstep.edu.missionutils.Console```의 ```readLine()```활용
-    - [ ] 유저가 입력한 세자리 추측값을 읽어들이는 기능 구현
-    - [ ] 유저가 입력한 한자리 continueMode값을 읽어들이는 기능 구현
-- [ ] 검증기 구현 (**InputValidator**)
-    - [ ] 유저가 입력한 세자리 추측값 검증기 (**GuessedNumberValidator**)
-        - [ ] 입력이 숫자 값인지 검증
-        - [ ] 세자리인지 검증
-        - [ ] 중복 검증
-        - [ ] 위의 검증들을 통과하지 못하면 ```IllegalArgumentException```을 발생 시키도록 구현
-    - [ ] 유저의 재시작/종료 구분 수 검증 (**ContinueModeNumberValidator**)
-        - [ ] 입력이 1 또는 2의 값인지 검증
-        - [ ] 위의 검증을 통과하지 못하면 ```IllegalArgumentException```을 발생 시키도록 구현
+- [x] 난수 생성기 구현 (**RandomNumberGenerator**)
+    - [x] ```camp.nextstep.edu.missionutils.Randoms```의 ```pickNumberInRange()``` 활용
+    - [x] 각 자리 숫자가 1-9 사이의 범위를 지키도록 구현
+    - [x] 생성된 숫자는 서로 다른 3자리 수가 되도록 구현
+- [x] 유저의 입력을 처리하는 클래스 구현 (**InputReader**)
+    - [x] ```camp.nextstep.edu.missionutils.Console```의 ```readLine()```활용
+    - [x] 유저가 입력한 세자리 추측값을 읽어들이는 기능 구현
+    - [x] 유저가 입력한 한자리 continueMode값을 읽어들이는 기능 구현
+- [x] 검증기 구현 (**InputValidator**)
+    - [x] 유저가 입력한 세자리 추측값 검증기 (**GuessedNumberValidator**)
+        - [x] 입력이 숫자 값인지 검증
+        - [x] 세자리인지 검증
+        - [x] 중복 검증
+        - [x] 위의 검증들을 통과하지 못하면 ```IllegalArgumentException```을 발생 시키도록 구현
+    - [x] 유저의 재시작/종료 구분 수 검증 (**ContinueModeNumberValidator**)
+        - [x] 입력이 1 또는 2의 값인지 검증
+        - [x] 위의 검증을 통과하지 못하면 ```IllegalArgumentException```을 발생 시키도록 구현
 
 - [ ] 심판 구현 (**Referee**)
     - [ ] 유저의 입력과 정답을 비교, ball count & strike count 계산하는 기능 구현
