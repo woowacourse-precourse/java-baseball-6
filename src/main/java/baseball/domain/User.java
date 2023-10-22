@@ -14,4 +14,8 @@ public class User {
     public void addNumber(int number) {
         this.number.add(number);
     }
+
+    public int getBall(int index) {
+        return number.get(index);
+    }
 }
