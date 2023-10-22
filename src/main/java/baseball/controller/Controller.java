@@ -31,7 +31,7 @@ public class Controller {
     }
 
     public void start() {
-        consoleOutputView.print(START_MESSAGE);
+        consoleOutputView.printLine(START_MESSAGE);
         State state = RESTART;
         while (isMoreGame(state)) {
             play();
@@ -46,7 +46,7 @@ public class Controller {
             guessNumbers = getGuessNumbers();
             getResult(computer, guessNumbers);
         }
-        consoleOutputView.print(WINNING_MESSAGE);
+        consoleOutputView.printLine(WINNING_MESSAGE);
     }
 
     private List<Integer> getGuessNumbers() {
@@ -63,7 +63,7 @@ public class Controller {
     }
 
     private State askMoreGame() {
-        consoleOutputView.print(RESTART_OR_FINISH_MESSAGE);
+        consoleOutputView.printLine(RESTART_OR_FINISH_MESSAGE);
         String stateNumber = consoleInputView.readLine();
         return createWith(stateNumber);
     }
