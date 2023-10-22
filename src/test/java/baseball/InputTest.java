@@ -2,8 +2,12 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Scanner;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -45,6 +49,15 @@ public class InputTest extends NsTest {
     );
   }
 
+  @Test
+  @DisplayName("게임 종료 후 사용자 입력 예외 테스트")
+  void 게임_종료_후_사용자_입력_테스트() {
+    Scanner mockScanner = mock(Scanner.class);
+    when(mockScanner.next()).thenReturn("3");
+
+    Assertions.assertThrows(IllegalArgumentException.class,
+        () -> UserDecision.userDecision(mockScanner));
+  }
 
   @Override
   public void runMain() {
