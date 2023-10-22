@@ -25,7 +25,7 @@ public record Pitch(List<Integer> numbers) {
         int maxNumber = GameConfig.MAX_NUMBER.getValue();
         long withinRangeCount = numbers
                 .stream()
-                .filter(number -> number >= minNumber && number <= maxNumber)
+                .filter(number -> minNumber <= number && number <= maxNumber)
                 .count();
 
         if (withinRangeCount != GameConfig.PITCH_COUNT.getValue()) {
