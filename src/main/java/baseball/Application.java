@@ -30,6 +30,27 @@ public class Application {
              */
             System.out.print("숫자를 입력해주세요 : ");
             String user = Console.readLine();
+
+            /**
+             * computer가 정한 3개의 숫자와 user의 입력 숫자를 비교하기
+             * 1. 스트라이크의 수를 센다.
+             * 2. 볼의 수를 센다.
+             */
+            int strike = 0;
+            int ball = 0;
+            for(int i=0; i<3; i++) {
+                for(int j=0; j<3; j++) {
+                    boolean isSameNum = computer.get(i) + '0' == user.charAt(j);
+                    if(i == j) { // 스트라이크의 개수 세기
+                        if(isSameNum)
+                            strike++;
+                    }
+                    else { // 볼의 개수 세기
+                        if(isSameNum)
+                            ball++;
+                    }
+                }
+            }
         }
     }
 }
