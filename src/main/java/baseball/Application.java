@@ -1,15 +1,13 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
-
-import baseball.validator.NumberCheck;
-import java.util.ArrayList;
-import java.util.List;
+import baseball.controller.gameSet;
 
 public class Application {
     public static void main(String[] args) {
 
+        gameSet baseball = new gameSet();
+
+        /*
         int gameswitch = 1;
         //게임 진행
         while(gameswitch == 1) {
@@ -63,7 +61,7 @@ public class Application {
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             gameswitch = Integer.parseInt(Console.readLine());
-        }
+        }*/
 
     }
 }
