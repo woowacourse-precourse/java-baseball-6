@@ -43,4 +43,15 @@ public class BaseballGameController {
         countStrikeBall = gameNumberCheckService.compareGameNumber(player.getPlayerNumbers(),
                 computer.getComputerNumbers());
     }
+
+    // 3. 인덱스해둔 스코어를 가져와 3스트라이크와 일치하는지 확인 후 -> 3스트라이크 빌생 시 -> 게임을 종료하고, 게임을 재시작할 것인지 묻는 로직으로 이어주기
+    public void getGameScore() {
+        if (countStrikeBall.get(STRIKE_COUNT_INDEX) == STRIKE_COUNT_THREE) {
+            gameScoreView.completeThreeStrikeScore(); //3스트라이크 발생
+            gameFlowManagementService.nextGameFlow(computer);
+        }
+        if (countStrikeBall.get(STRIKE_COUNT_INDEX) != STRIKE_COUNT_THREE) {
+            gameScoreView.incompleteThreeStrikeScore(countStrikeBall); //3스트라이크 미완성
+        }
+    }
 }
