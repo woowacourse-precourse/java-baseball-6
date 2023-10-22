@@ -13,6 +13,7 @@ import java.util.List;
 public class GameManager {
 
     private static final String GAME_RETRY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String GAME_USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_INTRO_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String RETRY_COMMAND = "1";
@@ -32,6 +33,7 @@ public class GameManager {
 
     public void play() {
         outputView.writeNewlineMessage(GAME_INTRO_MESSAGE);
+
         do {
             playOneRoundGame();
         } while (isContinue());
@@ -49,14 +51,20 @@ public class GameManager {
 
     private boolean calculateGameResult() {
         GameResult judgeResult = referee.judge(this.computerNumbers, this.userInputNumbers);
-        return false;
+        outputView.writeNewlineMessage(judgeResult);
+
+        if (judgeResult.isThreeStrike()) {
+            outputView.writeNewlineMessage(GAME_END_MESSAGE);
+            return false;
+        }
+        return true;
     }
 
     private boolean isContinue() {
         outputView.writeNewlineMessage(GAME_RETRY_MESSAGE);
 
         String userInput = inputView.readUserRetryInput();
-        if(userInput.equals(RETRY_COMMAND)) {
+        if (userInput.equals(RETRY_COMMAND)) {
             return true;
         }
         return false;

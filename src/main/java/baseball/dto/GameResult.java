@@ -26,4 +26,8 @@ public class GameResult {
     private boolean hasBallAndStrike() {
         return ballCount != 0 && strikeCount != 0;
     }
+
+    public boolean isThreeStrike() {
+        return this.strikeCount == 3;
+    }
 }
