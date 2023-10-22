@@ -24,11 +24,11 @@ public class BaseBallGame {
             try {
                 Integer.parseInt(userInput);
             }catch (NumberFormatException ex) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("숫자가 아닌 값을 입력했습니다.");
             }
             // 세자리가 아닌 값을 입력한 경우 IllegalArgumentException 발생시킴
             if (userInput.length() != 3)
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("세 자리가 아닌 값을 입력했습니다.");
 
             // 사용자가 입력한 값을 ArrayList로 반환
             userAnswer = getUserAnswer(userInput);
@@ -48,7 +48,7 @@ public class BaseBallGame {
                     computerAnswer = getComputerAnswer();
                     // 1과 2 아닌 값을 입력하는 경우 IllegalArgumentException 발생 시킴
                 }else {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException("1과 2가 아닌 값을 입력했습니다.");
                 }
                 // 맞추지 못한 경우 힌트 출력함
             }
@@ -64,9 +64,6 @@ public class BaseBallGame {
             }
         }
         System.out.println("컴퓨터 : " + computerAnswer.toString());
-//        computerAnswer.add(4);
-//        computerAnswer.add(2);
-//        computerAnswer.add(5);
         return computerAnswer;
     }
     // 사용자의 입력을 ArrayList로 반환함
@@ -77,7 +74,7 @@ public class BaseBallGame {
             int num = Character.getNumericValue(number);
             // 중복된 값이 있는지 확인
             if(userAnswer.contains(num))
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("입력된 값 중에 중복된 수가 있습니다. 서로 다른 수를 입력해야합니다.");
             else
                 userAnswer.add(Character.getNumericValue(number));
         }
