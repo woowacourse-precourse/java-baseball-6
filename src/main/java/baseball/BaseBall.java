@@ -1,8 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.HashMap;
-import java.util.Map;
 
 public class BaseBall {
     private final int LENGTH = 3;
@@ -16,10 +14,11 @@ public class BaseBall {
         while (true) {
             int strike = 0;
             int ball = 0;
-            String number = inputNumber();
+            String inputNumber = Console.readLine();
+            PlayerNumber playerNumber = new PlayerNumber(inputNumber, LENGTH);
 
             for (int i = 0; i < LENGTH; i++) {
-                int cur = number.charAt(i) - '0';
+                int cur = playerNumber.get(i) - '0';
                 if (computer.get(i) == cur) {
                     strike++;
                 } else if (computer.contains(cur)) {
@@ -45,37 +44,6 @@ public class BaseBall {
                     System.out.println(strike + "스트라이크");
                 } else {
                     System.out.println(ball + "볼 " + strike + "스트라이크");
-                }
-            }
-        }
-    }
-
-    private String inputNumber() {
-        String number = Console.readLine();
-        validateInputNumber(number);
-        return number;
-    }
-
-    private void validateInputNumber(String number) {
-        Map<String, Integer> map = new HashMap<>();
-
-        if (number == null) {
-            throw new IllegalArgumentException();
-        }
-
-        if (number.length() != LENGTH) {
-            throw new IllegalArgumentException();
-        }
-
-        for (int i = 0; i < LENGTH; i++) {
-            char cur = number.charAt(i);
-            if (cur < '1' || cur > '9') {
-                throw new IllegalArgumentException();
-            } else {
-                if (map.containsKey(String.valueOf(cur))) {
-                    throw new IllegalArgumentException();
-                } else {
-                    map.put(String.valueOf(cur), 1);
                 }
             }
         }

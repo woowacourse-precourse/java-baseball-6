@@ -21,8 +21,8 @@ public class Computer {
         }
     }
 
-    public int get(int idx) {
-        return computerNumber.get(idx);
+    public int get(int index) {
+        return computerNumber.get(index);
     }
 
     public boolean contains(int value) {
