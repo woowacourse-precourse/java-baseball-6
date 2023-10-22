@@ -14,4 +14,15 @@ public class BaseBallGame {
         computerRandomNumber = RandomNumberGenerator.getUniqueRandomNumberSequence(3);
     }
 
+
+    private void validateInputNumbers(String numberSequence){
+        if (numberSequence.length() != 3){
+            throw new IllegalArgumentException();
+        }
+        List<String> nonDuplicateNumbers = Arrays.stream(numberSequence.split(""))
+                .distinct().toList();
+        if (nonDuplicateNumbers.size() !=3){
+            throw new IllegalArgumentException();
+        }
+    }
 }
