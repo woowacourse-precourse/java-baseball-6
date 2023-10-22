@@ -16,7 +16,7 @@ public class InputView {
     private static final String NUMBER_CHECK = "^[1-9]{3}$";
 
     public static BallInfo getBallFromUserInput() {
-        System.out.println(MESSAGE_ASK_USER_INPUT);
+        System.out.print(MESSAGE_ASK_USER_INPUT);
         return validateUserInput(Console.readLine());
     }
 
