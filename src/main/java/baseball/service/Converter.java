@@ -7,6 +7,14 @@ public class Converter {
     public static int[] convert(String num) {
         int[] arr = new int[ARRAY_SIZE];
         for (int i = 0; i < NUMBER_SIZE; i++) {
+            arr[num.charAt(i) - '0'] = i + 1;
+        }
+        return arr;
+    }
+
+    public static int[] convertForDuplicate(String num) {
+        int[] arr = new int[ARRAY_SIZE];
+        for (int i = 0; i < NUMBER_SIZE; i++) {
             arr[num.charAt(i) - '0']++;
         }
         return arr;
