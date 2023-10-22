@@ -4,12 +4,10 @@ public class JudgeResult {
 
     private final int ball;
     private final int strike;
-    private final JudgeStatus status;
 
     private JudgeResult(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
-        this.status = JudgeStatus.getJudgeStatus(ball, strike);
     }
 
     public static JudgeResult of(int ball, int strike) {
@@ -25,6 +23,6 @@ public class JudgeResult {
     }
 
     public JudgeStatus getStatus() {
-        return status;
+        return JudgeStatus.of(ball, strike);
     }
 }

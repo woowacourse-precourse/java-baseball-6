@@ -6,7 +6,7 @@ public class Judge {
 
     private Number computerNumber;
 
-    public void init(Number computerNumber) {
+    public void initialize(Number computerNumber) {
         this.computerNumber = computerNumber;
     }
 

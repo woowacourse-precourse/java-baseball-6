@@ -23,10 +23,10 @@ public class Output {
 
     public void printResult(JudgeResult result) {
         if (isNothing(result)) {
-            System.out.printf(NOTHING);
+            System.out.println(NOTHING);
             return;
         }
-        printBallAndStrike(result);
+        System.out.println(ballAndStrikeMessage(result));
         if (isCorrect(result)) {
             System.out.printf(CORRECT_AND_ASK_RESTART);
         }
@@ -40,18 +40,16 @@ public class Output {
         return result.getStatus() == JudgeStatus.CORRECT;
     }
 
-    private void printBallAndStrike(JudgeResult result) {
+    private String ballAndStrikeMessage(JudgeResult result) {
         int ball = result.getBall();
         int strike = result.getStrike();
 
         if (ball != 0 && strike == 0) {
-            System.out.printf(BALL, ball);
+            return String.format(BALL, ball);
         }
         if (ball == 0 && strike != 0) {
-            System.out.printf(STRIKE, strike);
+            return String.format(STRIKE, strike);
         }
-        if (ball != 0 && strike != 0) {
-            System.out.printf(BALL_AND_STRIKE, ball, strike);
-        }
+        return String.format(BALL_AND_STRIKE, ball, strike);
     }
 }

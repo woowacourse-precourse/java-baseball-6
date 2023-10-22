@@ -7,7 +7,7 @@ public enum JudgeStatus {
     private static final int CORRECT_STRIKE_COUNT = 3;
     private static final int NOTHING_COUNT = 0;
 
-    static JudgeStatus getJudgeStatus(int ball, int strike) {
+    static JudgeStatus of(int ball, int strike) {
         if (isCorrect(strike)) {
             return JudgeStatus.CORRECT;
         }

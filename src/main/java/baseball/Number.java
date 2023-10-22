@@ -1,11 +1,15 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import input.InputErrorMessage;
 
 public class Number {
 
-    private static final int NUMBER_LENGTH = 3;
+    protected static final int NUMBER_LENGTH = 3;
     private static final String ZERO = "0";
+
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
 
     private final String number;
 
@@ -14,8 +18,19 @@ public class Number {
         this.number = number;
     }
 
-    public static Number of(String number) {
+    public static Number from(String number) {
         return new Number(number);
+    }
+
+    static Number getRandomNumber() {
+        StringBuilder computer = new StringBuilder();
+        while (computer.length() < NUMBER_LENGTH) {
+            String randomNumber = String.valueOf(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
+            if (!computer.toString().contains(randomNumber)) {
+                computer.append(randomNumber);
+            }
+        }
+        return Number.from(computer.toString());
     }
 
     public char get(int index) {

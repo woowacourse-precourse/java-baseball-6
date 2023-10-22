@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Input {
 
     public Number askUserNumber() {
-        return Number.of(Console.readLine());
+        return Number.from(Console.readLine());
     }
 
     public GameStatus askGameOver() {

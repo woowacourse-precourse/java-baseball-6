@@ -1,9 +1,9 @@
 package baseball;
 
+import static baseball.Number.getRandomNumber;
 import static judge.JudgeStatus.CORRECT;
 import static judge.JudgeStatus.NOTHING;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import input.Input;
 import judge.Judge;
 import judge.JudgeResult;
@@ -15,8 +15,6 @@ class Baseball {
     private final Input input;
     private final Judge judge;
     private final Output output;
-
-    private JudgeStatus status = NOTHING;
 
     Baseball() {
         input = new Input();
@@ -35,19 +33,20 @@ class Baseball {
     }
 
     private void initialize() {
-        status = NOTHING;
-        judge.init(getComputerNumber());
+        judge.initialize(getRandomNumber());
     }
 
     private void play() {
-        while (userNumberNotCorrect()) {
+        JudgeStatus status = NOTHING;
+        while (isUserNumberNotCorrect(status)) {
             Number userNumber = askNumber();
             JudgeResult result = resultFrom(userNumber);
             printResult(result);
+            status = result.getStatus();
         }
     }
 
-    private boolean userNumberNotCorrect() {
+    private boolean isUserNumberNotCorrect(JudgeStatus status) {
         return !status.equals(CORRECT);
     }
 
@@ -57,9 +56,7 @@ class Baseball {
     }
 
     private JudgeResult resultFrom(Number userNumber) {
-        JudgeResult result = judge.resultFrom(userNumber);
-        status = result.getStatus();
-        return result;
+        return judge.resultFrom(userNumber);
     }
 
     private GameStatus askGameOver() {
@@ -68,16 +65,5 @@ class Baseball {
 
     private void printResult(JudgeResult result) {
         output.printResult(result);
-    }
-
-    private Number getComputerNumber() {
-        StringBuilder computer = new StringBuilder();
-        while (computer.length() < 3) {
-            String randomNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
-            if (!computer.toString().contains(randomNumber)) {
-                computer.append(randomNumber);
-            }
-        }
-        return Number.of(computer.toString());
     }
 }
