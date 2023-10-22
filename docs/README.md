@@ -18,10 +18,6 @@
     3. private boolean hasNextGame(String nextGameInputString): 
         한 게임이 종료된 후 다음 게임의 시작여부를 결정하는 입력을 인자로 받아 해당하는 boolean으로 리턴.
 
-    4. private int validateInputNumber(String inputString, int numberCount):
-        사용자의 입력이 게임에 대한 입력으로 알맞은지 검증하는 메소드.
-        입력에 대한 여러 검증이 이루어지고 실패하면 각 검증에 해당하는 Exception이 발생한다.
-
 ### 2. BaseballGame: 게임 클래스, 게임을 진행하면서 사용할 컴퓨터의 숫자를 생성자의 인자로 받는다.
 
     [객체 변수]
@@ -59,18 +55,22 @@
 ### 4. Util: 유틸리티 클래스.
 
     [스태틱 메소드]
-    1. public static int[] splitAndGetIntArray(int number):
+    1. public static int[] split(int number):
         숫자를 각 자리수로 분리하고 배열로 만들어 반환한다.
     
-    2. public static List<Integer> removeAndGetList(int[] intArray, int index):
+    2. public static List<Integer> removeByIndex(int[] intArray, int index):
         배열에서 해당하는 인덱스의 값을 삭제하고 리스트의 형태로 반환한다.
 
     3. public static int getNonOverlappingNumber(int numberCount):
         서로 겹치지 않는 최대 9자리 숫자를 만들어 반환한다.
 
     4. public static int pickNumberInRangeWithoutList(List<Integer> withoutList):
-        리스트에 존재하지 않는 숫자 하나를 뽑아 반환한다.
+        리스트에 존재하지 않는 1~9 사이의 숫자 하나를 뽑아 반환한다.
 
     5. public static int getJoinNumber(List<Integer> numberList):
         리스트의 각 숫자들을 합쳐 하나의 숫자로 반환한다.
         ex) [1, 2, 3] -> 123
+    
+    6. public static boolean validateInputNumber(String inputString, int numberCount):
+        사용자의 입력이 게임에 대한 입력으로 알맞은지 검증하는 메소드.
+        검증에 성공하면 true를 실패하면 false를 반환한다.

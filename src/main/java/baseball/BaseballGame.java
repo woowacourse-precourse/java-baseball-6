@@ -8,7 +8,7 @@ public class BaseballGame {
     public BaseballGame(int computerNumber, int computerNumberCount) {
         String computerNumberString = String.valueOf(computerNumber);
         if (!Util.validateInputNumber(computerNumberString, computerNumberCount)) {
-            throw new IllegalArgumentException("컴퓨터가 가질 수 없는 숫자입니다.");
+            throw new IllegalArgumentException("컴퓨터의 숫자로 올바르지 않습니다.");
         }
 
         this.computerNumber = computerNumber;
