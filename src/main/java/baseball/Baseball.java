@@ -15,4 +15,26 @@ public class Baseball {
         }
         return computerNums;
     }
+
+    public int[] judgeStrikeOrBall(List<Integer> computerNums, String userNums) {
+        int[] strikeBallNums = new int[2];
+        int strikeCnt = 0;
+        int ballCnt = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int computerNum = computerNums.get(i);
+            int userNum = Integer.parseInt(userNums.substring(i,i+1));
+
+            if (computerNum == userNum) {
+                strikeCnt++;
+            }
+            else if (computerNums.contains(userNum)) {
+                ballCnt++;
+            }
+        }
+        strikeBallNums[0] = strikeCnt;
+        strikeBallNums[1] = ballCnt;
+
+        return strikeBallNums;
+    }
 }
