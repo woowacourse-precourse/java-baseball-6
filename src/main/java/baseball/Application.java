@@ -15,9 +15,10 @@ public class Application {
 
 class GameLauncher {
     private int init = 1;
-    List<Integer> computerNum;
+    private List<Integer> computerNum;
+    private int[] ballStrikeCounts;
 
-    public GameLauncher() {
+    GameLauncher() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
@@ -43,19 +44,16 @@ class GameLauncher {
     }
 
     void playBaseball() {
-        int[] arrBallStrike;
-
         do {
-            arrBallStrike = new int[]{0, 0};
+            ballStrikeCounts = new int[]{0, 0};
             System.out.print("숫자를 입력해주세요 : ");
             int userNum = input();
             if (userNum < 99) {
                 throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
             }
-
-            countBallStrike(arrBallStrike, userNum);
-            print(arrBallStrike);
-        } while (arrBallStrike[1] != 3);
+            countBallStrike(userNum);
+            print();
+        } while (ballStrikeCounts[1] != 3);
 
         init = input();
         if (init > 99) {
@@ -63,7 +61,7 @@ class GameLauncher {
         }
     }
 
-    void countBallStrike(int[] arrBallStrike, int userNum) {
+    void countBallStrike(int userNum) {
         int[] hundreds = new int[3];
         hundreds[0] = userNum/100;
         hundreds[1] = (userNum/10)%10;
@@ -71,30 +69,31 @@ class GameLauncher {
 
         for (int i = 0; i < computerNum.size(); i++) {
             if (computerNum.get(i) == hundreds[i]) {
-                arrBallStrike[1]++;
+                ballStrikeCounts[1]++;
             } else if (computerNum.contains(hundreds[i])) {
-                arrBallStrike[0]++;
+                ballStrikeCounts[0]++;
             }
         }
     }
 
-    void print(int[] arrBallStrike) {
-        if (arrBallStrike[0] == 0 && arrBallStrike[1] == 0) {
+    void print() {
+        if (ballStrikeCounts[0] == 0 && ballStrikeCounts[1] == 0) {
             System.out.println("낫싱");
             return;
         }
 
-        for (int i = 0; i < arrBallStrike.length; i++) {
-            if (arrBallStrike[i] != 0) {
+        for (int i = 0; i < ballStrikeCounts.length; i++) {
+            if (ballStrikeCounts[i] != 0) {
                 if (i == 0) {
-                    System.out.printf("%d볼 ", arrBallStrike[0]);
+                    System.out.printf("%d볼 ", ballStrikeCounts[0]);
                 } else {
-                    System.out.printf("%d스트라이크", arrBallStrike[1]);
+                    System.out.printf("%d스트라이크", ballStrikeCounts[1]);
                 }
             }
         }
         System.out.println();
-        if (arrBallStrike[1] == 3) {
+
+        if (ballStrikeCounts[1] == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
@@ -115,15 +114,10 @@ class GameLauncher {
     }
 
     boolean checkNumber(int n) {
-        if (n == 1 || n == 2) {
+        if (n == 1 || n == 2 || ((n / 100 != (n / 10) % 10) && ((n / 10) % 10 != n % 10) && (n / 100 != n % 10))) {
             return true;
-        } else if ((n < 100) || (n > 1000)) {
-            return false;
-        } else if (((n/10)%10 == 0) || (n%10 == 0)) {
-            return false;
-        } else if ((n/100 == (n/10)%10) || ((n/10)%10 == n%10) || (n/100 == n%10)) {
+        } else {
             return false;
         }
-        return true;
     }
 }
