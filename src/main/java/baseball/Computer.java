@@ -23,12 +23,46 @@ public class Computer {
         }
     }
 
-    public void makeResult(String input) {
+    public boolean checkAnswer(String input) {
+        int ballCount = 0;
+        int strikeCount = 0;
 
+        for (int i = 0; i < 3; i++) {
+            char tmp = input.charAt(i);
+            int num = tmp - '0';
+
+            if (answer.contains(num)) {
+                if (answer.get(i) == num) {
+                    strikeCount++;
+                }
+                else {
+                    ballCount++;
+                }
+            }
+        }
+
+        printResult(ballCount, strikeCount);
+
+        if (strikeCount == 3) {
+            printMsg("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            return true;
+        }
+
+        return false;
     }
 
-    public boolean checkAnswer() {
-
-        return true;
+    private void printResult(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        }
+        else if (ballCount == 0) {
+            System.out.println(strikeCount + "스트라이크");
+        }
+        else if (strikeCount == 0) {
+            System.out.println(ballCount + "볼");
+        }
+        else {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
     }
 }

@@ -2,13 +2,13 @@ package baseball;
 
 
 public class Game {
-    private boolean end;
+    private boolean quit;
     private String input;
     private Computer computer;
     private User user;
 
     Game() {
-        end = false;
+        quit = false;
         computer = new Computer();
         user = new User();
     }
@@ -18,7 +18,7 @@ public class Game {
             startGame();
             inGame();
             endGame();
-        } while (!end);
+        } while (!quit);
     }
 
     public void startGame() {
@@ -30,14 +30,13 @@ public class Game {
         do {
             computer.printMsg("숫자를 입력해주세요 : ");
             input = user.getInput();
-            computer.makeResult();
-        } while (!computer.checkAnswer());
+        } while (!computer.checkAnswer(input));
     }
 
     public void endGame() {
         computer.printMsg("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-        input = user.getEndInput();
+        input = user.getQuitInput();
         if (input.equals("2"))
-            end = true;
+            quit = true;
     }
 }

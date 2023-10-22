@@ -40,18 +40,18 @@ public class User {
         return true;
     }
 
-    public String getEndInput() {
+    public String getQuitInput() {
         // 엔터 전까지 한 줄 입력 받음
         String input = Console.readLine();
 
-        if (!isEndInputRight(input)) {
+        if (!isQuitInputRight(input)) {
             throw new IllegalArgumentException("잘못된 입력입니다.2");
         }
 
         return input;
     }
 
-    private boolean isEndInputRight(String input) {
+    private boolean isQuitInputRight(String input) {
         if (input.length() != 1)
             return false;
 
