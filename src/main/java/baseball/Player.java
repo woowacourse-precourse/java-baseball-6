@@ -12,4 +12,8 @@ public class Player {
 			playerNumber.add(Character.getNumericValue((playerInput.charAt(i))));
 		}
 	}
+
+	public List<Integer> getPlayerNumber() {
+		return this.playerNumber;
+	}
 }

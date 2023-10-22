@@ -25,7 +25,7 @@ public class GameController {
 
 	public void compareNumber() {
 		compare = new CompareNumber();
-		compare.compare(computer.computerNumber, player.playerNumber);
+		compare.compare(computer.getComputerNumber(), player.getPlayerNumber());
 	}
 }
 

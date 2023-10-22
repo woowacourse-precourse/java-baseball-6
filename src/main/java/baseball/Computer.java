@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Computer {
 	
-	public List<Integer> computerNumber = new ArrayList<>();
+	private List<Integer> computerNumber = new ArrayList<>();
 	
 	public void setComputerNumber() {	
 		while (computerNumber.size() < 3) {
@@ -16,6 +16,10 @@ public class Computer {
 				computerNumber.add(randomNumber);
 			}
 		}
+	}
+	
+	public List<Integer> getComputerNumber() {
+		return this.computerNumber;
 	}
 
 }
