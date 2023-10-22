@@ -54,7 +54,7 @@ public record BaseballNumber(List<Integer> numbers) implements GameData {
     private static List<Integer> convertToList(int number, final int length) {
         List<Integer> list = new ArrayList<>(length);
         int ten = 10;
-        int value = (int) Math.pow(ten, length - 1); //5의제곱;
+        int value = (int) Math.pow(ten, length - 1);
         for (int i = 0; i < length; i++) {
             list.add(number / value);
             number %= value;
