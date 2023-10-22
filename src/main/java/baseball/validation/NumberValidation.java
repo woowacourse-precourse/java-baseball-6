@@ -19,4 +19,10 @@ public class NumberValidation {
             throw new IllegalArgumentException("숫자의 형식이 올바르지 않습니다.");
         }
     }
+
+    public static void validateGameStatus(String input) {
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException("숫자의 형식이 올바르지 않습니다.");
+        }
+    }
 }
