@@ -26,9 +26,9 @@ public class GameService {
 
     public int sameCount(List<Integer> computer, List<Integer> user){
         int same = 0;
-        for(int i = 0; i< user.size(); i++){
-            if(computer.contains(user.get(i))){
-                same ++;
+        for (Integer integer : user) {
+            if (computer.contains(integer)) {
+                same++;
             }
         }
         return same;
@@ -44,8 +44,8 @@ public class GameService {
     }
     //same에서 strike를 뺀 값이 ball의 수가 된다.
     public int countBall(int same, int strike){
-        int ball = same - strike;
-        return ball;
+//        int ball = same - strike;
+        return same - strike;
     }
     public List<Integer> getUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
