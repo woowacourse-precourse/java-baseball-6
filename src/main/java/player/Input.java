@@ -8,7 +8,16 @@ public class Input {
 
     public static void inputNumber() {
         System.out.println(GuideMessageConstant.NUMBER_INPUT_MESSAGE);
-        inputNumber = Integer.parseInt(Console.readLine());
+        try {
+            inputNumber = Integer.parseInt(Console.readLine());
+            if (inputNumber < 100 || inputNumber > 999) {
+                throw new IllegalArgumentException(GuideMessageConstant.ERROR_ENTER_THREE_NUMBER);
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.exit(1); // 비정상 종료
+        }
+
     }
 
 }
