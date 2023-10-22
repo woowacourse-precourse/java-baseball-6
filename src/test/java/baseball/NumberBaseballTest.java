@@ -63,4 +63,10 @@ public class NumberBaseballTest {
         assertThat(game.start("123"))
                 .isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
+    @Test
+    @DisplayName("게임을 종료한 후 다시시작 여부를 물을 때_1을 반환하면_게임을 다시시작한다")
+    void askRestartGame_is1_restartGame() {
+        assertThat(game.restart("1")).isTrue();
+    }
 }

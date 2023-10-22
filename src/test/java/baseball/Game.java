@@ -10,6 +10,10 @@ public class Game {
         return "";
     }
 
+    public boolean restart(String restart) {
+        return restart.equals("1");
+    }
+
     public String validateUserNumber(String userNumber) {
         if (isNumber(userNumber)) {
             throw new IllegalArgumentException("숫자가 아니다");
