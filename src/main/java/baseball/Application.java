@@ -25,26 +25,12 @@ public class Application {
                 int strike = compareResult[0];
                 int ball = compareResult[1];
 
+                String resultMessage = calculateResult(strike, ball);
+
+                System.out.println(resultMessage);
+
                 if (strike == 3) {
-                    System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
-                }
-
-                if (strike == 0 && ball == 0){
-                    System.out.println("낫싱");
-                } else {
-
-                    if (strike == 0){
-                        System.out.println(ball + "볼 ");
-
-                    } else if (ball == 0){
-                        System.out.println(strike + "스트라이크");
-
-                    } else {
-                        System.out.println(ball + "볼 " + strike + "스트라이크");
-
-                    }
-
                 }
             }
 
@@ -89,5 +75,32 @@ public class Application {
         }
 
         return my;
+    }
+
+    static String calculateResult(int strike, int ball) {
+
+        String resultMessage = ball + "볼 " + strike + "스트라이크";
+
+        if (strike == 3) {
+            resultMessage = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            return resultMessage;
+        }
+
+        if (strike == 0 && ball == 0){
+            resultMessage = "낫싱";
+            return resultMessage;
+        }
+
+        if (strike == 0){
+            resultMessage = ball + "볼";
+            return resultMessage;
+        }
+
+        if (ball == 0){
+            resultMessage = strike + "스트라이크";
+            return resultMessage;
+        }
+
+        return resultMessage;
     }
 }
