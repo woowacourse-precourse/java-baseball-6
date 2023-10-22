@@ -42,6 +42,11 @@ class DigitsTest {
     }
 
     @Test
+    void 사용자_입력값으로_생성된_Digits는_중복된_수가_있을경우_IllegalArgumentException_예외를_던진다() {
+        assertThrows(IllegalArgumentException.class, () -> Digits.generateFixedDigits("112"));
+    }
+
+    @Test
     void 입력값의_ball_점수를_count_한다() {
         Digits computerDigits = Digits.generateFixedDigits("123");
         Digits userInput = Digits.generateFixedDigits("231");
