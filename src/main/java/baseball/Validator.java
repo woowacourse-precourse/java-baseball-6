@@ -1,14 +1,35 @@
 package baseball;
 
+import java.util.List;
+
 public class Validator {
     public void validateInputString(String inputString) {
         validateInputNoWhiteSpace(inputString);
         validateInputLength(inputString);
         validateInputNoZero(inputString);
     }
+
+    public void validateInputNumber(List<Integer> inputNumbers, char input) {
+        validateInputIsNumber(input);
+        validateRedundancy(inputNumbers, Character.getNumericValue(input));
+    }
+
+    private void validateInputIsNumber(char input) {
+        int inputNumber = Character.getNumericValue(input);
+        if (inputNumber < 1 || inputNumber > 9) {
+            throw new IllegalArgumentException("입력 중 숫자가 아닌 것이 포함되었습니다.");
+        }
+    }
+
+    private void validateRedundancy(List<Integer> inputNumbers, int input) {
+        if (inputNumbers.contains(input)) {
+            throw new IllegalArgumentException("서로 다른 세자리 수여야 합니다.");
+        }
+    }
+
     private void validateInputLength(String inputString) {
         if (inputString.length() != 3) {
-            throw new IllegalArgumentException("세자리 수를 입력하셔야 합니다.");
+            throw new IllegalArgumentException("입력하신 수가 세자리가 아닙니다.");
         }
     }
 
