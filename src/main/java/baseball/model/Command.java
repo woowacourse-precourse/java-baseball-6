@@ -1,6 +1,9 @@
 package baseball.model;
 
+import baseball.constant.ErrorMessage;
+
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 public enum Command {
 
@@ -17,7 +20,7 @@ public enum Command {
         return Arrays.stream(Command.values())
                 .filter(command -> command.value.equals(value))
                 .findAny()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_COMMAND));
     }
 
     public static Boolean isRestart(Command command) {
@@ -27,7 +30,7 @@ public enum Command {
         if (Command.RESTART.equals(command)) {
             return true;
         }
-        throw new IllegalArgumentException();
+        throw new NoSuchElementException(ErrorMessage.INVALID_COMMAND);
     }
 
     @Override

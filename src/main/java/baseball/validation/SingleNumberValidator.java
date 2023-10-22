@@ -1,5 +1,6 @@
 package baseball.validation;
 
+import baseball.constant.ErrorMessage;
 import baseball.constant.Number;
 import baseball.model.SingleNumber;
 
@@ -24,13 +25,13 @@ public class SingleNumberValidator implements Validator {
 
     private void validateType(String target) {
         if (!target.matches(ONLY_NATURE_NUMBER)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INVALID_TYPE);
         }
     }
 
     private void validateRange(Integer target) {
         if (target < Number.MIN || Number.MAX < target) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE);
         }
     }
 }
