@@ -30,7 +30,7 @@ public class BaseBallGameController {
             Result result = new Result();
             result.calculateResult(computerNumbers,inputInteger);
             OutputView.printResult(result.resultToString());
-            continueSign = isContinue(result);
+            continueSign = result.isContinue();
         }
         OutputView.printEndMessage();
     }
@@ -44,11 +44,6 @@ public class BaseBallGameController {
             }
         }
         return computer;
-    }
-
-    private boolean isContinue(Result result) {
-
-        return result.isContinue();
     }
 
     private boolean isEnd(int sign) {
