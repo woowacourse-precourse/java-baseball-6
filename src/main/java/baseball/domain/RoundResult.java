@@ -9,6 +9,10 @@ public final class RoundResult {
         this.strikeCount = computerGameNumbers.countStrike(userGameNumbers);
     }
 
+    public boolean isNothing() {
+        return ballCount == 0 && strikeCount == 0;
+    }
+
     public int getBallCount() {
         return ballCount;
     }
