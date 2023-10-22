@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 public class GameNumbers {
-    public static final int NUMBERS_SIZE = 3;
+    protected static final int NUMBERS_SIZE = 3;
     private static final int MAX_NUMBER = 9;
     private static final int MIN_NUMBER = 1;
 
