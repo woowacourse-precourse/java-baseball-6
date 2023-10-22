@@ -17,4 +17,8 @@ public class Validator {
     private boolean isEmptyValue(String input) {
         return input.isBlank();
     }
+
+    private boolean isNumberType(String input) {
+        return input.matches("^[0-9]*$");
+    }
 }
