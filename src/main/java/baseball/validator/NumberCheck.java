@@ -32,4 +32,10 @@ public class NumberCheck {
             }
         }
     }
+
+    public static void reStartOrOverCheck(String input){
+        if(!input.equals("1") && !input.equals("2")){
+            throw new IllegalArgumentException("1 혹은 2를 입력해주세요.");
+        }
+    }
 }

@@ -12,23 +12,32 @@ public class GameSet {
 
     private ComputerNumber computer;
     private PlayerNumber playerNumber;
-    private int reGame = 1;
+    private boolean reGame = true;
+    private boolean success = false;
     private CompareNumber compareNumber;
 
     public void gameStart(){
         compareNumber = new CompareNumber();
+        OutputView.startMessage();
         do{
-            OutputView.startMessage();
             computer = new ComputerNumber();
             answerCheck();
-        }while(reGame == 1);
+            reGame = reStartOrOver();
+        }while(reGame);
     }
 
     public void answerCheck(){
         do{
             playerNumber = new PlayerNumber(InputView.playerNumber());
             int[] result = compareNumber.getResult(playerNumber.getPlayerNumber(), computer.getComputerNumber());
+            success = compareNumber.successCheck(result);
             OutputView.resultCheck(result);
-        }while(true);
+        }while(!success);
+    }
+
+    public boolean reStartOrOver(){
+        String check = InputView.reStartOrOverNumber();
+        if (check.equals("2")) return false;
+        return true;
     }
 }

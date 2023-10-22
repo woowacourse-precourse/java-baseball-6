@@ -7,7 +7,7 @@ public class CompareNumber {
     private int ball;
     public int[] getResult(List<Integer> playerNumber, List<Integer> computerNumber){
         ballCounter(playerNumber, computerNumber);
-        StrikeCounter(playerNumber, computerNumber);
+        strikeCounter(playerNumber, computerNumber);
         return new int[]{ball, strike};
     }
 
@@ -20,7 +20,7 @@ public class CompareNumber {
         }
     }
 
-    public void StrikeCounter(List<Integer> playerNumber, List<Integer> computerNumber){
+    public void strikeCounter(List<Integer> playerNumber, List<Integer> computerNumber){
         strike = 0;
         for (int i = 0; i<playerNumber.size(); i++){
             if (computerNumber.get(i) == playerNumber.get(i)){
@@ -28,5 +28,10 @@ public class CompareNumber {
             }
         }
         ball = ball - strike;
+    }
+
+    public static boolean successCheck(int[] result){
+        if (result[1] == 3) return true;
+        return false;
     }
 }

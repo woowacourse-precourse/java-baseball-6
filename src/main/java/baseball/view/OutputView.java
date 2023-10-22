@@ -16,7 +16,7 @@ public class OutputView {
         int strikeCount = result[1];
         List<String> message = new ArrayList<>();
         if(ballCount == 0 && strikeCount == 0){
-            message.add("낫씽");
+            message.add("낫싱");
         }
         if(ballCount != 0){
             message.add(ballCount+"볼");
@@ -29,5 +29,9 @@ public class OutputView {
 
     public static void clearMessage(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public static void reStartOrOverMessage(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }
