@@ -1,4 +1,4 @@
-package baseball;
+package baseball.handler;
 
 import java.util.ArrayList;
 import java.util.List;

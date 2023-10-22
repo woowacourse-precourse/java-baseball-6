@@ -1,4 +1,4 @@
-package baseball;
+package baseball.view;
 
 public enum ErrorMessage {
     INVALID_INTEGER("입력 값이 정수로 구성되지 않았습니다."),

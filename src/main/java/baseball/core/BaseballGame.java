@@ -1,4 +1,6 @@
-package baseball;
+package baseball.core;
+
+import baseball.handler.GameHandler;
 
 public class BaseballGame {
     private final GameHandler gameHandler = new GameHandler();

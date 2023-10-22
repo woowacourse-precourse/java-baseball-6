@@ -1,4 +1,5 @@
-package baseball;
+package baseball.view;
+
 
 public class OutputView {
     public void printStartMessage(){
@@ -11,6 +12,10 @@ public class OutputView {
 
     public void printEndMessage(){
         System.out.print(GameMessage.GAME_SUCCESS_MESSAGE.getMessage());
+    }
+
+    public void printRestartMessage(){
+        System.out.print(GameMessage.RESTART_CHOICE_MESSAGE.getMessage());
     }
 
     public void printResultMessage(int strike, int ball){

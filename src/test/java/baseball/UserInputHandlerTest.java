@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.handler.UserInputHandler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

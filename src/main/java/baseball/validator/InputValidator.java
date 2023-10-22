@@ -1,6 +1,6 @@
-package baseball;
+package baseball.validator;
 
-import baseball.ErrorMessage;
+import baseball.view.ErrorMessage;
 
 public class InputValidator {
     private static final int EXPECTED_DIGIT=3;

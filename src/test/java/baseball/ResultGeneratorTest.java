@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.generator.ResultGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,9 @@
-package baseball;
+package baseball.handler;
+
+import baseball.generator.ComputerNumberGenerator;
+import baseball.generator.ResultGenerator;
+import baseball.validator.InputValidator;
+import baseball.view.OutputView;
 
 import java.util.List;
 
@@ -16,8 +21,9 @@ public class GameHandler {
     }
 
     public boolean playGameSession(){
-        while(!playSingleRound()){
-            //게임 성공 -> 종료
+        while(true){
+            if (playSingleRound())
+                break;
         }
         return askForGameRestart();
     }
@@ -36,6 +42,8 @@ public class GameHandler {
     }
 
     private boolean askForGameRestart() {
+        outputView.printEndMessage();
+        outputView.printRestartMessage();
         int restartChoice = obtainValidUserChoice();
         return restartChoice != 2;
     }
@@ -48,7 +56,6 @@ public class GameHandler {
     }
 
     private int obtainValidUserChoice() {
-        outputView.printEndMessage();
         String userInput= userInputHandler.readInput();
         validateUserChoice(userInput);
         return userInputHandler.parseRestartChoice(userInput);
