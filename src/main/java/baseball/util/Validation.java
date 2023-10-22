@@ -22,6 +22,17 @@ public class Validation {
         }
     }
 
+    public void validExitNumber(String number) {
+
+        if (validLength(number, MAX_EXIT_INPUT_LENGTH)) {
+            throw new IllegalArgumentException("입력 문자열의 길이가 1이 되어야 합니다.");
+        } else if (containsLetter(number, MAX_EXIT_INPUT_LENGTH)) {
+            throw new IllegalArgumentException("입력 문자열은 숫자이어야 합니다.");
+        } else if (!isOneOrTwo(number)) {
+            throw new IllegalArgumentException("입력 문자열이 1 또는 2가 아닙니다.");
+        }
+    }
+
     private boolean containsLetter(String number, int maxLength) {
         String tmp = number.replaceAll("[^1-9]", "");
 
