@@ -25,7 +25,7 @@ public class Computer {
         for (int i = 0; i < RANDOM_NUMBER_SIZE; i++) {
             int number = chooseRandomNumber();
 
-            if (!isDuplicatedNumber(randomNumberList, number)) {
+            if (isDuplicatedNumber(randomNumberList, number)) {
                 i--;
                 continue;
             }
@@ -35,7 +35,7 @@ public class Computer {
         return randomNumberList;
     }
 
-    public List<Integer> loadRandomNumber() {
+    public List<Integer> loadRandomNumberList() {
         return RandomNumber;
     }
 
