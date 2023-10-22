@@ -1,4 +1,4 @@
-package baseball;
+package baseball.util;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ public class TestConstants {
     public static final String SUCCESS_LIST_TO_STRING = SUCCESS_LIST.toString();
     public static final int SUCCESS_LIST_FIRST_ELEMENT = SUCCESS_LIST.get(0);
     public static final Integer[] SUCCESS_LIST_REMAINING_ELEMENTS =
-            SUCCESS_LIST.subList(1,SUCCESS_STRING_SIZE)
-                    .toArray(new Integer[SUCCESS_STRING_SIZE-1]);
+            SUCCESS_LIST.subList(1, SUCCESS_STRING_SIZE)
+                    .toArray(new Integer[SUCCESS_STRING_SIZE - 1]);
     public static final String RESTART = "1";
     public static final String TERMINATE = "2";
 
@@ -25,7 +25,6 @@ public class TestConstants {
     public static final String LONGER_THAN_NUMBER_LENGTH_LIMIT = "1234";
     public static final String DUPLICATE_NUMBER_STRING = "112";
     public static final String NOT_BOTH_RESTART_AND_TERMINATE = "3";
-
 
 
 }
