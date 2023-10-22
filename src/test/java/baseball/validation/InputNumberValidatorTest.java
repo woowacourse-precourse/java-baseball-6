@@ -19,4 +19,9 @@ class InputNumberValidatorTest {
         assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validateInputSize(List.of(1, 2)));
     }
 
+    @Test
+    void 숫자가_아니면_예외발생() {
+        assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validateInputType("1과3"));
+    }
+
 }
