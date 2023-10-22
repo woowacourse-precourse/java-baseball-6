@@ -33,13 +33,14 @@ class GameNumberTest {
         // when
         gameNumber.changeNumber(END_NUMBER);
         boolean canContinueGame = gameNumber.canContinueGame();
+
         // then
         assertFalse(canContinueGame);
     }
 
     @Test
     @DisplayName("지정된 입력 외 다른 입력이 들어오면 예외가 발생한다.")
-    void when_() {
+    void when_unexpected_input_throw_exception() {
         // given
         GameContinueNumber gameNumber = GameContinueNumber.createDefault();
 

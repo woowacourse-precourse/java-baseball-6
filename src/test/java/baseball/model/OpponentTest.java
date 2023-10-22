@@ -52,7 +52,7 @@ class OpponentTest {
 
     @Test
     @DisplayName("같은 수가 전혀 없으면 낫싱이라는 힌트를 얻는다.")
-    void when_() {
+    void when_same_number_doesnt_exist_return_nothing() {
         // given
         UserNumbers userNumbers = createUserNumbersByString("789");
 
