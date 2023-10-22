@@ -1,7 +1,6 @@
 package baseball.core;
 
 import baseball.property.GameScore;
-import baseball.view.OutputView;
 
 public class CheckGameResult {
 
@@ -10,7 +9,7 @@ public class CheckGameResult {
         int strike_count = gameScore.getStrike_count();
         if (checkScoreExist(ball_count,strike_count)){
             if (checkBallAndStrikeScore(ball_count,strike_count)){
-                OutputView.outputForBallAndStrikeScore(ball_count,strike_count);
+                ResultOutputGenerate.generateAllResultTextForOutput(ball_count,strike_count);
                 return;
             }
             checkOneTypeScore(ball_count,strike_count);
@@ -19,7 +18,7 @@ public class CheckGameResult {
 
     private static boolean checkScoreExist(int ball_count,int strike_count){
         if (checkScoreIsNothing(ball_count,strike_count)){
-            OutputView.outputForScoreNothing();
+            ResultOutputGenerate.generateNothingResultTextForOutput();
             return false;
         }
         return true;
@@ -40,13 +39,13 @@ public class CheckGameResult {
     private static void checkOneTypeScore(int ball_count,int strike_count){
         if(checkOnlyStrikeScore(ball_count,strike_count)){
             if (checkGameSuccessCondition(strike_count)){
-                OutputView.outputForGameSuccess();
+                ResultOutputGenerate.generateSuccessResultTextForOutput();
                 return;
             }
-            OutputView.outputForStrikeScore(strike_count);
+            ResultOutputGenerate.generateStrikeResultTextForOutput(strike_count);
             return;
         }
-        OutputView.outputForBallScore(ball_count);
+        ResultOutputGenerate.generateBallResultTextForOutput(ball_count);
     }
 
     private static boolean checkOnlyStrikeScore(int ball_count,int strike_count){
