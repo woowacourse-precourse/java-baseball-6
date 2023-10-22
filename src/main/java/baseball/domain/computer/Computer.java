@@ -6,10 +6,14 @@ import java.util.List;
 
 public class Computer {
 
+    private static final String END_POINT = "3스트라이크";
+
     private final BaseballAlgorithm baseballAlgorithm;
+    private boolean eachSetContext;
 
     public Computer(BaseballAlgorithm baseballAlgorithm) {
         this.baseballAlgorithm = baseballAlgorithm;
+        this.eachSetContext = true;
     }
 
     public List<Integer> generateRandomNumber() {
@@ -25,5 +29,19 @@ public class Computer {
 
     public String checkBallAndStrike(List<Integer> randomNumber, String userInput) {
         return baseballAlgorithm.calculateBaseballResult(randomNumber, userInput);
+    }
+
+    public boolean isEachSetContext() {
+        return eachSetContext;
+    }
+
+    public void updateEachSetContext(String message) {
+        if (message.equals(END_POINT)) {
+            eachSetContext = false;
+        }
+    }
+
+    public void clearEachSetContext() {
+        eachSetContext = true;
     }
 }
