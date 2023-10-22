@@ -13,7 +13,7 @@ public class InputView {
     }
 
     public static String getRestartOrNot() {
-        OutputView.printGameStart();
+        OutputView.printAnswer();
         return Console.readLine();
     }
 }
