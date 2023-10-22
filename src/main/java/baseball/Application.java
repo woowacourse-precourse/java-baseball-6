@@ -10,7 +10,7 @@ public class Application {
             Game game = new Game(computer, player, judge);
             game.start();
 
-            if (game.isFinish()) break;
+            if (game.isRestart()) break;
         }
     }
 }

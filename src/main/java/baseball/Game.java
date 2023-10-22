@@ -8,7 +8,8 @@ public class Game {
     private final Computer computer;
     private final Player player;
     private final Judge judge;
-    private boolean isFinish = false;
+    private boolean isEnd = false;
+    private boolean isRestart = false;
 
     public Game(Computer computer, Player player, Judge judge) {
         this.computer = computer;
@@ -17,15 +18,19 @@ public class Game {
     }
 
     public void start() {
-        printStartGameComment();
-        play();
+        judge.announceStartGame();
+        playGame();
     }
 
-    public void play() {
+    // TODO: 적절한 이름이 무엇일지 고민
+    //  -> playGame(): 클래스명과 중복, play(): playOneRound 와 혼동 가능성
+    public void playGame() {
         while (true) {
             playOneRound();
-            if (isFinish) break;
+            if (isEnd) break;
         }
+
+        end();
     }
 
     private void playOneRound() {
@@ -33,15 +38,17 @@ public class Game {
         List<Integer> answer = computer.loadRandomNumberList();
         List<Integer> playerNumbers = player.load3NumberList();
 
-        Result result = judge.calculateResult(answer, playerNumbers);
-        isFinish = judge.checkGameIsFinish(result);
+        Result result = judge.makeResult(answer, playerNumbers);
+        isEnd = judge.checkGameIsFinish(result);
         judge.announceResult(result);
     }
 
-    public boolean isFinish() {
-        printEndGameComment();
-        printRestartGameComment();
+    public void end() {
+        judge.announceEndGame();
+        isRestart = judge.checkPlayerWantRestart(player);
+    }
 
-        return player.chooseFinishGame();
+    public boolean isRestart() {
+        return isRestart;
     }
 }
