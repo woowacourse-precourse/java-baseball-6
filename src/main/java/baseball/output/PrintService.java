@@ -16,4 +16,21 @@ public class PrintService {
             게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
             """);
     }
+
+    private static void result(int ballCount, int strikeCount) {
+        System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
+    }
+
+    private static void result(int count, boolean isStrkie) {
+        if (isStrkie) {
+            System.out.printf("%d스트라이크\n", count);
+        } else {
+            System.out.printf("%d볼\n", count);
+        }
+    }
+
+    private static void result() {
+        System.out.println("낫싱");
+    }
+
 }
