@@ -79,6 +79,19 @@ public class Application {
         return contain;
     }
 
+    //컴퓨터와 숫자가 맞는지 비교하기
+    public static int compare(List<Integer> User_num, List<Integer> com_num) {
+        int correct = 0;
+
+        for(int i = 0 ; i < User_num.size() ; i++) {
+            if(User_num.get(i).equals(com_num.get(i))) {
+                correct++;
+            }
+        }
+
+        return correct;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
