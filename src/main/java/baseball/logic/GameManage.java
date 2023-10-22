@@ -28,25 +28,6 @@ public class GameManage {
         checkBall(answerNumbers, userNumbers);
     }
 
-    public void showResult() {
-        message(strike, ball);
-    }
-
-    private void message(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-        }
-        if (strike > 0 && ball > 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-        }
-        if (strike > 0 && ball == 0) {
-            System.out.println(strike + "스트라이크");
-        }
-        if (strike == 0 && ball > 0) {
-            System.out.println(ball + "볼");
-        }
-    }
-
     private void checkStrike(List<Integer> answerNumbers, List<Integer> userNumbers) {
         strike = (int) IntStream.range(0, NUMBER_LENGTH)
                 .filter(i -> answerNumbers.get(i).equals(userNumbers.get(i)))
@@ -55,7 +36,8 @@ public class GameManage {
 
     private void checkBall(List<Integer> answerNumbers, List<Integer> userNumbers) {
         ball = (int) IntStream.range(0, NUMBER_LENGTH)
-                .filter(i -> answerNumbers.get(i) != userNumbers.get(i) && answerNumbers.contains(userNumbers.get(i)))
+                .filter(i -> !answerNumbers.get(i).equals(userNumbers.get(i)) && answerNumbers.contains(
+                        userNumbers.get(i)))
                 .count();
     }
 }
