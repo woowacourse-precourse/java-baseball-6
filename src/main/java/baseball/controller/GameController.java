@@ -11,6 +11,8 @@ import java.util.List;
 
 public class GameController {
 
+    private static final String GAME_RESTART_STATE = "1";
+    private static final String GAME_END_STATE = "2";
     private static final int RANDOM_NUMBER_LENGTH = 3;
     private final Computer computer;
     private final Player player;
@@ -26,16 +28,17 @@ public class GameController {
         this.outputView = new OutputView();
     }
 
-//    public void gameStart() {
-//        boolean progress = true;
-//        outputView.printGameStartMessage();
-//
-//        while(progress) {
-//            progress();
-//
-//            progress = isRestart();
-//        }
-//    }
+    public void gameStart() {
+        boolean gameProgress = true;
+
+        outputView.printGameStartMessage();
+
+        while(gameProgress) {
+            progress();
+
+            gameProgress = isRestartState();
+        }
+    }
 
     private void progress() {
         boolean isCorrect = false;
@@ -47,6 +50,20 @@ public class GameController {
         }
 
         outputView.printEndMessage();
+    }
+
+    private boolean isRestartState() {
+        String input = inputView.inputRestartState();
+
+        if(input.equals(GAME_RESTART_STATE)){
+            return true;
+        }
+
+        if (input.equals(GAME_END_STATE)) {
+            return false;
+        }
+
+        throw new IllegalArgumentException();
     }
 
     private boolean compareNumbers(List<Integer> computerNumbers, List<Integer> playerNumbers) {
