@@ -24,7 +24,7 @@ public class Opponent {
     }
 
     public GuessResult calculateResult(final UserNumbers userNumbers) {
-        GuessResult result = new GuessResult();
+        GuessResult result = GuessResult.createDefault();
         List<Integer> guessedNumbers = userNumbers.getNumbers();
         IntStream.range(FIRST_INDEX, guessedNumbers.size())
             .forEach(index -> {

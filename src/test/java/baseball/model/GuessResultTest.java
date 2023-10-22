@@ -13,7 +13,7 @@ class GuessResultTest {
 
     @BeforeEach()
     void init() {
-        guessResult = new GuessResult();
+        guessResult = GuessResult.createDefault();
     }
 
     @Test
