@@ -27,7 +27,7 @@ public class UserInput {
     }
 
     // 숫자가 맞는지 검증하는 메서드
-    private void checkIsNumber(String userInput) {
+    public static void checkIsNumber(String userInput) {
         if (!userInput.matches("\\d+")) {
             throw new IllegalArgumentException();
         }
