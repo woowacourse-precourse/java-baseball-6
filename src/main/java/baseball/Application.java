@@ -10,7 +10,7 @@ public class Application {
 
         Output output = new Output();
         Computer computer = new Computer();
-        Input input = new Input(computer);
+        Input input = new Input();
         Game game = new Game(input, computer, output);
 
         output.printStartGameMessage();
