@@ -83,5 +83,5 @@
         - [x] IllegalArgumentException 발생 후 종료
 
 4. RandomUtility
-- [ ] 난수 생성
-    - [ ] 1~9 사이의 서로 다른 세 숫자 생성
+- [x] 난수 생성
+    - [x] 1~9 사이의 서로 다른 세 숫자 생성

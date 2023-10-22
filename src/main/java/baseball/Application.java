@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.RandomUtility;
 import baseball.controller.UserInputValidator;
 import baseball.model.GameNumber;
 import baseball.view.InputView;
@@ -28,6 +29,13 @@ public class Application {
         for (Integer validatedUserInputNumber : validatedUserInputNumbers) {
             System.out.println("validatedUserInputNumber = " + validatedUserInputNumber);
         }
+
+        RandomUtility randomUtility = new RandomUtility();
+        int[] answerNumbers = randomUtility.generateAnswerNumbers();
+        for (int i = 0; i < answerNumbers.length; i++) {
+            System.out.println("answerNumbers["+ i + "] = " + answerNumbers[i]);
+        }
+
         outputView.printGameFinish();
     }
 }
