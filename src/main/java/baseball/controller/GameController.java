@@ -10,7 +10,7 @@ public class GameController {
     private static final OutputView outputView = new OutputView();
     private static final InputView inputView = new InputView();
     private static final GameService gameService = new GameService();
-    GameResultDTO gameResultDTO;
+    private GameResultDTO gameResultDTO;
 
     // 최초 한 번 게임 시작 메시지 출력
     public GameController() {
@@ -54,11 +54,10 @@ public class GameController {
 
     // 게임이 끝나는지 확인
     private void isGameFinished() {
-        if (gameResultDTO.getStrike() == 3) {
-            outputView.displayEndGameMessage();
-        } else {
+        if (!gameResultDTO.getIsGameFinished()) {
             playGame();
         }
+        outputView.displayEndGameMessage();
     }
 
     // 게임 재시작/종료 여부 판단
