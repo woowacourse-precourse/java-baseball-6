@@ -8,13 +8,14 @@ import java.util.List;
 public class Game {
     private static final int NUM_OF_DIGITS = 3;
 
+
     public void start() {
         // 사용자가 2를 입력하면 종료 or 1을 입력하면 게임 지속
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             int randomNumber = generateRandomNumber();
-            startGame(randomNumber);
 
+            playGame(randomNumber);
         }
     }
 
@@ -33,7 +34,7 @@ public class Game {
         return randomNumber;
     }
 
-    private void startGame(int randomNumber) {
+    private void playGame(int randomNumber) {
         boolean isAnswerCorrect = false;
         while (!isAnswerCorrect) {
             String inputNumber = Console.readLine();
@@ -60,6 +61,7 @@ public class Game {
                 ballCnt++;
             }
         }
+
         printGameResult(ballCnt, strikeCnt);
 
         return strikeCnt == 3; // 3스트라이크이면 true를 return
