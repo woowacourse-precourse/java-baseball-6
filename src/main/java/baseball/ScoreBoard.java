@@ -3,6 +3,7 @@ package baseball;
 import java.util.List;
 
 public class ScoreBoard {
+
     private final List<String> scoreBoardList;
 
     public ScoreBoard(List<String> scoreBoardList) {
@@ -21,5 +22,13 @@ public class ScoreBoard {
                 .count();
     }
 
+    public boolean isNothing() {
+        if ((int) scoreBoardList.stream()
+                .filter(e -> e.equals("NOTHING"))
+                .count() == scoreBoardList.size()) {
+            return true;
+        }
+        return false;
+    }
 
 }
