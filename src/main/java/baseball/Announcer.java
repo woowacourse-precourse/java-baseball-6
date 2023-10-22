@@ -12,7 +12,7 @@ public class Announcer {
 
     // 추측값 입력 유도 메시지 출력
     public static void askToInput() {
-        System.out.println(INPUT_PROMPT);
+        System.out.print(INPUT_PROMPT);
     }
 
     // 모두 맞혔을 경우 게임 종료 메시지 출력
