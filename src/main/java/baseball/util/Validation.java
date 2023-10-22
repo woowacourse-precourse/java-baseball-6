@@ -8,4 +8,10 @@ public class Validation {
     private boolean containsZero(String number) {
         return number.contains("0");
     }
+
+    private boolean containsLetter(String number, int maxLength) {
+        String tmp = number.replaceAll("[^1-9]", "");
+
+        return tmp.length() < maxLength;
+    }
 }
