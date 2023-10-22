@@ -40,7 +40,7 @@ public class InputView {
 
     }
 
-    private static BallInfo validateUserInput(String userInput) {
+    private static BallInfo inputUserBall(String userInput) {
         List<Integer> userInputList = new ArrayList<>();
         for (Character character : userInput.toCharArray()) {
             userInputList.add(Integer.parseInt(String.valueOf(character)));
