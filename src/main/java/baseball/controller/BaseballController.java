@@ -1,6 +1,8 @@
 package baseball.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import baseball.constant.Constant;
 import baseball.model.Computer;
@@ -56,7 +58,6 @@ public class BaseballController {
 			
 			compare(computer.getNumbers(), player.getNumbers());
 			showResult();
-			
 			if (threeStrike())
 				break;
 		}
@@ -79,31 +80,40 @@ public class BaseballController {
 		int strikeCount = counter.getStrikeCount();
 
 		StringBuffer result = new StringBuffer();
+		
 		if (ballCount == 0 && strikeCount == 0) {
 			result.append("낫싱");
-		} else {
-			if (ballCount != 0) {
-				result.append(ballCount + "볼 ");
-			}
-			if (strikeCount != 0)
-				result.append(strikeCount + "스트라이크");
 		}
-
+		if (ballCount != 0) {
+			result.append(ballCount + "볼 ");
+		}
+		if (strikeCount != 0)
+			result.append(strikeCount + "스트라이크");
+		
 		outputView.printResultMessage(result.toString().trim());
 	}
 
 	public Boolean threeStrike() {
+		Map<String, String> map = new HashMap<>();
+		map.put("maxDigit", Integer.toString(Constant.MAX_DIGIT));
 		int strikeCount = counter.getStrikeCount();
 		if (strikeCount == Constant.MAX_DIGIT) {
-			outputView.printGameEndMessage(Constant.MAX_DIGIT);
+			outputView.printGameEndMessage(map);
 			return true;
 		}
 		return false;
 	}
-
+	
+	public void showToBeContinue(){
+		Map<String, String> map = new HashMap<>();
+		map.put("continueInput", Constant.CONTINUE_INPUT);
+		map.put("quitInput", Constant.QUIT_INPUT);
+		outputView.printContinueOrQuitMessage(map);
+	}
+	
 	public Boolean quit() {
-		outputView.printContinueOrQuitMessage(Constant.CONTINUE_INPUT, Constant.QUIT_INPUT);
-
+		showToBeContinue();
+		
 		String input = inputView.getInputLine();
 
 		if (!validator.quitInputValidate(input))

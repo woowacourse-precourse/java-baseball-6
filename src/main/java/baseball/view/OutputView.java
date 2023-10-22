@@ -1,5 +1,7 @@
 package baseball.view;
 
+import java.util.Map;
+
 public class OutputView {
 	
 	
@@ -20,12 +22,12 @@ public class OutputView {
 		System.out.println(result);
 	}
 	
-	public void printGameEndMessage(int maxDigit) {
-		System.out.println("" + maxDigit + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+	public void printGameEndMessage(Map<String, String> map) {
+		System.out.println("" + map.get("maxDigit") + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
 	}
 	
-	public void printContinueOrQuitMessage(String continueInput, String quitInput) {
-		System.out.println("게임을 새로 시작하려면 "+continueInput+",종료하려면 "+quitInput+"를 입력하세요.");
+	public void printContinueOrQuitMessage(Map<String, String> map) {
+		System.out.println("게임을 새로 시작하려면 "+map.get("continueInput")+",종료하려면 "+map.get("quitInput")+"를 입력하세요.");
 	}
 	
 	public void printContinueOrQuitMessage(String input) {
