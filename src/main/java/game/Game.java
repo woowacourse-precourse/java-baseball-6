@@ -5,6 +5,7 @@ import service.Result;
 
 import java.util.List;
 
+import static baseball.Application.TOTAL_CARDS;
 import static repository.Computer.getComputerPicks;
 import static service.Result.getResult;
 import static service.Result.printResult;
@@ -35,6 +36,7 @@ public class Game {
 //        final String QUIT = "2";
 
         if (result.getStrikes() == computer.size()) {
+        if (result.getStrikes() == TOTAL_CARDS) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = Console.readLine();
