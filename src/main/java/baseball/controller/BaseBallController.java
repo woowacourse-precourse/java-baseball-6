@@ -9,6 +9,8 @@ import baseball.view.OutputView;
 
 public class BaseBallController {
     private Judge judge;
+    private User user;
+    private ScoreBoard scoreBoard;
 
     public void playGame() {
         OutputView.startGameMessage();
@@ -20,9 +22,9 @@ public class BaseBallController {
 
     private void run() {
         do {
-            User user = new User(InputView.inputUserNumber());
-            ScoreBoard scoreBoard = judge.evaluateUserNumberList(user.getUserNumberList());
+            user = new User(InputView.inputUserNumber());
+            scoreBoard = judge.evaluateUserNumberList(user.getUserNumberList());
             OutputView.showScoreBoard(scoreBoard);
-        } while (true);
+        } while (!scoreBoard.isThreeStrike());
     }
 }

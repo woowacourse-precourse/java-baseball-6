@@ -31,4 +31,10 @@ public class ScoreBoard {
         return false;
     }
 
+    public boolean isThreeStrike() {
+        if (countStrike() == scoreBoardList.size()){
+            return true;
+        }
+        return false;
+    }
 }
