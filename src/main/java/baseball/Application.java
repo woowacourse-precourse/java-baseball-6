@@ -65,24 +65,24 @@ public class Application {
             // 4. 종료
             if (strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            } else {
-                continue;
-            }
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            if (Console.readLine().equals("1")) {
-                computer.clear();
-                while(computer.size() < 3){
-                    int computerNumber = Randoms.pickNumberInRange(1,9);
-                    if(!computer.contains(computerNumber)){
-                        computer.add(computerNumber);
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int menu = Integer.parseInt(Console.readLine());
+                if (menu == 1) {
+                    computer.clear();
+                    while (computer.size() < 3) {
+                        int computerNumber = Randoms.pickNumberInRange(1, 9);
+                        if (!computer.contains(computerNumber)) {
+                            computer.add(computerNumber);
+                        }
                     }
+                    continue;
                 }
-            }
-            if (Console.readLine().equals("2")) {
-                break;
-            }
-            if (!Console.readLine().equals("1") && !Console.readLine().equals("2")){
-                throw new IllegalArgumentException("잘못된 입력입니다.");
+                if (menu == 2) {
+                    break;
+                }
+                if (menu != 1 || menu != 2){
+                    throw new IllegalArgumentException("잘못된 입력입니다.");
+                }
             }
         }
     }
