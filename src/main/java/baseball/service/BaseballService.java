@@ -2,9 +2,8 @@ package baseball.service;
 
 import baseball.domain.BaseballNumber;
 import baseball.domain.BaseballScore;
+import baseball.util.Util;
 import baseball.validator.Validator;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballService {
@@ -14,14 +13,9 @@ public class BaseballService {
     private static final String STRING_ONE = "1";
 
     public BaseballNumber initializeComputerNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < COMPUTER_NUMBER_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(COMPUTER_NUMBER_BEGIN, COMPUTER_NUMBER_END);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return new BaseballNumber(computer);
+        List<Integer> computerNumber = Util.createRandomNumberList(COMPUTER_NUMBER_SIZE, COMPUTER_NUMBER_BEGIN,
+                COMPUTER_NUMBER_END);
+        return new BaseballNumber(computerNumber);
     }
 
     public boolean isContinueGame(String inputRestartOrEnd) {

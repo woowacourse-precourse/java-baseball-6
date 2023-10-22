@@ -1,6 +1,7 @@
 package baseball.util;
 
 import baseball.validator.Validator;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,17 @@ public class Util {
     private static final int COUNT_ZERO = 0;
     private static final char CHAR_ZERO = '0';
 
+
+    public static List<Integer> createRandomNumberList(int size, int numberBegin, int numberEnd) {
+        List<Integer> randomNumberList = new ArrayList<>();
+        while (randomNumberList.size() < size) {
+            int randomNumber = Randoms.pickNumberInRange(numberBegin, numberEnd);
+            if (!randomNumberList.contains(randomNumber)) {
+                randomNumberList.add(randomNumber);
+            }
+        }
+        return randomNumberList;
+    }
 
     //완성시 모든 메서드 테스트
     public static List<Integer> naturalNumberstringToIntegerList(String string) {
