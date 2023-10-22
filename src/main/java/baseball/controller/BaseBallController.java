@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 public class BaseBallController {
     private static final BaseBallView baseBallView = BaseBallView.create();
     private Pitcher pitcher;
-    private Hitter hitter;
 
     private BaseBallController() {
     }
@@ -36,7 +35,7 @@ public class BaseBallController {
     }
 
     private boolean startOneBattle() {
-        hitter = changeHitter(baseBallView.numbersInputView());
+        Hitter hitter = changeHitter(baseBallView.numbersInputView());
         Result result = pitcher.throwBalls(hitter);
 
         baseBallView.resultGameView(result.toString());
