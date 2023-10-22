@@ -15,6 +15,18 @@ public class InputNumberValidator {
     private static final String REGEX = "[0-9]+";
 
     /*
+     * 플레이어의 입력값(String) 전체 검증 메서드
+     * @Param input 플레이어의 숫자
+     * */
+    public static List<Integer> validateInputNumber(String input) {
+        validateInputSize(input);
+        validateInputType(input);
+        validateInputDuplication(input);
+
+        return convertStrToList(input);
+    }
+
+    /*
     * 플레이어의 입력값(String)을 List로 변환하는 메서드
     * @Param input 플레이어의 숫자
     * */
