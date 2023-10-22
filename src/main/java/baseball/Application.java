@@ -9,30 +9,49 @@ import java.util.List;
 
 public class Application {
 
-    static void playGame(){
+    static void playGame() {
         List<Integer> computerNumber = getRandomNumber();
         while (true) {
             System.out.print("숫자를 입력해 주세요 : ");
             String userNumber = inputUserNumber();
             // result[2] = {ball 갯수, strike 갯수}
             int[] result = compareNumber(userNumber, computerNumber);
+            if (!checkResult(result)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
-
     }
 
     static int[] compareNumber(String userNumber, List<Integer> computerNumber) {
         String[] number = userNumber.split("");
-        int[] countBall = new int[2];
+        int[] result = new int[2];
 
         for (int i = 0; i < 3; i++) {
             int num = Integer.parseInt(number[i]);
             if (computerNumber.get(i) == num) {
-                countBall[1]++;
+                result[1]++;
             } else if (computerNumber.contains(num)) {
-                countBall[0]++;
+                result[0]++;
             }
         }
-        return countBall;
+        return result;
+    }
+
+    static boolean checkResult(int[] result) {
+        if (result[1] == 3) {
+            System.out.println("3스트라이크");
+            return false;
+        } else if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+        } else if (result[0] != 0 && result[1] != 0) {
+            System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
+        } else if (result[0] == 0) {
+            System.out.println(result[1] + "스트라이크");
+        } else if (result[1] == 0) {
+            System.out.println(result[0] + "볼");
+        }
+        return true;
     }
 
     static List<Integer> getRandomNumber() {
