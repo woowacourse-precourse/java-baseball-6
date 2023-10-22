@@ -20,7 +20,7 @@ public class Validator {
 
     private static boolean isNotNumber(List<Integer> userNumbers){
         for (int number : userNumbers) {
-            if (number < Config.getStartInclusive() || number > Config.getEndInclusive()) return true;
+            if (Config.isInvalidRange(number)) return true;
         }
         return false;
     }

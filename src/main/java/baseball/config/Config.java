@@ -16,8 +16,10 @@ public class Config {
         return MAX_NUMBERS;
     }
 
-    public static int getStartInclusive() {
-        return START_INCLUSIVE;
+    public static int getStartInclusive() { return START_INCLUSIVE; }
+
+    public static boolean isInvalidRange(int input) {
+        return input < getStartInclusive() || input > Config.getEndInclusive();
     }
 
     public static int getEndInclusive() {
