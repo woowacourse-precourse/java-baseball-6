@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BaseballNumbers {
     public static final int NUMBERS_LENGTH = 3;
-    private static final String OUT_OF_LENGTH = "야구 숫자 최대 길이: " + NUMBERS_LENGTH;
+    private static final String OUT_OF_LENGTH = "야구 숫자 길이: " + NUMBERS_LENGTH;
     private static final String DUPLICATE_NUMBER_EXIST = "야구 숫자내 중복 숫자 불가.";
     public final List<BaseballNumber> baseballNumbers;
 
