@@ -54,12 +54,15 @@ public class Game {
     private void GuessAnswer() {
         String inputNumber;
         do {
-            System.out.print(INPUT_MESSAGE);
-            inputNumber = Console.readLine();
+            inputNumber = userInput();
             Validation.inputValidationCheck(inputNumber);
         } while (!equalToAnswer(inputNumber));
     }
 
+    private String userInput() {
+        System.out.print(INPUT_MESSAGE);
+        return Console.readLine();
+    }
 
     private boolean equalToAnswer(String inputNumber) {
         int[] intInputNumber = changeToIntegerList(inputNumber);
