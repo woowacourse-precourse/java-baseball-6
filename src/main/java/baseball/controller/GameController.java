@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.Balls;
 import baseball.domain.Game;
 import baseball.domain.GameResult;
+import baseball.service.BallGeneratorService;
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -11,13 +12,16 @@ public class GameController {
     private final OutputView outputView;
     private final InputView inputView;
     private final GameService gameService;
+    private final BallGeneratorService ballGeneratorService;
 
     public GameController(OutputView outputView,
                           InputView inputView,
-                          GameService gameService) {
+                          GameService gameService,
+                          BallGeneratorService ballGeneratorService) {
         this.outputView = outputView;
         this.inputView = inputView;
         this.gameService = gameService;
+        this.ballGeneratorService = ballGeneratorService;
     }
 
     public void run() {
@@ -29,17 +33,18 @@ public class GameController {
     }
 
     private void playGame() {
-        Game game = gameService.createGame();
-        while (!game.isGameFinished()) {
+        Game game = gameService.createGame(ballGeneratorService);
+        Balls computerBalls = game.getComputerBalls();
+        while (!game.isGameOver()) {
             outputView.inputBallsMessage();
-            GameResult gameResult = game.compareAndResult(getPlayerBalls());
+            GameResult gameResult = gameService.compareAndResult(computerBalls, getPlayerBalls());
             outputView.resultMessage(gameResult.createGameResult());
-            game.updateGameState(gameResult);
+            gameService.updateGameState(game, gameResult);
         }
     }
 
     private Balls getPlayerBalls() {
-        return gameService.generatePlayerBalls(inputView.requestPlayerGuess());
+        return ballGeneratorService.generatePlayerBalls(inputView.requestPlayerGuess());
     }
 
     private boolean restartGame() {

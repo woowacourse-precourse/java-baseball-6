@@ -20,7 +20,7 @@ public class Balls {
 
     public boolean containsOtherBall(Ball otherBall) {
         for (Ball ball : balls) {
-            if (ball.isSameBall(otherBall)) {
+            if (ball.isSameNumber(otherBall)) {
                 return true;
             }
         }
