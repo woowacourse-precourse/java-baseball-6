@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Balls;
+import baseball.model.Hint;
 import baseball.model.RandomGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -8,6 +9,7 @@ import baseball.view.OutputView;
 public class GameController {
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
+    Hint hint;
 
     RandomGenerator randomGenerator = new RandomGenerator();
     Balls computer;
@@ -18,10 +20,15 @@ public class GameController {
         startGame();
         do {
             inputPlayerNumber();
-        } while (isGameFinish());
+        } while (!isGameFinish());
     }
 
     private boolean isGameFinish() {
+        hint = new Hint();
+        hint.getStrikeAndBallCount(computer, player);
+        outputView.printHint(hint);
+
+        return hint.isGameFinish();
     }
 
     private void inputPlayerNumber() {

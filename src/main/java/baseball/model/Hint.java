@@ -16,4 +16,28 @@ public class Hint {
             }
         }
     }
+
+    public boolean isOnlyStrike() {
+        return strike != 0 && ball == 0;
+    }
+
+    public boolean isOnlyBall() {
+        return strike == 0 && ball != 0;
+    }
+
+    public boolean isNothing() {
+        return strike == 0 && ball == 0;
+    }
+
+    public boolean isGameFinish() {
+        return strike == 3;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
 }
