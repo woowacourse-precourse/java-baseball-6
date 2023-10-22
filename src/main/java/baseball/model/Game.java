@@ -24,9 +24,9 @@ public class Game {
 
     private void judgeNumberAt(int index) { // FIXME
         if (Objects.equals(userGameNumbers.getNumbers().get(index), computerGameNumbers.getNumbers().get(index))) {
-            result.strike();
+            result.countUpStrike();
         } else if (userGameNumbers.getNumbers().contains(computerGameNumbers.getNumbers().get(index))) {
-            result.ball();
+            result.countUpBall();
         }
     }
 
