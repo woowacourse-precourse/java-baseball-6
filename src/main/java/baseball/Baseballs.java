@@ -35,4 +35,14 @@ public class Baseballs {
                 .map(Baseball::new)
                 .toList();
     }
+
+    public int compare(final Baseballs other) {
+        int strike = 0;
+        for (int i = 0; i < baseballs.size(); i++) {
+            if (baseballs.get(i).equals(other.baseballs.get(i))) {
+                strike++;
+            }
+        }
+        return strike;
+    }
 }

@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Objects;
+
 public class Baseball {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
@@ -16,5 +18,22 @@ public class Baseball {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException(RANGE_EXCEPTION_MESSAGE);
         }
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Baseball baseball = (Baseball) o;
+        return number == baseball.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
     }
 }
