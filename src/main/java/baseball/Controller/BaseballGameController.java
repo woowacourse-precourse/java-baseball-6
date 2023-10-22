@@ -22,4 +22,14 @@ public class BaseballGameController {
     private final FirstGamePlayerInputView firstGamePlayerInputView = new FirstGamePlayerInputView(); //플레이어의 숫자 입력 실제 처리 및 저장하는 뷰를 연결
     private final GameScoreView gameScoreView = new GameScoreView(); //숫자 야구 게임의 플레이 상황에 따른 적절한 결과를 출력하는 뷰를 연결
     private List<Integer> countStrikeBall = new ArrayList<>(); //스트라이크와 볼의 개수 카운트하는 리스트 생성
+
+    //게임 시작
+    public void gameStart() {
+        computer.setComputerNumbers();
+        while (!gameFlowManagementService.gameQuit()) {
+            playerNumbers();
+            calculateCountStrikeBall();
+            getGameScore();
+        }
+    }
 }
