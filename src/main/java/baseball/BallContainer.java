@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BallContainer {
     private static final int START_LOCATION = 0;
@@ -13,8 +14,8 @@ public class BallContainer {
     }
 
     private List<Ball> createBalls(List<Integer> numbers) {
-        return numbers.stream()
-                .map(Ball::new)
+        return IntStream.range(START_LOCATION, END_LOCATION)
+                .mapToObj(location -> new Ball(numbers.get(location), location))
                 .collect(Collectors.toList());
     }
 
@@ -26,15 +27,14 @@ public class BallContainer {
         final List<Ball> otherBalls = otherContainer.getBalls();
         PitchResult result = new PitchResult(0, 0);
 
-        for (int location = START_LOCATION; location < END_LOCATION; location++) {
-            if (balls.get(location).equals(otherBalls.get(location))) {
-                result = result.strike();
-                continue;
+        balls.forEach(ball -> otherBalls.forEach(other -> {
+            if (ball.isStrike(other)) {
+                result.strike();
             }
-            if (otherBalls.contains(balls.get(location))) {
-                result = result.ball();
+            if (ball.isBall(other)) {
+                result.ball();
             }
-        }
+        }));
 
         return result;
     }
