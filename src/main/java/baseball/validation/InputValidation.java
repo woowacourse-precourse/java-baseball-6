@@ -1,6 +1,7 @@
 package baseball.validation;
 
 import baseball.utils.Constant;
+import baseball.utils.ErrorMessage;
 import java.util.List;
 
 public class InputValidation {
@@ -8,13 +9,13 @@ public class InputValidation {
         validateInputLength(number);
         validateInputDigit(number);
         if (validateInputDuplicated(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_INPUT);
         }
     }
 
     public static void validateInputLength(List<Integer> number) {
         if (Constant.LENGTH != number.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT_LENGTH);
         }
     }
 
@@ -22,7 +23,7 @@ public class InputValidation {
         boolean checkDigit = number.stream()
             .allMatch(n -> Constant.MIN_NUMBER <= n && n <= Constant.MAX_NUMBER);
         if (!checkDigit) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT_TYPE);
         }
     }
 
@@ -37,6 +38,6 @@ public class InputValidation {
         if (input.equals(Constant.GAME_EXIT)) {
             return false;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT);
     }
 }
