@@ -72,9 +72,23 @@ public class Game {
             return GameHintType.NOTHING.getLabel();
         }
 
-        String strikeResult = getGameResult(GameHintType.STRIKE, strike);
-        String ballResult = getGameResult(GameHintType.BALL, ball);
-        return ballResult + strikeResult;
+        return joinGameResults(strike, ball);
+    }
+
+    private String joinGameResults(int strike, int ball) {
+        List<String> results = new ArrayList<>();
+
+        addGameResultToList(results, GameHintType.BALL, ball);
+        addGameResultToList(results, GameHintType.STRIKE, strike);
+
+        return String.join(" ", results);
+    }
+
+    private void addGameResultToList(List<String> results, GameHintType hintType, int count) {
+        String result = getGameResult(hintType, count);
+        if (!result.isEmpty()) {
+            results.add(result);
+        }
     }
 
     private String getGameResult(GameHintType hintType, int count) {
