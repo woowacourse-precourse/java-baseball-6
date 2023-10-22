@@ -25,18 +25,18 @@
 
  게임진행 커맨드를 가진 객체이다.
  
- - 입력값이 재시작 커맨드인지 확인한다.
- - 입력값이 커맨드인지 확인한다.
+ - 입력값이 NEW 커맨드인지 확인한다.
+ - 입력값이 Continue 커맨드인지 확인한다.
  
 ## BaseballCreateService
 
- NumberGenerator을 통해 BaseballNumber를 생성하는 서비스객체이다.
+ NumberGenerator을 통해 BaseballNumber를 생성하는 객체이다.
  
  - 길이가 3인 중복되지 않는 숫자로 BaseballNumber을 생성한다.
  
-## BaseballCheckAnswerService
+## CountBallOrStrikeService
  
- 숫자가 볼인지, 스트라이크인지 확인하는 객체이다.
+ BaseballNumber와 숫자를 비교하여 볼 또는 스트라이크의 개수를 리턴하는 객체이다.
  
  - 볼개수를 구한다.
  - 스트라이크개수를 구한다.
@@ -44,14 +44,16 @@
 
 ## BaseballGameFlowService
 
- 게임 클리어와 컨디뉴를 확인하는 객체이다.
+ 게임 클리어와 재시작을 확인하는 객체이다.
  
  - 입력값이 3이면 게임을 클리어한다.
- - 입력값이 재시작 커맨드값이면 재시작한다.
+ - 입력값이 NEW 커맨드값이면 재시작한다.
  
 ## NumberGenerator
 
  1~9까지의 무작위의 수를 생성하는 객체이다
+ 
+ - 1~9까지의 무작위의 수를 리턴한다.
  
 ## ErrorMessage
 
@@ -72,7 +74,7 @@
 
 ## InputView
 
- 사용자의 입력을 받는 객체이다
+ 사용자의 입력을 담당하는 객체이다
  
  - 숫자를 입력받는다.
  - 3자리수가 아닌경우 예외처리한다.
@@ -84,5 +86,9 @@
 ## OutputView
 
  출력을 담당하는 객체이다.
+ 
+ - ProgressMessage를 출력한다.
+ - 볼과 스트라이크의 개수의 따른 결과를 출력한다.
+ - ErrorMessage를 출력한다.
  
  
