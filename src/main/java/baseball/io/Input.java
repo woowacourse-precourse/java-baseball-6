@@ -8,4 +8,6 @@ public class Input {
         return Console.readLine();
     }
 
+    // TODO : 특정 타입의 인풋 메서드를 지원해보자
+
 }
