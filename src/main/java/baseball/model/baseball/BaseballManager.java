@@ -1,7 +1,8 @@
-package baseball.model;
+package baseball.model.baseball;
 
 import baseball.constants.message.BaseballMessage;
 import baseball.constants.BaseballRole;
+import baseball.model.player.Player;
 
 import java.util.List;
 

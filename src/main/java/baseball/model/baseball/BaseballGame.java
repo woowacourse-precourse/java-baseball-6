@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.baseball;
 
 import baseball.util.RandomNumberCreateUtil;
 

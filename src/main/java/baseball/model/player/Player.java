@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.player;
 
 import baseball.constants.BaseballRole;
 

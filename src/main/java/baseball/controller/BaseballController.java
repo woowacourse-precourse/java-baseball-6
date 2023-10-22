@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.constants.BaseballRole;
-import baseball.model.BaseballManager;
-import baseball.model.Player;
+import baseball.model.baseball.BaseballManager;
+import baseball.model.player.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
