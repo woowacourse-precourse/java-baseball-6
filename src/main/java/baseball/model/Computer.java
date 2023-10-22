@@ -25,7 +25,7 @@ public class Computer {
         return numbers;
     }
 
-    public Map<GameResult, Long> calculate(GameNumber userGameNumber){
+    public Map<GameResult, Long> compare(GameNumber userGameNumber){
         long matchCount = gameNumber.containsCount(userGameNumber);
         long strikeCount = gameNumber.matchCount(userGameNumber);
         long ballCount = Math.abs(strikeCount - matchCount);

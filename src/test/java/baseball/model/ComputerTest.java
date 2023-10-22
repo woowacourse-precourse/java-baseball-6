@@ -33,28 +33,29 @@ class ComputerTest {
 
     @DisplayName("컴퓨터는 숫자를 비교해 스트라이크와 볼 개수를 반환한다")
     @ParameterizedTest
-    @MethodSource("calculateData")
-    void calculate(List<Integer> computerNumber, List<Integer> userNumber, Map<GameResult ,Long> expected){
+    @MethodSource("compareData")
+    void compare(List<Integer> computerNumber, List<Integer> userNumber, Map<GameResult ,Long> expected){
         Computer computer = new Computer(computerNumber);
         GameNumber userGameNumber = new GameNumber(userNumber);
-        Map<GameResult, Long> result = computer.calculate(userGameNumber);
+        Map<GameResult, Long> result = computer.compare(userGameNumber);
+
         assertThat(expected.get(GameResult.STRIKE)).isEqualTo(result.get(GameResult.STRIKE));
         assertThat(expected.get(GameResult.BALL)).isEqualTo(result.get(GameResult.BALL));
     }
 
     @DisplayName("컴퓨터는 숫자를 비교해 같은 수가 없으면 낫싱을 반환한다")
     @Test
-    void calculateNothing(){
+    void compareNothing(){
         Computer computer = new Computer(List.of(1, 2, 3));
         GameNumber userGameNumber = new GameNumber(List.of(4, 5, 6));
-        Map<GameResult, Long> result = computer.calculate(userGameNumber);
+        Map<GameResult, Long> result = computer.compare(userGameNumber);
 
         assertThat(result.size()).isEqualTo(1);
         assertThat(result.containsKey(GameResult.NOTHING)).isTrue();
 
     }
 
-    static Stream<Arguments> calculateData() {
+    static Stream<Arguments> compareData() {
         List<Integer> computerNumber = Arrays.asList(4, 2, 3);
         return Stream.of(
                 Arguments.of(computerNumber, Arrays.asList(4, 2, 3), Map.of(GameResult.STRIKE, 3L, GameResult.BALL, 0L)),

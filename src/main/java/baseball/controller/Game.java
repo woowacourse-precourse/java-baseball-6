@@ -22,7 +22,7 @@ public class Game {
 
     public void play(List<Integer> userNumbers) {
         GameNumber userGameNumber = new GameNumber(userNumbers);
-        Map<GameResult, Long> result = computer.calculate(userGameNumber);
+        Map<GameResult, Long> result = computer.compare(userGameNumber);
         if (!checkGameOver(result)) {
             play(InputView.inputNumbers());
         }
