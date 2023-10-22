@@ -7,6 +7,7 @@ public class User {
     private Integer userNum;
 
     private String REGEXP_USER_NUM = "^[1-9]{3}$";
+    // 사용자가 112와 같이 중복된 숫자를 입력하는 건 재량으로 봐야하나?
 
     public void setUserNum() {
         System.out.print("숫자를 입력해주세요 : ");
