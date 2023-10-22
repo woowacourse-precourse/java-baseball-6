@@ -2,6 +2,9 @@ package baseball;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 public class ComputerTest {
     @Test
     void 난수생성중복검사(){
@@ -18,6 +21,9 @@ public class ComputerTest {
 
     @Test
     void 판정테스트(){
+        ByteArrayOutputStream testOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(testOut));
+
         Computer computer = new Computer();
         int[] computerNumbers = computer.initComputerNumbers();
         Judgement result1 = computer.getJudgeResult(computerNumbers);
@@ -26,11 +32,21 @@ public class ComputerTest {
         Judgement result4 = computer.getJudgeResult(new int[] {computerNumbers[0], computerNumbers[2], 0});
         Judgement result5 = computer.getJudgeResult(new int[] {computerNumbers[0], computerNumbers[2], computerNumbers[1]});
 
-        Assertions.assertThat(result1.strikeCount).isEqualTo(3);
-        Assertions.assertThat(result2.ballCount).isEqualTo(3);
-        Assertions.assertThat(result3.ballCount).isEqualTo(1);
-        Assertions.assertThat(result4.strikeCount == 1 && result4.ballCount == 1).isTrue();
-        Assertions.assertThat(result5.ballCount == 2 && result5.strikeCount == 1).isTrue();
+        result1.printResult();
+        Assertions.assertThat(testOut.toString()).isEqualTo("3스트라이크\n");
+        testOut.reset();
+        result2.printResult();
+        Assertions.assertThat(testOut.toString()).isEqualTo("3볼\n");
+        testOut.reset();
+        result3.printResult();
+        Assertions.assertThat(testOut.toString()).isEqualTo("1볼\n");
+        testOut.reset();
+        result4.printResult();
+        Assertions.assertThat(testOut.toString()).isEqualTo("1볼 1스트라이크\n");
+        testOut.reset();
+        result5.printResult();
+        Assertions.assertThat(testOut.toString()).isEqualTo("2볼 1스트라이크\n");
+        testOut.reset();
     }
 
 }
