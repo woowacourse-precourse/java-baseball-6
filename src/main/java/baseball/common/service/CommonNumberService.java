@@ -15,6 +15,12 @@ public class CommonNumberService {
     //정답은 3자리
     public static final int NUMBER_LENGTH = 3;
 
+    //생성자
+    public CommonNumberService(){
+        computer = new ArrayList<>();
+        cache = new HashMap<>();
+    }
+
     //임의의 3자리 숫자 생성 로직
     public void createRandomNumber(){
 
