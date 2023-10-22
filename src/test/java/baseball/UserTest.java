@@ -19,7 +19,7 @@ public class UserTest {
     public void testValidUserNum() {
         // 유효한 3자리 숫자를 입력
         user.setUserNum("123");
-        assertEquals("123", user.getUserNum());
+        assertEquals(123, user.getUserNum());
     }
 
     @Test

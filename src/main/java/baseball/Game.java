@@ -71,4 +71,8 @@ public class Game {
         }
     }
 }
-
+// 테스트 만들기 -> ApplicationTest이거는 그대로 두면 되겠지?
+// 요구사항 확인하기, 리팩토링하기
+// ./gradlew clean test 확인하기
+// 회고 정리하기 및 학습하기
+// 학습 내용도 커밋해야하나?
