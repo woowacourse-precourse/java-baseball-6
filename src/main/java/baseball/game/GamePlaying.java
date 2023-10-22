@@ -27,7 +27,7 @@ public class GamePlaying {
 
     private void enterValue() {
         computerNumber = cpu.setComputerNumber(computerNumber);
-        player.getPlayerNumber();
+        playerNumber = player.getPlayerNumber(playerNumber);
     }
 
     private void findStrike() {
