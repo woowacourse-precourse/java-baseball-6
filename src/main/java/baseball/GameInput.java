@@ -5,20 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameInput {
+
+    InputValidator inputValidator;
+
     public GameInput() {
+        inputValidator = new InputValidator();
     }
 
     public List<Integer> userInputGuessNumber() {
-        String userGuessNumString = Console.readLine();
-        // need exception handler
-        return intStringToList(userGuessNumString);
+        String userGuessNumberString = Console.readLine();
+        inputValidator.isValidGuessNumber(userGuessNumberString);
+        return intStringToList(userGuessNumberString);
     }
 
     public boolean userInputReGameSelection() {
-        String userReGameSelection = Console.readLine();
-        // need exception handler
-        if (Integer.parseInt(userReGameSelection) == 1)
+        String userReGameOption = Console.readLine();
+        inputValidator.isValidReGameOptionNumber(userReGameOption);
+        if (Integer.parseInt(userReGameOption) == 1) {
             return true; // start Game
+        }
         return false; // exit Game
     }
 
