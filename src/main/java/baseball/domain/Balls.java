@@ -7,6 +7,8 @@ import java.util.Set;
 import static baseball.domain.Ball.*;
 
 public record Balls (List<Ball> balls) {
+    private static final String ERROR_MESSAGE = "입력한 숫자는 1에서 9 사이의 중복되지 않는 3자리여야 합니다.";
+
     public Balls(List<Ball> balls) {
         validate(balls);
         this.balls = List.copyOf(balls);
@@ -62,6 +64,6 @@ public record Balls (List<Ball> balls) {
     }
 
     private void throwIllegalArgumentException() {
-        throw new IllegalArgumentException("입력한 숫자는 1에서 9 사이의 중복되지 않는 3자리여야 합니다.");
+        throw new IllegalArgumentException(ERROR_MESSAGE);
     }
 }
