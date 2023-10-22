@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.model.GameInput;
+import baseball.model.GameResultCalculator;
 import baseball.model.Number;
 import baseball.model.RandomNumberGenerator;
 import baseball.view.GameView;
@@ -7,12 +9,16 @@ import java.util.List;
 
 public class GameController {
     private final RandomNumberGenerator randomNumberGenerator;
-    private final GameView gameView;
-    private Number number;
+    private final GameView view;
+    private final GameInput input;
+    private final GameResultCalculator calculator;
+    private Number randomNumber;
 
     public GameController() {
         randomNumberGenerator = new RandomNumberGenerator();
-        gameView = new GameView();
+        view = new GameView();
+        input = new GameInput();
+        calculator = new GameResultCalculator();
     }
 
     public void start() {
@@ -25,27 +31,44 @@ public class GameController {
 
 
     public void startGame() {
-        gameView.printStartMessage();
-        List<Integer> randomNumbers = randomNumberGenerator.generateRandomNumber();
-        number = new Number(randomNumbers);
+        view.printStartMessage();
+        List<Integer> random = randomNumberGenerator.generateRandomNumber();
+        this.randomNumber = new Number(random);
     }
 
     public void playGame() {
-        //do{
-        gameView.printAskInputMessage();
+        Number inputNumber;
+        do {
+            view.printAskInputMessage();
+            inputNumber = input.readNumberInput();
 
-        //}while();
+            int ballCount = calculator.countBall(randomNumber, inputNumber);
+            int strikeCount = calculator.countStrike(randomNumber, inputNumber);
+
+            if (strikeCount == 0 && ballCount == 0) {
+                view.printResultNothing();
+            }
+
+            if (ballCount != 0) {
+                view.printResultBall(ballCount);
+            }
+
+            if (strikeCount != 0) {
+                view.printResultStrike(strikeCount);
+            }
+
+        } while (!calculator.isThreeStrike(randomNumber, inputNumber));
 
     }
 
+
     public void endGame() {
-        gameView.printSuccessAndEndMessage();
+        view.printSuccessAndEndMessage();
 
     }
 
     private boolean isEnd() {
         return true;
     }
-
 
 }

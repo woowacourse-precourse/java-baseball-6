@@ -1,7 +1,6 @@
 package baseball.model;
 
 public class GameResultCalculator {
-
     public int countStrike(Number random, Number input) {
         int strikeCount = 0;
 
@@ -40,4 +39,7 @@ public class GameResultCalculator {
     }
 
 
+    public boolean isThreeStrike(Number randomNumber, Number inputNumber) {
+        return randomNumber.equals(inputNumber);
+    }
 }
