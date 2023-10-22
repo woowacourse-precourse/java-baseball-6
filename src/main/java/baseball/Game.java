@@ -110,9 +110,6 @@ public class Game {
     }
 
     public boolean checkEndGame() {
-        if (this.user.getPlayerNumbers().size() < 3) {
-            return false;
-        }
         if (countStrike() == 3) {
             return true;
         }
