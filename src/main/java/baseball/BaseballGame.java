@@ -7,26 +7,32 @@ import java.util.List;
 import static baseball.constant.Constant.*;
 
 public class BaseballGame {
-    private final Computer computer = new Computer();
+    private final Computer computer;
 
-    private final User user = new User();
+    private final User user;
 
-    private final InputValidator validator = new InputValidator();
+    private final InputValidator validator;
 
-    private final GameManage gameManage = new GameManage();
+    private final GameManage gameManage;
 
-    private final GameMessage gameMessage = new GameMessage();
+    private final GameMessage gameMessage;
 
     private List<Integer> answerNumbers;
 
 
     public BaseballGame() {
-        gameMessage.initGame();
+        computer = new Computer();
+        user = new User();
+        validator = new InputValidator();
+        gameManage = new GameManage();
+        gameMessage = new GameMessage();
     }
 
     public void start() {
         int command = COMMAND_RESTART;
         answerNumbers = computer.makeNumbers();
+
+        gameMessage.initGame();
 
         while (command == COMMAND_RESTART) {
             gameManage.init();
