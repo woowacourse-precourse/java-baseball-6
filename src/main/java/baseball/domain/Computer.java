@@ -1,13 +1,13 @@
-package baseball.model;
+package baseball.domain;
 
-import baseball.utils.RandomNumberGenerator;
+import baseball.utils.NumberGenerator;
 import java.util.List;
 
 public class Computer {
     private final List<Integer> numbers;
 
-    public Computer() {
-        this.numbers = RandomNumberGenerator.generate();
+    public Computer(NumberGenerator numberGenerator) {
+        this.numbers = numberGenerator.generate();
     }
 
     public Boolean compareStrike(Player player, int idx) {
@@ -17,13 +17,6 @@ public class Computer {
 
     public Boolean compareBall(Player player, int idx) {
         Integer playerNumber = player.getNumber(idx);
-        return this.numbers.contains(playerNumber) || !this.numbers.get(idx).equals(playerNumber);
-    }
-
-    public Computer resetOrMaintain(GameState state) {
-        if (state.isRetry()) {
-            return new Computer();
-        }
-        return this;
+        return this.numbers.contains(playerNumber) && !this.numbers.get(idx).equals(playerNumber);
     }
 }
