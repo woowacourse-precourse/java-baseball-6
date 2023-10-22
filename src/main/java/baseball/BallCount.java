@@ -1,5 +1,7 @@
 package baseball;
 
 public interface BallCount {
-    void print();
+    String getType();
+
+    int getCount();
 }

@@ -91,8 +91,9 @@ class BaseballOutput {
 
     static void printCall(BallCount... ballCounts) {
         for (BallCount i : ballCounts) {
-            i.print();
+            System.out.printf("%d%s ", i.getCount(), i.getType());
         }
+        System.out.println();
     }
 
     static void printCall() {
@@ -107,27 +108,39 @@ class BaseballOutput {
 
 class StrikeCall implements BallCount {
     int count = 0;
+    String type = "스트라이크";
 
     public StrikeCall(int count) {
         this.count = count;
     }
 
     @Override
-    public void print() {
-        System.out.println(count + "스트라이크");
+    public String getType() {
+        return type;
+    }
+
+    @Override
+    public int getCount() {
+        return count;
     }
 }
 
 class BallCall implements BallCount {
     int count = 0;
+    String type = "볼";
 
     public BallCall(int count) {
         this.count = count;
     }
 
     @Override
-    public void print() {
-        System.out.printf("%d볼 ", count);
+    public String getType() {
+        return type;
+    }
+
+    @Override
+    public int getCount() {
+        return count;
     }
 }
 
