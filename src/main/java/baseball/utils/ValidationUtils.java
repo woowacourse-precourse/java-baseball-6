@@ -31,7 +31,12 @@ public class ValidationUtils {
         return num >= 111 && num <= 999;
     }
 
-    public static boolean isValidInput(String input) {
+    public static boolean isValidChoice(String input) {
+        int num = Integer.parseInt(input);
+        return num == 1 || num == 2;
+    }
+
+    public static boolean isValidGuess(String input) {
         return containsOnlyDigits(input)
                 && isThreeDigitNumber(input)
                 && hasNoDuplicateDigits(input)

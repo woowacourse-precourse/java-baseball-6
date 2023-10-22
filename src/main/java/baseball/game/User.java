@@ -17,6 +17,9 @@ public class User {
 
     public static int getChoiceToPlayAgain() {
         String userInput = Console.readLine();
+        if (!ValidationUtils.isValidChoice(userInput)) {
+            throw new IllegalArgumentException();
+        }
         return Integer.parseInt(userInput);
     }
 }
