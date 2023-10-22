@@ -7,7 +7,6 @@ import baseball.model.UserNumbers;
 import baseball.util.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,9 +36,7 @@ public class Controller {
 
         while (!isGameOver(computer, inputNumbers)) {
             inputNumbers = getInputNumbers();
-            int ballCount = computer.getBallCount(inputNumbers);
-            int strikeCount = computer.getStrikeCount(inputNumbers);
-            String result = ResultMapper.resultToString(ballCount, strikeCount);
+            String result = getResult(computer, inputNumbers);
             outputView.printResult(result);
         }
         outputView.printEnd();
@@ -54,6 +51,12 @@ public class Controller {
         String numbers = inputView.readLine();
         UserNumbers user = UserNumbers.createWithInput(numbers);
         return user.getNumbers();
+    }
+
+    private static String getResult(final Computer computer, final List<Integer> inputNumbers) {
+        int ballCount = computer.getBallCount(inputNumbers);
+        int strikeCount = computer.getStrikeCount(inputNumbers);
+        return ResultMapper.resultToString(ballCount, strikeCount);
     }
 
     private GameCommand askForRestart() {
