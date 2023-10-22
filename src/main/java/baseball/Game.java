@@ -62,7 +62,7 @@ public class Game {
         return false;
     }
 
-    public void getStrikeBallCount() {
+    public boolean checkStrikeBallCount(List<Integer> input, List<Integer> answer) {
 
     }
 
@@ -87,8 +87,17 @@ public class Game {
         return count;
     }
 
-    public void printResult() {
-
+    public void printResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+        }
+        if (strike != 0 && ball != 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크 ");
+        }
     }
 
     public void checkFinish() {
