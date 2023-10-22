@@ -10,34 +10,11 @@ public class ConsoleInputView implements InputView {
 
     private static final String REGEXP_PATTERN_NUMBER = "^[\\d]*$";
 
-    private final ConsoleOutputView consoleOutputView;
-
-    public ConsoleInputView(final ConsoleOutputView consoleOutputView) {
-        this.consoleOutputView = consoleOutputView;
-    }
-
-    public String readGuessNumbers() {
-        try {
-            String guessNumbers = Console.readLine();
-            checkIsBlank(guessNumbers);
-            checkCanChangeToInteger(guessNumbers);
-            return guessNumbers;
-        } catch (IllegalArgumentException exception) {
-            consoleOutputView.printExceptionMessage(exception.getMessage());
-            return readGuessNumbers();
-        }
-    }
-
-    public String readGameStateNumber() {
-        try {
-            String gameState = Console.readLine();
-            checkIsBlank(gameState);
-            checkCanChangeToInteger(gameState);
-            return gameState;
-        } catch (IllegalArgumentException exception) {
-            consoleOutputView.printExceptionMessage(exception.getMessage());
-            return readGameStateNumber();
-        }
+    public String readStringCanConvertInt() {
+        String guessNumbers = Console.readLine();
+        checkIsBlank(guessNumbers);
+        checkCanChangeToInteger(guessNumbers);
+        return guessNumbers;
     }
 
     private void checkIsBlank(final String string) {
