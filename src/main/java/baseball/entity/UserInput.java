@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
     public UserInput() {
-
     }
 
     // 게임중 입력을 받기 위한 함수

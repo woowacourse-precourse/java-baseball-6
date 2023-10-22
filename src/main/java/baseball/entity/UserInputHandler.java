@@ -9,7 +9,7 @@ public class UserInputHandler {
         // 사용자의 입력이 1~9까지 다른 숫자가 아니라면 예외 처리
         for(int i = 0; i < 3; i++) {
             char currentNumber = inputNumber.charAt(i);
-            if (currentNumber < '0' || currentNumber > '9') {
+            if (currentNumber < '1' || currentNumber > '9') {
                 throw new IllegalArgumentException();
             }
             for(int j = i + 1; j < 3; j++) {
