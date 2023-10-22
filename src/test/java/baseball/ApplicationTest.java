@@ -7,6 +7,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -49,6 +50,19 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("String"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_종료_입력_타입_예외_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThrows(IllegalArgumentException.class, () -> {
+                        run("246", "135", "String");
+                        assertThat(output()).contains("낫싱", "3스트라이크");
+                    });
+                },
+                1, 3, 5
         );
     }
 
