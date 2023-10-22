@@ -1,24 +1,23 @@
 package baseball.controller;
 
 import baseball.model.GameCompare;
+import baseball.model.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import baseball.model.Player;
 
-public class Controller {
+public class BaseballController {
 
     private static final String GAME_RESTART = "1";
     private static final String GAME_END = "2";
 
     private final InputView inputView;
     private final OutputView outputView;
+    private boolean isGameFinished = false;
 
-    public Controller() {
+    public BaseballController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
-
-    private boolean isGameFinished = false;
 
     public void play() {
         Player player = new Player();
@@ -37,7 +36,7 @@ public class Controller {
         if (inputNumber.equals(GAME_RESTART)) {
             isGameFinished = false;
         }
-        if (inputNumber.equals(GAME_END) ) {
+        if (inputNumber.equals(GAME_END)) {
             return true;
         }
         return false;

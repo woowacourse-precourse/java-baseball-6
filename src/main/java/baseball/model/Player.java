@@ -24,11 +24,11 @@ public class Player {
         this.inputNumbers = expectedNumbers;
     }
 
-    public List<Integer> getInputNumbers(){
+    public List<Integer> getInputNumbers() {
         return Collections.unmodifiableList(inputNumbers);
     }
 
-    private void initInputNumbers(){
+    private void initInputNumbers() {
         this.inputNumbers = new ArrayList<>();
     }
 
@@ -53,7 +53,7 @@ public class Player {
             }
         }
     }
-    
+
     private void validateDuplicateNumber(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>();
 

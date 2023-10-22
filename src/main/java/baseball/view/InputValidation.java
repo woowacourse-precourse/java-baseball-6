@@ -2,7 +2,7 @@ package baseball.view;
 
 import baseball.constant.ExceptionMessage;
 
-public class Validation {
+public class InputValidation {
 
     private static final int THREE_DIGIT_NUMBER = 3;
     private static final int ONE_DIGIT_NUMBER = 1;

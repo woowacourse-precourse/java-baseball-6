@@ -16,7 +16,4 @@ public enum OutputMessage {
     private OutputMessage(String message) {
         this.message = message;
     }
-
-    @Override
-    public String toString(){ return message; }
 }
