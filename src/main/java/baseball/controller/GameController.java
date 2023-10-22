@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.Computer;
 import baseball.view.OutputView;
 
 public class GameController {
@@ -11,5 +12,6 @@ public class GameController {
 
     public void startGame() {
         outputView.printStart();
+        Computer computer = new Computer();
     }
 }
