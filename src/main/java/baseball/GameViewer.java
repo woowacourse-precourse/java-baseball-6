@@ -21,6 +21,7 @@ public class GameViewer {
     public String getUserGuess() {
         System.out.println("숫자를 입력해주세요 : ");
         tmp = console.readLine();
+
         return tmp;
     }
 
@@ -43,6 +44,7 @@ public class GameViewer {
         if (tmp.equals("2")){
             // Exit() 호출 없이 종료시키기
             System.out.println("게임 종료");
+            console.close();
             return false;
         }else if(tmp.equals("1")){
             // Game 새로 시작하기

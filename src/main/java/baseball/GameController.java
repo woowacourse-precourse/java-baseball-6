@@ -1,7 +1,5 @@
 package baseball;
 
-import java.io.IOException;
-
 public class GameController {
     private static final UserService userService = new UserService();
     private static final ComputerService computerService = new ComputerService();
