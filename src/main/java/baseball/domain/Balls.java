@@ -18,6 +18,24 @@ public class Balls {
         this.balls = createBalls(values);
     }
 
+    public int getSamePositionAndSameNumberCount(Balls otherBalls) {
+        int result = 0;
+        for (Ball ball : this.balls) {
+            if(otherBalls.isSamePositionAndSameNumber(ball)) {
+                result++;
+            }
+        }
+        return result;
+    }
+    private boolean isSamePositionAndSameNumber(Ball otherBall) {
+        for (Ball ball : this.balls) {
+            if(ball.isSameNumberAndSamePosition(otherBall)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private List<Ball> createBalls(List<Integer> values) {
         return IntStream.range(START_INDEX, END_INDEX)
                 .mapToObj(index -> new Ball(new Number(values.get(index)), index))
