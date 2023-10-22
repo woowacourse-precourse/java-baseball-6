@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import static baseball.domain.Restart.RESTART;
+
 import java.util.List;
 
 import baseball.domain.BaseballNumber;
@@ -7,6 +9,7 @@ import baseball.domain.BaseballReferee;
 import baseball.domain.Hint;
 import baseball.domain.HintResult;
 import baseball.domain.RandomNumberFactory;
+import baseball.domain.Restart;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -34,13 +37,22 @@ public class BaseballController {
 			OutputView.printHint(hintResult);
 			if (hint.isThreeStrike()) {
 				OutputView.printGameOver();
-				return;
+				break;
 			}
 		}
+		restartGame();
 	}
 
 	private BaseballNumber generatePlayerNumbers() {
 		List<Integer> playerInputNumbers = InputView.readPlayerNumber();
 		return new BaseballNumber(playerInputNumbers);
+	}
+
+	private void restartGame() {
+		int gameCommand = InputView.readPlayerRestart();
+		Restart restart = Restart.from(gameCommand);
+		if (restart.equals(RESTART)) {
+			start();
+		}
 	}
 }
