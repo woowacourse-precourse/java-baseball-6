@@ -13,13 +13,13 @@ public class Number {
 		this.number = number;
 	}
 
-	public void validateSize(String number) {
+	private void validateSize(String number) {
 		if(number.length()!=SIZE) {
 			throw new IllegalArgumentException(SIZE+"자리수의 숫자를 입력해주세요.");
 		}
 	}
 
-	public void validateDuplication(String number) {
+	private void validateDuplication(String number) {
 		Map<Character, Integer> checkMap = new HashMap<>();
 
 		for(char checkNumber : number.toCharArray()) {
