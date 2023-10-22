@@ -9,19 +9,24 @@ public class RandomNumber {
 
     private List<Integer> randomNumber;
 
-    public RandomNumber() {
-        this.randomNumber = create();
+    public static RandomNumber create() {
+        ArrayList<Integer> computer = makeRandomNumberList();
+        return new RandomNumber(computer);
     }
 
-    private List<Integer> create() {
+    private RandomNumber(List<Integer> randomNumber) {
+        this.randomNumber = randomNumber;
+    }
+
+    private static ArrayList<Integer> makeRandomNumberList() {
         ArrayList<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        while (computer.size() < GameNumberSet.NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
+        System.out.println(computer); //Todo: 지워야 함
         return computer;
     }
 
@@ -34,7 +39,6 @@ public class RandomNumber {
     }
 
     public void reset() {
-        randomNumber.clear();
-        this.randomNumber = create();
+        this.randomNumber = makeRandomNumberList();
     }
 }

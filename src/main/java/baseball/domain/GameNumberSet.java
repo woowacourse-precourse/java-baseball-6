@@ -1,11 +1,13 @@
 package baseball.domain;
 
-public class GameNumber {
+public class GameNumberSet {
+
+    public static final int NUMBER_LENGTH = 3;
 
     private final InputNumber inputNumber;
     private final RandomNumber randomNumber;
 
-    public GameNumber(RandomNumber randomNumber, InputNumber inputNumber) {
+    public GameNumberSet(RandomNumber randomNumber, InputNumber inputNumber) {
         this.randomNumber = randomNumber;
         this.inputNumber = inputNumber;
     }

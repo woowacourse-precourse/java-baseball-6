@@ -10,20 +10,21 @@ public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
     private final GameService gameService;
-    private GameStatus gameStatus = new GameStatus();
+    private GameStatus gameStatus;
 
     public GameController(InputView inputView, OutputView outputView, GameService gameService) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.gameService = gameService;
+        this.gameStatus = new GameStatus();
     }
 
     public void playGame() {
-        RandomNumber randomNumber = generateRandomNumber();
+        RandomNumber randomNumber = RandomNumber.create();
 
         while (!gameStatus.isEnd()) {
-            GameNumber gameNumber = createGameNumber(randomNumber);
-            gameStatus = compareGameNumbers(gameNumber);
+            GameNumberSet gameNumberSet = createGameNumberSet(randomNumber);
+            gameStatus = compareGameNumbers(gameNumberSet);
             displayGameResult(gameStatus);
 
             if (gameStatus.isEnd()) {
@@ -32,16 +33,12 @@ public class GameController {
         }
     }
 
-    private RandomNumber generateRandomNumber() {
-        return new RandomNumber();
+    private GameNumberSet createGameNumberSet(RandomNumber randomNumber) {
+        return new GameNumberSet(randomNumber, inputView.getInputNumber());
     }
 
-    private GameNumber createGameNumber(RandomNumber randomNumber) {
-        return new GameNumber(randomNumber, inputView.getInputNumber());
-    }
-
-    private GameStatus compareGameNumbers(GameNumber gameNumber) {
-        return gameService.compareNumber(gameNumber, gameStatus);
+    private GameStatus compareGameNumbers(GameNumberSet gameNumberSet) {
+        return gameService.compareNumber(gameNumberSet, gameStatus);
     }
 
     private void displayGameResult(GameStatus gameStatus) {
@@ -53,13 +50,8 @@ public class GameController {
         RetryCommand command = inputView.getCommand();
 
         if (command.isRetry()) {
-            resetForRetry(randomNumber, gameStatus);
+            randomNumber.reset();
+            gameStatus.reset();
         }
     }
-
-    private void resetForRetry(RandomNumber randomNumber, GameStatus gameStatus) {
-        randomNumber.reset();
-        gameStatus.reset();
-    }
-
 }

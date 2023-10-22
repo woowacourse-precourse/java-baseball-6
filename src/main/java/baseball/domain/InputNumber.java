@@ -28,7 +28,7 @@ public class InputNumber {
     }
 
     private void checkLength(int length) {
-        if (length != 3) {
+        if (length != GameNumberSet.NUMBER_LENGTH) {
             throw new IllegalArgumentException(CHECK_NUMBERS_LENGTH.getMessage());
         }
     }
