@@ -8,4 +8,9 @@ public class SingleBaseBallGame implements BaseBallGame {
     public SingleBaseBallGame(MatchPlayer matchPlayer) {
         this.matchPlayer = matchPlayer;
     }
+
+    @Override
+    public BaseBallHint checkBaseBallNumber(BaseBallNumbers baseBallNumber) {
+        return matchPlayer.getHintOf(baseBallNumber);
+    }
 }
