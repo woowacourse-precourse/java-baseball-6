@@ -21,7 +21,7 @@ public class Validator {
     }
 
     public static void validateStringEmptyOrNull(String string) {
-        if (string == null || string.isEmpty()) {
+        if (string == null || string.trim().isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 입력 값이 null이거나 비어있습니다.");
         }
     }
