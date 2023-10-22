@@ -11,6 +11,7 @@ import java.util.List;
 
 public class GameController {
     private static final int NUMBER_LENGTH = 3;
+    private static final int FULL_STRIKE_COUNT = 3;
     private static final char ZERO_CHAR = '0';
     private static final String SPACE_MESSAGE = " ";
     private static final String NULL_MESSAGE = "";
@@ -38,13 +39,10 @@ public class GameController {
             initStrikeAndBall();
             List<Integer> player = playerNumber.getPlayerNumbers();
             List<Integer> computer = computerNumber.getComputerNumbers();
-            if (isPlayerSameAsComputer(player, computer)) {
-                strike = 3;
+            countStrikeAndBall(player, computer);
+            if (strike == FULL_STRIKE_COUNT) {
                 continueGame = false;
-            } else {
-                calculateHint(player, computer);
             }
-
             printHint();
         }
 
@@ -80,26 +78,25 @@ public class GameController {
         ball = 0;
     }
 
-    public boolean isPlayerSameAsComputer(List<Integer> player, List<Integer> computer) {
+    public void countStrikeAndBall(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         for (int index = 0; index < NUMBER_LENGTH; index++) {
-            if (!player.get(index).equals(computer.get(index))) {
-                return false;
-            }
-        }
+            int currentPlayerNumber = playerNumbers.get(index);
+            int currentComputerNumber = computerNumbers.get(index);
 
-        return true;
+            countStrike(currentPlayerNumber, currentComputerNumber);
+            countBall(computerNumbers, index, currentPlayerNumber);
+        }
     }
 
-    public void calculateHint(List<Integer> player, List<Integer> computer) {
-        for (int index = 0; index < NUMBER_LENGTH; index++) {
-            if (player.get(index).equals(computer.get(index))) {
-                strike++;
-                continue;
-            }
+    public void countStrike(int playerNumber, int computerNumber) {
+        if (playerNumber == computerNumber) {
+            strike++;
+        }
+    }
 
-            if (computer.contains(player.get(index))) {
-                ball++;
-            }
+    public void countBall(List<Integer> computerNumbers, int currentIndex, int playerNumber) {
+        if (computerNumbers.get(currentIndex) != playerNumber && computerNumbers.contains(playerNumber)) {
+            ball++;
         }
     }
 
