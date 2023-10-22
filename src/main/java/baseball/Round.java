@@ -1,14 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 
 public class Round {
 
     private final Computer computer;
 
-    public Round (Computer computer) {
+    public Round(Computer computer) {
         this.computer = computer;
     }
 
@@ -17,7 +16,7 @@ public class Round {
         String userStringNumber = Console.readLine();
         User user = new User(userStringNumber);
         Comparer comparer = new Comparer(computer, user);
-        ArrayList<Integer> compareResult = comparer.compare();
+        ArrayList<Integer> compareResult = comparer.getCompareResult();
         int strikeCount = compareResult.get(0);
 
         if (strikeCount == 3) {

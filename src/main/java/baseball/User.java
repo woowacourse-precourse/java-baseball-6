@@ -6,7 +6,7 @@ import java.util.List;
 public class User {
     private final List<Integer> userNumber = new ArrayList<>();
 
-    public User(String number){
+    public User(String number) {
         validateStringNumber(number);
         generateUser(number);
     }
@@ -33,6 +33,7 @@ public class User {
             checkForDuplicate(intNumber);
         }
     }
+
     private void checkForDuplicate(int intNumber) {
         if (userNumber.contains(intNumber)) {
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");

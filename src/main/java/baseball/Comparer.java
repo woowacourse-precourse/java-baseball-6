@@ -7,9 +7,6 @@ public class Comparer {
 
     private final List<Integer> computerNumber;
     private final List<Integer> userNumber;
-    private int strike = 0;
-    private int ball = 0;
-
 
 
     public Comparer(Computer computer, User user) {
@@ -17,43 +14,48 @@ public class Comparer {
         userNumber = user.getUserNumber();
     }
 
-    public ArrayList<Integer> compare() {
+    public ArrayList<Integer> getCompareResult() {
         ArrayList<Integer> compareResult = new ArrayList<>();
-        strike = getStrikeCount();
-        ball = getBallCount();
-        printRoundResult(strike, ball);
-        compareResult.add(strike);
-        compareResult.add(ball);
+        int strikeCount = getStrikeCount();
+        int ballCount = getBallCount();
+        printRoundResult(strikeCount, ballCount);
+        compareResult.add(strikeCount);
+        compareResult.add(ballCount);
+
         return compareResult;
     }
-    private static void printRoundResult(int strike, int ball) {
-        if (ball != 0 && strike != 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+
+    private static void printRoundResult(int strikeCount, int ballCount) {
+        if (ballCount != 0 && strikeCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
-        if (ball != 0 && strike == 0) {
-            System.out.println(ball + "볼");
+        if (ballCount != 0 && strikeCount == 0) {
+            System.out.println(ballCount + "볼");
         }
-        if (ball == 0 && strike != 0) {
-            System.out.println(strike + "스트라이크");
+        if (ballCount == 0 && strikeCount != 0) {
+            System.out.println(strikeCount + "스트라이크");
         }
-        if (ball == 0 && strike == 0) {
+        if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
         }
     }
+
     // Strike 개수 화인
     private int getStrikeCount() {
+        int strikeCount = 0;
         for (int i = 0; i < 3; i++) {
-            strike += isStrike(i);
+            strikeCount += isStrike(i);
         }
-        return strike;
+        return strikeCount;
     }
 
     // Ball 개수 확인
     private int getBallCount() {
+        int ballCount = 0;
         for (int i = 0; i < 3; i++) {
-            ball += isBall(i);
+            ballCount += isBall(i);
         }
-        return ball;
+        return ballCount;
     }
 
     private int isStrike(int index) {
@@ -65,7 +67,7 @@ public class Comparer {
 
     private int isBall(int index) {
         int findIdx = userNumber.indexOf(computerNumber.get(index));
-        if ( findIdx != -1 && index != findIdx) {
+        if (findIdx != -1 && index != findIdx) {
             return 1;
         }
         return 0;
