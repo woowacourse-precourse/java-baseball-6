@@ -21,3 +21,8 @@
 
 - [ ]  사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨다.
     - 사용자는 1~9 사이의 서로 다른 수 세 자리를 입력하여야 한다. 즉, 범위 내의 숫자가 아니거나 세 자리 수가 아닌 경우 예외를 발생시킨다.
+
+
+### 패키지를 나누는 기준에 대한 고민
+
+Notion 참조 : https://ancient-mail-369.notion.site/docs-README-md-337f0de7f5574e3594fce8b1283ad608?pvs=4
