@@ -2,7 +2,7 @@
 
 ## 도메인
 
-- RandomBall
+- RandomNumber
     - 멤버변수
         - 3개의 숫자를 저장할 리스트
 
