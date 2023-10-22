@@ -3,6 +3,9 @@ package baseball;
 import java.util.List;
 
 public class CountResult {
+    private final static String NOTHING_SENTENCE = "낫싱";
+    private final static String BALL_SENTENCE = "볼";
+    private final static String STRIKE_SENTENCE = "스트라이크";
 
     private final int ballCount;
     private final int strikeCount;
@@ -37,15 +40,15 @@ public class CountResult {
     public String makeHintString(){
 
         if (ballCount==0 && strikeCount==0){
-            return "낫싱";
+            return NOTHING_SENTENCE;
         }
 
         StringBuilder stringBuilder = new StringBuilder();
         if(ballCount!=0){
-            stringBuilder.append(ballCount).append("볼 ");
+            stringBuilder.append(ballCount).append(BALL_SENTENCE).append(" ");
         }
         if(strikeCount!=0){
-            stringBuilder.append(strikeCount).append("스트라이크");
+            stringBuilder.append(strikeCount).append(STRIKE_SENTENCE);
         }
         return stringBuilder.toString();
     }
