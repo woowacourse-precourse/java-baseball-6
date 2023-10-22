@@ -15,9 +15,20 @@ public class Application {
         // 1. 랜덤 번호 선택
         Computer computer = new Computer(Randoms.pickUniqueNumbersInRange(1,9,3));
 
+        String input = null;
         // 2. 번호 입력 받기
-        String s = Console.readLine();
-        int[] arr = Stream.of(s.split("")).mapToInt(Integer::parseInt).toArray();
+        try {
+            input = Console.readLine();
+            if (input.length() != 3) {
+                throw new IllegalArgumentException();
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException("잘못된 입력입니다.", e);
+        } finally {
+            Console.close();
+        }
+
+        int[] arr = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
         List<Integer> guess = Arrays.stream(arr).boxed().toList();
 
         // 3. 스트라이크 / 볼 / 낫싱 결과 판단 후 결과 출력
