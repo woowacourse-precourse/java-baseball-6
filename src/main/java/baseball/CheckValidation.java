@@ -5,6 +5,7 @@ import static baseball.Enum.INVALID_ANSWER;
 import static baseball.Enum.LETTER_ERROR;
 import static baseball.Enum.LIMIT_THREE_NUMBER;
 import static baseball.Enum.NOT_DUPLICATED;
+import static baseball.Enum.NUMBER;
 import static baseball.Enum.VALID;
 
 import java.util.HashSet;
@@ -49,7 +50,7 @@ public class CheckValidation {
 
     // 입력값이 숫자인지 확인
     private boolean checkIfNumber(String[] strArr) {
-        String num = "0123456789";
+        String num = String.valueOf(NUMBER);
         for (String s : strArr) {
             if (!num.contains(s)) {
                 return false;

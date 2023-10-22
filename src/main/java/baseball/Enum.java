@@ -12,6 +12,7 @@ public enum Enum {
     NOTHING("낫싱"),
     BALL("볼"),
     STRIKE("스트라이크"),
+    NUMBER("0123456789"),
     INVALID_ANSWER("1 또는 2만 입력할 수 있습니다."),
     NEW_GAME_OR_END("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
     END_PROGRAM("프로그램이 완전히 종료되었습니다. 게임을 하고 싶으면 다시실행 해주세요.");
