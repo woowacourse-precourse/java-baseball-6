@@ -19,7 +19,7 @@ public class OutputView {
     }
 
     public static void printEnterNumber() {
-        System.out.println(ENTER_NUMBER_MESSAGE);
+        System.out.print(ENTER_NUMBER_MESSAGE);
     }
 
     public static void printBallStrikeCount(int ballCount, int strikeCount) {
