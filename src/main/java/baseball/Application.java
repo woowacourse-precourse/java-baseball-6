@@ -21,21 +21,13 @@ public class Application {
 
                 Integer[] userNumber = setUserNumber();
 
-                int numberOfStrike = calculatingStrikeValue(computer,userNumber);
-                int numberOfBall = 0;
-
-
+                int numberOfStrike = calculatingBallValue(computer,userNumber);
 
                 if (numberOfStrike == 3) {
                     break;
                 }
 
-                for (int i = 0; i < LENGTH_OF_NUMBER; i++) {
-                    if (computer.contains(userNumber[i]))
-                        numberOfBall++;
-                }
-
-                numberOfBall = numberOfBall - numberOfStrike;
+                int numberOfBall = calculatingBallValue(computer,userNumber) - numberOfStrike;
 
                 if (numberOfStrike == 0 && numberOfBall != 0) {
                     System.out.println(numberOfBall + "볼");
@@ -85,5 +77,15 @@ public class Application {
                 numberOfStrike++;
         }
         return numberOfStrike;
+    }
+
+    static int calculatingBallValue(List<Integer> computer, Integer[] user){
+        int numberOfBall = 0;
+
+        for (int i = 0; i < LENGTH_OF_NUMBER; i++) {
+            if (computer.contains(user[i]))
+                numberOfBall++;
+        }
+        return numberOfBall;
     }
 }
