@@ -4,14 +4,14 @@ import java.util.List;
 
 public class GameHandler {
     private final UserInputHandler userInputHandler = new UserInputHandler();
-    private final Computer gameSession = new Computer();
+    private final ComputerNumberGenerator gameSession = new ComputerNumberGenerator();
     private final OutputView outputView = new OutputView();
     private final ResultGenerator resultGenerator = new ResultGenerator();
     private final InputValidator inputValidator = new InputValidator();
     private List<Integer> computerNumbers;
 
     public void initializeGameSession(){
-        computerNumbers = gameSession.makeComputerNumbers();
+        computerNumbers = gameSession.makeUniqueNumbers();
         outputView.printStartMessage();
     }
 
