@@ -11,8 +11,8 @@ public class Random {
 
         // 중복되지 않는 3개의 숫자를 생성
         public static HashSet<Integer> createRandomNumber() {
-                HashSet<Integer> randomNumbers = new HashSet<>(3);
-                while (randomNumbers.size() < 3) {
+                HashSet<Integer> randomNumbers = new HashSet<>();
+                while (randomNumbers.size() < INPUT_LENGTH) {
                         int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
                         randomNumbers.add(randomNumber);
                 }
