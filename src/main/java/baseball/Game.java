@@ -14,7 +14,22 @@ public class Game {
     private static final int END_GAME = 2;
     private final int COUNT = 3;
 
-    int ball, strike;
+    static class Score{
+        int strike, ball;
+
+        public Score(){
+            strike = 0;
+            ball = 0;
+        }
+
+        public void addStrike(){
+            strike++;
+        }
+
+        public void addBall(){
+            ball++;
+        }
+    }
 
     void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -26,7 +41,7 @@ public class Game {
             while (true) {
                 List<Integer> userNumber = getUserNumber();
 
-                if (result(userNumber, computerNumber)) {
+                if (result(calculateScore(userNumber, computerNumber))) {
                     if (!restartGame()) {
                         check = true;
                     }
@@ -44,6 +59,7 @@ public class Game {
                 computerNumber.add(randomNumber);
             }
         }
+        System.out.println(computerNumber);
         return computerNumber;
     }
 
@@ -73,52 +89,49 @@ public class Game {
         }
     }
 
-    void calculateScore(List<Integer>user, List<Integer>computer){
-        ball = 0;
-        strike = 0;
-
-        for(int i = 0; i < COUNT; i++){
-            for(int j = 0; j < COUNT; j++){
+    private Score calculateScore(List<Integer>user, List<Integer>computer){
+        Score score = new Score();
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
                 if(Objects.equals(user.get(i), computer.get(j))){
                     if(i == j){
-                        strike++;
+                        score.addStrike();
                     } else{
-                        ball++;
+                        score.addBall();
                     }
                 }
             }
         }
+        return score;
     }
 
-    boolean result(List<Integer> userNumber, List<Integer> computerNumber) {
-        calculateScore(userNumber, computerNumber);
-
+    private boolean result(Score score){
         String result = "";
-        if (this.ball == 0 && this.strike == 0) {
+        if (score.ball == 0 && score.strike == 0) {
             result = "낫싱";
         }
-        if (ball > 0) {
-            result += ball + "볼";
+        if (score.ball > 0) {
+            result += score.ball + "볼";
         }
-        if (strike > 0) {
-            if (ball > 0) {
+        if (score.strike > 0) {
+            if (score.ball > 0) {
                 result += " ";
             }
-            result += strike + "스트라이크";
+            result += score.strike + "스트라이크";
         }
         System.out.println(result);
-        return isGameEnded();
+        return isGameEnded(score);
     }
 
-    boolean isGameEnded() {
-        if (strike == COUNT) {
+    private boolean isGameEnded(Score score) {
+        if (score.strike == COUNT) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
         return false;
     }
 
-    boolean restartGame() {
+    private boolean restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int choice = Integer.parseInt(Console.readLine());
         if (choice == RESTART_GAME) {
