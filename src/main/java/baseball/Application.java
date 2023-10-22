@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-
+    public static final int NUMBER_COUNT = 3;
     public static int strike, ball;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -24,14 +24,14 @@ public class Application {
             List<Integer> computerNumber = ComputerSelectNumber();
 
             validNumbers(computerNumber);
-            while(strike!=3) {
+            while(strike!=NUMBER_COUNT) {
 
                 List<Integer> playerNumber = PlayerSelectNumber();
                 validNumbers(playerNumber);
                 CompareNumber(computerNumber, playerNumber);
 
             }
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             ReStart();
         } catch(IllegalArgumentException e) {
             throw new IllegalArgumentException("게임이 종료되었습니다");
@@ -55,7 +55,7 @@ public class Application {
 
         List<Integer> computer = new ArrayList<>();
 
-        while(computer.size()<3) {
+        while(computer.size()<NUMBER_COUNT) {
 
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
@@ -84,7 +84,7 @@ public class Application {
         strike = 0;
         ball = 0;
 
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<NUMBER_COUNT; i++) {
             if (playerNumber.get(i).equals(computerNumber.get(i))) {
                 strike++;
                 continue;
@@ -114,7 +114,7 @@ public class Application {
         if(numbers == null) {
             throw new IllegalArgumentException();
         }
-        if(numbers.size() != 3) {
+        if(numbers.size() != NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
         if(checkDuplicateNumber(numbers, 0, 0)) {
@@ -146,7 +146,9 @@ public class Application {
                 checkNumberIdx = 0;
                 numbersIdx++;
             }
-            if(searchNumber == checkNumber) return true;
+            if(searchNumber == checkNumber) {
+                return true;
+            }
             checkNumberIdx++;
         }
         return false;
