@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
 
 public class GameItemImpl implements GameItem {
 
@@ -24,15 +23,40 @@ public class GameItemImpl implements GameItem {
 
     @Override
     public void showStrikeAndBall(int strikes, int balls) {
-        // TODO Auto-generated method stub
-        
+        if (strikes == 0 && balls == 0) {
+            System.out.println("낫싱");
+        } else if (strikes != 0 && balls != 0) {
+            System.out.println(balls + "볼 " + strikes + "스트라이크");
+        } else if (strikes != 0) {
+            System.out.println(strikes + "스트라이크");
+        } else if (balls != 0) {
+            System.out.println(balls + "볼");
+        }
     }
 
     @Override
     public boolean checkForStrikes(List<Integer> numList, List<Integer> computer) {
-        // TODO Auto-generated method stub
-        return false;
+        int strikes = 0;
+        int balls = 0;
+        boolean yn = false;
+        for (int i = 0; i < 3; i++) {
+            if (numList.get(i) == computer.get(i)) {
+                strikes++;
+            } else if (computer.contains(numList.get(i))) {
+                balls++;
+            }
+            
+        }
+        if (strikes == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            yn = true;
+        } else if (strikes != 3) {
+            showStrikeAndBall(strikes, balls);
+        }
+        return yn;
     }
+        
 
     @Override
     public boolean isDuplicated(List<Integer> numList) {
