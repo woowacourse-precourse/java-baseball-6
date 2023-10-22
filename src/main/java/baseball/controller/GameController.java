@@ -15,7 +15,6 @@ public class GameController {
 
     public static void playingBaseballGame(GameCondition game_coin){
         playingByUserInput(game_coin,computerGameListByRandomGenerate());
-
     }
     private static void playingByUserInput(GameCondition game_coin,List<Integer> computer){
         while (game_coin.equals(GameCondition.CONTINUE)){
