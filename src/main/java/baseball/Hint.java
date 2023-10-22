@@ -1,11 +1,11 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hint {
     public int strike;
     public int ball;
-
     private List<Integer> userAnswer;
     private List<Integer> computerAnswer;
 
@@ -14,9 +14,16 @@ public class Hint {
         this.ball = 0;
     }
 
+    public void initHint() {
+        this.strike = 0;
+        this.ball = 0;
+    }
+
+
     public void calculateHint(List<Integer> userAnswer, List<Integer> computerAnswer) {
-        this.userAnswer = userAnswer;
-        this.computerAnswer = computerAnswer;
+        initHint();
+        this.userAnswer = new ArrayList<Integer>(userAnswer);
+        this.computerAnswer = new ArrayList<Integer>(computerAnswer);
         countStrike();
         countBall();
     }
@@ -29,8 +36,9 @@ public class Hint {
             System.out.print(this.strike + "스트라이크 ");
         }
         if (this.strike == 0 && this.ball == 0) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
+        System.out.println();
     }
 
     private void countStrike() {

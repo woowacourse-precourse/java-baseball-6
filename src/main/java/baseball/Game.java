@@ -7,10 +7,25 @@ public class Game {
     private boolean continueGame;
 
     public Game() {
-        Computer computer = new Computer();
-        User user = new User();
-        Hint hint = new Hint();
+        computer = new Computer();
+        user = new User();
+        hint = new Hint();
         continueGame = true;
     }
-    
+
+    public void start() {
+        do {
+            playGame();
+        } while (continueGame);
+    }
+
+    private void playGame() {
+        user.enterNumber();
+        hint.calculateHint(user.userAnswer, computer.computerAnswer);
+        hint.printHint();
+    }
+
+    private void toggleContinue() {
+        continueGame = !continueGame;
+    }
 }

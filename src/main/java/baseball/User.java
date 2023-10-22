@@ -9,7 +9,7 @@ import java.util.Set;
 public class User {
     private static final String ENTER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final int NUMBER_LEN = 3;
-    public List<Integer> userAnswer = new ArrayList<Integer>();
+    public List<Integer> userAnswer;
 
     public void enterNumber() {
         System.out.print(ENTER_NUMBER_MESSAGE);
@@ -18,6 +18,7 @@ public class User {
     }
 
     private void setUserAnswer(String number) {
+        userAnswer = new ArrayList<Integer>();
         if (isValidInput(number)) {
             for (int i = 0; i < NUMBER_LEN; i++) {
                 userAnswer.add(Character.getNumericValue(number.charAt(i)));
@@ -70,6 +71,5 @@ public class User {
         }
         return true;
     }
-
 
 }
