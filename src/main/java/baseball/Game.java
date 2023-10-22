@@ -2,52 +2,46 @@ package baseball;
 
 import java.util.List;
 
+import static baseball.Printer.*;
+
 public class Game {
-    private final String START_GAME_COMMENT = "숫자 야구 게임을 시작합니다.";
-    private final String INPUT_NUMBER_COMMENT = "숫자를 입력해주세요 : ";
-
+    private final Computer computer;
     private final Player player;
-    private final List<Integer> answer;
+    private final Judge judge;
+    private boolean isFinish = false;
 
-    public Game(Player player, List<Integer> answer) {
+    public Game(Computer computer, Player player, Judge judge) {
+        this.computer = computer;
         this.player = player;
-        this.answer = answer;
+        this.judge = judge;
     }
 
     public void start() {
-        System.out.println(START_GAME_COMMENT);
+        printStartGameComment();
         play();
-
     }
 
     public void play() {
-        System.out.println(INPUT_NUMBER_COMMENT);
-        List<Integer> playerNumbers = player.loadListOf3Number();
-
-        int duplicateCount = countDuplicateIntegers(playerNumbers, answer);
-        int strike = countStrike(playerNumbers, answer);
-        int ball = duplicateCount - strike;
-    }
-
-
-    private int countDuplicateIntegers(List<Integer> playerNumbers, List<Integer> answer) {
-        int ball = 0;
-        for (int i = 0; i < playerNumbers.size(); i++) {
-            if (answer.contains(playerNumbers.get(i))) {
-                ball++;
-            }
+        while (true) {
+            playRound();
+            if (isFinish) break;
         }
-        return ball;
     }
 
-    private int countStrike(List<Integer> playerNumbers, List<Integer> answer) {
-        int strike = 0;
-        for (int i = 0; i < playerNumbers.size(); i++) {
-            if (answer.get(i) == playerNumbers.get(i)) {
-                strike++;
-            }
-        }
-        return strike;
+    public void playRound() {
+        printInputNumberComment();
+        List<Integer> answer = computer.loadRandomNumberList();
+        List<Integer> playerNumbers = player.load3NumberList();
+
+        Result result = judge.calculateResult(answer, playerNumbers);
+        printRoundResult(result);
+        isFinish = judge.checkGameIsFinish(result);
     }
 
+    public boolean isRestart() {
+        printEndGameComment();
+        printRestartGameComment();
+
+        return player.chooseRestartGame();
+    }
 }
