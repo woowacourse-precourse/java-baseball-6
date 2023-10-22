@@ -32,6 +32,6 @@ public class Parser {
 	}
 
 	private static String parseHintToResults(int strike, int ball) {
-		return strike + STRIKE + " " + ball + BALL;
+		return ball + BALL+ " " + strike + STRIKE;
 	}
 }
