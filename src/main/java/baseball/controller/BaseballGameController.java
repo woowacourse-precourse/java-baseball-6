@@ -14,10 +14,10 @@ public class BaseballGameController {
     private final OutputView outputView = new OutputView();
 
     public void playGame() {
-            initGame();
-            printBaseballGameStartMessage();
-            inputNumber();
-            retryOrEnd();
+        initGame();
+        printBaseballGameStartMessage();
+        inputNumber();
+        retryOrEnd();
     }
 
     private void initGame() {

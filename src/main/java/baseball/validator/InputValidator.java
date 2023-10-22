@@ -29,7 +29,7 @@ public class InputValidator {
             throw new IllegalArgumentException();
         } else if (isInputNumberLengthNotSameThree(inputNumber)) {
             throw new IllegalArgumentException();
-        } else if (isInputNumberContainZero(inputNumber)){
+        } else if (isInputNumberContainZero(inputNumber)) {
             throw new IllegalArgumentException();
         } else if (isDuplicateInputNumber(inputNumber)) {
             throw new IllegalArgumentException();

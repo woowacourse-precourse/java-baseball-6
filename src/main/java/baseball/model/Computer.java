@@ -6,7 +6,7 @@ public class Computer {
 
     private List<Integer> numbers;
     private GameStatus gameStatus;
-    
+
     public List<Integer> getNumbers() {
         return numbers;
     }
@@ -26,6 +26,5 @@ public class Computer {
     public void setGameStatusStop() {
         this.gameStatus = GameStatus.STOP;
     }
-
 
 }

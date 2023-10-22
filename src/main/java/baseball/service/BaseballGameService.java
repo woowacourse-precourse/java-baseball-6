@@ -39,6 +39,7 @@ public class BaseballGameService {
     public int getStrikeCount() {
         return strikeCount;
     }
+
     public GameStatus getGameStatus() {
         return computer.getGameStatus();
     }
@@ -75,7 +76,7 @@ public class BaseballGameService {
         }
 
         for (Integer inputNumber : inputNumbers) {
-            if(computerNumbers.contains(inputNumber)) containNumber += 1;
+            if (computerNumbers.contains(inputNumber)) containNumber += 1;
         }
 
         this.ballCount = containNumber - strikeCount;
