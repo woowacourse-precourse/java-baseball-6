@@ -22,6 +22,83 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 스트라이크3개 (){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("135","2");
+                    assertThat(output()).contains("3스트라이크","게임 종료");
+                },
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 스트라이크2개(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("135","145","2");
+                    assertThat(output()).contains("2스트라이크","3스트라이크","게임 종료");
+                },
+                1, 4, 5
+        );
+    }
+
+    @Test
+    void 스트라이크1개(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("136","145","2");
+                    assertThat(output()).contains("1스트라이크","3스트라이크","게임 종료");
+                },
+                1, 4, 5
+        );
+    }
+
+    @Test
+    void 볼1개(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("781","145","2");
+                    assertThat(output()).contains("1볼","3스트라이크","게임 종료");
+                },
+                1, 4, 5
+        );
+    }
+
+    @Test
+    void 볼2개(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("481","145","2");
+                    assertThat(output()).contains("2볼","3스트라이크","게임 종료");
+                },
+                1, 4, 5
+        );
+    }
+
+    @Test
+    void 볼3개(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("514","145","2");
+                    assertThat(output()).contains("3볼","3스트라이크","게임 종료");
+                },
+                1, 4, 5
+        );
+    }
+
+    @Test
+    void (){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("514","145","2");
+                    assertThat(output()).contains("3볼","3스트라이크","게임 종료");
+                },
+                1, 4, 5
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
@@ -63,8 +140,6 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
-
 
 
     @Override
