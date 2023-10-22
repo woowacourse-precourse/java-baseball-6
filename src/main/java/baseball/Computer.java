@@ -8,6 +8,10 @@ public class Computer {
     private GameMachine gameMachine;
     private static final int TOTAL_COMPUTER_NUMBERS = 3;
 
+    public String[] getComputerNumbers() {
+        return computerNumbers;
+    }
+
     public void setPlayerNumbers(String[] playerNumbers) {
         this.playerNumbers = playerNumbers;
     }
