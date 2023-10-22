@@ -10,8 +10,12 @@ public class NumberBaseball {
     // 더 좋은 변수명 생각해보기
     private List<Integer> computerNum = new ArrayList<>();
 
-    public NumberBaseball() {
+    private NumberBaseball() {
         generateComputerNum();
+    }
+
+    public static NumberBaseball getInstance() {
+        return new NumberBaseball();
     }
 
     public List<Integer> getComputerNumToList() {
