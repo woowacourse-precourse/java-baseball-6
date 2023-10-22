@@ -4,12 +4,12 @@ import static baseball.common.Constant.BALL_AMOUNT;
 
 public class Result {
 
-  private final int strikeCount;
-  private final int ballCount;
+  private int strikeCount;
+  private int ballCount;
 
-  public Result(int strikeCount, int ballCount) {
-    this.strikeCount = strikeCount;
-    this.ballCount = ballCount;
+  public Result() {
+    this.strikeCount = 0;
+    this.ballCount = 0;
   }
 
   public int getStrikeCount() {
@@ -22,6 +22,14 @@ public class Result {
 
   public Boolean isAllStrikes() {
     return this.strikeCount == BALL_AMOUNT;
+  }
+
+  public void increaseStrikeCount() {
+    this.strikeCount++;
+  }
+
+  public void increaseBallCount() {
+    this.ballCount++;
   }
 
 }

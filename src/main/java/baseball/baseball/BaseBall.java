@@ -21,24 +21,28 @@ public class BaseBall {
   }
 
   public Result getPlayResult(List<Integer> targetBallNumbers) {
-    int strikeCount = 0;
-    int ballCount = 0;
+    Result result = new Result();
 
     for (int i = 0; i < BALL_AMOUNT; i++) {
       Integer ballNumber = this.ballNumbers.get(i);
       Integer targetBallNumber = targetBallNumbers.get(i);
 
-      if (ballNumber.equals(targetBallNumber)) {
-        strikeCount++;
-        continue;
-      }
-
-      if (this.ballNumbers.contains(targetBallNumber)) {
-        ballCount++;
-      }
+      increaseStrike(result, ballNumber, targetBallNumber);
+      increaseBall(result, ballNumber, targetBallNumber);
     }
+    return result;
+  }
 
-    return new Result(strikeCount, ballCount);
+  private void increaseStrike(Result result, Integer ballNumber, Integer targetNumber) {
+    if (ballNumber.equals(targetNumber)) {
+      result.increaseStrikeCount();
+    }
+  }
+
+  private void increaseBall(Result result, Integer ballNumber, Integer targetNumber) {
+    if (!ballNumber.equals(targetNumber) && this.ballNumbers.contains(targetNumber)) {
+      result.increaseBallCount();
+    }
   }
 
   private List<Integer> generatedRandomBallNumbers() {
