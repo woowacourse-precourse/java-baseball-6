@@ -20,6 +20,7 @@ public class Application {
             numOfStrike = getNumberOfStrike(computerNumber, playerNumber);
             printBaseballResult(numOfBall, numOfStrike);
         } while(numOfStrike < NUMBER_SIZE);
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static void printBaseballResult(int numOfBall, int numOfStrike) {
@@ -88,11 +89,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        int choice;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        do {
-            playBaseball();
-            choice = askToContinue();
-        } while(choice == 1);
+        do playBaseball(); while(askToContinue() == 1);
     }
 }
