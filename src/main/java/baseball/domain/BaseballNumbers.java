@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumbers {
-    private List<Integer> baseballNumbers = new ArrayList<>();
+    private List<Integer> baseballNumbers;
 
     public BaseballNumbers(List<Integer> baseballNumbers) {
         validate(baseballNumbers);
         this.baseballNumbers = baseballNumbers;
     }
 
-    private void validate(List<Integer> baseballNumbers) {
+    public static void validate(List<Integer> baseballNumbers) {
         if (Validator.isInvalid(baseballNumbers)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
     }
 

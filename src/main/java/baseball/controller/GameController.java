@@ -34,9 +34,13 @@ public class GameController {
     }
 
     private void restartOrNot(String input) {
-        if(Validator.isInvalid(input)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
+        validateRestartInput(input);
         if(input.equals(InputView.EXIT)) playing = false;
         if(input.equals(InputView.RESTART)) init();
+    }
+
+    public static void validateRestartInput(String input) {
+        if(Validator.isInvalid(input)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
     }
 
 }
