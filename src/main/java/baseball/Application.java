@@ -66,6 +66,19 @@ public class Application {
         return com_num;
     }
 
+    //User_com이 com_num의 숫자들을 포함하고 있는지 확인
+    public static int contain(List<Integer> User_num, List<Integer> com_num) {
+        int contain = 0;
+
+        for(int i = 0 ; i < User_num.size() ; i++) {
+            if(User_num.contains(com_num.get(i))) {
+                contain++;
+            }
+        }
+
+        return contain;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
