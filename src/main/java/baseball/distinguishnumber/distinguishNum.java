@@ -1,8 +1,5 @@
 package baseball.distinguishnumber;
 
-import baseball.check.Checknum;
-import baseball.check.checkthreenum;
-
 import java.util.List;
 
 public class distinguishNum implements Distinguish{
