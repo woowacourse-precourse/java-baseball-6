@@ -25,7 +25,9 @@ public class UserNumber {
     }
 
     private int[] convertStringToList(String input) {
-        return input.chars().map(num -> num - '0').toArray();
+        return input.chars()
+                .map(num -> num - '0')
+                .toArray();
     }
 
     private void validateInput(int[] inputList) {
@@ -35,11 +37,14 @@ public class UserNumber {
     }
 
     private boolean isDuplicateNumber(int[] inputList) {
-        return Arrays.stream(inputList).distinct().count() != 3;
+        return Arrays.stream(inputList)
+                .distinct()
+                .count() != 3;
     }
 
     private boolean isWrongFormatNumber(int[] inputList) {
-        return Arrays.stream(inputList).anyMatch(num -> num <= 0 || num > 9);
+        return Arrays.stream(inputList)
+                .anyMatch(num -> num <= 0 || num > 9);
     }
 
     private boolean isOverLengthNumber(int[] inputList) {
