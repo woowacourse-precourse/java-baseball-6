@@ -17,18 +17,14 @@ public class MainController {
     Validator validator = new Validator();
 
     private static int state = 1;
-    private static int count = 0;
     public MainController() {
         state = 1;
-        count = 0;
     }
 
     public void playGame(){
         outputView.printGameStart();
         while (state == 1){
-            if(count == 0){
-                gameData.setComputerNumber(randomNumbersGenerator.generateNumbers());
-            }
+            gameData.setComputerNumber(randomNumbersGenerator.generateNumbers());
             processInputAndCompare();
         }
     }
