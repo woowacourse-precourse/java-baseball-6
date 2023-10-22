@@ -26,13 +26,14 @@ public class BaseballGames implements Game {
 
         UserCode codes = new UserCode(new ArrayList<>());
         GameMessages gameEndComment = GameMessages.GAME_END_COMMENT;
+        GameMessages strikeComment = GameMessages.THREE_STRIKE_COMMENT;
         while (true) {
             UserCode userCode = userCodeService.makeUserCode(codes);
             validateJudgeService.validateLegalUserCode(userCode);
             GameResult gameResult = validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
             String batResult = messageGenerateService.makeMessage(gameResult);
             System.out.println(batResult);
-            if (batResult.equals("3스트라이크")) {
+            if (batResult.equals(strikeComment.getMessage())) {
                 System.out.println(gameEndComment.getMessage());
                 break;
             }
