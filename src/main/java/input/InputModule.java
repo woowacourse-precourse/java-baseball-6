@@ -29,7 +29,7 @@ public class InputModule {
         return inputInt;
     }
 
-    public void setInputInt(int inputInt) {
+    public void setInputInt() {
         this.inputInt = Integer.parseInt(Console.readLine());
     }
 }
