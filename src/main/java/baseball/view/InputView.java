@@ -14,4 +14,9 @@ public class InputView {
         PlayerNumber playerNumber = new PlayerNumber(number);
         return playerNumber;
     }
+
+    public static String inputRetryCommand() {
+        String command = readLine();
+        return command;
+    }
 }

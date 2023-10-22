@@ -8,7 +8,8 @@ public enum GameMessage {
     ASK_RETRY("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
     BALL("볼"),
     STRIKE("스트라이크"),
-    NOTHING("낫싱");
+    NOTHING("낫싱"),
+    END_GAME("숫자 야구 게임을 종료합니다.");
 
     private final String message;
 
