@@ -11,6 +11,7 @@ public class Result {
         this.ball = 0;
     }
 
+    //테스트에서 사용
     public Result(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
