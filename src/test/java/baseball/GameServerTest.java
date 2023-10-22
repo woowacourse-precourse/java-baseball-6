@@ -40,6 +40,14 @@ class GameServerTest extends NsTest {
         );
     }
 
+    @Test
+    void 사용자_입력값이_세자리가_아닐경우_IllegalArgumentException_예외를_터트린다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     protected void runMain() {
