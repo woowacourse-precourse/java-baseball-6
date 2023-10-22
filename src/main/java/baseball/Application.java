@@ -91,6 +91,7 @@ public class Application {
 
             // 모든 수를 맞춘 경우 게임 종료
             if (strike == CNT) {
+                System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             } else if (strike == 0 && ball == 0) { // strike, ball 개수가 모두 0인 경우
