@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 public class GameNumbers {
+    public static final int NUMBERS_SIZE = 3;
     private static final int MAX_NUMBER = 9;
     private static final int MIN_NUMBER = 1;
-    private static final int NUMBERS_SIZE = 3;
 
     private final List<Integer> numbers;
 
@@ -58,5 +58,9 @@ public class GameNumbers {
 
     public static GameNumbers createRandomGameNumbers() {
         return new GameNumbers();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
