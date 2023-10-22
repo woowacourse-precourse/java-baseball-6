@@ -1,15 +1,15 @@
 package baseball;
 
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Scanner scan = new Scanner(System.in);
-        Random rand = new Random();
+
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -18,23 +18,27 @@ public class Application {
             //상대방 숫자 설정
             int[] com = new int[3];
             for ( int i = 0 ; i < com.length ; i++ ){
-                com[i] = rand.nextInt(10); // 0~9에 해당하는 랜덤 정수 입력
+                com[i] =  Randoms.pickNumberInRange(1,9); // 1~9에 해당하는 랜덤 정수 입력
             }
-            System.out.println(Arrays.toString(com));
+            //System.out.println(Arrays.toString(com));
 
             //겹치는 수가 있으면 다시 시작
             if ( com[0] == com[1] || com[0] == com[2] || com[1] == com[2] ){
                 continue;
             }
 
+
             while(true){
 
                 int strike = 0;
                 int ball = 0;
-                System.out.println("상대방 >> " + Arrays.toString(com));
+                //System.out.println("상대방 >> " + Arrays.toString(com));
                 System.out.print("숫자를 입력해주세요 : ");
                 //사용자 숫자 설정
-                int num = scan.nextInt();
+                int num = Integer.parseInt(Console.readLine());
+                if ( num < 100 || num > 1000){
+                    throw new IllegalArgumentException(); // 사용자가 잘못된 값을 입력한 경우 (세자리 수를 입력하지 않은 경우)
+                }
                 int[] me = new int[3];
                 for (int i = 2; i >= 0 ; i-- ){
                     me[i] = num % 10;
@@ -56,10 +60,10 @@ public class Application {
                 }
                 else{
                     if ( ball != 0 ){
-                        System.out.print(ball + "볼");
+                        if ( strike != 0 ) System.out.print(ball + "볼 ");
+                        else System.out.println(ball + "볼");
                     }
                     if ( strike != 0 ) {
-                        if ( ball != 0 ) System.out.print(" ");
                         System.out.println(strike + "스트라이크");
 
                         if ( strike == 3 ){
@@ -73,9 +77,10 @@ public class Application {
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int flag = scan.nextInt();
+            int flag = Integer.parseInt(Console.readLine());
             if ( flag == 1 ) continue;
-            else break;
+            else if ( flag == 2 ) break;
+            else throw new IllegalArgumentException(); // 사용자가 잘못된 값을 입력한 경우 (1,2 가 아닌 값을 입력)
         }
 
 
