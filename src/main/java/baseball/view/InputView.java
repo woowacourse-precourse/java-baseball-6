@@ -20,7 +20,7 @@ public class InputView {
         return validateUserInput(Console.readLine());
     }
 
-    public static void welcomeMessage(){
+    public static void welcomeMessage() {
         System.out.println(MESSAGE_WELCOME);
     }
 
