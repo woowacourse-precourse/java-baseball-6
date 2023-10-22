@@ -57,5 +57,7 @@ public class Display {
         printEndText();
         return false;
     }
-
+    public void close(){
+        Console.close();
+    }
 }
