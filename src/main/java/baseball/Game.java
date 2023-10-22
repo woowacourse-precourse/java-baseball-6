@@ -3,12 +3,10 @@ package baseball;
 public class Game {
     private final GameNumberMaker gameNumberMaker;
     private final AnswerInput answerInput;
-    private final GameScore gameScore;
 
     public Game() {
         this.gameNumberMaker = new GameNumberMaker();
         this.answerInput = new AnswerInput();
-        this.gameScore = new GameScore();
     }
 
     public void startGame() {
@@ -23,6 +21,7 @@ public class Game {
         // 정답 입력 객체
         answerInput.inputNumber();
         System.out.println(answerInput.getAnswerNumber());
+        GameScore gameScore = new GameScore();
         gameScore.checkStrike(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
         gameScore.checkBall(gameNumberMaker.getGameNumber(), answerInput.getAnswerNumber());
         System.out.println(gameScore.getStrikeCount());
