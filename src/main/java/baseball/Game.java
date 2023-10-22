@@ -51,15 +51,16 @@ public class Game {
         int ballCnt = 0;
         int strikeCnt = 0;
         for (int i = 0; i < randomString.length(); i++) {
-            for (int j = 0; j < inputNumber.length(); j++) {
-                boolean b = randomString.charAt(i) == inputNumber.charAt(j);
-                if (b && i == j) {
-                    strikeCnt++;
-                } else if (b) {
-                    ballCnt++;
-                }
+            char randomChar = randomString.charAt(i);
+            char inputChar = inputNumber.charAt(i);
+
+            if (randomChar == inputChar) {
+                strikeCnt++;
+            } else if (inputNumber.contains(String.valueOf(randomChar))) {
+                ballCnt++;
             }
         }
+
         return strikeCnt == 3; // 3스트라이크이면 true를 return
     }
 
