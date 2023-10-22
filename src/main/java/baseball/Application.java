@@ -13,65 +13,14 @@ public class Application {
 
         boolean startGame = true;
         while (startGame) {
-            // computer의 정답 3자리 수 생성
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
-            int computerNumber = 100 * computer.get(0) + 10 * computer.get(1) + computer.get(2);
-            String computerNumberStr = Integer.toString(computerNumber);
+            String computerNumberStr = makeComputerNumber();
+            playGame(computerNumberStr);
 
-            // (숫자 입력 --> 정답과 비교 --> 결과 출력) 반복
-            while (true) {
-                System.out.print("숫자를 입력해주세요 : ");
-                String userNumberStr = readLine();
-
-                // 3개 숫자 모두 같으면 바로 종료
-                if (computerNumberStr.equals(userNumberStr)) {
-                    System.out.println("3스트라이크");
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    break;
-                }
-                // 정답이 아니라면 입력 오류 없는지 확인
-                boolean rightInput = checkUserNumber(userNumberStr);
-                if (rightInput) {
-                    // 오류 없다면(true) IllegalArgumentException 발생 없이 다음 코드 진행
-                }
-
-                // 입력값과 정답을 비교하고 결과에 따라 스트라이크, 볼 개수 세기
-                int strike = 0;
-                int ball = 0;
-                for (int i = 0; i < computerNumberStr.length(); i++) {
-                    char computerDigit = computerNumberStr.charAt(i);
-                    char userDigit = userNumberStr.charAt(i);
-
-                    if (userDigit == computerDigit) {
-                        strike++; // 같은 자리, 같은 수 --> 스트라이크
-                    } else if (computerNumberStr.contains(String.valueOf(userDigit))) {
-                        ball++; // 다른 자리, 같은 수 포함 --> 볼
-                    }
-                }
-                // 스트라이크, 볼 개수 출력
-                if (strike > 0 && ball > 0) {
-                    System.out.println(ball + "볼 " + strike + "스트라이크");
-                } else if (strike > 0) {
-                    System.out.println(strike + "스트라이크");
-                } else if (ball > 0) {
-                    System.out.println(ball + "볼");
-                } else {
-                    System.out.println("낫싱");
-                }
-            }
-
-            // 정답일 경우 --> 게임 종료 여부 결정
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String decisionGame = readLine();
-            if (decisionGame.equals("2")) {
+            String userDecision = readLine();
+            if (userDecision.equals("2")) {
                 startGame = false; // 게임 종료
-            } else if (decisionGame.equals("1")) {
+            } else if (userDecision.equals("1")) {
                 // 게임 재시작
             } else {
                 throw new IllegalArgumentException(); // 1, 2 외의 값일 때 입력 오류 발생
@@ -79,7 +28,36 @@ public class Application {
         }
     }
 
-    public static boolean checkUserNumber(String userNumberStr) {
+    public static String makeComputerNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        int computerNumber = 100 * computer.get(0) + 10 * computer.get(1) + computer.get(2);
+        return Integer.toString(computerNumber);
+    }
+
+    public static void playGame(String computerNumberStr) {
+        // (숫자 입력 --> 정답과 비교 --> 결과 출력) 반복
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userNumberStr = readLine();
+
+            // 3개 숫자 모두 같으면 바로 종료
+            if (userNumberStr.equals(computerNumberStr)) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+            checkInputError(userNumberStr);
+            compareNumber(computerNumberStr, userNumberStr);
+        }
+    }
+
+    public static void checkInputError(String userNumberStr) {
         // 숫자가 아닐 때 입력 오류 발생
         try {
             Integer.parseInt(userNumberStr);
@@ -97,6 +75,31 @@ public class Application {
         if (digit1 == digit2 || digit1 == digit3 || digit2 == digit3) {
             throw new IllegalArgumentException();
         }
-        return true;
+    }
+
+    public static void compareNumber(String computerNumberStr, String userNumberStr) {
+        // 입력값과 정답을 비교하고 결과에 따라 스트라이크, 볼 개수 세기
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < computerNumberStr.length(); i++) {
+            char computerDigit = computerNumberStr.charAt(i);
+            char userDigit = userNumberStr.charAt(i);
+
+            if (userDigit == computerDigit) {
+                strike++; // 같은 자리, 같은 수 --> 스트라이크
+            } else if (computerNumberStr.contains(String.valueOf(userDigit))) {
+                ball++; // 다른 자리, 같은 수 포함 --> 볼
+            }
+        }
+        // 스트라이크, 볼 개수 출력
+        if (strike > 0 && ball > 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        } else if (strike > 0) {
+            System.out.println(strike + "스트라이크");
+        } else if (ball > 0) {
+            System.out.println(ball + "볼");
+        } else {
+            System.out.println("낫싱");
+        }
     }
 }
