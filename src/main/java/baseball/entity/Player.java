@@ -25,4 +25,16 @@ public class Player {
     public void setGameWin(boolean gameWin) {
         this.gameWin = gameWin;
     }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public boolean isGameWin() {
+        return gameWin;
+    }
 }
