@@ -19,19 +19,11 @@
 
 # 📚 클래스 설계 목록
 
-## ● domain
-
-- Computer : 컴퓨터 객체
-    - createComputerNumber() : 컴퓨터의 랜덤 숫자를 생성 및 저장하는 함수
-
-- Player : 플레이어 객체
-    - createPlayerNumber() : 플레이어의 숫자를 초기화하는 함수
-
 ## ● service
 
 - ProgressService : 게임 진행을 돕는 객체
-    - getInput() : 플레이어로부터 숫자를 입력받고 검증하는 함수
     - resetGame() : 게임을 초기화하는 함수
+    - createComputerNumber() : 컴퓨터의 랜덤 숫자를 생성 및 저장하는 함수
     - getResultMessage() : 결과 메시지를 반환하는 함수
     - isGameClear() : 게임 클리어인지 판별하는 함수(3스트라이크인지 확인)
     - getResultGameStatus() : 게임 재시작 또는 종료 여부를 반환하는 함수
@@ -51,13 +43,31 @@
 ## ● controller
 
 - GameProgress : 게임 진행을 위한 객체
+    - getInput() : 플레이어로부터 숫자를 입력받고 검증하는 함수
     - startGame() : 게임을 시작하는 함수
     - restartGame() : 게임을 재시작하는 함수
+
+## ● view
+
+- InputView : 플레이이로부터 입력을 받기위한 객체
 
 ## ● constant
 
 - Constant : 상수를 관리하는 객체
     - validationAll() : 플레이어가 입력한 값을 전체 검증하는 함수
+
+## ● message
+
+- GameMessage : 게임 진행을 위한 안내 메시지
+    - START_MESSAGE("숫자 야구 게임을 시작합니다.")
+    - INPUT_MESSAGE("숫자를 입력해주세요 : ")
+    - ClEAR_MESSAGE("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    - GAME_STATUS_MESSAGE("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+
+- CountMessage : 카운트와 관련된 메시지
+    - BALL("볼")
+    - STRIKE("스트라이크")
+    - NOTHING("낫싱")
 
 ## ● validation
 
