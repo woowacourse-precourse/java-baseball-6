@@ -1,9 +1,9 @@
 package baseball.domain;
 
 public class Game {
+    int[] gameNumbers;
     int strikeCount;
     int ballCount;
-    int[] gameNumbers;
 
     public Game(int[] numbers) {
         gameNumbers = numbers;
