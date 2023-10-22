@@ -227,3 +227,21 @@
   : 1. 우선 Reset 진행 _ 삭제를 원하는 commit의 마우스 오른쪽을 눌러 ```Reset Current Branch to Here... > reset 강도 선택 > Reset 클릭```
   <br> 2. IntelliJ의 Terminal에서 진행 _ ```git log --oneline```으로 commit 기록 확인 -> 삭제되지 않은 이유는, HEAD로 설정되어 있기 때문일 가능성이 높음.
   <br> 3. ```git reset --hard HEAD~{순서}```를 입력해주면, HEAD가 이전 commit으로 돌아감.
+
+### 🌱Fork한 레포지터리에 commit을 진행해도 잔디가 심어지지 않는다...?
+
+- 상세 내용
+  : fork한 레포지터리에 열심히 commit하고 push를 하고 있다가 확인해보니 잔디 탈모 현상이 발견됨.
+
+- 해결 방법
+  : 함께 나누기의 [BE]최승준님 글에서 해결점 발견! ```Mirror Push```가 해결법!<br>
+  <br> 1. commit을 복사할 개인 레포지터리 생성<br>
+  <br> 2. **fork해서 작업 중이던 레포지터리**의 url 복사<br>
+  <br> 3. 로컬 환경에 bare clone<br>
+  ```git clone --bare https://github.com/깃허브ID/레포지터리명.git``` <br>
+  <br> 4. Mirror push 진행<br>
+  ```$ cd forkedRepository.git``` <br>
+  ```$ git push --mirror https://github.com/깃허브ID/위에서 새롭게 생성했던 레포지터리.git``` <br>
+  <br> 5. 그래도 잔디가 안보인다면, default branch 변경하기
+
+
