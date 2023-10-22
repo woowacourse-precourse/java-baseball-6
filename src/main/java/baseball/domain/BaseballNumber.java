@@ -1,12 +1,12 @@
 package baseball.domain;
 
+import static baseball.constants.CommonConstants.MAX_NUMBER_RANGE;
+import static baseball.constants.CommonConstants.MAX_NUMBER_SIZE;
+import static baseball.constants.CommonConstants.MIN_NUMBER_RANGE;
+
 import java.util.List;
 
 public class BaseballNumber {
-
-	private static final int MAX_NUMBER_SIZE = 3;
-	private static final int MIN_NUMBER_RANGE = 1;
-	private static final int MAX_NUMBER_RANGE = 9;
 
 	private final List<Integer> numbers;
 
