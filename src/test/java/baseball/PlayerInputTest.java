@@ -13,4 +13,13 @@ class PlayerInputTest {
                 .filter(ch -> '1' > ch || ch > '9' ))
                 .isEmpty();
     }
+
+    @Test
+    @DisplayName("실패 테스트 - 플레이어가 입력한 각 자리 숫자는 1부터 9까지의 정수가 아니다.")
+    void test2() {
+        assertThat("012".chars()
+                .filter(ch -> '1' <= ch && ch <= '9')
+                .count())
+                .isNotEqualTo(3);
+    }
 }
