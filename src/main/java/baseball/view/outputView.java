@@ -1,9 +1,10 @@
 package baseball.view;
 
 public class outputView {
-    private static final String gameStartMessage = "숫자 야구 게임을 시작합니다.";
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
     public void displayNewGameMessage() {
-        System.out.println(gameStartMessage);
+        System.out.println(GAME_START_MESSAGE);
     }
+
 }
