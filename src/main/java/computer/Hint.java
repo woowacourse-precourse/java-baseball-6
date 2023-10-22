@@ -10,6 +10,10 @@ public class Hint {
 
     private Hint(){}
 
+    public static Hint getInstance(){
+        return hintSingleton;
+    }
+
     public void save(int strike,int ball){
         hintClear();
         hint.put("strike", strike);
@@ -26,9 +30,5 @@ public class Hint {
 
     public void hintClear(){
         hint.clear();
-    }
-
-    public static Hint getInstance(){
-        return hintSingleton;
     }
 }

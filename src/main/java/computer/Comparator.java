@@ -31,6 +31,11 @@ public class Comparator {
         storeToHint(strike, ball);
     }
 
+    private void receiveBalls(Balls computer,Balls user){
+        this.computer=computer;
+        this.user=user;
+    }
+
     private boolean isSameValueAtSameLocation(int location){
         if (computer.getBalls().get(location).equals(user.getBalls().get(location))) {
             return true;
@@ -43,11 +48,6 @@ public class Comparator {
             return true;
         }
         return false;
-    }
-
-    private void receiveBalls(Balls computer,Balls user){
-        this.computer=computer;
-        this.user=user;
     }
 
     private void storeToHint(int strike,int ball){

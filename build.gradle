@@ -25,8 +25,4 @@ test {
 }
 
 
-test.onlyIf {
-    !project.hasProperty('test')
-}
-
 
