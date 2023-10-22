@@ -50,12 +50,24 @@ public class Controller {
     private void startGame() {
         game.init();
         while (!game.isGameOver) {
-            String userInput = view.getUserNumberInput();
-            validDigitPattern(userInput);
-            BaseballNumbers userBaseballNumbers = baseballNumbersByUser(userInput);
-            JudgeResult judgeResult = game.judge(userBaseballNumbers);
-            view.printJudgeResult(judgeResult);
+            playRound();
         }
+    }
+
+
+    /**
+     *
+     */
+    private void playRound() {
+        BaseballNumbers userBaseballNumbers = getUserBaseballNumbers();
+        JudgeResult judgeResult = game.judge(userBaseballNumbers);
+        view.printJudgeResult(judgeResult);
+    }
+
+    private BaseballNumbers getUserBaseballNumbers() {
+        String userInput = view.getUserNumberInput();
+        validDigitPattern(userInput);
+        return baseballNumbersByUser(userInput);
     }
 
     private static BaseballNumbers baseballNumbersByUser(String userInput) {
