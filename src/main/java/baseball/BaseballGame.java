@@ -32,11 +32,12 @@ public class BaseballGame {
             hint = GameService.getHintWith(player, computer);
             System.out.println(hint);
         } while (!hint.equals("3스트라이크"));
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     //TODO: private 메서드에 static을 붙이는 게 적절한지 확인
     private static Boolean restart() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String newOrQuit = Console.readLine();
 
