@@ -6,36 +6,31 @@ import java.util.List;
 final class Digits {
     private List<Digit> digits;
 
-//    Digits() {
-//        while (digits.size() < Size.THREE.num) {
-//            Digit randomDigit = new Digit();
-//            if (!digits.contains(randomDigit)) digits.add(randomDigit);
-//        }
-//    }
-
     private Digits() {
     }
 
     static Digits generateRandomDigits() {
-        Digits random = new Digits();
-        random.digits = new ArrayList<>();
-        while (random.digits.size() < Size.THREE.num) {
+        Digits randomDigits = new Digits();
+        randomDigits.digits = new ArrayList<>();
+        while (randomDigits.digits.size() < Size.THREE.num) {
             Digit randomDigit = new Digit();
-            if (!random.digits.contains(randomDigit)) random.digits.add(randomDigit);
+            if (!randomDigits.digits.contains(randomDigit)) randomDigits.digits.add(randomDigit);
         }
 //        System.out.println(random.digits.get(0).digit + " " + random.digits.get(1).digit + " " + random.digits.get(2).digit);
-        return random;
+        return randomDigits;
     }
 
     //TODO : 정적팩터리로?
-    Digits(String input) {
+    static Digits generateFixedDigits(String input) {
         if(input.length() != Size.THREE.num) throw new IllegalArgumentException();
-        digits = new ArrayList<>();
+        Digits fixedDigits = new Digits();
+        fixedDigits.digits = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             Digit digit = new Digit(input.charAt(i));
-            if (digits.contains(digit)) throw new IllegalArgumentException();
-            digits.add(digit);
+            if (fixedDigits.digits.contains(digit)) throw new IllegalArgumentException();
+            fixedDigits.digits.add(digit);
         }
+        return fixedDigits;
     }
 
     //TODO : strike점수가 빠져야함

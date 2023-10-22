@@ -23,7 +23,7 @@ public class GameServer {
 
     private void playGame() {
         System.out.print(OutputMessage.INPUT_NUMBER.message);
-        Digits input = new Digits(Console.readLine());
+        Digits input = Digits.generateFixedDigits(Console.readLine());
         score = computer.calculateScore(input);
         System.out.println(score.getResultInKorean());
     }
