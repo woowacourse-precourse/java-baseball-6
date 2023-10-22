@@ -45,9 +45,15 @@ public class Application {
                 List<Integer> playerNumbers = convertInputToNumbers(inputNumbers);
 
                 int strikeCount = getStrikeCount(computerNumbers, playerNumbers);
+                if (strikeCount == 3) {
+                    System.out.println("3스트라이크");
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    return true;
+                }
+
                 int ballCount = getBallCount(computerNumbers, playerNumbers);
-                System.out.println(strikeCount);
-                System.out.println(ballCount);
+
+                printCount(ballCount, strikeCount);
 
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -109,5 +115,19 @@ public class Application {
             }
         }
         return ballCount;
+    }
+
+    /*스트라이크 볼 카운트 출력*/
+    private static void printCount(int ballCount, int strikeCount) {
+        if (ballCount > 0) {
+            System.out.print(ballCount + "볼 ");
+        }
+        if (strikeCount > 0) {
+            System.out.print(strikeCount + "스트라이크");
+        }
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println();
     }
 }
