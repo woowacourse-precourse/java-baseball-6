@@ -1,7 +1,5 @@
 package baseball.controller;
 
-import static baseball.model.Status.REPLAY;
-import static baseball.model.Status.STOP;
 import static baseball.util.GameHelper.numberToIntegerList;
 
 import baseball.model.Game;
@@ -34,10 +32,7 @@ public class GameController {
     }
 
     public Status replayOrStop() {
-        String status = InputView.inputPositiveNumber();
-        if (Status.from(status) == STOP) {
-            return STOP;
-        }
-        return REPLAY;
+        String inputStatus = InputView.inputPositiveNumber();
+        return Status.from(inputStatus);
     }
 }
