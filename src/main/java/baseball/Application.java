@@ -1,66 +1,57 @@
 package baseball;
 
+import static baseball.Constant.GAME_NUM_SIZE;
+import static baseball.Constant.MAX_RANDOM_NUMBER;
+import static baseball.Constant.MIN_RANDOM_NUMBER;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
-import static baseball.Constant.MIN_RANDOM_NUMBER;
-import static baseball.Constant.MAX_RANDOM_NUMBER;
-import static baseball.Constant.GAME_NUM_SIZE;
+import java.util.Set;
 
 public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        String flag = "";
+        String flag;
         do {
-            try{
-                startGame();
-                flag = askReplayOrExit();
-            }catch (IllegalArgumentException e){
-                throw new IllegalArgumentException(e);
-            }
-        }while(flag.equals("1"));  // 1을 입력하면 게임 새로 시작
+            startGame();
+            flag = askReplayOrExit();
+        } while (flag.equals("1"));  // 1을 입력하면 게임 새로 시작
     }
 
     private static void startGame() {
         List<String> computerNum = createComputerNumber();
         String result;
         String playerNum;
-        do{
+        do {
             System.out.print("숫자를 입력해주세요 : ");
-            try {
-                playerNum = Console.readLine();
-                isNonDigit(playerNum);
-                isThreeDigitNumber(playerNum);
-                hasRepeatedDigitNumber(playerNum);
-            }catch (IllegalArgumentException e){
-                throw new IllegalArgumentException(e);
-            }
+            playerNum = Console.readLine();
+            isNonDigit(playerNum);
+            isThreeDigitNumber(playerNum);
+            hasRepeatedDigitNumber(playerNum);
             result = matchPlayerNum(computerNum, playerNum);
             System.out.println(result);
 
-        }while (!result.equals("3스트라이크"));
+        } while (!result.equals("3스트라이크"));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static List<String> createComputerNumber() {
-        List<String> computer = new ArrayList<>();
-        while (computer.size() < GAME_NUM_SIZE) {
-            int randNum = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-            String randomNumber = String.valueOf(randNum);
+        Set<String> computerNum = new HashSet<>();
 
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+        while (computerNum.size() < GAME_NUM_SIZE) {
+            int randNum = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+            computerNum.add(String.valueOf(randNum));
         }
-        return computer;
+
+        return new ArrayList<>(computerNum);
     }
 
     // 사용자가 입력한 값이 숫자인지 확인한다.
-    private static void isNonDigit(String playerNum){
+    private static void isNonDigit(String playerNum) {
         try {
             Integer.parseInt(playerNum);
         } catch (NumberFormatException e) {
@@ -69,16 +60,16 @@ public class Application {
     }
 
     // 사용자가 입력한 값이 3자리 숫자인지 확인한다.
-    private static void isThreeDigitNumber(String playerNum){
-        if (playerNum.length() != 3){
+    private static void isThreeDigitNumber(String playerNum) {
+        if (playerNum.length() != 3) {
             throw new IllegalArgumentException("숫자가 3자리가 아닙니다. 게임이 종료됩니다.");
         }
     }
 
     // 사용자가 입력한 값에서 2개 이상 중복되는 숫자가 있는 경우
-    private static void hasRepeatedDigitNumber(String playerNum){
+    private static void hasRepeatedDigitNumber(String playerNum) {
         List<String> player = new ArrayList<>();
-        for(int i = 0; i < GAME_NUM_SIZE; i++){
+        for (int i = 0; i < GAME_NUM_SIZE; i++) {
             String playerIndex = String.valueOf(playerNum.charAt(i));
 
             if (player.contains(playerIndex)) {
@@ -93,25 +84,24 @@ public class Application {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for(int i = 0; i < GAME_NUM_SIZE; i++){
+        for (int i = 0; i < GAME_NUM_SIZE; i++) {
             String computerIndex = computerNum.get(i);
             String playerIndex = String.valueOf(playerNum.charAt(i));
 
-            if(computerIndex.equals(playerIndex)){    // 스트라이크
+            if (computerIndex.equals(playerIndex)) {    // 스트라이크
                 strikeCount += 1;
-            }
-            else if (computerNum.contains(playerIndex)) {    // 볼
+            } else if (computerNum.contains(playerIndex)) {    // 볼
                 ballCount += 1;
             }
         }
 
-        if (ballCount > 0){
+        if (ballCount > 0) {
             result += (result + ballCount + "볼 ");
         }
-        if (strikeCount > 0){
+        if (strikeCount > 0) {
             result += (result + strikeCount + "스트라이크");
         }
-        if (ballCount == 0 && strikeCount == 0){
+        if (ballCount == 0 && strikeCount == 0) {
             result = "낫싱";
         }
 
@@ -126,9 +116,9 @@ public class Application {
         return choice;
     }
 
-    public static void isValidUserChoice(String choice){
+    public static void isValidUserChoice(String choice) {
         // 1과 2가 아닌 다른 수를 입력할 경우
-        if (!choice.equals("1") && !choice.equals("2")){
+        if (!choice.equals("1") && !choice.equals("2")) {
             throw new IllegalArgumentException("1 또는 2를 입력하지 않았습니다. 게임이 종료됩니다.");
         }
     }
