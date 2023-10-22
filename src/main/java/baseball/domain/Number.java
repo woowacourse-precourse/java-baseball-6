@@ -12,6 +12,10 @@ public class Number {
 		this.number = number;
 	}
 
+	protected String getNumber() {
+		return number;
+	}
+
 	private void validateSize(String number, int size) {
 		if(number.length()!=size) {
 			throw new IllegalArgumentException(size+"자리수의 숫자를 입력해주세요.");
