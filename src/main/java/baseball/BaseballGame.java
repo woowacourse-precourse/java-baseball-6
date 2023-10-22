@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
     private static boolean isEnd = false;
-    private static UserInputHandler userInputHandler = new UserInputHandler();
+    private static final UserInputHandler userInputHandler = new UserInputHandler();
     private static Baseball baseball;
 
     private BaseballGame() {}
