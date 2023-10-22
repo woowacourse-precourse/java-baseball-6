@@ -3,13 +3,12 @@ package baseball.model;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BaseballNumbers {
     private static final int NUMBERS_LENGTH = 3;
     private static final String OUT_OF_LENGTH = "야구 숫자 최대 길이: " + NUMBERS_LENGTH;
     private static final String DUPLICATE_NUMBER_EXIST = "야구 숫자내 중복 숫자 불가.";
-    private List<BaseballNumber> baseballNumbers;
+    private final List<BaseballNumber> baseballNumbers;
 
     public BaseballNumbers(List<BaseballNumber> baseballNumbers) {
         validNumbersSize(baseballNumbers);
@@ -28,6 +27,25 @@ public class BaseballNumbers {
         if (baseballNumbers.size() != NUMBERS_LENGTH) {
             throw new IllegalArgumentException(OUT_OF_LENGTH);
         }
+    }
+
+    public static BaseballNumbers createRandomBaseballNumbers() {
+        List<BaseballNumber> baseballNumbers =  new ArrayList<>();
+        while (baseballNumbers.size() < NUMBERS_LENGTH) {
+            addUniqueRandomNumber(baseballNumbers);
+        }
+        return new BaseballNumbers(baseballNumbers);
+    }
+
+    private static void addUniqueRandomNumber(List<BaseballNumber> baseballNumbers) {
+        BaseballNumber randomBaseballNumber = BaseballNumber.pickRandom();
+        if (isUnique(baseballNumbers, randomBaseballNumber)) {
+            baseballNumbers.add(randomBaseballNumber);
+        }
+    }
+
+    private static boolean isUnique(List<BaseballNumber> baseballNumbers, BaseballNumber randomBaseballNumber) {
+        return !baseballNumbers.contains(randomBaseballNumber);
     }
 }
 

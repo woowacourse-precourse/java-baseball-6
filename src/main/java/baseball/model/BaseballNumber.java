@@ -1,5 +1,7 @@
 package baseball.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +12,7 @@ public class BaseballNumber {
 
     private static final Map<Integer, BaseballNumber> NUMBERS= new HashMap<>();
 
-    private int baseballNumber;
+    public final int baseballNumber;
 
     static {
         for (int i = MIN_BASEBALL_NUMBER; i <= MAX_BASEBALL_NUMBER; i++) {
@@ -28,5 +30,10 @@ public class BaseballNumber {
             throw new IllegalArgumentException(BASEBALL_NUMBER_OUT_OF_RANGE);
         }
         return baseballNumber;
+    }
+
+    public static BaseballNumber pickRandom() {
+        int randomNumber = Randoms.pickNumberInRange(MIN_BASEBALL_NUMBER, MAX_BASEBALL_NUMBER);
+        return of(randomNumber);
     }
 }
