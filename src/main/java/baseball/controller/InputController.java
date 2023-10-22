@@ -16,11 +16,11 @@ public class InputController {
         this.gameValidate = new GameValidate();
     }
 
-    public boolean isRestartGame() {
+    public Integer getPlayerRestart() {
         String input = inputView.getPlayerRestart();
         Integer restartNumber = inputValidate.checkNumber(input);
         gameValidate.checkGameRestartInput(restartNumber);
-        return restartNumber == 1;
+        return restartNumber;
     }
 
     public List<Integer> getPlayerGuessNumber() {

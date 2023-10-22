@@ -6,4 +6,5 @@ public abstract class BaseBallGameRule {
     protected final static Integer BASEBALL_MAX_AMOUNT = 3;
     protected final static Integer BASEBALL_GAME_RESTART = 1;
     protected final static Integer BASEBALL_GAME_FINISH = 2;
+    protected final static Integer PLAY_BASEBALL_GAME = 1;
 }

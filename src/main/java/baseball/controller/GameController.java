@@ -3,9 +3,10 @@ package baseball.controller;
 import baseball.model.BaseballGameComputer;
 import baseball.model.BaseballGamePlayer;
 import baseball.model.Hint;
+import baseball.model.rule.BaseBallGameRule;
 import java.util.List;
 
-public class GameController {
+public class GameController extends BaseBallGameRule {
     private final OutputController outputController;
     private final InputController inputController;
     private final BaseballGameComputer gameComputer;
@@ -21,13 +22,13 @@ public class GameController {
     }
 
     public void startNewGame() {
-        boolean gameProcess = true;
-        while (gameProcess) {
+        Integer gameProcess = PLAY_BASEBALL_GAME;
+        while (gameProcess.equals(PLAY_BASEBALL_GAME)) {
             outputController.showIntroMessage();
             gameComputer.readyForGame();
             playGame();
             outputController.showGameRestartInputMessage();
-            gameProcess = inputController.isRestartGame();
+            gameProcess = inputController.getPlayerRestart();
         }
     }
 
