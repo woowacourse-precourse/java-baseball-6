@@ -13,21 +13,21 @@ public class GameController {
     private static final int GAME_REFRESH_INPUT = 1;
 
     public void start() {
-        boolean finish = true;
+        boolean newGame = true;
         ConsoleView.printGameStart();
-        while (finish) {
-            finish = executeGame();
+        while (newGame) {
+            newGame = executeGame();
         }
     }
 
     public boolean executeGame() {
         Computer computer = new Computer(NumberProvider.createRandomNumber());
-        boolean flag = true;
-        while (flag) {
+        boolean gameInProgress = true;
+        while (gameInProgress) {
             Player player = createPlayer();
             NumberComparator numberComparator = new NumberComparator(player, computer);
             Result result = numberComparator.compareNumber();
-            flag = isNotGameFinish(result);
+            gameInProgress = isNotGameFinish(result);
         }
         return isRefreshGame();
     }
@@ -50,17 +50,15 @@ public class GameController {
             ConsoleView.printBallAndStrikeCount(result.getBall(), result.getStrike());
             return true;
         }
-        if (!result.isExistBall() && !result.isExistStrike()) {
-            ConsoleView.printNothing();
-            return true;
-        }
         if (result.isExistBall()) {
             ConsoleView.printBallCount(result.getBall());
+            return true;
         }
         if (result.isExistStrike()) {
             ConsoleView.printStrikeCount(result.getStrike());
+            return true;
         }
-
+        ConsoleView.printNothing();
         return true;
     }
 
