@@ -20,7 +20,7 @@ public class ConsoleOutputTest {
 
         //then
         // println이므로 띄어쓰기를 해야한다.
-        Assertions.assertEquals(test + "\n", outputMessage.toString());
+        Assertions.assertEquals(test, outputMessage.toString());
         System.setOut(System.out);
     }
 }

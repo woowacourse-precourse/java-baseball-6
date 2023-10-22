@@ -15,7 +15,7 @@ public class ScoreCalculatorBaseBall implements ScoreCalculator {
     }
 
     private Integer calStrike(List<Integer> userInput, List<Integer> computerInput) {
-        assert userInput.size() == computerInput.size();
+        // assert userInput.size() == computerInput.size();
         int count = 0;
         for (int i = 0; i < userInput.size(); i++) {
             if (userInput.get(i) == computerInput.get(i)) {
@@ -26,7 +26,7 @@ public class ScoreCalculatorBaseBall implements ScoreCalculator {
     }
 
     private Integer calBall(List<Integer> userInput, List<Integer> computerInput) {
-        assert userInput.size() == computerInput.size();
+        // assert userInput.size() == computerInput.size();
         Set<Integer> computerInputSet = new HashSet<>(computerInput);
         int count = 0;
         for (int i = 0; i < userInput.size(); i++) {

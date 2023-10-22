@@ -83,6 +83,24 @@ public class ValidateInputBaseballTest {
     }
 
     @Test
+    void 게임중_중복된_문자열이_온_경우() {
+        String input = "113";
+        ValidateInputBaseball validateInputBaseBall = new ValidateInputBaseball();
+
+        //when
+        Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
+            () -> {
+                validateInputBaseBall.validateGameInput(input);
+            }
+        );
+
+        //then
+        String expected = MessageString.WRONG_GAME_INPUT_ERROR_STRING;
+        String actual = exception.getMessage();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     void 게임중_올바른_문자열이_온_경우() {
         String input = "123";
         ValidateInputBaseball validateInputBaseBall = new ValidateInputBaseball();

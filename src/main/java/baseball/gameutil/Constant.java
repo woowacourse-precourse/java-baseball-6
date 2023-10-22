@@ -10,6 +10,6 @@ public class Constant {
     public static final Integer NUMBER_MAX = 9;
 
     public static final Integer RESTART_MODE_LENGTH = 1;
-    public static final Integer RESTART_MIN = 1;
-    public static final Integer RESTART_MAX = 2;
+    public static final Integer RESTART_RESTART = 1;
+    public static final Integer RESTART_END = 2;
 }
