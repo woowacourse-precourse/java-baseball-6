@@ -16,33 +16,45 @@ import baseball.domain.Player;
 import baseball.domain.Referee;
 import baseball.service.BaseballService;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 // Todo : 메서드 명은 동사로 시작, camelCase
 public class BaseballController {
 
     private InputView inputView = new InputView();
-
+    private OutputView outputView = new OutputView();
     private BaseballService baseballService = new BaseballService();
+
+    private boolean restart;
+
     public void startGame(){
+        outputView.printGameStartMessage();
         do{
+            restart = true;
             Computer computer = new Computer();
             Player player = new Player();
 
             callNumberToMatch(computer,player);
-        }while();
+        }while(restart);
     }
 
     void callNumberToMatch(Computer computer, Player player){
         do{
             String number = inputView.callNumbers();
             baseballService.verifyException(number);
-
             player.callNumber(number);
 
             Referee referee = new Referee(computer,player);
 
             referee.checkResult();
 
-        }while();
+            if(referee.getStrike() == 3){
+                outputView.printMatchAllNumberMessage();
+                outputView.printProvideRestartMessage();
+
+                restart = baseballService.restart(inputView.restart());
+                return;
+            }
+        }while(restart);
     }
 }
