@@ -2,13 +2,13 @@ package baseball.domain;
 
 
 public class Answer {
-    private final Numbers numbers;
+    private final BaseballNumbers numbers;
 
-    public Answer(Numbers answer) {
+    public Answer(BaseballNumbers answer) {
         this.numbers = answer;
     }
 
-    public Score match(String input) {
-        return numbers.calculateScore(input);
+    public Score match(BaseballNumbers inputBaseballNumbers) {
+        return numbers.calculateScore(inputBaseballNumbers);
     }
 }
