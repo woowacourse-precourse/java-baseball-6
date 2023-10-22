@@ -1,18 +1,20 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     private Long id;
     private Long userId;
-    private ArrayList<Integer> computerNumber;
+    private List<Integer> computerNumber;
     private Long questionCount;
 
-    public Game(Long id, Long userId, ArrayList<Integer> computerNumber, Long questionCount) {
-        this.id = id;
-        this.userId = userId;
+    public List<Integer> getComputerNumber() {
+        return computerNumber;
+    }
+
+    public void setComputerNumber(List<Integer> computerNumber) {
         this.computerNumber = computerNumber;
-        this.questionCount = questionCount;
     }
 
     public Long getId() {
@@ -29,14 +31,6 @@ public class Game {
 
     public void setUserId(Long userId) {
         this.userId = userId;
-    }
-
-    public ArrayList<Integer> getComputerNumber() {
-        return computerNumber;
-    }
-
-    public void setComputerNumber(ArrayList<Integer> computerNumber) {
-        this.computerNumber = computerNumber;
     }
 
     public Long getQuestionCount() {

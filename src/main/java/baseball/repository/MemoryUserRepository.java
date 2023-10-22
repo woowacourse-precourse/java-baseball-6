@@ -12,7 +12,7 @@ public class MemoryUserRepository implements UserRepository{
     public User save(User user) {
         user.setId(++sequence);
         store.put(user.getId(), user);
-        return null;
+        return user;
     }
 
     @Override

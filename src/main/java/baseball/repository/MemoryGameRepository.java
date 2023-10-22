@@ -2,10 +2,8 @@ package baseball.repository;
 
 import baseball.domain.Game;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class MemoryGameRepository implements GameRepository{
     private static Map<Long, Game> store = new HashMap<>();
@@ -13,21 +11,30 @@ public class MemoryGameRepository implements GameRepository{
 
     @Override
     public Game save(Game game) {
-        return null;
+        game.setId(++sequence);
+        store.put(game.getId(), game);
+        return game;
+    }
+
+    @Override
+    public Game saveQestionCount(Game game) {
+        Long l = game.getQuestionCount();
+        store.get(game.getId()).setQuestionCount(++l);
+        return game;
     }
 
     @Override
     public Optional<Game> findById(Long id) {
-        return Optional.empty();
+        return Optional.ofNullable(store.get(id));
     }
 
     @Override
-    public Optional<Game> findByUserId(Long userId) {
-        return Optional.empty();
+    public Stream<Game> findByUserId(Long userId) {
+        return store.values().stream()
+                .filter(game -> game.getUserId().equals(userId));
     }
 
-    @Override
-    public List<Game> findAll() {
-        return null;
+    public void clearStore(){
+        store.clear();
     }
 }
