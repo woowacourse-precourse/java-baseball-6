@@ -24,16 +24,16 @@ public class BallCountFormatter {
     private String toCountResult(final long ballNum, final long strikeNum) {
         final StringBuilder stringBuilder = new StringBuilder();
         if (ballNum != NONE) {
-            stringBuilder
-                    .append(String.format(BallCountMessage.BALL.toValue(), ballNum))
-                    .append(BLANK_DELIMITER);
+            stringBuilder.append(String.format(BallCountMessage.BALL.toValue(), ballNum));
         }
         return appendStrikeIfExists(stringBuilder, strikeNum);
     }
 
     private String appendStrikeIfExists(final StringBuilder stringBuilder, final long strikeNum) {
         if (strikeNum != NONE) {
-            stringBuilder.append(String.format(BallCountMessage.STRIKE.toValue(), strikeNum));
+            stringBuilder
+                    .append(BLANK_DELIMITER)
+                    .append(String.format(BallCountMessage.STRIKE.toValue(), strikeNum));
         }
         return stringBuilder.toString();
     }
