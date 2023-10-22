@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class UserNumberValidator {
-    public static void validateUserNumber(String userNumber, int numberSize) {
+    public static void validateUserNumber(int numberSize, String userNumber) {
         checkIsDigit(userNumber);
-        checkNumberSize(userNumber, numberSize);
+        checkNumberSize(numberSize, userNumber);
         checkNotDuplicate(userNumber);
     }
 
@@ -22,7 +22,7 @@ public class UserNumberValidator {
     /**
      * 자리수가 맞지 않을 경우 예외 발생
      */
-    private static void checkNumberSize(String inputWord, int numberSize) {
+    private static void checkNumberSize(int numberSize, String inputWord) {
         if (inputWord.length() != numberSize) {
             throw new IllegalArgumentException("세자리 숫자가 아닙니다.");
         }

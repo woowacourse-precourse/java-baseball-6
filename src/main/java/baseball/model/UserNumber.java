@@ -4,7 +4,7 @@ public class UserNumber {
     private final String userNumber;
 
     public UserNumber(String userNumber) {
-        UserNumberValidator.validateUserNumber(userNumber, NumberStatus.NUMBER_SIZE);
+        UserNumberValidator.validateUserNumber(NumberStatus.NUMBER_SIZE, userNumber);
         this.userNumber = userNumber;
     }
 
