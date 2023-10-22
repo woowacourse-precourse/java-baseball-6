@@ -1,17 +1,17 @@
 package baseball.controller;
 
-import baseball.domain.AnswerGenerator;
 import baseball.domain.Computer;
+import baseball.domain.NumbersGenerator;
 import baseball.domain.Score;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballController {
-    private final AnswerGenerator answerGenerator;
+    private final NumbersGenerator answerGenerator;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public BaseballController(AnswerGenerator answerGenerator,
+    public BaseballController(NumbersGenerator answerGenerator,
                               InputView inputView,
                               OutputView outputView) {
         this.answerGenerator = answerGenerator;

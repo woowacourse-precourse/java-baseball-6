@@ -15,7 +15,7 @@ public class ComputerTest {
     @ParameterizedTest
     @MethodSource("provideGetScoreTestArguments")
     void getScoreTest(String input, Score expectedScore) {
-        Computer computer = new Computer(new FixedAnswerGenerator());
+        Computer computer = new Computer(new FixedNumbersGenerator());
         Score score = computer.getScore(input);
         assertThat(score).isEqualTo(expectedScore);
     }
