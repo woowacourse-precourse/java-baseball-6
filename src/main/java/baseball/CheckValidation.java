@@ -11,6 +11,20 @@ public class CheckValidation {
         this.input = input;
     }
 
+    public int checkAnswerValidation(String str) {
+        // 빈 칸 제거
+        str.replaceAll(" ", "");
+        if (str.equals("1")) {
+            return 1;
+        }
+        if (str.equals("2")) {
+            return 2;
+        } else {
+            System.out.println("1 또는 2만 입력할 수 있습니다.");
+            return -1;
+        }
+    }
+
     public String checkNumberValidation() {
         // 빈 칸 제거
         input.replaceAll(" ", "");
