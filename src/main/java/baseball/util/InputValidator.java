@@ -1,26 +1,28 @@
 package baseball.util;
 
 import baseball.constant.ExceptionMessage;
-import baseball.constant.GameConstants;
+import baseball.constant.GameConstant;
 import java.util.HashSet;
 import java.util.Set;
 
 public class InputValidator {
 
-    public void validate(String input) {
+    public void validateGameNumber(String input) {
         is3DigitsNumber(input);
         isConsistsOfUniqueDigits(input);
     }
 
+    public void validateRestartNumber(String input) {
+        is1Or2(input);
+    }
+
     private void is3DigitsNumber(String input) {
-        if (input.length() != GameConstants.MAX_VALUE) {
-            throw new IllegalArgumentException(ExceptionMessage.Requires3Digits.getMessage());
+        if (input.length() != GameConstant.GAME_NUMBER_LENGTH) {
+            throw new IllegalArgumentException(ExceptionMessage.REQUIRES_3_DIGITS.getMessage());
         }
 
-        for (int i = 0; i < input.length(); i++) {
-            if (!input.matches(GameConstants.ONLY_NUMBER_REGEX)) {
-                throw new IllegalArgumentException(ExceptionMessage.RequiresOnlyNumberBetween1And9.getMessage());
-            }
+        if (!input.matches(GameConstant.ONLY_NUMBER_REGEX)) {
+            throw new IllegalArgumentException(ExceptionMessage.REQUIRES_1_BETWEEN_9.getMessage());
         }
     }
 
@@ -31,7 +33,13 @@ public class InputValidator {
         }
 
         if (set.size() != input.length()) {
-            throw new IllegalArgumentException(ExceptionMessage.RequiresUniqueElements.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.REQUIRES_UNIQUE_ELEMENTS.getMessage());
+        }
+    }
+
+    private void is1Or2(String input) {
+        if (!input.matches(GameConstant.RESTART_NUMBER_REGEX)) {
+            throw new IllegalArgumentException(ExceptionMessage.REQUIRES_1_OR_2.getMessage());
         }
     }
 }
