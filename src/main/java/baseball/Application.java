@@ -22,6 +22,19 @@ public class Application {
         } while(numOfStrike < NUMBER_SIZE);
     }
 
+    private static void printBaseballResult(int numOfBall, int numOfStrike) {
+        if (numOfBall == 0 && numOfStrike == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        String result = "";
+        if (numOfBall > 0)
+            result += (numOfBall + "볼 ");
+        if (numOfStrike > 0)
+            result += (numOfStrike + "스트라이크");
+        System.out.println(result);
+    }
+
     private static int getNumberOfStrike(List<Integer> computerNumber, List<Integer> playerNumber) {
         int strikeCount = 0;
         for (int index = 0; index < NUMBER_SIZE; index++) {
@@ -65,6 +78,7 @@ public class Application {
     }
 
     private static int askToContinue() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int choice = Integer.parseInt(Console.readLine());
         if (choice != 1 && choice != 2) {
             throw new IllegalArgumentException("잘못된 입력값입니다.");
