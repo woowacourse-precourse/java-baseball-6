@@ -19,8 +19,8 @@ public class Game {
         this.computer = computer;
     }
 
-    public static Game getInstance(final OutputView outputView, InputView inputView) {
-        return new Game(outputView, inputView, new Computer());
+    public static Game getInstance(final OutputView outputView, InputView inputView, Computer computer) {
+        return new Game(outputView, inputView, computer);
     }
 
     public void run() {
