@@ -16,20 +16,7 @@ public class OutputView {
     public void showGameRestartInputMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
-
-    public void showNothingHint() {
-        System.out.println("낫싱");
-    }
-
-    public void showBallAndStrikeHint(int ballCount, int strikeCount) {
-        System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-    }
-
-    public void showBallOnlyHint(int ballCount) {
-        System.out.println(ballCount + "볼");
-    }
-
-    public void showStrikeOnlyHint(int strikeCount) {
-        System.out.println(strikeCount + "스트라이크");
+    public void showHint(String message) {
+        System.out.println(message);
     }
 }

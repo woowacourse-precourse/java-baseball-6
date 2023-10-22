@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.Hint;
+import baseball.model.GameResult;
 import baseball.view.OutputView;
 
 public class OutputController {
@@ -10,35 +10,8 @@ public class OutputController {
         this.outputView = new OutputView();
     }
 
-    public boolean displayHint(Hint hint) {
-        int strikeCount = hint.strike();
-        int ballCount = hint.ball();
-
-        return switch (strikeCount) {
-            case 3 -> {
-                outputView.showStrikeOnlyHint(strikeCount);
-                outputView.showGameClearMessage();
-                yield false;
-            }
-            case 0 -> {
-                if (ballCount != 0) {
-                    outputView.showBallOnlyHint(ballCount);
-                    yield true;
-                } else {
-                    outputView.showNothingHint();
-                    yield true;
-                }
-            }
-            default -> {
-                if (ballCount != 0) {
-                    outputView.showBallAndStrikeHint(ballCount, strikeCount);
-                    yield true;
-                } else {
-                    outputView.showStrikeOnlyHint(strikeCount);
-                    yield true;
-                }
-            }
-        };
+    public void displayHint(GameResult result) {
+        outputView.showHint(result.getGameResultMessage());
     }
 
     public void showIntroMessage() {
@@ -51,5 +24,9 @@ public class OutputController {
 
     public void showGameInputMessage() {
         outputView.showGameInputMessage();
+    }
+
+    public void showGameClearMessage() {
+        outputView.showGameClearMessage();
     }
 }
