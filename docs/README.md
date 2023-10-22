@@ -176,3 +176,53 @@ sequenceDiagram
 **랜덤 숫자 야구 생성기 implement 숫자 야구 생성기**
 - 랜덤으로 숫자 야구에 필요한 숫자를 제작한다.
 
+## ⚙️리팩토링 필요 내용
+Application에서 콘솔과 게임 모두 연결하기 때문에<br>
+실제로 Game 객체에서 게임이 진행되지 않고있다.
+
+불필요한 역할 클래스의 생성, Application이 많은 책임을 수행하게 된다.
+
+같은 이유로 입력 받는 숫자에 대한 예외 처리는
+게임의 규칙이므로 게임에서 이를 검증해야하지 않을까? 생각하게 되었다.
+
+## 리팩토링 설계
+```mermaid
+sequenceDiagram
+    participant input as Input Console
+    participant output as Output Console
+    participant singlePlayer as 싱글 플레이어 콘솔
+    participant player as <interface><br>플레이어
+    participant app as Applicatoin
+    participant game as <interface><br>숫자 야구 게임
+    participant singleGame as 싱글 숫자 야구 게임
+    participant other as <interface><br>상대 플레이어
+    participant com as 컴퓨터
+    loop is restart
+    loop is 3 strike
+        app ->>+ game: 게임 정보 세팅
+        game ->>+ singleGame: override 게임정보 세팅
+        singleGame ->>+ other: 게임 숫자 입력
+        other->>+ com: override<br>게임 숫자 입력
+        com -->>- singleGame: 게임 숫자 반환
+        app ->>+ game: 게임 시작
+        game ->>+ singleGame: override<br> 게임 시작
+        singleGame ->>+ player: 입력 값 요청
+        player ->>+ singlePlayer: override<br> 입력값 요청
+        singlePlayer ->>+ input: 입력값 요청
+        input -->>- singleGame: 입력 값 반환
+        singleGame -->> singleGame: 입력값 검증
+        singleGame ->>+ other: 입력값 확인 요청
+        other ->>+ com: override<br> 입력값 확인 요청
+        com -->>- singleGame: 힌트 반환
+        singleGame -->> singleGame: 힌트 체크
+        singleGame -->> player: 힌트 출력
+        player -->> singlePlayer: override<br> 힌트 출력
+        singlePlayer-->> output: 힌트 출력
+        singleGame -->> player: 게임 종료
+        player -->> singlePlayer: 게임 종료
+        singlePlayer -->> output: 게임 종료
+        singleGame -->>-app: 반환
+    end
+    app ->> app: 게임 종료 or 재시작
+    end
+```
