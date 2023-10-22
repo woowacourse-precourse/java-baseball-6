@@ -32,11 +32,11 @@ public class Application {
         while (true) {
             String guess = getGuessNumber();
             player.enterGuess(Count.provideCount(guess));
-//            String gameResult = computer.judgeGameResult(player.getGuess());
-//            logger.info(gameResult);
-//            if (gameOver(gameResult)) {
-//                break;
-//            }
+            String gameResult = computer.judgeGameResult(player.getGuess());
+            logger.info(gameResult);
+            if (gameOver(gameResult)) {
+                break;
+            }
         }
     }
 

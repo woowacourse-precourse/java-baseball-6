@@ -28,4 +28,48 @@ public class Computer {
 
         return sb.toString();
     }
+
+    public String judgeGameResult(Count guess) {
+        String guessNumber = guess.toString();
+        String answerNumber = answer.toString();
+        StringBuilder gameResult = new StringBuilder();
+        gameResult.append(isBall(guessNumber, answerNumber)).append(" ");
+        gameResult.append(isStrike(guessNumber, answerNumber)).append(" ");
+        gameResult.append(isNothing(gameResult.toString()));
+        return gameResult.toString().trim();
+    }
+
+    private String isStrike(String guessNumber, String answerNumber) {
+        int count =0;
+        for (int i = 0; i < guessNumber.length(); i++) {
+            if(guessNumber.charAt(i) == answerNumber.charAt(i)){
+                count++;
+            }
+        }
+        return count + "스트라이크";
+    }
+
+    private String isBall(String guessNumber, String answerNumber){
+        int count =0;
+        for (int i = 0; i < guessNumber.length(); i++) {
+            count = isPresentOtherDigit(guessNumber, answerNumber, i)? count+1 : count;
+        }
+        return count + "볼";
+    }
+
+    private String isNothing(String result){
+        return (result.isEmpty()) ? "낫싱 ": "";
+    }
+
+    private static boolean isPresentOtherDigit(String guessNumber, String answerNumber, int i) {
+        for(int j = 0; j< answerNumber.length(); j++){
+            if(i == j){
+                continue;
+            }
+            if(guessNumber.charAt(i) == answerNumber.charAt(j)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
