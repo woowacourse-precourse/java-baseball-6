@@ -1,6 +1,7 @@
 package baseball.view;
 
-import baseball.util.Err;
+import baseball.domain.GameStatus;
+import baseball.util.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -21,20 +22,13 @@ public class InputView {
                 .toList();
     }
 
-    public boolean inputGameAction() {
+    public GameStatus inputGameStatus() {
         outputView.printGameSuccessMessage();
         outputView.printGameActionMessage();
 
         String input = readLine();
         InputValidator.validateNumericInput(input);
-
-        if ("1".equals(input)) {
-            return true;
-        }
-        if ("2".equals(input)) {
-            return false;
-        }
-        throw new IllegalArgumentException(Err.ERROR_GAME_ACTION_INPUT_MESSAGE.getMessage());
+        return GameStatus.of(input);
     }
 
     private String readLine() {

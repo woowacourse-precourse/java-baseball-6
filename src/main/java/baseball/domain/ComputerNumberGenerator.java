@@ -1,23 +1,24 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomComputerThreeNumbersGenerator {
-    private int createNumber() {
-        return Randoms.pickNumberInRange(1, 9);
+public class ComputerThreeNumbersGenerator {
+    private final NumberGenerator numberGenerator;
+
+    public ComputerThreeNumbersGenerator(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
     }
 
-    public List<Integer> createOtherThreeNumbers() {
+    public Computer createOtherThreeNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
-            int randomNumber = createNumber();
+            int randomNumber = numberGenerator.createRandomNumber();
             if (hasNotDuplicationNumber(numbers, randomNumber)) {
                 numbers.add(randomNumber);
             }
         }
-        return numbers;
+        return new Computer(numbers);
     }
 
     private boolean hasNotDuplicationNumber(List<Integer> numbers, int randomNumber) {
