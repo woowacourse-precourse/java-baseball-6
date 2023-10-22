@@ -39,11 +39,9 @@ final class Digits {
     }
 
     int countStrike(Digits target) {
-        int strikeCount = 0;
-        for (int i = 0; i < target.digits.size(); i++) {
-            if (digits.get(i).equals(target.digits.get(i))) strikeCount++;
-        }
-        return strikeCount;
+        return (int) IntStream.range(0, target.digits.size())
+                .filter(i -> isSameDigitAndSamePosition(i, target.digits.get(i)))
+                .count();
     }
 
     private boolean isDigitsContains(Digit digit) {
@@ -52,6 +50,10 @@ final class Digits {
 
     private boolean isDifferentPosition(int index, Digit digit) {
         return !digits.get(index).equals(digit);
+    }
+
+    private boolean isSameDigitAndSamePosition(int index, Digit digit) {
+        return digits.get(index).equals(digit);
     }
 
 }
