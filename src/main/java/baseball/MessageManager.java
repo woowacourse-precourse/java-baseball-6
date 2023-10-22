@@ -9,7 +9,7 @@ public class MessageManager {
         System.out.println(messages.getString("starting.message"));
     }
     public static void getInputMessage() {
-        System.out.println(messages.getString("input.message"));
+        System.out.printf(messages.getString("input.message"));
     }
     public static void getEndingMessage() {
         System.out.println(messages.getString("ending.message"));
