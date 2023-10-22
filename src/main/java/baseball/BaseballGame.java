@@ -24,7 +24,7 @@ public class BaseballGame {
         Referee referee = new Referee();
         do {
             outputView.input();
-            String playerNumbers = inputView.inputNumbers();
+            String playerNumbers = inputView.input();
             gameResult = referee.judge(computerNumbers, playerNumbers);
             gameResult.result();
         } while (!gameResult.isWin());
@@ -59,6 +59,6 @@ public class BaseballGame {
     }
 
     private boolean isRetry() {
-        return inputView.inputGameSelect().equals("2");
+        return inputView.input().equals("2");
     }
 }
