@@ -12,11 +12,11 @@
 
 ### 브랜치 & PR
 
-> feature/#{issue-number}-{feature-name}
+> #{branch-number}-{feature-name}
 
 - {feature-name}은 기능요약을 적는다.
 - 메인 기준으로 배포 진행
-- 이슈 기준으로 각 브랜치 생성
+- branch number는 1부터 시작하여 직전 브랜치 번호를 기준으로 각 브랜치 생성
 - develop 브랜치로 각 피쳐브랜치 PR / 스쿼시 머지로 진행한다.
 
 ### 커밋메세지
