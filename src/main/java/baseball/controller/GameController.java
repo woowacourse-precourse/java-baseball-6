@@ -9,6 +9,7 @@ import baseball.model.Opponent;
 import baseball.model.UserNumbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
 
 public class GameController {
 
@@ -45,6 +46,7 @@ public class GameController {
 
     private UserNumbers getUserNumbers() {
         UserNumbersDto userNumbersDto = new UserNumbersDto(inputView.getUserInput());
-        return userNumbersDto.toUserNumbers();
+        List<String> stringNumbers = userNumbersDto.toStringNumbers();
+        return UserNumbers.createUserNumbers(stringNumbers);
     }
 }

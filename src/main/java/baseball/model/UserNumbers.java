@@ -14,10 +14,21 @@ public class UserNumbers {
         this.userNumbers = userNumbers;
     }
 
-    public static UserNumbers createUserNumbers(final List<Integer> numbers) {
+    public static UserNumbers createUserNumbers(final List<String> stringNumbers) {
+        List<Integer> numbers = parseNumbersToInteger(stringNumbers);
         validateNumbersSize(numbers);
         validateDuplicate(numbers);
         return new UserNumbers(numbers);
+    }
+
+    private static List<Integer> parseNumbersToInteger(final List<String> stringNumbers) {
+        try {
+            return stringNumbers.stream()
+                .map(Integer::parseInt)
+                .toList();
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void validateDuplicate(final List<Integer> inputNumbers) {

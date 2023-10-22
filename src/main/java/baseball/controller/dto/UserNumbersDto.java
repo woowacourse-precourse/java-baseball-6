@@ -1,6 +1,5 @@
 package baseball.controller.dto;
 
-import baseball.model.UserNumbers;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,11 +13,8 @@ public class UserNumbersDto {
         this.userNumbers = userNumbers;
     }
 
-    public UserNumbers toUserNumbers() {
-        List<Integer> numbers = Arrays.stream(userNumbers.split(NUMBERS_SPLITTER))
-            .map(Integer::parseInt)
+    public List<String> toStringNumbers() {
+        return Arrays.stream(userNumbers.split(NUMBERS_SPLITTER))
             .toList();
-
-        return UserNumbers.createUserNumbers(numbers);
     }
 }
