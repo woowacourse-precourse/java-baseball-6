@@ -15,13 +15,13 @@ public class Application {
             // computer의 랜덤 숫자를 생성하는 함수 실행 + List에 값 저장
             List<Integer> computerNumbers = createComputerNumbers();
             //System.out.println(transInput(Console.readLine()));
-            System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> userNumbers = transInput(Console.readLine());
-            int strike = countStrike(computerNumbers, userNumbers);
-            int ball = countBall(computerNumbers, userNumbers);
-            System.out.println(strike);
-            System.out.println(ball);
-            //play(computerNumbers);
+            //System.out.print("숫자를 입력해주세요 : ");
+            //List<Integer> userNumbers = transInput(Console.readLine());
+            //int strike = countStrike(computerNumbers, userNumbers);
+            //int ball = countBall(computerNumbers, userNumbers);
+            //System.out.println(strike);
+            //System.out.println(ball);
+            play(computerNumbers);
             // 게임 종료 후 재시작 선택
             //if (!choiceRestart()) break;
         }
@@ -83,5 +83,27 @@ public class Application {
             if (computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i))) ball++;
         }
         return ball;
+    }
+
+    // 야구 게임 진행 함수
+    private static void play(List<Integer> computerNumbers){
+        while(true){
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> userNumbers = transInput(Console.readLine());
+            int strike = countStrike(computerNumbers, userNumbers);
+            int ball = countBall(computerNumbers, userNumbers);
+
+            // 모든 수를 맞춘 경우 게임 종료
+            if (strike == CNT) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            } else if (strike == 0 && ball == 0) { // strike, ball 개수가 모두 0인 경우
+                System.out.println("낫싱");
+            } else { // 각 개수 출력
+                if (ball > 0) System.out.print(ball + "볼 ");
+                if (strike > 0) System.out.print(strike + "스트라이크");
+                System.out.println();
+            }
+        }
     }
 }
