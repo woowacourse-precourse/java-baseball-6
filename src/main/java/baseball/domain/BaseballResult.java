@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.domain;
 
 import baseball.utils.ErrorMessages;
 import java.util.Arrays;
@@ -7,8 +7,8 @@ import java.util.function.BiPredicate;
 public enum BaseballResult {
     BALL_STRIKE("{0}볼 {1}스트라이크", (ball, strike) -> ball > 0 && strike > 0),
     BALL("{0}볼", (ball, strike) -> ball > 0 && strike == 0),
-    ALL_STRIKE("{0]스트라이크", (ball, strike) -> ball == 0 && strike == 3),
-    STRIKE("{0]스트라이크", (ball, strike) -> ball == 0 && strike > 0),
+    ALL_STRIKE("{1}스트라이크", (ball, strike) -> ball == 0 && strike == 3),
+    STRIKE("{1}스트라이크", (ball, strike) -> ball == 0 && strike > 0),
     NOTHING("낫싱", (ball, strike) -> ball == 0 && strike == 0),
     ;
 
