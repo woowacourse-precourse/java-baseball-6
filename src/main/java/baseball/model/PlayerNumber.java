@@ -1,13 +1,13 @@
 package baseball.model;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-
+import static constant.MessageList.*;
 public class PlayerNumber {
     // TODO: 사용자 서로 다른 3자리 수 입력시 예외사항 처리
-    private static final int MIN_RANGE_NUM = 1;
-    private static final int MAX_RANGE_NUM = 9;
     private String playerNum;
 
     public PlayerNumber(String playerNum){
@@ -15,6 +15,16 @@ public class PlayerNumber {
             this.playerNum = playerNum;
         }
     }
+
+    public List<Integer> getPlayerNum(){
+        List<Integer> playerNum_array = new ArrayList<>();
+        for (int i=0; i<3; i++){
+            int tmp = playerNum.charAt(i);
+            playerNum_array.add(tmp);
+        }
+        return playerNum_array;
+    }
+
 
     public boolean validateLength(String playerNum_str){
         if (playerNum_str.length() != 3){

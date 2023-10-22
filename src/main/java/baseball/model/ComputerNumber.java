@@ -6,6 +6,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerNumber {
     // TODO: 상대방(컴퓨터) 랜덤값 생성
+    private final List<Integer> computerNum;
+    public ComputerNumber(){
+        this.computerNum = generateComputerNumber();
+    }
+    public List<Integer> getComputerNum(){
+        return computerNum;
+    }
     public List<Integer> generateComputerNumber(){
 
         List<Integer> computer = new ArrayList<>();
