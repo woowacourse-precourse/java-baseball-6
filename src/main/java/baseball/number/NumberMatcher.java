@@ -1,26 +1,28 @@
 package baseball.number;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NumberMatcher {
 
-    private static final int MIN_VALID_NUMBER = 100;
-    private static final int MAX_VALID_NUMBER = 999;
-    private static final int NUMBER_LENGTH = 3;
-
     /**
      * 숫자 매칭
      * @param computer
      * @return
      */
-    public static String numberMatcherResult(List<Integer> computer) {
-        List<Integer> userInputList = getUserInputAsList();
+    public static String numberMatcherResult(
+            List<Integer> computer,
+            int startInclusive,
+            int endInclusive,
+            int count
+    ) {
+        List<Integer> userInputList = getUserInputAsList(startInclusive, endInclusive, count);
 
-        int strikeCount = countStrikes(userInputList, computer);
-        int ballCount = countBalls(userInputList, computer);
+        int strikeCount = countStrikes(userInputList, computer, count);
+        int ballCount = countBalls(userInputList, computer, count);
 
         return formatResult(strikeCount, ballCount);
     }
@@ -29,24 +31,32 @@ public class NumberMatcher {
      * 사용자가 입력한 숫자를 List로 반환
      * @return
      */
-    private static List<Integer> getUserInputAsList() {
-        int inputNumber = readValidUserInput();
+    private static List<Integer> getUserInputAsList(
+            int startInclusive,
+            int endInclusive,
+            int count
+    ) {
+        int inputNumber = readValidUserInput(startInclusive, endInclusive, count);
         return convertNumberToList(inputNumber);
     }
 
     /**
-     * 유효한 사용자 입력을 int로 반환
+     * 유효한 사용자 입력을 int 반환
      * @return
      */
-    private static int readValidUserInput() {
+    private static int readValidUserInput(
+            int startInclusive,
+            int endInclusive,
+            int count
+    ) {
         int inputNumber = 0;
         try {
             inputNumber = Integer.parseInt(Console.readLine());
-            if (!isValidNumber(inputNumber)) {
-                throw new IllegalArgumentException();
+            if (!isValidNumber(inputNumber, startInclusive, endInclusive, count)) {
+                throw new IllegalArgumentException("입력한 숫자는 범위 내에 있지 않거나 최소값 혹은 최대값 범위를 벗어났습니다.");
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
         return inputNumber;
     }
@@ -72,9 +82,9 @@ public class NumberMatcher {
      * @param computer
      * @return
      */
-    private static int countStrikes(List<Integer> userInput, List<Integer> computer) {
+    private static int countStrikes(List<Integer> userInput, List<Integer> computer, int numberLength) {
         int count = 0;
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
+        for (int i = 0; i < numberLength; i++) {
             if (userInput.get(i).equals(computer.get(i))) {
                 count++;
             }
@@ -89,9 +99,9 @@ public class NumberMatcher {
      * @param computer
      * @return
      */
-    private static int countBalls(List<Integer> userInput, List<Integer> computer) {
+    private static int countBalls(List<Integer> userInput, List<Integer> computer, int numberLength) {
         int count = 0;
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
+        for (int i = 0; i < numberLength; i++) {
             if (!userInput.get(i).equals(computer.get(i)) && computer.contains(userInput.get(i))) {
                 count++;
             }
@@ -117,8 +127,18 @@ public class NumberMatcher {
      * @param number
      * @return
      */
-    public static boolean isValidNumber(int number) {
-        return number >= MIN_VALID_NUMBER && number <= MAX_VALID_NUMBER && isAllDigitsBetween1And9(number);
+    public static boolean isValidNumber(
+            int number,
+            int startInclusive,
+            int endInclusive,
+            int count
+    ) {
+        // 1: 1 ~ 9
+        // 2: 10 ~ 99
+        // 3: 100 ~ 999
+        int minValue = calculateMinValue(count);
+        int maxValue = calculateMaxValue(count);
+        return number >= minValue && number <= maxValue && isAllDigitsBetween(number, startInclusive, endInclusive);
     }
 
     /**
@@ -126,15 +146,36 @@ public class NumberMatcher {
      * @param number
      * @return
      */
-    public static boolean isAllDigitsBetween1And9(int number) {
+    public static boolean isAllDigitsBetween(int number, int min, int max) {
         while (number > 0) {
             int digit = number % 10;
-            if (digit < 1 || digit > 9) {
+            if (digit < min || digit > max) {
                 return false;
             }
             number /= 10;
         }
         return true;
+    }
+
+    /**
+     * 자릿수의 최소값을 반환
+     * @param digits
+     * @return
+     */
+    public static int calculateMinValue(int digits) {
+        if (digits == 1) {
+            return 1;
+        }
+        return (int) Math.pow(10, digits - 1);
+    }
+
+    /**
+     * 자릿수의 최대값을 반환
+     * @param digits
+     * @return
+     */
+    public static int calculateMaxValue(int digits) {
+        return (int) Math.pow(10, digits) - 1;
     }
 }
 
