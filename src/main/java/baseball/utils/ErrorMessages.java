@@ -7,4 +7,6 @@ public class ErrorMessages {
 
     public static final String NOT_MATCH_BASEBALL_RESULT = "[ERROR] 일치하는 결과값이 없습니다.";
     public static final String NOT_INVALID_RETRY_INPUT = "[ERROR] 재시작: 1, 종료:2 를 입력해야 합니다.";
+
+    public static final String NOT_INTEGER = "[ERROR] 숫자가 아닙니다.";
 }
