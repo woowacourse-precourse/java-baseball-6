@@ -13,4 +13,14 @@ public class Validator {
         }
         return true;
     }
+
+    public static boolean isBetweenNumber(final String target, final int min, final int max) {
+        for (char c : target.toCharArray()) {
+            int number = Character.getNumericValue(c);
+            if ((number < min) && (number > max)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
