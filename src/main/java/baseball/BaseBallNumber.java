@@ -10,16 +10,16 @@ public class BaseBallNumber {
         this.baseballNumber = baseballNumber;
     }
 
-    public Integer getNumberByIndex(int index) {
+    private Integer getNumberByIndex(int index) {
         return baseballNumber.get(index);
     }
 
-    public boolean checkStrike(Integer userNumber, int index) {
+    private boolean checkStrike(Integer userNumber, int index) {
         Integer answerNumber = getNumberByIndex(index);
         return answerNumber.equals(userNumber);
     }
 
-    public boolean checkBall(Integer userNumber, int index) {
+    private boolean checkBall(Integer userNumber, int index) {
         if (checkStrike(userNumber, index)) {
             return false;
         }
