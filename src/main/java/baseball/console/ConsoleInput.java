@@ -25,8 +25,8 @@ public class ConsoleInput {
 		String removedBlankString = removeBlank(inputString);
 		validateIntegerInput(removedBlankString);
 		validateIntegerLength(removedBlankString, 3);
-		validateDuplicatedNumber(removedBlankString);
 		validateNotZero(removedBlankString);
+		validateDuplicatedNumber(removedBlankString);
 	}
 
 	public void checkResumeInputFormat(String inputString) throws IllegalArgumentException {
