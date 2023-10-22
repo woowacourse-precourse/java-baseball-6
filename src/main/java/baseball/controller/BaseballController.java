@@ -27,7 +27,7 @@ public class BaseballController {
     }
 
     private void playBaseballGame(BaseballNumber computerBaseballNumber) {
-        BaseballScore resultScore = new BaseballScore(0, 0);
+        BaseballScore resultScore = new BaseballScore();
         while (!resultScore.isStrikeThree()) {
             BaseballNumber userBaseballNumber = baseballService.initializeUserNumber(
                     BaseballInputView.readUserNumber());
