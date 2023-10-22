@@ -9,14 +9,17 @@ public class ResultMapper {
     private static final String BALL = "볼";
     private static final String BLANK = " ";
 
-    public String makeResult(final int ballCount, final int strikeCount) {
+    private ResultMapper() {
+    }
+
+    public static String mapToStringWith(final int ballCount, final int strikeCount) {
         if (isNothing(ballCount, strikeCount)) {
             return NOTHING;
         }
         return ballCount + BALL + BLANK + strikeCount + STRIKE;
     }
 
-    private boolean isNothing(final int ballCount, final int strikeCount) {
+    private static boolean isNothing(final int ballCount, final int strikeCount) {
         return ballCount == NO_BALL && strikeCount == NO_STRIKE;
     }
 }
