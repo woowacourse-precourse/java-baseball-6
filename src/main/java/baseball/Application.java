@@ -25,6 +25,21 @@ public class Application {
 
         String gameStatus = "";
         while(!gameStatus.equals("2")) { // 게임이 끝난 후, 2를 입력받으면 종료
+
+            /**
+             * 게임 재시작시 새로운 3개의 숫자를 생성
+             */
+            if(gameStatus.equals("1")) {
+                computer = new ArrayList<>();
+                while (computer.size() < 3) {
+                    int randomNumber = Randoms.pickNumberInRange(1, 9);
+                    if (!computer.contains(randomNumber)) {
+                        computer.add(randomNumber);
+                    }
+                }
+                gameStatus = "";
+            }
+
             /**
              * 사용자의 입력을 받기
              */
