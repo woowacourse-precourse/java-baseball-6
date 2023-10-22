@@ -5,13 +5,17 @@ import static baseball.Constants.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.*;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
-
 
 public class NumberBaseballGame {
     List<Integer> computerNumber;
+    private final Validator validator;
+
+    NumberBaseballGame() {
+        this.validator = new Validator();
+    }
 
     public void start() {
         showStartMessage();
@@ -51,7 +55,7 @@ public class NumberBaseballGame {
     private List<Integer> userNumberInput() {
         showNumberInputMessage();
         String inputString = Console.readLine();
-        validateInput(inputString);
+        validator.numberInput(inputString);
 
         return inputString.chars()
                 .map(Character::getNumericValue)
@@ -59,19 +63,6 @@ public class NumberBaseballGame {
                 .collect(Collectors.toList());
     }
 
-    void validateInput(String inputString) throws IllegalArgumentException {
-        if (!Pattern.matches(INPUT_REGEX, inputString) || !hasUniqueNumber(inputString)) {
-            throw new IllegalArgumentException(ERROR_INVALID_INPUT + inputString);
-        }
-    }
-
-    private boolean hasUniqueNumber(String inputString) {
-        Set<Character> set = new HashSet<>();
-        for (char s : inputString.toCharArray()) {
-            set.add(s);
-        }
-        return set.size() == MAX_NUMBER_LENGTH;
-    }
 
     boolean isUserWin(int strike) {
         return strike == MAX_NUMBER_LENGTH;
@@ -100,13 +91,7 @@ public class NumberBaseballGame {
     private boolean getContinueInput() {
         showGameContinueInputMessage();
         String inputContinue = Console.readLine();
-        validateContinueInput(inputContinue);
+        validator.continueInput(inputContinue);
         return inputContinue.equals(CONTINUE);
-    }
-
-    void validateContinueInput(String inputContinue) throws IllegalArgumentException {
-        if (!inputContinue.equals(CONTINUE) && !inputContinue.equals(Constants.STOP)) {
-            throw new IllegalArgumentException(ERROR_INVALID_CONTINUE_INPUT);
-        }
     }
 }

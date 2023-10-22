@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class NumberBaseballGameTest {
     private final NumberBaseballGame numberBaseballGame = new NumberBaseballGame();
+    private final Validator validator = new Validator();
 
     @Test
     public void 숫자_정답시_true_반환_테스트() {
@@ -44,7 +45,7 @@ public class NumberBaseballGameTest {
     void 숫자_입력_예외발생_테스트_0입력() {
         String invalidInput = "012";
         assertThatThrownBy(() -> {
-            numberBaseballGame.validateInput(invalidInput);
+            validator.numberInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -52,7 +53,7 @@ public class NumberBaseballGameTest {
     void 숫자_입력_예외발생_테스트_문자() {
         String invalidInput = "dqe";
         assertThatThrownBy(() -> {
-            numberBaseballGame.validateInput(invalidInput);
+            validator.numberInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -60,7 +61,7 @@ public class NumberBaseballGameTest {
     void 숫자_입력_예외발생_테스트_3자리_이상() {
         String invalidInput = "3125";
         assertThatThrownBy(() -> {
-            numberBaseballGame.validateInput(invalidInput);
+            validator.numberInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -68,7 +69,7 @@ public class NumberBaseballGameTest {
     void 숫자_입력_예외발생_테스트_중복() {
         String invalidInput = "114";
         assertThatThrownBy(() -> {
-            numberBaseballGame.validateInput(invalidInput);
+            validator.numberInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -76,7 +77,7 @@ public class NumberBaseballGameTest {
     void 재시작_입력_예외발생_테스트_3입력() {
         String invalidInput = "3";
         assertThatThrownBy(() -> {
-            numberBaseballGame.validateContinueInput(invalidInput);
+            validator.continueInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -84,7 +85,7 @@ public class NumberBaseballGameTest {
     void 재시작_입력_예외발생_테스트_빈칸입력() {
         String invalidInput = "";
         assertThatThrownBy(() -> {
-            numberBaseballGame.validateContinueInput(invalidInput);
+            validator.continueInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -92,7 +93,7 @@ public class NumberBaseballGameTest {
     void 재시작_입력_예외발생_테스트_문자() {
         String invalidInput = "ㅇ";
         assertThatThrownBy(() -> {
-            numberBaseballGame.validateContinueInput(invalidInput);
+            validator.continueInput(invalidInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
