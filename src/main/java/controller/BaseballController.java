@@ -27,12 +27,14 @@ public class BaseballController {
     public static void startBaseball() {
         StartView.startView();
         List<Integer> answer = CreateRandomNumber.createRandomNumber();
-        List<Integer> userInput = InputView.userInput();
 
-        List<Integer> result = Result.getResult(answer, userInput);
-        ResultView.resultView(result);
+        while (true) {
+            List<Integer> userInput = InputView.userInput();
+            List<Integer> result = Result.getResult(answer, userInput);
+            if (ResultView.resultView(result)) {
+                break;
+            }
 
+        }
     }
-
-
 }
