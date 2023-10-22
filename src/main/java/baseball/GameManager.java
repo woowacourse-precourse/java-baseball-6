@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.ArrayList;
+
 public class GameManager {
     private MessageManager messageManager = new MessageManager();
     private Data data = new Data();
@@ -7,10 +9,12 @@ public class GameManager {
 
     public void proceedIntro() {
         messageManager.showIntro();
+//        data.setRandomNumberList(new ArrayList<>());
+        data = new Data();
     }
 
     public void proceedMainGame() {
-        while (!gameProcessor.validateCompleteAnswer(data)) {
+        while (!data.getIsCompleteAnswer()) {
             try {
                 data.setUserAnswerNumber(messageManager.getUserAnswerNumber());
 
@@ -26,19 +30,25 @@ public class GameManager {
         }
     }
 
-    public boolean validateCompleteAnswer() {
+    public boolean validateAnswerComplete() {
         return gameProcessor.validateCompleteAnswer(data);
     }
 
     public void proceedOutro() {
-        messageManager.getUserContinueResponse();
-        data.setWillRestartResponse(messageManager.getWillRestartMessage());
+        if (validateAnswerComplete()) {
+            System.out.println(messageManager.getOutroMessage());
+        }
+
+        if (validateRestart()) {
+            String continueResponse = messageManager.getUserContinueResponse();
+            data.setWillRestartResponse(continueResponse);
+        }
     }
 
     public boolean validateRestart() {
-        boolean restart = false;
-        if (messageManager.getWillRestartMessage().equals("1")) {
-            restart = true;
+        boolean restart = true;
+        if (data.getWillRestartResponse().equals("2")) {
+            restart = false;
         }
         return restart;
     }
