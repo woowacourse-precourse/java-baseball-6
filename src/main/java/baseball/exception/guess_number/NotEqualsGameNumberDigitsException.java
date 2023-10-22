@@ -1,6 +1,6 @@
 package baseball.exception.guess_number;
 
-import static baseball.constant.Constant.BASEBALL_GAME_NUMBER_DIGIT;
+import static baseball.util.Constant.BASEBALL_GAME_NUMBER_DIGIT;
 
 public class NotEqualsGameNumberDigitsException extends IllegalArgumentException {
 

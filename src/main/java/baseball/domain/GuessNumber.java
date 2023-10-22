@@ -1,8 +1,8 @@
 package baseball.domain;
 
-import static baseball.constant.Constant.BASEBALL_GAME_NUMBER_DIGIT;
-import static baseball.constant.Constant.END_INCLUSIVE;
-import static baseball.constant.Constant.START_INCLUSIVE;
+import static baseball.util.Constant.BASEBALL_GAME_NUMBER_DIGIT;
+import static baseball.util.Constant.END_INCLUSIVE;
+import static baseball.util.Constant.START_INCLUSIVE;
 
 import baseball.exception.guess_number.NotEqualsGameNumberDigitsException;
 import baseball.exception.guess_number.NotMatchGameNumberFormatException;

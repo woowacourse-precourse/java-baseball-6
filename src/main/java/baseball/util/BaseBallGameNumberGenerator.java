@@ -1,8 +1,8 @@
 package baseball.util;
 
-import static baseball.constant.Constant.BASEBALL_GAME_NUMBER_DIGIT;
-import static baseball.constant.Constant.END_INCLUSIVE;
-import static baseball.constant.Constant.START_INCLUSIVE;
+import static baseball.util.Constant.BASEBALL_GAME_NUMBER_DIGIT;
+import static baseball.util.Constant.END_INCLUSIVE;
+import static baseball.util.Constant.START_INCLUSIVE;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;

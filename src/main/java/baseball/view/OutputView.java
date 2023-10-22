@@ -1,6 +1,6 @@
 package baseball.view;
 
-import static baseball.constant.Constant.BASEBALL_GAME_NUMBER_DIGIT;
+import static baseball.util.Constant.BASEBALL_GAME_NUMBER_DIGIT;
 
 public class OutputView {
 
