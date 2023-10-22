@@ -2,18 +2,27 @@ package input;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class InputModule {
-    private int[] inputArr;
+    private List<Integer> inputList;
     private int inputInt;
 
     public InputModule() {
-        String[] arr = Console.readLine().split("");
-        inputArr = new int[arr.length];
-        extract_arr(arr);
+        inputList = new ArrayList<>();
+        inputInt = 0;
     }
 
-    public int[] getInputArr() {
-        return inputArr.clone();
+    public List<Integer> getInputList() {
+        return new ArrayList<>(inputList);
+    }
+    public void setInputList(){
+        this.inputList = Arrays.stream(Console.readLine().split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public int getInputInt() {
@@ -22,11 +31,5 @@ public class InputModule {
 
     public void setInputInt(int inputInt) {
         this.inputInt = Integer.parseInt(Console.readLine());
-    }
-
-    private void extract_arr(String[] arr) {
-        for(int i = 0; i < arr.length; i++){
-            inputArr[i] = Integer.parseInt(arr[i]);
-        }
     }
 }
