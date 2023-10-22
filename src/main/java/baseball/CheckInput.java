@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CheckInput {
+    private static final int INPUT_LENGTH = 3;
     public static void validateUserInput(String userInput) {
         validateLength(userInput);
         validateInteger(userInput);
@@ -12,7 +13,7 @@ public class CheckInput {
     }
     
     private static void validateLength(String userInput) {
-        if(userInput.length()!=3){
+        if(userInput.length()!=INPUT_LENGTH){
             throw new IllegalArgumentException();
         }
     }
@@ -32,7 +33,7 @@ public class CheckInput {
         Set<Character> characterSet = userInput.chars()
                 .mapToObj(ch -> (char) ch)
                 .collect(Collectors.toSet());
-        if (characterSet.size()!=3){
+        if (characterSet.size()!=INPUT_LENGTH){
             throw new IllegalArgumentException();
         }
     }
