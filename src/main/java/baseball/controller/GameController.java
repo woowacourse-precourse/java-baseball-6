@@ -23,10 +23,14 @@ public class GameController {
     private void playSingleGame() {
         setupGameNumber();
         do {
-            setUserNumber();
-            int[] result = calculateResult();
-            OutputView.printScoreMessage(result[0], result[1]);
+            playSingleRound();
         } while (!isAnswer());
+    }
+
+    private void playSingleRound() {
+        setUserNumber();
+        int[] result = calculateResult();
+        OutputView.printScoreMessage(result[0], result[1]);
     }
 
     private void setupGameNumber() {
