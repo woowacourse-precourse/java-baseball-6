@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class InputView {
     private static final String SEPARATOR = "";
-    public List<Integer> inputNumbers() {
+    public static List<Integer> inputNumbers() {
         System.out.println("숫자를 입력해주세요 : ");
         String numbers = Console.readLine();
         return Arrays.stream(numbers.split(SEPARATOR))
