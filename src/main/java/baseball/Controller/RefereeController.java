@@ -13,24 +13,29 @@ public class RefereeController {
         this.refereeView = refereeView;
     }
 
-    private int[] getQueryDecoding(String queryString) throws IllegalArgumentException {
-        int asciiZero = 48;
-        int[] query = new int[3];
-
-
-        // query의 입력 길이가 3이 아닌 경우의 예외
+    private void validationisThreeLength(String queryString) throws IllegalArgumentException {
         if(queryString.length() != 3) {
             refereeView.displayException(referee.getExceptionMassage());
             throw new IllegalArgumentException();
         }
+    }
+
+    private void validationIsNumber(int n) throws IllegalArgumentException {
+        if(n < 1 || n > 9) {
+            refereeView.displayException(referee.getExceptionMassage());
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private int[] getQueryDecoding(String queryString) {
+        int asciiZero = 48;
+        int[] query = new int[3];
+
+        validationisThreeLength(queryString);
         
         for(int i = 0; i < queryString.length(); ++i) {
             query[i] = queryString.charAt(i) - asciiZero;
-            // query의 입력 값이 1~9의 수가 아닌 경우의 예외
-            if(query[i] < 1 || query[i] > 9) {
-                refereeView.displayException(referee.getExceptionMassage());
-                throw new IllegalArgumentException();
-            }
+            validationIsNumber(query[i]);
         }
 
         return query;

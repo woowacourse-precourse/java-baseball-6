@@ -12,15 +12,15 @@ public class GameController {
         this.gameView = new GameTerminalView();
     }
 
-    private boolean isReStart() throws IllegalArgumentException {
-        String ans = game.getPlayerController().answer();
-        
-        if(ans.equals("1"))
-            return true;
-        if(ans.equals("2"))
-            return false;
-
+    private void validationisOneOrTwo(String answer) throws IllegalArgumentException {
+        if(answer.equals("1") || answer.equals("2")) return;
         throw new IllegalArgumentException();
+    }
+
+    private boolean isReStart() {
+        String answer = game.getPlayerController().answer();
+        validationisOneOrTwo(answer);
+        return answer.equals("1");
     }
 
     public void start() {
@@ -28,7 +28,6 @@ public class GameController {
         while(true) {
             while(!game.getRefereeController().judge(game.getPlayerController().query(), game.getComputer())){}
             gameView.display("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            
             
             if(!isReStart())
                 return;
