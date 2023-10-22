@@ -11,8 +11,12 @@ public class InstanceHandler {
         return new Computer();
     }
 
+    private Validator generateValidator() {
+        return new Validator();
+    }
+
     private Communicator generateCommunicator() {
-        return new Communicator();
+        return new Communicator(generateValidator());
     }
 
     private MenuHandler generateMenuHandler() {
