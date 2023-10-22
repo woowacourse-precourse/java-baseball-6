@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static baseball.util.ValidationChecking.checkRetryInput;
+import java.util.Objects;
 
 public class RetryCheck {
     private final String num;
@@ -12,5 +12,11 @@ public class RetryCheck {
 
     public String getNum() {
         return num;
+    }
+
+    private static void checkRetryInput(String number) {
+        if (!Objects.equals(number, "2") && !Objects.equals(number, "1")) {
+            throw new IllegalArgumentException();
+        }
     }
 }
