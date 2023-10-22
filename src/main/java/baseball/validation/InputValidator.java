@@ -58,10 +58,10 @@ public class InputValidator {
     /*
      * 게임 종료 재시작 여부에 대하여 유효성 검사
      * 매개변수 : 유저에게 입력받은 값
-     * 1, 2 값이 아닌 경우 IllegalArgumentException 발생
+     * NumberConst.RESTART_NUMBER, NumberConst.STOP_NUMBER 값이 아닌 경우 IllegalArgumentException 발생
      */
     public static void validationRestartAndStopValue(int inputValue) {
-        // TODO: 게임 종료 이후 1,2 값만 입력하였는지 유효성 검사
+        // TODO: 게임 종료 이후 NumberConst.RESTART_NUMBER, NumberConst.STOP_NUMBER 값만 입력하였는지 유효성 검사
         if (inputValue != 1 && inputValue != 2) {
             MessageUtil.printInvalidGameControlInput();
             throw new IllegalArgumentException();
@@ -111,9 +111,9 @@ public class InputValidator {
     }
 
     /*
-     * 입력받은 값이 1부터 9사이만 존재하는지 유효성 검사
+     * 입력받은 값이 NumberConst.MIN_INPUT_VALUE 부터 NumberConst.MAX_INPUT_VALUE 사이만 존재하는지 유효성 검사
      * 매개변수 : 유저에게 입력받은 값
-     * 1부터 9사이 값이 아닌 경우 IllegalArgumentException 발생
+     * NumberConst.MIN_INPUT_VALUE 부터 NumberConst.MAX_INPUT_VALUE 사이 값이 아닌 경우 IllegalArgumentException 발생
      */
     private static void validateInputIsOneToNine(List<Integer> inputValue) {
         // TODO: 입력받은 값이 VALIDATION_MIN_VALUE 부터 VALIDATION_MAX_VALUE 사이 존재 하는지 유효성 검사

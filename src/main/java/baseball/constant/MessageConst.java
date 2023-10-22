@@ -12,6 +12,6 @@ public class MessageConst {
     public static final String INVALID_INPUT_LENGTH_MESSAGE = "유효하지 않은 숫자 길이입니다.";
     public static final String INVALID_INPUT_DUPLICATE_NUMBER_MESSAGE = "중복된 숫자가 있습니다.";
     public static final String INVALID_INPUT_IS_NUMERIC_MESSAGE = "숫자만 입력하세요.";
-    public static final String INVALID_INPUT_RANGE_MESSAGE = NumberConst.MIN_INPUT_VALUE+ "부터 " + NumberConst.MAX_INPUT_VALUE + "사이의 값만 입력하세요.";
+    public static final String INVALID_INPUT_RANGE_MESSAGE = NumberConst.MIN_INPUT_VALUE + "부터 " + NumberConst.MAX_INPUT_VALUE + "사이의 값만 입력하세요.";
     public static final String INVALID_RESTART_STOP_VALUE_MESSAGE = "1 또는 2 값을 입력하세요.";
 }

@@ -36,9 +36,9 @@ public class Game {
     private List<Integer> createRandomNumber() {
         // TODO: 랜덤 숫자 생성 (3자리 수)
         List<Integer> randomNumbers = new ArrayList<>();
-        while(randomNumbers.size() < 3) {
+        while (randomNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9); // 1부터 9 랜덤 값 생성
-            if(!randomNumbers.contains(randomNumber)) { // 중복 값이 있는지 확인
+            if (!randomNumbers.contains(randomNumber)) { // 중복 값이 있는지 확인
                 randomNumbers.add(randomNumber); // 중복 값이 없을 경우 List Element 추가
             }
         }
@@ -53,10 +53,10 @@ public class Game {
      */
     private void updateBallAndStrikeCounts(List<Integer> user, List<Integer> computer) {
         // TODO: 입력받은 값과 생성한 랜덤 숫자 비교하여 Ball, Strike 개수 증가
-        for(int i = 0; i < inputLength; i++) {
+        for (int i = 0; i < inputLength; i++) {
             int userNumber = user.get(i);
             int computerNumber = computer.get(i);
-            if(userNumber == computerNumber) {
+            if (userNumber == computerNumber) {
                 countStrike++;
                 continue;
             }

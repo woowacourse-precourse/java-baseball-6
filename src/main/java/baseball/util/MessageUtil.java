@@ -1,11 +1,11 @@
 package baseball.util;
 
-    import baseball.constant.MessageConst;
+import baseball.constant.MessageConst;
 
 public class MessageUtil {
     private static final String startMessage = MessageConst.START_MESSAGE;
     private static final String inputNumberMessage = MessageConst.INPUT_NUMBER_MESSAGE;
-    private static final String successGameMessage =  MessageConst.SUCCESS_GAME_MESSAGE;
+    private static final String successGameMessage = MessageConst.SUCCESS_GAME_MESSAGE;
     private static final String gameControlMessage = MessageConst.GAME_CONTROL_MESSAGE;
     private static final String ballMessage = MessageConst.BALL_MESSAGE;
     private static final String strikeMessage = MessageConst.STRIKE_MESSAGE;
@@ -48,7 +48,7 @@ public class MessageUtil {
     public void printResultGame(int countBall, int countStrike) {
         StringBuilder result = new StringBuilder("");
 
-        if(countBall == 0 && countStrike == 0) {
+        if (countBall == 0 && countStrike == 0) {
             result.append(nothingMessage);
         }
         if (countBall != 0) {
@@ -86,14 +86,14 @@ public class MessageUtil {
     }
 
     /*
-     * 1부터 9사이 값이 입력되지 않았을 경우 메시지 출력
+     * NumberConst.MIN_INPUT_VALUE 부터 NumberConst.MAX_INPUT_VALUE 사이 값이 입력되지 않았을 경우 메시지 출력
      */
     public void printInvalidRange() {
         System.out.println(invalidInputRangeMessage);
     }
 
     /*
-     * 게임 종료 이후 1,2 값이 아닌 경우 메시지 출력
+     * 게임 종료 이후 NumberConst.RESTART_NUMBER, NumberConst.STOP_NUMBER 값이 아닌 경우 메시지 출력
      */
     public void printInvalidGameControlInput() {
         System.out.println(invalidRestartStopValueMessage);
