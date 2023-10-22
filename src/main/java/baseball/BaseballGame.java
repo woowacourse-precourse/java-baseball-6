@@ -15,8 +15,8 @@ public class BaseballGame {
         printGameStart();
         do {
             playGame();
-            userEndOption = inputGameEnd();
-        }while(!checkGameEnd(userEndOption));
+            userEndOption = inputEndOption();
+        }while(!isGameEnd(userEndOption));
 
     }
 
@@ -43,7 +43,6 @@ public class BaseballGame {
         while (randomNumList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomNumList.contains(randomNumber)) {
-                System.out.println(randomNumber);
                 randomNumList.add(randomNumber);
             }
         }
@@ -152,15 +151,15 @@ public class BaseballGame {
         printWinGame(resultList);
     }
 
-    private int inputGameEnd(){
+    private int inputEndOption(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String endOptionInputString = Console.readLine();
-        checkEndForm(endOptionInputString);
+        String endOption = Console.readLine();
+        checkEndOptionForm(endOption);
 
-        return Integer.valueOf(endOptionInputString);
+        return Integer.valueOf(endOption);
     }
 
-    private void checkEndForm(String endOption){
+    private void checkEndOptionForm(String endOption){
         if(!isInteger(endOption)){
             throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
         }
@@ -169,8 +168,8 @@ public class BaseballGame {
         }
     }
 
-    private boolean checkGameEnd(int userChoice){
-        if(userChoice == 2){
+    private boolean isGameEnd(int endOption){
+        if(endOption == 2){
             return true;
         }
         return false;
