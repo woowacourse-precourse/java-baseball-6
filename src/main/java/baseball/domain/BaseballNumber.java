@@ -20,7 +20,7 @@ public class BaseballNumber {
         List<Integer> computerNumberList = computerNumber.number;
         List<Integer> userNumberList = userNumber.number;
         baseballScore.addStrikeCount(Util.countSameValueSameIdxByIntegerLists(computerNumberList, userNumberList));
-        baseballScore.addBallCount(Util.countSameValueDifferentIdxByIntegerList(computerNumberList, userNumberList));
+        baseballScore.addBallCount(Util.countSameValueDifferentIdxByIntegerLists(computerNumberList, userNumberList));
         return baseballScore;
     }
 }
