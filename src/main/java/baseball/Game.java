@@ -60,9 +60,22 @@ public class Game {
                 ballCnt++;
             }
         }
+        printGameResult(ballCnt, strikeCnt);
 
         return strikeCnt == 3; // 3스트라이크이면 true를 return
     }
 
-
+    private void printGameResult(int ballCnt, int strikeCnt) {
+        String message = "";
+        if (ballCnt > 0 && strikeCnt > 0) {
+            message = ballCnt + "볼 " + strikeCnt + "스트라이크";
+        } else if (ballCnt > 0) {
+            message = ballCnt + "볼";
+        } else if (strikeCnt > 0) {
+            message = strikeCnt + "스트라이크";
+        } else {
+            message = "낫싱";
+        }
+        System.out.println(message);
+    }
 }
