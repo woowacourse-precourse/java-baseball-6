@@ -12,7 +12,7 @@ public class DataControllerTest {
 
     private DataController dataController = new DataController() {
         @Override
-        public List<String> readValues() {
+        protected List<String> readPlayerInputValues() {
             return List.of("1", "2", "3");
         }
     };

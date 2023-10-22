@@ -14,14 +14,19 @@ public class DataValidatorTest {
         String overSize = "1234";
         String duplicatedData = "112";
         String notNumber = "as";
-
+        String zeroValue = "012";
+        String gameSystem = "3";
         Assertions.assertAll(
                 () -> Assertions.assertThrows(IllegalArgumentException.class,
                         () -> dataValidator.validateInputNumber(overSize)),
                 () -> Assertions.assertThrows(IllegalArgumentException.class,
                         () -> dataValidator.validateInputNumber(duplicatedData)),
                 () -> Assertions.assertThrows(IllegalArgumentException.class,
-                        () -> dataValidator.validateInputNumber(notNumber))
+                        () -> dataValidator.validateInputNumber(notNumber)),
+                () -> Assertions.assertThrows(IllegalArgumentException.class,
+                        () -> dataValidator.validateInputNumber(zeroValue)),
+                () -> Assertions.assertThrows(IllegalArgumentException.class,
+                () -> dataValidator.validateRetryOrEndGameCommand(gameSystem))
         );
     }
 }
