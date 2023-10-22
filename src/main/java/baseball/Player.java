@@ -15,7 +15,12 @@ public class Player {
         if (input.size() != 3) {
             throw new IllegalArgumentException();
         }
-        return input.stream().map(Integer::parseInt).collect(Collectors.toList());
+        try {
+            return input.stream().map(Integer::parseInt).collect(Collectors.toList());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+
     }
 
     public boolean inputRestartOrEnd() {
