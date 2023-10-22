@@ -41,6 +41,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("1~9 사이의 숫자가 아닐 경우 예외를 발생시킨다.")
+    @Test
+    void insertWrongNumber() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
