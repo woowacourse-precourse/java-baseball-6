@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.GameNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -9,7 +10,11 @@ public class Application {
         outputView.printGameStart();
 
         InputView inputView = new InputView();
-        inputView.getUserGuessingNumbers();
+        String userInputString = inputView.getUserGuessingNumbers();
+
+        GameNumber gameNumber = new GameNumber();
+        gameNumber.setUserInputString(userInputString);
+        System.out.println("userInputString = " + gameNumber.getUserInputString());
 
         outputView.printGameFinish();
     }
