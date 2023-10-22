@@ -12,6 +12,7 @@ public class CheckFinal {
      * ball의 갯수를 반환해주는 메서드 입니다.
      * */
     public int ball(List<Integer> computer, List<Integer> player){
+
         int total = startCompare.countDigit(computer, player);
         int strikeCount = strike.checkStrike(computer, player);
 
@@ -23,6 +24,7 @@ public class CheckFinal {
      * 낫싱, 볼, 스트라이크의 유무를 알려주는 확인 메서드 입니다.
      * */
     public String checkAll(List<Integer> computer, List<Integer> player){
+
         int total = startCompare.countDigit(computer, player);
         int stikeCount = strike.checkStrike(computer, player);
         int ball = ball(computer, player);
