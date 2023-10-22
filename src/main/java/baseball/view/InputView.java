@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class InputView {
 
-    private final static String GET_GAME_NUM = "숫자를 입력해 주세요 : ";
+    private final static String GET_GAME_NUM = "숫자를 입력해주세요 : ";
     private final static String GET_DECISION_NUM = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public List<Integer> getGameNum() {

@@ -16,10 +16,18 @@ public class OutputView {
     }
 
     public void printBallStrike(Result result) {
-        System.out.println(
-                result.getBall() + BALL
-                        + result.getStrike() + STRIKE
-        );
+
+        if (result.getStrike() == 0) {
+            System.out.println(result.getBall() + BALL);
+        } else if (result.getBall() == 0) {
+            System.out.println(result.getStrike() + STRIKE);
+        } else {
+            System.out.println(
+                    result.getBall() + BALL
+                            + result.getStrike() + STRIKE);
+
+        }
+
     }
 
     public void printGameFinish() {
