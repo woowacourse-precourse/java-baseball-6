@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +30,29 @@ public class Game {
         return answer;
     }
 
+    public void playGame() {
+
+    }
+
     public String getInput() {
-        
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine().trim();
+        return input;
     }
 
     public List<Integer> convertStringInputToIntegerList(String stringInput) {
-
+        List<Integer> integerInputList = new ArrayList<>();
+        if (stringInput.length() != 3) {
+            throw new IllegalArgumentException("입력값은 3자리 숫자여야 합니다.");
+        }
+        for (int i = 0; i < stringInput.length(); i++) {
+            int number = stringInput.charAt(i) - '0';
+            if (number <= 0 || number >= 20) {
+                throw new IllegalArgumentException("숫자는 1~9 사이여야 합니다.");
+            }
+            integerInputList.add(number);
+        }
+        return integerInputList;
     }
 
     public void isCorrect() {
