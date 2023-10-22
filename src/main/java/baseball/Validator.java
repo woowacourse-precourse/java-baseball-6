@@ -68,6 +68,19 @@ public class Validator {
         System.out.println(START_MESSAGE);
         game();
     }
+    private void game() {
+        boolean quit = false;
+        initializeRandomNumber();
+        while(!quit) {
+            this.user.setUserInput();
+            checkStrike();
+            checkBall();
+            printResultMessage();
+            if(strikeCount == INPUT_LENGTH) {
+                quit = askRetry();
+            }
+        }
+    }
 
 
 }
