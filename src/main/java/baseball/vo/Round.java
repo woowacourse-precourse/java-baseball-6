@@ -3,10 +3,10 @@ package baseball.vo;
 import baseball.model.Game;
 import baseball.model.Result;
 
-public class GameCycle {
+public class Round {
     private Result result;
 
-    public GameCycle(Game game, Numbers user){
+    public Round(Game game, Numbers user){
         this.result=game.calculateResult(user);
     }
 
@@ -14,7 +14,7 @@ public class GameCycle {
         return result.getResult();
     }
 
-    public boolean isFinish(){
+    public boolean isFinishGame(){
         return result.isThreeStrike();
     }
 

@@ -3,7 +3,7 @@ package baseball.controller;
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import baseball.vo.GameCycle;
+import baseball.vo.Round;
 import baseball.vo.Numbers;
 import baseball.vo.Restart;
 
@@ -24,23 +24,23 @@ public class GameController {
     }
 
     private void startGame(){
-        playGame();
+        startRound();
 
         if(gameService.isRestart(inputRestart())){
             startGame();
         }
     }
 
-    private void playGame(){
-        GameCycle gameCycle=gameService.play(inputUser());
-        outputView.printResult(gameCycle.getResultMessage());
+    private void startRound(){
+        Round round =gameService.playRound(inputUser());
+        outputView.printResult(round.getResultMessage());
 
-        if(gameCycle.isFinish()){
+        if(round.isFinishGame()){
             gameService.finishGame();
             outputView.printFinishGameMessage();
             return;
         }
-        playGame();
+        startRound();
     }
 
     private Numbers inputUser(){

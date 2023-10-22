@@ -1,16 +1,16 @@
 package baseball.service;
 
 import baseball.model.Game;
-import baseball.vo.GameCycle;
+import baseball.vo.Round;
 import baseball.vo.Numbers;
 import baseball.vo.Restart;
 
 public class GameService {
     private Game game;
 
-    public GameCycle play(Numbers user){
+    public Round playRound(Numbers user){
         createGameIfNotPlaying();
-        return new GameCycle(game,user);
+        return new Round(game,user);
     }
 
     private void createGameIfNotPlaying(){
