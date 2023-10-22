@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import baseball.controller.RegameChoice;
-
 public final class GameConstants {
     public static final int NUMBER_LENGTH = 3;
     public static final int MIN_DIGIT = 1;

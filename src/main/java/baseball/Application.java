@@ -1,11 +1,12 @@
 package baseball;
 
-import baseball.controller.RegameChoice;
+import baseball.controller.RegameController;
+import baseball.domain.Regame;
 import baseball.domain.GameConstants;
 import baseball.util.IntegerUtil;
 import baseball.view.EndView;
 import baseball.view.InputView;
-import baseball.view.RestartChoiceView;
+import baseball.view.RestartView;
 import baseball.view.StartView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -125,7 +126,7 @@ public class Application {
                 //사용자가 입력한 숫자와 컴퓨터가 뽑은 숫자가 모두 같으면 "게임 종료 문구" 출력 후 게임 종료　
                 if (strike == GameConstants.NUMBER_LENGTH) {
                     EndView.displayEndMessage();
-                    RestartChoiceView.displayRestartChoiceMessage();
+                    RestartView.displayRestartChoiceMessage();
                     String regameNum = Console.readLine();
 
                     //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
@@ -135,15 +136,15 @@ public class Application {
                     }
                     int parsedRegameNum = Integer.parseInt(regameNum);
 
-                    RegameChoice regameChoice = RegameChoice.fromValue(parsedRegameNum);
+                    Regame regame = RegameController.validateValue(parsedRegameNum);
 
-                    if (regameChoice == RegameChoice.RESTART_GAME){
+                    if (regame == Regame.RESTART_GAME){
                         break GuessingLoop;
                     }
-                    if (regameChoice == RegameChoice.EXIT_GAME) {
+                    if (regame == Regame.EXIT_GAME) {
                         return;
                     }
-                    if (regameChoice == RegameChoice.OTHER_CHOICE) {
+                    if (regame == Regame.OTHER_CHOICE) {
                         throwInvalidValueException();
                     }
                 }

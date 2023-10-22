@@ -1,14 +1,13 @@
 package baseball.view;
 
-import baseball.controller.RegameChoice;
-import baseball.domain.GameConstants;
+import baseball.domain.Regame;
 
-public class RestartChoiceView {
+public class RestartView {
 
     public static final String RESTART_CHOICE_MESSAGE = String.format(
             "게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.",
-            RegameChoice.RESTART_GAME.getValue(),
-            RegameChoice.EXIT_GAME.getValue()
+            Regame.RESTART_GAME.getValue(),
+            Regame.EXIT_GAME.getValue()
     );
 
     public static void displayRestartChoiceMessage() {
