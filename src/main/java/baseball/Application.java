@@ -23,14 +23,14 @@ public class Application {
                     int second_digit = (predictedValue % 100) / 10;
                     int third_digit = predictedValue % 10;
 
-                    int[] predicteDigits = {first_digit, second_digit, third_digit};
+                    int[] predictDigits = {first_digit, second_digit, third_digit};
 
                     int ball = 0;
                     int strike = 0;
 
                     for (int i = 0; i < choiceComputerNumber.size(); i++) {
-                        for (int j = 0; j < predicteDigits.length; j++) {
-                            if (choiceComputerNumber.get(i) == predicteDigits[j]) {
+                        for (int j = 0; j < predictDigits.length; j++) {
+                            if (choiceComputerNumber.get(i) == predictDigits[j]) {
                                 if (i == j)
                                     strike += 1;
                                 else
@@ -46,9 +46,16 @@ public class Application {
                         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                         String gameSituation_String = Console.readLine();
                         int gameSituation = Integer.parseInt(gameSituation_String);
-                        if (gameSituation == 2)
-                            start_or_not = false;
-                        break;
+                        if (isValidInput2(gameSituation))
+                        {
+                            if (gameSituation == 2)
+                                start_or_not = false;
+                            break;
+                        }
+                        else {
+                            throw new IllegalArgumentException("1과 2중에 입력하세요.");
+                        }
+
                     } else {
                         if (ball == 0)
                             System.out.println(strike + "스트라이크");
@@ -75,5 +82,8 @@ public class Application {
     }
     private static boolean isValidInput (String input){
         return input.matches("\\d{3}");
+    }
+    private static boolean isValidInput2 (int input){
+        return input == 1 || input == 2;
     }
 }
