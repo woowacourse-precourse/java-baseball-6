@@ -15,10 +15,6 @@ public class Number implements Comparable<Number> {
     private final Integer[] numbers;
 
     public Number(int[] numbers) {
-        /**
-         * 도메인 객체 검증을 실시한다
-         * 3자리가 아니거나, 각 자리수가 1~9 범위를 가지지 않는 검증을 통과하지 못한다면 IllegalArgumentException을 발생시킨다.
-         */
         if(!isValid(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE_NUMBER);
         }
@@ -30,6 +26,12 @@ public class Number implements Comparable<Number> {
         }
     }
 
+    /**
+     * 도메인 객체를 검증한다.
+     * 3자리가 아니거나, 각 자리수가 1~9 범위를 가지지 않는 검증을 통과하지 못한다면 IllegalArgumentException을 발생시킨다.
+     *
+     * 처음 구현할 때, 서로 다른 자리수를 검사하지 않아서 이를 추가하였다.
+     */
     private static boolean isValid(int[] numbers) {
         if(numbers.length != MAX_NUMBER_SIZE) {
             return false;
@@ -38,6 +40,12 @@ public class Number implements Comparable<Number> {
         for(int indexOfNumbers = 0 ; indexOfNumbers < MAX_NUMBER_SIZE; indexOfNumbers++) {
             if(numbers[indexOfNumbers] == 0) {
                 return false;
+            }
+
+            for (int indexOfAnotherNumber = indexOfNumbers + 1; indexOfAnotherNumber < MAX_NUMBER_SIZE; indexOfAnotherNumber++) {
+                if(numbers[indexOfNumbers] == numbers[indexOfAnotherNumber]) {
+                    return false;
+                }
             }
         }
 
