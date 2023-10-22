@@ -11,11 +11,11 @@ public class BaseballView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void displayRoundEnd(){
+    public void displayRoundEndMessage(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-    public void displayResult(String result){
-        System.out.println(result);
+    public void displayAttemptResult(String attemptResult){
+        System.out.println(attemptResult);
     }
     public String getPlayerGuess(){
         System.out.print("숫자를 입력해주세요 : ");

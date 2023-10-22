@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class PlayerGuessHandler implements PlayerInputHandler<Iterator<Integer>> {
-
-    public static final char MIN_INPUT_CHARACTER = '1';
-    public static final char MAX_INPUT_CHARACTER = '9';
     private ArrayList<Integer> playerGuessNumberList;
     public PlayerGuessHandler(){
 
@@ -33,7 +30,7 @@ public class PlayerGuessHandler implements PlayerInputHandler<Iterator<Integer>>
     }
     private void isPlayerNumberInRange(char playerGuessNumber){
 
-        if (playerGuessNumber < MIN_INPUT_CHARACTER || playerGuessNumber > MAX_INPUT_CHARACTER){
+        if (playerGuessNumber < BaseballController.MIN_INPUT_CHARACTER || playerGuessNumber > BaseballController.MAX_INPUT_CHARACTER){
             throw new IllegalArgumentException();
         }
     }

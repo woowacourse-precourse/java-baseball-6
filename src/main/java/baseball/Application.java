@@ -2,11 +2,10 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
+        BaseballView baseballView = new BaseballView();
+        BaseballModel baseballModel = new BaseballModel();
 
-//        BaseballGame baseballGame = new BaseballGame();
-//        baseballGame.play();
-
-        BaseballController baseballController = new BaseballController(new BaseballView(), new BaseballModel());
+        BaseballController baseballController = new BaseballController(baseballView, baseballModel);
         baseballController.play();
     }
 }

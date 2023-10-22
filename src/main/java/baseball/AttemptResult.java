@@ -1,14 +1,14 @@
 package baseball;
 
-public class RoundResult {
+public class AttemptResult {
     int strikeCount;
     int ballCount;
 
-    public RoundResult(){
-        this.resetCount();
+    public AttemptResult(){
+        this.reset();
     }
 
-    public void resetCount(){
+    public void reset(){
         this.strikeCount = 0;
         this.ballCount = 0;
     }
@@ -34,10 +34,10 @@ public class RoundResult {
         }
         if (this.ballCount != 0){
             if (this.strikeCount != 0){
-                return ballCount +"볼 " + strikeCount + "스트라이크";
+                return getBallCount() +"볼 " + getStrikeCount() + "스트라이크";
             }
-            return ballCount +"볼";
+            return getBallCount() +"볼";
         }
-        return strikeCount + "스트라이크";
+        return getStrikeCount() + "스트라이크";
     }
 }
