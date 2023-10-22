@@ -1,9 +1,9 @@
-package baseball;
+package baseball.game;
 
+import baseball.Computer;
+import baseball.Validate;
 import baseball.ballcount.BallCount;
 import baseball.ballcount.BallCountCalculate;
-import baseball.game.Game;
-import baseball.game.GameProcess;
 import baseball.input.InputService;
 import baseball.output.PrintService;
 
