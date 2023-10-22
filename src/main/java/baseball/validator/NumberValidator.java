@@ -1,6 +1,7 @@
 package baseball.validator;
 
-import baseball.converter.StringInputConverter;
+import java.util.HashSet;
+import java.util.Set;
 
 public class NumberValidator {
 
@@ -11,32 +12,27 @@ public class NumberValidator {
     }
 
     private static void assertNumberValue(final String input) {
-        if (!isInputValidPositiveNumber(input)) {
+        if (!input.matches("^[1-9]+$")) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private static boolean isInputValidPositiveNumber(final String input) {
-        return input.matches("^[1-9]+$");
     }
 
     private static void assertDigitLength(final String inputNumber, final int expectedDigitLength) {
-        if (!isStringLengthEqualToExpectedLength(inputNumber, expectedDigitLength)) {
+        if (inputNumber.length() != expectedDigitLength) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private static boolean isStringLengthEqualToExpectedLength(final String input, final int expectedLength) {
-        return input.length() == expectedLength;
     }
 
     private static void assertEachNumberUnique(final String input) {
-        if (!isAllNumberUnique(input)) {
+        Set<Character> inputSet = new HashSet<>();
+        char[] inputArray = input.toCharArray();
+
+        for (char word : inputArray) {
+            inputSet.add(word);
+        }
+
+        if (inputSet.size() != input.length()) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private static boolean isAllNumberUnique(final String inputNumber) {
-        return StringInputConverter.toCharSet(inputNumber).size() == inputNumber.length();
     }
 }
