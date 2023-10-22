@@ -33,8 +33,8 @@ public class UserNumber {
         Set<Integer> checkDuplicateData = new HashSet<>(userNumber);
 
         // 입렧한 수가 3개인지 확인
-        //입력 값이 서로 다른지 확인
-        //입력 값이 1~9 사이 인지 확인
+        // 입력 값이 서로 다른지 확인
+        // 입력 값이 1~9 사이 인지 확인
         for (Integer number : userNumber) {
             if (checkDuplicateData.size() != userNumber.size()
                     || userNumber.size() != 3
