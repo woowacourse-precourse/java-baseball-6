@@ -41,8 +41,9 @@ public class BallNumbers {
         }
     }
 
-    public boolean isStrike(List<Integer> answerNumberList, int index) {
-        Integer answerNumber = answerNumberList.get(index);
+    public boolean isStrike(BallNumbers answerNumbers, int index) {
+        Integer answerNumber = answerNumbers.numberList
+                .get(index);
         Integer userNumber = numberList.get(index);
         return answerNumber.equals(userNumber);
     }
