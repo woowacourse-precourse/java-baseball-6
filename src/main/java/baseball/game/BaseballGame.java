@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Game {
+public class BaseballGame implements Game {
     private static final int NUMBER_OF_TARGET = 3;
-    HashMap<Integer, Integer> targetMap = new HashMap<Integer, Integer>();
+    private HashMap<Integer, Integer> targetMap;
 
-    public Game() {
-        createRandomTarget();
+    public void printStartMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
-
-    void createRandomTarget() {
+    public void initGame() {
+        targetMap = new HashMap<>();
         for (int i = 0; i < NUMBER_OF_TARGET; ++i) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             while (targetMap.containsKey(randomNumber)) {
@@ -46,11 +46,11 @@ public class Game {
         return convertToList(input);
     }
 
-    public ArrayList<Integer> convertToList(String input) {
+    private ArrayList<Integer> convertToList(String input) {
         if (input.length() != NUMBER_OF_TARGET) {
             throw new IllegalArgumentException();
         }
-        ArrayList<Integer> predictionList = new ArrayList<Integer>();
+        ArrayList<Integer> predictionList = new ArrayList<>();
         for (int i = 0; i < NUMBER_OF_TARGET; ++i) {
             char ch = input.charAt(i);
             if ('1' > ch || '9' < ch) {
@@ -98,7 +98,6 @@ public class Game {
         }
         if (strikeCount != 0) {
             System.out.println(strikeCount + "스트라이크");
-            return;
         }
     }
 }
