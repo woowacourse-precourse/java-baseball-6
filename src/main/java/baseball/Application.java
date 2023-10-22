@@ -23,7 +23,6 @@ public class Application {
 
             // 유저의 숫자 배열 생성
             List<Integer> userArray = new ArrayList<>();
-
             for (int i = 0; i < input.length(); i++) {
                 userArray.add(Character.getNumericValue(input.charAt(i)));
             }
@@ -31,7 +30,6 @@ public class Application {
             // 볼 스트라이크 갯수 파악
             int strike = 0;
             int ball = 0;
-
             for (int i = 0; i < NUMBER_COUNT; i++) {
                 if (computerArray.get(i).equals(userArray.get(i))) {
                     strike++;
@@ -41,9 +39,15 @@ public class Application {
             }
 
             // 조건에 따라 게임 진행
-            if (strike == 0 && ball == 0) {
+            if (strike == 0 && ball == 0) { // 둘다 0인 경우
                 System.out.println("낫싱");
-            } else if (strike == NUMBER_COUNT) {
+            } else if (strike == 0) { // strike 만 0인 경우
+                System.out.printf("%d볼%n", ball);
+            } else if (strike != NUMBER_COUNT && ball == 0) { // ball 이 0이고 정답이 아닌 경우
+                System.out.printf("%d스트라이크%n", strike);
+            } else if (strike != NUMBER_COUNT) { // 위 상황을 제외하고 정답이 아닌 경우
+                System.out.printf("%d볼 %d스트라이크%n", ball, strike);
+            } else { // 정답에 대한 처리
                 System.out.printf("%d스트라이크%n", NUMBER_COUNT);
                 System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", NUMBER_COUNT);
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -60,12 +64,6 @@ public class Application {
                 } else {
                     throw new IllegalArgumentException("잘못된 입력 형식입니다.");
                 }
-            } else if (strike == 0) {
-                System.out.printf("%d볼%n", ball);
-            } else if (ball == 0) {
-                System.out.printf("%d스트라이크%n", strike);
-            } else {
-                System.out.printf("%d볼 %d스트라이크%n", ball, strike);
             }
             // 턴 종료 및 초기화
             userArray.clear();
@@ -110,5 +108,4 @@ public class Application {
         }
         set.clear();
     }
-
 }
