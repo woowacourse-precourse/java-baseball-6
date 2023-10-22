@@ -18,4 +18,8 @@ public class RandomPickNumber {
         return computer;
     }
 
+    public static void RandomPickClean(){
+        computer = new ArrayList<>();
+    }
+
 }

@@ -15,7 +15,7 @@ public class Input {
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            System.exit(1); // 비정상 종료
+
         }
 
     }
