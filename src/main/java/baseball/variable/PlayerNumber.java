@@ -8,18 +8,18 @@ import java.lang.Integer;
 
 public class PlayerNumber {
     private static final String INPUT = "숫자를 입력해주세요 : ";
-    public List<Integer> playerNumber = new ArrayList<>();
     Validator validator = new Validator();
 
-    public void getPlayerNumber() {
+    public List<Integer> getPlayerNumber(List<Integer> number) {
         System.out.print(INPUT);
         String tempString = Console.readLine();
         String[] str = splitString(tempString);
         for (String s : str) {
             int n = Integer.parseInt(s);
-            playerNumber.add(n);
+            number.add(n);
         }
-        validator.isValid(playerNumber);
+        validator.isValid(number);
+        return number;
     }
 
     private String[] splitString(String str) {
