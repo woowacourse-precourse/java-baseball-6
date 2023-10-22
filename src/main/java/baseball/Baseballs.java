@@ -7,7 +7,7 @@ public class Baseballs {
 
     public Baseballs(final List<Integer> numbers) {
         validate(numbers);
-        this.baseballs = null;
+        this.baseballs = makeBaseballList(numbers);
     }
 
     private void validate(final List<Integer> numbers) {
@@ -28,5 +28,11 @@ public class Baseballs {
         if (distinctCount != 3) {
             throw new IllegalStateException("3개의 수가 서로 다르지 않습니다.");
         }
+    }
+
+    private List<Baseball> makeBaseballList(final List<Integer> numbers) {
+        return numbers.stream()
+                .map(Baseball::new)
+                .toList();
     }
 }
