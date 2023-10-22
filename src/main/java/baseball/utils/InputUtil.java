@@ -38,18 +38,18 @@ public abstract class InputUtil {
         char secondNumber = guessNumber.charAt(1);
         char thirdNumber = guessNumber.charAt(2);
 
-        return firstNumber != secondNumber && secondNumber != thirdNumber && firstNumber != thirdNumber;
+        return firstNumber == secondNumber || secondNumber == thirdNumber || firstNumber == thirdNumber;
     }
 
     private static void checkGuessNumberLengthThree(String guessNumber) {
-        if (guessNumber.length() == 3) {
+        if (guessNumber.length() != 3) {
             throw new IllegalArgumentException(GUESS_NUMBER_IS_NOT_THREE_LENGTH.getErrorMessage());
         }
     }
 
 
     private static void checkGuessNumberDigit(String value) {
-        if (isStringDigit(value)) {
+        if (!isStringDigit(value)) {
             throw new IllegalArgumentException(GUESS_NUMBER_IS_NOT_DIGIT.getErrorMessage());
         }
     }
@@ -67,7 +67,7 @@ public abstract class InputUtil {
     }
 
     private static void checkRestartNumberValid(String inputNumber) {
-        if (isRestartNumberValid(inputNumber)) {
+        if (!isRestartNumberValid(inputNumber)) {
             throw new IllegalArgumentException(RESTART_NUMBER_IS_NOT_VALID.getErrorMessage());
         }
     }
