@@ -2,7 +2,7 @@ package baseball.domain;
 
 import baseball.controller.RegameChoice;
 
-public class GameConstants {
+public final class GameConstants {
     public static final int NUMBER_LENGTH = 3;
     public static final int MIN_DIGIT = 1;
     public static final int MAX_DIGIT = 9;
@@ -24,4 +24,7 @@ public class GameConstants {
 
     public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
+    private GameConstants(){
+
+    }
 }
