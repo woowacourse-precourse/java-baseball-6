@@ -13,7 +13,7 @@ public class Player {
 	}
 
 	public void setNumbers(String input) {
-		for(int i = 0; i < Constant.MAX_DIGIT; i++) {
+		for(int i = 0; i < input.length(); i++) {
 			this.numbers[i] = input.charAt(i) - '0';
 		}
 	}
