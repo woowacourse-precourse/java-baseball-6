@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.Randomgenerator.Randomgenerator;
-import baseball.Randomgenerator.Ranomgenerator;
+import baseball.makerandomnumber.Randomgenerator;
+import baseball.makerandomnumber.threerandommaker;
 import baseball.check.Checknum;
 import baseball.check.checkthreenum;
 import baseball.distinguishnumber.Distinguish;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    static Randomgenerator ran = new Ranomgenerator();
+    static Randomgenerator ran = new threerandommaker();
     static Checknum check = new checkthreenum();
     static Distinguish distinguish = new distinguishNum();
 
@@ -30,38 +30,41 @@ public class Application {
             String userNum = Console.readLine();
 
             //입력값에 대한 판단
-            isChecking(userNum);
+            Checking(userNum);
 
-            String resultSentence = distinguish.distinguish(answer, makeUserNumList(userNum));
+            String resultSentence = distinguish.distinguish(answer, makeUserNumberList(userNum));
             System.out.println(resultSentence);
 
             if(resultSentence.equals("3스트라이크")){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String res = Console.readLine();
-                answer = ran.getRandom();
-                game = restart(res);
+                printEnd();
             }
 
         }while(game);
 
     }
 
-    static private boolean isChecking(String num){
-        return check.checkIsNum(num) && check.checkIsThreeDigit(num)
-                && check.checkIsDuplicate(num) && check.checkIsOneToNine(num);
+    static private boolean Checking(String num){
+        return check.checkIsNum(num) && check.checkIsThreeDigit(num) && check.checkIsDuplicate(num);
     }
 
-    static private List<Integer> makeUserNumList(String user){
-        List<Integer> userNum = new ArrayList<>();
+    static private List<Integer> makeUserNumberList(String user){
+        List<Integer> userNumbers = new ArrayList<>();
         for(char num : user.toCharArray()){
-            userNum.add(num-'0');
+            int userNum = num - '0';
+            userNumbers.add(userNum);
         }
-        return userNum;
+        return userNumbers;
     }
 
     static private boolean restart(String res){
-        if(Integer.parseInt(res) == 1) return true;
-        return false;
+        return Integer.parseInt(res) == 1;
+    }
+
+    static private void printEnd(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String res = Console.readLine();
+        answer = ran.getRandom();
+        game = restart(res);
     }
 }
