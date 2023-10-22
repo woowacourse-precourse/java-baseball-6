@@ -1,7 +1,7 @@
 package baseball.service;
 
-import baseball.domain.InputValidator;
 import baseball.util.GameCommand;
+import baseball.util.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;

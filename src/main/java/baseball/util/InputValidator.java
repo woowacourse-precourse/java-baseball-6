@@ -1,7 +1,4 @@
-package baseball.domain;
-
-import baseball.util.GameCommand;
-import baseball.util.GameConstants;
+package baseball.util;
 
 public class InputValidator {
     public static void validateDigitCount(String input) throws IllegalArgumentException {
