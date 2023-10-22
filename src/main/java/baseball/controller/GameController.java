@@ -48,12 +48,16 @@ public class GameController {
                 view.printResultNothing();
             }
 
-            if (ballCount != 0) {
+            if (ballCount != 0 && strikeCount == 0) {
                 view.printResultBall(ballCount);
             }
 
-            if (strikeCount != 0) {
+            if (ballCount == 0 && strikeCount != 0) {
                 view.printResultStrike(strikeCount);
+            }
+
+            if (ballCount != 0 && strikeCount != 0) {
+                view.printResultBallAndStrike(ballCount, strikeCount);
             }
 
         } while (!calculator.isThreeStrike(randomNumber, inputNumber));

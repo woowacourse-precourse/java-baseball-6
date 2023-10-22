@@ -37,7 +37,10 @@ public class GameView {
     }
 
     public void printResultBall(int ballCount) {
-        System.out.println(ballCount + BALL_RESULT + BLANK);
+        System.out.println(ballCount + BALL_RESULT);
     }
 
+    public void printResultBallAndStrike(int ballCount, int strikeCount) {
+        System.out.println(ballCount + BALL_RESULT + BLANK + strikeCount + STRIKE_RESULT);
+    }
 }
