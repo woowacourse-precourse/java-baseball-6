@@ -11,10 +11,6 @@ public class Application {
     final static int LENGTH_OF_NUMBER = 3;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
-        // 게임이 종류을 결정하는 변수
-        String[] user;
-
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -23,13 +19,7 @@ public class Application {
             while (true) {
                 // 사용자의 입력을 받는 부분
 
-                System.out.print("숫자를 입력해주세요 : ");
-                user = Console.readLine().split("");
-                if (user.length != 3)
-                    throw new IllegalArgumentException("숫자의 길이가 큽니다");
-
-                //TODO 무슨 말인지 모르겠다 공부하자 새로운 언어에서의 문법
-                Integer[] userNumber = Stream.of(user).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
+                Integer[] userNumber = setUserNumber();
 
                 int numberOfStrike = 0;
                 int numberOfBall = 0;
@@ -78,5 +68,15 @@ public class Application {
             }
         }
         return numbers;
+    }
+
+    static Integer[] setUserNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
+        String[] user = Console.readLine().split("");
+        if (user.length != 3)
+            throw new IllegalArgumentException("숫자의 길이가 큽니다");
+
+        //TODO 무슨 말인지 모르겠다 공부하자 새로운 언어에서의 문법
+        return Stream.of(user).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
     }
 }
