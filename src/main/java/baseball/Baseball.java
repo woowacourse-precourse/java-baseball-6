@@ -21,34 +21,45 @@ public class Baseball {
                 break;
             }
         }
-
     }
 
     public void startGame() {
         BaseBallNumber answerNumber = new BaseBallNumber(generateNumber());
         while (true) {
             BaseBallNumber userNumber = new BaseBallNumber(inputUserNumber());
-            Integer strikeCount = answerNumber.getStrikeCount(userNumber);
-            if (strikeCount == 3) {
-                System.out.println("3스트라이크");
+            if (isSuccessGame(answerNumber, userNumber)) {
                 break;
             }
-            Integer ballCount = answerNumber.getBallCount(userNumber);
-            if (ballCount == 0 && strikeCount == 0) {
-                System.out.println("낫싱");
-                continue;
-            }
-            StringBuilder outputString = new StringBuilder();
-            if (ballCount > 0) {
-                outputString.append(ballCount).append("볼 ");
-            }
-            if (strikeCount > 0) {
-                outputString.append(strikeCount).append("스트라이크");
-            }
-            System.out.println(outputString);
         }
         System.out.println(OutputStatement.GAME_END_OUTPUT.getOutput());
     }
+
+    public boolean isSuccessGame(BaseBallNumber answerNumber, BaseBallNumber userNumber) {
+        Integer strikeCount = answerNumber.getStrikeCount(userNumber);
+        if (strikeCount == 3) {
+            System.out.println("3스트라이크");
+            return true;
+        }
+        Integer ballCount = answerNumber.getBallCount(userNumber);
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+            return false;
+        }
+        printResult(ballCount, strikeCount);
+        return false;
+    }
+
+    private void printResult(int ballCount, int strikeCount) {
+        StringBuilder outputString = new StringBuilder();
+        if (ballCount > 0) {
+            outputString.append(ballCount).append("볼 ");
+        }
+        if (strikeCount > 0) {
+            outputString.append(strikeCount).append("스트라이크");
+        }
+        System.out.println(outputString);
+    }
+
 
     public List<Integer> generateNumber() {
         List<Integer> numberList = new ArrayList<>();
