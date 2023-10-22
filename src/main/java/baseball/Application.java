@@ -10,14 +10,14 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computerNumber = RandomNumberGenerator();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        Message.gameStart();
         playGame(computerNumber);
     }
 
     public static void playGame(List<Integer> computerNumber) {
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            Message.gameInput();
             String N = Console.readLine();
             List<Integer> li = changeStrToList(N);
             runException(N);
@@ -30,27 +30,25 @@ public class Application {
         restartGame();
     }
 
-    public static void duplicate_Num(List<Integer> li){
+    public static void duplicate_Num(List<Integer> li) {
         Set<Integer> set = new HashSet<>();
 
-        for(Integer item : li){
-            if(!set.add(item)){
-                throw new IllegalStateException("같은 숫자 입력은 안됩니다.");
+        for (Integer item : li) {
+            if (!set.add(item)) {
+                throw new IllegalStateException(Message.DUPLICATE_NUM);
             }
         }
     }
 
-    public static List<Integer> changeStrToList(String input){
-        List<Integer> resultList = Arrays.stream(input.split(""))
-                .map(str -> {
-                    try {
-                        return Integer.parseInt(str);
-                    } catch (NumberFormatException e) {
-                        // 숫자로 변환할 수 없는 경우, 예외 던지기
-                        throw new IllegalArgumentException("숫자만 사용 가능합니다.");
-                    }
-                })
-                .collect(Collectors.toList());
+    public static List<Integer> changeStrToList(String input) {
+        List<Integer> resultList = Arrays.stream(input.split("")).map(str -> {
+            try {
+                return Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+                // 숫자로 변환 불가능 할 때, 예외 던지기
+                throw new IllegalArgumentException(Message.ONLY_NUM);
+            }
+        }).collect(Collectors.toList());
         return resultList;
     }
 
@@ -80,7 +78,7 @@ public class Application {
         int balls = 0;
         for (int i = 0; i < computerNumber.size(); i++) {
             int targetDigit = guess_Num.get(i);
-            if (targetDigit != computerNumber.get(i) && computerNumber.contains(targetDigit)){
+            if (targetDigit != computerNumber.get(i) && computerNumber.contains(targetDigit)) {
                 balls++;
             }
         }
@@ -101,22 +99,23 @@ public class Application {
             System.out.println();
         }
         if (strikes == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            Message.gameEnd();
 
         }
     }
 
     public static void restartGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Message.reStart();
         int game = Integer.parseInt(Console.readLine());
         if (game == 1) {
             List<Integer> ran_Num = RandomNumberGenerator();
             playGame(ran_Num);
         }
     }
+
     public static void runException(String input) {
         if (input.length() != 3) {
-            throw new IllegalArgumentException("숫자는 3자리로 입력해야합니다.");
+            throw new IllegalArgumentException(Message.INVALID_INPUT_MESSAGE);
         }
 
     }
