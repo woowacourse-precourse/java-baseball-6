@@ -3,7 +3,7 @@ package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    public static String readNumber(String message) {
+    public static String inputNumber(String message) {
         System.out.printf(message);
         String inputValue = Console.readLine();
         validateNumber(inputValue);
