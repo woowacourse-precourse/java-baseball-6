@@ -21,19 +21,19 @@ public class GameController {
     }
 
     private void playSingleGame() {
-        setupGame();
+        setupGameNumber();
         do {
-            inputUserNumber();
+            setUserNumber();
             int[] result = calculateResult();
             OutputView.printScoreMessage(result[0], result[1]);
         } while (!isAnswer());
     }
 
-    private void setupGame() {
+    private void setupGameNumber() {
         programNumber = new ProgramNumber();
     }
 
-    private void inputUserNumber() {
+    private void setUserNumber() {
         userNumber = new UserNumber(InputView.inputUserNumber());
     }
 
