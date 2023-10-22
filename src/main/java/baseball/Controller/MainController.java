@@ -62,13 +62,12 @@ public class MainController {
 
     private void processComperater() {
         boolean nothing = comparator.isNothing(gameData.getComputerNumber(), gameData.getPlayerInput());
-        int ballCount = comparator.countBalls(gameData.getComputerNumber(), gameData.getPlayerInput());
-        int strikeCount = comparator.countStrikes(gameData.getComputerNumber(), gameData.getPlayerInput());
+        int ballCount = 0;
+        int strikeCount = 0;
 
-        if (nothing) {
-            gameData.setBallCount(0);
-            gameData.setStrikeCount(0);
-        } else {
+        if (!nothing) {
+            ballCount = comparator.countBalls(gameData.getComputerNumber(), gameData.getPlayerInput());
+            strikeCount = comparator.countStrikes(gameData.getComputerNumber(), gameData.getPlayerInput());
             gameData.setBallCount(ballCount);
             gameData.setStrikeCount(strikeCount);
         }
