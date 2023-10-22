@@ -14,19 +14,19 @@ public class InputValidator {
 
     private void validateBlank(String input) {
         if (input.isBlank()) {
-            throw new IllegalArgumentException("입력값이 없습니다.");
+            throw new IllegalArgumentException("입력값이 비어있습니다.");
         }
     }
 
     private void validateContainSpace(String input) {
         if (input.contains(" ")) {
-            throw new IllegalArgumentException("공백이 포함되어 있습니다.");
+            throw new IllegalArgumentException("입력값에 공백이 포함되어 있습니다.");
         }
     }
 
     private void validateContainZero(String input) {
         if (input.contains(ZERO)) {
-            throw new IllegalArgumentException("0이 포함되어 있습니다.");
+            throw new IllegalArgumentException("입력값에 0이 포함되어 있습니다.");
         }
     }
 
