@@ -12,7 +12,7 @@ public class UserInput {
 
     public static String checkUserInput(String userInput) {
         try {
-            // 숫자 입력했는지
+            // 숫자를 입력했는지
             int t1 = Integer.parseInt(userInput);
             // 3자리 숫자인지
             if (0 > t1 || t1 > 999) {
