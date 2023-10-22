@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -12,17 +11,17 @@ public class BaseBallGame {
     static String computerAnswer="";
     static String userAnswer="";
     static List<String> computer = new ArrayList<>();
-    static String gameSet ="";
     static int ball=0;
     static int strike=0;
+
     // BaseBallGame 싱글톤 객체로 생성
     public static final BaseBallGame baseBallGame = new BaseBallGame();
-
     public BaseBallGame getInstance(){
         return baseBallGame;
     }
     private BaseBallGame(){}
 
+    // 게임 시작
     public String start(){
         System.out.println("숫자 야구게임을 시작합니다.");
         computerAnswer=computerInput();
@@ -30,32 +29,22 @@ public class BaseBallGame {
         // 사용자 입력
         while(true){
             System.out.print("숫자를 입력 해주세요: ");
-            try{
-                userAnswer = readLine().replaceAll(" ","");
-            }catch (Exception e){
-                throw new IllegalArgumentException(e);
-            }
+            userAnswer = readLine().replaceAll(" ","");
             userAnswer=checkUserInput();
 
             // 사용자 입력과 컴퓨터 값과 비교
             String decision = umpire();
 
             // 3스트라이크일 경우
-            if(decision.equals("3스트라이크")){
+            RightAnswer rightAnswer = new RightAnswer();
+            if(rightAnswer.threeStrikeVAR(decision)){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                // 게임 재시작 및 종료
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                gameSet = readLine();
-                gameSet = restartOrExit();
                 reset();
-                return gameSet;
+                return rightAnswer.restartOrExit();
             }
         }
     }
-
     private void reset() {
-        userAnswer="";
-        computerAnswer="";
         computer.clear();
     }
 
@@ -88,26 +77,18 @@ public class BaseBallGame {
         return sb.toString();
     }
 
-    private String restartOrExit() {
-
-        if(gameSet.equals("1")) return "재시작";
-        else if(gameSet.equals("2")) return "게임 종료";
-        throw new IllegalArgumentException();
-    }
-
     //사용자 입력값 체크
     private String checkUserInput() {
 
-
         if(userAnswer.trim().length() !=3){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력값의 길이가 안맞습니다.:"+userAnswer);
         }
 
         //중복검사
         String[] answerRepeat = userAnswer.split("");
         for(int i=0;i<2;i++){
             for(int j=i+1;j<3;j++){
-                if(answerRepeat[i].equals(answerRepeat[j]))  throw new IllegalArgumentException();
+                if(answerRepeat[i].equals(answerRepeat[j]))  throw new IllegalArgumentException("중복된 값이 있습니다.");
             }
         }
         return userAnswer;
