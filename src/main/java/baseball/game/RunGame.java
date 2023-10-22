@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.object.Computer;
 import baseball.object.Game;
 import baseball.object.User;
 import camp.nextstep.edu.missionutils.Console;
@@ -21,7 +22,7 @@ public class RunGame {
     }
 
     private static void runBaseBallGame() {
-        Game.generateNumber();
+        new Computer();
 
         while (true) {
             User.getUserAnswer();

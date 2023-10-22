@@ -24,7 +24,7 @@ public class User {
     }
 
     private static boolean isAnswerLengthRight() {
-        return answer.length() == 3;
+        return answer.length() == NumberLength.LENGTH;
     }
 
     private static boolean isAnswerDigit() {
