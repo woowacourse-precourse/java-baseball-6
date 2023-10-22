@@ -17,16 +17,7 @@ public class Game {
         computerNumber = numberGenerator.setComputerNumber(); // 컴퓨터 번호 셋팅
         while (!exit) {
             playerNumber = numberGenerator.setPlayerNumber(); // 플레이어 번호 셋팅
-            check(computerNumber, playerNumber); // 결과 확인 + 조건 분기 (종료 or 재시작)
-        }
-    }
-
-    private void check(List<Integer> computerNumber, List<Integer> playerNumber) {
-        String hint = hintGenerator.getHint(computerNumber, playerNumber); // 비교 결과에 따라 분기
-        System.out.println(hint);
-        if (hint.equals(STRIKE3)) {
-            //System.out.println(GAME_OVER_MESSAGE);
-            //재시작
+            String hint = hintGenerator.getHint(computerNumber, playerNumber); // Hint 결과 확인
         }
     }
 }
