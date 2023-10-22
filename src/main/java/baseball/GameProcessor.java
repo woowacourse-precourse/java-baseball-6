@@ -23,7 +23,7 @@ public class GameProcessor {
     private List<String> generateUserNumberList(Data data) {
         List<String> userNumberList = new ArrayList<>();
 
-        String userNumberString = data.getUserInput();
+        String userNumberString = data.getUserAnswerNumber();
 
         for (int i = 0; i < DIGIT_SIZE; i++) {
             char digitChar = userNumberString.charAt(i);
@@ -75,6 +75,14 @@ public class GameProcessor {
         return strikeBall;
     }
 
+    public Boolean validateCompleteAnswer(Data data) {
+        boolean isCompleteAnswer = false;
+        if (data.getAnswerList().get(0).equals(3)) {
+            isCompleteAnswer = true;
+        }
+        return isCompleteAnswer;
+    }
+
     public String generateAnswerText(Data data, MessageManager messageManager) {
         String answerText;
         StringBuilder answerTextBuilder = new StringBuilder();
@@ -100,13 +108,14 @@ public class GameProcessor {
             answerTextBuilder.append(messageManager.getWrongMessage());
         }
 
+        data.setAnswerList(answerList);
         answerText = answerTextBuilder.toString();
 
         return answerText;
     }
 
     public void IllegalArgumentException(Data data) {
-        if ((data.getUserInput().length()) > 3) {
+        if ((data.getUserAnswerNumber().length()) > 3) {
             System.out.println("3보다 큽니다");
         }
     }
