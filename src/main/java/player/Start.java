@@ -7,7 +7,7 @@ import constant.GuideMessageConstant;
 import constant.StringConstant;
 
 public class Start {
-    String restarting_Game = "1";
+    String restarting_Game = StringConstant.CONTINUE;
 
     public Start() {
         while (StringConstant.CONTINUE.equals(restarting_Game)) {
@@ -15,7 +15,7 @@ public class Start {
             RandomPickNumber.randomPickNumber();
             CompareTwoValues compareTwoValues = new CompareTwoValues();
 
-            while (compareTwoValues.strikeCount != 3) {
+            while (compareTwoValues.strikeCount != StringConstant.MAX_STRIKE) {
                 Input.inputNumber();
 
                 compareTwoValues.compareTwoValues(Input.inputNumber);
