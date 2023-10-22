@@ -40,7 +40,24 @@ public class User {
         return true;
     }
 
-    public void getGameEndNum() {
+    public String getGameEndInput() {
+        // 엔터 전까지 한 줄 입력 받음
+        String input = Console.readLine();
 
+        if (!isGameEndInputRight(input)) {
+            throw new IllegalArgumentException("잘못된 입력입니다.2");
+        }
+
+        return input;
+    }
+
+    private boolean isGameEndInputRight(String input) {
+        if (input.length() != 1)
+            return false;
+
+        if (!input.equals("1") && !input.equals("2"))
+            return false;
+
+        return true;
     }
 }

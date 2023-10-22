@@ -18,7 +18,6 @@ public class Game {
             startGame();
             inGame();
             endGame();
-            end = true;
         } while (!end);
     }
 
@@ -36,6 +35,9 @@ public class Game {
     }
 
     public void endGame() {
-
+        computer.printMsg("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        input = user.getGameEndInput();
+        if (input.equals("2"))
+            end = true;
     }
 }
