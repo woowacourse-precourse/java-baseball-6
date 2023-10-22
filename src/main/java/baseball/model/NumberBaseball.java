@@ -27,12 +27,19 @@ public class NumberBaseball {
     }
 
     private int modifyListToInt() {
+        return Integer.parseInt(convertListToString(convertStringToStringList()));
+    }
+
+    private List<String> convertStringToStringList() {
+        return computerNum.stream().map(i -> i.toString()).collect(Collectors.toList());
+    }
+
+    private String convertListToString(List<String> stringList) {
         String compNumStr = "";
-        List<String> stringList = computerNum.stream().map(i -> i.toString()).collect(Collectors.toList());
         for (String s : stringList) {
             compNumStr+=s;
         }
-        return Integer.parseInt(compNumStr);
+        return compNumStr;
     }
 
     private void generateComputerNum() {
