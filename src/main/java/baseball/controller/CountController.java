@@ -1,13 +1,13 @@
 package baseball.controller;
 
 import baseball.model.AnswerNumber;
+import baseball.model.InputNumber;
 
 import static baseball.controller.GameController.answerNumber;
-import static baseball.controller.GameController.inputNumber;
 
 public class CountController {
 
-    public int getStrikeCount() {
+    public int getStrikeCount(InputNumber inputNumber) {
         int strikeCount = 0;
 
         for (int i = 0; i < answerNumber.getRandomNumber().size(); i++) {
@@ -22,7 +22,7 @@ public class CountController {
         return strikeCount;
     }
 
-    public int getBallCount() {
+    public int getBallCount(InputNumber inputNumber) {
         int ballCount = 0;
 
         for (int i = 0; i < answerNumber.getRandomNumber().size(); i++) {
