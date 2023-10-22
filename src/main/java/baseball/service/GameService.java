@@ -9,11 +9,11 @@ public class GameService {
     private Game game;
 
     public GameCycle play(Numbers user){
-        initialize();
+        createGameIfNotPlaying();
         return new GameCycle(game,user);
     }
 
-    private void initialize(){
+    private void createGameIfNotPlaying(){
         if(game==null) {
             game = new Game();
         }
