@@ -25,6 +25,14 @@ public class User {
         return true;
     }
 
+    static boolean isInRange(final String input){
+        for(char digit: input.toCharArray()){
+            if (digit < '0' || digit > '9'){
+                return false;
+            }
+        }
+        return true;
+    }
 
     public static void validateInput(final String input){
         if(input == null){
@@ -38,6 +46,9 @@ public class User {
         }
         if(!hasDuplicateNumbers(input)){
             throw new IllegalArgumentException("Input not duplicate numbers.");
+        }
+        if(!isInRange(input)){
+            throw new IllegalArgumentException("Input enter value of each digit between 1 and 9");
         }
     }
 
