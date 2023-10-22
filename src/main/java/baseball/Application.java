@@ -43,7 +43,7 @@ public class Application {
                 if (!(game_continue.equals("1") || game_continue.equals("2"))) {
                     throw new IllegalArgumentException();
                 }
-                if(game_continue.equals("1")) {
+                if (game_continue.equals("1")) {
                     computer = new Computer();
                 }
             }
