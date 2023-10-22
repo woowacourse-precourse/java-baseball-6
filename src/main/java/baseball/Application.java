@@ -1,11 +1,12 @@
 package baseball;
 
-import baseball.controller.gameSet;
+import baseball.controller.GameSet;
 
 public class Application {
     public static void main(String[] args) {
 
-        gameSet baseball = new gameSet();
+        GameSet baseball = new GameSet();
+        baseball.gameStart();
 
         /*
         int gameswitch = 1;
