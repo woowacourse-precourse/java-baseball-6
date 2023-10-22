@@ -18,6 +18,10 @@ public class Application {
             if (!computer.contains(randomNumber)) computer.add(randomNumber);
         }
 
+        // 정답 입력
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+
 
 
 
