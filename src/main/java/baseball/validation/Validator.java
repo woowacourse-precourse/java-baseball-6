@@ -43,7 +43,7 @@ public class Validator {
 
     public void checkDigitInRange(List<Integer> inputList) {
         for (int number : inputList) {
-            if (number < MAXIMUM_RANGE_NUMBER || number > MINIMUM_RANGE_NUMBER) {
+            if (number < MINIMUM_RANGE_NUMBER || number > MAXIMUM_RANGE_NUMBER) {
                 throw new IllegalArgumentException(NUMBER_RANGE_EXCEPTION_MSG);
             }
         }
@@ -52,7 +52,7 @@ public class Validator {
     public void checkDuplicateInList(List<Integer> inputList) {
         HashSet<Integer> uniqueNumbers = new HashSet<>();
 
-        for (Integer number : uniqueNumbers) {
+        for (Integer number : inputList) {
             if (!uniqueNumbers.add(number)) {
                 throw new IllegalArgumentException(NUMBER_DUPLICATE_EXCEPTION_MSG);
             }
