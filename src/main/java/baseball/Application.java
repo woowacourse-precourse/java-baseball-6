@@ -1,12 +1,11 @@
 package baseball;
 
-import baseball.entity.Balls;
-import baseball.entity.BallsGenerator;
-import baseball.entity.BaseballGame;
-import baseball.entity.PlayResult;
+import baseball.entity.*;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -17,14 +16,6 @@ public class Application {
         do {
             run(baseballGame());
         } while (requestRestart());
-    }
-
-    private static BaseballGame baseballGame() {
-        return BaseballGame.from(ballsGenerator());
-    }
-
-    private static BallsGenerator ballsGenerator() {
-        return () -> Balls.from(List.of(1, 2, 3));
     }
 
     private static void run(BaseballGame baseballGame) {
@@ -44,5 +35,24 @@ public class Application {
         GameCommand command = GameCommand.from(InputMapper.mapToInt(playerCommand));
 
         return command.isRestart();
+    }
+
+    private static BaseballGame baseballGame() {
+        return BaseballGame.from(randomBallsGenerator());
+    }
+
+    private static BallsGenerator randomBallsGenerator() {
+        return () -> {
+            List<Integer> randoms = new ArrayList<>();
+            while (randoms.size() < Balls.MAX_BALLS_SIZE) {
+                int random = Randoms.pickNumberInRange(Ball.MIN_NUMBER_RANGE, Ball.MAX_NUMBER_RANGE);
+
+                if (!randoms.contains(random)) {
+                    randoms.add(random);
+                }
+            }
+
+            return Balls.from(randoms);
+        };
     }
 }

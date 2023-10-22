@@ -3,10 +3,10 @@ package baseball.entity;
 import java.util.Objects;
 import java.util.Optional;
 
-class Ball {
+public class Ball {
 
-    private static final int MIN_NUMBER_RANGE = 1;
-    private static final int MAX_NUMBER_RANGE = 9;
+    public static final int MIN_NUMBER_RANGE = 1;
+    public static final int MAX_NUMBER_RANGE = 9;
     private static final int MIN_POSITION_RANGE = 1;
     private static final int MAX_POSITION_RANGE = 3;
     private static final String INVALID_NUMBER_RANGE_MESSAGE =
