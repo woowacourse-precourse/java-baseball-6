@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-class ApplicationTest extends NsTest { //테스트 2번째 시도
+class ApplicationTest extends NsTest { //테스트 3번째 시도
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
