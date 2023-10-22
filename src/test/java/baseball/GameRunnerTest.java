@@ -3,20 +3,23 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.domain.GameRules;
+import baseball.domain.Validator;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class NumberBaseballGameTest {
-    private final NumberBaseballGame numberBaseballGame = new NumberBaseballGame();
+public class GameRunnerTest {
+    private final GameRunner gameRunner = new GameRunner();
     private final Validator validator = new Validator();
+    private final GameRules gameRules = new GameRules();
 
     @Test
     public void 숫자_정답시_true_반환_테스트() {
         List<Integer> computer = Arrays.asList(1, 2, 3);
         List<Integer> user = Arrays.asList(1, 2, 3);
 
-        boolean isWin = numberBaseballGame.isUserWin(numberBaseballGame.countStrike(user, computer));
+        boolean isWin = gameRules.isUserWin(gameRules.countStrike(user, computer));
 
         assertThat(isWin).isTrue();
     }
@@ -26,7 +29,7 @@ public class NumberBaseballGameTest {
         List<Integer> computer = Arrays.asList(1, 2, 3);
         List<Integer> user = Arrays.asList(3, 1, 2);
 
-        int ballCount = numberBaseballGame.countBall(user, computer);
+        int ballCount = gameRules.countBall(user, computer);
 
         assertThat(ballCount).isEqualTo(3);
     }
@@ -36,7 +39,7 @@ public class NumberBaseballGameTest {
         List<Integer> computer = Arrays.asList(1, 2, 3);
         List<Integer> user = Arrays.asList(1, 0, 0);
 
-        int strikeCount = numberBaseballGame.countStrike(user, computer);
+        int strikeCount = gameRules.countStrike(user, computer);
 
         assertThat(strikeCount).isEqualTo(1);
     }

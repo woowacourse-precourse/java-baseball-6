@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import static baseball.constant.GameConstants.*;
 
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberGenerator {
-    List<Integer> generate() {
+    public static List<Integer> generate() {
         List<Integer> generatedNumbers = new ArrayList<>(MAX_NUMBER_LENGTH);
         while (generatedNumbers.size() < MAX_NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);

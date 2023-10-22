@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.ui;
 
 import static baseball.constant.GameConstants.MAX_NUMBER_LENGTH;
 

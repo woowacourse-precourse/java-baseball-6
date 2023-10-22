@@ -1,25 +1,22 @@
-package baseball.view;
+package baseball.ui;
 
-import static baseball.view.GameOutput.showGameContinueInputMessage;
-import static baseball.view.GameOutput.showNumberInputMessage;
+import static baseball.ui.GameOutput.showGameContinueInputMessage;
+import static baseball.ui.GameOutput.showNumberInputMessage;
 
-import baseball.Validator;
 import baseball.constant.GameStatus;
+import baseball.domain.Validator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameInput {
-    private final Validator validator;
-
-    public GameInput() {
-        this.validator = new Validator();
+    private GameInput() {
     }
 
-    public List<Integer> userNumberInput() {
+    public static List<Integer> userNumberInput() {
         showNumberInputMessage();
         String inputString = Console.readLine();
-        validator.numberInput(inputString);
+        Validator.numberInput(inputString);
 
         return inputString.chars()
                 .map(Character::getNumericValue)
@@ -27,10 +24,10 @@ public class GameInput {
                 .collect(Collectors.toList());
     }
 
-    public boolean getContinueInput() {
+    public static boolean getContinueInput() {
         showGameContinueInputMessage();
         String inputContinue = Console.readLine();
-        validator.continueInput(inputContinue);
+        Validator.continueInput(inputContinue);
         return inputContinue.equals(GameStatus.CONTINUE.getStatus());
     }
 }

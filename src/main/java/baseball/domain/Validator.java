@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import static baseball.constant.GameConstants.*;
 
@@ -8,20 +8,20 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validator {
-    public void numberInput(String inputString) throws IllegalArgumentException {
+    public static void numberInput(String inputString) throws IllegalArgumentException {
         if (!Pattern.matches(INPUT_REGEX, inputString) || !hasUniqueNumber(inputString)) {
             throw new IllegalArgumentException(ERROR_INVALID_INPUT + inputString);
         }
     }
 
-    public void continueInput(String inputContinue) throws IllegalArgumentException {
+    public static void continueInput(String inputContinue) throws IllegalArgumentException {
         if (!inputContinue.equals(GameStatus.CONTINUE.getStatus()) && !inputContinue.equals(
                 GameStatus.STOP.getStatus())) {
             throw new IllegalArgumentException(ERROR_INVALID_CONTINUE_INPUT);
         }
     }
 
-    private boolean hasUniqueNumber(String inputString) {
+    private static boolean hasUniqueNumber(String inputString) {
         Set<Character> set = new HashSet<>();
         for (char s : inputString.toCharArray()) {
             set.add(s);
