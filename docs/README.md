@@ -29,7 +29,7 @@
 1. GameNumber
 - [ ] computerGenerateNumbers 저장
 - [X] userInputString 저장
-- [ ] userGuessNumbers 저장
+- [ ] userInputNumbers 저장
 
 ### View
 1. OutputView
