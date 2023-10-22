@@ -11,29 +11,27 @@ public class Application {
     public static int strike, ball;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다");
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         GameStart();
-
     }
 
     public static void GameStart() {
+        strike = 0;
+        ball = 0;
 
         try {
             List<Integer> computerNumber = ComputerSelectNumber();
 
             ExceptionList.validNumbers(computerNumber);
-            while(true) {
+            while(strike!=3) {
 
                 List<Integer> playerNumber = PlayerSelectNumber();
                 ExceptionList.validNumbers(playerNumber);
                 CompareNumber(computerNumber, playerNumber);
 
-                if(strike==3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    break;
-                }
             }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             ReStart();
         } catch(IllegalArgumentException e) {
             throw new IllegalArgumentException("게임이 종료되었습니다");
@@ -71,7 +69,7 @@ public class Application {
 
     public static List<Integer> PlayerSelectNumber() {
         List<Integer> playerNumber = new ArrayList<>();
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
 
         String player = Console.readLine().replaceAll(" ", "");
 
@@ -87,10 +85,13 @@ public class Application {
         ball = 0;
 
         for(int i=0; i<3; i++) {
-            if (playerNumber.get(i) == computerNumber.get(i)) {
+            if (playerNumber.get(i).equals(computerNumber.get(i))) {
                 strike++;
-            } else if (computerNumber.contains(playerNumber.get(i))) {
+                continue;
+            }
+            if (computerNumber.contains(playerNumber.get(i))) {
                 ball++;
+                continue;
             }
         }
         System.out.println(PrintResult());
