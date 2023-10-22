@@ -14,8 +14,13 @@ public class Application {
         while (true){
             // computer의 랜덤 숫자를 생성하는 함수 실행 + List에 값 저장
             List<Integer> computerNumbers = createComputerNumbers();
-            System.out.println(transInput(Console.readLine()));
-
+            //System.out.println(transInput(Console.readLine()));
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> userNumbers = transInput(Console.readLine());
+            int strike = countStrike(computerNumbers, userNumbers);
+            int ball = countBall(computerNumbers, userNumbers);
+            System.out.println(strike);
+            System.out.println(ball);
             //play(computerNumbers);
             // 게임 종료 후 재시작 선택
             //if (!choiceRestart()) break;
@@ -60,4 +65,23 @@ public class Application {
         return numbers;
     }
 
+    // strike 개수 체크 함수
+    private static int countStrike(List<Integer> computer, List<Integer> user){
+        int strike = 0;
+        for (int i=0; i<CNT; i++){
+            // 숫자랑 위치가 일치하는 경우, strike 개수 1 증가
+            if (computer.get(i).equals(user.get(i)))  strike ++;
+        }
+        return strike;
+    }
+
+    // ball 개수 체크 함수
+    private static int countBall(List<Integer> computer, List<Integer> user){
+        int ball = 0;
+        for (int i=0; i<CNT ; i++){
+            // 숫자가 있지만 위치는 다른 경우, ball 개수 1 증가
+            if (computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i))) ball++;
+        }
+        return ball;
+    }
 }
