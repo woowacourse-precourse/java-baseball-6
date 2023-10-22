@@ -5,9 +5,6 @@ import baseball.domain.ContinueAnswer;
 import baseball.domain.GamePlayer;
 import baseball.domain.Result;
 
-import java.util.List;
-import java.util.Objects;
-
 import static baseball.domain.Const.FIXED_THREE_CIPHERS;
 
 public class Service {
@@ -28,12 +25,11 @@ public class Service {
 
     public Result calculateResult(String inputtedNumbers) {
         initData(inputtedNumbers);
-        List<Integer> gamePlayerNumbers = gamePlayer.getThreeNumbers();
-        List<Integer> computerNumbers = computer.getThreeNumbers();
 
         for (int i = 0; i < FIXED_THREE_CIPHERS; i++) {
-            if (Objects.equals(gamePlayerNumbers.get(i), computerNumbers.get(i))) result.addStrike();
-            else if(computerNumbers.contains(gamePlayerNumbers.get(i))) result.addBall();
+            int gamePlayerNumber = gamePlayer.extractOneNumber(i);
+            if (computer.isStrike(gamePlayerNumber, i)) result.addStrike();
+            else if (computer.isBall(gamePlayerNumber, i)) result.addBall();
         }
         return result;
     }

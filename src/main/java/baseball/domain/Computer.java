@@ -15,9 +15,7 @@ public class Computer {
 
         while (threeNumbers.size() < FIXED_THREE_CIPHERS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!threeNumbers.contains(randomNumber)) {
-                threeNumbers.add(randomNumber);
-            }
+            if (!threeNumbers.contains(randomNumber)) threeNumbers.add(randomNumber);
         }
     }
 
@@ -25,7 +23,11 @@ public class Computer {
         threeNumbers.clear();
     }
 
-    public List<Integer> getThreeNumbers() {
-        return threeNumbers;
+    public boolean isStrike(int number, int index) {
+        return number == threeNumbers.get(index);
+    }
+
+    public boolean isBall(int number, int index) {
+        return !isStrike(number, index) && threeNumbers.contains(number);
     }
 }

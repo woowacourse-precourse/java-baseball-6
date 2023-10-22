@@ -44,8 +44,8 @@ public class GamePlayer {
         threeNumbers.clear();
     }
 
-    public List<Integer> getThreeNumbers() {
-        return threeNumbers;
+    public int extractOneNumber(int index) {
+        return threeNumbers.get(index);
     }
 }
 

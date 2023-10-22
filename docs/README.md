@@ -40,12 +40,13 @@
   * void initThreeNumbers(String inputtedNumbers)
   * private void inputThreeNumberString(String inputtedString)
   * private void flushNumbers()
-  * List<Integer> getThreeNumbers()
+  * int extractOneNumber(int index)
 * Computer(상대방)
   * List<Integer> threeNumbers
   * void generateThreeNumbers()
   * private void flushNumbers()
-  * List<Integer> getThreeNumbers()
+  * boolean isStrike(int number, int index)
+  * boolean isBall(int number, int index)
 * Result
   * initResult() 
   * int ballCount
