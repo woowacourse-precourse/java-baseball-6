@@ -9,7 +9,6 @@ import java.util.Objects;
 public class BaseBallGame {
     private ArrayList<Integer> answerNum = new ArrayList<>();
     private ArrayList<Integer> userNum = new ArrayList<>();
-
     private GameState state = GameState.NOT_START;
 
     public void startGame() {
@@ -21,16 +20,13 @@ public class BaseBallGame {
 
     private void play() {
         generateNum();
-        while (state != GameState.CORRECT && state != GameState.END) {
+        while (state != GameState.CORRECT) {
             chooseNum();
-            if (state != GameState.END)
-                System.out.println(getResult());
+            System.out.println(getResult());
         }
-        if (state != GameState.END) {
-            exitGame();
-            if (state == GameState.PLAYING) {
-                play();
-            }
+        exitGame();
+        if (state == GameState.PLAYING) {
+            play();
         }
     }
 
