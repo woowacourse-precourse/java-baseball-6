@@ -1,5 +1,6 @@
 package baseball.io;
 
+import baseball.constant.NumberConstant;
 import baseball.io.console.ConsoleReader;
 import baseball.io.console.ConsoleWriter;
 import baseball.model.judge.JudgeResult;
@@ -40,6 +41,11 @@ public class PlayerIoManager {
 
     public void congratulate() {
         consoleWriter.printCongratulationText();
+    }
+
+    public boolean isPlayerWantToReplay() {
+        consoleWriter.printReplayAskText();
+        return consoleReader.readOneOrTwo() == NumberConstant.ONE;
     }
 
 }

@@ -40,10 +40,12 @@ public class GameManager {
             if (baseballJudge.isPlayerWon(playerBall)) {
 
                 playerIoManager.congratulate();
-//
-//            if (playerIoManager.isPlayerWantToReplay()) {
-//
-//            }
+
+                if (!playerIoManager.isPlayerWantToReplay()) {
+                    break;
+                }
+
+                baseballJudge = BaseballJudge.computerBallOf(ballMaker.createBall());
             }
         }
 
