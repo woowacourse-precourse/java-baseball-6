@@ -1,6 +1,10 @@
 package baseball.gameutil;
 
 public class Constant {
+
+    private Constant() {
+    }
+
     public static final Integer NUMBER_LENGTH = 3;
     public static final Integer NUMBER_MIN = 1;
     public static final Integer NUMBER_MAX = 9;
