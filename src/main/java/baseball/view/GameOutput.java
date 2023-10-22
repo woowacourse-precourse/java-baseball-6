@@ -1,15 +1,15 @@
-package baseball;
+package baseball.view;
 
 import static baseball.constant.GameConstants.MAX_NUMBER_LENGTH;
 
 import baseball.constant.GameStatus;
 
-public class BaseballGameView {
-    static void showStartMessage() {
+public class GameOutput {
+    public static void showStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    static void showWinMessage() {
+    public static void showWinMessage() {
         System.out.println(MAX_NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
@@ -29,11 +29,11 @@ public class BaseballGameView {
         System.out.println();
     }
 
-    static void showNumberInputMessage() {
+    public static void showNumberInputMessage() {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    static void showGameContinueInputMessage() {
+    public static void showGameContinueInputMessage() {
         System.out.println("게임을 새로 시작하려면 " + GameStatus.CONTINUE.getStatus() + ", 종료하려면 " + GameStatus.STOP.getStatus()
                 + "를 입력하세요.");
     }

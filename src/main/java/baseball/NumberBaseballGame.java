@@ -1,7 +1,7 @@
 package baseball;
 
-import static baseball.BaseballGameView.*;
 import static baseball.constant.GameConstants.MAX_NUMBER_LENGTH;
+import static baseball.view.GameOutput.*;
 
 import baseball.constant.GameStatus;
 import camp.nextstep.edu.missionutils.Console;
