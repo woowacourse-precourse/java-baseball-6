@@ -26,27 +26,27 @@ public class BaseBallGame {
             userAnswer=checkUserInput();
 
             // 사용자 입력과 컴퓨터 값과 비교
-            umpire();
+            String decision = umpire();
 
+            // 3스트라이크일 경우
+            if(decision.equals("3스트라이크")){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                // 게임 재시작 및 종료
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                gameSet = readLine();
+                gameSet = restartOrExit();
 
-
-            // 게임 재시작 및 종료
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            gameSet = readLine();
-            gameSet = restartOrExit();
-
-            // 재시작 및 종료 check
-            if(gameSet.equals("재시작")) {
-                start();
-                return;
+                // 재시작 및 종료 check
+                if(gameSet.equals("재시작")) {
+                    start();
+                    return;
+                }
+                else if(gameSet.equals("종료")) return;
             }
-            else if(gameSet.equals("종료")) return;
-
-            break;
         }
     }
 
-    private void umpire() {
+    private String umpire() {
         ball=0; strike=0;
         StringBuilder sb = new StringBuilder();
         String[] ans = userAnswer.split("");
@@ -72,7 +72,7 @@ public class BaseBallGame {
         }
 
         System.out.println(sb.toString());
-
+        return sb.toString();
     }
 
     private String restartOrExit() {
