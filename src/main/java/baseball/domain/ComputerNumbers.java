@@ -33,4 +33,11 @@ public class ComputerNumbers implements Numbers{
         return numbers;
     }
 
+    public Number showNumberAt(int index) {
+        Number number = computerNumbers.get(index);
+        return new Number(number.showValue());
+    }
+    public boolean contains(Number number) {
+        return computerNumbers.contains(number);
+    }
 }

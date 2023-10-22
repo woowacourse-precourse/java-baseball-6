@@ -34,4 +34,10 @@ public class PlayerNumbers implements Numbers{
                 .toList();
 
     }
+
+    public Number showNumberAt(int index) {
+        Number number = playerNumbers.get(index);
+        return new Number(number.showValue());
+    }
+
 }
