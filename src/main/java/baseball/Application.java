@@ -3,7 +3,7 @@ package baseball;
 import baseball.domain.BaseBall;
 import baseball.domain.BaseballCalculator;
 import baseball.domain.Game;
-import baseball.domain.GameManager;
+import baseball.utils.GameManager;
 
 public class Application {
     public static void main(String[] args) {

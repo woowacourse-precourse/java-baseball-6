@@ -1,6 +1,6 @@
-package baseball.domain;
+package baseball.utils;
 
-import baseball.utils.BaseballGameNoticeUtil;
+import baseball.domain.Game;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameManager {
