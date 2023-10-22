@@ -1,26 +1,32 @@
 package baseball;
 
+import baseball.game.BaseballGame;
+import baseball.game.Game;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+    private final Game game;
+
+    Application(Game game) {
+        this.game = game;
+    }
+
     public static void main(String[] args) {
-        Application application = new Application();
+        Game game = new BaseballGame();
+        Application application = new Application(game);
         application.loop();
     }
 
     void loop() {
-        printStartMessage();
+        this.game.printStartMessage();
         do {
-            Game game = new Game();
-            game.start();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            this.game.initGame();
+            this.game.start();
         } while (readRestartIntent());
     }
 
-    void printStartMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
     private boolean readRestartIntent() throws IllegalArgumentException {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputRestart = Console.readLine();
         if (inputRestart.equals("1")) {
             return true;
