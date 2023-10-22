@@ -56,6 +56,6 @@ public class Controller {
     private GameCommand askForRestart() {
         outputView.printRestart();
         String choice = inputView.readLine();
-        return GameCommand.make(choice);
+        return GameCommand.createWith(choice);
     }
 }

@@ -15,7 +15,7 @@ public enum GameCommand {
         this.number = number;
     }
 
-    public static GameCommand make(final String input) {
+    public static GameCommand createWith(final String input) {
         return Arrays.stream(values())
                 .filter(command -> command.number.equals(input))
                 .findAny()
