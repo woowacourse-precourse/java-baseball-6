@@ -8,6 +8,7 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
+    private static final int RESTART = 1;
 
     private AnswerNumber answerNumber;
     private NumberMatcher numberMatcher;
@@ -53,7 +54,7 @@ public class GameController {
 
     private boolean isContinued() {
         int choice = inputView.requestGameRestart();
-        return choice == 1;
+        return choice == RESTART;
     }
 
 
