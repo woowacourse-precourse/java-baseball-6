@@ -15,6 +15,20 @@ public class BaseBallGame {
     }
 
 
+    private void printDynamicOutput(final int balls,final int strikes){
+        String dynamicOutput;
+        if (balls > 0 && strikes > 0){
+            dynamicOutput = String.format("%d볼 %d스트라이크", balls, strikes);
+        }else if (balls <= 0 && strikes > 0){
+            dynamicOutput = String.format("%d스트라이크", strikes);
+        }else if (balls > 0 &&  strikes <= 0){
+            dynamicOutput = String.format("%d볼", balls);
+        }else {
+            dynamicOutput = "낫싱";
+        }
+        System.out.println(dynamicOutput);
+    }
+
     private int countNumberOfStrike(final List<Integer> expectNumberSequence){
         int numberOfStrikes = 0;
         for (int i =0; i < computerRandomNumber.size(); i++){
