@@ -1,7 +1,7 @@
 package baseball;
 
 public class Game {
-    private PlayStatus playStatus;
+    private boolean isGameFinished;
     private Answer answer;
     private RandomAnswerFactory answerFactory;
     private ResultFactory resultFactory;
@@ -13,7 +13,7 @@ public class Game {
 
     public void setUpForNewGame(){
         answer = answerFactory.getRandomAnswer();
-        playStatus = PlayStatus.PROCEEDING;
+        isGameFinished = false;
     }
 
     public Result play(String userPrediction){
@@ -25,9 +25,13 @@ public class Game {
                 answer
         );
         if (isThreeStrikes(result)){
-            playStatus = PlayStatus.FINISHED;
+            isGameFinished = true;
         }
         return result;
+    }
+
+    public boolean isGameFinished() {
+        return isGameFinished;
     }
 
     private boolean isThreeStrikes(Result result){
@@ -35,6 +39,3 @@ public class Game {
     }
 }
 
-enum PlayStatus{
-    FINISHED, PROCEEDING
-}
