@@ -2,6 +2,7 @@ package baseball.game;
 
 import baseball.util.RandomNumber;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class BaseBall {
@@ -21,16 +22,15 @@ public class BaseBall {
             throw new IllegalArgumentException("입력 길이는 양수이어야 합니다.");
         }
         this.length = length;
-        this.computer = RandomNumber.generate(length);
         this.isOver = false;
     }
 
-    public void newGame() {
+    public void start() {
         computer = RandomNumber.generate(length);
         isOver = false;
     }
 
-    public void doGame(List<Integer> player) {
+    public void guess(List<Integer> player) {
         validateInput(player);
         int ball = getBallCount(player);
         int strikes = getStrikeCount(player);
@@ -52,7 +52,7 @@ public class BaseBall {
         }
     }
 
-    public void finishGame() {
+    private void finishGame() {
         System.out.println(String.format(DONE, length));
         isOver = true;
     }
@@ -85,13 +85,34 @@ public class BaseBall {
         return strikes;
     }
 
-    private void validateInput(List<Integer> player) {
-        if (player == null) {
-            throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
-        } else if (player.isEmpty()) {
-            throw new IllegalArgumentException("입력값은 빈 배열일 수 없습니다.");
-        } else if (player.size() != length) {
+    private void validateInput(List<Integer> guessedNumber) {
+        validateNotBlank(guessedNumber);
+        validateLength(guessedNumber);
+        validateDuplicatedNumber(guessedNumber);
+        validatePositive(guessedNumber);
+    }
+
+    private void validateNotBlank(List<Integer> guessedNumber) {
+        if (guessedNumber == null || guessedNumber.isEmpty()) {
+            throw new IllegalArgumentException("1개 이상의 값을 입력해야 합니다.");
+        }
+    }
+
+    private void validateLength(List<Integer> guessedNumber) {
+        if (guessedNumber.size() != length) {
             throw new IllegalArgumentException(String.format("입력 길이는 %d 이어야 합니다.", length));
+        }
+    }
+
+    private void validateDuplicatedNumber(List<Integer> guessedNumber) {
+        if (guessedNumber.size() != new HashSet<>(guessedNumber).size()) {
+            throw new IllegalArgumentException("중복된 숫자는 사용할 수 없습니다.");
+        }
+    }
+
+    private void validatePositive(List<Integer> guessedNumber) {
+        if (guessedNumber.contains(0)) {
+            throw new IllegalArgumentException("입력 값은 1 ~ 9 사이어야 합니다.");
         }
     }
 }

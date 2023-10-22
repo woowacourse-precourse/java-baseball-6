@@ -16,17 +16,9 @@ public class NumberParser {
         return parsedNumbers;
     }
 
-    public static int parseSingleDigitNumber(String numberString) {
-        validateNotEmptyString(numberString);
-        if (numberString.length() != 1) {
-            throw new IllegalArgumentException("문자열 길이가 올바르지 않습니다.");
-        }
-        return Integer.parseInt(numberString);
-    }
-
     private static int parseIntCharacter(char ch) {
-        if (!('1' <= ch && ch <= '9')) {
-            throw new IllegalArgumentException("1 ~ 9 사이의 숫자만 허용됩니다.");
+        if (!('0' <= ch && ch <= '9')) {
+            throw new IllegalArgumentException("0 ~ 9 사이의 숫자만 허용됩니다.");
         }
         return Character.getNumericValue(ch);
     }
