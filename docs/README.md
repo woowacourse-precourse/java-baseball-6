@@ -112,3 +112,4 @@ public class Application {
 ### 2023-10-23
 
 - record의 compact constructor를 처음 써봤다. 다시는 까먹지 않을 것 같다.
+- 테스트 케이스는 모든 경우의 수를 다 다루어야 할까?
