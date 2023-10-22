@@ -11,9 +11,14 @@ import static baseball.view.OutputView.startMessage;
 
 public class BaseballGameController {
 
-    private static final NumberGenerator numberGenerator = new NumberGenerator();
+    private final NumberGenerator numberGenerator;
 
     private Balls targetNumber;
+
+    public BaseballGameController() {
+        this.numberGenerator = new NumberGenerator();
+        this.targetNumber = null;
+    }
 
     public void run() {
         startMessage();
@@ -24,13 +29,17 @@ public class BaseballGameController {
     }
 
     private void createTargetNumber() {
-        targetNumber = numberGenerator.generate();
+        this.targetNumber = numberGenerator.generate();
+    }
+
+    private Balls getTargetNumber() {
+        return this.targetNumber;
     }
 
     private void playRound() {
         RoundResult roundResult;
         do {
-            roundResult = RoundResult.of(targetNumber, userInputNumber());
+            roundResult = RoundResult.of(getTargetNumber(), userInputNumber());
             printRoundResult(roundResult);
         }while(roundResult.isLose());
     }
@@ -41,7 +50,6 @@ public class BaseballGameController {
         if (restartResponse == ResponseStatus.RESTART) {
             return true;
         }
-
         return false;
     }
 }
