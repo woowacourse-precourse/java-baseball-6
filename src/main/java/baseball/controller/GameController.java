@@ -17,8 +17,8 @@ public class GameController {
 
     public void startGame() {
         boolean gameState = true;
+        outputView.printStartGame();
         while (gameState) {
-            outputView.printStartGame();
             computerController.startGame(gameNumber);
 
             repeatGussingAnswer();
