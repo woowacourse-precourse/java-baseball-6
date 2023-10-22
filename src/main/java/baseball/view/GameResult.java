@@ -1,6 +1,7 @@
 package baseball.view;
 
 public class GameResult {
+
     private final int strike;
     private final int ball;
 
