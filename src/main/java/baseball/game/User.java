@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class User {
     public static int[] getGuessNumbers() {
         String userInput = Console.readLine();
-        if (!ValidationUtils.isValidInput(userInput)) {
+        if (!ValidationUtils.isValidGuess(userInput)) {
             throw new IllegalArgumentException();
         }
         return Arrays.stream(userInput.split(""))
