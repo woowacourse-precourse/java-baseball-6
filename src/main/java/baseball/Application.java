@@ -22,10 +22,10 @@ class GameLauncher {
     }
 
     void start() {
-        running();
+        run();
     }
 
-    void running() {
+    void run() {
         while (init == 1) {
             makeRandomNum();
             try {
@@ -131,14 +131,13 @@ class GameLauncher {
     boolean checkNumber(int n) {
         if (n == 1 || n == 2) {
             return true;
-        } else if (n < 100 || n > 1000) {
+        } else if ((n < 100) || (n > 1000)) {
             return false;
-        } else if ((n/10)%10 == 0 || n%10 == 0) {
+        } else if (((n/10)%10 == 0) || (n%10 == 0)) {
             return false;
         } else if ((n/100 == (n/10)%10) || ((n/10)%10 == n%10) || (n/100 == n%10)) {
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 }
