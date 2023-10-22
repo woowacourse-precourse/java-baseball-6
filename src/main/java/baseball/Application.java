@@ -12,11 +12,10 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
 
-        List<Character> inputArray = new ArrayList<>();     // 입력 값 배열
         List<Integer> userArray = new ArrayList<>();        // 유저가 입력한 숫자 상태 배열
-        List<Integer> computerArray = new ArrayList<>();    // 컴퓨터의 숫자 상태 배열
+        List<Integer> computerArray;                        // 컴퓨터의 숫자 상태 배열
 
-        computerArray = generateComputerNumbers();
+        computerArray = generateComputerNumbers();          // 컴퓨터 랜덤 배열 생성
 
         int strike = 0;
         int ball = 0;
@@ -27,35 +26,13 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
 
-            // 입력된 값이 3개인지 확인
-            if (input.length() != 3) {
-                throw new IllegalArgumentException("잘못된 입력 형식입니다.");
-            }
-
-            for (int i = 0; i < input.length(); i++) {
-                char ch = input.charAt(i);
-                inputArray.add(ch);
-            }
-
-            // 입력된 값이 int 형식인지 판단
-            for (char ch : inputArray) {
-                if (!Character.isDigit(ch)) {
-                    throw new IllegalArgumentException("잘못된 입력 형식입니다.");
-                }
-                ;
-            }
-
-            // 배열 내부에 중복된 값이 있는지 확인
-            Set<Character> set = new HashSet<>();
-            for (char item : inputArray) {
-                if (!set.add(item)) {
-                    throw new IllegalArgumentException("잘못된 입력 형식입니다.");
-                }
-            }
+            validateInputCount(input);
+            validateInputType(input);
+            validateInputDuplicates(input);
 
             // 유저의 숫자 상태 int 배열 생성
-            for (char item : inputArray) {
-                userArray.add(Character.getNumericValue(item));
+            for (int i = 0; i < input.length(); i++) {
+                userArray.add(Character.getNumericValue(input.charAt(i)));
             }
 
             // 볼 스트라이크 갯수 파악
@@ -81,9 +58,7 @@ public class Application {
 
                 // 입력 값에 따라 수행
                 if (restartValue.equals("1")) {
-                    // 컴퓨터가 랜덤한 숫자를 선택
                     computerArray = generateComputerNumbers();
-
                 } else if (restartValue.equals("2")) {
                     break;
                 } else {
@@ -98,9 +73,7 @@ public class Application {
             }
 
             // 턴 종료 및 초기화
-            inputArray.clear();
             userArray.clear();
-            set.clear();
             strike = 0;
             ball = 0;
         }
@@ -108,7 +81,6 @@ public class Application {
         Console.close();
     }
 
-    // 컴퓨터가 랜덤한 숫자를 선택
     private static List<Integer> generateComputerNumbers() {
         List<Integer> computerArray = new ArrayList<>();
         while (computerArray.size() < 3) {
@@ -119,4 +91,32 @@ public class Application {
         }
         return computerArray;
     }
+
+    private static void validateInputCount(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("잘못된 입력 형식입니다.");
+        }
+    }
+
+    private static void validateInputType(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+            if (!Character.isDigit(ch)) {
+                throw new IllegalArgumentException("잘못된 입력 형식입니다.");
+            }
+        }
+    }
+
+    private static void validateInputDuplicates(String input) {
+        Set<Character> set = new HashSet<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            if (!set.add(input.charAt(i))) {
+                set.clear();
+                throw new IllegalArgumentException("잘못된 입력 형식입니다.");
+            }
+        }
+        set.clear();
+    }
+
 }
