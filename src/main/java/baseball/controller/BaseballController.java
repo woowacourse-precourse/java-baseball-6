@@ -8,4 +8,13 @@ public class BaseballController {
     private final BaseballService baseballService = new BaseballService();
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
+
+    public void run() {
+        outputView.startGame();
+        gameStart();
+    }
+
+    public void gameStart() {
+
+    }
 }
