@@ -112,6 +112,31 @@ public class Application {
         return result;
     }
 
+    //계속 진행할건지, 나갈건지 확인
+
+    public static boolean not_exit(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String str_choice = Console.readLine();
+
+        if(is_Not_number(str_choice)) {
+            throw new IllegalArgumentException();
+        }
+
+        int choice = Integer.parseInt(str_choice);
+
+        exit_error_check(choice);
+
+        return choice == 1;
+    }
+
+    public static void exit_error_check(int exit_num) {
+        if(exit_num != 1 && exit_num != 2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
