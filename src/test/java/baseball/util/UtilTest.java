@@ -33,7 +33,7 @@ public class UtilTest {
     @Test
     @DisplayName("숫자 범위 검증 실패 케이스")
     void 숫자_범위_검증_실패() {
-        boolean result = Util.validNumberRange(1, 9, 3);
+        boolean result = Util.validNumberRange(1, 9, 10);
         assertThat(result).isEqualTo(false);
     }
 
@@ -48,6 +48,20 @@ public class UtilTest {
     @DisplayName("숫자 중복 검증 실패 케이스")
     void 숫자_중복_검증_실패() {
         boolean result = Util.validDuplicatedNumbers(Arrays.asList(1, 1, 1));
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    @DisplayName("숫자 3자리 수 인지 검증 성공 케이스")
+    void 숫자_자리수_검증_성공() {
+        boolean result = Util.validNumbersCount(Arrays.asList(1, 2, 3), 3);
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    @DisplayName("숫자 3자리 수 인지 검증 실패 케이스")
+    void 숫자_자리수_검증_실패() {
+        boolean result = Util.validNumbersCount(Arrays.asList(1, 2), 3);
         assertThat(result).isFalse();
     }
 }
