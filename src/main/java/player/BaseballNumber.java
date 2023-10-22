@@ -1,7 +1,7 @@
 package player;
 
-import static constant.StringConstant.INVALID_NUMBER_RANGE_MESSAGE;
-import static constant.StringConstant.ONLY_NUMBER_MESSAGE;
+import static constant.StringConstant.INVALID_NUMBER_RANGE;
+import static constant.StringConstant.ONLY_NUMBER;
 
 public class BaseballNumber {
 
@@ -22,13 +22,13 @@ public class BaseballNumber {
         try {
             Integer.parseInt(baseballNumber);
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException(ONLY_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(ONLY_NUMBER);
         }
     }
 
     private void validateNumberInRange(Integer baseballNumber) {
         if (baseballNumber <= 0 || baseballNumber > 9) {
-            throw new IllegalArgumentException(INVALID_NUMBER_RANGE_MESSAGE);
+            throw new IllegalArgumentException(INVALID_NUMBER_RANGE);
         }
     }
 

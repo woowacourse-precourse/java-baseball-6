@@ -1,8 +1,8 @@
 package player;
 
 import static constant.NumberConstant.MAX_LENGTH;
-import static constant.StringConstant.NO_DUPLICATE_NUMBER_MESSAGE;
-import static constant.StringConstant.ONLY_THREE_NUMBER_MESSAGE;
+import static constant.StringConstant.NO_DUPLICATE_NUMBER;
+import static constant.StringConstant.ONLY_THREE_NUMBER;
 
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +32,7 @@ public class BaseballNumbers {
 
     private void validateNumberLength(List<BaseballNumber> baseballNumbers) {
         if (baseballNumbers.size() != MAX_LENGTH) {
-            throw new IllegalArgumentException(ONLY_THREE_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(ONLY_THREE_NUMBER);
         }
     }
 
@@ -40,7 +40,7 @@ public class BaseballNumbers {
         Set<BaseballNumber> baseballNumberSet = new HashSet<>(baseballNumbers);
 
         if (baseballNumberSet.size() < MAX_LENGTH) {
-            throw new IllegalArgumentException(NO_DUPLICATE_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(NO_DUPLICATE_NUMBER);
         }
     }
 

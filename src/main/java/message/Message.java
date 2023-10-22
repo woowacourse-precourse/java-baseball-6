@@ -4,7 +4,7 @@ import static constant.StringConstant.BALL;
 import static constant.StringConstant.CONTINUE_OR_FINISH;
 import static constant.StringConstant.END_GAME;
 import static constant.StringConstant.INTEGER_INPUT_FROM_USER;
-import static constant.StringConstant.INVALID_INPUT_MESSAGE;
+import static constant.StringConstant.INVALID_INPUT;
 import static constant.StringConstant.NOTHING;
 import static constant.StringConstant.STRIKE;
 import static constant.StringConstant.THREE_STRIKE;
@@ -53,6 +53,6 @@ public class Message {
     }
 
     public static void printErrorMessage() {
-        System.out.println(INVALID_INPUT_MESSAGE);
+        System.out.println(INVALID_INPUT);
     }
 }
