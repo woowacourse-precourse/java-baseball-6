@@ -11,19 +11,19 @@ public class OutputView {
     }
 
     public void printCountForBallsAndStrikes(int ballCount, int strikeCount) {
-        if (ballCount == 0 && strikeCount == 0) {
+        if (noBallsOrStrikes(ballCount, strikeCount)) {
             System.out.println("낫싱");
             askForNumber();
             return;
         }
-        if (ballCount == 0) {
+        if (onlyStrikes(ballCount, strikeCount)) {
             System.out.println(strikeCount + "스트라이크");
             if (strikeCount != 3) {
                 askForNumber();
             }
             return;
         }
-        if (strikeCount == 0) {
+        if (onlyBalls(ballCount, strikeCount)) {
             System.out.println(ballCount + "볼");
             askForNumber();
             return;
@@ -36,4 +36,17 @@ public class OutputView {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
+    private boolean noBallsOrStrikes(int ballCount, int strikeCount) {
+        return ballCount == 0 && strikeCount == 0;
+    }
+
+    private boolean onlyStrikes(int ballCount, int strikeCount) {
+        return ballCount == 0 && strikeCount > 0;
+    }
+
+    private boolean onlyBalls(int ballCount, int strikeCount) {
+        return ballCount > 0 && strikeCount == 0;
+    }
+
 }
