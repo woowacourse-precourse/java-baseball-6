@@ -39,7 +39,7 @@ public class User {
         Set<Character> uniqueInput = new HashSet<>();
         for(char c : input.toCharArray()) {
             if (!uniqueInput.add(c)){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
             }
         }
     }
