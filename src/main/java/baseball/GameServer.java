@@ -1,36 +1,37 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class GameServer {
 
+    private final InputCommander inputCommander = new InputCommander();
+    private final OutputCommander outputCommander = new OutputCommander();
     private final Computer computer = new Computer();
     private Result score;
 
     public void run() {
-        System.out.println(OutputMessage.START.message);
+        outputCommander.printGameStart();
         while (true) {
-
             playGame();
-
             if (score.isThreeStrike()) {
-                Command command = askRetry();
-                if(!command.retry) break;
+                if(!askRetry().retry) break;
                 computer.prepareGameRetry();
             }
         }
+        endGame();
     }
 
     private void playGame() {
-        System.out.print(OutputMessage.INPUT_NUMBER.message);
-        Digits input = Digits.generateFixedDigits(Console.readLine());
+        outputCommander.printReceivingInput();
+        Digits input = Digits.generateFixedDigits(inputCommander.receiveInput());
         score = computer.calculateScore(input);
-        System.out.println(score.getResultInKorean());
+        outputCommander.printGameScore(score.getResultInKorean());
     }
 
     private Command askRetry() {
-        System.out.println(OutputMessage.GAME_CLEAR.message);
-        System.out.println(OutputMessage.RETRY_OR_END.message);
-        return Command.getCommand(Console.readLine());
+        outputCommander.printGameClearAndAskRetry();
+        return Command.getCommand(inputCommander.receiveInput());
+    }
+
+    private void endGame() {
+        inputCommander.stopReceivingInput();
     }
 }
