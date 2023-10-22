@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.numbers.User;
+
 import java.util.List;
 import java.util.Map;
 
