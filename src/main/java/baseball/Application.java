@@ -12,7 +12,15 @@ public class Application {
     private static void startGame() {
         Computer computer = new Computer();
         Player player = new Player();
-        System.out.print("숫자를 입력해주세요 : ");
-        player.setPlayerNumber(Console.readLine());
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            player.setPlayerNumber(Console.readLine());
+            computer.printResult(player.getPlayerNumber());
+        } while (!isClear());
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private static boolean isClear() {
+        return BaseballNumber.getStrike() == BaseballNumber.getAnswer();
     }
 }
