@@ -9,7 +9,7 @@ public class BaseballNumber {
     /**
      * 컴퓨터 숫자 생성
      */
-    public List<Integer> makeBaseballNumber() {
+    public static List<Integer> makeBaseballNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

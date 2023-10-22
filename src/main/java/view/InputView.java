@@ -1,6 +1,6 @@
 package view;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import camp.nextstep.edu.missionutils.Console;
 
 import model.ExceptionModel;
 
@@ -14,16 +14,15 @@ public class InputView {
      * 야구볼 서로 다른 3자리의 수 입력받기
      */
     public List<Integer> inputBaseBall() {
-        String number = readLine();
+        String number = Console.readLine();
         exceptionModel.checkBaseBall(number);
-        exceptionModel.checkDuplication(changeInteger(number));
         return changeInteger(number);
     }
 
     /**
      * 입력받은 문자열을 정수형 리스트로 변환
      */
-    private List<Integer> changeInteger(String input) {
+    public static List<Integer> changeInteger(String input) {
         String[] str = input.split("");
         List<Integer> numbers = new ArrayList<>();
         for (String s :
@@ -37,7 +36,7 @@ public class InputView {
      * 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수 입력받기
      */
     public int inputRetryNumber() {
-        String number = readLine();
+        String number = Console.readLine();
         exceptionModel.checkRetry(number);
         return Integer.parseInt(number);
     }

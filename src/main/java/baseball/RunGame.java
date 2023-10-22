@@ -5,13 +5,12 @@ import view.InputView;
 import view.OutputView;
 
 public class RunGame {
-    BaseballNumber baseballNumber = new BaseballNumber();
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
     BaseballGame baseballGame = new BaseballGame();
 
     public void playBaseballGame() {
-        BaseballGame.computerNumber = baseballNumber.makeBaseballNumber();
+        BaseballGame.computerNumber = BaseballNumber.makeBaseballNumber();
         BaseballGame.finish = true;
         outputView.gameStart();
 
