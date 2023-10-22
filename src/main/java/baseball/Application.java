@@ -20,10 +20,10 @@ public class Application {
             count.compare(computer.getRandomNumbers(), user.getUserNumber());
             count.showStatus();
 
-            if (count.checkStrike() && !restart.checkRestartNumber(restart.inputRestartNumber())) {
-                break;
-            } else if (count.checkStrike()) {
+            if (count.checkStrike() && restart.doRestart()) {
                 computer = new Computer();
+            } else if (count.checkStrike()) {
+                break;
             }
         }
     }

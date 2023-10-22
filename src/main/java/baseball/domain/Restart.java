@@ -7,6 +7,10 @@ public class Restart {
 
     private static final String END_NUMBER = "2";
 
+    public boolean doRestart(){
+        return checkRestartNumber(inputRestartNumber());
+    }
+
     public String inputRestartNumber() {
         return Console.readLine();
     }
