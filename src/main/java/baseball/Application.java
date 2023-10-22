@@ -50,13 +50,13 @@ public class Application{
     private static List<Integer> input(){
         List<Integer> inputNumbers;
         System.out.print("숫자를 입력해주세요: ");
-        String inputString = readLine();
-        throwIfInvalidInputString(inputString);
-        inputNumbers = stringIntoIntegerList(inputString);
+        String numberInput = readLine();
+        throwIfInvalidNumberInput(numberInput);
+        inputNumbers = stringIntoIntegerList(numberInput);
         return inputNumbers;
     }
 
-    private static void throwIfInvalidInputString(String inputString){
+    private static void throwIfInvalidNumberInput(String inputString){
         if (isNotThreeDigits(inputString) || isDuplicated(inputString) || isNotInRange(inputString)){
             throw new IllegalArgumentException();
         }
