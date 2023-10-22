@@ -70,8 +70,8 @@ class Game{
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
         }
-        for (int i = 0; i < input.length(); i++) {
-            int num = input.charAt(i) - '0';
+        for (char digit : input.toCharArray()) {
+            int num = digit - '0';
             if (num < 1 || num > 9) {
                 throw new IllegalArgumentException("1부터 9까지의 숫자를 입력해주세요.");
             }
