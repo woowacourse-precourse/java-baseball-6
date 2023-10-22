@@ -15,7 +15,7 @@ public class Game {
     public Game(GameNumbers answer, ScoreCalculator scoreCalculator) {
         this.scoreCalculator = scoreCalculator;
         this.answer = answer;
-        isRunning = false;
+        isRunning = true;
     }
 
     public void runGame() {
