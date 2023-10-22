@@ -11,13 +11,13 @@ public class OutputView {
     private static final String THREE_STRIKE = "3스트라이크";
 
     public void printResult(Score score) {
-        if (score.getBall() == 0 && score.getStrike() == 0) {
-            System.out.println(NOTHING);
-            return;
-        }
         if (score.getStrike() == 3) {
             System.out.println(THREE_STRIKE);
             System.out.println(SUCCESS);
+            return;
+        }
+        if (score.getBall() == 0 && score.getStrike() == 0) {
+            System.out.println(NOTHING);
             return;
         }
         System.out.println(score.getBall() + BALL + score.getStrike() + STRIKE);
