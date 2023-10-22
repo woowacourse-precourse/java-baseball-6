@@ -25,22 +25,28 @@ enum Script {
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        startGame();
+        Boolean state = true;
+
+        do{
+            runGame();
+
+            if(Console.readLine().equals("2")) {
+                state = false;
+            }
+        } while(state);
+
     }
 
-    public static void startGame() {
+    public static void runGame() {
         List<Integer> computer = generateRandomNumberList();
-        List<Integer> user = generateRandomNumberList();
-        String input = new String();
-        Boolean result;
+        List<Integer> user;
 
         Script.START.print();
 
-        while (true) {
+        while(true) {
             Script.INPUT.print();
             user = checkValidation(Console.readLine());
-            result = matchNumber(computer, user);
-            if(result && Console.readLine().equals("2")) {
+            if(matchNumber(computer, user)) {
                 break;
             }
         }
