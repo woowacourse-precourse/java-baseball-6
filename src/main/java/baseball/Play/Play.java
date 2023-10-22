@@ -58,7 +58,7 @@ public class Play {
             System.out.printf("%s스트라이크\n", strikes);
             return;
         }
-        System.out.printf("%s볼 %s스트라이크", balls, strikes);
+        System.out.printf("%s볼 %s스트라이크\n", balls, strikes);
         return;
     }
 
