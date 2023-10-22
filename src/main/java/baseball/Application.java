@@ -3,7 +3,12 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+enum ScoreType {
+    strike, ball
+}
 
 public class Application {
     public static void main(String[] args) {
@@ -31,24 +36,28 @@ public class Application {
     }
 
     private static void playGame(List<Integer> computerNumber) throws IllegalArgumentException {
-        String userInput = "";
-        List<Integer> parsedUserInput = new ArrayList<>();
+        List<Integer> parsedInput = new ArrayList<>();
+        HashMap<ScoreType, Integer> result = new HashMap<>();
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            userInput = Console.readLine();
-            if (userInput.length() != 3) {
+            String input = Console.readLine();
+            if (input.length() != 3) {
                 throw new IllegalArgumentException();
             }
-            parseString(parsedUserInput, userInput);
-            if (calc(parsedUserInput, computerNumber)) {
+            parseString(parsedInput, input);
+            calculateScore(parsedInput, computerNumber, result);
+            printResult(result.get(ScoreType.strike), result.get(ScoreType.ball));
+            if (result.get(ScoreType.strike) == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return;
             }
-            parsedUserInput.clear();
+            parsedInput.clear();
+            result.clear();
         }
     }
 
-    private static boolean calc(List<Integer> input, List<Integer> computerNumber) {
+    private static void calculateScore(List<Integer> input, List<Integer> computerNumber, HashMap result) {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < input.size(); i++) {
@@ -58,12 +67,8 @@ public class Application {
                 ball++;
             }
         }
-        printResult(strike, ball);
-        if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
-        }
-        return false;
+        result.put(ScoreType.strike, strike);
+        result.put(ScoreType.ball, ball);
     }
 
     private static void printResult(int strike, int ball) {
@@ -80,10 +85,10 @@ public class Application {
         System.out.println(resultString);
     }
 
-    private static void parseString(List<Integer> target, String str) throws IllegalArgumentException {
+    private static void parseString(List<Integer> result, String target) throws IllegalArgumentException {
         try {
-            for (int i = 0; i < str.length(); i++) {
-                target.add(str.charAt(i) - '0');
+            for (int i = 0; i < target.length(); i++) {
+                result.add(target.charAt(i) - '0');
             }
         } catch (Exception e) {
             throw new IllegalArgumentException();
@@ -92,11 +97,11 @@ public class Application {
 
     private static boolean isEndGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-        String userInput = Console.readLine();
-        if (userInput.length() == 1 && userInput.charAt(0) == '1') {
+        String input = Console.readLine();
+        if (input.length() == 1 && input.charAt(0) == '1') {
             return false;
         }
-        if (userInput.length() == 1 && userInput.charAt(0) == '2') {
+        if (input.length() == 1 && input.charAt(0) == '2') {
             return true;
         }
         throw new IllegalArgumentException();
