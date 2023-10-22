@@ -2,7 +2,7 @@ package baseball.constants;
 
 public final class Constants {
     public static final String ERROR_INVALID_NUMBER = "[ERROR] 잘못된 숫자를 입력하셨습니다. ";
-    public static final String ERROR_INVALID_COMMAND = "[ERROR} 잘못된 커멘드 명령어를 입력하셨습니다.";
+    public static final String ERROR_INVALID_COMMAND = "[ERROR] 잘못된 커멘드 명령어를 입력하셨습니다.";
     public static final int NUMBER_SIZE = 3;
 
     public static final String GAME_START_STRING = "숫자 야구 게임을 시작합니다.";
