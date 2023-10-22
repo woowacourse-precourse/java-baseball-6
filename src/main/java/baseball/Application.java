@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,5 +19,7 @@ public class Application {
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
+
+        List<Character> userNumbers = Parsing.parseIntoList(userInput);
     }
 }
