@@ -24,6 +24,7 @@ import view.RestartOrEndView;
 import view.ResultView;
 import view.StartView;
 import vo.AnswerBall;
+import vo.UserBall;
 
 public class BaseballController {
     public static void startBaseball() {
@@ -32,8 +33,8 @@ public class BaseballController {
             AnswerBall answerBall = new AnswerBall(CreateRandomNumber.createRandomNumber());
 
             while (true) {
-                List<Integer> userInput = InputView.userInput();
-                List<Integer> result = Result.getResult(answerBall, userInput);
+                UserBall userBall = new UserBall(InputView.userInput());
+                List<Integer> result = Result.getResult(answerBall, userBall);
                 if (ResultView.resultView(result)) {
                     break;
                 }
