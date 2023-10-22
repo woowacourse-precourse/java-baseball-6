@@ -1,10 +1,10 @@
 package baseball;
 
 public class BaseballGame {
-    private final GameSession gameSession = new GameSession();
+    private final GameHandler gameHandler = new GameHandler();
     public void runGame(){
         do{
-            gameSession.initializeGameSession();
-        }while(gameSession.playGameSession());
+            gameHandler.initializeGameSession();
+        }while(gameHandler.playGameSession());
     }
 }

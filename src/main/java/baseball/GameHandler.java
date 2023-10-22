@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class GameSession {
+public class GameHandler {
     private final User user = new User();
     private final Computer gameSession = new Computer();
     private final OutputView outputView = new OutputView();
@@ -41,31 +41,17 @@ public class GameSession {
     }
 
     private List<Integer> obtainValidUserGuess(){
-        while(true){
-            try{
-                outputView.printInputMessage();
-                String userInput = user.getUserInput();
-                validateUserGuess(userInput);
-                return user.getUserNumbers(userInput);
-            }catch (IllegalArgumentException e){
-                //print error message
-                //TODO : 에러 메세지 view 만들기
-            }
-        }
+        outputView.printInputMessage();
+        String userInput = user.getUserInput();
+        validateUserGuess(userInput);
+        return user.getUserNumbers(userInput);
     }
 
     private int obtainValidUserChoice() {
-        while(true){
-            try{
-                outputView.printEndMessage();
-                String userInput= user.getUserInput();
-                validateUserChoice(userInput);
-                return user.getRestartChoice(userInput);
-            }catch (IllegalArgumentException e){
-                //print error message
-                //TODO : 에러 메세지 view 만들기
-            }
-        }
+        outputView.printEndMessage();
+        String userInput= user.getUserInput();
+        validateUserChoice(userInput);
+        return user.getRestartChoice(userInput);
     }
 
     private void validateUserChoice(String userInput) {
