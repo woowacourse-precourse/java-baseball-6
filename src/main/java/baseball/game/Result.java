@@ -12,7 +12,7 @@ import static baseball.constant.Message.STRIKE;
  * Result 클래스는 게임의 결과를 다루기 위한 클래스이다. 한번 정해진 결과는 변경될 수 없기에 멤버 변수는 모두 final로 선언된다. 결과가 생성될 때 결과에 따라 출력될 메세지가 결정되고, 이는
  * {@link Result#toString()}메서드를 통해 반환받는다.
  */
-public class Result {
+class Result {
     /**
      * 스트라이크의 개수
      */
