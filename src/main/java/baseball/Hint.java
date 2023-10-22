@@ -28,7 +28,7 @@ public class Hint {
             System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         } else if (strike + ball == 0) {
-            sb.append("유효");
+            sb.append("낫싱");
         } else if (strike == 0) {
             sb.append(ball).append("볼");
         } else if (ball == 0) {
