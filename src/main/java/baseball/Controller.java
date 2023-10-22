@@ -31,7 +31,7 @@ public class Controller {
 
     private void proceedGame(GameData gameData) {
         while (true) {
-            List<Integer> trial = validator.validateBaseballNumber(InputView.readNumber("숫자를 입력해주세요 : "));
+            List<Integer> trial = validator.validatedBaseballNumber(InputView.readNumber("숫자를 입력해주세요 : "));
             List<Integer> result = gameData.computer().calculateResult(trial);
             OutputView.printResult(result);
             if (isThreeStrike(result)) {

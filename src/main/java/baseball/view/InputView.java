@@ -13,7 +13,7 @@ public class InputView {
     public static void validateNumber(String inputValue) {
         validateEmpty(inputValue);
         try {
-            Integer.parseInt(inputValue);
+            inputValue.chars().mapToObj(Integer::valueOf);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
