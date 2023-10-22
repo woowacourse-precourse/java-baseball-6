@@ -5,7 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Communicator {
+    private final Validator validator;
     private final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+
+    public Communicator(Validator validator) {
+        this.validator = validator;
+    }
+
     public void printStart() {
         System.out.println(START_MESSAGE);
     }
@@ -15,8 +21,8 @@ public class Communicator {
 
         List<Integer> input = new ArrayList<>();
 
-        // TODO: Validate Input
         String inputString = Console.readLine();
+        validator.validateInputString(inputString);
         for (int i=0; i<inputString.length(); i++) {
             input.add(inputString.charAt(i) - '0');
         }
