@@ -13,24 +13,14 @@ public class BaseBallNumberListTest {
     public void should_throwsIllegalArgumentException_when_lengthOfTheListIsNot3() {
 
         assertThrows(IllegalArgumentException.class, () ->
-                BaseBallNumberList.from(
+                new BaseBallNumberList(
                         List.of(1, 5, 9, 6)));
     }
-
-    @Test
-    @DisplayName("숫자가 아닌 문자 입력 시 IllegalArgumentException이 발생한다")
-    public void should_throwsIllegalArgumentException_when_inputForNotNumber() {
-        assertThrows(IllegalArgumentException.class, () ->
-                BaseBallNumberList.from(
-                        "a13"));
-    }
-
     @Test
     @DisplayName("문자로 숫자를 3개가 아닌 입력시 IllegalArgumentException이 발생한다")
     public void should_throwsIllegalArgumentException_when_inputForStringLengthIsNot3() {
         assertThrows(IllegalArgumentException.class, () ->
-                BaseBallNumberList.from(
-                        "41"));
+                new BaseBallNumberList(new NumericString(
+                        "41").toList()));
     }
-
 }
