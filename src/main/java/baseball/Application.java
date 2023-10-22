@@ -68,7 +68,7 @@ public class Application {
         }
     }
 
-    static List<Integer> inputNumbers() throws IllegalArgumentException{
+    static List<Integer> inputNumbers() throws IllegalArgumentException {
 
         List<Integer> my = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
@@ -79,13 +79,13 @@ public class Application {
         }
 
         for (int i = 0; i < inputNumbers.length(); i++){
-            try {
-                int number = Character.getNumericValue(inputNumbers.charAt(i));
-                my.add(number);
-            } catch (Exception e) {
-                throw new IllegalArgumentException("입력한 문자가 숫자가 아닙니다.");
+            int number = Character.getNumericValue(inputNumbers.charAt(i));
+
+            if ( 0 >= number || number > 9) {
+                throw new IllegalArgumentException("입력한 문자는 숫자가 아닙니다.");
             }
 
+            my.add(number);
         }
 
         return my;
