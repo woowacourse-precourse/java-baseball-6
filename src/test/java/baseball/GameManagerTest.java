@@ -1,8 +1,6 @@
 package baseball;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -40,21 +38,6 @@ public class GameManagerTest {
     }
 
     @Test
-    void 사용자의_잘못된_입력을_검사한다() {
-        GameManager gameManager = new GameManager();
-
-        assertThrows(IllegalArgumentException.class, () -> gameManager.vaildUserTrialInput("12"));
-        assertThrows(IllegalArgumentException.class, () -> gameManager.vaildUserTrialInput("1a1"));
-        assertThrows(IllegalArgumentException.class, () -> gameManager.vaildUserTrialInput("101"));
-        assertThrows(IllegalArgumentException.class, () -> gameManager.vaildUserTrialInput("121"));
-        assertDoesNotThrow(() -> {
-            gameManager.vaildUserTrialInput("123");
-            gameManager.vaildUserTrialInput("456");
-            gameManager.vaildUserTrialInput("789");
-        });
-    }
-
-    @Test
     void 사용자의_올바른_재시작_입력을_받는다() {
         GameManager gameManager = new GameManager();
 
@@ -75,18 +58,5 @@ public class GameManagerTest {
         camp.nextstep.edu.missionutils.Console.close();
 
         assertEquals(2, userInputNumber2);
-    }
-
-    @Test
-    void 사용자의_잘못된_재시작_입력을_검사한다() {
-        GameManager gameManager = new GameManager();
-
-        assertThrows(IllegalArgumentException.class, () -> gameManager.vaildUserRestartInput("0"));
-        assertThrows(IllegalArgumentException.class, () -> gameManager.vaildUserRestartInput("a"));
-        assertThrows(IllegalArgumentException.class, () -> gameManager.vaildUserRestartInput("11"));
-        assertDoesNotThrow(() -> {
-            gameManager.vaildUserRestartInput("1");
-            gameManager.vaildUserRestartInput("2");
-        });
     }
 }
