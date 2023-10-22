@@ -35,12 +35,4 @@ public class InputValidator {
             throw new IllegalArgumentException(String.format("입력값이 %d자리가 아닙니다.", size));
         }
     }
-
-    private void validateContinueNumber(String input) {
-        int gameContinue = GameConfig.GAME_RESTART.getValue();
-        int gameExit = GameConfig.GAME_EXIT.getValue();
-        if (Integer.parseInt(input) != gameContinue && Integer.parseInt(input) != gameExit) {
-            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
-        }
-    }
 }
