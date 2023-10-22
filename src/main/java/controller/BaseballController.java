@@ -1,7 +1,7 @@
 /*
  * <pre>
  * Class : BaseballController
- * Comment: baseball.Application 시작 클래스
+ * Comment: model과 view를 연결
  * History
  * ================================================================
  * DATE             AUTHOR           NOTE
