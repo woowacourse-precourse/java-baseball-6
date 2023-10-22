@@ -16,24 +16,6 @@ public class Application {
         new GameManager().playGame();
 
     }
-
-    public static List<Integer> getUserGuessThreeDigitNumber(){
-
-        List<Integer> user = new ArrayList<>();
-        String userThreeNumbers = Console.readLine();
-        validateUserThreeNumbers(userThreeNumbers);
-        for(char c: userThreeNumbers.toCharArray()){
-            user.add(Character.getNumericValue(c));
-        }
-        return user;
-    }
-
-    public static boolean shouldRestartGame(){//반환값이 1이면 restart
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String choice = Console.readLine();
-        return validateRestartOrExitChoice(choice);
-    }
-
     public static void validateUserThreeNumbers(String userThreeNumbers){
         if(userThreeNumbers.length()!=NUM_DIGITS)//3개 미만, 또는 초과해서 입력된 경우에 대한 예외처리
             throw new IllegalArgumentException("3개의 수를 입력하지 않았습니다.");
@@ -62,7 +44,7 @@ public class Application {
 
         String message = "";
         if(numStrikes == NUM_DIGITS){
-            message = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다.! 게임 종료";
+            message = "3스트라이크";
         }
         if(numBalls>0){
             message = numBalls+"볼";

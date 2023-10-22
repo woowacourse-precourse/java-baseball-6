@@ -1,6 +1,7 @@
 package baseball.Controller;
 
 import baseball.dto.RandomNumGenerator;
+import baseball.view.InputView;
 
 import java.util.List;
 
@@ -8,7 +9,9 @@ import static baseball.Application.*;
 
 public class GameManager {
 
-    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.\n";
+    private final InputView inputView = new InputView();
+
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     public void playGame() {
         System.out.println(GAME_START_MESSAGE);
         doGameUntilUserQuit();
@@ -19,7 +22,7 @@ public class GameManager {
         do {
             List<Integer> computer = RandomNumGenerator.generateComputerRandomThreeDigitNumber();
             doGameLoopUntilGameOver(computer);
-            reGame = shouldRestartGame(); //true이면, 재시작
+            reGame = inputView.readGameControlInput(); //true이면, 재시작
         } while (reGame == true) ; //
 
     }
@@ -27,7 +30,7 @@ public class GameManager {
     private void doGameLoopUntilGameOver(List<Integer> computer) {//true이면, 게임 종료하기 위한 단계로 간다.
         boolean gameLoopOver=false;
         do {
-            List<Integer> user = getUserGuessThreeDigitNumber();
+            List<Integer> user = inputView.readGameInput();
             gameLoopOver = playSingleGameRound(user, computer);
         } while (gameLoopOver != true);
     }
