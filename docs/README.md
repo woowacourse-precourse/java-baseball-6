@@ -4,20 +4,20 @@
 
 - [ ]  “숫자 야구 게임을 시작합니다.” 라는 문구를 출력한다.
 - [ ]  1 부터 9 까지 서로 다른 3 개의 임의의 수를 선택한다.
-    - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+    - Random 값 추출은`camp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()`를 활용한다.
 
 <br>
 
 ## 숫자 입력
 
 - [ ]  “숫자를 입력해주세요.” 라는 문구와 함께 3 자리의 서로 다른 숫자를 입력 받는다.
-    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+    - 사용자가 입력하는 값은`camp.nextstep.edu.missionutils.Console`의`readLine()`을 활용한다.
 - [ ]  입력값을 검증한다.
-    - 입력 값이 3 자리가 아닐 경우
+    - 입력 값이 3 자리가 아니고, 숫자로만 이루어 지지 않은 경우
     - 입력 값에 중복되는 숫자가 있을 경우
     - 입력 값에 0 이 포함된 경우
     
-    세 조건 중 하나라도 만족 시 `IllegalArgumentException` 을 발생 한다.
+  세 조건 중 하나라도 만족 시 `IllegalArgumentException` 을 발생 한다.
 
 <br>
 
