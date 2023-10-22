@@ -17,8 +17,7 @@ public class GameManager {
     void playRound() {
         BallNumber playerNumber = inputPlayerNumber();
         ResultCalculator resultCalculator = new ResultCalculator(computerNumber);
-        Result roundResult = resultCalculator.calculateResult(playerNumber);
-        endRound(roundResult);
+        endRound(resultCalculator.calculateResult(playerNumber));
     }
 
     private void endRound(Result roundResult) {
