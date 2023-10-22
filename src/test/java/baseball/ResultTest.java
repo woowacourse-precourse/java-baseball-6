@@ -15,4 +15,13 @@ class ResultTest {
         assertTrue(isThreeStrike);
     }
 
+    @Test
+    void Three_스트라이크가_아닐_경우_false를_반환한다() {
+        Result result = new Result(2, 1);
+
+        boolean isThreeStrike = result.isThreeStrike();
+
+        assertFalse(isThreeStrike);
+    }
+
 }
