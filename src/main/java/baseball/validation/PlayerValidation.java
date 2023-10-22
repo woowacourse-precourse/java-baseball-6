@@ -21,7 +21,7 @@ public class PlayerValidation {
 
     public static void isCheckSize(String numbers, int size) {
         if(numbers.length() != size){
-            throw new IllegalArgumentException("3자리 수가 아닙니다");
+            throw new IllegalArgumentException(size+"자리 수가 아닙니다");
         }
     }
 
