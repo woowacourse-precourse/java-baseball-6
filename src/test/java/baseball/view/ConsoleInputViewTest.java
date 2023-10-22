@@ -3,8 +3,8 @@ package baseball.view;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.Application;
-import baseball.exception.view.InputBlankException;
-import baseball.exception.view.InputCanNotChangeToIntException;
+import baseball.exception.consoleView.ConsoleInputBlankException;
+import baseball.exception.consoleView.ConsoleInputCanNotChangeToIntException;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -21,7 +21,7 @@ class ConsoleInputViewTest extends NsTest {
 
         // when & then
         assertThatThrownBy(() -> run(blank))
-                .isInstanceOf(InputBlankException.class);
+                .isInstanceOf(ConsoleInputBlankException.class);
     }
 
     @Test
@@ -31,7 +31,7 @@ class ConsoleInputViewTest extends NsTest {
 
         // when & then
         assertThatThrownBy(() -> run(str))
-               .isInstanceOf(InputCanNotChangeToIntException.class);
+               .isInstanceOf(ConsoleInputCanNotChangeToIntException.class);
     }
 
     @Override

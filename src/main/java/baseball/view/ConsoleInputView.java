@@ -2,8 +2,8 @@ package baseball.view;
 
 import static java.util.regex.Pattern.matches;
 
-import baseball.exception.view.InputBlankException;
-import baseball.exception.view.InputCanNotChangeToIntException;
+import baseball.exception.consoleView.ConsoleInputBlankException;
+import baseball.exception.consoleView.ConsoleInputCanNotChangeToIntException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleInputView implements InputView {
@@ -19,13 +19,13 @@ public class ConsoleInputView implements InputView {
 
     private void checkIsBlank(final String string) {
         if (string.isBlank()) {
-            throw new InputBlankException();
+            throw new ConsoleInputBlankException();
         }
     }
 
     private void checkCanChangeToInteger(final String string) {
         if (!matches(REGEXP_PATTERN_NUMBER, string)) {
-            throw new InputCanNotChangeToIntException(string);
+            throw new ConsoleInputCanNotChangeToIntException(string);
         }
     }
 }
