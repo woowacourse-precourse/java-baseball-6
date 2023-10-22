@@ -21,12 +21,12 @@ public class GameManager {
     }
 
     private void doGameUntilUserQuit() {
-        boolean reGame=false;
+        int control;
         do {
             List<Integer> computer = RandomNumGenerator.generateComputerRandomThreeDigitNumber();
             doGameLoopUntilGameOver(computer);
-            reGame = inputView.readGameControlInput(); //true이면, 재시작
-        } while (reGame == true) ; //
+            control = inputView.readGameControlInput();
+        } while (control != 2) ;
 
     }
 
