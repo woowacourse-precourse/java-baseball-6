@@ -1,26 +1,26 @@
 package baseball;
 
-import java.util.Scanner;
 import java.util.logging.Logger;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     private static final Logger logger = Logger.getLogger(Application.class.getName());
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Scanner sc = new Scanner(System.in);
+
         do {
             Player player = new Player(Count.provideCount("123"));
             Computer computer = new Computer();
             startGame();
-            inGame(sc, player, computer);
-        } while (!endGame(sc));
+            inGame(player, computer);
+        } while (!endGame());
 
     }
 
-    private static boolean endGame(Scanner sc) {
+    private static boolean endGame() {
         logger.info("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = sc.next();
+        String input = Console.readLine();
         return input.equals("2");
     }
 
@@ -28,11 +28,11 @@ public class Application {
         logger.info("숫자 야구 게임을 시작합니다.");
     }
 
-    private static void inGame(Scanner sc, Player player, Computer computer) {
+    private static void inGame(Player player, Computer computer) {
         while (true) {
-            String guess = getGuessNumber(sc);
+            String guess = getGuessNumber();
             player.enterGuess(Count.provideCount(guess));
-//            String gameResult = computer.judgeGameResult(player.getCount());
+//            String gameResult = computer.judgeGameResult(player.getGuess());
 //            logger.info(gameResult);
 //            if (gameOver(gameResult)) {
 //                break;
@@ -48,10 +48,9 @@ public class Application {
         return false;
     }
 
-    private static String getGuessNumber(Scanner sc) {
+    private static String getGuessNumber() {
         logger.info("숫자를 입력해주세요 : ");
-        String guess = sc.next();
-        return guess;
+        return Console.readLine();
     }
 
 }
