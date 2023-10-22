@@ -4,6 +4,10 @@ import baseball.model.ResultScoreBoard;
 
 public class OutputHandler {
 
+    public void printMessage (String message) {
+        System.out.println(message);
+    }
+
     public void printScore (ResultScoreBoard resultScoreBoard) {
         if (resultScoreBoard.strike() == 0 && resultScoreBoard.ball() == 0) {
             System.out.println("낫싱");

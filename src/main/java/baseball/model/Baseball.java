@@ -16,10 +16,10 @@ public class Baseball implements Game{
     private final OutputHandler outputHandler;
     private Boolean status;
 
-    public Baseball(InputHandler inputHandler) {
+    public Baseball(InputHandler inputHandler, OutputHandler outputHandler) {
         computer = new ArrayList<>();
         this.inputHandler = inputHandler;
-        outputHandler = new OutputHandler();
+        this.outputHandler = outputHandler;
         initGame();
     }
 
