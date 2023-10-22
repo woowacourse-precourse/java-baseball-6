@@ -86,7 +86,8 @@ public class Application {
     }
 
     private static boolean getResult(int[] answer, int[] inputNumber) {
-        int ball, strike;
+        int ball;
+        int strike;
 
         strike = getStrike(answer, inputNumber);
         ball = getCount(answer, inputNumber) - strike;
