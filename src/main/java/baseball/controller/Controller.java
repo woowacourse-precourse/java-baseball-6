@@ -1,14 +1,16 @@
 package baseball.controller;
 
+import static baseball.controller.mapper.ResultMapper.mapToStringWith;
 import static baseball.util.Converter.convertStringToIntegerList;
 
-import baseball.controller.mapper.ResultMapper;
 import baseball.model.Computer;
 import baseball.model.GuessNumber;
 import baseball.model.State;
 import baseball.util.BaseBallGameNumberGenerator;
 import baseball.view.ConsoleInputView;
 import baseball.view.ConsoleOutputView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 
@@ -22,43 +24,42 @@ public class Controller {
     }
 
     public void start() {
-        Computer computer = Computer.createDefault(new BaseBallGameNumberGenerator());
-        ResultMapper resultMapper = new ResultMapper();
         consoleOutputView.printStartMessage();
-        play(computer, resultMapper);
+        State state = State.RESTART;
+        while (State.isMoreGame(state)) {
+            play();
+            state = askMoreGame();
+        }
+    }
+
+    private void play() {
+        Computer computer = Computer.createDefault(new BaseBallGameNumberGenerator());
+        List<Integer> guessNumbers = new ArrayList<>();
+        System.out.println(computer.getNumbers());
+        while (!computer.isGameOver(guessNumbers)) {
+            guessNumbers = getGuessNumbers();
+            String result = getResult(computer, guessNumbers);
+            consoleOutputView.printGuessNumberResult(result);
+        }
         consoleOutputView.printWinningMessage();
-        int state = askMore();
-        if (State.isMoreGame(state)) {
-            start();
-        }
     }
 
-    private void play(final Computer computer, final ResultMapper resultMapper) {
-        GuessNumber guessNumber = guess();
-        int ballCount = computer.countBalls(guessNumber.getGuessNumbers());
-        int strikeCount = computer.countStrikes(guessNumber.getGuessNumbers());
-        String result = resultMapper.makeResult(ballCount, strikeCount);
-        consoleOutputView.printGuessNumberResult(result);
-        if (!computer.isGameOver(strikeCount)) {
-            play(computer, resultMapper);
-        }
-    }
-
-    private GuessNumber guess() {
+    private List<Integer> getGuessNumbers() {
         consoleOutputView.printGuessNumberInputMessage();
         String guessNumbers = consoleInputView.readStringCanConvertInt();
-        return new GuessNumber(convertStringToIntegerList(guessNumbers));
+        GuessNumber guess = new GuessNumber(convertStringToIntegerList(guessNumbers));
+        return guess.getGuessNumbers();
     }
 
-    private int askMore() {
+    private String getResult(final Computer computer, final List<Integer> guessNumbers) {
+        int ballCount = computer.countBalls(guessNumbers);
+        int strikeCount = computer.countStrikes(guessNumbers);
+        return mapToStringWith(ballCount, strikeCount);
+    }
+
+    private State askMoreGame() {
         consoleOutputView.printRestartOrFinishMessage();
         String stateNumber = consoleInputView.readStringCanConvertInt();
-        int state = Integer.parseInt(stateNumber);
-        validate(state);
-        return state;
-    }
-
-    private void validate(final int state) {
-        State.validate(state);
+        return State.createWith(stateNumber);
     }
 }
