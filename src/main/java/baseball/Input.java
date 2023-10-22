@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 public class Input {
 
     public static String readNumber() {
-        String playerBall = Console.readLine();
-        ErrorDetector.throwIfNumberIsWrong(playerBall);
-        return playerBall;
+        String number = Console.readLine();
+        ErrorDetector.throwIfNumberIsWrong(number);
+        return number;
     }
 
     public static String readOption() {

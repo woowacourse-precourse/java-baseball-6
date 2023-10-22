@@ -2,10 +2,8 @@ package baseball;
 
 public class Referee {
 
-    private static BallCount ballCount;
-
     public static BallCount checkBallCount(String playerBall, String computerBall) {
-        ballCount = new BallCount();
+        BallCount ballCount = new BallCount();
         for (int i = 0; i < 3; i++) {
             String playerNum = playerBall.substring(i, i + 1);
             if (computerBall.contains(playerNum)) {

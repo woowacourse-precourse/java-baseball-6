@@ -2,8 +2,13 @@ package baseball;
 
 public class BallCount {
 
-    private int strike = 0;
-    private int ball = 0;
+    private int strike;
+    private int ball;
+
+    BallCount() {
+        strike = 0;
+        ball = 0;
+    }
 
     public void addStrikeCount() {
         strike++;

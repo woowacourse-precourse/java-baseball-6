@@ -15,7 +15,10 @@ public class RandomNumberGenerator {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             set.add(randomNumber);
         }
+        return getStringNumber();
+    }
 
+    private static String getStringNumber() {
         StringBuffer sb = new StringBuffer();
         Iterator<Integer> itr = set.iterator();
         while (itr.hasNext()) {
