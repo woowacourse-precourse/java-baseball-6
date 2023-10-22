@@ -21,9 +21,11 @@ public class Game {
     }
 
     private void gameStart() {
+        BallAndStrikeCount ballAndStrikeCount;
         do {
             Numbers player = InputView.inputNumber();
-        } while (false);
+            ballAndStrikeCount = manager.ballAndStrikeComparison(this.systemNumber, player);
+        } while (!ballAndStrikeCount.threeStrike());
         OutPutView.printEndMessage();
     }
 
