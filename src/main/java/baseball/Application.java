@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Application {
@@ -60,6 +61,19 @@ public class Application {
             System.out.println(result);
         }
     }
+
+
+    public void checkDuplicateNumber(String myNumber){
+        HashMap<String,Integer> countNumber = new HashMap<>();
+        for(int i = 0; i < myNumber.length(); i++){
+            String number = Character.toString(myNumber.charAt(i));
+            if (!countNumber.containsKey(number)){
+                countNumber.put(number,1);
+            } else {
+                throw new IllegalArgumentException("myNumber의 값은 서로 다른 숫자로 이루어져야 합니다");
+            }
+        }
+    }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         // TODO: 프로그램 구현
@@ -79,6 +93,7 @@ public class Application {
 
         while (!isExit){
             String myNumber = Console.readLine();
+            baseballGame.checkDuplicateNumber(myNumber);
             boolean victory = baseballGame.compareMyInputNumberAndComputerNumber(myNumber,computerNumber);
             if (victory) {
                 // strike가 3이였을 때 실행되는 부분
