@@ -1,10 +1,8 @@
 package baseball;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import camp.nextstep.edu.missionutils.*;
 
 public class Application 
@@ -13,53 +11,64 @@ public class Application
     {
         
     	System.out.println("숫자 야구 게임을 시작합니다.");
-    	
-    	
     	List<Integer> computer = makeThreeRandomNum();
-    	System.out.println(computer);
     	
-    	System.out.print("숫자를 입력해주세요 : ");
-    	String userInput = Console.readLine();
+    	String userInput;
+    	int strike;
+    	int ball;
+    	char currentNum;
+        int num;
+    	while(true) 
+    	{
+	    	System.out.print("숫자를 입력해주세요 : ");
+	    	userInput = Console.readLine();
+	    	inputLengthThree(userInput);
+	    	inputNumberOnly(userInput);
+	    	inputAllDistinct(userInput);
+    	
+    		strike = 0;
+        	ball = 0 ;
+        	
+	    	for (int i = 0; i < 3; i++) 
+	    	{
+	    		currentNum = userInput.charAt(i);
+	    		num = Character.getNumericValue(currentNum);
+	    		if(computer.contains(num)) 
+	    		{
+	    			if(num == computer.get(i)) 
+	    			{
+	    				strike = strike + 1;
+	    			} 
+	    			else 
+	    			{
+	    				ball = ball + 1;
+	    			}
+	    		}
+	    	}
+	    	
+	    	if(strike == 3)
+	    		break;
+	    	
+	    	if ((strike == 0) && (ball == 0)) 
+	    	{
+	    		System.out.println("낫싱");
+	    	} 
+	    	else if ((strike == 0) && (ball > 0))
+	    	{
+	    		System.out.println(ball+"볼");
+	    	}
+	    	else if ((strike > 0) && (ball == 0))
+	    	{
+	    		System.out.println(strike+"스트라이크");
+	    	}
+	    	else if ((strike > 0) && (ball > 0)) {
+	    		System.out.println(ball+"볼 "+strike+"스트라이크");
+	    	}
+	    	
+	    	
+    	}
     	Console.close();
-    	inputLengthThree(userInput);
-    	inputNumberOnly(userInput);
-    	inputAllDistinct(userInput);
-    	
-		int strike = 0;
-    	int ball = 0;
-    	for (int i = 0; i < 3; i++) 
-    	{
-    		char currentNum = userInput.charAt(i);
-    		int num = Character.getNumericValue(currentNum);
-    		if(computer.contains(num)) 
-    		{
-    			if(num == computer.get(i)) 
-    			{
-    				strike = strike + 1;
-    			} 
-    			else 
-    			{
-    				ball = ball + 1;
-    			}
-    		}
-    	}
-    	
-    	if ((strike == 0) && (ball == 0)) 
-    	{
-    		System.out.println("낫싱");
-    	} 
-    	else if ((strike == 0) && (ball > 0))
-    	{
-    		System.out.println(ball+"볼");
-    	}
-    	else if ((strike > 0) && (ball == 0))
-    	{
-    		System.out.println(strike+"스트라이크");
-    	}
-    	else
-    	{
-    		System.out.println(ball+"볼 "+strike+"스트라이크");
-    	}
+    	System.out.println(strike+"스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
 	public static void inputAllDistinct(String userInput) {
