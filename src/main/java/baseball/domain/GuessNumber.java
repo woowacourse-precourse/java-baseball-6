@@ -28,7 +28,7 @@ public class GuessNumber {
     }
 
     private static boolean isGameNumberDigit(final List<Integer> guessNumbers) {
-        return guessNumbers.size() == BASEBALL_GAME_NUMBER_DIGIT;
+        return guessNumbers.size() == BASEBALL_GAME_NUMBER_DIGIT.getValue();
     }
 
     private void validateUniqueNumber(final List<Integer> guessNumbers) {
@@ -40,7 +40,7 @@ public class GuessNumber {
     private static boolean isUniqueNumber(final List<Integer> guessNumbers) {
         return guessNumbers.stream()
                 .distinct()
-                .count() == BASEBALL_GAME_NUMBER_DIGIT;
+                .count() == BASEBALL_GAME_NUMBER_DIGIT.getValue();
     }
 
     private void validateNumberRangeCondition(final List<Integer> guessNumbers) {
@@ -53,7 +53,7 @@ public class GuessNumber {
     }
 
     private boolean isGameNumberRangeCondition(final int guessNumber) {
-        return START_INCLUSIVE <= guessNumber && guessNumber <= END_INCLUSIVE;
+        return START_INCLUSIVE.getValue() <= guessNumber && guessNumber <= END_INCLUSIVE.getValue();
     }
 
     public List<Integer> getGuessNumbers() {

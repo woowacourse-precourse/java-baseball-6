@@ -13,8 +13,8 @@ public class BaseBallGameNumberGenerator implements NumberGenerator {
     @Override
     public List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < BASEBALL_GAME_NUMBER_DIGIT) {
-            int pickNumberInRange = pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+        while (numbers.size() < BASEBALL_GAME_NUMBER_DIGIT.getValue()) {
+            int pickNumberInRange = pickNumberInRange(START_INCLUSIVE.getValue(), END_INCLUSIVE.getValue());
             if (!numbers.contains(pickNumberInRange)) {
                 numbers.add(pickNumberInRange);
             }

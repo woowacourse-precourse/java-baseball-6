@@ -25,7 +25,7 @@ public class Referee {
     public String calculateResult(final List<Integer> guessNumbers) {
         int ballCount = NO_BALL;
         int strikeCount = NO_STRIKE;
-        for (int index = 0; index < BASEBALL_GAME_NUMBER_DIGIT; index++) {
+        for (int index = 0; index < BASEBALL_GAME_NUMBER_DIGIT.getValue(); index++) {
             if (computer.isExistNumber(guessNumbers.get(index))) {
                 ballCount += checkBall(guessNumbers.get(index), index);
                 strikeCount += checkStrike(guessNumbers.get(index), index);
