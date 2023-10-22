@@ -33,4 +33,28 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
+    @Test
+    void 입력받은_수가_2자리_수라면() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력받은_수가_숫자가_아니라면() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("가나다"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력받은_수중에_중복되는_수가_있다면() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 }
