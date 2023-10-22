@@ -16,7 +16,7 @@ public class BallNumber {
     }
 
     public BallNumber(ArrayList<Integer> newBallNumber) {
-        ballNumberList.addAll(newBallNumber);
+        ballNumberList = newBallNumber;
     }
 
     public int getBallNumberByDigit(int digit) {
