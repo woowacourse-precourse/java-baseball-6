@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static baseball.Constants.PLAY_NUMBER_DIGIT;
+import static baseball.Constant.PLAY_NUMBER_DIGIT;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -21,7 +21,7 @@ public class RandomNumber {
     }
 
     private static boolean isBuilderEnoughPicked(final StringBuilder numberBuilder) {
-        return numberBuilder.length() == PLAY_NUMBER_DIGIT;
+        return numberBuilder.length() == PLAY_NUMBER_DIGIT.getValue();
     }
 
     private static void saveNewNumber(final StringBuilder numberBuilder) {

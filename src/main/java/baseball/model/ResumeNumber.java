@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static baseball.Constants.PLAY_WANT;
+import static baseball.Constant.PLAY_WANT;
 
 public class ResumeNumber {
 
@@ -11,7 +11,7 @@ public class ResumeNumber {
     }
 
     public static ResumeNumber createDefault() {
-        return new ResumeNumber(PLAY_WANT);
+        return new ResumeNumber(PLAY_WANT.getValue());
     }
 
     public void updateNumber(final int number) {
@@ -19,6 +19,6 @@ public class ResumeNumber {
     }
 
     public boolean isWantMoreGame() {
-        return resumeNumber == PLAY_WANT;
+        return resumeNumber == PLAY_WANT.getValue();
     }
 }

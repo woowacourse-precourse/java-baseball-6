@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import static baseball.Constants.PLAY_NUMBER_DIGIT;
+import static baseball.Constant.PLAY_NUMBER_DIGIT;
 
 import baseball.model.GameRule;
 import baseball.model.RandomNumber;
@@ -59,6 +59,6 @@ public class GameController {
     }
 
     private boolean isGameEnd(final int strike) {
-        return strike == PLAY_NUMBER_DIGIT;
+        return strike == PLAY_NUMBER_DIGIT.getValue();
     }
 }

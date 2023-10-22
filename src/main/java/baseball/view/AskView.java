@@ -1,7 +1,7 @@
 package baseball.view;
 
-import static baseball.Constants.END_WANT;
-import static baseball.Constants.PLAY_WANT;
+import static baseball.Constant.END_WANT;
+import static baseball.Constant.PLAY_WANT;
 
 public class AskView {
 
@@ -10,6 +10,6 @@ public class AskView {
     }
 
     public static void printAskResume() {
-        System.out.println("게임을 새로 시작하려면 " + PLAY_WANT + ", 종료하려면 " + END_WANT + "를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 " + PLAY_WANT.getValue() + ", 종료하려면 " + END_WANT.getValue() + "를 입력하세요.");
     }
 }
