@@ -48,7 +48,7 @@ class BaseballGameMachineTest {
         assertThat(baseballGameMachine.isSuccess(userInputResult)).isEqualTo(false);
     }
 
-    @DisplayName("유저 input이 3 스트라이크 아닐 경우, 게임 성공을 판단한느 테스트")
+    @DisplayName("유저 input이 3 스트라이크 아닐 경우, 게임 성공을 판단하는 테스트")
     @Test
     void isSuccessBallStrikeTest() {
         //given
@@ -57,5 +57,27 @@ class BaseballGameMachineTest {
         final List<Integer> userInputResult = List.of(1, 3);
         //then
         assertThat(baseballGameMachine.isSuccess(userInputResult)).isEqualTo(false);
+    }
+
+    @DisplayName("유저 input이 1일 때, 새 게임의 여부를 판단하는 테스트")
+    @Test
+    void isNewGameTest() {
+        //given
+        BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
+        //when
+        final String userInput = "1";
+        //then
+        assertThat(baseballGameMachine.newGameOrEnd(userInput)).isEqualTo(false);
+    }
+
+    @DisplayName("유저 input이 2일 때, 새 게임의 여부를 판단하는 테스트")
+    @Test
+    void isEndGame() {
+        //given
+        BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
+        //when
+        final String userInput = "2";
+        //then
+        assertThat(baseballGameMachine.newGameOrEnd(userInput)).isEqualTo(true);
     }
 }
