@@ -123,7 +123,7 @@ public class Application {
                 continue;
             }
 
-            number += Math.pow(10, i) * randomNumber;
+            number += Math.pow(10, 2 - i) * randomNumber;
             checkNumber[randomNumber] = true;
         }
 
