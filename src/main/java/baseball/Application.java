@@ -15,23 +15,23 @@ public class Application {
 }
 
 class Game{
-    List<Integer> computer_answer = new ArrayList<>();
-    List<Integer> answer = new ArrayList<>();
+    List<Integer> computerAnswer = new ArrayList<>();
+    List<Integer> userAnswer = new ArrayList<>();
 
     void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean check = false;
 
         while (!check) {
-            computer_answer.clear();
-            computer();
+            computerAnswer.clear();
+            getComputerNumber();
 
             while (true) {
-                answer.clear();
-                user();
+                userAnswer.clear();
+                getUserNumber();
 
                 Hint hint = new Hint();
-                hint.score(answer, computer_answer);
+                hint.calculateScore(userAnswer, computerAnswer);
 
                 if (hint.result()) {
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -50,23 +50,23 @@ class Game{
         }
     }
 
-    void computer(){
-        while (computer_answer.size() < 3) {
+    void getComputerNumber(){
+        while (computerAnswer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer_answer.contains(randomNumber)) {
-                computer_answer.add(randomNumber);
+            if (!computerAnswer.contains(randomNumber)) {
+                computerAnswer.add(randomNumber);
             }
         }
     }
 
-    void user() {
+    void getUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
         try {
             validateInput(input);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("숫자가 아닙니다.");
+            throw new IllegalArgumentException("게임 종료");
         }
     }
 
@@ -79,10 +79,10 @@ class Game{
             if (num < 1 || num > 9) {
                 throw new IllegalArgumentException("1부터 9까지의 숫자를 입력해주세요.");
             }
-            if (answer.contains(num)) {
+            if (userAnswer.contains(num)) {
                 throw new IllegalArgumentException("중복된 숫자가 입력되었습니다.");
             }
-            answer.add(num);
+            userAnswer.add(num);
         }
     }
 }
@@ -90,7 +90,7 @@ class Game{
 class Hint{
     int ball, strike;
 
-    void score(List<Integer>user, List<Integer>computer){
+    void calculateScore(List<Integer>user, List<Integer>computer){
         ball = 0;
         strike = 0;
 
