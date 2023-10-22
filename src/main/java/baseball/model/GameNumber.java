@@ -34,7 +34,7 @@ public class GameNumber {
         System.out.println("randomNumbers: " + Arrays.toString(randomNumbers));
     }
 
-    public int[] getRandomrNumbers() {
+    public int[] getRandomNumbers() {
         return randomNumbers;
     }
 }

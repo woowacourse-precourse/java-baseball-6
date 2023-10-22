@@ -35,13 +35,13 @@ public class ComputerController {
     }
 
     private void countStrike(int playerNumber, int numberIndex) {
-        if (gameNumber.getRandomrNumbers()[numberIndex] == playerNumber) {
+        if (gameNumber.getRandomNumbers()[numberIndex] == playerNumber) {
             strikeCount++;
         }
     }
 
     private void countBall(int playerNumber, int numberIndex) {
-        int[] randomNumbers = gameNumber.getRandomrNumbers();
+        int[] randomNumbers = gameNumber.getRandomNumbers();
         if ((randomNumbers[numberIndex] != playerNumber) && Arrays.stream(randomNumbers).anyMatch(num -> num == playerNumber)) {
             ballCount++;
         } 
