@@ -1,5 +1,7 @@
 package baseball.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.stream;
@@ -38,4 +40,25 @@ public class GameNumber {
             throw new IllegalArgumentException("숫자는 서로 다른 수로 이루어져 있어야 한다");
         }
     }
+
+    public long matchCount(GameNumber gameNumber){
+        int index = 0;
+        long count = 0;
+        for(Integer number : numbers){
+            Integer targetNumber = gameNumber.numbers.get(index++);
+            if(number.equals(targetNumber)){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public long containsCount(GameNumber gameNumber){
+        return numbers.stream()
+                .filter(number -> gameNumber.numbers.contains(number))
+                .count();
+    }
+
+
+
 }
