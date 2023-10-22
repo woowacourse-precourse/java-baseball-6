@@ -60,6 +60,17 @@ class BaseballGame{
     }
 
     public int countBalls(){
+        int ballNum = 0;
+        for(int idx = 0; idx < 3; idx++){
+            if(!computerNumbers.containsKey(userNumbers[idx])){
+                continue;
+            }
+
+            if(computerNumbers.get(userNumbers[idx]) != idx){
+                ballNum++;
+            }
+        }
+        return ballNum;
     }
 
     public boolean gameResult(int strikeNum, int ballNum){
