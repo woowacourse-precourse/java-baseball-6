@@ -57,4 +57,27 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 빈_값이_입력된다면() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("\n"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+//    @Test
+//    void 게임종료시_제시된_값이_아닌_값을_입력한다면(){
+//        BaseBallGameEnd baseBallGameEnd = new BaseBallGameEnd();
+//        when(Console.readLine()).thenReturn("12321");
+//        assertThrows(IllegalArgumentException.class, () -> baseBallGameEnd.orderCheck());
+//    }
+//
+//    @Test
+//    void 게임종료시_게임_종료를_위해_2를_입력_한다면(){
+//        BaseBallGameEnd baseBallGameEnd = new BaseBallGameEnd();
+//        assertThat(baseBallGameEnd.orderCheck()).isFalse();
+//    }
+
 }
+
+
