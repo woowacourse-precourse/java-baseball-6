@@ -1,4 +1,4 @@
-package baseball.Error;
+package baseball.error;
 
 import java.util.ArrayList;
 import java.util.HashSet;
