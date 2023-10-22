@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
 
@@ -45,6 +47,43 @@ public class Application {
         }
 
         return true;
+    }
+
+    /**
+     * 입력 값에 대한 결과 출력
+     * @param computer
+     * @param input
+     * @return
+     */
+    public String sameCheck(List<Integer> computer, String input) {
+        int inputNumber = Integer.valueOf(input);
+        Map<String, Integer> B_S = new HashMap<>();
+        final String ball = "Ball";
+        final String strike = "Strike";
+        int inputNum;
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        B_S.put(ball, ballCount);
+        B_S.put(strike, strikeCount);
+
+        for (int i = computer.size() - 1; i >= 0; i--) {
+            inputNum = inputNumber % 10;
+
+            strikeCount = strikeCheck(computer.get(i), inputNum);
+            B_S.put(strike, B_S.get(strike) + strikeCount);
+
+            inputNum /= 10;
+        }
+
+        return "";
+    }
+
+    public int strikeCheck(int computerNum, int inputNum) {
+        if (computerNum == inputNum) {
+            return 1;
+        }
+        return 0;
     }
 
     public boolean inputCheckLength(String input) {
