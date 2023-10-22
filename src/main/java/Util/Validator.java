@@ -13,7 +13,7 @@ public class Validator {
         if (!isValidNumberInput(userInput)) {
             throw new IllegalArgumentException("1에서 9 사이의 숫자를 입력하세요.");
         }
-        if(!isDuplicationNumberInput(userInput)){
+        if (!isDuplicationNumberInput(userInput)) {
             throw new IllegalArgumentException("중복된 숫자를 입력하지마세요.");
         }
     }
@@ -25,7 +25,8 @@ public class Validator {
     }
 
     public static void validateMenuChoice(String choice) {
-        if (!choice.equals(Message.RETRYGAME.getMessage()) && !choice.equals(Message.ENDGAME.getMessage())) {
+        if (!choice.equals(Message.RETRYGAME.getMessage()) && !choice.equals(
+                Message.ENDGAME.getMessage())) {
             throw new IllegalArgumentException("1 또는 2를 입력하세요.");
         }
     }
@@ -38,7 +39,7 @@ public class Validator {
     }
 
 
-    private static boolean isDuplicationNumberInput(String input){
+    private static boolean isDuplicationNumberInput(String input) {
         Set<Character> seen = new HashSet<>();
 
         for (char digit : input.toCharArray()) {
