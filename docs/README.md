@@ -166,7 +166,7 @@
 
 ---
 
-## 궁금해요
+## 궁금했어요
 
 **개발하면서 궁금했던 부분들에 대한 정리**
 <br>
@@ -189,3 +189,41 @@
 - 그 외에도 흔히 알고 있는 정렬 기준에 따라 숫자와 대소문자, 특수문자 등에 의해 순서가 정렬됨.
 - IntelliJ IDEA 내부의 설정에서 커스터마이징이 가능할 것으로 보이나, 아직은 해결점을 찾지 못함.
 
+---
+
+## 배웠어요
+
+**개발을 진행하며 겪었던 문제들의 트러블슈팅을 velog에 정리**
+<br>
+
+미션의 내용과 직접적으로 관련된 내용이 있을 경우 👀를 받을 수 있으니 비공개로 글을 올렸습니다(23.10.22 기준)<br>
+미션이 끝난 후 공개로
+업로드될 [velog의 🪐우아한테크코스 6기 시리즈](https://velog.io/@dlgkdis801/series/%EC%9A%B0%EC%95%84%ED%95%9C%ED%85%8C%ED%81%AC%EC%BD%94%EC%8A%A4-6%EA%B8%B0)
+의 첫 게시물을 참고해주세요!
+<br>
+<br>
+<br>
+
+### 🫠 IntelliJ IDEA에서 나의 실제 Github 계정이 연결되지 않은 채로 commit을 한 문제
+
+- 상세 내용
+  : IntelliJ IDEA에서 Commit과 Push가 이뤄지긴 했으나, ```missing default github account``` 오류 발생
+  <br>
+
+- 해결 방법
+  : IntelliJ IDEA의 ```Settings... > Version Control > Github```에서 계정 확인
+  : 기존에 뜨던 Github 계정을 ➖ 기호로 지우고 다시 Token을 사용하여 로그인
+  (발급한 토큰은 인텔리제이에 붙여넣기 하면 됨)
+  계정 선택 후 ✔️까지 확실히 해주어야 함.
+  <br>
+  <br>
+
+### 😫 commit한 기록을 삭제해야하는 상황이 발생해, IntelliJ에서 "RESET"을 hard로 진행했으나 삭제되지 않는 현상
+
+- 상세 내용
+  : **push 하지 않은 commit**을 IntelliJ에서 삭제하기 위해 IntelliJ IDEA의 Git 기능을 이용해 reset을 했지만, commit 기록이 여전히 남아있는 경우였음.
+
+- 해결 방법
+  : 1. 우선 Reset 진행 _ 삭제를 원하는 commit의 마우스 오른쪽을 눌러 ```Reset Current Branch to Here... > reset 강도 선택 > Reset 클릭```
+  <br> 2. IntelliJ의 Terminal에서 진행 _ ```git log --oneline```으로 commit 기록 확인 -> 삭제되지 않은 이유는, HEAD로 설정되어 있기 때문일 가능성이 높음.
+  <br> 3. ```git reset --hard HEAD~{순서}```를 입력해주면, HEAD가 이전 commit으로 돌아감.
