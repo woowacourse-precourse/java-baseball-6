@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class NumberGenerator {
     private static final int SIZE = 3;
-    private static final String NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    public static final String NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
     public List<Integer> setComputerNumber() {
         List<Integer> computerNumber;
@@ -40,7 +40,7 @@ public class NumberGenerator {
             return false;
         }
         for (char c : num.toCharArray()) {
-            if (!Character.isDigit(c)) {
+            if (c < '1' || c > '9') {
                 return false;
             }
         }
