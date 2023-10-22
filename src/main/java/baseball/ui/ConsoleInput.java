@@ -6,13 +6,13 @@ import java.util.List;
 
 public class ConsoleInput implements IInput {
 
-    public int scanGameNumber(final int length) {
-        String input = Console.readLine();
+    public String scanGameNumber(final int length) {
+        String input = scan();
 
         Utility.checkIfIsInteger(input);
         Utility.checkIfIsValidLength(length, input);
 
-        return Integer.parseInt(input);
+        return input;
     }
 
     public String scanCommand(List<String> gameCommand) {
