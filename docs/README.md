@@ -187,8 +187,8 @@ public String generateRandomNumber(){
                    ball++;
        ```
     
-    <details>
-    <summary>난수 생성 과정 예시</summary>
+<details>
+<summary>난수 생성 과정 예시</summary>
     
     
 1. STRIKE
@@ -204,7 +204,7 @@ public String generateRandomNumber(){
    ![Untitled](./images/RandomNumber_hash_usuage_exam1-3.png)
     
     
-    </details>
+</details>
    
 
 
