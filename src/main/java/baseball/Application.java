@@ -25,7 +25,15 @@ public class Application {
 
         // 입력 유효성 검사 1. 빈 입력값 확인
         if (ans.isEmpty()) {
-            throw new IllegalArgumentException("값을 입력해주세요.");
+            throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러1]");
         }
+        ans = ans.replaceAll(" ", "");
+        // 입력 유효성 검사 2. 숫자가 아닌 입력값(문자열) 확인
+        try {
+            Integer.parseInt(ans);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러2]");
+        }
+
     }
 }
