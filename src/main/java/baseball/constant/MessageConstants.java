@@ -9,6 +9,7 @@ import static baseball.constant.NumberConstants.THREE_LENGTH;
 
 public final class MessageConstants {
 
+    public static final String BLANK = " ";
     public static final String CANNOT_INSTANTIATE = "인스턴스화할 수 없습니다.";
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";

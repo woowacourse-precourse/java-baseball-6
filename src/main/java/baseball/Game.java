@@ -1,12 +1,11 @@
 package baseball;
 
-import static baseball.constant.MessageConstants.ASK_ONE_OR_TWO;
-import static baseball.constant.MessageConstants.BALL;
-import static baseball.constant.MessageConstants.END;
-import static baseball.constant.MessageConstants.STRIKE;
-import static baseball.constant.MessageConstants.THREE_STRIKE;
 import static baseball.constant.NumberConstants.RESTART_NUMBER_STRING;
 import static baseball.constant.NumberConstants.THREE_LENGTH;
+import static baseball.output.GameOutput.printCorrectBallCount;
+import static baseball.output.GameOutput.printCorrectStrikeCount;
+import static baseball.output.GameOutput.printStrikeThree;
+import static baseball.output.GameOutput.printlnEndMessage;
 
 import baseball.computer.RandomComputerNumberGenerator;
 import baseball.output.GameOutput;
@@ -21,7 +20,7 @@ public class Game {
 
         String computerNumberString = new RandomComputerNumberGenerator().toString();
 
-        while (Objects.equals(gameStatus, "1")) {
+        while (Objects.equals(gameStatus, RESTART_NUMBER_STRING)) {
             UserInput userInput = new UserInput();
             String userNumberString = userInput.inputNumberString();
 
@@ -44,25 +43,23 @@ public class Game {
             }
 
             if (strikeCount == 3) {
-                System.out.println(strikeCount + STRIKE);
-                System.out.println(THREE_STRIKE);
-                System.out.println(ASK_ONE_OR_TWO);
+                printStrikeThree(strikeCount);
                 gameStatus = userInput.inputOneOrTwo();
                 if (Objects.equals(gameStatus, RESTART_NUMBER_STRING)) {
                     computerNumberString = new RandomComputerNumberGenerator().toString();
                     continue;
                 }
 
-                System.out.println(END);
+                printlnEndMessage();
                 break;
             }
 
             if (ballCount > 0) {
-                System.out.print(ballCount + BALL + " ");
+                printCorrectBallCount(ballCount);
             }
 
             if (strikeCount > 0) {
-                System.out.print(strikeCount + STRIKE);
+                printCorrectStrikeCount(strikeCount);
             }
 
             System.out.println();
