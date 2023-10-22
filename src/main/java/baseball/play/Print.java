@@ -1,7 +1,7 @@
-package baseball.game;
+package baseball.play;
 
 import baseball.Key;
-import baseball.object.Hint;
+import baseball.model.Hint;
 
 public class Print {
 

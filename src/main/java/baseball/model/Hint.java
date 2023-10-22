@@ -1,4 +1,4 @@
-package baseball.object;
+package baseball.model;
 
 public class Hint {
 

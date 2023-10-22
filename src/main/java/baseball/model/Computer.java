@@ -1,4 +1,4 @@
-package baseball.object;
+package baseball.model;
 
 import baseball.Key;
 import camp.nextstep.edu.missionutils.Randoms;

@@ -1,9 +1,9 @@
 package baseball;
 
-import baseball.game.Print;
-import baseball.game.RunGame;
-import baseball.object.Computer;
-import baseball.object.User;
+import baseball.play.Print;
+import baseball.play.RunGame;
+import baseball.model.Computer;
+import baseball.model.User;
 
 public class Application {
 

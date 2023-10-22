@@ -1,9 +1,9 @@
-package baseball.game;
+package baseball.play;
 
 import baseball.Key;
-import baseball.object.Computer;
-import baseball.object.Hint;
-import baseball.object.User;
+import baseball.model.Computer;
+import baseball.model.Hint;
+import baseball.model.User;
 import camp.nextstep.edu.missionutils.Console;
 
 public class RunGame {
