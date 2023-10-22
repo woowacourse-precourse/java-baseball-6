@@ -88,16 +88,17 @@ Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
 
 ## input을 시뮬레이팅
 기능을 분리하긴 했지만 생각해보면 getOneOrTwo 같은 분리된 메서드는 클래스 안에서만 사용하기 때문에 public으로 바꾸는 것은 옳지 않다고 생각했다. private 접근자로 바꾸고도 테스트가 가능하도록 input에 대해서 시뮬레이트하도록 하는 방법을 서칭했다.
+(https://www.baeldung.com/java-junit-testing-system-in)
+방법은 Scanner의 동작 방식을 이용하는 것이었다. Scanner는 생성될 때 System.in에서 유저가 입력한 문자 스트림을 가져오는 형식인데 우리가 넣고 싶은 문자를 넣어 Scanner가 가져가도록 유도하면 가능하다.
 
-방법은 Scanner의 동작 방식을 이용하는 것이었다. Scanner는 생성될 때 System.in에서 유저가 입력한 문자 스트림을 가져오는 형식인데 우리가 System.in에 넣고 싶은 문자를 넣어 Scanner가 가져가도록 유도하면 가능하다.
-
-다음은 System.in 에 넣고 싶은 문자를 넣는 코드이다.
+다음은 입력에 넣고 싶은 문자를 넣는 코드이다.
 ```
 void inputStringToSystemIn(String data){  
     ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());  
     System.setIn(testIn);  
 }
 ```
+입력 스트림을 System.in을 ByteArrayInputStream()으로 바꾼다. 
 이를 통해 사용자의 입력을 시뮬레이트하면서 테스트 할 수 있었다.
 ```
 @Test  
@@ -122,3 +123,33 @@ void inputStringToSystemIn(String data){
 `display.getUserInput()`은 처음으로 Scanner를 사용하는 명령이기 때문에 Scanner는 바꿔준 `ByteArrayInputStream`을 가지고 입력을 받는다. 
 그래서 첫번째 테스트는 성공했다. 하지만 Scanner가 close되지 않고 계속 사용된다면 아무리 `System.setIn`을 해봤자 이전에 설정한 `ByteArrayInputStream`을 가지고 입력을 받으니 아무 입력을 받지않아 `java.util.NoSuchElementException` 예외가 나오는 것이다.
 때문에 `display.close();`를 통해 Scanner를 종료해주고 바뀐 입력스트림을 가지고 다시 생성되도록 유도한 것이다. 
+
+## 콘솔 Output 을 테스트에 사용
+```
+Assertions.assertThat(result1.strikeCount).isEqualTo(3);
+```
+이전 테스트 코드 중 일부인데 `strikeCount` 접근자가 private로 바꾸었기 때문에 더이상 이 명령문은 작동하지 않는다. 그래서 실제 콘솔의 Output을 받아서 예상한 결과값이 나오는지 테스트하는 코드를 작성하려고 했다.
+
+위에서 콘솔 Input을 우리가 입맛대로 조정하는 것처럼 콘솔 Output도 조정이 가능하다.
+```
+@Test  
+void 판정테스트(){  
+    ByteArrayOutputStream testOut = new ByteArrayOutputStream();  
+    System.setOut(new PrintStream(testOut));
+```
+이렇게 `System.out`을 `ByteArrayOutputStream`으로 변경함으로써 아래처럼 콘솔에 나오는 출력값을 가져올 수 있다.
+```
+result1.printResult();  
+Assertions.assertThat(testOut.toString()).isEqualTo("3스트라이크\n");  
+testOut.reset();
+```
+`printResult()`는 결과를 출력하는 메서드다.
+`testOut.toString()`으로 결과를 문자열로 바꿔서 테스트를 했다.
+
+```
+result1.printResult();  
+Assertions.assertThat(testOut.toString()).isEqualTo("3스트라이크\n");  
+result2.printResult();
+Assertions.assertThat(testOut.toString()).isEqualTo("3볼\n");
+```
+`reset()`을 하는 이유는 위와 같이 두번 출력을 하게되었을 때 리셋을 하지 않으면 "3스트라이크\n 3볼\n"처럼 이어져서 나오기 떄문이다. 
