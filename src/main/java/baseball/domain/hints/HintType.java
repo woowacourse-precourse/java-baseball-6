@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.hints;
 
 public enum HintType {
     BALL(Constants.BALL_NAME), NOTHING(Constants.NOTHING_STRIKE), STRIKE(Constants.STRIKE_NAME);

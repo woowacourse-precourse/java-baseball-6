@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.hints;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +13,7 @@ public final class HintProvider {
 
         for (int i = 0; i < playerNumbers.size(); i++) {
             HintType type = compareToAnswer(answerNumbers, playerNumbers.get(i), i);
-            hintMap.merge(type, 0, increaseHintCount());
+            hintMap.merge(type, 1, increaseHintCount());
         }
         if (hintMap.containsKey(HintType.NOTHING)) {
             hintMap.put(HintType.NOTHING, ONLY_ONE);
