@@ -12,6 +12,8 @@ public class UserInputView {
     private static final String VALID_IS_NUM = "숫자가 아닌 문자가 입력 되었습니다.";
     private static final String VALID_IS_DUPLICATE = "중복된 값이 들어갔습니다.";
 
+    private static final String VALID_IS_NULL = "빈 값이 들어갔습니다.";
+
     public UserInputView() {
     }
 
@@ -19,7 +21,7 @@ public class UserInputView {
         System.out.print("숫자를 입력해주세요 : ");
         String stringDigitsFromUserInput = Console.readLine();
 
-        //널 체크 필요
+        isStringEmpty(stringDigitsFromUserInput);
         validateUserInputLength(stringDigitsFromUserInput);
         validateIsNumber(stringDigitsFromUserInput);
         validateHasDuplicateNumber(stringDigitsFromUserInput);
@@ -29,9 +31,16 @@ public class UserInputView {
 
     public String isContinueGameByUserInput() {
         String isContinueByUserInput = Console.readLine();
+        isStringEmpty(isContinueByUserInput);
         validateIsNumber(isContinueByUserInput);
 
         return isContinueByUserInput;
+    }
+
+    private void isStringEmpty(String userInput) {
+        if (userInput == null || userInput.isEmpty()) {
+            throw new IllegalArgumentException(VALID_IS_NULL);
+        }
     }
 
     private void validateUserInputLength(String stringDigitsFromUserInput) {
