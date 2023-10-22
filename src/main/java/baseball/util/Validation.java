@@ -57,7 +57,10 @@ public class Validation {
     }
 
     private static void isOneOrTwo(String number) {
-        if (!(number.equals("1") || number.equals("2"))) {
+        String replacedString = number.replaceAll("[1-2]", "");
+        int length = replacedString.length();
+
+        if (length > 0) {
             throw new IllegalArgumentException("입력 문자열이 1 또는 2가 아닙니다.");
         }
     }
