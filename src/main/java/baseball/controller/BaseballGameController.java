@@ -29,7 +29,6 @@ public class BaseballGameController {
 
             userNumber = InputView.readUserNumberInput();
 
-
             validateUserNumber(userNumber);
             String[] results = baseballGameService.run(userNumber);
             new OutputView(results);
