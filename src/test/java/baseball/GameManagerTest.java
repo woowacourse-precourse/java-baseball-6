@@ -53,4 +53,40 @@ public class GameManagerTest {
             gameManager.vaildUserTrialInput("789");
         });
     }
+
+    @Test
+    void 사용자의_올바른_재시작_입력을_받는다() {
+        GameManager gameManager = new GameManager();
+
+        String input1 = "1";
+        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
+        System.setIn(in1);
+
+        int userInputNumber1 = gameManager.getUserRestartInput();
+        camp.nextstep.edu.missionutils.Console.close();
+
+        assertEquals(1, userInputNumber1);
+
+        String input2 = "2";
+        InputStream in2 = new ByteArrayInputStream(input2.getBytes());
+        System.setIn(in2);
+
+        int userInputNumber2 = gameManager.getUserRestartInput();
+        camp.nextstep.edu.missionutils.Console.close();
+
+        assertEquals(2, userInputNumber2);
+    }
+
+    @Test
+    void 사용자의_잘못된_재시작_입력을_검사한다() {
+        GameManager gameManager = new GameManager();
+
+        assertThrows(IllegalArgumentException.class, () -> gameManager.vaildUserRestartInput("0"));
+        assertThrows(IllegalArgumentException.class, () -> gameManager.vaildUserRestartInput("a"));
+        assertThrows(IllegalArgumentException.class, () -> gameManager.vaildUserRestartInput("11"));
+        assertDoesNotThrow(() -> {
+            gameManager.vaildUserRestartInput("1");
+            gameManager.vaildUserRestartInput("2");
+        });
+    }
 }

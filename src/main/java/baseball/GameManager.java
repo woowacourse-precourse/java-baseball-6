@@ -36,4 +36,25 @@ public class GameManager {
 
         return userInputList;
     }
+
+    public void vaildUserRestartInput(String userInput) {
+        if (userInput.length() != 1) {
+            throw new IllegalArgumentException("1자리의 숫자를 입력하세요.");
+        }
+
+        for (char c : userInput.toCharArray()) {
+            if (c < '1' || c > '2') {
+                throw new IllegalArgumentException("올바른 숫자를 입력하세요.");
+            }
+        }
+    }
+
+    public int getUserRestartInput() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String userInput = camp.nextstep.edu.missionutils.Console.readLine();
+        vaildUserRestartInput(userInput);
+
+        return Integer.parseInt(userInput);
+    }
 }
