@@ -15,6 +15,7 @@ public class GameController {
 
     public static void playingBaseballGame(GameCondition game_coin){
         List<Integer> computer = GenerateNumberList.generateRandomNumberToComputer(3);
+        System.out.println(computer);
         while (game_coin.equals(GameCondition.CONTINUE)){
             OutputView.outputForGameValueInput();
             String user_input_value = InputView.readLineByConsole();
@@ -27,7 +28,9 @@ public class GameController {
         OutputView.outputForRetryCondition();
         String user_input_retry = InputView.readLineByConsole();
         if (GameValidation.verifyForRetryValue(user_input_retry)){
-            //TODO 재도전 처리 또는 종료
+            if (user_input_retry.equals("1")){
+                playingBaseballGame(GameCondition.CONTINUE);
+            }
         }
     }
 }
