@@ -1,4 +1,4 @@
-package baseball;
+package baseball.message;
 
 @FunctionalInterface
 public interface Message {

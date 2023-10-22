@@ -1,4 +1,4 @@
-package baseball;
+package baseball.engine.dto;
 
 public class Status {
     private static final int ALL_STRIKE = 3;

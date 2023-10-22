@@ -1,5 +1,6 @@
-package baseball;
+package baseball.console;
 
+import baseball.message.Message;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Prompt {

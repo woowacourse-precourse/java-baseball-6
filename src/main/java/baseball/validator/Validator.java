@@ -1,4 +1,4 @@
-package baseball;
+package baseball.validator;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,7 +33,7 @@ public class Validator {
             numbers.add(character);
         }
 
-        if (numbers.size() != 3) {
+        if (numbers.size() != MAX_LENGTH) {
             throw new IllegalArgumentException("유니크한 값이 아닙니다.");
         }
     }
@@ -47,7 +47,7 @@ public class Validator {
     }
 
     private void verifyLength(String input) {
-        if (input.length() != 3) {
+        if (input.length() != MAX_LENGTH) {
             throw new IllegalArgumentException("입력 길이가 3이 아닙니다.");
         }
     }

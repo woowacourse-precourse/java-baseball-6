@@ -1,5 +1,6 @@
-package baseball;
+package baseball.engine.manager;
 
+import baseball.engine.dto.Status;
 import java.util.List;
 
 public class Referee {
