@@ -37,4 +37,22 @@ class NumberComparerTest {
 
         assertThat(ballCount).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("비교 결과에 스트라이크와 볼 모두 존재한다.")
+    void test3() {
+        int strikeCount = 0;
+        int ballCount = 0;
+        List<Integer> computerNumbers = List.of(3, 5, 6);
+        String playerNumbers = "365";
+
+        NumberComparer numberComparer = new NumberComparer();
+        numberComparer.compareNumbers(playerNumbers, computerNumbers);
+
+        strikeCount = numberComparer.getStrikeCount();
+        ballCount = numberComparer.getBallCount();
+
+        assertThat(strikeCount).isEqualTo(1);
+        assertThat(ballCount).isEqualTo(2);
+    }
 }
