@@ -2,9 +2,6 @@ package baseball.model;
 
 import static baseball.Constants.PLAY_NUMBER_DIGIT;
 
-import baseball.converter.BuilderInputConverter;
-import baseball.converter.IntegerInputConverter;
-import baseball.converter.StringInputConverter;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumber {
@@ -15,38 +12,29 @@ public class RandomNumber {
     public static int pickNumber() {
         StringBuilder numberBuilder = new StringBuilder();
 
-        while (isBuilderLengthLowerThanLength(numberBuilder, PLAY_NUMBER_DIGIT)) {
+        while (!isEnoughPicked(numberBuilder)) {
             saveNewNumber(numberBuilder);
         }
 
-        return convertBuilderToNumber(numberBuilder);
+        String selectNumber = numberBuilder.toString();
+        return Integer.parseInt(selectNumber);
     }
 
-    private static boolean isBuilderLengthLowerThanLength(final StringBuilder builder, final int length) {
-        return builder.length() < length;
+    private static boolean isEnoughPicked(final StringBuilder numberBuilder) {
+        return numberBuilder.length() == PLAY_NUMBER_DIGIT;
     }
 
     private static void saveNewNumber(final StringBuilder numberBuilder) {
         int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
-        if (isBuilderContainsNumber(numberBuilder, randomNumber)) {
+
+        if (isAlreadyPicked(numberBuilder, String.valueOf(randomNumber))) {
             return;
         }
-        addNumber(numberBuilder, randomNumber);
+        numberBuilder.append(randomNumber);
     }
 
-    private static boolean isBuilderContainsNumber(final StringBuilder builder, final int number) {
-        return isInputContainsNumber(BuilderInputConverter.toString(builder), number);
-    }
-
-    private static boolean isInputContainsNumber(final String input, final int number) {
-        return input.contains(IntegerInputConverter.toString(number));
-    }
-
-    private static void addNumber(final StringBuilder builder, final int number) {
-        builder.append(number);
-    }
-
-    private static int convertBuilderToNumber(final StringBuilder builder) {
-        return StringInputConverter.toInt(BuilderInputConverter.toString(builder));
+    private static boolean isAlreadyPicked(final StringBuilder numberBuilder, final String number) {
+        String pickedNumber = numberBuilder.toString();
+        return pickedNumber.contains(number);
     }
 }
