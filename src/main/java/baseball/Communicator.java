@@ -3,10 +3,12 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Communicator {
-    private final Validator validator;
     private final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private final Validator validator;
 
     public Communicator(Validator validator) {
         this.validator = validator;
@@ -17,7 +19,7 @@ public class Communicator {
     }
 
     public List<Integer> instructInputNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_MESSAGE);
 
         List<Integer> inputNumbers = new ArrayList<>();
 
@@ -31,5 +33,18 @@ public class Communicator {
         }
 
         return inputNumbers;
+    }
+
+    public void printResult(Map<String, Integer> counts) {
+        //TODO: hard coded string to something else
+        int ballCount = counts.get("ballCount");
+        if (ballCount > 0) {
+            System.out.println(ballCount + "볼");
+        }
+
+        int strikeCount = counts.get("strikeCount");
+        if (strikeCount > 0) {
+            System.out.println(strikeCount + "스트라이크");
+        }
     }
 }
