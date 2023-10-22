@@ -11,12 +11,12 @@ public class Computer {
 
     int randomNum;
 
-    public void setRandomNum() {
+    public void setRandomNumber() {
         List<String> digitsList = getRandomDigits();
         randomNum = joinDigitsTogether(digitsList);
     }
 
-    public int getRandomNum() {
+    public int getRandomNumber() {
         return randomNum;
     }
 
