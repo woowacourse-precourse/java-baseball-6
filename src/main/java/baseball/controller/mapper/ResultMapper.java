@@ -1,6 +1,7 @@
 package baseball.controller.mapper;
 
 public class ResultMapper {
+
     private static final int NO_STRIKE = 0;
     private static final int NO_BALL = 0;
     private static final String NOTHING = "낫싱";
