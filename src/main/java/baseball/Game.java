@@ -42,4 +42,12 @@ public class Game {
     public void setUserNumber(String userNumber){
         this.userNumber = userNumber;
     }
+
+    public int getStrikes(){
+        return this.strikes;
+    }
+
+    public int getBalls(){
+        return this.balls;
+    }
 }
