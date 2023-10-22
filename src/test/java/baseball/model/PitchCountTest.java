@@ -29,6 +29,7 @@ class PitchCountTest {
         userNumberPartialMatch = Arrays.asList(1, 3, 2);
     }
 
+
     @Test
     void 스트라이크_볼_카운트_검증() {
         pitchCount.countStrikeBall(computerNumber, userNumberCorrect);
@@ -48,8 +49,6 @@ class PitchCountTest {
 
     @Test
     void 힌트_출력_검증() {
-        PitchCount pitchCount = new PitchCount();
-
         pitchCount.countStrikeBall(computerNumber, userNumberCorrect);
         assertThat(pitchCount.getHint()).isEqualTo(3 + STRIKE.getMessage());
 
@@ -58,6 +57,5 @@ class PitchCountTest {
 
         pitchCount.countStrikeBall(computerNumber, userNumberPartialMatch);
         assertThat(pitchCount.getHint()).isEqualTo(2 + BALL.getMessage() + " " + 1 + STRIKE.getMessage());
-
     }
 }

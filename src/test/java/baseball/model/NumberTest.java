@@ -1,5 +1,6 @@
 package baseball.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -10,10 +11,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NumberTest {
 
+    private Number number;
+
+
+    @BeforeEach
+    void init() {
+        number = new Number();
+    }
+
+
     @Test
     void 랜덤숫자_생성_검증() {
-        Number number = new Number();
-
         number.createRandomNumber();
         List<Integer> target = number.target;
 
@@ -25,9 +33,9 @@ public class NumberTest {
         assertThat(distinctCount).isEqualTo(3);
     }
 
+
     @Test
     void 사용자_숫자_검증_예외_테스트() {
-        Number number = new Number();
         List<Integer> range = List.of(0, 1, 2);
         List<Integer> duplication = List.of(1, 1, 2);
         List<Integer> size = List.of(1, 2);
