@@ -14,13 +14,12 @@ public class Application {
                 System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
                 String choice = Console.readLine();
                 if (!choice.equals("1")) {
-                    throw new IllegalArgumentException("서로 다른 3자리 숫자를 입력해야 합니다.");
+                    return;
                 }
                 System.out.println("게임 종료!");
             } catch(IllegalArgumentException e){
-                System.err.println("예외 발생: " + e.getMessage());
-                playAgain = false;
-                return;
+                // System.err.println("예외 발생: " + e.getMessage());
+                throw e;
             }
         }
     }
@@ -88,7 +87,7 @@ public class Application {
 
             // 기능3. 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킴
             if (unitDigit == tensDigit || tensDigit == hundredsDigit || hundredsDigit == unitDigit) {
-                throw new IllegalArgumentException("서로 다른 3자리 숫자를 입력해야 합니다.");
+                throw new IllegalArgumentException();
             }
         }   
     }
