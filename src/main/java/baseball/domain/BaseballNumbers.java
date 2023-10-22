@@ -14,6 +14,7 @@ public class BaseballNumbers {
     public BaseballNumbers(String userInput) {
         this.ballNumbers = new ArrayList<>();
         validateInputIsThreeNumber(userInput);
+        validateNoDuplicateNumber(userInput);
         createBaseballNumbers(userInput);
     }
 
@@ -35,6 +36,15 @@ public class BaseballNumbers {
     public void validateInputIsThreeNumber(String userInput) {
         if (!userInput.matches("^[0-9]{3}$")) {
             throw new IllegalArgumentException("입력은 정확히 세 자리 숫자여야 합니다.");
+        }
+    }
+
+    public void validateNoDuplicateNumber(String userInput) {
+        for (int i = 0; i < 3; i++) {
+            char number = userInput.charAt(i);
+            if (userInput.indexOf(number) != i) {
+                throw new IllegalArgumentException("중복된 숫자를 입력할 수 없습니다.");
+            }
         }
     }
 
