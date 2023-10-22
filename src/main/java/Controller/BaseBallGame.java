@@ -1,5 +1,6 @@
 package Controller;
 
+import Constant.ExceptionHandling;
 import Model.Computer;
 import Model.Player;
 import Model.Refree;
@@ -26,6 +27,8 @@ public class BaseBallGame {
         computer.CreateAnswer();
         do {
             PlayerNumbers=player.GuessNumbers(GameInterface.InputNumbers());
+            ExceptionHandling.ExceptionLength(PlayerNumbers);
+            ExceptionHandling.ExceptionDuplication(PlayerNumbers);
             strike = 0;
             ball = 0;
             for (int i = 0; i < PlayerNumbers.size(); i++) {
