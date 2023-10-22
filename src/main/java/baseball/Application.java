@@ -18,7 +18,10 @@ public class Application {
                 referee.strikeAndBallCheck(computerNums, playerNums);
                 gameProgress = referee.resultPhrase(referee.getBall(), referee.getStrike());
             }
+            computer.restartOrEndPhrase();
+            progress = player.inputRestartOrEnd();
         }
+
 
     }
 }

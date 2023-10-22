@@ -13,4 +13,14 @@ public class Player {
         return input;
     }
 
+    public boolean inputRestartOrEnd() {
+        String input = Console.readLine();
+        if (input.equals("1")) {
+            return true;
+        }
+        if (input.equals("2")) {
+            return false;
+        }
+        return false;
+    }
 }
