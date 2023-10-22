@@ -23,6 +23,7 @@ public class Application {
                 playerNumbers = new ArrayList<>();
                 application.inputPlayerNumber();
                 int strikeCount = application.calculateStrikeCount();
+                int ballCount = application.calculateBallCount();
             }
         }
     }
@@ -61,6 +62,24 @@ public class Application {
         }
 
         return strikeCount;
+    }
+
+    public int calculateBallCount() {
+        int ballCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            for (int k = 0; k < 3; k++) {
+                if (i == k) {
+                    continue;
+                }
+
+                if (computerNumbers.get(i) == playerNumbers.get(k)) {
+                    ballCount++;
+                }
+            }
+        }
+
+        return ballCount;
     }
 
     public void isValidCheck(String input) {
