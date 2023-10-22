@@ -23,4 +23,12 @@ public class Validator {
         }
         return true;
     }
+
+    public static boolean isDuplicateNumber(final String target, final int size) {
+        String[] targetArray = target.split("");
+        long count = Arrays.stream(targetArray)
+                .distinct()
+                .count();
+        return count == size;
+    }
 }
