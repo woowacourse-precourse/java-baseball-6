@@ -2,7 +2,6 @@ package baseball.domain;
 
 import baseball.domain.constants.NumberBaseballConstants;
 import baseball.domain.validators.NumberBaseballValidator;
-import baseball.utils.StringUtils;
 
 import java.util.List;
 
@@ -15,14 +14,13 @@ public class NumberBaseballIO {
         this.numberBaseballValidator = numberBaseballValidator;
     }
 
-    public void printStart() {
+    public void printGuessStartMessage() {
         inputOutputHandler.printText("숫자를 입력해주세요 : ");
     }
 
     public List<Integer> inputGuessAnswer(int numberLength) {
-        printStart();
-        String input = inputOutputHandler.inputUniqueNumbers(numberLength);
-        return StringUtils.toIntegerList(input);
+        printGuessStartMessage();
+        return inputOutputHandler.inputUniqueNumbers(numberLength);
     }
 
     public void printResult(Result result) {

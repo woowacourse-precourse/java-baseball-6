@@ -6,10 +6,12 @@ public class Result {
 
     private final int ball;
     private final int strike;
+    private final int numberLength;
 
-    private Result(int ball, int strike) {
+    private Result(int ball, int strike, int numberLength) {
         this.ball = ball;
         this.strike = strike;
+        this.numberLength = numberLength;
     }
 
     public static Result create(Answer answer, Answer guessAnswer) {
@@ -26,7 +28,12 @@ public class Result {
             else ballCount++;
         }
 
-        return new Result(ballCount, strikeCount);
+        return new Result(ballCount, strikeCount,answer.getSize());
+    }
+
+
+    public boolean isCorrect() {
+        return ball == 0 && strike == numberLength;
     }
 
     @Override
@@ -38,9 +45,5 @@ public class Result {
         if(strike > 0) result += strike + NumberBaseballConstants.STRIKE;
 
         return result.trim();
-    }
-
-    public void showResult(NumberBaseballIO numberBaseballIO) {
-        numberBaseballIO.printResult(this);
     }
 }

@@ -1,7 +1,10 @@
 package baseball.domain;
 
 import baseball.domain.validators.InputValidator;
+import baseball.utils.StringUtils;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.List;
 
 public class InputOutputHandler {
 
@@ -15,11 +18,11 @@ public class InputOutputHandler {
         return Console.readLine();
     }
 
-    public String inputUniqueNumbers(int numberLength) {
+    public List<Integer> inputUniqueNumbers(int numberLength) {
         String input = inputText();
         inputValidator.validateUniqueNumbers(numberLength, input);
 
-        return input;
+        return StringUtils.toIntegerList(input);
     }
 
     public int inputOneNumber() {

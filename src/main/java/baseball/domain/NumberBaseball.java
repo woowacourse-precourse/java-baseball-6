@@ -7,13 +7,15 @@ public class NumberBaseball {
         this.user = user;
     }
 
-    public void startGame(int numberLimit) {
+    public void play(int numberLimit) {
         // 랜덤한 서로다른 숫자 생성
-        Answer answer = Answer.createByRandom(numberLimit);
+        boolean isFinish = false;
 
-        user.guessUntilCorrect(answer);
-
-        if(user.isContinueGame(numberLimit)) startGame(numberLimit);
+        while (!isFinish) {
+            Answer answer = Answer.createByRandom(numberLimit);
+            user.guessUntilCorrect(answer);
+            if(!user.isContinueGame(numberLimit)) isFinish = true;
+        }
     }
 
 }
