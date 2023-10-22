@@ -9,6 +9,14 @@ public class GameService {
     private int strike = 0;
     private int ball = 0;
 
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
     public boolean isAllNumberMatched() {
         return strike == MAX_DIGIT;
     }
