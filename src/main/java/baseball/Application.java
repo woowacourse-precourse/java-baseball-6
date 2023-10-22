@@ -26,9 +26,9 @@ public class Application {
 
             //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
             Baseball computerBaseball = new Baseball();
-            List<Integer> computerNumList = GameController.generateRandomBaseball();
-            computerBaseball.setValues(computerNumList);
-            System.out.println("컴퓨터가 뽑은 수" + computerNumList);
+            List<Integer> computerList = GameController.generateRandomBaseball();
+            computerBaseball.setValues(computerList);
+            System.out.println("컴퓨터가 뽑은 수" + computerList);
 
             GuessingLoop:
             while (true) {

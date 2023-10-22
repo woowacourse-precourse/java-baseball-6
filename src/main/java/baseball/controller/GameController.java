@@ -9,14 +9,16 @@ import java.util.List;
 public class GameController {
 
     public static List<Integer> generateRandomBaseball() {
-        List<Integer> computerNumList = new ArrayList<>();
-        while (computerNumList.size() < GameConstants.NUMBER_LENGTH) {
+        List<Integer> computerList = new ArrayList<>();
+        while (computerList.size() < GameConstants.NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(GameConstants.MIN_DIGIT, GameConstants.MAX_DIGIT);
-            if (!computerNumList.contains(randomNumber)) {
-                computerNumList.add(randomNumber);
+            if (!computerList.contains(randomNumber)) {
+                computerList.add(randomNumber);
             }
         }
 
-        return computerNumList;
+        return computerList;
     }
+
+
 }
