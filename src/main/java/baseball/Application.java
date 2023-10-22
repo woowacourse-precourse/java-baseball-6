@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -18,7 +19,21 @@ public class Application {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
+                System.out.println(randomNumber);
             }
+        }
+
+        while (true) {
+
+            int strikeCount = 0;
+            int ballCount = 0;
+            String result;
+
+            System.out.println("숫자를 입력해 주세요: ");
+            List<Integer> player = new ArrayList<>();
+
+            // playerInput에 플레이어가 입력한 값 저장
+            String playerInput = Console.readLine();
         }
     }
 }
