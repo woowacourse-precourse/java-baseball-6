@@ -15,14 +15,14 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public String inputNumbers() {
+    public String scanPitches() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = scanner.nextLine();
         validator.validate(input, GameConfig.PITCH_COUNT.getValue());
         return input;
     }
 
-    public String inputContinueGame() {
+    public String scanRestartNumber() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = scanner.nextLine();
         validator.validate(input, RESTART_SIZE);
