@@ -8,7 +8,8 @@ public class User {
     private static final String EXCEPTION_MESSAGE = "1부터 9까지 서로 다른 숫자를 입력해주세요.";
     int userNumber;
 
-    public User() {}
+    public User() {
+    }
 
     public void setUserNumber() {
         System.out.print(OUTPUT_ENTER_NUMBER);
@@ -41,9 +42,8 @@ public class User {
     }
 
 
-
     private static void validateInputLength(String input) {
-        if(input.length() != NUMBER_LENGTH) {
+        if (input.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
