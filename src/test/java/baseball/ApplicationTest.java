@@ -37,12 +37,8 @@ class ApplicationTest extends NsTest {
 
         // then
         assertThat(result1).as("valid input").doesNotThrowAnyException();
-        assertThatThrownBy(() -> {
-            validation.validateInputLength(case2, 3);
-        }).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> {
-            validation.validateInputLength(case3, 3);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThat(result2).as("invalid input1").isInstanceOf(IllegalArgumentException.class);
+        assertThat(result3).as("invalid input2").isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
