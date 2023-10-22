@@ -9,10 +9,12 @@ class GameTest {
 
   private Game game;
 
+
   @BeforeEach
   public void setUp() {
     game = new Game();
   }
+
 
   @Test
   void getStrikeCount_allStrikes() {
@@ -53,6 +55,6 @@ class GameTest {
     assertEquals("1볼", game.publicCalculateResult("123", "356"));
   }
 
-
 }
+
 

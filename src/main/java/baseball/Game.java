@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.StringJoiner;
 import java.util.stream.IntStream;
@@ -18,9 +20,17 @@ public class Game {
   private final Computer computer = new Computer();
   private final User user = new User();
   private boolean quit = false;
+  public String restartOrQuitInput;
+  public List<String> inputArrList;
+
 
   public Game() {
 
+  }
+
+  public void setRestartOrQuitInput(String input) {
+    this.restartOrQuitInput = input;
+    getValidation();
   }
 
   public void play() {
@@ -38,11 +48,10 @@ public class Game {
       if (gameOver(strikes)) {
         System.out.println(OUTPUT_SUCCESS);
         System.out.println(OUTPUT_RESTART);
-
+        getValidation();
         input = Console.readLine();
         if (INPUT_RESTART.equals(input.trim())) {
           System.out.println("새 게임을 시작합니다.");
-          continue;
         } else if (INPUT_QUIT.equals(input.trim())) {
           quit = true;
           break;
@@ -54,6 +63,15 @@ public class Game {
     }
   }
 
+  private void getValidation() {
+    // validation
+    String[] inputArr = {"1", "2"};
+    inputArrList = Arrays.asList(inputArr);
+    boolean inputValidation = inputArrList.contains(restartOrQuitInput);
+    if (!inputValidation) {
+      throw new IllegalArgumentException();
+    }
+  }
 
   private int getStrikeCountFromResult(String result) {
     if (result.contains(STRIKE)) {
