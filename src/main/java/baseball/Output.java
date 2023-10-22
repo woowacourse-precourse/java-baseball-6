@@ -9,6 +9,7 @@ public class Output {
     private static final String INPUT_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String INPUT_RESTART_MESSAGE = "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.\n";
 
+    private Output() {}
 
     public static void printGameStartMessage() {
         System.out.println(GAME_START_MESSAGE);
