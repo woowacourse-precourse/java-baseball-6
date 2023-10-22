@@ -1,5 +1,8 @@
 package baseball.domain.game;
 
+import baseball.domain.answer.Answer;
+import baseball.domain.number.Number;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -11,8 +14,16 @@ public class Game {
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
 
+    public static void baseBallGame(Answer answer) {
+        String result = "";
+        while (!result.equals(3 + STRIKE)) {
+            Number inputNumber = new Number(Console.readLine());
+            result = Game.compare(inputNumber.toIntList(), answer.toIntList());
+            System.out.println(result);
+        }
+    }
 
-    public static String compare(List<Integer> number1, List<Integer> number2) {
+    private static String compare(List<Integer> number1, List<Integer> number2) {
         String ballResult = ball(number1, number2);
         String strikeResult = strike(number1, number2);
         String nothingResult = nothing(number1, number2);
@@ -51,6 +62,11 @@ public class Game {
     }
 
     public static String gameStartLog() {
-        return "숫자 야구 게임을 시작합니다." + "\n" + "숫자를 입력해주세요. : ";
+        return "숫자 야구 게임을 시작합니다.\n" + "숫자를 입력해주세요. : ";
+    }
+
+    public static String gameEndLog() {
+        return "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+                + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     }
 }
