@@ -15,44 +15,55 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true){
-//            List<Integer> num_list = new ArrayList<>(3);
-//            num_list = pickUniqueNumbersInRange(1, 9, 3);
-            List<Integer> num_list = new ArrayList<>();
-            while (num_list.size() < 3) {
+            List<Integer> random_num = new ArrayList<>();
+            while (random_num.size() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!num_list.contains(randomNumber)) {
-                    num_list.add(randomNumber);
+                if (!random_num.contains(randomNumber)) {
+                    random_num.add(randomNumber);
                 }
             }
-            game(num_list);
+            System.out.println(random_num);
+            game(random_num);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             if(readLine().equals("2"))
                 break;
+            else if(readLine().equals("1")){}
+            else{
+                //입력 오류
+            }
         }
 
     }
-    public static void game(List num){//nl:정답
+    public static void game(List rand_num){
         while(true){
             int ball=0, strike=0;
             System.out.print("숫자를 입력해주세요 : ");
-            int sca=Integer.parseInt(readLine());//sca:입력받는 수
-            if(sca%10==(int)num.get(0)) {
+
+            String s=readLine();//sca:입력받는 수
+
+            List<Integer> input_num=new ArrayList<>();
+            input_num.add(Character.getNumericValue(s.charAt(0)));
+            input_num.add(Character.getNumericValue(s.charAt(1)));
+            input_num.add(Character.getNumericValue(s.charAt(2)));
+
+            if(input_num.get(0).equals(rand_num.get(0))) {
                 strike++;
-            }else if(sca%10==(int)num.get(1)||sca%10==(int)num.get(2)){
+            }else if(input_num.get(0).equals(rand_num.get(1))||input_num.get(0).equals(rand_num.get(2))){
                 ball++;
             }
-            sca/=10;
-            if(sca%10==(int)num.get(1)) {
+
+            if(input_num.get(1).equals(rand_num.get(1))) {
                 strike++;
-            }else if(sca%10==(int)num.get(0)||sca%10==(int)num.get(2)){
+            }else if(input_num.get(1).equals(rand_num.get(0))||input_num.get(1).equals(rand_num.get(2))){
                 ball++;
             }
-            sca/=10;
-            if(sca%10==(int)num.get(2)) {
+
+            if(input_num.get(2).equals(rand_num.get(2))) {
                 strike++;
-            }else if(sca%10==(int)num.get(0)||sca%10==(int)num.get(1)){
+            }else if(input_num.get(2).equals(rand_num.get(0))||input_num.get(2).equals(rand_num.get(1))){
                 ball++;
             }
+
             if(ball==0&&strike==0){
                 System.out.println("낫싱");
             }else if(ball==0){

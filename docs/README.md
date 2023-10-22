@@ -8,7 +8,7 @@
 
 ## 게임 함수
 >```java
->public static void game(List random_num){}
+> public static void game(List random_num)
 >```
 > #### 게임 함수에서 구현해야 하는 기능 <br>
 > 1. 사용자에게 값 입력받기 <br>문자열로 입력받은 후 List에 Integer타입으로 값을 넣어줌
