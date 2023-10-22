@@ -14,13 +14,17 @@ public class BaseballGame implements Game{
     private static Hint hint = Hint.getInstance();
     private static OutputView outputView=new OutputView();
     private static InputView inputView=new InputView();
-    //private static BaseballGame
+    private static BaseballGame baseballGame=new BaseballGame();
 
     private Balls userBalls;
     private Balls computerBalls;
     private User user=new User();
 
+    private BaseballGame(){}
 
+    public static BaseballGame getInstance(){
+        return baseballGame;
+    }
 
     @Override
     public void start() {
