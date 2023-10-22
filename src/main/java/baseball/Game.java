@@ -21,4 +21,19 @@ public class Game {
         }
         return computer;
     }
+
+    public GameResult getGameResult(List<Integer> userInputList) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (answerList.get(i).equals(userInputList.get(i))) {
+                strike++;
+            } else if (answerList.contains(userInputList.get(i))) {
+                ball++;
+            }
+        }
+
+        return new GameResult(strike, ball);
+    }
 }
