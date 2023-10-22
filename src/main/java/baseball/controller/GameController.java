@@ -1,9 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.BallNumbers;
-import baseball.domain.BallNumbersDTO;
-import baseball.domain.GameResult;
-import baseball.domain.RandomBallNumberGenerator;
+import baseball.domain.*;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -23,9 +20,24 @@ public class GameController {
     }
 
     public void start() {
-        outputView.printGameStartMsg();
+        start(true);
+    }
+
+    public void start(boolean isFreshStart) {
+        if (isFreshStart) {
+            outputView.printGameStartMsg();
+        }
         BallNumbers answerBallNumbers = getAnswerBallNumbers();
         compareNumbers(answerBallNumbers);
+        restartOrNot();
+    }
+
+    private void restartOrNot() {
+        String userChoice = inputView.readLine();
+        RestartDTO restartDTO = new RestartDTO(userChoice);
+        if (restartDTO.wantRestart()) {
+            start(false);
+        }
     }
 
     private void compareNumbers(BallNumbers answerBallNumbers) {

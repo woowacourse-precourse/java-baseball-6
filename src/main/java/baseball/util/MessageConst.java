@@ -13,4 +13,5 @@ public class MessageConst {
     public final static String NUMBER_SIZE_EXCEPTION = "[ERROR] 세자리수를 입력해주세요.\n";
     public final static String NUMBER_DUPLICATION_EXCEPTION = "[ERROR] 숫자가 중복되었습니다.\n";
     public final static String NUMBER_RANGE_EXCEPTION = "[ERROR] 1이상 9이하 사이의 숫자를 입력해주세요.\n";
+    public final static String RESTART_FORMAT_EXCEPTION = "[ERROR] 1 혹은 2를 입력해주세요.\n";
 }
