@@ -5,8 +5,6 @@ import java.util.Objects;
 public class Ball {
     private static final int ZERO_COUNT = 0;
     private static final int MAX_COUNT = 3;
-    private static final String NO_BALL_MESSAGE = "";
-    private static final String BALL_MESSAGE = "볼";
     private static final String BALL_RANGE_EXCEPTION_MESSAGE = "볼의 유효 범위는 0~3 입니다.";
     private final int ball;
 
@@ -43,13 +41,5 @@ public class Ball {
     @Override
     public int hashCode() {
         return Objects.hash(ball);
-    }
-
-    @Override
-    public String toString() {
-        if (this.ball == ZERO_COUNT) {
-            return NO_BALL_MESSAGE;
-        }
-        return ball + BALL_MESSAGE;
     }
 }
