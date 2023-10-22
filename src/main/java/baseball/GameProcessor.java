@@ -13,7 +13,6 @@ public class GameProcessor {
 
     private List<String> generateRandomNumberList(Data data) {
         List<String> randomNumberList = data.getRandomNumberList();
-        System.out.println("generate " + randomNumberList);
 
         if (randomNumberList.isEmpty()) {
             for (int i = 0; i < DIGIT_SIZE; i++) {
@@ -74,10 +73,6 @@ public class GameProcessor {
         strikeBall.set(0, strike);
         strikeBall.set(1, ball);
 
-        System.out.println("strikeBall: " + strikeBall);
-        System.out.println("userNumberList: " + userNumberList);
-        System.out.println("randomNumberList: " + randomNumberList);
-
         return strikeBall;
     }
 
@@ -93,17 +88,16 @@ public class GameProcessor {
         String answerText;
         StringBuilder answerTextBuilder = new StringBuilder();
         List<String> answerList = calculateStrikeBall(data);
-        System.out.println("answerList: " + answerList);
 
         if (Integer.parseInt(answerList.get(0)) > 0 && Integer.parseInt(answerList.get(1)) > 0) {
-            answerTextBuilder.append(answerList.get(0));
-            answerTextBuilder.append(messageManager.getSameDigitMessage());
-            if (Integer.parseInt(answerList.get(0)) != 3) {
-                answerTextBuilder.append(" ");
+            if (Integer.parseInt(answerList.get(0)) != 3 && (Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0))) > 0) {
                 answerTextBuilder.append(String.valueOf(
                         Integer.parseInt(answerList.get(1)) - Integer.parseInt(answerList.get(0))));
                 answerTextBuilder.append(messageManager.getSameNumberMessage());
+                answerTextBuilder.append(" ");
             }
+            answerTextBuilder.append(answerList.get(0));
+            answerTextBuilder.append(messageManager.getSameDigitMessage());
         }
         if (Integer.parseInt(answerList.get(0)) > 0 && Integer.parseInt(answerList.get(1)) == 0) {
             answerTextBuilder.append(answerList.get(0));
@@ -128,7 +122,6 @@ public class GameProcessor {
     public boolean illegalArgumentException(Data data) {
         boolean error = false;
         if ((data.getUserAnswerNumber().length()) != 3) {
-            System.out.println("세자리 수를 입력해 주세요.");
             error = true;
         }
         return error;
