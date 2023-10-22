@@ -4,7 +4,6 @@ import static baseball.PlayerView.*;
 
 public class BaseballGame {
     private PlayerView playerView = new PlayerView();
-    private Computer computer = new Computer();
     private GameResult gameResult = new GameResult();
     private Referee referee = new Referee();
 
@@ -18,7 +17,8 @@ public class BaseballGame {
     }
 
     private void playSingleGame() {
-        String computerNumbers = computer.generate();
+        Computer computer = new Computer();
+        String computerNumbers = computer.getComputerNumbers();
         do {
             playerView.output(INPUT_NUMBERS_MESSAGE);
             String playerNumbers = playerView.input();
