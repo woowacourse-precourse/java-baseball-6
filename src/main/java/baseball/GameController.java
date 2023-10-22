@@ -6,7 +6,6 @@ public class GameController {
     private Computer computer;
     private UserInput userInput;
     private boolean hasWon;
-    private boolean isNothing;
 
     GameController() {
         computer = new Computer();
@@ -24,7 +23,7 @@ public class GameController {
     public void checkMatch(List<Integer> computerNum, List<Integer> userNum) {
         int strikeCount = countStrike(computerNum, userNum);
         int ballCount = countBall(computerNum, userNum);
-        printResult(strikeCount, ballCount);
+        printResult(strikeCount, ballCount - strikeCount);
     }
 
     public int countStrike(List<Integer> computerNum, List<Integer> userNum) {
@@ -55,7 +54,7 @@ public class GameController {
             System.out.printf("%d볼 ", ballCount);
         }
         if (strikeCount > 0) {
-            System.out.printf("%d스트라이크", ballCount - strikeCount);
+            System.out.printf("%d스트라이크", strikeCount);
         }
         System.out.print("\n");
     }
