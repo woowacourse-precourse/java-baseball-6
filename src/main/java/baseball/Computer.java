@@ -21,25 +21,23 @@ public class Computer {
         }
     }
 
-    static void compareNumber(int number){
-        int digit=1;
-        strike = 0;
-        ball = 0;
-        while(number>0){
-            int remainDigit = digitBoard[number%10];
-            if (remainDigit > 0) {
+    static void compareNumber(final String number){
+        int currentDigit=4;
+        for(char digit: number.toCharArray()){
+            currentDigit--;
+            if(digitBoard[digit-'0']==currentDigit){
+                strike++;
+                continue;
+            }
+            if(digitBoard[digit-'0']>0){
                 ball++;
             }
-            if(remainDigit == digit) {
-                ball--;
-                strike++;
-            }
-            number /= 10;
-            digit++;
         }
     }
 
-    public static String getHint(int number) {
+    public static String getHint(final String number) {
+        strike = 0;
+        ball = 0;
         compareNumber(number);
         if(strike == 0 && ball == 0) {
             return "낫싱";

@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
-    private static int userNumber = 0;
+    private static String userNumber = null;
 
     static boolean isParsableToInt(final String input){
         try{
@@ -52,18 +52,18 @@ public class User {
         }
     }
 
-    static void setUserNumber(int userNumber){
+    static void setUserNumber(String userNumber){
         User.userNumber = userNumber;
     }
 
-    public static int getUserNumber(){
-        return userNumber;
+    public static String getUserNumber(){
+        return User.userNumber;
     }
 
     public static void readNumber(){
         String input = Console.readLine();
         validateInput(input);
-        setUserNumber(Integer.parseInt(input));
+        setUserNumber(input);
     }
 
 }
