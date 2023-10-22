@@ -24,3 +24,11 @@
 - 사용자의 입력과 컴퓨터의 값 비교해 맞췄는지, 틀렸는지 판단하기
   - 힌트 문자열 출력(예. 1볼 1스트라이크)
 - 프로그램 재시작
+
+#### 진행
+1. BaseBallGame 클래스 
+   - getComputerAnswer() : camp.nextstep.edu.missionutils에서 제공하는 Randoms API를 사용해 컴퓨터의 값 랜덤 추출한다.
+   - getUserAnswer() : 사용자의 입력을 ArrayList로 반환한다.
+   - checkAnswer() : 사용자 입력 값과 컴퓨터의 값을 비교해 답을 맞췄는지 아닌지 확인한다. 힌트 문자열(예. 1볼 1스트라이크)을 반환한다.
+2. 자료구조
+   - checkAnswer()에서 사용자 입력 값과 컴퓨터의 값을 비교할때 contains(), indexOf()의 함수를 이용하기 위해 배열 대신 list를 사용했다.

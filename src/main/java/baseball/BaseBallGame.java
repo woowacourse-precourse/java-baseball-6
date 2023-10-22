@@ -63,7 +63,6 @@ public class BaseBallGame {
                 computerAnswer.add(randomNumber);
             }
         }
-        System.out.println("컴퓨터 : " + computerAnswer.toString());
         return computerAnswer;
     }
     // 사용자의 입력을 ArrayList로 반환함
@@ -81,7 +80,7 @@ public class BaseBallGame {
         return userAnswer;
     }
     // 사용자 입력 값과 컴퓨터의 값을 비교해 답을 맞췄는지 아닌지 확인함
-    // 답을 맞춘 경우 문자열 W 반환, 틀린 경우 힌트 문자열(예. 1볼 1스트라이크) 반환
+    // 힌트 문자열(예. 1볼 1스트라이크) 반환
     public String checkAnswer(List<Integer> userAnswer, List<Integer> computerAnswer) {
         String resultAnswer = "";
         int count = 0; // 사용자 입력 값과 컴퓨터 입력 값중 몇 개가 같은 수인지 카운트
