@@ -15,7 +15,6 @@ public class Application {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     // 게임 실행 메서드
@@ -37,16 +36,18 @@ public class Application {
     // 게임 재시작 여부를 물어보는 메서드
     private boolean askForRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String response;
-        do {
-            response = Console.readLine();
-            if (response.equals("2")) {
-                System.out.println("게임 종료");
-                System.exit(0); // 게임을 완전히 종료
-            }
-        } while (!response.equals("1"));
+        String response = Console.readLine();
 
-        return true; // 1을 입력하면 true 반환 (게임 재시작)
+        if (response.equals("1")) {
+            return true;
+
+        } else if (response.equals("2")) {
+            System.out.println("게임 종료");
+            return false;
+        } else {
+            System.out.println("올바른 입력이 아닙니다. 게임 종료");
+            return false; // 게임 종료
+        }
     }
 
 
@@ -58,7 +59,7 @@ public class Application {
         for (int i = 0; i < playerNumbers.length; i++) {
             if (playerNumbers[i] == randomNumbers[i]) {
                 strikes++;
-            } else if (containsNumber(randomNumbers, playerNumbers[i])) {
+            } else if (containsNumber(randomNumbers, playerNumbers[i], i)) {
                 balls++;
             }
         }
@@ -72,9 +73,9 @@ public class Application {
         }
     }
 
-    private boolean containsNumber(int[] numbers, int target) {
-        for (int number : numbers) {
-            if (number == target) {
+    private boolean containsNumber(int[] numbers, int target, int excludeIndex) {
+        for (int i = 0; i < numbers.length; i++) {
+            if (i != excludeIndex && numbers[i] == target) {
                 return true;
             }
         }
@@ -93,15 +94,18 @@ public class Application {
     // 플레이어로 부터 숫자를 받는 메서드
     private int[] getPlayerNumbers() {
         int[] playerNumbers = new int[3];
-        for (int i = 0; i < 3; i++) {
-            System.out.println("숫자를 입력해주세요 : ");
-            int playerNumber = Integer.parseInt(Console.readLine());
+        System.out.println("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
 
-            if (playerNumber < 1 || playerNumber > 9) {
-                throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 프로그램을 종료합니다.");
-            } else {
-                playerNumbers[i] = playerNumber;
-            }
+        if (input.length() != 3) {
+            System.out.println("3자리 숫자를 다시 입력하세요.");
+            return generateRandomNumbers();
+        }
+
+        for (int i = 0; i < 3; i++) {
+            char playerNumber = input.charAt(i);
+            playerNumbers[i] = playerNumber;
+
         }
         return playerNumbers;
     }
