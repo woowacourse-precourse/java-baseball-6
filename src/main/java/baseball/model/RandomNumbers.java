@@ -17,6 +17,10 @@ public class RandomNumbers {
         this.randomNumbers = generateNewRandomNumbers();
     }
 
+    public RandomNumbers(List<Number> randomNumbers) {
+        this.randomNumbers = randomNumbers;
+    }
+
     private List<Number> generateNewRandomNumbers() {
         return Stream.generate(() -> Randoms.pickNumberInRange(MIN_NUMERIC_VALUE, MAX_NUMERIC_VALUE))
                 .distinct()
