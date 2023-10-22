@@ -4,7 +4,7 @@ import baseball.model.Hint;
 import baseball.view.OutputView;
 
 public class OutputController {
-    private OutputView outputView;
+    private final OutputView outputView;
 
     public OutputController() {
         this.outputView = new OutputView();
