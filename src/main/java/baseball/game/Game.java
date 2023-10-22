@@ -3,6 +3,8 @@ package baseball.game;
 import baseball.object.Computer;
 import baseball.object.NumberLength;
 
+import java.util.stream.IntStream;
+
 public class Game {
 
     private static int ball = 0;
@@ -13,14 +15,13 @@ public class Game {
         strike = 0;
 
         String number = Computer.getNumber();
-        for(int i = 0; i < NumberLength.LENGTH; i++) {
-            if(answer.contains(String.valueOf(number.charAt(i)))) {
-                if(answer.charAt(i) == number.charAt(i))
-                    strike++;
-                else
-                    ball++;
-            }
-        }
+        IntStream.range(0, NumberLength.LENGTH)
+                .forEach(index -> {
+                    if(answer.charAt(index) == number.charAt(index))
+                        strike++;
+                    else if(answer.contains(String.valueOf(number.charAt(index))))
+                        ball++;
+                });
     }
 
     public static boolean printResult() {
