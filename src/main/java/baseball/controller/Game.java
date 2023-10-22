@@ -8,10 +8,11 @@ import baseball.view.OutputView;
 import java.util.Objects;
 
 import static baseball.config.GlobalConfig.GAME_RESTART_FLAG;
+import static baseball.view.constants.PrintMessage.GAME_START;
 
 public class Game {
     public void start() {
-        OutputView.printInitialGameStart();
+        OutputView.printGameInformation(GAME_START);
         do {
             play(Number.generateRandomNumbers());
         } while (!isRestart());
