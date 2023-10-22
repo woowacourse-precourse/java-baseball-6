@@ -1,6 +1,6 @@
-## 미션 - ⚾ 숫자 야구
+# 1주차미션 - ⚾ 숫자 야구
 
-### 🐣 구현 기능 목록
+## 🐣 구현 기능 목록
 
 ### 1. 상대방(컴퓨터) 입력
 - camp.nextste️p.edu.missionutils의 Randoms 및 Console API를 사용
