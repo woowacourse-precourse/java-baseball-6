@@ -9,7 +9,7 @@ public class Validate {
 
     public void validateInput(String number) {
         this.number = number;
-        if (number.length() != 3 || checkZeroValue()==false) {
+        if (number.length() != 3 || checkZeroValue() == false) {
             throw new IllegalArgumentException();
         }
     }
