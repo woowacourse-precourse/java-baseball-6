@@ -12,7 +12,7 @@ public class Application {
         // command 가 1이면 여전히 게임을 수행, 2이면 게임을 종료
         int command = 1;
         computer.pickRandomNumber();
-        System.out.println("숫자 야구를 시작합니다.");
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (command == 1) {
             System.out.print("숫자를 입력해주세요: ");
             int[] playerNumber = player.inputPlayerNums();
@@ -40,10 +40,13 @@ public class Application {
             buffer.append("낫싱");
         } else {
             if (result[0] != 0) {
-                buffer.append(result[0] + "볼 ");
+                buffer.append(result[0] + "볼");
             }
 
             if (result[1] != 0) {
+                if (!buffer.isEmpty()) {
+                    buffer.append(" ");
+                }
                 buffer.append(result[1] + "스트라이크");
             }
         }
