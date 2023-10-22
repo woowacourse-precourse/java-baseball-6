@@ -35,13 +35,13 @@ public class BaseballNumber {
 		}
 	}
 
-	private static void validateDuplicateNumber(List<Integer> numbers) {
+	private void validateDuplicateNumber(List<Integer> numbers) {
 		if (isDuplicateNumber(numbers)) {
 			throw new IllegalArgumentException("숫자가 중복되었습니다.");
 		}
 	}
 
-	private static boolean isDuplicateNumber(List<Integer> numbers) {
+	private boolean isDuplicateNumber(List<Integer> numbers) {
 		long distinctCount = numbers.stream()
 			.distinct()
 			.count();
