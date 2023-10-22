@@ -54,5 +54,19 @@ public class Application {
         }
         return false;
     }
+
+    private static void printResult(int strike, int ball) {
+        String resultString = "";
+        if (strike == 0 && ball == 0) {
+            resultString = "낫싱";
+        }
+        if (ball != 0) {
+            resultString += ball + "볼 ";
+        }
+        if (strike != 0) {
+            resultString += strike + "스트라이크";
+        }
+        System.out.println(resultString);
+    }
     }
 }
