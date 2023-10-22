@@ -39,10 +39,11 @@ class ComputerTest {
     @Test
     void 볼_수를_계산한다() {
         // given
-        int strikeCount = 3;
+        List<Integer> guessNumbers = List.of(1, 5, 9);
 
         // when
-        boolean result = computer.isGameOver(strikeCount);
+        boolean result = computer.isGameOver(guessNumbers);
+
         // then
         assertThat(result).isTrue();
     }
