@@ -1,7 +1,7 @@
 package baseball;
 
 public class PrintResult {
-    public static String print(int[] strike_ball){
+    public static void print(int[] strike_ball){
         StringBuilder sb = new StringBuilder();
 
         if (strike_ball[1]>0){
@@ -17,6 +17,6 @@ public class PrintResult {
             sb.append("낫싱");
         }
 
-        return sb.toString();
+        System.out.println(sb);
     }
 }

@@ -3,9 +3,9 @@ package baseball;
 import java.util.Collections;
 import java.util.List;
 
-public class ValidCheckNumber {
+public class ValidCheck {
     public static void validCheckPlayer(List<Integer> player){
-        validCheckSize(player);
+        sizeCheck(player);
         zeroCheck(player);
         duplicationCheck(player);
     }
@@ -20,19 +20,19 @@ public class ValidCheckNumber {
             throw new IllegalArgumentException();
         }
     }
-    public static void validCheckSize(List<Integer> player){
+    public static void sizeCheck(List<Integer> player){
         if (player.size() != 3){
             throw new IllegalArgumentException();
         }
     }
-    public static void validCheckInt(String s){
+    public static void typeCheck(String s){
         try{
             Integer.parseInt(s);
         }catch (NumberFormatException e){
             throw new IllegalArgumentException();
         }
     }
-    public static int validCheckRestart(String s){
+    public static int restartNumCheck(String s){
         try{
             int i = Integer.parseInt(s);
             if (i!=1 && i!=2){

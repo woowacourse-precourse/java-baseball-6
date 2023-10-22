@@ -11,15 +11,14 @@ public class PlayGame {
             List<Integer> player = createNumber.getPlayerNumber();
             int[] strike_ball = CompareNumber.checkNumber(computer, player);
             allStrike= (strike_ball[0] != 3);
-            String result = PrintResult.print(strike_ball);
-            System.out.println(result);
+            PrintResult.print(strike_ball);
         }
     }
-    public void repeatGame(){
+    public void playGame(){
         int game_start = 1;
         while (game_start==1){
             play();
-            game_start = CheckRestart.check();
+            game_start = GameOver.checkRestart();
         }
     }
 }

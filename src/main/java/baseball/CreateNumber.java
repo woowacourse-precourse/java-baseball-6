@@ -20,16 +20,16 @@ public class CreateNumber {
     public List<Integer> getPlayerNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String s = Console.readLine();
-        ValidCheckNumber.validCheckInt(s);
+        ValidCheck.typeCheck(s);
         List<Integer> player = stringToList(s);
-        ValidCheckNumber.validCheckPlayer(player);
+        ValidCheck.validCheckPlayer(player);
         return player;
     }
     public List<Integer> stringToList(String s){
         List<Integer> player = new ArrayList<>();
         for (int i = 0; i < s.length(); i++) {
-            int temp = s.charAt(i)-48;
-            player.add(temp);
+            int playerNumber = s.charAt(i)-48;
+            player.add(playerNumber);
         }
         return player;
     }
