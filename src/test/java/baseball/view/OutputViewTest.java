@@ -1,6 +1,7 @@
 package baseball.view;
 
 import static baseball.model.constants.Constant.BALL;
+import static baseball.model.constants.Constant.GAME_CLEAR_PHRASE;
 import static baseball.model.constants.Constant.GAME_START_PHRASE;
 import static baseball.model.constants.Constant.NOTHING;
 import static baseball.model.constants.Constant.STRIKE;
@@ -101,5 +102,20 @@ class OutputViewTest {
         String actualOutput = outputStream.toString().trim();
 
         assertEquals(NOTHING, actualOutput);
+    }
+
+    @Test
+    @DisplayName("3개의 숫자를 모두 맞히셨습니다! 게임 종료'를 출력합니다.")
+    void 게임종료문구출력() {
+        OutputView outputView = new OutputView();
+
+        OutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        outputView.printGameClear();
+
+        String actualOutput = outputStream.toString().trim();
+
+        assertEquals(GAME_CLEAR_PHRASE, actualOutput);
     }
 }

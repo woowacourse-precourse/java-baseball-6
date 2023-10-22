@@ -1,6 +1,7 @@
 package baseball.view;
 
 import static baseball.model.constants.Constant.BALL;
+import static baseball.model.constants.Constant.GAME_CLEAR_PHRASE;
 import static baseball.model.constants.Constant.GAME_START_PHRASE;
 import static baseball.model.constants.Constant.NOTHING;
 import static baseball.model.constants.Constant.STRIKE;
@@ -15,7 +16,7 @@ public class OutputView {
     }
 
     public static void printBall() {
-        System.out.print(BALL);
+        System.out.println(BALL);
     }
 
     public static void printBallStrike() {
@@ -23,10 +24,14 @@ public class OutputView {
     }
 
     public static void printStrike() {
-        System.out.print(STRIKE);
+        System.out.println(STRIKE);
     }
 
     public static void printNothing() {
-        System.out.print(NOTHING);
+        System.out.println(NOTHING);
+    }
+
+    public static void printGameClear() {
+        System.out.println(GAME_CLEAR_PHRASE);
     }
 }

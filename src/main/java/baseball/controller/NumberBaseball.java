@@ -18,8 +18,10 @@ public class NumberBaseball {
 
     public void start() {
         OutputView.printGameStart();
-        getNumbersFromPlayer();
-        printHint(getCompareResult());
+        do {
+            getNumbersFromPlayer();
+            printHint(getCompareResult());
+        } while (isContinue());
     }
 
     public void getNumbersFromPlayer() {
@@ -60,5 +62,13 @@ public class NumberBaseball {
         if (count[0] == 0 && count[1] == 0) {
             OutputView.printNothing();
         }
+    }
+
+    public boolean isContinue() {
+        if (compareNumber.isCorrect()) {
+            OutputView.printGameClear();
+            return false;
+        }
+        return true;
     }
 }
