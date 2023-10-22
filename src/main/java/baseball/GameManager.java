@@ -3,6 +3,29 @@ package baseball;
 import java.util.List;
 
 public class GameManager {
+    public void startMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public void endMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public void restartGameMessage() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public void exitMessage() {
+        System.out.println("게임 종료");
+    }
+
+    public String startGame(User user, Computer computer) {
+        System.out.print("숫자를 입력해주세요 : ");
+        user.consoleReadLine();
+        return doGame(computer.number, user.number);
+
+    }
+
     public String doGame(List<Integer> computerNumber, List<Integer> userNumber) {
         // 같은 수가 같은 자리에 있으면 스트라이크
         Integer strikeCount = getStrikeCount(computerNumber, userNumber);
