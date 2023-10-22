@@ -1,8 +1,8 @@
 package baseball;
 
 public class ComparisonResult {
-    int ball;
-    int strike;
+    private final int ball;
+    private final int strike;
 
     public ComparisonResult(int ball, int strike) {
         this.ball = ball;
