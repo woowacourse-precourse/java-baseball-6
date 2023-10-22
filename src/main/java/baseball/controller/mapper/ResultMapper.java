@@ -2,7 +2,7 @@ package baseball.controller.mapper;
 
 public class ResultMapper {
 
-    private static final int ZERO = 0;
+    private static final int NO_COUNT = 0;
     private static final String NOTHING = "낫싱";
     private static final String BALL = "볼 ";
     private static final String STRIKE = "스트라이크";
@@ -16,7 +16,7 @@ public class ResultMapper {
     }
 
     private static boolean isOut(final int ballCount, final int strikeCount) {
-        return ballCount == ZERO && strikeCount == ZERO;
+        return ballCount == NO_COUNT && strikeCount == NO_COUNT;
     }
 
     private static String buildStatus(final int ballCount, final int strikeCount) {
@@ -34,6 +34,6 @@ public class ResultMapper {
     }
 
     private static boolean hasCount(final int count) {
-        return count != ZERO;
+        return count != NO_COUNT;
     }
 }

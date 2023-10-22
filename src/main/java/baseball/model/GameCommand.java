@@ -7,8 +7,8 @@ public enum GameCommand {
     RESTART("1"),
     QUIT("2");
 
-    private static final String WRONG_INPUT = "잘못된 입력입니다.";
-    private static final String ENTER_RESTART_OR_QUIT = "1또는 2를 입력해주세요";
+    private static final String WRONG_INPUT_MESSAGE = "잘못된 입력입니다.";
+    private static final String ENTER_RESTART_OR_QUIT_MESSAGE = "1또는 2를 입력해주세요";
 
     private final String number;
 
@@ -22,12 +22,12 @@ public enum GameCommand {
         return Arrays.stream(values())
                 .filter(command -> command.number.equals(input))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(WRONG_INPUT));
+                .orElseThrow(() -> new IllegalArgumentException(WRONG_INPUT_MESSAGE));
     }
 
     private static void validateInput(final String input) {
         if (!isValidInput(input)) {
-            throw new IllegalArgumentException(ENTER_RESTART_OR_QUIT);
+            throw new IllegalArgumentException(ENTER_RESTART_OR_QUIT_MESSAGE);
         }
     }
 

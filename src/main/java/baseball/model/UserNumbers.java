@@ -7,7 +7,7 @@ import java.util.List;
 public class UserNumbers {
 
     private static final int REQUIRED_INPUT_LENGTH = 3;
-    private static final String ZERO = "0";
+    private static final String ZERO_DIGIT = "0";
     private static final String INVALID_LENGTH_MESSAGE = "숫자는 세 가지를 고를 수 있습니다.";
     private static final String ZERO_ERROR_MESSAGE = "0이 포함되어서는 안됩니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "중복된 숫자는 입력할 수 없습니다.";
@@ -43,7 +43,7 @@ public class UserNumbers {
     }
 
     private static boolean containsZero(final String input) {
-        return input.contains(ZERO);
+        return input.contains(ZERO_DIGIT);
     }
 
     private static void validateNoDuplicates(final String input) {
