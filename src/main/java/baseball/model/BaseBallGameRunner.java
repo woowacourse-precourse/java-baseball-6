@@ -31,32 +31,22 @@ public class BaseBallGameRunner {
             validateInputAndAddToList(inputString, guessNumber);
 
             GuessResult result = generator.generateResult(computer.getHiddenNumber(), guessNumber);
-            System.out.println(result.getResultMessage());
-
-            if (result.getStatus().equals(GUESS_WRONG)) {
-                reset();
-                continue;
-            }
-
-            System.out.println(GAME_FINISH_MESSAGE);
-            String userAction = getPlayerInput(USER_ACTION_MESSAGE);
-            boolean playAgain = processUserAction(userAction);
-            if (!playAgain) {
+            boolean isGameOngoing = processResult(result);
+            if (!isGameOngoing) {
                 break;
             }
-            resetComputer();
         }
         Console.close();
-    }
-
-    private void resetComputer() {
-        reset();
-        computer.resetForNewGame();
     }
 
     private void reset() {
         guessNumber.clear();
         generator.resetIsMatched();
+    }
+
+    private void resetForNewGame() {
+        reset();
+        computer.resetForNewGame();
     }
 
     private boolean processUserAction(String userAction) {
@@ -89,5 +79,23 @@ public class BaseBallGameRunner {
         if ((c >= '1' && c <= '9') && !guessNumber.contains(c - '0'))
             return;
         throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
+    }
+
+    private boolean processResult(GuessResult result) {
+        System.out.println(result.getResultMessage());
+
+        if (result.getStatus().equals(GUESS_WRONG)) {
+            reset();
+            return true;
+        }
+
+        System.out.println(GAME_FINISH_MESSAGE);
+        String userAction = getPlayerInput(USER_ACTION_MESSAGE);
+        boolean playAgain = processUserAction(userAction);
+        if (!playAgain) {
+            return false;
+        }
+        resetForNewGame();
+        return true;
     }
 }
