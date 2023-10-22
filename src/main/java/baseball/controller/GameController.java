@@ -11,6 +11,7 @@ import java.util.List;
 
 public class GameController {
 
+    private static final int RANDOM_NUMBER_LENGTH = 3;
     private final Computer computer;
     private final Player player;
     private final Hint hint;
@@ -27,28 +28,38 @@ public class GameController {
 
 //    public void gameStart() {
 //        boolean progress = true;
-//
-////        printStartMessage();
+//        outputView.printGameStartMessage();
 //
 //        while(progress) {
 //            progress();
 //
-////            progress = isRestart();
+//            progress = isRestart();
 //        }
 //    }
 
-//    private void progress() {
-//        boolean isCorrect = false;
-//        List<Integer> computerNumbers = computer.getNumbers();
-//        List<Integer> playerNumbers;
-//
-//        while(!isCorrect) {
-//            playerNumbers = getPlayerNumber();
-//            isCorrect = compareNumber(computerNumbers, playerNumbers);
-//        }
-//
-//        printEndMessage();
-//    }
+    private void progress() {
+        boolean isCorrect = false;
+        List<Integer> computerNumbers = computer.getNumbers();
 
+        while(!isCorrect) {
+            setPlayerNumbers();
+            isCorrect = compareNumbers(computerNumbers, player.getNumbers());
+        }
 
+        outputView.printEndMessage();
+    }
+
+    private boolean compareNumbers(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        int strikeCount = hint.getStrikeCount(computerNumbers, playerNumbers);
+        int ballCount = hint.getBallCount(computerNumbers, playerNumbers);
+
+        outputView.printHint(strikeCount, ballCount);
+
+        return strikeCount == RANDOM_NUMBER_LENGTH;
+    }
+
+    private void setPlayerNumbers() {
+        String input = inputView.inputPlayerNumber();
+        player.setPlayerNumbersWithString(input);
+    }
 }
