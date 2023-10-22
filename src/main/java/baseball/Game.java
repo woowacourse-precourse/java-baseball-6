@@ -90,8 +90,8 @@ public class Game {
 
     private Score calculateScore(List<Integer>user, List<Integer>computer){
         Score score = new Score();
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
+        for(int i = 0; i < COUNT; i++){
+            for(int j = 0; j < COUNT; j++){
                 if(Objects.equals(user.get(i), computer.get(j))){
                     if(i == j){
                         score.addStrike();
