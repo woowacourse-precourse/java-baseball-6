@@ -27,8 +27,8 @@ public class ValidationUtils {
     }
 
     private static boolean isWithinRange(String input) {
-        int num = Integer.parseInt(input);
-        return num >= 111 && num <= 999;
+        int number = Integer.parseInt(input);
+        return number >= 111 && number <= 999 && !input.contains("0");
     }
 
     public static boolean isValidChoice(String input) {
