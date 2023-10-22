@@ -10,10 +10,17 @@ public final class Balls {
         this.balls = balls;
     }
     public static Balls of(List<Integer> numbers) {
+        checkRange(numbers);
         List<Ball> newBalls = numbers.stream()
                 .map(number -> Ball.of(numbers.indexOf(number), BallNumber.of(number)))
                 .toList();
         return new Balls(newBalls);
+    }
+
+    private static void checkRange(List<Integer> numbers) {
+        if (numbers.size() != 3) {
+            throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
+        }
     }
 
     public Ground compute(Balls userBalls) {
