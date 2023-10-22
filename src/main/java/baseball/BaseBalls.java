@@ -37,11 +37,5 @@ public class BaseBalls {
                 .filter(v -> !v.equals(BallScore.NOTHING))
                 .findFirst().orElse(BallScore.NOTHING);
         return ballScore;
-/*
-        generatedBalls.forEach(v -> {
-            BallScore ballScore = v.calculateScore(compareNumber);
-            System.out.println(ballScore);
-        });
-*/
     }
 }
