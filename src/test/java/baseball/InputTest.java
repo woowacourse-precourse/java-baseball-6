@@ -12,9 +12,8 @@ class InputTest {
     void 사용자의_입력을_받아온다(){
         String expected = "wooteco";
         System.setIn(new ByteArrayInputStream(expected.getBytes()));
-        Input inputCommander = new Input();
 
-        String input = inputCommander.receiveInput();
+        String input = Input.receiveInput();
 
         assertEquals(expected, input);
     }

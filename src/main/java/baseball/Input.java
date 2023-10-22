@@ -3,11 +3,15 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 final class Input {
-    String receiveInput() {
+
+    private Input() {
+    }
+
+    static String receiveInput() {
         return Console.readLine();
     }
 
-    void stopReceivingInput() {
+    static void stopReceivingInput() {
         Console.close();
     }
 }

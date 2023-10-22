@@ -2,23 +2,26 @@ package baseball;
 
 final class Output {
 
-    void printGameStart() {
+    private Output() {
+    }
+
+    static void printGameStart() {
         System.out.println(OutputMessage.START.message);
     }
 
-    void printReceivingInput() {
+    static void printReceivingInput() {
         System.out.print(OutputMessage.INPUT_NUMBER.message);
     }
 
-    void printGameScore(final String score) {
+    static void printGameScore(final String score) {
         System.out.println(score);
     }
 
-    void printGameClear() {
+    static void printGameClear() {
         System.out.println(OutputMessage.GAME_CLEAR.message);
     }
 
-    void printAskingRetry() {
+    static void printAskingRetry() {
         System.out.println(OutputMessage.RETRY_OR_END.message);
     }
 

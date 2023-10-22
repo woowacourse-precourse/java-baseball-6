@@ -28,10 +28,9 @@ class OutputTest {
 
     @Test
     void 게임을_시작할때_요구사항에_맞는_문구를_출력한다() {
-        Output outputCommander = new Output();
         String expected = OutputMessage.START.message + "\n";
 
-        outputCommander.printGameStart();
+        Output.printGameStart();
 
         String output = outputStream.toString();
         assertEquals(expected, output);
@@ -39,10 +38,9 @@ class OutputTest {
 
     @Test
     void 플레이어의_입력을_받을때_요구사항에_맞는_문구를_출력한다() {
-        Output outputCommander = new Output();
         String expected = OutputMessage.INPUT_NUMBER.message;
 
-        outputCommander.printReceivingInput();
+        Output.printReceivingInput();
 
         String output = outputStream.toString();
         assertEquals(expected, output);
@@ -50,11 +48,10 @@ class OutputTest {
 
     @Test
     void 플레이어의_입력에_해당하는_점수를_요구사항에_맞게_출력한다() {
-        Output outputCommander = new Output();
         Result score = new Result(2, 1);
         String expected = score.getResultInKorean() + "\n";
 
-        outputCommander.printGameScore(score.getResultInKorean());
+        Output.printGameScore(score.getResultInKorean());
 
         String output = outputStream.toString();
         assertEquals(expected, output);
@@ -62,10 +59,9 @@ class OutputTest {
 
     @Test
     void 게임이_끝났을때_요구사항에_맞는_문구를_출력한다() {
-        Output outputCommander = new Output();
         String expected = OutputMessage.GAME_CLEAR.message + "\n";
 
-        outputCommander.printGameClear();
+        Output.printGameClear();
 
         String output = outputStream.toString();
         assertEquals(expected, output);
@@ -73,10 +69,9 @@ class OutputTest {
 
     @Test
     void 게임이_끝나고_재시작_여부를_묻는_문구를_요구사항에_맞게_출력한다() {
-        Output outputCommander = new Output();
         String expected = OutputMessage.RETRY_OR_END.message + "\n";
 
-        outputCommander.printAskingRetry();
+        Output.printAskingRetry();
 
         String output = outputStream.toString();
         assertEquals(expected, output);

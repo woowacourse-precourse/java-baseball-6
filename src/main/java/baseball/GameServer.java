@@ -2,13 +2,11 @@ package baseball;
 
 final class GameServer {
 
-    private final Input input = new Input();
-    private final Output output = new Output();
     private final Computer computer = new Computer();
     private Result score;
 
     void run() {
-        output.printGameStart();
+        Output.printGameStart();
         while (true) {
             playGame();
             if (score.isThreeStrike()) {
@@ -20,19 +18,19 @@ final class GameServer {
     }
 
     private void playGame() {
-        output.printReceivingInput();
-        Digits input = Digits.generateFixedDigits(this.input.receiveInput());
+        Output.printReceivingInput();
+        Digits input = Digits.generateFixedDigits(Input.receiveInput());
         score = computer.calculateScore(input);
-        output.printGameScore(score.getResultInKorean());
+        Output.printGameScore(score.getResultInKorean());
     }
 
     private Command askRetry() {
-        output.printGameClear();
-        output.printAskingRetry();
-        return Command.getCommand(input.receiveInput());
+        Output.printGameClear();
+        Output.printAskingRetry();
+        return Command.getCommand(Input.receiveInput());
     }
 
     private void endGame() {
-        input.stopReceivingInput();
+        Input.stopReceivingInput();
     }
 }
