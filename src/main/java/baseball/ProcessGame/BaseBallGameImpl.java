@@ -1,5 +1,11 @@
 package baseball.ProcessGame;
 
+import static baseball.Message.BaseBallGameMsg.BALL;
+import static baseball.Message.BaseBallGameMsg.NOTHING;
+import static baseball.Message.BaseBallGameMsg.PROMPT_PLAY_GAME;
+import static baseball.Message.BaseBallGameMsg.STRIKE;
+import static baseball.Message.BaseBallGameMsg.THREE_STRIKE;
+
 import baseball.Config.DiContainer;
 import baseball.EndGame.EndProcess;
 import baseball.Input.InputAnswer;
@@ -36,7 +42,7 @@ public class BaseBallGameImpl implements BaseBallGame {
     public void playGame() {
         Boolean keepGoing = true;
         while (keepGoing) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(PROMPT_PLAY_GAME.getMsg());
             List<Integer> userAnswer = inputAnswer.inputAnswer();
             Integer strike = countStrike(userAnswer);
             Integer ball = countBall(userAnswer);
@@ -83,17 +89,17 @@ public class BaseBallGameImpl implements BaseBallGame {
     @Override
     public Boolean gameResult(Integer strike, Integer ball) {
         if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING.getMsg());
         } else if (strike == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("3" + STRIKE.getMsg());
+            System.out.println(THREE_STRIKE.getMsg());
             return Boolean.FALSE;
         } else {
             if (ball > 0) {
-                System.out.print(ball + "볼" + " ");
+                System.out.print(ball + BALL.getMsg());
             }
             if (strike > 0) {
-                System.out.print(strike + "스트라이크");
+                System.out.print(strike + STRIKE.getMsg());
             }
             System.out.println();
         }
