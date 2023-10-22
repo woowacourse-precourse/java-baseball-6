@@ -40,6 +40,13 @@ public class InputView {
 
     }
 
+    private static BallInfo validateUserInput(String userInput) {
+        validateInputLength(userInput);
+        validateInputIsNumber(userInput);
+        validateInputDuplication(userInput);
+
+        return getBallFromUserInput(userInput);
+    }
 
     private static BallInfo getBallFromUserInput(String userInput) {
         List<Integer> userInputList = new ArrayList<>();
