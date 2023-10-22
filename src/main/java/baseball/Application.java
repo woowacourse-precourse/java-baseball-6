@@ -3,12 +3,12 @@ package baseball;
 import baseball.controller.RestartController;
 import baseball.domain.Restart;
 import baseball.domain.GameConstants;
+import baseball.util.InputUtil;
 import baseball.util.IntegerUtil;
 import baseball.view.EndView;
-import baseball.view.InputView;
+import baseball.view.GameView;
 import baseball.view.RestartView;
 import baseball.view.StartView;
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
@@ -35,6 +35,7 @@ public class Application {
                 //사용자는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 입력　
                 InputView.displayInputMessage();
                 String inputNum = Console.readLine();
+                String inputNum = InputUtil.inputString();
 
                 //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
                 //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
@@ -127,7 +128,7 @@ public class Application {
                 if (strike == GameConstants.NUMBER_LENGTH) {
                     EndView.displayEndMessage();
                     RestartView.displayRestartChoiceMessage();
-                    String regameNum = Console.readLine();
+                    String regameNum = InputUtil.inputString();
 
                     //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
                     //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
