@@ -1,2 +1,4 @@
-package baseball.print;public class PrintMessage {
+package baseball.print;
+
+public class PrintMessage {
 }
