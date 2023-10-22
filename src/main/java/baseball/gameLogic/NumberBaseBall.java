@@ -1,10 +1,10 @@
 package baseball.gameLogic;
 
-import baseball.userInterface.MessageViewer;
 import baseball.models.Score;
 
 import java.util.List;
 
+import static baseball.userInterface.MessageViewer.*;
 import static baseball.utils.Constants.*;
 
 /*
@@ -13,7 +13,6 @@ import static baseball.utils.Constants.*;
 
 public class NumberBaseBall {
     NumberChecker numberChecker;
-    MessageViewer messageViewer;
     ComputerAction computerAction;
     UserAction userAction;
 
@@ -22,7 +21,6 @@ public class NumberBaseBall {
 
     public void init(){
         numberChecker = new NumberChecker();
-        messageViewer = new MessageViewer();
         computerAction = new ComputerAction();
         userAction = new UserAction();
 
@@ -35,17 +33,16 @@ public class NumberBaseBall {
         generateNumber();
         computerNumList = computerAction.showNumberList();
 
-        messageViewer.printStartMsg();
+        printStartMsg();
 
         while (gameStatus == WANNA_KEEP_PLAYING){
-            messageViewer.printInputRequestMsg();
             System.out.println(computerNumList.get(0) + "" + computerNumList.get(1) + "" + computerNumList.get(2));
             userAction.inputAnswer();
             userNumList = userAction.showNumberList();
             System.out.println(userNumList.get(0) + "" + userNumList.get(1) + "" + userNumList.get(2));
 
             score = numberChecker.checkNumber(userNumList, computerNumList);
-            messageViewer.printResultMsg(score.ballCount, score.strikeCount);
+            printResultMsg(score.ballCount, score.strikeCount);
 
             checkKeepPlaying(score.strikeCount);
 
@@ -55,7 +52,7 @@ public class NumberBaseBall {
 
     public void checkKeepPlaying(int strikeCount){
         if (strikeCount == MAX_STRIKES) {
-            messageViewer.printGameEndMsg();
+            printGameEndMsg();
 
             userAction.inputRestartFactor();
             gameStatus = userAction.showMind();
