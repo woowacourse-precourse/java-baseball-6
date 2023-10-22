@@ -10,9 +10,13 @@ public class User {
         if (!ValidationUtils.isValidInput(userInput)) {
             throw new IllegalAccessException();
         }
-        int[] guessNumbers = Arrays.stream(userInput.split(""))
+        return Arrays.stream(userInput.split(""))
                 .mapToInt(Integer::parseInt)
                 .toArray();
-        return guessNumbers;
+    }
+
+    public static int getChoiceToPlayAgain() {
+        String userInput = Console.readLine();
+        return Integer.parseInt(userInput);
     }
 }

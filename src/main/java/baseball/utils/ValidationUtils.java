@@ -27,12 +27,8 @@ public class ValidationUtils {
     }
 
     private static boolean isWithinRange(String input) {
-        try {
-            int num = Integer.parseInt(input);
-            return num >= 111 && num <= 999;
-        } catch (NumberFormatException e) {
-            return false;
-        }
+        int num = Integer.parseInt(input);
+        return num >= 111 && num <= 999;
     }
 
     public static boolean isValidInput(String input) {
