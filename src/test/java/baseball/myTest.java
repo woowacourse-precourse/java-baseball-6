@@ -55,7 +55,7 @@ public class myTest extends NsTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        OutputView.printStartProgramMessage();
+        OutputView.printSuccessAndEndGameMessage();
         assertThat(outContent.toString()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.setOut(standardOut);
     }
