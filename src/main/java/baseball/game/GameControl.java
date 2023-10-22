@@ -8,7 +8,7 @@ public class GameControl {
     PrintMessage printer = new PrintMessage();
     GamePlaying newGame = new GamePlaying();
 
-    public void gameStart() {
+    public void startGame() {
         gameState = true;
         printer.printStartMessage();
 
