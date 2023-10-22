@@ -23,6 +23,7 @@ public class GameController {
     }
 
     private void round(){
-        // TODO : 라운드 수행
+        GameView.printRequireNumberMessage();
+
     }
 }
