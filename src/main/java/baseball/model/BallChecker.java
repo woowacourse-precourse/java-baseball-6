@@ -41,6 +41,8 @@ public class BallChecker {
                 ball++;
             }
         }
+
+        setIsContinueByStrike(strike);
         return new ResultBall(ball, strike);
     }
 }
