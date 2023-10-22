@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +49,21 @@ public class Application {
         if(User_num.size() != User_num.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
+    }
+
+    //컴퓨터의 값을 입력(중복숫자 넣지 않도록 설정)
+
+    public static List<Integer> com_num(){
+        List<Integer> com_num = new ArrayList<Integer>();
+
+        for(int i = 0 ; com_num.size() < 3 ; i++) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            if(!com_num.contains(num)) {
+                com_num.add(num);
+            }
+        }
+
+        return com_num;
     }
 
     public static void main(String[] args) {
