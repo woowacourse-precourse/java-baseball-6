@@ -58,4 +58,23 @@ class ComputerControllerTest {
         assertThat(zeroCount.getStrikeCount()).isEqualTo(0);
         assertThat(zeroCount.getBallCount()).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("Hint 메시지 반환")
+    void getHint() {
+        //given
+        BallAndStrikeCount threeStrike = new BallAndStrikeCount(0, 3);
+        BallAndStrikeCount zero = new BallAndStrikeCount(0, 0);
+        BallAndStrikeCount oneBalloneStrike = new BallAndStrikeCount(1, 1);
+
+        //when
+        String threeStrikeHint = computerController.getHint(threeStrike);
+        String nothingHint = computerController.getHint(zero);
+        String oneBalloneStrikeHint = computerController.getHint(oneBalloneStrike);
+
+        //then
+        assertThat(threeStrikeHint).isEqualTo("3스트라이크 ");
+        assertThat(nothingHint).isEqualTo("낫싱");
+        assertThat(oneBalloneStrikeHint).isEqualTo("1볼 1스트라이크 ");
+    }
 }

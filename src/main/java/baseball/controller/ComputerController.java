@@ -12,6 +12,7 @@ public class ComputerController {
     public static final String SPACE_MESSAGE = " ";
     public static final String BLANK_MESSAGE = "";
     public static final String STRIKE_MESSAGE = "스트라이크";
+    public static final String NOTHING_MESSAGE = "낫싱";
     public static final int SUCCESS_GAME_STRIKE_NUMBER = 3;
 
     ComputerNumber computerNumber;
@@ -45,6 +46,7 @@ public class ComputerController {
         String Hint="";
         Hint += getBallHint(count.getBallCount());
         Hint += getStrikeHint(count.getStrikeCount());
+        Hint += getNothingHint(count.getStrikeCount(), count.getBallCount());
         return Hint;
     }
 
@@ -63,8 +65,14 @@ public class ComputerController {
         return BLANK_MESSAGE;
     }
 
+    private String getNothingHint(int strikeCount, int ballCount) {
+        if(strikeCount == 0 && ballCount == 0) {
+            return NOTHING_MESSAGE;
+        }
 
-    //TODO: 테스트코드 작성
+        return BLANK_MESSAGE;
+    }
+
     public BallAndStrikeCount getBallAndStrikeCount(ComputerNumber computerNumber, String inputNumber) {
         int ballCount = 0, strikeCount = 0;
         int[] computerNumberIndex = computerNumber.getNumberIndex();
