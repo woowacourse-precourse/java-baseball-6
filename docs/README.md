@@ -10,8 +10,11 @@
 
 ## 사용자 숫자 입력 기능
 
-사용자로부터 숫자를 입력받는 기능을 구현한다.
+사용자로부터 숫자를 입력받는 기능을 구현한다. - [InputView](#InputView)#inputPositiveNumber()
 
+- [x] ❗️ 빈 문자열 입력일 경우 예외처리 한다. - [InputView](#InputView)#validateBlankString()
+- [x] ❗️ 문자, 특수기호 등의 입력이 있을 경우 예외처리 한다. - [InputView](#InputView)#validateNumber()
+- [x] ❗️ 음수의 입력이 감지될 경우 예외처리 한다. - [InputView](#InputView)#validatePositiveNumber()
 - [ ] ❗️ 숫자는 1~9 범위의 자연수가 아닐 경우 예외처리 한다.
 - [ ] ❗️ 3자리의 숫자가 아닐 경우 예외처리 한다.
 - [ ] ❗️ 3자리의 숫자 중 중복 숫자가 있을 경우 예외처리 한다.
