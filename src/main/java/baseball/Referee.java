@@ -1,29 +1,23 @@
 package baseball;
 
-import java.util.List;
-
 public class Referee {
 
-    BallCount ballCount;
+    private static BallCount ballCount;
 
-    Referee() {
+    public static BallCount checkBallCount(String playerBall, String computerBall) {
         ballCount = new BallCount();
-    }
-
-    public BallCount checkBallCount(List<Integer> playerBall, List<Integer> computerBall) {
-        for (int i = 0; i < playerBall.size(); i++) {
-            int num = playerBall.get(i);
-            if (computerBall.contains(num)) {
-                // 컴퓨터 i번쨰 자리 수와 유저 정답의 i번째 자리수가 같다면 스트라이크 + 1
-                if (computerBall.get(i) == num) {
+        for (int i = 0; i < 3; i++) {
+            String playerNum = playerBall.substring(i, i + 1);
+            if (computerBall.contains(playerNum)) {
+                String computerNum = computerBall.substring(i, i + 1);
+                if (computerNum.equals(playerNum)) {
                     ballCount.addStrikeCount();
-                    // 다르다면 볼 + 1
-                } else {
+                }
+                if (!computerNum.equals(playerNum)) {
                     ballCount.addBallCount();
                 }
             }
         }
-
         return ballCount;
     }
 }
