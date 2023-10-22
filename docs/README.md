@@ -31,8 +31,6 @@
   - PlayerNum
   - RetryNum
   - Referee
-- util
-  - Validator
 - view
   - InputView
   - OutputView
