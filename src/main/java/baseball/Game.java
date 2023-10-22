@@ -1,9 +1,11 @@
 package baseball;
 
 public class Game {
-    public void startGame(){
+    public void startGame() {
         Output.startCommand();
-        BaseballGame baseballGame = new BaseballGame();
-        baseballGame.play();
+        do {
+            BaseballGame baseballGame = new BaseballGame();
+            baseballGame.play();
+        } while (Input.isNewGame());
     }
 }
