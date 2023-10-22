@@ -21,12 +21,14 @@ public class BaseBallGameEnd {
     }
 
     public boolean orderCheck() {
-        if (this.playerOrder.equals("1")) {
-            return true;
-        } else if (this.playerOrder.equals("2")) {
-            return false;
-        } else {
-            throw new IllegalArgumentException();
+        switch (this.playerOrder) {
+            case "1":
+                return true;
+            case "2":
+                return false;
+            default:
+                throw new IllegalArgumentException();
+
         }
     }
 }
