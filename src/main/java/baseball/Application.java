@@ -1,13 +1,13 @@
 package baseball;
 
-import baseball.version2.controller.Controller;
+import baseball.version2.Game;
 
 public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-       Controller controller = new Controller();
-       controller.run();
+        Game game = new Game();
+        game.run();
     }
 
 

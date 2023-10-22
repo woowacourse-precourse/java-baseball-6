@@ -1,9 +1,10 @@
 package baseball.version2.repository;
 
-import java.util.Map;
-import java.util.TreeMap;
+import static baseball.version2.Constants.Value.*;
+
 public class ComputerRepository {
-    private int[] answerArray = new int[3];
+
+    private int[] answerArray = new int[ANSWER_ARRAY_SIZE];
 
 
     public int[] getAnswerArray() {

@@ -1,6 +1,7 @@
 package baseball.version2.repository;
 
 public class ScoreRepository {
+
     private int ball;
     private int strike;
 
@@ -26,9 +27,9 @@ public class ScoreRepository {
         strike++;
     }
 
-    public void initScore(){
-        strike=0;
-        ball=0;
+    public void initScore() {
+        strike = 0;
+        ball = 0;
 
     }
 }
