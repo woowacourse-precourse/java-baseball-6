@@ -31,7 +31,7 @@ class GameResultTest {
         gameResult.strikeOrBall(baseballNumbers, user);
 
         assertThat(gameResult.isWin()).isEqualTo(false);
-        assertThat(gameResult.toString()).isEqualTo("1스트라이크 2볼");
+        assertThat(gameResult.toString()).isEqualTo("2볼 1스트라이크");
     }
 
     @Test

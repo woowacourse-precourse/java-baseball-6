@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameServiceTest {
 
     private GameResult gameResult = new GameResult();
-    private BaseballNumbers baseballNumbers = new BaseballNumbers();
 
     private GameService gameService = new GameService(new InputValidator(), gameResult);
 
