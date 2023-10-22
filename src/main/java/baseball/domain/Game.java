@@ -7,6 +7,7 @@ import java.util.List;
 public class Game {
     private List<Integer> randomNumbers;
     private List<Integer> inputNumbers;
+    private int[] comparisonResult;
     private Game(List<Integer> randomNumbers) {
         this.randomNumbers = randomNumbers;
     }
@@ -56,22 +57,21 @@ public class Game {
         return inputNumbers;
     }
 
-    public int[] getCompareResult() {
-        int[] result = {0, 0};
+    public void compareNumber() {
+        comparisonResult = new int[]{0, 0};
         for(int currentPosition = 0; currentPosition < randomNumbers.size(); currentPosition++) {
-            compareInputNumber(result, currentPosition);
+            compareInputNumber(currentPosition);
         }
-        return result;
     }
 
-    private void compareInputNumber(int[] result, int currentPosition) {
+    private void compareInputNumber(int currentPosition) {
         if(randomNumbers.get(currentPosition) == inputNumbers.get(currentPosition)) {
-            result[1]++;
+            comparisonResult[1]++;
             return;
         }
 
         if(randomNumbers.contains(inputNumbers.get(currentPosition))) {
-            result[0]++;
+            comparisonResult[0]++;
         }
     }
 }
