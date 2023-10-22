@@ -19,18 +19,7 @@ public class OutputView {
 
     public void displayGameResult(GameResultDTO gameResultDTO) {
         initializeMessageBuilder();
-        if (gameResultDTO.getStrike() == 0 && gameResultDTO.getBall() == 0) {
-            messageBuilder.append("낫싱");
-        }
-
-        if (gameResultDTO.getBall() != 0) {
-            messageBuilder.append(gameResultDTO.getBall()).append("볼 ");
-        }
-
-        if (gameResultDTO.getStrike() != 0) {
-            messageBuilder.append(gameResultDTO.getStrike()).append("스트라이크");
-        }
-        System.out.println(messageBuilder);
+        System.out.println(gameResultDTO.getResult(messageBuilder));
     }
 
     public void displayEndGameMessage() {
