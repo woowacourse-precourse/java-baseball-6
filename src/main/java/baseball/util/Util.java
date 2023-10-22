@@ -9,21 +9,21 @@ public class Util {
         if (o instanceof Integer) {
             return true;
         }
-        return false;
+        throw new IllegalArgumentException("잘못된 입력 값 입니다.");
     }
 
     public static boolean validNumberRange(int min, int max, int value) {
         if (value >= min && value <= max) {
             return true;
         }
-        return false;
+        throw new IllegalArgumentException("잘못된 입력 값 입니다.");
     }
 
     public static boolean validDuplicatedNumbers(List<Integer> numbers) {
         if (numbers.size() != numbers.stream()
                 .distinct()
                 .count()) {
-            return false;
+            throw new IllegalArgumentException("잘못된 입력 값 입니다.");
         }
         return true;
     }
@@ -32,6 +32,6 @@ public class Util {
         if (numbers.size() == size) {
             return true;
         }
-        return false;
+        throw new IllegalArgumentException("잘못된 입력 값 입니다.");
     }
 }
