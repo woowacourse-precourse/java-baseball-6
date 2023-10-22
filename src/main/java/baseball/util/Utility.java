@@ -22,10 +22,15 @@ public class Utility {
 
         return arrayListUserInput;
     }
-
     public static List<Integer> input() {
         String userInput = readLine();
-        return string2IntegerArrayList(userInput);
+
+        if (Validation.checkUserInput(userInput)) {
+            return string2IntegerArrayList(userInput);
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
+
 }
 

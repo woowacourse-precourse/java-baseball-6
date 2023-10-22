@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.util.Validation;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -31,5 +32,18 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void 입력_예외처리_테스트() {
+        assertThat(Validation.checkUserInput("223")).isEqualTo(true);
+
+    }
+
+    @Test
+    void 입력_중복숫자체크_테스트() {
+        assertThat(Validation.checkDuplicatedNumber(
+                "112"
+        )).isEqualTo(false);
     }
 }
