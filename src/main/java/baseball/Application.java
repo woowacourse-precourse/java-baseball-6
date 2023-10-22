@@ -40,6 +40,15 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             if (answer.get(i) == inputList.get(i)) {
                 strike++;
+                answer.set(i, 0);
+            }
+        }
+
+        // 4. 볼 계산
+        int ball = 0;
+        for (int num : inputList) {
+            if (answer.contains(num)) {
+                ball++;
             }
         }
     }
