@@ -3,6 +3,7 @@ package controller;
 import static utils.GameConstant.GAME_RESTART_OR_QUIT_PROMPT;
 import static utils.GameConstant.GAME_START_MESSAGE;
 import static utils.GameConstant.GAME_WIN_MESSAGE;
+import static utils.GameConstant.QUIT_GAME;
 
 import model.system.GameController;
 import view.InputView;
@@ -10,7 +11,6 @@ import view.OutputView;
 
 public class NumberBaseballController {
 
-    public static final String QUIT_GAME = "2";
     private final GameController gameController;
 
     public NumberBaseballController(GameController gameController) {
@@ -18,15 +18,24 @@ public class NumberBaseballController {
     }
 
     public void run() {
+        startGame();
+        do {
+            playGame();
+        } while (!isUserWantToQuit());
+    }
+
+    private void startGame() {
         OutputView.write(GAME_START_MESSAGE);
-        while (true) {
-            gameController.run();
-            OutputView.write(GAME_WIN_MESSAGE);
-            OutputView.write(GAME_RESTART_OR_QUIT_PROMPT);
-            String input = InputView.readInput();
-            if (input.equals(QUIT_GAME)) {
-                return;
-            }
-        }
+    }
+
+    private void playGame() {
+        gameController.run();
+        OutputView.write(GAME_WIN_MESSAGE);
+        OutputView.write(GAME_RESTART_OR_QUIT_PROMPT);
+    }
+
+    private boolean isUserWantToQuit() {
+        String input = InputView.readInput();
+        return input.equals(QUIT_GAME);
     }
 }
