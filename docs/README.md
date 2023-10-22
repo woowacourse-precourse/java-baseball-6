@@ -65,14 +65,14 @@
     - [ ] 정답 : 3스트라이크
 - [ ] 힌트 변수 0으로 리셋
 
-3. InputNumberValidator
-- [ ] inputString 유효성 검사
+3. UserInputValidator
+- [ ] userInputString 유효성 검사
     - [ ] 데이터 유효성 검사
         - [ ] null 체크
         - [ ] 공백 제거
     - [ ] 오류 메시지 전달
         - [ ] IllegalArgumentException 발생 후 종료
-- [ ] inputString -> 숫자형 userInputNumbers 변환
+- [ ] userInputString -> 숫자형 userInputNumbers 변환
     - [ ] 데이터 유효성 검사
         - [ ] 세 자리 입력값인지 확인
         - [ ] 숫자형 변환이 가능한 입력값인지 확인
