@@ -66,11 +66,17 @@ public class Game {
 
     }
 
-    public void getStrikeCount() {
-
+    public int getStrikeCount(List<Integer> input, List<Integer> answer) {
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            if (input.get(i) == answer.get(i)) {
+                count++;
+            }
+        }
+        return count;
     }
 
-    public void getBallCount() {
+    public int getBallCount(List<Integer> input, List<Integer> answer) {
 
     }
 
