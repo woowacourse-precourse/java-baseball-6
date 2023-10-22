@@ -33,14 +33,13 @@ public class GameLoop {
 
             BaseballScore matchResults = baseballGame.match(computerBall, myBall);
             System.out.println(matchResults);
-            if (!matchResults.isStrike()) {
-                continue;
-            }
 
-            GameState promptState = inputWhenStrikes();
-            switch (promptState) {
-                case FINISH -> gameLifeCycle.finish();
-                case RESTART -> answer.regenerateAnswer();
+            if (matchResults.isStrike()) {
+                GameState promptState = inputWhenStrikes();
+                switch (promptState) {
+                    case FINISH -> gameLifeCycle.finish();
+                    case RESTART -> answer.regenerateAnswer();
+                }
             }
         }
     }
