@@ -68,6 +68,8 @@
     - [x] `isStrikeOut()`: 정답과 입력값을 비교하여 `"3스트라이크"`인지 `boolean` 반환.
 - `Ball`
     - [x] `isEmpty()`: 볼이 비어있는지 확인.
+    - [ ] `getValue()`: 볼의 값을 반환.
 - `Strike`
     - [x] `isEmpty()`: 스트라이크가 비어있는지 확인.
     - [x] `isFullCount()`: 3스트라이크인지 확인.
+    - [ ] `getValue()`: 스트라이크 값을 반환.
