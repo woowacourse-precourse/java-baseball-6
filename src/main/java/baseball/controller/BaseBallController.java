@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.Judge;
 import baseball.RandomNumberGenerator;
+import baseball.RestartOption;
 import baseball.ScoreBoard;
 import baseball.User;
 import baseball.view.InputView;
@@ -11,13 +12,14 @@ public class BaseBallController {
     private Judge judge;
     private User user;
     private ScoreBoard scoreBoard;
+    private RestartOption restartOption;
 
     public void playGame() {
         OutputView.startGameMessage();
         do {
             judge = new Judge(RandomNumberGenerator.createRandomNumber());
             run();
-        } while (true);
+        } while (restartOption.isRestart());
     }
 
     private void run() {
@@ -27,6 +29,6 @@ public class BaseBallController {
             OutputView.showScoreBoard(scoreBoard);
         } while (!scoreBoard.isThreeStrike());
         OutputView.gameOverMessage();
-        InputView.inputRestartOption();
+        restartOption = new RestartOption(InputView.inputRestartOption());
     }
 }
