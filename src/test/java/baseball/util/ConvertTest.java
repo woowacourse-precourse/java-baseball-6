@@ -1,11 +1,11 @@
 package baseball.util;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class ConvertTest {
 
@@ -30,5 +30,14 @@ public class ConvertTest {
         int restartOrExitNumber = Convert.convertStringToInteger(input);
 
         assertThat(restartOrExitNumber).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("변환 과정에서 NumberFormatException 발생 시, 그것을 잡아 IllegalArgumentException을 발생시킨다.")
+    void testCatchNumberFormatExceptionThrowIllegalArgumentException() {
+        String input = "a";
+
+        assertThatThrownBy(() -> Convert.convertStringToInteger(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
