@@ -1,24 +1,21 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    List<Integer> randomList;
+    private final RandomGenerator randomGenerator;
+    private final List<Integer> randomList;
 
-    public Computer() {
-        randomList = new ArrayList<>();
-        initialize();
-    }
-
-    public void initialize() {
-        insertRandom();
+    public Computer(RandomGenerator randomGenerator) {
+        this.randomGenerator = randomGenerator;
+        this.randomList = new ArrayList<>();
+        insertRandomNumbers();
     }
 
     public void clearAndInitialize() {
         randomList.clear();
-        insertRandom();
+        insertRandomNumbers();
     }
 
     public boolean containsNumber(int number) {
@@ -29,12 +26,13 @@ public class Computer {
         return randomList.get(index);
     }
 
-    private void insertRandom() {
+    private void insertRandomNumbers() {
         while (randomList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = randomGenerator.pickNumberInRange(1, 9);
             if (!randomList.contains(randomNumber)) {
                 randomList.add(randomNumber);
             }
         }
     }
 }
+
