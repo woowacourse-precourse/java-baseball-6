@@ -7,16 +7,13 @@ public class BaseballGame {
     private final StrikeBallCounter strikeBallCounter;
     private final GameRestart gameRestart;
 
-    static {
-        Output.printGameStartMessage();
-    }
-
     BaseballGame() {
         this.strikeBallCounter = new StrikeBallCounter();
         this.gameRestart = new GameRestart();
     }
 
     public void playBaseballGame() {
+        Output.printGameStartMessage();
         do {
             playOneBaseballGame();
         } while(gameRestart.wantRestartGame());
