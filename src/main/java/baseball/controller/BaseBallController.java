@@ -21,7 +21,7 @@ public class BaseBallController {
         runGame(computerNumber);
     }
 
-    public void runGame(ComputerNumber computerNumber) {
+    private void runGame(ComputerNumber computerNumber) {
         boolean gameStatus = true;
 
         while (gameStatus) {
@@ -33,7 +33,7 @@ public class BaseBallController {
         }
     }
 
-    public boolean isWinGame(int strikeCount) {
+    private boolean isWinGame(int strikeCount) {
         if (strikeCount == GameValue.THREE_STRIKE.getValue()) {
             System.out.println(GameMessage.SUCCESS.getMessage());
             return false;
