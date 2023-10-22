@@ -19,11 +19,11 @@ public class BaseballGame {
     private Rule rule;
     private Computer computer;
 
-    public BaseballGame(InputView inputView, OutputView outputView, Rule rule) {
+    public BaseballGame(InputView inputView, OutputView outputView, Rule rule, Computer computer) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.rule = rule;
-        this.computer = new Computer();
+        this.computer = computer;
     }
 
     public void start() {

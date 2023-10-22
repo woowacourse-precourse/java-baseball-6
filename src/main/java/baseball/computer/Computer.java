@@ -1,15 +1,17 @@
 package baseball.computer;
 
+import baseball.computer.generator.NumberGenerator;
 import baseball.domain.number.NumberConstants;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
 
+    private NumberGenerator numberGenerator;
     private List<Integer> gameNumbers;
 
-    public Computer() {
+    public Computer(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
         this.gameNumbers = generateNumbers();
     }
 
@@ -28,7 +30,7 @@ public class Computer {
     private List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < NumberConstants.NUMBERS_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(NumberConstants.MIN_NUMBER, NumberConstants.MAX_NUMBER);
+            int randomNumber = numberGenerator.generate(NumberConstants.MIN_NUMBER, NumberConstants.MAX_NUMBER);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
