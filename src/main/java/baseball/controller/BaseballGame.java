@@ -9,16 +9,23 @@ import java.util.List;
 
 public class BaseballGame {
     public void gameStart() {
-        List<Integer> answerNumbers = generateRandomNumbers();
+        InputView.firstStart();
         do {
+            OneGameStart();
+        } while (isFinish());
+    }
+
+    private static void OneGameStart() {
+        List<Integer> answerNumbers = generateRandomNumbers();
+        while (true) {
             List<Integer> userNumbers = generateUserNumbers();
             CountStrikeAndBall countStrikeAndBall = new CountStrikeAndBall(answerNumbers, userNumbers);
             OutputView outputView = new OutputView(countStrikeAndBall);
             outputView.printBallAndStrike();
-            if (finishGame(outputView)) {
+            if (outputView.strike == 3) {
                 break;
             }
-        } while (true);
+        }
     }
 
     private static List<Integer> generateRandomNumbers() {
@@ -30,9 +37,8 @@ public class BaseballGame {
         return UserNumberGenerator.makeUserNumberToList(userNumbersToString);
     }
 
-    private static boolean finishGame(OutputView outputView) {
-        return outputView.strike == 3;
+    private static boolean isFinish() {
+        String restart = InputView.endInput();
+        return restart.equals("1");
     }
-
-
 }
