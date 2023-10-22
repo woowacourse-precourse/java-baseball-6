@@ -6,10 +6,10 @@ import java.util.List;
 
 public class User {
 
-    public List<Integer> inputNumber() {
+    public List<Integer> inputNumber(int length) {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
-        return Converter.convertToUniqueIntList(userInput, 3);
+        return Converter.convertToUniqueIntList(userInput, length);
     }
 
     public boolean checkRestart() {

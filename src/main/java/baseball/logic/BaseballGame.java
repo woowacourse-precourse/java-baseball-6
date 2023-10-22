@@ -7,14 +7,16 @@ import java.util.List;
 
 public class BaseballGame {
 
+    private final int ballLength;
     private final User user;
     private BaseballRule rule;
 
     private boolean isSuccess = false;
 
 
-    public BaseballGame() {
+    public BaseballGame(int ballLength) {
         user = new User();
+        this.ballLength = ballLength;
         reset();
     }
 
@@ -49,11 +51,10 @@ public class BaseballGame {
     }
 
 
-
     private List<Integer> makeBaseBallNumber() {
         List<Integer> baseBallNumber = new ArrayList<>();
 
-        while (baseBallNumber.size() < 3) {
+        while (baseBallNumber.size() < ballLength) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!baseBallNumber.contains(randomNumber)) {
                 baseBallNumber.add(randomNumber);
@@ -65,7 +66,7 @@ public class BaseballGame {
 
 
     private boolean doUserTurn() {
-        List<Integer> userBaseBallNum = user.inputNumber();
+        List<Integer> userBaseBallNum = user.inputNumber(ballLength);
         BaseballResult result = rule.checkBaseball(userBaseBallNum);
         result.printStatus();
 
@@ -77,7 +78,6 @@ public class BaseballGame {
 
         return true;
     }
-
 
 
 }
