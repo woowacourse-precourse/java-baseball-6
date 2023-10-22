@@ -22,9 +22,15 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 int[] guessNumbers = stringToIntArrayThrowException(Console.readLine());
                 Map<String, Integer> result = computer.countStrikesAndBalls(guessNumbers);
+
                 if (printResultAndContinue(result)) {
                     break;
                 }
+
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int retryChoice = stringToIntThrowException(Console.readLine());
+                if (retryChoice == 2)
+                    break;
             }
 
         }
@@ -77,5 +83,9 @@ public class Application {
         }
 
         return false;
+    }
+
+    private static int stringToIntThrowException(String input) {
+        return Integer.parseInt(input);
     }
 }
