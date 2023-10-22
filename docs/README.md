@@ -1,3 +1,18 @@
+*0. 설계
+[Domain]
+- Game :id, userId, computerNumber, questionCount
+- User: id, name
+
+[Repository] 데이터 관리
+- GameRepository: save, findById, findAll, findByUserId
+- UserRepository: save, findById, findAll, findByName
+
+[Service] 버튼 기능
+- GameService: 랜덤 숫자 생성, 사용자 값 입력, 야구게임 값 일치여부
+
+[Controller] 매니저 역할
+- GameController: 게임 오프닝, 게임 시작, 메뉴 표출
+
 *1. 기능 요구 사항
 1.1. 야구게임 규칙
 - 스트라이크(S): 같은 수 and 같은 자리
