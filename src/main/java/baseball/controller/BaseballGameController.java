@@ -24,6 +24,7 @@ public class BaseballGameController {
         OutputView.printStartGameMessage();
         while (gameStatus) {
             List<Integer> computerNumbers = computer.generateComputerNumbers();
+            System.out.println(computerNumbers);
             playing(computerNumbers);
             gameStatus = isGameReStart();
         }
@@ -36,20 +37,27 @@ public class BaseballGameController {
             List<Integer> playerNumbers = getPlayerNumbers();
 
             comparator.compare(playerNumbers, computerNumbers);
+            int gameResult = comparator.getResult(playerNumbers, computerNumbers);
 
-            if (isCorrectAnswer()) {
-                OutputView.printStrikeHintMessage(comparator.getStrikeCount());
-                OutputView.printEndGameMessage();
-                correct = true;
+            switch (gameResult) {
+                case 1:
+                    OutputView.printStrikeHintMessage(comparator.getStrikeCount());
+                    break;
 
-            } else if (isStrikeAnswer()) {
-                OutputView.printStrikeHintMessage(comparator.getStrikeCount());
-            } else if (isBallAnswer()) {
-                OutputView.printBallHintMessage(comparator.getBallCount());
-            } else if (isNothingAnswer()) {
-                OutputView.printNothingMessage();
-            } else if (isStrikeAndBallAnswer()) {
-                OutputView.printStrikeAndBallMessage(comparator.getStrikeCount(), comparator.getBallCount());
+                case 2:
+                    OutputView.printBallHintMessage(comparator.getBallCount());
+                    break;
+                case 3:
+                    OutputView.printStrikeHintMessage(comparator.getStrikeCount());
+                    OutputView.printEndGameMessage();
+                    correct = true;
+                    break;
+                case 4:
+                    OutputView.printStrikeAndBallMessage(comparator.getStrikeCount(), comparator.getBallCount());
+                    break;
+                case 5:
+                    OutputView.printNothingMessage();
+                    break;
             }
         }
     }
