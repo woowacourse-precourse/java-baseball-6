@@ -9,5 +9,10 @@ public class BaseballGame {
     private final BallHint ballHint;
     private final BallInput ballInput;
 
+    public BaseballGame() {
+        this.randomNumber = new RandomNumber();
+        this.ballHint = new BallHint();
+        this.ballInput = new BallInput();
+    }
 
 }
