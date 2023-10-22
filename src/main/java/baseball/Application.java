@@ -1,8 +1,10 @@
 package baseball;
 
+import baseball.controller.GameController;
 import baseball.controller.RestartController;
 import baseball.domain.Restart;
 import baseball.domain.GameConstants;
+import baseball.domain.Baseball;
 import baseball.util.InputUtil;
 import baseball.util.IntegerUtil;
 import baseball.view.EndView;
@@ -21,13 +23,9 @@ public class Application {
             StartView.displayStartMessage();
 
             //컴퓨터는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 뽑음　
-            List<Integer> computerNumList = new ArrayList<>();
-            while (computerNumList.size() < GameConstants.NUMBER_LENGTH) {
-                int randomNumber = Randoms.pickNumberInRange(GameConstants.MIN_DIGIT, GameConstants.MAX_DIGIT);
-                if (!computerNumList.contains(randomNumber)) {
-                    computerNumList.add(randomNumber);
-                }
-            }
+            Baseball computerBaseball = new Baseball();
+            List<Integer> computerNumList = GameController.generateRandomBaseball();
+            computerBaseball.setValues(computerNumList);
             System.out.println("컴퓨터가 뽑은 수" + computerNumList);
 
             GuessingLoop:
