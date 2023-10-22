@@ -3,22 +3,22 @@ package baseball;
 import java.util.List;
 
 public class ScoreCalculator {
-    public static List<Integer> calculate(List<Integer> pitchInput, List<Integer> numbers) {
-        Integer balls = 0;
-        Integer strikes = 0;
+    public static Score calculate(List<Integer> pitchInput, List<Integer> numbers) {
+        Integer ball = 0;
+        Integer strike = 0;
 
         for (int index = 0; index < numbers.size(); index++) {
             if (numbers.get(index).equals(pitchInput.get(index))) {
-                strikes++;
+                strike++;
             }
 
             for (int index2 = 1; index2 < 3; index2++) {
                 if (numbers.get((index + index2) % 3).equals(pitchInput.get(index))) {
-                    balls++;
+                    ball++;
                 }
             }
         }
 
-        return List.of(strikes, balls);
+        return Score.of(strike, ball);
     }
 }

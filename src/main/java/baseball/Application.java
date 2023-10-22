@@ -31,11 +31,11 @@ public class Application {
             validatePitchInput(pitchInput);
 
             List<Integer> pitches = parsePitchInput(pitchInput);
-            List<Integer> score = ScoreCalculator.calculate(pitches, numbers);
+            Score score = ScoreCalculator.calculate(pitches, numbers);
 
             printScore(score);
 
-            if (score.get(0) == 3) {
+            if (score.getStrike() == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String restartInput = Console.readLine();
@@ -52,16 +52,16 @@ public class Application {
         }
     }
 
-    private static void printScore(List<Integer> score) {
-        if (score.get(0) == 0 && score.get(1) == 0) {
+    private static void printScore(Score score) {
+        if (score.getBall() == 0 && score.getStrike() == 0) {
             System.out.println("낫싱");
             return;
         }
-        if (score.get(1) > 0) {
-            System.out.print(score.get(1) + "볼 ");
+        if (score.getBall() > 0) {
+            System.out.print(score.getBall() + "볼 ");
         }
-        if (score.get(0) > 0) {
-            System.out.print(score.get(0) + "스트라이크");
+        if (score.getStrike() > 0) {
+            System.out.print(score.getStrike() + "스트라이크");
         }
         System.out.println();
     }
