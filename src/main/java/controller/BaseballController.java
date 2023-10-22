@@ -1,5 +1,6 @@
 package controller;
 
+import domain.ComputerNumber;
 import view.GameView;
 import service.GameService;
 
@@ -7,7 +8,7 @@ public class BaseballController {
 
     public void gameStart() {
         GameView.printGameStartMessage();
-        GameService.gameStart();
+        ComputerNumber computerNumber = new ComputerNumber();
     }
 
 }
