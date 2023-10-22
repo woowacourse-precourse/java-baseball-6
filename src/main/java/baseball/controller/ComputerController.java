@@ -75,8 +75,8 @@ public class ComputerController {
 
     private List<Integer> numberToList(int playerNumber) {
         List<Integer> tempList = new ArrayList<>();
-        while (playerNumber%10 != 0){
-            int temp = playerNumber%10;
+        while (playerNumber % 10 != 0){
+            int temp = playerNumber % 10;
             tempList.add(temp);
             playerNumber /= 10;
         }
