@@ -32,6 +32,9 @@ public class Application {
             System.out.println("숫자를 입력해 주세요: ");
             List<Integer> player = new ArrayList<>();
 
+            List<Integer> computerBall = new ArrayList<>();
+            List<Integer> playerBall = new ArrayList<>();
+
             // playerInput에 플레이어가 입력한 값 저장
             String playerInput = Console.readLine();
 
@@ -61,6 +64,17 @@ public class Application {
                         throw new IllegalArgumentException("1부터 9까지의 숫자로 입력해 주세요.");
                     }
                     player.add(playerNum);
+                }
+                // 스트라이크 수 확인
+                for (int s = 0; s < 3; s++) {
+
+                    if(computer.get(s) == player.get(s)) {
+                        strikeCount++;
+                    }
+                    else {
+                        computerBall.add(computer.get(s));
+                        playerBall.add(player.get(s));
+                    }
                 }
             }
             // 플레이어가 입력한 값에 대한 예외 처리
