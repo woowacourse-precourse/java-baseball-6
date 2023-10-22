@@ -7,16 +7,16 @@ import camp.nextstep.edu.missionutils.Console;
 public class BaseballGame {
 
     public void baseballGame(){
-        GenerateTargetNum generateTargetNum = new GenerateTargetNum();
-        TargetNum targetNum = generateTargetNum.getTargetNum();
+        GenerateTargetNum generateTargetNumImpl = new GenerateTargetNumImpl();
+        TargetNum targetNum = generateTargetNumImpl.getTargetNum();
         String s;
         while(true){
             s=Console.readLine();
-            ValidUserNum validUserNum = new ValidUserNum(s);
-            UserNum userNum=validUserNum.getUserNum();
+            ValidUserNum validUserNumImpl = new ValidUserNumImpl();
+            UserNum userNum= validUserNumImpl.getValidUserNum(s);
 
-            JudgeCountNum judgeCountNum = new JudgeCountNum(userNum,targetNum);
-            CountNum countNum = judgeCountNum.getCountNum();
+            JudgeCountNum judgeCountNumImpl = new JudgeCountNumImpl();
+            CountNum countNum = judgeCountNumImpl.getJudgeCountNum(userNum,targetNum);
             int strike = countNum.getStrikeNum();
             int ball = countNum.getBallNum();
 

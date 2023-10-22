@@ -1,9 +1,9 @@
 package baseball.contoller;
 
 import baseball.controller.GenerateTargetNum;
+import baseball.controller.GenerateTargetNumImpl;
 import baseball.model.TargetNum;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -14,8 +14,8 @@ class GenerateTargetNumberTest {
 
     @Test
     void 타겟_넘버_생성(){
-        GenerateTargetNum generateTargetNum=new GenerateTargetNum();
-        TargetNum targetNum =generateTargetNum.getTargetNum();
+        GenerateTargetNum generateTargetNumImpl =new GenerateTargetNumImpl();
+        TargetNum targetNum = generateTargetNumImpl.getTargetNum();
         List<Integer> targetNumArray=targetNum.getTargetNumArray();
 
         System.out.println(targetNumArray);

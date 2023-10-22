@@ -1,6 +1,8 @@
 package baseball.contoller;
 
 import baseball.controller.JudgeCountNum;
+import baseball.controller.JudgeCountNumImpl;
+import baseball.model.CountNum;
 import baseball.model.TargetNum;
 import baseball.model.UserNum;
 import org.assertj.core.api.Assertions;
@@ -21,9 +23,10 @@ public class JudgeCountNumTest {
         List<Integer> u1=new ArrayList<>(List.of(1, 2, 3));
         UserNum userNum = new UserNum(u1);
 
-        JudgeCountNum judgeCountNum = new JudgeCountNum(userNum,targetNum);
-        int strikeNum = judgeCountNum.getCountNum().getStrikeNum();
-        int ballNum = judgeCountNum.getCountNum().getBallNum();
+        JudgeCountNum judgeCountNumImpl = new JudgeCountNumImpl();
+        CountNum countNum = judgeCountNumImpl.getJudgeCountNum(userNum,targetNum);
+        int strikeNum = countNum.getStrikeNum();
+        int ballNum = countNum.getBallNum();
 
         Assertions.assertThat(strikeNum).isEqualTo(3);
         Assertions.assertThat(ballNum).isEqualTo(0);
@@ -32,9 +35,9 @@ public class JudgeCountNumTest {
         List<Integer> u2=new ArrayList<>(List.of(2, 4, 5));
         userNum = new UserNum(u2);
 
-        judgeCountNum = new JudgeCountNum(userNum,targetNum);
-        strikeNum = judgeCountNum.getCountNum().getStrikeNum();
-        ballNum = judgeCountNum.getCountNum().getBallNum();
+        countNum = judgeCountNumImpl.getJudgeCountNum(userNum,targetNum);
+        strikeNum = countNum.getStrikeNum();
+        ballNum = countNum.getBallNum();
 
         Assertions.assertThat(strikeNum).isEqualTo(0);
         Assertions.assertThat(ballNum).isEqualTo(1);
@@ -43,9 +46,9 @@ public class JudgeCountNumTest {
         List<Integer> u3=new ArrayList<>(List.of(4, 5, 6));
         userNum = new UserNum(u3);
 
-        judgeCountNum = new JudgeCountNum(userNum,targetNum);
-        strikeNum = judgeCountNum.getCountNum().getStrikeNum();
-        ballNum = judgeCountNum.getCountNum().getBallNum();
+        countNum = judgeCountNumImpl.getJudgeCountNum(userNum,targetNum);
+        strikeNum = countNum.getStrikeNum();
+        ballNum = countNum.getBallNum();
 
         Assertions.assertThat(strikeNum).isEqualTo(0);
         Assertions.assertThat(ballNum).isEqualTo(0);
