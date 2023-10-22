@@ -3,14 +3,14 @@ package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    public static String requestUserNumbers() {
-        OutputView.printRequestNumber();
+    public static String askUserNumbers() {
+        OutputView.printAskNumber();
         return Console.readLine();
     }
 
-    public static String requestRestartOrExit() {
+    public static String askRestartOrExit() {
         OutputView.printGameOver();
-        OutputView.printRequestRestartOrExit();
+        OutputView.printAskRestartOrExit();
         return Console.readLine();
     }
 }

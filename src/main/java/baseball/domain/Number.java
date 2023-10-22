@@ -10,10 +10,6 @@ import static baseball.validator.NumberValidator.*;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Number {
-    private static final int RANDOM_NUMBER_MINIMUM = 1;
-    private static final int RANDOM_NUMBER_MAXIMUM = 9;
-    private static final int NUMBER_LENGTH = 3;
-
     private final List<Integer> numbers;
 
     // Player Number Constructor
@@ -33,15 +29,15 @@ public class Number {
 
     // Player Number Static Factory Method
     public static Number inputPlayerNumbers() {
-        String playerNumbers = InputView.requestUserNumbers();
+        String playerNumbers = InputView.askUserNumbers();
         return new Number(playerNumbers);
     }
 
     // Computer Number Static Factory Method
-    public static Number generateRandomNumbers() {
+    public static Number generateRandomNumbers(int a, int b, int c) {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < NUMBER_LENGTH) {
-            int number = pickNumberInRange(RANDOM_NUMBER_MINIMUM, RANDOM_NUMBER_MAXIMUM);
+        while (randomNumbers.size() < c) {
+            int number = pickNumberInRange(a, b);
             if (!randomNumbers.contains(number)) {
                 randomNumbers.add(number);
             }

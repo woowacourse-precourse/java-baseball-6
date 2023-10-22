@@ -2,21 +2,21 @@ package baseball.view;
 
 public class OutputView {
     private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
-    private static final String REQUEST_PLAYER_NUMBER = "숫자를 입력해주세요 : ";
-    private static final String REQUEST_RESTART_OR_EXIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String ASK_PLAYER_NUMBER = "숫자를 입력해주세요 : ";
+    private static final String ASK_RESTART_OR_EXIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String NOTHING = "낫싱";
     private static final String GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    public static void printRequestNumber() {
-        System.out.print(REQUEST_PLAYER_NUMBER);
+    public static void printAskNumber() {
+        System.out.print(ASK_PLAYER_NUMBER);
     }
 
     public static void printInitialGameStart() {
         System.out.println(GAME_START);
     }
 
-    public static void printRequestRestartOrExit() {
-        System.out.println(REQUEST_RESTART_OR_EXIT);
+    public static void printAskRestartOrExit() {
+        System.out.println(ASK_RESTART_OR_EXIT);
     }
 
     public static void printNothing() {

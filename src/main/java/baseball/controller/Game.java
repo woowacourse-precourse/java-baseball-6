@@ -8,12 +8,17 @@ import baseball.view.OutputView;
 import java.util.Objects;
 
 public class Game {
+    private static final int RANDOM_NUMBER_MINIMUM = 1;
+    private static final int RANDOM_NUMBER_MAXIMUM = 9;
+    private static final int NUMBER_LENGTH = 3;
     private static final String GAME_RESTART_FLAG = "2";
 
     public void start() {
         OutputView.printInitialGameStart();
         do {
-            play(Number.generateRandomNumbers());
+            play(Number.generateRandomNumbers(
+                    RANDOM_NUMBER_MINIMUM, RANDOM_NUMBER_MAXIMUM, NUMBER_LENGTH
+            ));
         } while (!isRestart());
     }
 
@@ -29,6 +34,6 @@ public class Game {
     }
 
     private static boolean isRestart() {
-        return Objects.equals(InputView.requestRestartOrExit(), GAME_RESTART_FLAG);
+        return Objects.equals(InputView.askRestartOrExit(), GAME_RESTART_FLAG);
     }
 }
