@@ -21,6 +21,8 @@ public class Application {
 
         PrintResultOfThisGame printResultOfThisGame = new PrintResultOfThisGame(resultOfGame);
 
+        ReadContinueOrStop readContinueOrStop = new ReadContinueOrStop();
+
         while (endToggle) {
             randomPickNumbers.randomPick(numOfNumbers);
             readPlayerNumberService.readPlayerNumber(numOfNumbers);
@@ -37,11 +39,17 @@ public class Application {
             printResultOfThisGame.getResultOfThisGame();
 
             if (printResultOfThisGame.isThreeStrike()) {
-                endToggle = false;
+                int readContinue = readContinueOrStop.readContinueOrStop();
+                if (readContinue == 1) {
+                    computerNumbers.deleteAll();
+                } else if (readContinue == 2) {
+                    endToggle = false;
+                }
             }
 
             playerNumbers.deleteAll();
             resultOfGame.deleteAll();
+            printResultOfThisGame.init();
         }
     }
 

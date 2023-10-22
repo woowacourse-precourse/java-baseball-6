@@ -47,4 +47,8 @@ public class PrintResultOfThisGame {
         return isThreeStrike;
     }
 
+    public void init() {
+        isThreeStrike = false;
+    }
+
 }

@@ -18,6 +18,9 @@ public class ReadPlayerNumberService {
     }
 
     private boolean playerReadLineVerify(int scanPlayerNumber) {
+        if (scanPlayerNumber > 999) {
+            throw new IllegalArgumentException();
+        }
         return true;
     }
 
