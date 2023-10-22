@@ -21,7 +21,7 @@ public class Application {
         repeatGame();
     }
 
-    public static void repeatGame() {
+    public static void repeatGame() throws IllegalArgumentException {
         boolean isContinue = true;
         int inputLength = 1;
 
@@ -48,7 +48,7 @@ public class Application {
         }
     }
 
-    public static void repeatRound(List<Integer> computer) {
+    public static void repeatRound(List<Integer> computer) throws IllegalArgumentException {
         boolean isContinue = true;
         int inputLength = 3;
 
