@@ -29,6 +29,7 @@ public class GameController {
 
             System.out.println(judgeUserInput(strike, ball));
         }
+        endGame();
     }
 
     public String judgeUserInput(Integer strike,Integer ball){
@@ -43,5 +44,15 @@ public class GameController {
             judgement = ball+"볼"+" "+strike+"스트라이크";
         }
         return judgement;
+    }
+
+    public void endGame(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String againGame = Console.readLine();
+        if (againGame.equals("1")){
+            GameController gameController = new GameController();
+            gameController.input();
+        }
     }
 }
