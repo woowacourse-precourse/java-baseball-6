@@ -1,15 +1,16 @@
 package baseball.view;
 
+import baseball.Message;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
     public static String inputUserNumber() {
-        System.out.print("숫자를 입력해 주세요 : ");
+        System.out.print(Message.INPUTUSERNUMBERMESSAGE.getMessage());
         return Console.readLine();
     }
 
     public static String inputRestartOption() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(Message.INPUTRESTARTOPTIONMESSAGE.getMessage());
         return Console.readLine();
     }
 }
