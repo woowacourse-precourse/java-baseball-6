@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-
+@DisplayName("난수 생성기")
 class RandomNumberGeneratorTest {
 
     static final int DIGIT = 3;
