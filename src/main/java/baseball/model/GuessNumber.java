@@ -5,7 +5,7 @@ import static baseball.util.Constant.END_INCLUSIVE;
 import static baseball.util.Constant.START_INCLUSIVE;
 
 import baseball.exception.guess_number.NotEqualsGameNumberDigitsException;
-import baseball.exception.guess_number.NotMatchGameNumberFormatException;
+import baseball.exception.guess_number.NotMatchGameNumberRangeConditionException;
 import baseball.exception.guess_number.NotUniqueNumberException;
 import java.util.Collections;
 import java.util.List;
@@ -48,7 +48,7 @@ public class GuessNumber {
                 .filter(guessNumber -> !isGameNumberRangeCondition(guessNumber))
                 .findAny()
                 .ifPresent(invalidNumber -> {
-                    throw new NotMatchGameNumberFormatException(invalidNumber);
+                    throw new NotMatchGameNumberRangeConditionException(invalidNumber);
                 });
     }
 
