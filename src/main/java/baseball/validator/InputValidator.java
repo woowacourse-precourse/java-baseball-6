@@ -42,4 +42,12 @@ public class InputValidator {
             }
         }
     }
+
+    private void validateContinueNumber(String input) {
+        int gameContinue = GameConfig.GAME_CONTINUE.getValue();
+        int gameExit = GameConfig.GAME_EXIT.getValue();
+        if (Integer.parseInt(input) != gameContinue && Integer.parseInt(input) != gameExit) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+        }
+    }
 }
