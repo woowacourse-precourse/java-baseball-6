@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static baseball.util.Constants.BALL_AMOUNT;
+
 import baseball.util.ComputerRandomNumberGenerator;
 import baseball.util.RandomNumberGenerator;
 
@@ -7,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerBalls {
-    private static final int BALL_AMOUNT = 3;
+
     List<Ball> balls;
     private RandomNumberGenerator randomNumberGenerator;
 

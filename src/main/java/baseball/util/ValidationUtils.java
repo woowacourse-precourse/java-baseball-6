@@ -1,5 +1,7 @@
 package baseball.util;
 
+import static baseball.util.Constants.BALL_AMOUNT;
+
 import java.util.regex.Pattern;
 
 public class ValidationUtils {
@@ -23,7 +25,7 @@ public class ValidationUtils {
     }
 
     private static boolean validLength(String userInput) {
-        return userInput.length() == 3;
+        return userInput.length() == BALL_AMOUNT;
     }
 
     private static boolean parseInt(String input) {
