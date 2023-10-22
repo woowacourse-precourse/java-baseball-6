@@ -3,11 +3,7 @@ package baseball;
 import static baseball.Application.beginGame;
 import static baseball.Constant.RESTART;
 import static baseball.Constant.THREE_STRIKE;
-import static baseball.InputValidator.restartInputValidator;
-import static baseball.Utils.stringToInt;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
@@ -27,7 +23,7 @@ public class GameController {
             checkMatch(computer.getRandomNum(), userInput.getUserNum());
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        promptUserForRestart();
+        restartOrExit(userInput.promptUserForRestart());
     }
 
     public void checkMatch(List<Integer> computerNum, List<Integer> userNum) {
@@ -76,16 +72,8 @@ public class GameController {
         }
     }
 
-    public void promptUserForRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String s = Console.readLine();
-        restartInputValidator(s);
-        List<Integer> userAnswer = new ArrayList<>(stringToInt(s));
-        restartOrExit(userAnswer);
-    }
-
-    public void restartOrExit(List<Integer> userAnswer) {
-        if (userAnswer.get(0) == RESTART) {
+    public void restartOrExit(int userAnswer) {
+        if (userAnswer == RESTART) {
             beginGame();
         }
     }
