@@ -3,7 +3,7 @@ package baseball;
 public class GameController {
     GameService gameService = new GameService();
     GameException gameException = new GameException();
-    InputView inputView = new InputView();
+    InputView inputView = new InputView(gameException);
     OutPutView outPutView = new OutPutView();
 
     public void play() {

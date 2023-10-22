@@ -7,8 +7,8 @@ import java.util.List;
 
 public class GameService {
     OutPutView outPutView = new OutPutView();
-    InputView inputView = new InputView();
-    GameException exception = new GameException();
+    GameException gameException = new GameException();
+    InputView inputView = new InputView(gameException);
     StrikeBallCount strikeBallCount = new StrikeBallCount();
     Player player = new Player();
     List<Integer> computer = new ArrayList<>();
@@ -80,7 +80,7 @@ public class GameService {
         int[] playerNumbers = new int[inputPlayerNumber.length()];
         for (int i = 0; i < inputPlayerNumber.length(); i++) {
             char storeNumber = inputPlayerNumber.charAt(i);
-            exception.playerNumberDuplicateException(playerNumbers, storeNumber);
+            gameException.playerNumberDuplicateException(playerNumbers, storeNumber);
             playerNumbers[i] = toInt(storeNumber);
         }
         return playerNumbers;
