@@ -29,19 +29,18 @@ public class ComputerController {
     }
 
     public void proceedGame() {
-        outputView.printEnterNumber();
-        String inputNumber = inputView.enterNumber();
-        //TODO: 입력값 검증 (잘못된 값을 입력할 경우, IllegalArgumentException 발생)
-        BallAndStrikeCount count = getBallAndStrikeCount(computerNumber, inputNumber);
-        outputView.printHint(getHint(count));
-        if(count.getBallCount() == SUCCESS_GAME_STRIKE_NUMBER) {
-            System.out.println("맞았습니다!");
-        } else {
-            System.out.println("틀렸습니다!");
+        while(true) {
+            outputView.printEnterNumber();
+            String inputNumber = inputView.enterNumber();
+            //TODO: 입력값 검증 (잘못된 값을 입력할 경우, IllegalArgumentException 발생)
+            BallAndStrikeCount count = getBallAndStrikeCount(computerNumber, inputNumber);
+            outputView.printHint(getHint(count));
+            if(count.getStrikeCount() == SUCCESS_GAME_STRIKE_NUMBER) {
+                break;
+            }
         }
     }
 
-    //TODO: 테스트코드 작성
     public String getHint(BallAndStrikeCount count) {
         String Hint="";
         Hint += getBallHint(count.getBallCount());
