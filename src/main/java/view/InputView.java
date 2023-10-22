@@ -35,6 +35,9 @@ public class InputView {
         if (duplicateTest.size() != 3) {
             throw new IllegalArgumentException();
         }
+        if (duplicateTest.contains(0)) {
+            throw new IllegalArgumentException();
+        }
 
         return userNumber;
     }
