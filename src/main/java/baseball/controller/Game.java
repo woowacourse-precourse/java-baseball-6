@@ -1,12 +1,13 @@
 package baseball.controller;
 
-import static baseball.config.GameConfig.GAME_RESTART_FLAG;
-
-import baseball.model.Number;
-import baseball.model.Result;
+import baseball.domain.Number;
+import baseball.domain.Result;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+
 import java.util.Objects;
+
+import static baseball.config.GameConfig.GAME_RESTART_FLAG;
 
 public class Game {
     private Number computerNumber;
