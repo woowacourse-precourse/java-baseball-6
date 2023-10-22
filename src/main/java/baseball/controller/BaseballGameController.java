@@ -10,8 +10,8 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class BaseballGameController {
-    private final static String RESTART = "1";
-    private final static String END = "2";
+    private static final String RESTART = "1";
+    private static final String END = "2";
     private boolean firstRun = true;
     private boolean continueGame = true;
 
