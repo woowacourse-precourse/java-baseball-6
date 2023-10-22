@@ -41,17 +41,16 @@ public class GameRound {
     }
 
     private boolean handleUserChoice() {
-        int choice = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        InputValidator.validateChoiceInput(input);
+
+        int choice = Integer.parseInt(input);
 
         if (choice == GameConstants.RESTART_GAME) {
             restartGame();
             return true;
         }
-        if (choice == GameConstants.END_GAME) {
-            return false;
-        }
-
-        throw new IllegalArgumentException(GameConstants.NOT_A_VALID_CHOICE);
+        return false;
     }
 
     private boolean isThreeStrike(BallStrikeCount ballStrikeCount) {
