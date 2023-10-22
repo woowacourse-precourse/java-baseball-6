@@ -18,7 +18,9 @@ public class GameController {
 
     public String getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
+        String userInput = Console.readLine();
+        inputValidation.validateInputNum(userInput);
+        return userInput;
     }
 
     public void controlRestartOrExit() {
