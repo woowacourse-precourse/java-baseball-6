@@ -10,16 +10,12 @@ public class UserNumber {
     private final List<Integer> userNumber;
 
     public UserNumber(String inputNumber) {
-        this.userNumber = changeStringtoList(inputNumber);
+        this.userNumber = getIntegers(inputNumber);
         checkUserInputValidate(this.userNumber);
     }
 
     public List<Integer> getInputNumber() {
         return Collections.unmodifiableList(this.userNumber);
-    }
-
-    private static List<Integer> changeStringtoList(String string) {
-        return getIntegers(string);
     }
 
     private static List<Integer> getIntegers(String string) {
