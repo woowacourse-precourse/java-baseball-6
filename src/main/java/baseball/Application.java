@@ -3,7 +3,9 @@ package baseball;
 import baseball.controller.RegameChoice;
 import baseball.domain.GameConstants;
 import baseball.util.IntegerUtil;
+import baseball.view.EndView;
 import baseball.view.InputView;
+import baseball.view.RestartChoiceView;
 import baseball.view.StartView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -122,8 +124,8 @@ public class Application {
                 //[게임 종료]
                 //사용자가 입력한 숫자와 컴퓨터가 뽑은 숫자가 모두 같으면 "게임 종료 문구" 출력 후 게임 종료　
                 if (strike == GameConstants.NUMBER_LENGTH) {
-                    System.out.println(GameConstants.END_MESSAGE);
-                    System.out.println(GameConstants.RESTART_CHOICE_MESSAGE);
+                    EndView.displayEndMessage();
+                    RestartChoiceView.displayRestartChoiceMessage();
                     String regameNum = Console.readLine();
 
                     //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
