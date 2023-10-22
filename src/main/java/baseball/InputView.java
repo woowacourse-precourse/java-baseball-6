@@ -3,7 +3,11 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    GameException exception = new GameException();
+    private final GameException gameException;
+
+    public InputView(GameException gameException) {
+        this.gameException = gameException;
+    }
 
     public String inputPlayerNumber() {
         String inputPlayerNumber = Console.readLine();
@@ -21,10 +25,10 @@ public class InputView {
     }
 
     private void validatePlayerNumberLength(String inputPlayerNumber) {
-        exception.playerNumberLengthException(inputPlayerNumber);
+        gameException.playerNumberLengthException(inputPlayerNumber);
     }
 
     private void validatePlayerNumberType(String inputPlayerNumber) {
-        exception.playerNumberTypeException(inputPlayerNumber);
+        gameException.playerNumberTypeException(inputPlayerNumber);
     }
 }
