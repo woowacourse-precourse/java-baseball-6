@@ -17,6 +17,26 @@ import org.junit.jupiter.api.Test;
 class ApplicationTest extends NsTest {
 
     @Test
+    void validateDuplication() {
+        // given
+        Validation validation = new Validation();
+        List<String> case1 = List.of("1", "2", "3");
+        List<String> case2 = List.of("1", "1", "2");
+
+        // when
+        Throwable result1 = catchThrowable(() -> {
+            validation.validateDuplication(case1);
+        });
+        Throwable result2 = catchThrowable(() -> {
+            validation.validateDuplication(case2);
+        });
+
+        // then
+        assertThat(result1).doesNotThrowAnyException();
+        assertThat(result2).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void validateNumber() {
         // given
         Validation validation = new Validation();
