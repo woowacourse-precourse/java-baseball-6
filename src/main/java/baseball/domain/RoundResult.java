@@ -8,4 +8,12 @@ public final class RoundResult {
         this.ballCount = computerGameNumbers.countBall(userGameNumbers);
         this.strikeCount = computerGameNumbers.countStrike(userGameNumbers);
     }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
 }
