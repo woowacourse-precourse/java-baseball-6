@@ -24,6 +24,7 @@
 - displayResumePrompt()
 - displayQuitPrompt()
 - displayHint()
+- displayInputNumberPrompt()
 
 ### GameNumberGenerator
 - generateNumber()
