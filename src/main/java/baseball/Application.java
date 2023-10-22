@@ -54,15 +54,29 @@ public class Application {
         return list;
     }
 
-    public int[] countStrikeBall(List<Integer> computer, List<Integer> userNum) {
-        int[] countSB = {0, 0};
+    public int[] countBallStrike(List<Integer> computer, List<Integer> userNum) {
+        int[] countBS = {0, 0};
         for (int i : userNum) {
             if (computer.contains(i)) {
-                if (computer.indexOf(i) == userNum.indexOf(i)) countSB[0]++;  //스트라이크 갯수
-                if (computer.indexOf(i) != userNum.indexOf(i)) countSB[1]++; //볼 갯수
+                if (computer.indexOf(i) != userNum.indexOf(i)) countBS[0]++;  //볼 갯수
+                if (computer.indexOf(i) == userNum.indexOf(i)) countBS[1]++; //스트라이크 갯수
             }
         }
-        return countSB;
+        return countBS;
+    }
+
+    public String countResult(int ball, int strike) {
+        String result = "";
+        if (ball > 0) {
+            result += ball + "볼 ";
+        }
+        if (strike > 0) {
+            result += strike + "스트라이크";
+        }
+        if (ball == 0 && strike == 0) {
+            result += "낫싱";
+        }
+        return result;
     }
 
     public static void main(String[] args) {
@@ -77,9 +91,6 @@ public class Application {
             List<Integer> computer = app.setRandomNumber();
 
             while (true) {
-                int strike = 0;
-                int ball = 0;
-
                 System.out.print("숫자를 입력해주세요 : ");
                 String user = Console.readLine();
                 app.isLengthThree(user);
@@ -88,25 +99,10 @@ public class Application {
                 List<Integer> userNum = app.userInputToNumber(user);
                 app.hasSameNumber(userNum);
 
-                // 확인용
-                System.out.println(computer);
-                System.out.println(userNum);
+                int ball = app.countBallStrike(computer, userNum)[0];
+                int strike = app.countBallStrike(computer, userNum)[1];
 
-                strike = app.countStrikeBall(computer, userNum)[0];
-                ball = app.countStrikeBall(computer, userNum)[1];
-
-
-                // 결과 출력
-                if (ball > 0) {
-                    System.out.print(ball + "볼 ");
-                }
-                if (strike > 0) {
-                    System.out.print(strike + "스트라이크");
-                }
-                if (ball == 0 && strike == 0) {
-                    System.out.print("낫싱");
-                }
-                System.out.println();
+                System.out.println(app.countResult(ball, strike));
 
                 if (strike == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
