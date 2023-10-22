@@ -18,8 +18,13 @@ public final class InputValidator {
     문자가 Digit인지, Digit이면 1~9에 포함되는지 검증
     */
     public static int validateAnswerCharacter(char answerChar){
+        int digit;
+
         validateIsCharacterDigit(answerChar);
-        return validateDigitRange(answerChar);
+        digit = Character.getNumericValue(answerChar);
+        validateDigitRange(digit);
+
+        return digit;
 
     }
 
@@ -29,13 +34,9 @@ public final class InputValidator {
 
     }
 
-    public static int validateDigitRange(char digitChar){
-        int digit = (int) digitChar - '0';
-
+    public static void validateDigitRange(int digit){
         if (digit < USER_ANSWER_LOWER_LIMIT || digit > USER_ANSWER_UPPER_LIMIT)
             throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
-
-        return digit;
     }
 
     /*
