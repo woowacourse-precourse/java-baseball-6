@@ -8,25 +8,27 @@ import baseball.ui.GameInput;
 import java.util.List;
 
 public class GameRunner {
-    List<Integer> computerNumber;
-
     public void start() {
         showStartMessage();
-        boolean gameContinuation = true;
-        while (gameContinuation) {
-            computerNumber = RandomNumberGenerator.generate();
-            runGameLoop();
-            gameContinuation = GameInput.getContinueInput();
+
+        boolean gameContinue = true;
+        while (gameContinue) {
+            List<Integer> computerNumber = RandomNumberGenerator.generate();
+            runGameLoop(computerNumber);
+            gameContinue = GameInput.getContinueInput();
         }
     }
 
-    private void runGameLoop() {
+    private void runGameLoop(List<Integer> computerNumber) {
         boolean userWin = false;
         while (!userWin) {
             List<Integer> userNumber = GameInput.userNumberInput();
+
             int strike = countStrike(userNumber, computerNumber);
             int ball = countBall(userNumber, computerNumber) - strike;
+
             printLoopResult(ball, strike);
+
             if (isUserWin(strike)) {
                 showWinMessage();
                 userWin = true;
