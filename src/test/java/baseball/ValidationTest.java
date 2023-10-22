@@ -37,7 +37,7 @@ class ValidationTest {
         assertThat(validation().validateInputType(input)).isTrue();
     }
 
-    @DisplayName("입력값은 중복되지 않아야 한다.")
+    @DisplayName("중복값 내 중복 요소가 있을 경우 false를 리턴한다.")
     @Test
     void 중복된_입력값_내_중복된_요소가_있을경우_실패한다() {
         //given
@@ -47,7 +47,7 @@ class ValidationTest {
         assertThat(validation().validationEachDifferentElement(input)).isFalse();
     }
 
-    @DisplayName("입력값은 중복되지 않아야 한다.")
+    @DisplayName("중복값 내 중복 요소가 없을 경우 true를 리턴한다.")
     @Test
     void 중복된_입력값_내_중복된_요소가_없을경우_성공한다() {
 
