@@ -1,8 +1,13 @@
 package baseball;
 
 public class GameResult {
-    private final int ballCount;
-    private final int strikeCount;
+    private int ballCount;
+    private int strikeCount;
+
+    public GameResult() {
+        this.ballCount = 0;
+        this.strikeCount = 0;
+    }
 
     public GameResult(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
@@ -20,5 +25,9 @@ public class GameResult {
 
     private boolean isNothing() {
         return ballCount == 0 && strikeCount == 0;
+    }
+
+    public boolean isWin() {
+        return strikeCount == 3;
     }
 }

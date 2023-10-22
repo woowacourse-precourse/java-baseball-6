@@ -15,8 +15,10 @@ public class BaseballGame {
     }
 
     private void startGame() {
-        outputView.input();
-        inputView.inputNumbers();
+        GameResult gameResult = new GameResult();
+        do {
+
+        } while (!gameResult.isWin());
     }
 
     public void validateNumbers(String numbers) {
