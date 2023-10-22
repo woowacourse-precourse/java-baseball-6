@@ -37,16 +37,16 @@ public class Player {
     }
 
     private void validateDuplicated(){
-        Set<Integer> existedNumber = new HashSet<>();
+        Set<Character> existedCharacter = new HashSet<>();
 
         for(int i=0;i<INPUT_LENGTH;i++){
-            int num = Character.getNumericValue(input.charAt(i));
+            char ch = input.charAt(i);
 
-            if(existedNumber.contains(num)){
+            if(existedCharacter.contains(ch)){
                 throw new IllegalArgumentException();
             }
 
-            existedNumber.add(num);
+            existedCharacter.add(ch);
         }
     }
 
