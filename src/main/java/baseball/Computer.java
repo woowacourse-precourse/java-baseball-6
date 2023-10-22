@@ -14,7 +14,7 @@ public class Computer {
     }
 
     public Computer(List<Integer> answer) {
-        // TODO: 중복된, 범위 밖의 숫자가 포함된 경우, 예외처리
+        validateIntegerList(answer);
         this.answer = answer;
     }
 
@@ -30,8 +30,20 @@ public class Computer {
     }
 
     public List<Integer> compareWithAnswer(List<Integer> target) {
-        // TODO: target에 대한 검증
+        validateIntegerList(target);
         return List.of(countBall(target), countStrike(target));
+    }
+
+    private void validateIntegerList(List<Integer> target) {
+        if (target.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+        if (target.stream().distinct().count() != 3) {
+            throw new IllegalArgumentException();
+        }
+        target.stream().filter(x -> x > 9 || x < 1).forEach(x -> {
+            throw new IllegalArgumentException();
+        });
     }
 
     private int countBall(List<Integer> target) {
