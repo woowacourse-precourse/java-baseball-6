@@ -37,4 +37,8 @@ public class UserNumber {
             }
         }
     }
+
+    public void resetUserNumber() {
+        this.userNumber.clear();
+    }
 }
