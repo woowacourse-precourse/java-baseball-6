@@ -12,7 +12,7 @@ public enum GameCommand {
 
     private final String number;
 
-    GameCommand(String number) {
+    GameCommand(final String number) {
         this.number = number;
     }
 
