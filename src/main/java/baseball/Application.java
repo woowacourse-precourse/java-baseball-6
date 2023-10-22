@@ -11,24 +11,4 @@ public class Application {
 
 
     }
-
-    //TODO: 2023.10.20 (2)번 기능 메서드 구현 - 창덕
-    private void rand_num_gen(int[] rand_num) {
-        int num1, num2, num3;
-        num1 = Randoms.pickNumberInRange(1, 9);
-        rand_num[num1] = 1;
-
-        do {
-            num2 = Randoms.pickNumberInRange(1, 9);
-        } while (rand_num[num2]!=0);
-        rand_num[num2]=2;
-
-        do {
-            num3 = Randoms.pickNumberInRange(1, 9);
-        }while(rand_num[num3]!=0);
-        rand_num[num3]=3;
-    }
-
-
-
 }
