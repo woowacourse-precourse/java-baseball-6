@@ -9,6 +9,6 @@ public class GameView {
     }
 
     public static void printRequireNumberMessage(){
-        System.out.println(REQUIRE_USER_BASEBALL_MESSAGE);
+        System.out.print(REQUIRE_USER_BASEBALL_MESSAGE);
     }
 }

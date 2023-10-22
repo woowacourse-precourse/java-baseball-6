@@ -3,7 +3,9 @@ package baseball.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NumberGenerator {
     public static List<BaseBall> generateAnswerNumbers(){
@@ -17,7 +19,10 @@ public class NumberGenerator {
         return randomBaseBallNumbers;
     }
 
-    public static void generateUserNumbers(){
-        // TODO : 사용자 입력값 기반 BaseBalls 생성
+    public static List<BaseBall> generateUserNumbers(String input){
+        List<BaseBall> userBaseBallNumbers = Arrays.stream(input.split(""))
+                .map(digit -> BaseBall.toBaseBall(input))
+                .collect(Collectors.toList());
+        return userBaseBallNumbers;
     }
 }

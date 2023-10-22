@@ -12,8 +12,12 @@ public class BaseBalls {
         this.numbers = numbers;
     }
 
-    public static BaseBalls getBaseBallNumbers(){
+    public static BaseBalls getAnswerBaseBallNumbers(){
         return new BaseBalls(NumberGenerator.generateAnswerNumbers());
+    }
+
+    public static BaseBalls getUserBaseBallNumbers(String input){
+        return new BaseBalls(NumberGenerator.generateUserNumbers(input));
     }
 
     private void validateSize(){

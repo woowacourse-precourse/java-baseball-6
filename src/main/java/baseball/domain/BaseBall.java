@@ -19,4 +19,13 @@ public class BaseBall {
     public static BaseBall toBaseBall(int number){
         return new BaseBall(number);
     }
+
+    public static BaseBall toBaseBall(String input){
+        try{
+            Integer.parseInt(input);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("3자리의 올바른 숫자 값만을 입력해야합니다.");
+        }
+        return new BaseBall(Integer.parseInt(input));
+    }
 }
