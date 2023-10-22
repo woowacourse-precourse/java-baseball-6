@@ -10,9 +10,15 @@ import java.util.List;
 public class BaseballGame {
     public void gameStart() {
         List<Integer> answerNumbers = generateRandomNumbers();
-        List<Integer> userNumbers = generateUserNumbers();
-        CountStrikeAndBall countStrikeAndBall = new CountStrikeAndBall(answerNumbers, userNumbers);
-        OutputView outputView = new OutputView(countStrikeAndBall);
+        do {
+            List<Integer> userNumbers = generateUserNumbers();
+            CountStrikeAndBall countStrikeAndBall = new CountStrikeAndBall(answerNumbers, userNumbers);
+            OutputView outputView = new OutputView(countStrikeAndBall);
+            outputView.printBallAndStrike();
+            if (finishGame(outputView)) {
+                break;
+            }
+        } while (true);
     }
 
     private static List<Integer> generateRandomNumbers() {
@@ -22,6 +28,10 @@ public class BaseballGame {
     private static List<Integer> generateUserNumbers() {
         String userNumbersToString = InputView.startInput();
         return UserNumberGenerator.makeUserNumberToList(userNumbersToString);
+    }
+
+    private static boolean finishGame(OutputView outputView) {
+        return outputView.strike == 3;
     }
 
 

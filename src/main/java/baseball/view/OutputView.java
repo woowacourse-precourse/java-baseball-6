@@ -3,8 +3,8 @@ package baseball.view;
 import baseball.model.CountStrikeAndBall;
 
 public class OutputView {
-    private final int strike;
-    private final int ball;
+    public final int strike;
+    public final int ball;
 
     public OutputView(CountStrikeAndBall countStrikeAndBall) {
         this.strike = countStrikeAndBall.strike;
