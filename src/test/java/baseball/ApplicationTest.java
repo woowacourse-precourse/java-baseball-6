@@ -59,8 +59,19 @@ class ApplicationTest extends NsTest {
                 () -> {
                     assertThrows(IllegalArgumentException.class, () -> {
                         run("246", "135", "String");
-                        assertThat(output()).contains("낫싱", "3스트라이크");
                     });
+                },
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 사용자_종료_입력_범위_외의_숫자_예외_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThrows(IllegalArgumentException.class, () ->
+                        run("246", "135", "7")
+                    );
                 },
                 1, 3, 5
         );
