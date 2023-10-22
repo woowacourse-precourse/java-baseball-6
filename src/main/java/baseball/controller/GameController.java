@@ -3,8 +3,6 @@ package baseball.controller;
 import baseball.model.AnswerNumber;
 import baseball.model.InputNumber;
 
-import java.util.List;
-
 public class GameController {
     static final AnswerNumber answerNumber = new AnswerNumber();
     static InputNumber inputNumber = new InputNumber();
@@ -14,35 +12,9 @@ public class GameController {
         System.out.println("정답: " + answerNumber.getRandomNumber());
     }
 
-    public int getStrikeCount() {
-        int strikeCount = 0;
-        int ballCount = 0;
-
-        for (int i = 0; i < answerNumber.getRandomNumber().size(); i++) {
-            int elementOfAnswer = answerNumber.getRandomNumber().get(i);
-            int elementOfInput = inputNumber.getInputNumber().get(i);
-
-            if (elementOfAnswer == elementOfInput) {
-                strikeCount++;
-            }
-        }
-        System.out.println("스트라이크: " + strikeCount);
-        return strikeCount;
-    }
-
-    public int getBallCount() {
-        int ballCount = 0;
-
-        for (int i = 0; i < answerNumber.getRandomNumber().size(); i++) {
-            int elementOfAnswer = answerNumber.getRandomNumber().get(i);
-            int elementOfInput = inputNumber.getInputNumber().get(i);
-
-            if (elementOfAnswer != elementOfInput && answerNumber.getRandomNumber().contains(elementOfInput)) {
-                ballCount++;
-            }
-        }
-        System.out.println("볼: " + ballCount);
-        return ballCount;
+    public void 시작입력() { //없애야함
+        inputNumber.setInputNumber("352");
+        System.out.println("사용자 입력: " + inputNumber.getInputNumber());
     }
 
 }
