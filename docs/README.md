@@ -227,6 +227,8 @@
   : 1. 우선 Reset 진행 _ 삭제를 원하는 commit의 마우스 오른쪽을 눌러 ```Reset Current Branch to Here... > reset 강도 선택 > Reset 클릭```
   <br> 2. IntelliJ의 Terminal에서 진행 _ ```git log --oneline```으로 commit 기록 확인 -> 삭제되지 않은 이유는, HEAD로 설정되어 있기 때문일 가능성이 높음.
   <br> 3. ```git reset --hard HEAD~{순서}```를 입력해주면, HEAD가 이전 commit으로 돌아감.
+  <br>
+  <br>
 
 ### 🌱Fork한 레포지터리에 commit을 진행해도 잔디가 심어지지 않는다...?
 
