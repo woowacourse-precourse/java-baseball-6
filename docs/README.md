@@ -9,8 +9,8 @@
 ### 3. 플레이어의 숫자 입력
 - 3.1. getUserInput : 플레이어로부터 readLine()을 활용하여 3자리 숫자를 입력 받기
 - 3.2. convertStringToInt : 입력 받은 String 타입 input을 int 타입 Array로 변환
-- 3.3. strike : 스트라이크 개수 리턴
-- 3.4. ball : 볼 개수 리턴
+- 3.3. getStrikeCount : 스트라이크 개수 리턴
+- 3.4. getBallCount : 볼 개수 리턴
 ### 4. 입력한 숫자에 대한 결과 출력
 - 4.1. printResult : 입력 숫자에 대한 결과 값을 출력
 ### 5. 게임 재시작 및 종료에 대한 문구 출력

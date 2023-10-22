@@ -12,7 +12,8 @@ public class Game {
     public void start() {
         List<Integer> computerNumber = new ArrayList<>();
         int[] digits;
-        int strikeCount, ballCount;
+        int strikeCount;
+        int ballCount;
         boolean isEnd = false;
         int isRestart = 0;
 
@@ -24,10 +25,10 @@ public class Game {
             digits = getUserInput();
 
             // 스트라이크 검사
-            strikeCount = core.strike(computerNumber, digits);
+            strikeCount = core.getStrikeCount(computerNumber, digits);
 
             // 볼 검사
-            ballCount = core.ball(computerNumber, digits, strikeCount);
+            ballCount = core.getBallCount(computerNumber, digits, strikeCount);
 
             // 입력된 숫자에 대한 결과 출력
             core.printResult(strikeCount, ballCount);

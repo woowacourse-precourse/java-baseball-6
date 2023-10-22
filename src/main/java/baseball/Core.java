@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Core {
 
-    public int strike(List<Integer> computerNumber, int[] digits) {
+    public int getStrikeCount(List<Integer> computerNumber, int[] digits) {
         int strikeCount = 0;
         for (int i = 0; i < computerNumber.size(); i++) {
             if (computerNumber.get(i) == digits[i]) {
@@ -14,7 +14,7 @@ public class Core {
         return strikeCount;
     }
 
-    public int ball(List<Integer> computerNumber, int[] digits, int strikeCount) {
+    public int getBallCount(List<Integer> computerNumber, int[] digits, int strikeCount) {
         int ballCount;
         int containCount = 0;
         for (int i = 0; i < computerNumber.size(); i++) {
