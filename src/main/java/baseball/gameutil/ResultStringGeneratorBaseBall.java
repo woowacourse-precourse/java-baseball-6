@@ -8,8 +8,9 @@ public class ResultStringGeneratorBaseBall implements ResultStringGenerator {
         if (score.getBall() == 0 && score.getStrike() == 0) {
             return MessageString.NOTHING_MSG;
         }
-        return "%s %s".formatted(strikeStringBuilder(score.getStrike()),
-            ballStringBuilder(score.getBall())).trim();
+        return "%s %s"
+            .formatted(ballStringBuilder(score.getBall()), strikeStringBuilder(score.getStrike()))
+            .trim();
     }
 
     private String strikeStringBuilder(Integer strike) {
@@ -20,6 +21,9 @@ public class ResultStringGeneratorBaseBall implements ResultStringGenerator {
     }
 
     private String ballStringBuilder(Integer ball) {
+        if (ball == 0) {
+            return "";
+        }
         return "%d%s".formatted(ball, MessageString.BALL_MSG);
     }
 
