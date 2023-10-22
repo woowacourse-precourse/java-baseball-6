@@ -1,7 +1,9 @@
 package baseball.domain;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -19,14 +21,41 @@ class NumbersTest {
         final Number result = numbers.getByIndex(0);
 
         // then
-        Assertions.assertThat(result).isEqualTo(new Number(1));
+        assertThat(result).isEqualTo(new Number(1));
     }
 
     @Test
     @DisplayName("")
-    void contains() {}
-
-    @Test
-    @DisplayName("")
     void hasSameIndexAndValue() {}
+
+    @Nested
+    @DisplayName("값을 갖고있는지 확인 요청시")
+    class Contains {
+
+        @Test
+        @DisplayName("가지고 있는 경우 true를 반환하는가")
+        void hasEqualValue() {
+            // given
+            final Numbers numbers = new Numbers(List.of(1, 2, 3));
+
+            // when
+            final boolean result = numbers.contains(new Number(1));
+
+            // then
+            assertThat(result).isTrue();
+        }
+
+        @Test
+        @DisplayName("가지고 있는 경우 true를 반환하는가")
+        void noEqualValue() {
+            // given
+            final Numbers numbers = new Numbers(List.of(1, 2, 3));
+
+            // when
+            final boolean result = numbers.contains(new Number(4));
+
+            // then
+            assertThat(result).isFalse();
+        }
+    }
 }
