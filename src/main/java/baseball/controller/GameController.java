@@ -22,11 +22,10 @@ public class GameController {
     }
 
     public void start() {
-        while (!isEnd()) {
+        do {
             startGame();
             playGame();
-            endGame();
-        }
+        } while (isEndGame());
     }
 
 
@@ -61,14 +60,12 @@ public class GameController {
 
     }
 
-
-    public void endGame() {
+    public boolean isEndGame() {
         view.printSuccessAndEndMessage();
+        view.printRestartOrEndMessage();
+        Integer finishInput = input.readFinishInput();
 
-    }
-
-    private boolean isEnd() {
-        return true;
+        return finishInput == 1;
     }
 
 }
