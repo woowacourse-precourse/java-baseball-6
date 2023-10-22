@@ -10,7 +10,19 @@ public class Validation {
     private static final String NUMBER_OF_NUMBERS_EXCEPTION_MESSAGE = "입력한 숫자는 3자리여야 합니다.";
     private static final String RESTART_OR_END_NUMBER_EXCEPTION_MESSAGE = "1과 2만 입력해야 합니다.";
 
-    public static void validateSameNumber(String numbers) {
+    public static void validateInputThreeNumber(String number) {
+        validateSameNumber(number);
+        validateNumberOfNumbers(number);
+        validateThatInputIsNumeric(number);
+    }
+
+    public static void validateRestartOrEnd(String number) {
+        if (!(Constants.GAME_RESTART_NUMBER.equals(number) || Constants.GAME_END_NUMBER.equals(number))) {
+            throw new IllegalArgumentException(RESTART_OR_END_NUMBER_EXCEPTION_MESSAGE);
+        }
+    }
+
+    private static void validateSameNumber(String numbers) {
         List<Character> checkList = new ArrayList<>();
 
         for (char singleNumber : numbers.toCharArray()) {
@@ -21,21 +33,15 @@ public class Validation {
         }
     }
 
-    public static void validateThatInputIsNumeric(String numbers) {
+    private static void validateThatInputIsNumeric(String numbers) {
         if (!isNumeric(numbers)) {
             throw new IllegalArgumentException(NON_NUMERIC_EXCEPTION_MESSAGE);
         }
     }
 
-    public static void validateNumberOfNumbers(String numbers) {
+    private static void validateNumberOfNumbers(String numbers) {
         if (numbers.length() != Constants.NUMBER_OF_NUMBERS) {
             throw new IllegalArgumentException(NUMBER_OF_NUMBERS_EXCEPTION_MESSAGE);
-        }
-    }
-
-    public static void validateRestartOrEnd(String number) {
-        if (!(Constants.GAME_RESTART_NUMBER.equals(number) || Constants.GAME_END_NUMBER.equals(number))) {
-            throw new IllegalArgumentException(RESTART_OR_END_NUMBER_EXCEPTION_MESSAGE);
         }
     }
 

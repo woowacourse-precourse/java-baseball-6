@@ -20,9 +20,7 @@ public class BaseballGameController {
 
             String inputNumbers = InputView.inputNumbers();
 
-            Validation.validateSameNumber(inputNumbers);
-            Validation.validateNumberOfNumbers(inputNumbers);
-            Validation.validateThatInputIsNumeric(inputNumbers);
+            Validation.validateInputThreeNumber(inputNumbers);
 
             int strikeNumbers = referee.calculateStrikeNumbers(randomNumbers, inputNumbers);
             int ballNumbers = referee.calculateBallNumbers(randomNumbers, inputNumbers);
