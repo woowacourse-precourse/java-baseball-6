@@ -1,8 +1,5 @@
 package controller;
 
-import static utils.GameConstant.GAME_RESTART_OR_QUIT_PROMPT;
-import static utils.GameConstant.GAME_START_MESSAGE;
-import static utils.GameConstant.GAME_WIN_MESSAGE;
 import static utils.GameConstant.INPUT_PROMPT_MESSAGE;
 import static utils.GameConstant.QUIT_GAME;
 
@@ -30,31 +27,25 @@ public class NumberBaseballController {
     }
 
     public void run() {
-        startGame();
+        outputView.startGame();
         do {
             Computer computer = setupGame();
             playGame(computer);
         } while (!isUserWantToQuit());
     }
 
-    private void startGame() {
-        outputView.write(GAME_START_MESSAGE);
-    }
-
     private void playGame(Computer computer) {
         List<Integer> userBaseballNumber = getUserBaseballNumber();
         User user = User.create(userBaseballNumber);
         GameScoreboard gameScoreboard = gameController.run(user, computer);
-        String convertMessage = BaseballMessageConvertor.generateScoreMessage(gameScoreboard);
-        outputView.write(convertMessage);
+        outputView.hint(gameScoreboard.getStrike(), gameScoreboard.getBall());
         GameTerminator gameTerminator = new GameTerminator();
         boolean gameStillRunning = gameTerminator.isGameStillRunning(gameScoreboard);
         if (gameStillRunning) {
             playGame(computer);
             return;
         }
-        outputView.write(GAME_WIN_MESSAGE);
-        outputView.write(GAME_RESTART_OR_QUIT_PROMPT);
+        outputView.missonClear();
     }
 
     private boolean isUserWantToQuit() {

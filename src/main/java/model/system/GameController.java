@@ -7,11 +7,9 @@ import model.referee.GameScoreboard;
 public final class GameController {
 
     private final GameStarter gameStarter;
-    private final GameTerminator gameTerminator;
 
     public GameController(GameStarter gameStarter, GameTerminator gameTerminator) {
         this.gameStarter = gameStarter;
-        this.gameTerminator = gameTerminator;
     }
 
     public GameScoreboard run(User user, Computer computer) {

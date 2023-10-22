@@ -29,10 +29,6 @@ public class GameScoreboard {
         return this.strike == BASEBALL_GAME_NUMBER_LENGTH;
     }
 
-    public boolean isNothing() {
-        return ball == 0 && strike == 0;
-    }
-
     public int getStrike() {
         return strike;
     }

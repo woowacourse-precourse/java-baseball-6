@@ -1,8 +1,5 @@
 package utils;
 
-import static utils.GameConstant.BALL;
-import static utils.GameConstant.NOTHING;
-import static utils.GameConstant.STRIKE;
 import static utils.GameErrorMessage.INVALID_CONVERT_MESSAGE;
 
 import java.util.List;
@@ -15,18 +12,6 @@ public class BaseballMessageConvertor {
         int strike = gameScoreboard.getStrike();
         int ball = gameScoreboard.getBall();
 
-        if (ball > 0) {
-            builder.append(ball).append(BALL);
-            if (strike > 0) {
-                builder.append(" ");
-            }
-        }
-        if (strike > 0) {
-            builder.append(strike).append(STRIKE);
-        }
-        if (gameScoreboard.isNothing()) {
-            builder.append(NOTHING);
-        }
         return builder.toString();
     }
 
