@@ -15,7 +15,13 @@
 
 ## Count
 
-- [ ] 3자리  String 중복 확인
+- [ ] 3자리 String 중복 확인
 - [X] 3자리 여부 확인
 - [X] Count 객체 생성하는 메서드
 - [X] toString()
+
+## Application Main문
+
+- [ ] 게임 시작안내
+- [ ] 게임 진행
+- [ ] 게임 재시작여부
