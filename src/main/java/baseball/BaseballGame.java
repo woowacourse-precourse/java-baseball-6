@@ -12,7 +12,7 @@ public class BaseballGame {
     }
 
     public void play() {
-        computer.pickRandomNumber(3);
+        computer.pickRandomNumber();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             List<Integer> playerNumbers = player.readNumber();
@@ -24,7 +24,7 @@ public class BaseballGame {
                 if (player.askRestart() == 2) {
                     break;
                 }
-                computer.pickRandomNumber(3);
+                computer.pickRandomNumber();
             }
         }
     }

@@ -8,7 +8,7 @@ public class Computer {
     private List<Integer> nums = new ArrayList<>();
     private GameResult currentResult;
 
-    public void pickRandomNumber(int count) {
+    public void pickRandomNumber() {
         nums.clear();
         while (nums.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
