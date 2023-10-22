@@ -11,6 +11,10 @@ public class Game {
   private static final String STRIKE = "스트라이크";
   private static final String BALL = "볼";
   private static final String NOTHING = "낫싱";
+  private static final String INPUT_RESTART = "1";
+  private static final String INPUT_QUIT = "2";
+  private static final String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞췄습니다 게임종료";
+  private static final String OUTPUT_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
   private final RandomNumber computer = new RandomNumber();
   private final UserNumber user = new UserNumber();
   private boolean quit = false;
@@ -32,14 +36,14 @@ public class Game {
 
       int strikes = getStrikeCountFromResult(result);
       if (gameOver(strikes)) {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(OUTPUT_SUCCESS);
+        System.out.println(OUTPUT_RESTART);
 
         input = Console.readLine();
-        if ("1".equals(input.trim())) {
+        if (INPUT_RESTART.equals(input.trim())) {
           System.out.println("새 게임을 시작합니다.");
           continue;
-        } else if ("2".equals(input.trim())) {
+        } else if (INPUT_QUIT.equals(input.trim())) {
           quit = true;
           break;
         } else {
