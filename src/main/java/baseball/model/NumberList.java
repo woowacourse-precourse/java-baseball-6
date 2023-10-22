@@ -33,7 +33,7 @@ public class NumberList {
         }};
         return new NumberList(numberList);
     }
-    
+
     private void validateRepeatedNumber(List<Integer> numberList) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < numberList.size(); i++) {
@@ -53,8 +53,8 @@ public class NumberList {
 
     public boolean equals(NumberList a) {
         boolean isEqual = true;
-        for (int i = 0; i < numberList.size(); i++) {
-            isEqual &= (numberList.get(i).equals(a.numberList.get(i)));
+        for (int i = 0; isEqual && i < numberList.size(); i++) {
+            isEqual = (numberList.get(i).equals(a.numberList.get(i)));
         }
         return isEqual;
     }
