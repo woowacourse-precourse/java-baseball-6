@@ -7,7 +7,7 @@ public class GameContinueNumber {
 
     private String gameNumber;
 
-    private GameContinueNumber(String gameNumber) {
+    private GameContinueNumber(final String gameNumber) {
         this.gameNumber = gameNumber;
     }
 
