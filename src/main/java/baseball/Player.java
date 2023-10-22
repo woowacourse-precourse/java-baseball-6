@@ -46,7 +46,8 @@ public class Player {
 
     public GameAction takeGameAction(){
         String gameAction = readLine();
-        if (gameAction.length() != 1){throw new IllegalArgumentException();
+        if (gameAction.length() != 1){
+            throw new IllegalArgumentException();
         }
         if (gameAction.equals("1")){
             return GameAction.CONTINUE;

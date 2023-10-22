@@ -26,14 +26,10 @@
 1. ***BaseballGame*** : 볼, 스트라이크 개수 관리, 문자열 출력 등의 게임 루틴
 2. ***Player*** : 사용자 입력 및 입력 데이터 관리
 3. ***RandomNumber*** : 1에서 9까지 서로 다른 3개의 숫자로 구성된 난수 생성 및 사용자 입력과 비교
-4. <<enum>> ***PitchingResult*** : 투구 결과를 나타내는 열거형
-5. <<enum>> ***GameAction*** : 게임을 계속할 지 여부를 나타내는 열거형
+4. \<\<enum\>\> ***PitchingResult*** : 투구 결과를 나타내는 열거형
+5. \<\<enum\>\> ***GameAction*** : 게임을 계속할 지 여부를 나타내는 열거형
 
-# 기능 요구 변화에 대응 하기 위한 장치
 
-1. 자릿수 변화 → 세 자리 수가 아닌 자릿수로 게임을 해야 한다면?
-2. 게임 종류 후 행동 변화 → 현재는 재시작, 종료만 있지만 만약 랭킹을 보는 행위를 추가해야 한다면?
-3.
 
 ---
 
@@ -44,52 +40,69 @@
 
 </aside>
 
-### 1️⃣ 정수형 세 자리 난수
 
-- 난수 생성 과정 예시
+
+
+
+
+
+### 1️⃣ 정수형 세 자리 난수
+<details>
+<summary>난수 생성 과정 예시</summary>
+
    1. 첫 번째 무작위 수
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled.png)
+      ![Untitled](./images/RandomNumber_int_exam1-1.png)
 
    2. 두 번째 무작위 수
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%201.png)
+      ![Untitled](./images/RandomNumber_int_exam1-2.png)
 
    3. 세 번째 무작위 수
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%202.png)
+      ![Untitled](./images/RandomNumber_int_exam1-3.png)
 
    4. 네 번째 무작위 수
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%203.png)
+      ![Untitled](./images/RandomNumber_int_exam1-4.png)
 
-- 코드
+</details>
 
-    ```java
-    public String generateRandomNumber(){
-            int randomNumber = 0;
-    
-            while (randomNumber < (int) Math.pow(10, this.digitCount - 1)){
-                int randomDigit = pickNumberInRange(1, 9);
-    
-                if (!checkRedundancy(randomNumber, randomDigit)){
-                    randomNumber = (randomNumber * 10) + randomDigit;
-                }
+
+
+<details>
+<summary>코드</summary>
+
+
+```java
+public String generateRandomNumber(){
+        int randomNumber = 0;
+
+        while (randomNumber < (int) Math.pow(10, this.digitCount - 1)){
+            int randomDigit = pickNumberInRange(1, 9);
+
+            if (!checkRedundancy(randomNumber, randomDigit)){
+                randomNumber = (randomNumber * 10) + randomDigit;
             }
-            return Integer.toString(randomNumber);
         }
-    
-        private boolean checkRedundancy(int randomNumber, int randomDigit){
-            while (randomNumber != 0){
-                if ((randomNumber % 10) == randomDigit){
-                    return true;
-                }
-                randomNumber = randomNumber / 10;
-            }
-            return false;
-        }
+        return Integer.toString(randomNumber);
     }
-    ```
+
+    private boolean checkRedundancy(int randomNumber, int randomDigit){
+        while (randomNumber != 0){
+            if ((randomNumber % 10) == randomDigit){
+                return true;
+            }
+            randomNumber = randomNumber / 10;
+        }
+        return false;
+    }
+}
+```
+
+</details>
+
+
 
 
 ### 2️⃣ 문자열 세 자리 난수
@@ -99,22 +112,31 @@
 
 </aside>
 
-- 난수 생성 과정 예시
-   1. 첫 번째 무작위 수
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%204.png)
+<details>
+<summary>난수 생성 과정 예시</summary>
 
-   2. 두 번째 무작위 수
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%205.png)
+1. 첫 번째 무작위 수
 
-   3. 세 번째 무작위 수
+   ![Untitled](./images/RandomNumber_string_exam1-1.png)
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%206.png)
+2. 두 번째 무작위 수
 
-   4. 네 번째 무작위 수
+   ![Untitled](./images/RandomNumber_string_exam1-2.png)
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%207.png)
+3. 세 번째 무작위 수
+
+   ![Untitled](./images/RandomNumber_string_exam1-3.png)
+
+4. 네 번째 무작위 수
+
+   ![Untitled](./images/RandomNumber_string_exam1-4.png)
+
+
+</details>
+
+   
 
 
 ### 3️⃣ 해시테이블 난수
@@ -124,22 +146,30 @@
 
 </aside>
 
-- 난수 생성 과정 예시
-   1. 첫 번째 무작위 수
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%208.png)
+<details>
+<summary>난수 생성 과정 예시</summary>
 
-   2. 두 번째 무작위 수
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%209.png)
+1. 첫 번째 무작위 수
 
-   3. 세 번째 무작위 수
+   ![Untitled](./images/RandomNumber_hash_exam1-1.png)
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%2010.png)
+2. 두 번째 무작위 수
 
-   4. 네 번째 무작위 수
+   ![Untitled](./images/RandomNumber_hash_exam1-2.png)
 
-      ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%2011.png)
+3. 세 번째 무작위 수
+
+   ![Untitled](./images/RandomNumber_hash_exam1-3.png)
+
+4. 네 번째 무작위 수
+
+   ![Untitled](./images/RandomNumber_hash_exam1-4.png)
+
+
+</details>
+
 
 
 **해시테이블을 선택한 이유**
@@ -156,19 +186,26 @@
                else:
                    ball++;
        ```
+    
+    <details>
+    <summary>난수 생성 과정 예시</summary>
+    
+    
+1. STRIKE
 
-   - 예시
-      1. strike
+   ![Untitled](./images/RandomNumber_hash_usuage_exam1-1.png)
 
-         ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%2012.png)
+2. BALL
 
-      2. ball
+   ![Untitled](./images/RandomNumber_hash_usuage_exam1-2.png)
 
-         ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%2013.png)
+3. NOTHING
 
-      3. Neither
-
-         ![Untitled](Week1%20cab8c0c4350f49aca138f40c718d4e9b/Untitled%2014.png)
+   ![Untitled](./images/RandomNumber_hash_usuage_exam1-3.png)
+    
+    
+    </details>
+   
 
 
 생성된 난수를 전달할 때, 해시테이블을 반환할 수도 있지만,
