@@ -1,5 +1,7 @@
 package baseball.config;
 
+import baseball.domain.Errors;
+
 public class Config {
 
     private static final int MAX_NUMBERS = 3;
@@ -7,7 +9,7 @@ public class Config {
     private static final int END_INCLUSIVE = 9;
 
     static {
-        if ( MAX_NUMBERS == 0 || (START_INCLUSIVE + MAX_NUMBERS - 1) > END_INCLUSIVE || MAX_NUMBERS > END_INCLUSIVE) throw new IllegalArgumentException("숫자는 올바른 범위여야 합니다.");
+        if ( MAX_NUMBERS == 0 || (START_INCLUSIVE + MAX_NUMBERS - 1) > END_INCLUSIVE || MAX_NUMBERS > END_INCLUSIVE) throw new IllegalArgumentException(Errors.MSG_EXCEPTION_INVALID_RANGE);
     }
 
     public static int getMaxNumbers() {

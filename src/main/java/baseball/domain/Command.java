@@ -15,6 +15,6 @@ public class Command {
     }
 
     public static void validate(String input) {
-        if(Validator.isInvalid(input)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
+        if(Validator.isInvalid(input)) throw new IllegalArgumentException(Errors.MSG_EXCEPTION_INVALID_INPUT);
     }
 }
