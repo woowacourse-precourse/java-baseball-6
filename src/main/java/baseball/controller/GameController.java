@@ -32,12 +32,12 @@ public class GameController {
     }
 
     public void playGame() {
-        boolean isGameClear = true;
-        while (isGameClear) {
+        boolean allBallsNotHit = true;
+        while (allBallsNotHit) {
             outputController.showGameInputMessage();
             List<Integer> input = inputController.getPlayerGuessNumber();
             Hint result = BaseballGamePlayer.swingBat(gameComputer, input);
-            isGameClear = outputController.displayHint(result);
+            allBallsNotHit = outputController.displayHint(result);
         }
     }
 }
