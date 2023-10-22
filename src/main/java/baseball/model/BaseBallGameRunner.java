@@ -34,25 +34,39 @@ public class BaseBallGameRunner {
             System.out.println(result.getResultMessage());
 
             if (result.getStatus().equals(GUESS_WRONG)) {
-                guessNumber.clear();
-                generator.resetIsMatched();
+                reset();
                 continue;
             }
 
             System.out.println(GAME_FINISH_MESSAGE);
             String userAction = getPlayerInput(USER_ACTION_MESSAGE);
-            if (userAction.equals("2")) {
+            boolean playAgain = processUserAction(userAction);
+            if (!playAgain) {
                 break;
             }
-            if (userAction.equals("1")) {
-                guessNumber.clear();
-                computer = new Computer();
-                generator.resetIsMatched();
-                continue;
-            }
-            throw new IllegalArgumentException("INVALID_INPUT_MESSAGE");
+            resetAndReallocate();
         }
         Console.close();
+    }
+
+    private void resetAndReallocate() {
+        reset();
+        computer = new Computer();
+    }
+
+    private void reset() {
+        guessNumber.clear();
+        generator.resetIsMatched();
+    }
+
+    private boolean processUserAction(String userAction) {
+        if (userAction.equals("1")) {
+            return true;
+        }
+        if (userAction.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException("INVALID_INPUT_MESSAGE");
     }
 
     private String getPlayerInput(String message) {
@@ -72,7 +86,7 @@ public class BaseBallGameRunner {
     }
 
     private void checkDigitAndDuplicate(char c, List<Integer> guessNumber) {
-        if (c >= '1' && c <= '9' && !guessNumber.contains(c - '0'))
+        if ((c >= '1' && c <= '9') && !guessNumber.contains(c - '0'))
             return;
         throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
     }
