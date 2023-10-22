@@ -55,7 +55,7 @@ public final class BaseBallNumbers {
     }
 
     public void validateNumberRange(int number) {
-        if (isInBaseBallNumberRange(number)) {
+        if (!isInBaseBallNumberRange(number)) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
