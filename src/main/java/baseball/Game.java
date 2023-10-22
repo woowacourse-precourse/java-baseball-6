@@ -26,6 +26,49 @@ public class Game {
 
     public void startGame() {
         // TODO: Game 진행
+
+        // 컴퓨터 랜덤 숫자 생성
+        List<Integer> computer = createRandomNumber();
+
+        // 게임 시작 메시지 출력
+        messageUtil.initGame();
+
+        try {
+            // 게임 종료 조건: compareRestartNum이 STOP_NUMBER인 경우
+            while (compareRestartNum != stopNumber) {
+                // 유저에게 숫자 입력 요청
+                messageUtil.inputNumber();
+                InputString = Console.readLine();
+
+                // 입력 값 유효성 검사 및 리스트로 변환
+                user = valid.validateInputValueAndReturnList(InputString);
+
+                // 볼과 스트라이크 개수 확인하여 업데이트
+                updateBallAndStrikeCounts(user, computer);
+
+                // 결과 출력
+                messageUtil.printResultGame(countBall, countStrike);
+
+                // 게임 성공 시 처리(countStrike가 MAX_COUNT_STRIKE와 같은 경우)
+                if (countStrike == maxCountStrike) {
+                    messageUtil.printSuccessGame();
+                    InputString = Console.readLine();
+                    compareRestartNum = Integer.parseInt(InputString);
+                    valid.validationRestartAndStopValue(compareRestartNum);
+
+                    // 게임 재시작인 경우 새로운 랜덤 숫자 생성
+                    if (compareRestartNum == restartNumber) {
+                        computer = createRandomNumber();
+                    }
+                }
+
+                // 볼과 스트라이크 개수 초기화
+                countBall = 0;
+                countStrike = 0;
+            }
+        } finally {
+            Console.close();
+        }
     }
 
     public Game() {}
