@@ -2,20 +2,26 @@ package baseball.service;
 
 import baseball.domain.Baseball;
 import baseball.util.IntegerListUtil;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StrikeServiceTest {
 
+    private final StrikeService strikeService = StrikeService.getInstance();
+    private Baseball computerBaseball;
+    private Baseball inputBaseball;
+
+    @BeforeEach
+    void setup() {
+        computerBaseball = new Baseball();
+        inputBaseball = new Baseball();
+    }
+
     @Test
     void count_zeroStrike() {
         //given
-        StrikeService strikeService = StrikeService.getInstance();
-
-        Baseball computerBaseball = new Baseball();
-        Baseball inputBaseball = new Baseball();
-
         computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
         inputBaseball.setValues(IntegerListUtil.parseIntegerList("456"));
 
@@ -29,11 +35,6 @@ public class StrikeServiceTest {
     @Test
     void count_oneStrike() {
         //given
-        StrikeService strikeService = StrikeService.getInstance();
-
-        Baseball computerBaseball = new Baseball();
-        Baseball inputBaseball = new Baseball();
-
         computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
         inputBaseball.setValues(IntegerListUtil.parseIntegerList("156"));
 
