@@ -6,22 +6,25 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballController {
+    int strikeCount;
+    int ballCount;
+
     public void startGame(){
-        int strikeCount;
-        int ballCount;
-        boolean gameClear;
         do {
-            int[] computerNumbers = new ComputerModel().computerNumbers;
-            gameClear = false;
-            do {
-                int[] userNumbers = new UserModel().numbers;
-                strikeCount = countStrike(computerNumbers, userNumbers);
-                ballCount = countBall(computerNumbers, userNumbers);
-                OutputView outputView = new OutputView(strikeCount, ballCount);
-                outputView.outputResult();
-                if (strikeCount == 3) gameClear = true;
-            } while (!gameClear);
+            playGame();
         } while (isExitGame());
+    }
+
+    public void playGame(){
+        int[] computerNumbers = new ComputerModel().computerNumbers;
+        do {
+            int[] userNumbers = new UserModel().numbers;
+            strikeCount = countStrike(computerNumbers, userNumbers);
+            ballCount = countBall(computerNumbers, userNumbers);
+            OutputView outputView = new OutputView(strikeCount, ballCount);
+            outputView.outputResult();
+        } while (!isClearGame());
+        OutputView.printGameResult();
     }
 
     private boolean isExitGame(){
@@ -33,6 +36,10 @@ public class BaseballController {
             return false;
         }
         throw new IllegalArgumentException();
+    }
+
+    private boolean isClearGame(){
+        return this.strikeCount == 3;
     }
 
     private int countStrike(int[] computerNumbers, int[] userNumbers){
