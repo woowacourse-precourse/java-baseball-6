@@ -32,7 +32,7 @@ public class Baseball {
         System.out.print("숫자를 입력해주세요 : ");
         String str = Console.readLine();
 
-        //입력값이 3자리수인지 체크
+        //입력값의 길이가 정상적인지 자리수 체크
         if(str.length()!=cntnum){
             throw new IllegalArgumentException("Invalid argument: "+str);
         }
@@ -84,7 +84,7 @@ public class Baseball {
         return true;
     }
 
-    //숫자야구 진행 함수 (cnt는 컴퓨터가 생성할 숫자의 길이값)
+    //숫자야구 진행 함수 (cntnum은 컴퓨터가 생성할 숫자의 길이값)
     public void playBaseball(int cntnum){
 
         computer = setNum(cntnum); // 랜덤의 서로다른 숫자 생성
