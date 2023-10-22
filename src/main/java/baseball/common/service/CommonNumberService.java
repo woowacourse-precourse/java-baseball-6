@@ -41,4 +41,14 @@ public class CommonNumberService {
     public ArrayList<Integer> getComputer(){
         return computer;
     }
+
+    //캐시를 우선적으로 확인하기
+    private String findCorrectInCache(String input){
+        return cache.get(input);
+    }
+
+    //응답을 캐시에 저장하기
+    private void putInputInCache(String input, String answer){
+        if(!cache.containsKey(input)) cache.put(input,answer);
+    }
 }
