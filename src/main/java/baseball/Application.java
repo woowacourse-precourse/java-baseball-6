@@ -23,7 +23,7 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }
-            System.out.println(computer);
+            
 
             //사용자 숫자 입력(맞을 때까지 반복)
             int ans = 0;
