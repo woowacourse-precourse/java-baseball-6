@@ -16,7 +16,6 @@ public class BaseballGameController {
 
     public void start() {
         printStartMessage();
-        computer.generateNumber();
         while (player.getRestartOrExit() != EXIT) {
             playOneRound();
             player.inputRestartOrExit();
@@ -24,6 +23,17 @@ public class BaseballGameController {
     }
 
     private void playOneRound() {
+        computer.generateNumber();
+        while (true) {
+            inputView.printSuggestNumberMessage();
+            player.inputNumbers();
+            computer.calculateScore(player.getNumbers());
+            outputView.printResult(computer.getScore());
+            if (computer.getScore().isAllStrike()) {
+                inputView.printRestartOrExitMessage();
+                break;
+            }
+        }
     }
 
     public void printStartMessage() {
