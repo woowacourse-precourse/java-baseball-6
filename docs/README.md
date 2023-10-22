@@ -8,6 +8,6 @@ baseball 게임을 진행할 클래스를 하나 생성한다.
 - 스트라이크를 판정하는 메소드는 checkStrike, 볼을 판정하는 메소드는 checkBall로 확인한다. 이들의 실행 결과로 클래스의 필드에 있는 strike, ball에 저장한다.
 - 최종적인 판단을 출력하는 메소드는 printResult이다.
 - 전체적인 게임 흐름은 playBaseballGame에서 구현한다.
-
+- (231022일 추가) checkStrike와 checkBall은 playGame 메소드에 통합해서 사용한다.
 2. Application
 - 여기서는 값을 입력받고, BaseBallGame 클래스 객체를 생성해서 게임을 진행하는 것을 반복한다.
