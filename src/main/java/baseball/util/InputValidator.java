@@ -1,9 +1,7 @@
-package baseball.view;
-
-import baseball.util.Err;
+package baseball.util;
 
 public class InputValidator {
-    
+
     public static void validateNumericInput(String input) {
         try {
             Integer.parseInt(input);
