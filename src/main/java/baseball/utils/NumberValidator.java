@@ -10,7 +10,7 @@ public class NumberValidator {
     private static final String DUPLICATE_DIGIT_ERROR_MESSAGE = "입력된 수는 서로 다른 수로 구성되어야 합니다.";
 
     public static void validateThreeDistinctDigitsInRange(String number) {
-        if (!Pattern.matches(number, "^[1-9]+$")) {
+        if (!Pattern.matches("^[1-9]+$", number)) {
             throw new IllegalArgumentException(NOT_DIGIT_ERROR_MESSAGE);
         }
 
