@@ -14,7 +14,8 @@ public class OutputView {
         if (score.getBall() == 0 && score.getStrike() == 0) {
             System.out.println(NOTHING);
             return;
-        } else if (score.getStrike() == 3) {
+        }
+        if (score.getStrike() == 3) {
             System.out.println(THREE_STRIKE);
             System.out.println(SUCCESS);
             return;
