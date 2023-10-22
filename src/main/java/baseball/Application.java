@@ -21,7 +21,7 @@ public class Application {
             Computer computer = new Computer();
             computer.setInput(new Generator().generateNum());
             computer.setComputerNumberBall(Converter.convert(computer.getInput()));
-
+            //System.out.println(computer.getInput());
             Player player = new Player();
             Result result = new Result();
             Validate validator = new Validate();
@@ -47,10 +47,11 @@ public class Application {
             try {
                 validator.validateForRestart(restart);
             } catch (Exception e) {
+                System.out.println(e.getMessage());
                 Console.close();
                 return;
             }
-            if (restart == END) {
+            if (restart.equals(END)) {
                 break;
             }
         }

@@ -10,9 +10,9 @@ public class Validate {
         validateDuplicate(num);
     }
 
-    public void validateForRestart(String input) throws Exception {
-        validateSignLength(input);
-        validateSignRange(input);
+    public void validateForRestart(String sign) throws Exception {
+        validateSignLength(sign);
+        validateSignRange(sign);
 
     }
 
@@ -37,7 +37,7 @@ public class Validate {
     }
 
     public boolean notSignal(char sign) {
-        if (sign == '1' || sign == '0') {
+        if (sign == '1' || sign == '2') {
             return false;
         }
         return true;
