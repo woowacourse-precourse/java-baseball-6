@@ -15,7 +15,7 @@ public class CompareSystem {
         for(int index = 0; index < 3; index++) {
             CompareStatus compareStatus = checkStatus(index);
             int compareCount = result.get(compareStatus);
-            result.set(compareStatus, compareCount+1);
+            result.putCount(compareStatus, compareCount);
         }
         return result;
     }
