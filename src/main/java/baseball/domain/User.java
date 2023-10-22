@@ -10,4 +10,8 @@ public class User {
     public User() {
         this.number = new ArrayList<Integer>();
     }
+
+    public void addNumber(int number) {
+        this.number.add(number);
+    }
 }
