@@ -11,15 +11,22 @@ public class BaseballGame {
     private final String END_GAME = "2";
     public void run(){
         printGameStart();
-        List<Integer> randomNum = initRandomNum();
+
+        List<Integer> randomNum;
         List<Integer> userNum;
         Map<String, Integer> result;
+        int userEndOption;
 
         do {
-            userNum = inputUserNum();
-            result = countStrikeAndBall(userNum, randomNum);
-            printGameResult(result);
-        }while(!isAllStrike(result));
+            randomNum = initRandomNum();
+            do {
+                userNum = inputUserNum();
+                result = countStrikeAndBall(userNum, randomNum);
+                printGameResult(result);
+            } while (!isAllStrike(result));
+
+            userEndOption = inputGameEnd();
+        }while(!checkGameEnd(userEndOption));
 
     }
 
@@ -33,6 +40,7 @@ public class BaseballGame {
         while (randomNumList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomNumList.contains(randomNumber)) {
+                System.out.println(randomNumber);
                 randomNumList.add(randomNumber);
             }
         }
