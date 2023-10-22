@@ -15,16 +15,19 @@ public final class RandomNumberGenerator {
 
     private RandomNumberGenerator(){
     }
-    public static List<Integer> generateRandomNumberList(){
-        List<Integer> randomNumberList = new ArrayList<>();
-        while (randomNumberList.size() < ANSWER_LENGTH){
-            int randomNumber = Randoms.pickNumberInRange(
-                    USER_ANSWER_LOWER_LIMIT, USER_ANSWER_UPPER_LIMIT);
 
-            if (!randomNumberList.contains(randomNumber)){
-                randomNumberList.add(randomNumber);
-            }
-        }
-        return randomNumberList;
+    public static int pickRandomNumberValidRange(){
+        return Randoms.pickNumberInRange(USER_ANSWER_LOWER_LIMIT, USER_ANSWER_UPPER_LIMIT);
     }
+//    public static List<Integer> generateRandomNumberList(){
+//        List<Integer> randomNumberList = new ArrayList<>();
+//        while (randomNumberList.size() < ANSWER_LENGTH){
+//            int randomNumber = pickRandomNumberValidRange();
+//
+//            if (!randomNumberList.contains(randomNumber)){
+//                randomNumberList.add(randomNumber);
+//            }
+//        }
+//        return randomNumberList;
+//    }
 }
