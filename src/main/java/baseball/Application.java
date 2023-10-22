@@ -70,8 +70,11 @@ public class Application {
         for (int i = computer.size() - 1; i >= 0; i--) {
             inputNum = inputNumber % 10;
 
-            strikeCount = strikeCheck(computer.get(i), inputNum);
-            B_S.put(strike, B_S.get(strike) + strikeCount);
+            strikeCount = strikeCheck(computer.get(i), inputNum);   //inputNum과 computer.get(i)의 값이 같다면
+            B_S.put(strike, B_S.get(strike) + strikeCount);         //B_S에 "Strike"의 value를 1 증가
+
+            ballCount = ballCheck(computer, inputNum) - strikeCount;    //inputNum이 computer의 숫자 중 strike가 아니고 같은 숫자가 있다면
+            B_S.put(ball, B_S.get(ball) + ballCount);                   //B_S에 "Ball"의 value를 1 증가
 
             inputNum /= 10;
         }
@@ -84,6 +87,18 @@ public class Application {
             return 1;
         }
         return 0;
+    }
+
+    public int ballCheck(List<Integer> computer, int inputNum) {
+        int ballCount = 0;
+
+        for (int computerNum : computer) {
+            if (computerNum == inputNum) {
+                ballCount++;
+                continue;
+            }
+        }
+        return ballCount;
     }
 
     public boolean inputCheckLength(String input) {
@@ -129,7 +144,7 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
 
             input = Console.readLine();                             //사용자가 숫자를 입력할 수 있는 환경 구현
-            if (!application.inputCheckAll(input)) {
+            if (!application.inputCheckAll(input)) {                //입력 값이 정해진 규칙에 적합하지 않으면 예외 처리
                 throw new IllegalArgumentException();
             }
 
