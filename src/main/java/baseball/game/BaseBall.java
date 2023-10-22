@@ -1,4 +1,6 @@
-package baseball;
+package baseball.game;
+
+import baseball.util.RandomNumber;
 
 import java.util.List;
 
@@ -46,7 +48,7 @@ public class BaseBall {
         } else if (strikes > 0) {
             System.out.println(String.format(ONLY_STRIKE, strikes));
         } else {
-            System.out.println(String.format(NONE, strikes));
+            System.out.println(NONE);
         }
     }
 
