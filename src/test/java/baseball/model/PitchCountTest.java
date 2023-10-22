@@ -31,31 +31,47 @@ class PitchCountTest {
 
 
     @Test
-    void 스트라이크_볼_카운트_검증() {
-        pitchCount.countStrikeBall(computerNumber, userNumberCorrect);
-        assertTrue(pitchCount.isAnswer());
+    void 카운트_검증_스트라이크() {
+        pitchCount.evaluateStrikeAndBall(computerNumber, userNumberCorrect);
         assertEquals(3, pitchCount.getStrikeCnt());
         assertEquals(0, pitchCount.getBallCnt());
+        assertTrue(pitchCount.isAnswer());
+    }
 
-        pitchCount.countStrikeBall(computerNumber, userNumberDifferent);
+
+    @Test
+    void 카운트_검증_낫싱() {
+        pitchCount.evaluateStrikeAndBall(computerNumber, userNumberDifferent);
         assertEquals(0, pitchCount.getStrikeCnt());
         assertEquals(0, pitchCount.getBallCnt());
+    }
 
-        pitchCount.countStrikeBall(computerNumber, userNumberPartialMatch);
+
+    @Test
+    void 카운트_검증_볼_스트라이크() {
+        pitchCount.evaluateStrikeAndBall(computerNumber, userNumberPartialMatch);
         assertEquals(1, pitchCount.getStrikeCnt());
         assertEquals(2, pitchCount.getBallCnt());
     }
 
 
     @Test
-    void 힌트_출력_검증() {
-        pitchCount.countStrikeBall(computerNumber, userNumberCorrect);
+    void 힌트_출력_검증_스트라이크() {
+        pitchCount.evaluateStrikeAndBall(computerNumber, userNumberCorrect);
         assertThat(pitchCount.getHint()).isEqualTo(3 + STRIKE.getMessage());
+    }
 
-        pitchCount.countStrikeBall(computerNumber, userNumberDifferent);
+
+    @Test
+    void 힌트_출력_검증_낫싱() {
+        pitchCount.evaluateStrikeAndBall(computerNumber, userNumberDifferent);
         assertThat(pitchCount.getHint()).isEqualTo(NOTHING.getMessage());
+    }
 
-        pitchCount.countStrikeBall(computerNumber, userNumberPartialMatch);
+
+    @Test
+    void 힌트_출력_검증_볼_스트라이크() {
+        pitchCount.evaluateStrikeAndBall(computerNumber, userNumberPartialMatch);
         assertThat(pitchCount.getHint()).isEqualTo(2 + BALL.getMessage() + " " + 1 + STRIKE.getMessage());
     }
 }
