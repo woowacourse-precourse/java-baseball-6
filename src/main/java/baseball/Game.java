@@ -1,12 +1,14 @@
 package baseball;
 
-    import java.util.ArrayList;
-    import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
-    import baseball.constant.NumberConst;
-    import baseball.util.MessageUtil;
+import baseball.constant.NumberConst;
+import baseball.util.MessageUtil;
 
-    import baseball.validation.InputValidator;
+import baseball.validation.InputValidator;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
     private static final int RESTART_NUMBER = NumberConst.RESTART_NUMBER; // 중지 목적 종료 숫자 확인
@@ -33,6 +35,14 @@ public class Game {
      */
     private List<Integer> createRandomNumber() {
         // TODO: 랜덤 숫자 생성 (3자리 수)
+        List<Integer> randomNumbers = new ArrayList<>();
+        while(randomNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9); // 1부터 9 랜덤 값 생성
+            if(!randomNumbers.contains(randomNumber)) { // 중복 값이 있는지 확인
+                randomNumbers.add(randomNumber); // 중복 값이 없을 경우 List Element 추가
+            }
+        }
+        return randomNumbers;
     }
 
     /*
@@ -43,5 +53,16 @@ public class Game {
      */
     private void updateBallAndStrikeCounts(List<Integer> user, List<Integer> computer) {
         // TODO: 입력받은 값과 생성한 랜덤 숫자 비교하여 Ball, Strike 개수 증가
+        for(int i = 0; i < INPUT_NUM_LENGTH; i++) {
+            int userNumber = user.get(i);
+            int computerNumber = computer.get(i);
+            if(userNumber == computerNumber) {
+                countStrike++;
+                continue;
+            }
+            if (computer.contains(userNumber)) {
+                countBall++;
+            }
+        }
     }
 }
