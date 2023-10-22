@@ -9,11 +9,11 @@ public enum ExceptionMessage {
     public static final String BASE_MESSAGE = "[ERROR] %s";
     private final String message;
 
-    ExceptionMessage(final String message, final Object... args) {
-        this.message = String.format(BASE_MESSAGE, String.format(message, args));
+    ExceptionMessage(final String message) {
+        this.message = String.format(BASE_MESSAGE, message);
     }
 
-    public String getMessage() {
-        return message;
+    public String format(final Object... args) {
+        return String.format(message, args);
     }
 }
