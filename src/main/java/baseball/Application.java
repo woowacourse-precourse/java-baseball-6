@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.controller.StateController;
-import baseball.model.ComputerModel;
 import baseball.view.OutputView;
 
 public class Application {

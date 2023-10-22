@@ -2,63 +2,66 @@ package baseball.controller;
 
 import baseball.exception.ExceptionCheck;
 import baseball.model.ComputerModel;
+import baseball.model.ScoreState;
 import baseball.random.RandomNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.Map;
 
 public class StateController {
-    public static final int GAME_STATE_RESTART = 1;
-    static final InputView inputview = new InputView();
-    static final OutputView outputView = new OutputView();
-    static final RandomNumber random = new RandomNumber();
-    static final ExceptionCheck exceptionCheck = new ExceptionCheck();
+    private static final int GAME_STATE_RESTART = 1;
 
     private ComputerModel computerModel;
 
     public void gameStart() {
-        this.computerModel = new ComputerModel(random.randomNumberGenerator());
+        this.computerModel = new ComputerModel(RandomNumber.randomNumberGenerator());
     }
 
     public boolean repeatPlayerExpect() {
-        Map<String, Integer> scoreMap;
-        String playerNumber = inputview.inputPlayerNumber();
+        Map<ScoreState, Integer> scoreMap;
+        String playerNumber = InputView.inputPlayerNumber();
 
-        exceptionCheck.playerInputCheck(playerNumber);
+        ExceptionCheck.playerInputCheck(playerNumber);
         scoreMap = computerModel.scoreCalculator(playerNumber);
         gameScoreCheck(scoreMap);
-        return scoreMap.get("strikeScore") == 3;
+        return scoreMap.get(ScoreState.STRIKE_SCORE) == 3;
     }
 
     public boolean gameStateChange() {
-        outputView.printRestartMessage();
+        OutputView.printRestartMessage();
 
-        String playerNumber = inputview.inputRestartNumber();
-        exceptionCheck.restartInputCheck(playerNumber);
+        String playerNumber = InputView.inputRestartNumber();
+        ExceptionCheck.restartInputCheck(playerNumber);
         return Integer.parseInt(playerNumber) == GAME_STATE_RESTART;
     }
 
-    public void gameScoreCheck(Map<String, Integer> scoreMap) {
-        int strikeScore = scoreMap.get("strikeScore");
-        int ballScore = scoreMap.get("ballScore");
-
-        if (strikeScore == 3) {
-            outputView.printStrikeScore(strikeScore);
-            outputView.printEndMessage();
-        }
-        if (strikeScore == 0 && ballScore == 0) {
-            outputView.printNothingScore();
-        }
+    private void ballStrikeScoreCheck(int strikeScore, int ballScore) {
         if (strikeScore > 0 && ballScore == 0) {
-            outputView.printStrikeScore(strikeScore);
+            OutputView.printStrikeScore(strikeScore);
         }
         if (strikeScore == 0 && ballScore > 0) {
-            outputView.printBallScore(ballScore);
+            OutputView.printBallScore(ballScore);
             System.out.println("");
         }
         if (strikeScore > 0 && ballScore > 0) {
-            outputView.printBallScore(ballScore);
-            outputView.printStrikeScore(strikeScore);
+            OutputView.printBallScore(ballScore);
+            OutputView.printStrikeScore(strikeScore);
+        }
+    }
+
+    private void gameScoreCheck(Map<ScoreState, Integer> scoreMap) {
+        int strikeScore = scoreMap.get(ScoreState.STRIKE_SCORE);
+        int ballScore = scoreMap.get(ScoreState.BALL_SCORE);
+
+        if (strikeScore == 3) {
+            OutputView.printStrikeScore(strikeScore);
+            OutputView.printEndMessage();
+        }
+        if (strikeScore == 0 && ballScore == 0) {
+            OutputView.printNothingScore();
+        }
+        if ((strikeScore > 0 || ballScore > 0) && strikeScore != 3) {
+            ballStrikeScoreCheck(strikeScore, ballScore);
         }
     }
 }
