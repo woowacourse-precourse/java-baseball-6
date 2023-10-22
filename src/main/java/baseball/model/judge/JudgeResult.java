@@ -1,6 +1,6 @@
 package baseball.model.judge;
 
-import baseball.util.StringConstant;
+import baseball.constant.StringConstant;
 
 public class JudgeResult {
 
@@ -30,21 +30,25 @@ public class JudgeResult {
         if (this.isNothing) {
             return NOTHING_TEXT;
         }
-        return toBallCountString() + System.lineSeparator() + toStrikeCountString();
+        return toBallCountString() + StringConstant.BLANK + toStrikeCountString();
     }
 
     private String toBallCountString() {
         if (this.ballCount.isZero()) {
             return StringConstant.EMPTY_STRING;
         }
-        return ballCount + BALL_TEXT;
+        return ballCount.getCount() + BALL_TEXT;
     }
 
     private String toStrikeCountString() {
         if (this.strikeCount.isZero()) {
             return StringConstant.EMPTY_STRING;
         }
-        return strikeCount + STRIKE_TEXT;
+        return strikeCount.getCount() + STRIKE_TEXT;
+    }
+
+    public boolean hasThreeStrikeCount() {
+        return this.strikeCount.hasThreeCount();
     }
 
 }
