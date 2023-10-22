@@ -19,8 +19,11 @@ public class OutputView {
         System.out.println(compareResult);
     }
 
-    public void printGameOverAndContinueMessage() {
+    public void printGameOverMessage() {
         System.out.println(GAME_OVER_MESSAGE);
+    }
+
+    public void printGameContinueMessage() {
         System.out.println(GAME_CONTINUE_MESSAGE);
     }
 }
