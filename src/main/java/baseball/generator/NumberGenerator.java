@@ -2,6 +2,6 @@ package baseball.generator;
 
 import java.util.List;
 
-public interface PitchGenerator {
+public interface NumberGenerator {
     List<Integer> generate();
 }

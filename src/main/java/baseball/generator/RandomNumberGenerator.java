@@ -6,14 +6,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomPitchGenerator implements PitchGenerator {
+public class RandomNumberGenerator implements NumberGenerator {
     @Override
     public List<Integer> generate() {
         List<Integer> pitches = new ArrayList<>();
         while (pitches.size() < 3) {
-            int randomPitch = Randoms.pickNumberInRange(GameConfig.MIN_NUMBER.getValue(), GameConfig.MAX_NUMBER.getValue());
-            if (!pitches.contains(randomPitch)) {
-                pitches.add(randomPitch);
+            int randomNumber = Randoms.pickNumberInRange(GameConfig.MIN_NUMBER.getValue(), GameConfig.MAX_NUMBER.getValue());
+            if (!pitches.contains(randomNumber)) {
+                pitches.add(randomNumber);
             }
         }
         return pitches;

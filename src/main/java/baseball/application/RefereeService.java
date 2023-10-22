@@ -3,12 +3,12 @@ package baseball.application;
 import baseball.domain.Pitch;
 import baseball.dto.Inning;
 import baseball.enums.GameConfig;
-import baseball.generator.PitchGenerator;
+import baseball.generator.NumberGenerator;
 
 public class RefereeService {
     private final Pitch computer;
 
-    public RefereeService(PitchGenerator pitchGenerator) {
+    public RefereeService(NumberGenerator pitchGenerator) {
         this.computer = new Pitch(pitchGenerator.generate());
     }
 
