@@ -10,6 +10,7 @@ public class Count {
 
     private void classInvariant(String number) {
         isThreeDigits(number);
+        isDigitsUnique(number);
     }
 
     private void isThreeDigits(String number) {
@@ -33,4 +34,16 @@ public class Count {
     public String toString() {
         return this.number;
     }
+
+
+    private void isDigitsUnique(String number){
+        char firstNumber = number.charAt(0);
+        char secondNumber = number.charAt(1);
+        char thirdNumber = number.charAt(2);
+        if(firstNumber == secondNumber || secondNumber == thirdNumber || firstNumber == thirdNumber){
+            throw new IllegalArgumentException("중복되지 않은 값을 입력하세요");
+        }
+
+    }
+
 }
