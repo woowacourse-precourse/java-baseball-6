@@ -16,13 +16,7 @@ public class Application {
         List<Integer> userArray = new ArrayList<>();        // 유저가 입력한 숫자 상태 배열
         List<Integer> computerArray = new ArrayList<>();    // 컴퓨터의 숫자 상태 배열
 
-        // 컴퓨터가 랜덤한 숫자를 선택
-        while (computerArray.size() < 3) {
-            int randomNumber = pickNumberInRange(1, 9);
-            if (!computerArray.contains(randomNumber)) {
-                computerArray.add(randomNumber);
-            }
-        }
+        computerArray = generateComputerNumbers();
 
         int strike = 0;
         int ball = 0;
@@ -81,19 +75,15 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 computerArray.clear();
-                
+
                 // 종료 단계 입력받기
                 String restartValue = Console.readLine();
 
                 // 입력 값에 따라 수행
                 if (restartValue.equals("1")) {
                     // 컴퓨터가 랜덤한 숫자를 선택
-                    while (computerArray.size() < 3) {
-                        int randomNumber = pickNumberInRange(1, 9);
-                        if (!computerArray.contains(randomNumber)) {
-                            computerArray.add(randomNumber);
-                        }
-                    }
+                    computerArray = generateComputerNumbers();
+
                 } else if (restartValue.equals("2")) {
                     break;
                 } else {
@@ -116,5 +106,17 @@ public class Application {
         }
 
         Console.close();
+    }
+
+    // 컴퓨터가 랜덤한 숫자를 선택
+    private static List<Integer> generateComputerNumbers() {
+        List<Integer> computerArray = new ArrayList<>();
+        while (computerArray.size() < 3) {
+            int randomNumber = pickNumberInRange(1, 9);
+            if (!computerArray.contains(randomNumber)) {
+                computerArray.add(randomNumber);
+            }
+        }
+        return computerArray;
     }
 }
