@@ -14,15 +14,15 @@ public class Data {
     private final List<String> ANSWERLIST = Arrays.asList("0", "0");
     private String willRestartResponse;
     private final String WILLRESTARTRESPONSE = "-1";
-    private boolean digitSizeError = false;
-    private final boolean DIGITSIZEERROR = false;
+    private boolean isNoError;
+    private final boolean ISNOERROR = true;
     private boolean isCompleteAnswer;
     private final boolean ISCOMPLETEANSWER = false;
 
     public Data() {
         this.randomNumberList = RANDOMNUMBERLIST;
         this.answerList = ANSWERLIST;
-        this.digitSizeError = DIGITSIZEERROR;
+        this.isNoError = ISNOERROR;
         this.willRestartResponse = WILLRESTARTRESPONSE;
         this.isCompleteAnswer = ISCOMPLETEANSWER;
     }
@@ -59,6 +59,10 @@ public class Data {
         return isCompleteAnswer;
     }
 
+    public boolean getIsNoError() {
+        return isNoError;
+    }
+
     public void setUserAnswerNumberList(List<String> userAnswerNumberList) {
         this.userAnswerNumberList = userAnswerNumberList;
     }
@@ -79,8 +83,8 @@ public class Data {
         this.willRestartResponse = willRestartResponse;
     }
 
-    public void setDigitSizeError(boolean digitSizeError) {
-        this.digitSizeError = digitSizeError;
+    public void setIsNoError(boolean noError) {
+        this.isNoError = noError;
     }
 
     public void setIsCompleteAnswer(boolean completeAnswer) {
