@@ -12,7 +12,6 @@ public class BaseballGameService {
 
     public void setComputerNumber() {
         this.computerNumber = new ComputerNumber().getNumber();
-        System.out.println(computerNumber);
     }
 
     public BaseballGameResult getGameResult(String input) {
