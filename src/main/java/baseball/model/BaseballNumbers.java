@@ -1,5 +1,6 @@
 package baseball.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumbers {
@@ -8,7 +9,7 @@ public class BaseballNumbers {
 
     public BaseballNumbers(List<BaseballNumber> baseballNumbers) {
         validateBaseballNumbers(baseballNumbers);
-        this.baseballNumbers = baseballNumbers;
+        this.baseballNumbers = new ArrayList<>(baseballNumbers);
     }
 
     private void validateBaseballNumbers(List<BaseballNumber> baseballNumbers) {
