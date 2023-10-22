@@ -12,6 +12,12 @@ public class ScoreCalculator {
                 .count();
     }
 
+    public Integer calculateBall(List<Integer> playerInput, List<Integer> answer) {
+        return (int) IntStream.range(0, answer.size())
+                .filter(index -> excludeStrike(playerInput, answer, index) && includeBall(playerInput, answer, index))
+                .count();
+    }
+
     private boolean excludeStrike(List<Integer> playerInput, List<Integer> answer, int index) {
         return !playerInput.get(index).equals(answer.get(index));
     }
