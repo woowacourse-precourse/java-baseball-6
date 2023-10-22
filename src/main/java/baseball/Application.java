@@ -18,17 +18,7 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            boolean continueFlag = true;
             startBaseballGame();
-            while (continueFlag) {
-                createComputerNumber();
-                while (strike != 3) {
-                    inputUserNumber();
-                    compareNumbers();
-                    printResult();
-                }
-                continueFlag = inputContinueOrExit();
-            }
         } catch (IllegalArgumentException e) {
             System.err.println("잘못된 값 입력: " + e.getMessage());
             throw e;
@@ -37,6 +27,16 @@ public class Application {
 
     public static void startBaseballGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean continueFlag = true;
+        while (continueFlag) {
+            createComputerNumber();
+            while (strike != 3) {
+                inputUserNumber();
+                compareNumbers();
+                printResult();
+            }
+            continueFlag = inputContinueOrExit();
+        }
     }
 
     public static void createComputerNumber() {
