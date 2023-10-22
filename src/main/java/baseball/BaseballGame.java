@@ -46,6 +46,17 @@ class BaseballGame{
     }
 
     public int countStrikes(){
+        int strikeNum = 0;
+        for(int idx = 0; idx < 3; idx++){
+            if(!computerNumbers.containsKey(userNumbers[idx])){
+                continue;
+            }
+
+            if(computerNumbers.get(userNumbers[idx]) == idx){
+                strikeNum++;
+            }
+        }
+        return strikeNum;
     }
 
     public int countBalls(){
