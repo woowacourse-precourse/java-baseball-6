@@ -1,10 +1,9 @@
 package baseball.view;
 
 public interface GameView {
-
-    void printStart();
     String getInputNumber();
     String getRestart();
+    void printStart();
     void printExit();
     void printBallScore(int score);
     void printStrikeScore(int score);

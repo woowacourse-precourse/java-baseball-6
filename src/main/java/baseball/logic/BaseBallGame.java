@@ -1,14 +1,14 @@
 package baseball.logic;
 
-import baseball.controller.PlayerController;
+import baseball.controller.PlayerControllerImpl;
 import baseball.view.GameView;
 
 public class BaseBallGame implements Game {
     private final GameView view;
-    private final PlayerController playerController;
+    private final PlayerControllerImpl playerController;
     private final int NUMBER_SIZE;
     private boolean running = true;
-    public BaseBallGame(GameView view, PlayerController playerController, int numberSize) {
+    public BaseBallGame(GameView view, PlayerControllerImpl playerController, int numberSize) {
         this.view = view;
         this.playerController = playerController;
         this.NUMBER_SIZE = numberSize;
@@ -25,16 +25,16 @@ public class BaseBallGame implements Game {
     public void start() {
         view.printStart();
         while(running){
-            playerController.resetComputer(NUMBER_SIZE);
             run();
             running = restart();
         }
     }
     @Override
     public void run(){
+        playerController.reset(NUMBER_SIZE);
         while(true){
             String userInput = view.getInputNumber();
-            checkValidate(userInput);
+            isValidate(userInput);
             int strike = getScore(userInput);
             if (strike == NUMBER_SIZE){
                 break;
@@ -45,7 +45,6 @@ public class BaseBallGame implements Game {
     @Override
     public void exit() {
         view.printExit();
-
     }
     public int getScore(String userInput){
         int strikeCount = playerController.getStrikeCount(userInput);
@@ -64,13 +63,11 @@ public class BaseBallGame implements Game {
         }
         return strikeCount;
     }
-
-    private String checkValidate(String userInput){
-        if (userInput.length() != NUMBER_SIZE || userInput.charAt(0) == userInput.charAt(1) ||
-                userInput.charAt(1) == userInput.charAt(2) || userInput.charAt(0) == userInput.charAt(2)){
+    private String isValidate(String userInput){
+        if (userInput.length() != NUMBER_SIZE || userInput.contains("0") ||
+                userInput.charAt(0) == userInput.charAt(1) || userInput.charAt(1) == userInput.charAt(2) || userInput.charAt(0) == userInput.charAt(2)){
             throw new IllegalArgumentException();
         }
         return userInput;
     }
-
 }
