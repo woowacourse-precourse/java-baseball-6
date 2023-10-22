@@ -25,7 +25,7 @@ public class SinglePlayerConsole implements Player {
             final IntStream numbers = Stream.of(stringNumbers.split("")).mapToInt(Integer::parseInt);
             return BaseBallNumbers.of(numbers);
         } catch (NumberFormatException | OutOfBaseBallNumbersSize | DuplicateBaseBallNumber e) {
-            throw new IllegalStateException(String.format("올바르지 않은 입력입니다. 서로 다른 3개의 숫자를 입력해주세요. %s", stringNumbers));
+            throw new IllegalArgumentException(String.format("올바르지 않은 입력입니다. 서로 다른 3개의 숫자를 입력해주세요. %s", stringNumbers));
         }
     }
 
