@@ -38,7 +38,7 @@ public class NumberBaseBall {
             getUserAnswer();
             getScore();
             printResultMsg(score.ballCount, score.strikeCount);
-            checkKeepPlaying(score.strikeCount);
+            checkKeepPlaying();
         }
     }
 
@@ -56,10 +56,10 @@ public class NumberBaseBall {
         userNumList = userAction.showNumberList();
     }
 
-    public void checkKeepPlaying(int strikeCount){
+    public void checkKeepPlaying(){
         userAction.clearAnswer();
 
-        if (strikeCount == MAX_STRIKES) {
+        if (score.strikeCount == MAX_STRIKES) {
             printGameEndMsg();
 
             userAction.inputRestartFactor();
