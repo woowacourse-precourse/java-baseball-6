@@ -30,7 +30,14 @@ public class JudgeResult {
         if (this.isNothing) {
             return NOTHING_TEXT;
         }
-        return toBallCountString() + StringConstant.BLANK + toStrikeCountString();
+        return toBallCountString() + parseToPrintFormat(toBallCountString()) + toStrikeCountString();
+    }
+
+    private String parseToPrintFormat(String source) {
+        if (source.equals(StringConstant.EMPTY_STRING)) {
+            return StringConstant.EMPTY_STRING;
+        }
+        return StringConstant.BLANK;
     }
 
     private String toBallCountString() {

@@ -33,6 +33,7 @@ public class GameManager {
         List<Integer> playerNumbers = playerIoManager.askThreeNumbers();
         JudgeResult judgeResult = baseballJudge.judge(new Ball(playerNumbers));
 
+        playerIoManager.notifyJudgeResult(judgeResult);
     }
 
 }

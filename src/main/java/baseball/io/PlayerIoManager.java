@@ -2,6 +2,7 @@ package baseball.io;
 
 import baseball.io.console.ConsoleReader;
 import baseball.io.console.ConsoleWriter;
+import baseball.model.judge.JudgeResult;
 import baseball.utils.NumberValidator;
 import java.util.List;
 
@@ -31,6 +32,10 @@ public class PlayerIoManager {
         NumberValidator.validateNotDuplicated(numbers);
 
         return numbers;
+    }
+
+    public void notifyJudgeResult(JudgeResult judgeResult) {
+        consoleWriter.printLine(judgeResult.toResultString());
     }
 
 }
