@@ -35,10 +35,12 @@ public class GameService {
     }
     public int countStrike(List<Integer> computer, List<Integer> user){
         int strike = 0;
-        for(int i = 0; i < user.size(); i++){
+        int i = 0;
+        while (i < user.size()) {
             if(computer.get(i).equals(user.get(i))){
                 strike ++;
             }
+            i++;
         }
         return strike;
     }
