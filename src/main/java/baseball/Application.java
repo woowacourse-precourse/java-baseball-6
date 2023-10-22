@@ -1,7 +1,20 @@
 package baseball;
 
+import baseball.domain.computer.Computer;
+import baseball.domain.game.Game;
+import baseball.domain.input.Input;
+import baseball.domain.output.Output;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        Output output = new Output();
+        Computer computer = new Computer();
+        Input input = new Input(computer);
+        Game game = new Game(input, computer, output);
+
+        output.printStartGameMessage();
+        game.startGame();
+
     }
 }
