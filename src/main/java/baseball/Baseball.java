@@ -42,7 +42,7 @@ public class Baseball {
         }
         Integer ballCount = answerNumber.getBallCount(userNumber);
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.println("낫싱");
+            OutputStatement.NOTHING.printOutput();
             return false;
         }
         printResult(ballCount, strikeCount);
