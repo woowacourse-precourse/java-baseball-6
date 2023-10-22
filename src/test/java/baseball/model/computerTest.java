@@ -1,43 +1,40 @@
 package baseball.model;
 
-import baseball.utils.NumberGenerator;
+import baseball.utils.RandomNumberGenerator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class computerTest {
 
-    @DisplayName("서로 다른 세 가지 수 생성 - 컴퓨터")
-    @Test
-    public void randomNumber_test() throws Exception {
-        //given
-        // generator로 랜덤 생성하는 수 주입
-        NumberGenerator numberGenerator = new NumberGenerator() {
-            private final Iterator<Integer> iterator = Arrays.asList(1, 2, 3).iterator();
+    private computer testComputer;
+
+    @DisplayName("예상 가능한 모의 객체 생성")
+    @BeforeEach
+    public void setUp() {
+        // Initialize with a mock random number generator that always generates the same sequence.
+        testComputer = new computer(new RandomNumberGenerator() {
+            int count = 0;
             @Override
             public int generateNumberInRange(int min, int max) {
-                return iterator.next();
+                return ++count; // Returns 1, then 2, then 3...
             }
-        };
+        });
+    }
 
-        computer computer = new computer(numberGenerator);
-        //when
-        computer.generate();
+    @DisplayName("생성된 모의 객체를 기반으로 테스트")
+    @Test
+    public void generate_numbersAreUnique() {
+        testComputer.generate();
 
-        List<Integer> generatedNumbers = computer.getComNumber();
-        List<Integer> expectedNumbers = Arrays.asList(1, 2, 3);
+        assertEquals(3, testComputer.getComNumber().size());
 
-        //then
-        assertEquals(expectedNumbers.size(), generatedNumbers.size());
-
-        for (Integer num : expectedNumbers){
-            assertTrue(generatedNumbers.contains(num));
-        }
-     } 
+        assertTrue(testComputer.getComNumber().contains(1));
+        assertTrue(testComputer.getComNumber().contains(2));
+        assertTrue(testComputer.getComNumber().contains(3));
+    }
   
 }
