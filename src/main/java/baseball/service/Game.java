@@ -34,23 +34,18 @@ public class Game {
     }
 
     public ArrayList<Integer> parsingInputNumber(String inputNumber){
-        // TODO : Parsing 쉽게 하는 방법 찾기; 예외 처리 Exception class 따로 만들어서 빼기
+        // 예외 처리 Exception class 고려해 보기
         if(inputNumber.length() != 3)
             throw new IllegalArgumentException();
         ArrayList<Integer> parsingNumber = new ArrayList<>();
-        for(int i = 0; i < inputNumber.length(); i++){
-            char parsedChar = inputNumber.charAt(i);
-            if(!(parsedChar > '0')){
+
+        for(char parsedChar : inputNumber.toCharArray()){
+            if(parsedChar < '1'){
                 throw new IllegalArgumentException();
             }
-            try{
-                int number = Integer.parseInt(String.valueOf(parsedChar));
-                parsingNumber.add(number);
-            }catch (NumberFormatException e){
-                System.out.println("Parsing error " + parsedChar);
-            }
+            int number = Character.getNumericValue(parsedChar);
+            parsingNumber.add(number);
         }
-
         return parsingNumber;
     }
 
