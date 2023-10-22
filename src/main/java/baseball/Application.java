@@ -1,7 +1,6 @@
 package baseball;
 
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
-
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -36,9 +35,19 @@ public class Application {
         }
     }
 
+    public List<Integer> setRandomNumber() {
+        List<Integer> list = new ArrayList<>();
+        while (list.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!list.contains(randomNumber)) {
+                list.add(randomNumber);
+            }
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
         Application app = new Application();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -46,17 +55,9 @@ public class Application {
         int retryNum = 1;
 
         while (retryNum == 1) {
-            // 컴퓨터 숫자 값 설정
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
-            // 사용자 입력 부분: break 되기 전까지 무조건 반복이므로 true 사용
+            List<Integer> computer = app.setRandomNumber();
+
             while (true) {
-                // 결과 출력 후 값 초기화 및 선언 일괄 처리 위해 반복문 하위에 작성
                 int strike = 0;
                 int ball = 0;
 
