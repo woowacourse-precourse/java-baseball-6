@@ -5,6 +5,7 @@ import static baseball.enums.NumbersEnum.MIN_VALUE;
 
 import baseball.enums.NumbersEnum;
 import baseball.exception.NumberRangeException;
+import java.util.Objects;
 
 public class Number {
 
@@ -32,6 +33,11 @@ public class Number {
 
         return this.number == otherNumber.showValue();
 
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.number);
     }
 
 

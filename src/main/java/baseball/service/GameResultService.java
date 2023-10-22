@@ -18,7 +18,7 @@ public class GameResultService {
             return message;
         }
         if (strike != 0 && ball != 0) {
-            message = String.format("%볼 %스트라이크", ball, strike);
+            message = String.format("%d볼 %d스트라이크", ball, strike);
             return message;
         }
         if (strike != 0) {

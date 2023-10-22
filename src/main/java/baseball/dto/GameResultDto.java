@@ -14,7 +14,7 @@ public class GameResultDto {
         return isEnd;
     }
     public String showMessage() {
-        return message;
+        return new String(message);
     }
 
 
