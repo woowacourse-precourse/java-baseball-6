@@ -14,6 +14,7 @@ public class Balls {
 
     public Balls(List<Ball> balls) {
         validateSize(balls);
+        validateDistinct(balls);
         this.balls = balls;
     }
 
@@ -26,6 +27,12 @@ public class Balls {
         }
 
         return new Balls(ballList);
+    }
+
+    private void validateDistinct(List<Ball> balls) {
+        if (balls.stream().distinct().count() < balls.size()) {
+            throw new IllegalArgumentException("숫자 3개는 서로 다른 숫자여야 합니다");
+        }
     }
 
     private void validateSize(List<Ball> balls) {

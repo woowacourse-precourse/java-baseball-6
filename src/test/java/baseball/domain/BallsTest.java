@@ -24,6 +24,20 @@ class BallsTest {
 
     }
 
+    @DisplayName("볼중 중복된 숫자가 있다면 예외 발생")
+    @Test
+    void validateDistinct() {
+        // given
+        List<Ball> ballList = new ArrayList<>();
+        ballList.add(new Ball(4, 0));
+        ballList.add(new Ball(5, 1));
+        ballList.add(new Ball(4, 2));
+
+        // when, then
+        assertThatThrownBy(() -> new Balls(ballList))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("다른 Balls와 비교해서 스트라이크 개수 찾기")
     @Test
     void countStrike() {
