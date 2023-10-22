@@ -1,21 +1,26 @@
 package baseball.view;
 
 import baseball.controller.BaseballGame;
+import baseball.controller.Foul;
 import camp.nextstep.edu.missionutils.Console;
 
 //유저에게 보이는 UI를 제공하고 입력 받음
 public class BaseballStadium {
+
+    static Foul foul = new Foul();
     static String start = "1";
     static String result = "";
 
     public static void run(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         while (start.equals("1")){
             BaseballGame.pitcherPitch();
             while(!result.equals("3스트라이크")){
-                result = BaseballGame.compareNumbers(inputNum());
+                result = BaseballGame.compareNumbers(foul.validateInput(inputNum()));
                 System.out.println(result);
             }
+            
             result = "";
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             start = continewGame();
