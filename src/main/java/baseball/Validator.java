@@ -11,6 +11,9 @@ public class Validator {
         if (!isNumberType(input)) {
             throw new IllegalArgumentException("숫자 이외의 값은 입력할 수 없습니다.");
         }
+        if (isContainingZero(input)) {
+            throw new IllegalArgumentException("0은 입력할 수 없습니다.");
+        }
     }
 
     private boolean isContainingZero(String input) {
