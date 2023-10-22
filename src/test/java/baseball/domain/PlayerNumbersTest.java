@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.domain.numbers.PlayerNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +34,4 @@ class PlayerNumbersTest {
         PlayerNumbers numbers = new PlayerNumbers(List.of(1, 2, 3));
         assertDoesNotThrow(() -> new PlayerNumbers(List.of(1, 2, 3)));
     }
-
-
 }
