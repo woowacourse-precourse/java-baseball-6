@@ -14,6 +14,7 @@ public class Application {
                     game.getUserInt();
                     game.printResult();
                 }
+                game.getUserChoice();
                 isFinished = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(e);

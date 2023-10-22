@@ -77,6 +77,11 @@ public class Game {
             isSolved = true;
     }
 
+    public void getUserChoice() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Console.readLine();
+    }
+
     private void validateUserInt(String input) {
         if (input.length() != randomLength) {
             throw new IllegalArgumentException("input has to be 3 digits.");
