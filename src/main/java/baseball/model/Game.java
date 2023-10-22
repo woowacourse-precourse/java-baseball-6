@@ -17,14 +17,14 @@ public class Game {
 
     public JudgeResult judge(BaseballNumbers userBaseballNumbers) {
         JudgeResult result = new JudgeResult();
-        List<BaseballNumber> computerBasballNumberList = computerBaseballNumbers.getBaseballNumbers();
+        List<BaseballNumber> computerBaseballNumberList = computerBaseballNumbers.getBaseballNumbers();
         List<BaseballNumber> userNumberList = userBaseballNumbers.getBaseballNumbers();
         for (int userNumberIdx = 0; userNumberIdx < BaseballNumbers.NUMBERS_LENGTH; userNumberIdx++) {
             BaseballNumber userNumber = userNumberList.get(userNumberIdx);
-            if (isStrike(computerBasballNumberList, userNumber, userNumberIdx)) {
+            if (isStrike(computerBaseballNumberList, userNumber, userNumberIdx)) {
                 result.strike();
             }
-            if (isBall(computerBasballNumberList, userNumber, userNumberIdx)) {
+            if (isBall(computerBaseballNumberList, userNumber, userNumberIdx)) {
                 result.ball();
             }
         }
