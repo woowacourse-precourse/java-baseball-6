@@ -36,7 +36,6 @@ public class GamePlaying {
         return 0;
     }
 
-
     private int findStrike(int strike) {
         for (int i = 0; i < 3; i++) {
             strike += isSame(i);
@@ -44,9 +43,15 @@ public class GamePlaying {
         return strike;
     }
 
-    private int findBall() {
-
-
+    private int findBall(int ball) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i != j && computerNumber.get(i) == playerNumber.get(j)) {
+                    ball += 1;
+                }
+            }
+        }
+        return ball;
     }
 
 }
