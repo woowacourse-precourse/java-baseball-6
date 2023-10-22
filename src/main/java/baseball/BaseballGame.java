@@ -33,6 +33,7 @@ public class BaseballGame {
                 countBallandStrike();
                 printBallandStrike();
 
+
             }while(!isThreeStrike);
 
         }catch (IllegalArgumentException e){
