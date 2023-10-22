@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
 
 public class ShootBall {
     private int[] numbers;
@@ -8,6 +10,17 @@ public class ShootBall {
     //TODO:생성자 구현 -23.10.22
     ShootBall() {
         numbers = new int[10];
+    }
+
+    //TODO:(3)번 기능 구현 -23.10.22
+    public void inputNumGenerator(){
+        String input = Console.readLine();
+        validNumInspect(input);
+        int input_num;
+        for(int i=0;i<3;i++){
+            input_num = input.charAt(i) - '0';
+            numbers[input_num]= i+1;
+        }
     }
 
     //TODO:(2)번 기능 구현 -23.10.22
@@ -19,7 +32,6 @@ public class ShootBall {
         }
     }
 
-    //TODO:(3)번 기능 구현 -23.10.22
 
     //TODO:(4)번 기능 구현 -23.10.22
     private void validNumInspect(String input){
