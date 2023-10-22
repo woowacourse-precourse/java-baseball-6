@@ -5,17 +5,28 @@ import java.util.List;
 public class Game {
 
     private final int LENGTH = 3;
+    private static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private int ball;
     private int strike;
+    private boolean flag;
 
     public void playBaseballGame() {
         ComputerNumber computer = new ComputerNumber();
-        Player player = new Player();
-        player.setPlayerNumbers();
+        System.out.println(computer.getComputerNumbers());
+        this.flag = true;
+        while (flag) {
+            Player player = new Player();
+            player.setPlayerNumbers();
 
-        initializeCount();
+            initializeCount();
 
-        checkBallAndStrike(computer.getComputerNumbers(), player.getPlayerNumbers());
+            checkBallAndStrike(computer.getComputerNumbers(), player.getPlayerNumbers());
+
+            if (this.strike == LENGTH) {
+                this.flag = false;
+                System.out.println(SUCCESS_MESSAGE);
+            }
+        }
 
     }
 

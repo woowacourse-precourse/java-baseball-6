@@ -12,7 +12,7 @@ public class Player {
 
     private final int MAX_LENGTH = 3;
     private final String INITIAL_MESSAGE = "숫자를 입력해주세요 : ";
-    private final String NUMBERS_LENGTH_ERROR = "숫자는 3개만 입력해주세요.";
+    private final String NUMBERS_LENGTH_ERROR = "3개의 수를 입력해주세요.";
     private final String DUPLICATE_NUMBER_ERROR = "중복된 숫자는 허용되지 않습니다.";
     private final String NOT_NUMBER_ERROR = "숫자만 입력해주세요.";
     private static final Pattern PLAYER_REGEX = Pattern.compile("[1-9]{3,3}");
