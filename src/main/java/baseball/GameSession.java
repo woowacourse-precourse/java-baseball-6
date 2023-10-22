@@ -12,7 +12,7 @@ public class GameSession {
 
     public void initializeGameSession(){
         computerNumbers = gameSession.makeComputerNumbers();
-        outputView.printStart();
+        outputView.printStartMessage();
     }
 
     public boolean playGameSession(){
@@ -31,7 +31,7 @@ public class GameSession {
         List<Integer> strikeBall = resultGenerator.makeResult(userNumbers, computerNumbers);
         int strike = strikeBall.get(0); //TODO : strike, ball 객체로 빼기
         int ball = strikeBall.get(1);
-        outputView.printResult(strike,ball);
+        outputView.printResultMessage(strike,ball);
         return strike == 3;
     }
 
@@ -57,7 +57,7 @@ public class GameSession {
     private int obtainValidUserChoice() {
         while(true){
             try{
-                outputView.printEnd();
+                outputView.printEndMessage();
                 String userInput= user.getUserInput();
                 validateUserChoice(userInput);
                 return user.getRestartChoice(userInput);
