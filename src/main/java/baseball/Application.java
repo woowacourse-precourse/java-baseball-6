@@ -13,7 +13,7 @@ public class Application {
         String inputString;
         try {
             inputString = readLine();
-        } catch (Exception e) {
+        } catch (Throwable e) {
             throw new IllegalArgumentException();
         }
         return inputString;
