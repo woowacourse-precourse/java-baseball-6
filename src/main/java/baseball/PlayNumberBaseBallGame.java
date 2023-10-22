@@ -2,15 +2,14 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static baseball.Constant.*;
 import static baseball.Notification.*;
 import static baseball.NumberGenerator.generateAnswerNumbers;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class PlayNumberBaseBallGame {
 
-    private static Scanner scanner = new Scanner(System.in);
     private static int strike;
     private static int ball;
 
@@ -20,7 +19,7 @@ public class PlayNumberBaseBallGame {
         while(gameStatus.equals(RESTART_GAME)){
             playGame(generateAnswerNumbers());
             System.out.println(RESTART_OR_STOP_GAME);
-            gameStatus = scanner.next();
+            gameStatus = readLine();
             Validator.checkEndOrRestart(gameStatus);
         }
     }
@@ -36,7 +35,7 @@ public class PlayNumberBaseBallGame {
     }
 
     private static List<Integer> getPlayerAnswer() {
-        String playerAnswer = scanner.next();
+        String playerAnswer = readLine();
         /* 입력으로 받으면 안 되는 예외 사항 총 처리 */
         Validator.checkAllException(playerAnswer);
 
