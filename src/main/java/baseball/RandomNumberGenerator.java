@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Constants.*;
+import static baseball.constant.GameConstants.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

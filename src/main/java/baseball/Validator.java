@@ -1,7 +1,8 @@
 package baseball;
 
-import static baseball.Constants.*;
+import static baseball.constant.GameConstants.*;
 
+import baseball.constant.GameStatus;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -14,7 +15,8 @@ public class Validator {
     }
 
     void continueInput(String inputContinue) throws IllegalArgumentException {
-        if (!inputContinue.equals(CONTINUE) && !inputContinue.equals(Constants.STOP)) {
+        if (!inputContinue.equals(GameStatus.CONTINUE.getStatus()) && !inputContinue.equals(
+                GameStatus.STOP.getStatus())) {
             throw new IllegalArgumentException(ERROR_INVALID_CONTINUE_INPUT);
         }
     }

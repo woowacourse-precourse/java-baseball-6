@@ -1,9 +1,9 @@
 package baseball;
 
 import static baseball.BaseballGameView.*;
-import static baseball.Constants.CONTINUE;
-import static baseball.Constants.MAX_NUMBER_LENGTH;
+import static baseball.constant.GameConstants.MAX_NUMBER_LENGTH;
 
+import baseball.constant.GameStatus;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,7 +52,7 @@ public class NumberBaseballGame {
                 .boxed()
                 .collect(Collectors.toList());
     }
-    
+
     boolean isUserWin(int strike) {
         return strike == MAX_NUMBER_LENGTH;
     }
@@ -81,6 +81,6 @@ public class NumberBaseballGame {
         showGameContinueInputMessage();
         String inputContinue = Console.readLine();
         validator.continueInput(inputContinue);
-        return inputContinue.equals(CONTINUE);
+        return inputContinue.equals(GameStatus.CONTINUE.getStatus());
     }
 }
