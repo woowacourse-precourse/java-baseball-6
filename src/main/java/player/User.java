@@ -4,25 +4,16 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User implements BaseballPlayer {
-
-    BaseballNumbers baseballNumbers;
-
+public class User extends BaseballPlayer {
     @Override
     public void inputBaseballNumbers() {
         List<BaseballNumber> playerInputBaseballNumber = new ArrayList<>();
         String[] playerInput = Console.readLine().split("");
 
         for (String inputNumber : playerInput) {
-            BaseballNumber baseballNumber = new BaseballNumber(inputNumber);
-            playerInputBaseballNumber.add(baseballNumber);
+            playerInputBaseballNumber.add(new BaseballNumber(inputNumber));
         }
 
-        baseballNumbers = new BaseballNumbers(playerInputBaseballNumber);
-    }
-
-    @Override
-    public BaseballNumbers getBaseballNumbers() {
-        return this.baseballNumbers;
+        super.baseballNumbers = new BaseballNumbers(playerInputBaseballNumber);
     }
 }

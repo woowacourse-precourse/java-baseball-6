@@ -1,8 +1,12 @@
 package player;
 
-public interface BaseballPlayer {
+public abstract class BaseballPlayer {
 
-    void inputBaseballNumbers();
+    BaseballNumbers baseballNumbers;
 
-    BaseballNumbers getBaseballNumbers();
+    public abstract void inputBaseballNumbers();
+
+    public BaseballNumbers getBaseballNumbers() {
+        return this.baseballNumbers;
+    }
 }
