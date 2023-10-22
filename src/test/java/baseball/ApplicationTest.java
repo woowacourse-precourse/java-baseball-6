@@ -288,5 +288,61 @@ class ApplicationTest extends NsTest {
         assertThat(resultCount2).isEqualTo(expectCount2);
     }
 
+    //initializeComputerNumber메서드를 테스트할 방법은?
+    @Test
+    void isContinueGame_문자열이_1이라면_참을_2라면_거짓을_리턴() {
+        //given
+        String testString1 = "1";
+        String testString2 = "2";
+        BaseballService baseballService = new BaseballService();
+        boolean expectBoolean1 = true;
+        boolean expectBoolean2 = false;
+        //when
+        boolean result1 = baseballService.isContinueGame(testString1);
+        boolean result2 = baseballService.isContinueGame(testString2);
+        //then
+        assertThat(result1).isEqualTo(expectBoolean1);
+        assertThat(result2).isEqualTo(expectBoolean2);
+    }
+
+    @Test
+    void compareBaseballNumber_BaseballNumber값들의_비교로_알맞은_BaseballCount_리턴() {
+        //given
+        BaseballNumber baseballNumber1 = new BaseballNumber("123");
+        BaseballNumber baseballNumber2 = new BaseballNumber("325");
+        BaseballScore expectBaseballScore1 = new BaseballScore(1, 1);
+        BaseballScore expectBaseballScore2 = new BaseballScore(0, 2);
+        BaseballScore resultBaseballScore = BaseballNumber.compareNumber(baseballNumber1, baseballNumber2);
+
+        //when
+        boolean isBaseballScoreEqual1 = BaseballScore.isBaseballScoreEqual(expectBaseballScore1, resultBaseballScore);
+        boolean isBaseballScoreEqual2 = BaseballScore.isBaseballScoreEqual(expectBaseballScore2, resultBaseballScore);
+        //then
+        assertThat(isBaseballScoreEqual1).isTrue();
+        assertThat(isBaseballScoreEqual2).isFalse();
+    }
+    @Test
+    void 출력문테스트() {
+        System.out.println("안녕하세요");
+        assertThat(output()).contains("안녕");
+        assertThat(output()).doesNotContain("안녕해");
+    }
+    @Test
+    void compareBaseballNumber_출력문을_사용해서_BaseballNumber값들의_비교로_알맞은_BaseballCount_리턴() {
+        //given
+        BaseballNumber baseballNumber1 = new BaseballNumber("123");
+        BaseballNumber baseballNumber2 = new BaseballNumber("325");
+        BaseballScore expectBaseballScore1 = new BaseballScore(1, 1);
+        String expectOutput1 = "1볼 1스트라이크";
+        String expectOutput2 = "2스트라이크";
+        BaseballScore resultBaseballScore = BaseballNumber.compareNumber(baseballNumber1, baseballNumber2);
+        //when
+        resultBaseballScore.printBaseballScore();
+        //then
+        assertThat(output()).contains(expectOutput1);
+        assertThat(output()).doesNotContain(expectOutput2);
+    }
+
+
 
 }
