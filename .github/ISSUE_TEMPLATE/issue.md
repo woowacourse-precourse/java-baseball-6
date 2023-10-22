@@ -1,6 +1,6 @@
 ---
-name: FEATURE
-about: Feature 작업 사항 입력
+name: ISSUE
+about: 'Description : Type of commit / write ToDo'
 title: ''
 labels: ''
 assignees: ''
