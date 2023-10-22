@@ -7,6 +7,8 @@ import java.util.*;
 
 public class BaseballGame {
     private final int NUMBER_LENGTH = 3;
+    private final String RESTART_GAME = "1";
+    private final String END_GAME = "2";
     public void run(){
         printGameStart();
         List<Integer> randomNum = initRandomNum();
@@ -142,9 +144,17 @@ public class BaseballGame {
     private int inputGameEnd(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String endOptionInputString = Console.readLine();
-//        checkEndForm(endOptionInputString);
+        checkEndForm(endOptionInputString);
 
         return Integer.valueOf(endOptionInputString);
     }
-    
+
+    private void checkEndForm(String endOption){
+        if(!isInteger(endOption)){
+            throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
+        }
+        if (!endOption.equals(RESTART_GAME) && !endOption.equals(END_GAME)) {
+            throw new IllegalArgumentException("1 또는 2만 입력해야합니다.");
+        }
+    }
 }
