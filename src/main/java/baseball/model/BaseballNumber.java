@@ -1,6 +1,5 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Objects;
 
 public class BaseballNumber {
@@ -20,15 +19,6 @@ public class BaseballNumber {
                     "[ERROR] 숫자가 " + MIN_BASEBALL_NUMBER + "~" + MAX_BASEBALL_NUMBER + " 사이가 아닙니다."
             );
         }
-    }
-
-    public static int getBaseballNumberValue(BaseballNumber baseballNumber) {
-        return baseballNumber.baseballNumber;
-    }
-
-    public static BaseballNumber getRandomBaseballNumber() {
-        int randomNumber = Randoms.pickNumberInRange(MIN_BASEBALL_NUMBER, MAX_BASEBALL_NUMBER);
-        return new BaseballNumber(randomNumber);
     }
 
     @Override
