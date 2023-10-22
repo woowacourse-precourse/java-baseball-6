@@ -4,7 +4,7 @@ import baseball.message.Message;
 import baseball.common.RandomNumberGenerator;
 import baseball.engine.manager.Referee;
 import baseball.console.Prompt;
-import baseball.engine.dto.Status;
+import baseball.engine.dto.BaseBallStatus;
 import baseball.mapper.BaseBallGameMapper;
 import baseball.validator.Validator;
 import java.util.List;
@@ -36,10 +36,10 @@ public class BaseBallGame {
             String playerInput = prompt.input();
             validator.verifyForBaseballNumber(playerInput);
             List<Integer> verifiedInput = baseBallGameMapper.toList(playerInput);
-            Status judgedStatus = referee.judge(verifiedInput, randomNumbers);
-            prompt.print(judgedStatus::getResult);
+            BaseBallStatus judgedBaseBallStatus = referee.getStrikeAndBallCount(verifiedInput, randomNumbers);
+            prompt.print(judgedBaseBallStatus::getResult);
 
-            if (judgedStatus.isAllStrike()) {
+            if (judgedBaseBallStatus.isAllStrike()) {
                 prompt.print(SystemMessage.ALL_STRIKE);
                 prompt.print(SystemMessage.ASK_AGAIN);
 

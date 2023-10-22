@@ -1,6 +1,6 @@
 package baseball.engine.manager;
 
-import baseball.engine.dto.Status;
+import baseball.engine.dto.BaseBallStatus;
 import java.util.List;
 
 public class Referee {
@@ -8,7 +8,7 @@ public class Referee {
     public Referee() {
     }
 
-    public Status judge(List<Integer> userNumbers, List<Integer> randomNumbers) {
+    public BaseBallStatus getStrikeAndBallCount(List<Integer> userNumbers, List<Integer> randomNumbers) {
         int strike = 0;
         int ball = 0;
 
@@ -23,6 +23,6 @@ public class Referee {
             }
         }
 
-        return new Status(strike, ball);
+        return new BaseBallStatus(strike, ball);
     }
 }
