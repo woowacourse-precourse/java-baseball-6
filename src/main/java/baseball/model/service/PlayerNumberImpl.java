@@ -2,6 +2,7 @@ package baseball.model.service;
 
 import static baseball.model.constants.Constant.NUMBER_MAX_VALUE;
 import static baseball.model.constants.Constant.NUMBER_MIN_VALUE;
+import static baseball.model.constants.Constant.NUMBER_SIZE;
 import static baseball.model.constants.ExceptionMessage.LENGTH_IS_WRONG;
 import static baseball.model.constants.ExceptionMessage.NOT_NUMBER;
 import static baseball.model.constants.ExceptionMessage.NUMBER_DUPLICATED;
@@ -23,7 +24,7 @@ public class PlayerNumberImpl implements PlayerNumber {
 
     @Override
     public void isLengthCorrect(List<Integer> convertNumbers) {
-        if (convertNumbers.size() != 3) {
+        if (convertNumbers.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException(LENGTH_IS_WRONG);
         }
     }
@@ -40,7 +41,7 @@ public class PlayerNumberImpl implements PlayerNumber {
     @Override
     public void isDuplicate(List<Integer> convertNumbers) {
         Set<Integer> numbers = new HashSet<>(convertNumbers);
-        if (numbers.size() != 3) {
+        if (numbers.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException(NUMBER_DUPLICATED);
         }
     }
