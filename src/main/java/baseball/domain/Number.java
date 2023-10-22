@@ -17,6 +17,10 @@ public class Number {
         }
     }
 
+    public boolean isSameNumber(Number inputNumber) {
+        return inputNumber.number == this.number;
+    }
+
     public int getNumber() {
         return number;
     }
