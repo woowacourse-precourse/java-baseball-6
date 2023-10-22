@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    final static int COMPUTER_NUMBER_LENGTH = 3;
-    final static int COMPUTER_NUMBER_MINIMUM = 1;
-    final static int COMPUTER_NUMBER_MAXIMUM = 9;
+    private static final int COMPUTER_NUMBER_LENGTH = 3;
+    private static final int COMPUTER_NUMBER_MINIMUM = 1;
+    private static final int COMPUTER_NUMBER_MAXIMUM = 9;
     private List<Integer> computerNumber = new ArrayList<>();
 
     public void createComputerNumber() {
