@@ -10,24 +10,27 @@ public class BaseballGame {
     private final String RESTART_GAME = "1";
     private final String END_GAME = "2";
     public void run(){
-        printGameStart();
-
-        List<Integer> randomNum;
-        List<Integer> userNum;
-        Map<String, Integer> result;
         int userEndOption;
 
+        printGameStart();
         do {
-            randomNum = initRandomNum();
-            do {
-                userNum = inputUserNum();
-                result = countStrikeAndBall(userNum, randomNum);
-                printGameResult(result);
-            } while (!isAllStrike(result));
-
+            playGame();
             userEndOption = inputGameEnd();
         }while(!checkGameEnd(userEndOption));
 
+    }
+
+    private void playGame(){
+        List<Integer> randomNum;
+        List<Integer> userNum;
+        Map<String, Integer> result;
+
+        randomNum = initRandomNum();
+        do {
+            userNum = inputUserNum();
+            result = countStrikeAndBall(userNum, randomNum);
+            printGameResult(result);
+        } while (!isAllStrike(result));
     }
 
     private void printGameStart(){
