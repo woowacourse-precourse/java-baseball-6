@@ -2,19 +2,16 @@ package baseball.controller;
 
 import baseball.domain.Balls;
 import baseball.domain.NumberGenerator;
+import baseball.domain.ResponseStatus;
 import baseball.domain.RoundResult;
 
-import static baseball.view.InputView.RestartOrEnd;
-import static baseball.view.InputView.userInputNumber;
+import static baseball.view.InputView.*;
 import static baseball.view.OutputView.printRoundResult;
 import static baseball.view.OutputView.startMessage;
 
 public class BaseballGameController {
 
     private static final NumberGenerator numberGenerator = new NumberGenerator();
-
-    private static final int RESTART = 1;
-    private static final int END = 2;
 
     private Balls targetNumber;
 
@@ -39,14 +36,12 @@ public class BaseballGameController {
     }
 
     private boolean checkRestart() {
-        int restartResponse = RestartOrEnd();
+        ResponseStatus restartResponse = inputRestartOrEnd();
 
-        if (restartResponse == END) {
-            return false;
-        }
-        if (restartResponse == RESTART) {
+        if (restartResponse == ResponseStatus.RESTART) {
             return true;
         }
-        throw new IllegalArgumentException();
+
+        return false;
     }
 }

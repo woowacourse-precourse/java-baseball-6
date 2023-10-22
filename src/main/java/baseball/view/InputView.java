@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.domain.Balls;
+import baseball.domain.ResponseStatus;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -15,9 +16,8 @@ public class InputView {
         return Balls.create(readLine());
     }
 
-    public static int RestartOrEnd() {
+    public static ResponseStatus inputRestartOrEnd() {
         System.out.println(END_MESSAGE + RESTART_OR_END_MESSAGE);
-        return Integer.parseInt(readLine());
+        return ResponseStatus.from(readLine());
     }
-
 }
