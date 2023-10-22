@@ -13,6 +13,28 @@ import org.junit.jupiter.api.Test;
 class ApplicationTest extends NsTest {
 
     @Test
+    void isNotOver() {
+        // given
+        Core core = new Core();
+        int case1 = 0;
+        int case2 = 1;
+        int case3 = 2;
+        int case4 = 3;
+
+        // when
+        boolean result1 = core.isNotOver(case1);
+        boolean result2 = core.isNotOver(case2);
+        boolean result3 = core.isNotOver(case3);
+        boolean result4 = core.isNotOver(case4);
+
+        // then
+        assertThat(true).as("nothing").isEqualTo(result1);
+        assertThat(true).as("1 strike").isEqualTo(result3);
+        assertThat(true).as("2 strike").isEqualTo(result2);
+        assertThat(false).as("3 strike").isEqualTo(result4);
+    }
+
+    @Test
     void countBall() {
         // given
         Core core = new Core();
