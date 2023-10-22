@@ -1,22 +1,20 @@
 package baseball;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
     public void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public String getUserInput() throws IOException {
+    public String getUserInput(){
         System.out.print("숫자를 입력해주세요 : ");
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        return bf.readLine();
+        return Console.readLine();
     }
 
     public boolean showResult(Game model){
         if(model.getStrikes() == 3){
+            System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
@@ -27,14 +25,17 @@ public class GameView {
             if(model.getStrikes() != 0){
                 System.out.print(model.getStrikes() + "스트라이크 ");
             }
+            if(model.getBalls() == 0 && model.getStrikes() == 0){
+                System.out.print("낫싱");
+            }
+            System.out.println();
         }
         return false;
     }
 
-    public boolean playAgain() throws IOException {
+    public boolean playAgain(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        String result = bf.readLine();
+        String result = Console.readLine();
         if(result.equals("1")) return true;
         return false;
     }

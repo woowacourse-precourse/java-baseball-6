@@ -43,6 +43,14 @@ public class Game {
         this.userNumber = userNumber;
     }
 
+    public void setStrikes(){
+        this.strikes = 0;
+    }
+
+    public void setBalls(){
+        this.balls = 0;
+    }
+
     public int getStrikes(){
         return this.strikes;
     }
