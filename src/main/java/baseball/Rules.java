@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class Rules {
+public class Rules {    // 볼, 스트라이크 개수 규칙 관련 클래스
 
     private int balls;
     private int strikes;
@@ -24,10 +24,10 @@ public class Rules {
             if (!com.contains(userNum)) {
                 continue;
             }
-            if (userNum.equals(com.get(c_idx)) && c_idx == u_idx) {
-                strikes++;
-            } else if (userNum.equals(com.get(c_idx)) && c_idx != u_idx) {
+            if (userNum.equals(com.get(c_idx)) && c_idx != u_idx) {
                 balls++;
+            } else if (userNum.equals(com.get(c_idx)) && c_idx == u_idx) {
+                strikes++;
             }
         }
     }
@@ -44,6 +44,7 @@ public class Rules {
     public void printIfNotAnswer() {
         hasNothing();
         hasBallOrStrike();
+        System.out.println();
     }
 
     private void hasNothing() {
@@ -59,6 +60,5 @@ public class Rules {
         if (strikes > 0) {
             System.out.print(strikes + "스트라이크");
         }
-        System.out.println();
     }
 }
