@@ -22,6 +22,13 @@
 - [x] ❗️ 3자리의 숫자 중 중복 숫자가 있을 경우 예외처리 한다. - [GameNumbers](#GameNumbers)#validateDuplicate()
 - [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
+### 사용자 재시작 여부 입력 기능
+
+게임을 시작할 지, 끝낼 지 여부를 사용자로부터 입력받는 기능을 구현한다. - [InputView](#InputView)#inputPositiveNumber()
+
+- [x] ❗️ 1, 2 숫자 외의 다른 입력을 받을 경우 예외처리 한다. - [Status](#Status)#from()
+- [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
+
 ## 숫자 비교 및 판단 기능
 
 사용자의 입력과 랜덤 생성 숫자를 비교하는 기능을 구현한다. - [Game](#Game)#judgeNumberAt()
@@ -81,6 +88,10 @@
 ## [Result](../src/main/java/baseball/model/Result.java)
 
 - 야구 게임의 결과를 저장한다.
+
+## [Status](../src/main/java/baseball/model/Status.java)
+
+- 야구 게임 재시작/종료 상태를 저장한다.
 
 ## [InputView](../src/main/java/baseball/view/InputView.java)
 
