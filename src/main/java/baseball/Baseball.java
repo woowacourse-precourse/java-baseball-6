@@ -5,56 +5,62 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Baseball {
-    ArrayList<Integer> computerNumber;
-    ArrayList<Integer> userNumber;
+    ArrayList<Integer> computerNumbers;
+    ArrayList<Integer> userNumbers;
     int ball;
     int strike;
 
-    Baseball() {
-        this.ball = 0;
-        this.strike = 0;
-    }
-
-    void resetComputerNumber() {
-        computerNumber = new ArrayList<Integer>();
-        while(computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!computerNumber.contains(randomNumber))
-                computerNumber.add(randomNumber);
+    private void resetComputerNumber() {
+        computerNumbers = new ArrayList<Integer>();
+        while(computerNumbers.size() < 3) {
+            addComputerNumber();
         }
     }
 
-    void resetUserNumber(String inputNumber) throws IllegalArgumentException {
-        userNumber = new ArrayList<Integer>();
+    private void addComputerNumber() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if(!computerNumbers.contains(randomNumber))
+            computerNumbers.add(randomNumber);
+    }
+
+    private void resetUserNumber(String inputNumber) {
+        userNumbers = new ArrayList<Integer>();
         String[] inputNumberArray = inputNumber.split("");
-        for(String s : inputNumberArray) {
-            int addNumber = Integer.valueOf(s).intValue();
-            // 입력 예외 처리
-            if(userNumber.contains(addNumber) || userNumber.size() + 1 > 3) {
-                throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
-            }
-            userNumber.add(addNumber);
+        for(String str : inputNumberArray) {
+            addUserNumber(str);
         }
     }
 
-    void checkStrike() {
-        strike = 0; ball = 0;
-        for(int i = 0; i < computerNumber.size(); i++) {
-            if(computerNumber.get(i) == userNumber.get(i)) {
-                strike++;
-            } else {
-                checkBall(userNumber.get(i));
-            }
+    private void addUserNumber(String str) throws IllegalArgumentException {
+        int addNumber = Integer.valueOf(str).intValue();
+        if(userNumbers.contains(addNumber) || userNumbers.size() + 1 > 3) {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
         }
+        userNumbers.add(addNumber);
     }
 
-    void checkBall(int i) {
-        if(computerNumber.contains(i)) {
+    private void playGame() {
+        strike = 0;
+        ball = 0;
+        for(int i = 0; i < computerNumbers.size(); i++) {
+            checkStrike(i);
+            checkBall(i);
+        }
+    }
+    private void checkStrike(int idx) {
+        if(computerNumbers.get(idx) == userNumbers.get(idx)) {
+            strike++;
+        }
+    }
+    private void checkBall(int idx) {
+        int userNum = userNumbers.get(idx);
+        int computerNum = computerNumbers.get(idx);
+        if(computerNumbers.contains(userNum) && userNum != computerNum) {
             ball++;
         }
     }
 
-    void printResult() {
+    private void printResult() {
         if(strike == 0 && ball == 0) {
             System.out.println("낫싱");
             return;
@@ -73,35 +79,37 @@ public class Baseball {
         System.out.println();
     }
 
+    private void inputUserNumbers() {
+        System.out.println("숫자를 입력해주세요. : ");
+        String inputNumber = Console.readLine();
+        try{
+            resetUserNumber(inputNumber);
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+    }
+
+    private boolean isGameExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        String exitGame = Console.readLine();
+        if(exitGame.equals("1")) {
+            return true;
+        }
+        else if(exitGame.equals("2")) {
+            System.out.println("게임 종료");
+            return false;
+        }
+        return true;
+    }
     public boolean playBaseballGame() {
         resetComputerNumber();
-        while(true) {
-            // 1. 숫자 입력 및 확인
-            System.out.println("숫자를 입력해주세요. : ");
-            String inputNumber = Console.readLine();
-            try{
-                resetUserNumber(inputNumber);
-            } catch (IllegalArgumentException e) {
-                throw e;
-            }
-
-            // 2. 스트라이크, 볼 판단 및 결과 출력
-            checkStrike();
+        do {
+            inputUserNumbers();
+            playGame();
             printResult();
+        } while(strike < 3);
 
-            // 3. 다시 입력받을지 게임을 종료할지 판단.
-            String exitGame = null;
-            if(strike == 3) {
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-                exitGame = Console.readLine();
-                if(exitGame.equals("1")) {
-                    return true;
-                }
-                else if(exitGame.equals("2")) {
-                    System.out.println("게임 종료");
-                    return false;
-                }
-            }
-        }
+        boolean result = isGameExit();
+        return result;
     }
 }
