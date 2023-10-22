@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.model.domain.Computer;
 import baseball.model.domain.Player;
-import baseball.model.domain.Restart;
 import baseball.utils.CompareNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -11,7 +10,6 @@ public class NumberBaseball {
     private final Computer computer;
     private final CompareNumber compareNumber;
     private Player player;
-    private Restart restart;
 
     public NumberBaseball() {
         computer = new Computer();
@@ -24,17 +22,11 @@ public class NumberBaseball {
             getNumbersFromPlayer();
             printHint(getCompareResult());
         } while (isContinue());
-        getNumberFromPlayer();
     }
 
     public void getNumbersFromPlayer() {
         player = new Player(InputView.setGameInput());
         player.getPlayerNumbers();
-    }
-
-    public void getNumberFromPlayer() {
-        restart = new Restart(InputView.setRestartInput());
-        restart.getRestartNumber();
     }
 
     public int[] getCompareResult() {

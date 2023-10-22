@@ -3,7 +3,7 @@ package baseball.model.service;
 public interface RestartNumber {
     void isNonNumber(String inputNumber);
 
-    void isLengthCorrect(Integer convertNumber);
+    void isLengthCorrect(String inputNumber);
 
     void isRange(Integer convertNumber);
 }

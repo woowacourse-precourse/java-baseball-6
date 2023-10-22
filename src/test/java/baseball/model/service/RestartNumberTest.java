@@ -27,7 +27,7 @@ class RestartNumberTest {
     @DisplayName("한 자리를 입력하지 않아 예외가 발생합니다.")
     void 갯수입력예외() {
         RestartNumber restartNumber = new RestartNumberImpl();
-        Integer number = 12;
+        String number = "12";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             restartNumber.isLengthCorrect(number);

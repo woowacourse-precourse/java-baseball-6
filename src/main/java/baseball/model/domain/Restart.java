@@ -9,9 +9,9 @@ public class Restart {
     public Restart(String inputNumber) {
         RestartNumber restartNumber = new RestartNumberImpl();
         restartNumber.isNonNumber(inputNumber);
+        restartNumber.isLengthCorrect(inputNumber);
 
         Integer convertNumber = convertNumber(inputNumber);
-        restartNumber.isLengthCorrect(convertNumber);
         restartNumber.isRange(convertNumber);
         this.restartNumber = convertNumber(inputNumber);
     }

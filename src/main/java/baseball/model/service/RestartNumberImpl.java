@@ -18,8 +18,8 @@ public class RestartNumberImpl implements RestartNumber {
     }
 
     @Override
-    public void isLengthCorrect(Integer convertNumber) {
-        if (convertNumber != RESTART_SIZE) {
+    public void isLengthCorrect(String inputNumber) {
+        if (inputNumber.length() != RESTART_SIZE) {
             throw new IllegalArgumentException(RESTART_LENGTH_IS_WRONG);
         }
     }
