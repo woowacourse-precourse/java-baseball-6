@@ -1,25 +1,28 @@
 package baseball.domain.rule;
 
-import baseball.console.Console;
+import baseball.controller.ConsoleController;
 
 public class Rule {
 	private static int OFFSET = 3;
 
-	private Rule() {
+	private final ConsoleController consoleController;
+
+	public Rule(ConsoleController consoleController) {
+		this.consoleController = consoleController;
 	}
 
-	public static boolean judgeGameOver(int[] userNumberArray, int[] computerNumberArray) {
+	public boolean judgeGameOver(int[] userNumberArray, int[] computerNumberArray) {
 		int ball = countBall(userNumberArray, computerNumberArray);
 		int strike = countStrike(userNumberArray, computerNumberArray);
-		Console.printResultMessage(ball, strike);
+		consoleController.printResultMessage(ball, strike);
 		if (strike == OFFSET) {
-			Console.printFinishMessage();
+			consoleController.printFinishMessage();
 			return true;
 		}
 		return false;
 	}
 
-	private static int countStrike(int[] userNumberArray, int[] computerNumberArray) {
+	private int countStrike(int[] userNumberArray, int[] computerNumberArray) {
 		int cnt = 0;
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
@@ -32,7 +35,7 @@ public class Rule {
 		return cnt;
 	}
 
-	public static int countBall(int[] userNumberArray, int[] computerNumberArray) {
+	private int countBall(int[] userNumberArray, int[] computerNumberArray) {
 		int cnt = 0;
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {

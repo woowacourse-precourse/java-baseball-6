@@ -10,30 +10,32 @@ public class ConsoleOutput {
 	private static final String strikeMessage = "스트라이크";
 	private static final String nothingMessage = "낫싱";
 
-	private ConsoleOutput() {
-	}
 
-	public static void println(String message) {
+	private void println(String message) {
 		System.out.println(message);
 	}
 
-	public static void printInputMessage() {
-		System.out.print(inputMessage);
+	private void print(String message) {
+		System.out.print(message);
 	}
 
-	public static void printGameStart() {
-		System.out.println(welcomeMessage);
+	public void printInputMessage() {
+		print(inputMessage);
 	}
 
-	public static void printFinishMessage() {
+	public void printGameStart() {
+		println(welcomeMessage);
+	}
+
+	public void printFinishMessage() {
 		println(endMessage);
 	}
 
-	public static void printResumeMessage() {
+	public void printResumeMessage() {
 		println(resumeMessage);
 	}
 
-	public static void printResultMessage(int ball, int strike) {
+	public void printResultMessage(int ball, int strike) {
 		String message = "";
 		if (ball > 0) {
 			message += ball + ballMessage;
