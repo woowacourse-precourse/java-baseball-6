@@ -14,4 +14,8 @@ public class Validation {
 
         return tmp.length() < maxLength;
     }
+
+    private boolean validLength(String number, int maxLength) {
+        return number.length() != maxLength;
+    }
 }
