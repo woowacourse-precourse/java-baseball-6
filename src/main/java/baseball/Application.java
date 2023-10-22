@@ -7,6 +7,8 @@ public class Application {
         Game model = new Game();
         GameView gameView = new GameView();
         Controller controller = new Controller(model, gameView);
+
+        // 게임 시작
         controller.playGame();
     }
 }
