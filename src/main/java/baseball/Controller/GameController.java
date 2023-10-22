@@ -1,14 +1,36 @@
 package baseball.Controller;
 
 import baseball.DTO.Computer;
+import baseball.DTO.User;
+import baseball.Service.JudgmentService;
+import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
 
     private final Computer computer;
     public GameController(){
         computer = new Computer();
-        System.out.println("숫자 야구 게임을 시작합니다.");
     }
+
+    public void input(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        Integer strike = 0;
+        while (strike < 3) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = Console.readLine();
+
+            User user = new User(userInput);
+
+            JudgmentService judgmentService = new JudgmentService(user, computer);
+
+            strike = judgmentService.judgeStrike();
+            Integer ball = judgmentService.judgeBall();
+
+            System.out.println(judgeUserInput(strike, ball));
+        }
+    }
+
     public String judgeUserInput(Integer strike,Integer ball){
         String judgement = null;
         if (strike == 0 && ball == 0) {
