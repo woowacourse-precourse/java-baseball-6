@@ -20,11 +20,11 @@ public class Score {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        if(strike != 0) {
-            sb.append(strike).append("스트라이크 ");
-        }
         if (ball != 0) {
-            sb.append(ball).append("볼");
+            sb.append(ball).append("볼 ");
+        }
+        if(strike != 0) {
+            sb.append(strike).append("스트라이크");
         }
         if(sb.isEmpty()) {
             sb.append("낫싱");
