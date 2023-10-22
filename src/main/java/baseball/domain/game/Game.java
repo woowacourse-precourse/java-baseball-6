@@ -33,7 +33,7 @@ public class Game {
             String guessNumber = input.getExpectationNumber();
             checkInputNumbers(guessNumber);
             setBallsAndStrikes(computerNumber, guessNumber);
-            checkTotalBallsAndStrikes(BALL, STRIKE);
+            System.out.println(output.TotalMessage(BALL, STRIKE));
         }
         output.printAllStrikeMessage(STRIKE);
         checkRestartGame();
@@ -46,6 +46,17 @@ public class Game {
         if (!numbers.matches("\\d+")){
             throw new InputException(InputError.MUST_BE_DIGIT);
         }
+    }
+
+    public void setBallsAndStrikes(List<String> computerNumbers, String guessNumber){
+        BALL_COUNT = 0;
+        STRIKE_COUNT = 0;
+
+        for (int i = 0; i < computerNumbers.size() ; i++){
+            countBallAndStrike(computerNumbers, computerNumbers.get(i), String.valueOf(guessNumber.charAt(i)));
+        }
+        BALL = BALL_COUNT - STRIKE_COUNT;
+        STRIKE = STRIKE_COUNT;
     }
 
     public void countBallAndStrike(List<String> computerNumbers, String computerNumber, String guessNumber){
@@ -63,23 +74,6 @@ public class Game {
 
     public Boolean isGuessNumberContainsAnswer(List<String> computerNumbers, String guessNumber){
         return computerNumbers.contains(guessNumber);
-    }
-
-
-    public void setBallsAndStrikes(List<String> computerNumbers, String guessNumber){
-        BALL_COUNT = 0;
-        STRIKE_COUNT = 0;
-
-        for (int i = 0; i < computerNumbers.size() ; i++){
-            countBallAndStrike(computerNumbers, computerNumbers.get(i), String.valueOf(guessNumber.charAt(i)));
-        }
-        BALL = BALL_COUNT - STRIKE_COUNT;
-        STRIKE = STRIKE_COUNT;
-    }
-
-    public void checkTotalBallsAndStrikes(Integer ball, Integer strike){
-        String totalMessage = output.TotalMessage(ball, strike);
-        System.out.println(totalMessage);
     }
 
     public void checkRestartGame(){
