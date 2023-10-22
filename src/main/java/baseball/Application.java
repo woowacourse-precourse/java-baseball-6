@@ -9,32 +9,53 @@ import java.util.List;
 
 
 public class Application {
-    static int count = 0;
+    static int inputNumber;
+    static int retry = 1;
     static final int NUMBER_DIGIT = 3;
-    static List<Integer> computerNumber = new ArrayList<>();
+    static List<Integer> computerNumber;
+    static BufferedReader br;
 
     public static void main(String[] args) throws IOException {
+        br = new BufferedReader(new InputStreamReader(System.in));
+
+        while (retry == 1) {
+            //게임 실행
+            basebell();
+
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            retry = Integer.parseInt(br.readLine());
+
+            if (retry == 2) {
+                break;
+            }
+        }
+    }
+
+    private static void basebell() throws IOException {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         //컴퓨터 숫자를 생성한다
         createComputerNumber();
 
         //디버깅용
-        for (int i = 0; i < computerNumber.size(); i++) {
-            System.out.println(computerNumber.get(i));
-        }
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        for (int i = 0; i < computerNumber.size(); i++) {
+//            System.out.println(computerNumber.get(i));
+//        }
 
         while (true) {
             //입력을 받는다
             System.out.print("숫자를 입력해주세요 : ");
-            int inputNumber = Integer.parseInt(br.readLine());
+            inputNumber = Integer.parseInt(br.readLine());
 
             //입력 값에 대한 조건을 검증한다
-            //checkNumberDigits(inputNumber);
-            //checkNumberRange(inputNumber);
+            if (checkNumberDigits(inputNumber)) {
+                throw new IllegalArgumentException();
+            }
             //checkEachDigitIsSameNumber(inputNumber);
+            //checkNumberRange(inputNumber);
 
             //컴퓨터 숫자를 int 배열로 표현하도록 바꾼다
             int[] intArrayComputerNumber = listTransformToIntArray(computerNumber);
@@ -42,10 +63,7 @@ public class Application {
             //입력 숫자를 int 배열로 표현하도록 바꾼다
             int[] intArrayInputNumber = getDigitsArray(inputNumber);
 
-            /***
-             * ComputerNumber 배열과 InputNumber 배열을 이중 루프
-             * intArrayInputNumber[i] == intArrayComputerNumber[j] && i == j 이면 strike
-             */
+            //두 배열 비교
             int strike = 0;
             int ball = 0;
             for (int i = 0; i < 3; i++) {
@@ -63,11 +81,20 @@ public class Application {
             if (strike == 3) {
                 break;
             }
+            if (ball == 0 && strike == 0) {
+                System.out.println("낫싱");
+                continue;
+            }
+            if (ball == 0) {
+                System.out.println(strike + "스트라이크");
+                continue;
+            }
+            if (strike == 0) {
+                System.out.println(ball + "볼");
+                continue;
+            }
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
-        System.out.println("3스트라이크");
-        System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
     }
 
 
@@ -76,12 +103,12 @@ public class Application {
      *
      * @param number
      */
-    private static void checkNumberDigits(int number) {
-        int digit = getNumberDigit(number);
-
-        if (digit != 3) {
-            throw new IllegalArgumentException("세 자리수만 입력 가능합니다.");
+    public static boolean checkNumberDigits(int number) {
+        int numberOfDigits = String.valueOf(number).length();
+        if (numberOfDigits != 3) {
+            return true;
         }
+        return false;
     }
 
 
@@ -102,10 +129,10 @@ public class Application {
     /***
      * 입력 값의,각 자리의 범위를 검증한다
      *
-     * @param inputNumber
+     * @param Number
      */
-    private static void checkInputNumberRange(int inputNumber) {
-        int[] intArrayInputNumber = getDigitsArray(inputNumber);
+    private static void checkNumberRange(int Number) {
+        int[] intArrayInputNumber = getDigitsArray(Number);
 
         for (int n : intArrayInputNumber) {
             checkNumberValidity(n, 1, 9);
@@ -129,6 +156,7 @@ public class Application {
      * 컴퓨터 숫자를 생성하는 함수
      */
     private static void createComputerNumber() {
+        computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             addNotExistNumberToList(computerNumber, randomNumber);
@@ -166,7 +194,6 @@ public class Application {
                 intArrayNumber[i] = number.get(i);
             }
         }
-
         return intArrayNumber;
     }
 
@@ -189,19 +216,6 @@ public class Application {
 
 
     /***
-     * 파라메터가 몇 자리의 수인지 계산한다
-     *
-     * @param number
-     * @return
-     */
-    private static int getNumberDigit(int number) {
-        int digit = (int) (Math.log10(number) + 1);
-
-        return digit;
-    }
-
-
-    /***
      * 배열 내에 중복되는 수가 있는지 확인한다
      *
      * @param arr
@@ -211,11 +225,11 @@ public class Application {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[i] == arr[j]) {
-                    return false; // 중복된 숫자가 발견됨
+                    return false;
                 }
             }
         }
-        return true; // 중복된 숫자가 없음
+        return true;
     }
 }
 
