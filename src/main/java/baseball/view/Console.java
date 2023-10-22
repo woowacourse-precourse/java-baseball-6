@@ -1,7 +1,6 @@
 package baseball.view;
 
 
-import baseball.game.BaseBallGameMessage;
 import baseball.game.BaseBallGameResult;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -9,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static baseball.game.BaseBallGameMessage.*;
+import static baseball.util.GameResultMessageGenerator.*;
+import static baseball.util.ConsoleMessages.*;
 
 public class Console {
 
@@ -116,7 +116,7 @@ public class Console {
         int strike = result.getStrike();
         int ball = result.getBall();
 
-        String resultMessage = BaseBallGameMessage.makeResultString(strike, ball);
+        String resultMessage = makeResultString(strike, ball);
         System.out.println(resultMessage);
     }
 
