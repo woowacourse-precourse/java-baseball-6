@@ -4,7 +4,7 @@ package baseball.util.channel;
 import baseball.util.enums.Command;
 import camp.nextstep.edu.missionutils.Console;
 
-public abstract class Reader {
+public abstract class GameReader {
     public static String read(Command command) {
         Printer.print(command.getCommand());
         String input = Console.readLine().trim();

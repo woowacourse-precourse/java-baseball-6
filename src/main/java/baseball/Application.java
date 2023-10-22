@@ -3,7 +3,7 @@ package baseball;
 import baseball.application.GameLauncher;
 import baseball.domain.Computer;
 import baseball.util.channel.Printer;
-import baseball.util.channel.Reader;
+import baseball.util.channel.GameReader;
 import baseball.util.enums.Command;
 import baseball.util.enums.GameFlag;
 
@@ -15,6 +15,6 @@ public class Application {
             GameLauncher launcher = new GameLauncher(computer);
             Printer.print(Command.START_GAME.getCommand());
             launcher.execute();
-        } while (Reader.read(Command.ASK_RESUME).equals(GameFlag.RETRY));
+        } while (GameReader.read(Command.ASK_RESUME).equals(GameFlag.RETRY));
     }
 }

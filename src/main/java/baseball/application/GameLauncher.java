@@ -4,7 +4,7 @@ import baseball.domain.Computer;
 import baseball.domain.Pitch;
 import baseball.domain.Judgement;
 import baseball.util.channel.Printer;
-import baseball.util.channel.Reader;
+import baseball.util.channel.GameReader;
 import baseball.util.JudgementConverter;
 import baseball.util.enums.Command;
 
@@ -21,7 +21,7 @@ public class GameLauncher {
     public void execute() {
         boolean finishFlag;
         do {
-            Pitch pitch = createPitch(Reader.read(Command.PITCHING));
+            Pitch pitch = createPitch(GameReader.read(Command.PITCHING));
             Judgement judgement = judge(pitch);
 
             Printer.println(JudgementConverter.of(judgement));
