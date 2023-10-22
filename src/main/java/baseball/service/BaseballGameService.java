@@ -11,13 +11,17 @@ import java.util.List;
 public class BaseballGameService {
     BaseballGameCompareService baseballGameCompareService = new BaseballGameCompareService();
 
-    public void startBaseballGame() {
-        printGameStartMessage();
-        baseballGameCompareService.compareUserNumberAndRandomNumber(getUserNumber(), createRandomNumber());
+    public void startBaseballGame(int gameFlag) {
+        if (gameFlag == 0) {    // 첫 실행
+            printGameStartMessage();
+        }
+        if (gameFlag == 0 || gameFlag == 1) {   // 첫 실행과 재시작
+            baseballGameCompareService.compareUserNumberAndRandomNumber(getUserNumber(), createRandomNumber());
+        }
     }
 
-    public void restartBaseballGame() {
-        baseballGameCompareService.compareUserNumberAndRandomNumber(getUserNumber(), createRandomNumber());
+    public void startBaseballGame(List<Integer> list) {
+        baseballGameCompareService.compareUserNumberAndRandomNumber(getUserNumber(), list);
     }
 
     public void endBaseballGame() {
@@ -64,7 +68,7 @@ public class BaseballGameService {
         InputView inputView = new InputView();
         String result = inputView.getRestartOrEndNumber();
         if (result.equals("1")) {
-            restartBaseballGame();
+            startBaseballGame(1);
         }
     }
 }
