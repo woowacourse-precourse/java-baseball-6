@@ -20,17 +20,12 @@ public class GameManager {
         Discriminator discriminator = Discriminator.create(computerNumber, myNumbers);
 
         for (int i = START_NUMBER; i < END_NUMBER; i++) {
-            boolean matchFound = false;
 
             for (int j = START_NUMBER; j < END_NUMBER; j++) {
-                matchFound = discriminator.match(i, j);
+                boolean matchFound = discriminator.match(i, j);
                 if (matchFound) {
                     break;
                 }
-            }
-
-            if (!matchFound) {
-                discriminator.nothing();
             }
         }
 

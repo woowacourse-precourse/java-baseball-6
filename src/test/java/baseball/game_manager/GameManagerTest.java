@@ -1,5 +1,6 @@
-package baseball;
+package baseball.game_manager;
 
+import baseball.GameManager;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 

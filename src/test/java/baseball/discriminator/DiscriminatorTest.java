@@ -1,5 +1,6 @@
-package baseball;
+package baseball.discriminator;
 
+import baseball.Discriminator;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
