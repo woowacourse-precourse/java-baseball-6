@@ -4,11 +4,11 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
 
-public class Controller {
+public class MainController {
 
     private Validator validator;
 
-    public Controller(Validator validator) {
+    public MainController(Validator validator) {
         this.validator = validator;
     }
 
