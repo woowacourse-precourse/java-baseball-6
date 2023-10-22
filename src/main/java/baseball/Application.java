@@ -11,10 +11,11 @@ public class Application {
 
     public static void main(String[] args) {
         List<Integer> randomNumberList;
+        String userInput;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         randomNumberList = getNewRandomNumberList();
-
+        userInput = getInputOnGame();
 
         System.out.println("게임이 종료되었습니다.");
     }
