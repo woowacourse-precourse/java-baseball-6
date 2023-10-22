@@ -21,10 +21,10 @@ public class BaseballController {
                 outputView.outputResult();
                 if (strikeCount == 3) gameClear = true;
             } while (!gameClear);
-        } while (endGame());
+        } while (isExitGame());
     }
 
-    public boolean endGame(){
+    private boolean isExitGame(){
         String answerNumber = InputView.inputRestart();
         if (answerNumber.equals("1")) {
             return true;
