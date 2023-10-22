@@ -5,26 +5,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private static final int NUMBER_LENGTH = 3;
-    private static final int DIGIT_MIN = 1;
-    private static final int DIGIT_MAX = 9;
-    int randomNumber;
 
     public Computer() {
     }
 
-    public void setRandomNumber() {
+    int randomNum;
+
+    public void setRandomNum() {
         List<String> digitsList = getRandomDigits();
-        randomNumber = joinDigitsTogether(digitsList);
+        randomNum = joinDigitsTogether(digitsList);
     }
 
-    public int getRandomNumber() {
-        return randomNumber;
+    public int getRandomNum() {
+        return randomNum;
+    }
+
+
+    private static int joinDigitsTogether(List<String> digitsList) {
+        return Integer.parseInt(String.join("", digitsList));
+    }
+
+    private static String getRandomDigit() {
+        return String.valueOf(Randoms.pickNumberInRange(1, 9));
     }
 
     private static List<String> getRandomDigits() {
         List<String> digitsList = new ArrayList<>();
-        while(digitsList.size() < NUMBER_LENGTH) {
+        while(digitsList.size() < 3) {
             String digit = getRandomDigit();
             if(!digitsList.contains(digit)) {
                 digitsList.add(digit);
@@ -33,11 +40,4 @@ public class Computer {
         return digitsList;
     }
 
-    private static int joinDigitsTogether(List<String> digitsList) {
-        return Integer.parseInt(String.join("", digitsList));
-    }
-
-    private static String getRandomDigit() {
-        return String.valueOf(Randoms.pickNumberInRange(DIGIT_MIN, DIGIT_MAX));
-    }
 }
