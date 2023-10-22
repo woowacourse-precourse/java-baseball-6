@@ -1,15 +1,15 @@
 package baseball.controller;
 
-import baseball.model.BaseballNumber;
+import baseball.model.BaseballGame;
+import baseball.model.BaseballNumbers;
+import baseball.model.BaseballNumbersGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class BaseballGameController {
 
     private static final String GAME_RESTART = "1";
     private static final String GAME_OVER = "2";
-    private static final int BASEBALL_NUMBERS_LENGTH = 3;
 
     public static void playGames() {
         OutputView.printGameStart();
@@ -27,18 +27,16 @@ public class BaseballGameController {
             if (baseballGame.isAnswer()) {
                 break;
             }
-            List<BaseballNumber> userBaseballNumbers = BaseballNumbersGenerator.getUserBaseballNumbers(
-                    InputView.getUserBaseballNumbersString()
-            );
+            BaseballNumbers userBaseballNumbers = BaseballNumbersGenerator.getUserBaseballNumbers(
+                    InputView.getUserBaseballNumbersString());
             baseballGame.resetUserBaseballNumbers(userBaseballNumbers);
         }
     }
 
     private static BaseballGame getBaseballGame() {
-        List<BaseballNumber> computerBaseballNumbers = BaseballNumbersGenerator.getComputerBaseballNumbers();
-        List<BaseballNumber> userBaseballNumbers = BaseballNumbersGenerator.getUserBaseballNumbers(
-                InputView.getUserBaseballNumbersString()
-        );
+        BaseballNumbers computerBaseballNumbers = BaseballNumbersGenerator.getComputerBaseballNumbers();
+        BaseballNumbers userBaseballNumbers = BaseballNumbersGenerator.getUserBaseballNumbers(
+                InputView.getUserBaseballNumbersString());
         return new BaseballGame(computerBaseballNumbers, userBaseballNumbers);
     }
 
