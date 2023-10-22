@@ -54,13 +54,13 @@ class Game {
         if (strikeNum == 0 && ballNum == 0) {
             System.out.println("낫싱");
             return false;
-        } else if (strikeNum == 3) {
+        } else if (strikeNum != 3) {
+            System.out.println(ballNum + "볼 " + strikeNum + "스트라이크");
+            return false;
+        } else {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             return true;
-        } else {
-            System.out.println(ballNum + "볼 " + strikeNum + "스트라이크");
-            return false;
         }
     }
 
