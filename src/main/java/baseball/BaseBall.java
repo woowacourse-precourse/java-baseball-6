@@ -10,19 +10,18 @@ public class BaseBall {
 
     private List<Integer> computer, user;
     private int ball, strike;
+    private boolean gameOver;
+
+    public BaseBall() {
+        createComputerNumber();
+    }
 
     public boolean start() {
-        createComputerNumber();
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-
             String input = readLine();
-            if (!isValidNumber(input)) {
-                throw new IllegalArgumentException();
-            }
 
+            isValidNumber(input);
             createUserNumber(input);
 
             check(); // 결과 계산
@@ -34,14 +33,18 @@ public class BaseBall {
                 input = readLine();
 
                 if (input.equals("2")) {
-                    return true;
-                } else if (!input.equals("1")) {
-                    throw new IllegalArgumentException();
+                    gameOver = true;
+                } else if (input.equals("1")) {
+                    gameOver = false;
+                } else {
+                    throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
                 }
 
-                createComputerNumber();
+                break;
             }
         }
+        
+        return gameOver;
     }
 
     private void createComputerNumber() {
@@ -66,28 +69,26 @@ public class BaseBall {
         }
     }
 
-    private boolean isValidNumber(String s) {
+    private void isValidNumber(String s) {
         Set<Integer> hashSet = new HashSet<>();
 
         if (s.length() != 3) {
-            return false;
+            throw new IllegalArgumentException("3자리의 수를 입력해주세요.");
         }
 
         for (int i = 0; i < 3; i++) {
             int j = s.charAt(i) - '0';
 
             if (!(j >= 1 && j <= 9)) {
-                return false;
+                throw new IllegalArgumentException("1에서 9사이의 숫자만 입력해주세요.");
             }
 
             if (hashSet.contains(j)) {
-                return false;
+                throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해주세요.");
             }
 
             hashSet.add(j);
         }
-
-        return true;
     }
 
     private void check() {
