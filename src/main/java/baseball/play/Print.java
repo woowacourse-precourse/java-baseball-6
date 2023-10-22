@@ -5,6 +5,10 @@ import baseball.model.Hint;
 
 public class Print {
 
+    public final static String BALL = "볼";
+    public final static String STRIKE = "스트라이크";
+    public final static String NOTHING = "낫싱";
+
     public void printStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -20,18 +24,18 @@ public class Print {
 
     public static boolean printResult(Hint hint) {
         if(hint.isThreeStrike()) {
-            System.out.println(hint.getStrike() + Key.STRIKE);
+            System.out.println(hint.getStrike() + STRIKE);
             return true;
         }
 
         if(hint.isNothing())
-            System.out.println(Key.NOTHING);
+            System.out.println(NOTHING);
         else if(hint.isBallZero())
-            System.out.println(hint.getStrike() + Key.STRIKE);
+            System.out.println(hint.getStrike() + STRIKE);
         else if(hint.isStrikeZero())
-            System.out.println(hint.getBall() + Key.BALL);
+            System.out.println(hint.getBall() + BALL);
         else
-            System.out.println(hint.getBall() + Key.BALL + " " + hint.getStrike() + Key.STRIKE);
+            System.out.println(hint.getBall() + BALL + " " + hint.getStrike() + STRIKE);
 
         return false;
     }

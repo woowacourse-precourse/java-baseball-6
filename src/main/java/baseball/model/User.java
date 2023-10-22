@@ -9,7 +9,6 @@ public class User {
 
     public void inputAnswer() {
         answer = Console.readLine();
-        System.out.println(answer);
         checkUserAnswer();
     }
 
