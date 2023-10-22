@@ -40,5 +40,9 @@ public class Application {
                 throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러3]");
             }
         }
+        // 입력 유효성 검사 4. 숫자이지만 3자리가 아닌 입력값 확인
+        if (ans.length() != 3) {
+            throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러4]");
+        }
     }
 }
