@@ -1,22 +1,28 @@
 package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Computer {
-    private final String computerNumber;
+    private final List<Integer> computerNumber;
 
-    private Computer(String computerNumber) {
+    private Computer(List<Integer> computerNumber) {
         this.computerNumber = computerNumber;
     }
 
     public static Computer generateRandomNumber() {
-        String randNum = String.valueOf(Randoms.pickNumberInRange(1, 9))
-                + Randoms.pickNumberInRange(0, 9)
-                + Randoms.pickNumberInRange(0, 9);
-        return new Computer(randNum);
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return new Computer(computer);
     }
 
-    public String getComputerNumber() {
+    public List<Integer> getComputerNumber() {
         return computerNumber;
     }
 }
