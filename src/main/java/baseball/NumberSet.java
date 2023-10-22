@@ -1,45 +1,33 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class NumberSet {
-    private int digit1;
-    private int digit2;
-    private int digit3;
+    private List<Integer> numbers;
 
-    public NumberSet(int digit1, int digit2, int digit3) {
-        this.digit1 = digit1;
-        this.digit2 = digit2;
-        this.digit3 = digit3;
+    public NumberSet(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 
-    public int getDigit1() {
-        return digit1;
+    public NumberSet(Integer... digits) {
+        this.numbers = Arrays.asList(digits);
     }
 
-    public int getDigit2() {
-        return digit2;
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
-    public int getDigit3() {
-        return digit3;
-    }
-
-    public void setDigit1(int digit1) {
-        this.digit1 = digit1;
-    }
-
-    public void setDigit2(int digit2) {
-        this.digit2 = digit2;
-    }
-
-    public void setDigit3(int digit3) {
-        this.digit3 = digit3;
+    public void setNumbers(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 
     public boolean isUnique() {
         return (
-                this.digit1 != this.digit2
-                        && this.digit2 != this.digit3
-                        && this.digit1 != this.digit3
+                this.numbers.get(0) != this.numbers.get(1)
+                        && this.numbers.get(0) != this.numbers.get(2)
+                        && this.numbers.get(1) != this.numbers.get(2)
         );
     }
 
@@ -67,17 +55,17 @@ public class NumberSet {
 
     public static int getStrikes(NumberSet a, NumberSet b) {
         int strikes = 0;
-        strikes += a.getDigit1() == b.getDigit1() ? 1 : 0;
-        strikes += a.getDigit2() == b.getDigit2() ? 1 : 0;
-        strikes += a.getDigit3() == b.getDigit3() ? 1 : 0;
+        strikes += a.getNumbers().get(0) == b.getNumbers().get(0) ? 1 : 0;
+        strikes += a.getNumbers().get(1) == b.getNumbers().get(1) ? 1 : 0;
+        strikes += a.getNumbers().get(2) == b.getNumbers().get(2) ? 1 : 0;
         return strikes;
     }
 
     public static int getBalls(NumberSet a, NumberSet b) {
         int balls = 0;
-        balls += a.getDigit1() == b.getDigit2() || a.getDigit1() == b.getDigit3() ? 1 : 0;
-        balls += a.getDigit2() == b.getDigit1() || a.getDigit2() == b.getDigit3() ? 1 : 0;
-        balls += a.getDigit3() == b.getDigit1() || a.getDigit3() == b.getDigit2() ? 1 : 0;
+        balls += a.getNumbers().get(0) == b.getNumbers().get(1) || a.getNumbers().get(0) == b.getNumbers().get(2) ? 1 : 0;
+        balls += a.getNumbers().get(1) == b.getNumbers().get(0) || a.getNumbers().get(1) == b.getNumbers().get(2) ? 1 : 0;
+        balls += a.getNumbers().get(2) == b.getNumbers().get(0) || a.getNumbers().get(2) == b.getNumbers().get(1) ? 1 : 0;
         return balls;
     }
 
