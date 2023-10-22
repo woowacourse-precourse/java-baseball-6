@@ -1,7 +1,7 @@
 package baseball.enums;
 
 public enum GameConfig {
-    BALL_COUNT(3),
+    PITCH_COUNT(3),
     MIN_NUMBER(1),
     MAX_NUMBER(9),
     GAME_CONTINUE(1),

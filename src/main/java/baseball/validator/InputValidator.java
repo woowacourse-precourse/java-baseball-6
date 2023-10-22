@@ -10,9 +10,9 @@ public class InputValidator {
     }
 
     private void validateLength(String input) {
-        int ballCount = GameConfig.BALL_COUNT.getValue();
-        if (input.length() != ballCount) {
-            throw new IllegalArgumentException(String.format("입력값이 %d자리가 아닙니다.", ballCount));
+        int pitchCount = GameConfig.PITCH_COUNT.getValue();
+        if (input.length() != pitchCount) {
+            throw new IllegalArgumentException(String.format("입력값이 %d자리가 아닙니다.", pitchCount));
         }
     }
 
@@ -33,9 +33,9 @@ public class InputValidator {
     }
 
     private void validateDuplicate(String input) {
-        int ballCount = GameConfig.BALL_COUNT.getValue();
-        for (int i = 0; i < ballCount; i++) {
-            for (int j = i + 1; j < ballCount; j++) {
+        int pitchCount = GameConfig.PITCH_COUNT.getValue();
+        for (int i = 0; i < pitchCount; i++) {
+            for (int j = i + 1; j < pitchCount; j++) {
                 if (input.charAt(i) == input.charAt(j)) {
                     throw new IllegalArgumentException("중복된 숫자가 있습니다.");
                 }
