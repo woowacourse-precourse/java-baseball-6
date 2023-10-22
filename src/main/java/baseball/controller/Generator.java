@@ -6,8 +6,6 @@ import java.util.List;
 
 public class Generator {
 
-    Validation validation = new Validation();
-
     public List<Integer> generateAnswer(int listLen) {
         List<Integer> answerList = new ArrayList<>();
 
