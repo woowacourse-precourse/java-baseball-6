@@ -3,11 +3,13 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Computer {
     // 컴퓨터가 가지고 있는 숫자
-    public static String computerNumber = "";
+    public static List<Integer> computerNumber = new ArrayList<>();
     // 스트라이크 횟수
     public static int stateStrike = 0;
     // 볼 횟수
@@ -17,16 +19,15 @@ public class Computer {
 
     // 모든 자리의 수가 서로 다르고, 0이 포함되지 않는 숫자를 생성하는 메서드
     public void makeNumber() {
-        Integer randomNumber = 0;
-
-        // 랜덤한 숫자를 생성하고, 검증한 결과가 true인 동안 계속해서 랜덤 숫자를 새로 생성
-        do {
-            randomNumber = Randoms.pickNumberInRange(123, 987);
+        // 세 자리 수를 만든다.
+        while (computerNumber.size() < 3) {
+            // 랜덤한 숫자를 생성한다.
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            // 컴퓨터가 가지고 있지 않은 숫자라면 넣어준다.
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
         }
-        while (validateComputerNumber(randomNumber.toString()));
-
-        // 검증이 끝나면 해당 숫자를 저장
-        computerNumber = randomNumber.toString();
     }
 
     public static int getStateStrike() {
@@ -39,15 +40,17 @@ public class Computer {
         stateNothing = 0;
     }
 
-    public void checkNumber(String computerNumber, String playerNumber) {
-        String[] computerNumberSplit = computerNumber.split("");
-        String[] playerNumberSplit = playerNumber.split("");
+    public static void resetComputerNumber() {
+        computerNumber.clear();
+    }
+
+    public void checkNumber(List<Integer> computerNumber, List<Integer> playerNumber) {
         String hint = "";
 
         for (int i = 0; i < 3; i++) {
             // 볼이 있는지 검사
             // 만약 플레이어가 입력한 숫자 중 i번째가 컴퓨터가 가지고 있는 숫자에 포함되면 볼 횟수 증가
-            if (Arrays.asList(computerNumberSplit).contains(playerNumberSplit[i])) {
+            if (computerNumber.contains(playerNumber.get(i))) {
                 stateBall += 1;
             } else {
                 stateNothing += 1;
@@ -55,7 +58,7 @@ public class Computer {
 
             // 스트라이크가 있는지 검사
             // 스트라이크가 존재하면 볼 횟수 감소, 스트라이크 횟수 증가
-            if (computerNumberSplit[i].equals(playerNumberSplit[i])) {
+            if (computerNumber.get(i) == playerNumber.get(i)) {
                 stateStrike += 1;
                 stateBall -= 1;
             }
