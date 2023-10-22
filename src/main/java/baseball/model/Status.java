@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.model.message.ErrorMessage.INVALID_REPLAY_STATUS;
+
 import java.util.Arrays;
 
 public enum Status {
@@ -15,8 +17,8 @@ public enum Status {
 
     public static Status from(String status) {
         return Arrays.stream(Status.values())
-                .filter(s -> s.status == status)
+                .filter(s -> s.status.equals(status))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("숫자 1 또는 2를 입력해주세요."));
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_REPLAY_STATUS.getMessage()));
     }
 }

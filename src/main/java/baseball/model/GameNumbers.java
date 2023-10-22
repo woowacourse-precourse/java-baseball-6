@@ -1,5 +1,9 @@
 package baseball.model;
 
+import static baseball.model.message.ErrorMessage.DUPLICATED_NUMBER;
+import static baseball.model.message.ErrorMessage.INVALID_NUMBERS_LENGTH;
+import static baseball.model.message.ErrorMessage.INVALID_RANGE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -37,14 +41,14 @@ public class GameNumbers {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUMBERS_SIZE) {
-            throw new IllegalArgumentException("세자리 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_NUMBERS_LENGTH.getMessage());
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < MIN_NUMBER || MAX_NUMBER < number) {
-                throw new IllegalArgumentException(String.format("%d~%d 범위의 숫자를 입력해주세요.", MIN_NUMBER, MAX_NUMBER));
+                throw new IllegalArgumentException(INVALID_RANGE.getMessage());
             }
         }
     }
@@ -52,7 +56,7 @@ public class GameNumbers {
     private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> nonDuplicateNumbers = new HashSet<>(numbers);
         if (nonDuplicateNumbers.size() != NUMBERS_SIZE) {
-            throw new IllegalArgumentException("숫자들은 중복될 수 없습니다.");
+            throw new IllegalArgumentException(DUPLICATED_NUMBER.getMessage());
         }
     }
 
