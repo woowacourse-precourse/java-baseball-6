@@ -13,8 +13,7 @@ public class Computer {
     public Computer() {
         List<Integer> list = new ArrayList<>();
 
-        int cnt = 3;
-        while(cnt-- > 0) {
+        while(list.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!list.contains(randomNumber))
                 list.add(randomNumber);
