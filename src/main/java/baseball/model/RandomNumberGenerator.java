@@ -9,7 +9,6 @@ public class RandomNumberGenerator {
         List<Integer> answerNumbers = new ArrayList<>();
         while (answerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-
             if (!answerNumbers.contains(randomNumber)) {
                 answerNumbers.add(randomNumber);
             }
