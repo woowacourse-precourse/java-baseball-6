@@ -1,7 +1,6 @@
 package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +20,7 @@ public class BaseballGame {
 
             //서로 다른 random 3자리 수 만들기
             List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = pickNumberInRange(1, 9); // 1~9 랜덤 수 출력
-                if (!computer.contains(randomNumber)) { // 서로 다른 수
-                    computer.add(randomNumber);
-                }
-            }
-            System.out.println(computer);
+            RandomNum RN = new RandomNum(computer);
 
             // 입력
             String userNumber = readLine(); // 서로 다른 3개의 숫자 입력
