@@ -19,10 +19,4 @@ public class ComputerNumber {
     public List<Integer> getComputerNumber() {
         return this.computerNumber;
     }
-
-    private void validateComputerNumber(Integer digit) {
-        if (!this.computerNumber.contains(digit)) {
-            this.computerNumber.add(digit);
-        }
-    }
 }
