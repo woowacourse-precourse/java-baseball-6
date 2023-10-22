@@ -22,6 +22,7 @@ public class BaseBallController {
         do {
             User user = new User(InputView.inputUserNumber());
             ScoreBoard scoreBoard = judge.evaluateUserNumberList(user.getUserNumberList());
+            OutputView.showScoreBoard(scoreBoard);
         } while (true);
     }
 }
