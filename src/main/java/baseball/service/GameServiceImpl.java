@@ -1,16 +1,15 @@
 package baseball.service;
 
 import baseball.domain.Referee;
-import baseball.dto.JudgeDTO;
+import baseball.dto.HintDTO;
 import java.util.List;
 
 public class GameServiceImpl implements GameService {
 
     private static final String STRIKE_STATUS_MESSAGE = "스트라이크";
-    private static final String BALL_STATUS_MESSAGE = "볼 ";
+    private static final String BALL_STATUS_MESSAGE = "볼";
     private static final String NOTHING_STATUS_MESSAGE = "낫싱";
-
-    private static final int CAPACITY = 3;
+    private static final String WHITE_SPACE = " ";
 
     private final Referee referee;
 
@@ -28,27 +27,32 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public JudgeDTO process(List<Integer> numbers, int[] inputNumbers) {
+    public HintDTO process(List<Integer> numbers, int[] inputNumbers) {
         return judge(numbers, inputNumbers);
     }
 
-    private JudgeDTO judge(List<Integer> numbers, int[] inputNumbers) {
+    private HintDTO judge(List<Integer> numbers, int[] inputNumbers) {
         referee.judge(numbers, inputNumbers);
         return build();
     }
 
-    private JudgeDTO build() {
-        JudgeDTO judge = referee.getMiss() == CAPACITY ? buildNothing() : buildJudge();
+    private HintDTO build() {
+        HintDTO judge = referee.isNothing() ? buildNothing() : buildJudge();
         referee.clearCount();
         return judge;
     }
 
-    private JudgeDTO buildNothing() {
-        return new JudgeDTO(false, NOTHING_STATUS_MESSAGE);
+    private HintDTO buildNothing() {
+        return new HintDTO(false, NOTHING_STATUS_MESSAGE);
     }
 
-    private JudgeDTO buildJudge() {
-        return new JudgeDTO(referee.isAllStrike(), buildBallMsg() + buildStrikeMsg());
+    private HintDTO buildJudge() {
+        String ballMessage = buildBallMsg();
+        String strikeMessage = buildStrikeMsg();
+        if (strikeMessage != "") {
+            ballMessage += WHITE_SPACE;
+        }
+        return new HintDTO(referee.isAllStrike(), ballMessage + strikeMessage);
     }
 
     private String buildStrikeMsg() {

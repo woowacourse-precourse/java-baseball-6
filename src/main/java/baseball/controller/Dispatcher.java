@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.dto.JudgeDTO;
+import baseball.dto.HintDTO;
 
 public class Dispatcher {
 
@@ -23,7 +23,7 @@ public class Dispatcher {
         gameController.start();
     }
 
-    public JudgeDTO dispatchProcess(String input) {
+    public HintDTO dispatchProcess(String input) {
         return gameController.process(input);
     }
 

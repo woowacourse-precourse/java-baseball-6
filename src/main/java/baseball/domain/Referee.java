@@ -34,6 +34,10 @@ public class Referee {
         return numbers.contains(currentTarget);
     }
 
+    public boolean isNothing() {
+        return this.miss == CAPACITY;
+    }
+
     public boolean isAllStrike() {
         if (this.strike == CAPACITY) {
             return true;
@@ -53,10 +57,6 @@ public class Referee {
 
     public int getBall() {
         return ball;
-    }
-
-    public int getMiss() {
-        return miss;
     }
 
     private void addStrikeCount() {

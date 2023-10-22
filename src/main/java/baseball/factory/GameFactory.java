@@ -1,7 +1,7 @@
 package baseball.factory;
 
 import baseball.controller.Dispatcher;
-import baseball.dto.JudgeDTO;
+import baseball.dto.HintDTO;
 import baseball.util.View;
 
 public class GameFactory {
@@ -30,7 +30,7 @@ public class GameFactory {
         dispatcher.dispatchGameStart();
 
         while (true) {
-            JudgeDTO judge = dispatcher.dispatchProcess(View.input());
+            HintDTO judge = dispatcher.dispatchProcess(View.input());
             View.printMessage(judge.getMessage());
             if (judge.isAllStrike()) {
                 if (!isRetry()) {

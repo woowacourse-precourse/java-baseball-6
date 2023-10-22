@@ -1,12 +1,12 @@
 package baseball.dto;
 
-public class JudgeDTO {
+public class HintDTO {
 
     private boolean isAllStrike;
 
     private String message;
 
-    public JudgeDTO(boolean isAllStrike, String message) {
+    public HintDTO(boolean isAllStrike, String message) {
         this.isAllStrike = isAllStrike;
         this.message = message;
     }

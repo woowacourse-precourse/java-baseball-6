@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.Computer;
-import baseball.dto.JudgeDTO;
+import baseball.dto.HintDTO;
 import baseball.service.GameService;
 import java.util.Arrays;
 
@@ -36,7 +36,7 @@ public class GameController {
         computer.generateBaseball();
     }
 
-    public JudgeDTO process(String input) {
+    public HintDTO process(String input) {
         validateCapacity(input, PROCESS_CAPACITY);
         char[] charArray = validateNumericOnly(input);
         validateDuplication(charArray.clone());
