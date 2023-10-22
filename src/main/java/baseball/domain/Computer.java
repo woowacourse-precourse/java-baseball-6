@@ -27,4 +27,8 @@ public class Computer {
     public int getBall(int index) {
         return number.get(index);
     }
+
+    public boolean containsBall(int ball) {
+        return number.contains(ball);
+    }
 }
