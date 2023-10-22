@@ -107,8 +107,8 @@ public class Application {
 
         while (!isExit){
             String myNumber = Console.readLine();
-            baseballGame.checkDuplicateNumber(myNumber);
             baseballGame.checkOnlyInterger(myNumber);
+            baseballGame.checkDuplicateNumber(myNumber);
             baseballGame.checkLengthNumber(myNumber);
             boolean victory = baseballGame.compareMyInputNumberAndComputerNumber(myNumber,computerNumber);
             if (victory) {
