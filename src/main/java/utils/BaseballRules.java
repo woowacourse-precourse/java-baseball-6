@@ -1,12 +1,14 @@
 package utils;
 
+import static constant.BaseballConstant.THREE;
+
 public class BaseballRules {
 
     private BaseballRules() {
     }
 
     public static boolean isThreeStrike(int strike) {
-        return strike == 3;
+        return strike == THREE;
     }
 
     public static boolean hasStrikeAndBall(int strike, int ball) {
