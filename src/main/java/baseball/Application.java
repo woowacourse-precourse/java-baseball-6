@@ -10,7 +10,7 @@ public class Application {
 
     /**
      * 상대방(컴퓨터)이 숫자 생성
-     * @return List<Integer> computer
+     * @return computer
      */
     public List<Integer> makeComputerNumber() {
         List<Integer> computer = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Application {
     /**
      * 입력 받은 수 검증
      * @param input
-     * @return boolean true || false
+     * @return true || false
      */
     public boolean inputCheckAll(String input) {
         //3자리 수가 맞는지 확인
@@ -37,6 +37,10 @@ public class Application {
         }
         //다른 문자가 아닌, 숫자인지 확인
         if (!inputCheckNumber(input)) {
+            return false;
+        }
+        //서로 다른 수가 맞는지 확인
+        if (!inputCheckDifferent(input)) {
             return false;
         }
 
@@ -53,6 +57,23 @@ public class Application {
     public boolean inputCheckNumber(String input) {
         if (!input.matches("[1-9]+")) {
             return false;
+        }
+        return true;
+    }
+
+    public boolean inputCheckDifferent(String input) {
+        int[] numArr = new int[10];
+        int inputNum = Integer.valueOf(input);
+
+        for (int i = 0; i < 3; i++) {
+            int num = inputNum % 10;
+
+            if (numArr[num] > 0) {
+                return false;
+            }
+
+            numArr[num]++;
+            inputNum /= 10;
         }
         return true;
     }

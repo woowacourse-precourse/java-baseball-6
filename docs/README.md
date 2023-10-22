@@ -8,8 +8,9 @@
 ### ✅ 3자리 수가 맞는지 확인
 - 입력받은 값의 길이가 3이 아니라면 IllegalArgumentException 발생
 ### ✅ 다른 문자가 아닌, 1에서 9 사이의 숫자인지 확인
-- matches 메서드에 정규식을 사용하여 1 ~ 9만 입력 가능하도록 구현, 아닐 시 IllegalArgumentException 발생
-### ⬜ 서로 다른 수가 맞는지 확인
+- matches 메서드의 정규식을 사용하여 1 ~ 9만 입력 가능하도록 구현, 아닐 시 IllegalArgumentException 발생
+### ✅ 서로 다른 수가 맞는지 확인
+- 입력받은 3자리 수가 서로 다른 수인지 확인, 같은 수가 있을 시 IllegalArgumentException 발생 
 ## 3. 입력 값에 대한 결과 출력
 ### ⬜ 볼 개수 확인
 ### ⬜ 스트라이크 개수 확인 
