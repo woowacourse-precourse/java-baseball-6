@@ -1,6 +1,5 @@
 package baseball;
 
-import static baseball.Enum.END_PROGRAM;
 import static baseball.Enum.GAME_START;
 import static baseball.Enum.INPUT_NUMBER;
 import static baseball.Enum.NEW_GAME_OR_END;
@@ -35,18 +34,17 @@ public class Application {
                 // 힌트 제공 또는 정답 확인
                 boolean ifCorrect = hint.checkNumber();
                 if (ifCorrect) {
-                    int ifContinue = -1;
-                    while (ifContinue == -1) {
+                    int answer = -1;
+                    while (answer == -1) { // 유효한 값(1,2)이 나올 때까지 반복
                         System.out.println(NEW_GAME_OR_END);
                         input = readLine();
-                        ifContinue = checkValidation.checkAnswerValidation(input);
-                        if (ifContinue == 2) {
-                            System.out.println(END_PROGRAM);
+                        answer = checkValidation.checkAnswerValidation(input); // 1 or 2 or -1
+                        if (answer == 2) { // 게임 종료
                             return;
                         }
                     }
                 }
-            } else {
+            } else { // 유효하지 않은 이유 출력
                 System.out.println(result);
             }
         }
