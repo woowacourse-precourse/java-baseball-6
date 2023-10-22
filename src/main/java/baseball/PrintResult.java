@@ -21,10 +21,10 @@ public class PrintResult {
             }
         }
 
-        return print(strikeNumber, ballNumber);
+        return printResult(strikeNumber, ballNumber);
     }
 
-    public boolean print(int strikeNumber, int ballNumber) {
+    public boolean printResult(int strikeNumber, int ballNumber) {
         if (strikeNumber != 0 && ballNumber != 0) {
             System.out.println(ballNumber + "볼" + " " + strikeNumber + "스트라이크");
         } else if (strikeNumber != 0) {
