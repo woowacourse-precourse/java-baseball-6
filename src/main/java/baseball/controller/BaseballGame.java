@@ -1,36 +1,38 @@
 package baseball.controller;
 
+import baseball.model.ControllNumber;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class BaseballGame {
-    CompareLogic compareLogic = new CompareLogic();
-    GenerateNumber number = new GenerateNumber();
+    BaseBallGameLogic baseBallGameLogic = new BaseBallGameLogic();
+    GenerateNumber ganerateNumber = new GenerateNumber();
     InputView inputView = new InputView();
-    Illegal check = new Illegal();
-    private String exitNumber = "1";
-    private int strikeCount = 0;
+    Illegal illegal = new Illegal();
 
 
     public void baseballGameStart() {
-        //System.out.println(exitGame(exitNumber));
-        while (exitGame(exitNumber)) {
+        OutputView.printStart();
+        while (exitGame(ControllNumber.getExitNumber())) {
             gameStart();
         }
     }
 
     public void gameStart() {
-        number.createRandomNumber();
-        while (gameStop(strikeCount)) {
-            check.checkIllegal(inputView.CompareInputNumber());
+        ganerateNumber.createRandomNumber();
+        while (gameStop(ControllNumber.getStrikeCount())) {
+            illegal.checkIllegal(inputView.CompareInputNumber());
+            baseBallGameLogic.checkBaseball();
+
         }
     }
 
     public boolean exitGame(String num) {
-        int exitNumber = check.parseIntNumber(num);
-        return compareLogic.checkExitGame(exitNumber);
+        int exitNumber = illegal.parseIntNumber(num);
+        return baseBallGameLogic.checkExitGame(exitNumber);
     }
 
     public boolean gameStop(int strikeCount) throws IllegalArgumentException {
-        return check.gameStopCheckInputNumber(strikeCount);
+        return baseBallGameLogic.gameStopCheckInputNumber(strikeCount);
     }
 }

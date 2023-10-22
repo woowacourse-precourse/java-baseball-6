@@ -1,7 +1,5 @@
 package baseball.controller;
 
-import baseball.model.Number;
-
 public class Illegal {
 
     public void checkIllegal(String num) {
@@ -9,7 +7,7 @@ public class Illegal {
         illegalNotThree(integerNumber);
         int[] separateNum = illegalIncludeZero(integerNumber);
         illegalDuplicateNumberCheck(separateNum);
-        saveInputNumber(separateNum);
+        BaseBallGameLogic.saveInputNumber(separateNum);
     }
 
     public int parseIntNumber(String num) throws IllegalArgumentException {
@@ -55,15 +53,5 @@ public class Illegal {
                 throw new IllegalArgumentException("중복된 숫자를 입력하였습니다.");
             }
         }
-    }
-
-    public void saveInputNumber(int[] num) {
-        Number number = new Number();
-        number.setUserNumber(num);
-    }
-
-    public boolean gameStopCheckInputNumber(int strikeCount) {
-
-        return strikeCount < 3;
     }
 }
