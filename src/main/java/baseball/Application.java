@@ -74,6 +74,12 @@ public class Application {
             }
         }
     }
+
+    public void checkLengthNumber(String myNumber){
+        if (myNumber.length() != 3){
+            throw new IllegalArgumentException("myNumber의 길이는 3이어야 합니다");
+        }
+    }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         // TODO: 프로그램 구현
@@ -94,6 +100,7 @@ public class Application {
         while (!isExit){
             String myNumber = Console.readLine();
             baseballGame.checkDuplicateNumber(myNumber);
+            baseballGame.checkLengthNumber(myNumber);
             boolean victory = baseballGame.compareMyInputNumberAndComputerNumber(myNumber,computerNumber);
             if (victory) {
                 // strike가 3이였을 때 실행되는 부분
