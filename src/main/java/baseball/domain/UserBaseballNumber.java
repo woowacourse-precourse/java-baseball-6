@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,7 +23,7 @@ public class UserBaseballNumber {
 
     private void validate(List<String> userValues) {
         if (userValues.size() != VALID_VALUES_LENGTH) {
-            throw INVALID_COUNT.getException();
+            throw INVALID_LENGTH.getException();
         }
     }
 
