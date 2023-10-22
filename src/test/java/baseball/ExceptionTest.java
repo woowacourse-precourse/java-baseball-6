@@ -29,15 +29,25 @@ public class ExceptionTest {
         });
     }
     @Test
-    void 재시작입력예외처리테스트(){
+    void 재시작입력예외처리테스트_길이가1이아닌입력(){
+        inputStringToSystemIn(" 12");
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            display.getSplitedUserInput(" 12");
+            display.getRestartInput();
         });
+
+    }
+    @Test
+    void 재시작입력예외처리테스트_숫자가아닌입력(){
+        inputStringToSystemIn("d");
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            display.getSplitedUserInput("d");
+            display.getRestartInput();
         });
+    }
+    @Test
+    void 재시작입력예외처리테스트_1이나2가아닌입력(){
+        inputStringToSystemIn("3");
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            display.getSplitedUserInput("3");
+            display.getRestartInput();
         });
     }
 }
