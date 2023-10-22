@@ -56,7 +56,7 @@
 
 [컴퓨터]
 
-- [ ] "camp.nextstep.edu.missionutils.Randoms" 사용하여 랜덤한 수 생성
+- [x] "camp.nextstep.edu.missionutils.Randoms" 사용하여 랜덤한 수 생성
 - [ ] 플레이어의 입력과 비교하는 메서드
 - [ ] 게임 종료 메서드
 
