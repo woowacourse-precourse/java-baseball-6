@@ -8,13 +8,13 @@ import java.util.List;
 
 public class GameController {
     private ComputerService computerService;
-    private JudgeService judgeService;
     private UserService userService;
+    private JudgeService judgeService;
 
-    public GameController() {
-        computerService = new ComputerService();
-        judgeService = new JudgeService();
-        userService = new UserService();
+    public GameController(ComputerService computerService, UserService userService ,JudgeService judgeService) {
+        this.computerService = computerService;
+        this.userService = userService;
+        this. judgeService = judgeService;
     }
 
     public void playGame() {

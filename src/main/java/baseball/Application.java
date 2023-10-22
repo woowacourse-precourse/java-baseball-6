@@ -1,12 +1,15 @@
 package baseball;
 
 import baseball.controller.GameController;
+import baseball.service.ComputerService;
+import baseball.service.JudgeService;
+import baseball.service.UserService;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        GameController gameController = new GameController();
+        GameController gameController = new GameController(new ComputerService(), new UserService(), new JudgeService());
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 

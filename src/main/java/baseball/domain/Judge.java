@@ -8,7 +8,7 @@ public class Judge {
         strike = 0;
         ball = 0;
     }
-    
+
     public void increaseStrike() {
         strike++;
     }
