@@ -6,8 +6,8 @@ import java.util.List;
 public class Player {
     List<Integer> playerBall = new ArrayList<>();
 
-    public void initPlayerBall(int inputValue) {
-        if(inputValue / 100 < 0 || inputValue / 100 > 9) {
+    public void initPlayerBall(int inputValue) throws IllegalArgumentException {
+        if((inputValue / 100) < 1 || (inputValue / 100) > 9) {
             throw new IllegalArgumentException();
         }
         while(inputValue != 0) {

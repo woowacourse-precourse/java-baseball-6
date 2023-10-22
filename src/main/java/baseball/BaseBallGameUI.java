@@ -8,9 +8,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 
 public class BaseBallGameUI {
-    Referee referee = new Referee();
-    Computer computer = new Computer();
-
     public void startBaseballGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -47,28 +44,16 @@ public class BaseBallGameUI {
             setGameSwitch(false);
         }
         if(inputValueToInt == 1) {
-            Computer computer = new Computer();
-            System.out.println(computer.getComputerBall());
-            while(gameSwitch) {
-                inputPlayerNum();
-                String inputValue1 = readLine();
-                int inputValueToInt1 = Integer.parseInt(inputValue1);
-                try {
-                    Player player = new Player(inputValueToInt1);
-                    printResult(referee.decideResult(computer.getComputerBall(), player.getPlayerBall()));
-                } catch (IllegalArgumentException e) {
-                    System.out.println("예외 발생!");
-                    restartGame();
-                }
-            }
+            startGame();
         }
         return gameSwitch;
     }
 
     public void startGame() {
+        Referee referee = new Referee();
+        Computer computer = new Computer();
         System.out.println(computer.getComputerBall());
 
-        startBaseballGame();
         while(gameSwitch) {
             inputPlayerNum();
             String inputValue = readLine();
@@ -77,8 +62,7 @@ public class BaseBallGameUI {
                 Player player = new Player(inputValueToInt);
                 printResult(referee.decideResult(computer.getComputerBall(), player.getPlayerBall()));
             } catch (IllegalArgumentException e) {
-                System.out.println("예외 발생!");
-                restartGame();
+                break;
             }
         }
     }
