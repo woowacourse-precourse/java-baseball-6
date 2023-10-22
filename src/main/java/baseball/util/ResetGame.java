@@ -1,7 +1,8 @@
 package baseball.util;
 
+//게임 진행상황 관리 유틸
 import baseball.view.Input;
-import baseball.util.ThrowError;
+
 public class ResetGame {
     public static boolean isReset () throws IllegalArgumentException {
         int input = Integer.parseInt(String.valueOf(Input.printResetGame()));

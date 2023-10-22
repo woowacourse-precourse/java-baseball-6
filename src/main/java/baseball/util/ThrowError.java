@@ -1,5 +1,6 @@
 package baseball.util;
 
+//에러 관련 프린트 유틸
 public class ThrowError {
     public static void throwError(String str) throws IllegalArgumentException{
         int[] inputArr = new int[str.length()];

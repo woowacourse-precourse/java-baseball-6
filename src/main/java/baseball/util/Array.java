@@ -1,7 +1,6 @@
 package baseball.util;
 
-import java.util.Arrays;
-
+//배열 관련 유틸
 public class Array {
     public static int[] makeRandom() {
         int[] numbers = new int[3];
