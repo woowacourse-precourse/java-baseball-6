@@ -25,13 +25,13 @@ public class Start {
             System.out.println(GuideMessageConstant.RESTART_END_MESSAGE);
             try {
                 restarting_Game = Console.readLine();
-                if (!restarting_Game.equals("1") && !restarting_Game.equals("2")) {
+                if (!restarting_Game.equals(StringConstant.CONTINUE) && !restarting_Game.equals(StringConstant.FINISH)) {
                     throw new IllegalArgumentException(GuideMessageConstant.ERROR_ONE_OR_TWO_ENTER);
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-                System.exit(1);
             }
+            RandomPickNumber.RandomPickClean();
         }
     }
 
