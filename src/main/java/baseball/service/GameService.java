@@ -9,6 +9,7 @@ import baseball.domain.Referee;
 public class GameService {
 
 	private static final String END_CONDITION = "3스트라이크";
+	private static final String REPLAY_COMMAND = "1";
 
 	public Computer createComputer() {
 		return new Computer();
@@ -25,6 +26,10 @@ public class GameService {
 
 	public boolean isEnded(final String gameResultMessage) {
 		return gameResultMessage.equals(END_CONDITION);
+	}
+
+	public boolean isReplay(final String replayCommandInput) {
+		return replayCommandInput.equals(REPLAY_COMMAND);
 	}
 
 }
