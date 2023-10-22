@@ -13,7 +13,7 @@ public class AnswerInput {
         this.answerNumber = new AnswerNumber();
     }
 
-    public List<Integer> inputNumber() {
+    public void inputNumber() {
         System.out.println(Contants.ASK_GAME_NUMBER);
         String answer = Console.readLine();
         answer.replaceAll(" ", "");
@@ -29,8 +29,6 @@ public class AnswerInput {
         List<Integer> number = toIntegerArrayList(answer);
 
         answerNumber.setAnswerNumber(number);
-
-        return answerNumber.getAnswerNumber();
     }
 
     public List<Integer> toIntegerArrayList(String getNumber) {
@@ -66,5 +64,9 @@ public class AnswerInput {
             charSet.add(number);
         }
         return false;
+    }
+
+    public List<Integer> getAnswerNumber() {
+        return answerNumber.getAnswerNumber();
     }
 }

@@ -22,9 +22,12 @@ public class GameNumberMaker {
         return numbers;
     }
 
-    public List<Integer> generateAndSetGameNumber() {
+    public void generateAndSetGameNumber() {
         List<Integer> numbers = generateGameNumber();
         gameNumber.setGameNumber(numbers);
+    }
+
+    public List<Integer> getGameNumber() {
         return gameNumber.getGameNumber();
     }
 }
