@@ -1,5 +1,6 @@
 package baseball.utils;
 
+import baseball.domain.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +32,21 @@ public class Utility {
             .map(Character::getNumericValue)
             .boxed()
             .collect(Collectors.toList());
+    }
+
+    public static String convertResponseToResult(Response response) {
+        int strikes = response.getStrikeCount();
+        int balls = response.getBallCount();
+
+        if (strikes == 0 && balls == 0) {
+            return "낫싱\n";
+        } else if (strikes > 0 && balls == 0) {
+            return strikes + "스트라이크\n";
+        } else if (strikes == 0 && balls > 0) {
+            return balls + "볼\n";
+        } else {
+            return balls + "볼 " + strikes + "스트라이크\n";
+        }
     }
 }
 
