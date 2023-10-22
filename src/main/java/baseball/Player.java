@@ -1,11 +1,11 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import static baseball.Exception.*;
 import static baseball.Reader.readNumber;
 import static baseball.Reader.readString;
-import static java.util.Arrays.stream;
 
 
 public class Player {
@@ -29,20 +29,51 @@ public class Player {
 
     private List<Integer> changeStringToList(String inputString) {
         String[] strings = inputString.split("");
+        validateInputSize(strings);
+        List<Integer> list = new ArrayList<>();
 
-        return stream(strings)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
-    private boolean isDuplicatedNumber(final List<Integer> randomNumberList, final int number) {
-        return randomNumberList.contains(number);
+        for (int i = 0; i < strings.length; i++) {
+            int number = Integer.parseInt(strings[i]);
+            validateNumber(list, number);
+            list.add(number);
+        }
+        return list;
     }
 
     public boolean chooseFinishGame() {
         int input = readNumber();
-
-        if (input != 1 && input != 2) throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
-
+        validateFinishGameNumber(input);
         return input == 2;
+    }
+
+    private void validateInputSize(String[] strings) {
+        if (strings.length != 3)
+            throw new IllegalArgumentException(INVALID_SIZE_OF_INPUT.getMessage());
+    }
+
+    private void validateNumber(final List<Integer> list, final int number) {
+        validateNull(number);
+        validateNumberRange(number);
+        validateDuplication(list, number);
+    }
+
+    private void validateNull(int number) {
+        if (number == 0)
+            throw new IllegalArgumentException(INVALID_TYPE_OF_INPUT.getMessage());
+    }
+
+    private void validateNumberRange(final int number) {
+        if (number < 1 || number > 9)
+            throw new IllegalArgumentException(INVALID_RANGE_OF_INPUT.getMessage());
+    }
+
+    private void validateDuplication(final List<Integer> randomNumberList, final int number) {
+        if (randomNumberList.contains(number))
+            throw new IllegalArgumentException(ALREADY_EXIST_NUMBER.getMessage());
+    }
+
+    private void validateFinishGameNumber(int input) {
+        if (input != 1 && input != 2)
+            throw new IllegalArgumentException(ONLY_1_OR_2.getMessage());
     }
 }
