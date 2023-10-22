@@ -12,19 +12,29 @@ class InputMapper {
     public static List<Integer> mapToInteger(List<String> input) {
         checkInputNonNull(input);
 
-        return map(input);
+        return mapAll(input);
     }
 
-    private static void checkInputNonNull(List<String> input) {
+    public static int mapToInt(String input) {
+        checkInputNonNull(input);
+
+        return mapEach(input);
+    }
+
+    private static void checkInputNonNull(Object input) {
         Optional.ofNullable(input)
                 .orElseThrow(() -> new IllegalArgumentException(UNKNOWN_INPUT_MESSAGE));
     }
 
-    private static List<Integer> map(List<String> input) {
+    private static List<Integer> mapAll(List<String> input) {
+        return input.stream()
+                .map(InputMapper::mapEach)
+                .collect(Collectors.toList());
+    }
+
+    private static int mapEach(String input) {
         try {
-            return input.stream()
-                    .map(Integer::parseInt)
-                    .collect(Collectors.toList());
+            return Integer.parseInt(input);
         } catch (Exception e) {
             throw new IllegalArgumentException(INVALID_NUMBER_FORMAT_MESSAGE);
         }

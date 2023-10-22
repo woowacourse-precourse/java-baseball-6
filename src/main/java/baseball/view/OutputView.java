@@ -5,12 +5,17 @@ import baseball.entity.PlayResult;
 public class OutputView {
 
     private static final String INTRO_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String OUTRO_MESSAGE_FORMAT = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n";
     private static final String BALL_POSTFIX = "볼 ";
     private static final String STRIKE_POSTFIX = "스트라이크";
     private static final String NOTHING_MESSAGE = "낫싱";
 
     public static void printIntro() {
         System.out.println(INTRO_MESSAGE);
+    }
+
+    public static void printOutro(int maxBallsSize) {
+        System.out.format(OUTRO_MESSAGE_FORMAT, maxBallsSize);
     }
 
     public static void printResult(PlayResult result) {

@@ -14,7 +14,9 @@ public class Application {
     public static void main(String[] args) {
         OutputView.printIntro();
 
-        run(baseballGame());
+        do {
+            run(baseballGame());
+        } while (requestRestart());
     }
 
     private static BaseballGame baseballGame() {
@@ -33,5 +35,14 @@ public class Application {
 
             OutputView.printResult(result);
         }
+
+        OutputView.printOutro(Balls.MAX_BALLS_SIZE);
+    }
+
+    private static boolean requestRestart() {
+        String playerCommand = InputView.readPlayerCommand(GameCommand.RESTART.getValue(), GameCommand.END.getValue());
+        GameCommand command = GameCommand.from(InputMapper.mapToInt(playerCommand));
+
+        return command.isRestart();
     }
 }
