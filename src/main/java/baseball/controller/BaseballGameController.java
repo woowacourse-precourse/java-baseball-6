@@ -77,24 +77,4 @@ public class BaseballGameController {
         throw new IllegalArgumentException("잘못된 입력값입니다.");
     }
 
-    private boolean isStrikeAnswer() {
-        return comparator.getStrikeCount() != 0 && comparator.getBallCount() == 0;
-    }
-
-    private boolean isBallAnswer() {
-        return comparator.getStrikeCount() == 0 && comparator.getBallCount() != 0;
-    }
-
-    private boolean isStrikeAndBallAnswer() {
-        return comparator.getStrikeCount() != 0 && comparator.getBallCount() != 0;
-    }
-
-    private boolean isCorrectAnswer() {
-        return comparator.getStrikeCount() == 3;
-    }
-
-    private boolean isNothingAnswer() {
-        return comparator.getStrikeCount() == 0 && comparator.getBallCount() == 0;
-    }
-
 }
