@@ -14,4 +14,12 @@ public record GameButton(int number) {
             throw new IllegalArgumentException(String.format("게임 재시작은 %d, 종료는 %d이어야 합니다.", restartNumber, exitNumber));
         }
     }
+
+    public boolean isRestart() {
+        return number == GameConfig.GAME_RESTART.getValue();
+    }
+
+    public boolean isExit() {
+        return number == GameConfig.GAME_EXIT.getValue();
+    }
 }
