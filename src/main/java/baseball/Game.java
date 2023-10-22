@@ -102,12 +102,20 @@ public class Game {
      * @throws IllegalArgumentException 사용자가 입력한 값이 유효하지 않은 경우
      */
     private boolean isValidUserNum(String userNum) throws IllegalArgumentException {
-        //입력이 양수가 아닌 경우 or 입력한 숫자가 3자리가 아닌 경우 or 입력한 숫자에 중복이 존재하는 경우
-        if (!isPositiveNumber(userNum)
-                || (userNum.length() != GameDetail.NUM_COUNT)
-                || hasDuplicateNum(userNum)
-                || userNum.contains("0")) {
-            throw new IllegalArgumentException(String.format("유효하지 않은 입력값 = %s", userNum));
+        if (!isPositiveNumber(userNum)) {
+            throw new IllegalArgumentException(String.format("양수가 아닌 입력값 = %s", userNum));
+        }
+
+        if (userNum.length() != GameDetail.NUM_COUNT) {
+            throw new IllegalArgumentException(String.format("3자리가 아닌 입력값 = %s", userNum));
+        }
+
+        if (hasDuplicateNum(userNum)) {
+            throw new IllegalArgumentException(String.format("중복된 숫자가 존재하는 입력값 = %s", userNum));
+        }
+
+        if (userNum.contains("0")) {
+            throw new IllegalArgumentException(String.format("0이 포함된 입력값(1부터 9까지 가능) = %s", userNum));
         }
 
         return true;
