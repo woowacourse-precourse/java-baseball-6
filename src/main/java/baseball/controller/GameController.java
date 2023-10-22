@@ -52,7 +52,7 @@ public class GameController {
 
             outputView.printGameResult(strikeCount, ballCount);
 
-            if (strikeCount == GameConstants.FIXED_DIGIT_NUMBER) {
+            if (strikeCount == GameConstants.DIGIT_SIZE) {
                 outputView.printSuccessMessage();
                 break;
             }

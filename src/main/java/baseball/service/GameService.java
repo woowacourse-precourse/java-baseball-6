@@ -18,7 +18,7 @@ public class GameService {
     public List<Integer> generateRandomNums() {
         List<Integer> randomNums = new ArrayList<>();
 
-        while (randomNums.size() < GameConstants.FIXED_DIGIT_NUMBER) {
+        while (randomNums.size() < GameConstants.DIGIT_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(GameConstants.MIN_RANGE_NUMBER,
                     GameConstants.MAX_RANGE_NUMBER);
 
