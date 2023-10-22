@@ -10,9 +10,10 @@ import java.util.Set;
 public class InputView {
 
     private final static String GET_GAME_NUM = "숫자를 입력해 주세요 : ";
+    private final static String GET_DECISION_NUM = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public List<Integer> getGameNum() {
-        System.out.println(GET_GAME_NUM);
+        System.out.print(GET_GAME_NUM);
         String gameNum = Console.readLine();
 
         validateNum(gameNum);
@@ -20,6 +21,18 @@ public class InputView {
         validateDuplicate(gameNum);
 
         return stringToList(gameNum);
+    }
+
+    public void getDecisionNum() {
+        System.out.println(GET_DECISION_NUM);
+        String decisionNum = Console.readLine();
+        validateDecision(decisionNum);
+    }
+
+    public void validateDecision(String line) {
+        if (!line.equals("1") && !line.equals("2")) {
+            throw new IllegalArgumentException(InputException.INVALID_DECISION_NUM.getExceptionMessage());
+        }
     }
 
     public void validateNum(String line) {
