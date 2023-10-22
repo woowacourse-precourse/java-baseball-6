@@ -51,4 +51,12 @@ public class PlayGame {
             throw new IllegalArgumentException("중복된 값을 입력하지 말아주세요.");
         }
     }
+
+    public void validateIsZero(String input) {
+        for (char c : input.toCharArray()) {
+            if (c == '0') {
+                throw new IllegalArgumentException("0을 입력하지 말아주세요");
+            }
+        }
+    }
 }
