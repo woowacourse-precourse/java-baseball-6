@@ -7,10 +7,14 @@ public class BaseballGame {
     private static final int BASEBALL_NUMBERS_LENGTH = 3;
 
     private final List<BaseballNumber> computerBaseballNumbers;
-    private final List<BaseballNumber> userBaseballNumbers;
+    private List<BaseballNumber> userBaseballNumbers;
 
     public BaseballGame(List<BaseballNumber> computerBaseballNumbers, List<BaseballNumber> userBaseballNumbers) {
         this.computerBaseballNumbers = computerBaseballNumbers;
+        this.userBaseballNumbers = userBaseballNumbers;
+    }
+
+    public void resetUserBaseballNumbers(List<BaseballNumber> userBaseballNumbers) {
         this.userBaseballNumbers = userBaseballNumbers;
     }
 
