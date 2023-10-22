@@ -16,12 +16,6 @@ public class ComputerNumber {
         }
     }
 
-
-    public void addDigit(Integer digit) {
-        validateComputerNumber(digit);
-        this.computerNumber.add(digit);
-    }
-
     public List<Integer> getComputerNumber() {
         return this.computerNumber;
     }
