@@ -45,7 +45,7 @@ public class BaseballController {
             final AttemptNumbers attemptNumbers = inputManager.readAttemptNumbers();
             final BallCount ballCount = baseballService.checkAnswer(attemptNumbers);
             outputView.printBallCount(ballCount);
-            if (ballCount.checkResultStatus().isFinished()) {
+            if (ballCount.checkResultStatus().isSuccess()) {
                 break;
             }
         }

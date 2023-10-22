@@ -35,7 +35,7 @@ public class BallCount {
 
     public ResultStatus checkResultStatus() {
         if (getStrikeNum() == BALL_COUNT_SIZE) {
-            return ResultStatus.FINISHED;
+            return ResultStatus.SUCCESS;
         }
         return ResultStatus.CONTINUE;
     }

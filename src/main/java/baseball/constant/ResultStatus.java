@@ -1,10 +1,10 @@
 package baseball.constant;
 
 public enum ResultStatus {
-    FINISHED,
+    SUCCESS,
     CONTINUE;
 
-    public boolean isFinished() {
-        return this == FINISHED;
+    public boolean isSuccess() {
+        return this == SUCCESS;
     }
 }
