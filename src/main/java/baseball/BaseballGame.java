@@ -18,7 +18,7 @@ public class BaseballGame {
     }
 
     private static void newGame() {
-        Computer computer = initAnswer();
+        Computer computer = new Computer();
         String hint;
         do {
             System.out.print("숫자를 입력해주세요 : ");
@@ -42,9 +42,5 @@ public class BaseballGame {
         Validator.validateNewOrQuit(newOrQuit);
         if (newOrQuit.equals("1")) return true;
         else return false;
-    }
-
-    private static Computer initAnswer() {
-        return new Computer();
     }
 }
