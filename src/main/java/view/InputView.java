@@ -24,14 +24,14 @@ import java.util.List;
 public class InputView {
     public static List<Integer> userInput() {
         String input = Console.readLine();
-        char[] inputNumber = input.toCharArray();
-        if (inputNumber.length != 3) {
+
+        if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
 
         List<Integer> userNumber = new ArrayList<>();
-        for (char i : inputNumber) {
-            userNumber.add(Integer.parseInt(String.valueOf(i)));
+        for (int i = 0; i < input.length(); i++) {
+            userNumber.add(input.charAt(i) - '0');
         }
 
         return userNumber;
