@@ -34,8 +34,8 @@ public class Game {
         List<Integer> playerNumbers = player.load3NumberList();
 
         Result result = judge.calculateResult(answer, playerNumbers);
-        printRoundResult(result);
         isFinish = judge.checkGameIsFinish(result);
+        judge.announceResult(result);
     }
 
     public boolean isRestart() {

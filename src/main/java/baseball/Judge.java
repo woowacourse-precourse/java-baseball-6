@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.List;
 
+import static baseball.Printer.printRoundResult;
+
 public class Judge {
 
     public Result calculateResult(List<Integer> playerNumbers, List<Integer> answer) {
@@ -10,6 +12,10 @@ public class Judge {
         int ball = countBall(duplicateCount, strike);
 
         return new Result(strike, ball);
+    }
+
+    public void announceResult(Result result) {
+        printRoundResult(result);
     }
 
     private int countDuplicateIntegers(List<Integer> playerNumbers, List<Integer> answer) {
