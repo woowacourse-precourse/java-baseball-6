@@ -27,6 +27,7 @@ public class Application {
             String result = checkValidation.checkNumberValidation();
             if (result.equals("유효")) {
                 Hint hint = new Hint(computer, input);
+                // 힌트 제공 또는 정답 확인
                 boolean ifCorrect = hint.checkNumber();
                 if (ifCorrect) {
                     int ifContinue = -1;
