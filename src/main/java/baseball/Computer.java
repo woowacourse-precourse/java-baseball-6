@@ -22,8 +22,7 @@ public class Computer {
         // ToDo: guess랑 answer 비교해서 strike, ball 계산
         int nStrikes = 3;
         int nBalls = 0;
-        // ToDo: 주어진 strike, ball에 따라 결과 출력
-        // printGuessResult(nStrikes, nBalls);
+        printGuessResult(nStrikes, nBalls);
         return (nStrikes == 3);
     }
 
@@ -56,5 +55,18 @@ public class Computer {
             guess.add(Character.getNumericValue(ch));
         }
         return guess;
+    }
+
+    private void printGuessResult(int nStrikes, int nBalls) {
+        if (nBalls > 0) {
+            System.out.printf("%d볼 ", nBalls);
+        }
+        if (nStrikes > 0) {
+            System.out.printf("%d스트라이크", nStrikes);
+        }
+        if (nBalls < 1 && nStrikes < 1) {
+            System.out.print("낫싱");
+        }
+        System.out.println();
     }
 }
