@@ -26,4 +26,14 @@ public class Number {
             }
         }
     }
+
+    public int getStrikeCount(ArrayList<Integer> inputNumber) {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (number.get(i).equals(inputNumber.get(i))) {
+                strike++;
+            }
+        }
+        return strike;
+    }
 }
