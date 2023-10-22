@@ -20,9 +20,14 @@ public class Baseball_output {
     }
     public static void printStrike(int numOfStrike){
         System.out.println(numOfStrike+"스트라이크");
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         return ;
     }
+
+    public static void printGameEnd(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        return;
+    }
+
     public static void printRestart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return ;
