@@ -42,13 +42,13 @@ public class Play { // 숫자 야구 게임 진행 관련 클래스
     private String setInput(String msg) {   // 입력값을 문자열 형태로 저장
         System.out.print(msg);              // 입력 메시지 출력
         String temp = Console.readLine();
-        checkInputHasChar(temp);            // 첫번째, 두번째 입력 모두 문자 없는 숫자만 필요
+        checkIfInputHasChar(temp);            // 첫번째, 두번째 입력 모두 문자 없는 숫자만 필요
         return temp;
     }
 
     // 입력값에서 숫자 이외 문자가 포함되면 IllegalArgumentException 발생
     // 두번의 입력(사용자의 숫자, 재시작) 모두 숫자만 필요하므로 공통으로 수행하는 유효성 검사
-    private void checkInputHasChar(String input) {
+    private void checkIfInputHasChar(String input) {
         try {
             int temp = Integer.parseInt(input); // 입력값에 문자가 섞이면 Exception 발생
         } catch (NumberFormatException e) {
@@ -72,7 +72,7 @@ public class Play { // 숫자 야구 게임 진행 관련 클래스
 
     // 재시작 메뉴 번호 입력 시 1, 2 이외의 숫자가 입력되면 IllegalArgumentException 발생
     private int checkMenuNumber(String input) {
-        checkInputHasChar(input);
+        checkIfInputHasChar(input);
         int menuNum = Integer.parseInt(input);
         if (menuNum < 1 || menuNum > 2) {
             throw new IllegalArgumentException("Invalid Menu Number: " + menuNum);

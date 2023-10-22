@@ -21,7 +21,7 @@ public class User {
     }
 
     // 숫자로만 이루어진 문자열을 대상으로 하는 유효성 검사
-    // 입력값은 Play 클래스의 checkInputHasChar()에서의 유효성 검사를 통과한 문자열
+    // 입력값은 Play 클래스의 checkIfInputHasChar()에서의 유효성 검사를 통과한 문자열
     private void checkIfValidInputNumber(String input) {
         checkInputLength(input);    // 문자열 길이 검사
         checkIfInputHasZero(input);   // 0 포함 여부 검사
