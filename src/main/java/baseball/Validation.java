@@ -23,4 +23,10 @@ public class Validation {
         }
     }
 
+    public void restartValidation(int restartNumber) {
+        if (restartNumber != RESTART_NUMBER && restartNumber != QUIT_NUMBER) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
