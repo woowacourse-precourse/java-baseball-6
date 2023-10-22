@@ -1,17 +1,17 @@
-package baseball.domain.baseball;
+package baseball.domain;
 
 import java.util.List;
 
-public abstract class Baseball<T> {
+public class Baseball<T> {
     protected List<T> values;
 
     public Baseball() {
 
     }
 
-/*    public Baseball(List<T> values) {
+    public Baseball(List<T> values) {
         this.values = values;
-    }*/
+    }
 
     public List<T> getValues() {
         return values;
