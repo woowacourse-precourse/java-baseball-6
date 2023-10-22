@@ -15,7 +15,7 @@ public class NumberFormatValidator {
         Matcher matcher = pattern.matcher(number);
 
         if (!matcher.matches()) {
-            throw new NumberFormatException(ErrorMessage.NUMBER_TYPE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_TYPE.getMessage());
         }
     }
 }

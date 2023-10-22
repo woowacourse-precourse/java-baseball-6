@@ -17,7 +17,7 @@ public class NumberDuplicateValidator {
         }
 
         if (characterSet.size() != number.length()) {
-            throw new NumberDuplicateException(ErrorMessage.NUMBER_DUPLICATE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_DUPLICATE.getMessage());
         }
     }
 }

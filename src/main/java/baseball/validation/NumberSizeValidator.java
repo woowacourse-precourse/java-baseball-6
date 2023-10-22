@@ -10,7 +10,7 @@ public class NumberSizeValidator {
 
     public static void validate(String number) {
         if (number.length() != 3) {
-            throw new NumberSizeException(ErrorMessage.NUMBER_SIZE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_SIZE.getMessage());
         }
     }
 }

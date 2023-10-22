@@ -16,7 +16,7 @@ public class NumberRangeValidator {
         Matcher matcher = pattern.matcher(number);
 
         if (!matcher.matches()) {
-            throw new NumberRangeException(ErrorMessage.NUMBER_RANGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_RANGE.getMessage());
         }
     }
 }
