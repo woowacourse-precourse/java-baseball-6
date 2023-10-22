@@ -9,20 +9,20 @@ public class PitchResult {
     private static final String SPACE = " ";
     private static final int BALL_COUNT = 3;
 
-    private final int strikeCount;
-    private final int ballCount;
+    private int strikeCount;
+    private int ballCount;
 
     public PitchResult(int strikeCount, int ballCount) {
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
     }
 
-    public PitchResult strike() {
-        return new PitchResult(strikeCount + 1, ballCount);
+    public void strike() {
+        this.strikeCount++;
     }
 
-    public PitchResult ball() {
-        return new PitchResult(strikeCount, ballCount + 1);
+    public void ball() {
+        this.ballCount++;
     }
 
     public boolean isGameEnd() {
