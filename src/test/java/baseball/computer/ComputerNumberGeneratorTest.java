@@ -1,4 +1,4 @@
-package baseball;
+package baseball.computer;
 
 import baseball.computer.ComputerNumberGenerator;
 import org.junit.jupiter.api.Assertions;
