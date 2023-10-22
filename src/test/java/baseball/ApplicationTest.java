@@ -15,6 +15,19 @@ import org.junit.jupiter.api.Test;
 class ApplicationTest extends NsTest {
 
     @Test
+    void generateInputList() {
+        // given
+        Generator generator = new Generator();
+        String case1 = "123";
+
+        // when
+        List<Integer> result1 = generator.generateInputList(case1);
+
+        // then
+        assertThat(result1.size()).as("list size").isEqualTo(case1.length());
+    }
+
+    @Test
     void generateAnswer() {
         // given
         Generator generator = new Generator();
