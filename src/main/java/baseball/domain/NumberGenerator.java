@@ -12,8 +12,9 @@ public class NumberGenerator {
         List<BaseBall> randomBaseBallNumbers = new ArrayList<>();
         while(randomBaseBallNumbers.size() < BaseBalls.SIZE){
             int number = Randoms.pickNumberInRange(BaseBall.MIN_NUMBER, BaseBall.MAX_NUMBER);
-            if(!randomBaseBallNumbers.contains(number)){
-                randomBaseBallNumbers.add(BaseBall.toAnswerBaseBall(number));
+            BaseBall answerNumber = BaseBall.toAnswerBaseBall(number);
+            if(!randomBaseBallNumbers.contains(answerNumber)){
+                randomBaseBallNumbers.add(answerNumber);
             }
         }
         return randomBaseBallNumbers;
