@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputModule {
     private int[] inputArr;
+    private int inputInt;
 
     public InputModule() {
         String[] arr = Console.readLine().split("");
@@ -15,11 +16,17 @@ public class InputModule {
         return inputArr.clone();
     }
 
+    public int getInputInt() {
+        return inputInt;
+    }
+
+    public void setInputInt(int inputInt) {
+        this.inputInt = Integer.parseInt(Console.readLine());
+    }
+
     private void extract_arr(String[] arr) {
         for(int i = 0; i < arr.length; i++){
             inputArr[i] = Integer.parseInt(arr[i]);
         }
     }
-
-
 }
