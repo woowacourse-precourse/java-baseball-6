@@ -5,16 +5,21 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-public class GameService {
-    List<Integer> computerNumber;
-    HashSet<Integer> answerDigit = new HashSet<>();
+import baseball.model.NumberModel;
 
-    public GameService(List<Integer> computerNumber) {
-        this.computerNumber = computerNumber;
+public class GameService {
+    private final NumberModel numberModel;
+    private final List<Integer> computerNumber;
+    private final HashSet<Integer> answerDigit = new HashSet<>();
+
+    public GameService(NumberModel numberModel) {
+        this.numberModel = numberModel;
+        this.computerNumber = this.numberModel.getComputerNumbers();
         this.answerDigit.addAll(computerNumber);
     }
 
-    public List<Integer> compareNumbers(List<Integer> userNumber) {
+    public List<Integer> compareNumbers() {
+        List<Integer> userNumber = this.numberModel.getUserNumbers();
         int strikeCnt = countStrike(userNumber);
         int ballCnt = countSameNumber(userNumber) - strikeCnt;
 

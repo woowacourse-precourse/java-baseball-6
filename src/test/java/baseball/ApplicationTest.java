@@ -32,9 +32,13 @@ class ApplicationTest extends NsTest {
         List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
         List<Integer> userNum = new ArrayList<>(Arrays.asList(1, 3, 4));
         List<Integer> expected = new ArrayList<>(Arrays.asList(1, 1));
-        GameService gameService = new GameService(answer);
 
-        assertThat(gameService.compareNumbers(userNum)).isEqualTo(expected);
+        NumberModel numberModel = new NumberModel();
+        numberModel.setComputerNumbers(answer);
+        numberModel.setUserNumbers(userNum);
+        GameService gameService = new GameService(numberModel);
+
+        assertThat(gameService.compareNumbers()).isEqualTo(expected);
     }
 
     @Test
