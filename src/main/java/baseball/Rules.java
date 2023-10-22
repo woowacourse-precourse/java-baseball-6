@@ -7,6 +7,10 @@ public class Rules {
     private int balls;
     private int strikes;
 
+    public Rules() {
+        initBallsAndStrikes();
+    }
+
     private void initBallsAndStrikes() {
         this.balls = 0;
         this.strikes = 0;
