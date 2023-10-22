@@ -27,34 +27,18 @@ public class Application {
             String userNumber = readLine(); // 서로 다른 3개의 숫자 입력
 
             // 3자리 수 초과 입력
-            if (userNumber.length() > 3) {
-                throw new IllegalArgumentException();
-            }
+            Array.checkArrayLength(userNumber);
 
             // 0이 포함된 경우
-            if (userNumber.contains("0")) {
-                throw new IllegalArgumentException();
-            }
+            Array.checkZeroInArray(userNumber);
 
             // 같은 수 포함
             List<Integer> userNum = new ArrayList<>();
-            String[] userNumArr = userNumber.split(""); // 입력 받은 수 한글자씩 나눔
-            for (int i = 0; i < 3; i++) {
-                Integer userNumInt = Integer.parseInt(userNumArr[i]);
-                if (!userNum.contains(userNumInt)) { // 없으면 추가
-                    userNum.add(userNumInt);
-                } else { // 같은 수 포함
-                    throw new IllegalArgumentException();
-                }
-            }
+            Array.checkForDuplicateNumbers(userNum, userNumber);
             System.out.println(userNum);
 
             // 숫자가 아닌 경우
-            try {
-                Integer.parseInt(userNumber);
-            } catch (IllegalArgumentException ll) {
-                break;
-            }
+            Array.checkArrayNumber(userNumber);
 
             // 출력
             // 컴퓨터가 만든 서로 다른 랜덤 3자리 수 computer 와 사용자 입력을 받은 서로 다른 3자리 수 userNum 비교
