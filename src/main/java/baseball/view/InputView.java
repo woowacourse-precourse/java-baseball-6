@@ -30,25 +30,25 @@ public class InputView {
         return Integer.parseInt(decisionNum);
     }
 
-    public void validateDecision(String line) {
+    private void validateDecision(String line) {
         if (!line.equals("1") && !line.equals("2")) {
             throw new IllegalArgumentException(InputException.INVALID_DECISION_NUM.getExceptionMessage());
         }
     }
 
-    public void validateNum(String line) {
+    private void validateNum(String line) {
         if (!line.matches("\\d+")) {
             throw new IllegalArgumentException(InputException.NOT_INTEGER.getExceptionMessage());
         }
     }
 
-    public void validateCount(String line) {
+    private void validateCount(String line) {
         if (line.length() != 3) {
             throw new IllegalArgumentException(InputException.MISMATCH_COUNT.getExceptionMessage());
         }
     }
 
-    public void validateDuplicate(String line) {
+    private void validateDuplicate(String line) {
         Set<Character> set = new HashSet<>();
         for (char c : line.toCharArray()) {
             if (set.contains(c)) {
@@ -58,7 +58,7 @@ public class InputView {
         }
     }
 
-    public static List<Integer> stringToList(String line) {
+    private static List<Integer> stringToList(String line) {
         List<Integer> result = new ArrayList<>();
         for (char c : line.toCharArray()) {
             int digit = Character.getNumericValue(c);

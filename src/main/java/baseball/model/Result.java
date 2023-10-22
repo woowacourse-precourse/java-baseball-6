@@ -9,7 +9,7 @@ public class Result {
 
     public Result() {
     }
-    
+
     public int getStrike() {
         return this.strike;
     }
