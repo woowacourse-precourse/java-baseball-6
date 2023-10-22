@@ -52,7 +52,7 @@ public class Game {
     private List<Integer> changeStringToList(String inputValue) {
         List<Integer> inputNumbers = new ArrayList<>();
         for (char currentCharacter : inputValue.toCharArray()) {
-            inputNumbers.add((int) currentCharacter);
+            inputNumbers.add((int) (currentCharacter - '0'));
         }
         return inputNumbers;
     }
@@ -69,7 +69,6 @@ public class Game {
             comparisonResult[1]++;
             return;
         }
-
         if(randomNumbers.contains(inputNumbers.get(currentPosition))) {
             comparisonResult[0]++;
         }
@@ -85,6 +84,10 @@ public class Game {
 
     public boolean isOnlyBall() {
         return comparisonResult[0] != 0 && comparisonResult[1] == 0;
+    }
+
+    public boolean isNothing() {
+        return comparisonResult[0] == 0 && comparisonResult[1] == 0;
     }
 
     public int getBallNumber() {
