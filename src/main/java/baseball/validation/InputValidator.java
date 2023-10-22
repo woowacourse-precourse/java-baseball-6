@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 
 public class InputValidator {
     // TODO: 입력받은 값의 유효성 검사
-    private static final int VALIDATION_MAX_VALUE = NumberConst.MAX_INPUT_VALUE; // 입력 받은 값의 최대 값
-    private static final int VALIDATION_MIN_VALUE = NumberConst.MIN_INPUT_VALUE; // 입력 받은 값의 최소 값
-    private static final MessageUtil MESSAGE_UTIL = new MessageUtil(); // 메시지 출력 용도
-    private static final int INPUT_NUM_LENGTH = NumberConst.EXPECTED_INPUT_LENGTH; // 입력할 수 있는 숫자의 최대 길이(3)
+    private static final int validationMaxValue = NumberConst.MAX_INPUT_VALUE; // 입력 받은 값의 최대 값
+    private static final int validationMinValue = NumberConst.MIN_INPUT_VALUE; // 입력 받은 값의 최소 값
+    private static final MessageUtil MessageUtil = new MessageUtil(); // 메시지 출력 용도
+    private static final int inputNumLength = NumberConst.EXPECTED_INPUT_LENGTH; // 입력할 수 있는 숫자의 최대 길이(3)
 
 
     /*
@@ -63,7 +63,7 @@ public class InputValidator {
     public static void validationRestartAndStopValue(int inputValue) {
         // TODO: 게임 종료 이후 1,2 값만 입력하였는지 유효성 검사
         if (inputValue != 1 && inputValue != 2) {
-            MESSAGE_UTIL.printInvalidGameControlInput();
+            MessageUtil.printInvalidGameControlInput();
             throw new IllegalArgumentException();
         }
     }
@@ -76,7 +76,7 @@ public class InputValidator {
     private static void validateInputDuplicated(List<Integer> inputValue) {
         // TODO: 입력받은 값 중복 숫자 유효성 검사
         if (inputValue.size() != inputValue.stream().distinct().count()) {
-            MESSAGE_UTIL.printDuplicatedInputNumber();
+            MessageUtil.printDuplicatedInputNumber();
             throw new IllegalArgumentException();
         }
     }
@@ -88,8 +88,8 @@ public class InputValidator {
      */
     private static void validateInputLength(List<Integer> inputValue) {
         // TODO: 입력받은 값이 inputNumLength 와 같은지 유효성 검사
-        if (inputValue.size() != INPUT_NUM_LENGTH) {
-            MESSAGE_UTIL.printInvalidNumber();
+        if (inputValue.size() != inputNumLength) {
+            MessageUtil.printInvalidNumber();
             throw new IllegalArgumentException();
         }
     }
@@ -105,7 +105,7 @@ public class InputValidator {
         try {
             Integer.parseInt(inputValue);
         } catch (NumberFormatException exception) {
-            MESSAGE_UTIL.printInvalidNumeric();
+            MessageUtil.printInvalidNumeric();
             throw new IllegalArgumentException();
         }
     }
@@ -117,8 +117,8 @@ public class InputValidator {
      */
     private static void validateInputIsOneToNine(List<Integer> inputValue) {
         // TODO: 입력받은 값이 VALIDATION_MIN_VALUE 부터 VALIDATION_MAX_VALUE 사이 존재 하는지 유효성 검사
-        if (!inputValue.stream().allMatch(element -> element >= VALIDATION_MIN_VALUE && element <= VALIDATION_MAX_VALUE)) {
-            MESSAGE_UTIL.printInvalidRange();
+        if (!inputValue.stream().allMatch(element -> element >= validationMinValue && element <= validationMaxValue)) {
+            MessageUtil.printInvalidRange();
             throw new IllegalArgumentException();
         }
     }
