@@ -20,7 +20,7 @@ class ValidateInputTest extends NsTest {
     void 입력값_검증_실패() {
         assertSimpleTest(
             () -> assertThatThrownBy(() -> ValidateInput.validate("", "오류", "입력 값 검증 오류"))
-                .hasMessageContaining("오류")
+                .hasMessage("입력 값 검증 오류")
                 .isInstanceOf(IllegalArgumentException.class));
     }
 
