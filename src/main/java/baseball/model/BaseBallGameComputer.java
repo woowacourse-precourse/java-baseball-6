@@ -1,21 +1,19 @@
 package baseball.model;
 
+import baseball.model.rule.BaseBallGameRule;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class BaseBallGameComputer {
+public class BaseBallGameComputer extends BaseBallGameRule {
     private Set<Ball> balls;
-    private final static Integer MIN_VALUE = 1;
-    private final static Integer MAX_VALUE = 9;
-
     public BaseBallGameComputer() {
     }
 
-    public void initComputerNumbers() {
+    public void readyForGame() {
         this.balls = new LinkedHashSet<>();
-        while (balls.size() < 3) {
-            int randomNumber = pickNumberFromThreadLocalRandomForBalls(MIN_VALUE, MAX_VALUE);
+        while (balls.size() < BASEBALL_MAX_AMOUNT) {
+            int randomNumber = pickNumberFromThreadLocalRandomForBalls(BASEBALL_MIN_VALUE,BASEBALL_MAX_VALUE);
             balls.add(new Ball(randomNumber));
         }
     }

@@ -8,12 +8,12 @@ import java.util.List;
 public class GameController {
     private final OutputController outputController;
     private final InputController inputController;
-    private final BaseBallGameComputer computer;
+    private final BaseBallGameComputer gameComputer;
 
     private GameController() {
         this.outputController = new OutputController();
         this.inputController = new InputController();
-        this.computer = new BaseBallGameComputer();
+        this.gameComputer = new BaseBallGameComputer();
     }
 
     public static GameController StartBaseballGame() {
@@ -24,7 +24,7 @@ public class GameController {
         boolean gameProcess = true;
         while (gameProcess) {
             outputController.showIntroMessage();
-            computer.initComputerNumbers();
+            gameComputer.readyForGame();
             playGame();
             outputController.showGameRestartInputMessage();
             gameProcess = inputController.isRestartGame();
@@ -36,7 +36,7 @@ public class GameController {
         while (!isGameClear) {
             outputController.showGameInputMessage();
             List<Integer> input = inputController.getPlayerGuessNumber();
-            Hint result = BaseballGamePlayer.swingBat(computer, input);
+            Hint result = BaseballGamePlayer.swingBat(gameComputer, input);
             isGameClear = outputController.displayHint(result);
         }
     }
