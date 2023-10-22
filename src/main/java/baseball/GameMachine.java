@@ -12,6 +12,10 @@ public class GameMachine {
         this.playerNumbers = playerNumbers;
     }
 
+    public void setPlayerNumbers(String[] playerNumbers) {
+        this.playerNumbers = playerNumbers;
+    }
+
     public GameResult playGame() {
         int ball = 0;
         int strike = 0;
