@@ -23,12 +23,13 @@ public class GameController {
 
     public void checkMatch(List<Integer> computerNum, List<Integer> userNum) {
         checkIfNothing(computerNum, userNum);
-        int a = countStrike(computerNum, userNum);
-        int b = countBall(computerNum, userNum);
+        int strikeCount = countStrike(computerNum, userNum);
+        int ballCount = countBall(computerNum, userNum);
+        printResult(strikeCount, ballCount);
     }
 
     public void checkIfNothing(List<Integer> computerNum, List<Integer> userNum) {
-        if (!computerNum.retainAll(userNum)) {
+        if (!computerNum.contains(userNum)) {
             isNothing = true;
         }
     }
@@ -51,5 +52,19 @@ public class GameController {
             }
         }
         return count;
+    }
+
+    public void printResult(int strikeCount, int ballCount) {
+        if (isNothing) {
+            System.out.println("낫싱");
+            isNothing = !isNothing;
+        }
+        if (ballCount > 0) {
+            System.out.printf("%d볼 ", ballCount);
+        }
+        if (strikeCount > 0) {
+            System.out.printf("%d", strikeCount);
+        }
+        System.out.print("\n");
     }
 }
