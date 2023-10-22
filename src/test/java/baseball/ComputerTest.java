@@ -55,6 +55,16 @@ public class ComputerTest extends NsTest {
         assertThat(comparator.getStrikeCount()).isEqualTo(1);
     }
 
+    @Test
+    void 숫자_비교_정답() {
+        List<Integer> computerNumbers = Arrays.asList(7, 8, 9);
+        List<Integer> playerNumbers = Arrays.asList(7, 8, 9);
+        int result = comparator.getResult(playerNumbers, computerNumbers);
+
+        assertThat(result).isEqualTo(3);
+        assertThat(comparator.getStrikeCount()).isEqualTo(3);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
