@@ -12,7 +12,7 @@ public class Referee {
 
     private int ball;
 
-    public Referee(Computer computer,Player player) {
+    public Referee(Computer computer, Player player) {
         this.computer = computer;
         this.player = player;
         this.strike = 0;
@@ -53,5 +53,9 @@ public class Referee {
             }
         }
         return ball;
+    }
+
+    public int getStrike() {
+        return strike;
     }
 }
