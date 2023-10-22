@@ -14,7 +14,7 @@ public class InputView {
     public static final int FORMAL_INPUT_LENGTH = 3;
     private static final String NUMBER_CHECK = "^[1-9]{3}$";
 
-    public static BallInfo getBallFromUserInput(){
+    public static BallInfo getBallFromUserInput() {
         System.out.println(MESSAGE_ASK_USER_INPUT);
         return validateUserInput(Console.readLine());
     }
