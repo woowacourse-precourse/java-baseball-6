@@ -10,7 +10,6 @@ public class OutputView {
     public static String printResult(CountResultDto countResult) {
         int strikeCount = countResult.getStrikeCount();
         int ballCount = countResult.getBallCount();
-
         if (strikeCount == ballCount && strikeCount > GameValue.ZERO.getValue()) {
             return strikeCount + GameMessage.STRIKE.getMessage();
         }
@@ -22,7 +21,6 @@ public class OutputView {
             String strikeMessage = strikeCount + GameMessage.STRIKE.getMessage();
             return String.join(" ", ballMessage, strikeMessage);
         }
-
         return GameMessage.NOTHING.getMessage();
     }
 }

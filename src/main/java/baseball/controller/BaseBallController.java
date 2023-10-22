@@ -24,7 +24,6 @@ public class BaseBallController {
     public boolean restartGame() {
         System.out.println(GameMessage.ASK_RETRY.getMessage());
         String command = InputView.inputRetryCommand();
-
         if (command.equals(RESTART)) {
             return true;
         }
@@ -32,13 +31,11 @@ public class BaseBallController {
             System.out.println(GameMessage.END_GAME.getMessage());
             return false;
         }
-
         throw new IllegalArgumentException(ErrorMessage.RESTART_COMMAND.getMessage());
     }
 
     private void runGame(ComputerNumber computerNumber) {
         boolean gameStatus = true;
-
         while (gameStatus) {
             System.out.print(GameMessage.INPUT_NUMBER.getMessage());
             PlayerNumber playerNumber = InputView.inputPlayerNumber();

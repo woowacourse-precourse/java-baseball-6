@@ -11,10 +11,8 @@ public class CountService {
     public static CountResultDto calculateCount(String computerNumber, String playerNumber) {
         List<Integer> computerNumberList = ConversionService.stringToListOfInteger(computerNumber);
         List<Integer> playerNumberList = ConversionService.stringToListOfInteger(playerNumber);
-
         int strikeCount = calculateStrikeCount(computerNumberList, playerNumberList);
         int ballCount = calculateBallCount(computerNumberList, playerNumberList);
-
         return new CountResultDto(strikeCount, ballCount);
     }
 
