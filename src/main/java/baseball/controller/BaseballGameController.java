@@ -22,7 +22,7 @@ public class BaseballGameController {
     private static void playGameOnce() {
         BaseballGame baseballGame = getBaseballGame();
         while (true) {
-            OutputView.printBallStrikeCount(baseballGame.getBallCount(), baseballGame.getStrikeCount());
+            OutputView.printBallStrikeResult(baseballGame.getBallCount(), baseballGame.getStrikeCount());
             if (baseballGame.isAnswer()) {
                 break;
             }

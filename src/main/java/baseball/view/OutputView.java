@@ -22,29 +22,17 @@ public class OutputView {
         System.out.print(ENTER_NUMBER_MESSAGE);
     }
 
-    public static void printBallStrikeCount(int ballCount, int strikeCount) {
-        printBallCount(ballCount);
-        printStrikeCount(strikeCount);
-        printNothing(ballCount, strikeCount);
-        System.out.println();
-    }
-
-    public static void printBallCount(int ballCount) {
+    public static void printBallStrikeResult(int ballCount, int strikeCount) {
         if (ballCount != 0) {
             System.out.print(ballCount + BALL);
         }
-    }
-
-    public static void printStrikeCount(int strikeCount) {
         if (strikeCount != 0) {
             System.out.print(strikeCount + STRIKE);
         }
-    }
-
-    public static void printNothing(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
             System.out.print(NOTHING);
         }
+        System.out.println();
     }
 
     public static void printAnswer() {
