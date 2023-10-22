@@ -2,24 +2,24 @@ package baseball.model;
 
 import baseball.constants.message.BaseballMessage;
 import baseball.constants.BaseballRole;
-import baseball.util.RandomNumberCreateUtil;
 
 import java.util.List;
 
-public class CheckBallAndStrike {
+public class BaseballManager {
 
     private static final int NO_COUNT = 0;
-    private final List<Integer> baseballNumbers;
+    private final BaseballGame baseballGame;
     private int ball;
     private int strike;
 
-    public CheckBallAndStrike() {
+    public BaseballManager() {
+        this.baseballGame = new BaseballGame();
         this.ball = NO_COUNT;
         this.strike = NO_COUNT;
-        this.baseballNumbers = RandomNumberCreateUtil.createBaseballNumbers();
     }
 
     public void updateBallAndStrike(Player player){
+        List<Integer> baseballNumbers = baseballGame.getBaseballNumbers();
         this.ball = (int)player.compareBallCount(baseballNumbers);
         this.strike = (int)player.compareStrikeCount(baseballNumbers);
     }

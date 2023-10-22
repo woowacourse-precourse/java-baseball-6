@@ -4,7 +4,6 @@ import baseball.constants.BaseballRole;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public final class RandomNumberCreateUtil {
@@ -20,7 +19,7 @@ public final class RandomNumberCreateUtil {
                 baseballNumbers.add(randomNumber);
             }
         }
-        return Collections.unmodifiableList(baseballNumbers);
+        return baseballNumbers;
     }
 
 }

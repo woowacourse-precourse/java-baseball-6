@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.constants.BaseballRole;
-import baseball.model.CheckBallAndStrike;
+import baseball.model.BaseballManager;
 import baseball.model.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -29,10 +29,10 @@ public class BaseballController {
     }
 
     private void startGame() {
-        CheckBallAndStrike checkBallAndStrike = new CheckBallAndStrike();
-        while (checkBallAndStrike.isThreeStrike()){
+        BaseballManager baseballManager = new BaseballManager();
+        while (baseballManager.isThreeStrike()){
             requestExpectedNumber();
-            resultExpectedNumber(checkBallAndStrike);
+            resultExpectedNumber(baseballManager);
         }
         outputView.printClearBaseBallGame();
     }
@@ -42,8 +42,8 @@ public class BaseballController {
         player.changeExpectedNumbers(expectedNumber);
     }
 
-    private void resultExpectedNumber(CheckBallAndStrike checkBallAndStrike) {
-        checkBallAndStrike.updateBallAndStrike(player);
-        outputView.printStatusBallAndStrike(checkBallAndStrike.statusBallAndStrike());
+    private void resultExpectedNumber(BaseballManager baseballManager) {
+        baseballManager.updateBallAndStrike(player);
+        outputView.printStatusBallAndStrike(baseballManager.statusBallAndStrike());
     }
 }
