@@ -14,3 +14,4 @@
   - 0들어가면 안됨
 - controller refactoring 해야함
 - exceoption 터뜨려서 프로그램 종료 되게 만들어야 함
+- 컴퓨터는 랜덤을 3번 돌려서 수를 만들어야 함
