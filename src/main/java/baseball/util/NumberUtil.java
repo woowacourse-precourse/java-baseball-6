@@ -48,7 +48,7 @@ public class NumberUtil {
     }
 
     protected static void validateRange(String number) {
-        if (number.chars().anyMatch(n -> n < 1 || n > 9)) {
+        if (number.chars().anyMatch(n -> n < '1' || n > '9')) {
             throw new IllegalArgumentException("입력되는 각 숫자는 1 이상 9 이하의 정수로 이루어져야 합니다.");
         }
     }
