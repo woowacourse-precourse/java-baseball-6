@@ -1,8 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class User {
     private static List<Integer> validateInput(String input) {
@@ -23,16 +24,37 @@ public class User {
     }
 
     public static List<Integer> getNumberFromUser() {
-        Scanner scanner = new Scanner(System.in);
 
         System.out.print("숫자를 입력해주세요 : ");
-        String input = scanner.nextLine();
-
-        scanner.close();
+        String input = Console.readLine();
 
         List<Integer> numbers = validateInput(input);
 
         return numbers;
 
     }
+
+    public boolean getUserChoice() {
+
+        int choice = 0;
+
+        while (true) {
+            try {
+                String input = Console.readLine();
+                choice = Integer.parseInt(input);
+                if (choice == 1) {
+                    return true;
+                } else if (choice == 2) {
+                    return false;
+
+                } else {
+                    System.out.println("1 또는 2를 입력하세요.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("올바른 숫자를 입력하세요.");
+            }
+        }
+
+    }
+
 }

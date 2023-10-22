@@ -24,10 +24,12 @@ public class Game {
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
-
         }
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
 
+    public boolean isRestartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return this.user.getUserChoice();
     }
 
     private List<Integer> compareScores(List<Integer> userScore, List<Integer> computerScore) {
