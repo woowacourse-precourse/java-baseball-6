@@ -51,8 +51,10 @@ MVC에 의한 분류
 __GameData__
 - [x] computerNumber (컴퓨터가 생성한 난수 저장)
 - [x] playerInput (플레이어가 입력한 숫자 저장)
-- [x] ballCount (볼 수치 저장)
-- [x] strikeCount (스트라이크 수치 저장)
+- ~~ballCount (볼 수치 저장)~~
+- ~~strikeCount (스트라이크 수치 저장)~~
+
+    MainController메소드 수정으로 필요 없어짐
 
 
 ## View
