@@ -12,7 +12,7 @@ public class BaseballGameController {
         baseballGameView = new BaseballGameView();
     }
 
-    public int startGame() {
+    public boolean startGame() {
         int randomNumber = BaseballGame.makeRandomNumber();
         int userInput;
         boolean isAnswer = false;
@@ -25,7 +25,7 @@ public class BaseballGameController {
                 isVerified(userInput); // 입력값이 정수이지만 범위에 맞지 않을 경우 예외 던져짐
             } catch(IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-                return 0;
+                return false;
             }
 
             // 사용자 입력값 분석해서 볼 스트라이크 확인 메서드
@@ -36,10 +36,7 @@ public class BaseballGameController {
         }
 
         // 정답을 모두 맞추었으므로 재시작 여부 입력받음
-
-
-
-        return 1;
+        return baseballGameView.showRestart(); // 재시작이라면 1반환, 종료라면 2반환
     }
 
     public void isVerified(int userInput) {
