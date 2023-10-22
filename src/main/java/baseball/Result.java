@@ -13,6 +13,10 @@ public class Result {
             if (isSameIndex(index, number, randomNumbers)) {
                 strike++;
             }
+
+            if (!isSameIndex(index, number, randomNumbers) && isExistedIndex(number, randomNumbers)) {
+                ball++;
+            }
         }
     }
 
