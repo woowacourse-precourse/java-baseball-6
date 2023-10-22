@@ -13,7 +13,7 @@ public class Baseball {
     }
 
     public void run() {
-        System.out.println(OutputStatement.GAME_START_OUTPUT.getOutput());
+        OutputStatement.GAME_START_OUTPUT.printOutput();
         while (true) {
             startGame();
             boolean restartFlag = restartGame();
@@ -31,13 +31,13 @@ public class Baseball {
                 break;
             }
         }
-        System.out.println(OutputStatement.GAME_END_OUTPUT.getOutput());
+        OutputStatement.GAME_END_OUTPUT.printOutput();
     }
 
     public boolean isSuccessGame(BaseBallNumber answerNumber, BaseBallNumber userNumber) {
         Integer strikeCount = answerNumber.getStrikeCount(userNumber);
         if (strikeCount == 3) {
-            System.out.println("3스트라이크");
+            OutputStatement.THREE_STRIKE.printOutput();
             return true;
         }
         Integer ballCount = answerNumber.getBallCount(userNumber);
@@ -73,7 +73,7 @@ public class Baseball {
     }
 
     public List<Integer> inputUserNumber() {
-        System.out.print(OutputStatement.INPUT_NUMBER_OUTPUT.getOutput());
+        OutputStatement.INPUT_NUMBER_OUTPUT.printOutput();
         String inputNumber = Console.readLine();
         List<Integer> integerList = new ArrayList<>();
         if (!userInputValidation.isValidGameNumber(inputNumber)) {
@@ -91,7 +91,7 @@ public class Baseball {
     }
 
     public boolean restartGame() {
-        System.out.println(OutputStatement.RESTART_OUTPUT.getOutput());
+        OutputStatement.RESTART_OUTPUT.printOutput();
         String inputNumber = Console.readLine();
         if (!userInputValidation.isValidRestartNumber(inputNumber)) {
             throw new IllegalArgumentException();
