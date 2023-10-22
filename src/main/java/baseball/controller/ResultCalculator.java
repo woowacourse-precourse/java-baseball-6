@@ -29,10 +29,6 @@ public class ResultCalculator {
                 .count());
     }
 
-    private boolean isStrike(int eachNumber, int digit) {
-        return eachNumber == computerNumber.getBallNumberByDigit(digit);
-    }
-
     private Balls countBalls(BallNumber comparisonNumber, Strikes numberOfStrikes) {
         return new Balls(comparisonNumber.ballNumberList
                 .stream()
