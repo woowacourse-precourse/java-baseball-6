@@ -21,6 +21,10 @@ public class UserTest extends NsTest {
                 assertThatThrownBy(() -> runException("111"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("121"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Override
