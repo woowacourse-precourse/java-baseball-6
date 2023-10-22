@@ -3,11 +3,11 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputBall {
+public class BallInput {
     private final List<Integer> balls;
     private final int MAX_LENGTH = 3;
 
-    public InputBall() {
+    public BallInput() {
         this.balls = new ArrayList<>();
     }
 
