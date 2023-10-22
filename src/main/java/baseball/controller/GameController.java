@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.model.BaseballGameComputer;
 import baseball.model.BaseballGamePlayer;
 import baseball.model.GameResult;
-import baseball.model.Hint;
 import baseball.model.rule.BaseBallGameRule;
 import java.util.List;
 
@@ -38,8 +37,7 @@ public class GameController extends BaseBallGameRule {
         while (allBallsNotHit) {
             outputController.showGameInputMessage();
             List<Integer> input = inputController.getPlayerGuessNumber();
-            Hint hint = BaseballGamePlayer.swingBat(gameComputer, input);
-            GameResult gameResult = new GameResult(hint);
+            GameResult gameResult = BaseballGamePlayer.swingBat(gameComputer, input);
             outputController.displayHint(gameResult);
             allBallsNotHit =  gameResult.isAllStrikes();
         }
