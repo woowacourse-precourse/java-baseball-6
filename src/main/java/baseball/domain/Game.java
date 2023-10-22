@@ -21,4 +21,8 @@ public class Game {
         List<Integer> randomNumbers = RandomNumberGenerator.createRandomNumbers(3, 1, 9);
         return new Balls(randomNumbers);
     }
+
+    public boolean isRun() {
+        return GameStatus.isRun(gameStatus);
+    }
 }
