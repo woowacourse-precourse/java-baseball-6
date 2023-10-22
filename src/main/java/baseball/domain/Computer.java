@@ -23,4 +23,8 @@ public class Computer {
             }
         }
     }
+
+    public int getBall(int index) {
+        return number.get(index);
+    }
 }
