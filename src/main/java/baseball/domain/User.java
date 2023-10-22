@@ -14,30 +14,57 @@ public class User {
 
     public void enterNum() {
         String input = Console.readLine();
-        int num = validType(input);
-        validRange(num);
-        validDuplication(num);
+        validLength(input);
+        validType(input);
+        validRange(input);
+        validDuplication(input);
+        insertNum(input);
     }
 
-    public int validType(String input) {
-        try{
-            Integer.parseInt(input);
-        }catch (NumberFormatException e){
-            throw new IllegalArgumentException("exist non-numeric type");
+    private void validLength(String input) {
+        if (input.length() > 3) {
+            throw new IllegalArgumentException("exceed length 3");
         }
-
-        return Integer.parseInt(input);
     }
 
-    public void validRange(int input) { // test에서 String으로 넣음. 내가 했던 처음 방법
-        if(input < 1 || input > 10){
+    private void validType(String input) {
+        int type;
+        for (int i = 0; i < input.length(); i++) {
+            type = input.charAt(i) - '0';
+            if(type < 0 || type > 10){
+                throw new IllegalArgumentException("exist non-numeric type");
+            }
+        }
+    }
+
+    private void validRange(String input) {
+        if (input.contains("0")) {
             throw new IllegalArgumentException("out of bounds range 1~9");
         }
     }
 
-    public void validDuplication(int input) {
-        if(userNumber.contains(input)){
+    private void validDuplication(String input) {
+        String answer = removeDuplication(input);
+        if(answer.length() != 3){
             throw new IllegalArgumentException("exist duplicated number");
+        }
+    }
+
+    private String removeDuplication(String input) {
+        String answer = "";
+        for (int i = 0; i < input.length(); i++) {
+            if(input.indexOf(input.charAt(i)) == i){
+                answer += input.charAt(i);
+            }
+        }
+        return answer;
+    }
+
+    private void insertNum(String input) {
+        int num;
+        for (int i = 0; i < input.length(); i++) {
+            num = Integer.valueOf(input.charAt(i)-'0');
+            userNumber.add(num);
         }
     }
 

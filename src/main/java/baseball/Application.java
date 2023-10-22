@@ -1,12 +1,9 @@
 package baseball;
-import baseball.domain.Computer;
-import baseball.domain.Judge;
-import baseball.domain.User;
+
 import baseball.service.ComputerService;
 import baseball.service.JudgeService;
 import baseball.service.UserService;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class Application {

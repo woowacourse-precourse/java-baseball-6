@@ -12,12 +12,8 @@ public class UserService {
     }
 
     public List<Integer> generateInput() {
-        List<Integer> inputNumber = user.getUserNumber();
-        while (inputNumber.size() < 3) {
-            user.enterNum();
-        }
-
-        return inputNumber;
+        user.enterNum();
+        return user.getUserNumber();
     }
 
     public void resetInput() {
