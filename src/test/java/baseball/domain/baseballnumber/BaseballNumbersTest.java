@@ -99,4 +99,58 @@ class BaseballNumbersTest {
             () -> new BaseballNumbers(input));
         assertThat(e.getMessage()).isEqualTo(ERROR_MESSAGE_WRONG_SIZE);
     }
+
+    @Test
+    @DisplayName("같은 값과 다른 순서의 BaseballNumber를 포함하고 있을 경우 containsWithDifferentIndex 메소드가 true를 반환한다.")
+    void containsWithDifferentIndexReturnTrueWhenValueIsSameAndPositionIsDifferent() {
+        // given
+        int numberInput = 7;
+        BaseballNumber baseballNumber = new BaseballNumber(numberInput);
+        int index = 0;
+
+        List<Integer> numbersInput = Arrays.asList(5, 7, 9);
+        BaseballNumbers baseballNumbers = new BaseballNumbers(numbersInput);
+
+        // when
+        Boolean result = baseballNumbers.containsWithDifferentIndex(baseballNumber, index);
+
+        // then
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("같은 위치와 같은 값의 BaseballNumber를 포함하고 있을 경우 containsWithSameIndex 메소드가 true를 반환한다.")
+    void containsWithSameIndexReturnTrueWhenValueAndPositionAllSame() {
+        // given
+        int numberInput = 7;
+        BaseballNumber baseballNumber = new BaseballNumber(numberInput);
+        int index = 1;
+
+        List<Integer> numbersInput = Arrays.asList(5, 7, 9);
+        BaseballNumbers baseballNumbers = new BaseballNumbers(numbersInput);
+
+        // when
+        Boolean result = baseballNumbers.containsWithSameIndex(baseballNumber, index);
+
+        // then
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("get 메소드가 올바른 인덱스의 BaseballNumber을 반환한다.")
+    void getReturnValueOfIndex() {
+        // given
+        List<Integer> numbersInput = Arrays.asList(5, 7, 9);
+        BaseballNumbers baseballNumbers = new BaseballNumbers(numbersInput);
+
+        int numberInput = 7;
+        BaseballNumber baseballNumber = new BaseballNumber(numberInput);
+        int index = 1;
+
+        // when
+        BaseballNumber foundNumber = baseballNumbers.get(index);
+
+        // then
+        assertThat(foundNumber).isEqualTo(baseballNumber);
+    }
 }
