@@ -22,17 +22,15 @@ public class Controller {
         view.displayMessage(MessageType.START);
 
         List<Integer> computerNumber = model.generateRandomNumber();
-//        // log
-//        System.out.println("컴퓨터: " + computerNumber);
+        // log
+        System.out.println("컴퓨터: " + computerNumber);
 
         while (!model.isGameEnded()) {
 
             view.displayMessage(MessageType.ASK_FOR_NUMBER);
 
             List<Integer> playerNumber = inputNumber();
-//            // log
-//            System.out.println("플레이어: " + playerNumber);
-
+            
             GameResult result = model.calculateScore(computerNumber, playerNumber);
 
             view.displayScore(result);
