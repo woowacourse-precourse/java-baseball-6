@@ -2,7 +2,7 @@ package baseball.view;
 
 import baseball.domain.GameNumber;
 import baseball.domain.RetryCommand;
-import baseball.util.Convertor;
+import baseball.util.TypeConvertor;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -14,11 +14,17 @@ public class InputView {
     private static final String USER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String RETRY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    private final TypeConvertor typeConvertor;
+
+    public InputView(TypeConvertor typeConvertor) {
+        this.typeConvertor = typeConvertor;
+    }
+
     public GameNumber getUserNumber() {
         System.out.print(USER_NUMBER_MESSAGE);
         String input = Console.readLine();
         try {
-            List<Integer> inputNumber = Convertor.convertStringToList(input);
+            List<Integer> inputNumber = typeConvertor.convertStringToList(input);
             return new GameNumber(inputNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NUMERIC_ERROR);
@@ -28,6 +34,6 @@ public class InputView {
     public RetryCommand getRetryCommand() {
         System.out.println(RETRY_MESSAGE);
         String input = Console.readLine();
-        return Convertor.findByInput(input);
+        return typeConvertor.findByInput(input);
     }
 }

@@ -8,11 +8,11 @@ import java.util.List;
 
 import static baseball.util.ErrorMessage.RETRY_COMMAND_ERROR;
 
-public class Convertor {
+public class TypeConvertor {
 
     private static final String SPLIT_UNIT = "";
 
-    public static List<Integer> convertStringToList(String input) {
+    public List<Integer> convertStringToList(String input) {
         List<Integer> list = new ArrayList<>();
         String[] split = input.split(SPLIT_UNIT);
         for (String s : split) {
@@ -22,7 +22,7 @@ public class Convertor {
         return list;
     }
 
-    public static RetryCommand findByInput(String input) {
+    public RetryCommand findByInput(String input) {
         return Arrays.stream(RetryCommand.values())
                 .filter(it -> it.getNumber().equals(input))
                 .findAny()

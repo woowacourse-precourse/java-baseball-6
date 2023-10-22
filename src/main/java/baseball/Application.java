@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.controller.GameController;
+import baseball.util.TypeConvertor;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -12,7 +13,7 @@ public class Application {
     }
 
     private static InputView inputView() {
-        return new InputView();
+        return new InputView(new TypeConvertor());
     }
 
     private static OutputView outputView() {
