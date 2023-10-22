@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.utils.RandomUtil;
 import baseball.model.NumberModel;
+import baseball.service.GameService;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -22,6 +25,16 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+
+    @Test
+    void 숫자_비교_테스트() {
+        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<Integer> userNum = new ArrayList<>(Arrays.asList(1, 3, 4));
+        List<Integer> expected = new ArrayList<>(Arrays.asList(1, 1));
+        GameService gameService = new GameService(answer);
+
+        assertThat(gameService.compareNumbers(userNum)).isEqualTo(expected);
     }
 
     @Test
