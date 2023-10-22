@@ -1,6 +1,6 @@
 package baseball.input;
 
-import baseball.Error.ErrorCheck;
+import baseball.error.CheckInputNumbers;
 import baseball.output.Message;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -13,9 +13,9 @@ public class UserInput {
     public static List<Integer> inputNumbers(){
         Message.printInputMessage();
         input = Console.readLine();
-        ErrorCheck.checkLength(input);
-        userInput = ErrorCheck.checkNumber(input);
-        ErrorCheck.checkDuplicate(userInput);
+        CheckInputNumbers.checkLength(input);
+        userInput = CheckInputNumbers.checkNumber(input);
+        CheckInputNumbers.checkDuplicate(userInput);
 
         return userInput;
     }
