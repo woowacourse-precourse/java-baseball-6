@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.model.BaseBallGameComputer;
+import baseball.model.BaseballGamePlayer;
 import baseball.model.Hint;
-import baseball.model.Player;
 import java.util.List;
 
 public class GameController {
@@ -36,7 +36,7 @@ public class GameController {
         while (!isGameClear) {
             outputController.showGameInputMessage();
             List<Integer> input = inputController.getPlayerGuessNumber();
-            Hint result = Player.swingBat(computer, input);
+            Hint result = BaseballGamePlayer.swingBat(computer, input);
             isGameClear = outputController.displayHint(result);
         }
     }

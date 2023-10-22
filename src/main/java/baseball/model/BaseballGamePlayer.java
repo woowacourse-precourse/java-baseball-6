@@ -4,8 +4,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Player {
-    public Player() {
+public class BaseballGamePlayer {
+    public BaseballGamePlayer() {
 
     }
 
