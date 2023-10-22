@@ -56,5 +56,7 @@ public class Application {
         System.out.println(strike);
 
 
+        int ball = cnt - strike;
+
     }
 }
