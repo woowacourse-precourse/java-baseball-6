@@ -7,8 +7,14 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class MainController {
+    private static final int INIT_CODE = 1;
+    private static final int GAME_END_CODE = 2;
+    private static final int NO_COUNT = 0;
+    private static final int THREE_STRIKES = 3;
+    private static final String PLAYER_INIT_CODE = "1";
+    private static final String PLAYER_GAME_END_CODE = "2";
 
-    private static int state = 1;
+    private static int state = INIT_CODE;
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
     GameData gameData = new GameData();
@@ -18,12 +24,12 @@ public class MainController {
     Comparator comparator = new Comparator();
 
     public MainController() {
-        state = 1;
+        state = INIT_CODE;
     }
 
     public void playGame() {
         outputView.printGameStart();
-        while (state == 1) {
+        while (state == INIT_CODE) {
             gameData.setComputerNumber(randomNumbersGenerator.generateNumbers());
             processInputAndCompare();
         }
@@ -48,22 +54,22 @@ public class MainController {
     }
 
     private void checkReplay() {
-        outputView.printHint(0, 3);
+        outputView.printHint(NO_COUNT, THREE_STRIKES);
         inputView.printGameEnd();
         String endnumber = Console.readLine();
         validator.validateGameEndInput(endnumber);
 
-        if (endnumber.equals("1")) {
-            MainController.state = 1;
-        } else if (endnumber.equals("2")) {
-            MainController.state = 0;
+        if (endnumber.equals(PLAYER_INIT_CODE)) {
+            MainController.state = INIT_CODE;
+        } else if (endnumber.equals(PLAYER_GAME_END_CODE)) {
+            MainController.state = GAME_END_CODE;
         }
     }
 
     private void processComperater() {
         boolean nothing = comparator.isNothing(gameData.getComputerNumber(), gameData.getPlayerInput());
-        int ballCount = 0;
-        int strikeCount = 0;
+        int ballCount = NO_COUNT;
+        int strikeCount = NO_COUNT;
 
         if (!nothing) {
             ballCount = comparator.countBalls(gameData.getComputerNumber(), gameData.getPlayerInput());
