@@ -12,7 +12,7 @@ import static baseball.view.constants.PrintMessage.GAME_START;
 
 public class Game {
     public void start() {
-        OutputView.printGameInformation(GAME_START);
+        OutputView.printInformation(GAME_START);
         do {
             play(Number.generateRandomNumbers());
         } while (!isRestart());

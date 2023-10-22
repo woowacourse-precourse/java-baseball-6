@@ -44,7 +44,8 @@ public class Result {
 
     public void print() {
         ResultType resultType = inspectResultType();
-        OutputView.printResult(generateResultMessage(resultType));
+        String message = generateResultMessage(resultType);
+        OutputView.printResult(message);
     }
 
     public boolean hasBall() {
