@@ -2,7 +2,7 @@ package baseball.domain;
 
 import java.util.Arrays;
 
-public class GameButton { // TODO singleton
+public class GameButton {
     private GameStatus gameStatus = GameStatus.PLAY;
 
     public void changeButton(String code) {
