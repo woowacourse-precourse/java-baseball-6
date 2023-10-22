@@ -12,8 +12,12 @@ public class ComputerNumber {
 
     private List<Integer> computerNumbers;
 
-    private ComputerNumber() {
+    public ComputerNumber() {
         this.computerNumbers = generateRandomNumbers();
+    }
+
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
     }
 
     private List<Integer> generateRandomNumbers() {
