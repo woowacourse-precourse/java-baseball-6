@@ -24,5 +24,4 @@ public class NumberGenerator {
             answer.add(randomNumber);
         }
     }
-
 }
