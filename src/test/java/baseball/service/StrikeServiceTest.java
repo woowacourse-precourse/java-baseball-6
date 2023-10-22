@@ -33,6 +33,19 @@ public class StrikeServiceTest {
     }
 
     @Test
+    void count_zeroStrike_differentPlace() {
+        //given
+        computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
+        inputBaseball.setValues(IntegerListUtil.parseIntegerList("451"));
+
+        //when
+        int count = strikeService.count(computerBaseball, inputBaseball);
+
+        //then
+        assertThat(count).isZero();
+    }
+
+    @Test
     void count_oneStrike() {
         //given
         computerBaseball.setValues(IntegerListUtil.parseIntegerList("123"));
