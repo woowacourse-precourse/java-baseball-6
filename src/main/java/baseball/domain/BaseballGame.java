@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import baseball.config.AppConfig;
 import baseball.domain.player.Batter;
 import baseball.domain.player.Pitcher;
 import baseball.domain.score.ImmutableBallStrikeCount;
@@ -17,16 +16,19 @@ public class BaseballGame {
 
     private final MessagePrinter messagePrinter;
     private final InputHandler inputHandler;
-    private boolean isNewRoundNeeded;
+    private final Pitcher pitcher;
+    private final Batter batter;
+    private boolean isNewRoundNeeded = true;
 
-    private BaseballGame(MessagePrinter messagePrinter, InputHandler inputHandler) {
-        this.messagePrinter = messagePrinter;
-        this.inputHandler = inputHandler;
-        this.isNewRoundNeeded = true;
+    private BaseballGame(Builder builder) {
+        this.messagePrinter = builder.messagePrinter;
+        this.inputHandler = builder.inputHandler;
+        this.pitcher = builder.pitcher;
+        this.batter = builder.batter;
     }
 
-    public static BaseballGame of(MessagePrinter messagePrinter, InputHandler inputHandler) {
-        return new BaseballGame(messagePrinter, inputHandler);
+    public static Builder newBuilder() {
+        return new Builder();
     }
 
     public void start() {
@@ -37,39 +39,74 @@ public class BaseballGame {
     }
 
     private void playNewRound() {
-        Pitcher pitcher = AppConfig.getPitcher();
-        Batter batter = AppConfig.getBatter();
-        Umpire umpire = Umpire.from(pitcher.pitchBalls());
-
+        Umpire umpire = createUmpire();
         while (true) {
-            messagePrinter.printBatterRequest();
-            BattedBallsDTO battedBallsDTO = inputHandler.getBattedBallsInput();
-            List<Baseball> battedBalls = batter.tryBatting(battedBallsDTO);
+            List<Baseball> battedBalls = getBattedBalls();
             ImmutableBallStrikeCount battedResult = umpire.umpireBattedBalls(battedBalls);
             messagePrinter.printBallAndStrike(battedResult);
-            if (isRoundEnd(battedResult)) {
+            if (battedResult.isAllStrike()) {
+                processEndOfRound();
                 return;
             }
         }
     }
 
-    private boolean isRoundEnd(ImmutableBallStrikeCount battedResult) {
-        if (!battedResult.isAllStrike()) {
-            return false;
-        }
+    private Umpire createUmpire() {
+        return Umpire.from(pitcher.pitchBalls());
+    }
+
+    private List<Baseball> getBattedBalls() {
+        messagePrinter.printBatterRequest();
+        BattedBallsDTO battedBallsDTO = inputHandler.getBattedBallsInput();
+
+        return batter.tryBatting(battedBallsDTO);
+    }
+
+    private void processEndOfRound() {
         messagePrinter.printEndAndRequestCommand();
         Command command = inputHandler.getCommand();
         checkIsNewRoundNeeded(command);
-        return true;
     }
 
     private void checkIsNewRoundNeeded(Command command) {
-        if (command.orderRestart()) {
+        if (command.orderExit()) {
             isNewRoundNeeded = false;
             return;
         }
-        if (!command.orderExit()) {
+        if (!command.orderRestart()) {
             throw new InvalidCommandException();
+        }
+    }
+
+    public static class Builder {
+
+        private MessagePrinter messagePrinter;
+        private InputHandler inputHandler;
+        private Pitcher pitcher;
+        private Batter batter;
+
+        public Builder messagePrinter(MessagePrinter messagePrinter) {
+            this.messagePrinter = messagePrinter;
+            return this;
+        }
+
+        public Builder inputHandler(InputHandler inputHandler) {
+            this.inputHandler = inputHandler;
+            return this;
+        }
+
+        public Builder pitcher(Pitcher pitcher) {
+            this.pitcher = pitcher;
+            return this;
+        }
+
+        public Builder batter(Batter batter) {
+            this.batter = batter;
+            return this;
+        }
+
+        public BaseballGame build() {
+            return new BaseballGame(this);
         }
     }
 }
