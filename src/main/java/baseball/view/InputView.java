@@ -28,7 +28,8 @@ public class InputView {
     public static int readEndSign() {
         System.out.println(RESTART_MESSAGE);
         String endSign = Console.readLine();
-        return Validator.validationEndSign(endSign);
+        Validator.validationEndSign(endSign);
+        return Integer.parseInt(endSign);
     }
 
 }

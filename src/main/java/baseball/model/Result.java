@@ -35,12 +35,11 @@ public class Result {
         } else if (strikeCount == 0) {
             return String.format(BALL_MESSAGE, ballCount);
         }
-        return String.format(BALL_MESSAGE + SPACE +STRIKE_MESSAGE, ballCount, strikeCount);
+        return String.format(BALL_MESSAGE + SPACE + STRIKE_MESSAGE, ballCount, strikeCount);
     }
 
-    public int getStrikeCount() {
-
-        return this.strikeCount;
+    public boolean isContinue() {
+        return this.strikeCount != 3;
     }
 
 }

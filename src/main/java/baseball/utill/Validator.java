@@ -39,11 +39,10 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
-    public static int validationEndSign(String endSign){
+    public static void validationEndSign(String endSign){
         Validator.checkNumeric(endSign);
         int integerEndsign = Integer.parseInt(endSign);
         checkEndSignRange(integerEndsign);
-        return integerEndsign;
     }
     private static void checkEndSignRange(int sign){
         if(sign > 2){

@@ -2,6 +2,7 @@ package baseball.contoller;
 
 import baseball.model.Result;
 import baseball.utill.Converter;
+import baseball.utill.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -46,7 +47,7 @@ public class BaseBallGameController {
 
     private boolean isContinue(Result result) {
 
-        return result.getStrikeCount() != 3;
+        return result.isContinue();
     }
 
     private boolean isEnd(int sign) {
