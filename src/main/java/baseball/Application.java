@@ -16,7 +16,11 @@ public class Application {
     	checkNum(computerNum,userNum);
     	int isReplay = Integer.parseInt(Console.readLine());
     	if(isReplay == 1) continue;
-    	else break;
+    	//**
+    	else {
+    		System.out.println("시스템을 종료합니다");
+    		break;
+    	}
     	}
     }
     
@@ -34,7 +38,7 @@ public class Application {
     
     //사용자 숫자 입력
     public static List<Integer> inputUserNum(){
-    	System.out.println("숫자를 입력해주세요 : ");
+    	System.out.print("숫자를 입력해주세요 : ");
     	List<Integer> userNum = new ArrayList<>();
     	int tmpUserNum = Integer.parseInt(Console.readLine());
     	if(tmpUserNum<100||tmpUserNum>999) {
@@ -47,7 +51,26 @@ public class Application {
     }
     
     //이 메서드는 클래스로만들어 객체화하는게 낫지않을까?
-    public static void checkNum(List<Integer> computerNum, List<Integer> userNum) {
+    public static int[] checkNum(List<Integer> computerNum, List<Integer> userNum) {
+    	int countArr[] = new int[2];
+    	int ballCount = 0;
+    	int strikeCount = 0;
     	
+    	if(!computerNum.contains(userNum.get(0))&&!computerNum.contains(userNum.get(1))&&!computerNum.contains(userNum.get(2))){
+    		System.out.println("낫싱");
+    	}else if(computerNum.equals(userNum)) {
+    		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    	}else {
+    		for(int i=0; i<3; i++) {
+    			if(computerNum.get(i).equals(userNum.get(i))) {
+    				strikeCount++;
+    			}else {
+    				ballCount++;
+    			}
+    		}
+    		countArr[0] = ballCount;
+    		countArr[1] = strikeCount;
+    	}
+    	return countArr;
 }
 }
