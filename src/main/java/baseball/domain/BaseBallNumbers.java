@@ -37,6 +37,7 @@ public final class BaseBallNumbers {
 
     public void add(int number) {
         validateDuplicate(number);
+        validateNumberRange(number);
         validateNumbersSize();
         baseballNumbers.add(number);
     }
@@ -51,6 +52,16 @@ public final class BaseBallNumbers {
         if (this.size() >= MAX_BASE_BALL_SIZE) {
             throw new OutOfBaseBallNumbersSize(String.format("max size of baseball numbers is %d", MAX_BASE_BALL_SIZE));
         }
+    }
+
+    public void validateNumberRange(int number) {
+        if (isInBaseBallNumberRange(number)) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
+
+    private boolean isInBaseBallNumberRange(int number) {
+        return number >= MIN_BASE_BALL_NUMBER && number <= MAX_BASE_BALL_NUMBER;
     }
 
     public List<Integer> get() {
