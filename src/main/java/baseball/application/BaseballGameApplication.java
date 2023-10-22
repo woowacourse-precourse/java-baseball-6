@@ -1,4 +1,4 @@
-package baseball;
+package baseball.application;
 
 import baseball.controller.BaseballController;
 import baseball.service.ScoreCalculator;
