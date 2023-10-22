@@ -8,7 +8,7 @@ import java.util.List;
 public class Computer {
     List<Integer> computerNumber = new ArrayList<>();
 
-    public void setComputerNumber() {
+    public void createComputerNumber() {
         computerNumber.clear();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
