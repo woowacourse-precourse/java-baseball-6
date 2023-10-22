@@ -19,4 +19,11 @@ public class Computer {
         Integer playerNumber = player.getNumber(idx);
         return this.numbers.contains(playerNumber) && !this.numbers.get(idx).equals(playerNumber);
     }
+
+    public Computer resetOrMaintain(GameState state, NumberGenerator numberGenerator) {
+        if (state.isRetry()) {
+            return new Computer(numberGenerator);
+        }
+        return this;
+    }
 }
