@@ -15,14 +15,9 @@ public class Application {
 
                 char in = Console.readLine().charAt(0);
                 switch (in) {
-                    case '1':
-                        computer.initializeAnswer();
-                        break;
-                    case '2':
-                        running = false;
-                        break;
-                    default:
-                        throw new IllegalArgumentException();
+                    case '1' -> computer.initializeAnswer();
+                    case '2' -> running = false;
+                    default -> throw new IllegalArgumentException();
                 }
             }
         }
