@@ -10,8 +10,8 @@ import java.util.List;
  * NumberGenerator.class 의 테스트 코드이다.
  */
 class NumberGeneratorTest {
-    private final NumberGenerator generator = new NumberGenerator();
-    private final List<Integer> randomNumbers = generator.getThreeRandomNumbers();
+    private final int CREATE_LENGTH = 3;
+    private final List<Integer> randomNumbers = (new NumberGenerator()).getUniqueRandomNumbers(CREATE_LENGTH);
 
     @Test
     void 개수가_세개인지_체크한다() {
@@ -28,8 +28,8 @@ class NumberGeneratorTest {
     @Test
     void 랜덤값의_범위가_1부터_9까지인지_체크한다() {
         for(Integer number : randomNumbers) {
-            assertThat(number).isGreaterThanOrEqualTo(1);
-            assertThat(number).isLessThanOrEqualTo(9);
+            assertThat(number).isGreaterThanOrEqualTo(NumberGenerator.MIN_RANDOM_NUMBER);
+            assertThat(number).isLessThanOrEqualTo(NumberGenerator.MAX_RANDOM_NUMBER);
         }
     }
 
