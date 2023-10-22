@@ -157,4 +157,11 @@ public class BaseballGame {
             throw new IllegalArgumentException("1 또는 2만 입력해야합니다.");
         }
     }
+
+    private boolean checkGameEnd(int userChoice){
+        if(userChoice == 2){
+            return true;
+        }
+        return false;
+    }
 }
