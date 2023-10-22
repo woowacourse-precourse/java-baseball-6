@@ -25,6 +25,6 @@ public final class InputValidation {
     }
 
     public static Boolean isRestartInput (int input) {
-        return input != INPUT_RESTART && input != INPUT_STOP;
+        return input == INPUT_RESTART || input == INPUT_STOP;
     }
 }

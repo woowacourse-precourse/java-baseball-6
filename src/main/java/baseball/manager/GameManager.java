@@ -4,6 +4,7 @@ import baseball.io.InputHandler;
 import baseball.io.OutputHandler;
 import baseball.model.Baseball;
 import baseball.model.Game;
+import baseball.validation.InputValidation;
 
 import static baseball.constant.Constants.*;
 
@@ -27,6 +28,7 @@ public class GameManager {
             game.playGame();
             outputHandler.printMessage(INPUT_RESTART_MESSAGE);
             restart = inputHandler.scanInteger();
+            if(!InputValidation.isRestartInput(restart)) throw new IllegalArgumentException();
         } while (restart == INPUT_RESTART);
     }
 }
