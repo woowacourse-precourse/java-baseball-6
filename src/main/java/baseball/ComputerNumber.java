@@ -10,21 +10,21 @@ public class ComputerNumber {
     private final int MAX_VALUE = 9;
     private final int MAX_LENGTH = 3;
 
-    private List<Integer> computerNumbers;
+    private List<Character> computerNumbers;
 
     public ComputerNumber() {
         this.computerNumbers = generateRandomNumbers();
     }
 
-    public List<Integer> getComputerNumbers() {
+    public List<Character> getComputerNumbers() {
         return computerNumbers;
     }
 
-    private List<Integer> generateRandomNumbers() {
-        LinkedHashSet<Integer> tempNumbers = new LinkedHashSet<>();
+    private List<Character> generateRandomNumbers() {
+        LinkedHashSet<Character> tempNumbers = new LinkedHashSet<>();
 
         while (tempNumbers.size() < MAX_LENGTH) {
-            tempNumbers.add(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE));
+            tempNumbers.add(Character.forDigit(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE), 10));
         }
 
         return new ArrayList<>(tempNumbers);
