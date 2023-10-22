@@ -2,6 +2,7 @@ package baseball.controller;
 
 import java.util.Arrays;
 import baseball.model.GameNumber;
+import baseball.view.OutputView;
 
 public class ComputerController {
     private static final int BASEBALL_NUMBER_LENGTH = 3;
@@ -12,6 +13,7 @@ public class ComputerController {
     private static final String NOTHING_MESSAGE = "낫싱";
     private int strikeCount;
     private int ballCount;
+    OutputView outputView = new OutputView();
 
     public void startGame(GameNumber gameNumber) {
         gameNumber.setRandomNumbers();
@@ -49,19 +51,33 @@ public class ComputerController {
     public void provideHint() {
         String hint = "";
 
+        hint += getBallHint();
+        hint += getStrikeHint();
+        hint += getNothingHint();
+
+        outputView.printHint(hint);
+
+    }
+
+    private String getBallHint() {
         if (ballCount > 0) {
-            hint += ballCount + BALL_MESSAGE + " ";
+            return ballCount + BALL_MESSAGE + " ";
         }
+        return "";
+    }
 
+    private String getStrikeHint() {
         if (strikeCount > 0) {
-            hint += strikeCount + STRIKE_MESSAGE + " ";
+            return strikeCount + STRIKE_MESSAGE + " ";
         }
+        return "";
+    }
 
+    private String getNothingHint() {
         if (ballCount == 0 && strikeCount == 0) {
-            hint += NOTHING_MESSAGE;
+            return NOTHING_MESSAGE;
         }
-
-        System.out.println(hint);
+        return "";
     }
 
     public boolean isSuccessGame() {
