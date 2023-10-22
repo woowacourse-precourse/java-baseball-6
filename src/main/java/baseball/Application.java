@@ -1,8 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
-import java.util.Arrays;
 import java.util.Map;
 
 
@@ -24,7 +21,7 @@ public class Application {
                 int[] guessNumbers = input.readGuessNumbers();
                 Map<String, Integer> result = computer.countStrikesAndBalls(guessNumbers);
 
-                if (printResultAndContinue(result)) {
+                if (output.printResultAndContinue(result)) {
                     break;
                 }
             }
@@ -37,33 +34,6 @@ public class Application {
 
     }
 
-
-    public static boolean printResultAndContinue(Map<String, Integer> result) {
-
-        int strikes = result.get("strikes");
-        int balls = result.get("balls");
-
-        if (balls > 0) {
-            System.out.print(balls + "볼 ");
-        }
-
-        if (strikes > 0) {
-            System.out.print(strikes + "스트라이크");
-        }
-
-        if (balls == 0 && strikes == 0){
-            System.out.print("낫싱");
-        }
-
-        System.out.println();
-
-        if (strikes == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
-        }
-
-        return false;
-    }
 
 
 }
