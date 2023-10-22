@@ -1,6 +1,8 @@
 package baseball.service;
 
+import static baseball.common.Constants.END_GAME;
 import static baseball.common.Constants.NUMBER_LENGTH;
+import static baseball.common.Constants.RESTART;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -17,5 +19,16 @@ public class SystemService {
             }
         }
         return computerNum;
+    }
+
+    public boolean restart(String userInput) {
+
+        if (userInput.equals(RESTART)) {
+            return true;
+        } else if (userInput.equals(END_GAME)) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
