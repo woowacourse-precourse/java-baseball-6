@@ -6,9 +6,9 @@ public class BaseballGameException {
     public void validPlayerNumIsInt(String playerNumStr) {
         try{
             Integer.parseInt(playerNumStr);
-        } catch (IllegalArgumentException e){
+        } catch (NumberFormatException e){
             System.out.println("\n[Error] 세 자리 자연수를 입력하세요.");
-            throw e;
+            throw new IllegalArgumentException();
         }
     }
 
