@@ -10,16 +10,17 @@ public class GameController {
         gameViewer.startGameMessage();
 
         boolean willRestart = true;
+        Computer computer = computerService.createComputer();
 
         while (willRestart) {
             User user = userService.createUser(gameViewer.getUserGuess());
-            Computer computer = computerService.createComputer();
             game = new Game();
 
             boolean won = game.checkAndCalcUserGuess(user, computer);
 
             if (won) {
                 willRestart = gameViewer.hasNewGameMessage();
+                computer = computerService.createComputer();
             } else {
                 gameViewer.displayGuessResult(game.getStrike(), game.getBall());
             }

@@ -4,6 +4,10 @@ import java.util.List;
 
 // TODO : Computer Service, Controller Implementation
 public class Computer {
+    public List<Integer> getComputerList() {
+        return computerList;
+    }
+
     // Randomly Generated 1-9 numbers (N length)
     private final List<Integer> computerList;
 
