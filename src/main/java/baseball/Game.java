@@ -25,6 +25,9 @@ public class Game {
         if (isNumber(userNumber)) {
             throw new IllegalArgumentException("숫자가 아니다");
         }
+        if (is3Digit(userNumber)) {
+            throw new IllegalArgumentException("3자리의 숫자가 아니다");
+        }
         if (isDuplicateNumber(userNumber)) {
             throw new IllegalArgumentException("중복 숫자가 존재한다");
         }
@@ -33,6 +36,10 @@ public class Game {
 
     private boolean isNumber(String userNumber) {
         return !userNumber.matches("[0-9]+");
+    }
+
+    private boolean is3Digit(String userNumber) {
+        return userNumber.length() != 3;
     }
 
     private boolean isDuplicateNumber(String userNumber) {
