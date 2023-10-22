@@ -1,43 +1,33 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
-    static int[] readNumber() {
+    private static final int ANSWER_SIZE = 3;
+
+    static List<Integer> readNumber() {
         String input = Console.readLine();
+        int n;
+
         try {
-            int n = Integer.parseInt(input);
-            if (n < 0 || n > 999) {
-                throw new IllegalArgumentException();
-            }
-
-            int[] result = {n / 100, n / 10 % 10, n % 10};
-            if (result[0] == result[1] || result[1] == result[2] || result[2] == result[0]) {
-                throw new IllegalArgumentException();
-            }
-
-            return result;
+            n = Integer.parseInt(input);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-    }
 
-    static int[] checkAnswer(int[] exist, int[] input) {
-        int strike = 0;
-        int ball = 0;
-        for (int i = 1; i <= 3; i++) {
-            int here = input[i - 1];
-            int index = exist[here - 1];
-            if (index == i) {
-                strike++;
-            } else if (index != 0) {
-                ball++;
-            }
+        if (n < 0 || n > 999) {
+            throw new IllegalArgumentException();
         }
-        return new int[] {strike, ball};
+
+        int[] result = {n / 100, n / 10 % 10, n % 10};
+        if (result[0] == result[1] || result[1] == result[2] || result[2] == result[0]) {
+            throw new IllegalArgumentException();
+        }
+        return Arrays.stream(result)
+                .boxed()
+                .toList();
     }
 
     static boolean wantsReplay() {
@@ -53,23 +43,11 @@ public class Application {
     }
 
     static void play() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-        int[] answer = numbers.stream().mapToInt(i -> i).toArray();
-        int[] exist = new int[9];
-        for (int i = 1; i <= 3; i++) {
-            int hereNum = answer[i - 1];
-            exist[hereNum - 1] = i;
-        }
-        // System.out.printf("*** 정답: %s ***\n", Arrays.toString(answer));
+        Player pitcher = new Player();
+
         while (true) {
-            int[] userInput = readNumber();
-            int[] result = checkAnswer(exist, userInput);
+            Player hitter = new Player(readNumber());
+            int[] result = pitcher.compareWith(hitter);
             if (result[1] > 0 && result[0] > 0) {
                 System.out.printf("%d볼 %d스트라이크\n", result[1], result[0]);
             } else if (result[0] > 0) {
