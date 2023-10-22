@@ -29,23 +29,18 @@ public class Player {
         playerNumber.clear();
     }
 
-    public static boolean gamePlayOrNot() throws IllegalArgumentException {
-        try {
-            String selectNumber = Console.readLine();
-            if (selectNumber.equals("1")) {
-                return true;
-            } else if (selectNumber.equals("2")) {
-                return false;
-            } else {
-                throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
-            }
-        } catch (IllegalArgumentException e) {
-            e.getMessage();
+    public static boolean gamePlayOrNot() {
+        String selectNumber = Console.readLine();
+        if (selectNumber.equals("1")) {
+            return true;
+        } else if (selectNumber.equals("2")) {
             return false;
+        } else {
+            throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
         }
     }
 
-    public boolean validateInputNumber(String inputNumber) throws IllegalArgumentException {
+    public boolean validateInputNumber(String inputNumber) {
         // 입력 문자열 값을 숫자로 변경
         int inputNumberToInteger = Integer.parseInt(inputNumber);
 
