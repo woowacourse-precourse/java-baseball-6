@@ -1,6 +1,9 @@
 package baseball.logic;
 
 import java.util.List;
+import java.util.stream.IntStream;
+
+import static baseball.constant.Constant.*;
 
 public class GameManage {
 
@@ -45,31 +48,14 @@ public class GameManage {
     }
 
     private void checkStrike(List<Integer> answerNumbers, List<Integer> userNumbers) {
-        int count = 0;
-
-        for (int i = 0; i < 3; i++) {
-            int answer = answerNumbers.get(i);
-            int user = userNumbers.get(i);
-
-            if (answer == user) {
-                count++;
-            }
-        }
-        strike = count;
+        strike = (int) IntStream.range(0, NUMBER_LENGTH)
+                .filter(i -> answerNumbers.get(i).equals(userNumbers.get(i)))
+                .count();
     }
 
     private void checkBall(List<Integer> answerNumbers, List<Integer> userNumbers) {
-        int count = 0;
-
-        for (int i = 0; i < 3; i++) {
-            int answer = answerNumbers.get(i);
-            int user = userNumbers.get(i);
-
-            if (answer != user && answerNumbers.contains(user)) {
-                count++;
-            }
-        }
-
-        ball = count;
+        ball = (int) IntStream.range(0, NUMBER_LENGTH)
+                .filter(i -> answerNumbers.get(i) != userNumbers.get(i) && answerNumbers.contains(userNumbers.get(i)))
+                .count();
     }
 }
