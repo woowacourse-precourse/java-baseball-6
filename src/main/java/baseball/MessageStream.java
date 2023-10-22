@@ -57,9 +57,19 @@ public class MessageStream {
     }
 
     public static List<Integer> convertThreeNumericStringToIntegerList(String str) {
+        validateThreeNumericString(str);
         return IntStream.range(0, str.length())
                 .map(i -> Integer.parseInt(str.substring(i, i + 1)))
                 .boxed()
                 .collect(Collectors.toList());
+    }
+
+    private static void validateThreeNumericString(String str) {
+        if (!str.matches("[1-9]{3}")) {
+            throw new IllegalArgumentException();
+        }
+        if (str.chars().distinct().count() != str.length()) {
+            throw new IllegalArgumentException();
+        }
     }
 }
