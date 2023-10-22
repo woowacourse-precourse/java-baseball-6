@@ -11,8 +11,8 @@ import java.util.StringTokenizer;
 
 public class BaseballGameController {
 
-    private BaseballGameService baseballGameService;
 
+    private BaseballGame baseballGame;
 
     private Boolean RestartFlag = true;
 
@@ -22,15 +22,16 @@ public class BaseballGameController {
 
     public void gameStart() {
         String userNumber;
-        this.baseballGameService = new BaseballGameService();
-
+        this.baseballGame=new BaseballGame();
+        baseballGame.createComputerNumber();
         do {
+
             InputView.printInputNumberMessage();
-
             userNumber = InputView.readUserNumberInput();
-
             validateUserNumber(userNumber);
-            String[] results = baseballGameService.run(userNumber);
+
+            String result = baseballGame.compareTwoNumbers(userNumber);
+            String [] results = baseballGame.splitCountResult(result);
             new OutputView(results);
 
             if (results[1].equals("3")) {
@@ -41,7 +42,7 @@ public class BaseballGameController {
                 validateRestartNumber(input);
 
                 if (input.equals("1")) {
-                    baseballGameService = new BaseballGameService();
+                    baseballGame.createComputerNumber();
                 }
                 if (input.equals("2")) {
                     RestartFlag = false;
