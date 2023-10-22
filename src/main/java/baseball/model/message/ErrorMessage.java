@@ -9,6 +9,7 @@ public enum ErrorMessage {
     INVALID_NUMBER("문자, 특수기호 등을 제외한 숫자를 입력해주세요."),
     POSITIVE_NUMBER_NEED("양수의 숫자를 입력해주세요."),
     INVALID_REPLAY_STATUS("알맞은 재시작/종료 입력을 해주세요."),
+    DO_NOT_CALL_THIS_CODE("해당 메서드는 호출되어서는 안됩니다."),
     ;
 
     private String message;

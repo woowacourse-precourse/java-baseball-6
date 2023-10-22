@@ -1,5 +1,6 @@
 package baseball.view;
 
+import static baseball.model.message.ErrorMessage.DO_NOT_CALL_THIS_CODE;
 import static baseball.model.message.UserMessage.ASK_REPLAY_MESSAGE;
 import static baseball.model.message.UserMessage.DONE_MESSAGE;
 import static baseball.model.message.UserMessage.INPUT_GUIDE_MESSAGE;
@@ -10,6 +11,7 @@ import baseball.model.Result;
 public class OutputView {
 
     private OutputView() {
+        throw new AssertionError(DO_NOT_CALL_THIS_CODE.getMessage());
     }
 
     public static void printStartMessage() {

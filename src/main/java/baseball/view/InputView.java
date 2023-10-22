@@ -1,5 +1,6 @@
 package baseball.view;
 
+import static baseball.model.message.ErrorMessage.DO_NOT_CALL_THIS_CODE;
 import static baseball.model.message.ErrorMessage.INVALID_INPUT;
 import static baseball.model.message.ErrorMessage.INVALID_NUMBER;
 import static baseball.model.message.ErrorMessage.POSITIVE_NUMBER_NEED;
@@ -9,6 +10,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     private InputView() {
+        throw new AssertionError(DO_NOT_CALL_THIS_CODE.getMessage());
     }
 
     public static String inputPositiveNumber() {
