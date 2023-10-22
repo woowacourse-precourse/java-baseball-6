@@ -16,7 +16,7 @@ class ScoreTest {
         String result = score.toString();
 
         // then
-        assertThat(result).isEqualTo("1스트라이크 1볼");
+        assertThat(result).isEqualTo("1볼 1스트라이크");
     }
 
     @Test
@@ -44,7 +44,7 @@ class ScoreTest {
     }
 
     @Test
-    void testToString_나싱() {
+    void testToString_낫싱() {
         // given
         Score score = new Score(0, 0);
 
@@ -52,7 +52,7 @@ class ScoreTest {
         String result = score.toString();
 
         // then
-        assertThat(result).isEqualTo("나싱");
+        assertThat(result).isEqualTo("낫싱");
     }
 
     @Test
