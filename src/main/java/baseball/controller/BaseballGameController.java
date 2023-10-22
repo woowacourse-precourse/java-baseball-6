@@ -11,25 +11,28 @@ public class BaseballGameController {
 
     public void game() {
         Opponent opponent = initOpponent();
-
-        while(true) {
-            String userInput = inputView.inputUserGuess();
-            BallCount ballCount = opponent.analyzeTry(userInput);
-            outputView.printResult(ballCount.comment());
-            if(ballCount.gameEnd()) {
-                outputView.printGameOver();
-                String quitOrRestart = inputView.inputQuitOrRestart();
-                if(quitOrRestart.equals("1")) {
-                    game();
-                }
-                break;
-            }
-        }
+        if(userInteraction(opponent)) { game(); }
     }
 
     private Opponent initOpponent() {
         outputView.printInit();
 
         return new Opponent();
+    }
+
+    private boolean promptRestart() {
+        outputView.printGameOver();
+        String userInput = inputView.inputQuitOrRestart();
+        return userInput.equals("1");
+    }
+
+    private boolean userInteraction(Opponent opponent) {
+        String userInput = inputView.inputUserGuess();
+        BallCount ballCount = opponent.analyzeTry(userInput);
+        outputView.printResult(ballCount.comment());
+        if(ballCount.gameEnd()) {
+            return promptRestart();
+        }
+        return userInteraction(opponent);
     }
 }
