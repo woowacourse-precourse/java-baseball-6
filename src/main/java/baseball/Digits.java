@@ -5,14 +5,13 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 final class Digits {
-    private List<Digit> digits;
+    private final List<Digit> digits = new ArrayList<>();
 
     private Digits() {
     }
 
     static Digits generateRandomDigits() {
         Digits randomDigits = new Digits();
-        randomDigits.digits = new ArrayList<>();
         while (randomDigits.digits.size() < Size.THREE.num) {
             Digit randomDigit = new Digit();
             if (!randomDigits.digits.contains(randomDigit)) randomDigits.digits.add(randomDigit);
@@ -22,13 +21,12 @@ final class Digits {
 
     static Digits generateFixedDigits(String input) {
         if(input.length() != Size.THREE.num) throw new IllegalArgumentException();
+
         Digits fixedDigits = new Digits();
-        fixedDigits.digits = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            Digit digit = new Digit(input.charAt(i) - '0');
-            if (fixedDigits.digits.contains(digit)) throw new IllegalArgumentException();
-            fixedDigits.digits.add(digit);
-        }
+        input.chars()
+                .mapToObj(i -> new Digit(i - '0'))
+                .peek(digit -> { if (fixedDigits.digits.contains(digit)) throw new IllegalArgumentException(); })
+                .forEach(fixedDigits.digits::add);
         return fixedDigits;
     }
 
