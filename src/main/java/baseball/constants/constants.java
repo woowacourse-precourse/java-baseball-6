@@ -6,6 +6,7 @@ public class constants {
     public final static String ASK_CONTINUE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public final static String REQUIRE_NUMBER = "숫자를 입력해주세요 : ";
     public final static String DECLARE_GAME_END = "게임 종료";
+    public final static String INSERT_ONE_OR_TWO = "1 또는 2를 입력하세요.";
     public final static int INPUT_LENGTH = 3;
     public final static int STRIKE_FOR_ENDGAME = 3;
 }

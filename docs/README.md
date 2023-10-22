@@ -16,20 +16,22 @@
             - 0을 입력했는지?
             - 중복된 값인지?
             - 3자리의 값이 아닌지?
-- checkEndGame()
-    - 3 strike를 입력받으면 게임을 종료시키는 메서드 boolean
-    - 그 이외가 입력되면 playingGame 메서드를 다시 실행시킴
-- checkStrike(List<Integer>,List<Intrger>)
-    - 두 리스트를 비교해서 스트라이크의 갯수를 반환하는 메서드
-    - 반환형 int
-- playGameAgain(int)
-    - 게임을 다시 시작할지 말지 물어보는 메서드
-    - 이때 숫자 이외의 값을 입력했을때 1 혹은 2를 다시 입력하게 유도함 → else 써서 구현했기에 수정 필요
-- checkBalls(List<Integer>,List<Intrger>)
-    - 두 리스트를 비교해서 낫싱인지 아닌지 체크하는 ㅔㅁ서드
-    - 반환형 int
-- checkNothing(List<Integer>,List<Intrger>)
-    - 두 리스트를 비교해서 볼의 갯수를 반환하는 메서드
-    - 반환형 String
+- 야구게임의 룰을 정리한 gameRule class
+    - checkEndGame()
+        - 3 strike를 입력받으면 게임을 종료시키는 메서드 boolean
+        - 그 이외가 입력되면 playingGame 메서드를 다시 실행시킴
+    - checkStrike(List<Integer>,List<Intrger>)
+        - 두 리스트를 비교해서 스트라이크의 갯수를 반환하는 메서드
+        - 반환형 int
+    - playGameAgain(int)
+        - 게임을 다시 시작할지 말지 물어보는 메서드
+        - *이때 숫자 이외의 값을 입력했을때 1 혹은 2를 다시 입력하게 유도함 → else 써서 구현했기에 수정 필요*
+    - checkBalls(List<Integer>,List<Intrger>)
+        - 두 리스트를 비교해서 낫싱인지 아닌지 체크하는 ㅔㅁ서드
+        - 반환형 int
+    - checkNothing(List<Integer>,List<Intrger>)
+        - 두 리스트를 비교해서 볼의 갯수를 반환하는 메서드
+        - 반환형 String
 - playGame()
     - 실제 게임이 이루어지는 메서드
+    - *메서드가 길기 때문에 나중에 분리 필요.*
