@@ -23,7 +23,7 @@ public class Validator {
     public void makeUserInputNumber(String userInputNumber) {
         String[] userInputNumbers = userInputNumber.split("");
         for (int i = 0; i < 3; i++) {
-            userNumbers.add(stoi(userInputNumbers[i]));
+            userNumbers.set(i,stoi(userInputNumbers[i]));
         }
     }
 
