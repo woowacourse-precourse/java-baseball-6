@@ -7,9 +7,9 @@ import baseball.view.OutputView;
 
 import java.util.Objects;
 
-import static baseball.config.GameConfig.GAME_RESTART_FLAG;
-
 public class Game {
+    private static final String GAME_RESTART_FLAG = "2";
+
     public void start() {
         OutputView.printInitialGameStart();
         do {
@@ -29,6 +29,6 @@ public class Game {
     }
 
     private static boolean isRestart() {
-        return Objects.equals(InputView.requestRestartOrExit(), GAME_RESTART_FLAG.getValue());
+        return Objects.equals(InputView.requestRestartOrExit(), GAME_RESTART_FLAG);
     }
 }
