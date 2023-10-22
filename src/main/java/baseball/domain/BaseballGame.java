@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import baseball.view.View;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,58 +8,34 @@ import java.util.Set;
 
 public class BaseballGame {
 
-    public void run() {
-        boolean programInProgress = true;
-        while (programInProgress) {
-            List<Integer> answer = getAnswer();
-            noticeGameStart();
+    private List<Integer> answer;
+    private List<Integer> balls;
 
-            boolean isGameInProgress = true;
+    public void init() {
+        this.answer = getAnswer();
+    }
 
-            while (isGameInProgress) {
-                String input = requestNumbers();
-                checkValidation(input);
-                List<BaseballType> types = checkTypes(input, answer);
+    public BaseballGameResult play(String input) {
+        checkValidation(input);
+        this.balls = convert(input);
+        List<BaseballType> types = getBallTypes();
+        BaseballGameResult baseballGameResult = makeGameResult(types);
+        return baseballGameResult;
+    }
 
-                BaseballGameResult gameResult = new BaseballGameResult(types);
-                String resultText = gameResult.makeResultText();
-                noticeGameResult(resultText);
+    private BaseballGameResult makeGameResult(List<BaseballType> types) {
+        return new BaseballGameResult(types);
+    }
 
-                if (gameResult.isEnded()) {
-                    noticeGameEnd();
-                    isGameInProgress = false;
+    private List<Integer> convert(String input) {
+        List<Integer> balls = new ArrayList<>();
 
-                    String restartFlag = askRestart();
-                    if (restartFlag.equals("2")) {
-                        programInProgress = false;
-                    }
-                }
-            }
+        for (char c : input.toCharArray()) {
+            int ball = Character.getNumericValue(c);
+            balls.add(ball);
         }
-    }
 
-    private void noticeGameStart() {
-        View.printText("숫자 야구 게임을 시작합니다.\n");
-    }
-
-    private String requestNumbers() {
-        View.printText("숫자를 입력해주세요 : ");
-        String input = View.readLine();
-        return input;
-    }
-
-    private void noticeGameResult(String resultText) {
-        View.printText(resultText);
-    }
-
-    private void noticeGameEnd() {
-        View.printText("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
-    }
-
-    private String askRestart() {
-        View.printText("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-        String input = View.readLine();
-        return input;
+        return balls;
     }
 
     private void checkValidation(String input) {
@@ -82,27 +57,26 @@ public class BaseballGame {
         }
     }
 
-    private List<BaseballType> checkTypes(String input, List<Integer> answer) {
+    private List<BaseballType> getBallTypes() {
         List<BaseballType> types = new ArrayList<>();
 
-        for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
-            int number = Character.getNumericValue(c);
-            BaseballType type = checkType(number, i, answer);
-            types.add(type);
+        for (int i = 0; i < balls.size(); i++) {
+            int ball = balls.get(i);
+            BaseballType ballType = getBallType(ball, i);
+            types.add(ballType);
         }
 
         return types;
     }
 
-    private BaseballType checkType(int number, int index, List<Integer> answer) {
-        boolean isExist = answer.contains(number);
+    private BaseballType getBallType(int ball, int index) {
+        boolean isExist = answer.contains(ball);
 
         if (!isExist) {
             return BaseballType.OUT;
         }
 
-        boolean isStrike = answer.get(index) == number;
+        boolean isStrike = answer.get(index) == ball;
         if (isStrike) {
             return BaseballType.STRIKE;
         }
@@ -111,15 +85,16 @@ public class BaseballGame {
     }
 
     private List<Integer> getAnswer() {
-        List<Integer> computer = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();
 
-        while (computer.size() < 3) {
+        while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
             }
         }
 
-        return computer;
+        return answer;
     }
 }
+

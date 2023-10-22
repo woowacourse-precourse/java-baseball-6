@@ -4,7 +4,6 @@ import java.util.List;
 
 public class BaseballGameResult {
 
-
     private final long ballCount;
     private final long strikeCount;
 
@@ -13,7 +12,16 @@ public class BaseballGameResult {
         this.strikeCount = types.stream().filter(BaseballType.STRIKE::equals).count();
     }
 
-    public String makeResultText() {
+    public boolean isEnded() {
+        if (strikeCount == 3) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public String toString() {
         StringBuilder sb = new StringBuilder();
 
         if (ballCount != 0) {
@@ -34,13 +42,5 @@ public class BaseballGameResult {
         sb.append('\n');
 
         return sb.toString();
-    }
-
-    public boolean isEnded() {
-        if (strikeCount == 3) {
-            return true;
-        }
-
-        return false;
     }
 }
