@@ -14,9 +14,9 @@ public class GameScoreView {
         System.out.println(OUTPUT_NEXT_GAME_SETUP);
     }
 
-    public void countStrikeBall(List<Integer> countStrikeBall) { //3스트라이크 미완성
-        int countStrike = countStrikeBall.get(STRIKE_COUNT_INDEX);
-        int countBall = countStrikeBall.get(BALL_COUNT_INDEX);
+    public void incompleteThreeStrikeScore(List<Integer> incompleteThreeStrikeScore) { //3스트라이크 미완성
+        int countStrike = incompleteThreeStrikeScore.get(STRIKE_COUNT_INDEX);
+        int countBall = incompleteThreeStrikeScore.get(BALL_COUNT_INDEX);
 
         if (countStrike == 0 && countBall == 0) {
             System.out.println("낫싱");
