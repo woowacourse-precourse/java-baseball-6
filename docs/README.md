@@ -26,15 +26,6 @@
 
 ---
 
-## BaseballNumber
-
-숫자 야구에 필요한 Integer를 래핑한 클래스
-
-- 한글 입력을 검증하는 `validateNumericInput(String baseballNumber)`
-- 주소 값이 아닌 값 자체 비교를 위한 오버라이드 함수 `equals()`,`hashCode()`
-
----
-
 ## BaseballNumbers
 
 `List<BaseballNumber>`를 래핑한 일급 컬렉션
