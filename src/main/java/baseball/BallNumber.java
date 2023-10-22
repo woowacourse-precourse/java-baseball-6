@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.Objects;
 
-public class BallNumber {
+public final class BallNumber {
     private static final int MIN_NO = 1;
     private static final int MAX_NO = 9;
 
