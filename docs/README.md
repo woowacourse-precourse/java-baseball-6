@@ -50,11 +50,13 @@
 
 ### 기능
 
-[ ] Computer와 Player가 고른 3자리 수를 각각 받는다.
+[v] Computer와 Player가 고른 3자리 수를 각각 받는다.
 
-[ ] 받은 3자리 수 두 개로 게임을 진행한다.
+[ ] Player가 새롭게 고른 3자리 수를 입력받고 기존 값을 대체한다.
 
-[ ] 게임의 결과 GameResult를 반환한다.
+[v] 받은 3자리 수 두 개로 게임을 진행한다.
+
+[v] 게임의 결과 GameResult를 반환한다.
 
 # GameResult
 
