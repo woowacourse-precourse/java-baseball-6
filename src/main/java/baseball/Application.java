@@ -9,6 +9,8 @@ import java.util.List;
 
 public class Application {
 
+    private static final int NUMBER_SIZE = 3;
+
     private static void playBaseBall() {
         int numOfBall, numOfStrike;
         List<Integer> computerNumber = getComputerNumber();
@@ -18,6 +20,18 @@ public class Application {
             numOfStrike = getNumberOfStrike(computerNumber, playerNumber);
             printBaseBallResult(numOfBall, numOfStrike);
         } while(numOfStrike < 3);
+    }
+
+    private static int getNumberOfBall(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int ballCount = 0;
+        for (int index = 0; index < NUMBER_SIZE; index++) {
+            int computer = computerNumber.get(index);
+            for (int i = 1; i <= NUMBER_SIZE; i++) {
+                if (computer == playerNumber.get((index + i) % NUMBER_SIZE))
+                    ballCount++;
+            }
+        }
+        return ballCount;
     }
 
     private static List<Integer> getPlayerNumber() {
