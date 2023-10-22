@@ -2,20 +2,20 @@ package baseball;
 
 public class ErrorHandler {
 
-    public void checkErrorUserNumber(String number){
-        if(number.length() <= 0 || number.length() > 3){
+    public void checkErrorUserNumber(String userNumber){
+        if(userNumber.length() <= 0 || userNumber.length() > 3){
             throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
         }
-        if(!number.matches("^\\d+$")){
+        if(!userNumber.matches("^\\d+$")){
             throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
         }
     }
 
-    public void checkErrorAgainNumber(String number){
-        if(!number.equals("1") && !number.equals("2")){
+    public void checkErrorAgainNumber(String againNumber){
+        if(!againNumber.equals("1") && !againNumber.equals("2")){
             throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
         }
-        if(!number.matches("^\\d+$")){
+        if(!againNumber.matches("^\\d+$")){
             throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
         }
     }

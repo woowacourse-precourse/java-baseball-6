@@ -11,9 +11,9 @@ public class GameView {
 
     public String getUserInput(){
         System.out.print("숫자를 입력해주세요 : ");
-        String now = Console.readLine();
-        errorHandler.checkErrorUserNumber(now);
-        return now;
+        String userNumber = Console.readLine();
+        errorHandler.checkErrorUserNumber(userNumber);
+        return userNumber;
     }
 
     public boolean showResult(Game model){

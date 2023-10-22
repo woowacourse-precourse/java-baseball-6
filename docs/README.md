@@ -15,15 +15,22 @@
   - 게임을 실행 시킵니다.
 - void gameIsOver()
   - 게임을 그만 할 건지를 조사합니다.
-- void modifyUserNumber()
-  - 입력 받은 유저 숫자를 토대로 유저 숫자를 업데이트 합니다.
 
 ### GameView
 - void startGame()
   - 게임 시작을 출력합니다.
-- int getUserInput()
+- String getUserInput()
   - 유저의 숫자를 입력 받습니다.
-- void showResult()
+- boolean showResult()
   - 결과를 출력합니다.
+  - 결과에 따라 리턴하는 boolean 값을 다르게해 게임에 종료를 선택할 수 있게 합니다.
 - boolean playAgain()
   - 게임을 다시 시작할지 조사합니다.
+
+### ErrorHandler
+- void checkErrorUserNumber
+  - userNumber의 에러를 획인합니다.
+  - 숫자가 3자리를 넘어가거나 숫자가 아닐 경우 에러가 발생합니다.
+- void checkErrorAgainNumber
+  - againNumber의 에러를 확인합니다.
+  - 1이나 2가 아니거나 숫자가 아닐경우 에러가 발생합니다.
