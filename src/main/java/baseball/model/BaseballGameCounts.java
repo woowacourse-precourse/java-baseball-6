@@ -7,7 +7,8 @@ public class BaseballGameCounts {
     private int balls;
     private String message;
 
-    protected BaseballGameCounts() {}
+    protected BaseballGameCounts() {
+    }
 
     public static BaseballGameCounts createBaseballGameCounts() {
         return new BaseballGameCounts();

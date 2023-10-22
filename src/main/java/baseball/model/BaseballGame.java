@@ -56,7 +56,9 @@ public class BaseballGame {
         }
 
         // 3자리 수 검증 확인
-        if (userInput.length() != 3) throw new IllegalArgumentException("잘못된 입력입니다.");
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
 
         // 중복 자리수 검증
         for (int i = 0; i < userInput.length(); i++) {
