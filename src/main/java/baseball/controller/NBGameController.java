@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.validator.NumberValidation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -16,5 +17,8 @@ public class NBGameController {
         // 사용자로부터 console 입력 받기
         String user = in.inputString();
         out.displayString(user);
+        // 숫자 검증하기
+        NumberValidation numberValidation = new NumberValidation();
+        numberValidation.validateNumber(user);
     }
 }
