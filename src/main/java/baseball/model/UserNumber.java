@@ -14,12 +14,9 @@ public class UserNumber {
     }
 
     private List<Integer> generateUserNumber(String input) {
-        isRightFormatNumber(input);
-        isOverLengthNumber(input);
-        isDuplicatedNumber(input);
-        isContainedZero(input);
-        int[] userNumber = convertStringToList(input);
-        return Arrays.stream(userNumber).boxed().collect(Collectors.toList());
+        int[] inputList = convertStringToList(input);
+        validateInput(inputList);
+        return Arrays.stream(inputList).boxed().collect(Collectors.toList());
 
     }
 
@@ -28,38 +25,25 @@ public class UserNumber {
     }
 
     private int[] convertStringToList(String input) {
-        return Arrays.stream(input.split("")).mapToInt(Integer::parseInt).toArray();
+        return input.chars().map(num -> num - '0').toArray();
     }
 
-    private void isDuplicatedNumber(String input) {
-        long count = input.chars().distinct().count();
-        if (count != 3) {
-            System.out.println("중복된 숫자가 있습니다.");
+    private void validateInput(int[] inputList) {
+        if (isDuplicateNumber(inputList) || isWrongFormatNumber(inputList) || isOverLengthNumber(inputList)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void isRightFormatNumber(String input) {
-        if (!input.matches("\\d+")) {
-            System.out.println("숫자가 아닌 값이 포함 되어 있습니다.");
-            throw new IllegalArgumentException();
-        }
-
+    private boolean isDuplicateNumber(int[] inputList) {
+        return Arrays.stream(inputList).distinct().count() != 3;
     }
 
-    private void isContainedZero(String input) {
-        if (input.contains("0")) {
-            System.out.println("0이 포함되어 있습니다.");
-            throw new IllegalArgumentException();
-        }
-
+    private boolean isWrongFormatNumber(int[] inputList) {
+        return Arrays.stream(inputList).anyMatch(num -> num <= 0 || num > 9);
     }
 
-    private void isOverLengthNumber(String input) {
-        if (input.length() != 3) {
-            System.out.println("숫자는 3개여야 합니다.");
-            throw new IllegalArgumentException();
-        }
+    private boolean isOverLengthNumber(int[] inputList) {
+        return inputList.length != 3;
     }
 
 }
