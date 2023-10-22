@@ -21,10 +21,7 @@ public class Application {
     private static boolean endGame(Scanner sc) {
         logger.info("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = sc.next();
-        if (input.equals("2")) {
-            return true;
-        }
-        return false;
+        return input.equals("2");
     }
 
     private static void startGame() {
