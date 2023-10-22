@@ -1,4 +1,4 @@
-package baseball;
+package baseball.ballcount;
 
 public class BallCount {
     private int strike;
