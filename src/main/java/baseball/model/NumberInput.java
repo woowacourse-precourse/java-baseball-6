@@ -20,6 +20,7 @@ public class NumberInput extends PlayerInput {
     }
 
     protected void validate() {
+        super.validate();
         checkInputLength();
         checkAllCharacter();
         checkDuplicateChar();
