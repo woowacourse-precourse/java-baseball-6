@@ -29,11 +29,7 @@ public class GameController {
 
         while (!correctAnswer) {
             gameNumber.setInputNumber(inputView.enterGameNumber());
-
-            computerController.compareNumbers(gameNumber);
-            computerController.provideHint();
-
-            correctAnswer = computerController.isSuccessGame();
+            correctAnswer = computerController.playGame(gameNumber);
             sendEndMessage(correctAnswer);
         }
     }

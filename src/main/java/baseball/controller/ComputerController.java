@@ -19,21 +19,31 @@ public class ComputerController {
         gameNumber.setRandomNumbers();
     }
     
-    public void compareNumbers(GameNumber gameNumber) {
+    public boolean playGame(GameNumber gameNumber) {
         int[] playerNumbers = gameNumber.getPlayerNumbers();
         int[] randomNumbers = gameNumber.getRandomNumbers();
         
-        resetCount();
+        compareNumbers(playerNumbers, randomNumbers);
 
-        for (int i = 0; i < BASEBALL_NUMBER_LENGTH; i++) {
-            countStrike(randomNumbers, playerNumbers[i], i);
-            countBall(randomNumbers, playerNumbers[i], i);
-        }
+        return isSuccessGame();
+    }
+
+    private void compareNumbers(int[] playerNumbers, int[] randomNumbers) {
+        resetCount();
+        checkStrikeAndBall(playerNumbers, randomNumbers);
+        provideHint();
     }
 
     private void resetCount() {
         strikeCount = RESET_COUNT;
         ballCount = RESET_COUNT;
+    }
+
+    private void checkStrikeAndBall(int[] playerNumbers, int[] randomNumbers) {
+        for (int i = 0; i < BASEBALL_NUMBER_LENGTH; i++) {
+            countStrike(randomNumbers, playerNumbers[i], i);
+            countBall(randomNumbers, playerNumbers[i], i);
+        }
     }
 
     private void countStrike(int[] randomNumbers, int playerNumber, int numberIndex) {
@@ -80,7 +90,7 @@ public class ComputerController {
         return "";
     }
 
-    public boolean isSuccessGame() {
+    private boolean isSuccessGame() {
         return strikeCount == BASEBALL_SUCCESS_STRIKE_COUNT;
     }
 }
