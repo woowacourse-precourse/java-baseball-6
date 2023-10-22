@@ -3,8 +3,8 @@ package baseball;
 import java.util.List;
 
 public class Baseballs {
-    private static final int ZERO_INDEX = 0;
-    private static final int BASEBALLS_SIZE = 3;
+    public static final int ZERO_INDEX = 0;
+    public static final int BASEBALLS_SIZE = 3;
 
     private final List<Baseball> baseballs;
 
