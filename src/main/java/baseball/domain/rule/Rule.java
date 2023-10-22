@@ -8,7 +8,6 @@ public class Rule {
 	private Rule() {
 	}
 
-
 	public static boolean judgeGameOver(int[] userNumberArray, int[] computerNumberArray) {
 		int ball = countBall(userNumberArray, computerNumberArray);
 		int strike = countStrike(userNumberArray, computerNumberArray);

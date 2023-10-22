@@ -13,17 +13,48 @@ public class StringUtils {
 
 	public static void checkInputFormat(String inputString) throws IllegalArgumentException {
 		String removedBlankString = removeBlank(inputString);
-		checkIntegerInput(removedBlankString);
-		checkIntegerLength(removedBlankString, 3);
-		checkDuplicatedNumber(removedBlankString);
-		checkNotZero(removedBlankString);
+		validateIntegerInput(removedBlankString);
+		validateIntegerLength(removedBlankString, 3);
+		validateDuplicatedNumber(removedBlankString);
+		validateNotZero(removedBlankString);
 	}
 
-	private static void checkNotZero(String removedBlankString) throws UsingZeroInputException {
+	public static void checkResumeInputFormat(String inputString) throws IllegalArgumentException {
+		String removedBlankString = removeBlank(inputString);
+		validateIntegerInput(removedBlankString);
+		validateIntegerLength(removedBlankString, 1);
+		validateResumeFormat(removedBlankString);
+	}
+
+	private static void validateNotZero(String removedBlankString) throws UsingZeroInputException {
 		if (isZeroIncluded(removedBlankString)) {
 			throw new UsingZeroInputException(removedBlankString);
 		}
 
+	}
+
+	private static void validateResumeFormat(String removedBlankString) throws NotValidResumeInputException {
+		if (!removedBlankString.equals("1") && !removedBlankString.equals("2")) {
+			throw new NotValidResumeInputException(removedBlankString);
+		}
+	}
+
+	private static void validateIntegerInput(String inputString) throws NotIntegerInputException {
+		if (!isInteger(inputString)) {
+			throw new NotIntegerInputException(inputString);
+		}
+	}
+
+	private static void validateIntegerLength(String inputString, int N) throws OutOfLengthInputException {
+		if (!isLengthSameAsN(inputString, N)) {
+			throw new OutOfLengthInputException(inputString, N);
+		}
+	}
+
+	private static void validateDuplicatedNumber(String inputString) throws DuplicatedInputException {
+		if (isDuplicated(inputString)) {
+			throw new DuplicatedInputException(inputString);
+		}
 	}
 
 	private static boolean isZeroIncluded(String removedBlankString) {
@@ -36,20 +67,6 @@ public class StringUtils {
 		return false;
 	}
 
-	public static void checkResumeInputFormat(String inputString) throws IllegalArgumentException {
-		String removedBlankString = removeBlank(inputString);
-		checkIntegerInput(removedBlankString);
-		checkIntegerLength(removedBlankString, 1);
-		checkResumeFormat(removedBlankString);
-	}
-
-	private static void checkResumeFormat(String removedBlankString) throws NotValidResumeInputException {
-		if (!removedBlankString.equals("1") && !removedBlankString.equals("2")) {
-			throw new NotValidResumeInputException(removedBlankString);
-		}
-	}
-
-
 	public static int[] parseStringToIntArray(String inputString) {
 		String[] array = inputString.split("");
 		int[] numberArray = new int[3];
@@ -59,27 +76,6 @@ public class StringUtils {
 		return numberArray;
 	}
 
-	private static void checkIntegerInput(String inputString) throws NotIntegerInputException {
-		if (!isInteger(inputString)) {
-			throw new NotIntegerInputException(inputString);
-		}
-	}
-
-	private static void checkIntegerLength(String inputString, int N) throws OutOfLengthInputException {
-		if (!isLengthSameAsN(inputString, N)) {
-			throw new OutOfLengthInputException(inputString, N);
-		}
-	}
-
-	private static void checkDuplicatedNumber(String inputString) throws DuplicatedInputException {
-		if (isDuplicated(inputString)) {
-			throw new DuplicatedInputException(inputString);
-		}
-	}
-
-	private static String removeBlank(String input) {
-		return input.replaceAll("\\s+", "").trim();
-	}
 
 	private static boolean isInteger(String inputString) {
 		try {
@@ -99,4 +95,9 @@ public class StringUtils {
 		Set<String> set = new HashSet<>(Arrays.asList(array));
 		return set.size() != array.length;
 	}
+
+	private static String removeBlank(String input) {
+		return input.replaceAll("\\s+", "").trim();
+	}
+
 }
