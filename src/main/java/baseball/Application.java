@@ -2,26 +2,34 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 
 public class Application {
     public static void main(String[] args) {
         int inputNumber; //(사용자 입력 숫자)
         int randomNumber; //(랜덤하게 추출된 세자리 숫자)
-        int strikeCount = 0; //(스트라이크 횟수)
+        int strikeCount; //(스트라이크 횟수)
         int inputRestart = 1; //(게임 재시작 입력 숫자)
+
+        try {
+        }
+        catch (IllegalArgumentException e) {
+            return;
+        }
 
       System.out.println("숫자 야구 게임을 시작합니다.");
       while (inputRestart == 1) {
           randomNumber = generateRandomNumber();
+          strikeCount = 0;
           while (strikeCount != 3) {
               System.out.println("숫자를 입력해주세요 :");
               inputNumber = Integer.parseInt(Console.readLine());
+              validateInputLength(inputNumber);
               strikeCount = generateGameGuess(inputNumber, randomNumber);
           }
           System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
           System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
           inputRestart = Integer.parseInt(Console.readLine());
+          validateInputRestart(inputRestart);
       }
     }
     public static int generateRandomNumber() {
@@ -34,8 +42,7 @@ public class Application {
         while (thiRandom == secRandom || thiRandom == firRandom){
             thiRandom = Randoms.pickNumberInRange(1, 9);
         }
-
-        return firRandom + secRandom*10 + thiRandom*100;
+        return firRandom*100 + secRandom*10 + thiRandom;
     }
 
     public static int generateGameGuess(int inputNumber, int randomNumber) {
@@ -49,10 +56,10 @@ public class Application {
         if(strikeCount == 0 && ballCount == 0) {
             System.out.println("낫싱");
         }
-        else if(strikeCount == 0 && ballCount > 0){
+        else if(strikeCount == 0 && ballCount != 0){
             System.out.printf("%d볼\n", ballCount);
         }
-        else if(strikeCount > 0 && ballCount == 0){
+        else if(strikeCount != 0 && ballCount == 0){
             System.out.printf("%d스트라이크\n", strikeCount);
         }
         else {
@@ -67,5 +74,15 @@ public class Application {
             }
         }
         return false;
+    }
+    public static void validateInputLength(int inputNumber){
+        if(inputNumber > 999 || inputNumber < 100){
+            throw new IllegalArgumentException();
+        }
+    }
+    public static void validateInputRestart(int inputNumber){
+        if( inputNumber > 2 || inputNumber < 1){
+            throw new IllegalArgumentException();
+        }
     }
 }
