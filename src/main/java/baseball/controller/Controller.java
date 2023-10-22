@@ -1,12 +1,12 @@
 package baseball.controller;
 
-import static baseball.util.Converter.convertStringToInt;
 import static baseball.util.Converter.convertStringToIntegerList;
 
 import baseball.controller.mapper.ResultMapper;
 import baseball.model.Computer;
 import baseball.model.GuessNumber;
 import baseball.model.State;
+import baseball.util.BaseBallGameNumberGenerator;
 import baseball.view.ConsoleInputView;
 import baseball.view.ConsoleOutputView;
 
@@ -22,7 +22,7 @@ public class Controller {
     }
 
     public void start() {
-        Computer computer = Computer.createDefault();
+        Computer computer = Computer.createDefault(new BaseBallGameNumberGenerator());
         ResultMapper resultMapper = new ResultMapper();
         consoleOutputView.printStartMessage();
         play(computer, resultMapper);
@@ -46,14 +46,14 @@ public class Controller {
 
     private GuessNumber guess() {
         consoleOutputView.printGuessNumberInputMessage();
-        String guessNumbers = consoleInputView.readGuessNumbers();
+        String guessNumbers = consoleInputView.readStringCanConvertInt();
         return new GuessNumber(convertStringToIntegerList(guessNumbers));
     }
 
     private int askMore() {
         consoleOutputView.printRestartOrFinishMessage();
-        String stateNumber = consoleInputView.readGameStateNumber();
-        int state = convertStringToInt(stateNumber);
+        String stateNumber = consoleInputView.readStringCanConvertInt();
+        int state = Integer.parseInt(stateNumber);
         validate(state);
         return state;
     }
