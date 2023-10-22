@@ -25,6 +25,14 @@ public class Validator {
             }
         }
     }
+    private void checkBall(){
+        this.ballCount = 0;
+        for(int i = 0; i < INPUT_LENGTH; i ++){
+            this.ballCount += countSameNumber(i);
+            this.ballCount -= this.strikeCount;
+        }
+    }
+
 
 
 }
