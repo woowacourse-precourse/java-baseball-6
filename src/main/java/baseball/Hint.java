@@ -6,7 +6,8 @@ public class Hint {
     public int strike;
     public int ball;
 
-    private static final int NUMBER_LEN = 3;
+    private List<Integer> userAnswer;
+    private List<Integer> computerAnswer;
 
     public Hint() {
         this.strike = 0;
@@ -14,15 +15,41 @@ public class Hint {
     }
 
     public void calculateHint(List<Integer> userAnswer, List<Integer> computerAnswer) {
-        countStrike(userAnswer, computerAnswer);
-        countBall(userAnswer, computerAnswer);
+        this.userAnswer = userAnswer;
+        this.computerAnswer = computerAnswer;
+        countStrike();
+        countBall();
     }
 
-    private void countStrike(List<Integer> userAnswer, List<Integer> computerAnswer) {
-
+    public void printHint() {
+        if (this.ball > 0) {
+            System.out.print(this.ball + "볼 ");
+        }
+        if (this.strike > 0) {
+            System.out.print(this.strike + "스트라이크 ");
+        }
+        if (this.strike == 0 && this.ball == 0) {
+            System.out.println("낫싱");
+        }
     }
 
-    private void countBall(List<Integer> userAnswer, List<Integer> computerAnswer) {
- 
+    private void countStrike() {
+        for (int i = 0; i < this.userAnswer.size(); i++) {
+            if (userAnswer.get(i).equals(computerAnswer.get(i))) {
+                userAnswer.remove(i);
+                computerAnswer.remove(i);
+                strike++;
+            }
+        }
+    }
+
+    private void countBall() {
+
+        for (int i = 0; i < this.userAnswer.size(); i++) {
+            Integer userNumber = this.userAnswer.get(i);
+            if (computerAnswer.contains(userNumber)) {
+                ball++;
+            }
+        }
     }
 }
