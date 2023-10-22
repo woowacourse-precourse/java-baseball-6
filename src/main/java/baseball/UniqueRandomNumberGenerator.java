@@ -8,8 +8,12 @@ public class UniqueRandomNumberGenerator {
 
     List<Integer> randomNumber;
 
-    public UniqueRandomNumberGenerator(int startInclusive, int endInclusive, int count) {
+    private UniqueRandomNumberGenerator(int startInclusive, int endInclusive, int count) {
         this.randomNumber = generateUniqueNumbers(startInclusive, endInclusive, count);
+    }
+
+    public static List<Integer> randomNumberList(int startInclusive, int endInclusive, int count) {
+        return new UniqueRandomNumberGenerator(startInclusive, endInclusive, count).getRandomNumber();
     }
 
     private List<Integer> generateUniqueNumbers(int startInclusive, int endInclusive, int count) {
@@ -24,7 +28,7 @@ public class UniqueRandomNumberGenerator {
         return uniqueNumbers;
     }
 
-    public List<Integer> randomNumberList() {
+    private List<Integer> getRandomNumber() {
         return randomNumber;
     }
 }
