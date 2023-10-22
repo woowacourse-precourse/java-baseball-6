@@ -1,7 +1,5 @@
 package baseball;
 
-import baseball.validator.PlayerProposalValidator;
-
 import java.util.List;
 import java.util.stream.IntStream;
 

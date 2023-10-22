@@ -1,7 +1,5 @@
 package baseball;
 
-import baseball.validator.NewOrQuitValidator;
-import baseball.validator.PlayerProposalValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
@@ -26,7 +24,7 @@ public class BaseballGame {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
 
-            PlayerProposalValidator.execute(input);
+            Validator.validateProposal(input);
             Player player = new Player(input);
 
             hint = GameService.getHintWith(player, computer);
@@ -41,7 +39,7 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String newOrQuit = Console.readLine();
 
-        NewOrQuitValidator.execute(newOrQuit);
+        Validator.validateNewOrQuit(newOrQuit);
         if (newOrQuit.equals("1")) return true;
         else return false;
     }
