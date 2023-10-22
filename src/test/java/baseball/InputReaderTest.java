@@ -71,4 +71,56 @@ class InputReaderTest {
             List<Integer> inputList = inputReader.readUserGameInput();
         });
     }
+
+    @Test
+    @DisplayName("게임 진행 중 입력의 숫자가 공백일 때 예외 발생 테스트")
+    void typeIncorrectInputEmptyOfGameInput(){
+        String input = "";
+
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            List<Integer> inputList = inputReader.readUserGameInput();
+        });
+    }
+
+    @Test
+    @DisplayName("게임 종료 후 입력의 숫자가 1자리가 아닐 때 예외 발생 테스트")
+    void typeIncorrectInputSizeOfGameFinishInput(){
+        String input = "123";
+
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            int restart = inputReader.readUserGameFinishInput();
+        });
+    }
+
+    @Test
+    @DisplayName("게임 종료 후 입력이  숫자가 아닐 때 예외 발생 테스트")
+    void typeIncorrectInputTypeOfGameFinishInput(){
+        String input = "a";
+
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            int restart = inputReader.readUserGameFinishInput();
+        });
+    }
+
+    @Test
+    @DisplayName("게임 종료 후 입력의 숫자가 공백일 때 예외 발생 테스트")
+    void typeIncorrectInputEmptyOfGameFinishInput(){
+        String input = "";
+
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            int restart = inputReader.readUserGameFinishInput();
+        });
+    }
 }
