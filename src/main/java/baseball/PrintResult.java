@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 import java.util.Objects;
 
-public class GenerateResult {
+public class PrintResult {
 
     public boolean getResult(List<Integer> inputNumberList, List<Integer> randomNumberList) {
         int strikeNumber = 0;

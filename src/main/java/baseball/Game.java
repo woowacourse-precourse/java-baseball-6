@@ -12,12 +12,12 @@ public class Game {
     static boolean isFinished;
 
     private final ValidateInputNumber validateInputNumber;
-    private final GenerateResult generateResult;
+    private final PrintResult printResult;
     private final GenerateNumerList generateNumerList;
 
     public Game() {
         this.validateInputNumber = new ValidateInputNumber();
-        this.generateResult = new GenerateResult();
+        this.printResult = new PrintResult();
         this.generateNumerList = new GenerateNumerList();
     }
 
@@ -46,7 +46,7 @@ public class Game {
         }
 
         // 결과값 얻기 & 출력
-        isFinished = generateResult.getResult(inputNumberList, randomNumberList);
+        isFinished = printResult.getResult(inputNumberList, randomNumberList);
         if (isFinished) {
             gameEnd();
         } else {
