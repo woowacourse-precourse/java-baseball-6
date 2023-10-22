@@ -41,18 +41,17 @@ class BaseballsTest {
 
     private static Stream<Arguments> compareParameters() {
         return Stream.of(
-                Arguments.of(List.of(1, 2, 3), 3),
-                Arguments.of(List.of(1, 2, 4), 2),
-                Arguments.of(List.of(1, 4, 5), 1),
-                Arguments.of(List.of(3,1, 2), 0),
-                Arguments.of(List.of(3,1, 4), 0),
-                Arguments.of(List.of(3,4, 5), 0),
-                Arguments.of(List.of(1,3, 2), 1),
-                Arguments.of(List.of(1,3, 4), 1),
-                Arguments.of(List.of(4, 5, 6), 0)
+                Arguments.of(List.of(1, 2, 3), new BaseballCompareResult(0, 3)),
+                Arguments.of(List.of(1, 2, 4), new BaseballCompareResult(0, 2)),
+                Arguments.of(List.of(1, 4, 5), new BaseballCompareResult(0, 1)),
+                Arguments.of(List.of(3,1, 2), new BaseballCompareResult(3, 0)),
+                Arguments.of(List.of(3,1, 4), new BaseballCompareResult(2, 0)),
+                Arguments.of(List.of(3,4, 5), new BaseballCompareResult(1, 0)),
+                Arguments.of(List.of(1,3, 2), new BaseballCompareResult(2, 1)),
+                Arguments.of(List.of(1,3, 4), new BaseballCompareResult(1, 1)),
+                Arguments.of(List.of(4, 5, 6), new BaseballCompareResult(0, 0))
         );
     }
-
     @Test
     @DisplayName("1 ~ 9 사이 서로 다른 3자리 수인 경우 Baseballs 객체를 생성하는 테스트")
     void constructorTest() {
@@ -90,15 +89,16 @@ class BaseballsTest {
     @ParameterizedTest
     @MethodSource("compareParameters")
     @DisplayName("사용자 수와 컴퓨터 수를 비교하는 테스트")
-    void compareUserNumberAndComputerNumberTest(List<Integer> otherNumbers, int expected) {
+    void compareUserNumberAndComputerNumberTest(List<Integer> otherNumbers, BaseballCompareResult expected) {
         // given
         List<Integer> userNumbers = List.of(1, 2, 3);
         Baseballs userNumber = new Baseballs(userNumbers);
         Baseballs computerNumber = new Baseballs(otherNumbers);
 
-        int actual = userNumber.compare(computerNumber);
+        BaseballCompareResult actual = userNumber.compare(computerNumber);
 
         // then
-        assertEquals(expected, actual);
+        assertEquals(expected.getBall(), actual.getBall());
+        assertEquals(expected.getStrike(), actual.getStrike());
     }
 }
