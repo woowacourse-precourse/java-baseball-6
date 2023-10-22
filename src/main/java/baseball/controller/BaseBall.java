@@ -1,4 +1,4 @@
-package baseball.Controller;
+package baseball.controller;
 
 import baseball.domain.Score;
 import baseball.service.GameService;
