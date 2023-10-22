@@ -30,8 +30,16 @@ class BaseballsTest {
         );
     }
 
+    private static Stream<Arguments> invalidValueRangeParameters() {
+        return Stream.of(
+                Arguments.of(List.of(0, 1, 2)),
+                Arguments.of(List.of(-1, 1, 2)),
+                Arguments.of(List.of(1, 2, 10))
+        );
+    }
+
     @Test
-    @DisplayName("3자리 수인 경우 Baseballs 객체를 생성하는 테스트")
+    @DisplayName("1 ~ 9 사이 서로 다른 3자리 수인 경우 Baseballs 객체를 생성하는 테스트")
     void constructorTest() {
         // given
         List<Integer> numbers = List.of(1, 2, 3);
@@ -56,4 +64,11 @@ class BaseballsTest {
         assertThrows(IllegalStateException.class, () -> new Baseballs(numbers));
     }
 
+    @ParameterizedTest
+    @MethodSource("invalidValueRangeParameters")
+    @DisplayName("1 ~ 9 사이 수가 아닌 경우 예외 발생하는 테스트")
+    void invalidValueRangeExceptionTest(List<Integer> numbers) {
+        // expected
+        assertThrows(IllegalArgumentException.class, () -> new Baseballs(numbers));
+    }
 }
