@@ -1,11 +1,19 @@
 package baseball.view;
 
 import baseball.util.MessageConst;
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
     public String inputPlayerNumber() {
         System.out.print(MessageConst.INPUT_MSG);
-        return Console.readLine();
+        String playerNumber = Console.readLine();
+        Validator.getValidatedPlayerNumber(playerNumber);
+        return playerNumber;
+    }
+
+    public int inputRestartOrStop() {
+        System.out.println(MessageConst.OPTION_MSG);
+        return Integer.parseInt(Console.readLine());
     }
 }

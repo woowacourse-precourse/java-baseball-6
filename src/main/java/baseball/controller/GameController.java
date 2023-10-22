@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.Balls;
 import baseball.model.Hint;
 import baseball.model.RandomGenerator;
+import baseball.util.NumberConst;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -21,6 +22,14 @@ public class GameController {
         do {
             inputPlayerNumber();
         } while (!isGameFinish());
+        RestartOrStopGame();
+    }
+
+    private void RestartOrStopGame() {
+        outputView.printCorrectMessage();
+        if (inputView.inputRestartOrStop() == NumberConst.RESTART_OPTION) {
+            run();
+        }
     }
 
     private boolean isGameFinish() {

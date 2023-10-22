@@ -25,4 +25,8 @@ public class OutputView {
         }
         return hint.getBall() + MessageConst.BALL + MessageConst.SPACE + hint.getStrike() + MessageConst.STRIKE;
     }
+
+    public void printCorrectMessage() {
+        System.out.println(MessageConst.CORRECT_MSG);
+    }
 }
