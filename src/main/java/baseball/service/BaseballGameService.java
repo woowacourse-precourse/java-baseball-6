@@ -1,20 +1,13 @@
 package baseball.service;
 
 import baseball.model.BaseballGameResult;
-import baseball.model.ComputerNumber;
 import baseball.model.UserNumber;
 
 import java.util.List;
 
 public class BaseballGameService {
 
-    private List<Integer> computerNumber;
-
-    public void setComputerNumber() {
-        this.computerNumber = new ComputerNumber().getNumber();
-    }
-
-    public BaseballGameResult getGameResult(String input) {
+    public BaseballGameResult getGameResult(String input, List<Integer> computerNumber) {
         List<Integer> userNumber = new UserNumber(input).getNumber();
         return new BaseballGameResult(userNumber, computerNumber);
     }
