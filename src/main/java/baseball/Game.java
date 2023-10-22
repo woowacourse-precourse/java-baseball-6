@@ -19,6 +19,10 @@ public class Game {
         computer = new Player();
     }
 
+    public void endGame() {
+        System.out.println("숫자 야구 게임을 종료합니다.");
+    }
+
     public void getGuessNums() {
         System.out.print("숫자를 입력해주세요 : ");
         String guessNumsStr = Console.readLine();

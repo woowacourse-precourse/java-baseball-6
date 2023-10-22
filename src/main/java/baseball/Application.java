@@ -20,6 +20,8 @@ public class Application {
                 running = game.isRestart();
                 if (running) {
                     game.startGame();
+                } else {
+                    game.endGame();
                 }
             }
         }
