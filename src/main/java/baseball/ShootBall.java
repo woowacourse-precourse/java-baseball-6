@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class ShootBall {
     private int[] numbers;
 
-    //생성자 구현
+    //(1)생성자 구현
     ShootBall() {
         numbers = new int[10];
     }
@@ -55,5 +55,22 @@ public class ShootBall {
             }
         }
 
+    }
+
+    public int[] getNumbers(){return numbers;}
+    public boolean baseballReferee(ShootBall inputBall){
+        int strike=0,ball=0;
+        boolean result = false;
+        int[] inputNumbers = inputBall.getNumbers();
+        for(int i=1;i<=10;i++){
+            if((numbers[i] & inputNumbers[i])!=0)
+                if(numbers[i] == inputNumbers[i])
+                    strike++;
+                else
+                    ball++;
+        }
+        if(strike==3)
+            result = true;
+        return result;
     }
 }
