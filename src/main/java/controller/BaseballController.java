@@ -16,11 +16,15 @@
 
 package controller;
 
+import java.util.List;
+import model.CreateRandomNumber;
 import view.StartView;
 
 public class BaseballController {
     public static void startBaseball() {
         StartView.startView();
+        List<Integer> answer = CreateRandomNumber.createRandomNumber();
+
     }
 
 
