@@ -4,21 +4,20 @@ import java.util.List;
 
 public class DiContainer {
 
-    public ComputerController ComputerController() {
-        return new ComputerController(View(), Validation());
+    public ComputerController computerController() {
+        return new ComputerController(view(), validation());
     }
 
-    public Validate Validation() {
-        return new ComputerValidation(AnswerList());
+    public Validate validation() {
+        return new Validation();
     }
 
-    public View View() {
+    public View view() {
         return new ComputerView();
     }
 
-    public List<Integer> AnswerList() {
+    public List<Integer> answerList() {
         return new Computer().makeAnswerList();
     }
-
-
+    
 }
