@@ -5,10 +5,11 @@ import baseball.enums.GameConfig;
 public class InputValidator {
     private static final String ZERO = "0";
 
-    public void validate(String input) {
+    public void validate(String input, int size) {
         validateBlank(input);
         validateContainSpace(input);
         validateContainZero(input);
+        validateLength(input, size);
     }
 
     private void validateBlank(String input) {
@@ -29,10 +30,9 @@ public class InputValidator {
         }
     }
 
-    private void validateLength(String input) {
-        int pitchCount = GameConfig.PITCH_COUNT.getValue();
-        if (input.length() != pitchCount) {
-            throw new IllegalArgumentException(String.format("입력값이 %d자리가 아닙니다.", pitchCount));
+    private void validateLength(String input, int size) {
+        if (input.length() != size) {
+            throw new IllegalArgumentException(String.format("입력값이 %d자리가 아닙니다.", size));
         }
     }
 
