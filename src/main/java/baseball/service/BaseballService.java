@@ -8,8 +8,9 @@ public class BaseballService {
         int cntStrike = 0;
         String[] str = number.split("");
         for (int i=0; i<3; i++){
-            if(Integer.parseInt(str[i]) == computer.get(i))
+            if(Integer.parseInt(str[i]) == computer.get(i)) {
                 cntStrike++;
+            }
         }
         return cntStrike;
     }
