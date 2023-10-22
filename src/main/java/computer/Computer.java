@@ -15,8 +15,8 @@ public class Computer {
         while (computerNumber.size() < BALLS_SIZE) {
             addNonDuplicationNumber(computerNumber,Randoms.pickNumberInRange(1, 9));
         }
-        Balls balls = new Balls(computerNumber);
-        return balls;
+        Balls computer = new Balls(computerNumber);
+        return computer;
     }
 
     public void addNonDuplicationNumber(List<Integer> list, int number){
@@ -24,7 +24,4 @@ public class Computer {
             list.add(number);
         }
     }
-
-
-
 }
