@@ -19,7 +19,6 @@ public class Application {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
-                System.out.println(randomNumber);
             }
         }
 
@@ -77,10 +76,14 @@ public class Application {
                         playerBall.add(player.get(s));
                     }
                 }
+                if (strikeCount == 3){
+                    result = strikeCount  + "스트라이크 \n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+                    System.out.println(result);
+                    endGame();
+                }
 
                 // 볼 수 확인
                 for (int b = 0; b < playerBall.size(); b++) {
-
                     if(computerBall.contains(playerBall.get(b))) {
                         ballCount++;
                     }
@@ -91,7 +94,7 @@ public class Application {
                 } else if (strikeCount == 0 && ballCount != 0) {
                     result = ballCount  + "볼";
                 } else if (strikeCount != 0 && ballCount != 0) {
-                    result = strikeCount  + "스트라이크 " + ballCount  + "볼";
+                    result =  strikeCount  + "스트라이크 " + ballCount  + "볼 ";
                 } else {
                     result = "낫싱";
                 }
@@ -105,5 +108,10 @@ public class Application {
                 throw e;
             }
         }
+    }
+
+    public static void endGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String choice = Console.readLine();
     }
 }
