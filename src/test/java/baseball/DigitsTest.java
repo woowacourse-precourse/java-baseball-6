@@ -82,4 +82,15 @@ class DigitsTest {
         assertNotEquals(digits1, list);
     }
 
+    @Test
+    void 같은_원소를_가진_Digits객체는_Hash_Collection_자료구조에서도_동일한_객체로_인식된다() {
+        Digits digits1 = Digits.generateFixedDigits("123");
+        Digits digits2 = Digits.generateFixedDigits("123");
+
+        Set<Digits> set = new HashSet<>();
+        set.add(digits1);
+        set.add(digits2);
+
+        assertEquals(set.size(), 1);
+    }
 }
