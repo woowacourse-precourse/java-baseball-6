@@ -11,7 +11,6 @@ public class InputView {
     private static final String MSG_REQUESTING_INPUT = "숫자를 입력해주세요.";
     private static final String MSG_GAME_OVER = Config.getMaxNumbers() + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String MSG_ASK_IF_CONTINUES = "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요. %n";
-    public static final String MSG_EXCEPTION_INVALID_INPUT = "올바르지 않은 입력값입니다.";
 
 
     public static void printStart() {
