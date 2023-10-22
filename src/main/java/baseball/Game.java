@@ -23,7 +23,6 @@ public class Game {
     System.out.println("숫자 야구 게임을 시작합니다.");
 
     while (!quit) {
-      RandomNumber computer = new RandomNumber();
       int randomNumber = computer.getRandomNumber();
       System.out.println(randomNumber);
       var input = Console.readLine();
