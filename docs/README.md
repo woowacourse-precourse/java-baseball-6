@@ -33,13 +33,13 @@
   - 사용자의 입력을 저장할 모델이 필요하다.
     - 3자리 숫자
     - 종료/재시작 입력
+  - 조건에 맞는 3자리수를 만들어야한다.
+  - 스트라이크와 볼을 계산해야한다.
 - View : 
   - 사용자의 입력을 받아야 한다.
   - 사용자에게 적절한 문구를 출력해야한다.
 - Controller
   - 게임의 시작 종료를 제어해야한다.
-  - 조건에 맞는 3자리수를 만들어야한다.
-  - 스트라이크와 볼을 계산해야한다.
 
 ### 객체 분리
 - Model
@@ -49,12 +49,24 @@
       - 책임 : 컴퓨터가 생성한 정답 또는 사용자가 입력한 수를 저장하고 관리한다.
       - 상호작용 : Baseball
       - BaseballGame, AnswerGenerator
+  - AnswerGenerator
+    - 게임의 정답을 만드는 객체다.
+      - 역할: 게임의 정답을 생성한다.
+      - 책임: 1~9의 서로 다른 숫자로 이루어진 3자리 수를 생성한다.
+      - 상호작용 : Baseball
+      - BaseballGame, GameController, GameNumber
   - Score
     - 점수를 저장하는 객체다.
       - 역할: 게임의 점수 상태를 관리한다.
       - 책임: 스트라이크와 볼의 갯수를 저장한다.
       - 상호작용 : Baseball
       - BaseballGame, ScoreCalculator
+  - ScoreCalculator
+    - 스트라이크와 볼을 계산한다.
+      - 역할: 스트라이크와 볼의 갯수를 계산
+      - 책임: 정답과 사용자의 입력을 사이의 스트라이크와 볼 갯수를 계산한다.
+      - 상호작용 : Baseball
+      - BaseballGame, GameNumber, Score
   - PlayerInput
   - 사용자의 입력을 저장하는 객체다.
     - NumberInput
@@ -94,16 +106,4 @@
       - 책임: 게임의 시작, 종료, 재시작 등의 흐름을 관리
       - 상호작용 : Baseball
       - BaseballGame, InputView, OutputView, AnswerGenerator, RestartOrExitInput 
-  - AnswerGenerator
-    - 게임의 정답을 만드는 객체다.
-      - 역할: 게임의 정답을 생성한다.
-      - 책임: 1~9의 서로 다른 숫자로 이루어진 3자리 수를 생성한다.
-      - 상호작용 : Baseball
-      - BaseballGame, GameController, GameNumber
-  - ScoreCalculator
-    - 스트라이크와 볼을 계산한다.
-      - 역할: 스트라이크와 볼의 갯수를 계산
-      - 책임: 정답과 사용자의 입력을 사이의 스트라이크와 볼 갯수를 계산한다.
-      - 상호작용 : Baseball
-      - BaseballGame, GameNumber, Score
 
