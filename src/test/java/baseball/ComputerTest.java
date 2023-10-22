@@ -29,7 +29,7 @@ public class ComputerTest {
         List<Integer> result = computer.compareWithAnswer(input);
 
         // then
-        assertThat(result).containsExactly(3, 0);
+        assertThat(result).containsExactly(0, 3);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class ComputerTest {
         List<Integer> result = computer.compareWithAnswer(input);
 
         // then
-        assertThat(result).containsExactly(0, 3);
+        assertThat(result).containsExactly(3, 0);
     }
 
     @Test
