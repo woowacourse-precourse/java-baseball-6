@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final List<Integer> comNumber;
+    private List<Integer> comNumber;
+    private int strike;
+    private int ball;
 
-    public Computer() {
+    public void selectRandomNumbers() {
         comNumber = new ArrayList<>();
         while (comNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,23 +19,44 @@ public class Computer {
         }
     }
 
-    public String playGame(List<Integer> userNumber) {
-        int strikeCount = 0;
-        int ballCount = 0;
+    private void playGame(List<Integer> userNumber) {
+        strike = 0;
+        ball = 0;
+        countStrike(userNumber);
+        countBall(userNumber);
+        exceptStrikeInBall();
+    }
+
+    public void countBall(List<Integer> userNumber) {
         for (int i = 0; i < comNumber.size(); i++) {
-            if (comNumber.get(i).equals(userNumber.get(i))) {
-                strikeCount++;
-            } else if (userNumber.contains(comNumber.get(i))) {
-                ballCount++;
+            if (comNumber.contains(userNumber.get(i))) {
+                ball++;
             }
         }
+    }
 
-        if (strikeCount != 0 && ballCount != 0) {
-            return ballCount + "볼 " + strikeCount + "스트라이크";
-        } else if (strikeCount != 0) {
-            return strikeCount + "스트라이크";
-        } else if (ballCount != 0) {
-            return ballCount + "볼";
+    public void countStrike(List<Integer> userNumber) {
+        for (int i = 0; i < comNumber.size(); i++) {
+            if (comNumber.get(i).equals(userNumber.get(i))) {
+                strike++;
+            }
+        }
+    }
+
+    public void exceptStrikeInBall() {
+        ball -= strike;
+    }
+
+    public String getGameResult(List<Integer> userNumber) {
+        playGame(userNumber);
+        if (strike != 0 && ball != 0) {
+            return ball + "볼 " + strike + "스트라이크";
+        }
+        if (strike != 0) {
+            return strike + "스트라이크";
+        }
+        if (ball != 0) {
+            return ball + "볼";
         }
         return "낫싱";
     }
