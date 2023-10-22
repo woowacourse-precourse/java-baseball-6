@@ -32,8 +32,8 @@ public class NumberBaseBall {
     public void run(){
         Score score;
 
-        computerAction.generateNumber();
-        computerNumList = computerAction.getNumberList();
+        generateNumber();
+        computerNumList = computerAction.showNumberList();
 
         messageViewer.printStartMsg();
 
@@ -60,14 +60,15 @@ public class NumberBaseBall {
             userAction.inputRestartFactor();
             gameStatus = userAction.showMind();
 
-            regenerateNumber();
+            generateNumber();
         }
     }
 
-    public void regenerateNumber(){
+    public void generateNumber(){
         if (gameStatus == WANNA_KEEP_PLAYING) {
+            computerAction.clearAnswer();
             computerAction.generateNumber();
-            computerNumList = computerAction.getNumberList();
+            computerNumList = computerAction.showNumberList();
         }
     }
 
