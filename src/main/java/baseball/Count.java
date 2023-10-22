@@ -1,9 +1,9 @@
 package baseball;
 
 public class Count {
-    private String number;
+    private final String number;
 
-    public Count(String number) {
+    private Count(String number) {
         classInvariant(number);
         this.number = number;
     }
@@ -23,5 +23,14 @@ public class Count {
                 throw new IllegalArgumentException("3자리의 정수를 입력해야 합니다");
             }
         }
+    }
+
+    public static Count provideCount(String number) {
+        return new Count(number);
+    }
+
+    @Override
+    public String toString() {
+        return this.number;
     }
 }
