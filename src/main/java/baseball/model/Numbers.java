@@ -9,12 +9,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Numbers {
+    private static final int NUMBERS_SIZE = 3;
+    private static final String SPLIT_WORD_INTO_CHARS = "";
+
     private List<Integer> numbers;
 
     public Numbers() {
         numbers = new ArrayList<>();
 
-        while (numbers.size() < 3) {
+        while (numbers.size() < NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
             if (!numbers.contains(randomNumber)) {
@@ -29,7 +32,7 @@ public class Numbers {
     }
 
     private List<Integer> changeStringToList(String input) {
-        return Arrays.stream(input.split(""))
+        return Arrays.stream(input.split(SPLIT_WORD_INTO_CHARS))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }

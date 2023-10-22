@@ -1,6 +1,8 @@
 package baseball.model;
 
 public class GameResult {
+    private static final int SUCCESS_STRIKE = 3;
+    private static final int SUCCESS_BALL = 0;
     private int strike;
     private int ball;
 
@@ -10,7 +12,7 @@ public class GameResult {
     }
 
     public boolean isSuccess() {
-        if (strike == 3 && ball == 0) {
+        if (strike == SUCCESS_STRIKE && ball == SUCCESS_BALL) {
             return true;
         }
 

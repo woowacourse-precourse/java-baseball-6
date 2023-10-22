@@ -6,6 +6,7 @@ public class Validator {
     private static final int DIGIT_NUM = 3;
     private static final int MIN_RANGE_NUM = 1;
     private static final int MAX_RANGE_NUM = 9;
+    private static final int FIRST_CHAR = 0;
     private static final char NEGATIVE_SIGN = '-';
 
     private static final String NON_THREE_DIGIT_ERROR_MESSAGE = "3자리 숫자를 입력해야 합니다.";
@@ -16,6 +17,7 @@ public class Validator {
     private static final String RESTART_OR_EXIT_ERROR_MESSAGE = "1(재시작) 또는 2(종료)를 입력해야 합니다.";
     private static final String RESTART_NUM = "1";
     private static final String EXIT_NUM = "2";
+    private static final String SPLIT_WORD_INTO_CHARS = "";
 
     public static void validateUserNumber(String number) {
         validateThreeDigit(number);
@@ -40,13 +42,13 @@ public class Validator {
     }
 
     private static void validateNegative(String number) {
-        if (number.charAt(0) == NEGATIVE_SIGN) {
+        if (number.charAt(FIRST_CHAR) == NEGATIVE_SIGN) {
             throw new IllegalArgumentException(NEGATIVE_ERROR_MESSAGE);
         }
     }
 
     private static void validateDuplicate(String number) {
-        String[] numberSplit = number.split("");
+        String[] numberSplit = number.split(SPLIT_WORD_INTO_CHARS);
 
         if (numberSplit.length != Arrays.stream(numberSplit).distinct().count()) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
@@ -54,7 +56,7 @@ public class Validator {
     }
 
     private static void validateRange(String number) {
-        String[] numberSplit = number.split("");
+        String[] numberSplit = number.split(SPLIT_WORD_INTO_CHARS);
 
         for (String num : numberSplit) {
             if (Integer.parseInt(num) < MIN_RANGE_NUM || Integer.parseInt(num) > MAX_RANGE_NUM) {
