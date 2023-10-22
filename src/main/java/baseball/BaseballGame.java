@@ -11,16 +11,16 @@ public class BaseballGame {
     private GameResult gameResult = new GameResult();
     private Referee referee = new Referee();
 
-    public void play() {
+    public void playGame() {
         playerView.output(START_MESSAGE);
         do {
-            startGame();
+            playSingleGame();
             playerView.output(END_MESSAGE);
             playerView.output(INPUT_RETRY_MESSAGE);
         } while (isRetry());
     }
 
-    private void startGame() {
+    private void playSingleGame() {
         String computerNumbers = computer.generate();
         do {
             playerView.output(INPUT_NUMBERS_MESSAGE);
