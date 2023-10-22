@@ -1,8 +1,10 @@
 package baseball.controller;
 
+import java.util.Objects;
+
 //입력이 잘못됐을 때 예외처리를 구현
 public class Foul {
-    public String validateInput(String hitterString) {
+    public static String validateInputHitter(String hitterString) {
         // 입력값의 길이 확인
         if (hitterString == null || hitterString.length() != 3) {
             throw new IllegalArgumentException();
@@ -23,5 +25,12 @@ public class Foul {
             }
         }
         return hitterString;
+    }
+
+    public static String validateInputContine(String start) {
+        if (Objects.equals(start, "1") || Objects.equals(start, "2")) {
+            return start;
+        }
+        throw new IllegalArgumentException();
     }
 }

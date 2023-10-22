@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.Foul;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -31,5 +32,9 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    void runException(String input) {
+        Foul.validateInputHitter(input);
     }
 }

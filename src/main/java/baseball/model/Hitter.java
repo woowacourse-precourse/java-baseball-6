@@ -7,9 +7,10 @@ import java.util.List;
 public class Hitter {
     private List<Integer> hitterNum;
 
-    public Hitter(){}
+    public Hitter() {
+    }
 
-    public Hitter(String hitterString){
+    public Hitter(String hitterString) {
         hitterNum = new ArrayList<>();
 
         for (int i = 0; i < hitterString.length(); i++) {
