@@ -113,3 +113,4 @@ public class Application {
 
 - record의 compact constructor를 처음 써봤다. 다시는 까먹지 않을 것 같다.
 - 테스트 케이스는 모든 경우의 수를 다 다루어야 할까?
+- 아침에 일어나서 할 일: 리팩토링 - object 패키지의 객체들 중 의미파악이 어려운 코드들 개선할 것. 과도한 상수들은 enum으로 교체할 수 있는지 체크할 것.
