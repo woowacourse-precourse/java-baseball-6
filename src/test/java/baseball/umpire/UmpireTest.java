@@ -95,5 +95,36 @@ public class UmpireTest {
     }
 
     @Test
-    void umpireJudgeCheck(){}
+    void umpireJudgeCheck(){
+        //given
+        String ball = "011";
+        String bat = "110";
+
+        int compareStrike = 0;
+        int compareBall = 0;
+        boolean compareHomerun = false;
+        boolean compareNothing = false;
+
+        Score score = new Score();
+
+        Score compareScore = new Score();
+        compareScore.setStrikeCount(compareStrike);
+        compareScore.setBallCount(compareBall);
+        compareScore.setHomerunCount(compareHomerun);
+        compareScore.setNothingCount(compareNothing);
+
+        Boolean[] strikeCheckingBoard = new Boolean[DIGIT_NUM];
+        Arrays.fill(strikeCheckingBoard, false);
+        Boolean[] ballCheckingBoard = new Boolean[DIGIT_NUM];
+        Arrays.fill(ballCheckingBoard, false);
+
+        strikeCheckingBoard = umpire.checkStrike(ball, bat, strikeCheckingBoard);
+        ballCheckingBoard = umpire.checkBall(ball, bat, strikeCheckingBoard, ballCheckingBoard);
+
+        //when
+        score = umpire.judge(strikeCheckingBoard, ballCheckingBoard, score);
+
+        //then
+        Assertions.assertThat(score).isEqualTo(compareScore);
+    }
 }
