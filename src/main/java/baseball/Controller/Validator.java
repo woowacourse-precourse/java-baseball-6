@@ -15,15 +15,31 @@ public class Validator {
     private static final int GAME_END_NUMBER = 2;
 
     public void validatePlayerInput(String playerInput) {
-        String[] numbers = playerInput.replace(" ", "").split("");
+        String[] numbers = extractNumbers(playerInput);
+        validateInputSize(numbers);
+        validateInputContent(numbers);
+        validateInputUniqueness(numbers);
+    }
+
+    private String[] extractNumbers(String playerInput) {
+        return playerInput.replace(" ", "").split("");
+    }
+
+    private void validateInputSize(String[] numbers) {
         if (numbers.length != INPUT_NUMBER_SIZE) {
             throw new IllegalArgumentException(PLEASE_INPUT_THREENUMBER);
         }
+    }
+
+    private void validateInputContent(String[] numbers) {
         for (String number : numbers) {
             if (!number.matches(NUMBER_RANGE)) {
                 throw new IllegalArgumentException(PLEASE_INPUT_NUMBER);
             }
         }
+    }
+
+    private void validateInputUniqueness(String[] numbers) {
         HashSet<String> set = new HashSet<>(Arrays.asList(numbers));
         if (set.size() != 3) {
             throw new IllegalArgumentException(PLEASE_INPUT_NOT_DUPLICATION);
