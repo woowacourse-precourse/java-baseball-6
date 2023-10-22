@@ -6,61 +6,80 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class RefreeTest {
+    final List<Integer> computerNum = new ArrayList<>(List.of(1,2,3));
+
     @Test
-    void 판정_카운트_볼() {
-        Refree count = new Refree();
-        Computer computer = new Computer();
+    void 판정_1볼() {
+        Refree refree = new Refree();
+        List<Integer> playerNum = new ArrayList<>(List.of(4,1,5));
 
-        List<Integer> p1 = new ArrayList<>();
-        List<Integer> p2 = new ArrayList<>();
-
-        p1.add(1);
-        p1.add(2);
-        p1.add(3);
-
-        p2.add(2);
-        p2.add(3);
-        p2.add(1);
-
-        System.out.println(count.count(p1,p2));
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("1볼 ");
     }
 
     @Test
-    void 판정_카운트_스트라이크() {
-        Refree count = new Refree();
-        Computer computer = new Computer();
+    void 판정_2볼() {
+        Refree refree = new Refree();
+        List<Integer> playerNum = new ArrayList<>(List.of(4,1,2));
 
-        List<Integer> p1 = new ArrayList<>();
-        List<Integer> p2 = new ArrayList<>();
-
-        p1.add(1);
-        p1.add(2);
-        p1.add(3);
-
-        p2.add(1);
-        p2.add(2);
-        p2.add(3);
-
-        System.out.println(count.count(p1,p2));
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("2볼 ");
     }
 
     @Test
-    void 판정_카운트_볼_스트라이크() {
-        Refree count = new Refree();
-        Computer computer = new Computer();
+    void 판정_3볼() {
+        Refree refree = new Refree();
+        List<Integer> playerNum = new ArrayList<>(List.of(3,1,2));
 
-        List<Integer> p1 = new ArrayList<>();
-        List<Integer> p2 = new ArrayList<>();
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("3볼 ");
+    }
 
-        p1.add(1);
-        p1.add(2);
-        p1.add(3);
+    @Test
+    void 판정_1스트라이크() {
+        Refree refree = new Refree();
+        List<Integer> playerNum = new ArrayList<>(List.of(1,4,5));
 
-        p2.add(1);
-        p2.add(3);
-        p2.add(2);
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("1스트라이크");
+    }
 
-        System.out.println(count.count(p1,p2));
+    @Test
+    void 판정_2스트라이크() {
+        Refree refree = new Refree();
+        List<Integer> playerNum = new ArrayList<>(List.of(1,2,5));
+
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("2스트라이크");
+    }
+
+    @Test
+    void 판정_3스트라이크() {
+        Refree refree = new Refree();
+        List<Integer> playerNum = new ArrayList<>(List.of(1,2,3));
+
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("3스트라이크");
+    }
+
+    @Test
+    void 판정_1볼_1스트라이크() {
+        Refree refree = new Refree();
+        List<Integer> playerNum = new ArrayList<>(List.of(1,3,5));
+
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("1볼 1스트라이크");
+    }
+
+    @Test
+    void 판정_2볼_1스트라이크() {
+        Refree refree = new Refree();
+        List<Integer> playerNum = new ArrayList<>(List.of(1,3,2));
+
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("2볼 1스트라이크");
+    }
+
+    @Test
+    void 낫싱() {
+        Refree refree = new Refree();
+        List<Integer> playerNum = new ArrayList<>(List.of(4,5,6));
+
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("낫싱");
     }
 }
