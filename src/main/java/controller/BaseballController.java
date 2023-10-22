@@ -20,21 +20,29 @@ import java.util.List;
 import model.CreateRandomNumber;
 import model.Result;
 import view.InputView;
+import view.RestartOrEndView;
 import view.ResultView;
 import view.StartView;
 
 public class BaseballController {
     public static void startBaseball() {
         StartView.startView();
-        List<Integer> answer = CreateRandomNumber.createRandomNumber();
-
         while (true) {
-            List<Integer> userInput = InputView.userInput();
-            List<Integer> result = Result.getResult(answer, userInput);
-            if (ResultView.resultView(result)) {
+            List<Integer> answer = CreateRandomNumber.createRandomNumber();
+
+            while (true) {
+                List<Integer> userInput = InputView.userInput();
+                List<Integer> result = Result.getResult(answer, userInput);
+                if (ResultView.resultView(result)) {
+                    break;
+                }
+            }
+            if (RestartOrEndView.userInput()) {
+                continue;
+            } else {
                 break;
             }
-
         }
+
     }
 }
