@@ -34,10 +34,27 @@ public class BaseballGame {
 
     public String getResult(final Player player) {
         initScoreBoard();
+        for (int inning = 0; inning < MAX_BALL_SIZE; inning++) {
+            int computerBall = computerBalls.get(inning);
+            int playerBall = player.getPlayerBall(inning);
+            calculateScore(computerBall, playerBall);
+        }
     }
 
     private void initScoreBoard() {
         scoreBoard.put(STRIKE, SCORE_ZERO);
         scoreBoard.put(BALL, SCORE_ZERO);
+    }
+
+    private void calculateScore(final int computerBall, final int playerBall) {
+        if (computerBall == playerBall) {
+            int score = scoreBoard.get(STRIKE);
+            scoreBoard.put(STRIKE, ++score);
+            return;
+        }
+        if (computerBalls.contains(playerBall)) {
+            int score = scoreBoard.get(BALL);
+            scoreBoard.put(BALL, ++score);
+        }
     }
 }

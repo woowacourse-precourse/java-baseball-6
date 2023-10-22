@@ -24,4 +24,8 @@ public class Player {
             throw new IllegalArgumentException(exceptionMessage);
         }
     }
+
+    public int getPlayerBall(final int inning) {
+        return playerBalls.get(inning);
+    }
 }
