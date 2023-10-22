@@ -14,20 +14,19 @@ public class UserNumber {
     }
 
     private static List<Integer> toIntegerList(String input) {
-        List<Integer> randomNumber = new ArrayList<>();
+        List<Integer> userNumber = new ArrayList<>();
 
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
             if (Character.isDigit(c)) {
-                randomNumber.add(Integer.valueOf(c));
+                userNumber.add(Integer.parseInt(Character.toString(c)));
             }
         }
 
-        return randomNumber;
+        return userNumber;
     }
 
     public static List<Integer> getUserNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         validateInputNumber(input);
 
