@@ -14,16 +14,12 @@ public class Application {
         while (true){
             // computer의 랜덤 숫자를 생성하는 함수 실행 + List에 값 저장
             List<Integer> computerNumbers = createComputerNumbers();
-            //System.out.println(transInput(Console.readLine()));
-            //System.out.print("숫자를 입력해주세요 : ");
-            //List<Integer> userNumbers = transInput(Console.readLine());
-            //int strike = countStrike(computerNumbers, userNumbers);
-            //int ball = countBall(computerNumbers, userNumbers);
-            //System.out.println(strike);
-            //System.out.println(ball);
+
+            // 게임 실행
             play(computerNumbers);
-            // 게임 종료 후 재시작 선택
-            //if (!choiceRestart()) break;
+
+            // 게임 종료 후 재시작 여부 선택
+            if (!choiceRestart()) break;
         }
     }
 
@@ -104,6 +100,18 @@ public class Application {
                 if (strike > 0) System.out.print(strike + "스트라이크");
                 System.out.println();
             }
+        }
+    }
+
+    // 재실행 여부 판별 함수
+    private static boolean choiceRestart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String choice = Console.readLine();
+        // 입력이 1 또는 2가 아닌 경우는 예외 처리.
+        if ("1".equals(choice) || "2".equals(choice)){
+            return "1".equals(choice);
+        }else {
+            throw new IllegalArgumentException("잘못된 입력입니다. 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
     }
 }
