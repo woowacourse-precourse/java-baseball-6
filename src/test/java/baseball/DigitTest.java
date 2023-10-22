@@ -17,4 +17,11 @@ class DigitTest {
         assertThrows(IllegalArgumentException.class, () -> new Digit(target));
     }
 
+    @ParameterizedTest
+    @ValueSource(chars = {1, 5, 9})
+    void digit이_1에서_9사이_숫자인경우_예외가_던져지지_않는다(int target) {
+        assertDoesNotThrow(() -> new Digit(target));
+    }
+
+
 }
