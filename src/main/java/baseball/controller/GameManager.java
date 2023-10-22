@@ -1,8 +1,11 @@
 package baseball.controller;
 
 import baseball.io.PlayerIoManager;
+import baseball.model.Ball;
 import baseball.model.BallMaker;
 import baseball.model.judge.BaseballJudge;
+import baseball.model.judge.JudgeResult;
+import java.util.List;
 
 public class GameManager {
 
@@ -27,7 +30,9 @@ public class GameManager {
 
         baseballJudge = BaseballJudge.computerBallOf(ballMaker.createBall());
 
-    }
+        List<Integer> playerNumbers = playerIoManager.askThreeNumbers();
+        JudgeResult judgeResult = baseballJudge.judge(new Ball(playerNumbers));
 
+    }
 
 }
