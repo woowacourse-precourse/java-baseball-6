@@ -1,8 +1,8 @@
 package baseball.contoller;
 
+
 import baseball.model.Result;
 import baseball.utill.Converter;
-import baseball.utill.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -11,12 +11,16 @@ import java.util.List;
 
 public class BaseBallGameController {
 
+    private static final InputView inputView = new InputView();
+    private static final OutputView outputView = new OutputView();
+    private static final Converter converter = new Converter();
+
     public void run() {
-        OutputView.printStartMessage();
+        outputView.printStartMessage();
         boolean endSign = true;
         while (endSign) {
             startNewGame();
-            endSign = isEnd(InputView.readEndSign());
+            endSign = isEnd(inputView.readEndSign());
         }
 
     }
@@ -25,14 +29,14 @@ public class BaseBallGameController {
         List<Integer> computerNumbers = generateComputerNumber();
         boolean continueSign = true;
         while (continueSign) {
-            List<String> inputString = InputView.readPlayerNumber();
-            List<Integer> inputInteger = Converter.convertToNumericList(inputString);
+            List<String> inputString = inputView.readPlayerNumber();
+            List<Integer> inputInteger = converter.convertToNumericList(inputString);
             Result result = new Result();
             result.calculateResult(computerNumbers,inputInteger);
-            OutputView.printResult(result.resultToString());
+            outputView.printResult(result.resultToString());
             continueSign = result.isContinue();
         }
-        OutputView.printEndMessage();
+        outputView.printEndMessage();
     }
 
     private List<Integer> generateComputerNumber() {
