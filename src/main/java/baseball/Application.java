@@ -10,7 +10,7 @@ public class Application {
         boolean gameFirstStarted = true;
         while (true) {
             if (gameFirstStarted) {
-                output.printStartGame();
+                output.printGameStart();
                 gameFirstStarted = false;
             }
 
