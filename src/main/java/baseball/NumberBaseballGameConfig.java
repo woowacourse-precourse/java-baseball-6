@@ -8,6 +8,7 @@ public class NumberBaseballGameConfig {
     public static final int MAX_PLACE_VALUE = 9;
     public static final int CONTINUE_GAME = 1;
     public static final int EXIT_GAME = 2;
+    public static final int STRIKE_COUNT_REQUIRED_TO_WIN = 3;
 
     // 메시지 관련 상수
     public static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
