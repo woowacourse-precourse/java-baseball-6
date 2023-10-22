@@ -27,6 +27,7 @@
 1. GameNumber
     - randomNumbers : 난수 데이터 저장
     - inputNumber : 입력 데이터 저장 (문자열 형태)
+        - 공백 제거 후 저장하기
     - playerNumbers : 입력 데이터 저장 (inputNumber 정수형 변환)
         - 데이터 유효성 검사
         - inputNumber 정수형 변환
