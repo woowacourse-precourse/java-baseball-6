@@ -19,7 +19,7 @@ public class Application {
             numOfBall = getNumberOfBall(computerNumber, playerNumber);
             numOfStrike = getNumberOfStrike(computerNumber, playerNumber);
             printBaseBallResult(numOfBall, numOfStrike);
-        } while(numOfStrike < 3);
+        } while(numOfStrike < NUMBER_SIZE);
     }
 
     private static int getNumberOfBall(List<Integer> computerNumber, List<Integer> playerNumber) {
@@ -46,7 +46,7 @@ public class Application {
 
     private static List<Integer> getComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
-        while(computerNumber.size() < 3) {
+        while(computerNumber.size() < NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
