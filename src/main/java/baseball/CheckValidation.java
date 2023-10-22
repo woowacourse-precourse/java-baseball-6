@@ -3,6 +3,7 @@ package baseball;
 import static baseball.Enum.LETTER_ERROR;
 import static baseball.Enum.LIMIT_THREE_NUMBER;
 import static baseball.Enum.NOT_DUPLICATED;
+import static baseball.Enum.NUMBERS;
 import static baseball.Enum.VALID;
 import static baseball.Enum.VALID_ANSWER;
 
@@ -47,7 +48,7 @@ public class CheckValidation {
 
     // 입력값이 숫자인지 확인
     private boolean checkIfNumber(String[] strArr) {
-        String num = "0123456789";
+        String num = String.valueOf(NUMBERS);
         for (String s : strArr) {
             if (!num.contains(s)) {
                 return false;
