@@ -6,6 +6,7 @@ import baseball.model.UserModel;
 import baseball.util.exception.TerminateApplicationException;
 import baseball.view.UserInputView;
 import baseball.view.UserOutputView;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
@@ -16,6 +17,7 @@ public class Application {
             baseballController.startGame();
         } catch (TerminateApplicationException e) {
             System.out.println(e.getMessage());
+            Console.close();
         }
     }
 
