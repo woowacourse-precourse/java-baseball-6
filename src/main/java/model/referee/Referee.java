@@ -1,5 +1,7 @@
 package model.referee;
 
+import static utils.GameConstant.BASEBALL_GAME_NUMBER_LENGTH;
+
 import model.player.Computer;
 import model.player.User;
 
@@ -20,7 +22,7 @@ public class Referee {
 
     public GameScoreboard JudgeBaseBallGame() {
         GameScoreboard gameScoreboard = new GameScoreboard();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BASEBALL_GAME_NUMBER_LENGTH; i++) {
             if (computer.getNumberByPosition(i) == user.getNumberByPosition(i)) {
                 gameScoreboard = gameScoreboard.incrementStrike();
             } else if (computer.isContainsNumber(user.getNumberByPosition(i))) {

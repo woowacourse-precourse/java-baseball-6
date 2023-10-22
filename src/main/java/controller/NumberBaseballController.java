@@ -1,24 +1,28 @@
 package controller;
 
+import static utils.GameConstant.GAME_RESTART_OR_QUIT_PROMPT;
+import static utils.GameConstant.GAME_START_MESSAGE;
+import static utils.GameConstant.GAME_WIN_MESSAGE;
+
 import model.system.GameController;
 import view.InputView;
 import view.OutputView;
 
-public class NumberBaseBallController {
+public class NumberBaseballController {
 
     public static final String QUIT_GAME = "2";
     private final GameController gameController;
 
-    public NumberBaseBallController(GameController gameController) {
+    public NumberBaseballController(GameController gameController) {
         this.gameController = gameController;
     }
 
     public void run() {
-        OutputView.write("숫자 야구 게임을 시작합니다.");
+        OutputView.write(GAME_START_MESSAGE);
         while (true) {
             gameController.run();
-            OutputView.write("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            OutputView.write("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            OutputView.write(GAME_WIN_MESSAGE);
+            OutputView.write(GAME_RESTART_OR_QUIT_PROMPT);
             String input = InputView.readInput();
             if (input.equals(QUIT_GAME)) {
                 return;

@@ -1,12 +1,13 @@
 package utils;
 
+import static utils.GameConstant.BASEBALL_GAME_NUMBER_LENGTH;
+import static utils.GameErrorMessage.INVALID_LENGTH_MESSAGE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumberUtils {
-
-    public static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
 
     private BaseballNumberUtils() {
     }
@@ -17,7 +18,7 @@ public class BaseballNumberUtils {
         }
 
         if (input.length() != BASEBALL_GAME_NUMBER_LENGTH) {
-            throw new IllegalArgumentException("올바른 길이의 문자를 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_LENGTH_MESSAGE);
         }
 
         List<Integer> numbers = new ArrayList<>();

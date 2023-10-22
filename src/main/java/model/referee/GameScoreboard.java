@@ -1,5 +1,7 @@
 package model.referee;
 
+import static utils.GameConstant.BASEBALL_GAME_NUMBER_LENGTH;
+
 public class GameScoreboard {
 
     private final int strike;
@@ -24,7 +26,7 @@ public class GameScoreboard {
     }
 
     public boolean isThreeStrike() {
-        return this.strike == 3;
+        return this.strike == BASEBALL_GAME_NUMBER_LENGTH;
     }
 
     public boolean isNothing() {

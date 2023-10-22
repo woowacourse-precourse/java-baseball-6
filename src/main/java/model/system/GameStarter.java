@@ -1,5 +1,7 @@
 package model.system;
 
+import static utils.GameConstant.INPUT_PROMPT_MESSAGE;
+
 import java.util.List;
 import model.player.Computer;
 import model.player.User;
@@ -16,7 +18,7 @@ public class GameStarter {
 
     public GameScoreboard start(Computer computer) {
         GameScoreboard gameScoreboard = new GameScoreboard();
-        OutputView.write("숫자를 입력해주세요 :");
+        OutputView.write(INPUT_PROMPT_MESSAGE);
         String input = InputView.readInput();
         if (BaseballNumberUtils.isValidBaseballNumber(input)) {
             List<Integer> baseballNumber = BaseballNumberUtils.createBaseballNumber(input);
