@@ -11,7 +11,7 @@ public class NumberValidation {
             throw new IllegalArgumentException("각 자리에 중복된 숫자가 있다");
         }
     }
-    public boolean isNumber(String input) {
+    private boolean isNumber(String input) {
         return input.matches("[0-9]+");
     }
 
