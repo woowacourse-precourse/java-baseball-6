@@ -19,9 +19,6 @@ public class Compare {
         List<Integer> result = new ArrayList<>();
         result.add(ball);
         result.add(strike);
-        for (int i = 0; i < 2; i++) {
-            System.out.println(result.get(i));
-        }
         return result;
     }
 

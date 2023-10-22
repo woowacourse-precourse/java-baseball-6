@@ -39,7 +39,7 @@ public class UserNumber {
 
     private static void isNotNumberDigit(char charAt) {
         if(!Character.isDigit(charAt)){
-            throw new IllegalStateException(IS_NOT_DIGIT);
+            throw new IllegalArgumentException(IS_NOT_DIGIT);
         }
     }
 
@@ -54,7 +54,7 @@ public class UserNumber {
 
     public static void validateUserNumber(String userNumber) {
         if(userNumber.length()!=MAX_SIZE){
-            throw new IllegalStateException(VALIDATE_USER_NUMBER);
+            throw new IllegalArgumentException(VALIDATE_USER_NUMBER);
         }
     }
 }

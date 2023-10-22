@@ -19,7 +19,7 @@ public class Retry {
 
     public static void isRetryNumber(String number) {
         if(!number.equals(RETRY_NUMBER)&&!number.equals(END_NUMBER)) {
-            throw new IllegalStateException(ERROR_RETRY_NUMBER);
+            throw new IllegalArgumentException(ERROR_RETRY_NUMBER);
         }
     }
 }

@@ -23,7 +23,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 숫자_길이_테스트(){
+    void 숫자_길이_예외테스트(){
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> UserNumber.validateUserNumber("1234"))
                         .isInstanceOf(IllegalArgumentException.class)

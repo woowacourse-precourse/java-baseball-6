@@ -9,8 +9,7 @@ public class InputView {
 
     public static String userInputNumber(){
         System.out.print(REQUIRE_BASEBALL_NUMBER);
-        String input = Console.readLine();
-        return input;
+        return Console.readLine();
     }
     public static String Retry(){
         System.out.println(RESTART_OR_EXIT);

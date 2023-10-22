@@ -14,11 +14,13 @@ public class RandomNumber {
     public RandomNumber() {
         ComputerRandomNumber();
     }
-
+    public List<Integer> getComputerRandomNumber() {
+        return computerRandomNumber;
+    }
 
     private void ComputerRandomNumber() {
         computerRandomNumber = new ArrayList<>();
-        while(computerRandomNumber.size()<COMPUTER_COUNT){
+        while(computerRandomNumber.size()!=COMPUTER_COUNT){
             int randomNumber = Randoms.pickNumberInRange(START_NUMBER,END_NUMBER);
             if(!computerRandomNumber.contains(randomNumber)){
                 computerRandomNumber.add(randomNumber);
@@ -26,7 +28,5 @@ public class RandomNumber {
         }
     }
 
-    public List<Integer> getComputerRandomNumber() {
-        return computerRandomNumber;
-    }
+
 }

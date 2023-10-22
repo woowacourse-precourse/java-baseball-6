@@ -25,11 +25,11 @@ public class BaseballGame {
     private static void BaseballGame(){
         randomNumber = new RandomNumber();
         verification = new Verification();
-         while(!verification.threeStrike()) {
-             userNumber = new UserNumber(InputView.userInputNumber());
-             count = verification.getCompare(userNumber.getUserNumbers(), randomNumber.getComputerRandomNumber());
-             OutputView.ResultView(count.get(0), count.get(1));
-         }
+        while(!verification.threeStrike()) {
+            userNumber = new UserNumber(InputView.userInputNumber());
+            count = verification.getCompare(userNumber.getUserNumbers(), randomNumber.getComputerRandomNumber());
+            OutputView.ResultView(count.get(0), count.get(1));
+        }
         OutputView.gameResultMessage();
 
     }
