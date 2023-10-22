@@ -19,7 +19,7 @@ public class Restart {
     }
 
     public static void restartValidation(int decision) {
-        if (decision == RESTART || decision == EXIT) {
+        if (decision != RESTART && decision != EXIT) {
             throw new IllegalArgumentException();
         }
     }
