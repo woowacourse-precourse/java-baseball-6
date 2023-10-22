@@ -6,13 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager {
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     GameManager() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_MESSAGE);
     }
 
+
     public List<Integer> getUserTrialInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_MESSAGE);
         String userInput = readLine();
         InputValidator.checkUserTrialInput(userInput);
 
@@ -25,7 +30,7 @@ public class GameManager {
     }
 
     public int getUserRestartInput() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(RESTART_MESSAGE);
 
         String userInput = readLine();
         InputValidator.checkUserRestartInput(userInput);
@@ -46,7 +51,7 @@ public class GameManager {
             System.out.println(gameResult);
 
             if (gameResult.isAllStrike()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(END_MESSAGE);
                 break;
             }
         }
