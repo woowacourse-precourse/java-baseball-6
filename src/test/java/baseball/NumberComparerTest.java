@@ -55,4 +55,22 @@ class NumberComparerTest {
         assertThat(strikeCount).isEqualTo(1);
         assertThat(ballCount).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("같은 숫자가 존재하지 않는다.")
+    void test4() {
+        int strikeCount = 0;
+        int ballCount = 0;
+        List<Integer> computerNumbers = List.of(3, 5, 6);
+        String playerNumbers = "124";
+
+        NumberComparer numberComparer = new NumberComparer();
+        numberComparer.compareNumbers(playerNumbers, computerNumbers);
+
+        strikeCount = numberComparer.getStrikeCount();
+        ballCount = numberComparer.getBallCount();
+
+        assertThat(strikeCount).isEqualTo(0);
+        assertThat(ballCount).isEqualTo(0);
+    }
 }
