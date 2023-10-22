@@ -40,4 +40,8 @@ public class GameResult {
         }
         return result.toString();
     }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
 }
