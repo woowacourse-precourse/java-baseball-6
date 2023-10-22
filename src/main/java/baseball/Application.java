@@ -47,13 +47,13 @@ public class Application {
         if (strike == 0 && ball == 0){
             System.out.println("낫싱");
         } else if (strike == 3) {
-            System.out.println(String.format("$d스트라이크",strike));
-            System.out.println(String.format("$d개의 숫자를 모두 맞히셨습니다! 게임 종료",strike));
+            System.out.println(String.format("%d스트라이크",strike));
+            System.out.println(String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료",strike));
         } else if (strike != 0 && ball != 0){
-            String result = String.format("$d볼 $d스트라이크",ball,strike);
+            String result = String.format("%d볼 %d스트라이크",ball,strike);
             System.out.println(result);
         } else if (ball == 0){
-            String result = String.format("$d스트라이크",strike);
+            String result = String.format("%d스트라이크",strike);
             System.out.println(result);
         } else if (strike == 0){
             String result = String.format("$d볼",ball);
