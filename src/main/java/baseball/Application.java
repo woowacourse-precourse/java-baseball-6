@@ -7,7 +7,8 @@ public class Application {
         // TODO: 프로그램 구현
         Computer computerNumber = new Computer();
         UserNumber userNumber = new UserNumber();
-        GameResult gameResult = new GameResult();
+//        GameResult gameResult = new GameResult();
+        Compare compare = new Compare();
         RestartGame restartGame = new RestartGame();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -18,13 +19,13 @@ public class Application {
             List<Integer> computer = computerNumber.randomNumber();
             List<Integer> player = userNumber.UserNumber();
 
-            String result = gameResult.score(computer, player);
+            String result = compare.compareNumber(computer, player);
 
             if (result.equals("3스트라이크")) {
-                System.out.println(gameResult.score(computer, player));
+                System.out.println(compare.compareNumber(computer,player));
                 flag = restartGame.restart();
             }
-            System.out.println(gameResult.score(computer,player));
+            System.out.println(compare.compareNumber(computer,player));
         }
     }
 }
