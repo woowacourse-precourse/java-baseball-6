@@ -39,6 +39,9 @@ public class Application {
             System.out.println("computerGenerateNumber = " + computerGenerateNumber);
         }
 
+        boolean isThreeStrikes = computerController.checkUserInputWithAnswer(validatedUserInputNumbers, computerGenerateNumbers);
+        System.out.println(isThreeStrikes);
+
         outputView.printGameFinish();
     }
 }
