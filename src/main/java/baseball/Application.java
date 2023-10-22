@@ -64,10 +64,35 @@ public class Application {
         return computer;
     }
 
+    // String -> List<integer>로 파싱
+    public static List<Integer> stringToList(String inputString) {
+        List<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i < inputString.length(); i++) {
+            int number = inputString.charAt(i) - '0';
+            if (1 <= number && number <= 9) {
+                list.add(number);
+            } else {
+                throw new IllegalArgumentException("숫자가 아닙니다. 프로그램을 종료합니다.");
+            }
+        }
+
+        return list;
+    }
+
     public static void main(String[] args) {
 
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = createRandomNumber();
+        
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String number = camp.nextstep.edu.missionutils.Console.readLine();
+            if (checkValidation(number)) {
+                List<Integer> inputList = stringToList(number);
+
+            }
+        }
     }
 }
