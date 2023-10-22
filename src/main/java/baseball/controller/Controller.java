@@ -7,26 +7,26 @@ import baseball.model.Computer;
 import baseball.model.GuessNumber;
 import baseball.model.Referee;
 import baseball.model.State;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.view.ConsoleInputView;
+import baseball.view.ConsoleOutputView;
 
 public class Controller {
 
-    private final InputView inputView;
-    private final OutputView outputView;
+    private final ConsoleInputView consoleInputView;
+    private final ConsoleOutputView consoleOutputView;
 
-    public Controller(final InputView inputView,
-                      final OutputView outputView) {
-        this.inputView = inputView;
-        this.outputView = outputView;
+    public Controller(final ConsoleInputView consoleInputView,
+                      final ConsoleOutputView consoleOutputView) {
+        this.consoleInputView = consoleInputView;
+        this.consoleOutputView = consoleOutputView;
     }
 
     public void start() {
         Computer computer = Computer.createDefault();
         Referee referee = new Referee(computer);
-        outputView.printStartMessage();
+        consoleOutputView.printStartMessage();
         play(referee);
-        outputView.printWinningMessage();
+        consoleOutputView.printWinningMessage();
         int state = askMore();
         if (State.isMoreGame(state)) {
             start();
@@ -36,15 +36,15 @@ public class Controller {
     private void play(final Referee referee) {
         GuessNumber guessNumber = guess();
         String result = calculateResult(referee, guessNumber);
-        outputView.printGuessNumberResult(result);
+        consoleOutputView.printGuessNumberResult(result);
         if (!referee.isGameOver(result)) {
             play(referee);
         }
     }
 
     private GuessNumber guess() {
-        outputView.printGuessNumberInputMessage();
-        String guessNumbers = inputView.readGuessNumbers();
+        consoleOutputView.printGuessNumberInputMessage();
+        String guessNumbers = consoleInputView.readGuessNumbers();
         return new GuessNumber(convertStringToIntegerList(guessNumbers));
     }
 
@@ -53,8 +53,8 @@ public class Controller {
     }
 
     private int askMore() {
-        outputView.printRestartOrFinishMessage();
-        String stateNumber = inputView.readGameStateNumber();
+        consoleOutputView.printRestartOrFinishMessage();
+        String stateNumber = consoleInputView.readGameStateNumber();
         int state = convertStringToInt(stateNumber);
         validate(state);
         return state;

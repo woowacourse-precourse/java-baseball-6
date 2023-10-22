@@ -1,14 +1,14 @@
 package baseball;
 
 import baseball.controller.Controller;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.view.ConsoleInputView;
+import baseball.view.ConsoleOutputView;
 
 public class Application {
 
     public static void main(String[] args) {
-        OutputView outputView = new OutputView();
-        Controller controller = new Controller(new InputView(outputView), outputView);
+        ConsoleOutputView consoleOutputView = new ConsoleOutputView();
+        Controller controller = new Controller(new ConsoleInputView(consoleOutputView), consoleOutputView);
         controller.start();
     }
 }
