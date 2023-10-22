@@ -8,6 +8,9 @@ public class Validator {
         if (!isCorrectLength(input)) {
             throw new IllegalArgumentException("세 자리 이외의 값은 입력할 수 없습니다.");
         }
+        if (!isNumberType(input)) {
+            throw new IllegalArgumentException("숫자 이외의 값은 입력할 수 없습니다.");
+        }
     }
 
     private boolean isCorrectLength(String input) {
