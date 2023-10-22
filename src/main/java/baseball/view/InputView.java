@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import baseball.exception.InputException;
 
 public class InputView {
+    public InputView() {
+    }
     public ArrayList<Integer> numberInput() {
         System.out.print("숫자를 입력해주세요 :");
         String input = Console.readLine();
