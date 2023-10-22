@@ -20,7 +20,6 @@ public class Application {
         try {
             startBaseballGame();
         } catch (IllegalArgumentException e) {
-            System.err.println("잘못된 값 입력: " + e.getMessage());
             throw e;
         }
     }
@@ -53,14 +52,14 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         if (inputNumber.length() != 3) {
-            throw new IllegalArgumentException("세 자리가 아닙니다.");
+            throw new IllegalArgumentException();
         }
 
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
                 if (i == j) continue;
                 if (inputNumber.charAt(i) == inputNumber.charAt(j)) {
-                    throw new IllegalArgumentException("서로 다른 세 자리의 수가 아닙니다.");
+                    throw new IllegalArgumentException();
                 }
             }
         }
@@ -69,7 +68,7 @@ public class Application {
         for(int i = 0; i < 3; i++) {
             char digit = inputNumber.charAt(i);
             if (!(digit >= '1' && digit <= '9')) {
-                throw new IllegalArgumentException("올바른 숫자가 아닙니다.");
+                throw new IllegalArgumentException();
             }
             int number = digit - '0';
             user.add(number);
@@ -102,7 +101,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputNumber = Console.readLine();
         if (!inputNumber.equals("1") && !inputNumber.equals("2")) {
-            throw new IllegalArgumentException("1 또는 2가 아닙니다.");
+            throw new IllegalArgumentException();
         }
         if (inputNumber.equals("1")) {
             return true;
