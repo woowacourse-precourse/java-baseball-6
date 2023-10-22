@@ -5,7 +5,7 @@
     - 입력한 숫자가 컴퓨터가 입력한 숫자에 전부다 포함되지 않는 경우 낫싱
     - 인덱스마다 내가 입력한 문자와 컴퓨터가 입력한 문자가 같다면 ```strike += 1```
     - 인덱스마다 입력한 숫자가 컴퓨터가 입력한 문자에 포함되긴 하지만 인덱스가 다른 경우 int ball 값은 1증가
-    - 한번 판단 후(```checkAnswerStrikeAndBall()가 리턴되면```) 변수를 초기화 하고 계속 진행 ```strike = 0, ball = 0```
+    - 한번 판단 후(```checkAnswerStrikeAndBall()가 실행```) 변수를 초기화 하고 계속 진행 ```strike = 0, ball = 0```
 
 
 - ✅ 컴퓨터가 추출한 숫자를 모두 맞혔는지 아닌지 판단하는 ```checkAnswerStrikeAndBall()``` 함수
