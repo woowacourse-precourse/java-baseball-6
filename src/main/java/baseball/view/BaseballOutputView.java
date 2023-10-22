@@ -1,22 +1,23 @@
 package baseball.view;
 
 public class BaseballOutputView {
+    private static final int COUNT_ZERO = 0;
 
     public static void printStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다");
     }
 
     public static void printBallAndStrikeCount(int ballCount, int strikeCount) {
-        if (ballCount > 0) {
+        if (ballCount > COUNT_ZERO) {
             System.out.print(ballCount + "볼");
-            if (strikeCount > 0) {
+            if (strikeCount > COUNT_ZERO) {
                 System.out.print(" ");
             }
         }
-        if (strikeCount > 0) {
+        if (strikeCount > COUNT_ZERO) {
             System.out.print(strikeCount + "스트라이크");
         }
-        if (ballCount == 0 && strikeCount == 0) {
+        if (ballCount == COUNT_ZERO && strikeCount == COUNT_ZERO) {
             System.out.print("낫싱");
         }
         System.out.println();
