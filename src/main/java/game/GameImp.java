@@ -19,7 +19,6 @@ public class GameImp implements Game{
             if(!comnum.contains(randomNumber)) {
                 comnum.add(randomNumber);
             }
-
         }
         return ;
     }
@@ -30,7 +29,6 @@ public class GameImp implements Game{
         if(num.length() != 3) {
             throw new IllegalArgumentException();
         }
-
         for(int i=0;i<3;i++) {
             for(int j=0;j<3;j++) {
                 if(i == j)
@@ -43,7 +41,6 @@ public class GameImp implements Game{
                 }
             }
         }
-
         try{
             numInt = Integer.parseInt(num);
         } catch (Exception e) {
@@ -82,14 +79,12 @@ public class GameImp implements Game{
             ans = "낫싱";
         return ans;
     }
-
     @Override
     public boolean getStatus() {
         if(strike == 3)
             return true;
         return false;
     }
-
     @Override
     public boolean restart(String reinput) throws IllegalArgumentException{
         if(reinput.equals("1") && reinput.equals("2")){
