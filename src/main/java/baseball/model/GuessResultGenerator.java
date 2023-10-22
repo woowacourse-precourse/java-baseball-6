@@ -10,10 +10,7 @@ public class GuessResultGenerator {
     private final String STRIKE = "스트라이크";
     private final String BALL = "볼";
     private final String NOTHING = "낫싱";
-    private boolean[] isMatched = new boolean[3];
-
-    public GuessResultGenerator() {
-    }
+    private final boolean[] isMatched = new boolean[3];
 
     public GuessResult generateResult(List<Integer> hiddenNumber, List<Integer> guessNumber) {
         int strikeCount = calculateStrikeCount(hiddenNumber, guessNumber);
