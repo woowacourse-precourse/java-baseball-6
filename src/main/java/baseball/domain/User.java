@@ -27,9 +27,8 @@ public class User {
     }
 
     private void validType(String input) {
-        int type;
         for (int i = 0; i < input.length(); i++) {
-            type = input.charAt(i) - '0';
+            int type = input.charAt(i) - '0';
             if(type < 0 || type > 10){
                 throw new IllegalArgumentException("exist non-numeric type");
             }
@@ -60,9 +59,8 @@ public class User {
     }
 
     private void insertNum(String input) {
-        int num;
         for (int i = 0; i < input.length(); i++) {
-            num = Integer.valueOf(input.charAt(i)-'0');
+            int num = Integer.valueOf(input.charAt(i)-'0');
             userNumber.add(num);
         }
     }

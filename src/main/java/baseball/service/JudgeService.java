@@ -11,14 +11,12 @@ public class JudgeService {
     }
 
     public void judgeResult(List<Integer> computerNum, List<Integer> userNum) {
-        int computerIndex;
-        int userIndex;
-        boolean isContain;
 
         for (int num : userNum) {
-            computerIndex = computerNum.indexOf(num);
-            userIndex = userNum.indexOf(num);
-            isContain = isContain(computerNum, num);
+
+            int computerIndex = computerNum.indexOf(num);
+            int userIndex = userNum.indexOf(num);
+            boolean isContain = isContain(computerNum, num);
 
             if(isContain && computerIndex == userIndex){
                 judge.increaseStrike();
