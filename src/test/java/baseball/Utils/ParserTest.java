@@ -14,10 +14,9 @@ public class ParserTest {
     @Test
     @DisplayName("문자열을 숫자 ArrayList로 변환 테스트")
     public void convertStringToArrayListTest() {
-        Parser parser = new Parser();
         String input = "123";
         List<Integer> convertedInput = Arrays.asList(1,2,3);
 
-        assertThat(parser.convertStringToArrayList(input)).isEqualTo(convertedInput);
+        assertThat(Parser.convertStringToArrayList(input)).isEqualTo(convertedInput);
     }
 }
