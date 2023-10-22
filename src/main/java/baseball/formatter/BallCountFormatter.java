@@ -4,6 +4,7 @@ import baseball.constant.BallCountMessage;
 import baseball.domain.BallCount;
 
 public class BallCountFormatter {
+
     private static final long NONE = 0L;
     private static final String BLANK_DELIMITER = " ";
 
