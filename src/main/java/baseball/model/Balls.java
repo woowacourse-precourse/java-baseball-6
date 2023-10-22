@@ -34,4 +34,9 @@ public class Balls {
         }
         return false;
     }
+
+    public List<Ball> getBalls() {
+        return balls;
+    }
+
 }
