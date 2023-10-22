@@ -1,14 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class InitGame {
     public List<Integer> playerNum() {
         System.out.println("숫자를 입력해주세요: ");
-
         String input = Console.readLine();
         validateInput(input);
         return parseInput(input);
