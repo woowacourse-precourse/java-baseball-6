@@ -63,7 +63,10 @@ public class Game {
     }
 
     public boolean checkStrikeBallCount(List<Integer> input, List<Integer> answer) {
-
+        int strike = getStrikeCount(input, answer);
+        int ball = getBallCount(input, answer);
+        printResult(strike, ball);
+        return isCorrect(strike);
     }
 
     public int getStrikeCount(List<Integer> input, List<Integer> answer) {
