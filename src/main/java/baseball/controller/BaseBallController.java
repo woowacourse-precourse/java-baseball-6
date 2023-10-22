@@ -27,5 +27,6 @@ public class BaseBallController {
             OutputView.showScoreBoard(scoreBoard);
         } while (!scoreBoard.isThreeStrike());
         OutputView.gameOverMessage();
+        InputView.inputRestartOption();
     }
 }
