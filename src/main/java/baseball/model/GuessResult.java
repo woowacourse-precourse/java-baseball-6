@@ -17,6 +17,10 @@ public class GuessResult {
         this.ballCount++;
     }
 
+    public boolean isGameEnd() {
+        return strikeCount == NUMBER_COUNTS;
+    }
+
     public int getBallCount() {
         return ballCount;
     }
@@ -27,9 +31,5 @@ public class GuessResult {
 
     public boolean isNothing() {
         return strikeCount == INITIAL_ZERO_COUNT && ballCount == INITIAL_ZERO_COUNT;
-    }
-
-    public boolean isGameEnd() {
-        return strikeCount == NUMBER_COUNTS;
     }
 }
