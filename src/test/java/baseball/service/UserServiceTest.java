@@ -18,7 +18,7 @@ class UserServiceTest {
     @BeforeEach
     public void beforeEach(){
         memoryUserRepository = new MemoryUserRepository();
-        userService = new UserService(memoryUserRepository);
+        userService = new UserService();
     }
 
     @AfterEach

@@ -2,15 +2,16 @@ package baseball.service;
 
 import baseball.domain.Game;
 import baseball.repository.GameRepository;
+import baseball.repository.MemoryGameRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 public class GameService {
-    private final GameRepository gameRepository;
+    private final MemoryGameRepository gameRepository;
 
-    public GameService(GameRepository gameRepository) {
-        this.gameRepository = gameRepository;
+    public GameService() {
+        this.gameRepository = new MemoryGameRepository();
     }
 
     /* 새로운 게임 생성 */
