@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 
@@ -46,12 +47,27 @@ public class Game {
             isPlaying = false;
             System.out.println(strike + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            newGameOrExit();
         } else if (strike == 0) {
             System.out.println(ball + "볼");
         } else if (ball == 0) {
             System.out.println(strike + "스트라이크");
         } else {
             System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+    }
+
+    void newGameOrExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals("1")) {
+            isPlaying = true;
+            gamePlay();
+        } else if (input.equals("2")) {
+            isPlaying = false;
+            System.out.println("게임을 종료합니다.");
+        } else {
+            throw new IllegalArgumentException("잘못된 입력값입니다.");
         }
     }
 }
