@@ -17,5 +17,6 @@ public class BaseballController {
 
     public void gameStart() {
         List<Integer> randomNumber = baseballService.createRandomNumber();
+        baseballService.baseballGameStart(randomNumber);
     }
 }
