@@ -35,8 +35,7 @@ public class GameController {
 
     public Status replayOrStop() {
         String status = InputView.inputPositiveNumber();
-        int statusIntValue = Integer.parseInt(status);
-        if (Status.from(statusIntValue) == STOP) {
+        if (Status.from(status) == STOP) {
             return STOP;
         }
         return REPLAY;

@@ -3,17 +3,17 @@ package baseball.model;
 import java.util.Arrays;
 
 public enum Status {
-    REPLAY(1),
-    STOP(2),
+    REPLAY("1"),
+    STOP("2"),
     ;
 
-    private final int status;
+    private final String status;
 
-    Status(int status) {
+    Status(String status) {
         this.status = status;
     }
 
-    public static Status from(int status) {
+    public static Status from(String status) {
         return Arrays.stream(Status.values())
                 .filter(s -> s.status == status)
                 .findFirst()
