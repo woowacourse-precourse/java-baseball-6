@@ -1,15 +1,18 @@
-package baseball;
+package baseball.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import static baseball.service.BaseballConstants.*;
+
 public class BaseballValidator {
-    public void validatePlayerBallInput(String number) {
-        validateLength(number, 3);
+    public void validateBaseball(String number) {
+        validateLength(number, BASEBALL_LENGTH);
         validateNumeric(number);
         validateUnique(number);
-        validateNoneZero(number);
+        validateRange(number, BASEBALL_START_NUMBER, BASEBALL_END_NUMBER);
     }
 
     // 기능: length 자릿수로 입력해야 한다
@@ -38,9 +41,15 @@ public class BaseballValidator {
         }
     }
 
-    private void validateNoneZero(String input) {
-        if (input.contains("0")) {
-            throw new IllegalArgumentException("1~9 숫자만 허용됩니다. 0이 포함 되었는지 확인하세요.");
+    private void validateRange(String baseBalls, int start, int end) {
+        for (char baseball : baseBalls.toCharArray()) {
+            if (!isInRange(start, end, baseball - '0')) {
+                throw new IllegalArgumentException(String.format("%d~%d 범위의 숫자만 허용됩니다.", start, end));
+            }
         }
+    }
+
+    private boolean isInRange(int start, int end, int baseball) {
+        return start <= baseball && baseball <= end;
     }
 }
