@@ -6,15 +6,12 @@ public class MessageManager extends Messages {
     private String userAnswerNumber;
     private String willContinueResponse;
     public void showIntro() {
-        System.out.print(super.getIntroMessage());
-        System.out.println();
+        System.out.println(super.getIntroMessage());
     }
 
     public String getUserAnswerNumber() {
         System.out.print(super.getInputMessage());
         userAnswerNumber = readLine();
-        System.out.println();
-
         return userAnswerNumber;
     }
 
@@ -22,19 +19,10 @@ public class MessageManager extends Messages {
         System.out.println(gameProcessor.generateAnswerText(data, messageManager));
     }
 
-    public void showComplete() {
-        System.out.println(super.getOutroMessage());
-    }
-
     public String getUserContinueResponse() {
         System.out.println(super.getWillRestartMessage());
         willContinueResponse = readLine();
         System.out.println();
-
         return willContinueResponse;
     }
-
-//    public void showMessage(GameProcessor gameProcessor, String message) {
-//        System.out.print(gameProcessor.getResult() + message);
-//    }
 }
