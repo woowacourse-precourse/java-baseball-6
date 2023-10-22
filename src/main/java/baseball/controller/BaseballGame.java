@@ -16,12 +16,14 @@ public class BaseballGame {
     }
 
     private void playOneGame() {
-        GameResult gameResult;
         OutputView.printGameStartMessage();
+
         Numbers computerNumber = createComputerNumber();
+        Numbers userNumber;
+        GameResult gameResult;
 
         do {
-            Numbers userNumber = inputUserNumber(InputView.getUserNumber());
+            userNumber = inputUserNumber(InputView.getUserNumber());
             gameResult = userNumber.compareNumbers(computerNumber);
             OutputView.printOneGameResult(gameResult.getStrike(), gameResult.getBall());
         } while (!gameResult.isSuccess());
