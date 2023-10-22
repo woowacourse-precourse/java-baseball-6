@@ -18,7 +18,6 @@ public class Player {
         this.numbers = StringToList(input);
     }
 
-
     public void inputRestartOrExit() {
         String input = Console.readLine();
         validateInputRestartOrExit(input);
