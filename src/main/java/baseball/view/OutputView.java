@@ -20,19 +20,35 @@ public class OutputView {
         System.out.println(GameInstructions.ASK_RESTART_OR_EXIT.getMessage());
     }
 
-    public void printGameResult(int[] gameResult) {
-        if (gameResult[0] == 3) {
-            System.out.println(gameResult[0] + GameHint.STRIKE.getMessage());
-            printGameSuccess();
-        }
+    public void printGameSuccessResult(int[] gameResult) {
+        printStrikeHint(gameResult[0]);
+        printGameSuccess();
+        printForInputRestartOrExit();
+    }
+
+    public void printGameFailResult(int[] gameResult) {
         if (gameResult[0] > 0 && gameResult[0] < 3) {
-            System.out.println(gameResult[0] + GameHint.STRIKE.getMessage());
+            printStrikeHint(gameResult[0]);
+            return;
         }
         if (gameResult[1] > 0) {
-            System.out.println(gameResult[1] + GameHint.BALL.getMessage());
+            printBallHint(gameResult[1]);
+            return;
         }
         if (gameResult[2] > 0) {
-            System.out.println(GameHint.NOTHING.getMessage());
+            printNothingHint();
         }
+    }
+
+    private void printStrikeHint(int strikeCount) {
+        System.out.println(strikeCount + GameHint.STRIKE.getMessage());
+    }
+
+    private void printBallHint(int ballCount) {
+        System.out.println(ballCount + GameHint.BALL.getMessage());
+    }
+
+    private void printNothingHint() {
+        System.out.println(GameHint.NOTHING.getMessage());
     }
 }

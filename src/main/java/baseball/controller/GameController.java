@@ -21,12 +21,27 @@ public class GameController {
     }
 
     public void runGame() {
+        boolean playOption = true;
+
         outputView.printGameStart();
-        outputView.printForInputThreeDigitNumbers();
-        List<Integer> randomNumbers = randomNumberGenerator.generateRandomNumbers();
-        System.out.println(randomNumbers);
-        String inputNumbers = inputView.inputThreeDigitNumber();
-        int[] gameResult = gameService.getGameResult(randomNumbers, inputNumbers);
-        outputView.printGameResult(gameResult);
+
+        while (playOption) {
+            outputView.printForInputThreeDigitNumbers();
+            List<Integer> randomNumbers = randomNumberGenerator.generateRandomNumbers();
+            System.out.println(randomNumbers);
+
+            String inputNumbers = inputView.inputThreeDigitNumber();
+
+            int[] gameResult = gameService.getGameResult(randomNumbers, inputNumbers);
+
+            if (!gameService.isThreeStrike(gameResult)) {
+                outputView.printGameFailResult(gameResult);
+                continue;
+            }
+            outputView.printGameSuccessResult(gameResult);
+            if (inputView.inputRestartOrExit().equals("2")) {
+                playOption = false;
+            }
+        }
     }
 }
