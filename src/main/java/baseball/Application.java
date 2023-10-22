@@ -138,6 +138,26 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        List<Integer> User;
+        List<Integer> Com;
+        boolean start = true;
+
+        while(start){
+            start = false;
+            int strike = 0;
+            Com = com_num();
+
+            while(strike != 3){
+                System.out.print("숫자를 입력해주세요 : ");
+                User = User();
+                strike = compare(User, Com);
+                System.out.println(Output(User, Com, strike));
+            }
+            if(not_exit()) {
+                start = true;
+            }
+        }
     }
 }
