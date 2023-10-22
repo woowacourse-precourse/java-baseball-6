@@ -50,9 +50,9 @@ public class BaseballNumbers {
             return false;
         }
 
-        BaseballNumbers otherBaseballNumber = (BaseballNumbers) baseballNumbers;
+        BaseballNumbers otherBaseballNumbers = (BaseballNumbers) baseballNumbers;
         for (int i = 0; i < this.baseballNumbers.size(); i++) {
-            if (!otherBaseballNumber.get(i).equals(this.baseballNumbers.get(i))) {
+            if (!otherBaseballNumbers.get(i).equals(this.baseballNumbers.get(i))) {
                 return false;
             }
         }
