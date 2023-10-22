@@ -22,6 +22,18 @@ public class Number {
         }
     }
 
+    public int showValue() {
+        return this.number;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        Number otherNumber = (Number)object;
+
+        return this.number == otherNumber.showValue();
+
+    }
+
 
 
 }

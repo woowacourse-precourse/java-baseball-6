@@ -2,26 +2,26 @@ package baseball.domain;
 
 import static baseball.enums.NumbersEnum.*;
 
-import baseball.enums.NumbersEnum;
+
 import baseball.exception.NumberDuplicationException;
-import baseball.exception.NumberRangeException;
 import baseball.exception.WrongLengthException;
+import baseball.vo.Number;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public interface Numbers {
 
-    default void checkDuplication(List<Integer> integers) {
-        List<Integer> duplicationCheckList = integers.stream()
+    default void checkDuplication(List<Number> integers) {
+        List<Number> duplicationCheckList = integers.stream()
                 .distinct()
-                .collect(Collectors.toList());
+                .toList();
 
         if (duplicationCheckList.size() != integers.size()) {
             throw new NumberDuplicationException();
         }
     }
 
-    default void checkLength(List<Integer> integers) {
+    default void checkLength(List<Number> integers) {
 
         if (integers.size() != LENGTH.showValue()) {
             throw new WrongLengthException();
