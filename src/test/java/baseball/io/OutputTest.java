@@ -10,7 +10,7 @@ class OutputTest {
 
     @Test
     void console_테스트() {
-        String message = "테스트 문구입니다.";
+        String message = "hello, precourse!";
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream customPrintStream = new PrintStream(outputStream);
@@ -22,7 +22,7 @@ class OutputTest {
 
     @Test
     void consoleLine_테스트() {
-        String message = "테스트 문구입니다.";
+        String message = "hello, java-baseball";
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream customPrintStream = new PrintStream(outputStream);
