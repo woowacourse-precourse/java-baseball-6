@@ -5,7 +5,6 @@ import baseball.domain.Referee;
 import baseball.util.Converter;
 import baseball.util.Validator;
 import baseball.view.InputView;
-import baseball.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,6 @@ public class Controller {
     List<Integer> computerNumbers;
     List<Integer> userNumbers;
     InputView inputView = new InputView();
-    OutputView outputView = new OutputView();
     Validator validator;
     Converter converter;
     Referee referee;
@@ -34,20 +32,17 @@ public class Controller {
     }
 
     public void play() {
-        int strike = 0;
-        while (strike != 3) {
+        do {
             initGame();
             inputUserNumber();
             checkInputData();
             generateUserNumbers();
             requestJudge(computerNumbers, userNumbers);
-            strike = referee.getStrike();
-            requestResult(referee.getBall(), strike);
-        }
+        } while (!referee.isThreeStrike(computerNumbers, userNumbers));
     }
 
     public void end() {
-        OutputView.printEndMessage();
+        printEndMessage();
         String message = InputView.printRetryMessage();
         if (message.equals(RETRY)) {
             run();
@@ -87,7 +82,8 @@ public class Controller {
         referee.judge(computerNumbers, userNumbers);
     }
 
-    private void requestResult(int ball, int strike) {
-        outputView.printJudgement(ball, strike);
+    private void printEndMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
 }
