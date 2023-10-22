@@ -17,8 +17,8 @@ public class ScoreCalculatorBaseBallTest {
         Score score = scoreCalculator.calScore(userInput, computerInput);
 
         //then
-        Assertions.assertEquals(0, score.ball);
-        Assertions.assertEquals(0, score.strike);
+        Assertions.assertEquals(0, score.getBall());
+        Assertions.assertEquals(0, score.getStrike());
     }
 
     @Test
@@ -32,8 +32,8 @@ public class ScoreCalculatorBaseBallTest {
         Score score = scoreCalculator.calScore(userInput, computerInput);
 
         //then
-        Assertions.assertEquals(1, score.ball);
-        Assertions.assertEquals(0, score.strike);
+        Assertions.assertEquals(1, score.getBall());
+        Assertions.assertEquals(0, score.getStrike());
     }
 
     @Test
@@ -47,8 +47,8 @@ public class ScoreCalculatorBaseBallTest {
         Score score = scoreCalculator.calScore(userInput, computerInput);
 
         //then
-        Assertions.assertEquals(1, score.ball);
-        Assertions.assertEquals(1, score.strike);
+        Assertions.assertEquals(1, score.getBall());
+        Assertions.assertEquals(1, score.getStrike());
     }
 
     @Test
@@ -62,8 +62,8 @@ public class ScoreCalculatorBaseBallTest {
         Score score = scoreCalculator.calScore(userInput, computerInput);
 
         //then
-        Assertions.assertEquals(2, score.ball);
-        Assertions.assertEquals(0, score.strike);
+        Assertions.assertEquals(2, score.getBall());
+        Assertions.assertEquals(0, score.getStrike());
     }
 
     @Test
@@ -77,8 +77,8 @@ public class ScoreCalculatorBaseBallTest {
         Score score = scoreCalculator.calScore(userInput, computerInput);
 
         //then
-        Assertions.assertEquals(2, score.ball);
-        Assertions.assertEquals(1, score.strike);
+        Assertions.assertEquals(2, score.getBall());
+        Assertions.assertEquals(1, score.getStrike());
     }
 
     @Test
@@ -92,8 +92,8 @@ public class ScoreCalculatorBaseBallTest {
         Score score = scoreCalculator.calScore(userInput, computerInput);
 
         //then
-        Assertions.assertEquals(3, score.ball);
-        Assertions.assertEquals(0, score.strike);
+        Assertions.assertEquals(3, score.getBall());
+        Assertions.assertEquals(0, score.getStrike());
     }
 
     @Test
@@ -107,8 +107,8 @@ public class ScoreCalculatorBaseBallTest {
         Score score = scoreCalculator.calScore(userInput, computerInput);
 
         //then
-        Assertions.assertEquals(0, score.ball);
-        Assertions.assertEquals(1, score.strike);
+        Assertions.assertEquals(0, score.getBall());
+        Assertions.assertEquals(1, score.getStrike());
     }
 
     @Test
@@ -122,8 +122,8 @@ public class ScoreCalculatorBaseBallTest {
         Score score = scoreCalculator.calScore(userInput, computerInput);
 
         //then
-        Assertions.assertEquals(0, score.ball);
-        Assertions.assertEquals(2, score.strike);
+        Assertions.assertEquals(0, score.getBall());
+        Assertions.assertEquals(2, score.getStrike());
     }
 
     @Test
@@ -137,8 +137,8 @@ public class ScoreCalculatorBaseBallTest {
         Score score = scoreCalculator.calScore(userInput, computerInput);
 
         //then
-        Assertions.assertEquals(0, score.ball);
-        Assertions.assertEquals(3, score.strike);
+        Assertions.assertEquals(0, score.getBall());
+        Assertions.assertEquals(3, score.getStrike());
     }
 
 }
