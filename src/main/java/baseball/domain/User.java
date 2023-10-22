@@ -6,7 +6,7 @@ public class User {
     public int[] getUserNumbers() {
         return userNumbers;
     }
-
+    
     public void setUserNumbers(int[] userNumbers) {
         this.userNumbers = userNumbers;
     }
