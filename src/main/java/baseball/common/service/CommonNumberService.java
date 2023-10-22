@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class CommonNumberService {
 
@@ -37,6 +38,39 @@ public class CommonNumberService {
         }
 
     }
+
+    //사용자 입력 유효성 검사
+    private boolean isValid(String number){
+
+        //캐시에 존재한다면 유효하다
+        if(cache.containsKey(number)) return true;
+
+        //사용자 입력에는 0이 포함되어서는 안된다
+        if(number.contains("0")) throw new IllegalArgumentException("정답에는 0이 포함될 수 없습니다");
+
+        //사용자 입력은 3자리여야 한다
+        if(number.length()!=NUMBER_LENGTH) throw new IllegalArgumentException("정답은 3자리 숫자입니다");
+
+        //사용자 입력은 숫자이어야 한다
+        try{
+            int numberToInt = Integer.parseInt(number);
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException("정답은 숫자로 입력해야 합니다");
+        }
+
+        //사용자가 중복된 숫자를 입력하면 안된다
+        HashSet<Character> characterHashSet = new HashSet<>();
+        for(int index=0;index<NUMBER_LENGTH;index++){
+            if(characterHashSet.contains(number.charAt(index))){
+                throw new IllegalArgumentException("정답은 서로 다른 숫자입니다");
+            }
+            characterHashSet.add(number.charAt(index));
+        }
+
+        return true;
+
+    }
+
 
     public ArrayList<Integer> getComputer(){
         return computer;
