@@ -8,7 +8,7 @@ import org.mockito.NotExtensible;
 import java.io.ByteArrayInputStream;
 
 public class ExceptionTest {
-    Display display = new Display();
+    private final Display display = new Display();
     void inputStringToSystemIn(String data){
         ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
         System.setIn(testIn);

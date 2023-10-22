@@ -1,8 +1,8 @@
 package baseball;
 
 public class Game {
-    Display display;
-    Computer computer;
+    private Display display;
+    private Computer computer;
     public Game(){
         display = new Display();
         computer = new Computer();

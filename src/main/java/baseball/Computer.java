@@ -1,7 +1,7 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 public class Computer {
-    int[] computerNumbers;
+    private int[] computerNumbers;
     Computer(){
         computerNumbers = new int[3];
     }

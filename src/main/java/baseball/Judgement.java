@@ -1,9 +1,9 @@
 package baseball;
 
 public class Judgement {
-    int ballCount;
-    int strikeCount;
-    Display display;
+    private int ballCount;
+    private int strikeCount;
+    private Display display;
     public Judgement(int ballCount, int strikeCount){
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
