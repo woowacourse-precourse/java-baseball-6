@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,5 +42,17 @@ class BaseballNumberTest {
 
 		assertThatThrownBy(() -> new BaseballNumber(numbers))
 			.isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
+	void getNumberByIndex_메서드는_인덱스에_맞는_값을_가져온다() {
+		List<Integer> numbers = new ArrayList<>();
+		numbers.add(1);
+		numbers.add(2);
+		numbers.add(3);
+
+		BaseballNumber baseballNumber = new BaseballNumber(numbers);
+
+		assertEquals(baseballNumber.getNumberByIndex(1), 2);
 	}
 }
