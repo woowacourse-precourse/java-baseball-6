@@ -8,18 +8,13 @@ public class Application {
         boolean isFinished = false;
 
         while (!isFinished) {
-            try {
-                Game game = new Game();
-                while (!game.isSolved()) {
-                    game.getUserInt();
-                    game.printResult();
-                }
-                game.getUserChoice();
-                isFinished = game.isFinished();
-            } catch (IllegalArgumentException e) {
-                System.out.println(e);
-                break;
+            Game game = new Game();
+            while (!game.isSolved()) {
+                game.getUserInt();
+                game.printResult();
             }
+            game.getUserChoice();
+            isFinished = game.isFinished();
         }
     }
 }
