@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.ScoreBoard;
+import baseball.model.ScoreBoard;
 
 public class OutputView {
     public static void startGameMessage() {

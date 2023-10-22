@@ -1,10 +1,10 @@
 package baseball.controller;
 
-import baseball.Judge;
+import baseball.model.Judge;
 import baseball.RandomNumberGenerator;
 import baseball.RestartOption;
-import baseball.ScoreBoard;
-import baseball.User;
+import baseball.model.ScoreBoard;
+import baseball.model.User;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
