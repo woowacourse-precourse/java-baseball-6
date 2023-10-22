@@ -19,9 +19,12 @@ public class GamePlaying {
     PlayerNumber player = new PlayerNumber();
     PrintMessage printer = new PrintMessage();
 
-    public void playGame() {
+    public boolean playGame() {
         enterValue();
-
+        int strike = findStrike();
+        int ball = findBall();
+        printResult(strike, ball);
+        return isAnswer(strike);
     }
 
     private void enterValue() {
@@ -36,14 +39,16 @@ public class GamePlaying {
         return 0;
     }
 
-    private int findStrike(int strike) {
+    private int findStrike() {
+        int strike = 0;
         for (int i = 0; i < 3; i++) {
             strike += isSame(i);
         }
         return strike;
     }
 
-    private int findBall(int ball) {
+    private int findBall() {
+        int ball = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (i != j && computerNumber.get(i) == playerNumber.get(j)) {
@@ -54,4 +59,38 @@ public class GamePlaying {
         return ball;
     }
 
+    private void printResult(int strike, int ball) {
+        printBall(ball);
+        printStrike(strike, ball);
+        printNothing(strike, ball);
+    }
+
+    private void printStrike(int strike, int ball) {
+        if (ball > 0 && strike > 0) {
+            printBlank();
+        }
+        if (strike > 0) {
+            System.out.print(strike + STRIKE);
+        }
+    }
+
+    private void printBall (int ball) {
+        if (ball > 0) {
+            System.out.print(ball + BALL);
+        }
+    }
+
+    private void printNothing (int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println(NOTHING);
+        }
+    }
+
+    private void printBlank() {
+        System.out.print(" ");
+    }
+
+    private boolean isAnswer(int strike) {
+        return strike != 3;
+    }
 }
