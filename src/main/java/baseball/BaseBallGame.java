@@ -18,12 +18,13 @@ public class BaseBallGame {
     public void start(){
         System.out.println("숫자 야구게임을 시작합니다.");
         computerAnswer=computerInput();
-
+        //System.out.println("computerAnswer = " + computerAnswer);
         // 사용자 입력
         while(true){
             System.out.print("숫자를 입력 해주세요: ");
             userAnswer = readLine();
             userAnswer=checkUserInput();
+            //System.out.println("userAnswer = " + userAnswer);
 
             // 사용자 입력과 컴퓨터 값과 비교
             String decision = umpire();
@@ -38,12 +39,17 @@ public class BaseBallGame {
 
                 // 재시작 및 종료 check
                 if(gameSet.equals("재시작")) {
+                    reset();
                     start();
                     return;
                 }
-                else if(gameSet.equals("종료")) return;
+                else if(gameSet.equals("게임 종료")) return;
             }
         }
+    }
+
+    private void reset() {
+        computer.clear();
     }
 
     private String umpire() {
