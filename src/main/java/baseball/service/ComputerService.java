@@ -1,7 +1,6 @@
 package baseball.service;
 
 import baseball.domain.Computer;
-
 import java.util.List;
 
 public class ComputerService {
