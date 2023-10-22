@@ -13,7 +13,7 @@ public class Baseball {
         this.number = number;
     }
 
-    private void verifyBaseballNumber(int number) throws IllegalArgumentException {
+    private void verifyBaseballNumber(int number) {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException();
         }

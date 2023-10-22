@@ -10,13 +10,13 @@ public class UserBaseballs extends AbstractBaseballs {
         verifyNoDuplicate(this.baseballs);
     }
 
-    private void verifySizeExact(List<Baseball> baseballs) throws IllegalArgumentException {
+    private void verifySizeExact(List<Baseball> baseballs) {
         if (baseballs.size() != BASEBALLS_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void verifyNoDuplicate(List<Baseball> baseballs) throws IllegalArgumentException {
+    private void verifyNoDuplicate(List<Baseball> baseballs) {
         if (baseballs.stream().distinct().count() != BASEBALLS_SIZE) {
             throw new IllegalArgumentException();
         }

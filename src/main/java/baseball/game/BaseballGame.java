@@ -1,15 +1,16 @@
 package baseball.game;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import static baseball.io.Input.numberInput;
 
 import baseball.domain.BaseballFactory;
 import baseball.domain.ComputerBaseballs;
 import baseball.domain.UserBaseballs;
 import baseball.dto.Result;
+import baseball.io.Output;
 
 public class BaseballGame {
     private ComputerBaseballs computerBaseballs;
-    private Referee referee;
+    private final Referee referee;
 
     public BaseballGame() {
         computerBaseballs = null;
@@ -22,10 +23,10 @@ public class BaseballGame {
         Result result;
         do {
             result = playOnce();
-            System.out.println(result.toString());
+            Output.gameResultOutput(result);
         } while (!referee.isUserWin(result));
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        Output.successAndExitOutput();
     }
 
     private void init() {
@@ -33,9 +34,7 @@ public class BaseballGame {
     }
 
     private Result playOnce() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = readLine();
-
+        String userInput = numberInput();
         UserBaseballs userBaseballs = BaseballFactory.createUserBaseballs(userInput);
 
         return referee.createResult(computerBaseballs, userBaseballs);
