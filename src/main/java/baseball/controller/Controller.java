@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import static baseball.controller.mapper.ResultMapper.mapToStringWith;
 import static baseball.model.State.RESTART;
 import static baseball.model.State.createWith;
 import static baseball.model.State.isMoreGame;
@@ -45,8 +44,7 @@ public class Controller {
         List<Integer> guessNumbers = new ArrayList<>();
         while (!computer.isGameOver(guessNumbers)) {
             guessNumbers = getGuessNumbers();
-            String result = getResult(computer, guessNumbers);
-            consoleOutputView.print(result);
+            getResult(computer, guessNumbers);
         }
         consoleOutputView.print(WINNING_MESSAGE);
     }
@@ -55,13 +53,13 @@ public class Controller {
         consoleOutputView.print(GUESS_NUMBER_INPUT_MESSAGE);
         String guessNumbers = consoleInputView.readLine();
         GuessNumber guess = new GuessNumber(convertStringToIntegerList(guessNumbers));
-        return guess.getGuessNumbers();
+        return guess.guessNumbers();
     }
 
-    private String getResult(final Computer computer, final List<Integer> guessNumbers) {
+    private void getResult(final Computer computer, final List<Integer> guessNumbers) {
         int ballCount = computer.countBalls(guessNumbers);
         int strikeCount = computer.countStrikes(guessNumbers);
-        return mapToStringWith(ballCount, strikeCount);
+        consoleOutputView.printGameResult(ballCount, strikeCount);
     }
 
     private State askMoreGame() {
