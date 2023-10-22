@@ -1,14 +1,12 @@
 package baseball.controller;
 
-import baseball.console.InputManager;
-import baseball.console.OutputManager;
+import baseball.io.PlayerIoManager;
 import baseball.model.BallMaker;
-import baseball.model.BaseballJudge;
+import baseball.model.judge.BaseballJudge;
 
 public class GameManager {
 
-    private InputManager inputManager;
-    private OutputManager outputManager;
+    private PlayerIoManager playerIoManager;
     private BallMaker ballMaker;
     private BaseballJudge baseballJudge;
 
@@ -17,19 +15,17 @@ public class GameManager {
 
     public static GameManager create() {
         GameManager gameManager = new GameManager();
-        gameManager.init();
+
+        gameManager.playerIoManager = PlayerIoManager.create();
+        gameManager.ballMaker = new BallMaker();
+
         return gameManager;
     }
 
-    private void init() {
-        this.inputManager = new InputManager();
-        this.outputManager = new OutputManager();
-        this.ballMaker = new BallMaker();
+    public void startGame() {
+        playerIoManager.welcomePlayer();
+
     }
 
-    public void start() {
-        outputManager.printGameStartText();
-        this.baseballJudge = new BaseballJudge(ballMaker.createBall());
-    }
 
 }
