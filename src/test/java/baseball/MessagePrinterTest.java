@@ -52,4 +52,28 @@ class MessagePrinterTest {
             System.out.println(ballCount + "볼");
         }
     }
+
+    @Test
+    @DisplayName("스트라이크와 볼 모두 존재할 경우 스트라이크와 볼 모두 출력한다.")
+    void test3() {
+        int strikeCount = 0;
+        int ballCount = 0;
+        List<Integer> computerNumbers = List.of(3, 5, 6);
+        String playerNumbers = "325";
+
+        for (int i=0; i<playerNumbers.length(); i++) {
+            int playerNumber = playerNumbers.charAt(i) - 48;
+            int computerNumber = computerNumbers.get(i);
+
+            if (playerNumber == computerNumber) {
+                strikeCount += 1;
+            } else if (computerNumbers.contains(playerNumber)) {
+                ballCount += 1;
+            }
+        }
+
+        if (strikeCount != 0 && ballCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+    }
 }
