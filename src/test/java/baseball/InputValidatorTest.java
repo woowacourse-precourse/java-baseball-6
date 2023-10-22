@@ -14,29 +14,25 @@ public class InputValidatorTest {
 
     @Test
     void 사용자의_잘못된_시도_입력을_검사한다() {
-        InputValidator validator = new InputValidator();
-
-        assertThrows(IllegalArgumentException.class, () -> validator.vaildUserTrialInput("12"));
-        assertThrows(IllegalArgumentException.class, () -> validator.vaildUserTrialInput("1a1"));
-        assertThrows(IllegalArgumentException.class, () -> validator.vaildUserTrialInput("101"));
-        assertThrows(IllegalArgumentException.class, () -> validator.vaildUserTrialInput("121"));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.checkUserTrialInput("12"));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.checkUserTrialInput("1a1"));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.checkUserTrialInput("101"));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.checkUserTrialInput("121"));
         assertDoesNotThrow(() -> {
-            validator.vaildUserTrialInput("123");
-            validator.vaildUserTrialInput("456");
-            validator.vaildUserTrialInput("789");
+            InputValidator.checkUserTrialInput("123");
+            InputValidator.checkUserTrialInput("456");
+            InputValidator.checkUserTrialInput("789");
         });
     }
 
     @Test
     void 사용자의_잘못된_재시작_입력을_검사한다() {
-        InputValidator validator = new InputValidator();
-
-        assertThrows(IllegalArgumentException.class, () -> validator.vaildUserRestartInput("0"));
-        assertThrows(IllegalArgumentException.class, () -> validator.vaildUserRestartInput("a"));
-        assertThrows(IllegalArgumentException.class, () -> validator.vaildUserRestartInput("11"));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.checkUserRestartInput("0"));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.checkUserRestartInput("a"));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.checkUserRestartInput("11"));
         assertDoesNotThrow(() -> {
-            validator.vaildUserRestartInput("1");
-            validator.vaildUserRestartInput("2");
+            InputValidator.checkUserRestartInput("1");
+            InputValidator.checkUserRestartInput("2");
         });
     }
 }

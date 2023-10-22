@@ -1,7 +1,7 @@
 package baseball;
 
 public class InputValidator {
-    public void vaildUserTrialInput(String userInput) {
+    public static void checkUserTrialInput(String userInput) {
         if (userInput.length() != 3) {
             throw new IllegalArgumentException("3자리의 숫자를 입력하세요.");
         }
@@ -21,7 +21,7 @@ public class InputValidator {
         }
     }
 
-    public void vaildUserRestartInput(String userInput) {
+    public static void checkUserRestartInput(String userInput) {
         if (userInput.length() != 1) {
             throw new IllegalArgumentException("1자리의 숫자를 입력하세요.");
         }
