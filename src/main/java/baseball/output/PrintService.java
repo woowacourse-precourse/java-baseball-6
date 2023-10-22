@@ -1,5 +1,7 @@
 package baseball.output;
 
+import baseball.ballcount.BallCount;
+
 public class PrintService {
     public static void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -32,5 +34,15 @@ public class PrintService {
     private static void result() {
         System.out.println("낫싱");
     }
-
+    public static void result(BallCount ballCount) {
+        if (ballCount.getStrike() == 0 && ballCount.getBall() == 0) {
+            PrintService.result();
+        } else if (ballCount.getStrike() == 0) {
+            PrintService.result(ballCount.getStrike(), false);
+        } else if (ballCount.getBall() == 0) {
+            PrintService.result(ballCount.getBall(), true);
+        } else {
+            PrintService.result(ballCount.getBall(), ballCount.getStrike());
+        }
+    }
 }
