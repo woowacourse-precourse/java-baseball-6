@@ -1,11 +1,8 @@
 package baseball.model;
 
-import java.util.Objects;
-
 public class BaseballGameCounts {
     private int strikes;
     private int balls;
-    private String message;
 
     protected BaseballGameCounts() {
     }
@@ -18,20 +15,9 @@ public class BaseballGameCounts {
         return this.strikes == 3;
     }
 
-    public void showCounts() {
-        System.out.println(Objects.requireNonNullElse(message, "낫싱"));
-    }
 
-    public void editMessage(String frag) {
-        if (message == null) {
-            this.message = frag;
-        } else {
-            this.message = frag + this.message;
-        }
-    }
 
     public void resetCounts() {
-        this.message = null;
         this.strikes = 0;
         this.balls = 0;
     }
@@ -44,10 +30,6 @@ public class BaseballGameCounts {
         this.balls = balls;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public int getStrikes() {
         return strikes;
     }
@@ -56,7 +38,4 @@ public class BaseballGameCounts {
         return balls;
     }
 
-    public String getMessage() {
-        return message;
-    }
 }
