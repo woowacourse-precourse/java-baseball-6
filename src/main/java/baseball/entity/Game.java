@@ -47,4 +47,9 @@ public class Game {
         return false;
     }
 
+    public void printAnswer() {
+        System.out.println(this.answer);
+
+    }
+
 }
