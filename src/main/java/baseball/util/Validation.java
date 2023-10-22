@@ -18,4 +18,21 @@ public class Validation {
     private boolean validLength(String number, int maxLength) {
         return number.length() != maxLength;
     }
+
+    private boolean duplicateNumber(String number) {
+        int[] nums = new int[10];
+
+        for (int i = 0; i < number.length(); i++) {
+            int num = Character.getNumericValue(number.charAt(i));
+            nums[num]++;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
