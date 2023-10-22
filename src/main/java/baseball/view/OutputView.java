@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.GameResult;
+import baseball.domain.dto.GameResult;
 import baseball.util.Sentence;
 
 public class OutputView {
@@ -21,21 +21,23 @@ public class OutputView {
     }
 
     public void printGameResult(GameResult gameResult) {
-        int ball = gameResult.getBall();
-        int strike = gameResult.getStrike();
+        int ball = gameResult.ball();
+        int strike = gameResult.strike();
+
+        StringBuilder sb = new StringBuilder();
 
         if (ball > 0) {
-            System.out.printf("%d볼 ", ball);
+            sb.append(ball).append("볼 ");
         }
 
         if (strike > 0) {
-            System.out.printf("%d스트라이크", strike);
+            sb.append(strike).append("스트라이크");
         }
 
         if (ball == 0 && strike == 0) {
-            System.out.print("낫싱");
+            sb.append("낫싱");
         }
-        
-        System.out.println();
+
+        System.out.println(sb);
     }
 }
