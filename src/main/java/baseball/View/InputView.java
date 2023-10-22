@@ -10,7 +10,7 @@ public class InputView {
     public String inputUserGuess() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine().trim();
-        if(!validateUserGuess(userInput)) { throw new IllegalArgumentException(); };
+        if(!validateUserGuess(userInput)) { throw new IllegalArgumentException(); }
 
         return userInput;
     }
@@ -18,11 +18,7 @@ public class InputView {
     public String inputQuitOrRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine().trim();
-        try {
-            validateQuitOrRestart(userInput);
-        } catch (IllegalArgumentException e) {
-            System.out.println("유효하지 않은 입력입니다.");
-        }
+        if(!validateQuitOrRestart(userInput)) { throw new IllegalArgumentException(); }
         return userInput;
     }
 
@@ -41,9 +37,7 @@ public class InputView {
         return userInput.length() == 3;
     }
 
-    public void validateQuitOrRestart(String userInput) throws IllegalArgumentException {
-        if(!Objects.equals(userInput, InputValidationConstant.RESTART) && !Objects.equals(userInput, InputValidationConstant.QUIT)) {
-            throw new IllegalArgumentException();
-        }
+    private boolean validateQuitOrRestart(String userInput) {
+        return Objects.equals(userInput, InputValidationConstant.RESTART) || Objects.equals(userInput, InputValidationConstant.QUIT);
     }
 }
