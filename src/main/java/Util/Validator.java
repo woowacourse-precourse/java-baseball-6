@@ -1,5 +1,6 @@
 package Util;
 
+import View.RetryView.Message;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -21,7 +22,7 @@ public class Validator {
     }
 
     public static void validateMenuChoice(String choice) {
-        if (!choice.equals("1") && !choice.equals("2")) {
+        if (!choice.equals(Message.RETRYGAME.getMessage()) && !choice.equals(Message.ENDGAME.getMessage())) {
             throw new IllegalArgumentException("1 또는 2를 입력하세요.");
         }
     }
