@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Computer {
     private final List<Integer> answer;
@@ -28,31 +29,29 @@ public class Computer {
         return answer;
     }
 
-    // TODO: test code 작성
     public List<Integer> compareWithAnswer(List<Integer> target) {
         // TODO: target에 대한 검증
-        int ballCount = 0, strikeCount = 0;
+        return List.of(countBall(target), countStrike(target));
+    }
 
-        // TODO: Stream 문법으로 개선하기
+    private int countBall(List<Integer> target) {
+        int ballCount = 0;
         for (int i = 0; i < answer.size(); i++) {
             if (answer.get(i).equals(target.get(i))) {
-                strikeCount++;
+                continue;
+            }
+            if (target.contains(answer.get(i))) {
+                ballCount++;
             }
         }
+        return ballCount;
+    }
 
-        // TODO: Stream 문법으로 개선하기
-        for (int i = 0; i < answer.size(); i++) {
-            for (int j = 0; j < answer.size(); j++) {
-                if (i == j) {
-                    continue;
-                }
-                if (answer.get(i).equals(target.get(j))) {
-                    ballCount++;
-                }
-            }
-        }
 
-        return List.of(ballCount, strikeCount);
+    private int countStrike(List<Integer> target) {
+        return (int) IntStream.range(0, answer.size())
+                .filter(i -> answer.get(i).equals(target.get(i)))
+                .count();
     }
 
     public List<Integer> getAnswer() {

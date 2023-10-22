@@ -15,12 +15,12 @@ public class Application {
         }
     }
 
-    private static void init() {
-        computer = new Computer();
-    }
-
     private static void start() {
         MessageStream.printStartMessage();
+    }
+
+    private static void init() {
+        computer = new Computer();
     }
 
     private static void process() {
