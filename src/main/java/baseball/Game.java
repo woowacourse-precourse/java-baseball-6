@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.StringJoiner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 public class Game {
@@ -15,14 +17,18 @@ public class Game {
   private static final String NOTHING = "낫싱";
   private static final String INPUT_RESTART = "1";
   private static final String INPUT_QUIT = "2";
-  private static final String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞췄습니다 게임종료";
+  private static final String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞췄습니다 게임 종료";
   private static final String OUTPUT_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
   private final Computer computer = new Computer();
   private final User user = new User();
-  private boolean quit = false;
   public String restartOrQuitInput;
   public List<String> inputArrList;
-
+  public String quitInput;
+  private boolean quit = false;
+  private int randomNumber;
+  private int userNumber;
+  private int strike;
+  private int ball;
 
   public Game() {
 
@@ -35,51 +41,71 @@ public class Game {
 
   public void play() {
     System.out.println("숫자 야구 게임을 시작합니다.");
-
+    initializeRandomNumber();
     while (!quit) {
-      int randomNumber = computer.getRandomNumber();
-      System.out.println(randomNumber);
-      var input = Console.readLine();
-      user.setUserNumber(input);
-      var result = calculateResult(randomNumber, user.getUserNumber());
+      initializeUserNumber();
+      initializeBallCount();
+      var result = calculateResult(randomNumber, userNumber);
       System.out.println(result);
-
       int strikes = getStrikeCountFromResult(result);
       if (gameOver(strikes)) {
         System.out.println(OUTPUT_SUCCESS);
         System.out.println(OUTPUT_RESTART);
-        getValidation();
-        input = Console.readLine();
-        if (INPUT_RESTART.equals(input.trim())) {
-          System.out.println("새 게임을 시작합니다.");
-        } else if (INPUT_QUIT.equals(input.trim())) {
-          quit = true;
-          break;
-        } else {
-          user.setUserNumber(input);
-        }
+        setQuitInput();
+        handleQuit();
+        handleRestart();
       }
-
     }
+  }
+
+  private void handleRestart() {
+    if (quitInput.equals(INPUT_RESTART)) {
+      initializeRandomNumber();
+    }
+  }
+
+  private void handleQuit() {
+    if (quitInput.equals(INPUT_QUIT)) {
+      quit = true;
+    }
+  }
+
+  private void setQuitInput() {
+    quitInput = Console.readLine();
+    getValidation();
+  }
+
+  private void initializeBallCount() {
+    strike = 0;
+    ball = 0;
+  }
+
+  private void initializeUserNumber() {
+    user.setUserNumber();
+    userNumber = user.getUserNumber();
+  }
+
+  private void initializeRandomNumber() {
+    computer.setRandomNumber();
+    randomNumber = computer.getRandomNumber();
   }
 
   private void getValidation() {
     // validation
     String[] inputArr = {"1", "2"};
     inputArrList = Arrays.asList(inputArr);
-    boolean inputValidation = inputArrList.contains(restartOrQuitInput);
+    boolean inputValidation = inputArrList.contains(quitInput);
     if (!inputValidation) {
       throw new IllegalArgumentException();
     }
   }
 
   private int getStrikeCountFromResult(String result) {
-    if (result.contains(STRIKE)) {
-      String[] parts = result.split(STRIKE);
-      return Integer.parseInt(parts[0].trim());
-    } else {
-      return 0;
+    Matcher matcher = Pattern.compile("\\d+").matcher(result);
+    if (matcher.find()) {
+      return Integer.parseInt(matcher.group());
     }
+    return 0;
   }
 
   private boolean gameOver(int strike) {
@@ -92,11 +118,10 @@ public class Game {
   }
 
   private String strikeAndBall(String randomNumber, String userNumber) {
+    strike = getStrikeCount(randomNumber, userNumber);
+    ball = getBallCount(randomNumber, userNumber);
 
-    int strikeCount = getStrikeCount(randomNumber, userNumber);
-    int ballCount = getBallCount(randomNumber, userNumber);
-
-    return formatResult(strikeCount, ballCount);
+    return formatResult(strike, ball);
   }
 
   private String formatResult(int strike, int ball) {
@@ -134,19 +159,20 @@ public class Game {
   }
 
   public int getStrikeCount(String randomNumber, String userNumber) {
-    return (int) IntStream.range(0, NUMBER_LENGTH)
+    strike = (int) IntStream.range(0, NUMBER_LENGTH)
         .filter(i -> randomNumber.charAt(i) == userNumber.charAt(i))
         .count();
+    return strike;
   }
 
   public int getBallCount(String randomNumber, String userNumber) {
-    return (int) IntStream.range(0, randomNumber.length())
+    ball = (int) IntStream.range(0, randomNumber.length())
         .filter(i -> IntStream.range(0, userNumber.length())
             .anyMatch(k -> randomNumber.charAt(i) == userNumber.charAt(k) && i != k))
         .count();
+    return ball;
   }
 
-  // strike 메소드를 public으로 노출시키기 위해 추가한 메소드
   public String publicCalculateResult(String randomNumber, String userNumber) {
     return strikeAndBall(randomNumber, userNumber);
   }
