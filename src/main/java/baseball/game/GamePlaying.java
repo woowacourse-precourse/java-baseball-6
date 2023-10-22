@@ -11,7 +11,6 @@ public class GamePlaying {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
-    private int strike, ball;
 
     List<Integer> computerNumber = new ArrayList<>();
     List<Integer> playerNumber = new ArrayList<>();
@@ -30,10 +29,24 @@ public class GamePlaying {
         playerNumber = player.getPlayerNumber(playerNumber);
     }
 
-    private void findStrike() {
-        for (int i = 0; i < 3; i++) {
-            if (computerNumber.get(i) == playerNumber.get(i));
+    private int isSame(int i) {
+        if (computerNumber.get(i) == playerNumber.get(i)) {
+            return 1;
         }
+        return 0;
+    }
+
+
+    private int findStrike(int strike) {
+        for (int i = 0; i < 3; i++) {
+            strike += isSame(i);
+        }
+        return strike;
+    }
+
+    private int findBall() {
+
+
     }
 
 }
