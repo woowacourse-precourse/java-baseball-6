@@ -26,6 +26,10 @@ public class Score {
         return this.ball.getValue();
     }
 
+    public int getStrikeCount() {
+        return this.strike.getValue();
+    }
+
     public boolean isStrikeOut() {
         return this.strike.isFullCount();
     }
