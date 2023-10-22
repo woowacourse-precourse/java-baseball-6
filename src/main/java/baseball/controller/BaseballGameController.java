@@ -42,7 +42,7 @@ public class BaseballGameController {
             if (!success) {
                 int ball = referee.calculateBall(computerNumber, playerNumber);
                 int strike = referee.calculateStrike(computerNumber, playerNumber);
-                printHint(ball, strike);
+                OutputView.printStrikeAndBall(ball, strike);
             }
         }
     }
@@ -58,10 +58,6 @@ public class BaseballGameController {
         if (restartOrEndNumber.equals(END)) {
             continueGame = false;
         }
-    }
-
-    private void printHint(int ball, int strike) {
-        OutputView.printStrikeAndBall(ball, strike);
     }
 
     private void isValidPlayerNumber(String number) {
