@@ -27,7 +27,14 @@ public class Game {
 
         GameStatus gameStatus = GameStatus.PLAYING;
 
-        while (GameStatus.PLAYING.equals(gameStatus)) {
+        while (GameStatus.PLAYING.equals(gameStatus)
+                || GameStatus.RESTART.equals(gameStatus)) {
+
+            // 게임을 다시 시작한 경우, 컴퓨터의 숫자 새로 생성하고 게임 결과 코드를 PLAYING으로 변경
+            if (GameStatus.RESTART.equals(gameStatus)) {
+                makeComputerNum();
+                gameStatus = GameStatus.PLAYING;
+            }
 
             // 사용자의 값 입력
             System.out.print("숫자를 입력해주세요 : ");
@@ -53,10 +60,39 @@ public class Game {
             }
 
             // 사용자가 입력한 값이 유효하지 않거나, 게임이 ALL STRIKE인 경우 => 게임 종료
-            if (GameStatus.INVALID_USER_INPUT.equals(gameStatus)) {
-                gameStatus = GameStatus.END;
+            if (GameStatus.INVALID_USER_INPUT.equals(gameStatus)
+                    || GameStatus.END.equals(gameStatus)) {
+                // 게임을 새로 시작할지 종료할지 사용자로부터 입력받아서 게임 종료할 경우 while문 종료
+                if (restartGame()) {
+                    gameStatus = GameStatus.RESTART;
+                }
             }
         }
+    }
+
+    /**
+     * 게임 종료 후 restart 또는 end 입력받기
+     * @return restart 입력 시 true, end 입력 시 false
+     */
+    private boolean restartGame() {
+        while (true) {
+            System.out.printf("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.\n",
+                    GameProgressFlag.RESTART.getFlagValue(), GameProgressFlag.END.getFlagValue());
+            String restartOrEnd = Console.readLine();
+            if (isValidRestartOrEndAnswer(restartOrEnd)) {
+                return GameProgressFlag.RESTART.getFlagValue().equals(restartOrEnd);
+            }
+        }
+    }
+
+    /**
+     * 사용자가 입력한 값이 restart 또는 end인지 검증
+     * @param input 사용자가 입력한 값
+     * @return restart 또는 end인 경우 true, 그렇지 않은 경우 false
+     */
+    private boolean isValidRestartOrEndAnswer(String input) {
+        return input.equals(GameProgressFlag.RESTART.getFlagValue())
+                || input.equals(GameProgressFlag.END.getFlagValue());
     }
 
     /**
