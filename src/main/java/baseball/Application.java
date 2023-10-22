@@ -6,10 +6,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Constant.MIN_RANDOM_NUMBER;
+import static baseball.Constant.MAX_RANDOM_NUMBER;
+import static baseball.Constant.GAME_NUM_SIZE;
+
 public class Application {
-    private final static int MIN_RANDOM_NUMBER = 1;
-    private final static int MAX_RANDOM_NUMBER = 9;
-    private final static int COMPUTER_NUM_SIZE = 3;
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -47,7 +48,7 @@ public class Application {
 
     private static List<String> createComputerNumber() {
         List<String> computer = new ArrayList<>();
-        while (computer.size() < COMPUTER_NUM_SIZE) {
+        while (computer.size() < GAME_NUM_SIZE) {
             int randNum = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
             String randomNumber = String.valueOf(randNum);
 
@@ -77,7 +78,7 @@ public class Application {
     // 사용자가 입력한 값에서 2개 이상 중복되는 숫자가 있는 경우
     private static void hasRepeatedDigitNumber(String playerNum){
         List<String> player = new ArrayList<>();
-        for(int i = 0; i < COMPUTER_NUM_SIZE; i++){
+        for(int i = 0; i < GAME_NUM_SIZE; i++){
             String playerIndex = String.valueOf(playerNum.charAt(i));
 
             if (player.contains(playerIndex)) {
@@ -92,7 +93,7 @@ public class Application {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for(int i = 0; i < COMPUTER_NUM_SIZE; i++){
+        for(int i = 0; i < GAME_NUM_SIZE; i++){
             String computerIndex = computerNum.get(i);
             String playerIndex = String.valueOf(playerNum.charAt(i));
 
