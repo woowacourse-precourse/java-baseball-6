@@ -61,4 +61,15 @@ public class BallsTest {
         assertThatThrownBy(() -> new Balls(IllegalList))
                 .isInstanceOf(NullPointerException.class);
     }
+
+    @DisplayName("입력받은 값으로 Balls 초기화")
+    @Test
+    public void createBalls_input() throws Exception {
+        //given
+        Balls balls = new Balls(Input.of("123"));
+        List<Ball> ballList = List.of(new Ball(1), new Ball(2), new Ball(3));
+
+        //when, then
+        assertThat(balls.getBalls()).containsExactlyElementsOf(ballList);
+    }
 }
