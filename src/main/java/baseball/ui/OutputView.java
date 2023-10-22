@@ -1,6 +1,7 @@
 package baseball.ui;
 
 import baseball.dto.Inning;
+import baseball.enums.GameConfig;
 
 public class OutputView {
     public void printGameStartMessage() {
@@ -9,5 +10,9 @@ public class OutputView {
 
     public void printResult(Inning inning) {
         System.out.println(inning.result());
+    }
+
+    public void printGameEndMessage() {
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", GameConfig.PITCH_COUNT.getValue());
     }
 }

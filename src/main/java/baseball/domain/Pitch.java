@@ -32,4 +32,12 @@ public record Pitch(List<Integer> numbers) {
             throw new IllegalArgumentException(String.format("%d ~ %d 사이의 숫자여야 합니다.", minNumber, maxNumber));
         }
     }
+
+    public int get(int index) {
+        return numbers.get(index);
+    }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
 }
