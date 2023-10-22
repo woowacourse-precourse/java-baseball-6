@@ -10,6 +10,6 @@ public class InputView {
     }
 
     public void printRestartOrExitMessage() {
-        System.out.print(REQUEST_RESTART_OR_EXIT_MSG);
+        System.out.println(REQUEST_RESTART_OR_EXIT_MSG);
     }
 }
