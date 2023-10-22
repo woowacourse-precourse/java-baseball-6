@@ -78,18 +78,18 @@ public class Game {
         if (isNothing(strike, ball)) {
             return "낫싱";
         }
-        String strikeResult = getGameResult("스트라이크", strike);
-        String ballResult = getGameResult("볼", ball);
+
+        String strikeResult = getGameResult(GameHintType.STRIKE, strike);
+        String ballResult = getGameResult(GameHintType.BALL, ball);
         return ballResult + strikeResult;
     }
 
-    private String getGameResult(String type, int count) {
+    private String getGameResult(GameHintType hintType, int count) {
         if (count <= 0) return "";
 
-        return switch (type) {
-            case "스트라이크" -> String.format("%d스트라이크", count);
-            case "볼" -> String.format("%d볼 ", count);
-            default -> throw new IllegalArgumentException("Invalid type");
+        return switch (hintType) {
+            case STRIKE -> String.format("%d%s", count, hintType.getLabel());
+            case BALL -> String.format("%d%s ", count, hintType.getLabel());
         };
     }
 
@@ -129,5 +129,20 @@ public class Game {
 
     public void startGame() {
         playBaseBallGame();
+    }
+
+    public enum GameHintType {
+        STRIKE("스트라이크"),
+        BALL("볼");
+
+        private final String label;
+
+        GameHintType(String label) {
+            this.label = label;
+        }
+
+        public String getLabel() {
+            return this.label;
+        }
     }
 }
