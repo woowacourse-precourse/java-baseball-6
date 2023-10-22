@@ -3,6 +3,7 @@ package baseball.controller;
 public class GameController {
     public static boolean start() {
         boolean restart = false;
+
         return restart;
     }
 
