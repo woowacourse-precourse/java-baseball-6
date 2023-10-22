@@ -15,7 +15,7 @@ public class BaseballGame {
         printGameStart();
         do {
             playGame();
-            userEndOption = inputGameEnd();
+            userEndOption = inputEndOption();
         }while(!checkGameEnd(userEndOption));
 
     }
@@ -43,7 +43,6 @@ public class BaseballGame {
         while (randomNumList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomNumList.contains(randomNumber)) {
-                System.out.println(randomNumber);
                 randomNumList.add(randomNumber);
             }
         }
@@ -152,7 +151,7 @@ public class BaseballGame {
         printWinGame(resultList);
     }
 
-    private int inputGameEnd(){
+    private int inputEndOption(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String endOptionInputString = Console.readLine();
         checkEndForm(endOptionInputString);
