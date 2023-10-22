@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.constant.GameCommand;
+import baseball.util.GameCommand;
 
 public class InputView {
     private final String GUESS_PROMPT = "숫자를 입력해주세요 : ";

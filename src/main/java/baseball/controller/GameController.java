@@ -1,10 +1,10 @@
 package baseball.controller;
 
-import baseball.constant.GameCommand;
-import baseball.constant.GameConstants;
 import baseball.domain.GameResult;
 import baseball.service.GameService;
 import baseball.service.PlayerService;
+import baseball.util.GameCommand;
+import baseball.util.GameConstants;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;

@@ -1,8 +1,8 @@
 package baseball.service;
 
-import baseball.constant.GameConstants;
 import baseball.domain.Computer;
 import baseball.domain.GameResult;
+import baseball.util.GameConstants;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;

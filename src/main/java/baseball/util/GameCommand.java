@@ -1,4 +1,4 @@
-package baseball.constant;
+package baseball.util;
 
 import java.util.Arrays;
 

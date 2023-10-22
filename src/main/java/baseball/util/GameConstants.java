@@ -1,4 +1,4 @@
-package baseball.constant;
+package baseball.util;
 
 public class GameConstants {
     public final static int MIN_RANGE_NUMBER = 1;
