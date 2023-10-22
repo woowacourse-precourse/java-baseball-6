@@ -18,7 +18,7 @@ public class Judge {
                 .collect(Collectors.toMap(index -> index, computerNumberList::get));
     }
 
-    public void evaluateUserNumberList(List<Integer> userNumberList) {
+    public ScoreBoard evaluateUserNumberList(List<Integer> userNumberList) {
         List<String> scoreBoardList = new ArrayList<>();
         for (int i = 0; i < computerNumberMap.size(); i++) {
             if (computerNumberMap.get(i) == userNumberList.get(i)) { //map의 인덱스의 밸류와 사용자 숫자 리스트의 값이 같으면 스트라이크
@@ -32,5 +32,6 @@ public class Judge {
             scoreBoardList.add("NOTHING"); // 둘 다 아니라면 NOTHING
 
         }
+        return new ScoreBoard(scoreBoardList);
     }
 }
