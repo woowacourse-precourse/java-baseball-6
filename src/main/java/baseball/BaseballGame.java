@@ -1,13 +1,13 @@
 package baseball;
 
 public class BaseballGame {
-    Boolean isFinishedTheGame;
+    Boolean isFinished;
     Boolean isRunning;
     Computer computer;
     private final int GAME_END_STRIKE_COUNT = 3;
 
     public BaseballGame() {
-        isFinishedTheGame = false;
+        isFinished = false;
         isRunning = false;
         this.computer = new Computer();
     }
@@ -15,7 +15,7 @@ public class BaseballGame {
     // 게임 시작
     public void start() throws IllegalArgumentException {
         Display.printStartMessage();
-        while (!isFinishedTheGame) {
+        while (!isFinished) {
             run();
         }
     }
@@ -39,7 +39,7 @@ public class BaseballGame {
     private void askToRestartGame() throws IllegalArgumentException {
         String restartAnswer = Display.askToRestartGame();
         Validator.validateRestartInput(restartAnswer);
-        checkFinishedGame(restartAnswer);
+        checkTheFinishedGame(restartAnswer);
     }
 
     private void checkRunningState(MatchResult result) {
@@ -48,10 +48,10 @@ public class BaseballGame {
         }
     }
 
-    private void checkFinishedGame(String restartAnswer) {
+    private void checkTheFinishedGame(String restartAnswer) {
         int answer = Integer.parseInt(restartAnswer);
         if (RestartType.EXIT.getValue() == answer) {
-            isFinishedTheGame = true;
+            isFinished = true;
         }
     }
 }
