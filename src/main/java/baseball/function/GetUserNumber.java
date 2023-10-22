@@ -2,11 +2,10 @@ package baseball.function;
 
 import baseball.view.Message;
 import camp.nextstep.edu.missionutils.Console;
-
 import baseball.function.ChkDigit;
 
 public class GetUserNumber {
-    public int[] getuserNumber() throws IllegalArgumentException {
+    public static int[] getUserNumber() throws IllegalArgumentException {
 
         Message.InputNessage();
         String input = Console.readLine();

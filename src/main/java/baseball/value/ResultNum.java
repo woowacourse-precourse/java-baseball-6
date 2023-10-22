@@ -2,13 +2,20 @@ package baseball.value;
 
 public class ResultNum {
 
-    int[] randomNumber;
+    int[] computerNumber;
 
-    public ResultNum(int[] RandomNum){
-        randomNumber = RandomNum;
+    int[] userNumber;
+
+    public void setComputerNum(int[] RandomNum){
+        this.computerNumber = RandomNum;
     }
 
-    public int[] getRandomNumber(){
-        return randomNumber;
+    public int[] getComputerNumber(){
+        return computerNumber;
     }
+
+    public void setUserNumber(int[] userNumber){
+        this.userNumber = userNumber;
+    }
+    public int[] getUserNumber(){return userNumber;}
 }

@@ -2,7 +2,7 @@ package baseball.function;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNum {
-    public static int[] SetRandomNum() {
+    public static int[] getRandomNum() {
         int[] computerNumber = new int[3];
 
         for (int i = 0; i < 3; i++) {
