@@ -1,7 +1,8 @@
 package baseball;
 
-public class BallCountCalculate {
+import java.util.Arrays;
 
+public class BallCountCalculate {
 
     public static int getStrike(String randomNum, String inputNum) {
         int strikeCount = 0;
@@ -11,5 +12,10 @@ public class BallCountCalculate {
             }
         }
         return strikeCount;
+    }
+
+    public static int getBall(String randomNum, String inputNum) {
+        int sameCount = (int) Arrays.stream(randomNum.split("")).filter(inputNum::contains).count();
+        return sameCount - getStrike(randomNum,inputNum);
     }
 }
