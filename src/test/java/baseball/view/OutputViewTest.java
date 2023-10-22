@@ -25,14 +25,9 @@ public class OutputViewTest extends NsTest {
 	}
 
 	static Stream<Arguments> createCheckPrintResultTestValue() {
-		return Stream.of(Arguments.of(0, 0, "낫싱"), Arguments.of(1, 1, "1볼 1스트라이크"), 
-					Arguments.of(0, 1, "1스트라이크"), Arguments.of(2, 1, "2볼 1스트라이크"), 
-					Arguments.of(0, 3, "3스트라이크"));
+		return Stream.of(Arguments.of(0, 0, "낫싱"), Arguments.of(1, 1, "1볼 1스트라이크"), Arguments.of(0, 1, "1스트라이크"),
+						Arguments.of(2, 1, "2볼 1스트라이크"), Arguments.of(0, 3, "3스트라이크"));
 	}
 
-	@Override
-	protected void runMain() {
-		// TODO Auto-generated method stub
-
-	}
+	@Override protected void runMain() {}
 }

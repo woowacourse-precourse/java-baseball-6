@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public enum Continue {
 
-	NEW(1), QUIT(2);
+	NEW(1), 
+	QUIT(2);
 
 	private final int command;
 
@@ -18,7 +19,7 @@ public enum Continue {
 
 	public static boolean checkContinueCommand(int num) {
 		return Arrays.stream(Continue.values())
-				.anyMatch(command -> command.getCommand() == num);
+						.anyMatch(command -> command.getCommand() == num);
 	}
 
 	public int getCommand() {

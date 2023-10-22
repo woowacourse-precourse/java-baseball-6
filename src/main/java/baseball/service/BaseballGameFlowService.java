@@ -29,17 +29,17 @@ public class BaseballGameFlowService {
 
 	public void checkContinue(int command) {
 		if (Continue.checkNew(command)) {
-			doContinue();
+		    doContinue();
 		}
 	}
 
 	public void checkClear(int strikeCount) {
-		if (isClearContition(strikeCount)) {
+		if (isClearCondition(strikeCount)) {
 			doClear();
 		}
 	}
 	
-	private boolean isClearContition(int strikeCount) {
+	private boolean isClearCondition(int strikeCount) {
 		return strikeCount == CLEAR_STRIKE_COUNT;
 	}
 	

@@ -21,13 +21,13 @@ public class InputView {
 		return Integer.parseInt(inputValue);
 	}
 
-	public void inputNumberValidate(String inputValue) {
-		Validator.validateNumberFormat(inputValue);
+	private void inputNumberValidate(String inputValue) {
+	    Validator.validateNumberFormat(inputValue);
 		Validator.validateOutOfLength(inputValue);
 		Validator.validateDuplicatedNumber(inputValue);
 	}
 
-	public void inputCommandValidate(String inputValue) {
+	private void inputCommandValidate(String inputValue) {
 		Validator.validateNumberFormat(inputValue);
 		Validator.validateContinueCommand(inputValue);
 	}

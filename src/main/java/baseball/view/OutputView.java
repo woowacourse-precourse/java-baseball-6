@@ -27,16 +27,18 @@ public class OutputView {
 
 		if (ballCount != 0) {
 			String message = String.format(ProgressMessage.BALL.getMessage(), ballCount);
+			
 			joiner.add(message);
 		}
 
 		if (StrikeCount != 0) {
 			String message = String.format(ProgressMessage.STRIKE.getMessage(), StrikeCount);
+			
 			joiner.add(message);
 		}
 
 		joiner.setEmptyValue(ProgressMessage.NOTHING.getMessage());
 
-		System.out.println(joiner.toString().trim());
+		System.out.println(joiner.toString());
 	}
 }

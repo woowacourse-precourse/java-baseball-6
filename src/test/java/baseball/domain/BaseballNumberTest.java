@@ -15,8 +15,8 @@ public class BaseballNumberTest {
 	@Test
 	void checkDuplicatedNumber() {
 		assertThatThrownBy(() -> new BaseballNumber(List.of(1, 1, 2)))
-			.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(ErrorMessage.NUMBER_DUPLICATE_ERROR.getMessage());
+				.isInstanceOf(IllegalArgumentException.class)
+						.hasMessageContaining(ErrorMessage.NUMBER_DUPLICATE_ERROR.getMessage());
 
 	}
 	
@@ -26,16 +26,16 @@ public class BaseballNumberTest {
 		new BaseballNumber(List.of(1, 3, 2));
 	}
 
-	@DisplayName("List의 길이가 3인지를 확인한다.")
+	@DisplayName("List의 길이가 3인지 확인한다.")
 	@Test
 	void checkOutofLength() {
 		assertThatThrownBy(() -> new BaseballNumber(List.of(1, 2)))
-			.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(ErrorMessage.DIGIT_LENGTH_ERROR.getMessage());
+				.isInstanceOf(IllegalArgumentException.class)
+						.hasMessageContaining(ErrorMessage.DIGIT_LENGTH_ERROR.getMessage());
 
 	}
 	
-	@DisplayName("List의 길이가 3일떄 정상적으로 작동하는 지 확인한다.")
+	@DisplayName("List의 길이가 3일 떄 정상적으로 작동하는 지 확인한다.")
 	@Test
 	void checkNomalOperation2() {
 		new BaseballNumber(List.of(1, 3, 2));

@@ -10,7 +10,7 @@ public enum ProgressMessage {
 	STRIKE("%d스트라이크"),
 	NOTHING("낫싱");
 	
-	private String message;
+	private final String message;
 
 	ProgressMessage(String message) {
 		this.message = message;

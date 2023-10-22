@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.domain.BaseballNumber;
-import baseball.service.BaseballCheckAnswerService;
+import baseball.service.CountBallOrStrikeService;
 import baseball.service.BaseballCreateService;
 import baseball.service.BaseballGameFlowService;
 import baseball.view.InputView;
@@ -10,14 +10,14 @@ import baseball.view.OutputView;
 public class BaseballGame {
 
 	private BaseballCreateService baseballCreateService;
-	private BaseballCheckAnswerService baseballCheckAnswerService;
+	private CountBallOrStrikeService countBallOrStrikeService;
 	private BaseballGameFlowService baseballGameFlowService;
 	private InputView inputView;
 	private OutputView outputView;
 
 	public BaseballGame() {
 		this.baseballCreateService = new BaseballCreateService();
-		this.baseballCheckAnswerService = new BaseballCheckAnswerService();
+		this.countBallOrStrikeService = new CountBallOrStrikeService();
 		this.baseballGameFlowService = new BaseballGameFlowService();
 		this.inputView = new InputView();
 		this.outputView = new OutputView();
@@ -34,20 +34,20 @@ public class BaseballGame {
 		}
 	}
 
-	public void init() {
+	private void init() {
 		baseballGameFlowService.reset();
 		outputView.printStartMessage();
 	}
 
-	public void progress() {
+	private void progress() {
 		BaseballNumber baseballNumber = baseballCreateService.createBaseballNumber();
 
 		do {
 			outputView.printInputNumberMessage();
 
 			int inputDigit = inputView.inputNumber();
-			int ballCount = baseballCheckAnswerService.getBallCount(baseballNumber, inputDigit);
-			int StrikeCount = baseballCheckAnswerService.getStrikeCount(baseballNumber, inputDigit);
+			int ballCount = countBallOrStrikeService.getBallCount(baseballNumber, inputDigit);
+			int StrikeCount = countBallOrStrikeService.getStrikeCount(baseballNumber, inputDigit);
 
 			outputView.printResult(ballCount, StrikeCount);
 			baseballGameFlowService.checkClear(StrikeCount);
@@ -56,8 +56,9 @@ public class BaseballGame {
 		outputView.printClearMessage();
 	}
 
-	public void retryOrExit() {
+	private void retryOrExit() {
 		outputView.printAskContinueMessage();
+		
 		int command = inputView.inputCommand();
 
 		baseballGameFlowService.checkContinue(command);

@@ -8,7 +8,7 @@ public enum ErrorMessage {
 	INPUT_LETTER_ERROR("0이 아닌 숫자만 입력해야합니다."),
 	PREFIX("[ERROR] ");
 
-	private String message;	
+	private final String message;	
 
 	ErrorMessage(String message) {
 		this.message = message;

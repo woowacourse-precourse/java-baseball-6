@@ -12,14 +12,14 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import baseball.domain.BaseballNumber;
 
-public class BaseballCheckAnswerServiceTest {
+public class CountBallOrStrikeServiceTest {
 
 	@DisplayName("볼의 개수를 확인한다.")
 	@MethodSource("createCheckBallCountTestValue")
 	@ParameterizedTest
 	void checkBallCount(int number, int count) {
 		BaseballNumber baseballNumber = new BaseballNumber(List.of(1, 2, 3));
-		BaseballCheckAnswerService service = new BaseballCheckAnswerService();
+		CountBallOrStrikeService service = new CountBallOrStrikeService();
 		int answer = service.getBallCount(baseballNumber, number);
 
 		assertEquals(answer, count, "[ERROR] 값이 서로 다릅니다.");
@@ -30,19 +30,19 @@ public class BaseballCheckAnswerServiceTest {
 	@ParameterizedTest
 	void checkStrikeCount(int number, int count) {
 		BaseballNumber baseballNumber = new BaseballNumber(List.of(1, 2, 3));
-		BaseballCheckAnswerService service = new BaseballCheckAnswerService();
+		CountBallOrStrikeService service = new CountBallOrStrikeService();
 		int answer = service.getStrikeCount(baseballNumber, number);
 
 		assertEquals(answer, count, "[ERROR] 값이 서로 다릅니다.");
 	}
 
 	static Stream<Arguments> createCheckBallCountTestValue() {
-		return Stream.of(Arguments.of(312, 3), Arguments.of(234, 2), Arguments.of(671, 1),
-					Arguments.of(789, 0), Arguments.of(321, 2));
+		return Stream.of(Arguments.of(312, 3), Arguments.of(234, 2), Arguments.of(671, 1), Arguments.of(789, 0),
+						Arguments.of(321, 2));
 	}
 	
 	static Stream<Arguments> createCheckStrikeCountTestValue() {
-		return Stream.of(Arguments.of(123, 3), Arguments.of(156, 1), Arguments.of(127, 2),
-					Arguments.of(312, 0), Arguments.of(832, 0));
+		return Stream.of(Arguments.of(123, 3), Arguments.of(156, 1), Arguments.of(127, 2), Arguments.of(312, 0), 
+						Arguments.of(832, 0));
 	}
 }

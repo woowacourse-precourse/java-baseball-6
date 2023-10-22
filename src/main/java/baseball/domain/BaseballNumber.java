@@ -12,6 +12,7 @@ public class BaseballNumber {
 
 	public BaseballNumber(List<Integer> numbers) {
 		validate(numbers);
+		
 		this.numbers = numbers;
 	}
 
@@ -22,7 +23,7 @@ public class BaseballNumber {
 
 	private void validateOutOfLength(List<Integer> numbers) {
 		if (isOutOfLength(numbers)) {
-			throw new IllegalArgumentException(ErrorMessage.DIGIT_LENGTH_ERROR.getMessage());
+		    throw new IllegalArgumentException(ErrorMessage.DIGIT_LENGTH_ERROR.getMessage());
 		}
 	}
 
@@ -37,7 +38,9 @@ public class BaseballNumber {
 	}
 
 	private boolean isDuplicatedNumber(List<Integer> numbers) {
-		return numbers.stream().distinct().count() != numbers.size();
+		return numbers.stream()
+						.distinct()
+						.count() != numbers.size();
 	}
 
 	public Integer get(int index) {

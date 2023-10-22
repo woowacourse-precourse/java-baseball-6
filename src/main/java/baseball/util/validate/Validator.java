@@ -4,15 +4,16 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import baseball.domain.command.Continue;
-import baseball.service.BaseballCheckAnswerService;
+import baseball.service.CountBallOrStrikeService;
 import baseball.util.message.ErrorMessage;
 
 public class Validator {
-	private static final Pattern DIGIT_PATTERN = Pattern.compile("^[1-9]*$");
+	
+	private static final Pattern NUMBER_PATTERN = Pattern.compile("^[1-9]*$");
 	private static final int LENGTH = 3;
 
 	public static void validateNumberFormat(String inputValue) {
-		if (!DIGIT_PATTERN.matcher(inputValue).matches()) {
+		if (!NUMBER_PATTERN.matcher(inputValue).matches()) {
 			throw new IllegalArgumentException(ErrorMessage.INPUT_LETTER_ERROR.getMessage());
 		}
 	}
@@ -39,8 +40,10 @@ public class Validator {
 
 	private static boolean checkDuplicate(String inputValue) {
 		int number = Integer.parseInt(inputValue);
-
-		List<Integer> listNum = BaseballCheckAnswerService.divideIntoDigit(number);
-		return listNum.stream().distinct().count() != listNum.size();
+		List<Integer> listNum = CountBallOrStrikeService.divideIntoDigit(number);
+		
+		return listNum.stream()
+						.distinct()
+						.count() != listNum.size();
 	}
 }

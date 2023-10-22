@@ -15,13 +15,13 @@ public class BaseballCreateService {
 		NumberGenerator generator = new NumberGenerator();
 
 		while (computer.size() < LENGTH) {
-			int randomNumber = generator.generate();
+		    int randomNumber = generator.generate();
 			
 			if (!computer.contains(randomNumber)) {
-				computer.add(randomNumber);
+			    computer.add(randomNumber);
 			}
 		}
-
+		
 		return new BaseballNumber(computer);
 	}
 }
