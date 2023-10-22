@@ -43,20 +43,19 @@
 
 ## 출력 기능
 
+숫자 야구 게임의 가이드를 출력하는 기능을 구현한다.
+
+- [x] 초기 시작 안내 문구를 출력한다. - [OutputView](#OutputView)#printStartMessage()
+- [x] 매 턴 숫자 입력 안내 문구를 출력한다. - [OutputView](#OutputView)#printInputGuideMessage()
+
 숫자 야구 게임의 결과를 출력하는 기능을 구현한다.
 
 - [x] 결과를 출력한다. - [OutputView](#OutputView)#printResult()
     - 출력 양식은 `{볼 횟수}볼 {스트라이크 횟수}스트라이크`를 따른다.
     - 볼과 스트라이크 횟수 중 하나가 0일 경우, 각각 `{스트라이크 횟수}스트라이크`, `{볼 횟수}볼`로 출력한다.
     - 낫싱의 경우, `낫싱`으로 출력한다.
-- [ ] 스트라이크 횟수가 3회가 아닐 경우, [사용자 숫자 입력 기능](#사용자-숫자-입력-기능)으로 넘어간다.
-- [ ] 스트라이크 횟수가 3회일 경우, 게임 종료 문구를 출력한다. [사용자 게임 재시작 여부 입력 기능](#사용자-게임-재시작-여부-입력-기능)으로 넘어간다.
+- [x] 게임 종료 문구를 출력한다. - [OutputView](#OutputView)#printDoneMessage()
     - 게임 종료 문구로 `3개의 숫자를 모두 맞히셨습니다! 게임 종료`를 출력한다.
-
-숫자 야구 게임의 가이드를 출력하는 기능을 구현한다.
-
-- [x] 초기 시작 안내 문구를 출력한다. - [OutputView](#OutputView)#printStartMessage()
-- [x] 매 턴 숫자 입력 안내 문구를 출력한다. - [OutputView](#OutputView)#printInputGuideMessage()
 
 ## 게임 흐름 제어 기능
 

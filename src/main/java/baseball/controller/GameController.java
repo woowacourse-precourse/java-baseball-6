@@ -23,6 +23,7 @@ public class GameController {
             playGame(inputNumber);
             OutputView.printResult(game.getResult());
         } while (game.isRunning());
+        OutputView.printDoneMessage();
     }
 
     public void playGame(String number) {
