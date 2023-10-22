@@ -7,15 +7,15 @@ import java.util.List;
 public class CompareTwoValues {
 
     public static int[] valueExtraction = new int[3];
-    int ballCount = 0;
-    int strikeCount = 0;
+    public int ballCount = 0;
+    public int strikeCount = 0;
 
     public static void valueExtraction(int inputNumber) {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 2; i > 0; i--) {
             valueExtraction[i] = inputNumber % 10;
             inputNumber /= 10;
         }
-        valueExtraction[2] = inputNumber;
+        valueExtraction[0] = inputNumber;
 
     }
 
@@ -28,12 +28,19 @@ public class CompareTwoValues {
 
     public void exploreSequentially() {
         List<Integer> computer = RandomPickNumber.computer;
-
+//        System.out.println(computer);
+//
+//        for (int i : valueExtraction) {
+//            System.out.println("i = " + i);
+//        }
+        ballCount = 0;
+        strikeCount = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (computer.get(i).equals(valueExtraction[j])) {
                     if (i == j) {
                         strikeCount++;
+                        break;
                     }
                     ballCount++;
                 }
@@ -47,11 +54,11 @@ public class CompareTwoValues {
         if (ball == 0 && strike == 0) {
             System.out.println(GuideMessageConstant.NOTHING_MESSAGE);
         } else if (ball >= 1 && strike == 0) {
-            System.out.println(ballCount + GuideMessageConstant.BALL_MESSAGE);
+            System.out.println(ball + GuideMessageConstant.BALL_MESSAGE);
         } else if (ball == 0 && strike >= 1) {
-            System.out.println(strikeCount + GuideMessageConstant.NOTHING_MESSAGE);
-        } else if (ball == 1 && strike >= 1) {
-            System.out.println(ballCount + GuideMessageConstant.BALL_MESSAGE + strikeCount + GuideMessageConstant.NOTHING_MESSAGE);
+            System.out.println(strike + GuideMessageConstant.STRIKE_MESSAGE);
+        } else if (ball >= 1 && strike >= 1) {
+            System.out.println(ball + GuideMessageConstant.BALL_MESSAGE + strike + GuideMessageConstant.STRIKE_MESSAGE);
         }
     }
 }

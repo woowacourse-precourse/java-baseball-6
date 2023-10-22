@@ -9,11 +9,15 @@ public class Start {
     public Start() {
         System.out.println(GuideMessageConstant.START_MESSAGE);
         RandomPickNumber.randomPickNumber();
-        Input.inputNumber();
-
         CompareTwoValues compareTwoValues = new CompareTwoValues();
-        compareTwoValues.compareTwoValues(Input.inputNumber);
 
+        while (compareTwoValues.strikeCount != 3) {
+            Input.inputNumber();
+
+            compareTwoValues.compareTwoValues(Input.inputNumber);
+        }
+
+        System.out.println(GuideMessageConstant.END_MESSAGE);
     }
 
 
