@@ -13,7 +13,10 @@ public class Baseball {
         this.ballNum = ballNum;
     }
 
-    public Baseball makeBaseball() {
+    public Baseball() {
+    }
+
+    public void makeBaseball() {
 
         while (ballNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -21,8 +24,6 @@ public class Baseball {
                 ballNum.add(randomNumber);
             }
         }
-
-        return new Baseball(ballNum);
 
     }
 }
