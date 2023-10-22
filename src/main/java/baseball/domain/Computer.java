@@ -25,6 +25,5 @@ public class Computer {
                 randomNumbers.add(randomNumber);
             }
         }
-        System.out.println(randomNumbers);
     }
 }
