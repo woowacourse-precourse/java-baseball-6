@@ -8,4 +8,8 @@ public class OutputView {
         System.out.println(START_MESSAGE);
     }
 
+    public static void printHintMessage(String hint) {
+        System.out.println(hint);
+    }
+
 }
