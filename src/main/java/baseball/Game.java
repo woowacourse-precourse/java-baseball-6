@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Game {
 
-    Computer computer;
-    GameManager gameManager;
-    Player player;
+    private final GameManager gameManager;
+    private final Computer computer;
+    private final Player player;
 
     public Game(GameManager gameManager) {
         this.gameManager = gameManager;

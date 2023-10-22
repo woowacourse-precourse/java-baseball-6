@@ -11,8 +11,7 @@ import static baseball.Constant.STRIKE_MESSAGE;
 import java.util.List;
 
 public class GameManager {
-
-    Validator validator = new Validator();
+    private final Validator validator = new Validator();
 
     public void printStartMessage() {
         System.out.println(START_MESSAGE);

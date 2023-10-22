@@ -5,11 +5,9 @@ public class Application {
         GameManager gameManager = new GameManager();
         gameManager.printStartMessage();
 
-        boolean isRunning = true;
-        while (isRunning) {
+        do {
             Game game = new Game(gameManager);
             game.play();
-            isRunning = gameManager.askRestart();
-        }
+        } while (gameManager.askRestart());
     }
 }
