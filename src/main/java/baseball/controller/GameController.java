@@ -6,6 +6,7 @@ import baseball.model.Game;
 import baseball.model.GameNumbers;
 import baseball.model.Result;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.List;
 
 public class GameController {
@@ -15,6 +16,7 @@ public class GameController {
     public void run() {
         String inputNumber = InputView.inputPositiveNumber();
         playGame(inputNumber);
+        OutputView.printResult(getResult());
     }
 
     public void playGame(String number) {
