@@ -28,6 +28,10 @@ public class GameNumbers {
         this.numbers = numbers;
     }
 
+    public static GameNumbers createRandomGameNumbers() {
+        return new GameNumbers();
+    }
+
     private static List<Integer> generateRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < NUMBERS_SIZE) {
@@ -58,10 +62,6 @@ public class GameNumbers {
         if (nonDuplicateNumbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException(DUPLICATED_NUMBER.getMessage());
         }
-    }
-
-    public static GameNumbers createRandomGameNumbers() {
-        return new GameNumbers();
     }
 
     public List<Integer> getNumbers() {
