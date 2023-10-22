@@ -20,7 +20,9 @@ public class Computer {
     }
 
     public boolean validDuplication(int number) {
-        if(computerNumber.contains(number)) return true;
+        if(computerNumber.contains(number)) {
+            return true;
+        }
         return false;
     }
 
