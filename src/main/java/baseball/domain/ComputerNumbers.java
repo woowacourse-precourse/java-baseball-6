@@ -7,11 +7,9 @@ import java.util.List;
 
 public class ComputerNumbers implements Numbers {
 
-    private final List<Integer> numbers;
+    private final List<Integer> numbers = new ArrayList<>(SIZE);;
 
     public ComputerNumbers() {
-        numbers = new ArrayList<>(SIZE);
-
         while(numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!numbers.contains(randomNumber)) {
