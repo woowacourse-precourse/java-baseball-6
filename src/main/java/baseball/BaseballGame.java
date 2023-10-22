@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.HashMap;
 import camp.nextstep.edu.missionutils.Randoms;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 class BaseballGame{
     private HashMap<Integer, Integer> computerNumbers;
     private int[] userNumbers;
@@ -32,6 +34,15 @@ class BaseballGame{
     }
 
     public void userNumbersInput(){
+        userNumbers = new int[3];
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = readLine();
+        char[] inputDigits = userInput.toCharArray();
+        // 예외 처리
+
+        for(int idx = 0; idx < 3; idx++){
+            userNumbers[idx] = inputDigits[idx] - '0';
+        }
     }
 
     public int countStrikes(){
