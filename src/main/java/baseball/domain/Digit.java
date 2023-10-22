@@ -9,7 +9,7 @@ public class Digit implements Comparable<Digit> {
     private final int digit;
 
     public Digit(int digit) {
-        if(digit > MIN_RANGE && MAX_RANGE > digit) {
+        if(digit < MIN_RANGE || MAX_RANGE < digit) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE_NUMBER);
         }
 
