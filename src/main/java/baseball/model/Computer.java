@@ -3,7 +3,7 @@ package baseball.model;
 import static baseball.util.Constant.BASEBALL_GAME_NUMBER_DIGIT;
 import static baseball.util.Constant.START_INDEX;
 
-import baseball.util.BaseBallGameNumberGenerator;
+import baseball.util.NumberGenerator;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -15,9 +15,8 @@ public class Computer {
         this.numbers = numbers;
     }
 
-    public static Computer createDefault() {
-        BaseBallGameNumberGenerator baseBallGameNumberGenerator = new BaseBallGameNumberGenerator();
-        return new Computer(baseBallGameNumberGenerator.generateNumbers());
+    public static Computer createDefault(final NumberGenerator numberGenerator) {
+        return new Computer(numberGenerator.generateNumbers());
     }
 
     public int countStrikes(final List<Integer> guessNumbers) {
