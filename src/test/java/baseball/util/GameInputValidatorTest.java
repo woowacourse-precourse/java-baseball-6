@@ -27,6 +27,30 @@ class GameInputValidatorTest {
     }
 
     @Test
+    @DisplayName("두자리가 입력된 경우")
+    void 두자리_수가_입력된_경우() throws Exception {
+        //given
+        String inputNum = "12";
+        //when
+        //then
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> gameInputValidator.validate(inputNum))
+                .withMessage(ErrorMessage.INVALID_GAME_INPUT_NUM.getErrorMessage());
+    }
+
+    @Test
+    @DisplayName("네자리가 입력된 경우")
+    void 네자리_수가_입력된_경우() throws Exception {
+        //given
+        String inputNum = "1234";
+        //when
+        //then
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> gameInputValidator.validate(inputNum))
+                .withMessage(ErrorMessage.INVALID_GAME_INPUT_NUM.getErrorMessage());
+    }
+
+    @Test
     @DisplayName("inputNum이 정상 값인 경우")
     void 정상값이_입력된_경우() throws Exception {
         //given
