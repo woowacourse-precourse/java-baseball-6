@@ -20,4 +20,9 @@ class CommandTest {
     void 사용자가_1_혹은_2가_아닌_다른_입력값을_제시한경우_IllegalArgumentException_예외를_반환한다() {
         assertThrows(IllegalArgumentException.class, () -> Command.getCommand("3"));
     }
+
+    @Test
+    void 입력값에_공백이_포함된경우_IllegalArgumentException_예외를_반환한다() {
+        assertThrows(IllegalArgumentException.class, () -> Command.getCommand(" 1"));
+    }
 }
