@@ -4,25 +4,23 @@ import static baseball.util.Constants.BALL_AMOUNT;
 
 import baseball.util.ComputerRandomNumberGenerator;
 import baseball.util.RandomNumberGenerator;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerBalls {
 
-    List<Ball> balls;
+    private Balls balls;
     private RandomNumberGenerator randomNumberGenerator;
-
 
     public ComputerBalls() {
         this.randomNumberGenerator = new ComputerRandomNumberGenerator();
-        balls = new ArrayList<>();
+        balls = new Balls(setRandomBalls());
     }
 
-    public void setRandomBalls() {
-        List<Integer> uniqueNumbers = randomNumberGenerator.createUniqueNumbers(BALL_AMOUNT);
-        for (int position = 0; position < BALL_AMOUNT; position++) {
-            balls.add(new Ball(position, uniqueNumbers.get(position)));
-        }
+    private List<Integer> setRandomBalls() {
+        return randomNumberGenerator.createUniqueNumbers(BALL_AMOUNT);
+    }
+
+    public Balls getBalls() {
+        return balls;
     }
 }
