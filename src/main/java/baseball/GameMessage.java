@@ -3,19 +3,19 @@ package baseball;
 import static baseball.constant.Constant.*;
 
 public class GameMessage {
-    public static void initGame() {
+    public void initGame() {
         System.out.println(INIT_GAME_MSG);
     }
 
-    public static void getInputNumber() {
+    public void getInputNumber() {
         System.out.print(INPUT_NUMBERS_MSG);
     }
 
-    public static void endGame() {
+    public void endGame() {
         System.out.println(END_GAME_MSG);
     }
 
-    public static void getInputCommand() {
+    public void getInputCommand() {
         System.out.println(INPUT_COMMAND_MSG);
     }
 }
