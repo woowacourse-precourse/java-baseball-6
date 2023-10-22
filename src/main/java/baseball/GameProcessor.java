@@ -11,11 +11,17 @@ public class GameProcessor {
     private static final int LAST_RANDOM_NUMBER = 9;
     private static final int DIGIT_SIZE = 3;
 
-    private List<String> generateRandomNumberList() {
-        List<String> randomNumberList = new ArrayList<>();
-        for (int i = 0; i < DIGIT_SIZE; i++) {
-            int randomNumber = Randoms.pickNumberInRange(INITIAL_RANDOM_NUMBER, LAST_RANDOM_NUMBER);
-            randomNumberList.add(String.valueOf(randomNumber));
+    private List<String> generateRandomNumberList(Data data) {
+//        List<String> randomNumberList = new ArrayList<>();
+        List<String> randomNumberList = data.getRandomNumberList();
+
+        if (randomNumberList.isEmpty()) {
+            for (int i = 0; i < DIGIT_SIZE; i++) {
+                int randomNumber = Randoms.pickNumberInRange(INITIAL_RANDOM_NUMBER,
+                        LAST_RANDOM_NUMBER);
+                randomNumberList.add(String.valueOf(randomNumber));
+            }
+            data.setRandomNumberList(randomNumberList);
         }
         return randomNumberList;
     }
@@ -60,7 +66,7 @@ public class GameProcessor {
     private List<String> calculateStrikeBall(Data data) {
         List<String> strikeBall = Arrays.asList("0", "0");
         List<String> userNumberList = generateUserNumberList(data);
-        List<String> randomNumberList = generateRandomNumberList();
+        List<String> randomNumberList = generateRandomNumberList(data);
 
         String strike = calculateStrike(data, userNumberList, randomNumberList);
         String ball = calculateBall(data, userNumberList, randomNumberList);

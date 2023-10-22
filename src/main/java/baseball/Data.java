@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,7 +8,7 @@ public class Data {
     private String userAnswerNumber;
     private List<String> userAnswerNumberList;
     private int randomNumber;
-    private List<String> randomNumberList;
+    private List<String> randomNumberList = new ArrayList<>();
     private List<String> answerList = Arrays.asList("0", "0");
     private String willRestartResponse;
     private boolean digitSizeError = false;
