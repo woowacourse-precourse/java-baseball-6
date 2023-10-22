@@ -14,11 +14,11 @@ public class GameRestartOrQuit {
     }
 
     public boolean isGameQuit() {
-        return restartOrQuitNumber.equals(Constants.GAME_QUIT);
+        return restartOrQuitNumber.equals(Constant.GAME_QUIT);
     }
 
     private void validateRestartOrQuitNumber(String number) {
-        if ((!number.equals(Constants.GAME_RESTART)) && (!number.equals(Constants.GAME_QUIT))) {
+        if ((!number.equals(Constant.GAME_RESTART)) && (!number.equals(Constant.GAME_QUIT))) {
             throw new IllegalArgumentException();
         }
     }

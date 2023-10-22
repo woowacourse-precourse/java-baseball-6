@@ -36,7 +36,7 @@ public class Player {
     }
 
     private static void validateNumberSize(String input) {
-        if (input.length() != Constants.NUMBERS_SIZE) {
+        if (input.length() != Constant.NUMBERS_SIZE) {
             throw new IllegalArgumentException();
         }
     }

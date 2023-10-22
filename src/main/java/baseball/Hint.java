@@ -16,28 +16,28 @@ public class Hint {
     }
 
     public boolean isThreeStrike() {
-        return strike == Constants.GAME_WIN;
+        return strike == Constant.GAME_WIN;
     }
 
     public String getHint() {
         String hintMessage = "";
         if (isBallAndStrike(ball, strike)) {
-            hintMessage = ball + Constants.BALL_MESSAGE + strike + Constants.STRIKE_MESSAGE;
+            hintMessage = ball + Constant.BALL_MESSAGE + strike + Constant.STRIKE_MESSAGE;
         }
         if (isBall(ball, strike)) {
-            hintMessage = ball + Constants.BALL_MESSAGE;
+            hintMessage = ball + Constant.BALL_MESSAGE;
         }
         if (isStrike(ball, strike)) {
-            hintMessage = strike + Constants.STRIKE_MESSAGE;
+            hintMessage = strike + Constant.STRIKE_MESSAGE;
         }
         if (isNothing(ball, strike)) {
-            hintMessage = Constants.NOTHING_MESSAGE;
+            hintMessage = Constant.NOTHING_MESSAGE;
         }
         return hintMessage;
     }
 
     private void countStrikeAndBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        for (int i = 0; i < Constants.NUMBERS_SIZE; i++) {
+        for (int i = 0; i < Constant.NUMBERS_SIZE; i++) {
             if (playerNumbers.get(i).equals(computerNumbers.get(i))) {
                 strike++;
                 continue;
