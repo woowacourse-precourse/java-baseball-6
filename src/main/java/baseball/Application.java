@@ -63,9 +63,6 @@ class Game {
             isDuplicate[pickNumber] = true;
         }
 
-        for (int i = 0; i < 3; i++) {
-            System.out.println(randomNumbers[i]);
-        }
         return randomNumbers;
     }
 
