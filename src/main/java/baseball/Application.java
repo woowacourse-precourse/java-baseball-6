@@ -2,9 +2,13 @@ package baseball;
 
 import baseball.service.Game;
 
+import static baseball.constants.Constants.GAME_START_STRING;
+
 public class Application {
+
+
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START_STRING);
 
         Game game = new Game();
         do {
