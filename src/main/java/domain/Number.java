@@ -22,11 +22,13 @@ public class Number {
     }
 
     private static void setGoalNumbers() {
+        goalNumbers.clear();
         for (int i = 0; i < numberCount; i++) {
-            int randomNumber = Randoms.pickNumberInRange(minimumNumber, maximumNumber);
-            if (!goalNumbers.contains(randomNumber)) {
-                goalNumbers.set(i, randomNumber);
-            }
+            int randomNumber;
+            do {
+                randomNumber = Randoms.pickNumberInRange(minimumNumber, maximumNumber);
+            } while (goalNumbers.contains(randomNumber));
+            goalNumbers.add(randomNumber);
         }
     }
 
