@@ -21,5 +21,7 @@ public class Application {
         }
 
         List<Character> userNumbers = Parsing.parseIntoList(userInput);
+
+        List<Character> randomNumbers = RandomMaker.makeRandomNumbers();
     }
 }
