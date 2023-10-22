@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constant;
 
 public enum OutputMessage {
     BALL("볼"),
@@ -18,7 +18,5 @@ public enum OutputMessage {
     }
 
     @Override
-    public String toString(){
-        return message;
-    }
+    public String toString(){ return message; }
 }

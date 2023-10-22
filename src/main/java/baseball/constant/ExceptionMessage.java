@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constant;
 
 public enum ExceptionMessage {
     OUT_OF_ONE_TO_NIME("[ERROR] 1 ~ 9 사이의 값만 입력해주세요"),

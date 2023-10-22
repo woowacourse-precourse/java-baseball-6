@@ -1,5 +1,7 @@
-package baseball;
+package baseball.model;
 
+import baseball.constant.OutputMessage;
+import baseball.utils.RandomNumberUtils;
 import java.util.List;
 import java.util.stream.IntStream;
 

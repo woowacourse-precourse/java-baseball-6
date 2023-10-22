@@ -1,4 +1,6 @@
-package baseball;
+package baseball.view;
+
+import baseball.constant.ExceptionMessage;
 
 public class Validation {
 

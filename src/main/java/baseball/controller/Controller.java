@@ -1,4 +1,9 @@
-package baseball;
+package baseball.controller;
+
+import baseball.model.GameCompare;
+import baseball.view.Inputview;
+import baseball.view.OutputView;
+import baseball.model.Player;
 
 public class Controller {
 
