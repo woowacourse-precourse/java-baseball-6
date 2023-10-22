@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.config.Config;
+import baseball.domain.BaseballNumbers;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -26,5 +27,13 @@ public class InputView {
     }
 
     public static String getUserInput() { return Console.readLine(); }
+
+    /* 값 확인용 */
+    public static void printCheat(BaseballNumbers computerNumbers) {
+        for (int i = 0 ; i < Config.getMaxNumbers(); i++) {
+            System.out.print(computerNumbers.get(i));
+        }
+        System.out.println();
+    }
 
 }

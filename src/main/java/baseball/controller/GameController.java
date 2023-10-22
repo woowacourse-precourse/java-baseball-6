@@ -23,7 +23,7 @@ public class GameController {
         InputView.printStart();
         while (playing) {
             if (computerNumbers == null) computerNumbers = service.generateNumbers();
-            printCheat(computerNumbers);
+            InputView.printCheat(computerNumbers);
             InputView.printRequestingInput();
             BaseballNumbers userNumbers = getUserNumbers();
             Result result = service.compare(computerNumbers, userNumbers);
@@ -47,11 +47,4 @@ public class GameController {
         if(input.equals(InputView.RESTART)) init();
     }
 
-    /* 값 확인용 */
-    private void printCheat(BaseballNumbers computerNumbers) {
-        for (int i = 0 ; i < Config.getMaxNumbers(); i++) {
-            System.out.print(computerNumbers.get(i));
-        }
-        System.out.println();
-    }
 }
