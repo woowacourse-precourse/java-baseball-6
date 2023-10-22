@@ -11,8 +11,10 @@ public class Validator {
     private static final int INPUT_LENGTH = 3;
     private static final String EXCEPTION_MESSAGE = "1 또는 2를 입력하세요.";
     private static final String RETRY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String QUIT_MESSAGE = "게임 종료";
     private static final String RESTART_NUMBER = "1";
     private static final String QUIT_NUMBER = "2";
+
 
 
     Computer computer = new Computer();
@@ -77,6 +79,7 @@ public class Validator {
             checkBall();
             printResultMessage();
             if(strikeCount == INPUT_LENGTH) {
+                System.out.println(WIN_MESSAGE);
                 quit = askRetry();
             }
         }
@@ -89,6 +92,7 @@ public class Validator {
             return false;
         }
         if(quitInput.equals(QUIT_NUMBER)) {
+            System.out.println(QUIT_MESSAGE);
             return true;
         }
         throw new IllegalArgumentException(EXCEPTION_MESSAGE);
