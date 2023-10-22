@@ -45,8 +45,7 @@ public class Input {
         int number = Integer.parseInt(userNumber);
         if (number >= startRange && number <= endRange) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }
