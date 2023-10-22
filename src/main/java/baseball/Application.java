@@ -11,11 +11,10 @@ public class Application {
 
         do {
             Player player = new Player(Count.provideCount("123"));
-            Computer computer = new Computer();
+            Computer computer = new Computer(Count.provideCount("713"));
             startGame();
             inGame(player, computer);
         } while (!endGame());
-
     }
 
     private static boolean endGame() {
