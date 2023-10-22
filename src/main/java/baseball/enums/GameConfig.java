@@ -4,7 +4,7 @@ public enum GameConfig {
     PITCH_COUNT(3),
     MIN_NUMBER(1),
     MAX_NUMBER(9),
-    GAME_CONTINUE(1),
+    GAME_RESTART(1),
     GAME_EXIT(2);
 
     private final int value;
