@@ -14,9 +14,13 @@ public class Application {
 
     private static void gameStart() {
         String computer = generateRandomNumber();
-        String player = getUserInput();
-        int strike = countStrikes(computer, player);
-        int ball = countBalls(computer, player);
+        boolean gameOver = false;
+        while (!gameOver) {
+            String player = getUserInput();
+            int strike = countStrikes(computer, player);
+            int ball = countBalls(computer, player);
+            gameOver = checkGameStatus(strike, ball);
+        }
     }
 
     private static String generateRandomNumber() {
@@ -61,5 +65,23 @@ public class Application {
                 ball++;
         }
         return ball;
+    }
+
+    private static boolean checkGameStatus(int strike, int ball) {
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        } else {
+            displayResult(ball, strike);
+            return false;
+        }
+    }
+
+    private static void displayResult(int ball, int strike) {
+        if (ball > 0) System.out.print(ball + "볼 ");
+        if (strike > 0) System.out.print(strike + "스트라이크");
+        if (ball == 0 && strike == 0) System.out.print("낫싱");
+        System.out.println();
     }
 }
