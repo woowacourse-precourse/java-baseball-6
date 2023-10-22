@@ -2,7 +2,7 @@ package baseball.domain;
 
 import java.util.List;
 
-public class BallAndStrikeCount {
+public class Count {
     private int ballCount;
 
     private int strikeCount;
