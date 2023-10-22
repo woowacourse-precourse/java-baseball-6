@@ -6,10 +6,17 @@ import static baseball.AppConfig.MIN_CHAR;
 
 public class IllegalArgumentCheck {
     public void checkArgument(String inputData){
-        //Length Check
+        checkArgumentLength(inputData);
+        checkArgumentWrongChar(inputData);
+    }
+
+    public void checkArgumentLength(String inputData){
         if(inputData.length() != DIGIT_NUM){
             throw new IllegalArgumentException();
         }
+    }
+
+    public void checkArgumentWrongChar(String inputData){
         for(int i = 0 ; i < DIGIT_NUM ; i++){
             if(!(inputData.charAt(i) >= MIN_CHAR && inputData.charAt(i) <= MAX_CHAR)){
                 throw new IllegalArgumentException();

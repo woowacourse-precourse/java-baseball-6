@@ -11,11 +11,15 @@ public class IllegalArgumentCheckTest {
 
     @BeforeEach
     public void BeforeEach(){
-        AppConfig appConfig = new AppConfig();
+        illegalArgumentCheck = new IllegalArgumentCheck();
     }
 
     @Test
     void lengthCheck(){
+        //given
 
+        //when
+
+        //then
     }
 }
