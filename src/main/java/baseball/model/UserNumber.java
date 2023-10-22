@@ -21,16 +21,9 @@ public class UserNumber {
 
     // 검증 메서드
     private static void validate(String userInput) {
-        checkIsNumber(userInput);
+        InputUtil.checkIsNumber(userInput);
         checkSize(userInput);
         checkNumbersUnique(userInput);
-    }
-
-    // 숫자가 맞는지 검증하는 메서드
-    public static void checkIsNumber(String userInput) {
-        if (!userInput.matches("\\d+")) {
-            throw new IllegalArgumentException();
-        }
     }
 
     // 사이즈가 3이 맞는지 검증하는 메서드
