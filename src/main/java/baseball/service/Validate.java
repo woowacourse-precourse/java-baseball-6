@@ -2,11 +2,18 @@ package baseball.service;
 
 public class Validate {
     private static final int NUMBER_SIZE = 3;
+    private static final int SIGNAL_SIZE = 1;
 
     public void validate(String num) throws Exception {
         validateLength(num);
         validateRange(num);
         validateDuplicate(num);
+    }
+
+    public void validateForRestart(String input) throws Exception {
+        validateSignLength(input);
+        validateSignRange(input);
+
     }
 
     public void validateLength(String num) throws Exception {
@@ -15,8 +22,22 @@ public class Validate {
         }
     }
 
+    public void validateSignLength(String sign) throws Exception {
+        if (sign.length() != SIGNAL_SIZE) {
+            throw new IllegalArgumentException("재시작: 1, 종료: 2");
+        }
+    }
+
+
     public boolean notNum(char number) {
         if (number >= '1' && number <= '9') {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean notSignal(char sign) {
+        if (sign == '1' || sign == '0') {
             return false;
         }
         return true;
@@ -29,6 +50,14 @@ public class Validate {
             }
         }
     }
+
+    public void validateSignRange(String sign) throws Exception {
+        if (notSignal(sign.charAt(0))) {
+            throw new IllegalArgumentException("재시작: 1, 종료: 2");
+        }
+
+    }
+
 
     public void validateDuplicate(String num) throws Exception {
         int[] checkDuplicate = Converter.convertForDuplicate(num);
