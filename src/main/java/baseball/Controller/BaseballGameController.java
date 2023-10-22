@@ -1,14 +1,11 @@
 package baseball.Controller;
 
-import baseball.model.Computer;
-import baseball.model.Player;
 import baseball.service.CompareNumber;
 import baseball.service.ComputerService;
 import baseball.service.PlayerService;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGameController {
@@ -27,23 +24,27 @@ public class BaseballGameController {
     }
 
     public static void compareResult() {
-        playerInput();
+        setPlayerInput();
         compareNumber.checkStrike(computer, player);
         if (compareNumber.threeStrikes()) {
-            View.printRestart();
-            String input = Console.readLine();
-            int parsedInput = Integer.parseInt(input);
-            if (parsedInput == 1) {
-                computer = computerService.createComputerList();
-                compareResult();
-            }
+            restartGame();
         }
         else {
             compareResult();
         }
     }
 
-    public static void playerInput() {
+    public static void restartGame() {
+        View.printRestart();
+        String input = Console.readLine();
+        int parsedInput = Integer.parseInt(input);
+        if (parsedInput == 1) {
+            computer = computerService.createComputerList();
+            compareResult();
+        }
+    }
+
+    public static void setPlayerInput() {
         String input = View.printInput();
         player = playerService.createPlayerList(input);
     }
