@@ -4,10 +4,14 @@
 #### IsDifferentDigit()
 
 
-## 2. 입력한 숫자를 순서가 있는 리스트로 변환하는 메서드
+## 2. 입력한 숫자를 순서가 있는 LinkedHashSet으로 변환하는 메서드
+#### NumbersToSet()
 
 
 ## 3. 결과를 볼, 스트라이크 개수로 반환하는 메서드
+#### GetSameNumbers() : 같은 숫자의 개수를 return -> cntSame
+#### GetStrike() : 스트라이크 개수를 return -> cntStrike = 스트라이크 개수
+#### CheckStrikeBall() : (cntSame- cntStrike) -> ball 개수
 
 
 ## 4. 모두 맞추면(3스트라이크) 게임 종료
