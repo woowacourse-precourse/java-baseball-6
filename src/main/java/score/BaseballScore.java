@@ -31,11 +31,11 @@ public class BaseballScore {
         ball = 0;
     }
 
-    public Integer getStrike() {
+    public int getStrike() {
         return strike;
     }
 
-    public Integer getBall() {
+    public int getBall() {
         return ball;
     }
 }

@@ -1,15 +1,12 @@
 package utils;
 
-import player.BaseballNumbers;
-
 public class BaseballRules {
 
     private BaseballRules() {
     }
 
-    public static boolean isThreeStrike(BaseballNumbers playerNumber,
-                                        BaseballNumbers otherPlayerNumber) {
-        return playerNumber.equals(otherPlayerNumber);
+    public static boolean isThreeStrike(int strike) {
+        return strike == 3;
     }
 
     public static boolean hasStrikeAndBall(int strike, int ball) {
