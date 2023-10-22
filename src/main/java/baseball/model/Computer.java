@@ -1,7 +1,11 @@
 package baseball.model;
 
+import static baseball.util.Constant.BASEBALL_GAME_NUMBER_DIGIT;
+import static baseball.util.Constant.START_INDEX;
+
 import baseball.util.BaseBallGameNumberGenerator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Computer {
 
@@ -16,15 +20,27 @@ public class Computer {
         return new Computer(baseBallGameNumberGenerator.generateNumbers());
     }
 
-    public boolean isExistNumber(final int number) {
-        return numbers.contains(number);
+    public int countStrikes(final List<Integer> guessNumbers) {
+        return (int) IntStream.range(START_INDEX.getValue(), BASEBALL_GAME_NUMBER_DIGIT.getValue())
+                .filter(index -> isStrike(guessNumbers.get(index), index))
+                .count();
     }
 
-    public boolean isBall(final int guessNumber, final int index) {
-        return isExistNumber(guessNumber) && numbers.get(index) != guessNumber;
+    private boolean isStrike(final int guessNumber, final int index) {
+        return numbers.get(index).equals(guessNumber);
     }
 
-    public boolean isStrike(final int guessNumber, final int index) {
-        return numbers.get(index) == guessNumber;
+    public int countBalls(final List<Integer> guessNumbers) {
+        return (int) IntStream.range(START_INDEX.getValue(), BASEBALL_GAME_NUMBER_DIGIT.getValue())
+                .filter(index -> isBall(guessNumbers.get(index), index))
+                .count();
+    }
+
+    private boolean isBall(final int guessNumber, final int index) {
+        return !numbers.get(index).equals(guessNumber) && numbers.contains(guessNumber);
+    }
+
+    public boolean isGameOver(final int strikeCount) {
+        return strikeCount == BASEBALL_GAME_NUMBER_DIGIT.getValue();
     }
 }
