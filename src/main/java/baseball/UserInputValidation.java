@@ -33,7 +33,7 @@ public class UserInputValidation {
         for (int i = 0; i < GAME_NUMBER_SIZE; ++i) {
             char c = userInput.charAt(i);
             int number = Character.getNumericValue(c);
-            if (number <= 0 || number > 9) {
+            if (number < 1 || number > 9) {
                 return false;
             }
         }
