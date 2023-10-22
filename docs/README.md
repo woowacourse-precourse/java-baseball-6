@@ -40,6 +40,7 @@
 1. baseballController
    - [x] 게임 시작
    - [x] 숫자가 동일할때까지 반복
+   - [x] 재시작 혹은 종료
 
 ### Validation
 1. PlayerValidation

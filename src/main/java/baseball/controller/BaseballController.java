@@ -13,22 +13,25 @@ public class BaseballController {
     Referee referee = new Referee();
     public void startGame(){
         OutputView.baseballGameStart();
-        startPlayGame();
-
+        checkRestart();
+    }
+    public void checkRestart(){
+        while(true){
+            startPlayGame();
+            player.answerRestartOrEnd(InputView.restartOrEndGame());
+            if(isAnswerEnd(player.getAnswerNumber())) break;
+        }
     }
 
     public void startPlayGame() {
         computer.drawComputerNumber();
-        System.out.println(computer.getComputerNumber());
         matchGame();
     }
 
     private void matchGame() {
         while(true){
             player.inputPlayerNumber(InputView.playerNumber());
-            System.out.println(player.getPlayerNumber());
             referee.duplicateNumbers(computer.getComputerNumber(), player.getPlayerNumber());
-            System.out.println("스트라이크 : "+ referee.getStrike()+" 볼 : "+ referee.getBall());
             OutputView.detailMessage(referee.getStrike(), referee.getBall());
             if (outPlayer(referee.getStrike())) break;
         }
@@ -40,5 +43,8 @@ public class BaseballController {
             return true;
         }
         return false;
+    }
+    public boolean isAnswerEnd(Integer answerNumber) {
+        return answerNumber == 2 ? true : false ;
     }
 }
