@@ -1,5 +1,7 @@
 package baseball.view;
 
+import model.GameHint;
+
 public class OutputView {
 
     public void printGameStart() {
@@ -16,5 +18,17 @@ public class OutputView {
 
     public void printForInputRestartOrExit() {
         System.out.println(GameInstructions.ASK_RESTART_OR_EXIT.getMessage());
+    }
+
+    public void printGameResult(int[] gameResult) {
+        if (gameResult[0] > 0) {
+            System.out.println(gameResult[0] + GameHint.STRIKE.getMessage());
+        }
+        if (gameResult[1] > 0) {
+            System.out.println(gameResult[1] + GameHint.BALL.getMessage());
+        }
+        if (gameResult[2] > 0) {
+            System.out.println(GameHint.NOTHING.getMessage());
+        }
     }
 }
