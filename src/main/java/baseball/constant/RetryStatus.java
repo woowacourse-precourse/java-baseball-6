@@ -16,7 +16,7 @@ public enum RetryStatus {
         return Arrays.stream(values())
                 .filter(value -> value.retryCommand.equals(command))
                 .findFirst()
-                .orElseThrow(IllegalAccessError::new);
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public Integer getRetryCommand() {
