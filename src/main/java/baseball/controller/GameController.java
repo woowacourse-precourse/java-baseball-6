@@ -58,10 +58,9 @@ public class GameController {
                 // 3개의 숫자를 모두 맞히셨습니다! 게임 종료
                 print.printWin();
                 // 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
-                input.endGame();
-                if(input.getGameMode().equals("2")){
-                    // 루프를 벗어나 종료
-                    gameManager.setGameMode("2");   // 여기까지만 해도 프로그램은 종료가 되는데 왜 break를 써야 timeout이 나지 않는걸까?
+                String gameMode = input.endGame();
+                gameManager.setGameMode(gameMode);
+                if(gameManager.getGameMode().equals(2)){
                     break;  // 루프를 벗어나기 위해
                 }
                 // 컴퓨터 숫자 초기화 후 재생성
