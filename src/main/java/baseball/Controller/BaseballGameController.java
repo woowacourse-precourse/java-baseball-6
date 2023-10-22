@@ -32,4 +32,9 @@ public class BaseballGameController {
             getGameScore();
         }
     }
+
+    //1. 플레이어의 숫자 입력
+    public void playerNumbers() {
+        player.setPlayerNumbers(firstGamePlayerInputView.setPlayerNumbers());
+    }
 }
