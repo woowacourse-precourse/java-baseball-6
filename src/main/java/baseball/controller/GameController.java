@@ -8,6 +8,7 @@ import baseball.model.Referee;
 import baseball.model.ResumeNumber;
 import baseball.view.AskView;
 import baseball.view.EndView;
+import baseball.view.InputView;
 import baseball.view.ResultView;
 import baseball.view.StartView;
 
@@ -15,12 +16,14 @@ public class GameController {
 
     private final ResumeNumber resumeNumber;
     private final Referee referee;
+    private final InputView inputView;
     private final GameRule ballRule;
     private final GameRule strikeRule;
 
-    public GameController(final GameRule ballRule, final GameRule strikeRule) {
+    public GameController(final InputView inputView, final GameRule ballRule, final GameRule strikeRule) {
         this.resumeNumber = ResumeNumber.createDefault();
         this.referee = Referee.createDefault();
+        this.inputView = inputView;
         this.ballRule = ballRule;
         this.strikeRule = strikeRule;
     }
@@ -37,7 +40,7 @@ public class GameController {
 
         while (true) {
             AskView.printAskNumber();
-            int userNumber = InputController.receiveUserNumber();
+            int userNumber = inputView.readPlayNumber();
             referee.prepareJudgement(computerNumber, userNumber);
 
             int ball = referee.answerResult(ballRule);
@@ -52,7 +55,7 @@ public class GameController {
         EndView.end();
         AskView.printAskResume();
 
-        int resumeAnswer = InputController.receiveResumeNumber();
+        int resumeAnswer = inputView.readMoreAnswer();
         resumeNumber.updateNumber(resumeAnswer);
 
         referee.resetGame();
