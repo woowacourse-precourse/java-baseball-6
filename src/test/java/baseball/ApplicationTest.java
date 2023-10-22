@@ -9,12 +9,50 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import baseball.controller.Core;
 import baseball.controller.Generator;
 import baseball.controller.Validation;
+import baseball.view.View;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
+
+    @Test
+    void showResult() {
+        // given
+        View view = new View();
+        List<Integer> case1 = List.of(0, 0);
+        List<Integer> case2 = List.of(0, 2);
+        List<Integer> case3 = List.of(2, 0);
+        List<Integer> case4 = List.of(1, 1);
+
+        // when
+        OutputStream result1 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result1));
+        view.showResult(case1.get(0), case1.get(1));
+
+        OutputStream result2 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result2));
+        view.showResult(case2.get(0), case2.get(1));
+
+        OutputStream result3 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result3));
+        view.showResult(case3.get(0), case3.get(1));
+
+        OutputStream result4 = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(result4));
+        view.showResult(case4.get(0), case4.get(1));
+
+        // then
+        assertThat(result1.toString().strip()).as("0 strike 0 ball").isEqualTo("낫싱");
+        assertThat(result2.toString().strip()).as("0 strike 2 ball").isEqualTo("2볼");
+        assertThat(result3.toString().strip()).as("2 strike 0 ball").isEqualTo("2스트라이크");
+        assertThat(result4.toString().strip()).as("1 strike 1 ball").isEqualTo("1볼 1스트라이크");
+
+    }
 
     @Test
     void validateDuplication() {
