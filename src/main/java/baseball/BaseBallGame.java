@@ -12,7 +12,9 @@ public class BaseBallGame {
     static String userAnswer="";
     static List<String> computer = new ArrayList<>();
 
-    public void start() throws IllegalArgumentException{
+    static String gameSet ="";
+
+    public void start(){
         System.out.println("숫자 야구게임을 시작합니다.");
         computerAnswer=computerInput();
 
@@ -21,20 +23,35 @@ public class BaseBallGame {
             System.out.print("숫자를 입력 해주세요: ");
             userAnswer = readLine();
             userAnswer=checkUserInput();
-            if(userAnswer.equals("재시작")) {
+
+
+
+
+            // 게임 재시작 및 종료
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            gameSet = readLine();
+            gameSet = restartOrExit();
+
+            // 재시작 및 종료 check
+            if(gameSet.equals("재시작")) {
                 start();
                 return;
             }
-            else if(userAnswer.equals("종료")) return;
+            else if(gameSet.equals("종료")) return;
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             break;
         }
     }
+
+    private String restartOrExit() {
+
+        if(gameSet.equals("1")) return "재시작";
+        else if(gameSet.equals("2")) return "종료";
+        throw new IllegalArgumentException();
+    }
+
     //사용자 입력값 체크
-    private String checkUserInput() throws IllegalArgumentException{
-        if(userAnswer.equals("1")) return "재시작";
-        else if(userAnswer.equals("2")) return "종료";
+    private String checkUserInput() {
 
         if(userAnswer.length() !=3){
             throw new IllegalArgumentException();
