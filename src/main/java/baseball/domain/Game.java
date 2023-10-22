@@ -1,13 +1,16 @@
 package baseball.domain;
 
-import static baseball.domain.Ball.BALL_SIZE;
+import baseball.util.RandomBallGenerator;
+
+import static baseball.domain.Ball.*;
 
 public class Game {
     private final Balls computerBalls;
     private boolean gameFinished;
+    private static final RandomBallGenerator randomBallGenerator = new RandomBallGenerator();
 
-    public Game(Balls computerBalls) {
-        this.computerBalls = computerBalls;
+    public Game() {
+        this.computerBalls = randomBallGenerator.generateComputerBalls();
         this.gameFinished = false;
     }
 

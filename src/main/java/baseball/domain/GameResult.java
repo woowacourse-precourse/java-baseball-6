@@ -3,11 +3,9 @@ package baseball.domain;
 import static baseball.domain.Ball.BALL_SIZE;
 
 public record GameResult(int balls, int strikes) {
-    public static final String BALL = "볼";
-    public static final String STRIKE = "스트라이크";
-    public static final String NOTHING = "낫싱";
-    public static final String RESTART = "1";
-    public static final String EXIT = "2";
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
+    private static final String NOTHING = "낫싱";
 
     public String createGameResult() {
         if (isNothing()) {
