@@ -24,6 +24,6 @@
 + 입력
    + 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
    + 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException 발생
-   + 3자리 수 이상 입력
-   + 0이 포함된 경우
-   + 숫자가 아닌 경우
+      + 3자리 수 이상 입력
+      + 0이 포함된 경우
+      + 숫자가 아닌 경우
