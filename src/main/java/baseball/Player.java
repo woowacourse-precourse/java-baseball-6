@@ -4,13 +4,16 @@ public class Player {
     private Count guess;
 
 
-    private Player(Count guess) {
+    public Player(Count guess) {
         this.guess = guess;
     }
 
-    public static Player enterGuess(Count guess) {
-        return new Player(guess);
+    public void enterGuess(Count guess) {
+        this.guess = guess;
     }
 
+    public Count getGuess() {
+        return guess;
+    }
 }
 
