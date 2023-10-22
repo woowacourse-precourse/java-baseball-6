@@ -56,6 +56,7 @@ public class NumberBaseballGame {
 
         if(inputModule.getInputInt() == 1){
             randomNumber.clear();
+            flag = false;
             startGame();
         }
     }
