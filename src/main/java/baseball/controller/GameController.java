@@ -50,7 +50,7 @@ public class GameController {
             isCorrect = compareNumbers(computer.getNumbers(), player.getNumbers());
         }
 
-        outputView.printEndMessage();
+        outputView.printGameEndMessage();
     }
 
     private boolean isRestartState() {
