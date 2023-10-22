@@ -38,25 +38,25 @@ Validator 클래스
 InputView 클래스
 
     method
-    1. start()
-        - 숫자야구 게임 시작 내용을 출력한다.
-    2. input()
+    1. input()
         - 내용 출력 후 숫자를 입력받고 리턴한다.
-    3. finish()
+    2. finish()
         - 내용 출력 후  1 또는 2의 숫자를 입력받고 리턴한다.
 
 OutputView 클래스
 
     method
-    1. printResult(int ball, int strike)
+    1. start()
+        - 숫자야구 게임 시작 내용을 출력한다.
+    2. printResult(int ball, int strike)
         - 볼과 스트라이크의 개수의 따라 내용을 바꾸어 출력한다.
-    2. printBallNStrike(int ball, int strike)
+    3. printBallNStrike(int ball, int strike)
         - 볼과 스트라이크의 개수를 출력한다.
-    3. printBall(int ball)
+    4. printBall(int ball)
         - 볼의 개수를 출력한다.
-    4. printStrike(int strike)
+    5. printStrike(int strike)
         - 스트라이크의 개수를 출력한다.
-    5. printNothing()
+    6. printNothing()
         - 낫싱을 출력한다.
 
 
