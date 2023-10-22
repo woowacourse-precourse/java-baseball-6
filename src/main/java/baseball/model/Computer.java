@@ -42,8 +42,4 @@ public class Computer {
     public boolean isGameOver(final List<Integer> guessNumbers) {
         return numbers.equals(guessNumbers);
     }
-
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
 }
