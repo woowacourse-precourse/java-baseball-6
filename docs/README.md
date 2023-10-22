@@ -29,8 +29,10 @@
   1. 스트라이크, 볼 결과 저장 기능
   2. 스트라이크, 볼 결과 반환 기능
      <br></br>
-- StandardValue
-  1. 기준 상수 관리 기능
+- GameCode
+  1. 종료, 재시작 등 게임 고유 코드 관리 기능
+- RuleValue
+  1. 규칙이 되는 상수 관리 기능
       <br></br>
 - SystemMessage
   1. 시스템 출력 메세지 관리 기능
@@ -38,7 +40,7 @@
 - ExceptionMessage
   1. 예외 메세지 관리 기능
      <br></br>
-- Validator
+- InputValidator
   1. 유저의 정답 입력이 규칙에 맞는지 검증하는 기능
   2. 유저의 재시작 코드 입력이 규칙에 맞는지 검증하는 기능
      <br></br>
