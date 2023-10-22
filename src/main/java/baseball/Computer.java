@@ -1,14 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
     private List<Integer> computer_num;
 
-    public List<Integer> Computer() {
+    public List<Integer> ComputerNumber() {
         computer_num = new ArrayList<>();
 
         while (computer_num.size() < 3) {
