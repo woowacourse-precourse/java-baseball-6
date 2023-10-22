@@ -17,5 +17,6 @@ public class GameController {
 
     public void playGame() {
         String inputNumber = InputView.getInputNumber();
+        game.setPlayerNumber(inputNumber);
     }
 }
