@@ -19,6 +19,7 @@ public class Application {
                 answer.add(randomNumber);
             }
         }
+
         //사용자 입력값 받기
         System.out.print("숫자를 입력해주세요 : ");
         String inputValue = readLine();
@@ -57,7 +58,29 @@ public class Application {
         }
 
         //  사용자가 입력한 값이 정답인 경우, 정답임을 알려주고 다시 게임을 진행할지 판단하는 로직
-
+        int strikeSum = 0;
+        int ballSum = 0;
+        for (int i=0;i<3;i++){
+            if (visitedOfStrike[i] == 1){
+                strikeSum += 1;
+            }
+            if(visitedOfBall[i] == 1){
+                ballSum += 1;
+            }
+        }
+        if (strikeSum == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String retryValue = readLine();
+            if (Integer.parseInt(String.valueOf(retryValue)) == 1){
+                numberBaseball ();
+            } else if (Integer.parseInt(String.valueOf(retryValue)) == 2){
+                //종료
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
         //  정답이 아니라면, 힌트 출력해주는 로직
 
         }
