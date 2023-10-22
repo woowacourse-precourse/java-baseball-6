@@ -1,16 +1,14 @@
 package baseball;
 
+import static baseball.Constants.MAX_STRIKE;
+import static baseball.Constants.NUM_LENGTH;
+
+import baseball.GameResult;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
-
-import baseball.GameResult;
-
-import static baseball.Constants.MAX_STRIKE;
-import static baseball.Constants.NUM_LENGTH;
 
 public class Application {
 
