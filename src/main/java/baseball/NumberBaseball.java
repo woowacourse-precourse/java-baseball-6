@@ -39,8 +39,12 @@ public class NumberBaseball {
     }
 
     private void loadComNumbers() {
-        List<Integer> comNumbers = comNumberGenerator.generate();
+        List<Integer> comNumbers = getComNumber();
         computerBalls = BallContainer.getFromNumbers(comNumbers);
+    }
+
+    protected List<Integer> getComNumber() {
+        return comNumberGenerator.generate();
     }
 
     private void playGame() {
@@ -52,7 +56,7 @@ public class NumberBaseball {
         }
     }
 
-    private BallContainer createUserBalls() {
+    protected BallContainer createUserBalls() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
