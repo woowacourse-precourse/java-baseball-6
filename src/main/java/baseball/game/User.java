@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
 public class User {
-    public static int[] getGuessNumbers() throws IllegalAccessException {
+    public static int[] getGuessNumbers() {
         String userInput = Console.readLine();
         if (!ValidationUtils.isValidInput(userInput)) {
-            throw new IllegalAccessException();
+            throw new IllegalArgumentException();
         }
         return Arrays.stream(userInput.split(""))
                 .mapToInt(Integer::parseInt)

@@ -1,13 +1,12 @@
 package baseball.game;
 
 import baseball.view.GameView;
-import java.util.Arrays;
 
 public class BaseballGame {
-    public static void start() throws IllegalAccessException {
+    public static void start() {
         GameView.displayGameStartMessage();
         while (true) {
-            playGame();
+            play();
             if (!playAgain()) {
                 GameView.displayGameEndMessage();
                 break;
@@ -15,9 +14,8 @@ public class BaseballGame {
         }
     }
 
-    private static void playGame() throws IllegalAccessException {
+    private static void play() {
         int[] randomNumbers = Computer.generateRandomNumbers();
-        System.out.println("randomNumbers = " + Arrays.toString(randomNumbers));
         while (true) {
             GameView.displayUserInputPrompt();
             int[] guessNumbers = User.getGuessNumbers();
