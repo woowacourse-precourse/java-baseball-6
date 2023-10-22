@@ -7,16 +7,12 @@ public class Result {
     private int ball;
 
     public Result(Numbers computer, Numbers user){
-        initialize();
+        strike=0;
+        ball=0;
 
         for(String number:user.splitNumbers()){
             compareIndex(computer.index(number),user.index(number));
         }
-    }
-
-    private void initialize(){
-        strike=0;
-        ball=0;
     }
 
     private void compareIndex(int computerIndex,int userIndex){
@@ -30,25 +26,19 @@ public class Result {
         }
     }
 
-    public boolean equals(Result result){
-        return strike == result.strike && ball == result.ball;
-    }
-
-    public boolean isNothing(){
-        return strike==0 && ball==0;
-    }
-
     public String getResult(){
-        if (isNothing()){
-            return "낫싱";
+        String resultMessage="";
+
+        if(ball!=0){
+            resultMessage+=ball+"볼 ";
         }
-        if (ball==0){
-            return strike+"스트라이크";
+        if (strike!=0){
+            resultMessage+= strike+"스트라이크";
         }
-        if (strike==0){
-            return ball+"볼";
+        if (resultMessage.equals("")){
+             resultMessage="낫싱";
         }
-        return ball+"볼 "+strike+"스트라이크";
+        return resultMessage.strip();
     }
 
     public boolean isThreeStrike(){
