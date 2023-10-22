@@ -48,11 +48,17 @@ public class BaseballGame {
         //user의 입력을 기다림.
         System.out.print("숫자를 입력해주세요 : ");
         userInputString = Console.readLine();
+        if (userInputString.length() != 3) {
+            throw new IllegalArgumentException();
+        }
 
         //user로부터 받은 입력값을 ListArray에 integer로 변환해서 추가.
         userInputArray = userInputString.split("");
         for (int i = 0; i < userInputArray.length; i++) {
             userInputInteger = Integer.valueOf(userInputArray[i]);
+            if (userAnswer.contains(userInputInteger)) {
+                throw new IllegalArgumentException();
+            }
             userAnswer.add(userInputInteger);
         }
     }
