@@ -9,6 +9,7 @@ public class Player {
     public Player() {
         RandomNum randomNum = new RandomNum();
         nums = randomNum.getNums();
+        System.out.println("nums: " + nums);
     }
 
     public ArrayList<Integer> getNums() {
@@ -16,7 +17,7 @@ public class Player {
     }
 
     public void setGuessNums(ArrayList<Integer> guessNums) {
-        this.guessNums = guessNums;
+        this.guessNums = (ArrayList<Integer>) guessNums.clone();
     }
 
     public ArrayList<Integer> getGuessNums() {

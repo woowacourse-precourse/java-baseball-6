@@ -16,9 +16,10 @@ public class Game {
     public void getGuessNums() {
         System.out.print("숫자를 입력해주세요 : ");
         String guessNumsStr = Console.readLine();
-        ArrayList guessNums = new ArrayList<>();
+        ArrayList guessNums = new ArrayList<Integer>();
+
         for (int i = 0; i < guessNumsStr.length(); i++) {
-            guessNums.add(guessNumsStr.charAt(i));
+            guessNums.add(Integer.parseInt(String.valueOf(guessNumsStr.charAt(i))));
         }
 
         player.setGuessNums(guessNums);
