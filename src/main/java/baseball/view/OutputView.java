@@ -1,7 +1,7 @@
 package baseball.view;
 
 public class OutputView {
-    public void print(String result) {
+    public void displayString(String result) {
         System.out.println(result);
     }
 }
