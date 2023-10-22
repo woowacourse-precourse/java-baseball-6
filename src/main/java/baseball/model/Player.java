@@ -14,18 +14,27 @@ public class Player {
 
     public void inputNumbers() {
         String input = Console.readLine();
-        if (!isInputNumbersValid(input)) {
-            throw new IllegalArgumentException();
-        }
+        validateInputNumbers(input);
         this.numbers = StringToList(input);
     }
 
+
     public void inputRestartOrExit() {
         String input = Console.readLine();
+        validateInputRestartOrExit(input);
+        this.restartOrExit = Integer.parseInt(input);
+    }
+
+    private void validateInputNumbers(String input) {
+        if (!isInputNumbersValid(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateInputRestartOrExit(String input) {
         if (!isRestartOrExitValid(input)) {
             throw new IllegalArgumentException();
         }
-        this.restartOrExit = Integer.parseInt(input);
     }
 
     public List<Integer> getNumbers() {
