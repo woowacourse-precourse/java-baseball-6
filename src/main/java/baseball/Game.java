@@ -6,9 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Game {
-    private static final int NUMBER_LENGTH = 3;
-    private static final String INPUT_RESTART = "1";
-    private static final String INPUT_QUIT = "2";
+    private static final int LENGTH_OF_NUMBER = 3;
+    private static final String RESTART_GAME = "1";
+    private static final String QUIT_GAME = "2";
     private static final String EXCEPTION_MESSAGE = "게임을 다시 시작하려면 1을 완전히 종료하려면 2를 입력해주세요. "
             + "다른 입력은 불가능합니다";
 
@@ -16,8 +16,8 @@ public class Game {
     private int ball;
     private int randomNumber;
     private int userNumber;
-    private List<String> randomDigits;
-    private List<String> userDigits;
+    private List<String> computerIntegers;
+    private List<String> userIntegers;
     private boolean quit = false;
     public String quitInput;
     private Computer computer = new Computer();
@@ -37,13 +37,13 @@ public class Game {
             strike = 0;
             ball = 0;
 
-            randomDigits = getSplitList(randomNumber);
-            userDigits = getSplitList(userNumber);
+            computerIntegers = getSplitList(randomNumber);
+            userIntegers = getSplitList(userNumber);
 
             countStrikeAndBall();
             printHints();
 
-            if (strike == NUMBER_LENGTH) {
+            if (strike == LENGTH_OF_NUMBER) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -56,7 +56,7 @@ public class Game {
 
 
     private void countStrikeAndBall() {
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
+        for (int i = 0; i < LENGTH_OF_NUMBER; i++) {
             countStrike(i);  //
             countBall(i);
         }
@@ -64,15 +64,15 @@ public class Game {
 
 
     private void countBall(int index) {
-        for (int k = 0; k < NUMBER_LENGTH; k++) {
-            if (index != k && randomDigits.get(index).equals(userDigits.get(k))) {
+        for (int k = 0; k < LENGTH_OF_NUMBER; k++) {
+            if (index != k && computerIntegers.get(index).equals(userIntegers.get(k))) {
                 ball++;
             }
         }
     }
 
     private void countStrike(int index) {
-        if (randomDigits.get(index).equals(userDigits.get(index))) {
+        if (computerIntegers.get(index).equals(userIntegers.get(index))) {
             strike++;
         }
     }
@@ -84,14 +84,14 @@ public class Game {
 
 
     private void handleRestart() {
-        if (quitInput.equals(INPUT_RESTART)) {
+        if (quitInput.equals(RESTART_GAME)) {
             computer.setRandomNumber();
             randomNumber = computer.getRandomNumber();
         }
     }
 
     private void handleQuit() {
-        if (quitInput.equals(INPUT_QUIT)) {
+        if (quitInput.equals(QUIT_GAME)) {
             quit = true;
         }
     }
