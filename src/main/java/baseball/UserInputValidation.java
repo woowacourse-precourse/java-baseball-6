@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class UserInputValidation {
     private static final Integer GAME_NUMBER_SIZE = 3;
     private static final Integer RESTART_NUMBER_SIZE = 1;
@@ -29,10 +32,19 @@ public class UserInputValidation {
         return true;
     }
 
+    public boolean isDuplicateGameNumber(String userInput) {
+        Set<Character> numberSet = new HashSet<>();
+        for (char c : userInput.toCharArray()) {
+            if (!numberSet.add(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean isRangeRestartNumber(String userInput) {
         char c = userInput.charAt(0);
         int number = Character.getNumericValue(c);
         return number >= 0 && number <= 2;
     }
-    
 }
