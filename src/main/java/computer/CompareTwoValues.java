@@ -19,20 +19,17 @@ public class CompareTwoValues {
 
     }
 
-    public String compareTwoValues(int inputNumber) {
+    public void compareTwoValues(int inputNumber) {
         valueExtraction(inputNumber);
         exploreSequentially();
         countResult(ballCount, strikeCount);
-        return "null";
+
     }
 
     public void exploreSequentially() {
         List<Integer> computer = RandomPickNumber.computer;
-//        System.out.println(computer);
-//
-//        for (int i : valueExtraction) {
-//            System.out.println("i = " + i);
-//        }
+        System.out.println(computer);
+
         ballCount = 0;
         strikeCount = 0;
         for (int i = 0; i < 3; i++) {
