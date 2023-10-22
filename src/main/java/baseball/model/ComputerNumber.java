@@ -6,6 +6,10 @@ import java.util.Set;
 
 public class ComputerNumber {
 
+    private static final int COMPUTER_NUMBER_SIZE = 3;
+    private static final int COMPUTER_NUMBER_START_RANGE = 1;
+    private static final int COMPUTER_NUMBER_END_RANGE = 9;
+
     private final List<Integer> computerNumber;
 
     public ComputerNumber(List<Integer> computerNumber) {
@@ -16,14 +20,15 @@ public class ComputerNumber {
     }
 
     private void validateSize(List<Integer> computerNumber) {
-        if (computerNumber.size() != 3) {
+        if (computerNumber.size() != COMPUTER_NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateRange(List<Integer> computerNumber) {
-        for (int i = 0; i < computerNumber.size(); i++) {
-            if ((computerNumber.get(i) < 1) || (computerNumber.get(i) > 9)) {
+        for (int i = 0; i < COMPUTER_NUMBER_SIZE; i++) {
+            if ((computerNumber.get(i) < COMPUTER_NUMBER_START_RANGE) ||
+                    (computerNumber.get(i) > COMPUTER_NUMBER_END_RANGE)) {
                 throw new IllegalArgumentException();
             }
         }
@@ -34,7 +39,7 @@ public class ComputerNumber {
         for (int i = 0; i < computerNumber.size(); i++) {
             checkDuplication.add(computerNumber.get(i));
         }
-        if (checkDuplication.size() != 3) {
+        if (checkDuplication.size() != COMPUTER_NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
     }
