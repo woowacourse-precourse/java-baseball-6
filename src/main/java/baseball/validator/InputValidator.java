@@ -15,4 +15,13 @@ public class InputValidator {
             throw new IllegalArgumentException(String.format("입력값이 %d자리가 아닙니다.", ballCount));
         }
     }
+
+    private void validateNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자가 아닙니다.");
+        }
+    }
+
 }
