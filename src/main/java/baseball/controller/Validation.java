@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Validation {
@@ -16,15 +18,34 @@ public class Validation {
         }
     }
 
-    public void validateNumber(int inputNum) {
-        if (inputNum < 1 || inputNum > 9) {
-            throw new IllegalArgumentException("1 ~ 9 범위의 숫자만 입력해야 합니다.");
+    public void validateNumber(List<String> input) {
+        for (String s : input) {
+            int inputNum = Integer.parseInt(s);
+
+            if (inputNum < 1 || inputNum > 9) {
+                throw new IllegalArgumentException("1 ~ 9 범위의 숫자만 입력해야 합니다.");
+            }
         }
     }
 
-    public void validateDuplication(List<Integer> inputList, int inputNum) {
-        if (inputList.contains(inputNum)) {
-            throw new IllegalArgumentException("중복되지 않는 숫자를 입력해야 합니다.");
+    public void validateDuplication(List<String> input) {
+        List<String> check = new ArrayList<>();
+
+        for (String s : input) {
+            if (check.contains(s)) {
+                throw new IllegalArgumentException("입력값은 중복될 수 없습니다.");
+            }
+
+            check.add(s);
         }
+    }
+
+    public void validateInputList(String input, int value) {
+        validateInputLength(input, value);
+
+        List<String> stringList = new ArrayList<>(Arrays.asList(input.split("")));
+
+        validateNumber(stringList);
+        validateDuplication(stringList);
     }
 }

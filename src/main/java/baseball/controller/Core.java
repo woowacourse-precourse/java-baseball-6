@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.view.View;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Core {
@@ -9,6 +10,7 @@ public class Core {
 
     Generator generator = new Generator();
     View view = new View();
+    Validation validation = new Validation();
 
     public void run() {
         List<Integer> answer = generator.generateAnswer(LIST_LEN);
@@ -17,7 +19,10 @@ public class Core {
         while (playing) {
             view.askNumber();
 
-            List<Integer> inputList = generator.generateInputList(LIST_LEN);
+            String listInput = Console.readLine();
+            validation.validateInputList(listInput, LIST_LEN);
+
+            List<Integer> inputList = generator.generateInputList(listInput);
 
             int strike = countStrike(inputList, answer);
             int ball = countBall(inputList, answer);
