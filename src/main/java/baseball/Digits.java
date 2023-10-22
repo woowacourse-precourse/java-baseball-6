@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 final class Digits {
@@ -54,4 +55,17 @@ final class Digits {
         return digits.get(index).equals(digit);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Digits target = (Digits) o;
+        for (int i = 0; i < digits.size(); i++) if(!digits.get(i).equals(target.digits.get(i))) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(digits);
+    }
 }
