@@ -8,6 +8,7 @@ import java.util.Map;
 public class Communicator {
     private final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String USER_WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final Validator validator;
 
     public Communicator(Validator validator) {
@@ -45,6 +46,10 @@ public class Communicator {
         int strikeCount = counts.get("strikeCount");
         if (strikeCount > 0) {
             System.out.println(strikeCount + "스트라이크");
+        }
+
+        if (strikeCount == 3) {
+            System.out.println(USER_WIN_MESSAGE);
         }
     }
 }
