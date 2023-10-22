@@ -4,6 +4,7 @@ import baseball.model.BaseballGameResult;
 import baseball.service.BaseballGameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 import java.util.Map;
@@ -15,11 +16,12 @@ public class BaseballController {
     private int strike;
 
     public void run() {
+        OutputView.startGame();
         do {
-            OutputView.startGame();
             start();
 
         } while (isRestart());
+
     }
 
     private void start() {
