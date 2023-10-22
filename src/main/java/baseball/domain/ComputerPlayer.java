@@ -29,7 +29,7 @@ public class ComputerPlayer implements MatchPlayer {
     private int countStrike(BaseBallNumbers baseBallNumbers) {
         int strikeCount = 0;
         for (int i = 0; i < baseBallNumbers.size() ; i++) {
-            int number = baseBallNumbers.get().indexOf(i);
+            int number = baseBallNumbers.get().get(i);
             if (answer.isStrike(number, i)) strikeCount++;
         }
         return strikeCount;
