@@ -51,4 +51,13 @@ class BaseballNumbersTest {
             BaseballNumbers inputNumber = new BaseballNumbers("567");
         });
     }
+
+    @Test
+    void 입력에_중복된_숫자가_존재할_시_예외_발생() {
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            BaseballNumbers inputNumber = new BaseballNumbers("322");
+        });
+
+        Assertions.assertEquals("중복된 숫자를 입력할 수 없습니다.", exception.getMessage());
+    }
 }
