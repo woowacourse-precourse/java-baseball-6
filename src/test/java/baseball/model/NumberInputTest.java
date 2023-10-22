@@ -3,6 +3,7 @@ package baseball.model;
 import static baseball.model.enums.NumberInputErrorMessage.DUPLICATE_NUMBER;
 import static baseball.model.enums.NumberInputErrorMessage.INVALID_CHARACTER;
 import static baseball.model.enums.NumberInputErrorMessage.INVALID_LENGTH;
+import static baseball.model.PlayerInput.EMPTY_INPUT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -75,16 +76,16 @@ class NumberInputTest {
     }
 
     @Test
-    void validate_빈_문자열의_경우() {
+    void validate_null_인자() {
         // given
-        String input = "";
+        String input = null;
 
         // when
 
         // then
         assertThatThrownBy(() -> new NumberInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(INVALID_LENGTH.getMessage());
+                .hasMessageContaining(EMPTY_INPUT);
     }
 
     @Test
