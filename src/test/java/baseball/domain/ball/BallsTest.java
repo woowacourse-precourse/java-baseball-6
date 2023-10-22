@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BallsTest {
-    private static final int rounds = 3;
+    private static final int ROUNDS = 3;
     private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 9;
 
@@ -27,7 +27,7 @@ class BallsTest {
         values.add(two);
         values.add(tree);
 
-        Balls balls = new Balls(values, rounds);
+        Balls balls = new Balls(values, ROUNDS);
 
         assertNotNull(balls);
     }
@@ -42,7 +42,7 @@ class BallsTest {
         values.add(one);
         values.add(two);
 
-        assertThrows(IllegalArgumentException.class, () -> new Balls(values, rounds));
+        assertThrows(IllegalArgumentException.class, () -> new Balls(values, ROUNDS));
     }
 
     @Test
@@ -59,7 +59,7 @@ class BallsTest {
         values.add(three);
         values.add(four);
 
-        assertThrows(IllegalArgumentException.class, () -> new Balls(values, rounds));
+        assertThrows(IllegalArgumentException.class, () -> new Balls(values, ROUNDS));
     }
 
     @Test
@@ -76,7 +76,7 @@ class BallsTest {
         values.add(two);
         values.add(three);
 
-        Balls target = new Balls(values, rounds);
+        Balls target = new Balls(values, ROUNDS);
 
         Result result = origin.compare(target);
 
@@ -98,7 +98,7 @@ class BallsTest {
         values.add(two);
         values.add(three);
 
-        Balls target = new Balls(values, rounds);
+        Balls target = new Balls(values, ROUNDS);
 
         Result result = origin.compare(target);
 
@@ -120,7 +120,7 @@ class BallsTest {
         values.add(two);
         values.add(three);
 
-        Balls target = new Balls(values, rounds);
+        Balls target = new Balls(values, ROUNDS);
 
         Result result = origin.compare(target);
 
@@ -142,7 +142,7 @@ class BallsTest {
         values.add(two);
         values.add(three);
 
-        Balls target = new Balls(values, rounds);
+        Balls target = new Balls(values, ROUNDS);
 
         Result result = origin.compare(target);
 
@@ -164,7 +164,7 @@ class BallsTest {
         values.add(two);
         values.add(three);
 
-        Balls target = new Balls(values, rounds);
+        Balls target = new Balls(values, ROUNDS);
 
         Result result = origin.compare(target);
 
