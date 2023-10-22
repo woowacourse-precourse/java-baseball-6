@@ -9,11 +9,11 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
-    static int strike;
-    static int ball;
-    static int[] index;
+
 
     public static void main(String[] args) {
+
+        int[] index;
 
         //게임이 끝난 후 사용자가 계속 게임을 할 지에 대한 변수
         int continue_game;
@@ -31,7 +31,7 @@ public class Application {
                 }
             }
 
-            playing_game(computer);
+            playing_game(computer,index);
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             continue_game = Integer.parseInt(readLine());
@@ -41,22 +41,29 @@ public class Application {
         }
     }
 
-    private static void playing_game(List<Integer> computer) {
+    private static void playing_game(List<Integer> computer, int[] index) {
         StringBuilder sb;
         List<Integer> user_guess;
         String user_guess_input;
+        int[] count;//count[0] = strike, count[1] = ball
+        int strike;
+        int ball;
 
         while (true) {
-            strike = 0;
-            ball = 0;
+
             sb = new StringBuilder();
             user_guess = new ArrayList<>();
+            count = new int[2];
+
             System.out.printf("숫자를 입력해주세요 : ");
             user_guess_input = readLine();
 
             check_user_input(user_guess, user_guess_input);
 
-            compare_input(computer, user_guess);
+            compare_input(user_guess,index,count);
+
+            strike=count[0];
+            ball = count[1];
 
             if (strike == 3) {
                 sb.append(strike).append("스트라이크\n");
@@ -76,7 +83,8 @@ public class Application {
         }
     }
 
-    private static void compare_input(List<Integer> computer, List<Integer> user_guess) {
+    private static void compare_input(List<Integer> user_guess, int[] index, int[] count) {
+
 
         for(int i = 0; i < user_guess.size();i++){
 
@@ -86,9 +94,9 @@ public class Application {
             int now_com_index = index[now_com_num];
 
             if (now_com_index == now_user_index) {
-                    strike++;
+                    count[0]++;
                 } else if(now_com_index!=0){
-                    ball++;
+                    count[1]++;
                 }
         }
 
