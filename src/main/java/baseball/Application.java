@@ -25,6 +25,7 @@ public class Application {
 
         while (true) { // 게임 진행
             String input = getInputFromUser("숫자를 입력해주세요 : "); // 사용자 입력
+
             if (input.length() != 3) { // 입력값 예외처리
                 throw new IllegalArgumentException("숫자는 3자리만 입력 가능합니다.");
             }
@@ -44,12 +45,14 @@ public class Application {
 
     private static List<Integer> generateRandomNumberList(int min, int max, int size) {
         List<Integer> randomList = new ArrayList<>();
+
         while (randomList.size() < size) {
             int randomNumber = Randoms.pickNumberInRange(min, max);
             if (!randomList.contains(randomNumber)) {
                 randomList.add(randomNumber);
             }
         }
+
         return randomList;
     }
 
@@ -60,6 +63,7 @@ public class Application {
 
     private static List<Integer> parseInput(String input) {
         List<Integer> inputList = new ArrayList<>();
+
         for (int i = 0; i < 3; i++) {
             inputList.add(Integer.parseInt(input.substring(i, i + 1)));
         }
@@ -68,6 +72,7 @@ public class Application {
 
     private static int[] calculateResult(List<Integer> inputList, List<Integer> answerList) {
         int[] result = new int[2]; // result[0] = strike, result[1] = ball
+        
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (inputList.get(i).equals(answerList.get(j))) {
