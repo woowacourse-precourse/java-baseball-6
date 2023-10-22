@@ -34,6 +34,11 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러2]");
         }
-
+        // 입력 유효성 검사 3. 0이 포함되어 있는가?
+        for (int i = 0; i < ans.length(); i++) {
+            if (ans.charAt(i) == '0') {
+                throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러3]");
+            }
+        }
     }
 }
