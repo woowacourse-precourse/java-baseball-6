@@ -26,7 +26,7 @@ final class Digits {
         Digits fixedDigits = new Digits();
         fixedDigits.digits = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
-            Digit digit = new Digit(input.charAt(i));
+            Digit digit = new Digit(input.charAt(i) - '0');
             if (fixedDigits.digits.contains(digit)) throw new IllegalArgumentException();
             fixedDigits.digits.add(digit);
         }

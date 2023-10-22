@@ -12,8 +12,8 @@ class Digit {
         this.digit = Randoms.pickNumberInRange(1, 9);
     }
 
-    Digit(char target) {
-        this.digit = target - '0';
+    Digit(int target) {
+        this.digit = target;
         if(digit < 1 || digit > 9) throw new IllegalArgumentException();
     }
 
@@ -30,3 +30,31 @@ class Digit {
         return Objects.hash(digit);
     }
 }
+//
+//
+//class Test {
+//    int digit;
+//
+//    private Test() {
+//    }
+//
+//
+////    Test randomTest()
+//    static final class Random {
+//
+//        static public Test makeTest() {
+//            return null;
+//        }
+//    }
+//
+//    static final class fixed {
+//
+//        public Test makeTest() {
+//            return null;
+//
+//        }
+//    }
+//
+//}
+//
+//
