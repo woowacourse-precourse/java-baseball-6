@@ -30,10 +30,16 @@ public class Application{
     }
 
     private static void playGame(List<Integer> computerNumber){
-        List<Integer> userNumber = input();
-        int strike = findStrike(computerNumber, userNumber);
-        int ball = findBall(computerNumber,userNumber,strike);
-        printResult(strike,ball);
+        while(true){
+            List<Integer> userNumber = input();
+            int strike = findStrike(computerNumber, userNumber);
+            int ball = findBall(computerNumber, userNumber, strike);
+            printResult(strike, ball);
+            if (isAllStrike(strike)){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
     private static List<Integer> input(){
@@ -124,9 +130,6 @@ public class Application{
     private static void printResult(int strike, int ball){
         String result = printIfNothing(strike,ball)+printIfBall(ball)+printIfStrike(strike);
         System.out.println(result);
-        if (isAllStrike(strike)){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
     }
 
     private static String printIfNothing(int strike, int ball){
