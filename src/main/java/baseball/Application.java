@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.model.BaseballModel;
+import baseball.model.Score;
+import baseball.view.BaseballView;
+
 import java.util.List;
 
 public class Application {
