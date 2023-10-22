@@ -1,5 +1,10 @@
 package baseball;
 
+import static baseball.Application.beginGame;
+import static baseball.Utils.stringToInt;
+
+import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
@@ -18,6 +23,8 @@ public class GameController {
             userInput.promptUserInput();
             checkMatch(computer.getRandomNum(), userInput.getUserNum());
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        promptUserForRestart();
     }
 
     public void checkMatch(List<Integer> computerNum, List<Integer> userNum) {
@@ -63,6 +70,19 @@ public class GameController {
     public void checkWin(int strikeCount) {
         if (strikeCount == 3) {
             hasWon = true;
+        }
+    }
+
+    public void promptUserForRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String s = Console.readLine();
+        List<Integer> userAnswer = new ArrayList<>(stringToInt(s));
+        restartOrExit(userAnswer);
+    }
+
+    public void restartOrExit(List<Integer> userAnswer) {
+        if (userAnswer.get(0) == 1) {
+            beginGame();
         }
     }
 }
