@@ -24,6 +24,7 @@ public class BaseballGame {
                 if (player.askRestart() == 2) {
                     break;
                 }
+                computer.pickRandomNumber(3);
             }
         }
     }

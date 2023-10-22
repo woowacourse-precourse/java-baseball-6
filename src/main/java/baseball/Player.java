@@ -18,6 +18,7 @@ public class Player {
             numbers.add(Character.getNumericValue(c));
         }
         validateUniqueNumbers(numbers);
+        validateRange(numbers);
         return numbers;
     }
 
@@ -49,8 +50,16 @@ public class Player {
         }
     }
 
+    private void validateRange(List<Integer> numbers) {
+        for (int num: numbers) {
+            if (1 > num || num > 9) {
+                throw new IllegalArgumentException("1부터 9까지의 숫자만 입력해야 합니다.");
+            }
+        }
+    }
+
     private void validateUniqueNumbers(List<Integer> numbers) {
-        for (int num : numbers) {
+        for (int num: numbers) {
             if (Collections.frequency(numbers, num) != 1) {
                 throw new IllegalArgumentException("숫자 3개가 서로 달라야 합니다.");
             }
