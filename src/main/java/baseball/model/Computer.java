@@ -22,6 +22,11 @@ public class Computer {
                 }
             }
         }};
+        System.out.println("정답은 ");
+        for (int x : answerList) {
+            System.out.print(x);
+        }
+        System.out.println();
         answer = new NumberList(answerList);
     }
 
@@ -33,8 +38,8 @@ public class Computer {
     private int calculateBallCount(NumberList answer, NumberList guess) {
         int ballCount = 0;
         for (int i = 0; i < answer.size(); i++) {
-            for (int j = 0; i != j && j < guess.size(); j++) {
-                ballCount += booleanToInt(answer.get(i).equals(guess.get(j)));
+            for (int j = 0; j < guess.size(); j++) {
+                ballCount += booleanToInt(answer.get(i).equals(guess.get(j)) && i != j);
             }
         }
         return ballCount;
