@@ -67,4 +67,12 @@ class ResultTest {
 
         assertEquals(resultInKorean, OutputMessage.NOTHING.message);
     }
+
+    @Test
+    void 볼과_스트라이크_점수가_같다면_다른_인스턴스라도_같다고_인식한다() {
+        Result result1 = new Result(2, 1);
+        Result result2 = new Result(2, 1);
+
+        assertEquals(result1, result2);
+    }
 }
