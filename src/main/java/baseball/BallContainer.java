@@ -39,7 +39,7 @@ public class BallContainer {
         return result;
     }
 
-    private List<Ball> getBalls() {
+    public List<Ball> getBalls() {
         return balls;
     }
 }
