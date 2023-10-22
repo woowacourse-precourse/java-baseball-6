@@ -61,11 +61,8 @@ class Game{
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        try {
-            validateInput(input, userNumber);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("게임 종료");
-        }
+        validateInput(input, userNumber);
+
         return userNumber;
     }
 
