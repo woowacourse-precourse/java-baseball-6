@@ -9,7 +9,7 @@ public class Player {
     public static final String INPUT_MUST_3_NUMBER_EXCEPTION = "입력은 3개의 정수로 이루어져 있어야 합니다.";
     public static final String INPUT_MUST_NOT_DUPLICATED_EXCEPTION = "정수는 모두 서로 달라야 합니다.";
     public static final String NUMBER_FORMAT_EXCEPTION = "숫자가 아닌 입력이 있습니다";
-    public static final String WRONG_INPUT_IN_RESTART = "잘못된 입력입니다. (재시작 : 1, 종료 : 2)";
+    public static final String WRONG_INPUT_IN_RESTART_EXCEPTION = "잘못된 입력입니다. (재시작 : 1, 종료 : 2)";
     private static int RESTART = 1;
     private static int END = 2;
 
@@ -70,7 +70,7 @@ public class Player {
             if (input == END) {
                 return false;
             }
-            throw new IllegalArgumentException(WRONG_INPUT_IN_RESTART);
+            throw new IllegalArgumentException(WRONG_INPUT_IN_RESTART_EXCEPTION);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION);
         }
