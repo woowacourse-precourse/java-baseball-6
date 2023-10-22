@@ -29,11 +29,22 @@ public class Ground {
         return Objects.hash(strike, ball);
     }
 
+
+    /**
+     * 스트라이크와 볼의 개수에 따라 결과를 반환한다.
+     */
     @Override
     public String toString() {
-        return new StringJoiner(", ", Ground.class.getSimpleName() + "[", "]")
-                .add("strike=" + strike)
-                .add("ball=" + ball)
-                .toString();
+        StringBuilder stringBuilder = new StringBuilder();
+        if (strike > 0 && ball > 0) {
+            return stringBuilder.append(strike).append("스트라이크 ").append(ball).append("볼").toString();
+        }
+        if (strike > 0) {
+            return stringBuilder.append(strike).append("스트라이크").toString();
+        }
+        if (ball > 0) {
+            return stringBuilder.append(ball).append("볼").toString();
+        }
+        return "낫싱";
     }
 }
