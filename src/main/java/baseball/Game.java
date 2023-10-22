@@ -112,7 +112,7 @@ public class Game {
         }
 
         if (input.equals("1")) {
-            System.out.println("게임을 새로 시작하겠습니다.");
+            System.out.println("게임을 새로 시작합니다.");
             return false;
         }
         return true;
