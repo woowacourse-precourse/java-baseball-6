@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Data {
     private String userAnswerNumber;
-    private List<String> userAnswerNumberList = Arrays.asList("0", "0");
+    private List<String> userAnswerNumberList;
     private int randomNumber;
     private List<String> randomNumberList;
-    private List<String> answerList;
+    private List<String> answerList = Arrays.asList("0", "0");
     private String willRestartResponse;
 
     public String getUserAnswerNumber() {

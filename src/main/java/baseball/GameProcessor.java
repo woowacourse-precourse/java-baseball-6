@@ -77,7 +77,7 @@ public class GameProcessor {
 
     public Boolean validateCompleteAnswer(Data data) {
         boolean isCompleteAnswer = false;
-        if (data.getAnswerList().get(0).equals(3)) {
+        if (data.getAnswerList().get(0).equals("3")) {
             isCompleteAnswer = true;
         }
         return isCompleteAnswer;
