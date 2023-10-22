@@ -19,14 +19,13 @@ public class GameView {
     public static void printRoundResult(RoundResult roundResult){
         if(roundResult.isNothing()){
             System.out.println("낫싱");
-        }
-        if(roundResult.isOnlyStrike()){
+        } else if(roundResult.isOnlyStrike()){
             System.out.println(roundResult.getStrikeCount() + "스트라이크");
-        }
-        if(roundResult.isOnlyBall()){
+        } else if(roundResult.isOnlyBall()){
             System.out.println(roundResult.getBallCount() + "볼");
+        } else if(roundResult.isBothOccured()) {
+            System.out.println(roundResult.getStrikeCount() + "스트라이크 " + roundResult.getBallCount() + "볼");
         }
-        System.out.println(roundResult.getStrikeCount() + "스트라이크 " + roundResult.getBallCount() + "볼");
     }
 
     public static void printWinMessage(){

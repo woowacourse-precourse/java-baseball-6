@@ -21,6 +21,10 @@ public class RoundResult {
         return (strikeCount == 0 && ballCount == 0);
     }
 
+    public boolean isBothOccured(){
+        return !(strikeCount == 0) && !(ballCount == 0);
+    }
+
     public int getBallCount() {
         return ballCount;
     }
