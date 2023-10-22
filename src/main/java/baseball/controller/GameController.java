@@ -36,8 +36,8 @@ public class GameController {
 
     private void restartOrNot(String input) {
         Command.validate(input);
-        if(input.equals(Command.getExit())) playing = false;
-        if(input.equals(Command.getRestart())) init();
+        if(Command.isExit(input)) playing = false;
+        if(Command.isRestart(input)) init();
     }
 
 

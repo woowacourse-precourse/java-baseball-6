@@ -14,6 +14,12 @@ public class Command {
         return RESTART;
     }
 
+    public static boolean isExit(String input) {
+        return input.equals(EXIT);
+    }
+    public static boolean isRestart(String input) {
+        return input.equals(RESTART);
+    }
     public static void validate(String input) {
         if(Validator.isInvalid(input)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
     }

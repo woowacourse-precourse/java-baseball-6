@@ -10,8 +10,8 @@ public class Validator {
         return isNotNumber(userNumbers) || isNotValidDigits(userNumbers) || hasDuplicatedNumbers(userNumbers);
     }
 
-    public static boolean isInvalid(String restartInput) {
-        return !restartInput.equals(Command.getRestart()) && !restartInput.equals(Command.getExit());
+    public static boolean isInvalid(String input) {
+        return !Command.isExit(input) && !Command.isRestart(input);
     }
 
     private static boolean isNotValidDigits(List<Integer> userNumbers){
