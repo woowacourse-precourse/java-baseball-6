@@ -1,27 +1,28 @@
 package baseball;
 
 import static baseball.BaseballGameView.*;
-import static baseball.Constants.*;
+import static baseball.Constants.CONTINUE;
+import static baseball.Constants.MAX_NUMBER_LENGTH;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class NumberBaseballGame {
     List<Integer> computerNumber;
     private final Validator validator;
+    private final RandomNumberGenerator randomNumberGenerator;
 
     NumberBaseballGame() {
         this.validator = new Validator();
+        this.randomNumberGenerator = new RandomNumberGenerator();
     }
 
     public void start() {
         showStartMessage();
         boolean gameContinuation = true;
         while (gameContinuation) {
-            computerNumber = generateRandomNumbers();
+            computerNumber = randomNumberGenerator.generate();
             runGameLoop();
             gameContinuation = getContinueInput();
         }
@@ -41,16 +42,6 @@ public class NumberBaseballGame {
         }
     }
 
-    private List<Integer> generateRandomNumbers() {
-        List<Integer> generatedNumbers = new ArrayList<>(MAX_NUMBER_LENGTH);
-        while (generatedNumbers.size() < MAX_NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (!generatedNumbers.contains(randomNumber)) {
-                generatedNumbers.add(randomNumber);
-            }
-        }
-        return generatedNumbers;
-    }
 
     private List<Integer> userNumberInput() {
         showNumberInputMessage();
