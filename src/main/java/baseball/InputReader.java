@@ -10,17 +10,17 @@ public class InputReader {
 
     // 유저가 추측한 값을 입력 받고 List 형태로 반환
     public List<Integer> readUserGuessNumber() {
-        String guessString = Console.readLine();
-        List<Integer> guess = Arrays.stream(guessString.split(""))
+        String guessedNumberString = Console.readLine();
+        List<Integer> guessedNumber = Arrays.stream(guessedNumberString.split(""))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
-        return guess;
+        return guessedNumber;
     }
 
     // 게임 Continue 여부를 입력받고 반환
     public Integer readContinueMode() {
-        String continueString = Console.readLine();
-        int continueMode = Integer.parseInt(continueString);
-        return continueMode;
+        String continueModeNumberString = Console.readLine();
+        int continueModeNumber = Integer.parseInt(continueModeNumberString);
+        return continueModeNumber;
     }
 }
