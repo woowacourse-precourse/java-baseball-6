@@ -6,9 +6,7 @@ import java.util.Set;
 
 import static baseball.domain.Ball.*;
 
-public class Balls {
-    private final List<Ball> balls;
-
+public record Balls (List<Ball> balls) {
     public Balls(List<Ball> balls) {
         validate(balls);
         this.balls = List.copyOf(balls);
