@@ -15,6 +15,18 @@ public class BaseBallGame {
     }
 
 
+
+    private int countNumberOfStrike(final List<Integer> expectNumberSequence){
+        int numberOfStrikes = 0;
+        for (int i =0; i < computerRandomNumber.size(); i++){
+            if (expectNumberSequence.get(i).equals(computerRandomNumber.get(i))){
+                numberOfStrikes++;
+            }
+        }
+        return numberOfStrikes;
+    }
+
+
     private List<Integer> stringToListConverter(String numberSequence){
         try{
             numberSequence = numberSequence.replaceAll(" ", "");
