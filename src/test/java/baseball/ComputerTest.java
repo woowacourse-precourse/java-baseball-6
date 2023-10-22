@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComputerTest extends NsTest {
@@ -53,6 +54,17 @@ public class ComputerTest extends NsTest {
 
         assertThat(result).isEqualTo(1);
         assertThat(comparator.getStrikeCount()).isEqualTo(1);
+    }
+
+    @Test
+    void 숫자_비교_힌트_볼_스트라이크() {
+        List<Integer> computerNumbers = Arrays.asList(7, 8, 9);
+        List<Integer> playerNumbers = Arrays.asList(7, 9, 1);
+        int result = comparator.getResult(playerNumbers, computerNumbers);
+
+        assertThat(result).isEqualTo(4);
+        assertThat(comparator.getStrikeCount()).isEqualTo(1);
+        assertThat(comparator.getBallCount()).isEqualTo(1);
     }
 
     @Test
