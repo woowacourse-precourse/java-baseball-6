@@ -16,9 +16,16 @@
 - Public void GetComputer()
   - 컴퓨터가 게임에서 사용할 Int형 배열 Computer생성 메서드 추가
 - Application에서 BaseballGame의 메서드 사용을 위한 인스턴스 생성 코드 추가
+- 사용자 입력에서 3개가 아닌 문자열을 입력했을 경우 오류 발생 상황 추가
 
 ### 2️⃣ 2023-10-21
 - MVC 패턴을 이용한 구현 방식으로 구현의 구조도 변경
+- 사용자에게 보여주는 출력을 담당하는 OutputView관련 코드 일부 추가
+
+### 3️⃣ 2023-10-22
+- MVC 패턴의 5가지 규칙과 구조를 생각하며 코드 Ver.3 완성 및 테스트
+- 사용자 입력에서 정수가 아닌 다른 문자열을 입력했을 때의 오류 발생 상황
+- 사용자 입력에서의 중복값과 0을 입력했을 때의 오류 발생 상황 추가
 
 ## ✅  Application.java 구조 Ver.1
 ```java
@@ -64,29 +71,22 @@ Class BaseballGame{
     public void CheckEnd(){};
     
 }
-
-class GameManagerControll{
-    
-}
-
-class OutputView{
-    
-}
-Class BaseballGame{
-    List<Integer>
-    // 데이터 필드List<Integer>// Computer = new ArrayList<>();
-        List<Integer> User = new ArrayList<>();
-        int Strike;
-        int Ball;
-}
 ```
 
 ## ✅  Application.java 구조 Ver.2
 ```java
+public class Application {
+  public static void main(String[] args) throws IllegalArgumentException {
+    // TODO: 프로그램 구현
+    BaseballGameManager newGame = new BaseballGameManager();
+    newGame.start();
+  }
+};
+
 class BaseballGameManager{
     
     // 야구 게임을 시작합니다.
-    public void runGame(){
+    public void startGame(){
     };
     
     // 유저에게 숫자를 입력받습니다.
@@ -115,6 +115,18 @@ class BaseballGame {
 
     // 게임 종료 여부를 확인하기 위한 정수
     int gameFinish;
+
+    // User가 입력한 userRoundNumber가 길이가 3인지 확인합니다.
+    public boolean checkUserInputlength(String userInput){
+    } 
+    
+    // userNumber Array에 숫자를 삽입합니다.
+    public void addUserNumber(int userNumber){
+    }
+    
+    // userNumber Array를 초기화합니다.
+    public void resetUserNumber(){
+    }
 
     // 유저가 입력한 숫자에서 중복값을 확인
     public void checkUserForDuplicates() {
@@ -175,4 +187,118 @@ class OutputView{
 
 
 };
+```
+
+## ✅  Application.java 구조 Ver.3
+```java
+// Main Application
+public class Application {
+  public static void main(String[] args) throws IllegalArgumentException {
+    BaseballGameManager newGame = new BaseballGameManager();
+    newGame.start();
+  }
+}
+
+// 야구 게임의 클래스 선언
+// Controller
+class BaseballGameManager{
+    
+    // Variable
+    BaseballGame model;
+    OutputView view;
+  
+    // Constructor 
+    public BaseballGameManager(){}
+
+    // Methods
+    public void start() throws IllegalArgumentException {}
+  
+    public void loadNewGame() throws IllegalArgumentException {}
+  
+    public void prepareForNewGame(){}
+  
+    public void getUserNumberInput() throws IllegalArgumentException {}
+  
+    public void getUserFinishInput() throws IllegalArgumentException{}
+      
+    public void printRoundScore(){}
+}
+
+// Model
+class BaseballGame {
+
+  // Variables
+  List<Integer> computerNumbers;
+  List<Integer> userNumbers;
+  List<Integer> finishNumbers;
+  int strikeCount;
+  int ballCount;
+  int gameFinish;
+  int userInputInteger;
+  String userFinishInput;
+  String userRoundInput;
+
+  // Constructor
+  public BaseballGame() {}
+
+  // Methods
+  public boolean checkGameFinish(){}
+  
+  public void setFinishNumbers(){}
+
+  public void readLineFinishInput(){}
+
+  public void checkUserFinishNumberLength() throws IllegalArgumentException{}
+
+  public void finishNumberConvertStringToInt() throws IllegalArgumentException{}
+
+  public void readLineRoundInput(){}
+
+  public void checkUserRoundNumberLength() throws IllegalArgumentException{}
+
+  public void roundNumberConvertStringToInt() throws IllegalArgumentException{}
+
+  public void roundNumberConvertIntToArraylist() throws IllegalArgumentException{}
+
+  public void resetUserRoundNumbers(){}
+
+  public void resetComputerNumbers(){}
+
+  public boolean checkUserNumberForDuplicates(int insertNumber){}
+
+  public boolean checkUserNumberForZero(int insertNumber){}
+
+  public void generateComputerNumbers() {}
+
+  public void calculateScore(){}
+
+  public void incrementStrikeCount() {}
+  
+  public void incrementBallCount() {}
+  
+  public void resetScores() {}
+  
+  public int getStrikeCount() {}
+  
+  public int getBallCount() {}
+
+}
+
+// View
+class OutputView{
+  public void startGameAnnouncement(){}
+
+  public void prinfFinishAnnouncement(){}
+
+  public void promptUserForRoundGuess() {}
+  
+  public void printStrike(int strikeCount) {}
+  
+  public void printBall(int ballCount) {}
+  
+  public void printNothing() {}
+  
+  public void printBoth(int strikeCount, int ballCount) {}
+
+}
 ```
