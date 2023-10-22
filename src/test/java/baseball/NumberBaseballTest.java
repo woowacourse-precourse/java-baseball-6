@@ -56,4 +56,11 @@ public class NumberBaseballTest {
         assertThat(game.compareNumber("132")).isEqualTo("2볼 1스트라이크");
         assertThat(game.compareNumber("312")).isEqualTo("3볼");
     }
+
+    @Test
+    @DisplayName("사용자 숫자를 넣고_3스트라이크이면_게임을 종료한다")
+    void userNumber_is3Strike_endGame() {
+        assertThat(game.start("123"))
+                .isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }

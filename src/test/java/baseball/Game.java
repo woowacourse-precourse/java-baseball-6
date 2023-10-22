@@ -2,6 +2,14 @@ package baseball;
 
 public class Game {
 
+    public String start(String userNumber) {
+        String result = compareNumber(userNumber);
+        if (result.equals("3스트라이크")) {
+            return "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        }
+        return "";
+    }
+
     public String validateUserNumber(String userNumber) {
         if (isNumber(userNumber)) {
             throw new IllegalArgumentException("숫자가 아니다");
