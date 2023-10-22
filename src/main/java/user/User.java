@@ -1,12 +1,9 @@
 package user;
 
 import baseball.Balls;
-import baseball.BaseBallGame;
-import baseball.Game;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 

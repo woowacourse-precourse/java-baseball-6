@@ -7,7 +7,7 @@ import user.User;
 import view.InputView;
 import view.OutputView;
 
-public class BaseBallGame implements Game{
+public class BaseballGame implements Game{
 
     private static GameRule rule = new BaseBallRule();
     private static Comparator comparator = new Comparator();
@@ -19,31 +19,31 @@ public class BaseBallGame implements Game{
     private Balls computerBalls;
     private User user=new User();
 
-
     @Override
     public void start() {
         inputView.start();
         Computer computer=new Computer();
         computerBalls=computer.makeComputerNumber();
-        inputView.enterUserAnswer();
-        userBalls=user.makeUserNumber();
-        comparator.compare(computerBalls,userBalls);
         rulePassCheck();
         over();
     }
 
     public void rulePassCheck(){
-        boolean pass;
+        boolean pass=false;
         do{
+            receiveUserBalls();
+            compare(pass);
             pass=ruleApply();
-            getUserNumberAndCompare(pass);
         }while(!pass);
     }
 
-    public void getUserNumberAndCompare(boolean pass){
+    public void receiveUserBalls(){
+        inputView.enterUserAnswer();
+        userBalls=user.makeUserNumber();
+    }
+
+    public void compare(boolean pass){
         if(!pass){
-            inputView.enterUserAnswer();
-            userBalls=user.makeUserNumber();
             comparator.compare(computerBalls,userBalls);
         }
     }

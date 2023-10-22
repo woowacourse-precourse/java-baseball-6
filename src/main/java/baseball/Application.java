@@ -9,7 +9,7 @@ public class Application {
         InputView inputView = new InputView();
         boolean restart;
         do {
-            Game baseballGame = new BaseBallGame();
+            Game baseballGame = new BaseballGame();
             baseballGame.start();
             restart = inputView.restart();
 
