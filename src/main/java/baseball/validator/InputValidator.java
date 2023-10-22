@@ -9,6 +9,12 @@ public class InputValidator {
         }
     }
 
+    private void validateContainSpace(String input) {
+        if (input.contains(" ")) {
+            throw new IllegalArgumentException("공백이 포함되어 있습니다.");
+        }
+    }
+
     private void validateLength(String input) {
         int pitchCount = GameConfig.PITCH_COUNT.getValue();
         if (input.length() != pitchCount) {
