@@ -31,7 +31,8 @@ public class MainController {
 
     private void proceedGame(GameData gameData) {
         while (true) {
-            List<Integer> trial = validator.validatedBaseballNumber(InputView.inputNumber("숫자를 입력해주세요 : "));
+            List<Integer> trial = Utils.splitNumberToDigitList(InputView.inputNumber("숫자를 입력해주세요 : "));
+            validator.validatedBaseballNumber(trial);
             List<Integer> trialResult = gameData.computer().calculateResult(trial);
             OutputView.printResult(trialResult);
             if (isThreeStrike(trialResult)) {
@@ -49,6 +50,8 @@ public class MainController {
     }
 
     private boolean isRestartGame() {
-        return validator.validatedRestart(InputView.inputNumber("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")) == 1;
+        int inputValue = InputView.inputNumber("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        validator.validatedRestart(inputValue);
+        return inputValue == 1;
     }
 }

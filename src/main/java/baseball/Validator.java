@@ -4,11 +4,9 @@ import java.util.List;
 
 public class Validator {
 
-    public List<Integer> validatedBaseballNumber(int inputValue) {
-        List<Integer> baseballNumber = Utils.splitNumberToDigitList(inputValue);
+    public void validatedBaseballNumber(List<Integer> baseballNumber) {
         validateListInRange(baseballNumber, GameOption.BASEBALL_START_NUMBER, GameOption.BASEBALL_END_NUMBER);
         validateSameNumber(baseballNumber);
-        return baseballNumber;
     }
 
     private void validateListInRange(List<Integer> list, int start, int end) {
@@ -30,9 +28,8 @@ public class Validator {
         }
     }
 
-    public int validatedRestart(int inputValue) {
+    public void validatedRestart(int inputValue) {
         validateInRange(inputValue, 1, 2);
-        return inputValue;
     }
 
 //    private static void validateLength(String value, int size) {
