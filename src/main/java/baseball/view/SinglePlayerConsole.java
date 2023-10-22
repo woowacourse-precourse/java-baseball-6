@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.domain.BaseBallHint;
 import baseball.domain.BaseBallNumbers;
 import exception.DuplicateBaseBallNumber;
 import exception.OutOfBaseBallNumbersSize;
@@ -17,7 +18,8 @@ public class SinglePlayerConsole implements Player {
     }
 
     @Override
-    public BaseBallNumbers readConsole() {
+    public BaseBallNumbers readBaseballNumbers() {
+        OutputConsole.requestInputMessage();
         String stringNumbers = InputConsole.readConsole();
         try {
             final IntStream numbers = Stream.of(stringNumbers.split("")).mapToInt(Integer::parseInt);
@@ -40,5 +42,21 @@ public class SinglePlayerConsole implements Player {
             case END_CODE -> false;
             default -> throw new IllegalStateException("올바르지 않은 입력입니다.");
         };
+    }
+
+    @Override
+    public void printBaseBallHint(BaseBallHint baseBallHint) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (baseBallHint.isNothing()) {
+            OutputConsole.printHint("낫싱");
+            return;
+        }
+        if (baseBallHint.hasBall()) {
+            stringBuilder.append(String.format("%d볼 ", baseBallHint.ball()));
+        }
+        if (baseBallHint.isNothing()) {
+            stringBuilder.append(String.format("%d스트라이크", baseBallHint.strike()));
+        }
+        OutputConsole.printHint(stringBuilder.toString());
     }
 }
