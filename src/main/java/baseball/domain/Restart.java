@@ -20,6 +20,8 @@ public class Restart {
             return true;
         } else if (number.equals(END_NUMBER)) {
             return false;
-        } else throw new IllegalArgumentException("1 또는 2를 입력하세요.");
+        } else {
+            throw new IllegalArgumentException("1 또는 2를 입력하세요.");
+        }
     }
 }
