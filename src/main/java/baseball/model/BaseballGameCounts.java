@@ -6,7 +6,7 @@ import java.util.List;
 public class BaseballGameCounts {
 
     private static final int STRIKE = 0;
-    private static final int BALL = 0;
+    private static final int BALL = 1;
 
     private final List<Integer> counts = new ArrayList<>(2);
 
