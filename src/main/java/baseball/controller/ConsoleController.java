@@ -32,7 +32,8 @@ public class ConsoleController {
 	public void printFinishMessage() {
 		consoleOutput.printFinishMessage();
 	}
-	public String getUserNumber() {
+
+	private String getUserNumber() {
 		printInputMessage();
 		return consoleInput.getUserNumber();
 	}
@@ -54,12 +55,7 @@ public class ConsoleController {
 
 	public boolean getResumeOption() {
 		consoleOutput.printResumeMessage();
-		String inputString = consoleInput.getResumeOption();
-		if (inputString.equals("1")) {
-			return true;
-		} else {
-			return false;
-		}
+		return consoleInput.getResumeOption().equals("1");
 	}
 
 }

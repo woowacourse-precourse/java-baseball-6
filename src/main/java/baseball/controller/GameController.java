@@ -1,21 +1,19 @@
 package baseball.controller;
 
-import baseball.console.ConsoleInput;
-import baseball.console.ConsoleOutput;
 import baseball.domain.player.ComputerPlayer;
 import baseball.domain.player.UserPlayer;
-import baseball.domain.rule.Rule;
+import baseball.referee.Referee;
 
 
 public class GameController {
 	private UserPlayer userPlayer;
 	private ComputerPlayer computerPlayer;
 	private final ConsoleController consoleController;
-	private final Rule rule;
+	private final Referee referee;
 
 	public GameController(ConsoleController consoleController) {
 		this.consoleController = consoleController;
-		rule = new Rule(consoleController);
+		referee = new Referee(consoleController);
 	}
 
 	public void start() {
@@ -34,7 +32,7 @@ public class GameController {
 		computerPlayer.setNumberArray(consoleController.getComputerNumberArray());
 		while (!gameOver) {
 			userPlayer.setNumberArray(consoleController.getUserNumberArray());
-			gameOver = rule.judgeGameOver(userPlayer.getNumberArray(), computerPlayer.getNumberArray());
+			gameOver = referee.judgeGameOver(userPlayer.getNumberArray(), computerPlayer.getNumberArray());
 		}
 	}
 }

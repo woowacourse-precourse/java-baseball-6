@@ -37,14 +37,14 @@ public class ConsoleOutput {
 
 	public void printResultMessage(int ball, int strike) {
 		String message = "";
+		if (strike == 0 && ball == 0) {
+			message += nothingMessage;
+		}
 		if (ball > 0) {
 			message += ball + ballMessage;
 		}
 		if (strike > 0) {
 			message += strike + strikeMessage;
-		}
-		if (strike == 0 && ball == 0) {
-			message += nothingMessage;
 		}
 		println(message);
 	}

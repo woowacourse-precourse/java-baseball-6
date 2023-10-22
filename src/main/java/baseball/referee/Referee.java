@@ -1,13 +1,13 @@
-package baseball.domain.rule;
+package baseball.referee;
 
 import baseball.controller.ConsoleController;
 
-public class Rule {
+public class Referee {
 	private static int OFFSET = 3;
 
 	private final ConsoleController consoleController;
 
-	public Rule(ConsoleController consoleController) {
+	public Referee(ConsoleController consoleController) {
 		this.consoleController = consoleController;
 	}
 
