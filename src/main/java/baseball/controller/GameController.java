@@ -10,11 +10,7 @@ public class GameController {
     OutputView outputView = new OutputView();
 
     public void manageProgram() {
-        try {
-            startProgram();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        startProgram();
     }
 
     private void startProgram() {
