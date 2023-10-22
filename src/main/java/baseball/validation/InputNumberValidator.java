@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class InputNumberValidator {
 
     private static final int NUMBER_SIZE = 3;
+    private static final String REGEX = "[0-9]+";
 
     /*
     * 플레이어의 입력값(String)을 List로 변환하는 메서드
@@ -29,5 +30,16 @@ public class InputNumberValidator {
         if (input.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
+    }
+
+    /*
+     * 플레이어의 입력값이 숫자인지 확인
+     * @Param input 플레이어의 숫자
+     * */
+    public static void validateInputType(String input) {
+        if (!input.matches(REGEX)) {
+            throw new IllegalArgumentException();
+        }
+
     }
 }
