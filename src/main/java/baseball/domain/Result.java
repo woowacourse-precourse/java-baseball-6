@@ -8,12 +8,12 @@ public class Result {
     private final int ballCount;
     private final int strikeCount;
 
-    private Result(final Number playerNumber, final Number computerNumber) {
+    private Result(final Numbers playerNumber, final Numbers computerNumber) {
         ballCount = playerNumber.countBallCount(computerNumber);
         strikeCount = playerNumber.countStrikeCount(computerNumber);
     }
 
-    public static Result create(final Number playerNumber, final Number computerNumber) {
+    public static Result create(final Numbers playerNumber, final Numbers computerNumber) {
         return new Result(playerNumber, computerNumber);
     }
 
