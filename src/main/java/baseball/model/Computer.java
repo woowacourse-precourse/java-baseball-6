@@ -17,10 +17,11 @@ public class Computer {
         return hiddenNumber;
     }
 
-    public void resetForNewGame() {
-        resetDoesExist();
-        hiddenNumber.clear();
-        initializeHiddenNumber();
+    private void initializeHiddenNumber() {
+        while (hiddenNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            checkDuplicateAndAddToList(randomNumber);
+        }
     }
 
     private void checkDuplicateAndAddToList(int randomNumber) {
@@ -30,16 +31,15 @@ public class Computer {
         }
     }
 
-    private void initializeHiddenNumber() {
-        while (hiddenNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            checkDuplicateAndAddToList(randomNumber);
-        }
-    }
-
     private void resetDoesExist() {
         for (int i = 0; i < 10; i++) {
             doesExist[i] = false;
         }
+    }
+
+    public void resetForNewGame() {
+        resetDoesExist();
+        hiddenNumber.clear();
+        initializeHiddenNumber();
     }
 }
