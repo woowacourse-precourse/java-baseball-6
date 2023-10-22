@@ -59,7 +59,6 @@ public class Game {
                 computerNumber.add(randomNumber);
             }
         }
-        System.out.println(computerNumber);
         return computerNumber;
     }
 
