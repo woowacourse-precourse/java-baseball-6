@@ -18,4 +18,19 @@ public class GameMessage {
     public void getInputCommand() {
         System.out.println(INPUT_COMMAND_MSG);
     }
+
+    public void showResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println(NOTHING);
+        }
+        if (strike > 0 && ball > 0) {
+            System.out.println(ball + BALL + strike + STRIKE);
+        }
+        if (strike > 0 && ball == 0) {
+            System.out.println(strike + STRIKE);
+        }
+        if (strike == 0 && ball > 0) {
+            System.out.println(ball + BALL);
+        }
+    }
 }
