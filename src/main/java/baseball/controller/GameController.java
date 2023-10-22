@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.GameNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
 
 public class GameController {
     private static final String WRONG_ANSWER_INPUT_MESSAGE = "1 혹은 2만 입력하세요.";
@@ -37,7 +38,7 @@ public class GameController {
 
     private void savePlayerNumbers() {
         gameNumber.setInputNumber(inputView.enterGameNumber());
-        int[] playerNumbers = numberValidator.toValidateNumber(gameNumber.getInputNumber());
+        List<Integer> playerNumbers = numberValidator.toValidateNumber(gameNumber.getInputNumber());
 
         gameNumber.setPlayerNumbers(playerNumbers);
     }

@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -14,7 +15,7 @@ public class NumberValidator {
     private static final char BASEBALL_PLAYER_NUMBER_RANGE_END = '9';
     
 
-    public int[] toValidateNumber(String inputNumber) {
+    public List<Integer> toValidateNumber(String inputNumber) {
         if (!isSameLength(inputNumber)) {
             throw new IllegalArgumentException(WRONG_LEGNTH_NUMBER_MESSAGE);
         } else if (!isSameRange(inputNumber)) {
@@ -22,7 +23,7 @@ public class NumberValidator {
         } else if (!isDiffNumber(inputNumber)) {
             throw new IllegalArgumentException(WRONG_SAME_NUMBER_MESSAGE);
         }
-        return convertStringToIntArray(inputNumber);
+        return convertStringToIntList(inputNumber);
     }
 
     public boolean isSameLength(String inputNumber) {
@@ -49,7 +50,9 @@ public class NumberValidator {
         return setNumbers.size() == BASEBALL_NUMBER_LENGTH;
     }
 
-    public int[] convertStringToIntArray(String inputNumber) {
-        return Stream.of(inputNumber.split("")).mapToInt(Integer::parseInt).toArray();
+    public List<Integer> convertStringToIntList(String inputNumber) {
+        int[] convertIntArray =  Stream.of(inputNumber.split("")).mapToInt(Integer::parseInt).toArray();
+
+        return Arrays.stream(convertIntArray).boxed().collect(Collectors.toList());
     }
 }

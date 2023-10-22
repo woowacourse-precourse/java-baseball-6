@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import java.util.Arrays;
+import java.util.List;
 import baseball.model.GameNumber;
 import baseball.view.OutputView;
 
@@ -17,20 +17,22 @@ public class ComputerController {
     RandomUtility randomUtility = new RandomUtility();
 
     public void startGame(GameNumber gameNumber) {
-        int[] randomNumbers = randomUtility.generateRandomNumbers();
+        List<Integer> randomNumbers = randomUtility.generateRandomNumbers();
         gameNumber.setRandomNumbers(randomNumbers);
+        
+        System.out.println(gameNumber.getRandomNumbers());
     }
     
     public boolean playGame(GameNumber gameNumber) {
-        int[] playerNumbers = gameNumber.getPlayerNumbers();
-        int[] randomNumbers = gameNumber.getRandomNumbers();
+        List<Integer> playerNumbers = gameNumber.getPlayerNumbers();
+        List<Integer> randomNumbers = gameNumber.getRandomNumbers();
         
         compareNumbers(playerNumbers, randomNumbers);
 
         return isSuccessGame();
     }
 
-    private void compareNumbers(int[] playerNumbers, int[] randomNumbers) {
+    private void compareNumbers(List<Integer> playerNumbers, List<Integer> randomNumbers) {
         resetCount();
         checkStrikeAndBall(playerNumbers, randomNumbers);
         provideHint();
@@ -41,10 +43,10 @@ public class ComputerController {
         ballCount = RESET_COUNT;
     }
 
-    private void checkStrikeAndBall(int[] playerNumbers, int[] randomNumbers) {
+    private void checkStrikeAndBall(List<Integer> playerNumbers, List<Integer> randomNumbers) {
         for (int i = 0; i < BASEBALL_NUMBER_LENGTH; i++) {
-            countStrike(randomNumbers[i], playerNumbers[i]);
-            countBall(randomNumbers, playerNumbers[i], i);
+            countStrike(randomNumbers.get(i), playerNumbers.get(i));
+            countBall(randomNumbers, playerNumbers.get(i), i);
         }
     }
 
@@ -54,8 +56,8 @@ public class ComputerController {
         }
     }
 
-    private void countBall(int[] randomNumbers, int playerNumber, int numberIndex) {
-        if ((randomNumbers[numberIndex] != playerNumber) && Arrays.stream(randomNumbers).anyMatch(num -> num == playerNumber)) {
+    private void countBall(List<Integer> randomNumbers, int playerNumber, int numberIndex) {
+        if ((randomNumbers.get(numberIndex) != playerNumber) && randomNumbers.contains(playerNumber)) {
             ballCount++;
         } 
     }

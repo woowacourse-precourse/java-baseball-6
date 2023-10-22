@@ -1,14 +1,11 @@
 package baseball.model;
 
-import baseball.controller.NumberValidator;
-import baseball.controller.RandomUtility;
+import java.util.List;
 
 public class GameNumber {
     private String inputNumber;
-    private int[] playerNumbers;
-    private int[] randomNumbers;
-    NumberValidator numberValidator = new NumberValidator();
-    RandomUtility randomUtility = new RandomUtility();
+    private List<Integer> playerNumbers;
+    private List<Integer> randomNumbers;
 
     public void setInputNumber(String inputNumber) {
         this.inputNumber = inputNumber.replaceAll(" ", "");
@@ -18,19 +15,19 @@ public class GameNumber {
         return inputNumber;
     }
 
-    public void setPlayerNumbers(int[] playerNumbers) {
+    public void setPlayerNumbers(List<Integer> playerNumbers) {
         this.playerNumbers = playerNumbers;
     }
 
-    public int[] getPlayerNumbers() {
+    public List<Integer> getPlayerNumbers() {
         return playerNumbers;
     }
 
-    public void setRandomNumbers(int[] randomNumbers) {
+    public void setRandomNumbers(List<Integer> randomNumbers) {
         this.randomNumbers = randomNumbers;
     }
 
-    public int[] getRandomNumbers() {
+    public List<Integer> getRandomNumbers() {
         return randomNumbers;
     }
 }
