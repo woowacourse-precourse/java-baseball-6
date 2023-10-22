@@ -6,11 +6,11 @@ public class Game {
     public static void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         String computerNum = ComputerNumber.makeNumber();
-        String userInput = UserInput.readUserInput();
-        String userNum = UserInput.checkUserInput(userInput);
-        HintCountDto hintCountDto = Hint.calHint(computerNum, userNum);
         boolean isGameDone = false;
         while (!isGameDone) {
+            String userInput = UserInput.readUserInput();
+            String userNum = UserInput.checkUserInput(userInput);
+            HintCountDto hintCountDto = Hint.calHint(computerNum, userNum);
             isGameDone = Hint.printHint(hintCountDto);
         }
     }
