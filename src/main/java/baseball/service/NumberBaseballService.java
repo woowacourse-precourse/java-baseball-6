@@ -11,8 +11,12 @@ import java.util.Objects;
 public class NumberBaseballService {
     private NumberBaseball numberBaseball;
 
-    public NumberBaseballService() {
+    private NumberBaseballService() {
         initNumberBaseball();
+    }
+
+    public static NumberBaseballService getInstance() {
+        return new NumberBaseballService();
     }
 
     private void initNumberBaseball() {

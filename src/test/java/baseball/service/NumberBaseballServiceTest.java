@@ -18,7 +18,7 @@ class NumberBaseballServiceTest {
     @BeforeEach
     void setUp() {
         numberBaseball = NumberBaseball.getInstance();
-        numberBaseballService = new NumberBaseballService();
+        numberBaseballService = NumberBaseballService.getInstance();
     }
 
     @Test
