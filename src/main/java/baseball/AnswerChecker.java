@@ -9,21 +9,21 @@ public class AnswerChecker {
     private static final int STRIKE_INDEX = 1;
     private static final int ANSWER_SIZE = 3;
 
-    public String checkAnswer(List<Integer> answer, List<Integer> myAnswer){
-        if(answer.equals(myAnswer)){
+    public String checkAnswer(List<Integer> computerAnswer, List<Integer> myAnswer){
+        if(computerAnswer.equals(myAnswer)){
             return CORRECT_ANSWER;
         }
-            String gameResult = countBallAndStrike(answer, myAnswer);
+            String gameResult = countBallAndStrike(computerAnswer, myAnswer);
             return gameResult;
     }
 
-    private String countBallAndStrike(List<Integer> answer, List<Integer> myAnswer){
+    private String countBallAndStrike(List<Integer> computerAnswer, List<Integer> myAnswer){
         int strikeCount = 0;
         int ballCount = 0;
         for (int i = 0; i < ANSWER_SIZE; i++) {
-            if (answer.get(i).equals(myAnswer.get(i))) {
+            if (computerAnswer.get(i).equals(myAnswer.get(i))) {
                 strikeCount++;
-            } else if (myAnswer.contains(answer.get(i))) {
+            } else if (myAnswer.contains(computerAnswer.get(i))) {
                 ballCount++;
             }
         }

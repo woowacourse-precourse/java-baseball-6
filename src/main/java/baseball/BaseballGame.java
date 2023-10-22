@@ -10,18 +10,18 @@ public class BaseballGame {
     private User user = new User();
     private AnswerChecker answerChecker = new AnswerChecker();
 
-    private List<Integer> answer;
+    private List<Integer> computerAnswer;
     private List<Integer> myAnswer;
     private String gameResult;
     private boolean playing = true;
 
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        answer = computer.makeAnswer();
+        computerAnswer = computer.makeAnswer();
         while(playing) {
             System.out.print("숫자를 입력해주세요 : ");
             myAnswer = user.guessAnswer();
-            gameResult = answerChecker.checkAnswer(answer, myAnswer);
+            gameResult = answerChecker.checkAnswer(computerAnswer, myAnswer);
             answerChecker.printResult(gameResult);
             ifSuccess(gameResult, user, computer);
         }
@@ -36,6 +36,6 @@ public class BaseballGame {
 
     private void makeNewAnswerIfRestart(boolean playing, Computer computer) {
         if(playing==true)
-            answer = computer.makeAnswer();
+            computerAnswer = computer.makeAnswer();
     }
 }
