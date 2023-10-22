@@ -7,9 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    static List<Integer> computerNumbers = new ArrayList<>();
-    static List<Integer> playerNumbers = new ArrayList<>();
-    static boolean isThreeStrike;
+    static List<Integer> computerNumbers;
+    static List<Integer> playerNumbers ;
 
     public static void main(String[] args) {
         boolean isFinishGame = false;
@@ -18,9 +17,12 @@ public class Application {
         application.printGameStartText();
 
         while(!isFinishGame) {
+            computerNumbers = new ArrayList<>();
             application.setComputerNumber();
-            while(!isThreeStrike) {
+            while(true) {
+                playerNumbers = new ArrayList<>();
                 application.inputPlayerNumber();
+                int strikeCount = application.calculateStrikeCount();
             }
         }
     }
@@ -47,6 +49,18 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             playerNumbers.add(input.charAt(i) - '0');
         }
+    }
+
+    public int calculateStrikeCount() {
+        int strikeCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computerNumbers.get(i) == playerNumbers.get(i)) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
     }
 
     public void isValidCheck(String input) {
