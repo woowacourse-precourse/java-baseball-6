@@ -2,16 +2,21 @@ package baseball;
 
 public class Game {
 
-    public String start(String userNumber) {
-        String result = compareNumber(userNumber);
-        if (result.equals("3스트라이크")) {
-            return "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public String start() {
+        String result = "";
+        while (!result.equals("3스트라이크")) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userNumber = new Input().get();
+            validateUserNumber(userNumber);
+            result = compareNumber(userNumber);
+            new Output().print(result);
         }
-        return "";
+        return result;
     }
 
-    public boolean restart(String restart) {
-        return restart.equals("1");
+    public boolean restart() {
+        new Output().print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return new Input().get().equals("1");
     }
 
     public String validateUserNumber(String userNumber) {
