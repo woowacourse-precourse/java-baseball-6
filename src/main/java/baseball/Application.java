@@ -5,6 +5,7 @@ import baseball.controller.RestartController;
 import baseball.domain.Restart;
 import baseball.domain.GameConstants;
 import baseball.domain.Baseball;
+import baseball.util.ExceptionUtil;
 import baseball.util.InputUtil;
 import baseball.util.IntegerUtil;
 import baseball.view.EndView;
@@ -38,18 +39,18 @@ public class Application {
                 //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
                 //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
                 if (!IntegerUtil.isInteger(inputNum)) {
-                    throwInvalidValueException();
+                    ExceptionUtil.throwInvalidValueException();
                 }
 
                 //검증: 만약 숫자의 자리수가 3보다 작으면 잘못 입력한 것이다.
                 //검증: 만약 숫자의 자리수가 3보다 크면 잘못 입력한 것이다.
                 int inputNumLen = inputNum.length();
                 if (inputNumLen < GameConstants.NUMBER_LENGTH) {
-                    throwInvalidValueException();
+                    ExceptionUtil.throwInvalidValueException();
                 }
 
                 if (inputNumLen > GameConstants.NUMBER_LENGTH) {
-                    throwInvalidValueException();
+                    ExceptionUtil.throwInvalidValueException();
                 }
 
                 //검증: 만약 같은 숫자가 2개 이상 있으면 잘못 입력한 것이다.
@@ -58,13 +59,13 @@ public class Application {
                     numSet.add(inputNum.charAt(i));
                 }
                 if (numSet.size() < GameConstants.NUMBER_LENGTH) {
-                    throwInvalidValueException();
+                    ExceptionUtil.throwInvalidValueException();
                 }
 
                 //검증: 만약 숫자의 각 자리가 1이상 9이하가 아니면 잘못 입력한 것
                 for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
                     if (!inputNum.matches("^[1-9]+$")) {
-                        throwInvalidValueException();
+                        ExceptionUtil.throwInvalidValueException();
                     }
                 }
 
@@ -131,7 +132,7 @@ public class Application {
                     //사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션이 종료된다.
                     //검증: 만약 숫자가 아닌 것을 입력하면 잘못 입력한 것이다.
                     if (!IntegerUtil.isInteger(regameNum)) {
-                        throwInvalidValueException();
+                        ExceptionUtil.throwInvalidValueException();
                     }
                     int parsedRegameNum = Integer.parseInt(regameNum);
 
@@ -144,16 +145,13 @@ public class Application {
                         return;
                     }
                     if (restart == Restart.OTHER_CHOICE) {
-                        throwInvalidValueException();
+                        ExceptionUtil.throwInvalidValueException();
                     }
                 }
             }
         }
     }
 
-    public static void throwInvalidValueException() {
-        throw new IllegalArgumentException();
-    }
 
     //String to List<Integer> TODO: IntegerListConverter 따로 둬서 IntegerListConverter.parseIntegerList
     public static List<Integer> parseIntegerList(String string){
@@ -165,5 +163,4 @@ public class Application {
 
         return integerList;
     }
-
 }
