@@ -5,11 +5,11 @@ import java.util.List;
 public final class Numbers {
 
     private static final int NUMBER_LIST_SIZE = 3;
-    private final List<Number> numbers;
+    private final List<Number> values;
 
-    public Numbers(final List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers.stream().map(Number::new).toList();
+    public Numbers(final List<Integer> values) {
+        validate(values);
+        this.values = values.stream().map(Number::new).toList();
     }
 
     private void validate(final List<Integer> numbers) {
@@ -27,14 +27,14 @@ public final class Numbers {
     }
 
     public Number getByIndex(final int index) {
-        return new Number(numbers.get(index));
+        return new Number(values.get(index));
     }
 
     public boolean contains(final Number number) {
-        return numbers.contains(number);
+        return values.contains(number);
     }
 
     public boolean hasSameIndexAndValue(final Number number, final int index) {
-        return numbers.get(index).equals(number);
+        return values.get(index).equals(number);
     }
 }

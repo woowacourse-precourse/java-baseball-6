@@ -9,11 +9,11 @@ import java.util.List;
 public final class BallCount {
 
     private static final int BALL_COUNT_SIZE = 3;
-    private final List<StrikeBall> ballCount;
+    private final List<StrikeBall> values;
 
-    public BallCount(final List<StrikeBall> ballCount) {
-        validate(ballCount);
-        this.ballCount = Collections.unmodifiableList(ballCount);
+    public BallCount(final List<StrikeBall> values) {
+        validate(values);
+        this.values = Collections.unmodifiableList(values);
     }
 
     private void validate(final List<StrikeBall> ballCount) {
@@ -27,11 +27,11 @@ public final class BallCount {
     }
 
     public long getStrikeNum() {
-        return ballCount.stream().filter(StrikeBall::isStrike).count();
+        return values.stream().filter(StrikeBall::isStrike).count();
     }
 
     public long getBallNum() {
-        return ballCount.stream().filter(StrikeBall::isBall).count();
+        return values.stream().filter(StrikeBall::isBall).count();
     }
 
     public ResultStatus checkResultStatus() {

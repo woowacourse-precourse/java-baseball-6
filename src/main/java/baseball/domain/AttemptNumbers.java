@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 public final class AttemptNumbers {
 
     private static final int START_INDEX = 0;
-    private static final int INTERATION_TIME = 3;
+    private static final int ITERATION_TIME = 3;
     private final Numbers numbers;
 
     public AttemptNumbers(final List<Integer> numbers) {
@@ -21,7 +21,7 @@ public final class AttemptNumbers {
     }
 
     private List<StrikeBall> checkStrikeBall(final AnswerNumbers answerNumbers) {
-        return IntStream.range(START_INDEX, INTERATION_TIME)
+        return IntStream.range(START_INDEX, ITERATION_TIME)
                 .mapToObj(index -> answerNumbers.checkStrikeBall(numbers.getByIndex(index), index))
                 .toList();
     }
