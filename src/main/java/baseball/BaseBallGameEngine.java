@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class BaseBallGameEngine {
-    private static final int END_COMMAND = 1;
-    private final int answer;
+    private static final int END_COMMAND = 2;
     private final BaseBalGameValidator baseBalGameValidator;
+    private final int answer;
 
     public BaseBallGameEngine(int generateBaseBallValue, BaseBalGameValidator validator) {
         this.baseBalGameValidator = validator;
@@ -14,10 +14,11 @@ public class BaseBallGameEngine {
         this.answer = generateBaseBallValue;
     }
 
-    public BaseBallScore calculatingBaseBallScore(int baseBallValue) {
+    public BaseBallScore calculatingBaseBallScore(String baseBallValue) {
         baseBalGameValidator.validBaseBallValue(baseBallValue);
-        return new BaseBallScore(getStrikeScore(baseBallValue), getBallScore(baseBallValue));
+        return new BaseBallScore(getStrikeScore(Integer.parseInt(baseBallValue)), getBallScore(Integer.parseInt(baseBallValue)));
     }
+
 
     public boolean isEnd(String command) {
         baseBalGameValidator.validEndCommand(command);

@@ -5,8 +5,8 @@ import java.util.Set;
 
 public class BaseBalGameValidator {
     private static final int BASEBALL_SIZE = 3;
-    private static final int END_COMMAND = 1;
-    private static final int RE_GAME_COMMAND = 2;
+    private static final int END_COMMAND = 2;
+    private static final int RE_GAME_COMMAND = 1;
 
     private static final String NOT_NUMBER_ERROR_MESSAGE = "%s는 숫자가 아닙니다.";
     private static final String DUPLICATE_OR_SIZE_ERROR_MESSAGE = "%s는 세자리 숫자가 아니거나, 값은 값이 존재합니다.";

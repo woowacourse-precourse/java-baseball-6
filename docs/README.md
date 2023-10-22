@@ -10,8 +10,8 @@
             - [x] 0이 포함되어있을떄,IllegalArgumentException 반환
 
         -[x] 종료명령어를 판단한다.
-            -[x] 1번을 입력되면, true를 반환.
-            -[x] 2번을 입력되면, false를 반환.
+            -[x] 1번을 입력되면, false를 반환.
+            -[x] 2번을 입력되면, true를 반환.
             -[x] 1,2가 아니면, IllegalArgumentException 반환
 
 -[ ] BaseBallGameValidator

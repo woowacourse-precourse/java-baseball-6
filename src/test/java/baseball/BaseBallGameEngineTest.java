@@ -67,7 +67,7 @@ class BaseBallGameEngineTest {
             "891,891,3,0",
             "123,123,3,0",
     })
-    public void 점수를_체점해준다(int generateValue, int baseBallValue, int strike, int ball) {
+    public void 점수를_체점해준다(int generateValue, String baseBallValue, int strike, int ball) {
         BaseBallScore expect = new BaseBallScore(strike, ball);
         BaseBallScore result = new BaseBallGameEngine(generateValue, new BaseBalGameValidator()).calculatingBaseBallScore(baseBallValue);
         Assertions.assertThat(result.getStrike()).isEqualTo(expect.getStrike());
@@ -79,7 +79,7 @@ class BaseBallGameEngineTest {
     @CsvSource({
             "111", "112", "1", "999", "-1", "-12", "-122", "-999"
     })
-    public void 추측_값이_세자리가_각자_다르지_않거나_세자리가_아닌_수이거나_음수이면_예외를_반환한다(int baseBallValue) {
+    public void 추측_값이_세자리가_각자_다르지_않거나_세자리가_아닌_수이거나_음수이면_예외를_반환한다(String baseBallValue) {
         Assertions.assertThatCode(() -> new BaseBallGameEngine(123, new BaseBalGameValidator()).calculatingBaseBallScore(baseBallValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(String.format("%S는 세자리 숫자가 아니거나, 값은 값이 존재합니다.", baseBallValue));
@@ -91,7 +91,7 @@ class BaseBallGameEngineTest {
     @CsvSource({
             "-123", "-456", "-789", "-321"
     })
-    public void 추측_값이_세자리가_각각다른_음수이면_예외를_반환한다(int baseBallValue) {
+    public void 추측_값이_세자리가_각각다른_음수이면_예외를_반환한다(String baseBallValue) {
         Assertions.assertThatCode(() -> new BaseBallGameEngine(123, new BaseBalGameValidator()).calculatingBaseBallScore(baseBallValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(String.format("%S는 세자리가 각각다른 음수입니다.", baseBallValue));
@@ -101,7 +101,7 @@ class BaseBallGameEngineTest {
     @CsvSource({
             "102", "120", "780"
     })
-    public void 추측_값이_0이_있으면_예외를_반환한다(int baseBallValue) {
+    public void 추측_값이_0이_있으면_예외를_반환한다(String baseBallValue) {
         Assertions.assertThatCode(() -> new BaseBallGameEngine(123, new BaseBalGameValidator()).calculatingBaseBallScore(baseBallValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(String.format("%S는 0이 포함되어있다.", baseBallValue));
@@ -110,7 +110,7 @@ class BaseBallGameEngineTest {
 
     @ParameterizedTest
     @CsvSource({
-            "1,true", "2,false"
+            "1,false", "2,true"
     })
     public void 엔드커멘드는_1이나2는_반환값이_나온다(String command, boolean expect) {
         Assertions.assertThat(new BaseBallGameEngine(123, new BaseBalGameValidator()).isEnd(command))
