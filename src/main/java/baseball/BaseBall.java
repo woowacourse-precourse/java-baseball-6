@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,11 +10,10 @@ public class BaseBall {
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        Computer computer = new Computer(new ArrayList<>());
+        Computer computer = new Computer();
         computer.createComputerNumber(LENGTH);
 
         while (true) {
-
             int strike = 0;
             int ball = 0;
             String number = inputNumber();
