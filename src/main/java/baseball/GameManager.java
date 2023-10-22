@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GameManager {
     private MessageManager messageManager = new MessageManager();
@@ -9,24 +9,20 @@ public class GameManager {
 
     public void proceedIntro() {
         messageManager.showIntro();
-//        data.setRandomNumberList(new ArrayList<>());
         data = new Data();
     }
 
     public void proceedMainGame() {
-        while (!data.getIsCompleteAnswer()) {
-            try {
-                data.setUserAnswerNumber(messageManager.getUserAnswerNumber());
+        IllegalArgumentException e = new IllegalArgumentException("게임 종료");
+        while (!data.getIsCompleteAnswer() && data.getIsNoError()) {
+            data.setUserAnswerNumber(messageManager.getUserAnswerNumber());
 
-                if (gameProcessor.illegalArgumentException(data)) {
-                    throw new IllegalArgumentException();
-                }
-
-                messageManager.showAnswer(data, gameProcessor, messageManager);
-            } catch (IllegalArgumentException e) {
-                data.setDigitSizeError(true);
-                break;
+            if (gameProcessor.illegalArgumentException(data)) {
+                data.setIsNoError(false);
+                throw e;
             }
+
+            messageManager.showAnswer(data, gameProcessor, messageManager);
         }
     }
 
@@ -35,11 +31,11 @@ public class GameManager {
     }
 
     public void proceedOutro() {
-        if (validateAnswerComplete()) {
+        if (validateAnswerComplete() && data.getIsNoError()) {
             System.out.println(messageManager.getOutroMessage());
         }
 
-        if (validateRestart()) {
+        if (validateRestart() && data.getIsNoError()) {
             String continueResponse = messageManager.getUserContinueResponse();
             data.setWillRestartResponse(continueResponse);
         }
@@ -47,7 +43,7 @@ public class GameManager {
 
     public boolean validateRestart() {
         boolean restart = true;
-        if (data.getWillRestartResponse().equals("2")) {
+        if (data.getWillRestartResponse().equals("2") || !data.getIsNoError()) {
             restart = false;
         }
         return restart;
