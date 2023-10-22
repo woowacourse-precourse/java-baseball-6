@@ -3,7 +3,6 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-//TODO: 1-9까지만 되게 변경. 0이 끼면안된다네 ㅎㅎ;
 public class BaseBalGameValidator {
     private static final int BASEBALL_SIZE = 3;
     private static final int END_COMMAND = 1;
