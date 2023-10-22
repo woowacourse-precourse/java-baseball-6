@@ -25,7 +25,6 @@ public class BaseBall {
     public void setComputer() {
         List<Integer> randomNumbers = GameLogic.generateRandomNumbers();
         computer = new Computer(randomNumbers);
-        System.out.println(computer);
     }
 
     public void userInput() {
