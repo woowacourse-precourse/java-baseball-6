@@ -5,21 +5,19 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import java.util.Hashtable;
 
 public class RandomNumber {
-    private final int digitCount;
     private Hashtable<Integer, Integer> threeRandomNumberTable;
-    public RandomNumber(int digitCount){
-        this.digitCount = digitCount;
 
-    }
+    private static final int MIN_RANDOM_NUMBER = BaseballController.MIN_INPUT_CHARACTER - '0';
+    private static final int MAX_RANDOM_NUMBER = BaseballController.MAX_INPUT_CHARACTER - '0';
     public RandomNumber(){
-        this(3);
+
     }
     public void generateRandomNumber(){
-        this.threeRandomNumberTable = new Hashtable<Integer, Integer>();
+        this.threeRandomNumberTable = new Hashtable<>();
         int sequenceNumber = 0;
 
-        while (sequenceNumber != this.digitCount){
-            int randomDigit = pickNumberInRange(1, 9);
+        while (sequenceNumber != BaseballController.NUMBER_OF_DIGITS){
+            int randomDigit = pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
             if (!threeRandomNumberTable.containsKey(randomDigit)){
                 threeRandomNumberTable.put(randomDigit, sequenceNumber);
                 sequenceNumber++;

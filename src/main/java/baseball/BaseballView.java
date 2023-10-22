@@ -22,7 +22,7 @@ public class BaseballView {
         return readLine();
     }
 
-    public String getContinuity(){
+    public String getRoundEndAction(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return readLine();
     }

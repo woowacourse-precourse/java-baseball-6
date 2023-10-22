@@ -44,16 +44,16 @@ public class Player {
 
 
 
-    public GameAction takeGameAction(){
+    public RoundEndAction takeGameAction(){
         String gameAction = readLine();
         if (gameAction.length() != 1){
             throw new IllegalArgumentException();
         }
         if (gameAction.equals("1")){
-            return GameAction.CONTINUE;
+            return RoundEndAction.CONTINUE;
         }
         if (gameAction.equals("2")){
-            return GameAction.QUIT;
+            return RoundEndAction.QUIT;
         }
         throw new IllegalArgumentException();
 
