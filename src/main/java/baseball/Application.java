@@ -39,7 +39,7 @@ public class Application {
             throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러2]");
         }
         // 입력 유효성 검사 3. 0이 포함되어 있는가?
-        for (int i = 0; i < ans.length(); i++) {
+        for (int i = 0; i < 3; i++) {
             if (ans.charAt(i) == '0') {
                 throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러3]");
             }
@@ -49,7 +49,7 @@ public class Application {
             throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러4]");
         }
         // 입력 유효성 검사 5. 숫자이며, 3자리이지만 중복되는 입력값 확인
-        if (ans.charAt(0) == ans.charAt(1) || ans.charAt(1) == ans.charAt(2)) {
+        if (ans.charAt(0) == ans.charAt(1) || ans.charAt(0) == ans.charAt(2) || ans.charAt(1) == ans.charAt(2)) {
             throw new IllegalArgumentException("1~9까지의 중복되지 않는 수만 입력해주세요.[에러5]");
         }
     }
