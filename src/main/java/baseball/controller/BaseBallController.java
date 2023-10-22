@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.domain.Balls;
+import baseball.domain.User;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -14,6 +16,6 @@ public class BaseBallController {
 
     public void play() {
         outputView.printMainMessage();
-        inputView.readUserNumber();
+        User user = new User(new Balls(inputView.readUserNumber()));
     }
 }

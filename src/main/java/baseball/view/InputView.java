@@ -2,6 +2,9 @@ package baseball.view;
 
 import baseball.util.ValidationUtils;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
     private static final InputView instance = new InputView();
@@ -13,11 +16,17 @@ public class InputView {
         return instance;
     }
 
-    public String readUserNumber() {
+    public List<Integer> readUserNumber() {
         System.out.print(Message.INPUT_USER_NUMBER.message);
         String input = ValidationUtils.validUserNumber(Console.readLine());
 
-        return input;
+        return convertToNumberList(input);
+    }
+
+    private static List<Integer> convertToNumberList(String input) {
+        return Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
 
