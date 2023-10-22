@@ -25,8 +25,8 @@ public class Application {
     enum PlayResult {
         BALL("볼"), STRIKE("스트라이크"), NOTHING("낫싱");
 
-        PlayResult(String text) {
-            this.label = text;
+        PlayResult(String label) {
+            this.label = label;
         }
 
         private final String label;
