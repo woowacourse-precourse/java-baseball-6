@@ -6,8 +6,17 @@ public class GuessResult {
 
     private static final int INITIAL_ZERO_COUNT = 0;
 
-    private int strikeCount = INITIAL_ZERO_COUNT;
-    private int ballCount = INITIAL_ZERO_COUNT;
+    private int strikeCount;
+    private int ballCount;
+
+    private GuessResult(final int strikeCount, final int ballCount) {
+        this.strikeCount = strikeCount;
+        this.ballCount = ballCount;
+    }
+
+    public static GuessResult createDefault() {
+        return new GuessResult(INITIAL_ZERO_COUNT, INITIAL_ZERO_COUNT);
+    }
 
     public void addStrikeCount() {
         this.strikeCount++;

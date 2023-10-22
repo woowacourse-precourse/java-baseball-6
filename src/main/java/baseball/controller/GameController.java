@@ -29,17 +29,13 @@ public class GameController {
 
     private void playGame() {
         Opponent opponent = Opponent.createDefaultOpponent();
-        while (true) {
+        GuessResult result = GuessResult.createDefault();
+        while (!result.isGameEnd()) {
             OutputView.askNumbers();
-            String userNumbersInput = inputView.getUserInput();
-            UserNumbersDto numbersRequest = new UserNumbersDto(userNumbersInput);
-            UserNumbers userNumbers = numbersRequest.toUserNumbers();
 
-            GuessResult result = opponent.calculateResult(userNumbers);
+            UserNumbers userNumbers = getUserNumbers();
+            result = opponent.calculateResult(userNumbers);
             OutputView.showResult(resultToString(result));
-            if (result.isGameEnd()) {
-                break;
-            }
         }
         OutputView.informGameOver();
         OutputView.askContinueGame();
