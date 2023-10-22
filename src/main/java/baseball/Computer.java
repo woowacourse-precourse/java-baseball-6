@@ -16,7 +16,10 @@ public class Computer {
         this.gameMachine = newGameMachine;
     }
 
-    // TODO: 구동할 때 playerNumbers 를 받아서 구동하는 것으로 변경
+    public void changeGameMachinePlayerNumbers() {
+        this.gameMachine.setPlayerNumbers(this.playerNumbers);
+    }
+
     public GameResult activateMachine() {
         if (this.gameMachine == null) {
             throw new NullPointerException("gameMachine shouldn't be NULL");
