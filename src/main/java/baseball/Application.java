@@ -13,6 +13,7 @@ public class Application {
                 game.getUserInput();
                 isFinished = true;
             } catch (IllegalArgumentException e) {
+                System.out.println(e);
                 break;
             }
         }
