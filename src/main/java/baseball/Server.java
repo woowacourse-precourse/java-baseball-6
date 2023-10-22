@@ -1,5 +1,6 @@
 package baseball;
 
+import java.lang.reflect.Constructor;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,6 +9,35 @@ public class Server {
     private static final int minimumCanCreatedValue = 1;
     private static final int maximumCanCreatedValue = 9;
 
+    private int gameStatusCode=1;
+    private Computer computer;
+    private Player player;
+    Server(){
+        this.computer = new Computer();
+        this.player = new Player();
+    }
+    public void start(){
+        var userInput = player.getPlayerInput();
+        validatePlayerInputCommand(userInput);
+
+        var userCommand = Integer.parseInt(userInput);
+        if (userCommand == 1) {
+            restart();
+        }
+        if (userCommand == 2) {
+            quit();
+        }
+    }
+
+    private void restart(){
+        computer = new Computer();
+        gameStatusCode = 1;
+        return;
+    }
+    private void quit(){
+        gameStatusCode = 0;
+        return;
+    }
     /**
      * 사용자가 입력한 값 검증
      *
@@ -25,6 +55,14 @@ public class Server {
         var validateNumberList = Util.parsingNumberToNumberList(playerNumber,defaultDigitalCount);
         validateListNumberInRange(validateNumberList);
         validateListNumberIsNotDuplicated(validateNumberList);
+        return;
+    }
+    public void validatePlayerInputCommand(String playerInput){
+        validateInputIsNumber(playerInput);
+
+        var playerCommand = Integer.parseInt(playerInput);
+        validateCommandIsAppropriate(playerCommand);
+
         return;
     }
     private void validateInputIsNumber(String playerInput){
@@ -63,6 +101,13 @@ public class Server {
         }
         throw new IllegalArgumentException("중복된 숫자가 있습니다!");
     }
-
+    private void validateCommandIsAppropriate(int playerCommand){
+        if (playerCommand == 1 || playerCommand ==2)
+            return;
+        throw new IllegalArgumentException("없는 명령입니다!");
+    }
+    public int getGameStatusCode(){
+        return gameStatusCode;
+    }
 
 }
