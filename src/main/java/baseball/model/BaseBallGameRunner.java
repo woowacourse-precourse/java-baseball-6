@@ -14,9 +14,9 @@ public class BaseBallGameRunner {
     private final String GAME_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final String USER_ACTION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    private Computer computer;
-    private GuessResultGenerator generator;
-    private List<Integer> guessNumber;
+    private final Computer computer;
+    private final GuessResultGenerator generator;
+    private final List<Integer> guessNumber;
 
     public BaseBallGameRunner() {
         this.computer = new Computer();
@@ -44,14 +44,14 @@ public class BaseBallGameRunner {
             if (!playAgain) {
                 break;
             }
-            resetAndReallocate();
+            resetComputer();
         }
         Console.close();
     }
 
-    private void resetAndReallocate() {
+    private void resetComputer() {
         reset();
-        computer = new Computer();
+        computer.resetForNewGame();
     }
 
     private void reset() {
