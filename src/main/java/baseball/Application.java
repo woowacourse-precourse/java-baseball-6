@@ -44,6 +44,7 @@ public class Application {
         StringBuilder sb;
         List<Integer> user_guess;
         String user_guess_input;
+
         while (true) {
             int strike = 0;
             int ball = 0;
@@ -51,10 +52,7 @@ public class Application {
             user_guess = new ArrayList<>();
             user_guess_input = readLine();
 
-            for (char c : user_guess_input.toCharArray()) {
-
-                user_guess.add(Integer.parseInt(String.valueOf(c)));
-            }
+            check_user_input(user_guess, user_guess_input);
 
             for (int i = 0; i < computer.size(); i++) {
 
@@ -76,6 +74,7 @@ public class Application {
 
                 }
             }
+
             if (strike == 3) {
                 sb.append(strike).append("스트라이크\n");
                 sb.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -91,6 +90,15 @@ public class Application {
                 sb.append(ball).append("볼");
             } else sb.append("낫싱");
             System.out.println(sb);
+        }
+    }
+
+    private static void check_user_input(List<Integer> user_guess, String user_guess_input) {
+        if (user_guess_input.length()!=3) throw new IllegalArgumentException();
+
+        for (char c : user_guess_input.toCharArray()) {
+            if(user_guess.contains(c)) throw new IllegalArgumentException();
+            user_guess.add(Integer.parseInt(String.valueOf(c)));
         }
     }
 }
