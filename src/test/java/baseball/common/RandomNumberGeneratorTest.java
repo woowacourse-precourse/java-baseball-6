@@ -16,7 +16,7 @@ class RandomNumberGeneratorTest {
 
     @DisplayName("3자리 고유한 숫자를 생성한다.")
     @RepeatedTest(REPEAT)
-    void createNumber() {
+    void testCreateNumber() {
         List<Integer> createdNumbers = randomNumberGenerator.createNumber(DIGIT);
         Set<Integer> uniqueNumbers = new HashSet<>(createdNumbers);
 
