@@ -13,7 +13,7 @@ public final class Numbers {
     }
 
     private void validate(final List<Integer> numbers) {
-        if (isNotProperSize(numbers) || isNotUnique(numbers)) {
+        if (hasInvalidSize(numbers) || isNotUnique(numbers)) {
             throw new IllegalArgumentException();
         }
     }
@@ -22,7 +22,7 @@ public final class Numbers {
         return numbers.size() != numbers.stream().distinct().count();
     }
 
-    private boolean isNotProperSize(final List<Integer> numbers) {
+    private boolean hasInvalidSize(final List<Integer> numbers) {
         return numbers.size() != NUMBER_LIST_SIZE;
     }
 
