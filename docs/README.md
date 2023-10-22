@@ -11,6 +11,9 @@
    + 2 : break
 
 ### game 알고리즘
++ 랜덤
+   + camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현
+   + Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
 + 출력
    + 같은 수가 같은 자리에 있으면 스트라이크
       + 3스트라이크인 경우, 게임 종료 
@@ -18,6 +21,7 @@
    + 같은 수가 전혀 없으면 낫싱
    + 볼, 스트라이크 둘 다 있으면 볼 먼저 출력
 + 입력
+   + 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
    + 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException 발생
    + 3자리 수 이상 입력
    + 0이 포함된 경우
