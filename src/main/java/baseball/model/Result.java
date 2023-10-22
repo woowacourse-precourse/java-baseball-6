@@ -1,6 +1,7 @@
 package baseball.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Result {
 
@@ -24,9 +25,9 @@ public class Result {
         this.ball = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (user.indexOf(i) == computer.indexOf(i)) {
+            if (Objects.equals(user.get(i), computer.get(i))) {
                 this.strike += 1;
-            } else if (computer.contains(user.indexOf(i))) {
+            } else if (computer.contains(user.get(i))) {
                 this.ball += 1;
             }
         }
