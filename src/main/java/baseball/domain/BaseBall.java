@@ -34,7 +34,6 @@ public class BaseBall {
     @Override
     public boolean equals(Object object){
         if(object instanceof BaseBall){
-            System.out.println(this.number == ((BaseBall) object).number);
             return this.number == ((BaseBall) object).number;
         }
         return false;
