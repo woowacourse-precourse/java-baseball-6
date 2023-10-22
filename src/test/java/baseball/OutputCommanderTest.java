@@ -49,4 +49,18 @@ class OutputCommanderTest {
         assertEquals(expected, output);
     }
 
+    @Test
+    void 플레이어의_입력에_해당하는_점수를_요구사항에_맞게_출력한다() {
+        OutputCommander outputCommander = new OutputCommander();
+        Result score = new Result(2, 1);
+        String expected = score.getResultInKorean() + "\n";
+
+        outputCommander.printGameScore(score.getResultInKorean());
+
+        String output = outputStream.toString();
+        assertEquals(expected, output);
+    }
+
+
+
 }
