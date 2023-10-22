@@ -11,6 +11,17 @@ import java.util.List;
 
 public class Application {
 
+    public List<Integer> selectRandomNumber(List<Integer> computerNumber){
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1,9);
+            if(!computerNumber.contains(randomNumber)){
+                computerNumber.add(randomNumber);
+            }
+        }
+
+        return computerNumber;
+    }
+
 
     public boolean compareMyInputNumberAndComputerNumber(String myNumber, List<Integer> computerNumber) {
         int strike = 0;
@@ -97,13 +108,7 @@ public class Application {
 
         List<Integer> computerNumber = new ArrayList<>();
         boolean isExit = false;
-
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1,9);
-            if(!computerNumber.contains(randomNumber)){
-                computerNumber.add(randomNumber);
-            }
-        }
+        computerNumber = baseballGame.selectRandomNumber(computerNumber);
 
         while (!isExit){
             String myNumber = Console.readLine();
@@ -115,6 +120,10 @@ public class Application {
                 // strike가 3이였을 때 실행되는 부분
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 int startNumOrEndNum = Integer.parseInt(Console.readLine());
+                if (startNumOrEndNum == 1){
+                    computerNumber.clear();
+                    computerNumber = baseballGame.selectRandomNumber(computerNumber);
+                }
                 isExit = baseballGame.determineFinishOrAgainGame(startNumOrEndNum);
             }
         }
