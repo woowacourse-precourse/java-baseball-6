@@ -36,7 +36,15 @@ public class Baseballs {
                 .toList();
     }
 
-    public int compare(final Baseballs other) {
+    public BaseballCompareResult compare(final Baseballs other) {
+        int strike = calculateStrike(other);
+        int contains = calculateHowManyContainsBaseball(other);
+        int ball = contains - strike;
+
+        return new BaseballCompareResult(ball, strike);
+    }
+
+    private int calculateStrike(final Baseballs other) {
         int strike = 0;
         for (int i = 0; i < baseballs.size(); i++) {
             if (baseballs.get(i).equals(other.baseballs.get(i))) {
@@ -44,5 +52,19 @@ public class Baseballs {
             }
         }
         return strike;
+    }
+
+    private int calculateHowManyContainsBaseball(final Baseballs other) {
+        int contains = 0;
+        for (Baseball baseball : baseballs) {
+            if (other.contains(baseball)) {
+                contains++;
+            }
+        }
+        return contains;
+    }
+
+    private boolean contains(final Baseball baseball) {
+        return baseballs.contains(baseball);
     }
 }
