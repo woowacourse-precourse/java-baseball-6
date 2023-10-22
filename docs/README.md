@@ -86,3 +86,4 @@ strike와 ball 계산을 위한 클래스
 - 스트라이크는 있지만, 볼은 없는 경우를 판별하는 `hasStrikeButNoBall()`
 - 스트라이크가 없지만, 볼은 있는 경우를 판별하는 `hasBallButNoStrike()`
 - 스트라이크, 볼 둘 다 없는 경우를 판별하는 `noStrikeAndBall()`
+- 3스트라이크 판별하는 `isThreeStrike()`
