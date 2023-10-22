@@ -1,6 +1,6 @@
 기능 목록
 
-1. 입력 기능 Class [Baseball_Input.java]
+1. 입력 기능 Class [BaseballInput.java]
     ( 인풋 값 에러 확인, 저장이 메인 기능)
     1) 게임 중 인풋 저장 멤버 [userInput : List]
     2) 게임 끝난 후 인풋 저장 멤버 [restartNum : int ]
@@ -17,7 +17,7 @@
         ㄴ.3자리이하, 이상 & 같은 수 있으면 에러처리
         ㄷ. 1) 에 저장
 
-2. 출력 기능 Class [Baseball_output.java]
+2. 출력 기능 Class [BaseballOutput.java]
     1) "숫자 야구 게임을 시작합니다." 출력 메소드
     2) "낫싱" 출력 메소드
     3) "%d볼" 출력 메소드
