@@ -13,6 +13,7 @@ public class BaseBallController {
     }
 
     public void play() {
+        outputView.printMainMessage();
         inputView.readUserNumber();
     }
 }
