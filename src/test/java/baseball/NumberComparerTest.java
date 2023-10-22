@@ -22,4 +22,19 @@ class NumberComparerTest {
 
         assertThat(strikeCount).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("컴퓨터와 플레이어는 같은 숫자가 다른 자리에 위치한다.")
+    void test2() {
+        int ballCount = 0;
+        List<Integer> computerNumbers = List.of(3, 5, 6);
+        String playerNumbers = "635";
+
+        NumberComparer numberComparer = new NumberComparer();
+        numberComparer.compareNumbers(playerNumbers, computerNumbers);
+
+        ballCount = numberComparer.getBallCount();
+
+        assertThat(ballCount).isEqualTo(3);
+    }
 }
