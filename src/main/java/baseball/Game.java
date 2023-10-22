@@ -17,13 +17,30 @@ public class Game {
         playGame();
     }
 
+    private ArrayList<Integer> setRandomNumber() {
+        int MAX_LENGTH = 3;
+        int MAX_NUM = 9;
+        int MIN_NUM = 1;
+
+        Random random = new Random();
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
+        do {
+            int digit = random.nextInt(MAX_NUM - MIN_NUM + 1) + MIN_NUM;
+            if(!arrayList.contains(digit)) {
+                arrayList.add(digit);
+            }
+        } while (arrayList.size() < MAX_LENGTH);
+
+        return arrayList;
+    }
+
     public void playGame() {
         Scanner input = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
         int number = input.nextInt();
         ArrayList<Integer> userNumber = convertIntToArrayList(number);
         illegalNumber(userNumber);
-        
     }
 
     public static ArrayList<Integer> convertIntToArrayList(int number) {
@@ -37,25 +54,19 @@ public class Game {
         return arrayList;
     }
 
-    public static void illegalNumber(ArrayList<Integer> arrayList) {
-        if (arrayList.size() != 3 || arrayList.contains(0)) {
+    private static void illegalNumber(ArrayList<Integer> arrayList) {
+        if (arrayList.size() != 3 || arrayList.contains(0) || isDuplicated(arrayList)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private ArrayList<Integer> setRandomNumber() {
-        int MAX_LENGTH = 3;
-        int MAX_NUM = 9;
-        int MIN_NUM = 1;
-
-        Random random = new Random();
-        HashSet<Integer> set = new HashSet<>();
-
-        do {
-            int digit = random.nextInt(MAX_NUM - MIN_NUM + 1) + MIN_NUM;
-            set.add(digit);
-        } while(set.size() < MAX_LENGTH);
-
-        return new ArrayList<>(set);
+    private static boolean isDuplicated(ArrayList<Integer> arrayList) {
+        Set<Integer> set = new HashSet<>();
+        for (int element : arrayList) {
+            if (!set.add(element)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
