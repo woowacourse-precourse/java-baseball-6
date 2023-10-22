@@ -15,7 +15,7 @@ public class User {
                 numbers.add(number);
             }
         }
-        // 입력에 3개의 숫자가 아닌 경우 IllegalArgumentException 발생
+        // 입력에 3개의 숫자가 아닌 경우 IllegalArgumentException
         if (numbers.size() != 3) {
             throw new IllegalArgumentException("3개의 숫자를 입력해야 합니다.");
         }
