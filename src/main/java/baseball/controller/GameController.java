@@ -19,12 +19,15 @@ public class GameController {
         boolean isContinueGame = true;
 
         while (isContinueGame) {
-            Computer computer = Computer.create();
-
-            PlayerController.startBattle(computer.getPlayer());
-
-            isContinueGame = checkIsContinueGame(baseBallView.continueInputView());
+            isContinueGame = startGame();
         }
+    }
+
+    private static boolean startGame() {
+        Computer computer = Computer.create();
+        PlayerController.startBattles(computer.getPlayer());
+
+        return checkIsContinueGame(baseBallView.continueInputView());
     }
 
     private static boolean checkIsContinueGame(String continueInputString) {

@@ -25,4 +25,7 @@ public class Player {
         return Numbers.create(numbers.getNumberList());
     }
 
+    public Result battle(Player player) {
+        return numbers.calculateResult(player.getNumbers());
+    }
 }

@@ -13,16 +13,21 @@ public class PlayerController {
     private PlayerController() {
     }
 
-    public static void startBattle(Player opponent) {
+    public static void startBattles (Player opponent) {
         boolean isContinueBattle = Boolean.TRUE;
 
         while (isContinueBattle) {
-            Player player = changePlayerNumbers(baseBallView.numbersInputView());
-
-            Result result = RefereeController.umpiredPlayers(player, opponent);
-
-            isContinueBattle = result.isContinue();
+            isContinueBattle = startOneBattle(opponent);
         }
+    }
+
+    private static boolean startOneBattle(Player opponent) {
+        Player player = changePlayerNumbers(baseBallView.numbersInputView());
+        Result result = opponent.battle(player);
+
+        baseBallView.resultGameView(result.toString());
+
+        return result.isContinue();
     }
 
     private static Player changePlayerNumbers(String numberString) {

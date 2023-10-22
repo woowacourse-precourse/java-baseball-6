@@ -1,7 +1,12 @@
 package baseball.domain.numbers;
 
+import static baseball.domain.numbers.NumbersConstant.MAX_INDEX;
+import static baseball.domain.numbers.NumbersConstant.MIN_INDEX;
+
+import baseball.domain.Result;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Numbers {
 
@@ -34,5 +39,32 @@ public class Numbers {
 
     private void setNumberList(List<Integer> numberList) {
         this.numberList = numberList;
+    }
+
+    public Result calculateResult(Numbers opponentNumbers) {
+        List<Integer> opponentNumberList = opponentNumbers.getNumberList();
+
+        return Result.create(calculateBall(opponentNumberList), calculateStrike(opponentNumberList));
+    }
+
+    private Integer calculateBall(List<Integer> opponentNumberList) {
+        return (int) IntStream.rangeClosed(MIN_INDEX, MAX_INDEX)
+                .filter(idx -> isBall(opponentNumberList, idx))
+                .count();
+
+    }
+
+    private boolean isBall(List<Integer> opponentNumberList, int idx) {
+        Integer inputNumber = numberList.get(idx);
+
+        return opponentNumberList.contains(inputNumber) &&
+                !inputNumber.equals(opponentNumberList.get(idx));
+    }
+
+    private Integer calculateStrike(List<Integer> opponentNumberList) {
+
+        return (int) IntStream.rangeClosed(MIN_INDEX, MAX_INDEX)
+                .filter(idx -> numberList.get(idx).equals(opponentNumberList.get(idx)))
+                .count();
     }
 }
