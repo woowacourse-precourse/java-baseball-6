@@ -24,6 +24,7 @@ public class Application {
                 application.inputPlayerNumber();
                 int strikeCount = application.calculateStrikeCount();
                 int ballCount = application.calculateBallCount();
+                boolean isNothing = application.checkNothing(strikeCount, ballCount);
             }
         }
     }
@@ -80,6 +81,13 @@ public class Application {
         }
 
         return ballCount;
+    }
+
+    public boolean checkNothing(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount == 0) {
+            return true;
+        }
+        return false;
     }
 
     public void isValidCheck(String input) {
