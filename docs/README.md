@@ -1,4 +1,4 @@
-# 구현할 기능
+# 구현할 기능 
 
 1. 서로 다른 임의의 수(1에서 9까지) 3개를 선택하는 기능
 2. 게임 시작 전 문구를 출력하는 기능
@@ -9,3 +9,24 @@
 7. 게임을 종료 문구를 출력하는 기능
 8. 게임 재시작 여부를 입력받는 기능
 9. 애플리케이션을 중지하는 기능
+
+# 구현할 기능 ver2.0
+
+### Application
+- main()
+
+### GameInput
+- getRestartOption()
+- getUserNumber()
+
+### GameOutput
+- displayStartPrompt()
+- displayResumePrompt()
+- displayQuitPrompt()
+- displayHint()
+
+### GameNumberGenerator
+- generateNumber()
+
+### GameNumberComparator
+- compareNumbers()
