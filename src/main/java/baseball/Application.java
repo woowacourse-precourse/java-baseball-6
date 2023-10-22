@@ -2,7 +2,6 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,16 +14,7 @@ public class Application {
         while (answer != 2) {
             System.out.println("숫자 야구 게임을 시작합니다.");
 
-            List<Integer> computer = new ArrayList<>();
-
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)){
-                    computer.add(randomNumber);
-                }
-            }
-
-//            System.out.println(computer);
+            Computer computer = new Computer();
 
             while (true) {
                 List<Integer> my = new ArrayList<>();
@@ -45,29 +35,13 @@ public class Application {
 
                 }
 
-                int strike = 0;
-                int ball = 0;
+                int[] compareResult = computer.compareNumber(my);
 
-                for (int i = 0; i < 3; i++) {
-                    int myNumber = my.get(i);
-
-                    for (int j = 0; j < 3; j++) {
-                        int computerNumber = computer.get(j);
-                        if (myNumber == computerNumber) {
-                            if (i == j) {
-                                strike++;
-                            } else {
-                                ball++;
-                            }
-
-                            break;
-                        }
-                    }
-                }
+                int strike = compareResult[0];
+                int ball = compareResult[1];
 
                 if (strike == 3) {
-                    System.out.println("3스트라이크");
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
 
