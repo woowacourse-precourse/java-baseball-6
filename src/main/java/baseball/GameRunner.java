@@ -1,25 +1,21 @@
 package baseball;
 
 import static baseball.domain.GameRules.*;
-import static baseball.ui.GameOutput.*;
+import static baseball.ui.GameOutput.printLoopResult;
+import static baseball.ui.GameOutput.showWinMessage;
 
 import baseball.domain.RandomNumberGenerator;
 import baseball.ui.GameInput;
 import java.util.List;
 
 public class GameRunner {
-    public void start() {
-        showStartMessage();
+    List<Integer> computerNumber;
 
-        boolean gameContinue = true;
-        while (gameContinue) {
-            List<Integer> computerNumber = RandomNumberGenerator.generate();
-            runGameLoop(computerNumber);
-            gameContinue = GameInput.getContinueInput();
-        }
+    GameRunner() {
+        this.computerNumber = RandomNumberGenerator.generate();
     }
 
-    private void runGameLoop(List<Integer> computerNumber) {
+    void runGameLoop() {
         boolean userWin = false;
         while (!userWin) {
             List<Integer> userNumber = GameInput.userNumberInput();
