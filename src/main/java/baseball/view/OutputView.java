@@ -24,7 +24,7 @@ public class OutputView {
         System.out.printf(OUTPUT_ONLY_STRIKE, n);
     }
 
-    public void setOutputBallStrike(int[] n) {
+    public void outputBallStrike(int[] n) {
         System.out.printf(OUTPUT_BALL_STRIKE, n[0], n[1]);
     }
 
