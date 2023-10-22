@@ -33,14 +33,16 @@ class PrintTest {
     @DisplayName("게임 시작 문구 출력 테스트")
     @Test
     public void printInitTest() {
-        Print.printInit();
+        Print print = new Print();
+        print.printInit();
         assertEquals("숫자 야구 게임을 시작합니다.\n", outContent.toString());
     }
 
     @DisplayName("3개의 숫자를 모두 맞힐 경우 출력 테스트")
     @Test
     public void printWinTest() {
-        Print.printWin();
+        Print print = new Print();
+        print.printWin();
         assertEquals("3스트라이크\n" +
                 "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n", outContent.toString());
     }
