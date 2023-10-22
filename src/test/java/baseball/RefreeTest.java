@@ -15,7 +15,7 @@ public class RefreeTest {
         Refree refree = new Refree();
         List<Integer> playerNum = new ArrayList<>(List.of(4,1,5));
 
-        assertThat(refree.count(computerNum, playerNum)).isEqualTo("1볼 ");
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("1볼");
     }
 
     @Test
@@ -23,7 +23,7 @@ public class RefreeTest {
         Refree refree = new Refree();
         List<Integer> playerNum = new ArrayList<>(List.of(4,1,2));
 
-        assertThat(refree.count(computerNum, playerNum)).isEqualTo("2볼 ");
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("2볼");
     }
 
     @Test
@@ -31,7 +31,7 @@ public class RefreeTest {
         Refree refree = new Refree();
         List<Integer> playerNum = new ArrayList<>(List.of(3,1,2));
 
-        assertThat(refree.count(computerNum, playerNum)).isEqualTo("3볼 ");
+        assertThat(refree.count(computerNum, playerNum)).isEqualTo("3볼");
     }
 
     @Test
