@@ -15,18 +15,13 @@ public class Player {
         this.util = new Util();
     }
 
-    public void setNumbers(List<Integer> numbers) {
-        this.numbers = numbers;
-    }
-
     public List<Integer> getNumbers() {
         return numbers;
     }
 
-    public void setPlayerNumbers() {
-        String input = inputView.inputPlayerNumber();
+    public void setPlayerNumbersWithString(String input) {
         List<Integer> inputNumbers = util.parseToNumberList(input);
 
-       setNumbers(inputNumbers);
+       this.numbers = inputNumbers;
     }
 }
