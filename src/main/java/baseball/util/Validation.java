@@ -60,7 +60,7 @@ public class Validation {
     }
 
     private static void isOneOrTwo(String number) {
-        String replacedString = number.replaceAll("[1-2]", "");
+        String replacedString = number.replaceAll("[3-9]", "");
 
         if (replacedString.isEmpty()) {
             throw new IllegalArgumentException("입력 문자열이 1 또는 2가 아닙니다.");
