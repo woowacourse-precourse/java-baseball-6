@@ -48,8 +48,9 @@ public class BaseballGame {
         output.askRestart();
         String restartInput = input.getRestartInput();
 
-        if (restartInput.equals("1"))
+        if (restartInput.equals("1")) {
             return true;
+        }
 
         return false;
     }
