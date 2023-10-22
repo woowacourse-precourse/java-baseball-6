@@ -25,8 +25,7 @@ public class BaseballGame {
         while (true) {
             this.getUserInput();
 
-            BaseballGameCounts baseballGameCounts = BaseballGameCounts.createBaseballGameCounts(computer, user);
-
+            BaseballGameCounts baseballGameCounts = new BaseballGameCounts(computer, user);
             new BaseballGameCountsMessage(baseballGameCounts).printMessage();
 
             if (baseballGameCounts.isWinCondition()) {
