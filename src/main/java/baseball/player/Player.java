@@ -14,7 +14,7 @@ public class Player {
         inputNumbers();
     }
 
-    private void inputNumbers() {
+    public void inputNumbers() {
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         this.numbers = validator.validateNumbers(input);

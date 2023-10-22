@@ -9,46 +9,74 @@ import java.util.List;
 public class Game {
     private final Player player;
     private final Computer computer;
+    private int strikeCount;
+    private int ballCount;
 
     public Game() {
         this.player = new Player();
         this.computer = new Computer();
+        this.strikeCount = 0;
+        this.ballCount = 0;
     }
 
     public void startGame() {
         play();
     }
 
+    private void initStrikeBallCount() {
+        strikeCount = 0;
+        ballCount = 0;
+    }
+
     private void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         boolean isPlayGame = true;
-        boolean isFinished = false;
+
         while (isPlayGame) {
             List<Integer> computerNumbers = computer.getNumbers();
             List<Integer> playerNumbers = player.getNumbers();
 
+            initStrikeBallCount();
+
             // 컴퓨터와 플레이어 숫자 비교 (스트라이크, 볼, 낫싱 출력)
-            boolean check = compareNumbers(computerNumbers, playerNumbers);
-            if (check == false) {
-                break;
-            }
+            compareNumbers(computerNumbers, playerNumbers);
 
             // 게임 결과 출력
-            if (true) {
+            if (strikeCount == 3) {
+                // 게임 종료
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                // 게임 재시작 여부 확인
+                checkIsContinue();
+            } else {
+                player.inputNumbers();
             }
-
-            if (true) {
-
-            }
-            // 게임 재시작 여부 확인
-            isPlayGame = checkIsContinue();
         }
-
     }
 
     private boolean compareNumbers(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         System.out.println("computerNumbers = " + computerNumbers);
         System.out.println("playerNumbers = " + playerNumbers);
+
+        for (int i = 0; i < playerNumbers.size(); i++) {
+            if (computerNumbers.get(i) == playerNumbers.get(i)) {
+                strikeCount++;
+            } else if (computerNumbers.contains(playerNumbers.get(i))) {
+                ballCount++;
+            }
+        }
+
+        if (strikeCount > 0 || ballCount > 0) {
+            if (strikeCount > 0 && ballCount > 0) {
+                System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            } else if (strikeCount > 0 && ballCount == 0) {
+                System.out.println(strikeCount + "스트라이크");
+            } else {
+                System.out.println(ballCount + "볼");
+            }
+        } else {
+            System.out.println("낫싱");
+        }
 
         return true;
     }
