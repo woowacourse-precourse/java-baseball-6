@@ -15,17 +15,15 @@ public class StateController {
 
     private ComputerModel computerModel;
 
-    public ComputerModel gameStart() {
+    public void gameStart() {
         this.computerModel = new ComputerModel(random.randomNumberGenerator());
-        outputView.printStartMessage();
-        return computerModel;
     }
 
     public boolean repeatPlayerExpect() {
-        Map<String, Integer> scoreMap = new HashMap<String, Integer>();
+        Map<String, Integer> scoreMap;
         scoreMap = computerModel.scoreCalculator(inputview.inputPlayerNumber());
         gameScoreCheck(scoreMap);
-        return !(scoreMap.get("strikeScore") == 3);
+        return scoreMap.get("strikeScore") == 3;
     }
 
     public boolean gameStateChange() {
@@ -49,6 +47,11 @@ public class StateController {
         }
         if (strikeScore == 0 && ballScore > 0) {
             outputView.printBallScore(ballScore);
+            System.out.println("");
+        }
+        if (strikeScore > 0 && ballScore > 0) {
+            outputView.printBallScore(ballScore);
+            outputView.printStrikeScore(strikeScore);
         }
     }
 }

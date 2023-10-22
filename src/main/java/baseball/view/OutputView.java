@@ -22,7 +22,7 @@ public class OutputView {
     }
 
     public void printBallScore(int ballScore) {
-      System.out.println(ballScore+"볼 ");
+      System.out.print(ballScore+"볼 ");
     }
     
     public void printStrikeScore(int strikeScore) {
