@@ -21,7 +21,7 @@ public class Result {
         return this.ball;
     }
 
-    public Result makeResult(List<Integer> computer, List<Integer> user) {
+    public void makeResult(List<Integer> computer, List<Integer> user) {
 
         this.strike = 0;
         this.ball = 0;
@@ -34,6 +34,5 @@ public class Result {
             }
         }
 
-        return new Result(this.strike, this.ball);
     }
 }
