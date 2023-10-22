@@ -8,6 +8,8 @@ public class Score {
     private GameStatus status;
 
     public Score() {
+        ball = 0;
+        strike = 0;
         status = GameStatus.PLAY;
     }
 
@@ -23,10 +25,6 @@ public class Score {
         return score;
     }
 
-    public GameStatus getStatus() {
-        return status;
-    }
-
     public String getScoreToString() {
         StringBuilder sb = new StringBuilder();
         if (ball == 0 && strike == 0) {
@@ -39,7 +37,18 @@ public class Score {
                 sb.append(String.format(GAME_SCORE_STRIKE, strike));
             }
         }
-        sb.append("\n");
         return sb.toString();
+    }
+
+    public GameStatus getStatus() {
+        return status;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
     }
 }
