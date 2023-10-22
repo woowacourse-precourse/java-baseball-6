@@ -16,11 +16,7 @@ public class User {
         validateInput(input);
         this.userNumber = Integer.parseInt(input);
     }
-    // method only for test code
-    public void setUserNumber(String input) {
-        validateInput(input);
-        this.userNumber = Integer.parseInt(input);
-    }
+
 
     public int getUserNumber() {
         return userNumber;
