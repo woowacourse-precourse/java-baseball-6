@@ -1,38 +1,39 @@
 package baseball.service;
 
-import static baseball.util.Message.CURRENT_GAME_CLOSE;
-import static baseball.util.Message.NOTHING_MESSAGE;
-import static baseball.util.Message.QUIT;
-import static baseball.util.Message.THREE_STRIKE;
-import static baseball.util.Message.USER_START;
+import static baseball.util.MessageFormatter.CURRENT_GAME_CLOSE;
+import static baseball.util.MessageFormatter.NOTHING_MESSAGE;
+import static baseball.util.MessageFormatter.QUIT;
+import static baseball.util.MessageFormatter.THREE_STRIKE;
+import static baseball.util.MessageFormatter.USER_START;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
-import baseball.util.Message;
+import baseball.util.MessageFormatter;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseballService {
 
-    public void getStart(Computer computer) {
-
+    public void startGame(Computer computer) {
         while (true) {
             System.out.print(USER_START);
-            String status = Console.readLine();
-            if (status.equalsIgnoreCase(QUIT)) {
-                System.out.println(CURRENT_GAME_CLOSE);
+            String inputStatus = Console.readLine();
+            if (inputStatus.equalsIgnoreCase(QUIT) || handleUserInput(computer, inputStatus)) {
+                handleGameExit();
                 break;
             }
-            User user = new User(status);
-
-            int[] result = playBall(computer, user);
-            if (result[0] == 3) {
-                System.out.println(Message.formatStrikeMessage(result[0]));
-                System.out.println(THREE_STRIKE);
-                break;
-            }
-            printResult(result);
         }
+    }
+
+    private boolean handleUserInput(Computer computer, String inputStatus) {
+        User user = new User(inputStatus);
+        int[] result = playBall(computer, user);
+        if (result[0] == 3) {
+            printThreeStrike(result[0]);
+            return true;
+        }
+        printOtherResult(result);
+        return false;
     }
 
     private int[] playBall(Computer computer, User user) {
@@ -41,33 +42,61 @@ public class BaseballService {
         List<Integer> comData = computer.getRandomNumber();
         for (int i = 0; i < comData.size(); i++) {
             int numericValue = Character.getNumericValue(userData.charAt(i));
-            if (comData.get(i) == numericValue) {
+            if (isStrike(comData, i, numericValue)) {
                 count[0]++;
-            }
-            if (comData.get(i) != numericValue && comData.contains(numericValue)) {
+            } else if (isBall(comData, numericValue)) {
                 count[1]++;
             }
         }
         return count;
     }
 
-    private void printResult(final int[] result) {
+    private boolean isStrike(List<Integer> comData, int index, int numericValue) {
+        return comData.get(index) == numericValue;
+    }
+
+    private boolean isBall(List<Integer> comData, int numericValue) {
+        return comData.contains(numericValue);
+    }
+
+    private void printOtherResult(final int[] result) {
         int strike = result[0];
         int ball = result[1];
 
         if (strike != 0 && ball != 0) {
-            System.out.println(Message.formatBallStrikeMessage(ball, strike));
+            handleBallStrike(ball, strike);
+        } else if (strike != 0) {
+            handleStrike(strike);
+        } else if (ball != 0) {
+            handleBall(ball);
+        } else {
+            handelNothing();
         }
+    }
 
-        if (strike != 0 && ball == 0) {
-            System.out.println(Message.formatStrikeMessage(strike));
-        }
+    private void handleGameExit() {
+        System.out.println(CURRENT_GAME_CLOSE);
+    }
 
-        if (strike == 0 && ball != 0) {
-            System.out.println(Message.formatBallMessage(ball));
-        }
-        if (strike == 0 && ball == 0) {
-            System.out.println(NOTHING_MESSAGE);
-        }
+    private void printThreeStrike(int strike) {
+        System.out.println(MessageFormatter.formatStrikeMessage(strike));
+        System.out.println(THREE_STRIKE);
+
+    }
+
+    private void handelNothing() {
+        System.out.println(NOTHING_MESSAGE);
+    }
+
+    private void handleBallStrike(int ball, int strike) {
+        System.out.println(MessageFormatter.formatBallStrikeMessage(ball, strike));
+    }
+
+    private void handleStrike(int strike) {
+        System.out.println(MessageFormatter.formatStrikeMessage(strike));
+    }
+
+    private void handleBall(int ball) {
+        System.out.println(MessageFormatter.formatBallMessage(ball));
     }
 }

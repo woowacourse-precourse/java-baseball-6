@@ -31,7 +31,7 @@
 
 
 ---
-# 객체 지향으로 개발을 했는가 [ x ]
+# 객체 지향으로 개발을 했는가 [ ~ ]
 
 ## Domain
 - ### `Computer`
@@ -45,13 +45,14 @@
 ## Service
 - ### `BaseballService`
   - 유저의 값과 비교해 스트라이크, 볼, 낫싱을 되돌려 줄 수 있다.
-  - `getStart()`메서드로 시작해 하나의 로직이 너무 큰거같다 (수정 고려)
+  - 숫자 야구 게임의 메인 로직이 담겨있다.
 - ### `GameManager`
   - 게임의 시작과 끝 로직을 담당하고있다.
 
 ## Util
 - ## `InvalidInputException`
-  - IllegalArgumentException 을 상속 받았다.
+  - `IllegalArgumentException`을 상속 받았다.
   - 1차 로직에서 예외를 커스텀하니 문제가 발생했기 때문에 일단 보류한다.
 - ## `Message`
-  - 출력 구문이 많기 때문에 `Message`라는 별도의 클래스를 두고 상수로 관리한다.
+  - 출력 구문이 많기 때문에 `MessageFormatter`라는 별도의 클래스를 두고 관리한다.
+  - 스트라이크, 볼 개 수에 맞춰 `formatting` 할 수 있다.

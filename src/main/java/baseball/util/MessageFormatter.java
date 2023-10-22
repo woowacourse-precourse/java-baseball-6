@@ -1,17 +1,20 @@
 package baseball.util;
 
-public class Message {
+public class MessageFormatter {
     /**
-     * GameManager Message
+     * GameManager MessageFormatter
      */
     public static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     public static final String INPUT_OPTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String GAME_EXIT = "게임을 종료합니다.";
     public static final String GAME_RESTART = "게임을 새로 시작합니다.";
     public static final String INVALID_INPUT = "잘못된 입력입니다. 1 또는 2를 입력하세요.";
+    public static final String OPTION_RETRY = "1";
+    public static final String OPTION_EXIT = "2";
+
 
     /**
-     * BaseballService Message
+     * BaseballService MessageFormatter
      */
     public static final String USER_START = "숫자를 입력해주세요(현재 게임을 종료하고싶다면 'q'를 입력하세요.) : ";
     public static final String QUIT = "q";
@@ -33,5 +36,4 @@ public class Message {
     public static String formatBallMessage(int ball) {
         return String.format(BALL_MESSAGE, ball);
     }
-
 }
