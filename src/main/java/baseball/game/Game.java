@@ -1,7 +1,7 @@
 package baseball.game;
 
 import baseball.object.Computer;
-import baseball.object.NumberLength;
+import baseball.Key;
 
 import java.util.stream.IntStream;
 
@@ -15,7 +15,7 @@ public class Game {
         strike = 0;
 
         String number = Computer.getNumber();
-        IntStream.range(0, NumberLength.LENGTH)
+        IntStream.range(0, Key.NUMBER_LENGTH)
                 .forEach(index -> {
                     if(answer.charAt(index) == number.charAt(index))
                         strike++;
@@ -26,19 +26,19 @@ public class Game {
 
     public static boolean printResult() {
         if(strike == 3) {
-            System.out.println(strike + "스트라이크");
+            System.out.println(strike + Key.STRIKE);
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
 
         if(ball == 0 && strike == 0)
-            System.out.println("낫싱");
+            System.out.println(Key.NOTHING);
         else if(ball == 0)
-            System.out.println(strike + "스트라이크");
+            System.out.println(strike + Key.STRIKE);
         else if(strike == 0)
-            System.out.println(ball + "볼");
+            System.out.println(ball + Key.BALL);
         else
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            System.out.println(ball + Key.BALL + " " + strike + Key.STRIKE);
 
         return false;
     }

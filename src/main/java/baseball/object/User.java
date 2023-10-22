@@ -1,5 +1,6 @@
 package baseball.object;
 
+import baseball.Key;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
@@ -24,7 +25,7 @@ public class User {
     }
 
     private static boolean isAnswerLengthRight() {
-        return answer.length() == NumberLength.LENGTH;
+        return answer.length() == Key.NUMBER_LENGTH;
     }
 
     private static boolean isAnswerDigit() {
