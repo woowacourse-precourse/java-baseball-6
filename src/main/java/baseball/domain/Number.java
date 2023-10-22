@@ -4,18 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Number {
-	private final int SIZE = 3;
 	private String number;
 
-	public Number(String number) {
-		validateSize(number);
+	public Number(String number, int size) {
+		validateSize(number, size);
 		validateDuplication(number);
 		this.number = number;
 	}
 
-	private void validateSize(String number) {
-		if(number.length()!=SIZE) {
-			throw new IllegalArgumentException(SIZE+"자리수의 숫자를 입력해주세요.");
+	private void validateSize(String number, int size) {
+		if(number.length()!=size) {
+			throw new IllegalArgumentException(size+"자리수의 숫자를 입력해주세요.");
 		}
 	}
 
