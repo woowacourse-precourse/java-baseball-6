@@ -1,5 +1,8 @@
 package baseball.util;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Validation {
 
     public final static int MAX_INPUT_LENGTH = 3;
@@ -42,17 +45,17 @@ public class Validation {
     }
 
     private static void duplicateNumber(String number) {
-        int[] nums = new int[10];
+        Set<Integer> numSet = new HashSet<>();
 
-        for (int i = 0; i < number.length(); i++) {
+        for (int i = 0; i < MAX_INPUT_LENGTH; i++) {
             int num = Character.getNumericValue(number.charAt(i));
-            nums[num]++;
+            numSet.add(num);
         }
 
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] > 1) {
-                throw new IllegalArgumentException("입력 문자열은 서로 다른 3자리 수이어야 합니다.");
-            }
+        int setSize = numSet.size();
+
+        if (setSize < MAX_INPUT_LENGTH) {
+            throw new IllegalArgumentException("입력 문자열은 서로 다른 3자리 수이어야 합니다.");
         }
     }
 
