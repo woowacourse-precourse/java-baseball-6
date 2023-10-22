@@ -19,6 +19,7 @@ public class Application {
                 int[] result = checkGuess(userNumbers, computerNumbers);
                 displayResult(result);
 
+                // 3개의 숫자를 모두 맞히면 게임 종료
                 if (result[1] == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     gameWon = true;
@@ -34,6 +35,7 @@ public class Application {
         }
     }
 
+    // 컴퓨터의 무작위 숫자 생성
     private static List<Integer> generateComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < 3) {
@@ -45,13 +47,18 @@ public class Application {
         return computerNumbers;
     }
 
+    // 사용자로부터 숫자 추측 입력을 받음
     private static int[] getUserGuess() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         int[] userNumbers = new int[3];
+
+        // 입력 검증: 3자리 숫자 여부 확인
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다.");
         }
+
+        // 입력 검증: 1에서 9 사이의 숫자 여부 확인
         for (int i = 0; i < 3; i++) {
             userNumbers[i] = Character.getNumericValue(input.charAt(i));
             if (userNumbers[i] < 1 || userNumbers[i] > 9) {
@@ -61,6 +68,7 @@ public class Application {
         return userNumbers;
     }
 
+    // 사용자의 추측을 평가하고 결과 변환
     private static int[] checkGuess(int[] userNumbers, List<Integer> computerNumbers) {
         int strikes = 0;
         int balls = 0;
@@ -74,6 +82,8 @@ public class Application {
         return new int[]{balls, strikes};
     }
 
+
+    // 게임 결과를 출력
     private static void displayResult(int[] result) {
         if (result[0] == 0 && result[1] == 0) {
             System.out.println("낫싱");
@@ -86,6 +96,7 @@ public class Application {
         }
     }
 
+    // 정수 입력을 받는 메서드 (1 또는 2만 허용)
     private static int getIntegerInput() {
         while (true) {
             try {
