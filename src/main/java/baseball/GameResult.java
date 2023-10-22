@@ -1,19 +1,19 @@
 package baseball;
 
-public class GameResult {
-    private final int strike;
-    private final int ball;
+public record GameResult(int strike, int ball) {
 
-    public GameResult(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
-    }
+    public String getResultString() {
+        if (strike == 0 && ball == 0) {
+            return "낫싱";
+        }
 
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
+        StringBuilder sb = new StringBuilder();
+        if (ball > 0) {
+            sb.append(ball).append("볼 ");
+        }
+        if (strike > 0) {
+            sb.append(strike).append("스트라이크");
+        }
+        return sb.toString();
     }
 }
