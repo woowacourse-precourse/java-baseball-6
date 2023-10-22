@@ -1,12 +1,14 @@
 package utils;
 
+import static utils.GameConstant.BALL;
+import static utils.GameConstant.NOTHING;
+import static utils.GameConstant.STRIKE;
+import static utils.GameErrorMessage.INVALID_CONVERT_MESSAGE;
+
+import java.util.List;
 import model.referee.GameScoreboard;
 
 public class BaseballMessageConvertor {
-
-    private static final String BALL = "볼";
-    private static final String STRIKE = "스트라이크";
-    private static final String NOTHING = "낫싱";
 
     public static String generateScoreMessage(GameScoreboard gameScoreboard) {
         StringBuilder builder = new StringBuilder();
@@ -26,5 +28,12 @@ public class BaseballMessageConvertor {
             builder.append(NOTHING);
         }
         return builder.toString();
+    }
+
+    public static List<Integer> convertInputToBaseballNumber(String input) {
+        if (BaseballNumberUtils.isValidBaseballNumber(input)) {
+            return BaseballNumberUtils.createBaseballNumber(input);
+        }
+        throw new IllegalArgumentException(INVALID_CONVERT_MESSAGE);
     }
 }

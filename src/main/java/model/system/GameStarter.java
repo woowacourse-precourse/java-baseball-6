@@ -7,27 +7,32 @@ import model.player.Computer;
 import model.player.User;
 import model.referee.GameScoreboard;
 import model.referee.Referee;
-import utils.BaseballNumberUtils;
+import utils.BaseballMessageConvertor;
 import view.InputView;
 import view.OutputView;
 
 public class GameStarter {
 
-    public GameStarter() {
+    public GameScoreboard start(Computer computer) {
+        List<Integer> userBaseballNumber = getUserBaseballNumber();
+        User user = User.create(userBaseballNumber);
+
+        Referee referee = Referee.create(user, computer);
+
+        GameScoreboard gameResult = judgeGameScore(referee);
+        return gameResult;
     }
 
-    public GameScoreboard start(Computer computer) {
-        GameScoreboard gameScoreboard = new GameScoreboard();
+    private GameScoreboard judgeGameScore(Referee referee) {
+        GameScoreboard judgeScoreboard = referee.JudgeBaseBallGame();
+        OutputView.write(judgeScoreboard);
+        return judgeScoreboard;
+    }
+
+    private List<Integer> getUserBaseballNumber() {
         OutputView.write(INPUT_PROMPT_MESSAGE);
         String input = InputView.readInput();
-        if (BaseballNumberUtils.isValidBaseballNumber(input)) {
-            List<Integer> baseballNumber = BaseballNumberUtils.createBaseballNumber(input);
-            User user = User.create(baseballNumber);
-            Referee referee = Referee.create(user, computer);
-            gameScoreboard = referee.JudgeBaseBallGame();
-            OutputView.write(gameScoreboard);
-        }
-        return gameScoreboard;
+        return BaseballMessageConvertor.convertInputToBaseballNumber(input);
     }
 
 }
