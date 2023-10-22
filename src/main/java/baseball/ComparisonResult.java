@@ -10,6 +10,14 @@ public class ComparisonResult {
     }
 
     /**
+     * 3스트라이크 여부를 확인합니다.
+     * @return 3스트라이크 여부
+     */
+    public boolean isThreeStrike() {
+        return strike == 3;
+    }
+
+    /**
      * 볼, 스트라이크 개수에 따라 결과 문자열을 만들어줍니다.
      * @return 예시 1: <code>1볼 1스트라이크</code><br>
      *         예시 2: <code>3스트라이크</code><br>
