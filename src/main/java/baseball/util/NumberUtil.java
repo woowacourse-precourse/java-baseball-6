@@ -1,9 +1,6 @@
 package baseball.util;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class NumberUtil {
 
@@ -12,12 +9,9 @@ public class NumberUtil {
     }
 
     public static List<Integer> converStringToList(String numberString) {
-        ArrayList<Integer> numberList = new ArrayList<>();
-        for (int i = 0; i < numberString.length(); i++) {
-            numberList.add(Character.getNumericValue(numberString.charAt(i)));
-        }
-
-        return numberList;
+        return numberString.chars()
+                .mapToObj(Character::getNumericValue)
+                .toList();
     }
 
     public static void validate(String number) {
@@ -42,10 +36,8 @@ public class NumberUtil {
     }
 
     protected static void validateNumber(String number) {
-        for (int i = 0; i < number.length(); i++) {
-            if (!Character.isDigit(number.charAt(i))) {
-                throw new IllegalArgumentException("입력값은 정수이어야 합니다.");
-            }
+        if (number.chars().anyMatch(ch -> !Character.isDigit(ch))) {
+            throw new IllegalArgumentException("입력값은 정수이어야 합니다.");
         }
     }
 
@@ -56,22 +48,16 @@ public class NumberUtil {
     }
 
     protected static void validateRange(String number) {
-        List<Integer> numberList = NumberUtil.converStringToList(number);
-
-        for (int integerNum : numberList) {
-            if (integerNum < 1 || integerNum > 9) {
-                throw new IllegalArgumentException("입력되는 각 숫자는 1 이상 9 이하의 정수로 이루어져야 합니다.");
-            }
+        if (number.chars().anyMatch(n -> n < 1 || n > 9)) {
+            throw new IllegalArgumentException("입력되는 각 숫자는 1 이상 9 이하의 정수로 이루어져야 합니다.");
         }
     }
 
     protected static void validateUnique(String number) {
-        Set<Character> numberSet = new HashSet<>();
-        for (char digit : number.toCharArray()) {
-            if (numberSet.contains(digit)) {
-                throw new IllegalArgumentException("입력되는 각 숫자는 서로 다른 숫자이어야 합니다.");
-            }
-            numberSet.add(digit);
+        if (number.chars()
+                .distinct()
+                .count() != number.length()) {
+            throw new IllegalArgumentException("입력되는 각 숫자는 서로 다른 숫자이어야 합니다.");
         }
     }
 }
