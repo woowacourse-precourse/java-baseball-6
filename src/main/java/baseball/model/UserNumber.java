@@ -18,11 +18,11 @@ public class UserNumber {
         return Collections.unmodifiableList(this.userNumber);
     }
 
-    public static List<Integer> changeStringtoList(String string) {
+    private static List<Integer> changeStringtoList(String string) {
         return getIntegers(string);
     }
 
-    public static List<Integer> getIntegers(String string) {
+    private static List<Integer> getIntegers(String string) {
         List<Integer> list = new ArrayList<>();
 
         for (int i = 0; i < string.length(); i++) {
