@@ -1,11 +1,12 @@
 package baseball.domain.result;
 
 import static baseball.domain.numbers.NumbersConstant.NUMBER_COUNT;
-import static baseball.domain.result.ResultContant.BALL_STRING;
-import static baseball.domain.result.ResultContant.NON_STRING;
-import static baseball.domain.result.ResultContant.STRIKE_STRING;
 
 public class Result {
+    public static final String STRIKE_STRING = "스트라이크";
+    public static final String BALL_STRING = "볼";
+    public static final String NON_STRING = "낫싱";
+
     private Integer ball;
     private Integer strike;
 
