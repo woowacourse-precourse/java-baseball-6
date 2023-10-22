@@ -123,6 +123,7 @@ public class Game {
         if (isNothing(strike, ball)) {
             printNothing();
         }
+        System.out.println();
     }
 
     private boolean isNothing(int strike, int ball) {
@@ -133,7 +134,7 @@ public class Game {
     }
 
     private void printNothing() {
-        System.out.println(NOTHING);
+        System.out.print(NOTHING);
     }
 
     private void printBall(int ball) {
@@ -146,12 +147,10 @@ public class Game {
         if (strike > 0) {
             System.out.print(strike + STRIKE);
         }
-        endGame(strike);
     }
 
     private boolean endGame(int strike) {
         if (strike == STRIKE_SUCCESS) {
-            System.out.println();
             System.out.println(END_GAME_STRING);
             return true;
         }
