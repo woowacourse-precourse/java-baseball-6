@@ -10,24 +10,22 @@ import java.util.Objects;
 import static baseball.config.GameConfig.GAME_RESTART_FLAG;
 
 public class Game {
-    private Number computerNumber;
-    private Number playerNumber;
-    private Result result;
-
     public void start() {
-        OutputView.printGameStart();
+        OutputView.printInitialGameStart();
         do {
-            computerNumber = Number.generateRandomNumbers();
-            play();
+            play(Number.generateRandomNumbers());
         } while (!isRestart());
     }
 
-    private void play() {
-        do {
-            playerNumber = Number.inputPlayerNumbers();
-            result = Result.create(playerNumber, computerNumber);
+    private void play(Number computerNumber) {
+        while (true) {
+            Number playerNumber = Number.inputPlayerNumbers();
+            Result result = Result.create(playerNumber, computerNumber);
             result.print();
-        } while (!result.checkGameOver());
+            if (result.checkGameOver()) {
+                break;
+            }
+        }
     }
 
     private static boolean isRestart() {
