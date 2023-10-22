@@ -6,4 +6,8 @@ public class Referee {
 		return computerBalls.compare(playerBalls);
 	}
 
+	public String notifyGameResult(GameResult gameResult) {
+		return GameResultMessage.createMessage(gameResult);
+	}
+
 }

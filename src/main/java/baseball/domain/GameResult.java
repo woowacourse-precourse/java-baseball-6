@@ -23,4 +23,8 @@ public class GameResult {
 		return ballCount;
 	}
 
+	public boolean isNothing() {
+		return this.ballCount == 0 && this.strikeCount == 0;
+	}
+
 }
