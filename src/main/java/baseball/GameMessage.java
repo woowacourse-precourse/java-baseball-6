@@ -22,9 +22,10 @@ public class GameMessage {
     public void showResult(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             System.out.println(NOTHING);
+            return;
         }
         if (strike > 0 && ball > 0) {
-            System.out.println(ball + BALL + strike + STRIKE);
+            System.out.println(ball + BALL + " " + strike + STRIKE);
         }
         if (strike > 0 && ball == 0) {
             System.out.println(strike + STRIKE);
