@@ -4,9 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
     private String[] computerNumbers;
+    private String[] playerNumbers;
     private GameMachine gameMachine;
-    // TODO: playerNumbers 멤버 변수 추가
     private static final int TOTAL_COMPUTER_NUMBERS = 3;
+
+    public void setPlayerNumbers(String[] playerNumbers) {
+        this.playerNumbers = playerNumbers;
+    }
 
     // TODO: 게임 머신을 받아서 setting 하는 것으로 변경
     public void setGameMachine(String[] playerNumbers) {
