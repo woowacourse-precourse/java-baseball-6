@@ -12,7 +12,6 @@ public class Application {
 
         List<Integer> computer = makeRandomNumber();
         while (true) {
-            System.out.println("컴퓨터가 입력한 값: " + computer);
             System.out.print("숫자를 입력해주세요 : ");
 
             int strike = 0;
