@@ -6,6 +6,6 @@ public class RandomNumberGenerator implements NumberGenerator{
 
     @Override
     public int generate() {
-       return Randoms.pickNumberInRange(1, 9);
+        return Randoms.pickNumberInRange(1, 9);
     }
 }
