@@ -1,27 +1,16 @@
 package baseball.utill;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Converter {
 
 
     public List<Integer> convertToNumericList(List<String> stringList) {
-        List<Integer> integerList = new ArrayList<>();
-
-        for (String number : stringList) {
-            integerList.add(convertToNumeric(number));
-        }
-        return integerList;
+        return stringList.stream()
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
     }
-
-    private int convertToNumeric(String number) {
-
-        try {
-            return Integer.parseInt(number);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-    }
-
 }
