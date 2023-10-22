@@ -1,12 +1,14 @@
 package baseball;
 
+import java.io.IOException;
+
 public class GameController {
     private static final UserService userService = new UserService();
     private static final ComputerService computerService = new ComputerService();
     private static final GameViewer gameViewer = new GameViewer();
     private static Game game;
 
-    public void startGame() {
+    public void startGame(){
         gameViewer.startGameMessage();
 
         boolean willRestart = true;
@@ -18,11 +20,11 @@ public class GameController {
 
             boolean won = game.checkAndCalcUserGuess(user, computer);
 
+            gameViewer.displayGuessResult(game.getStrike(), game.getBall());
+
             if (won) {
                 willRestart = gameViewer.hasNewGameMessage();
                 computer = computerService.createComputer();
-            } else {
-                gameViewer.displayGuessResult(game.getStrike(), game.getBall());
             }
         }
 

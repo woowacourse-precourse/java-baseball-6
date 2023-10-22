@@ -9,16 +9,16 @@ public class Game {
         return ball;
     }
 
-    private int strike;
-    private int ball;
-    private User user;
-    private Computer computer;
+    private int strike = 0;
+    private int ball = 0;
+
+    private int N = Variables.NUM.getValue();
 
     public boolean checkAndCalcUserGuess(User user, Computer computer) {
         // Todo : user.list와 computer.list를 비교해 3스트라이크이면 3 리턴
         // Todo : game의 필드 변수 strike와 ball 값 계산
 
-        for (int i = 0; i < user.getUserList().size(); i++) {
+        for (int i = 0; i < N; i++) {
             if (user.getUserList().get(i).equals(computer.getComputerList().get(i))) {
                 strike++;
             } else if (computer.getComputerList().contains(user.getUserList().get(i))) {
