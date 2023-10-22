@@ -10,6 +10,7 @@ public class GuideMessageConstant {
     public static final String STRIKE_MESSAGE = "스트라이크";
     public static final String BALL_MESSAGE = "볼";
     public static final String NOTHING_MESSAGE = "낫싱";
+    public static final String BLANK = " ";
 
     //    Game End
     public static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";

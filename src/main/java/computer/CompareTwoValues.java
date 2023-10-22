@@ -55,7 +55,7 @@ public class CompareTwoValues {
         } else if (ball == 0 && strike >= 1) {
             System.out.println(strike + GuideMessageConstant.STRIKE_MESSAGE);
         } else if (ball >= 1 && strike >= 1) {
-            System.out.println(ball + GuideMessageConstant.BALL_MESSAGE + strike + GuideMessageConstant.STRIKE_MESSAGE);
+            System.out.println(ball + GuideMessageConstant.BALL_MESSAGE + GuideMessageConstant.BLANK + strike + GuideMessageConstant.STRIKE_MESSAGE);
         }
     }
 }
