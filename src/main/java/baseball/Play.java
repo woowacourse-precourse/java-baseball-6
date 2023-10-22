@@ -16,6 +16,8 @@ public class Play {
             userNumber = Console.readLine();        // 사용자 입력값
             if (userNumber.length() != 3) {         // 3자리만 입력 가능
                 throw new IllegalArgumentException("3자리의 숫자를 입력해주세요");
+            } else if (userNumberCheck(userNumber)) { // 중복 숫자 검증 로직
+                throw new IllegalArgumentException("중복되지 않은 숫자를 입력해주세요");
             } else if ( userNumber.contains("0")) { // 0 입력 불가
                 throw new IllegalArgumentException("1~9까지의 수 3자리를 입력하세요.");
             }
@@ -85,5 +87,19 @@ public class Play {
             }
         }
         return comRandomNumberArr;          // 생성된 번호 리턴
+    }
+
+    public boolean userNumberCheck(String userNumber) {         // 사용자의 입력값에 중복된 숫자 있으면 true
+        String[] number = userNumber.split("");
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i == j) continue;
+                if (number[i].equals(number[j])) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
