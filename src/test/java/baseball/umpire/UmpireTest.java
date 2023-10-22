@@ -7,6 +7,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static baseball.AppConfig.DIGIT_NUM;
 
 public class UmpireTest {
@@ -23,13 +25,10 @@ public class UmpireTest {
     void umpireStrikeCheck(){
         //given
         String ball = "123";
-        String batt = "224";
+        String batt = "153";
         int compareCount = 0;
         Boolean[] strikeCheckingBoard = new Boolean[DIGIT_NUM];
-
-        for(int i = 0 ; i < DIGIT_NUM ; i++){
-            strikeCheckingBoard[i] = false;
-        }
+        Arrays.fill(strikeCheckingBoard, false);
 
         for(int i = 0 ; i < DIGIT_NUM ; i++){
             if(ball.charAt(i) == batt.charAt(i)){
