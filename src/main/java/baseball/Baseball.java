@@ -96,14 +96,7 @@ public class Baseball {
         if (!userInputValidation.isValidRestartNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }
-        if (inputNumber.length() != 1) {
-            throw new IllegalArgumentException();
-        }
-        Integer restartNumber = Integer.parseInt(inputNumber);
-        if (restartNumber > 3 || restartNumber <= 0) {
-            throw new IllegalArgumentException();
-        }
+        int restartNumber = Integer.parseInt(inputNumber);
         return restartNumber == 1;
     }
-
 }
