@@ -3,7 +3,7 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-public class RandomNumber {
+public class Computer {
 
   static final int NUMBER_LENGTH = 3;
   static final int MAX_DIGIT = 9;
@@ -11,7 +11,7 @@ public class RandomNumber {
 
   private int randomNumber;
 
-  public RandomNumber() {
+  public Computer() {
     this.randomNumber = generateUniqueRandomNumber();
   }
 

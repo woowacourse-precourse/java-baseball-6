@@ -15,8 +15,8 @@ public class Game {
   private static final String INPUT_QUIT = "2";
   private static final String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞췄습니다 게임종료";
   private static final String OUTPUT_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-  private final RandomNumber computer = new RandomNumber();
-  private final UserNumber user = new UserNumber();
+  private final Computer computer = new Computer();
+  private final User user = new User();
   private boolean quit = false;
 
   public Game() {

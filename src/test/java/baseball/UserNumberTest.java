@@ -11,11 +11,11 @@ import org.mockito.Mockito;
 
 class UserNumberTest {
 
-  private UserNumber userNumber;
+  private User userNumber;
 
   @BeforeEach
   void setUp() {
-    userNumber = new UserNumber();
+    userNumber = new User();
   }
 
   @Test

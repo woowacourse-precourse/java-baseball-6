@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 
 public class RandomNumberTest {
 
-  private RandomNumber computer;
+  private Computer computer;
 
   @BeforeEach
   void createComputerAndSetRandomNumber() {
-    computer = new RandomNumber();
+    computer = new Computer();
   }
 
   @Test

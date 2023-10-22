@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
-public class UserNumber {
+public class User {
 
   private static final String REGEX = "[0-9]{3}";
   private static final int VALID_LENGTH = 3;
@@ -12,7 +12,7 @@ public class UserNumber {
 
   private int userNumber;
 
-  public UserNumber() {
+  public User() {
   }
 
   public int getUserNumber() {
