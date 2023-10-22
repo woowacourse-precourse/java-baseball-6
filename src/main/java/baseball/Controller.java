@@ -6,9 +6,7 @@ import baseball.model.Game;
 import baseball.model.JudgeResult;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Controller {
     private static final String NUMBER_INPUT_ERROR = "숫자를 입력해야 합니다.";
@@ -19,9 +17,11 @@ public class Controller {
     private static final int STOP = 2;
 
     private final View view;
+    private final Game game;
 
-    public Controller(View view) {
+    public Controller(View view, Game game) {
         this.view = view;
+        this.game = game;
     }
 
     public void run() {
@@ -48,7 +48,7 @@ public class Controller {
     }
 
     private void startGame() {
-        Game game = new Game();
+        game.init();
         while (!game.isGameOver) {
             String userInput = view.getUserNumberInput();
             validDigitPattern(userInput);

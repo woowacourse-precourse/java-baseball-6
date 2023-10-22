@@ -16,8 +16,7 @@ public class View {
 
     public String getUserNumberInput() {
         System.out.print(BASEBALL_NUMBER_PROMPT_MSG);
-        String userInput = Console.readLine().strip();
-        return userInput;
+        return Console.readLine().strip();
     }
 
     public void printJudgeResult(JudgeResult judgeResult) {

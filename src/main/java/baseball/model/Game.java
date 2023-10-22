@@ -4,11 +4,15 @@ import java.util.List;
 
 public class Game {
     private static final int STRIKE_COUNT_PER_OUT = 3;
-    private final BaseballNumbers computerBaseballNumbers;
+    private BaseballNumbers computerBaseballNumbers;
     public boolean isGameOver = false;
 
     public Game() {
-        this.computerBaseballNumbers = BaseballNumbers.createRandomBaseballNumbers();
+    }
+
+    public void init() {
+        computerBaseballNumbers = BaseballNumbers.createRandomBaseballNumbers();
+        isGameOver = false;
     }
 
     public JudgeResult judge(BaseballNumbers userBaseballNumbers) {
