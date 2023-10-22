@@ -12,9 +12,9 @@ public class NumberMatcher {
 
         for (int i = 0; i < NUMBER_SIZE; i++) {
             if (userNumber.get(i).equals(answerNumber.get(i))) {
-                result.incrementStrike();
+                result = result.incrementStrike();
             } else if (answerNumber.contains(userNumber.get(i))) {
-                result.incrementBall();
+                result = result.incrementBall();
             }
         }
 
