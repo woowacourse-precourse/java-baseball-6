@@ -7,11 +7,7 @@ import java.util.List;
 
 public class Computer {
 	
-	public List<Integer> computerNumber;
-	
-	public Computer() {
-		computerNumber = new ArrayList<>();
-	}
+	public List<Integer> computerNumber = new ArrayList<>();
 	
 	public void setComputerNumber() {	
 		while (computerNumber.size() < 3) {

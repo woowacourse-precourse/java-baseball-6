@@ -1,15 +1,15 @@
 ## 📌 기능 목록
 
 ### Computer
-- [ ] 게임에 필요한 3개의 숫자(정수)를 가짐
-- [ ] 컴퓨터가 가질 숫자(정수)를 생성
-  - [ ] 랜덤한 숫자를 생성
-  - [ ] 숫자의 범위는 1부터 9까지
-  - [ ] 랜덤값 추출은 [우테코에서 제공하는 라이브러리](https://github.com/woowacourse-projects/mission-utils#mission-utils) `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
+- [x] 게임에 필요한 3개의 숫자(정수)를 가짐
+- [x] 컴퓨터가 가질 숫자(정수)를 생성
+  - [x] 랜덤한 숫자를 생성
+  - [x] 숫자의 범위는 1부터 9까지
+  - [x] 랜덤값 추출은 [우테코에서 제공하는 라이브러리](https://github.com/woowacourse-projects/mission-utils#mission-utils) `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
 
 
 ### Player
-- [ ] 게임에 필요한 3개의 숫자(정수)를 가짐
+- [x] 게임에 필요한 3개의 숫자(정수)를 가짐
 - [ ] 플레이어가 입력한 숫자를 가져옴
   - [ ] 검증(예외처리)이 완료된 값을 가져옴
 
