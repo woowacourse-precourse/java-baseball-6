@@ -14,7 +14,7 @@ public class StubNumberGenerator implements NumberGenerator {
     @Override
     public List<Integer> generate() {
         return Arrays.stream(numbers.split(""))
-            .map(Integer::parseInt)
-            .toList();
+                .map(Integer::parseInt)
+                .toList();
     }
 }

@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
-
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -52,8 +51,8 @@ class GameCommandTest {
 
     static Stream<Arguments> invalidParameters() {
         return Stream.of(
-            Arguments.of("3", "1또는 2를 입력해주세요", "다른 숫자를 입력하면 예외가 발생한다."),
-            Arguments.of("ad", "1또는 2를 입력해주세요", "숫자말고 다른 값을 입력하면 예외가 발생한다.")
+                Arguments.of("3", "1또는 2를 입력해주세요", "다른 숫자를 입력하면 예외가 발생한다."),
+                Arguments.of("ad", "1또는 2를 입력해주세요", "숫자말고 다른 값을 입력하면 예외가 발생한다.")
         );
     }
 }
