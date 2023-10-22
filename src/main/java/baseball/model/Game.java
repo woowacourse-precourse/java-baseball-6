@@ -34,6 +34,10 @@ public class Game {
         this.result.reset();
     }
 
+    public boolean isRunning() {
+        return this.result.isRunning();
+    }
+
     public Result getResult() {
         return this.result;
     }
