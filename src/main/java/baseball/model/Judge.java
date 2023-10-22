@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.BallStatus;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -22,14 +23,14 @@ public class Judge {
         List<String> scoreBoardList = new ArrayList<>();
         for (int i = 0; i < computerNumberMap.size(); i++) {
             if (computerNumberMap.get(i) == userNumberList.get(i)) { //map의 인덱스의 밸류와 사용자 숫자 리스트의 값이 같으면 스트라이크
-                scoreBoardList.add("STRIKE");
+                scoreBoardList.add(BallStatus.STRIKE.getBallStatus());
                 continue;
             }
             if (computerNumberMap.containsValue(userNumberList.get(i))) { //위의 if문을 지나지 않았을 때 그 값을 가지고 있다면 볼
-                scoreBoardList.add("BALL");
+                scoreBoardList.add(BallStatus.BALL.getBallStatus());
                 continue;
             }
-            scoreBoardList.add("NOTHING"); // 둘 다 아니라면 NOTHING
+            scoreBoardList.add(BallStatus.NOTHING.getBallStatus()); // 둘 다 아니라면 NOTHING
 
         }
         return new ScoreBoard(scoreBoardList);
