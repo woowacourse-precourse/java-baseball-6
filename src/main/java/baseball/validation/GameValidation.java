@@ -13,6 +13,13 @@ public class GameValidation {
                                                         verifyForValueIsDuplicate(input_value);
     }
 
+    public static boolean verifyForRetryValue(String input_retry){
+        return verifyForValueIsEmpty(input_retry) &&
+                        verifyForValueLength(input_retry,1) &&
+                                verifyForValueIsNumeric(input_retry) &&
+                                        verifyForRetryConditionIsCorrect(input_retry);
+    }
+
     private static boolean verifyForValueIsEmpty(String value) {
         if (value.equals("")) {
             throw new IllegalArgumentException("입력 값이 빈 문자열입니다.");
@@ -59,4 +66,10 @@ public class GameValidation {
         return true;
     } // use case : 1~9의 값
 
+    private static boolean verifyForRetryConditionIsCorrect(String value){
+        if (!value.matches("[12]")){
+            throw new IllegalArgumentException("게임을 새로시작 혹은 종료하기 위해선 1 또는 2 값을 입력하여야합니다.");
+        }
+        return true;
+    }
 }

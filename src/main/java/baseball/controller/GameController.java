@@ -25,5 +25,9 @@ public class GameController {
             }
         }
         OutputView.outputForRetryCondition();
+        String user_input_retry = InputView.readLineByConsole();
+        if (GameValidation.verifyForRetryValue(user_input_retry)){
+            //TODO 재도전 처리 또는 종료
+        }
     }
 }
