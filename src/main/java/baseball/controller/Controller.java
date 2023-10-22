@@ -8,13 +8,13 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class Controller {
-    private static Answer answer;
-    private static final NumberGenerator generator = new NumberGenerator();
-    private static final InputView inputView = new InputView();
-    private static final OutputView outputView = new OutputView();
-    private static boolean flag = true;
+    private Answer answer;
+    private final NumberGenerator generator = new NumberGenerator();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
+    private boolean flag = true;
 
-    public static void run() {
+    public void run() {
         inputView.greetingMsg();
         answer = generator.createAnswer();
 
@@ -27,7 +27,7 @@ public class Controller {
         } while (flag);
     }
 
-    private static void checkGameDone(GameScore gameScore) {
+    private void checkGameDone(GameScore gameScore) {
         if (gameScore.isUserFindAnswer()) {
             outputView.roundEndMsg();
             inputView.askRestartMsg();
@@ -35,7 +35,7 @@ public class Controller {
         }
     }
 
-    private static void receiveDecision() {
+    private void receiveDecision() {
         if (inputView.receiveRestartDecisionFromUser()) {
             answer = generator.createAnswer();
             return;
