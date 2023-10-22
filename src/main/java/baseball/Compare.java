@@ -1,23 +1,18 @@
 package baseball;
 
-import java.util.List;
+import java.util.List;public class Compare {
+    public int[] compareNumbers(List<String> computerNumList, List<String> userNumList) {
+        int entire = entireCount(computerNumList, userNumList);
+        int strike = strikeCount(computerNumList, userNumList);
+        int ball = entire - strike;
 
-public class Compare {
-    int entire = 0;
-    int ball = 0;
-    int strike = 0;
-
-    public int[] compareNumber(List<String> computerNumList, List<String> userNumList) {
-        entireCount(computerNumList, userNumList);
-        strikeCount(computerNumList, userNumList);
-        ballCount();
-
-        return new int[]{ball, strike};
+        return new int[] {ball, strike};
     }
 
     public int entireCount(List<String> computerNumList, List<String> userNumList) {
-        for (int i = 0; i < computerNumList.size(); i++) {
-            if (computerNumList.contains(userNumList.get(i))) {
+        int entire = 0;
+        for (String userNum : userNumList) {
+            if (computerNumList.contains(userNum)) {
                 entire++;
             }
         }
@@ -25,6 +20,7 @@ public class Compare {
     }
 
     public int strikeCount(List<String> computerNumList, List<String> userNumList) {
+        int strike = 0;
         for (String userNum : userNumList) {
             if (userNumList.indexOf(userNum) == computerNumList.indexOf(userNum)) {
                 strike++;
@@ -32,9 +28,5 @@ public class Compare {
         }
         return strike;
     }
-
-    public int ballCount() {
-        ball = entire - strike;
-        return ball;
-    }
 }
+
