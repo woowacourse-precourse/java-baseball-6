@@ -6,13 +6,13 @@ public class Restart {
     private static final int RESTART = 1;
     private static final int EXIT = 2;
 
-    public Restart(int decision) {
+    private Restart(int decision) {
         this.decision = decision;
     }
 
     public static Restart restartFactory(String userInput) {
 
-        UserInput.checkIsNumber(userInput);
+        InputUtil.checkIsNumber(userInput);
         int decision = Integer.parseInt(userInput);
         restartValidation(decision);
         return new Restart(decision);
