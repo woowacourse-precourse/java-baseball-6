@@ -6,6 +6,6 @@ public class GameConstants {
     public static final int THREE_STRIKE = 3;
     public static final int LIST_SIZE = 3;
 
-    public static final String NOT_NUMBER = "입력 형태가 숫자가 아닙니다.";
-    public static final String NOT_VALID_LENGTH = "입력 형태가 숫자가 아닙니다.";
+    public static final String NOT_A_NUMBER = "입력 형태가 숫자가 아닙니다.";
+    public static final String NOT_VALID_LENGTH = "입력 길이가 올바르지 않습니다.";
 }

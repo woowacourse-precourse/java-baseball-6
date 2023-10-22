@@ -27,7 +27,7 @@ public class Person {
 
     private void validateInput(String input) {
         if (!input.matches("\\d+")) {
-            throw new IllegalArgumentException(GameConstants.NOT_NUMBER);
+            throw new IllegalArgumentException(GameConstants.NOT_A_NUMBER);
         }
 
         if (input.length() != GameConstants.LIST_SIZE) {
