@@ -13,18 +13,16 @@ public class Config {
         return new InputOutputHandler(inputValidator());
     }
 
-    public NumberBaseballIO numberBaseballIO() {return new NumberBaseballIO(inputOutputHandler());}
+    public NumberBaseballIO numberBaseballIO() {
+        return new NumberBaseballIO(inputOutputHandler(),numberBaseballValidator());
+    }
 
     public User user() {
         return new User(numberBaseballIO());
     }
 
-    public NumberBaseball numberBaseball(int numberLimit) {
-        return new NumberBaseball(
-                numberLimit,
-                numberBaseballIO(),
-                numberBaseballValidator(),
-                user());
+    public NumberBaseball numberBaseball() {
+        return new NumberBaseball(user());
     }
 
 }

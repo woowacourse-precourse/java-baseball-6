@@ -1,15 +1,18 @@
 package baseball.domain;
 
 import baseball.domain.constants.NumberBaseballConstants;
+import baseball.domain.validators.NumberBaseballValidator;
 import baseball.utils.StringUtils;
 
 import java.util.List;
 
 public class NumberBaseballIO {
     private final InputOutputHandler inputOutputHandler;
+    private final NumberBaseballValidator numberBaseballValidator;
 
-    public NumberBaseballIO(InputOutputHandler inputOutputHandler) {
+    public NumberBaseballIO(InputOutputHandler inputOutputHandler, NumberBaseballValidator numberBaseballValidator) {
         this.inputOutputHandler = inputOutputHandler;
+        this.numberBaseballValidator = numberBaseballValidator;
     }
 
     public void printStart() {
@@ -17,11 +20,12 @@ public class NumberBaseballIO {
     }
 
     public List<Integer> inputGuessAnswer(int numberLength) {
+        printStart();
         String input = inputOutputHandler.inputUniqueNumbers(numberLength);
         return StringUtils.toIntegerList(input);
     }
 
-    public void printGuessResult(Result result) {
+    public void printResult(Result result) {
         inputOutputHandler.printlnText(result.toString());
     }
 
@@ -33,13 +37,15 @@ public class NumberBaseballIO {
                 NumberBaseballConstants.GAME_OVER +"를 입력하세요.");
     }
 
-    public int getUserEndChoice() {
-        return inputOutputHandler.inputOneNumber();
+    public int inputUserContinueGame() {
+        int choice = inputOutputHandler.inputOneNumber();
+        numberBaseballValidator.validateContinueGame(choice);
+        return choice;
     }
 
-    public int printEndMessageAndInputChoice(int numberLimit) {
+    public int showAndReceiveContinueGame(int numberLimit) {
         printEndMessage(numberLimit);
-        return getUserEndChoice();
+        return inputUserContinueGame();
     }
 
 

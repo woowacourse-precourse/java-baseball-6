@@ -2,8 +2,6 @@ package baseball.domain;
 
 import baseball.domain.constants.NumberBaseballConstants;
 
-import java.util.List;
-
 public class Result {
 
     private final int ball;
@@ -14,13 +12,13 @@ public class Result {
         this.strike = strike;
     }
 
-    public static Result of(List<Integer> answer, List<Integer> guessAnswer) {
+    public static Result create(Answer answer, Answer guessAnswer) {
         int ballCount = 0;
         int strikeCount = 0;
 
-        for(int i=0; i<guessAnswer.size(); i++) {
-            int number = guessAnswer.get(i);
-            int index = answer.indexOf(number);
+        for(int i=0; i<guessAnswer.getAnswer().size(); i++) {
+            int number = guessAnswer.getAnswer().get(i);
+            int index = answer.getAnswer().indexOf(number);
 
             if(index == -1) continue;
 
@@ -42,7 +40,7 @@ public class Result {
         return result.trim();
     }
 
-    public boolean isCorrect() {
-        return ball == 0 && strike == 3;
+    public void showResult(NumberBaseballIO numberBaseballIO) {
+        numberBaseballIO.printResult(this);
     }
 }
