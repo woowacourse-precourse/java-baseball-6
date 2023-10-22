@@ -43,7 +43,7 @@ public class Game {
     }
 
     private static void printStartString() {
-        System.out.println(START_STRING);
+        System.out.println(START_MESSAGE);
     }
 
     private void start() {
@@ -54,7 +54,7 @@ public class Game {
     private void GuessAnswer() {
         String inputNumber;
         do {
-            System.out.print(INPUT_STRING);
+            System.out.print(INPUT_MESSAGE);
             inputNumber = Console.readLine();
             Validation.inputValidationCheck(inputNumber);
         } while (!equalToAnswer(inputNumber));
@@ -151,14 +151,14 @@ public class Game {
 
     private boolean endGame(int strike) {
         if (strike == STRIKE_SUCCESS) {
-            System.out.println(END_GAME_STRING);
+            System.out.println(END_GAME_MESSAGE);
             return true;
         }
         return false;
     }
 
     private boolean restart() {
-        System.out.println(RESTART_STRING);
+        System.out.println(RESTART_MESSAGE);
         int inputNumber = Validation.askRestart();
 
         if (inputNumber == RESTART) {
