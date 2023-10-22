@@ -6,14 +6,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Player {
-    private static final int INPUT_LENGTH = 3;
-    private static final int INITIAL_INVALID_COUNT = 0;
-    private static final String RESTART_FLAG = "1";
-    private static final String EXIT_FLAG = "2";
-    private static final int VALID_SCORE = 0;
-    private static final int INVALID_SCORE = 1;
     private static final char MIN_ALLOWABLE_DIGIT = '1';
     private static final char MAX_ALLOWABLE_DIGIT = '9';
+    private static final int VALID_NUMBER_LENGTH = 3;
+    private static final int INITIAL_INVALID_COUNT = 0;
+    private static final int VALID_SCORE = 0;
+    private static final int INVALID_SCORE = 1;
+    private static final String RESTART_FLAG = "1";
+    private static final String EXIT_FLAG = "2";
 
     public String inputNumbers() {
         String inputNumber = getPlayerInput();
@@ -41,18 +41,15 @@ public class Player {
     }
 
     private void checkInputNumberValidation(String inputNumber) {
-        if (IsInvalidLength(inputNumber) ||
+        if (isInvalidLength(inputNumber) ||
                 hasInvalidNumber(inputNumber) ||
                 hasDuplicateNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private boolean IsInvalidLength(String inputNumber) {
-        if (inputNumber.length() == INPUT_LENGTH) {
-            return false;
-        }
-        return true;
+    private boolean isInvalidLength(String inputNumber) {
+        return inputNumber.length() != VALID_NUMBER_LENGTH;
     }
 
     private boolean hasInvalidNumber(String inputNumber) {
@@ -60,10 +57,7 @@ public class Player {
         for (char inputNumberAsChar : inputNumber.toCharArray()) {
             invalidCount += isInvalid(inputNumberAsChar);
         }
-        if (invalidCount == INITIAL_INVALID_COUNT) {
-            return false;
-        }
-        return true;
+        return invalidCount != INITIAL_INVALID_COUNT;
     }
 
     private boolean hasDuplicateNumber(String inputNumber) {
@@ -88,9 +82,6 @@ public class Player {
     }
 
     private boolean isRestartFlag(String flag) {
-        if (flag.equals(RESTART_FLAG)) {
-            return true;
-        }
-        return false;
+        return flag.equals(RESTART_FLAG);
     }
 }
