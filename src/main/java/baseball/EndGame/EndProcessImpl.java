@@ -1,5 +1,11 @@
 package baseball.EndGame;
 
+import static baseball.Message.EndProcessMsg.END;
+import static baseball.Message.EndProcessMsg.END_PROMPT;
+import static baseball.Message.EndProcessMsg.ERROR_PROMPT;
+import static baseball.Message.EndProcessMsg.RESTART;
+import static baseball.Message.EndProcessMsg.USER_CHOICE_PROMPT;
+
 import baseball.Config.DiContainer;
 import baseball.ProcessGame.BaseBallGame;
 import camp.nextstep.edu.missionutils.Console;
@@ -22,19 +28,19 @@ public class EndProcessImpl implements EndProcess {
 
     @Override
     public void userChoice() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(USER_CHOICE_PROMPT.getMsg());
         ValidateUserChoice(Console.readLine());
     }
 
     @Override
     public void ValidateUserChoice(String userChoice) {
-        if (userChoice.equals("1")) {
+        if (userChoice.equals(RESTART.getMsg())) {
             baseBallGame.initGame();
             return;
-        } else if (userChoice.equals("2")) {
-            System.out.println("게임을 종료합니다.");
+        } else if (userChoice.equals(END.getMsg())) {
+            System.out.println(END_PROMPT.getMsg());
             return;
         }
-        throw new IllegalStateException("1 또는 2를 입력해주세요.");
+        throw new IllegalStateException(ERROR_PROMPT.getMsg());
     }
 }
