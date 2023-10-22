@@ -1,23 +1,24 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        Scanner scanner = new Scanner(System.in);
         String continueBaseball = "1";
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (continueBaseball.equals("1")) {
             startBaseball();
-            continueBaseball = scanner.next();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            continueBaseball = Console.readLine();
         }
+        System.out.println("게임 종료");
     }
 
     public static void startBaseball() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> answerNumberList = createBaseballAnswerNumberList();
         playBaseball(answerNumberList);
     }
@@ -46,8 +47,8 @@ public class Application {
     }
 
     public static List<Integer> inputBaseballNumberList() {
-        //TODO: 입력 라이브러리 변경
-        String inputString = new Scanner(System.in).next();
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputString = Console.readLine();
         validateBaseballNumbers(inputString);
         return parseIntegerList(inputString);
     }
