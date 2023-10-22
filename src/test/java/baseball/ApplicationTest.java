@@ -45,6 +45,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("잘못된 입력입니다. 자릿수 오류")
         );
     }
     @Test
@@ -52,6 +53,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("잘못된 입력입니다. 자릿수 오류")
         );
     }
 
@@ -60,6 +62,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("098"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("잘못된 입력입니다. 범위 오류")
         );
     }
 
