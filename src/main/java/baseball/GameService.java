@@ -11,6 +11,14 @@ public class GameService {
     private int strike = 0;
     private int ball = 0;
 
+    public int getStrike(){
+        return strike;
+    }
+
+    public int getBall(){
+        return ball;
+    }
+
     public void startGame() {
         Computer computer = new Computer();
         while (!isAllNumberMatched()) {
