@@ -19,14 +19,17 @@ public class Communicator {
     public List<Integer> instructInputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
 
-        List<Integer> input = new ArrayList<>();
+        List<Integer> inputNumbers = new ArrayList<>();
 
         String inputString = Console.readLine();
         validator.validateInputString(inputString);
+
         for (int i=0; i<inputString.length(); i++) {
-            input.add(inputString.charAt(i) - '0');
+            char input = inputString.charAt(i);
+            validator.validateInputNumber(inputNumbers, input);
+            inputNumbers.add(Character.getNumericValue(input));
         }
 
-        return input;
+        return inputNumbers;
     }
 }
