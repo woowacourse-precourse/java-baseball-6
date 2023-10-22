@@ -2,47 +2,28 @@ package baseball.domain;
 
 import baseball.exception.state.NotMatchGameStateException;
 
-public class State {
+public enum State {
 
-    private static final int RESTART_STATE_NUMBER = 1;
-    private static final int FINISH_STATE_NUMBER = 2;
+    RESTART(1),
+    FINISH(2);
 
-    private boolean restart;
 
-    public boolean isMoreGame() {
-        return restart;
+    private final int stateNumber;
+
+    State(final int stateNumber) {
+        this.stateNumber = stateNumber;
     }
 
-    public void changeState(final int stateNumber) {
-        validateStateNumber(stateNumber);
-        checkRestart(stateNumber);
+    public static boolean isMoreGame(final int stateNumber) {
+        return RESTART.stateNumber == stateNumber;
     }
 
-    private void validateStateNumber(final int stateNumber) {
+    public static void validate(final int stateNumber) {
         if (!isStateNumber(stateNumber)) {
             throw new NotMatchGameStateException(stateNumber);
         }
     }
-
-    private void checkRestart(final int stateNumber) {
-        if (isRestart(stateNumber)) {
-            restart = true;
-        }
-    }
-
-    private boolean isStateNumber(final int stateNumber) {
-        return isRestart(stateNumber) || isFinish(stateNumber);
-    }
-
-    private boolean isRestart(final int stateNumber) {
-        return stateNumber == RESTART_STATE_NUMBER;
-    }
-
-    private boolean isFinish(final int stateNumber) {
-        return stateNumber == FINISH_STATE_NUMBER;
-    }
-
-    public void end() {
-        restart = false;
+    private static boolean isStateNumber(final int stateNumber) {
+        return RESTART.stateNumber == stateNumber || FINISH.stateNumber == stateNumber;
     }
 }
