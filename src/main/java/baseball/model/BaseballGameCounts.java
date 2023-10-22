@@ -15,28 +15,28 @@ public class BaseballGameCounts {
 
     public static BaseballGameCounts createBaseballGameCounts(ComputerNumber computer, UserNumber user) {
 
-            BaseballGameCounts baseballGameCounts = new BaseballGameCounts();
-            int ballCounts = 0;
-            for (Integer idx : user.getUserNumber()) {
-                if (computer.getComputerNumber().contains(idx)) {
-                    ballCounts++;
-                }
+        BaseballGameCounts baseballGameCounts = new BaseballGameCounts();
+        int ballCounts = 0;
+        for (Integer idx : user.getUserNumber()) {
+            if (computer.getComputerNumber().contains(idx)) {
+                ballCounts++;
             }
-            ballCounts -= baseballGameCounts.getCounts().get(STRIKE);
-            if (ballCounts > 0) {
-                baseballGameCounts.counts.set(BALL, ballCounts);
-            }
+        }
+        ballCounts -= baseballGameCounts.getCounts().get(STRIKE);
+        if (ballCounts > 0) {
+            baseballGameCounts.counts.set(BALL, ballCounts);
+        }
 
-            int strickCounts = 0;
-            for (int idx = 0; idx < user.getUserNumber().size(); idx++) {
-                if (user.getUserNumber().get(idx).equals(computer.getComputerNumber().get(idx))) {
-                    strickCounts++;
-                }
+        int strickCounts = 0;
+        for (int idx = 0; idx < user.getUserNumber().size(); idx++) {
+            if (user.getUserNumber().get(idx).equals(computer.getComputerNumber().get(idx))) {
+                strickCounts++;
             }
-            if (strickCounts > 0) {
+        }
+        if (strickCounts > 0) {
 
-                baseballGameCounts.counts.set(STRIKE,strickCounts);
-            }
+            baseballGameCounts.counts.set(STRIKE, strickCounts);
+        }
         return baseballGameCounts;
     }
 
