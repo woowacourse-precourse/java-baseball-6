@@ -48,7 +48,7 @@ public class NumberComparator {
     /**
      * 볼, 스트라이크 개수 세기
      */
-    public int[] getStrikeBall(String userNumber, String programNumber) {
+    public int[] calculateResult(String userNumber, String programNumber) {
         resetResult();
         checkStrike(userNumber, programNumber);
         checkBall(userNumber, programNumber);

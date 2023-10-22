@@ -46,7 +46,7 @@ public class GameController {
     }
 
     private int[] calculateResult() {
-        return numberComparator.getStrikeBall(userNumber.getUserNumber(), programNumber.getProgramNumber());
+        return numberComparator.calculateResult(userNumber.getUserNumber(), programNumber.getProgramNumber());
     }
 
     private boolean isResetRequested() {
