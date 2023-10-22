@@ -46,17 +46,7 @@ public class ComputerUmpireImpl implements Umpire {
     }
 
     @Override
-    public Boolean checkHomerun(Boolean[] strikeCheckingBoard) {
-        return null;
-    }
-
-    @Override
-    public Boolean checkNothing(Boolean[] strikeCheckingBoard, Boolean[] ballCheckingBoard) {
-        return null;
-    }
-
-    @Override
-    public Score judge(Boolean[] strikeCheckingBoard, Boolean[] ballCheckingBoard, Boolean homerunCount, Boolean nothingCount) {
+    public Score judge(Boolean[] strikeCheckingBoard, Boolean[] ballCheckingBoard) {
         return null;
     }
 }

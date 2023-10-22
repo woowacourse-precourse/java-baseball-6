@@ -95,11 +95,5 @@ public class UmpireTest {
     }
 
     @Test
-    void umpireHomerunCheck(){}
-
-    @Test
-    void umpireNothingCheck(){}
-
-    @Test
     void umpireJudgeCheck(){}
 }
