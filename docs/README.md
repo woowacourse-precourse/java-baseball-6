@@ -9,6 +9,7 @@
 - [x]  클래스 추출
 ## 구현
 - [x] 패키지 설계
+- [x] RandomGenerator 구현
 - [ ] GameManger 구현
   - [ ] startGame() 구현
   - [ ] endGame() 구현
@@ -23,6 +24,7 @@
 > **"무조건" 하나 구현하면 하나 테스트 점검할 것**
 - [x] Randoms 테스트
 - [x] Console 테스트
+- [x] RandomGenerator 테스트
 - [ ] GameManger 테스트
 - [ ] GameService 테스트
 - [ ] Computer 테스트

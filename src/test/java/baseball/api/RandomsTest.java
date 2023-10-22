@@ -3,6 +3,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class RandomsTest {
-
 
     @Test
     @DisplayName("startInclusive~ endInclusive 사이에서의 난수를 생성합니다.")
@@ -81,4 +81,5 @@ public class RandomsTest {
         System.out.println(integers.toString());
 
     }
+
 }
