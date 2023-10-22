@@ -6,7 +6,7 @@ import java.util.List;
 import static baseball.type.MessageType.*;
 
 /**
- * @Class : 볼, 아웃 카운트 클래스
+ * @Class : 볼, 스트라이크, 아웃 카운트 클래스
  * @auther : SYB
  * @since : 2023/10/21
  */
@@ -17,28 +17,20 @@ public class PitchCount {
     private int strikeCnt;
     private boolean isOut;
 
-    /**
-     * @Method : 초기화
-     * @auther : SYB
-     * @since : 2023/10/21
-     */
-    private void resetCounts() {
+
+    public PitchCount() {
         ballCnt = 0;
         strikeCnt = 0;
         isOut = false;
     }
 
-
     /**
-     * @Method : 스트라이크, 볼 카운트
+     * @Method : 스트라이크, 볼 카운트 계산
      * @auther : SYB
      * @since : 2023/10/21
      */
-    public void countStrikeBall(List<Integer> computerNumber, List<Integer> userNumber) {
-        resetCounts();
-
+    public void evaluateStrikeAndBall(List<Integer> computerNumber, List<Integer> userNumber) {
         List<Integer> reBuildComputerNumber = new ArrayList<>();
-        List<Integer> removeList = new ArrayList<>();
         for (int i = 0; i < computerNumber.size(); i++) {
             if (computerNumber.get(i).equals(userNumber.get(i))) {
                 strikeCnt++;

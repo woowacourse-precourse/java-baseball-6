@@ -85,7 +85,7 @@ public class Game {
     public boolean calculator(Number computerNumber, Number userNumber) {
         PitchCount pitchCount = new PitchCount();
 
-        pitchCount.countStrikeBall(computerNumber.getTarget(), userNumber.getTarget());
+        pitchCount.evaluateStrikeAndBall(computerNumber.getTarget(), userNumber.getTarget());
 
         System.out.println(pitchCount.getHint());
 
