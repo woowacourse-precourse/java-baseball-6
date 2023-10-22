@@ -5,6 +5,9 @@ public class Validator {
         if (isEmptyValue(input)) {
             throw new IllegalArgumentException("빈 값은 입력할 수 없습니다.");
         }
+        if (!isCorrectLength(input)) {
+            throw new IllegalArgumentException("세 자리 이외의 값은 입력할 수 없습니다.");
+        }
     }
 
     private boolean isCorrectLength(String input) {
