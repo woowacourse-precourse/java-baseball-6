@@ -1,6 +1,7 @@
 package baseball.Controller;
 
 import baseball.domain.RandomNumGenerator;
+import baseball.domain.Referee;
 import baseball.domain.dto.Score;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -39,17 +40,8 @@ public class GameManager {
     }
 
     public boolean playSingleGameRound(List<Integer> user,List<Integer> computer){//true이면, 게임 종료하기 위한 단계로 간다.
-
-        int numStrikes=0;
-        int numBalls =0;
-        for(int i=0;i<NUM_DIGITS;i++){
-            if(user.get(i)==computer.get(i)){
-                numStrikes++;
-            } else if(user.get(i)!=computer.get(i) && computer.contains(user.get(i))){
-                numBalls++;
-            }
-        }
-        outputView.printResult(new Score(numBalls,numStrikes));
-        return numStrikes == NUM_DIGITS;
+        Score userScore = Referee.makeScore(computer, user);
+        outputView.printResult(userScore);
+        return userScore.getStrike() == NUM_DIGITS;
     }
 }
