@@ -1,17 +1,17 @@
 package baseball.domain;
 
-import static baseball.domain.numbers.NumbersConstant.MAX_NUMBER;
-import static baseball.domain.numbers.NumbersConstant.MIN_NUMBER;
-import static baseball.domain.numbers.NumbersConstant.NUMBER_COUNT;
+import static baseball.domain.numberBalls.NumberBallsConstant.MAX_NUMBER;
+import static baseball.domain.numberBalls.NumberBallsConstant.MIN_NUMBER;
+import static baseball.domain.numberBalls.NumberBallsConstant.NUMBER_COUNT;
 
-import baseball.domain.numbers.Numbers;
+import baseball.domain.numberBalls.NumberBalls;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Pitcher {
-    private Numbers numbers;
+    private NumberBalls numberBalls;
 
     private Pitcher() {
     }
@@ -23,11 +23,11 @@ public class Pitcher {
         return pitcher;
     }
 
-    private void setNumbers(Numbers numbers) {
-        this.numbers = numbers;
+    private void setNumbers(NumberBalls numberBalls) {
+        this.numberBalls = numberBalls;
     }
 
-    private static Numbers makeRandomNumbers() {
+    private static NumberBalls makeRandomNumbers() {
         List<Integer> numberList = new ArrayList<>();
 
         while (isNotFull(numberList)) {
@@ -38,14 +38,14 @@ public class Pitcher {
             }
         }
 
-        return Numbers.create(numberList);
+        return NumberBalls.create(numberList);
     }
 
     private static boolean isNotFull(List<Integer> numberList) {
         return numberList.size() < NUMBER_COUNT;
     }
 
-    public Result battleWithHitter(Hitter hitter) {
-        return hitter.battleByNumbers(numbers);
+    public Result throwBalls(Hitter hitter) {
+        return hitter.hit(numberBalls);
     }
 }

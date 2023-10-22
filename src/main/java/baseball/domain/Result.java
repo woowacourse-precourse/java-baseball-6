@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import static baseball.domain.numbers.NumbersConstant.NUMBER_COUNT;
+import static baseball.domain.numberBalls.NumberBallsConstant.NUMBER_COUNT;
 
 public class Result {
     public static final String STRIKE_STRING = "스트라이크";

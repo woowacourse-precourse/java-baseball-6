@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.Pitcher;
-import baseball.domain.numbers.Numbers;
+import baseball.domain.numberBalls.NumberBalls;
 import baseball.domain.Hitter;
 import baseball.domain.Result;
 import baseball.view.BaseBallView;
@@ -37,7 +37,7 @@ public class BaseBallController {
 
     private boolean startOneBattle() {
         hitter = changeHitter(baseBallView.numbersInputView());
-        Result result = pitcher.battleWithHitter(hitter);
+        Result result = pitcher.throwBalls(hitter);
 
         baseBallView.resultGameView(result.toString());
 
@@ -48,10 +48,10 @@ public class BaseBallController {
         return Hitter.create(convertStringToNumbers(numberString));
     }
 
-    private static Numbers convertStringToNumbers(String numberString) {
+    private static NumberBalls convertStringToNumbers(String numberString) {
         validateIsInteger(numberString);
         
-        return Numbers.create(Arrays.stream(numberString.split(""))
+        return NumberBalls.create(Arrays.stream(numberString.split(""))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList()));
     }

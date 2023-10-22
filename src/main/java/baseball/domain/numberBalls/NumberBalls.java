@@ -1,42 +1,42 @@
-package baseball.domain.numbers;
+package baseball.domain.numberBalls;
 
-import static baseball.domain.numbers.NumbersConstant.MAX_INDEX;
-import static baseball.domain.numbers.NumbersConstant.MIN_INDEX;
+import static baseball.domain.numberBalls.NumberBallsConstant.MAX_INDEX;
+import static baseball.domain.numberBalls.NumberBallsConstant.MIN_INDEX;
 
 import baseball.domain.Result;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Numbers {
+public class NumberBalls {
 
     private List<Integer> numberList;
 
-    private Numbers() {
+    private NumberBalls() {
     }
 
-    public static Numbers create(List<Integer> numberList) {
+    public static NumberBalls create(List<Integer> numberList) {
         validateNumberList(numberList);
 
-        Numbers numbers = new Numbers();
-        numbers.setNumberList(numberList);
+        NumberBalls numberBalls = new NumberBalls();
+        numberBalls.setNumberList(numberList);
 
-        return numbers;
+        return numberBalls;
     }
 
     private static void validateNumberList(List<Integer> numberList) {
-        NumbersValidator numbersValidator = NumbersValidator.create();
+        NumberBallsValidator numberBallsValidator = NumberBallsValidator.create();
 
-        numbersValidator.validateNumberSize(numberList);
-        numbersValidator.validateNumberRange(numberList);
-        numbersValidator.validateDuplicateNumber(numberList);
+        numberBallsValidator.validateNumberSize(numberList);
+        numberBallsValidator.validateNumberRange(numberList);
+        numberBallsValidator.validateDuplicateNumber(numberList);
     }
 
     private void setNumberList(List<Integer> numberList) {
         this.numberList = numberList;
     }
 
-    public Result calculateResult(Numbers opponentNumbers) {
-        return opponentNumbers.calculateResultByList(numberList);
+    public Result calculateResult(NumberBalls opponentNumberBalls) {
+        return opponentNumberBalls.calculateResultByList(numberList);
     }
 
     private Result calculateResultByList(List<Integer> opponentNumberList) {

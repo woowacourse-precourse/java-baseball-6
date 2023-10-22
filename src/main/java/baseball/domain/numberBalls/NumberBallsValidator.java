@@ -1,19 +1,19 @@
-package baseball.domain.numbers;
+package baseball.domain.numberBalls;
 
-import static baseball.domain.numbers.NumbersConstant.MAX_NUMBER;
-import static baseball.domain.numbers.NumbersConstant.MIN_NUMBER;
-import static baseball.domain.numbers.NumbersConstant.NUMBER_COUNT;
+import static baseball.domain.numberBalls.NumberBallsConstant.MAX_NUMBER;
+import static baseball.domain.numberBalls.NumberBallsConstant.MIN_NUMBER;
+import static baseball.domain.numberBalls.NumberBallsConstant.NUMBER_COUNT;
 
 import java.util.HashSet;
 import java.util.List;
 
-public class NumbersValidator {
+public class NumberBallsValidator {
 
-    private NumbersValidator() {
+    private NumberBallsValidator() {
     }
 
-    public static NumbersValidator create() {
-        return new NumbersValidator();
+    public static NumberBallsValidator create() {
+        return new NumberBallsValidator();
     }
 
     public void validateNumberSize(List<Integer> numberList) {

@@ -1,29 +1,29 @@
 package baseball.domain;
 
 
-import baseball.domain.numbers.Numbers;
+import baseball.domain.numberBalls.NumberBalls;
 
 public class Hitter {
 
-    private Numbers numbers;
+    private NumberBalls numberBalls;
 
     private Hitter() {
     }
 
-    public static Hitter create(Numbers numbers) {
+    public static Hitter create(NumberBalls numberBalls) {
         Hitter hitter = new Hitter();
-        hitter.setNumbers(numbers);
+        hitter.setNumbers(numberBalls);
 
         return hitter;
     }
 
-    private void setNumbers(Numbers numbers) {
-        this.numbers = numbers;
+    private void setNumbers(NumberBalls numberBalls) {
+        this.numberBalls = numberBalls;
     }
 
 
-    public Result battleByNumbers(Numbers opponentNumbers) {
-        return numbers.calculateResult(opponentNumbers);
+    public Result hit(NumberBalls opponentNumberBalls) {
+        return numberBalls.calculateResult(opponentNumberBalls);
     }
 
 }
