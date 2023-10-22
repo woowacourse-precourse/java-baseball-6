@@ -16,7 +16,7 @@ public class BaseballNumber {
     }
 
     public static BaseballScore compareNumber(BaseballNumber computerNumber, BaseballNumber userNumber) {
-        BaseballScore baseballScore = new BaseballScore(0, 0);
+        BaseballScore baseballScore = new BaseballScore();
         List<Integer> computerNumberList = computerNumber.number;
         List<Integer> userNumberList = userNumber.number;
         baseballScore.addStrikeCount(Util.countSameValueSameIdxByIntegerLists(computerNumberList, userNumberList));
