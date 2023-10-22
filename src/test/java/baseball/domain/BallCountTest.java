@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.constant.ResultStatus;
 import baseball.constant.StrikeBall;
@@ -72,6 +73,38 @@ class BallCountTest {
 
             // then
             assertThat(result).isEqualTo(ResultStatus.CONTINUE);
+        }
+    }
+
+    @Nested
+    @DisplayName("생성시")
+    class CreateValidation {
+
+        @Test
+        @DisplayName("리스트 원소 개수가 3개 보다 적은 경우 예외를 던진다")
+        void lessThanThreeElement() {
+            // given
+            // when
+            // then
+            assertThatThrownBy(() -> new BallCount(List.of(StrikeBall.STRIKE)))
+                    .isInstanceOf(IllegalStateException.class);
+        }
+
+        @Test
+        @DisplayName("리스트 원소 개수가 3개 보다 많은 경우 예외를 던진다")
+        void greaterThanThreeElement() {
+            // given
+            // when
+            // then
+            assertThatThrownBy(
+                            () ->
+                                    new BallCount(
+                                            List.of(
+                                                    StrikeBall.STRIKE,
+                                                    StrikeBall.STRIKE,
+                                                    StrikeBall.STRIKE,
+                                                    StrikeBall.STRIKE)))
+                    .isInstanceOf(IllegalStateException.class);
         }
     }
 }
