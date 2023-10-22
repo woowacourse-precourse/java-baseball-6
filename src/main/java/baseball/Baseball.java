@@ -37,10 +37,10 @@ public class Baseball {
     }
 
     public void announceCount(int balls, int strikes) {
-        if (strikes == 3) {
-            System.out.println("3스트라이크");
-        } else if (balls == 0) {
+        if (strikes == 0 && balls == 0) {
             System.out.println("낫싱");
+        } else if (strikes == 3) {
+            System.out.println("3스트라이크");
         } else {
             String message = (balls > 0 ? balls + "볼 " : "") + (strikes > 0 ? strikes + "스트라이크" : "");
             System.out.println(message);
