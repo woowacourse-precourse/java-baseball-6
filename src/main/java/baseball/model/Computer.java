@@ -1,15 +1,17 @@
 package baseball.model;
 
 import baseball.util.NumberGenerator;
-import baseball.util.ScoreCalculator;
 import java.util.List;
 
 public class Computer {
+    private List<Integer> answer;
 
-    private NumberGenerator numberGenerator = new NumberGenerator();
-    private ScoreCalculator scoreCalculator = new ScoreCalculator();
+    public void generateNumber() {
+        NumberGenerator numberGenerator = new NumberGenerator();
+        this.answer = numberGenerator.getGeneratedNumbers();
+    }
 
-    public List<Integer> getGeneratedNumber() {
-        return numberGenerator.getGeneratedNumbers();
+    public List<Integer> getAnswer() {
+        return answer;
     }
 }
