@@ -1,17 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.*;
 
 public class Game {
-    static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    static StringTokenizer st;
-
-    public void game() throws IOException {
+    public void game() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true) {
             int[] answerNums = creRandomNums();
@@ -24,28 +19,28 @@ public class Game {
 
             String result = "";
 
-            while (!result.equals("0볼 3스트라이크") || result.equals("")) {
+            while (!result.equals("3스트라이크") || result.equals("")) {
                 int[] nums = inputNums();
                 result = resultOutput(nums, answerNums);
                 System.out.println(result);
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String reStart = reader.readLine();
+            String reStart = Console.readLine();
             if (reStart.equals("1")) {
                 result = null;
                 continue;
             } else if (reStart.equals("2")) {
                 break;
             } else {
-                Exceptions.IllegalArgumentException();
+                Exceptions.IllegalArgumentException("1,2중 하나의 숫자를 입력하세요");
             }
         }
     }
 
-    public int[] inputNums() throws IOException {
+    public int[] inputNums() {
         System.out.print("숫자를 입력해주세요 : ");
-        String userAnswer = reader.readLine();
+        String userAnswer = Console.readLine();
         inputNumsTest(userAnswer);
         String[] userAnswerNums = userAnswer.split("");
         int[] nums = new int[3];
@@ -54,15 +49,23 @@ public class Game {
         }
         return nums;
     }
+
     public void inputNumsTest(String userAnswer){
-        if(userAnswer.matches("^\\d{3}$")){
-            return;
-        }else{
-            Exceptions.IllegalArgumentException();
+        String[] spiltAnswer = userAnswer.split("");
+        Set<String> uniqueDigits = new HashSet<>();
+        for(int i = 0; i < spiltAnswer.length; i++){
+            uniqueDigits.add(spiltAnswer[i]);
         }
+        if(!userAnswer.matches("^\\d{3}$")){
+            Exceptions.IllegalArgumentException("세개의 숫자를 입력해주세요");
+        }
+        if(uniqueDigits.size() != 3){
+            Exceptions.IllegalArgumentException("중복된 숫자를 입력하셨습니다.");
+        }
+
     }
 
-    //userNum -- 사용자, answer -- 자동 생성숫자
+    //userNum -- 사용자, answerNums -- 자동 생성숫자
     public String resultOutput(int[] userNum, int[] answerNums){
         int ball = 0;
         int striker = 0;
@@ -80,7 +83,16 @@ public class Game {
             }
         }
 
-        result = String.format("%d볼 %d스트라이크",ball, striker);
+        if(ball == 0 && striker == 0){
+            result = "낫싱";
+        }else if(ball == 0){
+            result = String.format("%d스트라이크", striker);
+        }else if(striker == 0){
+            result = String.format("%d볼", ball);
+        }else{
+            result = String.format("%d볼 %d스트라이크",ball, striker);
+        }
+
         return result;
     }
 
