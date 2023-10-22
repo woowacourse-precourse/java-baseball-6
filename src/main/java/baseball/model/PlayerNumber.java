@@ -8,7 +8,7 @@ public class PlayerNumber {
 
     public PlayerNumber(String playerNumber){
         isNumberLengthCorrect(playerNumber);
-        isDifferentNumber(playerNumber);
+        isNumberDifferent(playerNumber);
         isDigitPlayerNumber(playerNumber);
 
         this.playerNumber = playerNumber;
@@ -24,7 +24,7 @@ public class PlayerNumber {
         }
     }
 
-    public static void isDifferentNumber(String inputNumber) throws IllegalArgumentException{
+    public static void isNumberDifferent(String inputNumber) throws IllegalArgumentException{
         Set<Character> set= new HashSet<>();
         for(int i=0;i<inputNumber.length();i++){
             set.add(inputNumber.charAt(i));
