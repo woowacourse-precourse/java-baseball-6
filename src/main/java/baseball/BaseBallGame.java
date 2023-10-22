@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -22,9 +23,13 @@ public class BaseBallGame {
         // 사용자 입력
         while(true){
             System.out.print("숫자를 입력 해주세요: ");
-            userAnswer = readLine();
+            try{
+                userAnswer = readLine().replaceAll(" ","");
+                //System.out.println("userAnswer = " + userAnswer);
+            }catch (Exception e){
+                throw new IllegalArgumentException(e);
+            }
             userAnswer=checkUserInput();
-            //System.out.println("userAnswer = " + userAnswer);
 
             // 사용자 입력과 컴퓨터 값과 비교
             String decision = umpire();
@@ -49,7 +54,10 @@ public class BaseBallGame {
     }
 
     private void reset() {
+        userAnswer="";
+        computerAnswer="";
         computer.clear();
+        Console.close();
     }
 
     private String umpire() {
@@ -91,7 +99,8 @@ public class BaseBallGame {
     //사용자 입력값 체크
     private String checkUserInput() {
 
-        if(userAnswer.length() !=3){
+
+        if(userAnswer.trim().length() !=3){
             throw new IllegalArgumentException();
         }
 
@@ -107,6 +116,8 @@ public class BaseBallGame {
 
     //컴퓨터 값 입력
     private String computerInput() {
+
+
         while (computer.size() < 3) {
             String randomNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
             if (!computer.contains(randomNumber)) {
