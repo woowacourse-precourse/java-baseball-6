@@ -39,7 +39,11 @@ public class Computer {
         return !numbers.get(index).equals(guessNumber) && numbers.contains(guessNumber);
     }
 
-    public boolean isGameOver(final int strikeCount) {
-        return strikeCount == BASEBALL_GAME_NUMBER_DIGIT.getValue();
+    public boolean isGameOver(final List<Integer> guessNumbers) {
+        return numbers.equals(guessNumbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
