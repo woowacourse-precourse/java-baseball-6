@@ -9,7 +9,6 @@ import baseball.domain.balls.Balls;
 public class GameService {
 
 	private static final String END_CONDITION = "3스트라이크";
-	private static final String REPLAY_COMMAND = "1";
 
 	public Computer createComputer() {
 		return new Computer();
@@ -29,7 +28,8 @@ public class GameService {
 	}
 
 	public boolean isReplay(final String replayCommandInput) {
-		return replayCommandInput.equals(REPLAY_COMMAND);
+		GameCommand.validate(replayCommandInput);
+		return replayCommandInput.equals(GameCommand.REPLAY.getCommandValue());
 	}
 
 }
