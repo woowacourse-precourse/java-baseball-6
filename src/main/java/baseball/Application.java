@@ -4,6 +4,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.lang.Exception.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -36,7 +37,7 @@ public class Application {
 /**
  * Number 클래스 처음 숫자를 만들어 냄 (완료)
  * Computer 클래스 입력받은 숫자로 strike, ball 판단 (완료)
- * Game 클래스 stirke, ball 가지고 게임의 완료 여부 (완료)
+ * Game 클래스 strike, ball 가지고 게임의 완료 여부 (완료)
  * Input 클래스 게임의 진행을 위해 입출력을 담당
  * Exception 클래스 예외를 담당하는 클래스
  */
@@ -81,6 +82,7 @@ class Computer{
     }
 }
 class MainGame {
+    private final Exception exception = new Exception();
     public String hint(List<Integer> sb){
         if(sb.get(0) == 0 && sb.get(1) == 0){
             return "낫싱";
@@ -99,8 +101,10 @@ class MainGame {
         }
     }
     public List<Integer> gameStart(){
+
         View.printStart();
         String player = Console.readLine();
+        exception.checkInputValidation(player);
         View view = new View();
         return view.strToList(player);
     }
@@ -112,6 +116,7 @@ class MainGame {
     public List<Integer> gameProgress(){
         View.printNumber();
         String player = Console.readLine();
+        exception.checkInputValidation(player);
         View view = new View();
         return view.strToList(player);
     }
@@ -144,5 +149,12 @@ class View{
     public static void printNumber(){
         System.out.println(GAME_NUMBER);
     }
-
+}
+class Exception{
+    private static final String REGEX  = "[0-9]+";
+    public void checkInputValidation(String s){
+        if(s.length() < 3 || !s.matches(REGEX)){
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
 }
