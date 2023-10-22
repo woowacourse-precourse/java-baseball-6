@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import baseball.domain.balls.Balls;
+
 public class Player {
 
 	private static final String DELIMITER = "";

@@ -3,6 +3,7 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.domain.balls.Balls;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {

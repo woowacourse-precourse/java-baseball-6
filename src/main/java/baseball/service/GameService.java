@@ -1,10 +1,10 @@
 package baseball.service;
 
-import baseball.domain.Balls;
 import baseball.domain.Computer;
 import baseball.domain.GameResult;
 import baseball.domain.Player;
 import baseball.domain.Referee;
+import baseball.domain.balls.Balls;
 
 public class GameService {
 

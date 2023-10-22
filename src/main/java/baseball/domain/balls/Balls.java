@@ -1,9 +1,11 @@
-package baseball.domain;
+package baseball.domain.balls;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
+
+import baseball.domain.GameResult;
 
 public class Balls {
 
