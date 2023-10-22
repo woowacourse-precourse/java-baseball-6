@@ -15,9 +15,15 @@ public class BaseballGame {
     }
 
     private void startGame() {
+        Computer computer = new Computer();
+        String computerNumbers = computer.generate();
         GameResult gameResult = new GameResult();
+        Referee referee = new Referee();
         do {
-
+            outputView.input();
+            String playerNumbers = inputView.inputNumbers();
+            gameResult = referee.judge(computerNumbers, playerNumbers);
+            gameResult.result();
         } while (!gameResult.isWin());
     }
 
