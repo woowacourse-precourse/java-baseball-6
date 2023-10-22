@@ -1,19 +1,24 @@
 package baseball.core;
 
+import baseball.property.GameCondition;
 import baseball.property.GameScore;
 
 public class CheckGameResult {
 
-    public static void checkGameScore(GameScore gameScore){
+    private static GameCondition game_result;
+
+    public static GameCondition checkGameScore(GameScore gameScore, GameCondition game_coin){
         int ball_count = gameScore.getBall_count();
         int strike_count = gameScore.getStrike_count();
+        game_result=game_coin;
         if (checkScoreExist(ball_count,strike_count)){
             if (checkBallAndStrikeScore(ball_count,strike_count)){
                 ResultOutputGenerate.generateAllResultTextForOutput(ball_count,strike_count);
-                return;
+                return game_result;
             }
             checkOneTypeScore(ball_count,strike_count);
         }
+        return game_result;
     }
 
     private static boolean checkScoreExist(int ball_count,int strike_count){
@@ -40,6 +45,7 @@ public class CheckGameResult {
         if(checkOnlyStrikeScore(ball_count,strike_count)){
             if (checkGameSuccessCondition(strike_count)){
                 ResultOutputGenerate.generateSuccessResultTextForOutput();
+                game_result=GameCondition.FINISH;
                 return;
             }
             ResultOutputGenerate.generateStrikeResultTextForOutput(strike_count);
