@@ -46,7 +46,6 @@ public class NumberComparator {
         }
     }
 
-
     /**
      * 스트라이크, 볼 개수 조정 위 로직에는 볼 개수를 셀 때, 스트라이크인 숫자를 제외하는 기능이 없다.
      */
@@ -56,7 +55,6 @@ public class NumberComparator {
             balls = 0;
         }
     }
-
 
     /**
      * 전부 스트라이크면 true반환
