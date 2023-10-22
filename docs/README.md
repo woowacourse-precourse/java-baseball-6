@@ -1,8 +1,8 @@
 # 미션 - 숫자 야구 (기능 목록)
 
 
-- [ ] 상대방(컴퓨터)의 수를 생성하는 기능 구현
-  - [ ] Random 값 추출시 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용해서 구현
+- [x] 상대방(컴퓨터)의 수를 생성하는 기능 구현
+  - [x] Random 값 추출시 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용해서 구현
 
 - [ ] 사용자의 수를 입력받는 기능 구현
   - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용해서 구현
@@ -19,7 +19,9 @@
 - [ ] 예외 처리
   - [ ] 사용자가 입력시 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료
   - [ ] 게임 종료 선택시 사용자가 잘못된 값을 입력할 경우 다시 시작/종료를 선택하게 반복하는 기능 구현
-  - 
+     
+
+
 ## 🚀 기능 요구 사항
 
 기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
