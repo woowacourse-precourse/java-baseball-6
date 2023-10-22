@@ -42,4 +42,11 @@ public class InputValidatorTest {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> InputValidator.validateChoiceInput("3"));
         assertEquals(GameConstants.NOT_A_VALID_CHOICE, exception.getMessage());
     }
+
+    @Test
+    @DisplayName("사용자의 선택지가 숫자가 아닌 경우")
+    public void testValidateChoiceInput_NotANumbers() {
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> InputValidator.validateChoiceInput("abc"));
+        assertEquals(GameConstants.NOT_A_NUMBER, exception.getMessage());
+    }
 }
