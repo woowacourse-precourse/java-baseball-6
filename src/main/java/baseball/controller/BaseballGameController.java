@@ -36,4 +36,21 @@ public class BaseballGameController {
             user.addNumber(Character.getNumericValue(inputNumber.charAt(i)));
         }
     }
+
+    public boolean inputExitNumber() {
+
+        String inputNum = Console.readLine();
+
+        validation.validExitNumber(inputNum);
+
+        int exitNum = Integer.parseInt(inputNum);
+
+        if (exitNum == 2) {
+            return true;
+        }
+
+        computer.makeNumber();
+
+        return false;
+    }
 }
