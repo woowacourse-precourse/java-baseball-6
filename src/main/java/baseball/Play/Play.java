@@ -22,11 +22,7 @@ public class Play {
         userNumber = user.UserInput();
         CheckNumber();
         PrintResult();
-        if(strikes == 3) {
-            System.out.printf("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
-            System.out.printf("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-            restart = Integer.parseInt(Console.readLine());
-        }
+        CheckCorrect();
     }
 
     // 스트라이크, 볼 판정을 하는 메서드
@@ -43,6 +39,15 @@ public class Play {
             }
         }
         balls -= strikes;
+    }
+
+    // 스트라이크가 3개인지 확인하는 메서드
+    public void CheckCorrect() {
+        if(strikes == 3) {
+            System.out.printf("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            System.out.printf("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            restart = Integer.parseInt(Console.readLine());
+        }
     }
 
     public void PrintResult() {
