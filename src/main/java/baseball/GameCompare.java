@@ -11,7 +11,7 @@ public class GameCompare {
     private List<Integer> randomNumbers;
 
     public GameCompare() {
-        randomNumbers = RandomNum.createRandomNum();
+        randomNumbers = RandomNumberUtils.createRandomNum();
     }
 
     public boolean updateGameCompare(Player player) {

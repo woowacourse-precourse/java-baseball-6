@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomNum {
+public final class RandomNumberUtils {
+
+    private RandomNumberUtils(){}
 
     public static List<Integer> createRandomNum() {
         List<Integer> existRandomNum = new ArrayList<>();
