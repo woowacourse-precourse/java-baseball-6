@@ -10,6 +10,10 @@ public class GameResult {
         this.strikes = strikes;
     }
 
+    public boolean isCorrect(final int maxValue) {
+        return strikes == maxValue;
+    }
+
     public boolean isNothing() {
         return balls == 0 && strikes == 0;
     }
