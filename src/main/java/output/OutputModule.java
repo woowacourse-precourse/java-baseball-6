@@ -11,23 +11,23 @@ public class OutputModule {
     public OutputModule() {
     }
 
-    public String getStartGame() {
-        return startGame;
+    public void printStartGame() {
+        System.out.println(startGame);
     }
 
-    public String getBall() {
-        return ball;
+    public void printBall() {
+        System.out.println(ball);
     }
 
-    public String getStrike() {
-        return strike;
+    public void printStrike() {
+        System.out.println(strike);
     }
 
-    public String getOut() {
-        return out;
+    public void printOut() {
+        System.out.println(out);
     }
 
-    public String getOneMoreTime() {
-        return oneMoreTime;
+    public void printOneMoreTime() {
+        System.out.println(oneMoreTime);
     }
 }
