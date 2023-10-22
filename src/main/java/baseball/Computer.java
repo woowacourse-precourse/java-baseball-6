@@ -25,6 +25,16 @@ public class Computer {
     private ArrayList<Integer> generateRandomNumberListWithNotRepeating(){
         return generateRandomNumberListWithNotRepeating(defaultDigitalCount);
     }
+
+    /**
+     * 입력한 자리수 만큼 중복되지 않는 숫자 리스트를 생성한다
+     *
+     * 최소값 ( minimumCanCreatedValue ) 과 최대값 ( maximumCanCreatedValue ) 사이 값을 가진다.
+     * 기존 값에 포함되지 않은 값들만 추가한다.
+     *
+     * @param digitCount 생성하는 숫자의 자리수
+     * @return
+     */
     private ArrayList<Integer> generateRandomNumberListWithNotRepeating(int digitCount){
 
         var randomNumberList = new ArrayList<Integer>();
@@ -39,6 +49,14 @@ public class Computer {
         return randomNumberList;
     }
 
+    /**
+     * 사용자의 숫자를 비교한 후 , 결과를 반환한다
+     *
+     * 사용자의 숫자와 컴퓨터의 숫자가 모두 일치하면 true 를 반환한다.
+     * 그렇지 않으면,  false 를 반환한다.
+     * @param playerNumber 사용자가 입력하는 숫자
+     * @return boolean
+     */
     public Boolean checkUserNumberAndResponse(int playerNumber){
 
         int ballCount = 0;
