@@ -15,41 +15,45 @@ public final class InputValidator {
     private InputValidator(){
     }
 
-    public static List<Integer> validateUserAnswer(String userInput){
-        validateUserAnswerLength(userInput);
-        validateIsUserAnswerDigit(userInput);
+    /*
+    문자에 대한 검증을 하는 함수들
+    문자가 Digit인지, Digit이면 1~9에 포함되는지 검증
+    */
+    public static int validateAnswerCharacter(char answerChar){
+        validateIsCharacterDigit(answerChar);
+        return validateDigitRange(answerChar);
 
-        List<Integer> userAnswerList= toIntList(userInput);
-
-        validateUserAnswerDigitRange(userAnswerList);
-        validateIsDistinctDigits(userAnswerList);
-
-        return userAnswerList;
     }
 
-    public static void validateUserAnswerLength(String userInput){
-        if (userInput.length() != ANSWER_LENGTH)
+    public static void validateIsCharacterDigit(char answerChar){
+        if (!Character.isDigit(answerChar))
+            throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
+
+    }
+
+    public static int validateDigitRange(char digitChar){
+        int digit = (int) digitChar - '0';
+
+        if (digit < USER_ANSWER_LOWER_LIMIT || digit > USER_ANSWER_UPPER_LIMIT)
+            throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
+
+        return digit;
+    }
+
+    /*
+    문자열에 대한 검증을 하는 함수들
+    문자열의 길이, 중복 문자는 없는지, 재시작 입력이 올바른지 검증
+    */
+
+    public static void validateAnswerLength(int answerLength){
+        if (answerLength != ANSWER_LENGTH)
             throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
     }
 
-    public static void validateIsUserAnswerDigit(String userInput){
+    public static void validateIsDistinct(String userAnswer){
+        HashSet<Character> digitSet = new HashSet<>();
         for (int i = 0; i < ANSWER_LENGTH; i++) {
-            if (!Character.isDigit(userInput.charAt(i)))
-                throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
-        }
-    }
-
-    public static void validateUserAnswerDigitRange(List<Integer> userAnwserList){
-        for (int i = 0; i < ANSWER_LENGTH; i++) {
-            if (userAnwserList.get(i) < USER_ANSWER_LOWER_LIMIT || userAnwserList.get(i) > USER_ANSWER_UPPER_LIMIT)
-                throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
-        }
-    }
-
-    public static void validateIsDistinctDigits(List<Integer> userAnswerList){
-        HashSet<Integer> digitSet = new HashSet<>();
-        for (int i = 0; i < ANSWER_LENGTH; i++) {
-            digitSet.add(userAnswerList.get(i));
+            digitSet.add(userAnswer.charAt(i));
         }
         if (digitSet.size() != ANSWER_LENGTH)
             throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 중복 없는 세자리 자연수만 입력하십시오. 프로그램을 종료합니다.");
@@ -57,18 +61,11 @@ public final class InputValidator {
 
     public static int validateRestartInput(String userInput){
         String restart = Integer.toString(WANNA_KEEP_PLAYING);
-        String end = Integer.toString(END_NUMBER);
+        String end = Integer.toString(WANNA_END);
         if (!userInput.equals(restart) && !userInput.equals(end))
             throw new IllegalArgumentException("입력한 값이 유효하지 않습니다. 1 혹은 2만 입력하십시오. 프로그램을 종료합니다.");
 
         return Integer.parseInt(userInput);
     }
 
-    public static List<Integer> toIntList(String userInput){
-        List<Integer> userInputIntList = new ArrayList<>();
-        for (int i = 0; i < ANSWER_LENGTH; i++) {
-            userInputIntList.add((int) userInput.charAt(i) - '0');
-        }
-        return userInputIntList;
-    }
 }
