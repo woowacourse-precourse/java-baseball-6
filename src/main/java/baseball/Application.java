@@ -11,14 +11,16 @@ public class Application {
         while (playAgain) {
             try{
                 playGame();
+                // 기능8. 게임 종료 후에는 재시작 할 것인지 종료할 것인지 1 또는 2를 입력하게 하여 선택하게 함
                 System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
                 String choice = Console.readLine();
                 if (!choice.equals("1")) {
-                    return;
+                    if (choice.equals("2")){
+                        System.out.println("게임 종료!");
+                        return;
+                    }
                 }
-                System.out.println("게임 종료!");
             } catch(IllegalArgumentException e){
-                // System.err.println("예외 발생: " + e.getMessage());
                 throw e;
             }
         }
