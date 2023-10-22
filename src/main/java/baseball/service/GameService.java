@@ -1,12 +1,21 @@
 package baseball.service;
 
+import baseball.Util.Validator;
 import baseball.dto.Result;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
+    private final Validator validator;
+
+    public GameService(Validator validator) {
+        this.validator = validator;
+    }
+
+
 
     public void init() {
 
@@ -24,8 +33,17 @@ public class GameService {
         return answer;
     }
 
+    //TODO: createAnswer와 유사한 부분이 많으므로 하나의 메서드로 묶을 수 있을 듯!
     public List<Integer> getInput() {
-        return null;
+        List<Integer> userInput = new ArrayList<>();
+
+        while (userInput.size() < 3) {
+            Integer input = validator.validateRange(Console.readLine());
+            if (!userInput.contains(input)) {
+                userInput.add(input);
+            }
+        }
+        return userInput;
     }
 
 
