@@ -5,16 +5,21 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
+    private static final String WRONG_ANSWER_INPUT_MESSAGE = "1 혹은 2만 입력하세요.";
     GameNumber gameNumber = new GameNumber();
     ComputerController computerController = new ComputerController();
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
 
     public void startGame() {
-        outputView.printStartGame();
-        computerController.startGame(gameNumber);
+        boolean gameState = true;
+        while (gameState) {
+            outputView.printStartGame();
+            computerController.startGame(gameNumber);
 
-        repeatGussingAnswer();
+            repeatGussingAnswer();
+            gameState = askRestartGame();
+        }
     }
 
     private void repeatGussingAnswer() {
@@ -31,5 +36,18 @@ public class GameController {
                 outputView.printEndGame();
             }
         }
+    }
+
+    private boolean askRestartGame() {
+        String answer = inputView.enterRestartAnswer();
+        return tryRestartGame(answer);
+    }
+
+    private boolean tryRestartGame(String answer) {
+        if (answer.equals("1")) {
+            return true;
+        } else if (answer.equals("2")) {
+            return false;
+        } throw new IllegalArgumentException(WRONG_ANSWER_INPUT_MESSAGE);
     }
 }
