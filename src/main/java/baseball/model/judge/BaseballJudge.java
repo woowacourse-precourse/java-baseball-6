@@ -6,8 +6,12 @@ public class BaseballJudge {
 
     private final Ball computerBall;
 
-    public BaseballJudge(Ball computerBall) {
+    private BaseballJudge(Ball computerBall) {
         this.computerBall = computerBall;
+    }
+
+    public static BaseballJudge computerBallOf(Ball computerBall) {
+        return new BaseballJudge(computerBall);
     }
 
     public JudgeResult judge(Ball playerBall) {

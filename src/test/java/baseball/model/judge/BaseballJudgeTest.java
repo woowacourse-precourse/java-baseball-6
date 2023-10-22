@@ -14,7 +14,7 @@ class BaseballJudgeTest {
     void numberAllMatch() {
         // given
         Ball computerBall = new Ball(List.of(1, 2, 3));
-        BaseballJudge judge = new BaseballJudge(computerBall);
+        BaseballJudge judge = BaseballJudge.computerBallOf(computerBall);
 
         Ball playerBall = new Ball(List.of(1, 2, 3));
 
@@ -37,7 +37,7 @@ class BaseballJudgeTest {
     void numberNoneMatch() {
         // given
         Ball computerBall = new Ball(List.of(1, 2, 3));
-        BaseballJudge judge = new BaseballJudge(computerBall);
+        BaseballJudge judge = BaseballJudge.computerBallOf(computerBall);
 
         Ball playerBall = new Ball(List.of(4, 5, 6));
 
@@ -60,7 +60,7 @@ class BaseballJudgeTest {
     void oneBallTwoStrike() {
         // given
         Ball computerBall = new Ball(List.of(1, 2, 3));
-        BaseballJudge judge = new BaseballJudge(computerBall);
+        BaseballJudge judge = BaseballJudge.computerBallOf(computerBall);
 
         Ball playerBall = new Ball(List.of(1, 3, 2));
 
@@ -83,7 +83,7 @@ class BaseballJudgeTest {
     void threeBall() {
         // given
         Ball computerBall = new Ball(List.of(1, 2, 3));
-        BaseballJudge judge = new BaseballJudge(computerBall);
+        BaseballJudge judge = BaseballJudge.computerBallOf(computerBall);
 
         Ball playerBall = new Ball(List.of(3, 1, 2));
 

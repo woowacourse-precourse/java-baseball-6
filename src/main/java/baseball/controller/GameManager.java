@@ -25,6 +25,8 @@ public class GameManager {
     public void startGame() {
         playerIoManager.welcomePlayer();
 
+        baseballJudge = BaseballJudge.computerBallOf(ballMaker.createBall());
+
     }
 
 
