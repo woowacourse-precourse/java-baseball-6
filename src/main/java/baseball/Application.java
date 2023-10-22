@@ -9,8 +9,9 @@ import java.util.Objects;
 
 public class Application {
 
-    private List<Integer> computerNumbers = new ArrayList<Integer>();
-    private List<Integer> userNumbers = new ArrayList<Integer>();
+    private ComputerNumbers computerNumbers;
+    private UserNumbers userNumbers;
+
     public static void main(String[] args) {
         Application app = new Application();
         app.start();
@@ -22,39 +23,32 @@ public class Application {
     }
 
     public void createBaseballNumbers(){
-        computerNumbers.clear();
-        while (computerNumbers.size() < 3) {
+        List<Integer> list = new ArrayList<>();
+        while (list.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumbers.contains(randomNumber)) computerNumbers.add(randomNumber);
+            if (!list.contains(randomNumber)) list.add(randomNumber);
         }
+        computerNumbers = new ComputerNumbers(list);
         inputNumbers();
-    }
-
-    public void setUserNumbers(String numbers){
-        userNumbers.clear();
-        for(int i = 0; i < 3; i++){
-            userNumbers.add(Integer.parseInt(String.valueOf(numbers.charAt(i))));
-        }
     }
 
     public void inputNumbers(){
         System.out.print("숫자를 입력해주세요 : ");
         String numbers = Console.readLine();
-        boolean isErrored = checkError(numbers);
-        if(!isErrored) {
-            setUserNumbers(numbers);
-            checkInputNumbers();
-        }
+        userNumbers = new UserNumbers(numbers);
+        checkInputNumbers();
     }
 
     public void checkInputNumbers(){
         int strikeCount = 0;
         int ballCount = 0;
 
+        List<Integer> computerList = computerNumbers.getList();
+        List<Integer> userList = userNumbers.getList();
+
         for(int i = 0; i < 3; i++){
-            if(Objects.equals(computerNumbers.get(i), userNumbers.get(i))) strikeCount++;
-            if(!Objects.equals(computerNumbers.get(i), userNumbers.get(i))
-                    && computerNumbers.contains(userNumbers.get(i))) ballCount++;
+            if(Objects.equals(computerList.get(i), userList.get(i))) strikeCount++;
+            if(!Objects.equals(computerList.get(i), userList.get(i)) && computerList.contains(userList.get(i))) ballCount++;
         }
         resultMessage(strikeCount, ballCount);
         checkHomerun(strikeCount);
@@ -64,29 +58,29 @@ public class Application {
         if(ballCount > 0 && strikeCount == 0) System.out.println(ballCount+"볼");
         if(strikeCount > 0 && ballCount > 0) System.out.println(ballCount+"볼 "+strikeCount+"스트라이크");
         if(strikeCount == 0 && ballCount == 0) System.out.println("낫싱");
-        if(strikeCount == 3) System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        if(strikeCount == 3) System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public void checkHomerun(int strikeCount){
         if(strikeCount != 3) inputNumbers();
-        if(strikeCount == 3) reStart(Integer.parseInt(Console.readLine()));
-    }
-
-    public void reStart(int answer){
-        if(answer == 1) createBaseballNumbers();
-    }
-
-    public boolean checkError(String numbers) {
-        try{
-            if(numbers.length() != 3) throw new IllegalArgumentException();
-            if(numbers.charAt(0) == numbers.charAt(1)) throw new IllegalArgumentException();
-            if(numbers.charAt(0) == numbers.charAt(2)) throw new IllegalArgumentException();
-            if(numbers.charAt(1) == numbers.charAt(2)) throw new IllegalArgumentException();
-            Integer.parseInt(numbers);
-            return false;
-        }catch (IllegalArgumentException e){
-            e.printStackTrace();
-            return true;
+        if(strikeCount == 3) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            reStart(Console.readLine());
         }
     }
+
+    public void reStart(String answer){
+        try {
+            if(!reStartValidate(answer)) throw new IllegalArgumentException();
+            int result = Integer.parseInt(answer);
+            if(result == 1) createBaseballNumbers();
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
+    }
+    public boolean reStartValidate(String answer){
+        if(answer == null || answer.isEmpty()) return false;
+        return answer.length() == 1;
+    }
 }
+
