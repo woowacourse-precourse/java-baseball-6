@@ -47,7 +47,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 영_중복_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(""))
+                assertThatThrownBy(() -> runException("001"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
