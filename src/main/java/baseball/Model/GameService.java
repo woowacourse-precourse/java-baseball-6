@@ -6,7 +6,6 @@ import java.util.Map;
 public class GameService {
 
     Computer computer;
-    User user;
     Referee referee;
 
     public void readyGame() {
@@ -14,12 +13,10 @@ public class GameService {
     }
 
     public Map<String,Integer> playRound(List<Integer> inputNumbers) {
-        user = new User(inputNumbers);
         referee = new Referee();
         Numbers computerNumbers = computer.getNumbers();
-        Numbers userNumbers = user.getNumbers();
+        Numbers userNumbers = new Numbers(inputNumbers);
 
-        referee.judge(userNumbers, computerNumbers);
-        return referee.getJudgement();
+        return referee.judge(userNumbers, computerNumbers);
     }
 }
