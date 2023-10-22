@@ -9,6 +9,10 @@ public class RandomNumber {
     private Hashtable<Integer, Integer> threeRandomNumberTable;
     public RandomNumber(int digitCount){
         this.digitCount = digitCount;
+
+    }
+    public RandomNumber(){
+        this(3);
     }
     public void generateRandomNumber(){
         this.threeRandomNumberTable = new Hashtable<Integer, Integer>();
