@@ -56,9 +56,9 @@
 ## RandomNumber
   - Method
     - [x] 중복되지 않은 임의의 숫자값 3 개 반환
-
+      **camp.nextstep.edu.missionutils.Randoms - `pickNumberInRange()`**
 ## Exception
   - Method
     - [ ] 재시작/종료 입력값이 1 혹은 2가 아닐 경우 exception 발생
-    - [ ] 사용자가 입력한 숫자가 세 자리가 아닐 경우 exception 발생
-    **camp.nextstep.edu.missionutils.Randoms - `pickNumberInRange()`**
+    - [x] 사용자가 입력한 숫자가 세 자리가 아닐 경우 exception 발생
+      **사용자가 잘못된 값을 입력한 경우 `IllegalArgumentException` 발생**

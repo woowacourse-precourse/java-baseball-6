@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.exception.ExceptionCheck;
 import baseball.model.ComputerModel;
 import baseball.random.RandomNumber;
 import baseball.view.InputView;
@@ -12,6 +13,7 @@ public class StateController {
     static final InputView inputview = new InputView();
     static final OutputView outputView = new OutputView();
     static final RandomNumber random = new RandomNumber();
+    static final ExceptionCheck exceptionCheck = new ExceptionCheck();
 
     private ComputerModel computerModel;
 
@@ -21,7 +23,10 @@ public class StateController {
 
     public boolean repeatPlayerExpect() {
         Map<String, Integer> scoreMap;
-        scoreMap = computerModel.scoreCalculator(inputview.inputPlayerNumber());
+        String playerNumber = inputview.inputPlayerNumber();
+
+        exceptionCheck.playerInputCheck(playerNumber);
+        scoreMap = computerModel.scoreCalculator(playerNumber);
         gameScoreCheck(scoreMap);
         return scoreMap.get("strikeScore") == 3;
     }
