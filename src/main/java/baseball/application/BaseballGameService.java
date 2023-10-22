@@ -12,6 +12,7 @@ public class BaseballGameService {
     public void startGame() {
         baseball = new Baseball();
         guessNumber();
+        OutputView.printPerfect();
 
         if (isRestartGame()) {
             reStartGame();
@@ -36,7 +37,6 @@ public class BaseballGameService {
             getBaseballResult(guessNumber);
             guessNumber();
         }
-        OutputView.printPerfect();
     }
 
     private boolean isGuessNumberPerfect(String guessNumber) {
