@@ -2,8 +2,8 @@
 
 ### InputView: 입력값을 받는 책임
 
-- [ ] 입력을 받는 기능
-  - [ ] 간단한 검증을 진행: 빈 문자열인지, 공백인지 검증을하고 예외가 발생하면 IllegalArgumentException을 발생시킨 후 종료
+- [x] 입력을 받는 기능
+  - [x] 간단한 검증을 진행: 빈 문자열인지, 공백인지 검증을하고 예외가 발생하면 IllegalArgumentException을 발생시킨 후 종료
 
 ### OutputView: 메시지 출력의 책임
 
