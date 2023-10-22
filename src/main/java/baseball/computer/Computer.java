@@ -1,5 +1,6 @@
 package baseball.computer;
 
+import baseball.Ball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
