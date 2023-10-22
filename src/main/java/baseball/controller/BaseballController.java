@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constant.ResultStatus;
 import baseball.constant.RetryStatus;
 import baseball.domain.AttemptNumbers;
 import baseball.domain.BallCount;
@@ -27,7 +28,8 @@ public class BaseballController {
         while (true) {
             baseballService.saveRandomNumbers();
             play();
-            if (checkRetry().isFinish()) {
+            final RetryStatus retryStatus = checkRetry();
+            if (retryStatus.isFinish()) {
                 break;
             }
         }
@@ -41,13 +43,19 @@ public class BaseballController {
 
     private void play() {
         while (true) {
-            outputView.printNumberInputRequest();
-            final AttemptNumbers attemptNumbers = inputManager.readAttemptNumbers();
-            final BallCount ballCount = baseballService.checkAnswer(attemptNumbers);
-            outputView.printBallCount(ballCount);
-            if (ballCount.checkResultStatus().isSuccess()) {
+            final BallCount ballCount = attempt();
+            final ResultStatus resultStatus = ballCount.checkResultStatus();
+            if (resultStatus.isSuccess()) {
                 break;
             }
         }
+    }
+
+    private BallCount attempt() {
+        outputView.printNumberInputRequest();
+        final AttemptNumbers attemptNumbers = inputManager.readAttemptNumbers();
+        final BallCount ballCount = baseballService.checkAnswer(attemptNumbers);
+        outputView.printBallCount(ballCount);
+        return ballCount;
     }
 }
