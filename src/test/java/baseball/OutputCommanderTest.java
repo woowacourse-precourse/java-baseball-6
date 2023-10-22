@@ -37,4 +37,16 @@ class OutputCommanderTest {
         String output = outputStream.toString();
         assertEquals(expected, output);
     }
+
+    @Test
+    void 플레이어의_입력을_받을때_요구사항에_맞는_문구를_출력한다() {
+        OutputCommander outputCommander = new OutputCommander();
+        String expected = OutputMessage.INPUT_NUMBER.message;
+
+        outputCommander.printReceivingInput();
+
+        String output = outputStream.toString();
+        assertEquals(expected, output);
+    }
+
 }
