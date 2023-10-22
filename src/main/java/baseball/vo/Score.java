@@ -13,4 +13,12 @@ public class Score {
         this.strike = strikeCnt;
         this.ball -= strikeCnt;
     }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
 }
