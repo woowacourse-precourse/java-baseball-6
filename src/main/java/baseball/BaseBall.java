@@ -80,26 +80,4 @@ public class BaseBall {
             }
         }
     }
-
-    public boolean isTerminate() {
-        String number = Console.readLine();
-
-        if (number == null) {
-            throw new IllegalArgumentException();
-        }
-
-        if (number.length() != 1) {
-            throw new IllegalArgumentException();
-        }
-
-        if (number.charAt(0) == '1' || number.charAt(0) == '2') {
-            if (number.charAt(0) - '0' == 2) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
 }
