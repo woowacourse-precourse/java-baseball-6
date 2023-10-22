@@ -22,7 +22,7 @@ class UserInput {
     checkLength(input);
     checkAllNumbers(input);
     checkContainsZero(input);
-    checkContainsZero(input);
+    checkDifferentDigits(input);
   }
 
   private static void checkLength(String input) {
@@ -66,7 +66,7 @@ class UserInput {
   }
 
   private static boolean areAllNumbers(String input) {
-    return input.matches("//d+");
+    return input.chars().allMatch(Character::isDigit);
   }
 
 }
