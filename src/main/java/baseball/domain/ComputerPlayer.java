@@ -9,7 +9,7 @@ public class ComputerPlayer implements MatchPlayer {
     }
 
     @Override
-    public BaseBallHint getHintOf(AnswerNumbers baseBallNumber) {
+    public BaseBallHint requestHintOf(AnswerNumbers baseBallNumber) {
         final int ball = countBall(baseBallNumber);
         final int strike = countStrike(baseBallNumber);
         return new BaseBallHint(

@@ -14,7 +14,7 @@ public class BaseballSingleGame implements BaseBallGame {
 
     @Override
     public BaseBallHint checkBaseBallNumber(AnswerNumbers baseBallNumber) {
-        return matchPlayer.getHintOf(baseBallNumber);
+        return matchPlayer.requestHintOf(baseBallNumber);
     }
 
     public void play(Player player, MatchPlayer matchPlayer) {
@@ -26,7 +26,7 @@ public class BaseballSingleGame implements BaseBallGame {
             final AnswerNumbers playerAnswerNumbers = getAnswerOf(player);
             // 변경을 받아서 상대에게 물어봐야합니다.
             // 상대방은 힌트를 주어야해요.
-            final BaseBallHint baseBallHint = matchPlayer.getHintOf(playerAnswerNumbers);
+            final BaseBallHint baseBallHint = matchPlayer.requestHintOf(playerAnswerNumbers);
             // 그리고 그 힌트가 3 strike 라면 게임이 종료되어야해요.
             // 그리고 유저에게 다시 할것인지 물어봐야해요.
             // 물어보고 다시 한다하면 게임을 다시 만들어야해요.
