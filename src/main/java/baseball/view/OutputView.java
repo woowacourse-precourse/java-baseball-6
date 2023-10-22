@@ -11,6 +11,10 @@ public class OutputView {
         System.out.println(START_GAME);
     }
 
+    public void printResult(final String gameResult) {
+        System.out.println(gameResult);
+    }
+
     public static OutputView getInstance() {
         return instance;
     }
