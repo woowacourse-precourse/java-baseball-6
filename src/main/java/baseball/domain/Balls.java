@@ -11,4 +11,17 @@ public class Balls {
         balls.add(ball);
     }
 
+    public boolean isSizeSame(int num) {
+        return balls.size() == num;
+    }
+
+    public boolean isContain(int newBall) {
+
+        for (int ball : balls) {
+            if (ball == newBall) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
