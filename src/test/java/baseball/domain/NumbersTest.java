@@ -24,10 +24,6 @@ class NumbersTest {
         assertThat(result).isEqualTo(new Number(1));
     }
 
-    @Test
-    @DisplayName("")
-    void hasSameIndexAndValue() {}
-
     @Nested
     @DisplayName("값을 갖고있는지 확인 요청시")
     class Contains {
@@ -53,6 +49,50 @@ class NumbersTest {
 
             // when
             final boolean result = numbers.contains(new Number(4));
+
+            // then
+            assertThat(result).isFalse();
+        }
+    }
+
+    @Nested
+    @DisplayName("같은 위치에 같은 값이 있는지 확인 요청시")
+    class HasSameIndexAndValue {
+
+        @Test
+        @DisplayName("조건에 부합하는 값이면 true를 반환하는가")
+        void same() {
+            // given
+            final Numbers numbers = new Numbers(List.of(1, 2, 3));
+
+            // when
+            final boolean result = numbers.hasSameIndexAndValue(new Number(1), 0);
+
+            // then
+            assertThat(result).isTrue();
+        }
+
+        @Test
+        @DisplayName("존재하는 값이 다른 위치에 있는 경우 false를 반환하는가")
+        void notSame() {
+            // given
+            final Numbers numbers = new Numbers(List.of(1, 2, 3));
+
+            // when
+            final boolean result = numbers.hasSameIndexAndValue(new Number(1), 1);
+
+            // then
+            assertThat(result).isFalse();
+        }
+
+        @Test
+        @DisplayName("존재하는 값이 다른 위치에 있는 경우 false를 반환하는가")
+        void notExistingValue() {
+            // given
+            final Numbers numbers = new Numbers(List.of(1, 2, 3));
+
+            // when
+            final boolean result = numbers.hasSameIndexAndValue(new Number(4), 1);
 
             // then
             assertThat(result).isFalse();
