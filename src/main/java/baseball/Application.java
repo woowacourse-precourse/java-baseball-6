@@ -10,12 +10,8 @@ import java.util.stream.Collectors;
 
 public class Application {
     private final int DIGIT = 3;
-    private final int randomNumber;
+    private int randomNumber;
     private boolean resume = true;
-
-    public Application() {
-        randomNumber = pickRandomNumber();
-    }
 
     public static void main(String[] args) {
         (new Application()).run();
@@ -23,6 +19,7 @@ public class Application {
 
     public void run() {
         while (resume) {
+            randomNumber = pickRandomNumber();
             matchingNumberLoop();
             checkResume();
         }
