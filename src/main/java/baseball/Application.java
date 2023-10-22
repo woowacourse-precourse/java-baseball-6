@@ -9,15 +9,19 @@ public class Application {
     final static int LENGTH_OF_CORRECTION_ANSWER = 3;
     final static int RANGE_START = 0;
     final static int RANGE_END = 9;
+    final static char ZERO_CHARACTER = '0';
 
     public static void main(String[] args) {
         List<Integer> randomNumberList;
         String userInput;
+        List<Integer> userNumberList;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         randomNumberList = getNewRandomNumberList();
+
         userInput = getInputOnGame();
         inputValidationCheck(userInput);
+        userNumberList = numericString2List(userInput);
 
         System.out.println("게임이 종료되었습니다.");
     }
@@ -82,7 +86,6 @@ public class Application {
      * @throws IllegalArgumentException - '0' - '9'가 아닌 문자
      */
     public static void numberCharacterValidationCheck(char character) {
-        final char ZERO_CHARACTER = '0';
         Integer cNumber = Character.getNumericValue(character);
         cNumber -= Character.getNumericValue(ZERO_CHARACTER);
         if (!(RANGE_START <= cNumber && cNumber <= RANGE_END)) {
@@ -100,5 +103,26 @@ public class Application {
         if (input.length() != LENGTH_OF_CORRECTION_ANSWER) {
             throw new IllegalArgumentException("문자열의 길이가 3이 아닙니다.");
         }
+    }
+
+    /**
+     * 숫자 문자열을 한 글자씩 잘라 Integer 리스트 생성
+     *
+     * @param userInput 문자 0-9로 구성된 문자열
+     * @return 문자열로 생성된 Integer 리스트
+     */
+    public static List<Integer> numericString2List(String userInput) {
+        List<Integer> numberList = new ArrayList<>();
+        char character;
+        int number;
+
+        for (int i = 0; i < userInput.length(); ++i) {
+            character = userInput.charAt(i);
+            number = Character.getNumericValue(character);
+            number -= Character.getNumericValue(ZERO_CHARACTER);
+            numberList.add(number);
+        }
+
+        return numberList;
     }
 }
