@@ -56,4 +56,8 @@ public class Number {
 
     }
 
+    public boolean contains(Integer number) {
+        return firstNumber == number || secondNumber == number || thirdNumber == number;
+    }
+
 }
