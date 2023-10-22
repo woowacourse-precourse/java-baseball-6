@@ -4,10 +4,15 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BaseballGame {
     private int ball = 0;
     private int strike = 0;
+    private String userNumber;
+    private String userInput;
+    private static final String CONTINUE = "1";
+    private static final String QUIT = "2";
 
     BaseballGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -31,55 +36,67 @@ public class BaseballGame {
         Array.checkArrayNumber(userNumber);
     }
 
+    public void inputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        this.userNumber = readLine(); // 서로 다른 3개의 숫자 입력
+    }
+
     public void getAnswer(List<Integer> computer, List<Integer> userNum) {
         // 컴퓨터가 만든 서로 다른 랜덤 3자리 수 computer 와 사용자 입력을 받은 서로 다른 3자리 수 userNum 비교
         for (int i = 0; i < computer.size(); i++) {
             if (computer.get(i).equals(userNum.get(i))) { // 같은 수가 같은 자리에 있으면 스트라이크
                 this.strike++;
-            } else {
-                for (int j = 0; j < userNum.size(); j++) {
-                    if (j == i) {
-                        continue; // 스트라이크
-                    }
-                    if (computer.get(i).equals(userNum.get(j))) { // 같은 수가 다른 자리에 있으면 볼
-                        this.ball++;
-                    }
-                }
+                continue;
+            }
+            if (userNum.contains(computer.get(i))) {
+                this.ball++;
             }
         }
     }
 
-    public void startNewGame() {
+    public String startNewGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        String userInput = readLine();
-        Array.checkOneOrTwo(userInput);
+        this.userInput = readLine();
+        Array.checkOneOrTwo(this.userInput);
 
-        if (userInput.equals("1")) { // 1이면 게임 다시
+        if (this.userInput.equals("1")) { // 1이면 게임 다시
             // 게임 다시
-            play();
-        } else if (userInput.equals("2")) { // 2이면 게임 종료
+            return CONTINUE;
+        } else if (this.userInput.equals("2")) { // 2이면 게임 종료
             // 게임 종료
-            return;
+            return QUIT;
         }
+        return null;
     }
 
     public void printAnswer() {
+        String isContinue = CONTINUE;
+
         if (strike == 0 && ball == 0) { // 같은 수가 전혀 없으면
             System.out.println("낫싱");
-        } else if (strike == 3) { // 3개의 숫자를 모두 맞히면
+        }
+        if (strike == 3) { // 3개의 숫자를 모두 맞히면
             System.out.println(strike + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-            startNewGame();
-        } else if (ball > 0 && strike == 0) { // 볼만 있을 경우
+            isContinue = startNewGame();
+        }
+        if (ball > 0 && strike == 0) { // 볼만 있을 경우
             System.out.println(ball + "볼");
-        } else if (strike > 0 && ball == 0) { // 스트라이크만 있을 경우
+        }
+        if (strike > 0 && ball == 0) { // 스트라이크만 있을 경우
             System.out.println(strike + "스트라이크");
-        } else { // 볼, 스트라이크 둘 다 있으면
+        }
+        if (strike > 0 && ball > 0) { // 볼, 스트라이크 둘 다 있으면
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
-        play();
+
+        if (Objects.equals(isContinue, "1")) {
+            play();
+        } else {
+            return;
+        }
 
     }
 
@@ -91,14 +108,14 @@ public class BaseballGame {
         this.getRandomNum(computer);
 
         // 입력
-        String userNumber = readLine(); // 서로 다른 3개의 숫자 입력
+        this.inputNumber();
 
         // 입력 확인
-        this.checkInput(userNumber);
+        this.checkInput(this.userNumber);
 
         // 같은 수 포함
         List<Integer> userNum = new ArrayList<>();
-        Array.checkForDuplicateNumbers(userNum, userNumber);
+        Array.checkForDuplicateNumbers(userNum, this.userNumber);
         //System.out.println(userNum);
 
         // 볼, 스트라이크 세기
