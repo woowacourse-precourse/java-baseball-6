@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.Computer;
+import baseball.validation.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -12,13 +13,15 @@ public class ComputerController {
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
     Computer computer = new Computer();
+    Validator validator = new Validator();
 
     public void start() {
         boolean gameState = false;
         computer.setComputerNumber();
         int computerNumber = computer.getComputerNumber();
         while (!gameState) {
-            int playerNumber = inputView.print_input_message();
+            String playerNum = inputView.print_input_message();
+            int playerNumber = validator.checkValid(playerNum);
             gameState = compareNumber(computerNumber, playerNumber);
         }
         outputView.print_end();
