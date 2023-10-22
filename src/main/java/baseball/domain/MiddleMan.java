@@ -9,6 +9,7 @@ import static baseball.view.Output.*;
 public class MiddleMan {
     private static final int INIT_BALL_STIRKE = 0;
     private static final int NUMBER_LENGTH = 3;
+    private static final int CORRECT_STRIKE_COUNT = 3;
     private int ball;
     private int strike;
 
@@ -18,13 +19,12 @@ public class MiddleMan {
 
     public boolean isCorrectAnswer(List<Integer> answerNumber, List<Integer> userNumber) {
         computeResult(answerNumber, userNumber);
-        if (strike == 3) {
+        if (strike == CORRECT_STRIKE_COUNT) {
             printCorrectAnswer();
             return true;
-        } else{
-            showResult();
-            return false;
         }
+        showResult();
+        return false;
     }
 
     private void showResult() {
