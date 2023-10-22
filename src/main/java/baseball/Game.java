@@ -77,7 +77,14 @@ public class Game {
     }
 
     public int getBallCount(List<Integer> input, List<Integer> answer) {
-
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            int num = answer.get(i);
+            if (input.contains(num) && input.get(i) != answer.get(i)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public void printResult() {
