@@ -2,11 +2,11 @@
 
 ## 숫자 랜덤 생성 기능
 
-랜덤한 숫자를 생성하는 기능을 구현한다.
+랜덤한 숫자를 생성하는 기능을 구현한다. - [GameNumbers](#GameNumbers)#generateRandomNumbers()
 
-- [ ] 숫자는 1~9 범위의 자연수다.
-- [ ] 3자리의 숫자여야 한다.
-- [ ] 3자리의 숫자는 서로 다른 숫자여야 한다. (중복이 없어야 한다.)
+- [x] 3자리의 숫자여야 한다. - [GameNumbers](#GameNumbers)#validateSize()
+- [x] 숫자는 1~9 범위의 자연수다. - [GameNumbers](#GameNumbers)#validateRange()
+- [x] 3자리의 숫자는 서로 다른 숫자여야 한다. (중복이 없어야 한다.) - [GameNumbers](#GameNumbers)#validateDuplicate()
 
 ## 사용자 숫자 입력 기능
 

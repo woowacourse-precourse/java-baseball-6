@@ -1,5 +1,7 @@
 package baseball.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,11 +13,26 @@ public class GameNumbers {
 
     private final List<Integer> numbers;
 
+    private GameNumbers() {
+        this.numbers = generateRandomNumbers();
+    }
+
     public GameNumbers(List<Integer> numbers) {
         validateSize(numbers);
         validateRange(numbers);
         validateDuplicate(numbers);
         this.numbers = numbers;
+    }
+
+    private static List<Integer> generateRandomNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < NUMBERS_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
+        return numbers;
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -37,5 +54,9 @@ public class GameNumbers {
         if (nonDuplicateNumbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException("숫자들은 중복될 수 없습니다.");
         }
+    }
+
+    public static GameNumbers createRandomGameNumbers() {
+        return new GameNumbers();
     }
 }
