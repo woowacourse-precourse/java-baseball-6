@@ -4,6 +4,7 @@ import static baseball.common.Message.BALL_MESSAGE;
 import static baseball.common.Message.EMPTY_MESSAGE;
 import static baseball.common.Message.END_INPUT_MESSAGE;
 import static baseball.common.Message.START_INPUT_MESSAGE;
+import static baseball.common.Message.START_MESSAGE;
 import static baseball.common.Message.STRIKE_MESSAGE;
 import static baseball.common.Message.SUCCESS_MESSAGE;
 
@@ -22,6 +23,10 @@ public class BaseBallOutputDevice {
     } else {
       System.out.println(ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE);
     }
+  }
+
+  public void printStartMessage() {
+    System.out.println(START_MESSAGE);
   }
 
   public void printSuccessMessage() {
