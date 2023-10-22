@@ -48,7 +48,7 @@ public class Application {
         int ballCount = 0;
         for (int index = 0; index < NUMBER_SIZE; index++) {
             int computer = computerNumber.get(index);
-            for (int i = 1; i <= NUMBER_SIZE; i++) {
+            for (int i = 1; i < NUMBER_SIZE; i++) {
                 if (computer == playerNumber.get((index + i) % NUMBER_SIZE))
                     ballCount++;
             }
