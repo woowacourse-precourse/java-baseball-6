@@ -20,13 +20,13 @@ public class GameManager {
         boolean goGame = true;
         while (goGame) {
             oneRoundOfGame();
-            OutputMessage.printGameExitMsg();
+            OutputMessage.printGameExitOrRestartMsg();
             goGame = PlayerInput.isGameRestartInput();
         }
+        OutputMessage.printGameFinishMsg();
     }
 
     private void settingGame() {
-
         isGameClear = false;
         computer = new Computer();
     }
