@@ -1,6 +1,10 @@
 package baseball.game;
 
+import baseball.score.Score;
+import baseball.userNumber.UserNumber;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.List;
 
 public class Game {
 
@@ -19,6 +23,16 @@ public class Game {
 
     public static void successGame() {
         System.out.println(GAME_END_MESSAGE);
+    }
+
+    public static void doGame(List<Integer> computerNumber) {
+        while (true) {
+            printInputMessage();
+            List<Integer> input = UserNumber.getUserNumber();
+            if (Score.checkScore(input, computerNumber)) {
+                break;
+            }
+        }
     }
 
     public static boolean newGame() {
