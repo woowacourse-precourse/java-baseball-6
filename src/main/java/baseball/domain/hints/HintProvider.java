@@ -15,10 +15,17 @@ public final class HintProvider {
             HintType type = compareToAnswer(answerNumbers, playerNumbers.get(i), i);
             hintMap.merge(type, 1, increaseHintCount());
         }
+        trimHint(hintMap);
+        return hintMap;
+    }
+
+    private void trimHint(Map<HintType, Integer> hintMap) {
         if (hintMap.containsKey(HintType.NOTHING)) {
             hintMap.put(HintType.NOTHING, ONLY_ONE);
         }
-        return hintMap;
+        if (hintMap.keySet().size() > 1) {
+            hintMap.remove(HintType.NOTHING);
+        }
     }
 
     private HintType compareToAnswer(List<Integer> answerNumbers, int number, int index) {
@@ -34,6 +41,4 @@ public final class HintProvider {
     private BiFunction<Integer, Integer, Integer> increaseHintCount() {
         return (value, putValue) -> value + 1;
     }
-
-
 }
