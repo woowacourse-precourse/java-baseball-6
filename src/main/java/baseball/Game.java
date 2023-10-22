@@ -55,8 +55,11 @@ public class Game {
         return integerInputList;
     }
 
-    public void isCorrect() {
-
+    public boolean isCorrect(int strike) {
+        if (strike == 3) {
+            return true;
+        }
+        return false;
     }
 
     public void getStrikeBallCount() {
