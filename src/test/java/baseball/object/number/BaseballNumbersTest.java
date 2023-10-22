@@ -1,5 +1,6 @@
 package baseball.object.number;
 
+import baseball.object.number.generator.OneTwoThreeOrFakeNumberGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
