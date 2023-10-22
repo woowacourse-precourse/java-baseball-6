@@ -14,6 +14,7 @@ public class GameController {
 
     public void run() {
         do {
+            OutputView.printInputGuideMessage();
             String inputNumber = InputView.inputPositiveNumber();
             playGame(inputNumber);
             OutputView.printResult(game.getResult());
