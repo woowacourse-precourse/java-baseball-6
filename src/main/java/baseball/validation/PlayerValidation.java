@@ -7,7 +7,7 @@ public class PlayerValidation {
 
     public static List<Integer> checkNumber(String numbers){
         isCheckNumber(numbers);
-        isCheckSize(numbers);
+        isCheckSize(numbers,3);
         return isCheckDuplicate(numbers);
     }
 
@@ -19,8 +19,8 @@ public class PlayerValidation {
         }
     }
 
-    public static void isCheckSize(String numbers) {
-        if(numbers.length() != 3){
+    public static void isCheckSize(String numbers, int size) {
+        if(numbers.length() != size){
             throw new IllegalArgumentException("3자리 수가 아닙니다");
         }
     }
