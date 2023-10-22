@@ -22,7 +22,8 @@ public class Game {
         System.out.print("숫자를 입력해주세요 : ");
         int number = input.nextInt();
         ArrayList<Integer> userNumber = convertIntToArrayList(number);
-        System.out.println("변환된 ArrayList: " + userNumber);
+        illegalNumber(userNumber);
+        
     }
 
     public static ArrayList<Integer> convertIntToArrayList(int number) {
@@ -34,6 +35,12 @@ public class Game {
         }
 
         return arrayList;
+    }
+
+    public static void illegalNumber(ArrayList<Integer> arrayList) {
+        if (arrayList.size() != 3 || arrayList.contains(0)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private ArrayList<Integer> setRandomNumber() {
