@@ -1,14 +1,16 @@
 package baseball.util;
 
+import baseball.domain.BaseballNumbers;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Parser {
-    public List<Integer> parseInputToList(String input) {
-        List<Integer> userNumbers = new ArrayList<>();
+    static List<Integer> numbers = new ArrayList<>();
+    public BaseballNumbers parseStringToBaseballNumbers(String input) {
         for (int i = 0; i < input.length(); i++) {
-            userNumbers.add(Character.getNumericValue(input.charAt(i)));
+            numbers.add(Character.getNumericValue(input.charAt(i)));
         }
-        return userNumbers;
+        return new BaseballNumbers(numbers);
     }
 }

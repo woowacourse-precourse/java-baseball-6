@@ -9,6 +9,7 @@ public class InputView {
     private static final String MSG_ASK_IF_CONTINUES = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String MSG_EXCEPTION_INVALID_INPUT = "올바르지 않은 입력값입니다.";
     public static final String EXIT = "2";
+    public static final String RESTART = "1";
 
     public static void printStart() {
         System.out.println(MSG_START);
