@@ -12,7 +12,6 @@ public class Application {
 
         while (true) {
             List<Integer> computerNumber = RandomNumber.createRandomNumber();
-            System.out.println("computerNumber = " + computerNumber);
             Game.doGame(computerNumber);
             if (!Game.newGame()) {
                 break;
