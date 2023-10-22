@@ -88,6 +88,7 @@ class Game {
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             getUserInput();
+            if(!askGameProgress()) break;
         }
     }
 
@@ -116,6 +117,16 @@ class Game {
         }
     }
 
+    private boolean askGameProgress() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int num = Integer.parseInt(Console.readLine());
+
+        if(num == 1) computer = new Computer();
+        else if(num == 2) return false;
+        else throw new IllegalArgumentException("잘못된 입력입니다. 게임 재시작은 1, 종료는 2 입니다.");
+
+        return true;
+    }
 }
 public class Application {
     public static void main(String[] args) {
