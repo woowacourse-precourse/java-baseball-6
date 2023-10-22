@@ -5,6 +5,11 @@ import static baseball.BaseballGameView.showGameContinueInputMessage;
 import static baseball.BaseballGameView.showNumberInputMessage;
 import static baseball.BaseballGameView.showStartMessage;
 import static baseball.BaseballGameView.showWinMessage;
+import static baseball.Constants.CONTINUE;
+import static baseball.Constants.ERROR_INVALID_CONTINUE_INPUT;
+import static baseball.Constants.ERROR_INVALID_INPUT;
+import static baseball.Constants.INPUT_REGEX;
+import static baseball.Constants.MAX_NUMBER_LENGTH;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -18,8 +23,6 @@ import java.util.stream.Collectors;
 
 public class NumberBaseballGame {
     List<Integer> computerNumber;
-    private static final String INPUT_REGEX = "^[1-9]{3}$";
-    private static final int MAX_NUMBER_LENGTH = 3;
 
     public void start() {
         showStartMessage();
@@ -65,16 +68,17 @@ public class NumberBaseballGame {
     }
 
     void validateInput(String inputString) throws IllegalArgumentException {
-        if (!Pattern.matches(INPUT_REGEX, inputString)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 숫자 입력입니다: " + inputString);
+        if (!Pattern.matches(INPUT_REGEX, inputString) || !hasUniqueNumber(inputString)) {
+            throw new IllegalArgumentException(ERROR_INVALID_INPUT + inputString);
         }
+    }
+
+    private boolean hasUniqueNumber(String inputString) {
         Set<Character> set = new HashSet<>();
         for (char s : inputString.toCharArray()) {
             set.add(s);
         }
-        if (set.size() != 3) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 숫자 입력입니다: " + inputString);
-        }
+        return set.size() == MAX_NUMBER_LENGTH;
     }
 
     boolean isUserWin(List<Integer> userNumber, List<Integer> computerNumber) {
@@ -109,12 +113,12 @@ public class NumberBaseballGame {
         showGameContinueInputMessage();
         String inputContinue = Console.readLine();
         validateContinueInput(inputContinue);
-        return inputContinue.equals("1");
+        return inputContinue.equals(CONTINUE);
     }
 
     void validateContinueInput(String inputContinue) throws IllegalArgumentException {
-        if (!inputContinue.equals("1") && !inputContinue.equals("2")) {
-            throw new IllegalArgumentException("[ERROR] 1 또는 2 를 입력하세요.");
+        if (!inputContinue.equals(CONTINUE) && !inputContinue.equals(Constants.STOP)) {
+            throw new IllegalArgumentException(ERROR_INVALID_CONTINUE_INPUT);
         }
     }
 }
