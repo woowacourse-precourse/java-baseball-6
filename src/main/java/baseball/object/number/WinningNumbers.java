@@ -1,22 +1,19 @@
-package baseball;
+package baseball.object.number;
 
-import baseball.io.Randoms;
+import baseball.object.generic.BallCount;
+import baseball.object.number.generator.NumbersGenerator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class WinningNumbers {
 
-    public static final int MAX_SIZE = 3;
+    private NumbersGenerator numbersGenerator;
+    private List<Integer> winningNumbers;
 
-    List<Integer> winningNumbers;
-
-    public WinningNumbers() {
-        this.winningNumbers = Stream.generate(Randoms::getSingleNumber)
-                .distinct()
-                .limit(MAX_SIZE)
-                .toList();
+    public WinningNumbers(NumbersGenerator numbersGenerator) {
+        this.numbersGenerator = numbersGenerator;
+        this.winningNumbers = numbersGenerator.generate();
     }
 
     public BallCount ballCounting(BaseballNumbers baseballNumbers) {
@@ -31,4 +28,5 @@ public class WinningNumbers {
         long countOfStrike = countOfExactMatches;
         return new BallCount(countOfStrike, countOfBall);
     }
+
 }

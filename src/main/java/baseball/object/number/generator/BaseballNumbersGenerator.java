@@ -1,19 +1,17 @@
-package baseball;
+package baseball.object.number.generator;
 
 import baseball.io.Input;
 import baseball.io.Output;
 import java.util.List;
 
-public class BaseballNumbers {
+public class BaseballNumbersGenerator implements NumbersGenerator {
 
-    private static final int MAX_LENGTH_OF_NUMBERS = 3;
-    List<Integer> baseballNumbers;
-
-    public BaseballNumbers() {
+    @Override
+    public List<Integer> generate() {
         Output.console("숫자를 입력해주세요 : ");
         String inputNumbersString = Input.consoleLine();
 
-        if (inputNumbersString.length() != MAX_LENGTH_OF_NUMBERS) {
+        if (inputNumbersString.length() != MAX_SIZE) {
             throw new IllegalArgumentException("야구숫자는 세 자리여야 합니다.");
         }
         if (inputNumbersString.replaceAll("[0-9]", "").length() != 0) {
@@ -27,12 +25,8 @@ public class BaseballNumbers {
             throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
 
-        this.baseballNumbers = inputNumbersString.chars()
+        return inputNumbersString.chars()
                 .mapToObj(Character::getNumericValue)
                 .toList();
-    }
-
-    public List<Integer> get() {
-        return baseballNumbers;
     }
 }
