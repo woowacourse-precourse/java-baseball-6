@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.enums.GameConfig;
-
 import java.util.List;
 
 public record Pitch(List<Integer> numbers) {

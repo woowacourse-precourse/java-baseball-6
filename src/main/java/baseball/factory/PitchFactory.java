@@ -1,10 +1,9 @@
 package baseball.factory;
 
-import java.util.List;
-
 import baseball.converter.ValueConverter;
 import baseball.domain.Pitch;
 import baseball.generator.NumberGenerator;
+import java.util.List;
 
 public class PitchFactory {
     private final NumberGenerator numberGenerator;

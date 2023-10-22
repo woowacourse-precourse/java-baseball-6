@@ -10,13 +10,13 @@ import baseball.ui.OutputView;
 import baseball.validator.InputValidator;
 
 public class Application {
-	public static void main(String[] args) {
-		InputView inputView = new InputView(new InputValidator());
-		OutputView outputView = new OutputView();
-		RefereeService referee = new RefereeService();
-		PitchFactory pitchFactory = new PitchFactory(new RandomNumberGenerator(), new ValueConverter());
-		GameController gameController = new GameController(inputView, pitchFactory, outputView, referee);
+    public static void main(String[] args) {
+        InputView inputView = new InputView(new InputValidator());
+        OutputView outputView = new OutputView();
+        RefereeService referee = new RefereeService();
+        PitchFactory pitchFactory = new PitchFactory(new RandomNumberGenerator(), new ValueConverter());
+        GameController gameController = new GameController(inputView, pitchFactory, outputView, referee);
 
-		gameController.play();
-	}
+        gameController.play();
+    }
 }

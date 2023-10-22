@@ -2,7 +2,6 @@ package baseball.ui;
 
 import baseball.enums.GameConfig;
 import baseball.validator.InputValidator;
-
 import java.util.Scanner;
 
 public class InputView {
