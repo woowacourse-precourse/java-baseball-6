@@ -15,23 +15,18 @@ public class Application {
 }
 
 class Game{
-    List<Integer> computerAnswer = new ArrayList<>();
-    List<Integer> userAnswer = new ArrayList<>();
-
     void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean check = false;
 
         while (!check) {
-            computerAnswer.clear();
-            getComputerNumber();
+            List<Integer> computerNumber = getComputerNumber();
 
             while (true) {
-                userAnswer.clear();
-                getUserNumber();
+                List<Integer> userNumber = getUserNumber();
 
                 Hint hint = new Hint();
-                hint.calculateScore(userAnswer, computerAnswer);
+                hint.calculateScore(userNumber, computerNumber);
 
                 if (hint.result()) {
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -50,27 +45,31 @@ class Game{
         }
     }
 
-    void getComputerNumber(){
-        while (computerAnswer.size() < 3) {
+    private List<Integer> getComputerNumber(){
+        List<Integer> computerNumber = new ArrayList<>();
+        while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerAnswer.contains(randomNumber)) {
-                computerAnswer.add(randomNumber);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
             }
         }
+        return computerNumber;
     }
 
-    void getUserNumber() {
+    private List<Integer> getUserNumber() {
+        List<Integer> userNumber = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
         try {
-            validateInput(input);
+            validateInput(input, userNumber);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("게임 종료");
         }
+        return userNumber;
     }
 
-    private void validateInput(String input) {
+    private void validateInput(String input, List<Integer> userNumber) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
         }
@@ -79,10 +78,10 @@ class Game{
             if (num < 1 || num > 9) {
                 throw new IllegalArgumentException("1부터 9까지의 숫자를 입력해주세요.");
             }
-            if (userAnswer.contains(num)) {
+            if (userNumber.contains(num)) {
                 throw new IllegalArgumentException("중복된 숫자가 입력되었습니다.");
             }
-            userAnswer.add(num);
+            userNumber.add(num);
         }
     }
 }
