@@ -11,10 +11,7 @@ public class RetryCheck {
     }
 
     public boolean isRetry() {
-        if (this.num == "1") {
-            return true;
-        }
-        return false;
+        return num.equals("1");
     }
 
     private static void checkRetryInput(String number) {
