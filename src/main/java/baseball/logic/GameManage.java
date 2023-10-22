@@ -24,20 +24,43 @@ public class GameManage {
     }
 
     public void getResult(List<Integer> answerNumbers, List<Integer> userNumbers) {
-        checkStrike(answerNumbers, userNumbers);
-        checkBall(answerNumbers, userNumbers);
+        checkStrikeCount(answerNumbers, userNumbers);
+        checkBallCount(answerNumbers, userNumbers);
     }
 
-    private void checkStrike(List<Integer> answerNumbers, List<Integer> userNumbers) {
+    private void checkStrikeCount(List<Integer> answerNumbers, List<Integer> userNumbers) {
         strike = (int) IntStream.range(0, NUMBER_LENGTH)
-                .filter(i -> answerNumbers.get(i).equals(userNumbers.get(i)))
+                .filter(i -> isStrike(answerNumbers, userNumbers, i))
                 .count();
     }
 
-    private void checkBall(List<Integer> answerNumbers, List<Integer> userNumbers) {
+    private void checkBallCount(List<Integer> answerNumbers, List<Integer> userNumbers) {
         ball = (int) IntStream.range(0, NUMBER_LENGTH)
-                .filter(i -> !answerNumbers.get(i).equals(userNumbers.get(i)) && answerNumbers.contains(
-                        userNumbers.get(i)))
+                .filter(i -> isBall(answerNumbers, userNumbers, i))
                 .count();
+    }
+
+    private boolean isStrike(List<Integer> answerNumbers, List<Integer> userNumbers, int index) {
+        boolean isStrike = false;
+        int answer = answerNumbers.get(index);
+        int user = userNumbers.get(index);
+
+        if (answer == user) {
+            isStrike = true;
+        }
+
+        return isStrike;
+    }
+
+    private boolean isBall(List<Integer> answerNumbers, List<Integer> userNumbers, int index) {
+        boolean isBall = false;
+        int answer = answerNumbers.get(index);
+        int user = userNumbers.get(index);
+
+        if (answer != user && answerNumbers.contains(user)) {
+            isBall = true;
+        }
+
+        return isBall;
     }
 }
