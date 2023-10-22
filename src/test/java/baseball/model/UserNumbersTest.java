@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static baseball.Constants.NUMBER_COUNTS;
+import static baseball.NumericRange.COUNT;
 import static baseball.fixture.UserNumbersFixture.createUserNumbersByString;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -20,7 +20,7 @@ class UserNumbersTest {
         // given
         StringBuilder numberString = new StringBuilder();
         IntStream
-            .range(FIRST_NUM, NUMBER_COUNTS + PLUS_NUMBER_FOR_END_EXCLUSIVE)
+            .range(FIRST_NUM, COUNT.getNumber() + PLUS_NUMBER_FOR_END_EXCLUSIVE)
             .forEach(numberString::append);
 
         // when & then
@@ -32,7 +32,7 @@ class UserNumbersTest {
     @DisplayName("중복된 숫자들이 입력으로 들어올 경우 예외 처리")
     void when_() {
         // given
-        String duplicatedNumbers = "1".repeat(NUMBER_COUNTS);
+        String duplicatedNumbers = "1".repeat(COUNT.getNumber());
 
         // when & then
         assertThrows(IllegalArgumentException.class, () ->

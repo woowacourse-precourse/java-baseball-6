@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static baseball.Constants.NUMBER_COUNTS;
+import static baseball.NumericRange.COUNT;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,7 +28,7 @@ public class UserNumbers {
     }
 
     private static void validateNumbersSize(final List<Integer> inputNumbers) {
-        if (inputNumbers.size() != NUMBER_COUNTS) {
+        if (inputNumbers.size() != COUNT.getNumber()) {
             throw new IllegalArgumentException();
         }
     }

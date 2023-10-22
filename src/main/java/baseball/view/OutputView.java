@@ -1,6 +1,6 @@
 package baseball.view;
 
-import static baseball.Constants.NUMBER_COUNTS;
+import static baseball.NumericRange.COUNT;
 
 public class OutputView {
 
@@ -13,7 +13,7 @@ public class OutputView {
     }
 
     public static void informGameOver() {
-        System.out.println(NUMBER_COUNTS + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(COUNT.getNumber() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static void askContinueGame() {

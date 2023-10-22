@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static baseball.Constants.NUMBER_COUNTS;
+import static baseball.NumericRange.COUNT;
 
 public class GuessResult {
 
@@ -27,7 +27,7 @@ public class GuessResult {
     }
 
     public boolean isGameEnd() {
-        return strikeCount == NUMBER_COUNTS;
+        return strikeCount == COUNT.getNumber();
     }
 
     public int getBallCount() {

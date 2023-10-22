@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static baseball.Constants.NUMBER_COUNTS;
+import static baseball.NumericRange.COUNT;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -26,7 +26,7 @@ class GuessResultTest {
     @DisplayName("모두 맞았을 경우 게임이 끝났다는 것을 알려준다.")
     void when_() {
         // given & when
-        for (int i = 0; i < NUMBER_COUNTS; i++) {
+        for (int i = 0; i < COUNT.getNumber(); i++) {
             guessResult.addStrikeCount();
         }
 
