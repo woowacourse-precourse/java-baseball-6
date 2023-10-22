@@ -32,7 +32,7 @@ public class GamePlaying {
 
     private void findStrike() {
         for (int i = 0; i < 3; i++) {
-            if ();
+            if (computerNumber.get(i) == playerNumber.get(i));
         }
     }
 
