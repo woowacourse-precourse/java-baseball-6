@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-public class Game {
+public class Game extends GameConstants {
     private final Player player;
     private final Computer computer;
     private int strikeCount;
@@ -44,7 +44,7 @@ public class Game {
 
             compareNumbers(computerNumbers, playerNumbers);
 
-            if (strikeCount == 3) {
+            if (strikeCount == MAX_STRIKE_COUNT) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 isPlayGame = checkIsContinue();
             } else {
@@ -54,10 +54,11 @@ public class Game {
     }
 
     private void compareNumbers(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        // todo: 출력 삭제하기
         System.out.println("computerNumbers = " + computerNumbers);
         System.out.println("playerNumbers = " + playerNumbers);
 
-        for (int i = 0; i < playerNumbers.size(); i++) {
+        for (int i = 0; i < MAX_NUMBER_COUNT; i++) {
             if (computerNumbers.get(i) == playerNumbers.get(i)) {
                 strikeCount++;
             } else if (computerNumbers.contains(playerNumbers.get(i))) {
@@ -87,17 +88,17 @@ public class Game {
     }
 
     private boolean checkIsContinue() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 " + RESTART + ", 종료하려면 " + END + "를 입력하세요.");
 
         String input = Console.readLine();
 
-        if (input.equals("1")) {
+        if (input.equals(RESTART)) {
             initComputerAndPlayer();
             return true;
-        } else if (input.equals("2")) {
+        } else if (input.equals(END)) {
             return false;
         } else {
-            throw new IllegalArgumentException("Error: Input must be 1 or 2");
+            throw new IllegalArgumentException("Error: Input must be " + RESTART + " or " + END);
         }
     }
 }

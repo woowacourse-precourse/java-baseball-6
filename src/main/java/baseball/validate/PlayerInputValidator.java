@@ -1,11 +1,13 @@
 package baseball.validate;
 
+import baseball.game.GameConstants;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class PlayerInputValidator {
+public class PlayerInputValidator extends GameConstants {
     public List<Integer> validateNumbers(String input) {
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException("Error: Input cannot be empty.");
@@ -39,7 +41,7 @@ public class PlayerInputValidator {
         for (String value : values) {
             uniqueValues.add(value);
         }
-        if (uniqueValues.size() != values.length) {
+        if (uniqueValues.size() != MAX_NUMBER_COUNT) {
             throw new IllegalArgumentException("Error: Input should not contain duplicate numbers");
         }
     }
