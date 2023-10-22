@@ -46,8 +46,34 @@ public class Game {
         return Arrays.asList(new Integer[3 - digits.size()]);  // Arrays의 asList()는 무엇인가?
     }
 
-    private int ca
+    private int countStrike(List<Integer> randomDigits, List<Integer> userDigits) {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (randomDigits.get(i).equals(userDigits.get(i))) {
+                strike += 1;
+            }
+        }
+        return strike;
+    }
 
+    private int countBall(List<Integer> randomDigits, List<Integer> userDigits) {
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i != j && randomDigits.get(i).equals(userDigits.get(i))) {
+                    ball += 1;
+                }
+            }
+        }
+        return ball;
+    }
+
+    private void printResult(int strike, int ball) {
+        String result = "";
+        if (strike == 0 && ball == 0) {
+            result = "낫싱";
+        }
+    }
     private void initRandomNum() {
         user.setUserNum();
 
