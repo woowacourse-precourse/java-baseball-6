@@ -11,6 +11,11 @@ public class Application {
                 System.out.println("숫자 야구 게임을 시작합니다.");
                 gameFirstStarted = false;
             }
+
+            Computer computer = new Computer();
+            computer.pickNumbers();
+
+
         }
 
     }
