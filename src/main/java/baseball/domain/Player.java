@@ -14,7 +14,7 @@ public class Player {
         inputNums = stringToList(input);
     }
 
-    List<Integer> getInputNums() {
+    public List<Integer> getInputNums() {
         return inputNums;
     }
 
