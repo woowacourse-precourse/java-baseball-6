@@ -7,9 +7,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Application {
+    private static final String RESTART_OPTION = "1";
+    private static final String EXIT_OPTION = "2";
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        gameStart();
+        boolean restart = true;
+        while (restart) {
+            gameStart();
+            restart = askToRestart();
+        }
     }
 
     private static void gameStart() {
@@ -83,5 +90,13 @@ public class Application {
         if (strike > 0) System.out.print(strike + "스트라이크");
         if (ball == 0 && strike == 0) System.out.print("낫싱");
         System.out.println();
+    }
+
+    private static boolean askToRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals(RESTART_OPTION)) return true;
+        else if (input.equals(EXIT_OPTION)) return false;
+        else throw new IllegalArgumentException();
     }
 }
