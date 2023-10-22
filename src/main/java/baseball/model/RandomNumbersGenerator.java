@@ -1,12 +1,11 @@
-package baseball.domain;
+package baseball.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class RandomNumber {
+public class RandomNumbersGenerator {
     public final static int MIN_NUMBER_RANGE = 1;
     public final static int MAX_NUMBER_RANGE = 9;
     public final static int RANDOM_NUMBER_LENGTH = 3;
@@ -21,6 +20,4 @@ public class RandomNumber {
         }
         return computer;
     }
-
-
 }
