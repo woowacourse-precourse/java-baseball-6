@@ -9,11 +9,16 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ConsoleTest {
+    private final String emptyString = "";
+    private final String successString = "123";
+    private final List<Integer> successList = List.of(1, 2, 3);
+    private final int successListSize = successList.size();
     private final String nullString = null;
     private final String notNumber = "ABC";
     private final String outOfRangeNumber = "012";
@@ -31,7 +36,7 @@ public class ConsoleTest {
         void success() {
             assertSimpleTest(
                     () -> {
-                        run("123");
+                        run(successString);
                         assertThat(output()).isEqualTo(successList.toString());
                     }
             );
@@ -90,6 +95,31 @@ public class ConsoleTest {
         @Override
         protected void runMain() {
             System.out.println(Console.input3DigitNumber().toString());
+        }
+    }
+
+
+    @Nested
+    @DisplayName("상대방의 3자리 수 입력을 받는 기능")
+    class input3DigitRandomNumberTest extends NsTest {
+
+        @Test
+        @DisplayName("정상적으로 입력한다.")
+        void success() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run(emptyString);
+                        assertThat(output()).isEqualTo(successList.toString());
+                    },
+                    successList.get(0),
+                    successList.subList(1, successListSize)
+                            .toArray(new Integer[successListSize - 1])
+            );
+        }
+
+        @Override
+        protected void runMain() {
+            System.out.println(Console.input3DigitRandomNumber());
         }
     }
 }
