@@ -1,6 +1,5 @@
 package baseball.service;
 
-import baseball.util.ExceptionHandler;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ import java.util.Set;
 
 public class BaseballService {
     private final InputView inputView = new InputView();
-    private final ExceptionHandler exceptionHandler = new ExceptionHandler();
 
     public List<Integer> createRandomNumber() {
         List<Integer> computer = new ArrayList<>();
@@ -32,7 +30,7 @@ public class BaseballService {
     }
 
     private void isValidNumber(String str) {
-        if (isThreeDigits(str) && hasNoZero(str) && hasUniqueDigits(str)) {
+        if (isThreeDigits(str) && hasNoZero(str) && hasUniqueDigits(str) && isNumeric(str)) {
             return;
         }
         throw new IllegalArgumentException();
@@ -57,6 +55,10 @@ public class BaseballService {
             uniqueSet.add(digit);
         }
         return true;
+    }
+
+    public boolean isNumeric(String str) {
+        return str.matches("\\d+");
     }
 
 }
