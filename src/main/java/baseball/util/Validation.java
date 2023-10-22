@@ -35,4 +35,8 @@ public class Validation {
 
         return false;
     }
+
+    private boolean isOneOrTwo(String number) {
+        return number.equals("1") || number.equals("2");
+    }
 }
