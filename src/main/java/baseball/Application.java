@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.ComputerController;
 import baseball.controller.RandomUtility;
 import baseball.controller.UserInputValidator;
 import baseball.model.GameNumber;
@@ -30,10 +31,12 @@ public class Application {
             System.out.println("validatedUserInputNumber = " + validatedUserInputNumber);
         }
 
-        RandomUtility randomUtility = new RandomUtility();
-        int[] answerNumbers = randomUtility.generateAnswerNumbers();
-        for (int i = 0; i < answerNumbers.length; i++) {
-            System.out.println("answerNumbers["+ i + "] = " + answerNumbers[i]);
+        ComputerController computerController = new ComputerController();
+        computerController.startGame(gameNumber);
+
+        List<Integer> computerGenerateNumbers = gameNumber.getComputerGenerateNumbers();
+        for (Integer computerGenerateNumber : computerGenerateNumbers) {
+            System.out.println("computerGenerateNumber = " + computerGenerateNumber);
         }
 
         outputView.printGameFinish();

@@ -27,7 +27,7 @@
 ## MVC 패턴 기반의 기능 명세
 ### Model
 1. GameNumber
-- [ ] computerGenerateNumbers 저장
+- [x] computerGenerateNumbers 저장
 - [X] userInputString 저장
 - [x] userInputNumbers 저장
 
