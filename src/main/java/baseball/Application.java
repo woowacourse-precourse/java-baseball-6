@@ -180,12 +180,9 @@ class Hint{
     void PrintResult(){
         String result = "";
         if (this.ball != 0){
-            result += this.ball + "볼";
+            result += this.ball + "볼 ";
         }
         if (this.strike != 0){
-            if (this.ball != 0){
-                result += " ";
-            }
             result += this.strike + "스트라이크";
         }
         if (result.equals("")){
