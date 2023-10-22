@@ -27,4 +27,8 @@ public class Result {
     private boolean isSameIndex(int index, char number, List<Character> randomNumbers) {
         return index == randomNumbers.indexOf(number);
     }
+
+    private boolean isNothing() {
+        return strike == 0 && ball == 0;
+    }
 }
