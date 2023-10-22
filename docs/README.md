@@ -61,7 +61,7 @@
       ```
   - 게임 종료 여부 입력 형식 확인하기
     ``` java
-    void checkEndForm(int endOption)
+    void checkEndForm(String endOption)
     ```
   - 게임 종료 여부 확인하기
       ``` java
