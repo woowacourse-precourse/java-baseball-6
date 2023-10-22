@@ -14,8 +14,12 @@ public class OutView {
         printMessage(PrintMessage.INPUT_RESTART_NUMBER_MESSAGE.toString());
     }
 
+    public void printGameStart() {
+        printMessage(PrintMessage.GAME_START_MESSAGE.toString());
+    }
+
     public void printGameEnd() {
-        printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        printMessage(PrintMessage.GAME_END_MESSAGE.toString());
     }
     private void printMessage(Score score) {
         System.out.print(score);

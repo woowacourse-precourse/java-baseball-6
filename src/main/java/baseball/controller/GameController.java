@@ -13,6 +13,7 @@ public class GameController {
     private String restartMessage;
 
     public void startGame() {
+        outView.printGameStart();
         playGame();
         if(restartMessage.equals("1")) {
             restartMessage = "2";
