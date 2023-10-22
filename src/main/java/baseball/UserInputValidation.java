@@ -8,11 +8,19 @@ public class UserInputValidation {
     private static final Integer RESTART_NUMBER_SIZE = 1;
 
     public boolean isValidGameNumber(String userInput) {
-        if (userInput.length() != GAME_NUMBER_SIZE) {
+        if (isValidLengthGameNumber(userInput)) {
             return false;
         }
-        return isRangeGameNumber(userInput);
+        if (!isRangeGameNumber(userInput)) {
+            return false;
+        }
+        return isDuplicateGameNumber(userInput);
     }
+
+    public boolean isValidLengthGameNumber(String userInput) {
+        return userInput.length() == GAME_NUMBER_SIZE;
+    }
+
 
     public boolean isValidRestartNumber(String userInput) {
         if (userInput.length() != RESTART_NUMBER_SIZE) {
