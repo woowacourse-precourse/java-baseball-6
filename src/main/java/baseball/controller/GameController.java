@@ -34,5 +34,6 @@ public class GameController {
             roundResult = new RoundResult(strikeCount, ballCount);
             GameView.printRoundResult(roundResult);
         } while(!roundResult.isWin());
+        GameView.printWinMessage();
     }
 }
