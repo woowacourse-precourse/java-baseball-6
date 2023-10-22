@@ -5,13 +5,13 @@ package baseball.property;
  * @description base ball game property
  * @since 2023.10.23
  **********************************************************************************************************************/
-public class BaseBallGameProperty {
+public class BaseballGameProperty {
 
   private Integer digit;
   private Integer usableSingleNumberFrom;
   private Integer usableSingleNumberTo;
 
-  public BaseBallGameProperty(Integer digit, Integer usableNumberFrom, Integer usableSingleNumberTo) {
+  public BaseballGameProperty(Integer digit, Integer usableNumberFrom, Integer usableSingleNumberTo) {
     this.digit = digit;
     this.usableSingleNumberFrom = usableNumberFrom;
     this.usableSingleNumberTo = usableSingleNumberTo;
