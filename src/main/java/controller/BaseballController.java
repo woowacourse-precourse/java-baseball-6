@@ -17,7 +17,7 @@
 package controller;
 
 public class BaseballController {
-    public static void startMission() {
+    public static void startBaseball() {
 
     }
 
