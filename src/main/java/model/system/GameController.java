@@ -5,7 +5,7 @@ import model.player.Computer;
 import model.referee.GameScoreboard;
 import utils.BaseballNumberUtils;
 
-public class GameController {
+public final class GameController {
 
     private final GameStarter gameStarter;
     private final GameTerminator gameTerminator;
@@ -16,13 +16,24 @@ public class GameController {
     }
 
     public void run() {
-        boolean runningGame = true;
+        final Computer computer = setupGame();
+        GameScoreboard gameScoreboard;
+        do {
+            gameScoreboard = playGameRound(computer);
+        } while (isGameRunning(gameScoreboard));
+    }
+
+    private Computer setupGame() {
         List<Integer> randomNumbers = BaseballNumberUtils.createRandomNumbers();
-        Computer computer = Computer.create(randomNumbers);
-        while (runningGame) {
-            GameScoreboard gameScoreboard = gameStarter.start(computer);
-            runningGame = gameTerminator.isGameStillRunning(gameScoreboard);
-        }
+        return Computer.create(randomNumbers);
+    }
+
+    private boolean isGameRunning(GameScoreboard gameScoreboard) {
+        return gameTerminator.isGameStillRunning(gameScoreboard);
+    }
+
+    private GameScoreboard playGameRound(Computer computer) {
+        return gameStarter.start(computer);
     }
 
 }
