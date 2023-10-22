@@ -72,6 +72,14 @@ class OutputCommanderTest {
         assertEquals(expected, output);
     }
 
+    @Test
+    void 게임이_끝나고_재시작_여부를_묻는_문구를_요구사항에_맞게_출력한다() {
+        OutputCommander outputCommander = new OutputCommander();
+        String expected = OutputMessage.RETRY_OR_END.message + "\n";
 
+        outputCommander.printAskingRetry();
 
+        String output = outputStream.toString();
+        assertEquals(expected, output);
+    }
 }
