@@ -1,4 +1,5 @@
 package baseball.domain;
+import baseball.config.GameConfiguration;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -7,14 +8,11 @@ import java.util.List;
 public class GameService {
 
     List<Integer> numbers = new ArrayList<>();
-    static final int MAX_NUMBERS = 3;
-    static final int START_INCLUSIVE = 1;
-    static final int END_INCLUSIVE = 9;
 
     public BaseballNumbers generateNumbers(){
         numbers.clear();
-        while(numbers.size() < MAX_NUMBERS){
-            int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+        while(numbers.size() < GameConfiguration.MAX_NUMBERS){
+            int randomNumber = Randoms.pickNumberInRange(GameConfiguration.START_INCLUSIVE, GameConfiguration.END_INCLUSIVE);
             if(isNotDuplicated(randomNumber)) numbers.add(randomNumber);
         }
         return new BaseballNumbers(numbers);
@@ -27,7 +25,7 @@ public class GameService {
     public Result compare(BaseballNumbers computerNumbers, BaseballNumbers userNumbers) {
         int ball = 0;
         int strike = 0;
-        for (int index = 0; index < MAX_NUMBERS; index++){
+        for (int index = 0; index < GameConfiguration.MAX_NUMBERS; index++){
             if(isStrike(computerNumbers, userNumbers, index)) strike++;
             if(isBall(computerNumbers, userNumbers, index)) ball++;
         }
