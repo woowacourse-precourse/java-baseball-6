@@ -10,10 +10,16 @@ public class RandomMaker {
 
         while (numbers.size() < 3) {
             Character number = (char) (Randoms.pickNumberInRange(1, 9) + '0');
-            
-            numbers.add(number);
+
+            if (isUniqueNumber(numbers, number)) {
+                numbers.add(number);
+            }
         }
 
         return numbers;
+    }
+
+    private static boolean isUniqueNumber(List<Character> numbers, Character number) {
+        return !numbers.contains(number);
     }
 }
