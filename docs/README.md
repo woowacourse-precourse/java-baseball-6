@@ -18,14 +18,15 @@
 
 ## 기능 구현 사항
 
-[ ] 볼의 숫자를 가지는 Ball 클래스
+[ ] 볼의 숫자, 위치 정보를 가지는 Ball 클래스
 
-    equals, hashcode를 재정의하여 숫자가 같으면 같은 Ball이 되도록 설정하였습니다.
+    1. equals, hashcode를 재정의하여 숫자와 위치가 같으면 같은 Ball이 되도록 설정하였습니다.
+    2. 두 공을 비교하여, strike와 ball 여부를 확인할 수 있습니다.
 
 [ ] Ball의 일급 컬렉션인 BallContainer 클래스
 
     1. 팩토리 메서드인 getFromNumbers를 이용하여, List<Integer>를 List<Ball>로 매핑합니다.
-    2. pitch 메서드를 통해 다른 BallContainer를 파라미터로 받아 비교합니다.
+    2. pitch 메서드를 통해 다른 BallContainer를 파라미터로 받아 비교하고, 결과인 PitchResult 객체를 리턴합니다.
 
 [ ] 컴퓨터의 3자리 랜덤 숫자를 만드는 ComNumberGenerator 클래스
 
@@ -34,21 +35,22 @@
 
 [ ] 유저의 입력을 받아 List<Integer>로 매핑하는 UserNumberGenerator 클래스
 
-    1. 문자열로 입력받은 숫자들을 List<Integer> 안에 넣어 리턴합니다.
+    1. 유저의 입력은 '578'과 같은 문자열로 이루어지므로, 이 문자열을 받아 검증합니다.
+    2. 예외가 발생되지 않으면, 이를 List<Integer>로 매핑하여 리턴합니다.
 
 [ ] 게임 결과를 저장하는 PitchResult 클래스
 
     1. 생성자에서 스트라이크, 볼 수를 지정하여 생성합니다.
-    2. 만약 스트라이크이면, 스트라이크 수를 1 올린 "PitchResult" 객체를 리턴합니다.
-    3. 볼인 경우도 마찬가지입니다.
-    4. 저장된 필드값을 통해, getHint() 메서드를 호출하면 힌트를 제공합니다.
-    5. 스트라이크 수가 3인지를 확인하는 isGameEnd 메서드를 가집니다.
+    2. 스트라이크, 볼인 경우 필드의 strikeCount, ballCount를 증가시킵니다.
+    3. 저장된 필드값을 통해, getHint() 메서드를 호출하면 힌트를 제공합니다.
+    4. 스트라이크 수가 3인지를 확인하는 isGameEnd 메서드를 가집니다.
 
 [ ] 게임을 실행하는 NumberBaseBall 클래스
 
     1. 게임의 상태(ON, OFF)를 가지는 중첩 enum을 가집니다.
     2. startGame() 메서드는, 다음의 세 과정을 거칩니다. (1) GameStatus 필드를 ON으로 설정 (2) 컴퓨터의 숫자를 불러오기 (3) 게임을 시작
-    3. playGame() 메서드는, 유저의 입력을 받고, 비교한뒤 힌트를 출력하고 restartOrExit 메서드를 호출합니다. 
+    3. playGame() 메서드는, 유저의 입력을 받고, 컴퓨터와 비교하여 결과를 얻어낸 뒤, executeByResult 메서드를 호출합니다. 
         - GameStatus 필드가 ON이면 이를 반복합니다.
-    4. restartOrExit() 메서드는, 게임 종료 메시지를 출력하고 questIfRestart 메서드를 호출합니다.
+    4. executeByResult() 메서드는, 게임 종료 메시지를 출력하고 questIfRestart 메서드를 호출합니다.
     5. questIfRestart 메서드는, 1 또는 2의 숫자를 입력받고 조건에 맞게 처리합니다.
+        - 1,2 외의 값에 대한 유효성 검사를 진행합니다.
