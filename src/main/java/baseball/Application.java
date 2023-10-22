@@ -9,11 +9,11 @@ import java.util.List;
 public class Application{
 
     public static void main(String[] args){
-        while(true){
+        while (true){
             startGame();
             List<Integer> computerNumber = createComputerRandomNumber();
             playGame(computerNumber);
-            if(terminate()){
+            if (terminate()){
                 break;
             }
         }
@@ -35,7 +35,7 @@ public class Application{
     }
 
     private static void playGame(List<Integer> computerNumber){
-        while(true){
+        while (true){
             List<Integer> userNumber = input();
             int strike = findStrike(computerNumber, userNumber);
             int ball = findBall(computerNumber, userNumber, strike);
@@ -98,8 +98,8 @@ public class Application{
 
     private static int findStrike(List<Integer> computerNumber, List<Integer> userNumber){
         int strikeCount = 0;
-        for(int i=0;i<3;i++){
-            if(computerNumber.get(i)==userNumber.get(i)){
+        for (int i = 0; i < 3; i++){
+            if (computerNumber.get(i) == userNumber.get(i)){
                 strikeCount++;
             }
         }
@@ -108,14 +108,14 @@ public class Application{
 
     private static int findBall(List<Integer> computerNumber, List<Integer> userNumber, int strike){
         int ballCount = 0;
-        int[] visited = countExistingNumber(computerNumber,userNumber);
-        ballCount = countSameNumber(visited)-strike;
+        int[] visited = countExistingNumber(computerNumber, userNumber);
+        ballCount = countSameNumber(visited) - strike;
         return ballCount;
     }
 
     private static int[] countExistingNumber(List<Integer> computerNumber, List<Integer> userNumber){
         int[] visited = new int[10];
-        for(int i=0;i<3;i++){
+        for (int i = 0; i < 3; i++){
             visited[computerNumber.get(i)]++;
             visited[userNumber.get(i)]++;
         }
@@ -124,8 +124,8 @@ public class Application{
 
     private static int countSameNumber(int[] visited){
         int count = 0;
-        for(int i=1;i<=9;i++){
-            if(visited[i]==2){
+        for (int i = 1; i <= 9; i++){
+            if (visited[i] == 2){
                 count++;
             }
         }
@@ -133,26 +133,26 @@ public class Application{
     }
 
     private static void printResult(int strike, int ball){
-        String result = printIfNothing(strike,ball)+printIfBall(ball)+printIfStrike(strike);
+        String result = printIfNothing(strike, ball) + printIfBall(ball) + printIfStrike(strike);
         System.out.println(result);
     }
 
     private static String printIfNothing(int strike, int ball){
-        if(ball==0&&strike==0){
+        if (ball == 0 && strike == 0){
             return "낫싱";
         }
         return "";
     }
 
     private static String printIfBall(int ball){
-        if(ball!=0){
-            return ball+"볼 ";
+        if (ball != 0){
+            return ball + "볼 ";
         }
         return "";
     }
 
     private static String printIfStrike(int strike){
-        if(strike!=0){
+        if (strike != 0){
             return strike + "스트라이크";
         }
         return "";
@@ -170,7 +170,7 @@ public class Application{
     }
 
     private static void throwIfInvalidExitInput(String exitInput){
-        if(!exitInput.equals("1")&&!exitInput.equals("2")){
+        if (!exitInput.equals("1") && !exitInput.equals("2")){
             throw new IllegalArgumentException();
         }
     }
