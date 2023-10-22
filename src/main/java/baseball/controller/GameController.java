@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.Hint;
 import baseball.domain.InputNumber;
 import baseball.domain.TargetNumber;
+import baseball.util.Parser;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -11,13 +12,13 @@ public class GameController {
 	private static int NUMBER_SIZE = 3;
 	private TargetNumber targetNumber;
 	private InputNumber inputNumber;
-	private Hint hint = new Hint();
+	private Hint hint;
 
 	public void run() {
 		setTargetNumber();
 		do {
 			askInput();
-			printOutput(compareTargetToInput());
+			printOutput(getResult());
 		} while(!checkWin());
 	}
 
@@ -38,8 +39,9 @@ public class GameController {
 		targetNumber = TargetNumber.create(NUMBER_SIZE);
 	}
 
-	private String compareTargetToInput() {
-		return hint.createHint(targetNumber, inputNumber);
+	private String getResult() {
+		hint = Hint.create(targetNumber, inputNumber);
+		return hint.getResult();
 	}
 
 

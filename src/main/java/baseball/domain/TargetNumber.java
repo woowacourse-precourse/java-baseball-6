@@ -12,5 +12,4 @@ public class TargetNumber extends Number {
 		return new TargetNumber(randomNumbers, size);
 	}
 
-
 }

@@ -3,17 +3,26 @@ package baseball.domain;
 import baseball.util.Parser;
 
 public class Hint {
-	private int strike = 0;
-	private int ball = 0;
+	private int strike;
+	private int ball;
 
-	public String createHint(TargetNumber targetNumber, InputNumber inputNumber) {
-		compare(targetNumber, inputNumber);
+	private Hint() {
+		strike = 0;
+		ball = 0;
+	}
 
+	public static Hint create(TargetNumber targetNumber, InputNumber inputNumber) {
+		Hint hint = new Hint();
+		hint.compare(targetNumber, inputNumber);
+		return hint;
+	}
+
+	public String getResult() {
 		return Parser.parseHintToString(strike, ball);
 	}
 
 	public boolean isWin(int size) {
-		return strike==size ;
+		return strike == size;
 	}
 
 	private void compare(TargetNumber targetNumber, InputNumber inputNumber) {
