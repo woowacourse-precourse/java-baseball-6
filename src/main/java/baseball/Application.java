@@ -95,7 +95,7 @@ public class Application {
         }
     }
 
-    private static boolean isEndGame() {
+    private static boolean isEndGame() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         String input = Console.readLine();
         if (input.length() == 1 && input.charAt(0) == '1') {
