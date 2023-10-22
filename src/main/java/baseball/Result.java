@@ -8,7 +8,7 @@ public record Result(Integer strike, Integer ball) {
         }
     }
 
-    public boolean isEndGame() {
+    public boolean isAllStrike() {
         return strike == 3;
     }
 }
