@@ -9,25 +9,27 @@ public class BaseballScore {
     private int ballCount;
     private int strikeCount;
 
+    public BaseballScore(int ballCount, int strikeCount) {
+        this.ballCount = ballCount;
+        this.strikeCount = strikeCount;
+    }
 
     public boolean isStrikeThree() {
         return strikeCount == MAX_COUNT;
     }
+
     public BaseballScore() {
         this.ballCount = COUNT_ZERO;
         this.strikeCount = COUNT_ZERO;
     }
 
-    public BaseballScore(int ballCount, int strikeCount) {
-        this.ballCount = ballCount;
-        this.strikeCount = strikeCount;
-    }
 
     public static boolean isBaseballScoreEqual(BaseballScore baseballScore1, BaseballScore baseballScore2) {
         return baseballScore1.ballCount == baseballScore2.ballCount
                 && baseballScore1.strikeCount == baseballScore2.strikeCount;
     }
 
+    //속성값을 건들이는 함수는데 public으로 설정해도 괜찮은가
     public void addBallCount(int count) {
         this.ballCount += count;
     }
@@ -36,6 +38,7 @@ public class BaseballScore {
         this.strikeCount += count;
     }
 
+    //클래스안에 print 함수가 있어도 괜찮은가
     public void printBaseballScore() {
         BaseballOutputView.printBallAndStrikeCount(ballCount, strikeCount);
     }
