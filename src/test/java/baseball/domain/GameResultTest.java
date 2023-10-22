@@ -19,10 +19,24 @@ public class GameResultTest {
         );
     }
 
+    private static Stream<Arguments> generateCount() {
+        return Stream.of(
+                Arguments.of(new GameResult(1, 2), false),
+                Arguments.of(new GameResult(3, 0), true)
+        );
+    }
+
     @DisplayName("결과에 대한 문자열을 정상적으로 반환한다")
     @ParameterizedTest(name = "[{index}] Input : {0} ")
     @MethodSource("generateBallCount")
     void createResult(GameResult gameResult, String result) {
         assertThat(gameResult.getResult()).isEqualTo(result);
+    }
+
+    @DisplayName("결과에 따른 승리 여부를 반환한다")
+    @ParameterizedTest(name = "[{index}] Input : {0} ")
+    @MethodSource("generateCount")
+    void checkWin(GameResult gameResult, boolean result) {
+        assertThat(gameResult.isWin()).isEqualTo(result);
     }
 }
