@@ -4,9 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
 public class UserGame {
-    public void start(){ // 게임 시작할 때
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
+
     public int inputUserNum(){ // User의 숫자 입력
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine(); // 제공된 입력문이 String으로 받아야하는 조건이 있다.
