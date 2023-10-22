@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.BaseballGameResult;
+import baseball.model.ComputerNumber;
 import baseball.service.BaseballGameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -25,10 +26,10 @@ public class BaseballController {
     }
 
     private void start() {
-        baseballGameService.setComputerNumber();
+        List<Integer> computerNumber = new ComputerNumber().getNumber();
         do {
             String input = InputView.requestUserNumber();
-            BaseballGameResult gameResult = baseballGameService.getGameResult(input);
+            BaseballGameResult gameResult = baseballGameService.getGameResult(input, computerNumber);
             ball = gameResult.getBall();
             strike = gameResult.getStrike();
             resultGame();
