@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.utils.NumberGenerator;
+import baseball.utils.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,18 +8,17 @@ import java.util.List;
 public class computer {
 
     private List<Integer> comNumber;
-    private NumberGenerator numberGenerator;    // 랜덤 생성
+    private RandomNumberGenerator randomNumberGenerator; // 랜덤한 난수 생성
 
-    public computer(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
+    public computer(RandomNumberGenerator randomNumberGenerator) {
+        this.randomNumberGenerator = randomNumberGenerator;
         this.comNumber = new ArrayList<>();
-        generate();
     }
 
     // 컴퓨터가 서로 다른 3가지 수 뽑기
     public void generate() {
         while (comNumber.size() < 3) {
-            int randomNumber = numberGenerator.generateNumberInRange(1, 9);
+            int randomNumber = randomNumberGenerator.generateNumberInRange(1, 9);
             hasNoDuplicateNumber(randomNumber);
         }
     }
