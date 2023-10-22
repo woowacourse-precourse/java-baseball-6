@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -20,6 +21,15 @@ public class Application {
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
+        }
+
+        String gameStatus = "";
+        while(!gameStatus.equals("2")) { // 게임이 끝난 후, 2를 입력받으면 종료
+            /**
+             * 사용자의 입력을 받기
+             */
+            System.out.print("숫자를 입력해주세요 : ");
+            String user = Console.readLine();
         }
     }
 }
