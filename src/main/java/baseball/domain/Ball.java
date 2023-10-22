@@ -13,4 +13,7 @@ public class Ball {
     public boolean isSameNumberAndSamePosition(Ball otherBall) {
         return this.number.isSameNumber(otherBall.number) && this.position == otherBall.position;
     }
+    public boolean isSameNumberAndOtherPosition(Ball otherBall) {
+        return this.number.isSameNumber(otherBall.number) && this.position != otherBall.position;
+    }
 }
