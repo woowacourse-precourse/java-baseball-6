@@ -13,6 +13,7 @@ public class Game {
     }
 
     public void run() {
+        controller.runGame();
         int continueDecision = CONTINUE_NUMBER;
         while (continueDecision == CONTINUE_NUMBER) {
             controller.settingGame();

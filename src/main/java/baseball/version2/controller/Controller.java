@@ -1,7 +1,8 @@
 package baseball.version2.controller;
 
 
-import static baseball.version2.Constants.Value.*;
+import static baseball.version2.Constants.Value.ANSWER_ARRAY_SIZE;
+import static baseball.version2.Constants.Value.THREE_STRIKE;
 
 import baseball.version2.service.Service;
 import baseball.version2.view.InputView;
@@ -21,10 +22,13 @@ public class Controller {
 
     }
 
+    public void runGame() {
+        outView.printStart();
+    }
+
     public void settingGame() {
         ArrayList<Integer> computerAnswer = service.getComputerAnswer();
         service.saveComputerAnswer(computerAnswer);
-        outView.printStart();
     }
 
     public boolean startGame() {
