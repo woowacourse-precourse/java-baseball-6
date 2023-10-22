@@ -10,7 +10,7 @@ public class NumbersTest {
 
     @DisplayName("Numbers 값의 예외처리 기능")
     @ParameterizedTest
-    @ValueSource(strings={"1234","12","1a2","zxc","ab2","2ab","112","111","344"})
+    @ValueSource(strings={"1234","12","1a2","zxc","ab2","2ab","112","111","344","013"})
     void 예외처리(String numbers){
         assertThatThrownBy(()->new Numbers(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
