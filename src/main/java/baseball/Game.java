@@ -1,24 +1,20 @@
 package baseball;
 
-import baseball.validators.LengthValidator;
-import baseball.validators.NoDuplicateValidator;
-import baseball.validators.RangeValidator;
 import baseball.validators.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Game {
     private User user;
     private Computer computer;
-    private List<Validator> validators;
+    private final List<Validator> validators;
 
-    public Game() {
+    public Game(List<Validator> validators) {
         this.computer = new Computer();
         this.user = new User();
-        this.validators = Arrays.asList(new LengthValidator(), new NoDuplicateValidator(), new RangeValidator());
+        this.validators = validators;
         playBaseBallGame();
     }
 
