@@ -28,7 +28,7 @@ camp.nextstep.edu.missionutils API 사용하기
 1. 어플리케이션 테스트
 2. 테스트 실행 가이드
 3. 판정메소드
-4. 예외처리
+4. 예외처리 (IllegalArgumentException)
 5. 
 
 
