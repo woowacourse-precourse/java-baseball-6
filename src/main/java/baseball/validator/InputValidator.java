@@ -24,4 +24,11 @@ public class InputValidator {
         }
     }
 
+    private void validateRange(int number) {
+        int minNumber = GameConfig.MIN_NUMBER.getValue();
+        int maxNumber = GameConfig.MAX_NUMBER.getValue();
+        if (number < minNumber || number > maxNumber) {
+            throw new IllegalArgumentException(String.format("입력값이 %d~%d 사이의 값이 아닙니다.", minNumber, maxNumber));
+        }
+    }
 }
