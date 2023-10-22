@@ -23,5 +23,13 @@ class DigitTest {
         assertDoesNotThrow(() -> new Digit(target));
     }
 
+    @Test
+    void digit의_숫자가_같을_경우_동일한_객체로_인식한다() {
+        Digit digit1 = new Digit(5);
+        Digit digit2 = new Digit(5);
+
+        assertEquals(digit1, digit2);
+    }
+
 
 }
