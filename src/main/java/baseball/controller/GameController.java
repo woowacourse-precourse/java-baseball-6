@@ -8,12 +8,12 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
+
     private static final int RESTART = 1;
 
-    private AnswerNumber answerNumber;
-    private NumberMatcher numberMatcher;
-    private InputView inputView;
-    private OutputView outputView;
+    private final NumberMatcher numberMatcher;
+    private final InputView inputView;
+    private final OutputView outputView;
 
     public GameController(NumberMatcher numberMatcher, InputView inputView, OutputView outputView) {
         this.numberMatcher = numberMatcher;
@@ -23,14 +23,13 @@ public class GameController {
 
     public void gameStart() {
         outputView.displayStartGame();
-
         do {
-            initializeAnswerNumber();
             playRound();
         } while (isContinued());
     }
 
     private void playRound() {
+        AnswerNumber answerNumber = new AnswerNumber();
         while (true) {
             String userInput = inputView.requestUserNumber();
             UserNumber userNumber = new UserNumber(userInput);
@@ -48,9 +47,6 @@ public class GameController {
         }
     }
 
-    private void initializeAnswerNumber() {
-        this.answerNumber = new AnswerNumber();
-    }
 
     private boolean isContinued() {
         int choice = inputView.requestGameRestart();
