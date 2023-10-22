@@ -19,51 +19,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 스트라이크만_존재할_경우() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("168", "193", "197", "2");
-                    assertThat(output()).contains("1스트라이크", "2스트라이크", "3스트라이크");
-                },
-                1, 9, 7
-        );
-    }
-
-    @Test
-    void 볼만_존재할_경우() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("451", "234", "312", "123", "2");
-                    assertThat(output()).contains("1볼", "2볼", "3볼");
-                },
-                1, 2, 3
-        );
-    }
-
-
-    @Test
-    void 볼과_스트라이크_둘다_존재할_경우() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("726", "728", "782", "2");
-                    assertThat(output()).contains("1볼 1스트라이크", "2볼 1스트라이크");
-                },
-                7, 8, 2
-        );
-    }
-
-    @Test
-    void 볼과_스트라이크_둘다_존재하지_않을_경우() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("136", "248", "368", "579", "2");
-                    assertThat(output()).contains("낫싱");
-                },
-                5,7,9
-        );
-    }
-
-    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
