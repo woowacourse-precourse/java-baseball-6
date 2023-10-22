@@ -24,7 +24,4 @@ public class Computer {
             list.add(number);
         }
     }
-
-
-
 }

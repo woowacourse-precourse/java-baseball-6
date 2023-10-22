@@ -18,7 +18,6 @@ public class BaseballGame implements Game{
 
     private Balls userBalls;
     private Balls computerBalls;
-    private User user=new User();
 
     private BaseballGame(){}
 
@@ -45,6 +44,7 @@ public class BaseballGame implements Game{
     }
 
     public void receiveUserBalls(){
+        User user=new User();
         inputView.enterUserAnswer();
         userBalls=user.makeUserNumber();
     }
