@@ -4,17 +4,17 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class Application {
     public static void main(String[] args) {
-
         int continueNum = 1;
         int offset = 1;
         int limit = 9;
 
-        ArrayList<Integer> player = new ArrayList<>();
-        ArrayList<Integer> computer = new ArrayList<>();
+        List<Integer> player = new ArrayList<>();
+        List<Integer> computer = new ArrayList<>();
 
         while (continueNum == 1) {
             System.out.println("숫자 야구 게임을 시작합니다.");
@@ -23,6 +23,7 @@ public class Application {
             startGame(player, computer);
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
             continueNum = getContinueNum();
             if (continueNum == 2) {
                 break;
@@ -30,7 +31,7 @@ public class Application {
         }
     }
 
-    private static void startGame(ArrayList<Integer> player, ArrayList<Integer> computer) {
+    private static void startGame(List<Integer> player, List<Integer> computer) {
         while (true) {
             getPlayNum(player);
 
@@ -51,7 +52,7 @@ public class Application {
         }
     }
 
-    private static void getComputerNum(int offset, int limit, ArrayList<Integer> computer) {
+    private static void getComputerNum(int offset, int limit, List<Integer> computer) {
         computer.clear();
 
         while (computer.size() < 3) {
@@ -62,7 +63,7 @@ public class Application {
         }
     }
 
-    private static void getPlayNum(ArrayList<Integer> player) {
+    private static void getPlayNum(List<Integer> player) {
         player.clear();
 
         System.out.print("숫자를 입력해 주세요 : ");
@@ -86,13 +87,13 @@ public class Application {
         }
     }
 
-    private static int getTotal(ArrayList<Integer> player, ArrayList<Integer> computer) {
+    private static int getTotal(List<Integer> player, List<Integer> computer) {
         return (int) IntStream.range(0, player.size())
                 .filter(i -> computer.contains(player.get(i)))
                 .count();
     }
 
-    private static int getStrike(ArrayList<Integer> player, ArrayList<Integer> computer) {
+    private static int getStrike(List<Integer> player, List<Integer> computer) {
         return (int) IntStream.range(0, player.size())
                 .filter(i -> player.get(i) == computer.get(i))
                 .count();
