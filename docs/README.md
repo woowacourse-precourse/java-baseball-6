@@ -49,6 +49,3 @@
 
 - `Converter`
     - [x] 문자열을 정수형 리스트로 변환
-
-- `ResultMapper`
-    - [x] 결과를 String으로 변환
