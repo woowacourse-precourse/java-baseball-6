@@ -13,6 +13,10 @@ public class Validator {
         }
     }
 
+    private boolean isContainingZero(String input) {
+        return input.contains("0");
+    }
+
     private boolean isCorrectLength(String input) {
         return input.length() == 3;
     }
