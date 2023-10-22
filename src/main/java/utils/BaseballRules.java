@@ -4,9 +4,9 @@ import player.BaseballNumbers;
 
 public class BaseballRules {
 
-    public static boolean isThreeStrike(BaseballNumbers playerBaseballNumber,
-                                        BaseballNumbers computerBaseballNumber) {
-        return playerBaseballNumber.equals(computerBaseballNumber);
+    public static boolean isThreeStrike(BaseballNumbers playerNumber,
+                                        BaseballNumbers otherPlayerNumber) {
+        return playerNumber.equals(otherPlayerNumber);
     }
 
     public static boolean hasStrikeAndBall(int strike, int ball) {
