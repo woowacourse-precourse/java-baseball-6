@@ -6,9 +6,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class BaseballGame {
-    private final int NUMBER_LENGTH = 3;
-    private final String RESTART_GAME = "1";
-    private final String END_GAME = "2";
+    private static final int NUMBER_LENGTH = 3;
+    private static final String RESTART_GAME = "1";
+    private static final String END_GAME = "2";
     public void run(){
         int userEndOption;
 
