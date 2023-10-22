@@ -19,10 +19,12 @@ public class BaseBall {
             String inputNumber = Console.readLine();
             PlayerNumber playerNumber = new PlayerNumber(inputNumber, LENGTH);
             countStrikeBall(strikeBallArray, playerNumber);
-            printStrikeBallCount(strikeBallArray);
+
             if (isSuccess(strikeBallArray)) {
+                Notification.notifySuccessResult(strikeBallArray);
                 break;
             }
+            Notification.notifyFailResult(strikeBallArray);
         }
     }
 
@@ -31,29 +33,6 @@ public class BaseBall {
             return true;
         }
         return false;
-    }
-
-    private void printStrikeBallCount(int[] strikeBallArray) {
-        if (strikeBallArray[0] == LENGTH) {
-            System.out.println(strikeBallArray[0] + "스트라이크");
-            System.out.println(LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            return;
-        }
-
-        if (strikeBallArray[0] == 0) {
-            if (strikeBallArray[1] == 0) {
-                System.out.println("낫싱");
-            } else {
-                System.out.println(strikeBallArray[1] + "볼");
-            }
-        } else {
-            if (strikeBallArray[1] == 0) {
-                System.out.println(strikeBallArray[0] + "스트라이크");
-            } else {
-                System.out.println(strikeBallArray[1] + "볼 " + strikeBallArray[1] + "스트라이크");
-            }
-        }
     }
 
     private void countStrikeBall(int[] strikeBallCount, PlayerNumber playerNumber) {
