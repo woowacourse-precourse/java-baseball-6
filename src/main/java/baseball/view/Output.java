@@ -10,6 +10,6 @@ public class Output {
     }
 
     public void announceMention(String mention) {
-        System.out.println(mention);
+        System.out.print(mention);
     }
 }
