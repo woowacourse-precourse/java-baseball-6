@@ -40,7 +40,8 @@ public class InputView {
 
     }
 
-    private static BallInfo inputUserBall(String userInput) {
+
+    private static BallInfo getBallFromUserInput(String userInput) {
         List<Integer> userInputList = new ArrayList<>();
         for (Character character : userInput.toCharArray()) {
             userInputList.add(Integer.parseInt(String.valueOf(character)));
