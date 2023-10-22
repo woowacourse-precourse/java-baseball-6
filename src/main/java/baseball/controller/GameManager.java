@@ -1,9 +1,18 @@
-package baseball;
+package baseball.controller;
+
+import baseball.service.BaseballCreator;
+import baseball.service.Judgement;
+import baseball.service.RandomNumberGenerator;
+import baseball.Validator;
+import baseball.view.ConsoleInput;
+import baseball.view.Input;
+import baseball.view.Output;
 
 import java.util.List;
 
 public class GameManager {
     // TODO: 객체 직접 생성 제거하도록 리팩터링 해야함
+    // TODO: 컴퓨터 공과 사용자 공은 핵심 비즈니스이다. 이 정보를 굳이 컨트롤러에 노출하는게 맞을까?
     private Validator validator = new Validator();
     private BaseballCreator baseballCreator = new BaseballCreator(new RandomNumberGenerator());
     private Judgement judgment = new Judgement();
