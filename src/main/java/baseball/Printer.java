@@ -11,7 +11,7 @@ public class Printer {
     }
 
     public static void printInputNumberComment() {
-        System.out.println(INPUT_NUMBER_COMMENT);
+        System.out.print(INPUT_NUMBER_COMMENT);
     }
 
     public static void printEndGameComment() {
