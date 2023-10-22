@@ -18,7 +18,7 @@ public class Start {
             while (compareTwoValues.strikeCount != StringConstant.MAX_STRIKE) {
                 Input.inputNumber();
 
-                compareTwoValues.compareTwoValues(Input.inputNumber);
+                compareTwoValues.compareTwoValues(Integer.parseInt(Input.inputNumber));
             }
 
 
