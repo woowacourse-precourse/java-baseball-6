@@ -1,16 +1,18 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
 import java.util.Scanner;
 
 public class Game {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static ArrayList<Integer> computerNumber;
+    private boolean exit = false;
 
     public void startGame() {
-        ArrayList<Integer> computerNumber;
         System.out.println(START_MESSAGE);
         computerNumber = setRandomNumber();
         System.out.println(computerNumber);
@@ -19,15 +21,12 @@ public class Game {
 
     private ArrayList<Integer> setRandomNumber() {
         int MAX_LENGTH = 3;
-        int MAX_NUM = 9;
-        int MIN_NUM = 1;
 
-        Random random = new Random();
         ArrayList<Integer> arrayList = new ArrayList<>();
 
         do {
-            int digit = random.nextInt(MAX_NUM - MIN_NUM + 1) + MIN_NUM;
-            if(!arrayList.contains(digit)) {
+            int digit = Randoms.pickNumberInRange(1, 9);
+            if (!arrayList.contains(digit)) {
                 arrayList.add(digit);
             }
         } while (arrayList.size() < MAX_LENGTH);
@@ -36,11 +35,14 @@ public class Game {
     }
 
     public void playGame() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("숫자를 입력해주세요 : ");
-        int number = input.nextInt();
-        ArrayList<Integer> userNumber = convertIntToArrayList(number);
-        illegalNumber(userNumber);
+        while (!exit) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            int number = Integer.parseInt(input);
+            ArrayList<Integer> userNumber = convertIntToArrayList(number);
+            checkIllegalNumber(userNumber);
+            printAnswer(computerNumber, userNumber);
+        }
     }
 
     public static ArrayList<Integer> convertIntToArrayList(int number) {
@@ -54,19 +56,52 @@ public class Game {
         return arrayList;
     }
 
-    private static void illegalNumber(ArrayList<Integer> arrayList) {
+    private static void checkIllegalNumber(ArrayList<Integer> arrayList) {
         if (arrayList.size() != 3 || arrayList.contains(0) || isDuplicated(arrayList)) {
             throw new IllegalArgumentException();
         }
     }
 
     private static boolean isDuplicated(ArrayList<Integer> arrayList) {
-        Set<Integer> set = new HashSet<>();
+        HashSet<Integer> set = new HashSet<>();
         for (int element : arrayList) {
             if (!set.add(element)) {
                 return true;
             }
         }
         return false;
+    }
+
+    private void printAnswer(ArrayList<Integer> computerNumber, ArrayList<Integer> userNumber) {
+        final String BALL = "볼 ";
+        final String STRIKE = "스트라이크";
+        final String NOTHING = "낫싱";
+
+        int ballCounter = 0;
+        int strikeCounter = 0;
+        String answer = "";
+
+        for (int i = 0; i < 3; i++) {
+            if (computerNumber.get(i).equals(userNumber.get(i))) {
+                strikeCounter++;
+            } else if (computerNumber.contains(userNumber.get(i))) {
+                ballCounter++;
+            }
+        }
+
+        if (ballCounter > 0) {
+            answer += ballCounter + BALL;
+        }
+        if (strikeCounter > 0) {
+            answer += strikeCounter + STRIKE;
+        }
+        if (ballCounter == 0 && strikeCounter == 0) {
+            answer = NOTHING;
+        }
+        System.out.println(answer);
+
+        if (strikeCounter == 3) {
+            exit = true;
+        }
     }
 }
