@@ -7,6 +7,10 @@ public class Validator {
         }
     }
 
+    private boolean isCorrectLength(String input) {
+        return input.length() == 3;
+    }
+
     private boolean isEmptyValue(String input) {
         return input.isBlank();
     }
