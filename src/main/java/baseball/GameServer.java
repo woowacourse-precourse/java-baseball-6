@@ -1,13 +1,13 @@
 package baseball;
 
-public class GameServer {
+final class GameServer {
 
     private final InputCommander inputCommander = new InputCommander();
     private final OutputCommander outputCommander = new OutputCommander();
     private final Computer computer = new Computer();
     private Result score;
 
-    public void run() {
+    void run() {
         outputCommander.printGameStart();
         while (true) {
             playGame();

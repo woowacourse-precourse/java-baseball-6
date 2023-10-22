@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Objects;
 
-class Digit {
+final class Digit {
 
     private int digit;
 

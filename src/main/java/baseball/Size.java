@@ -1,6 +1,6 @@
 package baseball;
 
-public enum Size {
+enum Size {
     THREE(3);
 
     final int num;

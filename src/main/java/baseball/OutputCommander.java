@@ -1,6 +1,6 @@
 package baseball;
 
-class OutputCommander {
+final class OutputCommander {
 
     void printGameStart() {
         System.out.println(OutputMessage.START.message);
