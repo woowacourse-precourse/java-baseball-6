@@ -17,7 +17,7 @@ public class ComputerNumber {
     private List<BallNumber> generateComputerNumber() {
         List<BallNumber> numberList = new ArrayList<>();
         while (numberList.size() < Constants.BALL_LENGTH) {
-            BallNumber randomBallNumber = new BallNumber(Randoms.pickNumberInRange(1, 9));
+            BallNumber randomBallNumber = new BallNumber(Randoms.pickNumberInRange(Constants.MIN_BALL_NUMBER, Constants.MAX_BALL_NUMBER));
             if (!numberList.contains(randomBallNumber)) {
                 numberList.add(randomBallNumber);
             }
