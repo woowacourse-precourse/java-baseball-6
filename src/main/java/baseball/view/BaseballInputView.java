@@ -10,15 +10,15 @@ public class BaseballInputView implements InputView {
 
     public String inputBaseballNumber() {
         System.out.print(BASEBALL_NUMBER_INPUT_MESSAGE);
-        String input = Console.readLine();
-        InputValidator.validateBaseballNumber(input);
-        return input;
+        return Console.readLine();
     }
 
-    public boolean continueOrExit() {
+    public String continueOrExit() {
         System.out.println(CONTINUE_OR_EXIT_INPUT_MESSAGE);
-        String input = Console.readLine();
-        InputValidator.validateContinueOrExitNumber(input);
-        return input.equals(CONTINUE_NUMBER);
+        return Console.readLine();
+    }
+
+    public boolean isContinue(String input) {
+        return CONTINUE_NUMBER.equals(input);
     }
 }
