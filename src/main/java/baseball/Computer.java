@@ -12,6 +12,8 @@ public class Computer {
     }
 
     public void makeAnswer() {
+        answer.clear();
+
         while (answer.size() < 3) {
             int num = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(num))
