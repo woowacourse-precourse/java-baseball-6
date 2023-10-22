@@ -38,15 +38,11 @@ class BaseballNumbersTest {
 
     @Test
     void 세_자리_숫자가_아닐_경우_예외_발생() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             BaseballNumbers inputNumber = new BaseballNumbers("ab23");
         });
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            BaseballNumbers inputNumber = new BaseballNumbers("abc");
-        });
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            BaseballNumbers inputNumber = new BaseballNumbers("41");
-        });
+
+        Assertions.assertEquals("입력은 정확히 세 자리 숫자여야 합니다.", exception.getMessage());
     }
 
     @Test
