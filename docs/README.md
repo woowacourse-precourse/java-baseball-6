@@ -3,7 +3,6 @@
 - 세자리 숫자를 생성/입력받고 저장해서 관리할 클래스`shootBall`을 구현한다.
 - shoot ball 내부에 10 크기의 1차원 정수형 변수를 저장하는 배열 `numbers`을 구현한다.
 - `numbers` 배열은 전부 0으로 초기화한다.
-- 이 `random_ball`과 `input_ball`을 main 함수에서 생성한다.
 - 세자리 수가 주어질 때 숫자의 자릿수에 따라 배열에 저장한다.
 ##### 예시
     세 자리 수가 456 인 경우:{0,0,0,0,1,2,3,0,0,0}
@@ -15,7 +14,7 @@
 
 
     숫자 야구 게임을 시작합니다.
-### (2) 랜덤으로 서로 다른 3자리의 수를 생성하는 기능
+### (2) 랜덤으로 서로 다른 3자리의 수를 생성하는 기능 `randomNumGenerator()`
 - camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
   - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
   - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
@@ -28,14 +27,14 @@
     }
     }
 - 생성된 수를 (1)의 조건에 맞게 `random_num`에 저장한다.
-### (3) 사용자가 입력하는 수를 입력받는 기능
+### (3) 사용자가 입력하는 수를 입력받는 기능 `inputNumGenerator()`
 - scanner를 사용하여 입력받는다.
 
 
     숫자를 입력해주세요 : 123
 - 입력받은 수를 (1)의 조건에 맞게 `input_num`에 저장한다..
 
-### (4) 사용자에게 입력받은 수가 잘못됐을 때 인식하는 기능
+### (4) 사용자에게 입력받은 수가 잘못됐을 때 인식하는 기능 `validNumInspect()`
 - 다음과 같은 조건에서 `IllegalArgumentException`를 발생시키는 기능을 구현한다. 
 
 
@@ -43,7 +42,7 @@
   2. 3자리수보다 적거나 많이 입력했을 시.
   3. 숫자가 아닌 문자를 입력했을 시.
 
-### (5) 사용자가 입력한 수와 컴퓨터의 수를 대조해주는 기능
+### (5) 사용자가 입력한 수와 컴퓨터의 수를 대조해주는 기능 `baseballReferee()`
 -정수형 변수 `strike`와 `ball`에 strike와 ball 여부를 저장한다.
 - 반복문으로 `random_ball`과 `input_ball`의 같은 인덱스에 있는 값들로 and 연산을 수행한다.
   - and 연산을 수행했을 때의 값이 0이라면
@@ -51,7 +50,6 @@
   - and 연산을 수행했을 때의 값이 0이 아니라면
     - `strike`에 1을 더해주고
     - `random_ball`과 `input_ball`의 값을 대조하여 같다면, `ball`에1을 더해주고 `strike에서 1을 빼준다.
-### (6) strike, ball 여부를 알려주는 기능
 - `strike`와 `ball`의 값을 바탕으로 볼, 스트라이크 여부를 출력해주고, 게임 승리 여부를 boolean으로 출력해준다.
 
 
@@ -73,3 +71,11 @@
 
     3스트라이크
     3개의 숫자를 모두 맞히셨습니다! 게임 종료
+### (6) 게임을 진행하는 기능 
+- `main(String[] args)`에서 숫자야구를 진행하는 기능.
+- `ShootBall`클래스의 인스턴스 `random_ball`과 `input_ball`을 생성한다.
+- (2)번기능 `randomNumGenerator()`를 통해 `random_ball`의 수를 정한다.
+- (3)번 기능 `inputNumGenerator()`를 통해 `input_ball`의 수를 정한다.
+- `baseballReferee()`의 리턴값을 통해 게임의 승패를 확인한다.
+  - flase 일 시 (3)번 기능부터 다시 실행시킨다.
+  - true 일 시 프로그램을 종료한다. 

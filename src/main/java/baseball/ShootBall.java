@@ -7,12 +7,12 @@ import camp.nextstep.edu.missionutils.Console;
 public class ShootBall {
     private int[] numbers;
 
-    //TODO:생성자 구현 -23.10.22
+    //생성자 구현
     ShootBall() {
         numbers = new int[10];
     }
 
-    //TODO:(3)번 기능 구현 -23.10.22
+    //(3)번 기능
     public void inputNumGenerator(){
         String input = Console.readLine();
         validNumInspect(input);
@@ -21,9 +21,10 @@ public class ShootBall {
             input_num = input.charAt(i) - '0';
             numbers[input_num]= i+1;
         }
+        //TODO:scanner close 하기 -23.10.22
     }
 
-    //TODO:(2)번 기능 구현 -23.10.22
+    //(2)번 기능
     private void randomNumGenerator(){
         int randNum;
         for(int i=1; i<=3;i++) {
@@ -33,7 +34,7 @@ public class ShootBall {
     }
 
 
-    //TODO:(4)번 기능 구현 -23.10.22
+    //(4)번 기능 구현
     private void validNumInspect(String input){
         char tmp;
         //3개보다 많은 문자가 입력됐을 시
