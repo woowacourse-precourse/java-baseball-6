@@ -29,7 +29,7 @@ public class Result {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i <= 2; i++) {
-            if (answer.get(i).equals(user.get(i))) {
+            if (answer.get(i) == user.get(i)) {
                 strike++;
             } else if (user.contains(answer.get(i))) {
                 ball++;

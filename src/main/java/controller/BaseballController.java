@@ -31,7 +31,6 @@ public class BaseballController {
         StartView.startView();
         while (true) {
             AnswerBall answerBall = new AnswerBall(CreateRandomNumber.createRandomNumber());
-            System.out.println(answerBall.getAnswerBall());
 
             while (true) {
                 UserBall userBall = new UserBall(InputView.userInput());
