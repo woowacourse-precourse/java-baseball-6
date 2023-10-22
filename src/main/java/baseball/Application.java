@@ -27,43 +27,34 @@ public class Application {
 
     }
 
-    private static int restartOrnot() {
-        int choice;
-        while (true){
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String input = Console.readLine();
-            try{
-                choice=Integer.parseInt(input);
-                if(choice==1||choice==2)
-                    return choice;
-                else
-                    System.out.println("잘못된 입력입니다.");
-            }catch (IllegalArgumentException e){
-                System.out.println("잘못된 입력입니다.");
-            }
+
+
+    private static List<Integer> generateComputerNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber))
+                computer.add(randomNumber);
         }
+        return computer;
     }
 
+    //user input
+    private static List<Integer> getUserInput() {
+        System.out.print("숫자를 입력해주세요: ");
+        String input = Console.readLine();
+        validateInput(input);
 
-    private static boolean checkWinCondition(int strike) {
-        if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        List<Integer> parseInput = new ArrayList<>();
+        for (char ch : input.toCharArray()) {
+            parseInput.add(ch - '0'); //char to integer
         }
-        return strike == 3;
+        return parseInput;
     }
 
-    private static void printResult(int[] result) {
-        if (result[0] == 0 && result[1] == 0) {
-            System.out.println("낫싱");
-            return;
-        }
-        if (result[0] > 0)
-            System.out.print(result[0] + "볼 ");
-        if (result[1] > 0)
-            System.out.print(result[1] + "스트라이크");
-
-        System.out.println();
-        return;
+    public static void validateInput(String input) {
+        if (input.length() != 3)
+            throw new IllegalArgumentException("3자리 수를 입력해 주세요!");
     }
 
     //check&return the number of strike and ball
@@ -86,33 +77,42 @@ public class Application {
         return new int[]{ball, strike};
     }
 
-
-    private static List<Integer> generateComputerNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber))
-                computer.add(randomNumber);
+    private static void printResult(int[] result) {
+        if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+            return;
         }
-        return computer;
+        if (result[0] > 0)
+            System.out.print(result[0] + "볼 ");
+        if (result[1] > 0)
+            System.out.print(result[1] + "스트라이크");
+
+        System.out.println();
+        return;
     }
 
-    public static void validateInput(String input) {
-        if (input.length() != 3)
-            throw new IllegalArgumentException("3자리 수를 입력해 주세요!");
+    private static boolean checkWinCondition(int strike) {
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+        return strike == 3;
     }
 
-    //user input
-    private static List<Integer> getUserInput() {
-        System.out.print("숫자를 입력해주세요: ");
-        String input = Console.readLine();
-        validateInput(input);
-
-        List<Integer> parseInput = new ArrayList<>();
-        for (char ch : input.toCharArray()) {
-            parseInput.add(ch - '0'); //char to integer
+    private static int restartOrnot() {
+        int choice;
+        while (true){
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = Console.readLine();
+            try{
+                choice=Integer.parseInt(input);
+                if(choice==1||choice==2)
+                    return choice;
+                else
+                    System.out.println("잘못된 입력입니다.");
+            }catch (IllegalArgumentException e){
+                System.out.println("잘못된 입력입니다.");
+            }
         }
-        return parseInput;
     }
 }
 
