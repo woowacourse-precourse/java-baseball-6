@@ -30,4 +30,20 @@ public class Core {
         return ballCount;
     }
 
+    public void printBaseballResult(int strike, int ball) {
+        StringBuilder result = new StringBuilder();
+
+        if (strike == 0 && ball == 0) {
+            System.out.println(NOTHING_MSG);
+            return;
+        }
+        if (ball > 0) {
+            result.append(ball).append(BALL_MSG).append(" ");
+        }
+        if (strike > 0) {
+            result.append(strike).append(STRIKE_MSG);
+        }
+        System.out.println(result.toString().trim());
+    }
+
 }
