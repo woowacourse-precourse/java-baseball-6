@@ -33,6 +33,6 @@ public class GameController {
             int ballCount = answers.getBallCounts(userNumbers);
             roundResult = new RoundResult(strikeCount, ballCount);
             GameView.printRoundResult(roundResult);
-        } while(true);
+        } while(!roundResult.isWin());
     }
 }

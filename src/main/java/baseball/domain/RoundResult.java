@@ -28,4 +28,8 @@ public class RoundResult {
     public int getStrikeCount() {
         return strikeCount;
     }
+
+    public boolean isWin(){
+        return strikeCount == 3;
+    }
 }
