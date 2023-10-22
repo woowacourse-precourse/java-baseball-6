@@ -74,4 +74,24 @@ public class Game {
             comparisonResult[0]++;
         }
     }
+
+    public boolean isThreeStrike() {
+        return comparisonResult[1] == 3;
+    }
+
+    public boolean isOnlyStrike() {
+        return comparisonResult[0] == 0 && comparisonResult[1] != 0;
+    }
+
+    public boolean isOnlyBall() {
+        return comparisonResult[0] != 0 && comparisonResult[1] == 0;
+    }
+
+    public int getBallNumber() {
+        return comparisonResult[0];
+    }
+
+    public int getStrikeNumber() {
+        return comparisonResult[1];
+    }
 }
