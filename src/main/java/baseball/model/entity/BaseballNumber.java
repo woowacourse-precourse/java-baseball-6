@@ -46,4 +46,8 @@ public class BaseballNumber {
         }
         return number;
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
