@@ -76,4 +76,23 @@ public class Balls {
 		return Objects.hash(balls);
 	}
 
+	public GameResult compare(final Balls otherBalls) {
+		GameResult gameResult = new GameResult();
+		this.balls.forEach(ball -> {
+			compareBall(otherBalls, ball, gameResult);
+		});
+		return gameResult;
+	}
+
+	private void compareBall(final Balls otherBalls, final Ball ball, final GameResult gameResult) {
+		otherBalls.balls.forEach(otherBall -> {
+			if (ball.isStrike(otherBall)) {
+				gameResult.addStrikeCount();
+			}
+			if (ball.isBall(otherBall)) {
+				gameResult.addBallCount();
+			}
+		});
+	}
+
 }
