@@ -74,4 +74,12 @@ class DigitsTest {
         assertEquals(digits1, digits2);
     }
 
+    @Test
+    void Collection내의_원소가_같다고_동일한_객체로_인식하지는_않는다() {
+        Digits digits1 = Digits.generateFixedDigits("123");
+        List<Integer> list = List.of(1, 2, 3);
+
+        assertNotEquals(digits1, list);
+    }
+
 }
