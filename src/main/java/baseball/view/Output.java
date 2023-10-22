@@ -5,7 +5,7 @@ public class Output {
 
     private Output() {}
 
-    public static Output getAnnouncer() {
+    public static Output getOutput() {
         return output;
     }
 
