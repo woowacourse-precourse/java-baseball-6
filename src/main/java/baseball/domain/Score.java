@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import java.util.Objects;
 
 public class Score {
     private static final int MIN_COUNT = 0;
@@ -34,19 +33,4 @@ public class Score {
         return this.strike.isFullCount();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Score score)) {
-            return false;
-        }
-        return Objects.equals(ball, score.ball) && Objects.equals(strike, score.strike);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(ball, strike);
-    }
 }
