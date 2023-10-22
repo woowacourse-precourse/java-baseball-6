@@ -7,6 +7,7 @@ import baseball.domain.GameConstants;
 import baseball.domain.Baseball;
 import baseball.util.ExceptionUtil;
 import baseball.util.InputUtil;
+import baseball.util.IntegerListUtil;
 import baseball.util.IntegerUtil;
 import baseball.view.EndView;
 import baseball.view.GameView;
@@ -72,6 +73,7 @@ public class Application {
                 //검증이 완료되어야 변환 가능
                 List<Integer> inputNumList = parseIntegerList(inputNum);
                 System.out.println(inputNumList);
+                List<Integer> inputNumList = IntegerListUtil.parseIntegerList(inputNum);
 
                 //컴퓨터는 사용자가 입력한 숫자
                 // 와 뽑은 숫자를 비교하여 힌트를 판단, 출력　
