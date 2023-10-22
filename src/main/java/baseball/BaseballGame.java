@@ -26,7 +26,7 @@ public class BaseballGame {
             playerView.output(INPUT_NUMBERS_MESSAGE);
             String playerNumbers = playerView.input();
             gameResult = referee.judge(computerNumbers, playerNumbers);
-            gameResult.result();
+            playerView.output(gameResult.result());
         } while (!gameResult.isWin());
     }
 

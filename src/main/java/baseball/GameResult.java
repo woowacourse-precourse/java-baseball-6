@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.PlayerView.*;
+
 public class GameResult {
     private int ballCount;
     private int strikeCount;
@@ -14,18 +16,19 @@ public class GameResult {
         this.strikeCount = strikeCount;
     }
 
-    public void result() {
-        String result = "";
+    public String result() {
+        StringBuilder resultBuilder = new StringBuilder();
+
         if (isNothing()) {
-            result += "낫싱";
+            resultBuilder.append(NOTHING);
         }
         if (ballCount > 0) {
-            result += ballCount + "볼 ";
+            resultBuilder.append(ballCount).append(BALL);
         }
         if (strikeCount > 0) {
-            result += strikeCount + "스트라이크";
+            resultBuilder.append(strikeCount).append(STRIKE);
         }
-        System.out.println(result);
+        return resultBuilder.append("\n").toString();
     }
 
     private boolean isNothing() {
