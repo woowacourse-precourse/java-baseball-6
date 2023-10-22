@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class Comparer {
@@ -14,15 +13,11 @@ public class Comparer {
         userNumber = user.getUserNumber();
     }
 
-    public HashMap<String, Integer> getCompareResult() {
-        HashMap<String, Integer> compareResult = new HashMap<>();
+    public CompareResult getCompareResult() {
         int strikeCount = getStrikeCount();
         int ballCount = getBallCount();
         printCompareResult(strikeCount, ballCount);
-        compareResult.put("strikeCount", strikeCount);
-        compareResult.put("ballCount", ballCount);
-
-        return compareResult;
+        return new CompareResult(strikeCount, ballCount);
     }
 
     private void printCompareResult(int strikeCount, int ballCount) {

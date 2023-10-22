@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.HashMap;
 
 public class Round {
 
@@ -29,7 +28,7 @@ public class Round {
     private int getStrikeCount(String userStringNumber) {
         User user = new User(userStringNumber);
         Comparer comparer = new Comparer(computer, user);
-        HashMap<String, Integer> compareResult = comparer.getCompareResult();
-        return compareResult.get("strikeCount");
+        CompareResult compareResult = comparer.getCompareResult();
+        return compareResult.getStrikeCount();
     }
 }
