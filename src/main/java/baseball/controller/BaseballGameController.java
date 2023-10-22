@@ -31,7 +31,7 @@ public class BaseballGameController {
         List<Integer> computerNumber = computer.getComputerNumber();
         while (continueGame) {
             String playerNumberAsString = InputView.inputNumber();
-            isValidPlayerNumber(playerNumberAsString);
+            InputValidator.isValidPlayerNumber(playerNumberAsString);
             player.createPlayerNumber(playerNumberAsString);
             List<Integer> playerNumber = player.getPlayerNumber();
 
@@ -50,7 +50,7 @@ public class BaseballGameController {
     private void isSuccess() {
         OutputView.printSuccess();
         String restartOrEndNumber = InputView.restartOrEndNumber();
-        isValidRestartOrEndNumber(restartOrEndNumber);
+        InputValidator.isValidRestartOrEndNumber(restartOrEndNumber);
 
         if (restartOrEndNumber.equals(RESTART)) {
             run();
@@ -58,15 +58,5 @@ public class BaseballGameController {
         if (restartOrEndNumber.equals(END)) {
             continueGame = false;
         }
-    }
-
-    private void isValidPlayerNumber(String number) {
-        String answerValidationRegex = "^(?!.*(.).*\\1)[1-9]{3}$";
-        InputValidator.validateInput(answerValidationRegex, number);
-    }
-
-    private void isValidRestartOrEndNumber(String number) {
-        String oneOrTwoValidationRegex = "^[12]$";
-        InputValidator.validateInput(oneOrTwoValidationRegex, number);
     }
 }
