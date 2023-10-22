@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static baseball.config.GlobalConfig.*;
 import static baseball.validator.NumberValidator.*;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
@@ -34,10 +35,10 @@ public class Number {
     }
 
     // Computer Number Static Factory Method
-    public static Number generateRandomNumbers(int a, int b, int c) {
+    public static Number generateRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < c) {
-            int number = pickNumberInRange(a, b);
+        while (randomNumbers.size() < NUMBER_LENGTH.getValue()) {
+            int number = pickNumberInRange(RANDOM_NUMBER_MAXIMUM.getValue(), RANDOM_NUMBER_MINIMUM.getValue());
             if (!randomNumbers.contains(number)) {
                 randomNumbers.add(number);
             }

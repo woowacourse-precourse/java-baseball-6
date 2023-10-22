@@ -2,9 +2,9 @@ package baseball.domain;
 
 import baseball.view.OutputView;
 
-public class Result {
-    private static final int NUMBER_LENGTH = 3;
+import static baseball.config.GlobalConfig.NUMBER_LENGTH;
 
+public class Result {
     private final int ballCount;
     private final int strikeCount;
 
@@ -16,7 +16,7 @@ public class Result {
     public static Result create(final Number playerNumber, final Number computerNumber) {
         return new Result(playerNumber, computerNumber);
     }
-
+    
     public void print() {
         if (ballCount == 0 && strikeCount == 0) {
             OutputView.printNothing();
@@ -30,6 +30,6 @@ public class Result {
     }
 
     public boolean checkGameOver() {
-        return strikeCount == NUMBER_LENGTH;
+        return strikeCount == NUMBER_LENGTH.getValue();
     }
 }
