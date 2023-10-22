@@ -39,7 +39,7 @@ public class GameController {
         validationUtil.validate(userInput);
 
         // String -> List<Integer> 형식 변환. TODO: 메소드 분리
-        List <Integer> userNumbers = new ArrayList<>();
+        List<Integer> userNumbers = new ArrayList<>();
         for (int i = 0; i < userInput.length(); i++) {
             int convertedNum = Character.getNumericValue(userInput.charAt(i));
             userNumbers.add(convertedNum);
