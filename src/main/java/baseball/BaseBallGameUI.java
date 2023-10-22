@@ -8,7 +8,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 
 public class BaseBallGameUI {
-    public void startBaseballGame() {
+    public void startMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
@@ -21,7 +21,11 @@ public class BaseBallGameUI {
             System.out.println(result.get(1) + "스트라이크");
             if(result.get(1) == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                restartGame();
+                try{
+                    restartGame();
+                } catch (IllegalArgumentException e) {
+                    setGameSwitch(false);
+                }
             }
         }
         if(result.get(1) == 0 && result.get(0) != 0) {
@@ -35,10 +39,17 @@ public class BaseBallGameUI {
         }
     }
 
-    public Boolean restartGame() {
+    public void restartGame() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputValue = readLine();
+        if(inputValue == null || !inputValue.matches("\\d+")) {
+            throw new IllegalArgumentException();
+        }
         int inputValueToInt = Integer.parseInt(inputValue);
+
+        if(inputValueToInt != 2 && inputValueToInt != 1) {
+            throw new IllegalArgumentException();
+        }
 
         if(inputValueToInt == 2) {
             setGameSwitch(false);
@@ -46,10 +57,9 @@ public class BaseBallGameUI {
         if(inputValueToInt == 1) {
             startGame();
         }
-        return gameSwitch;
     }
 
-    public void startGame() {
+    public void startGame() throws IllegalArgumentException {
         Referee referee = new Referee();
         Computer computer = new Computer();
         System.out.println(computer.getComputerBall());
@@ -57,12 +67,15 @@ public class BaseBallGameUI {
         while(gameSwitch) {
             inputPlayerNum();
             String inputValue = readLine();
+            if(inputValue == null || !inputValue.matches("\\d+")) {
+                throw new IllegalArgumentException();
+            }
             int inputValueToInt = Integer.parseInt(inputValue);
             try {
                 Player player = new Player(inputValueToInt);
                 printResult(referee.decideResult(computer.getComputerBall(), player.getPlayerBall()));
             } catch (IllegalArgumentException e) {
-                break;
+                setGameSwitch(false);
             }
         }
     }

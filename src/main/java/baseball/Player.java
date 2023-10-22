@@ -12,7 +12,7 @@ public class Player {
         }
         while(inputValue != 0) {
             int value = inputValue % 10;
-            if(playerBall.contains(value)) {
+            if(playerBall.contains(value) || value == 0) {
                 throw new IllegalArgumentException();
             }
             playerBall.add(0, value);
@@ -20,7 +20,7 @@ public class Player {
         }
     }
 
-    public Player(int inputValue) {
+    public Player(int inputValue) throws IllegalArgumentException{
         initPlayerBall(inputValue);
     }
 
