@@ -8,9 +8,11 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
-
         String input = Console.readLine();
 
-        System.out.println(input);
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+
     }
 }
