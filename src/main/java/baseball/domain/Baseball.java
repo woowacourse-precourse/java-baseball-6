@@ -9,11 +9,11 @@ public class Baseball {
     private final int number;
 
     protected Baseball(int number) {
-        verifyBaseballNumber(number);
+        validateBaseballNumber(number);
         this.number = number;
     }
 
-    private void verifyBaseballNumber(int number) {
+    private void validateBaseballNumber(int number) {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException();
         }
