@@ -65,7 +65,7 @@ public class BaseballGame {
 
 
     private boolean doUserTurn() {
-        ArrayList<Integer> userBaseBallNum = user.inputNumber();
+        List<Integer> userBaseBallNum = user.inputNumber();
         BaseballResult result = rule.checkBaseball(userBaseBallNum);
         result.printStatus();
 

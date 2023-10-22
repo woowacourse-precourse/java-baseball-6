@@ -20,46 +20,47 @@ public class BaseballRule {
             return BaseballResult.allStrike(answer.size());
         }
 
-        int strike = getStrike(inputNumbers);
-        int ball = getBall(inputNumbers) - strike;
+        int strike = countStrikes(inputNumbers);
+        int ball = countBalls(inputNumbers);
 
         return new BaseballResult(strike, ball, false);
     }
 
 
-    private int getStrike(List<Integer> inputNumbers) {
-        int strike = 0;
+    private int countStrikes(List<Integer> inputNumbers) {
+        int strikeCount = 0;
         for (int i = 0; i < answer.size(); ++i) {
-            if (isStrike(answer.get(i), inputNumbers.get(i))) {
-                strike++;
+            if (isStrike(inputNumbers.get(i), answer.get(i))) {
+                strikeCount++;
             }
         }
-        return strike;
+        return strikeCount;
     }
 
-    private boolean isStrike(Integer answer, Integer input) {
-        return answer.equals(input);
+    private boolean isStrike(Integer targetNumber, Integer answer) {
+        return answer.equals(targetNumber);
     }
 
 
-    private int getBall(List<Integer> inputNumbers) {
-        int ball = 0;
-        for (int i = 0; i < answer.size(); ++i) {
-            if (isBall(inputNumbers.get(i))) {
-                ball++;
+    private int countBalls(List<Integer> inputNumbers) {
+        int ballCount = 0;
+
+        for (int i = 0; i < inputNumbers.size(); ++i) {
+            if (isBall(inputNumbers.get(i), i)) {
+                ballCount++;
             }
         }
-        return ball;
+
+        return ballCount;
     }
 
-    private boolean isBall(Integer givenNumber) {
-        for (Integer answerNum : answer) {
-            if (answerNum.equals(givenNumber)) {
+    private boolean isBall(Integer targetNumber, Integer excludeIndex) {
+        for (int i = 0; i < answer.size(); ++i) {
+            if (i != excludeIndex && answer.get(i).equals(targetNumber)) {
                 return true;
             }
         }
         return false;
     }
-
 
 }

@@ -2,11 +2,11 @@ package baseball.user;
 
 import baseball.io.Converter;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
-    public ArrayList<Integer> inputNumber() {
+    public List<Integer> inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
         return Converter.convertToUniqueIntList(userInput, 3);
