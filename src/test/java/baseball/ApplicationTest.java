@@ -1,7 +1,10 @@
 package baseball;
 
+import baseball.controller.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +29,16 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void RandomNumberGeneratorTest(){
+        RandomNumberGenerator generator = new RandomNumberGenerator();
+
+        List<Integer> numbers = generator.generateRandomComputerNumber();
+
+        assertThat(numbers).hasSize(3);
+        assertThat(numbers).doesNotHaveDuplicates();
     }
 
     @Override
