@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import static baseball.InputProcessor.*;
+import static baseball.OutputProcessor.*;
 
 public class Application {
 
@@ -23,9 +24,9 @@ public class Application {
 
     public void run() {
         initializeNumber();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        printStartMessage();
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            printPitchInputMessage();
             String pitchInput = Console.readLine();
 
             validatePitchInput(pitchInput);
@@ -36,34 +37,19 @@ public class Application {
             printScore(score);
 
             if (score.getStrike() == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                printCompleteMessage();
                 String restartInput = Console.readLine();
 
                 validateRestartInput(restartInput);
 
                 if (restartInput.equals("2")) {
-                    System.out.println("게임을 끝냅니다.");
+                    printExitMessage();
                     break;
                 }
 
                 initializeNumber();
             }
         }
-    }
-
-    private static void printScore(Score score) {
-        if (score.getBall() == 0 && score.getStrike() == 0) {
-            System.out.println("낫싱");
-            return;
-        }
-        if (score.getBall() > 0) {
-            System.out.print(score.getBall() + "볼 ");
-        }
-        if (score.getStrike() > 0) {
-            System.out.print(score.getStrike() + "스트라이크");
-        }
-        System.out.println();
     }
 
     public static void main(String[] args) {
