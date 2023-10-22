@@ -37,16 +37,21 @@ public class GameRound {
             return handleUserChoice();
         }
         restartRound();
-        return false;
+        return true;
     }
 
     private boolean handleUserChoice() {
         int choice = Integer.parseInt(Console.readLine());
+
         if (choice == GameConstants.RESTART_GAME) {
             restartGame();
+            return true;
+        }
+        if (choice == GameConstants.END_GAME) {
             return false;
         }
-        return choice == GameConstants.END_GAME;
+
+        throw new IllegalArgumentException(GameConstants.NOT_A_VALID_CHOICE);
     }
 
     private boolean isThreeStrike(BallStrikeCount ballStrikeCount) {
