@@ -1,4 +1,4 @@
-package baseball;
+package baseball.app;
 
 import baseball.app.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
