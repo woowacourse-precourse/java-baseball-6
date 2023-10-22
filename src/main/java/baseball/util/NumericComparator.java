@@ -20,6 +20,25 @@ public class NumericComparator {
         return ballCount;
     }
 
+    public int getResult(List<Integer> playerNumbers, List<Integer> computerNumbers) {
+        compare(playerNumbers, computerNumbers);
+        int compareResult = 0; // 1: 스트라이크, 2: 볼, 3: 정답, 4: 스트라이크 볼, 5: 낫싱
+
+        if (strikeCount == 3) {
+            compareResult = 3;
+        } else if (strikeCount != 0 && ballCount == 0) {
+            compareResult = 1;
+        } else if (strikeCount == 0 && ballCount != 0) {
+            compareResult = 2;
+        } else if (strikeCount != 0 && ballCount != 0) {
+            compareResult = 4;
+        } else if (strikeCount == 0 && ballCount == 0) {
+            compareResult = 5;
+        }
+
+        return compareResult;
+    }
+
     public void compare(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         resetCount();
 
