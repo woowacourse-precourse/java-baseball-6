@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
+
     private static final Integer BALL_SIZE = 3;
     private final static Integer FIRST_NUMBER = 1;
     private final static Integer LAST_NUMBER = 9;

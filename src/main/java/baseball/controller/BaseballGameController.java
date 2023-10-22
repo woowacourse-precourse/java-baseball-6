@@ -8,6 +8,7 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class BaseballGameController {
+
     private static final String START_MSG = "숫자 야구 게임을 시작합니다.";
     private static final Integer EXIT = 2;
     private static final Integer INIT_STRIKE = 0;
