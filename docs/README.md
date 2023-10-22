@@ -42,4 +42,4 @@
 * [ ] static import vs import
 * [x] 재귀를 사용을 지양하여 스택오버플로우 방지
 * [ ] 상수 선언 위치 고민해보기
-* [ ] 메인 Application에서 Controller 바로 호출하지 않기
+* [x] 메인 Application에서 Controller 바로 호출하지 않기
