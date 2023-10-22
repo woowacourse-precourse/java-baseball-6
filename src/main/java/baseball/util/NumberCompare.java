@@ -1,9 +1,9 @@
 package baseball.util;
 
 public class NumberCompare {
-    private int strike;
-    private int ball;
 
+    private int ball;
+    private int strike;
     public int getStrike(){
         return strike;
     }
@@ -14,13 +14,14 @@ public class NumberCompare {
         countStrike(playerNumber,computerNumber);
         countRealBall();
 
-        return new int[]{strike, ball};
+        return new int[]{ball, strike};
     }
 
 
     public void resetCount(){
-        strike = 0;
         ball = 0;
+        strike = 0;
+
     }
 
     public void countBall(String playerNumber, String computerNumber){

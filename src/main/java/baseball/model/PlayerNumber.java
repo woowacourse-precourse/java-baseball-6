@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class PlayerNumber {
-    private String playerNumber;
+    public String playerNumber;
 
     public PlayerNumber(String playerNumber){
         isNumberLengthCorrect(playerNumber);

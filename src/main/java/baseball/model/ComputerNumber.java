@@ -5,8 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ComputerNumber {
-    private static final int startNumber = 1;
-    private static final int endNumber = 9;
 
     public String computerNumber;
 
@@ -27,7 +25,7 @@ public class ComputerNumber {
     }
 
     public static String getRandomNumber(){
-        return Integer.toString(Randoms.pickNumberInRange(startNumber,endNumber));
+        return Integer.toString(Randoms.pickNumberInRange(1,9));
     }
 
 

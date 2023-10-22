@@ -10,6 +10,10 @@ public class OutputView {
     public static void printBallMessage(){
         System.out.println("볼");
     }
+
+    public static void printBallAndStrikeMessage() {
+        System.out.print("볼");
+    }
     public static void printNothingMessage(){
         System.out.println("낫싱");
     }
