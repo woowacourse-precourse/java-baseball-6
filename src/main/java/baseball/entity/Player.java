@@ -14,4 +14,15 @@ public class Player {
         return inputString;
     }
 
+    public void setStrikeCount(int strikeCount) {
+        this.strikeCount = strikeCount;
+    }
+
+    public void setBallCount(int ballCount) {
+        this.ballCount = ballCount;
+    }
+
+    public void setGameWin(boolean gameWin) {
+        this.gameWin = gameWin;
+    }
 }
