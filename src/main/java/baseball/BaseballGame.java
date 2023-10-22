@@ -4,7 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class BaseballGame {
-    PlayerView playerView = new PlayerView();
+    private PlayerView playerView = new PlayerView();
+    private Computer computer = new Computer();
+    private GameResult gameResult = new GameResult();
+    private Referee referee = new Referee();
 
     public void play() {
         playerView.start();
@@ -15,10 +18,7 @@ public class BaseballGame {
     }
 
     private void startGame() {
-        Computer computer = new Computer();
         String computerNumbers = computer.generate();
-        GameResult gameResult = new GameResult();
-        Referee referee = new Referee();
         do {
             playerView.inputNumbers();
             String playerNumbers = playerView.input();
