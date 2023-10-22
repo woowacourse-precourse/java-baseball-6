@@ -23,7 +23,6 @@ public class GameController {
 
     public void playGame() {
         GameResult gameResult;
-        game.setComputerNumber();
         do {
             String inputNumber = InputView.getInputNumber();
             game.setPlayerNumber(inputNumber);

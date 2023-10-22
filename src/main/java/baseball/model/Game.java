@@ -7,7 +7,7 @@ public class Game {
     private List<Integer> playerNumber;
     private GameResult gameResult;
 
-    public void setComputerNumber() {
+    public Game() {
         this.computerNumber = new ComputerNumber().getComputerNumber();
     }
 
