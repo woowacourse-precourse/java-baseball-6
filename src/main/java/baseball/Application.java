@@ -129,9 +129,21 @@ public class Application {
     //매개변수x, 리턴값 int
     //예외 무조건 1,2만 가능
     //입력받는수가 한자릿수이상이거나, 공백이거나, 수가 아닐경우 예외처리
+    //예외처리
+    //1. 숫자가 아닐 때(띄어쓰기가 입력됐을 때)
+    //2. 한글자가 아닐때(한글자보다 작거나 초과일때)
+    //3. 1,2이외의 다른 숫자가 입력됐을 떄
     public static int replay(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Integer.parseInt(Console.readLine());
+        int user = Integer.parseInt(Console.readLine());
+
+        //예외처리
+        //1. 숫자가 아닐 때(걍 1,2가 아니면 다 예외 때리면 될 듯)
+        if(user != 1 && user != 2){
+            throw new IllegalArgumentException();
+        }
+
+        return user;
     }
 
     //게임 재시작(1), 종료(2) 함수 (매개변수 int, 리턴값 void)
