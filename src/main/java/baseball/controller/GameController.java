@@ -13,6 +13,12 @@ public class GameController {
         System.out.println("정답: " + answerNumber.getRandomNumber());
     }
 
+    public void startGame() {
+        printController.printStart();
+        createAnswer();
+        proceedGame();
+    }
+
     public void proceedGame() { //임시로 테스트 케이스 작성
         int i = 0;
         do {
