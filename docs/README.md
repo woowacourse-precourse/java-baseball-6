@@ -57,13 +57,13 @@
 - 게임 종료 관련 기능들
   - 게임 종료 여부 입력 받기
       ``` java
-    int inputGameEnd()
+    int inputEndOption()
       ```
   - 게임 종료 여부 입력 형식 확인하기
     ``` java
-    void checkEndForm(String endOption)
+    void checkEndOptionForm(String endOption)
     ```
   - 게임 종료 여부 확인하기
       ``` java
-    boolean checkGameEnd(int userChoice)
+    boolean isGameEnd(int endOption)
       ```
