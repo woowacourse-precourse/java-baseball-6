@@ -25,5 +25,9 @@ public class Application {
         // 유효성 확인
         CheckValidation checkValidation = new CheckValidation(input);
         String result = checkValidation.checkNumberValidation();
+        if (result.equals("유효")) {
+            Hint hint = new Hint(computer, input);
+            boolean ifCorrect = hint.checkNumber();
+        }
     }
 }
