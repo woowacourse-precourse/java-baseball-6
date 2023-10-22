@@ -68,5 +68,15 @@ public class Application {
         }
         System.out.println(resultString);
     }
+
+    private static void parseString(List<Integer> target, String str) throws IllegalArgumentException {
+        try {
+            for (int i = 0; i < str.length(); i++) {
+                target.add(str.charAt(i) - '0');
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
     }
 }
