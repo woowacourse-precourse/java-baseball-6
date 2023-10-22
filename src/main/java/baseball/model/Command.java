@@ -22,11 +22,13 @@ public enum Command {
     }
 
     public static Boolean isRestart(Command command) {
-        return Command.RESTART.equals(command);
-    }
-
-    public static Boolean isQuit(Command command) {
-        return Command.QUIT.equals(command);
+        if (Command.QUIT.equals(command)) {
+            return false;
+        }
+        if (Command.RESTART.equals(command)) {
+            return true;
+        }
+        throw new IllegalArgumentException();
     }
 
     @Override

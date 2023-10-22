@@ -34,24 +34,15 @@ public class BaseballController {
             //TODO: 디버깅 용 출력문 지우기
             System.out.println("computer = " + computer);
             guess(computer);
-
-            //TODO: 분리가 필요해 보여
-            Command command = readGameCommand();
-            if (isRestart(command)) {
+            if (isRestart()) {
                 continue;
             }
-            if (isQuit(command)) {
-                return;
-            }
+            break;
         }
     }
 
-    private boolean isQuit(Command command) {
-        return Command.isQuit(command);
-    }
-
-    private boolean isRestart(Command command) {
-        return Command.isRestart(command);
+    private Boolean isRestart() {
+        return Command.isRestart(readGameCommand());
     }
 
     private void guess(GameNumbers computer) {
