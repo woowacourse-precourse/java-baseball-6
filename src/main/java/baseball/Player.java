@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Player {
 
@@ -30,19 +32,23 @@ public class Player {
             throw new IllegalArgumentException(INPUT_MUST_3_NUMBER_EXCEPTION);
         }
 
-        int[] intTokens = new int[3];
+        List<Integer> inputNumbers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            intTokens[i] = parseInt(tokens[i]);
+            inputNumbers.add(parseInt(tokens[i]));
         }
 
-        ArrayList<Integer> inputNumbers = new ArrayList<>();
-        for (int number : intTokens) {
-            if (inputNumbers.contains(number)) {
+        checkDuplicationNumber(inputNumbers);
+        return inputNumbers;
+    }
+
+    private void checkDuplicationNumber(List<Integer> inputNumbers) {
+        Set<Integer> useNumber = new HashSet<>();
+        for (int number : inputNumbers) {
+            if (useNumber.contains(number)) {
                 throw new IllegalArgumentException(INPUT_MUST_NOT_DUPLICATED_EXCEPTION);
             }
-            inputNumbers.add(number);
+            useNumber.add(number);
         }
-        return inputNumbers;
     }
 
     /**
