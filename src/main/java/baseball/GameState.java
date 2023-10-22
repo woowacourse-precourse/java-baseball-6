@@ -17,16 +17,27 @@ public class GameState {
         }
     }
 
-    public void checkGameRetryOrEnd(int retryOrEnd){
-        if(retryOrEnd == PROGRESS_STATE){
+    public void checkGameRetryOrEnd(int retryOrEnd) {
+        validateRetryOrEnd(retryOrEnd);
+        if (retryOrEnd == PROGRESS_STATE) {
             gameSwitch = PROGRESS_STATE;
         }
-        if(retryOrEnd == END_STATE){
+        if (retryOrEnd == END_STATE) {
             gameSwitch = END_STATE;
         }
     }
 
-    public int getState(){
+    public boolean isRetryOrEnd(int retryOrEnd) {
+        return retryOrEnd != 1 && retryOrEnd != 2;
+    }
+
+    public void validateRetryOrEnd(int retryOrEnd){
+        if(isRetryOrEnd(retryOrEnd)){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public int getState() {
         return gameSwitch;
     }
 }
