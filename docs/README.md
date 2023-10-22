@@ -6,9 +6,7 @@
 * 사용자 입력이 잘못돼서 예외가 터졌을 때 처리하는 메서드 feat: Add a method that make exception if the input number does not fit the range
 * 컴퓨터의 수와 사용자의 수를 비교해서 결과 담음 feat: Add a method that returns an object that has a score by comparing a random value with a user input value 
 * 결과 판별하고 출력 feat: Add a method that show the results of the user's input
-* 다시 시작 혹은 종료 메서드 feat: Add a method that terminates or restarts the game 
-나중에 스코어 객체 따로 만들고 원래 있던 클래스는 유틸함수 전용 클래스로 만들??
-
+* 다시 시작 혹은 종료 메서드 feat: Add a method that terminates or restarts the game
 
 
 # 구현하면서 찾아본 내용
@@ -19,6 +17,16 @@ defaultRandom.nextInt(endInclusive - startInclusive + 1); 사용됨을 확인
 동시성 문제를 해결하기 위해 각 쓰레드마다 생성된 인스턴스에서 각각 난수를 반환  
 따라서 Random과 같은 경합 문제가 발생하지 않아 안전하며, 성능상 이점이 있는 것으로 확인  
 pickNumberInRange()는 첫 번째 인자가 최소 정수, 두 번째 인자가 최대 정수
+
+* ApplicationTest 에서 java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)  
+오류가 발생 mockito-core와 byte-buddy가 최신버전이면 오류가 사라질 가능성이 있음을 확인  
+build.gradle에 최신버전으로 의존성 추가해서 해결 
+
+* 기존에 있던 "게임종료_후_재시작"에서 람다식?으로전달한 인자에 문제가 있어보여서 수정?
+* 테스트코드를 다시 생각해보니 테스트코드 오류가 아닌, 랜덤 숫자를 받아올 때 하나씩 세번 받아와야 되는데 한번에 세 자리수를 받아와서 문제가 생긴것으로, 랜덤숫자 생성 구현의 방식을 변경해야 함
+* 기존 README 구현예시가 있었으나 유심히 보지않아서 문제발생....
+* 요구사항과 관련된 문서를 더 자세히 보도록 노력이 필요함
+
 
 
 ## 커밋 규약

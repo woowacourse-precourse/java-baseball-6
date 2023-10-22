@@ -6,7 +6,6 @@ import baseball.view.BaseballGameView;
 
 public class Application {
 
-
     public static void main(String[] args) {
         BaseballGameController baseballGameController = new BaseballGameController(); // 게임 컨트롤러 생성
         BaseballGameView baseballGameView = new BaseballGameView();
