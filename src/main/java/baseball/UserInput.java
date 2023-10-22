@@ -7,15 +7,15 @@ import java.util.Set;
 
 class UserInput {
 
-  public static String userInput(Scanner sc) throws IllegalArgumentException {
-    System.out.print("숫자를 입력해주세요 : ");
-    try {
-      String input = sc.next();
-      checkUserInput(input);
-      return input;
-    } catch (InputMismatchException e) {
-      throw new IllegalArgumentException("입력된 값이 숫자가 아닙니다");
-    }
+  public static String userInput(Scanner sc) {
+    displayInputMessage();
+    String input = sc.next();
+    checkUserInput(input);
+    return input;
+  }
+
+  private static void displayInputMessage() {
+    System.out.println("숫자를 입력해주세요 : ");
   }
 
   private static void checkUserInput(String input) throws IllegalArgumentException {
