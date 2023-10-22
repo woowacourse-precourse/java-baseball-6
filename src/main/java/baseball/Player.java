@@ -13,8 +13,12 @@ public class Player {
     this.input = input;
   }
 
+  public boolean isReGame() {
+    return input.equals("1");
+  }
+
   public boolean userInputNumbers(final int[] flag) {
-    input = Console.readLine();
+    String input = Console.readLine();
     setInput(input);
     return validateNumericInput(input, flag);
   }
@@ -24,7 +28,7 @@ public class Player {
       return false;
     }
     for (Character ch : input.toCharArray()) {
-      if (ch < '0' || ch > flag[1] - '0') {
+      if (ch < '0' || ch > flag[1] + '0') {
         return false;
       }
     }
