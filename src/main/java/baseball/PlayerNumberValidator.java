@@ -10,12 +10,12 @@ public class PlayerNumberValidator {
         map = new HashMap<>();
     }
 
-    public boolean isValidNumber(String number, int length) {
-        if (number == null || number.length() != length) {
+    public boolean isValidNumber(String number) {
+        if (number == null || number.length() != 3) {
             return false;
         }
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < 3; i++) {
             char cur = number.charAt(i);
             if (cur < '1' || cur > '9' || map.containsKey(String.valueOf(cur))) {
                 return false;

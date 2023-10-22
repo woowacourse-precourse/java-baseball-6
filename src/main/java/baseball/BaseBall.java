@@ -3,12 +3,11 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBall {
-    private final int LENGTH = 3;
     private Computer computer;
 
     public BaseBall() {
         computer = new Computer();
-        computer.createComputerNumber(LENGTH);
+        computer.createComputerNumber();
     }
 
     public void run() {
@@ -17,7 +16,7 @@ public class BaseBall {
         while (true) {
             int[] strikeBallArray = new int[2];
             String inputNumber = Console.readLine();
-            PlayerNumber playerNumber = new PlayerNumber(inputNumber, LENGTH);
+            PlayerNumber playerNumber = new PlayerNumber(inputNumber);
             countStrikeBall(strikeBallArray, playerNumber);
 
             if (isSuccess(strikeBallArray)) {
@@ -29,14 +28,14 @@ public class BaseBall {
     }
 
     private boolean isSuccess(int[] strikeBallArray) {
-        if (strikeBallArray[0] == LENGTH) {
+        if (strikeBallArray[0] == 3) {
             return true;
         }
         return false;
     }
 
     private void countStrikeBall(int[] strikeBallCount, PlayerNumber playerNumber) {
-        for (int i = 0; i < LENGTH; i++) {
+        for (int i = 0; i < 3; i++) {
             int cur = playerNumber.get(i) - '0';
             if (computer.get(i) == cur) {
                 strikeBallCount[0]++;
