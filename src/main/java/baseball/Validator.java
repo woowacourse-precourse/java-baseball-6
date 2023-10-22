@@ -9,10 +9,22 @@ public class Validator {
     public Validator() {
     }
 
+    public void verifyForRedo(String input) {
+        verifyNumber(input);
+        verifyOneAndTwo(input);
+    }
+
     public void verify(String input) {
         verifyLength(input);
         verifyNumber(input);
         verifyUniqueNumber(input);
+    }
+
+    private void verifyOneAndTwo(String input) {
+        int number = Integer.parseInt(input);
+        if (number < 1 || number > 2) {
+            throw new IllegalArgumentException("1 또는 2가 아닙니다.");
+        }
     }
 
     private void verifyUniqueNumber(String input) {

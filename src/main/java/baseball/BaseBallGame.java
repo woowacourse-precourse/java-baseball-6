@@ -3,19 +3,20 @@ package baseball;
 import java.util.List;
 
 public class BaseBallGame {
-
+    private static final int REPLAY = 1;
     private final RandomNumberGenerator randomNumberGenerator;
-
     private final Prompt prompt;
     private final Validator validator;
     private final BaseBallGameMapper baseBallGameMapper;
+    private final Referee referee;
 
     public BaseBallGame(RandomNumberGenerator randomNumberGenerator, Prompt prompt, Validator validator,
-                        BaseBallGameMapper baseBallGameMapper) {
+                        BaseBallGameMapper baseBallGameMapper, Referee referee) {
         this.randomNumberGenerator = randomNumberGenerator;
         this.prompt = prompt;
         this.validator = validator;
         this.baseBallGameMapper = baseBallGameMapper;
+        this.referee = referee;
     }
 
     public void start() {
@@ -28,18 +29,35 @@ public class BaseBallGame {
             String playerInput = prompt.input();
             validator.verify(playerInput);
             List<Integer> verifiedInput = baseBallGameMapper.toList(playerInput);
-            // todo: 난수와 사용자 입력 판별하기
-            // todo: 결과 출력하기
-            // todo:
-            //  - 난수와 사용자 입력을 맞을 경우 재시작 | 시스템 종료 문구 출력 및 입력받기
-            //  - 재입력받기
-            isRunnable = false;
+            Status judgedStatus = referee.judge(verifiedInput, randomNumbers);
+            prompt.print(judgedStatus::getResult);
+
+            if (judgedStatus.isAllStrike()) {
+                prompt.print(SystemMessage.ALL_STRIKE);
+                prompt.print(SystemMessage.ASK_AGAIN);
+
+                isRunnable = isReplay();
+                if (isRunnable) {
+                    randomNumbers = randomNumberGenerator.createNumber(3);
+                }
+            }
         }
+    }
+
+    private boolean isReplay() {
+        String redo = prompt.input();
+        validator.verifyForRedo(redo);
+        int verifiedRedo = baseBallGameMapper.toInt(redo);
+
+        return verifiedRedo == REPLAY;
     }
 
     private enum SystemMessage implements Message {
         INTRO("숫자 야구 게임을 시작합니다.\n"),
-        INPUT("숫자를 입력해주세요 : ");
+        INPUT("숫자를 입력해주세요 : "),
+        ALL_STRIKE("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"),
+        ASK_AGAIN("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n"),
+        NOTHING("낫싱\n");
 
         private String message;
 
@@ -52,4 +70,5 @@ public class BaseBallGame {
             return message;
         }
     }
+
 }

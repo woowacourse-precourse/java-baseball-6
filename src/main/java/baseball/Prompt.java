@@ -11,6 +11,10 @@ public class Prompt {
         System.out.print(outputMessage.getMessage());
     }
 
+    public Prompt systme(Message message){
+        return this;
+    }
+
     public String input() {
         return Console.readLine();
     }
