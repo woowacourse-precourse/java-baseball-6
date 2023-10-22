@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import exception.DuplicateBaseBallNumber;
 import exception.OutOfBaseBallNumbersSize;
 
-public final class RandomBaseBallNumberGenerator implements BaseBallNumberGenerator {
+public final class RandomAnswerNumbersGenerator implements AnswerNumbersGenerator {
 
     @Override
     public AnswerNumbers create() {

@@ -1,6 +1,6 @@
 package baseball.domain;
 
-public interface BaseBallNumberGenerator {
+public interface AnswerNumbersGenerator {
 
     AnswerNumbers create();
 }

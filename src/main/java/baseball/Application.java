@@ -2,11 +2,11 @@ package baseball;
 
 import baseball.domain.BaseBallGame;
 import baseball.domain.BaseBallHint;
-import baseball.domain.BaseBallNumberGenerator;
+import baseball.domain.AnswerNumbersGenerator;
 import baseball.domain.AnswerNumbers;
 import baseball.domain.ComputerPlayer;
 import baseball.domain.MatchPlayer;
-import baseball.domain.RandomBaseBallNumberGenerator;
+import baseball.domain.RandomAnswerNumbersGenerator;
 import baseball.domain.BaseballSingleGame;
 import baseball.domain.Player;
 import baseball.view.SinglePlayerConsole;
@@ -18,7 +18,7 @@ public class Application {
     }
 
     private static MatchPlayer initializeMatchPlayer() {
-        final BaseBallNumberGenerator numberGenerator = new RandomBaseBallNumberGenerator();
+        final AnswerNumbersGenerator numberGenerator = new RandomAnswerNumbersGenerator();
         return new ComputerPlayer(numberGenerator);
     }
 

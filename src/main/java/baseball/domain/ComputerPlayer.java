@@ -4,7 +4,7 @@ public class ComputerPlayer implements MatchPlayer {
 
     private final AnswerNumbers answer;
 
-    public ComputerPlayer(BaseBallNumberGenerator numberGenerator) {
+    public ComputerPlayer(AnswerNumbersGenerator numberGenerator) {
         this.answer = numberGenerator.create();
     }
 
