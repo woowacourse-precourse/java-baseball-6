@@ -21,6 +21,10 @@ public class Ball {
         }
     }
 
+    int getValue() {
+        return this.ball;
+    }
+
     public boolean isEmpty() {
         return ball == ZERO_COUNT;
     }
