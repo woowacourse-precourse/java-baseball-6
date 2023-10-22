@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import player.BaseballNumber;
 import player.BaseballNumbers;
 
-public class ScoreTest {
+public class BaseballScoreTest {
 
     BaseballScore score = new BaseballScore();
 
