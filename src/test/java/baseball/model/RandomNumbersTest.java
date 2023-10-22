@@ -17,4 +17,10 @@ class RandomNumbersTest {
         assertEquals(3, generatedNumbers.size());
     }
 
+    @Test
+    @DisplayName("랜덤 숫자들은 중복되지 않아야 한다.")
+    public void randomNumbers_Should_Not_Contain_Duplicates() {
+        assertEquals(generatedNumbers.size(), generatedNumbers.stream().distinct().count());
+    }
+    
 }
