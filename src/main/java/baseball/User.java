@@ -28,7 +28,7 @@ public class User {
             char tmp = input.charAt(i);
             int num = tmp - '0';
 
-            if (!Character.isDigit(tmp))
+            if (!Character.isDigit(tmp) || num == 0)
                 return false;
 
             if (used[num - 1])
