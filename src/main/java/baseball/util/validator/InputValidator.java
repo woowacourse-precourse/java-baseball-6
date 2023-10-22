@@ -34,4 +34,10 @@ public class InputValidator {
             }
         }
     }
+
+    public void checkIsOneOrTwo(String inputNumber) {
+        if (!(inputNumber.equals("1") || inputNumber.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

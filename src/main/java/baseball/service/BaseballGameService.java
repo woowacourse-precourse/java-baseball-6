@@ -66,7 +66,9 @@ public class BaseballGameService {
 
     private void getRestartOrEndNumber() {
         InputView inputView = new InputView();
+        InputValidator inputValidator = new InputValidator();
         String result = inputView.getRestartOrEndNumber();
+        inputValidator.checkIsOneOrTwo(result);
         if (result.equals("1")) {
             startBaseballGame(1);
         }
