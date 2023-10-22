@@ -11,10 +11,6 @@ public class Converter {
     private Converter() {
     }
 
-    public static int convertStringToInt(final String string) {
-        return Integer.parseInt(string);
-    }
-
     public static List<Integer> convertStringToIntegerList(final String string) {
         return Arrays.stream(string.split(EMPTY_STRING))
                 .map(Integer::parseInt)
