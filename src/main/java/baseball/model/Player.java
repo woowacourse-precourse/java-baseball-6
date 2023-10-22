@@ -1,8 +1,8 @@
 package baseball.model;
 
-import static baseball.util.converter.StringToIntegerListConverter.StringToList;
-import static baseball.util.validator.InputValidator.isInputNumbersValid;
-import static baseball.util.validator.InputValidator.isRestartOrExitValid;
+import static baseball.util.InputValidator.isInputNumbersValid;
+import static baseball.util.InputValidator.isRestartOrExitValid;
+import static baseball.util.StringToIntegerListConverter.StringToList;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
