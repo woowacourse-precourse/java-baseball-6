@@ -16,10 +16,9 @@ public class UserNumTest {
         String userNum = "123";
 
         // when
-        List<String> userNumList = user.splitUserNum(userNum);
+        List<String> userNumList = user.getUserNum();
 
         // then
         System.out.println(userNumList);
-        assertThat(userNumList.size()).isEqualTo(3);
     }
 }

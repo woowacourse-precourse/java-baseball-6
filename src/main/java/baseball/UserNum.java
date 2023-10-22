@@ -9,17 +9,20 @@ import java.util.List;
 public class UserNum {
     List<String> userNumList = new ArrayList<>(); // 사용자가 입력한 3자리 숫자
 
-    public void getUserNum(List<String> userNumList) {
+    public List<String> getUserNum() {
+        System.out.print("숫자를 입력해주세요 : ");
         String userNum = Console.readLine(); // readLine()으로 3자리 숫자 입력받기
 
-        UserNum user = new UserNum();
-        userNumList = user.splitUserNum(userNum);
+        while (!isValidInput(userNum)) {
+            System.out.print("올바른 입력이 아닙니다. 3자리 숫자를 다시 입력하세요: ");
+            userNum = Console.readLine();
+        }
+
+        userNumList.addAll(Arrays.asList(userNum.split("")));
+        return userNumList;
     }
 
-    public List<String> splitUserNum(String userNum) {
-        userNumList.addAll(Arrays.asList(userNum.split("")));
-        // split으로 한 글자씩 자른 숫자를 userNumList에 저장
-
-        return userNumList;
+    private boolean isValidInput(String input) {
+        return input.matches("\\d{3}"); // 3자리 숫자인지 확인
     }
 }
