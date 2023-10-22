@@ -11,11 +11,20 @@ public class InputView {
     private final InputValidator inputValidator = new InputValidator();
 
     public List<Integer> getPlayerInput() {
-        System.out.println(GameMessage.REQUIRES_INPUT);
+        System.out.print(GameMessage.REQUIRES_INPUT.getMessage());
         String input = Console.readLine();
 
-        inputValidator.validate(input);
+        inputValidator.validateGameNumber(input);
 
         return StringToIntegerListParser.parse(input);
+    }
+
+    public Integer getRestart() {
+        System.out.println(GameMessage.ASK_RESTART.getMessage());
+        String input = Console.readLine();
+
+        inputValidator.validateRestartNumber(input);
+
+        return Integer.parseInt(input);
     }
 }
