@@ -28,11 +28,11 @@ public class GameController {
         outputView.printStartMessage();
 
         do {
-            playGame();
+            playGames();
         } while(restartGame());
     }
 
-    public void playGame() {
+    public void playGames() {
         computer = new Computer();
         player = new Player();
         game = new Game();
@@ -41,16 +41,20 @@ public class GameController {
         computer.setComputerNumbers(computerInput);
 
         do {
-            game.initStrikeAndBall();
-
-            String playerInput = inputView.inputPlayerNumber();
-            player.setPlayerNumbers(playerInput);
-
-            countStrikeAndBall(player.getPlayerNumbers(), computer.getComputerNumbers());
+            playOneGame();
             printHintMessage();
         } while (!isCorrectNumber());
 
         outputView.printEndMessage();
+    }
+
+    public void playOneGame() {
+        game.initStrikeAndBall();
+
+        String playerInput = inputView.inputPlayerNumber();
+        player.setPlayerNumbers(playerInput);
+
+        countStrikeAndBall(player.getPlayerNumbers(), computer.getComputerNumbers());
     }
 
     public void countStrikeAndBall(List<Integer> playerNumbers, List<Integer> computerNumbers) {
