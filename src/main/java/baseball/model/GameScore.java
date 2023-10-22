@@ -5,6 +5,8 @@ import java.util.List;
 
 public class GameScore {
 
+    private static final int GAME_END_SCORE = 3;
+
     private int strike;
     private int ball;
 
@@ -29,6 +31,6 @@ public class GameScore {
     }
 
     public boolean isUserFindAnswer() {
-        return strike == 3;
+        return strike == GAME_END_SCORE;
     }
 }

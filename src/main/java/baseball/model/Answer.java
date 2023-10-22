@@ -6,6 +6,9 @@ import java.util.Objects;
 public class Answer {
 
     private final List<Integer> answer;
+    private static final int INIT_VAL = 0;
+    private static final int FIRST_IDX = 0;
+    private static final int END_PLUS_ONE_IDX = 3;
 
     public Answer(List<Integer> answer) {
         this.answer = answer;
@@ -14,8 +17,8 @@ public class Answer {
     // 검증 로직
 
     public GameScore calcScore(List<Integer> input) {
-        GameScore score = new GameScore(0, 0);
-        for (int answerIdx = 0; answerIdx < 3; answerIdx++) {
+        GameScore score = new GameScore(INIT_VAL, INIT_VAL);
+        for (int answerIdx = FIRST_IDX; answerIdx < END_PLUS_ONE_IDX; answerIdx++) {
             preCompare(input, score, answerIdx);
         }
 
@@ -23,7 +26,7 @@ public class Answer {
     }
 
     private void preCompare(List<Integer> input, GameScore score, int answerIdx) {
-        for (int inputIdx = 0; inputIdx < 3; inputIdx++) {
+        for (int inputIdx = FIRST_IDX; inputIdx < END_PLUS_ONE_IDX; inputIdx++) {
             compareNumber(input, score, answerIdx, inputIdx);
         }
     }
