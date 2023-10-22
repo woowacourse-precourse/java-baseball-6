@@ -8,6 +8,6 @@ public class Key {
     public final static String STRIKE = "스트라이크";
     public final static String NOTHING = "낫싱";
 
-    public final static int RESTART = 1;
-    public final static int END = 2;
+    public final static String RESTART = "1";
+    public final static String END = "2";
 }

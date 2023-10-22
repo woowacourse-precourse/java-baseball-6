@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 public class Game {
 
     public static void compareNumber(String answer) {
+        new Hint();
 
         String number = Computer.getNumber();
         IntStream.range(0, Key.NUMBER_LENGTH)
