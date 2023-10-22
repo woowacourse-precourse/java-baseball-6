@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Computer {
     private List<Integer> answer;
@@ -19,9 +20,8 @@ public class Computer {
     public boolean makeGuess() {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> input = getUserInput();
-        // ToDo: guess랑 answer 비교해서 strike, ball 계산
-        int nStrikes = 3;
-        int nBalls = 0;
+        int nStrikes = countStrikes(input);
+        int nBalls = countBalls(input);
         printGuessResult(nStrikes, nBalls);
         return (nStrikes == 3);
     }
@@ -68,5 +68,21 @@ public class Computer {
             System.out.print("낫싱");
         }
         System.out.println();
+    }
+
+    private int countStrikes(List<Integer> guess) {
+        int res = 0;
+        for (int i = 0; i < 3; ++i) {
+            res += Objects.equals(this.answer.get(i), guess.get(i)) ? 1 : 0;
+        }
+        return res;
+    }
+
+    private int countBalls(List<Integer> guess) {
+        int res = 0;
+        for (int i = 0; i < 3; ++i) {
+            res += this.answer.contains(guess.get(i)) ? 1 : 0;
+        }
+        return res - countStrikes(guess);
     }
 }
