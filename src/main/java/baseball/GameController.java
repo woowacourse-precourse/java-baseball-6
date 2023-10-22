@@ -35,6 +35,7 @@ public class GameController {
     }
 
     public boolean compare() {
+        outputView.printInputNumberMessage();
         player.setNumbers(inputView.readNumbers());
         compareSystem = new CompareSystem(computer, player);
         gameResult = compareSystem.compare();

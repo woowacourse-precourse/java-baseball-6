@@ -41,4 +41,8 @@ public class OutputView {
     public void printExit() {
         System.out.println(ProcessMessage.EXIT);
     }
+
+    public void printInputNumberMessage() {
+        System.out.print(ProcessMessage.INPUT_NUMBER);
+    }
 }
