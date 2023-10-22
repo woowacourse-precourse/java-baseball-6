@@ -7,7 +7,7 @@ public class GameSession {
     private final Computer gameSession = new Computer();
     private final OutputView outputView = new OutputView();
     private final ResultGenerator resultGenerator = new ResultGenerator();
-    private final ExceptionHandler exceptionHandler = new ExceptionHandler();
+    private final InputValidator inputValidator = new InputValidator();
     private List<Integer> computerNumbers;
 
     public void initializeGameSession(){
@@ -69,13 +69,13 @@ public class GameSession {
     }
 
     private void validateUserChoice(String userInput) {
-        exceptionHandler.isInteger(userInput);
-        exceptionHandler.checkIsRightChoice(userInput);
+        inputValidator.validateIsInteger(userInput);
+        inputValidator.validateChoice(userInput);
     }
 
     private void validateUserGuess(String userInput) {
-        exceptionHandler.isInteger(userInput);
-        exceptionHandler.isRightDigit(userInput);
-        exceptionHandler.checkDuplicate(userInput);
+        inputValidator.validateIsInteger(userInput);
+        inputValidator.validateLength(userInput);
+        inputValidator.validateNoDuplicate(userInput);
     }
 }

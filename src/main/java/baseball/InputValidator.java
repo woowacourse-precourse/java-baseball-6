@@ -1,27 +1,26 @@
 package baseball;
 
-public class ExceptionHandler {
+public class InputValidator {
+    private static final int EXPECTED_DIGIT=3;
 
-    public void isInteger(String userInput){
+    public void validateIsInteger(String userInput){
         try{
             Integer.parseInt(userInput);
         }catch(Exception e){
             throw new IllegalArgumentException();
         }
     }
-
-    public void checkDuplicate(String userInput){
+    public void validateNoDuplicate(String userInput){
         if (userInput.chars().distinct().count()!=userInput.length())
             throw new IllegalArgumentException();
     }
 
-    public void isRightDigit(String userInput){
-        int digit = 3;
-        if (userInput.length()!= digit)
+    public void validateLength(String userInput){
+        if (userInput.length()!= EXPECTED_DIGIT)
             throw new IllegalArgumentException();
     }
 
-    public void checkIsRightChoice(String  userInput){
+    public void validateChoice(String  userInput){
         if (!(userInput.equals("1") || userInput.equals("2")))
             throw new IllegalArgumentException();
     }
