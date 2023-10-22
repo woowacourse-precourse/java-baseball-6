@@ -16,14 +16,13 @@ public final class AttemptNumbers {
     }
 
     public BallCount checkAnswer(final AnswerNumbers answerNumbers) {
-        final List<StrikeBall> strikeBalls =
-                IntStream.range(START_INDEX, INTERATION_TIME)
-                        .mapToObj(
-                                index ->
-                                        answerNumbers.checkStrikeBall(
-                                                numbers.getByIndex(index), index))
-                        .toList();
-
+        final List<StrikeBall> strikeBalls = checkStrikeBall(answerNumbers);
         return new BallCount(strikeBalls);
+    }
+
+    private List<StrikeBall> checkStrikeBall(final AnswerNumbers answerNumbers) {
+        return IntStream.range(START_INDEX, INTERATION_TIME)
+                .mapToObj(index -> answerNumbers.checkStrikeBall(numbers.getByIndex(index), index))
+                .toList();
     }
 }
