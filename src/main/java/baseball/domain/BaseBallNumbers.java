@@ -57,7 +57,11 @@ public final class BaseBallNumbers {
         return baseballNumbers;
     }
 
-    public boolean isContain(int number) {
+    public boolean isBall(int number) {
         return baseballNumbers.contains(number);
+    }
+
+    public boolean isStrike(int number, int index) {
+        return baseballNumbers.get(index) == number;
     }
 }

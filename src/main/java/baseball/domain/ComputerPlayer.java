@@ -9,8 +9,13 @@ public class ComputerPlayer implements MatchPlayer {
     }
 
     @Override
-    public void getHintOf(BaseBallNumbers baseBallNumber) {
-        int ballCount = countBall(baseBallNumber);
+    public BaseBallHint getHintOf(BaseBallNumbers baseBallNumber) {
+        final int ball = countBall(baseBallNumber);
+        final int strike = countStrike(baseBallNumber);
+        return new BaseBallHint(
+                ball - strike,
+                strike
+        );
     }
 
     private int countBall(BaseBallNumbers baseBallNumbers) {
