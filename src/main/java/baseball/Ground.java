@@ -37,7 +37,7 @@ public class Ground {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         if (strike > 0 && ball > 0) {
-            return stringBuilder.append(strike).append("스트라이크 ").append(ball).append("볼").toString();
+            return stringBuilder.append(ball).append("볼 ").append(strike).append("스트라이크").toString();
         }
         if (strike > 0) {
             return stringBuilder.append(strike).append("스트라이크").toString();

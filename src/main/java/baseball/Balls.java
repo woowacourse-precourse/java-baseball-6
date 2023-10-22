@@ -19,6 +19,7 @@ public final class Balls {
 
     private static void checkRange(List<Integer> numbers) {
         if (numbers.size() != 3) {
+            System.out.println(numbers.size());
             throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
         }
     }

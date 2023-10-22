@@ -31,7 +31,7 @@ class GroundTest {
         // given
         Ground ground = Ground.of(1, 2);
 
-        assertThat(ground.toString()).isEqualTo("1스트라이크 2볼");
+        assertThat(ground.toString()).isEqualTo("2볼 1스트라이크");
     }
 
     @Test
