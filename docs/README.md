@@ -36,6 +36,7 @@
 - `RandomNumbersGenerator`: 1~9 범위의 서로다른 3자리의 무작위 숫자를 정답으로 생성하여 반환.
 - `FixedNumbersGenerator`: 무작위가 아닌 고정된 값으로 테스트하기 위해 만든 숫자 생성기.
 - `Numbers`: 컴퓨터가 만든 1~9 범위의 서로다른 3자리 수를 가지는 일급 컬렉션.
+- `BaseballNumber`: 컴퓨터가 만든 1~9 범위의 숫자를 저장.
 - `Answer`: 정답인 `Numbers`를 가지고있으며, 사용자의 입력과 정답을 매칭.
 - `Computer`: `AnswerGenerator`를 구현한 클래스에게서 생성된 숫자를 받아서 정답으로 저장하고, 사용자의 입력값과 비교.
 - `Score`: `"볼"`, `"스트라이크"`를 저장.
@@ -64,6 +65,9 @@
     - [x] `generate()` 메서드를 구현하고, 오버라이딩하여 `String` 타입을 매개변수로 3자리 숫자를 생성하여 `Numbers` 타입 반환.
 - `Numbers`
     - [x] `calculateScore()`: 숫자 리스트를 사용자의 입력과 비교하여 볼 스트라이크를 계산하여 `Score`객체 반환.
+- `BaseballNumber`
+    - [ ] `isSameValue()`: `BaseballNumber`의 값을 비교하여 같은지 반환.
+    - [ ] `isContainedIn()`: `BaseballNumbers`의 리스트에 포함되어있는지 반환.
 - `Answer`
     - [x] 정답과 입력값을 비교하여 `Score`반환.
 - `Score`
