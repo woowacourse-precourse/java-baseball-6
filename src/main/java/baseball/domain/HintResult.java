@@ -24,12 +24,12 @@ public class HintResult {
 	}
 
 	private void appendStrikeAndBall(StringBuilder result, int strikeCount, int ballCount) {
-		if (hint.isNotBallCountZero()) {
+		if (hint.isSBallCountBiggerThanZero()) {
 			result.append(ballCount).append(BALL);
 		}
 
-		if (hint.isNotStrikeCountZero()) {
-			if (hint.isNotBallCountZero()) {
+		if (hint.isStrikeCountBiggerThanZero()) {
+			if (hint.isSBallCountBiggerThanZero()) {
 				result.append(" ");
 			}
 			result.append(strikeCount).append(STRIKE);
