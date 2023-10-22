@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.config.Config;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.GameService;
 import baseball.domain.Result;
@@ -21,12 +22,13 @@ public class GameController {
         InputView.printStart();
         while (playing) {
             if (computerNumbers == null) computerNumbers = service.generateNumbers();
+            printCheat(computerNumbers);
             InputView.printRequestingInput();
             BaseballNumbers userNumbers = getUserNumbers();
             Result result = service.compare(computerNumbers, userNumbers);
             OutputView.printResult(result);
             userNumbers.clear();
-            if(result.isThreeStrikes()){
+            if(result.isAllStrikes()){
                 InputView.printGameOver();
                 restartOrNot(InputView.getUserInput());;
             }
@@ -41,5 +43,13 @@ public class GameController {
     private void restartOrNot(String input) {
         if(input.equals(InputView.EXIT)) playing = false;
         if(input.equals(InputView.RESTART)) init();
+    }
+
+    /* 값 확인용 */
+    private void printCheat(BaseballNumbers computerNumbers) {
+        for (int i = 0 ; i < Config.getMaxNumbers(); i++) {
+            System.out.print(computerNumbers.get(i));
+        }
+        System.out.println();
     }
 }

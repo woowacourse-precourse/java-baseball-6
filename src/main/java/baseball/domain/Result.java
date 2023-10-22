@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.config.Config;
+
 public class Result {
     private int ball;
     private int strike;
@@ -33,8 +35,8 @@ public class Result {
         return hasBalls() && hasStrikes();
     }
 
-    public boolean isThreeStrikes() {
-        return getStrike() == 3;
+    public boolean isAllStrikes() {
+        return getStrike() == Config.getMaxNumbers();
     }
 
     public int getBall() {
