@@ -1,16 +1,16 @@
 package baseball.controller;
 
 import baseball.model.DecimalNumber;
-import baseball.model.Message;
+import baseball.model.NumberRule;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumber {
 
-    private int NUM_SIZE = Message.GAME_NUMBER_SIZE.getNumber();
-    private int NUM_START = Message.GAME_NUMBER_RANGE_START.getNumber();
-    private int NUM_END = Message.GAME_NUMBER_RANGE_END.getNumber();
+    private int NUM_SIZE = NumberRule.GAME_NUMBER_SIZE.getNumber();
+    private int NUM_START = NumberRule.GAME_NUMBER_RANGE_START.getNumber();
+    private int NUM_END = NumberRule.GAME_NUMBER_RANGE_END.getNumber();
     private Validation validation;
     private DecimalNumber decimalNumber;
 
@@ -31,6 +31,6 @@ public class RandomNumber {
         }
 
         validation.validationGameNumber(computer);    //랜덤 숫자 생성 유효성 검사
-        
+
     }
 }

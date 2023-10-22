@@ -1,12 +1,13 @@
 package baseball.controller;
 
 import baseball.model.Message;
+import baseball.model.NumberRule;
 import java.util.List;
 
 public class Validation {
-    private int NUM_SIZE = Message.GAME_NUMBER_SIZE.getNumber();
-    private int NUM_START = Message.GAME_NUMBER_RANGE_START.getNumber();
-    private int NUM_END = Message.GAME_NUMBER_RANGE_END.getNumber();
+    private int NUM_SIZE = NumberRule.GAME_NUMBER_SIZE.getNumber();
+    private int NUM_START = NumberRule.GAME_NUMBER_RANGE_START.getNumber();
+    private int NUM_END = NumberRule.GAME_NUMBER_RANGE_END.getNumber();
     private String WRONG_RANGE_NUMBER = Message.WRONG_RANGE_NUMBER.getMessage();
     private String WRONG_SIZE_NUMBER = Message.WRONG_SIZE_NUMBER.getMessage();
     private String WRONG_OVERLAP_NUMBER = Message.WRONG_OVERLAP_NUMBER.getMessage();
