@@ -13,14 +13,17 @@ public class MessageUtil {
     }
 
     public void printResult(Result result) {
+        if (result.getStrike() == 0 && result.getBall() == 0) {
+            System.out.println(Message.NOTHING);
+        }
         System.out.println(Message.BALL.of(result.getBall()) + Message.STRIKE.of(result.getStrike()));
     }
 
     public void printWin() {
-
+        System.out.println(Message.GAME_END);
     }
 
-    public Integer printAskRestart() {
-        return null;
+    public void printAskRestart() {
+        System.out.println(Message.ASK_COMMAND);
     }
 }

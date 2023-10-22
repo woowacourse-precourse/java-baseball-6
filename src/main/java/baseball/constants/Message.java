@@ -6,7 +6,8 @@ public enum Message {
     GAME_END("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
     ASK_COMMAND("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
     STRIKE("%d스트라이크 "),
-    BALL("%d볼 ");
+    BALL("%d볼 "),
+    NOTHING("낫싱");
 
     private final String message;
 
@@ -20,7 +21,7 @@ public enum Message {
     }
 
     public String of(Integer amount) {
-        if (this != STRIKE && this != BALL){
+        if (this != STRIKE && this != BALL) {
             throw new IllegalArgumentException("of는 STRIKE와 BALL에서만 작동합니다.");
         }
         if (amount.equals(0)) {
