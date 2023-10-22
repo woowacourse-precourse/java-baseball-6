@@ -4,14 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    public static int askNumber() {
+    public static String askNumber() {
         System.out.println("숫자를 입력해주세요");
-        return getInt();
+        return getString();
     }
 
-    public static int askRestart() {
+    public static String askRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return getInt();
+        return getString();
     }
 
     private static int getInt() {
@@ -20,6 +20,13 @@ public class InputView {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력해야 합니다.");
         }
+    }
+    private static String getString() {
+        String str = Console.readLine();
+        if(str.isEmpty()) {
+            throw new IllegalArgumentException("값을 입력해주세요");
+        }
+        return str;
     }
 
 }
