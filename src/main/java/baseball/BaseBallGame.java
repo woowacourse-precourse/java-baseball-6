@@ -21,7 +21,7 @@ public class BaseBallGame {
 		askWantToRestart();
 	}
 
-	// 숫자 맞히는 과정 분리
+	// 숫자 맞히는 과정
 	private void guessTheNumbers() {
 		String judgment = "";
 

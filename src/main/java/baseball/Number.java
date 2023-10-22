@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Number {
 	String number;
-	Integer length = 3;		// 숫자 길이
+	Integer length = 3;        // 숫자 길이
 
 	// 컴퓨터 숫자
 	public Number() {
