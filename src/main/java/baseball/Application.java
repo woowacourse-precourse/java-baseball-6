@@ -10,7 +10,7 @@ public class Application {
         // TODO: 프로그램 구현
         Scanner sc = new Scanner(System.in);
         do {
-            Player player = new Player();
+            Player player = new Player(Count.provideCount("123"));
             Computer computer = new Computer();
             startGame();
             inGame(sc, player, computer);
