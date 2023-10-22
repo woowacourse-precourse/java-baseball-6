@@ -33,6 +33,9 @@ public class Application {
         if (!input.matches("[1-9]+"))
             throw new IllegalArgumentException("숫자가 아닌 문자가 포함되어 있습니다.");
 
+        if (input.length() != 3)
+            throw new IllegalArgumentException("3자리의 숫자가 아닙니다.");
+
         return Arrays.stream(input.split(""))
                 .mapToInt(Integer::parseInt)
                 .toArray();
