@@ -3,12 +3,8 @@ package baseball.model;
 import java.util.List;
 
 public class Referee {
-
     public boolean compareComputerPlayer(List computerNumber, List playerNumber) {
-        if (computerNumber.equals(playerNumber)) {
-            return true;
-        }
-        return false;
+        return computerNumber.equals(playerNumber);
     }
 
     public int calculateBall(List<Integer> computerNumber, List<Integer> playerNumber) {
