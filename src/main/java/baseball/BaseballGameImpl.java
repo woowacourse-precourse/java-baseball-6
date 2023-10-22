@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
-import baseball.GameItem;
 
 public class BaseballGameImpl implements BaseballGame {
     
     static GameItemImpl gameItem = new GameItemImpl();
-
+    
+    private final int RESTART = 1;
+    private final int END = 2;
+    
     @Override
     public void startGame() {
         List<Integer> computer = gameItem.computer();
@@ -42,7 +44,14 @@ public class BaseballGameImpl implements BaseballGame {
     
     @Override
     public boolean endGame() {
-        return false;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int scannerInput = Integer.parseInt(Console.readLine());
+        
+        if (scannerInput != RESTART && scannerInput != END) {
+            throw new IllegalArgumentException("Invalid number entered.");
+        }      
+        
+        return scannerInput == END;
     }
 
 
