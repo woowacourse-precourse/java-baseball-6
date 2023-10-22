@@ -16,16 +16,20 @@ public abstract class InputUtil {
     public static String requireGuessNumber() {
         System.out.println(REQUIRE_NUMBER_MESSAGE.getMessage());
         String guessNumber = Console.readLine();
-        isGuessNumberValid(guessNumber);
+        checkGuessNumberValid(guessNumber);
         return guessNumber;
     }
 
-    private static void isGuessNumberValid(String guessNumber) {
-        if (isGuessNumberDigit(guessNumber) && isGuessNumberLengthThree(guessNumber) && isGuessNumberDuplicate(guessNumber)) {
-            return;
-        }
+    private static void checkGuessNumberValid(String guessNumber) {
+        checkGuessNumberDigit(guessNumber);
+        checkGuessNumberLengthThree(guessNumber);
+        checkGuessNumberDuplicate(guessNumber);
+    }
 
-        throw new IllegalArgumentException();
+    private static void checkGuessNumberDuplicate(String guessNumber) {
+        if (isGuessNumberDuplicate(guessNumber)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static boolean isGuessNumberDuplicate(String guessNumber) {
@@ -36,12 +40,20 @@ public abstract class InputUtil {
         return firstNumber != secondNumber && secondNumber != thirdNumber && firstNumber != thirdNumber;
     }
 
-    private static boolean isGuessNumberLengthThree(String guessNumber) {
-        return guessNumber.length() == 3;
+    private static void checkGuessNumberLengthThree(String guessNumber) {
+        if (guessNumber.length() == 3) {
+            throw new IllegalArgumentException();
+        }
     }
 
 
-    private static boolean isGuessNumberDigit(String value) {
+    private static void checkGuessNumberDigit(String value) {
+        if (isStringDigit(value)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static boolean isStringDigit(String value) {
         return value.chars()
                 .allMatch(Character::isDigit);
     }
