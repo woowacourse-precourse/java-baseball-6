@@ -37,4 +37,8 @@ public class CommonNumberService {
         }
 
     }
+
+    public ArrayList<Integer> getComputer(){
+        return computer;
+    }
 }
