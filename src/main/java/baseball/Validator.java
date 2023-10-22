@@ -7,7 +7,7 @@ public class Validator {
 
     public static List<Integer> checkThreeNumbers(String inputNumbers) {
 
-        if (inputNumbers.length() > 3) {
+        if (inputNumbers.length() != 3) {
             throw new IllegalArgumentException();
         }
 
@@ -24,6 +24,7 @@ public class Validator {
                 throw new IllegalArgumentException();
             }
         }
+        // TODO : 중복 처리 로직 추가
 
         return saveThreeNumbers;
     }
