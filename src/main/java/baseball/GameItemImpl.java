@@ -42,8 +42,7 @@ public class GameItemImpl implements GameItem {
 
     @Override
     public boolean validateLength(String input) {
-        // TODO Auto-generated method stub
-        return false;
+        return input.length() != 3;
     }
 
 }
