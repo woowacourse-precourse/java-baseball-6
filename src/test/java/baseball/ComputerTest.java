@@ -10,12 +10,12 @@ import java.util.Set;
 
 class ComputerTest {
 
-    public Computer computer = new Computer();
+    public Computer gameSession = new Computer();
 
     @Test
     @DisplayName("중복 되지 않은 랜덤한 3자리 수 확인")
     public void computerTest(){
-        List<Integer> threeDigitNum= computer.makeComputerNumbers();
+        List<Integer> threeDigitNum= gameSession.makeComputerNumbers();
 
         Assertions.assertEquals(3, threeDigitNum.size()); //세 자리 수인지
 

@@ -21,8 +21,8 @@ public class ExceptionHandler {
             throw new IllegalArgumentException();
     }
 
-    public void checkIsRightChoice(Integer userInput){
-        if (!(userInput==1 || userInput==2))
+    public void checkIsRightChoice(String  userInput){
+        if (!(userInput.equals("1") || userInput.equals("2")))
             throw new IllegalArgumentException();
     }
 
