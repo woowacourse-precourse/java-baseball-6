@@ -46,5 +46,16 @@ public class ExceptionCheck {
 			if (tmp.size() != playerInput.length()) {
 				throw new IllegalArgumentException("잘못된 값 입력 : 각 숫자는 중복되지 않아야 합니다.");
 			}
-		}	
+		}
+		
+		public static boolean playerSelectCheck(int playerInput) throws IllegalArgumentException {
+			switch (playerInput) {
+			case 1 :
+				return true;
+			case 2 :
+				return false;
+			default :
+				throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+			}			
+		}
 }

@@ -15,8 +15,8 @@
 
 
 ### Application
-- [ ] Game Controller 실행
-- [ ] Game Controller 재실행 (게임 종료 후 플레이어가 게임 재시작을 원할 경우)
+- [x] Game Controller 실행
+- [x] Game Controller 재실행 (게임 종료 후 플레이어가 게임 재시작을 원할 경우)
 
 
 ### Game Controller
@@ -33,9 +33,9 @@
   - [x] 숫자 확인 : 입력된 값이 숫자가 아닐 경우 예외 처리
   - [x] 범위 확인 : 입력된 숫자가 1~9 범위내에 있지 않을 경우 예외 처리
   - [x] 중복 확인 : 입력된 숫자끼리 중복이 있을 경우 예외 처리
-- [ ] 게임 재시작 안내에 대한 플레이어 입력값 검증
-  - [ ] 1, 2 외에 다른값을 입력할 경우 예외 처리
-- [ ] 예외 처리 방식 : `IllegalArgumentException` 발생시킨 후 애플리케이션 종료
+- [x] 게임 재시작 안내에 대한 플레이어 입력값 검증
+  - [x] 1, 2 외에 다른값을 입력할 경우 예외 처리
+- [x] 예외 처리 방식 : `IllegalArgumentException` 발생시킨 후 애플리케이션 종료
 
 
 ### Compare Number
@@ -53,5 +53,5 @@
 
 ### Input
 - [x] 플레이어 숫자를 입력받음
-- [ ] 게임 재시작 여부 입력받음 (1 재시작, 2 게임 종료)
-- [ ] 입력받는 값은 [우테코에서 제공하는 라이브러리](https://github.com/woowacourse-projects/mission-utils#mission-utils) `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
+- [x] 게임 재시작 여부 입력받음 (1 재시작, 2 게임 종료)
+- [x] 입력받는 값은 [우테코에서 제공하는 라이브러리](https://github.com/woowacourse-projects/mission-utils#mission-utils) `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
