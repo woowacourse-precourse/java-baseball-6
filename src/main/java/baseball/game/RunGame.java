@@ -9,9 +9,13 @@ import camp.nextstep.edu.missionutils.Console;
 public class RunGame {
 
     private final Print print;
+    private final Computer computer;
+    private final User user;
 
-    public RunGame(Print print) {
+    public RunGame(Print print, Computer computer, User user) {
         this.print = print;
+        this.computer = computer;
+        this.user = user;
     }
 
     public void startGame() {
@@ -25,13 +29,12 @@ public class RunGame {
     }
 
     private void runBaseBallGame() {
-        new Computer();
+        computer.generateNumber();
 
-        User user;
         while (true) {
             print.printInputNumber();
-            user = new User();
-            Hint hint = Computer.compareNumber(user.getAnswer());
+            user.inputAnswer();
+            Hint hint = computer.compareNumber(user.getAnswer());
             if(print.printResult(hint))
                 break;
         }

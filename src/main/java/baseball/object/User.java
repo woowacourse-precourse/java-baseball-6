@@ -7,8 +7,9 @@ public class User {
 
     private static String answer;
 
-    public User() {
+    public void inputAnswer() {
         answer = Console.readLine();
+        System.out.println(answer);
         checkUserAnswer();
     }
 

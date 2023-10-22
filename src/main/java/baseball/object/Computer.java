@@ -12,7 +12,7 @@ public class Computer {
 
     private static String number;
 
-    public Computer() {
+    public void generateNumber() {
         List<Integer> list = new ArrayList<>();
 
         while(list.size() < 3) {
@@ -26,7 +26,7 @@ public class Computer {
                 .collect(Collectors.joining());
     }
 
-    public static Hint compareNumber(String answer) {
+    public Hint compareNumber(String answer) {
         Hint hint = new Hint();
 
         IntStream.range(0, Key.NUMBER_LENGTH)
@@ -40,7 +40,7 @@ public class Computer {
         return hint;
     }
 
-    public static String getNumber() {
+    public String getNumber() {
         return number;
     }
 }
