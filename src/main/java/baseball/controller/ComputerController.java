@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.common.InputNumberValidator;
 import baseball.common.RandomUtility;
 import baseball.model.BallAndStrikeCount;
 import baseball.model.ComputerNumber;
@@ -32,7 +33,7 @@ public class ComputerController {
         while(true) {
             outputView.printEnterNumber();
             String inputNumber = inputView.enterNumber();
-            //TODO: 입력값 검증 (잘못된 값을 입력할 경우, IllegalArgumentException 발생)
+            InputNumberValidator.validate(inputNumber);
             BallAndStrikeCount count = getBallAndStrikeCount(computerNumber, inputNumber);
             outputView.printHint(getHint(count));
             if(count.getStrikeCount() == SUCCESS_GAME_STRIKE_NUMBER) {
