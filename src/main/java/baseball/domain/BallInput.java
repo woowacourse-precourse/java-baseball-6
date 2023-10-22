@@ -19,6 +19,10 @@ public class BallInput {
         }
     }
 
+    public List<Integer> getBalls() {
+        return this.balls;
+    }
+
     private void validateInput(String input) {
         try {
             int num = Integer.parseInt(input);
