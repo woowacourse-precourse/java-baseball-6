@@ -38,9 +38,12 @@ public class Application {
 
 
     public static void game(List<Integer> computer) {
+          String input = inputNumbers();
+          if(input.length() != 3) {
+                throw new IllegalArgumentException("숫자 3개를 입력하세요.");
+            }
+            isStrikeOrBall(computer, input);
 
-        String input = inputNumbers();
-        isStrikeOrBall(computer, input);
     }
 
     public static void isStrikeOrBall(List<Integer> computer, String input) {
