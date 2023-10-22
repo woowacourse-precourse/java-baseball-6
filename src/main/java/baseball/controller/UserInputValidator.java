@@ -39,7 +39,7 @@ public class UserInputValidator {
     }
 
     public boolean isOneToNine(char inputChar) {
-        if (inputChar <= NUMERIC_RANGE_START_CHAR || inputChar >= NUMERIC_RANGE_END_CHAR) {
+        if (inputChar < NUMERIC_RANGE_START_CHAR || inputChar > NUMERIC_RANGE_END_CHAR) {
             return false;
         }
         return true;
