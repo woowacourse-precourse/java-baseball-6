@@ -33,6 +33,6 @@ public class InputView {
 
     public String readPlayerChoice() {
         System.out.println(INPUT_RETRY_MESSAGE);
-        return readLine();
+        return readInputString();
     }
 }
