@@ -29,7 +29,7 @@ public enum State {
         }
     }
 
-    private static boolean isStateNumber(String stateNumber) {
+    private static boolean isStateNumber(final String stateNumber) {
         return stateNumber.equals(RESTART.stateNumber) || stateNumber.equals(FINISH.stateNumber);
     }
 

@@ -17,8 +17,7 @@ public class Controller {
     private final ConsoleInputView consoleInputView;
     private final ConsoleOutputView consoleOutputView;
 
-    public Controller(final ConsoleInputView consoleInputView,
-                      final ConsoleOutputView consoleOutputView) {
+    public Controller(final ConsoleInputView consoleInputView, final ConsoleOutputView consoleOutputView) {
         this.consoleInputView = consoleInputView;
         this.consoleOutputView = consoleOutputView;
     }
