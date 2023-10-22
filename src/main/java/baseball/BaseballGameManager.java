@@ -30,7 +30,7 @@ public class BaseballGameManager {
                 throw new IllegalArgumentException("올바른 입력이 아닙니다.");
             }
             int inputNumber = Integer.parseInt(inputString);
-            
+
             BaseballGameResult baseballGameResult = baseballGame.play(inputNumber);
 
             System.out.println(baseballGameResult);
@@ -47,10 +47,10 @@ public class BaseballGameManager {
     private boolean hasNextGame(String nextGameInputString) {
         if (nextGameInputString.equals("1")) {
             return true;
-        } else if (nextGameInputString.equals("2")) {
-            return false;
-        } else {
-            throw new IllegalArgumentException("1, 2이 아닌 다른 입력입니다.");
         }
+        if (nextGameInputString.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException("1, 2이 아닌 다른 입력입니다.");
     }
 }
