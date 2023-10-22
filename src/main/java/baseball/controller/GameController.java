@@ -33,9 +33,7 @@ public class GameController {
     }
 
     public void playGames() {
-        computer = new Computer();
-        player = new Player();
-        game = new Game();
+        initializeAllModel();
 
         List<Integer> computerInput = randomUtil.generateRandomNumbers();
         computer.setComputerNumbers(computerInput);
@@ -46,6 +44,12 @@ public class GameController {
         } while (!isCorrectNumber());
 
         outputView.printEndMessage();
+    }
+
+    public void initializeAllModel() {
+        computer = new Computer();
+        player = new Player();
+        game = new Game();
     }
 
     public void playOneGame() {
@@ -80,10 +84,7 @@ public class GameController {
     }
 
     public boolean isCorrectNumber() {
-        if (game.getStrikeCount() == NUMBER_LENGTH) {
-            return true;
-        }
-        return false;
+        return game.getStrikeCount() == NUMBER_LENGTH;
     }
 
     public void printHintMessage() {
