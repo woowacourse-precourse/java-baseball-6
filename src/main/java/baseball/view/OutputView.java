@@ -10,7 +10,7 @@ public class OutputView {
     }
 
     public void inputNumberMsg() {
-        System.out.println(INPUT_NUMBER_MSG);
+        System.out.print(INPUT_NUMBER_MSG);
     }
 
     public void printGameResult(GameResult gameResult) {
