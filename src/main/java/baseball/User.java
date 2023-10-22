@@ -23,6 +23,7 @@ public class User {
     validateInput(input);
     this.userNumber = parseUserNumber(input);
   }
+
   public void setUserNumber() {
     readUserNumberFromConsole();
   }
@@ -38,8 +39,6 @@ public class User {
 
     boolean isValidLength = input.length() == VALID_LENGTH;
     boolean isValidType = Pattern.matches(REGEX, input);
-    System.out.println(CHECK_TYPE + isValidType);
-
     if (!(isValidLength && isValidType)) {
       throw new IllegalArgumentException();
     }
