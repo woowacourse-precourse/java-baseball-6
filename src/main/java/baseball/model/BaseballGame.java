@@ -83,4 +83,8 @@ public class BaseballGame {
         }
         return sb.toString().trim();
     }
+
+    public boolean isGameEnd() {
+        return scoreBoard.get(STRIKE) == MAX_BALL_SIZE;
+    }
 }

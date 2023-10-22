@@ -26,6 +26,6 @@ public class BaseballGameController {
             Player player = new Player(inputPlayerBall);
             String gameResult = baseballGame.getResult(player);
             outputView.printResult(gameResult);
-        } while (true);
+        } while (!baseballGame.isGameEnd());
     }
 }
