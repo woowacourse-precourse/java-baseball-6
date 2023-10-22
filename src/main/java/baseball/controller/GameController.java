@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.Hint;
 import baseball.model.Player;
-import baseball.model.Util;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -13,17 +12,16 @@ public class GameController {
 
     private static final String GAME_RESTART_STATE = "1";
     private static final String GAME_END_STATE = "2";
-    private final int settingNumberLength;
+    private static final int GAME_NUMBER_LENGTH = 3;
     private final Computer computer;
     private final Player player;
     private final Hint hint;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public GameController(int numberLength) {
-        this.settingNumberLength = numberLength;
-        this.computer = new Computer(settingNumberLength);
-        this.player = new Player(settingNumberLength);
+    public GameController() {
+        this.computer = new Computer();
+        this.player = new Player();
         this.hint = new Hint();
         this.inputView = new InputView();
         this.outputView = new OutputView();
@@ -73,7 +71,7 @@ public class GameController {
 
         outputView.printHint(strikeCount, ballCount);
 
-        return strikeCount == settingNumberLength;
+        return strikeCount == GAME_NUMBER_LENGTH;
     }
 
     private void setPlayerNumbers() {
