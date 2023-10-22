@@ -13,5 +13,5 @@ public class StringConstant {
     public static final String ONLY_THREE_NUMBER_MESSAGE = "3자리의 숫자만 입력가능합니다.";
     public static final String ONLY_NUMBER_MESSAGE = "숫자만 입력 가능합니다.";
     public static final String NO_DUPLICATE_NUMBER_MESSAGE = "중복된 숫자는 입력 불가능합니다.";
-    public static final String INVALID_NUMBER_RANGE_MESSAGE = "1 ~ 9 사이의 숫자만 입력 가능합니다.";
+    public static final String INVALID_NUMBER_RANGE_MESSAGE = "각 숫자는 1 ~ 9 까지만 입력 가능합니다.";
 }
