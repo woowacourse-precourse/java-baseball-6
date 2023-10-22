@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import java.util.stream.Collectors;
-
 import baseball.util.Parser;
 
 public class TargetNumber extends Number {
