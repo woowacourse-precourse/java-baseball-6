@@ -23,11 +23,11 @@ public class Application {
         try {
             List<Integer> computerNumber = ComputerSelectNumber();
 
-            ExceptionList.validNumbers(computerNumber);
+            validNumbers(computerNumber);
             while(strike!=3) {
 
                 List<Integer> playerNumber = PlayerSelectNumber();
-                ExceptionList.validNumbers(playerNumber);
+                validNumbers(playerNumber);
                 CompareNumber(computerNumber, playerNumber);
 
             }
@@ -42,7 +42,7 @@ public class Application {
         System.out.println("게임을 새로 시작려면 1, 종료하려면 2를 입력하세요.");
 
         String reStartNumber = Console.readLine();
-        ExceptionList.validInputNumber(reStartNumber);
+        validInputNumber(reStartNumber);
 
         if (reStartNumber.equals("1")) {
             GameStart();
@@ -108,5 +108,47 @@ public class Application {
             return ball + "볼";
         }
         return ball + "볼 " + strike + "스트라이크";
+    }
+
+    public static void validNumbers(List<Integer> numbers) {
+        if(numbers == null) {
+            throw new IllegalArgumentException();
+        }
+        if(numbers.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+        if(checkDuplicateNumber(numbers, 0, 0)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validInputNumber(String InputNumber) {
+
+        if(!InputNumber.equals("1") && !InputNumber.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static boolean checkDuplicateNumber(
+            List<Integer> numbers,
+            int numbersIdx,
+            int checkNumberIdx
+    ) {
+        while(numbersIdx != numbers.size()) {
+            int searchNumber = numbers.get(numbersIdx);
+            int checkNumber = numbers.get(checkNumberIdx);
+
+            if(numbersIdx == checkNumberIdx) {
+                numbersIdx++;
+                continue;
+            }
+            if(checkNumberIdx == numbers.size()-1) {
+                checkNumberIdx = 0;
+                numbersIdx++;
+            }
+            if(searchNumber == checkNumber) return true;
+            else checkNumberIdx++;
+        }
+        return false;
     }
 }
