@@ -17,6 +17,14 @@ public class Validator {
     private void initializeRandomNumber() {
         this.computer.setComputerNumber();
     }
+    private void checkStrike() {
+        this.strikeCount = 0;
+        for(int i = 0; i < INPUT_LENGTH; i++) {
+            if (this.user.userInput[i] == this.computer.computerNumber[i]) {
+                this.strikeCount++;
+            }
+        }
+    }
 
 
 }
