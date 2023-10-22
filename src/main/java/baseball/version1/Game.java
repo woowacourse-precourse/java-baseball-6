@@ -1,6 +1,9 @@
 package baseball.version1;
 
-import static baseball.Constants.*;
+import static baseball.version1.Constants.BALL_NUMBER;
+import static baseball.version1.Constants.CONTINUE_NUMBER;
+import static baseball.version1.Constants.STRIKE_NUMBER;
+import static baseball.version1.Constants.THREE_STRIKE;
 
 import java.util.ArrayList;
 

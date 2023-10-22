@@ -1,7 +1,10 @@
 package baseball.version2;
 
 
-import static baseball.version2.Constants.Value.*;
+import static baseball.version2.Constants.Phrases.ANSWER_ERROR_PHRASES;
+import static baseball.version2.Constants.Phrases.DECISION_ERROR_PHRASES;
+import static baseball.version2.Constants.Value.CONTINUE_NUMBER;
+import static baseball.version2.Constants.Value.STOP_NUMBER;
 import static java.lang.Integer.parseInt;
 
 import java.util.HashSet;
@@ -11,7 +14,7 @@ public class DataValidator {
 
     public void validatePlayerAnswer(int[] playerAnswerArray) {
         if (isContainZero(playerAnswerArray) || isDuplicate(playerAnswerArray)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ANSWER_ERROR_PHRASES);
         }
     }
 
@@ -32,15 +35,15 @@ public class DataValidator {
                 answerArray[answerOrder++] = parseInt(answerValue);
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ANSWER_ERROR_PHRASES);
         } catch (ArrayIndexOutOfBoundsException a) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ANSWER_ERROR_PHRASES);
         }
 
         return answerArray;
     }
 
-    private boolean isDuplicate(int[] playerAnswerArray) { // 중복 체크
+    private boolean isDuplicate(int[] playerAnswerArray) {
         Set<Integer> playerValueSet = new HashSet<>();
         for (int i : playerAnswerArray) {
             playerValueSet.add(i);
@@ -55,7 +58,7 @@ public class DataValidator {
 
     public void validateDecision(int decision) {
         if (decision != CONTINUE_NUMBER && decision != STOP_NUMBER) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DECISION_ERROR_PHRASES);
         }
     }
 }

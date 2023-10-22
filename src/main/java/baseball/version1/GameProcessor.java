@@ -1,6 +1,7 @@
 package baseball.version1;
 
-import static baseball.Constants.*;
+import static baseball.version1.Constants.BALL_NUMBER;
+import static baseball.version1.Constants.STRIKE_NUMBER;
 
 import java.util.ArrayList;
 
@@ -8,7 +9,7 @@ public class GameProcessor {
 
 
     public int[] getCompareTwoAnswerResult(ArrayList<Integer> playerAnswer,
-            ArrayList<Integer> computerAnswer) {
+                                           ArrayList<Integer> computerAnswer) {
         int[] result = new int[2];
         int playerOrder = 0;
         for (Integer playerValue : playerAnswer) {

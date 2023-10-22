@@ -1,6 +1,7 @@
 package baseball.version2.view;
 
-import static baseball.version2.Constants.Phrases.*;
+import static baseball.version2.Constants.Phrases.INSERT_ANSWER_PHRASES;
+import static baseball.version2.Constants.Phrases.SELECT_CONTINUE_PHRASES;
 
 import baseball.version2.DataValidator;
 import camp.nextstep.edu.missionutils.Console;
@@ -18,7 +19,7 @@ public class InputView {
         String playerAnswer = Console.readLine();
         String[] answerStringArray = playerAnswer.split("");
         int[] answerArray = new int[arraySize];
-        answerArray=dataValidator.validateIsNumberAndSize(answerStringArray, answerArray);
+        answerArray = dataValidator.validateIsNumberAndSize(answerStringArray, answerArray);
         dataValidator.validatePlayerAnswer(answerArray);
         return answerArray;
     }
@@ -27,7 +28,7 @@ public class InputView {
     public int getPlayerDecision() {
         System.out.println(SELECT_CONTINUE_PHRASES);
         String playerDecision = Console.readLine();
-        int decision = 0;
+        int decision;
         try {
             decision = Integer.parseInt(playerDecision);
         } catch (NumberFormatException e) {
