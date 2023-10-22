@@ -7,14 +7,16 @@ import baseball.domain.GameInfo;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static baseball.constant.NumberConst.*;
+
 /**
  * 야구 게임의 비즈니스 로직을 처리하는 서비스
  */
 public class GameService {
     public List<Integer> generateRandomDistinctThreeDigit() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < 3) {
-            int randomNum = Randoms.pickNumberInRange(1, 9);
+        while (randomNumbers.size() < INPUT_LENGTH) {
+            int randomNum = Randoms.pickNumberInRange(START_NUM, END_NUM);
             if (!randomNumbers.contains(randomNum)) {
                 randomNumbers.add(randomNum);
             }

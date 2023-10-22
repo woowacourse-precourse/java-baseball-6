@@ -3,6 +3,7 @@ package baseball.validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static baseball.constant.MessageConst.*;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -37,19 +38,19 @@ class InputValidationTest {
         // then
         assertThatThrownBy(() -> inputValidation.validateNaturalNumber(invalidNaturalNumber1))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력된 문자열은 자연수로만 이루어져야 합니다.");
+                .hasMessageContaining(INPUT_RANGE_NATURAL_EXCEPTION_MSG);
 
         assertThatThrownBy(() -> inputValidation.validateNaturalNumber(invalidNaturalNumber2))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력된 문자열은 자연수로만 이루어져야 합니다.");
+                .hasMessageContaining(INPUT_RANGE_NATURAL_EXCEPTION_MSG);
 
         assertThatThrownBy(() -> inputValidation.validateNaturalNumber(emptyString))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력된 문자열은 자연수로만 이루어져야 합니다.");
+                .hasMessageContaining(INPUT_RANGE_NATURAL_EXCEPTION_MSG);
 
         assertThatThrownBy(() -> inputValidation.validateNaturalNumber(blankSpaceString))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력된 문자열은 자연수로만 이루어져야 합니다.");
+                .hasMessageContaining(INPUT_RANGE_NATURAL_EXCEPTION_MSG);
     }
 
     @Test
@@ -64,7 +65,7 @@ class InputValidationTest {
         // then
         assertThatThrownBy(() -> inputValidation.validateLengthAtLeastFour(stringWithFourOrMore))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력값은 3 이하여야 합니다.");
+                .hasMessageContaining(INPUT_LENGTH_EXCEPTION_MSG);
     }
 
     @Test
@@ -79,7 +80,7 @@ class InputValidationTest {
         // then
         assertThatThrownBy(() -> inputValidation.validateUniqueIntegers(duplicateIntegers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력값은 서로 다른 정수여야 합니다.");
+                .hasMessageContaining(INPUT_DUPLICATE_EXCEPTION_MSG);
     }
 
     @Test
@@ -94,7 +95,7 @@ class InputValidationTest {
         // then
         assertThatThrownBy(() -> inputValidation.validateOneOrTwo(incorrectRetryValue))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("재입력 값은 1 또는 2여야 합니다.");
+                .hasMessageContaining(INPUT_RESTART_EXIT_EXCEPTION_MSG);
     }
 
     @Test
@@ -109,6 +110,6 @@ class InputValidationTest {
         // then
         assertThatThrownBy(() -> inputValidation.validateNull(nullValue))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력값은 null일 수 없습니다.");
+                .hasMessageContaining(INPUT_RANGE_NATURAL_EXCEPTION_MSG);
     }
 }
