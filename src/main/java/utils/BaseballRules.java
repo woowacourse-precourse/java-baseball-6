@@ -4,6 +4,9 @@ import player.BaseballNumbers;
 
 public class BaseballRules {
 
+    private BaseballRules() {
+    }
+
     public static boolean isThreeStrike(BaseballNumbers playerNumber,
                                         BaseballNumbers otherPlayerNumber) {
         return playerNumber.equals(otherPlayerNumber);

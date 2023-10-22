@@ -17,6 +17,9 @@ import score.BaseballScore;
 
 public class Message {
 
+    private Message() {
+    }
+
     public static void printIntegerInputFromUserMessage() {
         System.out.print(INTEGER_INPUT_FROM_USER);
     }
