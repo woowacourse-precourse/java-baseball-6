@@ -15,9 +15,9 @@ public class Service {
     OutPut outPut = new OutPut();
     UserInPut userInPut = new UserInPut();
 
-    private static final int RANDOM_NUMBER_LENGTH = 3;
-    private static final int RANDOM_NUMBER_START = 1;
-    private static final int RANDOM_NUMBER_END = 9;
+    static final int RANDOM_NUMBER_LENGTH = 3;
+    static final int RANDOM_NUMBER_START = 1;
+    static final int RANDOM_NUMBER_END = 9;
 
     public void setGame() {
         game.setCountZero();
@@ -58,7 +58,7 @@ public class Service {
 
     private void startGame() {
         game.setCountZero();
-        UserInPut.choiceNumberMessage();
+        userInPut.choiceNumberMessage();
         String userChoiceNum = Console.readLine();
 
         user.setUserChoiceNumber(userChoiceNum);
