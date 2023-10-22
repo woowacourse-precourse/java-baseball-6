@@ -1,8 +1,8 @@
-package baseball;
+package baseball.controller.game;
 
 import baseball.type.CountSpeaker;
 
-public class Counter {
+public class GameCounter {
 
     public static int hitBallCounter(String guessNum, String theAnswer) {
         int hitCount = 0;

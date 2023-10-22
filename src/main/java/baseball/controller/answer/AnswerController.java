@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller.answer;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
