@@ -72,6 +72,17 @@ class GameServerTest extends NsTest {
         );
     }
 
+    @Test
+    void 재시작과_종료를_선택할때_1_혹은_2가_아닌_수를_입력하면_IllegalArgumentException_예외를_터트린다() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("135", "3"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5
+        );
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
