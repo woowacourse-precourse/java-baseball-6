@@ -12,7 +12,7 @@ public class RandomNumber {
     public static int pickNumber() {
         StringBuilder numberBuilder = new StringBuilder();
 
-        while (!isEnoughPicked(numberBuilder)) {
+        while (!isBuilderEnoughPicked(numberBuilder)) {
             saveNewNumber(numberBuilder);
         }
 
@@ -20,7 +20,7 @@ public class RandomNumber {
         return Integer.parseInt(selectNumber);
     }
 
-    private static boolean isEnoughPicked(final StringBuilder numberBuilder) {
+    private static boolean isBuilderEnoughPicked(final StringBuilder numberBuilder) {
         return numberBuilder.length() == PLAY_NUMBER_DIGIT;
     }
 
