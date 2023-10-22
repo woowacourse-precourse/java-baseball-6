@@ -5,6 +5,13 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 
+
+/**
+ * BaseballGame 인터페이스를 구현한 게임 클래스입니다.
+ * 게임을 시작하고 종료하는 메서드를 제공합니다.
+ * 
+ * @author 김지환
+ */
 public class BaseballGameImpl implements BaseballGame {
     
     static GameItemImpl gameItem = new GameItemImpl();
@@ -12,6 +19,9 @@ public class BaseballGameImpl implements BaseballGame {
     private final int RESTART = 1;
     private final int END = 2;
     
+    /**
+     * 숫자 야구를 시작하는 메서드입니다.
+     */
     @Override
     public void startGame() {
         List<Integer> computer = gameItem.computer();
@@ -42,6 +52,11 @@ public class BaseballGameImpl implements BaseballGame {
         
     }
     
+    /**
+     * 게임을 종료하거나 새로 시작할지를 결정하는 메서드입니다.
+     * 
+     * @return 게임을 종료할 경우 true, 새로 시작할 경우 false
+     */
     @Override
     public boolean endGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
