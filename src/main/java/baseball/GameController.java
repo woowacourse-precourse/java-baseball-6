@@ -14,9 +14,10 @@ public class GameController {
 		computer = new Computer();
 		computer.setComputerNumber();
 	}
+	
 	public void setPlayerNumber() {
 		player = new Player();
-		player.setPlayerNumber(); //Input을 통해 String 인자 전달 필요	
+		player.setPlayerNumber(Input.inputPlayerNumber());
 	}	
 }
 
