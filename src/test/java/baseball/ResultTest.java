@@ -24,4 +24,15 @@ class ResultTest {
         assertFalse(isThreeStrike);
     }
 
+    @Test
+    void Strike만_있는_Result_결과를_한글_String으로_반환한다() {
+        int ballCount = 0;
+        int strikeCount = 3;
+        Result result = new Result(ballCount, strikeCount);
+
+        String resultInKorean = result.getResultInKorean();
+
+        assertEquals(resultInKorean, strikeCount + OutputMessage.STRIKE.message);
+    }
+
 }
