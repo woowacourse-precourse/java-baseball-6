@@ -21,9 +21,7 @@ public class Application {
         // 정답 입력
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-
-
-
-
+        if (!input.matches("^(?!.*(.).*\\1)[1-9]{3}$")) throw new IllegalArgumentException("서로 다른 3개의 숫자를 공백 없이 입력해 주세요.");
+        
     }
 }
