@@ -1,7 +1,5 @@
 package baseball.validator;
 
-import baseball.enums.GameConfig;
-
 public class InputValidator {
     private static final String ZERO = "0";
 
@@ -32,7 +30,7 @@ public class InputValidator {
 
     private void validateLength(String input, int size) {
         if (input.length() != size) {
-            throw new IllegalArgumentException(String.format("입력값이 %d자리가 아닙니다.", size));
+            throw new IllegalArgumentException(String.format("입력값은 %d자리여야 합니다.", size));
         }
     }
 }
