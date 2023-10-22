@@ -8,11 +8,9 @@ public class CountService {
     private CountService() {
     }
 
-    public static CountResultDto calculateCount(String computerNumber, String playerNumber) {
-        List<Integer> computerNumberList = ConversionService.stringToListOfInteger(computerNumber);
-        List<Integer> playerNumberList = ConversionService.stringToListOfInteger(playerNumber);
-        int strikeCount = calculateStrikeCount(computerNumberList, playerNumberList);
-        int ballCount = calculateBallCount(computerNumberList, playerNumberList);
+    public static CountResultDto calculateCount(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int strikeCount = calculateStrikeCount(computerNumber, playerNumber);
+        int ballCount = calculateBallCount(computerNumber, playerNumber);
         return new CountResultDto(strikeCount, ballCount);
     }
 
