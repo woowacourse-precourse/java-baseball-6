@@ -1,7 +1,5 @@
 package baseball.model;
 
-import baseball.converter.IntegerInputConverter;
-import baseball.converter.StringInputConverter;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -11,24 +9,26 @@ public class BallRule implements GameRule {
 
     @Override
     public int calculate(final int hitter, final int pitcher) {
-        String[] origin = StringInputConverter.toArray(IntegerInputConverter.toString(hitter));
-        String[] test = StringInputConverter.toArray(IntegerInputConverter.toString(pitcher));
+        String hitterValue = String.valueOf(hitter);
+        String pitcherValue = String.valueOf(pitcher);
+        String[] hitterNumbers = hitterValue.split("");
+        String[] pitcherNumbers = pitcherValue.split("");
 
-        boolean[] match = recordMatchedPositions(origin, test);
+        boolean[] match = recordMatchedPositions(hitterNumbers, pitcherNumbers);
 
-        Set<String> onlyOriginSet = createSet(origin, match);
-        Set<String> onlyTestSet = createSet(test, match);
+        Set<String> onlyHitterSet = createSet(hitterNumbers, match);
+        Set<String> onlyPitcherSet = createSet(pitcherNumbers, match);
 
-        intersection(onlyOriginSet, onlyTestSet);
+        intersection(onlyHitterSet, onlyPitcherSet);
 
-        return calculateSize(onlyOriginSet);
+        return calculateSize(onlyHitterSet);
     }
 
-    private boolean[] recordMatchedPositions(final String[] origin, final String[] test) {
-        boolean[] match = new boolean[origin.length];
+    private boolean[] recordMatchedPositions(final String[] hitterNumbers, final String[] pitcherNumbers) {
+        boolean[] match = new boolean[hitterNumbers.length];
 
-        for (int i = 0; i < origin.length; i++) {
-            if (origin[i].equals(test[i])) {
+        for (int i = 0; i < hitterNumbers.length; i++) {
+            if (hitterNumbers[i].equals(pitcherNumbers[i])) {
                 match[i] = true;
             }
         }
@@ -43,8 +43,8 @@ public class BallRule implements GameRule {
                 .collect(Collectors.toCollection(HashSet::new));
     }
 
-    private void intersection(final Set<String> origin, final Set<String> test) {
-        origin.retainAll(test);
+    private void intersection(final Set<String> hitterSet, final Set<String> pitcherSet) {
+        hitterSet.retainAll(pitcherSet);
     }
 
     private int calculateSize(final Set<String> set) {
