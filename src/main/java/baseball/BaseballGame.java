@@ -16,7 +16,7 @@ public class BaseballGame {
         do {
             playGame();
             userEndOption = inputEndOption();
-        }while(!checkGameEnd(userEndOption));
+        }while(!isGameEnd(userEndOption));
 
     }
 
@@ -168,7 +168,7 @@ public class BaseballGame {
         }
     }
 
-    private boolean checkGameEnd(int userChoice){
+    private boolean isGameEnd(int userChoice){
         if(userChoice == 2){
             return true;
         }
