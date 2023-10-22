@@ -32,4 +32,8 @@ public class Balls {
             addBall(Integer.parseInt(num));
         }
     }
+
+    public int get(int i) {
+        return balls.get(i);
+    }
 }

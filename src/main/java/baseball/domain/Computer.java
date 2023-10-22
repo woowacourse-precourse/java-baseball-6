@@ -18,4 +18,14 @@ public class Computer {
             }
         }
     }
+
+    public int countContainedBalls(Balls userBalls) {
+        int count = 0;
+        for (int i = 0; i < MAX_NUM; i++) {
+            if (balls.isContain(userBalls.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
