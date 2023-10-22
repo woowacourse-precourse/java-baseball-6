@@ -8,7 +8,7 @@ public class Check {
 
     }
 
-    void compareNumber(List<Integer> user, List<Integer> computer) {
+    void compareNumber(List<Integer> user, List<Integer> computer) { // 사용자와 컴퓨터의 숫자를 비교하는 함수
         int strike = 0;
         int ball = 0;
         int nothing = 0;
@@ -30,7 +30,7 @@ public class Check {
         printResult(strike, ball, nothing);
     }
 
-    void printResult(int strike, int ball, int nothing) {
+    void printResult(int strike, int ball, int nothing) { // 서로의 숫자를 비교해서 출력하는 함수
         if (ball > 0) {
             System.out.print(ball + "볼 ");
         }
@@ -44,6 +44,7 @@ public class Check {
                     BaseBallGame baseBallGame = new BaseBallGame();
                     baseBallGame.start();
                 } else {
+                    System.out.print("게임 종료");
                     System.exit(0);
                 }
             } else {

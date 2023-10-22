@@ -3,11 +3,11 @@ package baseball;
 import java.util.List;
 
 public class BaseBallGame {
-    private List<Integer> inputNumber;
-    private List<Integer> computerNumber;
-    private Input input;
-    private Rand rand;
-    private Check check;
+    private List<Integer> inputNumber; // 사용자로부터 입력받은 숫자
+    private List<Integer> computerNumber; // 컴퓨터가 생성한 숫자
+    private Input input; // 입력 처리 객체
+    private Rand rand; // 난수 생성 객체
+    private Check check; // 사용자와 컴퓨터 숫자를 비교하는 객체
 
     BaseBallGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -17,11 +17,11 @@ public class BaseBallGame {
     }
 
     void start() {
-        computerNumber = rand.makeRandomNumber();
+        computerNumber = rand.makeRandomNumber(); // 컴퓨터가 생성한 숫자를 저장
         do {
             System.out.print("숫자를 입력해주세요 : ");
-            inputNumber = input.getNumber();
-            check.compareNumber(inputNumber, computerNumber);
+            inputNumber = input.getNumber(); // 사용자로부터 숫자를 입력받고 저장
+            check.compareNumber(inputNumber, computerNumber); // 사용자와 컴퓨터 숫자를 비교
         } while (true);
 
     }
