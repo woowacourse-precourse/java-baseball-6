@@ -2,14 +2,13 @@ package baseball.validate;
 
 import baseball.model.rule.BaseBallGameRule;
 import java.util.List;
-import java.util.Objects;
 
 public class GameValidate extends BaseBallGameRule {
     public void checkGameRestartInput(Integer playerNumber) {
-        if (Objects.equals(playerNumber, BASEBALL_GAME_RESTART)) {
+        if (playerNumber.equals(BASEBALL_GAME_RESTART)) {
             return;
         }
-        if (Objects.equals(playerNumber, BASEBALL_GAME_FINISH)) {
+        if (playerNumber.equals(BASEBALL_GAME_FINISH)) {
             return;
         }
         throw new RuntimeException();
