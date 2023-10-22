@@ -6,19 +6,16 @@ import baseball.view.BaseballGameView;
 
 public class BaseballGameController {
 
-    private BaseballGame baseballGame;
     private BaseballGameView baseballGameView;
 
     public BaseballGameController() {
-        baseballGame = new BaseballGame();
         baseballGameView = new BaseballGameView();
     }
 
     public int startGame() {
-        int randomNumber = baseballGame.makeRandomNumber();
+        int randomNumber = BaseballGame.makeRandomNumber();
         int userInput;
-        baseballGameView.startView();
-
+        // 이 예외처리가 catch 하는 것이 아니라 그냥 터뜨리는 것인지 확인 필요?
         // 입력값이 정수가 아닐 경우 예외처리
         try {
             userInput = baseballGameView.readUserInputView();
@@ -27,6 +24,13 @@ public class BaseballGameController {
             System.out.println(e.getMessage());
             return 0;
         }
+
+        // 사용자 입력값 분석해서 볼 스트라이크 확인 메서드
+        BaseballGame result = BaseballGame.checkScore(randomNumber, userInput);
+
+        // 확인 결과 반환받고 뷰로 뿌리는 메서드
+
+
 
 
 
