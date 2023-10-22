@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.UserInputValidator;
 import baseball.model.GameNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -13,7 +14,9 @@ public class Application {
         String userInputString = inputView.getUserGuessingNumbers();
 
         GameNumber gameNumber = new GameNumber();
-        gameNumber.setUserInputString(userInputString);
+        UserInputValidator userInputValidator = new UserInputValidator();
+        String validatedUserInputString = userInputValidator.userInputStringValidate(userInputString);
+        gameNumber.setUserInputString(validatedUserInputString);
         System.out.println("userInputString = " + gameNumber.getUserInputString());
 
         outputView.printGameFinish();

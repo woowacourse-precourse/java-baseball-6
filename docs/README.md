@@ -66,12 +66,12 @@
 - [ ] 힌트 변수 0으로 리셋
 
 3. UserInputValidator
-- [ ] userInputString 유효성 검사
-    - [ ] 데이터 유효성 검사
-        - [ ] null 체크
-        - [ ] 공백 제거
-    - [ ] 오류 메시지 전달
-        - [ ] IllegalArgumentException 발생 후 종료
+- [x] userInputString 유효성 검사
+    - [x] 데이터 유효성 검사
+        - [x] null 체크
+        - [x] 공백 제거
+    - [x] 오류 메시지 전달
+        - [x] IllegalArgumentException 발생 후 종료
 - [ ] userInputString -> 숫자형 userInputNumbers 변환
     - [ ] 데이터 유효성 검사
         - [ ] 세 자리 입력값인지 확인
