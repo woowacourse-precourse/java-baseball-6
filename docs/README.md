@@ -5,9 +5,10 @@
 * 사용자의 입력을 받음 feat: Add a method that receives a user's input and returns it
 * 사용자 입력이 잘못돼서 예외가 터졌을 때 처리하는 메서드 feat: Add a method that make exception if the input number does not fit the range
 * 컴퓨터의 수와 사용자의 수를 비교해서 결과 담음 feat: Add a method that returns an object that has a score by comparing a random value with a user input value 
-* 결과 판별하고 출력 
+* 결과 판별하고 출력 feat: Add a method that show the results of the user's input
 * 게임 종료
 * 다시 시작 혹은 종료 메서드
+나중에 스코어 객체 따로 만들고 원래 있던 클래스는 유틸함수 전용 클래스로 만들??
 
 
 

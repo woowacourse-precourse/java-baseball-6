@@ -15,22 +15,27 @@ public class BaseballGameController {
     public int startGame() {
         int randomNumber = BaseballGame.makeRandomNumber();
         int userInput;
+        boolean isAnswer = false;
         // 이 예외처리가 catch 하는 것이 아니라 그냥 터뜨리는 것인지 확인 필요?
         // 입력값이 정수가 아닐 경우 예외처리
-        try {
-            userInput = baseballGameView.readUserInputView();
-            isVerified(userInput); // 입력값이 정수이지만 범위에 맞지 않을 경우 예외 던져짐
-        } catch(IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return 0;
+
+        while(!isAnswer) {
+            try {
+                userInput = baseballGameView.readUserInputView();
+                isVerified(userInput); // 입력값이 정수이지만 범위에 맞지 않을 경우 예외 던져짐
+            } catch(IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                return 0;
+            }
+
+            // 사용자 입력값 분석해서 볼 스트라이크 확인 메서드
+            BaseballGame result = BaseballGame.checkScore(randomNumber, userInput);
+
+            // 확인 결과 반환받고 뷰로 뿌리는 메서드
+            isAnswer = baseballGameView.showResult(result);
         }
 
-        // 사용자 입력값 분석해서 볼 스트라이크 확인 메서드
-        BaseballGame result = BaseballGame.checkScore(randomNumber, userInput);
-
-        // 확인 결과 반환받고 뷰로 뿌리는 메서드
-
-
+        // 정답을 모두 맞추었으므로 재시작 여부 입력받음
 
 
 
