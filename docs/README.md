@@ -15,25 +15,30 @@
 - ### Controller
     - GameController
         - 게임 시작 및 종료 관리
-        - Player의 입력 처리
-        - View와의 연결
-- ### Service
-    - GameNumberService
-        - 랜덤한 세자리수 생성
-        - 게임 규칙 적용 및 결과 반환
+        - Player와 Computer의 입출력 관리
 - ### Model
     - Player
         - Player의 숫자를 관리
     - Computer
         - Computer의 숫리를 관리
 - ### View
-    - PlayerView
-        - Player 관련 입력
+    - InputView
+        - Player 입장의 뷰
     - ComputerView
-        - Computer 관련력입력
-- ### Utils
+        - Computer 입장의 뷰
+- ### Util
     - RandomNumberGenerator
         - 랜덤한 세자리수 생성
-- ### Exception
-    - InvalidInputException
-        - Player의 입력에 대한 예외 처리
+    - InputValidator
+        - Player의 입력값의 유효성을 판별
+    - StringToIntegerListParser
+        - String 입력값을 Integer 리스트로 변환
+    - StrikeAndBallCounter
+      - Player의 입력값 채점
+- ### Constant
+    - GameConstant
+        - 게임 관련 상수 모음
+    - GameMessage
+        - 게임 진행 메시지 모음
+    - ExceptionMessage
+        - 예외 발생 메시지 모음
