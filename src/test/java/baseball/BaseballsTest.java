@@ -53,7 +53,7 @@ class BaseballsTest {
     @DisplayName("3자리 수가 아닌 경우 예외 발생하는 테스트")
     void invalidListSizeExceptionTest(List<Integer> numbers) {
         // expected
-        assertThrows(IllegalStateException.class, () -> new Baseballs(numbers));
+        assertThrows(IllegalArgumentException.class, () -> new Baseballs(numbers));
     }
 
     @ParameterizedTest
@@ -61,7 +61,7 @@ class BaseballsTest {
     @DisplayName("3개의 수가 서로 다르지 않은 경우 예외 발생하는 테스트")
     void invalidValueExceptionTest(List<Integer> numbers) {
         // expected
-        assertThrows(IllegalStateException.class, () -> new Baseballs(numbers));
+        assertThrows(IllegalArgumentException.class, () -> new Baseballs(numbers));
     }
 
     @ParameterizedTest

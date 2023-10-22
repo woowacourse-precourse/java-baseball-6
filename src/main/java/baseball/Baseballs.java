@@ -17,7 +17,7 @@ public class Baseballs {
 
     private void validateSize(final List<Integer> numbers) {
         if (numbers.size() != 3) {
-            throw new IllegalStateException("3자리 수가 아닙니다.");
+            throw new IllegalArgumentException("3자리 수가 아닙니다.");
         }
     }
 
@@ -26,7 +26,7 @@ public class Baseballs {
                 .distinct()
                 .count();
         if (distinctCount != 3) {
-            throw new IllegalStateException("3개의 수가 서로 다르지 않습니다.");
+            throw new IllegalArgumentException("3개의 수가 서로 다르지 않습니다.");
         }
     }
 
