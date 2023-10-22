@@ -1,9 +1,12 @@
 package baseball.model;
 
-public class InputNumber {
-    private int inputNumber;
+import java.util.ArrayList;
+import java.util.List;
 
-    public int getInputNumber() {
+public class InputNumber {
+    private List<Integer> inputNumber = new ArrayList<>();
+
+    public List<Integer> getInputNumber() {
         return inputNumber;
     }
 
@@ -11,6 +14,10 @@ public class InputNumber {
         if (playerInput.length() != 3) {
             throw new IllegalArgumentException("3자리의 수를 입력해주십시오.");
         }
-        inputNumber = Integer.parseInt(playerInput);
+
+        for (int i = 0; i < playerInput.length(); i++) {
+            char letter = playerInput.charAt(i);
+            inputNumber.add(Integer.parseInt(String.valueOf(letter)));
+        }
     }
 }
