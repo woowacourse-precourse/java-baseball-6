@@ -5,117 +5,119 @@ import org.junit.jupiter.api.Test;
 
 class RefereeTest {
 
+    public static final int ZERO_STRIKE = 0;
+    public static final int ONE_STRIKE = 1;
+    public static final int TWO_STRIKE = 2;
+    public static final int THREE_STRIKE = 3;
+    public static final int ZERO_BALL = 0;
+    public static final int ONE_BALL = 1;
+    public static final int TWO_BALL = 2;
+    public static final int THREE_BALL = 3;
+    public static final String RANDOM_NUMBER = "123";
+
     private Referee referee = new Referee();
 
     @Test
     public void 제로_스트라이크_테스트() {
-        //given
-        String randomNumbers = "123";
-        String inputNumbers = "456";
+        //given\
+        final String inputNumbers = "456";
 
         //when
-        int strikeNumbers = referee.calculateStrikeNumbers(randomNumbers, inputNumbers);
+        final int strikeNumbers = referee.calculateStrikeNumbers(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(strikeNumbers, 0);
+        Assertions.assertEquals(strikeNumbers, ZERO_STRIKE);
     }
 
     @Test
     public void 원_스트라이크_테스트() {
         //given
-        String randomNumbers = "123";
-        String inputNumbers = "132";
+        final String inputNumbers = "132";
 
         //when
-        int strikeNumbers = referee.calculateStrikeNumbers(randomNumbers, inputNumbers);
+        final int strikeNumbers = referee.calculateStrikeNumbers(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(strikeNumbers, 1);
+        Assertions.assertEquals(strikeNumbers, ONE_STRIKE);
     }
 
     @Test
     public void 투_스트라이크_테스트() {
         //given
-        String randomNumbers = "123";
-        String inputNumbers = "125";
+        final String inputNumbers = "125";
 
         //when
-        int strikeNumbers = referee.calculateStrikeNumbers(randomNumbers, inputNumbers);
+        final int strikeNumbers = referee.calculateStrikeNumbers(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(strikeNumbers, 2);
+        Assertions.assertEquals(strikeNumbers, TWO_STRIKE);
     }
 
     @Test
     public void 쓰리_스트라이크_테스트() {
         //given
-        String randomNumbers = "123";
-        String inputNumbers = "123";
+        final String inputNumbers = "123";
 
         //when
-        int strikeNumbers = referee.calculateStrikeNumbers(randomNumbers, inputNumbers);
+        final int strikeNumbers = referee.calculateStrikeNumbers(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(strikeNumbers, 3);
+        Assertions.assertEquals(strikeNumbers, THREE_STRIKE);
     }
 
     @Test
     public void 제로_볼_테스트() {
         //given
-        String randomNumbers = "123";
-        String inputNumbers = "456";
+        final String inputNumbers = "456";
 
         //when
-        int ballNumbers = referee.calculateBallNumbers(randomNumbers, inputNumbers);
+        final int ballNumbers = referee.calculateBallNumbers(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(ballNumbers, 0);
+        Assertions.assertEquals(ballNumbers, ZERO_BALL);
     }
 
     @Test
     public void 원_볼_테스트() {
         //given
-        String randomNumbers = "123";
-        String inputNumbers = "634";
+        final String inputNumbers = "634";
 
         //when
-        int ballNumbers = referee.calculateBallNumbers(randomNumbers, inputNumbers);
+        final int ballNumbers = referee.calculateBallNumbers(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(ballNumbers, 1);
+        Assertions.assertEquals(ballNumbers, ONE_BALL);
     }
 
     @Test
     public void 투_볼_테스트() {
         //given
-        String randomNumbers = "123";
-        String inputNumbers = "632";
+        final String inputNumbers = "632";
 
         //when
-        int ballNumbers = referee.calculateBallNumbers(randomNumbers, inputNumbers);
+        final int ballNumbers = referee.calculateBallNumbers(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(ballNumbers, 2);
+        Assertions.assertEquals(ballNumbers, TWO_BALL);
     }
 
     @Test
     public void 쓰리_볼_테스트() {
         //given
-        String randomNumbers = "123";
-        String inputNumbers = "231";
+        final String inputNumbers = "231";
 
         //when
-        int ballNumbers = referee.calculateBallNumbers(randomNumbers, inputNumbers);
+        final int ballNumbers = referee.calculateBallNumbers(RANDOM_NUMBER, inputNumbers);
 
         //then
-        Assertions.assertEquals(ballNumbers, 3);
+        Assertions.assertEquals(ballNumbers, THREE_BALL);
     }
 
     @Test
     public void 낫싱_판별_테스트() {
         //given
-        final int strikeNumber = 0;
-        final int ballNumber = 0;
+        final int strikeNumber = ZERO_STRIKE;
+        final int ballNumber = ZERO_BALL;
 
         //when
         boolean isNothing = referee.isNothing(strikeNumber, ballNumber);
@@ -127,8 +129,8 @@ class RefereeTest {
     @Test
     public void 볼만_있는_경우_판별_테스트() {
         //given
-        final int strikeNumber = 0;
-        final int ballNumber = 1;
+        final int strikeNumber = ZERO_STRIKE;
+        final int ballNumber = ONE_BALL;
 
         //when
         boolean isOnlyBall = referee.isOnlyBall(strikeNumber, ballNumber);
@@ -140,8 +142,8 @@ class RefereeTest {
     @Test
     public void 스트라이크만_있는_경우_판별_테스트() {
         //given
-        final int strikeNumber = 1;
-        final int ballNumber = 0;
+        final int strikeNumber = ONE_STRIKE;
+        final int ballNumber = ZERO_BALL;
 
         //when
         boolean isOnlyStrike = referee.isOnlyStrike(strikeNumber, ballNumber);
@@ -153,8 +155,8 @@ class RefereeTest {
     @Test
     public void 둘_다_있는_경우_판별_테스트() {
         //given
-        final int strikeNumber = 2;
-        final int ballNumber = 1;
+        final int strikeNumber = TWO_STRIKE;
+        final int ballNumber = ONE_BALL;
 
         //when
         boolean isStrikeAndBall = referee.isStrikeAndBall(strikeNumber, ballNumber);
