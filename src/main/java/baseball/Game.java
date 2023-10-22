@@ -3,6 +3,7 @@ package baseball;
 
 public class Game {
     private boolean end;
+    private String input;
     private Computer computer;
     private User user;
 
@@ -27,7 +28,11 @@ public class Game {
     }
 
     public void inGame() {
-
+        do {
+            computer.printMsg("숫자를 입력해주세요 : ");
+            input = user.getGameInput();
+            computer.makeResult();
+        } while (!computer.checkAnswer());
     }
 
     public void endGame() {
