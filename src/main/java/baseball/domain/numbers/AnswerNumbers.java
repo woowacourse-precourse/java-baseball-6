@@ -7,7 +7,7 @@ public final class AnswerNumbers {
 
     private final List<Integer> answerNumbers;
 
-    public List<Integer> getAnswerNumbers() {
+    List<Integer> getAnswerNumbers() {
         return answerNumbers;
     }
 
@@ -23,5 +23,14 @@ public final class AnswerNumbers {
     public boolean isSameWithAnswer(List<Integer> numbers) {
         String answer = answerNumbers.toString();
         return answer.equals(numbers.toString());
+    }
+
+    public Integer findIndexOfSameNumber(int number) {
+        for (int i = 0; i < answerNumbers.size(); i++) {
+            if (answerNumbers.get(i) == number) {
+                return i;
+            }
+        }
+        return null;
     }
 }

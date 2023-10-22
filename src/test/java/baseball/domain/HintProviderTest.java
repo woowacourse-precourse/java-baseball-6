@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 class HintProviderTest {
-    private final List<Integer> answerNumbers = AnswerNumbers.createAnswerNumbers(new TestGenerator()).getAnswerNumbers();
-    private final HintProvider hintProvider = new HintProvider();
+    private final AnswerNumbers answerNumbers = AnswerNumbers.createAnswerNumbers(new TestGenerator());
+    private final HintProvider hintProvider = new HintProvider(answerNumbers);
 
     @Test
     @DisplayName("플레이어의 숫자가 1,2,3 일 때 STRIKE가 3개가 나오면 성공한다.")
@@ -22,7 +22,7 @@ class HintProviderTest {
         //given
         List<Integer> playerNumbers = new PlayerNumbers(List.of(1, 2, 3)).getNumbers();
         //when
-        Map<HintType, Integer> hints = hintProvider.compareNumbers(answerNumbers, playerNumbers);
+        Map<HintType, Integer> hints = hintProvider.compareNumbers(playerNumbers);
         //then
         Assertions.assertThat(hints.get(HintType.STRIKE)).isEqualTo(3);
     }
@@ -33,7 +33,7 @@ class HintProviderTest {
         //given
         List<Integer> playerNumbers = new PlayerNumbers(List.of(3, 1, 2)).getNumbers();
         //when
-        Map<HintType, Integer> hints = hintProvider.compareNumbers(answerNumbers, playerNumbers);
+        Map<HintType, Integer> hints = hintProvider.compareNumbers(playerNumbers);
         //then
         Assertions.assertThat(hints.get(HintType.BALL)).isEqualTo(3);
     }
@@ -44,7 +44,7 @@ class HintProviderTest {
         //given
         List<Integer> playerNumbers = new PlayerNumbers(List.of(3, 2, 1)).getNumbers();
         //when
-        Map<HintType, Integer> hints = hintProvider.compareNumbers(answerNumbers, playerNumbers);
+        Map<HintType, Integer> hints = hintProvider.compareNumbers(playerNumbers);
         //then
         Assertions.assertThat(hints.get(HintType.BALL)).isEqualTo(2);
         Assertions.assertThat(hints.get(HintType.STRIKE)).isEqualTo(1);
@@ -56,7 +56,7 @@ class HintProviderTest {
         //given
         List<Integer> playerNumbers = new PlayerNumbers(List.of(4, 5, 6)).getNumbers();
         //when
-        Map<HintType, Integer> hints = hintProvider.compareNumbers(answerNumbers, playerNumbers);
+        Map<HintType, Integer> hints = hintProvider.compareNumbers(playerNumbers);
         //then
         Assertions.assertThat(hints.get(HintType.NOTHING)).isEqualTo(1);
     }
