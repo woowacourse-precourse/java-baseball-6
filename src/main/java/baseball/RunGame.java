@@ -9,6 +9,7 @@ public class RunGame {
     OutputView outputView = new OutputView();
     BaseballGame baseballGame = new BaseballGame();
 
+
     public void playBaseballGame() {
         BaseballGame.computerNumber = BaseballNumber.makeBaseballNumber();
         BaseballGame.finish = true;

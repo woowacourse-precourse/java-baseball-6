@@ -1,4 +1,6 @@
-package model;
+package view;
+
+import model.BaseballData;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -63,7 +65,7 @@ public class ExceptionModel {
      * 숫자를 3개 입력했는지 확인
      */
     private void checkThreeNumber(String input) {
-        if (input.split("").length != 3) {
+        if (input.split("").length != MAX_HIT) {
             throw new IllegalArgumentException(THREE_NUMBER);
         }
     }

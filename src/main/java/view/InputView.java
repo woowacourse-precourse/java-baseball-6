@@ -2,8 +2,6 @@ package view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import model.ExceptionModel;
-
 import java.util.ArrayList;
 import java.util.List;
 
