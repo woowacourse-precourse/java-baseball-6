@@ -10,23 +10,23 @@ public class ScoreCalculator {
     public ScoreCalculator() {
     }
 
-    public Integer calculateStrike(GameNumbers computer, GameNumbers player) {
+    public Integer calculateStrike(GameNumbers answer, GameNumbers guess) {
         return (int) IntStream.range(0, Number.SIZE)
-                .filter(idx -> isStrike(computer, player, idx))
+                .filter(idx -> isStrike(answer, guess, idx))
                 .count();
     }
 
-    public Integer calculateBall(GameNumbers computer, GameNumbers player) {
+    public Integer calculateBall(GameNumbers answer, GameNumbers guess) {
         return (int) IntStream.range(0, Number.SIZE)
-                .filter(idx -> isBall(computer, player, idx))
+                .filter(idx -> isBall(answer, guess, idx))
                 .count();
     }
 
-    private boolean isStrike(GameNumbers computer, GameNumbers player, int idx) {
-        return computer.get(idx).equals(player.get(idx));
+    private boolean isStrike(GameNumbers answer, GameNumbers guess, int idx) {
+        return answer.get(idx).equals(guess.get(idx));
     }
 
-    private boolean isBall(GameNumbers computer, GameNumbers player, int idx) {
-        return computer.contains(player.get(idx)) && !isStrike(computer, player, idx);
+    private boolean isBall(GameNumbers answer, GameNumbers guess, int idx) {
+        return answer.contains(guess.get(idx)) && !isStrike(answer, guess, idx);
     }
 }

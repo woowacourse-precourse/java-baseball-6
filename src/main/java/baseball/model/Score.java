@@ -10,9 +10,7 @@ import static baseball.constant.Hint.STRIKE;
 
 public class Score {
 
-    public final String BALL_MESSAGE = "볼 ";
-    public final String NOT_THING = "낫싱";
-    public final String STRIKE_MESSAGE = "스트라이크";
+    private static final String NOT_THING = "낫싱";
 
     private final Map<Hint, Integer> score;
 
@@ -31,7 +29,7 @@ public class Score {
         return this.score.get(hint) > 0;
     }
 
-    private Integer countHint(Hint hint) {
+    private Integer count(Hint hint) {
         return this.score.get(hint);
     }
 
@@ -46,10 +44,10 @@ public class Score {
             builder.append(NOT_THING);
         }
         if (hasHint(BALL)) {
-            builder.append(countHint(BALL)).append(BALL_MESSAGE);
+            builder.append(count(BALL)).append(BALL);
         }
         if (hasHint(STRIKE)) {
-            builder.append(countHint(STRIKE)).append(STRIKE_MESSAGE);
+            builder.append(count(STRIKE)).append(STRIKE);
         }
         return builder.toString();
     }

@@ -30,10 +30,10 @@ public class BaseballController {
 
     private void play() {
         while (true) {
-            GameNumbers computer = new GameNumbers(RandomNumbersGenerator.generate());
+            GameNumbers answer = new GameNumbers(RandomNumbersGenerator.generate());
             //TODO: 디버깅 용 출력문 지우기
-            System.out.println("computer = " + computer);
-            guess(computer);
+            System.out.println("computer = " + answer);
+            guess(answer);
             if (isRestart()) {
                 continue;
             }
@@ -45,10 +45,10 @@ public class BaseballController {
         return Command.isRestart(readGameCommand());
     }
 
-    private void guess(GameNumbers computer) {
+    private void guess(GameNumbers answer) {
         while (true) {
-            GameNumbers player = new GameNumbers(inputView.readGuessNumber());
-            Score score = calculateScore(computer, player);
+            GameNumbers guess = new GameNumbers(inputView.readGuessNumber());
+            Score score = calculateScore(answer, guess);
             outputView.printScore(score);
             if (isCorrect(score)) {
                 break;
@@ -57,9 +57,9 @@ public class BaseballController {
         outputView.printGameEndMessage();
     }
 
-    private Score calculateScore(GameNumbers computer, GameNumbers player) {
-        int strike = calculator.calculateStrike(computer, player);
-        int ball = calculator.calculateBall(computer, player);
+    private Score calculateScore(GameNumbers answer, GameNumbers guess) {
+        int strike = calculator.calculateStrike(answer, guess);
+        int ball = calculator.calculateBall(answer, guess);
         return new Score(Map.of(Hint.STRIKE, strike, Hint.BALL, ball));
     }
 
