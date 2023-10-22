@@ -38,6 +38,7 @@ public class GameController {
         List<Integer> userNum;
 
         baseball.makeBaseball();
+
         computerNum = baseball.getBallNum();
 
         while (true) {

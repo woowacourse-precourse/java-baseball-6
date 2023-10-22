@@ -7,9 +7,11 @@ import java.util.List;
 
 public class Baseball {
 
-    List<Integer> ballNum = new ArrayList<>();
+    List<Integer> ballNum;
 
     public Baseball() {
+        ballNum = new ArrayList<>();
+
     }
 
     public List<Integer> getBallNum() {
