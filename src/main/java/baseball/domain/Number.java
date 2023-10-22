@@ -18,12 +18,12 @@ public final class Number {
     }
 
     private void validate(final Integer value) {
-        if (isNotProperValue(value)) {
+        if (isInvalidValue(value)) {
             throw new IllegalStateException();
         }
     }
 
-    private boolean isNotProperValue(final Integer value) {
+    private boolean isInvalidValue(final Integer value) {
         return value < MIN_VALUE || value > MAX_VALUE;
     }
 
