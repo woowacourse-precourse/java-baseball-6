@@ -26,25 +26,30 @@ public class Game {
             Result result = getResult(computer, input);
             printResult(result);
 
-            computer = checkThreeStrikes(result, computer);
-            if (computer == null) break;
+            if (isThreeStrikes(result)) {
+                if (checkIfShouldRestart()) {
+                    computer = getComputerPicks();
+                } else break;
+            }
         }
     }
 
-    private List<Integer> checkThreeStrikes(Result result, List<Integer> computer) {
-        final String RESTART = "1";
-//        final String QUIT = "2";
-
-        if (result.getStrikes() == computer.size()) {
+    private boolean isThreeStrikes(Result result) {
         if (result.getStrikes() == TOTAL_CARDS) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String input = Console.readLine();
-
-            validateOneOrTwo(input);
-
-            return input.equals(RESTART) ? getComputerPicks() : null;
+            return true;
         }
-        return computer;
+        return false;
+    }
+
+    private boolean checkIfShouldRestart() {
+        final String RESTART = "1";
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+
+        validateOneOrTwo(input);
+
+        return input.equals(RESTART);
     }
 }
