@@ -26,5 +26,6 @@ public class BaseBallController {
             scoreBoard = judge.evaluateUserNumberList(user.getUserNumberList());
             OutputView.showScoreBoard(scoreBoard);
         } while (!scoreBoard.isThreeStrike());
+        OutputView.gameOverMessage();
     }
 }
