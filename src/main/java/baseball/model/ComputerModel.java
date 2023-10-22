@@ -11,23 +11,24 @@ public class ComputerModel {
         this.computerNumber = computerNumber.toString().replaceAll("[^0-9]","");
     }
 
-    public Map<String, Integer> scoreCalculator(String playerNumber) {
-        Map<String, Integer> scoreMap = new HashMap<String, Integer>();
+    public Map<ScoreState, Integer> scoreCalculator(String playerNumber) {
+        Map<ScoreState, Integer> scoreMap = new HashMap<>();
         String computerNumber = this.computerNumber;
-        scoreMap.put("ballScore", 0);
-        scoreMap.put("strikeScore", 0);
+        scoreMap.put(ScoreState.BALL_SCORE, 0);
+        scoreMap.put(ScoreState.STRIKE_SCORE, 0);
         int i = 0;
 
         while( i < computerNumber.length()) {
             if (computerNumber.charAt(i) == playerNumber.charAt(i)) {
                 String sameNumber = String.valueOf(computerNumber.charAt(i));
-                scoreMap.put("strikeScore",(scoreMap.get("strikeScore") + 1));
+                scoreMap.put(
+                    ScoreState.STRIKE_SCORE,(scoreMap.get(ScoreState.STRIKE_SCORE) + 1));
                 computerNumber = computerNumber.replace(sameNumber, "");
                 playerNumber = playerNumber.replace(sameNumber, "");
                 continue;
             }
             if (computerNumber.contains(Character.toString(playerNumber.charAt(i)))) {
-                scoreMap.put("ballScore", (scoreMap.get("ballScore") + 1));
+                scoreMap.put(ScoreState.BALL_SCORE, (scoreMap.get(ScoreState.BALL_SCORE) + 1));
             }
             i++;
         }
