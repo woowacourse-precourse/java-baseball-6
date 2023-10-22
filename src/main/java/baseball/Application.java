@@ -1,98 +1,60 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        String[] computerNumbers;
-        String[] playerNumbers;
-        boolean isAnswer = false;
-
-        computerNumbers = getThreeRandomNumbers();
-        // [기능 4] 1 - 3 과정을 계속 반복하고 컴퓨터가 선택한 숫자 3개를 모두 맞히면 게임이 종료되는 기능
-        while(!isAnswer) {
-            playerNumbers = getValidatedInput();
-            isAnswer = playGame(computerNumbers, playerNumbers);
-
-            // [기능 5] 게임 종료 후 플레이어가 게임을 다시 시작하거나 완전히 종료시킬 수 있는 기능 (1: 재시작, 2: 종료)
-            if(isAnswer){
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                if(Console.readLine().equals("1")){
-                    isAnswer = false;
-                    computerNumbers = getThreeRandomNumbers();
-                }
-            }
-        }
-    }
-
-    // [기능 1] 컴퓨터가 1 - 9 서로 다른 임의의 수 3개 선택하는 기능
-    private static String[] getThreeRandomNumbers(){
-        String[] threeRandomNums = new String[3];
-        for (int i = 0; i < 3; i++) {
-            threeRandomNums[i] = String.valueOf(Randoms.pickNumberInRange(1, 9));
-        }
-        return threeRandomNums;
-    }
-
-    // [기능 2] 플레이어에게 컴퓨터가 생각한 서로 다른 3개의 숫자를 입력받는 기능
-    // [기능 6] 플레이어가 잘못된 값(범위 밖, 중복된 숫자, 빈 입력, 다른 개수)을 입력하면 IllegalArgumentException 발생시킨 후 종료하는 기능
-    private static String[] getValidatedInput(){
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-        // 숫자 이외 값을 입력한 경우 & 빈 입력인 경우
-        try{
-            Integer.parseInt(input);
-        }catch(NumberFormatException exception){
-            throw new IllegalArgumentException("입력한 값이 숫자가 아니거나 빈 입력입니다.");
-        }
-        // 3자리 숫자를 입력하지 않은 경우
-        if(input.length() != 3){
-            throw new IllegalArgumentException("입력 값이 3자리가 아닙니다.");
-        }
-        // 중복된 숫자를 입력한 경우
-        String[] letters = input.split("");
-        if(letters[0].equals(letters[1]) || letters[0].equals(letters[2]) || letters[1].equals(letters[2])){
-            throw new IllegalArgumentException("중복된 숫자를 입력했습니다.");
-        }
-        return letters;
-    }
-
-    // [기능 3] 컴퓨터가 플레이어가 입력한 숫자에 대한 숫자야구 게임 결과를 출력하는 기능
-    private static boolean playGame(String[] computerNumbers, String[] playerNumbers){
-        // ex) CN: 123
+        final int STRIKE_COUNT_TO_FINISH = 3;
+        Computer computer = new Computer();
+        Player player = new Player();
+        GameMachine gameMachine;
+        GameResult gameResult;
+        boolean isFinished = false;
         int ball = 0;
         int strike = 0;
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
-                if(computerNumbers[i].equals(playerNumbers[j])){
-                    if(i == j){
-                        strike++;
-                    }else{
-                        ball++;
-                    }
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        computer.pickComputerNumbers();
+        player.pickPlayerNumbers();
+        gameMachine = new GameMachine(computer.getComputerNumbers(), player.getPlayerNumbers());
+        computer.setGameMachine(gameMachine);
+        while (!isFinished) {
+            gameResult = computer.activateMachine();
+            ball = gameResult.getBall();
+            strike = gameResult.getStrike();
+            if (ball == 0 && strike == 0) {
+                System.out.println("낫싱");
+            } else if (strike == 0) {
+                System.out.println(ball + "볼");
+            } else if (ball == 0) {
+                System.out.println(strike + "스트라이크");
+                if (strike == STRIKE_COUNT_TO_FINISH) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    isFinished = true;
                 }
             }
-        }
-        if(ball == 0 && strike == 0){
-            System.out.println("낫싱");
-            return false;
-        }else if(strike == 0) {
-            System.out.println(ball + "볼");
-            return false;
-        }else if(ball == 0){
-            System.out.println(strike + "스트라이크");
-            if(strike == 3){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                return true;
-            }else{
-                return false;
+            if (ball != 0 && strike != 0) {
+                System.out.println(ball + "볼" + strike + "스트라이크");
             }
-        }else{
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-            return false;
+            // 실패 시 playerNumbers 수정
+            if (!isFinished) {
+                player.pickPlayerNumbers();
+                computer.setPlayerNumbers(player.getPlayerNumbers());
+                computer.changeGameMachinePlayerNumbers();
+            }
+            // 게임 종료 후 재시작 여부 묻기
+            if (isFinished) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                if (Console.readLine().equals("1")) {
+                    isFinished = false;
+                    // 컴퓨터, 사용자 입력 새로 받고 게임머신 생성
+                    computer.pickComputerNumbers();
+                    player.pickPlayerNumbers();
+                    gameMachine = new GameMachine(computer.getComputerNumbers(), player.getPlayerNumbers());
+                    computer.setGameMachine(gameMachine);
+                }
+            }
         }
     }
 }
