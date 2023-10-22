@@ -54,6 +54,7 @@ public class Application {
              * 스트라이크 3개 -> 새로운 게임 및 종료
              */
             if(strike == 3) {
+                System.out.println(strike + "스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 gameStatus = Console.readLine();
