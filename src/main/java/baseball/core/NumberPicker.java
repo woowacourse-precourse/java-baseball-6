@@ -1,6 +1,6 @@
 package baseball.core;
 
-import baseball.Enum.ConsoleNumberSize;
+import baseball.Enum.ConsoleNumberSizeEnum;
 import baseball.exception.IllegalCountException;
 import baseball.exception.IllegalRangeException;
 import baseball.exception.IllegalTypeException;
@@ -10,13 +10,13 @@ import java.util.List;
 
 public class NumberPicker {
 
-    private List<Integer> numberList;
+    //private List<Integer> numberList;
 
     public List<Integer> pickRandomNumber() {
         List<Integer> pickedNumbers = Randoms.pickUniqueNumbersInRange(
-            ConsoleNumberSize.START_INCLUSIVE.getSize(),
-            ConsoleNumberSize.END_INCLUSIVE.getSize(),
-            ConsoleNumberSize.MAX_SIZE.getSize()
+            ConsoleNumberSizeEnum.START_INCLUSIVE.getSize(),
+            ConsoleNumberSizeEnum.END_INCLUSIVE.getSize(),
+            ConsoleNumberSizeEnum.MAX_SIZE.getSize()
         );
         return pickedNumbers;
     }
@@ -45,15 +45,15 @@ public class NumberPicker {
     private static void validateRange(String[] stringBeforeNumber) {
         for (String string : stringBeforeNumber) {
             int stringToInt = Integer.parseInt(string);
-            if (stringToInt < ConsoleNumberSize.START_INCLUSIVE.getSize() ||
-                    stringToInt > ConsoleNumberSize.END_INCLUSIVE.getSize()) {
+            if (stringToInt < ConsoleNumberSizeEnum.START_INCLUSIVE.getSize() ||
+                    stringToInt > ConsoleNumberSizeEnum.END_INCLUSIVE.getSize()) {
                 throw new IllegalRangeException();
             }
         }
     }
 
     private static void validateCount(final int count) {
-        if (ConsoleNumberSize.MAX_SIZE.getSize() < count) {
+        if (ConsoleNumberSizeEnum.MAX_SIZE.getSize() < count) {
             throw new IllegalCountException();
         }
     }
