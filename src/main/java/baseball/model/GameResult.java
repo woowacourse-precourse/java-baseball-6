@@ -10,11 +10,11 @@ public class GameResult {
     }
 
     public boolean isSuccess() {
-        if(strike == 3 && ball == 0) {
+        if (strike == 3 && ball == 0) {
             return true;
         }
 
-         return false;
+        return false;
     }
 
     public int getStrike() {

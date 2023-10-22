@@ -1,50 +1,47 @@
 package baseball.controller;
 
-import baseball.model.Computer;
 import baseball.model.GameResult;
 import baseball.model.Numbers;
-import baseball.model.User;
 import baseball.validator.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.List;
-
 public class BaseballGame {
     private static final String RESTART = "1";
-    private Numbers computerNumber;
 
     public void startGame() {
         do {
             playOneGame();
-        } while(restart());
+        } while (restart());
     }
 
     private void playOneGame() {
         GameResult gameResult;
         OutputView.printGameStartMessage();
-        createComputerNumber();
+        Numbers computerNumber = createComputerNumber();
 
         do {
-            String userNumber = InputView.getUserNumber();
-            User user = new User(userNumber);
-            gameResult = computerNumber.compareNumbers(user.getUserNumber());
+            Numbers userNumber = inputUserNumber(InputView.getUserNumber());
+            gameResult = userNumber.compareNumbers(computerNumber);
             OutputView.printOneGameResult(gameResult.getStrike(), gameResult.getBall());
         } while (!gameResult.isSuccess());
 
         OutputView.printThreeStrikeMessage();
     }
 
-    private void createComputerNumber() {
-        Computer computer = new Computer();
-        computerNumber = computer.getComputerNumber();
+    private Numbers createComputerNumber() {
+        return new Numbers();
+    }
+
+    private Numbers inputUserNumber(String input) {
+        return new Numbers(input);
     }
 
     private boolean restart() {
         String restartOrExit = InputView.getRestartOrExit();
         Validator.validateRestartOrExit(restartOrExit);
 
-        if(restartOrExit.equals(RESTART)) {
+        if (restartOrExit.equals(RESTART)) {
             return true;
         }
 
