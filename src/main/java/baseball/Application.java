@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -11,10 +12,21 @@ public class Application {
     final static int RANGE_END = 9;
     final static char ZERO_CHARACTER = '0';
 
+    enum BallType {
+        STRIKE(0), BALL(1), NONE(2);
+
+        BallType(int i) {
+            this.value = i;
+        }
+
+        final int value;
+    }
+
+    static List<Integer> randomNumberList;
+    static List<Integer> userNumberList;
+
     public static void main(String[] args) {
-        List<Integer> randomNumberList;
         String userInput;
-        List<Integer> userNumberList;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         randomNumberList = getNewRandomNumberList();
@@ -22,8 +34,73 @@ public class Application {
         userInput = getInputOnGame();
         inputValidationCheck(userInput);
         userNumberList = numericString2List(userInput);
+        List<Integer> testResult = userAnswerTesting();
+        printTestResult(testResult);
 
         System.out.println("게임이 종료되었습니다.");
+    }
+
+    /**
+     * 입력 및 결괏값 비교 출력
+     *
+     * @param result 포매팅 된 입력값
+     */
+    public static void printTestResult(List<Integer> result) {
+        int none;
+        int ball;
+        int strike;
+
+        none = result.get(BallType.NONE.value);
+        if (none == LENGTH_OF_CORRECTION_ANSWER) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        ball = result.get(BallType.BALL.value);
+        strike = result.get(BallType.STRIKE.value);
+
+        if (ball != 0) {
+            System.out.print(ball + "볼 ");
+        }
+
+        if (strike != 0) {
+            System.out.print(ball + "스트라이크");
+        }
+
+        System.out.println();
+    }
+
+    /**
+     * 숫자 야구의 전체 검사 요소
+     *
+     * @return 검사 결과
+     */
+    public static List<Integer> userAnswerTesting() {
+        final Integer[] answerList = {0, 0, 0};
+        int answer;
+        for (int i = 0; i < userNumberList.size(); ++i) {
+            answer = answerElementTesting(i, userNumberList.get(i)).value;
+            answerList[answer]++;
+        }
+        return Arrays.asList(answerList);
+    }
+
+    /**
+     * 숫자 야구의 단일 요소 검사
+     *
+     * @param index 검사할 인덱스
+     * @param value 검사할 값
+     * @return 인덱스와 값이 일치할경우 Strike, 값만 일치하는 경우 Ball 그렇지 않은 경우 None
+     */
+    public static BallType answerElementTesting(int index, int value) {
+        if (randomNumberList.get(index) == value) {
+            return BallType.STRIKE;
+        }
+        if (randomNumberList.contains(value)) {
+            return BallType.BALL;
+        }
+
+        return BallType.NONE;
     }
 
     /**
