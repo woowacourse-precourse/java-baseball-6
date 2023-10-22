@@ -28,4 +28,37 @@ public class Game {
         }
         return answer;
     }
+
+    public String getInput() {
+        
+    }
+
+    public List<Integer> convertStringInputToIntegerList(String stringInput) {
+
+    }
+
+    public void isCorrect() {
+
+    }
+
+    public void getStrikeBallCount() {
+
+    }
+
+    public void getStrikeCount() {
+
+    }
+
+    public void getBallCount() {
+
+    }
+
+    public void printResult() {
+
+    }
+
+    public void checkFinish() {
+
+    }
+
 }
