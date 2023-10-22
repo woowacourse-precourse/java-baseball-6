@@ -20,6 +20,7 @@ public class Application {
             }
         }
         //사용자 입력값 받기
+        System.out.print("숫자를 입력해주세요 : ");
         String inputValue = readLine();
 
         //사용자가 잘못된 값을 입력한 경우 오류 던지기
@@ -56,6 +57,8 @@ public class Application {
         }
 
         //  사용자가 입력한 값이 정답인 경우, 정답임을 알려주고 다시 게임을 진행할지 판단하는 로직
+
+        //  정답이 아니라면, 힌트 출력해주는 로직
 
         }
 
