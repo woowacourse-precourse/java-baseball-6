@@ -44,7 +44,7 @@
     - 게임 종료 메시지 출력
 
 ### controller
-1. GameComputer
+1. GameController
 	- 게임 진행
         - 게임 시작
         - 정답 맞출 때까지 반복
