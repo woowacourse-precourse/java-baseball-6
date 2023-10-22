@@ -2,24 +2,35 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import java.util.List;
-
 public class MessageManager extends Messages {
-    private String inputResponse;
+    private String userAnswerNumber;
+    private String willContinueResponse;
     public void showIntro() {
         System.out.print(super.getIntroMessage());
         System.out.println();
     }
 
-    public String getUserInput() {
+    public String getUserAnswerNumber() {
         System.out.print(super.getInputMessage());
-        inputResponse = readLine();
+        userAnswerNumber = readLine();
         System.out.println();
-        return inputResponse;
+
+        return userAnswerNumber;
     }
 
     public void showAnswer(Data data, GameProcessor gameProcessor, MessageManager messageManager) {
         System.out.println(gameProcessor.generateAnswerText(data, messageManager));
+    }
+
+    public String getUserContinueResponse() {
+        System.out.print(super.getOutroMessage());
+        System.out.println();
+
+        System.out.println(super.getWillRestartMessage());
+        willContinueResponse = readLine();
+        System.out.println();
+
+        return willContinueResponse;
     }
 
 //    public void showMessage(GameProcessor gameProcessor, String message) {
