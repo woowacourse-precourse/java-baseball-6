@@ -16,9 +16,17 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randomScore = this.computer.getRandomScore();
         while (true) {
-            List<Integer> userScore = this.user.getNumberFromUser();
+            try {
+                List<Integer> userScore = this.user.getNumberFromUser();
+                if (this.printGameResult(this.compareScores(randomScore, userScore))) {
+                    break;
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
 
         }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
     }
 
@@ -39,5 +47,30 @@ public class Game {
         return Arrays.asList(strikes, balls);
     }
 
-    
+    private boolean printGameResult(List<Integer> result) {
+        int strikes = result.get(0);
+        int balls = result.get(1);
+
+        if (strikes == 3) {
+            System.out.println("3스트라이크");
+            return true;
+        } else {
+            String message = "";
+            if (strikes > 0) {
+                message += strikes + "스트라이크";
+            }
+            if (balls > 0) {
+                if (!message.isEmpty()) {
+                    message += " ";
+                }
+                message += balls + "볼";
+            }
+            if (message.isEmpty()) {
+                message = "낫싱";
+            }
+            System.out.println(message);
+        }
+        return strikes == 3;
+    }
+
 }
