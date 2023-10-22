@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public final class BaseBallNumbers {
+public final class AnswerNumbers {
 
     public static final int MAX_BASE_BALL_SIZE = 3;
     public static final int MIN_BASE_BALL_NUMBER = 1;
@@ -14,21 +14,21 @@ public final class BaseBallNumbers {
 
     private final List<Integer> baseballNumbers;
 
-    private BaseBallNumbers(List<Integer> numbers) {
+    private AnswerNumbers(List<Integer> numbers) {
         this.baseballNumbers = numbers;
     }
 
-    private BaseBallNumbers(IntStream numbers) {
+    private AnswerNumbers(IntStream numbers) {
         this.baseballNumbers = new ArrayList<>();
         numbers.forEach(this::add);
     }
 
-    public static BaseBallNumbers empty() {
-        return new BaseBallNumbers(new ArrayList<>());
+    public static AnswerNumbers empty() {
+        return new AnswerNumbers(new ArrayList<>());
     }
 
-    public static BaseBallNumbers of(IntStream numbers) {
-        return new BaseBallNumbers(numbers);
+    public static AnswerNumbers of(IntStream numbers) {
+        return new AnswerNumbers(numbers);
     }
 
     public int size() {

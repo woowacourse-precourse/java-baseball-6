@@ -2,14 +2,14 @@ package baseball.domain;
 
 public class ComputerPlayer implements MatchPlayer {
 
-    private final BaseBallNumbers answer;
+    private final AnswerNumbers answer;
 
     public ComputerPlayer(BaseBallNumberGenerator numberGenerator) {
         this.answer = numberGenerator.create();
     }
 
     @Override
-    public BaseBallHint getHintOf(BaseBallNumbers baseBallNumber) {
+    public BaseBallHint getHintOf(AnswerNumbers baseBallNumber) {
         final int ball = countBall(baseBallNumber);
         final int strike = countStrike(baseBallNumber);
         return new BaseBallHint(
@@ -18,18 +18,18 @@ public class ComputerPlayer implements MatchPlayer {
         );
     }
 
-    private int countBall(BaseBallNumbers baseBallNumbers) {
+    private int countBall(AnswerNumbers answerNumbers) {
         int ballCount = 0;
-        for (int number : baseBallNumbers.get()) {
+        for (int number : answerNumbers.get()) {
             if(answer.isBall(number)) ballCount++;
         }
         return ballCount;
     }
 
-    private int countStrike(BaseBallNumbers baseBallNumbers) {
+    private int countStrike(AnswerNumbers answerNumbers) {
         int strikeCount = 0;
-        for (int i = 0; i < baseBallNumbers.size() ; i++) {
-            int number = baseBallNumbers.get().get(i);
+        for (int i = 0; i < answerNumbers.size() ; i++) {
+            int number = answerNumbers.get().get(i);
             if (answer.isStrike(number, i)) strikeCount++;
         }
         return strikeCount;

@@ -2,5 +2,5 @@ package baseball.domain;
 
 public interface BaseBallGame {
 
-    BaseBallHint checkBaseBallNumber(BaseBallNumbers baseBallNumber);
+    BaseBallHint checkBaseBallNumber(AnswerNumbers baseBallNumber);
 }

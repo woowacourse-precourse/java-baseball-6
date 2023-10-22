@@ -3,7 +3,7 @@ package baseball;
 import baseball.domain.BaseBallGame;
 import baseball.domain.BaseBallHint;
 import baseball.domain.BaseBallNumberGenerator;
-import baseball.domain.BaseBallNumbers;
+import baseball.domain.AnswerNumbers;
 import baseball.domain.ComputerPlayer;
 import baseball.domain.MatchPlayer;
 import baseball.domain.RandomBaseBallNumberGenerator;
@@ -34,7 +34,7 @@ public class Application {
 
     private static void playBaseBallGame(Player player, BaseBallGame game) {
         while (true) {
-            final BaseBallNumbers userNumbers = player.getBaseballNumbers();
+            final AnswerNumbers userNumbers = player.getBaseballNumbers();
             final BaseBallHint hint = game.checkBaseBallNumber(userNumbers);
             player.printBaseBallHint(hint);
             if (hint.hasThreeStrike()) {

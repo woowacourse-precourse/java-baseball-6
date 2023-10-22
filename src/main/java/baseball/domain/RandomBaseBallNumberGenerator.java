@@ -7,19 +7,19 @@ import exception.OutOfBaseBallNumbersSize;
 public final class RandomBaseBallNumberGenerator implements BaseBallNumberGenerator {
 
     @Override
-    public BaseBallNumbers create() {
-        BaseBallNumbers baseballNumbers = BaseBallNumbers.empty();
-        while (baseballNumbers.size() < BaseBallNumbers.MAX_BASE_BALL_SIZE) {
+    public AnswerNumbers create() {
+        AnswerNumbers baseballNumbers = AnswerNumbers.empty();
+        while (baseballNumbers.size() < AnswerNumbers.MAX_BASE_BALL_SIZE) {
             addBaseBallNumber(baseballNumbers);
         }
         return baseballNumbers;
     }
 
     private int createRandomNumber() {
-        return Randoms.pickNumberInRange(BaseBallNumbers.MIN_BASE_BALL_NUMBER, BaseBallNumbers.MAX_BASE_BALL_NUMBER);
+        return Randoms.pickNumberInRange(AnswerNumbers.MIN_BASE_BALL_NUMBER, AnswerNumbers.MAX_BASE_BALL_NUMBER);
     }
 
-    private void addBaseBallNumber(BaseBallNumbers baseballNumbers) {
+    private void addBaseBallNumber(AnswerNumbers baseballNumbers) {
         try {
             int number = createRandomNumber();
             baseballNumbers.add(number);

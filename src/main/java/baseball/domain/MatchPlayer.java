@@ -2,5 +2,5 @@ package baseball.domain;
 
 public interface MatchPlayer {
 
-    BaseBallHint getHintOf(BaseBallNumbers baseBallNumber);
+    BaseBallHint getHintOf(AnswerNumbers baseBallNumber);
 }

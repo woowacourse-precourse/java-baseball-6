@@ -4,7 +4,7 @@ public interface Player {
 
     void showStartGameMessage();
 
-    BaseBallNumbers getBaseballNumbers();
+    AnswerNumbers getBaseballNumbers();
 
     boolean checkRestart();
 
