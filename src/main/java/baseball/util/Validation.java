@@ -9,6 +9,19 @@ public class Validation {
         return number.contains("0");
     }
 
+    public void validNumber(String number) {
+
+        if (containsZero(number)) {
+            throw new IllegalArgumentException("입력 문자열에 0이 포함되었습니다.");
+        } else if (validLength(number, MAX_INPUT_LENGTH)) {
+            throw new IllegalArgumentException("입력 문자열의 길이가 3이 되어야 합니다.");
+        } else if (containsLetter(number, MAX_INPUT_LENGTH)) {
+            throw new IllegalArgumentException("입력 문자열은 숫자이어야 합니다.");
+        } else if (duplicateNumber(number)) {
+            throw new IllegalArgumentException("입력 문자열은 서로 다른 3자리 수이어야 합니다.");
+        }
+    }
+
     private boolean containsLetter(String number, int maxLength) {
         String tmp = number.replaceAll("[^1-9]", "");
 
