@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.config.Config;
 import baseball.domain.BaseballNumbers;
+import baseball.domain.Command;
 import baseball.util.Parser;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -11,8 +12,7 @@ public class InputView {
     private static final String MSG_GAME_OVER = Config.getMaxNumbers() + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String MSG_ASK_IF_CONTINUES = "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요. %n";
     public static final String MSG_EXCEPTION_INVALID_INPUT = "올바르지 않은 입력값입니다.";
-    public static final String EXIT = "2";
-    public static final String RESTART = "1";
+
 
     public static void printStart() {
         System.out.println(MSG_START);
@@ -24,7 +24,7 @@ public class InputView {
 
     public static void printGameOver() {
         System.out.println(MSG_GAME_OVER);
-        System.out.printf(MSG_ASK_IF_CONTINUES, RESTART, EXIT);
+        System.out.printf(MSG_ASK_IF_CONTINUES, Command.getRestart(), Command.getExit());
     }
 
     public static String getUserInput() { return Console.readLine(); }

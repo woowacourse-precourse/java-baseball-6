@@ -1,8 +1,7 @@
 package baseball.util;
 
 import baseball.config.Config;
-import baseball.view.InputView;
-
+import baseball.domain.Command;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,7 @@ public class Validator {
     }
 
     public static boolean isInvalid(String restartInput) {
-        return !restartInput.equals(InputView.RESTART) && !restartInput.equals(InputView.EXIT);
+        return !restartInput.equals(Command.getRestart()) && !restartInput.equals(Command.getExit());
     }
 
     private static boolean isNotValidDigits(List<Integer> userNumbers){

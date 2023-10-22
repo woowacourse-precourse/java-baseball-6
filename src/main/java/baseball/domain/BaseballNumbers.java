@@ -3,7 +3,6 @@ package baseball.domain;
 import baseball.util.Validator;
 import baseball.view.InputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumbers {

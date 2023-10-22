@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.config.Config;
 import baseball.domain.BaseballNumbers;
+import baseball.domain.Command;
 import baseball.service.GameService;
 import baseball.domain.Result;
 import baseball.util.Validator;
@@ -34,13 +35,11 @@ public class GameController {
     }
 
     private void restartOrNot(String input) {
-        validateRestartInput(input);
-        if(input.equals(InputView.EXIT)) playing = false;
-        if(input.equals(InputView.RESTART)) init();
+        Command.validate(input);
+        if(input.equals(Command.getExit())) playing = false;
+        if(input.equals(Command.getRestart())) init();
     }
 
-    public static void validateRestartInput(String input) {
-        if(Validator.isInvalid(input)) throw new IllegalArgumentException(InputView.MSG_EXCEPTION_INVALID_INPUT);
-    }
+
 
 }

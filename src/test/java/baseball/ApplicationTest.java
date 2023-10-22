@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.controller.GameController;
 import baseball.domain.BaseballNumbers;
+import baseball.domain.Command;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -79,7 +80,7 @@ class ApplicationTest extends NsTest {
     @ParameterizedTest
     @CsvSource({ "4", "54", "654", "재시작", "종료" })
     void 예외_테스트_재시작_혹은_종료_외_입력(String input) {
-        assertThatThrownBy(() -> GameController.validateRestartInput(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Command.validate(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
