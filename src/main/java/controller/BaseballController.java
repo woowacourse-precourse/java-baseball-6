@@ -29,7 +29,6 @@ public class BaseballController {
         StartView.startView();
         while (true) {
             List<Integer> answer = CreateRandomNumber.createRandomNumber();
-            System.out.println(answer);
 
             while (true) {
                 List<Integer> userInput = InputView.userInput();

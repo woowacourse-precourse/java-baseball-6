@@ -28,7 +28,7 @@ public class ResultView {
             return true;
         } else if (result.get(0) == 0 && result.get(1) == 0) {
             System.out.println("낫싱");
-        } else {
+        } else if (0 <= result.get(0) && result.get(0) <= 2 && 0 <= result.get(1) && result.get(1) <= 2) {
             System.out.println(result.get(1) + "볼 " + result.get(0) + "스트라이크");
         }
         return false;
