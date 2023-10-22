@@ -16,7 +16,7 @@ public class TerminateNumber {
             return false;
         }
 
-        if (number.equals("1") || number.equals("2")) {
+        if (number.equals(ExitCode.CON.getExitCode()) || number.equals(ExitCode.EXIT.getExitCode())) {
             return true;
         } else {
             return false;
@@ -24,7 +24,7 @@ public class TerminateNumber {
     }
 
     public boolean isTerminate() {
-        if (number.equals("2")) {
+        if (number.equals(ExitCode.EXIT.getExitCode())) {
             return true;
         }
         return false;
