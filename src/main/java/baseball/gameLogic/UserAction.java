@@ -15,6 +15,11 @@ import static baseball.userInterface.InputViewer.requestUserRestartFactor;
 
 /*
  User의 행동들을 수행하는 클래스
+ 1. 컴퓨터의 난수에 대한 예측 값을 유저로부터 입력한다.
+ 2. 재시작 인자를 입력한다(유저의 게임 진행의지를 바꾼다.).
+ 3. 유저의 예측 값 리스트(답안)를 보여준다.
+ 4. 유저의 게임 지속 진행여부(mind)를 보여준다
+ 5. 유저의 답안(예측 값)을 지운다.
  */
 
 public class UserAction {

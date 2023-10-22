@@ -21,7 +21,9 @@ public class NumberBaseBall {
 
     int gameStatus;
 
-
+    /*
+    멤버 초기화
+     */
     public void init(){
         numberChecker = new NumberChecker();
         computerAction = new ComputerAction();
@@ -30,6 +32,16 @@ public class NumberBaseBall {
         gameStatus = WANNA_KEEP_PLAYING;
     }
 
+    /*
+    게임을 구동하는 함수
+    1. 컴퓨터 난수 생성 요청
+    2. 시작 문장 출력 요청
+    3. 유저 입력 요청
+    4. 점수 도출 요청
+    5. 점수 출력 요청
+    6. 게임을 계속 진행할 지 확인
+    이하 3. ~  6. 반복
+     */
     public void run(){
         generateComputerNumber();
         printStartMsg();
@@ -42,11 +54,9 @@ public class NumberBaseBall {
         }
     }
 
-    public void generateComputerNumber(){
-        generateNumber();
-        computerNumList = computerAction.showNumberList();
-    }
-
+    /*
+    아래 함수들의 기능은 함수 이름과 동일
+     */
     public void getScore(){
         score = numberChecker.checkNumber(userNumList, computerNumList);
     }
@@ -65,11 +75,11 @@ public class NumberBaseBall {
             userAction.inputRestartFactor();
             gameStatus = userAction.showMind();
 
-            generateNumber();
+            generateComputerNumber();
         }
     }
 
-    public void generateNumber(){
+    public void generateComputerNumber(){
         if (gameStatus == WANNA_KEEP_PLAYING) {
             computerAction.clearAnswer();
             computerAction.generateNumber();

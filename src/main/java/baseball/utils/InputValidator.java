@@ -5,7 +5,12 @@ import java.util.HashSet;
 import static baseball.utils.Constants.*;
 
 /*
- 주어진 입력이 올바른지 검증하는 클래스, 서로 다른 3자리 자연수, 재시작/종료를 구분하는 수 모두 검사한다.
+ 주어진 입력이 올바른지 검증하는 클래스
+ 1. 입력의 길이가 3인지
+ 2. 입력에 중복은 없는지
+ 3. 입력의 각 문자가 숫자가 맞는지
+ 4. 입력의 각 숫자가 1 ~ 9에 해당하는지
+ 5. 재시작 구분 입력이 1 혹은 2가 맞는지
  */
 
 public final class InputValidator {

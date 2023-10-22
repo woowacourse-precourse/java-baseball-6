@@ -11,6 +11,9 @@ import static baseball.utils.RandomNumberGenerator.pickRandomNumberValidRange;
 
 /*
   Computer의 행동들을 수행하는 클래스
+  1. 난수를 생성하여 저장한다.
+  2. 생성한 난수 리스트를 보여준다.
+  3. 생성한 난수 리스트(정답)를 지운다
 */
 
 public class ComputerAction {

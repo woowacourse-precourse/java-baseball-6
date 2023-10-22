@@ -5,8 +5,9 @@ import java.util.List;
 
 import static baseball.utils.InputValidator.*;
 /*
- Computer의 변수들을 기억하는 클래스
- */
+ 컴퓨터의 변수들을 기억하는 클래스
+ 유저는 컴퓨터의 답을 직접 알지는 못한다.
+*/
 
 public class Computer {
     private final List<Integer> numberList = new ArrayList<>();

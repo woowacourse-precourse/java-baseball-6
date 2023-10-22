@@ -2,6 +2,7 @@ package baseball.userInterface;
 
 /*
  화면 출력을 담당하는 클래스
+ 결과는 주어진 점수에 따라 다른 값을 출력한다.
  */
 
 public class MessageViewer {
