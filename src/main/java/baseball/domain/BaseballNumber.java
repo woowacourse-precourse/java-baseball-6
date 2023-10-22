@@ -8,7 +8,7 @@ public class BaseballNumber {
     private List<Integer> number;
 
     public BaseballNumber(String number) {
-        this.number = Util.stringToIntegerList(number);
+        this.number = Util.naturalNumberstringToIntegerList(number);
     }
 
     public BaseballNumber(List<Integer> computerNumber) {
@@ -20,7 +20,7 @@ public class BaseballNumber {
         List<Integer> computerNumberList = computerNumber.number;
         List<Integer> userNumberList = userNumber.number;
         baseballScore.addStrikeCount(Util.countSameValueSameIdxByIntegerList(computerNumberList, userNumberList));
-        baseballScore.addBallCount(Util.countSameValueDifferentIdxByList(computerNumberList, userNumberList));
+        baseballScore.addBallCount(Util.countSameValueDifferentIdxByIntegerList(computerNumberList, userNumberList));
         return baseballScore;
     }
 }
