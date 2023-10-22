@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
@@ -8,9 +7,7 @@ public class Application {
         // TODO: 프로그램 구현
         BaseballGame baseballGame = new BaseballGame();
 
-
         baseballGame.playGame();
-
 
     }
 }
