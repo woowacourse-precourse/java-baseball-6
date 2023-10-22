@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import baseball.domain.numbers.AnswerNumberGenerator;
+import baseball.domain.numbers.AnswerNumbers;
+import baseball.domain.numbers.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

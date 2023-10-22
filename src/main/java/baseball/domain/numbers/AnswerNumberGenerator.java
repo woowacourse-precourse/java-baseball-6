@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.numbers;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -18,7 +18,6 @@ public final class AnswerNumberGenerator implements NumberGenerator {
             int number = Randoms.pickNumberInRange(NUMBER_LOWER_BOUND, NUMBER_UPPER_BOUND);
             numbers.add(number);
         }
-
         return new ArrayList<>(numbers);
     }
 }
