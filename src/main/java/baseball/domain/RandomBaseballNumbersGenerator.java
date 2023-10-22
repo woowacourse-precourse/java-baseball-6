@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomNumbersGenerator implements NumbersGenerator {
+public class RandomBaseballNumbersGenerator implements BaseballNumbersGenerator {
 
     private static final int ANSWER_SIZE = 3;
     private static final int MIN_BASEBALL_NUMBER = 1;
