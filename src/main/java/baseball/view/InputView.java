@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.stream.Stream;
 import baseball.dto.request.GameRestartDto;
 import baseball.dto.request.PlayerNumbersDto;
-import baseball.util.InputValidator;
+import baseball.util.BlankValidator;
+import baseball.util.DigitsOnlyValidator;
+import baseball.util.SingleDigitValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -37,8 +39,8 @@ public class InputView {
     }
 
     private static void validatePlayerNumbers(String rawPlayerNumbers) {
-        InputValidator.validateBlank(rawPlayerNumbers);
-        InputValidator.validateNumberFormat(rawPlayerNumbers);
+        BlankValidator.validate(rawPlayerNumbers);
+        DigitsOnlyValidator.validate(rawPlayerNumbers);
     }
 
     public GameRestartDto scanGameRestart() {
@@ -54,8 +56,8 @@ public class InputView {
     }
 
     private void validateGameRestart(String rawGameRestart) {
-        InputValidator.validateBlank(rawGameRestart);
-        InputValidator.validateOneDigitNumber(rawGameRestart);
+        BlankValidator.validate(rawGameRestart);
+        SingleDigitValidator.validate(rawGameRestart);
     }
 
     private static class LazyHolder {
