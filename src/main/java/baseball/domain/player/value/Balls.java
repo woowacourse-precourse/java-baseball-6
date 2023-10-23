@@ -10,10 +10,6 @@ public class Balls {
         this.balls = balls;
     }
 
-    public List<Ball> getBalls() {
-        return balls;
-    }
-
     public Ball getBall(int index) {
         return balls.get(index);
     }
