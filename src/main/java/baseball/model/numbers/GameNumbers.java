@@ -18,7 +18,8 @@ public class GameNumbers {
         return numbers.contains(num);
     }
 
-    public boolean isEqualToAt(int index, Integer num) {
-        return numbers.get(index).equals(num);
+    public boolean isEqualToAt(int index, GameNumbers other) {
+        Integer integer = numbers.get(index);
+        return integer.equals(other.get(index));
     }
 }
