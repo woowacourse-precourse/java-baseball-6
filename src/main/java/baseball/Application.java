@@ -21,11 +21,15 @@ public class Application {
         }
     }
 
-    public static ArrayList<String> PlayerNumbers() {
+    public static ArrayList<Integer> PlayerNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String playerNumber = Console.readLine();
-        ArrayList<String> playerNumbers = new ArrayList<>();
-        playerNumbers.add(playerNumber);
+        String[] playerNumberArray = playerNumber.split("");
+
+        ArrayList<Integer> playerNumbers = new ArrayList<>();
+        for(int i=0; i<playerNumberArray.length; i++) {
+            playerNumbers.add(Integer.parseInt(playerNumberArray[i]));
+        }
         return playerNumbers;
     }
 }
