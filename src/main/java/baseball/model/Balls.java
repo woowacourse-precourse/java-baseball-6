@@ -6,6 +6,9 @@ import java.util.Objects;
 
 public class Balls {
 
+    private final int MIN_BALL_COUNT = 0;
+    private final int MAX_BALL_COUNT = 3;
+
     private final int ballCount;
 
     public Balls(RandomNumbers randomNumbers, UserInputNumbers userInputNumbers) {
@@ -14,8 +17,8 @@ public class Balls {
         this.ballCount = counts;
     }
 
-    private void validateCountRange(int strikeCount) {
-        if (strikeCount < 0 || strikeCount > 3) {
+    private void validateCountRange(int ballCount) {
+        if (valueNotBetweenZeroAndThree(ballCount)) {
             throw new IllegalArgumentException("볼 갯수는 0에서 3사이 입니다");
         }
     }
@@ -42,6 +45,10 @@ public class Balls {
 
     private boolean isStrike(Number userInputNumber, Number randomNumber) {
         return userInputNumber.equals(randomNumber);
+    }
+
+    private boolean valueNotBetweenZeroAndThree(int ballCount) {
+        return ballCount < MIN_BALL_COUNT || ballCount > MAX_BALL_COUNT;
     }
 
     public int getBallCount() {
