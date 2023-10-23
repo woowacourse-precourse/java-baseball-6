@@ -1,52 +1,46 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class inputView {
 
     private String inputNumber;
     private List<Integer> userNumberLst = new ArrayList<>();
 
-    public List<Integer> userInput()
-    {
-        printStartMessage();
+    InputException inputException = new InputException();
+
+
+    public List<Integer> userInput() {
+        printInputtMessage();
         userInputNumber();
-        userNumberLst=userInputNumberStringToList(inputNumber);
+        userNumberLst = userInputNumberStringToList(inputNumber);
 
-
-
+        inputException.checkInputExection(userNumberLst);
         return userNumberLst;
 
 
     }
 
-    public void printStartMessage()
-    {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    public void printInputtMessage() {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public void userInputNumber()
-    {
-        Scanner input = new Scanner(System.in);
+    public void userInputNumber() {
 
-
-        inputNumber=input.next();
+        inputNumber = Console.readLine();
 
 
     }
-    public List<Integer> userInputNumberStringToList(String str)
-    {
+
+    public List<Integer> userInputNumberStringToList(String str) {
         List<Integer> numLst = new ArrayList<>();
 
-
-        for(int i=0;i<str.length();i++)
-        {
+        for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
 
-            numLst.add(ch-'0');
+            numLst.add(ch - '0');
 
         }
         return numLst;
