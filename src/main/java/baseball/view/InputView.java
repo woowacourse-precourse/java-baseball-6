@@ -1,4 +1,5 @@
 package baseball.view;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -7,13 +8,11 @@ public class InputView {
 
     public static String inputNum() {
         System.out.print(INPUT_NUM_MESSAGE);
-        String inputNum = Console.readLine();
-        return inputNum;
+        return Console.readLine();
     }
 
-    public static int restart() {
+    public static String restart() {
         System.out.println(GAME_RESTART_MESSAGE);
-        int num = Integer.parseInt(Console.readLine());
-        return num;
+        return Console.readLine();
     }
 }
