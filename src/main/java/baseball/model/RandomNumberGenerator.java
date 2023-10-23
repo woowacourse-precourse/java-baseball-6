@@ -6,10 +6,11 @@ import java.util.List;
 
 public class RandomNumberGenerator {
 
+
     public List<Integer> generateRandomNumber() {
         List<Integer> randomNumber = new ArrayList<>();
 
-        while (randomNumber.size() < 3) {
+        while (randomNumber.size() < Number.NUMBER_SIZE) {
             int digit = Randoms.pickNumberInRange(1, 9);
             addUniqueNumber(randomNumber, digit);
         }

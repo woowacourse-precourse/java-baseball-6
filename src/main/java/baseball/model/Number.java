@@ -7,6 +7,7 @@ public class Number {
     public final int firstDigit;
     public final int secondDigit;
     public final int thirdDigit;
+    public static final int NUMBER_SIZE = 3;
 
     public Number(List<Integer> digits) {
         firstDigit = digits.get(0);
