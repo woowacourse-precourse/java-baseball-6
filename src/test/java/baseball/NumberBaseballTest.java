@@ -13,11 +13,11 @@ public class NumberBaseballTest extends NsTest {
     private final String 종료명령 = "2";
     private final String[] 예외명령들 = {"3", "ㄱ", "&", "a", "!"};
 
-    public void play(String command) {
+    public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         startGame();
 
-        while (isContinue(command)) {
+        while (isContinue(readLine())) {
             startGame();
         }
     }
@@ -80,6 +80,6 @@ public class NumberBaseballTest extends NsTest {
 
     @Override
     protected void runMain() {
-        play(readLine());
+        play();
     }
 }
