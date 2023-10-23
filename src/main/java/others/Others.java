@@ -1,5 +1,3 @@
-// Others.java
-
 package others;
 
 import static others.ExceptionHandling.restartException;
