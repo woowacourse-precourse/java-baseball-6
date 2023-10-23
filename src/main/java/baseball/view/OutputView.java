@@ -31,4 +31,8 @@ public class OutputView {
 
         System.out.println(message.toString().trim());
     }
+
+    public void printSuccessGuess() {
+        System.out.println(Message.GAME_END);
+    }
 }
