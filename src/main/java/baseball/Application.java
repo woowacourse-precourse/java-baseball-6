@@ -20,9 +20,9 @@ public class Application {
         }
     }
 
-    public static void inputThreeNumber(String userInput, Integer[] userNumbers) {
+    public static void inputThreeNumber(Integer[] userNumbers) {
         System.out.print("숫자를 입력해주세요 : ");
-        userInput = Console.readLine();
+        String userInput = Console.readLine();
 
         //입력값의 크기가 3개가 아닐 때 => 예외 발생
         if (userInput.length() != 3) {
@@ -84,12 +84,12 @@ public class Application {
         System.out.println();
     }
 
-    public static boolean restartOrExitGame(String userInput, List<Integer> selectNumber) {
+    public static boolean restartOrExitGame( List<Integer> selectNumber) {
         int exitNumber = 0;
         if (strikeCount == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            userInput = Console.readLine();
+            String userInput = Console.readLine();
 
             // 01과 같은 잘못된 형식으로 입력시, exitNumber != 1만으로 예외가 안잡힘
             if (userInput.length() != 1) {
@@ -97,9 +97,9 @@ public class Application {
             }
 
             try {
-                exitNumber= Integer.parseInt(userInput);
+                exitNumber = Integer.parseInt(userInput);
                 // 1~2의 범위를 벗어날 때 => 예외 발생
-                if ((exitNumber != 1) && (exitNumber !=2)) {
+                if ((exitNumber != 1) && (exitNumber != 2)) {
                     Application.throwException("1과 2중에 입력하세요.");
                 }
             } catch (NumberFormatException ex) {
@@ -124,7 +124,6 @@ public class Application {
     public static void main(String[] args) {
 
         // TODO: 프로그램 구현
-        String userInput = "";
         Integer[] userNumbers = new Integer[3];
 
         boolean isGameRunning = true;
@@ -139,14 +138,14 @@ public class Application {
             Application.initializeCounts();
 
             //3. 사용자 입력값 받기
-            Application.inputThreeNumber(userInput, userNumbers);
+            Application.inputThreeNumber(userNumbers);
 
             //4. 규칙에 따라 출력
             Application.calculateStrikeAndBall(selectNumber, userNumbers);
             Application.displayResult();
 
             //5. 게임 종료 후, 재시작 & 종료 선택
-            isGameRunning = Application.restartOrExitGame(userInput, selectNumber);
+            isGameRunning = Application.restartOrExitGame(selectNumber);
         }
     }
 }
