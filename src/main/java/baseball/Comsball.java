@@ -1,4 +1,3 @@
-
 package baseball;
 
 import java.util.ArrayList;
