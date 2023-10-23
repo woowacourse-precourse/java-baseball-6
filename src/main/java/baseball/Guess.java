@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Guess {
-    public static List<Integer> input;
+    private static List<Integer> input;
     private static int ball;
     private static int strike;
 
@@ -14,19 +14,20 @@ public class Guess {
         guessInput();
         guessCheck();
         guessPrint();
-        if (strike == 3) {
+        // 전부 스트라이크면 종료 페이즈로
+        if (strike == Variables.answerLength) {
             Application.onProcess = false;
         }
     }
 
-    public static void newGuess() {
+    private static void newGuess() {
         // Guess 클래스의 변수 초기화
         input = new ArrayList<>();
         ball = 0;
         strike = 0;
     }
 
-    public static void guessInput() {
+    private static void guessInput() {
         // 질문 출력
         System.out.printf(Text.inputText);
         // 인풋 받기 및 숫자의 List로 저장
@@ -38,7 +39,7 @@ public class Guess {
         }
     }
 
-    public static void guessCheck() {
+    private static void guessCheck() {
         // 볼 스트라이크 계산
         int i = 0;
         for (int num : input) {
@@ -50,7 +51,7 @@ public class Guess {
         }
     }
 
-    public static void guessPrint() {
+    private static void guessPrint() {
         // 계산 결과값 출력
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");

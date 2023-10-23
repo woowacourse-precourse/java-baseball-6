@@ -14,10 +14,10 @@ public class Init {
         System.out.println(Text.startingText);
         // 서로 다른 숫자로 구성된 3자리 숫자 랜덤 생성
         answer = generateNumber();
-//        System.out.println(answer);   // 테스트용
+        System.out.println(answer);   // 테스트용
     }
 
-    static List<Integer> generateNumber() {
+    private static List<Integer> generateNumber() {
         List<Integer> number = new ArrayList<>();
         while (number.size() < Variables.answerLength){
             int randomInt = Randoms.pickNumberInRange
@@ -29,4 +29,3 @@ public class Init {
         return number;
     }
 }
-
