@@ -35,6 +35,7 @@ public final class Numbers {
     }
 
     public boolean hasSameIndexAndValue(final Number number, final int index) {
-        return values.get(index).equals(number);
+        final Number value = values.get(index);
+        return value.equals(number);
     }
 }
