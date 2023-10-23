@@ -1,4 +1,4 @@
-package baseball.constant;
+package baseball.constants;
 
 public class Errors {
 

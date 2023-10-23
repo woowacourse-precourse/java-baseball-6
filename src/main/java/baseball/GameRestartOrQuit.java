@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.constant.Constants;
-import baseball.constant.Errors;
+import baseball.constants.Constants;
+import baseball.constants.Errors;
 
 public class GameRestartOrQuit {
 

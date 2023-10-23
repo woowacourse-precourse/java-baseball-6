@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.constant.Constants;
+import baseball.constants.Constants;
 
 public class Printer {
 
