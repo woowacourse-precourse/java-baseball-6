@@ -10,5 +10,6 @@ public class BaseballMessageConst {
 
     public static final String NOT_BALL_SIZE_THREE = "공이 3개가 아닙니다.";
     public static final String EXIST_BALL = "중복된 공이 존재합니다.";
+    public static final String OUT_OF_RANGE_BALL = "범위에 벗어났습니다.";
 
 }
