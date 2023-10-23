@@ -346,7 +346,7 @@ class ApplicationTest extends NsTest {
         assertThat(result7.toString().strip()).isEqualTo("2볼 1스트라이크");
     }
 
-    @DisplayName("게임 재시작/종료 입력 예외 처리 메서드 테스트")
+    @DisplayName("게임 재시작/종료 입력 메서드 예외처리 테스트")
     @Test
     public void selectRestartOrExitExceptionTest() {
         // given
@@ -389,6 +389,26 @@ class ApplicationTest extends NsTest {
         assertThat(throwable5)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("1 또는 2만 입력해야합니다.");
+    }
+
+    @DisplayName("게임 재시작/종료 입력 메서드 정상처리 테스트")
+    @Test
+    public void selectRestartOrExitTest() {
+        // given
+        final String input1 = "1";
+        final String input2 = "2";
+
+        // when
+        final Throwable throwable1 = catchThrowable(() -> {
+            Player.isOneOrTwo(input1);
+        });
+        final Throwable throwable2 = catchThrowable(() -> {
+            Player.isOneOrTwo(input2);
+        });
+
+        // then
+        assertThat(throwable1).doesNotThrowAnyException();
+        assertThat(throwable2).doesNotThrowAnyException();
     }
 
     @Override
