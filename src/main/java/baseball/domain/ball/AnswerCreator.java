@@ -7,19 +7,22 @@ import java.util.Set;
 
 public final class AnswerCreator {
 
-  private final NumberPicker numberPicker;
+    private final NumberPicker numberPicker;
 
-  public AnswerCreator(final NumberPicker numberPicker) {
-    this.numberPicker = numberPicker;
-  }
-
-  public Answer create() {
-    final Set<Integer> set = new HashSet<>();
-
-    while (set.size() < BallNumbers.BALL_COUNT) {
-      set.add(numberPicker.pick());
+    public AnswerCreator(final NumberPicker numberPicker) {
+        this.numberPicker = numberPicker;
     }
 
-    return Answer.of(new ArrayList<>(set));
-  }
+    public Answer create() {
+        final Set<Integer> set = fillUntilHasThreeBallNumbers(new HashSet<>());
+        return Answer.of(new ArrayList<>(set));
+    }
+
+    private Set<Integer> fillUntilHasThreeBallNumbers(final Set<Integer> set) {
+        set.add(numberPicker.pick());
+        if (set.size() < BallNumbers.BALL_COUNT) {
+            return fillUntilHasThreeBallNumbers(set);
+        }
+        return set;
+    }
 }
