@@ -1,27 +1,27 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallPlay {
   private final String ENTER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-  private Strike strike;
-  private Ball ball;
-  private UserNums userNums ;
-  public int play(ComNums comNums){
+  private static Strike strike;
+  private static Ball ball;
+  private static UserNums userNums ;
+  private static ComNums comNums;
+  public int play(){
     System.out.println(ENTER_INPUT_MESSAGE);
-    this.userNums = new UserNums(createUserNums());
     this.strike = new Strike(0);
     this.ball = new Ball(0);
-    for(int i = 0; i < comNums.size(); i++) {
-      if(userNums.contains(comNums.get(i)) && userNums.get(i) == comNums.get(i)){
-        strike.increase();
-      } else if (userNums.contains(comNums.get(i)) && userNums.get(i) != comNums.get(i)) {
-        ball.increase();
-      }
-    }
+    createUserNums();
+
+    strikeAndBall();
+    return resultCheck();
+  }
+  public int resultCheck(){
     if(ball.getCount() == 0 && strike.getCount() == 0){
       System.out.println("낫싱");
     } else if (ball.getCount() == 0) {
@@ -33,7 +33,20 @@ public class BaseBallPlay {
     }
     return strike.getCount();
   }
-  List<Integer> createUserNums(){
+  public void strikeAndBall(){
+    for(int i = 0; i < comNums.size(); i++) {
+      if(userNums.contains(comNums.get(i)) && userNums.get(i) == comNums.get(i)){
+        strike.increase();
+      } else if (userNums.contains(comNums.get(i)) && userNums.get(i) != comNums.get(i)) {
+        ball.increase();
+      }
+    }
+  }
+  public void createComNums() {
+    comNums = new ComNums(Randoms.pickUniqueNumbersInRange(1,9,3));
+    comNums.getComNums().stream().forEach(System.out::println);
+  }
+  public void createUserNums(){
     List<String> user_str_list = List.of(Console.readLine().split(""));
     int num = 0;
     if(user_str_list.size() != 3){
@@ -55,6 +68,6 @@ public class BaseBallPlay {
         user_int_list.add(num);
       }
     }
-    return user_int_list;
+    userNums = new UserNums(user_int_list);
   }
 }
