@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ValidationTest extends NsTest {
@@ -105,6 +106,18 @@ public class ValidationTest extends NsTest {
         assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_retry,input_length))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[Err]");
+    }
+
+    @Test
+    void 사용자_게임_입력값_검증_통과_테스트(){
+        //given
+        String user_input_value = "123";
+
+        //when
+        boolean verify_result = GameValidation.verifyForGameValue(user_input_value,input_length);
+
+        //then
+        assertThat(verify_result).isTrue();
     }
 
     @Override
