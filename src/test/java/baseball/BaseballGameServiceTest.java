@@ -25,4 +25,21 @@ public class BaseballGameServiceTest {
         //then
         Assertions.assertEquals(3,ball);
     }
+    @Test
+    public void 스트라이크_개수_세는_테스트(){
+        //given
+        List<Integer> computer = new ArrayList<>();
+        computer.add(8);
+        computer.add(6);
+        computer.add(9);
+
+        List<Integer> user = new ArrayList<>();
+        user.add(7);
+        user.add(6);
+        user.add(9);
+        //when
+        int strike= baseballGameService.countStrike(computer, user);
+        //then
+        Assertions.assertEquals(2,strike);
+    }
 }
