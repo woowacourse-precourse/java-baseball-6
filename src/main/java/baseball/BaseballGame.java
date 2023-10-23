@@ -4,13 +4,15 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame {
+    private int randomNum;
+    private String answerComputer;
+
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         boolean isPlaying = true;
-        int randomNum = Randoms.pickNumberInRange(111, 999);
 
-        String answerComputer = Integer.toString(randomNum);
+        initAnswer();
         String answerPlayer;
 
         String messageScore;
@@ -26,7 +28,7 @@ public class BaseballGame {
 
             if (answerPlayer.equals(answerComputer)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                isPlaying = false;
+                isPlaying = restartGame();
             }
         } while (isPlaying);
     }
@@ -62,5 +64,24 @@ public class BaseballGame {
         }
 
         return messageScore;
+    }
+
+
+    public void initAnswer() {
+        int randomNum = Randoms.pickNumberInRange(111, 999);
+        this.answerComputer = Integer.toString(randomNum);
+    }
+
+    public boolean restartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String playerInput = Console.readLine();
+        boolean isRestart = true;
+        if (playerInput.equals("1")) {
+            initAnswer();
+        } else if (playerInput.equals("2")) {
+            isRestart = false;
+        }
+        return isRestart;
+
     }
 }
