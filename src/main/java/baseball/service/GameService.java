@@ -16,7 +16,7 @@ import static baseball.constant.NumberConst.*;
  */
 public class GameService {
 
-    public StringBuilder checkStrikeOrBall(int ballCount, int strikeCount) {
+    public StringBuilder createResultMessageForInput(int ballCount, int strikeCount) {
         StringBuilder outputResult = new StringBuilder();
         if (ballCount == 0 && strikeCount == 0) {
             outputResult.append(NOTHING);
@@ -34,7 +34,7 @@ public class GameService {
         return outputResult;
     }
 
-    public List<Integer> generateRandomDistinctThreeDigit() {
+    public List<Integer> createRandomDistinctThreeDigit() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < INPUT_LENGTH) {
             int randomNum = Randoms.pickNumberInRange(START_NUM, END_NUM);

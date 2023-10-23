@@ -35,13 +35,13 @@ public class GameController {
         }
     }
 
-    public void checkStrikeOrBall(int ballCount, int strikeCount) {
-        StringBuilder outputResult = gameService.checkStrikeOrBall(ballCount, strikeCount);
+    public void printResultMessageForInput(int ballCount, int strikeCount) {
+        StringBuilder outputResult = gameService.createResultMessageForInput(ballCount, strikeCount);
         System.out.println(outputResult);
     }
 
-    public List<Integer> generateRandomDistinctThreeDigit() {
-        return gameService.generateRandomDistinctThreeDigit();
+    public List<Integer> createRandomDistinctThreeDigit() {
+        return gameService.createRandomDistinctThreeDigit();
     }
 
     public void countStrikeOrBall(GameInfo gameInfo, String userInput) {

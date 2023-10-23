@@ -8,11 +8,11 @@ public class BaseballGame {
 
     public void run() {
         GameInfo gameInfo = new GameInfo();
-        gameInfo.createRandomNumber(gameController.generateRandomDistinctThreeDigit());
+        gameInfo.createRandomNumber(gameController.createRandomDistinctThreeDigit());
         while (gameInfo.getStrike() < 3) {
             String userInput = gameController.getUserInput();
             gameController.countStrikeOrBall(gameInfo, userInput);
-            gameController.checkStrikeOrBall(gameInfo.getBall(), gameInfo.getStrike());
+            gameController.printResultMessageForInput(gameInfo.getBall(), gameInfo.getStrike());
         }
         gameController.controlRestartOrExit();
     }

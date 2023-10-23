@@ -70,7 +70,7 @@ class InputValidationTest {
 
     @Test
     @DisplayName("입력된 문자열의 정수들이 서로 다른지 테스트")
-    void validateUniqueIntegers() {
+    void validateUniqueIntegersTest() {
         // given
         InputValidation inputValidation = new InputValidation();
 
