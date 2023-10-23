@@ -1,4 +1,4 @@
-package baseball.domain.converter;
+package baseball.util.converter;
 
 import java.util.Arrays;
 import java.util.List;
