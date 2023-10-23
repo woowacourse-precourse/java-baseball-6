@@ -12,6 +12,10 @@ public class BaseballGame {
         checkNumbers();
     }
 
+    public void sayHello(ConsoleLogger consoleLogger){
+        consoleLogger.print("숫자 야구 게임을 시작합니다.");
+    }
+
     private void checkNumbers() {
         assert (numbers.length == 3);
         Set<Integer> set = new HashSet<>();

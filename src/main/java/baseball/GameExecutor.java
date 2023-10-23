@@ -6,9 +6,11 @@ import java.util.Set;
 
 public class GameExecutor {
     private BaseballGame game;
+    private ConsoleLogger consoleLogger;
 
     public GameExecutor() {
         game = new BaseballGame(getRandomNumbers());
+        consoleLogger = new ConsoleLogger();
     }
 
     private int[] getRandomNumbers() {
@@ -22,5 +24,9 @@ public class GameExecutor {
         return result.stream()
                 .mapToInt(Integer::intValue)
                 .toArray();
+    }
+
+    public void run(){
+        game.sayHello(consoleLogger);
     }
 }
