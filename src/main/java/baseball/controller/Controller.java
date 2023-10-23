@@ -14,16 +14,16 @@ public class Controller {
 
     private final Baseball baseball;
     private final Computer computer;
-    private final Player player;
     private final InputView inputView;
     private final OutputView outputView;
+    private final Player player;
 
-    public Controller() {
-        this.baseball = new Baseball();
-        this.computer = new Computer();
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
-        this.player = new Player();
+    public Controller(Baseball baseball, Computer computer, InputView inputView, OutputView outputView, Player player) {
+        this.baseball = baseball;
+        this.computer = computer;
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.player = player;
     }
 
     public void playGame() {
