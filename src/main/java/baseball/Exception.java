@@ -10,8 +10,6 @@ public class Exception {
         }
     }
 
-    public void checkNumbers(){
-
     public static void checkUserInput(char[] userInput){
         checkNumbers(userInput);
         checkDigits(userInput);
@@ -19,6 +17,13 @@ public class Exception {
     }
 
     public void  checkDigits(){
+    public static void checkNumbers(char[] userInput){
+        for (char c : userInput) {
+            if ((int) c < 49 || (int) c > 57) {
+                throw new IllegalArgumentException("프로그램 종료");
+            }
+        }
+    }
 
     }
 
