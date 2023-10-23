@@ -5,6 +5,10 @@ public class GameStatus {
     private int strikeCnt;
     private int ballCnt;
 
+    public GameStatus() {
+        reset();
+    }
+
     public void updateStrikeCnt(int strikeCnt) {
         this.strikeCnt = strikeCnt;
     }

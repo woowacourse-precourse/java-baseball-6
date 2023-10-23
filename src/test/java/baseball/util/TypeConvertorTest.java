@@ -3,6 +3,8 @@ package baseball.util;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -19,13 +21,10 @@ class TypeConvertorTest {
                 .doesNotContain(4, 5);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"1a2", "1*2", "aaksdanl", "테스트", "   "})
     @DisplayName("문자열에 숫자가 아닌 다른 값이 들어오면 에러가 발생한다.")
-    void shouldThrowExceptionWhenIsNotNumber() {
-        assertThrows(IllegalArgumentException.class, () -> TypeConvertor.stringToIntegerList("1a2"));
-        assertThrows(IllegalArgumentException.class, () -> TypeConvertor.stringToIntegerList("1*2"));
-        assertThrows(IllegalArgumentException.class, () -> TypeConvertor.stringToIntegerList("aaksdanl"));
-        assertThrows(IllegalArgumentException.class, () -> TypeConvertor.stringToIntegerList("테스트"));
-        assertThrows(IllegalArgumentException.class, () -> TypeConvertor.stringToIntegerList("   "));
+    void shouldThrowExceptionWhenIsNotNumber(String input) {
+        assertThrows(IllegalArgumentException.class, () -> TypeConvertor.stringToIntegerList(input));
     }
 }

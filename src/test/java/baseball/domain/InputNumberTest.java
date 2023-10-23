@@ -3,6 +3,8 @@ package baseball.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -10,22 +12,28 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class InputNumberTest {
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({
+            "0, 2, 6",
+            "1, 0, 3",
+            "1, 2, 0",
+            "1, 0, 0",
+            "0, 0, 0"
+    })
     @DisplayName("입력값에 0이 있으면 예외 발생")
-    void shouldThrowExceptionWhenInputContainsZero() {
-        assertThrows(IllegalArgumentException.class, () -> InputNumber.create(List.of(0, 2, 6)));
-        assertThrows(IllegalArgumentException.class, () -> InputNumber.create(List.of(1, 0, 3)));
-        assertThrows(IllegalArgumentException.class, () -> InputNumber.create(List.of(1, 2, 0)));
-        assertThrows(IllegalArgumentException.class, () -> InputNumber.create(List.of(1, 0, 0)));
-        assertThrows(IllegalArgumentException.class, () -> InputNumber.create(List.of(0, 0, 0)));
+    void shouldThrowExceptionWhenInputContainsZero(int first, int second, int third) {
+        assertThrows(IllegalArgumentException.class, () -> InputNumber.create(List.of(first, second, third)));
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({
+            "1, 1, 1",
+            "6, 2, 6",
+            "3, 5, 5"
+    })
     @DisplayName("입력값이 중복이 존재하면 예외 발생")
-    void shouldThrowExceptionWhenDuplicate() {
-        assertThrows(IllegalArgumentException.class, () -> InputNumber.create(List.of(1, 1, 1)));
-        assertThrows(IllegalArgumentException.class, () -> InputNumber.create(List.of(1, 2, 2)));
-        assertThrows(IllegalArgumentException.class, () -> InputNumber.create(List.of(1, 2, 1)));
+    void shouldThrowExceptionWhenDuplicate(int first, int second, int third) {
+        assertThrows(IllegalArgumentException.class, () -> InputNumber.create(List.of(first, second, third)));
     }
 
     @Test

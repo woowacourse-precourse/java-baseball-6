@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -33,7 +34,8 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"asd", "                 ", "&@!&asd", "12A"})
-    void 예외_테스트_문자_입력(String input) {
+    @DisplayName("문자 입력 예외 테스트")
+    void shouldThrowExceptionWhenDuplicate(String input) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -42,6 +44,7 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"120", "051", "000", "102"})
+    @DisplayName("0 입력 예외 테스트")
     void 예외_테스트_0_입력(String input) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input))
@@ -51,6 +54,7 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"122", "414", "555", "522"})
+    @DisplayName("중복 숫자 입력 예외 테스트")
     void 예외_테스트_중복_숫자_입력(String input) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input))
