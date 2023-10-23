@@ -17,6 +17,7 @@ public class InputValidator {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INTEGER.getMessage());
         }
     }
+
     public void validateNoDuplicate(String userInput){
         if (userInput.chars().distinct().count()!=userInput.length())
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.getMessage());
@@ -31,5 +32,4 @@ public class InputValidator {
         if (!(userInput.equals("1") || userInput.equals("2")))
             throw new IllegalArgumentException(ErrorMessage.INVALID_CHOICE.getMessage());
     }
-
 }

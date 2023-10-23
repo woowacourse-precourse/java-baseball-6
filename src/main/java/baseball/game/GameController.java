@@ -25,7 +25,6 @@ public class GameController {
 
     public void initializeGameSession(){
         computerNumbers = computerNumberGenerator.makeUniqueNumbers();
-
         outputView.printStartMessage();
     }
 

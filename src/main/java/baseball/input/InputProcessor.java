@@ -6,7 +6,6 @@ public class InputProcessor {
     private final InputHandler inputHandler;
     private final InputValidator inputValidator;
 
-
     public InputProcessor(InputHandler inputHandler, InputValidator inputValidator) {
         this.inputHandler = inputHandler;
         this.inputValidator = inputValidator;

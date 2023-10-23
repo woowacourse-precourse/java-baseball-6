@@ -7,7 +7,6 @@ public class ResultFormatter {
         }
         if (strike==0 && ball>0){
             return ball+ GameMessage.BALL.getMessage();
-
         }
         if (strike>0 && ball==0){
             return strike+ GameMessage.STRIKE.getMessage();
