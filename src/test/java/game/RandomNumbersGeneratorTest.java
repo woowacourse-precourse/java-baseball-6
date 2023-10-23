@@ -1,5 +1,7 @@
 package game;
 
+import static game.RandomNumbersGenerator.getRandomNumbers;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,9 +9,9 @@ class RandomNumbersGeneratorTest {
 
     @Test
     @DisplayName("중복없는 랜덤한 수 생성 테스트")
-    void getRandomNumbers() {
+    void getRandomNumbersTest() {
         // given
-        String randomNumbers = RandomNumbersGenerator.getRandomNumbers();
+        String randomNumbers = getRandomNumbers();
         System.out.println("randomNumbers = " + randomNumbers);
     }
 }

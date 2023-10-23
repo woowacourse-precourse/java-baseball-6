@@ -1,7 +1,9 @@
 package game;
 
+import static game.CountsMessage.toMessage;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import constants.MessageConstants;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class CountsMessageTest {
@@ -13,10 +15,10 @@ class CountsMessageTest {
         int strike = 0;
 
         //when
-        String result = CountsMessage.toMessage(ball, strike);
+        String result = toMessage(ball, strike);
 
         //then
-        Assertions.assertThat(result).isEqualTo(MessageConstants.NOTHING_MESSAGE);
+        assertThat(result).isEqualTo(MessageConstants.NOTHING_MESSAGE);
     }
 
     @Test
@@ -26,10 +28,10 @@ class CountsMessageTest {
         int strike = 2;
 
         //when
-        String result = CountsMessage.toMessage(ball, strike);
+        String result = toMessage(ball, strike);
 
         //then
-        Assertions.assertThat(result).isEqualTo("1볼 2스트라이크");
+        assertThat(result).isEqualTo("1볼 2스트라이크");
     }
 
     @Test
@@ -39,10 +41,10 @@ class CountsMessageTest {
         int strike = 1;
 
         //when
-        String result = CountsMessage.toMessage(ball, strike);
+        String result = toMessage(ball, strike);
 
         //then
-        Assertions.assertThat(result).isEqualTo("2볼 1스트라이크");
+        assertThat(result).isEqualTo("2볼 1스트라이크");
     }
 
     @Test
@@ -52,10 +54,10 @@ class CountsMessageTest {
         int strike = 0;
 
         //when
-        String result = CountsMessage.toMessage(ball, strike);
+        String result = toMessage(ball, strike);
 
         //then
-        Assertions.assertThat(result).isEqualTo("2볼");
+        assertThat(result).isEqualTo("2볼");
     }
 
     @Test
@@ -65,9 +67,9 @@ class CountsMessageTest {
         int strike = 3;
 
         //when
-        String result = CountsMessage.toMessage(ball, strike);
+        String result = toMessage(ball, strike);
 
         //then
-        Assertions.assertThat(result).isEqualTo("3스트라이크");
+        assertThat(result).isEqualTo("3스트라이크");
     }
 }

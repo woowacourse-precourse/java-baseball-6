@@ -1,5 +1,6 @@
 package client;
 
+import static client.Option.findByStatus;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
@@ -54,7 +55,7 @@ class OptionTest {
         String status = "2";
 
         //when
-        Option option = Option.findByStatus(status);
+        Option option = findByStatus(status);
 
         //then
         assertThat(option).isEqualTo(Option.FINISH);
@@ -68,8 +69,8 @@ class OptionTest {
         String finishStatus = "2";
 
         //when
-        boolean mustBeFalse = Option.findByStatus(continueStatus).isFinish();
-        boolean mustBeTrue = Option.findByStatus(finishStatus).isFinish();
+        boolean mustBeFalse = findByStatus(continueStatus).isFinish();
+        boolean mustBeTrue = findByStatus(finishStatus).isFinish();
 
         //then
         assertThat(mustBeFalse).isEqualTo(false);

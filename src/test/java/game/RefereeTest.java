@@ -1,5 +1,6 @@
 package game;
 
+import static game.Referee.judge;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import client.Ball;
@@ -14,7 +15,7 @@ class RefereeTest {
         Ball player = new Ball("234");
 
         //when
-        BallCounts bc = Referee.judge(computer, player);
+        BallCounts bc = judge(computer, player);
         String result = bc.toString();
 
         //then
@@ -28,7 +29,7 @@ class RefereeTest {
         Ball player = new Ball("273");
 
         //when
-        BallCounts bc = Referee.judge(computer, player);
+        BallCounts bc = judge(computer, player);
         String result = bc.toString();
 
         //then
@@ -42,7 +43,7 @@ class RefereeTest {
         Ball player = new Ball("123");
 
         //when
-        BallCounts bc = Referee.judge(computer, player);
+        BallCounts bc = judge(computer, player);
         String result = bc.toString();
 
         //then
@@ -56,7 +57,7 @@ class RefereeTest {
         Ball player = new Ball("124");
 
         //when
-        BallCounts bc = Referee.judge(computer, player);
+        BallCounts bc = judge(computer, player);
         String result = bc.toString();
 
         //then
@@ -70,7 +71,7 @@ class RefereeTest {
         Ball player = new Ball("456");
 
         //when
-        BallCounts bc = Referee.judge(computer, player);
+        BallCounts bc = judge(computer, player);
         String result = bc.toString();
 
         //then
