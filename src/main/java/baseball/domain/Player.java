@@ -1,7 +1,7 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Player {
     private final Numbers numbers;
@@ -15,10 +15,10 @@ public class Player {
     }
 
     private Numbers createPlayerNumbers(String input) {
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            numbers.add(input.charAt(i) - '0');
-        }
+        List<Integer> numbers = input.chars()
+                .map(c -> c - '0')
+                .boxed()
+                .collect(Collectors.toList());
         return new Numbers(numbers);
     }
 }
