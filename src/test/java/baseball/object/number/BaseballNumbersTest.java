@@ -1,6 +1,6 @@
 package baseball.object.number;
 
-import baseball.object.number.generator.OneTwoThreeOrFakeNumberGenerator;
+import baseball.object.number.generator.OneTwoThreeNumbersGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ class BaseballNumbersTest {
         Integer[] expectedNumbers = {1, 2, 3};
 
         BaseballNumbers baseballNumbers =
-                new BaseballNumbers(new OneTwoThreeOrFakeNumberGenerator());
+                new BaseballNumbers(new OneTwoThreeNumbersGenerator());
 
         Assertions.assertThat(baseballNumbers.get()).containsExactly(expectedNumbers);
     }
