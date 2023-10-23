@@ -9,7 +9,7 @@ public class Printer {
 
     public static void print(String message) {
         if (message.equals(" ")) {
-            System.out.println("nothing");
+            System.out.println(StatusMessage.NOTHING.statusName);
             return;
         }
         System.out.println(message.strip());
