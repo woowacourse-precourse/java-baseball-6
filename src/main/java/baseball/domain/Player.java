@@ -14,7 +14,7 @@ public class Player {
         return numbers.getNumbers();
     }
 
-    private static Numbers createPlayerNumbers(String input) {
+    private Numbers createPlayerNumbers(String input) {
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             numbers.add(input.charAt(i) - '0');

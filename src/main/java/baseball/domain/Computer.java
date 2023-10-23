@@ -16,7 +16,7 @@ public class Computer {
         return numbers.getNumbers();
     }
 
-    private static Numbers createComputerNumbers() {
+    private Numbers createComputerNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < GameValue.NUMBER_SIZE.getValue()) {
             int number = Randoms.pickNumberInRange(GameValue.MIN_RANGE.getValue(), GameValue.MAX_RANGE.getValue());
