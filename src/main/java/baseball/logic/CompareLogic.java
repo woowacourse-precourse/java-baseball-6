@@ -1,6 +1,5 @@
 package baseball.logic;
 
-import baseball.input.UserInput;
 import baseball.output.Message;
 
 import java.util.List;
@@ -20,44 +19,50 @@ public class CompareLogic {
         this.userNumbers = userNumbers;
     }
 
-    public boolean isAnswer(){
+    public boolean isAnswer() {
         int ballCount = countNumberOfBall();
         int strikeCount = countNumberOfStrike();
-        if(strikeCount == ANSWER_STRIKE_COUNT){
+        if (strikeCount == ANSWER_STRIKE_COUNT) {
             Message.printEndMessage();
             return true;
         }
 
         String OUTPUT_MESSAGE = "";
-        if(ballCount > 0){ OUTPUT_MESSAGE += (ballCount + BALL_MESSAGE); }
-        if(strikeCount > 0){ OUTPUT_MESSAGE += (strikeCount + STRIKE_MESSAGE); }
-        if(ballCount == 0 && strikeCount == 0){ OUTPUT_MESSAGE += NOTHING_MESSAGE; }
+        if (ballCount > 0) {
+            OUTPUT_MESSAGE += (ballCount + BALL_MESSAGE);
+        }
+        if (strikeCount > 0) {
+            OUTPUT_MESSAGE += (strikeCount + STRIKE_MESSAGE);
+        }
+        if (ballCount == 0 && strikeCount == 0) {
+            OUTPUT_MESSAGE += NOTHING_MESSAGE;
+        }
 
         System.out.println(OUTPUT_MESSAGE);
         return false;
     }
 
-    public int countNumberOfBall(){
+    public int countNumberOfBall() {
         int count = 0;
-        for(int i=0; i<3; i++){
+        for (int i = 0; i < 3; i++) {
             int answerNumber = answerNumbers.get(i);
             int numberIndex = userNumbers.indexOf(answerNumber);
 
-            if(i != numberIndex && numberIndex != -1){
-                count ++;
+            if (i != numberIndex && numberIndex != -1) {
+                count++;
             }
         }
         return count;
     }
 
-    public int countNumberOfStrike(){
+    public int countNumberOfStrike() {
         int count = 0;
-        for(int i=0; i<RANDOM_NUMBER_MAX_LENGTH; i++){
+        for (int i = 0; i < RANDOM_NUMBER_MAX_LENGTH; i++) {
             int answerNumber = answerNumbers.get(i);
             int numberIndex = userNumbers.indexOf(answerNumber);
 
-            if(i == numberIndex){
-                count ++;
+            if (i == numberIndex) {
+                count++;
             }
         }
         return count;
