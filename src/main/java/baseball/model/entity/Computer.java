@@ -2,13 +2,13 @@ package baseball.model.entity;
 
 
 public class Computer {
-    private final BaseballNumber baseballNumber;
+    private final Baseball baseballNumber;
 
     public Computer() {
-        this.baseballNumber = new BaseballNumber();
+        this.baseballNumber = new Baseball();
     }
 
-    public BaseballNumber getBaseballNumber() {
+    public Baseball getBaseballNumber() {
         return baseballNumber;
     }
 }
