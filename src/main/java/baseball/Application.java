@@ -25,9 +25,6 @@ public class Application {
 
             if (result.equals("3스트라이크")) {
                 flag = restartGame.restart();
-                if (flag) {
-                    computer = computerNumber.randomNumber();
-                }
             }
         }
     }
