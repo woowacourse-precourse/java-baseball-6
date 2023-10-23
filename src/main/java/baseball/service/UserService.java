@@ -1,9 +1,7 @@
 package baseball.service;
 
 import baseball.domain.User;
-import baseball.repository.MemoryGameRepository;
 import baseball.repository.MemoryUserRepository;
-import baseball.repository.UserRepository;
 
 import java.util.Optional;
 

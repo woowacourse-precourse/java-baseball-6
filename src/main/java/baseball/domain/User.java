@@ -1,5 +1,4 @@
 package baseball.domain;
-
 public class User {
     private Long id;
     private String name;

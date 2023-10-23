@@ -1,8 +1,6 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.List;
-
 public class Game {
     private Long id;
     private Long userId;

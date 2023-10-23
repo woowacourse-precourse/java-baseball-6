@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.domain.Game;
 import baseball.domain.User;
-import baseball.repository.GameRepository;
 import baseball.repository.MemoryGameRepository;
 import baseball.repository.MemoryUserRepository;
 import baseball.service.GameService;
