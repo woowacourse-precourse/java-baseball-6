@@ -11,7 +11,7 @@ import java.util.List;
 public class Controller {
     private static final String NUMBER_INPUT_ERROR = "숫자를 입력해야 합니다.";
     private static final String DIGIT_REGEXP = "[0-9]*";
-    private static final String RESTART_INPUT_ERROR = "1 또는 2를 입력해야 합니다.";
+    private static final String RESTART_INPUT_ERROR = "게임을 다시 시작하려면 1을, 종료하려면 2를 입력해야 합니다.";
     private static final String ONE_OR_TWO_REGEXP = "[1|2]";
     private static final int RESTART = 1;
     private static final int STOP = 2;
