@@ -80,16 +80,14 @@ public class Game {
     }
 
     private void printGameResult(int ballCnt, int strikeCnt) {
-        String message = "";
         if (ballCnt > 0 && strikeCnt > 0) {
-            message = ballCnt + "볼 " + strikeCnt + "스트라이크";
+            System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
         } else if (ballCnt > 0) {
-            message = ballCnt + "볼";
+            System.out.println(ballCnt + "볼");
         } else if (strikeCnt > 0) {
-            message = strikeCnt + "스트라이크";
+            System.out.println(strikeCnt + "스트라이크");
         } else {
-            message = "낫싱";
+            System.out.println("낫싱");
         }
-        System.out.println(message);
     }
 }
