@@ -20,21 +20,7 @@ public class Application {
         }
         return computer;
     }
-    public static void IllegalArgumentTest(String playerNumber )  throws IllegalArgumentException{
-        if (playerNumber.length() != 3) {
 
-            throw new IllegalArgumentException();
-        }
-        try {
-            int number = Integer.parseInt(playerNumber);
-            if (number < 100 || number > 999) {
-                throw new IllegalArgumentException();
-            }
-        } catch (NumberFormatException e) {
-
-            throw new IllegalArgumentException();
-        }
-    }
     public static int[] makeNumberArray(String player) {
         int number = Integer.parseInt(player);
         int n1, n2, n3;
@@ -89,19 +75,25 @@ public class Application {
         }
         return new Object[] { gameResult, code};
     }
-
     public static int game (int[] target) {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String player = Console.readLine();
         try {
-           IllegalArgumentTest(player);
-
+            try {
+                int number = Integer.parseInt(player);
+                if (number < 100 || number > 999) {
+                    throw new IllegalArgumentException();
+                }
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException();
+            }
         }
         catch (IllegalArgumentException e){
             System.out.println("게임 종료");
             throw new IllegalArgumentException();
 
         }
+        System.out.printf("%s \n", player);
         int[] playerNumber = makeNumberArray(player);
 
         // checking time according to baseball game rules
@@ -114,7 +106,9 @@ public class Application {
 
         return gameCode;
     }
-    public static void init() {
+    public static void main(String[] args){
+            System.out.println("숫자 야구 게임을 시작합니다");
+
         int[] target = targetGenerator();
         int initCode ;
         while (true) {
@@ -142,9 +136,5 @@ public class Application {
                 }
             }
         }
-    }
-    public static void main(String[] args){
-            System.out.println("숫자 야구 게임을 시작합니다");
-            init();
     }
 }
