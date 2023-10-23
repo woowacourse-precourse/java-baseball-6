@@ -21,6 +21,7 @@ public class Computer {
     public boolean play() {
 
         //숫자 생성
+        generateNumber();
 
         //게임 play
             //숫자를 입력해주세요 :
@@ -46,6 +47,29 @@ public class Computer {
             }
         }
         this.computerNumber=computer;
+    }
+
+    //입력한 숫자를 사용해 결과를 반환하는 기능
+    public boolean checkGuess(List<Integer> guessNumber) {
+        int ball = 0;
+        int strike = 0;
+
+        for (int i=0 ; i<3 ; i++) {
+            //guessNum의 값을 contain하는지 체크
+            //contain한다면, 위치까지 맞는지 체크
+            if (computerNumber.contains(guessNumber.get(i))) {
+                if (computerNumber.get(i) == guessNumber.get(i)) {
+                    strike++;
+                    continue;
+                }
+                ball++;
+            }
+        }
+        //Printer 사용해서 출력
+        printer.printResult(ball, strike);
+
+        if (strike == 3) return true;
+        return false;
     }
 
 }
