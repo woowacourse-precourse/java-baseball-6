@@ -20,10 +20,14 @@ public class BaseballGameController {
     }
 
     private void gameProcess() {
-        List<Integer> computerNumber = new ComputerNumber().getComputerNumber();
-        gameCycleProcess(computerNumber);
-        OutputView.printClearMessage();
-        System.out.println(InputView.INPUT_GAME_RESTART_MESSAGE);
+        String input;
+        do {
+            List<Integer> computerNumber = new ComputerNumber().getComputerNumber();
+            gameCycleProcess(computerNumber);
+            OutputView.printClearMessage();
+            System.out.println(InputView.INPUT_GAME_RESTART_MESSAGE);
+            input = InputView.inputGameRestartMessage();
+        } while (validateGameReplay(input));
     }
 
     private void gameCycleProcess(List<Integer> computerNumber) {
