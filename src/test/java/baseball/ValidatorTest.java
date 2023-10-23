@@ -1,5 +1,6 @@
 package baseball;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import baseball.util.ExceptionMessage;
@@ -35,6 +36,16 @@ public class ValidatorTest {
             assertThatThrownBy(() -> Validator.getValidatedPlayerNumber(input))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.INVALID_LENGTH.getMessage());
+        }
+
+        @Nested
+        class validInputTest {
+            @ParameterizedTest
+            @ValueSource(strings = {"156", "367", "421", "111"})
+            void 정상_입력(String input) {
+                assertThatCode(() -> Validator.getValidatedPlayerNumber(input))
+                        .doesNotThrowAnyException();
+            }
         }
     }
 }
