@@ -1,22 +1,27 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
-    private List<Integer> computer;
-    private List<Integer> user;
+    final private List<Integer> computer;
+    final private List<Integer> user;
+    private Script script;
+    private Judgment judgment;
 
     public Game() {
         computer = new ArrayList<>();
         user = new ArrayList<>();
+
+        script = new Script();
+        judgment = new Judgment(computer, user);
     }
 
-    private void createComputerNumber(){
+    private void createComputerNumber() {
         int randomNumber;
 
         while (computer.size() < 3) {
@@ -28,28 +33,47 @@ public class Game {
         }
     }
 
-    private void inputUserNumber(){
+    private void inputUserNumber() {
         String[] userInput = readLine().split("");
 
-        for(int index = 0; index < 3; index++){
+        user.clear();
+
+        for (int index = 0; index < 3; index++) {
             user.add(Integer.parseInt(userInput[index]));
         }
     }
 
-    public void play(){
-        Script script = new Script();
-        Judgment judgment = new Judgment(computer, user);
+    private boolean isRetry() {
+        String userInput = readLine();
 
-        createComputerNumber();
+        if (userInput.equals("1")) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void play(){
+        createComputerNumber();    //컴퓨터 난수 생성
         script.startGame();
 
-        script.inputNumber();
-        inputUserNumber();
+        while (true) {
+            script.inputNumber();  //유저 - 숫자입력
+            inputUserNumber();
 
-        judgment.judge();
+            judgment.judge();      //숫자 야구 판정
 
-        if(judgment.isUserWin()){
-            script.endGame();
+            if (judgment.isUserWin()) {
+                script.endGame();
+
+                if (isRetry()) {               //정답을 맞힌 후 게임 종료 여부를 입력 받음
+                    createComputerNumber();
+                    script.startGame();
+                } else {
+                    break;
+                }
+            }
         }
+
     }
 }
