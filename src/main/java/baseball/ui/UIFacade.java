@@ -11,7 +11,7 @@ public class UIFacade {
     }
 
     public void print(String output) {
-        outputUI.print(output);
+        outputUI.rendering(output);
     }
 
     public String intercept() {
