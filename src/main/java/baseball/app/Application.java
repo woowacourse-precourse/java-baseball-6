@@ -18,7 +18,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             // 랜덤수 리스트 생성
-            List<Integer> randomNumbers = new RandomGenerator().getRandomNumbers();
+            List<Integer> randomNumbers = RandomGenerator.getRandomNumbers();
 
             // 게임 싸이클 시작
             gameService.startGame(randomNumbers);
@@ -32,13 +32,9 @@ public class Application {
             System.out.println(wouldRestartGame);
 
             // 재시작 / 종료 실행
-            if (wouldRestartGame == GameOption.RESTART.getOption()) {
-                continue;
-            } else {
+            if (wouldRestartGame == GameOption.END.getOption()) {
                 // 게임 종료 안내
                 System.out.println("게임 종료");
-                // 인스턴스 메모리 해제
-                closeAll();
                 break;
             }
         }
@@ -47,7 +43,7 @@ public class Application {
 
     // 인스턴스 메모리 해제
     private static void closeAll() {
-        gameService = null;
+        gameService = null; //gc가 collect 할 수 있게함
         Console.close();
     }
 }

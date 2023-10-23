@@ -17,7 +17,7 @@ class RandomGeneratorTest {
         // GIVEN
 
         // WHEN
-        List<Integer> randomNumbers = new RandomGenerator().getRandomNumbers();
+        List<Integer> randomNumbers = RandomGenerator.getRandomNumbers();
 
         // THEN
         for (Integer eachRandNum : randomNumbers) {
