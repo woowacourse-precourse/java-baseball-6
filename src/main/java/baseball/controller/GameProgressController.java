@@ -25,7 +25,7 @@ public class GameProgressController {
         boolean isAnswer = false;
         while (!isAnswer) {
             String userInputString = inputView.getUserGuessingNumbers();
-            saveUserNumbers(userInputString);
+            saveUserInputNumbers(userInputString);
             isAnswer = computerController.checkUserInputWithAnswer(gameNumber.getUserInputNumbers(), gameNumber.getComputerGenerateNumbers());
             outputView.printHint(computerController.createHintMessage());
         }
@@ -36,7 +36,7 @@ public class GameProgressController {
         computerController.startGame(gameNumber);
     }
 
-    private void saveUserNumbers(String userInputString) {
+    private void saveUserInputNumbers(String userInputString) {
         gameNumber.setUserInputString(userInputValidator.userInputStringValidate(userInputString));
         gameNumber.setUserInputNumbers(userInputValidator.userInputNumbersValidate(gameNumber.getUserInputString()));
     }
