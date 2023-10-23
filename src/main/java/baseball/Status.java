@@ -10,4 +10,8 @@ public enum Status {
     Status(int statusNumber) {
         this.statusNumber = statusNumber;
     }
+
+    public int getStatusNumber() {
+        return statusNumber;
+    }
 }

@@ -20,12 +20,21 @@ public class NumberBaseball {
         printMessage();
 
         setComputerRandomNumber();
-        setInputNumberMessage();
-        getNumberFromUser();
+        while (status != Status.EXIT) {
+            setInputNumberMessage();
+            getNumberFromUser();
 
-        compareNumber(computer.getNumber(), user.getNumber());
-        setComputerResult(user.getBall(), user.getStrike());
-        printComputerResult();
+            compareNumber(computer.getNumber(), user.getNumber());
+            setComputerResult(user.getBall(), user.getStrike());
+            printComputerResult();
+
+            if (finishGame()) {
+                getStatusFromUser();
+
+                setRandomNumberByStatus();
+            }
+        }
+
     }
 
     public void printMessage() {
@@ -34,6 +43,45 @@ public class NumberBaseball {
 
     public void setInputNumberMessage() {
         this.message = Message.INPUT_NUMBER_MESSAGE;
+    }
+
+    public void setAskStatusMessage() {
+        this.message = Message.ASK_STATUS_MESSAGE;
+    }
+
+    public void getStatusFromUser() {
+        setAskStatusMessage();
+        printMessage();
+
+        String statusNumberFromUser = Console.readLine();
+        if (!validateStatusNumber(statusNumberFromUser)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public boolean validateStatusNumber(String statusNumber) {
+        if (statusNumber.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+
+        int convertStatusNumber;
+        try {
+            convertStatusNumber = Integer.parseInt(statusNumber);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (convertStatusNumber == Status.RETRY.getStatusNumber()) {
+            setStatus(Status.RETRY);
+            return true;
+        }
+
+        if (convertStatusNumber == Status.EXIT.getStatusNumber()) {
+            setStatus(Status.EXIT);
+            return true;
+        }
+
+        return false;
     }
 
     public void getNumberFromUser() {
@@ -93,5 +141,19 @@ public class NumberBaseball {
 
     public void printComputerResult() {
         computer.printResult();
+    }
+
+    private boolean finishGame() {
+        return user.getStrike() == 3;
+    }
+
+    private void setStatus(Status status) {
+        this.status = status;
+    }
+
+    private void setRandomNumberByStatus() {
+        if (status == Status.RETRY) {
+            setComputerRandomNumber();
+        }
     }
 }
