@@ -8,6 +8,7 @@ public class Game {
     private Result result;
 
     public void run() {
+        System.out.println(GAME_START_MESSAGE);
         setGame();
         playGame();
     }
