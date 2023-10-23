@@ -3,30 +3,18 @@ package game;
 import static validation.Constant.*;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import validation.Validation;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import model.Answer;
 
 public class Game {
-    static List<Integer> answer = new ArrayList<>();
+    static List<Integer> answer;
 
     public Game() {
-        answer = makeRandomNumber();
+        answer = new Answer().getAnswerNumber();
         printAnswer(answer);
-    }
-
-    private List<Integer> makeRandomNumber() {
-        List<Integer> number = new ArrayList<>();
-        while (number.size() < NUMBER_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-            if (!number.contains(randomNumber)) {
-                number.add(randomNumber);
-            }
-        }
-        return number;
     }
 
     private static void printAnswer(List<Integer> inputAnswer) {
