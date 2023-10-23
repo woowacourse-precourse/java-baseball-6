@@ -3,13 +3,15 @@
 #### 입력
 1. 숫자 입력 하기 : 필요한 때마다 3개의 숫자(서로 다른 자연수)를 입력
    - 숫자를 입력해주세요 : 
-   - - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
+   - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
+   - 사용자가 잘못된 값을 입력했을 경우 `IllegalArgumentException`을 발생 후 종료
 2. 재시작/종료 선택하기 : 정답 후 재선택할 때마다 재선택값(재시작 1, 종료 2)을 입력한다.
 
 #### 컴퓨터
 1. 숫자 생성 : 1부터 9까지 서로 다른 임의의 값 생성
 - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
-2. 시작 및 재시작 : 검증 성공시 게임 시작, 실패시 처음부터 다시 시작
+2. 숫자 검증 : 생성된 숫자가 조건(3자리, 서로 다른 수)을 만족하는지 검증
+3. 시작 및 재시작 : 검증 성공시 게임 시작, 실패시 처음부터 다시 시작
 
 
 #### 검증
