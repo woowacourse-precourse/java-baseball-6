@@ -9,9 +9,9 @@ public class ViewResult {
     private final String nothing = "낫싱";
     private final String strike = "스트라이크";
     private final String ball = "볼";
-    public void printResult(int strikeScore, int ballScore) throws IOException {
+    public void printResult(int strikeScore, int ballScore) {
         if(strikeScore >= 1 && ballScore >= 1){
-            System.out.println(strikeScore + strike + " " + ballScore+ball);
+            System.out.println(ballScore + ball + " "+ strikeScore + strike);
         }
         else if(strikeScore == 0 && ballScore == 0){
             System.out.println(nothing);
