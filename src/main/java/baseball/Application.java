@@ -1,7 +1,11 @@
 package baseball;
 
+import baseballgame.GameFlowmanager;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    	GameFlowmanager gf = new GameFlowmanager();
+    	
+    	gf.run();
     }
 }
