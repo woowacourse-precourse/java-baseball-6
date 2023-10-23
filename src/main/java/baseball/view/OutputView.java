@@ -6,4 +6,8 @@ public class OutputView {
 	public void printEndGame() {
 		System.out.println(GAME_END_MESSAGE);
 	}
+
+	public void printStrikeAndBallMessage(String message) {
+		System.out.println(message);
+	}
 }
