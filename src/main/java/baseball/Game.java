@@ -6,8 +6,6 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Game {
-
-    Boolean answer = true;
     ArrayList<Integer> computerInputArray = new ArrayList<>();
 
     public void Start() {
@@ -15,13 +13,13 @@ public class Game {
         computerInputArray = Computer.getRandomNumber();
 //        System.out.println(computerInputArray);
 
-        while (answer) {
+        while (true) {
             Alert.userInputStartMessage();
             ArrayList<Integer> userInputArray = User.getNumber();
 
             if (Judge.judge(userInputArray, computerInputArray).equals("Strike")) {
                 Alert.gameFinishMessage();
-                answer = false;
+                break;
             }
 
         }
