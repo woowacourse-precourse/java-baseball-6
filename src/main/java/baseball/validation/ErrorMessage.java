@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.validation;
 
 public enum ErrorMessage {
     NUMBER_RANGE("숫자는 1부터 9까지의 수로만 이뤄져야 합니다."),

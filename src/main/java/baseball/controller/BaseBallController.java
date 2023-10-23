@@ -4,9 +4,8 @@ import baseball.domain.ComputerNumber;
 import baseball.domain.PlayerNumber;
 import baseball.dto.CountResultDto;
 import baseball.service.CountService;
-import baseball.view.ErrorMessage;
-import baseball.view.GameCommand;
-import baseball.view.GameValue;
+import baseball.validation.ErrorMessage;
+import baseball.common.GameValue;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

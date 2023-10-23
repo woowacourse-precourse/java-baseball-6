@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.common.GameValue;
 import baseball.dto.CountResultDto;
 
 public class OutputView {

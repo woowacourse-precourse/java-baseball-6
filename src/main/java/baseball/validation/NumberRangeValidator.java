@@ -1,8 +1,6 @@
 package baseball.validation;
 
-import baseball.view.ErrorMessage;
-import baseball.view.GameValue;
-import baseball.view.RegexPattern;
+import baseball.common.GameValue;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

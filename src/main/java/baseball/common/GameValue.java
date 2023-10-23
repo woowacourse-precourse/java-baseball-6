@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.common;
 
 public enum GameValue {
     NUMBER_SIZE(3),

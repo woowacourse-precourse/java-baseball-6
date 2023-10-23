@@ -1,7 +1,6 @@
 package baseball.validation;
 
-import baseball.view.ErrorMessage;
-import baseball.view.GameValue;
+import baseball.common.GameValue;
 import java.util.List;
 
 public class NumberSizeValidator {

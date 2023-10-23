@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.controller;
 
 public enum GameCommand {
     RESTART("1"),

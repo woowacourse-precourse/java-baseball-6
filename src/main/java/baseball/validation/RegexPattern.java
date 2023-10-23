@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.validation;
 
 public enum RegexPattern {
     ONLY_NUMBER("^[0-9]*$"),
