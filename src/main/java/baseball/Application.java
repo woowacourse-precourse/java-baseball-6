@@ -1,16 +1,21 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.*;
+import static camp.nextstep.edu.missionutils.Randoms.*;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         startGame();
 
         int computerNumber = generateComputerNumber();
+        System.out.println("computerNumber = " + computerNumber);
+
+        int userInput = getUserInput();
+        System.out.println("userInput = " + userInput);
+
 
     }
 
@@ -20,19 +25,26 @@ public class Application {
 
     public static int generateComputerNumber() {
         List<Integer> computer = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
         while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
+                sb.append(randomNumber);
             }
         }
-        return 0;
+        return Integer.parseInt(sb.toString());
     }
 
     private static int getUserInput() {
         // 사용자로부터 Console 로 입력 받기
         // 입력 받은 문자열을 검증 -> isValidateNumber
-        return 0;
+        // StringTokenizer로 한 자씩 분리해서 배열 형태로 만들 필요가 있음.
+
+        System.out.print("숫자를 입력해주세요 : ");
+        int userInput = Integer.parseInt(readLine());
+
+        return userInput;
     }
 
     private static int isValidateNumber(int num) {
