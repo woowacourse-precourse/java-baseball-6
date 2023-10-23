@@ -12,6 +12,7 @@ public class PlayerController {
         String inputString = inputView.readInputNumbers();
         List<Integer> inputList = parseInputString(inputString);
         validateNumbers(inputList);
+        return inputList;
     }
 
     private List<Integer> parseInputString(String inputNumbers) {
