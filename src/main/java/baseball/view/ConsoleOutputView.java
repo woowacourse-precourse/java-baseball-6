@@ -20,27 +20,56 @@ public class ConsoleOutputView implements OutputView {
     }
 
     private String makeResult(final int ballCount, final int strikeCount) {
-        if (isNothing(ballCount, strikeCount)) {
-            return NOTHING;
+        StringBuilder stringBuilder = new StringBuilder();
+
+        appendIfOnlyBall(ballCount, strikeCount, stringBuilder);
+        appendIfOnlyStrike(ballCount, strikeCount, stringBuilder);
+        appendIfNothing(ballCount, strikeCount, stringBuilder);
+
+        if (isEmptyOf(stringBuilder)) {
+            appendWithBallsAndStrikes(ballCount, strikeCount, stringBuilder);
         }
-        if (isOnlyBall(ballCount, strikeCount)) {
-            return ballCount + BALL;
-        }
-        if (isOnlyStrike(ballCount, strikeCount)) {
-            return strikeCount + STRIKE;
-        }
-        return ballCount + BALL + BLANK + strikeCount + STRIKE;
+        return stringBuilder.toString();
     }
 
-    private boolean isNothing(final int ballCount, final int strikeCount) {
-        return ballCount == ZERO && strikeCount == ZERO;
+    private void appendIfOnlyBall(final int ballCount, final int strikeCount, final StringBuilder stringBuilder) {
+        if (isOnlyBall(ballCount, strikeCount)) {
+            String result = ballCount + BALL;
+            stringBuilder.append(result);
+        }
     }
 
     private boolean isOnlyBall(final int ballCount, final int strikeCount) {
         return ballCount != ZERO && strikeCount == ZERO;
     }
 
+    private void appendIfOnlyStrike(final int ballCount, final int strikeCount, final StringBuilder stringBuilder) {
+        if (isOnlyStrike(ballCount, strikeCount)) {
+            String result = strikeCount + STRIKE;
+            stringBuilder.append(result);
+        }
+    }
+
     private boolean isOnlyStrike(final int ballCount, final int strikeCount) {
         return ballCount == ZERO && strikeCount != ZERO;
+    }
+
+    private void appendIfNothing(final int ballCount, final int strikeCount, final StringBuilder stringBuilder) {
+        if (isNothing(ballCount, strikeCount)) {
+            stringBuilder.append(NOTHING);
+        }
+    }
+
+    private boolean isNothing(final int ballCount, final int strikeCount) {
+        return ballCount == ZERO && strikeCount == ZERO;
+    }
+
+    private boolean isEmptyOf(final StringBuilder stringBuilder) {
+        return stringBuilder.length() == ZERO;
+    }
+
+    private void appendWithBallsAndStrikes(final int ballCount, final int strikeCount, final StringBuilder stringBuilder) {
+        String result = ballCount + BALL + BLANK + strikeCount + STRIKE;
+        stringBuilder.append(result);
     }
 }
