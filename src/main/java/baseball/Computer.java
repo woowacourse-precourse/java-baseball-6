@@ -8,21 +8,21 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Computer {
-    private final List<Integer> numbers;
+    private final List<Integer> answer;
 
     public Computer() {
-        this.numbers = new ArrayList<>();
+        this.answer = new ArrayList<>();
     }
 
     public void decideAnswer() {
-        if (!numbers.isEmpty()) {
-            numbers.clear();
+        if (!answer.isEmpty()) {
+            answer.clear();
         }
 
-        while (numbers.size() < 3) {
+        while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
             }
         }
     }
@@ -32,13 +32,13 @@ public class Computer {
         int ballCount = 0;
         int strikeCount = 0;
 
-        for (int i = 0; i < numbers.size(); i++) {
-            if (Objects.equals(numbers.get(i), inputNumbers.get(i))) {
+        for (int i = 0; i < answer.size(); i++) {
+            if (Objects.equals(answer.get(i), inputNumbers.get(i))) {
                 strikeCount++;
                 continue;
             }
 
-            if (numbers.contains(inputNumbers.get(i))) {
+            if (answer.contains(inputNumbers.get(i))) {
                 ballCount++;
             }
         }
