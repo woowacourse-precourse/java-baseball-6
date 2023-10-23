@@ -11,7 +11,8 @@ public class Computer {
     public static final int COUNTS = 3;
     public static final int MAXIMUM_NUMBER = 9;
     public static final int MINIMUM_NUMBER = 1;
-
+    private static final boolean VERIFICATION_PASSED = true;
+    private static final boolean VERIFICATION_FAILED = false;
 
     private List<Integer> randomNumbers;
 
@@ -35,5 +36,21 @@ public class Computer {
         return (int) IntStream.range(0, COUNTS)
                 .filter(i -> userNumbers.get(i) == randomNumbers.get(i))
                 .count();
+    }
+
+    private boolean validateNumbers(List<Integer> numbers) {
+        for (int i = 0; i < COUNTS; i++) {
+            if (numbers.get(i) < MINIMUM_NUMBER || numbers.get(i) > MAXIMUM_NUMBER) {
+                return VERIFICATION_FAILED;
+            }
+        }
+        if (numbers.size() != COUNTS) {
+            return VERIFICATION_FAILED;
+        }
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (uniqueNumbers.size() != COUNTS) {
+            return VERIFICATION_FAILED;
+        }
+        return VERIFICATION_PASSED;
     }
 }
