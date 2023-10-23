@@ -34,6 +34,8 @@ public class Application {
 
 
                 printEndMessage();
+                UserAction userAction = UserAction.valueOf(Integer.valueOf(Console.readLine()));
+                if (userAction == UserAction.FINISH) continueMode = false;
             }
 
         } catch (Exception e){
