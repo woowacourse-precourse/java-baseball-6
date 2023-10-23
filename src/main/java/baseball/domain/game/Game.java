@@ -43,7 +43,7 @@ public class Game {
         if (!(numbers.length() == 3)){
             throw new InputException(InputError.NEED_THREE_DIGIT);
         }
-        if (!numbers.matches("\\d+")){
+        if (!numbers.matches("[1-9]+")){
             throw new InputException(InputError.MUST_BE_DIGIT);
         }
     }
@@ -79,13 +79,13 @@ public class Game {
     public void checkRestartGame(){
         output.printRestartOrNotMessage();
 
-        int opinion = Integer.parseInt(input.getRestartOrNot());
+        String opinion = input.getRestartOrNot();
 
         switch (opinion){
-            case 1:
+            case "1":
                 startGame();
                 break;
-            case 2:
+            case "2":
                 return;
             default:
                 output.printNumberIsNoneMessage();
