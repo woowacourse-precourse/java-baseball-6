@@ -1,7 +1,7 @@
 package baseball;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,27 +12,39 @@ public class Application {
 
         // 0 : 게임 시작시 정답을 생성한다.
         List<Integer> answer = game.createAnswer();
-        System.out.println(answer);
+
+        // 1 : 게임 시작 문구 출력
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         // 반복문 제어를 위한 변수 선언 - 조건이 달성 된다면 false 로 전환
         boolean gameStatus = true;
         while (gameStatus) {
 
-            // 1 : 게임 시작 문구 출력
-            System.out.print("숫자 야구 게임을 시작합니다.");
-
-            // 2 : 플레이어의 정답을 입력받는다.
+            // 2 : 정답 입력을 위한 문구 출력
             System.out.print("숫자를 입력해주세요 : ");
-            // 플레이어의 입력 데이터를 검증해서 리스트에 저장해서 반환한다.
-            List<Integer> s = game.enterCorrectAnswer(Console.readLine());
-            System.out.println(s);
 
+            // 2-1 : 정답을 입력 받고 검증을 통해 반환받는다.
+            List<Integer> input = game.enterCorrectAnswer(Console.readLine());
+
+            // 3 : 정답과 플레이어가 입력한 값의 일치 결과를 체크해서 결과를 반환한다.
+            if (game.checkCorrectAnswer(answer, input)) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                if (!game.selectMenu(Console.readLine())) {
+                    gameStatus = false;
+                } else {
+                    answer = game.createAnswer();
+                }
+            }
         }
 
     }
 }
 
 class Baseballgame {
+
+    int strike = 0;
+    int ball = 0;
+
     public List<Integer> createAnswer() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3) {
@@ -48,18 +60,75 @@ class Baseballgame {
         List<Integer> input = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int num = var.charAt(i) - 48;
-            if (!input.contains(num) && Verification.numVerification(num)) {
+            if (var.length() == 3 && !input.contains(num) && Verification.numVerification(num)) {
                 input.add(num);
+            } else {
+                throw new IllegalArgumentException();
             }
-            else throw new IllegalArgumentException();
         }
 
         return input;
+    }
+
+    public boolean checkCorrectAnswer(List<Integer> answer, List<Integer> input) {
+        for (int an = 0; an < 3; an++) {
+            for (int in = 0; in < 3; in++) {
+                if (answer.get(an).equals(input.get(in)) && an == in) {
+                    strike++;
+                } else if (answer.get(an).equals(input.get(in))) {
+                    ball++;
+                }
+                //System.out.println(answer.get(an) + "/" + input.get(in));
+            }
+        }
+
+        if (strike == 3 && ball == 0) {
+            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            strike = 0;
+            ball = 0;
+            return true;
+        }
+        if (strike >= 1 && ball >= 1) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+            strike = 0;
+            ball = 0;
+            return false;
+        }
+        if (strike >= 1 && ball == 0) {
+            System.out.println(strike + "스트라이크");
+            strike = 0;
+            ball = 0;
+            return false;
+        }
+        if (strike == 0 && ball >= 1) {
+            System.out.println(ball + "볼");
+            strike = 0;
+            ball = 0;
+            return false;
+        }
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            strike = 0;
+            ball = 0;
+            return false;
+        }
+        return false;
+    }
+
+    public boolean selectMenu(String var) {
+        if (Verification.menuVerification(var)) {
+            return var.equals("1");
+        }
+        throw new IllegalArgumentException();
     }
 }
 
 class Verification {
     public static boolean numVerification(int var) {
         return var >= 1 && var <= 9;
+    }
+
+    public static boolean menuVerification(String var) {
+        return var.equals("1") || var.equals("2");
     }
 }
