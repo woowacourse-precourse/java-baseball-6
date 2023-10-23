@@ -5,15 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 public class BaseballGame {
     public void startBaseball() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-
-        String continueBaseball = "1";
-        while (continueBaseball.equals("1")) {
+        do {
             BaseballNumber answerNumberList = createBaseballAnswerNumberList();
             playBaseball(answerNumberList);
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            continueBaseball = Console.readLine();
-        }
-
+        } while (askToContinueGame());
         System.out.println("게임 종료");
     }
 
@@ -68,5 +63,18 @@ public class BaseballGame {
             }
         }
         return ball;
+    }
+
+    private boolean askToContinueGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputString = Console.readLine();
+        validateContinueGameInput(inputString);
+        return inputString.equals("1");
+    }
+
+    private void validateContinueGameInput(String inputString) {
+        if(!inputString.equals("1") && !inputString.equals("2")) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
     }
 }
