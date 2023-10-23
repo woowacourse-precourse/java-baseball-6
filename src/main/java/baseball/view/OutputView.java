@@ -2,6 +2,8 @@ package baseball.view;
 
 import baseball.common.GameValue;
 import baseball.dto.CountResultDto;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OutputView {
     private final static String DELIMITER = " ";
@@ -12,21 +14,17 @@ public class OutputView {
     public static void printResult(CountResultDto countResultDto) {
         int strikeCount = countResultDto.getStrikeCount();
         int ballCount = countResultDto.getBallCount();
-        if (strikeCount == ballCount && strikeCount > GameValue.ZERO.getValue()) {
-            System.out.println(strikeCount + GameMessage.STRIKE.getMessage());
-            return;
+        List<String> result = new ArrayList<>();
+        if (ballCount != 0) {
+            result.add(ballCount + GameMessage.BALL.getMessage());
         }
-        if (strikeCount == GameValue.ZERO.getValue() && ballCount > GameValue.ZERO.getValue()) {
-            System.out.println(ballCount + GameMessage.BALL.getMessage());
-            return;
+        if (strikeCount != 0) {
+            result.add(strikeCount + GameMessage.STRIKE.getMessage());
         }
-        if (strikeCount > GameValue.ZERO.getValue() && ballCount - strikeCount > GameValue.ZERO.getValue()) {
-            String ballMessage = (ballCount - strikeCount) + GameMessage.BALL.getMessage();
-            String strikeMessage = strikeCount + GameMessage.STRIKE.getMessage();
-            System.out.println(String.join(DELIMITER, ballMessage, strikeMessage));
-            return;
+        if (strikeCount == GameValue.ZERO.getValue() && ballCount == GameValue.ZERO.getValue()) {
+            result.add(GameMessage.NOTHING.getMessage());
         }
-        System.out.println(GameMessage.NOTHING.getMessage());
+        System.out.println(String.join(DELIMITER, result));
     }
 
     public static void printGameStartMessage() {
