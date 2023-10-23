@@ -2,11 +2,14 @@ package baseball.controller;
 
 import baseball.model.AnswerNumber;
 import baseball.model.InputNumber;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class GameController {
     static final AnswerNumber answerNumber = new AnswerNumber();
     private PrintController printController = new PrintController();
     private CountController countController = new CountController();
+    private OutputView outputView = new OutputView();
 
     public void createAnswer() {
         answerNumber.createRandomNumberList();
@@ -14,7 +17,7 @@ public class GameController {
     }
 
     public void startGame() {
-        printController.printStart();
+        outputView.printStart();
         createAnswer();
         proceedGame();
     }
