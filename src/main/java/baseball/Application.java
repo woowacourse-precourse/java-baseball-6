@@ -30,6 +30,7 @@ public class Application {
             strike = countStrike(computer, user);
             printGameResult(ball, strike);
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static void printGameResult(int ball, int strike) {
