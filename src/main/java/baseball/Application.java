@@ -5,7 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Application {
+    // TODO: 원시값 1, 3, 9 포장하기
     private static final int ANSWER_SIZE = 3;
+    private static final int UPPER_BOUND = 9;
+    private static final int LOWER_BOUND = 1;
 
     static List<Integer> readNumber() {
         String input = Console.readLine();
@@ -17,7 +20,7 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        if (n < 0 || n > 999) {
+        if (n < LOWER_BOUND - 1 || n > 999) {
             throw new IllegalArgumentException();
         }
 
@@ -30,6 +33,7 @@ public class Application {
                 .toList();
     }
 
+    // TODO: else 분리
     static boolean wantsReplay() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
@@ -42,6 +46,7 @@ public class Application {
         }
     }
 
+    // TODO: else 분리, indent 줄이기
     static void play() {
         Player pitcher = new Player();
 
@@ -57,7 +62,7 @@ public class Application {
             } else {
                 System.out.println("낫싱");
             }
-            if (result[0] == 3) {
+            if (result[0] == ANSWER_SIZE) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
@@ -65,6 +70,10 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        Player.size = ANSWER_SIZE;
+        Player.upperBound = UPPER_BOUND;
+        Player.lowerBound = LOWER_BOUND;
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             play();

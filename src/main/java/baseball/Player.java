@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    final private List<Integer> numbers;
+    static int size;
+    static int lowerBound;
+    static int upperBound;
+    private final List<Integer> numbers;
 
     public Player() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (numbers.size() < size) {
+            int randomNumber = Randoms.pickNumberInRange(lowerBound, upperBound);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
