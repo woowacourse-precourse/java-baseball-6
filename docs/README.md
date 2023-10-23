@@ -61,9 +61,9 @@
 - ❌ getPlayerInputNumber 메서드 구현
     - 서로 다른 3자리의 수를 입력 받아 숫자 리스트 생성
 
-## ❌ 입력한 수 검증
+## ✅ 입력한 수 검증
 
-- ❌ validateUserInput 메서드 구현
+- ✅ validateUserInput 메서드 구현
     - String형식의 숫자를 받아와 잘못된 값을 입력할 경우 IllegalArgumentException 발생후 종료
 - ✅ validateInputIsNumber 메서드 구현
     - 입력한 값들이 다 숫자인지 검증

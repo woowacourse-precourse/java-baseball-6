@@ -25,4 +25,12 @@ public class Validator {
         }
         return true;
     }
+
+    public static boolean validateUserInput(String input) {
+        if (!validateInputIsNumber(input) || !validateInputLength(input) || !validateInputWithDifferentDigit(input)) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+        return true;
+    }
+
 }
