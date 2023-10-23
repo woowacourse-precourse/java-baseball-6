@@ -9,7 +9,7 @@ public class Computer {
 
     private static final int START_NUM = 1;
     private static final int END_NUM = 9;
-    private Map<Integer, Integer> numbers;
+    private final Map<Integer, Integer> numbers;
 
     private Computer() {
         numbers = new HashMap<>();
@@ -17,6 +17,11 @@ public class Computer {
 
     public static Computer init() {
         return new Computer();
+    }
+
+    public void reset() {
+        numbers.clear();
+        generateRandomNumbers();
     }
 
     private void generateRandomNumbers() {
