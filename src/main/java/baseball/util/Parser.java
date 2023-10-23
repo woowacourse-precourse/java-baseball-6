@@ -25,13 +25,13 @@ public class Parser {
 	}
 
 	private static String parseHintToOneResult(int strike, int ball) {
-		if(strike == 0 ) {
+		if (strike == 0) {
 			return ball + BALL;
 		}
 		return strike + STRIKE;
 	}
 
 	private static String parseHintToResults(int strike, int ball) {
-		return ball + BALL+ " " + strike + STRIKE;
+		return ball + BALL + " " + strike + STRIKE;
 	}
 }

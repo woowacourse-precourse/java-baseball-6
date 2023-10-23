@@ -20,15 +20,15 @@ public class Number {
 	}
 
 	private void validateRange(String number) {
-		for(char c : number.toCharArray()) {
-			if(c - '0' < 1 || c - '0' > 9) {
+		for (char c : number.toCharArray()) {
+			if (c - '0' < 1 || c - '0' > 9) {
 				throw new IllegalArgumentException("숫자가 주어진 범위에서 벗어납니다.");
 			}
 		}
 	}
 
 	private void validateSize(String number, int size) {
-		if(number.length()!=size) {
+		if (number.length()!=size) {
 			throw new IllegalArgumentException(size+"자리수의 숫자를 입력해주세요.");
 		}
 	}
@@ -41,13 +41,13 @@ public class Number {
 	}
 
 	private void initCheckSet(Set<Character> checkSet, String number) {
-		for(char checkNumber : number.toCharArray()) {
+		for (char checkNumber : number.toCharArray()) {
 			checkSet.add(checkNumber);
 		}
 	}
 
 	private void checkDuplication(Set<Character> checkSet) {
-		if(isDuplicated(checkSet)) {
+		if (isDuplicated(checkSet)) {
 			throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
 		}
 	}

@@ -12,9 +12,9 @@ public class NumberFactory {
 	public static List<Integer> createRandomNumbers(int size) {
 		List<Integer> randomNumbers = new ArrayList<>();
 
-		while(randomNumbers.size()<size) {
+		while (randomNumbers.size()<size) {
 			Integer randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
-			if(!randomNumbers.contains(randomNumber)) {
+			if (!randomNumbers.contains(randomNumber)) {
 				randomNumbers.add(randomNumber);
 			}
 		}
