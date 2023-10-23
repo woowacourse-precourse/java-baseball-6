@@ -21,6 +21,7 @@ public class BaseballGame {
             consoleLogger.print("숫자를 입력해주세요 :");
             String input = consoleInput.getInput();
             checkInputs(input);
+            break;
         }
     }
 
