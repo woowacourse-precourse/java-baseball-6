@@ -3,6 +3,7 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.domain.Validator;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
