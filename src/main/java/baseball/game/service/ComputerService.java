@@ -1,9 +1,10 @@
 package baseball.game.service;
 
 import baseball.game.entity.Computer;
-import baseball.game.entity.NumberBaseBallGameWord;
+import baseball.game.entity.GameScore;
 import baseball.game.exception.NumberBaseBallException;
 import baseball.game.repository.ComputerRepository;
+import baseball.game.repository.GameResultRepository;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,22 +13,25 @@ import java.util.Optional;
 public class ComputerService {
 
     private final ComputerRepository computerRepository;
+    private final GameResultRepository gameResultRepository;
     private static ComputerService instance;
 
-    private ComputerService(ComputerRepository computerRepository) {
+    private ComputerService(ComputerRepository computerRepository, GameResultRepository gameResultRepository) {
         this.computerRepository = computerRepository;
+        this.gameResultRepository = gameResultRepository;
     }
 
-    public static ComputerService getInstance(ComputerRepository computerRepository) {
+    public static ComputerService getInstance(ComputerRepository computerRepository,
+                                              GameResultRepository gameResultRepository) {
         if (instance == null) {
-            return instance = new ComputerService(computerRepository);
+            return instance = new ComputerService(computerRepository, gameResultRepository);
         }
         return instance;
     }
 
-    public Computer playGame(Long id) {
+    public Computer createGame(Long id) {
 
-        // 숫자야구게임 조회
+        // 숫자 야구게임 조회
         Optional<Computer> optionalComputer = computerRepository.findBy(id);
         if (optionalComputer.isPresent()) {
             return optionalComputer.get();
@@ -45,7 +49,7 @@ public class ComputerService {
         return computerRepository.save(computer);
     }
 
-    public String gameResult(Long id, List<Integer> userNumbers) {
+    public String startGame(Long id, List<Integer> userNumbers) {
         // 숫자야구게임 조회
         Computer findComputer = computerRepository.findBy(id)
                 .orElseThrow(() -> new NumberBaseBallException(NumberBaseBallException.NOT_FOUND));
@@ -73,30 +77,16 @@ public class ComputerService {
             }
         }
 
-        findComputer.changeGameCount(strikeCount, ballCount);
+        // 컴퓨터 스트라이크, 볼 카운트 갱신
+        findComputer.changeStrikeAndBallCount(strikeCount, ballCount);
         computerRepository.update(findComputer);
 
-        // 0스트라이크 0볼 이면
-        if (strikeCount == 0 && ballCount == 0) {
-            return NumberBaseBallGameWord.NOTHING.getKrName();
-        }
+        GameScore gameScore = new GameScore(findComputer.getStrikeCount(), findComputer.getBallCount());
 
-        StringBuilder sb = new StringBuilder();
-        // 3스트라이크 이면
-        if (strikeCount == 3) {
-            sb.append(strikeCount).append(NumberBaseBallGameWord.STRIKE.getKrName()).append("\n");
-            sb.append(NumberBaseBallGameWord.END.getKrName());
+        return getGameResult(gameScore);
+    }
 
-            return sb.toString();
-        }
-
-        if (ballCount != 0) {
-            sb.append(ballCount).append(NumberBaseBallGameWord.BALL.getKrName()).append(" ");
-        }
-        if (strikeCount != 0) {
-            sb.append(strikeCount).append(NumberBaseBallGameWord.STRIKE.getKrName());
-        }
-
-        return sb.toString().trim();
+    private String getGameResult(GameScore gameScore) {
+        return gameResultRepository.getGameResultMessage(gameScore);
     }
 }

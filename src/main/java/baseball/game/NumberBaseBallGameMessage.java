@@ -9,21 +9,21 @@ public class NumberBaseBallGameMessage {
     }
 
     public static void printStart() {
-        System.out.println(NumberBaseBallGameWord.START.getKrName());
+        System.out.println(NumberBaseBallGameWord.START.getMessage());
     }
 
     public static void printRunning() {
-        System.out.print(NumberBaseBallGameWord.RUNNING.getKrName());
+        System.out.print(NumberBaseBallGameWord.RUNNING.getMessage());
     }
 
     public static void printContinue() {
-        System.out.println(NumberBaseBallGameWord.CONTINUE.getKrName());
+        System.out.println(NumberBaseBallGameWord.CONTINUE.getMessage());
     }
 
-    private static String getEndMessage() {
+    public static String getEndMessage() {
         StringBuilder sb = new StringBuilder();
-        sb.append(3).append(NumberBaseBallGameWord.STRIKE.getKrName()).append("\n");
-        sb.append(NumberBaseBallGameWord.END.getKrName());
+        sb.append(3).append(NumberBaseBallGameWord.STRIKE.getMessage()).append("\n");
+        sb.append(NumberBaseBallGameWord.END.getMessage());
 
         return sb.toString();
     }
@@ -36,14 +36,14 @@ public class NumberBaseBallGameMessage {
     }
 
     public static boolean isReStart(String message) {
-        if (message.equals(NumberBaseBallGameWord.NEW_GAME.getKrName())) {
+        if (message.equals(NumberBaseBallGameWord.NEW_GAME.getMessage())) {
             return true;
         }
         return false;
     }
 
     public static boolean isExit(String message) {
-        if (message.equals(NumberBaseBallGameWord.EXIT_GAME.getKrName())) {
+        if (message.equals(NumberBaseBallGameWord.EXIT_GAME.getMessage())) {
             return true;
         }
         return false;

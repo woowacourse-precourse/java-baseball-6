@@ -1,8 +1,10 @@
 package baseball.game.service;
 
 import baseball.game.entity.Member;
+import baseball.game.exception.NumberBaseBallException;
 import baseball.game.repository.MemberRepository;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,7 +28,7 @@ public class MemberService {
     public Member readUserNumber(String input) {
         if (!isInput(input)) {
             Console.close();
-            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 중복되지 않은 3자리 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(NumberBaseBallException.WRONG_NUMBER);
         }
 
         List<Integer> numbers = stringToIntegerList(input);
@@ -43,14 +45,35 @@ public class MemberService {
     }
 
     private boolean isInput(String input) {
-        // input을 LinkedHashSet으로 변환
-        LinkedHashSet<Integer> inputs = stringToIntegerLinkedHashSet(input);
-        if (inputs.size() != 3) {
+        // 3자리가 아니면
+        if (input.length() != 3) {
             return false;
         }
+
+        // 문자열 중 숫자만 HashSet으로 변경
+        HashSet<Integer> inputSet = stringToIntegerHashSetOnlyNumber(input);
+        if (inputSet.size() != 3) {
+            return false;
+        }
+
         return true;
     }
 
+    // 문자열 중 숫자만 HashSet으로 변경
+    private HashSet<Integer> stringToIntegerHashSetOnlyNumber(String input) {
+        return input.chars()
+                .filter(Character::isDigit)
+                .map(Character::getNumericValue)
+                .boxed()
+                .collect(Collectors.toCollection(HashSet::new));
+    }
+
+    @Deprecated
+    private boolean isAllDigit(String input) {
+        return input.chars().allMatch(Character::isDigit);
+    }
+
+    @Deprecated
     private LinkedHashSet<Integer> stringToIntegerLinkedHashSet(String input) {
         // 순서를 보장하는 Set
         return input.chars()

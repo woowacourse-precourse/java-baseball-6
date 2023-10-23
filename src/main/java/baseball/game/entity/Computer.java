@@ -46,7 +46,7 @@ public class Computer {
         this.id = id;
     }
 
-    public void changeGameCount(int strikeCount, int ballCount) {
+    public void changeStrikeAndBallCount(int strikeCount, int ballCount) {
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
     }

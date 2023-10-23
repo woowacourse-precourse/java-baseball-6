@@ -11,13 +11,13 @@ public enum NumberBaseBallGameWord {
     BALL("볼"),
     NOTHING("낫싱");
 
-    private final String krName;
+    private final String message;
 
-    NumberBaseBallGameWord(String krName) {
-        this.krName = krName;
+    NumberBaseBallGameWord(String message) {
+        this.message = message;
     }
 
-    public String getKrName() {
-        return krName;
+    public String getMessage() {
+        return message;
     }
 }

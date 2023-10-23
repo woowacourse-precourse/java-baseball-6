@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import baseball.game.entity.Member;
+import baseball.game.exception.NumberBaseBallException;
 import baseball.game.repository.MemberRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,30 @@ class MemberServiceTest {
     }
 
     @Test
+    @DisplayName("문자를 포함하여 입력하면 예외가 발생한다.")
+    void readUserNumberExceptionInputWithString() {
+        // given
+        String input = "1a3";
+
+        // when // then
+        assertThatThrownBy(() -> memberService.readUserNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NumberBaseBallException.WRONG_NUMBER);
+    }
+
+    @Test
+    @DisplayName("중복된 숫자를 입력하면 예외가 발생한다.")
+    void readUserNumberExceptionInputDuplicate() {
+        // given
+        String input = "113";
+
+        // when // then
+        assertThatThrownBy(() -> memberService.readUserNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NumberBaseBallException.WRONG_NUMBER);
+    }
+
+    @Test
     @DisplayName("서로 다른 4자리 이상의 숫자를 입력하면 예외가 발생한다.")
     void readUserNumberExceptionInputMoreThan4() {
         // given
@@ -40,7 +65,7 @@ class MemberServiceTest {
         // when // then
         assertThatThrownBy(() -> memberService.readUserNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("숫자를 잘못 입력했습니다. 중복되지 않은 3자리 숫자를 입력해주세요.");
+                .hasMessage(NumberBaseBallException.WRONG_NUMBER);
     }
 
     @Test
@@ -52,6 +77,6 @@ class MemberServiceTest {
         // when // then
         assertThatThrownBy(() -> memberService.readUserNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("숫자를 잘못 입력했습니다. 중복되지 않은 3자리 숫자를 입력해주세요.");
+                .hasMessage(NumberBaseBallException.WRONG_NUMBER);
     }
 }
