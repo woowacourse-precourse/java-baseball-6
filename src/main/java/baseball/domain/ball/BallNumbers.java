@@ -28,7 +28,8 @@ public abstract class BallNumbers {
     }
 
     private static void validateDuplicateNumbers(final List<Integer> numbers) {
-        if (new HashSet<>(numbers).size() != BALL_COUNT) {
+        final int size = new HashSet<>(numbers).size();
+        if (size != BALL_COUNT) {
             throw new IllegalArgumentException("BallNumbers에 중복 숫자가 존재하면 안 됩니다.");
         }
     }
