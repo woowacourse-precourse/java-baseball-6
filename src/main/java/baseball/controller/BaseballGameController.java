@@ -1,10 +1,10 @@
 package baseball.controller;
 
-import static baseball.model.Restart.isRestart;
+import static baseball.model.GameStatus.isRestart;
 
 import baseball.model.Computer;
+import baseball.model.GameStatus;
 import baseball.model.NumberList;
-import baseball.model.Restart;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -37,15 +37,15 @@ public class BaseballGameController extends GameController {
     }
 
     private void askRestart() {
-        isRunning = isRestart(scanRestart());
+        isRunning = isRestart(scanStatus());
     }
 
     private NumberList scanGuess() {
-        return new NumberList(InputController.scanGuess());
+        return NumberList.stringToNumberList(InputController.scanGuess());
     }
 
-    private Restart scanRestart() {
-        return new Restart(InputController.scanRestart());
+    private GameStatus scanStatus() {
+        return new GameStatus(InputController.scanStatus());
     }
 
     private static class InputController {
@@ -54,8 +54,8 @@ public class BaseballGameController extends GameController {
             return Console.readLine();
         }
 
-        public static String scanRestart() {
-            InputView.printEnterRestart();
+        public static String scanStatus() {
+            InputView.printEnterStatus();
             return Console.readLine();
         }
     }

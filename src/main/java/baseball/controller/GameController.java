@@ -1,10 +1,10 @@
 package baseball.controller;
 
 abstract class GameController {
-    boolean isRunning;
+    protected boolean isRunning;
 
-    public GameController(boolean isRunning) {
-        this.isRunning = isRunning;
+    public GameController(boolean running) {
+        this.isRunning = running;
     }
 
     public abstract void start();
