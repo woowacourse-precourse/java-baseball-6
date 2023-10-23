@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 public class BaseBallNumberList {
@@ -30,5 +31,9 @@ public class BaseBallNumberList {
 
     private boolean haveSameItem() {
         return this.numbers.stream().distinct().count() != this.numbers.size();
+    }
+
+    public List<Integer> getList() {
+        return Collections.unmodifiableList(numbers);
     }
 }
