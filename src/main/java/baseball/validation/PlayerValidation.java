@@ -8,12 +8,12 @@ public class PlayerValidation {
     private static final String SIZE_ERROR_MESSAGE = "자리 수가 아닙니다";
     private static final String DUPLICATION_ERROR_MESSAGE = "중복된 값입니다";
     private static final String IS_NOT_INPUT_ERROR_MESSAGE = "잘못된 입력 방식입니다";
-    private static final int numberSize = 3;
-    private static final int answerNumberSize = 1;
+    private static final int NUMBER_SIZE = 3;
+    private static final int ANSWER_NUMBER_SIZE = 1;
 
     public static List<Integer> checkNumber(String numbers){
         isCheckedNumber(numbers);
-        isCheckedSize(numbers,numberSize);
+        isCheckedSize(numbers, NUMBER_SIZE);
         return isDifferentNumbers(numbers);
     }
 
@@ -44,7 +44,7 @@ public class PlayerValidation {
 
     public static Integer checkAnswerNumber(String number) {
         isCheckedNumber(number);
-        isCheckedSize(number, answerNumberSize);
+        isCheckedSize(number, ANSWER_NUMBER_SIZE);
         isCheckedOneOrTwo(number);
         return Integer.parseInt(number);
     }
