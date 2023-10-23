@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Game {
 
     private Balls computerBalls;
-    private boolean isGameOver = false;
+    private GameStatus status;
 
     public Game(Balls computerBalls) {
         this.computerBalls = computerBalls;
@@ -20,15 +20,17 @@ public class Game {
         GameIO.gameRestartPrint();
         Command command = Command.findByCommand(Console.readLine());
         if (command.isEnd()) {
-            isGameOver = true;
+            status = GameStatus.END;
             return;
         }
         computerBallReset();
     }
 
     public void play() {
+        status = GameStatus.PLAY;
+
         GameIO.gameStartPrint();
-        while (!isGameOver) {
+        while (status.isPlay()) {
             GameIO.gameInputPrint();
             Balls playerBalls = new Balls(Console.readLine());
             boolean isMatching = computerBalls.match(playerBalls);
