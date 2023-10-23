@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -27,6 +28,21 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 생성된_무작위_숫자가_3자리인지_테스트() {
+        List<Integer> numbers = RandomNumberGenerator.generate();
+        assertThat(numbers.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 생성된_무작위_숫자가_중복이_없는지_테스트() {
+        for (int i = 0; i < 100; i++) {
+            List<Integer> numbers = RandomNumberGenerator.generate();
+            assertThat(numbers).doesNotHaveDuplicates();
+        }
+    }
+
 
     @Override
     public void runMain() {
