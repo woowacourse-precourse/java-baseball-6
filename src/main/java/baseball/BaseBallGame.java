@@ -24,10 +24,9 @@ public class BaseBallGame {
 
     private void playGame() {
         List<Integer> userGuessNumber = null;
-        List<Integer> randomNumber = null;
         boolean gameProcess = true;
 
-        randomNumber = service.makeRandomNumberList();
+        RandomNumber randomNumber = new RandomNumber();
         while (gameProcess) {
             System.out.printf("숫자를 입력해주세요 : ");
             int[] ballAndStrike = guessNumber(userGuessNumber, randomNumber);
@@ -39,7 +38,7 @@ public class BaseBallGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private int[] guessNumber(List<Integer> userGuessNumber, List<Integer> randomNumber) {
+    private int[] guessNumber(List<Integer> userGuessNumber, RandomNumber randomNumber) {
         userGuessNumber = input.userInputGuessNumber();
         int[] ballAndStrike = service.compareGuessToRandom(userGuessNumber, randomNumber);
         return ballAndStrike;
