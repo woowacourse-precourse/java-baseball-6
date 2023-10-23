@@ -1,10 +1,9 @@
 package baseball.domain.ball;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public abstract class BallNumbers {
-
 
     public static final int BALL_COUNT = 3;
 
@@ -12,16 +11,14 @@ public abstract class BallNumbers {
 
     protected BallNumbers(final List<Integer> numbers) {
         validateNumbersCount(numbers);
-        this.ballNumbers = intoBallNumberList(numbers);
+        validateDuplicateNumbers(numbers);
+        this.ballNumbers = toBallNumberList(numbers);
     }
 
-    private static List<BallNumber> intoBallNumberList(final List<Integer> numbers) {
-        final List<BallNumber> ballNumbers = new ArrayList<>();
-
-        for (final Integer number : numbers) {
-            ballNumbers.add(new BallNumber(number));
-        }
-        return ballNumbers;
+    private static List<BallNumber> toBallNumberList(final List<Integer> numbers) {
+        return numbers.stream()
+                .map(BallNumber::new)
+                .toList();
     }
 
     private static void validateNumbersCount(final List<Integer> numbers) {
@@ -30,7 +27,14 @@ public abstract class BallNumbers {
         }
     }
 
+    private static void validateDuplicateNumbers(final List<Integer> numbers) {
+        if (new HashSet<>(numbers).size() != BALL_COUNT) {
+            throw new IllegalArgumentException("BallNumbers에 중복 숫자가 존재하면 안 됩니다.");
+        }
+    }
+
     protected BallNumber get(final int index) {
         return ballNumbers.get(index);
     }
+
 }
