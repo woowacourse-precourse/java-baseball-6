@@ -1,14 +1,11 @@
 package baseball;
 
 
-import static baseball.model.MsgConst.WELCOME_MSG;
-import static baseball.model.NumConst.END;
-import static baseball.model.NumConst.RESTART;
+import static baseball.model.MsgConstant.WELCOME_MSG;
+import static baseball.model.NumConstant.END;
+import static baseball.model.NumConstant.RESTART;
 import static baseball.util.CountResult.ball;
 import static baseball.util.CountResult.strike;
-import static baseball.util.Validation.validateNumberDuplicated;
-import static baseball.util.Validation.validateNumberLength;
-import static baseball.util.Validation.validateNumberRange;
 
 import baseball.control.ComputerControl;
 import baseball.control.UserControl;
@@ -21,36 +18,31 @@ import java.util.List;
 
 
 public class Baseball {
-    public static Validation validation = new Validation();
-    public static ComputerControl computerControl = new ComputerControl();
-    public static UserControl userControl = new UserControl();
-    public static CountResult countResult = new CountResult();
-    public static ResultView resultView = new ResultView();
-    public static UserView userView = new UserView();
-    public static List<Integer> computerNum;
+    private static final Validation validation = new Validation();
+    private static final ComputerControl computerControl = new ComputerControl();
+    private static final UserControl userControl = new UserControl();
+    private static final CountResult countResult = new CountResult();
+    private static final ResultView resultView = new ResultView();
+    private static final UserView userView = new UserView();
+    private static final Converter converter = new Converter();
     public static boolean isRestart = false;
-    public static List<Integer> userNum;
+    private static List<Integer> computerNum;
+    private static List<Integer> userNum;
 
 
     public void playGame() {
-
         isRestart = false;
         startGame();
-
         while (!isRestart) {
             userView.requestInput();
             String inputNum = userControl.getNumber();
-            Converter.toIntegerList(inputNum);
+            Validation.validateUserInput(inputNum);
 
-            validateNumberLength(inputNum);
-            validateNumberDuplicated(userNum);
-            validateNumberRange(userNum);
+            // countingResult에서의 셈이 수월하도록 IntegerList로 변환 후 진행
+            userNum = converter.toIntegerList(inputNum);
+            countResult.countingResult(computerNum, userNum);
 
-            countResult.countingBall(computerNum, userNum);
-            countResult.countingStrike(computerNum, userNum);
-
-            resultView.givingHint(ball, strike);
-
+            resultView.givingResult(ball, strike);
         }
     }
 
@@ -61,10 +53,10 @@ public class Baseball {
 
     public static void restartOrExit() {
         UserView.requestReply();
-        String reply = UserControl.getRestartCode();
+        String reply = userControl.getRestartCode();
 
         if (reply.equals(RESTART)) {
-            computerNum = ComputerControl.generateRandomNum();
+            computerNum = computerControl.generateRandomNum();
         } else if (reply.equals(END)) {
             isRestart = true;
         }
