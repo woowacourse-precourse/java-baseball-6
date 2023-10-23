@@ -31,4 +31,8 @@ public class GameService {
         return gameRepository.findByUserId(userId).toList();
     }
 
+    /* 질문 횟수 추가 */
+    public Game addQestionCount(Game game){
+        return gameRepository.saveQestionCount(game);
+    }
 }

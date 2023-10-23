@@ -3,11 +3,11 @@ package baseball.controller;
 import baseball.domain.Game;
 import baseball.domain.User;
 import baseball.service.GameService;
+import baseball.service.MessageService;
 import baseball.service.UserService;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,42 +16,49 @@ import java.util.stream.Collectors;
 public class GameController {
     private final GameService gameService;
     private final UserService userService;
+    private final MessageService messageService;
     private User user;
 
     public GameController() {
+        this.messageService = new MessageService();
         this.gameService = new GameService();
         this.userService = new UserService();
     }
 
     public void startProgram(){
         /* 로그인 */
-        user = new User();
-        user.setName("user1");
-        userService.join(user);
+        login();
 
         /* 인트로 */
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        messageService.intro();
 
         Boolean flag = true;
-
-        /* 게임 시작 */
         while(flag){
+            /* 게임 시작 */
             Long gameId = newGame();
             List<Integer> computerNumber = gameService.findOne(gameId).get().getComputerNumber();
             Boolean isCorrect = false;
 
             while(!isCorrect){
+                /* 정답을 맞출때 까지 반복 */
+                gameService.addQestionCount(gameService.findOne(gameId).get());
                 List<Integer> userNumber = setUserNumber();
                 isCorrect = checkCorrect(computerNumber, userNumber);
             }
-
             /* 메뉴 표출*/
             flag = showMenu();
         }
     }
 
+    private void login(){
+        user = new User();
+        user.setName("user1");
+        userService.join(user);
+    }
+
     private Boolean showMenu(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        messageService.menu();
+
         String answer = Console.readLine();
         if (answer.equals("1")) {
             return true;
@@ -64,21 +71,10 @@ public class GameController {
 
     private Boolean checkCorrect(List<Integer> computerNumber, List<Integer> userNumber){
         List<Integer> count = checkBall(computerNumber, userNumber);
-        String message = "";
-
-        if (count.get(0) + count.get(1) == 0){
-            message += "낫싱";
-        } else if (count.get(0) > 0 && count.get(1) == 0) {
-            message += count.get(0) + "볼";
-        } else if (count.get(1) > 0 && count.get(0) == 0){
-            message += count.get(1) + "스트라이크";
-        }else{
-            message += count.get(0) + "볼 " + count.get(1) + "스트라이크";
-        }
-        System.out.println(message);
+        messageService.result(count);
 
         if (count.get(1) == 3){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            messageService.gameOver();
             return true;
         } else{
             return false;
@@ -101,35 +97,40 @@ public class GameController {
         return list;
     }
     private List<Integer> setUserNumber(){
-        System.out.print("숫자를 입력해주세요 : ");
+        messageService.inputUserNumber();
         String number = Console.readLine();
 
         checkInputNumber(number);
+
         return Arrays.stream(number.split(""))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
     }
 
     private void checkInputNumber(String input){
+        /* 숫자 판별 */
         for (int i=0;i<3;i++) {
             try{
                 Integer.parseInt(input);
             }catch (IllegalArgumentException e){
-                throw  new IllegalArgumentException();
+                throw new IllegalArgumentException();
             }
         }
+        /* 길이 판별 */
         if (input.length() != 3) {
-            throw  new IllegalArgumentException();
+            throw new IllegalArgumentException();
         }
+        /* 중복 판별 */
         ArrayList<Integer> numbers = new ArrayList<>();
         for (int i=0;i<3;i++) {
             if (numbers.contains(Character.getNumericValue(input.charAt(i)))){
-                throw  new IllegalArgumentException();
+                throw new IllegalArgumentException();
             }
             numbers.add(Character.getNumericValue(input.charAt(i)));
         }
+        /* 0 판별 */
         if (input.contains("0")){
-            throw  new IllegalArgumentException();
+            throw new IllegalArgumentException();
         }
     }
 
