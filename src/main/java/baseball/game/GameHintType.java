@@ -13,16 +13,10 @@ public enum GameHintType {
     }
 
     public String format(int count) {
-        switch (this) {
-            case STRIKE:
-            case BALL:
-                return count > 0 ? count + label : "";
-            case NOTHING:
-            case ANSWER:
-                return label;
-            default:
-                throw new IllegalArgumentException("지원하지 않는 형식입니다.");
-        }
+        return switch (this) {
+            case STRIKE, BALL -> count > 0 ? count + label : "";
+            case NOTHING, ANSWER -> label;
+        };
     }
 
     @Override
