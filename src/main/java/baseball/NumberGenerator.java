@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class NumberGenerator {
     private static final int SIZE = 3;
-    public static final String NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
     public List<Integer> setComputerNumber() {
         List<Integer> computerNumber;

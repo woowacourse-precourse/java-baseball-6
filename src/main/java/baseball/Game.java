@@ -30,7 +30,7 @@ public class Game {
         }
     }
 
-    public void gameOver() {
+    private void gameOver() {
         System.out.println(GAME_OVER_MESSAGE);
         String num = Console.readLine();
         if (!num.equals(RESTART) && !num.equals(EXIT)) { // 예외 처리
