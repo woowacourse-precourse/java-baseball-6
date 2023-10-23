@@ -1,10 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import org.junit.platform.commons.util.StringUtils;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import org.junit.platform.commons.util.StringUtils;
 
 public class BaseballGame {
     public static final String RESTART_GAME = "1";
@@ -70,12 +69,10 @@ public class BaseballGame {
     }
 
     private List<Integer> convertInputToList(String input) {
-        List<Integer> result = new ArrayList<>();
-
-        for (char c : input.toCharArray()) {
-            result.add(Character.getNumericValue(c));
-        }
-        return result;
+        return input.chars()
+                .map(Character::getNumericValue)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     private void setRandomNumbers() {
