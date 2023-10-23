@@ -3,9 +3,11 @@ import model.Computer;
 import model.Result;
 import model.User;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class CheckResult {
     private Computer computer;
@@ -18,21 +20,23 @@ public class CheckResult {
     private Map<String, Integer> playResult = new HashMap<String, Integer>();
 
     public CheckResult(Computer computer, User user) {
-        this.computer = computer;
-        this.user = user;
-
+        try{
+            this.computer = computer;
+            this.user = user;
+        }
+        catch (NullPointerException e) {
+            throw new NullPointerException("Exception occur CheckResult Class: NullPointerException");
+        }
         selectComputers = computer.getterSelectComputerNum();
         selectUsers = user.getterSelectUsersNum();
-
-        System.out.println(selectComputers);
-        System.out.println(selectUsers);
-
     }
 
     public boolean equalsComputerAndUser() {
-        System.out.println("equalComputerAndUser 입성");
         int strikeCount = 0;
         int ballCount = 0;
+
+        Stream<Character> selectComputers = selectComputers;
+        Stream<Character> selectUsers = Arrays.stream(selectUsers);
 
         for (int i =0; i< selectComputers.length; i++) {
             for(int j = 0; j < selectUsers.length; j++) {

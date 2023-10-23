@@ -4,7 +4,12 @@ public class Computer {
     private char[] selectComputers;
 
     public Computer(char[] selectComputers) {
-        this.selectComputers = selectComputers;
+        try {
+            this.selectComputers = selectComputers;
+        }
+        catch (NullPointerException e) {
+            throw new NullPointerException("Exception occur Computer Class: NullPointerException");
+        }
     }
 
     public char[] getterSelectComputerNum() {

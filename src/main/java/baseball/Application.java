@@ -4,7 +4,6 @@ import controller.SelectComputerNum;
 import controller.SelectUserNum;
 import model.Computer;
 import model.User;
-import model.Result;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -15,23 +14,31 @@ public class Application {
         Computer computer = selectComputerNum.randomlySelectComputerNum();//computer randomly select number
 
         while(true) {
-            System.out.println("숫자를 입력해주세요 : ");//input
+            try{
+                System.out.println("숫자를 입력해주세요 : ");//input
 
-            char[] selectUsers = readLine().toCharArray();//user select number
-            SelectUserNum selectUserNum = new SelectUserNum(selectUsers);//create Object
-            User user = selectUserNum.returnSelectUserNum();
+                char[] selectUsers = readLine().toCharArray();//user select number
+                SelectUserNum selectUserNum = new SelectUserNum(selectUsers);//create Object
+                User user = selectUserNum.returnSelectUserNum();
 
-            CheckResult checkResult = new CheckResult(computer, user);//create Object
-            boolean playResult = checkResult.equalsComputerAndUser();
+                CheckResult checkResult = new CheckResult(computer, user);//create Object
+                boolean playResult = checkResult.equalsComputerAndUser();
 
-            if (playResult) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                if (playResult) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-                int userChoice = Integer.parseInt(readLine());
-                if(userChoice == 1) {reStart();}
-                if(userChoice == 2) {return;}
-                throw new IllegalArgumentException("Invalid argument: " + userChoice);
-            };
+                    int userChoice = Integer.parseInt(readLine());
+                    if(userChoice == 1) {reStart();}
+                    if(userChoice == 2) {return;}
+                    throw new IllegalArgumentException("Invalid argument: " + userChoice);
+                };
+            }catch (IllegalArgumentException e){
+                System.out.println("close Application: IllegalArgumentException");
+                return;
+            }catch (NullPointerException e) {
+                System.out.println("close Application: NullPointerException");
+                return;
+            }
         }
     }
 

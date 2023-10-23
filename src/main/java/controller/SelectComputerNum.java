@@ -7,29 +7,29 @@ public class SelectComputerNum {
     private Computer computer;
 
     public Computer randomlySelectComputerNum() {
-        for (int i = 0 ; i < selectComputers.length ; i++) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            selectComputers[0] = (char)(Randoms.pickNumberInRange(1, 9) + '0');
 
-            if((i > 0) && checkDuplication((char)(randomNumber + '0'))) {
-                i--;
-                continue;
+            for (int i = 0 ; i < selectComputers.length ; i++) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+                if(checkDuplication((char)(randomNumber + '0'))) {
+                    i--;
+                    continue;
+                }
+                selectComputers[i] = (char)(randomNumber + '0');
             }
-            selectComputers[i] = (char)(randomNumber + '0');
-        }
-        computer = new Computer(selectComputers);//model object 생성
-        return computer;
+            computer = new Computer(selectComputers);//model object 생성
+            return computer;
+
     }
 
     private boolean checkDuplication(char randomNumber) {
         int i = 0;
         for (; i < selectComputers.length ; i++ ) {
             if (selectComputers[i] == randomNumber) {
-                break;
+                return true;
             }
         }
-        if(i == selectComputers.length) {//duplication false
-            return false;
-        }
-        return true;//duplication true
+        return false;
     }
 }

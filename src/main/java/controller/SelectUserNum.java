@@ -8,10 +8,17 @@ public class SelectUserNum {
 
     private User user;
     public SelectUserNum(char[] selectUsers) {
-        isValid(selectUsers);
-        this.selectUsers = selectUsers;
+        try{
+            isValid(selectUsers);
+            this.selectUsers = selectUsers;
 
-        user = new User(selectUsers);
+            user = new User(selectUsers);
+        }
+        catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("Exception occurs in SelectUserNum Class: IllegalArgumentException");
+        }catch (NullPointerException e) {
+            throw new IllegalArgumentException("Exception occurs in SelectUserNum Class: NullPointerException");
+        }
     }
 
     private void isValid(char[] selectUsers) {
@@ -21,7 +28,7 @@ public class SelectUserNum {
 
     private void validateSelectNum(char[] selectUsers) {
         for (int i = 0; i < 3; i++) {
-            if((selectUsers.length > 3) || !((MIN_RANGE_OF_NUM <= selectUsers[i]) && (selectUsers[i] <= MAX_RANGE_OF_NUM))) {//is not int Array
+            if((selectUsers.length != 3) || !((MIN_RANGE_OF_NUM <= selectUsers[i]) && (selectUsers[i] <= MAX_RANGE_OF_NUM))) {//is not int Array
                 throw new IllegalArgumentException("Invalid argument: " + selectUsers[i]);
             }
         }
@@ -39,6 +46,11 @@ public class SelectUserNum {
     }
 
     public User returnSelectUserNum() {
-        return user;
+        try{
+            return user;
+        }
+        catch (NullPointerException e) {
+            throw new NullPointerException("Reference is null");
+        }
     }
 }
