@@ -20,7 +20,6 @@ public class Game {
 
     private void setGame() {
         computer = new Computer();
-        computer.getNumbers().stream().forEach(System.out::println);
         user = new User();
         result = new Result();
     }
