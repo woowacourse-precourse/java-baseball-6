@@ -32,11 +32,15 @@ public class InputVerifier {
     }
 
     private static void checkDigitRange(String inRange) {
-        if (inRange.chars()
-                .map(Character::getNumericValue)
-                .anyMatch(InputVerifier::outOfEachDigitRange)) {
+        if (outOfDigitRange(inRange)) {
             throw new IllegalArgumentException(SystemException.EXCEPTION_HAS_ZERO);
         }
+    }
+
+    private static boolean outOfDigitRange(String inRange) {
+        return inRange.chars()
+                .map(Character::getNumericValue)
+                .anyMatch(InputVerifier::outOfEachDigitRange);
     }
 
     private static boolean outOfEachDigitRange(int comp) {
