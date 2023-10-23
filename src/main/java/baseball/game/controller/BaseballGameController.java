@@ -2,7 +2,7 @@ package baseball.game.controller;
 
 import baseball.game.controller.dto.NumberListDto;
 import baseball.game.model.GameModel;
-import baseball.game.model.dto.RoundResult;
+import baseball.game.model.dto.RoundResultDto;
 import baseball.game.view.input.InputView;
 import baseball.game.view.output.OutputView;
 
@@ -37,7 +37,7 @@ public class BaseballGameController {
 
         while (true) {
             NumberListDto guess = userInput.getGuessNumbers();
-            RoundResult roundResult = gameModel.calculateRoundResult(answer, guess);
+            RoundResultDto roundResult = gameModel.calculateRoundResult(answer, guess);
             userOutput.printResult(roundResult);
 
             if (roundResult.getStrikeCount() == 3) {

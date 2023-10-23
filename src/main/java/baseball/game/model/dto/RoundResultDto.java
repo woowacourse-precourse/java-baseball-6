@@ -3,12 +3,12 @@ package baseball.game.model.dto;
 /**
  * 한 라운드 결과를 전달하는 DTO 클래스
  */
-public class RoundResult {
+public class RoundResultDto {
     private final int ballCount;
 
     private final int strikeCount;
 
-    public RoundResult(int ballCount, int strikeCount) {
+    public RoundResultDto(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }

@@ -2,7 +2,7 @@ package baseball.game.view.output;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.game.model.dto.RoundResult;
+import baseball.game.model.dto.RoundResultDto;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -37,7 +37,7 @@ class OutputViewTest {
     @Test
     @DisplayName("문구_출력_볼")
     public void resultOutputBall() {
-        RoundResult roundResult = new RoundResult(1, 0);
+        RoundResultDto roundResult = new RoundResultDto(1, 0);
         OutputView outputView = new OutputView();
 
         outputView.printResult(roundResult);
@@ -47,7 +47,7 @@ class OutputViewTest {
     @Test
     @DisplayName("문구_출력_스트라이크")
     public void resultOutputStrike() {
-        RoundResult roundResult = new RoundResult(0, 2);
+        RoundResultDto roundResult = new RoundResultDto(0, 2);
         OutputView outputView = new OutputView();
 
         outputView.printResult(roundResult);
@@ -57,7 +57,7 @@ class OutputViewTest {
     @Test
     @DisplayName("문구_출력_볼_스트라이크")
     public void resultOutputBoth() {
-        RoundResult roundResult = new RoundResult(1, 1);
+        RoundResultDto roundResult = new RoundResultDto(1, 1);
         OutputView outputView = new OutputView();
 
         outputView.printResult(roundResult);
@@ -67,7 +67,7 @@ class OutputViewTest {
     @Test
     @DisplayName("문구_출력_낫싱")
     public void resultOutputNothing() {
-        RoundResult roundResult = new RoundResult(0, 0);
+        RoundResultDto roundResult = new RoundResultDto(0, 0);
         OutputView outputView = new OutputView();
 
         outputView.printResult(roundResult);

@@ -3,7 +3,7 @@ package baseball.game.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.game.controller.dto.NumberListDto;
-import baseball.game.model.dto.RoundResult;
+import baseball.game.model.dto.RoundResultDto;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ class GameModelTest {
         NumberListDto randomAnswer = new NumberListDto(List.of(1, 2, 3));
         NumberListDto userGuessNumber = new NumberListDto(List.of(1, 2, 3));
 
-        RoundResult roundResult = gameModel.calculateRoundResult(randomAnswer, userGuessNumber);
+        RoundResultDto roundResult = gameModel.calculateRoundResult(randomAnswer, userGuessNumber);
 
         assertThat(roundResult.getBallCount()).isEqualTo(0);
         assertThat(roundResult.getStrikeCount()).isEqualTo(3);
@@ -40,7 +40,7 @@ class GameModelTest {
         NumberListDto randomAnswer = new NumberListDto(List.of(1, 2, 3));
         NumberListDto userGuessNumber = new NumberListDto(List.of(3, 1, 2));
 
-        RoundResult roundResult = gameModel.calculateRoundResult(randomAnswer, userGuessNumber);
+        RoundResultDto roundResult = gameModel.calculateRoundResult(randomAnswer, userGuessNumber);
 
         assertThat(roundResult.getBallCount()).isEqualTo(3);
         assertThat(roundResult.getStrikeCount()).isEqualTo(0);
@@ -53,7 +53,7 @@ class GameModelTest {
         NumberListDto randomAnswer = new NumberListDto(List.of(1, 2, 3));
         NumberListDto userGuessNumber = new NumberListDto(List.of(4, 5, 6));
 
-        RoundResult roundResult = gameModel.calculateRoundResult(randomAnswer, userGuessNumber);
+        RoundResultDto roundResult = gameModel.calculateRoundResult(randomAnswer, userGuessNumber);
 
         assertThat(roundResult.getBallCount()).isEqualTo(0);
         assertThat(roundResult.getStrikeCount()).isEqualTo(0);
@@ -66,7 +66,7 @@ class GameModelTest {
         NumberListDto randomAnswer = new NumberListDto(List.of(1, 2, 3));
         NumberListDto userGuessNumber = new NumberListDto(List.of(1, 3, 5));
 
-        RoundResult roundResult = gameModel.calculateRoundResult(randomAnswer, userGuessNumber);
+        RoundResultDto roundResult = gameModel.calculateRoundResult(randomAnswer, userGuessNumber);
 
         assertThat(roundResult.getBallCount()).isEqualTo(1);
         assertThat(roundResult.getStrikeCount()).isEqualTo(1);

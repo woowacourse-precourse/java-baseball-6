@@ -1,7 +1,7 @@
 package baseball.game.model;
 
 import baseball.game.controller.dto.NumberListDto;
-import baseball.game.model.dto.RoundResult;
+import baseball.game.model.dto.RoundResultDto;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class GameModel {
         return new NumberListDto(answer);
     }
 
-    public RoundResult calculateRoundResult(NumberListDto answer, NumberListDto guess) {
+    public RoundResultDto calculateRoundResult(NumberListDto answer, NumberListDto guess) {
         int ballCount = 0;
         int strikeCount = 0;
 
@@ -46,6 +46,6 @@ public class GameModel {
             }
         }
 
-        return new RoundResult(ballCount, strikeCount);
+        return new RoundResultDto(ballCount, strikeCount);
     }
 }
