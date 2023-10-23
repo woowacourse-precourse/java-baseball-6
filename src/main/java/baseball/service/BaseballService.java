@@ -19,7 +19,7 @@ public class BaseballService {
         }
     }
 
-    private int countStrike(String randomNumber, String input) {
+    public int countStrike(String randomNumber, String input) {
         int count = 0;
         for (int size = 0; size < 3; size++) {
             if (Objects.equals(randomNumber.charAt(size), input.charAt(size))) {
@@ -29,7 +29,7 @@ public class BaseballService {
         return count;
     }
 
-    private int countBall(String randomNumber, String input) {
+    public int countBall(String randomNumber, String input) {
         int count = 0;
         for (int size = 0; size < 3; size++) {
             String number = String.valueOf(randomNumber.charAt(size));
@@ -40,7 +40,7 @@ public class BaseballService {
         return count;
     }
 
-    private void printResult(int strike, int ball) {
+    public void printResult(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             outputView.noStrikeNoBall();
         } else if (strike == 0) {
