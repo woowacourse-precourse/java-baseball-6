@@ -16,6 +16,14 @@ class GameStatusTest {
         assertThat(GameStatus.RESTART).isEqualTo(expected);
     }
 
+    @DisplayName("종료에 해당하는 수를 입력 시 게임을 종료할 수 있다")
+    @Test
+    void exit(){
+        Integer exitNumber = 2;
+        GameStatus expected = GameStatus.find(exitNumber);
+        assertThat(GameStatus.EXIT).isEqualTo(expected);
+    }
+
 
 
 }
