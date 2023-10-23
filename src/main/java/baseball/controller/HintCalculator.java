@@ -16,7 +16,7 @@ public class HintCalculator {
     public HintCalculator(List<Integer> userList, List<Integer> computerList) {
         for (int i = 0; i < LIST_SIZE; ++i) {
             addStrikeCount(userList.get(i), computerList.get(i));
-            addBallCount(userList.get(i), computerList);
+            addBallCount(userList.get(i), computerList.get(i), computerList);
         }
     }
 
@@ -38,8 +38,8 @@ public class HintCalculator {
         }
     }
 
-    private void addBallCount(int userDigit, List<Integer> computerList) {
-        if(isBall(userDigit, computerList)){
+    private void addBallCount(int userDigit, int computerDigit, List<Integer> computerList) {
+        if(isBall(userDigit, computerDigit, computerList)){
             ++ballCnt;;
         }
     }
@@ -48,8 +48,8 @@ public class HintCalculator {
         return userNumber == computerNumber;
     }
 
-    private boolean isBall(Integer userNumber, List<Integer> computerList) {
-        return computerList.contains(userNumber);
+    private boolean isBall(Integer userNumber, Integer computerNumber, List<Integer> computerList) {
+        return userNumber != computerNumber && computerList.contains(userNumber);
     }
 
     private String getNothingString() {
