@@ -4,7 +4,7 @@ import baseball.domain.ComputerBaseballs;
 import baseball.domain.UserBaseballs;
 import baseball.dto.Result;
 
-public class Referee {
+public class BaseballReferee {
 
     public Result createResult(ComputerBaseballs computerBaseballs, UserBaseballs userBaseballs) {
         int ballCount = computerBaseballs.countBall(userBaseballs);

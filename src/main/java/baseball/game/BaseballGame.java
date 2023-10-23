@@ -10,11 +10,11 @@ import baseball.io.Output;
 
 public class BaseballGame {
     private ComputerBaseballs computerBaseballs;
-    private final Referee referee;
+    private final BaseballReferee baseballReferee;
 
     public BaseballGame() {
         computerBaseballs = null;
-        referee = new Referee();
+        baseballReferee = new BaseballReferee();
     }
 
     public void play() {
@@ -24,7 +24,7 @@ public class BaseballGame {
         do {
             result = playOnce();
             Output.gameResultOutput(result);
-        } while (!referee.isUserWin(result));
+        } while (!baseballReferee.isUserWin(result));
 
         Output.successAndExitOutput();
     }
@@ -37,6 +37,6 @@ public class BaseballGame {
         String userInput = numberInput();
         UserBaseballs userBaseballs = BaseballFactory.createUserBaseballs(userInput);
 
-        return referee.createResult(computerBaseballs, userBaseballs);
+        return baseballReferee.createResult(computerBaseballs, userBaseballs);
     }
 }
