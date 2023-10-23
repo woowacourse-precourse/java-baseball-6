@@ -12,7 +12,6 @@ public class Game {
     private final int LENGTH = 3;
     private static final String START_NUMBER = "1";
     private static final String END_NUMBER = "2";
-    private static final String START_OR_END = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String NOTHING = "낫싱";
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
