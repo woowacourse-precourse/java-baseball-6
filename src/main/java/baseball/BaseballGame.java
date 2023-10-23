@@ -19,12 +19,11 @@ public class BaseballGame {
 
     public void start(){
         computer = createComputerNumbers();
-        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true){
             inputNumbersAndValidate();
             compareNumbers();
             if(ball < 1 && strike < 1){
-                System.out.println("낫씽");
+                System.out.println("낫싱");
                 continue;
             }
             if(ball>0 && strike<1){
@@ -34,12 +33,29 @@ public class BaseballGame {
             if(ball<1 && strike >0){
                 System.out.println(strike + "스트라이크");
                 if(strike == 3){
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
+                    System.out.println("게임 종료");
+                    if(end() == 2){
+                        break;
+                    }
                 }
                 continue;
             }
             System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+    }
+
+    public int end(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String end = readLine();
+        switch(end){
+            case "1":
+                computer.clear();
+                computer = createComputerNumbers();
+                return 1;
+            case "2":
+                return 2;
+            default:return 1;
         }
     }
 
