@@ -28,21 +28,16 @@ public record BallCount(long countOfStrike, long countOfBall) {
 
     @Override
     public String toString() {
-        if (countOfBall == NO_COUNT && countOfStrike == NO_COUNT) {
-            return NOTHING;
-        }
-
-        String result = "";
-        if (countOfBall != NO_COUNT) {
-            result += countOfBall + BALL;
-        }
         if (countOfBall != NO_COUNT && countOfStrike != NO_COUNT) {
-            result += " ";
+            return countOfBall + BALL + " " + countOfStrike + STRIKE;
+        }
+        if (countOfBall != NO_COUNT) {
+            return countOfBall + BALL;
         }
         if (countOfStrike != NO_COUNT) {
-            result += countOfStrike + STRIKE;
+            return countOfStrike + STRIKE;
         }
-        return result;
+        return NOTHING;
     }
 
 }
