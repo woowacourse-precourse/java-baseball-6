@@ -10,13 +10,20 @@ public class GameMaster {
 
         Computer computer = new Computer();
         Player player = new Player();
+
         while (player.isNewGame()) {
-            computer.generateBaseballNumbers();
-            while (!computer.isStrikeOut()) {
-                player.inputBaseballNumbers();
-                computer.printBaseballResult(player.getBaseballNumbers());
-            }
-            player.chooseNewGameOrExit();
+            playSingleGame(computer, player);
         }
+    }
+
+    private void playSingleGame(Computer computer, Player player) {
+        computer.generateBaseballNumbers();
+
+        while (!computer.isStrikeOut()) {
+            player.inputBaseballNumbers();
+            computer.printBaseballResult(player.getBaseballNumbers());
+        }
+
+        player.chooseNewGameOrExit();
     }
 }
