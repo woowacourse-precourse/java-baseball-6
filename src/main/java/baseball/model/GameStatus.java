@@ -10,8 +10,8 @@ public class GameStatus {
         this.number = number;
     }
 
-    public GameStatus(String status) {
-        this(Integer.parseInt(status));
+    public static GameStatus stringToGameStatus(String status) {
+        return new GameStatus(Integer.parseInt(status));
     }
 
     public static boolean isRestart(GameStatus status) {

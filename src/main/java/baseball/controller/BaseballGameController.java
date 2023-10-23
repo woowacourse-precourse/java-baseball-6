@@ -45,7 +45,7 @@ public class BaseballGameController extends GameController {
     }
 
     private GameStatus scanStatus() {
-        return new GameStatus(InputController.scanStatus());
+        return GameStatus.stringToGameStatus(InputController.scanStatus());
     }
 
     private static class InputController {
