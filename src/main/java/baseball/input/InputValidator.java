@@ -1,9 +1,9 @@
 package baseball.input;
 
+import baseball.game.constant.GameConstant;
 import baseball.view.ErrorMessage;
 
 public class InputValidator {
-    private static final int EXPECTED_DIGIT=3;
 
     public void validateNotNull(String userInput){
         if(userInput.isEmpty())
@@ -24,12 +24,16 @@ public class InputValidator {
     }
 
     public void validateLength(String userInput){
-        if (userInput.length()!= EXPECTED_DIGIT)
-            throw new IllegalArgumentException(ErrorMessage.WRONG_DIGIT.getMessage());
+        if (userInput.length()!= GameConstant.GAME_DIGIT.getValue())
+            throw new IllegalArgumentException(
+                    ErrorMessage.WRONG_DIGIT.formatMessage(GameConstant.GAME_DIGIT.getValue()));
     }
 
-    public void validateChoice(String  userInput){
-        if (!(userInput.equals("1") || userInput.equals("2")))
-            throw new IllegalArgumentException(ErrorMessage.INVALID_CHOICE.getMessage());
+    public void validateChoice(String userInput){
+        int parsedInput = Integer.parseInt(userInput);
+        if (!(parsedInput==GameConstant.RESTART_CHOICE.getValue()
+                || parsedInput==GameConstant.END_CHOICE.getValue()))
+            throw new IllegalArgumentException(
+                    ErrorMessage.INVALID_CHOICE.formatMessage(GameConstant.RESTART_CHOICE.getValue(),GameConstant.END_CHOICE.getValue()));
     }
 }

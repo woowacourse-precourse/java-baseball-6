@@ -1,15 +1,15 @@
 package baseball.generator;
 
+import baseball.game.constant.GameConstant;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumberGenerator {
-    private static final int DIGIT=3;
     public List<Integer> makeUniqueNumbers(){
         List<Integer> computerNumbers = new ArrayList<>();
-        while (computerNumbers.size()< DIGIT){
+        while (computerNumbers.size()< GameConstant.GAME_DIGIT.getValue()){
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if(!computerNumbers.contains(randomNumber))
                 computerNumbers.add(randomNumber);

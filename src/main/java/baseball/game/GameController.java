@@ -1,6 +1,7 @@
 package baseball.game;
 
 import baseball.dto.GameResult;
+import baseball.game.constant.GameConstant;
 import baseball.generator.ComputerNumberGenerator;
 import baseball.generator.ResultGenerator;
 import baseball.input.InputProcessor;
@@ -45,13 +46,13 @@ public class GameController {
     private boolean checkGuessResult(List<Integer> userNumbers) {
         GameResult gameResult = resultGenerator.makeResult(userNumbers, computerNumbers);
         outputView.printResultMessage(gameResult);
-        return gameResult.strike() == 3;
+        return gameResult.strike() == GameConstant.GAME_DIGIT.getValue();
     }
 
     private boolean askForGameRestart() {
         outputView.printEndMessage();
         outputView.printRestartMessage();
         int restartChoice = inputProcessor.obtainValidUserChoice();
-        return restartChoice != 2;
+        return restartChoice == GameConstant.RESTART_CHOICE.getValue();
     }
 }
