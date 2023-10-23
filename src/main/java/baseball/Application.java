@@ -12,7 +12,6 @@ public class Application {
         int flag = 0;
         // TODO: 프로그램 구현
         while (true) {
-
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
@@ -22,16 +21,12 @@ public class Application {
                 }
             }  // 컴퓨터 3자리 수 완성
 //            System.out.println(computer.toString());
-
+            Integer n;
             while (true) {
-                if (flag == 1) {
-                    Integer n = Integer.valueOf(Console.readLine());
-                    if (n == 2) { // 종료
-                        break;
-                    }
-                }
+
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
+
                 if (num.isEmpty() || !num.matches("\\d+") || num.length() != 3) {
                     throw new IllegalArgumentException();
                 }
@@ -51,9 +46,15 @@ public class Application {
                 if (strikes == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     flag = 1;
+                    break;
                 }
             }
-            break;
+            if (flag == 1) {  // 탈출 조건.
+                n = Integer.valueOf(Console.readLine());
+                if (n == 2) { // 종료
+                    break;
+                }
+            }
         }
     }
 
