@@ -16,4 +16,9 @@ public class NumberBaseballGameConfig {
     public static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String CONTINUE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    // 에러 메시지
+    public static final String ERROR_LENGTH = "입력의 길이가 잘못되었습니다.";
+    public static final String ERROR_TYPE = "입력의 타입이 잘못되었습니다.";
+    public static final String ERROR_RANGE = "입력의 범위가 잘못되었습니다.";
+    public static final String ERROR_DUPLICATE = "중복된 숫자가 입력되었습니다.";
 }
