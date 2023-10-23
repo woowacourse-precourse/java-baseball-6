@@ -10,6 +10,9 @@ import baseball.service.ResultPrint;
 import baseball.service.Validation;
 import camp.nextstep.edu.missionutils.Console;
 
+/**
+ * 숫자 야구가 실행 되는 클래스
+ */
 public class Application {
     static final String RESTART = "1";
     static final String END = "2";

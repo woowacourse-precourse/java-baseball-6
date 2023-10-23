@@ -32,6 +32,6 @@
 - ### Convert
     - 문자열을 받아 정수 배열로 변환
 
-## 상수
+## Application
 
-- RESTART/END
+- RESTART/END 상수: 게임 재시작 여부를 나타냄. Player객체의 condition값과 비교
