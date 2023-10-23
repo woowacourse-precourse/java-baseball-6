@@ -14,6 +14,6 @@ public class BaseBallGame {
         }
     }
     public BaseBallGame(){
-
+        RandomNum();
     }
 }
