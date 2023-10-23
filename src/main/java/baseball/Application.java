@@ -17,9 +17,6 @@ public class Application {
 
             // 컴퓨터 숫자 생성
             List<Integer> computer = generateComputerNums();
-            for (Integer i : computer) {
-                System.out.println("i = " + i);
-            }
 
             // 매 라운드 루프
             while (!isWin) {
