@@ -36,6 +36,7 @@ public class Application {
                     computer = makeRandomNumber();
                 } else if(start == 2) {
                     System.out.println("게임 종료");
+                    Console.close();
                     break;
                 }
             }
