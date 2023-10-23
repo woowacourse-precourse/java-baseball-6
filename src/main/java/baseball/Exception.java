@@ -16,7 +16,6 @@ public class Exception {
         checkDuplicateNumbers(userInput);
     }
 
-    public void  checkDigits(){
     public static void checkNumbers(char[] userInput){
         for (char c : userInput) {
             if ((int) c < 49 || (int) c > 57) {
@@ -25,6 +24,10 @@ public class Exception {
         }
     }
 
+    public static void  checkDigits(char[] userInput){
+        if(userInput.length != 3){
+            throw new IllegalArgumentException("프로그램 종료");
+        }
     }
 
     public void checkDuplicateNumbers(){
