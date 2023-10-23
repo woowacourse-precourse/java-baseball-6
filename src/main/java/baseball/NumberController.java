@@ -32,7 +32,7 @@ public class NumberController {
       return numList;
     }
 
-    public Map compareNumberList(List<Integer> numList1, List<Integer> numList2) {
+    public Map<String, Integer> compareNumberList(List<Integer> numList1, List<Integer> numList2) {
       Map<String, Integer> result = new HashMap<>();
       result.put("strike", 0);
       result.put("ball", 0);
