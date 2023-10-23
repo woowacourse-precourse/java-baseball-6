@@ -1,45 +1,37 @@
-package baseball.validator;
+package baseball.service;
 
 import baseball.domain.ComputerNum;
-import baseball.domain.EnterNum;
+import baseball.domain.UserNum;
 
-import java.util.ArrayList;
-import java.util.List;
+public class GameService {
 
-public class ResultValidator {
+    private final UserNum userNum;
+    private final ComputerNum computerNum;
+    private int strike;
+    private int ball;
 
-    private List<Integer> enterNum;
-    private final List<Integer> computerNum;
-
-    public ResultValidator(ComputerNum cNum) {
-        this.enterNum = new ArrayList<>();
-        this.computerNum = cNum.getNum();
+    public GameService(UserNum userNum) {
+        this.userNum = userNum;
+        this.computerNum = new ComputerNum();
+        this.strike = 0;
+        this.ball = 0;
     }
 
-    public void enterCheckNum(EnterNum eNum) {
-        enterNum = eNum.getNum();
-    }
-
-    private int countStrike(boolean[] isChecked) {
-        int strike = 0;
-        for (int i = 0; i < computerNum.size(); i++) {
-            if (enterNum.get(i) == computerNum.get(i)) {
-                strike++;
+    private void countStrike(boolean[] isChecked) {
+        for (int i = 0; i < 3; i++) {
+            if (userNum.getNum().get(i) == computerNum.get(i)) {
+                this.strike++;
                 isChecked[i] = true;
             }
         }
-
-        return strike;
     }
 
-    private int countBall(boolean[] isChecked) {
-        int ball = 0;
+    private void countBall(boolean[] isChecked) {
         for (int i = 0; i < enterNum.size(); i++) {
             if (!isChecked[i] && computerNum.contains(enterNum.get(i))) {
                 ball++;
             }
         }
-        return ball;
     }
 
     public boolean checkResult() {
