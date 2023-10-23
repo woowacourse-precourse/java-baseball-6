@@ -21,18 +21,7 @@ public class Application {
                 validateUserInput(input);
                 List<Integer> userInput = parseUserInput(input);
                 count = checkAnswer(answer, userInput);
-                if (count[0] == 0 && count[1] == 0) {
-                    System.out.println("낫싱");
-                } else if (count[0] == 0) {
-                    System.out.printf("%d스트라이크%n", count[1]);
-                } else if (count[1] == 0) {
-                    System.out.printf("%d볼%n", count[0]);
-                } else {
-                    System.out.printf("%d볼 %d스트라이크%n", count[0], count[1]);
-                }
-                if (count[1] == SIZE) {
-                    System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", SIZE);
-                }
+                printResult(count);
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restart = Console.readLine();
@@ -76,6 +65,21 @@ public class Application {
             }
         }
         return count;
+    }
+
+    private static void printResult(int[] count) {
+        if (count[0] == 0 && count[1] == 0) {
+            System.out.println("낫싱");
+        } else if (count[0] == 0) {
+            System.out.printf("%d스트라이크%n", count[1]);
+        } else if (count[1] == 0) {
+            System.out.printf("%d볼%n", count[0]);
+        } else {
+            System.out.printf("%d볼 %d스트라이크%n", count[0], count[1]);
+        }
+        if (count[1] == SIZE) {
+            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", SIZE);
+        }
     }
 
     private static void validateUserInput(String input) {
