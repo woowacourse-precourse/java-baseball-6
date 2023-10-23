@@ -11,8 +11,10 @@ class InputValidatorTest {
     void validateCheckRestartGameInput() {
         String input = "0";
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+        IllegalArgumentException e = Assertions.assertThrows(IllegalArgumentException.class, () -> {
                 InputValidator.validateCheckRestartGameInput(input);
         });
+
+        Assertions.assertEquals(e.getMessage(), "잘못된 값을 입력했습니다.");
     }
 }
