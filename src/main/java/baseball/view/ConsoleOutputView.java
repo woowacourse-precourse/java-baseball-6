@@ -7,20 +7,16 @@ public class ConsoleOutputView implements OutputView {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String BLANK = " ";
-    private static final String EMPTY = "";
+    private static final String NEW_LINE = "\n";
 
     @Override
     public void print(final String message) {
         System.out.print(message);
     }
 
-    public void printLine(final String message) {
-        System.out.println(message);
-    }
-
     public void printGameResult(final int ballCount, final int strikeCount) {
         String result = makeResult(ballCount, strikeCount);
-        printLine(result);
+        print(result + NEW_LINE);
     }
 
     private String makeResult(final int ballCount, final int strikeCount) {
