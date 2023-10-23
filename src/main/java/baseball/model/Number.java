@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.util.NumberConstant;
+import baseball.util.BaseballNumberConstant;
 import java.util.Objects;
 
 public class Number {
@@ -19,7 +19,7 @@ public class Number {
     }
 
     private boolean valueNotBetweenOneAndNine(int value) {
-        return value < NumberConstant.MIN_VALUE || value > NumberConstant.MAX_VALUE;
+        return value < BaseballNumberConstant.MIN_VALUE || value > BaseballNumberConstant.MAX_VALUE;
     }
 
     @Override

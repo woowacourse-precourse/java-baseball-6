@@ -2,7 +2,7 @@ package baseball.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import baseball.util.NumberConstant;
+import baseball.util.BaseballNumberConstant;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ class RandomNumbersTest {
     @Test
     @DisplayName("3개의 랜덤 숫자가 만들어져야 한다.")
     public void is_RandumNumber_Size_3() {
-        assertEquals(NumberConstant.LENGTH, generatedNumbers.size());
+        assertEquals(BaseballNumberConstant.LENGTH, generatedNumbers.size());
     }
 
     @Test

@@ -1,6 +1,6 @@
 package baseball.util;
 
-public class NumberConstant {
+public class BaseballNumberConstant {
 
     public static final int MIN_VALUE = 1;
     public static final int MAX_VALUE = 9;

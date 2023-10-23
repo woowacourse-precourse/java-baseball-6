@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.util.NumberConstant;
+import baseball.util.BaseballNumberConstant;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +28,7 @@ public class Strikes {
         List<Number> randomNumberList = randomNumbers.getRandomNumbers();
         List<Number> userInputNumberList = userInputNumbers.getUserNumberList();
 
-        for (int i = 0; i < NumberConstant.LENGTH; i++) {
+        for (int i = 0; i < BaseballNumberConstant.LENGTH; i++) {
             Number randomNumber = randomNumberList.get(i);
             Number userInputNumber = userInputNumberList.get(i);
 

@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.util.NumberConstant;
+import baseball.util.BaseballNumberConstant;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,9 +19,10 @@ public class RandomNumbers {
     }
 
     private List<Number> generateNewRandomNumbers() {
-        return Stream.generate(() -> Randoms.pickNumberInRange(NumberConstant.MIN_VALUE, NumberConstant.MAX_VALUE))
+        return Stream.generate(
+                        () -> Randoms.pickNumberInRange(BaseballNumberConstant.MIN_VALUE, BaseballNumberConstant.MAX_VALUE))
                 .distinct()
-                .limit(NumberConstant.LENGTH)
+                .limit(BaseballNumberConstant.LENGTH)
                 .map(Number::new)
                 .collect(Collectors.toList());
     }

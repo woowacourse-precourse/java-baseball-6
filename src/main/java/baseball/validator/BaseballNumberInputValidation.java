@@ -1,6 +1,6 @@
 package baseball.validator;
 
-import baseball.util.NumberConstant;
+import baseball.util.BaseballNumberConstant;
 
 public class BaseballNumberInputValidation {
 
@@ -20,13 +20,13 @@ public class BaseballNumberInputValidation {
     }
 
     private void isTripleDigit(String input) {
-        if (input.length() != NumberConstant.LENGTH) {
+        if (input.length() != BaseballNumberConstant.LENGTH) {
             throw new IllegalArgumentException("세 자리의 입력값이 아닙니다.");
         }
     }
 
     private void isValidDigitRange(String input) {
-        if (input.contains(NumberConstant.ZERO)) {
+        if (input.contains(BaseballNumberConstant.ZERO)) {
             throw new IllegalArgumentException("1에서 9사이가 아닌 값이 포함되어 있습니다.");
         }
     }
@@ -36,7 +36,7 @@ public class BaseballNumberInputValidation {
                 .distinct()
                 .count();
 
-        if (distinctCharsCount < NumberConstant.LENGTH) {
+        if (distinctCharsCount < BaseballNumberConstant.LENGTH) {
             throw new IllegalArgumentException("중복된 값이 존재합니다.");
         }
     }
