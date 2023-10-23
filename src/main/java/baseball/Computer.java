@@ -12,13 +12,12 @@ public class Computer {
     }
 
 
-    public void pickNumbers() {
+    public void pickSecretNumbers() {
         secretNumbers.clear();
         while (secretNumbers.size() < 3) {
             int newNumber = Randoms.pickNumberInRange(1, 9);
-            if (secretNumbers.contains(newNumber))
-                continue;
-            secretNumbers.add(newNumber);
+            if (!secretNumbers.contains(newNumber))
+                secretNumbers.add(newNumber);
         }
     }
 
