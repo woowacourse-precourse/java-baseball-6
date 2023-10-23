@@ -42,7 +42,9 @@ public class BaseballGame {
         Set<Integer> inputNumbers = new HashSet<>();
         for (String number : input.split("")) {
             int numberInteger = Integer.parseInt(number);
-            inputNumbers.add(numberInteger);
+            if (!inputNumbers.add(numberInteger)) {
+                throw new IllegalArgumentException();
+            }
         }
 
         if (inputNumbers.size() != 3) {
