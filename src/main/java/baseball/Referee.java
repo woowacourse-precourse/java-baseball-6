@@ -18,14 +18,14 @@ public class Referee {
     }
 
     // 순서 상관 없이 같은 숫자가 몇개 있는지 계산 (Strike 포함)
-    public int countSameNumber(List<Integer> userInput, List<Integer> answer) {
+    private int countSameNumber(List<Integer> userInput, List<Integer> answer) {
         return (int) userInput.stream()
                 .filter(num -> answer.contains(num))
                 .count();
     }
 
     // 순서 고려, Strike 개수 계산
-    public int countStrike(List<Integer> userInput, List<Integer> answer) {
+    private int countStrike(List<Integer> userInput, List<Integer> answer) {
         return (int) IntStream.range(0, BASEBALL_NUMBER_LENGTH)
                 .filter(i -> answer.get(i).equals(userInput.get(i)))
                 .count();
