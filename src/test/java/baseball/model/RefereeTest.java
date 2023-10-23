@@ -24,8 +24,7 @@ class RefereeTest {
         Assertions.assertThat(strike).isEqualTo(1);
         Assertions.assertThat(isNotStrike).isEqualTo(0);
     }
-    
-    
+
     @Test
     @DisplayName("볼 검사")
     public void isBall() throws Exception{

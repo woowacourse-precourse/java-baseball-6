@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerValidation {
-
     private static final String NUMBER_ERROR_MESSAGE = "숫자가 아닙니다";
     private static final String SIZE_ERROR_MESSAGE = "자리 수가 아닙니다";
     private static final String DUPLICATION_ERROR_MESSAGE = "중복된 값입니다";
     private static final String IS_NOT_INPUT_ERROR_MESSAGE = "잘못된 입력 방식입니다";
     private static final int numberSize = 3;
     private static final int answerNumberSize = 1;
-
-
 
     public static List<Integer> checkNumber(String numbers){
         isCheckNumber(numbers);

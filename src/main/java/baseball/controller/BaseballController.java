@@ -7,14 +7,15 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballController {
-
     Computer computer = new Computer();
     Player player = new Player();
     Referee referee = new Referee();
+
     public void startGame(){
         OutputView.baseballGameStart();
         checkRestart();
     }
+
     public void checkRestart(){
         while(true){
             startPlayGame();
@@ -44,6 +45,7 @@ public class BaseballController {
         }
         return false;
     }
+
     public boolean isAnswerEnd(Integer answerNumber) {
         return answerNumber == 2 ? true : false ;
     }

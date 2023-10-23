@@ -5,7 +5,6 @@ import baseball.validation.PlayerValidation;
 import java.util.List;
 
 public class Player {
-
     private List<Integer> playerNumber;
     private Integer answerNumber;
 

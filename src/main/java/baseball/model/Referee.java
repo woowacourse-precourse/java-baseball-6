@@ -3,7 +3,6 @@ package baseball.model;
 import java.util.List;
 
 public class Referee {
-
     private Integer strike;
     private Integer ball;
 

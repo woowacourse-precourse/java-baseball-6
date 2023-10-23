@@ -7,7 +7,6 @@ public class OutputView {
     private static final String NONE_MESSAGE = "낫싱";
     private static final String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-
     public static void baseballGameStart(){
         System.out.println(START_MESSAGE);
     }
