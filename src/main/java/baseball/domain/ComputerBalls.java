@@ -13,7 +13,7 @@ public class ComputerBalls {
 
     public ComputerBalls() {
         this.randomNumberGenerator = new ComputerRandomNumberGenerator();
-        balls = new Balls(setRandomBalls());
+        this.balls = new Balls(setRandomBalls());
     }
 
     private List<Integer> setRandomBalls() {
@@ -23,4 +23,10 @@ public class ComputerBalls {
     public Balls getBalls() {
         return balls;
     }
+
+    public PlayResult play(User user) {
+        Balls userBalls = user.getBalls();
+        return balls.play(userBalls);
+    }
 }
+
