@@ -1,5 +1,8 @@
 package baseball.console;
 
+import static baseball.validator.InputValidator.checkInput;
+import static baseball.validator.InputValidator.isValidRestartNumber;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
@@ -14,9 +17,7 @@ public class Input {
             throw new IllegalArgumentException("올바르지 않은 입력입니다.");
         }
 
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("올바르지 않은 입력입니다.");
-        }
+        checkInput(input, 3);
 
         return input;
     }
@@ -31,9 +32,8 @@ public class Input {
             throw new IllegalArgumentException("올바르지 않은 입력입니다.");
         }
 
-        if (input.length() != 1) {
-            throw new IllegalArgumentException("올바르지 않은 입력입니다.");
-        }
+        checkInput(input, 1);
+        isValidRestartNumber(input);
 
         return input;
     }
