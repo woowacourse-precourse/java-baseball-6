@@ -1,8 +1,8 @@
 package baseball.view;
 
-import static baseball.model.MsgConst.AFTER_SUCCESS;
-import static baseball.model.MsgConst.ALL_STRIKE;
-import static baseball.model.MsgConst.START_MSG;
+import static baseball.model.MsgConstant.AFTER_SUCCESS;
+import static baseball.model.MsgConstant.ALL_STRIKE;
+import static baseball.model.MsgConstant.START_MSG;
 
 public class UserView {
     public static void requestInput() {
