@@ -25,4 +25,8 @@ public class Referee {
         }
         return balls;
     }
+
+    public static boolean isGameFinished(int strikeCount) {
+        return strikeCount == NUMBER_LENGTH;
+    }
 }
