@@ -30,14 +30,21 @@ public class GameFactory {
         dispatcher.dispatchGameStart();
 
         while (true) {
-            HintDTO judge = dispatcher.dispatchProcess(View.input());
-            View.printMessage(judge.getMessage());
-            if (judge.isAllStrike()) {
+            HintDTO hint = dispatcher.dispatchProcess(View.input());
+            View.printMessage(hint.getMessage());
+            if (checkAllStrike(hint.isAllStrike())) {
                 if (!isRetry()) {
                     break;
                 }
             }
         }
+    }
+
+    private boolean checkAllStrike(boolean isAllStrike) {
+        if (isAllStrike) {
+            return true;
+        }
+        return false;
     }
 
     private boolean isRetry() {
