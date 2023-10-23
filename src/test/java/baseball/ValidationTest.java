@@ -82,10 +82,10 @@ public class ValidationTest extends NsTest {
     void 사용자_재도전_입력_값_1또는_2의_값이_아닌_경우_예외_테스트(){
         //given
         String input_value = "3";
-        int retry_input_length = 1;
+        int user_input_retry = 1;
 
         //when
-        assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_value,retry_input_length))
+        assertThatThrownBy(()->GameValidation.verifyForRetryValue(input_value,user_input_retry))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[Err] 게임을 새로시작 혹은 종료하기 위해선 1 또는 2 값을 입력하여야합니다.");
     }
@@ -115,6 +115,19 @@ public class ValidationTest extends NsTest {
 
         //when
         boolean verify_result = GameValidation.verifyForGameValue(user_input_value,input_length);
+
+        //then
+        assertThat(verify_result).isTrue();
+    }
+
+    @Test
+    void 사용자_재도전_입력값_검증_통과_테스트(){
+        //given
+        String user_input_value = "2";
+        int user_input_retry = 1;
+
+        //when
+        boolean verify_result = GameValidation.verifyForRetryValue(user_input_value,user_input_retry);
 
         //then
         assertThat(verify_result).isTrue();
