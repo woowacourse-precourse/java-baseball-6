@@ -15,7 +15,9 @@ class GameServerTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "2");
-                    assertThat(output()).contains("시작", "숫자를 입력", "낫싱", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료", "새로 시작하려면 1, 종료하려면 2를");
+                    String output = output();
+                    assertThat(output).contains("시작", "숫자를 입력", "낫싱", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료", "새로 시작하려면 1, 종료하려면 2를");
+                    assertThat(output).hasLineCount(5);
                 },
                 1, 3, 5
         );
@@ -26,7 +28,9 @@ class GameServerTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "1", "264", "246", "1", "573", "357", "2");
-                    assertThat(output()).contains("시작", "숫자를 입력", "낫싱", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료", "새로 시작하려면 1, 종료하려면 2를", "2볼 1스트라이크", "3볼");
+                    String output = output();
+                    assertThat(output).contains("시작", "숫자를 입력", "낫싱", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료", "새로 시작하려면 1, 종료하려면 2를", "2볼 1스트라이크", "3볼");
+                    assertThat(output).hasLineCount(13);
                 },
                 1, 3, 5, 2, 4, 6, 3, 5, 7
         );
