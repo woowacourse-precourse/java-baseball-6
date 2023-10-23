@@ -1,7 +1,7 @@
 package baseball.controller;
 
-import baseball.domain.Computer;
-import baseball.domain.Player;
+import baseball.domain.ComputerNumber;
+import baseball.domain.PlayerNumber;
 import baseball.dto.CountResultDto;
 import baseball.service.CountService;
 import baseball.view.ErrorMessage;
@@ -12,11 +12,18 @@ import baseball.view.GameMessage;
 import baseball.view.OutputView;
 
 public class BaseBallController {
+    private final CountService countService;
+
+    public BaseBallController(CountService countService) {
+        this.countService = countService;
+    }
 
     public void startGame() {
         System.out.println(GameMessage.START_GAME.getMessage());
-        Computer computer = new Computer();
-        runGame(computer);
+        do {
+            ComputerNumber computerNumber = ComputerNumber.getInstance();
+            runGame(computerNumber);
+        } while (restartGame());
     }
 
     public boolean restartGame() {
@@ -26,20 +33,18 @@ public class BaseBallController {
             return true;
         }
         if (command.equals(GameCommand.END.getString())) {
-            System.out.println(GameMessage.END_GAME.getMessage());
             return false;
         }
         throw new IllegalArgumentException(ErrorMessage.RESTART_COMMAND.getMessage());
     }
 
-    private void runGame(Computer computer) {
+    private void runGame(ComputerNumber computerNumber) {
         boolean gameStatus = true;
         while (gameStatus) {
             System.out.print(GameMessage.INPUT_NUMBER.getMessage());
             String input = InputView.inputPlayerNumber();
-            Player player = new Player(input);
-            CountResultDto countResultDto = CountService.calculateCount(computer.getNumbers(),
-                    player.getNumbers());
+            PlayerNumber playerNumber = PlayerNumber.from(input);
+            CountResultDto countResultDto = countService.getCountResult(computerNumber, playerNumber);
             System.out.println(OutputView.printResult(countResultDto));
             gameStatus = isWinGame(countResultDto.getStrikeCount());
         }

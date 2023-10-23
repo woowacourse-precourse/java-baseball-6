@@ -1,12 +1,12 @@
 package baseball;
 
 import baseball.controller.BaseBallController;
+import baseball.service.CountService;
 
 public class Application {
     public static void main(String[] args) {
-        BaseBallController baseBallController = new BaseBallController();
-        do {
-            baseBallController.startGame();
-        } while (baseBallController.restartGame());
+        CountService countService = new CountService();
+        BaseBallController baseBallController = new BaseBallController(countService);
+        baseBallController.startGame();
     }
 }
