@@ -67,7 +67,7 @@ public class JudgementTest {
             assertThat(computer.countStrike(pitch.getPitches())).isGreaterThanOrEqualTo(0);
             assertThat(computer.countStrike(pitch.getPitches())).isLessThanOrEqualTo(3);
             assertThat(computer.countBall(pitch.getPitches())).isGreaterThanOrEqualTo(0);
-            assertThat(computer.countBall(pitch.getPitches())).isLessThanOrEqualTo(2);
+            assertThat(computer.countBall(pitch.getPitches())).isLessThanOrEqualTo(3);
 
         }
     }
