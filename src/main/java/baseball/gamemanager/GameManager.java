@@ -1,5 +1,6 @@
 package baseball.gamemanager;
 
+import baseball.calculator.ResultCalculator;
 import baseball.enumeration.GameRestartStatus;
 import baseball.input.UserNumberInputReader;
 import baseball.property.BaseballGameProperty;
@@ -21,6 +22,7 @@ public class GameManager {
   private DuplicateNumberValidator duplicateNumberValidator;
   private NumberContainZeroValidator numberContainZeroValidator;
   private NumberRangeValidator numberRangeValidator;
+  private ResultCalculator resultCalculator;
 
   private BaseballGameProperty baseballGameProperty;
 
@@ -45,6 +47,7 @@ public class GameManager {
     this.duplicateNumberValidator = new DuplicateNumberValidator();
     this.numberContainZeroValidator = new NumberContainZeroValidator();
     this.numberRangeValidator = new NumberRangeValidator(baseballGameProperty);
+    this.resultCalculator = new ResultCalculator();
 
     this.end = false;
   }
@@ -58,6 +61,7 @@ public class GameManager {
   public void start() {
     randomNumber = randomNumberGenerator.generateNumber();
 
+    // TODO 랜덤 숫자 생성 로직 수정
     duplicateNumberValidator.validate(randomNumber);
     numberContainZeroValidator.validate(randomNumber);
     numberRangeValidator.validate(randomNumber);
@@ -72,8 +76,11 @@ public class GameManager {
   }
 
   public BaseballGameResult calculateResult() {
+    BaseballGameResult baseballGameResult = resultCalculator.calculate(userInputNumber, randomNumber);
 
-    return null;
+    this.end = baseballGameResult.isEnd();
+
+    return baseballGameResult;
   }
 
   public boolean isThreeStrike() {
