@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    public static void main(String[] args) {
 
+    // 게임 시작 함수
+    public static void startBaseball() {
         int strike = 0;
 
         // 3스트라이크가 될 때까지 반복
@@ -59,8 +60,16 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                     "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            // 재시작 또는 종료 입력받력
+            // 재시작 또는 종료 입력받기
+            String restart = Console.readLine();
+            if ("1".equals(restart)) {
+                startBaseball();
+            }
         }
+    }
+    public static void main(String[] args) {
+
+        startBaseball();
 
     }
 }
