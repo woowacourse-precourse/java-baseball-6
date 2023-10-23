@@ -1,5 +1,7 @@
 package baseball.validator;
 
+import static baseball.ConstValue.*;
+
 public class UserAnswerInputValidator implements InputValidator{
 
     @Override
@@ -17,4 +19,10 @@ public class UserAnswerInputValidator implements InputValidator{
         keepUnique(input);
     }
 
+    public void keepLengthThree(String input) {
+        // 3자리가 아닌 값 입력시 IllegalArgumentException 발생
+        if(!(input.length() == BASEBALL_MAX_LENGTH)){
+            throw new IllegalArgumentException(USER_ANSWER_INPUT_THREE_LENGTH_EXCEPTION);
+        }
+    }
 }
