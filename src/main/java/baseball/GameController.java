@@ -1,22 +1,24 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.Map;
 
 public class GameController {
 
   private NumberController numberController;
+  private ExceptionController exceptionController;
 
-  public GameController(NumberController numberController) {
+  public GameController(NumberController numberController,
+      ExceptionController exceptionController) {
     this.numberController = numberController;
+    this.exceptionController = exceptionController;
   }
 
   public void gameStart() {
-    List<Integer> resultNumList = Randoms.pickUniqueNumbersInRange(1,9,3);
+    List<Integer> resultNumList = numberController.generateComputerNumberList();
 
-    Integer gameStatusNumber = 0;
+    Integer gameProgressNumber = 0;
     Integer strike = 0;
     Integer ball = 0;
 
@@ -24,8 +26,9 @@ public class GameController {
 
     while (true) {
       System.out.print("숫자를 입력해주세요 : ");
-
-      Integer inputNum = Integer.parseInt(Console.readLine());
+      String input = Console.readLine();
+      Integer inputNum = Integer.parseInt(input);
+      exceptionController.validateThreeDigitNumber(inputNum);
       List<Integer> inputNumList = numberController.splitter(inputNum);
 
       Map<String, Integer> report = numberController.compareNumberList(resultNumList, inputNumList);
@@ -36,22 +39,16 @@ public class GameController {
         System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-        while (true) {
-          System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-          gameStatusNumber = Integer.parseInt(Console.readLine());
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        gameProgressNumber = Integer.parseInt(Console.readLine());
+        exceptionController.validateGameProgressNumber(gameProgressNumber);
 
-          if(gameStatusNumber != 1 && gameStatusNumber != 2) {
-            System.out.println("잘못된 숫자를 입력하셨습니다.");
-            continue;
-          }
-          break;
-        }
-
-        if(gameStatusNumber == 1) {
-          resultNumList = Randoms.pickUniqueNumbersInRange(1,9,3);
+        if(gameProgressNumber == 1) {
+          resultNumList = numberController.generateComputerNumberList();
 
           continue;
         }
+        System.out.println("게임 종료");
         break;
       }
       else if(strike == 0 && ball == 0) {
