@@ -5,26 +5,29 @@ import static baseball.game.BaseballConstant.RESTART_OPTION;
 import static baseball.game.BaseballConstant.TURN_OFF_OPTION;
 
 import baseball.domain.Computer;
+import baseball.service.ComputerService;
 import baseball.service.MessageService;
+import baseball.service.PlayerService;
 import baseball.validator.BaseballValidator;
 import camp.nextstep.edu.missionutils.Console;
 
-public class BaseballGame {
+public class BaseballController {
 
     private static final String WRONG_CHOICE_MESSAGE = "잘못된 선택입니다.";
 
+    private final ComputerService computerService;
+    private final PlayerService playerService;
     private final MessageService messageService;
-    private final BaseballValidator baseballValidator;
 
-
-    public BaseballGame() {
+    public BaseballController() {
+        BaseballValidator baseballValidator = new BaseballValidator();
         this.messageService = new MessageService();
-        this.baseballValidator = new BaseballValidator();
+        this.computerService = new ComputerService(baseballValidator);
+        this.playerService = new PlayerService(baseballValidator);
     }
 
     public void start() {
         do {
-            initGame();
             playGame();
         } while (askToContinue());
     }
@@ -47,15 +50,17 @@ public class BaseballGame {
     }
 
     private void playGame() {
-        Computer computer = new Computer();
+        Computer computer = initializeComputer();
 
         int balls, strikes = 0;
 
         while (strikes != BASEBALL_THREE_STRIKES) {
-            String player = receivePlayerNumber();
+            messageService.inputPlayerNumber();
 
-            balls = computer.countBalls(player);
-            strikes = computer.countStrikes(player);
+            String playerBaseballNumber = playerService.receiveBaseballNumber();
+
+            balls = computer.countBalls(playerBaseballNumber);
+            strikes = computer.countStrikes(playerBaseballNumber);
 
             messageService.printGameResult(balls, strikes);
         }
@@ -63,16 +68,8 @@ public class BaseballGame {
         messageService.announceThreeStrikes();
     }
 
-    private String receivePlayerNumber() {
-        messageService.inputPlayerNumber();
-        String number = Console.readLine();
-
-        baseballValidator.validate(number);
-
-        return number;
-    }
-
-    private void initGame() {
+    private Computer initializeComputer() {
         messageService.startGame();
+        return computerService.create();
     }
 }
