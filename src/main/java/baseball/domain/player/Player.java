@@ -1,9 +1,8 @@
 package baseball.domain.player;
 
-import baseball.domain.player.value.Ball;
-import java.util.List;
+import baseball.domain.player.value.Balls;
 
 public interface Player {
 
-	void initialize(List<Ball> balls);
+	void initialize(Balls balls);
 }

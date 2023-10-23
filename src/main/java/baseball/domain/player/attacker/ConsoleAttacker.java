@@ -1,18 +1,17 @@
 package baseball.domain.player.attacker;
 
-import baseball.domain.player.value.Ball;
+import baseball.domain.player.value.Balls;
 import baseball.exception.rutime.NotInitializeBallException;
-import java.util.List;
 import java.util.Objects;
 
 public class ConsoleAttacker implements Attacker {
 
-	private List<Ball> balls;
+	private Balls balls;
 
 	public ConsoleAttacker() {}
 
 	@Override
-	public void initialize(List<Ball> balls) {
+	public void initialize(Balls balls) {
 		this.balls = balls;
 	}
 
