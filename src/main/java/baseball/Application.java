@@ -1,9 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
 
@@ -14,7 +17,18 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        generateRandomNumbers();
+
+        boolean continueGame;
+        do{
+            generateRandomNumbers();
+            strikeCount = 0;
+
+            while (strikeCount<3){
+                System.out.println("숫자를 입력해주세요 : ");
+                String userInput = Console.readLine();
+
+            }
+        }
     }
 
 
@@ -41,5 +55,20 @@ public class Application {
                 }
             }
         }
+
+        public static boolean isValidInput(String input) {
+            if(input.length()!=3){
+                throw new IllegalArgumentException("3자리의 자연수를 입력하세요.");
+            }
+
+            Set<Character> uniqueChars = new HashSet<>();
+            for(char ch:input.toCharArray()){
+                if(ch<'1'||ch>'9'||!uniqueChars.add(ch)){
+                    throw new IllegalArgumentException("1부터 9까지의 자연수가 중복이 없도록 입력하세요.");
+                }
+            }
+            return true;
+        }
+
     }
 
