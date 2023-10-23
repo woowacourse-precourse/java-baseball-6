@@ -28,18 +28,38 @@ public class Player {
         this.input = input;
     }
 
+    /**
+     * 난수의 각 자리의 수와 위치 정보를 저장한 배열 반환
+     *
+     * @return playerNumberBall
+     */
     public int[] getPlayerNumberBall() {
         return playerNumberBall;
     }
 
+    /**
+     * 난수의 각 자리의 수와 위치 정보를 저장한 배열 설정
+     *
+     * @param playerNumberBall 난수의 각 자리의 수와 위치 정보를 저장한 배열
+     */
     public void setPlayerNumberBall(int[] playerNumberBall) {
         this.playerNumberBall = playerNumberBall;
     }
 
+    /**
+     * 재시작 여부 확인
+     *
+     * @return 재시작 여부
+     */
     public String getCondition() {
         return condition;
     }
 
+    /**
+     * 재시작 여부 설정
+     *
+     * @param condition 재시작 여부
+     */
     public void setCondition(String condition) {
         this.condition = condition;
     }

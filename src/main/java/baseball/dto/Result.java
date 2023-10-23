@@ -4,17 +4,15 @@ package baseball.dto;
  * 게임 한판이 진행 될 때 사용자의 게임 결과를 저장할 클래스
  */
 public class Result {
-    /**
-     * Result클래스의 status 변수와 값 비교할 상수
-     */
+
     public static final boolean ANSWER = false;
-    /**
-     * Result클래스의 status 변수와 값 비교할 상수
-     */
     public static final boolean WRONG = true;
 
     private int ball;
     private int strike;
+    /**
+     * 정답 여부
+     */
     private boolean status = WRONG;
 
     public int getBall() {
@@ -33,11 +31,21 @@ public class Result {
         this.strike = strike;
     }
 
+    /**
+     * 정답 여부 반환
+     *
+     * @return 정답: true<br> 오답: false
+     */
     public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(boolean condition) {
-        this.status = condition;
+    /**
+     * 정답 상태 값 설정
+     *
+     * @param status
+     */
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
