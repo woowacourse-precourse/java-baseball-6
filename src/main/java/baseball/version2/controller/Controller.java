@@ -20,7 +20,6 @@ public class Controller {
         this.service = new Service();
         this.inputView = new InputView();
         this.outView = new OutView();
-
     }
 
     public void runGame() {
