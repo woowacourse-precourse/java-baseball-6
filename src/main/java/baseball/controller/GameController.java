@@ -72,8 +72,12 @@ public class GameController {
     }
 
     private static void setUserNumber() {
-        UserNumber user = new UserNumber(getUserNumber());
+        UserNumber user = new UserNumber(validate(getUserNumber()));
         userNumber = user.getNumber();
+    }
+
+    private static String validate(String userNumber) {
+        return NumberValidator.validateString(userNumber);
     }
 
     private static String getUserNumber() {

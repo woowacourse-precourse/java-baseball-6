@@ -8,7 +8,7 @@ public class NumberValidator {
     private final static int MAXIMUM_NUM_IN_RANGE = 9;
     private final static int LIST_SIZE = 3;
 
-    public static void validateString(String number) {
+    public static String validateString(String number) {
         if(isEmpty(number)|| !isDigit(number)){
             throw new IllegalArgumentException("숫자를 입력해주세요");
         }
@@ -16,6 +16,7 @@ public class NumberValidator {
             throw new IllegalArgumentException("세자리 숫자를 입력해주세요");
         }
         validateList(StringToList(number));
+        return number;
     }
 
     public static void validateList(List<Integer> list) {
