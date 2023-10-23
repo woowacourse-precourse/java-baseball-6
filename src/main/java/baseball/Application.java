@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Application {
-    static int strike = 0;
-    static int ball = 0;
+    private int strike = 0;
+    private int ball = 0;
     public List<Integer> selectRandomNumber(List<Integer> computerNumber){
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
@@ -20,6 +20,13 @@ public class Application {
         return computerNumber;
     }
 
+    public int getStrike(){
+        return strike;
+    }
+
+    public int getBall(){
+        return ball;
+    }
 
     public void countStrikeAndBall(String myNumber, List<Integer> computerNumber) {
         for (int i =0; i<myNumber.length(); i++){
@@ -99,6 +106,7 @@ public class Application {
         Application baseballGame = new Application();
 
 
+
         System.out.print("숫자를 입력해주세요 : ");
 
         List<Integer> computerNumber = new ArrayList<>();
@@ -106,8 +114,10 @@ public class Application {
         computerNumber = baseballGame.selectRandomNumber(computerNumber);
 
         while (!isExit){
+            System.out.println(computerNumber);
             baseballGame.strike = 0;
             baseballGame.ball = 0;
+            System.out.println("strike : " + baseballGame.strike + " ball : " + baseballGame.ball);
             String myNumber = Console.readLine();
             baseballGame.checkOnlyInterger(myNumber);
             baseballGame.checkDuplicateNumber(myNumber);
@@ -123,6 +133,7 @@ public class Application {
                 if (startNumOrEndNum == 1){
                     computerNumber.clear();
                     computerNumber = baseballGame.selectRandomNumber(computerNumber);
+
                 }
                 isExit = baseballGame.determineFinishOrAgainGame(startNumOrEndNum);
             }
