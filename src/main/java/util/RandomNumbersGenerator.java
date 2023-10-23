@@ -1,4 +1,4 @@
-package game;
+package util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import constants.NumberConstants;

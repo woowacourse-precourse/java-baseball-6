@@ -1,6 +1,6 @@
 package game;
 
-import static game.RandomNumbersGenerator.getRandomNumbers;
+import static util.RandomNumbersGenerator.getRandomNumbers;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

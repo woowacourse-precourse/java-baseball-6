@@ -1,5 +1,6 @@
 package game;
 
+import util.RandomNumbersGenerator;
 import view.Output;
 
 public class Computer {
@@ -22,7 +23,7 @@ public class Computer {
     }
 
     private String getRandomNumbers() {
-        return game.RandomNumbersGenerator.getRandomNumbers();
+        return RandomNumbersGenerator.getRandomNumbers();
     }
 
     public boolean isFinish() {
