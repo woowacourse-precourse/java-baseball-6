@@ -38,11 +38,25 @@ public class Model{
             int number = Character.getNumericValue(numChar);
             numList.add(number);
         }
-
         return numList;
     }
 
-
-
-
+    public int countStrike(List<Integer> computer, List<Integer> player){
+        int numStrike = 0;
+        for(int i=0; i < player.size(); i++){
+            if(computer.get(i).equals(player.get(i))){
+                numStrike++;
+            }
+        }
+        return numStrike;
+    }
+    public int countBall(List<Integer> computer, List<Integer> player){
+        int numBall = 0;
+        for(int i=0; i < player.size(); i++){
+            if(computer.contains(player.get(i)) && !computer.get(i).equals(player.get(i))){
+                numBall++;
+            }
+        }
+        return numBall;
+    }
 }
