@@ -1,10 +1,10 @@
 package baseball.version2.tools;
 
 
-import static baseball.version2.Constants.Phrases.ANSWER_ERROR_PHRASES;
-import static baseball.version2.Constants.Phrases.DECISION_ERROR_PHRASES;
-import static baseball.version2.Constants.Value.CONTINUE_NUMBER;
-import static baseball.version2.Constants.Value.STOP_NUMBER;
+import static baseball.version2.constants.Phrases.ANSWER_ERROR_PHRASES;
+import static baseball.version2.constants.Phrases.DECISION_ERROR_PHRASES;
+import static baseball.version2.constants.Value.CONTINUE_NUMBER;
+import static baseball.version2.constants.Value.STOP_NUMBER;
 
 import java.util.HashSet;
 import java.util.Set;

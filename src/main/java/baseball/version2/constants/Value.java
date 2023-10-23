@@ -1,4 +1,4 @@
-package baseball.version2.Constants;
+package baseball.version2.constants;
 
 public class Value {
 

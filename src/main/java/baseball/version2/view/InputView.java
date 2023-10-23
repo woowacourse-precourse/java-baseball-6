@@ -1,7 +1,7 @@
 package baseball.version2.view;
 
-import static baseball.version2.Constants.Phrases.INSERT_ANSWER_PHRASES;
-import static baseball.version2.Constants.Phrases.SELECT_CONTINUE_PHRASES;
+import static baseball.version2.constants.Phrases.INSERT_ANSWER_PHRASES;
+import static baseball.version2.constants.Phrases.SELECT_CONTINUE_PHRASES;
 
 import baseball.version2.dto.PlayerAnswerDto;
 import baseball.version2.tools.Converter;

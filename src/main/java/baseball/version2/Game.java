@@ -1,6 +1,6 @@
 package baseball.version2;
 
-import static baseball.version2.Constants.Value.CONTINUE_NUMBER;
+import static baseball.version2.constants.Value.CONTINUE_NUMBER;
 
 import baseball.version2.controller.Controller;
 import baseball.version2.dto.ComputerAnswerDto;

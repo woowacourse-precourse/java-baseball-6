@@ -1,7 +1,7 @@
 package baseball.version2.tools;
 
-import static baseball.version2.Constants.Phrases.ANSWER_ERROR_PHRASES;
-import static baseball.version2.Constants.Value.ANSWER_ARRAY_SIZE;
+import static baseball.version2.constants.Phrases.ANSWER_ERROR_PHRASES;
+import static baseball.version2.constants.Value.ANSWER_ARRAY_SIZE;
 import static java.lang.Integer.parseInt;
 
 import java.util.ArrayList;

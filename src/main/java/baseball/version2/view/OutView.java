@@ -1,11 +1,11 @@
 package baseball.version2.view;
 
-import static baseball.version2.Constants.Phrases.BALL_PHRASES;
-import static baseball.version2.Constants.Phrases.NOTHING_PHRASES;
-import static baseball.version2.Constants.Phrases.START_PHRASES;
-import static baseball.version2.Constants.Phrases.STRIKE_PHRASES;
-import static baseball.version2.Constants.Phrases.THREE_STRIKE_PHRASES;
-import static baseball.version2.Constants.Value.THREE_STRIKE;
+import static baseball.version2.constants.Phrases.BALL_PHRASES;
+import static baseball.version2.constants.Phrases.NOTHING_PHRASES;
+import static baseball.version2.constants.Phrases.START_PHRASES;
+import static baseball.version2.constants.Phrases.STRIKE_PHRASES;
+import static baseball.version2.constants.Phrases.THREE_STRIKE_PHRASES;
+import static baseball.version2.constants.Value.THREE_STRIKE;
 
 import baseball.version2.object.Score;
 

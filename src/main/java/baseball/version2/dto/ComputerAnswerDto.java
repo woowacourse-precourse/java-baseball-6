@@ -1,6 +1,6 @@
 package baseball.version2.dto;
 
-import static baseball.version2.Constants.Value.ANSWER_ARRAY_SIZE;
+import static baseball.version2.constants.Value.ANSWER_ARRAY_SIZE;
 
 public class ComputerAnswerDto {
 
