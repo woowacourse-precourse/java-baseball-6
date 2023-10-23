@@ -59,4 +59,32 @@ public class Model{
         }
         return numBall;
     }
+    public String initHint(int ball, int strike){
+        String message = "";
+        if (strike == NUM_SIZE){
+            return ANSWER_SENTENCE;
+        }
+        if (ball != 0){
+            if (strike != 0){
+                message = ball + BALL_SENTENCE + strike + STRIKE_SENTENCE;
+            }
+            else{
+                message = ball + BALL_SENTENCE;
+            }
+        }
+        else{
+            if (strike != 0){
+                message = strike + STRIKE_SENTENCE;
+            }
+            else{
+                message = NOTING_SENTENCE;
+            }
+        }
+        return message;
+    }
+
+    public int inputRestartOrExit(){
+        String inputNum = Console.readLine();
+        return Integer.parseInt(inputNum);
+    }
 }
