@@ -31,7 +31,8 @@ public class BaseballGameController {
     }
 
     private void playOneRound() {
-        while (!computer.getScore().isAllStrike()) {
+        computer.initScore();
+        while (!computer.isScoreAllStrike()) {
             inputView.printSuggestNumberMessage();
             player.inputGuessNumber();
             computer.calculateScore(player.getGuessNumbers());

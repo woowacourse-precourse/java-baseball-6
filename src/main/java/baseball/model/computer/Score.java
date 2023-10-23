@@ -6,13 +6,15 @@ import java.util.stream.IntStream;
 public class Score {
 
     private static final Integer THREE_STRIKE = 3;
+    private static final Integer INIT_STRIKE_SCORE = 0;
+    private static final Integer INIT_BALL_SCORE = 0;
 
     private Integer strike;
     private Integer ball;
 
-    public Score(Integer strike, Integer ball) {
-        this.strike = strike;
-        this.ball = ball;
+    public void initScore() {
+        this.strike = INIT_STRIKE_SCORE;
+        this.ball = INIT_BALL_SCORE;
     }
 
     public Integer getStrike() {
