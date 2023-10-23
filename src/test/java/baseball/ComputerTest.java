@@ -7,32 +7,38 @@ import java.io.PrintStream;
 
 public class ComputerTest {
     private final Computer computer = new Computer();
+    ByteArrayOutputStream testOut = new ByteArrayOutputStream();
     @Test
     void 난수생성중복검사(){
         for(int i = 0; i < 100; i++) {
-            int[] numbers = computer.initComputerNumbers();
+            Numbers numbers = computer.initComputerNumbers();
             boolean[] duplicateCheck = new boolean[10];
             for(int j = 0; j < 3; j++){
-                Assertions.assertThat(duplicateCheck[numbers[j]]).isEqualTo(false);
-                duplicateCheck[numbers[j]] = true;
+                Assertions.assertThat(duplicateCheck[numbers.getNumberByIndex(j).number]).isEqualTo(false);
+                duplicateCheck[numbers.getNumberByIndex(j).number] = true;
             }
         }
     }
 
     @Test
     void 판정테스트(){
-        ByteArrayOutputStream testOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(testOut));
-        int[] computerNumbers = computer.initComputerNumbers();
-
-        assertJudgeResultOutput(testOut, computerNumbers, "3스트라이크\n");
-        assertJudgeResultOutput(testOut, new int[] {computerNumbers[1], computerNumbers[2], computerNumbers[0]}, "3볼\n");
-        assertJudgeResultOutput(testOut, new int[] {0, computerNumbers[0], 0}, "1볼\n");
-        assertJudgeResultOutput(testOut, new int[] {computerNumbers[0], computerNumbers[2], 0}, "1볼 1스트라이크\n");
-        assertJudgeResultOutput(testOut, new int[] {computerNumbers[0], computerNumbers[2], computerNumbers[1]}, "2볼 1스트라이크\n");
+        Numbers computerNumbers = makeNumbers(new int[] {1, 2, 3});
+        assertJudgeResultOutput(makeNumbers(new int[] {1, 2, 3}), computerNumbers,"3스트라이크\n");
+        assertJudgeResultOutput(makeNumbers(new int[] {2, 3, 1}), computerNumbers,"3볼\n");
+        assertJudgeResultOutput(makeNumbers(new int[] {3, 5, 6}), computerNumbers,"1볼\n");
+        assertJudgeResultOutput(makeNumbers(new int[] {1, 3, 6}), computerNumbers,"1볼 1스트라이크\n");
+        assertJudgeResultOutput( makeNumbers(new int[] {3, 2, 1}), computerNumbers,"2볼 1스트라이크\n");
     }
-    void assertJudgeResultOutput(ByteArrayOutputStream testOut, int[] userNumbers, String outputToCompare){
-        Judgement result = computer.getJudgement(userNumbers);
+    Numbers makeNumbers(int[] list){
+        Numbers numbers = new Numbers();
+        for(int number : list){
+            numbers.addNumber(new Number(number));
+        }
+        return numbers;
+    }
+    void assertJudgeResultOutput(Numbers userNumbers, Numbers computerNumbers, String outputToCompare){
+        Judgement result = new Judgement(userNumbers, computerNumbers);
         result.printResult();
         Assertions.assertThat(testOut.toString()).isEqualTo(outputToCompare);
         testOut.reset();
