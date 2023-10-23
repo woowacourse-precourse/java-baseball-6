@@ -1,5 +1,9 @@
 package baseball.userInterface;
 
+ import static baseball.utils.Constants.MAX_STRIKES;
+ import static baseball.utils.Constants.WANNA_KEEP_PLAYING;
+ import static baseball.utils.Constants.WANNA_END;
+
 /*
  화면 출력을 담당하는 클래스
  결과는 주어진 점수에 따라 다른 값을 출력한다.
@@ -34,11 +38,11 @@ public class MessageViewer {
     }
 
     public static void printGameEndMsg(){
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(MAX_STRIKES+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static void printRestartInputRequestMsg(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 " + WANNA_KEEP_PLAYING +", 종료하려면 " + WANNA_END + "를 입력하세요.");
     }
 
 }
