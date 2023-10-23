@@ -38,15 +38,21 @@ public class GameLogic {
             return;
         }
 
+        displayBallCount(gameResult);
+        displayStrikeCount(gameResult);
+        printNewLine();
+    }
+
+    private void displayBallCount(GameResult gameResult) {
         if (gameResult.hasBalls()) {
             gameResult.callBallCount();
         }
+    }
 
+    private void displayStrikeCount(GameResult gameResult) {
         if (gameResult.hasStrikes()) {
             gameResult.callStrikeCount();
         }
-
-        printNewLine();
     }
 
 }
