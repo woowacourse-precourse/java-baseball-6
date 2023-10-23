@@ -1,6 +1,6 @@
 ### BaseballNumber          
-- [ ] 중복되지않는 3개의 수 저장       
-- [ ] 다른 BaseballNumber와 비교하여 스트라이크, 볼 결과 반환      
+- [ ] BallNumber 리스트 저장       
+- [ ] 다른 BaseballNumber의 BallNumber리스트와 비교하여 스트라이크, 볼 결과 반환      
 
 ### BallNumber      
 - [ ] 생성자를 통해 1~9 사이의 숫자를 가지도록 허용       
