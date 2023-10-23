@@ -9,6 +9,7 @@ public class BaseballGame {
 
     private boolean isProgress = true;
 
+    // 전체 프로세스 실행
     public void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -38,6 +39,7 @@ public class BaseballGame {
 
     }
 
+    // 사용자 데이터 입력
     private List<Integer> setInputNumber() {
         String line = Console.readLine();
 
@@ -53,6 +55,7 @@ public class BaseballGame {
         return numbers;
     }
 
+    // 랜덤 숫자와 입력한 숫자를 비교하여 결과 반환
     private String compareNumbers(List<Integer> randomNumbers, List<Integer> inputNumbers) {
         int ball = 0;
         int strike = 0;

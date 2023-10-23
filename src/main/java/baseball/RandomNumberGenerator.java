@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberGenerator {
+    // 랜덤한 3개의 숫자 반환
     public static List<Integer> generate() {
         List<Integer> randomNumbers = new ArrayList<>();
 
