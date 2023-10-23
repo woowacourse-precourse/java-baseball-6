@@ -15,6 +15,7 @@ public class Application {
             }
         }
     }
+
     static List<Integer> readInput() {
         String input = Console.readLine();
         List<Integer> player = new ArrayList<>();
@@ -35,8 +36,13 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> player = readInput();
+        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = new ArrayList<>();
-        pickNumber(computer);
+
+        while (true) {
+            pickNumber(computer);
+            List<Integer> player = readInput();
+            break;
+        }
     }
 }
