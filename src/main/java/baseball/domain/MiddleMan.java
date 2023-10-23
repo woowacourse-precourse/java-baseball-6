@@ -55,11 +55,11 @@ public class MiddleMan {
 
     private void countBallStrike(List<Integer> answerNumber, List<Integer> userNumber) {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
-            if (answerNumber.contains(userNumber.get(i))) {
-                if (answerNumber.get(i).equals(userNumber.get(i))) {
-                    strike++;
-                    continue;
-                }
+            int answerNum = answerNumber.get(i);
+            int userNum = userNumber.get(i);
+            if (answerNum == userNum) {
+                strike++;
+            } else if (answerNumber.contains(userNum)) {
                 ball++;
             }
         }
