@@ -12,7 +12,7 @@ public class baseballModel {
     String Nothing = "낫싱";
     String Result = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     List<Integer> computer;
-    int ball = 0, strike = 0;
+    int ball, strike;
 
     public void computerNumber() { //컴퓨터가 생성하는 서로 다른 세 자리의 숫자
         computer = new ArrayList<>();
@@ -26,6 +26,8 @@ public class baseballModel {
 
     public void ballCount(String insert) { //사용자 입력값과 컴퓨터의 값을 비교하여 볼, 스트라이크 갯수를 판단
         List<Integer> list = new ArrayList<>();
+        ball = 0;
+        strike = 0;
 
         for (int i = 0; i < 3; i++) {
             list.add(Integer.parseInt(String.valueOf(insert.charAt(i))));
@@ -35,7 +37,7 @@ public class baseballModel {
             if (list.get(i).equals(computer.get(i))) {
                 strike++;
             }
-            if (list.contains(computer.get(i))) {
+            else if (list.contains(computer.get(i))) {
                 ball++;
             }
         }

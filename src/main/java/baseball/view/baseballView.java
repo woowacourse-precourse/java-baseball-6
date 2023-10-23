@@ -11,7 +11,7 @@ public class baseballView {
     }
 
     public String insertConsole() {// 게임 사용자 입력 부분
-        System.out.println(Insert);
+        System.out.print(Insert);
         return Console.readLine();
     }
 

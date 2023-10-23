@@ -47,7 +47,7 @@ public class baseballController {
         if (insert.isEmpty()) {
             throw new IllegalArgumentException(exceptionComment);
         }
-        if (insert.length() != 3 || insert.matches("^[1-9]{3}$")) {
+        if (insert.length() != 3 || !insert.matches("^[1-9]{3}$")) {
             throw new IllegalArgumentException(exceptionComment);
         }
 
