@@ -2,6 +2,7 @@ package utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ValidationUtilsTest {
@@ -21,5 +22,12 @@ class ValidationUtilsTest {
         assertThat(ValidationUtils.isSingleNumber(1)).isTrue();
         assertThat(ValidationUtils.isSingleNumber(9)).isTrue();
         assertThat(ValidationUtils.isSingleNumber(10)).isFalse();
+    }
+
+    @Test
+    void 서로다른_숫자_검증() {
+        assertThat(ValidationUtils.isOtherNumbers(List.of(0, 0, 0))).isFalse();
+        assertThat(ValidationUtils.isOtherNumbers(List.of(0, 0, 1))).isFalse();
+        assertThat(ValidationUtils.isOtherNumbers(List.of(0, 1, 2))).isTrue();
     }
 }
