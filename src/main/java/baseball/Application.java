@@ -37,10 +37,11 @@ public class Application {
             String[] userInputChars = userInput.split("");
             for (int i = 0; i < 3; i++) {
                 //0입력시 => 예외 발생
-                if (Integer.parseInt(userInputChars[i]) == 0) {
+                userNumbers[i] = Integer.parseInt(userInputChars[i]);
+                if (userNumbers[i] == 0) {
                     Application.throwException("1~9 사이의 숫자를 입력하세요.");
                 }
-                userNumbers[i] = Integer.parseInt(userInputChars[i]);
+
                 //같은 숫자를 입력했을 때 => 예외발생
                 for (int j = i + 1; j < 3; j++) {
                     if (userNumbers[i] == Integer.parseInt(userInputChars[j])) {
