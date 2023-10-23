@@ -21,7 +21,7 @@ public class Computer implements Defender {
 	}
 
 	@Override
-	public Results compareBalls(List<Ball> balls) {
+	public Results compareBalls(Balls balls) {
 		if (Objects.isNull(this.balls)) {
 			throw new NotInitializeBallException();
 		}
@@ -29,7 +29,24 @@ public class Computer implements Defender {
 		return new Results(results);
 	}
 
-	private List<Result> calcResults(List<Ball> tgBalls) {
+	private List<Result> calcResults(Balls tgBalls) {
+		List<Ball> filteredBalls = filter(tgBalls);
+
+		return calculateResult(filteredBalls);
+	}
+
+	private List<Ball> filter(Balls target) {
+		List<Ball> filtered = new ArrayList<>();
+		for (int i = 0; i < target.size(); i++) {
+			Ball ball = target.getBalls().get(i);
+			if (balls.isContain(ball)) {
+				filtered.add(ball);
+			}
+		}
+		return filtered;
+	}
+
+	private List<Result> calculateResult(List<Ball> target) {
 		List<Result> results = new ArrayList<>();
 		int targetSize = target.size();
 		for (int i = 0; i < targetSize; i++) {
