@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RandomNumbers {
 
-    private List<Integer> randomNumbers;
+    private final List<Integer> randomNumbers;
 
     public RandomNumbers() {
         this.randomNumbers = RandomNumberUtils.createRandomNum();

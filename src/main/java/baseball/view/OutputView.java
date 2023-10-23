@@ -10,7 +10,8 @@ public class OutputView {
     public OutputView() {
         this.outputConverter = new OutputConverter();
     }
-    public void showResult(BaseballGameResult baseballGameResult) {
+
+    public void showResult(final BaseballGameResult baseballGameResult) {
         String resultMessage = outputConverter.convertMessage(baseballGameResult);
         System.out.println(resultMessage);
     }

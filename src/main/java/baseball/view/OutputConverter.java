@@ -4,10 +4,11 @@ import baseball.constant.OutputMessage;
 import baseball.model.dto.BaseballGameResult;
 
 public class OutputConverter {
+
     private static final int NO_COUNT = 0;
     private static final int THREE_STRIKE = 3;
 
-    public String convertMessage(BaseballGameResult baseballGameResult) {
+    public String convertMessage(final BaseballGameResult baseballGameResult) {
         StringBuilder stringBuilder = new StringBuilder();
         if (isBall(baseballGameResult)) {
             appendBall(stringBuilder, baseballGameResult.getBallCount());
@@ -25,38 +26,39 @@ public class OutputConverter {
         return stringBuilder.toString();
     }
 
-    private boolean isBall(BaseballGameResult baseballGameResult) {
+    private boolean isBall(final BaseballGameResult baseballGameResult) {
         return baseballGameResult.getBallCount() != NO_COUNT;
     }
-    private boolean isStrike(BaseballGameResult baseballGameResult) {
+
+    private boolean isStrike(final BaseballGameResult baseballGameResult) {
         return baseballGameResult.getStrikeCount() != NO_COUNT;
     }
 
-    private boolean isNoBallAndNoStrike(BaseballGameResult baseballGameResult) {
+    private boolean isNoBallAndNoStrike(final BaseballGameResult baseballGameResult) {
         return baseballGameResult.getBallCount() == NO_COUNT && baseballGameResult.getStrikeCount() == NO_COUNT;
     }
 
-    private boolean isThreeStikre(BaseballGameResult baseballGameResult) {
+    private boolean isThreeStikre(final BaseballGameResult baseballGameResult) {
         return baseballGameResult.getStrikeCount() == THREE_STRIKE;
     }
 
-    private void appendBall(StringBuilder stringBuilder, int ballCount) {
+    private void appendBall(final StringBuilder stringBuilder, final int ballCount) {
         stringBuilder.append(ballCount);
         stringBuilder.append(OutputMessage.BALL);
         stringBuilder.append(OutputMessage.SPACE);
     }
 
-    private void appendStrike(StringBuilder stringBuilder, int strikeCount) {
+    private void appendStrike(final StringBuilder stringBuilder, final int strikeCount) {
         stringBuilder.append(strikeCount);
         stringBuilder.append(OutputMessage.STRIKE);
     }
 
-    private void appendNoBallAndNoStrike(StringBuilder stringBuilder) {
+    private void appendNoBallAndNoStrike(final StringBuilder stringBuilder) {
         stringBuilder.append(OutputMessage.NOTHING);
         stringBuilder.append(OutputMessage.SPACE);
     }
 
-    private void appendGameOver(StringBuilder stringBuilder) {
+    private void appendGameOver(final StringBuilder stringBuilder) {
         stringBuilder.append(OutputMessage.LINE_BREAK);
         stringBuilder.append(OutputMessage.THREE_STRIKE_MESSAGE);
     }

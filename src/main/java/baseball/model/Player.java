@@ -15,7 +15,7 @@ public class Player {
 
     private List<Integer> inputNumbers;
 
-    public void updateNumbers(String inputNumber) {
+    public void updateNumbers(final String inputNumber) {
         initInputNumbers();
         List<Integer> expectedNumbers = parsingNumber(inputNumber);
         validateOneToNine(expectedNumbers);
@@ -31,16 +31,17 @@ public class Player {
         this.inputNumbers = new ArrayList<>();
     }
 
-    private List<Integer> parsingNumber(String inputNumber) {
+    private List<Integer> parsingNumber(final String inputNumber) {
         return inputNumber.chars()
                 .mapToObj(Character::getNumericValue)
                 .collect(Collectors.toList());
     }
 
-    private void validateOneToNine(List<Integer> numbers) {
+    private void validateOneToNine(final List<Integer> numbers) {
         for (Integer number : numbers) {
             String numberStr = number.toString();
             boolean isValid = Pattern.matches(REGEX_ONE_TO_NINE, numberStr);
+
             if (!isValid) {
                 String errorMessage = String.format(ExceptionMessage.OUT_OF_NUMBER_RANGE.getMessage(), 1, 9);
                 throw new IllegalArgumentException(errorMessage);
@@ -48,7 +49,7 @@ public class Player {
         }
     }
 
-    private void validateDuplicateNumber(List<Integer> numbers) {
+    private void validateDuplicateNumber(final List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>();
 
         for (Integer number : numbers) {

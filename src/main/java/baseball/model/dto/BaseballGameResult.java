@@ -3,15 +3,16 @@ package baseball.model.dto;
 import baseball.model.BaseballGame;
 
 public class BaseballGameResult {
-    private int ball;
-    private int strike;
 
-    private BaseballGameResult(int ball, int strike) {
+    private final int ball;
+    private final int strike;
+
+    private BaseballGameResult(final int ball, final int strike) {
         this.ball = ball;
         this.strike = strike;
     }
 
-    public static BaseballGameResult from(BaseballGame baseballGame) {
+    public static BaseballGameResult from(final BaseballGame baseballGame) {
         return new BaseballGameResult(baseballGame.getBall(), baseballGame.getStrike());
     }
 

@@ -19,43 +19,47 @@ public class BaseballController {
         this.outputView = new OutputView();
     }
 
+    private static boolean isGameEnd(final boolean endGameSign) {
+        return Boolean.TRUE.equals(endGameSign);
+    }
+
     public void play() {
         Player player = new Player();
         outputView.printStartGame();
+
         while (true) {
             BaseballGame baseballGame = new BaseballGame();
             playGame(player, baseballGame);
             String inputNumber = inputView.reStart();
+
             if (isReStart(inputNumber)) {
                 break;
             }
         }
     }
 
-    private void playGame(Player player, BaseballGame baseballGame) {
+    private void playGame(final Player player, final BaseballGame baseballGame) {
         while (true) {
             String inputNumber = inputView.inputNumber();
             player.updateNumbers(inputNumber);
             boolean endGameSign = baseballGame.updateGameCompare(player);
             BaseballGameResult baseballGameResult = BaseballGameResult.from(baseballGame);
             outputView.showResult(baseballGameResult);
+
             if (isGameEnd(endGameSign)) {
                 break;
             }
         }
     }
 
-    private boolean isReStart(String inputNumber) {
+    private boolean isReStart(final String inputNumber) {
         if (inputNumber.equals(GAME_RESTART)) {
             return false;
         }
         if (inputNumber.equals(GAME_END)) {
             return true;
         }
-        return false;
-    }
 
-    private static boolean isGameEnd(boolean endGameSign) {
-        return Boolean.TRUE.equals(endGameSign);
+        return false;
     }
 }
