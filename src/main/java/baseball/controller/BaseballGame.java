@@ -12,7 +12,7 @@ public class BaseballGame {
     private boolean isExit;
 
     public BaseballGame() {
-        this.isExit = false;
+        isExit = false;
         computer = new Computer();
         player = new Player();
     }
@@ -24,7 +24,6 @@ public class BaseballGame {
         while (!isExit) {
             player.setNumbers(InputView.inputPlayerNumbers());
 
-            computer.resetCount();
             computer.calculateResult(player.getNumbers());
             OutputView.printResult(computer);
 

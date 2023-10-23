@@ -43,7 +43,9 @@ public class Computer {
     }
 
     public void calculateResult(List<Integer> playerNumbers) {
-        for (int index = 0; index < 3; index++) {
+        resetCount();
+
+        for (int index = 0; index < MAX_SIZE; index++) {
             Integer playerNumber = playerNumbers.get(index);
 
             if (isStrike(index, playerNumber)) {
