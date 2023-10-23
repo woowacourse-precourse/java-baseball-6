@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
+import baseball.domain.ContinueOrExit;
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -96,7 +97,7 @@ public class BaseballInputViewTest {
         System.setIn(generateUserInput(input));
         BaseballInputView baseballInputView = new BaseballInputView();
         String inputContinueOrExit = baseballInputView.continueOrExit();
-        assertThatCode(() -> InputValidator.validateContinueOrExitNumber(inputContinueOrExit))
+        assertThatCode(() -> ContinueOrExit.from(inputContinueOrExit))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
