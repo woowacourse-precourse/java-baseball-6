@@ -8,15 +8,9 @@ import baseball.vo.Numbers;
 import baseball.vo.Restart;
 
 public class GameController {
-    private InputView inputView;
-    private OutputView outputView;
-    private GameService gameService;
-
-    public GameController() {
-        inputView=new InputView();
-        outputView=new OutputView();
-        gameService=new GameService();
-    }
+    private InputView inputView=new InputView();
+    private OutputView outputView=new OutputView();
+    private GameService gameService=new GameService();
 
     public void startProgram(){
         outputView.printProgramStartMessage();
