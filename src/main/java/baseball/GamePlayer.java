@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 enum GameStatus{
@@ -19,16 +20,15 @@ public class GamePlayer {
         while(playerStatus == GameStatus.PLAYING){
             this.playerGuessedNumber = Console.readLine();
             if (isValidForm(this.playerGuessedNumber)){
-                this.playerStatus = game.comparePlayerNumberWithComputer(numberToList(this.guessedNumber));
+                this.playerStatus = game.comparePlayerNumberWithComputer(this.playerGuessedNumber);
+                sendNumberToGame(this.playerGuessedNumber);
+            }
+            else{
+                throw new IllegalArgumentException();
             }
         }
     }
-    public List<Integer> numberToList(String number){
 
-    }
-    public void sendNumberToGame(List<Integer> playerGuess){
-
-    }
 
     public boolean isValidForm(String target){
         boolean flag = true;
