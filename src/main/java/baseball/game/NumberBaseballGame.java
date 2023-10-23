@@ -41,5 +41,9 @@ public class NumberBaseballGame {
 
     private void endGame() {
         outputView.printEndGame();
+        
+        if (inputView.readRetryNumber() == 1) {
+            run();
+        }
     }
 }
