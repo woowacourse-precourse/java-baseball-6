@@ -1,6 +1,6 @@
 package baseball.domain;
 
-public enum Hint {
+public enum Score {
 
     STRIKE("스트라이크"),
     BALL("볼"),
@@ -17,7 +17,7 @@ public enum Hint {
         BALL.count = 0;
     }
 
-    Hint(String symbol) {
+    Score(String symbol) {
         this.symbol = symbol;
     }
 
@@ -35,7 +35,7 @@ public enum Hint {
     }
 
     public static boolean isWin() {
-        return Hint.STRIKE.count == 3;
+        return Score.STRIKE.count == Answer.SIZE;
     }
 
     private static String parseResultMessage() {
