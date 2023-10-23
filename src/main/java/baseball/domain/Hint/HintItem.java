@@ -4,7 +4,7 @@ public abstract class HintItem {
 
     private int count;
 
-    private boolean status;
+    private boolean isActive;
 
     public int getCount() {
         return count;
@@ -14,13 +14,11 @@ public abstract class HintItem {
         this.count = count;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isActive() {
+        return isActive;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setActive(boolean active) {
+        isActive = active;
     }
-
-
 }
