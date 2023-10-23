@@ -5,14 +5,14 @@
     - [x] 서로 다른 3자리의 숫자가 되도록 구현
 
 
-- [ ] 검증기 구현 (InputValidator)
+- [x] 검증기 구현 (InputValidator)
     - [x] 유저가 입력한 세자리의 입력값 검증 (UserAnswerInputValidator)
         - [x] 입력값이 3자리값 인지 검증
         - [x] 입력값이 숫자 값인지 검증
         - [x] 입력값이 1~9 사이 숫자 값인지 검증
         - [x] 입력값이 서로 다른 숫자인지 검증
-    - [ ] 유저의 재시작/종료 구분 수 검증 (GameRetryInputValidator)
-        - [ ] 입력값이 1 또는 2의 값인지 검증
+    - [x] 유저의 재시작/종료 구분 수 검증 (GameRetryInputValidator)
+        - [x] 입력값이 1 또는 2의 값인지 검증
 
 
 - [ ]  볼,스트라이크 계산기 구현 (BallStrikeCalculator)

@@ -1,11 +1,12 @@
 package baseball;
 
+import baseball.validator.GameRetryInputValidator;
 import baseball.validator.UserAnswerInputValidator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class InputValidatorTest {
-
+    GameRetryInputValidator gameRetryInputValidator = new GameRetryInputValidator();
     UserAnswerInputValidator userAnswerInputValidator = new UserAnswerInputValidator();
 
     @Test
@@ -38,4 +39,9 @@ class InputValidatorTest {
         Assertions.assertThatCode(() -> userAnswerInputValidator.validateInput(userInput)).doesNotThrowAnyException();
     }
 
+    @Test
+    void 게임재시작_입력_검증실패시_Exception_테스트(){
+        String userInput = "3";
+        Assertions.assertThatThrownBy(() -> gameRetryInputValidator.validateInput(userInput)).isExactlyInstanceOf(IllegalArgumentException.class);
+    }
 }
