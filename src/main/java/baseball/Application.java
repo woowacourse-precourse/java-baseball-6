@@ -5,66 +5,48 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static int[] targetGenerator() {
-
         int[] computer = new int[3];
-
         for (int i=0;i<3;i++) {
-            int t = Randoms.pickNumberInRange(1, 9);
-            if ( i == 0) {
-                computer[0] = t;
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (i == 0) {
+                computer[0] = num;
             }
             else {
-                while (t == computer[i-1]) {
-                    t = Randoms.pickNumberInRange(1, 9);
+                while (num == computer[i-1]) {
+                    num = Randoms.pickNumberInRange(1, 9);
                 }
-                computer[i] = t;
+                computer[i] = num;
             }
-
         }
-
         return computer;
     }
-    public static boolean intConvertable(String playerNumber) {
-        try {
-            Integer.parseInt(playerNumber);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
     public static void IllegalArgumentTest(String playerNumber )  throws IllegalArgumentException{
-
         if (playerNumber.length() != 3) {
+
             throw new IllegalArgumentException();
         }
-
         try {
             int number = Integer.parseInt(playerNumber);
             if (number < 100 || number > 999) {
                 throw new IllegalArgumentException();
             }
-
         } catch (NumberFormatException e) {
+
             throw new IllegalArgumentException();
         }
     }
-
-
-    public static int[] numberFormatting(String player) {
+    public static int[] makeNumberArray(String player) {
         int number = Integer.parseInt(player);
         int n1, n2, n3;
         n1 = number/100;
         n2 = number%100/10;
         n3 = number%10;
+        int[] numberArray = {n1, n2, n3};
 
-        int[] result = {n1, n2, n3};
-
-        return result;
+        return numberArray;
     }
     public static String resultIntoString(int ball, int strike) {
-        String totalResult ="";
-
-
+        String totalResult;
         if (ball == 0) {
             if (strike == 0) {
                 totalResult = "낫싱";
@@ -74,7 +56,6 @@ public class Application {
             }
         }
         else {
-
             if (strike == 0) {
                 totalResult = ball + "볼";
             }
@@ -82,42 +63,35 @@ public class Application {
                 totalResult = ball + "볼" + " " + strike + "스트라이크";
             }
         }
-
-
         return totalResult;
     }
-
-
     public static Object[] ruleChecker(int[] playerNumber, int[] targetNumber) {
         int ball = 0;
         int strike = 0;
         int code = 8005;
-        String gameResult = "";
+        String gameResult;
 
         for (int i=0;i<3;i++) {
             int n = playerNumber[i];
-                if ( n == targetNumber[0] || n == targetNumber[1] || n == targetNumber[2]) {
-                    if (n == targetNumber[i]) {
-                        strike += 1;
-                    }
-                    else {
-                        ball += 1;
-                    }
+            if ( n == targetNumber[0] || n == targetNumber[1] || n == targetNumber[2]) {
+                if (n == targetNumber[i]) {
+                    strike += 1;
                 }
-
+                else {
+                    ball += 1;
+                }
             }
-
-            // gameresult
-            gameResult = resultIntoString(ball, strike);
-
-            if (strike == 3 && ball == 0) {
-                code = 8000;
-            }
-            return new Object[] { gameResult, code};
         }
 
+        gameResult = resultIntoString(ball, strike);
+        if (strike == 3 && ball == 0) {
+            code = 8000;
+        }
+        return new Object[] { gameResult, code};
+    }
+
     public static int game (int[] target) {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요 : ");
         String player = Console.readLine();
         try {
            IllegalArgumentTest(player);
@@ -127,15 +101,10 @@ public class Application {
             System.out.println("게임 종료");
             throw new IllegalArgumentException();
 
-        };
+        }
+        int[] playerNumber = makeNumberArray(player);
 
-        // formatting
-
-
-        int[] playerNumber = numberFormatting(player);
-
-
-        // checking time according to base ball game rules
+        // checking time according to baseball game rules
         Object[] playerResult = ruleChecker(playerNumber, target);
 
         String gameResult = (String) playerResult[0];
@@ -144,14 +113,11 @@ public class Application {
         System.out.println(gameResult);
 
         return gameCode;
-
     }
-
     public static void init() {
-
-        int[] target = targetGenerator(); // first target intialization
+        int[] target = targetGenerator();
         int initCode ;
-        while (true ) {
+        while (true) {
             initCode = game(target);
 
             if (initCode == 8000) {
@@ -161,13 +127,12 @@ public class Application {
                 try {
                     int number = Integer.parseInt(playerCode);
                     if (number != 1 && number != 2) {
-                        throw new IllegalArgumentException();
+                        throw new NumberFormatException();
                     }
-
                 } catch (NumberFormatException e) {
+                    System.out.println("비정상적인 숫자가 입력되었으므로 종료합니다.");
                     throw new IllegalArgumentException();
                 }
-
                 int restartCode = Integer.parseInt(playerCode);
                 if (restartCode == 1) {
                     target = targetGenerator(); // second target initialization
@@ -177,12 +142,9 @@ public class Application {
                 }
             }
         }
-
     }
     public static void main(String[] args){
             System.out.println("숫자 야구 게임을 시작합니다");
-
             init();
-
-        }
+    }
 }
