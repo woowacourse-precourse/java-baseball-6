@@ -4,7 +4,7 @@ package baseball.controller;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputController {
-
+//리게임 값 유효성 검사
     public String playerInput() {
         String inputString = Console.readLine();
         validate(inputString);
