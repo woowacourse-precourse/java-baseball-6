@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import static constant.Constant.*;
 import static constant.ErrorMessage.*;
+import static utils.InputValidator.validateUserInput;
 
 public class Game {
 
@@ -33,7 +34,8 @@ public class Game {
     private String getUserInput() {
         System.out.println(REQUEST_INPUT);
         String userInput = Console.readLine();
-
+        validateUserInput(userInput);
+        
         return userInput;
     }
 

@@ -10,4 +10,6 @@ public class Constant {
     public static String TERMINATING_INPUT = "2";
 
     public static String REQUEST_INPUT = "숫자를 입력해주세요 : ";
+
+    public static int NORMAL_LENGTH = 1;
 }
