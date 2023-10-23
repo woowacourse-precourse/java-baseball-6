@@ -5,5 +5,5 @@ import baseball.model.PlayNumber;
 public interface InputView {
 
     PlayNumber readPlayNumber();
-    String readMoreAnswer();
+    String readMorePlayAnswer();
 }

@@ -12,7 +12,7 @@ public class ConsoleInputView implements InputView {
     }
 
     @Override
-    public String readMoreAnswer() {
+    public String readMorePlayAnswer() {
         String answer = Console.readLine();
         return answer;
     }

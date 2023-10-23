@@ -53,12 +53,15 @@ public class GameController {
 
         EndView.end();
         AskView.printAskResume();
-
-        String resumeAnswer = inputView.readMoreAnswer();
-        resumeNumber = ResumeNumber.from(resumeAnswer);
+        updateResumeNumber();
     }
 
     private boolean isGameEnd(final int strike) {
         return strike == PLAY_NUMBER_DIGIT.getValue();
+    }
+
+    private void updateResumeNumber() {
+        String resumeAnswer = inputView.readMorePlayAnswer();
+        resumeNumber = ResumeNumber.from(resumeAnswer);
     }
 }
