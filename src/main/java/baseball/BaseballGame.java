@@ -1,15 +1,14 @@
 package baseball;
 
-import baseball.Opponent.GuessResult;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Baseball implements Game {
+public class BaseballGame implements Game {
     private Opponent opponent;
 
-    public Baseball() {
-        opponent = new Opponent();
+    public BaseballGame(Opponent opponent) {
+        this.opponent = opponent;
     }
 
     @Override
@@ -21,7 +20,7 @@ public class Baseball implements Game {
             String question = Console.readLine();
             List<Integer> filteredQuestion = filterQuestion(question);
 
-            GuessResult guessResult = opponent.guess(filteredQuestion);
+            GameResult guessResult = opponent.guess(filteredQuestion);
             System.out.println(guessResult.toHangul());
 
             if (guessResult.isCorrect()) {
@@ -30,7 +29,7 @@ public class Baseball implements Game {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String endInput = Console.readLine();
                 if ("1".equals(endInput)) {
-                    opponent = new Opponent();
+                    opponent = new ComputerOpponent();
                 } else if ("2".equals(endInput)) {
                     break;
                 } else {
