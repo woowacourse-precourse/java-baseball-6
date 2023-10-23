@@ -11,6 +11,10 @@ public class BaseballGameController {
     public static final String ALL_STRIKE = "3";
     public static final int STRIKE_COUNT_RESULT=1;
 
+    public static final String RESTART_GAME = "1";
+
+    public static final String END_GAME = "2";
+
 
 
     private BaseballGame baseballGame;
@@ -47,17 +51,17 @@ public class BaseballGameController {
 
 
     public void restartGame(String input){
-        if (input.equals("1")) {
+        if (input.equals(RESTART_GAME)) {
             baseballGame.createComputerNumber();
         }
-        if (input.equals("2")) {
+        if (input.equals(END_GAME)) {
             RestartFlag = false;
         }
     }
 
 
     public void validateRestartNumber(String input) {
-        if (!input.equals("1") && !input.equals("2")) throw new IllegalArgumentException();
+        if (!input.equals(RESTART_GAME) && !input.equals(END_GAME)) throw new IllegalArgumentException();
     }
 
 
