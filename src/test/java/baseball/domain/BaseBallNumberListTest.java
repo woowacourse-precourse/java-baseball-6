@@ -35,4 +35,31 @@ public class BaseBallNumberListTest {
                 new BaseBallNumberList(List.of(1, 4, 1)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("두개의 리스트에 같은 숫자가 있다면 count값을 리턴한다")
+    void should_returnCount_when_haveSameNumber() {
+        BaseBallNumberList baseBallNumberList1 = new BaseBallNumberList(List.of(1, 4, 2));
+        BaseBallNumberList baseBallNumberList2 = new BaseBallNumberList(List.of(2, 3, 4));
+
+        assertThat(baseBallNumberList1.countSameNumber(baseBallNumberList2)).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("같은 숫자가 인덱스가 다르다면 True를 리턴")
+    void should_returnTrue_when_sameNumberInTheSameIndex() {
+        BaseBallNumberList baseBallNumberList1 = new BaseBallNumberList(List.of(1, 4, 2));
+        BaseBallNumberList baseBallNumberList2 = new BaseBallNumberList(List.of(4, 3, 2));
+
+        assertThat(baseBallNumberList1.equalAt(2,baseBallNumberList2)).isTrue();
+    }
+
+    @Test
+    @DisplayName("같은 숫자가 인덱스가 다르다면 False를 리턴")
+    void should_returnFalse_when_sameNumberInTheNotSameIndex() {
+        BaseBallNumberList baseBallNumberList1 = new BaseBallNumberList(List.of(1, 4, 2));
+        BaseBallNumberList baseBallNumberList2 = new BaseBallNumberList(List.of(4, 3, 2));
+
+        assertThat(baseBallNumberList1.equalAt(1,baseBallNumberList2)).isFalse();
+    }
 }
