@@ -18,12 +18,18 @@ public class Game {
         List<Integer> computer = createNumbers(size);
         boolean finished = false;
         while (!finished) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
+            String input = Utils.printAndInput("숫자를 입력해주세요 : ");
             Player.isValidInput(input, size);
             finished = Player.getResult(computer, input, size);
         }
         System.out.println(size + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public boolean selectRestartOrExit(String input) {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("1 또는 2만 입력해야합니다.");
+        }
+        return input.equals("2");
     }
     public static List<Integer> createNumbers(int size) {
         List<Integer> computer = new ArrayList<>();

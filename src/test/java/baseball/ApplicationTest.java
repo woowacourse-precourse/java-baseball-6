@@ -4,9 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -364,29 +362,39 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("게임 재시작/종료 입력 유효성 확인 메서드 예외처리 테스트")
     @Test
-    public void isOneOrTwoExceptionTest() {
+    public void selectRestartOrExit() {
         // given
+        final int size = 3;
+        Game game1 = new Game(size);
         final String input1 = "0";
+
+        Game game2 = new Game(size);
         final String input2 = "3";
+
+        Game game3 = new Game(size);
         final String input3 = "yes";
+
+        Game game4 = new Game(size);
         final String input4 = "no";
+
+        Game game5 = new Game(size);
         final String input5 = "!";
 
         // when
         final Throwable throwable1 = catchThrowable(() -> {
-            Player.isOneOrTwo(input1);
+            game1.selectRestartOrExit(input1);
         });
         final Throwable throwable2 = catchThrowable(() -> {
-            Player.isOneOrTwo(input2);
+            game2.selectRestartOrExit(input2);
         });
         final Throwable throwable3 = catchThrowable(() -> {
-            Player.isOneOrTwo(input3);
+            game3.selectRestartOrExit(input3);
         });
         final Throwable throwable4 = catchThrowable(() -> {
-            Player.isOneOrTwo(input4);
+            game4.selectRestartOrExit(input4);
         });
         final Throwable throwable5 = catchThrowable(() -> {
-            Player.isOneOrTwo(input5);
+            game5.selectRestartOrExit(input5);
         });
 
         // then
@@ -411,15 +419,17 @@ class ApplicationTest extends NsTest {
     @Test
     public void isOneOrTwoTest() {
         // given
+        final int size = 3;
+        Game game = new Game(size);
         final String input1 = "1";
         final String input2 = "2";
 
         // when
         final Throwable throwable1 = catchThrowable(() -> {
-            Player.isOneOrTwo(input1);
+            game.selectRestartOrExit(input1);
         });
         final Throwable throwable2 = catchThrowable(() -> {
-            Player.isOneOrTwo(input2);
+            game.selectRestartOrExit(input2);
         });
 
         // then
