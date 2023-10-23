@@ -5,12 +5,14 @@ import static baseball.utils.NumberUtils.parseInt;
 import static baseball.utils.Validator.validateEndInput;
 import static baseball.utils.Validator.validateInput;
 
+import baseball.entity.GameResult;
+import baseball.enums.MessageType;
 import java.util.List;
 
 public class Controller {
 
-    Model model;
-    View view;
+    private Model model;
+    private View view;
 
     public Controller(Model model, View view) {
         this.model = model;
@@ -21,31 +23,36 @@ public class Controller {
 
         view.displayMessage(MessageType.START);
 
+        GameResult gameResult = model.gameResult;
+
         List<Integer> computerNumber = model.generateRandomNumber();
         // log
         System.out.println("컴퓨터: " + computerNumber);
 
-        while (!model.isGameEnded()) {
+        while (!gameResult.isGameEnded()) {
 
             view.displayMessage(MessageType.ASK_FOR_NUMBER);
 
             List<Integer> playerNumber = inputNumber();
-            
-            GameResult result = model.calculateScore(computerNumber, playerNumber);
 
-            view.displayScore(result);
-            model.setGameEnded(result.isGameEnded());
+            gameResult = model.calculateScore(computerNumber, playerNumber);
+
+            view.displayScore(gameResult);
+
+            gameResult.resetScore();
         }
 
-        askForRestart();
+        askForRestart(gameResult);
     }
 
-    private void askForRestart() {
+    private void askForRestart(GameResult gameResult) {
+
         view.displayMessage(MessageType.ASK_FOR_RESTART);
+
         String endInput = inputEndNumber();
 
         if (endInput.equals(MessageType.RESTART.getMessage())) {
-            model.setGameEnded(false);
+            gameResult.setGameRestart();
             startGame();
         } else if (endInput.equals(MessageType.FINISH.getMessage())) {
             view.displayMessage(MessageType.GAME_ENDED);

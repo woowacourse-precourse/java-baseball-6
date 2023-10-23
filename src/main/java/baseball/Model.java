@@ -1,21 +1,19 @@
 package baseball;
 
+import static baseball.utils.Validator.NUMBER_LENGTH;
+
+import baseball.entity.GameResult;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Model {
-    private static final int NUMBER_LENGTH = 3;
     public static final int MAX_STRIKES = 3;
-    private boolean isGameEnded = false;
+    public final GameResult gameResult;
 
-    public boolean isGameEnded() {
-        return isGameEnded;
-    }
-
-    public void setGameEnded(boolean gameEnded) {
-        isGameEnded = gameEnded;
+    public Model(GameResult gameResult) {
+        this.gameResult = gameResult;
     }
 
     public List<Integer> generateRandomNumber() {
@@ -34,17 +32,24 @@ public class Model {
 
     public GameResult calculateScore(List<Integer> computerNumber, List<Integer> playerNumber) {
 
-        int strike = 0;
-        int ball = 0;
-
         for (int i = 0; i < computerNumber.size(); i++) {
             if (Objects.equals(computerNumber.get(i), playerNumber.get(i))) {
-                strike++;
+                gameResult.getStrike().increaseCount();
             } else if (computerNumber.contains(playerNumber.get(i))) {
-                ball++;
+                gameResult.getBall().increaseCount();
             }
         }
 
-        return new GameResult(strike, ball, strike == MAX_STRIKES);
+        updateGameStatus(gameResult);
+
+        return gameResult;
     }
+
+    private void updateGameStatus(GameResult gameResult) {
+
+        if (gameResult.getStrike().getCount() == MAX_STRIKES) {
+            gameResult.setGameEnded();
+        }
+    }
+
 }
