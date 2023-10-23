@@ -1,8 +1,8 @@
 package baseball;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class NumberBaseballTest {
@@ -51,20 +51,20 @@ public class NumberBaseballTest {
     void 게임_재시작_정상() {
         boolean normalCommand = isContinue(재시작명령);
 
-        Assertions.assertThat(normalCommand).isTrue();
+        assertThat(normalCommand).isTrue();
     }
 
     @Test
     void 게임_종료_정상() {
         boolean exitCommand = isContinue(종료명령);
 
-        Assertions.assertThat(exitCommand).isFalse();
+        assertThat(exitCommand).isFalse();
     }
 
     @Test
     void 게임_재시작_예외() {
-        for (String exceptCommand : 예외명령들) {
-            assertThrows(IllegalArgumentException.class, () -> isContinue(exceptCommand));
+        for (String 예외명령 : 예외명령들) {
+            assertThrows(IllegalArgumentException.class, () -> isContinue(예외명령));
         }
     }
 
