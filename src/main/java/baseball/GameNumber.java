@@ -6,7 +6,7 @@ import java.util.List;
 
 public class GameNumber {
     private static final int BOARD_LIMIT = 3;
-    private List<Integer> board = new ArrayList<Integer>();
+    private final List<Integer> board = new ArrayList<Integer>();
 
 
     public GameNumber(String number) {
