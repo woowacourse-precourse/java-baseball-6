@@ -1,7 +1,6 @@
 package baseball;
 
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -15,27 +14,21 @@ public class Application {
 
         View view = new View();
         view.printGameStartingMsg();
+        Input input = new Input();
         while (true) {
             view.printInputMessage();
-            final String inputNumberStr = Console.readLine();
-            // 입력을 제대로 못받을 경우 예외 던진다. ( 현재는 무조건 3글자만 )
-            if (inputNumberStr.length() != 3) {
-                throw new IllegalArgumentException("잘못된 입력값 입니다.(입력:3자리 숫자)");
-            }
+            final String inputNumberStr = input.getNumberInput();
             Score score = getCompareResultWithInputNumberAndComputerNumber(
                     inputNumberStr, computer);
             view.printScore(score);
             if (score.hasWinScore()) {
-                String input = Console.readLine();
-                if (!List.of("1", "2").contains(input)) {
-                    throw new IllegalArgumentException("1 또는 2를 입력해야합니다.");
-                }
-                if (Integer.parseInt(input) == 1) {
+                String isReset = input.getGameResetOrRestartInput();
+                if (Integer.parseInt(isReset) == 1) {
                     // 컴퓨터 번호 리셋
                     computer = new ArrayList<>();
                     setRandomNumberToComputer(computer);
                 }
-                if (Integer.parseInt(input) == 2) {
+                if (Integer.parseInt(isReset) == 2) {
                     break;
                 }
             }
