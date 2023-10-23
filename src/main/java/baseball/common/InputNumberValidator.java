@@ -1,7 +1,5 @@
 package baseball.common;
 
-import static baseball.common.NumberConstants.*;
-
 public class InputNumberValidator {
 
     public static final String WRONG_INPUT_TYPE_MESSAGE = "1~9 사이의 숫자만 입력 가능합니다.";
@@ -28,7 +26,7 @@ public class InputNumberValidator {
     private static boolean isNumber(String inputNumber) {
         for(int i = 0; i< inputNumber.length(); i++) {
             char number = inputNumber.charAt(i);
-            if(number < Character.forDigit(NUMBER_RANGE_MIN.getValue(), 10) || number > Character.forDigit(NUMBER_RANGE_MAX.getValue(), 10)) {
+            if(number < Character.forDigit(NumberConstants.NUMBER_RANGE_MIN.getValue(), 10) || number > Character.forDigit(NUMBER_RANGE_MAX.getValue(), 10)) {
                 return false;
             }
         }
@@ -42,7 +40,7 @@ public class InputNumberValidator {
     }
 
     private static boolean isUniqueCharacters(String inputNumber) {
-        boolean[] isContained = new boolean[NUMBER_RANGE_MAX.getValue()+1];
+        boolean[] isContained = new boolean[NumberConstants.NUMBER_RANGE_MAX.getValue()+1];
 
         for(int i=0; i<inputNumber.length(); i++) {
             int number = Character.getNumericValue(inputNumber.charAt(i));
