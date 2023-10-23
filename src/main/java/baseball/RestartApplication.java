@@ -16,7 +16,7 @@ public class RestartApplication {
         while (index < 3) {
             boolean isDuplicate = false;
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            for (int i = 0; i <= index; i++) {
+            for (int i = 0; i < index; i++) {
                 if (pickedNumber[i] == randomNumber) {
                     isDuplicate = true;
                     break;
