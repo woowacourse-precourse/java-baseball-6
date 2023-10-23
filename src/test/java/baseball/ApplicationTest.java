@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.model.IsGameClear;
 import baseball.model.RandomNumberCreator;
+import baseball.model.RetryGame;
 import baseball.model.UserNumberChecker;
 import baseball.model.UserNumberGrader;
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -98,6 +99,13 @@ class ApplicationTest extends NsTest {
 
         // 스트라이크 3이 아니면 게임 통과하지 않음
         assertThat(isGameClear.getResultGrade("123", "143")).isFalse();
+    }
+
+    @Test
+    void 게임재시작_테스트() {
+        assertSimpleTest(() -> assertThatThrownBy(
+                () -> RetryGame.isCorrectRetryNumber("3")
+        ).isInstanceOf(IllegalArgumentException.class));
     }
 
     @Test

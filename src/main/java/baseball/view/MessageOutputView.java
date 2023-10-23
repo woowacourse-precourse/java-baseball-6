@@ -10,8 +10,8 @@ public class MessageOutputView {
     }
 
     // 볼과 스트라이크가 같이 나왔을 때, 볼 띄어쓰기
-    public static void spaceMessage() {
-        System.out.println(" ");
+    public static void ballSpaceMessage() {
+        System.out.print("볼 ");
     }
 
 

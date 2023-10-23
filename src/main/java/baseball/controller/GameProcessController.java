@@ -22,7 +22,7 @@ public class GameProcessController {
         clear = new IsGameClear(grade);
     }
 
-    // 시작 메시지는 프로그램 실행 후 딱 한 번 나오고 나머지 과정들은 무한반복(재귀 메소드?)
+    // 시작 메시지는 프로그램 실행 후 딱 한 번 나오고 나머지 과정들은 무한반복
     public void startGame() {
         do {
             userNumber.updateUserNumber(UserInputView.setInputNumber()); // 사용자 입력을 받는 부분
@@ -56,6 +56,7 @@ public class GameProcessController {
         ballStrikeMessage(ballStrike);
         strikeMessage(ballStrike);
         nothingMessage(ballStrike);
+        endGameMessage(ballStrike);
     }
 
     // 볼과 스트라이크 출력
@@ -73,8 +74,7 @@ public class GameProcessController {
     public static void ballStrikeMessage(int[] ballStrike) {
         if (ballStrike[0] != 0 && ballStrike[1] != 0) {
             MessageOutputView.ballStrikeCountMessage(ballStrike[0]);
-            MessageOutputView.ballMessage();
-            MessageOutputView.spaceMessage();
+            MessageOutputView.ballSpaceMessage();
             MessageOutputView.ballStrikeCountMessage(ballStrike[1]);
             MessageOutputView.strikeMessage();
         }
@@ -92,6 +92,13 @@ public class GameProcessController {
     public static void nothingMessage(int[] ballStrike) {
         if (ballStrike[0] == 0 && ballStrike[1] == 0) {
             MessageOutputView.incorrectAnswerMessage();
+        }
+    }
+
+    // 게임 종료 메시지 출력
+    public static void endGameMessage(int[] ballStrike) {
+        if (ballStrike[1] == 3) {
+            MessageOutputView.endGameMessage();
         }
     }
 }
