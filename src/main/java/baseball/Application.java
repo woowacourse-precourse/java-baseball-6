@@ -88,7 +88,7 @@ public class Application {
     }
 
     private static void isValidChoice(String choice){
-        if(!(choice.equals("1") || choice.equals("2"))){
+        if(choice != "1" || choice != "2"){
             throw new IllegalArgumentException("사용자의 입력이 1또는 2가 아닙니다. 게임을 종료합니다.");
         }
     }
