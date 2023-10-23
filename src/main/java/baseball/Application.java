@@ -21,7 +21,7 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }  // 컴퓨터 3자리 수 완성
-            System.out.println(computer.toString());
+//            System.out.println(computer.toString());
 
             while (true) {
                 if (flag == 1) {
@@ -32,7 +32,7 @@ public class Application {
                 }
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
-                if (num.length() != 3) {
+                if (num.isEmpty() || !num.matches("\\d+") || num.length() != 3) {
                     throw new IllegalArgumentException();
                 }
                 List<Integer> user = getNumList((num));
