@@ -23,7 +23,7 @@ public class Application {
         return computerNumbers;
     }
 
-    private int getNumbers() {
+    private int getUserNumbers() {
         String userString = Console.readLine();
         int userNumbers;
 
@@ -79,5 +79,16 @@ public class Application {
             return true;
         }
         return false;
+    }
+
+    private int getRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userString = Console.readLine();
+
+        if (!(userString.equals("1") || userString.equals("2"))) {
+            throw new IllegalArgumentException("1, 2 중 하나를 입력해주세요.");
+        }
+
+        return Integer.parseInt(userString);
     }
 }
