@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.util.ValidateNumber;
+import baseball.view.PrintMessage;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -9,15 +10,17 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        //1. 게임 시작
-        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        PrintMessage printMessage = new PrintMessage();
+        ValidateNumber validateNumber = new ValidateNumber();
         boolean end = false;
         boolean game = false;
         int strike;
         int ball;
         String answer;
-        ValidateNumber validateNumber = new ValidateNumber();
 
+        //1. 게임 시작
+        printMessage.startMessage();
 
         //2. 게임 진행
         while (!end) {
@@ -31,7 +34,7 @@ public class Application {
             }
             //2.2. "숫자를 입력해주세요 :" 출력과 함께 사용자 입력
             while (!game) {
-                System.out.print("숫자를 입력해주세요 : ");
+                printMessage.inputMessage();
                 answer = Console.readLine();
                 validateNumber.isInRange(answer);
                 validateNumber.isLengthCorrect(answer);
@@ -58,14 +61,14 @@ public class Application {
                 System.out.println(temp_string.trim());
                 //2.4.2
                 if (strike == 3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    printMessage.correctMessage();
                     game = true;
                 }
 
             }
 
             //3. 게임 지속 여부 판단
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            printMessage.replayMessage();
             String endNumber = Console.readLine();
             validateNumber.isEndNumber(endNumber);
             if (endNumber.equals("2")) {
