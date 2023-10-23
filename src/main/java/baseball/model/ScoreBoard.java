@@ -13,19 +13,19 @@ public class ScoreBoard {
 
     public int countStrike() {
         return (int) scoreBoardList.stream()
-                .filter(e -> e.equals(BallStatus.STRIKE.getBallStatus()))
+                .filter(ballStatus -> ballStatus.equals(BallStatus.STRIKE.getBallStatus()))
                 .count();
     }
 
     public int countBall() {
         return (int) scoreBoardList.stream()
-                .filter(e -> e.equals(BallStatus.BALL.getBallStatus()))
+                .filter(ballStatus -> ballStatus.equals(BallStatus.BALL.getBallStatus()))
                 .count();
     }
 
     public boolean isNothing() {
         if ((int) scoreBoardList.stream()
-                .filter(e -> e.equals(BallStatus.NOTHING.getBallStatus()))
+                .filter(ballStatus -> ballStatus.equals(BallStatus.NOTHING.getBallStatus()))
                 .count() == scoreBoardList.size()) {
             return true;
         }
