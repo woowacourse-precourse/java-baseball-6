@@ -7,8 +7,12 @@ public class Game {
     private User user;
     private Result result;
 
-    public void start() {
+    public Game() {
         System.out.println(GAME_START_MESSAGE);
+        start();
+    }
+
+    public void start() {
         setGame();
         playGame();
         askRetry();
@@ -16,6 +20,7 @@ public class Game {
 
     private void setGame() {
         computer = new Computer();
+        computer.getNumbers().stream().forEach(System.out::println);
         user = new User();
         result = new Result();
     }
