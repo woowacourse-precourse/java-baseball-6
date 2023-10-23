@@ -13,19 +13,21 @@ public class GameController {
     private Balls com;
     private PlayResult result;
 
+    private void init() {
+        outputView = new OutputView();
+        inputView = new InputView();
+        com = new Balls(RandomNumberGenerator.createRandomNumbers());
+        result = new PlayResult();
+    }
+
     public void start() {
         init();
         outputView.printGameStart();
 
         while (result.isContinue()) {
             Balls user = new Balls(inputView.readBallNumbers());
+            result = com.play(user);
+            outputView.printResult(result);
         }
-    }
-
-    private void init() {
-        outputView = new OutputView();
-        inputView = new InputView();
-        com = new Balls(RandomNumberGenerator.createRandomNumbers());
-        result = new PlayResult();
     }
 }

@@ -25,4 +25,16 @@ public class PlayResult {
     public boolean isContinue() {
         return this.strike != BALL_SIZE;
     }
+
+    public boolean hasBall() {
+        return this.ball != ZERO;
+    }
+
+    public boolean hasStrike() {
+        return this.strike != ZERO;
+    }
+
+    public boolean isNothing() {
+        return !hasBall() && !hasStrike();
+    }
 }
