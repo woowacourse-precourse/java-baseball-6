@@ -14,13 +14,14 @@ public class Application {
     }
 
     private static void playBaseballGame() {
-        while (true) {
+        String gameCode;
+        do {
             List<Integer> randomNumber = createRandomNumber();
-            checkUserNumber(randomNumber);
-        }
+            gameCode = checkUserNumber(randomNumber);
+        } while (gameCode.equals("1"));
     }
 
-    private static void checkUserNumber(List<Integer> randomNumber) {
+    private static String checkUserNumber(List<Integer> randomNumber) {
         while (true) {
             List<Integer> userNumber = getUserNumber();
             int ball = 0;
@@ -38,13 +39,15 @@ public class Application {
                 break;
             }
         }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return (Console.readLine());
     }
 
     private static void printResult(int strike, int ball) {
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         } else if (ball > 0 && strike > 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            System.out.println(ball + "볼" + " " + strike + "스트라이크");
         } else if (ball > 0) {
             System.out.println(ball + "볼");
         } else if (strike > 0) {
