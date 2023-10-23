@@ -55,7 +55,7 @@
     - [x] `validateBaseballNumber()`: `InputView`의 `baseballNumber()`에서 입력받은 숫자가 1~9 범위의 서로다른 3자리 숫자인지 검증.
     - [x] `validateContinueOrExitNumber()`: `InputView`의 `continueOrExit()`에서 입력받은 숫자가 1 또는 2의 한자리 숫자인지 검증.
 - `Computer`
-    - [x] `getScore()`: 컴퓨터가 가지고 있는 정답 `Answer`와 사용자가 입력한 3자리 수를 비교하여 `Score` 객체 반환.
+    - [x] `calculateScore()`: 컴퓨터가 가지고 있는 정답 `BaseballNumbers`와 사용자가 입력한 3자리 수를 비교하여 `Score` 객체 반환.
 - `BaseballNumbersGenerator`
     - [x] `BaseballNumbers` 타입을 반환하는 `generate()` 메서드 정의
 - `RandomBaseballNumbersGenerator`: `NumbersGenerator` 구현
