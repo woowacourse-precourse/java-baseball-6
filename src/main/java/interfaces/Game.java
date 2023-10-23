@@ -10,4 +10,10 @@ public interface Game {
     boolean isValidInput();
 
     boolean isFinished();
+
+    String getStartPrompt();
+
+    String getFinishPrompt();
+
+    String getPlayTurnPrompt();
 }
