@@ -17,8 +17,8 @@ class RefereeTest {
         Referee referee = new Referee();
 
         //when (기능 작동)
-        int strike = referee.duplicateStrike(1,1);
-        int isNotStrike = referee.duplicateStrike(1,3);
+        int strike = referee.confirmStrike(1,1);
+        int isNotStrike = referee.confirmStrike(1,3);
 
         //then (기능 작동 후 결과)
         Assertions.assertThat(strike).isEqualTo(1);
@@ -33,9 +33,9 @@ class RefereeTest {
         List<Integer> playerList = new ArrayList<>(Arrays.asList(0, 1, 3));
 
         //when (기능 작동)
-        int isBall = referee.duplicateBall(1,0, playerList);
-        int isStrike = referee.duplicateBall(0,0, playerList);
-        int isNotBall = referee.duplicateBall(5,1,playerList);
+        int isBall = referee.confirmBall(1,0, playerList);
+        int isStrike = referee.confirmBall(0,0, playerList);
+        int isNotBall = referee.confirmBall(5,1,playerList);
 
         //then (기능 작동 후 결과)
         Assertions.assertThat(isBall).isEqualTo(1);
@@ -53,7 +53,7 @@ class RefereeTest {
 
 
         //when (기능 작동)
-        referee.duplicateNumbers(computer,player);
+        referee.compareNumbers(computer,player);
         int strike = referee.getStrike();
         int ball = referee.getBall();
 

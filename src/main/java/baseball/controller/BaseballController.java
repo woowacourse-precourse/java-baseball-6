@@ -32,7 +32,7 @@ public class BaseballController {
     public void enterPlayer() {
         while(true){
             player.inputPlayerNumber(InputView.playerNumber());
-            referee.duplicateNumbers(computer.getComputerNumber(), player.getPlayerNumber());
+            referee.compareNumbers(computer.getComputerNumber(), player.getPlayerNumber());
             OutputView.detailMessage(referee.getStrike(), referee.getBall());
             if (outPlayer(referee.getStrike())) break;
         }

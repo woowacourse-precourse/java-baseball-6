@@ -14,22 +14,22 @@ public class Referee {
         return ball;
     }
 
-    public void duplicateNumbers(List<Integer> computerNumber, List<Integer> playerNumber){
+    public void compareNumbers(List<Integer> computerNumber, List<Integer> playerNumber){
         int strikeCount = 0;
         int ballCount = 0;
         for(int i=0; i<3; i++){
-            strikeCount += duplicateStrike(computerNumber.get(i), playerNumber.get(i));
-            ballCount += duplicateBall(computerNumber.get(i), playerNumber.get(i), playerNumber);
+            strikeCount += confirmStrike(computerNumber.get(i), playerNumber.get(i));
+            ballCount += confirmBall(computerNumber.get(i), playerNumber.get(i), playerNumber);
         }
         strike = strikeCount;
         ball = ballCount;
     }
 
-    public int duplicateStrike(int computerNumber, int playerNumber){
+    public int confirmStrike(int computerNumber, int playerNumber){
         return computerNumber == playerNumber ? 1 : 0;
     }
 
-    public int duplicateBall(int computerNumber, int playerNumber, List<Integer> playerNumbers) {
+    public int confirmBall(int computerNumber, int playerNumber, List<Integer> playerNumbers) {
         if(computerNumber != playerNumber && playerNumbers.contains(computerNumber)){
             return 1;
         }
