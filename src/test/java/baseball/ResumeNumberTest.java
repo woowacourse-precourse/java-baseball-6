@@ -20,4 +20,11 @@ public class ResumeNumberTest {
             resumeNumber.updateNumber("123");
         });
     }
+
+    @Test
+    void 재시작_또는_종료값은_숫자여야만_한다() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            resumeNumber.updateNumber("a");
+        });
+    }
 }
