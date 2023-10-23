@@ -18,4 +18,16 @@ class BaseballServiceTest {
         //then
         assertThat(baseballService.startGame(input, randomNumber)).isFalse();
     }
+
+    @DisplayName("startGame 메소드가 3 스트라이크가 아닐 때 true를 반환하는가?")
+    @Test
+    public void testStartGameReturnsTrueIfNotThreeStrikes() {
+        //given
+        BaseballService baseballService = new BaseballService();
+        //when
+        String input = String.valueOf(123);
+        String randomNumber = String.valueOf(125);
+        //then
+        assertThat(baseballService.startGame(input, randomNumber)).isTrue();
+    }
 }
