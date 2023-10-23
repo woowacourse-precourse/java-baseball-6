@@ -1,7 +1,7 @@
-package baseball.input;
+package baseball.service;
 
-import baseball.umpire.AllRightAnswer;
-import baseball.umpire.BaseBallUmpire;
+import baseball.input.ComputerInput;
+import baseball.input.UserInput;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public class InputService {
     private final ComputerInput computerInput = new ComputerInput();
     private final UserInput userInput = new UserInput();
 
-    public void computer(){
+    public void computerAnswer(){
         computerInput.create();
     }
 
@@ -17,7 +17,7 @@ public class InputService {
         return computerInput.value();
     }
 
-    public void user(){
+    public void userAnswer(){
         userInput.create();
         userInput.checking();
     }
