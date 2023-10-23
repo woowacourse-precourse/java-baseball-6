@@ -10,7 +10,7 @@ public class Computer {
     private static final Integer MIN_NUM = 1;
     private static final Integer MAX_NUM = 9;
 
-    private Set answer = new LinkedHashSet();
+    private Set<Integer> answer = new LinkedHashSet<>();
 
     public Computer() {
         while (answer.size() < NUMBER_DIGIT) {
