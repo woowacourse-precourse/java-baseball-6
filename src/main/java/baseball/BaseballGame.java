@@ -41,11 +41,10 @@ public class BaseballGame {
                 .map(input -> convertStringToInteger(input))
                 .toList();
         validAnswerDigit(userAnswer);
-        validAnswerDistint(userAnswer);
-
+        validAnswerDistinct(userAnswer);
     }
 
-    private void validAnswerDistint(List<Integer> userAnswer) {
+    private void validAnswerDistinct(List<Integer> userAnswer) {
         if (userAnswer.stream().distinct().toList().size() != ANSWER_DIGIT) {
             throw new IllegalArgumentException(ERROR_INPUT_NOT_DISTINCT)
         }
