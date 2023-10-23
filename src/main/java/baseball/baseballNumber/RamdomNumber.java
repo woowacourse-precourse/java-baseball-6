@@ -14,7 +14,6 @@ public class RamdomNumber {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
         return computer;
     }
 }

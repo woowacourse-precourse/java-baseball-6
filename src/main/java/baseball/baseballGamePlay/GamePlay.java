@@ -1,7 +1,7 @@
 package baseball.baseballGamePlay;
 
 
-import static baseball.print.OutputMessage.inputStartEndBaseballGame;
+import static baseball.print.OutputMessage.getGameStatusInput;
 import static baseball.print.OutputMessage.printMessageStartBaseballGame;
 
 import baseball.baseballNumber.RamdomNumber;
@@ -19,7 +19,7 @@ public class GamePlay {
         while (gameCount < GAME_COUNT) {
             List<Integer> baseballNumber = ramdomNumber.ramdomBaseballNumber();
             if (gameHint.baseballGameHint(baseballNumber) == THREE_STRIKE) {
-                gameCount = inputStartEndBaseballGame();
+                gameCount = getGameStatusInput();
             }
         }
     }
