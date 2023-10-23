@@ -8,13 +8,14 @@ import baseball.view.OutputView;
 import java.util.Objects;
 
 import static baseball.global.GameConfig.GAME_RESTART_FLAG;
-import static baseball.view.constants.PrintMessage.GAME_START;
+import static baseball.view.constants.StaticNotice.GAME_START;
 
 public class Game {
     public void start() {
-        OutputView.printInformation(GAME_START);
+        OutputView.printStaticNotice(GAME_START);
         do {
-            play(Number.generateRandomNumbers());
+            Number computerNumber = Number.generateRandomNumbers();
+            play(computerNumber);
         } while (!isRestart());
     }
 
@@ -22,7 +23,7 @@ public class Game {
         while (true) {
             Number playerNumber = Number.inputPlayerNumbers();
             Result result = Result.create(playerNumber, computerNumber);
-            result.print();
+            OutputView.printMessage(result.createResultMessage());
             if (result.checkGameOver()) {
                 break;
             }
