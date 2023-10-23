@@ -4,8 +4,7 @@ import baseball.view.UserNumbers;
 
 public class Game {
 
-    private static final String END_GAME = "3스트라이크";
-    public static final String ZERO_COUNT = "zero";
+
     private final ComputerNumbers computerNumbers;
     private final UserNumbers userNumbers;
 
@@ -34,10 +33,10 @@ public class Game {
 
     private String formatResult(Strike strike, Ball ball) {
         if (strike.isThreeStrike()) {
-            return END_GAME;
+            return Constant.END_GAME;
         }
         if (strike.isZeroStrike() && ball.isZeroBall()) {
-            return "낫싱";
+            return Constant.ZERO;
         }
         StringBuilder result = new StringBuilder();
         appendIfNotZero(result, ball.getComment());
@@ -46,7 +45,7 @@ public class Game {
     }
 
     private void appendIfNotZero(StringBuilder result, String comment) {
-        if (!comment.equals(ZERO_COUNT)) {
+        if (!comment.equals(Constant.ZERO_COUNT)) {
             result.append(comment).append(" ");
         }
     }

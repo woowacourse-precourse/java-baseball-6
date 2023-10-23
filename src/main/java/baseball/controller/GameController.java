@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.ComputerNumbers;
+import baseball.model.Constant;
 import baseball.model.Game;
 import baseball.view.RestartInput;
 import baseball.view.UserNumbers;
@@ -19,7 +20,7 @@ public class GameController {
     }
 
     private boolean isGameEnd(String result) {
-        return result.equals(Game.END_GAME);
+        return result.equals(Constant.END_GAME);
     }
 
     private void endGameMessage() {
@@ -48,7 +49,7 @@ public class GameController {
     private boolean handleGame(ComputerNumbers generator) {
         endGameMessage();
         int next = restartOrEndGame();
-        if (next == 1) {
+        if (next == Constant.GOING) {
             generator.reset();
             return true;
         }
