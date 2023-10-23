@@ -1,7 +1,7 @@
 package baseball;
 
 public enum GameState {
-    CONTINUE(1), GAME_OVER(2), END_POINT(3),;
+    STATE_LESS(0), CONTINUE(1), GAME_OVER(2), END_POINT(3);
 
     private final int value;
 

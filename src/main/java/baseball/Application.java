@@ -21,7 +21,7 @@ public class Application {
             printGameStartMsg();
 
             int[] userNums = user.setUserNum(Console.readLine());
-            int gameStatus = Integer.parseInt(play.checkGameStatus(play.run(comNums, userNums)));
+            int gameStatus = play.checkGameStatus(play.run(comNums, userNums));
             if (gameStatus == GAME_OVER.getValue()) {
                 printGameOverMsg();
                 break;

@@ -54,13 +54,13 @@ public class Play {
         return gameState;
     }
 
-    public String checkGameStatus(int status) {
+    public int checkGameStatus(int status) {
         if (status == GAME_OVER.getValue()) {
-            return "2";
+            return GAME_OVER.getValue();
         } else if (status == CONTINUE.getValue()) {
-            return "1";
+            return CONTINUE.getValue();
         }
-        return "0";
+        return STATE_LESS.getValue();
     }
 
     private int checkStrikeCount(int[] comNums, int[] userNums, int count) {
