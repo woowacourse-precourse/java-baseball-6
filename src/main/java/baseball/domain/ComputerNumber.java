@@ -14,7 +14,6 @@ public class ComputerNumber {
 
     public void makeRandomNumber() {
         List<Integer> randoms = new ArrayList<>();
-
         while (randoms.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randoms.contains(randomNumber)) {

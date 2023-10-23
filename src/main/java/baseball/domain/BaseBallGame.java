@@ -19,24 +19,29 @@ public class BaseBallGame {
     }
 
     private int game() {
-        System.out.print(NEED_GAME_INPUT_MESSAGE);
         InputValidator validator = new InputValidator();
         ComputerNumber computer = new ComputerNumber();
+
+        System.out.print(NEED_GAME_INPUT_MESSAGE);
 
         String input = Console.readLine();
         validator.validate(input);
         PlayerNumber player = new PlayerNumber(input);
-        ComparisonResult result = new ComparisonResult(player, computer);
+
+        CompareValue result = new CompareValue(player, computer);
 
         while (!result.isGameEnd()) {
-            System.out.print(result.getResultMessage() + "\n" + NEED_GAME_INPUT_MESSAGE);
+            System.out.println(result.getMessage());
+            System.out.print(NEED_GAME_INPUT_MESSAGE);
 
             input = Console.readLine();
             validator.validate(input);
             player = new PlayerNumber(input);
-            result = new ComparisonResult(player, computer);
+
+            result = new CompareValue(player, computer);
         }
 
+        System.out.println(result.getMessage());
         System.out.println(END_GAME_MESSAGE);
         return isGameContinue();
     }
