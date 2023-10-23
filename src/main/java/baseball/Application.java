@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     private static final int NUMBER_LENGTH = 3;
+    private static final String CONTINUE_GAME = "1";
+    private static final String EXIT_GAME = "2";
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -191,7 +193,8 @@ public class Application {
     private static int getContinueGame() {
         String choice;
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.print("게임을 새로 시작하려면 " + CONTINUE_GAME);
+        System.out.println(", 종료하려면 " + EXIT_GAME + "를 입력하세요.");
         choice = Console.readLine();
         if (!isValidChoice(choice)) {
             throw (new IllegalArgumentException());
@@ -200,15 +203,8 @@ public class Application {
     }
 
     private static boolean isValidChoice(String choice) {
-        return (isLengthOne(choice) && isValidNumber(choice));
-    }
-
-    private static boolean isLengthOne(String choice) {
-        return (choice.length() == 1);
-    }
-
-    private static boolean isValidNumber(String choice) {
-        return ((choice.charAt(0) == '1') || (choice.charAt(0) == '2'));
+        return (choice.equals(CONTINUE_GAME)
+                || choice.equals(EXIT_GAME));
     }
 
     private static int stringToInt(String choice) {
