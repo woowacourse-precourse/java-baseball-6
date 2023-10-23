@@ -14,17 +14,16 @@ public class BaseBall {
 
         List<Integer> userNumList;
         while (true) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            System.out.print("숫자를 입력해주세요 : ");
+            greeting();
             String userNum = readLine();
-
             userNumList = checkUserNum(userNum); // 맞는 숫자인지 확인
-            int [] result = ismatch(computerNum, userNumList);
+            int[] result = ismatch(computerNum, userNumList);
+
             if (result[1] == 3) {
                 userNum = askNewGame();
                 if (checkTryAgain(userNum)) {
                     computerNum = computer.makeRandomNumbers();
-                }else {
+                } else {
                     return;
                 }
             }
@@ -33,6 +32,11 @@ public class BaseBall {
             }
 
         }
+    }
+
+    private void greeting(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private String askNewGame() {
