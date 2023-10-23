@@ -6,6 +6,9 @@ public class InputView {
 
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final int NUMBER_POSITIONS = 10;
+    private static final int SELECTION_COUNT = 3;
+
 
     // 맨 처음 시작할 때, 메시지 출력하기
     public static void getStartMessage() {
@@ -34,15 +37,17 @@ public class InputView {
     // 세 숫자를 배열에 넣어주기
     public static int[] convertInputFormat(String input) {
 
-        int[] userInput = new int[10];
+        int[] userInput = new int[NUMBER_POSITIONS];
+        int index = 0;
 
-        for (int i = 0; i < 3; i++) {
+
+        for (int i = 0; i < SELECTION_COUNT; i++) {
 
             int eachNumber = input.charAt(i) - '0';
 
             checkInputDuplicate(userInput, eachNumber);
 
-            userInput[eachNumber]++;
+            userInput[eachNumber]+= ++index;
 
         }
 
@@ -61,7 +66,7 @@ public class InputView {
     // Input이 세자리가 아닌 수 예외처리하기
     public static void checkInputLength(String input) {
 
-        if (input.length() != 3) {
+        if (input.length() != SELECTION_COUNT) {
 
             throw new IllegalArgumentException("길이가 너무 짧습니다!");
 
