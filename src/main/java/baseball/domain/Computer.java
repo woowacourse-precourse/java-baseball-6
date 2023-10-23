@@ -6,9 +6,9 @@ import baseball.strategy.NumberGeneratePolicy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
+public abstract class Computer {
 
-    private final List<Integer> numbers = new ArrayList<>();
+    protected final List<Integer> numbers = new ArrayList<>();
 
     public List<Integer> generateNumbers(NumberGeneratePolicy numberGeneratePolicy, DuplicateAllowancePolicy duplicateAllowancePolicy, int numberCount) {
         while (numbers.size() < numberCount) {
@@ -25,21 +25,6 @@ public class Computer {
         numbers.add(number);
     }
 
-    public Result calculateResult(User user) {
-        int strikeCount = 0;
-        int ballCount = 0;
-
-        for (int index = 0; index < numbers.size(); index++) {
-            int number = numbers.get(index);
-            if (user.contains(number) && user.isSamePosition(number, index)) {
-                strikeCount++;
-            }
-            if (user.contains(number) && !user.isSamePosition(number, index)) {
-                ballCount++;
-            }
-        }
-
-        return new Result(strikeCount, ballCount);
-    }
+    public abstract Result calculateResult(User user);
 
 }
