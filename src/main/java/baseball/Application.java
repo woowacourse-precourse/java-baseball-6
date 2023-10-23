@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    static StringBuilder target = new StringBuilder();
+
+    public static void reroll() {
+        target.setLength(0);
         // 정답(3자리 숫자) 생성
         List<Integer> tmp = new ArrayList<>();
         while (tmp.size() < 3) {
@@ -16,11 +18,15 @@ public class Application {
                 tmp.add(randomNumber);
             }
         }
-        StringBuilder target = new StringBuilder();
         for (int i = 0; i < 3; i++) {
             target.append(tmp.get(i));
         }
         System.out.println(target); // 테스트용
+    }
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        reroll();
 
         // 게임 시작, 입력 받기
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -109,10 +115,10 @@ public class Application {
                     throw new IllegalArgumentException("1 또는 2만 입력해주세요.[다른 수 입력]");
                 }
                 if (reset == 1) {
-                    System.out.println("숫자 야구 게임을 시작합니다.");
+                    reroll();
                 }
                 if (reset == 2) {
-                    System.out.println("게임을 종료합니다.");
+                    System.out.println("프로그램을 종료합니다.");
                     break;
                 }
             }
