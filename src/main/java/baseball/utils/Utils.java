@@ -17,6 +17,13 @@ public class Utils {
         return computerRandomNumber;
     }
 
+    public static void validateStringOneOrTwo(String input) {
+        if (input.equals("1") || input.equals("2")) {
+            return;
+        }
+        throw new IllegalArgumentException("1이나 2를 입력해주세요.");
+    }
+
     public static void validateStringNaturalNumberLengthDuplicate(String input) {
         validateStringNaturalNumber(input);
         validateStringLength(input, 3);
