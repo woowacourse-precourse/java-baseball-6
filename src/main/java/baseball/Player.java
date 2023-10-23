@@ -6,6 +6,17 @@ import java.util.*;
 
 public class Player {
 
+    public static boolean getResult(List<Integer> computer, String input, int size) {
+        List<Integer> userNumberList = stringArrToIntegerList(input);
+
+        int strikeCnt = countStrike(computer, userNumberList, size);
+        int ballCnt = countBall(computer, userNumberList, size);
+
+        printResult(strikeCnt, ballCnt);
+
+        return strikeCnt == size;
+    }
+
     public static List<Integer> stringArrToIntegerList(String input) {
         String[] inputStringArr = input.split("");
         List<Integer> list = new ArrayList<>();
@@ -80,7 +91,7 @@ public class Player {
     public static boolean selectRestartOrExit() {
         String input = Console.readLine();
         isOneOrTwo(input);
-        return input.equals("1");
+        return input.equals("2");
     }
 
     public static void isOneOrTwo(String input) {
