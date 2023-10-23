@@ -79,7 +79,7 @@
 
 ## ❌ 게임 시작 기능
 
-- ❌ playGame 메서드 구현
+- ✅ playGame 메서드 구현
     - 프로그램 시작
 - ✅ oneGame 메서드 구현
     - 야구 게임 경기 한번
@@ -93,3 +93,5 @@
 
 - ❌ restartOrExitGame 메서드 구현
     - 플레이어가 입력한 값을 받아옴
+- ❌ validateRestartInput 메서드 구현
+    - 플레이어가 입력한 값을 검증 
