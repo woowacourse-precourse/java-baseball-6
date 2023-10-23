@@ -14,7 +14,6 @@ public class GameController {
 
     public void createAnswer() {
         ANSWER_NUMBER.createRandomNumberList();
-        System.out.println("정답: " + ANSWER_NUMBER.getRandomNumber());
     }
 
     public void startGame() {
@@ -29,7 +28,6 @@ public class GameController {
         do {
             inputNumber = new InputNumber();
             inputNumber.setInputNumber(inputView.getPlayerInput());
-            System.out.println("사용자 입력: " + inputNumber.getInputNumber());
 
             String hintMessage = outputView.printHint(countController.getHintMessage(inputNumber));
             System.out.println(hintMessage);
