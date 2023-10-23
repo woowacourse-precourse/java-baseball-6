@@ -10,9 +10,16 @@ public class BaseballController {
 
         public void run() {
                 initGame(constants.SIZE, constants.START_NUMBER, constants.END_NUMBER);
+                startGame();
         }
 
         private void initGame(int size, int start, int end) {
                 baseballService.initGame(size, start, end);
         }
+
+        private void startGame() {
+                baseballService.startGame();
+        }
+
+
 }

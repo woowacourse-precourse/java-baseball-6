@@ -25,4 +25,9 @@ public class Game {
                 strikeCount = 0;
                 ballCount = 0;
         }
+
+        public void initBaseBall() {
+                strikeCount = 0;
+                ballCount = 0;
+        }
 }
