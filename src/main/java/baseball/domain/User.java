@@ -6,6 +6,9 @@ import java.util.stream.Stream;
 
 public class User {
 
+    public static final int COLLECT_USER_INPUT = 3;
+    public static final int USER_START_NUMBER = 1;
+    public static final int USER_END_NUMBER = 9;
 
     private List<Integer>userNumber;
 
@@ -35,12 +38,12 @@ public class User {
     }
 
     public void validateIsThreeUserNumber() {
-        if (userNumber.size() != 3) throw new IllegalArgumentException();
+        if (userNumber.size() != COLLECT_USER_INPUT) throw new IllegalArgumentException();
     }
 
     public void validateInRangeUserNumber() {
         for (int i = 0; i < userNumber.size(); i++) {
-            if (userNumber.get(i) < 1 || userNumber.get(i) > 9) throw new IllegalArgumentException();
+            if (userNumber.get(i) < USER_START_NUMBER || userNumber.get(i) > USER_END_NUMBER) throw new IllegalArgumentException();
         }
     }
 
