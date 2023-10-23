@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.List;
-import java.util.Map;
 
 public class BaseBallGame {
     private final Input input;
@@ -29,9 +28,9 @@ public class BaseBallGame {
 
             while (true) {
                 List<Integer> guessNumbers = input.getGuessNumbers();
-                Map<String, Integer> result = computer.countStrikesAndBalls(guessNumbers);
+                GameResult gameResult = computer.countStrikesAndBalls(guessNumbers);
 
-                if (output.printResultAndContinue(result)) {
+                if (output.printResultAndContinue(gameResult)) {
                     break;
                 }
             }

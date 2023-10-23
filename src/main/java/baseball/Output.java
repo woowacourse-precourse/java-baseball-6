@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.Map;
-
 public class Output {
 
     public void printGameStart() {
@@ -12,10 +10,10 @@ public class Output {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public boolean printResultAndContinue(Map<String, Integer> result) {
+    public boolean printResultAndContinue(GameResult gameResult) {
 
-        int strikes = result.get("strikes");
-        int balls = result.get("balls");
+        int strikes = gameResult.getStrikes();
+        int balls = gameResult.getBalls();
 
         if (balls > 0) {
             System.out.print(balls + "볼 ");
@@ -25,7 +23,7 @@ public class Output {
             System.out.print(strikes + "스트라이크");
         }
 
-        if (balls == 0 && strikes == 0) {
+        if (gameResult.isNothing()) {
             System.out.print("낫싱");
         }
 

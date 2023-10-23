@@ -2,9 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Computer {
 
@@ -24,7 +22,7 @@ public class Computer {
         }
     }
 
-    public Map<String, Integer> countStrikesAndBalls(List<Integer> guessNumbers) {
+    public GameResult countStrikesAndBalls(List<Integer> guessNumbers) {
         int strikes = 0;
         int balls = 0;
         for (int idx = 0; idx < GameConstants.NUM_DIGITS; idx++) {
@@ -36,10 +34,7 @@ public class Computer {
                 }
             }
         }
-        Map<String, Integer> result = new HashMap<>();
-        result.put("strikes", strikes);
-        result.put("balls", balls);
-        return result;
+        return new GameResult(strikes, balls);
     }
 
 }
