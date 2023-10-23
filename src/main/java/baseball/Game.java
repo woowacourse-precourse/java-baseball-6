@@ -9,32 +9,16 @@ public class Game {
     public void run() {
         do {
             System.out.println("숫자 야구 게임을 시작합니다.");
-            List<Integer> computerNumbers = createComputerNumbers();
+            Numbers computerNumbers = new Numbers(createComputerNumbers());
             Score score = new Score();
             while (score.isUserLose()) {
                 System.out.print("숫자를 입력해주세요 : ");
-                List<Integer> userNumbers = new GameInput().convertInputToUserNumbers();
-                score = calculateScore(computerNumbers, userNumbers);
+                Numbers userNumbers = new Numbers(new GameInput().convertInputToUserNumbers());
+                score = computerNumbers.calculateScore(userNumbers);
                 System.out.println(score.getHint());
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         } while (new EndInput().isPressResume());
-    }
-
-    private Score calculateScore(List<Integer> computerNumbers, List<Integer> userNumbers) {
-        int strike = 0;
-        int ball = 0;
-
-        for (int i = 0; i < computerNumbers.size(); i++) {
-            int nowComputer = computerNumbers.get(i);
-            int nowUser = userNumbers.get(i);
-            if (nowComputer == nowUser) {
-                strike++;
-            } else if (computerNumbers.contains(nowUser)) {
-                ball++;
-            }
-        }
-        return new Score(strike, ball);
     }
 
     private List<Integer> createComputerNumbers() {
