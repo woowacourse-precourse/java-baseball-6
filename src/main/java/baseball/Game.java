@@ -20,4 +20,28 @@ public class Game {
             }
         }
     }
+
+    public void validation(String input) {
+        int number;
+
+        try {
+            number = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("1~9로 이루어진 서로 다른 세자리 숫자를 입력해야 합니다. 게임이 종료됩니다.");
+        }
+
+        if (123 <= number && number <= 987) {
+            int[] digits = new int[3];
+            digits[0] = number % 10;
+            digits[1] = (number / 10) % 10;
+            digits[2] = number / 100;
+
+            if (!(digits[0] != digits[1] && digits[1] != digits[2] && digits[0] != digits[2])) {
+                throw new IllegalArgumentException("1~9로 이루어진 서로 다른 세자리 숫자를 입력해야 합니다. 게임이 종료됩니다.");
+            }
+
+        } else {
+            throw new IllegalArgumentException("1~9로 이루어진 서로 다른 세자리 숫자를 입력해야 합니다. 게임이 종료됩니다.");
+        }
+    }
 }
