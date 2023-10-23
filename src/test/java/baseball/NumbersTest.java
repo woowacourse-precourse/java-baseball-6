@@ -27,4 +27,12 @@ class NumbersTest {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers));
 	}
 
+	@Test
+	void 각_숫자의_크기가_1이상_9이하가_아니면_예외를_던진다() {
+		List<Integer> numbers1 = List.of(10,2,4);
+		List<Integer> numbers2 = List.of(0,3,5);
+
+		Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers1));
+		Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers2));
+	}
 }
