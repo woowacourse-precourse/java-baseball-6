@@ -1,7 +1,7 @@
 package baseball.Interface;
 
 import baseball.game.BaseballGame;
-import java.io.Console;
+import camp.nextstep.edu.missionutils.Console;
 
 public class UserInterface {
     private final Console console;
