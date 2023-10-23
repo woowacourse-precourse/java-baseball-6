@@ -10,15 +10,14 @@
     - `getPlayerNumber()`
         - 플레이어에게 3자리 정수 입력받아서 반환하는 메서드. List<Interger>
 - 플레이어가 입력한 숫자를 검증하는 `ValidationPlayerNumber` class
-    - `validatePlayerNumber(String)`
-        - 입력된 String을 숫자로 바꿔주는 코드 `changeListNumber(String)`
-        - 입력된 String에 문자가 포함되어 있는지 검증하는 `isNumber(String)`
-        - 플레이어가 입력한 값이 제대로 된 값인지 확인하는 `validatePlayerNumber(String)`
-            - 잘못의 예)
-                - 0을 입력했는지?
-                - 중복된 값인지?
-                - 3자리의 값이 아닌지?
-                - 문자를 입력했을 경우
+    - 입력된 String을 숫자로 바꿔주는 코드 `changeListNumber(String)`
+    - 입력된 String에 문자가 포함되어 있는지 검증하는 `isNumber(String)`
+    - 플레이어가 입력한 값이 제대로 된 값인지 확인하는 `validatePlayerNumber(String)`
+        - 잘못의 예)
+            - 0을 입력했는지?
+            - 중복된 값인지?
+            - 3자리의 값이 아닌지?
+            - 입력된 문자열에 숫자가 아닌 값이 포함되어 있는지?
 - 야구게임의 룰을 정리한 `GameRule` class
     - `checkEndGame()`
         - 3 strike를 입력받으면 게임을 종료시키는 메서드 boolean
@@ -30,7 +29,7 @@
         - 게임을 다시 시작할지 말지 물어보는 메서드
         - *이때 숫자 이외의 값을 입력했을때 1 혹은 2를 다시 입력하게 유도함 → else 써서 구현했기에 수정 필요*
     - `checkBalls(List<Integer>,List<Intrger>)`
-        - 두 리스트를 비교해서 낫싱인지 아닌지 체크하는 ㅔㅁ서드
+        - 두 리스트를 비교해서 낫싱인지 아닌지 체크하는 메서드
         - 반환형 int
     - `checkNothing(List<Integer>,List<Intrger>)`
         - 두 리스트를 비교해서 볼의 갯수를 반환하는 메서드
