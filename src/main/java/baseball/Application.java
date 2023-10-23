@@ -70,17 +70,20 @@ public class Application {
         if (inputNumbers.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException("3자리 숫자를 입력하세요");
         }
-        // 숫자인지 확인
-        for (char ch : inputNumbers.toCharArray()) {
-            if (!Character.isDigit(ch)) {
+
+        char[] chars = inputNumbers.toCharArray();
+
+        for (int i = 0; i < chars.length; i++) {
+            char currentChar = chars[i];
+
+            // 숫자인지 확인
+            if (!Character.isDigit(currentChar)) {
                 throw new IllegalArgumentException("입력은 숫자만 가능합니다.");
             }
-        }
-        //각 숫자가 서로 다른지 확인
-        for (int i = 0; i < inputNumbers.length(); i++) {
-            char currentChar = inputNumbers.charAt(i);
-            for (int j = i + 1; j < inputNumbers.length(); j++) {
-                if (currentChar == inputNumbers.charAt(j)) {
+
+            //각 숫자가 서로 다른지 확인
+            for (int j = i + 1; j < chars.length; j++) {
+                if (currentChar == chars[j]) {
                     throw new IllegalArgumentException("같은 숫자가 중복으로 입력되었습니다.");
                 }
             }
