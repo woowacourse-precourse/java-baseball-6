@@ -2,7 +2,6 @@ package baseball.common;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,5 +29,12 @@ class InputNumberValidatorTest {
         //given
         String notNumberInput = "555";
         assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validate(notNumberInput));
+    }
+
+    @Test
+    @DisplayName("1~9 이외의 숫자 입력")
+    void validateRange() {
+        String notRangeInput = "980";
+        assertThrows(IllegalArgumentException.class, () -> InputNumberValidator.validate(notRangeInput));
     }
 }
