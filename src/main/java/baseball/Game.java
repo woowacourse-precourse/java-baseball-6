@@ -35,7 +35,7 @@ public class Game {
 
     private void askRetry() {
         GameCommand gameCommand = user.inputGameCommand();
-        if(gameCommand.isRetry()){
+        if (gameCommand.isRetry()) {
             start();
         }
     }
