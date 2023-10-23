@@ -32,4 +32,15 @@ public class BaseBall {
         } while (!num.checkSuccess(input));
     }
 
+    public void playGame() {
+        String restartOrExitAnswer = "";
+        do {
+            oneGame();
+            restartOrExitAnswer = Validator.validateRestartInput(inputView.getInputRestartMessage());
+            if (restartOrExitAnswer == "2") {
+                break;
+            }
+        } while (restartOrExitAnswer == "1");
+    }
+
 }
