@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.utils.ExceptionMessage;
+import baseball.utils.PlayMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +12,6 @@ import java.util.regex.Pattern;
 public class Player {
 
     private final int MAX_LENGTH = 3;
-    private final String INITIAL_MESSAGE = "숫자를 입력해주세요 : ";
     private static final Pattern PLAYER_REGEX = Pattern.compile("[1-9]{3,3}");
     private static final String START = "1";
     private static final String END = "9";
@@ -24,7 +24,7 @@ public class Player {
     }
 
     public void setPlayerNumbers() {
-        System.out.print(INITIAL_MESSAGE);
+        System.out.print(PlayMessage.INPUT_MESSAGE.getMessage());
         String input = Console.readLine();
         validatePlayerNumber(input);
         stringToList(input);
