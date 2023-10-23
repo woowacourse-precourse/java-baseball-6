@@ -7,15 +7,16 @@ public class InputView {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
-
-    public static void getStartMessage(){
+    // 맨 처음 시작할 때, 메시지 출력하기
+    public static void getStartMessage() {
         System.out.println(START_MESSAGE);
     }
 
-    public static int[] userInputNumber(){
+    // 유저가 세 숫자를 입력할 때, 배열로 넣어주기
+    public static int[] userInputNumber() {
         System.out.print(USER_INPUT_MESSAGE);
 
-        try{
+        try {
             String input = Console.readLine();
 
             checkInput(input);
@@ -23,18 +24,21 @@ public class InputView {
             int[] userInput = convertInputFormat(input);
 
             return userInput;
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
+
             throw new IllegalArgumentException(e.getMessage());
+
         }
     }
 
-    public static int[] convertInputFormat(String input){
+    // 세 숫자를 배열에 넣어주기
+    public static int[] convertInputFormat(String input) {
 
         int[] userInput = new int[10];
 
-        for(int i =0 ; i< 3; i++){
+        for (int i = 0; i < 3; i++) {
 
-            int eachNumber = input.charAt(i)-'0';
+            int eachNumber = input.charAt(i) - '0';
 
             checkInputDuplicate(userInput, eachNumber);
 
@@ -46,7 +50,7 @@ public class InputView {
 
     }
 
-    public static void checkInput(String input){
+    public static void checkInput(String input) {
 
         checkInputLength(input);
 
@@ -54,25 +58,39 @@ public class InputView {
 
     }
 
-    public static void checkInputLength(String input){
+    // Input이 세자리가 아닌 수 예외처리하기
+    public static void checkInputLength(String input) {
 
-        if(input.length() !=3){
+        if (input.length() != 3) {
+
             throw new IllegalArgumentException("길이가 너무 짧습니다!");
+
         }
     }
 
-    public static void checkInputNotNumber(String input){
+    // Input이 1~9가 아닌 수 또는 문자라면 예외처리하기
+    public static void checkInputNotNumber(String input) {
 
-        for(char eachNumber : input.toCharArray()){
-            if(eachNumber < 49) throw new IllegalArgumentException("올바른 숫자가 아닙니다");
-            else if(eachNumber>57) throw new IllegalArgumentException("올바른 숫자가 아닙니다");
+        for (char eachNumber : input.toCharArray()) {
+
+            if (eachNumber < 49 || eachNumber > 57) {
+
+                throw new IllegalArgumentException("올바른 숫자가 아닙니다");
+
+            }
+
         }
 
     }
 
-    public static void checkInputDuplicate(int[] userInput, int eachNumber){
+    // 세 숫자 중 하나라도 중복 예외처리하기
+    public static void checkInputDuplicate(int[] userInput, int eachNumber) {
 
-        if(userInput[eachNumber] !=0) throw new IllegalArgumentException("중복된 숫자가 있습니다");
+        if (userInput[eachNumber] != 0) {
+
+            throw new IllegalArgumentException("중복된 숫자가 있습니다");
+
+        }
 
 
     }
