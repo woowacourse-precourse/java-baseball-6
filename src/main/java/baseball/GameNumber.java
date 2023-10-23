@@ -1,12 +1,12 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class GameNumber {
     private String computerNumber;
@@ -17,20 +17,17 @@ public class GameNumber {
         createComputerNumber();
     }
     public void inputUserNumber(){
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String inputNumber;
+
         System.out.print("숫자를 입력해주세요 : ");
-        String inputNumber = null;
-        try {
-            inputNumber = reader.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        inputNumber = Console.readLine();
         checkInputValidity(inputNumber);
         this.userNumber = inputNumber;
     }
     public void createComputerNumber(){
         String number = "";
         List<Integer> computer = new ArrayList<>();
+
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -46,11 +43,11 @@ public class GameNumber {
         try {
             checkInt = Integer.parseInt(userInput);
         }catch (NumberFormatException e) {
-            throw new IllegalArgumentException("에러발생");
+            throw new IllegalArgumentException();
         }
 
         if(userInput.length() != 3)
-            throw new IllegalArgumentException("에러발생");
+            throw new IllegalArgumentException();
 
         checkInt = Integer.parseInt(userInput);
         int hundredsPlace = checkInt / 100;
@@ -58,17 +55,15 @@ public class GameNumber {
         int onesPlace = checkInt % 10;
 
         if (hundredsPlace == tensPlace || hundredsPlace == onesPlace || tensPlace == onesPlace)
-            throw new IllegalArgumentException("에러발생");
+            throw new IllegalArgumentException();
     }
     public String inputRestart() {
         String userInput;
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
-        try {
-            userInput = reader.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        userInput = Console.readLine();
+
         return userInput;
     }
     public String getComputerNumber() {

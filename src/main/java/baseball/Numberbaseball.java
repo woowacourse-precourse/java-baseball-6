@@ -36,5 +36,7 @@ public class Numberbaseball {
     public void RestartGame(String userInput) {
         if(userInput.equals("1"))
             GamePlay();
+        else if(userInput.equals("2"))
+            System.out.println("게임 종료");
     }
 }
