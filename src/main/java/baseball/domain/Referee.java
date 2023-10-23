@@ -3,6 +3,7 @@ package baseball.domain;
 import baseball.domain.dto.Score;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static baseball.system.SystemConstant.GAME_DIGIT;
 
@@ -20,13 +21,10 @@ public final class Referee {
     }
 
     private static int makeBallCount(List<Integer> userNumber, List<Integer> computerNumber){
-        int numBalls=0;
-        for(int i=0;i<GAME_DIGIT;i++){
-            if(userNumber.get(i)!=computerNumber.get(i) && computerNumber.contains(userNumber.get(i))){
-                numBalls++;
-            }
-        }
-        return numBalls;
+        return (int) IntStream.range(0, GAME_DIGIT)
+                .filter(i -> userNumber.get(i) != computerNumber.get(i))
+                .filter(i -> computerNumber.contains(userNumber.get(i)))
+                .count();
     }
 
     private static int makeStrikeCount(List<Integer> userNumber, List<Integer> computerNumber){
