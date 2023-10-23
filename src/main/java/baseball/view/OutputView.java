@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.domain.GameRestartOption;
 import baseball.domain.RoundResult;
+import baseball.domain.gamenumber.GameNumbers;
 import java.util.StringJoiner;
 
 public class OutputView {
@@ -44,7 +45,7 @@ public class OutputView {
     }
 
     public static void printSetEndMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", GameNumbers.LENGTH);
     }
 
     public static void printGameRestartMessage() {
