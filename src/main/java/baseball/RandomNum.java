@@ -13,7 +13,7 @@ public class RandomNum {
             for (int j = 0; j < i; j++) {
                 if (numbers[j] == numbers[i]) {
                     i--;
-                    break;dd
+                    break;
                 }
             }
         }
