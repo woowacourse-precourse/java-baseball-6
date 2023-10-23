@@ -1,28 +1,27 @@
 package controller;
 
-import domain.ComputerNumber;
-import domain.PlayerNumber;
+import domain.Computer;
+import domain.Player;
 import view.InputView;
 import view.OutputView;
 
 public class BaseballController {
-    ComputerNumber computerNumber = new ComputerNumber();
-    PlayerNumber playerNumber = new PlayerNumber();
+    Computer computer = new Computer();
+    Player player = new Player();
 
     public void startGame() {
         OutputView.printGameStartMessage();
         do {
-            computerNumber.createComputerNumbers();
+            computer.createComputerNumbers();
             playRound();
             OutputView.printWinMessage();
         } while (InputView.inputRestart());
-
     }
 
     private void playRound() {
         do {
-            playerNumber.setPlayerNumbers(InputView.inputPlayerNumbers());
-            OutputView.printResult(computerNumber.countAndGetResult(playerNumber));
-        } while (!playerNumber.isWin);
+            player.setPlayerNumbers(InputView.inputPlayerNumbers());
+            OutputView.printResult(computer.countAndGetResult(player));
+        } while (!player.isWin);
     }
 }

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ComputerNumber {
+public class Computer {
     public static final int LENGTH = 3;
     private List<Integer> computerNumbers = new ArrayList<>();
     private Map<String, Integer> result = new HashMap<>();
@@ -21,8 +21,8 @@ public class ComputerNumber {
         }
     }
 
-    public Map<String, Integer> countAndGetResult(PlayerNumber playerNumberClass) {
-        List<Integer> playerNumbers = playerNumberClass.playerNumbers;
+    public Map<String, Integer> countAndGetResult(Player player) {
+        List<Integer> playerNumbers = player.playerNumbers;
         int strike = 0;
         int ball = 0;
         for (int i=0;i<computerNumbers.size();i++) {
@@ -38,7 +38,7 @@ public class ComputerNumber {
         result.put("strike", strike);
         result.put("ball", ball - strike);
         if (strike==computerNumbers.size()) {
-            playerNumberClass.isWin = true;
+            player.isWin = true;
         }
         return result;
     }

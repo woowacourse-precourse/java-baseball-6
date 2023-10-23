@@ -14,8 +14,8 @@ public class NumberException {
     }
 
     private static void validateNumberLength(String inputNumbers) {
-        if (inputNumbers.length() != ComputerNumber.LENGTH) {
-            throw new IllegalArgumentException("\nError: " +  ComputerNumber.LENGTH + "개의 숫자를 입력해 주세요.");
+        if (inputNumbers.length() != Computer.LENGTH) {
+            throw new IllegalArgumentException("\nError: " +  Computer.LENGTH + "개의 숫자를 입력해 주세요.");
         }
     }
 

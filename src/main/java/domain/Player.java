@@ -3,7 +3,7 @@ package domain;
 import java.util.Arrays;
 import java.util.List;
 
-public class PlayerNumber {
+public class Player {
     public static List<Integer> playerNumbers;
     public static boolean isWin = false;
 
