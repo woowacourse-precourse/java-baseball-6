@@ -30,6 +30,7 @@ public class Application {
 
 			/*컴퓨터 숫자 모두 맞추면 게임 종료*/
 			if (result.size() == 3 && !result.contains(1)) {
+				System.out.println("3개의 숫자를 모두 맞히셨습니다. 게임 종료");
 				return; // 게임 종료
 			}
 		}
@@ -49,7 +50,7 @@ public class Application {
 
 	/*사용자가 입력한 숫자*/
 	public static List<Integer> readUserNumbers() {
-		System.out.print("숫자를 입력해주세요 : ");
+		System.out.println("숫자를 입력해주세요 : ");
 		String userInput = Console.readLine();
 		List<Integer> userNumbers = new ArrayList<>(); //userNumbers 리스트 생성
 
@@ -75,33 +76,42 @@ public class Application {
 
 	/*스크라이크와 볼의 수 결과*/
 	public static void printResult(List<Integer> result) {
-		int strikes = 0;
-		int balls = 0;
+		int strikeCount = 0;
+		int ballCount = 0;
 
 		for (int value : result) {
 			if (value == 0) {
-				strikes++;
+				strikeCount++;
 			} else if (value == 1) {
-				balls++;
+				ballCount++;
 			}
 		}
 
-		if (strikes > 0) {
-			System.out.print(strikes + "스트라이크 ");
+		StringBuilder gameResult = new StringBuilder();
+		if (ballCount > 0) {
+			gameResult.append(ballCount).append("볼");
 		}
-		if (balls > 0) {
-			System.out.print(balls + "볼");
+		if (strikeCount > 0) {
+			if(ballCount > 0) {
+				gameResult.append(" ");
+			}
+			gameResult.append(strikeCount).append("스트라이크");
 		}
-		if (strikes == 0 && balls == 0) {
-			System.out.print("낫싱");
+		if (strikeCount == 0 && ballCount == 0) {
+			gameResult.append("낫싱");
 		}
-		System.out.println();
+		System.out.println(gameResult.toString());
 	}
 
 	/*다시 시작, 종료 선택*/
 	public static boolean RestartOrExit() {
-		System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+		String restartValue = "1";
 		String userInput = Console.readLine();
-		return "1".equals(userInput);
+		Boolean result = userInput.equals(restartValue);
+		if(!result) {
+			System.out.println("게임 종료");
+		}
+		return result;
 	}
 }
