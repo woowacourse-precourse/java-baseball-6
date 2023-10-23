@@ -28,8 +28,8 @@ public class Result {
     public static final int NUMBER_SIZE = 3;
 
     public static ResultBall getResult(AnswerBall answerBall, UserBall userBall) {
-        List<Integer> answer = answerBall.getAnswerBall();
-        List<Integer> user = userBall.getUserBall();
+        List<Integer> answer = answerBall.answerBall();
+        List<Integer> user = userBall.userBall();
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {

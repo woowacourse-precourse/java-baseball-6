@@ -18,14 +18,5 @@ package vo;
 
 import java.util.List;
 
-public class UserBall {
-    private final List<Integer> userBall;
-
-    public UserBall(List<Integer> userBall) {
-        this.userBall = userBall;
-    }
-
-    public List<Integer> getUserBall() {
-        return userBall;
-    }
+public record UserBall(List<Integer> userBall) {
 }

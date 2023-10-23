@@ -18,16 +18,7 @@ package vo;
 
 import java.util.List;
 
-public class AnswerBall {
-    private final List<Integer> answerBall;
-
-    public AnswerBall(List<Integer> answerBall) {
-        this.answerBall = answerBall;
-    }
-
-    public List<Integer> getAnswerBall() {
-        return answerBall;
-    }
+public record AnswerBall(List<Integer> answerBall) {
 
 
 }

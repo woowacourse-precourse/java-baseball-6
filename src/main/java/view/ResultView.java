@@ -23,8 +23,8 @@ public class ResultView {
     private static int ball;
 
     public ResultView(ResultBall resultBall) {
-        strike = resultBall.getStrike();
-        ball = resultBall.getBall();
+        strike = resultBall.strike();
+        ball = resultBall.ball();
     }
 
     public boolean isThreeStrikes() {
