@@ -3,24 +3,18 @@ package baseball.modules.score;
 import baseball.modules.player.Player;
 import java.util.Map;
 
-public class BaseballScore implements Score{
-    private final Map<BaseBallScoreType, Integer> score;
+public class BaseballScore extends AbstractScore{
 
     public BaseballScore() {
-        this.score = BaseBallScoreType.getInitScore();
+        super(BaseBallScoreType.getInitScore());
     }
 
-    public BaseballScore(final Map<BaseBallScoreType, Integer> score) {
-        this.score = score;
+    public BaseballScore(final Map<? extends ScoreType, Integer> score) {
+        super(score);
     }
 
     @Override
     public Score calculate(final Player computer, final Player human) {
         return new BaseballScore(computer.compare(human));
-    }
-
-    @Override
-    public Map<BaseBallScoreType, Integer> getScore() {
-        return score;
     }
 }
