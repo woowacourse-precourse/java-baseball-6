@@ -18,8 +18,8 @@ public class Game {
 
     private void gameOver() {
         GameIO.gameRestartPrint();
-        String command = Console.readLine();
-        if (command.equals("2")) {
+        Command command = Command.findByCommand(Console.readLine());
+        if (command.isEnd()) {
             isGameOver = true;
             return;
         }
