@@ -5,7 +5,7 @@ import static baseball.utils.Constants.*;
 import baseball.model.BaseballGameStatus;
 import baseball.model.Computer;
 import baseball.model.Player;
-import baseball.utils.MessageUtils;
+import baseball.view.BaseballGameView;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Objects;
@@ -15,21 +15,24 @@ public class BaesballGame {
     private final Computer computer;
     private final Player player;
     private final BaseballGameStatus status;
+    private final BaseballGameView view;
 
 
     public BaesballGame() {
+
+        this.view = new BaseballGameView();
         this.computer = new Computer();
         this.player = new Player();
         this.status = new BaseballGameStatus();
     }
 
     public void run() {
-        MessageUtils.startGame();
+        view.startGame();
         computer.reset();
         computer.setAnswer();
 
         while(this.status.isGameInProgress()) {
-            MessageUtils.enterNumber();
+            view.enterNumber();
             String answer = Console.readLine();
             player.reset();
             player.setAnswer(answer);
@@ -38,7 +41,7 @@ public class BaesballGame {
 
             this.compare();
             if(this.isMaxStrike()) {
-                MessageUtils.restartOrQuit();
+                view.restartOrQuit();
                 String restartFlag = Console.readLine();
                 if(restartFlag.equals(GAME_FLAG_START)) {
                     this.status.setGameInProgress(true);
@@ -69,7 +72,7 @@ public class BaesballGame {
             }
         }
 
-        MessageUtils.result(this.status.getBall(), this.status.getStrike(), BALL_MAX);
+        view.resultByScore(status.getBall(), status.getStrike(), BALL_MAX);
     }
 
     private boolean isMaxStrike() {
