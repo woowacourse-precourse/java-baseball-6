@@ -35,7 +35,7 @@ public class GameService {
 
     public static List<Integer> parsingInputNumber(String inputNumber) {
         ArrayList<Integer> parsingNumber = new ArrayList<>();
-        validateInputNumber(inputNumber);
+        validateInputNumberLength(inputNumber);
 
         for (char parsedChar : inputNumber.toCharArray()) {
             validateParsedChar(parsedChar);
@@ -44,7 +44,7 @@ public class GameService {
         return parsingNumber;
     }
 
-    public static void validateInputNumber(String inputNumber) {
+    public static void validateInputNumberLength(String inputNumber) {
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException("입력 숫자는 3개여야 합니다.");
         }
