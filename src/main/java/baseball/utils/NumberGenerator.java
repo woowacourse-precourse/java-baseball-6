@@ -1,5 +1,7 @@
 package baseball.utils;
 
+import java.util.List;
+
 public interface NumberGenerator {
-    int generateNumberInRange(int min, int max);
+    List<Integer> generateNumberInRange();
 }

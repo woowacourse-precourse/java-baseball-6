@@ -6,6 +6,7 @@ import baseball.model.Computer;
 import baseball.model.GameManager;
 import baseball.model.User;
 import baseball.service.MatchService;
+import baseball.utils.NumberGenerator;
 import baseball.utils.RandomNumberGenerator;
 import baseball.view.Input;
 import baseball.view.Print;
