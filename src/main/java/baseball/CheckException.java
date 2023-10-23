@@ -5,8 +5,8 @@ import java.util.List;
 public class CheckException {
     CheckException(){}
 
-    boolean isValidLength(String userInput){
-        return userInput.length()==3;
+    boolean isValidLength(String userInput,int wantLength){
+        return userInput.length()==wantLength;
     }
 
     boolean isValidNumber(String userInput) {
@@ -35,7 +35,7 @@ public class CheckException {
     }
 
     boolean error(String userInput){
-        if(!isValidLength(userInput) || !isValidNumber(userInput)) return true;
+        if(!isValidLength(userInput,3) || !isValidNumber(userInput)) return true;
         return hasDuplication(userInput);
     }
 }
