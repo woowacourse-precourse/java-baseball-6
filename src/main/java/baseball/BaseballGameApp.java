@@ -4,14 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameApp {
 
-    private boolean isPlay;
+    private boolean isPlay = true;
     private final BaseballGame baseballGame = new BaseballGame();
 
-    private void runApp() {
+    public void runApp() {
         printGameStartMessage();
         while (isPlay) {
+            baseballGame.init();
             baseballGame.playGame();
-
             setIsPlay(getIsPlay());
         }
 

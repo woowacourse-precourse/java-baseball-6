@@ -1,44 +1,54 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
 
-    public void playGame() {
-        GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
+    private List<Integer> computer;
+    private List<Integer> user;
+    private int strike = 0;
+    private int ball = 0;
 
-        boolean isPlay = true;
-        while (isPlay) {
-            List<Integer> computer = generateRandomNumber.getNumberList();
-
-            playOneGame(computer);
-
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            isPlay = getIsPlay();
-        }
+    public void init() {
+        this.computer = generateComputerNumberList();
+        this.strike = 0;
+        this.ball = 0;
     }
 
-    private void playOneGame(List<Integer> computer) {
-
-        while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> inputNumberList = getInputNumberList();
-            int strike = checkStrike(computer, inputNumberList);
-            int ball = checkBall(computer, inputNumberList);
-
-            printResult(strike, ball);
-            if (strike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                return;
+    public List<Integer> generateComputerNumberList() {
+        List<Integer> numberList = new ArrayList<>();
+        while (numberList.size() < 3) {
+            int pickupNumber = Randoms.pickNumberInRange(1, 9);
+            if (!numberList.contains(pickupNumber)) {
+                numberList.add(pickupNumber);
             }
         }
-
+        return numberList;
     }
 
-    private void printResult(int strike, int ball) {
+    public void playGame() {
+        while (!isGameEnd()) {
+            System.out.print("숫자를 입력해주세요 : ");
+            this.user = getInputNumberList();
+            this.strike = checkStrike();
+            this.ball = checkBall();
+            printResult();
+        }
+        printEndGameMessage();
+    }
+
+    private void printEndGameMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private boolean isGameEnd() {
+        return this.strike == 3;
+    }
+
+    private void printResult() {
         if (strike == 0 && ball == 0) {
             System.out.print("낫싱");
         }
@@ -51,22 +61,22 @@ public class BaseballGame {
         System.out.println();
     }
 
-    private int checkStrike(List<Integer> computer, List<Integer> input) {
+    private int checkStrike() {
         int count = 0;
         for (int i = 0; i < 3; i++) {
-            if (computer.get(i) == input.get(i)) {
+            if (this.computer.get(i) == this.user.get(i)) {
                 count++;
             }
         }
         return count;
     }
 
-    private int checkBall(List<Integer> computer, List<Integer> input) {
+    private int checkBall() {
         int count = 0;
         for (int i = 0; i < 3; i++) {
-            int comNumber = computer.get(i);
+            int comNumber = this.computer.get(i);
             for (int j = 0; j < 3; j++) {
-                int inputNumber = input.get(j);
+                int inputNumber = this.user.get(j);
                 if (i != j && comNumber == inputNumber) {
                     count++;
                 }
@@ -100,15 +110,6 @@ public class BaseballGame {
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-    }
-
-
-    private boolean getIsPlay() {
-        String input = Console.readLine();
-        if (!input.equals("1") && !input.equals("2")) {
-            throw new IllegalArgumentException();
-        }
-        return input.equals("1");
     }
 
 }
