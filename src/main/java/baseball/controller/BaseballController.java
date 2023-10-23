@@ -6,16 +6,19 @@ import baseball.dto.ReplayDto;
 import baseball.model.Baseball;
 import baseball.model.BaseballGameResult;
 import baseball.service.BaseballService;
-import baseball.view.BaseballView;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class BaseballController {
 
+    private final InputView inputView;
+    private final OutputView outputView;
     private final BaseballService baseballService;
-    private final BaseballView baseballView;
 
-    public BaseballController(BaseballService baseballService, BaseballView baseballView) {
+    public BaseballController(InputView inputView, OutputView outputView, BaseballService baseballService) {
+        this.inputView = inputView;
+        this.outputView = outputView;
         this.baseballService = baseballService;
-        this.baseballView = baseballView;
     }
 
     public void run() {
@@ -33,27 +36,27 @@ public class BaseballController {
 
     private void playGame(Baseball answer) {
         boolean isClear = false;
-
         while (!isClear) {
-            baseballView.startGame();
-
-            String numberInput = baseballView.inputNumber();
-            BaseballDto baseballDto = new BaseballDto(numberInput);
-            Baseball guess = baseballDto.toBaseball();
-
-            BaseballGameResult result = baseballService.calculateResult(answer, guess);
-            baseballView.showGameResult(result.getMessage());
-
+            outputView.startGame();
+            BaseballGameResult result = guessAnswer(answer);
             isClear = result.isClear();
         }
-        baseballView.clearGame();
+        outputView.clearGame();
+    }
+
+    private BaseballGameResult guessAnswer(Baseball answer) {
+        BaseballDto baseballDto = inputView.inputNumber();
+
+        BaseballGameResult result = baseballService.calculateResult(answer, baseballDto.toBaseball());
+        outputView.showGameResult(result.getMessage());
+
+        return result;
     }
 
     private boolean willReplay() {
-        String replayInput = baseballView.replayGame();
-        ReplayDto replayDto = new ReplayDto(replayInput);
+        ReplayDto replayDto = inputView.replayGame();
+        GameStatus gameStatus = GameStatus.from(replayDto.replay());
 
-        return replayDto.replay()
-                .equals(GameStatus.REPLAY.getCode());
+        return gameStatus.equals(GameStatus.REPLAY);
     }
 }

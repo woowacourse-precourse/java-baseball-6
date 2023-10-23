@@ -1,26 +1,18 @@
 package baseball.view;
 
 import baseball.constants.Message;
-import baseball.io.InputReader;
 import baseball.io.OutputWriter;
 
-public class BaseballView {
+public class OutputView {
 
-    private final InputReader reader;
     private final OutputWriter writer;
 
-    public BaseballView(InputReader reader, OutputWriter writer) {
-        this.reader = reader;
+    public OutputView(OutputWriter writer) {
         this.writer = writer;
     }
 
     public void startGame() {
         writer.writeLine(Message.START_GAME.getValue());
-    }
-
-    public String inputNumber() {
-        writer.write(Message.INPUT_NUMBER.getValue());
-        return reader.readLine();
     }
 
     public void showGameResult(String gameResult) {
@@ -29,10 +21,5 @@ public class BaseballView {
 
     public void clearGame() {
         writer.writeLine(Message.GAME_CLEAR.getValue());
-    }
-
-    public String replayGame() {
-        writer.write(Message.INPUT_REPLAY.getValue());
-        return reader.readLine();
     }
 }

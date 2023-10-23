@@ -4,7 +4,8 @@ import baseball.controller.BaseballController;
 import baseball.io.InputReader;
 import baseball.io.OutputWriter;
 import baseball.service.BaseballService;
-import baseball.view.BaseballView;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
@@ -12,15 +13,14 @@ public class Application {
     }
 
     private static BaseballController createBaseballController() {
-        BaseballService baseballService = new BaseballService();
-        BaseballView baseballView = createBaseballView();
-
-        return new BaseballController(baseballService, baseballView);
-    }
-
-    private static BaseballView createBaseballView() {
         InputReader inputReader = new InputReader();
         OutputWriter outputWriter = new OutputWriter();
-        return new BaseballView(inputReader, outputWriter);
+
+        InputView inputView = new InputView(inputReader, outputWriter);
+        OutputView outputView = new OutputView(outputWriter);
+
+        BaseballService baseballService = new BaseballService();
+
+        return new BaseballController(inputView, outputView, baseballService);
     }
 }
