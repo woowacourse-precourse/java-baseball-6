@@ -15,21 +15,29 @@ public class Application {
         AnswerNumberGenerator answerNumberGenerator = new AnswerNumberGenerator();
         List<Integer> answerNumberList = answerNumberGenerator.getAnswerNumberList();
 
-        PrintMessage.printReadNumberMessage();
-        String userInputNumber = Console.readLine();
-        try {
-            Validator.validateUserInputNumber(userInputNumber);
-        } catch (IllegalArgumentException e) {
-            System.out.println("IllegalArgumentException: " + e.getMessage());
-        }
+        while (true) {
+            PrintMessage.printReadNumberMessage();
+            String userInputNumber = Console.readLine();
+            try {
+                Validator.validateUserInputNumber(userInputNumber);
+            } catch (IllegalArgumentException e) {
+                System.out.println("IllegalArgumentException: " + e.getMessage());
+                return;
+            }
 
-        List<Integer> userInputNumberList = new ArrayList<>();
-        for (char digit : userInputNumber.toCharArray()) {
-            userInputNumberList.add(Character.getNumericValue(digit));
-        }
+            List<Integer> userInputNumberList = new ArrayList<>();
+            for (char digit : userInputNumber.toCharArray()) {
+                userInputNumberList.add(Character.getNumericValue(digit));
+            }
 
-        int[] strikeAndBallCount = getStrikeAndBallCount(answerNumberList, userInputNumberList);
-        PrintMessage.printGameResultMessage(strikeAndBallCount);
+            int[] strikeAndBallCount = getStrikeAndBallCount(answerNumberList, userInputNumberList);
+            PrintMessage.printGameResultMessage(strikeAndBallCount);
+
+            if (strikeAndBallCount[0] == 3) {
+                PrintMessage.printGameEndMessage();
+                return;
+            }
+        }
     }
 
     public static int[] getStrikeAndBallCount(List<Integer> answerNumber,
