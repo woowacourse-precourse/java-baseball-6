@@ -26,4 +26,8 @@ public class OutView {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
     }
+
+    public static void printDuplicatedInput() {
+        System.out.println("이전 입력과 중복됩니다.");
+    }
 }

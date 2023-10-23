@@ -24,7 +24,11 @@ public class GameService {
 
             validateInput(input);
             List<Integer> userNumbers = parseInput(input);
-            // TODO : 이전에 입력한 숫자와 비교하여 중복된 숫자가 있는지 확인하는 로직 구현
+
+            if(game.checkDuplicatedInput(input)){
+                OutView.printDuplicatedInput();
+                continue;
+            }
 
             countStrikeAndBall(userNumbers);
             giveHint();
