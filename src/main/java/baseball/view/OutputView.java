@@ -24,6 +24,7 @@ public class OutputView {
         appendMessage(sb, result.getBallCount(), BALL_POSTFIX);
         appendMessage(sb, result.getStrikeCount(), STRIKE_POSTFIX);
         appendMessageIfAbsent(sb);
+        removeLastWhitespaceIfPresent(sb);
 
         System.out.println(sb);
     }
@@ -38,6 +39,16 @@ public class OutputView {
     private static void appendMessageIfAbsent(StringBuilder sb) {
         if (sb.isEmpty()) {
             sb.append(NOTHING_MESSAGE);
+        }
+    }
+
+    private static void removeLastWhitespaceIfPresent(StringBuilder sb) {
+        if (!sb.isEmpty()) {
+            int lastIndex = sb.length() - 1;
+
+            if (Character.isWhitespace(sb.charAt(lastIndex))) {
+                sb.deleteCharAt(lastIndex);
+            }
         }
     }
 }
