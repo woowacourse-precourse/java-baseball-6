@@ -36,7 +36,17 @@ public class GameController {
     }
 
     public void gameResult(){
+        List<Integer> computerBall = computer.getBallList();
+        List<Integer> playerBall = player.getBallList();
+        int strikeResult = gameService.strikeResult(computerBall, playerBall);
+        int ballResult = gameService.ballResult(computerBall, playerBall);
 
+        if (strikeResult == 3) reGameRequest();
+
+        if (strikeResult != 3){
+            output.printGameResult(strikeResult, ballResult);
+            gameProcess();
+        }
     }
 
     public void reGameRequest(){
