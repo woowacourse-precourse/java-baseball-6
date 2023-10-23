@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.GameResult;
+import baseball.domain.RandomNumberCreator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
