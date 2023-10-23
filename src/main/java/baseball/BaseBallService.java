@@ -13,12 +13,12 @@ public class BaseBallService {
     this.baseBallPlay = new BaseBallPlay();
   }
   public void exec() {
-    int result = 0;
+    GameResult gameResult;
     comNums = new ComNums(createComNums());
     comNums.getComNums().stream().forEach(System.out::println);
     do{
-      result = baseBallPlay.play(comNums);
-    }while( result != 3);
+      gameResult = new GameResult(baseBallPlay.play(comNums));
+    }while( gameResult.get() != 3);
     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
   }
   List<Integer> createComNums(){
