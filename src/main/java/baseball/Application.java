@@ -5,11 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        // 프로그램 구현
 
+        // Start Game
         System.out.println("숫자 야구 게임을 시작합니다.");
         int flag = 1;
 
+        // Generate Computer Number
         StringBuilder computerNumber = new StringBuilder();
         for(int i = 0; i < 3 ; i++) {
             computerNumber.append(Randoms.pickNumberInRange(1, 9));
@@ -22,7 +24,7 @@ public class Application {
             StringBuilder userNumber = new StringBuilder(Console.readLine());
             System.out.println(userNumber);
 
-            // TODO: Compare User Number and Computer Baseball Number
+            // Compare User Number and Computer Baseball Number
             /* scoreBoard [0]: ball 수 저장
              *  scoreBoard [1]: strike 수 저장
              *  */
@@ -39,12 +41,12 @@ public class Application {
                 }
             }
 
-            // TODO: Print Result
+            // Print Result
             if(scoreBoard[1] == 3) {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-                // TODO: Re-game ?
+                // Re-game ?
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력해주세요.");
                 flag = Integer.parseInt(Console.readLine());
 
