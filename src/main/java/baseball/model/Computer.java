@@ -20,6 +20,10 @@ public class Computer {
         strikeCount = 0;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     public int getBallCount() {
         return ballCount;
     }
