@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.domain.Ball;
+
 public class GameResult {
 
     private final int strike;
@@ -17,6 +19,14 @@ public class GameResult {
 
     public int getBall() {
         return ball;
+    }
+
+    public boolean isBallZero() {
+        return ball == 0;
+    }
+
+    public boolean isStrikeZero() {
+        return strike == 0;
     }
 
 }

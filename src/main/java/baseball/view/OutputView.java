@@ -10,28 +10,44 @@ public class OutputView {
     private static final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크";
 
 
+
     public static void printStartGame() {
         System.out.println(START_GAME_MESSAGE);
     }
 
     public static void printInputNumber() {
-        System.out.println(GET_NUMBER_MESSAGE);
+        System.out.print(GET_NUMBER_MESSAGE);
+    }
+
+    public static void printGameResult(GameResult gameResult) {
+        printNoting(gameResult);
+        printStrike(gameResult);
+        printBall(gameResult);
+        printStrikeAndBall(gameResult);
     }
 
     public static void printNoting(GameResult gameResult) {
-        System.out.println(NOTING_MESSAGE);
+        if (gameResult.isBallZero() && gameResult.isStrikeZero()){
+            System.out.println(NOTING_MESSAGE);
+        }
     }
 
     public static void printStrike(GameResult gameResult) {
-        System.out.printf(STRIKE_MESSAGE, gameResult.getStrike());
+        if (gameResult.isBallZero() && !gameResult.isStrikeZero()){
+            System.out.printf(STRIKE_MESSAGE, gameResult.getStrike());
+        }
     }
 
     public static void printBall(GameResult gameResult) {
-        System.out.printf(BALL_MESSAGE, gameResult.getBall());
+        if (!gameResult.isBallZero() && gameResult.isStrikeZero()){
+            System.out.printf(BALL_MESSAGE, gameResult.getBall());
+        }
 
     }
 
     public static void printStrikeAndBall(GameResult gameResult) {
-        System.out.printf(BALL_STRIKE_MESSAGE, gameResult.getBall(), gameResult.getStrike());
+        if (!gameResult.isBallZero() && !gameResult.isStrikeZero()){
+            System.out.printf(BALL_STRIKE_MESSAGE, gameResult.getBall(), gameResult.getStrike());
+        }
     }
 }
