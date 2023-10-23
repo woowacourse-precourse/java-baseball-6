@@ -9,7 +9,7 @@ public class GameController {
     private final GameService gameService;
     private final HintService hintService;
     private final GameView gameView;
-    private boolean restart = false;
+    private boolean stopGame = false;
 
     public GameController() {
         this.gameService = new GameService();
@@ -20,7 +20,7 @@ public class GameController {
     public void StartBaseballGame() {
         BaseballNumbers computerNumber = gameService.generateComputerNumber();
         gameView.startGame();
-        while (!restart) {
+        while (!stopGame) {
             String userInput = gameView.getUserInput();
             BaseballNumbers userInputNumber = new BaseballNumbers(userInput);
             String hintMessage = hintService.createHintMessage(computerNumber, userInputNumber);
@@ -31,7 +31,7 @@ public class GameController {
                     computerNumber = gameService.generateComputerNumber();
                 }
                 if (gameType == 2) {
-                    restart = true;
+                    stopGame = true;
                 }
             }
         }
