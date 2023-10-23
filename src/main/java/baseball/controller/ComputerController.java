@@ -12,7 +12,6 @@ public class ComputerController {
     private static final String STRIKE_STRING_MESSAGE = "스트라이크";
     private static final String BALL_STRING_MESSAGE = "볼";
     private static final String NOTHING_STRING_MESSAGE = "낫싱";
-    private static final String ZERO_STRING_MESSAGE = "";
     private static final String SPACING_STRING_MESSAGE = " ";
 
     private int strikeCount;
@@ -69,11 +68,11 @@ public class ComputerController {
     }
 
     private String calculateHintMessage(String hintMessage) {
-        if (strikeCount > 0 && strikeCount <= 3) {
-            hintMessage += strikeCount + STRIKE_STRING_MESSAGE + SPACING_STRING_MESSAGE;
-        }
         if (ballCount > 0 && ballCount <= 3) {
             hintMessage += ballCount + BALL_STRING_MESSAGE + SPACING_STRING_MESSAGE;
+        }
+        if (strikeCount > 0 && strikeCount <= 3) {
+            hintMessage += strikeCount + STRIKE_STRING_MESSAGE;
         }
         if (strikeCount == 0 && ballCount == 0) {
             hintMessage += NOTHING_STRING_MESSAGE;
