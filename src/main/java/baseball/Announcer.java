@@ -1,7 +1,9 @@
 package baseball;
 
-import static baseball.NumberBaseballGameConfig.*;
 import static baseball.NumberBaseballGameConfig.CONTINUE_MESSAGE;
+import static baseball.NumberBaseballGameConfig.INPUT_PROMPT;
+import static baseball.NumberBaseballGameConfig.START_MESSAGE;
+import static baseball.NumberBaseballGameConfig.WIN_MESSAGE;
 
 public class Announcer {
 
@@ -21,7 +23,7 @@ public class Announcer {
     }
 
     // 볼 개수와 스트라이크 개수를 기반으로 메시지 출력
-    public static void annouceScore(Score score) {
+    public static void announceScore(Score score) {
         System.out.println(resolveScoreToString(score));
     }
 

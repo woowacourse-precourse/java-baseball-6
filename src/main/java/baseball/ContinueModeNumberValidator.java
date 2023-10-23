@@ -14,14 +14,14 @@ public class ContinueModeNumberValidator implements InputValidator {
     }
 
     // 지정된 모드 넘버인지 확인
-    private static void checkModeNumber(String input) {
+    private void checkModeNumber(String input) {
         if (Integer.parseInt(input) != EXIT_GAME && Integer.parseInt(input) != CONTINUE_GAME) {
             throw new IllegalArgumentException(ERROR_RANGE);
         }
     }
 
     // 타입 확인
-    private static void checkType(String input) {
+    private void checkType(String input) {
         try {
             Integer.parseInt(input);
             return;

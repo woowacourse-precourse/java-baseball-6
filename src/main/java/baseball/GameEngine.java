@@ -20,7 +20,7 @@ public class GameEngine {
                 Announcer.askToInput();
                 List<Integer> guessedNumber = inputReader.readGuessedNumber();
                 Score score = Referee.judge(guessedNumber, answer);
-                Announcer.annouceScore(score);
+                Announcer.announceScore(score);
                 strikeCount = score.getStrikeCount();
             } while (strikeCount != STRIKE_COUNT_REQUIRED_TO_WIN);
 

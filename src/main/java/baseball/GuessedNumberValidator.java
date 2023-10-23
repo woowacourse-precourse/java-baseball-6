@@ -20,17 +20,17 @@ public class GuessedNumberValidator implements InputValidator {
     }
 
     //중복 체크
-    private static void checkDuplicate(String input) {
-        List<Integer> guessdeNumber = Arrays.stream(input.split(""))
+    private void checkDuplicate(String input) {
+        List<Integer> guessedNumber = Arrays.stream(input.split(""))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
-        if (new HashSet<>(guessdeNumber).size() != BASEBALL_NUMBER_LENGTH) {
+        if (new HashSet<>(guessedNumber).size() != BASEBALL_NUMBER_LENGTH) {
             throw new IllegalArgumentException(ERROR_DUPLICATE);
         }
     }
 
     // 타입 확인
-    private static void checkType(String input) {
+    private void checkType(String input) {
         try {
             Integer.parseInt(input);
             return;
