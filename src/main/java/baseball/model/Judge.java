@@ -19,20 +19,24 @@ public class Judge {
                 .collect(Collectors.toMap(index -> index, computerNumberList::get));
     }
 
-    public ScoreBoard evaluateUserNumberList(List<Integer> userNumberList) {
+    public ScoreBoard recordScoreBoard(List<Integer> userNumberList) {
         List<String> scoreBoardList = new ArrayList<>();
         for (int i = 0; i < computerNumberMap.size(); i++) {
-            if (computerNumberMap.get(i) == userNumberList.get(i)) { //map의 인덱스의 밸류와 사용자 숫자 리스트의 값이 같으면 스트라이크
-                scoreBoardList.add(BallStatus.STRIKE.getBallStatus());
-                continue;
-            }
-            if (computerNumberMap.containsValue(userNumberList.get(i))) { //위의 if문을 지나지 않았을 때 그 값을 가지고 있다면 볼
-                scoreBoardList.add(BallStatus.BALL.getBallStatus());
-                continue;
-            }
-            scoreBoardList.add(BallStatus.NOTHING.getBallStatus()); // 둘 다 아니라면 NOTHING
+            BallStatus ballStatus = evaluateUserNumberList(userNumberList, i);
+            scoreBoardList.add(ballStatus.getBallStatus());
 
         }
         return new ScoreBoard(scoreBoardList);
     }
+
+    private BallStatus evaluateUserNumberList(List<Integer> userNumberList, int index) {
+        if (computerNumberMap.get(index) == userNumberList.get(index)) { //map의 인덱스의 밸류와 사용자 숫자 리스트의 값이 같으면 스트라이크
+            return BallStatus.STRIKE;
+        }
+        if (computerNumberMap.containsValue(userNumberList.get(index))) { //위의 if문을 지나지 않았을 때 그 값을 가지고 있다면 볼
+            return BallStatus.BALL;
+        }
+        return BallStatus.NOTHING; // 둘 다 아니라면 NOTHING
+    }
+
 }

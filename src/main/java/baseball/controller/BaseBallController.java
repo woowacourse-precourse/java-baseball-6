@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.model.Judge;
 import baseball.RandomNumberGenerator;
 import baseball.RestartOption;
+import baseball.model.Judge;
 import baseball.model.ScoreBoard;
 import baseball.model.User;
 import baseball.view.InputView;
@@ -25,7 +25,7 @@ public class BaseBallController {
     private void run() {
         do {
             user = new User(InputView.inputUserNumber());
-            scoreBoard = judge.evaluateUserNumberList(user.getUserNumberList());
+            scoreBoard = judge.recordScoreBoard(user.getUserNumberList());
             OutputView.showScoreBoard(scoreBoard);
         } while (!scoreBoard.isThreeStrike());
         OutputView.gameOverMessage();
