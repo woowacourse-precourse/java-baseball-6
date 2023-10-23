@@ -15,7 +15,7 @@ public class BaseBallGame {
 
     public static List<Integer> computer;
 
-    /* 야구 숫자 게임을 시작하는 메서드 */
+    /* 숫자 야구 게임을 시작하는 메서드 */
     public void play() {
         startGame();
     }
@@ -72,6 +72,7 @@ public class BaseBallGame {
         if(GAME_NUM.equals(CONTINUE_NUMBER)) makeComputerNumber(); //컴퓨터 숫자 리셋
     }
 
+    /* 종료시, 사용자 입력 값의 유효성 확인 메서드 */
     private static void validateInput(String input) {
         if ( !input.equals(CONTINUE_NUMBER) && !input.equals(END_NUMBER) ) {
             throw new IllegalArgumentException( "1 또는 2만 입력하세요" );
@@ -79,26 +80,19 @@ public class BaseBallGame {
     }
 
     /* 사용자가 제대로된 값을 입력했는지 확인하는 메소드 */
-    public static boolean check(String str){
-        //(1) 길이가 3자리여야함
-        if(str.length() != 3) return false;
-
-        int[] nums = new int[10];
-        for(int i=0; i<3; i++) {
-            //(2) 숫자가 아니면 error
-            if(!Character.isDigit(str.charAt(i))) return false;
-
-            //(3) 중복된 숫자가 존재할 시 error
-            int num = str.charAt(i) - '0';
-            if(nums[num] != 0) return false;
-            nums[num]++;
-        }
-        return true;
-    }
-
     private static void validateUserInput(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("입력 값의 길이가 잘못 되었습니다.");
+        }
+        int[] nums = new int[10];
+        for(int i=0; i<3; i++) {
+            //(2) 숫자가 아니면 error
+            if(!Character.isDigit(input.charAt(i))) throw new IllegalArgumentException("1-9 사이 정수 값을 입력해주세요");
+
+            //(3) 중복된 숫자가 존재할 시 error
+            int num = input.charAt(i) - '0';
+            if(nums[num] != 0) throw new IllegalArgumentException("중복된 숫자가 존재합니다");
+            nums[num]++;
         }
     }
 
