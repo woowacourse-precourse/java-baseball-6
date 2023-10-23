@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Comparer {
 
+    private final int NUMBER_LENGTH = 3;
     private final List<Integer> computerNumber;
     private final List<Integer> userNumber;
 
@@ -38,7 +39,7 @@ public class Comparer {
     // Strike 개수 화인
     private int getStrikeCount() {
         int strikeCount = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             strikeCount += isStrike(i);
         }
         return strikeCount;
@@ -47,7 +48,7 @@ public class Comparer {
     // Ball 개수 확인
     private int getBallCount() {
         int ballCount = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             ballCount += isBall(i);
         }
         return ballCount;
