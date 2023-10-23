@@ -17,4 +17,8 @@ public enum Message {
     public String text() {
         return text;
     }
+
+    public boolean isNeedPrint() {
+        return this.equals(INSERT_GAME_INPUT);
+    }
 }
