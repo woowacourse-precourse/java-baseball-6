@@ -13,7 +13,7 @@ public class Computer {
         return numberGenerator.getGeneratedNumbers();
     }
 
-    public Score calculateScore(List<Integer> playerInput, List<Integer> answer) {
+    public Score getScore(List<Integer> playerInput, List<Integer> answer) {
         return scoreCalculator.calculateScore(playerInput, answer);
     }
 }

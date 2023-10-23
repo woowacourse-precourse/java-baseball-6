@@ -30,7 +30,7 @@ public class BaseballGameController {
         while (!score.isAllStrike()) {
             inputView.printSuggestNumberMessage();
             player.inputNumbers();
-            score = computer.calculateScore(player.getNumbers(), answer);
+            score = computer.getScore(player.getNumbers(), answer);
             outputView.printResult(score);
         }
         inputView.printRestartOrExitMessage();
