@@ -26,11 +26,19 @@ public class UserNumber {
     }
 
     private void validateRange(List<Integer> userNumber) {
-        for (int i = 0; i < userNumber.size(); i++) {
-            if ((userNumber.get(i) < USER_NUMBER_START_RANGE) || (userNumber.get(i) > USER_NUMBER_END_RANGE)) {
-                throw new IllegalArgumentException();
-            }
+        for (int number : userNumber) {
+            checkCorrectRange(number);
         }
+    }
+
+    private void checkCorrectRange(int number) {
+        if (isCorrectRange(number)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isCorrectRange(int number) {
+        return (number < USER_NUMBER_START_RANGE) || (number > USER_NUMBER_END_RANGE);
     }
 
     private void validateDuplicate(List<Integer> userNumber) {
