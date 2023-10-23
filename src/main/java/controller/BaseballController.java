@@ -33,7 +33,7 @@ public class BaseballController {
             AnswerBall answerBall = new AnswerBall(CreateRandomNumber.createRandomNumber());
 
             while (true) {
-                UserBall userBall = new UserBall(InputView.userInput());
+                UserBall userBall = InputView.userInput();
                 ResultBall resultBall = CalculateResult.getResult(answerBall, userBall);
 
                 ResultView resultView = new ResultView(resultBall);
