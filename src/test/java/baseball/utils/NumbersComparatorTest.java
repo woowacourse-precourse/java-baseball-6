@@ -9,11 +9,11 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class NumberComparatorTest {
+class NumbersComparatorTest {
     @Test
     @DisplayName("1, 1를 리턴합니다.")
     void x볼y스트라이크() {
-        NumberComparator numberComparator = new NumberComparator();
+        NumbersComparator numberComparator = new NumbersComparator();
 
         List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
         List<Integer> playerNumbers = Arrays.asList(4, 2, 1);
@@ -26,7 +26,7 @@ class NumberComparatorTest {
     @Test
     @DisplayName("1, 0을 리턴합니다.")
     void x볼() {
-        NumberComparator numberComparator = new NumberComparator();
+        NumbersComparator numberComparator = new NumbersComparator();
 
         List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
         List<Integer> playerNumbers = Arrays.asList(4, 5, 1);
@@ -39,7 +39,7 @@ class NumberComparatorTest {
     @Test
     @DisplayName("0, 1을 리턴합니다.")
     void y스트라이크() {
-        NumberComparator numberComparator = new NumberComparator();
+        NumbersComparator numberComparator = new NumbersComparator();
 
         List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
         List<Integer> playerNumbers = Arrays.asList(1, 4, 5);
@@ -52,7 +52,7 @@ class NumberComparatorTest {
     @Test
     @DisplayName("0, 0을 리턴합니다.")
     void 낫싱() {
-        NumberComparator numberComparator = new NumberComparator();
+        NumbersComparator numberComparator = new NumbersComparator();
 
         List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
         List<Integer> playerNumbers = Arrays.asList(4, 5, 6);
@@ -65,7 +65,7 @@ class NumberComparatorTest {
     @Test
     @DisplayName("3스트라이크일 때 true를 리턴합니다.")
     void 게임종료() {
-        NumberComparator numberComparator = new NumberComparator();
+        NumbersComparator numberComparator = new NumbersComparator();
 
         List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
         List<Integer> playerNumbers = Arrays.asList(1, 2, 3);
@@ -78,7 +78,7 @@ class NumberComparatorTest {
     @Test
     @DisplayName("3스트라이크가 아닐 때 false를 리턴합니다.")
     void 게임재개() {
-        NumberComparator numberComparator = new NumberComparator();
+        NumbersComparator numberComparator = new NumbersComparator();
 
         List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
         List<Integer> playerNumbers = Arrays.asList(4, 5, 6);

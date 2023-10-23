@@ -6,7 +6,7 @@ import static baseball.model.constants.GameConstants.STRIKE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import baseball.utils.NumberComparator;
+import baseball.utils.NumbersComparator;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -112,7 +112,7 @@ class BaseballGameTest {
     void 게임재개검사() {
         BaseballGame baseballGame = new BaseballGame();
 
-        NumberComparator numberComparator = new NumberComparator();
+        NumbersComparator numberComparator = new NumbersComparator();
         assertEquals(!numberComparator.isCorrect(), baseballGame.isContinue());
     }
 }

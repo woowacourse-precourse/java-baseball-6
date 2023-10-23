@@ -2,18 +2,18 @@ package baseball.controller;
 
 import baseball.model.domain.Computer;
 import baseball.model.domain.Player;
-import baseball.utils.NumberComparator;
+import baseball.utils.NumbersComparator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGame {
     private final Computer computer;
-    private final NumberComparator numberComparator;
+    private final NumbersComparator numberComparator;
     private Player player;
 
     public BaseballGame() {
         computer = new Computer();
-        numberComparator = new NumberComparator();
+        numberComparator = new NumbersComparator();
     }
 
     public void start() {
