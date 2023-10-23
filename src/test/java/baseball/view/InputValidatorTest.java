@@ -10,18 +10,18 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-class InputValidationTest {
+class InputValidatorTest {
 
-    private InputValidation inputValidation;
+    private InputValidator inputValidator;
 
     @BeforeEach
     void init() {
-        inputValidation = new InputValidation();
+        inputValidator = new InputValidator();
     }
 
     @ValueSource(strings = {"", " "})
     @ParameterizedTest
     void 빈값을_넣으면_예외가_발생한다(String input) {
-        assertThrows(IllegalArgumentException.class, () -> inputValidation.validate(input));
+        assertThrows(IllegalArgumentException.class, () -> inputValidator.validateInput(input));
     }
 }

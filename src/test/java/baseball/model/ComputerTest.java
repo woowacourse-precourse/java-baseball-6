@@ -20,7 +20,7 @@ class ComputerTest {
 
     @BeforeEach
     void init() {
-        computer = Computer.createWith(new StubNumberGenerator("123"));
+        computer = Computer.createWithGeneratedNumbers(new StubNumberGenerator("123"));
     }
 
     @CsvSource({"1, 2, 3, 3", "1, 3, 2,1 ", "5, 6, 7, 0", "1, 2, 5, 2"})
@@ -30,7 +30,7 @@ class ComputerTest {
         List<Integer> inputNumbers = Arrays.asList(firstNum, secondNum, thirdNum);
 
         // when
-        int result = computer.getStrikeCount(inputNumbers);
+        int result = computer.countStrikes(inputNumbers);
 
         // then
         assertThat(result).isEqualTo(expected);
@@ -43,7 +43,7 @@ class ComputerTest {
         List<Integer> inputNumbers = Arrays.asList(firstNum, secondNum, thirdNum);
 
         // when
-        int result = computer.getBallCount(inputNumbers);
+        int result = computer.countBalls(inputNumbers);
 
         // then
         assertThat(result).isEqualTo(expected);

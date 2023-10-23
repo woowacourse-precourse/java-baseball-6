@@ -22,10 +22,10 @@ class UserNumbersTest {
         // given
         String input = "123";
         List<Integer> inputNumbers = Arrays.asList(1, 2, 3);
-        UserNumbers userNumbers = UserNumbers.createWith(input);
+        UserNumbers userNumbers = UserNumbers.createFromInput(input);
 
         // when
-        List<Integer> numbers = userNumbers.getNumbers();
+        List<Integer> numbers = userNumbers.getSelectedNumbers();
 
         // then
         assertThat(numbers).isEqualTo(inputNumbers);
@@ -36,7 +36,7 @@ class UserNumbersTest {
     void 잘못된_입력으로_생성시에_예외가_발생한다(String input, String expectedExceptionMessage, String exceptionMessage) {
         // when
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-                () -> UserNumbers.createWith(input));
+                () -> UserNumbers.createFromInput(input));
 
         // then
         assertThat(e.getMessage()).isEqualTo(expectedExceptionMessage);

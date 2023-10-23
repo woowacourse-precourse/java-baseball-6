@@ -18,10 +18,10 @@ class GameCommandTest {
     @Test
     void 입력으로_1을_입력하면_재시작을_생성한다() {
         // given
-        GameCommand gameCommand = GameCommand.createWith("1");
+        GameCommand gameCommand = GameCommand.createFromInput("1");
 
         // when
-        boolean isRestart = GameCommand.isRestart(gameCommand);
+        boolean isRestart = GameCommand.isRestartCommand(gameCommand);
 
         // then
         assertThat(isRestart).isTrue();
@@ -30,10 +30,10 @@ class GameCommandTest {
     @Test
     void 입력으로_2를_입력하면_종료를_생성한다() {
         // given
-        GameCommand gameCommand = GameCommand.createWith("2");
+        GameCommand gameCommand = GameCommand.createFromInput("2");
 
         // when
-        boolean isRestart = GameCommand.isRestart(gameCommand);
+        boolean isRestart = GameCommand.isRestartCommand(gameCommand);
 
         // then
         assertThat(isRestart).isFalse();
@@ -43,7 +43,8 @@ class GameCommandTest {
     @MethodSource("invalidParameters")
     void 잘못된_입력으로_생성시에_예외가_발생한다(String input, String expectedExceptionMessage, String exceptionMessage) {
         // when
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> GameCommand.createWith(input));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
+                () -> GameCommand.createFromInput(input));
 
         // then
         assertThat(e.getMessage()).isEqualTo(expectedExceptionMessage);
