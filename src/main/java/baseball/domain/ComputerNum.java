@@ -26,7 +26,7 @@ public class ComputerNum {
     }
 
     private boolean isDuplicate(int randomNum) {
-        return !number.contains(randomNum);
+        return number.contains(randomNum);
     }
 
     public List<Integer> getNum() {
