@@ -3,8 +3,8 @@ package baseball.domain;
 import baseball.util.Validator;
 
 public class Command {
-    private static final String EXIT = "2";
     private static final String RESTART = "1";
+    private static final String EXIT = "2";
 
     public static String getExit() {
         return EXIT;

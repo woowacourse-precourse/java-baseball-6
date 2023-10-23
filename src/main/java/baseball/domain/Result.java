@@ -12,7 +12,7 @@ public class Result {
     }
 
     public boolean isNothing() {
-        return strike == 0 && ball == 0;
+        return !hasStrikes() && !hasBalls();
     }
 
     public boolean hasOnlyBalls() {
