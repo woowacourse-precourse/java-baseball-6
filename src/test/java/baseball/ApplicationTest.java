@@ -48,14 +48,7 @@ class ApplicationTest extends NsTest {
     void clientNumbers_와_computerNumbers_전혀_다른_경우() {
         // computerNumbers 와 전혀 다른 clientNumbers 만들기
         ComputerNumbers computerNumbers = new ComputerNumbers();
-        List<Integer> list1to9 = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9));
-
-        List<Integer> numbers = computerNumbers.getNumbers();
-        list1to9.removeIf(i -> numbers.contains(i));
-
-        StringBuilder sb = new StringBuilder();
-        list1to9.forEach(i -> sb.append(i));
-        ClientNumbers clientNumbers = new ClientNumbers(sb.substring(0, 3).toString());
+        ClientNumbers clientNumbers = provideClientNumbersDifferentWithComputerNumbers(computerNumbers);
 
         // 서로 동일한 clientNumbers 와 computerNumbers 를 비교하여 info 만들기
         Info info = clientNumbers.compareWithComputerNumbers(computerNumbers);
@@ -68,18 +61,10 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void clientNumbers_와_computerNumbers_일부_같은_경우() {
+    void clientNumbers_와_computerNumbers_완벽히_동일한_경우() {
         // computerNumbers 와 1개가 불일치한 clientNumbers 만들기
         ComputerNumbers computerNumbers = new ComputerNumbers();
-        List<Integer> list1to9 = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9));
-        List<Integer> numbers = computerNumbers.getNumbers();
-        list1to9.removeIf(i -> numbers.contains(i));
-
-        StringBuilder sb = new StringBuilder();
-        numbers.forEach(i -> sb.append(i));
-        String differentString = sb.toString().replace(String.valueOf(numbers.get(0)), String.valueOf(list1to9.get(0)));
-
-        ClientNumbers clientNumbers = new ClientNumbers(differentString);
+        ClientNumbers clientNumbers = provideClientNumbersSameWithComputerNumbers(computerNumbers);
 
         // 서로 동일한 clientNumbers 와 computerNumbers 를 비교하여 info 만들기
         Info info = clientNumbers.compareWithComputerNumbers(computerNumbers);
@@ -92,15 +77,10 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void clientNumbers_와_computerNumbers_완벽히_같은_경우() {
+    void clientNumbers_와_computerNumbers_일부_동일한_경우() {
         // computerNumbers 와 동일한 clientNumbers 만들기
         ComputerNumbers computerNumbers = new ComputerNumbers();
-        List<Integer> numbers = computerNumbers.getNumbers();
-        StringBuilder sb = new StringBuilder();
-        numbers.forEach(i -> sb.append(i));
-        String sameString = sb.toString();
-
-        ClientNumbers clientNumbers = new ClientNumbers(sameString);
+        ClientNumbers clientNumbers = provideClientNumbersPartlySameComputerNumbers(computerNumbers);
 
         // 서로 동일한 clientNumbers 와 computerNumbers 를 비교하여 info 만들기
         Info info = clientNumbers.compareWithComputerNumbers(computerNumbers);
@@ -110,6 +90,47 @@ class ApplicationTest extends NsTest {
 
         // 동등성 비교
         Assertions.assertThat(info.equals(infoExpected)).isTrue();
+    }
+
+
+    private ClientNumbers provideClientNumbersDifferentWithComputerNumbers(ComputerNumbers computerNumbers) {
+        List<Integer> list1to9 = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9));
+
+        List<Integer> numbers = computerNumbers.getNumbers();
+        list1to9.removeIf(i -> numbers.contains(i));
+
+        StringBuilder sb = new StringBuilder();
+        list1to9.forEach(i -> sb.append(i));
+        ClientNumbers clientNumbers = new ClientNumbers(sb.substring(0, 3).toString());
+
+        return clientNumbers;
+    }
+
+    private ClientNumbers provideClientNumbersSameWithComputerNumbers(ComputerNumbers computerNumbers) {
+        List<Integer> list1to9 = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9));
+        List<Integer> numbers = computerNumbers.getNumbers();
+        list1to9.removeIf(i -> numbers.contains(i));
+
+        StringBuilder sb = new StringBuilder();
+        numbers.forEach(i -> sb.append(i));
+        String differentString = sb.toString().replace(String.valueOf(numbers.get(0)), String.valueOf(list1to9.get(0)));
+
+        ClientNumbers clientNumbers = new ClientNumbers(differentString);
+
+        return clientNumbers;
+    }
+
+
+
+    private ClientNumbers provideClientNumbersPartlySameComputerNumbers(ComputerNumbers computerNumbers) {
+        List<Integer> numbers = computerNumbers.getNumbers();
+        StringBuilder sb = new StringBuilder();
+        numbers.forEach(i -> sb.append(i));
+        String sameString = sb.toString();
+
+        ClientNumbers clientNumbers = new ClientNumbers(sameString);
+
+        return clientNumbers;
     }
 
 
