@@ -1,9 +1,11 @@
 package baseball.view;
 
+import baseball.constant.Constant;
 import baseball.constant.Message;
 import baseball.domain.GameResult;
 
 public class OutputView {
+    private final int ZERO = Constant.ZERO.getConstant();
 
     public void printMessage(Message message) {
         System.out.println(message.getMessage());
@@ -38,13 +40,13 @@ public class OutputView {
         int balls = result.getBalls();
         StringBuilder output = new StringBuilder();
 
-        if (strikes == 0 && balls == 0) {
+        if (strikes == ZERO && balls == ZERO) {
             output.append(Message.NOTHING.getMessage());
         } else {
-            if (balls > 0) {
+            if (balls > ZERO) {
                 output.append(Message.BALL.format(balls));
             }
-            if (strikes > 0) {
+            if (strikes > ZERO) {
                 output.append(Message.STRIKE.format(strikes));
             }
         }

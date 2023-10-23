@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constant.Constant;
 import baseball.domain.Baseball;
 import baseball.domain.Computer;
 import baseball.domain.GameResult;
@@ -8,6 +9,8 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class Controller {
+    private final int RESTART = Constant.RESTART.getConstant();
+
     private final Baseball baseball;
     private final Computer computer;
     private final Player player;
@@ -33,7 +36,7 @@ public class Controller {
         outputView.endGame();
 
         int option = player.receiveRetryOption();
-        if (option == 1) {
+        if (option == RESTART) {
             playGame();
         }
     }
