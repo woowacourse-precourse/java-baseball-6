@@ -4,7 +4,7 @@ import baseball.player.Guess;
 import baseball.player.Player;
 import baseball.player.RestartFlag;
 
-public class GameController {
+public class Computer {
     private static final boolean ROUND_ONGOING = true;
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
