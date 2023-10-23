@@ -77,7 +77,7 @@
 - ✅ validateInputWithDifferentDigit 메서드 구현
     - 입력한 값들의 숫자가 자릿수가 다른지 검증
 
-## ❌ 게임 시작 기능
+## ✅ 게임 시작 기능
 
 - ✅ playGame 메서드 구현
     - 프로그램 시작
