@@ -20,9 +20,7 @@ public class BaseballController {
         // 3스트라이크가 될 때까지 반복
         while (strike<3) {
 
-            // 플레이어에게 숫자 입력받기
-            System.out.println("숫자를 입력해주세요 : ");
-            String randomNum = Console.readLine();
+            String randomNum = baseballView.inputRandomNum();
 
             // 플레이어가 입력한 수가 3자리 수가 아닌 경우 예외처리
             if (randomNum.length()!=3) {
