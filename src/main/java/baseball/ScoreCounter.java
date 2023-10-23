@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class Computer {
+public class ScoreCounter {
     private final int NOTHING = 0;
     private final int BALL = 1;
     private final int STRIKE = 2;

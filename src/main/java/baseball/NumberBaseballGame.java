@@ -9,7 +9,7 @@ import java.util.List;
 
 public class NumberBaseballGame {
     private Message message = new Message();
-    private Computer computer = new Computer();
+    private ScoreCounter scoreCounter = new ScoreCounter();
     private InputValidation inputValidation = new InputValidation();
     private UserInput userInput = new UserInput();
     private final String STOP_SIGN = "2";
@@ -47,7 +47,7 @@ public class NumberBaseballGame {
             String userLine = userInput.getUserInput();
             List<Integer> userNumbers = inputValidation.validateAndConvertUserNumbers(userLine);
             List<Integer> answer = answerMaker.getAnswer();
-            List<Integer> ballAndStrikeCount = computer.countScore(answer, userNumbers);
+            List<Integer> ballAndStrikeCount = scoreCounter.countScore(answer, userNumbers);
             int strikeCount = ballAndStrikeCount.get(1);
 
             speaker(message.scoreMessage(ballAndStrikeCount) + '\n');

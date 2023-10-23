@@ -7,8 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class ComputerTest {
-    Computer computer = new Computer();
+class ScoreCounterTest {
+    ScoreCounter scoreCounter = new ScoreCounter();
 
     @DisplayName("리스트 3볼 판별 기능 테스트")
     @Test
@@ -16,11 +16,11 @@ class ComputerTest {
         //given
         List<Integer> answer = List.of(3, 6, 9);
         List<Integer> userAnswer = List.of(6, 9, 3);
-        Method method = computer.getClass().getDeclaredMethod("judgeScore", List.class, int.class, int.class);
+        Method method = scoreCounter.getClass().getDeclaredMethod("judgeScore", List.class, int.class, int.class);
         method.setAccessible(true);
 
         //when
-        List<Integer> score = computer.countScore(answer, userAnswer);
+        List<Integer> score = scoreCounter.countScore(answer, userAnswer);
 
         //then
         assertThat(score).isEqualTo(List.of(3, 0));
@@ -34,7 +34,7 @@ class ComputerTest {
         List<Integer> userAnswer = List.of(1, 2, 4);
 
         //when
-        List<Integer> score = computer.countScore(answer, userAnswer);
+        List<Integer> score = scoreCounter.countScore(answer, userAnswer);
 
         //then
         assertThat(score).isEqualTo(List.of(0, 0));
@@ -48,7 +48,7 @@ class ComputerTest {
         List<Integer> userAnswer = List.of(3, 6, 9);
 
         //when
-        List<Integer> score = computer.countScore(answer, userAnswer);
+        List<Integer> score = scoreCounter.countScore(answer, userAnswer);
 
         //then
         assertThat(score).isEqualTo(List.of(0, 3));
@@ -62,7 +62,7 @@ class ComputerTest {
         List<Integer> userAnswer = List.of(9, 6, 3);
 
         //when
-        List<Integer> score = computer.countScore(answer, userAnswer);
+        List<Integer> score = scoreCounter.countScore(answer, userAnswer);
 
         //then
         assertThat(score).isEqualTo(List.of(2, 1));
@@ -75,10 +75,10 @@ class ComputerTest {
         List<Integer> answer = List.of(3, 9, 6);
         int number = 3;
         int index = 2;
-        Method method = computer.getClass().getDeclaredMethod("judgeScore", List.class, int.class, int.class);
+        Method method = scoreCounter.getClass().getDeclaredMethod("judgeScore", List.class, int.class, int.class);
         method.setAccessible(true);
         //when
-        int result = (int) method.invoke(computer, answer, number, index);
+        int result = (int) method.invoke(scoreCounter, answer, number, index);
         //then
         assertThat(result).isEqualTo(1);
     }
@@ -91,10 +91,10 @@ class ComputerTest {
         List<Integer> answer = List.of(3, 6, 9);
         int number = 3;
         int index = 0;
-        Method method = computer.getClass().getDeclaredMethod("judgeScore", List.class, int.class, int.class);
+        Method method = scoreCounter.getClass().getDeclaredMethod("judgeScore", List.class, int.class, int.class);
         method.setAccessible(true);
         //when
-        int result = (int) method.invoke(computer, answer, number, index);
+        int result = (int) method.invoke(scoreCounter, answer, number, index);
         //then
         assertThat(result).isEqualTo(2);
     }
@@ -107,10 +107,10 @@ class ComputerTest {
         List<Integer> answer = List.of(3, 6, 9);
         int number = 8;
         int index = 1;
-        Method method = computer.getClass().getDeclaredMethod("judgeScore", List.class, int.class, int.class);
+        Method method = scoreCounter.getClass().getDeclaredMethod("judgeScore", List.class, int.class, int.class);
         method.setAccessible(true);
         //when
-        int result = (int) method.invoke(computer, answer, number, index);
+        int result = (int) method.invoke(scoreCounter, answer, number, index);
         //then
         assertThat(result).isEqualTo(0);
     }
