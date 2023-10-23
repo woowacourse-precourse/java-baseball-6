@@ -19,4 +19,12 @@ class NumbersTest {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers1));
 		Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers2));
 	}
+
+	@Test
+	void 중복된_숫자가_있으면_예외를_던진다() {
+		List<Integer> numbers = List.of(1,1,2);
+
+		Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers));
+	}
+
 }
