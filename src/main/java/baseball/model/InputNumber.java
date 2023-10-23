@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class InputNumber {
+    private static final int NUMBER_OF_DIGITS = 3;
     private List<Integer> inputNumber = new ArrayList<>();
     private String quitNumber = "";
 
@@ -13,8 +14,8 @@ public class InputNumber {
     }
 
     public void setInputNumber(String playerInput) throws IllegalArgumentException {
-        if (playerInput.length() != 3) {
-            throw new IllegalArgumentException("3자리의 수를 입력해주십시오.");
+        if (playerInput.length() != NUMBER_OF_DIGITS) {
+            throw new IllegalArgumentException(NUMBER_OF_DIGITS + "자리의 수를 입력해주십시오.");
         }
 
         for (int i = 0; i < playerInput.length(); i++) {
