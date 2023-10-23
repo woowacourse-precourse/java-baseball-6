@@ -5,12 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Application {
 
-    // 중복 검사 함
+    // 중복 검사 함수
     public static boolean isDuplicationExist(String randomNum) {
         ArrayList<Character> randomNumList = new ArrayList<Character>();
         for (int i=0; i<3; i++){
