@@ -188,5 +188,4 @@ public class Application {
         // 게임 종료
         return false;
     }
-
 }
