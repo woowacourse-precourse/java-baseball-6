@@ -26,6 +26,14 @@ public class Referee {
   private void announceNothing() {
     System.out.println("낫싱");
   }
+
+  private void announceStrikeOrBall(int strike, int ball) {
+    if (strike == 0 && ball != 0) {
+      System.out.println(ball + "볼");
+    } else if (ball == 0 && strike != 0) {
+      System.out.println(strike + "스트라이크");
+    }
+  }
   public void inputGameNumbersMessage() {
     System.out.print("숫자를 입력해주세요 : ");
   }
@@ -52,10 +60,8 @@ public class Referee {
     }
     if (strike + ball == 0) {
       announceNothing();
-    } else if (strike == 0 && ball != 0) {
-      System.out.println(ball + "볼");
-    } else if (ball == 0 && strike != 0) {
-      System.out.println(strike + "스트라이크");
+    } else if (strike == 0 || ball == 0) {
+      announceStrikeOrBall(strike, ball);
     } else {
       announceStrikeAndBall(strike, ball);
     }
