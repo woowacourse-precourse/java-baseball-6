@@ -1,7 +1,7 @@
 package baseball.printer;
 
 public class ConsoleGamePrinter implements GamePrinter {
-    private final String SPACE = " ";
+    private static final String SPACE = " ";
 
     @Override
     public void greet() {
