@@ -37,7 +37,6 @@
 - `FixedBaseballNumbersGenerator`: 무작위가 아닌 고정된 값으로 테스트하기 위해 만든 숫자 생성기.
 - `BaseballNumbers`: 컴퓨터가 만든 1~9 범위의 서로다른 3자리 수를 가지는 일급 컬렉션.
 - `BaseballNumber`: 컴퓨터가 만든 1~9 범위의 숫자를 저장.
-- `Answer`: 정답인 `BaseballNumbers`를 가지고있으며, 사용자의 입력과 정답을 매칭.
 - `Computer`: `BaseballNumbersGenerator`를 구현한 클래스에게서 생성된 숫자를 받아서 정답으로 저장하고, 사용자의 입력값과 비교.
 - `Score`: `"볼"`, `"스트라이크"`를 저장.
 - `Ball`: `"볼"`을 저장.
@@ -68,8 +67,6 @@
 - `BaseballNumber`
     - [x] `isSameValue()`: `BaseballNumber`의 값을 비교하여 같은지 반환.
     - [x] `isContainedIn()`: `BaseballNumbers`의 리스트에 같은 값이 있는지 반환.
-- `Answer`
-    - [x] 정답과 입력값을 비교하여 `Score`반환.
 - `Score`
     - [x] `toString()` 메서드를 오버라이딩하여 `"n볼"`, `"n스트라이크"`, `"낫싱"` `"3스트라이크"` 출력.
     - [x] `isStrikeOut()`: 정답과 입력값을 비교하여 `"3스트라이크"`인지 `boolean` 반환.
