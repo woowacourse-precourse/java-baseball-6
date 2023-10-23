@@ -16,7 +16,6 @@ public class Hint {
 		System.out.print(b.getStrike() + "스트라이크");
 	}
  
-	
 	public static void nothing() {
 		System.out.print("낫싱");
 	}

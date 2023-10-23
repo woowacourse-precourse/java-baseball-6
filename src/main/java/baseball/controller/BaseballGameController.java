@@ -7,6 +7,9 @@ import baseball.view.UserChoice;
 import baseball.vo.Baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
+/*
+ * 야구게임 기본 기능구현 
+ */
 public class BaseballGameController {
     private Baseball b;
     private String userNumber;
@@ -41,6 +44,28 @@ public class BaseballGameController {
 
     public void userChoiceInput() {
         userNumber = UserChoice.usersNumbering();
+
+      
+        if (isDifferentThreeNumber(userNumber)) {
+            throw new IllegalArgumentException("중복된 숫자를 입력했습니다. 3개의 서로 다른 숫자를 입력해주세요.");
+        }
+
+        for (int i = 0; i < userNumber.length(); i++) {
+            String[] splitUserNum = userNumber.split("|");
+            if (!splitUserNum.equals("")) {
+                b.setUserChoiceNumber(splitUserNum);
+            }
+        }
+    }
+
+    private boolean isDifferentThreeNumber(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            char differentNum = number.charAt(i);
+            if (number.lastIndexOf(differentNum) != i) {
+                return true; 
+            }
+        }
+        return false;
     }
 
     public void choiceFail() {

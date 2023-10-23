@@ -1,7 +1,13 @@
 package baseball.vo;
 
+import java.util.Arrays;
+
+/*
+ * 	getter setter
+ */
 public class Baseball {
 	private String computerNumber;
+	private String[] userChoiceNumber;
 	private int ball;
 	private int strike;
 
@@ -13,6 +19,14 @@ public class Baseball {
 
 	public void setComputerNumber(String computerNumber) {
 		this.computerNumber = computerNumber;
+	}
+
+	public String[] getUserChoiceNumber() {
+		return userChoiceNumber;
+	}
+
+	public void setUserChoiceNumber(String[] userChoiceNumber) {
+		this.userChoiceNumber = userChoiceNumber;
 	}
 
 	public int getBall() {
@@ -33,7 +47,8 @@ public class Baseball {
 
 	@Override
 	public String toString() {
-		return "Baseball [computerNumber=" + computerNumber + ", ball=" + ball + ", strike=" + strike + "]";
+		return "Baseball [computerNumber=" + computerNumber + ", userChoiceNumber=" + Arrays.toString(userChoiceNumber)
+				+ ", ball=" + ball + ", strike=" + strike + "]";
 	}
 
 	
