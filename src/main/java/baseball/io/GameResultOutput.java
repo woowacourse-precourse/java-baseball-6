@@ -14,6 +14,6 @@ public class GameResultOutput {
             System.out.printf("%d볼\n", ballCount);
             return;
         }
-        System.out.printf("%d볼 %d스트라이크", ballCount, strikeCount);
+        System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
     }
 }
