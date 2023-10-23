@@ -1,24 +1,10 @@
 package baseball.game;
 
 public enum GameHintType {
-    STRIKE("스트라이크") {
-        @Override
-        public String format(int count) {
-            return count > 0 ? count + "스트라이크" : "";
-        }
-    },
-    BALL("볼") {
-        @Override
-        public String format(int count) {
-            return count > 0 ? count + "볼" : "";
-        }
-    },
-    NOTHING("낫싱") {
-        @Override
-        public String format(int count) {
-            return "낫싱";
-        }
-    };
+    STRIKE("스트라이크"),
+    BALL("볼"),
+    NOTHING("낫싱"),
+    ANSWER("3스트라이크");
 
     private final String label;
 
@@ -26,5 +12,21 @@ public enum GameHintType {
         this.label = label;
     }
 
-    public abstract String format(int count);
+    public String format(int count) {
+        switch (this) {
+            case STRIKE:
+            case BALL:
+                return count > 0 ? count + label : "";
+            case NOTHING:
+            case ANSWER:
+                return label;
+            default:
+                throw new IllegalArgumentException("지원하지 않는 형식입니다.");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return label;
+    }
 }

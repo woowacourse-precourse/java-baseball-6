@@ -45,7 +45,7 @@ public class GameLogic {
     }
 
     boolean isAnswer(String hint) {
-        return hint.equals("3스트라이크");
+        return hint.equals(GameHintType.ANSWER.toString());
     }
 
     String generateHintFromResult(int strike, int ball) {
