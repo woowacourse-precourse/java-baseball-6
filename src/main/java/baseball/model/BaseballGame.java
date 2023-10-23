@@ -21,11 +21,8 @@ public class BaseballGame {
 
     public boolean updateGameCompare(Player player) {
         compareBall(player.getInputNumbers());
-        int expectedStrike = compareStrike(player.getInputNumbers());
-        if (expectedStrike == THREE_STRIKE) {
-            return true;
-        }
-        return false;
+        compareStrike(player.getInputNumbers());
+        return checkStike();
     }
 
     public String showResult() {
@@ -66,12 +63,18 @@ public class BaseballGame {
         }
     }
 
-    private int compareStrike(List<Integer> inputNum) {
+    private boolean checkStike() {
+        if (strike == THREE_STRIKE) {
+            return true;
+        }
+        return false;
+    }
+
+    private void compareStrike(List<Integer> inputNum) {
         List<Integer> randomNum = randomNumbers.getRandomNumbers();
         List<Integer> compareStrike = IntStream.range(0, 3).filter(i -> randomNum.get(i).equals(inputNum.get(i)))
                 .mapToObj(randomNum::get).toList();
         this.strike = compareStrike.size();
-        return strike;
     }
 
     private void compareBall(List<Integer> inputNum) {

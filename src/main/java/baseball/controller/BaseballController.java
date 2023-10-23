@@ -12,15 +12,10 @@ public class BaseballController {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private boolean isGameFinished = false;
 
     public BaseballController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-    }
-
-    private static boolean checkGameEnd(boolean endGameSign) {
-        return Boolean.TRUE.equals(endGameSign);
     }
 
     public void play() {
@@ -37,14 +32,13 @@ public class BaseballController {
     }
 
     private void playGame(Player player, BaseballGame baseballGame) {
-        while (!isGameFinished) {
+        while (true) {
             String inputNumber = inputView.inputNumber();
             player.updateNumbers(inputNumber);
             boolean endGameSign = baseballGame.updateGameCompare(player);
             String gameResult = baseballGame.showResult();
             OutputView.showResult(gameResult);
-            isGameFinished = endGameSign;
-            if (checkGameEnd(endGameSign)) {
+            if (isGameEnd(endGameSign)) {
                 break;
             }
         }
@@ -52,11 +46,15 @@ public class BaseballController {
 
     private boolean isReStart(String inputNumber) {
         if (inputNumber.equals(GAME_RESTART)) {
-            isGameFinished = false;
+            return false;
         }
         if (inputNumber.equals(GAME_END)) {
             return true;
         }
         return false;
+    }
+
+    private static boolean isGameEnd(boolean endGameSign) {
+        return Boolean.TRUE.equals(endGameSign);
     }
 }
