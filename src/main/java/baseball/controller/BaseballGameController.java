@@ -30,9 +30,9 @@ public class BaseballGameController {
 
     private void matchingNumber(TargetBaseballNumbers computerNumbers) {
         while (true) {
-            List<Integer> playerNumber = requestNumber();
-            verifyInputNumber(playerNumber);
-            GameResult gameResult = computerNumbers.calculateGameResult(playerNumber);
+            List<Integer> playerNumbers = requestNumber();
+            verifyInputNumber(playerNumbers);
+            GameResult gameResult = computerNumbers.calculateGameResult(playerNumbers);
 
             outputView.showGameResult(gameResult);
 
@@ -45,7 +45,7 @@ public class BaseballGameController {
 
     private List<Integer> requestNumber() {
         outputView.requestNumber();
-        return inputView.getPlayerNumber();
+        return inputView.getPlayerNumbers();
     }
 
     private void verifyInputNumber(List<Integer> inputNumberText) {

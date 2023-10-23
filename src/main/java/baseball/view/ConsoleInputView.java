@@ -9,7 +9,7 @@ public class ConsoleInputView implements InputView {
     private static final String STOP_TEXT = "2";
 
     @Override
-    public List<Integer> getPlayerNumber() {
+    public List<Integer> getPlayerNumbers() {
         return readLine()
                 .chars()
                 .map(Character::getNumericValue)
