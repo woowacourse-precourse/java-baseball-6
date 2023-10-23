@@ -1,16 +1,12 @@
 package baseball.controller;
 
-import baseball.domain.BaseballNumber;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.BaseballNumbersGenerator;
-import baseball.domain.Computer;
 import baseball.domain.ContinueOrExit;
 import baseball.domain.Score;
 import baseball.view.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class BaseballController {
     private final BaseballNumbersGenerator baseballNumbersGenerator;
@@ -29,8 +25,7 @@ public class BaseballController {
         outputView.startGame();
         boolean isContinue = true;
         while (isContinue) {
-            Computer computer = new Computer(baseballNumbersGenerator);
-            play(computer);
+            play();
             outputView.endGame();
             String input = inputView.continueOrExit();
             ContinueOrExit decision = ContinueOrExit.from(input);
@@ -38,23 +33,16 @@ public class BaseballController {
         }
     }
 
-    private void play(Computer computer) {
+    private void play() {
+        BaseballNumbers computer = baseballNumbersGenerator.generate();
         boolean isStrikeOut = false;
         while (!isStrikeOut) {
             String input = inputView.inputBaseballNumber();
             InputValidator.validateBaseballNumber(input);
-            BaseballNumbers inputNumbers = convertToNumbers(input);
-            Score score = computer.calculateScore(inputNumbers);
+            BaseballNumbers player = new BaseballNumbers(input);
+            Score score = computer.calculateScore(player);
             outputView.matchResult(score);
             isStrikeOut = score.isStrikeOut();
         }
-    }
-
-    private BaseballNumbers convertToNumbers(String input) {
-        List<BaseballNumber> inputNumbers = input.chars()
-                .mapToObj(Character::getNumericValue)
-                .map(BaseballNumber::new)
-                .collect(Collectors.toList());
-        return new BaseballNumbers(inputNumbers);
     }
 }
