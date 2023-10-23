@@ -12,62 +12,61 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         Game();
-
-
     }
 
     public static void Game() {
-        ArrayList<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
-            int number = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(number)) {
-                computerNumber.add(number);
-            }
-        }
-        System.out.println(computerNumber.toString());
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String userNumberString = Console.readLine();
-
-            ArrayList<Integer> userNumber = validateUserNumber(userNumberString);
-
-            int strike = 0;
-            int ball = 0;
-
-            for (int i = 0; i < 3; i++) {
-                if (computerNumber.get(i).equals(userNumber.get(i))) {
-                    strike++;
+            ArrayList<Integer> computerNumber = new ArrayList<>();
+            while (computerNumber.size() < 3) {
+                int number = Randoms.pickNumberInRange(1, 9);
+                if (!computerNumber.contains(number)) {
+                    computerNumber.add(number);
                 }
             }
 
-            for (int number : userNumber) {
-                if (computerNumber.contains(number)) {
-                    ball++;
-                }
-            }
-            ball -= strike;
+            while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String userNumberString = Console.readLine();
 
-            if (ball != 0) {
-                System.out.printf(ball + "볼 ");
-            }
-            if (strike != 0) {
-                System.out.printf(strike + "스트라이크");
-            }
-            if (ball == 0 && strike == 0) {
-                System.out.print("낫싱");
-            }
-            System.out.println();
+                ArrayList<Integer> userNumber = validateUserNumber(userNumberString);
 
-            if (strike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String restartOrExit = Console.readLine();
-                validateRestartOrExitNumber(restartOrExit);
-                if (restartOrExit.equals("1")) {
-                    Game();
+                int strike = 0;
+                int ball = 0;
+
+                for (int i = 0; i < 3; i++) {
+                    if (computerNumber.get(i).equals(userNumber.get(i))) {
+                        strike++;
+                    }
                 }
-                if (restartOrExit.equals("2")) {
-                    return;
+
+                for (int number : userNumber) {
+                    if (computerNumber.contains(number)) {
+                        ball++;
+                    }
+                }
+                ball -= strike;
+
+                if (ball != 0) {
+                    System.out.printf(ball + "볼 ");
+                }
+                if (strike != 0) {
+                    System.out.printf(strike + "스트라이크");
+                }
+                if (ball == 0 && strike == 0) {
+                    System.out.print("낫싱");
+                }
+                System.out.println();
+
+                if (strike == 3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    String restartOrExit = Console.readLine();
+                    validateRestartOrExitNumber(restartOrExit);
+                    if (restartOrExit.equals("1")) {
+                        break;
+                    } else if (restartOrExit.equals("2")) {
+                        return;
+                    }
                 }
             }
         }
