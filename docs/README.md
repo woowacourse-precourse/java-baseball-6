@@ -60,7 +60,9 @@
 
 [x] 시스템 종료 - MenuHandler
 
-[] 예외 처리
+[x] 예외 처리 - Menu Handler
+
+    요구 사항: 예외 발생 시 문구 출력 -> 종료   
 
 # 객체 디자인 - 1st Draft
 
