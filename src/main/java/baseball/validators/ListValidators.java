@@ -15,4 +15,11 @@ public final class ListValidators {
         }
     }
 
+    public static <T> void validateSize(List<T> objects, int size) {
+        int currentSize = objects.size();
+        if (currentSize != size) {
+            throw new IllegalArgumentException("요소의 수가 유효하지 않습니다");
+        }
+    }
+
 }

@@ -1,6 +1,5 @@
 package baseball.balls;
 
-import baseball.validators.BallsValidators;
 import baseball.validators.ListValidators;
 import java.util.List;
 

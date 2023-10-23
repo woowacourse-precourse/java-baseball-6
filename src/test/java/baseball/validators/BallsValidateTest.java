@@ -22,7 +22,7 @@ public class BallsValidateTest {
 
         // then
         Assertions.assertDoesNotThrow(() -> {
-            BallsValidators.validateBallCount(balls);
+            ListValidators.validateSize(balls, BALL_COUNT);
         });
     }
 
@@ -37,7 +37,7 @@ public class BallsValidateTest {
 
         // then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            BallsValidators.validateBallCount(balls);
+            ListValidators.validateSize(balls, BALL_COUNT);
         });
     }
 
