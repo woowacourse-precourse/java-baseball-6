@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class InputValidator {
 
+    // TODO: 사용자가 입력한 정답을 클래스로 바꾼뒤 리팩토링 필요
     public static void validateInputAnswer(String inputAnswer) {
         if (inputAnswer.length() != Computer.NUMBER_DIGIT) {
             throw new IllegalArgumentException();

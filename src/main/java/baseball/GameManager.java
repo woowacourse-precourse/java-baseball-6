@@ -3,6 +3,7 @@ package baseball;
 public class GameManager {
 
     private BaseBallGame baseBallGame;
+    // TODO: player를 어디에 둘지 고민
     private Player player;
 
     public void start() {

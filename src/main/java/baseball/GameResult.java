@@ -2,6 +2,7 @@ package baseball;
 
 public class GameResult {
 
+    // TODO: 상수관리 어디서할 지 고민
     private static final String BALL_TEXT = "볼";
     private static final String STRIKE_TEXT = "스트라이크";
     private static final String NOTING_TEXT = "낫싱";
@@ -19,6 +20,7 @@ public class GameResult {
         return strikeCount == Computer.NUMBER_DIGIT;
     }
 
+    // TODO: 메서드 분리 고려
     @Override
     public String toString() {
         if (ballCount == 0 && strikeCount == 0) {
