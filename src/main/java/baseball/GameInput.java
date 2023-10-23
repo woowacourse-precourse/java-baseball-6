@@ -1,11 +1,11 @@
 package baseball;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GameInput {
     private static final int GAME_INPUT_SIZE = 3;
     private static final String GAME_INPUT_RULE = "[0-9]{" + GAME_INPUT_SIZE + "}";
+
     private final String input;
 
     public GameInput(String input) {
@@ -40,6 +40,6 @@ public class GameInput {
         return input.chars()
                 .map(c -> c - '0')
                 .boxed()
-                .collect(Collectors.toList());
+                .toList();
     }
 }
