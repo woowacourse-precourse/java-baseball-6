@@ -2,86 +2,114 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
+    final static int RESTART_GAME = 1;
+    final static int MATCH_NUMBER = 3;
+
     public static void main(String[] args) {
-        int inputNumber; //(사용자 입력 숫자)
-        int randomNumber; //(랜덤하게 추출된 세자리 숫자)
-        int strikeCount; //(스트라이크 횟수)
-        int inputRestart = 1; //(게임 재시작 입력 숫자)
+        int restartCount = RESTART_GAME;
+        List<Integer> randomNumber;
+        List<Integer> inputNumber;
 
         try {
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             return;
         }
 
-      System.out.println("숫자 야구 게임을 시작합니다.");
-      while (inputRestart == 1) {
-          randomNumber = generateRandomNumber();
-          strikeCount = 0;
-          while (strikeCount != 3) {
-              System.out.println("숫자를 입력해주세요 :");
-              inputNumber = Integer.parseInt(Console.readLine());
-              validateInputLength(inputNumber);
-              strikeCount = generateGameGuess(inputNumber, randomNumber);
-          }
-          System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-          System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-          inputRestart = Integer.parseInt(Console.readLine());
-          validateInputRestart(inputRestart);
-      }
-    }
-    public static int generateRandomNumber() {
-        int firRandom = Randoms.pickNumberInRange(1, 9);
-        int secRandom = Randoms.pickNumberInRange(1, 9);
-        while (firRandom == secRandom){
-            secRandom = Randoms.pickNumberInRange(1, 9);
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (restartCount == RESTART_GAME) {
+            int strikeCount = 0; //게임 재시작 -> strikeCount 초기화 -> 26줄 회문 재실행
+            randomNumber = generateRandomNumber();
+            while (strikeCount != MATCH_NUMBER) {
+                System.out.println("숫자를 입력해주세요 :");
+                inputNumber = inputToList(Console.readLine());
+                validateInputLength(inputNumber);
+                validateInputSameNum(inputNumber);
+                strikeCount = validateGameResult(randomNumber, inputNumber);
+            }
+            restartCount = outputGameRestart();
+            validateInputRestart(restartCount);
         }
-        int thiRandom = Randoms.pickNumberInRange(1, 9);
-        while (thiRandom == secRandom || thiRandom == firRandom){
-            thiRandom = Randoms.pickNumberInRange(1, 9);
-        }
-        return firRandom*100 + secRandom*10 + thiRandom;
     }
 
-    public static int generateGameGuess(int inputNumber, int randomNumber) {
-        int strikeCount = 0; int ballCount = 0;
-        int[] inputArray = {inputNumber / 100, (inputNumber / 10) % 10, inputNumber % 10};
-        int[] randomArray = {randomNumber / 100, (randomNumber / 10) % 10, randomNumber % 10};
-        for(int i = 0; i < 3; i++){ //향상된 for문 사용 시 해당 배열의 내부 값을 제시함, 인덱싱으로 사용 부적합
-            if(inputArray[i] == randomArray[i]) {strikeCount++;}
-            else if (ballCounter(randomArray, inputArray[i])) {ballCount++;}
-        }
-        if(strikeCount == 0 && ballCount == 0) {
-            System.out.println("낫싱");
-        }
-        else if(strikeCount == 0 && ballCount != 0){
-            System.out.printf("%d볼\n", ballCount);
-        }
-        else if(strikeCount != 0 && ballCount == 0){
-            System.out.printf("%d스트라이크\n", strikeCount);
-        }
-        else {
-            System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
-        }
-        return strikeCount;
-    }
-    public static boolean ballCounter(int[] randomArray, int inputValue) {
-        for (int i : randomArray) {//randomArray배열의 값을 인덱싱으로 하기에 향상된 for문 사용 적합
-            if (i == inputValue) {
-                return true;
+    public static List<Integer> generateRandomNumber() {
+        List<Integer> tempRandomNumber = new ArrayList<>();
+        while (tempRandomNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!tempRandomNumber.contains(randomNumber)) {
+                tempRandomNumber.add(randomNumber);
             }
         }
-        return false;
+        return tempRandomNumber;
     }
-    public static void validateInputLength(int inputNumber){
-        if(inputNumber > 999 || inputNumber < 100){
+
+    public static List<Integer> inputToList(String stringInput) {
+        List<Integer> inputToList = new ArrayList<>();
+
+        for (int i = 0; i < stringInput.length(); i++) {
+            char inputSplitChar = stringInput.charAt(i);
+            int inputSplitInt = Character.getNumericValue(inputSplitChar);
+            inputToList.add(inputSplitInt);
+        }
+
+        return inputToList;
+    }
+
+    public static int validateGameResult(List<Integer> randomNumber, List<Integer> inputNumber) {
+        int strikeCount = 0;
+        int ballCount = 0;
+        for (int i = 0; i < randomNumber.size(); i++) {
+            if (randomNumber.get(i).equals(inputNumber.get(i))) { //==사용시 주소 동일성 비교로 부적절
+                strikeCount++;
+            } else if (randomNumber.contains(inputNumber.get(i))) {
+                ballCount++;
+            }
+        }
+        outputGameResult(strikeCount, ballCount);
+        return strikeCount;
+    }
+
+    public static void outputGameResult(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.println("낫싱");
+        } else if (strikeCount == 0) {
+            System.out.printf("%d볼\n", ballCount);
+        } else if (ballCount == 0) {
+            System.out.printf("%d스트라이크\n", strikeCount);
+        } else {
+            System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
+        }
+    }
+
+    public static int outputGameRestart() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Integer.parseInt(Console.readLine());
+    }
+
+    public static void validateInputLength(List<Integer> inputNumber) {
+        if (inputNumber.size() != 3) {
             throw new IllegalArgumentException();
         }
     }
-    public static void validateInputRestart(int inputNumber){
-        if( inputNumber > 2 || inputNumber < 1){
+
+    public static void validateInputRestart(int restartCount) {
+        if (restartCount != 1 && restartCount != 2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateInputSameNum(List<Integer> inputNumber) {
+        if (inputNumber.get(0).equals(inputNumber.get(1))) {
+            throw new IllegalArgumentException();
+        }
+        if (inputNumber.get(1).equals(inputNumber.get(2))) {
+            throw new IllegalArgumentException();
+        }
+        if (inputNumber.get(2).equals(inputNumber.get(0))) {
             throw new IllegalArgumentException();
         }
     }
