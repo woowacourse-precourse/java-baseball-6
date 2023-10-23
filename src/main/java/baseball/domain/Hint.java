@@ -2,7 +2,7 @@ package baseball.domain;
 
 import static baseball.controller.GameController.NUMBER_SIZE;
 
-import baseball.util.Parser;
+import baseball.view.Parser;
 
 public class Hint {
 	private int strike;

@@ -1,7 +1,9 @@
 package baseball.domain;
 
 import static baseball.controller.GameController.NUMBER_SIZE;
-import static baseball.error.Error.*;
+import static baseball.error.Error.DUPLICATION_ERROR;
+import static baseball.error.Error.RANGE_ERROR;
+import static baseball.error.Error.SIZE_ERROR;
 
 import java.util.HashSet;
 import java.util.Set;
