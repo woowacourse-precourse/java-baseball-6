@@ -11,8 +11,8 @@ public class BaseBall {
     public void start() {
         Computer computer = new Computer();
         List<Integer> computerNum = computer.makeRandomNumbers();
-
         List<Integer> userNumList;
+
         while (true) {
             greeting();
             String userNum = readLine();
@@ -21,11 +21,10 @@ public class BaseBall {
 
             if (result[1] == 3) {
                 userNum = askNewGame();
-                if (checkTryAgain(userNum)) {
-                    computerNum = computer.makeRandomNumbers();
-                } else {
+                if (!checkTryAgain(userNum)) {
                     return;
                 }
+                computerNum = computer.makeRandomNumbers();
             }
             else {
                 printResult(result);
