@@ -12,13 +12,13 @@ public class InputNum {
     }
 
     public List<Integer> convertInputToArr(String InputNum) {
+        this.inputArr = new ArrayList<>();
         if (!isValidInput(InputNum)) {
             throw new IllegalArgumentException();
         }
         for (char digit : InputNum.toCharArray()) {
             inputArr.add(Character.getNumericValue(digit));
         }
-        System.out.println(inputArr);
         return inputArr;
     }
 

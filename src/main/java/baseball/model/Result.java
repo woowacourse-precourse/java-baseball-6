@@ -5,7 +5,13 @@ import java.util.List;
 public class Result {
     private List<Integer> computerArr;
     private List<Integer> inputNumArr;
-    private int calculateStrike() {
+
+    public Result(List UserNum, List ComNum){
+        this.computerArr = ComNum;
+        this.inputNumArr = UserNum;
+//        System.out.println("Result ComNum : " + ComNum);
+    }
+    public int calculateStrike() {
         int strikeNum = 0;
         int index = 0;
         for (Object num : computerArr) {
@@ -14,11 +20,10 @@ public class Result {
             }
             index++;
         }
-        System.out.println(strikeNum);
         return strikeNum;
     }
 
-    private int calculateBall() {
+    public int calculateBall() {
         int ballNum = 0;
         for (Integer num : inputNumArr) {
             if (computerArr.contains(num)) {

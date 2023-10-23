@@ -19,7 +19,7 @@ public class RandomNum {
                 RandomNum.add(randomNumber);
             }
         }
-        System.out.println("aaaaaaaaaaaaaaaaaaa"+RandomNum);
+//        System.out.println("aaaaaaaaaaaaaaaaaaa"+RandomNum);
         return RandomNum;
     }
 }
