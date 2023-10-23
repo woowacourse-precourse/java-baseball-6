@@ -11,9 +11,7 @@ public class User {
     }
 
     public void readBaseballNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
         baseBallNumberString = Console.readLine();
-
     }
 
 

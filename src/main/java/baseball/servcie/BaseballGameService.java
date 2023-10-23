@@ -3,6 +3,7 @@ package baseball.servcie;
 import baseball.domain.Computer;
 import baseball.domain.User;
 import baseball.validation.BaseballGameValidation;
+import baseball.view.BaseballGameView;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
@@ -15,10 +16,12 @@ public class BaseballGameService {
     private final String NEW_GAME = "1";
     private final BaseballGameValidation baseballGameValidation;
     private final User user;
+    private final BaseballGameView baseballGameView;
 
-    public BaseballGameService(User user, BaseballGameValidation baseballGameValidation) {
+    public BaseballGameService(User user, BaseballGameValidation baseballGameValidation, BaseballGameView baseballGameView) {
         this.baseballGameValidation = baseballGameValidation;
         this.user = user;
+        this.baseballGameView = baseballGameView;
     }
 
     public void playGame(){
@@ -28,6 +31,7 @@ public class BaseballGameService {
         boolean check = false;
 
         while(!check) {
+            baseballGameView.readNumPrint();
             List<Integer> userNumberList = userReadNumber(user);
             checkValidation(user, userNumberList);
             check = compareNumber(userNumberList, computer.getBaseballNumber());
@@ -35,7 +39,6 @@ public class BaseballGameService {
     }
 
     public boolean checkRestart(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String checkString = Console.readLine();
 
         baseballGameValidation.validateString(checkString);
@@ -90,17 +93,14 @@ public class BaseballGameService {
 
     private void printResult(int strike, int ball) {
         if (strike == NO_HIT && ball == NO_HIT)
-            System.out.print("낫싱");
+            baseballGameView.nothingResultPrint();
 
         if (ball > NO_HIT)
-            System.out.print(ball + "볼 ");
+            baseballGameView.ballResultPrint(ball);
 
         if (strike > NO_HIT)
-            System.out.print(strike + "스트라이크 ");
+            baseballGameView.strikeResultPrint(strike);
 
-        if (strike == ALL_STRIKE) {
-            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
         System.out.println();
     }
 

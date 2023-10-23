@@ -2,20 +2,25 @@ package baseball.controller;
 
 import baseball.domain.User;
 import baseball.servcie.BaseballGameService;
+import baseball.view.BaseballGameView;
 
 public class BaseballGameController {
 
     private final BaseballGameService baseballGameService;
+    private final BaseballGameView baseballGameView;
 
-    public BaseballGameController(BaseballGameService baseballGameService) {
+    public BaseballGameController(BaseballGameService baseballGameService, BaseballGameView baseballGameView) {
         this.baseballGameService = baseballGameService;
+        this.baseballGameView = baseballGameView;
     }
 
     public void startGame(){
+        baseballGameView.startGamePrint();
         baseballGameService.playGame();
     }
 
     public boolean checkRestartGame(){
+        baseballGameView.endGamePrint();
         return baseballGameService.checkRestart();
     }
 }
