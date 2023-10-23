@@ -31,12 +31,28 @@ public class Game {
         boolean isReStarted = true;
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String s = Console.readLine();
+        String input = Console.readLine();
 
-        if (s.equals("2")) {
+        checkInputFormat(input);
+
+        if (input.equals("2")) {
             isReStarted = false;
         }
 
         return isReStarted;
+    }
+
+    private static void checkInputFormat(String s) {
+        // 숫자 형식 확인
+        try {
+            Integer.parseInt(s);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+
+        // 1 or 2 인지 확인
+        if (!(s.equals("1") || s.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
     }
 }
