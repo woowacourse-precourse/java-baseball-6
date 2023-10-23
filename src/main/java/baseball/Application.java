@@ -1,25 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         do {
-            playGame();
+            Player.playGame();
         } while (restartGame());
-    }
-
-    private static void playGame() {
-        List<Integer> computerNumbers = Computer.generateRandomNumber();
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        String playerNumbers;
-        do {
-            System.out.print("숫자를 입력해주세요 : ");
-            playerNumbers = Console.readLine();
-            GameManager.validPlayerNumbers(playerNumbers);
-        } while (GameManager.compareNumbers(computerNumbers, playerNumbers));
     }
 
     private static boolean restartGame() {
