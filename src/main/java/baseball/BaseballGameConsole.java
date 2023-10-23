@@ -1,11 +1,11 @@
 package baseball;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.List;
-import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class BaseballGameConsole {
     static final int MIN = 1;
@@ -31,13 +31,24 @@ public class BaseballGameConsole {
 
     private void play() {
         strikeOut = false;
-        getHitterSelection();
+        generateHitterSelection();
 
         while (!strikeOut) {
             getPitcherSelection();
             getBallCount();
             printBallCount();
             checkStrikeOut();
+        }
+    }
+
+    private void generateHitterSelection() {
+        hitterSelection = new ArrayList<>();
+
+        while (hitterSelection.size() < SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
+            if (!hitterSelection.contains(randomNumber)) {
+                hitterSelection.add(randomNumber);
+            }
         }
     }
 
@@ -66,17 +77,6 @@ public class BaseballGameConsole {
             }
         }
         return false;
-    }
-
-    private void getHitterSelection() {
-        hitterSelection = new ArrayList<>();
-
-        while (hitterSelection.size() < SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
-            if (!hitterSelection.contains(randomNumber)) {
-                hitterSelection.add(randomNumber);
-            }
-        }
     }
 
     private void getBallCount() {
