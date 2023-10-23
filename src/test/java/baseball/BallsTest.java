@@ -12,7 +12,8 @@ class BallsTest {
         Balls computer = new Balls(new Ball(1), new Ball(2), new Ball(3));
         Balls player = new Balls(new Ball(1), new Ball(5), new Ball(6));
 
-        assertThat(computer.match(player)).isFalse();
+        GameResult result = computer.getGameResult(player);
+        assertThat(result.toString()).isEqualTo("1스트라이크");
     }
 
     @Test
@@ -20,7 +21,8 @@ class BallsTest {
         Balls computer = new Balls(new Ball(1), new Ball(2), new Ball(3));
         Balls player = new Balls(new Ball(5), new Ball(6), new Ball(1));
 
-        assertThat(computer.match(player)).isFalse();
+        GameResult result = computer.getGameResult(player);
+        assertThat(result.toString()).isEqualTo("1볼");
     }
 
     @Test
@@ -28,7 +30,8 @@ class BallsTest {
         Balls computer = new Balls(new Ball(1), new Ball(6), new Ball(3));
         Balls player = new Balls(new Ball(5), new Ball(6), new Ball(1));
 
-        assertThat(computer.match(player)).isFalse();
+        GameResult result = computer.getGameResult(player);
+        assertThat(result.toString()).isEqualTo("1볼 1스트라이크");
     }
 
     @Test
@@ -36,7 +39,9 @@ class BallsTest {
         Balls computer = new Balls(new Ball(5), new Ball(6), new Ball(1));
         Balls player = new Balls(new Ball(5), new Ball(6), new Ball(1));
 
-        assertThat(computer.match(player)).isTrue();
+        GameResult result = computer.getGameResult(player);
+        assertThat(result.toString()).isEqualTo("3스트라이크");
+        assertThat(result.isThreeStrike()).isTrue();
     }
 
     @Test
