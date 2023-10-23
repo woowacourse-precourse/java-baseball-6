@@ -6,8 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> computerNumbers = getComputerNumbers();
+        List<Integer> userNumbers = getUserNumbers();
+
+        // TODO :: computerNumbers랑 userNumbers를 비교
+    }
+
+    private static List<Integer> getComputerNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -15,40 +23,27 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.print("숫자 야구 게임을 시작합니다.\n숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
-        int userInputNumber= 0;
+        return computer;
+    }
+
+    private static List<Integer> getUserNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> userInputNumbers = new ArrayList<>();
         try {
-             userInputNumber = Integer.parseInt(userInput);
-        } catch(NumberFormatException e){
+            String[] inputs = Console.readLine().split(""); // inputs = ["1","2","3","4"]
+            for (String numberStr : inputs) {
+                int numberInt = Integer.parseInt(numberStr);
+                if (userInputNumbers.contains(numberInt)) {
+                    throw new IllegalArgumentException("중복된 수를 넣을 수 없습니다.");
+                }
+                userInputNumbers.add(numberInt);
+            }
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자가 아닌 것이 섞여 있을 때");
         }
-        System.out.println(userInputNumber);
-
-        System.out.println(userInput);
-
-
-
-
-
-//        int inputNumber = 123;
-//        if (inputNumber == randomNumber){
-//            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-//        } else {
-//            System.out.println("1볼");
-//        }
-
-
-
-
-
-
-        //PlayGame playGame = new PlayGame();
-        // playGame.inputNumber = 123;
-        //String game = playGame.gameRestart(1);
-        //System.out.println(game);
-
-
-
+        if (userInputNumbers.size() != 3) {
+            throw new IllegalArgumentException("3자리 수여야 합니다.");
+        }
+        return userInputNumbers;
     }
 }
