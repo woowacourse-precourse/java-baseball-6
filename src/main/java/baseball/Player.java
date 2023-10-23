@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Player {
+    private static final int INPUT_NUMBER_LENGTH = 3;
     private String inputNumber;
 
     public Player(String inputNumber) {
@@ -15,8 +16,8 @@ public class Player {
     }
 
     public void isInputLengthCorrect(String inputNumber) throws IllegalArgumentException {
-        if (inputNumber.length() != 3) {
-            throw new IllegalArgumentException("입력된 수가 3자리가 아닙니다.");
+        if (inputNumber.length() != INPUT_NUMBER_LENGTH) {
+            throw new IllegalArgumentException(PrintCollection.NOT_3WORDS);
         }
     }
 
@@ -25,7 +26,7 @@ public class Player {
             char tmp = inputNumber.charAt(i);
 
             if (!Character.isDigit(tmp)) {
-                throw new IllegalArgumentException("숫자가 아닌 문자가 입력되었습니다.");
+                throw new IllegalArgumentException(PrintCollection.NOT_INPUT_NUMBER);
             }
         }
     }
@@ -39,7 +40,7 @@ public class Player {
         }
 
         if (checkSet.size() != inputNumber.length()) {
-            throw new IllegalArgumentException("입력이 서로 다른 숫자로 이루어지지 않았습니다.");
+            throw new IllegalArgumentException(PrintCollection.NOT_INPUT_DIFFERENT_NUMBER);
         }
     }
 
