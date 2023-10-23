@@ -11,11 +11,7 @@ public class Player {
         String read = Console.readLine().strip();
         validateCount(read);
         validateIsNumeric(read);
-
-        List<Integer> numbers = new ArrayList<>();
-        for (char c: read.toCharArray()) {
-            numbers.add(Character.getNumericValue(c));
-        }
+        List<Integer> numbers = toIntegerList(read);
         validateUniqueNumbers(numbers);
         validateRange(numbers);
         return numbers;
@@ -26,6 +22,14 @@ public class Player {
         String read = Console.readLine();
         validateRestartCommand(read);
         return Integer.parseInt(read);
+    }
+
+    private List<Integer> toIntegerList(String str) {
+        List<Integer> list = new ArrayList<>();
+        for (char c: str.toCharArray()) {
+            list.add(Character.getNumericValue(c));
+        }
+        return list;
     }
 
     private void validateRestartCommand(String command) {
