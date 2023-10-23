@@ -3,16 +3,14 @@ package baseball.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NumberFormat {
-     public static final int DIGIT_CONSTRAINT = 3;
+     private static final int DIGIT_CONSTRAINT = 3;
 
      private List<Integer> numberList;
-
-     protected NumberFormat(){
-          this.numberList = new ArrayList<>();
-     }
 
      protected NumberFormat(List<Integer> numberList){
           this.numberList = numberList;
@@ -29,17 +27,21 @@ public class NumberFormat {
           return new NumberFormat(randomNumberList);
      }
 
-     public static NumberFormat createNumberFormat(int num) throws IllegalArgumentException {
+     public static NumberFormat createNumberFormat(int num) {
+          return new NumberFormat(convertInttoDigitList(num));
+     }
+
+     private static List<Integer> convertInttoDigitList(int num) {
           List<Integer> numberList = new ArrayList<>();
           while (num > 0){
                numberList.add(num%10);
                num/=10;
           }
 
-          if (!validateFormat(numberList)) throw new IllegalArgumentException();
-
+          if (!validateFormat(numberList)) throw new NumberFormatException();
           Collections.reverse(numberList);
-          return new NumberFormat(numberList);
+
+          return numberList;
      }
 
      private static boolean validateFormat(List<Integer> list){
