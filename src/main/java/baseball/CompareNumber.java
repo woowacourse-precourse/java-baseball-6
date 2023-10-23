@@ -18,4 +18,12 @@ public class CompareNumber {
             }
         }
     }
+
+    public void countStrike(List<String> user, List<String> computer) {
+        for (int i = 0; i < user.size(); i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                strike++;
+            }
+        }
+    }
 }
