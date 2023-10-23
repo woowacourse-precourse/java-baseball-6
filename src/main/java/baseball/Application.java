@@ -21,7 +21,7 @@ public class Application {
 
     private static void doGame(){
 
-        while( !computer.getResult(player.getNumber())){
+        while( !computer.getResult(player.getNumber(computer.DIGIT))){
             continue;
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -34,7 +34,8 @@ public class Application {
         try{
             num = Integer.parseInt(readLine());
             if (num==1){
-                doGame();
+                if(computer.reset())
+                    doGame();
             }
         }catch(IllegalArgumentException e){
             System.exit(0);
