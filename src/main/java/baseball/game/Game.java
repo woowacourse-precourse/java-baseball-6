@@ -15,6 +15,9 @@ public class Game {
         // 숫자 야구 게임
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+
+        List<Integer> balls = resolveInputBalls(input);
+
     }
 
     private List<Integer> initializeComputer() {
@@ -26,5 +29,27 @@ public class Game {
             }
         }
         return computer;
+    }
+
+    private List<Integer> resolveInputBalls(String input) {
+        List<Integer> balls = new ArrayList<>();
+
+        try {
+            if (input.length() != 3) {
+                throw new IllegalArgumentException("세자리 수를 입력해주세요");
+            }
+            for (String number : input.split("")) {
+                int currentBall = Integer.parseInt(number);
+                if (balls.contains(currentBall)) {
+                    throw new IllegalArgumentException("각각 다른 수를 입력해주세요");
+                } else {
+                    balls.add(currentBall);
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+
+        return balls;
     }
 }
