@@ -1,14 +1,17 @@
 package baseball.balls;
 
-import baseball.validators.BallIndexValidators;
+import baseball.validators.IntegerValidators;
 import java.util.Objects;
 
 public class BallIndex {
 
+    private static final int MIN_INDEX = 0;
+    private static final int MAX_INDEX = 3;
+
     private final int index;
 
     public BallIndex(int index) {
-        BallIndexValidators.validateIndexRange(index);
+        IntegerValidators.validateRange(index, MIN_INDEX, MAX_INDEX);
         this.index = index;
     }
 

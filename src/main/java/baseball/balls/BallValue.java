@@ -1,6 +1,6 @@
 package baseball.balls;
 
-import baseball.validators.BallValueValidators;
+import baseball.validators.IntegerValidators;
 import java.util.Objects;
 
 public class BallValue {
@@ -11,7 +11,7 @@ public class BallValue {
     private final int value;
 
     public BallValue(int value) {
-        BallValueValidators.validateValueRange(value);
+        IntegerValidators.validateRange(value, MIN_VALUE, MAX_VALUE);
         this.value = value;
     }
 

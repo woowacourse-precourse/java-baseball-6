@@ -22,7 +22,7 @@ public class BallsValidateTest {
 
         // then
         Assertions.assertDoesNotThrow(() -> {
-            BallsValidators.validateBallCount(balls);
+            ListValidators.validateSize(balls, BALL_COUNT);
         });
     }
 
@@ -37,51 +37,7 @@ public class BallsValidateTest {
 
         // then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            BallsValidators.validateBallCount(balls);
-        });
-    }
-
-    @Test
-    void 공_값_미중복_허용() {
-        // when
-        List<Ball> balls = BallsGeneratorUtil.generateBallList(BALL_COUNT, BALL_MIN_VALUE, false, true);
-
-        // then
-        Assertions.assertDoesNotThrow(() -> {
-            BallsValidators.validateValueDuplication(balls);
-        });
-    }
-
-    @Test
-    void 공_값_중복_불허() {
-        // when
-        List<Ball> balls = BallsGeneratorUtil.generateBallList(BALL_COUNT, BALL_MIN_VALUE, true, true);
-
-        // then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            BallsValidators.validateValueDuplication(balls);
-        });
-    }
-
-    @Test
-    void 공_인덱스_미중복_허용() {
-        // when
-        List<Ball> balls = BallsGeneratorUtil.generateBallList(BALL_COUNT, BALL_MIN_VALUE, true, false);
-
-        // then
-        Assertions.assertDoesNotThrow(() -> {
-            BallsValidators.validateIndexDuplication(balls);
-        });
-    }
-
-    @Test
-    void 공_인덱스_중복_불허() {
-        // when
-        List<Ball> balls = BallsGeneratorUtil.generateBallList(BALL_COUNT, BALL_MIN_VALUE, false, true);
-
-        // then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            BallsValidators.validateIndexDuplication(balls);
+            ListValidators.validateSize(balls, BALL_COUNT);
         });
     }
 
