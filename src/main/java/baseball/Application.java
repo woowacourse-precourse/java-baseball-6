@@ -18,11 +18,28 @@ public class Application {
 
     private static void newGame() {
         List<Integer> computer = generateUnique3DigitNum();
+        playGame(computer);
+    }
+
+    private static void playGame(List<Integer> computer) {
         int ball;
-        int strike=0;
-        while(strike<3){
+        int strike = 0;
+        while (strike != 3) {
             List<Integer> user = getUserNumber();
+            ball = countBall(computer, user);
         }
+    }
+
+    private static int countBall(List<Integer> computer, List<Integer> user) {
+        int count = 0;
+        for (int i = 0; i < computer.size(); i++) {
+            for (int j = 0; j < user.size(); j++) {
+                if (i != j && computer.get(i) == user.get(j)) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
     private static List<Integer> getUserNumber() {
