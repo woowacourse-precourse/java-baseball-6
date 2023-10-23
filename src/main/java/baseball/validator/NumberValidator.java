@@ -1,11 +1,14 @@
 package baseball.validator;
 
 
-import baseball.domain.exception.BaseballException;
+import baseball.global.exception.BaseballException;
 
-import static baseball.domain.exception.ErrorMessage.*;
+import static baseball.global.exception.ErrorMessage.*;
 
 public class NumberValidator {
+    protected NumberValidator() {
+    }
+
     public static void validateNumberLength(final String number) {
         if (!isValidLength(number)) {
             throw BaseballException.of(INVALID_LENGTH);
@@ -29,7 +32,6 @@ public class NumberValidator {
             throw BaseballException.of(EMPTY_NUMBER);
         }
     }
-
     
     private static boolean isEmpty(String number) {
         return number.isEmpty();
