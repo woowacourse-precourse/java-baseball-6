@@ -61,16 +61,6 @@ public class Application {
                 .map(Character::getNumericValue)
                 .toArray();
     }
-    private static List<Integer> setNums() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
     private static void judge(long ball, long strike) {
         //볼, 스트라이크가 모두 없는 경우
        if (strike + ball == 0) {System.out.print("낫싱");}
@@ -80,5 +70,15 @@ public class Application {
        if (strike > 0) {System.out.print(strike + "스트라이크");}
 
        System.out.println();
+    }
+    private static List<Integer> setNums() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 }
