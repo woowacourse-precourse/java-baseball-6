@@ -7,6 +7,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -35,6 +37,13 @@ class ApplicationTest extends NsTest {
         assertThat(computer.getRandomNum().size()).isEqualTo(3);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"a2", "12", ""})
+    void 재시작_입력_예외테스트(String string) {
+        var inputValidator = new InputValidator();
+        assertThatThrownBy(() -> inputValidator.restartInputValidator(string))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Override
     public void runMain() {
