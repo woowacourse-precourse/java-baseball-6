@@ -1,5 +1,9 @@
 package baseball.model;
 
+import static baseball.constant.Constant.MAX_NUMBER;
+import static baseball.constant.Constant.MIN_NUMBER;
+import static baseball.constant.Constant.NUMBER_LENGTH;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +18,8 @@ public class Computer {
     private Number generateNumber() {
         List<Integer> digitList = new ArrayList<>();
 
-        while (digitList.size() < 3) {
-            int digit = Randoms.pickNumberInRange(1, 9);
+        while (digitList.size() < NUMBER_LENGTH) {
+            int digit = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 
             if (!digitList.contains(digit)) {
                 digitList.add(digit);

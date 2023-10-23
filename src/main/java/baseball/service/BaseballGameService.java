@@ -1,5 +1,8 @@
 package baseball.service;
 
+import static baseball.constant.Constant.MAX_NUMBER;
+import static baseball.constant.Constant.MIN_NUMBER;
+import static baseball.constant.Constant.NUMBER_LENGTH;
 import static baseball.constant.ExceptionMessage.INPUT_DUPLICATE_EXCEPTION_MESSAGE;
 import static baseball.constant.ExceptionMessage.INPUT_FORMAT_EXCEPTION_MESSAGE;
 import static baseball.constant.ExceptionMessage.INPUT_LENGTH_EXCEPTION_MESSAGE;
@@ -43,7 +46,7 @@ public class BaseballGameService {
     }
 
     private void checkLength(String playerInput) {
-        if (playerInput.length() != 3) {
+        if (playerInput.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION_MESSAGE);
         }
     }
@@ -52,7 +55,7 @@ public class BaseballGameService {
         for (int i = 0; i < playerInput.length(); i++) {
             int digit = Integer.parseInt(playerInput.split("")[i]);
 
-            if (digit < 1 || digit > 9) {
+            if (digit < MIN_NUMBER || digit > MAX_NUMBER) {
                 throw new IllegalArgumentException(INPUT_RANGE_EXCEPTION_MESSAGE);
             }
         }
@@ -61,7 +64,7 @@ public class BaseballGameService {
     private void checkDuplicateNumber(String playerInput) {
         Set<Integer> inputNumSet = Stream.of(playerInput.split("")).map(Integer::parseInt).collect(Collectors.toSet());
 
-        if (inputNumSet.size() != 3) {
+        if (inputNumSet.size() != NUMBER_LENGTH) {
             throw new IllegalArgumentException(INPUT_DUPLICATE_EXCEPTION_MESSAGE);
         }
     }
@@ -73,7 +76,7 @@ public class BaseballGameService {
         List<Integer> computerDigitList = computerNumber.getDigitList();
         List<Integer> playerDigitList = playerNumber.getDigitList();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (Objects.equals(computerDigitList.get(i), playerDigitList.get(i))) {
                 strike++;
             } else if (computerDigitList.contains(playerDigitList.get(i))) {
