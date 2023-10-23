@@ -20,12 +20,12 @@ public class GameManager {
     private void inputNumber() {
         boolean process = true;
         Validator validator = new Validator();
-        while(process) {
+        while (process) {
             OutputView.printInputNumber();
             List<String> userBalls = UserInput.inputGameNumber(validator);
             process = compareNumbers(DataTypeChanger.mapToInt(userBalls));
         }
-
+        endOrRestart();
     }
 
     private boolean compareNumbers(List<Integer> userBalls) {
@@ -43,6 +43,17 @@ public class GameManager {
             OutputView.printGameEnd();
         }
         return false;
+    }
+
+    private void endOrRestart() {
+        int option = UserInput.endOrRestart(new Validator());
+        if (option == 1) {
+            generatedNumber = new BaseBalls(new BallNumberGenerator().generateBallNumber());
+            startGame();
+        }
+        if (option == 2) {
+            OutputView.printEnd();
+        }
     }
 
 
