@@ -8,4 +8,6 @@ public interface Game {
     boolean isRunning();
 
     boolean isFinished();
+
+    boolean isValidUserInput();
 }
