@@ -45,8 +45,8 @@ public class GameController {
     }
 
     private boolean askForRestart() {
-//        TODO
-        return true;
+        outputView.printRestart();
+        return inputView.readRestartOption() == 1;
     }
 
     private void restartGame() {
