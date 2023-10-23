@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -22,7 +21,7 @@ public class Application {
             while (strike < 3) {
                 List<Integer> player = getPlayerNumber();
                 int[] result = calculateResult(computer, player);
-                System.out.println(Arrays.toString(result));
+                printResult(result);
                 strike = result[0];
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -86,5 +85,19 @@ public class Application {
             throw new IllegalArgumentException("1과 2 중 하나의 수여야 합니다.");
         }
         return input.equals("1");
+    }
+
+    public void printResult(int[] result) {
+        int strike = result[0], ball = result[1];
+        if (strike == 0 && ball == 0) {
+            System.out.print("낫싱");
+        }
+        if (ball != 0) {
+            System.out.print(ball + "볼 ");
+        }
+        if (strike != 0) {
+            System.out.print(strike + "스트라이크");
+        }
+        System.out.println();
     }
 }
