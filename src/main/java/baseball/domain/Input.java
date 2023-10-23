@@ -17,9 +17,9 @@ public class Input {
     }
 
     // 인풋 값을 List<Integer> 로 변환합니다.
-    private List<Integer> convertIntoList(char[] target) {
+    public List<Integer> convertIntoList(char[] target) {
         List<Integer> convertedData = new ArrayList<>();
-        //검증 후 입력값 파싱하기
+
         for (char chr : target) {
             convertedData.add(chr - '0');
         }
