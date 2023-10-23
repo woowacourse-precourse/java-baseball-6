@@ -4,12 +4,14 @@ import java.util.HashSet;
 import java.util.List;
 
 public class NumberValidator {
-    public static boolean isValid(List<Integer> numbers) {
+    public static void isValid(List<Integer> numbers) {
         if (numbers.size() != 3) {
-            return false;
+            throw new IllegalArgumentException("숫자가 3개가 아닙니다.");
         }
         HashSet<Integer> hashSet = new HashSet<>(numbers);
 
-        return numbers.size() == hashSet.size();
+        if(numbers.size() != hashSet.size()){
+            throw new IllegalArgumentException("서로 다른 숫자가 아닙니다.");
+        }
     }
 }
