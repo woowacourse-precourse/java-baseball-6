@@ -12,18 +12,12 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        makeNumber();
 
         while(true){
-            System.out.print("숫자를 입력해주세요 : ");
-            String input = readLine();
-            String result = checkNumber(input);
-            System.out.println(result);
-            if(result.equals("3스트라이크")){
-                if(endGame() == 2){
-                    break;
-                }
-                makeNumber();
+            makeNumber();
+            Game();
+            if(endGame() == 2){
+                break;
             }
         }
     }
@@ -35,6 +29,16 @@ public class Application {
             if(!answer.contains(randomNumber)){
                 answer.add(randomNumber);
             }
+        }
+    }
+
+    public static void Game(){
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = readLine();
+        String result = checkNumber(input);
+        System.out.println(result);
+        if(!result.equals("3스트라이크")){
+            Game();
         }
     }
 
