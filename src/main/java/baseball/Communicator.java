@@ -15,34 +15,28 @@ public class Communicator {
     private static final String NOTHING = "낫싱";
     //---------
 
-    private final Validator validator;
-
-    public Communicator(Validator validator) {
-        this.validator = validator;
-    }
-
-    public void printStart() {
+    public static void printStart() {
         System.out.println(START_MESSAGE);
     }
 
-    public List<Integer> instructInputNumbers() {
+    public static List<Integer> instructInputNumbers() {
         System.out.print(INPUT_MESSAGE);
 
         List<Integer> inputNumbers = new ArrayList<>();
 
         String inputString = Console.readLine();
-        validator.validateInputString(inputString);
+        Validator.validateInputString(inputString);
 
         for (int i=0; i<inputString.length(); i++) {
             char input = inputString.charAt(i);
-            validator.validateInputNumber(inputNumbers, input);
+            Validator.validateInputNumber(inputNumbers, input);
             inputNumbers.add(Character.getNumericValue(input));
         }
 
         return inputNumbers;
     }
 
-    public void printResult(Map<Count, Integer> counts) {
+    public static void printResult(Map<Count, Integer> counts) {
         int ballCount = counts.get(Count.BALL);
         String ballMark = Count.BALL.getCountMarkFrom(ballCount);
 
@@ -60,17 +54,17 @@ public class Communicator {
         }
     }
 
-    public Menu instructMenu() {
+    public static Menu instructMenu() {
         System.out.println(MENU_SELECTION_MESSAGE);
         String menuSelection = Console.readLine();
         return Menu.findMenu(menuSelection);
     }
 
-    public void printTerminate() {
+    public static void printTerminate() {
         System.out.println(TERMINATE_MESSAGE);
     }
 
-    public void printException(RuntimeException exception) {
+    public static void printException(RuntimeException exception) {
         System.out.println(exception.getMessage());
         printTerminate();
     }
