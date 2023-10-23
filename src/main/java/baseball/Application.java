@@ -9,11 +9,26 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         Application NumberBaseball = new Application();
-        List<Integer> computer = NumberBaseball.generateRandomNumber();
-        List<Integer> player = NumberBaseball.getPlayerNumber();
-        System.out.println(computer);
-        System.out.println(player);
-        System.out.println(Arrays.toString(NumberBaseball.calculateResult(computer, player)));
+        NumberBaseball.start();
+    }
+
+    public void start() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean play = true;
+        while (play) {
+            List<Integer> computer = generateRandomNumber();
+            System.out.println(computer); /* 정답 확인용 */
+            int strike = 0;
+            while (strike < 3) {
+                List<Integer> player = getPlayerNumber();
+                int[] result = calculateResult(computer, player);
+                System.out.println(Arrays.toString(result));
+                strike = result[0];
+            }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            play = getRestartOrExit();
+        }
+        Console.close();
     }
 
     public List<Integer> generateRandomNumber() {
@@ -62,5 +77,14 @@ public class Application {
             player.add(playerNumber);
         }
         return player;
+    }
+
+    public boolean getRestartOrExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("1과 2 중 하나의 수여야 합니다.");
+        }
+        return input.equals("1");
     }
 }
