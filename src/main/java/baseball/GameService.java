@@ -23,7 +23,7 @@ public class GameService {
     }
 
     public void playBaseBallGame() {
-        player.clearPlayerNumberStore();
+        player.resetPlayerNumberStore();
         strikeBallCount.settingStrikeBallCount();
         player.settingPlayerNumber(inputPlayerNumber());
         computerNumberComparePlayerInputNumber(player, computer);
@@ -46,11 +46,11 @@ public class GameService {
 
     public void computerNumberComparePlayerInputNumber(Player player, List<Integer> computer) {
         for (int i = 0; i < computer.size(); i++) {
-            if (computer.get(i).equals(player.getPlayerNumber(i))) {
+            if (computer.get(i).equals(player.getPlayerNumberAt(i))) {
                 strikeBallCount.plusStrikeCount();
                 continue;
             }
-            if (computer.contains(player.getPlayerNumber(i))) {
+            if (computer.contains(player.getPlayerNumberAt(i))) {
                 strikeBallCount.plusBallCount();
             }
         }

@@ -12,11 +12,11 @@ public class Player {
         }
     }
 
-    public int getPlayerNumber(int index) {
+    public int getPlayerNumberAt(int index) {
         return playerNumberStore.get(index);
     }
 
-    public void clearPlayerNumberStore() {
+    public void resetPlayerNumberStore() {
         playerNumberStore.clear();
     }
 }

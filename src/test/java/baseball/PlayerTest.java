@@ -22,7 +22,7 @@ class PlayerTest {
     void 유저_숫자_가져오기_테스트() {
         int[] inputPlayerNumbers = {1, 2, 3};
         player.settingPlayerNumber(inputPlayerNumbers);
-        int playerNumber = player.getPlayerNumber(2);
+        int playerNumber = player.getPlayerNumberAt(2);
 
         Assertions.assertThat(3).isEqualTo(playerNumber);
     }
@@ -31,7 +31,7 @@ class PlayerTest {
     void 유저_숫자_초기화_테스트() {
         int[] inputPlayerNumbers = {1, 2, 3};
         player.settingPlayerNumber(inputPlayerNumbers);
-        player.clearPlayerNumberStore();
+        player.resetPlayerNumberStore();
 
         Assertions.assertThat(0).isEqualTo(player.playerNumberStore.size());
     }
