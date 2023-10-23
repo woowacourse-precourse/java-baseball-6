@@ -12,9 +12,13 @@ public class BaseballGame {
         return generatedAnswers;
     }
 
+    /**
+     * (1) 게임 시작 - 정답 생성
+     */
     public void generateAnswers() {
-        // TODO: 각 숫자가 겹치지 않도록 해야 함
-        for (int i = 0; i < 3; i++) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        for (int i = 0; i < Constants.ANS_LEN; i++) {
             int candidateNum;
             do {
                 candidateNum = Randoms.pickNumberInRange(1, 9);
@@ -32,7 +36,9 @@ public class BaseballGame {
         return false;
     }
 
-    // 컴퓨터가 생성한 정답을 문자열로 출력
+    /**
+     * (기타) 출력을 위한 메서드
+     */
     public String collectAnswers() {
         String ans = "";
         for (int i = 0; i < generatedAnswers.size(); i++) {

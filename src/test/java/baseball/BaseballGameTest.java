@@ -2,8 +2,6 @@ package baseball;
 
 import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class BaseballGameTest {
     BaseballGame baseballGame = new BaseballGame();
 
@@ -16,7 +14,7 @@ public class BaseballGameTest {
         System.out.println("generated answer = " + ans);
 
         // then
-        assertEquals(3, ans.length());
+        Assertions.assertEquals(Constants.ANS_LEN, ans.length());
     }
 
     @Test
@@ -29,7 +27,7 @@ public class BaseballGameTest {
         // then
         for (char num : ans.toCharArray()) {
             if (!('1' <= num && num <= '9')) {
-                fail();
+                Assertions.fail();
             }
         }
     }
@@ -47,7 +45,7 @@ public class BaseballGameTest {
             int curNum = baseballGame.getGeneratedAnswers().get(i);
             count[curNum]++;
             if (count[curNum] > 1) {
-                fail();
+                Assertions.fail();
             }
         }
     }
