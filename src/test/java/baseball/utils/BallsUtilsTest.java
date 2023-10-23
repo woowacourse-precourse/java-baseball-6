@@ -10,10 +10,12 @@ import org.junit.jupiter.api.Test;
 
 public class BallsUtilsTest {
 
+    private static final int BALL_COUNT = 3;
+
     @Test
     void convertIntegersToBallList_성공() {
         // given
-        List<Integer> integers = IntStream.rangeClosed(1, Balls.BALL_COUNT)
+        List<Integer> integers = IntStream.rangeClosed(1, BALL_COUNT)
                 .boxed()
                 .toList();
 
@@ -21,7 +23,7 @@ public class BallsUtilsTest {
         List<Ball> balls = BallsUtils.convertIntegersToBallList(integers);
 
         // then
-        IntStream.range(0, Balls.BALL_COUNT)
+        IntStream.range(0, BALL_COUNT)
                 .forEach(i -> {
                     Ball ball = balls.get(i);
                     int expectedValue = i + 1;

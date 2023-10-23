@@ -1,10 +1,11 @@
 package baseball.view;
 
-import baseball.balls.Balls;
 import baseball.results.Results;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleView implements View {
+
+    private static final int BALL_COUNT = 3;
 
     @Override
     public String inputString() {
@@ -23,7 +24,7 @@ public class ConsoleView implements View {
 
     @Override
     public void displayCongratulationMessage() {
-        System.out.println(Balls.BALL_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(BALL_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     @Override

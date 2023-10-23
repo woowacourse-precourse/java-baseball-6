@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Balls {
 
-    public static final int BALL_COUNT = 3;
+    private static final int BALL_COUNT = 3;
 
     private final List<Ball> balls;
 

@@ -8,6 +8,7 @@ public class BallsHasSameBallTest {
 
     private static final int BALL_MIN_VALUE = 1;
     private static final int BALL_MAX_VALUE = 9;
+    private static final int BALL_COUNT = 3;
 
     @Test
     void 같은_값의_공_포함() {
@@ -58,7 +59,7 @@ public class BallsHasSameBallTest {
 
         // when
         int expectedBallValue = BALL_MAX_VALUE;
-        int expectedBallIndex = Balls.BALL_COUNT - 1;
+        int expectedBallIndex = BALL_COUNT - 1;
         Ball expectedBall = new Ball(expectedBallValue, expectedBallIndex);
 
         // then

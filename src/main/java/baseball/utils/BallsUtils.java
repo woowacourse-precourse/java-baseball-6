@@ -11,6 +11,7 @@ public final class BallsUtils {
 
     private static final int BALL_MIN_VALUE = 1;
     private static final int BALL_MAX_VALUE = 9;
+    private static final int BALL_COUNT = 3;
 
     public static Balls convertStringToBalls(String string) {
         List<Integer> integers = StringUtils.convertStringToIntegerList(string);
@@ -39,12 +40,8 @@ public final class BallsUtils {
     }
 
     private static List<Integer> generateRandomIntegers() {
-        int ballCount = Balls.BALL_COUNT;
-        int ballMinValue = BALL_MIN_VALUE;
-        int ballMaxValue = BALL_MAX_VALUE;
-
-        return Stream.generate(() -> Randoms.pickNumberInRange(ballMinValue, ballMaxValue))
-                .limit(ballCount)
+        return Stream.generate(() -> Randoms.pickNumberInRange(BALL_MIN_VALUE, BALL_MAX_VALUE))
+                .limit(BALL_COUNT)
                 .toList();
     }
 

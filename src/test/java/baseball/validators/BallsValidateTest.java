@@ -1,8 +1,6 @@
 package baseball.validators;
 
 import baseball.balls.Ball;
-import baseball.balls.BallValue;
-import baseball.balls.Balls;
 import baseball.testUtils.BallsGeneratorUtil;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
@@ -12,7 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class BallsValidateTest {
 
-    private final int BALL_COUNT = Balls.BALL_COUNT;
+    private final int BALL_COUNT = 3;
     private final int BALL_MIN_VALUE = 1;
 
     @Test
