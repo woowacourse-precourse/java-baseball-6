@@ -11,7 +11,7 @@ public class Player {
     public List<Integer> init(){
         playerNumbers = new ArrayList<>();
         String playerInput = Console.readLine();
-        if(playerInput.matches("^[1-9]")||playerInput.length()>3 || playerInput.equals("")) {
+        if(playerInput.matches(".*([0-9]).*\\1.*")||playerInput.length()>3 || playerInput.equals("")) {
             throw new IllegalArgumentException();
         }
         String[] playerInputToArr = playerInput.split("");
@@ -24,7 +24,7 @@ public class Player {
 
     public int finishGame() {
         String playerInput = Console.readLine();
-        if (playerInput.matches("[^1-9]") || playerInput.length() > 1 || playerInput.equals("")) {
+        if (playerInput.matches(".*([0-9]).*\\1.*") || playerInput.length() > 1 || playerInput.equals("")) {
             throw new IllegalArgumentException();
         }
         int playerInputToInt = Integer.parseInt(playerInput);
