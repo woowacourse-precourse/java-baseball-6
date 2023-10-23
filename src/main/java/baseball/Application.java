@@ -2,9 +2,8 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        InstanceHandler instanceHandler = new InstanceHandler();
-
-        MenuHandler menuHandler = instanceHandler.getMenuHandler();
+        Computer computer = new Computer();
+        MenuHandler menuHandler = new MenuHandler(computer);
         menuHandler.tryHandle();
     }
 }
