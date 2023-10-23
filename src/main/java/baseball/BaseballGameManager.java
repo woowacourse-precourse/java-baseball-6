@@ -10,7 +10,7 @@ public class BaseballGameManager {
     }
 
     public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        BaseBallConsole.print("숫자 야구 게임을 시작합니다.\n");
 
         boolean isExistNextGame = true;
         while (isExistNextGame) {
@@ -23,8 +23,7 @@ public class BaseballGameManager {
     private boolean startOneGame(BaseballGame baseballGame) {
         boolean playGame = true;
         while (playGame) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String inputString = Console.readLine();
+            String inputString = BaseBallConsole.readLine("숫자를 입력해주세요 : ");
 
             if (!Util.validateInputNumber(inputString, computerNumberCount)) {
                 throw new IllegalArgumentException("올바른 입력이 아닙니다.");
@@ -33,12 +32,11 @@ public class BaseballGameManager {
 
             BaseballGameResult baseballGameResult = baseballGame.play(inputNumber);
 
-            System.out.println(baseballGameResult);
+            BaseBallConsole.print(baseballGameResult + "\n");
             playGame = !baseballGameResult.isWin(computerNumberCount);
         }
-        System.out.println(computerNumberCount + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        BaseBallConsole.print(computerNumberCount + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        BaseBallConsole.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
         String nextGameInputString = Console.readLine();
 
         return hasNextGame(nextGameInputString);
