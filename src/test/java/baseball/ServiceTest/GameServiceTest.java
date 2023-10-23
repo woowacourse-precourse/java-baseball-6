@@ -44,6 +44,14 @@ public class GameServiceTest {
         assertThrows(IllegalArgumentException.class, () -> {
             GameService.parsingInputNumber("a12");
         });
+
+        /*
+        입력받은 숫자에 중복되는 수가 있는 경우
+         */
+        assertThrows(IllegalArgumentException.class, () -> {
+            GameService.parsingInputNumber("111");
+        });
+
     }
 
     @Test
