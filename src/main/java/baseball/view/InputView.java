@@ -12,7 +12,7 @@ public class InputView {
         System.out.println(START_MESSAGE);
     }
 
-    public static String userInputNumber(){
+    public static int[] userInputNumber(){
         System.out.print(USER_INPUT_MESSAGE);
 
         try{
@@ -20,10 +20,30 @@ public class InputView {
 
             checkInput(input);
 
-            return input;
+            int[] userInput = convertInputFormat(input);
+
+            return userInput;
         }catch (IllegalArgumentException e){
             throw new IllegalArgumentException(e.getMessage());
         }
+    }
+
+    public static int[] convertInputFormat(String input){
+
+        int[] userInput = new int[10];
+
+        for(int i =0 ; i< 3; i++){
+
+            int eachNumber = input.charAt(i)-'0';
+
+            checkInputDuplicate(userInput, eachNumber);
+
+            userInput[eachNumber]++;
+
+        }
+
+        return userInput;
+
     }
 
     public static void checkInput(String input){
@@ -31,7 +51,6 @@ public class InputView {
         checkInputLength(input);
 
         checkInputNotNumber(input);
-
 
     }
 
@@ -48,6 +67,13 @@ public class InputView {
             if(eachNumber < 49) throw new IllegalArgumentException("올바른 숫자가 아닙니다");
             else if(eachNumber>57) throw new IllegalArgumentException("올바른 숫자가 아닙니다");
         }
+
+    }
+
+    public static void checkInputDuplicate(int[] userInput, int eachNumber){
+
+        if(userInput[eachNumber] !=0) throw new IllegalArgumentException("중복된 숫자가 있습니다");
+
 
     }
 }

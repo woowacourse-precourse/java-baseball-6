@@ -10,7 +10,7 @@ public class BaseballService {
 
         InputView.getStartMessage();
 
-        String userNumber = InputView.userInputNumber();
+        int[] userInput = InputView.userInputNumber();
 
     }
 
