@@ -1,5 +1,9 @@
 package baseball;
 
+import static baseball.Result.STRIKE;
+import static baseball.Result.BALL;
+import static java.lang.System.out;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +18,7 @@ public class Application {
         Player.upperBound = UPPER_BOUND;
         Player.lowerBound = LOWER_BOUND;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        out.println("숫자 야구 게임을 시작합니다.");
         do {
             play();
         } while (wantsReplay());
@@ -66,27 +70,27 @@ public class Application {
     }
 
     static void printResult(int[] result) {
-        if (result[1] > 0 && result[0] > 0) {
-            System.out.printf("%d볼 %d스트라이크\n", result[1], result[0]);
-        } else if (result[0] > 0) {
-            System.out.printf("%d스트라이크\n", result[0]);
-        } else if (result[1] > 0) {
-            System.out.printf("%d볼\n", result[1]);
-        } else if (result[0] == 0 && result[1] == 0) {
-            System.out.println("낫싱");
+        if (result[STRIKE.getIndex()] > 0 && result[BALL.getIndex()] > 0) {
+            out.printf("%d볼 %d스트라이크\n", result[BALL.getIndex()], result[STRIKE.getIndex()]);
+        } else if (result[STRIKE.getIndex()] > 0) {
+            out.printf("%d스트라이크\n", result[STRIKE.getIndex()]);
+        } else if (result[BALL.getIndex()] > 0) {
+            out.printf("%d볼\n", result[BALL.getIndex()]);
+        } else if (result[STRIKE.getIndex()] == 0 && result[BALL.getIndex()] == 0) {
+            out.println("낫싱");
         }
     }
 
     static boolean foundAnswer(int[] result) {
-        if (result[0] == ANSWER_SIZE) {
-            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", ANSWER_SIZE);
+        if (result[STRIKE.getIndex()] == ANSWER_SIZE) {
+            out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", ANSWER_SIZE);
             return true;
         }
         return false;
     }
 
     static boolean wantsReplay() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         if (input.equals("1")) {
             return true;
