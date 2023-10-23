@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +9,8 @@ public class Application {
     private static final int NUMBER_LENGTH = 3;
     private static final int NUMBER_MIN = 1;
     private static final int NUMBER_MAX = 9;
+    private static final String GAME_RESTART = "1";
+    private static final String GAME_QUIT = "2";
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -125,7 +126,8 @@ public class Application {
     private static int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int ballCount = 0;
         for (int i = 0; i < NUMBER_LENGTH; i++) {
-            if (computerNumbers.contains(playerNumbers.get(i)) && !computerNumbers.get(i).equals(playerNumbers.get(i))) {
+            if (computerNumbers.contains(playerNumbers.get(i)) && !computerNumbers.get(i)
+                    .equals(playerNumbers.get(i))) {
                 ballCount++;
             }
         }
@@ -148,13 +150,18 @@ public class Application {
 
     private static boolean askContinue() {
         while (true) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String instruction = String.format(
+                    "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.",
+                    GAME_RESTART,
+                    GAME_QUIT
+            );
+            System.out.println(instruction);
             String inputNumber = Console.readLine();
 
             switch (inputNumber) {
-                case "1":
+                case GAME_RESTART:
                     return true;
-                case "2":
+                case GAME_QUIT:
                     return false;
                 default:
                     System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
