@@ -22,7 +22,6 @@ import baseball.userInterface.InputViewer;
 public class UserAction {
     private final User user = new User();
 
-
     public void inputAnswer(){
         String userAnswer = InputViewer.requestUserAnswer();
         requestValidateInput(userAnswer);
@@ -32,8 +31,10 @@ public class UserAction {
     }
 
     public void inputRestartFactor(){
-        String userMind = InputViewer.requestUserRestartFactor();
-        user.changeMind(InputValidator.validateRestartInput(userMind));
+        String userInput = InputViewer.requestUserRestartFactor();
+        InputValidator.validateRestartInput(userInput);
+        int mind = Integer.parseInt(userInput);
+        user.changeMind(mind);
     }
 
     public void requestValidateInput(String userAnswer){
