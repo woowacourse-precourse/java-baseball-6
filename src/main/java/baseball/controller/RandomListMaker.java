@@ -23,7 +23,7 @@ public class RandomListMaker {
     }
 
     private static int getRandomNumberInRange() {
-        return Randoms.pickNumberInRange(MINIMUM_NUM_IN_RANGE, MAXIMUM_NUM_IN_RANGE;
+        return Randoms.pickNumberInRange(MINIMUM_NUM_IN_RANGE, MAXIMUM_NUM_IN_RANGE);
     }
 
     private static void containNumberInList(List<Integer> computerNumber, int randomNumber) {
