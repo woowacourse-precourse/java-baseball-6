@@ -22,10 +22,10 @@ public class View {
 
     private static String getDynamicGameResult(GameResult gameResult) {
         String result = "";
-        Integer ballCount = gameResult.getBallCount();
-        Integer strikeCount = gameResult.getStrikeCount();
+        int ballCount = gameResult.getBallCount();
+        int strikeCount = gameResult.getStrikeCount();
 
-        if (ballCount == 0 && strikeCount == 0) {
+        if (gameResult.isNothing()) {
             return NOTHING;
         }
         if (ballCount != 0) {

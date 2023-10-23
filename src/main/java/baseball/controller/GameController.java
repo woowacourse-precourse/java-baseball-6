@@ -2,6 +2,7 @@ package baseball.controller;
 
 import static baseball.properties.Properties.*;
 
+import baseball.model.Balls;
 import java.util.List;
 
 import baseball.model.GameResult;
@@ -27,7 +28,7 @@ public class GameController {
     }
 
     private void initGame() {
-        this.gameService = new GameService(RandomUtils.getRandomNumbers(GAME_SIZE, DIGIT_START, DIGIT_END));
+        this.gameService = new GameService(Balls.createRandomBalls(GAME_SIZE, DIGIT_START, DIGIT_END));
     }
 
     private List<Integer> getUserInput() {

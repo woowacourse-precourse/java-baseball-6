@@ -2,19 +2,19 @@ package baseball.service;
 
 import static baseball.properties.Properties.*;
 
+import baseball.model.Balls;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Stream;
 
 import baseball.model.GameResult;
 
 public class GameService {
-    private final List<Integer> gameRandomNumbers;
+    private final Balls computerBalls;
 
-    public GameService(List<Integer> gameRandomNumbers) {
-        this.gameRandomNumbers = gameRandomNumbers;
+    public GameService(Balls balls) {
+        this.computerBalls = balls;
     }
 
     public List<Integer> parseInput(String userInputString) {
@@ -36,31 +36,8 @@ public class GameService {
     }
 
     public GameResult calculateGameResult(List<Integer> userInputNumbers) {
-        int ballcount = countBall(gameRandomNumbers,userInputNumbers);
-        int strikeCount = 0;
-
-        if (ballcount == 0) {
-            return new GameResult(ballcount,strikeCount);
-        }
-        strikeCount = countStrike(gameRandomNumbers,userInputNumbers);
-        ballcount -= strikeCount;
-        return new GameResult(ballcount,strikeCount);
-    }
-
-    private int countStrike(List<Integer> gameRandomNumbers, List<Integer> userInputNumbers) {
-        int count = 0;
-        for (int i = 0; i < GAME_SIZE; i++) {
-            if (gameRandomNumbers.get(i).equals(userInputNumbers.get(i))) {
-                count += 1;
-            }
-        }
-        return count;
-    }
-
-    private int countBall(List<Integer> comNumbers, List<Integer> userNumbers) {
-        int totalSize = comNumbers.size() + userNumbers.size();
-        int differentBallCount = (int)Stream.concat(comNumbers.stream(),userNumbers.stream()).distinct().count();
-        return totalSize - differentBallCount;
+        Balls userBalls = Balls.createBalls(userInputNumbers);
+        return this.computerBalls.compareBalls(userBalls);
     }
 
     private Integer converIntegerOrThorwIllegalException(String input) {

@@ -7,11 +7,6 @@ public class GameResult {
     public GameResult() {
     }
 
-    public GameResult(Integer ballCount, Integer strikeCount) {
-        this.ballCount = ballCount;
-        this.strikeCount = strikeCount;
-    }
-
     public Integer getBallCount() {
         return ballCount;
     }

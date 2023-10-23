@@ -4,6 +4,7 @@ import static baseball.properties.Properties.*;
 
 import static org.assertj.core.api.Assertions.*;
 
+import baseball.model.Balls;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ class GameServiceTest {
 
     @BeforeEach
     void setGameService() {
-        this.gameService = new GameService(RandomUtils.getRandomNumbers(GAME_SIZE,DIGIT_START,DIGIT_END));
+        this.gameService = new GameService(Balls.createRandomBalls(GAME_SIZE,DIGIT_START,DIGIT_END));
     }
 
     @Test
