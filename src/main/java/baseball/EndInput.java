@@ -6,6 +6,14 @@ public class EndInput {
     private final String input;
 
     public EndInput() {
-        this.input = Console.readLine();
+        String input = Console.readLine();
+        validateEndInput(input);
+        this.input = input;
+    }
+
+    private void validateEndInput(String input) {
+        if (!input.matches("[12]")) {
+            throw new IllegalArgumentException();
+        }
     }
 }
