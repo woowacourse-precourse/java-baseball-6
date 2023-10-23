@@ -74,3 +74,8 @@ Menu - 메뉴 1. 게임 시작 2. 시스템 종료
 Communicator - 유저와의 소통을 담당
 Validator - 받아온 값을 검증
 Computer - 게임의 상대방 역할
+
+# 추가 객체
+
+---
+Count - 볼과 스트라이크를 구분 짓기 위한 Enum
