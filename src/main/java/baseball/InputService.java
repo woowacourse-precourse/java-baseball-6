@@ -11,14 +11,9 @@ public class InputService {
         System.out.print("숫자를 입력해주세요 : ");
         String inputValue = Console.readLine();
 
-        try {
-            // 입력값 검증
-            if(!validateLength(inputValue) || !validateType(inputValue) || !validateDuplicateValue(inputValue)) {
-                throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
-            }
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return null;
+        // 입력값 검증
+        if(!validateLength(inputValue) || !validateType(inputValue) || !validateDuplicateValue(inputValue)) {
+            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
         }
 
         // 입력값 List<Integer>로 매핑
