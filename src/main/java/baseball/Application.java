@@ -37,19 +37,19 @@ public class Application {
 
     public static void validateGuess(String input) {
         if (!Util.isLengthThree(input)) {
-            throw new IllegalArgumentException("유효한 입력값이 아닙니다.");
+            throw new IllegalArgumentException("입력값의 길이는 3자리여야 합니다.");
         }
         if (!Util.isAllPositiveInteger(input)) {
-            throw new IllegalArgumentException("유효한 입력값이 아닙니다.");
+            throw new IllegalArgumentException("입력값의 모든 문자는 양의 정수여야 합니다.");
         }
         if (!Util.isAllUniqueCharacter(input)) {
-            throw new IllegalArgumentException("유요한 입력값이 아닙니다.");
+            throw new IllegalArgumentException("입력값에 문자들은 중복이 없어야 합니다.");
         }
     }
 
     public static void validateChoice(String input) {
         if (!Util.isOneOrTwo(input)) {
-            throw new IllegalArgumentException("유효한 입력값이 아닙니다");
+            throw new IllegalArgumentException("입력값은 1 또는 2여야 합니다.");
         }
     }
 }
