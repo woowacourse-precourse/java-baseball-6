@@ -30,4 +30,8 @@ public class Balls {
                 .findFirst()
                 .orElse(BallStatus.NOTHING);
     }
+
+    public PlayResult play(Balls userBalls) {
+        return null;
+    }
 }
