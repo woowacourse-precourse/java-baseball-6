@@ -35,4 +35,15 @@ class NumbersTest {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers1));
 		Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(numbers2));
 	}
+
+	@Test
+	void 같은_포지션에_같은_숫자가_존재하는_숫자의_개수를_계산한다() {
+		List<Integer> answerNumbers = List.of(1,2,3);
+		List<Integer> inputNumbers = List.of(1,4,3);
+
+		Numbers computerNumbers = new Numbers(answerNumbers);
+		Numbers playerNumbers = new Numbers(inputNumbers);
+
+		assertThat(computerNumbers.countStrike(playerNumbers)).isEqualTo(2);
+	}
 }
