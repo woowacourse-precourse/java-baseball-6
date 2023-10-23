@@ -20,4 +20,21 @@ public class Application {
         }
         return answer;
     }
+
+    private static int[] checkAnswer(List<Integer> answer, List<Integer> userInput) {
+        int[] count = new int[2];
+        for (int i = 0; i < 3; i++) {
+            if (answer.get(i).equals(userInput.get(i))) {
+                count[1]++;
+                continue;
+            }
+            for (int j = 0; j < 3; j++) {
+                if (i != j && answer.get(i).equals(userInput.get(j))) {
+                    count[0]++;
+                    break;
+                }
+            }
+        }
+        return count;
+    }
 }
