@@ -6,6 +6,9 @@ import java.util.Objects;
 
 public class Strikes {
 
+    private final int MIN_STRIKE_COUNT = 0;
+    private final int MAX_STRIKE_COUNT = 3;
+
     private final int strikeCount;
 
     public Strikes(RandomNumbers randomNumbers, UserInputNumbers userInputNumbers) {
@@ -15,7 +18,7 @@ public class Strikes {
     }
 
     private void validateCountRange(int strikeCount) {
-        if (strikeCount < 0 || strikeCount > 3) {
+        if (valueNotBetweenZeroAndThree(strikeCount)) {
             throw new IllegalArgumentException("스트라이크 갯수는 0에서 3사이 입니다");
         }
     }
@@ -38,6 +41,10 @@ public class Strikes {
 
     private boolean isStrike(Number userInputNumber, Number randomNumber) {
         return userInputNumber.equals(randomNumber);
+    }
+
+    private boolean valueNotBetweenZeroAndThree(int strikeCount) {
+        return strikeCount < MIN_STRIKE_COUNT || strikeCount > MAX_STRIKE_COUNT;
     }
 
     public int getStrikeCount() {
