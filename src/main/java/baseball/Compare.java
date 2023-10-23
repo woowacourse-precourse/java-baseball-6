@@ -45,4 +45,44 @@ public class Compare {
 
         return correct;
     }
+
+    public String Output() {
+        int contain = getContain();
+        int ball = getBall();
+        int strike = getStrike();
+
+        System.out.println(contain + " " + ball + " " + strike);
+
+        if(contain == 0) {
+            return "낫싱";
+        }
+        if(strike == 0) {
+            return ball + "볼";
+        }
+
+        if(ball == 0) {
+            return strike + "스트라이크";
+        }
+
+        return ball + "볼" + " " + strike + "스트라이크";
+    }
+
+    public boolean success(){
+        if(strike == 3){
+            return true;
+        }
+        return false;
+    }
+
+    private int getContain(){
+        return contain;
+    }
+
+    private int getStrike(){
+        return strike;
+    }
+
+    private int getBall(){
+        return contain - strike;
+    }
 }
