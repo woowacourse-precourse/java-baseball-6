@@ -17,8 +17,8 @@ public class BallRule implements GameRule {
 
         boolean[] match = recordMatchedPositions(hitterNumbers, pitcherNumbers);
 
-        Set<String> onlyHitterSet = createSet(hitterNumbers, match);
-        Set<String> onlyPitcherSet = createSet(pitcherNumbers, match);
+        Set<String> onlyHitterSet = createUniqueNumberSet(hitterNumbers, match);
+        Set<String> onlyPitcherSet = createUniqueNumberSet(pitcherNumbers, match);
 
         onlyHitterSet.retainAll(onlyPitcherSet);
 
@@ -37,10 +37,10 @@ public class BallRule implements GameRule {
         return match;
     }
 
-    private Set<String> createSet(final String[] array, final boolean[] match) {
+    private Set<String> createUniqueNumberSet(final String[] array, final boolean[] match) {
         return IntStream.range(0, array.length)
-                .filter(i -> !match[i])
-                .mapToObj(i -> array[i])
+                .filter(index -> !match[index])
+                .mapToObj(index -> array[index])
                 .collect(Collectors.toCollection(HashSet::new));
     }
 }
