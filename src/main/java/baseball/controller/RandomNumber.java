@@ -1,21 +1,20 @@
 package baseball.controller;
 
-import baseball.model.NumberRule;
+import static baseball.model.NumberRule.NUMBER_RANGE_END;
+import static baseball.model.NumberRule.NUMBER_RANGE_START;
+import static baseball.model.NumberRule.NUMBER_SIZE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumber {
 
-    private int NUM_SIZE = NumberRule.GAME_NUMBER_SIZE.getNumber();
-    private int NUM_START = NumberRule.GAME_NUMBER_RANGE_START.getNumber();
-    private int NUM_END = NumberRule.GAME_NUMBER_RANGE_END.getNumber();
-
     public List<Integer> generateRandomNum() {
         List<Integer> computer = new ArrayList<>();
-        
-        while (computer.size() < NUM_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(NUM_START, NUM_END);
+
+        while (computer.size() < NUMBER_SIZE.getNumber()) {
+            int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START.getNumber(), NUMBER_RANGE_END.getNumber());
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }

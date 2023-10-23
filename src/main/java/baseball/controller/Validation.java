@@ -1,13 +1,13 @@
 package baseball.controller;
 
+import static baseball.model.NumberRule.NUMBER_RANGE_END;
+import static baseball.model.NumberRule.NUMBER_RANGE_START;
+import static baseball.model.NumberRule.NUMBER_SIZE;
+
 import baseball.model.Message;
-import baseball.model.NumberRule;
 import java.util.Arrays;
 
 public class Validation {
-    private int NUM_SIZE = NumberRule.GAME_NUMBER_SIZE.getNumber();
-    private int NUM_START = NumberRule.GAME_NUMBER_RANGE_START.getNumber();
-    private int NUM_END = NumberRule.GAME_NUMBER_RANGE_END.getNumber();
     private String WRONG_RANGE_NUMBER = Message.WRONG_RANGE_NUMBER.getMessage();
     private String WRONG_SIZE_NUMBER = Message.WRONG_SIZE_NUMBER.getMessage();
     private String WRONG_OVERLAP_NUMBER = Message.WRONG_OVERLAP_NUMBER.getMessage();
@@ -25,7 +25,7 @@ public class Validation {
     private void numberRangeValidation() {
         for (String s : number) {
             int num = Integer.parseInt(s);
-            if (!(NUM_START <= num && num <= NUM_END)) {
+            if (!(NUMBER_RANGE_START.getNumber() <= num && num <= NUMBER_RANGE_END.getNumber())) {
                 throw new IllegalArgumentException(WRONG_RANGE_NUMBER);
             }
         }
@@ -34,7 +34,7 @@ public class Validation {
     //3자리 숫자인가?
     private void numberSizeValidation() {
         //숫자 범위 유효성 검사에서 걸러지므로, 배열 크기만 검사
-        if (number.length != NUM_SIZE) {
+        if (number.length != NUMBER_SIZE.getNumber()) {
             throw new IllegalArgumentException(WRONG_SIZE_NUMBER);
         }
     }

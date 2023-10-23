@@ -1,14 +1,13 @@
 package baseball.controller;
 
+import static baseball.model.Message.INPUT;
+import static baseball.model.Message.START;
+
 import baseball.model.DecimalNumber;
-import baseball.model.Message;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    private String START = Message.START.getMessage();
-    private String INPUT = Message.INPUT.getMessage();
-
     private OutputView outputView = new OutputView();
     private InputView inputView = new InputView();
     private DecimalNumber decimalNumber = new DecimalNumber();
@@ -20,11 +19,11 @@ public class GameController {
 
         //게임 재시작 여부 판단
         while (isSuccess) {
-            outputView.printlnGame(START);
+            outputView.printlnGame(START.getMessage());
             computerController.startGame(decimalNumber);
 
             //메서드 분리 필요
-            outputView.printGame(INPUT);
+            outputView.printGame(INPUT.getMessage());
             String input = inputView.input();
             validation.validationGameNumber(input);
             decimalNumber.setUser(input);
