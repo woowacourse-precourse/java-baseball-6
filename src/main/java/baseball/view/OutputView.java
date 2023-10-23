@@ -1,8 +1,8 @@
 package baseball.view;
 
-import baseball.domain.Messages;
+import baseball.util.Messages;
 public class OutputView {
-    public void printStartMessage() {
+    public void printStart() {
         System.out.println(Messages.START_GAME);
     }
 
@@ -23,7 +23,7 @@ public class OutputView {
     }
 
     public void printInputNum() {
-        System.out.println(Messages.INPUT);
+        System.out.print(Messages.INPUT);
     }
 
 
