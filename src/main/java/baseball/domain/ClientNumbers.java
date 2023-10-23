@@ -24,7 +24,7 @@ public class ClientNumbers implements Numbers {
     }
 
     public Info compareWithComputerNumbers(ComputerNumbers computerNumbers) {
-        Info info = new Info();
+        Info info = new Info(0, 0, true);
 
         int ball = 0;
         int strike = 0;

@@ -2,10 +2,18 @@ package baseball.domain;
 
 import baseball.view.OutputView;
 
+import java.util.Objects;
+
 public class Info {
     private int ball = 0;
     private int strike = 0;
     private boolean ongoing = true;
+
+    public Info(int ball, int strike, boolean ongoing) {
+        this.ball = ball;
+        this.strike = strike;
+        this.ongoing = ongoing;
+    }
 
     public void setBall(int ball) {
         this.ball = ball;
@@ -36,5 +44,18 @@ public class Info {
             return ongoing;
         }
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Info info = (Info) o;
+        return ball == info.ball && strike == info.strike && ongoing == info.ongoing;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ball, strike, ongoing);
     }
 }
